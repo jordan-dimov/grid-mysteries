@@ -93,7 +93,16 @@ my own finding" — the organic Morpholog refusal (001C's finding was
 lawfully rejected by `finding_has_at_least_one_source` until its
 provenance manifests were attached), plus the governance architecture:
 pre-registration sealed by kernel gates, replayable batches, signed
-Merkle anchors, control tests proving the locks lock.
+Merkle anchors, control tests proving the locks lock. Boundary to state
+plainly in that post: the v2 human/machine separation is **built and
+control-tested, not yet deployed** — it becomes operationally true when
+Investigation 002 opens under v2 with a human PostgreSQL credential the
+machine never holds. Post two says "we built and control-tested the
+system that will enforce this from the next prospective investigation",
+not "the AI already cannot publish without me". (Also for precision: the
+refusal was a rejection receipt, not a Merkle-audited transition — the
+audit chain records what was admitted; the controls prove what gets
+refused.)
 
 ## Verification footer
 

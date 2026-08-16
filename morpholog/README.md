@@ -22,6 +22,14 @@ the machine it was produced on:
 ./scripts/replay-research   # needs PostgreSQL
 ```
 
+A precision note on what is and is not in the audit log: only **committed
+transitions** are Merkle-audited (the anchor's `tree_size` is their exact
+count). **Refusals are not transitions** — a business rejection (such as
+001C's finding being lawfully refused until its provenance was attached)
+leaves a receipt and an operational rejection-log row, not an audit row,
+and actor-assertion refusals appear in neither. The audit chain proves
+what was admitted; the controls prove what gets refused.
+
 `replay-research` (also run by CI on every push, against a fresh service
 database) checks that: the programme hash matches the pinned fingerprint;
 the evidence pack verifies offline against the anchor; every batch row

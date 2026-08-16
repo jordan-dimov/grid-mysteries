@@ -1,0 +1,62 @@
+[
+  {
+    "args": {
+      "investigation": "inv-001-largest-apparent-inversion",
+      "opened_at": "2026-08-16T20:10:00Z",
+      "title": "The week 2026-08-04..2026-08-10 largest apparent BOD price-order inversion"
+    },
+    "predicate": "Investigation"
+  },
+  {
+    "args": {
+      "hypothesis": "hyp-001-null-public-explainability",
+      "investigation": "inv-001-largest-apparent-inversion",
+      "proposed_at": "2026-08-16T20:12:00Z",
+      "statement": "The apparent price-order inversion selected by the pre-declared procedure in investigations/001-largest-apparent-inversion can be fully explained from publicly available information."
+    },
+    "predicate": "Hypothesis"
+  },
+  {
+    "args": {
+      "artifact": "art-001-window-manifest",
+      "fetched_at": "2026-08-16T20:22:00Z",
+      "sha256": "79780efae81cb03b10d7e867b2e509eed3f7a7bf87e70d80f0a50f6f3b0ae784",
+      "source": "elexon-insights via investigations/001-largest-apparent-inversion/evidence/manifest.json"
+    },
+    "predicate": "SourceArtifact"
+  },
+  {
+    "args": {
+      "artifact": "art-001-window-manifest",
+      "investigation": "inv-001-largest-apparent-inversion"
+    },
+    "predicate": "InvestigationUses"
+  },
+  {
+    "args": {
+      "artifact": "art-001-case-manifest",
+      "fetched_at": "2026-08-16T20:34:00Z",
+      "sha256": "7b61f4840ab66ec3f321c711b0fa7a084a89545fb52b039c4d1ac55d4a4b0285",
+      "source": "elexon-insights via investigations/001-largest-apparent-inversion/evidence/case-manifest.json"
+    },
+    "predicate": "SourceArtifact"
+  },
+  {
+    "args": {
+      "artifact": "art-001-case-manifest",
+      "investigation": "inv-001-largest-apparent-inversion"
+    },
+    "predicate": "InvestigationUses"
+  },
+  {
+    "args": {
+      "conclusion": "EXPLAINED: the selected apparent inversion (2026-08-06 SP29, bid; T_LARYW-1 accepted at -179.76 GBP/MWh vs E_RHEI-1 unaccepted at +9949 GBP/MWh) is fully accounted for by zero deliverable bid volume on the unaccepted side (FPN=0, MELS=0, demand capacity 0). The null hypothesis survives. SO-flagged acceptance documents a system-driven curtailment.",
+      "evidence_digest": "28a2dfc038fa309f3dbfd041f8c009bc8706639d5607b91926c386f02bfeb5c9",
+      "finding": "fnd-001-explained",
+      "hypothesis": "hyp-001-null-public-explainability",
+      "investigation": "inv-001-largest-apparent-inversion",
+      "published_at": "2026-08-16T20:40:00Z"
+    },
+    "predicate": "Finding"
+  }
+]

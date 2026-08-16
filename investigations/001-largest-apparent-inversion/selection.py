@@ -1,8 +1,8 @@
 """Fetch and deterministically select Mystery 001, per the pre-declared rule.
 
 Usage:
-    uv run python investigations/001-largest-apparent-inversion/select.py fetch
-    uv run python investigations/001-largest-apparent-inversion/select.py select
+    uv run python investigations/001-largest-apparent-inversion/selection.py fetch
+    uv run python investigations/001-largest-apparent-inversion/selection.py select
 
 ``fetch`` performs network I/O and pins immutable raw artefacts under
 ``data/raw/elexon/``. Every successful fetch is journalled immediately in

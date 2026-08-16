@@ -103,8 +103,8 @@ timing, …) become child hypotheses only as evidence demands.
 ## Reproduction
 
 ```bash
-uv run python investigations/001-largest-apparent-inversion/select.py fetch   # network; pins raw artefacts
-uv run python investigations/001-largest-apparent-inversion/select.py select  # offline; deterministic
+uv run python investigations/001-largest-apparent-inversion/selection.py fetch   # network; pins raw artefacts
+uv run python investigations/001-largest-apparent-inversion/selection.py select  # offline; deterministic
 ```
 
 `select` reads only pinned artefacts and writes `evidence/candidates-top50.json`
@@ -134,6 +134,93 @@ The pre-declared sentinel-pricing caveat applies on the unaccepted side: a
 output, which no unit plausibly intends. The rule said such a case would
 not be excluded, so this is Mystery 001. The investigation of this case is
 conducted under `EXPLANATION-PROTOCOL.md`.
+
+## The mystery
+
+During the half hour ending 14:30 (UK time) on 6 August 2026, Britain's
+system operator paid the London Array offshore wind farm £179.76 per MWh
+*not* to generate, while a small Welsh hydro station's standing offer that
+would have *paid the system* £9,949 per MWh to reduce output went untouched.
+Why?
+
+## Observation
+
+Stated strictly from the pinned artefacts (digests in
+`evidence/manifest.json` and `evidence/case-manifest.json`; extracted
+records in `evidence/case-report.json`):
+
+- `T_LARYW-1` (London Array BMU1, offshore wind, 171 MW, lead party London
+  Array Limited) had bid pair −1 priced at −£179.76/MWh (BOD,
+  `data/raw/elexon/2026-08-06/bod_p29.json`) and −11.5 MWh of bid volume
+  accepted in settlement period 29 (DISPTAV `Original`,
+  `disptav_bid_p29.json`), via acceptances 52013 (12:17 UTC) and 52014
+  (12:58 UTC), both flagged `soFlag: true` (BOALF, `cbbb7e2c…`; bid stack,
+  `1e95f382…`, not repriced, no CADL flag).
+- `E_RHEI-1` (embedded hydro, Rheidol, lead party Statkraft, 50 MW
+  generation capacity, **0 MW demand capacity**, GSP group Merseyside &
+  North Wales) submitted bid pairs −1/−2/−3 all priced **+£9,949.00/MWh**
+  with level bands −11/−21/−17 MW, and had zero accepted bid volume.
+- `E_RHEI-1`'s **Final Physical Notification for the period was 0 MW**
+  (levelFrom = levelTo = 0; PN artefact `328d2b3c…`), and its Maximum
+  Export Limit was also 0 MW (MELS artefact `aef5282f…`).
+- Across all 336 periods of the window, `E_RHEI-1` submitted bid pairs in
+  every period with identical level bands; +£9,949.00 appears 324 times
+  among its pair prices, and its accepted bid volume was zero in every
+  period (computed from the pinned window artefacts).
+
+## Explanations tested
+
+Statuses per `EXPLANATION-PROTOCOL.md`:
+
+| Mechanism | Status | Evidence |
+|---|---|---|
+| Physical notification / availability: no deliverable bid volume | **explained** | Bid volume is decremental relative to FPN (BSC Section T). `E_RHEI-1` FPN = 0 MW (PN `328d2b3c…`), MELS = 0 MW (`aef5282f…`), demand capacity 0 MW (BMUNITS `1a60fcbb…`): the unit was not generating and cannot import, so its bid pairs had **zero deliverable volume**. The "17 MW" of the selection candidate is a standing BOD level band, not availability. |
+| Published flagging classification of the accepted action | **contributes** | Both London Array acceptances carry `soFlag: true` (BOALF `cbbb7e2c…`; stack `1e95f382…`): NESO classified them as system-driven, which is how a −£179.76/MWh wind bid comes to be accepted at all. |
+| Location / specific constraint identity | **compatible but unproven** | SO-flagging is consistent with constraint management around an offshore wind unit, but the pinned data does not identify which constraint; no public dataset in this evidence set names it. |
+| Dynamic limits / ramping | **ruled out** (as an operative mechanism here) | With zero deliverable volume there was nothing for dynamic parameters to limit; no dynamic-data mechanism is needed or able to explain the non-acceptance. |
+| Prior dispatch state of the unaccepted unit | **ruled out** | BOALF for period 29 contains no `E_RHEI-1` acceptances, and the unit had zero accepted bid volume all week; no prior instruction constrained it. |
+| Submission semantics (sentinel/defensive pricing) | **compatible but unproven** | +£9,949.00 sits just below the +£9,999 defensive convention and recurs in 324 of 336 periods with fixed bands — a standing submission. Whether it is deliberate operator practice or a data-entry artefact is operator intent, **not observable publicly**. |
+| Data revision / publication timing | **compatible but unproven** | All facts are from single pinned vintages (DISPTAV/stack created 2026-08-07T13:44Z, fetched 2026-08-16); no inconsistency between vintages was found. Later settlement runs could revise volumes; that possibility is a declared limitation, not an observed mechanism. |
+
+## Conclusion
+
+**Explained** (per protocol §4): the selected apparent inversion is fully
+accounted for by one mechanism — the "cheaper" alternative had **zero
+deliverable bid volume** (FPN = 0, MEL = 0, cannot import). No executable
+better-priced action existed; the £10,128.76/MWh gap was an artefact of
+comparing a live curtailment action against a standing, undeliverable
+submission. The SO-flag on the accepted action additionally documents that
+the curtailment itself was system-driven rather than energy-balancing.
+
+The registered null hypothesis — that the selected inversion can be fully
+explained from publicly available information — **survives**.
+
+This outcome falsifies nothing about NESO and that is the point: the
+method selected its own case, the case got a complete public explanation,
+and the run validates the pipeline end to end. It also teaches a concrete
+methodological lesson for Investigation 002: a selection rule whose
+availability test is BOD bands alone will surface undeliverable standing
+submissions first; incorporating FPN into *selection* (not just
+explanation) is the obvious pre-declarable refinement.
+
+## Expert corner
+
+- Event: 2026-08-06, settlement period 29 (13:00–13:30 UTC).
+- Accepted: `T_LARYW-1` (NGC `LARYO-1`), bid pair −1 at −£179.76/MWh;
+  acceptances 52013/52014, `soFlag` true, `deemedBoFlag`/`storFlag`/
+  `rrFlag` false, no CADL, not repriced; DISPTAV `Original` bid volume
+  −11.5 MWh (`T_LARYW-2/-3/-4` were curtailed identically and appear at
+  ranks 4–12 of `evidence/candidates-top50.json`).
+- Unaccepted: `E_RHEI-1` (NGC `RHEI-4`), pairs −1/−2/−3 at +£9,949.00/MWh,
+  bands −11/−21/−17 MW, FPN 0, MELS 0, demand capacity 0.
+- Assumptions open to challenge: DISPTAV `Original` as the acceptance
+  fact; BOD bands as declared willingness; whole-period pair-level
+  comparison; de-minimis 0.01 MWh; availability threshold 1 MW.
+- Everything needed to challenge this is pinned: window manifest
+  (1,008 artefacts, `evidence/manifest.json`, registered in Morpholog as
+  `art-001-window-manifest`), case manifest (5 artefacts,
+  `evidence/case-manifest.json`), reduced facts
+  (`evidence/case-report.json`, SHA-256 `28a2dfc0…`).
 
 ## Corrections
 

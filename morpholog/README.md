@@ -5,12 +5,15 @@ the machine it was produced on:
 
 | File | What it is |
 |---|---|
-| `research.morph` | the governing programme (rules) |
-| `PROGRAMME_HASH.json` | the programme's stable fingerprint (`morpholog hash`), insensitive to formatting |
+| `research.morph` | the governing v1 programme (rules) |
+| `research-v2-draft.morph` | the v2 research state machine — check-clean, control-tested, **not yet deployed** (see `RESEARCH-V2-DESIGN.md`) |
+| `PROGRAMME_HASH.json` / `V2_DRAFT_HASH.json` | stable ruleset fingerprints (`morpholog hash`); no programme identity is stored in the database, so these files are the out-of-band record |
 | `batches/*.ndjson` | **the canonical input**: every governed transition as a replayable proposal batch, in replay order |
+| `controls/` | negative tests: transitions that must be **refused**, with the exact refusing rule pinned (`scripts/check-controls`, CI-run against a disposable database) |
 | `claims-export.json` | derived convenience export of the admitted claims |
-| `audit-anchor.json` | externally-held Merkle checkpoint over the audit log |
-| `evidence-pack.json` | portable audit pack; verifies **offline** against the anchor with no database |
+| `audit-anchor.json` | externally-held Merkle checkpoint over the audit log — **signed** (Ed25519, key `audit-2026`) from tree_size 34 onward |
+| `evidence-pack.json` | portable audit pack; verifies **offline** against the anchor with no database (embedded signatures crypto-checked; key authority folded from the pack's own `AuditSigningKey` claim) |
+| `trust/audit-2026.pub` | the signing public key, committed as documentation — verification reads the key from the checkpoint itself and judges authority against the governed claim, never from this file |
 
 ## Verify it yourself
 

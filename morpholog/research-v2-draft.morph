@@ -1,208 +1,297 @@
 -- DRAFT v2 of the Grid Mysteries research programme. NOT DEPLOYED.
 --
 -- v1 records that research acts happened. v2 makes the research lifecycle
--- executable: sealing a protocol is the only act that authorises data
--- acquisition (the emitted intent is the fetcher's trigger), evidence can
--- only attach after that seal, and conclusion classes carry governed
--- semantics. Ordering is proven by audit-log sequence, never by
--- caller-supplied timestamps. See RESEARCH-V2-DESIGN.md.
+-- executable: sealing a protocol is the only act that emits the fetch
+-- authorisation; evidence attaches only after the seal; conclusion
+-- classes carry governed semantics; standing is superseded, never edited;
+-- and the human/machine actor split is kernel-enforced through authority
+-- claims plus ActorAssertion policy. Ordering is proven by audit-log
+-- sequence, never by caller-supplied timestamps.
+--
+-- Deployment model (RESEARCH-V2-DESIGN.md): same database and audit chain
+-- as v1, with a fully disjoint predicate vocabulary (Inquiry/Evidence
+-- Artifact/Conjecture/Conclusion vs v1's Investigation/SourceArtifact/
+-- Hypothesis/Finding) so neither programme's rows are ungoverned by the
+-- other. v2 references v1 subjects by UUID via LineageFromV1. Every gate
+-- is named so control tests can assert the refusing rule.
 
 program grid_mysteries_research_v2
 
--- kind: #prospective | #descriptive | #method_study
-predicate Investigation(investigation: Subject, kind: Subject, title: Subject, opened_at: Timestamp)
-    append only
--- status: #untouched | #consumed (declared at opening, before any data act)
-predicate CorpusStatus(investigation: Subject, corpus: Subject, status: Subject)
-    append only
-predicate ProtocolDeclared(investigation: Subject, protocol_digest: Subject, declared_at: Timestamp)
-    append only
-predicate ProtocolSealed(investigation: Subject, sealed_at: Timestamp)
-    append only
-predicate SourceArtifact(artifact: Subject, source: Subject, sha256: Subject, fetched_at: Timestamp)
-    append only
-predicate InvestigationUses(investigation: Subject, artifact: Subject)
-    append only
-predicate EvidenceSealed(investigation: Subject, sealed_at: Timestamp)
-    append only
-predicate SelectionRecorded(investigation: Subject, selection_digest: Subject, recorded_at: Timestamp)
-    append only
-predicate Hypothesis(hypothesis: Subject, investigation: Subject, statement: Subject, proposed_at: Timestamp)
-    append only
--- status: #explained | #contributes | #ruled_out | #compatible_but_unproven | #not_publicly_observable
-predicate MechanismAssessment(investigation: Subject, mechanism: Subject, status: Subject, evidence_digest: Subject)
-    append only
--- conclusion_class: #explained | #partly_explained | #publicly_unexplained
---                 | #hypothesis_confirmed | #hypothesis_falsified
-predicate Finding(finding: Subject, investigation: Subject, hypothesis: Subject, conclusion_class: Subject, conclusion: Subject, evidence_digest: Subject, published_at: Timestamp)
-    append only
--- A finding is never edited; its standing is superseded. The current
--- finding of an investigation is the one no SupersedesFinding names as
--- prior.
-predicate SupersedesFinding(new_finding: Subject, prior_finding: Subject)
-    append only
--- Quantitative claims are governed values bound to a content-addressed
--- evidence artefact, never prose. Percentages are stored with their
--- numerator and denominator as separate metrics of the same artefact.
--- CI recomputes each metric from the artefact matching evidence_digest
--- and refuses on mismatch.
-predicate EvidenceMetric(metric: Subject, evidence_digest: Subject, name: Subject, metric_value: Decimal, unit: Subject)
-    append only
-predicate FindingUsesMetric(finding: Subject, metric: Subject)
-    append only
--- A public statement is rendered only from an approved publication whose
--- finding has bound metrics; the approval is the human's transition.
-predicate Publication(publication: Subject, finding: Subject, medium: Subject, content_digest: Subject, drafted_at: Timestamp)
-    append only
-predicate PublicationApproved(publication: Subject, approved_at: Timestamp)
-    append only
--- Kernel-enforced actor policy: a restricted actor name may only be
--- asserted by sessions whose PostgreSQL login role holds a matching
--- authority claim. The machine role must never hold the human's
--- credential, or the separation is theatre.
+-- Kernel-enforced actor policy (reserved names recognised by the PG
+-- adapter): a restricted actor may only be asserted by connections whose
+-- session_user matches an authority claim. The machine's connection must
+-- never hold the human's PostgreSQL credential.
 predicate ActorAssertionRestricted(actor: Subject)
     append only
 predicate ActorAssertionAuthority(actor: Subject, login_role: Subject)
     append only
+-- Doctrinal authority claims: gates require these, keyed by the proposal
+-- actor, instead of literal actor equality.
+predicate SealAuthority(actor: Subject)
+    append only
+predicate PublicationAuthority(actor: Subject)
+    append only
+-- Audit-checkpoint signing keys (reserved name; purpose is always
+-- audit_checkpoint_v1).
+predicate AuditSigningKey(key_id: Subject, purpose: Subject, public_key: Subject)
+    append only
 
-intent InvestigationOpened(investigation: Subject)
-intent DataAcquisitionAuthorised(investigation: Subject)
-intent AnalysisAuthorised(investigation: Subject)
-intent HypothesisRegistered(hypothesis: Subject)
-intent FindingPublished(finding: Subject)
-intent FindingSuperseded(prior_finding: Subject, new_finding: Subject)
+-- kind: #prospective | #descriptive | #method_study
+predicate Inquiry(inquiry: Subject, kind: Subject, title: Subject, opened_at: Timestamp)
+    append only
+-- status: #untouched | #consumed, declared before any data act
+predicate CorpusDeclared(inquiry: Subject, corpus: Subject, status: Subject)
+    append only
+predicate ProtocolDeclared(inquiry: Subject, protocol_digest: Subject, declared_at: Timestamp)
+    append only
+predicate ProtocolSealed(inquiry: Subject, sealed_at: Timestamp)
+    append only
+predicate EvidenceArtifact(artifact: Subject, source: Subject, sha256: Subject, fetched_at: Timestamp)
+    append only
+predicate InquiryUses(inquiry: Subject, artifact: Subject)
+    append only
+predicate EvidenceSealed(inquiry: Subject, sealed_at: Timestamp)
+    append only
+predicate SelectionRecorded(inquiry: Subject, selection_digest: Subject, recorded_at: Timestamp)
+    append only
+predicate Conjecture(conjecture: Subject, inquiry: Subject, statement: Subject, proposed_at: Timestamp)
+    append only
+-- status: #explained | #contributes | #ruled_out | #compatible_but_unproven | #not_publicly_observable
+predicate MechanismAssessment(inquiry: Subject, mechanism: Subject, status: Subject, evidence_digest: Subject)
+    append only
+-- Quantitative claims are governed values bound to a content-addressed
+-- evidence artefact; the unit is encoded in metric_name (bare Decimal by
+-- doctrine: rates cross denominations, so quantity kinds cannot express
+-- them). CI recomputes each metric from the artefact and refuses on
+-- mismatch. Percentages carry numerator and denominator as sibling
+-- metrics of the same artefact.
+predicate EvidenceMetric(metric: Subject, evidence_digest: Subject, metric_name: Subject, metric_value: Decimal)
+    append only
+predicate ConclusionUsesMetric(conclusion: Subject, metric: Subject)
+    append only
+
+-- The content record: append only, never edited.
+-- conclusion_class: #explained | #partly_explained | #publicly_unexplained
+--                 | #hypothesis_confirmed | #hypothesis_falsified
+predicate Conclusion(conclusion: Subject, inquiry: Subject, conjecture: Subject, conclusion_class: Subject, statement: Subject, evidence_digest: Subject, published_at: Timestamp)
+    append only
+-- Standing: a retractable pointer, one per inquiry, moved by supersession.
+predicate CurrentConclusion(inquiry: Subject, conclusion: Subject)
+    current pointer by (inquiry)
+    superseded via SupersedesConclusion
+-- Lineage (append only inherited; no-fork on prior generated; one prior
+-- per successor pinned).
+predicate SupersedesConclusion(successor_conclusion: Subject, prior_conclusion: Subject)
+    unique by (successor_conclusion)
+
+-- A public statement renders only from an approved publication whose
+-- conclusion is current and metric-bound; approval is the human's act.
+predicate Publication(publication: Subject, conclusion: Subject, medium: Subject, content_digest: Subject, drafted_at: Timestamp)
+    append only
+predicate PublicationApproved(publication: Subject, approved_at: Timestamp)
+    append only
+
+-- v2 claims about v1 subjects (opaque UUIDs in the shared claims table);
+-- deliberately no import mechanism exists.
+predicate LineageFromV1(inquiry: Subject, v1_investigation: Subject)
+    append only
+
+intent InquiryOpened(inquiry: Subject)
+intent DataAcquisitionAuthorised(inquiry: Subject)
+intent AnalysisAuthorised(inquiry: Subject)
+intent ConjectureRegistered(conjecture: Subject)
+intent ConclusionPublished(conclusion: Subject)
+intent ConclusionSuperseded(prior_conclusion: Subject, successor_conclusion: Subject)
 intent PublicationAuthorised(publication: Subject)
 
-invariant corpus_has_investigation:
-    CorpusStatus(i, _, _) implies Investigation(i, _, _, _)
+invariant corpus_has_inquiry:
+    CorpusDeclared(i, _, _) implies Inquiry(i, _, _, _)
 
 invariant sealed_protocol_was_declared:
     ProtocolSealed(i, _) implies ProtocolDeclared(i, _, _)
 
-invariant attached_source_exists:
-    InvestigationUses(i, a) implies SourceArtifact(a, _, _, _)
+invariant attached_evidence_exists:
+    InquiryUses(i, a) implies EvidenceArtifact(a, _, _, _)
 
-invariant attached_source_has_sealed_protocol:
-    InvestigationUses(i, _) implies ProtocolSealed(i, _)
+invariant attached_evidence_has_sealed_protocol:
+    InquiryUses(i, _) implies ProtocolSealed(i, _)
 
-invariant sealed_evidence_has_source:
-    EvidenceSealed(i, _) implies InvestigationUses(i, _)
+invariant sealed_evidence_has_artifact:
+    EvidenceSealed(i, _) implies InquiryUses(i, _)
 
 invariant selection_has_sealed_evidence:
     SelectionRecorded(i, _, _) implies EvidenceSealed(i, _)
 
-invariant hypothesis_has_investigation:
-    Hypothesis(_, i, _, _) implies Investigation(i, _, _, _)
+invariant conjecture_has_inquiry:
+    Conjecture(_, i, _, _) implies Inquiry(i, _, _, _)
 
 invariant assessment_has_sealed_evidence:
     MechanismAssessment(i, _, _, _) implies EvidenceSealed(i, _)
 
-invariant finding_has_registered_hypothesis:
-    Finding(_, i, h, _, _, _, _) implies Hypothesis(h, i, _, _)
+invariant conclusion_has_registered_conjecture:
+    Conclusion(_, i, c, _, _, _, _) implies Conjecture(c, i, _, _)
 
-invariant finding_has_sealed_evidence:
-    Finding(_, i, _, _, _, _, _) implies EvidenceSealed(i, _)
+invariant conclusion_has_sealed_evidence:
+    Conclusion(_, i, _, _, _, _, _) implies EvidenceSealed(i, _)
 
-invariant explained_finding_has_explained_mechanism:
-    Finding(_, i, _, #explained, _, _, _) implies MechanismAssessment(i, _, #explained, _)
+invariant explained_conclusion_has_explained_mechanism:
+    Conclusion(_, i, _, #explained, _, _, _) implies MechanismAssessment(i, _, #explained, _)
 
-invariant unexplained_finding_has_no_explained_mechanism:
-    Finding(_, i, _, #publicly_unexplained, _, _, _) implies not MechanismAssessment(i, _, #explained, _)
+invariant unexplained_conclusion_has_no_explained_mechanism:
+    Conclusion(_, i, _, #publicly_unexplained, _, _, _) implies not MechanismAssessment(i, _, #explained, _)
 
-invariant prospective_finding_needs_untouched_corpus:
-    Finding(_, i, _, _, _, _, _) and Investigation(i, #prospective, _, _) implies CorpusStatus(i, _, #untouched)
+invariant prospective_conclusion_needs_untouched_corpus:
+    Conclusion(_, i, _, _, _, _, _) and Inquiry(i, #prospective, _, _) implies CorpusDeclared(i, _, #untouched)
 
-invariant superseding_finding_exists:
-    SupersedesFinding(n, _) implies Finding(n, _, _, _, _, _, _)
+invariant current_conclusion_exists:
+    CurrentConclusion(_, c) implies Conclusion(c, _, _, _, _, _, _)
 
-invariant superseded_finding_exists:
-    SupersedesFinding(_, p) implies Finding(p, _, _, _, _, _, _)
+invariant current_conclusion_matches_inquiry:
+    CurrentConclusion(i, c) implies Conclusion(c, i, _, _, _, _, _)
 
-invariant metric_link_has_finding:
-    FindingUsesMetric(f, _) implies Finding(f, _, _, _, _, _, _)
+invariant successor_conclusion_exists:
+    SupersedesConclusion(s, _) implies Conclusion(s, _, _, _, _, _, _)
+
+invariant superseded_conclusion_exists:
+    SupersedesConclusion(_, p) implies Conclusion(p, _, _, _, _, _, _)
+
+invariant metric_link_has_conclusion:
+    ConclusionUsesMetric(c, _) implies Conclusion(c, _, _, _, _, _, _)
 
 invariant metric_link_has_metric:
-    FindingUsesMetric(_, m) implies EvidenceMetric(m, _, _, _, _)
+    ConclusionUsesMetric(_, m) implies EvidenceMetric(m, _, _, _)
 
-invariant publication_has_finding:
-    Publication(_, f, _, _, _) implies Finding(f, _, _, _, _, _, _)
+invariant publication_has_conclusion:
+    Publication(_, c, _, _, _) implies Conclusion(c, _, _, _, _, _, _)
 
 invariant publication_has_bound_metrics:
-    Publication(_, f, _, _, _) implies FindingUsesMetric(f, _)
+    Publication(_, c, _, _, _) implies ConclusionUsesMetric(c, _)
 
 invariant approval_has_publication:
     PublicationApproved(p, _) implies Publication(p, _, _, _, _)
 
-transformation open_investigation(investigation, kind, title, opened_at):
-    require not Investigation(investigation, _, _, _)
-    require kind = #prospective or kind = #descriptive or kind = #method_study
-    admit Investigation(investigation, kind, title, opened_at)
-    emit InvestigationOpened(investigation)
+invariant lineage_has_inquiry:
+    LineageFromV1(i, _) implies Inquiry(i, _, _, _)
 
-transformation declare_corpus(investigation, corpus, status):
-    require Investigation(investigation, _, _, _)
-    require status = #untouched or status = #consumed
-    require not CorpusStatus(investigation, corpus, _)
-    admit CorpusStatus(investigation, corpus, status)
+-- Bootstrap: arm actor policy and grant every authority in ONE transition
+-- (arming first and granting later would strand the trust root). Run once.
+transformation establish_governance(human_actor, human_login_role, machine_actor, machine_login_role):
+    require governance_not_yet_established: not SealAuthority(_)
+    admit ActorAssertionRestricted(human_actor)
+    admit ActorAssertionAuthority(human_actor, human_login_role)
+    admit ActorAssertionRestricted(machine_actor)
+    admit ActorAssertionAuthority(machine_actor, machine_login_role)
+    admit SealAuthority(human_actor)
+    admit PublicationAuthority(human_actor)
 
-transformation declare_protocol(investigation, protocol_digest, declared_at):
-    require Investigation(investigation, _, _, _)
-    require not ProtocolSealed(investigation, _)
-    admit ProtocolDeclared(investigation, protocol_digest, declared_at)
+transformation register_audit_signing_key(key_id, public_key):
+    require key_registration_requires_seal_authority: SealAuthority(actor)
+    require key_not_already_registered: not AuditSigningKey(key_id, _, _)
+    admit AuditSigningKey(key_id, #audit_checkpoint_v1, public_key)
 
-transformation seal_protocol(investigation, sealed_at):
-    require ProtocolDeclared(investigation, _, _)
-    require not ProtocolSealed(investigation, _)
-    admit ProtocolSealed(investigation, sealed_at)
-    emit DataAcquisitionAuthorised(investigation)
+transformation open_inquiry(inquiry, kind, title, opened_at):
+    require inquiry_is_new: not Inquiry(inquiry, _, _, _)
+    require kind_in_vocabulary: kind = #prospective or kind = #descriptive or kind = #method_study
+    admit Inquiry(inquiry, kind, title, opened_at)
+    emit InquiryOpened(inquiry)
 
-transformation register_source(artifact, source, sha256, fetched_at):
-    require not SourceArtifact(artifact, _, _, _)
-    admit SourceArtifact(artifact, source, sha256, fetched_at)
+transformation declare_corpus(inquiry, corpus, status):
+    require corpus_inquiry_exists: Inquiry(inquiry, _, _, _)
+    require corpus_status_in_vocabulary: status = #untouched or status = #consumed
+    require corpus_not_yet_declared: not CorpusDeclared(inquiry, corpus, _)
+    admit CorpusDeclared(inquiry, corpus, status)
 
-transformation attach_source(investigation, artifact):
-    require ProtocolSealed(investigation, _)
-    require SourceArtifact(artifact, _, _, _)
-    require not InvestigationUses(investigation, artifact)
-    admit InvestigationUses(investigation, artifact)
+transformation declare_protocol(inquiry, protocol_digest, declared_at):
+    require protocol_inquiry_exists: Inquiry(inquiry, _, _, _)
+    require protocol_not_sealed_yet: not ProtocolSealed(inquiry, _)
+    admit ProtocolDeclared(inquiry, protocol_digest, declared_at)
 
-transformation seal_evidence(investigation, sealed_at):
-    require ProtocolSealed(investigation, _)
-    require InvestigationUses(investigation, _)
-    require not EvidenceSealed(investigation, _)
-    admit EvidenceSealed(investigation, sealed_at)
-    emit AnalysisAuthorised(investigation)
+transformation seal_protocol(inquiry, sealed_at):
+    require seal_requires_authority: SealAuthority(actor)
+    require seal_has_declared_protocol: ProtocolDeclared(inquiry, _, _)
+    require seal_is_new: not ProtocolSealed(inquiry, _)
+    admit ProtocolSealed(inquiry, sealed_at)
+    emit DataAcquisitionAuthorised(inquiry)
 
-transformation record_selection(investigation, selection_digest, recorded_at):
-    require EvidenceSealed(investigation, _)
-    require not SelectionRecorded(investigation, _, _)
-    admit SelectionRecorded(investigation, selection_digest, recorded_at)
+transformation register_evidence(artifact, source, sha256, fetched_at):
+    require artifact_is_new: not EvidenceArtifact(artifact, _, _, _)
+    admit EvidenceArtifact(artifact, source, sha256, fetched_at)
 
-transformation register_hypothesis(hypothesis, investigation, statement, proposed_at):
-    require Investigation(investigation, _, _, _)
-    require not Hypothesis(hypothesis, _, _, _)
-    admit Hypothesis(hypothesis, investigation, statement, proposed_at)
-    emit HypothesisRegistered(hypothesis)
+transformation attach_evidence(inquiry, artifact):
+    require attach_requires_sealed_protocol: ProtocolSealed(inquiry, _)
+    require attach_artifact_exists: EvidenceArtifact(artifact, _, _, _)
+    require attach_is_new: not InquiryUses(inquiry, artifact)
+    admit InquiryUses(inquiry, artifact)
 
-transformation assess_mechanism(investigation, mechanism, status, evidence_digest):
-    require EvidenceSealed(investigation, _)
-    require status = #explained or status = #contributes or status = #ruled_out or status = #compatible_but_unproven or status = #not_publicly_observable
-    require not MechanismAssessment(investigation, mechanism, _, _)
-    admit MechanismAssessment(investigation, mechanism, status, evidence_digest)
+transformation seal_evidence(inquiry, sealed_at):
+    require evidence_seal_has_protocol: ProtocolSealed(inquiry, _)
+    require evidence_seal_has_artifact: InquiryUses(inquiry, _)
+    require evidence_seal_is_new: not EvidenceSealed(inquiry, _)
+    admit EvidenceSealed(inquiry, sealed_at)
+    emit AnalysisAuthorised(inquiry)
 
-transformation publish_finding(finding, investigation, hypothesis, conclusion_class, conclusion, evidence_digest, published_at):
-    require Hypothesis(hypothesis, investigation, _, _)
-    require EvidenceSealed(investigation, _)
-    require not Finding(finding, _, _, _, _, _, _)
-    require conclusion_class = #explained or conclusion_class = #partly_explained or conclusion_class = #publicly_unexplained or conclusion_class = #hypothesis_confirmed or conclusion_class = #hypothesis_falsified
-    admit Finding(finding, investigation, hypothesis, conclusion_class, conclusion, evidence_digest, published_at)
-    emit FindingPublished(finding)
+transformation record_selection(inquiry, selection_digest, recorded_at):
+    require selection_requires_sealed_evidence: EvidenceSealed(inquiry, _)
+    require selection_is_new: not SelectionRecorded(inquiry, _, _)
+    admit SelectionRecorded(inquiry, selection_digest, recorded_at)
 
-transformation supersede_finding(new_finding, prior_finding, investigation, hypothesis, conclusion_class, conclusion, evidence_digest, published_at):
-    require Finding(prior_finding, investigation, _, _, _, _, _)
-    require Hypothesis(hypothesis, investigation, _, _)
-    require not Finding(new_finding, _, _, _, _, _, _)
-    require not SupersedesFinding(_, prior_finding)
-    admit Finding(new_finding, investigation, hypothesis, conclusion_class, conclusion, evidence_digest, published_at)
-    admit SupersedesFinding(new_finding, prior_finding)
-    emit FindingSuperseded(prior_finding, new_finding)
+transformation register_conjecture(conjecture, inquiry, statement, proposed_at):
+    require conjecture_inquiry_exists: Inquiry(inquiry, _, _, _)
+    require conjecture_is_new: not Conjecture(conjecture, _, _, _)
+    admit Conjecture(conjecture, inquiry, statement, proposed_at)
+    emit ConjectureRegistered(conjecture)
+
+transformation assess_mechanism(inquiry, mechanism, status, evidence_digest):
+    require assessment_requires_sealed_evidence: EvidenceSealed(inquiry, _)
+    require assessment_status_in_vocabulary: status = #explained or status = #contributes or status = #ruled_out or status = #compatible_but_unproven or status = #not_publicly_observable
+    require mechanism_not_yet_assessed: not MechanismAssessment(inquiry, mechanism, _, _)
+    admit MechanismAssessment(inquiry, mechanism, status, evidence_digest)
+
+transformation bind_metric(metric, evidence_digest, metric_name, metric_value):
+    require metric_is_new: not EvidenceMetric(metric, _, _, _)
+    admit EvidenceMetric(metric, evidence_digest, metric_name, metric_value)
+
+transformation link_metric(conclusion, metric):
+    require link_conclusion_exists: Conclusion(conclusion, _, _, _, _, _, _)
+    require link_metric_exists: EvidenceMetric(metric, _, _, _)
+    require link_is_new: not ConclusionUsesMetric(conclusion, metric)
+    admit ConclusionUsesMetric(conclusion, metric)
+
+transformation publish_conclusion(conclusion, inquiry, conjecture, conclusion_class, statement, evidence_digest, published_at):
+    require publish_conjecture_registered: Conjecture(conjecture, inquiry, _, _)
+    require publish_requires_sealed_evidence: EvidenceSealed(inquiry, _)
+    require publish_conclusion_is_new: not Conclusion(conclusion, _, _, _, _, _, _)
+    require publish_inquiry_has_no_current_conclusion: not CurrentConclusion(inquiry, _)
+    require publish_class_in_vocabulary: conclusion_class = #explained or conclusion_class = #partly_explained or conclusion_class = #publicly_unexplained or conclusion_class = #hypothesis_confirmed or conclusion_class = #hypothesis_falsified
+    admit Conclusion(conclusion, inquiry, conjecture, conclusion_class, statement, evidence_digest, published_at)
+    admit CurrentConclusion(inquiry, conclusion)
+    emit ConclusionPublished(conclusion)
+
+transformation supersede_conclusion(successor, prior, inquiry, conjecture, conclusion_class, statement, evidence_digest, published_at):
+    require supersede_prior_is_current: CurrentConclusion(inquiry, prior)
+    require supersede_conjecture_registered: Conjecture(conjecture, inquiry, _, _)
+    require supersede_successor_is_new: not Conclusion(successor, _, _, _, _, _, _)
+    require supersede_class_in_vocabulary: conclusion_class = #explained or conclusion_class = #partly_explained or conclusion_class = #publicly_unexplained or conclusion_class = #hypothesis_confirmed or conclusion_class = #hypothesis_falsified
+    admit Conclusion(successor, inquiry, conjecture, conclusion_class, statement, evidence_digest, published_at)
+    admit SupersedesConclusion(successor, prior)
+    retract CurrentConclusion(inquiry, prior)
+    admit CurrentConclusion(inquiry, successor)
+    emit ConclusionSuperseded(prior, successor)
+
+transformation draft_publication(publication, conclusion, medium, content_digest, drafted_at):
+    require draft_conclusion_is_current: CurrentConclusion(_, conclusion)
+    require draft_conclusion_has_metrics: ConclusionUsesMetric(conclusion, _)
+    require draft_is_new: not Publication(publication, _, _, _, _)
+    admit Publication(publication, conclusion, medium, content_digest, drafted_at)
+
+transformation approve_publication(publication, approved_at):
+    require approval_requires_authority: PublicationAuthority(actor)
+    require approval_publication_exists: Publication(publication, _, _, _, _)
+    require approval_is_new: not PublicationApproved(publication, _)
+    admit PublicationApproved(publication, approved_at)
+    emit PublicationAuthorised(publication)
+
+transformation record_v1_lineage(inquiry, v1_investigation):
+    require lineage_inquiry_exists: Inquiry(inquiry, _, _, _)
+    require lineage_is_new: not LineageFromV1(inquiry, v1_investigation)
+    admit LineageFromV1(inquiry, v1_investigation)

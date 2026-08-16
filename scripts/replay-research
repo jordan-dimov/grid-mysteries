@@ -32,6 +32,14 @@ echo "   $actual"
 
 echo "== offline evidence-pack verification (no database consulted)"
 morpholog audit verify-pack morpholog/evidence-pack.json --anchor-file morpholog/audit-anchor.json
+python3 -c "
+import json
+anchor = json.load(open('morpholog/audit-anchor.json'))
+signatures = anchor.get('signatures') or []
+if not signatures:
+    raise SystemExit('current anchor is unsigned; checkpoints must be signed with audit-2026')
+print(f'   anchor signed ({len(signatures)} signature, key_id {signatures[0].get(\"key_id\")})')
+"
 
 echo "== replaying proposal batches into a fresh database"
 morpholog init --database-url "$REPLAY_URL" --reset --i-know-this-deletes-data >/dev/null

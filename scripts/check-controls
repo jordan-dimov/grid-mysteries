@@ -1,0 +1,63 @@
+#!/usr/bin/env bash
+# Control tests for the v2 draft programme: prove the locks actually lock.
+#
+# Runs against a FRESH DISPOSABLE database (never the production record):
+# 1. replays morpholog/controls/setup.ndjson — every row must commit;
+# 2. replays morpholog/controls/violations.ndjson — every row must be
+#    REJECTED, and the refusing `rule` must match expected-rules.json
+#    exactly (assertions key on the stable `rule` field, never on prose).
+#
+# {SESSION_USER} in the setup batch is substituted with the connection's
+# actual session_user so the ActorAssertionAuthority claims bind to the
+# role actually running the test.
+set -euo pipefail
+cd "$(dirname "$0")/.."
+export PATH="${HOME}/.local/bin:${PATH}"
+
+CONTROLS_URL="${CONTROLS_DATABASE_URL:-postgres:///grid_mysteries_controls}"
+if [[ -z "${CONTROLS_DATABASE_URL:-}" ]]; then
+  createdb grid_mysteries_controls 2>/dev/null || true
+fi
+
+session_user=$(psql "$CONTROLS_URL" -tAc "select session_user")
+echo "== controls: fresh database (session_user=${session_user})"
+morpholog init --database-url "$CONTROLS_URL" --reset --i-know-this-deletes-data >/dev/null
+
+workdir=$(mktemp -d)
+trap 'rm -rf "$workdir"' EXIT
+sed "s/{SESSION_USER}/${session_user}/g" morpholog/controls/setup.ndjson > "$workdir/setup.ndjson"
+
+echo "== setup batch: every row must commit"
+morpholog propose morpholog/research-v2-draft.morph --batch "$workdir/setup.ndjson" \
+  --database-url "$CONTROLS_URL" | python3 -c "
+import json, sys
+rows = [json.loads(line) for line in sys.stdin if line.strip()]
+bad = [row for row in rows if row.get('status') != 'committed']
+if bad:
+    print(json.dumps(bad, indent=1))
+    raise SystemExit('controls setup: not every row committed')
+print(f'   {len(rows)} committed')
+"
+
+echo "== violations batch: every row must be refused by its named rule"
+morpholog propose morpholog/research-v2-draft.morph --batch morpholog/controls/violations.ndjson \
+  --database-url "$CONTROLS_URL" | python3 -c "
+import json, sys
+expected = json.load(open('morpholog/controls/expected-rules.json'))
+rows = [json.loads(line) for line in sys.stdin if line.strip()]
+failures = []
+for receipt in rows:
+    row_id = str(receipt.get('row'))
+    want = expected.get(row_id)
+    if receipt.get('status') != 'rejected':
+        failures.append(f'row {row_id}: expected rejection, got {receipt.get(\"status\")}')
+    elif receipt.get('rule') != want:
+        failures.append(f'row {row_id}: expected rule {want!r}, got {receipt.get(\"rule\")!r}')
+if len(rows) != len(expected):
+    failures.append(f'{len(rows)} receipts for {len(expected)} expected rows')
+if failures:
+    raise SystemExit('controls: LOCKS DID NOT LOCK\n' + '\n'.join(failures))
+print(f'   {len(rows)} refused, every rule as expected')
+"
+
+echo "check-controls: OK"

@@ -1,0 +1,25 @@
+{"transformation": "establish_governance", "actor": "jordan_dimov", "args_named": {"human_actor": "jordan_dimov", "human_login_role": "{SESSION_USER}", "machine_actor": "claude_fable_5", "machine_login_role": "{SESSION_USER}"}}
+{"transformation": "open_inquiry", "actor": "claude_fable_5", "args_named": {"inquiry": "inq-ctl-a", "kind": "method_study", "title": "control inquiry A", "opened_at": "2026-08-17T00:00:00Z"}}
+{"transformation": "declare_corpus", "actor": "claude_fable_5", "args_named": {"inquiry": "inq-ctl-a", "corpus": "corpus-a", "status": "consumed"}}
+{"transformation": "declare_protocol", "actor": "claude_fable_5", "args_named": {"inquiry": "inq-ctl-a", "protocol_digest": "digest-a", "declared_at": "2026-08-17T00:01:00Z"}}
+{"transformation": "seal_protocol", "actor": "jordan_dimov", "args_named": {"inquiry": "inq-ctl-a", "sealed_at": "2026-08-17T00:02:00Z"}}
+{"transformation": "register_evidence", "actor": "claude_fable_5", "args_named": {"artifact": "art-ctl-a", "source": "control", "sha256": "0000", "fetched_at": "2026-08-17T00:03:00Z"}}
+{"transformation": "attach_evidence", "actor": "claude_fable_5", "args_named": {"inquiry": "inq-ctl-a", "artifact": "art-ctl-a"}}
+{"transformation": "seal_evidence", "actor": "claude_fable_5", "args_named": {"inquiry": "inq-ctl-a", "sealed_at": "2026-08-17T00:04:00Z"}}
+{"transformation": "register_conjecture", "actor": "claude_fable_5", "args_named": {"conjecture": "conj-ctl-a", "inquiry": "inq-ctl-a", "statement": "control conjecture A", "proposed_at": "2026-08-17T00:05:00Z"}}
+{"transformation": "publish_conclusion", "actor": "claude_fable_5", "args_named": {"conclusion": "concl-a1", "inquiry": "inq-ctl-a", "conjecture": "conj-ctl-a", "conclusion_class": "hypothesis_confirmed", "statement": "control conclusion A1", "evidence_digest": "0000", "published_at": "2026-08-17T00:06:00Z"}}
+{"transformation": "supersede_conclusion", "actor": "claude_fable_5", "args_named": {"successor": "concl-a2", "prior": "concl-a1", "inquiry": "inq-ctl-a", "conjecture": "conj-ctl-a", "conclusion_class": "partly_explained", "statement": "control conclusion A2 supersedes A1", "evidence_digest": "0000", "published_at": "2026-08-17T00:07:00Z"}}
+{"transformation": "open_inquiry", "actor": "claude_fable_5", "args_named": {"inquiry": "inq-ctl-b", "kind": "descriptive", "title": "control inquiry B", "opened_at": "2026-08-17T00:08:00Z"}}
+{"transformation": "declare_protocol", "actor": "claude_fable_5", "args_named": {"inquiry": "inq-ctl-b", "protocol_digest": "digest-b", "declared_at": "2026-08-17T00:09:00Z"}}
+{"transformation": "seal_protocol", "actor": "jordan_dimov", "args_named": {"inquiry": "inq-ctl-b", "sealed_at": "2026-08-17T00:10:00Z"}}
+{"transformation": "attach_evidence", "actor": "claude_fable_5", "args_named": {"inquiry": "inq-ctl-b", "artifact": "art-ctl-a"}}
+{"transformation": "seal_evidence", "actor": "claude_fable_5", "args_named": {"inquiry": "inq-ctl-b", "sealed_at": "2026-08-17T00:11:00Z"}}
+{"transformation": "register_conjecture", "actor": "claude_fable_5", "args_named": {"conjecture": "conj-ctl-b", "inquiry": "inq-ctl-b", "statement": "control conjecture B", "proposed_at": "2026-08-17T00:12:00Z"}}
+{"transformation": "open_inquiry", "actor": "claude_fable_5", "args_named": {"inquiry": "inq-ctl-c", "kind": "prospective", "title": "control inquiry C", "opened_at": "2026-08-17T00:13:00Z"}}
+{"transformation": "declare_corpus", "actor": "claude_fable_5", "args_named": {"inquiry": "inq-ctl-c", "corpus": "corpus-c", "status": "consumed"}}
+{"transformation": "declare_protocol", "actor": "claude_fable_5", "args_named": {"inquiry": "inq-ctl-c", "protocol_digest": "digest-c", "declared_at": "2026-08-17T00:14:00Z"}}
+{"transformation": "seal_protocol", "actor": "jordan_dimov", "args_named": {"inquiry": "inq-ctl-c", "sealed_at": "2026-08-17T00:15:00Z"}}
+{"transformation": "attach_evidence", "actor": "claude_fable_5", "args_named": {"inquiry": "inq-ctl-c", "artifact": "art-ctl-a"}}
+{"transformation": "seal_evidence", "actor": "claude_fable_5", "args_named": {"inquiry": "inq-ctl-c", "sealed_at": "2026-08-17T00:16:00Z"}}
+{"transformation": "register_conjecture", "actor": "claude_fable_5", "args_named": {"conjecture": "conj-ctl-c", "inquiry": "inq-ctl-c", "statement": "control conjecture C", "proposed_at": "2026-08-17T00:17:00Z"}}
+{"transformation": "open_inquiry", "actor": "claude_fable_5", "args_named": {"inquiry": "inq-ctl-unsealed", "kind": "descriptive", "title": "control inquiry with no sealed protocol", "opened_at": "2026-08-17T00:18:00Z"}}

@@ -615,5 +615,22 @@
         "value": "2026-08-17T01:15:00Z"
       }
     ]
+  },
+  {
+    "predicate": "AuditSigningKey",
+    "args": [
+      {
+        "type": "subject",
+        "value": "audit-2026"
+      },
+      {
+        "type": "subject",
+        "value": "audit_checkpoint_v1"
+      },
+      {
+        "type": "subject",
+        "value": "ed25519-pub:cb6c6ce9152039914ac232b8302d0bc2f6b3f80d73623c5a358288993cc4ccf9"
+      }
+    ]
   }
 ]

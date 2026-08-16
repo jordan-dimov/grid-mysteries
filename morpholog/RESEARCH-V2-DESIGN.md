@@ -1,84 +1,91 @@
-# Research programme v2: the governed research state machine (design)
+# Research programme v2: the governed research state machine
 
-Status: **draft, not deployed**. `research-v2-draft.morph` is check-clean
-under the pinned Morpholog release; `research-v2-evaluate.json` scores it
-against the committed v1 history. The deployed programme remains
-`research.morph` (v1) until the migration decision below is taken.
+Status: **drafted, control-tested, not yet deployed.**
+`research-v2-draft.morph` is check-clean under the pinned release
+(fingerprint in `V2_DRAFT_HASH.json`) and its gates are exercised by
+negative tests (`controls/`, run by `scripts/check-controls` in CI
+against a disposable database: 25 lifecycle transitions must commit,
+8 violations must be refused by their exact named rules). The deployed
+programme remains `research.morph` (v1) until Investigation 002 opens.
 
-## Why v2
+## What v2 makes executable
 
-v1 records that research acts happened; the project's most distinctive
-claim — *the method was committed before the data was seen* — is enforced
-by git discipline and behaviour. v2 makes the lifecycle executable, so
-certain forms of retrospective cheating become structurally difficult:
+1. **Sealing authorises acquisition.** `seal_protocol` — gated by
+   `SealAuthority(actor)` — is the only emitter of
+   `DataAcquisitionAuthorised`. The fetcher consumes that intent through
+   Morpholog's outbox lease protocol (`outbox claim` →` fetch` → propose
+   the evidence manifest → `outbox complete`); delivery is at-least-once,
+   so the manifest-registering transformation is idempotent by gate.
+   Ordering is proven by audit-log sequence, never caller timestamps.
+2. **Human/machine separation is kernel-enforced, twice over.**
+   Authority claims (`SealAuthority`, `PublicationAuthority`, admitted
+   only for the human actor by the one-transition `establish_governance`
+   bootstrap) gate *what an actor may do*; the reserved
+   `ActorAssertionRestricted`/`ActorAssertionAuthority` claims bind *who
+   may assert an actor* to an exact PostgreSQL `session_user`. The
+   machine's connection must never hold the human's credential — the
+   adapter enforces policy, it does not prove authorship. Actor names are
+   underscore-form (`jordan_dimov`, `claude_fable_5`): `#` literals
+   cannot contain hyphens.
+3. **Quantitative claims are governed values.**
+   `EvidenceMetric(metric, evidence_digest, metric_name, metric_value)`
+   binds each number to a content-addressed artefact (bare `Decimal`,
+   unit encoded in the name — rates cross denominations, so quantity
+   kinds are deliberately not used); `ConclusionUsesMetric` ties them to
+   conclusions; `draft_publication` refuses a conclusion with no bound
+   metrics; CI recomputes metrics from artefacts and refuses drift. The
+   renderer reads governed values — prose never carries a number
+   authoritatively.
+4. **Standing is a pointer, not an edit.** Native three-predicate
+   supersession: append-only `Conclusion` (content), retractable
+   `CurrentConclusion` (`current pointer by (inquiry) superseded via
+   SupersedesConclusion`), and the lineage with a generated no-fork
+   invariant plus `unique by (successor_conclusion)`. "Current" is the
+   pointer claim, read positively; history answers "what did we conclude
+   on date X" via the audit log.
+5. **In-sample work is unpromotable.** `#method_study` inquiries with a
+   `#consumed` corpus can never yield a `#prospective`-grade conclusion
+   (`prospective_conclusion_needs_untouched_corpus`), and an
+   `#explained` conclusion requires an `#explained` mechanism assessment.
+6. **Publication is governed.** `draft_publication` (machine) requires a
+   current, metric-bound conclusion; `approve_publication` (human
+   authority) emits `PublicationAuthorised` — the renderer's only lawful
+   trigger.
+7. **Every gate is named**, so control tests and refusal receipts pin the
+   exact rule (`rule` field), never prose.
 
-1. **Sealing authorises acquisition.** `seal_protocol` is the only act
-   that emits `DataAcquisitionAuthorised`, and `attach_source` *requires*
-   a sealed protocol. The fetcher is triggered by the emitted intent
-   (Morpholog's outbox is the natural delivery path), and the fetch
-   tooling refuses to run without the authorisation. The audit sequence
-   then genuinely reads: protocol sealed → acquisition authorised →
-   evidence admitted → analysis authorised → finding.
-2. **Ordering is proven by audit-log sequence, never by timestamps.**
-   Caller-supplied `fetched_at`/`declared_at` values are recorded but
-   deliberately carry no invariant force: a dishonest client could fake
-   them, whereas it cannot fake its position in the Merkle-chained log.
-3. **Conclusion classes have governed semantics.** An `#explained`
-   finding requires at least one `#explained` mechanism assessment; a
-   `#publicly_unexplained` finding is refused if any mechanism is
-   assessed `#explained`; assessment statuses are restricted to the
-   five-word protocol vocabulary at the transformation gate.
-4. **In-sample work cannot be promoted.** Investigations carry a `kind`
-   (`#prospective` / `#descriptive` / `#method_study`) and a declared
-   `CorpusStatus`; a finding on a `#prospective` investigation is refused
-   unless its corpus was declared `#untouched`. Method studies stay
-   method studies forever.
-5. **Corrections are supersession, not annotation.** A finding is never
-   edited; `supersede_finding` admits a new finding and a
-   `SupersedesFinding` edge (each finding superseded at most once, so
-   standing forms a chain). "What did we conclude on 16 August?" and
-   "what do we conclude now?" are both answerable truthfully; the current
-   finding is the one nothing supersedes.
+## Deployment model: one database, one audit chain
 
-## Per-kind lifecycles
+v1 and v2 share the database and the Merkle-chained audit log — one
+public evidence pack spans both histories. The load-bearing rule:
+**vocabularies are fully disjoint** (v2's Inquiry/EvidenceArtifact/
+Conjecture/Conclusion vs v1's Investigation/SourceArtifact/Hypothesis/
+Finding), because a shared predicate name would be shared rows ungoverned
+by the other programme's rules. No programme identity exists in the
+database; `PROGRAMME_HASH.json` and `V2_DRAFT_HASH.json` are the
+out-of-band record. v1 is frozen at deployment (no new v1 proposals
+except audit-key rotation); v2 references v1 subjects by UUID via
+`LineageFromV1` — deliberately claims about prior subjects, not imports.
 
-The v2 skeleton enforces the shared spine (declare → seal → acquire →
-seal evidence → analyse → publish). Kind-specific orderings — e.g. a
-prospective test requiring the hypothesis to be registered *before*
-`seal_protocol`, or a descriptive search requiring `record_selection`
-before its explanation-protocol seal — are phase-2 refinements, added as
-gates on the existing transformations once Investigation 002 exercises
-the spine. Deliberately not speculated into the draft.
+## Audit signing
 
-## What `evaluate` says about v1 history
-
-Replaying the 12 committed v1 transitions under v2's invariants
-(`research-v2-evaluate.json`): `attached_source_has_sealed_protocol`
-would have refused 1 transition, and `hypothesis_has_investigation`
-1 more (v2's four-field `Investigation` does not match v1's three-field
-claims). That is the honest statement that **v1 history does not satisfy
-the v2 lifecycle** — as expected, since sealing did not exist.
-
-Migration therefore has two defensible options:
-
-- **A (preferred): fresh start.** Deploy v2 for Investigation 002
-  onward in a new programme; v1 claims remain governed by v1, replayable
-  and audit-anchored exactly as today. No history is rewritten, and the
-  earliest v2 investigation is the first with machine-enforced
-  pre-registration.
-- **B: backfill.** Re-admit v1 history under v2 with synthetic
-  `ProtocolDeclared`/`ProtocolSealed` claims dated by the git evidence.
-  Rejected for now: it would fabricate lifecycle acts that never ran
-  through the kernel, which is the exact behaviour v2 exists to prevent.
+Checkpoints are signed (Ed25519, key `audit-2026`; private key outside
+the repo, public key authorised by the governed `AuditSigningKey` claim
+and embedded in each checkpoint). Verification is fully offline from a
+prefix pack. Checkpoints before tree_size 34 predate the key and are
+unsigned — recorded honestly; `scripts/replay-research` requires the
+*current* anchor to be signed.
 
 ## Adoption plan
 
-1. Investigation 002 (earliest legitimate start: ~2026-08-21) opens under
-   v2 as `#prospective`-style descriptive search with `CorpusStatus
-   #untouched`.
-2. The 002 fetch tooling consumes `DataAcquisitionAuthorised` (outbox or
-   a pre-flight `morpholog inspect` check) and refuses to run without it.
-3. `scripts/replay-research` grows a second programme section (v2 batches
-   replayed under the v2 hash) alongside v1.
-4. After 002 lands, revisit the phase-2 kind-specific gates with real
-   usage behind them.
+1. Investigation 002 (earliest legitimate start ~2026-08-21) opens under
+   v2: `establish_governance` first (human PG role's credential withheld
+   from the machine), then open → declare corpus `#untouched` → declare
+   protocol → **human seals** → outbox-authorised fetch → evidence seal →
+   selection → assessments → conclusion with bound metrics → drafted
+   publication → **human approves**.
+2. The 002 pipeline adopts `generate python-client` (same CLI path, typed
+   models, `--check` drift gate) instead of hand-rolled shelling, and
+   `scripts/record` (recoverable, fail-loud) remains the only way the
+   repo-side record artefacts are updated.
+3. Kind-specific lifecycle refinements wait for real usage.

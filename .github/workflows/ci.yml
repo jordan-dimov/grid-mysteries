@@ -38,3 +38,9 @@ jobs:
       - env:
           REPLAY_DATABASE_URL: postgres://postgres:postgres@localhost:5432/grid_mysteries_replay
         run: ./scripts/replay-research
+      - env:
+          PGPASSWORD: postgres
+        run: createdb -h localhost -U postgres grid_mysteries_controls
+      - env:
+          CONTROLS_DATABASE_URL: postgres://postgres:postgres@localhost:5432/grid_mysteries_controls
+        run: ./scripts/check-controls

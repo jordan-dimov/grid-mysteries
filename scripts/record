@@ -1,0 +1,58 @@
+#!/usr/bin/env bash
+# The one safe way to extend the governed record.
+#
+#   scripts/record <batch-file-basename> '<ndjson-proposal-row>'
+#
+# Proposes the row against the production database ONCE, and only if it
+# commits: appends it to morpholog/batches/<basename>, refreshes the
+# claims export, records a SIGNED checkpoint, re-exports the evidence
+# pack, and verifies everything. Git and PostgreSQL cannot be made
+# transactionally atomic, so this is recoverable and fail-loud instead:
+# if any step AFTER the committed proposal fails, a recovery marker is
+# left at morpholog/.record-recovery and the script exits non-zero.
+# NEVER retry a proposal whose outcome is uncertain — inspect the
+# marker, confirm state with `morpholog inspect claims`, and finish the
+# remaining steps by hand (they are all idempotent re-derivations).
+set -euo pipefail
+cd "$(dirname "$0")/.."
+export PATH="${HOME}/.local/bin:${PATH}"
+export DATABASE_URL="${DATABASE_URL:-postgres:///grid_mysteries_morpholog}"
+
+BATCH_FILE="morpholog/batches/$1"
+ROW="$2"
+MARKER="morpholog/.record-recovery"
+SIGNING_KEY="${AUDIT_SIGNING_KEY:-$HOME/.config/grid-mysteries/audit-signing-2026.pem}"
+
+if [[ -e "$MARKER" ]]; then
+  echo "record: recovery marker exists ($MARKER); resolve it before recording" >&2
+  exit 1
+fi
+python3 - "$ROW" <<'EOF'
+import json, sys
+row = json.loads(sys.argv[1])
+assert {"transformation", "actor", "args_named"} <= row.keys(), "row must carry transformation/actor/args_named"
+EOF
+
+printf '%s\n' "$ROW" > "$MARKER"
+tmp=$(mktemp)
+printf '%s\n' "$ROW" > "$tmp"
+
+receipt=$(morpholog propose morpholog/research.morph --batch "$tmp" --explain-on-reject)
+rm -f "$tmp"
+status=$(printf '%s' "$receipt" | python3 -c "import json,sys; print(json.loads(sys.stdin.readline())['status'])")
+if [[ "$status" != "committed" ]]; then
+  rm -f "$MARKER"
+  echo "record: proposal was ${status} (a lawful answer, nothing to clean up):" >&2
+  printf '%s\n' "$receipt" >&2
+  exit 1
+fi
+
+# The proposal is committed; every remaining step must succeed or leave
+# the marker in place for manual recovery.
+printf '%s\n' "$ROW" >> "$BATCH_FILE"
+morpholog inspect claims > morpholog/claims-export.json
+morpholog audit checkpoint --signing-key "$SIGNING_KEY" --key-id audit-2026 > morpholog/audit-anchor.json
+morpholog audit export > morpholog/evidence-pack.json
+morpholog audit verify-pack morpholog/evidence-pack.json --anchor-file morpholog/audit-anchor.json >/dev/null
+rm -f "$MARKER"
+echo "record: committed and recorded in $BATCH_FILE (remember to commit the morpholog/ changes)"

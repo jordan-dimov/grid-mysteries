@@ -1,0 +1,118 @@
+{
+  "score_format_version": 1,
+  "semantics": "fresh_state_violation_v1",
+  "program": "grid_mysteries_research_v2",
+  "program_hash": "sha256:a45cfb42f911d419439c56cec08459dac49f583f32e8b7e126751b1276c0166c",
+  "transitions_replayed": 12,
+  "invariants": [
+    {
+      "invariant": "corpus_has_investigation",
+      "version": 1,
+      "initially_holds": true,
+      "would_refuse": 0,
+      "refused_transitions": []
+    },
+    {
+      "invariant": "sealed_protocol_was_declared",
+      "version": 1,
+      "initially_holds": true,
+      "would_refuse": 0,
+      "refused_transitions": []
+    },
+    {
+      "invariant": "attached_source_exists",
+      "version": 1,
+      "initially_holds": true,
+      "would_refuse": 0,
+      "refused_transitions": []
+    },
+    {
+      "invariant": "attached_source_has_sealed_protocol",
+      "version": 1,
+      "initially_holds": true,
+      "would_refuse": 1,
+      "refused_transitions": [
+        "01a00c31-d3d3-7881-afbb-aa327505467b"
+      ]
+    },
+    {
+      "invariant": "sealed_evidence_has_source",
+      "version": 1,
+      "initially_holds": true,
+      "would_refuse": 0,
+      "refused_transitions": []
+    },
+    {
+      "invariant": "selection_has_sealed_evidence",
+      "version": 1,
+      "initially_holds": true,
+      "would_refuse": 0,
+      "refused_transitions": []
+    },
+    {
+      "invariant": "hypothesis_has_investigation",
+      "version": 1,
+      "initially_holds": true,
+      "would_refuse": 1,
+      "refused_transitions": [
+        "01a00c28-d22f-7c70-bc85-97ff5cc5f047"
+      ]
+    },
+    {
+      "invariant": "assessment_has_sealed_evidence",
+      "version": 1,
+      "initially_holds": true,
+      "would_refuse": 0,
+      "refused_transitions": []
+    },
+    {
+      "invariant": "finding_has_registered_hypothesis",
+      "version": 1,
+      "initially_holds": true,
+      "would_refuse": 0,
+      "refused_transitions": []
+    },
+    {
+      "invariant": "finding_has_sealed_evidence",
+      "version": 1,
+      "initially_holds": true,
+      "would_refuse": 0,
+      "refused_transitions": []
+    },
+    {
+      "invariant": "explained_finding_has_explained_mechanism",
+      "version": 1,
+      "initially_holds": true,
+      "would_refuse": 0,
+      "refused_transitions": []
+    },
+    {
+      "invariant": "unexplained_finding_has_no_explained_mechanism",
+      "version": 1,
+      "initially_holds": true,
+      "would_refuse": 0,
+      "refused_transitions": []
+    },
+    {
+      "invariant": "prospective_finding_needs_untouched_corpus",
+      "version": 1,
+      "initially_holds": true,
+      "would_refuse": 0,
+      "refused_transitions": []
+    },
+    {
+      "invariant": "superseding_finding_exists",
+      "version": 1,
+      "initially_holds": true,
+      "would_refuse": 0,
+      "refused_transitions": []
+    },
+    {
+      "invariant": "superseded_finding_exists",
+      "version": 1,
+      "initially_holds": true,
+      "would_refuse": 0,
+      "refused_transitions": []
+    }
+  ]
+}

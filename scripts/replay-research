@@ -1,0 +1,69 @@
+#!/usr/bin/env bash
+# Rebuild and verify the governed research record from the repository alone.
+#
+# 1. The programme fingerprint must match the pinned PROGRAMME_HASH.json.
+# 2. The committed evidence pack must verify OFFLINE against the committed
+#    anchor (no database consulted) — this is the third-party check.
+# 3. The checked-in proposal batches replay into a fresh database under the
+#    programme's rules; every row must commit.
+# 4. The replayed claims must equal the committed claims export.
+# 5. The replayed database's audit log must self-verify.
+#
+# Requires PostgreSQL. Override REPLAY_DATABASE_URL to point elsewhere
+# (e.g. a CI service container); by default a local scratch database is
+# created. The replay database is DESTROYED AND RECREATED each run.
+set -euo pipefail
+cd "$(dirname "$0")/.."
+export PATH="${HOME}/.local/bin:${PATH}"
+
+REPLAY_URL="${REPLAY_DATABASE_URL:-postgres:///grid_mysteries_replay}"
+if [[ -z "${REPLAY_DATABASE_URL:-}" ]]; then
+  createdb grid_mysteries_replay 2>/dev/null || true
+fi
+
+echo "== programme hash"
+expected=$(python3 -c "import json; print(json.load(open('morpholog/PROGRAMME_HASH.json'))['hash'])")
+actual=$(morpholog hash morpholog/research.morph | python3 -c "import json,sys; print(json.load(sys.stdin)['hash'])")
+if [[ "$expected" != "$actual" ]]; then
+  echo "programme hash mismatch: pinned $expected, actual $actual" >&2
+  exit 1
+fi
+echo "   $actual"
+
+echo "== offline evidence-pack verification (no database consulted)"
+morpholog audit verify-pack morpholog/evidence-pack.json --anchor-file morpholog/audit-anchor.json
+
+echo "== replaying proposal batches into a fresh database"
+morpholog init --database-url "$REPLAY_URL" --reset --i-know-this-deletes-data >/dev/null
+for batch in morpholog/batches/*.ndjson; do
+  echo "   $batch"
+  morpholog propose morpholog/research.morph --batch "$batch" --database-url "$REPLAY_URL" \
+    | python3 -c "
+import json, sys
+rows = [json.loads(line) for line in sys.stdin if line.strip()]
+bad = [row for row in rows if row.get('status') != 'committed']
+if bad:
+    print(json.dumps(bad, indent=1))
+    raise SystemExit('replay: not every proposal committed')
+print(f'     {len(rows)} committed')
+"
+done
+
+echo "== replayed claims must equal the committed export"
+morpholog inspect claims --database-url "$REPLAY_URL" | python3 -c "
+import json, sys
+
+def key(claim):
+    return (claim['predicate'], tuple(json.dumps(a, sort_keys=True) for a in claim['args']))
+
+replayed = sorted(key(c) for c in json.load(sys.stdin))
+committed = sorted(key(c) for c in json.load(open('morpholog/claims-export.json')))
+if replayed != committed:
+    raise SystemExit('replayed claims differ from morpholog/claims-export.json')
+print(f'   {len(replayed)} claims identical')
+"
+
+echo "== replayed audit log self-verification"
+morpholog audit verify --database-url "$REPLAY_URL"
+
+echo "replay-research: OK"

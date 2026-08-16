@@ -1,0 +1,169 @@
+-- DRAFT v2 of the Grid Mysteries research programme. NOT DEPLOYED.
+--
+-- v1 records that research acts happened. v2 makes the research lifecycle
+-- executable: sealing a protocol is the only act that authorises data
+-- acquisition (the emitted intent is the fetcher's trigger), evidence can
+-- only attach after that seal, and conclusion classes carry governed
+-- semantics. Ordering is proven by audit-log sequence, never by
+-- caller-supplied timestamps. See RESEARCH-V2-DESIGN.md.
+
+program grid_mysteries_research_v2
+
+-- kind: #prospective | #descriptive | #method_study
+predicate Investigation(investigation: Subject, kind: Subject, title: Subject, opened_at: Timestamp)
+    append only
+-- status: #untouched | #consumed (declared at opening, before any data act)
+predicate CorpusStatus(investigation: Subject, corpus: Subject, status: Subject)
+    append only
+predicate ProtocolDeclared(investigation: Subject, protocol_digest: Subject, declared_at: Timestamp)
+    append only
+predicate ProtocolSealed(investigation: Subject, sealed_at: Timestamp)
+    append only
+predicate SourceArtifact(artifact: Subject, source: Subject, sha256: Subject, fetched_at: Timestamp)
+    append only
+predicate InvestigationUses(investigation: Subject, artifact: Subject)
+    append only
+predicate EvidenceSealed(investigation: Subject, sealed_at: Timestamp)
+    append only
+predicate SelectionRecorded(investigation: Subject, selection_digest: Subject, recorded_at: Timestamp)
+    append only
+predicate Hypothesis(hypothesis: Subject, investigation: Subject, statement: Subject, proposed_at: Timestamp)
+    append only
+-- status: #explained | #contributes | #ruled_out | #compatible_but_unproven | #not_publicly_observable
+predicate MechanismAssessment(investigation: Subject, mechanism: Subject, status: Subject, evidence_digest: Subject)
+    append only
+-- conclusion_class: #explained | #partly_explained | #publicly_unexplained
+--                 | #hypothesis_confirmed | #hypothesis_falsified
+predicate Finding(finding: Subject, investigation: Subject, hypothesis: Subject, conclusion_class: Subject, conclusion: Subject, evidence_digest: Subject, published_at: Timestamp)
+    append only
+-- A finding is never edited; its standing is superseded. The current
+-- finding of an investigation is the one no SupersedesFinding names as
+-- prior.
+predicate SupersedesFinding(new_finding: Subject, prior_finding: Subject)
+    append only
+
+intent InvestigationOpened(investigation: Subject)
+intent DataAcquisitionAuthorised(investigation: Subject)
+intent AnalysisAuthorised(investigation: Subject)
+intent HypothesisRegistered(hypothesis: Subject)
+intent FindingPublished(finding: Subject)
+intent FindingSuperseded(prior_finding: Subject, new_finding: Subject)
+
+invariant corpus_has_investigation:
+    CorpusStatus(i, _, _) implies Investigation(i, _, _, _)
+
+invariant sealed_protocol_was_declared:
+    ProtocolSealed(i, _) implies ProtocolDeclared(i, _, _)
+
+invariant attached_source_exists:
+    InvestigationUses(i, a) implies SourceArtifact(a, _, _, _)
+
+invariant attached_source_has_sealed_protocol:
+    InvestigationUses(i, _) implies ProtocolSealed(i, _)
+
+invariant sealed_evidence_has_source:
+    EvidenceSealed(i, _) implies InvestigationUses(i, _)
+
+invariant selection_has_sealed_evidence:
+    SelectionRecorded(i, _, _) implies EvidenceSealed(i, _)
+
+invariant hypothesis_has_investigation:
+    Hypothesis(_, i, _, _) implies Investigation(i, _, _, _)
+
+invariant assessment_has_sealed_evidence:
+    MechanismAssessment(i, _, _, _) implies EvidenceSealed(i, _)
+
+invariant finding_has_registered_hypothesis:
+    Finding(_, i, h, _, _, _, _) implies Hypothesis(h, i, _, _)
+
+invariant finding_has_sealed_evidence:
+    Finding(_, i, _, _, _, _, _) implies EvidenceSealed(i, _)
+
+invariant explained_finding_has_explained_mechanism:
+    Finding(_, i, _, #explained, _, _, _) implies MechanismAssessment(i, _, #explained, _)
+
+invariant unexplained_finding_has_no_explained_mechanism:
+    Finding(_, i, _, #publicly_unexplained, _, _, _) implies not MechanismAssessment(i, _, #explained, _)
+
+invariant prospective_finding_needs_untouched_corpus:
+    Finding(_, i, _, _, _, _, _) and Investigation(i, #prospective, _, _) implies CorpusStatus(i, _, #untouched)
+
+invariant superseding_finding_exists:
+    SupersedesFinding(n, _) implies Finding(n, _, _, _, _, _, _)
+
+invariant superseded_finding_exists:
+    SupersedesFinding(_, p) implies Finding(p, _, _, _, _, _, _)
+
+transformation open_investigation(investigation, kind, title, opened_at):
+    require not Investigation(investigation, _, _, _)
+    require kind = #prospective or kind = #descriptive or kind = #method_study
+    admit Investigation(investigation, kind, title, opened_at)
+    emit InvestigationOpened(investigation)
+
+transformation declare_corpus(investigation, corpus, status):
+    require Investigation(investigation, _, _, _)
+    require status = #untouched or status = #consumed
+    require not CorpusStatus(investigation, corpus, _)
+    admit CorpusStatus(investigation, corpus, status)
+
+transformation declare_protocol(investigation, protocol_digest, declared_at):
+    require Investigation(investigation, _, _, _)
+    require not ProtocolSealed(investigation, _)
+    admit ProtocolDeclared(investigation, protocol_digest, declared_at)
+
+transformation seal_protocol(investigation, sealed_at):
+    require ProtocolDeclared(investigation, _, _)
+    require not ProtocolSealed(investigation, _)
+    admit ProtocolSealed(investigation, sealed_at)
+    emit DataAcquisitionAuthorised(investigation)
+
+transformation register_source(artifact, source, sha256, fetched_at):
+    require not SourceArtifact(artifact, _, _, _)
+    admit SourceArtifact(artifact, source, sha256, fetched_at)
+
+transformation attach_source(investigation, artifact):
+    require ProtocolSealed(investigation, _)
+    require SourceArtifact(artifact, _, _, _)
+    require not InvestigationUses(investigation, artifact)
+    admit InvestigationUses(investigation, artifact)
+
+transformation seal_evidence(investigation, sealed_at):
+    require ProtocolSealed(investigation, _)
+    require InvestigationUses(investigation, _)
+    require not EvidenceSealed(investigation, _)
+    admit EvidenceSealed(investigation, sealed_at)
+    emit AnalysisAuthorised(investigation)
+
+transformation record_selection(investigation, selection_digest, recorded_at):
+    require EvidenceSealed(investigation, _)
+    require not SelectionRecorded(investigation, _, _)
+    admit SelectionRecorded(investigation, selection_digest, recorded_at)
+
+transformation register_hypothesis(hypothesis, investigation, statement, proposed_at):
+    require Investigation(investigation, _, _, _)
+    require not Hypothesis(hypothesis, _, _, _)
+    admit Hypothesis(hypothesis, investigation, statement, proposed_at)
+    emit HypothesisRegistered(hypothesis)
+
+transformation assess_mechanism(investigation, mechanism, status, evidence_digest):
+    require EvidenceSealed(investigation, _)
+    require status = #explained or status = #contributes or status = #ruled_out or status = #compatible_but_unproven or status = #not_publicly_observable
+    require not MechanismAssessment(investigation, mechanism, _, _)
+    admit MechanismAssessment(investigation, mechanism, status, evidence_digest)
+
+transformation publish_finding(finding, investigation, hypothesis, conclusion_class, conclusion, evidence_digest, published_at):
+    require Hypothesis(hypothesis, investigation, _, _)
+    require EvidenceSealed(investigation, _)
+    require not Finding(finding, _, _, _, _, _, _)
+    require conclusion_class = #explained or conclusion_class = #partly_explained or conclusion_class = #publicly_unexplained or conclusion_class = #hypothesis_confirmed or conclusion_class = #hypothesis_falsified
+    admit Finding(finding, investigation, hypothesis, conclusion_class, conclusion, evidence_digest, published_at)
+    emit FindingPublished(finding)
+
+transformation supersede_finding(new_finding, prior_finding, investigation, hypothesis, conclusion_class, conclusion, evidence_digest, published_at):
+    require Finding(prior_finding, investigation, _, _, _, _, _)
+    require Hypothesis(hypothesis, investigation, _, _)
+    require not Finding(new_finding, _, _, _, _, _, _)
+    require not SupersedesFinding(_, prior_finding)
+    admit Finding(new_finding, investigation, hypothesis, conclusion_class, conclusion, evidence_digest, published_at)
+    admit SupersedesFinding(new_finding, prior_finding)
+    emit FindingSuperseded(prior_finding, new_finding)

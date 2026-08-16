@@ -1,0 +1,7 @@
+{
+  "status": "created",
+  "tree_size": 12,
+  "root_hash": "sha256:5979aedec89cc0fca85438ad6b70c893b30a8ebd58f2595a7a0a043f20bf9130",
+  "prev_checkpoint_hash": null,
+  "checkpoint_hash": "sha256:1c1258ff5c56230b458eaa9e433ee66afe6de840f6d70a53699e70d9d32eaf08"
+}

@@ -162,12 +162,26 @@ def find_inversion_candidates(
     min_accepted_mwh: Decimal = DEFAULT_MIN_ACCEPTED_MWH,
     min_available_mw: Decimal = DEFAULT_MIN_AVAILABLE_MW,
 ) -> list[InversionCandidate]:
-    """Enumerate apparent inversions for one settlement period and direction."""
-    accepted_volume_by_pair = {(a.bm_unit, a.pair_id): a.volume_mwh for a in accepted}
+    """Enumerate apparent inversions for one settlement period and direction.
+
+    Duplicate accepted entries for one (unit, pair) are summed — volumes
+    are additive MWh — so the result never depends on input order. (The
+    pinned corpus contains no such duplicates, verified across all 672
+    period-directions; this closes a contract hole found by
+    property-based testing, not a results error.)
+    """
+    accepted_volume_by_pair: dict[tuple[str, int], Decimal] = {}
+    for a in accepted:
+        key = (a.bm_unit, a.pair_id)
+        accepted_volume_by_pair[key] = accepted_volume_by_pair.get(key, Decimal(0)) + a.volume_mwh
     accepted_units_pairs = {
         key for key, volume in accepted_volume_by_pair.items() if abs(volume) >= min_accepted_mwh
     }
     price_by_pair = {(p.bm_unit, p.pair_id): p for p in submitted}
+    if len(price_by_pair) != len(submitted):
+        raise ValueError(
+            "submitted pairs must be unique per (unit, pair); build them with submitted_pairs()"
+        )
 
     # A pair is unaccepted only if its accepted volume is absent or exactly
     # zero; volumes below the de-minimis threshold qualify as neither side.

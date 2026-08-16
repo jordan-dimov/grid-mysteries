@@ -17,6 +17,7 @@ grid-mysteries = "grid_mysteries.cli:app"
 
 [dependency-groups]
 dev = [
+    "hypothesis>=6.165.9",
     "pytest>=8.4",
     "ruff>=0.12",
 ]

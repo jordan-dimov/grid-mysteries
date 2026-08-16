@@ -1,0 +1,238 @@
+[
+  {
+    "predicate": "Investigation",
+    "args": [
+      {
+        "type": "subject",
+        "value": "inv-001-largest-apparent-inversion"
+      },
+      {
+        "type": "subject",
+        "value": "The week 2026-08-04..2026-08-10 largest apparent BOD price-order inversion"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-08-16T20:10:00Z"
+      }
+    ]
+  },
+  {
+    "predicate": "Hypothesis",
+    "args": [
+      {
+        "type": "subject",
+        "value": "hyp-001-null-public-explainability"
+      },
+      {
+        "type": "subject",
+        "value": "inv-001-largest-apparent-inversion"
+      },
+      {
+        "type": "subject",
+        "value": "The apparent price-order inversion selected by the pre-declared procedure in investigations/001-largest-apparent-inversion can be fully explained from publicly available information."
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-08-16T20:12:00Z"
+      }
+    ]
+  },
+  {
+    "predicate": "SourceArtifact",
+    "args": [
+      {
+        "type": "subject",
+        "value": "art-001-window-manifest"
+      },
+      {
+        "type": "subject",
+        "value": "elexon-insights via investigations/001-largest-apparent-inversion/evidence/manifest.json"
+      },
+      {
+        "type": "subject",
+        "value": "79780efae81cb03b10d7e867b2e509eed3f7a7bf87e70d80f0a50f6f3b0ae784"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-08-16T20:22:00Z"
+      }
+    ]
+  },
+  {
+    "predicate": "InvestigationUses",
+    "args": [
+      {
+        "type": "subject",
+        "value": "inv-001-largest-apparent-inversion"
+      },
+      {
+        "type": "subject",
+        "value": "art-001-window-manifest"
+      }
+    ]
+  },
+  {
+    "predicate": "SourceArtifact",
+    "args": [
+      {
+        "type": "subject",
+        "value": "art-001-case-manifest"
+      },
+      {
+        "type": "subject",
+        "value": "elexon-insights via investigations/001-largest-apparent-inversion/evidence/case-manifest.json"
+      },
+      {
+        "type": "subject",
+        "value": "7b61f4840ab66ec3f321c711b0fa7a084a89545fb52b039c4d1ac55d4a4b0285"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-08-16T20:34:00Z"
+      }
+    ]
+  },
+  {
+    "predicate": "InvestigationUses",
+    "args": [
+      {
+        "type": "subject",
+        "value": "inv-001-largest-apparent-inversion"
+      },
+      {
+        "type": "subject",
+        "value": "art-001-case-manifest"
+      }
+    ]
+  },
+  {
+    "predicate": "Finding",
+    "args": [
+      {
+        "type": "subject",
+        "value": "fnd-001-explained"
+      },
+      {
+        "type": "subject",
+        "value": "inv-001-largest-apparent-inversion"
+      },
+      {
+        "type": "subject",
+        "value": "hyp-001-null-public-explainability"
+      },
+      {
+        "type": "subject",
+        "value": "EXPLAINED: the selected apparent inversion (2026-08-06 SP29, bid; T_LARYW-1 accepted at -179.76 GBP/MWh vs E_RHEI-1 unaccepted at +9949 GBP/MWh) is fully accounted for by zero deliverable bid volume on the unaccepted side (FPN=0, MELS=0, demand capacity 0). The null hypothesis survives. SO-flagged acceptance documents a system-driven curtailment."
+      },
+      {
+        "type": "subject",
+        "value": "28a2dfc038fa309f3dbfd041f8c009bc8706639d5607b91926c386f02bfeb5c9"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-08-16T20:40:00Z"
+      }
+    ]
+  },
+  {
+    "predicate": "Investigation",
+    "args": [
+      {
+        "type": "subject",
+        "value": "ms-001-phantom-liquidity"
+      },
+      {
+        "type": "subject",
+        "value": "Method Study 001: phantom liquidity in GB BM data (retrospective, corpus 2026-08-04..10)"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-08-16T21:05:00Z"
+      }
+    ]
+  },
+  {
+    "predicate": "Hypothesis",
+    "args": [
+      {
+        "type": "subject",
+        "value": "hyp-ms-001-majority-non-deliverable"
+      },
+      {
+        "type": "subject",
+        "value": "ms-001-phantom-liquidity"
+      },
+      {
+        "type": "subject",
+        "value": "In the 2026-08-04..2026-08-10 corpus, more than half of raw pairwise price-order inversions involve an unaccepted alternative that is clearly non-deliverable under the conservative public physical-state bound declared in METHOD-STUDY-001.md."
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-08-16T21:05:00Z"
+      }
+    ]
+  },
+  {
+    "predicate": "SourceArtifact",
+    "args": [
+      {
+        "type": "subject",
+        "value": "art-ms-001-physical-manifest"
+      },
+      {
+        "type": "subject",
+        "value": "elexon-insights via investigations/method-study-001-phantom-liquidity/evidence/physical-manifest.json"
+      },
+      {
+        "type": "subject",
+        "value": "56d4ac96ad2e9e2e24666e7695f73f31c8401b0fef737a99c9132ed30a2fe4de"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-08-16T21:31:00Z"
+      }
+    ]
+  },
+  {
+    "predicate": "InvestigationUses",
+    "args": [
+      {
+        "type": "subject",
+        "value": "ms-001-phantom-liquidity"
+      },
+      {
+        "type": "subject",
+        "value": "art-ms-001-physical-manifest"
+      }
+    ]
+  },
+  {
+    "predicate": "Finding",
+    "args": [
+      {
+        "type": "subject",
+        "value": "fnd-ms-001-majority-phantom"
+      },
+      {
+        "type": "subject",
+        "value": "ms-001-phantom-liquidity"
+      },
+      {
+        "type": "subject",
+        "value": "hyp-ms-001-majority-non-deliverable"
+      },
+      {
+        "type": "subject",
+        "value": "CONFIRMED: 67.3 percent of the 3,856,031 raw pairwise price-order inversions in the 2026-08-04..10 corpus (2,595,381) involve an alternative provably non-deliverable under the pre-declared conservative public physical-state bound; these collapse to 76,289 of 158,953 unique alternatives (48.0 percent). The residual (1,260,650 pairwise; 82,664 unique) SURVIVES the checks applied and is not thereby evidence of dispatch error."
+      },
+      {
+        "type": "subject",
+        "value": "2d31d4ca28a07f5ae3ded688fe42f42cc5b891685556517dd62f1593447d9d13"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-08-16T21:55:00Z"
+      }
+    ]
+  }
+]

@@ -1,0 +1,310 @@
+{
+ "corpus": {
+  "window": [
+   "2026-08-04",
+   "2026-08-10"
+  ],
+  "periods": 336
+ },
+ "funnel": {
+  "f1_raw_pairwise_inversions": 3856031,
+  "f1_by_direction": {
+   "offer": 1837495,
+   "bid": 2018536
+  },
+  "f2_episodes": 564,
+  "f3_unique_alternatives": 158953,
+  "f6_non_deliverable_alternatives": 76289,
+  "f6_pairwise_inversions_carried": 2595381,
+  "f7_residual_alternatives": 82664,
+  "f7_residual_pairwise_inversions": 1260650,
+  "f7_residual_episodes": 561
+ },
+ "f4_concentration": {
+  "n_groups": 63009,
+  "cumulative_share_of_f1_at_group_rank": {
+   "1": 0.007099009318130482,
+   "2": 0.01197059878408654,
+   "3": 0.015821708902236522,
+   "4": 0.01944330841738565,
+   "5": 0.023064907932534774,
+   "6": 0.026686507447683902,
+   "7": 0.030308106962833026,
+   "8": 0.033821045525826945,
+   "9": 0.037310125359469364,
+   "10": 0.040799205193111775,
+   "12": 0.04777736486039661,
+   "15": 0.05819766490466493,
+   "18": 0.06791335443101988,
+   "22": 0.07973924483490927,
+   "26": 0.09152441979849228,
+   "32": 0.10920218224386681,
+   "38": 0.12681796385973038,
+   "46": 0.14995470731433436,
+   "56": 0.1751552308578432,
+   "68": 0.19927796223629946,
+   "83": 0.2239904191641613,
+   "100": 0.24600320899909778,
+   "121": 0.268372064436204,
+   "147": 0.2902380712188258,
+   "178": 0.3109912757444118,
+   "215": 0.33286635921754776,
+   "261": 0.35689858302487715,
+   "316": 0.3802311236605722,
+   "383": 0.40553071279769276,
+   "464": 0.42960987606168105,
+   "562": 0.45255678701753177,
+   "681": 0.47421273324825447,
+   "825": 0.49432719809565845,
+   "1000": 0.5134875731030171,
+   "1212": 0.532306923881058,
+   "1468": 0.5506654381149944,
+   "1778": 0.5695747777961329,
+   "2154": 0.5893868591824081,
+   "2610": 0.6100594108294254,
+   "3162": 0.6318847021717409,
+   "3831": 0.6553349804501053,
+   "4642": 0.6805095705921451,
+   "5623": 0.7074133999441394,
+   "6813": 0.735849893322953,
+   "8254": 0.7656411475945084,
+   "10000": 0.7969562485363837,
+   "12115": 0.8282425634026283,
+   "14678": 0.8596460972435128,
+   "17783": 0.8899207501184508,
+   "21544": 0.9177802253145786,
+   "26102": 0.9415961645536564,
+   "31623": 0.9618511884370224,
+   "38312": 0.978267290900929,
+   "46416": 0.990448468904944,
+   "56234": 0.9977720614797962,
+   "63009": 1.0
+  },
+  "top20": [
+   {
+    "bm_unit": "2__NSTAT004",
+    "price": "55.70",
+    "direction": "offer",
+    "count": 27374
+   },
+   {
+    "bm_unit": "E_MARK-1",
+    "price": "80.00",
+    "direction": "offer",
+    "count": 18785
+   },
+   {
+    "bm_unit": "E_RHEI-1",
+    "price": "9949.00",
+    "direction": "bid",
+    "count": 14850
+   },
+   {
+    "bm_unit": "V__HADEL002",
+    "price": "0.00",
+    "direction": "offer",
+    "count": 13965
+   },
+   {
+    "bm_unit": "T_DRAXX-5",
+    "price": "0.00",
+    "direction": "offer",
+    "count": 13965
+   },
+   {
+    "bm_unit": "T_DRAXX-6",
+    "price": "0.00",
+    "direction": "offer",
+    "count": 13965
+   },
+   {
+    "bm_unit": "C__PSTAT011",
+    "price": "0.00",
+    "direction": "offer",
+    "count": 13965
+   },
+   {
+    "bm_unit": "T_SCCL-4",
+    "price": "75.00",
+    "direction": "offer",
+    "count": 13546
+   },
+   {
+    "bm_unit": "E_BNWKW-1",
+    "price": "89.00",
+    "direction": "offer",
+    "count": 13454
+   },
+   {
+    "bm_unit": "T_LCLTW-1",
+    "price": "89.00",
+    "direction": "offer",
+    "count": 13454
+   },
+   {
+    "bm_unit": "E_TULWW-1",
+    "price": "89.00",
+    "direction": "offer",
+    "count": 13454
+   },
+   {
+    "bm_unit": "E_TULWW-2",
+    "price": "89.00",
+    "direction": "offer",
+    "count": 13454
+   },
+   {
+    "bm_unit": "E_MOYEW-1",
+    "price": "92.00",
+    "direction": "offer",
+    "count": 13435
+   },
+   {
+    "bm_unit": "E_ASHWW-1",
+    "price": "97.92",
+    "direction": "offer",
+    "count": 13393
+   },
+   {
+    "bm_unit": "T_TRLGW-1",
+    "price": "100.00",
+    "direction": "offer",
+    "count": 13353
+   },
+   {
+    "bm_unit": "E_DERW-1",
+    "price": "110.00",
+    "direction": "offer",
+    "count": 13217
+   },
+   {
+    "bm_unit": "T_PEHE-2",
+    "price": "135.00",
+    "direction": "offer",
+    "count": 12244
+   },
+   {
+    "bm_unit": "V__NGBLO013",
+    "price": "130.00",
+    "direction": "offer",
+    "count": 12003
+   },
+   {
+    "bm_unit": "E_CNCLW-1",
+    "price": "140.00",
+    "direction": "offer",
+    "count": 11488
+   },
+   {
+    "bm_unit": "2__MANGE001",
+    "price": "100.00",
+    "direction": "offer",
+    "count": 11391
+   }
+  ]
+ },
+ "f5_persistence": {
+  "f1_weighted_mean_fraction": 0.32059271011343754,
+  "alternative_deciles": [
+   "0.002976190476190476",
+   "0.002976190476190476",
+   "0.002976190476190476",
+   "0.002976190476190476",
+   "0.002976190476190476",
+   "0.01488095238095238",
+   "0.05357142857142857",
+   "0.16666666666666666",
+   "0.5625",
+   "1.0",
+   "1.0"
+  ]
+ },
+ "f7_residual_max_gap_percentiles": {
+  "p50": "37.36",
+  "p90": "145.00",
+  "p99": "321.06",
+  "max": "3000.00"
+ },
+ "residual_top10_by_carried_inversions": [
+  {
+   "bm_unit": "2__JLOND002",
+   "pair_id": -1,
+   "direction": "bid",
+   "price": "73.85",
+   "n_inversions": 165,
+   "persistence": 0.005952380952380952
+  },
+  {
+   "bm_unit": "2__JLOND003",
+   "pair_id": -1,
+   "direction": "bid",
+   "price": "73.85",
+   "n_inversions": 165,
+   "persistence": 0.005952380952380952
+  },
+  {
+   "bm_unit": "E_ASHWW-1",
+   "pair_id": 1,
+   "direction": "offer",
+   "price": "97.92",
+   "n_inversions": 162,
+   "persistence": 1.0
+  },
+  {
+   "bm_unit": "E_BNWKW-1",
+   "pair_id": 1,
+   "direction": "offer",
+   "price": "89.00",
+   "n_inversions": 162,
+   "persistence": 1.0
+  },
+  {
+   "bm_unit": "T_LCLTW-1",
+   "pair_id": 1,
+   "direction": "offer",
+   "price": "89.00",
+   "n_inversions": 162,
+   "persistence": 1.0
+  },
+  {
+   "bm_unit": "E_MOYEW-1",
+   "pair_id": 1,
+   "direction": "offer",
+   "price": "92.00",
+   "n_inversions": 162,
+   "persistence": 1.0
+  },
+  {
+   "bm_unit": "T_SCCL-4",
+   "pair_id": 1,
+   "direction": "offer",
+   "price": "75.00",
+   "n_inversions": 162,
+   "persistence": 1.0
+  },
+  {
+   "bm_unit": "T_TRLGW-1",
+   "pair_id": 1,
+   "direction": "offer",
+   "price": "100.00",
+   "n_inversions": 162,
+   "persistence": 1.0
+  },
+  {
+   "bm_unit": "E_TULWW-1",
+   "pair_id": 1,
+   "direction": "offer",
+   "price": "89.00",
+   "n_inversions": 162,
+   "persistence": 1.0
+  },
+  {
+   "bm_unit": "E_TULWW-2",
+   "pair_id": 1,
+   "direction": "offer",
+   "price": "89.00",
+   "n_inversions": 162,
+   "persistence": 1.0
+  }
+ ]
+}

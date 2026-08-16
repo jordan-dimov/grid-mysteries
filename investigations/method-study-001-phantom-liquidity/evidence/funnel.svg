@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="420" viewBox="0 0 920 420">
+<rect width="920" height="420" fill="#fcfcfb"/>
+<text x="30" y="36" font-family="system-ui, 'Segoe UI', sans-serif" font-size="19" font-weight="600" fill="#0b0b0b">What survives when apparent alternatives face public physical state?</text>
+<text x="30" y="58" font-family="system-ui, 'Segoe UI', sans-serif" font-size="13" fill="#52514e">GB Balancing Mechanism, 336 settlement periods, 2026-08-04 to 2026-08-10. Conservative bound: ruled out only when zero headroom is provable.</text>
+<text x="30" y="102" font-family="system-ui, 'Segoe UI', sans-serif" font-size="14" font-weight="600" fill="#0b0b0b">Pairwise price-order inversions</text>
+<rect x="30" y="114" width="670" height="34" rx="4" fill="#86b6ef"/>
+<text x="710" y="136.0" font-family="system-ui, 'Segoe UI', sans-serif" font-size="14" font-weight="600" fill="#0b0b0b">3,856,031</text>
+<text x="30" y="163" font-family="system-ui, 'Segoe UI', sans-serif" font-size="12" fill="#52514e">raw (BOD taken at face value)</text>
+<rect x="30" y="170" width="219" height="34" rx="4" fill="#2a78d6"/>
+<text x="259" y="192.0" font-family="system-ui, 'Segoe UI', sans-serif" font-size="14" font-weight="600" fill="#0b0b0b">1,260,650</text>
+<text x="30" y="219" font-family="system-ui, 'Segoe UI', sans-serif" font-size="12" fill="#52514e">survive the physical-state checks (32.7% of raw)</text>
+<text x="30" y="268" font-family="system-ui, 'Segoe UI', sans-serif" font-size="14" font-weight="600" fill="#0b0b0b">Unique better-priced alternatives</text>
+<rect x="30" y="280" width="670" height="34" rx="4" fill="#86b6ef"/>
+<text x="710" y="302.0" font-family="system-ui, 'Segoe UI', sans-serif" font-size="14" font-weight="600" fill="#0b0b0b">158,953</text>
+<text x="30" y="329" font-family="system-ui, 'Segoe UI', sans-serif" font-size="12" fill="#52514e">raw (BOD taken at face value)</text>
+<rect x="30" y="336" width="348" height="34" rx="4" fill="#2a78d6"/>
+<text x="388" y="358.0" font-family="system-ui, 'Segoe UI', sans-serif" font-size="14" font-weight="600" fill="#0b0b0b">82,664</text>
+<text x="30" y="385" font-family="system-ui, 'Segoe UI', sans-serif" font-size="12" fill="#52514e">survive the physical-state checks (52.0% of raw)</text>
+</svg>

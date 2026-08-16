@@ -198,11 +198,26 @@ def analyse() -> None:
     residual_episodes = {(k[0], k[1], k[2]) for k in residual}
 
     groups = concentration.most_common()
+    # The full cumulative curve, reported on a dense log-spaced rank grid
+    # (every rank up to 10, then ~12 ranks per decade) plus the final rank.
+    grid = sorted(
+        {
+            *range(1, 11),
+            *(
+                round(10 ** (exponent / 12))
+                for exponent in range(12, 12 * 6)
+                if round(10 ** (exponent / 12)) <= len(groups)
+            ),
+            len(groups),
+        }
+    )
     cumulative, shares_at = 0, {}
+    grid_index = 0
     for rank, (_, count) in enumerate(groups, start=1):
         cumulative += count
-        if rank in (1, 2, 5, 10, 20, 50, 100):
+        if grid_index < len(grid) and rank == grid[grid_index]:
             shares_at[rank] = cumulative / total_raw
+            grid_index += 1
     weighted_persistence = (
         sum(a["n_inversions"] * a["persistence"] for a in alternatives.values()) / total_raw
     )

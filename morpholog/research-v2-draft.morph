@@ -96,6 +96,30 @@ predicate PublicationApproved(publication: Subject, approved_at: Timestamp)
 predicate LineageFromV1(inquiry: Subject, v1_investigation: Subject)
     append only
 
+-- Vocabularies, named once and consumed by gates and invariants alike.
+define in_inquiry_kind_vocabulary(kind):
+    kind = #prospective
+    or kind = #descriptive
+    or kind = #method_study
+
+define in_corpus_status_vocabulary(status):
+    status = #untouched
+    or status = #consumed
+
+define in_mechanism_status_vocabulary(status):
+    status = #explained
+    or status = #contributes
+    or status = #ruled_out
+    or status = #compatible_but_unproven
+    or status = #not_publicly_observable
+
+define in_conclusion_class_vocabulary(class):
+    class = #explained
+    or class = #partly_explained
+    or class = #publicly_unexplained
+    or class = #hypothesis_confirmed
+    or class = #hypothesis_falsified
+
 intent InquiryOpened(inquiry: Subject)
 intent DataAcquisitionAuthorised(inquiry: Subject)
 intent AnalysisAuthorised(inquiry: Subject)
@@ -103,6 +127,18 @@ intent ConjectureRegistered(conjecture: Subject)
 intent ConclusionPublished(conclusion: Subject)
 intent ConclusionSuperseded(prior_conclusion: Subject, successor_conclusion: Subject)
 intent PublicationAuthorised(publication: Subject)
+
+invariant inquiry_kind_in_vocabulary:
+    Inquiry(_, k, _, _) implies in_inquiry_kind_vocabulary(k)
+
+invariant corpus_status_in_vocabulary:
+    CorpusDeclared(_, _, s) implies in_corpus_status_vocabulary(s)
+
+invariant mechanism_status_in_vocabulary:
+    MechanismAssessment(_, _, s, _) implies in_mechanism_status_vocabulary(s)
+
+invariant conclusion_class_in_vocabulary:
+    Conclusion(_, _, _, cc, _, _, _) implies in_conclusion_class_vocabulary(cc)
 
 invariant corpus_has_inquiry:
     CorpusDeclared(i, _, _) implies Inquiry(i, _, _, _)
@@ -191,13 +227,13 @@ transformation register_audit_signing_key(key_id, public_key):
 
 transformation open_inquiry(inquiry, kind, title, opened_at):
     require inquiry_is_new: not Inquiry(inquiry, _, _, _)
-    require kind_in_vocabulary: kind = #prospective or kind = #descriptive or kind = #method_study
+    require kind_in_vocabulary: in_inquiry_kind_vocabulary(kind)
     admit Inquiry(inquiry, kind, title, opened_at)
     emit InquiryOpened(inquiry)
 
 transformation declare_corpus(inquiry, corpus, status):
     require corpus_inquiry_exists: Inquiry(inquiry, _, _, _)
-    require corpus_status_in_vocabulary: status = #untouched or status = #consumed
+    require corpus_status_in_vocabulary: in_corpus_status_vocabulary(status)
     require corpus_not_yet_declared: not CorpusDeclared(inquiry, corpus, _)
     admit CorpusDeclared(inquiry, corpus, status)
 
@@ -243,7 +279,7 @@ transformation register_conjecture(conjecture, inquiry, statement, proposed_at):
 
 transformation assess_mechanism(inquiry, mechanism, status, evidence_digest):
     require assessment_requires_sealed_evidence: EvidenceSealed(inquiry, _)
-    require assessment_status_in_vocabulary: status = #explained or status = #contributes or status = #ruled_out or status = #compatible_but_unproven or status = #not_publicly_observable
+    require assessment_status_in_vocabulary: in_mechanism_status_vocabulary(status)
     require mechanism_not_yet_assessed: not MechanismAssessment(inquiry, mechanism, _, _)
     admit MechanismAssessment(inquiry, mechanism, status, evidence_digest)
 
@@ -262,7 +298,7 @@ transformation publish_conclusion(conclusion, inquiry, conjecture, conclusion_cl
     require publish_requires_sealed_evidence: EvidenceSealed(inquiry, _)
     require publish_conclusion_is_new: not Conclusion(conclusion, _, _, _, _, _, _)
     require publish_inquiry_has_no_current_conclusion: not CurrentConclusion(inquiry, _)
-    require publish_class_in_vocabulary: conclusion_class = #explained or conclusion_class = #partly_explained or conclusion_class = #publicly_unexplained or conclusion_class = #hypothesis_confirmed or conclusion_class = #hypothesis_falsified
+    require publish_class_in_vocabulary: in_conclusion_class_vocabulary(conclusion_class)
     admit Conclusion(conclusion, inquiry, conjecture, conclusion_class, statement, evidence_digest, published_at)
     admit CurrentConclusion(inquiry, conclusion)
     emit ConclusionPublished(conclusion)
@@ -271,7 +307,7 @@ transformation supersede_conclusion(successor, prior, inquiry, conjecture, concl
     require supersede_prior_is_current: CurrentConclusion(inquiry, prior)
     require supersede_conjecture_registered: Conjecture(conjecture, inquiry, _, _)
     require supersede_successor_is_new: not Conclusion(successor, _, _, _, _, _, _)
-    require supersede_class_in_vocabulary: conclusion_class = #explained or conclusion_class = #partly_explained or conclusion_class = #publicly_unexplained or conclusion_class = #hypothesis_confirmed or conclusion_class = #hypothesis_falsified
+    require supersede_class_in_vocabulary: in_conclusion_class_vocabulary(conclusion_class)
     admit Conclusion(successor, inquiry, conjecture, conclusion_class, statement, evidence_digest, published_at)
     admit SupersedesConclusion(successor, prior)
     retract CurrentConclusion(inquiry, prior)

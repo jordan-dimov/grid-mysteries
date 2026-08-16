@@ -215,7 +215,18 @@ def find_inversion_candidates(
             )
             if candidate.gap_gbp_per_mwh > 0:
                 candidates.append(candidate)
-    return candidates
+    # Canonical output order regardless of input order: a caller that
+    # serialises the unranked result can never rediscover the 001D
+    # ordering defect. Ranking by gap remains rank_candidates' job.
+    return sorted(
+        candidates,
+        key=lambda c: (
+            c.accepted_unit,
+            c.accepted_pair_id,
+            c.unaccepted_unit,
+            c.unaccepted_pair_id,
+        ),
+    )
 
 
 def rank_candidates(candidates: list[InversionCandidate]) -> list[InversionCandidate]:

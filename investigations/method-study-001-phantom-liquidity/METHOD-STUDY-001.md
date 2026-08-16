@@ -114,3 +114,20 @@ uv run python investigations/method-study-001-phantom-liquidity/study.py fetch  
 uv run python investigations/method-study-001-phantom-liquidity/study.py analyse  # offline; deterministic
 uv run python investigations/method-study-001-phantom-liquidity/study.py charts   # offline; renders SVGs
 ```
+
+## Corrections
+
+1. **Canonical candidate ordering (recorded 2026-08-16, after the
+   governed finding was published but before any public post; results
+   unaffected).** `find_inversion_candidates` originally returned
+   candidates in input order — deterministic for the pinned corpus, but
+   order-dependent under permuted inputs (a latent hole surfaced by
+   property-based testing, together with a last-write-wins resolution of
+   duplicate accepted rows, now summed; the corpus contains no such
+   duplicates, verified across all 672 period-directions). The function
+   now returns a canonical order. Re-running `analyse` reproduces
+   `alternatives.parquet` byte-for-byte and every aggregate of
+   `analysis.json` exactly; only the ordering of equal-count entries
+   within its top-20 concentration and residual-top-10 lists may differ
+   from the pinned vintage, which remains the published record (its
+   digest is bound into `fnd-ms-001-majority-phantom`).

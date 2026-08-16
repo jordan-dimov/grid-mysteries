@@ -28,12 +28,12 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from decimal import Decimal
-from typing import Literal
+from typing import Final, Literal
 
 from grid_mysteries.investigations.bod_inversion import Direction, _decimal
 
-NON_DELIVERABLE = "non_deliverable"
-NOT_RULED_OUT = "not_ruled_out"
+NON_DELIVERABLE: Final = "non_deliverable"
+NOT_RULED_OUT: Final = "not_ruled_out"
 Classification = Literal["non_deliverable", "not_ruled_out"]
 
 

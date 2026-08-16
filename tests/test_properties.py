@@ -78,7 +78,8 @@ def test_inversion_candidates_are_well_formed_and_order_invariant(submitted, acc
     shuffled_submitted, shuffled_accepted = list(submitted), list(accepted)
     seed.shuffle(shuffled_submitted)
     seed.shuffle(shuffled_accepted)
-    assert set(map(repr, run(shuffled_submitted, shuffled_accepted))) == set(map(repr, candidates))
+    # List equality, not set equality: output order itself is canonical.
+    assert run(shuffled_submitted, shuffled_accepted) == candidates
 
 
 @given(
@@ -199,3 +200,56 @@ def test_duplicate_submitted_pairs_are_refused_not_silently_resolved():
             submitted=[pair, pair],
             accepted=[],
         )
+
+
+@given(
+    submitted=unique_submitted_offer_pairs(),
+    accepted=st.lists(
+        st.tuples(unit_names, st.integers(1, 3), decimals).map(
+            lambda t: AcceptedPair(t[0], t[1], t[2])
+        ),
+        max_size=8,
+    ),
+    seed=st.randoms(),
+)
+def test_ranking_is_invariant_under_candidate_permutation(submitted, accepted, seed):
+    from grid_mysteries.investigations.bod_inversion import rank_candidates
+
+    candidates = find_inversion_candidates(
+        settlement_date="2026-01-05",
+        settlement_period=1,
+        direction="offer",
+        submitted=submitted,
+        accepted=accepted,
+    )
+    shuffled = list(candidates)
+    seed.shuffle(shuffled)
+    assert rank_candidates(shuffled) == rank_candidates(candidates)
+
+
+@given(price_int=st.integers(-1000, 1000), scale=st.integers(0, 4))
+def test_decimal_scale_variants_cannot_alter_conclusions(price_int, scale):
+    """1.0 and 1.00 are the same price; no analytical path may distinguish
+    them."""
+    from grid_mysteries.investigations.bod_inversion import submitted_pairs
+
+    plain = Decimal(price_int)
+    rescaled = plain.quantize(Decimal(1).scaleb(-scale)) if scale else plain
+
+    def bod(price):
+        return [
+            {"bmUnit": "U1", "pairId": 1, "bid": 0, "offer": price, "levelFrom": 10, "levelTo": 10},
+            {
+                "bmUnit": "U1",
+                "pairId": 1,
+                "bid": 0,
+                "offer": rescaled,
+                "levelFrom": 12,
+                "levelTo": 12,
+            },
+        ]
+
+    # Same-value, different-scale slices must not be treated as a price
+    # conflict (which would silently drop the pair).
+    assert submitted_pairs(bod(plain), "offer") == submitted_pairs(bod(rescaled), "offer")
+    assert len(submitted_pairs(bod(plain), "offer")) == 1

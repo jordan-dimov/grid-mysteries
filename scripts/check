@@ -6,5 +6,6 @@ export PATH="${HOME}/.local/bin:${PATH}"
 uv run ruff check .
 uv run ruff format --check .
 uv run pytest
+uv run mypy
 morpholog check morpholog/research.morph
 morpholog check morpholog/research-v2-draft.morph

@@ -14,7 +14,7 @@ from typing import Literal
 import httpx
 
 from grid_mysteries.models import SourceArtifact
-from grid_mysteries.sources.http import fetch_json
+from grid_mysteries.sources.http import fetch_artifact
 
 BASE_URL = "https://data.elexon.co.uk/bmrs/api/v1"
 SOURCE = "elexon-insights"
@@ -52,7 +52,7 @@ def fetch_pinned(
     last_error: Exception | None = None
     for attempt in range(attempts):
         try:
-            return fetch_json(url=url, destination=destination, source=SOURCE, dataset=dataset)
+            return fetch_artifact(url=url, destination=destination, source=SOURCE, dataset=dataset)
         except (httpx.TransportError, httpx.HTTPStatusError) as error:
             if isinstance(error, httpx.HTTPStatusError) and error.response.status_code < 500:
                 raise

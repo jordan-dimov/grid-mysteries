@@ -11,14 +11,10 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
+from grid_mysteries.rendering.svg import BLUE, BLUE_LIGHT, FONT, INK, INK_2, SURFACE
+
 EVIDENCE = Path(__file__).resolve().parent / "evidence"
 
-SURFACE = "#fcfcfb"
-INK = "#0b0b0b"
-INK_2 = "#52514e"
-BLUE_LIGHT = "#86b6ef"
-BLUE = "#2a78d6"
-FONT = "font-family=\"system-ui, 'Segoe UI', sans-serif\""
 
 LABELS = {
     "naive_price_screen": "naive price screen (BOD at face value)",

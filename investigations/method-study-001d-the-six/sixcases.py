@@ -15,14 +15,14 @@ from collections import Counter
 from decimal import Decimal
 from pathlib import Path
 
-import polars as pl
-
+from grid_mysteries.corpus import load_records, unit_maps, window_path
 from grid_mysteries.investigations.bod_inversion import (
     accepted_pairs,
     find_inversion_candidates,
     submitted_pairs,
 )
-from grid_mysteries.sources import elexon
+from grid_mysteries.investigations.neso_cells import load_alternative_rows
+from grid_mysteries.sources import elexon, neso
 from grid_mysteries.sources.pinning import fetch_journalled
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
@@ -32,9 +32,9 @@ MS1C_EVIDENCE = REPO_ROOT / "investigations" / "method-study-001c-disagreement-a
 BMUNITS_PATH = REPO_ROOT / "data" / "raw" / "elexon" / "case-001" / "bmunits.json"
 BOALF_RAW = REPO_ROOT / "data" / "raw" / "elexon" / "sixcases-001d"
 
-sys.path.insert(0, str(REPO_ROOT / "investigations" / "method-study-001b-naive-screen"))
-from screen import read_neso_csv  # noqa: E402
-from study import load_records, window_path  # noqa: E402
+
+def read_neso_csv(filename: str) -> list[dict]:
+    return neso.read_csv(filename)
 
 
 def cases() -> list[dict]:
@@ -42,23 +42,12 @@ def cases() -> list[dict]:
     return analysis["unmatched_cell_list"]
 
 
-def unit_maps() -> tuple[dict, dict]:
-    records = load_records(BMUNITS_PATH)
-    ngc_to_elexon = {
-        str(r["nationalGridBmUnit"]): str(r["elexonBmUnit"])
-        for r in records
-        if r.get("nationalGridBmUnit")
-    }
-    elexon_to_ngc = {v: k for k, v in ngc_to_elexon.items()}
-    return ngc_to_elexon, elexon_to_ngc
-
-
 def qualifying_periods(elexon_unit: str, date: str) -> list[dict]:
-    table = pl.read_parquet(MS1_EVIDENCE / "alternatives.parquet")
+    rows = load_alternative_rows(MS1_EVIDENCE / "alternatives.parquet")
     return sorted(
         (
             r
-            for r in table.iter_rows(named=True)
+            for r in rows
             if r["settlement_date"] == date
             and r["direction"] == "bid"
             and r["bm_unit"] == elexon_unit
@@ -139,7 +128,7 @@ def analyse() -> None:
             )
             counterpart_units = {c.accepted_unit for c in candidates if c.unaccepted_unit == unit}
             boalf = load_records(boalf_path(date, period))
-            for accepted_unit in counterpart_units:
+            for accepted_unit in sorted(counterpart_units):
                 accepted_counterparts[accepted_unit] += 1
                 accepted_ngc = elexon_to_ngc.get(accepted_unit, accepted_unit)
                 for r in exclusions:

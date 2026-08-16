@@ -13,22 +13,30 @@ from collections import Counter
 from decimal import Decimal
 from pathlib import Path
 
+from grid_mysteries.corpus import unit_maps, window_dates
 from grid_mysteries.investigations.exclusion_attribution import (
     LAYER_ORDER,
     categorise,
     primary_category,
 )
+from grid_mysteries.investigations.neso_cells import intensity_by_cell, load_alternative_rows
+from grid_mysteries.sources import neso
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
 EVIDENCE = Path(__file__).resolve().parent / "evidence"
+MS001_EVIDENCE = REPO_ROOT / "investigations" / "method-study-001-phantom-liquidity" / "evidence"
 
-sys.path.insert(0, str(REPO_ROOT / "investigations" / "method-study-001b-naive-screen"))
-from screen import (  # noqa: E402
-    NESO_FINAL_STAGE,
-    our_intensity_by_cell,
-    read_neso_csv,
-    window_dates,
-)
+NESO_FINAL_STAGE = neso.FINAL_STAGE
+
+
+def read_neso_csv(filename: str) -> list[dict]:
+    return neso.read_csv(filename)
+
+
+def our_intensity_by_cell() -> tuple[dict, dict]:
+    _ngc_to_elexon, elexon_to_ngc = unit_maps()
+    rows = load_alternative_rows(MS001_EVIDENCE / "alternatives.parquet")
+    return intensity_by_cell(rows, elexon_to_ngc)
 
 
 def build_state() -> dict:

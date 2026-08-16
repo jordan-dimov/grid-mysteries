@@ -13,15 +13,9 @@ import json
 import math
 from pathlib import Path
 
-EVIDENCE = Path(__file__).resolve().parent / "evidence"
+from grid_mysteries.rendering.svg import BLUE, BLUE_LIGHT, FONT, GRID, INK, INK_2, SURFACE
 
-SURFACE = "#fcfcfb"
-INK = "#0b0b0b"
-INK_2 = "#52514e"
-GRID = "#e5e4e0"
-BLUE_LIGHT = "#86b6ef"  # ordinal step 250 (validated light-end, 2.06:1)
-BLUE = "#2a78d6"  # ordinal step 450 / series hue
-FONT = "font-family=\"system-ui, 'Segoe UI', sans-serif\""
+EVIDENCE = Path(__file__).resolve().parent / "evidence"
 
 
 def _fmt(n: int) -> str:

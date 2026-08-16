@@ -52,30 +52,50 @@ The installer pins Morpholog to the release named in `scripts/install-morpholog`
 
 ```text
 src/grid_mysteries/
-    cli.py                   # researcher workflow
-    models.py                # investigation/source data structures
+    cli.py                   # researcher workflow (doctor, hash-source)
+    corpus.py                # the consumed research corpus: window, layout, Decimal-strict loading
+    models.py                # source-artefact data structure
     hashing.py               # content addressing
-    sources/                 # public-data adapters
-    investigations/         # reusable analytical investigations
-    rendering/              # publication-ready output helpers
-morpholog/
-    research.morph           # governed research record
-investigations/
-    000-template/            # one folder per public investigation
+    stats.py                 # shared aggregation numerics
+    sources/                 # anti-corruption layer over publishers: elexon, neso, http, pinning
+    investigations/          # tested analytical logic, one module per study concept
+    rendering/               # the validated chart palette and SVG tokens
+morpholog/                   # the governed research record (see morpholog/README.md)
+investigations/              # one directory per investigation or method study:
+                             #   pre-declaration, runner scripts, committed evidence
+publications/                # publication packs rendered from committed evidence only
 scripts/
-    install-morpholog        # pinned binary installer
+    check                    # the authoritative local gate
+    install-morpholog        # pinned, checksum-verified installer
+    replay-research          # rebuild + verify the governed record from the repo alone
+    check-controls           # negative tests: prove the record's locks lock
+    record                   # the one safe way to extend the governed record
 data/
-    raw/                     # ignored; immutable source downloads
+    raw/                     # ignored; immutable content-addressed source downloads
     derived/                 # ignored; reproducible computed tables
 ```
 
-## First research target
+## Research so far
 
-The first concrete investigation is **apparently non-economic balancing dispatch**:
+The corpus week 2026-08-04..2026-08-10 is complete and published:
 
-> A lower-priced action appears available while a higher-priced action is accepted. Can the difference be explained from public information?
+- **Investigation 001** selected, by a pre-declared deterministic rule,
+  the week's largest apparent price inversion — and explained it (the
+  "cheaper" unit had zero deliverable volume).
+- **Method Studies 001/001B/001C/001D** then measured the naive
+  price-only reading of the same corpus: 3,856,031 apparent inversions;
+  every one of the naive screen's top 1,000 led by a physically
+  impossible alternative; 90.5% of its £607.8m apparent notional gone
+  after one deliverability check; agreement with NESO's own skip
+  methodology raised from 35% to 65%; and the entire remaining
+  disagreement attributed through the operator's published operational
+  data — **zero unexplained cases in the week**. See
+  `publications/001/` for the publication pack, and each study's
+  directory for its pre-declaration, evidence and note.
 
-The initial code does **not** claim to identify a true NESO error. It provides the plumbing for recording the event, pinning the source artefacts and progressively testing explanations such as dynamic limits, physical position, previous dispatch and published exclusion classifications.
+Every hypothesis was registered before its data was touched, every
+claim is bound to pinned evidence, and the governed record replays and
+verifies from this repository alone (`./scripts/replay-research`).
 
 ## Publishing format
 

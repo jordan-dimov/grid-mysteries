@@ -11,20 +11,14 @@ import json
 from decimal import Decimal
 from pathlib import Path
 
+from grid_mysteries.rendering.svg import AQUA, BLUE, BLUE_LIGHT, FONT, INK, INK_2, ORANGE, SURFACE
+
 REPO_ROOT = Path(__file__).resolve().parents[2]
 OUT = Path(__file__).resolve().parent
 MS1 = REPO_ROOT / "investigations" / "method-study-001-phantom-liquidity" / "evidence"
 MS1B = REPO_ROOT / "investigations" / "method-study-001b-naive-screen" / "evidence"
 MS1C = REPO_ROOT / "investigations" / "method-study-001c-disagreement-anatomy" / "evidence"
 
-SURFACE = "#fcfcfb"
-INK = "#0b0b0b"
-INK_2 = "#52514e"
-BLUE_LIGHT = "#86b6ef"
-BLUE = "#2a78d6"
-ORANGE = "#eb6834"
-AQUA = "#1baf7a"
-FONT = "font-family=\"system-ui, 'Segoe UI', sans-serif\""
 
 W = 920
 LEFT = 48

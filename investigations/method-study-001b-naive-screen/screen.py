@@ -25,26 +25,32 @@ from pathlib import Path
 
 import polars as pl
 
+from grid_mysteries.corpus import (
+    BMUNITS_PATH,
+    DIRECTIONS,
+    PERIODS,
+    REPO_ROOT,
+    load_records,
+    unit_maps,
+    window_dates,
+    window_path,
+)
 from grid_mysteries.investigations.bod_inversion import (
     accepted_pairs,
     find_inversion_candidates,
     submitted_pairs,
 )
 from grid_mysteries.investigations.naive_screen import screen_accepted_actions
-from grid_mysteries.sources import elexon
+from grid_mysteries.investigations.neso_cells import intensity_by_cell, load_alternative_rows
+from grid_mysteries.sources import elexon, neso
 from grid_mysteries.sources.pinning import fetch_journalled
+from grid_mysteries.stats import percentile
 
-REPO_ROOT = Path(__file__).resolve().parents[2]
 RAW_ROOT = REPO_ROOT / "data" / "raw" / "elexon"
 EVIDENCE = Path(__file__).resolve().parent / "evidence"
 MS001_EVIDENCE = REPO_ROOT / "investigations" / "method-study-001-phantom-liquidity" / "evidence"
-BMUNITS_PATH = RAW_ROOT / "case-001" / "bmunits.json"
 ANATOMY_RAW = RAW_ROOT / "anatomy-001b"
 
-sys.path.insert(0, str(REPO_ROOT / "investigations" / "method-study-001-phantom-liquidity"))
-from study import PERIODS, load_records, window_dates, window_path  # noqa: E402
-
-DIRECTIONS = ("offer", "bid")
 TOP_NS = (10, 100, 1000)
 ANATOMY_N = 20
 
@@ -94,11 +100,6 @@ def action_key(action) -> tuple:
         action.accepted_unit,
         action.accepted_pair_id,
     )
-
-
-def percentile(sorted_values: list, fraction: float):
-    index = min(len(sorted_values) - 1, int(fraction * len(sorted_values)))
-    return sorted_values[index]
 
 
 def top_n_distortion(actions: list, naive_metric, post_metric) -> dict:
@@ -344,7 +345,6 @@ def anatomy() -> None:
 # --- External validation against NESO's Skip Rates dataset (declared in
 # --- METHOD-STUDY-001B.md; resource ids from the official data portal).
 
-NESO_RAW = REPO_ROOT / "data" / "raw" / "neso"
 NESO_RESOURCES = [
     (
         "NESO-SKIP-INMERIT-ALLBM",
@@ -353,16 +353,16 @@ NESO_RESOURCES = [
     ),
     ("NESO-SKIP-EXCLUSIONS", "a82a2a20-6f08-4d7d-a2ed-221527ba75c2", "exclusions_2026-08.csv"),
 ]
-NESO_FINAL_STAGE = 5
+NESO_FINAL_STAGE = neso.FINAL_STAGE
 
 
 def neso_fetch(*, url: str, destination: Path, dataset: str):
-    from grid_mysteries.sources.http import fetch_json
+    from grid_mysteries.sources.http import fetch_artifact
 
-    return fetch_json(
+    return fetch_artifact(
         url=url,
         destination=destination,
-        source="neso-data-portal",
+        source=neso.SOURCE,
         dataset=dataset,
         timeout_seconds=180.0,
     )
@@ -370,7 +370,7 @@ def neso_fetch(*, url: str, destination: Path, dataset: str):
 
 def fetch_neso() -> None:
     jobs = [
-        (dataset, f"https://api.neso.energy/datastore/dump/{resource_id}", NESO_RAW / filename)
+        (dataset, neso.dump_url(resource_id), neso.NESO_RAW / filename)
         for dataset, resource_id, filename in NESO_RESOURCES
     ]
     EVIDENCE.mkdir(exist_ok=True)
@@ -386,10 +386,7 @@ def fetch_neso() -> None:
 
 
 def read_neso_csv(filename: str) -> list[dict]:
-    import csv
-
-    with (NESO_RAW / filename).open(newline="") as handle:
-        return list(csv.DictReader(handle))
+    return neso.read_csv(filename)
 
 
 def spearman(pairs: list[tuple]) -> float | None:
@@ -419,32 +416,10 @@ def spearman(pairs: list[tuple]) -> float | None:
 
 
 def our_intensity_by_cell() -> tuple[dict, dict]:
-    """(naive, post-filter) opportunity intensity per (date, direction, NGC unit).
-
-    Intensity = sum over settlement periods of the unit's largest qualifying
-    gap that period (GBP/MWh·periods) — the declared monotone proxy.
-    """
-    elexon_to_ngc = {
-        str(r["elexonBmUnit"]): str(r.get("nationalGridBmUnit") or r["elexonBmUnit"])
-        for r in load_records(BMUNITS_PATH)
-    }
-    table = pl.read_parquet(MS001_EVIDENCE / "alternatives.parquet")
-    per_period_naive: dict[tuple, Decimal] = {}
-    per_period_post: dict[tuple, Decimal] = {}
-    for r in table.iter_rows(named=True):
-        ngc = elexon_to_ngc.get(r["bm_unit"], r["bm_unit"])
-        key = (r["settlement_date"], r["direction"], ngc, r["settlement_period"])
-        gap = Decimal(r["max_gap_gbp_per_mwh"])
-        per_period_naive[key] = max(per_period_naive.get(key, Decimal(0)), gap)
-        if r["classification"] != "non_deliverable":
-            per_period_post[key] = max(per_period_post.get(key, Decimal(0)), gap)
-    naive: dict[tuple, Decimal] = {}
-    post: dict[tuple, Decimal] = {}
-    for (date, direction, ngc, _period), gap in per_period_naive.items():
-        naive[(date, direction, ngc)] = naive.get((date, direction, ngc), Decimal(0)) + gap
-    for (date, direction, ngc, _period), gap in per_period_post.items():
-        post[(date, direction, ngc)] = post.get((date, direction, ngc), Decimal(0)) + gap
-    return naive, post
+    """001B's declared (naive, post-filter) intensity per daily cell."""
+    _ngc_to_elexon, elexon_to_ngc = unit_maps()
+    rows = load_alternative_rows(MS001_EVIDENCE / "alternatives.parquet")
+    return intensity_by_cell(rows, elexon_to_ngc)
 
 
 def neso_compare() -> None:

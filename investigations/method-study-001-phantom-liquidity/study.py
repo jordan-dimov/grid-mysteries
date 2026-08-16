@@ -18,10 +18,20 @@ from __future__ import annotations
 import json
 import sys
 from collections import Counter
-from datetime import date, timedelta
 from decimal import Decimal
 from pathlib import Path
 
+from grid_mysteries.corpus import (
+    BMUNITS_PATH,
+    DIRECTIONS,
+    PERIODS,
+    REPO_ROOT,
+    TOTAL_PERIODS,
+    load_records,
+    physical_path,
+    window_dates,
+    window_path,
+)
 from grid_mysteries.investigations.bod_inversion import (
     accepted_pairs,
     find_inversion_candidates,
@@ -35,31 +45,10 @@ from grid_mysteries.investigations.phantom_liquidity import (
 )
 from grid_mysteries.sources import elexon
 from grid_mysteries.sources.pinning import fetch_journalled
+from grid_mysteries.stats import percentile
 
-REPO_ROOT = Path(__file__).resolve().parents[2]
-RAW_ROOT = REPO_ROOT / "data" / "raw" / "elexon"
-PHYSICAL_ROOT = RAW_ROOT / "physical"
 EVIDENCE = Path(__file__).resolve().parent / "evidence"
-BMUNITS_PATH = RAW_ROOT / "case-001" / "bmunits.json"
-
-WINDOW_START = date(2026, 8, 4)
-WINDOW_DAYS = 7
-PERIODS = range(1, 49)
-DIRECTIONS = ("offer", "bid")
 PHYSICAL_DATASETS = ("PN", "MELS", "MILS")
-TOTAL_PERIODS = WINDOW_DAYS * len(PERIODS)
-
-
-def window_dates() -> list[str]:
-    return [(WINDOW_START + timedelta(days=day)).isoformat() for day in range(WINDOW_DAYS)]
-
-
-def physical_path(dataset: str, settlement_date: str, period: int) -> Path:
-    return PHYSICAL_ROOT / settlement_date / f"{dataset.lower()}_p{period:02d}.json"
-
-
-def window_path(kind: str, settlement_date: str, period: int) -> Path:
-    return RAW_ROOT / settlement_date / f"{kind}_p{period:02d}.json"
 
 
 def fetch() -> None:
@@ -86,11 +75,6 @@ def fetch() -> None:
     print(f"fetched {fetched}, verified and skipped {skipped}")
 
 
-def load_records(path: Path) -> list[dict]:
-    payload = json.loads(path.read_text(), parse_float=Decimal)
-    return payload["data"] if isinstance(payload, dict) else payload
-
-
 def load_capacities() -> dict[str, tuple[Decimal | None, Decimal | None]]:
     capacities = {}
     for record in load_records(BMUNITS_PATH):
@@ -101,11 +85,6 @@ def load_capacities() -> dict[str, tuple[Decimal | None, Decimal | None]]:
             Decimal(demand) if demand is not None else None,
         )
     return capacities
-
-
-def percentile(sorted_values: list[Decimal], fraction: float) -> Decimal:
-    index = min(len(sorted_values) - 1, int(fraction * len(sorted_values)))
-    return sorted_values[index]
 
 
 def analyse() -> None:

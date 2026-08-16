@@ -63,3 +63,15 @@ one of explained / partly explained / publicly unexplained.
 uv run python investigations/method-study-001d-the-six/sixcases.py fetch    # BOALF for relevant consumed periods
 uv run python investigations/method-study-001d-the-six/sixcases.py analyse  # offline
 ```
+
+## Corrections
+
+1. **Determinism fix (recorded 2026-08-17, after publication; results
+   unaffected).** `analyse` iterated a Python set of counterpart units,
+   so tie ordering inside its counters depended on per-process hash
+   randomisation: re-runs produced content-identical output with
+   reordered equal-count entries, breaking byte-for-byte reproduction.
+   The script now iterates in sorted order. The pinned
+   `evidence/six-anatomy.json` remains the published vintage (its digest
+   is bound into `fnd-ms-001d-six-explained`); every count and every
+   conclusion is unchanged.

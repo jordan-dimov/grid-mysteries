@@ -9,7 +9,7 @@ from grid_mysteries.hashing import sha256_file
 from grid_mysteries.models import SourceArtifact
 
 
-def fetch_json(
+def fetch_artifact(
     *,
     url: str,
     destination: Path,
@@ -17,7 +17,7 @@ def fetch_json(
     dataset: str,
     timeout_seconds: float = 30.0,
 ) -> SourceArtifact:
-    """Fetch one immutable public JSON artefact and return its content address.
+    """Fetch one immutable public artefact (JSON, CSV, any bytes) and return its content address.
 
     Dataset-specific adapters should construct the URL and validate semantics.
     This low-level function deliberately knows nothing about Elexon or NESO.

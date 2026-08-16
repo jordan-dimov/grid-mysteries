@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
-from datetime import UTC, datetime
+from datetime import datetime
 from pathlib import Path
 
 
@@ -19,21 +19,3 @@ class SourceArtifact:
             raise ValueError("fetched_at must be timezone-aware")
         if self.published_at is not None and self.published_at.tzinfo is None:
             raise ValueError("published_at must be timezone-aware")
-
-
-@dataclass(frozen=True, slots=True)
-class Mystery:
-    mystery_id: str
-    title: str
-    opened_at: datetime
-    observation: str
-    interpretation: str | None = None
-
-    @classmethod
-    def open(cls, mystery_id: str, title: str, observation: str) -> Mystery:
-        return cls(
-            mystery_id=mystery_id,
-            title=title,
-            opened_at=datetime.now(UTC),
-            observation=observation,
-        )

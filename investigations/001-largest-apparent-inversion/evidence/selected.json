@@ -1,0 +1,14 @@
+{
+ "settlement_date": "2026-08-06",
+ "settlement_period": 29,
+ "direction": "bid",
+ "accepted_unit": "T_LARYW-1",
+ "accepted_pair_id": -1,
+ "accepted_price_gbp_per_mwh": "-179.76",
+ "accepted_volume_mwh": "-11.500000000000000000",
+ "unaccepted_unit": "E_RHEI-1",
+ "unaccepted_pair_id": -3,
+ "unaccepted_price_gbp_per_mwh": "9949.00",
+ "unaccepted_max_level_mw": "17",
+ "gap_gbp_per_mwh": "10128.76"
+}

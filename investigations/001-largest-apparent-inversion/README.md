@@ -112,5 +112,42 @@ and `evidence/selected.json`.
 
 ## Selection result
 
-*To be recorded by a later commit, after the data is fetched. The result
-section may report the outcome but may not alter anything above it.*
+Recorded after the fetch; nothing above this line was altered.
+
+- Artefacts pinned: **1,008** (BOD + DISPTAV bid + DISPTAV offer for
+  336 settlement periods), 300,395,151 bytes, digests in
+  `evidence/manifest.json`, fetch order in `evidence/fetch-journal.ndjson`.
+  The fetch completed in a single pass on 2026-08-16; no path was fetched
+  twice.
+- Candidates enumerated: **3,856,031**.
+- **Selected (rank 1): settlement date 2026-08-06, settlement period 29,
+  bid direction.** NESO accepted a bid from `T_LARYW-1` (pair −1, price
+  **−£179.76/MWh**, accepted volume −11.5 MWh) while `E_RHEI-1` had
+  entirely unaccepted bid pairs priced at **+£9,949.00/MWh** with a 17 MW
+  level band. Apparent gap: **£10,128.76/MWh**. Full record in
+  `evidence/selected.json`; the next 49 candidates in
+  `evidence/candidates-top50.json` (ranks 1–12 are the same
+  `E_RHEI-1` +£9,949 pairs against the four `T_LARYW-*` units).
+
+The pre-declared sentinel-pricing caveat applies on the unaccepted side: a
++£9,949/MWh bid means the unit would *pay* the system £9,949/MWh to reduce
+output, which no unit plausibly intends. The rule said such a case would
+not be excluded, so this is Mystery 001. The investigation of this case is
+conducted under `EXPLANATION-PROTOCOL.md`.
+
+## Corrections
+
+Corrections stay here permanently; the declaration above is never
+silently rewritten.
+
+1. **Calendar derivation error in the pre-declaration (recorded
+   2026-08-16, before any case analysis).** The declared window rule says
+   "Monday-to-Sunday week", but 2026-08-04 is a Tuesday and 2026-08-10 is
+   a Monday: the explicit dates are a Tuesday-to-Monday week. The explicit
+   dates and the executable constants in `select.py` were frozen before
+   any window data was accessed, so **the window 2026-08-04..2026-08-10
+   stands exactly as fetched** — changing the sample after data exposure
+   would be worse than the descriptive error. Investigation 001 should be
+   described as using a pre-declared seven-day window. Future
+   pre-declarations will compute and test the window programmatically
+   instead of deriving it by hand.

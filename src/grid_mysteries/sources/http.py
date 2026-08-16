@@ -21,7 +21,16 @@ def fetch_json(
 
     Dataset-specific adapters should construct the URL and validate semantics.
     This low-level function deliberately knows nothing about Elexon or NESO.
+
+    A pinned artefact is immutable: an existing destination is never
+    overwritten, because the same URL can legitimately serve a revised
+    vintage later (e.g. a newer settlement run). A deliberately acquired
+    later vintage belongs at a new path, recorded as a new artefact.
     """
+    if destination.exists():
+        raise FileExistsError(
+            f"pinned artefact already exists, refusing to overwrite: {destination}"
+        )
     destination.parent.mkdir(parents=True, exist_ok=True)
     with httpx.Client(timeout=timeout_seconds, follow_redirects=True) as client:
         response = client.get(url)

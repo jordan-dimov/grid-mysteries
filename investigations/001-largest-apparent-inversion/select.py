@@ -21,9 +21,9 @@ from decimal import Decimal
 from pathlib import Path
 
 from grid_mysteries.investigations.bod_inversion import (
+    accepted_pairs,
     find_inversion_candidates,
     rank_candidates,
-    accepted_pairs,
     submitted_pairs,
 )
 from grid_mysteries.sources import elexon

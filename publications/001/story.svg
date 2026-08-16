@@ -30,12 +30,14 @@
 <line x1="875" y1="608" x2="875" y2="620" stroke="#0b0b0b" stroke-width="1.5"/>
 <text x="875" y="602" font-family="system-ui, 'Segoe UI', sans-serif" font-size="13" font-weight="600" fill="#0b0b0b" text-anchor="end">6 unmatched</text>
 <text x="48" y="712" font-family="system-ui, 'Segoe UI', sans-serif" font-size="15" fill="#0b0b0b"><tspan font-weight="700">99.7%</tspan> of the remaining disagreement has a public operational explanation.</text>
-<text x="48" y="776" font-family="system-ui, 'Segoe UI', sans-serif" font-size="13" font-weight="700" fill="#2a78d6" letter-spacing="2">FRONTIER</text>
-<text x="48" y="850" font-family="system-ui, 'Segoe UI', sans-serif" font-size="64" font-weight="700" fill="#0b0b0b">6</text>
-<text x="118" y="826" font-family="system-ui, 'Segoe UI', sans-serif" font-size="15" fill="#0b0b0b">unit-days in the entire week that public data</text>
-<text x="118" y="848" font-family="system-ui, 'Segoe UI', sans-serif" font-size="15" fill="#0b0b0b">still cannot explain — all bid-side battery or small units.</text>
-<text x="118" y="870" font-family="system-ui, 'Segoe UI', sans-serif" font-size="14" font-weight="600" fill="#2a78d6">That is the part worth investigating next.</text>
-<text x="48" y="920" font-family="system-ui, 'Segoe UI', sans-serif" font-size="15" font-style="italic" fill="#0b0b0b">Public data does not withhold the explanation — it withholds the resolution at which the explanation operates.</text>
+<text x="48" y="776" font-family="system-ui, 'Segoe UI', sans-serif" font-size="13" font-weight="700" fill="#2a78d6" letter-spacing="2">RESOLUTION</text>
+<text x="48" y="850" font-family="system-ui, 'Segoe UI', sans-serif" font-size="64" font-weight="700" fill="#0b0b0b">0</text>
+<text x="118" y="820" font-family="system-ui, 'Segoe UI', sans-serif" font-size="15" fill="#0b0b0b">unexplained cases left in the week. The last 6 unit-days fell</text>
+<text x="118" y="842" font-family="system-ui, 'Segoe UI', sans-serif" font-size="15" fill="#0b0b0b">too: the mistake was on the other side of the comparison — accepted</text>
+<text x="118" y="864" font-family="system-ui, 'Segoe UI', sans-serif" font-size="15" fill="#0b0b0b">actions NESO itself removes from its skip stack as constraint management.</text>
+<text x="48" y="908" font-family="system-ui, 'Segoe UI', sans-serif" font-size="15" font-style="italic" fill="#0b0b0b">Electricity-market data can be completely accurate and still tell you the wrong story</text>
+<text x="48" y="928" font-family="system-ui, 'Segoe UI', sans-serif" font-size="15" font-style="italic" fill="#0b0b0b">if you reconstruct the system at the wrong level of resolution.</text>
+<text x="48" y="972" font-family="system-ui, 'Segoe UI', sans-serif" font-size="14" font-weight="600" fill="#2a78d6">Next: a completely untouched week, rules frozen before the data is seen, the selector now physics- and constraint-aware. Now we find out what survives.</text>
 <line x1="48" y1="1030" x2="872" y2="1030" stroke="#e5e4e0"/>
 <text x="48" y="1056" font-family="system-ui, 'Segoe UI', sans-serif" font-size="12" fill="#52514e">Pre-registered hypotheses · pinned evidence (SHA-256) · governed Morpholog audit record · reproducible CI</text>
 <text x="48" y="1076" font-family="system-ui, 'Segoe UI', sans-serif" font-size="12" fill="#52514e">github.com/jordan-dimov/grid-mysteries — every number above is bound to a committed evidence artefact (see PUBLICATION-001.md).</text>

@@ -64,6 +64,18 @@ def load() -> dict:
         / c["disagreement_cells"]
         * 100,
         "six": c["unmatched_cell_list"],
+        "residual_after_001d": attribution["unmatched"]
+        - len(
+            json.loads(
+                (
+                    REPO_ROOT
+                    / "investigations"
+                    / "method-study-001d-the-six"
+                    / "evidence"
+                    / "six-anatomy.json"
+                ).read_text()
+            )["cases"]
+        ),
     }
 
 
@@ -192,28 +204,41 @@ def story_svg(d: dict) -> str:
         "disagreement has a public operational explanation.</text>"
     )
 
-    # Act 4 — FRONTIER
-    chip(parts, 776, "FRONTIER")
+    # Act 4 — RESOLUTION
+    chip(parts, 776, "RESOLUTION")
     parts.append(
         f'<text x="{LEFT}" y="850" {FONT} font-size="64" font-weight="700" fill="{INK}">'
-        f"{d['unmatched']}</text>"
+        f"{d['residual_after_001d']}</text>"
     )
     parts.append(
-        f'<text x="{LEFT + 70}" y="826" {FONT} font-size="15" fill="{INK}">'
-        "unit-days in the entire week that public data</text>"
+        f'<text x="{LEFT + 70}" y="820" {FONT} font-size="15" fill="{INK}">'
+        f"unexplained cases left in the week. The last {d['unmatched']} unit-days fell"
+        "</text>"
     )
     parts.append(
-        f'<text x="{LEFT + 70}" y="848" {FONT} font-size="15" fill="{INK}">'
-        "still cannot explain — all bid-side battery or small units.</text>"
+        f'<text x="{LEFT + 70}" y="842" {FONT} font-size="15" fill="{INK}">'
+        "too: the mistake was on the other side of the comparison — accepted"
+        "</text>"
     )
     parts.append(
-        f'<text x="{LEFT + 70}" y="870" {FONT} font-size="14" font-weight="600" '
-        f'fill="{BLUE}">That is the part worth investigating next.</text>'
+        f'<text x="{LEFT + 70}" y="864" {FONT} font-size="15" fill="{INK}">'
+        "actions NESO itself removes from its skip stack as constraint management."
+        "</text>"
     )
     parts.append(
-        f'<text x="{LEFT}" y="920" {FONT} font-size="15" font-style="italic" fill="{INK}">'
-        "Public data does not withhold the explanation — it withholds the resolution "
-        "at which the explanation operates.</text>"
+        f'<text x="{LEFT}" y="908" {FONT} font-size="15" font-style="italic" fill="{INK}">'
+        "Electricity-market data can be completely accurate and still tell you the "
+        "wrong story</text>"
+    )
+    parts.append(
+        f'<text x="{LEFT}" y="928" {FONT} font-size="15" font-style="italic" fill="{INK}">'
+        "if you reconstruct the system at the wrong level of resolution.</text>"
+    )
+    parts.append(
+        f'<text x="{LEFT}" y="972" {FONT} font-size="14" font-weight="600" fill="{BLUE}">'
+        "Next: a completely untouched week, rules frozen before the data is seen, "
+        "the selector now physics- and constraint-aware. Now we find out what survives."
+        "</text>"
     )
 
     # Verification footer

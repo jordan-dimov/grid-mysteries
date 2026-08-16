@@ -58,6 +58,20 @@ Merkle-anchored in `morpholog/audit-anchor.json`.
 | 2026-08-09 | bid | CUMHW-1 |
 | 2026-08-10 | bid | THMRB-1 |
 
+## Update after Method Study 001D (before any publication)
+
+The six frontier unit-days were subsequently investigated (governed
+finding `fnd-ms-001d-six-explained`): **all six are explained** by the
+same locational mechanism, keyed on the accepted side of the comparison —
+NESO excludes constraint-driven accepted actions from its skip-comparison
+stack, so the comparison our screen made is one the operator's
+methodology declines to make. The week's unmatched residue is now
+**zero**. The post may therefore end either on "six unit-days I want to
+investigate" (accurate as of 001C, with 001D as the follow-up post) or on
+the stronger completed arc ("and when I chased the last six, they fell to
+the same mechanism"). Both endings are supported by the governed record;
+choose editorially, not evidentially.
+
 ## Verification footer
 
 Pre-registered hypotheses (each committed before its data was touched) ·

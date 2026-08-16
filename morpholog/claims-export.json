@@ -513,5 +513,107 @@
         "value": "2026-08-17T00:50:00Z"
       }
     ]
+  },
+  {
+    "predicate": "SourceArtifact",
+    "args": [
+      {
+        "type": "subject",
+        "value": "art-ms-001d-boalf-manifest"
+      },
+      {
+        "type": "subject",
+        "value": "elexon-insights BOALF via investigations/method-study-001d-the-six/evidence/boalf-manifest.json"
+      },
+      {
+        "type": "subject",
+        "value": "9a6c9a912696d9df10083be7de01d0caf5fcc7312e636e0d2fad4742032b2bb6"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-08-17T00:58:00Z"
+      }
+    ]
+  },
+  {
+    "predicate": "InvestigationUses",
+    "args": [
+      {
+        "type": "subject",
+        "value": "ms-001d-the-six"
+      },
+      {
+        "type": "subject",
+        "value": "art-ms-001d-boalf-manifest"
+      }
+    ]
+  },
+  {
+    "predicate": "InvestigationUses",
+    "args": [
+      {
+        "type": "subject",
+        "value": "ms-001d-the-six"
+      },
+      {
+        "type": "subject",
+        "value": "art-001-window-manifest"
+      }
+    ]
+  },
+  {
+    "predicate": "InvestigationUses",
+    "args": [
+      {
+        "type": "subject",
+        "value": "ms-001d-the-six"
+      },
+      {
+        "type": "subject",
+        "value": "art-ms-001-physical-manifest"
+      }
+    ]
+  },
+  {
+    "predicate": "InvestigationUses",
+    "args": [
+      {
+        "type": "subject",
+        "value": "ms-001d-the-six"
+      },
+      {
+        "type": "subject",
+        "value": "art-ms-001b-neso-manifest"
+      }
+    ]
+  },
+  {
+    "predicate": "Finding",
+    "args": [
+      {
+        "type": "subject",
+        "value": "fnd-ms-001d-six-explained"
+      },
+      {
+        "type": "subject",
+        "value": "ms-001d-the-six"
+      },
+      {
+        "type": "subject",
+        "value": "hyp-ms-001d-six-explainable"
+      },
+      {
+        "type": "subject",
+        "value": "CONFIRMED - all six explained by one mechanism: every cell's gap-generating accepted counterparts are dominated by actions NESO excludes from its accepted-side skip-comparison stack (Behind constraint 760..43,752 rows per cell-date, plus System-tagged), corroborated by SO-flagged acceptances in the exact qualifying periods (constraint management on Seagreen/Viking/Edinbane wind, Cruachan/Sloy hydro, Grain CCGT). Our screen made a comparison NESO's methodology declines to make, so no skip is recorded. Deliverable-headroom bounds (0-7 MW for BHOLB-1) and daily-vs-period granularity contribute context; battery state of charge was not needed. The corpus week's unmatched residue is now zero; lesson for 002+: attribution must key operator exclusions on BOTH sides of every comparison."
+      },
+      {
+        "type": "subject",
+        "value": "7c1ee2ddb7760fd4429a5c4213c91649565b297fec904de83ed73d455bfab054"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-08-17T01:15:00Z"
+      }
+    ]
   }
 ]

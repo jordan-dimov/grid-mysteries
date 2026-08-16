@@ -1,9 +1,9 @@
 {
   "manifest": {
     "pack_format_version": 1,
-    "tree_size": 27,
-    "root_hash": "sha256:d8fd1a4a6565f0621a890209b6a355f3fef4513b7f2b779469944f8e6176e2d0",
-    "checkpoint_hash": "sha256:6b8a1fd9ef51a7a283baea9baa1474f3c95a10b8bbe29ae30e2d3fdc5d70357c"
+    "tree_size": 33,
+    "root_hash": "sha256:b6cb9c3c4d51c4792cc57109e0c6d1acb15845f6357ac7bd4d2984caf68b086d",
+    "checkpoint_hash": "sha256:84d5ad7ab7b2aa545682bc49520f3624a42112ddaad80911be30016aa401d136"
   },
   "checkpoints": [
     {
@@ -41,6 +41,12 @@
       "root_hash": "sha256:d8fd1a4a6565f0621a890209b6a355f3fef4513b7f2b779469944f8e6176e2d0",
       "prev_checkpoint_hash": "sha256:3ea1585421ce96c6ad32de4e428d3da625c997ca683fce4e6d532fb23c617c30",
       "checkpoint_hash": "sha256:6b8a1fd9ef51a7a283baea9baa1474f3c95a10b8bbe29ae30e2d3fdc5d70357c"
+    },
+    {
+      "tree_size": 33,
+      "root_hash": "sha256:b6cb9c3c4d51c4792cc57109e0c6d1acb15845f6357ac7bd4d2984caf68b086d",
+      "prev_checkpoint_hash": "sha256:6b8a1fd9ef51a7a283baea9baa1474f3c95a10b8bbe29ae30e2d3fdc5d70357c",
+      "checkpoint_hash": "sha256:84d5ad7ab7b2aa545682bc49520f3624a42112ddaad80911be30016aa401d136"
     }
   ],
   "rows": [
@@ -2370,6 +2376,508 @@
         }
       ],
       "committed_at": "2026-08-16T21:31:16.420014Z",
+      "attestation": {
+        "mode": "gateway",
+        "authenticated_by": "jdimov"
+      }
+    },
+    {
+      "transition_id": "01a00c7f-2a96-7070-b751-02d92ad5d71f",
+      "transformation_name": "register_source",
+      "arguments": [
+        {
+          "type": "subject",
+          "value": "art-ms-001d-boalf-manifest"
+        },
+        {
+          "type": "subject",
+          "value": "elexon-insights BOALF via investigations/method-study-001d-the-six/evidence/boalf-manifest.json"
+        },
+        {
+          "type": "subject",
+          "value": "9a6c9a912696d9df10083be7de01d0caf5fcc7312e636e0d2fad4742032b2bb6"
+        },
+        {
+          "type": "timestamp",
+          "value": "2026-08-17T00:58:00Z"
+        }
+      ],
+      "actor": {
+        "type": "subject",
+        "value": "jordan-dimov"
+      },
+      "invariant_epoch": 1,
+      "invariants_checked": [
+        {
+          "name": "attached_source_exists",
+          "version": 1
+        },
+        {
+          "name": "attached_source_has_investigation",
+          "version": 1
+        },
+        {
+          "name": "hypothesis_has_investigation",
+          "version": 1
+        },
+        {
+          "name": "finding_has_registered_hypothesis",
+          "version": 1
+        },
+        {
+          "name": "finding_has_at_least_one_source",
+          "version": 1
+        }
+      ],
+      "asserted_claims": [
+        {
+          "predicate": "SourceArtifact",
+          "args": [
+            {
+              "type": "subject",
+              "value": "art-ms-001d-boalf-manifest"
+            },
+            {
+              "type": "subject",
+              "value": "elexon-insights BOALF via investigations/method-study-001d-the-six/evidence/boalf-manifest.json"
+            },
+            {
+              "type": "subject",
+              "value": "9a6c9a912696d9df10083be7de01d0caf5fcc7312e636e0d2fad4742032b2bb6"
+            },
+            {
+              "type": "timestamp",
+              "value": "2026-08-17T00:58:00Z"
+            }
+          ]
+        }
+      ],
+      "retracted_claims": [],
+      "emitted_intents": [
+        {
+          "name": "SourceRegistered",
+          "args": [
+            {
+              "type": "subject",
+              "value": "art-ms-001d-boalf-manifest"
+            }
+          ]
+        }
+      ],
+      "committed_at": "2026-08-16T21:34:15.700311Z",
+      "attestation": {
+        "mode": "gateway",
+        "authenticated_by": "jdimov"
+      }
+    },
+    {
+      "transition_id": "01a00c7f-2aaf-7211-8f95-bd4c9dd99d20",
+      "transformation_name": "attach_source",
+      "arguments": [
+        {
+          "type": "subject",
+          "value": "ms-001d-the-six"
+        },
+        {
+          "type": "subject",
+          "value": "art-ms-001d-boalf-manifest"
+        }
+      ],
+      "actor": {
+        "type": "subject",
+        "value": "jordan-dimov"
+      },
+      "invariant_epoch": 1,
+      "invariants_checked": [
+        {
+          "name": "attached_source_exists",
+          "version": 1
+        },
+        {
+          "name": "attached_source_has_investigation",
+          "version": 1
+        },
+        {
+          "name": "hypothesis_has_investigation",
+          "version": 1
+        },
+        {
+          "name": "finding_has_registered_hypothesis",
+          "version": 1
+        },
+        {
+          "name": "finding_has_at_least_one_source",
+          "version": 1
+        }
+      ],
+      "asserted_claims": [
+        {
+          "predicate": "InvestigationUses",
+          "args": [
+            {
+              "type": "subject",
+              "value": "ms-001d-the-six"
+            },
+            {
+              "type": "subject",
+              "value": "art-ms-001d-boalf-manifest"
+            }
+          ]
+        }
+      ],
+      "retracted_claims": [],
+      "emitted_intents": [
+        {
+          "name": "SourceAttached",
+          "args": [
+            {
+              "type": "subject",
+              "value": "ms-001d-the-six"
+            },
+            {
+              "type": "subject",
+              "value": "art-ms-001d-boalf-manifest"
+            }
+          ]
+        }
+      ],
+      "committed_at": "2026-08-16T21:34:15.724602Z",
+      "attestation": {
+        "mode": "gateway",
+        "authenticated_by": "jdimov"
+      }
+    },
+    {
+      "transition_id": "01a00c7f-2ac4-7c60-8189-8bf0bad09126",
+      "transformation_name": "attach_source",
+      "arguments": [
+        {
+          "type": "subject",
+          "value": "ms-001d-the-six"
+        },
+        {
+          "type": "subject",
+          "value": "art-001-window-manifest"
+        }
+      ],
+      "actor": {
+        "type": "subject",
+        "value": "jordan-dimov"
+      },
+      "invariant_epoch": 1,
+      "invariants_checked": [
+        {
+          "name": "attached_source_exists",
+          "version": 1
+        },
+        {
+          "name": "attached_source_has_investigation",
+          "version": 1
+        },
+        {
+          "name": "hypothesis_has_investigation",
+          "version": 1
+        },
+        {
+          "name": "finding_has_registered_hypothesis",
+          "version": 1
+        },
+        {
+          "name": "finding_has_at_least_one_source",
+          "version": 1
+        }
+      ],
+      "asserted_claims": [
+        {
+          "predicate": "InvestigationUses",
+          "args": [
+            {
+              "type": "subject",
+              "value": "ms-001d-the-six"
+            },
+            {
+              "type": "subject",
+              "value": "art-001-window-manifest"
+            }
+          ]
+        }
+      ],
+      "retracted_claims": [],
+      "emitted_intents": [
+        {
+          "name": "SourceAttached",
+          "args": [
+            {
+              "type": "subject",
+              "value": "ms-001d-the-six"
+            },
+            {
+              "type": "subject",
+              "value": "art-001-window-manifest"
+            }
+          ]
+        }
+      ],
+      "committed_at": "2026-08-16T21:34:15.745575Z",
+      "attestation": {
+        "mode": "gateway",
+        "authenticated_by": "jdimov"
+      }
+    },
+    {
+      "transition_id": "01a00c7f-2ad0-7ca2-a2aa-8a9c5bb37b8f",
+      "transformation_name": "attach_source",
+      "arguments": [
+        {
+          "type": "subject",
+          "value": "ms-001d-the-six"
+        },
+        {
+          "type": "subject",
+          "value": "art-ms-001-physical-manifest"
+        }
+      ],
+      "actor": {
+        "type": "subject",
+        "value": "jordan-dimov"
+      },
+      "invariant_epoch": 1,
+      "invariants_checked": [
+        {
+          "name": "attached_source_exists",
+          "version": 1
+        },
+        {
+          "name": "attached_source_has_investigation",
+          "version": 1
+        },
+        {
+          "name": "hypothesis_has_investigation",
+          "version": 1
+        },
+        {
+          "name": "finding_has_registered_hypothesis",
+          "version": 1
+        },
+        {
+          "name": "finding_has_at_least_one_source",
+          "version": 1
+        }
+      ],
+      "asserted_claims": [
+        {
+          "predicate": "InvestigationUses",
+          "args": [
+            {
+              "type": "subject",
+              "value": "ms-001d-the-six"
+            },
+            {
+              "type": "subject",
+              "value": "art-ms-001-physical-manifest"
+            }
+          ]
+        }
+      ],
+      "retracted_claims": [],
+      "emitted_intents": [
+        {
+          "name": "SourceAttached",
+          "args": [
+            {
+              "type": "subject",
+              "value": "ms-001d-the-six"
+            },
+            {
+              "type": "subject",
+              "value": "art-ms-001-physical-manifest"
+            }
+          ]
+        }
+      ],
+      "committed_at": "2026-08-16T21:34:15.758972Z",
+      "attestation": {
+        "mode": "gateway",
+        "authenticated_by": "jdimov"
+      }
+    },
+    {
+      "transition_id": "01a00c7f-2ae4-7420-ab36-0b10c0bfcdec",
+      "transformation_name": "attach_source",
+      "arguments": [
+        {
+          "type": "subject",
+          "value": "ms-001d-the-six"
+        },
+        {
+          "type": "subject",
+          "value": "art-ms-001b-neso-manifest"
+        }
+      ],
+      "actor": {
+        "type": "subject",
+        "value": "jordan-dimov"
+      },
+      "invariant_epoch": 1,
+      "invariants_checked": [
+        {
+          "name": "attached_source_exists",
+          "version": 1
+        },
+        {
+          "name": "attached_source_has_investigation",
+          "version": 1
+        },
+        {
+          "name": "hypothesis_has_investigation",
+          "version": 1
+        },
+        {
+          "name": "finding_has_registered_hypothesis",
+          "version": 1
+        },
+        {
+          "name": "finding_has_at_least_one_source",
+          "version": 1
+        }
+      ],
+      "asserted_claims": [
+        {
+          "predicate": "InvestigationUses",
+          "args": [
+            {
+              "type": "subject",
+              "value": "ms-001d-the-six"
+            },
+            {
+              "type": "subject",
+              "value": "art-ms-001b-neso-manifest"
+            }
+          ]
+        }
+      ],
+      "retracted_claims": [],
+      "emitted_intents": [
+        {
+          "name": "SourceAttached",
+          "args": [
+            {
+              "type": "subject",
+              "value": "ms-001d-the-six"
+            },
+            {
+              "type": "subject",
+              "value": "art-ms-001b-neso-manifest"
+            }
+          ]
+        }
+      ],
+      "committed_at": "2026-08-16T21:34:15.777781Z",
+      "attestation": {
+        "mode": "gateway",
+        "authenticated_by": "jdimov"
+      }
+    },
+    {
+      "transition_id": "01a00c7f-2af3-74e0-b832-c3ec127fbdde",
+      "transformation_name": "publish_finding",
+      "arguments": [
+        {
+          "type": "subject",
+          "value": "fnd-ms-001d-six-explained"
+        },
+        {
+          "type": "subject",
+          "value": "ms-001d-the-six"
+        },
+        {
+          "type": "subject",
+          "value": "hyp-ms-001d-six-explainable"
+        },
+        {
+          "type": "subject",
+          "value": "CONFIRMED - all six explained by one mechanism: every cell's gap-generating accepted counterparts are dominated by actions NESO excludes from its accepted-side skip-comparison stack (Behind constraint 760..43,752 rows per cell-date, plus System-tagged), corroborated by SO-flagged acceptances in the exact qualifying periods (constraint management on Seagreen/Viking/Edinbane wind, Cruachan/Sloy hydro, Grain CCGT). Our screen made a comparison NESO's methodology declines to make, so no skip is recorded. Deliverable-headroom bounds (0-7 MW for BHOLB-1) and daily-vs-period granularity contribute context; battery state of charge was not needed. The corpus week's unmatched residue is now zero; lesson for 002+: attribution must key operator exclusions on BOTH sides of every comparison."
+        },
+        {
+          "type": "subject",
+          "value": "7c1ee2ddb7760fd4429a5c4213c91649565b297fec904de83ed73d455bfab054"
+        },
+        {
+          "type": "timestamp",
+          "value": "2026-08-17T01:15:00Z"
+        }
+      ],
+      "actor": {
+        "type": "subject",
+        "value": "jordan-dimov"
+      },
+      "invariant_epoch": 1,
+      "invariants_checked": [
+        {
+          "name": "attached_source_exists",
+          "version": 1
+        },
+        {
+          "name": "attached_source_has_investigation",
+          "version": 1
+        },
+        {
+          "name": "hypothesis_has_investigation",
+          "version": 1
+        },
+        {
+          "name": "finding_has_registered_hypothesis",
+          "version": 1
+        },
+        {
+          "name": "finding_has_at_least_one_source",
+          "version": 1
+        }
+      ],
+      "asserted_claims": [
+        {
+          "predicate": "Finding",
+          "args": [
+            {
+              "type": "subject",
+              "value": "fnd-ms-001d-six-explained"
+            },
+            {
+              "type": "subject",
+              "value": "ms-001d-the-six"
+            },
+            {
+              "type": "subject",
+              "value": "hyp-ms-001d-six-explainable"
+            },
+            {
+              "type": "subject",
+              "value": "CONFIRMED - all six explained by one mechanism: every cell's gap-generating accepted counterparts are dominated by actions NESO excludes from its accepted-side skip-comparison stack (Behind constraint 760..43,752 rows per cell-date, plus System-tagged), corroborated by SO-flagged acceptances in the exact qualifying periods (constraint management on Seagreen/Viking/Edinbane wind, Cruachan/Sloy hydro, Grain CCGT). Our screen made a comparison NESO's methodology declines to make, so no skip is recorded. Deliverable-headroom bounds (0-7 MW for BHOLB-1) and daily-vs-period granularity contribute context; battery state of charge was not needed. The corpus week's unmatched residue is now zero; lesson for 002+: attribution must key operator exclusions on BOTH sides of every comparison."
+            },
+            {
+              "type": "subject",
+              "value": "7c1ee2ddb7760fd4429a5c4213c91649565b297fec904de83ed73d455bfab054"
+            },
+            {
+              "type": "timestamp",
+              "value": "2026-08-17T01:15:00Z"
+            }
+          ]
+        }
+      ],
+      "retracted_claims": [],
+      "emitted_intents": [
+        {
+          "name": "FindingPublished",
+          "args": [
+            {
+              "type": "subject",
+              "value": "fnd-ms-001d-six-explained"
+            }
+          ]
+        }
+      ],
+      "committed_at": "2026-08-16T21:34:15.792801Z",
       "attestation": {
         "mode": "gateway",
         "authenticated_by": "jdimov"

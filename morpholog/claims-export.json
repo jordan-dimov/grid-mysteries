@@ -407,5 +407,73 @@
         "value": "2026-08-16T23:45:00Z"
       }
     ]
+  },
+  {
+    "predicate": "InvestigationUses",
+    "args": [
+      {
+        "type": "subject",
+        "value": "ms-001c-disagreement-anatomy"
+      },
+      {
+        "type": "subject",
+        "value": "art-001-window-manifest"
+      }
+    ]
+  },
+  {
+    "predicate": "InvestigationUses",
+    "args": [
+      {
+        "type": "subject",
+        "value": "ms-001c-disagreement-anatomy"
+      },
+      {
+        "type": "subject",
+        "value": "art-ms-001-physical-manifest"
+      }
+    ]
+  },
+  {
+    "predicate": "InvestigationUses",
+    "args": [
+      {
+        "type": "subject",
+        "value": "ms-001c-disagreement-anatomy"
+      },
+      {
+        "type": "subject",
+        "value": "art-ms-001b-neso-manifest"
+      }
+    ]
+  },
+  {
+    "predicate": "Finding",
+    "args": [
+      {
+        "type": "subject",
+        "value": "fnd-ms-001c-residue-attributed"
+      },
+      {
+        "type": "subject",
+        "value": "ms-001c-disagreement-anatomy"
+      },
+      {
+        "type": "subject",
+        "value": "hyp-ms-001c-majority-attributable"
+      },
+      {
+        "type": "subject",
+        "value": "CONFIRMED, far beyond the majority threshold: of the 2,226 post-filter disagreement cells, 99.7 percent carry a public operational explanation - 40.3 percent absent from NESO's in-merit availability universe, 34.5 percent behind constraint, 23.1 percent other published exclusion categories or full acceptance - leaving 6 cells (0.27 percent, all bid-side battery/small units) unmatched. Layered agreement with NESO stage 5 on the fixed 6,390-cell universe: 34.9 percent naive, 64.7 percent with physical deliverability, 66.6 percent peak adding wind-offer exclusions; binary adoption of volumetric exclusion categories beyond that degrades agreement (constraint layer forfeits 970 genuine catches), so further progress requires volume-level reconstruction."
+      },
+      {
+        "type": "subject",
+        "value": "b707658552cdae4f602f65e8d87502fbaf66a37c42aab389708ffd36c32fa727"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-08-17T00:20:00Z"
+      }
+    ]
   }
 ]

@@ -1,9 +1,9 @@
 {
   "manifest": {
     "pack_format_version": 1,
-    "tree_size": 21,
-    "root_hash": "sha256:568e84df9134a5fafb264883297c539c17289c260acbb1605eb42937abb6825c",
-    "checkpoint_hash": "sha256:50c7a892a1a9eb5996d059fa0e0ca0987237acf0ac0c5e6eeae64153188a83cf"
+    "tree_size": 25,
+    "root_hash": "sha256:5bd1d1b5e71e3223d312406780e9298ae63391f65461b1213b99c16f4035a051",
+    "checkpoint_hash": "sha256:3ea1585421ce96c6ad32de4e428d3da625c997ca683fce4e6d532fb23c617c30"
   },
   "checkpoints": [
     {
@@ -29,6 +29,12 @@
       "root_hash": "sha256:568e84df9134a5fafb264883297c539c17289c260acbb1605eb42937abb6825c",
       "prev_checkpoint_hash": "sha256:728248ec6c0b317a5f678ab8d89f45ed7dc69cfebbbbf58245df4d69a64357f9",
       "checkpoint_hash": "sha256:50c7a892a1a9eb5996d059fa0e0ca0987237acf0ac0c5e6eeae64153188a83cf"
+    },
+    {
+      "tree_size": 25,
+      "root_hash": "sha256:5bd1d1b5e71e3223d312406780e9298ae63391f65461b1213b99c16f4035a051",
+      "prev_checkpoint_hash": "sha256:50c7a892a1a9eb5996d059fa0e0ca0987237acf0ac0c5e6eeae64153188a83cf",
+      "checkpoint_hash": "sha256:3ea1585421ce96c6ad32de4e428d3da625c997ca683fce4e6d532fb23c617c30"
     }
   ],
   "rows": [
@@ -1852,6 +1858,342 @@
         }
       ],
       "committed_at": "2026-08-16T21:18:34.404877Z",
+      "attestation": {
+        "mode": "gateway",
+        "authenticated_by": "jdimov"
+      }
+    },
+    {
+      "transition_id": "01a00c73-d69c-7373-a043-c43f49f12488",
+      "transformation_name": "attach_source",
+      "arguments": [
+        {
+          "type": "subject",
+          "value": "ms-001c-disagreement-anatomy"
+        },
+        {
+          "type": "subject",
+          "value": "art-001-window-manifest"
+        }
+      ],
+      "actor": {
+        "type": "subject",
+        "value": "jordan-dimov"
+      },
+      "invariant_epoch": 1,
+      "invariants_checked": [
+        {
+          "name": "attached_source_exists",
+          "version": 1
+        },
+        {
+          "name": "attached_source_has_investigation",
+          "version": 1
+        },
+        {
+          "name": "hypothesis_has_investigation",
+          "version": 1
+        },
+        {
+          "name": "finding_has_registered_hypothesis",
+          "version": 1
+        },
+        {
+          "name": "finding_has_at_least_one_source",
+          "version": 1
+        }
+      ],
+      "asserted_claims": [
+        {
+          "predicate": "InvestigationUses",
+          "args": [
+            {
+              "type": "subject",
+              "value": "ms-001c-disagreement-anatomy"
+            },
+            {
+              "type": "subject",
+              "value": "art-001-window-manifest"
+            }
+          ]
+        }
+      ],
+      "retracted_claims": [],
+      "emitted_intents": [
+        {
+          "name": "SourceAttached",
+          "args": [
+            {
+              "type": "subject",
+              "value": "ms-001c-disagreement-anatomy"
+            },
+            {
+              "type": "subject",
+              "value": "art-001-window-manifest"
+            }
+          ]
+        }
+      ],
+      "committed_at": "2026-08-16T21:21:53.306174Z",
+      "attestation": {
+        "mode": "gateway",
+        "authenticated_by": "jdimov"
+      }
+    },
+    {
+      "transition_id": "01a00c73-d6ae-7852-974f-2a03683d8c2f",
+      "transformation_name": "attach_source",
+      "arguments": [
+        {
+          "type": "subject",
+          "value": "ms-001c-disagreement-anatomy"
+        },
+        {
+          "type": "subject",
+          "value": "art-ms-001-physical-manifest"
+        }
+      ],
+      "actor": {
+        "type": "subject",
+        "value": "jordan-dimov"
+      },
+      "invariant_epoch": 1,
+      "invariants_checked": [
+        {
+          "name": "attached_source_exists",
+          "version": 1
+        },
+        {
+          "name": "attached_source_has_investigation",
+          "version": 1
+        },
+        {
+          "name": "hypothesis_has_investigation",
+          "version": 1
+        },
+        {
+          "name": "finding_has_registered_hypothesis",
+          "version": 1
+        },
+        {
+          "name": "finding_has_at_least_one_source",
+          "version": 1
+        }
+      ],
+      "asserted_claims": [
+        {
+          "predicate": "InvestigationUses",
+          "args": [
+            {
+              "type": "subject",
+              "value": "ms-001c-disagreement-anatomy"
+            },
+            {
+              "type": "subject",
+              "value": "art-ms-001-physical-manifest"
+            }
+          ]
+        }
+      ],
+      "retracted_claims": [],
+      "emitted_intents": [
+        {
+          "name": "SourceAttached",
+          "args": [
+            {
+              "type": "subject",
+              "value": "ms-001c-disagreement-anatomy"
+            },
+            {
+              "type": "subject",
+              "value": "art-ms-001-physical-manifest"
+            }
+          ]
+        }
+      ],
+      "committed_at": "2026-08-16T21:21:53.323874Z",
+      "attestation": {
+        "mode": "gateway",
+        "authenticated_by": "jdimov"
+      }
+    },
+    {
+      "transition_id": "01a00c73-d6bf-7182-a8db-7533ea0f0bf4",
+      "transformation_name": "attach_source",
+      "arguments": [
+        {
+          "type": "subject",
+          "value": "ms-001c-disagreement-anatomy"
+        },
+        {
+          "type": "subject",
+          "value": "art-ms-001b-neso-manifest"
+        }
+      ],
+      "actor": {
+        "type": "subject",
+        "value": "jordan-dimov"
+      },
+      "invariant_epoch": 1,
+      "invariants_checked": [
+        {
+          "name": "attached_source_exists",
+          "version": 1
+        },
+        {
+          "name": "attached_source_has_investigation",
+          "version": 1
+        },
+        {
+          "name": "hypothesis_has_investigation",
+          "version": 1
+        },
+        {
+          "name": "finding_has_registered_hypothesis",
+          "version": 1
+        },
+        {
+          "name": "finding_has_at_least_one_source",
+          "version": 1
+        }
+      ],
+      "asserted_claims": [
+        {
+          "predicate": "InvestigationUses",
+          "args": [
+            {
+              "type": "subject",
+              "value": "ms-001c-disagreement-anatomy"
+            },
+            {
+              "type": "subject",
+              "value": "art-ms-001b-neso-manifest"
+            }
+          ]
+        }
+      ],
+      "retracted_claims": [],
+      "emitted_intents": [
+        {
+          "name": "SourceAttached",
+          "args": [
+            {
+              "type": "subject",
+              "value": "ms-001c-disagreement-anatomy"
+            },
+            {
+              "type": "subject",
+              "value": "art-ms-001b-neso-manifest"
+            }
+          ]
+        }
+      ],
+      "committed_at": "2026-08-16T21:21:53.340737Z",
+      "attestation": {
+        "mode": "gateway",
+        "authenticated_by": "jdimov"
+      }
+    },
+    {
+      "transition_id": "01a00c73-d70a-7911-b498-817735dcf679",
+      "transformation_name": "publish_finding",
+      "arguments": [
+        {
+          "type": "subject",
+          "value": "fnd-ms-001c-residue-attributed"
+        },
+        {
+          "type": "subject",
+          "value": "ms-001c-disagreement-anatomy"
+        },
+        {
+          "type": "subject",
+          "value": "hyp-ms-001c-majority-attributable"
+        },
+        {
+          "type": "subject",
+          "value": "CONFIRMED, far beyond the majority threshold: of the 2,226 post-filter disagreement cells, 99.7 percent carry a public operational explanation - 40.3 percent absent from NESO's in-merit availability universe, 34.5 percent behind constraint, 23.1 percent other published exclusion categories or full acceptance - leaving 6 cells (0.27 percent, all bid-side battery/small units) unmatched. Layered agreement with NESO stage 5 on the fixed 6,390-cell universe: 34.9 percent naive, 64.7 percent with physical deliverability, 66.6 percent peak adding wind-offer exclusions; binary adoption of volumetric exclusion categories beyond that degrades agreement (constraint layer forfeits 970 genuine catches), so further progress requires volume-level reconstruction."
+        },
+        {
+          "type": "subject",
+          "value": "b707658552cdae4f602f65e8d87502fbaf66a37c42aab389708ffd36c32fa727"
+        },
+        {
+          "type": "timestamp",
+          "value": "2026-08-17T00:20:00Z"
+        }
+      ],
+      "actor": {
+        "type": "subject",
+        "value": "jordan-dimov"
+      },
+      "invariant_epoch": 1,
+      "invariants_checked": [
+        {
+          "name": "attached_source_exists",
+          "version": 1
+        },
+        {
+          "name": "attached_source_has_investigation",
+          "version": 1
+        },
+        {
+          "name": "hypothesis_has_investigation",
+          "version": 1
+        },
+        {
+          "name": "finding_has_registered_hypothesis",
+          "version": 1
+        },
+        {
+          "name": "finding_has_at_least_one_source",
+          "version": 1
+        }
+      ],
+      "asserted_claims": [
+        {
+          "predicate": "Finding",
+          "args": [
+            {
+              "type": "subject",
+              "value": "fnd-ms-001c-residue-attributed"
+            },
+            {
+              "type": "subject",
+              "value": "ms-001c-disagreement-anatomy"
+            },
+            {
+              "type": "subject",
+              "value": "hyp-ms-001c-majority-attributable"
+            },
+            {
+              "type": "subject",
+              "value": "CONFIRMED, far beyond the majority threshold: of the 2,226 post-filter disagreement cells, 99.7 percent carry a public operational explanation - 40.3 percent absent from NESO's in-merit availability universe, 34.5 percent behind constraint, 23.1 percent other published exclusion categories or full acceptance - leaving 6 cells (0.27 percent, all bid-side battery/small units) unmatched. Layered agreement with NESO stage 5 on the fixed 6,390-cell universe: 34.9 percent naive, 64.7 percent with physical deliverability, 66.6 percent peak adding wind-offer exclusions; binary adoption of volumetric exclusion categories beyond that degrades agreement (constraint layer forfeits 970 genuine catches), so further progress requires volume-level reconstruction."
+            },
+            {
+              "type": "subject",
+              "value": "b707658552cdae4f602f65e8d87502fbaf66a37c42aab389708ffd36c32fa727"
+            },
+            {
+              "type": "timestamp",
+              "value": "2026-08-17T00:20:00Z"
+            }
+          ]
+        }
+      ],
+      "retracted_claims": [],
+      "emitted_intents": [
+        {
+          "name": "FindingPublished",
+          "args": [
+            {
+              "type": "subject",
+              "value": "fnd-ms-001c-residue-attributed"
+            }
+          ]
+        }
+      ],
+      "committed_at": "2026-08-16T21:21:53.415474Z",
       "attestation": {
         "mode": "gateway",
         "authenticated_by": "jdimov"

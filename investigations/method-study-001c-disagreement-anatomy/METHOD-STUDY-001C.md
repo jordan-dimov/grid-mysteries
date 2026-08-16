@@ -83,6 +83,18 @@ layer is reported, not hidden.
 - Morpholog: investigation `ms-001c-disagreement-anatomy`, the hypothesis
   above, and a finding only for what the completed study supports.
 
+## Corrections
+
+1. **Comparison-universe defect in the first implementation (recorded
+   2026-08-16, before any results were published).** The initial
+   `disagreement.py` computed layer agreement over a universe of
+   post-filter-flagged ∪ NESO stage-5 cells, which is smaller than 001B's
+   declared 6,390-cell universe (naive-flagged ∪ NESO stage-5) and made
+   the layer rates incomparable with 001B's 34.9%/64.7%. The universe was
+   fixed to 001B's definition and the naive layer's rate is recomputed
+   rather than quoted. No attribution number was affected; the defective
+   intermediate output was never published.
+
 ## Reproduction
 
 ```bash

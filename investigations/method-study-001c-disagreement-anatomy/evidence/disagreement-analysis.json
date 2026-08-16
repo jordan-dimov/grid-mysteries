@@ -1,0 +1,210 @@
+{
+ "corpus": {
+  "window": [
+   "2026-08-04",
+   "2026-08-10"
+  ]
+ },
+ "disagreement_cells": 2226,
+ "by_direction": {
+  "bid": 854,
+  "offer": 1372
+ },
+ "primary_attribution": {
+  "absent_from_neso_universe": 897,
+  "behind_constraint": 769,
+  "long_notice_or_access": 132,
+  "ramping": 129,
+  "wind_offer": 122,
+  "unwind": 106,
+  "fully_accepted_in_merit": 39,
+  "system_tagged": 25,
+  "unmatched": 6,
+  "invalid_parameters": 1
+ },
+ "any_presence_of_category": {
+  "behind_constraint": 64801,
+  "wind_offer": 21697,
+  "long_notice_or_access": 8333,
+  "unwind": 5522,
+  "system_tagged": 3600,
+  "ramping": 3000,
+  "invalid_parameters": 43
+ },
+ "unmatched_cells": 6,
+ "unmatched_cell_list": [
+  {
+   "date": "2026-08-05",
+   "direction": "bid",
+   "ngc_unit": "BHOLB-1",
+   "intensity": "1278.63"
+  },
+  {
+   "date": "2026-08-06",
+   "direction": "bid",
+   "ngc_unit": "BHOLB-1",
+   "intensity": "941.93"
+  },
+  {
+   "date": "2026-08-06",
+   "direction": "bid",
+   "ngc_unit": "THMRB-1",
+   "intensity": "1241.54"
+  },
+  {
+   "date": "2026-08-09",
+   "direction": "bid",
+   "ngc_unit": "BHOLB-1",
+   "intensity": "507.40"
+  },
+  {
+   "date": "2026-08-09",
+   "direction": "bid",
+   "ngc_unit": "CUMHW-1",
+   "intensity": "49.02"
+  },
+  {
+   "date": "2026-08-10",
+   "direction": "bid",
+   "ngc_unit": "THMRB-1",
+   "intensity": "430.04"
+  }
+ ],
+ "waterfall": [
+  {
+   "layer": "naive_price_screen",
+   "agreement_rate": 0.34945226917057903,
+   "neso_skips_caught": 1997,
+   "neso_skips_total": 2017,
+   "false_alarms": 4137
+  },
+  {
+   "layer": "physical_deliverability",
+   "agreement_rate": 0.6471048513302035,
+   "neso_skips_caught": 1988,
+   "neso_skips_total": 2017,
+   "false_alarms": 2226
+  },
+  {
+   "layer": "minus_wind_offer",
+   "cells_unflagged": 122,
+   "agreement_rate": 0.6661971830985915,
+   "neso_skips_caught": 1988,
+   "neso_skips_total": 2017,
+   "false_alarms": 2104
+  },
+  {
+   "layer": "minus_behind_constraint",
+   "cells_unflagged": 1822,
+   "agreement_rate": 0.6477308294209703,
+   "neso_skips_caught": 1018,
+   "neso_skips_total": 2017,
+   "false_alarms": 1252
+  },
+  {
+   "layer": "minus_system_tagged",
+   "cells_unflagged": 29,
+   "agreement_rate": 0.6482003129890453,
+   "neso_skips_caught": 1005,
+   "neso_skips_total": 2017,
+   "false_alarms": 1236
+  },
+  {
+   "layer": "minus_unwind",
+   "cells_unflagged": 616,
+   "agreement_rate": 0.5793427230046948,
+   "neso_skips_caught": 477,
+   "neso_skips_total": 2017,
+   "false_alarms": 1148
+  },
+  {
+   "layer": "minus_ramping",
+   "cells_unflagged": 315,
+   "agreement_rate": 0.5763693270735524,
+   "neso_skips_caught": 310,
+   "neso_skips_total": 2017,
+   "false_alarms": 1000
+  },
+  {
+   "layer": "minus_long_notice_or_access",
+   "cells_unflagged": 76,
+   "agreement_rate": 0.5826291079812207,
+   "neso_skips_caught": 292,
+   "neso_skips_total": 2017,
+   "false_alarms": 942
+  }
+ ],
+ "final_layer_flagged_cells": 1234,
+ "final_layer_top10_by_intensity": [
+  {
+   "date": "2026-08-07",
+   "direction": "offer",
+   "ngc_unit": "SCCLD-1",
+   "intensity": "10645.64",
+   "neso_skip": "0"
+  },
+  {
+   "date": "2026-08-05",
+   "direction": "offer",
+   "ngc_unit": "SCCLD-1",
+   "intensity": "7100.65",
+   "neso_skip": "0"
+  },
+  {
+   "date": "2026-08-04",
+   "direction": "offer",
+   "ngc_unit": "SCCLD-1",
+   "intensity": "6806.83",
+   "neso_skip": "0"
+  },
+  {
+   "date": "2026-08-06",
+   "direction": "offer",
+   "ngc_unit": "SCCLD-1",
+   "intensity": "5653.55",
+   "neso_skip": "0"
+  },
+  {
+   "date": "2026-08-07",
+   "direction": "offer",
+   "ngc_unit": "AG-KFLX01",
+   "intensity": "5510.64",
+   "neso_skip": "39.0"
+  },
+  {
+   "date": "2026-08-07",
+   "direction": "offer",
+   "ngc_unit": "AG-AFLX03",
+   "intensity": "5510.64",
+   "neso_skip": "28.08"
+  },
+  {
+   "date": "2026-08-07",
+   "direction": "offer",
+   "ngc_unit": "ARNKB-2",
+   "intensity": "5350.12",
+   "neso_skip": "4.96"
+  },
+  {
+   "date": "2026-08-07",
+   "direction": "offer",
+   "ngc_unit": "AG-AFLX04",
+   "intensity": "5340.64",
+   "neso_skip": "28.03"
+  },
+  {
+   "date": "2026-08-07",
+   "direction": "offer",
+   "ngc_unit": "AG-EFLX04",
+   "intensity": "5340.64",
+   "neso_skip": "31.6"
+  },
+  {
+   "date": "2026-08-08",
+   "direction": "offer",
+   "ngc_unit": "SCCLD-1",
+   "intensity": "5304.85",
+   "neso_skip": "0"
+  }
+ ]
+}

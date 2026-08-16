@@ -34,7 +34,7 @@ from screen import (  # noqa: E402
 def build_state() -> dict:
     """Everything both subcommands need, computed once from pinned inputs."""
     window = set(window_dates())
-    _naive, post = our_intensity_by_cell()
+    naive, post = our_intensity_by_cell()
 
     inmerit = read_neso_csv("inmerit_allbm_2026-08.csv")
     neso_skip: dict[tuple, Decimal] = {}
@@ -59,15 +59,20 @@ def build_state() -> dict:
         if date in window:
             exclusion_rows.setdefault((date, r["bid_offer"].lower(), r["bm_unit"]), []).append(r)
 
+    naive_flagged = {cell for cell, intensity in naive.items() if intensity > 0}
     flagged = {cell for cell, intensity in post.items() if intensity > 0}
     return {
         "post": post,
+        "naive_flagged": naive_flagged,
         "flagged": flagged,
         "neso_skip": neso_skip,
         "neso_accepted": neso_accepted,
         "neso_in_merit": neso_in_merit,
         "exclusion_rows": exclusion_rows,
-        "cells": {c for c in flagged | set(neso_skip)},
+        # Correction (recorded in METHOD-STUDY-001C.md): the comparison
+        # universe is 001B's fixed universe — naive-flagged cells union the
+        # NESO stage-5 universe — so every layer's rate is comparable.
+        "cells": naive_flagged | set(neso_skip),
     }
 
 
@@ -115,7 +120,7 @@ def analyse() -> None:
             for cat in set(categorise(row["exclusion_reason"])):
                 any_presence[cat] += 1
 
-    waterfall = [{"layer": "naive_price_screen", "note": "from 001B", "agreement_rate": 0.349}]
+    waterfall = [{"layer": "naive_price_screen", **agreement(state["naive_flagged"], state)}]
     current = set(flagged)
     waterfall.append({"layer": "physical_deliverability", **agreement(current, state)})
     for category in LAYER_ORDER:
@@ -146,6 +151,15 @@ def analyse() -> None:
         "primary_attribution": dict(primary.most_common()),
         "any_presence_of_category": dict(any_presence.most_common()),
         "unmatched_cells": len(unmatched_cells),
+        "unmatched_cell_list": [
+            {
+                "date": c[0],
+                "direction": c[1],
+                "ngc_unit": c[2],
+                "intensity": str(state["post"][c]),
+            }
+            for c in unmatched_cells
+        ],
         "waterfall": waterfall,
         "final_layer_flagged_cells": len(current),
         "final_layer_top10_by_intensity": [

@@ -1,9 +1,9 @@
 {
   "manifest": {
     "pack_format_version": 1,
-    "tree_size": 12,
-    "root_hash": "sha256:5979aedec89cc0fca85438ad6b70c893b30a8ebd58f2595a7a0a043f20bf9130",
-    "checkpoint_hash": "sha256:1c1258ff5c56230b458eaa9e433ee66afe6de840f6d70a53699e70d9d32eaf08"
+    "tree_size": 14,
+    "root_hash": "sha256:61007924494fd7389b91ba1cc3a32485f703c9da44ef93408fc1ef4bec7f9422",
+    "checkpoint_hash": "sha256:d7044bb6cee2c083e757f4cb921290c100407c8f47588e37e83eb02ee67c9a28"
   },
   "checkpoints": [
     {
@@ -11,6 +11,12 @@
       "root_hash": "sha256:5979aedec89cc0fca85438ad6b70c893b30a8ebd58f2595a7a0a043f20bf9130",
       "prev_checkpoint_hash": null,
       "checkpoint_hash": "sha256:1c1258ff5c56230b458eaa9e433ee66afe6de840f6d70a53699e70d9d32eaf08"
+    },
+    {
+      "tree_size": 14,
+      "root_hash": "sha256:61007924494fd7389b91ba1cc3a32485f703c9da44ef93408fc1ef4bec7f9422",
+      "prev_checkpoint_hash": "sha256:1c1258ff5c56230b458eaa9e433ee66afe6de840f6d70a53699e70d9d32eaf08",
+      "checkpoint_hash": "sha256:d7044bb6cee2c083e757f4cb921290c100407c8f47588e37e83eb02ee67c9a28"
     }
   ],
   "rows": [
@@ -1057,6 +1063,176 @@
         }
       ],
       "committed_at": "2026-08-16T20:40:24.358831Z",
+      "attestation": {
+        "mode": "gateway",
+        "authenticated_by": "jdimov"
+      }
+    },
+    {
+      "transition_id": "01a00c5f-2973-77f2-9266-6fa8af9749b5",
+      "transformation_name": "open_investigation",
+      "arguments": [
+        {
+          "type": "subject",
+          "value": "ms-001b-naive-screen"
+        },
+        {
+          "type": "subject",
+          "value": "Method Study 001B: the naive opportunity screen vs physical state and NESO skip methodology (retrospective, corpus 2026-08-04..10)"
+        },
+        {
+          "type": "timestamp",
+          "value": "2026-08-16T22:30:00Z"
+        }
+      ],
+      "actor": {
+        "type": "subject",
+        "value": "jordan-dimov"
+      },
+      "invariant_epoch": 1,
+      "invariants_checked": [
+        {
+          "name": "attached_source_exists",
+          "version": 1
+        },
+        {
+          "name": "attached_source_has_investigation",
+          "version": 1
+        },
+        {
+          "name": "hypothesis_has_investigation",
+          "version": 1
+        },
+        {
+          "name": "finding_has_registered_hypothesis",
+          "version": 1
+        },
+        {
+          "name": "finding_has_at_least_one_source",
+          "version": 1
+        }
+      ],
+      "asserted_claims": [
+        {
+          "predicate": "Investigation",
+          "args": [
+            {
+              "type": "subject",
+              "value": "ms-001b-naive-screen"
+            },
+            {
+              "type": "subject",
+              "value": "Method Study 001B: the naive opportunity screen vs physical state and NESO skip methodology (retrospective, corpus 2026-08-04..10)"
+            },
+            {
+              "type": "timestamp",
+              "value": "2026-08-16T22:30:00Z"
+            }
+          ]
+        }
+      ],
+      "retracted_claims": [],
+      "emitted_intents": [
+        {
+          "name": "InvestigationOpened",
+          "args": [
+            {
+              "type": "subject",
+              "value": "ms-001b-naive-screen"
+            }
+          ]
+        }
+      ],
+      "committed_at": "2026-08-16T20:59:18.257598Z",
+      "attestation": {
+        "mode": "gateway",
+        "authenticated_by": "jdimov"
+      }
+    },
+    {
+      "transition_id": "01a00c5f-2986-7620-b188-9d700b62025e",
+      "transformation_name": "register_hypothesis",
+      "arguments": [
+        {
+          "type": "subject",
+          "value": "hyp-ms-001b-naive-top1-phantom"
+        },
+        {
+          "type": "subject",
+          "value": "ms-001b-naive-screen"
+        },
+        {
+          "type": "subject",
+          "value": "For the majority of accepted actions in the 2026-08-04..2026-08-10 corpus that have at least one apparent better-priced alternative under the Investigation 001 BOD-only rule, the naive screen's single top-ranked alternative is provably non-deliverable under Method Study 001's conservative physical-state bound."
+        },
+        {
+          "type": "timestamp",
+          "value": "2026-08-16T22:30:00Z"
+        }
+      ],
+      "actor": {
+        "type": "subject",
+        "value": "jordan-dimov"
+      },
+      "invariant_epoch": 1,
+      "invariants_checked": [
+        {
+          "name": "attached_source_exists",
+          "version": 1
+        },
+        {
+          "name": "attached_source_has_investigation",
+          "version": 1
+        },
+        {
+          "name": "hypothesis_has_investigation",
+          "version": 1
+        },
+        {
+          "name": "finding_has_registered_hypothesis",
+          "version": 1
+        },
+        {
+          "name": "finding_has_at_least_one_source",
+          "version": 1
+        }
+      ],
+      "asserted_claims": [
+        {
+          "predicate": "Hypothesis",
+          "args": [
+            {
+              "type": "subject",
+              "value": "hyp-ms-001b-naive-top1-phantom"
+            },
+            {
+              "type": "subject",
+              "value": "ms-001b-naive-screen"
+            },
+            {
+              "type": "subject",
+              "value": "For the majority of accepted actions in the 2026-08-04..2026-08-10 corpus that have at least one apparent better-priced alternative under the Investigation 001 BOD-only rule, the naive screen's single top-ranked alternative is provably non-deliverable under Method Study 001's conservative physical-state bound."
+            },
+            {
+              "type": "timestamp",
+              "value": "2026-08-16T22:30:00Z"
+            }
+          ]
+        }
+      ],
+      "retracted_claims": [],
+      "emitted_intents": [
+        {
+          "name": "HypothesisRegistered",
+          "args": [
+            {
+              "type": "subject",
+              "value": "hyp-ms-001b-naive-top1-phantom"
+            }
+          ]
+        }
+      ],
+      "committed_at": "2026-08-16T20:59:18.276089Z",
       "attestation": {
         "mode": "gateway",
         "authenticated_by": "jdimov"

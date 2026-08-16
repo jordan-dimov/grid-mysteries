@@ -234,5 +234,43 @@
         "value": "2026-08-16T21:55:00Z"
       }
     ]
+  },
+  {
+    "predicate": "Investigation",
+    "args": [
+      {
+        "type": "subject",
+        "value": "ms-001b-naive-screen"
+      },
+      {
+        "type": "subject",
+        "value": "Method Study 001B: the naive opportunity screen vs physical state and NESO skip methodology (retrospective, corpus 2026-08-04..10)"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-08-16T22:30:00Z"
+      }
+    ]
+  },
+  {
+    "predicate": "Hypothesis",
+    "args": [
+      {
+        "type": "subject",
+        "value": "hyp-ms-001b-naive-top1-phantom"
+      },
+      {
+        "type": "subject",
+        "value": "ms-001b-naive-screen"
+      },
+      {
+        "type": "subject",
+        "value": "For the majority of accepted actions in the 2026-08-04..2026-08-10 corpus that have at least one apparent better-priced alternative under the Investigation 001 BOD-only rule, the naive screen's single top-ranked alternative is provably non-deliverable under Method Study 001's conservative physical-state bound."
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-08-16T22:30:00Z"
+      }
+    ]
   }
 ]

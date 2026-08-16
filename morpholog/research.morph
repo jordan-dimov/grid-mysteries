@@ -1,0 +1,72 @@
+-- Grid Mysteries research record.
+--
+-- Python does the analytics. Morpholog governs the small number of claims we
+-- later want to defend: what source artefacts an investigation used, which
+-- hypothesis was registered, and what finding was eventually published.
+
+program grid_mysteries_research
+
+predicate Investigation(investigation: Subject, title: Subject, opened_at: Timestamp)
+    append only
+predicate SourceArtifact(artifact: Subject, source: Subject, sha256: Subject, fetched_at: Timestamp)
+    append only
+predicate InvestigationUses(investigation: Subject, artifact: Subject)
+    append only
+predicate Hypothesis(hypothesis: Subject, investigation: Subject, statement: Subject, proposed_at: Timestamp)
+    append only
+predicate Finding(finding: Subject, investigation: Subject, hypothesis: Subject, conclusion: Subject, evidence_digest: Subject, published_at: Timestamp)
+    append only
+
+intent InvestigationOpened(investigation: Subject)
+intent SourceRegistered(artifact: Subject)
+intent SourceAttached(investigation: Subject, artifact: Subject)
+intent HypothesisRegistered(hypothesis: Subject)
+intent FindingPublished(finding: Subject)
+
+invariant attached_source_exists:
+    InvestigationUses(i, a) implies SourceArtifact(a, _, _, _)
+
+invariant attached_source_has_investigation:
+    InvestigationUses(i, _) implies Investigation(i, _, _)
+
+invariant hypothesis_has_investigation:
+    Hypothesis(_, i, _, _) implies Investigation(i, _, _)
+
+invariant finding_has_registered_hypothesis:
+    Finding(_, i, h, _, _, _) implies Hypothesis(h, i, _, _)
+
+invariant finding_has_at_least_one_source:
+    Finding(_, i, _, _, _, _) implies InvestigationUses(i, _)
+
+transformation open_investigation(investigation, title, opened_at):
+    require not Investigation(investigation, _, _)
+    admit Investigation(investigation, title, opened_at)
+    emit InvestigationOpened(investigation)
+
+transformation register_source(artifact, source, sha256, fetched_at):
+    require not SourceArtifact(artifact, _, _, _)
+    admit SourceArtifact(artifact, source, sha256, fetched_at)
+    emit SourceRegistered(artifact)
+
+transformation attach_source(investigation, artifact):
+    require Investigation(investigation, _, _)
+    require SourceArtifact(artifact, _, _, _)
+    require not InvestigationUses(investigation, artifact)
+    admit InvestigationUses(investigation, artifact)
+    emit SourceAttached(investigation, artifact)
+
+transformation register_hypothesis(hypothesis, investigation, statement, proposed_at):
+    require Investigation(investigation, _, _)
+    require not Hypothesis(hypothesis, _, _, _)
+    admit Hypothesis(hypothesis, investigation, statement, proposed_at)
+    emit HypothesisRegistered(hypothesis)
+
+transformation publish_finding(
+    finding, investigation, hypothesis, conclusion, evidence_digest, published_at
+):
+    require Investigation(investigation, _, _)
+    require Hypothesis(hypothesis, investigation, _, _)
+    require InvestigationUses(investigation, _)
+    require not Finding(finding, _, _, _, _, _)
+    admit Finding(finding, investigation, hypothesis, conclusion, evidence_digest, published_at)
+    emit FindingPublished(finding)

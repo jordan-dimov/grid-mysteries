@@ -1,0 +1,35 @@
+[project]
+name = "grid-mysteries"
+version = "0.1.0"
+description = "Reproducible investigations of surprising events on Britain's electricity system."
+readme = "README.md"
+requires-python = ">=3.14"
+license = "MIT"
+authors = [{ name = "Jordan Dimov" }]
+dependencies = [
+    "httpx>=0.28",
+    "polars>=1.30",
+    "typer>=0.16",
+]
+
+[project.scripts]
+grid-mysteries = "grid_mysteries.cli:app"
+
+[dependency-groups]
+dev = [
+    "pytest>=8.4",
+    "ruff>=0.12",
+]
+
+[tool.uv]
+package = true
+
+[tool.ruff]
+target-version = "py314"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

@@ -1,0 +1,45 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+VERSION="v0.0.9"
+BASE="https://github.com/jordan-dimov/morpholog/releases/download/${VERSION}"
+
+os="$(uname -s)"
+arch="$(uname -m)"
+
+case "${os}/${arch}" in
+  Linux/x86_64)
+    asset="morpholog-${VERSION}-x86_64-unknown-linux-musl.tar.gz"
+    expected="76cf591e96fbc3a3ed34220013ac46b8a91e27d7b9e93aba75b3da63c4249943"
+    ;;
+  Linux/aarch64|Linux/arm64)
+    asset="morpholog-${VERSION}-aarch64-unknown-linux-musl.tar.gz"
+    expected="dfd5691ca308b593094f8dbaeca02583c6404a344c266fb72add8e81fcfddfa7"
+    ;;
+  Darwin/arm64)
+    asset="morpholog-${VERSION}-aarch64-apple-darwin.tar.gz"
+    expected="e40e5ddf2a1a917a62015d761ec1406ce9bc9dd8c86bcf11f3c1422961c3a2ff"
+    ;;
+  *)
+    echo "unsupported platform: ${os}/${arch}" >&2
+    echo "install Morpholog ${VERSION} manually and place 'morpholog' on PATH" >&2
+    exit 2
+    ;;
+esac
+
+tmp="$(mktemp -d)"
+trap 'rm -rf "$tmp"' EXIT
+
+curl --fail --location --silent --show-error "${BASE}/${asset}" -o "${tmp}/${asset}"
+actual="$(if command -v sha256sum >/dev/null; then sha256sum "${tmp}/${asset}" | awk '{print $1}'; else shasum -a 256 "${tmp}/${asset}" | awk '{print $1}'; fi)"
+if [[ "$actual" != "$expected" ]]; then
+  echo "Morpholog checksum verification failed" >&2
+  echo "expected: $expected" >&2
+  echo "actual:   $actual" >&2
+  exit 1
+fi
+
+tar -xzf "${tmp}/${asset}" -C "$tmp"
+mkdir -p "${HOME}/.local/bin"
+install -m 0755 "$(find "$tmp" -type f -name morpholog -print -quit)" "${HOME}/.local/bin/morpholog"
+echo "installed Morpholog ${VERSION} to ${HOME}/.local/bin/morpholog"

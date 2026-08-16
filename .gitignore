@@ -1,0 +1,17 @@
+.venv/
+__pycache__/
+.pytest_cache/
+.ruff_cache/
+*.py[cod]
+*.egg-info/
+.env
+.DS_Store
+
+# Public repo: raw downloads and generated datasets stay local.
+data/raw/*
+!data/raw/.gitkeep
+data/derived/*
+!data/derived/.gitkeep
+
+# Generated publication artefacts are opt-in per investigation.
+artifacts/

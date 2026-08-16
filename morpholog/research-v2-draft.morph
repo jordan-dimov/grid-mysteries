@@ -41,6 +41,29 @@ predicate Finding(finding: Subject, investigation: Subject, hypothesis: Subject,
 -- prior.
 predicate SupersedesFinding(new_finding: Subject, prior_finding: Subject)
     append only
+-- Quantitative claims are governed values bound to a content-addressed
+-- evidence artefact, never prose. Percentages are stored with their
+-- numerator and denominator as separate metrics of the same artefact.
+-- CI recomputes each metric from the artefact matching evidence_digest
+-- and refuses on mismatch.
+predicate EvidenceMetric(metric: Subject, evidence_digest: Subject, name: Subject, metric_value: Decimal, unit: Subject)
+    append only
+predicate FindingUsesMetric(finding: Subject, metric: Subject)
+    append only
+-- A public statement is rendered only from an approved publication whose
+-- finding has bound metrics; the approval is the human's transition.
+predicate Publication(publication: Subject, finding: Subject, medium: Subject, content_digest: Subject, drafted_at: Timestamp)
+    append only
+predicate PublicationApproved(publication: Subject, approved_at: Timestamp)
+    append only
+-- Kernel-enforced actor policy: a restricted actor name may only be
+-- asserted by sessions whose PostgreSQL login role holds a matching
+-- authority claim. The machine role must never hold the human's
+-- credential, or the separation is theatre.
+predicate ActorAssertionRestricted(actor: Subject)
+    append only
+predicate ActorAssertionAuthority(actor: Subject, login_role: Subject)
+    append only
 
 intent InvestigationOpened(investigation: Subject)
 intent DataAcquisitionAuthorised(investigation: Subject)
@@ -48,6 +71,7 @@ intent AnalysisAuthorised(investigation: Subject)
 intent HypothesisRegistered(hypothesis: Subject)
 intent FindingPublished(finding: Subject)
 intent FindingSuperseded(prior_finding: Subject, new_finding: Subject)
+intent PublicationAuthorised(publication: Subject)
 
 invariant corpus_has_investigation:
     CorpusStatus(i, _, _) implies Investigation(i, _, _, _)
@@ -93,6 +117,21 @@ invariant superseding_finding_exists:
 
 invariant superseded_finding_exists:
     SupersedesFinding(_, p) implies Finding(p, _, _, _, _, _, _)
+
+invariant metric_link_has_finding:
+    FindingUsesMetric(f, _) implies Finding(f, _, _, _, _, _, _)
+
+invariant metric_link_has_metric:
+    FindingUsesMetric(_, m) implies EvidenceMetric(m, _, _, _, _)
+
+invariant publication_has_finding:
+    Publication(_, f, _, _, _) implies Finding(f, _, _, _, _, _, _)
+
+invariant publication_has_bound_metrics:
+    Publication(_, f, _, _, _) implies FindingUsesMetric(f, _)
+
+invariant approval_has_publication:
+    PublicationApproved(p, _) implies Publication(p, _, _, _, _)
 
 transformation open_investigation(investigation, kind, title, opened_at):
     require not Investigation(investigation, _, _, _)

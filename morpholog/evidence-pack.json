@@ -1,9 +1,9 @@
 {
   "manifest": {
     "pack_format_version": 1,
-    "tree_size": 19,
-    "root_hash": "sha256:c62cd06282370dfe3715b1cacdaaf0311417e47e111df1b55f323ce56cc65bc5",
-    "checkpoint_hash": "sha256:728248ec6c0b317a5f678ab8d89f45ed7dc69cfebbbbf58245df4d69a64357f9"
+    "tree_size": 21,
+    "root_hash": "sha256:568e84df9134a5fafb264883297c539c17289c260acbb1605eb42937abb6825c",
+    "checkpoint_hash": "sha256:50c7a892a1a9eb5996d059fa0e0ca0987237acf0ac0c5e6eeae64153188a83cf"
   },
   "checkpoints": [
     {
@@ -23,6 +23,12 @@
       "root_hash": "sha256:c62cd06282370dfe3715b1cacdaaf0311417e47e111df1b55f323ce56cc65bc5",
       "prev_checkpoint_hash": "sha256:d7044bb6cee2c083e757f4cb921290c100407c8f47588e37e83eb02ee67c9a28",
       "checkpoint_hash": "sha256:728248ec6c0b317a5f678ab8d89f45ed7dc69cfebbbbf58245df4d69a64357f9"
+    },
+    {
+      "tree_size": 21,
+      "root_hash": "sha256:568e84df9134a5fafb264883297c539c17289c260acbb1605eb42937abb6825c",
+      "prev_checkpoint_hash": "sha256:728248ec6c0b317a5f678ab8d89f45ed7dc69cfebbbbf58245df4d69a64357f9",
+      "checkpoint_hash": "sha256:50c7a892a1a9eb5996d059fa0e0ca0987237acf0ac0c5e6eeae64153188a83cf"
     }
   ],
   "rows": [
@@ -1676,6 +1682,176 @@
         }
       ],
       "committed_at": "2026-08-16T21:09:15.367351Z",
+      "attestation": {
+        "mode": "gateway",
+        "authenticated_by": "jdimov"
+      }
+    },
+    {
+      "transition_id": "01a00c70-cd90-7152-a1b3-c83e8f36c486",
+      "transformation_name": "open_investigation",
+      "arguments": [
+        {
+          "type": "subject",
+          "value": "ms-001c-disagreement-anatomy"
+        },
+        {
+          "type": "subject",
+          "value": "Method Study 001C: anatomy of the 2,226 post-filter disagreements with NESO skip methodology (retrospective, corpus 2026-08-04..10)"
+        },
+        {
+          "type": "timestamp",
+          "value": "2026-08-16T23:45:00Z"
+        }
+      ],
+      "actor": {
+        "type": "subject",
+        "value": "jordan-dimov"
+      },
+      "invariant_epoch": 1,
+      "invariants_checked": [
+        {
+          "name": "attached_source_exists",
+          "version": 1
+        },
+        {
+          "name": "attached_source_has_investigation",
+          "version": 1
+        },
+        {
+          "name": "hypothesis_has_investigation",
+          "version": 1
+        },
+        {
+          "name": "finding_has_registered_hypothesis",
+          "version": 1
+        },
+        {
+          "name": "finding_has_at_least_one_source",
+          "version": 1
+        }
+      ],
+      "asserted_claims": [
+        {
+          "predicate": "Investigation",
+          "args": [
+            {
+              "type": "subject",
+              "value": "ms-001c-disagreement-anatomy"
+            },
+            {
+              "type": "subject",
+              "value": "Method Study 001C: anatomy of the 2,226 post-filter disagreements with NESO skip methodology (retrospective, corpus 2026-08-04..10)"
+            },
+            {
+              "type": "timestamp",
+              "value": "2026-08-16T23:45:00Z"
+            }
+          ]
+        }
+      ],
+      "retracted_claims": [],
+      "emitted_intents": [
+        {
+          "name": "InvestigationOpened",
+          "args": [
+            {
+              "type": "subject",
+              "value": "ms-001c-disagreement-anatomy"
+            }
+          ]
+        }
+      ],
+      "committed_at": "2026-08-16T21:18:34.381382Z",
+      "attestation": {
+        "mode": "gateway",
+        "authenticated_by": "jdimov"
+      }
+    },
+    {
+      "transition_id": "01a00c70-cda7-7622-97bc-8156af22e359",
+      "transformation_name": "register_hypothesis",
+      "arguments": [
+        {
+          "type": "subject",
+          "value": "hyp-ms-001c-majority-attributable"
+        },
+        {
+          "type": "subject",
+          "value": "ms-001c-disagreement-anatomy"
+        },
+        {
+          "type": "subject",
+          "value": "The majority of the 2,226 cells flagged by the feasibility-aware screen but not skipped at NESO stage 5 are attributable to NESO-published exclusion categories or to full acceptance of the in-merit volume, leaving a minority unmatched by public operational explanations."
+        },
+        {
+          "type": "timestamp",
+          "value": "2026-08-16T23:45:00Z"
+        }
+      ],
+      "actor": {
+        "type": "subject",
+        "value": "jordan-dimov"
+      },
+      "invariant_epoch": 1,
+      "invariants_checked": [
+        {
+          "name": "attached_source_exists",
+          "version": 1
+        },
+        {
+          "name": "attached_source_has_investigation",
+          "version": 1
+        },
+        {
+          "name": "hypothesis_has_investigation",
+          "version": 1
+        },
+        {
+          "name": "finding_has_registered_hypothesis",
+          "version": 1
+        },
+        {
+          "name": "finding_has_at_least_one_source",
+          "version": 1
+        }
+      ],
+      "asserted_claims": [
+        {
+          "predicate": "Hypothesis",
+          "args": [
+            {
+              "type": "subject",
+              "value": "hyp-ms-001c-majority-attributable"
+            },
+            {
+              "type": "subject",
+              "value": "ms-001c-disagreement-anatomy"
+            },
+            {
+              "type": "subject",
+              "value": "The majority of the 2,226 cells flagged by the feasibility-aware screen but not skipped at NESO stage 5 are attributable to NESO-published exclusion categories or to full acceptance of the in-merit volume, leaving a minority unmatched by public operational explanations."
+            },
+            {
+              "type": "timestamp",
+              "value": "2026-08-16T23:45:00Z"
+            }
+          ]
+        }
+      ],
+      "retracted_claims": [],
+      "emitted_intents": [
+        {
+          "name": "HypothesisRegistered",
+          "args": [
+            {
+              "type": "subject",
+              "value": "hyp-ms-001c-majority-attributable"
+            }
+          ]
+        }
+      ],
+      "committed_at": "2026-08-16T21:18:34.404877Z",
       "attestation": {
         "mode": "gateway",
         "authenticated_by": "jdimov"

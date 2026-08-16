@@ -369,5 +369,43 @@
         "value": "2026-08-16T23:10:00Z"
       }
     ]
+  },
+  {
+    "predicate": "Investigation",
+    "args": [
+      {
+        "type": "subject",
+        "value": "ms-001c-disagreement-anatomy"
+      },
+      {
+        "type": "subject",
+        "value": "Method Study 001C: anatomy of the 2,226 post-filter disagreements with NESO skip methodology (retrospective, corpus 2026-08-04..10)"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-08-16T23:45:00Z"
+      }
+    ]
+  },
+  {
+    "predicate": "Hypothesis",
+    "args": [
+      {
+        "type": "subject",
+        "value": "hyp-ms-001c-majority-attributable"
+      },
+      {
+        "type": "subject",
+        "value": "ms-001c-disagreement-anatomy"
+      },
+      {
+        "type": "subject",
+        "value": "The majority of the 2,226 cells flagged by the feasibility-aware screen but not skipped at NESO stage 5 are attributable to NESO-published exclusion categories or to full acceptance of the in-merit volume, leaving a minority unmatched by public operational explanations."
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-08-16T23:45:00Z"
+      }
+    ]
   }
 ]

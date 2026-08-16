@@ -1,7 +1,7 @@
 {
   "status": "created",
-  "tree_size": 19,
-  "root_hash": "sha256:c62cd06282370dfe3715b1cacdaaf0311417e47e111df1b55f323ce56cc65bc5",
-  "prev_checkpoint_hash": "sha256:d7044bb6cee2c083e757f4cb921290c100407c8f47588e37e83eb02ee67c9a28",
-  "checkpoint_hash": "sha256:728248ec6c0b317a5f678ab8d89f45ed7dc69cfebbbbf58245df4d69a64357f9"
+  "tree_size": 21,
+  "root_hash": "sha256:568e84df9134a5fafb264883297c539c17289c260acbb1605eb42937abb6825c",
+  "prev_checkpoint_hash": "sha256:728248ec6c0b317a5f678ab8d89f45ed7dc69cfebbbbf58245df4d69a64357f9",
+  "checkpoint_hash": "sha256:50c7a892a1a9eb5996d059fa0e0ca0987237acf0ac0c5e6eeae64153188a83cf"
 }

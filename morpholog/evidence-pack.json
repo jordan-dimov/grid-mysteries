@@ -1,9 +1,9 @@
 {
   "manifest": {
     "pack_format_version": 1,
-    "tree_size": 25,
-    "root_hash": "sha256:5bd1d1b5e71e3223d312406780e9298ae63391f65461b1213b99c16f4035a051",
-    "checkpoint_hash": "sha256:3ea1585421ce96c6ad32de4e428d3da625c997ca683fce4e6d532fb23c617c30"
+    "tree_size": 27,
+    "root_hash": "sha256:d8fd1a4a6565f0621a890209b6a355f3fef4513b7f2b779469944f8e6176e2d0",
+    "checkpoint_hash": "sha256:6b8a1fd9ef51a7a283baea9baa1474f3c95a10b8bbe29ae30e2d3fdc5d70357c"
   },
   "checkpoints": [
     {
@@ -35,6 +35,12 @@
       "root_hash": "sha256:5bd1d1b5e71e3223d312406780e9298ae63391f65461b1213b99c16f4035a051",
       "prev_checkpoint_hash": "sha256:50c7a892a1a9eb5996d059fa0e0ca0987237acf0ac0c5e6eeae64153188a83cf",
       "checkpoint_hash": "sha256:3ea1585421ce96c6ad32de4e428d3da625c997ca683fce4e6d532fb23c617c30"
+    },
+    {
+      "tree_size": 27,
+      "root_hash": "sha256:d8fd1a4a6565f0621a890209b6a355f3fef4513b7f2b779469944f8e6176e2d0",
+      "prev_checkpoint_hash": "sha256:3ea1585421ce96c6ad32de4e428d3da625c997ca683fce4e6d532fb23c617c30",
+      "checkpoint_hash": "sha256:6b8a1fd9ef51a7a283baea9baa1474f3c95a10b8bbe29ae30e2d3fdc5d70357c"
     }
   ],
   "rows": [
@@ -2194,6 +2200,176 @@
         }
       ],
       "committed_at": "2026-08-16T21:21:53.415474Z",
+      "attestation": {
+        "mode": "gateway",
+        "authenticated_by": "jdimov"
+      }
+    },
+    {
+      "transition_id": "01a00c7c-6e38-7b13-b4d2-3bfe6369959d",
+      "transformation_name": "open_investigation",
+      "arguments": [
+        {
+          "type": "subject",
+          "value": "ms-001d-the-six"
+        },
+        {
+          "type": "subject",
+          "value": "Method Study 001D: explanation-testing of the six unmatched unit-day cells (retrospective, corpus 2026-08-04..10)"
+        },
+        {
+          "type": "timestamp",
+          "value": "2026-08-17T00:50:00Z"
+        }
+      ],
+      "actor": {
+        "type": "subject",
+        "value": "jordan-dimov"
+      },
+      "invariant_epoch": 1,
+      "invariants_checked": [
+        {
+          "name": "attached_source_exists",
+          "version": 1
+        },
+        {
+          "name": "attached_source_has_investigation",
+          "version": 1
+        },
+        {
+          "name": "hypothesis_has_investigation",
+          "version": 1
+        },
+        {
+          "name": "finding_has_registered_hypothesis",
+          "version": 1
+        },
+        {
+          "name": "finding_has_at_least_one_source",
+          "version": 1
+        }
+      ],
+      "asserted_claims": [
+        {
+          "predicate": "Investigation",
+          "args": [
+            {
+              "type": "subject",
+              "value": "ms-001d-the-six"
+            },
+            {
+              "type": "subject",
+              "value": "Method Study 001D: explanation-testing of the six unmatched unit-day cells (retrospective, corpus 2026-08-04..10)"
+            },
+            {
+              "type": "timestamp",
+              "value": "2026-08-17T00:50:00Z"
+            }
+          ]
+        }
+      ],
+      "retracted_claims": [],
+      "emitted_intents": [
+        {
+          "name": "InvestigationOpened",
+          "args": [
+            {
+              "type": "subject",
+              "value": "ms-001d-the-six"
+            }
+          ]
+        }
+      ],
+      "committed_at": "2026-08-16T21:31:16.405331Z",
+      "attestation": {
+        "mode": "gateway",
+        "authenticated_by": "jdimov"
+      }
+    },
+    {
+      "transition_id": "01a00c7c-6e46-7912-9316-c9615dfb0b16",
+      "transformation_name": "register_hypothesis",
+      "arguments": [
+        {
+          "type": "subject",
+          "value": "hyp-ms-001d-six-explainable"
+        },
+        {
+          "type": "subject",
+          "value": "ms-001d-the-six"
+        },
+        {
+          "type": "subject",
+          "value": "Each of the six unmatched unit-day cells identified by Method Study 001C can be fully explained from public period-level information."
+        },
+        {
+          "type": "timestamp",
+          "value": "2026-08-17T00:50:00Z"
+        }
+      ],
+      "actor": {
+        "type": "subject",
+        "value": "jordan-dimov"
+      },
+      "invariant_epoch": 1,
+      "invariants_checked": [
+        {
+          "name": "attached_source_exists",
+          "version": 1
+        },
+        {
+          "name": "attached_source_has_investigation",
+          "version": 1
+        },
+        {
+          "name": "hypothesis_has_investigation",
+          "version": 1
+        },
+        {
+          "name": "finding_has_registered_hypothesis",
+          "version": 1
+        },
+        {
+          "name": "finding_has_at_least_one_source",
+          "version": 1
+        }
+      ],
+      "asserted_claims": [
+        {
+          "predicate": "Hypothesis",
+          "args": [
+            {
+              "type": "subject",
+              "value": "hyp-ms-001d-six-explainable"
+            },
+            {
+              "type": "subject",
+              "value": "ms-001d-the-six"
+            },
+            {
+              "type": "subject",
+              "value": "Each of the six unmatched unit-day cells identified by Method Study 001C can be fully explained from public period-level information."
+            },
+            {
+              "type": "timestamp",
+              "value": "2026-08-17T00:50:00Z"
+            }
+          ]
+        }
+      ],
+      "retracted_claims": [],
+      "emitted_intents": [
+        {
+          "name": "HypothesisRegistered",
+          "args": [
+            {
+              "type": "subject",
+              "value": "hyp-ms-001d-six-explainable"
+            }
+          ]
+        }
+      ],
+      "committed_at": "2026-08-16T21:31:16.420014Z",
       "attestation": {
         "mode": "gateway",
         "authenticated_by": "jdimov"

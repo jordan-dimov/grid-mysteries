@@ -1,0 +1,146 @@
+[
+ {
+  "source": "elexon-insights",
+  "dataset": "BOALF",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/acceptances/all?settlementDate=2026-08-05&settlementPeriod=43",
+  "path": "data/raw/elexon/anatomy-001b/boalf_2026-08-05_p43.json",
+  "sha256": "abaaf04dc4c2811a98bab13c33463e6c63eb151770dd6cecef4dc8b8d0c76296",
+  "fetched_at": "2026-08-16T21:06:28.135157+00:00",
+  "bytes": 441445
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "BOALF",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/acceptances/all?settlementDate=2026-08-05&settlementPeriod=44",
+  "path": "data/raw/elexon/anatomy-001b/boalf_2026-08-05_p44.json",
+  "sha256": "72b30d4b7f75d33df23d26aa3006665052ccb8f2bf3280e1496ec5cfaeb1e695",
+  "fetched_at": "2026-08-16T21:06:28.406129+00:00",
+  "bytes": 364985
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "BOALF",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/acceptances/all?settlementDate=2026-08-05&settlementPeriod=45",
+  "path": "data/raw/elexon/anatomy-001b/boalf_2026-08-05_p45.json",
+  "sha256": "3166e63dad5e39fa29f70e75fc9f90eaf6cabca78037bb542702d88ddb7446a7",
+  "fetched_at": "2026-08-16T21:06:28.671623+00:00",
+  "bytes": 410831
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "BOALF",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/acceptances/all?settlementDate=2026-08-05&settlementPeriod=46",
+  "path": "data/raw/elexon/anatomy-001b/boalf_2026-08-05_p46.json",
+  "sha256": "65465464e6ff60be9b10750111aa00f764fc54ed3a5e882bed877714c3d3df08",
+  "fetched_at": "2026-08-16T21:06:25.403162+00:00",
+  "bytes": 401214
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "BOALF",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/acceptances/all?settlementDate=2026-08-05&settlementPeriod=47",
+  "path": "data/raw/elexon/anatomy-001b/boalf_2026-08-05_p47.json",
+  "sha256": "f896f7f7704f755802ea3dace192afe9f1a9ce304a9fa419172406f47f3d0a0f",
+  "fetched_at": "2026-08-16T21:06:28.930156+00:00",
+  "bytes": 283641
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "BOALF",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/acceptances/all?settlementDate=2026-08-07&settlementPeriod=33",
+  "path": "data/raw/elexon/anatomy-001b/boalf_2026-08-07_p33.json",
+  "sha256": "58f45bc7ce2ac771447a18ad4859ab35ce5688155b2d98ad45a7884d9e8f6c8b",
+  "fetched_at": "2026-08-16T21:06:27.321932+00:00",
+  "bytes": 237458
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "BOALF",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/acceptances/all?settlementDate=2026-08-07&settlementPeriod=34",
+  "path": "data/raw/elexon/anatomy-001b/boalf_2026-08-07_p34.json",
+  "sha256": "1475084830fb959a0035142d8bd7293b61efcbcb9e31dfbd330920b98af24c69",
+  "fetched_at": "2026-08-16T21:06:29.207465+00:00",
+  "bytes": 254865
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "BOALF",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/acceptances/all?settlementDate=2026-08-07&settlementPeriod=35",
+  "path": "data/raw/elexon/anatomy-001b/boalf_2026-08-07_p35.json",
+  "sha256": "0022e778ef4882e64588a07e0bcc3eb221192b6c7690e0c819876f798a468853",
+  "fetched_at": "2026-08-16T21:06:27.589428+00:00",
+  "bytes": 382930
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "BOALF",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/acceptances/all?settlementDate=2026-08-07&settlementPeriod=36",
+  "path": "data/raw/elexon/anatomy-001b/boalf_2026-08-07_p36.json",
+  "sha256": "bb08877cbf87abb91bcf4a15cd3a5087c01f2470cac204da64e4fdf0fa2f8b76",
+  "fetched_at": "2026-08-16T21:06:29.476113+00:00",
+  "bytes": 276481
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "BOALF",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/acceptances/all?settlementDate=2026-08-07&settlementPeriod=37",
+  "path": "data/raw/elexon/anatomy-001b/boalf_2026-08-07_p37.json",
+  "sha256": "4c0451f1c2e00ebdc1e7138411d1e4690329ee83b76f4e9a1467177e8f7e03da",
+  "fetched_at": "2026-08-16T21:06:27.866324+00:00",
+  "bytes": 258559
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "BOALF",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/acceptances/all?settlementDate=2026-08-07&settlementPeriod=38",
+  "path": "data/raw/elexon/anatomy-001b/boalf_2026-08-07_p38.json",
+  "sha256": "a8199d74cb9c7e3cf3a91ded9193b364dcdabee733eeb4972972a7898c741956",
+  "fetched_at": "2026-08-16T21:06:25.960793+00:00",
+  "bytes": 314820
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "BOALF",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/acceptances/all?settlementDate=2026-08-07&settlementPeriod=39",
+  "path": "data/raw/elexon/anatomy-001b/boalf_2026-08-07_p39.json",
+  "sha256": "541c8c75c4aeaa3518cf25086f2babb3502696b1d84b10e1cafc42b29ec97ebd",
+  "fetched_at": "2026-08-16T21:06:25.696197+00:00",
+  "bytes": 355608
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "BOALF",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/acceptances/all?settlementDate=2026-08-07&settlementPeriod=40",
+  "path": "data/raw/elexon/anatomy-001b/boalf_2026-08-07_p40.json",
+  "sha256": "82a1f3e9731a6d556afadccca769ceef6c2e903f2289024c36d3273a776bb363",
+  "fetched_at": "2026-08-16T21:06:26.235209+00:00",
+  "bytes": 330192
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "BOALF",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/acceptances/all?settlementDate=2026-08-07&settlementPeriod=41",
+  "path": "data/raw/elexon/anatomy-001b/boalf_2026-08-07_p41.json",
+  "sha256": "7ee8e2e21f6d93da3110b995cd667576082db1aecfb4b7a3d29d283191a26b47",
+  "fetched_at": "2026-08-16T21:06:26.517469+00:00",
+  "bytes": 194748
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "BOALF",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/acceptances/all?settlementDate=2026-08-07&settlementPeriod=42",
+  "path": "data/raw/elexon/anatomy-001b/boalf_2026-08-07_p42.json",
+  "sha256": "343d4cf3b1847d0c6895e0acc7425dd2868be14e178863bfa3c42d4d470a96c9",
+  "fetched_at": "2026-08-16T21:06:26.783592+00:00",
+  "bytes": 150639
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "BOALF",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/acceptances/all?settlementDate=2026-08-07&settlementPeriod=43",
+  "path": "data/raw/elexon/anatomy-001b/boalf_2026-08-07_p43.json",
+  "sha256": "cdbfaf26d933856dd24fa77e229f22713e9cb21a8fffa0d73d328c96a21362d1",
+  "fetched_at": "2026-08-16T21:06:27.034669+00:00",
+  "bytes": 194174
+ }
+]

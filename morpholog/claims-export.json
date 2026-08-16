@@ -272,5 +272,102 @@
         "value": "2026-08-16T22:30:00Z"
       }
     ]
+  },
+  {
+    "predicate": "SourceArtifact",
+    "args": [
+      {
+        "type": "subject",
+        "value": "art-ms-001b-neso-manifest"
+      },
+      {
+        "type": "subject",
+        "value": "neso-data-portal skip-rates via investigations/method-study-001b-naive-screen/evidence/neso-manifest.json"
+      },
+      {
+        "type": "subject",
+        "value": "29cbaddd6bca10ab5e0b615612188d81c9cfe8fe2e1cadcb9bf184535562ef15"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-08-16T22:05:00Z"
+      }
+    ]
+  },
+  {
+    "predicate": "InvestigationUses",
+    "args": [
+      {
+        "type": "subject",
+        "value": "ms-001b-naive-screen"
+      },
+      {
+        "type": "subject",
+        "value": "art-ms-001b-neso-manifest"
+      }
+    ]
+  },
+  {
+    "predicate": "SourceArtifact",
+    "args": [
+      {
+        "type": "subject",
+        "value": "art-ms-001b-boalf-manifest"
+      },
+      {
+        "type": "subject",
+        "value": "elexon-insights BOALF via investigations/method-study-001b-naive-screen/evidence/case-boalf-manifest.json"
+      },
+      {
+        "type": "subject",
+        "value": "969e5b52e08dbd1bbd6a13a83f7a58eed1ce0aa48ec607ec4c8fe9f28a720253"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-08-16T22:50:00Z"
+      }
+    ]
+  },
+  {
+    "predicate": "InvestigationUses",
+    "args": [
+      {
+        "type": "subject",
+        "value": "ms-001b-naive-screen"
+      },
+      {
+        "type": "subject",
+        "value": "art-ms-001b-boalf-manifest"
+      }
+    ]
+  },
+  {
+    "predicate": "Finding",
+    "args": [
+      {
+        "type": "subject",
+        "value": "fnd-ms-001b-phantom-led-ranking"
+      },
+      {
+        "type": "subject",
+        "value": "ms-001b-naive-screen"
+      },
+      {
+        "type": "subject",
+        "value": "hyp-ms-001b-naive-top1-phantom"
+      },
+      {
+        "type": "subject",
+        "value": "CONFIRMED: 64.5 percent (16,336 of 25,326) of accepted actions' naive top-ranked alternatives were provably non-deliverable. The naive screen's head is entirely phantom-led: all of the top 10/100/1000 by gap and by notional had a non-deliverable number-one pick; raw-vs-feasibility-aware top-100 overlap is zero. The naive counterfactual notional (arithmetic on public numbers, not value) fell 90.5 percent (GBP 607.8m to 57.6m). Against NESO's official skip methodology (6,390 cells, full window coverage): agreement 34.9 to 64.7 percent after the single physical test, catching 1,988 of 2,017 NESO skips; top-20 disagreements are NESO's own documented Wind offer and Behind constraint exclusions. Spearman vs skipped volumes 0.34 to 0.39: magnitudes remain untracked."
+      },
+      {
+        "type": "subject",
+        "value": "50b41b182bffe67afd908aa8acbdb6a4a514b61d7a956a5460291815497439a8"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-08-16T23:10:00Z"
+      }
+    ]
   }
 ]

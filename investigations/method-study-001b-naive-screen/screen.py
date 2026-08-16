@@ -341,10 +341,216 @@ def anatomy() -> None:
     print(json.dumps(summary, indent=1))
 
 
+# --- External validation against NESO's Skip Rates dataset (declared in
+# --- METHOD-STUDY-001B.md; resource ids from the official data portal).
+
+NESO_RAW = REPO_ROOT / "data" / "raw" / "neso"
+NESO_RESOURCES = [
+    (
+        "NESO-SKIP-INMERIT-ALLBM",
+        "ce31e61b-ebc5-4c6f-846f-d5a971e019a0",
+        "inmerit_allbm_2026-08.csv",
+    ),
+    ("NESO-SKIP-EXCLUSIONS", "a82a2a20-6f08-4d7d-a2ed-221527ba75c2", "exclusions_2026-08.csv"),
+]
+NESO_FINAL_STAGE = 5
+
+
+def neso_fetch(*, url: str, destination: Path, dataset: str):
+    from grid_mysteries.sources.http import fetch_json
+
+    return fetch_json(
+        url=url,
+        destination=destination,
+        source="neso-data-portal",
+        dataset=dataset,
+        timeout_seconds=180.0,
+    )
+
+
+def fetch_neso() -> None:
+    jobs = [
+        (dataset, f"https://api.neso.energy/datastore/dump/{resource_id}", NESO_RAW / filename)
+        for dataset, resource_id, filename in NESO_RESOURCES
+    ]
+    EVIDENCE.mkdir(exist_ok=True)
+    fetched, skipped = fetch_journalled(
+        jobs,
+        journal_path=EVIDENCE / "neso-journal.ndjson",
+        manifest_path=EVIDENCE / "neso-manifest.json",
+        repo_root=REPO_ROOT,
+        fetch=neso_fetch,
+        sleep_seconds=0.5,
+    )
+    print(f"fetched {fetched}, verified and skipped {skipped}")
+
+
+def read_neso_csv(filename: str) -> list[dict]:
+    import csv
+
+    with (NESO_RAW / filename).open(newline="") as handle:
+        return list(csv.DictReader(handle))
+
+
+def spearman(pairs: list[tuple]) -> float | None:
+    def ranks(values: list) -> list[float]:
+        order = sorted(range(len(values)), key=lambda i: values[i])
+        ranked = [0.0] * len(values)
+        i = 0
+        while i < len(order):
+            j = i
+            while j + 1 < len(order) and values[order[j + 1]] == values[order[i]]:
+                j += 1
+            average = (i + j) / 2 + 1
+            for k in range(i, j + 1):
+                ranked[order[k]] = average
+            i = j + 1
+        return ranked
+
+    if len(pairs) < 3:
+        return None
+    xs, ys = ranks([p[0] for p in pairs]), ranks([p[1] for p in pairs])
+    n = len(pairs)
+    mean_x, mean_y = sum(xs) / n, sum(ys) / n
+    cov = sum((x - mean_x) * (y - mean_y) for x, y in zip(xs, ys, strict=True))
+    var_x = sum((x - mean_x) ** 2 for x in xs)
+    var_y = sum((y - mean_y) ** 2 for y in ys)
+    return cov / (var_x * var_y) ** 0.5 if var_x and var_y else None
+
+
+def our_intensity_by_cell() -> tuple[dict, dict]:
+    """(naive, post-filter) opportunity intensity per (date, direction, NGC unit).
+
+    Intensity = sum over settlement periods of the unit's largest qualifying
+    gap that period (GBP/MWh·periods) — the declared monotone proxy.
+    """
+    elexon_to_ngc = {
+        str(r["elexonBmUnit"]): str(r.get("nationalGridBmUnit") or r["elexonBmUnit"])
+        for r in load_records(BMUNITS_PATH)
+    }
+    table = pl.read_parquet(MS001_EVIDENCE / "alternatives.parquet")
+    per_period_naive: dict[tuple, Decimal] = {}
+    per_period_post: dict[tuple, Decimal] = {}
+    for r in table.iter_rows(named=True):
+        ngc = elexon_to_ngc.get(r["bm_unit"], r["bm_unit"])
+        key = (r["settlement_date"], r["direction"], ngc, r["settlement_period"])
+        gap = Decimal(r["max_gap_gbp_per_mwh"])
+        per_period_naive[key] = max(per_period_naive.get(key, Decimal(0)), gap)
+        if r["classification"] != "non_deliverable":
+            per_period_post[key] = max(per_period_post.get(key, Decimal(0)), gap)
+    naive: dict[tuple, Decimal] = {}
+    post: dict[tuple, Decimal] = {}
+    for (date, direction, ngc, _period), gap in per_period_naive.items():
+        naive[(date, direction, ngc)] = naive.get((date, direction, ngc), Decimal(0)) + gap
+    for (date, direction, ngc, _period), gap in per_period_post.items():
+        post[(date, direction, ngc)] = post.get((date, direction, ngc), Decimal(0)) + gap
+    return naive, post
+
+
+def neso_compare() -> None:
+    window = set(window_dates())
+    naive, post = our_intensity_by_cell()
+
+    inmerit = read_neso_csv("inmerit_allbm_2026-08.csv")
+    coverage = Counter(r["date"][:10] for r in inmerit)
+    neso_skip: dict[tuple, Decimal] = {}
+    for r in inmerit:
+        date = r["date"][:10]
+        if date not in window or int(r["stage"]) != NESO_FINAL_STAGE:
+            continue
+        key = (date, r["bid_offer"].lower(), r["bm_unit"])
+        neso_skip[key] = neso_skip.get(key, Decimal(0)) + Decimal(r["skipped_volume_MWh"] or "0")
+
+    covered_dates = sorted(d for d in window if coverage.get(d))
+    cells = {c for c in set(naive) | set(neso_skip) if c[0] in covered_dates}
+
+    def matrix(ours: dict) -> dict:
+        counts = Counter(
+            (
+                "screen_flags" if cell in ours and ours[cell] > 0 else "screen_silent",
+                "neso_skip" if neso_skip.get(cell, Decimal(0)) > 0 else "neso_no_skip",
+            )
+            for cell in cells
+        )
+        return {
+            f"{a}__{b}": counts.get((a, b), 0)
+            for a in ("screen_flags", "screen_silent")
+            for b in ("neso_skip", "neso_no_skip")
+        }
+
+    neso_universe = [c for c in cells if c in neso_skip]
+    correlations = {
+        "universe": "cells present at NESO stage 5 on covered dates",
+        "n_cells": len(neso_universe),
+        "naive_intensity_vs_neso_skipped_volume": spearman(
+            [(float(naive.get(c, 0)), float(neso_skip[c])) for c in neso_universe]
+        ),
+        "post_filter_intensity_vs_neso_skipped_volume": spearman(
+            [(float(post.get(c, 0)), float(neso_skip[c])) for c in neso_universe]
+        ),
+    }
+
+    disagreements = sorted(
+        (c for c in cells if post.get(c, Decimal(0)) > 0 and neso_skip.get(c, Decimal(0)) == 0),
+        key=lambda c: -post[c],
+    )
+    exclusions = read_neso_csv("exclusions_2026-08.csv")
+    exclusion_rows: dict[tuple, list[dict]] = {}
+    for r in exclusions:
+        key = (r["date"][:10], r["bid_offer"].lower(), r["bm_unit"])
+        exclusion_rows.setdefault(key, []).append(r)
+    top20 = []
+    reason_counter = Counter()
+    for cell in disagreements[:20]:
+        rows = exclusion_rows.get(cell, [])
+        reasons = Counter(r["exclusion_reason"] for r in rows)
+        reason_counter.update(reasons)
+        top20.append(
+            {
+                "date": cell[0],
+                "direction": cell[1],
+                "ngc_unit": cell[2],
+                "post_filter_intensity_gbp_per_mwh_periods": str(post[cell]),
+                "in_neso_stage5_universe": cell in neso_skip,
+                "neso_exclusion_reasons": dict(reasons.most_common()),
+                "neso_excluded_volume_mwh": str(
+                    sum(Decimal(r["excluded_volume_MWh"] or "0") for r in rows)
+                ),
+            }
+        )
+
+    converse = sum(
+        1 for c in cells if neso_skip.get(c, Decimal(0)) > 0 and naive.get(c, Decimal(0)) == 0
+    )
+    result = {
+        "labelling": (
+            "NESO's skip methodology is the authoritative external reference, not ground "
+            "truth; definitions differ (daily aggregation, availability-based in-merit "
+            "stacks), so these are agreement counts, never precision/recall."
+        ),
+        "window_dates_covered_by_neso": covered_dates,
+        "window_dates_missing_from_neso": sorted(window - set(covered_dates)),
+        "cells_compared": len(cells),
+        "agreement_matrix_naive": matrix(naive),
+        "agreement_matrix_post_filter": matrix(post),
+        "magnitude_relationship_spearman": correlations,
+        "top20_disagreements_post_filter_vs_neso": top20,
+        "top20_disagreement_exclusion_reason_totals": dict(reason_counter.most_common()),
+        "converse_disagreement_neso_skip_but_naive_silent": converse,
+    }
+    (EVIDENCE / "neso-comparison.json").write_text(json.dumps(result, indent=1) + "\n")
+    summary = {k: result[k] for k in list(result)[1:7]}
+    print(json.dumps(summary, indent=1, default=str))
+
+
 def main() -> None:
     match sys.argv[1:]:
         case ["analyse"]:
             analyse()
+        case ["fetch-neso"]:
+            fetch_neso()
+        case ["neso-compare"]:
+            neso_compare()
         case ["fetch-anatomy"]:
             fetch_anatomy()
         case ["anatomy"]:

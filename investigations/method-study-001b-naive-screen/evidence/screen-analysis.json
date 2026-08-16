@@ -1,0 +1,76 @@
+{
+ "corpus": {
+  "window": [
+   "2026-08-04",
+   "2026-08-10"
+  ]
+ },
+ "accepted_actions_with_apparent_alternative": 25326,
+ "by_direction": {
+  "offer": 13965,
+  "bid": 11361
+ },
+ "naive_top1_non_deliverable": {
+  "count": 16336,
+  "share": 0.6450288241333018
+ },
+ "opportunity_vanishes_entirely": {
+  "count": 1291,
+  "share": 0.0509752823185659
+ },
+ "gap_reduction_gbp_per_mwh": {
+  "median": "75.00",
+  "p75": "261.52",
+  "p90": "9886.30",
+  "p99": "9928.31"
+ },
+ "top_n_distortion_by_gap": {
+  "10": {
+   "naive_top1_alternative_non_deliverable": 10,
+   "vanished_entirely": 0,
+   "overlap_with_post_filter_top_n": 0
+  },
+  "100": {
+   "naive_top1_alternative_non_deliverable": 100,
+   "vanished_entirely": 0,
+   "overlap_with_post_filter_top_n": 0
+  },
+  "1000": {
+   "naive_top1_alternative_non_deliverable": 1000,
+   "vanished_entirely": 0,
+   "overlap_with_post_filter_top_n": 24
+  }
+ },
+ "top_n_distortion_by_notional": {
+  "10": {
+   "naive_top1_alternative_non_deliverable": 10,
+   "vanished_entirely": 1,
+   "overlap_with_post_filter_top_n": 0
+  },
+  "100": {
+   "naive_top1_alternative_non_deliverable": 100,
+   "vanished_entirely": 8,
+   "overlap_with_post_filter_top_n": 0
+  },
+  "1000": {
+   "naive_top1_alternative_non_deliverable": 1000,
+   "vanished_entirely": 37,
+   "overlap_with_post_filter_top_n": 4
+  }
+ },
+ "naive_counterfactual_notional_gbp": {
+  "labelling": "Arithmetic on public numbers: |accepted MWh| x apparent GBP/MWh gap. Not a saving, cost, missed revenue or achievable value; the post-filter figure remains unadjudicated for timing, dynamics and location.",
+  "raw_total": "607781450.5381668523374750668",
+  "post_filter_total": "57601692.82236685866839067302",
+  "vanished_share": "0.9052263066413711730932552619",
+  "attached_to_non_deliverable_naive_top1": "570038306.3448472238427813136"
+ },
+ "surviving_top100_alternative_fuel_types": {
+  "unknown": 94,
+  "WIND": 6
+ },
+ "surviving_top100_alternative_gsp_groups": {
+  "unknown": 94,
+  "North Scotland": 6
+ }
+}

@@ -1,9 +1,9 @@
 {
   "manifest": {
     "pack_format_version": 1,
-    "tree_size": 14,
-    "root_hash": "sha256:61007924494fd7389b91ba1cc3a32485f703c9da44ef93408fc1ef4bec7f9422",
-    "checkpoint_hash": "sha256:d7044bb6cee2c083e757f4cb921290c100407c8f47588e37e83eb02ee67c9a28"
+    "tree_size": 19,
+    "root_hash": "sha256:c62cd06282370dfe3715b1cacdaaf0311417e47e111df1b55f323ce56cc65bc5",
+    "checkpoint_hash": "sha256:728248ec6c0b317a5f678ab8d89f45ed7dc69cfebbbbf58245df4d69a64357f9"
   },
   "checkpoints": [
     {
@@ -17,6 +17,12 @@
       "root_hash": "sha256:61007924494fd7389b91ba1cc3a32485f703c9da44ef93408fc1ef4bec7f9422",
       "prev_checkpoint_hash": "sha256:1c1258ff5c56230b458eaa9e433ee66afe6de840f6d70a53699e70d9d32eaf08",
       "checkpoint_hash": "sha256:d7044bb6cee2c083e757f4cb921290c100407c8f47588e37e83eb02ee67c9a28"
+    },
+    {
+      "tree_size": 19,
+      "root_hash": "sha256:c62cd06282370dfe3715b1cacdaaf0311417e47e111df1b55f323ce56cc65bc5",
+      "prev_checkpoint_hash": "sha256:d7044bb6cee2c083e757f4cb921290c100407c8f47588e37e83eb02ee67c9a28",
+      "checkpoint_hash": "sha256:728248ec6c0b317a5f678ab8d89f45ed7dc69cfebbbbf58245df4d69a64357f9"
     }
   ],
   "rows": [
@@ -1233,6 +1239,443 @@
         }
       ],
       "committed_at": "2026-08-16T20:59:18.276089Z",
+      "attestation": {
+        "mode": "gateway",
+        "authenticated_by": "jdimov"
+      }
+    },
+    {
+      "transition_id": "01a00c68-45a3-7991-86c9-2b434d4a31e5",
+      "transformation_name": "register_source",
+      "arguments": [
+        {
+          "type": "subject",
+          "value": "art-ms-001b-neso-manifest"
+        },
+        {
+          "type": "subject",
+          "value": "neso-data-portal skip-rates via investigations/method-study-001b-naive-screen/evidence/neso-manifest.json"
+        },
+        {
+          "type": "subject",
+          "value": "29cbaddd6bca10ab5e0b615612188d81c9cfe8fe2e1cadcb9bf184535562ef15"
+        },
+        {
+          "type": "timestamp",
+          "value": "2026-08-16T22:05:00Z"
+        }
+      ],
+      "actor": {
+        "type": "subject",
+        "value": "jordan-dimov"
+      },
+      "invariant_epoch": 1,
+      "invariants_checked": [
+        {
+          "name": "attached_source_exists",
+          "version": 1
+        },
+        {
+          "name": "attached_source_has_investigation",
+          "version": 1
+        },
+        {
+          "name": "hypothesis_has_investigation",
+          "version": 1
+        },
+        {
+          "name": "finding_has_registered_hypothesis",
+          "version": 1
+        },
+        {
+          "name": "finding_has_at_least_one_source",
+          "version": 1
+        }
+      ],
+      "asserted_claims": [
+        {
+          "predicate": "SourceArtifact",
+          "args": [
+            {
+              "type": "subject",
+              "value": "art-ms-001b-neso-manifest"
+            },
+            {
+              "type": "subject",
+              "value": "neso-data-portal skip-rates via investigations/method-study-001b-naive-screen/evidence/neso-manifest.json"
+            },
+            {
+              "type": "subject",
+              "value": "29cbaddd6bca10ab5e0b615612188d81c9cfe8fe2e1cadcb9bf184535562ef15"
+            },
+            {
+              "type": "timestamp",
+              "value": "2026-08-16T22:05:00Z"
+            }
+          ]
+        }
+      ],
+      "retracted_claims": [],
+      "emitted_intents": [
+        {
+          "name": "SourceRegistered",
+          "args": [
+            {
+              "type": "subject",
+              "value": "art-ms-001b-neso-manifest"
+            }
+          ]
+        }
+      ],
+      "committed_at": "2026-08-16T21:09:15.295929Z",
+      "attestation": {
+        "mode": "gateway",
+        "authenticated_by": "jdimov"
+      }
+    },
+    {
+      "transition_id": "01a00c68-45b3-7970-be55-e53fe3f7dad0",
+      "transformation_name": "attach_source",
+      "arguments": [
+        {
+          "type": "subject",
+          "value": "ms-001b-naive-screen"
+        },
+        {
+          "type": "subject",
+          "value": "art-ms-001b-neso-manifest"
+        }
+      ],
+      "actor": {
+        "type": "subject",
+        "value": "jordan-dimov"
+      },
+      "invariant_epoch": 1,
+      "invariants_checked": [
+        {
+          "name": "attached_source_exists",
+          "version": 1
+        },
+        {
+          "name": "attached_source_has_investigation",
+          "version": 1
+        },
+        {
+          "name": "hypothesis_has_investigation",
+          "version": 1
+        },
+        {
+          "name": "finding_has_registered_hypothesis",
+          "version": 1
+        },
+        {
+          "name": "finding_has_at_least_one_source",
+          "version": 1
+        }
+      ],
+      "asserted_claims": [
+        {
+          "predicate": "InvestigationUses",
+          "args": [
+            {
+              "type": "subject",
+              "value": "ms-001b-naive-screen"
+            },
+            {
+              "type": "subject",
+              "value": "art-ms-001b-neso-manifest"
+            }
+          ]
+        }
+      ],
+      "retracted_claims": [],
+      "emitted_intents": [
+        {
+          "name": "SourceAttached",
+          "args": [
+            {
+              "type": "subject",
+              "value": "ms-001b-naive-screen"
+            },
+            {
+              "type": "subject",
+              "value": "art-ms-001b-neso-manifest"
+            }
+          ]
+        }
+      ],
+      "committed_at": "2026-08-16T21:09:15.314371Z",
+      "attestation": {
+        "mode": "gateway",
+        "authenticated_by": "jdimov"
+      }
+    },
+    {
+      "transition_id": "01a00c68-45c4-7251-be21-c89211054591",
+      "transformation_name": "register_source",
+      "arguments": [
+        {
+          "type": "subject",
+          "value": "art-ms-001b-boalf-manifest"
+        },
+        {
+          "type": "subject",
+          "value": "elexon-insights BOALF via investigations/method-study-001b-naive-screen/evidence/case-boalf-manifest.json"
+        },
+        {
+          "type": "subject",
+          "value": "969e5b52e08dbd1bbd6a13a83f7a58eed1ce0aa48ec607ec4c8fe9f28a720253"
+        },
+        {
+          "type": "timestamp",
+          "value": "2026-08-16T22:50:00Z"
+        }
+      ],
+      "actor": {
+        "type": "subject",
+        "value": "jordan-dimov"
+      },
+      "invariant_epoch": 1,
+      "invariants_checked": [
+        {
+          "name": "attached_source_exists",
+          "version": 1
+        },
+        {
+          "name": "attached_source_has_investigation",
+          "version": 1
+        },
+        {
+          "name": "hypothesis_has_investigation",
+          "version": 1
+        },
+        {
+          "name": "finding_has_registered_hypothesis",
+          "version": 1
+        },
+        {
+          "name": "finding_has_at_least_one_source",
+          "version": 1
+        }
+      ],
+      "asserted_claims": [
+        {
+          "predicate": "SourceArtifact",
+          "args": [
+            {
+              "type": "subject",
+              "value": "art-ms-001b-boalf-manifest"
+            },
+            {
+              "type": "subject",
+              "value": "elexon-insights BOALF via investigations/method-study-001b-naive-screen/evidence/case-boalf-manifest.json"
+            },
+            {
+              "type": "subject",
+              "value": "969e5b52e08dbd1bbd6a13a83f7a58eed1ce0aa48ec607ec4c8fe9f28a720253"
+            },
+            {
+              "type": "timestamp",
+              "value": "2026-08-16T22:50:00Z"
+            }
+          ]
+        }
+      ],
+      "retracted_claims": [],
+      "emitted_intents": [
+        {
+          "name": "SourceRegistered",
+          "args": [
+            {
+              "type": "subject",
+              "value": "art-ms-001b-boalf-manifest"
+            }
+          ]
+        }
+      ],
+      "committed_at": "2026-08-16T21:09:15.331486Z",
+      "attestation": {
+        "mode": "gateway",
+        "authenticated_by": "jdimov"
+      }
+    },
+    {
+      "transition_id": "01a00c68-45d5-7530-b16a-b1c476a6e609",
+      "transformation_name": "attach_source",
+      "arguments": [
+        {
+          "type": "subject",
+          "value": "ms-001b-naive-screen"
+        },
+        {
+          "type": "subject",
+          "value": "art-ms-001b-boalf-manifest"
+        }
+      ],
+      "actor": {
+        "type": "subject",
+        "value": "jordan-dimov"
+      },
+      "invariant_epoch": 1,
+      "invariants_checked": [
+        {
+          "name": "attached_source_exists",
+          "version": 1
+        },
+        {
+          "name": "attached_source_has_investigation",
+          "version": 1
+        },
+        {
+          "name": "hypothesis_has_investigation",
+          "version": 1
+        },
+        {
+          "name": "finding_has_registered_hypothesis",
+          "version": 1
+        },
+        {
+          "name": "finding_has_at_least_one_source",
+          "version": 1
+        }
+      ],
+      "asserted_claims": [
+        {
+          "predicate": "InvestigationUses",
+          "args": [
+            {
+              "type": "subject",
+              "value": "ms-001b-naive-screen"
+            },
+            {
+              "type": "subject",
+              "value": "art-ms-001b-boalf-manifest"
+            }
+          ]
+        }
+      ],
+      "retracted_claims": [],
+      "emitted_intents": [
+        {
+          "name": "SourceAttached",
+          "args": [
+            {
+              "type": "subject",
+              "value": "ms-001b-naive-screen"
+            },
+            {
+              "type": "subject",
+              "value": "art-ms-001b-boalf-manifest"
+            }
+          ]
+        }
+      ],
+      "committed_at": "2026-08-16T21:09:15.346840Z",
+      "attestation": {
+        "mode": "gateway",
+        "authenticated_by": "jdimov"
+      }
+    },
+    {
+      "transition_id": "01a00c68-45e9-74b2-91e0-fca2f2b6e05d",
+      "transformation_name": "publish_finding",
+      "arguments": [
+        {
+          "type": "subject",
+          "value": "fnd-ms-001b-phantom-led-ranking"
+        },
+        {
+          "type": "subject",
+          "value": "ms-001b-naive-screen"
+        },
+        {
+          "type": "subject",
+          "value": "hyp-ms-001b-naive-top1-phantom"
+        },
+        {
+          "type": "subject",
+          "value": "CONFIRMED: 64.5 percent (16,336 of 25,326) of accepted actions' naive top-ranked alternatives were provably non-deliverable. The naive screen's head is entirely phantom-led: all of the top 10/100/1000 by gap and by notional had a non-deliverable number-one pick; raw-vs-feasibility-aware top-100 overlap is zero. The naive counterfactual notional (arithmetic on public numbers, not value) fell 90.5 percent (GBP 607.8m to 57.6m). Against NESO's official skip methodology (6,390 cells, full window coverage): agreement 34.9 to 64.7 percent after the single physical test, catching 1,988 of 2,017 NESO skips; top-20 disagreements are NESO's own documented Wind offer and Behind constraint exclusions. Spearman vs skipped volumes 0.34 to 0.39: magnitudes remain untracked."
+        },
+        {
+          "type": "subject",
+          "value": "50b41b182bffe67afd908aa8acbdb6a4a514b61d7a956a5460291815497439a8"
+        },
+        {
+          "type": "timestamp",
+          "value": "2026-08-16T23:10:00Z"
+        }
+      ],
+      "actor": {
+        "type": "subject",
+        "value": "jordan-dimov"
+      },
+      "invariant_epoch": 1,
+      "invariants_checked": [
+        {
+          "name": "attached_source_exists",
+          "version": 1
+        },
+        {
+          "name": "attached_source_has_investigation",
+          "version": 1
+        },
+        {
+          "name": "hypothesis_has_investigation",
+          "version": 1
+        },
+        {
+          "name": "finding_has_registered_hypothesis",
+          "version": 1
+        },
+        {
+          "name": "finding_has_at_least_one_source",
+          "version": 1
+        }
+      ],
+      "asserted_claims": [
+        {
+          "predicate": "Finding",
+          "args": [
+            {
+              "type": "subject",
+              "value": "fnd-ms-001b-phantom-led-ranking"
+            },
+            {
+              "type": "subject",
+              "value": "ms-001b-naive-screen"
+            },
+            {
+              "type": "subject",
+              "value": "hyp-ms-001b-naive-top1-phantom"
+            },
+            {
+              "type": "subject",
+              "value": "CONFIRMED: 64.5 percent (16,336 of 25,326) of accepted actions' naive top-ranked alternatives were provably non-deliverable. The naive screen's head is entirely phantom-led: all of the top 10/100/1000 by gap and by notional had a non-deliverable number-one pick; raw-vs-feasibility-aware top-100 overlap is zero. The naive counterfactual notional (arithmetic on public numbers, not value) fell 90.5 percent (GBP 607.8m to 57.6m). Against NESO's official skip methodology (6,390 cells, full window coverage): agreement 34.9 to 64.7 percent after the single physical test, catching 1,988 of 2,017 NESO skips; top-20 disagreements are NESO's own documented Wind offer and Behind constraint exclusions. Spearman vs skipped volumes 0.34 to 0.39: magnitudes remain untracked."
+            },
+            {
+              "type": "subject",
+              "value": "50b41b182bffe67afd908aa8acbdb6a4a514b61d7a956a5460291815497439a8"
+            },
+            {
+              "type": "timestamp",
+              "value": "2026-08-16T23:10:00Z"
+            }
+          ]
+        }
+      ],
+      "retracted_claims": [],
+      "emitted_intents": [
+        {
+          "name": "FindingPublished",
+          "args": [
+            {
+              "type": "subject",
+              "value": "fnd-ms-001b-phantom-led-ranking"
+            }
+          ]
+        }
+      ],
+      "committed_at": "2026-08-16T21:09:15.367351Z",
       "attestation": {
         "mode": "gateway",
         "authenticated_by": "jdimov"

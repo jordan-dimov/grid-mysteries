@@ -1,0 +1,20 @@
+[
+ {
+  "source": "neso-data-portal",
+  "dataset": "NESO-SKIP-EXCLUSIONS",
+  "url": "https://api.neso.energy/datastore/dump/a82a2a20-6f08-4d7d-a2ed-221527ba75c2",
+  "path": "data/raw/neso/exclusions_2026-08.csv",
+  "sha256": "cd0d54ff89ced5bbe33429ae14befb3e1f9b15e2d8f2de7cc1a918c98f6b77c2",
+  "fetched_at": "2026-08-16T21:05:19.595654+00:00",
+  "bytes": 33186040
+ },
+ {
+  "source": "neso-data-portal",
+  "dataset": "NESO-SKIP-INMERIT-ALLBM",
+  "url": "https://api.neso.energy/datastore/dump/ce31e61b-ebc5-4c6f-846f-d5a971e019a0",
+  "path": "data/raw/neso/inmerit_allbm_2026-08.csv",
+  "sha256": "983ead609c7e49031c2b6768351cd466c3ad88e76c988748b9eb2703a27eebda",
+  "fetched_at": "2026-08-16T21:05:06.341995+00:00",
+  "bytes": 192255472
+ }
+]

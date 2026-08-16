@@ -1,0 +1,253 @@
+{
+ "labelling": "NESO's skip methodology is the authoritative external reference, not ground truth; definitions differ (daily aggregation, availability-based in-merit stacks), so these are agreement counts, never precision/recall.",
+ "window_dates_covered_by_neso": [
+  "2026-08-04",
+  "2026-08-05",
+  "2026-08-06",
+  "2026-08-07",
+  "2026-08-08",
+  "2026-08-09",
+  "2026-08-10"
+ ],
+ "window_dates_missing_from_neso": [],
+ "cells_compared": 6390,
+ "agreement_matrix_naive": {
+  "screen_flags__neso_skip": 1997,
+  "screen_flags__neso_no_skip": 4137,
+  "screen_silent__neso_skip": 20,
+  "screen_silent__neso_no_skip": 236
+ },
+ "agreement_matrix_post_filter": {
+  "screen_flags__neso_skip": 1988,
+  "screen_flags__neso_no_skip": 2226,
+  "screen_silent__neso_skip": 29,
+  "screen_silent__neso_no_skip": 2147
+ },
+ "magnitude_relationship_spearman": {
+  "universe": "cells present at NESO stage 5 on covered dates",
+  "n_cells": 2847,
+  "naive_intensity_vs_neso_skipped_volume": 0.3379131797895018,
+  "post_filter_intensity_vs_neso_skipped_volume": 0.3854972643960212
+ },
+ "top20_disagreements_post_filter_vs_neso": [
+  {
+   "date": "2026-08-07",
+   "direction": "offer",
+   "ngc_unit": "SCCLD-1",
+   "post_filter_intensity_gbp_per_mwh_periods": "10645.64",
+   "in_neso_stage5_universe": false,
+   "neso_exclusion_reasons": {},
+   "neso_excluded_volume_mwh": "0"
+  },
+  {
+   "date": "2026-08-04",
+   "direction": "offer",
+   "ngc_unit": "TMNCW-1",
+   "post_filter_intensity_gbp_per_mwh_periods": "10406.83",
+   "in_neso_stage5_universe": false,
+   "neso_exclusion_reasons": {
+    "Wind offer": 288
+   },
+   "neso_excluded_volume_mwh": "563.37"
+  },
+  {
+   "date": "2026-08-07",
+   "direction": "offer",
+   "ngc_unit": "TULWW-1",
+   "post_filter_intensity_gbp_per_mwh_periods": "9973.64",
+   "in_neso_stage5_universe": false,
+   "neso_exclusion_reasons": {
+    "Wind offer": 288
+   },
+   "neso_excluded_volume_mwh": "246.34"
+  },
+  {
+   "date": "2026-08-07",
+   "direction": "offer",
+   "ngc_unit": "TULWW-2",
+   "post_filter_intensity_gbp_per_mwh_periods": "9973.64",
+   "in_neso_stage5_universe": false,
+   "neso_exclusion_reasons": {
+    "Wind offer": 288
+   },
+   "neso_excluded_volume_mwh": "367.54"
+  },
+  {
+   "date": "2026-08-07",
+   "direction": "offer",
+   "ngc_unit": "BNWKW-1",
+   "post_filter_intensity_gbp_per_mwh_periods": "9973.64",
+   "in_neso_stage5_universe": false,
+   "neso_exclusion_reasons": {
+    "Wind offer": 288
+   },
+   "neso_excluded_volume_mwh": "202.43"
+  },
+  {
+   "date": "2026-08-07",
+   "direction": "offer",
+   "ngc_unit": "LCLTW-1",
+   "post_filter_intensity_gbp_per_mwh_periods": "9868.64",
+   "in_neso_stage5_universe": false,
+   "neso_exclusion_reasons": {
+    "Wind offer": 282
+   },
+   "neso_excluded_volume_mwh": "544.93"
+  },
+  {
+   "date": "2026-08-07",
+   "direction": "offer",
+   "ngc_unit": "MOYEW-1",
+   "post_filter_intensity_gbp_per_mwh_periods": "9829.64",
+   "in_neso_stage5_universe": false,
+   "neso_exclusion_reasons": {
+    "Wind offer": 288
+   },
+   "neso_excluded_volume_mwh": "734.05"
+  },
+  {
+   "date": "2026-08-07",
+   "direction": "offer",
+   "ngc_unit": "ASHWW-1",
+   "post_filter_intensity_gbp_per_mwh_periods": "9545.48",
+   "in_neso_stage5_universe": false,
+   "neso_exclusion_reasons": {
+    "Wind offer": 288
+   },
+   "neso_excluded_volume_mwh": "542.53"
+  },
+  {
+   "date": "2026-08-07",
+   "direction": "offer",
+   "ngc_unit": "TRLGW-1",
+   "post_filter_intensity_gbp_per_mwh_periods": "9445.64",
+   "in_neso_stage5_universe": false,
+   "neso_exclusion_reasons": {
+    "Wind offer": 288
+   },
+   "neso_excluded_volume_mwh": "369.31"
+  },
+  {
+   "date": "2026-08-05",
+   "direction": "offer",
+   "ngc_unit": "TMNCW-1",
+   "post_filter_intensity_gbp_per_mwh_periods": "9425.65",
+   "in_neso_stage5_universe": false,
+   "neso_exclusion_reasons": {
+    "Wind offer": 288
+   },
+   "neso_excluded_volume_mwh": "697.76"
+  },
+  {
+   "date": "2026-08-06",
+   "direction": "offer",
+   "ngc_unit": "TMNCW-1",
+   "post_filter_intensity_gbp_per_mwh_periods": "9253.55",
+   "in_neso_stage5_universe": false,
+   "neso_exclusion_reasons": {
+    "Wind offer": 288
+   },
+   "neso_excluded_volume_mwh": "752.15"
+  },
+  {
+   "date": "2026-08-10",
+   "direction": "offer",
+   "ngc_unit": "TMNCW-1",
+   "post_filter_intensity_gbp_per_mwh_periods": "8275.56",
+   "in_neso_stage5_universe": false,
+   "neso_exclusion_reasons": {
+    "Wind offer": 288
+   },
+   "neso_excluded_volume_mwh": "795.40"
+  },
+  {
+   "date": "2026-08-07",
+   "direction": "offer",
+   "ngc_unit": "AG-GBL0DN",
+   "post_filter_intensity_gbp_per_mwh_periods": "8005.64",
+   "in_neso_stage5_universe": false,
+   "neso_exclusion_reasons": {
+    "Behind constraint": 288
+   },
+   "neso_excluded_volume_mwh": "48.96"
+  },
+  {
+   "date": "2026-08-07",
+   "direction": "offer",
+   "ngc_unit": "AG-GBL0EN",
+   "post_filter_intensity_gbp_per_mwh_periods": "7647.64",
+   "in_neso_stage5_universe": true,
+   "neso_exclusion_reasons": {
+    "Behind constraint": 273
+   },
+   "neso_excluded_volume_mwh": "45.96"
+  },
+  {
+   "date": "2026-08-07",
+   "direction": "offer",
+   "ngc_unit": "CNCLW-1",
+   "post_filter_intensity_gbp_per_mwh_periods": "7525.64",
+   "in_neso_stage5_universe": false,
+   "neso_exclusion_reasons": {
+    "Wind offer": 288
+   },
+   "neso_excluded_volume_mwh": "274.01"
+  },
+  {
+   "date": "2026-08-05",
+   "direction": "offer",
+   "ngc_unit": "SCCLD-1",
+   "post_filter_intensity_gbp_per_mwh_periods": "7100.65",
+   "in_neso_stage5_universe": false,
+   "neso_exclusion_reasons": {},
+   "neso_excluded_volume_mwh": "0"
+  },
+  {
+   "date": "2026-08-07",
+   "direction": "offer",
+   "ngc_unit": "BROCW-1",
+   "post_filter_intensity_gbp_per_mwh_periods": "7045.64",
+   "in_neso_stage5_universe": false,
+   "neso_exclusion_reasons": {
+    "Wind offer": 220
+   },
+   "neso_excluded_volume_mwh": "592.23"
+  },
+  {
+   "date": "2026-08-04",
+   "direction": "offer",
+   "ngc_unit": "SCCLD-1",
+   "post_filter_intensity_gbp_per_mwh_periods": "6806.83",
+   "in_neso_stage5_universe": false,
+   "neso_exclusion_reasons": {},
+   "neso_excluded_volume_mwh": "0"
+  },
+  {
+   "date": "2026-08-05",
+   "direction": "offer",
+   "ngc_unit": "TULWW-1",
+   "post_filter_intensity_gbp_per_mwh_periods": "6666.65",
+   "in_neso_stage5_universe": false,
+   "neso_exclusion_reasons": {
+    "Wind offer": 258
+   },
+   "neso_excluded_volume_mwh": "273.00"
+  },
+  {
+   "date": "2026-08-05",
+   "direction": "offer",
+   "ngc_unit": "TULWW-2",
+   "post_filter_intensity_gbp_per_mwh_periods": "6666.65",
+   "in_neso_stage5_universe": false,
+   "neso_exclusion_reasons": {
+    "Wind offer": 258
+   },
+   "neso_excluded_volume_mwh": "431.85"
+  }
+ ],
+ "top20_disagreement_exclusion_reason_totals": {
+  "Wind offer": 4186,
+  "Behind constraint": 561
+ },
+ "converse_disagreement_neso_skip_but_naive_silent": 20
+}

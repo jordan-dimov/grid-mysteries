@@ -1,0 +1,982 @@
+{
+ "summary": {
+  "cases": 20,
+  "accepted_actions_with_any_so_flag": 1,
+  "accepted_unit_fuel_types": {
+   "unknown": 1,
+   "CCGT": 19
+  },
+  "surviving_alt_fuel_types": {
+   "WIND": 6,
+   "unknown": 14
+  },
+  "surviving_alt_gsp_groups": {
+   "North Scotland": 6,
+   "unknown": 14
+  }
+ },
+ "cases": [
+  {
+   "action": {
+    "settlement_date": "2026-08-05",
+    "settlement_period": 46,
+    "direction": "offer",
+    "accepted_unit": "E_CROYD-2",
+    "accepted_pair_id": 1
+   },
+   "post_gap_gbp_per_mwh": "3000.00",
+   "accepted_unit_reference": {
+    "fuel": null,
+    "gsp": "South Eastern",
+    "type": "E"
+   },
+   "accepted_unit_boalf": [
+    {
+     "acceptanceNumber": 15534,
+     "soFlag": false,
+     "storFlag": false,
+     "rrFlag": false,
+     "deemedBoFlag": false
+    },
+    {
+     "acceptanceNumber": 15534,
+     "soFlag": false,
+     "storFlag": false,
+     "rrFlag": false,
+     "deemedBoFlag": false
+    }
+   ],
+   "accepted_any_so_flag": false,
+   "surviving_alt_unit": "C__PSTAT011",
+   "surviving_alt_reference": {
+    "fuel": "WIND",
+    "gsp": "North Scotland",
+    "type": "S"
+   },
+   "surviving_alt_headroom_ub_mw": "20"
+  },
+  {
+   "action": {
+    "settlement_date": "2026-08-07",
+    "settlement_period": 39,
+    "direction": "offer",
+    "accepted_unit": "T_ROCK-1",
+    "accepted_pair_id": 1
+   },
+   "post_gap_gbp_per_mwh": "495.00",
+   "accepted_unit_reference": {
+    "fuel": "CCGT",
+    "gsp": null,
+    "type": "T"
+   },
+   "accepted_unit_boalf": [
+    {
+     "acceptanceNumber": 229472,
+     "soFlag": false,
+     "storFlag": false,
+     "rrFlag": false,
+     "deemedBoFlag": false
+    },
+    {
+     "acceptanceNumber": 229472,
+     "soFlag": false,
+     "storFlag": false,
+     "rrFlag": false,
+     "deemedBoFlag": false
+    },
+    {
+     "acceptanceNumber": 229473,
+     "soFlag": false,
+     "storFlag": false,
+     "rrFlag": false,
+     "deemedBoFlag": false
+    },
+    {
+     "acceptanceNumber": 229472,
+     "soFlag": false,
+     "storFlag": false,
+     "rrFlag": false,
+     "deemedBoFlag": false
+    },
+    {
+     "acceptanceNumber": 229472,
+     "soFlag": false,
+     "storFlag": false,
+     "rrFlag": false,
+     "deemedBoFlag": false
+    }
+   ],
+   "accepted_any_so_flag": false,
+   "surviving_alt_unit": "T_SCCL-4",
+   "surviving_alt_reference": {
+    "fuel": null,
+    "gsp": null,
+    "type": "T"
+   },
+   "surviving_alt_headroom_ub_mw": "37"
+  },
+  {
+   "action": {
+    "settlement_date": "2026-08-07",
+    "settlement_period": 38,
+    "direction": "offer",
+    "accepted_unit": "T_ROCK-1",
+    "accepted_pair_id": 1
+   },
+   "post_gap_gbp_per_mwh": "413.00",
+   "accepted_unit_reference": {
+    "fuel": "CCGT",
+    "gsp": null,
+    "type": "T"
+   },
+   "accepted_unit_boalf": [
+    {
+     "acceptanceNumber": 229471,
+     "soFlag": false,
+     "storFlag": false,
+     "rrFlag": false,
+     "deemedBoFlag": false
+    },
+    {
+     "acceptanceNumber": 229471,
+     "soFlag": false,
+     "storFlag": false,
+     "rrFlag": false,
+     "deemedBoFlag": false
+    },
+    {
+     "acceptanceNumber": 229472,
+     "soFlag": false,
+     "storFlag": false,
+     "rrFlag": false,
+     "deemedBoFlag": false
+    },
+    {
+     "acceptanceNumber": 229471,
+     "soFlag": false,
+     "storFlag": false,
+     "rrFlag": false,
+     "deemedBoFlag": false
+    },
+    {
+     "acceptanceNumber": 229471,
+     "soFlag": false,
+     "storFlag": false,
+     "rrFlag": false,
+     "deemedBoFlag": false
+    }
+   ],
+   "accepted_any_so_flag": false,
+   "surviving_alt_unit": "T_SCCL-4",
+   "surviving_alt_reference": {
+    "fuel": null,
+    "gsp": null,
+    "type": "T"
+   },
+   "surviving_alt_headroom_ub_mw": "37"
+  },
+  {
+   "action": {
+    "settlement_date": "2026-08-07",
+    "settlement_period": 40,
+    "direction": "offer",
+    "accepted_unit": "T_ROCK-1",
+    "accepted_pair_id": 1
+   },
+   "post_gap_gbp_per_mwh": "411.90",
+   "accepted_unit_reference": {
+    "fuel": "CCGT",
+    "gsp": null,
+    "type": "T"
+   },
+   "accepted_unit_boalf": [
+    {
+     "acceptanceNumber": 229473,
+     "soFlag": false,
+     "storFlag": false,
+     "rrFlag": false,
+     "deemedBoFlag": false
+    },
+    {
+     "acceptanceNumber": 229473,
+     "soFlag": false,
+     "storFlag": false,
+     "rrFlag": false,
+     "deemedBoFlag": false
+    },
+    {
+     "acceptanceNumber": 229474,
+     "soFlag": false,
+     "storFlag": false,
+     "rrFlag": false,
+     "deemedBoFlag": false
+    },
+    {
+     "acceptanceNumber": 229473,
+     "soFlag": false,
+     "storFlag": false,
+     "rrFlag": false,
+     "deemedBoFlag": false
+    },
+    {
+     "acceptanceNumber": 229473,
+     "soFlag": false,
+     "storFlag": false,
+     "rrFlag": false,
+     "deemedBoFlag": false
+    }
+   ],
+   "accepted_any_so_flag": false,
+   "surviving_alt_unit": "T_SCCL-4",
+   "surviving_alt_reference": {
+    "fuel": null,
+    "gsp": null,
+    "type": "T"
+   },
+   "surviving_alt_headroom_ub_mw": "37"
+  },
+  {
+   "action": {
+    "settlement_date": "2026-08-07",
+    "settlement_period": 41,
+    "direction": "offer",
+    "accepted_unit": "T_ROCK-1",
+    "accepted_pair_id": 1
+   },
+   "post_gap_gbp_per_mwh": "411.90",
+   "accepted_unit_reference": {
+    "fuel": "CCGT",
+    "gsp": null,
+    "type": "T"
+   },
+   "accepted_unit_boalf": [
+    {
+     "acceptanceNumber": 229474,
+     "soFlag": false,
+     "storFlag": false,
+     "rrFlag": false,
+     "deemedBoFlag": false
+    },
+    {
+     "acceptanceNumber": 229474,
+     "soFlag": false,
+     "storFlag": false,
+     "rrFlag": false,
+     "deemedBoFlag": false
+    },
+    {
+     "acceptanceNumber": 229475,
+     "soFlag": false,
+     "storFlag": false,
+     "rrFlag": false,
+     "deemedBoFlag": false
+    },
+    {
+     "acceptanceNumber": 229474,
+     "soFlag": false,
+     "storFlag": false,
+     "rrFlag": false,
+     "deemedBoFlag": false
+    },
+    {
+     "acceptanceNumber": 229474,
+     "soFlag": false,
+     "storFlag": false,
+     "rrFlag": false,
+     "deemedBoFlag": false
+    }
+   ],
+   "accepted_any_so_flag": false,
+   "surviving_alt_unit": "T_SCCL-4",
+   "surviving_alt_reference": {
+    "fuel": null,
+    "gsp": null,
+    "type": "T"
+   },
+   "surviving_alt_headroom_ub_mw": "37"
+  },
+  {
+   "action": {
+    "settlement_date": "2026-08-07",
+    "settlement_period": 42,
+    "direction": "offer",
+    "accepted_unit": "T_ROCK-1",
+    "accepted_pair_id": 1
+   },
+   "post_gap_gbp_per_mwh": "411.90",
+   "accepted_unit_reference": {
+    "fuel": "CCGT",
+    "gsp": null,
+    "type": "T"
+   },
+   "accepted_unit_boalf": [
+    {
+     "acceptanceNumber": 229475,
+     "soFlag": false,
+     "storFlag": false,
+     "rrFlag": false,
+     "deemedBoFlag": false
+    },
+    {
+     "acceptanceNumber": 229475,
+     "soFlag": false,
+     "storFlag": false,
+     "rrFlag": false,
+     "deemedBoFlag": false
+    },
+    {
+     "acceptanceNumber": 229476,
+     "soFlag": false,
+     "storFlag": false,
+     "rrFlag": false,
+     "deemedBoFlag": false
+    },
+    {
+     "acceptanceNumber": 229475,
+     "soFlag": false,
+     "storFlag": false,
+     "rrFlag": false,
+     "deemedBoFlag": false
+    },
+    {
+     "acceptanceNumber": 229475,
+     "soFlag": false,
+     "storFlag": false,
+     "rrFlag": false,
+     "deemedBoFlag": false
+    }
+   ],
+   "accepted_any_so_flag": false,
+   "surviving_alt_unit": "T_SCCL-4",
+   "surviving_alt_reference": {
+    "fuel": null,
+    "gsp": null,
+    "type": "T"
+   },
+   "surviving_alt_headroom_ub_mw": "37"
+  },
+  {
+   "action": {
+    "settlement_date": "2026-08-07",
+    "settlement_period": 43,
+    "direction": "offer",
+    "accepted_unit": "T_ROCK-1",
+    "accepted_pair_id": 1
+   },
+   "post_gap_gbp_per_mwh": "411.90",
+   "accepted_unit_reference": {
+    "fuel": "CCGT",
+    "gsp": null,
+    "type": "T"
+   },
+   "accepted_unit_boalf": [
+    {
+     "acceptanceNumber": 229476,
+     "soFlag": false,
+     "storFlag": false,
+     "rrFlag": false,
+     "deemedBoFlag": false
+    },
+    {
+     "acceptanceNumber": 229476,
+     "soFlag": false,
+     "storFlag": false,
+     "rrFlag": false,
+     "deemedBoFlag": false
+    },
+    {
+     "acceptanceNumber": 229477,
+     "soFlag": false,
+     "storFlag": false,
+     "rrFlag": false,
+     "deemedBoFlag": false
+    },
+    {
+     "acceptanceNumber": 229476,
+     "soFlag": false,
+     "storFlag": false,
+     "rrFlag": false,
+     "deemedBoFlag": false
+    },
+    {
+     "acceptanceNumber": 229476,
+     "soFlag": false,
+     "storFlag": false,
+     "rrFlag": false,
+     "deemedBoFlag": false
+    }
+   ],
+   "accepted_any_so_flag": false,
+   "surviving_alt_unit": "T_SCCL-4",
+   "surviving_alt_reference": {
+    "fuel": null,
+    "gsp": null,
+    "type": "T"
+   },
+   "surviving_alt_headroom_ub_mw": "37"
+  },
+  {
+   "action": {
+    "settlement_date": "2026-08-07",
+    "settlement_period": 33,
+    "direction": "offer",
+    "accepted_unit": "T_CNQPS-4",
+    "accepted_pair_id": 1
+   },
+   "post_gap_gbp_per_mwh": "406.00",
+   "accepted_unit_reference": {
+    "fuel": "CCGT",
+    "gsp": null,
+    "type": "T"
+   },
+   "accepted_unit_boalf": [
+    {
+     "acceptanceNumber": 114022,
+     "soFlag": false,
+     "storFlag": false,
+     "rrFlag": false,
+     "deemedBoFlag": false
+    }
+   ],
+   "accepted_any_so_flag": false,
+   "surviving_alt_unit": "T_SCCL-4",
+   "surviving_alt_reference": {
+    "fuel": null,
+    "gsp": null,
+    "type": "T"
+   },
+   "surviving_alt_headroom_ub_mw": "37"
+  },
+  {
+   "action": {
+    "settlement_date": "2026-08-07",
+    "settlement_period": 35,
+    "direction": "offer",
+    "accepted_unit": "T_CNQPS-1",
+    "accepted_pair_id": 1
+   },
+   "post_gap_gbp_per_mwh": "406.00",
+   "accepted_unit_reference": {
+    "fuel": "CCGT",
+    "gsp": null,
+    "type": "T"
+   },
+   "accepted_unit_boalf": [
+    {
+     "acceptanceNumber": 118349,
+     "soFlag": false,
+     "storFlag": false,
+     "rrFlag": false,
+     "deemedBoFlag": false
+    }
+   ],
+   "accepted_any_so_flag": false,
+   "surviving_alt_unit": "T_SCCL-4",
+   "surviving_alt_reference": {
+    "fuel": null,
+    "gsp": null,
+    "type": "T"
+   },
+   "surviving_alt_headroom_ub_mw": "37"
+  },
+  {
+   "action": {
+    "settlement_date": "2026-08-07",
+    "settlement_period": 35,
+    "direction": "offer",
+    "accepted_unit": "T_GRAI-8",
+    "accepted_pair_id": 1
+   },
+   "post_gap_gbp_per_mwh": "406.00",
+   "accepted_unit_reference": {
+    "fuel": "CCGT",
+    "gsp": null,
+    "type": "T"
+   },
+   "accepted_unit_boalf": [
+    {
+     "acceptanceNumber": 174386,
+     "soFlag": false,
+     "storFlag": false,
+     "rrFlag": false,
+     "deemedBoFlag": false
+    },
+    {
+     "acceptanceNumber": 174387,
+     "soFlag": true,
+     "storFlag": false,
+     "rrFlag": false,
+     "deemedBoFlag": false
+    },
+    {
+     "acceptanceNumber": 174388,
+     "soFlag": true,
+     "storFlag": false,
+     "rrFlag": false,
+     "deemedBoFlag": false
+    },
+    {
+     "acceptanceNumber": 174386,
+     "soFlag": false,
+     "storFlag": false,
+     "rrFlag": false,
+     "deemedBoFlag": false
+    }
+   ],
+   "accepted_any_so_flag": true,
+   "surviving_alt_unit": "T_SCCL-4",
+   "surviving_alt_reference": {
+    "fuel": null,
+    "gsp": null,
+    "type": "T"
+   },
+   "surviving_alt_headroom_ub_mw": "37"
+  },
+  {
+   "action": {
+    "settlement_date": "2026-08-07",
+    "settlement_period": 37,
+    "direction": "offer",
+    "accepted_unit": "T_ROCK-1",
+    "accepted_pair_id": 1
+   },
+   "post_gap_gbp_per_mwh": "405.00",
+   "accepted_unit_reference": {
+    "fuel": "CCGT",
+    "gsp": null,
+    "type": "T"
+   },
+   "accepted_unit_boalf": [
+    {
+     "acceptanceNumber": 229470,
+     "soFlag": false,
+     "storFlag": false,
+     "rrFlag": false,
+     "deemedBoFlag": false
+    },
+    {
+     "acceptanceNumber": 229470,
+     "soFlag": false,
+     "storFlag": false,
+     "rrFlag": false,
+     "deemedBoFlag": false
+    },
+    {
+     "acceptanceNumber": 229471,
+     "soFlag": false,
+     "storFlag": false,
+     "rrFlag": false,
+     "deemedBoFlag": false
+    },
+    {
+     "acceptanceNumber": 229470,
+     "soFlag": false,
+     "storFlag": false,
+     "rrFlag": false,
+     "deemedBoFlag": false
+    },
+    {
+     "acceptanceNumber": 229470,
+     "soFlag": false,
+     "storFlag": false,
+     "rrFlag": false,
+     "deemedBoFlag": false
+    }
+   ],
+   "accepted_any_so_flag": false,
+   "surviving_alt_unit": "T_SCCL-4",
+   "surviving_alt_reference": {
+    "fuel": null,
+    "gsp": null,
+    "type": "T"
+   },
+   "surviving_alt_headroom_ub_mw": "37"
+  },
+  {
+   "action": {
+    "settlement_date": "2026-08-05",
+    "settlement_period": 43,
+    "direction": "offer",
+    "accepted_unit": "T_KILLPG-2",
+    "accepted_pair_id": 1
+   },
+   "post_gap_gbp_per_mwh": "376.00",
+   "accepted_unit_reference": {
+    "fuel": "CCGT",
+    "gsp": null,
+    "type": "T"
+   },
+   "accepted_unit_boalf": [
+    {
+     "acceptanceNumber": 82812,
+     "soFlag": false,
+     "storFlag": false,
+     "rrFlag": false,
+     "deemedBoFlag": false
+    },
+    {
+     "acceptanceNumber": 82812,
+     "soFlag": false,
+     "storFlag": false,
+     "rrFlag": false,
+     "deemedBoFlag": false
+    },
+    {
+     "acceptanceNumber": 82812,
+     "soFlag": false,
+     "storFlag": false,
+     "rrFlag": false,
+     "deemedBoFlag": false
+    },
+    {
+     "acceptanceNumber": 82812,
+     "soFlag": false,
+     "storFlag": false,
+     "rrFlag": false,
+     "deemedBoFlag": false
+    }
+   ],
+   "accepted_any_so_flag": false,
+   "surviving_alt_unit": "C__PSTAT011",
+   "surviving_alt_reference": {
+    "fuel": "WIND",
+    "gsp": "North Scotland",
+    "type": "S"
+   },
+   "surviving_alt_headroom_ub_mw": "16"
+  },
+  {
+   "action": {
+    "settlement_date": "2026-08-05",
+    "settlement_period": 44,
+    "direction": "offer",
+    "accepted_unit": "T_KILLPG-2",
+    "accepted_pair_id": 1
+   },
+   "post_gap_gbp_per_mwh": "376.00",
+   "accepted_unit_reference": {
+    "fuel": "CCGT",
+    "gsp": null,
+    "type": "T"
+   },
+   "accepted_unit_boalf": [
+    {
+     "acceptanceNumber": 82812,
+     "soFlag": false,
+     "storFlag": false,
+     "rrFlag": false,
+     "deemedBoFlag": false
+    }
+   ],
+   "accepted_any_so_flag": false,
+   "surviving_alt_unit": "C__PSTAT011",
+   "surviving_alt_reference": {
+    "fuel": "WIND",
+    "gsp": "North Scotland",
+    "type": "S"
+   },
+   "surviving_alt_headroom_ub_mw": "21"
+  },
+  {
+   "action": {
+    "settlement_date": "2026-08-05",
+    "settlement_period": 45,
+    "direction": "offer",
+    "accepted_unit": "T_KILLPG-2",
+    "accepted_pair_id": 1
+   },
+   "post_gap_gbp_per_mwh": "376.00",
+   "accepted_unit_reference": {
+    "fuel": "CCGT",
+    "gsp": null,
+    "type": "T"
+   },
+   "accepted_unit_boalf": [
+    {
+     "acceptanceNumber": 82812,
+     "soFlag": false,
+     "storFlag": false,
+     "rrFlag": false,
+     "deemedBoFlag": false
+    }
+   ],
+   "accepted_any_so_flag": false,
+   "surviving_alt_unit": "C__PSTAT011",
+   "surviving_alt_reference": {
+    "fuel": "WIND",
+    "gsp": "North Scotland",
+    "type": "S"
+   },
+   "surviving_alt_headroom_ub_mw": "21"
+  },
+  {
+   "action": {
+    "settlement_date": "2026-08-05",
+    "settlement_period": 46,
+    "direction": "offer",
+    "accepted_unit": "T_KILLPG-2",
+    "accepted_pair_id": 1
+   },
+   "post_gap_gbp_per_mwh": "376.00",
+   "accepted_unit_reference": {
+    "fuel": "CCGT",
+    "gsp": null,
+    "type": "T"
+   },
+   "accepted_unit_boalf": [
+    {
+     "acceptanceNumber": 82813,
+     "soFlag": false,
+     "storFlag": false,
+     "rrFlag": false,
+     "deemedBoFlag": false
+    },
+    {
+     "acceptanceNumber": 82813,
+     "soFlag": false,
+     "storFlag": false,
+     "rrFlag": false,
+     "deemedBoFlag": false
+    },
+    {
+     "acceptanceNumber": 82814,
+     "soFlag": false,
+     "storFlag": false,
+     "rrFlag": false,
+     "deemedBoFlag": false
+    },
+    {
+     "acceptanceNumber": 82813,
+     "soFlag": false,
+     "storFlag": false,
+     "rrFlag": false,
+     "deemedBoFlag": false
+    },
+    {
+     "acceptanceNumber": 82813,
+     "soFlag": false,
+     "storFlag": false,
+     "rrFlag": false,
+     "deemedBoFlag": false
+    }
+   ],
+   "accepted_any_so_flag": false,
+   "surviving_alt_unit": "C__PSTAT011",
+   "surviving_alt_reference": {
+    "fuel": "WIND",
+    "gsp": "North Scotland",
+    "type": "S"
+   },
+   "surviving_alt_headroom_ub_mw": "20"
+  },
+  {
+   "action": {
+    "settlement_date": "2026-08-05",
+    "settlement_period": 47,
+    "direction": "offer",
+    "accepted_unit": "T_KILLPG-2",
+    "accepted_pair_id": 1
+   },
+   "post_gap_gbp_per_mwh": "376.00",
+   "accepted_unit_reference": {
+    "fuel": "CCGT",
+    "gsp": null,
+    "type": "T"
+   },
+   "accepted_unit_boalf": [
+    {
+     "acceptanceNumber": 82814,
+     "soFlag": false,
+     "storFlag": false,
+     "rrFlag": false,
+     "deemedBoFlag": false
+    },
+    {
+     "acceptanceNumber": 82814,
+     "soFlag": false,
+     "storFlag": false,
+     "rrFlag": false,
+     "deemedBoFlag": false
+    },
+    {
+     "acceptanceNumber": 82814,
+     "soFlag": false,
+     "storFlag": false,
+     "rrFlag": false,
+     "deemedBoFlag": false
+    },
+    {
+     "acceptanceNumber": 82814,
+     "soFlag": false,
+     "storFlag": false,
+     "rrFlag": false,
+     "deemedBoFlag": false
+    }
+   ],
+   "accepted_any_so_flag": false,
+   "surviving_alt_unit": "C__PSTAT011",
+   "surviving_alt_reference": {
+    "fuel": "WIND",
+    "gsp": "North Scotland",
+    "type": "S"
+   },
+   "surviving_alt_headroom_ub_mw": "14"
+  },
+  {
+   "action": {
+    "settlement_date": "2026-08-07",
+    "settlement_period": 34,
+    "direction": "offer",
+    "accepted_unit": "T_CNQPS-4",
+    "accepted_pair_id": 1
+   },
+   "post_gap_gbp_per_mwh": "374.00",
+   "accepted_unit_reference": {
+    "fuel": "CCGT",
+    "gsp": null,
+    "type": "T"
+   },
+   "accepted_unit_boalf": [
+    {
+     "acceptanceNumber": 114023,
+     "soFlag": false,
+     "storFlag": false,
+     "rrFlag": false,
+     "deemedBoFlag": false
+    },
+    {
+     "acceptanceNumber": 114023,
+     "soFlag": false,
+     "storFlag": false,
+     "rrFlag": false,
+     "deemedBoFlag": false
+    }
+   ],
+   "accepted_any_so_flag": false,
+   "surviving_alt_unit": "T_SCCL-4",
+   "surviving_alt_reference": {
+    "fuel": null,
+    "gsp": null,
+    "type": "T"
+   },
+   "surviving_alt_headroom_ub_mw": "37"
+  },
+  {
+   "action": {
+    "settlement_date": "2026-08-07",
+    "settlement_period": 35,
+    "direction": "offer",
+    "accepted_unit": "T_CNQPS-4",
+    "accepted_pair_id": 1
+   },
+   "post_gap_gbp_per_mwh": "374.00",
+   "accepted_unit_reference": {
+    "fuel": "CCGT",
+    "gsp": null,
+    "type": "T"
+   },
+   "accepted_unit_boalf": [
+    {
+     "acceptanceNumber": 114024,
+     "soFlag": false,
+     "storFlag": false,
+     "rrFlag": false,
+     "deemedBoFlag": false
+    },
+    {
+     "acceptanceNumber": 114024,
+     "soFlag": false,
+     "storFlag": false,
+     "rrFlag": false,
+     "deemedBoFlag": false
+    }
+   ],
+   "accepted_any_so_flag": false,
+   "surviving_alt_unit": "T_SCCL-4",
+   "surviving_alt_reference": {
+    "fuel": null,
+    "gsp": null,
+    "type": "T"
+   },
+   "surviving_alt_headroom_ub_mw": "37"
+  },
+  {
+   "action": {
+    "settlement_date": "2026-08-07",
+    "settlement_period": 36,
+    "direction": "offer",
+    "accepted_unit": "T_CNQPS-1",
+    "accepted_pair_id": 1
+   },
+   "post_gap_gbp_per_mwh": "374.00",
+   "accepted_unit_reference": {
+    "fuel": "CCGT",
+    "gsp": null,
+    "type": "T"
+   },
+   "accepted_unit_boalf": [
+    {
+     "acceptanceNumber": 118350,
+     "soFlag": false,
+     "storFlag": false,
+     "rrFlag": false,
+     "deemedBoFlag": false
+    },
+    {
+     "acceptanceNumber": 118350,
+     "soFlag": false,
+     "storFlag": false,
+     "rrFlag": false,
+     "deemedBoFlag": false
+    }
+   ],
+   "accepted_any_so_flag": false,
+   "surviving_alt_unit": "T_SCCL-4",
+   "surviving_alt_reference": {
+    "fuel": null,
+    "gsp": null,
+    "type": "T"
+   },
+   "surviving_alt_headroom_ub_mw": "37"
+  },
+  {
+   "action": {
+    "settlement_date": "2026-08-07",
+    "settlement_period": 36,
+    "direction": "offer",
+    "accepted_unit": "T_CNQPS-4",
+    "accepted_pair_id": 1
+   },
+   "post_gap_gbp_per_mwh": "374.00",
+   "accepted_unit_reference": {
+    "fuel": "CCGT",
+    "gsp": null,
+    "type": "T"
+   },
+   "accepted_unit_boalf": [
+    {
+     "acceptanceNumber": 114025,
+     "soFlag": false,
+     "storFlag": false,
+     "rrFlag": false,
+     "deemedBoFlag": false
+    },
+    {
+     "acceptanceNumber": 114025,
+     "soFlag": false,
+     "storFlag": false,
+     "rrFlag": false,
+     "deemedBoFlag": false
+    }
+   ],
+   "accepted_any_so_flag": false,
+   "surviving_alt_unit": "T_SCCL-4",
+   "surviving_alt_reference": {
+    "fuel": null,
+    "gsp": null,
+    "type": "T"
+   },
+   "surviving_alt_headroom_ub_mw": "37"
+  }
+ ]
+}

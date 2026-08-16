@@ -353,7 +353,6 @@ NESO_RESOURCES = [
     ),
     ("NESO-SKIP-EXCLUSIONS", "a82a2a20-6f08-4d7d-a2ed-221527ba75c2", "exclusions_2026-08.csv"),
 ]
-NESO_FINAL_STAGE = neso.FINAL_STAGE
 
 
 def neso_fetch(*, url: str, destination: Path, dataset: str):
@@ -385,10 +384,6 @@ def fetch_neso() -> None:
     print(f"fetched {fetched}, verified and skipped {skipped}")
 
 
-def read_neso_csv(filename: str) -> list[dict]:
-    return neso.read_csv(filename)
-
-
 def spearman(pairs: list[tuple]) -> float | None:
     def ranks(values: list) -> list[float]:
         order = sorted(range(len(values)), key=lambda i: values[i])
@@ -415,23 +410,18 @@ def spearman(pairs: list[tuple]) -> float | None:
     return cov / (var_x * var_y) ** 0.5 if var_x and var_y else None
 
 
-def our_intensity_by_cell() -> tuple[dict, dict]:
-    """001B's declared (naive, post-filter) intensity per daily cell."""
-    _ngc_to_elexon, elexon_to_ngc = unit_maps()
-    rows = load_alternative_rows(MS001_EVIDENCE / "alternatives.parquet")
-    return intensity_by_cell(rows, elexon_to_ngc)
-
-
 def neso_compare() -> None:
     window = set(window_dates())
-    naive, post = our_intensity_by_cell()
+    _ngc_to_elexon, elexon_to_ngc = unit_maps()
+    rows = load_alternative_rows(MS001_EVIDENCE / "alternatives.parquet")
+    naive, post = intensity_by_cell(rows, elexon_to_ngc)
 
-    inmerit = read_neso_csv("inmerit_allbm_2026-08.csv")
+    inmerit = neso.read_csv("inmerit_allbm_2026-08.csv")
     coverage = Counter(r["date"][:10] for r in inmerit)
     neso_skip: dict[tuple, Decimal] = {}
     for r in inmerit:
         date = r["date"][:10]
-        if date not in window or int(r["stage"]) != NESO_FINAL_STAGE:
+        if date not in window or int(r["stage"]) != neso.FINAL_STAGE:
             continue
         key = (date, r["bid_offer"].lower(), r["bm_unit"])
         neso_skip[key] = neso_skip.get(key, Decimal(0)) + Decimal(r["skipped_volume_MWh"] or "0")
@@ -469,7 +459,7 @@ def neso_compare() -> None:
         (c for c in cells if post.get(c, Decimal(0)) > 0 and neso_skip.get(c, Decimal(0)) == 0),
         key=lambda c: -post[c],
     )
-    exclusions = read_neso_csv("exclusions_2026-08.csv")
+    exclusions = neso.read_csv("exclusions_2026-08.csv")
     exclusion_rows: dict[tuple, list[dict]] = {}
     for r in exclusions:
         key = (r["date"][:10], r["bid_offer"].lower(), r["bm_unit"])

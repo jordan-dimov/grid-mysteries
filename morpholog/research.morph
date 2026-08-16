@@ -73,7 +73,7 @@ transformation publish_finding(
 
 -- Audit-checkpoint signing (reserved predicate name; the public key is
 -- authorised by this claim as-of each checkpoint's prefix, so revocation
--- is non-retroactive). Programme amendment recorded 2026-08-17.
+-- is non-retroactive). Programme amendment recorded 2026-08-16.
 predicate AuditSigningKey(key_id: Subject, purpose: Subject, public_key: Subject)
     append only
 

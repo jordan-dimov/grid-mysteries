@@ -15,7 +15,7 @@ from collections import Counter
 from decimal import Decimal
 from pathlib import Path
 
-from grid_mysteries.corpus import load_records, unit_maps, window_path
+from grid_mysteries.corpus import REPO_ROOT, load_records, unit_maps, window_path
 from grid_mysteries.investigations.bod_inversion import (
     accepted_pairs,
     find_inversion_candidates,
@@ -25,16 +25,10 @@ from grid_mysteries.investigations.neso_cells import load_alternative_rows
 from grid_mysteries.sources import elexon, neso
 from grid_mysteries.sources.pinning import fetch_journalled
 
-REPO_ROOT = Path(__file__).resolve().parents[2]
 EVIDENCE = Path(__file__).resolve().parent / "evidence"
 MS1_EVIDENCE = REPO_ROOT / "investigations" / "method-study-001-phantom-liquidity" / "evidence"
 MS1C_EVIDENCE = REPO_ROOT / "investigations" / "method-study-001c-disagreement-anatomy" / "evidence"
-BMUNITS_PATH = REPO_ROOT / "data" / "raw" / "elexon" / "case-001" / "bmunits.json"
 BOALF_RAW = REPO_ROOT / "data" / "raw" / "elexon" / "sixcases-001d"
-
-
-def read_neso_csv(filename: str) -> list[dict]:
-    return neso.read_csv(filename)
 
 
 def cases() -> list[dict]:
@@ -100,8 +94,8 @@ def fetch() -> None:
 
 def analyse() -> None:
     ngc_to_elexon, elexon_to_ngc = unit_maps()
-    exclusions = read_neso_csv("exclusions_2026-08.csv")
-    inmerit = read_neso_csv("inmerit_allbm_2026-08.csv")
+    exclusions = neso.read_csv("exclusions_2026-08.csv")
+    inmerit = neso.read_csv("inmerit_allbm_2026-08.csv")
 
     out_cases = []
     for cell in cases():

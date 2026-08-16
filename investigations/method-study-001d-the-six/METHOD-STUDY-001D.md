@@ -66,8 +66,8 @@ uv run python investigations/method-study-001d-the-six/sixcases.py analyse  # of
 
 ## Corrections
 
-1. **Determinism fix (recorded 2026-08-17, after publication; results
-   unaffected).** `analyse` iterated a Python set of counterpart units,
+1. **Determinism fix (recorded 2026-08-16, after the governed finding
+   was published but before any public post; results unaffected).** `analyse` iterated a Python set of counterpart units,
    so tie ordering inside its counters depended on per-process hash
    randomisation: re-runs produced content-identical output with
    reordered equal-count entries, breaking byte-for-byte reproduction.

@@ -13,7 +13,7 @@ from collections import Counter
 from decimal import Decimal
 from pathlib import Path
 
-from grid_mysteries.corpus import unit_maps, window_dates
+from grid_mysteries.corpus import REPO_ROOT, unit_maps, window_dates
 from grid_mysteries.investigations.exclusion_attribution import (
     LAYER_ORDER,
     categorise,
@@ -22,35 +22,24 @@ from grid_mysteries.investigations.exclusion_attribution import (
 from grid_mysteries.investigations.neso_cells import intensity_by_cell, load_alternative_rows
 from grid_mysteries.sources import neso
 
-REPO_ROOT = Path(__file__).resolve().parents[2]
 EVIDENCE = Path(__file__).resolve().parent / "evidence"
 MS001_EVIDENCE = REPO_ROOT / "investigations" / "method-study-001-phantom-liquidity" / "evidence"
-
-NESO_FINAL_STAGE = neso.FINAL_STAGE
-
-
-def read_neso_csv(filename: str) -> list[dict]:
-    return neso.read_csv(filename)
-
-
-def our_intensity_by_cell() -> tuple[dict, dict]:
-    _ngc_to_elexon, elexon_to_ngc = unit_maps()
-    rows = load_alternative_rows(MS001_EVIDENCE / "alternatives.parquet")
-    return intensity_by_cell(rows, elexon_to_ngc)
 
 
 def build_state() -> dict:
     """Everything both subcommands need, computed once from pinned inputs."""
     window = set(window_dates())
-    naive, post = our_intensity_by_cell()
+    _ngc_to_elexon, elexon_to_ngc = unit_maps()
+    rows = load_alternative_rows(MS001_EVIDENCE / "alternatives.parquet")
+    naive, post = intensity_by_cell(rows, elexon_to_ngc)
 
-    inmerit = read_neso_csv("inmerit_allbm_2026-08.csv")
+    inmerit = neso.read_csv("inmerit_allbm_2026-08.csv")
     neso_skip: dict[tuple, Decimal] = {}
     neso_accepted: dict[tuple, Decimal] = {}
     neso_in_merit: dict[tuple, Decimal] = {}
     for r in inmerit:
         date = r["date"][:10]
-        if date not in window or int(r["stage"]) != NESO_FINAL_STAGE:
+        if date not in window or int(r["stage"]) != neso.FINAL_STAGE:
             continue
         key = (date, r["bid_offer"].lower(), r["bm_unit"])
         neso_skip[key] = neso_skip.get(key, Decimal(0)) + Decimal(r["skipped_volume_MWh"] or "0")
@@ -62,7 +51,7 @@ def build_state() -> dict:
         )
 
     exclusion_rows: dict[tuple, list[dict]] = {}
-    for r in read_neso_csv("exclusions_2026-08.csv"):
+    for r in neso.read_csv("exclusions_2026-08.csv"):
         date = r["date"][:10]
         if date in window:
             exclusion_rows.setdefault((date, r["bid_offer"].lower(), r["bm_unit"]), []).append(r)

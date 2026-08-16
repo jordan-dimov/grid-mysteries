@@ -11,6 +11,7 @@ Grid Mysteries investigates surprising events in Britain's electricity system us
 - Preserve corrections and failed hypotheses. Being falsified is useful research; silently rewriting the past is not.
 - Distinguish realised facts from counterfactuals. Never label a counterfactual price difference as a saving or loss without proving substitutability and executability.
 - Prefer primary public sources and official methodology for market rules and data semantics. Do not guess changing API schemas or current rules.
+- Selection rules are pre-declared and committed before their window's data is touched, and an **amended rule never runs against a window that taught the amendment**. Week N teaches the method; a fresh, untouched chronological window tests it. Improving the method from a lesson is legitimate; re-mining the same corpus until it yields the hoped-for mystery is not.
 
 ## Architecture
 

@@ -1,0 +1,31 @@
+{
+ "selected": {
+  "constraint_group": "SSE-SP",
+  "dates": [
+   "2026-05-18",
+   "2026-05-19",
+   "2026-05-20",
+   "2026-05-21",
+   "2026-05-22",
+   "2026-05-23",
+   "2026-05-24",
+   "2026-05-25",
+   "2026-05-26",
+   "2026-05-27",
+   "2026-05-28",
+   "2026-05-29",
+   "2026-05-30",
+   "2026-05-31"
+  ],
+  "repeat_curtailment_score": 8259,
+  "storage_bid_down_mwh": "69869.429632695486032910"
+ },
+ "coverage": {
+  "storage_units_declared": 165,
+  "mapped_to_elexon_ids": 165,
+  "unmapped_ngc_ids": [],
+  "units_with_any_may_export_pn": 162,
+  "units_with_any_may_bid_down": 163,
+  "episodes_in_window": 19
+ }
+}

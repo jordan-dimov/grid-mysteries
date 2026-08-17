@@ -143,3 +143,32 @@ uv run python investigations/bess-study-001-benchmark-fragility/bench.py fetch  
 uv run python investigations/bess-study-001-benchmark-fragility/bench.py panel    # offline; applies the panel rule
 uv run python investigations/bess-study-001-benchmark-fragility/bench.py analyse  # offline; deterministic
 ```
+
+## Corrections
+
+1. **Net-vs-gross interpretation error in the first published finding
+   (recorded 2026-08-17, before any public post or publication pack).**
+   `fnd-bess-001-fragility` described £1,263,589 as opportunity that
+   "was feasible only with information published after the cutoff". That
+   figure is the **pooled net difference** R3h − R3p. The evidence itself
+   shows revisions run in **both directions**: a later MDO/MDB vintage
+   can tighten as well as loosen the envelope, so R3p exceeds R3h in
+   many periods (at unit-direction level, ≈£3.64m of hindsight-only
+   opportunity is offset by ≈£2.38m that the final vintage revised
+   away). The analysis now decomposes the revision per period into
+   `future_only` (max(R3h−R3p, 0)) and `revised_away` (max(R3p−R3h, 0));
+   a correcting finding reports the gross figures, and the original
+   finding remains in the governed record as published. The correct
+   statement is stronger, not weaker: **a hindsight benchmark does not
+   merely know more — it reconstructs a materially different feasible
+   state from the one publicly observable at decision time**, in either
+   direction, which is precisely the problem with grading a historical
+   decision against a revised information set.
+2. **Presentation semantics (same date).** R3h and R3p are **two
+   information-set views branching from the duration constraint**, not
+   successive monotonic rungs — the data proves non-monotonicity.
+   Visuals must draw R1 → R2 → duration, then branch
+   (final-vintage vs decision-time), reconnecting at the
+   operational-context disclosure. Also: the defensible timeliness claim
+   is "July 2026 is the first full month for which the new public
+   MDO/MDB data exists", not a claim about who measured what first.

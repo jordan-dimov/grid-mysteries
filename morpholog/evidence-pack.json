@@ -1,9 +1,9 @@
 {
   "manifest": {
     "pack_format_version": 1,
-    "tree_size": 43,
-    "root_hash": "sha256:28228adc3d2d94a0270d9eb13b0874a85f18a6a79354e2cf078b7de3d9d1815d",
-    "checkpoint_hash": "sha256:92713d8c31d655a062c00d6045c20f58a8641ab41f707a29d6bd3133bd39cdeb"
+    "tree_size": 44,
+    "root_hash": "sha256:89ebfcfe72bc56fe57c1af12b16d3e0d62469d481c4dde49f1f6d849f749d51c",
+    "checkpoint_hash": "sha256:9ea63a69eb9732cbe3a2d0c09195aaf4c23b1d6c55ae1d986011dfe4f5055076"
   },
   "checkpoints": [
     {
@@ -185,6 +185,20 @@
           "purpose": "audit_checkpoint_v1",
           "public_key": "ed25519-pub:cb6c6ce9152039914ac232b8302d0bc2f6b3f80d73623c5a358288993cc4ccf9",
           "signature": "ed25519-sig:78d65fa102a08bf6ad568e031a33eacceb7deae1519da6781b53a1cfb1c9ce368724c5f3c8793c370950d7acf426f1d5db0a0b2d1d942ccc8a74915dac751603"
+        }
+      ]
+    },
+    {
+      "tree_size": 44,
+      "root_hash": "sha256:89ebfcfe72bc56fe57c1af12b16d3e0d62469d481c4dde49f1f6d849f749d51c",
+      "prev_checkpoint_hash": "sha256:92713d8c31d655a062c00d6045c20f58a8641ab41f707a29d6bd3133bd39cdeb",
+      "checkpoint_hash": "sha256:9ea63a69eb9732cbe3a2d0c09195aaf4c23b1d6c55ae1d986011dfe4f5055076",
+      "signatures": [
+        {
+          "key_id": "audit-2026",
+          "purpose": "audit_checkpoint_v1",
+          "public_key": "ed25519-pub:cb6c6ce9152039914ac232b8302d0bc2f6b3f80d73623c5a358288993cc4ccf9",
+          "signature": "ed25519-sig:4d9b37337a983d2424a1e4099cc2d1aee77e8e78e4f346102a3a31aa8331d6631c5e957d687a8a18e1cb4692366426253f8a5fed12ba369d6cf86df2ac563505"
         }
       ]
     }
@@ -3858,6 +3872,111 @@
         }
       ],
       "committed_at": "2026-08-17T09:25:13.997934Z",
+      "attestation": {
+        "mode": "gateway",
+        "authenticated_by": "jdimov"
+      }
+    },
+    {
+      "transition_id": "01a00f38-f3c4-75d2-a583-cceea7746cb4",
+      "transformation_name": "publish_finding",
+      "arguments": [
+        {
+          "type": "subject",
+          "value": "fnd-bess-001-fragility-corrected"
+        },
+        {
+          "type": "subject",
+          "value": "bess-001-benchmark-fragility"
+        },
+        {
+          "type": "subject",
+          "value": "hyp-bess-001-half-survives"
+        },
+        {
+          "type": "subject",
+          "value": "CORRECTION of fnd-bess-001-fragility (which remains on the record as published): the GBP 1,263,589 point-in-time figure was a pooled NET difference concealing revisions in both directions. Period-level decomposition: final-vintage MDO/MDB supported GBP 4,689,718 of opportunity not publicly supportable at the decision cutoff (989 unit-direction-periods) AND removed GBP 3,426,133 that the contemporaneous public envelope had supported (1,991 unit-direction-periods); net GBP 1,263,584 (the GBP 5 residue is two unknown-at-R3p periods). A hindsight benchmark does not merely know more - it reconstructs a materially different feasible state from the one publicly observable at decision time, in either direction. All other figures of the original finding are unchanged and reconfirmed (rung totals byte-identical on re-run); the timeliness claim is corrected to: July 2026 is the first full month for which the new public MDO/MDB data exists. Figures are arithmetic on public numbers, never achievable value."
+        },
+        {
+          "type": "subject",
+          "value": "8ad024afea3297669c80011c0240c14a049d284c4b68339da89daed760c53387"
+        },
+        {
+          "type": "timestamp",
+          "value": "2026-08-17T10:05:00Z"
+        }
+      ],
+      "actor": {
+        "type": "subject",
+        "value": "jordan-dimov"
+      },
+      "invariant_epoch": 1,
+      "invariants_checked": [
+        {
+          "name": "attached_source_exists",
+          "version": 1
+        },
+        {
+          "name": "attached_source_has_investigation",
+          "version": 1
+        },
+        {
+          "name": "hypothesis_has_investigation",
+          "version": 1
+        },
+        {
+          "name": "finding_has_registered_hypothesis",
+          "version": 1
+        },
+        {
+          "name": "finding_has_at_least_one_source",
+          "version": 1
+        }
+      ],
+      "asserted_claims": [
+        {
+          "predicate": "Finding",
+          "args": [
+            {
+              "type": "subject",
+              "value": "fnd-bess-001-fragility-corrected"
+            },
+            {
+              "type": "subject",
+              "value": "bess-001-benchmark-fragility"
+            },
+            {
+              "type": "subject",
+              "value": "hyp-bess-001-half-survives"
+            },
+            {
+              "type": "subject",
+              "value": "CORRECTION of fnd-bess-001-fragility (which remains on the record as published): the GBP 1,263,589 point-in-time figure was a pooled NET difference concealing revisions in both directions. Period-level decomposition: final-vintage MDO/MDB supported GBP 4,689,718 of opportunity not publicly supportable at the decision cutoff (989 unit-direction-periods) AND removed GBP 3,426,133 that the contemporaneous public envelope had supported (1,991 unit-direction-periods); net GBP 1,263,584 (the GBP 5 residue is two unknown-at-R3p periods). A hindsight benchmark does not merely know more - it reconstructs a materially different feasible state from the one publicly observable at decision time, in either direction. All other figures of the original finding are unchanged and reconfirmed (rung totals byte-identical on re-run); the timeliness claim is corrected to: July 2026 is the first full month for which the new public MDO/MDB data exists. Figures are arithmetic on public numbers, never achievable value."
+            },
+            {
+              "type": "subject",
+              "value": "8ad024afea3297669c80011c0240c14a049d284c4b68339da89daed760c53387"
+            },
+            {
+              "type": "timestamp",
+              "value": "2026-08-17T10:05:00Z"
+            }
+          ]
+        }
+      ],
+      "retracted_claims": [],
+      "emitted_intents": [
+        {
+          "name": "FindingPublished",
+          "args": [
+            {
+              "type": "subject",
+              "value": "fnd-bess-001-fragility-corrected"
+            }
+          ]
+        }
+      ],
+      "committed_at": "2026-08-17T10:16:25.793820Z",
       "attestation": {
         "mode": "gateway",
         "authenticated_by": "jdimov"

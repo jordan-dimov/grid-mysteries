@@ -3,7 +3,7 @@
 *BESS Study 001 research note. Corpus: July 2026, consumed by this study;
 the Investigation 002 window (2026-08-11..17) untouched. Every figure is
 reproducible from the pinned evidence (`evidence/fragility-analysis.json`,
-digest bound into `fnd-bess-001-fragility`); every rule was committed
+digests bound into `fnd-bess-001-fragility` and its correction `fnd-bess-001-fragility-corrected`); every rule was committed
 before July was fetched. All monetary figures are **arithmetic on public
 numbers** — never savings, missed revenue, or achievable value.*
 
@@ -24,9 +24,13 @@ is what a mechanical panel is for.
 |---|---:|---:|---|
 | R1 price-only | £618,908,576 | 100% | the price existed |
 | R2 power-feasible | £29,215,605 | 4.72% | MW movement not provably impossible (FPN/MEL/MIL) |
-| R3h duration-aware, hindsight | £16,133,648 | 2.61% | the published delivery envelope permits it |
+| R3h duration-aware, final vintage | £16,133,648 | 2.61% | the published delivery envelope permits it |
 | R3p duration-aware, public-as-of | £14,870,059 | 2.40% | same, using only information publicly observable 60 minutes before the period |
 | R4 no exclusion context on either side | £295,915 | 0.05% | no published NESO exclusion context on either side of the comparison |
+
+R3h and R3p are **two information-set views branching from the duration
+constraint**, not successive rungs: the data is non-monotonic between
+them (see result 3 and the study Corrections).
 
 Three results stand out:
 
@@ -39,13 +43,20 @@ Three results stand out:
    without having that energy available for the interval a benchmark
    values — and July 2026 is the first month where public data
    quantifies that for GB.
-3. **£1,263,589 of the duration-aware figure existed only in hindsight**
-   (7.8% of R3h, across 989 unit-direction-periods): the MDO/MDB
-   information that makes those opportunities look feasible was published
-   *after* the decision cutoff. A benchmark using final envelopes is
-   quietly using information the decision-maker did not have. This is
-   the *publicly observable as of decision time* result — it proves
-   public availability, never control-room knowledge.
+3. **Final-vintage MDO/MDB reconstructs a materially different feasible
+   state from the one publicly observable at decision time — in both
+   directions.** In 989 periods the final vintage supported **£4,689,718**
+   of opportunity that was not publicly supportable at the decision
+   cutoff; in 1,991 periods it *removed* **£3,426,133** that the
+   contemporaneous public envelope had supported. The pooled net,
+   £1.264m, conceals both flows (a £5 residue against the rung totals is
+   the two unknown-at-R3p periods). The assurance implication: a
+   hindsight benchmark does not merely know more — it can say "you
+   should have done this" when the supporting envelope arrived later,
+   *and* "this wasn't feasible" when the contemporaneous data said it
+   was. Either way, a historical decision is being graded against a
+   revised information set. (All of this proves public availability
+   only, never control-room knowledge.)
 
 The R4 row is a **disclosure, not a verdict**: 98% of the surviving
 public-as-of figure coincides with NESO exclusion context (constraint,
@@ -66,8 +77,8 @@ outage and derating state; optimiser mandate and risk limits; forecasts
 actually held at decision time; response latency; private commercial
 constraints. **Public data can test whether a claimed opportunity
 survives public reality. Asset data is required to establish whether the
-opportunity was actually achievable.** Every rung above is an upper
-bound on the layer beneath it.
+opportunity was actually achievable.** Each public layer only bounds
+what a benchmark may claim; none establishes what the asset could do.
 
 ## Reproduction
 

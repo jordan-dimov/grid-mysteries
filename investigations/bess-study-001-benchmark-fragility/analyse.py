@@ -126,6 +126,9 @@ def run_analyse() -> None:
     unknown_public: dict[tuple, int] = defaultdict(int)
     unknown_carried_r2: dict[tuple, Decimal] = defaultdict(Decimal)
     hindsight_gt_public_periods: dict[tuple, int] = defaultdict(int)
+    public_gt_hindsight_periods: dict[tuple, int] = defaultdict(int)
+    future_only_gbp: dict[tuple, Decimal] = defaultdict(Decimal)
+    revised_away_gbp: dict[tuple, Decimal] = defaultdict(Decimal)
     context_present_gbp: dict[tuple, Decimal] = defaultdict(Decimal)
     opportunity_periods: dict[tuple, int] = defaultdict(int)
 
@@ -204,11 +207,14 @@ def run_analyse() -> None:
                         unknown_public[key] += 1
                         if values["r2_power_feasible"] is not None:
                             unknown_carried_r2[key] += values["r2_power_feasible"]
-                    elif (
-                        values["r3h_duration_hindsight"] is not None
-                        and values["r3h_duration_hindsight"] > values["r3p_duration_public"]
-                    ):
-                        hindsight_gt_public_periods[key] += 1
+                    elif values["r3h_duration_hindsight"] is not None:
+                        revision = values["r3h_duration_hindsight"] - values["r3p_duration_public"]
+                        if revision > 0:
+                            hindsight_gt_public_periods[key] += 1
+                            future_only_gbp[key] += revision
+                        elif revision < 0:
+                            public_gt_hindsight_periods[key] += 1
+                            revised_away_gbp[key] += -revision
                     if values["r3p_duration_public"] is not None:
                         ngc = elexon_to_ngc.get(unit, unit)
                         flagged = (day, direction, ngc) in context or any(
@@ -244,6 +250,11 @@ def run_analyse() -> None:
         "hindsight_exceeds_public_periods": {
             f"{u}|{dn}": n for (u, dn), n in sorted(hindsight_gt_public_periods.items())
         },
+        "public_exceeds_hindsight_periods": {
+            f"{u}|{dn}": n for (u, dn), n in sorted(public_gt_hindsight_periods.items())
+        },
+        "future_only_gbp": serialise(future_only_gbp),
+        "revised_away_gbp": serialise(revised_away_gbp),
         "r3p_context_present_gbp": serialise(context_present_gbp),
     }
     (EVIDENCE / "fragility-analysis.json").write_text(json.dumps(result, indent=1) + "\n")

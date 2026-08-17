@@ -801,5 +801,34 @@
         "value": "2026-08-17T09:30:00Z"
       }
     ]
+  },
+  {
+    "predicate": "Finding",
+    "args": [
+      {
+        "type": "subject",
+        "value": "fnd-bess-001-fragility-corrected"
+      },
+      {
+        "type": "subject",
+        "value": "bess-001-benchmark-fragility"
+      },
+      {
+        "type": "subject",
+        "value": "hyp-bess-001-half-survives"
+      },
+      {
+        "type": "subject",
+        "value": "CORRECTION of fnd-bess-001-fragility (which remains on the record as published): the GBP 1,263,589 point-in-time figure was a pooled NET difference concealing revisions in both directions. Period-level decomposition: final-vintage MDO/MDB supported GBP 4,689,718 of opportunity not publicly supportable at the decision cutoff (989 unit-direction-periods) AND removed GBP 3,426,133 that the contemporaneous public envelope had supported (1,991 unit-direction-periods); net GBP 1,263,584 (the GBP 5 residue is two unknown-at-R3p periods). A hindsight benchmark does not merely know more - it reconstructs a materially different feasible state from the one publicly observable at decision time, in either direction. All other figures of the original finding are unchanged and reconfirmed (rung totals byte-identical on re-run); the timeliness claim is corrected to: July 2026 is the first full month for which the new public MDO/MDB data exists. Figures are arithmetic on public numbers, never achievable value."
+      },
+      {
+        "type": "subject",
+        "value": "8ad024afea3297669c80011c0240c14a049d284c4b68339da89daed760c53387"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-08-17T10:05:00Z"
+      }
+    ]
   }
 ]

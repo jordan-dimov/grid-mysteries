@@ -868,5 +868,68 @@
         "value": "2026-08-17T11:00:00Z"
       }
     ]
+  },
+  {
+    "predicate": "SourceArtifact",
+    "args": [
+      {
+        "type": "subject",
+        "value": "art-003-may-manifest"
+      },
+      {
+        "type": "subject",
+        "value": "elexon-insights May 2026 corpus via evidence/may-manifest.json (companions: neso-may, pn-may, ebocf-may manifests in same evidence dir)"
+      },
+      {
+        "type": "subject",
+        "value": "e46bc97decc9f62610efc06d0f2260f3115314200fac6f565d9a6626be4d2a49"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-08-17T12:20:00Z"
+      }
+    ]
+  },
+  {
+    "predicate": "InvestigationUses",
+    "args": [
+      {
+        "type": "subject",
+        "value": "inv-003-follow-the-constraint"
+      },
+      {
+        "type": "subject",
+        "value": "art-003-may-manifest"
+      }
+    ]
+  },
+  {
+    "predicate": "Finding",
+    "args": [
+      {
+        "type": "subject",
+        "value": "fnd-003-episode-reconstructed"
+      },
+      {
+        "type": "subject",
+        "value": "inv-003-follow-the-constraint"
+      },
+      {
+        "type": "subject",
+        "value": "hyp-003-episode-reconstructable"
+      },
+      {
+        "type": "subject",
+        "value": "PARTLY CONFIRMED, with the observability boundary precisely mapped. The frozen rule selected constraint group SSE-SP, 2026-05-18..31 (right-censored by the window): 8,259 repeat-curtailment cycles consistent with RRT, 69,869 MWh storage bid-down. The observable sequence reconstructs at scale (excerpt day 2026-05-20: 1,060 cycles; focus unit E_DOLLB-1: 21 cycles, 88 distinct acceptances in one day, repeatedly instructed from scheduled export through zero to around -99 MW import, NONE SO-flagged in the public record). Published money accounts to Elexon's own indicative figures (episode dates, GB-wide scope: storage bids -6,736,338 GBP, storage offers +9,152,108, non-storage offers +78,392,272; SSE-SP published outturn constraint cost 11,510,565 GBP). Two links are NOT publicly observable and are the finding: (1) the intraday re-sale that turns repetition into re-trading; (2) the unit-to-constraint-group mapping that would localise money to the boundary. No figure is a cost of RRT; concurrency is observed, substitution never asserted."
+      },
+      {
+        "type": "subject",
+        "value": "584d733c56ec57b48add05c169cd60501cff06b5b1e9395aa1cac2040671f23a"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-08-17T12:30:00Z"
+      }
+    ]
   }
 ]

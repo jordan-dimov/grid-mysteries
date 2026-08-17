@@ -272,6 +272,58 @@ def build_ledger() -> None:
     print(f"ledger: {len(timeline)} frames, {len(gaps)} period gaps surfaced")
 
 
+def accounting() -> None:
+    """The 14-day decomposition: published figures side by side with the
+    question mark — no synthetic 'cost of RRT' number is constructed."""
+    episode = selected()
+    dates = set(episode["dates"])
+    storage = storage_elexon_units()
+    totals = {
+        "storage_bid": Decimal(0),
+        "storage_offer": Decimal(0),
+        "non_storage_bid": Decimal(0),
+        "non_storage_offer": Decimal(0),
+    }
+    for day in sorted(dates):
+        for direction in ("bid", "offer"):
+            for r in load_records(RAW / day / f"ebocf_{direction}.json"):
+                rec = parse_ebocf_record(r)
+                if rec.total_cashflow == 0:
+                    continue
+                side = "storage" if str(r["bmUnit"]) in storage else "non_storage"
+                totals[f"{side}_{direction}"] += rec.reconciled_total()
+        print(f"accounted {day}", flush=True)
+    constraint_cost = sum(
+        (
+            Decimal(str(r["Daily Cost (GBP)"]).strip() or "0")
+            for r in neso.read_csv("thermal_constraint_costs_data_26-27.csv")
+            if str(r["Settlement Date"])[:10] in dates
+            and r["Constraint Group"] == episode["constraint_group"]
+        ),
+        Decimal(0),
+    )
+    result = {
+        "labelling": (
+            "Published figures only, side by side; nothing here is a 'cost of "
+            "RRT'. Cashflows are Elexon's published indicative BM cashflows "
+            "(latest settlement run at pin time); the constraint cost is NESO's "
+            "published daily outturn for the group, whole-group and daily-grain "
+            "(it does not localise to units or periods). Concurrency is "
+            "observed; substitution is not asserted."
+        ),
+        "episode": episode,
+        "published_indicative_bm_cashflows_gbp": {k: str(v) for k, v in totals.items()},
+        "published_constraint_cost_for_group_gbp": str(constraint_cost),
+        "repeat_curtailment_cycles_consistent_with_rrt": episode["repeat_curtailment_score"],
+        "storage_bid_down_mwh": episode["storage_bid_down_mwh"],
+        "intraday_re_sales": "not publicly observable",
+    }
+    (EVIDENCE / "episode-accounting.json").write_text(json.dumps(result, indent=1) + "\n")
+    for k, v in totals.items():
+        print(f"{k}: {v:.0f}")
+    print(f"constraint cost ({episode['constraint_group']}): {constraint_cost:.0f}")
+
+
 def main() -> None:
     import sys
 
@@ -280,6 +332,8 @@ def main() -> None:
             pick_excerpt()
         case ["ledger"]:
             build_ledger()
+        case ["accounting"]:
+            accounting()
         case _:
             sys.exit(__doc__)
 

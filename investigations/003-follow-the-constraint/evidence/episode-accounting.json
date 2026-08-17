@@ -1,0 +1,34 @@
+{
+ "labelling": "Published figures only, side by side; nothing here is a 'cost of RRT'. Cashflows are Elexon's published indicative BM cashflows (latest settlement run at pin time); the constraint cost is NESO's published daily outturn for the group, whole-group and daily-grain (it does not localise to units or periods). Concurrency is observed; substitution is not asserted.",
+ "episode": {
+  "constraint_group": "SSE-SP",
+  "dates": [
+   "2026-05-18",
+   "2026-05-19",
+   "2026-05-20",
+   "2026-05-21",
+   "2026-05-22",
+   "2026-05-23",
+   "2026-05-24",
+   "2026-05-25",
+   "2026-05-26",
+   "2026-05-27",
+   "2026-05-28",
+   "2026-05-29",
+   "2026-05-30",
+   "2026-05-31"
+  ],
+  "repeat_curtailment_score": 8259,
+  "storage_bid_down_mwh": "69869.429632695486032910"
+ },
+ "published_indicative_bm_cashflows_gbp": {
+  "storage_bid": "-6736338.405316382276005485",
+  "storage_offer": "9152108.312326531726597940",
+  "non_storage_bid": "-3524447.108667997849967858",
+  "non_storage_offer": "78392272.244251425843447183"
+ },
+ "published_constraint_cost_for_group_gbp": "11510565",
+ "repeat_curtailment_cycles_consistent_with_rrt": 8259,
+ "storage_bid_down_mwh": "69869.429632695486032910",
+ "intraday_re_sales": "not publicly observable"
+}

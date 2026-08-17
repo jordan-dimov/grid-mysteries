@@ -1,9 +1,9 @@
 {
   "manifest": {
     "pack_format_version": 1,
-    "tree_size": 46,
-    "root_hash": "sha256:db7b51612e9b6767d95c0845fb2f629d0af0fafb2c6c535e7cda058748a97752",
-    "checkpoint_hash": "sha256:3ae71bc8259971d1eafe32eca83315e2237f0998946455d592223809eda95111"
+    "tree_size": 49,
+    "root_hash": "sha256:86bb3ddfa356ac1c7a4c7ef11531f409f9ef59a8dacbde45820fe340df81193f",
+    "checkpoint_hash": "sha256:5e118482124354c34087cf7ada0b4caa5e68d3dad8b388e5f9c850d54bfa95d0"
   },
   "checkpoints": [
     {
@@ -227,6 +227,48 @@
           "purpose": "audit_checkpoint_v1",
           "public_key": "ed25519-pub:cb6c6ce9152039914ac232b8302d0bc2f6b3f80d73623c5a358288993cc4ccf9",
           "signature": "ed25519-sig:c0c1bb40146fa3ccfe4e928290659af40fa0b113a8ad294a03317fe9e4ae20aff55c0e9eda95294fd7e64e377211e746f903df28b4e400511f7cd268ab09650f"
+        }
+      ]
+    },
+    {
+      "tree_size": 47,
+      "root_hash": "sha256:33854d4cab193e7b70cbbd3e7ec23425dd3fb9f1491dfb92f68dd1b6a4d03423",
+      "prev_checkpoint_hash": "sha256:3ae71bc8259971d1eafe32eca83315e2237f0998946455d592223809eda95111",
+      "checkpoint_hash": "sha256:53280dcc2712dac3329ee30ea59bd711576870b2702291538eac237992537c52",
+      "signatures": [
+        {
+          "key_id": "audit-2026",
+          "purpose": "audit_checkpoint_v1",
+          "public_key": "ed25519-pub:cb6c6ce9152039914ac232b8302d0bc2f6b3f80d73623c5a358288993cc4ccf9",
+          "signature": "ed25519-sig:e541b3dee55a8ce1377bcc44f316233ee036dcf7d537cfb235a613d2de5209ed18620a7082e5327aed542fe9e747409148ec28dc8083a53bd90e05945bb3ca09"
+        }
+      ]
+    },
+    {
+      "tree_size": 48,
+      "root_hash": "sha256:c2070af8c7a7a7f3866b5a1c27d2b3ff8ca164c495c518e9c250f944f532def4",
+      "prev_checkpoint_hash": "sha256:53280dcc2712dac3329ee30ea59bd711576870b2702291538eac237992537c52",
+      "checkpoint_hash": "sha256:c138881043ad00b70c6d6c22ac84c3aa45b256206d87319d7759cc9147bd5d09",
+      "signatures": [
+        {
+          "key_id": "audit-2026",
+          "purpose": "audit_checkpoint_v1",
+          "public_key": "ed25519-pub:cb6c6ce9152039914ac232b8302d0bc2f6b3f80d73623c5a358288993cc4ccf9",
+          "signature": "ed25519-sig:33b4d289c35cbad13358d01da3517111232d5e8e947701a60fe512a6967d1047967f422164e6f7b6d9ff82d690c7c785f1e97a2d8fa203448ce9fde6b30e2209"
+        }
+      ]
+    },
+    {
+      "tree_size": 49,
+      "root_hash": "sha256:86bb3ddfa356ac1c7a4c7ef11531f409f9ef59a8dacbde45820fe340df81193f",
+      "prev_checkpoint_hash": "sha256:c138881043ad00b70c6d6c22ac84c3aa45b256206d87319d7759cc9147bd5d09",
+      "checkpoint_hash": "sha256:5e118482124354c34087cf7ada0b4caa5e68d3dad8b388e5f9c850d54bfa95d0",
+      "signatures": [
+        {
+          "key_id": "audit-2026",
+          "purpose": "audit_checkpoint_v1",
+          "public_key": "ed25519-pub:cb6c6ce9152039914ac232b8302d0bc2f6b3f80d73623c5a358288993cc4ccf9",
+          "signature": "ed25519-sig:c5a957782e3deae03b8b616d93c52a9536d39649bf1457f3fd132bcab876e561f60259f7a997b5cbe34b12ae5accab7730c158e168ef0469d55209bbe721190c"
         }
       ]
     }
@@ -4175,6 +4217,277 @@
         }
       ],
       "committed_at": "2026-08-17T11:16:53.931192Z",
+      "attestation": {
+        "mode": "gateway",
+        "authenticated_by": "jdimov"
+      }
+    },
+    {
+      "transition_id": "01a00fc9-c991-7052-9bcd-823d54930adb",
+      "transformation_name": "register_source",
+      "arguments": [
+        {
+          "type": "subject",
+          "value": "art-003-may-manifest"
+        },
+        {
+          "type": "subject",
+          "value": "elexon-insights May 2026 corpus via evidence/may-manifest.json (companions: neso-may, pn-may, ebocf-may manifests in same evidence dir)"
+        },
+        {
+          "type": "subject",
+          "value": "e46bc97decc9f62610efc06d0f2260f3115314200fac6f565d9a6626be4d2a49"
+        },
+        {
+          "type": "timestamp",
+          "value": "2026-08-17T12:20:00Z"
+        }
+      ],
+      "actor": {
+        "type": "subject",
+        "value": "jordan-dimov"
+      },
+      "invariant_epoch": 1,
+      "invariants_checked": [
+        {
+          "name": "attached_source_exists",
+          "version": 1
+        },
+        {
+          "name": "attached_source_has_investigation",
+          "version": 1
+        },
+        {
+          "name": "hypothesis_has_investigation",
+          "version": 1
+        },
+        {
+          "name": "finding_has_registered_hypothesis",
+          "version": 1
+        },
+        {
+          "name": "finding_has_at_least_one_source",
+          "version": 1
+        }
+      ],
+      "asserted_claims": [
+        {
+          "predicate": "SourceArtifact",
+          "args": [
+            {
+              "type": "subject",
+              "value": "art-003-may-manifest"
+            },
+            {
+              "type": "subject",
+              "value": "elexon-insights May 2026 corpus via evidence/may-manifest.json (companions: neso-may, pn-may, ebocf-may manifests in same evidence dir)"
+            },
+            {
+              "type": "subject",
+              "value": "e46bc97decc9f62610efc06d0f2260f3115314200fac6f565d9a6626be4d2a49"
+            },
+            {
+              "type": "timestamp",
+              "value": "2026-08-17T12:20:00Z"
+            }
+          ]
+        }
+      ],
+      "retracted_claims": [],
+      "emitted_intents": [
+        {
+          "name": "SourceRegistered",
+          "args": [
+            {
+              "type": "subject",
+              "value": "art-003-may-manifest"
+            }
+          ]
+        }
+      ],
+      "committed_at": "2026-08-17T12:54:37.710255Z",
+      "attestation": {
+        "mode": "gateway",
+        "authenticated_by": "jdimov"
+      }
+    },
+    {
+      "transition_id": "01a00fc9-c9f6-7400-af6a-0d60eb837c2d",
+      "transformation_name": "attach_source",
+      "arguments": [
+        {
+          "type": "subject",
+          "value": "inv-003-follow-the-constraint"
+        },
+        {
+          "type": "subject",
+          "value": "art-003-may-manifest"
+        }
+      ],
+      "actor": {
+        "type": "subject",
+        "value": "jordan-dimov"
+      },
+      "invariant_epoch": 1,
+      "invariants_checked": [
+        {
+          "name": "attached_source_exists",
+          "version": 1
+        },
+        {
+          "name": "attached_source_has_investigation",
+          "version": 1
+        },
+        {
+          "name": "hypothesis_has_investigation",
+          "version": 1
+        },
+        {
+          "name": "finding_has_registered_hypothesis",
+          "version": 1
+        },
+        {
+          "name": "finding_has_at_least_one_source",
+          "version": 1
+        }
+      ],
+      "asserted_claims": [
+        {
+          "predicate": "InvestigationUses",
+          "args": [
+            {
+              "type": "subject",
+              "value": "inv-003-follow-the-constraint"
+            },
+            {
+              "type": "subject",
+              "value": "art-003-may-manifest"
+            }
+          ]
+        }
+      ],
+      "retracted_claims": [],
+      "emitted_intents": [
+        {
+          "name": "SourceAttached",
+          "args": [
+            {
+              "type": "subject",
+              "value": "inv-003-follow-the-constraint"
+            },
+            {
+              "type": "subject",
+              "value": "art-003-may-manifest"
+            }
+          ]
+        }
+      ],
+      "committed_at": "2026-08-17T12:54:37.811820Z",
+      "attestation": {
+        "mode": "gateway",
+        "authenticated_by": "jdimov"
+      }
+    },
+    {
+      "transition_id": "01a00fc9-ca70-7163-93da-e68cd0a6763d",
+      "transformation_name": "publish_finding",
+      "arguments": [
+        {
+          "type": "subject",
+          "value": "fnd-003-episode-reconstructed"
+        },
+        {
+          "type": "subject",
+          "value": "inv-003-follow-the-constraint"
+        },
+        {
+          "type": "subject",
+          "value": "hyp-003-episode-reconstructable"
+        },
+        {
+          "type": "subject",
+          "value": "PARTLY CONFIRMED, with the observability boundary precisely mapped. The frozen rule selected constraint group SSE-SP, 2026-05-18..31 (right-censored by the window): 8,259 repeat-curtailment cycles consistent with RRT, 69,869 MWh storage bid-down. The observable sequence reconstructs at scale (excerpt day 2026-05-20: 1,060 cycles; focus unit E_DOLLB-1: 21 cycles, 88 distinct acceptances in one day, repeatedly instructed from scheduled export through zero to around -99 MW import, NONE SO-flagged in the public record). Published money accounts to Elexon's own indicative figures (episode dates, GB-wide scope: storage bids -6,736,338 GBP, storage offers +9,152,108, non-storage offers +78,392,272; SSE-SP published outturn constraint cost 11,510,565 GBP). Two links are NOT publicly observable and are the finding: (1) the intraday re-sale that turns repetition into re-trading; (2) the unit-to-constraint-group mapping that would localise money to the boundary. No figure is a cost of RRT; concurrency is observed, substitution never asserted."
+        },
+        {
+          "type": "subject",
+          "value": "584d733c56ec57b48add05c169cd60501cff06b5b1e9395aa1cac2040671f23a"
+        },
+        {
+          "type": "timestamp",
+          "value": "2026-08-17T12:30:00Z"
+        }
+      ],
+      "actor": {
+        "type": "subject",
+        "value": "jordan-dimov"
+      },
+      "invariant_epoch": 1,
+      "invariants_checked": [
+        {
+          "name": "attached_source_exists",
+          "version": 1
+        },
+        {
+          "name": "attached_source_has_investigation",
+          "version": 1
+        },
+        {
+          "name": "hypothesis_has_investigation",
+          "version": 1
+        },
+        {
+          "name": "finding_has_registered_hypothesis",
+          "version": 1
+        },
+        {
+          "name": "finding_has_at_least_one_source",
+          "version": 1
+        }
+      ],
+      "asserted_claims": [
+        {
+          "predicate": "Finding",
+          "args": [
+            {
+              "type": "subject",
+              "value": "fnd-003-episode-reconstructed"
+            },
+            {
+              "type": "subject",
+              "value": "inv-003-follow-the-constraint"
+            },
+            {
+              "type": "subject",
+              "value": "hyp-003-episode-reconstructable"
+            },
+            {
+              "type": "subject",
+              "value": "PARTLY CONFIRMED, with the observability boundary precisely mapped. The frozen rule selected constraint group SSE-SP, 2026-05-18..31 (right-censored by the window): 8,259 repeat-curtailment cycles consistent with RRT, 69,869 MWh storage bid-down. The observable sequence reconstructs at scale (excerpt day 2026-05-20: 1,060 cycles; focus unit E_DOLLB-1: 21 cycles, 88 distinct acceptances in one day, repeatedly instructed from scheduled export through zero to around -99 MW import, NONE SO-flagged in the public record). Published money accounts to Elexon's own indicative figures (episode dates, GB-wide scope: storage bids -6,736,338 GBP, storage offers +9,152,108, non-storage offers +78,392,272; SSE-SP published outturn constraint cost 11,510,565 GBP). Two links are NOT publicly observable and are the finding: (1) the intraday re-sale that turns repetition into re-trading; (2) the unit-to-constraint-group mapping that would localise money to the boundary. No figure is a cost of RRT; concurrency is observed, substitution never asserted."
+            },
+            {
+              "type": "subject",
+              "value": "584d733c56ec57b48add05c169cd60501cff06b5b1e9395aa1cac2040671f23a"
+            },
+            {
+              "type": "timestamp",
+              "value": "2026-08-17T12:30:00Z"
+            }
+          ]
+        }
+      ],
+      "retracted_claims": [],
+      "emitted_intents": [
+        {
+          "name": "FindingPublished",
+          "args": [
+            {
+              "type": "subject",
+              "value": "fnd-003-episode-reconstructed"
+            }
+          ]
+        }
+      ],
+      "committed_at": "2026-08-17T12:54:37.933354Z",
       "attestation": {
         "mode": "gateway",
         "authenticated_by": "jdimov"

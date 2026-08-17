@@ -1,0 +1,20 @@
+[
+ {
+  "source": "neso-data-portal",
+  "dataset": "NESO-CMIS-ARMING-26-27",
+  "url": "https://api.neso.energy/datastore/dump/60a1c0c6-4821-4e38-bc87-c6b4d510be6d",
+  "path": "data/raw/neso/cmis_arming_2026-27.csv",
+  "sha256": "d76f81e0b63b93bc52268c136e0b25678adafe7ec98e3beba50c0f28e4020fd8",
+  "fetched_at": "2026-08-17T13:05:57.845817+00:00",
+  "bytes": 2066
+ },
+ {
+  "source": "neso-data-portal",
+  "dataset": "NESO-NETWORK-DIAGRAM-SCOTLAND",
+  "url": "https://api.neso.energy/dataset/cf3cbc92-2d5d-4c2b-bd29-e11a21070b26/resource/3eb74046-3ffa-40c3-a541-b3cb00a44b1f/download/scotland-network-diagram-da-limit-boundaries2026.pdf",
+  "path": "data/raw/neso/network_diagram_scotland.pdf",
+  "sha256": "aaceaff29362b3ef03dd8c1caa06248fc8eecab2bdfe418c48061a78f213da05",
+  "fetched_at": "2026-08-17T13:05:56.661129+00:00",
+  "bytes": 335479
+ }
+]

@@ -57,11 +57,17 @@ Two further observed facts, stated without interpretation:
 
 Published figures side by side. **Scope caveat, essential**: BM
 cashflows below are **GB-wide totals over the episode dates** for the
-165 NESO-classified storage units and for everything else — because
-**the public record does not say which units sit behind which
-constraint group**. Localising money to the boundary is itself not
-publicly observable; only NESO's own constraint-cost line is
-boundary-specific.
+165 NESO-classified storage units and for everything else. **The public
+record shows where the constraint boundary is** (NESO publishes the
+Scotland network diagram locating the constraint groups, pinned in
+`evidence/reference-manifest.json`) **but provides no authoritative
+mapping telling us which BM cashflows belong to that boundary**: the
+thermal-cost dataset is date + group + daily cost only, and the
+specialised datasets that do associate individual units with schemes
+(e.g. CMIS intertrip arming, which labels particular BMUs B6/EC5 —
+also pinned) cover specific services, not a general BMU-to-group
+mapping. Localising the money is therefore not publicly supportable;
+only NESO's own constraint-cost line is boundary-specific.
 
 | Quantity (episode dates 18–31 May) | Value |
 |---|---:|
@@ -97,11 +103,18 @@ mapped**:
   to constraint groups that would localise the money to the boundary.
 
 Britain is considering policy changes around a phenomenon Ofgem
-estimates at roughly £90m a year. **The public can reconstruct almost
-the entire machine — the schedules, the instructions, the repetitions,
-the payments — except the trade in the middle and the map that ties
-money to place.** That is not a limitation of this investigation; it is
-its finding.
+estimates at roughly £90m a year. The public can reconstruct almost the
+entire machine — the schedules, the instructions, the repetitions, the
+payments, even where the boundary sits — except the trade in the middle
+and an authoritative assignment of cashflows to the boundary. **The
+public record can show the repetitive part. It cannot, by itself, prove
+the re-trading economics.** That is not a limitation of this
+investigation; it is its finding.
+
+*Reference-layer note: the boundary diagram and CMIS artefacts above
+were pinned after the May market corpus was closed, to substantiate the
+mapping claim. They are context for an observability statement, not May
+market data; no selection or accounting figure depends on them.*
 
 ## Reproduction
 

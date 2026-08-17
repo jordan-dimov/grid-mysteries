@@ -1,0 +1,47 @@
+[
+ {
+  "source": "neso-data-portal",
+  "dataset": "NESO-CONSTRAINT-BREAKDOWN",
+  "url": "https://api.neso.energy/datastore/dump/4136a8e2-07c5-4784-8096-28999447a16e",
+  "path": "data/raw/neso/constraint_breakdown_2026-2027.csv",
+  "sha256": "a3117150a637be3556841983a97313eed8e5b990baaa61c51c90420ec4b4c8d0",
+  "fetched_at": "2026-08-17T11:47:03.700872+00:00",
+  "bytes": 6745
+ },
+ {
+  "source": "neso-data-portal",
+  "dataset": "NESO-DA-FLOWS-LIMITS",
+  "url": "https://api.neso.energy/datastore/dump/38a18ec1-9e40-465d-93fb-301e80fd1352",
+  "path": "data/raw/neso/da_constraint_flows_limits.csv",
+  "sha256": "50676cb2e16e36bef67b15d537b8354fcf4385be9888dad019ff4500c9cb2220",
+  "fetched_at": "2026-08-17T11:39:22.790288+00:00",
+  "bytes": 25699128
+ },
+ {
+  "source": "neso-data-portal",
+  "dataset": "NESO-SKIP-EXCLUSIONS-MAY",
+  "url": "https://api.neso.energy/datastore/dump/6f4319a1-ee65-442a-8081-f6e71713ba7f",
+  "path": "data/raw/neso/exclusions_2026-05.csv",
+  "sha256": "0fde1148e983980fe689f28e23d47feb1d14feb93f460216846fa21f900966a1",
+  "fetched_at": "2026-08-17T11:47:01.212317+00:00",
+  "bytes": 48710695
+ },
+ {
+  "source": "neso-data-portal",
+  "dataset": "NESO-SKIP-INMERIT-ALLBM-MAY",
+  "url": "https://api.neso.energy/datastore/dump/0c358c48-72f6-4f65-a738-2fa4ce182692",
+  "path": "data/raw/neso/inmerit_allbm_2026-05.csv",
+  "sha256": "809e3b69cf24db19c95904e8038d426067656947e00bde822a4f99e39710972b",
+  "fetched_at": "2026-08-17T11:46:43.167830+00:00",
+  "bytes": 320604195
+ },
+ {
+  "source": "neso-data-portal",
+  "dataset": "NESO-THERMAL-CONSTRAINT-COSTS",
+  "url": "https://api.neso.energy/datastore/dump/c730b788-4328-43dc-9f84-27fd3adeda59",
+  "path": "data/raw/neso/thermal_constraint_costs_data_26-27.csv",
+  "sha256": "3a1aa82ce15d9902630f05e149185244e7937d2bb62b07c40df3a5f47553e122",
+  "fetched_at": "2026-08-17T11:47:02.475141+00:00",
+  "bytes": 16743
+ }
+]

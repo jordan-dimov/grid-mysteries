@@ -1,0 +1,9 @@
+{
+ "rule": "max single-day cycles; ties by bid-down MWh, then date/unit id",
+ "excerpt_day": "2026-05-20",
+ "excerpt_day_cycles": 1060,
+ "excerpt_day_bid_down_mwh": "10785.017357856736263488",
+ "focus_unit": "E_DOLLB-1",
+ "focus_unit_cycles": 21,
+ "focus_unit_bid_down_mwh": "332.286502777777777828"
+}

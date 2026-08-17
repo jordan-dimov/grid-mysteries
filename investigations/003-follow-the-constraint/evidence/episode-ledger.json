@@ -1,0 +1,3717 @@
+{
+ "episode": {
+  "constraint_group": "SSE-SP",
+  "dates": [
+   "2026-05-18",
+   "2026-05-19",
+   "2026-05-20",
+   "2026-05-21",
+   "2026-05-22",
+   "2026-05-23",
+   "2026-05-24",
+   "2026-05-25",
+   "2026-05-26",
+   "2026-05-27",
+   "2026-05-28",
+   "2026-05-29",
+   "2026-05-30",
+   "2026-05-31"
+  ],
+  "repeat_curtailment_score": 8259,
+  "storage_bid_down_mwh": "69869.429632695486032910"
+ },
+ "right_censored": "the episode ends at the declared window edge (2026-05-31); it may continue beyond it",
+ "excerpt": {
+  "rule": "max single-day cycles; ties by bid-down MWh, then date/unit id",
+  "excerpt_day": "2026-05-20",
+  "excerpt_day_cycles": 1060,
+  "excerpt_day_bid_down_mwh": "10785.017357856736263488",
+  "focus_unit": "E_DOLLB-1",
+  "focus_unit_cycles": 21,
+  "focus_unit_bid_down_mwh": "332.286502777777777828"
+ },
+ "focus_unit_ngc": "DOLLB-1",
+ "frames": [
+  {
+   "date": "2026-05-20",
+   "period": 1,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "published indicative BM bid cashflow (latest settlement run, vintage 2026-05-20)",
+   "sequence_time": "",
+   "amount_gbp": "-3739.253107094999904803",
+   "money_kind": "published_indicative_bm_cashflow"
+  },
+  {
+   "date": "2026-05-20",
+   "period": 1,
+   "actor": "SSE-SP",
+   "column": "observed",
+   "description": "published daily outturn thermal constraint cost for the group: GBP 141287 (daily grain; does not localise cost to any period or unit)",
+   "sequence_time": "",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 1,
+   "actor": "non-storage units (aggregate)",
+   "column": "observed",
+   "description": "CONCURRENT offer-side published indicative BM cashflow across non-storage units (concurrency observed; causal substitution for any curtailment is not asserted)",
+   "sequence_time": "",
+   "amount_gbp": "153903.038802950002718717",
+   "money_kind": "published_indicative_bm_cashflow"
+  },
+  {
+   "date": "2026-05-20",
+   "period": 1,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61071 instructs -44\u2192-44 MW",
+   "sequence_time": "2026-05-19T22:32:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 1,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61071 instructs -44\u21920 MW",
+   "sequence_time": "2026-05-19T22:32:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 1,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61074 instructs -99\u2192-99 MW",
+   "sequence_time": "2026-05-19T22:43:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 1,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61074 instructs -99\u21920 MW",
+   "sequence_time": "2026-05-19T22:43:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 1,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61076 instructs -99\u2192-99 MW",
+   "sequence_time": "2026-05-19T22:51:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 1,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61076 instructs -99\u21920 MW",
+   "sequence_time": "2026-05-19T22:51:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 1,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61077 instructs -99\u2192-99 MW",
+   "sequence_time": "2026-05-19T23:05:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 2,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "published indicative BM bid cashflow (latest settlement run, vintage 2026-05-21)",
+   "sequence_time": "",
+   "amount_gbp": "-3739.253107094999904803",
+   "money_kind": "published_indicative_bm_cashflow"
+  },
+  {
+   "date": "2026-05-20",
+   "period": 2,
+   "actor": "non-storage units (aggregate)",
+   "column": "observed",
+   "description": "CONCURRENT offer-side published indicative BM cashflow across non-storage units (concurrency observed; causal substitution for any curtailment is not asserted)",
+   "sequence_time": "",
+   "amount_gbp": "153903.038802950002718717",
+   "money_kind": "published_indicative_bm_cashflow"
+  },
+  {
+   "date": "2026-05-20",
+   "period": 2,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61077 instructs -99\u2192-99 MW",
+   "sequence_time": "2026-05-19T23:05:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 2,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61077 instructs -99\u21920 MW",
+   "sequence_time": "2026-05-19T23:05:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 2,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61078 instructs -99\u2192-99 MW",
+   "sequence_time": "2026-05-19T23:13:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 2,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61078 instructs -99\u21920 MW",
+   "sequence_time": "2026-05-19T23:13:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 2,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61079 instructs -98\u2192-98 MW",
+   "sequence_time": "2026-05-19T23:14:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 2,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61079 instructs -98\u21920 MW",
+   "sequence_time": "2026-05-19T23:14:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 2,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61079 instructs -99\u2192-98 MW",
+   "sequence_time": "2026-05-19T23:14:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 2,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61080 instructs -99\u2192-99 MW",
+   "sequence_time": "2026-05-19T23:18:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 2,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61080 instructs -99\u21920 MW",
+   "sequence_time": "2026-05-19T23:18:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 2,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61081 instructs -99\u2192-99 MW",
+   "sequence_time": "2026-05-19T23:25:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 3,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "published indicative BM bid cashflow (latest settlement run, vintage 2026-05-21)",
+   "sequence_time": "",
+   "amount_gbp": "-3344.113127978750071634",
+   "money_kind": "published_indicative_bm_cashflow"
+  },
+  {
+   "date": "2026-05-20",
+   "period": 3,
+   "actor": "non-storage units (aggregate)",
+   "column": "observed",
+   "description": "CONCURRENT offer-side published indicative BM cashflow across non-storage units (concurrency observed; causal substitution for any curtailment is not asserted)",
+   "sequence_time": "",
+   "amount_gbp": "153400.582118550002633129",
+   "money_kind": "published_indicative_bm_cashflow"
+  },
+  {
+   "date": "2026-05-20",
+   "period": 3,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61081 instructs -99\u2192-15 MW",
+   "sequence_time": "2026-05-19T23:25:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 3,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61081 instructs -99\u2192-99 MW",
+   "sequence_time": "2026-05-19T23:25:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 3,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61082 instructs -99\u2192-15 MW",
+   "sequence_time": "2026-05-19T23:49:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 3,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61082 instructs -99\u2192-99 MW",
+   "sequence_time": "2026-05-19T23:49:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 3,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61083 instructs -99\u2192-99 MW",
+   "sequence_time": "2026-05-20T00:13:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 4,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "published indicative BM bid cashflow (latest settlement run, vintage 2026-05-21)",
+   "sequence_time": "",
+   "amount_gbp": "-1428.067852511999944909",
+   "money_kind": "published_indicative_bm_cashflow"
+  },
+  {
+   "date": "2026-05-20",
+   "period": 4,
+   "actor": "non-storage units (aggregate)",
+   "column": "observed",
+   "description": "CONCURRENT offer-side published indicative BM cashflow across non-storage units (concurrency observed; causal substitution for any curtailment is not asserted)",
+   "sequence_time": "",
+   "amount_gbp": "153400.582118550002633129",
+   "money_kind": "published_indicative_bm_cashflow"
+  },
+  {
+   "date": "2026-05-20",
+   "period": 4,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61083 instructs -99\u21920 MW",
+   "sequence_time": "2026-05-20T00:13:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 4,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61084 instructs -81\u2192-81 MW",
+   "sequence_time": "2026-05-20T00:14:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 4,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61084 instructs -81\u21920 MW",
+   "sequence_time": "2026-05-20T00:14:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 4,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61084 instructs -99\u2192-81 MW",
+   "sequence_time": "2026-05-20T00:14:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 5,
+   "actor": "non-storage units (aggregate)",
+   "column": "observed",
+   "description": "CONCURRENT offer-side published indicative BM cashflow across non-storage units (concurrency observed; causal substitution for any curtailment is not asserted)",
+   "sequence_time": "",
+   "amount_gbp": "153400.582118550002633129",
+   "money_kind": "published_indicative_bm_cashflow"
+  },
+  {
+   "date": "2026-05-20",
+   "period": 6,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "published indicative BM bid cashflow (latest settlement run, vintage 2026-05-21)",
+   "sequence_time": "",
+   "amount_gbp": "-74.487805114500005743",
+   "money_kind": "published_indicative_bm_cashflow"
+  },
+  {
+   "date": "2026-05-20",
+   "period": 6,
+   "actor": "non-storage units (aggregate)",
+   "column": "observed",
+   "description": "CONCURRENT offer-side published indicative BM cashflow across non-storage units (concurrency observed; causal substitution for any curtailment is not asserted)",
+   "sequence_time": "",
+   "amount_gbp": "153400.582118550002633129",
+   "money_kind": "published_indicative_bm_cashflow"
+  },
+  {
+   "date": "2026-05-20",
+   "period": 6,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "final physical notification schedules export (up to 21 MW; final vintage \u2014 intra-period revision history is not public)",
+   "sequence_time": "2026-05-20T01:30:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 6,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "final physical notification schedules export (up to 21 MW; final vintage \u2014 intra-period revision history is not public)",
+   "sequence_time": "2026-05-20T01:31:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 6,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61085 instructs 21\u21926 MW",
+   "sequence_time": "2026-05-20T01:32:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 6,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61086 instructs 21\u21928 MW",
+   "sequence_time": "2026-05-20T01:34:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 6,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61086 instructs 8\u219221 MW",
+   "sequence_time": "2026-05-20T01:34:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 6,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61086 instructs 8\u21928 MW",
+   "sequence_time": "2026-05-20T01:34:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 7,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "published indicative BM bid cashflow (latest settlement run, vintage 2026-05-21)",
+   "sequence_time": "",
+   "amount_gbp": "-906.008714822249999088",
+   "money_kind": "published_indicative_bm_cashflow"
+  },
+  {
+   "date": "2026-05-20",
+   "period": 7,
+   "actor": "non-storage units (aggregate)",
+   "column": "observed",
+   "description": "CONCURRENT offer-side published indicative BM cashflow across non-storage units (concurrency observed; causal substitution for any curtailment is not asserted)",
+   "sequence_time": "",
+   "amount_gbp": "147446.435021394501745818",
+   "money_kind": "published_indicative_bm_cashflow"
+  },
+  {
+   "date": "2026-05-20",
+   "period": 7,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61085 instructs 6\u219230 MW",
+   "sequence_time": "2026-05-20T01:32:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 7,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61085 instructs 6\u21926 MW",
+   "sequence_time": "2026-05-20T01:32:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 7,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61087 instructs 6\u219230 MW",
+   "sequence_time": "2026-05-20T01:48:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 7,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61087 instructs 6\u21926 MW",
+   "sequence_time": "2026-05-20T01:48:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 7,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61088 instructs 6\u219230 MW",
+   "sequence_time": "2026-05-20T01:51:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 7,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61088 instructs 6\u21926 MW",
+   "sequence_time": "2026-05-20T01:51:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 7,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "final physical notification schedules export (up to 30 MW; final vintage \u2014 intra-period revision history is not public)",
+   "sequence_time": "2026-05-20T02:00:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 7,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "final physical notification schedules export (up to 30 MW; final vintage \u2014 intra-period revision history is not public)",
+   "sequence_time": "2026-05-20T02:01:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 7,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61089 instructs 6\u21926 MW",
+   "sequence_time": "2026-05-20T02:12:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 8,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "published indicative BM bid cashflow (latest settlement run, vintage 2026-05-21)",
+   "sequence_time": "",
+   "amount_gbp": "-787.626301435999948808",
+   "money_kind": "published_indicative_bm_cashflow"
+  },
+  {
+   "date": "2026-05-20",
+   "period": 8,
+   "actor": "non-storage units (aggregate)",
+   "column": "observed",
+   "description": "CONCURRENT offer-side published indicative BM cashflow across non-storage units (concurrency observed; causal substitution for any curtailment is not asserted)",
+   "sequence_time": "",
+   "amount_gbp": "138574.304612100002486842",
+   "money_kind": "published_indicative_bm_cashflow"
+  },
+  {
+   "date": "2026-05-20",
+   "period": 8,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61089 instructs 6\u219230 MW",
+   "sequence_time": "2026-05-20T02:12:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 8,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61089 instructs 6\u21926 MW",
+   "sequence_time": "2026-05-20T02:12:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 8,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61090 instructs 6\u219230 MW",
+   "sequence_time": "2026-05-20T02:21:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 8,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61090 instructs 6\u21926 MW",
+   "sequence_time": "2026-05-20T02:21:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 8,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "final physical notification schedules export (up to 30 MW; final vintage \u2014 intra-period revision history is not public)",
+   "sequence_time": "2026-05-20T02:30:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 8,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61091 instructs 6\u219230 MW",
+   "sequence_time": "2026-05-20T02:40:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 8,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61091 instructs 6\u21926 MW",
+   "sequence_time": "2026-05-20T02:40:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 8,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61092 instructs 6\u219230 MW",
+   "sequence_time": "2026-05-20T02:50:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 8,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61092 instructs 6\u21926 MW",
+   "sequence_time": "2026-05-20T02:50:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 9,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "published indicative BM bid cashflow (latest settlement run, vintage 2026-05-21)",
+   "sequence_time": "",
+   "amount_gbp": "-253.232134320000000116",
+   "money_kind": "published_indicative_bm_cashflow"
+  },
+  {
+   "date": "2026-05-20",
+   "period": 9,
+   "actor": "non-storage units (aggregate)",
+   "column": "observed",
+   "description": "CONCURRENT offer-side published indicative BM cashflow across non-storage units (concurrency observed; causal substitution for any curtailment is not asserted)",
+   "sequence_time": "",
+   "amount_gbp": "138574.304612100002486842",
+   "money_kind": "published_indicative_bm_cashflow"
+  },
+  {
+   "date": "2026-05-20",
+   "period": 9,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61093 instructs 30\u21926 MW",
+   "sequence_time": "2026-05-20T02:57:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 9,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61093 instructs 6\u219215 MW",
+   "sequence_time": "2026-05-20T02:57:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 9,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61093 instructs 6\u21926 MW",
+   "sequence_time": "2026-05-20T02:57:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 9,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61094 instructs 6\u219215 MW",
+   "sequence_time": "2026-05-20T02:59:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 9,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61094 instructs 6\u21926 MW",
+   "sequence_time": "2026-05-20T02:59:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 9,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "final physical notification schedules export (up to 30 MW; final vintage \u2014 intra-period revision history is not public)",
+   "sequence_time": "2026-05-20T03:00:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 9,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "final physical notification schedules export (up to 15 MW; final vintage \u2014 intra-period revision history is not public)",
+   "sequence_time": "2026-05-20T03:01:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 10,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "published indicative BM bid cashflow (latest settlement run, vintage 2026-05-21)",
+   "sequence_time": "",
+   "amount_gbp": "-161.720447594166671479",
+   "money_kind": "published_indicative_bm_cashflow"
+  },
+  {
+   "date": "2026-05-20",
+   "period": 10,
+   "actor": "non-storage units (aggregate)",
+   "column": "observed",
+   "description": "CONCURRENT offer-side published indicative BM cashflow across non-storage units (concurrency observed; causal substitution for any curtailment is not asserted)",
+   "sequence_time": "",
+   "amount_gbp": "138574.304612100002486842",
+   "money_kind": "published_indicative_bm_cashflow"
+  },
+  {
+   "date": "2026-05-20",
+   "period": 10,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61095 instructs 10\u21926 MW",
+   "sequence_time": "2026-05-20T03:30:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 10,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61095 instructs 6\u219210 MW",
+   "sequence_time": "2026-05-20T03:30:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 10,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61095 instructs 6\u21926 MW",
+   "sequence_time": "2026-05-20T03:30:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 10,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "final physical notification schedules export (up to 15 MW; final vintage \u2014 intra-period revision history is not public)",
+   "sequence_time": "2026-05-20T03:30:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 10,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "final physical notification schedules export (up to 10 MW; final vintage \u2014 intra-period revision history is not public)",
+   "sequence_time": "2026-05-20T03:31:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 10,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61096 instructs 6\u219210 MW",
+   "sequence_time": "2026-05-20T03:37:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 10,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61096 instructs 6\u21926 MW",
+   "sequence_time": "2026-05-20T03:37:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 10,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61097 instructs 6\u219210 MW",
+   "sequence_time": "2026-05-20T03:49:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 10,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61097 instructs 6\u21926 MW",
+   "sequence_time": "2026-05-20T03:49:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 10,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61098 instructs 0\u21920 MW",
+   "sequence_time": "2026-05-20T03:50:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 10,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61098 instructs 6\u21920 MW",
+   "sequence_time": "2026-05-20T03:50:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 11,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "published indicative BM bid cashflow (latest settlement run, vintage 2026-05-21)",
+   "sequence_time": "",
+   "amount_gbp": "-1010.477567715866712206",
+   "money_kind": "published_indicative_bm_cashflow"
+  },
+  {
+   "date": "2026-05-20",
+   "period": 11,
+   "actor": "non-storage units (aggregate)",
+   "column": "observed",
+   "description": "CONCURRENT offer-side published indicative BM cashflow across non-storage units (concurrency observed; causal substitution for any curtailment is not asserted)",
+   "sequence_time": "",
+   "amount_gbp": "149810.579776500002481044",
+   "money_kind": "published_indicative_bm_cashflow"
+  },
+  {
+   "date": "2026-05-20",
+   "period": 11,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61098 instructs 0\u21920 MW",
+   "sequence_time": "2026-05-20T03:50:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 11,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61098 instructs 0\u219230 MW",
+   "sequence_time": "2026-05-20T03:50:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 11,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61099 instructs 0\u21926 MW",
+   "sequence_time": "2026-05-20T03:51:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 11,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61099 instructs 6\u219230 MW",
+   "sequence_time": "2026-05-20T03:51:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 11,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61099 instructs 6\u21926 MW",
+   "sequence_time": "2026-05-20T03:51:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 11,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61100 instructs 0\u21920 MW",
+   "sequence_time": "2026-05-20T03:58:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 11,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61100 instructs 0\u21926 MW",
+   "sequence_time": "2026-05-20T03:58:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 11,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "final physical notification schedules export (up to 30 MW; final vintage \u2014 intra-period revision history is not public)",
+   "sequence_time": "2026-05-20T04:00:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 11,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "final physical notification schedules export (up to 30 MW; final vintage \u2014 intra-period revision history is not public)",
+   "sequence_time": "2026-05-20T04:01:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 11,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61101 instructs 6\u21926 MW",
+   "sequence_time": "2026-05-20T04:18:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 12,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "published indicative BM bid cashflow (latest settlement run, vintage 2026-05-21)",
+   "sequence_time": "",
+   "amount_gbp": "-349.907085454848811423",
+   "money_kind": "published_indicative_bm_cashflow"
+  },
+  {
+   "date": "2026-05-20",
+   "period": 12,
+   "actor": "non-storage units (aggregate)",
+   "column": "observed",
+   "description": "CONCURRENT offer-side published indicative BM cashflow across non-storage units (concurrency observed; causal substitution for any curtailment is not asserted)",
+   "sequence_time": "",
+   "amount_gbp": "162077.800896500002636458",
+   "money_kind": "published_indicative_bm_cashflow"
+  },
+  {
+   "date": "2026-05-20",
+   "period": 12,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61101 instructs 6\u219221 MW",
+   "sequence_time": "2026-05-20T04:18:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 12,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61101 instructs 6\u21926 MW",
+   "sequence_time": "2026-05-20T04:18:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 12,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "final physical notification schedules export (up to 30 MW; final vintage \u2014 intra-period revision history is not public)",
+   "sequence_time": "2026-05-20T04:30:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 12,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "final physical notification schedules export (up to 21 MW; final vintage \u2014 intra-period revision history is not public)",
+   "sequence_time": "2026-05-20T04:31:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 12,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61102 instructs 21\u21924 MW",
+   "sequence_time": "2026-05-20T04:32:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 12,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61102 instructs 4\u219221 MW",
+   "sequence_time": "2026-05-20T04:32:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 12,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61102 instructs 4\u21924 MW",
+   "sequence_time": "2026-05-20T04:32:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 12,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61103 instructs 21\u21926 MW",
+   "sequence_time": "2026-05-20T04:52:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 12,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61103 instructs 6\u21926 MW",
+   "sequence_time": "2026-05-20T04:52:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 13,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "published indicative BM bid cashflow (latest settlement run, vintage 2026-05-21)",
+   "sequence_time": "",
+   "amount_gbp": "-677.401892579999980626",
+   "money_kind": "published_indicative_bm_cashflow"
+  },
+  {
+   "date": "2026-05-20",
+   "period": 13,
+   "actor": "non-storage units (aggregate)",
+   "column": "observed",
+   "description": "CONCURRENT offer-side published indicative BM cashflow across non-storage units (concurrency observed; causal substitution for any curtailment is not asserted)",
+   "sequence_time": "",
+   "amount_gbp": "162350.758842080002636976",
+   "money_kind": "published_indicative_bm_cashflow"
+  },
+  {
+   "date": "2026-05-20",
+   "period": 13,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61103 instructs 6\u219221 MW",
+   "sequence_time": "2026-05-20T04:52:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 13,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61103 instructs 6\u21926 MW",
+   "sequence_time": "2026-05-20T04:52:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 13,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61104 instructs 6\u219221 MW",
+   "sequence_time": "2026-05-20T04:55:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 13,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61104 instructs 6\u21926 MW",
+   "sequence_time": "2026-05-20T04:55:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 13,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61105 instructs 0\u21920 MW",
+   "sequence_time": "2026-05-20T05:00:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 13,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61105 instructs 0\u21926 MW",
+   "sequence_time": "2026-05-20T05:00:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 13,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61105 instructs 6\u21920 MW",
+   "sequence_time": "2026-05-20T05:00:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 13,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "final physical notification schedules export (up to 21 MW; final vintage \u2014 intra-period revision history is not public)",
+   "sequence_time": "2026-05-20T05:00:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 13,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61106 instructs 0\u21920 MW",
+   "sequence_time": "2026-05-20T05:01:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 13,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61106 instructs 0\u21926 MW",
+   "sequence_time": "2026-05-20T05:01:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 13,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61106 instructs 6\u21920 MW",
+   "sequence_time": "2026-05-20T05:01:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 13,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61107 instructs 0\u21920 MW",
+   "sequence_time": "2026-05-20T05:07:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 13,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61107 instructs 0\u21926 MW",
+   "sequence_time": "2026-05-20T05:07:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 13,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61107 instructs 6\u21920 MW",
+   "sequence_time": "2026-05-20T05:07:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 13,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61108 instructs 0\u21920 MW",
+   "sequence_time": "2026-05-20T05:08:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 13,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61108 instructs 0\u21926 MW",
+   "sequence_time": "2026-05-20T05:08:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 13,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61108 instructs 6\u21920 MW",
+   "sequence_time": "2026-05-20T05:08:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 13,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61109 instructs 0\u21920 MW",
+   "sequence_time": "2026-05-20T05:11:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 13,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61109 instructs 0\u219221 MW",
+   "sequence_time": "2026-05-20T05:11:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 13,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61109 instructs 6\u21920 MW",
+   "sequence_time": "2026-05-20T05:11:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 13,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61110 instructs 0\u21926 MW",
+   "sequence_time": "2026-05-20T05:12:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 13,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61110 instructs 6\u21926 MW",
+   "sequence_time": "2026-05-20T05:12:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 13,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61111 instructs 0\u21920 MW",
+   "sequence_time": "2026-05-20T05:17:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 13,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61111 instructs 6\u21920 MW",
+   "sequence_time": "2026-05-20T05:17:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 14,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "published indicative BM bid cashflow (latest settlement run, vintage 2026-05-21)",
+   "sequence_time": "",
+   "amount_gbp": "-969.052964929000040684",
+   "money_kind": "published_indicative_bm_cashflow"
+  },
+  {
+   "date": "2026-05-20",
+   "period": 14,
+   "actor": "non-storage units (aggregate)",
+   "column": "observed",
+   "description": "CONCURRENT offer-side published indicative BM cashflow across non-storage units (concurrency observed; causal substitution for any curtailment is not asserted)",
+   "sequence_time": "",
+   "amount_gbp": "168044.691360050002913340",
+   "money_kind": "published_indicative_bm_cashflow"
+  },
+  {
+   "date": "2026-05-20",
+   "period": 14,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61110 instructs 6\u219229 MW",
+   "sequence_time": "2026-05-20T05:12:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 14,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61110 instructs 6\u21926 MW",
+   "sequence_time": "2026-05-20T05:12:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 14,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61112 instructs 6\u219229 MW",
+   "sequence_time": "2026-05-20T05:18:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 14,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61112 instructs 6\u21926 MW",
+   "sequence_time": "2026-05-20T05:18:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 14,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61113 instructs 6\u21926 MW",
+   "sequence_time": "2026-05-20T05:25:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 14,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "final physical notification schedules export (up to 29 MW; final vintage \u2014 intra-period revision history is not public)",
+   "sequence_time": "2026-05-20T05:30:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 14,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "final physical notification schedules export (up to 29 MW; final vintage \u2014 intra-period revision history is not public)",
+   "sequence_time": "2026-05-20T05:31:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 15,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "published indicative BM bid cashflow (latest settlement run, vintage 2026-05-21)",
+   "sequence_time": "",
+   "amount_gbp": "-2340.962543844166702911",
+   "money_kind": "published_indicative_bm_cashflow"
+  },
+  {
+   "date": "2026-05-20",
+   "period": 15,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "published indicative BM offer cashflow (latest settlement run, vintage 2026-05-21)",
+   "sequence_time": "",
+   "amount_gbp": "389.024421753916669786",
+   "money_kind": "published_indicative_bm_cashflow"
+  },
+  {
+   "date": "2026-05-20",
+   "period": 15,
+   "actor": "non-storage units (aggregate)",
+   "column": "observed",
+   "description": "CONCURRENT offer-side published indicative BM cashflow across non-storage units (concurrency observed; causal substitution for any curtailment is not asserted)",
+   "sequence_time": "",
+   "amount_gbp": "154929.829414631663894398",
+   "money_kind": "published_indicative_bm_cashflow"
+  },
+  {
+   "date": "2026-05-20",
+   "period": 15,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61113 instructs 6\u21926 MW",
+   "sequence_time": "2026-05-20T05:25:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 15,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61113 instructs 6\u219264 MW",
+   "sequence_time": "2026-05-20T05:25:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 15,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61114 instructs 6\u21926 MW",
+   "sequence_time": "2026-05-20T05:57:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 15,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61114 instructs 6\u219264 MW",
+   "sequence_time": "2026-05-20T05:57:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 15,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "final physical notification schedules export (up to 64 MW; final vintage \u2014 intra-period revision history is not public)",
+   "sequence_time": "2026-05-20T06:00:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 15,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "final physical notification schedules export (up to 64 MW; final vintage \u2014 intra-period revision history is not public)",
+   "sequence_time": "2026-05-20T06:01:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 15,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61115 instructs 6\u21926 MW",
+   "sequence_time": "2026-05-20T06:06:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 15,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61115 instructs 6\u219264 MW",
+   "sequence_time": "2026-05-20T06:06:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 15,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61116 instructs 6\u21926 MW",
+   "sequence_time": "2026-05-20T06:17:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 15,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61117 instructs 43\u219243 MW",
+   "sequence_time": "2026-05-20T06:23:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 15,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61117 instructs 6\u219243 MW",
+   "sequence_time": "2026-05-20T06:23:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 16,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "published indicative BM bid cashflow (latest settlement run, vintage 2026-05-21)",
+   "sequence_time": "",
+   "amount_gbp": "-689.349528658000053838",
+   "money_kind": "published_indicative_bm_cashflow"
+  },
+  {
+   "date": "2026-05-20",
+   "period": 16,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "published indicative BM offer cashflow (latest settlement run, vintage 2026-05-21)",
+   "sequence_time": "",
+   "amount_gbp": "37.323342503583333496",
+   "money_kind": "published_indicative_bm_cashflow"
+  },
+  {
+   "date": "2026-05-20",
+   "period": 16,
+   "actor": "non-storage units (aggregate)",
+   "column": "observed",
+   "description": "CONCURRENT offer-side published indicative BM cashflow across non-storage units (concurrency observed; causal substitution for any curtailment is not asserted)",
+   "sequence_time": "",
+   "amount_gbp": "124405.666802474997098215",
+   "money_kind": "published_indicative_bm_cashflow"
+  },
+  {
+   "date": "2026-05-20",
+   "period": 16,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61116 instructs 6\u21926 MW",
+   "sequence_time": "2026-05-20T06:17:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 16,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61116 instructs 6\u219264 MW",
+   "sequence_time": "2026-05-20T06:17:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 16,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61117 instructs 43\u21926 MW",
+   "sequence_time": "2026-05-20T06:23:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 16,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "final physical notification schedules export (up to 64 MW; final vintage \u2014 intra-period revision history is not public)",
+   "sequence_time": "2026-05-20T06:30:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 17,
+   "actor": "non-storage units (aggregate)",
+   "column": "observed",
+   "description": "CONCURRENT offer-side published indicative BM cashflow across non-storage units (concurrency observed; causal substitution for any curtailment is not asserted)",
+   "sequence_time": "",
+   "amount_gbp": "125445.575193599996055126",
+   "money_kind": "published_indicative_bm_cashflow"
+  },
+  {
+   "date": "2026-05-20",
+   "period": 17,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "final physical notification schedules export (up to 64 MW; final vintage \u2014 intra-period revision history is not public)",
+   "sequence_time": "2026-05-20T07:00:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 18,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "published indicative BM bid cashflow (latest settlement run, vintage 2026-05-21)",
+   "sequence_time": "",
+   "amount_gbp": "-977.543974462500045775",
+   "money_kind": "published_indicative_bm_cashflow"
+  },
+  {
+   "date": "2026-05-20",
+   "period": 18,
+   "actor": "non-storage units (aggregate)",
+   "column": "observed",
+   "description": "CONCURRENT offer-side published indicative BM cashflow across non-storage units (concurrency observed; causal substitution for any curtailment is not asserted)",
+   "sequence_time": "",
+   "amount_gbp": "125445.575193599996055126",
+   "money_kind": "published_indicative_bm_cashflow"
+  },
+  {
+   "date": "2026-05-20",
+   "period": 18,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "final physical notification schedules export (up to 64 MW; final vintage \u2014 intra-period revision history is not public)",
+   "sequence_time": "2026-05-20T07:30:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 18,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61118 instructs 64\u21926 MW",
+   "sequence_time": "2026-05-20T07:35:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 18,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61118 instructs 6\u21926 MW",
+   "sequence_time": "2026-05-20T07:35:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 18,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61118 instructs 6\u219264 MW",
+   "sequence_time": "2026-05-20T07:35:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 18,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61119 instructs 64\u21926 MW",
+   "sequence_time": "2026-05-20T07:40:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 18,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61119 instructs 6\u21926 MW",
+   "sequence_time": "2026-05-20T07:40:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 18,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61119 instructs 6\u219264 MW",
+   "sequence_time": "2026-05-20T07:40:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 18,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61120 instructs 6\u21926 MW",
+   "sequence_time": "2026-05-20T07:55:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 19,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "published indicative BM bid cashflow (latest settlement run, vintage 2026-05-21)",
+   "sequence_time": "",
+   "amount_gbp": "-106.063700463499998250",
+   "money_kind": "published_indicative_bm_cashflow"
+  },
+  {
+   "date": "2026-05-20",
+   "period": 19,
+   "actor": "non-storage units (aggregate)",
+   "column": "observed",
+   "description": "CONCURRENT offer-side published indicative BM cashflow across non-storage units (concurrency observed; causal substitution for any curtailment is not asserted)",
+   "sequence_time": "",
+   "amount_gbp": "125445.575193599996055126",
+   "money_kind": "published_indicative_bm_cashflow"
+  },
+  {
+   "date": "2026-05-20",
+   "period": 19,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61120 instructs 6\u21926 MW",
+   "sequence_time": "2026-05-20T07:55:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 19,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61120 instructs 6\u219264 MW",
+   "sequence_time": "2026-05-20T07:55:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 19,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "final physical notification schedules export (up to 64 MW; final vintage \u2014 intra-period revision history is not public)",
+   "sequence_time": "2026-05-20T08:00:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 20,
+   "actor": "non-storage units (aggregate)",
+   "column": "observed",
+   "description": "CONCURRENT offer-side published indicative BM cashflow across non-storage units (concurrency observed; causal substitution for any curtailment is not asserted)",
+   "sequence_time": "",
+   "amount_gbp": "125445.575193599996055126",
+   "money_kind": "published_indicative_bm_cashflow"
+  },
+  {
+   "date": "2026-05-20",
+   "period": 20,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "final physical notification schedules export (up to 64 MW; final vintage \u2014 intra-period revision history is not public)",
+   "sequence_time": "2026-05-20T08:30:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 20,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "final physical notification schedules export (up to 59 MW; final vintage \u2014 intra-period revision history is not public)",
+   "sequence_time": "2026-05-20T08:31:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 21,
+   "actor": "non-storage units (aggregate)",
+   "column": "observed",
+   "description": "CONCURRENT offer-side published indicative BM cashflow across non-storage units (concurrency observed; causal substitution for any curtailment is not asserted)",
+   "sequence_time": "",
+   "amount_gbp": "124355.329223599996112170",
+   "money_kind": "published_indicative_bm_cashflow"
+  },
+  {
+   "date": "2026-05-20",
+   "period": 21,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "final physical notification schedules export (up to 59 MW; final vintage \u2014 intra-period revision history is not public)",
+   "sequence_time": "2026-05-20T09:00:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 21,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "final physical notification schedules export (up to 13 MW; final vintage \u2014 intra-period revision history is not public)",
+   "sequence_time": "2026-05-20T09:01:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 22,
+   "actor": "non-storage units (aggregate)",
+   "column": "observed",
+   "description": "CONCURRENT offer-side published indicative BM cashflow across non-storage units (concurrency observed; causal substitution for any curtailment is not asserted)",
+   "sequence_time": "",
+   "amount_gbp": "124355.329223599996112170",
+   "money_kind": "published_indicative_bm_cashflow"
+  },
+  {
+   "date": "2026-05-20",
+   "period": 22,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "final physical notification schedules export (up to 26 MW; final vintage \u2014 intra-period revision history is not public)",
+   "sequence_time": "2026-05-20T09:30:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 22,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "final physical notification schedules export (up to 26 MW; final vintage \u2014 intra-period revision history is not public)",
+   "sequence_time": "2026-05-20T09:31:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 23,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "published indicative BM bid cashflow (latest settlement run, vintage 2026-05-21)",
+   "sequence_time": "",
+   "amount_gbp": "-69.530719500666663180",
+   "money_kind": "published_indicative_bm_cashflow"
+  },
+  {
+   "date": "2026-05-20",
+   "period": 23,
+   "actor": "non-storage units (aggregate)",
+   "column": "observed",
+   "description": "CONCURRENT offer-side published indicative BM cashflow across non-storage units (concurrency observed; causal substitution for any curtailment is not asserted)",
+   "sequence_time": "",
+   "amount_gbp": "123375.843379600000844221",
+   "money_kind": "published_indicative_bm_cashflow"
+  },
+  {
+   "date": "2026-05-20",
+   "period": 23,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61321 instructs -11\u2192-11 MW",
+   "sequence_time": "2026-05-20T09:53:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 23,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61321 instructs -11\u21920 MW",
+   "sequence_time": "2026-05-20T09:53:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 23,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61321 instructs 3\u21920 MW",
+   "sequence_time": "2026-05-20T09:53:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 23,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "final physical notification schedules export (up to 26 MW; final vintage \u2014 intra-period revision history is not public)",
+   "sequence_time": "2026-05-20T10:00:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 23,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "final physical notification schedules export (up to 3 MW; final vintage \u2014 intra-period revision history is not public)",
+   "sequence_time": "2026-05-20T10:01:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 23,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61322 instructs -11\u2192-11 MW",
+   "sequence_time": "2026-05-20T10:06:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 23,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61322 instructs 3\u21920 MW",
+   "sequence_time": "2026-05-20T10:06:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 24,
+   "actor": "non-storage units (aggregate)",
+   "column": "observed",
+   "description": "CONCURRENT offer-side published indicative BM cashflow across non-storage units (concurrency observed; causal substitution for any curtailment is not asserted)",
+   "sequence_time": "",
+   "amount_gbp": "123375.843379600000844221",
+   "money_kind": "published_indicative_bm_cashflow"
+  },
+  {
+   "date": "2026-05-20",
+   "period": 24,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "final physical notification schedules export (up to 3 MW; final vintage \u2014 intra-period revision history is not public)",
+   "sequence_time": "2026-05-20T10:30:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 25,
+   "actor": "E_DOLLB-1",
+   "column": "not_publicly_observable",
+   "description": "whether energy retained through curtailment was re-sold in the intraday market between instructions \u2014 the step Ofgem's mechanism names \u2014 is not in the public record",
+   "sequence_time": "",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 25,
+   "actor": "non-storage units (aggregate)",
+   "column": "observed",
+   "description": "CONCURRENT offer-side published indicative BM cashflow across non-storage units (concurrency observed; causal substitution for any curtailment is not asserted)",
+   "sequence_time": "",
+   "amount_gbp": "123375.843379600000844221",
+   "money_kind": "published_indicative_bm_cashflow"
+  },
+  {
+   "date": "2026-05-20",
+   "period": 26,
+   "actor": "non-storage units (aggregate)",
+   "column": "observed",
+   "description": "CONCURRENT offer-side published indicative BM cashflow across non-storage units (concurrency observed; causal substitution for any curtailment is not asserted)",
+   "sequence_time": "",
+   "amount_gbp": "123375.843379600000844221",
+   "money_kind": "published_indicative_bm_cashflow"
+  },
+  {
+   "date": "2026-05-20",
+   "period": 27,
+   "actor": "non-storage units (aggregate)",
+   "column": "observed",
+   "description": "CONCURRENT offer-side published indicative BM cashflow across non-storage units (concurrency observed; causal substitution for any curtailment is not asserted)",
+   "sequence_time": "",
+   "amount_gbp": "123375.843379600000844221",
+   "money_kind": "published_indicative_bm_cashflow"
+  },
+  {
+   "date": "2026-05-20",
+   "period": 28,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "published indicative BM offer cashflow (latest settlement run, vintage 2026-05-21)",
+   "sequence_time": "",
+   "amount_gbp": "1855.368896125499986738",
+   "money_kind": "published_indicative_bm_cashflow"
+  },
+  {
+   "date": "2026-05-20",
+   "period": 28,
+   "actor": "non-storage units (aggregate)",
+   "column": "observed",
+   "description": "CONCURRENT offer-side published indicative BM cashflow across non-storage units (concurrency observed; causal substitution for any curtailment is not asserted)",
+   "sequence_time": "",
+   "amount_gbp": "123854.950275313334202565",
+   "money_kind": "published_indicative_bm_cashflow"
+  },
+  {
+   "date": "2026-05-20",
+   "period": 28,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61323 instructs -6\u2192-48 MW",
+   "sequence_time": "2026-05-20T12:13:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 28,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61323 instructs -6\u2192-6 MW",
+   "sequence_time": "2026-05-20T12:13:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 28,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61323 instructs 0\u2192-6 MW",
+   "sequence_time": "2026-05-20T12:13:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 28,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61324 instructs -38\u2192-38 MW",
+   "sequence_time": "2026-05-20T12:20:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 28,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61324 instructs -38\u2192-48 MW",
+   "sequence_time": "2026-05-20T12:20:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 28,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61324 instructs -6\u2192-38 MW",
+   "sequence_time": "2026-05-20T12:20:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 28,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61325 instructs -38\u2192-6 MW",
+   "sequence_time": "2026-05-20T12:29:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 28,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61325 instructs -6\u2192-48 MW",
+   "sequence_time": "2026-05-20T12:29:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 28,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61325 instructs -6\u2192-6 MW",
+   "sequence_time": "2026-05-20T12:29:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 28,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61326 instructs -6\u2192-48 MW",
+   "sequence_time": "2026-05-20T12:38:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 28,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61326 instructs -6\u2192-6 MW",
+   "sequence_time": "2026-05-20T12:38:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 28,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61327 instructs -24\u2192-24 MW",
+   "sequence_time": "2026-05-20T12:39:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 28,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61327 instructs -24\u2192-48 MW",
+   "sequence_time": "2026-05-20T12:39:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 28,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61327 instructs -6\u2192-24 MW",
+   "sequence_time": "2026-05-20T12:39:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 28,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61328 instructs -24\u2192-47 MW",
+   "sequence_time": "2026-05-20T12:40:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 28,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61328 instructs -47\u2192-47 MW",
+   "sequence_time": "2026-05-20T12:40:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 29,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "published indicative BM offer cashflow (latest settlement run, vintage 2026-05-21)",
+   "sequence_time": "",
+   "amount_gbp": "1.071285583333333236",
+   "money_kind": "published_indicative_bm_cashflow"
+  },
+  {
+   "date": "2026-05-20",
+   "period": 29,
+   "actor": "non-storage units (aggregate)",
+   "column": "observed",
+   "description": "CONCURRENT offer-side published indicative BM cashflow across non-storage units (concurrency observed; causal substitution for any curtailment is not asserted)",
+   "sequence_time": "",
+   "amount_gbp": "131753.787435456250364041",
+   "money_kind": "published_indicative_bm_cashflow"
+  },
+  {
+   "date": "2026-05-20",
+   "period": 29,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61328 instructs -47\u2192-49 MW",
+   "sequence_time": "2026-05-20T12:40:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 30,
+   "actor": "non-storage units (aggregate)",
+   "column": "observed",
+   "description": "CONCURRENT offer-side published indicative BM cashflow across non-storage units (concurrency observed; causal substitution for any curtailment is not asserted)",
+   "sequence_time": "",
+   "amount_gbp": "143847.568770044584425705",
+   "money_kind": "published_indicative_bm_cashflow"
+  },
+  {
+   "date": "2026-05-20",
+   "period": 31,
+   "actor": "non-storage units (aggregate)",
+   "column": "observed",
+   "description": "CONCURRENT offer-side published indicative BM cashflow across non-storage units (concurrency observed; causal substitution for any curtailment is not asserted)",
+   "sequence_time": "",
+   "amount_gbp": "141151.199554105239358710",
+   "money_kind": "published_indicative_bm_cashflow"
+  },
+  {
+   "date": "2026-05-20",
+   "period": 32,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "published indicative BM bid cashflow (latest settlement run, vintage 2026-05-21)",
+   "sequence_time": "",
+   "amount_gbp": "-295.455619488333354639",
+   "money_kind": "published_indicative_bm_cashflow"
+  },
+  {
+   "date": "2026-05-20",
+   "period": 32,
+   "actor": "non-storage units (aggregate)",
+   "column": "observed",
+   "description": "CONCURRENT offer-side published indicative BM cashflow across non-storage units (concurrency observed; causal substitution for any curtailment is not asserted)",
+   "sequence_time": "",
+   "amount_gbp": "147578.389847215204383701",
+   "money_kind": "published_indicative_bm_cashflow"
+  },
+  {
+   "date": "2026-05-20",
+   "period": 32,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61329 instructs -7\u2192-22 MW",
+   "sequence_time": "2026-05-20T14:51:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 32,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61330 instructs -50\u2192-50 MW",
+   "sequence_time": "2026-05-20T14:53:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 32,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61330 instructs -7\u2192-50 MW",
+   "sequence_time": "2026-05-20T14:53:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 33,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "published indicative BM bid cashflow (latest settlement run, vintage 2026-05-21)",
+   "sequence_time": "",
+   "amount_gbp": "-181.770875791583335968",
+   "money_kind": "published_indicative_bm_cashflow"
+  },
+  {
+   "date": "2026-05-20",
+   "period": 33,
+   "actor": "non-storage units (aggregate)",
+   "column": "observed",
+   "description": "CONCURRENT offer-side published indicative BM cashflow across non-storage units (concurrency observed; causal substitution for any curtailment is not asserted)",
+   "sequence_time": "",
+   "amount_gbp": "163004.371870776878012802",
+   "money_kind": "published_indicative_bm_cashflow"
+  },
+  {
+   "date": "2026-05-20",
+   "period": 33,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61329 instructs -22\u2192-22 MW",
+   "sequence_time": "2026-05-20T14:51:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 33,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61329 instructs -22\u21920 MW",
+   "sequence_time": "2026-05-20T14:51:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 33,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61330 instructs -50\u2192-22 MW",
+   "sequence_time": "2026-05-20T14:53:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 34,
+   "actor": "non-storage units (aggregate)",
+   "column": "observed",
+   "description": "CONCURRENT offer-side published indicative BM cashflow across non-storage units (concurrency observed; causal substitution for any curtailment is not asserted)",
+   "sequence_time": "",
+   "amount_gbp": "168473.663780866507759139",
+   "money_kind": "published_indicative_bm_cashflow"
+  },
+  {
+   "date": "2026-05-20",
+   "period": 35,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "published indicative BM bid cashflow (latest settlement run, vintage 2026-05-21)",
+   "sequence_time": "",
+   "amount_gbp": "-652.660139999999955762",
+   "money_kind": "published_indicative_bm_cashflow"
+  },
+  {
+   "date": "2026-05-20",
+   "period": 35,
+   "actor": "non-storage units (aggregate)",
+   "column": "observed",
+   "description": "CONCURRENT offer-side published indicative BM cashflow across non-storage units (concurrency observed; causal substitution for any curtailment is not asserted)",
+   "sequence_time": "",
+   "amount_gbp": "186832.731737375590967075",
+   "money_kind": "published_indicative_bm_cashflow"
+  },
+  {
+   "date": "2026-05-20",
+   "period": 35,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61331 instructs -40\u2192-40 MW",
+   "sequence_time": "2026-05-20T16:12:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 35,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61331 instructs -40\u21920 MW",
+   "sequence_time": "2026-05-20T16:12:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 35,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61331 instructs 0\u2192-40 MW",
+   "sequence_time": "2026-05-20T16:12:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 36,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "published indicative BM bid cashflow (latest settlement run, vintage 2026-05-21)",
+   "sequence_time": "",
+   "amount_gbp": "-560.885905899666681762",
+   "money_kind": "published_indicative_bm_cashflow"
+  },
+  {
+   "date": "2026-05-20",
+   "period": 36,
+   "actor": "non-storage units (aggregate)",
+   "column": "observed",
+   "description": "CONCURRENT offer-side published indicative BM cashflow across non-storage units (concurrency observed; causal substitution for any curtailment is not asserted)",
+   "sequence_time": "",
+   "amount_gbp": "170105.429744393373719571",
+   "money_kind": "published_indicative_bm_cashflow"
+  },
+  {
+   "date": "2026-05-20",
+   "period": 36,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61332 instructs -16\u2192-16 MW",
+   "sequence_time": "2026-05-20T16:30:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 36,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61332 instructs -16\u21920 MW",
+   "sequence_time": "2026-05-20T16:30:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 36,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61332 instructs 5\u21920 MW",
+   "sequence_time": "2026-05-20T16:30:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 36,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "final physical notification schedules export (up to 5 MW; final vintage \u2014 intra-period revision history is not public)",
+   "sequence_time": "2026-05-20T16:30:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 36,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "final physical notification schedules export (up to 5 MW; final vintage \u2014 intra-period revision history is not public)",
+   "sequence_time": "2026-05-20T16:31:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 36,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61333 instructs -15\u2192-15 MW",
+   "sequence_time": "2026-05-20T16:36:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 36,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61333 instructs -15\u21920 MW",
+   "sequence_time": "2026-05-20T16:36:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 36,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61333 instructs 5\u21920 MW",
+   "sequence_time": "2026-05-20T16:36:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 36,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61334 instructs -9\u2192-9 MW",
+   "sequence_time": "2026-05-20T16:46:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 36,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61334 instructs 5\u21920 MW",
+   "sequence_time": "2026-05-20T16:46:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 37,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "published indicative BM bid cashflow (latest settlement run, vintage 2026-05-21)",
+   "sequence_time": "",
+   "amount_gbp": "-26.967554395833332137",
+   "money_kind": "published_indicative_bm_cashflow"
+  },
+  {
+   "date": "2026-05-20",
+   "period": 37,
+   "actor": "non-storage units (aggregate)",
+   "column": "observed",
+   "description": "CONCURRENT offer-side published indicative BM cashflow across non-storage units (concurrency observed; causal substitution for any curtailment is not asserted)",
+   "sequence_time": "",
+   "amount_gbp": "174461.178655549998694596",
+   "money_kind": "published_indicative_bm_cashflow"
+  },
+  {
+   "date": "2026-05-20",
+   "period": 37,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61334 instructs -9\u21920 MW",
+   "sequence_time": "2026-05-20T16:46:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 37,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61335 instructs -2\u2192-2 MW",
+   "sequence_time": "2026-05-20T16:47:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 37,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61335 instructs -2\u21920 MW",
+   "sequence_time": "2026-05-20T16:47:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 37,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61335 instructs -9\u2192-2 MW",
+   "sequence_time": "2026-05-20T16:47:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 37,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "final physical notification schedules export (up to 5 MW; final vintage \u2014 intra-period revision history is not public)",
+   "sequence_time": "2026-05-20T17:00:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 38,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "published indicative BM bid cashflow (latest settlement run, vintage 2026-05-21)",
+   "sequence_time": "",
+   "amount_gbp": "-290.978964255333323763",
+   "money_kind": "published_indicative_bm_cashflow"
+  },
+  {
+   "date": "2026-05-20",
+   "period": 38,
+   "actor": "non-storage units (aggregate)",
+   "column": "observed",
+   "description": "CONCURRENT offer-side published indicative BM cashflow across non-storage units (concurrency observed; causal substitution for any curtailment is not asserted)",
+   "sequence_time": "",
+   "amount_gbp": "175447.572144770561180849",
+   "money_kind": "published_indicative_bm_cashflow"
+  },
+  {
+   "date": "2026-05-20",
+   "period": 38,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61336 instructs -6\u2192-6 MW",
+   "sequence_time": "2026-05-20T17:41:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 38,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61336 instructs -6\u21920 MW",
+   "sequence_time": "2026-05-20T17:41:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 38,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61336 instructs 0\u2192-6 MW",
+   "sequence_time": "2026-05-20T17:41:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 38,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61337 instructs -19\u2192-19 MW",
+   "sequence_time": "2026-05-20T17:46:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 38,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61337 instructs -19\u21920 MW",
+   "sequence_time": "2026-05-20T17:46:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 38,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61337 instructs -6\u2192-19 MW",
+   "sequence_time": "2026-05-20T17:46:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 38,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61339 instructs -19\u2192-19 MW",
+   "sequence_time": "2026-05-20T17:49:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 38,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61339 instructs -19\u21920 MW",
+   "sequence_time": "2026-05-20T17:49:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 39,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "published indicative BM bid cashflow (latest settlement run, vintage 2026-05-21)",
+   "sequence_time": "",
+   "amount_gbp": "-1296.947908159000007799",
+   "money_kind": "published_indicative_bm_cashflow"
+  },
+  {
+   "date": "2026-05-20",
+   "period": 39,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "published indicative BM offer cashflow (latest settlement run, vintage 2026-05-21)",
+   "sequence_time": "",
+   "amount_gbp": "0.000225794038333378",
+   "money_kind": "published_indicative_bm_cashflow"
+  },
+  {
+   "date": "2026-05-20",
+   "period": 39,
+   "actor": "non-storage units (aggregate)",
+   "column": "observed",
+   "description": "CONCURRENT offer-side published indicative BM cashflow across non-storage units (concurrency observed; causal substitution for any curtailment is not asserted)",
+   "sequence_time": "",
+   "amount_gbp": "174391.175491549998696428",
+   "money_kind": "published_indicative_bm_cashflow"
+  },
+  {
+   "date": "2026-05-20",
+   "period": 39,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61338 instructs 0\u21920 MW",
+   "sequence_time": "2026-05-20T17:47:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 39,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61338 instructs 0\u219238 MW",
+   "sequence_time": "2026-05-20T17:47:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 39,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61340 instructs 0\u21920 MW",
+   "sequence_time": "2026-05-20T17:50:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 39,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61340 instructs 0\u219238 MW",
+   "sequence_time": "2026-05-20T17:50:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 39,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61341 instructs 0\u21926 MW",
+   "sequence_time": "2026-05-20T17:51:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 39,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61341 instructs 6\u219238 MW",
+   "sequence_time": "2026-05-20T17:51:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 39,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61341 instructs 6\u21926 MW",
+   "sequence_time": "2026-05-20T17:51:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 39,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "final physical notification schedules export (up to 38 MW; final vintage \u2014 intra-period revision history is not public)",
+   "sequence_time": "2026-05-20T18:00:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 39,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61342 instructs 6\u219238 MW",
+   "sequence_time": "2026-05-20T18:01:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 39,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61342 instructs 6\u21926 MW",
+   "sequence_time": "2026-05-20T18:01:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 39,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "final physical notification schedules export (up to 38 MW; final vintage \u2014 intra-period revision history is not public)",
+   "sequence_time": "2026-05-20T18:01:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 39,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61343 instructs 38\u21926 MW",
+   "sequence_time": "2026-05-20T18:09:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 39,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61343 instructs 6\u21926 MW",
+   "sequence_time": "2026-05-20T18:09:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 40,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "published indicative BM bid cashflow (latest settlement run, vintage 2026-05-21)",
+   "sequence_time": "",
+   "amount_gbp": "-420.394335024609915763",
+   "money_kind": "published_indicative_bm_cashflow"
+  },
+  {
+   "date": "2026-05-20",
+   "period": 40,
+   "actor": "non-storage units (aggregate)",
+   "column": "observed",
+   "description": "CONCURRENT offer-side published indicative BM cashflow across non-storage units (concurrency observed; causal substitution for any curtailment is not asserted)",
+   "sequence_time": "",
+   "amount_gbp": "169262.738915195833214966",
+   "money_kind": "published_indicative_bm_cashflow"
+  },
+  {
+   "date": "2026-05-20",
+   "period": 40,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61343 instructs 6\u219239 MW",
+   "sequence_time": "2026-05-20T18:09:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 40,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61344 instructs 1\u21921 MW",
+   "sequence_time": "2026-05-20T18:10:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 40,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61344 instructs 1\u219239 MW",
+   "sequence_time": "2026-05-20T18:10:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 40,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61344 instructs 6\u21921 MW",
+   "sequence_time": "2026-05-20T18:10:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 40,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "final physical notification schedules export (up to 39 MW; final vintage \u2014 intra-period revision history is not public)",
+   "sequence_time": "2026-05-20T18:30:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 40,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "final physical notification schedules export (up to 39 MW; final vintage \u2014 intra-period revision history is not public)",
+   "sequence_time": "2026-05-20T18:31:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 41,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "published indicative BM bid cashflow (latest settlement run, vintage 2026-05-21)",
+   "sequence_time": "",
+   "amount_gbp": "-252.778074045833335504",
+   "money_kind": "published_indicative_bm_cashflow"
+  },
+  {
+   "date": "2026-05-20",
+   "period": 41,
+   "actor": "non-storage units (aggregate)",
+   "column": "observed",
+   "description": "CONCURRENT offer-side published indicative BM cashflow across non-storage units (concurrency observed; causal substitution for any curtailment is not asserted)",
+   "sequence_time": "",
+   "amount_gbp": "145801.067036186367978701",
+   "money_kind": "published_indicative_bm_cashflow"
+  },
+  {
+   "date": "2026-05-20",
+   "period": 41,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61345 instructs -31\u2192-31 MW",
+   "sequence_time": "2026-05-20T18:57:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 41,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61345 instructs -31\u21920 MW",
+   "sequence_time": "2026-05-20T18:57:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 41,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61345 instructs 0\u2192-31 MW",
+   "sequence_time": "2026-05-20T18:57:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 41,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "final physical notification schedules export (up to 39 MW; final vintage \u2014 intra-period revision history is not public)",
+   "sequence_time": "2026-05-20T19:00:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 42,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "published indicative BM offer cashflow (latest settlement run, vintage 2026-05-21)",
+   "sequence_time": "",
+   "amount_gbp": "2950.123544765833230485",
+   "money_kind": "published_indicative_bm_cashflow"
+  },
+  {
+   "date": "2026-05-20",
+   "period": 42,
+   "actor": "non-storage units (aggregate)",
+   "column": "observed",
+   "description": "CONCURRENT offer-side published indicative BM cashflow across non-storage units (concurrency observed; causal substitution for any curtailment is not asserted)",
+   "sequence_time": "",
+   "amount_gbp": "136632.790253949425593127",
+   "money_kind": "published_indicative_bm_cashflow"
+  },
+  {
+   "date": "2026-05-20",
+   "period": 42,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61346 instructs 0\u219216 MW",
+   "sequence_time": "2026-05-20T19:24:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 42,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61346 instructs 16\u21920 MW",
+   "sequence_time": "2026-05-20T19:24:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 42,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61346 instructs 16\u219216 MW",
+   "sequence_time": "2026-05-20T19:24:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 42,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61347 instructs 16\u219299 MW",
+   "sequence_time": "2026-05-20T19:25:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 42,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61347 instructs 99\u21920 MW",
+   "sequence_time": "2026-05-20T19:25:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 42,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61347 instructs 99\u219299 MW",
+   "sequence_time": "2026-05-20T19:25:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 42,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61348 instructs 0\u219224 MW",
+   "sequence_time": "2026-05-20T19:28:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 42,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61348 instructs 24\u219216 MW",
+   "sequence_time": "2026-05-20T19:28:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 42,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61348 instructs 24\u219224 MW",
+   "sequence_time": "2026-05-20T19:28:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 42,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61349 instructs 99\u21920 MW",
+   "sequence_time": "2026-05-20T19:35:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 42,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61349 instructs 99\u219299 MW",
+   "sequence_time": "2026-05-20T19:35:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 42,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61349 instructs 99\u219299 MW",
+   "sequence_time": "2026-05-20T19:35:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 42,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61350 instructs 57\u21920 MW",
+   "sequence_time": "2026-05-20T19:36:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 42,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61350 instructs 57\u219257 MW",
+   "sequence_time": "2026-05-20T19:36:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 42,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61350 instructs 99\u219257 MW",
+   "sequence_time": "2026-05-20T19:36:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 42,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61351 instructs 25\u21920 MW",
+   "sequence_time": "2026-05-20T19:37:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 42,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61351 instructs 25\u219225 MW",
+   "sequence_time": "2026-05-20T19:37:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 42,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61351 instructs 57\u219225 MW",
+   "sequence_time": "2026-05-20T19:37:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 42,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61352 instructs 1\u21921 MW",
+   "sequence_time": "2026-05-20T19:38:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 42,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61352 instructs 25\u21921 MW",
+   "sequence_time": "2026-05-20T19:38:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 43,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "published indicative BM offer cashflow (latest settlement run, vintage 2026-05-21)",
+   "sequence_time": "",
+   "amount_gbp": "1.186902019749999981",
+   "money_kind": "published_indicative_bm_cashflow"
+  },
+  {
+   "date": "2026-05-20",
+   "period": 43,
+   "actor": "non-storage units (aggregate)",
+   "column": "observed",
+   "description": "CONCURRENT offer-side published indicative BM cashflow across non-storage units (concurrency observed; causal substitution for any curtailment is not asserted)",
+   "sequence_time": "",
+   "amount_gbp": "130135.137857645834628784",
+   "money_kind": "published_indicative_bm_cashflow"
+  },
+  {
+   "date": "2026-05-20",
+   "period": 43,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61352 instructs 1\u21921 MW",
+   "sequence_time": "2026-05-20T19:38:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 43,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "final physical notification schedules export (up to 1 MW; final vintage \u2014 intra-period revision history is not public)",
+   "sequence_time": "2026-05-20T20:00:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 43,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "final physical notification schedules export (up to 1 MW; final vintage \u2014 intra-period revision history is not public)",
+   "sequence_time": "2026-05-20T20:01:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 44,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "published indicative BM offer cashflow (latest settlement run, vintage 2026-05-21)",
+   "sequence_time": "",
+   "amount_gbp": "1331.938265669333304686",
+   "money_kind": "published_indicative_bm_cashflow"
+  },
+  {
+   "date": "2026-05-20",
+   "period": 44,
+   "actor": "non-storage units (aggregate)",
+   "column": "observed",
+   "description": "CONCURRENT offer-side published indicative BM cashflow across non-storage units (concurrency observed; causal substitution for any curtailment is not asserted)",
+   "sequence_time": "",
+   "amount_gbp": "134010.651804094119142973",
+   "money_kind": "published_indicative_bm_cashflow"
+  },
+  {
+   "date": "2026-05-20",
+   "period": 44,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61353 instructs 0\u21926 MW",
+   "sequence_time": "2026-05-20T20:21:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 44,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61353 instructs 6\u21920 MW",
+   "sequence_time": "2026-05-20T20:21:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 44,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61353 instructs 6\u21926 MW",
+   "sequence_time": "2026-05-20T20:21:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 44,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61354 instructs 1\u219264 MW",
+   "sequence_time": "2026-05-20T20:27:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 44,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61354 instructs 64\u21926 MW",
+   "sequence_time": "2026-05-20T20:27:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 44,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61354 instructs 64\u219264 MW",
+   "sequence_time": "2026-05-20T20:27:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 44,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "final physical notification schedules export (up to 1 MW; final vintage \u2014 intra-period revision history is not public)",
+   "sequence_time": "2026-05-20T20:30:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 44,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61355 instructs 0\u219234 MW",
+   "sequence_time": "2026-05-20T20:43:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 44,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61355 instructs 34\u21920 MW",
+   "sequence_time": "2026-05-20T20:43:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 44,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61355 instructs 34\u219234 MW",
+   "sequence_time": "2026-05-20T20:43:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 45,
+   "actor": "non-storage units (aggregate)",
+   "column": "observed",
+   "description": "CONCURRENT offer-side published indicative BM cashflow across non-storage units (concurrency observed; causal substitution for any curtailment is not asserted)",
+   "sequence_time": "",
+   "amount_gbp": "131575.884626458631828426",
+   "money_kind": "published_indicative_bm_cashflow"
+  },
+  {
+   "date": "2026-05-20",
+   "period": 46,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "published indicative BM offer cashflow (latest settlement run, vintage 2026-05-21)",
+   "sequence_time": "",
+   "amount_gbp": "319.756002407999972093",
+   "money_kind": "published_indicative_bm_cashflow"
+  },
+  {
+   "date": "2026-05-20",
+   "period": 46,
+   "actor": "non-storage units (aggregate)",
+   "column": "observed",
+   "description": "CONCURRENT offer-side published indicative BM cashflow across non-storage units (concurrency observed; causal substitution for any curtailment is not asserted)",
+   "sequence_time": "",
+   "amount_gbp": "102694.171462094162052380",
+   "money_kind": "published_indicative_bm_cashflow"
+  },
+  {
+   "date": "2026-05-20",
+   "period": 46,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61356 instructs 0\u219248 MW",
+   "sequence_time": "2026-05-20T21:21:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 46,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61356 instructs 48\u21920 MW",
+   "sequence_time": "2026-05-20T21:21:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 46,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61356 instructs 48\u219248 MW",
+   "sequence_time": "2026-05-20T21:21:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 47,
+   "actor": "non-storage units (aggregate)",
+   "column": "observed",
+   "description": "CONCURRENT offer-side published indicative BM cashflow across non-storage units (concurrency observed; causal substitution for any curtailment is not asserted)",
+   "sequence_time": "",
+   "amount_gbp": "84363.737425966662613063",
+   "money_kind": "published_indicative_bm_cashflow"
+  },
+  {
+   "date": "2026-05-20",
+   "period": 48,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "published indicative BM bid cashflow (latest settlement run, vintage 2026-05-21)",
+   "sequence_time": "",
+   "amount_gbp": "-726.197737566901992068",
+   "money_kind": "published_indicative_bm_cashflow"
+  },
+  {
+   "date": "2026-05-20",
+   "period": 48,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "published indicative BM offer cashflow (latest settlement run, vintage 2026-05-21)",
+   "sequence_time": "",
+   "amount_gbp": "34.387385914060111247",
+   "money_kind": "published_indicative_bm_cashflow"
+  },
+  {
+   "date": "2026-05-20",
+   "period": 48,
+   "actor": "non-storage units (aggregate)",
+   "column": "observed",
+   "description": "CONCURRENT offer-side published indicative BM cashflow across non-storage units (concurrency observed; causal substitution for any curtailment is not asserted)",
+   "sequence_time": "",
+   "amount_gbp": "96608.790100549995258916",
+   "money_kind": "published_indicative_bm_cashflow"
+  },
+  {
+   "date": "2026-05-20",
+   "period": 48,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61357 instructs -1\u2192-22 MW",
+   "sequence_time": "2026-05-20T22:30:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 48,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61357 instructs -22\u2192-1 MW",
+   "sequence_time": "2026-05-20T22:30:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 48,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61357 instructs -22\u2192-22 MW",
+   "sequence_time": "2026-05-20T22:30:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 48,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61358 instructs -22\u2192-1 MW",
+   "sequence_time": "2026-05-20T22:31:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 48,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61358 instructs -22\u2192-22 MW",
+   "sequence_time": "2026-05-20T22:31:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 48,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61359 instructs -15\u2192-1 MW",
+   "sequence_time": "2026-05-20T22:32:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 48,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61359 instructs -15\u2192-15 MW",
+   "sequence_time": "2026-05-20T22:32:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 48,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61359 instructs -22\u2192-15 MW",
+   "sequence_time": "2026-05-20T22:32:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 48,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61360 instructs -15\u2192-22 MW",
+   "sequence_time": "2026-05-20T22:33:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 48,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61360 instructs -22\u2192-1 MW",
+   "sequence_time": "2026-05-20T22:33:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 48,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61360 instructs -22\u2192-22 MW",
+   "sequence_time": "2026-05-20T22:33:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 48,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61361 instructs -14\u2192-14 MW",
+   "sequence_time": "2026-05-20T22:46:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  },
+  {
+   "date": "2026-05-20",
+   "period": 48,
+   "actor": "E_DOLLB-1",
+   "column": "observed",
+   "description": "acceptance 61361 instructs -22\u2192-14 MW",
+   "sequence_time": "2026-05-20T22:46:00Z",
+   "amount_gbp": null,
+   "money_kind": null
+  }
+ ],
+ "period_gaps": []
+}

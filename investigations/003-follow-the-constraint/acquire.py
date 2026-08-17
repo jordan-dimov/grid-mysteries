@@ -174,10 +174,34 @@ def fetch_pn() -> None:
     print(f"pn: fetched {fetched}, skipped {skipped}")
 
 
+def fetch_ebocf() -> None:
+    """EBOCF: published indicative BM cashflows, per date and direction
+    (one request covers all 48 periods, per-pair, TLM-inclusive)."""
+    jobs = [
+        (
+            "EBOCF",
+            f"{elexon.BASE_URL}/balancing/settlement/indicative/cashflows/all/{direction}/{day}",
+            RAW / day / f"ebocf_{direction}.json",
+        )
+        for day in may_dates()
+        for direction in ("offer", "bid")
+    ]
+    fetched, skipped = fetch_journalled(
+        jobs,
+        journal_path=EVIDENCE / "ebocf-may-journal.ndjson",
+        manifest_path=EVIDENCE / "ebocf-may-manifest.json",
+        repo_root=REPO_ROOT,
+        fetch=elexon.fetch_pinned,
+    )
+    print(f"ebocf: fetched {fetched}, skipped {skipped}")
+
+
 def main() -> None:
     match sys.argv[1:]:
         case ["fetch"]:
             fetch()
+        case ["fetch-ebocf"]:
+            fetch_ebocf()
         case ["fetch-pn"]:
             fetch_pn()
         case _:

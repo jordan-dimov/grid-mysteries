@@ -94,8 +94,12 @@ Every reconstructed step is classified as exactly one of:
 
 For the selected episode: a period-by-period timeline (day-ahead
 flow/limit context, storage FPNs and acceptances with acceptance timestamps,
-curtailment actions, replacement offers); realised cashflow accounting
-per actor class from DISPTAV volumes × BOD prices (**realised facts
+curtailment actions, replacement offers); cashflow accounting per actor
+class using **EBOCF, Elexon's published indicative BM cashflow** per
+BMU/pair/period (BSC settlement semantics including the Transmission
+Loss Multiplier), always labelled *published indicative BM cashflow*;
+any figure computed as accepted MWh × submitted price is labelled
+**acceptance notional**, never cashflow (**realised facts
 only** — counterfactual "could a different sequence have cost less" is
 explicitly out of scope for this investigation and reserved as a
 declared follow-on, because substitutability would have to be proven
@@ -130,3 +134,14 @@ reader could otherwise assume completeness.
    selection rule is otherwise identical. The registered hypothesis
    (`hyp-003-episode-reconstructable`) is unaffected: it claims
    reconstruction and accounting of *publicly observable* actions only.
+
+2. **2026-08-17, after acquisition began but before selection or any
+   cashflow analysis; no May EBOCF or other May results had been
+   inspected.** The declared accounting "DISPTAV volumes × BOD prices"
+   is not the BSC settlement cashflow calculation (which is per
+   Bid-Offer Pair, priced with the Transmission Loss Multiplier).
+   Amended: cashflows come from **EBOCF** (published indicative BM
+   cashflow, so labelled); DISPTAV×BOD products are **acceptance
+   notionals**. EBOCF added to the pinned inputs. The selection rule is
+   untouched; this amendment is motivated by BSC semantics, not by
+   anything observed in May. The declaration is now frozen.

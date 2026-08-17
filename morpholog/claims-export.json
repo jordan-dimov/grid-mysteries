@@ -632,5 +632,43 @@
         "value": "ed25519-pub:cb6c6ce9152039914ac232b8302d0bc2f6b3f80d73623c5a358288993cc4ccf9"
       }
     ]
+  },
+  {
+    "predicate": "Investigation",
+    "args": [
+      {
+        "type": "subject",
+        "value": "bess-001-benchmark-fragility"
+      },
+      {
+        "type": "subject",
+        "value": "BESS Study 001: benchmark fragility under GC0166 duration-aware data (method study, corpus 2026-07-01..31)"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-08-16T23:00:00Z"
+      }
+    ]
+  },
+  {
+    "predicate": "Hypothesis",
+    "args": [
+      {
+        "type": "subject",
+        "value": "hyp-bess-001-half-survives"
+      },
+      {
+        "type": "subject",
+        "value": "bess-001-benchmark-fragility"
+      },
+      {
+        "type": "subject",
+        "value": "For the July 2026 GC0166 early-submitter panel, less than half of the price-only apparent BM opportunity survives to the public-as-of duration-aware rung, under the rules declared in METHOD-STUDY-BESS-001.md."
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-08-16T23:00:00Z"
+      }
+    ]
   }
 ]

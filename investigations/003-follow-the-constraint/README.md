@@ -5,9 +5,10 @@
 **Pre-declared.** This document is committed before any data from the
 declared window is fetched. The question is mechanism, not misconduct:
 
-> **Can we reconstruct one entire constraint episode and account for
-> every publicly observable pound of its storage, curtailment and
-> replacement-energy economics — from first binding to final release?**
+> **Can the publicly observable signature associated with repetitive
+> re-trading be reconstructed across a full published constraint-cost
+> episode — and how much of the proposed causal mechanism can public
+> data actually prove?**
 
 Ofgem has identified "repetitive re-trading" by storage behind
 transmission constraints as a material system cost (~£90m/year). The
@@ -38,27 +39,36 @@ machine works, with the unobservable parts named as such.
   separately classified) in NESO's May Skip Rates fuel field — the
   operator's own classification, not ours. The classification source is
   pinned before use.
-- **Congestion episode**: for a constraint group, a maximal run of
-  consecutive settlement dates on which NESO's published constraint
-  cost/volume for that group is non-zero (money actually spent — outturn
-  binding, not forecast). Day-ahead flows/limits provide the intra-episode
-  half-hourly timeline but do not define the episode.
-- **Re-trade cycle** (the publicly observable unit of RRT): within one
-  episode, a storage unit that (a) is bid down via an acceptance in
-  settlement period t, (b) subsequently presents a final FPN scheduling
-  export again in a later period of the same episode, and (c) is bid
-  down again. Each additional (b)+(c) after the first bid-down is one
-  cycle. Final FPNs only — intra-period revision history is not public,
-  and this is recorded as a declared observability limit.
-- **Episode RRT score**: total re-trade cycles across storage units in
-  the episode.
+- **Published constraint-cost episode**: for a constraint group, a
+  maximal run of consecutive settlement dates on which NESO's published
+  outturn constraint cost/volume for that group is non-zero (money
+  actually spent). The half-hourly Flow-vs-Limit dataset is **day-ahead
+  forecast context** — NESO states it does not reflect subsequent
+  changes — and is used as context only, never as evidence that the
+  boundary was physically binding in a given half hour.
+- **Repeat-curtailment cycle** (the RRT-*consistent* public signature):
+  within one episode, a storage unit that (a) is bid down via an
+  acceptance in settlement period t, (b) subsequently presents a final
+  FPN scheduling export again in a later period of the same episode, and
+  (c) is bid down again. Each additional (b)+(c) after the first
+  bid-down is one cycle. **This proves repeated curtailment of
+  re-presented schedules; it does not and cannot prove the intervening
+  intraday re-trade** — a unit whose pre-existing schedule already
+  exported in consecutive periods produces the identical public
+  signature with no new trade. Final FPNs only; intra-period revision
+  history is not public. Ofgem's causal mechanism is
+  A (curtailment) → B (intraday re-sale) → C (curtailment again);
+  public data observes A and C. Establishing what can and cannot be said
+  about B is part of the investigation's output, not an assumption.
+- **Episode repeat-curtailment score**: total repeat-curtailment cycles
+  across storage units in the episode.
 
 ## Declared selection
 
-**The selected case is the episode with the highest RRT score in the
-window.** Ties break by: greater total storage bid-down volume (MWh),
+**The selected case is the episode with the highest repeat-curtailment
+score in the window.** Ties break by: greater total storage bid-down volume (MWh),
 then earlier episode start, then constraint-group name. No discretion is
-exercised after this point. If no episode has a positive RRT score, that
+exercised after this point. If no episode has a positive score, that
 is the result (`#hypothesis_not_evaluable` territory, honestly reported).
 
 ## Registered hypothesis (null-explainability form)
@@ -70,10 +80,20 @@ is the result (`#hypothesis_not_evaluable` territory, honestly reported).
 > perverse step explained by the incentives and constraints visible at
 > the time.
 
+## The three-column discipline
+
+Every reconstructed step is classified as exactly one of:
+
+- **Observed** — directly in pinned public data;
+- **Supported inference** — follows from observed data under a stated,
+  falsifiable assumption, with the assumption named at the point of use;
+- **Not publicly observable** — e.g. intraday/wholesale re-trades,
+  private positions, control-room reasoning. Named, never inferred.
+
 ## Declared reconstruction outputs
 
-For the selected episode: a period-by-period timeline (constraint
-flow/limit, storage FPNs and acceptances with acceptance timestamps,
+For the selected episode: a period-by-period timeline (day-ahead
+flow/limit context, storage FPNs and acceptances with acceptance timestamps,
 curtailment actions, replacement offers); realised cashflow accounting
 per actor class from DISPTAV volumes × BOD prices (**realised facts
 only** — counterfactual "could a different sequence have cost less" is
@@ -94,3 +114,19 @@ Mechanism, never accusation. No unit or party is characterised as
 cashflows are realised facts; nothing is a "waste" or "saving" without
 proven substitutability. The observability boundary is stated wherever a
 reader could otherwise assume completeness.
+
+## Amendments before acquisition
+
+1. **2026-08-17, before any May data was fetched.** The original
+   declaration named the selector an "RRT score" and framed the episode
+   "from first binding to final release". Both committed the exact error
+   this project exists to expose: upgrading a mechanism-consistent
+   signature into evidence of the mechanism. Renamed to
+   **repeat-curtailment score** (RRT-*consistent*), with the A → ? → C
+   observability structure made explicit (public data observes the
+   curtailments, not the intervening intraday re-sale); episodes renamed
+   **published constraint-cost episodes**; Flow-vs-Limit reclassified as
+   day-ahead forecast context, never outturn binding evidence. The
+   selection rule is otherwise identical. The registered hypothesis
+   (`hyp-003-episode-reconstructable`) is unaffected: it claims
+   reconstruction and accounting of *publicly observable* actions only.

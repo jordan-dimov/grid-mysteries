@@ -1,9 +1,9 @@
 {
   "manifest": {
     "pack_format_version": 1,
-    "tree_size": 49,
-    "root_hash": "sha256:86bb3ddfa356ac1c7a4c7ef11531f409f9ef59a8dacbde45820fe340df81193f",
-    "checkpoint_hash": "sha256:5e118482124354c34087cf7ada0b4caa5e68d3dad8b388e5f9c850d54bfa95d0"
+    "tree_size": 52,
+    "root_hash": "sha256:e2e2d30c400ae3254afadb067aa792e9e96a1f8851584f3521a7b529c7b30529",
+    "checkpoint_hash": "sha256:03451df1fe8d0905f4777ebc8fd3334d637884b30545e890ee562ad94f6f2d80"
   },
   "checkpoints": [
     {
@@ -269,6 +269,48 @@
           "purpose": "audit_checkpoint_v1",
           "public_key": "ed25519-pub:cb6c6ce9152039914ac232b8302d0bc2f6b3f80d73623c5a358288993cc4ccf9",
           "signature": "ed25519-sig:c5a957782e3deae03b8b616d93c52a9536d39649bf1457f3fd132bcab876e561f60259f7a997b5cbe34b12ae5accab7730c158e168ef0469d55209bbe721190c"
+        }
+      ]
+    },
+    {
+      "tree_size": 50,
+      "root_hash": "sha256:4e2785f10039307f3808fedf7f4163e183c902a772aedb782e685f2fad51e995",
+      "prev_checkpoint_hash": "sha256:5e118482124354c34087cf7ada0b4caa5e68d3dad8b388e5f9c850d54bfa95d0",
+      "checkpoint_hash": "sha256:895e6f18fd6637bb0e3b77629aa4cfe9e7ec8e6147e4db7f55e2297c58223b64",
+      "signatures": [
+        {
+          "key_id": "audit-2026",
+          "purpose": "audit_checkpoint_v1",
+          "public_key": "ed25519-pub:cb6c6ce9152039914ac232b8302d0bc2f6b3f80d73623c5a358288993cc4ccf9",
+          "signature": "ed25519-sig:87a9159535f5aad80a303d1cde07e763b609c1db71796317fb9b8b93f6e215cc32d38354b75d90f20448a75f3315d30de4acc6c8264ac2d4b30804e057734a02"
+        }
+      ]
+    },
+    {
+      "tree_size": 51,
+      "root_hash": "sha256:f84c00b7681d884c1c5e1511b59d9524ed16e7530266eae0ac02f2677edacc69",
+      "prev_checkpoint_hash": "sha256:895e6f18fd6637bb0e3b77629aa4cfe9e7ec8e6147e4db7f55e2297c58223b64",
+      "checkpoint_hash": "sha256:02a0736bfab5c2fa3eb413ef78b4cd37e2860a9f2ea2fc9bf5eea984fee4c527",
+      "signatures": [
+        {
+          "key_id": "audit-2026",
+          "purpose": "audit_checkpoint_v1",
+          "public_key": "ed25519-pub:cb6c6ce9152039914ac232b8302d0bc2f6b3f80d73623c5a358288993cc4ccf9",
+          "signature": "ed25519-sig:197b4091777da747e4da12b64ecb3adf93303b9fe3c528c56fb5db89e3d2399c50dcf1340fbcfbe4fbb14f6869733e1ebe50faa6bb096a4b8eaf0cbaf2bf9200"
+        }
+      ]
+    },
+    {
+      "tree_size": 52,
+      "root_hash": "sha256:e2e2d30c400ae3254afadb067aa792e9e96a1f8851584f3521a7b529c7b30529",
+      "prev_checkpoint_hash": "sha256:02a0736bfab5c2fa3eb413ef78b4cd37e2860a9f2ea2fc9bf5eea984fee4c527",
+      "checkpoint_hash": "sha256:03451df1fe8d0905f4777ebc8fd3334d637884b30545e890ee562ad94f6f2d80",
+      "signatures": [
+        {
+          "key_id": "audit-2026",
+          "purpose": "audit_checkpoint_v1",
+          "public_key": "ed25519-pub:cb6c6ce9152039914ac232b8302d0bc2f6b3f80d73623c5a358288993cc4ccf9",
+          "signature": "ed25519-sig:23fcc8233fd975294eaad5547ddbce14c9a4680b405a39c8908b43711a572cffa761f74c803faff96a4f0f120b8f5e0b08974e68395d1ce21e5a0f592a08d005"
         }
       ]
     }
@@ -4488,6 +4530,277 @@
         }
       ],
       "committed_at": "2026-08-17T12:54:37.933354Z",
+      "attestation": {
+        "mode": "gateway",
+        "authenticated_by": "jdimov"
+      }
+    },
+    {
+      "transition_id": "01a00fff-97da-7891-a019-2cd6d29a8167",
+      "transformation_name": "register_source",
+      "arguments": [
+        {
+          "type": "subject",
+          "value": "art-003-ofgem-rrt-paper"
+        },
+        {
+          "type": "subject",
+          "value": "ofgem Repetitive Re-trading (RRT) by electricity storage in transmission constraint periods, policy paper, June 2026; pinned at data/raw/ofgem/repetitive-re-trading-policy-paper-2026-06.pdf via evidence/reference-manifest.json"
+        },
+        {
+          "type": "subject",
+          "value": "fea01171959187881d755e468d3178a34fbb6f56eed657e6b7a6410438254271"
+        },
+        {
+          "type": "timestamp",
+          "value": "2026-08-17T13:52:05Z"
+        }
+      ],
+      "actor": {
+        "type": "subject",
+        "value": "jordan-dimov"
+      },
+      "invariant_epoch": 1,
+      "invariants_checked": [
+        {
+          "name": "attached_source_exists",
+          "version": 1
+        },
+        {
+          "name": "attached_source_has_investigation",
+          "version": 1
+        },
+        {
+          "name": "hypothesis_has_investigation",
+          "version": 1
+        },
+        {
+          "name": "finding_has_registered_hypothesis",
+          "version": 1
+        },
+        {
+          "name": "finding_has_at_least_one_source",
+          "version": 1
+        }
+      ],
+      "asserted_claims": [
+        {
+          "predicate": "SourceArtifact",
+          "args": [
+            {
+              "type": "subject",
+              "value": "art-003-ofgem-rrt-paper"
+            },
+            {
+              "type": "subject",
+              "value": "ofgem Repetitive Re-trading (RRT) by electricity storage in transmission constraint periods, policy paper, June 2026; pinned at data/raw/ofgem/repetitive-re-trading-policy-paper-2026-06.pdf via evidence/reference-manifest.json"
+            },
+            {
+              "type": "subject",
+              "value": "fea01171959187881d755e468d3178a34fbb6f56eed657e6b7a6410438254271"
+            },
+            {
+              "type": "timestamp",
+              "value": "2026-08-17T13:52:05Z"
+            }
+          ]
+        }
+      ],
+      "retracted_claims": [],
+      "emitted_intents": [
+        {
+          "name": "SourceRegistered",
+          "args": [
+            {
+              "type": "subject",
+              "value": "art-003-ofgem-rrt-paper"
+            }
+          ]
+        }
+      ],
+      "committed_at": "2026-08-17T13:53:23.927665Z",
+      "attestation": {
+        "mode": "gateway",
+        "authenticated_by": "jdimov"
+      }
+    },
+    {
+      "transition_id": "01a00fff-9835-70a3-ae22-70d7f0df8d27",
+      "transformation_name": "attach_source",
+      "arguments": [
+        {
+          "type": "subject",
+          "value": "inv-003-follow-the-constraint"
+        },
+        {
+          "type": "subject",
+          "value": "art-003-ofgem-rrt-paper"
+        }
+      ],
+      "actor": {
+        "type": "subject",
+        "value": "jordan-dimov"
+      },
+      "invariant_epoch": 1,
+      "invariants_checked": [
+        {
+          "name": "attached_source_exists",
+          "version": 1
+        },
+        {
+          "name": "attached_source_has_investigation",
+          "version": 1
+        },
+        {
+          "name": "hypothesis_has_investigation",
+          "version": 1
+        },
+        {
+          "name": "finding_has_registered_hypothesis",
+          "version": 1
+        },
+        {
+          "name": "finding_has_at_least_one_source",
+          "version": 1
+        }
+      ],
+      "asserted_claims": [
+        {
+          "predicate": "InvestigationUses",
+          "args": [
+            {
+              "type": "subject",
+              "value": "inv-003-follow-the-constraint"
+            },
+            {
+              "type": "subject",
+              "value": "art-003-ofgem-rrt-paper"
+            }
+          ]
+        }
+      ],
+      "retracted_claims": [],
+      "emitted_intents": [
+        {
+          "name": "SourceAttached",
+          "args": [
+            {
+              "type": "subject",
+              "value": "inv-003-follow-the-constraint"
+            },
+            {
+              "type": "subject",
+              "value": "art-003-ofgem-rrt-paper"
+            }
+          ]
+        }
+      ],
+      "committed_at": "2026-08-17T13:53:24.019394Z",
+      "attestation": {
+        "mode": "gateway",
+        "authenticated_by": "jdimov"
+      }
+    },
+    {
+      "transition_id": "01a00fff-988e-7ce3-86f2-8dc66679a04c",
+      "transformation_name": "publish_finding",
+      "arguments": [
+        {
+          "type": "subject",
+          "value": "fnd-003-attribution-corrected"
+        },
+        {
+          "type": "subject",
+          "value": "inv-003-follow-the-constraint"
+        },
+        {
+          "type": "subject",
+          "value": "hyp-003-episode-reconstructable"
+        },
+        {
+          "type": "subject",
+          "value": "CORRECTION AND STRENGTHENING of fnd-003-episode-reconstructed (which remains on the record as published). (1) Attribution: the frozen selection rule scores an episode by counting repeat-curtailment cycles across the entire declared GB storage universe over the episode dates; no constraint-group filter was declared and none is publicly implementable - the missing unit-to-group mapping the original finding itself identified. The 8,259 cycles and 69,869 MWh are GB-wide storage activity concurrent with the SSE-SP episode dates and must not be presented as activity behind SSE-SP. (2) Methodology alignment, from the pinned Ofgem RRT policy paper (June 2026, art-003-ofgem-rrt-paper): NESO estimates the balancing cost impact of RRT from storage at approximately GBP 99m in FY 2025/26 (12-hour search window), up from approximately GBP 64m in FY 2024/25, with pumped storage around 80 percent of the two-year total; the methodology counts only settlement periods with a positive FPN, a SYSTEM-FLAGGED bid acceptance, and a subsequent net-upward PN revision within a 3/6/12-hour horizon - computed from timestamped PN revision history that is not public (only final PN vintages are). (3) Descriptive tally over the episode dates (evidence: so-flag-tally.json): 90,020 distinct storage-unit acceptances GB-wide, of which 2,904 (3.2 percent) are SO-flagged; focus unit E_DOLLB-1 recorded 1,492 acceptances with zero SO-flagged, so its 21 excerpt-day cycles cannot be presented as a demonstrated constraint-driven RRT example. Consequence: the repeat-curtailment score is a concurrence signature, not NESO's RRT count, and the public record cannot reproduce NESO's RRT diagnosis - the missing inputs are point-in-time PN revision history and authoritative constraint attribution."
+        },
+        {
+          "type": "subject",
+          "value": "2de5e62fd8340c1e8b37d5c265bf2799da7c9b2748855957296eb1e06e23215d"
+        },
+        {
+          "type": "timestamp",
+          "value": "2026-08-17T13:56:00Z"
+        }
+      ],
+      "actor": {
+        "type": "subject",
+        "value": "jordan-dimov"
+      },
+      "invariant_epoch": 1,
+      "invariants_checked": [
+        {
+          "name": "attached_source_exists",
+          "version": 1
+        },
+        {
+          "name": "attached_source_has_investigation",
+          "version": 1
+        },
+        {
+          "name": "hypothesis_has_investigation",
+          "version": 1
+        },
+        {
+          "name": "finding_has_registered_hypothesis",
+          "version": 1
+        },
+        {
+          "name": "finding_has_at_least_one_source",
+          "version": 1
+        }
+      ],
+      "asserted_claims": [
+        {
+          "predicate": "Finding",
+          "args": [
+            {
+              "type": "subject",
+              "value": "fnd-003-attribution-corrected"
+            },
+            {
+              "type": "subject",
+              "value": "inv-003-follow-the-constraint"
+            },
+            {
+              "type": "subject",
+              "value": "hyp-003-episode-reconstructable"
+            },
+            {
+              "type": "subject",
+              "value": "CORRECTION AND STRENGTHENING of fnd-003-episode-reconstructed (which remains on the record as published). (1) Attribution: the frozen selection rule scores an episode by counting repeat-curtailment cycles across the entire declared GB storage universe over the episode dates; no constraint-group filter was declared and none is publicly implementable - the missing unit-to-group mapping the original finding itself identified. The 8,259 cycles and 69,869 MWh are GB-wide storage activity concurrent with the SSE-SP episode dates and must not be presented as activity behind SSE-SP. (2) Methodology alignment, from the pinned Ofgem RRT policy paper (June 2026, art-003-ofgem-rrt-paper): NESO estimates the balancing cost impact of RRT from storage at approximately GBP 99m in FY 2025/26 (12-hour search window), up from approximately GBP 64m in FY 2024/25, with pumped storage around 80 percent of the two-year total; the methodology counts only settlement periods with a positive FPN, a SYSTEM-FLAGGED bid acceptance, and a subsequent net-upward PN revision within a 3/6/12-hour horizon - computed from timestamped PN revision history that is not public (only final PN vintages are). (3) Descriptive tally over the episode dates (evidence: so-flag-tally.json): 90,020 distinct storage-unit acceptances GB-wide, of which 2,904 (3.2 percent) are SO-flagged; focus unit E_DOLLB-1 recorded 1,492 acceptances with zero SO-flagged, so its 21 excerpt-day cycles cannot be presented as a demonstrated constraint-driven RRT example. Consequence: the repeat-curtailment score is a concurrence signature, not NESO's RRT count, and the public record cannot reproduce NESO's RRT diagnosis - the missing inputs are point-in-time PN revision history and authoritative constraint attribution."
+            },
+            {
+              "type": "subject",
+              "value": "2de5e62fd8340c1e8b37d5c265bf2799da7c9b2748855957296eb1e06e23215d"
+            },
+            {
+              "type": "timestamp",
+              "value": "2026-08-17T13:56:00Z"
+            }
+          ]
+        }
+      ],
+      "retracted_claims": [],
+      "emitted_intents": [
+        {
+          "name": "FindingPublished",
+          "args": [
+            {
+              "type": "subject",
+              "value": "fnd-003-attribution-corrected"
+            }
+          ]
+        }
+      ],
+      "committed_at": "2026-08-17T13:53:24.107418Z",
       "attestation": {
         "mode": "gateway",
         "authenticated_by": "jdimov"

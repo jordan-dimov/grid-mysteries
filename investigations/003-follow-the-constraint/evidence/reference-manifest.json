@@ -16,5 +16,14 @@
   "sha256": "aaceaff29362b3ef03dd8c1caa06248fc8eecab2bdfe418c48061a78f213da05",
   "fetched_at": "2026-08-17T13:05:56.661129+00:00",
   "bytes": 335479
+ },
+ {
+  "source": "ofgem",
+  "dataset": "OFGEM-RRT-POLICY-PAPER-2026-06",
+  "url": "https://www.ofgem.gov.uk/sites/default/files/2026-06/Repetitive-Re-Trading-Policy-Paper.pdf",
+  "path": "data/raw/ofgem/repetitive-re-trading-policy-paper-2026-06.pdf",
+  "sha256": "fea01171959187881d755e468d3178a34fbb6f56eed657e6b7a6410438254271",
+  "fetched_at": "2026-08-17T13:52:05.136752+00:00",
+  "bytes": 356392
  }
 ]

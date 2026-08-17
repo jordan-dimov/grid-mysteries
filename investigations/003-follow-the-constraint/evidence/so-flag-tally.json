@@ -1,0 +1,9 @@
+{
+ "scope": "GB-wide declared storage universe, episode dates 2026-05-18..31, distinct (unit, acceptanceNumber)",
+ "storage_acceptances": 90020,
+ "storage_acceptances_so_flagged": 2904,
+ "storage_units_with_acceptances": 158,
+ "storage_units_with_so_flagged_acceptances": 56,
+ "focus_unit_E_DOLLB-1_acceptances": 1492,
+ "focus_unit_E_DOLLB-1_so_flagged": 0
+}

@@ -931,5 +931,68 @@
         "value": "2026-08-17T12:30:00Z"
       }
     ]
+  },
+  {
+    "predicate": "SourceArtifact",
+    "args": [
+      {
+        "type": "subject",
+        "value": "art-003-ofgem-rrt-paper"
+      },
+      {
+        "type": "subject",
+        "value": "ofgem Repetitive Re-trading (RRT) by electricity storage in transmission constraint periods, policy paper, June 2026; pinned at data/raw/ofgem/repetitive-re-trading-policy-paper-2026-06.pdf via evidence/reference-manifest.json"
+      },
+      {
+        "type": "subject",
+        "value": "fea01171959187881d755e468d3178a34fbb6f56eed657e6b7a6410438254271"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-08-17T13:52:05Z"
+      }
+    ]
+  },
+  {
+    "predicate": "InvestigationUses",
+    "args": [
+      {
+        "type": "subject",
+        "value": "inv-003-follow-the-constraint"
+      },
+      {
+        "type": "subject",
+        "value": "art-003-ofgem-rrt-paper"
+      }
+    ]
+  },
+  {
+    "predicate": "Finding",
+    "args": [
+      {
+        "type": "subject",
+        "value": "fnd-003-attribution-corrected"
+      },
+      {
+        "type": "subject",
+        "value": "inv-003-follow-the-constraint"
+      },
+      {
+        "type": "subject",
+        "value": "hyp-003-episode-reconstructable"
+      },
+      {
+        "type": "subject",
+        "value": "CORRECTION AND STRENGTHENING of fnd-003-episode-reconstructed (which remains on the record as published). (1) Attribution: the frozen selection rule scores an episode by counting repeat-curtailment cycles across the entire declared GB storage universe over the episode dates; no constraint-group filter was declared and none is publicly implementable - the missing unit-to-group mapping the original finding itself identified. The 8,259 cycles and 69,869 MWh are GB-wide storage activity concurrent with the SSE-SP episode dates and must not be presented as activity behind SSE-SP. (2) Methodology alignment, from the pinned Ofgem RRT policy paper (June 2026, art-003-ofgem-rrt-paper): NESO estimates the balancing cost impact of RRT from storage at approximately GBP 99m in FY 2025/26 (12-hour search window), up from approximately GBP 64m in FY 2024/25, with pumped storage around 80 percent of the two-year total; the methodology counts only settlement periods with a positive FPN, a SYSTEM-FLAGGED bid acceptance, and a subsequent net-upward PN revision within a 3/6/12-hour horizon - computed from timestamped PN revision history that is not public (only final PN vintages are). (3) Descriptive tally over the episode dates (evidence: so-flag-tally.json): 90,020 distinct storage-unit acceptances GB-wide, of which 2,904 (3.2 percent) are SO-flagged; focus unit E_DOLLB-1 recorded 1,492 acceptances with zero SO-flagged, so its 21 excerpt-day cycles cannot be presented as a demonstrated constraint-driven RRT example. Consequence: the repeat-curtailment score is a concurrence signature, not NESO's RRT count, and the public record cannot reproduce NESO's RRT diagnosis - the missing inputs are point-in-time PN revision history and authoritative constraint attribution."
+      },
+      {
+        "type": "subject",
+        "value": "2de5e62fd8340c1e8b37d5c265bf2799da7c9b2748855957296eb1e06e23215d"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-08-17T13:56:00Z"
+      }
+    ]
   }
 ]

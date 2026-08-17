@@ -1,0 +1,109 @@
+{
+ "panel": [
+  "2__HANGE004",
+  "E_BARNB-1",
+  "E_BHOLB-1",
+  "T_PINFB-1"
+ ],
+ "per_unit_direction": {
+  "2__HANGE004|bid": {
+   "r1_price_only": "135571488.2362748314040109197",
+   "r2_power_feasible": "693459.30359639950502656587",
+   "r3h_duration_hindsight": "408696.1504558540504334086731",
+   "r3p_duration_public": "410744.0928409651615447601200",
+   "r4_context_free": "2853.916765041666662386200000"
+  },
+  "2__HANGE004|offer": {
+   "r1_price_only": "319243282.3617093566533821397",
+   "r2_power_feasible": "3913827.43254910451417494169",
+   "r3h_duration_hindsight": "2987638.852872665388607301308",
+   "r3p_duration_public": "3416505.387531665388846500642",
+   "r4_context_free": "103623.01738666667129318854"
+  },
+  "E_BARNB-1|bid": {
+   "r1_price_only": "23041227.26597960693542916502",
+   "r2_power_feasible": "3601069.09088944615063471462",
+   "r3h_duration_hindsight": "905988.8899025383648479491863",
+   "r3p_duration_public": "1027390.379661927253736932266",
+   "r4_context_free": "18446.72603614132395737613333"
+  },
+  "E_BARNB-1|offer": {
+   "r1_price_only": "56576420.39747270900544252117",
+   "r2_power_feasible": "8452523.60459328411592561400",
+   "r3h_duration_hindsight": "4637138.727268319630953116074",
+   "r3p_duration_public": "2367461.187000401575456388319",
+   "r4_context_free": "4348.524995833333333888400000"
+  },
+  "E_BHOLB-1|bid": {
+   "r1_price_only": "5346775.73544991192463662866",
+   "r2_power_feasible": "1227783.93853763557722001350",
+   "r3h_duration_hindsight": "668083.4317221355772232941328",
+   "r3p_duration_public": "932017.04716263557722331822",
+   "r4_context_free": "692.11424739999999923986"
+  },
+  "E_BHOLB-1|offer": {
+   "r1_price_only": "13361964.31595887501728948768",
+   "r2_power_feasible": "4207317.45934500459777176343",
+   "r3h_duration_hindsight": "2202815.038927207377015986441",
+   "r3p_duration_public": "3712616.88652967139913617474",
+   "r4_context_free": "94313.33889000000462615769"
+  },
+  "T_PINFB-1|bid": {
+   "r1_price_only": "17897623.53995400741453212152",
+   "r2_power_feasible": "1241509.91260886134061695250",
+   "r3h_duration_hindsight": "547952.7570292280072910889699",
+   "r3p_duration_public": "602971.0978204724517327222098",
+   "r4_context_free": "9106.915107067307692509230000"
+  },
+  "T_PINFB-1|offer": {
+   "r1_price_only": "47869794.32496207415128415809",
+   "r2_power_feasible": "5878114.58111645789472835482",
+   "r3h_duration_hindsight": "3775333.805917163251284816338",
+   "r3p_duration_public": "2400352.516939044203728845706",
+   "r4_context_free": "62530.27034050000000041246666"
+  }
+ },
+ "pooled": {
+  "r1_price_only": "618908576.1777613725060071416",
+  "r2_power_feasible": "29215605.32323619369609892043",
+  "r3h_duration_hindsight": "16133647.65409511164765696112",
+  "r3p_duration_public": "14870058.59548678301140564223",
+  "r4_context_free": "295914.8237686503075651585200"
+ },
+ "opportunity_periods": {
+  "2__HANGE004|bid": 670,
+  "2__HANGE004|offer": 756,
+  "E_BARNB-1|bid": 729,
+  "E_BARNB-1|offer": 622,
+  "E_BHOLB-1|bid": 1078,
+  "E_BHOLB-1|offer": 830,
+  "T_PINFB-1|bid": 729,
+  "T_PINFB-1|offer": 687
+ },
+ "unknown_public_periods": {
+  "2__HANGE004|offer": 2
+ },
+ "unknown_carried_r2_gbp": {
+  "2__HANGE004|offer": "4.825"
+ },
+ "hindsight_exceeds_public_periods": {
+  "2__HANGE004|bid": 44,
+  "2__HANGE004|offer": 78,
+  "E_BARNB-1|bid": 126,
+  "E_BARNB-1|offer": 249,
+  "E_BHOLB-1|bid": 64,
+  "E_BHOLB-1|offer": 177,
+  "T_PINFB-1|bid": 76,
+  "T_PINFB-1|offer": 175
+ },
+ "r3p_context_present_gbp": {
+  "E_BHOLB-1|offer": "3618303.54763967139451001705",
+  "E_BHOLB-1|bid": "931324.93291523557722407836",
+  "2__HANGE004|bid": "407890.1760759234948823739200",
+  "E_BARNB-1|bid": "1008943.653625785929779556133",
+  "2__HANGE004|offer": "3312882.370144998717553312102",
+  "T_PINFB-1|bid": "593864.1827134051440402129798",
+  "T_PINFB-1|offer": "2337822.246598544203728433240",
+  "E_BARNB-1|offer": "2363112.662004568242122499919"
+ }
+}

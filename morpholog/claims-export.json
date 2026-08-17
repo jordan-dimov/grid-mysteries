@@ -830,5 +830,43 @@
         "value": "2026-08-17T10:05:00Z"
       }
     ]
+  },
+  {
+    "predicate": "Investigation",
+    "args": [
+      {
+        "type": "subject",
+        "value": "inv-003-follow-the-constraint"
+      },
+      {
+        "type": "subject",
+        "value": "Investigation 003: Follow the Constraint - reconstruct the highest-RRT-score congestion episode of May 2026"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-08-17T11:00:00Z"
+      }
+    ]
+  },
+  {
+    "predicate": "Hypothesis",
+    "args": [
+      {
+        "type": "subject",
+        "value": "hyp-003-episode-reconstructable"
+      },
+      {
+        "type": "subject",
+        "value": "inv-003-follow-the-constraint"
+      },
+      {
+        "type": "subject",
+        "value": "The full sequence of publicly observable actions in the episode selected by the pre-declared rule (highest re-trade-cycle score, May 2026) can be reconstructed and its realised cashflows accounted for from public data, with each apparently perverse step explained by the incentives and constraints visible at the time."
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-08-17T11:00:00Z"
+      }
+    ]
   }
 ]

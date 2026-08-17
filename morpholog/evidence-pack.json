@@ -1,9 +1,9 @@
 {
   "manifest": {
     "pack_format_version": 1,
-    "tree_size": 44,
-    "root_hash": "sha256:89ebfcfe72bc56fe57c1af12b16d3e0d62469d481c4dde49f1f6d849f749d51c",
-    "checkpoint_hash": "sha256:9ea63a69eb9732cbe3a2d0c09195aaf4c23b1d6c55ae1d986011dfe4f5055076"
+    "tree_size": 46,
+    "root_hash": "sha256:db7b51612e9b6767d95c0845fb2f629d0af0fafb2c6c535e7cda058748a97752",
+    "checkpoint_hash": "sha256:3ae71bc8259971d1eafe32eca83315e2237f0998946455d592223809eda95111"
   },
   "checkpoints": [
     {
@@ -199,6 +199,34 @@
           "purpose": "audit_checkpoint_v1",
           "public_key": "ed25519-pub:cb6c6ce9152039914ac232b8302d0bc2f6b3f80d73623c5a358288993cc4ccf9",
           "signature": "ed25519-sig:4d9b37337a983d2424a1e4099cc2d1aee77e8e78e4f346102a3a31aa8331d6631c5e957d687a8a18e1cb4692366426253f8a5fed12ba369d6cf86df2ac563505"
+        }
+      ]
+    },
+    {
+      "tree_size": 45,
+      "root_hash": "sha256:b43a5bd7542a7130657cf995413d38c3fbdbebf679c547f22a4d97c699e37407",
+      "prev_checkpoint_hash": "sha256:9ea63a69eb9732cbe3a2d0c09195aaf4c23b1d6c55ae1d986011dfe4f5055076",
+      "checkpoint_hash": "sha256:50bc8f51f5affc944bbd0954c3c4d644febd06dfaaaff548466da2b092141c49",
+      "signatures": [
+        {
+          "key_id": "audit-2026",
+          "purpose": "audit_checkpoint_v1",
+          "public_key": "ed25519-pub:cb6c6ce9152039914ac232b8302d0bc2f6b3f80d73623c5a358288993cc4ccf9",
+          "signature": "ed25519-sig:8b65e5eac6e29f30ec132296655879b94ef374d1a6d7ebd7ef016d86f7c1bea61ec9970ca336bdc8ed5067d319070103f43578bbc9ce77264e125e52dde6490b"
+        }
+      ]
+    },
+    {
+      "tree_size": 46,
+      "root_hash": "sha256:db7b51612e9b6767d95c0845fb2f629d0af0fafb2c6c535e7cda058748a97752",
+      "prev_checkpoint_hash": "sha256:50bc8f51f5affc944bbd0954c3c4d644febd06dfaaaff548466da2b092141c49",
+      "checkpoint_hash": "sha256:3ae71bc8259971d1eafe32eca83315e2237f0998946455d592223809eda95111",
+      "signatures": [
+        {
+          "key_id": "audit-2026",
+          "purpose": "audit_checkpoint_v1",
+          "public_key": "ed25519-pub:cb6c6ce9152039914ac232b8302d0bc2f6b3f80d73623c5a358288993cc4ccf9",
+          "signature": "ed25519-sig:c0c1bb40146fa3ccfe4e928290659af40fa0b113a8ad294a03317fe9e4ae20aff55c0e9eda95294fd7e64e377211e746f903df28b4e400511f7cd268ab09650f"
         }
       ]
     }
@@ -3977,6 +4005,176 @@
         }
       ],
       "committed_at": "2026-08-17T10:16:25.793820Z",
+      "attestation": {
+        "mode": "gateway",
+        "authenticated_by": "jdimov"
+      }
+    },
+    {
+      "transition_id": "01a00f70-4f77-7093-b5bf-5aef99c6949e",
+      "transformation_name": "open_investigation",
+      "arguments": [
+        {
+          "type": "subject",
+          "value": "inv-003-follow-the-constraint"
+        },
+        {
+          "type": "subject",
+          "value": "Investigation 003: Follow the Constraint - reconstruct the highest-RRT-score congestion episode of May 2026"
+        },
+        {
+          "type": "timestamp",
+          "value": "2026-08-17T11:00:00Z"
+        }
+      ],
+      "actor": {
+        "type": "subject",
+        "value": "jordan-dimov"
+      },
+      "invariant_epoch": 1,
+      "invariants_checked": [
+        {
+          "name": "attached_source_exists",
+          "version": 1
+        },
+        {
+          "name": "attached_source_has_investigation",
+          "version": 1
+        },
+        {
+          "name": "hypothesis_has_investigation",
+          "version": 1
+        },
+        {
+          "name": "finding_has_registered_hypothesis",
+          "version": 1
+        },
+        {
+          "name": "finding_has_at_least_one_source",
+          "version": 1
+        }
+      ],
+      "asserted_claims": [
+        {
+          "predicate": "Investigation",
+          "args": [
+            {
+              "type": "subject",
+              "value": "inv-003-follow-the-constraint"
+            },
+            {
+              "type": "subject",
+              "value": "Investigation 003: Follow the Constraint - reconstruct the highest-RRT-score congestion episode of May 2026"
+            },
+            {
+              "type": "timestamp",
+              "value": "2026-08-17T11:00:00Z"
+            }
+          ]
+        }
+      ],
+      "retracted_claims": [],
+      "emitted_intents": [
+        {
+          "name": "InvestigationOpened",
+          "args": [
+            {
+              "type": "subject",
+              "value": "inv-003-follow-the-constraint"
+            }
+          ]
+        }
+      ],
+      "committed_at": "2026-08-17T11:16:53.744022Z",
+      "attestation": {
+        "mode": "gateway",
+        "authenticated_by": "jdimov"
+      }
+    },
+    {
+      "transition_id": "01a00f70-5031-7f10-a43b-b4edd48c3d61",
+      "transformation_name": "register_hypothesis",
+      "arguments": [
+        {
+          "type": "subject",
+          "value": "hyp-003-episode-reconstructable"
+        },
+        {
+          "type": "subject",
+          "value": "inv-003-follow-the-constraint"
+        },
+        {
+          "type": "subject",
+          "value": "The full sequence of publicly observable actions in the episode selected by the pre-declared rule (highest re-trade-cycle score, May 2026) can be reconstructed and its realised cashflows accounted for from public data, with each apparently perverse step explained by the incentives and constraints visible at the time."
+        },
+        {
+          "type": "timestamp",
+          "value": "2026-08-17T11:00:00Z"
+        }
+      ],
+      "actor": {
+        "type": "subject",
+        "value": "jordan-dimov"
+      },
+      "invariant_epoch": 1,
+      "invariants_checked": [
+        {
+          "name": "attached_source_exists",
+          "version": 1
+        },
+        {
+          "name": "attached_source_has_investigation",
+          "version": 1
+        },
+        {
+          "name": "hypothesis_has_investigation",
+          "version": 1
+        },
+        {
+          "name": "finding_has_registered_hypothesis",
+          "version": 1
+        },
+        {
+          "name": "finding_has_at_least_one_source",
+          "version": 1
+        }
+      ],
+      "asserted_claims": [
+        {
+          "predicate": "Hypothesis",
+          "args": [
+            {
+              "type": "subject",
+              "value": "hyp-003-episode-reconstructable"
+            },
+            {
+              "type": "subject",
+              "value": "inv-003-follow-the-constraint"
+            },
+            {
+              "type": "subject",
+              "value": "The full sequence of publicly observable actions in the episode selected by the pre-declared rule (highest re-trade-cycle score, May 2026) can be reconstructed and its realised cashflows accounted for from public data, with each apparently perverse step explained by the incentives and constraints visible at the time."
+            },
+            {
+              "type": "timestamp",
+              "value": "2026-08-17T11:00:00Z"
+            }
+          ]
+        }
+      ],
+      "retracted_claims": [],
+      "emitted_intents": [
+        {
+          "name": "HypothesisRegistered",
+          "args": [
+            {
+              "type": "subject",
+              "value": "hyp-003-episode-reconstructable"
+            }
+          ]
+        }
+      ],
+      "committed_at": "2026-08-17T11:16:53.931192Z",
       "attestation": {
         "mode": "gateway",
         "authenticated_by": "jdimov"

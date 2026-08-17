@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="420" viewBox="0 0 920 420">
+<rect width="920" height="420" fill="#fcfcfb"/>
+<text x="40" y="42" font-family="system-ui, 'Segoe UI', sans-serif" font-size="20" font-weight="700" fill="#0b0b0b">Hindsight does not just know more — it revises the feasible state</text>
+<text x="40" y="66" font-family="system-ui, 'Segoe UI', sans-serif" font-size="13" fill="#52514e">Final-vintage MDO/MDB versus the envelope publicly observable 60 minutes before delivery, per settlement period, July 2026 panel.</text>
+<line x1="460.0" y1="100" x2="460.0" y2="300" stroke="#e5e4e0" stroke-width="2"/>
+<rect x="460.0" y="130" width="380" height="44" rx="4" fill="#2a78d6"/>
+<text x="472.0" y="120" font-family="system-ui, 'Segoe UI', sans-serif" font-size="14" font-weight="700" fill="#0b0b0b">+£4.7m added in hindsight</text>
+<text x="472.0" y="192" font-family="system-ui, 'Segoe UI', sans-serif" font-size="12" fill="#52514e">989 periods where the supporting envelope was published only after the decision cutoff</text>
+<rect x="182.0" y="216" width="278" height="44" rx="4" fill="#e34948"/>
+<text x="448.0" y="206" font-family="system-ui, 'Segoe UI', sans-serif" font-size="14" font-weight="700" fill="#0b0b0b" text-anchor="end">−£3.4m revised away</text>
+<text x="448.0" y="278" font-family="system-ui, 'Segoe UI', sans-serif" font-size="12" fill="#52514e" text-anchor="end">1,991 periods where the final vintage withdrew opportunity the public envelope had supported</text>
+<text x="40" y="340" font-family="system-ui, 'Segoe UI', sans-serif" font-size="13" fill="#0b0b0b">The pooled net, <tspan font-weight="700">£1.3m</tspan>, conceals both flows. Either direction grades a historical decision against a revised information set.</text>
+<text x="40" y="390" font-family="system-ui, 'Segoe UI', sans-serif" font-size="12" fill="#52514e">Proves public availability only, never control-room knowledge. Sources: evidence/fragility-analysis.json · fnd-bess-001-fragility-corrected</text>
+</svg>

@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="700" viewBox="0 0 920 700">
+<rect width="920" height="700" fill="#fcfcfb"/>
+<text x="40" y="42" font-family="system-ui, 'Segoe UI', sans-serif" font-size="20" font-weight="700" fill="#0b0b0b">Benchmark fragility: a battery counterfactual, made credible in stages</text>
+<text x="40" y="66" font-family="system-ui, 'Segoe UI', sans-serif" font-size="13" fill="#52514e">July 2026, four-unit GC0166 early-submitter panel. Every figure is arithmetic on public numbers — never savings or achievable value.</text>
+<text x="40" y="106" font-family="system-ui, 'Segoe UI', sans-serif" font-size="14" font-weight="600" fill="#0b0b0b">1 · The price-only construct meets physics</text>
+<rect x="40" y="122" width="640" height="30" rx="4" fill="#86b6ef"/>
+<text x="690" y="142" font-family="system-ui, 'Segoe UI', sans-serif" font-size="14" font-weight="700" fill="#0b0b0b">£618.9m · 100.0% of R1</text>
+<text x="40" y="166" font-family="system-ui, 'Segoe UI', sans-serif" font-size="12" fill="#52514e">price-only: the price existed</text>
+<rect x="40" y="186" width="30" height="30" rx="4" fill="#2a78d6"/>
+<text x="80" y="206" font-family="system-ui, 'Segoe UI', sans-serif" font-size="14" font-weight="700" fill="#0b0b0b">£29.2m · 4.72% of R1</text>
+<text x="40" y="230" font-family="system-ui, 'Segoe UI', sans-serif" font-size="12" fill="#52514e">power-feasible (FPN/MEL/MIL)</text>
+<text x="40" y="292" font-family="system-ui, 'Segoe UI', sans-serif" font-size="14" font-weight="600" fill="#0b0b0b">2 · The new GC0166 duration envelope — two information sets, not one rung</text>
+<text x="40" y="312" font-family="system-ui, 'Segoe UI', sans-serif" font-size="12" fill="#52514e">(drawn at power-feasible scale, £29.2m = full width; the two views are non-monotonic between each other)</text>
+<rect x="40" y="330" width="353" height="30" rx="4" fill="#2a78d6"/>
+<text x="403" y="350" font-family="system-ui, 'Segoe UI', sans-serif" font-size="14" font-weight="700" fill="#0b0b0b">£16.1m · 2.61% of R1</text>
+<text x="40" y="374" font-family="system-ui, 'Segoe UI', sans-serif" font-size="12" fill="#52514e">final vintage — the published envelope, seen in hindsight</text>
+<rect x="40" y="394" width="326" height="30" rx="4" fill="#2a78d6"/>
+<text x="376" y="414" font-family="system-ui, 'Segoe UI', sans-serif" font-size="14" font-weight="700" fill="#0b0b0b">£14.9m · 2.40% of R1</text>
+<text x="40" y="438" font-family="system-ui, 'Segoe UI', sans-serif" font-size="12" fill="#52514e">public-as-of — only what was observable 60 minutes before delivery</text>
+<text x="40" y="478" font-family="system-ui, 'Segoe UI', sans-serif" font-size="13" fill="#0b0b0b">Duration-awareness removed <tspan font-weight="700">44.8%</tspan> of what physics alone permitted.</text>
+<text x="40" y="530" font-family="system-ui, 'Segoe UI', sans-serif" font-size="14" font-weight="600" fill="#0b0b0b">3 · Operational-context disclosure (not a verdict)</text>
+<rect x="40" y="546" width="6" height="30" rx="4" fill="#0b0b0b"/>
+<text x="56" y="566" font-family="system-ui, 'Segoe UI', sans-serif" font-size="14" font-weight="700" fill="#0b0b0b">£295,915 · 0.05% of R1</text>
+<text x="40" y="590" font-family="system-ui, 'Segoe UI', sans-serif" font-size="12" fill="#52514e">carries no published NESO exclusion context on either side of the comparison</text>
+<text x="40" y="646" font-family="system-ui, 'Segoe UI', sans-serif" font-size="12" fill="#52514e">Sources: evidence/fragility-analysis.json · findings fnd-bess-001-fragility and fnd-bess-001-fragility-corrected · github.com/jordan-dimov/grid-mysteries</text>
+</svg>

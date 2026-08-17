@@ -4,7 +4,12 @@
  "3": "assessment_status_in_vocabulary",
  "4": "publish_inquiry_has_no_current_conclusion",
  "5": "explained_conclusion_has_explained_mechanism",
- "6": "prospective_conclusion_needs_untouched_corpus",
- "7": "supersede_prior_is_current",
- "8": "key_registration_requires_seal_authority"
+ "6": "prospective_corpus_unexposed",
+ "7": "prospective_corpus_unexposed",
+ "8": "supersede_prior_is_current",
+ "9": "key_registration_requires_seal_authority",
+ "10": "parameter_before_seal",
+ "11": "declared_parameter_unique_by_inquiry_name",
+ "12": "metric_artifact_attached",
+ "13": "link_same_inquiry"
 }

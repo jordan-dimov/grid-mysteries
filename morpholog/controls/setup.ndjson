@@ -1,25 +1,35 @@
 {"transformation": "establish_governance", "actor": "jordan_dimov", "args_named": {"human_actor": "jordan_dimov", "human_login_role": "{SESSION_USER}", "machine_actor": "claude_fable_5", "machine_login_role": "{SESSION_USER}"}}
+{"transformation": "register_corpus", "actor": "claude_fable_5", "args_named": {"corpus": "corpus-a", "first_day": "20260701", "last_day": "20260731"}}
+{"transformation": "register_corpus", "actor": "claude_fable_5", "args_named": {"corpus": "corpus-overlap", "first_day": "20260704", "last_day": "20260710"}}
+{"transformation": "register_corpus", "actor": "claude_fable_5", "args_named": {"corpus": "corpus-c", "first_day": "20260901", "last_day": "20260907"}}
+{"transformation": "register_corpus", "actor": "claude_fable_5", "args_named": {"corpus": "corpus-hist", "first_day": "20260601", "last_day": "20260607"}}
+{"transformation": "record_historical_consumption", "actor": "jordan_dimov", "args_named": {"corpus": "corpus-hist", "v1_consumer": "inv-001-v1-subject"}}
 {"transformation": "open_inquiry", "actor": "claude_fable_5", "args_named": {"inquiry": "inq-ctl-a", "kind": "method_study", "title": "control inquiry A", "opened_at": "2026-08-17T00:00:00Z"}}
-{"transformation": "declare_corpus", "actor": "claude_fable_5", "args_named": {"inquiry": "inq-ctl-a", "corpus": "corpus-a", "status": "consumed"}}
+{"transformation": "assign_corpus", "actor": "claude_fable_5", "args_named": {"inquiry": "inq-ctl-a", "corpus": "corpus-a"}}
 {"transformation": "declare_protocol", "actor": "claude_fable_5", "args_named": {"inquiry": "inq-ctl-a", "protocol_digest": "digest-a", "declared_at": "2026-08-17T00:01:00Z"}}
 {"transformation": "seal_protocol", "actor": "jordan_dimov", "args_named": {"inquiry": "inq-ctl-a", "sealed_at": "2026-08-17T00:02:00Z"}}
+{"transformation": "consume_corpus", "actor": "claude_fable_5", "args_named": {"corpus": "corpus-a", "inquiry": "inq-ctl-a"}}
 {"transformation": "register_evidence", "actor": "claude_fable_5", "args_named": {"artifact": "art-ctl-a", "source": "control", "sha256": "0000", "fetched_at": "2026-08-17T00:03:00Z"}}
 {"transformation": "attach_evidence", "actor": "claude_fable_5", "args_named": {"inquiry": "inq-ctl-a", "artifact": "art-ctl-a"}}
 {"transformation": "seal_evidence", "actor": "claude_fable_5", "args_named": {"inquiry": "inq-ctl-a", "sealed_at": "2026-08-17T00:04:00Z"}}
 {"transformation": "register_conjecture", "actor": "claude_fable_5", "args_named": {"conjecture": "conj-ctl-a", "inquiry": "inq-ctl-a", "statement": "control conjecture A", "proposed_at": "2026-08-17T00:05:00Z"}}
+{"transformation": "bind_metric", "actor": "claude_fable_5", "args_named": {"metric": "met-a-surv", "inquiry": "inq-ctl-a", "artifact": "art-ctl-a", "metric_name": "surviving_notional_gbp", "metric_value": "40"}}
+{"transformation": "bind_metric", "actor": "claude_fable_5", "args_named": {"metric": "met-a-base", "inquiry": "inq-ctl-a", "artifact": "art-ctl-a", "metric_name": "baseline_notional_gbp", "metric_value": "100"}}
+{"transformation": "declare_retention", "actor": "claude_fable_5", "args_named": {"inquiry": "inq-ctl-a", "surviving_name": "surviving_notional_gbp", "baseline_name": "baseline_notional_gbp"}}
 {"transformation": "publish_conclusion", "actor": "claude_fable_5", "args_named": {"conclusion": "concl-a1", "inquiry": "inq-ctl-a", "conjecture": "conj-ctl-a", "conclusion_class": "hypothesis_confirmed", "statement": "control conclusion A1", "evidence_digest": "0000", "published_at": "2026-08-17T00:06:00Z"}}
-{"transformation": "supersede_conclusion", "actor": "claude_fable_5", "args_named": {"successor": "concl-a2", "prior": "concl-a1", "inquiry": "inq-ctl-a", "conjecture": "conj-ctl-a", "conclusion_class": "partly_explained", "statement": "control conclusion A2 supersedes A1", "evidence_digest": "0000", "published_at": "2026-08-17T00:07:00Z"}}
+{"transformation": "link_metric", "actor": "claude_fable_5", "args_named": {"conclusion": "concl-a1", "metric": "met-a-surv"}}
+{"transformation": "supersede_conclusion", "actor": "claude_fable_5", "args_named": {"successor": "concl-a2", "prior": "concl-a1", "inquiry": "inq-ctl-a", "conjecture": "conj-ctl-a", "conclusion_class": "hypothesis_not_evaluable", "statement": "control conclusion A2: the new not-evaluable class commits", "evidence_digest": "0000", "published_at": "2026-08-17T00:07:00Z"}}
 {"transformation": "open_inquiry", "actor": "claude_fable_5", "args_named": {"inquiry": "inq-ctl-b", "kind": "descriptive", "title": "control inquiry B", "opened_at": "2026-08-17T00:08:00Z"}}
 {"transformation": "declare_protocol", "actor": "claude_fable_5", "args_named": {"inquiry": "inq-ctl-b", "protocol_digest": "digest-b", "declared_at": "2026-08-17T00:09:00Z"}}
+{"transformation": "declare_parameter", "actor": "claude_fable_5", "args_named": {"inquiry": "inq-ctl-b", "name": "panel_coverage_threshold", "parameter_value": "0.8"}}
 {"transformation": "seal_protocol", "actor": "jordan_dimov", "args_named": {"inquiry": "inq-ctl-b", "sealed_at": "2026-08-17T00:10:00Z"}}
 {"transformation": "attach_evidence", "actor": "claude_fable_5", "args_named": {"inquiry": "inq-ctl-b", "artifact": "art-ctl-a"}}
 {"transformation": "seal_evidence", "actor": "claude_fable_5", "args_named": {"inquiry": "inq-ctl-b", "sealed_at": "2026-08-17T00:11:00Z"}}
 {"transformation": "register_conjecture", "actor": "claude_fable_5", "args_named": {"conjecture": "conj-ctl-b", "inquiry": "inq-ctl-b", "statement": "control conjecture B", "proposed_at": "2026-08-17T00:12:00Z"}}
-{"transformation": "open_inquiry", "actor": "claude_fable_5", "args_named": {"inquiry": "inq-ctl-c", "kind": "prospective", "title": "control inquiry C", "opened_at": "2026-08-17T00:13:00Z"}}
-{"transformation": "declare_corpus", "actor": "claude_fable_5", "args_named": {"inquiry": "inq-ctl-c", "corpus": "corpus-c", "status": "consumed"}}
-{"transformation": "declare_protocol", "actor": "claude_fable_5", "args_named": {"inquiry": "inq-ctl-c", "protocol_digest": "digest-c", "declared_at": "2026-08-17T00:14:00Z"}}
-{"transformation": "seal_protocol", "actor": "jordan_dimov", "args_named": {"inquiry": "inq-ctl-c", "sealed_at": "2026-08-17T00:15:00Z"}}
-{"transformation": "attach_evidence", "actor": "claude_fable_5", "args_named": {"inquiry": "inq-ctl-c", "artifact": "art-ctl-a"}}
-{"transformation": "seal_evidence", "actor": "claude_fable_5", "args_named": {"inquiry": "inq-ctl-c", "sealed_at": "2026-08-17T00:16:00Z"}}
-{"transformation": "register_conjecture", "actor": "claude_fable_5", "args_named": {"conjecture": "conj-ctl-c", "inquiry": "inq-ctl-c", "statement": "control conjecture C", "proposed_at": "2026-08-17T00:17:00Z"}}
-{"transformation": "open_inquiry", "actor": "claude_fable_5", "args_named": {"inquiry": "inq-ctl-unsealed", "kind": "descriptive", "title": "control inquiry with no sealed protocol", "opened_at": "2026-08-17T00:18:00Z"}}
+{"transformation": "bind_metric", "actor": "claude_fable_5", "args_named": {"metric": "met-b-1", "inquiry": "inq-ctl-b", "artifact": "art-ctl-a", "metric_name": "b_metric", "metric_value": "7"}}
+{"transformation": "open_inquiry", "actor": "claude_fable_5", "args_named": {"inquiry": "inq-ctl-d", "kind": "prospective", "title": "control inquiry D (prospective, no corpus yet)", "opened_at": "2026-08-17T00:13:00Z"}}
+{"transformation": "declare_protocol", "actor": "claude_fable_5", "args_named": {"inquiry": "inq-ctl-d", "protocol_digest": "digest-d", "declared_at": "2026-08-17T00:14:00Z"}}
+{"transformation": "declare_parameter", "actor": "claude_fable_5", "args_named": {"inquiry": "inq-ctl-d", "name": "some_threshold", "parameter_value": "1"}}
+{"transformation": "assign_corpus", "actor": "claude_fable_5", "args_named": {"inquiry": "inq-ctl-d", "corpus": "corpus-c"}}
+{"transformation": "open_inquiry", "actor": "claude_fable_5", "args_named": {"inquiry": "inq-ctl-unsealed", "kind": "descriptive", "title": "control inquiry with no sealed protocol", "opened_at": "2026-08-17T00:15:00Z"}}
+{"transformation": "open_inquiry", "actor": "claude_fable_5", "args_named": {"inquiry": "inq-ctl-e", "kind": "prospective", "title": "control inquiry E (prospective, corpusless)", "opened_at": "2026-08-17T00:16:00Z"}}

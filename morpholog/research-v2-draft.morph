@@ -39,13 +39,34 @@ predicate AuditSigningKey(key_id: Subject, purpose: Subject, public_key: Subject
 -- kind: #prospective | #descriptive | #method_study
 predicate Inquiry(inquiry: Subject, kind: Subject, title: Subject, opened_at: Timestamp)
     append only
--- status: #untouched | #consumed, declared before any data act
-predicate CorpusDeclared(inquiry: Subject, corpus: Subject, status: Subject)
+-- The global corpus registry: research windows are first-class, and
+-- prior exposure is judged by DATE OVERLAP with previously consumed
+-- windows, not by id equality — two overlapping "different" corpora are
+-- the same evidence. Consumption is recorded when an inquiry's data is
+-- acquired; an inquiry consuming its own corpus later is lawful (the
+-- prior-exposure gate acts at assignment, proven by audit sequence).
+-- Bounds are Decimal YYYYMMDD day-keys, not Date: in v0.0.9 Date-vs-Date
+-- comparison passes check but is refused at proposal time, so the
+-- comparable encoding is the single source of truth.
+predicate ResearchCorpus(corpus: Subject, first_day: Decimal, last_day: Decimal)
+    append only
+    unique by (corpus)
+predicate InquiryCorpus(inquiry: Subject, corpus: Subject)
+    append only
+    unique by (inquiry)
+predicate CorpusConsumed(corpus: Subject, consumer: Subject)
     append only
 predicate ProtocolDeclared(inquiry: Subject, protocol_digest: Subject, declared_at: Timestamp)
     append only
 predicate ProtocolSealed(inquiry: Subject, sealed_at: Timestamp)
     append only
+-- Decimal-valued protocol parameters: a parameter that can change which
+-- evidence is selected or what conclusion is reached has ONE executable
+-- authoritative value, declared before the seal and immutable after.
+-- Analysis code reads these; prose merely displays them.
+predicate DeclaredParameter(inquiry: Subject, name: Subject, parameter_value: Decimal)
+    append only
+    unique by (inquiry, name)
 predicate EvidenceArtifact(artifact: Subject, source: Subject, sha256: Subject, fetched_at: Timestamp)
     append only
 predicate InquiryUses(inquiry: Subject, artifact: Subject)
@@ -65,10 +86,18 @@ predicate MechanismAssessment(inquiry: Subject, mechanism: Subject, status: Subj
 -- them). CI recomputes each metric from the artefact and refuses on
 -- mismatch. Percentages carry numerator and denominator as sibling
 -- metrics of the same artefact.
-predicate EvidenceMetric(metric: Subject, evidence_digest: Subject, metric_name: Subject, metric_value: Decimal)
+predicate EvidenceMetric(metric: Subject, inquiry: Subject, artifact: Subject, metric_name: Subject, metric_value: Decimal)
     append only
+    unique by (inquiry, metric_name)
 predicate ConclusionUsesMetric(conclusion: Subject, metric: Subject)
     append only
+-- Publication ratios are derived by the kernel from governed metrics:
+-- Python measures the world; Morpholog derives the public ratio from the
+-- governed numerator and denominator. Only algebraically trivial
+-- publication arithmetic lives here — analytical methods stay in Python.
+predicate RetentionSpec(inquiry: Subject, surviving_name: Subject, baseline_name: Subject)
+    append only
+predicate MetricRetention(inquiry: Subject, surviving_name: Subject, baseline_name: Subject, ratio: Decimal)
 
 -- The content record: append only, never edited.
 -- conclusion_class: #explained | #partly_explained | #publicly_unexplained
@@ -102,10 +131,6 @@ define in_inquiry_kind_vocabulary(kind):
     or kind = #descriptive
     or kind = #method_study
 
-define in_corpus_status_vocabulary(status):
-    status = #untouched
-    or status = #consumed
-
 define in_mechanism_status_vocabulary(status):
     status = #explained
     or status = #contributes
@@ -119,6 +144,14 @@ define in_conclusion_class_vocabulary(class):
     or class = #publicly_unexplained
     or class = #hypothesis_confirmed
     or class = #hypothesis_falsified
+    or class = #hypothesis_not_evaluable
+
+define corpus_overlaps_consumed(corpus):
+    ResearchCorpus(corpus, first_day, last_day)
+    and ResearchCorpus(other, other_first, other_last)
+    and CorpusConsumed(other, _)
+    and other_first <= last_day
+    and other_last >= first_day
 
 intent InquiryOpened(inquiry: Subject)
 intent DataAcquisitionAuthorised(inquiry: Subject)
@@ -131,17 +164,11 @@ intent PublicationAuthorised(publication: Subject)
 invariant inquiry_kind_in_vocabulary:
     Inquiry(_, k, _, _) implies in_inquiry_kind_vocabulary(k)
 
-invariant corpus_status_in_vocabulary:
-    CorpusDeclared(_, _, s) implies in_corpus_status_vocabulary(s)
-
 invariant mechanism_status_in_vocabulary:
     MechanismAssessment(_, _, s, _) implies in_mechanism_status_vocabulary(s)
 
 invariant conclusion_class_in_vocabulary:
     Conclusion(_, _, _, cc, _, _, _) implies in_conclusion_class_vocabulary(cc)
-
-invariant corpus_has_inquiry:
-    CorpusDeclared(i, _, _) implies Inquiry(i, _, _, _)
 
 invariant sealed_protocol_was_declared:
     ProtocolSealed(i, _) implies ProtocolDeclared(i, _, _)
@@ -176,8 +203,8 @@ invariant explained_conclusion_has_explained_mechanism:
 invariant unexplained_conclusion_has_no_explained_mechanism:
     Conclusion(_, i, _, #publicly_unexplained, _, _, _) implies not MechanismAssessment(i, _, #explained, _)
 
-invariant prospective_conclusion_needs_untouched_corpus:
-    Conclusion(_, i, _, _, _, _, _) and Inquiry(i, #prospective, _, _) implies CorpusDeclared(i, _, #untouched)
+invariant prospective_conclusion_has_assigned_corpus:
+    Conclusion(_, i, _, _, _, _, _) and Inquiry(i, #prospective, _, _) implies InquiryCorpus(i, _)
 
 invariant current_conclusion_exists:
     CurrentConclusion(_, c) implies Conclusion(c, _, _, _, _, _, _)
@@ -195,7 +222,16 @@ invariant metric_link_has_conclusion:
     ConclusionUsesMetric(c, _) implies Conclusion(c, _, _, _, _, _, _)
 
 invariant metric_link_has_metric:
-    ConclusionUsesMetric(_, m) implies EvidenceMetric(m, _, _, _)
+    ConclusionUsesMetric(_, m) implies EvidenceMetric(m, _, _, _, _)
+
+invariant metric_artifact_belongs_to_inquiry:
+    EvidenceMetric(_, i, a, _, _) implies InquiryUses(i, a)
+
+invariant linked_metric_matches_conclusion_inquiry:
+    ConclusionUsesMetric(c, m) and Conclusion(c, i, _, _, _, _, _) implies EvidenceMetric(m, i, _, _, _)
+
+invariant retention_spec_has_inquiry:
+    RetentionSpec(i, _, _) implies Inquiry(i, _, _, _)
 
 invariant publication_has_conclusion:
     Publication(_, c, _, _, _) implies Conclusion(c, _, _, _, _, _, _)
@@ -231,11 +267,37 @@ transformation open_inquiry(inquiry, kind, title, opened_at):
     admit Inquiry(inquiry, kind, title, opened_at)
     emit InquiryOpened(inquiry)
 
-transformation declare_corpus(inquiry, corpus, status):
-    require corpus_inquiry_exists: Inquiry(inquiry, _, _, _)
-    require corpus_status_in_vocabulary: in_corpus_status_vocabulary(status)
-    require corpus_not_yet_declared: not CorpusDeclared(inquiry, corpus, _)
-    admit CorpusDeclared(inquiry, corpus, status)
+transformation register_corpus(corpus, first_day, last_day):
+    require corpus_is_new: not ResearchCorpus(corpus, _, _)
+    require corpus_days_ordered: first_day <= last_day
+    admit ResearchCorpus(corpus, first_day, last_day)
+
+transformation assign_corpus(inquiry, corpus):
+    require assign_inquiry_exists: Inquiry(inquiry, _, _, _)
+    require assign_corpus_exists: ResearchCorpus(corpus, _, _)
+    require inquiry_has_no_corpus: not InquiryCorpus(inquiry, _)
+    require prospective_corpus_unexposed: not (Inquiry(inquiry, #prospective, _, _) and corpus_overlaps_consumed(corpus))
+    admit InquiryCorpus(inquiry, corpus)
+
+transformation consume_corpus(corpus, inquiry):
+    require consume_is_assigned: InquiryCorpus(inquiry, corpus)
+    require consume_is_new: not CorpusConsumed(corpus, inquiry)
+    admit CorpusConsumed(corpus, inquiry)
+
+-- Lawful backfill of consumption facts that genuinely occurred under v1
+-- (the consumer is a v1 subject, not a v2 Inquiry, so the assignment
+-- invariant deliberately exempts it). Human authority required.
+transformation record_historical_consumption(corpus, v1_consumer):
+    require historical_requires_seal_authority: SealAuthority(actor)
+    require historical_corpus_exists: ResearchCorpus(corpus, _, _)
+    require historical_consumer_not_v2: not Inquiry(v1_consumer, _, _, _)
+    require historical_is_new: not CorpusConsumed(corpus, v1_consumer)
+    admit CorpusConsumed(corpus, v1_consumer)
+
+transformation declare_parameter(inquiry, name, parameter_value):
+    require parameter_inquiry_declared: ProtocolDeclared(inquiry, _, _)
+    require parameter_before_seal: not ProtocolSealed(inquiry, _)
+    admit DeclaredParameter(inquiry, name, parameter_value)
 
 transformation declare_protocol(inquiry, protocol_digest, declared_at):
     require protocol_inquiry_exists: Inquiry(inquiry, _, _, _)
@@ -283,13 +345,19 @@ transformation assess_mechanism(inquiry, mechanism, status, evidence_digest):
     require mechanism_not_yet_assessed: not MechanismAssessment(inquiry, mechanism, _, _)
     admit MechanismAssessment(inquiry, mechanism, status, evidence_digest)
 
-transformation bind_metric(metric, evidence_digest, metric_name, metric_value):
-    require metric_is_new: not EvidenceMetric(metric, _, _, _)
-    admit EvidenceMetric(metric, evidence_digest, metric_name, metric_value)
+transformation bind_metric(metric, inquiry, artifact, metric_name, metric_value):
+    require metric_is_new: not EvidenceMetric(metric, _, _, _, _)
+    require metric_artifact_attached: InquiryUses(inquiry, artifact)
+    require metric_evidence_sealed: EvidenceSealed(inquiry, _)
+    admit EvidenceMetric(metric, inquiry, artifact, metric_name, metric_value)
+
+transformation declare_retention(inquiry, surviving_name, baseline_name):
+    require retention_inquiry_exists: Inquiry(inquiry, _, _, _)
+    require retention_is_new: not RetentionSpec(inquiry, surviving_name, baseline_name)
+    admit RetentionSpec(inquiry, surviving_name, baseline_name)
 
 transformation link_metric(conclusion, metric):
-    require link_conclusion_exists: Conclusion(conclusion, _, _, _, _, _, _)
-    require link_metric_exists: EvidenceMetric(metric, _, _, _)
+    require link_same_inquiry: Conclusion(conclusion, i, _, _, _, _, _) and EvidenceMetric(metric, i, _, _, _)
     require link_is_new: not ConclusionUsesMetric(conclusion, metric)
     admit ConclusionUsesMetric(conclusion, metric)
 
@@ -331,3 +399,9 @@ transformation record_v1_lineage(inquiry, v1_investigation):
     require lineage_inquiry_exists: Inquiry(inquiry, _, _, _)
     require lineage_is_new: not LineageFromV1(inquiry, v1_investigation)
     admit LineageFromV1(inquiry, v1_investigation)
+
+derived MetricRetention(inquiry, surviving_name, baseline_name):
+    over (RetentionSpec(inquiry, surviving_name, baseline_name)
+        and EvidenceMetric(_, inquiry, _, baseline_name, guard)
+        and guard > 0)
+    value ratio = sum(n | EvidenceMetric(_, inquiry, _, surviving_name, n)) / sum(d | EvidenceMetric(_, inquiry, _, baseline_name, d))

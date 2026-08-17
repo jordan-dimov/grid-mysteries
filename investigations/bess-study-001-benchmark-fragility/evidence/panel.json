@@ -1,0 +1,60 @@
+{
+ "rule": "coverage >= 0.8 of July periods reconstructable in BOTH directions",
+ "periods_in_july": 1488,
+ "candidates": [
+  {
+   "bm_unit": "2__HANGE004",
+   "reconstructable_offer": 1488,
+   "reconstructable_bid": 1488,
+   "coverage_offer": "1",
+   "coverage_bid": "1",
+   "in_panel": true
+  },
+  {
+   "bm_unit": "E_BARNB-1",
+   "reconstructable_offer": 1488,
+   "reconstructable_bid": 1488,
+   "coverage_offer": "1",
+   "coverage_bid": "1",
+   "in_panel": true
+  },
+  {
+   "bm_unit": "E_BHOLB-1",
+   "reconstructable_offer": 1488,
+   "reconstructable_bid": 1488,
+   "coverage_offer": "1",
+   "coverage_bid": "1",
+   "in_panel": true
+  },
+  {
+   "bm_unit": "E_BURWB-2",
+   "reconstructable_offer": 730,
+   "reconstructable_bid": 730,
+   "coverage_offer": "0.4905913978494623655913978495",
+   "coverage_bid": "0.4905913978494623655913978495",
+   "in_panel": false
+  },
+  {
+   "bm_unit": "E_THMRB-1",
+   "reconstructable_offer": 511,
+   "reconstructable_bid": 511,
+   "coverage_offer": "0.3434139784946236559139784946",
+   "coverage_bid": "0.3434139784946236559139784946",
+   "in_panel": false
+  },
+  {
+   "bm_unit": "T_PINFB-1",
+   "reconstructable_offer": 1488,
+   "reconstructable_bid": 1488,
+   "coverage_offer": "1",
+   "coverage_bid": "1",
+   "in_panel": true
+  }
+ ],
+ "panel": [
+  "2__HANGE004",
+  "E_BARNB-1",
+  "E_BHOLB-1",
+  "T_PINFB-1"
+ ]
+}

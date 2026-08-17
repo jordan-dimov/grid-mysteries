@@ -1,0 +1,839 @@
+[
+ {
+  "source": "elexon-insights",
+  "dataset": "MELS",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MELS/stream?from=2026-07-01T00:00Z&to=2026-07-02T00:00Z&bmUnit=2__HANGE004&bmUnit=E_BARNB-1&bmUnit=E_BHOLB-1&bmUnit=T_PINFB-1",
+  "path": "data/raw/elexon/physical-2026-07/mels_2026-07-01.json",
+  "sha256": "bc2b93d7639f2b7bbc3929f41b0aedc7fe5c2623a1132eaca1d654cdb74bc105",
+  "fetched_at": "2026-08-17T09:21:30.050149+00:00",
+  "bytes": 60203
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MELS",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MELS/stream?from=2026-07-02T00:00Z&to=2026-07-03T00:00Z&bmUnit=2__HANGE004&bmUnit=E_BARNB-1&bmUnit=E_BHOLB-1&bmUnit=T_PINFB-1",
+  "path": "data/raw/elexon/physical-2026-07/mels_2026-07-02.json",
+  "sha256": "2afc3c93e26d5978638fddaabc547559c8b437a83c03728d73a6370371324c78",
+  "fetched_at": "2026-08-17T09:21:30.269272+00:00",
+  "bytes": 60519
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MELS",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MELS/stream?from=2026-07-03T00:00Z&to=2026-07-04T00:00Z&bmUnit=2__HANGE004&bmUnit=E_BARNB-1&bmUnit=E_BHOLB-1&bmUnit=T_PINFB-1",
+  "path": "data/raw/elexon/physical-2026-07/mels_2026-07-03.json",
+  "sha256": "01212928be2d9504832625e3b2fbe392b0f8a813120e6a76354cac9308281e09",
+  "fetched_at": "2026-08-17T09:21:30.498979+00:00",
+  "bytes": 60560
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MELS",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MELS/stream?from=2026-07-04T00:00Z&to=2026-07-05T00:00Z&bmUnit=2__HANGE004&bmUnit=E_BARNB-1&bmUnit=E_BHOLB-1&bmUnit=T_PINFB-1",
+  "path": "data/raw/elexon/physical-2026-07/mels_2026-07-04.json",
+  "sha256": "8cde9a2309bef92293eeed3e274b9355d8f08da0934e3c160cbdf01582a3f7fc",
+  "fetched_at": "2026-08-17T09:21:30.720520+00:00",
+  "bytes": 61937
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MELS",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MELS/stream?from=2026-07-05T00:00Z&to=2026-07-06T00:00Z&bmUnit=2__HANGE004&bmUnit=E_BARNB-1&bmUnit=E_BHOLB-1&bmUnit=T_PINFB-1",
+  "path": "data/raw/elexon/physical-2026-07/mels_2026-07-05.json",
+  "sha256": "31afefc3f34fa706b4a25d1e204935ddd06918ca44aa5cbae46d0cd964202cdb",
+  "fetched_at": "2026-08-17T09:21:30.965206+00:00",
+  "bytes": 57021
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MELS",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MELS/stream?from=2026-07-06T00:00Z&to=2026-07-07T00:00Z&bmUnit=2__HANGE004&bmUnit=E_BARNB-1&bmUnit=E_BHOLB-1&bmUnit=T_PINFB-1",
+  "path": "data/raw/elexon/physical-2026-07/mels_2026-07-06.json",
+  "sha256": "e87b287dd2f43262063f31aaf61b0866456577e28e2630bde341ffe8662284ad",
+  "fetched_at": "2026-08-17T09:21:31.209009+00:00",
+  "bytes": 80172
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MELS",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MELS/stream?from=2026-07-07T00:00Z&to=2026-07-08T00:00Z&bmUnit=2__HANGE004&bmUnit=E_BARNB-1&bmUnit=E_BHOLB-1&bmUnit=T_PINFB-1",
+  "path": "data/raw/elexon/physical-2026-07/mels_2026-07-07.json",
+  "sha256": "74824f19cd74116f67a7736edc57e07c5dee6b31602313cd109ea37e2a155217",
+  "fetched_at": "2026-08-17T09:21:31.891555+00:00",
+  "bytes": 74692
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MELS",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MELS/stream?from=2026-07-08T00:00Z&to=2026-07-09T00:00Z&bmUnit=2__HANGE004&bmUnit=E_BARNB-1&bmUnit=E_BHOLB-1&bmUnit=T_PINFB-1",
+  "path": "data/raw/elexon/physical-2026-07/mels_2026-07-08.json",
+  "sha256": "2d1aa302d0eff72a41d246976fd519774e9c2f97703c15c32f141720d81516f2",
+  "fetched_at": "2026-08-17T09:21:32.116041+00:00",
+  "bytes": 88328
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MELS",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MELS/stream?from=2026-07-09T00:00Z&to=2026-07-10T00:00Z&bmUnit=2__HANGE004&bmUnit=E_BARNB-1&bmUnit=E_BHOLB-1&bmUnit=T_PINFB-1",
+  "path": "data/raw/elexon/physical-2026-07/mels_2026-07-09.json",
+  "sha256": "49f63d438f9249a62946a31677d232d666edce5d931a2502c7f4897f2a8dd9ce",
+  "fetched_at": "2026-08-17T09:21:32.348254+00:00",
+  "bytes": 94130
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MELS",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MELS/stream?from=2026-07-10T00:00Z&to=2026-07-11T00:00Z&bmUnit=2__HANGE004&bmUnit=E_BARNB-1&bmUnit=E_BHOLB-1&bmUnit=T_PINFB-1",
+  "path": "data/raw/elexon/physical-2026-07/mels_2026-07-10.json",
+  "sha256": "729943f30ab7cea67dde4832514f00a1b38cd505513e259c916497e0a78ab4ff",
+  "fetched_at": "2026-08-17T09:21:32.585374+00:00",
+  "bytes": 92453
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MELS",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MELS/stream?from=2026-07-11T00:00Z&to=2026-07-12T00:00Z&bmUnit=2__HANGE004&bmUnit=E_BARNB-1&bmUnit=E_BHOLB-1&bmUnit=T_PINFB-1",
+  "path": "data/raw/elexon/physical-2026-07/mels_2026-07-11.json",
+  "sha256": "a815b7972e8e3903f153b2afe64e8b75f1303c90f70223d311c36ffb11774a2a",
+  "fetched_at": "2026-08-17T09:21:32.929842+00:00",
+  "bytes": 94399
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MELS",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MELS/stream?from=2026-07-12T00:00Z&to=2026-07-13T00:00Z&bmUnit=2__HANGE004&bmUnit=E_BARNB-1&bmUnit=E_BHOLB-1&bmUnit=T_PINFB-1",
+  "path": "data/raw/elexon/physical-2026-07/mels_2026-07-12.json",
+  "sha256": "2da08148d0e029852b66c418c395dc8e1f20201f7d1ff856349604852b74fee8",
+  "fetched_at": "2026-08-17T09:21:33.169850+00:00",
+  "bytes": 93531
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MELS",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MELS/stream?from=2026-07-13T00:00Z&to=2026-07-14T00:00Z&bmUnit=2__HANGE004&bmUnit=E_BARNB-1&bmUnit=E_BHOLB-1&bmUnit=T_PINFB-1",
+  "path": "data/raw/elexon/physical-2026-07/mels_2026-07-13.json",
+  "sha256": "a150a70afae5c106064eda26be9cbbb70822169037d24929a3e4c296098e9c02",
+  "fetched_at": "2026-08-17T09:21:33.411681+00:00",
+  "bytes": 101073
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MELS",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MELS/stream?from=2026-07-14T00:00Z&to=2026-07-15T00:00Z&bmUnit=2__HANGE004&bmUnit=E_BARNB-1&bmUnit=E_BHOLB-1&bmUnit=T_PINFB-1",
+  "path": "data/raw/elexon/physical-2026-07/mels_2026-07-14.json",
+  "sha256": "64401dd87d45fa64bfe61f00c5a3b96c178fbce656425d658178b8dcf8cd101e",
+  "fetched_at": "2026-08-17T09:21:33.662772+00:00",
+  "bytes": 82217
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MELS",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MELS/stream?from=2026-07-15T00:00Z&to=2026-07-16T00:00Z&bmUnit=2__HANGE004&bmUnit=E_BARNB-1&bmUnit=E_BHOLB-1&bmUnit=T_PINFB-1",
+  "path": "data/raw/elexon/physical-2026-07/mels_2026-07-15.json",
+  "sha256": "c31ec5eebb4a5aed1cf75e6fbb50add399d8edbb36c8ac119f1005b583ec394b",
+  "fetched_at": "2026-08-17T09:21:33.908991+00:00",
+  "bytes": 94989
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MELS",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MELS/stream?from=2026-07-16T00:00Z&to=2026-07-17T00:00Z&bmUnit=2__HANGE004&bmUnit=E_BARNB-1&bmUnit=E_BHOLB-1&bmUnit=T_PINFB-1",
+  "path": "data/raw/elexon/physical-2026-07/mels_2026-07-16.json",
+  "sha256": "01d3ec01822c26410103b10b7fd2a1c5fd8a5d2382941c9c1181ac133df319ae",
+  "fetched_at": "2026-08-17T09:21:34.137385+00:00",
+  "bytes": 81079
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MELS",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MELS/stream?from=2026-07-17T00:00Z&to=2026-07-18T00:00Z&bmUnit=2__HANGE004&bmUnit=E_BARNB-1&bmUnit=E_BHOLB-1&bmUnit=T_PINFB-1",
+  "path": "data/raw/elexon/physical-2026-07/mels_2026-07-17.json",
+  "sha256": "560a47580e90e33e9ffaaf2755196b5dd154ad7413549243341b2e49fa29567b",
+  "fetched_at": "2026-08-17T09:21:34.366198+00:00",
+  "bytes": 78481
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MELS",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MELS/stream?from=2026-07-18T00:00Z&to=2026-07-19T00:00Z&bmUnit=2__HANGE004&bmUnit=E_BARNB-1&bmUnit=E_BHOLB-1&bmUnit=T_PINFB-1",
+  "path": "data/raw/elexon/physical-2026-07/mels_2026-07-18.json",
+  "sha256": "a56fdd7d909a4bb178ef0acf6686bba9d696980552e01bd4da761cf24c2f51ac",
+  "fetched_at": "2026-08-17T09:21:34.606992+00:00",
+  "bytes": 87146
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MELS",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MELS/stream?from=2026-07-19T00:00Z&to=2026-07-20T00:00Z&bmUnit=2__HANGE004&bmUnit=E_BARNB-1&bmUnit=E_BHOLB-1&bmUnit=T_PINFB-1",
+  "path": "data/raw/elexon/physical-2026-07/mels_2026-07-19.json",
+  "sha256": "7f23bcab841d92695049ad9ac63dfb4e482792da085dc40805801e056139f9ed",
+  "fetched_at": "2026-08-17T09:21:34.837686+00:00",
+  "bytes": 103104
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MELS",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MELS/stream?from=2026-07-20T00:00Z&to=2026-07-21T00:00Z&bmUnit=2__HANGE004&bmUnit=E_BARNB-1&bmUnit=E_BHOLB-1&bmUnit=T_PINFB-1",
+  "path": "data/raw/elexon/physical-2026-07/mels_2026-07-20.json",
+  "sha256": "6f81c98f85986a6deb650a362b901c4b731a63300c33b1f1bec988e6827cfbc5",
+  "fetched_at": "2026-08-17T09:21:35.087590+00:00",
+  "bytes": 96123
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MELS",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MELS/stream?from=2026-07-21T00:00Z&to=2026-07-22T00:00Z&bmUnit=2__HANGE004&bmUnit=E_BARNB-1&bmUnit=E_BHOLB-1&bmUnit=T_PINFB-1",
+  "path": "data/raw/elexon/physical-2026-07/mels_2026-07-21.json",
+  "sha256": "0bc66c1eeda487e39266cfb57f679d3cf55c959c032dac498ce866aa05490f28",
+  "fetched_at": "2026-08-17T09:21:35.325198+00:00",
+  "bytes": 79607
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MELS",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MELS/stream?from=2026-07-22T00:00Z&to=2026-07-23T00:00Z&bmUnit=2__HANGE004&bmUnit=E_BARNB-1&bmUnit=E_BHOLB-1&bmUnit=T_PINFB-1",
+  "path": "data/raw/elexon/physical-2026-07/mels_2026-07-22.json",
+  "sha256": "ed34bbf2e970ee6af13d6565b030e59b15f4ce59b9721f20e6e725c5d77400e2",
+  "fetched_at": "2026-08-17T09:21:35.539941+00:00",
+  "bytes": 81633
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MELS",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MELS/stream?from=2026-07-23T00:00Z&to=2026-07-24T00:00Z&bmUnit=2__HANGE004&bmUnit=E_BARNB-1&bmUnit=E_BHOLB-1&bmUnit=T_PINFB-1",
+  "path": "data/raw/elexon/physical-2026-07/mels_2026-07-23.json",
+  "sha256": "c297a04e288599d411156117e8ceab13d2873fe491e16f4892e32b642ff4e813",
+  "fetched_at": "2026-08-17T09:21:35.755785+00:00",
+  "bytes": 74975
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MELS",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MELS/stream?from=2026-07-24T00:00Z&to=2026-07-25T00:00Z&bmUnit=2__HANGE004&bmUnit=E_BARNB-1&bmUnit=E_BHOLB-1&bmUnit=T_PINFB-1",
+  "path": "data/raw/elexon/physical-2026-07/mels_2026-07-24.json",
+  "sha256": "c9b3630c31f7539c7dd6d662788a2b1a6620cc2dda52841a3ba83b1f4a95dd21",
+  "fetched_at": "2026-08-17T09:21:35.989480+00:00",
+  "bytes": 75589
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MELS",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MELS/stream?from=2026-07-25T00:00Z&to=2026-07-26T00:00Z&bmUnit=2__HANGE004&bmUnit=E_BARNB-1&bmUnit=E_BHOLB-1&bmUnit=T_PINFB-1",
+  "path": "data/raw/elexon/physical-2026-07/mels_2026-07-25.json",
+  "sha256": "6036358df447fb87b118e033642d0f4d9699bc339759349345d43d328a2e8bc7",
+  "fetched_at": "2026-08-17T09:21:36.223470+00:00",
+  "bytes": 101118
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MELS",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MELS/stream?from=2026-07-26T00:00Z&to=2026-07-27T00:00Z&bmUnit=2__HANGE004&bmUnit=E_BARNB-1&bmUnit=E_BHOLB-1&bmUnit=T_PINFB-1",
+  "path": "data/raw/elexon/physical-2026-07/mels_2026-07-26.json",
+  "sha256": "135c03a497c9619d5e86d4aa29640cf2ee2b30378ff78357f9758e6a2d197fe8",
+  "fetched_at": "2026-08-17T09:21:36.456930+00:00",
+  "bytes": 100201
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MELS",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MELS/stream?from=2026-07-27T00:00Z&to=2026-07-28T00:00Z&bmUnit=2__HANGE004&bmUnit=E_BARNB-1&bmUnit=E_BHOLB-1&bmUnit=T_PINFB-1",
+  "path": "data/raw/elexon/physical-2026-07/mels_2026-07-27.json",
+  "sha256": "c2b57fead23caf2b0aba053a47b5156e140e604dc04a37f48a686c6fce7f9d7f",
+  "fetched_at": "2026-08-17T09:21:36.691416+00:00",
+  "bytes": 93612
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MELS",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MELS/stream?from=2026-07-28T00:00Z&to=2026-07-29T00:00Z&bmUnit=2__HANGE004&bmUnit=E_BARNB-1&bmUnit=E_BHOLB-1&bmUnit=T_PINFB-1",
+  "path": "data/raw/elexon/physical-2026-07/mels_2026-07-28.json",
+  "sha256": "afc449f533045c0d323d8019282d5d7f5128161a868afa09090366eb9150039b",
+  "fetched_at": "2026-08-17T09:21:37.166948+00:00",
+  "bytes": 90075
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MELS",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MELS/stream?from=2026-07-29T00:00Z&to=2026-07-30T00:00Z&bmUnit=2__HANGE004&bmUnit=E_BARNB-1&bmUnit=E_BHOLB-1&bmUnit=T_PINFB-1",
+  "path": "data/raw/elexon/physical-2026-07/mels_2026-07-29.json",
+  "sha256": "749bd40ec94f657bd0be5ced1ae0e99004ef70511139781dae780a510e09a4ab",
+  "fetched_at": "2026-08-17T09:21:37.401837+00:00",
+  "bytes": 69192
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MELS",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MELS/stream?from=2026-07-30T00:00Z&to=2026-07-31T00:00Z&bmUnit=2__HANGE004&bmUnit=E_BARNB-1&bmUnit=E_BHOLB-1&bmUnit=T_PINFB-1",
+  "path": "data/raw/elexon/physical-2026-07/mels_2026-07-30.json",
+  "sha256": "deea582286754242144d200b0cf5f3700b4c90d8821d81e7edbab4571a6af6c8",
+  "fetched_at": "2026-08-17T09:21:37.620245+00:00",
+  "bytes": 57882
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MELS",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MELS/stream?from=2026-07-31T00:00Z&to=2026-08-01T00:00Z&bmUnit=2__HANGE004&bmUnit=E_BARNB-1&bmUnit=E_BHOLB-1&bmUnit=T_PINFB-1",
+  "path": "data/raw/elexon/physical-2026-07/mels_2026-07-31.json",
+  "sha256": "5be85bc69778f547986fdca13eb3a0ff99c11ebd42a98f5760971d683f073578",
+  "fetched_at": "2026-08-17T09:21:37.961375+00:00",
+  "bytes": 57302
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MILS",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MILS/stream?from=2026-07-01T00:00Z&to=2026-07-02T00:00Z&bmUnit=2__HANGE004&bmUnit=E_BARNB-1&bmUnit=E_BHOLB-1&bmUnit=T_PINFB-1",
+  "path": "data/raw/elexon/physical-2026-07/mils_2026-07-01.json",
+  "sha256": "8e55effcd02b890a2e059f402a54566f1f5770214130558063a70b3b391285a1",
+  "fetched_at": "2026-08-17T09:21:38.199494+00:00",
+  "bytes": 82498
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MILS",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MILS/stream?from=2026-07-02T00:00Z&to=2026-07-03T00:00Z&bmUnit=2__HANGE004&bmUnit=E_BARNB-1&bmUnit=E_BHOLB-1&bmUnit=T_PINFB-1",
+  "path": "data/raw/elexon/physical-2026-07/mils_2026-07-02.json",
+  "sha256": "689700f48ea47775dfdd6ba1e09b5180c00c50a7eba43d87b8118130afc84bad",
+  "fetched_at": "2026-08-17T09:21:38.447424+00:00",
+  "bytes": 87450
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MILS",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MILS/stream?from=2026-07-03T00:00Z&to=2026-07-04T00:00Z&bmUnit=2__HANGE004&bmUnit=E_BARNB-1&bmUnit=E_BHOLB-1&bmUnit=T_PINFB-1",
+  "path": "data/raw/elexon/physical-2026-07/mils_2026-07-03.json",
+  "sha256": "05dbcc0b6ed47f309aca8555074212ff5ecb8e23fc27c1c748d1111fa89a589f",
+  "fetched_at": "2026-08-17T09:21:38.685133+00:00",
+  "bytes": 84908
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MILS",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MILS/stream?from=2026-07-04T00:00Z&to=2026-07-05T00:00Z&bmUnit=2__HANGE004&bmUnit=E_BARNB-1&bmUnit=E_BHOLB-1&bmUnit=T_PINFB-1",
+  "path": "data/raw/elexon/physical-2026-07/mils_2026-07-04.json",
+  "sha256": "55968f4e4b7cfbe92ff37c894ccef745560790fe582df0a2208bcb6bd6a671f1",
+  "fetched_at": "2026-08-17T09:21:38.903945+00:00",
+  "bytes": 100021
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MILS",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MILS/stream?from=2026-07-05T00:00Z&to=2026-07-06T00:00Z&bmUnit=2__HANGE004&bmUnit=E_BARNB-1&bmUnit=E_BHOLB-1&bmUnit=T_PINFB-1",
+  "path": "data/raw/elexon/physical-2026-07/mils_2026-07-05.json",
+  "sha256": "13773b8d6ff7704b56ce14dc1e35ba4ce77784288eea9b762dffddd5ce87fd07",
+  "fetched_at": "2026-08-17T09:21:39.135101+00:00",
+  "bytes": 85718
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MILS",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MILS/stream?from=2026-07-06T00:00Z&to=2026-07-07T00:00Z&bmUnit=2__HANGE004&bmUnit=E_BARNB-1&bmUnit=E_BHOLB-1&bmUnit=T_PINFB-1",
+  "path": "data/raw/elexon/physical-2026-07/mils_2026-07-06.json",
+  "sha256": "3612f3bbb0156bc1d9bd9a4baca3b628c5d556b456ec70edf1b12ab4d6aeafe9",
+  "fetched_at": "2026-08-17T09:21:39.384033+00:00",
+  "bytes": 81894
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MILS",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MILS/stream?from=2026-07-07T00:00Z&to=2026-07-08T00:00Z&bmUnit=2__HANGE004&bmUnit=E_BARNB-1&bmUnit=E_BHOLB-1&bmUnit=T_PINFB-1",
+  "path": "data/raw/elexon/physical-2026-07/mils_2026-07-07.json",
+  "sha256": "697b5b4fe7192ff7ac11af04be4bf2c6be4388bfb69a0ebafb6c26e668f3621d",
+  "fetched_at": "2026-08-17T09:21:39.623905+00:00",
+  "bytes": 75188
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MILS",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MILS/stream?from=2026-07-08T00:00Z&to=2026-07-09T00:00Z&bmUnit=2__HANGE004&bmUnit=E_BARNB-1&bmUnit=E_BHOLB-1&bmUnit=T_PINFB-1",
+  "path": "data/raw/elexon/physical-2026-07/mils_2026-07-08.json",
+  "sha256": "0bf0de8f70e8369a8892891d4fd894a3947ad143931414080a406ba61866651b",
+  "fetched_at": "2026-08-17T09:21:39.850561+00:00",
+  "bytes": 88938
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MILS",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MILS/stream?from=2026-07-09T00:00Z&to=2026-07-10T00:00Z&bmUnit=2__HANGE004&bmUnit=E_BARNB-1&bmUnit=E_BHOLB-1&bmUnit=T_PINFB-1",
+  "path": "data/raw/elexon/physical-2026-07/mils_2026-07-09.json",
+  "sha256": "1b9377a16b80b976b1e8493844d191e879683dc942730facfed9477821c4f430",
+  "fetched_at": "2026-08-17T09:21:40.086861+00:00",
+  "bytes": 94702
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MILS",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MILS/stream?from=2026-07-10T00:00Z&to=2026-07-11T00:00Z&bmUnit=2__HANGE004&bmUnit=E_BARNB-1&bmUnit=E_BHOLB-1&bmUnit=T_PINFB-1",
+  "path": "data/raw/elexon/physical-2026-07/mils_2026-07-10.json",
+  "sha256": "d22d221331c23e735928ccb08a12ff1e59f93f115d29fcf27524ca6ee6bc0c0e",
+  "fetched_at": "2026-08-17T09:21:40.334633+00:00",
+  "bytes": 77313
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MILS",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MILS/stream?from=2026-07-11T00:00Z&to=2026-07-12T00:00Z&bmUnit=2__HANGE004&bmUnit=E_BARNB-1&bmUnit=E_BHOLB-1&bmUnit=T_PINFB-1",
+  "path": "data/raw/elexon/physical-2026-07/mils_2026-07-11.json",
+  "sha256": "c7905b48182eec0907b6d101fabbd25babb1cefb30bf51848518bc36bb5edc57",
+  "fetched_at": "2026-08-17T09:21:40.573453+00:00",
+  "bytes": 64997
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MILS",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MILS/stream?from=2026-07-12T00:00Z&to=2026-07-13T00:00Z&bmUnit=2__HANGE004&bmUnit=E_BARNB-1&bmUnit=E_BHOLB-1&bmUnit=T_PINFB-1",
+  "path": "data/raw/elexon/physical-2026-07/mils_2026-07-12.json",
+  "sha256": "3b00db6d18e11406c6973016dc708ee3925bfd23c0159302998437b81d2a93b5",
+  "fetched_at": "2026-08-17T09:21:40.800432+00:00",
+  "bytes": 67035
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MILS",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MILS/stream?from=2026-07-13T00:00Z&to=2026-07-14T00:00Z&bmUnit=2__HANGE004&bmUnit=E_BARNB-1&bmUnit=E_BHOLB-1&bmUnit=T_PINFB-1",
+  "path": "data/raw/elexon/physical-2026-07/mils_2026-07-13.json",
+  "sha256": "3ab55c76112f4dde5ac8f7dd28733bea26fde20025fd9227d4802ae823007e8b",
+  "fetched_at": "2026-08-17T09:21:41.036057+00:00",
+  "bytes": 60905
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MILS",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MILS/stream?from=2026-07-14T00:00Z&to=2026-07-15T00:00Z&bmUnit=2__HANGE004&bmUnit=E_BARNB-1&bmUnit=E_BHOLB-1&bmUnit=T_PINFB-1",
+  "path": "data/raw/elexon/physical-2026-07/mils_2026-07-14.json",
+  "sha256": "be5ed8d3e710f591a97a590163e0f677a505f3a2addf9fd4fb774cae0e1a4099",
+  "fetched_at": "2026-08-17T09:21:41.265572+00:00",
+  "bytes": 57407
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MILS",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MILS/stream?from=2026-07-15T00:00Z&to=2026-07-16T00:00Z&bmUnit=2__HANGE004&bmUnit=E_BARNB-1&bmUnit=E_BHOLB-1&bmUnit=T_PINFB-1",
+  "path": "data/raw/elexon/physical-2026-07/mils_2026-07-15.json",
+  "sha256": "901d938b959beabf2edd01287d4d590ed9987ba01b9828edc565e3c4175aa741",
+  "fetched_at": "2026-08-17T09:21:41.492807+00:00",
+  "bytes": 57989
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MILS",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MILS/stream?from=2026-07-16T00:00Z&to=2026-07-17T00:00Z&bmUnit=2__HANGE004&bmUnit=E_BARNB-1&bmUnit=E_BHOLB-1&bmUnit=T_PINFB-1",
+  "path": "data/raw/elexon/physical-2026-07/mils_2026-07-16.json",
+  "sha256": "52fb5af22f77dbbdfc363e5f21595152b99d4d96ecc84b3bfa038d12e7ac1814",
+  "fetched_at": "2026-08-17T09:21:41.725601+00:00",
+  "bytes": 57407
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MILS",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MILS/stream?from=2026-07-17T00:00Z&to=2026-07-18T00:00Z&bmUnit=2__HANGE004&bmUnit=E_BARNB-1&bmUnit=E_BHOLB-1&bmUnit=T_PINFB-1",
+  "path": "data/raw/elexon/physical-2026-07/mils_2026-07-17.json",
+  "sha256": "16aec20184adf4d8edbf585b6f66178b2bd738be40e161f34d21b580d6228b4a",
+  "fetched_at": "2026-08-17T09:21:41.961862+00:00",
+  "bytes": 57429
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MILS",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MILS/stream?from=2026-07-18T00:00Z&to=2026-07-19T00:00Z&bmUnit=2__HANGE004&bmUnit=E_BARNB-1&bmUnit=E_BHOLB-1&bmUnit=T_PINFB-1",
+  "path": "data/raw/elexon/physical-2026-07/mils_2026-07-18.json",
+  "sha256": "13fd0e55d569b1a0c6a7d6cfbc5027b7bd49a6c029718fae156b099587ebdf77",
+  "fetched_at": "2026-08-17T09:21:42.194099+00:00",
+  "bytes": 57407
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MILS",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MILS/stream?from=2026-07-19T00:00Z&to=2026-07-20T00:00Z&bmUnit=2__HANGE004&bmUnit=E_BARNB-1&bmUnit=E_BHOLB-1&bmUnit=T_PINFB-1",
+  "path": "data/raw/elexon/physical-2026-07/mils_2026-07-19.json",
+  "sha256": "daa7e9634c81704b010c6854307f9c97cc931741075ec2ec237f104d874e8b24",
+  "fetched_at": "2026-08-17T09:21:42.414395+00:00",
+  "bytes": 58312
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MILS",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MILS/stream?from=2026-07-20T00:00Z&to=2026-07-21T00:00Z&bmUnit=2__HANGE004&bmUnit=E_BARNB-1&bmUnit=E_BHOLB-1&bmUnit=T_PINFB-1",
+  "path": "data/raw/elexon/physical-2026-07/mils_2026-07-20.json",
+  "sha256": "3618eb34de778f2f70c4460da1c2ee9475afef3881abb4b016ecad8b961ac8d5",
+  "fetched_at": "2026-08-17T09:21:42.630799+00:00",
+  "bytes": 61122
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MILS",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MILS/stream?from=2026-07-21T00:00Z&to=2026-07-22T00:00Z&bmUnit=2__HANGE004&bmUnit=E_BARNB-1&bmUnit=E_BHOLB-1&bmUnit=T_PINFB-1",
+  "path": "data/raw/elexon/physical-2026-07/mils_2026-07-21.json",
+  "sha256": "a9ff20105639c5cbbccda6ef87ce8dec92687c425714e219c894d1457e27e5a0",
+  "fetched_at": "2026-08-17T09:21:42.881208+00:00",
+  "bytes": 57295
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MILS",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MILS/stream?from=2026-07-22T00:00Z&to=2026-07-23T00:00Z&bmUnit=2__HANGE004&bmUnit=E_BARNB-1&bmUnit=E_BHOLB-1&bmUnit=T_PINFB-1",
+  "path": "data/raw/elexon/physical-2026-07/mils_2026-07-22.json",
+  "sha256": "bb49c7ea56c322c1d750d5bad127dc2578e65a169708d2b47b6ce1c007e24a37",
+  "fetched_at": "2026-08-17T09:21:43.107573+00:00",
+  "bytes": 57291
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MILS",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MILS/stream?from=2026-07-23T00:00Z&to=2026-07-24T00:00Z&bmUnit=2__HANGE004&bmUnit=E_BARNB-1&bmUnit=E_BHOLB-1&bmUnit=T_PINFB-1",
+  "path": "data/raw/elexon/physical-2026-07/mils_2026-07-23.json",
+  "sha256": "109bacdbc8e7fecc9593c04b1e9c0d22ce636a79ab9464bd082c79372fc5cf15",
+  "fetched_at": "2026-08-17T09:21:43.341878+00:00",
+  "bytes": 58763
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MILS",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MILS/stream?from=2026-07-24T00:00Z&to=2026-07-25T00:00Z&bmUnit=2__HANGE004&bmUnit=E_BARNB-1&bmUnit=E_BHOLB-1&bmUnit=T_PINFB-1",
+  "path": "data/raw/elexon/physical-2026-07/mils_2026-07-24.json",
+  "sha256": "ced81d73045a315e7b867836fbfbeda731fd6a97cc7107f3939ad9206b278b44",
+  "fetched_at": "2026-08-17T09:21:43.566253+00:00",
+  "bytes": 67900
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MILS",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MILS/stream?from=2026-07-25T00:00Z&to=2026-07-26T00:00Z&bmUnit=2__HANGE004&bmUnit=E_BARNB-1&bmUnit=E_BHOLB-1&bmUnit=T_PINFB-1",
+  "path": "data/raw/elexon/physical-2026-07/mils_2026-07-25.json",
+  "sha256": "5d17bc83bc8820eaf2ae470fbcc592b45ff4cb02979176d2ced0b59b65004bd6",
+  "fetched_at": "2026-08-17T09:21:43.804268+00:00",
+  "bytes": 101826
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MILS",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MILS/stream?from=2026-07-26T00:00Z&to=2026-07-27T00:00Z&bmUnit=2__HANGE004&bmUnit=E_BARNB-1&bmUnit=E_BHOLB-1&bmUnit=T_PINFB-1",
+  "path": "data/raw/elexon/physical-2026-07/mils_2026-07-26.json",
+  "sha256": "85da89768e8e4c8970b175ae31fd063d55980491219fdbaa7f8e72897ce7596c",
+  "fetched_at": "2026-08-17T09:21:44.036059+00:00",
+  "bytes": 100861
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MILS",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MILS/stream?from=2026-07-27T00:00Z&to=2026-07-28T00:00Z&bmUnit=2__HANGE004&bmUnit=E_BARNB-1&bmUnit=E_BHOLB-1&bmUnit=T_PINFB-1",
+  "path": "data/raw/elexon/physical-2026-07/mils_2026-07-27.json",
+  "sha256": "674f09f6ad71c41cf5c14a2f65898a955ad90b746695b6ea259df6aa44091543",
+  "fetched_at": "2026-08-17T09:21:44.275686+00:00",
+  "bytes": 92499
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MILS",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MILS/stream?from=2026-07-28T00:00Z&to=2026-07-29T00:00Z&bmUnit=2__HANGE004&bmUnit=E_BARNB-1&bmUnit=E_BHOLB-1&bmUnit=T_PINFB-1",
+  "path": "data/raw/elexon/physical-2026-07/mils_2026-07-28.json",
+  "sha256": "1d2e9a2e92b566c90b08c25d033037393b13fc60b031b198d20a194ce50014a5",
+  "fetched_at": "2026-08-17T09:21:44.586074+00:00",
+  "bytes": 90697
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MILS",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MILS/stream?from=2026-07-29T00:00Z&to=2026-07-30T00:00Z&bmUnit=2__HANGE004&bmUnit=E_BARNB-1&bmUnit=E_BHOLB-1&bmUnit=T_PINFB-1",
+  "path": "data/raw/elexon/physical-2026-07/mils_2026-07-29.json",
+  "sha256": "92a33680bdf5850b3e9dd3e20b92ada9560bdb765085efc91c26eb63024ee3ab",
+  "fetched_at": "2026-08-17T09:21:44.818011+00:00",
+  "bytes": 70236
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MILS",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MILS/stream?from=2026-07-30T00:00Z&to=2026-07-31T00:00Z&bmUnit=2__HANGE004&bmUnit=E_BARNB-1&bmUnit=E_BHOLB-1&bmUnit=T_PINFB-1",
+  "path": "data/raw/elexon/physical-2026-07/mils_2026-07-30.json",
+  "sha256": "210c97b16f48971141ed1b58c8e389a355cce3416527f739539a1c4030b1d65d",
+  "fetched_at": "2026-08-17T09:21:45.042019+00:00",
+  "bytes": 57407
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MILS",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MILS/stream?from=2026-07-31T00:00Z&to=2026-08-01T00:00Z&bmUnit=2__HANGE004&bmUnit=E_BARNB-1&bmUnit=E_BHOLB-1&bmUnit=T_PINFB-1",
+  "path": "data/raw/elexon/physical-2026-07/mils_2026-07-31.json",
+  "sha256": "657efb0e3197841cc15cb0ab47ca0cbd4ba7d126d96047ed6be1cc43351fe6ad",
+  "fetched_at": "2026-08-17T09:21:45.275688+00:00",
+  "bytes": 57991
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "PN",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/PN/stream?from=2026-07-01T00:00Z&to=2026-07-02T00:00Z&bmUnit=2__HANGE004&bmUnit=E_BARNB-1&bmUnit=E_BHOLB-1&bmUnit=T_PINFB-1",
+  "path": "data/raw/elexon/physical-2026-07/pn_2026-07-01.json",
+  "sha256": "3b83b48b46d5ef8d91e96d777b0c4f824361ad96e6e0d3dc4e7ca9048508e850",
+  "fetched_at": "2026-08-17T09:21:22.614474+00:00",
+  "bytes": 67285
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "PN",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/PN/stream?from=2026-07-02T00:00Z&to=2026-07-03T00:00Z&bmUnit=2__HANGE004&bmUnit=E_BARNB-1&bmUnit=E_BHOLB-1&bmUnit=T_PINFB-1",
+  "path": "data/raw/elexon/physical-2026-07/pn_2026-07-02.json",
+  "sha256": "d3f8d938aa0619bfc069b046ad34bfcf3f52967ac6ecccf9e847eaa68f0d569f",
+  "fetched_at": "2026-08-17T09:21:22.846469+00:00",
+  "bytes": 66105
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "PN",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/PN/stream?from=2026-07-03T00:00Z&to=2026-07-04T00:00Z&bmUnit=2__HANGE004&bmUnit=E_BARNB-1&bmUnit=E_BHOLB-1&bmUnit=T_PINFB-1",
+  "path": "data/raw/elexon/physical-2026-07/pn_2026-07-03.json",
+  "sha256": "3aa7d6b238f4031adc50feb38f68dfc2df56690fb79fb22b91b9d67a701aefc5",
+  "fetched_at": "2026-08-17T09:21:23.140092+00:00",
+  "bytes": 55941
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "PN",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/PN/stream?from=2026-07-04T00:00Z&to=2026-07-05T00:00Z&bmUnit=2__HANGE004&bmUnit=E_BARNB-1&bmUnit=E_BHOLB-1&bmUnit=T_PINFB-1",
+  "path": "data/raw/elexon/physical-2026-07/pn_2026-07-04.json",
+  "sha256": "eaf72d6098a2a5aa755eda385913c44948a651d5b7a490206d15a9f8c1ad450c",
+  "fetched_at": "2026-08-17T09:21:23.361584+00:00",
+  "bytes": 72612
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "PN",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/PN/stream?from=2026-07-05T00:00Z&to=2026-07-06T00:00Z&bmUnit=2__HANGE004&bmUnit=E_BARNB-1&bmUnit=E_BHOLB-1&bmUnit=T_PINFB-1",
+  "path": "data/raw/elexon/physical-2026-07/pn_2026-07-05.json",
+  "sha256": "6f1e57d26aa3ead9e6e79b896b710bffb1e76da9df630fac0dc53c63869c2587",
+  "fetched_at": "2026-08-17T09:21:23.593284+00:00",
+  "bytes": 64277
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "PN",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/PN/stream?from=2026-07-06T00:00Z&to=2026-07-07T00:00Z&bmUnit=2__HANGE004&bmUnit=E_BARNB-1&bmUnit=E_BHOLB-1&bmUnit=T_PINFB-1",
+  "path": "data/raw/elexon/physical-2026-07/pn_2026-07-06.json",
+  "sha256": "00092fe7326a1e7b5465554e0d1dbf506741270a4123babc41c97599240dc206",
+  "fetched_at": "2026-08-17T09:21:23.823115+00:00",
+  "bytes": 72077
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "PN",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/PN/stream?from=2026-07-07T00:00Z&to=2026-07-08T00:00Z&bmUnit=2__HANGE004&bmUnit=E_BARNB-1&bmUnit=E_BHOLB-1&bmUnit=T_PINFB-1",
+  "path": "data/raw/elexon/physical-2026-07/pn_2026-07-07.json",
+  "sha256": "052e5707f19165d727dff813175bcf387ffd72a908f7ca63c48d93b5335db9ca",
+  "fetched_at": "2026-08-17T09:21:24.053649+00:00",
+  "bytes": 64314
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "PN",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/PN/stream?from=2026-07-08T00:00Z&to=2026-07-09T00:00Z&bmUnit=2__HANGE004&bmUnit=E_BARNB-1&bmUnit=E_BHOLB-1&bmUnit=T_PINFB-1",
+  "path": "data/raw/elexon/physical-2026-07/pn_2026-07-08.json",
+  "sha256": "8a8401b99f9130af7394e567692f439cd9eb1f8c203ecc72e58e175ef3e7cabe",
+  "fetched_at": "2026-08-17T09:21:24.294964+00:00",
+  "bytes": 61311
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "PN",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/PN/stream?from=2026-07-09T00:00Z&to=2026-07-10T00:00Z&bmUnit=2__HANGE004&bmUnit=E_BARNB-1&bmUnit=E_BHOLB-1&bmUnit=T_PINFB-1",
+  "path": "data/raw/elexon/physical-2026-07/pn_2026-07-09.json",
+  "sha256": "8c8417fbfbd1d0530caebbcee08a7b5a9006bf031c97912ef9843040382ff38e",
+  "fetched_at": "2026-08-17T09:21:24.525476+00:00",
+  "bytes": 71580
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "PN",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/PN/stream?from=2026-07-10T00:00Z&to=2026-07-11T00:00Z&bmUnit=2__HANGE004&bmUnit=E_BARNB-1&bmUnit=E_BHOLB-1&bmUnit=T_PINFB-1",
+  "path": "data/raw/elexon/physical-2026-07/pn_2026-07-10.json",
+  "sha256": "a1d22d44f953d09d386520625d9d1a99a67391e415d85a9fad6c4da2299717c2",
+  "fetched_at": "2026-08-17T09:21:24.781983+00:00",
+  "bytes": 68175
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "PN",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/PN/stream?from=2026-07-11T00:00Z&to=2026-07-12T00:00Z&bmUnit=2__HANGE004&bmUnit=E_BARNB-1&bmUnit=E_BHOLB-1&bmUnit=T_PINFB-1",
+  "path": "data/raw/elexon/physical-2026-07/pn_2026-07-11.json",
+  "sha256": "c6ce12ae5e53789b0149e1941c247e0af5f1ea0157ab0af1b9963ecb2b8f6532",
+  "fetched_at": "2026-08-17T09:21:25.022673+00:00",
+  "bytes": 71528
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "PN",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/PN/stream?from=2026-07-12T00:00Z&to=2026-07-13T00:00Z&bmUnit=2__HANGE004&bmUnit=E_BARNB-1&bmUnit=E_BHOLB-1&bmUnit=T_PINFB-1",
+  "path": "data/raw/elexon/physical-2026-07/pn_2026-07-12.json",
+  "sha256": "1c9ab9c65a4cb7fe81738bd159066402d14cbd7a5b7a17fdd77c73f66ae043b4",
+  "fetched_at": "2026-08-17T09:21:25.263892+00:00",
+  "bytes": 74144
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "PN",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/PN/stream?from=2026-07-13T00:00Z&to=2026-07-14T00:00Z&bmUnit=2__HANGE004&bmUnit=E_BARNB-1&bmUnit=E_BHOLB-1&bmUnit=T_PINFB-1",
+  "path": "data/raw/elexon/physical-2026-07/pn_2026-07-13.json",
+  "sha256": "455ccdab8603059e1ba030977971839576bfc109fce140121558c757c7c95cea",
+  "fetched_at": "2026-08-17T09:21:25.483018+00:00",
+  "bytes": 71712
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "PN",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/PN/stream?from=2026-07-14T00:00Z&to=2026-07-15T00:00Z&bmUnit=2__HANGE004&bmUnit=E_BARNB-1&bmUnit=E_BHOLB-1&bmUnit=T_PINFB-1",
+  "path": "data/raw/elexon/physical-2026-07/pn_2026-07-14.json",
+  "sha256": "1f3c589c783d029d0471d53dc3d7466cd1658e2914ff5bcd5c224789d1ef84f1",
+  "fetched_at": "2026-08-17T09:21:25.733282+00:00",
+  "bytes": 71318
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "PN",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/PN/stream?from=2026-07-15T00:00Z&to=2026-07-16T00:00Z&bmUnit=2__HANGE004&bmUnit=E_BARNB-1&bmUnit=E_BHOLB-1&bmUnit=T_PINFB-1",
+  "path": "data/raw/elexon/physical-2026-07/pn_2026-07-15.json",
+  "sha256": "d9575fe24b7da4ef8130cec20f55eb4f8f32fb95e9612497e85576a9535807b4",
+  "fetched_at": "2026-08-17T09:21:25.966521+00:00",
+  "bytes": 63415
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "PN",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/PN/stream?from=2026-07-16T00:00Z&to=2026-07-17T00:00Z&bmUnit=2__HANGE004&bmUnit=E_BARNB-1&bmUnit=E_BHOLB-1&bmUnit=T_PINFB-1",
+  "path": "data/raw/elexon/physical-2026-07/pn_2026-07-16.json",
+  "sha256": "eaf53523764ac20f1786774afcdc8249a8b9f5a1799a3b9159f90b23916117ac",
+  "fetched_at": "2026-08-17T09:21:26.209022+00:00",
+  "bytes": 68419
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "PN",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/PN/stream?from=2026-07-17T00:00Z&to=2026-07-18T00:00Z&bmUnit=2__HANGE004&bmUnit=E_BARNB-1&bmUnit=E_BHOLB-1&bmUnit=T_PINFB-1",
+  "path": "data/raw/elexon/physical-2026-07/pn_2026-07-17.json",
+  "sha256": "4ae57807ba41c753f536088e7effc1f812793fb129d11cd9cdb0afeb5d3f1a26",
+  "fetched_at": "2026-08-17T09:21:26.438687+00:00",
+  "bytes": 69434
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "PN",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/PN/stream?from=2026-07-18T00:00Z&to=2026-07-19T00:00Z&bmUnit=2__HANGE004&bmUnit=E_BARNB-1&bmUnit=E_BHOLB-1&bmUnit=T_PINFB-1",
+  "path": "data/raw/elexon/physical-2026-07/pn_2026-07-18.json",
+  "sha256": "927617d0413cd1e4394a7ec0209b7e59bc09f9e8517f7e174fbd99f7d7647afa",
+  "fetched_at": "2026-08-17T09:21:26.680197+00:00",
+  "bytes": 72635
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "PN",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/PN/stream?from=2026-07-19T00:00Z&to=2026-07-20T00:00Z&bmUnit=2__HANGE004&bmUnit=E_BARNB-1&bmUnit=E_BHOLB-1&bmUnit=T_PINFB-1",
+  "path": "data/raw/elexon/physical-2026-07/pn_2026-07-19.json",
+  "sha256": "9d50830d3208c3e36e05afc47517c97277243716c7633012c5d66d17925b0e25",
+  "fetched_at": "2026-08-17T09:21:26.906075+00:00",
+  "bytes": 70919
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "PN",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/PN/stream?from=2026-07-20T00:00Z&to=2026-07-21T00:00Z&bmUnit=2__HANGE004&bmUnit=E_BARNB-1&bmUnit=E_BHOLB-1&bmUnit=T_PINFB-1",
+  "path": "data/raw/elexon/physical-2026-07/pn_2026-07-20.json",
+  "sha256": "3130f38d320ee45b005809c8b764bf0b38a7c33f9298761e8db7acc94c795aa5",
+  "fetched_at": "2026-08-17T09:21:27.169642+00:00",
+  "bytes": 67773
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "PN",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/PN/stream?from=2026-07-21T00:00Z&to=2026-07-22T00:00Z&bmUnit=2__HANGE004&bmUnit=E_BARNB-1&bmUnit=E_BHOLB-1&bmUnit=T_PINFB-1",
+  "path": "data/raw/elexon/physical-2026-07/pn_2026-07-21.json",
+  "sha256": "97be747fe3f55a7cfc647c99f1ce9639c9f8712c8ea23e79d482ecfa82edf988",
+  "fetched_at": "2026-08-17T09:21:27.410896+00:00",
+  "bytes": 60562
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "PN",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/PN/stream?from=2026-07-22T00:00Z&to=2026-07-23T00:00Z&bmUnit=2__HANGE004&bmUnit=E_BARNB-1&bmUnit=E_BHOLB-1&bmUnit=T_PINFB-1",
+  "path": "data/raw/elexon/physical-2026-07/pn_2026-07-22.json",
+  "sha256": "0b0deaa05cddcf41ff9ae92ff63d1f4a0331113d11ea6ee53756a567c9915987",
+  "fetched_at": "2026-08-17T09:21:27.649438+00:00",
+  "bytes": 52802
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "PN",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/PN/stream?from=2026-07-23T00:00Z&to=2026-07-24T00:00Z&bmUnit=2__HANGE004&bmUnit=E_BARNB-1&bmUnit=E_BHOLB-1&bmUnit=T_PINFB-1",
+  "path": "data/raw/elexon/physical-2026-07/pn_2026-07-23.json",
+  "sha256": "2c5d25ec2ac943b47c0154cfaa1d51e8ab6cb36197efdb81e870f004b51a3b5f",
+  "fetched_at": "2026-08-17T09:21:27.863946+00:00",
+  "bytes": 51754
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "PN",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/PN/stream?from=2026-07-24T00:00Z&to=2026-07-25T00:00Z&bmUnit=2__HANGE004&bmUnit=E_BARNB-1&bmUnit=E_BHOLB-1&bmUnit=T_PINFB-1",
+  "path": "data/raw/elexon/physical-2026-07/pn_2026-07-24.json",
+  "sha256": "bdd7ecaf761ea5999892b8280b47c424b4dc0931ee077b2d704f6bf6a101f395",
+  "fetched_at": "2026-08-17T09:21:28.105118+00:00",
+  "bytes": 64240
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "PN",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/PN/stream?from=2026-07-25T00:00Z&to=2026-07-26T00:00Z&bmUnit=2__HANGE004&bmUnit=E_BARNB-1&bmUnit=E_BHOLB-1&bmUnit=T_PINFB-1",
+  "path": "data/raw/elexon/physical-2026-07/pn_2026-07-25.json",
+  "sha256": "bda11bb0e0cc715f0eee8b47248d262ae9c52940ee9f644d5fb66cc82d804374",
+  "fetched_at": "2026-08-17T09:21:28.331300+00:00",
+  "bytes": 67392
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "PN",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/PN/stream?from=2026-07-26T00:00Z&to=2026-07-27T00:00Z&bmUnit=2__HANGE004&bmUnit=E_BARNB-1&bmUnit=E_BHOLB-1&bmUnit=T_PINFB-1",
+  "path": "data/raw/elexon/physical-2026-07/pn_2026-07-26.json",
+  "sha256": "df9c2b3c5a2a3994133967bc4a1babe02cb0a0be09135e0bf1e147b8a0db47a2",
+  "fetched_at": "2026-08-17T09:21:28.552803+00:00",
+  "bytes": 71978
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "PN",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/PN/stream?from=2026-07-27T00:00Z&to=2026-07-28T00:00Z&bmUnit=2__HANGE004&bmUnit=E_BARNB-1&bmUnit=E_BHOLB-1&bmUnit=T_PINFB-1",
+  "path": "data/raw/elexon/physical-2026-07/pn_2026-07-27.json",
+  "sha256": "8017afe8e5128f7b59f3a737edda47de61e1bde0de746c0b5521db48f6fff8f1",
+  "fetched_at": "2026-08-17T09:21:28.800035+00:00",
+  "bytes": 60128
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "PN",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/PN/stream?from=2026-07-28T00:00Z&to=2026-07-29T00:00Z&bmUnit=2__HANGE004&bmUnit=E_BARNB-1&bmUnit=E_BHOLB-1&bmUnit=T_PINFB-1",
+  "path": "data/raw/elexon/physical-2026-07/pn_2026-07-28.json",
+  "sha256": "0a1172cf1bc435c2550eb06622402b1246accc1fddb6d51f7d2825dd5a51f008",
+  "fetched_at": "2026-08-17T09:21:29.064926+00:00",
+  "bytes": 67599
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "PN",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/PN/stream?from=2026-07-29T00:00Z&to=2026-07-30T00:00Z&bmUnit=2__HANGE004&bmUnit=E_BARNB-1&bmUnit=E_BHOLB-1&bmUnit=T_PINFB-1",
+  "path": "data/raw/elexon/physical-2026-07/pn_2026-07-29.json",
+  "sha256": "c7a1e578fab11cfd8d784c33551c86865730e644be11b16a76f529e817bfc6cd",
+  "fetched_at": "2026-08-17T09:21:29.299791+00:00",
+  "bytes": 66108
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "PN",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/PN/stream?from=2026-07-30T00:00Z&to=2026-07-31T00:00Z&bmUnit=2__HANGE004&bmUnit=E_BARNB-1&bmUnit=E_BHOLB-1&bmUnit=T_PINFB-1",
+  "path": "data/raw/elexon/physical-2026-07/pn_2026-07-30.json",
+  "sha256": "4eaa3e1ce521140b75569750d9578bac82c9ded1a9d0ee90c4866fef70286c9f",
+  "fetched_at": "2026-08-17T09:21:29.543012+00:00",
+  "bytes": 64990
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "PN",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/PN/stream?from=2026-07-31T00:00Z&to=2026-08-01T00:00Z&bmUnit=2__HANGE004&bmUnit=E_BARNB-1&bmUnit=E_BHOLB-1&bmUnit=T_PINFB-1",
+  "path": "data/raw/elexon/physical-2026-07/pn_2026-07-31.json",
+  "sha256": "3a5723ce54e2cb1d28a26da668236814e923e2b2bd8c3818a73e5b41287c5ae9",
+  "fetched_at": "2026-08-17T09:21:29.799240+00:00",
+  "bytes": 69034
+ }
+]

@@ -93,9 +93,21 @@ record, over the fourteen episode dates:
    demonstrated constraint-driven RRT example**; under the described
    methodology its day would not enter the classification at all.
 3. **PN revised upward after the flagged acceptance** — requires
-   **timestamped PN revision history**, which is **not public**. Only
-   final vintages are published. This criterion cannot be evaluated
-   from public data for any unit, ever.
+   **timestamped PN revision history**, which is **not public — and
+   structurally so, not merely unarchived**. Probed directly
+   (`evidence/pn-vintage-probe.json`): the non-stream `/datasets/PN`
+   endpoint returns rows identical to the stream (final vintages);
+   publish-time parameters are silently ignored while a deliberately
+   invalid `settlementDate` proves parameter validation does error; and
+   PN data for pre-gate-closure future periods is absent entirely.
+   Since an FPN is fixed at gate closure, the revision window NESO
+   measures lies **entirely before gate closure** — inside the interval
+   the public feed never covers. The revision trail is not unpublished
+   history; it is **never published in the first place**, which also
+   rules out capturing it prospectively via Elexon's IRIS push service
+   (which carries the same publications). This criterion cannot be
+   evaluated from public data for any unit, retrospectively or
+   prospectively, without a change to publication arrangements.
 
 So the honest statement is stronger than a caveat: **our 8,259 is not
 NESO's number, and no amount of public data can turn it into NESO's
@@ -165,12 +177,18 @@ the repetitive part. It cannot, by itself, prove the re-trading
 economics — nor reproduce the official diagnosis.** That is not a
 limitation of this investigation; it is its finding.
 
-The missing pieces are specific and small: **point-in-time PN
-revisions** and **authoritative constraint attribution**. If a £99m
-market-design problem is to inform dispatch-rule changes, publishing
-those two inputs would let outsiders reproduce the diagnosis rather
-than take it on trust. Until then, the public can observe the symptoms;
-it cannot independently reproduce the diagnosis.
+The missing pieces are specific: **point-in-time PN revisions** and
+**authoritative constraint attribution**. Neither is a matter of
+archiving — the PN revision trail is never published under current
+arrangements (see the probe above). If a £99m market-design problem is
+to inform dispatch-rule changes, publishing those two inputs would let
+outsiders reproduce the diagnosis rather than take it on trust. Until
+then, the public can observe the symptoms; it cannot independently
+reproduce the diagnosis. One consequence worth stating plainly: the
+estimate is also **uncheckable in both directions** — the same missing
+inputs that prevent confirming £99m prevent disputing it, and Ofgem
+itself describes the methodology as an order-of-magnitude tool with
+identified biases both ways.
 
 ## Corrections
 
@@ -200,8 +218,10 @@ them.*
 `select_episode.py` (selection, run once after the machinery was
 committed blind), `reconstruct.py excerpt|ledger|accounting`. Evidence:
 `selected-episode.json`, `excerpt.json`, `episode-ledger.json`,
-`episode-accounting.json`, `so-flag-tally.json`, manifests for the
-closed May corpus (6,045 Elexon + 5 NESO + 31 PN artefacts) and the
-reference layer (Ofgem RRT paper, Scotland network diagram, CMIS
-intertrip arming). Corpus discipline: May 2026 had zero prior project
-exposure; 2026-08-11..17 remains untouched.
+`episode-accounting.json`, `so-flag-tally.json`,
+`pn-vintage-probe.json`, manifests for the closed May corpus (6,045
+Elexon + 5 NESO + 31 PN artefacts) and the reference layer (Ofgem RRT
+paper, Scotland network diagram, CMIS intertrip arming). Corpus
+discipline: May 2026 had zero prior project exposure; 2026-08-11..17
+remains untouched (the future-period probe used 2026-08-18, outside the
+reserved window).

@@ -994,5 +994,39 @@
         "value": "2026-08-17T13:56:00Z"
       }
     ]
+  },
+  {
+    "predicate": "SourceArtifact",
+    "args": [
+      {
+        "type": "subject",
+        "value": "art-003-pn-vintage-probe"
+      },
+      {
+        "type": "subject",
+        "value": "elexon-insights PN vintage probes (dataset vs stream identity; publish-time params unrecognised with 400 validation control; pre-gate-closure periods unpublished) at investigations/003-follow-the-constraint/evidence/pn-vintage-probe.json"
+      },
+      {
+        "type": "subject",
+        "value": "72f2b70921e8fccfe757a48666ce58fc1ab78766a611b6bb046ed8bf7468ff69"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-08-17T14:35:00Z"
+      }
+    ]
+  },
+  {
+    "predicate": "InvestigationUses",
+    "args": [
+      {
+        "type": "subject",
+        "value": "inv-003-follow-the-constraint"
+      },
+      {
+        "type": "subject",
+        "value": "art-003-pn-vintage-probe"
+      }
+    ]
   }
 ]

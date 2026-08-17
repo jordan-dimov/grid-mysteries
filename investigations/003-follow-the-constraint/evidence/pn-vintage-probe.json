@@ -1,0 +1,122 @@
+{
+ "purpose": "Probe whether public Elexon Insights endpoints expose PN revision history (NESO RRT methodology criterion 3, per the pinned Ofgem paper). Conclusion: no. The dataset endpoint returns rows identical to the stream (final vintages); publish-time parameters are silently ignored while the validation control proves bad parameters do error; and PN data for pre-gate-closure future periods is absent entirely, so the pre-gate revision trail the methodology measures is never published (which also rules out prospective capture via the IRIS push service, which carries the same publications). 2026-08-18 lies outside the reserved 2026-08-11..17 window; no reserved-window data was touched.",
+ "retrieved_at": "2026-08-17T14:26:49.684924+00:00",
+ "probes": [
+  {
+   "name": "dataset_endpoint_may_vintage",
+   "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/PN?settlementDate=2026-05-20&settlementPeriod=30&bmUnit=E_DOLLB-1&format=json",
+   "status": 200,
+   "response": {
+    "data": [
+     {
+      "dataset": "PN",
+      "settlementDate": "2026-05-20",
+      "settlementPeriod": 30,
+      "timeFrom": "2026-05-20T13:31:00Z",
+      "timeTo": "2026-05-20T14:00:00Z",
+      "levelFrom": -30,
+      "levelTo": -30,
+      "nationalGridBmUnit": "DOLLB-1",
+      "bmUnit": "E_DOLLB-1"
+     },
+     {
+      "dataset": "PN",
+      "settlementDate": "2026-05-20",
+      "settlementPeriod": 30,
+      "timeFrom": "2026-05-20T13:30:00Z",
+      "timeTo": "2026-05-20T13:31:00Z",
+      "levelFrom": -49,
+      "levelTo": -30,
+      "nationalGridBmUnit": "DOLLB-1",
+      "bmUnit": "E_DOLLB-1"
+     }
+    ]
+   }
+  },
+  {
+   "name": "stream_endpoint_same_slice",
+   "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/PN/stream?from=2026-05-20T13:30Z&to=2026-05-20T14:00Z&settlementPeriodFrom=30&settlementPeriodTo=30&bmUnit=E_DOLLB-1",
+   "status": 200,
+   "response": [
+    {
+     "dataset": "PN",
+     "settlementDate": "2026-05-20",
+     "settlementPeriod": 30,
+     "timeFrom": "2026-05-20T13:31:00Z",
+     "timeTo": "2026-05-20T14:00:00Z",
+     "levelFrom": -30,
+     "levelTo": -30,
+     "nationalGridBmUnit": "DOLLB-1",
+     "bmUnit": "E_DOLLB-1"
+    },
+    {
+     "dataset": "PN",
+     "settlementDate": "2026-05-20",
+     "settlementPeriod": 30,
+     "timeFrom": "2026-05-20T13:30:00Z",
+     "timeTo": "2026-05-20T13:31:00Z",
+     "levelFrom": -49,
+     "levelTo": -30,
+     "nationalGridBmUnit": "DOLLB-1",
+     "bmUnit": "E_DOLLB-1"
+    }
+   ]
+  },
+  {
+   "name": "publish_time_param_unrecognised",
+   "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/PN?settlementDate=2026-05-20&settlementPeriod=30&bmUnit=E_DOLLB-1&publishDateTimeFrom=NOT_A_DATE&format=json",
+   "status": 200,
+   "response": {
+    "data": [
+     {
+      "dataset": "PN",
+      "settlementDate": "2026-05-20",
+      "settlementPeriod": 30,
+      "timeFrom": "2026-05-20T13:31:00Z",
+      "timeTo": "2026-05-20T14:00:00Z",
+      "levelFrom": -30,
+      "levelTo": -30,
+      "nationalGridBmUnit": "DOLLB-1",
+      "bmUnit": "E_DOLLB-1"
+     },
+     {
+      "dataset": "PN",
+      "settlementDate": "2026-05-20",
+      "settlementPeriod": 30,
+      "timeFrom": "2026-05-20T13:30:00Z",
+      "timeTo": "2026-05-20T13:31:00Z",
+      "levelFrom": -49,
+      "levelTo": -30,
+      "nationalGridBmUnit": "DOLLB-1",
+      "bmUnit": "E_DOLLB-1"
+     }
+    ]
+   }
+  },
+  {
+   "name": "validation_control_bad_settlement_date",
+   "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/PN?settlementDate=NOT_A_DATE&settlementPeriod=30&format=json",
+   "status": 400,
+   "response": {
+    "type": "https://tools.ietf.org/html/rfc9110#section-15.5.1",
+    "title": "One or more validation errors occurred.",
+    "status": 400,
+    "errors": {
+     "SettlementDate": [
+      "The value 'NOT_A_DATE' is not valid for SettlementDate.",
+      "A value for the 'SettlementDate' parameter or property was not provided."
+     ]
+    },
+    "traceId": "00-9236924adcc19762d8526a9094db856c-df1dd537eb0df5ae-00"
+   }
+  },
+  {
+   "name": "pre_gate_closure_future_period",
+   "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/PN?settlementDate=2026-08-18&settlementPeriod=40&bmUnit=E_DOLLB-1&format=json",
+   "status": 200,
+   "response": {
+    "data": []
+   }
+  }
+ ]
+}

@@ -107,9 +107,28 @@ MELS/MILS for instructed units; fuel-mix and interconnector context;
 wind-unit curtailment identification; day-ahead constraint-flow
 forecast context (context only, per 003); storage behaviour in the
 period; and the published cost-category row itself. Actual metered
-generation (B1610/actual per-unit output) is a declared candidate
-input for checking that instructed units physically responded, subject
-to its availability for the period at acquisition time.
+generation (B1610, settlement-period metered energy in MWh) is a
+declared candidate input for **checking whether settlement-period
+metered output is consistent with the instructed response** — it
+cannot prove that a unit followed a particular acceptance at a
+particular minute, and will not be presented as doing so; subject to
+its availability for the period at acquisition time.
+
+Two further observed-money layers are declared, so that any non-BM
+component of the half-hour's cost is visible by design rather than
+discovered as a residual:
+
+- **Disaggregated BSAD** (NESO, 2026-27; settlement-period adjustment
+  cost, volume, and `TradeFlag` where `T` = system and `F` = energy):
+  all adjustments touching the selected period are reported. The
+  `TradeFlag` is contextual evidence only — `T` means "system issue
+  such as a constraint" and is **not** treated as membership of NESO's
+  `Constraints` category, nor as attribution to any physical boundary.
+- **Daily Balancing Volume** (NESO, 2026-27; settlement-period MWh by
+  category, including `Constraint Offers (MWh)` and
+  `Constraint Bids (MWh)`): gives the selected £ figure a published
+  physical scale, presented alongside it — never as a unit-level
+  decomposition of it.
 
 Three-column discipline throughout (observed / supported inference /
 not publicly observable), as in 003. Realised facts only; no
@@ -130,3 +149,21 @@ Amendments follow 003's precedent: legitimate before acquisition with
 honest chronology, recorded in this section, and the declaration
 freezes when acquisition begins. An amended rule never runs against
 data that taught the amendment.
+
+## Amendments before acquisition
+
+1. **2026-08-18, before any June data was fetched; no June row of any
+   dataset named here has been seen.** Two changes. **(a)** The B1610
+   wording overclaimed: B1610 is settlement-period metered energy
+   (MWh), not instantaneous output, so it can show *consistency with*
+   an instructed response, never *proof of* minute-level compliance;
+   the declared output is reworded accordingly. **(b)** Two
+   observed-money layers added — Disaggregated BSAD (adjustment cost,
+   volume, system/energy `TradeFlag`) and Daily Balancing Volume
+   (per-period category MWh, including constraint offers/bids) — so
+   that any non-BM component of the winning half-hour's cost is
+   declared visible up front rather than surfacing as an unexplained
+   residual after selection. Both schemas were verified on 2026-08-18
+   against **April 2026 rows only**. Neither dataset changes the
+   selection rule, which is untouched. **The declaration is now
+   frozen.**

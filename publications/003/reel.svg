@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="560" viewBox="0 0 920 560">
+<rect width="920" height="560" fill="#fcfcfb"/>
+<text x="48" y="46" font-family="system-ui, 'Segoe UI', sans-serif" font-size="23" font-weight="700" fill="#0b0b0b">One battery's day: E_DOLLB-1, 2026-05-20</text>
+<text x="48" y="70" font-family="system-ui, 'Segoe UI', sans-serif" font-size="13.5" fill="#52514e">21 repeat-curtailment cycles · 88 distinct acceptances · 0 SO-flagged.</text>
+<line x1="48" y1="228.9" x2="872" y2="228.9" stroke="#52514e" stroke-width="1" stroke-dasharray="4 3"/>
+<text x="872" y="222.9" font-family="system-ui, 'Segoe UI', sans-serif" font-size="11" fill="#52514e" text-anchor="end">0 MW</text>
+<rect x="48.0" y="228.9" width="15.2" height="154.0" fill="#eb6834"/>
+<rect x="65.2" y="228.9" width="15.2" height="154.0" fill="#eb6834"/>
+<rect x="82.3" y="228.9" width="15.2" height="154.0" fill="#eb6834"/>
+<rect x="99.5" y="228.9" width="15.2" height="154.0" fill="#eb6834"/>
+<rect x="133.8" y="196.2" width="15.2" height="32.7" fill="#86b6ef"/>
+<rect x="133.8" y="218.1" width="15.2" height="3" fill="#eb6834"/>
+<rect x="151.0" y="182.2" width="15.2" height="46.7" fill="#86b6ef"/>
+<rect x="151.0" y="218.1" width="15.2" height="3" fill="#eb6834"/>
+<rect x="168.2" y="182.2" width="15.2" height="46.7" fill="#86b6ef"/>
+<rect x="168.2" y="218.1" width="15.2" height="3" fill="#eb6834"/>
+<rect x="185.3" y="182.2" width="15.2" height="46.7" fill="#86b6ef"/>
+<rect x="185.3" y="218.1" width="15.2" height="3" fill="#eb6834"/>
+<rect x="202.5" y="205.6" width="15.2" height="23.3" fill="#86b6ef"/>
+<rect x="202.5" y="227.4" width="15.2" height="3" fill="#eb6834"/>
+<rect x="219.7" y="182.2" width="15.2" height="46.7" fill="#86b6ef"/>
+<rect x="219.7" y="227.4" width="15.2" height="3" fill="#eb6834"/>
+<rect x="236.8" y="182.2" width="15.2" height="46.7" fill="#86b6ef"/>
+<rect x="236.8" y="221.2" width="15.2" height="3" fill="#eb6834"/>
+<rect x="254.0" y="196.2" width="15.2" height="32.7" fill="#86b6ef"/>
+<rect x="254.0" y="227.4" width="15.2" height="3" fill="#eb6834"/>
+<rect x="271.2" y="183.8" width="15.2" height="45.1" fill="#86b6ef"/>
+<rect x="271.2" y="218.1" width="15.2" height="3" fill="#eb6834"/>
+<rect x="288.3" y="129.3" width="15.2" height="99.6" fill="#86b6ef"/>
+<rect x="288.3" y="218.1" width="15.2" height="3" fill="#eb6834"/>
+<rect x="305.5" y="129.3" width="15.2" height="99.6" fill="#86b6ef"/>
+<rect x="305.5" y="218.1" width="15.2" height="3" fill="#eb6834"/>
+<rect x="322.7" y="129.3" width="15.2" height="99.6" fill="#86b6ef"/>
+<rect x="339.8" y="129.3" width="15.2" height="99.6" fill="#86b6ef"/>
+<rect x="339.8" y="218.1" width="15.2" height="3" fill="#eb6834"/>
+<rect x="357.0" y="129.3" width="15.2" height="99.6" fill="#86b6ef"/>
+<rect x="357.0" y="218.1" width="15.2" height="3" fill="#eb6834"/>
+<rect x="374.2" y="129.3" width="15.2" height="99.6" fill="#86b6ef"/>
+<rect x="391.3" y="137.1" width="15.2" height="91.8" fill="#86b6ef"/>
+<rect x="408.5" y="188.4" width="15.2" height="40.4" fill="#86b6ef"/>
+<rect x="425.7" y="188.4" width="15.2" height="40.4" fill="#86b6ef"/>
+<rect x="425.7" y="228.9" width="15.2" height="17.1" fill="#eb6834"/>
+<rect x="442.8" y="224.2" width="15.2" height="4.7" fill="#86b6ef"/>
+<rect x="511.5" y="228.9" width="15.2" height="74.7" fill="#eb6834"/>
+<rect x="528.7" y="228.9" width="15.2" height="76.2" fill="#eb6834"/>
+<rect x="580.2" y="228.9" width="15.2" height="77.8" fill="#eb6834"/>
+<rect x="597.3" y="228.9" width="15.2" height="77.8" fill="#eb6834"/>
+<rect x="631.7" y="228.9" width="15.2" height="62.2" fill="#eb6834"/>
+<rect x="648.8" y="221.1" width="15.2" height="7.8" fill="#86b6ef"/>
+<rect x="648.8" y="228.9" width="15.2" height="24.9" fill="#eb6834"/>
+<rect x="666.0" y="221.1" width="15.2" height="7.8" fill="#86b6ef"/>
+<rect x="666.0" y="228.9" width="15.2" height="14.0" fill="#eb6834"/>
+<rect x="683.2" y="228.9" width="15.2" height="29.6" fill="#eb6834"/>
+<rect x="700.3" y="169.8" width="15.2" height="59.1" fill="#86b6ef"/>
+<rect x="700.3" y="227.4" width="15.2" height="3" fill="#eb6834"/>
+<rect x="717.5" y="168.2" width="15.2" height="60.7" fill="#86b6ef"/>
+<rect x="717.5" y="225.8" width="15.2" height="3" fill="#eb6834"/>
+<rect x="734.7" y="168.2" width="15.2" height="60.7" fill="#86b6ef"/>
+<rect x="734.7" y="228.9" width="15.2" height="48.2" fill="#eb6834"/>
+<rect x="751.8" y="227.4" width="15.2" height="3" fill="#eb6834"/>
+<rect x="769.0" y="227.3" width="15.2" height="1.6" fill="#86b6ef"/>
+<rect x="769.0" y="225.8" width="15.2" height="3" fill="#eb6834"/>
+<rect x="786.2" y="227.3" width="15.2" height="1.6" fill="#86b6ef"/>
+<rect x="786.2" y="227.4" width="15.2" height="3" fill="#eb6834"/>
+<rect x="820.5" y="227.4" width="15.2" height="3" fill="#eb6834"/>
+<rect x="854.8" y="228.9" width="15.2" height="34.2" fill="#eb6834"/>
+<text x="142.4" y="386.9" font-family="system-ui, 'Segoe UI', sans-serif" font-size="12" font-weight="600" fill="#eb6834">instructed to -99 MW (import)</text>
+<text x="55.6" y="414" font-family="system-ui, 'Segoe UI', sans-serif" font-size="10.5" fill="#52514e" text-anchor="middle">P1</text>
+<text x="244.4" y="414" font-family="system-ui, 'Segoe UI', sans-serif" font-size="10.5" fill="#52514e" text-anchor="middle">P12</text>
+<text x="450.4" y="414" font-family="system-ui, 'Segoe UI', sans-serif" font-size="10.5" fill="#52514e" text-anchor="middle">P24</text>
+<text x="656.4" y="414" font-family="system-ui, 'Segoe UI', sans-serif" font-size="10.5" fill="#52514e" text-anchor="middle">P36</text>
+<text x="862.4" y="414" font-family="system-ui, 'Segoe UI', sans-serif" font-size="10.5" fill="#52514e" text-anchor="middle">P48</text>
+<rect x="48" y="430" width="12" height="12" fill="#86b6ef"/><text x="66" y="440" font-family="system-ui, 'Segoe UI', sans-serif" font-size="12" fill="#0b0b0b">final physical notification — scheduled export (final vintage; revision history is never published)</text>
+<rect x="48" y="452" width="12" height="12" fill="#eb6834"/><text x="66" y="462" font-family="system-ui, 'Segoe UI', sans-serif" font-size="12" fill="#0b0b0b">deepest accepted instruction in the period (BOALF)</text>
+<text x="48" y="494" font-family="system-ui, 'Segoe UI', sans-serif" font-size="13.5" fill="#0b0b0b">Between any two instructions sits the step the public record cannot show: <tspan font-weight="700">whether retained energy was re-sold intraday.</tspan></text>
+<text x="48" y="514" font-family="system-ui, 'Segoe UI', sans-serif" font-size="13" fill="#52514e">Zero SO-flags also means NESO's own RRT methodology (which requires a system-flagged acceptance) would not count this day at all.</text>
+<line x1="48" y1="508" x2="872" y2="508" stroke="#e5e4e0"/>
+<text x="48" y="530" font-family="system-ui, 'Segoe UI', sans-serif" font-size="11.5" fill="#52514e">Evidence: presentation-series.json, excerpt.json, so-flag-tally.json · pre-declared, pinned, governed · github.com/jordan-dimov/grid-mysteries</text>
+</svg>

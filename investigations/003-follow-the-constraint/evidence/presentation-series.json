@@ -1,0 +1,480 @@
+{
+ "labelling": "Daily published cost is NESO's outturn for the constraint group (observed, boundary-specific, daily grain). Cycle counts and MWh are GB-wide storage activity on the same dates \u2014 concurrence, not attribution to the boundary. Single-day cycles are computed within each date alone, so they need not sum to the episode score.",
+ "constraint_group": "SSE-SP",
+ "days": [
+  {
+   "date": "2026-05-18",
+   "gb_cycles": 617,
+   "gb_bid_down_mwh": "4595.146410481374389083",
+   "published_group_cost_gbp": "23882"
+  },
+  {
+   "date": "2026-05-19",
+   "gb_cycles": 102,
+   "gb_bid_down_mwh": "2832.266246409863959299",
+   "published_group_cost_gbp": "7796997"
+  },
+  {
+   "date": "2026-05-20",
+   "gb_cycles": 1060,
+   "gb_bid_down_mwh": "10785.017357856736263488",
+   "published_group_cost_gbp": "141287"
+  },
+  {
+   "date": "2026-05-21",
+   "gb_cycles": 391,
+   "gb_bid_down_mwh": "2426.285770606964485424",
+   "published_group_cost_gbp": "1262117"
+  },
+  {
+   "date": "2026-05-22",
+   "gb_cycles": 410,
+   "gb_bid_down_mwh": "6131.149284132773457163",
+   "published_group_cost_gbp": "101358"
+  },
+  {
+   "date": "2026-05-23",
+   "gb_cycles": 123,
+   "gb_bid_down_mwh": "2439.655758749999992317",
+   "published_group_cost_gbp": "286498"
+  },
+  {
+   "date": "2026-05-24",
+   "gb_cycles": 100,
+   "gb_bid_down_mwh": "1411.212925971464752633",
+   "published_group_cost_gbp": "1267211"
+  },
+  {
+   "date": "2026-05-25",
+   "gb_cycles": 361,
+   "gb_bid_down_mwh": "3656.875569735229927046",
+   "published_group_cost_gbp": "15452"
+  },
+  {
+   "date": "2026-05-26",
+   "gb_cycles": 635,
+   "gb_bid_down_mwh": "6538.214512157802251305",
+   "published_group_cost_gbp": "4862"
+  },
+  {
+   "date": "2026-05-27",
+   "gb_cycles": 755,
+   "gb_bid_down_mwh": "5858.992038978576773964",
+   "published_group_cost_gbp": "5740"
+  },
+  {
+   "date": "2026-05-28",
+   "gb_cycles": 514,
+   "gb_bid_down_mwh": "6825.004126764664009798",
+   "published_group_cost_gbp": "65881"
+  },
+  {
+   "date": "2026-05-29",
+   "gb_cycles": 157,
+   "gb_bid_down_mwh": "1495.498521062238455066",
+   "published_group_cost_gbp": "102442"
+  },
+  {
+   "date": "2026-05-30",
+   "gb_cycles": 874,
+   "gb_bid_down_mwh": "7057.969216347504945154",
+   "published_group_cost_gbp": "1032"
+  },
+  {
+   "date": "2026-05-31",
+   "gb_cycles": 1055,
+   "gb_bid_down_mwh": "7816.141893440292371170",
+   "published_group_cost_gbp": "435806"
+  }
+ ],
+ "focus": {
+  "unit": "E_DOLLB-1",
+  "day": "2026-05-20",
+  "trajectory": [
+   {
+    "period": 1,
+    "fpn_max_mw": null,
+    "fpn_min_mw": null,
+    "instructed_min_mw": "-99",
+    "acceptances": 4,
+    "so_flagged": 0
+   },
+   {
+    "period": 2,
+    "fpn_max_mw": "0",
+    "fpn_min_mw": "0",
+    "instructed_min_mw": "-99",
+    "acceptances": 5,
+    "so_flagged": 0
+   },
+   {
+    "period": 3,
+    "fpn_max_mw": "0",
+    "fpn_min_mw": "-15",
+    "instructed_min_mw": "-99",
+    "acceptances": 3,
+    "so_flagged": 0
+   },
+   {
+    "period": 4,
+    "fpn_max_mw": "0",
+    "fpn_min_mw": "-15",
+    "instructed_min_mw": "-99",
+    "acceptances": 2,
+    "so_flagged": 0
+   },
+   {
+    "period": 5,
+    "fpn_max_mw": "0",
+    "fpn_min_mw": "0",
+    "instructed_min_mw": null,
+    "acceptances": 0,
+    "so_flagged": 0
+   },
+   {
+    "period": 6,
+    "fpn_max_mw": "21",
+    "fpn_min_mw": "0",
+    "instructed_min_mw": "6",
+    "acceptances": 2,
+    "so_flagged": 0
+   },
+   {
+    "period": 7,
+    "fpn_max_mw": "30",
+    "fpn_min_mw": "21",
+    "instructed_min_mw": "6",
+    "acceptances": 4,
+    "so_flagged": 0
+   },
+   {
+    "period": 8,
+    "fpn_max_mw": "30",
+    "fpn_min_mw": "30",
+    "instructed_min_mw": "6",
+    "acceptances": 4,
+    "so_flagged": 0
+   },
+   {
+    "period": 9,
+    "fpn_max_mw": "30",
+    "fpn_min_mw": "15",
+    "instructed_min_mw": "6",
+    "acceptances": 2,
+    "so_flagged": 0
+   },
+   {
+    "period": 10,
+    "fpn_max_mw": "15",
+    "fpn_min_mw": "10",
+    "instructed_min_mw": "0",
+    "acceptances": 4,
+    "so_flagged": 0
+   },
+   {
+    "period": 11,
+    "fpn_max_mw": "30",
+    "fpn_min_mw": "10",
+    "instructed_min_mw": "0",
+    "acceptances": 4,
+    "so_flagged": 0
+   },
+   {
+    "period": 12,
+    "fpn_max_mw": "30",
+    "fpn_min_mw": "21",
+    "instructed_min_mw": "4",
+    "acceptances": 3,
+    "so_flagged": 0
+   },
+   {
+    "period": 13,
+    "fpn_max_mw": "21",
+    "fpn_min_mw": "21",
+    "instructed_min_mw": "0",
+    "acceptances": 9,
+    "so_flagged": 0
+   },
+   {
+    "period": 14,
+    "fpn_max_mw": "29",
+    "fpn_min_mw": "21",
+    "instructed_min_mw": "6",
+    "acceptances": 3,
+    "so_flagged": 0
+   },
+   {
+    "period": 15,
+    "fpn_max_mw": "64",
+    "fpn_min_mw": "29",
+    "instructed_min_mw": "6",
+    "acceptances": 5,
+    "so_flagged": 0
+   },
+   {
+    "period": 16,
+    "fpn_max_mw": "64",
+    "fpn_min_mw": "64",
+    "instructed_min_mw": "6",
+    "acceptances": 2,
+    "so_flagged": 0
+   },
+   {
+    "period": 17,
+    "fpn_max_mw": "64",
+    "fpn_min_mw": "64",
+    "instructed_min_mw": null,
+    "acceptances": 0,
+    "so_flagged": 0
+   },
+   {
+    "period": 18,
+    "fpn_max_mw": "64",
+    "fpn_min_mw": "64",
+    "instructed_min_mw": "6",
+    "acceptances": 3,
+    "so_flagged": 0
+   },
+   {
+    "period": 19,
+    "fpn_max_mw": "64",
+    "fpn_min_mw": "64",
+    "instructed_min_mw": "6",
+    "acceptances": 1,
+    "so_flagged": 0
+   },
+   {
+    "period": 20,
+    "fpn_max_mw": "64",
+    "fpn_min_mw": "59",
+    "instructed_min_mw": null,
+    "acceptances": 0,
+    "so_flagged": 0
+   },
+   {
+    "period": 21,
+    "fpn_max_mw": "59",
+    "fpn_min_mw": "13",
+    "instructed_min_mw": null,
+    "acceptances": 0,
+    "so_flagged": 0
+   },
+   {
+    "period": 22,
+    "fpn_max_mw": "26",
+    "fpn_min_mw": "13",
+    "instructed_min_mw": null,
+    "acceptances": 0,
+    "so_flagged": 0
+   },
+   {
+    "period": 23,
+    "fpn_max_mw": "26",
+    "fpn_min_mw": "3",
+    "instructed_min_mw": "-11",
+    "acceptances": 2,
+    "so_flagged": 0
+   },
+   {
+    "period": 24,
+    "fpn_max_mw": "3",
+    "fpn_min_mw": "0",
+    "instructed_min_mw": null,
+    "acceptances": 0,
+    "so_flagged": 0
+   },
+   {
+    "period": 25,
+    "fpn_max_mw": "0",
+    "fpn_min_mw": "0",
+    "instructed_min_mw": null,
+    "acceptances": 0,
+    "so_flagged": 0
+   },
+   {
+    "period": 26,
+    "fpn_max_mw": "0",
+    "fpn_min_mw": "0",
+    "instructed_min_mw": null,
+    "acceptances": 0,
+    "so_flagged": 0
+   },
+   {
+    "period": 27,
+    "fpn_max_mw": "0",
+    "fpn_min_mw": "0",
+    "instructed_min_mw": null,
+    "acceptances": 0,
+    "so_flagged": 0
+   },
+   {
+    "period": 28,
+    "fpn_max_mw": "0",
+    "fpn_min_mw": "-48",
+    "instructed_min_mw": "-48",
+    "acceptances": 6,
+    "so_flagged": 0
+   },
+   {
+    "period": 29,
+    "fpn_max_mw": "-48",
+    "fpn_min_mw": "-49",
+    "instructed_min_mw": "-49",
+    "acceptances": 1,
+    "so_flagged": 0
+   },
+   {
+    "period": 30,
+    "fpn_max_mw": "-30",
+    "fpn_min_mw": "-49",
+    "instructed_min_mw": null,
+    "acceptances": 0,
+    "so_flagged": 0
+   },
+   {
+    "period": 31,
+    "fpn_max_mw": "-25",
+    "fpn_min_mw": "-30",
+    "instructed_min_mw": null,
+    "acceptances": 0,
+    "so_flagged": 0
+   },
+   {
+    "period": 32,
+    "fpn_max_mw": "-7",
+    "fpn_min_mw": "-25",
+    "instructed_min_mw": "-50",
+    "acceptances": 2,
+    "so_flagged": 0
+   },
+   {
+    "period": 33,
+    "fpn_max_mw": "0",
+    "fpn_min_mw": "-7",
+    "instructed_min_mw": "-50",
+    "acceptances": 2,
+    "so_flagged": 0
+   },
+   {
+    "period": 34,
+    "fpn_max_mw": "0",
+    "fpn_min_mw": "0",
+    "instructed_min_mw": null,
+    "acceptances": 0,
+    "so_flagged": 0
+   },
+   {
+    "period": 35,
+    "fpn_max_mw": "0",
+    "fpn_min_mw": "0",
+    "instructed_min_mw": "-40",
+    "acceptances": 1,
+    "so_flagged": 0
+   },
+   {
+    "period": 36,
+    "fpn_max_mw": "5",
+    "fpn_min_mw": "0",
+    "instructed_min_mw": "-16",
+    "acceptances": 3,
+    "so_flagged": 0
+   },
+   {
+    "period": 37,
+    "fpn_max_mw": "5",
+    "fpn_min_mw": "0",
+    "instructed_min_mw": "-9",
+    "acceptances": 2,
+    "so_flagged": 0
+   },
+   {
+    "period": 38,
+    "fpn_max_mw": "0",
+    "fpn_min_mw": "0",
+    "instructed_min_mw": "-19",
+    "acceptances": 3,
+    "so_flagged": 0
+   },
+   {
+    "period": 39,
+    "fpn_max_mw": "38",
+    "fpn_min_mw": "0",
+    "instructed_min_mw": "0",
+    "acceptances": 5,
+    "so_flagged": 0
+   },
+   {
+    "period": 40,
+    "fpn_max_mw": "39",
+    "fpn_min_mw": "38",
+    "instructed_min_mw": "1",
+    "acceptances": 2,
+    "so_flagged": 0
+   },
+   {
+    "period": 41,
+    "fpn_max_mw": "39",
+    "fpn_min_mw": "0",
+    "instructed_min_mw": "-31",
+    "acceptances": 1,
+    "so_flagged": 0
+   },
+   {
+    "period": 42,
+    "fpn_max_mw": "0",
+    "fpn_min_mw": "0",
+    "instructed_min_mw": "0",
+    "acceptances": 7,
+    "so_flagged": 0
+   },
+   {
+    "period": 43,
+    "fpn_max_mw": "1",
+    "fpn_min_mw": "0",
+    "instructed_min_mw": "1",
+    "acceptances": 1,
+    "so_flagged": 0
+   },
+   {
+    "period": 44,
+    "fpn_max_mw": "1",
+    "fpn_min_mw": "0",
+    "instructed_min_mw": "0",
+    "acceptances": 3,
+    "so_flagged": 0
+   },
+   {
+    "period": 45,
+    "fpn_max_mw": "0",
+    "fpn_min_mw": "0",
+    "instructed_min_mw": null,
+    "acceptances": 0,
+    "so_flagged": 0
+   },
+   {
+    "period": 46,
+    "fpn_max_mw": "0",
+    "fpn_min_mw": "0",
+    "instructed_min_mw": "0",
+    "acceptances": 1,
+    "so_flagged": 0
+   },
+   {
+    "period": 47,
+    "fpn_max_mw": "0",
+    "fpn_min_mw": "-11",
+    "instructed_min_mw": null,
+    "acceptances": 0,
+    "so_flagged": 0
+   },
+   {
+    "period": 48,
+    "fpn_max_mw": "-1",
+    "fpn_min_mw": "-11",
+    "instructed_min_mw": "-22",
+    "acceptances": 5,
+    "so_flagged": 0
+   }
+  ]
+ }
+}

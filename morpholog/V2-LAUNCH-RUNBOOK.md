@@ -98,9 +98,11 @@ psql -d grid_mysteries_morpholog
 
 Note this write grant is exactly the substrate-bypass capability of
 threat-model layer B: from here, a process with the machine credential
-*could* forge a claim by raw SQL. The launch posture accepts that under
-the cooperative-machine model; the detective control is the genesis
-attestation check (see the threat-model section).
+*could* forge a claim (and forge its audit row's attestation) by raw
+SQL. The launch posture accepts that under the cooperative-machine
+model; the tamper-evidence that survives it is the externally-retained
+signed checkpoint over the committed prefix, not the attestation field
+(see the threat-model section).
 
 The signing key `audit-2026` is already registered in the shared claims
 table (v1 row); v2's `key_not_already_registered` correctly refuses a
@@ -232,20 +234,41 @@ writer role and exposing only rule-checked proposals (e.g. a long-lived
 write** — a real capability boundary, and more than a launch-day change.
 See RESEARCH-V2-DESIGN.md for the sketch.
 
-**Detective control for layer B (genesis attestation).** Every audit
-row carries `attestation.authenticated_by` — the PostgreSQL
-`session_user` that actually committed it, inside the Merkle leaf and
-therefore in every evidence pack forever. A forged claim has no audit
-row at all (caught by replay divergence); a claim forged *and* back-dated
-by also forging an audit row would carry the machine's `authenticated_by`,
-not the human's. So the standing detective control after launch is:
-**the `establish_governance`, every `seal_protocol`, and every
-`approve_publication` transition must show `attestation.authenticated_by
-= gm_human`** — a machine-committed governance/seal/approval row is
-provably illegitimate in the pack. This is a launch-time addition to
-`scripts/replay-research` (checking the committed `evidence-pack.json`),
-armed once the pack contains the v2 genesis; it is a no-op against the
-current v1-only pack.
+**What `attestation.authenticated_by` is, precisely.** Every audit row
+Morpholog writes through the runtime carries the PostgreSQL `session_user`
+that committed it, inside the Merkle leaf. This is **trustworthy evidence
+of the authenticated DB login for rows written through the governed path**
+— but it is **NOT an unforgeable identity assertion against a credential
+holding raw `morpholog.audit` DML.** The schema only checks that
+`attestation` is a non-null JSON object; nothing binds `authenticated_by`
+to the real `session_user` for an arbitrary SQL write. `scripts/rehearse-v2`
+§H2 forces this: `gm_machine` raw-inserts an audit row reading
+`{"authenticated_by":"gm_human"}` just as easily as it forges the claim.
+
+So the standing `replay-research` check — every `establish_governance` /
+`seal_protocol` / `approve_publication` row must attest the human login —
+catches only **(1) misconfiguration** (a governance row committed by the
+wrong login through the legit path) and **(2) a naive forger** who
+doesn't also fake the attestation. It does **not** catch the modelled
+layer-B attacker. Keep it (both cases are real), but do not claim it
+restores adversarial detective security.
+
+**What actually survives a raw-DB attacker (layer C, tamper evidence):**
+
+- An **externally-retained signed checkpoint** proves its committed
+  prefix was not rewritten. The signing key (`~/.config/.../audit-signing-2026.pem`)
+  is **not held by the machine**, so the attacker cannot forge a valid
+  signature over a tampered tree. `scripts/rehearse-v2` §H2 confirms the
+  attacker's own re-checkpoint comes out **unsigned**, which
+  `replay-research`'s pinned-key assertion refuses.
+- **Claims-vs-audit replay divergence** exposes a forgery that leaves
+  the claims table and the audit log inconsistent (the claims-only
+  `SealAuthority` forgery shows as `only_in_claims_table`).
+- **Not** protected: a *consistent* forgery appended **after the latest
+  external anchor** (append is legal in an append-only log, so the prefix
+  consistency proof passes). Only the next human-signed checkpoint — and
+  a human choosing to notice — closes that window. This is inherent to
+  the cooperative-machine posture, not a bug to fix before Friday.
 
 ### C. Acquisition capability security — NOT PROVIDED by Morpholog
 

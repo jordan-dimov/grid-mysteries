@@ -325,6 +325,27 @@ assert any(c['predicate'] == 'SealAuthority' and c['args'][0]['value'] == 'claud
 print('   OK  audit verify exits non-zero and reports replay DIVERGENT (forged claim only_in_claims_table)')
 print('       (but the seal already emitted acquisition authority — detection cannot un-see data)')
 EOF
+echo "   -- and attestation.authenticated_by is ALSO forgeable (raw DML on morpholog.audit):"
+PGPASSWORD=rehearse-machine psql "postgres://${MACHINE_ROLE}:rehearse-machine@${HOST}/${DB}" -q -tAc \
+  "INSERT INTO morpholog.audit (transition_id, transformation_name, arguments, actor,
+     invariant_epoch, invariants_checked, asserted_claims, retracted_claims, emitted_intents, attestation)
+   VALUES (gen_random_uuid(), 'seal_protocol', '[]'::jsonb,
+     '{\"type\":\"subject\",\"value\":\"jordan_dimov\"}'::jsonb, 1,
+     '[]'::jsonb, '[]'::jsonb, '[]'::jsonb, '[]'::jsonb,
+     '{\"mode\":\"gateway\",\"authenticated_by\":\"${HUMAN_ROLE}\"}'::jsonb)" >/dev/null
+forged_att=$(psql "$ADMIN_DB_URL" -tAc \
+  "select attestation->>'authenticated_by' from morpholog.audit
+   where transformation_name='seal_protocol' and asserted_claims='[]'::jsonb limit 1")
+python3 - "$forged_att" "$HUMAN_ROLE" <<'EOF'
+import sys
+assert sys.argv[1] == sys.argv[2], f"expected forged attestation to read {sys.argv[2]}, got {sys.argv[1]}"
+print(f"   !! forged audit row attests authenticated_by={sys.argv[1]!r} — attestation is NOT")
+print("      an unforgeable identity assertion against raw-audit-DML; the genesis-attestation")
+print("      check in replay-research catches misconfiguration/naive forgery only, not this.")
+EOF
+echo "   -- what a raw-audit-DML attacker CANNOT do: forge a valid checkpoint signature"
+unsigned=$(morpholog audit checkpoint --database-url "$ADMIN_DB_URL" 2>/dev/null | python3 -c "import json,sys;print(bool(json.load(sys.stdin).get('signatures')))")
+[[ "$unsigned" == "False" ]] && echo "   OK  attacker's re-checkpoint is UNSIGNED (no private key) — replay-research's pinned-key assertion refuses it; the externally-retained signed anchor over the committed prefix is the real tamper-evidence"
 echo "   -- why single-role least-privilege cannot fix this:"
 psql "$ADMIN_DB_URL" -q -c "DROP ROLE IF EXISTS ${MACHINE_ROLE}_norw" -c "CREATE ROLE ${MACHINE_ROLE}_norw LOGIN PASSWORD 'norw'" >/dev/null
 psql "$ADMIN_DB_URL" -q -c "GRANT USAGE ON SCHEMA morpholog TO ${MACHINE_ROLE}_norw" -c "GRANT SELECT ON ALL TABLES IN SCHEMA morpholog TO ${MACHINE_ROLE}_norw" >/dev/null

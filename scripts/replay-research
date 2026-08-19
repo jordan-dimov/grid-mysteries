@@ -53,16 +53,25 @@ if sig.get('key_id') != 'audit-2026' or sig.get('public_key') != pinned:
 print(f'   anchor signed by the pinned key ({sig[\"key_id\"]})')
 "
 
-echo "== genesis attestation (detective control for substrate bypass)"
+echo "== governance-attestation check (misconfiguration + naive-forgery control)"
 EXPECTED_HUMAN_LOGIN_ROLE="${EXPECTED_HUMAN_LOGIN_ROLE:-gm_human}" python3 -c "
 import json, os
-# Every governance/seal/approval transition MUST have been committed by
-# the human PostgreSQL login role. attestation.authenticated_by is the
-# session_user that actually wrote the row, inside the Merkle leaf — so a
-# claim forged AND back-dated with a forged audit row would carry the
-# machine's login here, not the human's. Layer-B bypass (see
-# V2-LAUNCH-RUNBOOK.md) is thereby provable in the pack forever. No-op
-# until the pack contains v2 governance rows.
+# attestation.authenticated_by is the session_user Morpholog RECORDS for a
+# row it wrote through the runtime path. This check asserts every
+# governance/seal/approval row shows the human login. What it catches:
+# (1) misconfiguration — a governance row accidentally committed by the
+# wrong login through the legit path; (2) a NAIVE substrate forger who
+# writes a claim/audit row but does not also fake the attestation. What
+# it does NOT catch: the modelled layer-B attacker — gm_machine has raw
+# DML on morpholog.audit and nothing binds authenticated_by to the real
+# session_user, so a raw INSERT can say 'gm_human' just as easily
+# (forced in scripts/rehearse-v2 §H2). Attestation is therefore NOT an
+# unforgeable identity assertion against a raw-audit-DML credential. The
+# real tamper-evidence against that attacker is the EXTERNALLY-RETAINED
+# signed checkpoint over its committed prefix (the signing key is not
+# held by the machine) plus claims-vs-audit replay divergence — both
+# asserted elsewhere in this script. No-op until the pack has v2
+# governance rows.
 pack = json.load(open('morpholog/evidence-pack.json'))
 expected = os.environ['EXPECTED_HUMAN_LOGIN_ROLE']
 governance = {'establish_governance', 'seal_protocol', 'approve_publication'}
@@ -72,11 +81,12 @@ for row in pack['rows']:
         who = (row.get('attestation') or {}).get('authenticated_by')
         if who != expected:
             raise SystemExit(
-                f'{row[\"transformation_name\"]} {row[\"transition_id\"]} committed by '
-                f'{who!r}, not the human role {expected!r} — substrate forgery suspected'
+                f'{row[\"transformation_name\"]} {row[\"transition_id\"]} attests login '
+                f'{who!r}, not the human role {expected!r} — misconfiguration or naive forgery'
             )
         checked += 1
-print(f'   {checked} governance/seal/approval rows, all committed by {expected!r}'
+print(f'   {checked} governance rows attest the human login {expected!r} '
+      '(not proof against raw-audit-DML; see comment)'
       if checked else '   no v2 governance rows yet (no-op against the v1 pack)')
 "
 

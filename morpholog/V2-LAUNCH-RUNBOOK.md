@@ -1,0 +1,164 @@
+# V2 launch runbook — Investigation 002, 2026-08-21
+
+Two sessions touch the research database on launch day: **Jordan's own
+shell** (the human credential, never shown to Claude) and **the Claude
+Code session** (the machine credential only). Every step below was
+rehearsed end-to-end on a disposable database with two real PostgreSQL
+login roles (`scripts/rehearse-v2`, run in CI) and the exact H1/M1/H2
+rows were dry-run in order (templates in `morpholog/launch-002/`).
+
+**Ordering is load-bearing.** The rehearsal demonstrates that on an
+ungoverned database *any* connection can run `establish_governance` and
+define the trust root — the kernel cannot know who is human until the
+bootstrap says so. Therefore: **H3 happens before the machine role can
+propose anything.** Do not reorder.
+
+Credential rules, absolute:
+- Jordan's human password is typed only at interactive `psql`/`\password`
+  prompts in Jordan's own shell. Never pasted into Claude Code, never in
+  a command argument, `.env`, repo file, or shell history.
+- The machine credential may be held by the Claude session (env var or
+  `~/.pgpass`), and grants no seal or approval power — that is the point.
+
+---
+
+## Human-only steps (Jordan's shell, outside Claude Code)
+
+**H1 — create the two login roles** (as the PostgreSQL admin):
+
+```
+psql -d grid_mysteries_morpholog
+  CREATE ROLE gm_human LOGIN;
+  \password gm_human          -- typed at the prompt, nowhere else
+  CREATE ROLE gm_machine LOGIN;
+  \password gm_machine        -- machine credential; will be given to Claude
+  GRANT USAGE ON SCHEMA morpholog TO gm_human, gm_machine;
+  GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA morpholog TO gm_human, gm_machine;
+  GRANT USAGE, SELECT ON ALL SEQUENCES IN SCHEMA morpholog TO gm_human, gm_machine;
+  \q
+```
+
+*(PostgreSQL role administration. If `pg_hba.conf` does not already
+allow password logins on localhost, add a `host … scram-sha-256` line
+and reload.)*
+
+**H2 — connect as the human role** (password at the prompt):
+
+```
+psql "postgres://gm_human@localhost/grid_mysteries_morpholog"
+```
+
+Verify: `select session_user;` → `gm_human`. Disconnect.
+
+**H3 — Morpholog governance bootstrap** (the one-time trust root; this
+is a Morpholog act, not a PostgreSQL one). From the repo root, in
+Jordan's shell, with the human URL (password prompted by libpq if not
+in Jordan's own `~/.pgpass`):
+
+```
+export DATABASE_URL="postgres://gm_human@localhost/grid_mysteries_morpholog"
+while IFS= read -r row; do
+  scripts/record 090-inv-002-launch.v2.ndjson "$row"
+done < morpholog/launch-002/H1-bootstrap.v2.ndjson.template
+```
+
+This establishes governance (`jordan_dimov`→`gm_human`,
+`claude_fable_5`→`gm_machine`), registers the four corpora, and
+backfills the three genuinely consumed historical windows (May 2026 →
+inv-003; July 2026 → bess-001; 2026-08-04..10 → inv-001 and the four
+method studies). **June 2026 and 2026-08-11..17 are deliberately NOT
+consumed** — June is 004's untouched window; the August week becomes
+002's corpus and is consumed only at acquisition.
+
+The signing key `audit-2026` is already registered in the shared claims
+table (v1 row); v2's `key_not_already_registered` correctly refuses a
+re-registration — nothing to do.
+
+**H4 — disconnect.** Unset `DATABASE_URL` in that shell. Commit the
+`morpholog/` changes scripts/record produced (git add/commit/push can be
+done from either session; the rows are already in the database).
+
+Only now: give Claude the **machine** URL, e.g. by setting in the Claude
+session `DATABASE_URL="postgres://gm_machine:<machine-password>@localhost/grid_mysteries_morpholog"`.
+
+---
+
+## Machine steps (Claude Code session, machine credential only)
+
+**M1 — prove the boundary before doing anything else:**
+
+1. `psql "$DATABASE_URL" -tAc "select session_user"` → must be `gm_machine`.
+2. Attempt a proposal as `jordan_dimov` — it MUST fail with the adapter's
+   "not authorised to propose as actor" error.
+3. Inspect claims: exactly one `ActorAssertionAuthority(jordan_dimov, gm_human)`
+   and one `ActorAssertionAuthority(claude_fable_5, gm_machine)`.
+
+If any check fails, STOP and report; do not proceed.
+
+**M2 — open 002** (only on/after 2026-08-21, and only after the 002
+declaration document is committed): fill
+`morpholog/launch-002/M1-open-and-declare.v2.ndjson.template`
+placeholders (title, timestamps, the sha256 of the committed declaration,
+one `declare_parameter` row per declared Decimal parameter), then record
+row-by-row via `scripts/record 090-inv-002-launch.v2.ndjson '<row>'`.
+
+**H5 — Jordan seals** (human shell again, as in H3):
+
+```
+scripts/record 090-inv-002-launch.v2.ndjson \
+  '{"transformation": "seal_protocol", "actor": "jordan_dimov", "args_named": {"inquiry": "inq-002", "sealed_at": "<UTC now>"}}'
+```
+
+The seal — and nothing else — emits `DataAcquisitionAuthorised(inq-002)`.
+
+**M3 — machine consumes the authorisation and first touches the window:**
+
+```
+morpholog outbox claim --intent-type DataAcquisitionAuthorised --worker-id inv-002-fetcher
+# fetch journalled → register_evidence/attach_evidence rows via scripts/record
+# (idempotent: a re-delivered registration is refused by artifact_is_new, never duplicated)
+morpholog outbox complete <intent-id> --outcome delivered --worker-id inv-002-fetcher
+# then: consume_corpus(corpus-2026-08-w2, inq-002)
+```
+
+Analysis reads sealed parameters via
+`grid_mysteries.governance.declared_parameter` (generated client, pinned
+model hash) — never from constants in code or prose.
+
+**H6 — later, publication approval** (recurring human act, once per
+publication, human shell): after the machine renders the draft and
+registers its digest via `draft_publication`, Jordan reviews those exact
+bytes and records `approve_publication`. Approval binds that digest
+only; changed bytes are a new unapproved draft.
+
+---
+
+## Programme freeze and batch convention
+
+From launch, `research.morph` (v1) is **frozen by doctrine**: no new v1
+proposals. v2 rows live in batches named `*.v2.ndjson` —
+`scripts/record` and `scripts/replay-research` both dispatch the
+programme by that suffix, so the mixed v1+v2 history replays.
+
+## Threat-model notes (evidenced by scripts/rehearse-v2)
+
+- **After H3, the machine credential cannot** assert `jordan_dimov`
+  (adapter refusal at the session layer), re-run `establish_governance`
+  (`governance_not_yet_established`), seal (`seal_requires_authority`),
+  approve (`approval_requires_authority`), backfill consumption
+  (`historical_requires_seal_authority`), or register a signing key
+  (`key_registration_requires_seal_authority`).
+- **Rogue-key path, neutralised:** v1's `register_audit_signing_key` is
+  ungated and the v1 file remains on disk for replay, so a machine
+  credential could mint a new `AuditSigningKey` claim through v1 rules.
+  Verification trust is therefore the **repo-pinned**
+  `morpholog/trust/audit-2026.pub` (asserted by `scripts/replay-research`),
+  never the claim set — and any such rogue row would be publicly visible
+  in the audit chain and claims export.
+- **Residual honesty:** DB-level separation binds *credentials*, not
+  shells. A session with PostgreSQL superuser access (e.g. peer auth as
+  the OS user) can bypass any in-database control; what survives that is
+  tamper-evidence — the Merkle audit chain, signed checkpoints, and CI
+  replay. If Jordan wants the machine shell unable to reach superuser,
+  restrict peer auth in `pg_hba.conf`; the governed record does not
+  depend on it, but defence in depth is cheap.

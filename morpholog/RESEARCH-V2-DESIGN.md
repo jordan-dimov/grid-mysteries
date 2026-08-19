@@ -146,6 +146,32 @@ unsigned — recorded honestly; `scripts/replay-research` requires the
    repo-side record artefacts are updated.
 3. Kind-specific lifecycle refinements wait for real usage.
 
+## Launch readiness (2026-08-19)
+
+`scripts/rehearse-v2` (CI, disposable database, two real PostgreSQL
+login roles) proves the whole lifecycle with the actual adapter
+session_user enforcement. Three facts it established are now doctrine:
+
+1. **The bootstrap race is real**: on an ungoverned database any
+   connection can run `establish_governance` and define the trust root.
+   The kernel cannot prevent this — ordering does. The launch runbook
+   (`V2-LAUNCH-RUNBOOK.md`) therefore puts the human bootstrap before
+   the machine role can propose, and the machine's first act is to
+   verify it cannot assert `jordan_dimov`.
+2. **Verification trust is the repo-pinned public key**
+   (`trust/audit-2026.pub`, asserted by `scripts/replay-research`),
+   never the `AuditSigningKey` claim set: v1's key registration is
+   ungated and the v1 file remains on disk for replay, so the claim set
+   is mintable by the machine credential; the pinned key is not.
+3. **Mixed v1+v2 history replays** by filename convention: batches named
+   `*.v2.ndjson` are proposed against the v2 programme by both
+   `scripts/record` and `scripts/replay-research`.
+
+The 002 launch rows themselves (governance, corpora registry, the three
+genuinely consumed historical windows, open/assign/declare, human seal)
+are dry-run verified in order — templates in `launch-002/`. June 2026
+and 2026-08-11..17 are deliberately never seeded as consumed.
+
 ## The boundary, stated durably
 
 > **Morpholog owns what may be said, what may be done, and what declared

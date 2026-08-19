@@ -34,6 +34,11 @@ jobs:
           --health-retries 10
     steps:
       - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with:
+          python-version: "3.14"
+          enable-cache: true
+      - run: uv sync --dev
       - run: ./scripts/install-morpholog
       - env:
           REPLAY_DATABASE_URL: postgres://postgres:postgres@localhost:5432/grid_mysteries_replay
@@ -44,3 +49,6 @@ jobs:
       - env:
           CONTROLS_DATABASE_URL: postgres://postgres:postgres@localhost:5432/grid_mysteries_controls
         run: ./scripts/check-controls
+      - env:
+          REHEARSE_ADMIN_URL: postgres://postgres:postgres@localhost:5432/postgres
+        run: ./scripts/rehearse-v2

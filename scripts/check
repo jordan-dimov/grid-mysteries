@@ -9,3 +9,11 @@ uv run pytest
 uv run mypy
 morpholog check morpholog/research.morph
 morpholog check morpholog/research-v2-draft.morph
+
+# The vendored typed client must be byte-identical to what the pinned
+# binary generates from the v2 programme — drift is a hard failure.
+clientdir=$(mktemp -d)
+trap 'rm -rf "$clientdir"' EXIT
+morpholog generate python-client morpholog/research-v2-draft.morph --out "$clientdir" >/dev/null 2>&1
+diff -r -x __pycache__ "$clientdir/morpholog_client" src/morpholog_client
+echo "generated client: no drift"

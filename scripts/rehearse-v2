@@ -1,0 +1,282 @@
+#!/usr/bin/env bash
+# v2 launch rehearsal: the full governed lifecycle on a DISPOSABLE database
+# with TWO genuinely separate PostgreSQL login roles, exercising the real
+# adapter session_user enforcement (never mocks, never the research DB).
+#
+# What this proves beyond scripts/check-controls (which binds both actors
+# to one session_user):
+#   A. the bootstrap race is REAL (a machine connection can establish
+#      governance on an ungoverned database) — which is why the launch
+#      runbook orders human bootstrap BEFORE the machine role has access;
+#      and that after a lawful human bootstrap the machine can neither
+#      re-establish governance nor assert the human actor from its own
+#      connection (adapter-level refusal, not a rule receipt);
+#   B. corpus prior-exposure is overlap-based with correct boundaries
+#      (shared day refused; adjacency lawful), historical backfill is
+#      human-gated, and later self-consumption cannot retro-invalidate;
+#   C. parameters seal correctly and only the human can seal;
+#   D. acquisition flows through the outbox lease and at-least-once
+#      delivery cannot duplicate evidence;
+#   E/F. publication approval is human-only, binds the exact drafted
+#      digest, and later drafts gain no authority from an earlier approval;
+#   G. the rehearsal audit log checkpoints and verifies.
+#
+# Synthetic corpus dates use year 3000 so no real research window can ever
+# overlap them. NO real market data source is contacted.
+set -euo pipefail
+cd "$(dirname "$0")/.."
+export PATH="${HOME}/.local/bin:${PATH}"
+
+ADMIN_URL="${REHEARSE_ADMIN_URL:-postgres:///postgres}"
+HOST="${REHEARSE_HOST:-localhost}"
+DB=gm_rehearsal
+HUMAN_ROLE=gm_test_human
+MACHINE_ROLE=gm_test_machine
+H_URL="postgres://${HUMAN_ROLE}:rehearse-human@${HOST}/${DB}"
+M_URL="postgres://${MACHINE_ROLE}:rehearse-machine@${HOST}/${DB}"
+PROG=morpholog/research-v2-draft.morph
+
+psql "$ADMIN_URL" -q <<SQL
+DROP DATABASE IF EXISTS ${DB};
+DROP ROLE IF EXISTS ${HUMAN_ROLE};
+DROP ROLE IF EXISTS ${MACHINE_ROLE};
+CREATE ROLE ${HUMAN_ROLE} LOGIN PASSWORD 'rehearse-human';
+CREATE ROLE ${MACHINE_ROLE} LOGIN PASSWORD 'rehearse-machine';
+CREATE DATABASE ${DB};
+SQL
+
+# The admin URL's database segment swapped for the rehearsal database.
+ADMIN_DB_URL="${ADMIN_URL%/*}/${DB}"
+
+reset_db() {
+  morpholog init --database-url "$ADMIN_DB_URL" --reset --i-know-this-deletes-data >/dev/null 2>&1
+  psql "$ADMIN_DB_URL" -q <<SQL
+GRANT USAGE ON SCHEMA morpholog TO ${HUMAN_ROLE}, ${MACHINE_ROLE};
+GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA morpholog TO ${HUMAN_ROLE}, ${MACHINE_ROLE};
+GRANT USAGE, SELECT ON ALL SEQUENCES IN SCHEMA morpholog TO ${HUMAN_ROLE}, ${MACHINE_ROLE};
+SQL
+}
+
+# propose <url> <transformation> <actor> <json-args> — echoes the receipt.
+propose() {
+  morpholog propose "$PROG" "$2" --actor "$3" --args-named "$4" --database-url "$1" 2>&1 || true
+}
+
+expect_committed() { # <receipt> <label>
+  python3 - "$2" <<EOF
+import json, sys
+receipt = json.loads('''$1''')
+assert receipt["status"] == "committed", f"{sys.argv[1]}: expected commit, got {receipt}"
+print(f"   OK  {sys.argv[1]}")
+EOF
+}
+
+expect_rule() { # <receipt> <rule> <label>
+  python3 - "$2" "$3" <<EOF
+import json, sys
+receipt = json.loads('''$1''')
+assert receipt["status"] == "rejected", f"{sys.argv[2]}: expected rejection, got {receipt}"
+assert receipt["rule"] == sys.argv[1], f"{sys.argv[2]}: expected rule {sys.argv[1]!r}, got {receipt['rule']!r}"
+print(f"   OK  {sys.argv[2]} (rule {sys.argv[1]})")
+EOF
+}
+
+expect_actor_refusal() { # <output> <label>
+  python3 - "$2" <<EOF
+import sys
+out = '''$1'''
+assert "is not authorised to propose as actor" in out, f"{sys.argv[1]}: expected adapter actor refusal, got: {out[:300]}"
+print(f"   OK  {sys.argv[1]} (adapter session_user refusal)")
+EOF
+}
+
+echo "== A. bootstrap race (fresh, ungoverned database)"
+reset_db
+r=$(propose "$M_URL" establish_governance jordan_dimov '{"human_actor": "jordan_dimov", "human_login_role": "'$MACHINE_ROLE'", "machine_actor": "claude_fable_5", "machine_login_role": "'$MACHINE_ROLE'"}')
+expect_committed "$r" "RACE DEMONSTRATED: machine established governance on ungoverned DB (this is why the runbook orders human bootstrap before machine access)"
+
+echo "== A. lawful bootstrap and adversarial actor tests"
+reset_db
+r=$(propose "$H_URL" establish_governance jordan_dimov '{"human_actor": "jordan_dimov", "human_login_role": "'$HUMAN_ROLE'", "machine_actor": "claude_fable_5", "machine_login_role": "'$MACHINE_ROLE'"}')
+expect_committed "$r" "human session establishes governance"
+r=$(propose "$M_URL" establish_governance claude_fable_5 '{"human_actor": "claude_fable_5", "human_login_role": "'$MACHINE_ROLE'", "machine_actor": "claude_fable_5", "machine_login_role": "'$MACHINE_ROLE'"}')
+expect_rule "$r" governance_not_yet_established "machine cannot re-establish/steal governance"
+r=$(propose "$M_URL" open_inquiry jordan_dimov '{"inquiry": "inq-rogue", "kind": "descriptive", "title": "impersonation attempt", "opened_at": "3000-01-01T00:00:00Z"}')
+expect_actor_refusal "$r" "machine session cannot assert jordan_dimov even when the payload names him"
+r=$(propose "$H_URL" open_inquiry claude_fable_5 '{"inquiry": "inq-rogue2", "kind": "descriptive", "title": "reverse impersonation", "opened_at": "3000-01-01T00:00:00Z"}')
+expect_actor_refusal "$r" "human session cannot assert claude_fable_5 either (binding is bidirectional)"
+r=$(propose "$M_URL" register_audit_signing_key claude_fable_5 '{"key_id": "rogue-key", "public_key": "ed25519-pub:00"}')
+expect_rule "$r" key_registration_requires_seal_authority "machine cannot register a signing key"
+
+echo "== B. corpus registry, overlap boundaries, historical backfill"
+r=$(propose "$M_URL" register_corpus claude_fable_5 '{"corpus": "syn-consumed", "first_day": "30000101", "last_day": "30000107"}')
+expect_committed "$r" "register synthetic consumed corpus 3000-01-01..07"
+r=$(propose "$M_URL" record_historical_consumption claude_fable_5 '{"corpus": "syn-consumed", "v1_consumer": "synthetic-v1-study"}')
+expect_rule "$r" historical_requires_seal_authority "machine cannot backfill historical consumption"
+r=$(propose "$H_URL" record_historical_consumption jordan_dimov '{"corpus": "syn-consumed", "v1_consumer": "synthetic-v1-study"}')
+expect_committed "$r" "human backfills a genuine historical consumption"
+r=$(propose "$M_URL" open_inquiry claude_fable_5 '{"inquiry": "inq-p1", "kind": "prospective", "title": "rehearsal prospective inquiry", "opened_at": "3000-01-01T00:00:00Z"}')
+expect_committed "$r" "open prospective inquiry"
+echo "   -- overlap boundary sweep (morpholog explain, nothing committed)"
+python3 - "$M_URL" <<'EOF'
+import json, subprocess, sys
+url = sys.argv[1]
+# (first, last, expect_admissible) around consumed window 30000101..30000107
+cases = [
+    ("30000107", "30000109", False),  # shares the consumed window's last day
+    ("30000095", "30000101", False),  # shares its first day
+    ("30000103", "30000105", False),  # strictly inside
+    ("30000095", "30000120", False),  # strictly containing
+    ("30000108", "30000110", True),   # adjacent after — lawful
+    ("30000090", "30000100", True),   # adjacent before — lawful
+]
+for index, (first, last, admissible) in enumerate(cases):
+    corpus = f"syn-sweep-{index}"
+    register = subprocess.run(
+        ["morpholog", "propose", "morpholog/research-v2-draft.morph", "register_corpus",
+         "--actor", "claude_fable_5",
+         "--args-named", json.dumps({"corpus": corpus, "first_day": first, "last_day": last}),
+         "--database-url", url],
+        capture_output=True, text=True)
+    assert '"committed"' in register.stdout, register.stdout + register.stderr
+    explain = subprocess.run(
+        ["morpholog", "explain", "morpholog/research-v2-draft.morph", "assign_corpus",
+         "--actor", "claude_fable_5",
+         "--args-named", json.dumps({"inquiry": "inq-p1", "corpus": corpus}),
+         "--database-url", url, "--json"],
+        capture_output=True, text=True)
+    verdict = json.loads(explain.stdout)["verdict"]
+    got = verdict == "admissible" or (isinstance(verdict, dict) and "admissible" in verdict)
+    assert got == admissible, f"{first}..{last}: expected admissible={admissible}, got {verdict}"
+    if not admissible:
+        assert verdict["rejected"]["rule"] == "prospective_corpus_unexposed", verdict
+    print(f"   OK  window {first}..{last} -> {'admissible' if got else 'refused (prospective_corpus_unexposed)'}")
+EOF
+r=$(propose "$M_URL" assign_corpus claude_fable_5 '{"inquiry": "inq-p1", "corpus": "syn-sweep-4"}')
+expect_committed "$r" "assign the lawful adjacent corpus 30000108..30000110"
+
+echo "== C. declaration, parameters, human-only seal"
+r=$(propose "$M_URL" declare_protocol claude_fable_5 '{"inquiry": "inq-p1", "protocol_digest": "digest-p1", "declared_at": "3000-01-01T00:01:00Z"}')
+expect_committed "$r" "declare protocol"
+r=$(propose "$M_URL" declare_parameter claude_fable_5 '{"inquiry": "inq-p1", "name": "coverage_threshold", "parameter_value": "0.8"}')
+expect_committed "$r" "declare parameter before seal"
+r=$(propose "$M_URL" declare_parameter claude_fable_5 '{"inquiry": "inq-p1", "name": "coverage_threshold", "parameter_value": "0.9"}')
+expect_rule "$r" declared_parameter_unique_by_inquiry_name "conflicting parameter value refused"
+r=$(propose "$M_URL" seal_protocol claude_fable_5 '{"inquiry": "inq-p1", "sealed_at": "3000-01-01T00:02:00Z"}')
+expect_rule "$r" seal_requires_authority "machine cannot seal"
+r=$(propose "$M_URL" seal_protocol jordan_dimov '{"inquiry": "inq-p1", "sealed_at": "3000-01-01T00:02:00Z"}')
+expect_actor_refusal "$r" "machine cannot seal by asserting jordan_dimov either"
+outbox_before=$(morpholog outbox claim --intent-type DataAcquisitionAuthorised --database-url "$M_URL" | python3 -c "import json,sys; print(json.load(sys.stdin)['row'] is None)")
+[[ "$outbox_before" == "True" ]] && echo "   OK  no acquisition authorisation exists before the seal"
+r=$(propose "$H_URL" seal_protocol jordan_dimov '{"inquiry": "inq-p1", "sealed_at": "3000-01-01T00:02:00Z"}')
+expect_committed "$r" "human seals protocol"
+r=$(propose "$M_URL" declare_parameter claude_fable_5 '{"inquiry": "inq-p1", "name": "post_hoc_knob", "parameter_value": "1"}')
+expect_rule "$r" parameter_before_seal "parameter mutation after seal refused"
+
+echo "   -- governed parameter read-back through the generated client"
+uv run python - "$M_URL" <<'EOF'
+import sys
+from decimal import Decimal
+from morpholog_client import open_session
+from grid_mysteries.governance import declared_parameter
+
+with open_session("morpholog/research-v2-draft.morph", sys.argv[1]) as session:
+    value = declared_parameter(session, "inq-p1", "coverage_threshold")
+    assert value == Decimal("0.8") and isinstance(value, Decimal), repr(value)
+    try:
+        declared_parameter(session, "inq-p1", "never_declared")
+        raise AssertionError("undeclared parameter must raise, never default")
+    except LookupError:
+        pass
+print("   OK  analysis reads the governed Decimal value; undeclared value refuses to default")
+EOF
+
+echo "== D. outbox acquisition and at-least-once idempotency"
+claim=$(morpholog outbox claim --intent-type DataAcquisitionAuthorised --worker-id rehearsal-worker --database-url "$M_URL")
+python3 - <<EOF
+import json
+row = json.loads('''$claim''')["row"]
+assert row is not None, "seal must have emitted DataAcquisitionAuthorised"
+assert "inq-p1" in json.dumps(row), row
+print("   OK  machine claimed the acquisition intent via outbox lease")
+intent_id = row.get("intent_id") or row.get("id")
+assert intent_id, f"no intent id in outbox row: {row}"
+open("/tmp/gm-rehearsal-outbox-row", "w").write(str(intent_id))
+EOF
+r=$(propose "$M_URL" register_evidence claude_fable_5 '{"artifact": "art-p1", "source": "synthetic", "sha256": "aaaa", "fetched_at": "3000-01-02T00:00:00Z"}')
+expect_committed "$r" "register evidence"
+r=$(propose "$M_URL" attach_evidence claude_fable_5 '{"inquiry": "inq-p1", "artifact": "art-p1"}')
+expect_committed "$r" "attach evidence"
+r=$(propose "$M_URL" register_evidence claude_fable_5 '{"artifact": "art-p1", "source": "synthetic", "sha256": "aaaa", "fetched_at": "3000-01-02T00:00:00Z"}')
+expect_rule "$r" artifact_is_new "re-delivered registration refused: duplication impossible"
+r=$(propose "$M_URL" attach_evidence claude_fable_5 '{"inquiry": "inq-p1", "artifact": "art-p1"}')
+expect_rule "$r" attach_is_new "re-delivered attachment refused: duplication impossible"
+morpholog outbox complete "$(cat /tmp/gm-rehearsal-outbox-row)" --outcome delivered --worker-id rehearsal-worker --database-url "$M_URL" >/dev/null
+echo "   OK  outbox row completed (delivered)"
+
+echo "== E. consumption after acquisition; no retro-invalidation"
+r=$(propose "$M_URL" consume_corpus claude_fable_5 '{"corpus": "syn-sweep-4", "inquiry": "inq-p1"}')
+expect_committed "$r" "inquiry consumes its own corpus"
+python3 - "$M_URL" <<'EOF'
+import json, subprocess, sys
+claims = json.loads(subprocess.run(
+    ["morpholog", "inspect", "claims", "--database-url", sys.argv[1]],
+    capture_output=True, text=True).stdout)
+assignments = [c for c in claims if c["predicate"] == "InquiryCorpus"]
+assert any("inq-p1" in json.dumps(c["args"]) for c in assignments), assignments
+print("   OK  own-corpus consumption did not retro-invalidate the assignment")
+EOF
+r=$(propose "$M_URL" open_inquiry claude_fable_5 '{"inquiry": "inq-p2", "kind": "prospective", "title": "second prospective inquiry", "opened_at": "3000-01-03T00:00:00Z"}')
+expect_committed "$r" "open second prospective inquiry"
+r=$(propose "$M_URL" register_corpus claude_fable_5 '{"corpus": "syn-overlaps-p1", "first_day": "30000110", "last_day": "30000112"}')
+expect_committed "$r" "register corpus overlapping the now-consumed window"
+r=$(propose "$M_URL" assign_corpus claude_fable_5 '{"inquiry": "inq-p2", "corpus": "syn-overlaps-p1"}')
+expect_rule "$r" prospective_corpus_unexposed "consumed-by-inquiry window now refuses new prospective assignment"
+
+echo "== F. analysis, conclusion, digest-bound human approval"
+r=$(propose "$M_URL" seal_evidence claude_fable_5 '{"inquiry": "inq-p1", "sealed_at": "3000-01-02T01:00:00Z"}')
+expect_committed "$r" "seal evidence"
+r=$(propose "$M_URL" register_conjecture claude_fable_5 '{"conjecture": "conj-p1", "inquiry": "inq-p1", "statement": "synthetic conjecture", "proposed_at": "3000-01-02T02:00:00Z"}')
+expect_committed "$r" "register conjecture"
+r=$(propose "$M_URL" publish_conclusion claude_fable_5 '{"conclusion": "concl-p1", "inquiry": "inq-p1", "conjecture": "conj-p1", "conclusion_class": "hypothesis_not_evaluable", "statement": "synthetic: not evaluable is lawful", "evidence_digest": "aaaa", "published_at": "3000-01-02T03:00:00Z"}')
+expect_committed "$r" "publish conclusion (hypothesis_not_evaluable lifecycle)"
+r=$(propose "$M_URL" draft_publication claude_fable_5 '{"publication": "pub-metricless", "conclusion": "concl-p1", "medium": "post", "content_digest": "deadbeef", "drafted_at": "3000-01-02T04:00:00Z"}')
+expect_rule "$r" draft_conclusion_has_metrics "metric-less conclusion cannot be drafted for publication"
+r=$(propose "$M_URL" bind_metric claude_fable_5 '{"metric": "met-p1", "inquiry": "inq-p1", "artifact": "art-p1", "metric_name": "panel_size", "metric_value": "0"}')
+expect_committed "$r" "bind metric to attached artifact"
+r=$(propose "$M_URL" link_metric claude_fable_5 '{"conclusion": "concl-p1", "metric": "met-p1"}')
+expect_committed "$r" "link metric to conclusion"
+r=$(propose "$M_URL" draft_publication claude_fable_5 '{"publication": "pub-p1", "conclusion": "concl-p1", "medium": "post", "content_digest": "digest-of-rendered-bytes-1", "drafted_at": "3000-01-02T05:00:00Z"}')
+expect_committed "$r" "draft publication registers the rendered digest"
+r=$(propose "$M_URL" approve_publication claude_fable_5 '{"publication": "pub-p1", "approved_at": "3000-01-02T06:00:00Z"}')
+expect_rule "$r" approval_requires_authority "machine cannot approve"
+r=$(propose "$M_URL" approve_publication jordan_dimov '{"publication": "pub-p1", "approved_at": "3000-01-02T06:00:00Z"}')
+expect_actor_refusal "$r" "machine cannot approve by asserting jordan_dimov"
+r=$(propose "$H_URL" approve_publication jordan_dimov '{"publication": "pub-p1", "approved_at": "3000-01-02T06:00:00Z"}')
+expect_committed "$r" "human approves the exact drafted digest"
+r=$(propose "$M_URL" draft_publication claude_fable_5 '{"publication": "pub-p1-changed", "conclusion": "concl-p1", "medium": "post", "content_digest": "digest-of-CHANGED-bytes", "drafted_at": "3000-01-02T07:00:00Z"}')
+expect_committed "$r" "changed bytes become a NEW unapproved draft"
+python3 - "$M_URL" <<'EOF'
+import json, subprocess, sys
+claims = json.loads(subprocess.run(
+    ["morpholog", "inspect", "claims", "--database-url", sys.argv[1]],
+    capture_output=True, text=True).stdout)
+approved = [json.dumps(c["args"]) for c in claims if c["predicate"] == "PublicationApproved"]
+assert len(approved) == 1 and "pub-p1" in approved[0] and "changed" not in approved[0], approved
+print("   OK  approval covers only the reviewed digest; changed bytes hold no authority")
+EOF
+release=$(morpholog outbox claim --intent-type PublicationAuthorised --worker-id rehearsal-worker --database-url "$M_URL")
+python3 - <<EOF
+import json
+row = json.loads('''$release''')["row"]
+assert row is not None and "pub-p1" in json.dumps(row) and "changed" not in json.dumps(row), row
+print("   OK  publication release intent names only the approved publication")
+EOF
+
+echo "== G. audit checkpoint and verification"
+morpholog audit checkpoint --database-url "$ADMIN_DB_URL" >/dev/null
+morpholog audit verify --database-url "$ADMIN_DB_URL"
+
+psql "$ADMIN_URL" -q -c "DROP DATABASE ${DB}" -c "DROP ROLE ${HUMAN_ROLE}" -c "DROP ROLE ${MACHINE_ROLE}"
+rm -f /tmp/gm-rehearsal-outbox-row
+echo "rehearse-v2: OK"

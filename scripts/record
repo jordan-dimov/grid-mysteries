@@ -20,6 +20,12 @@ export DATABASE_URL="${DATABASE_URL:-postgres:///grid_mysteries_morpholog}"
 
 BATCH_FILE="morpholog/batches/$1"
 ROW="$2"
+# Programme dispatch by filename: batches named *.v2.ndjson are proposed
+# against the v2 programme; everything else against v1. One convention,
+# shared with scripts/replay-research, so a mixed v1+v2 history stays
+# recordable and replayable.
+PROGRAMME=morpholog/research.morph
+[[ "$BATCH_FILE" == *.v2.ndjson ]] && PROGRAMME=morpholog/research-v2-draft.morph
 MARKER="morpholog/.record-recovery"
 SIGNING_KEY="${AUDIT_SIGNING_KEY:-$HOME/.config/grid-mysteries/audit-signing-2026.pem}"
 
@@ -37,7 +43,7 @@ printf '%s\n' "$ROW" > "$MARKER"
 tmp=$(mktemp)
 printf '%s\n' "$ROW" > "$tmp"
 
-receipt=$(morpholog propose morpholog/research.morph --batch "$tmp" --explain-on-reject)
+receipt=$(morpholog propose "$PROGRAMME" --batch "$tmp" --explain-on-reject)
 rm -f "$tmp"
 status=$(printf '%s' "$receipt" | python3 -c "import json,sys; print(json.loads(sys.stdin.readline())['status'])")
 if [[ "$status" != "committed" ]]; then

@@ -1,0 +1,5 @@
+{"transformation": "open_inquiry", "actor": "claude_fable_5", "args_named": {"inquiry": "inq-002", "kind": "prospective", "title": "{TITLE_FROM_002_DECLARATION}", "opened_at": "{OPENED_AT_UTC}"}}
+{"transformation": "record_v1_lineage", "actor": "claude_fable_5", "args_named": {"inquiry": "inq-002", "v1_investigation": "inv-001-largest-apparent-inversion"}}
+{"transformation": "assign_corpus", "actor": "claude_fable_5", "args_named": {"inquiry": "inq-002", "corpus": "corpus-2026-08-w2"}}
+{"transformation": "declare_protocol", "actor": "claude_fable_5", "args_named": {"inquiry": "inq-002", "protocol_digest": "{SHA256_OF_COMMITTED_002_DECLARATION}", "declared_at": "{DECLARED_AT_UTC}"}}
+{"transformation": "declare_parameter", "actor": "claude_fable_5", "args_named": {"inquiry": "inq-002", "name": "{PARAMETER_NAME}", "parameter_value": "{DECIMAL_VALUE}"}}

@@ -38,14 +38,28 @@ anchor = json.load(open('morpholog/audit-anchor.json'))
 signatures = anchor.get('signatures') or []
 if not signatures:
     raise SystemExit('current anchor is unsigned; checkpoints must be signed with audit-2026')
-print(f'   anchor signed ({len(signatures)} signature, key_id {signatures[0].get(\"key_id\")})')
+# Trust is the REPO-PINNED public key, never the claim set or the key a
+# checkpoint carries: v1's key registration predates the authority
+# vocabulary and is ungated, so a machine credential could mint a rogue
+# AuditSigningKey claim through the retained v1 rules. A rogue key can
+# never satisfy this pin.
+pinned = open('morpholog/trust/audit-2026.pub').read().strip()
+sig = signatures[0]
+if sig.get('key_id') != 'audit-2026' or sig.get('public_key') != pinned:
+    raise SystemExit(
+        f'anchor signed by unpinned key: key_id={sig.get(\"key_id\")!r} — '
+        'only the committed morpholog/trust/audit-2026.pub is trusted'
+    )
+print(f'   anchor signed by the pinned key ({sig[\"key_id\"]})')
 "
 
 echo "== replaying proposal batches into a fresh database"
 morpholog init --database-url "$REPLAY_URL" --reset --i-know-this-deletes-data >/dev/null
 for batch in morpholog/batches/*.ndjson; do
-  echo "   $batch"
-  morpholog propose morpholog/research.morph --batch "$batch" --database-url "$REPLAY_URL" \
+  programme=morpholog/research.morph
+  [[ "$batch" == *.v2.ndjson ]] && programme=morpholog/research-v2-draft.morph
+  echo "   $batch ($(basename "$programme"))"
+  morpholog propose "$programme" --batch "$batch" --database-url "$REPLAY_URL" \
     | python3 -c "
 import json, sys
 rows = [json.loads(line) for line in sys.stdin if line.strip()]

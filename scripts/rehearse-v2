@@ -273,10 +273,73 @@ assert row is not None and "pub-p1" in json.dumps(row) and "changed" not in json
 print("   OK  publication release intent names only the approved publication")
 EOF
 
-echo "== G. audit checkpoint and verification"
+echo "== G. audit checkpoint and verification (clean governed path)"
 morpholog audit checkpoint --database-url "$ADMIN_DB_URL" >/dev/null
-morpholog audit verify --database-url "$ADMIN_DB_URL"
+morpholog audit verify --database-url "$ADMIN_DB_URL" | python3 -c "
+import json, sys
+v = json.load(sys.stdin)
+assert v['replay']['status'] == 'consistent', v
+print(f\"   OK  clean path verifies (replay consistent, {v['tree']['tree_size']} entries)\")"
 
-psql "$ADMIN_URL" -q -c "DROP DATABASE ${DB}" -c "DROP ROLE ${HUMAN_ROLE}" -c "DROP ROLE ${MACHINE_ROLE}"
+echo "== H. SUBSTRATE BYPASS — the honest negative result"
+# The governed-path guarantees above hold ONLY while every mutation goes
+# through the Morpholog adapter. The machine login has raw INSERT on
+# morpholog.claims (it MUST, to propose at all — see the no-write probe
+# below), and the claims table is plain storage: no RLS, no trigger, no
+# SECURITY DEFINER wrapper. So a process holding the machine credential
+# can forge an authority claim directly and then seal through the normal
+# adapter. This section PROVES that, and proves detection is post-hoc.
+psql "$ADMIN_DB_URL" -q -tAc \
+  "INSERT INTO morpholog.claims (predicate_name, arguments, asserted_in)
+   SELECT 'SealAuthority', '[{\"type\":\"subject\",\"value\":\"claude_fable_5\"}]'::jsonb, asserted_in
+   FROM morpholog.claims WHERE predicate_name='SealAuthority' LIMIT 1" \
+  --username "$MACHINE_ROLE" 2>/dev/null \
+  || PGPASSWORD=rehearse-machine psql "postgres://${MACHINE_ROLE}:rehearse-machine@${HOST}/${DB}" -q -tAc \
+  "INSERT INTO morpholog.claims (predicate_name, arguments, asserted_in)
+   SELECT 'SealAuthority', '[{\"type\":\"subject\",\"value\":\"claude_fable_5\"}]'::jsonb, asserted_in
+   FROM morpholog.claims WHERE predicate_name='SealAuthority' LIMIT 1" >/dev/null
+echo "   !! machine raw-inserted SealAuthority(claude_fable_5) — no substrate barrier"
+r=$(propose "$M_URL" open_inquiry claude_fable_5 '{"inquiry": "inq-forged", "kind": "prospective", "title": "substrate-bypass target", "opened_at": "3000-02-01T00:00:00Z"}')
+expect_committed "$r" "machine opens a target inquiry (its own lawful power)"
+r=$(propose "$M_URL" declare_protocol claude_fable_5 '{"inquiry": "inq-forged", "protocol_digest": "d", "declared_at": "3000-02-01T00:01:00Z"}')
+expect_committed "$r" "machine declares protocol"
+r=$(propose "$M_URL" seal_protocol claude_fable_5 '{"inquiry": "inq-forged", "sealed_at": "3000-02-01T00:02:00Z"}')
+expect_committed "$r" "!! machine SEALED via the normal adapter on the FORGED authority (human seal bypassed)"
+claim=$(morpholog outbox claim --intent-type DataAcquisitionAuthorised --worker-id attacker --database-url "$M_URL")
+python3 - <<EOF
+import json
+row = json.loads('''$claim''')["row"]
+assert row is not None and "inq-forged" in json.dumps(row), row
+print("   !! DataAcquisitionAuthorised(inq-forged) emitted — the IRREVERSIBLE gate opened without a human")
+EOF
+echo "   -- detection is POST-HOC: audit verify flags the forgery, but only when run"
+# audit verify exits non-zero on a divergent log — capture it rather than
+# let pipefail abort; a zero exit here would itself be a defect.
+verify_out=$(morpholog audit verify --database-url "$ADMIN_DB_URL" 2>&1) && verify_rc=0 || verify_rc=$?
+python3 - "$verify_rc" <<EOF
+import json, sys
+v = json.loads('''$verify_out''')
+assert int(sys.argv[1]) != 0, "audit verify must exit non-zero on a forged/divergent log"
+forged = v['replay']['only_in_claims_table']
+assert any(c['predicate'] == 'SealAuthority' and c['args'][0]['value'] == 'claude_fable_5' for c in forged), v
+print('   OK  audit verify exits non-zero and reports replay DIVERGENT (forged claim only_in_claims_table)')
+print('       (but the seal already emitted acquisition authority — detection cannot un-see data)')
+EOF
+echo "   -- why single-role least-privilege cannot fix this:"
+psql "$ADMIN_DB_URL" -q -c "DROP ROLE IF EXISTS ${MACHINE_ROLE}_norw" -c "CREATE ROLE ${MACHINE_ROLE}_norw LOGIN PASSWORD 'norw'" >/dev/null
+psql "$ADMIN_DB_URL" -q -c "GRANT USAGE ON SCHEMA morpholog TO ${MACHINE_ROLE}_norw" -c "GRANT SELECT ON ALL TABLES IN SCHEMA morpholog TO ${MACHINE_ROLE}_norw" >/dev/null
+NORW_URL="postgres://${MACHINE_ROLE}_norw:norw@${HOST}/${DB}"
+psql "$ADMIN_DB_URL" -q -tAc "insert into morpholog.claims values ('ActorAssertionAuthority','[{\"type\":\"subject\",\"value\":\"probe_actor\"},{\"type\":\"subject\",\"value\":\"${MACHINE_ROLE}_norw\"}]'::jsonb, gen_random_uuid())" >/dev/null
+norw_out=$(propose "$NORW_URL" register_corpus probe_actor '{"corpus": "c-norw", "first_day": "30000101", "last_day": "30000102"}')
+python3 - "$norw_out" <<'EOF'
+import sys
+out = sys.argv[1]
+assert "permission denied for table claims" in out, f"expected write refusal, got: {out[:200]}"
+print("   OK  a machine role WITHOUT INSERT cannot propose either (propose-capability == raw-write-capability)")
+print("       => no single connecting role can propose yet be unable to forge; the fix is a separate")
+print("          trusted gateway process holding the writer role, with the machine holding no DB write.")
+EOF
+
+psql "$ADMIN_URL" -q -c "DROP DATABASE ${DB}" -c "DROP ROLE ${HUMAN_ROLE}" -c "DROP ROLE ${MACHINE_ROLE}" -c "DROP ROLE ${MACHINE_ROLE}_norw"
 rm -f /tmp/gm-rehearsal-outbox-row
-echo "rehearse-v2: OK"
+echo "rehearse-v2: OK (governed path sound; substrate bypass present and documented)"

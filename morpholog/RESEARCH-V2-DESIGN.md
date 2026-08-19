@@ -172,6 +172,40 @@ genuinely consumed historical windows, open/assign/declare, human seal)
 are dry-run verified in order — templates in `launch-002/`. June 2026
 and 2026-08-11..17 are deliberately never seeded as consumed.
 
+### The boundary the rehearsal does NOT cross (2026-08-19 correction)
+
+`scripts/rehearse-v2` section H forces the honest negative result:
+governed-path enforcement holds only while every mutation goes through
+the adapter. The `morpholog.claims` table is plain substrate storage (no
+RLS/trigger/`SECURITY DEFINER`), and any role that can propose must hold
+raw `INSERT` on it — the rehearsal shows a role *without* `INSERT` cannot
+propose at all. So for a single connecting role, **propose-capability is
+raw-forge-capability**: a process with the machine credential can
+`INSERT SealAuthority(claude_fable_5)` directly and then seal through the
+normal adapter, emitting `DataAcquisitionAuthorised` with no human. Replay
+detects it (divergent log, forged claim `only_in_claims_table`) but only
+post-hoc — too late for the irreversible acquisition boundary.
+
+Three layers, kept distinct:
+
+- **A. Governed-path actor enforcement** — proven. Human/machine split
+  holds for every adapter proposal.
+- **B. Raw-database capability security** — *not* provided while the
+  machine role has substrate DML. The only real fix is a separate
+  trusted gateway process holding the writer role (e.g. a resident
+  `morpholog session`), with the machine holding no direct DB write and
+  submitting only rule-checked proposals; actor policy then binds
+  `claude_fable_5` to the gateway role and never to `jordan_dimov`. This
+  is a genuine capability boundary and larger than a launch-day change.
+- **C. Acquisition capability security** — not provided by Morpholog at
+  all: it governs claims, not the machine's network senses. A shell with
+  internet can fetch unseen data regardless of any seal; enforcing "no
+  unseen data before seal" needs process network isolation.
+
+Launch posture is therefore **cooperative-machine**: A is enforced and
+auditable; the untouched-data discipline is a declared human/process
+guarantee, not an OS/network sandbox. See `V2-LAUNCH-RUNBOOK.md`.
+
 ## The boundary, stated durably
 
 > **Morpholog owns what may be said, what may be done, and what declared

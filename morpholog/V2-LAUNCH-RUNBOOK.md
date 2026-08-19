@@ -18,7 +18,11 @@ Credential rules, absolute:
   prompts in Jordan's own shell. Never pasted into Claude Code, never in
   a command argument, `.env`, repo file, or shell history.
 - The machine credential may be held by the Claude session (env var or
-  `~/.pgpass`), and grants no seal or approval power — that is the point.
+  `~/.pgpass`), and grants no seal or approval power *through the governed
+  path* — but see the three-layer threat model at the end: with raw table
+  DML it can bypass that path, so the launch posture is cooperative-machine,
+  not adversarial capability security. Read that section before relying on
+  any "the machine cannot X" statement.
 
 ---
 
@@ -67,8 +71,12 @@ This establishes governance (`jordan_dimov`→`gm_human`,
 backfills the three genuinely consumed historical windows (May 2026 →
 inv-003; July 2026 → bess-001; 2026-08-04..10 → inv-001 and the four
 method studies). **June 2026 and 2026-08-11..17 are deliberately NOT
-consumed** — June is 004's untouched window; the August week becomes
-002's corpus and is consumed only at acquisition.
+consumed** — June is Investigation 004's *frozen, unconsumed*
+investigation window (004's declaration records partial June exposure:
+BESS schema probes, July boundary slices, and June rows present in 003's
+pinned FY26-27 CSVs — so it is 004's reserved window, not pristine
+untouched data); the August week is 002's reserved window and is
+consumed only at acquisition.
 
 The signing key `audit-2026` is already registered in the shared claims
 table (v1 row); v2's `key_not_already_registered` correctly refuses a
@@ -140,25 +148,73 @@ proposals. v2 rows live in batches named `*.v2.ndjson` —
 `scripts/record` and `scripts/replay-research` both dispatch the
 programme by that suffix, so the mixed v1+v2 history replays.
 
-## Threat-model notes (evidenced by scripts/rehearse-v2)
+## Threat model — stated precisely, in three layers
 
-- **After H3, the machine credential cannot** assert `jordan_dimov`
-  (adapter refusal at the session layer), re-run `establish_governance`
-  (`governance_not_yet_established`), seal (`seal_requires_authority`),
-  approve (`approval_requires_authority`), backfill consumption
-  (`historical_requires_seal_authority`), or register a signing key
-  (`key_registration_requires_seal_authority`).
-- **Rogue-key path, neutralised:** v1's `register_audit_signing_key` is
-  ungated and the v1 file remains on disk for replay, so a machine
-  credential could mint a new `AuditSigningKey` claim through v1 rules.
-  Verification trust is therefore the **repo-pinned**
-  `morpholog/trust/audit-2026.pub` (asserted by `scripts/replay-research`),
-  never the claim set — and any such rogue row would be publicly visible
-  in the audit chain and claims export.
-- **Residual honesty:** DB-level separation binds *credentials*, not
-  shells. A session with PostgreSQL superuser access (e.g. peer auth as
-  the OS user) can bypass any in-database control; what survives that is
-  tamper-evidence — the Merkle audit chain, signed checkpoints, and CI
-  replay. If Jordan wants the machine shell unable to reach superuser,
-  restrict peer auth in `pg_hba.conf`; the governed record does not
-  depend on it, but defence in depth is cheap.
+The rehearsal proves exactly one of these, and it is important not to
+claim more. All three are evidenced by `scripts/rehearse-v2`.
+
+### A. Governed-path actor enforcement — PROVEN
+
+*Every mutation that goes through the Morpholog adapter obeys the
+human/machine split.* After H3, a proposal carrying the machine
+credential cannot assert `jordan_dimov` (adapter refusal at the session
+layer), re-run `establish_governance` (`governance_not_yet_established`),
+seal (`seal_requires_authority`), approve (`approval_requires_authority`),
+backfill consumption (`historical_requires_seal_authority`), or register
+a signing key (`key_registration_requires_seal_authority`). The
+rogue-*key* path is closed at the verifier: v1's
+`register_audit_signing_key` is ungated and the v1 file stays on disk
+for replay, so the `AuditSigningKey` claim set is mintable — therefore
+verification trust is the **repo-pinned** `trust/audit-2026.pub`
+(asserted by `scripts/replay-research`), never the claim set.
+
+### B. Raw-database capability security — NOT PROVIDED
+
+*A process holding the machine credential can bypass the adapter
+entirely.* The `morpholog.claims` table is plain storage — no RLS, no
+trigger, no `SECURITY DEFINER` wrapper — and `gm_machine` holds raw
+`INSERT` on it. Section H of the rehearsal forces the whole chain on a
+disposable database: the machine `INSERT`s `SealAuthority(claude_fable_5)`
+directly, then seals `inq-forged` through the *normal* adapter (the gate
+now sees the forged claim), and `DataAcquisitionAuthorised` is emitted —
+**with no human involved.** `audit verify` later reports the log as
+divergent (the forged claim is `only_in_claims_table` with no
+transition), but that is **post-hoc**: it runs when someone runs it, and
+by then the seal has already authorised acquisition.
+
+This is not fixable by narrowing `gm_machine`'s grants: the rehearsal
+also shows a role *without* `INSERT` cannot propose at all (`permission
+denied for table claims`). For a single connecting role,
+**propose-capability and raw-forge-capability are the same privilege.**
+The only true fix is a *separate trusted gateway process* holding the
+writer role and exposing only rule-checked proposals (e.g. a long-lived
+`morpholog session`), with the machine holding **no direct database
+write** — a real capability boundary, and more than a launch-day change.
+See RESEARCH-V2-DESIGN.md for the sketch.
+
+### C. Acquisition capability security — NOT PROVIDED by Morpholog
+
+Even with a perfect database boundary, Morpholog governs *claims*, not
+the machine's senses. A process with shell and network access can
+`curl` NESO/Elexon directly, before any seal. Nothing in the state
+machine sandboxes that. Technical enforcement of "no unseen data before
+the human seal" would require network/data-access isolation of the
+machine process — out of scope here.
+
+### The honest launch posture (Friday)
+
+> **Operationally ready under a cooperative-machine threat model.** The
+> human/machine authority split is enforced for every governed Morpholog
+> proposal (A); replay/audit detects substrate bypass after the fact;
+> and the untouched-data discipline (2026-08-11..17 not contacted before
+> the seal) rests on a declared human/process guarantee — Claude is
+> instructed not to bypass the governed tooling or touch the reserved
+> window — **not** on an OS/network sandbox (B, C not provided).
+
+If Jordan wants to raise this to adversarial capability security before
+002, the gateway-process separation (B) and machine network isolation
+(C) are the two required pieces; neither is needed for a cooperative
+launch, and both are larger than a Friday change. A cheap partial
+hardening available today: restrict `pg_hba.conf` so the machine role
+cannot reach a superuser/peer-auth login (defence in depth; the governed
+record's tamper-evidence does not depend on it).

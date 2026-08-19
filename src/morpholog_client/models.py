@@ -78,8 +78,8 @@ class RegisterCorpusRequest:
     TRANSFORMATION: ClassVar[str] = "register_corpus"
 
     corpus: str
-    first_day: Decimal
-    last_day: Decimal
+    first_day: date
+    last_day: date
 
     def to_args_named(self) -> dict[str, object]:
         return {
@@ -578,17 +578,17 @@ class ResearchCorpusClaim:
     PREDICATE: ClassVar[str] = "ResearchCorpus"
 
     corpus: str
-    first_day: Decimal
-    last_day: Decimal
+    first_day: date
+    last_day: date
 
     @classmethod
     def from_named(cls, args: dict[str, object]) -> ResearchCorpusClaim:
         raw = args["corpus"]
         corpus = raw
         raw = args["first_day"]
-        first_day = values.parse_decimal(raw)
+        first_day = values.parse_date(raw)
         raw = args["last_day"]
-        last_day = values.parse_decimal(raw)
+        last_day = values.parse_date(raw)
         return cls(corpus=corpus, first_day=first_day, last_day=last_day)
 
 

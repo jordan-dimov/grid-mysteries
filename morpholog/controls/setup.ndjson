@@ -1,8 +1,8 @@
 {"transformation": "establish_governance", "actor": "jordan_dimov", "args_named": {"human_actor": "jordan_dimov", "human_login_role": "{SESSION_USER}", "machine_actor": "claude_fable_5", "machine_login_role": "{SESSION_USER}"}}
-{"transformation": "register_corpus", "actor": "claude_fable_5", "args_named": {"corpus": "corpus-a", "first_day": "20260701", "last_day": "20260731"}}
-{"transformation": "register_corpus", "actor": "claude_fable_5", "args_named": {"corpus": "corpus-overlap", "first_day": "20260704", "last_day": "20260710"}}
-{"transformation": "register_corpus", "actor": "claude_fable_5", "args_named": {"corpus": "corpus-c", "first_day": "20260901", "last_day": "20260907"}}
-{"transformation": "register_corpus", "actor": "claude_fable_5", "args_named": {"corpus": "corpus-hist", "first_day": "20260601", "last_day": "20260607"}}
+{"transformation": "register_corpus", "actor": "claude_fable_5", "args_named": {"corpus": "corpus-a", "first_day": "2026-07-01", "last_day": "2026-07-31"}}
+{"transformation": "register_corpus", "actor": "claude_fable_5", "args_named": {"corpus": "corpus-overlap", "first_day": "2026-07-04", "last_day": "2026-07-10"}}
+{"transformation": "register_corpus", "actor": "claude_fable_5", "args_named": {"corpus": "corpus-c", "first_day": "2026-09-01", "last_day": "2026-09-07"}}
+{"transformation": "register_corpus", "actor": "claude_fable_5", "args_named": {"corpus": "corpus-hist", "first_day": "2026-06-01", "last_day": "2026-06-07"}}
 {"transformation": "record_historical_consumption", "actor": "jordan_dimov", "args_named": {"corpus": "corpus-hist", "v1_consumer": "inv-001-v1-subject"}}
 {"transformation": "open_inquiry", "actor": "claude_fable_5", "args_named": {"inquiry": "inq-ctl-a", "kind": "method_study", "title": "control inquiry A", "opened_at": "2026-08-17T00:00:00Z"}}
 {"transformation": "assign_corpus", "actor": "claude_fable_5", "args_named": {"inquiry": "inq-ctl-a", "corpus": "corpus-a"}}

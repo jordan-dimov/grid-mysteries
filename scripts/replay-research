@@ -53,6 +53,33 @@ if sig.get('key_id') != 'audit-2026' or sig.get('public_key') != pinned:
 print(f'   anchor signed by the pinned key ({sig[\"key_id\"]})')
 "
 
+echo "== genesis attestation (detective control for substrate bypass)"
+EXPECTED_HUMAN_LOGIN_ROLE="${EXPECTED_HUMAN_LOGIN_ROLE:-gm_human}" python3 -c "
+import json, os
+# Every governance/seal/approval transition MUST have been committed by
+# the human PostgreSQL login role. attestation.authenticated_by is the
+# session_user that actually wrote the row, inside the Merkle leaf — so a
+# claim forged AND back-dated with a forged audit row would carry the
+# machine's login here, not the human's. Layer-B bypass (see
+# V2-LAUNCH-RUNBOOK.md) is thereby provable in the pack forever. No-op
+# until the pack contains v2 governance rows.
+pack = json.load(open('morpholog/evidence-pack.json'))
+expected = os.environ['EXPECTED_HUMAN_LOGIN_ROLE']
+governance = {'establish_governance', 'seal_protocol', 'approve_publication'}
+checked = 0
+for row in pack['rows']:
+    if row['transformation_name'] in governance:
+        who = (row.get('attestation') or {}).get('authenticated_by')
+        if who != expected:
+            raise SystemExit(
+                f'{row[\"transformation_name\"]} {row[\"transition_id\"]} committed by '
+                f'{who!r}, not the human role {expected!r} — substrate forgery suspected'
+            )
+        checked += 1
+print(f'   {checked} governance/seal/approval rows, all committed by {expected!r}'
+      if checked else '   no v2 governance rows yet (no-op against the v1 pack)')
+"
+
 echo "== replaying proposal batches into a fresh database"
 morpholog init --database-url "$REPLAY_URL" --reset --i-know-this-deletes-data >/dev/null
 for batch in morpholog/batches/*.ndjson; do

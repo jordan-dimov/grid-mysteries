@@ -45,10 +45,13 @@ predicate Inquiry(inquiry: Subject, kind: Subject, title: Subject, opened_at: Ti
 -- the same evidence. Consumption is recorded when an inquiry's data is
 -- acquired; an inquiry consuming its own corpus later is lawful (the
 -- prior-exposure gate acts at assignment, proven by audit sequence).
--- Bounds are Decimal YYYYMMDD day-keys, not Date: in v0.0.9 Date-vs-Date
--- comparison passes check but is refused at proposal time, so the
--- comparable encoding is the single source of truth.
-predicate ResearchCorpus(corpus: Subject, first_day: Decimal, last_day: Decimal)
+-- Bounds are native Date, compared with the endorsed date comparators
+-- (on_or_before / on_or_after / before / after). `<=` is deliberately
+-- NOT overloaded onto dates — using it forfeits date-kind checking and
+-- silently passes check while failing at evaluation (a check-tier
+-- divergence, confirmed with Morpholog). Native Date keeps date-kind
+-- checking and civil-date semantics; args are ISO "YYYY-MM-DD".
+predicate ResearchCorpus(corpus: Subject, first_day: Date, last_day: Date)
     append only
     unique by (corpus)
 predicate InquiryCorpus(inquiry: Subject, corpus: Subject)
@@ -150,8 +153,8 @@ define corpus_overlaps_consumed(corpus):
     ResearchCorpus(corpus, first_day, last_day)
     and ResearchCorpus(other, other_first, other_last)
     and CorpusConsumed(other, _)
-    and other_first <= last_day
-    and other_last >= first_day
+    and other_first on_or_before last_day
+    and other_last on_or_after first_day
 
 intent InquiryOpened(inquiry: Subject)
 intent DataAcquisitionAuthorised(inquiry: Subject)
@@ -269,7 +272,7 @@ transformation open_inquiry(inquiry, kind, title, opened_at):
 
 transformation register_corpus(corpus, first_day, last_day):
     require corpus_is_new: not ResearchCorpus(corpus, _, _)
-    require corpus_days_ordered: first_day <= last_day
+    require corpus_days_ordered: first_day on_or_before last_day
     admit ResearchCorpus(corpus, first_day, last_day)
 
 transformation assign_corpus(inquiry, corpus):

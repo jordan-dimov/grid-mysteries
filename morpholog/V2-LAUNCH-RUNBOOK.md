@@ -28,17 +28,25 @@ Credential rules, absolute:
 
 ## Human-only steps (Jordan's shell, outside Claude Code)
 
-**H1 — create the two login roles** (as the PostgreSQL admin):
+**H1 — create the login roles, granting write ONLY to the human for now**
+(as the PostgreSQL admin). This is the least-privilege closure of the
+bootstrap race (threat-model layer A): until governance is established,
+*any* write-capable connection can define the trust root, so the machine
+role gets no write until after H3. Section H of `scripts/rehearse-v2`
+proves a role without `INSERT` on `claims` cannot propose at all — so a
+writeless `gm_machine` genuinely cannot race the bootstrap.
 
 ```
 psql -d grid_mysteries_morpholog
   CREATE ROLE gm_human LOGIN;
   \password gm_human          -- typed at the prompt, nowhere else
   CREATE ROLE gm_machine LOGIN;
-  \password gm_machine        -- machine credential; will be given to Claude
+  \password gm_machine        -- machine credential; given to Claude AFTER H3
+  -- Human gets full write now; machine gets READ ONLY until H3 completes.
   GRANT USAGE ON SCHEMA morpholog TO gm_human, gm_machine;
-  GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA morpholog TO gm_human, gm_machine;
-  GRANT USAGE, SELECT ON ALL SEQUENCES IN SCHEMA morpholog TO gm_human, gm_machine;
+  GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA morpholog TO gm_human;
+  GRANT USAGE, SELECT ON ALL SEQUENCES IN SCHEMA morpholog TO gm_human;
+  GRANT SELECT ON ALL TABLES IN SCHEMA morpholog TO gm_machine;
   \q
 ```
 
@@ -77,6 +85,22 @@ BESS schema probes, July boundary slices, and June rows present in 003's
 pinned FY26-27 CSVs — so it is 004's reserved window, not pristine
 untouched data); the August week is 002's reserved window and is
 consumed only at acquisition.
+
+**H3a — grant the machine role its write privileges NOW** (governance
+exists, so the race window is closed):
+
+```
+psql -d grid_mysteries_morpholog
+  GRANT INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA morpholog TO gm_machine;
+  GRANT USAGE, SELECT ON ALL SEQUENCES IN SCHEMA morpholog TO gm_machine;
+  \q
+```
+
+Note this write grant is exactly the substrate-bypass capability of
+threat-model layer B: from here, a process with the machine credential
+*could* forge a claim by raw SQL. The launch posture accepts that under
+the cooperative-machine model; the detective control is the genesis
+attestation check (see the threat-model section).
 
 The signing key `audit-2026` is already registered in the shared claims
 table (v1 row); v2's `key_not_already_registered` correctly refuses a
@@ -128,6 +152,22 @@ morpholog outbox claim --intent-type DataAcquisitionAuthorised --worker-id inv-0
 morpholog outbox complete <intent-id> --outcome delivered --worker-id inv-002-fetcher
 # then: consume_corpus(corpus-2026-08-w2, inq-002)
 ```
+
+**Outbox at-least-once discipline** (verified guidance from Morpholog;
+`scripts/rehearse-v2` exercises the happy path):
+- **Idempotency is by gate, and the gate must be matched by name.** A
+  re-delivered `register_evidence`/`attach_evidence` is refused by
+  `artifact_is_new`/`attach_is_new` — treat *that specific rule* as
+  success. Any other rejection is a real failure (`complete … --outcome
+  failed`), and a *commit* on a retry means the first attempt did not
+  land — never mark a state change `delivered` on a refusal you did not
+  expect.
+- **Every value written must derive from the intent payload**, never
+  from per-attempt fresh state: a `new Subject()` / fresh id minted on
+  each retry defeats the `is_new` gate and duplicates. The artifact id,
+  sha256, etc. come from the fetch, keyed deterministically.
+- **`lease_lost` from `complete` means another worker owns the row** —
+  it is not retryable; stop and reconcile, do not re-fetch.
 
 Analysis reads sealed parameters via
 `grid_mysteries.governance.declared_parameter` (generated client, pinned
@@ -191,6 +231,21 @@ writer role and exposing only rule-checked proposals (e.g. a long-lived
 `morpholog session`), with the machine holding **no direct database
 write** — a real capability boundary, and more than a launch-day change.
 See RESEARCH-V2-DESIGN.md for the sketch.
+
+**Detective control for layer B (genesis attestation).** Every audit
+row carries `attestation.authenticated_by` — the PostgreSQL
+`session_user` that actually committed it, inside the Merkle leaf and
+therefore in every evidence pack forever. A forged claim has no audit
+row at all (caught by replay divergence); a claim forged *and* back-dated
+by also forging an audit row would carry the machine's `authenticated_by`,
+not the human's. So the standing detective control after launch is:
+**the `establish_governance`, every `seal_protocol`, and every
+`approve_publication` transition must show `attestation.authenticated_by
+= gm_human`** — a machine-committed governance/seal/approval row is
+provably illegitimate in the pack. This is a launch-time addition to
+`scripts/replay-research` (checking the committed `evidence-pack.json`),
+armed once the pack contains the v2 genesis; it is a no-op against the
+current v1-only pack.
 
 ### C. Acquisition capability security — NOT PROVIDED by Morpholog
 

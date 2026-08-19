@@ -71,9 +71,12 @@ programme remains `research.morph` (v1) until Investigation 002 opens.
    modelled by audit sequence, so an inquiry lawfully consuming its own
    corpus later cannot retro-invalidate anything), and it refuses date
    OVERLAP with any consumed window, not just id equality. Corpus bounds
-   are Decimal YYYYMMDD day-keys: v0.0.9 accepts Date-vs-Date comparisons
-   at check time but refuses them at proposal time (worth reporting
-   upstream). Deployment seeds July 2026 and 2026-08-04..10 as
+   are native `Date`, compared with the endorsed date comparators
+   (`on_or_before`/`on_or_after`); `<=` is deliberately not overloaded
+   onto dates and silently passes check while failing at evaluation (a
+   check-tier divergence confirmed with Morpholog — we migrated off the
+   earlier Decimal YYYYMMDD day-key workaround, which forfeited date-kind
+   checking). Deployment seeds July 2026 and 2026-08-04..10 as
    *historical* consumption facts via `record_historical_consumption`
    (human-gated; the consumer is a v1 subject, exempt from the v2
    assignment invariant) — legitimate backfill of facts that occurred,

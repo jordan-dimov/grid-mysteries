@@ -34,5 +34,14 @@
   "sha256": "d5b86693546b68202a97fb14a9acdecf28c4418e815d926a3cdbd3240dc39479",
   "fetched_at": "2026-08-22T22:03:06.751185+00:00",
   "bytes": 1060045
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "SYSWARN",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/SYSWARN?publishDateTimeFrom=2026-06-22T00:00Z&publishDateTimeTo=2026-06-26T00:00Z",
+  "path": "data/raw/elexon/2026-06-24/syswarn.json",
+  "sha256": "956bd4016a61986174fbf0654f14eb794e9c89b2d8350c4b59d3b9cc7763f7ae",
+  "fetched_at": "2026-08-22T22:11:32.278363+00:00",
+  "bytes": 11059
  }
 ]

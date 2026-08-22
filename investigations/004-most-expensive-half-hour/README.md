@@ -237,8 +237,12 @@ to one another (`evidence/episode-diagnostic.json`), for p42:
 
 Inside the Balancing Mechanism the system operator was, on published
 indicative cashflows, **receiving** money — units paying to be turned
-down. The cost sat in replacement energy bought **outside** the
-mechanism. Layer 3 tracks layer 1 period by period across the episode
+down. **The large positive balancing adjustment visible in the public
+record sat outside the mechanism**: £1.277m of BSAD adjustments in p42,
+all classified `F` (Energy). Calling that *replacement* energy would be
+an attribution the public rows do not support, however plausible the
+mechanism looks alongside a simultaneous bid-down and a margin
+shortfall — so it is not claimed. Layer 3 tracks layer 1 period by period across the episode
 and exceeds it by ~£101k at p42. **Whether NESO computes its
 `Constraints` figure from those rows is not public and is not asserted
 here** — the declaration said layer 1 could not be decomposed, and it
@@ -284,16 +288,37 @@ From `FUELINST`, comparing the episode (p36–p45) with midday (p24–p26):
   with **1250 MW excluded due to system constraints**.
 - **2026-06-24 13:20** — cancellation.
 
-**The EMN window 19:00–22:00 BST is settlement periods 39–44. The
-mechanically selected p42 sits inside it, and so do all four of the
-month's most expensive half-hours.** The rule found the peak of the
-warned period without any knowledge of the warning.
+**The originally warned window, 19:00–22:00 BST, is settlement periods
+39–44. The mechanically selected p42 sits inside it, and so do all four
+of the month's most expensive half-hours.** The rule found the peak of
+the warned period without any knowledge of the warning.
+
+Precision matters here: **the notice was cancelled at 13:20, roughly
+seven hours before the window began.** This is therefore not an
+"active EMN period" — it is the window NESO warned about the previous
+night, stood down once margins improved, and which then became the most
+expensive evening of the month to operate anyway. The adequacy warning
+could be lifted while the *cost* of running the system through those
+hours still peaked.
 
 And the notice resolves what would otherwise look like a contradiction —
 a *margin* event whose cost NESO books under *`Constraints`*. NESO's own
 text says both at once: the margin was short **because** 1,250–1,300 MW
 of generation was excluded **by system constraints**. That is most of
 the 1,450–1,900 MW shortfall.
+
+## The unresolved accounting fact
+
+Two published classifications describe the same half-hour and disagree:
+
+> NESO's balancing-cost table says **`Constraints`: +£1.176m**.
+> Its disaggregated outside-BM adjustments say **`Energy` (`F`):
+> +£1.277m**.
+
+They are doing different jobs, and this investigation does not harmonise
+them. The temptation to read one published flag as a universal semantic
+label is exactly what 002 punished us for (`soFlag` is not NESO's
+system-tagging), and the same discipline applies here.
 
 ## Secondary reporting, held separately and treated as provisional
 
@@ -310,3 +335,97 @@ under Licence Condition C7.5, plus an independent investigation into
 allegations about control-room record-keeping.** The public account of
 this week is therefore *provisional*, and nothing in this investigation
 depends on it: every claim above rests on pinned published data.
+
+## Why p42, specifically
+
+The episode's cost is driven by **price, not volume**. Outside-BM
+adjustment volume is nearly flat from p39 onward at ~1,170 MWh per
+half-hour; the unit price is what moves:
+
+| period | BSAD rows | BSAD £ | BSAD MWh | £/MWh | dearest single row |
+|---|---:|---:|---:|---:|---:|
+| p36 | 52 | £339,714 | 1,119 | £304 | £476 |
+| p37 | 46 | £581,381 | 972 | £598 | £752 |
+| p38 | 46 | £581,234 | 970 | £599 | £752 |
+| p39 | 60 | £1,139,965 | 1,171 | £974 | £1,156 |
+| p40 | 72 | £1,169,648 | 1,216 | £962 | £1,156 |
+| p41 | 71 | £1,306,403 | 1,217 | £1,073 | £1,379 |
+| **p42** | 59 | £1,277,241 | 1,173 | **£1,089** | **£1,379** |
+| p43 | 58 | £896,023 | 1,173 | £764 | £999 |
+| p44 | 58 | £897,111 | 1,176 | £763 | £999 |
+| p45 | 56 | £450,982 | 1,152 | £392 | £574 |
+
+So p42 is the maximum because the **price of outside-BM energy peaked**,
+not because more of it was bought. The dearest single adjustment row in
+p41 and p42 is **£1,379/MWh** — which independently corroborates the
+secondary reporting's "~£1,400/MWh" from pinned primary data.
+
+Note the layers disagree on ordering: BSAD is larger in p41
+(£1,306,403) than p42 (£1,277,241), while NESO's `Constraints` is
+larger in p42. Another reminder that the two classifications are doing
+different jobs.
+
+## The instruction chronology
+
+3,219 distinct acceptances touch p36–p45 (201 SO-flagged). Most span a
+single period; 696 span two or more. Issue times cluster through the
+evening (UTC): 16h 102, 17h 370, **18h 788, 19h 965, 20h 771**, 21h 218.
+
+Every one of the ten largest instructed swings belongs to **one unit** —
+`T_PEHE-1` (Peterhead, SSE Thermal, CCGT, 1,200 MW) — held up by a
+**rolling chain of SO-flagged acceptances** issued every 30–45 minutes
+from 16:13 to 19:35, each instructing 725 → ~1,153 MW and each spanning
+two to three periods. The EMN's "Maximum Generation Service may be
+instructed" language is the published context for that shape; whether
+these acceptances *are* that service is not stated in the data and is
+not claimed here.
+
+## Did the physical system do what it was told? (B1610)
+
+The declared consistency check, p42, for the 85 units with FPN ≥ 100 MW
+and metered data. Aggregate metered ÷ scheduled:
+
+| fuel | scheduled MWh | metered MWh | ratio |
+|---|---:|---:|---:|
+| CCGT | 8,036 | 7,780 | 0.97 |
+| unclassified | 2,872 | 2,873 | 1.00 |
+| NUCLEAR | 1,800 | 1,783 | 0.99 |
+| BIOMASS | 968 | 817 | 0.84 |
+| **PS** | 720 | 331 | **0.46** |
+| **WIND** | 402 | 269 | **0.67** |
+| OCGT | 136 | 101 | 0.75 |
+
+**The check confirms consistency rather than finding an anomaly.** The
+units delivering far below schedule are precisely the ones that were
+bid down — Foyers, Dinorwig, Cruachan (pumped storage), and Neart na
+Gaoithe and Moray East (Scottish offshore wind) are simultaneously the
+largest bid-down units and the largest shortfalls against schedule.
+Being told to reduce and then reducing is the instruction working.
+
+**One unit stands against its own fuel class.** `T_PEHE-1` metered
+364.6 MWh in p42 against a 1,153 MW final schedule — a ratio of
+**0.63**, where the CCGT fleet aggregate is 0.97 — and it carried *no*
+accepted bid volume in that period. Its metered energy is near-constant
+at 364.6 MWh across p36–p43 (≈729 MW), which is almost exactly the
+`levelFrom` of every acceptance in its chain. Public data cannot
+distinguish between the candidate explanations — a unit unable to reach
+an instructed level (ambient-temperature derating is the contemporaneous
+suggestion, unverified here), metering or aggregation semantics for this
+BM unit, or a standing authorisation not fully called — so the
+observation is recorded and none of them is asserted.
+
+## Corrections
+
+Corrections stay here permanently; the text above is never silently
+rewritten.
+
+1. **2026-08-22, before any publication.** The results first said the
+   cost "sat in replacement energy bought outside the mechanism" and
+   described p39–p44 as the EMN window without qualification. Two
+   overclaims, both now narrowed: (a) *replacement* is an attribution
+   the public rows do not provide — what is established is that the
+   large positive adjustment sat outside the BM and is classified
+   `Energy`; (b) the notice was **cancelled at 13:20**, so this is the
+   *originally warned* window, not an active-EMN period. The corrected
+   fact is stranger and stronger: the adequacy warning was stood down
+   seven hours before the evening that then cost the most in the month.

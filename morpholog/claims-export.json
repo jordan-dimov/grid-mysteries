@@ -1998,5 +1998,629 @@
         "value": "2026-08-22T21:57:30Z"
       }
     ]
+  },
+  {
+    "predicate": "EvidenceArtifact",
+    "args": [
+      {
+        "type": "subject",
+        "value": "art-004-day-manifest"
+      },
+      {
+        "type": "subject",
+        "value": "elexon-insights 2026-06-24 settlement day + context (EBOCF, B1610, FUELINST, SYSWARN) via investigations/004-most-expensive-half-hour/evidence/day-manifest.json and context-manifest.json"
+      },
+      {
+        "type": "subject",
+        "value": "786476fa6289c7281a7a3c212ced08acfa85c35967bab97c59af5afc0174ce0b"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-08-22T22:31:15Z"
+      }
+    ]
+  },
+  {
+    "predicate": "InquiryUses",
+    "args": [
+      {
+        "type": "subject",
+        "value": "inq-004"
+      },
+      {
+        "type": "subject",
+        "value": "art-004-day-manifest"
+      }
+    ]
+  },
+  {
+    "predicate": "EvidenceSealed",
+    "args": [
+      {
+        "type": "subject",
+        "value": "inq-004"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-08-22T22:31:15Z"
+      }
+    ]
+  },
+  {
+    "predicate": "SelectionRecorded",
+    "args": [
+      {
+        "type": "subject",
+        "value": "inq-004"
+      },
+      {
+        "type": "subject",
+        "value": "5119818d3353868aca3c55dc7849c9a8747c614b0af55a9534efa32bab7f0715"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-08-22T22:31:15Z"
+      }
+    ]
+  },
+  {
+    "predicate": "Conjecture",
+    "args": [
+      {
+        "type": "subject",
+        "value": "conj-004-half-hour-reconstructable"
+      },
+      {
+        "type": "subject",
+        "value": "inq-004"
+      },
+      {
+        "type": "subject",
+        "value": "The half-hour's publicly observable state can be reconstructed coherently from public data, and every major action in it is consistent with the visible system context, without requiring non-public information to explain at the level of mechanism. Where the published Constraints total cannot be decomposed from public data, that gap is itself a declared finding."
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-08-22T22:31:15Z"
+      }
+    ]
+  },
+  {
+    "predicate": "MechanismAssessment",
+    "args": [
+      {
+        "type": "subject",
+        "value": "inq-004"
+      },
+      {
+        "type": "subject",
+        "value": "originally-warned-emn-window-coincidence"
+      },
+      {
+        "type": "subject",
+        "value": "explained"
+      },
+      {
+        "type": "subject",
+        "value": "79fd027f771cd2071ab9572fe1ccfc78ffd4be112acf531912fc02197800fc19"
+      }
+    ]
+  },
+  {
+    "predicate": "MechanismAssessment",
+    "args": [
+      {
+        "type": "subject",
+        "value": "inq-004"
+      },
+      {
+        "type": "subject",
+        "value": "constraints-excluded-most-of-forecast-margin"
+      },
+      {
+        "type": "subject",
+        "value": "explained"
+      },
+      {
+        "type": "subject",
+        "value": "79fd027f771cd2071ab9572fe1ccfc78ffd4be112acf531912fc02197800fc19"
+      }
+    ]
+  },
+  {
+    "predicate": "MechanismAssessment",
+    "args": [
+      {
+        "type": "subject",
+        "value": "inq-004"
+      },
+      {
+        "type": "subject",
+        "value": "dispatchable-fleet-at-published-limits"
+      },
+      {
+        "type": "subject",
+        "value": "explained"
+      },
+      {
+        "type": "subject",
+        "value": "79fd027f771cd2071ab9572fe1ccfc78ffd4be112acf531912fc02197800fc19"
+      }
+    ]
+  },
+  {
+    "predicate": "MechanismAssessment",
+    "args": [
+      {
+        "type": "subject",
+        "value": "inq-004"
+      },
+      {
+        "type": "subject",
+        "value": "outside-bm-adjustment-is-price-driven"
+      },
+      {
+        "type": "subject",
+        "value": "contributes"
+      },
+      {
+        "type": "subject",
+        "value": "79fd027f771cd2071ab9572fe1ccfc78ffd4be112acf531912fc02197800fc19"
+      }
+    ]
+  },
+  {
+    "predicate": "MechanismAssessment",
+    "args": [
+      {
+        "type": "subject",
+        "value": "inq-004"
+      },
+      {
+        "type": "subject",
+        "value": "bid-down-consistent-with-metered-output"
+      },
+      {
+        "type": "subject",
+        "value": "contributes"
+      },
+      {
+        "type": "subject",
+        "value": "79fd027f771cd2071ab9572fe1ccfc78ffd4be112acf531912fc02197800fc19"
+      }
+    ]
+  },
+  {
+    "predicate": "MechanismAssessment",
+    "args": [
+      {
+        "type": "subject",
+        "value": "inq-004"
+      },
+      {
+        "type": "subject",
+        "value": "actions-already-in-flight-before-the-window"
+      },
+      {
+        "type": "subject",
+        "value": "contributes"
+      },
+      {
+        "type": "subject",
+        "value": "79fd027f771cd2071ab9572fe1ccfc78ffd4be112acf531912fc02197800fc19"
+      }
+    ]
+  },
+  {
+    "predicate": "MechanismAssessment",
+    "args": [
+      {
+        "type": "subject",
+        "value": "inq-004"
+      },
+      {
+        "type": "subject",
+        "value": "why-neso-constraints-series-peaks-in-p42"
+      },
+      {
+        "type": "subject",
+        "value": "not_publicly_observable"
+      },
+      {
+        "type": "subject",
+        "value": "79fd027f771cd2071ab9572fe1ccfc78ffd4be112acf531912fc02197800fc19"
+      }
+    ]
+  },
+  {
+    "predicate": "MechanismAssessment",
+    "args": [
+      {
+        "type": "subject",
+        "value": "inq-004"
+      },
+      {
+        "type": "subject",
+        "value": "peterhead-metered-instructed-gap"
+      },
+      {
+        "type": "subject",
+        "value": "not_publicly_observable"
+      },
+      {
+        "type": "subject",
+        "value": "79fd027f771cd2071ab9572fe1ccfc78ffd4be112acf531912fc02197800fc19"
+      }
+    ]
+  },
+  {
+    "predicate": "MechanismAssessment",
+    "args": [
+      {
+        "type": "subject",
+        "value": "inq-004"
+      },
+      {
+        "type": "subject",
+        "value": "identity-of-constraint-excluded-generation"
+      },
+      {
+        "type": "subject",
+        "value": "not_publicly_observable"
+      },
+      {
+        "type": "subject",
+        "value": "79fd027f771cd2071ab9572fe1ccfc78ffd4be112acf531912fc02197800fc19"
+      }
+    ]
+  },
+  {
+    "predicate": "EvidenceMetric",
+    "args": [
+      {
+        "type": "subject",
+        "value": "met-004-constraints-gbp"
+      },
+      {
+        "type": "subject",
+        "value": "inq-004"
+      },
+      {
+        "type": "subject",
+        "value": "art-004-day-manifest"
+      },
+      {
+        "type": "subject",
+        "value": "selected_period_published_constraints_gbp"
+      },
+      {
+        "type": "decimal",
+        "value": "1176150"
+      }
+    ]
+  },
+  {
+    "predicate": "EvidenceMetric",
+    "args": [
+      {
+        "type": "subject",
+        "value": "met-004-bsad-gbp"
+      },
+      {
+        "type": "subject",
+        "value": "inq-004"
+      },
+      {
+        "type": "subject",
+        "value": "art-004-day-manifest"
+      },
+      {
+        "type": "subject",
+        "value": "selected_period_outside_bm_adjustment_gbp"
+      },
+      {
+        "type": "decimal",
+        "value": "1277241"
+      }
+    ]
+  },
+  {
+    "predicate": "EvidenceMetric",
+    "args": [
+      {
+        "type": "subject",
+        "value": "met-004-bsad-mwh"
+      },
+      {
+        "type": "subject",
+        "value": "inq-004"
+      },
+      {
+        "type": "subject",
+        "value": "art-004-day-manifest"
+      },
+      {
+        "type": "subject",
+        "value": "selected_period_outside_bm_adjustment_mwh"
+      },
+      {
+        "type": "decimal",
+        "value": "1173"
+      }
+    ]
+  },
+  {
+    "predicate": "EvidenceMetric",
+    "args": [
+      {
+        "type": "subject",
+        "value": "met-004-bid-mwh"
+      },
+      {
+        "type": "subject",
+        "value": "inq-004"
+      },
+      {
+        "type": "subject",
+        "value": "art-004-day-manifest"
+      },
+      {
+        "type": "subject",
+        "value": "selected_period_accepted_bid_mwh"
+      },
+      {
+        "type": "decimal",
+        "value": "1085"
+      }
+    ]
+  },
+  {
+    "predicate": "EvidenceMetric",
+    "args": [
+      {
+        "type": "subject",
+        "value": "met-004-offer-mwh"
+      },
+      {
+        "type": "subject",
+        "value": "inq-004"
+      },
+      {
+        "type": "subject",
+        "value": "art-004-day-manifest"
+      },
+      {
+        "type": "subject",
+        "value": "selected_period_accepted_offer_mwh"
+      },
+      {
+        "type": "decimal",
+        "value": "0"
+      }
+    ]
+  },
+  {
+    "predicate": "EvidenceMetric",
+    "args": [
+      {
+        "type": "subject",
+        "value": "met-004-units"
+      },
+      {
+        "type": "subject",
+        "value": "inq-004"
+      },
+      {
+        "type": "subject",
+        "value": "art-004-day-manifest"
+      },
+      {
+        "type": "subject",
+        "value": "selected_period_units_with_accepted_volume"
+      },
+      {
+        "type": "decimal",
+        "value": "113"
+      }
+    ]
+  },
+  {
+    "predicate": "EvidenceMetric",
+    "args": [
+      {
+        "type": "subject",
+        "value": "met-004-ccgt-headroom-mw"
+      },
+      {
+        "type": "subject",
+        "value": "inq-004"
+      },
+      {
+        "type": "subject",
+        "value": "art-004-day-manifest"
+      },
+      {
+        "type": "subject",
+        "value": "fleet_ccgt_headroom_mw_at_window_open"
+      },
+      {
+        "type": "decimal",
+        "value": "88"
+      }
+    ]
+  },
+  {
+    "predicate": "EvidenceMetric",
+    "args": [
+      {
+        "type": "subject",
+        "value": "met-004-margin-excluded-mw"
+      },
+      {
+        "type": "subject",
+        "value": "inq-004"
+      },
+      {
+        "type": "subject",
+        "value": "art-004-day-manifest"
+      },
+      {
+        "type": "subject",
+        "value": "neso_stated_margin_excluded_by_constraints_mw"
+      },
+      {
+        "type": "decimal",
+        "value": "1250"
+      }
+    ]
+  },
+  {
+    "predicate": "Conclusion",
+    "args": [
+      {
+        "type": "subject",
+        "value": "concl-004-reconstructed"
+      },
+      {
+        "type": "subject",
+        "value": "inq-004"
+      },
+      {
+        "type": "subject",
+        "value": "conj-004-half-hour-reconstructable"
+      },
+      {
+        "type": "subject",
+        "value": "partly_explained"
+      },
+      {
+        "type": "subject",
+        "value": "PARTLY EXPLAINED, with the observability boundary where the declaration predicted it. The frozen rule selected 2026-06-24 p42 (Constraints GBP1,176,150), which falls inside the 19:00-22:00 window NESO had warned about the previous night and CANCELLED at 13:20; all four of June's dearest half-hours fall inside it. NESO's own notice supplies the bridge: 1,250-1,300 MW of generation was excluded from available system margin BY SYSTEM CONSTRAINTS, against a 1,450-1,900 MW shortfall. At the window's open the dispatchable fleet was at published limits (CCGT headroom 88 MW; pumped storage, nuclear and non-pumped hydro zero). Through the peak the record shows 1,085 MWh of accepted bids across 113 units with ZERO accepted offers, pumped storage held at 0 against a 150 MW schedule, and the large positive money OUTSIDE the BM (GBP1,277,241 over 1,173 MWh, all classified Energy) while BM cashflow is negative. Not determinable from public data: why the Constraints series peaks in p42 rather than p41 where BSAD peaks; the Peterhead gap between ~729 MW metered and ~1,150 MW instructed; and whether the generation NESO excluded from margin is the generation visible being bid down. No transmission boundary is named."
+      },
+      {
+        "type": "subject",
+        "value": "79fd027f771cd2071ab9572fe1ccfc78ffd4be112acf531912fc02197800fc19"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-08-22T22:31:15Z"
+      }
+    ]
+  },
+  {
+    "predicate": "CurrentConclusion",
+    "args": [
+      {
+        "type": "subject",
+        "value": "inq-004"
+      },
+      {
+        "type": "subject",
+        "value": "concl-004-reconstructed"
+      }
+    ]
+  },
+  {
+    "predicate": "ConclusionUsesMetric",
+    "args": [
+      {
+        "type": "subject",
+        "value": "concl-004-reconstructed"
+      },
+      {
+        "type": "subject",
+        "value": "met-004-constraints-gbp"
+      }
+    ]
+  },
+  {
+    "predicate": "ConclusionUsesMetric",
+    "args": [
+      {
+        "type": "subject",
+        "value": "concl-004-reconstructed"
+      },
+      {
+        "type": "subject",
+        "value": "met-004-bsad-gbp"
+      }
+    ]
+  },
+  {
+    "predicate": "ConclusionUsesMetric",
+    "args": [
+      {
+        "type": "subject",
+        "value": "concl-004-reconstructed"
+      },
+      {
+        "type": "subject",
+        "value": "met-004-bsad-mwh"
+      }
+    ]
+  },
+  {
+    "predicate": "ConclusionUsesMetric",
+    "args": [
+      {
+        "type": "subject",
+        "value": "concl-004-reconstructed"
+      },
+      {
+        "type": "subject",
+        "value": "met-004-bid-mwh"
+      }
+    ]
+  },
+  {
+    "predicate": "ConclusionUsesMetric",
+    "args": [
+      {
+        "type": "subject",
+        "value": "concl-004-reconstructed"
+      },
+      {
+        "type": "subject",
+        "value": "met-004-offer-mwh"
+      }
+    ]
+  },
+  {
+    "predicate": "ConclusionUsesMetric",
+    "args": [
+      {
+        "type": "subject",
+        "value": "concl-004-reconstructed"
+      },
+      {
+        "type": "subject",
+        "value": "met-004-units"
+      }
+    ]
+  },
+  {
+    "predicate": "ConclusionUsesMetric",
+    "args": [
+      {
+        "type": "subject",
+        "value": "concl-004-reconstructed"
+      },
+      {
+        "type": "subject",
+        "value": "met-004-ccgt-headroom-mw"
+      }
+    ]
+  },
+  {
+    "predicate": "ConclusionUsesMetric",
+    "args": [
+      {
+        "type": "subject",
+        "value": "concl-004-reconstructed"
+      },
+      {
+        "type": "subject",
+        "value": "met-004-margin-excluded-mw"
+      }
+    ]
   }
 ]

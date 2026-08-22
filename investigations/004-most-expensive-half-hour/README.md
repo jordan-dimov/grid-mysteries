@@ -355,15 +355,22 @@ half-hour; the unit price is what moves:
 | p44 | 58 | £897,111 | 1,176 | £763 | £999 |
 | p45 | 56 | £450,982 | 1,152 | £392 | £574 |
 
-So p42 is the maximum because the **price of outside-BM energy peaked**,
-not because more of it was bought. The dearest single adjustment row in
-p41 and p42 is **£1,379/MWh** — which independently corroborates the
-secondary reporting's "~£1,400/MWh" from pinned primary data.
+The defensible finding is about the **outside-BM adjustment**, and only
+that: across p39–p45 its volume is broadly flat while its average £/MWh
+varies sharply and peaks in p42. **The outside-BM adjustment is
+therefore price-driven rather than volume-driven across the episode.**
 
-Note the layers disagree on ordering: BSAD is larger in p41
-(£1,306,403) than p42 (£1,277,241), while NESO's `Constraints` is
-larger in p42. Another reminder that the two classifications are doing
-different jobs.
+**This does not establish why NESO's separate `Constraints` series peaks
+in p42.** The two series do not even agree on ordering: BSAD £ peaks in
+**p41** (£1,306,403 versus £1,277,241 in p42), while `Constraints` peaks
+in **p42**. That disagreement stands as an unresolved accounting fact,
+not something to reason across. The selected maximum was NESO's
+`Constraints` series, and why *that* series peaks where it does is not
+publicly decomposable — which the declaration anticipated.
+
+The dearest single adjustment row in p41 and p42 is **£1,379/MWh**,
+which independently corroborates the secondary reporting's
+"~£1,400/MWh" from pinned primary data.
 
 ## The instruction chronology
 
@@ -395,12 +402,14 @@ and metered data. Aggregate metered ÷ scheduled:
 | **WIND** | 402 | 269 | **0.67** |
 | OCGT | 136 | 101 | 0.75 |
 
-**The check confirms consistency rather than finding an anomaly.** The
-units delivering far below schedule are precisely the ones that were
-bid down — Foyers, Dinorwig, Cruachan (pumped storage), and Neart na
-Gaoithe and Moray East (Scottish offshore wind) are simultaneously the
-largest bid-down units and the largest shortfalls against schedule.
-Being told to reduce and then reducing is the instruction working.
+**Settlement-period metered output is consistent with the published
+bid-down instructions.** The units delivering far below schedule are the
+same units that carry the largest accepted bid volumes — Foyers,
+Dinorwig, Cruachan (pumped storage), and Neart na Gaoithe and Moray East
+(Scottish offshore wind). This is a consistency check at
+settlement-period resolution: it does not establish that any individual
+acceptance caused any particular metered outcome, and no such claim is
+made.
 
 **One unit stands against its own fuel class.** `T_PEHE-1` metered
 364.6 MWh in p42 against a 1,153 MW final schedule — a ratio of
@@ -413,6 +422,143 @@ an instructed level (ambient-temperature derating is the contemporaneous
 suggestion, unverified here), metering or aggregation semantics for this
 BM unit, or a standing authorisation not fully called — so the
 observation is recorded and none of them is asserted.
+
+## The system at the door (p38 → p39)
+
+003 established that the public PN feed does not expose a point-in-time
+revision path, so NESO's belief state at any given moment is not
+reconstructable. This is therefore not "what NESO expected at 18:00" but
+**what the final public record says the system looked like immediately
+before the originally warned window began** — the p38 (18:30–19:00) →
+p39 (19:00–19:30) boundary.
+
+**Final scheduled state, aggregate FPN, with published headroom:**
+
+| fuel | p38 MW | p39 MW | Δ | MEL − FPN at p39 |
+|---|---:|---:|---:|---:|
+| CCGT | 26,921 | 24,849 | −2,072 | **88 MW** |
+| WIND | 4,487 | 4,428 | −59 | 19,115 MW *(see below)* |
+| NUCLEAR | 3,599 | 3,599 | 0 | 0 MW |
+| BIOMASS | 2,048 | 2,048 | 0 | 130 MW |
+| PS | 1,530 | 1,530 | 0 | **0 MW** |
+| NPSHYD | 842 | 611 | −231 | 0 MW |
+| OCGT | 287 | 562 | +275 | 715 MW |
+
+**The dispatchable fleet is at its stated limits as the window opens:**
+88 MW of published headroom across the entire CCGT fleet, and zero
+across pumped storage, nuclear and non-pumped hydro. The wind figure is
+**not** comparable: Investigation 002 established that a wind unit's MEL
+is an availability forecast, not firm deliverable capability, so
+19,115 MW of nominal wind headroom is not 19 GW of callable generation
+and is not treated as such here.
+
+The largest scheduled unit that is not an interconnector is `T_PEHE-1`
+at 1,152 MW, scheduled exactly at its own MEL.
+
+**Actual instantaneous generation (FUELINST) at the boundary** was
+essentially flat across it — CCGT 16,300 → 16,249 MW, wind 3,237 →
+3,241 MW — while several interconnectors moved toward import (ElecLink
++506, BritNed +386, IFA2 +159, Ireland +91 MW) and Viking moved further
+toward export (−441 MW). Note that FUELINST is instantaneous MW and
+B1610 is settlement-period metered MWh; they are not interchangeable.
+
+## Already in flight before the window opened
+
+**138 acceptances issued before 19:00 BST were still effective in p39 or
+later** (39 SO-flagged, 99 unflagged). The material trajectories, read
+in issue order with direction as published:
+
+- **`T_PEHE-1` (Peterhead, CCGT)** — a rolling chain of SO-flagged
+  acceptances from 15:56 onward, each of the form *hold at X, then ramp
+  to ~1,150 MW*. Successive acceptances restate a **declining then flat**
+  starting level: 850 → 800 → 725 → 725 MW, re-issued every 20–45
+  minutes and each spanning two to three periods.
+- **`T_FOYE-1`/`-2` (Foyers), `T_CRUA-1`/`-2` (Cruachan), pumped
+  storage** — SO-flagged acceptances from 16:08 onward whose body holds
+  the unit at **0 MW** with a ramp back toward schedule in the tail,
+  against a final PN of 150 MW (Foyers) and 120 MW (Cruachan).
+- Scottish offshore wind (`T_NNGAO-*`, `T_MOWEO-*`) carries the largest
+  accepted bid volumes through the peak.
+
+So the episode was already under way before the warned window opened:
+generation held down at several stations, and one large thermal unit
+under repeated instruction to rise.
+
+## Before → peak (p38 → p42)
+
+Layers are shown side by side and are never summed.
+
+| quantity | p38 | p42 | change |
+|---|---:|---:|---:|
+| scheduled CCGT (FPN) | 26,921 MW | 29,688 MW | +2,767 |
+| scheduled wind (FPN) | 4,487 MW | 4,420 MW | −67 |
+| scheduled pumped storage (FPN) | 1,530 MW | 1,530 MW | 0 |
+| actual CCGT (FUELINST) | 16,300 MW | 16,015 MW | −285 |
+| actual wind (FUELINST) | 3,237 MW | 3,100 MW | −136 |
+| actual pumped storage (FUELINST) | 815 MW | 858 MW | +44 |
+| actual interconnectors, net | 1,853 MW | 3,132 MW | **+1,278** |
+| accepted BID volume | 618 MWh | 1,085 MWh | +467 |
+| accepted OFFER volume | 0 MWh | 0 MWh | 0 |
+| outside-BM adjustment volume | 970 MWh | 1,173 MWh | +203 |
+| outside-BM average price | £599/MWh | £1,089/MWh | **+£489** |
+| published `Constraints` | £495,484 | £1,176,150 | +£680,666 |
+
+Scheduled CCGT rises 2,767 MW while *actual* CCGT falls 285 MW; net
+interconnector flow rises 1,278 MW; accepted bid volume rises 467 MWh
+with accepted offer volume at zero throughout; and the outside-BM price
+roughly doubles.
+
+## Peterhead as an observability test
+
+**Observed.** FPN 1,150 → 1,155 MW across p36–p45, equal to MEL in every
+period. A chain of SO-flagged acceptances from 15:56 to 19:35, each
+holding a stated level then ramping to ~1,150 MW, with the stated
+starting level falling 850 → 800 → 725 and then remaining 725. B1610
+settlement-period metered energy is near-constant at 364.6 MWh
+(≈729 MW) from p36 to p43, rising to 448.0 and 579.4 MWh at p44–p45.
+Accepted bid volume in p42 is zero. The CCGT fleet's aggregate
+metered ÷ scheduled in p42 is 0.97; `T_PEHE-1`'s is 0.63.
+
+**Supported inference.** The ~729 MW level is already the observable
+physical level *before* the rolling upward instructions begin, and it
+persists through them; the repeatedly restated 725 MW `levelFrom` is
+consistent with that level. The instructed target of ~1,150 MW is not
+reflected in settlement-period metered energy during the episode.
+
+**Not publicly determinable.** *Why.* No published acceptance, flag or
+dataset explains the gap between ~729 MW metered and ~1,150 MW
+instructed and scheduled. Candidate explanations — a unit unable to
+reach an instructed level, ambient-temperature derating, metering or
+aggregation semantics for this BM unit, or a standing authorisation not
+fully called — are not distinguishable from public data, and none is
+asserted. Contemporary reporting of heat-related CCGT derating is a
+hypothesis lead only; it is not evidence and is not pinned.
+
+## The simultaneous phenomenon, at the strength the evidence supports
+
+The plain-English temptation is: *Britain simultaneously had generation
+being turned down and a shortage of usable generation elsewhere.* Public
+evidence supports a narrower version, which is this:
+
+> **NESO stated that 1,250–1,300 MW of generation was excluded from the
+> available system margin due to system constraints** (its own EMN text,
+> pinned). **Simultaneously, the public operational record shows
+> widespread bid-downs** — 1,085 MWh across 113 units in p42, with
+> pumped storage held at zero against a 150 MW schedule and Scottish
+> offshore wind carrying the largest accepted bid volumes — **and
+> thermal and interconnector support being called elsewhere**, with the
+> CCGT fleet at 88 MW of published headroom and net interconnector flow
+> rising 1,278 MW into the peak.
+
+Several of the largest held-down and bid-down stations (Foyers,
+Cruachan, Neart na Gaoithe, Moray East) are in Scotland, and Peterhead —
+the unit under repeated upward instruction — is also in Scotland. That
+is stated as locational context only. **No transmission boundary is
+named, and no unit is attributed to any constraint group**: 003
+established that no public mapping supports it, and none has appeared
+here. Whether the generation NESO excluded from margin is the same
+generation visible being bid down in the BM is **not publicly
+determinable**.
 
 ## Corrections
 
@@ -429,3 +575,13 @@ rewritten.
    *originally warned* window, not an active-EMN period. The corrected
    fact is stranger and stronger: the adequacy warning was stood down
    seven hours before the evening that then cost the most in the month.
+2. **2026-08-22, before any publication.** Two further overclaims
+   narrowed. (a) The results said "p42 is the maximum because the price
+   of outside-BM energy peaked". That explains the *outside-BM
+   adjustment*, not the selected series: BSAD £ peaks in p41 while
+   `Constraints` peaks in p42. The price-driven finding is now scoped to
+   the outside-BM adjustment alone, and why `Constraints` peaks in p42
+   is stated as not publicly decomposable. (b) B1610 wording implied
+   causation ("the instruction working"); it is a settlement-period
+   consistency check and now says only that metered output is consistent
+   with the published bid-down instructions.

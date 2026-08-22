@@ -1,9 +1,9 @@
 {
   "manifest": {
     "pack_format_version": 1,
-    "tree_size": 100,
-    "root_hash": "sha256:4739070563cdb5cf895de7fe50185bdb825e2316134a357a71c0976f0a7ac1ca",
-    "checkpoint_hash": "sha256:8e0f78a989327e4b6ec5b1c90267075ede6a8c9025473debe3e9565cc6f9af44"
+    "tree_size": 105,
+    "root_hash": "sha256:8f128cc91ac56c0170bc112a31fe8f25cdd643287230fa1c399393d58db88ccd",
+    "checkpoint_hash": "sha256:fbe35e39bb25fd0e8058b92af216506b3a6cac3c7f379ca5b8ed6b9b74352843"
   },
   "checkpoints": [
     {
@@ -983,6 +983,76 @@
           "purpose": "audit_checkpoint_v1",
           "public_key": "ed25519-pub:cb6c6ce9152039914ac232b8302d0bc2f6b3f80d73623c5a358288993cc4ccf9",
           "signature": "ed25519-sig:3a0067b40bb0c3f506a403a91ce11f10bb302f38bbf669a656f8227836821f6683426c858b83daf430a76357109cb75441e4e06b926f99472c72cd335db35406"
+        }
+      ]
+    },
+    {
+      "tree_size": 101,
+      "root_hash": "sha256:1297ba1855dadf2eac9c9e1218bc53e61e4e6dbcf127e12c74cbf1191e824497",
+      "prev_checkpoint_hash": "sha256:8e0f78a989327e4b6ec5b1c90267075ede6a8c9025473debe3e9565cc6f9af44",
+      "checkpoint_hash": "sha256:4a688dbd581f757116518ec42fbb8906572ff4c6788e5103941a2a3a0546e8f9",
+      "signatures": [
+        {
+          "key_id": "audit-2026",
+          "purpose": "audit_checkpoint_v1",
+          "public_key": "ed25519-pub:cb6c6ce9152039914ac232b8302d0bc2f6b3f80d73623c5a358288993cc4ccf9",
+          "signature": "ed25519-sig:9d259ea6cd470f62019d26f0fab9f9c4cde0c71fdc027c3affdc8f7bc40baacd92553d9399052f717f090702c7be3da6ff62846d8039421263fb46c0e161510f"
+        }
+      ]
+    },
+    {
+      "tree_size": 102,
+      "root_hash": "sha256:396b9c5e63d1f057e3071ddb5659b6fe660f927984635fd9d5ec1793c923fcc4",
+      "prev_checkpoint_hash": "sha256:4a688dbd581f757116518ec42fbb8906572ff4c6788e5103941a2a3a0546e8f9",
+      "checkpoint_hash": "sha256:a57514a04f51d5ebb0414f00a2f0edcc766e3ed4a16e8359d72141b2ff59dce0",
+      "signatures": [
+        {
+          "key_id": "audit-2026",
+          "purpose": "audit_checkpoint_v1",
+          "public_key": "ed25519-pub:cb6c6ce9152039914ac232b8302d0bc2f6b3f80d73623c5a358288993cc4ccf9",
+          "signature": "ed25519-sig:992cd26728e2ae7319e1a842b9ef454fa1321a674042b574f17b8094bdff18b49a16ad7a072f521624ac33f855dc851b9b8b79f87b3f9b53b9a3fff04f8e0a0e"
+        }
+      ]
+    },
+    {
+      "tree_size": 103,
+      "root_hash": "sha256:3887cb40d57b2efff1db8c34ff893c7eeea2fe960fbda32726e61f22c554d6bf",
+      "prev_checkpoint_hash": "sha256:a57514a04f51d5ebb0414f00a2f0edcc766e3ed4a16e8359d72141b2ff59dce0",
+      "checkpoint_hash": "sha256:60d0636d9a4bac3cfd3398595b97eacd74e15fbc4ed66a76d07a6bf174919732",
+      "signatures": [
+        {
+          "key_id": "audit-2026",
+          "purpose": "audit_checkpoint_v1",
+          "public_key": "ed25519-pub:cb6c6ce9152039914ac232b8302d0bc2f6b3f80d73623c5a358288993cc4ccf9",
+          "signature": "ed25519-sig:696a8e36c433ad53f262ef2397f91557f8829ff9b6cd8f96118ba826f3d0cec25e85b8a8c7a055f48fe9770c3e01bf5c45513b2fa3d4db8bb634db0cac70f101"
+        }
+      ]
+    },
+    {
+      "tree_size": 104,
+      "root_hash": "sha256:dc640853ba4921a53d9e5190f60a2ff51df5d055c36cf821098bf7f03900f200",
+      "prev_checkpoint_hash": "sha256:60d0636d9a4bac3cfd3398595b97eacd74e15fbc4ed66a76d07a6bf174919732",
+      "checkpoint_hash": "sha256:1456bb4ef87c0f34f9bcb872ead11a4d0ed8559a04d454a0959ae8f12b8bf6ab",
+      "signatures": [
+        {
+          "key_id": "audit-2026",
+          "purpose": "audit_checkpoint_v1",
+          "public_key": "ed25519-pub:cb6c6ce9152039914ac232b8302d0bc2f6b3f80d73623c5a358288993cc4ccf9",
+          "signature": "ed25519-sig:c878068a6d2be9dbcc7ea73d90d9b9d6a7e85fa235fe75f69a62daba7c05f49be3425252f3f3d3309d6689504ee58ee35008486be0f5e5dc56d5cfb0cb8b4e05"
+        }
+      ]
+    },
+    {
+      "tree_size": 105,
+      "root_hash": "sha256:8f128cc91ac56c0170bc112a31fe8f25cdd643287230fa1c399393d58db88ccd",
+      "prev_checkpoint_hash": "sha256:1456bb4ef87c0f34f9bcb872ead11a4d0ed8559a04d454a0959ae8f12b8bf6ab",
+      "checkpoint_hash": "sha256:fbe35e39bb25fd0e8058b92af216506b3a6cac3c7f379ca5b8ed6b9b74352843",
+      "signatures": [
+        {
+          "key_id": "audit-2026",
+          "purpose": "audit_checkpoint_v1",
+          "public_key": "ed25519-pub:cb6c6ce9152039914ac232b8302d0bc2f6b3f80d73623c5a358288993cc4ccf9",
+          "signature": "ed25519-sig:12d5f135064beb8deba26c21ecdddb89da272dc8fdb9bfa10239621e652ae077fde18c31f9c7e73ff97b85db305ef57506a544550fdf4162ce172303fd82810f"
         }
       ]
     }
@@ -14593,6 +14663,989 @@
       "retracted_claims": [],
       "emitted_intents": [],
       "committed_at": "2026-08-22T21:18:25.977012Z",
+      "attestation": {
+        "mode": "gateway",
+        "authenticated_by": "gm_machine"
+      }
+    },
+    {
+      "transition_id": "01a02b78-757c-7793-b19e-844e5292456f",
+      "transformation_name": "register_corpus",
+      "arguments": [
+        {
+          "type": "subject",
+          "value": "corpus-2026-06"
+        },
+        {
+          "type": "date",
+          "value": "2026-06-01"
+        },
+        {
+          "type": "date",
+          "value": "2026-06-30"
+        }
+      ],
+      "actor": {
+        "type": "subject",
+        "value": "claude_fable_5"
+      },
+      "invariant_epoch": 1,
+      "invariants_checked": [
+        {
+          "name": "research_corpus_unique_by_corpus",
+          "version": 1
+        },
+        {
+          "name": "inquiry_corpus_unique_by_inquiry",
+          "version": 1
+        },
+        {
+          "name": "declared_parameter_unique_by_inquiry_name",
+          "version": 1
+        },
+        {
+          "name": "evidence_metric_unique_by_inquiry_metric_name",
+          "version": 1
+        },
+        {
+          "name": "current_conclusion_unique_by_inquiry",
+          "version": 1
+        },
+        {
+          "name": "supersedes_conclusion_unique_by_prior_conclusion",
+          "version": 1
+        },
+        {
+          "name": "supersedes_conclusion_unique_by_successor_conclusion",
+          "version": 1
+        },
+        {
+          "name": "inquiry_kind_in_vocabulary",
+          "version": 1
+        },
+        {
+          "name": "mechanism_status_in_vocabulary",
+          "version": 1
+        },
+        {
+          "name": "conclusion_class_in_vocabulary",
+          "version": 1
+        },
+        {
+          "name": "sealed_protocol_was_declared",
+          "version": 1
+        },
+        {
+          "name": "attached_evidence_exists",
+          "version": 1
+        },
+        {
+          "name": "attached_evidence_has_sealed_protocol",
+          "version": 1
+        },
+        {
+          "name": "sealed_evidence_has_artifact",
+          "version": 1
+        },
+        {
+          "name": "selection_has_sealed_evidence",
+          "version": 1
+        },
+        {
+          "name": "conjecture_has_inquiry",
+          "version": 1
+        },
+        {
+          "name": "assessment_has_sealed_evidence",
+          "version": 1
+        },
+        {
+          "name": "conclusion_has_registered_conjecture",
+          "version": 1
+        },
+        {
+          "name": "conclusion_has_sealed_evidence",
+          "version": 1
+        },
+        {
+          "name": "explained_conclusion_has_explained_mechanism",
+          "version": 1
+        },
+        {
+          "name": "unexplained_conclusion_has_no_explained_mechanism",
+          "version": 1
+        },
+        {
+          "name": "prospective_conclusion_has_assigned_corpus",
+          "version": 1
+        },
+        {
+          "name": "current_conclusion_exists",
+          "version": 1
+        },
+        {
+          "name": "current_conclusion_matches_inquiry",
+          "version": 1
+        },
+        {
+          "name": "successor_conclusion_exists",
+          "version": 1
+        },
+        {
+          "name": "superseded_conclusion_exists",
+          "version": 1
+        },
+        {
+          "name": "metric_link_has_conclusion",
+          "version": 1
+        },
+        {
+          "name": "metric_link_has_metric",
+          "version": 1
+        },
+        {
+          "name": "metric_artifact_belongs_to_inquiry",
+          "version": 1
+        },
+        {
+          "name": "linked_metric_matches_conclusion_inquiry",
+          "version": 1
+        },
+        {
+          "name": "retention_spec_has_inquiry",
+          "version": 1
+        },
+        {
+          "name": "publication_has_conclusion",
+          "version": 1
+        },
+        {
+          "name": "publication_has_bound_metrics",
+          "version": 1
+        },
+        {
+          "name": "approval_has_publication",
+          "version": 1
+        },
+        {
+          "name": "lineage_has_inquiry",
+          "version": 1
+        }
+      ],
+      "asserted_claims": [
+        {
+          "predicate": "ResearchCorpus",
+          "args": [
+            {
+              "type": "subject",
+              "value": "corpus-2026-06"
+            },
+            {
+              "type": "date",
+              "value": "2026-06-01"
+            },
+            {
+              "type": "date",
+              "value": "2026-06-30"
+            }
+          ]
+        }
+      ],
+      "retracted_claims": [],
+      "emitted_intents": [],
+      "committed_at": "2026-08-22T21:55:09.814408Z",
+      "attestation": {
+        "mode": "gateway",
+        "authenticated_by": "gm_machine"
+      }
+    },
+    {
+      "transition_id": "01a02b78-76de-7a23-b91f-4e31e59abcdb",
+      "transformation_name": "open_inquiry",
+      "arguments": [
+        {
+          "type": "subject",
+          "value": "inq-kind-probe"
+        },
+        {
+          "type": "subject",
+          "value": "prospective"
+        },
+        {
+          "type": "subject",
+          "value": "probe"
+        },
+        {
+          "type": "timestamp",
+          "value": "2026-08-22T23:00:00Z"
+        }
+      ],
+      "actor": {
+        "type": "subject",
+        "value": "claude_fable_5"
+      },
+      "invariant_epoch": 1,
+      "invariants_checked": [
+        {
+          "name": "research_corpus_unique_by_corpus",
+          "version": 1
+        },
+        {
+          "name": "inquiry_corpus_unique_by_inquiry",
+          "version": 1
+        },
+        {
+          "name": "declared_parameter_unique_by_inquiry_name",
+          "version": 1
+        },
+        {
+          "name": "evidence_metric_unique_by_inquiry_metric_name",
+          "version": 1
+        },
+        {
+          "name": "current_conclusion_unique_by_inquiry",
+          "version": 1
+        },
+        {
+          "name": "supersedes_conclusion_unique_by_prior_conclusion",
+          "version": 1
+        },
+        {
+          "name": "supersedes_conclusion_unique_by_successor_conclusion",
+          "version": 1
+        },
+        {
+          "name": "inquiry_kind_in_vocabulary",
+          "version": 1
+        },
+        {
+          "name": "mechanism_status_in_vocabulary",
+          "version": 1
+        },
+        {
+          "name": "conclusion_class_in_vocabulary",
+          "version": 1
+        },
+        {
+          "name": "sealed_protocol_was_declared",
+          "version": 1
+        },
+        {
+          "name": "attached_evidence_exists",
+          "version": 1
+        },
+        {
+          "name": "attached_evidence_has_sealed_protocol",
+          "version": 1
+        },
+        {
+          "name": "sealed_evidence_has_artifact",
+          "version": 1
+        },
+        {
+          "name": "selection_has_sealed_evidence",
+          "version": 1
+        },
+        {
+          "name": "conjecture_has_inquiry",
+          "version": 1
+        },
+        {
+          "name": "assessment_has_sealed_evidence",
+          "version": 1
+        },
+        {
+          "name": "conclusion_has_registered_conjecture",
+          "version": 1
+        },
+        {
+          "name": "conclusion_has_sealed_evidence",
+          "version": 1
+        },
+        {
+          "name": "explained_conclusion_has_explained_mechanism",
+          "version": 1
+        },
+        {
+          "name": "unexplained_conclusion_has_no_explained_mechanism",
+          "version": 1
+        },
+        {
+          "name": "prospective_conclusion_has_assigned_corpus",
+          "version": 1
+        },
+        {
+          "name": "current_conclusion_exists",
+          "version": 1
+        },
+        {
+          "name": "current_conclusion_matches_inquiry",
+          "version": 1
+        },
+        {
+          "name": "successor_conclusion_exists",
+          "version": 1
+        },
+        {
+          "name": "superseded_conclusion_exists",
+          "version": 1
+        },
+        {
+          "name": "metric_link_has_conclusion",
+          "version": 1
+        },
+        {
+          "name": "metric_link_has_metric",
+          "version": 1
+        },
+        {
+          "name": "metric_artifact_belongs_to_inquiry",
+          "version": 1
+        },
+        {
+          "name": "linked_metric_matches_conclusion_inquiry",
+          "version": 1
+        },
+        {
+          "name": "retention_spec_has_inquiry",
+          "version": 1
+        },
+        {
+          "name": "publication_has_conclusion",
+          "version": 1
+        },
+        {
+          "name": "publication_has_bound_metrics",
+          "version": 1
+        },
+        {
+          "name": "approval_has_publication",
+          "version": 1
+        },
+        {
+          "name": "lineage_has_inquiry",
+          "version": 1
+        }
+      ],
+      "asserted_claims": [
+        {
+          "predicate": "Inquiry",
+          "args": [
+            {
+              "type": "subject",
+              "value": "inq-kind-probe"
+            },
+            {
+              "type": "subject",
+              "value": "prospective"
+            },
+            {
+              "type": "subject",
+              "value": "probe"
+            },
+            {
+              "type": "timestamp",
+              "value": "2026-08-22T23:00:00Z"
+            }
+          ]
+        }
+      ],
+      "retracted_claims": [],
+      "emitted_intents": [
+        {
+          "name": "InquiryOpened",
+          "args": [
+            {
+              "type": "subject",
+              "value": "inq-kind-probe"
+            }
+          ]
+        }
+      ],
+      "committed_at": "2026-08-22T21:55:10.168704Z",
+      "attestation": {
+        "mode": "gateway",
+        "authenticated_by": "gm_machine"
+      }
+    },
+    {
+      "transition_id": "01a02b79-c13e-7ed0-b197-3b35c68442df",
+      "transformation_name": "open_inquiry",
+      "arguments": [
+        {
+          "type": "subject",
+          "value": "inq-004"
+        },
+        {
+          "type": "subject",
+          "value": "descriptive"
+        },
+        {
+          "type": "subject",
+          "value": "Mystery 004 - Britain's most expensive half-hour"
+        },
+        {
+          "type": "timestamp",
+          "value": "2026-08-22T21:56:21Z"
+        }
+      ],
+      "actor": {
+        "type": "subject",
+        "value": "claude_fable_5"
+      },
+      "invariant_epoch": 1,
+      "invariants_checked": [
+        {
+          "name": "research_corpus_unique_by_corpus",
+          "version": 1
+        },
+        {
+          "name": "inquiry_corpus_unique_by_inquiry",
+          "version": 1
+        },
+        {
+          "name": "declared_parameter_unique_by_inquiry_name",
+          "version": 1
+        },
+        {
+          "name": "evidence_metric_unique_by_inquiry_metric_name",
+          "version": 1
+        },
+        {
+          "name": "current_conclusion_unique_by_inquiry",
+          "version": 1
+        },
+        {
+          "name": "supersedes_conclusion_unique_by_prior_conclusion",
+          "version": 1
+        },
+        {
+          "name": "supersedes_conclusion_unique_by_successor_conclusion",
+          "version": 1
+        },
+        {
+          "name": "inquiry_kind_in_vocabulary",
+          "version": 1
+        },
+        {
+          "name": "mechanism_status_in_vocabulary",
+          "version": 1
+        },
+        {
+          "name": "conclusion_class_in_vocabulary",
+          "version": 1
+        },
+        {
+          "name": "sealed_protocol_was_declared",
+          "version": 1
+        },
+        {
+          "name": "attached_evidence_exists",
+          "version": 1
+        },
+        {
+          "name": "attached_evidence_has_sealed_protocol",
+          "version": 1
+        },
+        {
+          "name": "sealed_evidence_has_artifact",
+          "version": 1
+        },
+        {
+          "name": "selection_has_sealed_evidence",
+          "version": 1
+        },
+        {
+          "name": "conjecture_has_inquiry",
+          "version": 1
+        },
+        {
+          "name": "assessment_has_sealed_evidence",
+          "version": 1
+        },
+        {
+          "name": "conclusion_has_registered_conjecture",
+          "version": 1
+        },
+        {
+          "name": "conclusion_has_sealed_evidence",
+          "version": 1
+        },
+        {
+          "name": "explained_conclusion_has_explained_mechanism",
+          "version": 1
+        },
+        {
+          "name": "unexplained_conclusion_has_no_explained_mechanism",
+          "version": 1
+        },
+        {
+          "name": "prospective_conclusion_has_assigned_corpus",
+          "version": 1
+        },
+        {
+          "name": "current_conclusion_exists",
+          "version": 1
+        },
+        {
+          "name": "current_conclusion_matches_inquiry",
+          "version": 1
+        },
+        {
+          "name": "successor_conclusion_exists",
+          "version": 1
+        },
+        {
+          "name": "superseded_conclusion_exists",
+          "version": 1
+        },
+        {
+          "name": "metric_link_has_conclusion",
+          "version": 1
+        },
+        {
+          "name": "metric_link_has_metric",
+          "version": 1
+        },
+        {
+          "name": "metric_artifact_belongs_to_inquiry",
+          "version": 1
+        },
+        {
+          "name": "linked_metric_matches_conclusion_inquiry",
+          "version": 1
+        },
+        {
+          "name": "retention_spec_has_inquiry",
+          "version": 1
+        },
+        {
+          "name": "publication_has_conclusion",
+          "version": 1
+        },
+        {
+          "name": "publication_has_bound_metrics",
+          "version": 1
+        },
+        {
+          "name": "approval_has_publication",
+          "version": 1
+        },
+        {
+          "name": "lineage_has_inquiry",
+          "version": 1
+        }
+      ],
+      "asserted_claims": [
+        {
+          "predicate": "Inquiry",
+          "args": [
+            {
+              "type": "subject",
+              "value": "inq-004"
+            },
+            {
+              "type": "subject",
+              "value": "descriptive"
+            },
+            {
+              "type": "subject",
+              "value": "Mystery 004 - Britain's most expensive half-hour"
+            },
+            {
+              "type": "timestamp",
+              "value": "2026-08-22T21:56:21Z"
+            }
+          ]
+        }
+      ],
+      "retracted_claims": [],
+      "emitted_intents": [
+        {
+          "name": "InquiryOpened",
+          "args": [
+            {
+              "type": "subject",
+              "value": "inq-004"
+            }
+          ]
+        }
+      ],
+      "committed_at": "2026-08-22T21:56:34.744026Z",
+      "attestation": {
+        "mode": "gateway",
+        "authenticated_by": "gm_machine"
+      }
+    },
+    {
+      "transition_id": "01a02b79-c2b7-7741-a477-489db8212117",
+      "transformation_name": "assign_corpus",
+      "arguments": [
+        {
+          "type": "subject",
+          "value": "inq-004"
+        },
+        {
+          "type": "subject",
+          "value": "corpus-2026-06"
+        }
+      ],
+      "actor": {
+        "type": "subject",
+        "value": "claude_fable_5"
+      },
+      "invariant_epoch": 1,
+      "invariants_checked": [
+        {
+          "name": "research_corpus_unique_by_corpus",
+          "version": 1
+        },
+        {
+          "name": "inquiry_corpus_unique_by_inquiry",
+          "version": 1
+        },
+        {
+          "name": "declared_parameter_unique_by_inquiry_name",
+          "version": 1
+        },
+        {
+          "name": "evidence_metric_unique_by_inquiry_metric_name",
+          "version": 1
+        },
+        {
+          "name": "current_conclusion_unique_by_inquiry",
+          "version": 1
+        },
+        {
+          "name": "supersedes_conclusion_unique_by_prior_conclusion",
+          "version": 1
+        },
+        {
+          "name": "supersedes_conclusion_unique_by_successor_conclusion",
+          "version": 1
+        },
+        {
+          "name": "inquiry_kind_in_vocabulary",
+          "version": 1
+        },
+        {
+          "name": "mechanism_status_in_vocabulary",
+          "version": 1
+        },
+        {
+          "name": "conclusion_class_in_vocabulary",
+          "version": 1
+        },
+        {
+          "name": "sealed_protocol_was_declared",
+          "version": 1
+        },
+        {
+          "name": "attached_evidence_exists",
+          "version": 1
+        },
+        {
+          "name": "attached_evidence_has_sealed_protocol",
+          "version": 1
+        },
+        {
+          "name": "sealed_evidence_has_artifact",
+          "version": 1
+        },
+        {
+          "name": "selection_has_sealed_evidence",
+          "version": 1
+        },
+        {
+          "name": "conjecture_has_inquiry",
+          "version": 1
+        },
+        {
+          "name": "assessment_has_sealed_evidence",
+          "version": 1
+        },
+        {
+          "name": "conclusion_has_registered_conjecture",
+          "version": 1
+        },
+        {
+          "name": "conclusion_has_sealed_evidence",
+          "version": 1
+        },
+        {
+          "name": "explained_conclusion_has_explained_mechanism",
+          "version": 1
+        },
+        {
+          "name": "unexplained_conclusion_has_no_explained_mechanism",
+          "version": 1
+        },
+        {
+          "name": "prospective_conclusion_has_assigned_corpus",
+          "version": 1
+        },
+        {
+          "name": "current_conclusion_exists",
+          "version": 1
+        },
+        {
+          "name": "current_conclusion_matches_inquiry",
+          "version": 1
+        },
+        {
+          "name": "successor_conclusion_exists",
+          "version": 1
+        },
+        {
+          "name": "superseded_conclusion_exists",
+          "version": 1
+        },
+        {
+          "name": "metric_link_has_conclusion",
+          "version": 1
+        },
+        {
+          "name": "metric_link_has_metric",
+          "version": 1
+        },
+        {
+          "name": "metric_artifact_belongs_to_inquiry",
+          "version": 1
+        },
+        {
+          "name": "linked_metric_matches_conclusion_inquiry",
+          "version": 1
+        },
+        {
+          "name": "retention_spec_has_inquiry",
+          "version": 1
+        },
+        {
+          "name": "publication_has_conclusion",
+          "version": 1
+        },
+        {
+          "name": "publication_has_bound_metrics",
+          "version": 1
+        },
+        {
+          "name": "approval_has_publication",
+          "version": 1
+        },
+        {
+          "name": "lineage_has_inquiry",
+          "version": 1
+        }
+      ],
+      "asserted_claims": [
+        {
+          "predicate": "InquiryCorpus",
+          "args": [
+            {
+              "type": "subject",
+              "value": "inq-004"
+            },
+            {
+              "type": "subject",
+              "value": "corpus-2026-06"
+            }
+          ]
+        }
+      ],
+      "retracted_claims": [],
+      "emitted_intents": [],
+      "committed_at": "2026-08-22T21:56:35.122174Z",
+      "attestation": {
+        "mode": "gateway",
+        "authenticated_by": "gm_machine"
+      }
+    },
+    {
+      "transition_id": "01a02b79-c434-7292-bf86-b8d82bd70881",
+      "transformation_name": "declare_protocol",
+      "arguments": [
+        {
+          "type": "subject",
+          "value": "inq-004"
+        },
+        {
+          "type": "subject",
+          "value": "cd95e3ed6a238fbd64270cbc585d535872e9cadc5bde415c8a23d021fd5a1417"
+        },
+        {
+          "type": "timestamp",
+          "value": "2026-08-22T21:56:21Z"
+        }
+      ],
+      "actor": {
+        "type": "subject",
+        "value": "claude_fable_5"
+      },
+      "invariant_epoch": 1,
+      "invariants_checked": [
+        {
+          "name": "research_corpus_unique_by_corpus",
+          "version": 1
+        },
+        {
+          "name": "inquiry_corpus_unique_by_inquiry",
+          "version": 1
+        },
+        {
+          "name": "declared_parameter_unique_by_inquiry_name",
+          "version": 1
+        },
+        {
+          "name": "evidence_metric_unique_by_inquiry_metric_name",
+          "version": 1
+        },
+        {
+          "name": "current_conclusion_unique_by_inquiry",
+          "version": 1
+        },
+        {
+          "name": "supersedes_conclusion_unique_by_prior_conclusion",
+          "version": 1
+        },
+        {
+          "name": "supersedes_conclusion_unique_by_successor_conclusion",
+          "version": 1
+        },
+        {
+          "name": "inquiry_kind_in_vocabulary",
+          "version": 1
+        },
+        {
+          "name": "mechanism_status_in_vocabulary",
+          "version": 1
+        },
+        {
+          "name": "conclusion_class_in_vocabulary",
+          "version": 1
+        },
+        {
+          "name": "sealed_protocol_was_declared",
+          "version": 1
+        },
+        {
+          "name": "attached_evidence_exists",
+          "version": 1
+        },
+        {
+          "name": "attached_evidence_has_sealed_protocol",
+          "version": 1
+        },
+        {
+          "name": "sealed_evidence_has_artifact",
+          "version": 1
+        },
+        {
+          "name": "selection_has_sealed_evidence",
+          "version": 1
+        },
+        {
+          "name": "conjecture_has_inquiry",
+          "version": 1
+        },
+        {
+          "name": "assessment_has_sealed_evidence",
+          "version": 1
+        },
+        {
+          "name": "conclusion_has_registered_conjecture",
+          "version": 1
+        },
+        {
+          "name": "conclusion_has_sealed_evidence",
+          "version": 1
+        },
+        {
+          "name": "explained_conclusion_has_explained_mechanism",
+          "version": 1
+        },
+        {
+          "name": "unexplained_conclusion_has_no_explained_mechanism",
+          "version": 1
+        },
+        {
+          "name": "prospective_conclusion_has_assigned_corpus",
+          "version": 1
+        },
+        {
+          "name": "current_conclusion_exists",
+          "version": 1
+        },
+        {
+          "name": "current_conclusion_matches_inquiry",
+          "version": 1
+        },
+        {
+          "name": "successor_conclusion_exists",
+          "version": 1
+        },
+        {
+          "name": "superseded_conclusion_exists",
+          "version": 1
+        },
+        {
+          "name": "metric_link_has_conclusion",
+          "version": 1
+        },
+        {
+          "name": "metric_link_has_metric",
+          "version": 1
+        },
+        {
+          "name": "metric_artifact_belongs_to_inquiry",
+          "version": 1
+        },
+        {
+          "name": "linked_metric_matches_conclusion_inquiry",
+          "version": 1
+        },
+        {
+          "name": "retention_spec_has_inquiry",
+          "version": 1
+        },
+        {
+          "name": "publication_has_conclusion",
+          "version": 1
+        },
+        {
+          "name": "publication_has_bound_metrics",
+          "version": 1
+        },
+        {
+          "name": "approval_has_publication",
+          "version": 1
+        },
+        {
+          "name": "lineage_has_inquiry",
+          "version": 1
+        }
+      ],
+      "asserted_claims": [
+        {
+          "predicate": "ProtocolDeclared",
+          "args": [
+            {
+              "type": "subject",
+              "value": "inq-004"
+            },
+            {
+              "type": "subject",
+              "value": "cd95e3ed6a238fbd64270cbc585d535872e9cadc5bde415c8a23d021fd5a1417"
+            },
+            {
+              "type": "timestamp",
+              "value": "2026-08-22T21:56:21Z"
+            }
+          ]
+        }
+      ],
+      "retracted_claims": [],
+      "emitted_intents": [],
+      "committed_at": "2026-08-22T21:56:35.502988Z",
       "attestation": {
         "mode": "gateway",
         "authenticated_by": "gm_machine"

@@ -1896,5 +1896,94 @@
         "value": "met-002-unattributed-candidates"
       }
     ]
+  },
+  {
+    "predicate": "ResearchCorpus",
+    "args": [
+      {
+        "type": "subject",
+        "value": "corpus-2026-06"
+      },
+      {
+        "type": "date",
+        "value": "2026-06-01"
+      },
+      {
+        "type": "date",
+        "value": "2026-06-30"
+      }
+    ]
+  },
+  {
+    "predicate": "Inquiry",
+    "args": [
+      {
+        "type": "subject",
+        "value": "inq-kind-probe"
+      },
+      {
+        "type": "subject",
+        "value": "prospective"
+      },
+      {
+        "type": "subject",
+        "value": "probe"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-08-22T23:00:00Z"
+      }
+    ]
+  },
+  {
+    "predicate": "Inquiry",
+    "args": [
+      {
+        "type": "subject",
+        "value": "inq-004"
+      },
+      {
+        "type": "subject",
+        "value": "descriptive"
+      },
+      {
+        "type": "subject",
+        "value": "Mystery 004 - Britain's most expensive half-hour"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-08-22T21:56:21Z"
+      }
+    ]
+  },
+  {
+    "predicate": "InquiryCorpus",
+    "args": [
+      {
+        "type": "subject",
+        "value": "inq-004"
+      },
+      {
+        "type": "subject",
+        "value": "corpus-2026-06"
+      }
+    ]
+  },
+  {
+    "predicate": "ProtocolDeclared",
+    "args": [
+      {
+        "type": "subject",
+        "value": "inq-004"
+      },
+      {
+        "type": "subject",
+        "value": "cd95e3ed6a238fbd64270cbc585d535872e9cadc5bde415c8a23d021fd5a1417"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-08-22T21:56:21Z"
+      }
+    ]
   }
 ]

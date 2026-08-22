@@ -1,0 +1,5 @@
+{"transformation":"register_corpus","actor":"claude_fable_5","args_named":{"corpus":"corpus-2026-06","first_day":"2026-06-01","last_day":"2026-06-30"}}
+{"transformation": "open_inquiry", "actor": "claude_fable_5", "args_named": {"inquiry": "inq-kind-probe", "kind": "prospective", "title": "probe", "opened_at": "2026-08-22T23:00:00Z"}}
+{"transformation": "open_inquiry", "actor": "claude_fable_5", "args_named": {"inquiry": "inq-004", "kind": "descriptive", "title": "Mystery 004 - Britain's most expensive half-hour", "opened_at": "2026-08-22T21:56:21Z"}}
+{"transformation": "assign_corpus", "actor": "claude_fable_5", "args_named": {"inquiry": "inq-004", "corpus": "corpus-2026-06"}}
+{"transformation": "declare_protocol", "actor": "claude_fable_5", "args_named": {"inquiry": "inq-004", "protocol_digest": "cd95e3ed6a238fbd64270cbc585d535872e9cadc5bde415c8a23d021fd5a1417", "declared_at": "2026-08-22T21:56:21Z"}}

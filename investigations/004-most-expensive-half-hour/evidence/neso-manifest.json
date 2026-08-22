@@ -1,0 +1,29 @@
+[
+ {
+  "source": "neso-data-portal",
+  "dataset": "NESO-DAILY-BALANCING-COSTS-26-27",
+  "url": "https://api.neso.energy/datastore/dump/1d040751-f77f-4641-9130-d49f8cbfe54f",
+  "path": "data/raw/neso/daily_balancing_costs_2026-27.csv",
+  "sha256": "8b950532450916d9ec499779e9abd672ea00bffebbe3fac78ca30fdb13300619",
+  "fetched_at": "2026-08-22T21:58:05.326801+00:00",
+  "bytes": 526614
+ },
+ {
+  "source": "neso-data-portal",
+  "dataset": "NESO-DAILY-BALANCING-VOLUME-26-27",
+  "url": "https://api.neso.energy/datastore/dump/e781da74-6c35-4296-81dd-250cee869c19",
+  "path": "data/raw/neso/daily_balancing_volume_2026-27.csv",
+  "sha256": "f28834685dbdd0c47b8c2bf6bce3d5235c92ea0071c2c5cba54996886e0670ca",
+  "fetched_at": "2026-08-22T21:58:06.889255+00:00",
+  "bytes": 420572
+ },
+ {
+  "source": "neso-data-portal",
+  "dataset": "NESO-DISAGGREGATED-BSAD-26-27",
+  "url": "https://api.neso.energy/datastore/dump/2be1a4d1-6b10-4c62-a01c-924942a3748f",
+  "path": "data/raw/neso/disaggregated_bsad_2026-27.csv",
+  "sha256": "e3a170fa25745a4ac552370700c9b0de2bd0ccb27334c8817647a7e1b91f3f89",
+  "fetched_at": "2026-08-22T21:58:08.912281+00:00",
+  "bytes": 1274598
+ }
+]

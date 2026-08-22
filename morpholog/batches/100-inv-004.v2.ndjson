@@ -3,3 +3,4 @@
 {"transformation": "open_inquiry", "actor": "claude_fable_5", "args_named": {"inquiry": "inq-004", "kind": "descriptive", "title": "Mystery 004 - Britain's most expensive half-hour", "opened_at": "2026-08-22T21:56:21Z"}}
 {"transformation": "assign_corpus", "actor": "claude_fable_5", "args_named": {"inquiry": "inq-004", "corpus": "corpus-2026-06"}}
 {"transformation": "declare_protocol", "actor": "claude_fable_5", "args_named": {"inquiry": "inq-004", "protocol_digest": "cd95e3ed6a238fbd64270cbc585d535872e9cadc5bde415c8a23d021fd5a1417", "declared_at": "2026-08-22T21:56:21Z"}}
+{"transformation": "seal_protocol", "actor": "jordan_dimov", "args_named": {"inquiry": "inq-004", "sealed_at": "2026-08-22T21:57:30Z"}}

@@ -1985,5 +1985,18 @@
         "value": "2026-08-22T21:56:21Z"
       }
     ]
+  },
+  {
+    "predicate": "ProtocolSealed",
+    "args": [
+      {
+        "type": "subject",
+        "value": "inq-004"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-08-22T21:57:30Z"
+      }
+    ]
   }
 ]

@@ -1,9 +1,9 @@
 {
   "manifest": {
     "pack_format_version": 1,
-    "tree_size": 105,
-    "root_hash": "sha256:8f128cc91ac56c0170bc112a31fe8f25cdd643287230fa1c399393d58db88ccd",
-    "checkpoint_hash": "sha256:fbe35e39bb25fd0e8058b92af216506b3a6cac3c7f379ca5b8ed6b9b74352843"
+    "tree_size": 106,
+    "root_hash": "sha256:d66752ababc0ff8f608d9dd312f3705cd93180e16c0f35ee989727a886180c92",
+    "checkpoint_hash": "sha256:e1b28d0cb11b0a63ea88ae3e343617357772cf340859d8c836d33c234d08f40f"
   },
   "checkpoints": [
     {
@@ -1053,6 +1053,20 @@
           "purpose": "audit_checkpoint_v1",
           "public_key": "ed25519-pub:cb6c6ce9152039914ac232b8302d0bc2f6b3f80d73623c5a358288993cc4ccf9",
           "signature": "ed25519-sig:12d5f135064beb8deba26c21ecdddb89da272dc8fdb9bfa10239621e652ae077fde18c31f9c7e73ff97b85db305ef57506a544550fdf4162ce172303fd82810f"
+        }
+      ]
+    },
+    {
+      "tree_size": 106,
+      "root_hash": "sha256:d66752ababc0ff8f608d9dd312f3705cd93180e16c0f35ee989727a886180c92",
+      "prev_checkpoint_hash": "sha256:fbe35e39bb25fd0e8058b92af216506b3a6cac3c7f379ca5b8ed6b9b74352843",
+      "checkpoint_hash": "sha256:e1b28d0cb11b0a63ea88ae3e343617357772cf340859d8c836d33c234d08f40f",
+      "signatures": [
+        {
+          "key_id": "audit-2026",
+          "purpose": "audit_checkpoint_v1",
+          "public_key": "ed25519-pub:cb6c6ce9152039914ac232b8302d0bc2f6b3f80d73623c5a358288993cc4ccf9",
+          "signature": "ed25519-sig:85c0119801e3a6b750d3eabb641e1f87b8930f7f74b9e326d8583d2005944319c90259cf1712ebcb0bad3e0fc8a22e3d90d56132e7d46152853994052531c409"
         }
       ]
     }
@@ -15649,6 +15663,199 @@
       "attestation": {
         "mode": "gateway",
         "authenticated_by": "gm_machine"
+      }
+    },
+    {
+      "transition_id": "01a02b7a-9c89-7713-9e43-04dda968b479",
+      "transformation_name": "seal_protocol",
+      "arguments": [
+        {
+          "type": "subject",
+          "value": "inq-004"
+        },
+        {
+          "type": "timestamp",
+          "value": "2026-08-22T21:57:30Z"
+        }
+      ],
+      "actor": {
+        "type": "subject",
+        "value": "jordan_dimov"
+      },
+      "invariant_epoch": 1,
+      "invariants_checked": [
+        {
+          "name": "research_corpus_unique_by_corpus",
+          "version": 1
+        },
+        {
+          "name": "inquiry_corpus_unique_by_inquiry",
+          "version": 1
+        },
+        {
+          "name": "declared_parameter_unique_by_inquiry_name",
+          "version": 1
+        },
+        {
+          "name": "evidence_metric_unique_by_inquiry_metric_name",
+          "version": 1
+        },
+        {
+          "name": "current_conclusion_unique_by_inquiry",
+          "version": 1
+        },
+        {
+          "name": "supersedes_conclusion_unique_by_prior_conclusion",
+          "version": 1
+        },
+        {
+          "name": "supersedes_conclusion_unique_by_successor_conclusion",
+          "version": 1
+        },
+        {
+          "name": "inquiry_kind_in_vocabulary",
+          "version": 1
+        },
+        {
+          "name": "mechanism_status_in_vocabulary",
+          "version": 1
+        },
+        {
+          "name": "conclusion_class_in_vocabulary",
+          "version": 1
+        },
+        {
+          "name": "sealed_protocol_was_declared",
+          "version": 1
+        },
+        {
+          "name": "attached_evidence_exists",
+          "version": 1
+        },
+        {
+          "name": "attached_evidence_has_sealed_protocol",
+          "version": 1
+        },
+        {
+          "name": "sealed_evidence_has_artifact",
+          "version": 1
+        },
+        {
+          "name": "selection_has_sealed_evidence",
+          "version": 1
+        },
+        {
+          "name": "conjecture_has_inquiry",
+          "version": 1
+        },
+        {
+          "name": "assessment_has_sealed_evidence",
+          "version": 1
+        },
+        {
+          "name": "conclusion_has_registered_conjecture",
+          "version": 1
+        },
+        {
+          "name": "conclusion_has_sealed_evidence",
+          "version": 1
+        },
+        {
+          "name": "explained_conclusion_has_explained_mechanism",
+          "version": 1
+        },
+        {
+          "name": "unexplained_conclusion_has_no_explained_mechanism",
+          "version": 1
+        },
+        {
+          "name": "prospective_conclusion_has_assigned_corpus",
+          "version": 1
+        },
+        {
+          "name": "current_conclusion_exists",
+          "version": 1
+        },
+        {
+          "name": "current_conclusion_matches_inquiry",
+          "version": 1
+        },
+        {
+          "name": "successor_conclusion_exists",
+          "version": 1
+        },
+        {
+          "name": "superseded_conclusion_exists",
+          "version": 1
+        },
+        {
+          "name": "metric_link_has_conclusion",
+          "version": 1
+        },
+        {
+          "name": "metric_link_has_metric",
+          "version": 1
+        },
+        {
+          "name": "metric_artifact_belongs_to_inquiry",
+          "version": 1
+        },
+        {
+          "name": "linked_metric_matches_conclusion_inquiry",
+          "version": 1
+        },
+        {
+          "name": "retention_spec_has_inquiry",
+          "version": 1
+        },
+        {
+          "name": "publication_has_conclusion",
+          "version": 1
+        },
+        {
+          "name": "publication_has_bound_metrics",
+          "version": 1
+        },
+        {
+          "name": "approval_has_publication",
+          "version": 1
+        },
+        {
+          "name": "lineage_has_inquiry",
+          "version": 1
+        }
+      ],
+      "asserted_claims": [
+        {
+          "predicate": "ProtocolSealed",
+          "args": [
+            {
+              "type": "subject",
+              "value": "inq-004"
+            },
+            {
+              "type": "timestamp",
+              "value": "2026-08-22T21:57:30Z"
+            }
+          ]
+        }
+      ],
+      "retracted_claims": [],
+      "emitted_intents": [
+        {
+          "name": "DataAcquisitionAuthorised",
+          "args": [
+            {
+              "type": "subject",
+              "value": "inq-004"
+            }
+          ]
+        }
+      ],
+      "committed_at": "2026-08-22T21:57:30.886200Z",
+      "attestation": {
+        "mode": "gateway",
+        "authenticated_by": "gm_human"
       }
     }
   ]

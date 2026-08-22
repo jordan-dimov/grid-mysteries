@@ -1,0 +1,22 @@
+{
+ "labelling": "'Most expensive' means the highest published Constraints category value for a settlement period, nothing more. The category split is NESO's own attribution; no cost here is attributed to a boundary, unit or action.",
+ "window": [
+  "2026-06-01",
+  "2026-06-30"
+ ],
+ "periods_in_window": 1436,
+ "periods_with_a_published_constraints_value": 1436,
+ "selected": {
+  "settlement_date": "2026-06-24",
+  "settlement_period": 42,
+  "constraints_gbp": "1176149.891",
+  "all_categories_gbp": {
+   "Energy Imbalance": "-19228.928",
+   "Frequency Control": "-408.753",
+   "Positive Reserve": "0.0",
+   "Constraints": "1176149.891",
+   "Negative Reserve": "-18006.468",
+   "Other": "-28330.979"
+  }
+ }
+}

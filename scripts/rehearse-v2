@@ -191,6 +191,25 @@ with open_session("morpholog/research-v2-draft.morph", sys.argv[1]) as session:
 print("   OK  analysis reads the governed Decimal value; undeclared value refuses to default")
 EOF
 
+echo "   -- Investigation 002's fetch guard: the machine's own refusal to acquire unsealed"
+uv run python - "$M_URL" <<'EOF'
+import os, sys
+sys.path.insert(0, "investigations/002-hardened-selector")
+os.environ["DATABASE_URL"] = sys.argv[1]
+from selection import require_acquisition_authorised
+
+# Sealed inquiry: the guard must permit (inq-p1 was sealed by the human above).
+require_acquisition_authorised("inq-p1")
+# Unsealed inquiry: the guard must refuse, and refuse by raising.
+try:
+    require_acquisition_authorised("inq-never-sealed")
+except SystemExit as refusal:
+    assert "no ProtocolSealed(inq-never-sealed)" in str(refusal), refusal
+    print("   OK  fetch guard permits the sealed inquiry and refuses the unsealed one")
+else:
+    raise AssertionError("fetch guard passed an UNSEALED inquiry — acquisition boundary broken")
+EOF
+
 echo "== D. outbox acquisition and at-least-once idempotency"
 claim=$(morpholog outbox claim --intent-type DataAcquisitionAuthorised --worker-id rehearsal-worker --database-url "$M_URL")
 python3 - <<EOF

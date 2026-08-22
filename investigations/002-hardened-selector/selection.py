@@ -198,13 +198,13 @@ def system_flagged_units(day: str, period: int) -> set[tuple[str, int, str]]:
     return flagged
 
 
-def select() -> None:
-    min_accepted_mwh, min_available_mw = governed_thresholds()
-    print(
-        f"governed thresholds: {PARAM_MIN_ACCEPTED_MWH}={min_accepted_mwh}, "
-        f"{PARAM_MIN_AVAILABLE_MW}={min_available_mw}",
-        flush=True,
-    )
+def scan(min_accepted_mwh: Decimal, min_available_mw: Decimal):
+    """One pass over the pinned window: candidates, deliverability, flags.
+
+    Shared by `select` and the post-selection cross-check so both see the
+    identical candidate set; the screens themselves live in
+    `grid_mysteries.investigations.hardened_selection`.
+    """
     capacities = load_capacities()
     candidates = []
     deliverability: dict[tuple, str] = {}
@@ -246,7 +246,17 @@ def select() -> None:
                     deliverability[alternative_key(candidate)] = classify(bound)
                 candidates.extend(period_candidates)
         print(f"scanned {day}", flush=True)
+    return candidates, deliverability, system_flagged
 
+
+def select() -> None:
+    min_accepted_mwh, min_available_mw = governed_thresholds()
+    print(
+        f"governed thresholds: {PARAM_MIN_ACCEPTED_MWH}={min_accepted_mwh}, "
+        f"{PARAM_MIN_AVAILABLE_MW}={min_available_mw}",
+        flush=True,
+    )
+    candidates, deliverability, system_flagged = scan(min_accepted_mwh, min_available_mw)
     surviving, funnel = screen(
         candidates, deliverability=deliverability, system_flagged=system_flagged
     )

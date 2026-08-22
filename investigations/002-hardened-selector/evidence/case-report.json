@@ -1,0 +1,3062 @@
+{
+ "selected": {
+  "settlement_date": "2026-08-12",
+  "settlement_period": 33,
+  "direction": "offer",
+  "accepted_unit": "T_SEAB-1",
+  "accepted_pair_id": 1,
+  "accepted_price_gbp_per_mwh": "890.00",
+  "accepted_volume_mwh": "0.125000000000000000",
+  "unaccepted_unit": "C__PSTAT011",
+  "unaccepted_pair_id": 1,
+  "unaccepted_price_gbp_per_mwh": "0.00",
+  "unaccepted_max_level_mw": "41"
+ },
+ "reference": {
+  "T_SEAB-1": {
+   "elexonBmUnit": "T_SEAB-1",
+   "nationalGridBmUnit": "SEAB-1",
+   "bmUnitType": "T",
+   "leadPartyName": "Seabank Power Limited",
+   "fuelType": "CCGT",
+   "generationCapacity": "830.000",
+   "demandCapacity": "-11.000"
+  },
+  "C__PSTAT011": {
+   "elexonBmUnit": "C__PSTAT011",
+   "nationalGridBmUnit": "TMNCW-1",
+   "bmUnitType": "S",
+   "leadPartyName": "Statkraft Markets Gmbh",
+   "fuelType": "WIND",
+   "generationCapacity": "40.000",
+   "demandCapacity": "0.000"
+  }
+ },
+ "day_profile": {
+  "C__PSTAT011": {
+   "periods_with_zero_priced_offer": 48,
+   "periods_with_accepted_offer_volume": 0,
+   "periods": [
+    {
+     "period": 1,
+     "levels": {
+      "PN": [
+       "25",
+       "27"
+      ],
+      "MELS": [
+       "41",
+       "41"
+      ],
+      "MILS": [
+       "0",
+       "0"
+      ]
+     },
+     "offer_price": "0.00",
+     "accepted_offer_mwh": "0",
+     "acceptances": []
+    },
+    {
+     "period": 2,
+     "levels": {
+      "PN": [
+       "28",
+       "30"
+      ],
+      "MELS": [
+       "41",
+       "41"
+      ],
+      "MILS": [
+       "0",
+       "0"
+      ]
+     },
+     "offer_price": "0.00",
+     "accepted_offer_mwh": "0",
+     "acceptances": []
+    },
+    {
+     "period": 3,
+     "levels": {
+      "PN": [
+       "35",
+       "35"
+      ],
+      "MELS": [
+       "41",
+       "41"
+      ],
+      "MILS": [
+       "0",
+       "0"
+      ]
+     },
+     "offer_price": "0.00",
+     "accepted_offer_mwh": "0",
+     "acceptances": []
+    },
+    {
+     "period": 4,
+     "levels": {
+      "PN": [
+       "32",
+       "32"
+      ],
+      "MELS": [
+       "41",
+       "41"
+      ],
+      "MILS": [
+       "0",
+       "0"
+      ]
+     },
+     "offer_price": "0.00",
+     "accepted_offer_mwh": "0",
+     "acceptances": []
+    },
+    {
+     "period": 5,
+     "levels": {
+      "PN": [
+       "36",
+       "36"
+      ],
+      "MELS": [
+       "41",
+       "41"
+      ],
+      "MILS": [
+       "0",
+       "0"
+      ]
+     },
+     "offer_price": "0.00",
+     "accepted_offer_mwh": "0",
+     "acceptances": []
+    },
+    {
+     "period": 6,
+     "levels": {
+      "PN": [
+       "30",
+       "30"
+      ],
+      "MELS": [
+       "41",
+       "41"
+      ],
+      "MILS": [
+       "0",
+       "0"
+      ]
+     },
+     "offer_price": "0.00",
+     "accepted_offer_mwh": "0",
+     "acceptances": []
+    },
+    {
+     "period": 7,
+     "levels": {
+      "PN": [
+       "31",
+       "30"
+      ],
+      "MELS": [
+       "41",
+       "41"
+      ],
+      "MILS": [
+       "0",
+       "0"
+      ]
+     },
+     "offer_price": "0.00",
+     "accepted_offer_mwh": "0",
+     "acceptances": []
+    },
+    {
+     "period": 8,
+     "levels": {
+      "PN": [
+       "29",
+       "29"
+      ],
+      "MELS": [
+       "41",
+       "41"
+      ],
+      "MILS": [
+       "0",
+       "0"
+      ]
+     },
+     "offer_price": "0.00",
+     "accepted_offer_mwh": "0",
+     "acceptances": []
+    },
+    {
+     "period": 9,
+     "levels": {
+      "PN": [
+       "27",
+       "26"
+      ],
+      "MELS": [
+       "41",
+       "41"
+      ],
+      "MILS": [
+       "0",
+       "0"
+      ]
+     },
+     "offer_price": "0.00",
+     "accepted_offer_mwh": "0",
+     "acceptances": []
+    },
+    {
+     "period": 10,
+     "levels": {
+      "PN": [
+       "27",
+       "27"
+      ],
+      "MELS": [
+       "41",
+       "41"
+      ],
+      "MILS": [
+       "0",
+       "0"
+      ]
+     },
+     "offer_price": "0.00",
+     "accepted_offer_mwh": "0",
+     "acceptances": []
+    },
+    {
+     "period": 11,
+     "levels": {
+      "PN": [
+       "26",
+       "26"
+      ],
+      "MELS": [
+       "41",
+       "41"
+      ],
+      "MILS": [
+       "0",
+       "0"
+      ]
+     },
+     "offer_price": "0.00",
+     "accepted_offer_mwh": "0",
+     "acceptances": []
+    },
+    {
+     "period": 12,
+     "levels": {
+      "PN": [
+       "25",
+       "25"
+      ],
+      "MELS": [
+       "41",
+       "41"
+      ],
+      "MILS": [
+       "0",
+       "0"
+      ]
+     },
+     "offer_price": "0.00",
+     "accepted_offer_mwh": "0",
+     "acceptances": []
+    },
+    {
+     "period": 13,
+     "levels": {
+      "PN": [
+       "18",
+       "18"
+      ],
+      "MELS": [
+       "41",
+       "41"
+      ],
+      "MILS": [
+       "0",
+       "0"
+      ]
+     },
+     "offer_price": "0.00",
+     "accepted_offer_mwh": "0",
+     "acceptances": []
+    },
+    {
+     "period": 14,
+     "levels": {
+      "PN": [
+       "19",
+       "19"
+      ],
+      "MELS": [
+       "41",
+       "41"
+      ],
+      "MILS": [
+       "0",
+       "0"
+      ]
+     },
+     "offer_price": "0.00",
+     "accepted_offer_mwh": "0",
+     "acceptances": []
+    },
+    {
+     "period": 15,
+     "levels": {
+      "PN": [
+       "16",
+       "16"
+      ],
+      "MELS": [
+       "41",
+       "41"
+      ],
+      "MILS": [
+       "0",
+       "0"
+      ]
+     },
+     "offer_price": "0.00",
+     "accepted_offer_mwh": "0",
+     "acceptances": []
+    },
+    {
+     "period": 16,
+     "levels": {
+      "PN": [
+       "19",
+       "19"
+      ],
+      "MELS": [
+       "41",
+       "41"
+      ],
+      "MILS": [
+       "0",
+       "0"
+      ]
+     },
+     "offer_price": "0.00",
+     "accepted_offer_mwh": "0",
+     "acceptances": []
+    },
+    {
+     "period": 17,
+     "levels": {
+      "PN": [
+       "22",
+       "22"
+      ],
+      "MELS": [
+       "41",
+       "41"
+      ],
+      "MILS": [
+       "0",
+       "0"
+      ]
+     },
+     "offer_price": "0.00",
+     "accepted_offer_mwh": "0",
+     "acceptances": []
+    },
+    {
+     "period": 18,
+     "levels": {
+      "PN": [
+       "18",
+       "17"
+      ],
+      "MELS": [
+       "41",
+       "41"
+      ],
+      "MILS": [
+       "0",
+       "0"
+      ]
+     },
+     "offer_price": "0.00",
+     "accepted_offer_mwh": "0",
+     "acceptances": []
+    },
+    {
+     "period": 19,
+     "levels": {
+      "PN": [
+       "16",
+       "15"
+      ],
+      "MELS": [
+       "41",
+       "41"
+      ],
+      "MILS": [
+       "0",
+       "0"
+      ]
+     },
+     "offer_price": "0.00",
+     "accepted_offer_mwh": "0",
+     "acceptances": []
+    },
+    {
+     "period": 20,
+     "levels": {
+      "PN": [
+       "16",
+       "15"
+      ],
+      "MELS": [
+       "41",
+       "41"
+      ],
+      "MILS": [
+       "0",
+       "0"
+      ]
+     },
+     "offer_price": "0.00",
+     "accepted_offer_mwh": "0",
+     "acceptances": []
+    },
+    {
+     "period": 21,
+     "levels": {
+      "PN": [
+       "13",
+       "13"
+      ],
+      "MELS": [
+       "41",
+       "41"
+      ],
+      "MILS": [
+       "0",
+       "0"
+      ]
+     },
+     "offer_price": "0.00",
+     "accepted_offer_mwh": "0",
+     "acceptances": []
+    },
+    {
+     "period": 22,
+     "levels": {
+      "PN": [
+       "10",
+       "10"
+      ],
+      "MELS": [
+       "41",
+       "41"
+      ],
+      "MILS": [
+       "0",
+       "0"
+      ]
+     },
+     "offer_price": "0.00",
+     "accepted_offer_mwh": "0",
+     "acceptances": []
+    },
+    {
+     "period": 23,
+     "levels": {
+      "PN": [
+       "20",
+       "19"
+      ],
+      "MELS": [
+       "41",
+       "41"
+      ],
+      "MILS": [
+       "0",
+       "0"
+      ]
+     },
+     "offer_price": "0.00",
+     "accepted_offer_mwh": "0",
+     "acceptances": []
+    },
+    {
+     "period": 24,
+     "levels": {
+      "PN": [
+       "19",
+       "19"
+      ],
+      "MELS": [
+       "41",
+       "41"
+      ],
+      "MILS": [
+       "0",
+       "0"
+      ]
+     },
+     "offer_price": "0.00",
+     "accepted_offer_mwh": "0",
+     "acceptances": []
+    },
+    {
+     "period": 25,
+     "levels": {
+      "PN": [
+       "23",
+       "24"
+      ],
+      "MELS": [
+       "41",
+       "41"
+      ],
+      "MILS": [
+       "0",
+       "0"
+      ]
+     },
+     "offer_price": "0.00",
+     "accepted_offer_mwh": "0",
+     "acceptances": []
+    },
+    {
+     "period": 26,
+     "levels": {
+      "PN": [
+       "18",
+       "19"
+      ],
+      "MELS": [
+       "41",
+       "41"
+      ],
+      "MILS": [
+       "0",
+       "0"
+      ]
+     },
+     "offer_price": "0.00",
+     "accepted_offer_mwh": "0",
+     "acceptances": []
+    },
+    {
+     "period": 27,
+     "levels": {
+      "PN": [
+       "21",
+       "26"
+      ],
+      "MELS": [
+       "41",
+       "41"
+      ],
+      "MILS": [
+       "0",
+       "0"
+      ]
+     },
+     "offer_price": "0.00",
+     "accepted_offer_mwh": "0",
+     "acceptances": []
+    },
+    {
+     "period": 28,
+     "levels": {
+      "PN": [
+       "27",
+       "31"
+      ],
+      "MELS": [
+       "41",
+       "41"
+      ],
+      "MILS": [
+       "0",
+       "0"
+      ]
+     },
+     "offer_price": "0.00",
+     "accepted_offer_mwh": "0",
+     "acceptances": []
+    },
+    {
+     "period": 29,
+     "levels": {
+      "PN": [
+       "33",
+       "32"
+      ],
+      "MELS": [
+       "41",
+       "41"
+      ],
+      "MILS": [
+       "0",
+       "0"
+      ]
+     },
+     "offer_price": "0.00",
+     "accepted_offer_mwh": "0",
+     "acceptances": []
+    },
+    {
+     "period": 30,
+     "levels": {
+      "PN": [
+       "38",
+       "37"
+      ],
+      "MELS": [
+       "41",
+       "41"
+      ],
+      "MILS": [
+       "0",
+       "0"
+      ]
+     },
+     "offer_price": "0.00",
+     "accepted_offer_mwh": "0",
+     "acceptances": []
+    },
+    {
+     "period": 31,
+     "levels": {
+      "PN": [
+       "37",
+       "37"
+      ],
+      "MELS": [
+       "41",
+       "41"
+      ],
+      "MILS": [
+       "0",
+       "0"
+      ]
+     },
+     "offer_price": "0.00",
+     "accepted_offer_mwh": "0",
+     "acceptances": []
+    },
+    {
+     "period": 32,
+     "levels": {
+      "PN": [
+       "31",
+       "30"
+      ],
+      "MELS": [
+       "41",
+       "41"
+      ],
+      "MILS": [
+       "0",
+       "0"
+      ]
+     },
+     "offer_price": "0.00",
+     "accepted_offer_mwh": "0",
+     "acceptances": []
+    },
+    {
+     "period": 33,
+     "levels": {
+      "PN": [
+       "35",
+       "35"
+      ],
+      "MELS": [
+       "41",
+       "41"
+      ],
+      "MILS": [
+       "0",
+       "0"
+      ]
+     },
+     "offer_price": "0.00",
+     "accepted_offer_mwh": "0",
+     "acceptances": []
+    },
+    {
+     "period": 34,
+     "levels": {
+      "PN": [
+       "31",
+       "31"
+      ],
+      "MELS": [
+       "41",
+       "41"
+      ],
+      "MILS": [
+       "0",
+       "0"
+      ]
+     },
+     "offer_price": "0.00",
+     "accepted_offer_mwh": "0",
+     "acceptances": []
+    },
+    {
+     "period": 35,
+     "levels": {
+      "PN": [
+       "32",
+       "30"
+      ],
+      "MELS": [
+       "41",
+       "41"
+      ],
+      "MILS": [
+       "0",
+       "0"
+      ]
+     },
+     "offer_price": "0.00",
+     "accepted_offer_mwh": "0",
+     "acceptances": []
+    },
+    {
+     "period": 36,
+     "levels": {
+      "PN": [
+       "24",
+       "23"
+      ],
+      "MELS": [
+       "41",
+       "41"
+      ],
+      "MILS": [
+       "0",
+       "0"
+      ]
+     },
+     "offer_price": "0.00",
+     "accepted_offer_mwh": "0",
+     "acceptances": []
+    },
+    {
+     "period": 37,
+     "levels": {
+      "PN": [
+       "26",
+       "25"
+      ],
+      "MELS": [
+       "41",
+       "41"
+      ],
+      "MILS": [
+       "0",
+       "0"
+      ]
+     },
+     "offer_price": "0.00",
+     "accepted_offer_mwh": "0",
+     "acceptances": []
+    },
+    {
+     "period": 38,
+     "levels": {
+      "PN": [
+       "30",
+       "29"
+      ],
+      "MELS": [
+       "41",
+       "41"
+      ],
+      "MILS": [
+       "0",
+       "0"
+      ]
+     },
+     "offer_price": "0.00",
+     "accepted_offer_mwh": "0",
+     "acceptances": []
+    },
+    {
+     "period": 39,
+     "levels": {
+      "PN": [
+       "19",
+       "20"
+      ],
+      "MELS": [
+       "41",
+       "41"
+      ],
+      "MILS": [
+       "0",
+       "0"
+      ]
+     },
+     "offer_price": "0.00",
+     "accepted_offer_mwh": "0",
+     "acceptances": []
+    },
+    {
+     "period": 40,
+     "levels": {
+      "PN": [
+       "27",
+       "28"
+      ],
+      "MELS": [
+       "41",
+       "41"
+      ],
+      "MILS": [
+       "0",
+       "0"
+      ]
+     },
+     "offer_price": "0.00",
+     "accepted_offer_mwh": "0",
+     "acceptances": []
+    },
+    {
+     "period": 41,
+     "levels": {
+      "PN": [
+       "28",
+       "28"
+      ],
+      "MELS": [
+       "41",
+       "41"
+      ],
+      "MILS": [
+       "0",
+       "0"
+      ]
+     },
+     "offer_price": "0.00",
+     "accepted_offer_mwh": "0",
+     "acceptances": []
+    },
+    {
+     "period": 42,
+     "levels": {
+      "PN": [
+       "27",
+       "27"
+      ],
+      "MELS": [
+       "41",
+       "41"
+      ],
+      "MILS": [
+       "0",
+       "0"
+      ]
+     },
+     "offer_price": "0.00",
+     "accepted_offer_mwh": "0",
+     "acceptances": []
+    },
+    {
+     "period": 43,
+     "levels": {
+      "PN": [
+       "28",
+       "28"
+      ],
+      "MELS": [
+       "41",
+       "41"
+      ],
+      "MILS": [
+       "0",
+       "0"
+      ]
+     },
+     "offer_price": "0.00",
+     "accepted_offer_mwh": "0",
+     "acceptances": []
+    },
+    {
+     "period": 44,
+     "levels": {
+      "PN": [
+       "26",
+       "26"
+      ],
+      "MELS": [
+       "41",
+       "41"
+      ],
+      "MILS": [
+       "0",
+       "0"
+      ]
+     },
+     "offer_price": "0.00",
+     "accepted_offer_mwh": "0",
+     "acceptances": []
+    },
+    {
+     "period": 45,
+     "levels": {
+      "PN": [
+       "30",
+       "29"
+      ],
+      "MELS": [
+       "41",
+       "41"
+      ],
+      "MILS": [
+       "0",
+       "0"
+      ]
+     },
+     "offer_price": "0.00",
+     "accepted_offer_mwh": "0",
+     "acceptances": []
+    },
+    {
+     "period": 46,
+     "levels": {
+      "PN": [
+       "30",
+       "29"
+      ],
+      "MELS": [
+       "41",
+       "41"
+      ],
+      "MILS": [
+       "0",
+       "0"
+      ]
+     },
+     "offer_price": "0.00",
+     "accepted_offer_mwh": "0",
+     "acceptances": []
+    },
+    {
+     "period": 47,
+     "levels": {
+      "PN": [
+       "30",
+       "30"
+      ],
+      "MELS": [
+       "41",
+       "41"
+      ],
+      "MILS": [
+       "0",
+       "0"
+      ]
+     },
+     "offer_price": "0.00",
+     "accepted_offer_mwh": "0",
+     "acceptances": []
+    },
+    {
+     "period": 48,
+     "levels": {
+      "PN": [
+       "27",
+       "27"
+      ],
+      "MELS": [
+       "41",
+       "41"
+      ],
+      "MILS": [
+       "0",
+       "0"
+      ]
+     },
+     "offer_price": "0.00",
+     "accepted_offer_mwh": "0",
+     "acceptances": []
+    }
+   ]
+  },
+  "T_SEAB-1": {
+   "periods_with_zero_priced_offer": 0,
+   "periods_with_accepted_offer_volume": 17,
+   "periods": [
+    {
+     "period": 1,
+     "levels": {
+      "PN": [
+       "0",
+       "0"
+      ],
+      "MELS": [
+       "719",
+       "722"
+      ],
+      "MILS": [
+       "0",
+       "0"
+      ]
+     },
+     "offer_price": "201.00",
+     "accepted_offer_mwh": "0",
+     "acceptances": [
+      {
+       "acceptance": 176752,
+       "level_from": "300",
+       "level_to": "0",
+       "time_from": "2026-08-11T23:13:00Z",
+       "time_to": "2026-08-11T23:25:00Z",
+       "acceptance_time": "2026-08-11T22:00:00Z",
+       "so_flag": true
+      },
+      {
+       "acceptance": 176753,
+       "level_from": "476",
+       "level_to": "476",
+       "time_from": "2026-08-11T23:06:00Z",
+       "time_to": "2026-08-11T23:36:00Z",
+       "acceptance_time": "2026-08-11T22:32:00Z",
+       "so_flag": true
+      },
+      {
+       "acceptance": 176752,
+       "level_from": "476",
+       "level_to": "300",
+       "time_from": "2026-08-11T23:06:00Z",
+       "time_to": "2026-08-11T23:13:00Z",
+       "acceptance_time": "2026-08-11T22:00:00Z",
+       "so_flag": true
+      },
+      {
+       "acceptance": 176752,
+       "level_from": "476",
+       "level_to": "476",
+       "time_from": "2026-08-11T22:36:00Z",
+       "time_to": "2026-08-11T23:06:00Z",
+       "acceptance_time": "2026-08-11T22:00:00Z",
+       "so_flag": true
+      }
+     ]
+    },
+    {
+     "period": 2,
+     "levels": {
+      "PN": [
+       "0",
+       "0"
+      ],
+      "MELS": [
+       "722",
+       "724"
+      ],
+      "MILS": [
+       "0",
+       "0"
+      ]
+     },
+     "offer_price": "201.00",
+     "accepted_offer_mwh": "0",
+     "acceptances": [
+      {
+       "acceptance": 176753,
+       "level_from": "300",
+       "level_to": "0",
+       "time_from": "2026-08-11T23:43:00Z",
+       "time_to": "2026-08-11T23:55:00Z",
+       "acceptance_time": "2026-08-11T22:32:00Z",
+       "so_flag": true
+      },
+      {
+       "acceptance": 176754,
+       "level_from": "476",
+       "level_to": "476",
+       "time_from": "2026-08-11T23:36:00Z",
+       "time_to": "2026-08-12T00:06:00Z",
+       "acceptance_time": "2026-08-11T23:00:00Z",
+       "so_flag": true
+      },
+      {
+       "acceptance": 176753,
+       "level_from": "476",
+       "level_to": "300",
+       "time_from": "2026-08-11T23:36:00Z",
+       "time_to": "2026-08-11T23:43:00Z",
+       "acceptance_time": "2026-08-11T22:32:00Z",
+       "so_flag": true
+      },
+      {
+       "acceptance": 176753,
+       "level_from": "476",
+       "level_to": "476",
+       "time_from": "2026-08-11T23:06:00Z",
+       "time_to": "2026-08-11T23:36:00Z",
+       "acceptance_time": "2026-08-11T22:32:00Z",
+       "so_flag": true
+      }
+     ]
+    },
+    {
+     "period": 3,
+     "levels": {
+      "PN": [
+       "0",
+       "0"
+      ],
+      "MELS": [
+       "724",
+       "726"
+      ],
+      "MILS": [
+       "0",
+       "0"
+      ]
+     },
+     "offer_price": "201.00",
+     "accepted_offer_mwh": "0",
+     "acceptances": [
+      {
+       "acceptance": 176754,
+       "level_from": "300",
+       "level_to": "0",
+       "time_from": "2026-08-12T00:13:00Z",
+       "time_to": "2026-08-12T00:25:00Z",
+       "acceptance_time": "2026-08-11T23:00:00Z",
+       "so_flag": true
+      },
+      {
+       "acceptance": 176755,
+       "level_from": "476",
+       "level_to": "476",
+       "time_from": "2026-08-12T00:06:00Z",
+       "time_to": "2026-08-12T00:36:00Z",
+       "acceptance_time": "2026-08-11T23:31:00Z",
+       "so_flag": true
+      },
+      {
+       "acceptance": 176754,
+       "level_from": "476",
+       "level_to": "300",
+       "time_from": "2026-08-12T00:06:00Z",
+       "time_to": "2026-08-12T00:13:00Z",
+       "acceptance_time": "2026-08-11T23:00:00Z",
+       "so_flag": true
+      },
+      {
+       "acceptance": 176754,
+       "level_from": "476",
+       "level_to": "476",
+       "time_from": "2026-08-11T23:36:00Z",
+       "time_to": "2026-08-12T00:06:00Z",
+       "acceptance_time": "2026-08-11T23:00:00Z",
+       "so_flag": true
+      }
+     ]
+    },
+    {
+     "period": 4,
+     "levels": {
+      "PN": [
+       "0",
+       "0"
+      ],
+      "MELS": [
+       "726",
+       "728"
+      ],
+      "MILS": [
+       "0",
+       "0"
+      ]
+     },
+     "offer_price": "201.00",
+     "accepted_offer_mwh": "0",
+     "acceptances": [
+      {
+       "acceptance": 176755,
+       "level_from": "300",
+       "level_to": "0",
+       "time_from": "2026-08-12T00:43:00Z",
+       "time_to": "2026-08-12T00:55:00Z",
+       "acceptance_time": "2026-08-11T23:31:00Z",
+       "so_flag": true
+      },
+      {
+       "acceptance": 176756,
+       "level_from": "476",
+       "level_to": "476",
+       "time_from": "2026-08-12T00:36:00Z",
+       "time_to": "2026-08-12T01:06:00Z",
+       "acceptance_time": "2026-08-12T00:04:00Z",
+       "so_flag": true
+      },
+      {
+       "acceptance": 176755,
+       "level_from": "476",
+       "level_to": "300",
+       "time_from": "2026-08-12T00:36:00Z",
+       "time_to": "2026-08-12T00:43:00Z",
+       "acceptance_time": "2026-08-11T23:31:00Z",
+       "so_flag": true
+      },
+      {
+       "acceptance": 176755,
+       "level_from": "476",
+       "level_to": "476",
+       "time_from": "2026-08-12T00:06:00Z",
+       "time_to": "2026-08-12T00:36:00Z",
+       "acceptance_time": "2026-08-11T23:31:00Z",
+       "so_flag": true
+      }
+     ]
+    },
+    {
+     "period": 5,
+     "levels": {
+      "PN": [
+       "0",
+       "0"
+      ],
+      "MELS": [
+       "728",
+       "730"
+      ],
+      "MILS": [
+       "0",
+       "0"
+      ]
+     },
+     "offer_price": "201.00",
+     "accepted_offer_mwh": "0",
+     "acceptances": [
+      {
+       "acceptance": 176756,
+       "level_from": "300",
+       "level_to": "0",
+       "time_from": "2026-08-12T01:13:00Z",
+       "time_to": "2026-08-12T01:25:00Z",
+       "acceptance_time": "2026-08-12T00:04:00Z",
+       "so_flag": true
+      },
+      {
+       "acceptance": 176757,
+       "level_from": "476",
+       "level_to": "476",
+       "time_from": "2026-08-12T01:06:00Z",
+       "time_to": "2026-08-12T01:36:00Z",
+       "acceptance_time": "2026-08-12T00:30:00Z",
+       "so_flag": true
+      },
+      {
+       "acceptance": 176756,
+       "level_from": "476",
+       "level_to": "300",
+       "time_from": "2026-08-12T01:06:00Z",
+       "time_to": "2026-08-12T01:13:00Z",
+       "acceptance_time": "2026-08-12T00:04:00Z",
+       "so_flag": true
+      },
+      {
+       "acceptance": 176756,
+       "level_from": "476",
+       "level_to": "476",
+       "time_from": "2026-08-12T00:36:00Z",
+       "time_to": "2026-08-12T01:06:00Z",
+       "acceptance_time": "2026-08-12T00:04:00Z",
+       "so_flag": true
+      }
+     ]
+    },
+    {
+     "period": 6,
+     "levels": {
+      "PN": [
+       "0",
+       "0"
+      ],
+      "MELS": [
+       "730",
+       "732"
+      ],
+      "MILS": [
+       "0",
+       "0"
+      ]
+     },
+     "offer_price": "201.00",
+     "accepted_offer_mwh": "0",
+     "acceptances": [
+      {
+       "acceptance": 176757,
+       "level_from": "300",
+       "level_to": "0",
+       "time_from": "2026-08-12T01:43:00Z",
+       "time_to": "2026-08-12T01:55:00Z",
+       "acceptance_time": "2026-08-12T00:30:00Z",
+       "so_flag": true
+      },
+      {
+       "acceptance": 176758,
+       "level_from": "476",
+       "level_to": "476",
+       "time_from": "2026-08-12T01:36:00Z",
+       "time_to": "2026-08-12T02:06:00Z",
+       "acceptance_time": "2026-08-12T01:02:00Z",
+       "so_flag": true
+      },
+      {
+       "acceptance": 176757,
+       "level_from": "476",
+       "level_to": "300",
+       "time_from": "2026-08-12T01:36:00Z",
+       "time_to": "2026-08-12T01:43:00Z",
+       "acceptance_time": "2026-08-12T00:30:00Z",
+       "so_flag": true
+      },
+      {
+       "acceptance": 176757,
+       "level_from": "476",
+       "level_to": "476",
+       "time_from": "2026-08-12T01:06:00Z",
+       "time_to": "2026-08-12T01:36:00Z",
+       "acceptance_time": "2026-08-12T00:30:00Z",
+       "so_flag": true
+      }
+     ]
+    },
+    {
+     "period": 7,
+     "levels": {
+      "PN": [
+       "0",
+       "0"
+      ],
+      "MELS": [
+       "732",
+       "733"
+      ],
+      "MILS": [
+       "0",
+       "0"
+      ]
+     },
+     "offer_price": "201.00",
+     "accepted_offer_mwh": "0",
+     "acceptances": [
+      {
+       "acceptance": 176758,
+       "level_from": "300",
+       "level_to": "0",
+       "time_from": "2026-08-12T02:13:00Z",
+       "time_to": "2026-08-12T02:25:00Z",
+       "acceptance_time": "2026-08-12T01:02:00Z",
+       "so_flag": true
+      },
+      {
+       "acceptance": 176759,
+       "level_from": "476",
+       "level_to": "476",
+       "time_from": "2026-08-12T02:06:00Z",
+       "time_to": "2026-08-12T02:36:00Z",
+       "acceptance_time": "2026-08-12T01:30:00Z",
+       "so_flag": true
+      },
+      {
+       "acceptance": 176758,
+       "level_from": "476",
+       "level_to": "300",
+       "time_from": "2026-08-12T02:06:00Z",
+       "time_to": "2026-08-12T02:13:00Z",
+       "acceptance_time": "2026-08-12T01:02:00Z",
+       "so_flag": true
+      },
+      {
+       "acceptance": 176758,
+       "level_from": "476",
+       "level_to": "476",
+       "time_from": "2026-08-12T01:36:00Z",
+       "time_to": "2026-08-12T02:06:00Z",
+       "acceptance_time": "2026-08-12T01:02:00Z",
+       "so_flag": true
+      }
+     ]
+    },
+    {
+     "period": 8,
+     "levels": {
+      "PN": [
+       "0",
+       "0"
+      ],
+      "MELS": [
+       "733",
+       "734"
+      ],
+      "MILS": [
+       "0",
+       "0"
+      ]
+     },
+     "offer_price": "201.00",
+     "accepted_offer_mwh": "0",
+     "acceptances": [
+      {
+       "acceptance": 176759,
+       "level_from": "300",
+       "level_to": "0",
+       "time_from": "2026-08-12T02:43:00Z",
+       "time_to": "2026-08-12T02:55:00Z",
+       "acceptance_time": "2026-08-12T01:30:00Z",
+       "so_flag": true
+      },
+      {
+       "acceptance": 176760,
+       "level_from": "476",
+       "level_to": "476",
+       "time_from": "2026-08-12T02:36:00Z",
+       "time_to": "2026-08-12T03:06:00Z",
+       "acceptance_time": "2026-08-12T02:00:00Z",
+       "so_flag": true
+      },
+      {
+       "acceptance": 176759,
+       "level_from": "476",
+       "level_to": "300",
+       "time_from": "2026-08-12T02:36:00Z",
+       "time_to": "2026-08-12T02:43:00Z",
+       "acceptance_time": "2026-08-12T01:30:00Z",
+       "so_flag": true
+      },
+      {
+       "acceptance": 176759,
+       "level_from": "476",
+       "level_to": "476",
+       "time_from": "2026-08-12T02:06:00Z",
+       "time_to": "2026-08-12T02:36:00Z",
+       "acceptance_time": "2026-08-12T01:30:00Z",
+       "so_flag": true
+      }
+     ]
+    },
+    {
+     "period": 9,
+     "levels": {
+      "PN": [
+       "0",
+       "0"
+      ],
+      "MELS": [
+       "734",
+       "735"
+      ],
+      "MILS": [
+       "0",
+       "0"
+      ]
+     },
+     "offer_price": "201.00",
+     "accepted_offer_mwh": "0",
+     "acceptances": [
+      {
+       "acceptance": 176760,
+       "level_from": "300",
+       "level_to": "0",
+       "time_from": "2026-08-12T03:13:00Z",
+       "time_to": "2026-08-12T03:25:00Z",
+       "acceptance_time": "2026-08-12T02:00:00Z",
+       "so_flag": true
+      },
+      {
+       "acceptance": 176761,
+       "level_from": "476",
+       "level_to": "476",
+       "time_from": "2026-08-12T03:06:00Z",
+       "time_to": "2026-08-12T03:36:00Z",
+       "acceptance_time": "2026-08-12T02:36:00Z",
+       "so_flag": true
+      },
+      {
+       "acceptance": 176760,
+       "level_from": "476",
+       "level_to": "300",
+       "time_from": "2026-08-12T03:06:00Z",
+       "time_to": "2026-08-12T03:13:00Z",
+       "acceptance_time": "2026-08-12T02:00:00Z",
+       "so_flag": true
+      },
+      {
+       "acceptance": 176760,
+       "level_from": "476",
+       "level_to": "476",
+       "time_from": "2026-08-12T02:36:00Z",
+       "time_to": "2026-08-12T03:06:00Z",
+       "acceptance_time": "2026-08-12T02:00:00Z",
+       "so_flag": true
+      }
+     ]
+    },
+    {
+     "period": 10,
+     "levels": {
+      "PN": [
+       "0",
+       "0"
+      ],
+      "MELS": [
+       "735",
+       "736"
+      ],
+      "MILS": [
+       "0",
+       "0"
+      ]
+     },
+     "offer_price": "201.00",
+     "accepted_offer_mwh": "0",
+     "acceptances": [
+      {
+       "acceptance": 176761,
+       "level_from": "300",
+       "level_to": "0",
+       "time_from": "2026-08-12T03:43:00Z",
+       "time_to": "2026-08-12T03:55:00Z",
+       "acceptance_time": "2026-08-12T02:36:00Z",
+       "so_flag": true
+      },
+      {
+       "acceptance": 176762,
+       "level_from": "476",
+       "level_to": "476",
+       "time_from": "2026-08-12T03:36:00Z",
+       "time_to": "2026-08-12T04:06:00Z",
+       "acceptance_time": "2026-08-12T03:05:00Z",
+       "so_flag": true
+      },
+      {
+       "acceptance": 176761,
+       "level_from": "476",
+       "level_to": "300",
+       "time_from": "2026-08-12T03:36:00Z",
+       "time_to": "2026-08-12T03:43:00Z",
+       "acceptance_time": "2026-08-12T02:36:00Z",
+       "so_flag": true
+      },
+      {
+       "acceptance": 176761,
+       "level_from": "476",
+       "level_to": "476",
+       "time_from": "2026-08-12T03:06:00Z",
+       "time_to": "2026-08-12T03:36:00Z",
+       "acceptance_time": "2026-08-12T02:36:00Z",
+       "so_flag": true
+      }
+     ]
+    },
+    {
+     "period": 11,
+     "levels": {
+      "PN": [
+       "0",
+       "0"
+      ],
+      "MELS": [
+       "736",
+       "737"
+      ],
+      "MILS": [
+       "0",
+       "0"
+      ]
+     },
+     "offer_price": "201.00",
+     "accepted_offer_mwh": "238.000000000000000000",
+     "acceptances": [
+      {
+       "acceptance": 176762,
+       "level_from": "300",
+       "level_to": "0",
+       "time_from": "2026-08-12T04:13:00Z",
+       "time_to": "2026-08-12T04:25:00Z",
+       "acceptance_time": "2026-08-12T03:05:00Z",
+       "so_flag": true
+      },
+      {
+       "acceptance": 176763,
+       "level_from": "476",
+       "level_to": "476",
+       "time_from": "2026-08-12T04:06:00Z",
+       "time_to": "2026-08-12T04:36:00Z",
+       "acceptance_time": "2026-08-12T03:30:00Z",
+       "so_flag": true
+      },
+      {
+       "acceptance": 176762,
+       "level_from": "476",
+       "level_to": "300",
+       "time_from": "2026-08-12T04:06:00Z",
+       "time_to": "2026-08-12T04:13:00Z",
+       "acceptance_time": "2026-08-12T03:05:00Z",
+       "so_flag": true
+      },
+      {
+       "acceptance": 176762,
+       "level_from": "476",
+       "level_to": "476",
+       "time_from": "2026-08-12T03:36:00Z",
+       "time_to": "2026-08-12T04:06:00Z",
+       "acceptance_time": "2026-08-12T03:05:00Z",
+       "so_flag": true
+      }
+     ]
+    },
+    {
+     "period": 12,
+     "levels": {
+      "PN": [
+       "0",
+       "0"
+      ],
+      "MELS": [
+       "737",
+       "738"
+      ],
+      "MILS": [
+       "0",
+       "0"
+      ]
+     },
+     "offer_price": "201.00",
+     "accepted_offer_mwh": "0",
+     "acceptances": [
+      {
+       "acceptance": 176763,
+       "level_from": "300",
+       "level_to": "0",
+       "time_from": "2026-08-12T04:43:00Z",
+       "time_to": "2026-08-12T04:55:00Z",
+       "acceptance_time": "2026-08-12T03:30:00Z",
+       "so_flag": true
+      },
+      {
+       "acceptance": 176764,
+       "level_from": "476",
+       "level_to": "476",
+       "time_from": "2026-08-12T04:36:00Z",
+       "time_to": "2026-08-12T05:06:00Z",
+       "acceptance_time": "2026-08-12T04:00:00Z",
+       "so_flag": true
+      },
+      {
+       "acceptance": 176763,
+       "level_from": "476",
+       "level_to": "300",
+       "time_from": "2026-08-12T04:36:00Z",
+       "time_to": "2026-08-12T04:43:00Z",
+       "acceptance_time": "2026-08-12T03:30:00Z",
+       "so_flag": true
+      },
+      {
+       "acceptance": 176763,
+       "level_from": "476",
+       "level_to": "476",
+       "time_from": "2026-08-12T04:06:00Z",
+       "time_to": "2026-08-12T04:36:00Z",
+       "acceptance_time": "2026-08-12T03:30:00Z",
+       "so_flag": true
+      }
+     ]
+    },
+    {
+     "period": 13,
+     "levels": {
+      "PN": [
+       "0",
+       "0"
+      ],
+      "MELS": [
+       "738",
+       "737"
+      ],
+      "MILS": [
+       "0",
+       "0"
+      ]
+     },
+     "offer_price": "201.00",
+     "accepted_offer_mwh": "0",
+     "acceptances": [
+      {
+       "acceptance": 176764,
+       "level_from": "300",
+       "level_to": "0",
+       "time_from": "2026-08-12T05:13:00Z",
+       "time_to": "2026-08-12T05:25:00Z",
+       "acceptance_time": "2026-08-12T04:00:00Z",
+       "so_flag": true
+      },
+      {
+       "acceptance": 176765,
+       "level_from": "476",
+       "level_to": "476",
+       "time_from": "2026-08-12T05:06:00Z",
+       "time_to": "2026-08-12T05:36:00Z",
+       "acceptance_time": "2026-08-12T04:30:00Z",
+       "so_flag": true
+      },
+      {
+       "acceptance": 176764,
+       "level_from": "476",
+       "level_to": "300",
+       "time_from": "2026-08-12T05:06:00Z",
+       "time_to": "2026-08-12T05:13:00Z",
+       "acceptance_time": "2026-08-12T04:00:00Z",
+       "so_flag": true
+      },
+      {
+       "acceptance": 176764,
+       "level_from": "476",
+       "level_to": "476",
+       "time_from": "2026-08-12T04:36:00Z",
+       "time_to": "2026-08-12T05:06:00Z",
+       "acceptance_time": "2026-08-12T04:00:00Z",
+       "so_flag": true
+      }
+     ]
+    },
+    {
+     "period": 14,
+     "levels": {
+      "PN": [
+       "0",
+       "0"
+      ],
+      "MELS": [
+       "737",
+       "736"
+      ],
+      "MILS": [
+       "0",
+       "0"
+      ]
+     },
+     "offer_price": "201.00",
+     "accepted_offer_mwh": "0",
+     "acceptances": [
+      {
+       "acceptance": 176765,
+       "level_from": "300",
+       "level_to": "0",
+       "time_from": "2026-08-12T05:43:00Z",
+       "time_to": "2026-08-12T05:55:00Z",
+       "acceptance_time": "2026-08-12T04:30:00Z",
+       "so_flag": true
+      },
+      {
+       "acceptance": 176766,
+       "level_from": "476",
+       "level_to": "476",
+       "time_from": "2026-08-12T05:36:00Z",
+       "time_to": "2026-08-12T06:06:00Z",
+       "acceptance_time": "2026-08-12T05:00:00Z",
+       "so_flag": true
+      },
+      {
+       "acceptance": 176765,
+       "level_from": "476",
+       "level_to": "300",
+       "time_from": "2026-08-12T05:36:00Z",
+       "time_to": "2026-08-12T05:43:00Z",
+       "acceptance_time": "2026-08-12T04:30:00Z",
+       "so_flag": true
+      },
+      {
+       "acceptance": 176765,
+       "level_from": "476",
+       "level_to": "476",
+       "time_from": "2026-08-12T05:06:00Z",
+       "time_to": "2026-08-12T05:36:00Z",
+       "acceptance_time": "2026-08-12T04:30:00Z",
+       "so_flag": true
+      }
+     ]
+    },
+    {
+     "period": 15,
+     "levels": {
+      "PN": [
+       "0",
+       "0"
+      ],
+      "MELS": [
+       "736",
+       "732"
+      ],
+      "MILS": [
+       "0",
+       "0"
+      ]
+     },
+     "offer_price": "201.00",
+     "accepted_offer_mwh": "122.866666666666660035",
+     "acceptances": [
+      {
+       "acceptance": 176766,
+       "level_from": "300",
+       "level_to": "0",
+       "time_from": "2026-08-12T06:13:00Z",
+       "time_to": "2026-08-12T06:25:00Z",
+       "acceptance_time": "2026-08-12T05:00:00Z",
+       "so_flag": true
+      },
+      {
+       "acceptance": 176766,
+       "level_from": "476",
+       "level_to": "300",
+       "time_from": "2026-08-12T06:06:00Z",
+       "time_to": "2026-08-12T06:13:00Z",
+       "acceptance_time": "2026-08-12T05:00:00Z",
+       "so_flag": true
+      },
+      {
+       "acceptance": 176766,
+       "level_from": "476",
+       "level_to": "476",
+       "time_from": "2026-08-12T05:36:00Z",
+       "time_to": "2026-08-12T06:06:00Z",
+       "acceptance_time": "2026-08-12T05:00:00Z",
+       "so_flag": true
+      }
+     ]
+    },
+    {
+     "period": 16,
+     "levels": {
+      "PN": [
+       "0",
+       "0"
+      ],
+      "MELS": [
+       "732",
+       "0"
+      ],
+      "MILS": [
+       "0",
+       "0"
+      ]
+     },
+     "offer_price": "201.00",
+     "accepted_offer_mwh": "0",
+     "acceptances": []
+    },
+    {
+     "period": 17,
+     "levels": {
+      "PN": [
+       "0",
+       "0"
+      ],
+      "MELS": [
+       "0",
+       "0"
+      ],
+      "MILS": [
+       "0",
+       "0"
+      ]
+     },
+     "offer_price": "201.00",
+     "accepted_offer_mwh": "0",
+     "acceptances": []
+    },
+    {
+     "period": 18,
+     "levels": {
+      "PN": [
+       "0",
+       "0"
+      ],
+      "MELS": [
+       "0",
+       "0"
+      ],
+      "MILS": [
+       "0",
+       "0"
+      ]
+     },
+     "offer_price": "201.00",
+     "accepted_offer_mwh": "0",
+     "acceptances": []
+    },
+    {
+     "period": 19,
+     "levels": {
+      "PN": [
+       "0",
+       "0"
+      ],
+      "MELS": [
+       "0",
+       "0"
+      ],
+      "MILS": [
+       "0",
+       "0"
+      ]
+     },
+     "offer_price": "201.00",
+     "accepted_offer_mwh": "0",
+     "acceptances": []
+    },
+    {
+     "period": 20,
+     "levels": {
+      "PN": [
+       "0",
+       "0"
+      ],
+      "MELS": [
+       "0",
+       "0"
+      ],
+      "MILS": [
+       "0",
+       "0"
+      ]
+     },
+     "offer_price": "201.00",
+     "accepted_offer_mwh": "0",
+     "acceptances": []
+    },
+    {
+     "period": 21,
+     "levels": {
+      "PN": [
+       "0",
+       "0"
+      ],
+      "MELS": [
+       "0",
+       "0"
+      ],
+      "MILS": [
+       "0",
+       "0"
+      ]
+     },
+     "offer_price": "201.00",
+     "accepted_offer_mwh": "0",
+     "acceptances": []
+    },
+    {
+     "period": 22,
+     "levels": {
+      "PN": [
+       "0",
+       "0"
+      ],
+      "MELS": [
+       "0",
+       "0"
+      ],
+      "MILS": [
+       "0",
+       "0"
+      ]
+     },
+     "offer_price": "201.00",
+     "accepted_offer_mwh": "0",
+     "acceptances": []
+    },
+    {
+     "period": 23,
+     "levels": {
+      "PN": [
+       "0",
+       "0"
+      ],
+      "MELS": [
+       "0",
+       "0"
+      ],
+      "MILS": [
+       "0",
+       "0"
+      ]
+     },
+     "offer_price": "500.00",
+     "accepted_offer_mwh": "0",
+     "acceptances": []
+    },
+    {
+     "period": 24,
+     "levels": {
+      "PN": [
+       "0",
+       "0"
+      ],
+      "MELS": [
+       "0",
+       "0"
+      ],
+      "MILS": [
+       "0",
+       "0"
+      ]
+     },
+     "offer_price": "500.00",
+     "accepted_offer_mwh": "0",
+     "acceptances": []
+    },
+    {
+     "period": 25,
+     "levels": {
+      "PN": [
+       "0",
+       "0"
+      ],
+      "MELS": [
+       "0",
+       "0"
+      ],
+      "MILS": [
+       "0",
+       "0"
+      ]
+     },
+     "offer_price": "500.00",
+     "accepted_offer_mwh": "0",
+     "acceptances": []
+    },
+    {
+     "period": 26,
+     "levels": {
+      "PN": [
+       "0",
+       "0"
+      ],
+      "MELS": [
+       "0",
+       "0"
+      ],
+      "MILS": [
+       "0",
+       "0"
+      ]
+     },
+     "offer_price": "500.00",
+     "accepted_offer_mwh": "0",
+     "acceptances": []
+    },
+    {
+     "period": 27,
+     "levels": {
+      "PN": [
+       "0",
+       "0"
+      ],
+      "MELS": [
+       "0",
+       "0"
+      ],
+      "MILS": [
+       "0",
+       "0"
+      ]
+     },
+     "offer_price": "500.00",
+     "accepted_offer_mwh": "0",
+     "acceptances": []
+    },
+    {
+     "period": 28,
+     "levels": {
+      "PN": [
+       "0",
+       "0"
+      ],
+      "MELS": [
+       "0",
+       "0"
+      ],
+      "MILS": [
+       "0",
+       "0"
+      ]
+     },
+     "offer_price": "500.00",
+     "accepted_offer_mwh": "0",
+     "acceptances": []
+    },
+    {
+     "period": 29,
+     "levels": {
+      "PN": [
+       "0",
+       "0"
+      ],
+      "MELS": [
+       "0",
+       "0"
+      ],
+      "MILS": [
+       "0",
+       "0"
+      ]
+     },
+     "offer_price": "450.00",
+     "accepted_offer_mwh": "0",
+     "acceptances": []
+    },
+    {
+     "period": 30,
+     "levels": {
+      "PN": [
+       "0",
+       "0"
+      ],
+      "MELS": [
+       "0",
+       "0"
+      ],
+      "MILS": [
+       "0",
+       "0"
+      ]
+     },
+     "offer_price": "450.00",
+     "accepted_offer_mwh": "0",
+     "acceptances": []
+    },
+    {
+     "period": 31,
+     "levels": {
+      "PN": [
+       "0",
+       "0"
+      ],
+      "MELS": [
+       "0",
+       "0"
+      ],
+      "MILS": [
+       "0",
+       "0"
+      ]
+     },
+     "offer_price": "450.00",
+     "accepted_offer_mwh": "0",
+     "acceptances": []
+    },
+    {
+     "period": 32,
+     "levels": {
+      "PN": [
+       "0",
+       "0"
+      ],
+      "MELS": [
+       "671",
+       "671"
+      ],
+      "MILS": [
+       "0",
+       "0"
+      ]
+     },
+     "offer_price": "450.00",
+     "accepted_offer_mwh": "0",
+     "acceptances": []
+    },
+    {
+     "period": 33,
+     "levels": {
+      "PN": [
+       "0",
+       "0"
+      ],
+      "MELS": [
+       "671",
+       "671"
+      ],
+      "MILS": [
+       "0",
+       "0"
+      ]
+     },
+     "offer_price": "890.00",
+     "accepted_offer_mwh": "0.125000000000000000",
+     "acceptances": [
+      {
+       "acceptance": 176767,
+       "level_from": "0",
+       "level_to": "300",
+       "time_from": "2026-08-12T15:29:00Z",
+       "time_to": "2026-08-12T15:49:00Z",
+       "acceptance_time": "2026-08-12T14:30:00Z",
+       "so_flag": false
+      }
+     ]
+    },
+    {
+     "period": 34,
+     "levels": {
+      "PN": [
+       "0",
+       "0"
+      ],
+      "MELS": [
+       "670",
+       "669"
+      ],
+      "MILS": [
+       "0",
+       "0"
+      ]
+     },
+     "offer_price": "890.00",
+     "accepted_offer_mwh": "110.009090909090915034",
+     "acceptances": [
+      {
+       "acceptance": 176768,
+       "level_from": "351",
+       "level_to": "476",
+       "time_from": "2026-08-12T15:59:00Z",
+       "time_to": "2026-08-12T16:24:00Z",
+       "acceptance_time": "2026-08-12T15:04:00Z",
+       "so_flag": false
+      },
+      {
+       "acceptance": 176767,
+       "level_from": "300",
+       "level_to": "356",
+       "time_from": "2026-08-12T15:49:00Z",
+       "time_to": "2026-08-12T16:00:00Z",
+       "acceptance_time": "2026-08-12T14:30:00Z",
+       "so_flag": false
+      },
+      {
+       "acceptance": 176767,
+       "level_from": "0",
+       "level_to": "300",
+       "time_from": "2026-08-12T15:29:00Z",
+       "time_to": "2026-08-12T15:49:00Z",
+       "acceptance_time": "2026-08-12T14:30:00Z",
+       "so_flag": false
+      }
+     ]
+    },
+    {
+     "period": 35,
+     "levels": {
+      "PN": [
+       "0",
+       "0"
+      ],
+      "MELS": [
+       "669",
+       "670"
+      ],
+      "MILS": [
+       "0",
+       "0"
+      ]
+     },
+     "offer_price": "750.00",
+     "accepted_offer_mwh": "214.000000000000000000",
+     "acceptances": [
+      {
+       "acceptance": 176769,
+       "level_from": "476",
+       "level_to": "476",
+       "time_from": "2026-08-12T16:29:00Z",
+       "time_to": "2026-08-12T17:00:00Z",
+       "acceptance_time": "2026-08-12T15:30:00Z",
+       "so_flag": false
+      },
+      {
+       "acceptance": 176768,
+       "level_from": "476",
+       "level_to": "476",
+       "time_from": "2026-08-12T16:24:00Z",
+       "time_to": "2026-08-12T16:30:00Z",
+       "acceptance_time": "2026-08-12T15:04:00Z",
+       "so_flag": false
+      },
+      {
+       "acceptance": 176768,
+       "level_from": "351",
+       "level_to": "476",
+       "time_from": "2026-08-12T15:59:00Z",
+       "time_to": "2026-08-12T16:24:00Z",
+       "acceptance_time": "2026-08-12T15:04:00Z",
+       "so_flag": false
+      }
+     ]
+    },
+    {
+     "period": 36,
+     "levels": {
+      "PN": [
+       "0",
+       "0"
+      ],
+      "MELS": [
+       "670",
+       "671"
+      ],
+      "MILS": [
+       "0",
+       "0"
+      ]
+     },
+     "offer_price": "750.00",
+     "accepted_offer_mwh": "238.000000000000000000",
+     "acceptances": [
+      {
+       "acceptance": 176770,
+       "level_from": "476",
+       "level_to": "476",
+       "time_from": "2026-08-12T16:59:00Z",
+       "time_to": "2026-08-12T17:10:00Z",
+       "acceptance_time": "2026-08-12T16:00:00Z",
+       "so_flag": false
+      },
+      {
+       "acceptance": 176769,
+       "level_from": "476",
+       "level_to": "476",
+       "time_from": "2026-08-12T16:29:00Z",
+       "time_to": "2026-08-12T17:00:00Z",
+       "acceptance_time": "2026-08-12T15:30:00Z",
+       "so_flag": false
+      }
+     ]
+    },
+    {
+     "period": 37,
+     "levels": {
+      "PN": [
+       "0",
+       "0"
+      ],
+      "MELS": [
+       "671",
+       "672"
+      ],
+      "MILS": [
+       "0",
+       "0"
+      ]
+     },
+     "offer_price": "750.00",
+     "accepted_offer_mwh": "238.000000000000000000",
+     "acceptances": [
+      {
+       "acceptance": 176770,
+       "level_from": "300",
+       "level_to": "0",
+       "time_from": "2026-08-12T17:17:00Z",
+       "time_to": "2026-08-12T17:29:00Z",
+       "acceptance_time": "2026-08-12T16:00:00Z",
+       "so_flag": false
+      },
+      {
+       "acceptance": 176771,
+       "level_from": "476",
+       "level_to": "476",
+       "time_from": "2026-08-12T17:10:00Z",
+       "time_to": "2026-08-12T17:40:00Z",
+       "acceptance_time": "2026-08-12T16:32:00Z",
+       "so_flag": false
+      },
+      {
+       "acceptance": 176770,
+       "level_from": "476",
+       "level_to": "300",
+       "time_from": "2026-08-12T17:10:00Z",
+       "time_to": "2026-08-12T17:17:00Z",
+       "acceptance_time": "2026-08-12T16:00:00Z",
+       "so_flag": false
+      },
+      {
+       "acceptance": 176770,
+       "level_from": "476",
+       "level_to": "476",
+       "time_from": "2026-08-12T16:59:00Z",
+       "time_to": "2026-08-12T17:10:00Z",
+       "acceptance_time": "2026-08-12T16:00:00Z",
+       "so_flag": false
+      }
+     ]
+    },
+    {
+     "period": 38,
+     "levels": {
+      "PN": [
+       "0",
+       "0"
+      ],
+      "MELS": [
+       "672",
+       "674"
+      ],
+      "MILS": [
+       "0",
+       "0"
+      ]
+     },
+     "offer_price": "750.00",
+     "accepted_offer_mwh": "238.000000000000000000",
+     "acceptances": [
+      {
+       "acceptance": 176771,
+       "level_from": "300",
+       "level_to": "0",
+       "time_from": "2026-08-12T17:47:00Z",
+       "time_to": "2026-08-12T17:59:00Z",
+       "acceptance_time": "2026-08-12T16:32:00Z",
+       "so_flag": false
+      },
+      {
+       "acceptance": 176772,
+       "level_from": "476",
+       "level_to": "476",
+       "time_from": "2026-08-12T17:40:00Z",
+       "time_to": "2026-08-12T18:10:00Z",
+       "acceptance_time": "2026-08-12T17:08:00Z",
+       "so_flag": false
+      },
+      {
+       "acceptance": 176771,
+       "level_from": "476",
+       "level_to": "300",
+       "time_from": "2026-08-12T17:40:00Z",
+       "time_to": "2026-08-12T17:47:00Z",
+       "acceptance_time": "2026-08-12T16:32:00Z",
+       "so_flag": false
+      },
+      {
+       "acceptance": 176771,
+       "level_from": "476",
+       "level_to": "476",
+       "time_from": "2026-08-12T17:10:00Z",
+       "time_to": "2026-08-12T17:40:00Z",
+       "acceptance_time": "2026-08-12T16:32:00Z",
+       "so_flag": false
+      }
+     ]
+    },
+    {
+     "period": 39,
+     "levels": {
+      "PN": [
+       "0",
+       "0"
+      ],
+      "MELS": [
+       "674",
+       "677"
+      ],
+      "MILS": [
+       "0",
+       "0"
+      ]
+     },
+     "offer_price": "750.00",
+     "accepted_offer_mwh": "238.000000000000000000",
+     "acceptances": [
+      {
+       "acceptance": 176772,
+       "level_from": "300",
+       "level_to": "0",
+       "time_from": "2026-08-12T18:17:00Z",
+       "time_to": "2026-08-12T18:29:00Z",
+       "acceptance_time": "2026-08-12T17:08:00Z",
+       "so_flag": false
+      },
+      {
+       "acceptance": 176773,
+       "level_from": "476",
+       "level_to": "476",
+       "time_from": "2026-08-12T18:10:00Z",
+       "time_to": "2026-08-12T18:40:00Z",
+       "acceptance_time": "2026-08-12T17:40:00Z",
+       "so_flag": false
+      },
+      {
+       "acceptance": 176772,
+       "level_from": "476",
+       "level_to": "300",
+       "time_from": "2026-08-12T18:10:00Z",
+       "time_to": "2026-08-12T18:17:00Z",
+       "acceptance_time": "2026-08-12T17:08:00Z",
+       "so_flag": false
+      },
+      {
+       "acceptance": 176772,
+       "level_from": "476",
+       "level_to": "476",
+       "time_from": "2026-08-12T17:40:00Z",
+       "time_to": "2026-08-12T18:10:00Z",
+       "acceptance_time": "2026-08-12T17:08:00Z",
+       "so_flag": false
+      }
+     ]
+    },
+    {
+     "period": 40,
+     "levels": {
+      "PN": [
+       "0",
+       "0"
+      ],
+      "MELS": [
+       "677",
+       "681"
+      ],
+      "MILS": [
+       "0",
+       "0"
+      ]
+     },
+     "offer_price": "750.00",
+     "accepted_offer_mwh": "238.000000000000000000",
+     "acceptances": [
+      {
+       "acceptance": 176773,
+       "level_from": "300",
+       "level_to": "0",
+       "time_from": "2026-08-12T18:47:00Z",
+       "time_to": "2026-08-12T18:59:00Z",
+       "acceptance_time": "2026-08-12T17:40:00Z",
+       "so_flag": false
+      },
+      {
+       "acceptance": 176774,
+       "level_from": "476",
+       "level_to": "476",
+       "time_from": "2026-08-12T18:40:00Z",
+       "time_to": "2026-08-12T19:10:00Z",
+       "acceptance_time": "2026-08-12T18:00:00Z",
+       "so_flag": false
+      },
+      {
+       "acceptance": 176773,
+       "level_from": "476",
+       "level_to": "300",
+       "time_from": "2026-08-12T18:40:00Z",
+       "time_to": "2026-08-12T18:47:00Z",
+       "acceptance_time": "2026-08-12T17:40:00Z",
+       "so_flag": false
+      },
+      {
+       "acceptance": 176773,
+       "level_from": "476",
+       "level_to": "476",
+       "time_from": "2026-08-12T18:10:00Z",
+       "time_to": "2026-08-12T18:40:00Z",
+       "acceptance_time": "2026-08-12T17:40:00Z",
+       "so_flag": false
+      }
+     ]
+    },
+    {
+     "period": 41,
+     "levels": {
+      "PN": [
+       "0",
+       "0"
+      ],
+      "MELS": [
+       "681",
+       "684"
+      ],
+      "MILS": [
+       "0",
+       "0"
+      ]
+     },
+     "offer_price": "750.00",
+     "accepted_offer_mwh": "238.000000000000000000",
+     "acceptances": [
+      {
+       "acceptance": 176774,
+       "level_from": "300",
+       "level_to": "0",
+       "time_from": "2026-08-12T19:17:00Z",
+       "time_to": "2026-08-12T19:29:00Z",
+       "acceptance_time": "2026-08-12T18:00:00Z",
+       "so_flag": false
+      },
+      {
+       "acceptance": 176775,
+       "level_from": "476",
+       "level_to": "476",
+       "time_from": "2026-08-12T19:10:00Z",
+       "time_to": "2026-08-12T19:40:00Z",
+       "acceptance_time": "2026-08-12T18:39:00Z",
+       "so_flag": false
+      },
+      {
+       "acceptance": 176774,
+       "level_from": "476",
+       "level_to": "300",
+       "time_from": "2026-08-12T19:10:00Z",
+       "time_to": "2026-08-12T19:17:00Z",
+       "acceptance_time": "2026-08-12T18:00:00Z",
+       "so_flag": false
+      },
+      {
+       "acceptance": 176774,
+       "level_from": "476",
+       "level_to": "476",
+       "time_from": "2026-08-12T18:40:00Z",
+       "time_to": "2026-08-12T19:10:00Z",
+       "acceptance_time": "2026-08-12T18:00:00Z",
+       "so_flag": false
+      }
+     ]
+    },
+    {
+     "period": 42,
+     "levels": {
+      "PN": [
+       "0",
+       "0"
+      ],
+      "MELS": [
+       "684",
+       "687"
+      ],
+      "MILS": [
+       "0",
+       "0"
+      ]
+     },
+     "offer_price": "750.00",
+     "accepted_offer_mwh": "238.000000000000000000",
+     "acceptances": [
+      {
+       "acceptance": 176775,
+       "level_from": "300",
+       "level_to": "0",
+       "time_from": "2026-08-12T19:47:00Z",
+       "time_to": "2026-08-12T19:59:00Z",
+       "acceptance_time": "2026-08-12T18:39:00Z",
+       "so_flag": false
+      },
+      {
+       "acceptance": 176776,
+       "level_from": "476",
+       "level_to": "476",
+       "time_from": "2026-08-12T19:40:00Z",
+       "time_to": "2026-08-12T20:10:00Z",
+       "acceptance_time": "2026-08-12T19:00:00Z",
+       "so_flag": false
+      },
+      {
+       "acceptance": 176775,
+       "level_from": "476",
+       "level_to": "300",
+       "time_from": "2026-08-12T19:40:00Z",
+       "time_to": "2026-08-12T19:47:00Z",
+       "acceptance_time": "2026-08-12T18:39:00Z",
+       "so_flag": false
+      },
+      {
+       "acceptance": 176775,
+       "level_from": "476",
+       "level_to": "476",
+       "time_from": "2026-08-12T19:10:00Z",
+       "time_to": "2026-08-12T19:40:00Z",
+       "acceptance_time": "2026-08-12T18:39:00Z",
+       "so_flag": false
+      }
+     ]
+    },
+    {
+     "period": 43,
+     "levels": {
+      "PN": [
+       "0",
+       "0"
+      ],
+      "MELS": [
+       "687",
+       "690"
+      ],
+      "MILS": [
+       "0",
+       "0"
+      ]
+     },
+     "offer_price": "550.00",
+     "accepted_offer_mwh": "238.000000000000000000",
+     "acceptances": [
+      {
+       "acceptance": 176776,
+       "level_from": "300",
+       "level_to": "0",
+       "time_from": "2026-08-12T20:17:00Z",
+       "time_to": "2026-08-12T20:29:00Z",
+       "acceptance_time": "2026-08-12T19:00:00Z",
+       "so_flag": false
+      },
+      {
+       "acceptance": 176777,
+       "level_from": "476",
+       "level_to": "476",
+       "time_from": "2026-08-12T20:10:00Z",
+       "time_to": "2026-08-12T20:40:00Z",
+       "acceptance_time": "2026-08-12T19:30:00Z",
+       "so_flag": false
+      },
+      {
+       "acceptance": 176776,
+       "level_from": "476",
+       "level_to": "300",
+       "time_from": "2026-08-12T20:10:00Z",
+       "time_to": "2026-08-12T20:17:00Z",
+       "acceptance_time": "2026-08-12T19:00:00Z",
+       "so_flag": false
+      },
+      {
+       "acceptance": 176776,
+       "level_from": "476",
+       "level_to": "476",
+       "time_from": "2026-08-12T19:40:00Z",
+       "time_to": "2026-08-12T20:10:00Z",
+       "acceptance_time": "2026-08-12T19:00:00Z",
+       "so_flag": false
+      }
+     ]
+    },
+    {
+     "period": 44,
+     "levels": {
+      "PN": [
+       "0",
+       "0"
+      ],
+      "MELS": [
+       "690",
+       "694"
+      ],
+      "MILS": [
+       "0",
+       "0"
+      ]
+     },
+     "offer_price": "450.00",
+     "accepted_offer_mwh": "238.000000000000000000",
+     "acceptances": [
+      {
+       "acceptance": 176777,
+       "level_from": "300",
+       "level_to": "0",
+       "time_from": "2026-08-12T20:47:00Z",
+       "time_to": "2026-08-12T20:59:00Z",
+       "acceptance_time": "2026-08-12T19:30:00Z",
+       "so_flag": false
+      },
+      {
+       "acceptance": 176778,
+       "level_from": "476",
+       "level_to": "476",
+       "time_from": "2026-08-12T20:40:00Z",
+       "time_to": "2026-08-12T21:10:00Z",
+       "acceptance_time": "2026-08-12T20:01:00Z",
+       "so_flag": false
+      },
+      {
+       "acceptance": 176777,
+       "level_from": "476",
+       "level_to": "300",
+       "time_from": "2026-08-12T20:40:00Z",
+       "time_to": "2026-08-12T20:47:00Z",
+       "acceptance_time": "2026-08-12T19:30:00Z",
+       "so_flag": false
+      },
+      {
+       "acceptance": 176777,
+       "level_from": "476",
+       "level_to": "476",
+       "time_from": "2026-08-12T20:10:00Z",
+       "time_to": "2026-08-12T20:40:00Z",
+       "acceptance_time": "2026-08-12T19:30:00Z",
+       "so_flag": false
+      }
+     ]
+    },
+    {
+     "period": 45,
+     "levels": {
+      "PN": [
+       "0",
+       "0"
+      ],
+      "MELS": [
+       "694",
+       "696"
+      ],
+      "MILS": [
+       "0",
+       "0"
+      ]
+     },
+     "offer_price": "350.00",
+     "accepted_offer_mwh": "238.000000000000000000",
+     "acceptances": [
+      {
+       "acceptance": 176778,
+       "level_from": "300",
+       "level_to": "0",
+       "time_from": "2026-08-12T21:17:00Z",
+       "time_to": "2026-08-12T21:29:00Z",
+       "acceptance_time": "2026-08-12T20:01:00Z",
+       "so_flag": false
+      },
+      {
+       "acceptance": 176779,
+       "level_from": "476",
+       "level_to": "476",
+       "time_from": "2026-08-12T21:10:00Z",
+       "time_to": "2026-08-12T21:41:00Z",
+       "acceptance_time": "2026-08-12T20:35:00Z",
+       "so_flag": true
+      },
+      {
+       "acceptance": 176778,
+       "level_from": "476",
+       "level_to": "300",
+       "time_from": "2026-08-12T21:10:00Z",
+       "time_to": "2026-08-12T21:17:00Z",
+       "acceptance_time": "2026-08-12T20:01:00Z",
+       "so_flag": false
+      },
+      {
+       "acceptance": 176778,
+       "level_from": "476",
+       "level_to": "476",
+       "time_from": "2026-08-12T20:40:00Z",
+       "time_to": "2026-08-12T21:10:00Z",
+       "acceptance_time": "2026-08-12T20:01:00Z",
+       "so_flag": false
+      }
+     ]
+    },
+    {
+     "period": 46,
+     "levels": {
+      "PN": [
+       "0",
+       "0"
+      ],
+      "MELS": [
+       "696",
+       "699"
+      ],
+      "MILS": [
+       "0",
+       "0"
+      ]
+     },
+     "offer_price": "250.00",
+     "accepted_offer_mwh": "238.000000000000000000",
+     "acceptances": [
+      {
+       "acceptance": 176779,
+       "level_from": "300",
+       "level_to": "0",
+       "time_from": "2026-08-12T21:48:00Z",
+       "time_to": "2026-08-12T22:00:00Z",
+       "acceptance_time": "2026-08-12T20:35:00Z",
+       "so_flag": true
+      },
+      {
+       "acceptance": 176780,
+       "level_from": "476",
+       "level_to": "476",
+       "time_from": "2026-08-12T21:41:00Z",
+       "time_to": "2026-08-12T22:11:00Z",
+       "acceptance_time": "2026-08-12T21:00:00Z",
+       "so_flag": true
+      },
+      {
+       "acceptance": 176779,
+       "level_from": "476",
+       "level_to": "300",
+       "time_from": "2026-08-12T21:41:00Z",
+       "time_to": "2026-08-12T21:48:00Z",
+       "acceptance_time": "2026-08-12T20:35:00Z",
+       "so_flag": true
+      },
+      {
+       "acceptance": 176779,
+       "level_from": "476",
+       "level_to": "476",
+       "time_from": "2026-08-12T21:10:00Z",
+       "time_to": "2026-08-12T21:41:00Z",
+       "acceptance_time": "2026-08-12T20:35:00Z",
+       "so_flag": true
+      }
+     ]
+    },
+    {
+     "period": 47,
+     "levels": {
+      "PN": [
+       "0",
+       "0"
+      ],
+      "MELS": [
+       "698",
+       "700"
+      ],
+      "MILS": [
+       "0",
+       "0"
+      ]
+     },
+     "offer_price": "203.00",
+     "accepted_offer_mwh": "238.000000000000000000",
+     "acceptances": [
+      {
+       "acceptance": 176780,
+       "level_from": "300",
+       "level_to": "0",
+       "time_from": "2026-08-12T22:18:00Z",
+       "time_to": "2026-08-12T22:30:00Z",
+       "acceptance_time": "2026-08-12T21:00:00Z",
+       "so_flag": true
+      },
+      {
+       "acceptance": 176781,
+       "level_from": "476",
+       "level_to": "476",
+       "time_from": "2026-08-12T22:11:00Z",
+       "time_to": "2026-08-12T22:41:00Z",
+       "acceptance_time": "2026-08-12T21:32:00Z",
+       "so_flag": true
+      },
+      {
+       "acceptance": 176780,
+       "level_from": "476",
+       "level_to": "300",
+       "time_from": "2026-08-12T22:11:00Z",
+       "time_to": "2026-08-12T22:18:00Z",
+       "acceptance_time": "2026-08-12T21:00:00Z",
+       "so_flag": true
+      },
+      {
+       "acceptance": 176780,
+       "level_from": "476",
+       "level_to": "476",
+       "time_from": "2026-08-12T21:41:00Z",
+       "time_to": "2026-08-12T22:11:00Z",
+       "acceptance_time": "2026-08-12T21:00:00Z",
+       "so_flag": true
+      }
+     ]
+    },
+    {
+     "period": 48,
+     "levels": {
+      "PN": [
+       "0",
+       "0"
+      ],
+      "MELS": [
+       "700",
+       "702"
+      ],
+      "MILS": [
+       "0",
+       "0"
+      ]
+     },
+     "offer_price": "203.00",
+     "accepted_offer_mwh": "0",
+     "acceptances": [
+      {
+       "acceptance": 176781,
+       "level_from": "300",
+       "level_to": "0",
+       "time_from": "2026-08-12T22:48:00Z",
+       "time_to": "2026-08-12T23:00:00Z",
+       "acceptance_time": "2026-08-12T21:32:00Z",
+       "so_flag": true
+      },
+      {
+       "acceptance": 176782,
+       "level_from": "476",
+       "level_to": "476",
+       "time_from": "2026-08-12T22:41:00Z",
+       "time_to": "2026-08-12T23:11:00Z",
+       "acceptance_time": "2026-08-12T22:09:00Z",
+       "so_flag": true
+      },
+      {
+       "acceptance": 176781,
+       "level_from": "476",
+       "level_to": "300",
+       "time_from": "2026-08-12T22:41:00Z",
+       "time_to": "2026-08-12T22:48:00Z",
+       "acceptance_time": "2026-08-12T21:32:00Z",
+       "so_flag": true
+      },
+      {
+       "acceptance": 176781,
+       "level_from": "476",
+       "level_to": "476",
+       "time_from": "2026-08-12T22:11:00Z",
+       "time_to": "2026-08-12T22:41:00Z",
+       "acceptance_time": "2026-08-12T21:32:00Z",
+       "so_flag": true
+      }
+     ]
+    }
+   ]
+  }
+ },
+ "neso_published_exclusions": {
+  "T_SEAB-1": {
+   "ngc_unit": "SEAB-1",
+   "excluded_rows_by_category": {
+    "system_tagged": 111,
+    "long_notice_or_access": 73
+   },
+   "total_excluded_volume_mwh": "6873.55"
+  },
+  "C__PSTAT011": {
+   "ngc_unit": "TMNCW-1",
+   "excluded_rows_by_category": {
+    "wind_offer": 288
+   },
+   "total_excluded_volume_mwh": "368.63"
+  }
+ },
+ "labelling": "Facts only, from pinned artefacts. NESO's exclusion data is daily-grain (no settlement period column), so its reasons are day-level statements about a unit's pair, not per-period ones."
+}

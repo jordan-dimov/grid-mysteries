@@ -1,15 +1,15 @@
 {
   "status": "created",
-  "tree_size": 77,
-  "root_hash": "sha256:a1762493751181184a3246f61d174f335b1df8fc52e690efe11496fd4fbf9e35",
-  "prev_checkpoint_hash": "sha256:7867e072b65898afde7c9b5a3606ba93303d78f22ee19976e8349c183dd58725",
-  "checkpoint_hash": "sha256:48e8ba6c64bc69189c54adf76878b015c2b3825f69e39a71cefd3975901b837c",
+  "tree_size": 100,
+  "root_hash": "sha256:4739070563cdb5cf895de7fe50185bdb825e2316134a357a71c0976f0a7ac1ca",
+  "prev_checkpoint_hash": "sha256:e36dafc62ad430db212a63ec12e5de8e5d46361c4eeee53973abe0bdd09ad53c",
+  "checkpoint_hash": "sha256:8e0f78a989327e4b6ec5b1c90267075ede6a8c9025473debe3e9565cc6f9af44",
   "signatures": [
     {
       "key_id": "audit-2026",
       "purpose": "audit_checkpoint_v1",
       "public_key": "ed25519-pub:cb6c6ce9152039914ac232b8302d0bc2f6b3f80d73623c5a358288993cc4ccf9",
-      "signature": "ed25519-sig:488f805cadab3e7bea24dcad6294f5d5dc4d46bc2f216908a17774798f568dc424770c233f902fdb60bce74657dd02ea70e38d46e6ea32501900b9f916668d02"
+      "signature": "ed25519-sig:3a0067b40bb0c3f506a403a91ce11f10bb302f38bbf669a656f8227836821f6683426c858b83daf430a76357109cb75441e4e06b926f99472c72cd335db35406"
     }
   ]
 }

@@ -1,0 +1,24 @@
+{
+ "labelling": "NESO's published exclusion reasons are DAY-grain and VOLUMETRIC; this is an attribution of the surviving disagreement, never an accuracy score, and the categories were deliberately NOT used as selection filters (Method Study 001C showed binarising them degrades agreement).",
+ "surviving_candidates": 497370,
+ "candidates_with_a_published_exclusion_on_either_side": 476957,
+ "accepted_side_categories": {
+  "unwind": 227528,
+  "behind_constraint": 165047,
+  "long_notice_or_access": 143552,
+  "(none)": 81561,
+  "ramping": 81271,
+  "system_tagged": 26830,
+  "invalid_parameters": 3719
+ },
+ "alternative_side_categories": {
+  "unwind": 191446,
+  "behind_constraint": 174923,
+  "(none)": 98082,
+  "wind_offer": 68971,
+  "ramping": 57339,
+  "long_notice_or_access": 26096,
+  "system_tagged": 3886,
+  "invalid_parameters": 3235
+ }
+}

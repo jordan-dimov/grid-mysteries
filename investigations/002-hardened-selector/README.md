@@ -252,3 +252,147 @@ rewritten.
 ## Reproduction
 
 Recorded after selection; nothing above this line is altered afterwards.
+
+---
+
+# Results
+
+Everything below this line was written after the selection ran. Nothing
+above it has been altered.
+
+## Selection result
+
+Acquisition was authorised by Jordan's `seal_protocol` at 2026-08-22
+20:45 (attested `gm_human`); the fetcher verified that seal in the
+governed record before its first request. **2,352 artefacts** pinned in
+one pass, zero skips (336 each BOD/BOALF/PN/MELS/MILS, 672 DISPTAV),
+digests in `evidence/manifest.json`, registered as
+`art-002-window-manifest`.
+
+The funnel, with thresholds read from the governed record (0.01 MWh,
+1 MW) rather than code defaults:
+
+| stage | candidates | accepted actions | naive counterfactual notional |
+|---|---:|---:|---:|
+| raw | 2,104,752 | 21,248 | £94,330,188 |
+| after **Amendment A** (deliverability) | 554,425 | 18,752 | £27,835,400 |
+| after **Amendment B** (system flag) | 497,370 | 18,094 | £23,836,304 |
+
+**Amendment A alone removes 74% of candidates and 70% of the naive
+notional.** That is Method Study 001B's phantom-liquidity finding
+replicated *prospectively*, by a rule frozen before this week's data
+existed, on a week that taught it nothing.
+
+**Mystery 002 (rank 1, no discretion after this point):** 2026-08-12,
+settlement period 33, offer direction. NESO accepted an offer from
+`T_SEAB-1` at **£890.00/MWh** (0.125 MWh) while `C__PSTAT011` had an
+entirely unaccepted offer at **£0.00/MWh** with a 41 MW band. Apparent
+gap **£890.00/MWh**.
+
+## The mystery
+
+For half an hour on a Wednesday afternoon, Britain appears to have paid
+£890 per MWh to a gas plant while a wind farm was offering the same
+service for nothing.
+
+## What the evidence shows
+
+From pinned artefacts (`evidence/case-report.json`):
+
+- **`T_SEAB-1`** (Seabank, CCGT, 830 MW) carries **FPN 0 in all 48
+  periods**. It never self-schedules; it runs entirely on instruction.
+  Acceptance 176767 instructs **0 → 300 MW from 15:29**, and period 33
+  ends at **15:30** — one minute inside the period, which is why the
+  accepted volume is 0.125 MWh. It is the leading edge of a start-up
+  that holds 476 MW until 22:48.
+- **`C__PSTAT011`** (NGC `TMNCW-1`, Statkraft, **WIND**, 40 MW) offers
+  **£0.00/MWh in 48 of 48 periods** — a standing submission, never
+  varied — and is accepted in **none** of them. Its headroom over the
+  day runs 4–31 MW (6 MW in period 33) against a 300 MW instruction.
+- **NESO's own published skip-rate data** for 2026-08-12 (fresh vintage
+  pinned post-selection, `evidence/neso-manifest.json`) excludes **both
+  sides** from its merit stack: `TMNCW-1`'s offer as **"Wind offer"**
+  (288 rows), `SEAB-1`'s as **"System-tagged"** (111 rows) plus long
+  notice/access (73).
+
+## Mechanisms examined
+
+| Mechanism | Status | Basis |
+|---|---|---|
+| Alternative excluded as a wind offer | **explained** | NESO's published exclusions, `TMNCW-1`, 2026-08-12, stage 1, reason "Wind offer". The alternative is not in NESO's merit stack at all. |
+| Accepted action is system-tagged | **explained** | NESO's published exclusions, `SEAB-1`, 2026-08-12, stage 3, reason "System-tagged". A system action compared against an energy-priced alternative is a category error (Method Study 001D's lesson). |
+| Volume non-substitutability | **contributes** | Pinned MELS/PN: 6 MW of headroom against a 300 MW instruction. Narrows but does not alone explain a per-MWh price comparison. |
+| Instruction-boundary artefact | **contributes** | Pinned BOALF 176767 (15:29–15:49) against a period ending 15:30; the 0.125 MWh is one minute of a ramp. The declared rule compares whole pairs within a period. |
+| Start-up notice / dynamics | **contributes** | NESO's published `long_notice_or_access` exclusions for `SEAB-1` (73 rows); acceptance issued 14:30 for delivery 15:29. |
+| Elexon `soFlag` on the accepted action | **ruled out** *as an explanation* | BOALF 176767 carries `soFlag = false`. The Elexon flag does **not** mark this action; see the methodological finding below. |
+| Intra-period acceptance timing beyond the published minute stamps | **not observable publicly** | Public data gives instruction start/end minutes, not the control-room sequencing within them. |
+
+## Conclusion
+
+**Explained.** The apparent inversion is jointly accounted for by
+mechanisms NESO itself publishes: the "cheaper" alternative is excluded
+from its merit stack as a wind offer, and the accepted action is
+excluded as system-tagged. The registered null hypothesis — that the
+selected inversion can be fully explained from publicly available
+information — **survives**.
+
+## The methodological finding
+
+This is what the prospective run bought, and it is a correction to our
+own method rather than a claim about NESO:
+
+1. **Amendment B used the wrong instrument.** It screened the accepted
+   side on Elexon's `soFlag`. Acceptance 176767 carries `soFlag = false`,
+   yet NESO's own data classifies that unit's offer as *System-tagged*.
+   **The Elexon flag and NESO's system-tagging are different signals, and
+   the one we chose is the weaker.** Across the surviving set the gap is
+   large: `soFlag` removed 57,055 candidates, while NESO's published
+   accepted-side categories touch 415,809 of those that remained.
+2. **Amendment A used a forecast as if it were firm capability.** The
+   alternative survived because `MEL − FPN > 0`, but a wind unit's MEL is
+   an availability *forecast*, not deliverable energy. The screen is
+   sound for thermal plant and over-admits intermittent plant.
+
+Both amendments were right in direction and wrong in instrument. Neither
+error was visible from the week that taught the original rule.
+
+## The aggregate result
+
+Of the **497,370** candidates surviving both amendments,
+**476,957 (95.9%)** have a NESO-published exclusion on one side or the
+other; **20,413 (4.1%)** have none (`evidence/neso-crosscheck.json`).
+This is an *attribution of the surviving disagreement*, not an accuracy
+score: NESO's exclusion reasons are day-grain and volumetric, and were
+deliberately **not** used as selection filters, because Method Study
+001C established that binarising them degrades agreement.
+
+## Expert corner
+
+- Event: 2026-08-12, settlement period 33 (15:00–15:30 UTC).
+- Accepted: `T_SEAB-1` (NGC `SEAB-1`), offer pair 1 at £890.00/MWh,
+  DISPTAV `Original` positive1 = 0.125 MWh; BOALF 176767, issued
+  2026-08-12T14:30:00Z, effective 15:29–15:49, 0→300 MW,
+  `soFlag`/`deemedBoFlag` false. FPN 0, MEL 671 MW.
+- Unaccepted: `C__PSTAT011` (NGC `TMNCW-1`), offer pair 1 at £0.00/MWh,
+  band 41 MW; FPN 35 MW, MEL 41 MW, MIL 0 → 6 MW headroom.
+- Assumptions open to challenge: NESO's exclusion export carries **no
+  settlement-period column**, so its reasons are day-level statements
+  about a unit's pair, not per-period ones; whole-pair, whole-period
+  comparison; `soFlag` as the declared accepted-side screen.
+- Everything needed to challenge this is pinned: `evidence/manifest.json`
+  (2,352 artefacts), `evidence/neso-manifest.json` (cross-check vintage),
+  `evidence/funnel.json`, `evidence/selected.json`,
+  `evidence/case-report.json`, `evidence/neso-crosscheck.json`.
+
+## Reproduction
+
+```bash
+uv run python investigations/002-hardened-selector/selection.py fetch    # gated on the human seal
+uv run python investigations/002-hardened-selector/selection.py select   # offline, deterministic
+uv run python investigations/002-hardened-selector/investigate.py case
+uv run python investigations/002-hardened-selector/investigate.py crosscheck
+```
+
+`select` and `investigate` read declared parameters from the governed
+record and refuse to run without it, so the thresholds cannot drift from
+what was sealed.

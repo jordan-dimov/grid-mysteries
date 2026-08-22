@@ -1420,5 +1420,481 @@
         "value": "2026-08-22T20:58:32Z"
       }
     ]
+  },
+  {
+    "predicate": "SelectionRecorded",
+    "args": [
+      {
+        "type": "subject",
+        "value": "inq-002"
+      },
+      {
+        "type": "subject",
+        "value": "205bbced863e6bbf6018eefca02bba3f37f28e218907122278e5a38fd64d5fea"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-08-22T21:18:04Z"
+      }
+    ]
+  },
+  {
+    "predicate": "Conjecture",
+    "args": [
+      {
+        "type": "subject",
+        "value": "conj-002-null-explainable"
+      },
+      {
+        "type": "subject",
+        "value": "inq-002"
+      },
+      {
+        "type": "subject",
+        "value": "The apparent price-order inversion selected by this hardened, pre-declared procedure can be fully explained from publicly available information."
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-08-22T21:18:04Z"
+      }
+    ]
+  },
+  {
+    "predicate": "MechanismAssessment",
+    "args": [
+      {
+        "type": "subject",
+        "value": "inq-002"
+      },
+      {
+        "type": "subject",
+        "value": "alternative-excluded-as-wind-offer"
+      },
+      {
+        "type": "subject",
+        "value": "explained"
+      },
+      {
+        "type": "subject",
+        "value": "a6c7f346114bb6d5648bf242fa0ed6a89e978a1d70c1fa9dd2ca69bd5b092479"
+      }
+    ]
+  },
+  {
+    "predicate": "MechanismAssessment",
+    "args": [
+      {
+        "type": "subject",
+        "value": "inq-002"
+      },
+      {
+        "type": "subject",
+        "value": "accepted-action-system-tagged"
+      },
+      {
+        "type": "subject",
+        "value": "explained"
+      },
+      {
+        "type": "subject",
+        "value": "a6c7f346114bb6d5648bf242fa0ed6a89e978a1d70c1fa9dd2ca69bd5b092479"
+      }
+    ]
+  },
+  {
+    "predicate": "MechanismAssessment",
+    "args": [
+      {
+        "type": "subject",
+        "value": "inq-002"
+      },
+      {
+        "type": "subject",
+        "value": "volume-non-substitutability"
+      },
+      {
+        "type": "subject",
+        "value": "contributes"
+      },
+      {
+        "type": "subject",
+        "value": "a6c7f346114bb6d5648bf242fa0ed6a89e978a1d70c1fa9dd2ca69bd5b092479"
+      }
+    ]
+  },
+  {
+    "predicate": "MechanismAssessment",
+    "args": [
+      {
+        "type": "subject",
+        "value": "inq-002"
+      },
+      {
+        "type": "subject",
+        "value": "instruction-boundary-artefact"
+      },
+      {
+        "type": "subject",
+        "value": "contributes"
+      },
+      {
+        "type": "subject",
+        "value": "a6c7f346114bb6d5648bf242fa0ed6a89e978a1d70c1fa9dd2ca69bd5b092479"
+      }
+    ]
+  },
+  {
+    "predicate": "MechanismAssessment",
+    "args": [
+      {
+        "type": "subject",
+        "value": "inq-002"
+      },
+      {
+        "type": "subject",
+        "value": "start-up-notice-and-dynamics"
+      },
+      {
+        "type": "subject",
+        "value": "contributes"
+      },
+      {
+        "type": "subject",
+        "value": "a6c7f346114bb6d5648bf242fa0ed6a89e978a1d70c1fa9dd2ca69bd5b092479"
+      }
+    ]
+  },
+  {
+    "predicate": "MechanismAssessment",
+    "args": [
+      {
+        "type": "subject",
+        "value": "inq-002"
+      },
+      {
+        "type": "subject",
+        "value": "elexon-so-flag-on-accepted-action"
+      },
+      {
+        "type": "subject",
+        "value": "ruled_out"
+      },
+      {
+        "type": "subject",
+        "value": "a6c7f346114bb6d5648bf242fa0ed6a89e978a1d70c1fa9dd2ca69bd5b092479"
+      }
+    ]
+  },
+  {
+    "predicate": "MechanismAssessment",
+    "args": [
+      {
+        "type": "subject",
+        "value": "inq-002"
+      },
+      {
+        "type": "subject",
+        "value": "intra-period-control-room-sequencing"
+      },
+      {
+        "type": "subject",
+        "value": "not_publicly_observable"
+      },
+      {
+        "type": "subject",
+        "value": "a6c7f346114bb6d5648bf242fa0ed6a89e978a1d70c1fa9dd2ca69bd5b092479"
+      }
+    ]
+  },
+  {
+    "predicate": "EvidenceMetric",
+    "args": [
+      {
+        "type": "subject",
+        "value": "met-002-raw-candidates"
+      },
+      {
+        "type": "subject",
+        "value": "inq-002"
+      },
+      {
+        "type": "subject",
+        "value": "art-002-window-manifest"
+      },
+      {
+        "type": "subject",
+        "value": "raw_candidates"
+      },
+      {
+        "type": "decimal",
+        "value": "2104752"
+      }
+    ]
+  },
+  {
+    "predicate": "EvidenceMetric",
+    "args": [
+      {
+        "type": "subject",
+        "value": "met-002-surviving-candidates"
+      },
+      {
+        "type": "subject",
+        "value": "inq-002"
+      },
+      {
+        "type": "subject",
+        "value": "art-002-window-manifest"
+      },
+      {
+        "type": "subject",
+        "value": "surviving_candidates"
+      },
+      {
+        "type": "decimal",
+        "value": "497370"
+      }
+    ]
+  },
+  {
+    "predicate": "EvidenceMetric",
+    "args": [
+      {
+        "type": "subject",
+        "value": "met-002-naive-notional-raw-gbp"
+      },
+      {
+        "type": "subject",
+        "value": "inq-002"
+      },
+      {
+        "type": "subject",
+        "value": "art-002-window-manifest"
+      },
+      {
+        "type": "subject",
+        "value": "naive_notional_raw_gbp"
+      },
+      {
+        "type": "decimal",
+        "value": "94330188"
+      }
+    ]
+  },
+  {
+    "predicate": "EvidenceMetric",
+    "args": [
+      {
+        "type": "subject",
+        "value": "met-002-naive-notional-surviving-gbp"
+      },
+      {
+        "type": "subject",
+        "value": "inq-002"
+      },
+      {
+        "type": "subject",
+        "value": "art-002-window-manifest"
+      },
+      {
+        "type": "subject",
+        "value": "naive_notional_surviving_gbp"
+      },
+      {
+        "type": "decimal",
+        "value": "23836304"
+      }
+    ]
+  },
+  {
+    "predicate": "EvidenceMetric",
+    "args": [
+      {
+        "type": "subject",
+        "value": "met-002-attributed-candidates"
+      },
+      {
+        "type": "subject",
+        "value": "inq-002"
+      },
+      {
+        "type": "subject",
+        "value": "art-002-window-manifest"
+      },
+      {
+        "type": "subject",
+        "value": "candidates_with_published_exclusion"
+      },
+      {
+        "type": "decimal",
+        "value": "476957"
+      }
+    ]
+  },
+  {
+    "predicate": "EvidenceMetric",
+    "args": [
+      {
+        "type": "subject",
+        "value": "met-002-unattributed-candidates"
+      },
+      {
+        "type": "subject",
+        "value": "inq-002"
+      },
+      {
+        "type": "subject",
+        "value": "art-002-window-manifest"
+      },
+      {
+        "type": "subject",
+        "value": "candidates_without_published_exclusion"
+      },
+      {
+        "type": "decimal",
+        "value": "20413"
+      }
+    ]
+  },
+  {
+    "predicate": "RetentionSpec",
+    "args": [
+      {
+        "type": "subject",
+        "value": "inq-002"
+      },
+      {
+        "type": "subject",
+        "value": "surviving_candidates"
+      },
+      {
+        "type": "subject",
+        "value": "raw_candidates"
+      }
+    ]
+  },
+  {
+    "predicate": "Conclusion",
+    "args": [
+      {
+        "type": "subject",
+        "value": "concl-002-explained"
+      },
+      {
+        "type": "subject",
+        "value": "inq-002"
+      },
+      {
+        "type": "subject",
+        "value": "conj-002-null-explainable"
+      },
+      {
+        "type": "subject",
+        "value": "explained"
+      },
+      {
+        "type": "subject",
+        "value": "EXPLAINED. The frozen hardened rule selected 2026-08-12 period 33 offer: T_SEAB-1 accepted at GBP890.00/MWh (0.125 MWh) while C__PSTAT011 was unaccepted at GBP0.00/MWh. NESO's own published skip-rate data excludes BOTH sides from its merit stack - the alternative as a Wind offer, the accepted action as System-tagged - so the null hypothesis survives. Methodological finding: Amendment B screened on Elexon soFlag, which acceptance 176767 does not carry, while NESO classifies the same unit's offer as System-tagged; the two signals differ and soFlag is the weaker. Amendment A admitted the alternative on MEL-FPN>0, but a wind MEL is a forecast, not firm capability. Amendment A alone still removed 74 percent of candidates and 70 percent of naive notional on a week it never saw."
+      },
+      {
+        "type": "subject",
+        "value": "a6c7f346114bb6d5648bf242fa0ed6a89e978a1d70c1fa9dd2ca69bd5b092479"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-08-22T21:18:04Z"
+      }
+    ]
+  },
+  {
+    "predicate": "CurrentConclusion",
+    "args": [
+      {
+        "type": "subject",
+        "value": "inq-002"
+      },
+      {
+        "type": "subject",
+        "value": "concl-002-explained"
+      }
+    ]
+  },
+  {
+    "predicate": "ConclusionUsesMetric",
+    "args": [
+      {
+        "type": "subject",
+        "value": "concl-002-explained"
+      },
+      {
+        "type": "subject",
+        "value": "met-002-raw-candidates"
+      }
+    ]
+  },
+  {
+    "predicate": "ConclusionUsesMetric",
+    "args": [
+      {
+        "type": "subject",
+        "value": "concl-002-explained"
+      },
+      {
+        "type": "subject",
+        "value": "met-002-surviving-candidates"
+      }
+    ]
+  },
+  {
+    "predicate": "ConclusionUsesMetric",
+    "args": [
+      {
+        "type": "subject",
+        "value": "concl-002-explained"
+      },
+      {
+        "type": "subject",
+        "value": "met-002-naive-notional-raw-gbp"
+      }
+    ]
+  },
+  {
+    "predicate": "ConclusionUsesMetric",
+    "args": [
+      {
+        "type": "subject",
+        "value": "concl-002-explained"
+      },
+      {
+        "type": "subject",
+        "value": "met-002-naive-notional-surviving-gbp"
+      }
+    ]
+  },
+  {
+    "predicate": "ConclusionUsesMetric",
+    "args": [
+      {
+        "type": "subject",
+        "value": "concl-002-explained"
+      },
+      {
+        "type": "subject",
+        "value": "met-002-attributed-candidates"
+      }
+    ]
+  },
+  {
+    "predicate": "ConclusionUsesMetric",
+    "args": [
+      {
+        "type": "subject",
+        "value": "concl-002-explained"
+      },
+      {
+        "type": "subject",
+        "value": "met-002-unattributed-candidates"
+      }
+    ]
   }
 ]

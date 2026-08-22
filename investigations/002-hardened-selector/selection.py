@@ -38,6 +38,7 @@ from grid_mysteries.corpus import (
     registered_capacities,
     window_path,
 )
+from grid_mysteries.governance import require_acquisition_authorised
 from grid_mysteries.investigations.bod_inversion import (
     accepted_pairs,
     find_inversion_candidates,
@@ -82,33 +83,6 @@ def window_dates() -> list[str]:
     return [(WINDOW_START + timedelta(days=day)).isoformat() for day in range(WINDOW_DAYS)]
 
 
-def require_acquisition_authorised(inquiry: str = INQUIRY) -> None:
-    """Refuse to fetch unless the governed record carries the human seal.
-
-    ``inquiry`` is a parameter only so the control itself can be tested
-    against disposable state (scripts/rehearse-v2); production always uses
-    the declared default.
-    """
-    import os
-
-    database_url = os.environ.get("DATABASE_URL")
-    if not database_url:
-        raise SystemExit(
-            "refusing to fetch: DATABASE_URL is unset, so the seal cannot be checked. "
-            "Acquisition is authorised only by ProtocolSealed(inq-002) in the governed record."
-        )
-    from morpholog_client import open_session
-
-    with open_session(V2_PROGRAMME, database_url) as session:
-        sealed = session.claims_named("ProtocolSealed", where={"inquiry": inquiry})
-    if not sealed:
-        raise SystemExit(
-            f"refusing to fetch: no ProtocolSealed({inquiry}) in the governed record. "
-            "Only the human seal emits DataAcquisitionAuthorised; see V2-LAUNCH-RUNBOOK.md."
-        )
-    print(f"seal present: {inquiry} protocol sealed — acquisition authorised", flush=True)
-
-
 def governed_thresholds() -> tuple[Decimal, Decimal]:
     """The sealed selection thresholds, read from the governed record.
 
@@ -134,7 +108,7 @@ def governed_thresholds() -> tuple[Decimal, Decimal]:
 
 
 def fetch() -> None:
-    require_acquisition_authorised()
+    require_acquisition_authorised(INQUIRY)
     jobs = []
     for day in window_dates():
         for period in PERIODS:

@@ -200,7 +200,7 @@ uv run python - "$M_URL" <<'EOF'
 import os, sys
 sys.path.insert(0, "investigations/002-hardened-selector")
 os.environ["DATABASE_URL"] = sys.argv[1]
-from selection import require_acquisition_authorised
+from grid_mysteries.governance import require_acquisition_authorised
 
 # Sealed inquiry: the guard must permit (inq-p1 was sealed by the human above).
 require_acquisition_authorised("inq-p1")

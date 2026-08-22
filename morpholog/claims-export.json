@@ -1347,5 +1347,18 @@
         "value": "1"
       }
     ]
+  },
+  {
+    "predicate": "ProtocolSealed",
+    "args": [
+      {
+        "type": "subject",
+        "value": "inq-002"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-08-22T19:45:10Z"
+      }
+    ]
   }
 ]

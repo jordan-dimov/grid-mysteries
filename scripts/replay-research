@@ -92,11 +92,14 @@ print(f'   {checked} governance rows attest the human login {expected!r} '
 
 echo "== replaying proposal batches into a fresh database"
 morpholog init --database-url "$REPLAY_URL" --reset --i-know-this-deletes-data >/dev/null
+v2_batches=()
 for batch in morpholog/batches/*.ndjson; do
-  programme=morpholog/research.morph
-  [[ "$batch" == *.v2.ndjson ]] && programme=morpholog/research-v2-draft.morph
-  echo "   $batch ($(basename "$programme"))"
-  morpholog propose "$programme" --batch "$batch" --database-url "$REPLAY_URL" \
+  if [[ "$batch" == *.v2.ndjson ]]; then
+    v2_batches+=("$batch")
+    continue
+  fi
+  echo "   $batch (research.morph)"
+  morpholog propose morpholog/research.morph --batch "$batch" --database-url "$REPLAY_URL" \
     | python3 -c "
 import json, sys
 rows = [json.loads(line) for line in sys.stdin if line.strip()]
@@ -107,6 +110,16 @@ if bad:
 print(f'     {len(rows)} committed')
 "
 done
+
+# v2 binds each actor to a PostgreSQL login role, so replaying as any other
+# role is refused once governance is established. The helper provisions the
+# roles the record itself names and proposes each row through the matching
+# connection — preserving order, and learning the bindings from the
+# committed establish_governance row rather than hardcoding them.
+if (( ${#v2_batches[@]} )); then
+  for batch in "${v2_batches[@]}"; do echo "   $batch (research-v2-draft.morph)"; done
+  python3 scripts/replay_v2.py "$REPLAY_URL" "${v2_batches[@]}"
+fi
 
 echo "== replayed claims must equal the committed export"
 morpholog inspect claims --database-url "$REPLAY_URL" | python3 -c "

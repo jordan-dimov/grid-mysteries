@@ -16,3 +16,4 @@
 {"transformation": "declare_protocol", "actor": "claude_fable_5", "args_named": {"inquiry": "inq-002", "protocol_digest": "1da32850e2d9fd2b581f940a2e8490367f96a724cb8e5ce6340c0f4d2c91ea5f", "declared_at": "2026-08-22T19:42:19Z"}}
 {"transformation": "declare_parameter", "actor": "claude_fable_5", "args_named": {"inquiry": "inq-002", "name": "min_accepted_volume_mwh", "parameter_value": "0.01"}}
 {"transformation": "declare_parameter", "actor": "claude_fable_5", "args_named": {"inquiry": "inq-002", "name": "min_available_level_mw", "parameter_value": "1"}}
+{"transformation": "seal_protocol", "actor": "jordan_dimov", "args_named": {"inquiry": "inq-002", "sealed_at": "2026-08-22T19:45:10Z"}}

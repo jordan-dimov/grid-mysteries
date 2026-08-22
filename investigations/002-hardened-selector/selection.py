@@ -70,6 +70,13 @@ PHYSICAL_DATASETS = ("PN", "MELS", "MILS")
 INQUIRY = "inq-002"
 V2_PROGRAMME = str(REPO_ROOT / "morpholog" / "research-v2-draft.morph")
 
+#: The declared Decimal parameters. These can change which evidence is
+#: selected, so the governed record holds their one authoritative value
+#: (RESEARCH-V2-DESIGN.md item 8) and analysis reads it from there —
+#: never from a module default, never from prose.
+PARAM_MIN_ACCEPTED_MWH = "min_accepted_volume_mwh"
+PARAM_MIN_AVAILABLE_MW = "min_available_level_mw"
+
 
 def window_dates() -> list[str]:
     return [(WINDOW_START + timedelta(days=day)).isoformat() for day in range(WINDOW_DAYS)]
@@ -100,6 +107,30 @@ def require_acquisition_authorised(inquiry: str = INQUIRY) -> None:
             "Only the human seal emits DataAcquisitionAuthorised; see V2-LAUNCH-RUNBOOK.md."
         )
     print(f"seal present: {inquiry} protocol sealed — acquisition authorised", flush=True)
+
+
+def governed_thresholds() -> tuple[Decimal, Decimal]:
+    """The sealed selection thresholds, read from the governed record.
+
+    Refuses rather than defaulting: a run that cannot see the governed
+    value must not quietly substitute the module constant.
+    """
+    import os
+
+    database_url = os.environ.get("DATABASE_URL")
+    if not database_url:
+        raise SystemExit(
+            "refusing to select: DATABASE_URL is unset, so the sealed thresholds "
+            "cannot be read. Declared parameters are authoritative, not code defaults."
+        )
+    from grid_mysteries.governance import declared_parameter
+    from morpholog_client import open_session
+
+    with open_session(V2_PROGRAMME, database_url) as session:
+        return (
+            declared_parameter(session, INQUIRY, PARAM_MIN_ACCEPTED_MWH),
+            declared_parameter(session, INQUIRY, PARAM_MIN_AVAILABLE_MW),
+        )
 
 
 def fetch() -> None:
@@ -168,6 +199,12 @@ def system_flagged_units(day: str, period: int) -> set[tuple[str, int, str]]:
 
 
 def select() -> None:
+    min_accepted_mwh, min_available_mw = governed_thresholds()
+    print(
+        f"governed thresholds: {PARAM_MIN_ACCEPTED_MWH}={min_accepted_mwh}, "
+        f"{PARAM_MIN_AVAILABLE_MW}={min_available_mw}",
+        flush=True,
+    )
     capacities = load_capacities()
     candidates = []
     deliverability: dict[tuple, str] = {}
@@ -192,6 +229,8 @@ def select() -> None:
                     direction=direction,
                     submitted=submitted,
                     accepted=accepted,
+                    min_accepted_mwh=min_accepted_mwh,
+                    min_available_mw=min_available_mw,
                 )
                 for candidate in period_candidates:
                     unit = candidate.unaccepted_unit
@@ -218,6 +257,10 @@ def select() -> None:
         json.dumps(
             {
                 "window": [window_dates()[0], window_dates()[-1]],
+                "governed_parameters": {
+                    PARAM_MIN_ACCEPTED_MWH: str(min_accepted_mwh),
+                    PARAM_MIN_AVAILABLE_MW: str(min_available_mw),
+                },
                 "labelling": (
                     "Naive counterfactual notional is arithmetic on public numbers "
                     "(|accepted volume| x best gap, once per accepted action) — never a "

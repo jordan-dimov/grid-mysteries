@@ -48,12 +48,16 @@ SQL
 # The admin URL's database segment swapped for the rehearsal database.
 ADMIN_DB_URL="${ADMIN_URL%/*}/${DB}"
 
+# Provisioned exactly as production will be (V2-LAUNCH-RUNBOOK.md H1):
+# --least-privilege revokes PUBLIC, creates the writer/reader group roles and
+# makes the audit log append-only even for the writer. Both logins are writer
+# members because BOTH must be able to propose; that is precisely why it does
+# not close the substrate bypass (see section H).
 reset_db() {
-  morpholog init --database-url "$ADMIN_DB_URL" --reset --i-know-this-deletes-data >/dev/null 2>&1
+  morpholog init --database-url "$ADMIN_DB_URL" --reset --i-know-this-deletes-data \
+    --least-privilege >/dev/null 2>&1
   psql "$ADMIN_DB_URL" -q <<SQL
-GRANT USAGE ON SCHEMA morpholog TO ${HUMAN_ROLE}, ${MACHINE_ROLE};
-GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA morpholog TO ${HUMAN_ROLE}, ${MACHINE_ROLE};
-GRANT USAGE, SELECT ON ALL SEQUENCES IN SCHEMA morpholog TO ${HUMAN_ROLE}, ${MACHINE_ROLE};
+GRANT morpholog_writer TO ${HUMAN_ROLE}, ${MACHINE_ROLE};
 SQL
 }
 
@@ -362,6 +366,17 @@ print(f"   !! forged audit row attests authenticated_by={sys.argv[1]!r} — atte
 print("      an unforgeable identity assertion against raw-audit-DML; the genesis-attestation")
 print("      check in replay-research catches misconfiguration/naive forgery only, not this.")
 EOF
+echo "   -- what least-privilege DOES buy: forgeries are indelible (audit append-only even for the writer)"
+for statement in "UPDATE morpholog.audit SET actor='{}'::jsonb" "DELETE FROM morpholog.audit"; do
+  out=$(PGPASSWORD=rehearse-machine psql "postgres://${MACHINE_ROLE}:rehearse-machine@${HOST}/${DB}" \
+    -q -tAc "$statement" 2>&1 || true)
+  python3 - "$out" "$statement" <<'EOF'
+import sys
+assert "permission denied for table audit" in sys.argv[1], f"{sys.argv[2]!r} was NOT refused: {sys.argv[1][:200]}"
+print(f"   OK  refused: {sys.argv[2][:40]}... — the attacker cannot erase or rewrite its own tracks")
+EOF
+done
+
 echo "   -- what a raw-audit-DML attacker CANNOT do: forge a valid checkpoint signature"
 unsigned=$(morpholog audit checkpoint --database-url "$ADMIN_DB_URL" 2>/dev/null | python3 -c "import json,sys;print(bool(json.load(sys.stdin).get('signatures')))")
 [[ "$unsigned" == "False" ]] && echo "   OK  attacker's re-checkpoint is UNSIGNED (no private key) — replay-research's pinned-key assertion refuses it; the externally-retained signed anchor over the committed prefix is the real tamper-evidence"

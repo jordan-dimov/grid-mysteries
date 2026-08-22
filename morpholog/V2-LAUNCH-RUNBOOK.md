@@ -1,4 +1,4 @@
-# V2 launch runbook — Investigation 002, 2026-08-21
+# V2 launch runbook — Investigation 002
 
 Two sessions touch the research database on launch day: **Jordan's own
 shell** (the human credential, never shown to Claude) and **the Claude
@@ -28,13 +28,29 @@ Credential rules, absolute:
 
 ## Human-only steps (Jordan's shell, outside Claude Code)
 
-**H1 — create the login roles, granting write ONLY to the human for now**
-(as the PostgreSQL admin). This is the least-privilege closure of the
-bootstrap race (threat-model layer A): until governance is established,
-*any* write-capable connection can define the trust root, so the machine
-role gets no write until after H3. Section H of `scripts/rehearse-v2`
-proves a role without `INSERT` on `claims` cannot propose at all — so a
-writeless `gm_machine` genuinely cannot race the bootstrap.
+**H1 — provision the least-privilege floor and create the login roles,
+granting propose-capability ONLY to the human for now** (as the
+PostgreSQL admin). This closes the bootstrap race (threat-model layer A):
+until governance is established, *any* propose-capable connection can
+define the trust root, so the machine gets writer membership only after
+H3. Section H of `scripts/rehearse-v2` proves a role that cannot write
+`claims` cannot propose at all — so a reader-only `gm_machine` genuinely
+cannot race the bootstrap.
+
+First retrofit the **least-privilege floor** onto the existing database
+(`morpholog init --least-privilege` is idempotent and, with
+`--skip-if-exists`, safe on a database that already holds v1's history —
+it never drops or migrates):
+
+```
+morpholog init --database-url postgres:///grid_mysteries_morpholog \
+  --least-privilege --skip-if-exists
+```
+
+That revokes PUBLIC from the governed tables, creates the
+`morpholog_writer` / `morpholog_reader` group roles, and makes the audit
+log **append-only even for the writer**. Then create the two logins,
+granting writer membership only to the human for now:
 
 ```
 psql -d grid_mysteries_morpholog
@@ -42,11 +58,9 @@ psql -d grid_mysteries_morpholog
   \password gm_human          -- typed at the prompt, nowhere else
   CREATE ROLE gm_machine LOGIN;
   \password gm_machine        -- machine credential; given to Claude AFTER H3
-  -- Human gets full write now; machine gets READ ONLY until H3 completes.
-  GRANT USAGE ON SCHEMA morpholog TO gm_human, gm_machine;
-  GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA morpholog TO gm_human;
-  GRANT USAGE, SELECT ON ALL SEQUENCES IN SCHEMA morpholog TO gm_human;
-  GRANT SELECT ON ALL TABLES IN SCHEMA morpholog TO gm_machine;
+  -- Writer membership is what confers propose-capability.
+  GRANT morpholog_writer TO gm_human;
+  GRANT morpholog_reader TO gm_machine;   -- read only until H3 completes
   \q
 ```
 
@@ -91,18 +105,20 @@ exists, so the race window is closed):
 
 ```
 psql -d grid_mysteries_morpholog
-  GRANT INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA morpholog TO gm_machine;
-  GRANT USAGE, SELECT ON ALL SEQUENCES IN SCHEMA morpholog TO gm_machine;
+  GRANT morpholog_writer TO gm_machine;
   \q
 ```
 
-Note this write grant is exactly the substrate-bypass capability of
-threat-model layer B: from here, a process with the machine credential
-*could* forge a claim (and forge its audit row's attestation) by raw
-SQL. The launch posture accepts that under the cooperative-machine
-model; the tamper-evidence that survives it is the externally-retained
-signed checkpoint over the committed prefix, not the attestation field
-(see the threat-model section).
+Note this membership is exactly the substrate-bypass capability of
+threat-model layer B, and least-privilege does **not** remove it: the
+writer role necessarily holds `INSERT` on `claims` and `audit`, so from
+here a process with the machine credential *could* forge a claim (and
+forge its audit row's attestation) by raw SQL. What least-privilege does
+buy is real but narrower — PUBLIC is revoked, and the audit log is
+append-only even for the writer, so a forger can **append** but can
+neither erase nor rewrite its own tracks (`UPDATE`/`DELETE` on
+`morpholog.audit` are refused; both are asserted in the rehearsal). The
+launch posture accepts the rest under the cooperative-machine model.
 
 The signing key `audit-2026` is already registered in the shared claims
 table (v1 row); v2's `key_not_already_registered` correctly refuses a
@@ -149,10 +165,13 @@ The seal — and nothing else — emits `DataAcquisitionAuthorised(inq-002)`.
 
 ```
 morpholog outbox claim --intent-type DataAcquisitionAuthorised --worker-id inv-002-fetcher
-# fetch journalled → register_evidence/attach_evidence rows via scripts/record
+# the fetcher itself re-checks the seal and refuses without it:
+uv run python investigations/002-hardened-selector/selection.py fetch
+# register_evidence/attach_evidence rows via scripts/record
 # (idempotent: a re-delivered registration is refused by artifact_is_new, never duplicated)
 morpholog outbox complete <intent-id> --outcome delivered --worker-id inv-002-fetcher
 # then: consume_corpus(corpus-2026-08-w2, inq-002)
+uv run python investigations/002-hardened-selector/selection.py select
 ```
 
 **Outbox at-least-once discipline** (verified guidance from Morpholog;

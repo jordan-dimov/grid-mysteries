@@ -194,7 +194,12 @@ Three layers, kept distinct:
 - **A. Governed-path actor enforcement** — proven. Human/machine split
   holds for every adapter proposal.
 - **B. Raw-database capability security** — *not* provided while the
-  machine role has substrate DML. The only real fix is a separate
+  machine role has substrate DML. `morpholog init --least-privilege`
+  (used from launch) revokes PUBLIC, adds writer/reader group roles and
+  makes the audit log append-only even for the writer — so a forger can
+  append but cannot erase or rewrite its tracks — but it does not close
+  the bypass, because writer membership is exactly what propose-capability
+  requires. The only real fix is a separate
   trusted gateway process holding the writer role (e.g. a resident
   `morpholog session`), with the machine holding no direct DB write and
   submitting only rule-checked proposals; actor policy then binds

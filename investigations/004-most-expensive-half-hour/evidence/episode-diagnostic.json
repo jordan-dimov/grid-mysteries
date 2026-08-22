@@ -1,0 +1,843 @@
+{
+ "labelling": "ARE KEPT VISIBLY SEPARATE, and are never summed\ntogether or reconciled to one another:\n\n1. **NESO published `Constraints` \u00a3** \u2014 the authoritative category total\n   at settlement-period level. NESO's own attribution; the mapping from\n   individual acceptances into it is not public.\n2. **Published BM acceptance volume and indicative cashflow (EBOCF)** \u2014\n   attributable to units, but NOT automatically members of layer 1.\n3. **Disaggregated BSAD** \u2014 observed non-BM adjustment money. Its\n   `TradeFlag` `T` means \"system issue such as a constraint\", which is\n   contextual evidence only, never category membership.\n4. **Daily Balancing Volume constraint bid/offer MWh** \u2014 published\n   physical scale, never a per-unit decomposition of layer 1.\n\nThe declaration is explicit that public data may not permit layer 1 to\nbe rebuilt from layer 2. The question is what physical operation\ncoincided with it and how much of that is independently reconstructable.",
+ "selected_period": 42,
+ "episode_context_periods": [
+  36,
+  45
+ ],
+ "material_threshold_mwh": "1",
+ "periods": [
+  {
+   "period": 36,
+   "accepted_energy_by_fuel_mwh": {
+    "CCGT": "894.526243201243191127",
+    "PS": "337.750000000000000000",
+    "NPSHYD": "43.433333333333333015",
+    "WIND": "32.500000000000000000",
+    "unclassified": "31.933333333333333570",
+    "OTHER": "4.666666666666666519"
+   },
+   "concentration_top5_share_of_accepted_energy": "0.4474",
+   "layer1_published_constraints_gbp": "230461.215",
+   "layer2_accepted_offer_mwh": "0",
+   "layer2_accepted_bid_mwh": "1344.809576534576524231",
+   "layer2_bm_cashflow_offer_gbp": "0E-18",
+   "layer2_bm_cashflow_bid_gbp": "-101693.772361283468038447",
+   "layer2_units_with_accepted_volume": 41,
+   "layer2_materially_instructed_units": 39,
+   "layer3_bsad": {
+    "system_cost": "0",
+    "energy_cost": "339714.38",
+    "system_volume": "0",
+    "energy_volume": "1119.05"
+   },
+   "layer4_published_volumes_mwh": {
+    "constraint_offers_mwh": "0.0",
+    "constraint_bids_mwh": "-558.533"
+   },
+   "top_units_by_accepted_energy": [
+    {
+     "unit": "T_PEHE-1",
+     "offer_mwh": "0",
+     "bid_mwh": "212.500000000000000000"
+    },
+    {
+     "unit": "T_HUMR-1",
+     "offer_mwh": "0",
+     "bid_mwh": "159.130303030303025480"
+    },
+    {
+     "unit": "T_GRAI-7",
+     "offer_mwh": "0",
+     "bid_mwh": "80.000000000000000000"
+    },
+    {
+     "unit": "T_FOYE-1",
+     "offer_mwh": "0",
+     "bid_mwh": "75.000000000000000000"
+    },
+    {
+     "unit": "T_FOYE-2",
+     "offer_mwh": "0",
+     "bid_mwh": "75.000000000000000000"
+    }
+   ],
+   "top_units_by_absolute_bm_cashflow": [
+    {
+     "unit": "T_HUMR-1",
+     "offer_gbp": "0E-18",
+     "bid_gbp": "-12736.153741172121954150"
+    },
+    {
+     "unit": "T_PEHE-1",
+     "offer_gbp": "0E-18",
+     "bid_gbp": "-9831.211859999999433057"
+    },
+    {
+     "unit": "T_FOYE-1",
+     "offer_gbp": "0E-18",
+     "bid_gbp": "-7306.180755074999979115"
+    },
+    {
+     "unit": "T_FOYE-2",
+     "offer_gbp": "0E-18",
+     "bid_gbp": "-7306.180755074999979115"
+    },
+    {
+     "unit": "T_GRAI-7",
+     "offer_gbp": "0E-18",
+     "bid_gbp": "-6476.082524800000101095"
+    }
+   ]
+  },
+  {
+   "period": 37,
+   "accepted_energy_by_fuel_mwh": {
+    "CCGT": "394.380702630702619727",
+    "PS": "313.016666666666665719",
+    "OTHER": "63.849999722222222642",
+    "NPSHYD": "53.000000000000000000",
+    "WIND": "52.175000000000000711",
+    "unclassified": "26.800000000000000185"
+   },
+   "concentration_top5_share_of_accepted_energy": "0.3937",
+   "layer1_published_constraints_gbp": "503262.53",
+   "layer2_accepted_offer_mwh": "0",
+   "layer2_accepted_bid_mwh": "903.222369019591508984",
+   "layer2_bm_cashflow_offer_gbp": "0E-18",
+   "layer2_bm_cashflow_bid_gbp": "-94690.401222740861232552",
+   "layer2_units_with_accepted_volume": 67,
+   "layer2_materially_instructed_units": 50,
+   "layer3_bsad": {
+    "system_cost": "0",
+    "energy_cost": "581381.17",
+    "system_volume": "0",
+    "energy_volume": "971.75"
+   },
+   "layer4_published_volumes_mwh": {
+    "constraint_offers_mwh": "0.0",
+    "constraint_bids_mwh": "-625.143"
+   },
+   "top_units_by_accepted_energy": [
+    {
+     "unit": "T_FOYE-1",
+     "offer_mwh": "0",
+     "bid_mwh": "75.000000000000000000"
+    },
+    {
+     "unit": "T_FOYE-2",
+     "offer_mwh": "0",
+     "bid_mwh": "75.000000000000000000"
+    },
+    {
+     "unit": "T_GRAI-7",
+     "offer_mwh": "0",
+     "bid_mwh": "73.904761904761897995"
+    },
+    {
+     "unit": "T_GRAI-8",
+     "offer_mwh": "0",
+     "bid_mwh": "71.663461538461532996"
+    },
+    {
+     "unit": "T_CRUA-1",
+     "offer_mwh": "0",
+     "bid_mwh": "60.000000000000000000"
+    }
+   ],
+   "top_units_by_absolute_bm_cashflow": [
+    {
+     "unit": "T_PEHE-1",
+     "offer_gbp": "0E-18",
+     "bid_gbp": "-9831.211859999999433057"
+    },
+    {
+     "unit": "T_FOYE-1",
+     "offer_gbp": "0E-18",
+     "bid_gbp": "-7306.180755074999979115"
+    },
+    {
+     "unit": "T_FOYE-2",
+     "offer_gbp": "0E-18",
+     "bid_gbp": "-7306.180755074999979115"
+    },
+    {
+     "unit": "T_GRAI-7",
+     "offer_gbp": "0E-18",
+     "bid_gbp": "-5982.666713386666742736"
+    },
+    {
+     "unit": "T_GRAI-8",
+     "offer_gbp": "0E-18",
+     "bid_gbp": "-5801.231136698846057698"
+    }
+   ]
+  },
+  {
+   "period": 38,
+   "accepted_energy_by_fuel_mwh": {
+    "PS": "210.000000000000000000",
+    "unclassified": "114.012499999999998927",
+    "CCGT": "91.336629619963369875",
+    "WIND": "84.612500000000000711",
+    "OTHER": "64.882642777777777832",
+    "NPSHYD": "53.000000000000000000"
+   },
+   "concentration_top5_share_of_accepted_energy": "0.4556",
+   "layer1_published_constraints_gbp": "495483.531",
+   "layer2_accepted_offer_mwh": "0",
+   "layer2_accepted_bid_mwh": "617.844272397741147345",
+   "layer2_bm_cashflow_offer_gbp": "0E-18",
+   "layer2_bm_cashflow_bid_gbp": "-76649.013525931297712956",
+   "layer2_units_with_accepted_volume": 94,
+   "layer2_materially_instructed_units": 62,
+   "layer3_bsad": {
+    "system_cost": "0",
+    "energy_cost": "581234.13",
+    "system_volume": "0",
+    "energy_volume": "969.85"
+   },
+   "layer4_published_volumes_mwh": {
+    "constraint_offers_mwh": "0.0",
+    "constraint_bids_mwh": "-699.151"
+   },
+   "top_units_by_accepted_energy": [
+    {
+     "unit": "T_FOYE-1",
+     "offer_mwh": "0",
+     "bid_mwh": "75.000000000000000000"
+    },
+    {
+     "unit": "T_FOYE-2",
+     "offer_mwh": "0",
+     "bid_mwh": "75.000000000000000000"
+    },
+    {
+     "unit": "T_DINO-5",
+     "offer_mwh": "0",
+     "bid_mwh": "60.000000000000000000"
+    },
+    {
+     "unit": "T_GRAI-8",
+     "offer_mwh": "0",
+     "bid_mwh": "45.471153846153846700"
+    },
+    {
+     "unit": "T_MOWEO-3",
+     "offer_mwh": "0",
+     "bid_mwh": "26.000000000000000000"
+    }
+   ],
+   "top_units_by_absolute_bm_cashflow": [
+    {
+     "unit": "T_PEHE-1",
+     "offer_gbp": "0E-18",
+     "bid_gbp": "-9831.982935440000801464"
+    },
+    {
+     "unit": "T_FOYE-1",
+     "offer_gbp": "0E-18",
+     "bid_gbp": "-7306.180755074999979115"
+    },
+    {
+     "unit": "T_FOYE-2",
+     "offer_gbp": "0E-18",
+     "bid_gbp": "-7306.180755074999979115"
+    },
+    {
+     "unit": "T_MOWEO-3",
+     "offer_gbp": "0E-18",
+     "bid_gbp": "-5176.634243325999705121"
+    },
+    {
+     "unit": "T_MOWEO-1",
+     "offer_gbp": "0E-18",
+     "bid_gbp": "-4280.678316596499826119"
+    }
+   ]
+  },
+  {
+   "period": 39,
+   "accepted_energy_by_fuel_mwh": {
+    "PS": "311.250000000000000000",
+    "unclassified": "267.573052638888888980",
+    "OTHER": "179.666670593388886206",
+    "CCGT": "100.541669166666666701",
+    "WIND": "89.975833333333333109",
+    "NPSHYD": "53.000000000000000000"
+   },
+   "concentration_top5_share_of_accepted_energy": "0.3621",
+   "layer1_published_constraints_gbp": "1006177.0980404064",
+   "layer2_accepted_offer_mwh": "0",
+   "layer2_accepted_bid_mwh": "1002.007225732277774996",
+   "layer2_bm_cashflow_offer_gbp": "0.001074124488215753",
+   "layer2_bm_cashflow_bid_gbp": "-128840.311928901406783422",
+   "layer2_units_with_accepted_volume": 109,
+   "layer2_materially_instructed_units": 85,
+   "layer3_bsad": {
+    "system_cost": "0",
+    "energy_cost": "1139965.31",
+    "system_volume": "0",
+    "energy_volume": "1170.65"
+   },
+   "layer4_published_volumes_mwh": {
+    "constraint_offers_mwh": "0.0",
+    "constraint_bids_mwh": "-650.568"
+   },
+   "top_units_by_accepted_energy": [
+    {
+     "unit": "T_DINO-3",
+     "offer_mwh": "0",
+     "bid_mwh": "106.250000000000000000"
+    },
+    {
+     "unit": "T_FOYE-1",
+     "offer_mwh": "0",
+     "bid_mwh": "75.000000000000000000"
+    },
+    {
+     "unit": "T_FOYE-2",
+     "offer_mwh": "0",
+     "bid_mwh": "75.000000000000000000"
+    },
+    {
+     "unit": "T_DINO-5",
+     "offer_mwh": "0",
+     "bid_mwh": "55.000000000000000000"
+    },
+    {
+     "unit": "T_GRAI-8",
+     "offer_mwh": "0",
+     "bid_mwh": "51.625000000000000000"
+    }
+   ],
+   "top_units_by_absolute_bm_cashflow": [
+    {
+     "unit": "T_DINO-3",
+     "offer_gbp": "0E-18",
+     "bid_gbp": "-10678.834665000000313739"
+    },
+    {
+     "unit": "T_MOWEO-3",
+     "offer_gbp": "0E-18",
+     "bid_gbp": "-10295.601682182999866200"
+    },
+    {
+     "unit": "T_PEHE-1",
+     "offer_gbp": "0E-18",
+     "bid_gbp": "-9877.476386399999682908"
+    },
+    {
+     "unit": "T_MOWEO-1",
+     "offer_gbp": "0E-18",
+     "bid_gbp": "-8758.944714692999696126"
+    },
+    {
+     "unit": "T_FOYE-1",
+     "offer_gbp": "0E-18",
+     "bid_gbp": "-7306.180755074999979115"
+    }
+   ]
+  },
+  {
+   "period": 40,
+   "accepted_energy_by_fuel_mwh": {
+    "unclassified": "333.128620896458334441",
+    "OTHER": "236.999980599128537627",
+    "PS": "236.250000000000000000",
+    "WIND": "76.488888888888890704",
+    "CCGT": "59.194446944444445990",
+    "OCGT": "15.383333333333332860"
+   },
+   "concentration_top5_share_of_accepted_energy": "0.3320",
+   "layer1_published_constraints_gbp": "987632.9435835152",
+   "layer2_accepted_offer_mwh": "6.175755972222222225",
+   "layer2_accepted_bid_mwh": "951.269514690031319397",
+   "layer2_bm_cashflow_offer_gbp": "5029.464270286909584831",
+   "layer2_bm_cashflow_bid_gbp": "-139199.267524961998702352",
+   "layer2_units_with_accepted_volume": 102,
+   "layer2_materially_instructed_units": 86,
+   "layer3_bsad": {
+    "system_cost": "0",
+    "energy_cost": "1169648.02",
+    "system_volume": "0",
+    "energy_volume": "1216.40"
+   },
+   "layer4_published_volumes_mwh": {
+    "constraint_offers_mwh": "0.0",
+    "constraint_bids_mwh": "-603.483"
+   },
+   "top_units_by_accepted_energy": [
+    {
+     "unit": "T_DINO-3",
+     "offer_mwh": "0",
+     "bid_mwh": "86.250000000000000000"
+    },
+    {
+     "unit": "T_FOYE-1",
+     "offer_mwh": "0",
+     "bid_mwh": "75.000000000000000000"
+    },
+    {
+     "unit": "T_FOYE-2",
+     "offer_mwh": "0",
+     "bid_mwh": "75.000000000000000000"
+    },
+    {
+     "unit": "2__HANGE005",
+     "offer_mwh": "0",
+     "bid_mwh": "41.758333333333332860"
+    },
+    {
+     "unit": "2__PFLEX002",
+     "offer_mwh": "0",
+     "bid_mwh": "39.899999999999998579"
+    }
+   ],
+   "top_units_by_absolute_bm_cashflow": [
+    {
+     "unit": "T_MOWEO-3",
+     "offer_gbp": "0E-18",
+     "bid_gbp": "-13215.249920414000371238"
+    },
+    {
+     "unit": "T_MOWEO-1",
+     "offer_gbp": "0E-18",
+     "bid_gbp": "-9988.270288685000195983"
+    },
+    {
+     "unit": "T_PEHE-1",
+     "offer_gbp": "0E-18",
+     "bid_gbp": "-9877.861924119999457616"
+    },
+    {
+     "unit": "T_DINO-3",
+     "offer_gbp": "0E-18",
+     "bid_gbp": "-8668.701080999999248888"
+    },
+    {
+     "unit": "T_FOYE-1",
+     "offer_gbp": "0E-18",
+     "bid_gbp": "-7306.180755074999979115"
+    }
+   ]
+  },
+  {
+   "period": 41,
+   "accepted_energy_by_fuel_mwh": {
+    "unclassified": "414.866668611111111498",
+    "OTHER": "331.908344861111110345",
+    "PS": "200.000000000000000000",
+    "WIND": "84.500000000000000000",
+    "CCGT": "20.000000000000000000"
+   },
+   "concentration_top5_share_of_accepted_energy": "0.2899",
+   "layer1_published_constraints_gbp": "1170914.818",
+   "layer2_accepted_offer_mwh": "0",
+   "layer2_accepted_bid_mwh": "1051.275013472222221843",
+   "layer2_bm_cashflow_offer_gbp": "0.001447464625953829",
+   "layer2_bm_cashflow_bid_gbp": "-151489.662572255500785462",
+   "layer2_units_with_accepted_volume": 103,
+   "layer2_materially_instructed_units": 88,
+   "layer3_bsad": {
+    "system_cost": "0",
+    "energy_cost": "1306402.99",
+    "system_volume": "0",
+    "energy_volume": "1217.20"
+   },
+   "layer4_published_volumes_mwh": {
+    "constraint_offers_mwh": "0.0",
+    "constraint_bids_mwh": "-615.0"
+   },
+   "top_units_by_accepted_energy": [
+    {
+     "unit": "T_FOYE-1",
+     "offer_mwh": "0",
+     "bid_mwh": "75.000000000000000000"
+    },
+    {
+     "unit": "T_FOYE-2",
+     "offer_mwh": "0",
+     "bid_mwh": "75.000000000000000000"
+    },
+    {
+     "unit": "2__HANGE005",
+     "offer_mwh": "0",
+     "bid_mwh": "65.716666666666668561"
+    },
+    {
+     "unit": "T_DINO-3",
+     "offer_mwh": "0",
+     "bid_mwh": "50.000000000000000000"
+    },
+    {
+     "unit": "T_MOWEO-1",
+     "offer_mwh": "0",
+     "bid_mwh": "39.000000000000000000"
+    }
+   ],
+   "top_units_by_absolute_bm_cashflow": [
+    {
+     "unit": "T_MOWEO-1",
+     "offer_gbp": "0E-18",
+     "bid_gbp": "-11320.206726854999942589"
+    },
+    {
+     "unit": "T_MOWEO-3",
+     "offer_gbp": "0E-18",
+     "bid_gbp": "-10739.683304964999479125"
+    },
+    {
+     "unit": "T_PEHE-1",
+     "offer_gbp": "0E-18",
+     "bid_gbp": "-9900.608649600000717328"
+    },
+    {
+     "unit": "2__HANGE005",
+     "offer_gbp": "0E-18",
+     "bid_gbp": "-8429.412759583332444890"
+    },
+    {
+     "unit": "T_FOYE-1",
+     "offer_gbp": "0E-18",
+     "bid_gbp": "-7306.180755074999979115"
+    }
+   ]
+  },
+  {
+   "period": 42,
+   "accepted_energy_by_fuel_mwh": {
+    "unclassified": "317.222621678523031805",
+    "PS": "290.000000000000000000",
+    "OTHER": "266.887223194444444984",
+    "WIND": "154.303888888888888874",
+    "OCGT": "33.149999999999998579",
+    "CCGT": "23.343750000000000000"
+   },
+   "concentration_top5_share_of_accepted_energy": "0.3458",
+   "layer1_published_constraints_gbp": "1176149.891",
+   "layer2_accepted_offer_mwh": "0",
+   "layer2_accepted_bid_mwh": "1084.907483761856364242",
+   "layer2_bm_cashflow_offer_gbp": "0.000004257036896217",
+   "layer2_bm_cashflow_bid_gbp": "-155860.868415653010780273",
+   "layer2_units_with_accepted_volume": 113,
+   "layer2_materially_instructed_units": 91,
+   "layer3_bsad": {
+    "system_cost": "0",
+    "energy_cost": "1277240.90",
+    "system_volume": "0",
+    "energy_volume": "1173.10"
+   },
+   "layer4_published_volumes_mwh": {
+    "constraint_offers_mwh": "0.0",
+    "constraint_bids_mwh": "-588.508"
+   },
+   "top_units_by_accepted_energy": [
+    {
+     "unit": "T_DINO-3",
+     "offer_mwh": "0",
+     "bid_mwh": "140.000000000000000000"
+    },
+    {
+     "unit": "T_FOYE-1",
+     "offer_mwh": "0",
+     "bid_mwh": "75.000000000000000000"
+    },
+    {
+     "unit": "T_FOYE-2",
+     "offer_mwh": "0",
+     "bid_mwh": "75.000000000000000000"
+    },
+    {
+     "unit": "2__HANGE005",
+     "offer_mwh": "0",
+     "bid_mwh": "46.908333333333331439"
+    },
+    {
+     "unit": "T_NNGAO-1",
+     "offer_mwh": "0",
+     "bid_mwh": "38.265000000000000568"
+    }
+   ],
+   "top_units_by_absolute_bm_cashflow": [
+    {
+     "unit": "T_DINO-3",
+     "offer_gbp": "0E-18",
+     "bid_gbp": "-14070.935088000000177999"
+    },
+    {
+     "unit": "T_MOWEO-3",
+     "offer_gbp": "0E-18",
+     "bid_gbp": "-10304.290738547499131528"
+    },
+    {
+     "unit": "T_MOWEO-1",
+     "offer_gbp": "0E-18",
+     "bid_gbp": "-10159.159883075000834651"
+    },
+    {
+     "unit": "T_PEHE-1",
+     "offer_gbp": "0E-18",
+     "bid_gbp": "-9900.994187320000492036"
+    },
+    {
+     "unit": "T_NNGAO-1",
+     "offer_gbp": "0E-18",
+     "bid_gbp": "-8159.024540674349736946"
+    }
+   ]
+  },
+  {
+   "period": 43,
+   "accepted_energy_by_fuel_mwh": {
+    "unclassified": "567.419167350075414476",
+    "OTHER": "431.162505535652775311",
+    "WIND": "226.450000000000003731",
+    "PS": "171.250000000000000000",
+    "NPSHYD": "107.575000000000000178",
+    "OCGT": "16.250000000000000000",
+    "CCGT": "4.889583333333333393"
+   },
+   "concentration_top5_share_of_accepted_energy": "0.1815",
+   "layer1_published_constraints_gbp": "703408.9865327892",
+   "layer2_accepted_offer_mwh": "0",
+   "layer2_accepted_bid_mwh": "1524.996256219061527089",
+   "layer2_bm_cashflow_offer_gbp": "1459.546653147667108798",
+   "layer2_bm_cashflow_bid_gbp": "-182777.749128905739611995",
+   "layer2_units_with_accepted_volume": 132,
+   "layer2_materially_instructed_units": 119,
+   "layer3_bsad": {
+    "system_cost": "0",
+    "energy_cost": "896023.23",
+    "system_volume": "0",
+    "energy_volume": "1172.65"
+   },
+   "layer4_published_volumes_mwh": {
+    "constraint_offers_mwh": "0.0",
+    "constraint_bids_mwh": "-580.075"
+   },
+   "top_units_by_accepted_energy": [
+    {
+     "unit": "T_FOYE-1",
+     "offer_mwh": "0",
+     "bid_mwh": "75.000000000000000000"
+    },
+    {
+     "unit": "T_FOYE-2",
+     "offer_mwh": "0",
+     "bid_mwh": "75.000000000000000000"
+    },
+    {
+     "unit": "2__HANGE005",
+     "offer_mwh": "0",
+     "bid_mwh": "45.266666666666665719"
+    },
+    {
+     "unit": "T_EAAO-2",
+     "offer_mwh": "0",
+     "bid_mwh": "41.500000000000000000"
+    },
+    {
+     "unit": "T_EAAO-1",
+     "offer_mwh": "0",
+     "bid_mwh": "40.000000000000000000"
+    }
+   ],
+   "top_units_by_absolute_bm_cashflow": [
+    {
+     "unit": "T_PEHE-1",
+     "offer_gbp": "0E-18",
+     "bid_gbp": "-9923.740912799999932759"
+    },
+    {
+     "unit": "T_MOWEO-1",
+     "offer_gbp": "0E-18",
+     "bid_gbp": "-9161.658140118999654078"
+    },
+    {
+     "unit": "T_MOWEO-3",
+     "offer_gbp": "0E-18",
+     "bid_gbp": "-8283.142975998000110849"
+    },
+    {
+     "unit": "T_FOYE-1",
+     "offer_gbp": "0E-18",
+     "bid_gbp": "-7306.180755074999979115"
+    },
+    {
+     "unit": "T_FOYE-2",
+     "offer_gbp": "0E-18",
+     "bid_gbp": "-7306.180755074999979115"
+    }
+   ]
+  },
+  {
+   "period": 44,
+   "accepted_energy_by_fuel_mwh": {
+    "OTHER": "464.713413800505059064",
+    "unclassified": "452.941948809518516589",
+    "WIND": "216.662222222222222712",
+    "PS": "150.000000000000000000",
+    "NPSHYD": "91.033333333333333104",
+    "CCGT": "53.566680277777778463",
+    "OCGT": "11.050000000000000711"
+   },
+   "concentration_top5_share_of_accepted_energy": "0.1985",
+   "layer1_published_constraints_gbp": "681400.0650614117",
+   "layer2_accepted_offer_mwh": "0",
+   "layer2_accepted_bid_mwh": "1439.967598443356910643",
+   "layer2_bm_cashflow_offer_gbp": "0.000251021159849056",
+   "layer2_bm_cashflow_bid_gbp": "-161532.497972408843861288",
+   "layer2_units_with_accepted_volume": 140,
+   "layer2_materially_instructed_units": 123,
+   "layer3_bsad": {
+    "system_cost": "0",
+    "energy_cost": "897111.27",
+    "system_volume": "0",
+    "energy_volume": "1176.50"
+   },
+   "layer4_published_volumes_mwh": {
+    "constraint_offers_mwh": "0.0",
+    "constraint_bids_mwh": "-470.7"
+   },
+   "top_units_by_accepted_energy": [
+    {
+     "unit": "T_FOYE-1",
+     "offer_mwh": "0",
+     "bid_mwh": "75.000000000000000000"
+    },
+    {
+     "unit": "T_FOYE-2",
+     "offer_mwh": "0",
+     "bid_mwh": "75.000000000000000000"
+    },
+    {
+     "unit": "T_EAAO-1",
+     "offer_mwh": "0",
+     "bid_mwh": "47.733333333333334281"
+    },
+    {
+     "unit": "T_EAAO-2",
+     "offer_mwh": "0",
+     "bid_mwh": "46.750000000000000000"
+    },
+    {
+     "unit": "T_THURB-1",
+     "offer_mwh": "0",
+     "bid_mwh": "41.299996388888889659"
+    }
+   ],
+   "top_units_by_absolute_bm_cashflow": [
+    {
+     "unit": "T_MOWEO-1",
+     "offer_gbp": "0E-18",
+     "bid_gbp": "-8534.147308604000500054"
+    },
+    {
+     "unit": "T_MOWEO-3",
+     "offer_gbp": "0E-18",
+     "bid_gbp": "-7655.632144483000047330"
+    },
+    {
+     "unit": "T_EAAO-1",
+     "offer_gbp": "0E-18",
+     "bid_gbp": "-7476.583634423999683349"
+    },
+    {
+     "unit": "T_EAAO-2",
+     "offer_gbp": "0E-18",
+     "bid_gbp": "-7322.561834692500269739"
+    },
+    {
+     "unit": "T_FOYE-1",
+     "offer_gbp": "0E-18",
+     "bid_gbp": "-7306.180755074999979115"
+    }
+   ]
+  },
+  {
+   "period": 45,
+   "accepted_energy_by_fuel_mwh": {
+    "CCGT": "466.738993055555559941",
+    "unclassified": "185.736803225129199783",
+    "PS": "130.000000000000000000",
+    "OTHER": "115.172395833333334484",
+    "NPSHYD": "88.000000000000000000",
+    "WIND": "77.500000000000000000",
+    "OCGT": "1.649999999999999911"
+   },
+   "concentration_top5_share_of_accepted_energy": "0.3780",
+   "layer1_published_constraints_gbp": "372711.435",
+   "layer2_accepted_offer_mwh": "0",
+   "layer2_accepted_bid_mwh": "1064.798192114018094119",
+   "layer2_bm_cashflow_offer_gbp": "0.377903002307142855",
+   "layer2_bm_cashflow_bid_gbp": "-90947.271744844410959819",
+   "layer2_units_with_accepted_volume": 109,
+   "layer2_materially_instructed_units": 74,
+   "layer3_bsad": {
+    "system_cost": "0",
+    "energy_cost": "450981.98",
+    "system_volume": "0",
+    "energy_volume": "1151.55"
+   },
+   "layer4_published_volumes_mwh": {
+    "constraint_offers_mwh": "0.0",
+    "constraint_bids_mwh": "-199.083"
+   },
+   "top_units_by_accepted_energy": [
+    {
+     "unit": "T_HUMR-1",
+     "offer_mwh": "0",
+     "bid_mwh": "134.995833333333337123"
+    },
+    {
+     "unit": "T_ROCK-1",
+     "offer_mwh": "0",
+     "bid_mwh": "86.459826388888885162"
+    },
+    {
+     "unit": "T_FOYE-1",
+     "offer_mwh": "0",
+     "bid_mwh": "75.000000000000000000"
+    },
+    {
+     "unit": "T_GRAI-8",
+     "offer_mwh": "0",
+     "bid_mwh": "53.333333333333335702"
+    },
+    {
+     "unit": "T_GRAI-7",
+     "offer_mwh": "0",
+     "bid_mwh": "52.666666666666664298"
+    }
+   ],
+   "top_units_by_absolute_bm_cashflow": [
+    {
+     "unit": "T_HUMR-1",
+     "offer_gbp": "0E-18",
+     "bid_gbp": "-10807.390056349582664552"
+    },
+    {
+     "unit": "T_FOYE-1",
+     "offer_gbp": "0E-18",
+     "bid_gbp": "-7306.180755074999979115"
+    },
+    {
+     "unit": "T_ROCK-1",
+     "offer_gbp": "0.377903002307142855",
+     "bid_gbp": "-6917.754419665950081253"
+    },
+    {
+     "unit": "T_GRAI-8",
+     "offer_gbp": "0E-18",
+     "bid_gbp": "-4315.270685440000306698"
+    },
+    {
+     "unit": "T_GRAI-7",
+     "offer_gbp": "0E-18",
+     "bid_gbp": "-4261.329801871999734431"
+    }
+   ]
+  }
+ ]
+}

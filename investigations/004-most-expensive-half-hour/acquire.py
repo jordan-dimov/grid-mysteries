@@ -181,7 +181,57 @@ def day() -> None:
     print(f"{target}: fetched {fetched}, verified and skipped {skipped}")
 
 
-COMMANDS = {"costs": costs, "select": select, "day": day}
+def context() -> None:
+    """Phase B2: the declared context layers for the selected day.
+
+    EBOCF gives published indicative BM cashflows (one request per
+    direction covers all 48 periods, per pair, TLM-inclusive); B1610
+    gives settlement-period metered energy, the declared consistency
+    check; FUELINST gives the fuel-mix and interconnector context the
+    reconstruction is declared to show. Separate from `day` because
+    these are whole-day requests, not per-period ones.
+    """
+    require_acquisition_authorised(INQUIRY)
+    selected = json.loads((EVIDENCE / "selected-period.json").read_text())["selected"]
+    if selected is None:
+        raise SystemExit("no period selected; run `select` first")
+    target = selected["settlement_date"]
+    following = (date.fromisoformat(target) + timedelta(days=1)).isoformat()
+    jobs = [
+        (
+            "EBOCF",
+            f"{elexon.BASE_URL}/balancing/settlement/indicative/cashflows/all/{direction}/{target}",
+            RAW / target / f"ebocf_{direction}.json",
+        )
+        for direction in DIRECTIONS
+    ]
+    jobs.append(
+        (
+            "B1610",
+            f"{elexon.BASE_URL}/datasets/B1610/stream?from={target}T00:00Z&to={following}T00:00Z",
+            RAW / target / "b1610.json",
+        )
+    )
+    jobs.append(
+        (
+            "FUELINST",
+            f"{elexon.BASE_URL}/datasets/FUELINST/stream?"
+            f"publishDateTimeFrom={target}T00:00Z&publishDateTimeTo={following}T00:00Z",
+            RAW / target / "fuelinst.json",
+        )
+    )
+    fetched, skipped = fetch_journalled(
+        jobs,
+        journal_path=EVIDENCE / "context-journal.ndjson",
+        manifest_path=EVIDENCE / "context-manifest.json",
+        repo_root=REPO_ROOT,
+        fetch=elexon.fetch_pinned,
+        progress=lambda path: print(f"pinned {path}", flush=True),
+    )
+    print(f"context: fetched {fetched}, verified and skipped {skipped}")
+
+
+COMMANDS = {"costs": costs, "select": select, "day": day, "context": context}
 
 if __name__ == "__main__":
     if len(sys.argv) != 2 or sys.argv[1] not in COMMANDS:

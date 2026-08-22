@@ -1,0 +1,18 @@
+{"transformation": "establish_governance", "actor": "jordan_dimov", "args_named": {"human_actor": "jordan_dimov", "human_login_role": "gm_human", "machine_actor": "claude_fable_5", "machine_login_role": "gm_machine"}}
+{"transformation": "register_corpus", "actor": "jordan_dimov", "args_named": {"corpus": "corpus-2026-05", "first_day": "2026-05-01", "last_day": "2026-05-31"}}
+{"transformation": "register_corpus", "actor": "jordan_dimov", "args_named": {"corpus": "corpus-2026-07", "first_day": "2026-07-01", "last_day": "2026-07-31"}}
+{"transformation": "register_corpus", "actor": "jordan_dimov", "args_named": {"corpus": "corpus-2026-08-w1", "first_day": "2026-08-04", "last_day": "2026-08-10"}}
+{"transformation": "register_corpus", "actor": "jordan_dimov", "args_named": {"corpus": "corpus-2026-08-w2", "first_day": "2026-08-11", "last_day": "2026-08-17"}}
+{"transformation": "record_historical_consumption", "actor": "jordan_dimov", "args_named": {"corpus": "corpus-2026-05", "v1_consumer": "inv-003-follow-the-constraint"}}
+{"transformation": "record_historical_consumption", "actor": "jordan_dimov", "args_named": {"corpus": "corpus-2026-07", "v1_consumer": "bess-001-benchmark-fragility"}}
+{"transformation": "record_historical_consumption", "actor": "jordan_dimov", "args_named": {"corpus": "corpus-2026-08-w1", "v1_consumer": "inv-001-largest-apparent-inversion"}}
+{"transformation": "record_historical_consumption", "actor": "jordan_dimov", "args_named": {"corpus": "corpus-2026-08-w1", "v1_consumer": "ms-001-phantom-liquidity"}}
+{"transformation": "record_historical_consumption", "actor": "jordan_dimov", "args_named": {"corpus": "corpus-2026-08-w1", "v1_consumer": "ms-001b-naive-screen"}}
+{"transformation": "record_historical_consumption", "actor": "jordan_dimov", "args_named": {"corpus": "corpus-2026-08-w1", "v1_consumer": "ms-001c-disagreement-anatomy"}}
+{"transformation": "record_historical_consumption", "actor": "jordan_dimov", "args_named": {"corpus": "corpus-2026-08-w1", "v1_consumer": "ms-001d-the-six"}}
+{"transformation": "open_inquiry", "actor": "claude_fable_5", "args_named": {"inquiry": "inq-002", "kind": "prospective", "title": "Mystery 002 - what survives a hardened selector on an untouched week", "opened_at": "2026-08-22T19:42:19Z"}}
+{"transformation": "record_v1_lineage", "actor": "claude_fable_5", "args_named": {"inquiry": "inq-002", "v1_investigation": "inv-001-largest-apparent-inversion"}}
+{"transformation": "assign_corpus", "actor": "claude_fable_5", "args_named": {"inquiry": "inq-002", "corpus": "corpus-2026-08-w2"}}
+{"transformation": "declare_protocol", "actor": "claude_fable_5", "args_named": {"inquiry": "inq-002", "protocol_digest": "1da32850e2d9fd2b581f940a2e8490367f96a724cb8e5ce6340c0f4d2c91ea5f", "declared_at": "2026-08-22T19:42:19Z"}}
+{"transformation": "declare_parameter", "actor": "claude_fable_5", "args_named": {"inquiry": "inq-002", "name": "min_accepted_volume_mwh", "parameter_value": "0.01"}}
+{"transformation": "declare_parameter", "actor": "claude_fable_5", "args_named": {"inquiry": "inq-002", "name": "min_available_level_mw", "parameter_value": "1"}}

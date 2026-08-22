@@ -1028,5 +1028,324 @@
         "value": "art-003-pn-vintage-probe"
       }
     ]
+  },
+  {
+    "predicate": "ActorAssertionAuthority",
+    "args": [
+      {
+        "type": "subject",
+        "value": "claude_fable_5"
+      },
+      {
+        "type": "subject",
+        "value": "gm_machine"
+      }
+    ]
+  },
+  {
+    "predicate": "ActorAssertionAuthority",
+    "args": [
+      {
+        "type": "subject",
+        "value": "jordan_dimov"
+      },
+      {
+        "type": "subject",
+        "value": "gm_human"
+      }
+    ]
+  },
+  {
+    "predicate": "ActorAssertionRestricted",
+    "args": [
+      {
+        "type": "subject",
+        "value": "claude_fable_5"
+      }
+    ]
+  },
+  {
+    "predicate": "ActorAssertionRestricted",
+    "args": [
+      {
+        "type": "subject",
+        "value": "jordan_dimov"
+      }
+    ]
+  },
+  {
+    "predicate": "PublicationAuthority",
+    "args": [
+      {
+        "type": "subject",
+        "value": "jordan_dimov"
+      }
+    ]
+  },
+  {
+    "predicate": "SealAuthority",
+    "args": [
+      {
+        "type": "subject",
+        "value": "jordan_dimov"
+      }
+    ]
+  },
+  {
+    "predicate": "ResearchCorpus",
+    "args": [
+      {
+        "type": "subject",
+        "value": "corpus-2026-05"
+      },
+      {
+        "type": "date",
+        "value": "2026-05-01"
+      },
+      {
+        "type": "date",
+        "value": "2026-05-31"
+      }
+    ]
+  },
+  {
+    "predicate": "ResearchCorpus",
+    "args": [
+      {
+        "type": "subject",
+        "value": "corpus-2026-07"
+      },
+      {
+        "type": "date",
+        "value": "2026-07-01"
+      },
+      {
+        "type": "date",
+        "value": "2026-07-31"
+      }
+    ]
+  },
+  {
+    "predicate": "ResearchCorpus",
+    "args": [
+      {
+        "type": "subject",
+        "value": "corpus-2026-08-w1"
+      },
+      {
+        "type": "date",
+        "value": "2026-08-04"
+      },
+      {
+        "type": "date",
+        "value": "2026-08-10"
+      }
+    ]
+  },
+  {
+    "predicate": "ResearchCorpus",
+    "args": [
+      {
+        "type": "subject",
+        "value": "corpus-2026-08-w2"
+      },
+      {
+        "type": "date",
+        "value": "2026-08-11"
+      },
+      {
+        "type": "date",
+        "value": "2026-08-17"
+      }
+    ]
+  },
+  {
+    "predicate": "CorpusConsumed",
+    "args": [
+      {
+        "type": "subject",
+        "value": "corpus-2026-05"
+      },
+      {
+        "type": "subject",
+        "value": "inv-003-follow-the-constraint"
+      }
+    ]
+  },
+  {
+    "predicate": "CorpusConsumed",
+    "args": [
+      {
+        "type": "subject",
+        "value": "corpus-2026-07"
+      },
+      {
+        "type": "subject",
+        "value": "bess-001-benchmark-fragility"
+      }
+    ]
+  },
+  {
+    "predicate": "CorpusConsumed",
+    "args": [
+      {
+        "type": "subject",
+        "value": "corpus-2026-08-w1"
+      },
+      {
+        "type": "subject",
+        "value": "inv-001-largest-apparent-inversion"
+      }
+    ]
+  },
+  {
+    "predicate": "CorpusConsumed",
+    "args": [
+      {
+        "type": "subject",
+        "value": "corpus-2026-08-w1"
+      },
+      {
+        "type": "subject",
+        "value": "ms-001-phantom-liquidity"
+      }
+    ]
+  },
+  {
+    "predicate": "CorpusConsumed",
+    "args": [
+      {
+        "type": "subject",
+        "value": "corpus-2026-08-w1"
+      },
+      {
+        "type": "subject",
+        "value": "ms-001b-naive-screen"
+      }
+    ]
+  },
+  {
+    "predicate": "CorpusConsumed",
+    "args": [
+      {
+        "type": "subject",
+        "value": "corpus-2026-08-w1"
+      },
+      {
+        "type": "subject",
+        "value": "ms-001c-disagreement-anatomy"
+      }
+    ]
+  },
+  {
+    "predicate": "CorpusConsumed",
+    "args": [
+      {
+        "type": "subject",
+        "value": "corpus-2026-08-w1"
+      },
+      {
+        "type": "subject",
+        "value": "ms-001d-the-six"
+      }
+    ]
+  },
+  {
+    "predicate": "Inquiry",
+    "args": [
+      {
+        "type": "subject",
+        "value": "inq-002"
+      },
+      {
+        "type": "subject",
+        "value": "prospective"
+      },
+      {
+        "type": "subject",
+        "value": "Mystery 002 - what survives a hardened selector on an untouched week"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-08-22T19:42:19Z"
+      }
+    ]
+  },
+  {
+    "predicate": "LineageFromV1",
+    "args": [
+      {
+        "type": "subject",
+        "value": "inq-002"
+      },
+      {
+        "type": "subject",
+        "value": "inv-001-largest-apparent-inversion"
+      }
+    ]
+  },
+  {
+    "predicate": "InquiryCorpus",
+    "args": [
+      {
+        "type": "subject",
+        "value": "inq-002"
+      },
+      {
+        "type": "subject",
+        "value": "corpus-2026-08-w2"
+      }
+    ]
+  },
+  {
+    "predicate": "ProtocolDeclared",
+    "args": [
+      {
+        "type": "subject",
+        "value": "inq-002"
+      },
+      {
+        "type": "subject",
+        "value": "1da32850e2d9fd2b581f940a2e8490367f96a724cb8e5ce6340c0f4d2c91ea5f"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-08-22T19:42:19Z"
+      }
+    ]
+  },
+  {
+    "predicate": "DeclaredParameter",
+    "args": [
+      {
+        "type": "subject",
+        "value": "inq-002"
+      },
+      {
+        "type": "subject",
+        "value": "min_accepted_volume_mwh"
+      },
+      {
+        "type": "decimal",
+        "value": "0.01"
+      }
+    ]
+  },
+  {
+    "predicate": "DeclaredParameter",
+    "args": [
+      {
+        "type": "subject",
+        "value": "inq-002"
+      },
+      {
+        "type": "subject",
+        "value": "min_available_level_mw"
+      },
+      {
+        "type": "decimal",
+        "value": "1"
+      }
+    ]
   }
 ]

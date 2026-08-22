@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-VERSION="v0.0.9"
+VERSION="v0.0.10"
 BASE="https://github.com/jordan-dimov/morpholog/releases/download/${VERSION}"
 
 os="$(uname -s)"
@@ -10,15 +10,15 @@ arch="$(uname -m)"
 case "${os}/${arch}" in
   Linux/x86_64)
     asset="morpholog-${VERSION}-x86_64-unknown-linux-musl.tar.gz"
-    expected="76cf591e96fbc3a3ed34220013ac46b8a91e27d7b9e93aba75b3da63c4249943"
+    expected="dc3bac06d4c9e6df14836ff6548f7958e0f649c0185fc61016f244e3c3fbb487"
     ;;
   Linux/aarch64|Linux/arm64)
     asset="morpholog-${VERSION}-aarch64-unknown-linux-musl.tar.gz"
-    expected="dfd5691ca308b593094f8dbaeca02583c6404a344c266fb72add8e81fcfddfa7"
+    expected="e40347cd63ba4a5f5d9818a7758eb8c9b6ac6bc8a7ac3704cbbf1d3424b7b2c9"
     ;;
   Darwin/arm64)
     asset="morpholog-${VERSION}-aarch64-apple-darwin.tar.gz"
-    expected="e40e5ddf2a1a917a62015d761ec1406ce9bc9dd8c86bcf11f3c1422961c3a2ff"
+    expected="4bd9a7bddc48cb3115a4f0d8eaf4a46fbcd6db68ef5b9aca299f9cdecfa88b88"
     ;;
   *)
     echo "unsupported platform: ${os}/${arch}" >&2

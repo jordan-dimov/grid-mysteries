@@ -17,3 +17,7 @@
 {"transformation": "declare_parameter", "actor": "claude_fable_5", "args_named": {"inquiry": "inq-002", "name": "min_accepted_volume_mwh", "parameter_value": "0.01"}}
 {"transformation": "declare_parameter", "actor": "claude_fable_5", "args_named": {"inquiry": "inq-002", "name": "min_available_level_mw", "parameter_value": "1"}}
 {"transformation": "seal_protocol", "actor": "jordan_dimov", "args_named": {"inquiry": "inq-002", "sealed_at": "2026-08-22T19:45:10Z"}}
+{"transformation":"register_evidence","actor":"claude_fable_5","args_named":{"artifact":"art-002-window-manifest","source":"elexon-insights 2026-08-11..17 corpus via investigations/002-hardened-selector/evidence/manifest.json (2352 artefacts: BOD/DISPTAV/BOALF/PN/MELS/MILS)","sha256":"ceef06f49069ae18e7b30bfef4ebd253d7b25a0afef2f4a0f86cc2316b0e1ae2","fetched_at":"2026-08-22T20:58:32Z"}}
+{"transformation":"attach_evidence","actor":"claude_fable_5","args_named":{"inquiry":"inq-002","artifact":"art-002-window-manifest"}}
+{"transformation":"consume_corpus","actor":"claude_fable_5","args_named":{"corpus":"corpus-2026-08-w2","inquiry":"inq-002"}}
+{"transformation":"seal_evidence","actor":"claude_fable_5","args_named":{"inquiry":"inq-002","sealed_at":"2026-08-22T20:58:32Z"}}

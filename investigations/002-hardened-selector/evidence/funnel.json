@@ -1,0 +1,32 @@
+{
+ "window": [
+  "2026-08-11",
+  "2026-08-17"
+ ],
+ "governed_parameters": {
+  "min_accepted_volume_mwh": "0.01",
+  "min_available_level_mw": "1"
+ },
+ "labelling": "Naive counterfactual notional is arithmetic on public numbers (|accepted volume| x best gap, once per accepted action) \u2014 never a saving, loss or waste. Screens are Amendment A (deliverability) then Amendment B (system-flagged accepted action), in that declared order.",
+ "system_flagged_unit_periods": 2673,
+ "stages": [
+  {
+   "stage": "raw",
+   "candidates": 2104752,
+   "accepted_actions": 21248,
+   "naive_counterfactual_notional_gbp": "94330188.22675260045499233600"
+  },
+  {
+   "stage": "after_deliverability",
+   "candidates": 554425,
+   "accepted_actions": 18752,
+   "naive_counterfactual_notional_gbp": "27835400.29773049292426438506"
+  },
+  {
+   "stage": "after_system_flag",
+   "candidates": 497370,
+   "accepted_actions": 18094,
+   "naive_counterfactual_notional_gbp": "23836303.59353369014175855307"
+  }
+ ]
+}

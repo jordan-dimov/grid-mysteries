@@ -1360,5 +1360,65 @@
         "value": "2026-08-22T19:45:10Z"
       }
     ]
+  },
+  {
+    "predicate": "EvidenceArtifact",
+    "args": [
+      {
+        "type": "subject",
+        "value": "art-002-window-manifest"
+      },
+      {
+        "type": "subject",
+        "value": "elexon-insights 2026-08-11..17 corpus via investigations/002-hardened-selector/evidence/manifest.json (2352 artefacts: BOD/DISPTAV/BOALF/PN/MELS/MILS)"
+      },
+      {
+        "type": "subject",
+        "value": "ceef06f49069ae18e7b30bfef4ebd253d7b25a0afef2f4a0f86cc2316b0e1ae2"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-08-22T20:58:32Z"
+      }
+    ]
+  },
+  {
+    "predicate": "InquiryUses",
+    "args": [
+      {
+        "type": "subject",
+        "value": "inq-002"
+      },
+      {
+        "type": "subject",
+        "value": "art-002-window-manifest"
+      }
+    ]
+  },
+  {
+    "predicate": "CorpusConsumed",
+    "args": [
+      {
+        "type": "subject",
+        "value": "corpus-2026-08-w2"
+      },
+      {
+        "type": "subject",
+        "value": "inq-002"
+      }
+    ]
+  },
+  {
+    "predicate": "EvidenceSealed",
+    "args": [
+      {
+        "type": "subject",
+        "value": "inq-002"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-08-22T20:58:32Z"
+      }
+    ]
   }
 ]

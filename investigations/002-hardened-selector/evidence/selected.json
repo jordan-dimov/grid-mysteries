@@ -1,0 +1,16 @@
+{
+ "selected": {
+  "settlement_date": "2026-08-12",
+  "settlement_period": 33,
+  "direction": "offer",
+  "accepted_unit": "T_SEAB-1",
+  "accepted_pair_id": 1,
+  "accepted_price_gbp_per_mwh": "890.00",
+  "accepted_volume_mwh": "0.125000000000000000",
+  "unaccepted_unit": "C__PSTAT011",
+  "unaccepted_pair_id": 1,
+  "unaccepted_price_gbp_per_mwh": "0.00",
+  "unaccepted_max_level_mw": "41"
+ },
+ "outcome": "selected"
+}

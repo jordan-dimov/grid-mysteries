@@ -9,7 +9,6 @@ authors = [{ name = "Jordan Dimov" }]
 dependencies = [
     "httpx>=0.28",
     "polars>=1.30",
-    "typer>=0.16",
 ]
 
 [project.scripts]

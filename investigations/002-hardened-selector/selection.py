@@ -30,12 +30,12 @@ from decimal import Decimal
 from pathlib import Path
 
 from grid_mysteries.corpus import (
-    BMUNITS_PATH,
     DIRECTIONS,
     PERIODS,
     REPO_ROOT,
     load_records,
     physical_path,
+    registered_capacities,
     window_path,
 )
 from grid_mysteries.investigations.bod_inversion import (
@@ -176,19 +176,6 @@ def fetch() -> None:
     print(f"fetched {fetched}, verified and skipped {skipped}")
 
 
-def load_capacities() -> dict[str, tuple[Decimal | None, Decimal | None]]:
-    """Registered capacities from the pinned BM-unit reference vintage."""
-    capacities = {}
-    for record in load_records(BMUNITS_PATH):
-        generation = record.get("generationCapacity")
-        demand = record.get("demandCapacity")
-        capacities[str(record["elexonBmUnit"])] = (
-            Decimal(generation) if generation is not None else None,
-            Decimal(demand) if demand is not None else None,
-        )
-    return capacities
-
-
 def system_flagged_units(day: str, period: int) -> set[tuple[str, int, str]]:
     """(date, period, unit) for every unit with a system-flagged acceptance."""
     flagged = set()
@@ -205,7 +192,7 @@ def scan(min_accepted_mwh: Decimal, min_available_mw: Decimal):
     identical candidate set; the screens themselves live in
     `grid_mysteries.investigations.hardened_selection`.
     """
-    capacities = load_capacities()
+    capacities = registered_capacities()
     candidates = []
     deliverability: dict[tuple, str] = {}
     system_flagged: set[tuple[str, int, str]] = set()

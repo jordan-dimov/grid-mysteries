@@ -18,17 +18,16 @@ from __future__ import annotations
 import json
 import sys
 from collections import Counter
-from decimal import Decimal
 from pathlib import Path
 
 from grid_mysteries.corpus import (
-    BMUNITS_PATH,
     DIRECTIONS,
     PERIODS,
     REPO_ROOT,
     TOTAL_PERIODS,
     load_records,
     physical_path,
+    registered_capacities,
     window_dates,
     window_path,
 )
@@ -75,20 +74,8 @@ def fetch() -> None:
     print(f"fetched {fetched}, verified and skipped {skipped}")
 
 
-def load_capacities() -> dict[str, tuple[Decimal | None, Decimal | None]]:
-    capacities = {}
-    for record in load_records(BMUNITS_PATH):
-        generation = record.get("generationCapacity")
-        demand = record.get("demandCapacity")
-        capacities[str(record["elexonBmUnit"])] = (
-            Decimal(generation) if generation is not None else None,
-            Decimal(demand) if demand is not None else None,
-        )
-    return capacities
-
-
 def analyse() -> None:
-    capacities = load_capacities()
+    capacities = registered_capacities()
     total_raw = 0
     raw_by_direction = Counter()
     episodes: set[tuple[str, int, str]] = set()

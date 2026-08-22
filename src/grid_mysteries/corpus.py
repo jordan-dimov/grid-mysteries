@@ -59,3 +59,21 @@ def unit_maps() -> tuple[dict[str, str], dict[str, str]]:
         if r.get("nationalGridBmUnit")
     }
     return ngc_to_elexon, {v: k for k, v in ngc_to_elexon.items()}
+
+
+def registered_capacities() -> dict[str, tuple[Decimal | None, Decimal | None]]:
+    """(generation, demand) capacity per unit from the pinned BM-unit vintage.
+
+    The headroom bounds in `investigations.phantom_liquidity` fall back to
+    these when MELS/MILS are absent, so every study that screens
+    deliverability needs them; one reader, one vintage.
+    """
+    capacities = {}
+    for record in load_records(BMUNITS_PATH):
+        generation = record.get("generationCapacity")
+        demand = record.get("demandCapacity")
+        capacities[str(record["elexonBmUnit"])] = (
+            Decimal(generation) if generation is not None else None,
+            Decimal(demand) if demand is not None else None,
+        )
+    return capacities

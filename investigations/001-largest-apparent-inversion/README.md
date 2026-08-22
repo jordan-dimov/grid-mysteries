@@ -116,7 +116,7 @@ Recorded after the fetch; nothing above this line was altered.
 
 - Artefacts pinned: **1,008** (BOD + DISPTAV bid + DISPTAV offer for
   336 settlement periods), 300,395,151 bytes, digests in
-  `evidence/manifest.json`, fetch order in `evidence/fetch-journal.ndjson`.
+  `evidence/manifest.json` (fetch order recoverable from its `fetched_at` stamps).
   The fetch completed in a single pass on 2026-08-16; no path was fetched
   twice.
 - Candidates enumerated: **3,856,031**.

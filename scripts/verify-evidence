@@ -1,0 +1,57 @@
+#!/usr/bin/env bash
+# Verify every pinned artefact on disk still matches its manifest digest.
+#
+# The project's central claim is that its analyses read immutable, content
+# addressed inputs. That is a claim about bytes, so it deserves to be
+# checkable rather than asserted. Reports four classes: verified, DIGEST
+# MISMATCH (corruption or edit — a hard failure), missing from disk
+# (re-fetchable from the manifest's url), and unpinned files (litter).
+#
+# Not run in CI: data/raw is local by design and never committed.
+set -euo pipefail
+cd "$(dirname "$0")/.."
+exec uv run python - "$@" <<'PY'
+import hashlib, json, os, pathlib, sys
+
+pinned: dict[str, dict] = {}
+for manifest in sorted(pathlib.Path("investigations").rglob("*manifest*.json")):
+    try:
+        data = json.load(open(manifest))
+    except Exception:
+        continue
+    entries = data if isinstance(data, list) else (data.get("artifacts") or [])
+    if isinstance(entries, dict):
+        entries = list(entries.values())
+    for entry in entries:
+        if isinstance(entry, dict) and entry.get("path") and entry.get("sha256"):
+            pinned[entry["path"]] = {"sha256": entry["sha256"], "manifest": str(manifest)}
+
+verified = missing = 0
+mismatched: list[tuple[str, str]] = []
+for index, (path, meta) in enumerate(sorted(pinned.items()), start=1):
+    if not os.path.exists(path):
+        missing += 1
+        continue
+    digest = hashlib.sha256(pathlib.Path(path).read_bytes()).hexdigest()
+    if digest == meta["sha256"]:
+        verified += 1
+    else:
+        mismatched.append((path, meta["manifest"]))
+    if index % 2000 == 0:
+        print(f"   ...{index:,}/{len(pinned):,}", flush=True)
+
+on_disk = {str(p) for p in pathlib.Path("data/raw").rglob("*") if p.is_file()}
+unpinned = sorted(p for p in on_disk - set(pinned) if not p.endswith(".gitkeep"))
+
+print(f"verified:   {verified:,} artefacts match their pinned digest")
+print(f"missing:    {missing:,} (re-fetchable from the manifest url)")
+print(f"unpinned:   {len(unpinned):,} files on disk belong to no manifest")
+for path in unpinned[:10]:
+    print(f"              {path}")
+if mismatched:
+    print(f"DIGEST MISMATCH: {len(mismatched)} — the pinned evidence has CHANGED")
+    for path, manifest in mismatched[:10]:
+        print(f"   {path}  (pinned by {manifest})")
+    sys.exit(1)
+print("verify-evidence: OK")
+PY

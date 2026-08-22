@@ -249,6 +249,15 @@ amended rule never runs against data that taught the amendment.
 Corrections stay here permanently; the declaration above is never silently
 rewritten.
 
+1. **2026-08-22, after the results were written, before any publication.**
+   The results section first glossed Amendment A's 74%/70% reduction as
+   "Method Study 001B's phantom-liquidity finding replicated". That is
+   wider than the measurement: what replicated is the share of candidates
+   whose alternative is *provably* without positive directional headroom
+   under one conservative, one-sided test. Narrowed above. The governed
+   finding `concl-002-explained` was unaffected — it always stated the
+   measured quantities, not the gloss.
+
 ## Reproduction
 
 Recorded after selection; nothing above this line is altered afterwards.
@@ -279,9 +288,19 @@ The funnel, with thresholds read from the governed record (0.01 MWh,
 | after **Amendment B** (system flag) | 497,370 | 18,094 | £23,836,304 |
 
 **Amendment A alone removes 74% of candidates and 70% of the naive
-notional.** That is Method Study 001B's phantom-liquidity finding
-replicated *prospectively*, by a rule frozen before this week's data
-existed, on a week that taught it nothing.
+notional**, by a rule frozen before this week's data existed, on a week
+that taught it nothing. Stated at the width the evidence actually
+supports:
+
+> A very large fraction of naive BM price-order inversions is generated
+> by alternatives that **public physical-state data can already prove
+> had no positive directional headroom**. That effect survived a
+> prospective test on a week that did not teach the rule.
+
+That is narrower than "phantom liquidity is real". What replicated is
+the *provable-zero-headroom* share, measured by one conservative,
+one-sided test — not a general claim about how much apparent BM
+liquidity is illusory.
 
 **Mystery 002 (rank 1, no discretion after this point):** 2026-08-12,
 settlement period 33, offer direction. NESO accepted an offer from
@@ -365,6 +384,15 @@ This is an *attribution of the surviving disagreement*, not an accuracy
 score: NESO's exclusion reasons are day-grain and volumetric, and were
 deliberately **not** used as selection filters, because Method Study
 001C established that binarising them degrades agreement.
+
+**The 20,413 are now a research lead, not a validation set.** This
+investigation has seen them. Anything they teach about a future
+amendment must be tested on a *different, untouched* window, or the
+strongest thing 002 demonstrated is immediately undone. They are
+shelved under the working name **Method Study 002 — Residual Anatomy**,
+to be opened when we specifically want to know what the next-generation
+selector is missing; they may inform a later investigation's declaration
+but must never be that investigation's test set.
 
 ## Expert corner
 

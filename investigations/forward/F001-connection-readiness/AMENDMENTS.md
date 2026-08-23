@@ -339,3 +339,138 @@ alongside MW, COD, technology, location and lease status.
 
 **F001 has not earned this and it is recorded only so that it cannot
 later be presented as a finding that emerged from evidence.**
+
+---
+
+## Amendment 6 — 2026-08-23: four outcomes, and a prohibition on moving the goalposts
+
+**The single most important methodological upgrade to the forward track
+so far, and it generalises past F001.**
+
+### F-5 is a chain, not a test
+
+"An adequate solution exists" decomposes into four distinct claims, each
+requiring its own evidence:
+
+> **ProvisionExists ≠ ProvisionPurchased ≠ AdequateFor(actor, decision,
+> time) ≠ MarketSaturated**
+
+A product page establishes only the first. The ABL mandate (Working note
+3) was stronger evidence than any website because it evidenced
+**purchase**. This chain is now the standard F-5 must be argued against.
+
+### Four commercially distinct outcomes
+
+The track had implicitly assumed one interesting answer — an unserved
+need. There are at least four, and they are not ranked by desirability:
+
+- **White space** — the problem is real and nobody meaningfully serves
+  it.
+- **Category emergence** — real, and the first specialised providers
+  have just appeared.
+- **Workflow transition** — already served manually, with
+  standardisation or software beginning to displace bespoke work.
+- **Efficiently served** — real, but incumbents solve it well. *No
+  opportunity demonstrated.*
+
+**Category emergence may be the strongest signal of the four**, and this
+is the counter-intuitive part worth stating plainly. Pure white space is
+ambiguous: perhaps nobody built it because nobody wants it. But if
+several small firms have independently converged on the same obscure
+friction while the structural driver accelerates, that is *the future
+leaking into the present* — a prediction being confirmed by other
+people's capital allocation rather than by our argument.
+
+### The prohibition
+
+**The study may not narrow its definition of the problem in order to
+restore a gap after F-5 bites.** Each time an incumbent is found, the
+honest move is to update the outcome classification, not to redraw the
+boundary until white space reappears. That failure mode — endlessly
+moving the goalposts — would let the forward track manufacture the
+conclusion it wants, which is precisely what it was built to prevent.
+
+### The forcing question, restated
+
+Replacing "is there a gap?":
+
+> **Is F001 observing a category close to its birth, or rediscovering
+> one already established?**
+
+Measurable, and therefore falsifiable: when the products appeared;
+evidence of customers; funding and headcount; number of transactions;
+pricing; whether major technical advisers are building this internally;
+whether buyers procure *continuous monitoring* or only transaction DD;
+and whether Gate 2 reform is visibly moving demand.
+
+**If five mature vendors with hundreds of customers exist, F001 dies
+completely.** If instead there are two or three young firms, some AI
+entrants, traditional advisers still working manually, and regulation
+increasing the information burden, the finding is a category near birth
+— which is a better result than an empty market, and a different kind
+of publication.
+
+## Working note 4 — 2026-08-23: incumbents, and a public-as-of problem
+
+**These observations are dated 2026-08-23 — one day AFTER F001's
+declared public-as-of cutoff — and are pinned in
+`evidence/post-cutoff-manifest.json`, deliberately separate from
+`public-as-of-manifest.json`. They are NOT admitted to the 22 August
+evidence set.** Folding them in quietly would make the public-as-of
+claim theatre; this separation is the discipline actually working, at
+the first moment it cost something.
+
+**Observed (post-cutoff).** **Cairnel** (cairnel.co.uk) markets
+"Independent evidence for UK grid projects": *Gate 2 Assurance* for
+portfolio holders with active obligations, and *Project Monitoring* of
+named projects. Features listed include milestone and evidence control,
+**public/private discrepancy detection**, regulatory change mapped to
+named projects, portfolio and transaction assurance reporting, verified
+alerts with evidence trails, and **four evidence states** (confirmed
+change, no evidence found, coverage gap, conflict). Named buyer
+categories: project owners and developers, infrastructure investors,
+lenders and transaction teams, law firms, grid consultants. Advertised
+pricing: £3,600/yr (Monitor, ≤20 projects), £7,200/yr (Adviser),
+£15,000+/yr (Enterprise). Adjacent software: **Noda**, **Tetrax**,
+**Cepter**. Separately, **Natural Power** has described advising Alpiq
+on a multi-country BESS portfolio by assessing project maturity and
+assigning a **probability of successful delivery** including
+grid-connection requirements.
+
+**This is close enough to F001's forming hypothesis to be treated as an
+adverse F-5 candidate**, including the time-varying element the study
+had isolated as its sharpest object.
+
+**Pre-cutoff existence: partly established.** The site lists dated
+issues for weeks of **7 July, 11 July, 14 July and 1 August 2026**,
+which evidences that the *operation* existed before 22 August. It does
+**not** establish that every currently advertised feature existed then,
+and that distinction is preserved rather than smoothed over.
+
+**Purchase: not established.** The page states **no case studies, no
+testimonials and no named clients**. Under Amendment 6's chain this is
+`ProvisionExists` — and, on public evidence, not yet
+`ProvisionPurchased`. It kills "nobody has built this". It does not
+establish that anyone buys it, that it works, or that the market is
+served.
+
+**Provisional classification: category emergence**, not white space and
+not efficiently served — held as a classification under test, with the
+measurements of Amendment 6 as the way to settle it.
+
+## What F001 may be becoming
+
+Recorded so the shift is visible rather than retrofitted: F001 looks
+increasingly likely to **fail as a startup thesis and succeed as a
+category-discovery experiment**. The causal reasoning predicted a
+friction; independent entrepreneurs appear to have found fragments of
+the same friction; the structural driver is still accelerating. If that
+holds, the publishable result is not "here is a business" but:
+
+> A new infrastructure market is forming around something most people do
+> not yet treat as an asset attribute — the quality and durability of a
+> grid connection.
+
+That is a legitimate outcome under the declaration, and arguably a
+better demonstration of the method than a business idea would have been.
+It is **not yet earned**.

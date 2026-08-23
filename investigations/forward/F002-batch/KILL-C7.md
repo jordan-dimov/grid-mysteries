@@ -166,3 +166,80 @@ because of how eNAMS records the data.
 the commentary that qualified it. Cheap forcing observations must include
 the source's own caveats, or the instrument is being misread rather than
 merely mis-chosen.
+
+---
+
+# FY25 data obtained and verified, 2026-08-23
+
+Source: *Network Access Planning KPIs*, National Grid, **July 2026**
+(FY25 / T2Y4), supplied directly. Every disputed figure is confirmed.
+
+| KPI | FY22 | FY23 | FY24 | FY25 |
+|---|---|---|---|---|
+| 1a Outages in YA plan | 1,914 | 2,155 | 1,810 | 2,055 |
+| 1c **% of YA plan delivered** | 61% | 50% | 46% | **50%** |
+| 2a Started on agreed date | 32% | 26% | 25% | **28%** |
+| 2b Started in agreed week | 39% | 31% | 30% | **35%** |
+| 2c Changed for a positive reason | 10% | 7% | 5% | 6% |
+| **3a New within-year, pre-Optimisation** | – | – | 470 | **711** (+51%) |
+| **3b New within-year, in Optimisation** | – | – | 928 | **1,253** (+35%) |
+| **3c New within-year, in Delivery** | – | – | 1,438 | **2,184** (+52%) |
+| 4 Assets out >1×/year | 1,157 | 1,181 | **1,480** (was 2,846) | 640 |
+| 5 **"Outage coordination"** | – | – | – | **– (still unreportable)** |
+| 6 Started within 60 min | 53% | 44% | 45% | 43% |
+| 8 Non-firm access curtailed | 0% | 0% | 3.62% | 0.09% |
+| 10a System faults | – | 260 | 64 | 81 |
+
+**All three withdrawn claims are confirmed withdrawn.** KPI 4's FY24
+value is footnoted as corrected from 2,846 "following discovery of
+discrepancy in how we reported this". The 3.62% arose from a single
+busbar outage at Kemsley on a measure that "applies to only a very
+limited number of sites". Faults rose 64 → 81, on top of the FY24
+recording change.
+
+**And the trend claim is confirmed wrong in the direction I had it.**
+NGET: "delivery rose to 50% of the YA plan in FY25, up from 46%… 28% of
+outages started on the agreed date and 35% started in the agreed week…
+**reversing the prior decline**."
+
+## The real finding, which is better than the one I withdrew
+
+The year-ahead plan is **improving** while the rate of change against it
+is **accelerating**. Within-year requests rose in every phase, most in
+the shortest-notice one:
+
+> "In FY25, within-year outage requests increased across all phases
+> compared with FY24: prior to the Optimisation Phase they were about 51%
+> higher, during the Optimisation Phase they rose by about 35%, and
+> during the Delivery Phase they were about 52% higher."
+
+NGET names the drivers — "network security, asset faults, and external
+drivers such as customer requests" — and states the remedy is
+"enhancements to plan build and coordination through planning
+transformation… reducing those emerging within year". It also says
+outright that it is "undertaking planning and delivery transformation
+programmes" continuing into RIIO-T3.
+
+Two further verified details:
+
+- KPI 5 remains blank for all four years: work bundling "cannot be
+  reported in a volumetric way" because of how eNAMS records it — though
+  NGET states **91% of its outages have more than one piece of work
+  planned**.
+- KPI 6 fell to 43%, and NGET attributes it to "complexities we have
+  coordinating outage releases across multiple stakeholders… These
+  complexities of stakeholder coordination have existed in each of the
+  four years of T2."
+
+## Verdict, final
+
+**Absorption strain evidenced**, now on fully verified first-party
+evidence and a *sharper* mechanism than originally claimed: **replanning
+volume is growing faster than the plan is improving.** NESO processes
+>17,000 changes against a ~2,500-outage plan with 65 engineers, every
+change restarting assessment; NGET's own within-year request counts rose
+~51%/35%/52% in a single year, most steeply inside the final three weeks.
+
+Both institutions are adapting and say so. This is an adaptation race
+with a measured numerator, not a failure. Propositions 2 and 3 remain
+unearned and are not attempted.

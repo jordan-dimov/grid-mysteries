@@ -1,12 +1,30 @@
 [
  {
   "source": "forward-f001-post-cutoff",
+  "dataset": "ABL-BESS-LTA-MANDATE-2023-11-13",
+  "url": "https://abl-group.com/all-media/news/abl-appointed-lenders-technical-adviser-to-uk-bess-portfolio/",
+  "path": "data/raw/market/abl-bess-lta-mandate.html",
+  "sha256": "2d08ee49e2bdd11eccba6e419cf60dc23ad140b663bf6b7af83e59bb175adae6",
+  "fetched_at": "2026-08-23T07:59:09.076933+00:00",
+  "bytes": 140460
+ },
+ {
+  "source": "forward-f001-post-cutoff",
   "dataset": "CAIRNEL-SITE",
   "url": "https://cairnel.co.uk/",
   "path": "data/raw/market/cairnel-2026-08-23.html",
   "sha256": "6ad6d80b9a8db62bc69add8892f18197009a21d15795606bd7a67463cda23db6",
   "fetched_at": "2026-08-23T07:41:38.055480+00:00",
   "bytes": 44733
+ },
+ {
+  "source": "forward-f001-post-cutoff",
+  "dataset": "COMPANIES-HOUSE-CAIRNEL-LTD-17335939",
+  "url": "https://find-and-update.company-information.service.gov.uk/company/17335939",
+  "path": "data/raw/market/companies-house-cairnel-17335939.html",
+  "sha256": "8d8f446dd9dbe52ba353c287449eb3713ff571a21cc38972c79bd5d69ea5b79f",
+  "fetched_at": "2026-08-23T07:59:09.625798+00:00",
+  "bytes": 35189
  },
  {
   "source": "forward-f001-post-cutoff",

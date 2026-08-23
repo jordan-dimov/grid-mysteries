@@ -89,5 +89,29 @@ print(f"metric provenance: {checked} checked, {failures} mismatched, "
       f"{len(governed) - checked} governed metric(s) with no declared source")
 if failures:
     raise SystemExit("check-record: a governed metric does not match its evidence")
+
+# ---- 3. sealed declarations still exist, byte for byte --------------------
+import hashlib
+
+sealed = {}
+for claim in claims:
+    if claim["predicate"] == "ProtocolDeclared":
+        args = [a["value"] for a in claim["args"]]
+        sealed[args[0]] = args[1]
+on_disk = {}
+for candidate in Path("investigations").glob("*/DECLARATION-as-sealed.md"):
+    on_disk[hashlib.sha256(candidate.read_bytes()).hexdigest()] = candidate
+missing = {i: d for i, d in sealed.items() if d not in on_disk}
+for inquiry, digest in sorted(sealed.items()):
+    where = on_disk.get(digest)
+    print(f"   {'ok' if where else '!!'} {inquiry}: {digest[:16]}… "
+          f"{where if where else 'NO FILE ON DISK HASHES TO THIS'}")
+if missing:
+    raise SystemExit(
+        "check-record: a sealed protocol digest matches no file on disk. The frozen "
+        "declaration must remain recoverable byte for byte, or 'the rules were frozen "
+        "before the data was seen' cannot be checked by anyone."
+    )
+print(f"sealed declarations: {len(sealed)} verified against files on disk")
 print("check-record: OK")
 PY

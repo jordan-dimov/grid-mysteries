@@ -18,6 +18,17 @@ the reconstruction shows, including a boring answer.
 reserved 2026-08-11..17 window, under the v2 governed state machine.
 004 does not begin acquisition before 002 has opened.
 
+
+> **The declaration as sealed.** `DECLARATION-as-sealed.md` in this
+> directory is a byte-exact copy of this document as it stood when
+> `inq-004`'s protocol digest was recorded, before any result was written.
+> It is never edited; its SHA-256 is the `ProtocolDeclared` digest in the
+> governed record, and `scripts/check-record` verifies that every
+> sealed digest still matches a file on disk. This file continued to
+> grow with results and corrections, so *its* hash necessarily moved —
+> which is exactly why the sealed bytes are preserved separately.
+
+
 ## Declared window and its exposure inventory
 
 - **Corpus: GB settlement dates 2026-06-01 through 2026-06-30** — the

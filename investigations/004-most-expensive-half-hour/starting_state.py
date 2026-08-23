@@ -17,17 +17,14 @@ from decimal import Decimal
 
 from acquire import EVIDENCE, RAW
 
-from grid_mysteries.corpus import BMUNITS_PATH, load_records, physical_path
+from grid_mysteries.corpus import fuel_types, load_records, physical_path
 
 DAY = "2026-06-24"
 DOOR = 39  # first period of the originally warned 19:00-22:00 BST window
 
 
 def run() -> None:
-    fuel = {
-        str(r["elexonBmUnit"]): (r.get("fuelType") or "unclassified")
-        for r in load_records(BMUNITS_PATH)
-    }
+    fuel = fuel_types()
     fpn = {
         str(x["bmUnit"]): max(Decimal(str(x["levelFrom"])), Decimal(str(x["levelTo"])))
         for x in load_records(physical_path("PN", DAY, DOOR))

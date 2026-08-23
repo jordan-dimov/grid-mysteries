@@ -77,3 +77,16 @@ def registered_capacities() -> dict[str, tuple[Decimal | None, Decimal | None]]:
             Decimal(demand) if demand is not None else None,
         )
     return capacities
+
+
+def fuel_types() -> dict[str, str]:
+    """Unit -> NESO fuel classification from the pinned BM-unit vintage.
+
+    Units absent from the vintage are reported by the caller as
+    `unclassified` rather than guessed; aggregator and virtual units
+    frequently carry no fuel type at all.
+    """
+    return {
+        str(record["elexonBmUnit"]): (record.get("fuelType") or "unclassified")
+        for record in load_records(BMUNITS_PATH)
+    }

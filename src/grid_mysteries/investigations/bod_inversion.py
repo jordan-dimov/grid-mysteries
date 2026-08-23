@@ -131,6 +131,24 @@ _PAIR_VOLUME_FIELDS = {
 }
 
 
+def accepted_volume_mwh(disptav_record: dict) -> Decimal:
+    """Total accepted volume in one DISPTAV record, as absolute MWh.
+
+    The single definition of "how much did this record accept". Four
+    investigations had written this by hand with quietly different
+    filters (named `negative1..6` fields versus every pair, `is not None`
+    versus truthiness); they agree on the pinned corpora, but an
+    analytical primitive that can drift between investigations should not
+    exist more than once. Absent and null pair volumes contribute zero;
+    the caller decides what a zero total means.
+    """
+    volumes = disptav_record.get("pairVolumes") or {}
+    return sum(
+        (abs(_decimal(value)) for value in volumes.values() if value is not None),
+        Decimal(0),
+    )
+
+
 def accepted_pairs(disptav_records: list[dict], direction: Direction) -> list[AcceptedPair]:
     """Parse one period's DISPTAV records for one direction.
 

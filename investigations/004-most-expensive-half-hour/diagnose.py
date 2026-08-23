@@ -34,7 +34,8 @@ from decimal import Decimal
 
 from acquire import EVIDENCE, RAW
 
-from grid_mysteries.corpus import BMUNITS_PATH, load_records, window_path
+from grid_mysteries.corpus import fuel_types, load_records, window_path
+from grid_mysteries.investigations.bod_inversion import accepted_volume_mwh
 from grid_mysteries.investigations.period_costs import parse_cost_rows
 from grid_mysteries.sources import neso
 
@@ -54,10 +55,7 @@ def accepted_volumes(day: str, period: int) -> dict[str, dict[str, Decimal]]:
         for record in load_records(window_path(f"disptav_{direction}", day, period)):
             if record.get("dataType") != "Original":
                 continue
-            total = sum(
-                (abs(Decimal(str(v))) for v in (record.get("pairVolumes") or {}).values() if v),
-                Decimal(0),
-            )
+            total = accepted_volume_mwh(record)
             if total:
                 volumes[str(record["bmUnit"])][direction] += total
     return volumes
@@ -111,18 +109,6 @@ def published_volumes(day: str) -> dict[int, dict[str, Decimal]]:
                 "constraint_bids_mwh": Decimal(row["Constraint Bids (MWh)"] or "0"),
             }
     return result
-
-
-def fuel_types() -> dict[str, str]:
-    """Unit -> NESO fuel classification, from the pinned reference vintage.
-
-    Units absent from the vintage are reported as `unclassified` rather
-    than guessed; aggregator and virtual units frequently carry none.
-    """
-    return {
-        str(r["elexonBmUnit"]): (r.get("fuelType") or "unclassified")
-        for r in load_records(BMUNITS_PATH)
-    }
 
 
 def run() -> None:

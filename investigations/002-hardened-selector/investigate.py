@@ -31,6 +31,7 @@ from grid_mysteries.corpus import (
     unit_maps,
     window_path,
 )
+from grid_mysteries.investigations.bod_inversion import accepted_volume_mwh
 from grid_mysteries.investigations.exclusion_attribution import categorise
 from grid_mysteries.investigations.hardened_selection import screen
 from grid_mysteries.sources import neso
@@ -84,10 +85,7 @@ def day_profile(unit: str, day: str) -> dict:
         volume = Decimal(0)
         for r in load_records(window_path("disptav_offer", day, period)):
             if str(r["bmUnit"]) == unit and r.get("dataType") == "Original":
-                volume += sum(
-                    (abs(Decimal(str(v))) for v in (r.get("pairVolumes") or {}).values() if v),
-                    Decimal(0),
-                )
+                volume += accepted_volume_mwh(r)
         if volume:
             accepted_periods += 1
         acceptances = [

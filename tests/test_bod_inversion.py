@@ -233,3 +233,22 @@ def test_inconsistent_price_slices_drop_the_pair() -> None:
     ]
     pairs = submitted_pairs(records, "offer")
     assert [(p.bm_unit, str(p.price_gbp_per_mwh)) for p in pairs] == [("W", "80")]
+
+
+def test_accepted_volume_sums_absolute_pair_volumes() -> None:
+    from grid_mysteries.investigations.bod_inversion import accepted_volume_mwh
+
+    # Bid pairs publish negative volumes; the total is absolute MWh.
+    assert accepted_volume_mwh(
+        {"pairVolumes": {"negative1": "-3.5", "negative2": "-1.25"}}
+    ) == Decimal("4.75")
+    # Absent, null and zero contribute nothing, and never raise.
+    assert accepted_volume_mwh({"pairVolumes": {"positive1": None, "positive2": "0"}}) == Decimal(0)
+    assert accepted_volume_mwh({}) == Decimal(0)
+    # Binary floats are still refused, as everywhere else in this module.
+    try:
+        accepted_volume_mwh({"pairVolumes": {"positive1": 1.5}})
+    except TypeError:
+        pass
+    else:
+        raise AssertionError("a binary float must be refused, not silently accepted")

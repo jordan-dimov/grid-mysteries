@@ -1,6 +1,15 @@
 [
  {
   "source": "forward-f001-public-as-of",
+  "dataset": "NESO-EMBEDDED-REGISTER",
+  "url": "https://api.neso.energy/datastore/dump/68b6f3a1-e1bf-403b-9062-0269fc758d77",
+  "path": "data/raw/neso/embedded_register_2026-08-22.csv",
+  "sha256": "9d85e097b2ef7954e7f88abc55fe85373881d1deaf2d337f2639f86100b5421f",
+  "fetched_at": "2026-08-23T07:20:55.746662+00:00",
+  "bytes": 89977
+ },
+ {
+  "source": "forward-f001-public-as-of",
   "dataset": "NESO-CONNECTIONS-REFORM-RESULTS",
   "url": "https://www.neso.energy/industry-information/connections-reform/connections-reform-results",
   "path": "data/raw/neso/neso-connections-reform-results.html",
@@ -16,6 +25,15 @@
   "sha256": "cb5c712b7f43fa545725bae4cb942c2c4353b8c0a2095c5a65ce7694de6bb514",
   "fetched_at": "2026-08-23T07:14:26.611756+00:00",
   "bytes": 1299675
+ },
+ {
+  "source": "forward-f001-public-as-of",
+  "dataset": "NESO-TEC-REGISTER",
+  "url": "https://api.neso.energy/datastore/dump/17becbab-e3e8-473f-b303-3806f43a6a10",
+  "path": "data/raw/neso/tec_register_2026-08-22.csv",
+  "sha256": "2a27eb1608fa43c27c8100f08ecc50564277097ceeb0ca439c82f1cb582c829a",
+  "fetched_at": "2026-08-23T07:20:54.911625+00:00",
+  "bytes": 429825
  },
  {
   "source": "forward-f001-public-as-of",

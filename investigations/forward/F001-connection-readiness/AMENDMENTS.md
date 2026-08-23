@@ -131,3 +131,102 @@ decision; and whether developers or financiers experience any residual
 burden it does not address. Those are the live questions, and this note
 records only that the study starts from an adverse position on F-5
 rather than a hopeful one.
+
+---
+
+## Amendment 4 — 2026-08-22: adequacy is a relation, not a property
+
+**Recorded before the buyer-workflow reconstruction was attempted.**
+
+Working note 1 treated F-5 as though "an adequate solution exists" were
+a property of a solution. It is not. **Adequacy is a relation between a
+provision, an actor, a decision, and a time.** NESO's process can be
+entirely adequate for the decision it was built to make — *should this
+project hold a place in the connections process?* — while saying nothing
+about whether it is adequate for a different actor making a different
+decision: *should I lend £150m against this?*, *what should I pay to
+acquire it?*, *which 500 MW of this 3 GW pipeline is credible?*
+
+Both of these can be true at once, and the study must be able to hold
+them simultaneously:
+
+- `AdequateFor(NESO process, NESO, queue allocation)` — plausibly yes.
+- `AdequateFor(NESO process, lender, credit decision)` — **not
+  established either way**, and that is the live question.
+
+This is the first structure F001 has *forced* rather than invented, and
+it is the correction to a common analytical error — "there is already a
+solution", with no answer to *for whom, to make what decision*. It is
+recorded here as discovered vocabulary; whether it becomes programme
+vocabulary waits until the study is done.
+
+## Working note 2 — 2026-08-22: what an external party can actually observe
+
+Pinned this session: NESO's **TEC Register** and **Embedded Register**
+(`evidence/public-as-of-manifest.json`).
+
+**Observed.** The public TEC Register carries 2,198 rows and exposes:
+Project Name, Customer Name, Connection Site, Stage, MW Connected, MW
+Increase/Decrease, Cumulative Total Capacity, MW Effective From, Project
+Status, Agreement Type, HOST TO, Plant Type, Project ID, Project Number,
+and **Gate**.
+
+So a readiness signal *is* public — the Gate field. Its coverage:
+
+| Gate | projects | capacity | share of register capacity |
+|---|---:|---:|---:|
+| 2 | 83 | 12,005 MW | 2.0% |
+| 1 | 733 | 268,691 MW | 44.6% |
+| *blank* | 1,382 | 321,776 MW | 53.4% |
+| total | 2,198 | 602,473 MW | |
+
+**Supported inference.** The closest thing to a public readiness marker
+is present but thin: **blank for 53% of registered capacity**, and only
+2.0% of capacity carries Gate 2. An external party can observe *that* a
+project reached a gate; it cannot observe from this source what evidence
+was supplied, when it was assessed, whether it still holds, what
+exceptions applied, or what has changed since.
+
+**Not publicly determinable from this source.** Why a Gate value is
+blank — pre-reform vintage, not yet assessed, or not applicable to that
+agreement type — is not distinguishable in the register, and is not
+assumed here.
+
+**What this does and does not support.** It supports the claim that the
+register publishes an *outcome* rather than the *evidence or its
+currency*. It does **not** yet establish that capital providers
+experience a material information gap: they may obtain the underlying
+evidence directly from developers in a data room, which is precisely
+what the buyer-workflow reconstruction must test. Three plant types
+dominate the register by capacity — energy storage (176.9 GW), storage
+co-located with PV (139.3 GW) and offshore wind (86.8 GW) — which also
+tests Amendment 3's suspicion that the question generalises well beyond
+data centres.
+
+## The provisional thesis, restated — 2026-08-22
+
+Superseding the formulations in the declaration and Amendment 3.
+Recorded as **a hypothesis under test**, not a finding:
+
+> As GB grid capacity becomes allocated partly on evidence of project
+> progression, the quality of a project's connection position comes to
+> depend on facts that can change over time. The network operator's
+> verification is designed for its own allocation decision, not
+> necessarily for the capital providers who must value and rely on that
+> position. **Does that create a material information gap around the
+> bankability and transaction value of grid connections?**
+
+If the answer is **no**, F001 has still succeeded: it will have killed a
+superficially attractive thesis before anyone spent money on it. If
+**yes**, the natural next question is whether connection quality is an
+under-measured asset attribute across generation, storage and large
+demand projects generally — which the register's composition above
+suggests is worth asking.
+
+**Next, in order of information value:** (1) does NESO's verification
+leave the project holding a reusable artefact, or only "NESO knows we
+passed"; (2) what a financier or acquirer can independently reconstruct;
+(3) whether readiness persists or decays — `R(project, t)` rather than
+`Ready(project)`; (4) whether anyone already sells the *external
+decision layer*, tested by evidence of purchase (mandates, DD scopes,
+deal announcements, job specifications) rather than marketing copy.

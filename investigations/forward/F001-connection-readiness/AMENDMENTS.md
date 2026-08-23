@@ -576,3 +576,102 @@ job specifications, and category terminology used **independently by
 buyers rather than vendors**.
 
 The post-cutoff findings stay quarantined throughout.
+
+---
+
+## Amendment 10 — 2026-08-23: the frozen instrument was defective, and is replaced before use
+
+`STAGE-TEST.md` v1 was frozen at digest `6d36070a…` and is preserved
+byte-exactly as `STAGE-TEST-v1-superseded.md`. **No measurement was
+taken under it.** Replacing an instrument before it is used is an
+instrument correction; replacing one after seeing results would be
+result-fitting, and is not what happened here. The distinction is the
+whole reason the timing is recorded.
+
+**The defect.** v1 assigned "the highest stage for which the required
+evidence class is met" on a 0–8 ladder. That forces a single ordinal and
+assumes category formation is monotone — that later stages presuppose
+earlier ones. It does not. A regulator can standardise an evidence
+format before commercial purchasing exists; an incumbent can absorb a
+capability before specialists appear; lenders can repeatedly buy work
+inside generic technical DD for years while no category vocabulary ever
+emerges. Each is a legitimate state v1 could only mis-record.
+
+**The replacement.** v2 measures **eight independent axes** — problem
+recognition, specialist supply, buyer spend, repeat spend,
+institutionalisation, standardisation, penetration, incumbent absorption
+— each scored from its own evidence, with **no axis inferable from
+another**, and *not determinable* preserved as a legitimate answer. The
+nine-stage language survives only as human shorthand with no authority
+over the result.
+
+## Amendment 11 — 2026-08-23: three clocks, and visibility lag as a finding
+
+v1 separated two clocks. Operationally there are **three**, and every
+material fact needs all of them:
+
+- **t_event** — when it happened;
+- **t_public** — when it became publicly knowable;
+- **t_discovered** — when we found it.
+
+A September case study saying "we have been buying since March" has
+t_event March, t_public September, t_discovered October. It is
+legitimate evidence for *what the market was doing in August*; it is not
+evidence that an observer *could have known* in August.
+
+So the study now produces **two profiles, always reported together**:
+`CategoryStateActual(2026-08-22)` using any evidence with t_event ≤
+cutoff, and `CategoryStateObservable(2026-08-22)` restricted to t_public
+≤ cutoff.
+
+**The gap between them is visibility lag, and it is a first-class
+finding rather than an error.** If a later disclosure shows the category
+was further along than it appeared, that does not mean F001 failed — it
+may mean F001 detected the category *from public information before
+buyer activity became publicly visible*, which is more interesting than
+merely being early. F001's own thesis may rest only on the observable
+profile.
+
+## Amendment 12 — 2026-08-23: what the machine is actually hunting
+
+Superseding the "category phase transitions" formulation of Amendment 9
+with something sharper. Four curves move through time:
+
+- **N(t)** — structural necessity;
+- **A(t)** — actual adoption;
+- **V(t)** — visible or recognised adoption;
+- **C(t)** — capital and competitive response.
+
+The states that matter:
+
+| pattern | reading |
+|---|---|
+| N↑, A≈0, V≈0 | white space — **ambiguous**: opportunity, or nobody cares |
+| N↑↑, A↑, V→ | **emerging category** — reality has begun forcing it, the closest buyers have begun paying, the wider market has not noticed |
+| N↑, A↑, V↑ | mature — too late |
+
+The target is the middle row, and **RepeatBuyerSpend is the key
+instrument** because it evidences that A(t) is moving for reasons
+stronger than founder enthusiasm. Adding the fourth curve: if buyers are
+quietly beginning to spend while funding, incumbent hiring and public
+attention remain low, the window is at its most interesting.
+
+The machine's objective, stated precisely enough to be operational and
+replacing "predictability × value":
+
+> **Find domains where necessity leads adoption leads recognition leads
+> capital, and the lag between those curves is unusually large.**
+
+Equivalently, the question F001 is building an instrument to answer
+repeatedly:
+
+> **Has economic reality begun moving before the evidence visible to
+> most observers says that it has?**
+
+## Next work, unchanged in scope
+
+Determine F001's **CategoryStateActual** and **CategoryStateObservable**
+as of 2026-08-22 under `STAGE-TEST.md` v2, axis by axis, with all three
+timestamps recorded for every material fact. Post-cutoff findings remain
+quarantined and may be used only as leads and as t_event evidence with
+established dates.

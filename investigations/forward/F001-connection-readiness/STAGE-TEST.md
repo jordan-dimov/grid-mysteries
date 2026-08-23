@@ -1,105 +1,121 @@
-# F001 — the category-stage test, declared before it is run
+# F001 — the category-maturity test, v2, declared before it is run
 
-**Declared 2026-08-23, before any stage research was performed.** This
-file is frozen at declaration, like `DECLARATION.md`, and is never
-edited; findings go in `AMENDMENTS.md`. Its purpose is to fix the
-measuring instrument before the measurement, so the classification
-cannot drift toward whichever answer is most flattering.
+**Declared 2026-08-23, before any stage research was performed.**
+Supersedes `STAGE-TEST-v1-superseded.md` (preserved byte-exactly, digest
+`6d36070a57ed3e5dcc4d905d702d39e528a1f1b4b8116fafb0e14d7e1db613fc`).
+The reason for superseding is recorded in `AMENDMENTS.md` Amendment 10.
+**No measurement had been taken under v1**, so this is an instrument
+correction, not a result-fitting revision. This file is frozen; findings
+go in `AMENDMENTS.md`.
 
-## The question
+## Why v1 was defective
 
-> **Where on the category-diffusion curve was "connection-quality
-> intelligence" in Great Britain as of 22 August 2026?**
+v1 assigned "the highest stage for which the required evidence class is
+met" on a 0–8 ladder. That forces a **single ordinal** and smuggles in
+an assumption category formation does not obey: that later stages
+presuppose earlier ones. Real counter-cases, any of which could apply
+here:
 
-Not "is there a gap". The prohibition in Amendment 6 stands: the study
-may not narrow the problem to restore white space.
+- a **regulator standardises** the evidence format before meaningful
+  commercial purchasing exists;
+- a **large incumbent absorbs** the capability before specialist
+  providers appear;
+- **lenders repeatedly buy** the work inside generic "technical DD" for
+  years while no separate category vocabulary ever emerges.
 
-## Two clocks, kept separate
+Each produces a legitimate state that v1 could only mis-record —
+*standardisation with almost no penetration*, *repeat spend with no
+vocabulary*, *specialist supply with almost no purchase*.
 
-These are different and have been conflated in ordinary market research:
+## What is measured: a profile, not a stage
 
-- **Knowability (public-as-of).** What could be known on 2026-08-22.
-  This protects the *prediction*: F001's thesis may rest only on the
-  pre-cutoff evidence set.
-- **State-of-world (as-of).** What was *true* on 2026-08-22, regardless
-  of when we learn it.
+Eight independent axes. Each is scored **separately**, from its own
+evidence, and **no axis may be inferred from another**:
 
-**For this stage assessment the relevant clock is state-of-world.**
-Evidence discovered after the cutoff is admissible **only** to establish
-facts about the world on or before 2026-08-22, and only when its date is
-independently established (incorporation dates, dated publications,
-archived captures, funding announcements, dated mandates). Evidence
-about the world *after* 22 August is **not** admissible here; it is
-outcome data for a later reassessment.
+| Axis | What it asks |
+|---|---|
+| Problem recognition | do relevant actors explicitly name the need? |
+| Specialist supply | have dedicated solutions appeared? |
+| Buyer spend | is money actually changing hands? |
+| Repeat spend | is purchasing recurring? |
+| Institutionalisation | is it a normal workflow or budget item? |
+| Standardisation | common terminology, metrics, schemas, assurance language? |
+| Penetration | what share of relevant decisions use it? |
+| Incumbent absorption | have mainstream providers incorporated it? |
 
-## The ladder
+Each axis is recorded as **established / partly established / not
+established / not determinable**, with the evidence cited. "Not
+determinable" is a legitimate and expected answer in a private
+transaction market, and is never converted into "absent".
 
-| Stage | Name | Observable evidence required |
-|---|---|---|
-| 0 | Latent problem | structural need only; nobody names it |
-| 1 | Vocabulary | multiple actors independently name the same problem |
-| 2 | Specialist supply | dedicated products or services exist |
-| 3 | Buyer experimentation | named mandates, pilots, first purchases |
-| 4 | Repeat procurement | the same buyers, or the same buyer category, buy again |
-| 5 | Budget line | a recognised DD, operations or procurement category |
-| 6 | Standardisation | common metrics, schemas, benchmarks, assurance language |
-| 7 | Incumbent absorption | major advisers or platforms offer it routinely |
-| 8 | Mature market | substantial penetration; competition on execution and price |
+The nine-stage language of v1 may still be used as human shorthand in
+prose. **It has no authority over the result.**
+
+## Three clocks
+
+Every material fact carries three timestamps, and conflating them is the
+error this study exists to avoid:
+
+- **t_event** — when the thing actually happened.
+- **t_public** — when it first became publicly knowable.
+- **t_discovered** — when we found it.
+
+Worked example: in October we find a September case study saying "we
+have been buying this since March 2026". Then t_event = March 2026,
+t_public = September 2026, t_discovered = October 2026. That fact is
+**legitimate** for reconstructing what the market was doing in August.
+It is **not** legitimate for claiming an observer could have known it in
+August.
+
+## Two outputs, always reported together
+
+- **CategoryStateActual(2026-08-22)** — the profile of what was *true*,
+  using any evidence whose **t_event ≤ 2026-08-22**, however late
+  discovered, provided t_event is independently established.
+- **CategoryStateObservable(2026-08-22)** — the profile restricted to
+  evidence whose **t_public ≤ 2026-08-22**.
+
+The difference between them is **visibility lag**, and it is a
+first-class finding rather than an error. A later disclosure showing the
+category was further along than it appeared does **not** mean F001
+failed; it may mean F001 detected the category *from public information
+before buyer activity became publicly visible*, which is a more
+interesting result than being early.
 
 ## Evidence classes, and the promotion rule
 
-Signals are **not** interchangeable, and the study may not promote a
-weaker one into a stronger:
+Carried unchanged from v1, and load-bearing:
 
 > **FounderAttention ≠ InvestorCapital ≠ BuyerSpend ≠ RepeatBuyerSpend**
 
-- *FounderAttention* — a company exists and describes the problem.
-  Establishes stage 1–2 only.
-- *InvestorCapital* — funding raised against the thesis. Stronger, but
-  still supply-side.
-- *BuyerSpend* — a named mandate, procurement notice, disclosed
-  engagement. **First evidence admissible for stage 3.**
-- *RepeatBuyerSpend* — recurring contracts, multiple transactions with
-  the same capability, renewal. Required for stage 4.
-
-Marketing copy is never evidence above stage 2. A price list is not a
-purchase.
+Marketing copy is never evidence of purchase. A price list is not a
+purchase. A weaker class may never be promoted into a stronger.
 
 ## The denominator rule
 
-Stage assignment is measured by **penetration of the addressable
-workflow**, never by raw vendor or customer counts. Ten providers
-serving 70% of relevant GB transactions is a different world from ten
-providers serving 2%. Where penetration cannot be estimated, that is
-recorded as *not determinable* rather than substituted with counts.
+Penetration is measured as a share of the **addressable workflow** —
+relevant GB transactions or decisions — never by vendor or customer
+counts. Where it cannot be estimated it is recorded *not determinable*.
 
-## Assignment rule
+## What the profile means for F001
 
-The category is assigned **the highest stage for which the required
-evidence class is actually met**, not the highest stage for which
-something suggestive exists. Where evidence is ambiguous between two
-stages, the **lower** is recorded, with the ambiguity stated. If the
-evidence for a stage cannot be found, the honest record is *not
-established* — never *therefore absent*, since absence of evidence in a
-private transaction market is weak.
+Assessed against **CategoryStateObservable**, since that is what F001's
+thesis may rest on:
 
-## What each outcome means for F001
+- **Specialist supply established, buyer spend not established** →
+  category emergence; F001 detected a forming market. Publishable with
+  its causal argument.
+- **Buyer spend and repeat spend established** → we arrived after the
+  first buyers. Honest framing: early, not predictive.
+- **Institutionalisation, standardisation or penetration established**
+  → substantially a rediscovery. The thesis dies and the study says so.
 
-- **Stages 1–2** — F001 has detected category emergence. Publishable as
-  a forecast of a forming market, with the causal argument for why it
-  had to form.
-- **Stages 3–4** — early but not notably predictive. Honest framing: we
-  arrived shortly after the first buyers did.
-- **Stages 5–8** — F001 substantially rediscovered an established
-  market. The thesis dies, and the study reports that plainly.
+All are successful outcomes. Only a concealed result is a failure.
 
-All three are successful outcomes of the study. Only a *concealed*
-result would be a failure.
+## Declared falsifier for the emergence claim
 
-## Declared falsifier for the stage claim itself
-
-If, on evidence dated on or before 2026-08-22, the study finds recurring
-buyer procurement of connection-quality assessment as a distinct line
-item — repeat mandates, standard DD scope inclusion, or named budget —
-then the "category near birth" classification is **refuted**, whatever
-else is true.
+If evidence with **t_public ≤ 2026-08-22** shows recurring buyer
+procurement of connection-quality assessment as a distinct line item —
+repeat mandates, standard DD scope inclusion, or a named budget — the
+"category near birth" classification is **refuted**, whatever else is
+true.

@@ -10,6 +10,15 @@
  },
  {
   "source": "forward-f001-public-as-of",
+  "dataset": "NESO-G2WQ-EVIDENCE-HANDBOOK-RESOURCES",
+  "url": "https://www.neso.energy/industry-information/connections-reform/evidence-handbook-and-other-g2wq-submission-resources",
+  "path": "data/raw/neso/neso-g2wq-evidence-handbook-resources.html",
+  "sha256": "cb5c712b7f43fa545725bae4cb942c2c4353b8c0a2095c5a65ce7694de6bb514",
+  "fetched_at": "2026-08-23T07:14:26.611756+00:00",
+  "bytes": 1299675
+ },
+ {
+  "source": "forward-f001-public-as-of",
   "dataset": "OFGEM-CONSULTATION-DATA-CENTRE-CONNECTION-REFORMS",
   "url": "https://www.ofgem.gov.uk/consultation/proposed-data-centre-connection-reforms",
   "path": "data/raw/ofgem/ofgem-consultation-data-centre-connection-reforms.html",

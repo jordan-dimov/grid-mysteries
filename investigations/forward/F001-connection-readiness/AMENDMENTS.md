@@ -230,3 +230,112 @@ passed"; (2) what a financier or acquirer can independently reconstruct;
 `Ready(project)`; (4) whether anyone already sells the *external
 decision layer*, tested by evidence of purchase (mandates, DD scopes,
 deal announcements, job specifications) rather than marketing copy.
+
+---
+
+## Amendment 5 — 2026-08-22: the object is evidence portability, and the test narrows to one decision
+
+**Recorded before the incumbent-market probe below.**
+
+F001 has surfaced a sharper object than "readiness". Three things that
+the study had been running together must be separated:
+
+> **verified outcome ≠ underlying evidence ≠ decision-grade evidence**
+
+NESO may hold enough evidence for *its* decision; the developer may hold
+enough to satisfy NESO. Whether that evidence is **portable across
+decisions and across time** is the open question. A lender needs to know
+what was actually evidenced, which party supplied it, whether it remains
+true, what NESO assumed, whether later events weakened it, and what
+follows if it fails.
+
+Relatedly, the economically interesting quantity is not `Gate2(project)`
+but something closer to `Gate2(project, assessed_at=t₀)` combined with
+facts at t₁ — end-user changed, procurement delayed, land rights
+changed, milestone missed — i.e. **P(connection survives | evidence at
+t)** rather than a static flag. **If readiness deteriorates materially
+between formal assessments, the currency of evidence may be worth more
+than the original verification.** That is a testable proposition and is
+now on the list.
+
+**The test narrows to one concrete decision**, rather than "how
+investors diligence connections" in general:
+
+> A fund is considering buying a development-stage GB BESS project
+> tomorrow. What exactly must its investment committee and lender
+> establish about the connection before paying for it?
+
+BESS is chosen because the connection can be a large share of
+development value, transaction activity is high, and the pinned TEC
+register shows storage is the largest single population (176.9 GW, plus
+139.3 GW co-located with PV). For each artefact in the chain — offer,
+Gate status, land and readiness evidence, milestones, correspondence,
+technical assumptions, modification history, termination risk, DD
+opinion — the study asks: does the buyer receive it, from whom, how
+current is it, can it be independently checked, who checks it today, and
+what does failure cost.
+
+## Working note 3 — 2026-08-22: F-5 first pass, and it bites
+
+**Instrument: a single web search of public marketing and news pages.
+This is a weak instrument and is labelled as such.** It cannot establish
+scope, price, frequency or adequacy, and no conclusion below rests on it
+alone.
+
+**Observed.** Grid connection review is already a **standard line item
+in commercially available BESS technical due diligence**, sold by
+multiple established firms to investors and lenders. Phase 1 technical
+DD is described as covering site review, plant design, contracts,
+operational concept, route to market, **grid connections**, planning
+approvals and financial model review. At least one documented
+**mandate** exists rather than mere advertising: ABL Group announced
+appointment as **lender's technical adviser to a UK BESS portfolio**.
+Others advertising BESS DD for investors and lenders include
+SgurrEnergy, Sinovoltaics, 3E and Solarif.
+
+**What this establishes.** The naive form of the opportunity — "nobody
+assesses grid connections for investors" — is **dead**. An incumbent
+advisory workflow exists, is purchased, and includes the connection.
+F-5 was correctly flagged in the declaration as the falsifier most
+likely to fire, and on first contact it fires against the naive
+formulation.
+
+**What this does not establish**, and must not be allowed to drift into:
+whether that review addresses the *durability and currency* of the
+connection position — the object Amendment 5 isolates — or whether it is
+a point-in-time desktop read of the connection offer and its dates.
+"Review of grid connections" in a Phase 1 scope is compatible with
+either. Marketing pages are incapable of settling it.
+
+**Consequence for the study.** The live question is no longer whether
+the need is served, but the one the incumbent pattern suggests:
+
+> **Which parts of a repeated, data-intensive, poorly standardised
+> advisory workflow are capable of becoming infrastructure?**
+
+That is a different and arguably better proposition than an unserved
+need, and it has its own evidential bar: it requires showing the work is
+*repeated and fragmented*, not merely that it is expensive. The
+progression to watch is consultancy → repeated methodology →
+standardised evidence model → data infrastructure; being early at the
+middle transitions is where value would sit, and F001 has not yet
+established which transition GB is at.
+
+**Better instruments needed**, in descending order of strength: actual
+technical-DD and lender-adviser scopes of work; investment-committee
+requirements; job specifications naming connection-position assessment;
+transaction announcements naming grid advisers; vendor DD pack contents.
+Evidence of *purchase and repetition*, not of *offering*.
+
+## Recorded but not adopted — the larger prize
+
+If — and only if — the study earns its propositions, the eventual
+category would not be data-centre readiness assurance but
+**connection-quality intelligence** for any asset whose economics depend
+on a scarce connection: storage, offshore and onshore wind, solar,
+electrolysers, large industrial load, data centres. The asset attribute
+set would gain something like *connection confidence / durability*
+alongside MW, COD, technology, location and lease status.
+
+**F001 has not earned this and it is recorded only so that it cannot
+later be presented as a finding that emerged from evidence.**

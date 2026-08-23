@@ -1,6 +1,13 @@
 # Grid Mysteries
 
-Grid Mysteries investigates surprising events in Britain's electricity system using public data. The goal is not hot takes or anomaly hunting for its own sake; it is **small, reproducible investigations that experts can falsify**.
+Grid Mysteries investigates Britain's electricity system using public data. The goal is not hot takes or anomaly hunting for its own sake; it is **small, reproducible investigations that experts can falsify**.
+
+The project runs **two tracks under one philosophy** — *don't accept the obvious story; reconstruct what reality permits*:
+
+- **Forensic Mysteries** (`investigations/`, ids `001`, `002`, …): *something happened that looks strange — what actually caused it?* Observed anomaly → explanation → methodological lesson.
+- **Forward Mysteries**, or **Inevitability Studies** (`investigations/forward/`, ids `F001`, …): *something is already changing — what future problem does that make hard to avoid, and who has not realised they will have to solve it?* Present facts → constraint → consequence → recognition gap → opportunity.
+
+They are the same discipline pointed at different tenses. A Forward Mystery is not a forecast and never a trend list; it is an argument that a consequence is **more determined than it appears**, published with the evidence that would refute it.
 
 ## Research doctrine
 
@@ -11,6 +18,10 @@ Grid Mysteries investigates surprising events in Britain's electricity system us
 - Preserve corrections and failed hypotheses. Being falsified is useful research; silently rewriting the past is not.
 - Distinguish realised facts from counterfactuals. Never label a counterfactual price difference as a saving or loss without proving substitutability and executability.
 - Prefer primary public sources and official methodology for market rules and data semantics. Do not guess changing API schemas or current rules.
+- **Public-as-of time is the forward analogue of the untouched window.** A Forward Mystery freezes, at a declared date, what was publicly knowable, how we read it, what we assumed, what we derived, what would falsify it, and what action looked attractive. Later knowledge never rewrites that record — it is appended as outcome. This is what makes the project accumulate an *authentic* prediction record rather than a collection of essays explaining why we were right all along.
+- **The irreversible boundary differs by track.** For forensic work it is *acquisition* — looking at unseen data — so the human seal gates the fetch. For forward work it is *publication* — a prediction, once public, cannot be un-predicted — so the human gate belongs at release, and the falsifier must be published with the claim, not after it.
+- A Forward Mystery must earn three separate propositions before it may name an opportunity: **the problem is coming**, **a buyer will be compelled to solve it**, and **existing solutions solve it inadequately**. The third is the hardest and is never assumed from the first two. Absent the third, the honest output is a described problem, not an opportunity.
+- Forward work reports a **profile across dimensions** (constraint strength, evidence quality, scenario robustness, recognition gap, buyer pain, solution adequacy, action lead, reflexivity), never a single score. A composite number converts judgement into false precision and hides which branch actually needs more research.
 - Selection rules are pre-declared and committed before their window's data is touched, and an **amended rule never runs against a window that taught the amendment**. Week N teaches the method; a fresh, untouched chronological window tests it. Improving the method from a lesson is legitimate; re-mining the same corpus until it yields the hoped-for mystery is not.
 
 ## Architecture
@@ -20,7 +31,8 @@ Grid Mysteries investigates surprising events in Britain's electricity system us
 - Raw public downloads stay local and immutable under `data/raw/`; derived datasets go under `data/derived/`. Commit only small fixtures when licensing permits.
 - Content-address source artefacts and retain enough metadata to reproduce them: publisher/dataset identity, URL or query identity, publication time when available, fetch time, and digest.
 - Put source-specific behaviour in `src/grid_mysteries/sources/`, reusable analytical logic in `src/grid_mysteries/investigations/`, and presentation in `src/grid_mysteries/rendering/`.
-- Each public investigation gets its own `investigations/<id>-<slug>/` directory. Keep the canonical method in tested Python modules, not in an opaque notebook.
+- Each public investigation gets its own directory: `investigations/<id>-<slug>/` for forensic work, `investigations/forward/F<nnn>-<slug>/` for Forward Mysteries. Existing top-level investigation directories are forensic by convention and are **not** relocated: their evidence is byte-pinned and referenced by digest, and tidiness is never worth disturbing a sealed record.
+- **The frozen declaration lives in its own file** (`DECLARATION.md`), never the document that later grows results. Its SHA-256 is what the governed record seals, so those bytes must remain recoverable forever; `scripts/check-record` enforces that every sealed digest still matches a file on disk. Keep the canonical method in tested Python modules, not in an opaque notebook.
 - Version pins belong in their operational files (`.python-version`, `pyproject.toml`, installer/lockfile/CI), not in this file.
 
 ## Engineering rules

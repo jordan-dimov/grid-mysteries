@@ -62,7 +62,9 @@ def resolve(document, path: str):
     return Decimal(str(node))
 
 checked = failures = untraced = 0
-for sources in sorted(Path("investigations").glob("*/evidence/metric-sources.json")):
+metric_specs = sorted(Path("investigations").glob("*/evidence/metric-sources.json"))
+metric_specs += sorted(Path("investigations").glob("*/*/evidence/metric-sources.json"))
+for sources in metric_specs:
     spec = json.loads(sources.read_text())
     inquiry = spec["inquiry"]
     for name, rule in spec["metrics"].items():
@@ -99,7 +101,9 @@ for claim in claims:
         args = [a["value"] for a in claim["args"]]
         sealed[args[0]] = args[1]
 on_disk = {}
-for candidate in Path("investigations").glob("*/DECLARATION-as-sealed.md"):
+declarations = list(Path("investigations").glob("*/DECLARATION-as-sealed.md"))
+declarations += list(Path("investigations").glob("*/*/DECLARATION.md"))
+for candidate in declarations:
     on_disk[hashlib.sha256(candidate.read_bytes()).hexdigest()] = candidate
 missing = {i: d for i, d in sealed.items() if d not in on_disk}
 for inquiry, digest in sorted(sealed.items()):

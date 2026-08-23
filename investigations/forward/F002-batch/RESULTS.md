@@ -10,14 +10,14 @@ Batch frozen at `5f352ebb096b6194571732bed281623879038d9c156b70fb6b36c2f6f80ba8a
 | C6 | Small flexible asset prequalification/delivery | **strain plausible but not measured** → downgraded, blocked on non-public data | [KILL-C6.md](KILL-C6.md) |
 | C7 | TO/DNO outage and access coordination | **absorption strain EVIDENCED** | [KILL-C7.md](KILL-C7.md) |
 | C8 | DNO→DSO whole-system asset visibility | pending | |
-| C3 | Grid Code compliance for inverter-based resources | pending | |
+| C3 | Grid Code compliance for inverter-based resources | **strain plausible but not measured** (unit cost published, failure rate not) | [KILL-C3.md](KILL-C3.md) |
 | C10 | Grid/consent evidence for large new demand | pending | |
 | C9 | Granular clean-energy claim verification | pending | |
 | C4 | BESS degradation and warranty verification | pending | |
 | C2 | Post-Gate-2 connection evidence (quarantined) | pending | |
 
 Running tally against the thresholds declared in `BATCH-01.md`:
-**evidenced or plausible strain: 2 of 4 resolved** — C7 evidenced, C6 plausible.
+**evidenced or plausible strain: 3 of 5 resolved** — C7 evidenced; C6, C3 plausible.
 That is already above the weak-generator threshold declared in `BATCH-01.md`.
 
 ## Instrument defects observed, deliberately not repaired

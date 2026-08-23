@@ -128,3 +128,41 @@ actually accumulate?** Nowhere → stable. An already-mature specialist
 market → C5 again. An incumbent automated ahead of demand → C1 again. A
 growing exception queue, onboarding bottleneck, repeated manual
 remediation or costly edge-case verification → **unfinished adaptation**.
+
+## L7 · A third instrument outcome: eligible, but unpublished (from C6)
+
+L1 asked whether an instrument *could* contain the hypothesised failure.
+C6 produces an instrument that **can** — and whose series is simply **not
+published**. That is a third outcome, and it must not be collapsed into
+either of the others:
+
+| outcome | meaning | what it indicts |
+|---|---|---|
+| ineligible | the failure could not appear here by construction | the observation design |
+| eligible, silent | the failure could appear and did not | the candidate |
+| **eligible, unpublished** | the failure could appear, the data exists operationally, and no one publishes it | **nothing yet** — it blocks |
+
+A candidate blocked this way is **downgraded, not held**. It is recorded
+with the exact observation that would resolve it and the party that holds
+it, so a later opportunity to obtain that observation is recognisable.
+
+For C6 that is: DSR Test Certificate failure counts and Delivery Partner
+metering-assessment turnaround per prequalification round, held by
+NESO/EMR Delivery Body.
+
+**Recurrences: C6.**
+
+## L6 outcome (pre-declared, resolved by C6)
+
+L6 was committed before C6 was run. Its anticipated trap — that
+asset-count amplification would evaporate into aggregator-level work —
+was **wrong in a useful direction**. Government states there is "no
+distinction between the information required for components with a very
+large capacity versus low-capacity components", so the per-component
+burden is real and undifferentiated, and portfolios churn through the
+Delivery Year. The amplification exists and is only now being
+deliberately collapsed by rule change.
+
+The other half of L6 — *where does marginal human work accumulate?* —
+proved to be the productive question, and separated C6's two functions
+cleanly where a single verdict would have averaged them into noise.

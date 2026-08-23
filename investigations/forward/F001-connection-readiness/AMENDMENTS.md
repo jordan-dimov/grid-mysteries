@@ -474,3 +474,105 @@ holds, the publishable result is not "here is a business" but:
 That is a legitimate outcome under the declaration, and arguably a
 better demonstration of the method than a business idea would have been.
 It is **not yet earned**.
+
+---
+
+## Amendment 7 — 2026-08-23: correcting Amendment 6's own overclaim
+
+Amendment 6 said that several small firms converging on the same
+friction is "a prediction confirmed by other people's **capital
+allocation**". **That is too strong, and it is my overclaim to fix.**
+Firms existing is founder attention. It is not investment, and it is
+certainly not purchase:
+
+> **FounderAttention ≠ InvestorCapital ≠ BuyerSpend ≠ RepeatBuyerSpend**
+
+All four are signals; they are not the same signal, and the weaker may
+never be promoted into the stronger. Amendment 6's four-outcome
+taxonomy and its prohibition on narrowing both stand unchanged — only
+the strength claimed for supply-side evidence is corrected. The
+promotion rule is now written into `STAGE-TEST.md`.
+
+## Amendment 8 — 2026-08-23: the stage test is declared before it is run
+
+The "birth or rediscovery?" question introduced in Amendment 6 was
+itself movable: nothing fixed how it would be answered, so the answer
+could have been fitted to whatever was found. It is now pre-declared in
+**`STAGE-TEST.md`** (frozen, digest
+`6d36070a57ed3e5dcc4d905d702d39e528a1f1b4b8116fafb0e14d7e1db613fc`),
+written **before any stage research was performed**.
+
+Three substantive changes to what Amendment 6 proposed:
+
+- **The arbitrary threshold is gone.** "Five mature vendors with
+  hundreds of customers" was falsifiable but wrong-shaped for a market
+  of few, high-value transactions. Replaced by a **nine-stage ladder**
+  (latent problem → vocabulary → specialist supply → buyer
+  experimentation → repeat procurement → budget line → standardisation
+  → incumbent absorption → mature market), each with its own required
+  evidence class.
+- **The denominator is penetration of the addressable workflow**, never
+  vendor or customer counts. Ten providers serving 70% of relevant GB
+  transactions is a different world from ten serving 2%; where
+  penetration is not estimable, that is recorded as not determinable.
+- **Two clocks are separated.** *Knowability* (public-as-of) protects
+  the prediction and still limits what F001's thesis may rest on.
+  *State-of-world* governs the stage measurement: facts about the world
+  on or before 22 August are admissible however late they are
+  discovered, provided their date is independently established. Facts
+  about the world *after* the cutoff are outcome data for a later
+  reassessment, not inputs here. This distinction is what lets the
+  quarantined post-cutoff findings be used honestly — as **leads**
+  telling us where to look, never as improvements to what F001 knew.
+
+## Amendment 9 — 2026-08-23: what the discovery machine is actually for
+
+Recorded because it changes the machine's objective, not just F001's.
+
+The machine should not search primarily for **white space**. It should
+search for **category phase transitions**:
+
+> structural pressure → repeated pain → specialist solutions → repeat
+> procurement → standard category
+
+The highest-value observation is not "no competitors" but:
+
+> **the world has moved from repeated pain to specialist solutions, and
+> has not yet recognised that this is becoming a category.**
+
+That enlarges the output space well beyond "a startup idea": build one
+of the emerging providers, invest in the best, supply infrastructure
+underneath all of them, identify upstream and downstream beneficiaries,
+create the standard or benchmark, acquire scarce complementary data, or
+simply predict which incumbents must eventually buy or build the
+capability.
+
+Stated as the objective: **find economically important categories after
+necessity becomes structurally visible, but before procurement becomes
+routine.**
+
+### The structure F001 is forcing, watched but not yet proposed
+
+Consistent with the rule that vocabulary is discovered, not designed,
+the transitions above appear to want distinct evidence predicates —
+
+`EvidenceOfProvision → EvidenceOfPurchase → EvidenceOfRepeatPurchase →
+EvidenceOfStandardisation → EvidenceOfPenetration`
+
+— with the kernel **refusing to let one be promoted into another**.
+That is the same class of error as `AdequateFor` in Amendment 4, and the
+same class humans make constantly. It is recorded as a candidate, and
+will be proposed only if F001 actually forces it.
+
+## Next work, deliberately narrow
+
+**Determine F001's category stage as of 22 August 2026**, under
+`STAGE-TEST.md`. Not another product hypothesis; not another narrowing.
+Hunt specifically for purchase → repeat purchase → recognised budget
+line → standardisation → incumbent absorption: named mandates, multiple
+transactions using the same capability, lender or IC requirements,
+procurement scopes, recurring monitoring contracts, internal teams and
+job specifications, and category terminology used **independently by
+buyers rather than vendors**.
+
+The post-cutoff findings stay quarantined throughout.

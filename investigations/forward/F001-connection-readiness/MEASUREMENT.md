@@ -116,3 +116,47 @@ House lookup and one dated press release.
   unknown, but it is now a question about *the adequacy of an existing
   service*, not about an unserved need — a materially weaker
   proposition, and one the study is not permitted to inflate.
+
+---
+
+## Forecast scorecard
+
+Scored as a vector, because "wrong" would destroy the information. F001
+failed by **capture**, not by **need** — the predicted problem
+materialised broadly as reasoned; the economy routed it somewhere the
+study did not anticipate.
+
+| dimension | verdict | basis |
+|---|---|---|
+| Structural need | **correct** | Ofgem's proposals and NESO's Gate 2 process are real and increasing the evidence burden |
+| Buyer need | **correct** | lenders and acquirers do require assurance about connection positions |
+| Timing novelty | **wrong** | the function was being bought in 2023, three years before declaration |
+| Category emergence | **wrong** | institutionalised inside incumbent technical DD; one 6-week-old standalone supplier with no observable buyer |
+| New-business capture | **wrong** | absorbed by an existing profession; no opportunity demonstrated |
+
+**Failure mode: capture failure.** The causal forecast was substantially
+right and the economic-transmission forecast was wrong. Recording those
+separately is what makes the miss instructive rather than merely
+discouraging.
+
+## The burden of proof on the one open question has inverted
+
+Whether incumbent DD assesses connection *durability over time* or a
+point-in-time position remains genuinely open. But after F-5 its
+standard has changed completely:
+
+- **before F-5** — maybe there is a new market;
+- **after F-5** — show *why the incumbent service becomes inadequate
+  under changing conditions*.
+
+Concretely, resurrecting commercial interest would now require evidence
+that **frequency required > frequency the incumbent workflow provides**,
+or that **new evidence complexity > economically scalable adviser
+capacity**. Without one of those, this is a feature somebody adds to
+technical due diligence, not a category. That presumption is now the
+default and the study is not permitted to argue around it.
+
+## Status
+
+**F001 is closed.** Its transferable result is the absorption doctrine
+now recorded in `CLAUDE.md`, not a finding about grid connections.

@@ -166,3 +166,71 @@ deliberately collapsed by rule change.
 The other half of L6 — *where does marginal human work accumulate?* —
 proved to be the productive question, and separated C6's two functions
 cleanly where a single verdict would have averaged them into noise.
+
+## L8 · Observability is a second, independent profile (from C6)
+
+Two questions that C6 shows are independent:
+
+> Does an adaptation gap exist? · **Can our evidence regime observe it?**
+
+A commercially excellent opportunity may be impossible for this project to
+establish from public evidence; a highly observable one may be
+commercially useless. Candidates may eventually need an **observability
+profile** beside their economic profile:
+
+`public data sufficient` · `obtainable with modest effort` ·
+`proprietary evidence required` · `fundamentally opaque`
+
+The practical discipline C6 already adopted, which stands whether or not
+the profile is ever formalised: convert "we need more evidence" into
+**"the hypothesis would be materially resolved by measurement M, held by
+party P."** That is what makes a blocked candidate recognisable later,
+and it is the first sketch of what a future data-acquisition layer would
+target. **Recurrences: C6.**
+
+## L9 · Process adaptation alone is weak evidence of a capacity ceiling (from C6)
+
+Recorded as a **standing caution against a specific inference this
+project has already drawn once**. In C6 the reading "calendar buffer plus
+termination fee ⇒ the institution cannot expand throughput" is
+suggestive, and must not harden into evidence on its own. Buffers and
+penalties are equally consistent with poor incentives, applicant
+procrastination, noisy portfolios, asymmetric information, or plain
+administrative sequencing.
+
+What earns *plausible* in C6 is the **conjunction**: explicit
+administrative burden + component-level scaling + continuous portfolio
+change + observed certification failure + process adaptation. No single
+member of that set would do it, and the missing operational series is
+precisely why the conjunction does not reach *evidenced*.
+
+## C7 pre-declaration (committed before C7 was run)
+
+C7's frozen symptom contains an attractive proxy that must be handled
+before it is retrieved: **"constraint cost attributed to outages grows"**.
+
+> outage-related constraint cost **⇏** coordination failure
+
+A perfectly coordinated and wholly unavoidable transmission outage can
+still create enormous constraint cost. That metric measures whether an
+outage was *economically consequential*, not whether the workflow that
+planned it is overloaded. It is therefore **ineligible for this
+hypothesis** under L1 unless a direct causal bridge is established, and
+"expensive outages" may not stand in for "bad outage coordination".
+
+The eligible form of the question, asked before any number is retrieved:
+
+> If outage and access coordination were genuinely overloaded, what event
+> must become **more common in the system that records this workflow**?
+
+Candidate events of the right shape: requests refused for coordination or
+resource reasons; rising rescheduling; shortening notice; more late
+changes; access delays; planned work displaced; repeated overruns; manual
+exception queues; materially longer approval lead times.
+
+And the second half of the eligibility test, which C5–C6 did not need:
+
+> is the hypothesised failure **distinguishable from ordinary engineering
+> causes** in this instrument?
+
+If not, `not determinable`, quickly.

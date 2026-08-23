@@ -35,3 +35,5 @@
 {"transformation": "link_metric", "actor": "claude_fable_5", "args_named": {"conclusion": "concl-004-reconstructed", "metric": "met-004-units"}}
 {"transformation": "link_metric", "actor": "claude_fable_5", "args_named": {"conclusion": "concl-004-reconstructed", "metric": "met-004-ccgt-headroom-mw"}}
 {"transformation": "link_metric", "actor": "claude_fable_5", "args_named": {"conclusion": "concl-004-reconstructed", "metric": "met-004-margin-excluded-mw"}}
+{"transformation":"consume_corpus","actor":"claude_fable_5","args_named":{"corpus":"corpus-2026-06","inquiry":"inq-004"}}
+{"transformation": "register_corpus", "actor": "claude_fable_5", "args_named": {"corpus": "probe-june-overlap", "first_day": "2026-06-20", "last_day": "2026-06-25"}}

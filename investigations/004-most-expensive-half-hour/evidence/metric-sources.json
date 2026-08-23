@@ -1,0 +1,50 @@
+{
+ "inquiry": "inq-004",
+ "note": "Where each governed EvidenceMetric value comes from, and its declared relation to the evidence. Verified by scripts/check-record. Money and volume metrics were bound ROUNDED TO WHOLE UNITS; that rounding is declared here (see the investigation's Corrections).",
+ "metrics": {
+  "selected_period_published_constraints_gbp": {
+   "file": "selected-period.json",
+   "path": "selected.constraints_gbp",
+   "relation": "rounded",
+   "quantum": "1"
+  },
+  "selected_period_accepted_bid_mwh": {
+   "file": "episode-diagnostic.json",
+   "path": "periods.6.layer2_accepted_bid_mwh",
+   "relation": "rounded",
+   "quantum": "1"
+  },
+  "selected_period_accepted_offer_mwh": {
+   "file": "episode-diagnostic.json",
+   "path": "periods.6.layer2_accepted_offer_mwh",
+   "relation": "exact"
+  },
+  "selected_period_units_with_accepted_volume": {
+   "file": "episode-diagnostic.json",
+   "path": "periods.6.layer2_units_with_accepted_volume",
+   "relation": "exact"
+  },
+  "selected_period_outside_bm_adjustment_gbp": {
+   "file": "episode-diagnostic.json",
+   "path": "periods.6.layer3_bsad.energy_cost",
+   "relation": "rounded",
+   "quantum": "1"
+  },
+  "selected_period_outside_bm_adjustment_mwh": {
+   "file": "episode-diagnostic.json",
+   "path": "periods.6.layer3_bsad.energy_volume",
+   "relation": "rounded",
+   "quantum": "1"
+  },
+  "fleet_ccgt_headroom_mw_at_window_open": {
+   "file": "starting-state.json",
+   "path": "published_headroom_mw_by_fuel.CCGT",
+   "relation": "exact"
+  },
+  "neso_stated_margin_excluded_by_constraints_mw": {
+   "file": "starting-state.json",
+   "path": "neso_stated_exclusion_mw_on_selected_day",
+   "relation": "exact"
+  }
+ }
+}

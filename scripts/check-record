@@ -1,0 +1,93 @@
+#!/usr/bin/env bash
+# Two checks the governed record deserves and did not have.
+#
+# 1. DRIFT: the repo's batches must account for every claim in the live
+#    database. scripts/record keeps them together; proposing directly
+#    does not, and that has silently happened twice. replay-research
+#    catches it, but only in CI (v2 replay needs a disposable cluster),
+#    so locally there was no detection at all. This is the local one.
+#
+# 2. METRIC PROVENANCE: RESEARCH-V2-DESIGN.md says "CI recomputes
+#    metrics from artefacts and refuses drift". Nothing did. Each
+#    investigation now declares evidence/metric-sources.json mapping a
+#    governed metric_name to the evidence file and JSON path it came
+#    from, plus the declared relation to that value (exact, or rounded
+#    to a stated quantum). A governed number nobody can trace back to a
+#    file is exactly the hole EvidenceMetric exists to close.
+#
+# Needs DATABASE_URL. Read-only: proposes nothing, writes nothing.
+set -euo pipefail
+cd "$(dirname "$0")/.."
+export PATH="${HOME}/.local/bin:${PATH}"
+exec uv run python - "$@" <<'PY'
+import json, os, subprocess, sys
+from decimal import Decimal
+from pathlib import Path
+
+url = os.environ.get("DATABASE_URL")
+if not url:
+    raise SystemExit("check-record: DATABASE_URL is unset")
+claims = json.loads(
+    subprocess.run(["morpholog", "inspect", "claims", "--database-url", url],
+                   capture_output=True, text=True, check=True).stdout
+)
+
+# ---- 1. repo/database drift -------------------------------------------------
+batch_rows = 0
+for batch in sorted(Path("morpholog/batches").glob("*.ndjson")):
+    batch_rows += sum(1 for line in batch.read_text().splitlines() if line.strip())
+transitions = int(subprocess.run(
+    ["psql", url, "-tAc", "select count(*) from morpholog.audit"],
+    capture_output=True, text=True, check=True).stdout.strip())
+print(f"repo batches: {batch_rows} rows   database transitions: {transitions}")
+if batch_rows != transitions:
+    raise SystemExit(
+        f"DRIFT: {transitions - batch_rows} transition(s) in the database are not in the "
+        "repo batches. Something was proposed outside scripts/record; append the row(s) "
+        "in the order they happened and re-export claims/anchor/pack."
+    )
+print("   no drift: every committed transition is accounted for in the repo")
+
+# ---- 2. metric provenance ---------------------------------------------------
+governed = {}
+for claim in claims:
+    if claim["predicate"] == "EvidenceMetric":
+        args = [a["value"] for a in claim["args"]]
+        governed[(args[1], args[3])] = Decimal(args[4])
+
+def resolve(document, path: str):
+    node = document
+    for step in path.split("."):
+        node = node[int(step)] if step.lstrip("-").isdigit() else node[step]
+    return Decimal(str(node))
+
+checked = failures = untraced = 0
+for sources in sorted(Path("investigations").glob("*/evidence/metric-sources.json")):
+    spec = json.loads(sources.read_text())
+    inquiry = spec["inquiry"]
+    for name, rule in spec["metrics"].items():
+        key = (inquiry, name)
+        if key not in governed:
+            print(f"   ?  {inquiry}/{name}: declared source but no governed metric")
+            untraced += 1
+            continue
+        document = json.loads((sources.parent / rule["file"]).read_text())
+        value = resolve(document, rule["path"])
+        if "minus_path" in rule:
+            value -= resolve(document, rule["minus_path"])
+        relation = rule.get("relation", "exact")
+        ok = value == governed[key] if relation == "exact" else (
+            value.quantize(Decimal(rule["quantum"])) == governed[key]
+        )
+        checked += 1
+        if not ok:
+            failures += 1
+            print(f"   !! {inquiry}/{name}: governed {governed[key]}, evidence {value} "
+                  f"({relation})")
+untraced += len(governed) - checked
+print(f"metric provenance: {checked} checked, {failures} mismatched, "
+      f"{len(governed) - checked} governed metric(s) with no declared source")
+if failures:
+    raise SystemExit("check-record: a governed metric does not match its evidence")
+print("check-record: OK")
+PY

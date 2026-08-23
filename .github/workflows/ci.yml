@@ -52,3 +52,10 @@ jobs:
       - env:
           REHEARSE_ADMIN_URL: postgres://postgres:postgres@localhost:5432/postgres
         run: ./scripts/rehearse-v2
+      # The governed record's own integrity: repo/database drift, and every
+      # EvidenceMetric traced back to the evidence file it came from.
+      # Runs against the REPLAY database, which replay-research rebuilt from
+      # the committed batches, so it needs no production credential.
+      - env:
+          DATABASE_URL: postgres://postgres:postgres@localhost:5432/grid_mysteries_replay
+        run: ./scripts/check-record

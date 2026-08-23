@@ -1,0 +1,12 @@
+{
+ "inquiry": "inq-002",
+ "note": "Where each governed EvidenceMetric value comes from, and its declared relation to the evidence. Verified by scripts/check-record. The money metrics were bound ROUNDED TO WHOLE POUNDS; that rounding is declared here rather than left as an untraceable difference (see the investigation's Corrections).",
+ "metrics": {
+  "raw_candidates": {"file": "funnel.json", "path": "stages.0.candidates", "relation": "exact"},
+  "surviving_candidates": {"file": "funnel.json", "path": "stages.2.candidates", "relation": "exact"},
+  "naive_notional_raw_gbp": {"file": "funnel.json", "path": "stages.0.naive_counterfactual_notional_gbp", "relation": "rounded", "quantum": "1"},
+  "naive_notional_surviving_gbp": {"file": "funnel.json", "path": "stages.2.naive_counterfactual_notional_gbp", "relation": "rounded", "quantum": "1"},
+  "candidates_with_published_exclusion": {"file": "neso-crosscheck.json", "path": "candidates_with_a_published_exclusion_on_either_side", "relation": "exact"},
+  "candidates_without_published_exclusion": {"file": "neso-crosscheck.json", "path": "surviving_candidates", "minus_path": "candidates_with_a_published_exclusion_on_either_side", "relation": "exact"}
+ }
+}

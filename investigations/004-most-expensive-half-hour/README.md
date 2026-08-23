@@ -585,3 +585,16 @@ rewritten.
    causation ("the instruction working"); it is a settlement-period
    consistency check and now says only that metered output is consistent
    with the published bid-down instructions.
+3. **2026-08-22, maintenance pass.** Two record-level defects, both
+   found by building checks rather than by reading. (a) **June was never
+   recorded as consumed.** 004 fetched and analysed the whole window,
+   but no `consume_corpus` row existed, so the overlap guard did not
+   know June was spent and would have admitted an overlapping window to
+   a future *prospective* inquiry. Now recorded, and the guard verified
+   to refuse. (b) Several governed metrics were bound **rounded to whole
+   units** (e.g. `selected_period_published_constraints_gbp` 1176150
+   against a published 1176149.891). `EvidenceMetric` is append-only, so
+   the values stand; the rounding is now declared in
+   `evidence/metric-sources.json` and checked. A third gap — four
+   governed numbers with no evidence file behind them at all — is closed
+   by `starting_state.py`, which emits the door snapshot they came from.

@@ -1,0 +1,40 @@
+{
+ "labelling": "Published headroom is MEL - FPN at the door period, aggregated by NESO fuel class. For intermittent generation MEL is an availability FORECAST, not firm deliverable capability (Investigation 002), so the wind figure is not callable capacity. The exclusion figures are NESO's own words in its published warning.",
+ "day": "2026-06-24",
+ "door_period": 39,
+ "published_headroom_mw_by_fuel": {
+  "unclassified": "23451",
+  "WIND": "19115",
+  "OTHER": "1325",
+  "OCGT": "715",
+  "BIOMASS": "130",
+  "CCGT": "88",
+  "NPSHYD": "0",
+  "INTNED": "0",
+  "INTELEC": "0",
+  "INTEW": "0",
+  "INTGRNL": "0",
+  "INTIFA2": "0",
+  "INTIRL": "0",
+  "INTVKL": "0",
+  "INTNEM": "0",
+  "PS": "0",
+  "NUCLEAR": "0",
+  "COAL": "0"
+ },
+ "neso_stated_margin_exclusion_mw": [
+  {
+   "published": "2026-06-25T23:30:00Z",
+   "megawatts": "1066"
+  },
+  {
+   "published": "2026-06-24T07:10:00Z",
+   "megawatts": "1250"
+  },
+  {
+   "published": "2026-06-23T21:04:00Z",
+   "megawatts": "1300"
+  }
+ ],
+ "neso_stated_exclusion_mw_on_selected_day": "1250"
+}

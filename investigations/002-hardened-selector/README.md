@@ -424,3 +424,14 @@ uv run python investigations/002-hardened-selector/investigate.py crosscheck
 `select` and `investigate` read declared parameters from the governed
 record and refuse to run without it, so the thresholds cannot drift from
 what was sealed.
+3. **2026-08-22, maintenance pass.** The governed money metrics
+   (`naive_notional_raw_gbp`, `naive_notional_surviving_gbp`) were bound
+   **rounded to whole pounds**, not at the precision held in
+   `evidence/funnel.json` (£94,330,188.2267… and £23,836,303.5935…).
+   `EvidenceMetric` is append-only and unique per (inquiry, name), so the
+   bound values stand. The rounding is now **declared** in
+   `evidence/metric-sources.json` and verified by `scripts/check-record`,
+   so the relation between the governed number and its evidence is
+   explicit rather than an untraceable difference. Discovered by
+   implementing a check the design document had claimed for weeks
+   without anything performing it.

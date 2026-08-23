@@ -34,7 +34,11 @@ programme remains `research.morph` (v1) until Investigation 002 opens.
    that must be attached to the same inquiry, after evidence seal;
    `ConclusionUsesMetric` may only link a metric of the conclusion's own
    inquiry; `draft_publication` refuses a conclusion with no bound
-   metrics; CI recomputes metrics from artefacts and refuses drift. The
+   metrics; **`scripts/check-record` (CI) traces every governed metric
+   back to the evidence file and JSON path it came from, under a
+   relation each investigation declares in `evidence/metric-sources.json`
+   (exact, or rounded to a stated quantum), and refuses on mismatch or
+   on any governed metric with no declared source**. The
    renderer reads governed values — prose never carries a number
    authoritatively.
 4. **Standing is a pointer, not an edit.** Native three-predicate

@@ -675,3 +675,63 @@ as of 2026-08-22 under `STAGE-TEST.md` v2, axis by axis, with all three
 timestamps recorded for every material fact. Post-cutoff findings remain
 quarantined and may be used only as leads and as t_event evidence with
 established dates.
+
+---
+
+## Amendment 13 — 2026-08-23: three candidates recorded, instrument untouched
+
+Recorded as **candidates forced by the study**, deliberately **not**
+built into `STAGE-TEST.md` v2. The instrument is now good enough to use,
+and further improvement must earn its way out of evidence rather than
+out of argument. F001 measures next.
+
+**Candidate A — a third epistemic state.** Beyond
+`CategoryStateActual` and `CategoryStateObservable` there may need to be
+`CategoryStateInferred(T | E≤T)`: what the machine *concluded* at T from
+evidence public by T. If no buyer purchase is publicly disclosed, yet
+suppliers exist, incumbents hire, regulatory pressure rises and
+terminology converges, the machine may legitimately infer high
+probability of adoption already occurring. If disclosures six months
+later confirm it, the demonstrated property is **inference preceded
+disclosure** — a far stronger claim than "the information was not
+public". The eventual scorecard: *what was directly knowable, what did
+we infer, what was actually true?*
+
+**Candidate B — necessity of the problem ≠ necessity of the category.**
+The four curves start with N(t) as though structural necessity implies a
+market. It does not. What becomes necessary is a **function**, which the
+economy may satisfy through developers internally, incumbent advisers,
+lenders' existing DD teams, NESO, transaction lawyers, software, a new
+specialist category, or any mixture. So `N_P(t)` (necessity of solving
+the problem) must be separated from `S(t)` (how the economy chooses to
+solve it), and only under some conditions does S(t) externalise into a
+category. This guards against a seductive inference the study is
+currently exposed to: *this problem must be solved, therefore somebody
+will build a big business solving it.* **Not necessarily** — the system
+often absorbs a new function into an existing job almost frictionlessly.
+The open question worth eventually modelling: *what causes a newly
+necessary function to externalise into its own category rather than be
+absorbed?* Likely factors: cross-organisational coordination, specialist
+data, repeated workflow, independence requirements, liability,
+standardisation, economies of scale.
+
+**Candidate C — C(t) bundles incompatible things.** Founder capital,
+venture funding, incumbent capex and market-price recognition are not
+interchangeable. For business discovery, competitive capital matters;
+for investment discovery what matters is closer to `P(t)`, the degree to
+which the consequence is **already priced**. A category can be detected
+very early while its one listed supplier trades at 80× earnings — great
+forecast, terrible investment — or be well recognised while an obscure
+upstream supplier stays mispriced. The mature chain is therefore
+necessity → adoption → visibility → competitive response → **price
+incorporation**, with different opportunities living in different gaps.
+
+## The search target, restated
+
+Superseding Amendment 12's formulation with the sharper version these
+candidates imply:
+
+> **Find economically necessary functions whose real adoption is
+> beginning to outrun their public visibility, then determine whether
+> the resulting value will form a new category, be absorbed by
+> incumbents, or create a mispriced dependency elsewhere.**

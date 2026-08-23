@@ -77,3 +77,54 @@ The forcing question for any migration-adjacent candidate:
 **Recurrences: C1.** Note this is a *guard already implied* by v3's
 insistence on revealed strain — it is logged because C1 shows the
 temptation is strong enough to need naming.
+
+## L5 · v3 has no timing sensor for unfinished adaptation (from C5 + C1)
+
+The suspected central weakness: **v3 detects structural pressure but
+cannot tell whether adaptation to it is still unfinished.** C5 found
+pressure after externalisation *and* maturation; C1 found it after
+anticipatory institutional adaptation. Both are real pressure. Neither is
+an opportunity.
+
+The missing object, written as it wants to become:
+
+> `AdaptationGap(t) = required capability(t) − deployed adaptive
+> capability(t)`
+
+The question is not "is demand growing faster than headcount?" — v3
+already rejects that — but **"has the forcing variable outrun the
+adaptations already being deployed to absorb it?"**
+
+**Recurrences: C5, C1.** If C6 or C7 repeat it, this becomes the leading
+candidate for v4. Not added to v3.
+
+## L6 · Ask where marginal human work accumulates, not whether volume grows (from C6, pre-declared)
+
+Two related traps, written down **before C6 was run** so the result
+cannot be credited to hindsight.
+
+**Asset-count amplification.** "Millions of small assets" is not a
+workload measure. The economically relevant unit may be the aggregator,
+the portfolio, the standard interface or the telemetry endpoint, in which
+case 100,000 new assets means one integration plus automated checks and
+the apparent volume force evaporates. The question is: **what is the
+actual scarce unit of work?** — physical asset, asset class, aggregator,
+portfolio, service registration, telemetry endpoint, or exception.
+
+**The exception tail.** The specimen v3 is hunting may not live in
+aggregate throughput at all:
+
+> automation absorbs the mean **while** complexity accumulates in
+> exceptions
+
+High growth → interface standardised → normal cases scale automatically →
+**manual exception population grows disproportionately.** Many software
+and service categories are born exactly there.
+
+So the governing question for a scaling-participation candidate is
+neither "are there lots of assets?" nor "is verification complicated?"
+but: **as participation scales, where does the marginal human work
+actually accumulate?** Nowhere → stable. An already-mature specialist
+market → C5 again. An incumbent automated ahead of demand → C1 again. A
+growing exception queue, onboarding bottleneck, repeated manual
+remediation or costly edge-case verification → **unfinished adaptation**.

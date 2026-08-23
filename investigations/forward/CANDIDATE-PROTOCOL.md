@@ -1,119 +1,100 @@
-# Forward Mysteries — candidate generation and killing, Generator v2
+# Forward Mysteries — candidate generation and killing, Generator v3
 
-**Declared 2026-08-23, before any F002 candidate was generated.**
-Supersedes `CANDIDATE-PROTOCOL-v1-superseded.md` (preserved byte-exactly,
-digest `47148d6c8fd63634431130df4a3479030d07c9f1f08a811c6dd483edd7fb9afe`).
-**No candidate had been generated under v1**, so this is an instrument
-correction, not a result-fitting revision — the same discipline that
-replaced `STAGE-TEST` v1 before use.
+**Declared 2026-08-23, before any candidate was generated.** Supersedes
+v1 (`47148d6c…`) and v2 (`9dcabde7…`), both preserved byte-exactly. No
+candidate had been generated under either. **This is the final revision
+before the generator runs**; further changes must wait for evidence from
+a completed batch, not argument.
 
-## The two defects in v1
+## Defect in v2: the gradient was wrong-shaped
 
-**1. It made a local rule sound like doctrine.** v1 said a candidate
-carrying none of the ten externalisation forces "is NOT INVESTIGATED".
-The ten forces are **hypotheses**, derived from a single study. Freezing
-them is right for *evaluating this generator*; treating them as truth
-would mean that when the generator misses something valuable, the miss
-gets redefined as invalid rather than recorded as **the generator being
-wrong**. The rule is therefore explicitly scoped: **it binds Generator
-v2 only, and exists to be scored, not obeyed indefinitely.**
+v2 tested `d(required function)/dt` versus `d(incumbent capacity)/dt`.
+**Capacity is deceptive.** Fivefold workload against 20% more
+consultants is comfortably absorbable if software makes each consultant
+five times more productive; an apparent labour shortage evaporates if
+prices rise enough to attract entrants. Headcount is not capacity.
 
-**2. Its kill question was binary.** "Who already gets paid?" returns
-yes or no, and F001 returned yes. But *absorbed successfully* and
-*absorbed badly but not yet externalised* are entirely different states.
-An incumbent profession may already perform a function while customers
-resent the process, costs escalate, staffing cannot scale and turnaround
-worsens. **That candidate should survive the kill**, even with no
-specialist category in existence.
+The economically meaningful object is the **marginal cost of absorption
+as required workload grows** — and it is measured by *revealed strain*,
+not by input counts.
 
-## The absorption kill, restated
+### Revealed strain: what to look for
 
-> **Who already gets paid to perform this function — and is that
-> absorption economically stable as the forcing variable grows?**
+Rising prices · lengthening queues or turnaround · falling service
+quality · rapid hiring · work triaged or refused · customers
+internalising work they would rather outsource · emergency automation ·
+standardisation pressure · liability or coordination failures ·
+unusually high margins attracting entrants.
 
-The test is a **gradient**, not a state:
+**If workload rises fivefold and incumbent output rises fivefold at
+roughly unchanged price, latency and quality, absorption is healthy —
+regardless of headcount.**
 
-> d(required function)/dt  versus  d(incumbent capacity)/dt
+### The kill returns one of four values, never a fake number
 
-If required work can grow fivefold and the incumbent profession can
-comfortably absorb fivefold: boring, stop. If required work can grow
-fivefold while delivery capacity grows a fifth, **something has to
-change** — and the study does *not* assume what. It could be software, a
-new specialist, standardisation, automation, pricing power,
-consolidation, or demand destruction. Naming the resolution in advance
-is the error F001 nearly made.
+- **absorption stable** → stop.
+- **absorption strain evidenced** → the interesting specimen; continue.
+- **absorption strain plausible but not measured** → see below.
+- **absorption not determinable** → recorded as such, never converted.
 
-Outcomes of step 2, all recorded:
+### Plausible strain does not promote indefinitely
 
-- **absorbed, stable** → stop. No new category predicted.
-- **absorbed, with evidence of strain** → continue; this is the
-  interesting specimen.
-- **not absorbed** → continue.
-- **not determinable** → recorded as such; never converted to either.
+A candidate may not sit in "plausible" while deep research accumulates
+around it. It gets a **cheap forcing test** first:
 
-## Generator v2 scorecard
+> **What observable consequence should already exist if absorption is
+> genuinely under strain?**
 
-The experiment is on the **generator**, not the candidates. After
-several runs it is scored on four outcomes, and the fourth is why a
-false-negative log exists at all:
+Then look for *that*, before anything expensive. If the theory is
+"specialist grid engineers cannot absorb exploding study volumes", do
+not begin with a week of modelling future applications — first ask
+whether lead times, salaries, vacancies, consultant pricing or project
+delays are already moving. If the symptom is absent, **kill or
+downgrade**.
 
-| outcome | what it says about the generator |
-|---|---|
-| dies immediately, function already absorbed and stable | poor candidate selection — but a cheap failure |
-| absorbed, with genuine evidence of strain | **good candidate generation** |
-| survives into deeper causal work | very good candidate generation |
-| appealing opportunity found **outside** the generator's rules | potential **false negative** — the generator, not the opportunity, is what failed |
+This extends research-leverage into a chain:
 
-**False negatives must be recorded or they cannot be measured.** Any
-opportunity encountered by other means that would *not* have been
-generated by these rules is logged in `FALSE-NEGATIVES.md` with the
-reason the rules missed it. Without that log the generator can only ever
-measure its false positives, which would make it look better than it is.
+> externalisation force → predicted symptom of strain → **cheap forcing
+> observation**
 
-## Candidate generation
+## Defect in v2: candidate-selection leakage
 
-Bias toward functions where **two or three externalisation forces are
-already plausibly present** — combinations most likely to externalise:
+v2 did not say how many candidates to produce, which invited the worst
+failure available: generate one, dislike it, ask the frozen generator
+for another. Human taste re-enters through *selection* even though the
+generator is frozen.
 
-- continuous + cross-organisational + data-intensive
-- high-volume + latency-sensitive + standardisable
-- independence-required + liability-bearing + comparable across assets
-- specialist human workflow + rising transaction volume + expensive
-  adviser labour
+**Candidates are therefore produced as a frozen batch.** Before any
+candidate is exposed to incumbent-market evidence, the batch file
+records: every candidate produced; the evidence used only to justify
+generation; externalisation-force tags; the generator's ordering; and
+**the order in which absorption kills will be run**. Nothing is added,
+removed or reordered afterwards.
 
-Candidates carrying none of these are **not investigated under Generator
-v2** — a scoring rule for this generator, not a claim that no such
-opportunity exists.
+That converts the experiment from *"can we find a good F002?"* into
+**"what distribution of candidates does Generator v3 produce?"** — which
+is the question actually worth answering.
 
-## The kill order, binding
+## Scoring the batch, not the winner
 
-1. Establish the structural change **only enough to justify looking**.
-2. Run the **absorption kill** as restated above, including the gradient.
-3. If absorbed and stable, **stop and record**. Continue only on evidence
-   of strain, which means demonstrating a specific force.
-4. Only then earn constraint, consequence, recognition and capture.
+The generator is scored on the **whole batch**:
 
-A candidate dying at step 2 is a **success** and is recorded with the
-same care as one that survives.
+- 8 of 10 comfortably absorbed → **Generator v3 is weak**, even if
+  candidate 9 later becomes a brilliant company.
+- 5 of 10 showing measurable strain → **enormously interesting**, even
+  if all five resolve without creating standalone businesses.
 
-## Research allocation, scoring, publication
+Because in that case the generator has learned to locate **economic
+systems under adaptation pressure** — and that, rather than "startup
+opportunities", is what the machine is fundamentally trying to detect.
+From adaptation pressure one can later ask where value accrues: to
+software, specialists, incumbents, labour, assets, standards, suppliers
+or investors. **The machine does not assume it accrues to a startup.**
 
-Unchanged from v1: next action chosen by *(probability of changing the
-capture verdict × economic importance) ÷ cost*; every closed study
-scored as a vector `(need, timing, adoption, capture)` with the failure
-mode named; negative studies not published standalone, becoming
-publishable only inside a broader piece once the process is visibly
-repeatable.
+## Carried unchanged from v2
 
-## What success looks like for F002/F003
-
-Not a surviving business thesis. **At least one candidate whose
-absorption kill returns a measurable gradient rather than a yes/no.**
-F001 gave: *need exists → incumbent absorption strong → stop.* The first
-genuinely interesting specimen would read: *need growing → incumbents
-absorb it today → but volume, frequency or latency is moving faster than
-incumbent capacity → investigate.*
-
-At this stage we are not trying to discover the business. We are trying
-to discover whether we have built a **better search distribution** for
-finding them.
+Generation biased toward two or three co-present externalisation forces;
+the four sought combinations; the exclusion rule scoped to *this
+generator* and existing to be scored rather than obeyed; the false
+negative log; the kill order; vector scoring `(need, timing, adoption,
+capture)`; publication posture for negative studies.

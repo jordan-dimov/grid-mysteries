@@ -6,7 +6,7 @@ Batch frozen at `5f352ebb096b6194571732bed281623879038d9c156b70fb6b36c2f6f80ba8a
 | # | Candidate | Verdict | Record |
 |---|---|---|---|
 | C5 | Constraint/curtailment settlement reconciliation | **absorption stable** (externalisation already completed) | [KILL-C5.md](KILL-C5.md) |
-| C1 | MHHS settlement data quality assurance | pending | |
+| C1 | MHHS settlement data quality assurance | **absorption stable** (transition mistaken for structural change) | [KILL-C1.md](KILL-C1.md) |
 | C6 | Small flexible asset prequalification/delivery | pending | |
 | C7 | TO/DNO outage and access coordination | pending | |
 | C8 | DNO→DSO whole-system asset visibility | pending | |
@@ -17,16 +17,32 @@ Batch frozen at `5f352ebb096b6194571732bed281623879038d9c156b70fb6b36c2f6f80ba8a
 | C2 | Post-Gate-2 connection evidence (quarantined) | pending | |
 
 Running tally against the thresholds declared in `BATCH-01.md`:
-**evidenced or plausible strain: 0 of 1 resolved.**
+**evidenced or plausible strain: 0 of 2 resolved.**
 
 ## Instrument defects observed, deliberately not repaired
 
 Held until the batch is complete, so a local defect is not mistaken for a
-systematic one.
+systematic one. Full entries in [`../LESSONS-PENDING.md`](../LESSONS-PENDING.md).
 
-- **C5**: v3 has an absorption kill but no *already-externalised* kill.
-  The mirror question "has this function already left the incumbent, and
-  when?" is unasked, so the generator can point at a mature category.
-- **C5**: the frozen forcing observation named a register (BSC Trading
-  Disputes) that structurally cannot contain the disputes the candidate
-  is about — owner-vs-optimiser disagreements are contractual, not BSC.
+- **L1 · instrument eligibility** — an observed population must be
+  capable, by construction, of containing the hypothesised failure.
+  **Recurred in C5 (whole observation) and C1 (half).** Two of two.
+- **L2 · already-externalised** — v3 has no mirror to its absorption
+  kill for functions that left the incumbent years ago. **C5.**
+- **L3 · positive control** — C5 yielded a dated trajectory of a category
+  that did form; kept for comparison, not as a template. **C5.**
+- **L4 · transition expenditure ≠ category formation** — **C1.**
+
+### Two distinct ways a candidate is late
+
+Both found in the first two kills:
+
+| | mechanism | candidate |
+|---|---|---|
+| absorbed successfully | the incumbent scales, usually as software, and cost per unit falls | C1 |
+| already externalised successfully | the function left the incumbent years ago and the category has matured | C5 |
+
+Neither is "no demand". In both the need was real; the generator's error
+was **timing**, in opposite directions — C5 pointed six years late at a
+formed category, C1 pointed at a volume increase whose absorber was
+already building for it.

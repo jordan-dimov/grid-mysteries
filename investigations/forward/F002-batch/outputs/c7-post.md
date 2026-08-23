@@ -1,56 +1,44 @@
-Britain has to rebuild more of its transmission network this decade than
-it has in generations. To do that work, circuits have to come out of
-service — and someone has to coordinate which ones, when, and around
-whom.
+To upgrade the grid, you have to switch parts of it off.
 
-I went looking for how well that is going. National Grid Electricity
-Transmission publishes annual KPIs on it, under the GB Network Access
-Policy. Three years, FY22 to FY24:
+Britain is about to do more of that work than it has in generations —
+which makes finding safe windows to do it a much bigger job than it
+sounds.
 
-**Year-ahead outage plan actually delivered**
-61% → 50% → 46%
+Some numbers from NESO.
 
-**Outages that started on the date agreed at year-ahead stage**
-32% → 26% → 25%
+A typical year-ahead plan for the transmission network holds about
+**2,500 outages**.
 
-**Outages changed for a _positive_ reason** (bundling, accelerating work,
-early completion)
-10% → 7% → 5%
+During the year, NESO then processes **more than 17,000 changes** to that
+plan. Around 7,500 of them up to three weeks ahead, and 10,000 inside the
+final three weeks.
 
-**Assets taken out of service more than once in a year**
-1,157 → 1,181 → 2,846
+Every change means the detailed assessment starts again. A team of **65
+engineers** does this work.
 
-The obvious explanation is that more things are breaking. The data says
-otherwise: system faults over the same period fell from 260 to 64. Plan
-adherence is dropping while the network is becoming *less* fault-prone.
+NESO's own words: the system "has become increasingly complex over recent
+years as we decarbonise… resulting in not only an increased workload but
+also an increased interaction between outages."
 
-Generators noticed. Access curtailed by transmission outages for non-firm
-connections went from 0% to 3.62% in a single year.
+National Grid publishes its side of it. In FY24 it delivered 46% of its
+year-ahead plan, and 25% of outages started on the date originally
+agreed.
 
-Then the detail I keep coming back to. Two KPIs in this set could not be
-reported at all. The count of new outages requested within the year was
-withheld because of data issues in eNAMS, the shared outage management
-system. And KPI 5 — the one actually titled "Outage coordination" —
-"cannot be reported in a volumetric way" because of how the information
-is recorded in that same system.
+One of its KPIs is actually called "Outage coordination". National Grid
+says it still can't report that one, because of how the information is
+recorded in eNAMS, the shared outage system.
 
-The measure named coordination is the one the coordination system cannot
-produce.
+None of this means the process is failing. NESO is already responding —
+System Access Reform aims to fit more than 80% of planned outages into a
+rolling six-year plan.
 
-I don't know what this means yet, and I'd rather say so than guess. It
-could be tooling. It could be planning capacity. It could be the
-unavoidable consequence of a far busier network doing far more
-construction. It could be something structural about the TO / NESO / DNO
-interface that simply isn't visible from outside.
+So it's a race, not a breakdown.
 
-So if you work in network access planning, outage delivery, or on the
-DNO side of it, there is one thing I would genuinely like to understand:
+What I can't see from the outside is where the effort actually goes.
 
-**What actually causes a planned outage to move once it is in the
-programme?**
+If you work in network access planning or outage delivery: **of those
+17,000 changes, which ones eat most of the engineering time — and what
+causes them?**
 
----
-
-*Sources: NGET Network Access Planning Key Performance Indicators, July
-2023 and July 2024, published under the GB Network Access Policy.
-Figures are NGET's own, as published.*
+*Sources: NESO Network Access Planning and System Access Reform; NGET
+Network Access Planning KPIs.*

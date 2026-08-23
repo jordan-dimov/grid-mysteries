@@ -91,3 +91,78 @@ NGET, *Network Access Planning Key Performance Indicators*, July 2023
 (NGET/NGESO). NESO Network Access Planning, eNAMS and System Access
 Reform pages. UKERC, *Transmission Network Unavailability* — cited only
 to show the trap, not as evidence.
+
+---
+
+# Correction, 2026-08-23 (same day, before publication)
+
+Three claims in the record above are withdrawn. Two were my errors; one
+is superseded by data I have not been able to obtain.
+
+## 1. The faults argument is invalid — withdrawn
+
+I wrote that the decline "is not fault-driven" because system faults fell
+260 → 64. **NGET says the fall is an artefact of its own recording
+change**, in the same document I read:
+
+> "between FY23 and FY24, we have changed how we record faults and
+> unplanned outages in ENAMS. We now record fault outages for those
+> assets that have been switched out by automatic operation. This change
+> in approach has driven the reduction in number of system faults
+> reported in FY24 and the increase in unplanned outages."
+
+I extracted the KPI table and did not read the commentary beneath it.
+The ordinary-engineering confounder is therefore **not** separated, which
+was the load-bearing step of the eligibility argument. Withdrawn
+entirely.
+
+## 2. The 2,846 figure is superseded — withdrawn
+
+Reported as repeat asset removals rising 2.4×. NGET is understood to have
+revalidated FY24 to 1,480, with FY25 falling to 640. I could not obtain
+the source document (see §4), so the figure is withdrawn rather than
+restated.
+
+## 3. The 3.62% non-firm curtailment is withdrawn
+
+It applies to very few sites, and is understood to fall to 0.09% in FY25
+on a single 8.17-hour outage. It was the weakest link when written and
+should not have been included.
+
+## 4. FY25 data exists and I could not verify it
+
+A later KPI publication reportedly shows year-ahead plan delivery
+recovering to 50%, exact-date starts to 28%, and within-year requests
+rising sharply (delivery-phase 1,438 → 2,184). **I could not locate or
+fetch that document**, and the citation offered for it resolves to the
+July 2024 publication, which cannot contain FY25. These figures are
+therefore **neither used nor relied upon**, and the phrase "monotonic
+over three years" is withdrawn as unsafe.
+
+## Verdict after correction
+
+**Held at absorption strain evidenced, but re-based on different
+evidence.** It no longer rests on a trend in NGET's adherence KPIs. It
+rests on NESO's own published description of the workload, which I
+fetched and verified verbatim:
+
+- a typical final year-ahead plan contains **~2,500 outages**;
+- NESO then processes **over 17,000 TO outage changes** to that plan in a
+  typical year — ~7,500 in Optimisation timescales, ~10,000 in Delivery;
+- **"Any outage changes received following the initial TO submission
+  means the NESO detailed outage assessment needs to begin again."**;
+- the work is done by **a team of 65 engineers**;
+- NESO states the system "has become increasingly complex over recent
+  years as we decarbonise... resulting in not only an increased workload
+  but also an increased interaction between outages."
+
+That is the incumbent describing rising required work against a named,
+finite team, with a restart-on-change process — direct, first-party, and
+not dependent on any inference I made. The verified KPI 5 defect stands:
+the metric named "Outage coordination" cannot be reported volumetrically
+because of how eNAMS records the data.
+
+**Lesson, recorded once and not elaborated**: I read a KPI table and not
+the commentary that qualified it. Cheap forcing observations must include
+the source's own caveats, or the instrument is being misread rather than
+merely mis-chosen.

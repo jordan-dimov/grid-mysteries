@@ -7,15 +7,19 @@ never refetched, never overwritten. The manifest is derived from the
 journal, not rebuilt from scratch.
 """
 
-from __future__ import annotations
-
 import json
 import time
 from collections.abc import Callable, Iterable
 from pathlib import Path
 
+from grid_mysteries.corpus import REPO_ROOT
 from grid_mysteries.hashing import sha256_file
 from grid_mysteries.models import SourceArtifact
+
+
+def progress(relative_path: str) -> None:
+    """The per-artefact progress line fetch scripts print."""
+    print(f"pinned {relative_path}", flush=True)
 
 
 def load_journal(journal_path: Path) -> dict[str, dict]:
@@ -73,4 +77,30 @@ def fetch_journalled(
 
     manifest = sorted(journal.values(), key=lambda entry: entry["path"])
     manifest_path.write_text(json.dumps(manifest, indent=1) + "\n")
+    return fetched, skipped
+
+
+def pin(
+    jobs: Iterable[tuple[str, str, Path]],
+    *,
+    journal_path: Path,
+    manifest_path: Path,
+    fetch: Callable[..., SourceArtifact],
+    label: str | None = None,
+    sleep_seconds: float = 0.1,
+    progress: Callable[[str], None] | None = None,
+) -> tuple[int, int]:
+    """`fetch_journalled` against the repository root, with the summary an
+    acquisition script prints once the batch is pinned."""
+    fetched, skipped = fetch_journalled(
+        jobs,
+        journal_path=journal_path,
+        manifest_path=manifest_path,
+        repo_root=REPO_ROOT,
+        fetch=fetch,
+        sleep_seconds=sleep_seconds,
+        progress=progress,
+    )
+    prefix = f"{label}: " if label else ""
+    print(f"{prefix}fetched {fetched}, verified and skipped {skipped}", flush=True)
     return fetched, skipped

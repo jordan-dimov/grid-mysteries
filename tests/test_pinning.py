@@ -4,8 +4,10 @@ from pathlib import Path
 
 import pytest
 
+from grid_mysteries import corpus
 from grid_mysteries.hashing import sha256_file
 from grid_mysteries.models import SourceArtifact
+from grid_mysteries.sources import pinning
 from grid_mysteries.sources.pinning import fetch_journalled, load_journal
 
 
@@ -62,6 +64,30 @@ def test_fetch_journalled_pins_and_resumes_without_refetching(tmp_path: Path) ->
     manifest = json.loads(manifest_path.read_text())
     assert [entry["path"] for entry in manifest] == ["raw/a.json", "raw/b.json"]
     assert load_journal(journal_path).keys() == {"raw/a.json", "raw/b.json"}
+
+
+def test_pin_journals_under_the_repository_root_and_prints_the_summary(
+    tmp_path: Path, monkeypatch, capsys
+) -> None:
+    monkeypatch.setattr(pinning, "REPO_ROOT", tmp_path)
+    jobs = [("D1", "https://example.invalid/a", tmp_path / "raw" / "a.json")]
+    payloads = {jobs[0][1]: b"a"}
+
+    result = pinning.pin(
+        jobs,
+        journal_path=tmp_path / "journal.ndjson",
+        manifest_path=tmp_path / "manifest.json",
+        fetch=fake_fetch_factory(payloads, []),
+        label="elexon",
+        sleep_seconds=0,
+        progress=pinning.progress,
+    )
+
+    assert result == (1, 0)
+    assert json.loads((tmp_path / "manifest.json").read_text())[0]["path"] == "raw/a.json"
+    out = capsys.readouterr().out
+    assert out == "pinned raw/a.json\nelexon: fetched 1, verified and skipped 0\n"
+    assert tmp_path != corpus.REPO_ROOT  # the patch was local to the pinning module
 
 
 def test_fetch_journalled_refuses_unjournalled_and_corrupted_artefacts(tmp_path: Path) -> None:

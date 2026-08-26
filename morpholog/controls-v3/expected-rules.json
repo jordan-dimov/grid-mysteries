@@ -1,0 +1,16 @@
+{
+ "1": "verdict_declaration_sealed",
+ "2": "seal_requires_declaration_authority",
+ "3": "verdict_code_known",
+ "4": "verdict_stage_not_yet_recorded",
+ "5": "verdict_stage_known",
+ "6": "declaration_kind_known",
+ "7": "supersede_prior_not_yet_superseded",
+ "8": "supersede_prior_sealed",
+ "9": "reading_watch_exists",
+ "10": "reading_outcome_known",
+ "11": "fire_trigger_not_yet_fired",
+ "12": "clocks_ordered",
+ "13": "evidence_class_known",
+ "14": "forward_governance_not_yet_established"
+}

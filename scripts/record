@@ -20,12 +20,12 @@ export DATABASE_URL="${DATABASE_URL:-postgres:///grid_mysteries_morpholog}"
 
 BATCH_FILE="morpholog/batches/$1"
 ROW="$2"
-# Programme dispatch by filename: batches named *.v2.ndjson are proposed
-# against the v2 programme; everything else against v1. One convention,
-# shared with scripts/replay-research, so a mixed v1+v2 history stays
-# recordable and replayable.
+# Programme dispatch by filename: *.v2.ndjson -> v2, *.v3.ndjson -> v3,
+# everything else -> v1. One convention, shared with scripts/replay-research,
+# so a mixed v1+v2+v3 history stays recordable and replayable.
 PROGRAMME=morpholog/research.morph
 [[ "$BATCH_FILE" == *.v2.ndjson ]] && PROGRAMME=morpholog/research-v2-draft.morph
+[[ "$BATCH_FILE" == *.v3.ndjson ]] && PROGRAMME=morpholog/research-v3-draft.morph
 MARKER="morpholog/.record-recovery"
 SIGNING_KEY="${AUDIT_SIGNING_KEY:-$HOME/.config/grid-mysteries/audit-signing-2026.pem}"
 

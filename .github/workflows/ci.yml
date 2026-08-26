@@ -48,7 +48,10 @@ jobs:
         run: createdb -h localhost -U postgres grid_mysteries_controls
       - env:
           CONTROLS_DATABASE_URL: postgres://postgres:postgres@localhost:5432/grid_mysteries_controls
-        run: ./scripts/check-controls
+        run: ./scripts/check-controls v2
+      - env:
+          CONTROLS_DATABASE_URL: postgres://postgres:postgres@localhost:5432/grid_mysteries_controls
+        run: ./scripts/check-controls v3
       - env:
           REHEARSE_ADMIN_URL: postgres://postgres:postgres@localhost:5432/postgres
         run: ./scripts/rehearse-v2

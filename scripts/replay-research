@@ -92,10 +92,12 @@ print(f'   {checked} governance rows attest the human login {expected!r} '
 
 echo "== replaying proposal batches into a fresh database"
 morpholog init --database-url "$REPLAY_URL" --reset --i-know-this-deletes-data >/dev/null
-v2_batches=()
+# v2 and v3 batches share the actor policy (bound to login roles by v2's
+# establish_governance) and are replayed together, in order, by the helper.
+governed_batches=()
 for batch in morpholog/batches/*.ndjson; do
-  if [[ "$batch" == *.v2.ndjson ]]; then
-    v2_batches+=("$batch")
+  if [[ "$batch" == *.v2.ndjson || "$batch" == *.v3.ndjson ]]; then
+    governed_batches+=("$batch")
     continue
   fi
   echo "   $batch (research.morph)"
@@ -116,9 +118,9 @@ done
 # roles the record itself names and proposes each row through the matching
 # connection — preserving order, and learning the bindings from the
 # committed establish_governance row rather than hardcoding them.
-if (( ${#v2_batches[@]} )); then
-  for batch in "${v2_batches[@]}"; do echo "   $batch (research-v2-draft.morph)"; done
-  python3 scripts/replay_v2.py "$REPLAY_URL" "${v2_batches[@]}"
+if (( ${#governed_batches[@]} )); then
+  for batch in "${governed_batches[@]}"; do echo "   $batch (programme by suffix)"; done
+  python3 scripts/replay_v2.py "$REPLAY_URL" "${governed_batches[@]}"
 fi
 
 echo "== replayed claims must equal the committed export"

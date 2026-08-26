@@ -100,11 +100,29 @@ for claim in claims:
     if claim["predicate"] == "ProtocolDeclared":
         args = [a["value"] for a in claim["args"]]
         sealed[args[0]] = args[1]
+# v3: a Declaration's content_digest is sealed by DeclarationSealed; the
+# same recoverability rule applies to generator protocols, batch files,
+# kill tests and study declarations.
+v3_declared = {}
+v3_sealed = set()
+for claim in claims:
+    args = [a["value"] for a in claim["args"]]
+    if claim["predicate"] == "Declaration":
+        v3_declared[args[0]] = args[3]
+    elif claim["predicate"] == "DeclarationSealed":
+        v3_sealed.add(args[0])
+for declaration in sorted(v3_sealed):
+    sealed[declaration] = v3_declared[declaration]
 on_disk = {}
 # Every frozen declaration anywhere under investigations/: forensic
 # (DECLARATION-as-sealed.md), forward (F*/DECLARATION.md) and the newer
 # top-level DECLARATION.md form. A narrower glob silently exempted 005.
-declarations = list(Path("investigations").rglob("DECLARATION*.md"))
+# v3 seals more than DECLARATION files: generator protocols, batch files
+# and the F001 stage test are frozen artefacts too.
+declarations = list(Path("investigations").rglob("*DECLARATION*.md"))
+declarations += list(Path("investigations").rglob("BATCH-*.md"))
+declarations += list(Path("investigations").rglob("CANDIDATE-PROTOCOL*.md"))
+declarations += list(Path("investigations").rglob("STAGE-TEST*.md"))
 for candidate in declarations:
     on_disk[hashlib.sha256(candidate.read_bytes()).hexdigest()] = candidate
 missing = {i: d for i, d in sealed.items() if d not in on_disk}
@@ -119,5 +137,29 @@ if missing:
         "before the data was seen' cannot be checked by anyone."
     )
 print(f"sealed declarations: {len(sealed)} verified against files on disk")
+
+# ---- 4. dated watches: an overdue watch with no reading is a broken promise
+from datetime import date
+
+watches = {}
+readings = set()
+for claim in claims:
+    args = [a["value"] for a in claim["args"]]
+    if claim["predicate"] == "Watch":
+        watches[args[0]] = (args[1], args[2], args[3], date.fromisoformat(str(args[4])[:10]))
+    elif claim["predicate"] == "WatchReading":
+        readings.add(args[0])
+today = date.today()
+overdue = {w: v for w, v in watches.items() if v[3] < today and w not in readings}
+for watch, (about, observation, holder, due) in sorted(watches.items(), key=lambda kv: kv[1][3]):
+    state = "read" if watch in readings else ("OVERDUE" if due < today else "open")
+    print(f"   {state:8s} {watch}: {about} — {observation} (held by {holder}, due {due})")
+if overdue:
+    raise SystemExit(
+        f"check-record: {len(overdue)} watch(es) past due with no reading recorded. A dated "
+        "resolving observation is an obligation, not a note: record a reading "
+        "(outcome resolved / unchanged / not_available) via scripts/record."
+    )
+print(f"watches: {len(watches)} open, none overdue")
 print("check-record: OK")
 PY

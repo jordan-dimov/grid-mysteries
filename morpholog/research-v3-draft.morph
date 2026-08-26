@@ -1,0 +1,238 @@
+-- DRAFT v3 of the Grid Mysteries research programme. NOT DEPLOYED.
+--
+-- v1 records that research acts happened. v2 makes the forensic lifecycle
+-- executable (seal gates acquisition; metrics carry provenance; standing
+-- is superseded, never edited). v3 governs what the forward and verifier
+-- tracks forced during F001-F005, Batch 01/02 and Investigation 005, none
+-- of which the earlier programmes could hold:
+--
+--   1. A frozen declaration sealed before evidence, for artefacts that are
+--      not inquiries: generator protocols, batch files, kill tests, study
+--      declarations. "Frozen on commit" was a git digest; this is the
+--      Merkle-chained one.
+--   2. Verdicts that carry their reason. Every kill returns a code from a
+--      closed vocabulary plus the reason text, and can only be recorded
+--      against a sealed declaration - so a verdict on an unfrozen test
+--      cannot exist.
+--   3. Dated resolving observations. A watch names the observation that
+--      would resolve a downgraded candidate, who holds it, and when it is
+--      due; readings are recorded against it. scripts/check-record refuses
+--      an overdue watch with no reading - the prose promise becomes an
+--      obligation.
+--   4. Reopening triggers for parked theses (F004), fired only against a
+--      digest of the evidence that fired them.
+--   5. Evidence classes with the three clocks (t_event on_or_before
+--      t_public), so the promotion ban FounderAttention != InvestorCapital
+--      != BuyerSpend != RepeatBuyerSpend is recorded per claim rather than
+--      argued in prose.
+--
+-- Deployment model as v2: same database and audit chain, fully disjoint
+-- predicate vocabulary (Declaration/Verdict/Watch/ReopenTrigger/
+-- EvidenceClaim vs v2's Inquiry/EvidenceArtifact/Conjecture/Conclusion).
+-- Actor policy (ActorAssertionRestricted/Authority) is already established
+-- by v2's bootstrap and is read by the adapter regardless of programme; v3
+-- declares only its own authority predicate. Every gate is named so the
+-- control tests can pin the refusing rule.
+
+program grid_mysteries_research_v3
+
+-- Only the human seals. Granted once by establish_forward_governance.
+predicate DeclarationSealAuthority(actor: Subject)
+    append only
+
+-- kind: #generator | #batch | #forward_study | #kill_test | #forensic_study
+predicate Declaration(declaration: Subject, kind: Subject, title: Subject, content_digest: Subject, declared_at: Timestamp)
+    append only
+    unique by (declaration)
+predicate DeclarationSealed(declaration: Subject, sealed_at: Timestamp)
+    append only
+    unique by (declaration)
+-- A superseded declaration stays sealed and on disk; the successor points
+-- at it. One prior per successor; a prior may be superseded once.
+predicate DeclarationSupersedes(successor: Subject, prior: Subject)
+    append only
+    unique by (successor)
+
+-- stage: #gate | #k0 | #k1 | #k2 | #k3 | #q1 | #q2 | #q3 | #kill
+-- code (closed vocabulary, see in_verdict_code_vocabulary)
+predicate Verdict(verdict: Subject, declaration: Subject, about: Subject, stage: Subject, code: Subject, reason: Subject, evidence_digest: Subject, recorded_at: Timestamp)
+    append only
+    unique by (verdict)
+    unique by (declaration, about, stage)
+
+predicate Watch(watch: Subject, about: Subject, resolving_observation: Subject, holder: Subject, due: Date)
+    append only
+    unique by (watch)
+-- outcome: #resolved | #unchanged | #not_available
+predicate WatchReading(watch: Subject, read_on: Date, reading_digest: Subject, outcome: Subject)
+    append only
+
+predicate ReopenTrigger(trigger: Subject, about: Subject, condition: Subject)
+    append only
+    unique by (trigger)
+predicate TriggerFired(trigger: Subject, evidence_digest: Subject, fired_on: Date)
+    append only
+    unique by (trigger)
+
+-- evidence_class: #provision_exists | #provision_purchased | #repeat_purchase
+--                 | #standardised | #penetration_measured
+-- Three clocks: t_event (when it happened) and t_public (when it became
+-- knowable); t_discovered is the audit-log sequence and is never an arg.
+predicate EvidenceClaim(claim: Subject, about: Subject, evidence_class: Subject, evidence_digest: Subject, t_event: Date, t_public: Date)
+    append only
+    unique by (claim)
+
+define in_declaration_kind_vocabulary(kind):
+    kind = #generator
+    or kind = #batch
+    or kind = #forward_study
+    or kind = #kill_test
+    or kind = #forensic_study
+
+define in_stage_vocabulary(stage):
+    stage = #gate
+    or stage = #k0
+    or stage = #k1
+    or stage = #k2
+    or stage = #k3
+    or stage = #q1
+    or stage = #q2
+    or stage = #q3
+    or stage = #kill
+
+define in_verdict_code_vocabulary(code):
+    code = #measured_stable
+    or code = #measured_strain
+    or code = #unmeasured_unpublished
+    or code = #unmeasured_ineligible
+    or code = #not_yet_observable
+    or code = #absorption_stable
+    or code = #absorption_strain_evidenced
+    or code = #absorption_plausible_unmeasured
+    or code = #absorption_not_determinable
+    or code = #buyer_real_external
+    or code = #buyer_real_internal
+    or code = #buyer_real_obligation
+    or code = #buyer_fail
+    or code = #eligible_now
+    or code = #eligible_later
+    or code = #proxy_only
+    or code = #no_viable_instrument
+    or code = #pass
+    or code = #fail
+    or code = #killed
+    or code = #quarantined
+
+define in_reading_outcome_vocabulary(outcome):
+    outcome = #resolved
+    or outcome = #unchanged
+    or outcome = #not_available
+
+define in_evidence_class_vocabulary(evidence_class):
+    evidence_class = #provision_exists
+    or evidence_class = #provision_purchased
+    or evidence_class = #repeat_purchase
+    or evidence_class = #standardised
+    or evidence_class = #penetration_measured
+
+intent DeclarationRegistered(declaration: Subject)
+intent DeclarationFrozen(declaration: Subject)
+intent VerdictRecorded(verdict: Subject)
+intent WatchOpened(watch: Subject)
+intent TriggerFiredIntent(trigger: Subject)
+
+invariant declaration_kind_in_vocabulary:
+    Declaration(_, k, _, _, _) implies in_declaration_kind_vocabulary(k)
+
+invariant sealed_declaration_was_declared:
+    DeclarationSealed(d, _) implies Declaration(d, _, _, _, _)
+
+invariant successor_declaration_exists:
+    DeclarationSupersedes(s, _) implies Declaration(s, _, _, _, _)
+
+invariant superseded_declaration_was_sealed:
+    DeclarationSupersedes(_, p) implies DeclarationSealed(p, _)
+
+invariant verdict_requires_sealed_declaration:
+    Verdict(_, d, _, _, _, _, _, _) implies DeclarationSealed(d, _)
+
+invariant verdict_stage_in_vocabulary:
+    Verdict(_, _, _, s, _, _, _, _) implies in_stage_vocabulary(s)
+
+invariant verdict_code_in_vocabulary:
+    Verdict(_, _, _, _, c, _, _, _) implies in_verdict_code_vocabulary(c)
+
+invariant reading_has_watch:
+    WatchReading(w, _, _, _) implies Watch(w, _, _, _, _)
+
+invariant reading_outcome_in_vocabulary:
+    WatchReading(_, _, _, o) implies in_reading_outcome_vocabulary(o)
+
+invariant fired_trigger_exists:
+    TriggerFired(t, _, _) implies ReopenTrigger(t, _, _)
+
+invariant evidence_class_in_vocabulary:
+    EvidenceClaim(_, _, c, _, _, _) implies in_evidence_class_vocabulary(c)
+
+invariant three_clocks_ordered:
+    EvidenceClaim(_, _, _, _, t_event, t_public) implies t_event on_or_before t_public
+
+-- Bootstrap, once: the human holds the seal.
+transformation establish_forward_governance(human_actor):
+    require forward_governance_not_yet_established: not DeclarationSealAuthority(_)
+    admit DeclarationSealAuthority(human_actor)
+
+transformation declare(declaration, kind, title, content_digest, declared_at):
+    require declaration_is_new: not Declaration(declaration, _, _, _, _)
+    require declaration_kind_known: in_declaration_kind_vocabulary(kind)
+    admit Declaration(declaration, kind, title, content_digest, declared_at)
+    emit DeclarationRegistered(declaration)
+
+transformation seal_declaration(declaration, sealed_at):
+    require seal_requires_declaration_authority: DeclarationSealAuthority(actor)
+    require seal_declaration_exists: Declaration(declaration, _, _, _, _)
+    require seal_declaration_is_new: not DeclarationSealed(declaration, _)
+    admit DeclarationSealed(declaration, sealed_at)
+    emit DeclarationFrozen(declaration)
+
+transformation supersede_declaration(successor, prior):
+    require supersede_successor_exists: Declaration(successor, _, _, _, _)
+    require supersede_prior_sealed: DeclarationSealed(prior, _)
+    require supersede_prior_not_yet_superseded: not DeclarationSupersedes(_, prior)
+    require supersede_successor_is_new: not DeclarationSupersedes(successor, _)
+    admit DeclarationSupersedes(successor, prior)
+
+transformation record_verdict(verdict, declaration, about, stage, code, reason, evidence_digest, recorded_at):
+    require verdict_declaration_sealed: DeclarationSealed(declaration, _)
+    require verdict_stage_known: in_stage_vocabulary(stage)
+    require verdict_code_known: in_verdict_code_vocabulary(code)
+    require verdict_is_new: not Verdict(verdict, _, _, _, _, _, _, _)
+    require verdict_stage_not_yet_recorded: not Verdict(_, declaration, about, stage, _, _, _, _)
+    admit Verdict(verdict, declaration, about, stage, code, reason, evidence_digest, recorded_at)
+    emit VerdictRecorded(verdict)
+
+transformation open_watch(watch, about, resolving_observation, holder, due):
+    require watch_is_new: not Watch(watch, _, _, _, _)
+    admit Watch(watch, about, resolving_observation, holder, due)
+    emit WatchOpened(watch)
+
+transformation record_reading(watch, read_on, reading_digest, outcome):
+    require reading_watch_exists: Watch(watch, _, _, _, _)
+    require reading_outcome_known: in_reading_outcome_vocabulary(outcome)
+    admit WatchReading(watch, read_on, reading_digest, outcome)
+
+transformation declare_trigger(trigger, about, condition):
+    require trigger_is_new: not ReopenTrigger(trigger, _, _)
+    admit ReopenTrigger(trigger, about, condition)
+
+transformation fire_trigger(trigger, evidence_digest, fired_on):
+    require fire_trigger_exists: ReopenTrigger(trigger, _, _)
+    require fire_trigger_not_yet_fired: not TriggerFired(trigger, _, _)
+    admit TriggerFired(trigger, evidence_digest, fired_on)
+    emit TriggerFiredIntent(trigger)
+
+transformation assert_evidence_class(claim, about, evidence_class, evidence_digest, t_event, t_public):
+    require claim_is_new: not EvidenceClaim(claim, _, _, _, _, _)
+    require evidence_class_known: in_evidence_class_vocabulary(evidence_class)
+    require clocks_ordered: t_event on_or_before t_public
+    admit EvidenceClaim(claim, about, evidence_class, evidence_digest, t_event, t_public)

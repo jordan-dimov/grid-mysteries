@@ -7,7 +7,8 @@ the machine it was produced on:
 |---|---|
 | `research.morph` | the governing v1 programme (rules) |
 | `research-v2-draft.morph` | the v2 research state machine — check-clean, control-tested, **deployed for Investigations 002 and 004** (batches `090-*.v2.ndjson`, `100-*.v2.ndjson`); v1 remains frozen for the earlier investigations (see `RESEARCH-V2-DESIGN.md`) |
-| `PROGRAMME_HASH.json` / `V2_DRAFT_HASH.json` | stable ruleset fingerprints (`morpholog hash`); no programme identity is stored in the database, so these files are the out-of-band record |
+| `research-v3-draft.morph` | the v3 forward/verifier vocabulary — sealed declarations for any frozen artefact, verdicts with reasons, dated watches, reopening triggers, evidence classes with three clocks — check-clean, control-tested (`controls-v3/`, `scripts/check-controls v3`), **not yet deployed**; launch rows in `launch-forward/` (see `RESEARCH-V3-DESIGN.md`) |
+| `PROGRAMME_HASH.json` / `V2_DRAFT_HASH.json` / `V3_DRAFT_HASH.json` | stable ruleset fingerprints (`morpholog hash`); no programme identity is stored in the database, so these files are the out-of-band record |
 | `batches/*.ndjson` | **the canonical input**: every governed transition as a replayable proposal batch, in replay order |
 | `controls/` | negative tests: transitions that must be **refused**, with the exact refusing rule pinned (`scripts/check-controls`, CI-run against a disposable database) |
 | `claims-export.json` | derived convenience export of the admitted claims |

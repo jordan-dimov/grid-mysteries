@@ -1,0 +1,16 @@
+{"transformation": "establish_forward_governance", "actor": "jordan_dimov", "args_named": {"human_actor": "jordan_dimov"}}
+{"transformation": "declare", "actor": "claude_fable_5", "args_named": {"declaration": "decl-gen-a", "kind": "generator", "title": "generator A", "content_digest": "aaaa", "declared_at": "2026-08-20T00:00:00Z"}}
+{"transformation": "seal_declaration", "actor": "jordan_dimov", "args_named": {"declaration": "decl-gen-a", "sealed_at": "2026-08-20T00:01:00Z"}}
+{"transformation": "declare", "actor": "claude_fable_5", "args_named": {"declaration": "decl-gen-b", "kind": "generator", "title": "generator B", "content_digest": "bbbb", "declared_at": "2026-08-21T00:00:00Z"}}
+{"transformation": "seal_declaration", "actor": "jordan_dimov", "args_named": {"declaration": "decl-gen-b", "sealed_at": "2026-08-21T00:01:00Z"}}
+{"transformation": "supersede_declaration", "actor": "claude_fable_5", "args_named": {"successor": "decl-gen-b", "prior": "decl-gen-a"}}
+{"transformation": "declare", "actor": "claude_fable_5", "args_named": {"declaration": "decl-batch-1", "kind": "batch", "title": "batch 1", "content_digest": "cccc", "declared_at": "2026-08-22T00:00:00Z"}}
+{"transformation": "seal_declaration", "actor": "jordan_dimov", "args_named": {"declaration": "decl-batch-1", "sealed_at": "2026-08-22T00:01:00Z"}}
+{"transformation": "declare", "actor": "claude_fable_5", "args_named": {"declaration": "decl-unsealed", "kind": "kill_test", "title": "never sealed", "content_digest": "dddd", "declared_at": "2026-08-22T00:02:00Z"}}
+{"transformation": "record_verdict", "actor": "claude_fable_5", "args_named": {"verdict": "v-c1-k1", "declaration": "decl-batch-1", "about": "C1", "stage": "k1", "code": "absorption_stable", "reason": "absorber investing ahead", "evidence_digest": "e1", "recorded_at": "2026-08-23T00:00:00Z"}}
+{"transformation": "record_verdict", "actor": "claude_fable_5", "args_named": {"verdict": "v-c1-k2", "declaration": "decl-batch-1", "about": "C1", "stage": "k2", "code": "measured_stable", "reason": "series flat", "evidence_digest": "e2", "recorded_at": "2026-08-23T00:01:00Z"}}
+{"transformation": "open_watch", "actor": "claude_fable_5", "args_named": {"watch": "w-c2-pcf", "about": "C2", "resolving_observation": "NESO PCF activation metric", "holder": "NESO", "due": "2027-02-01"}}
+{"transformation": "record_reading", "actor": "claude_fable_5", "args_named": {"watch": "w-c2-pcf", "read_on": "2026-08-03", "reading_digest": "r1", "outcome": "unchanged"}}
+{"transformation": "declare_trigger", "actor": "claude_fable_5", "args_named": {"trigger": "t-f004-buyer", "about": "F004", "condition": "acquisition of a BG site >= 50 MW with a named buyer"}}
+{"transformation": "fire_trigger", "actor": "claude_fable_5", "args_named": {"trigger": "t-f004-buyer", "evidence_digest": "f1", "fired_on": "2026-09-01"}}
+{"transformation": "assert_evidence_class", "actor": "claude_fable_5", "args_named": {"claim": "ec-abl", "about": "F001", "evidence_class": "provision_purchased", "evidence_digest": "abl", "t_event": "2023-11-01", "t_public": "2023-11-13"}}

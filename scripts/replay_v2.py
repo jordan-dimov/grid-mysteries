@@ -1,4 +1,4 @@
-"""Replay v2 batches as the login roles the record itself names.
+"""Replay v2 and v3 batches as the login roles the record itself names.
 
 v2's actor policy binds each actor to an exact PostgreSQL `session_user`,
 so a replay connecting as some other role has every governed row refused
@@ -20,7 +20,20 @@ import sys
 from pathlib import Path
 from urllib.parse import urlsplit
 
-PROGRAMME = "morpholog/research-v2-draft.morph"
+PROGRAMMES = {
+    ".v2.ndjson": "morpholog/research-v2-draft.morph",
+    ".v3.ndjson": "morpholog/research-v3-draft.morph",
+}
+
+
+def programme_for(batch: Path) -> str:
+    """The programme a governed batch is proposed against, by filename suffix."""
+    for suffix, programme in PROGRAMMES.items():
+        if batch.name.endswith(suffix):
+            return programme
+    raise SystemExit(f"replay: {batch.name} is not a governed (v2/v3) batch")
+
+
 REPLAY_PASSWORD = "replay-only-disposable"
 
 
@@ -107,6 +120,7 @@ def main() -> None:
     urls = {actor: role_url(base_url, role) for actor, role in mapping.items()}
 
     for batch in batches:
+        programme = programme_for(batch)
         rows = [json.loads(line) for line in batch.read_text().splitlines() if line.strip()]
         for index, row in enumerate(rows, start=1):
             actor = row["actor"]
@@ -117,7 +131,7 @@ def main() -> None:
                 [
                     "morpholog",
                     "propose",
-                    PROGRAMME,
+                    programme,
                     row["transformation"],
                     "--actor",
                     actor,

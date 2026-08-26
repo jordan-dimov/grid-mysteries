@@ -3,9 +3,9 @@
  "figures": [
   {"stage": "Requested (applications and intentions)", "mw": 9330, "as_of": "2026-08-03", "source": "ESO EAD figures supplied to economic.bg, published 2026-08-12 (pinned, F003 manifest)"},
   {"stage": "Holding an ESO connection opinion", "mw": 3795, "as_of": "2026-08-03", "source": "same"},
-  {"stage": "Preliminary contracts signed with data-centre applicants", "mw": 0, "as_of": "2026-08-03", "source": "ESO statement reported by Mediapool 2026-05-26: opinions valid one year; no preliminary contracts"},
+  {"stage": "Preliminary contracts signed with data-centre applicants", "mw": 0, "as_of": "2026-05-26", "source": "ESO statement reported by Mediapool 2026-05-26: opinions valid one year; no preliminary contracts"},
   {"stage": "Data-centre capacity installed nationally", "mw": 30, "as_of": "2026-08", "source": "Capital.bg 2026-08-19 (~27–30 MW; Data Center Map); largest single transaction Digital Realty–Telepoint 14.8 MW operating"}
  ],
- "reference": {"label": "Forecast national peak demand, 2035", "mw": 7920, "source": "ESO EAD draft development plan 2026–2035 (17 Mar 2026), conclusions"},
+ "reference": {"label": "Forecast national peak demand, 2035 (scale reference only, not available grid headroom)", "mw": 7920, "source": "ESO EAD draft development plan 2026–2035 (17 Mar 2026), conclusions"},
  "quote": {"text": "получаването на положително становище увеличава стойността на проекта и позволява той да бъде продаден на стратегически инвеститор", "translation": "obtaining a positive opinion increases the value of the project and allows it to be sold to a strategic investor", "who": "Kiril Georgiev, CEO of ESO EAD", "source": "Capital.bg, 2026-08-19 (body pinned)"}
 }

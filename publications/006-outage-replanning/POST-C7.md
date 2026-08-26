@@ -1,7 +1,6 @@
 To upgrade the grid, you have to switch parts of it off.
 
-Britain is about to do more of that work than it has in generations. So
-finding safe windows to do it is becoming a much bigger job.
+Finding safe windows to do it is a big job, and getting bigger.
 
 NESO puts around **2,500 outages** into the year-ahead plan for the
 transmission network.
@@ -25,7 +24,8 @@ And here is the part I keep thinking about.
 The year-ahead plan itself got **better**. National Grid delivered 50% of
 it, up from 46%, and says this reverses a three-year decline.
 
-So the plan is improving — while the rate of change against it speeds up.
+So the plan is improving — while new requests raised against it are
+growing sharply.
 
 One more detail. One of National Grid's own KPIs is called "Outage
 coordination". It still cannot be reported, because of how the

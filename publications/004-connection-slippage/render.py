@@ -121,30 +121,21 @@ def works_history() -> str:
     ]
     label_w = 380
     plot_w = W - LEFT - RIGHT - label_w - 90
-    top, gap = 118, 44
+    top, gap = 150, 44
     height = top + len(rows) * gap + 100
     parts = document(
-        W, height, title="Does a late network make a late project? Not in the public record"
+        W, height, title="Do previously slipped enabling works identify later-slipping projects?"
     )
-    parts.append(
-        text(
-            30,
-            60,
-            "Same population, matched to NESO's Transmission Works Register (31 reports, "
-            "2017–2025). Share slipping ≥ 24 months, by whether the project's",
-            size=13,
-            fill=INK_2,
-        )
+    parts.append(text(30, 62, "Not in the disclosed register.", size=19, weight=600))
+    subtitle = (
+        "Matched subset of the same TEC population (74.3%), joined to NESO's Transmission Works "
+        "Register",
+        "(31 reports, 2017–2025). Share slipping ≥ 24 months, by whether the project's enabling "
+        "works had",
+        "already slipped within a year of it first appearing.",
     )
-    parts.append(
-        text(
-            30,
-            80,
-            "enabling works had already slipped within a year of the project first appearing.",
-            size=13,
-            fill=INK_2,
-        )
-    )
+    for i, line in enumerate(subtitle):
+        parts.append(text(30, 88 + i * 18, line, size=13, fill=INK_2))
     scale = plot_w / 0.40
     x0 = LEFT + label_w
     for i, (label, n, rate) in enumerate(rows):

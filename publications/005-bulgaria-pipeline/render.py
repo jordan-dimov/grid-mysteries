@@ -26,15 +26,19 @@ def ladder() -> str:
     ref = e["reference"]
     label_w = 330
     plot_w = W - LEFT - RIGHT - label_w - 110
-    top, gap = 118, 44
+    top, gap = 128, 46
     height = top + len(rows) * gap + 130
-    parts = document(W, height, title="Bulgaria's data-centre pipeline, stage by stage (MW)")
+    parts = document(
+        W,
+        height,
+        title="Bulgaria's data-centre boom: connection interest versus evidence of execution",
+    )
     parts.append(
         text(
             30,
             60,
-            "ESO EAD figures as of 3 August 2026; installed capacity as reported August 2026. "
-            "One scale for all four bars.",
+            "Four public measures on one MW scale; these are not a single project cohort. "
+            "Observation date beside each.",
             size=13,
             fill=INK_2,
         )
@@ -44,7 +48,10 @@ def ladder() -> str:
     x0 = LEFT + label_w
     for i, r in enumerate(rows):
         y = top + i * gap
-        parts.append(text(x0 - 12, y + 16, r["stage"], size=13.5, fill=INK, anchor="end"))
+        parts.append(text(x0 - 12, y + 12, r["stage"], size=13.5, fill=INK, anchor="end"))
+        parts.append(
+            text(x0 - 12, y + 26, f"as of {r['as_of']}", size=10.5, fill=INK_2, anchor="end")
+        )
         w = r["mw"] * scale
         last = i == len(rows) - 1
         parts.append(hbar(x0, y, max(w, 2.0) if r["mw"] > 0 else 0, ORANGE if last else BLUE))
@@ -60,9 +67,19 @@ def ladder() -> str:
     parts.append(
         text(
             f"{rx:.1f}",
-            top - 14,
-            f"{ref['label']}: {ref['mw']:,} MW",
+            top - 28,
+            f"Forecast national peak demand, 2035: {ref['mw']:,} MW",
             size=12,
+            fill=INK_2,
+            anchor="middle",
+        )
+    )
+    parts.append(
+        text(
+            f"{rx:.1f}",
+            top - 14,
+            "scale reference only — not available grid headroom",
+            size=10.5,
             fill=INK_2,
             anchor="middle",
         )

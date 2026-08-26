@@ -26,8 +26,10 @@ rendered bytes.**
 > Across 1,161 project-stages watched for at least two years (first seen
 > before 2025, so this is the old regime, before connections reform
 > re-baselined everything), the median slip is zero, but 21% slipped by
-> 24 months or more. A fifth of the queue is not where its contract said
-> it would be.
+> 24 months or more. A fifth of this historical sample ended up at least
+> two years later than its first-observed contractual date. This is
+> evidence about the old queue; it is not a claim that Gate 2 projects
+> will behave the same way.
 >
 > And the risk is not evenly spread. A project first seen at "Awaiting
 > Consents" went on to slip two-plus years 36% of the time. A project
@@ -37,16 +39,16 @@ rendered bytes.**
 > One result runs against intuition. Projects whose date was three to
 > five years out slipped far *more* often (36%) than projects whose date
 > was more than five years out (12%). Longer dates were not less
-> reliable. They may already carry their allowance; nearer dates meet a
-> harder execution constraint. I'm not going to explain it — I'm going to
-> leave it on the record as a fact that needs explaining.
+> reliable. I don't know why. I'm leaving it on the record as a fact
+> that needs explaining.
 >
 > Then I asked the obvious next question. Connection dates depend on
 > transmission works — new substations, reinforced lines — that NESO
 > also lists, project by project. Does knowing that a project's enabling
 > works have already slipped tell you its date is unreliable?
 >
-> No. Projects whose enabling works had already slipped went on to slip
+> Not in the disclosed data. Projects whose enabling works had already
+> slipped went on to slip
 > *slightly less* often (22%) than projects whose works were on plan
 > (27%). The sign was the same in every transmission owner's area. I set
 > myself a bar before opening the works register — a 20-point gap — and
@@ -54,8 +56,8 @@ rendered bytes.**
 >
 > So here is what the public record can and cannot say. It can tell you
 > the base rate of slippage and which development stages carry more of
-> it. It cannot, from the works register as disclosed, tell you which
-> dates will slip because the network is late. And I decided in advance
+> it. In this test, the disclosed works register did not add useful
+> information about which dates would slip. And I decided in advance
 > not to turn any of this into a "credibility score": the facts are
 > worth publishing; the product they might have become did not earn
 > itself.
@@ -68,10 +70,10 @@ rendered bytes.**
 1. **`slip-by-status.svg`** — the rate of ≥ 24-month slippage by the
    status a project carried when first observed, with the pooled 21.4%
    as a hairline. Five statuses, one hue: this is magnitude, not identity.
-2. **`works-history.svg`** — two bars: projects whose enabling works had
-   already slipped within a year of first observation versus projects
-   whose works had not. The bar the reader expects to be taller is
-   shorter.
+2. **`works-history.svg`** — two bars, on the matched subset (74.3 %) of
+   the same population: projects whose enabling works had already slipped
+   within a year of first observation versus projects whose works had
+   not. The bar the reader expects to be taller is shorter.
 
 ## Expert corner
 

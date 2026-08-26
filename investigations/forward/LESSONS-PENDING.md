@@ -282,3 +282,70 @@ Batch 01's C10 — "grid-impact and consent evidence for large new demand" —
 is the batch candidate nearest to this family and is still pending; its kill
 should be run before v4 is drafted, so that v4 is scored against a completed
 batch rather than argued from two commissioned studies.
+
+---
+
+## Batch 01 complete — 2026-08-26
+
+All ten kills are recorded (`F002-batch/RESULTS.md`). Under this file's own
+rule, the entries above and below are now **eligible for promotion** into
+Generator v4. Nothing is promoted here; v4 is designed as a separate step
+against the completed batch. Recurrence counts across the batch: L1 ×6,
+L7 ×5, L5 ×4, L2/L4/L6/L9 ×1.
+
+## L11 · Instrument eligibility is checked at freeze, not at kill (from C8, C10, C9, C4, C2)
+
+Eight of ten candidates froze at least one symptom that no public
+instrument could register. The failures were of four kinds, each of which
+is a question that can be asked *before* freezing:
+
+- **publication existence** — is there any public series in which the
+  symptom would appear? (C8 turnaround; C9 assurance spend; C4 disputes;
+  C2 resubmissions — none exist);
+- **type-identifiability** — does the series distinguish the population the
+  candidate is about? (C10: MHCLG and PINS aggregate data centres away,
+  and a rising agreed-time share removes the measurable cohort);
+- **earliest observable date** — can the symptom exist yet, given the
+  mechanism's own timetable? (C2: M1 due dates begin late 2027; C1:
+  steady state begins 2027);
+- **risk-bearing** — if the symptom is a third party's price, does that
+  party bear the risk the function manages? (C4: insurers exclude
+  degradation; the price cannot move).
+
+The v4 form that wants to exist: a frozen candidate must name, per
+symptom, the exact public series and its cadence, or declare the symptom
+*unobservable* at freeze and substitute one that is not. A candidate with
+no observable symptom is not generated.
+
+## L12 · When the incumbent is a free public registry, the symptom is service level, not spend (from C9)
+
+Independence supplied by the state at zero price has no fee to rise and no
+published cost to grow. The eligible symptoms are issue lag, report
+availability and uptime — which C9 could measure and which showed a
+transient IT-migration strain. A candidate that names "spend" against a
+free public incumbent has mis-specified its instrument by construction.
+
+## L13 · The four-valued verdict conflates instrument failure with candidate signal (from the batch score)
+
+*Plausible but not measured* absorbed both "mechanism real, series
+unpublished" (C6, C3, C2) and "mechanism real, instrument wrong" (C10, C9,
+C4). Both count toward the pre-declared "evidenced or plausible"
+threshold, so a batch of blind instruments scores as well as a batch of
+detected pressure. v4 needs the verdict to carry the *reason*: `measured
+stable` · `measured strain` · `unmeasured — unpublished (party P holds
+series S)` · `unmeasured — instrument ineligible` · `not yet observable
+(date D)`. The scoring rule then counts only measured outcomes toward
+generator quality and reports the unmeasured share as an instrument-design
+metric.
+
+## L14 · The buyer term is market-specific; the instrument term is universal (from C10 versus F003/F004)
+
+The same forcing variable — very large new electrical loads — failed by
+adviser absorption in GB (C10: three s35 applicants paying law and
+planning firms within weeks of the new route) and by buyer absence in
+Bulgaria (F004: no buyer at ≥50 MW). "No buyer evidence, no candidate"
+(L10) would have killed the Bulgarian thesis in an afternoon and would
+have changed nothing in GB, where every counted candidate but C9 has a
+paying buyer class. The evidence therefore supports L10 as a **K0 cheap
+first kill**, and supports L11 as the **generation-time gate**. Neither is
+applied here.

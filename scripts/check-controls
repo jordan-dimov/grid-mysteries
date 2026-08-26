@@ -38,35 +38,12 @@ sed "s/{SESSION_USER}/${session_user}/g" "$CONTROLS_DIR/setup.ndjson" > "$workdi
 
 echo "== setup batch: every row must commit"
 morpholog propose "$PROGRAMME" --batch "$workdir/setup.ndjson" \
-  --database-url "$CONTROLS_URL" | python3 -c "
-import json, sys
-rows = [json.loads(line) for line in sys.stdin if line.strip()]
-bad = [row for row in rows if row.get('status') != 'committed']
-if bad:
-    print(json.dumps(bad, indent=1))
-    raise SystemExit('controls setup: not every row committed')
-print(f'   {len(rows)} committed')
-"
+  --database-url "$CONTROLS_URL" \
+  | python3 scripts/receipts.py all-committed 'controls setup: not every row committed'
 
 echo "== violations batch: every row must be refused by its named rule"
 morpholog propose "$PROGRAMME" --batch "$CONTROLS_DIR/violations.ndjson" \
-  --database-url "$CONTROLS_URL" | python3 -c "
-import json, sys
-expected = json.load(open('$CONTROLS_DIR/expected-rules.json'))
-rows = [json.loads(line) for line in sys.stdin if line.strip()]
-failures = []
-for receipt in rows:
-    row_id = str(receipt.get('row'))
-    want = expected.get(row_id)
-    if receipt.get('status') != 'rejected':
-        failures.append(f'row {row_id}: expected rejection, got {receipt.get(\"status\")}')
-    elif receipt.get('rule') != want:
-        failures.append(f'row {row_id}: expected rule {want!r}, got {receipt.get(\"rule\")!r}')
-if len(rows) != len(expected):
-    failures.append(f'{len(rows)} receipts for {len(expected)} expected rows')
-if failures:
-    raise SystemExit('controls: LOCKS DID NOT LOCK\n' + '\n'.join(failures))
-print(f'   {len(rows)} refused, every rule as expected')
-"
+  --database-url "$CONTROLS_URL" \
+  | python3 scripts/receipts.py rules "$CONTROLS_DIR/expected-rules.json"
 
 echo "check-controls ($VERSION): OK"

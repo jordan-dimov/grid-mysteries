@@ -18,6 +18,8 @@ import sys
 from pathlib import Path
 from urllib.parse import urlsplit
 
+from receipts import expect_committed
+
 PROGRAMMES = {
     ".v2.ndjson": "morpholog/research-v2-draft.morph",
     ".v3.ndjson": "morpholog/research-v3-draft.morph",
@@ -139,12 +141,10 @@ def main() -> None:
                     url,
                 ]
             )
-            receipt = json.loads(result.stdout) if result.stdout.strip() else {}
-            if receipt.get("status") != "committed":
-                raise SystemExit(
-                    f"replay: {batch.name} row {index} ({row['transformation']}, actor {actor}) "
-                    f"did not commit: {result.stdout.strip() or result.stderr.strip()}"
-                )
+            label = f"replay: {batch.name} row {index} ({row['transformation']}, actor {actor})"
+            if not result.stdout.strip():
+                raise SystemExit(f"{label} did not commit: {result.stderr.strip()}")
+            expect_committed(json.loads(result.stdout), label)
         print(f"     {len(rows)} committed (as the record's own login roles)")
 
 

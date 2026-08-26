@@ -102,15 +102,7 @@ for batch in morpholog/batches/*.ndjson; do
   fi
   echo "   $batch (research.morph)"
   morpholog propose morpholog/research.morph --batch "$batch" --database-url "$REPLAY_URL" \
-    | python3 -c "
-import json, sys
-rows = [json.loads(line) for line in sys.stdin if line.strip()]
-bad = [row for row in rows if row.get('status') != 'committed']
-if bad:
-    print(json.dumps(bad, indent=1))
-    raise SystemExit('replay: not every proposal committed')
-print(f'     {len(rows)} committed')
-"
+    | python3 scripts/receipts.py all-committed 'replay: not every proposal committed' '     '
 done
 
 # v2 binds each actor to a PostgreSQL login role, so replaying as any other

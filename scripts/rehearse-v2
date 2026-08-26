@@ -66,31 +66,22 @@ propose() {
   morpholog propose "$PROG" "$2" --actor "$3" --args-named "$4" --database-url "$1" 2>&1 || true
 }
 
+# Receipts reach Python on stdin (scripts/receipts.py) or argv — never
+# spliced into source text, where a quote in a receipt would be code.
 expect_committed() { # <receipt> <label>
-  python3 - "$2" <<EOF
-import json, sys
-receipt = json.loads('''$1''')
-assert receipt["status"] == "committed", f"{sys.argv[1]}: expected commit, got {receipt}"
-print(f"   OK  {sys.argv[1]}")
-EOF
+  printf '%s' "$1" | python3 scripts/receipts.py committed "$2"
 }
 
 expect_rule() { # <receipt> <rule> <label>
-  python3 - "$2" "$3" <<EOF
-import json, sys
-receipt = json.loads('''$1''')
-assert receipt["status"] == "rejected", f"{sys.argv[2]}: expected rejection, got {receipt}"
-assert receipt["rule"] == sys.argv[1], f"{sys.argv[2]}: expected rule {sys.argv[1]!r}, got {receipt['rule']!r}"
-print(f"   OK  {sys.argv[2]} (rule {sys.argv[1]})")
-EOF
+  printf '%s' "$1" | python3 scripts/receipts.py rule "$2" "$3"
 }
 
 expect_actor_refusal() { # <output> <label>
-  python3 - "$2" <<EOF
+  python3 - "$1" "$2" <<'EOF'
 import sys
-out = '''$1'''
-assert "is not authorised to propose as actor" in out, f"{sys.argv[1]}: expected adapter actor refusal, got: {out[:300]}"
-print(f"   OK  {sys.argv[1]} (adapter session_user refusal)")
+out, label = sys.argv[1], sys.argv[2]
+assert "is not authorised to propose as actor" in out, f"{label}: expected adapter actor refusal, got: {out[:300]}"
+print(f"   OK  {label} (adapter session_user refusal)")
 EOF
 }
 

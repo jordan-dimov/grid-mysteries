@@ -1,0 +1,176 @@
+{
+ "stage_vocabulary": {
+  "may": {
+   "0": 1023936,
+   "2": 785720,
+   "4": 601519,
+   "1": 1017252,
+   "3": 607451,
+   "5": 521733
+  },
+  "jul": {
+   "3": 723640,
+   "1": 1322376,
+   "0": 1312418,
+   "2": 1036939,
+   "5": 621687,
+   "4": 715148
+  },
+  "aug": {
+   "5": 281288,
+   "0": 610747,
+   "4": 359957,
+   "1": 626116,
+   "3": 367423,
+   "2": 480978
+  }
+ },
+ "units_per_month": {
+  "may": 797,
+  "jul": 912,
+  "aug": 863
+ },
+ "may_to_jul": {
+  "label": "May -> Jul",
+  "units_in_both": 748,
+  "exposed_n": 187,
+  "persisted": 125,
+  "conditional": "0.6684491978609625668449197861",
+  "unconditional_top_b": "0.25",
+  "spearman": 0.7251461973341268,
+  "by_fuel": {
+   "GAS": {
+    "n": 21,
+    "persist_rate": "0.9523809523809523809523809524"
+   },
+   "BATTERY": {
+    "n": 66,
+    "persist_rate": "0.5303030303030303030303030303"
+   },
+   "PS": {
+    "n": 1,
+    "persist_rate": "0"
+   },
+   "NPSHYD": {
+    "n": 10,
+    "persist_rate": "0.6"
+   },
+   "OCGT": {
+    "n": 6,
+    "persist_rate": "0.6666666666666666666666666667"
+   },
+   "LOAD RESPONSE": {
+    "n": 4,
+    "persist_rate": "1"
+   },
+   "DIESEL": {
+    "n": 6,
+    "persist_rate": "0.5"
+   },
+   "BIOMASS": {
+    "n": 1,
+    "persist_rate": "1"
+   },
+   "CCGT": {
+    "n": 18,
+    "persist_rate": "0.6111111111111111111111111111"
+   },
+   "None": {
+    "n": 25,
+    "persist_rate": "0.8"
+   },
+   "WIND": {
+    "n": 29,
+    "persist_rate": "0.7241379310344827586206896552"
+   }
+  },
+  "largest_fuel_among_persistent": [
+   {
+    "fuel": "BATTERY",
+    "n": 35
+   },
+   {
+    "fuel": "WIND",
+    "n": 21
+   },
+   {
+    "fuel": null,
+    "n": 20
+   }
+  ]
+ },
+ "jul_to_aug": {
+  "label": "Jul -> Aug (earlier Aug vintage)",
+  "units_in_both": 809,
+  "exposed_n": 214,
+  "persisted": 139,
+  "conditional": "0.6495327102803738317757009346",
+  "unconditional_top_b": "0.2545018007202881152460984394",
+  "spearman": 0.6897423316411366,
+  "by_fuel": {
+   "CCGT": {
+    "n": 25,
+    "persist_rate": "0.56"
+   },
+   "SOLAR": {
+    "n": 2,
+    "persist_rate": "0"
+   },
+   "NPSHYD": {
+    "n": 8,
+    "persist_rate": "0.5"
+   },
+   "GAS": {
+    "n": 28,
+    "persist_rate": "0.5714285714285714285714285714"
+   },
+   "DIESEL": {
+    "n": 5,
+    "persist_rate": "1"
+   },
+   "LOAD RESPONSE": {
+    "n": 6,
+    "persist_rate": "0.8333333333333333333333333333"
+   },
+   "OCGT": {
+    "n": 8,
+    "persist_rate": "0.25"
+   },
+   "WIND": {
+    "n": 23,
+    "persist_rate": "1"
+   },
+   "PS": {
+    "n": 1,
+    "persist_rate": "1"
+   },
+   "None": {
+    "n": 38,
+    "persist_rate": "0.4473684210526315789473684211"
+   },
+   "BATTERY": {
+    "n": 51,
+    "persist_rate": "0.6862745098039215686274509804"
+   },
+   "GAS REC ENGINE": {
+    "n": 19,
+    "persist_rate": "0.8947368421052631578947368421"
+   }
+  },
+  "largest_fuel_among_persistent": [
+   {
+    "fuel": "BATTERY",
+    "n": 35
+   },
+   {
+    "fuel": "WIND",
+    "n": 23
+   },
+   {
+    "fuel": null,
+    "n": 17
+   }
+  ]
+ },
+ "passes": true
+}

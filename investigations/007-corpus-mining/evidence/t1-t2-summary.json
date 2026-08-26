@@ -1,0 +1,1002 @@
+{
+ "final_vintage": "2025-07-22",
+ "population_t1": 1161,
+ "t1": {
+  "exposed_n": 197,
+  "exposed_rate": "0.3654822335025380710659898477",
+  "control_n": 374,
+  "control_rate": "0.2754010695187165775401069519",
+  "ratio": "1.327090828446109112414370903",
+  "gap": "0.0900811639838214935258828958",
+  "cohorts": {
+   "2014-2018": {
+    "exposed_n": 124,
+    "exposed_rate": "0.4032258064516129032258064516",
+    "control_n": 237,
+    "control_rate": "0.3164556962025316455696202532"
+   },
+   "2019-2024": {
+    "exposed_n": 73,
+    "exposed_rate": "0.3013698630136986301369863014",
+    "control_n": 137,
+    "control_rate": "0.2043795620437956204379562044"
+   }
+  },
+  "direction_holds_both_cohorts": true,
+  "passes": false
+ },
+ "t2": {
+  "eligible_name_keyed": 6345,
+  "table_name_keyed": {
+   "first_status": {
+    "Built": {
+     "n": 1272,
+     "rate": "0.8121069182389937106918238994"
+    },
+    "Consents Approved": {
+     "n": 721,
+     "rate": "0.8502080443828016643550624133"
+    },
+    "Awaiting Consents": {
+     "n": 855,
+     "rate": "0.8210526315789473684210526316"
+    },
+    "Scoping": {
+     "n": 3283,
+     "rate": "0.7179409077063661285409686263"
+    },
+    "Under Construction/Commissioning": {
+     "n": 137,
+     "rate": "0.8613138686131386861313868613"
+    },
+    "Consented": {
+     "n": 1,
+     "rate": "1"
+    },
+    "unknown": {
+     "n": 62,
+     "rate": "0.9516129032258064516129032258"
+    },
+    "Terminated": {
+     "n": 4,
+     "rate": "1"
+    },
+    "Active": {
+     "n": 10,
+     "rate": "1"
+    }
+   },
+   "plant_type": {
+    "CCGT": {
+     "n": 167,
+     "rate": "0.9281437125748502994011976048"
+    },
+    "Wind Offshore": {
+     "n": 950,
+     "rate": "0.8747368421052631578947368421"
+    },
+    "Coal": {
+     "n": 56,
+     "rate": "0.9464285714285714285714285714"
+    },
+    "Wind Onshore": {
+     "n": 1437,
+     "rate": "0.8350730688935281837160751566"
+    },
+    "Hydro": {
+     "n": 153,
+     "rate": "0.8039215686274509803921568627"
+    },
+    "Tidal": {
+     "n": 90,
+     "rate": "0.9333333333333333333333333333"
+    },
+    "CHP": {
+     "n": 33,
+     "rate": "0.8787878787878787878787878788"
+    },
+    "Nuclear": {
+     "n": 88,
+     "rate": "0.8863636363636363636363636364"
+    },
+    "Thermal": {
+     "n": 58,
+     "rate": "0.8448275862068965517241379310"
+    },
+    "Pump Storage": {
+     "n": 58,
+     "rate": "0.7241379310344827586206896552"
+    },
+    "Wave": {
+     "n": 32,
+     "rate": "1"
+    },
+    "OCGT": {
+     "n": 17,
+     "rate": "0.8235294117647058823529411765"
+    },
+    "Large Unit Coal": {
+     "n": 1,
+     "rate": "1"
+    },
+    "Oil + AGT": {
+     "n": 2,
+     "rate": "1"
+    },
+    "IGCC with CCS": {
+     "n": 1,
+     "rate": "1"
+    },
+    "Biomass": {
+     "n": 65,
+     "rate": "0.8615384615384615384615384615"
+    },
+    "Nuclear EPR": {
+     "n": 3,
+     "rate": "1"
+    },
+    "Nuclear APR": {
+     "n": 1,
+     "rate": "1"
+    },
+    "Small Unit Coal": {
+     "n": 1,
+     "rate": "1"
+    },
+    "Onshore Wind": {
+     "n": 1,
+     "rate": "1"
+    },
+    "Oil & AGT": {
+     "n": 5,
+     "rate": "1"
+    },
+    "PV Array": {
+     "n": 18,
+     "rate": "0.9444444444444444444444444444"
+    },
+    "Battery Storage": {
+     "n": 161,
+     "rate": "0.9751552795031055900621118012"
+    },
+    "HYBRID": {
+     "n": 57,
+     "rate": "0.9473684210526315789473684211"
+    },
+    "Gas Reciprocating": {
+     "n": 40,
+     "rate": "0.725"
+    },
+    "Solar": {
+     "n": 1,
+     "rate": "1"
+    },
+    "CCGT (Combined Cycle Gas Turbine)": {
+     "n": 266,
+     "rate": "0.8195488721804511278195488722"
+    },
+    "Hybrid": {
+     "n": 69,
+     "rate": "0.9855072463768115942028985507"
+    },
+    "Energy Storage System": {
+     "n": 1050,
+     "rate": "0.6247619047619047619047619048"
+    },
+    "PV Array (Photo Voltaic/solar)": {
+     "n": 146,
+     "rate": "0.7534246575342465753424657534"
+    },
+    "OCGT (Open Cycle Gas Turbine)": {
+     "n": 52,
+     "rate": "0.8461538461538461538461538462"
+    },
+    "CHP (Combined Heat and Power)": {
+     "n": 47,
+     "rate": "0.7446808510638297872340425532"
+    },
+    "Energy Storage System; PV Array (Photo Voltaic/solar)": {
+     "n": 665,
+     "rate": "0.5984962406015037593984962406"
+    },
+    "Energy Storage System; Reactive Compensation": {
+     "n": 48,
+     "rate": "0.6666666666666666666666666667"
+    },
+    "Oil & AGT (Advanced Gas Turbine)": {
+     "n": 6,
+     "rate": "0.6666666666666666666666666667"
+    },
+    "unknown": {
+     "n": 108,
+     "rate": "0.9907407407407407407407407407"
+    },
+    "CCGT (Combined Cycle Gas Turbine); OCGT (Open Cycle Gas Turbine)": {
+     "n": 1,
+     "rate": "1"
+    },
+    "Energy Storage System; Gas Reciprocating": {
+     "n": 7,
+     "rate": "1"
+    },
+    "Waste": {
+     "n": 5,
+     "rate": "0.6"
+    },
+    "CCGT (Combined Cycle Gas Turbine); Energy Storage System; OCGT (Open Cycle Gas Turbine)": {
+     "n": 4,
+     "rate": "0.5"
+    },
+    "Energy Storage System; Wind Onshore": {
+     "n": 49,
+     "rate": "0.5510204081632653061224489796"
+    },
+    "Energy Storage System; PV Array (Photo Voltaic/solar); Wind Onshore": {
+     "n": 17,
+     "rate": "0.5294117647058823529411764706"
+    },
+    "Reactive Compensation": {
+     "n": 67,
+     "rate": "0.7761194029850746268656716418"
+    },
+    "Interconnector": {
+     "n": 2,
+     "rate": "1"
+    },
+    "Energy Storage System; Wind Offshore": {
+     "n": 1,
+     "rate": "0"
+    },
+    "Demand; Wind Offshore": {
+     "n": 3,
+     "rate": "0.6666666666666666666666666667"
+    },
+    "PV Array (Photo Voltaic/solar); Wind Onshore": {
+     "n": 3,
+     "rate": "0.3333333333333333333333333333"
+    },
+    "CCGT (Combined Cycle Gas Turbine); Energy Storage System": {
+     "n": 3,
+     "rate": "0.3333333333333333333333333333"
+    },
+    "Demand; Energy Storage System": {
+     "n": 16,
+     "rate": "0.5625"
+    },
+    "CCGT (Combined Cycle Gas Turbine); Demand": {
+     "n": 2,
+     "rate": "0.5"
+    },
+    "Energy Storage System; PV Array (Photo Voltaic/solar); Wind Offshore": {
+     "n": 3,
+     "rate": "0.6666666666666666666666666667"
+    },
+    "Demand; Energy Storage System; PV Array (Photo Voltaic/solar); Reactive Compensation": {
+     "n": 22,
+     "rate": "0.4090909090909090909090909091"
+    },
+    "Energy Storage System; OCGT (Open Cycle Gas Turbine)": {
+     "n": 7,
+     "rate": "0"
+    },
+    "Demand; Energy Storage System; PV Array (Photo Voltaic/solar)": {
+     "n": 2,
+     "rate": "0.5"
+    },
+    "Demand; PV Array (Photo Voltaic/solar)": {
+     "n": 14,
+     "rate": "0.8571428571428571428571428571"
+    },
+    "Energy Storage System; PV Array (Photo Voltaic/solar); Reactive Compensation": {
+     "n": 2,
+     "rate": "0"
+    },
+    "Energy Storage System; Nuclear; PV Array (Photo Voltaic/solar); Reactive Compensation; Wind Onshore": {
+     "n": 2,
+     "rate": "0"
+    },
+    "Demand": {
+     "n": 3,
+     "rate": "0.3333333333333333333333333333"
+    },
+    "Energy Storage System;PV Array (Photo Voltaic/solar)": {
+     "n": 96,
+     "rate": "0.3645833333333333333333333333"
+    },
+    "Energy Storage System;Reactive Compensation": {
+     "n": 2,
+     "rate": "1"
+    },
+    "CCGT (Combined Cycle Gas Turbine);Demand": {
+     "n": 1,
+     "rate": "0"
+    },
+    "Demand;Energy Storage System;PV Array (Photo Voltaic/solar);Reactive Compensation": {
+     "n": 11,
+     "rate": "1"
+    },
+    "Energy Storage System;PV Array (Photo Voltaic/solar);Wind Onshore": {
+     "n": 5,
+     "rate": "0.4"
+    },
+    "CHP (Combined Heat and Power); Demand": {
+     "n": 1,
+     "rate": "1"
+    },
+    "Energy Storage System;Nuclear;PV Array (Photo Voltaic/solar);Reactive Compensation;Wind Onshore": {
+     "n": 3,
+     "rate": "0.6666666666666666666666666667"
+    },
+    "Energy Storage System; Nuclear; PV Array (Photo Voltaic/solar); Wind Onshore": {
+     "n": 3,
+     "rate": "0"
+    },
+    "Demand;Energy Storage System;Wind Offshore": {
+     "n": 2,
+     "rate": "1"
+    },
+    "Energy Storage System;PV Array (Photo Voltaic/solar);Reactive Compensation;Wind Onshore": {
+     "n": 2,
+     "rate": "0.5"
+    },
+    "Demand, Energy Storage System, Wind Offshore": {
+     "n": 2,
+     "rate": "1"
+    },
+    "Demand; Energy Storage System; Wind Offshore": {
+     "n": 2,
+     "rate": "0"
+    },
+    "Energy Storage System;Gas Reciprocating": {
+     "n": 1,
+     "rate": "0"
+    },
+    "Demand;PV Array (Photo Voltaic/solar)": {
+     "n": 2,
+     "rate": "1"
+    },
+    "PV Array (Photo Voltaic/solar);Wind Onshore": {
+     "n": 1,
+     "rate": "1"
+    },
+    "Energy Storage System;Nuclear;PV Array (Photo Voltaic/solar);Wind Onshore": {
+     "n": 3,
+     "rate": "0.3333333333333333333333333333"
+    },
+    "Demand;Energy Storage System": {
+     "n": 1,
+     "rate": "0"
+    },
+    "Demand;Energy Storage System;PV Array (Photo Voltaic/solar)": {
+     "n": 1,
+     "rate": "0"
+    },
+    "Energy Storage System;Wind Onshore": {
+     "n": 9,
+     "rate": "0.2222222222222222222222222222"
+    },
+    "Energy Storage System; Hydro; Nuclear; PV Array (Photo Voltaic/solar); Wind Onshore": {
+     "n": 1,
+     "rate": "0"
+    },
+    "CCGT (Combined Cycle Gas Turbine); Demand; Energy Storage System": {
+     "n": 6,
+     "rate": "0"
+    },
+    "Energy Storage System;Wind Offshore": {
+     "n": 2,
+     "rate": "0"
+    }
+   },
+   "capacity_band": {
+    "<50": {
+     "n": 1671,
+     "rate": "0.8061041292639138240574506284"
+    },
+    "50-200": {
+     "n": 1571,
+     "rate": "0.7555697008274984086569064290"
+    },
+    ">=500": {
+     "n": 1491,
+     "rate": "0.7867203219315895372233400402"
+    },
+    "200-500": {
+     "n": 1238,
+     "rate": "0.6809369951534733441033925687"
+    },
+    "unknown": {
+     "n": 374,
+     "rate": "0.9278074866310160427807486631"
+    }
+   },
+   "initial_lead_time_band": {
+    "unknown": {
+     "n": 1388,
+     "rate": "0.8148414985590778097982708934"
+    },
+    "<3y": {
+     "n": 1345,
+     "rate": "0.8327137546468401486988847584"
+    },
+    "3-5y": {
+     "n": 1172,
+     "rate": "0.8276450511945392491467576792"
+    },
+    ">5y": {
+     "n": 2440,
+     "rate": "0.6868852459016393442622950820"
+    }
+   }
+  },
+  "eligible_id_keyed_window": 1894,
+  "table_id_keyed_window": {
+   "first_status": {
+    "Scoping": {
+     "n": 1253,
+     "rate": "0.05027932960893854748603351955"
+    },
+    "Built": {
+     "n": 308,
+     "rate": "0.003246753246753246753246753247"
+    },
+    "Consents Approved": {
+     "n": 139,
+     "rate": "0.01438848920863309352517985612"
+    },
+    "Awaiting Consents": {
+     "n": 165,
+     "rate": "0.03030303030303030303030303030"
+    },
+    "Under Construction/Commissioning": {
+     "n": 28,
+     "rate": "0.1071428571428571428571428571"
+    },
+    "unknown": {
+     "n": 1,
+     "rate": "0"
+    }
+   },
+   "plant_type": {
+    "Energy Storage System": {
+     "n": 580,
+     "rate": "0.02241379310344827586206896552"
+    },
+    "CCGT (Combined Cycle Gas Turbine)": {
+     "n": 54,
+     "rate": "0"
+    },
+    "Energy Storage System;Wind Onshore": {
+     "n": 38,
+     "rate": "0"
+    },
+    "Wind Onshore": {
+     "n": 307,
+     "rate": "0.009771986970684039087947882736"
+    },
+    "Wind Offshore": {
+     "n": 150,
+     "rate": "0.08666666666666666666666666667"
+    },
+    "Energy Storage System;PV Array (Photo Voltaic/solar)": {
+     "n": 425,
+     "rate": "0.07294117647058823529411764706"
+    },
+    "PV Array (Photo Voltaic/solar)": {
+     "n": 40,
+     "rate": "0.075"
+    },
+    "Hydro": {
+     "n": 30,
+     "rate": "0"
+    },
+    "Reactive Compensation": {
+     "n": 21,
+     "rate": "0.2380952380952380952380952381"
+    },
+    "Energy Storage System;Reactive Compensation": {
+     "n": 26,
+     "rate": "0"
+    },
+    "Pump Storage": {
+     "n": 18,
+     "rate": "0"
+    },
+    "Energy Storage System;PV Array (Photo Voltaic/solar);Wind Onshore": {
+     "n": 20,
+     "rate": "0"
+    },
+    "CHP (Combined Heat and Power)": {
+     "n": 14,
+     "rate": "0"
+    },
+    "Demand;Energy Storage System;PV Array (Photo Voltaic/solar)": {
+     "n": 5,
+     "rate": "0.2"
+    },
+    "Demand;Energy Storage System;PV Array (Photo Voltaic/solar);Reactive Compensation": {
+     "n": 18,
+     "rate": "0"
+    },
+    "Demand;Energy Storage System": {
+     "n": 13,
+     "rate": "0"
+    },
+    "Energy Storage System;Wind Offshore": {
+     "n": 5,
+     "rate": "0"
+    },
+    "Thermal": {
+     "n": 8,
+     "rate": "0"
+    },
+    "Biomass": {
+     "n": 10,
+     "rate": "0"
+    },
+    "Demand;PV Array (Photo Voltaic/solar)": {
+     "n": 4,
+     "rate": "0"
+    },
+    "CCGT (Combined Cycle Gas Turbine);Demand;Energy Storage System": {
+     "n": 6,
+     "rate": "0"
+    },
+    "Demand;Wind Offshore": {
+     "n": 2,
+     "rate": "0"
+    },
+    "Gas Reciprocating": {
+     "n": 11,
+     "rate": "0.09090909090909090909090909091"
+    },
+    "OCGT (Open Cycle Gas Turbine)": {
+     "n": 17,
+     "rate": "0.05882352941176470588235294118"
+    },
+    "Energy Storage System;PV Array (Photo Voltaic/solar);Reactive Compensation": {
+     "n": 4,
+     "rate": "0"
+    },
+    "CCGT (Combined Cycle Gas Turbine);Energy Storage System;OCGT (Open Cycle Gas Turbine)": {
+     "n": 5,
+     "rate": "0"
+    },
+    "Energy Storage System;Nuclear;PV Array (Photo Voltaic/solar);Wind Onshore": {
+     "n": 4,
+     "rate": "0"
+    },
+    "Energy Storage System;Nuclear;PV Array (Photo Voltaic/solar);Reactive Compensation;Wind Onshore": {
+     "n": 3,
+     "rate": "0"
+    },
+    "Coal": {
+     "n": 2,
+     "rate": "0.5"
+    },
+    "Nuclear": {
+     "n": 14,
+     "rate": "0.1428571428571428571428571429"
+    },
+    "unknown": {
+     "n": 1,
+     "rate": "0"
+    },
+    "CCGT (Combined Cycle Gas Turbine);Reactive Compensation": {
+     "n": 1,
+     "rate": "0"
+    },
+    "PV Array (Photo Voltaic/solar);Wind Onshore": {
+     "n": 2,
+     "rate": "0"
+    },
+    "CHP (Combined Heat and Power);Energy Storage System": {
+     "n": 1,
+     "rate": "0"
+    },
+    "CCGT (Combined Cycle Gas Turbine);Demand": {
+     "n": 2,
+     "rate": "0"
+    },
+    "Energy Storage System;Hydro;Nuclear;PV Array (Photo Voltaic/solar);Wind Onshore": {
+     "n": 1,
+     "rate": "0"
+    },
+    "Tidal": {
+     "n": 10,
+     "rate": "0"
+    },
+    "Oil & AGT (Advanced Gas Turbine)": {
+     "n": 3,
+     "rate": "0"
+    },
+    "Energy Storage System;PV Array (Photo Voltaic/solar);Wind Offshore": {
+     "n": 1,
+     "rate": "0"
+    },
+    "Waste": {
+     "n": 3,
+     "rate": "0"
+    },
+    "Demand;PV Array (Photo Voltaic/solar);Waste": {
+     "n": 1,
+     "rate": "0"
+    },
+    "Energy Storage System;Gas Reciprocating": {
+     "n": 2,
+     "rate": "0"
+    },
+    "Energy Storage System;OCGT (Open Cycle Gas Turbine)": {
+     "n": 8,
+     "rate": "0"
+    },
+    "Demand;Wind Onshore": {
+     "n": 1,
+     "rate": "0"
+    },
+    "CCGT (Combined Cycle Gas Turbine);Energy Storage System": {
+     "n": 2,
+     "rate": "0"
+    },
+    "Energy Storage System;PV Array (Photo Voltaic/solar);Reactive Compensation;Wind Onshore": {
+     "n": 1,
+     "rate": "0"
+    }
+   },
+   "capacity_band": {
+    "50-200": {
+     "n": 517,
+     "rate": "0.03868471953578336557059961315"
+    },
+    "<50": {
+     "n": 378,
+     "rate": "0.01851851851851851851851851852"
+    },
+    "200-500": {
+     "n": 533,
+     "rate": "0.02814258911819887429643527205"
+    },
+    ">=500": {
+     "n": 441,
+     "rate": "0.06349206349206349206349206349"
+    },
+    "unknown": {
+     "n": 25,
+     "rate": "0.16"
+    }
+   },
+   "initial_lead_time_band": {
+    ">5y": {
+     "n": 925,
+     "rate": "0.04108108108108108108108108108"
+    },
+    "unknown": {
+     "n": 388,
+     "rate": "0.01804123711340206185567010309"
+    },
+    "<3y": {
+     "n": 328,
+     "rate": "0.06707317073170731707317073171"
+    },
+    "3-5y": {
+     "n": 253,
+     "rate": "0.02766798418972332015810276680"
+    }
+   }
+  },
+  "candidate_pairs": [
+   {
+    "exposure": "plant_type",
+    "high": "CCGT",
+    "high_rate": "0.9281437125748502994011976048",
+    "high_n": 167,
+    "low": "Energy Storage System;PV Array (Photo Voltaic/solar)",
+    "low_rate": "0.3645833333333333333333333333",
+    "low_n": 96,
+    "ratio": "2.545765611633875106928999145",
+    "id_window_high": null,
+    "id_window_low": {
+     "n": 425,
+     "rate": "0.07294117647058823529411764706"
+    },
+    "confirmed": false
+   },
+   {
+    "exposure": "plant_type",
+    "high": "Wind Offshore",
+    "high_rate": "0.8747368421052631578947368421",
+    "high_n": 950,
+    "low": "Energy Storage System;PV Array (Photo Voltaic/solar)",
+    "low_rate": "0.3645833333333333333333333333",
+    "low_n": 96,
+    "ratio": "2.399278195488721804511278196",
+    "id_window_high": {
+     "n": 150,
+     "rate": "0.08666666666666666666666666667"
+    },
+    "id_window_low": {
+     "n": 425,
+     "rate": "0.07294117647058823529411764706"
+    },
+    "confirmed": true
+   },
+   {
+    "exposure": "plant_type",
+    "high": "Coal",
+    "high_rate": "0.9464285714285714285714285714",
+    "high_n": 56,
+    "low": "Energy Storage System;PV Array (Photo Voltaic/solar)",
+    "low_rate": "0.3645833333333333333333333333",
+    "low_n": 96,
+    "ratio": "2.595918367346938775510204082",
+    "id_window_high": {
+     "n": 2,
+     "rate": "0.5"
+    },
+    "id_window_low": {
+     "n": 425,
+     "rate": "0.07294117647058823529411764706"
+    },
+    "confirmed": false
+   },
+   {
+    "exposure": "plant_type",
+    "high": "Wind Onshore",
+    "high_rate": "0.8350730688935281837160751566",
+    "high_n": 1437,
+    "low": "Energy Storage System;PV Array (Photo Voltaic/solar)",
+    "low_rate": "0.3645833333333333333333333333",
+    "low_n": 96,
+    "ratio": "2.290486131822248732478377573",
+    "id_window_high": {
+     "n": 307,
+     "rate": "0.009771986970684039087947882736"
+    },
+    "id_window_low": {
+     "n": 425,
+     "rate": "0.07294117647058823529411764706"
+    },
+    "confirmed": false
+   },
+   {
+    "exposure": "plant_type",
+    "high": "Hydro",
+    "high_rate": "0.8039215686274509803921568627",
+    "high_n": 153,
+    "low": "Energy Storage System;PV Array (Photo Voltaic/solar)",
+    "low_rate": "0.3645833333333333333333333333",
+    "low_n": 96,
+    "ratio": "2.205042016806722689075630252",
+    "id_window_high": {
+     "n": 30,
+     "rate": "0"
+    },
+    "id_window_low": {
+     "n": 425,
+     "rate": "0.07294117647058823529411764706"
+    },
+    "confirmed": false
+   },
+   {
+    "exposure": "plant_type",
+    "high": "Tidal",
+    "high_rate": "0.9333333333333333333333333333",
+    "high_n": 90,
+    "low": "Energy Storage System;PV Array (Photo Voltaic/solar)",
+    "low_rate": "0.3645833333333333333333333333",
+    "low_n": 96,
+    "ratio": "2.560000000000000000000000000",
+    "id_window_high": {
+     "n": 10,
+     "rate": "0"
+    },
+    "id_window_low": {
+     "n": 425,
+     "rate": "0.07294117647058823529411764706"
+    },
+    "confirmed": false
+   },
+   {
+    "exposure": "plant_type",
+    "high": "Nuclear",
+    "high_rate": "0.8863636363636363636363636364",
+    "high_n": 88,
+    "low": "Energy Storage System;PV Array (Photo Voltaic/solar)",
+    "low_rate": "0.3645833333333333333333333333",
+    "low_n": 96,
+    "ratio": "2.431168831168831168831168831",
+    "id_window_high": {
+     "n": 14,
+     "rate": "0.1428571428571428571428571429"
+    },
+    "id_window_low": {
+     "n": 425,
+     "rate": "0.07294117647058823529411764706"
+    },
+    "confirmed": false
+   },
+   {
+    "exposure": "plant_type",
+    "high": "Thermal",
+    "high_rate": "0.8448275862068965517241379310",
+    "high_n": 58,
+    "low": "Energy Storage System;PV Array (Photo Voltaic/solar)",
+    "low_rate": "0.3645833333333333333333333333",
+    "low_n": 96,
+    "ratio": "2.317241379310344827586206897",
+    "id_window_high": {
+     "n": 8,
+     "rate": "0"
+    },
+    "id_window_low": {
+     "n": 425,
+     "rate": "0.07294117647058823529411764706"
+    },
+    "confirmed": false
+   },
+   {
+    "exposure": "plant_type",
+    "high": "Biomass",
+    "high_rate": "0.8615384615384615384615384615",
+    "high_n": 65,
+    "low": "Energy Storage System;PV Array (Photo Voltaic/solar)",
+    "low_rate": "0.3645833333333333333333333333",
+    "low_n": 96,
+    "ratio": "2.363076923076923076923076923",
+    "id_window_high": {
+     "n": 10,
+     "rate": "0"
+    },
+    "id_window_low": {
+     "n": 425,
+     "rate": "0.07294117647058823529411764706"
+    },
+    "confirmed": false
+   },
+   {
+    "exposure": "plant_type",
+    "high": "Battery Storage",
+    "high_rate": "0.9751552795031055900621118012",
+    "high_n": 161,
+    "low": "Energy Storage System;PV Array (Photo Voltaic/solar)",
+    "low_rate": "0.3645833333333333333333333333",
+    "low_n": 96,
+    "ratio": "2.674711623779946761313220941",
+    "id_window_high": null,
+    "id_window_low": {
+     "n": 425,
+     "rate": "0.07294117647058823529411764706"
+    },
+    "confirmed": false
+   },
+   {
+    "exposure": "plant_type",
+    "high": "HYBRID",
+    "high_rate": "0.9473684210526315789473684211",
+    "high_n": 57,
+    "low": "Energy Storage System;PV Array (Photo Voltaic/solar)",
+    "low_rate": "0.3645833333333333333333333333",
+    "low_n": 96,
+    "ratio": "2.598496240601503759398496241",
+    "id_window_high": null,
+    "id_window_low": {
+     "n": 425,
+     "rate": "0.07294117647058823529411764706"
+    },
+    "confirmed": false
+   },
+   {
+    "exposure": "plant_type",
+    "high": "CCGT (Combined Cycle Gas Turbine)",
+    "high_rate": "0.8195488721804511278195488722",
+    "high_n": 266,
+    "low": "Energy Storage System;PV Array (Photo Voltaic/solar)",
+    "low_rate": "0.3645833333333333333333333333",
+    "low_n": 96,
+    "ratio": "2.247905477980665950590762621",
+    "id_window_high": {
+     "n": 54,
+     "rate": "0"
+    },
+    "id_window_low": {
+     "n": 425,
+     "rate": "0.07294117647058823529411764706"
+    },
+    "confirmed": false
+   },
+   {
+    "exposure": "plant_type",
+    "high": "Hybrid",
+    "high_rate": "0.9855072463768115942028985507",
+    "high_n": 69,
+    "low": "Energy Storage System;PV Array (Photo Voltaic/solar)",
+    "low_rate": "0.3645833333333333333333333333",
+    "low_n": 96,
+    "ratio": "2.703105590062111801242236025",
+    "id_window_high": null,
+    "id_window_low": {
+     "n": 425,
+     "rate": "0.07294117647058823529411764706"
+    },
+    "confirmed": false
+   },
+   {
+    "exposure": "plant_type",
+    "high": "PV Array (Photo Voltaic/solar)",
+    "high_rate": "0.7534246575342465753424657534",
+    "high_n": 146,
+    "low": "Energy Storage System;PV Array (Photo Voltaic/solar)",
+    "low_rate": "0.3645833333333333333333333333",
+    "low_n": 96,
+    "ratio": "2.066536203522504892367906067",
+    "id_window_high": {
+     "n": 40,
+     "rate": "0.075"
+    },
+    "id_window_low": {
+     "n": 425,
+     "rate": "0.07294117647058823529411764706"
+    },
+    "confirmed": true
+   },
+   {
+    "exposure": "plant_type",
+    "high": "OCGT (Open Cycle Gas Turbine)",
+    "high_rate": "0.8461538461538461538461538462",
+    "high_n": 52,
+    "low": "Energy Storage System;PV Array (Photo Voltaic/solar)",
+    "low_rate": "0.3645833333333333333333333333",
+    "low_n": 96,
+    "ratio": "2.320879120879120879120879121",
+    "id_window_high": {
+     "n": 17,
+     "rate": "0.05882352941176470588235294118"
+    },
+    "id_window_low": {
+     "n": 425,
+     "rate": "0.07294117647058823529411764706"
+    },
+    "confirmed": false
+   },
+   {
+    "exposure": "plant_type",
+    "high": "unknown",
+    "high_rate": "0.9907407407407407407407407407",
+    "high_n": 108,
+    "low": "Energy Storage System;PV Array (Photo Voltaic/solar)",
+    "low_rate": "0.3645833333333333333333333333",
+    "low_n": 96,
+    "ratio": "2.717460317460317460317460318",
+    "id_window_high": {
+     "n": 1,
+     "rate": "0"
+    },
+    "id_window_low": {
+     "n": 425,
+     "rate": "0.07294117647058823529411764706"
+    },
+    "confirmed": false
+   },
+   {
+    "exposure": "plant_type",
+    "high": "Reactive Compensation",
+    "high_rate": "0.7761194029850746268656716418",
+    "high_n": 67,
+    "low": "Energy Storage System;PV Array (Photo Voltaic/solar)",
+    "low_rate": "0.3645833333333333333333333333",
+    "low_n": 96,
+    "ratio": "2.128784648187633262260127932",
+    "id_window_high": {
+     "n": 21,
+     "rate": "0.2380952380952380952380952381"
+    },
+    "id_window_low": {
+     "n": 425,
+     "rate": "0.07294117647058823529411764706"
+    },
+    "confirmed": false
+   }
+  ],
+  "passes": true
+ }
+}

@@ -1,0 +1,216 @@
+{
+ "twr_vintages": [
+  "2017-05-04",
+  "2017-07-06",
+  "2017-10-06",
+  "2018-01-12",
+  "2018-03-02",
+  "2018-10-03",
+  "2019-02-01",
+  "2019-04-12",
+  "2019-07-08",
+  "2019-10-04",
+  "2020-01-07",
+  "2020-04-03",
+  "2020-07-06",
+  "2020-10-02",
+  "2021-01-06",
+  "2021-04-16",
+  "2021-07-09",
+  "2022-01-07",
+  "2022-04-01",
+  "2022-07-08",
+  "2022-11-24",
+  "2023-02-20",
+  "2023-06-01",
+  "2023-11-01",
+  "2024-04-02",
+  "2024-07-12",
+  "2024-10-04",
+  "2025-01-10",
+  "2025-05-02",
+  "2025-07-04",
+  "2025-10-03"
+ ],
+ "twr_rows_per_vintage": {
+  "2017-05-04": 758,
+  "2017-07-06": 790,
+  "2017-10-06": 830,
+  "2018-01-12": 798,
+  "2018-03-02": 794,
+  "2018-10-03": 780,
+  "2019-02-01": 772,
+  "2019-04-12": 784,
+  "2019-07-08": 818,
+  "2019-10-04": 797,
+  "2020-01-07": 827,
+  "2020-04-03": 858,
+  "2020-07-06": 913,
+  "2020-10-02": 0,
+  "2021-01-06": 1056,
+  "2021-04-16": 0,
+  "2021-07-09": 0,
+  "2022-01-07": 1792,
+  "2022-04-01": 2484,
+  "2022-07-08": 3024,
+  "2022-11-24": 0,
+  "2023-02-20": 0,
+  "2023-06-01": 4262,
+  "2023-11-01": 4749,
+  "2024-04-02": 5111,
+  "2024-07-12": 5291,
+  "2024-10-04": 5621,
+  "2025-01-10": 6106,
+  "2025-05-02": 6752,
+  "2025-07-04": 7315,
+  "2025-10-03": 7376
+ },
+ "schemes_with_timeline": 3359,
+ "population_005": 1161,
+ "matched": 863,
+ "match_route": {
+  "name_or_customer_site": 863,
+  "unmatched": 298
+ },
+ "flag_distribution": {
+  "clean": 512,
+  "unmatched": 298,
+  "slipped": 351
+ },
+ "t1": {
+  "vintages": 31,
+  "span_years": "8.421917808219178082191780822",
+  "population": 1161,
+  "matched": 863,
+  "match_rate": "0.7433247200689061154177433247",
+  "passes": true
+ },
+ "t2": {
+  "n_flagged": 351,
+  "n_unflagged": 512,
+  "rate_flagged": "0.2165242165242165242165242165",
+  "rate_unflagged": "0.265625",
+  "gap": "-0.0491007834757834757834757835",
+  "holds_in_both_cohorts": true,
+  "passes": false
+ },
+ "t3": {
+  "pooled": "0.2456546929316338354577056779",
+  "bands_status_only": {
+   "Consents Approved": "mid",
+   "Scoping": "mid",
+   "Awaiting Consents": "high"
+  },
+  "bands_status_x_flag": {
+   "Consents Approved|works_clean": "mid",
+   "Scoping|works_clean": "mid",
+   "Awaiting Consents|works_clean": "high",
+   "Awaiting Consents|works_slipped": "mid",
+   "Consents Approved|works_slipped": "mid",
+   "Scoping|works_slipped": "mid"
+  },
+  "reclassified": 47,
+  "share_reclassified": "0.05446118192352259559675550406",
+  "passes": false
+ },
+ "t4": {
+  "attribution_of_big_slips": {
+   "project_led": 128,
+   "unattributable": 29,
+   "works_led": 56
+  },
+  "attribution_by_status": {
+   "Consents Approved": {
+    "project_led": 26,
+    "unattributable": 8,
+    "works_led": 7
+   },
+   "Built": {
+    "unattributable": 6,
+    "project_led": 4
+   },
+   "Scoping": {
+    "project_led": 57,
+    "unattributable": 9,
+    "works_led": 29
+   },
+   "Awaiting Consents": {
+    "project_led": 39,
+    "works_led": 20,
+    "unattributable": 4
+   },
+   "Under Construction/Commissioning": {
+    "unattributable": 2,
+    "project_led": 2
+   }
+  },
+  "works_moves_total": 2610,
+  "works_moves_top_vintage_share": "0.1563218390804597701149425287",
+  "twr_median_gap_days": 94,
+  "attribution_resolvable": true
+ },
+ "f4_t2_within_host_to": {
+  "": {
+   "n_flagged": 2,
+   "n_unflagged": 1,
+   "rate_flagged": "0",
+   "rate_unflagged": "0",
+   "gap": "0"
+  },
+  "NGET": {
+   "n_flagged": 142,
+   "n_unflagged": 345,
+   "rate_flagged": "0.1830985915492957746478873239",
+   "rate_unflagged": "0.2376811594202898550724637681",
+   "gap": "-0.0545825678709940804245764442"
+  },
+  "OFFSHORE": {
+   "n_flagged": 1,
+   "n_unflagged": 1,
+   "rate_flagged": "1",
+   "rate_unflagged": "1",
+   "gap": "0"
+  },
+  "OFTO": {
+   "n_flagged": 1,
+   "n_unflagged": 1,
+   "rate_flagged": "0",
+   "rate_unflagged": "0",
+   "gap": "0"
+  },
+  "SHE": {
+   "n_flagged": 0,
+   "n_unflagged": 21,
+   "rate_flagged": null,
+   "rate_unflagged": "0.4761904761904761904761904762",
+   "gap": null
+  },
+  "SHET": {
+   "n_flagged": 119,
+   "n_unflagged": 57,
+   "rate_flagged": "0.2352941176470588235294117647",
+   "rate_unflagged": "0.3157894736842105263157894737",
+   "gap": "-0.0804953560371517027863777090"
+  },
+  "SPT": {
+   "n_flagged": 86,
+   "n_unflagged": 81,
+   "rate_flagged": "0.2441860465116279069767441860",
+   "rate_unflagged": "0.2839506172839506172839506173",
+   "gap": "-0.0397645707723227103072064313"
+  },
+  "SPTL": {
+   "n_flagged": 0,
+   "n_unflagged": 5,
+   "rate_flagged": null,
+   "rate_unflagged": "0.4",
+   "gap": null
+  }
+ },
+ "verdict": {
+  "T1": true,
+  "T2": false,
+  "T3": false,
+  "pass": false
+ }
+}

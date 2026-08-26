@@ -3,7 +3,12 @@
 Batch frozen at `4563941874715c0ff1e9a5524c7a6c7ce9ec6501bdcb8ed89db9d48eeb2d2ff4`
 (commit `d490e74`) under Generator v4 (`2ac6efa8…`). `BATCH-02.md` is never
 edited; results accumulate here. K0: `K0-RESULTS.md`. K1/K2: `KILL-C*.md`.
-**K3 (capture) has not been run.**
+K3: `K3-C18-DECLARATION.md` (frozen `31d083d`) and `K3-C18-RESULT.md`.
+
+**BATCH 02 CLOSED, 2026-08-26.** Final funnel:
+
+> **10 generated → 8 buyer-real → 6 publicly strain-testable → 1
+> absorption failure → 1 measured strain → 0 capturable.**
 
 All K1/K2 work was done on 2026-08-26 by six agents, one per candidate,
 each confined to its frozen instrument, and recorded in the frozen order.
@@ -36,10 +41,10 @@ says so. No instrument was substituted; no candidate was rescued.
 | **K1 absorption inadequate** | **1** | C18 (regulator-declared; externalisation assigned and late) |
 | of which *already externalised* (late) | 3 | C17 (2000/2015), C19 (~2006), C18 (assigned 2025, undelivered) |
 | **K2 strain measured** | **1** | C18 — located in the replacement's delivery |
-| K3 capturable | — | not run |
+| **K3 capturable** | **0** | C18 killed at K3: strain is a delivery problem inside a funded, licence-backed Elexon programme with a supplier RFP in flight; no participant pays a third party to bridge it; every unmet function was absorbed as an FMAR rule or backlog item; residual out-of-scope functions have a buyer base of tens of FSPs and no observed purchase |
 
 **Read:** 10 generated → 8 buyer-real → 6 publicly strain-testable → **1
-absorption failure → 1 measured strain → capture not tested.**
+absorption failure → 1 measured strain → 0 capturable.**
 
 ## Scoring against the pre-declared thresholds (BATCH-02.md §6)
 
@@ -60,7 +65,7 @@ absorption failure → 1 measured strain → capture not tested.**
   **1/6**. Reported, no threshold declared.
 - **Conversion rates** (cross-batch record): P(buyer-real | generated)
   8/8; P(absorption inadequate | buyer-real, testable) 1/6; P(measured
-  strain | inadequate) 1/1; P(capturable | strain) not run.
+  strain | inadequate) 1/1; P(capturable | strain) 0/1.
 
 ## Descriptive only: absorption failure by K0 class (n tiny)
 
@@ -86,8 +91,10 @@ accumulates.
    its first outing.
 3. **The one measured strain is in an adaptation in flight**, exactly the
    C6 shape from Batch 01: a replacement with an owner, a budget and a
-   regulator scoring it "Poor". Whether anything is capturable once FMAR
-   exists is a K3 question, deliberately not asked.
+   regulator scoring it "Poor". K3 asked whether that creates capturable
+   demand and found that it does not: the distinction between *measured
+   strain* and *commercial opportunity* is now a recorded result, not a
+   principle.
 4. **Forcing variables were mostly not yet present in the instruments**:
    LCT uptake "below projections" (C11), sub-1 MW flexibility volumes small
    (C18), standby-fleet deadline 2029 (C16), M1 clocks 2027 (C2 in Batch
@@ -97,6 +104,22 @@ accumulates.
 5. **Instrument blindness fell from "8 of 10 froze an unobservable
    symptom" to "0 of 6 returned unmeasured".** The gate did its work, and
    it did it without touching outcomes.
+6. **The generator is often early, and that is not a defect** (L17). The
+   objective is closer to P(eventual commercially relevant strain |
+   generated early enough to act), which only the dated re-observations
+   below can accumulate. A low measured-strain rate is not, by itself,
+   generator failure.
+7. **Next batch declaration must report direct measurability and
+   direct-plus-proxy screenability as two rates** (L16), never one
+   "instrument quality".
+
+## Closure
+
+Batch 02 is closed. None of the other five K1/K2 candidates is reopened;
+their dated re-observations are watches, not unfinished investigations.
+C12 and C15 remain *buyer-real, not publicly strain-testable*. C13 and
+C20 remain adjacency quarantines. Generator v4 is unchanged; L15–L17 are
+logged for the BATCH-03 declaration.
 
 ## Dated reassessment points carried forward
 

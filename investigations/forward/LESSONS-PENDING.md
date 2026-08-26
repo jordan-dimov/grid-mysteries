@@ -365,3 +365,30 @@ declared proxies with stated gaps. Read as v4's verdict codes read them
 now instruments only it is 0.375. The pre-declared reading stands (0.75);
 the next batch file must declare which reading it will use before its
 kills run. Not applied to v4. **Recurrences: Batch 02.**
+
+## L16 · Report direct measurability and proxy screenability as two rates (from Batch 02, sponsor instruction 2026-08-26)
+
+Supersedes the open question in L15 with the rule the next batch file must
+carry. Instrument states are recorded as **direct instrument / declared
+proxy / no instrument**, and two rates are reported, never combined:
+
+- **direct measurability** = candidates with a measured verdict on a
+  direct instrument ÷ K0-passers (Batch 02: 3/8);
+- **screenable with direct + proxy** = candidates with a measured verdict
+  on a direct or declared-proxy instrument ÷ K0-passers (Batch 02: 6/8).
+
+Both were correct numbers answering different questions; "instrument
+quality" must not silently pick one. Not applied to v4; applies to the
+BATCH-03 declaration. **Recurrences: Batch 02.**
+
+## L17 · The generator is often early, and that is not a defect (from Batch 02)
+
+C11, C16 and C18 found forced functions whose forcing variables had not
+reached measurable scale (LCT uptake "below projections"; standby-fleet
+deadline 2029; sub-1 MW flexibility volumes small). A forward generator
+*should* sometimes arrive before measurable strain. v4's objective is
+therefore not to maximise P(strain now) but something closer to
+P(eventual commercially relevant strain | generated early enough to act)
+— which cannot be measured yet and is what the dated re-observations in
+each batch's RESULTS.md exist to accumulate. Recorded so that a low
+measured-strain rate is not misread as generator failure. Not applied.

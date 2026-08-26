@@ -5,21 +5,24 @@ dataset documentation. Each fetch pins an immutable local artefact; analytics
 must read only pinned files, never the live API.
 """
 
-from __future__ import annotations
-
 import time
+from collections.abc import Iterable
+from datetime import date, timedelta
 from pathlib import Path
-from typing import Literal
 
 import httpx
 
+from grid_mysteries.corpus import DIRECTIONS, Direction, physical_path, window_path
 from grid_mysteries.models import SourceArtifact
 from grid_mysteries.sources.http import fetch_artifact
 
 BASE_URL = "https://data.elexon.co.uk/bmrs/api/v1"
 SOURCE = "elexon-insights"
 
-Direction = Literal["bid", "offer"]
+PHYSICAL_DATASETS = ("PN", "MELS", "MILS")
+#: The per-period datasets `period_jobs` knows how to pin, in the order an
+#: investigation's full acquisition requests them.
+PERIOD_DATASETS = ("BOD", "DISPTAV", "BOALF", *PHYSICAL_DATASETS)
 
 
 def bid_offer_url(settlement_date: str, settlement_period: int) -> str:
@@ -38,6 +41,71 @@ def acceptance_volumes_url(
         f"{BASE_URL}/balancing/settlement/indicative/volumes/all"
         f"/{direction}/{settlement_date}/{settlement_period}"
     )
+
+
+def acceptances_url(settlement_date: str, settlement_period: int) -> str:
+    """All-BMU bid-offer acceptances (dataset BOALF) for one settlement period."""
+    return (
+        f"{BASE_URL}/balancing/acceptances/all"
+        f"?settlementDate={settlement_date}&settlementPeriod={settlement_period}"
+    )
+
+
+def physical_url(dataset: str, settlement_date: str, settlement_period: int) -> str:
+    """All-BMU physical data (PN, MELS, MILS, ...) for one settlement period."""
+    return (
+        f"{BASE_URL}/balancing/physical/all"
+        f"?dataset={dataset}&settlementDate={settlement_date}&settlementPeriod={settlement_period}"
+    )
+
+
+def day_stream_url(dataset: str, day: str, bm_units: Iterable[str] = ()) -> str:
+    """One calendar day of a dataset stream, [day 00:00Z, next day 00:00Z),
+    optionally filtered to the given BM units."""
+    next_day = (date.fromisoformat(day) + timedelta(days=1)).isoformat()
+    url = f"{BASE_URL}/datasets/{dataset}/stream?from={day}T00:00Z&to={next_day}T00:00Z"
+    return url + "".join(f"&bmUnit={unit}" for unit in bm_units)
+
+
+def cashflows_url(direction: Direction, settlement_date: str) -> str:
+    """All-BMU published indicative cashflows (dataset EBOCF) for one
+    settlement day and direction; one request covers every period."""
+    return f"{BASE_URL}/balancing/settlement/indicative/cashflows/all/{direction}/{settlement_date}"
+
+
+def period_jobs(
+    settlement_date: str,
+    periods: Iterable[int],
+    *,
+    datasets: Iterable[str] = PERIOD_DATASETS,
+) -> list[tuple[str, str, Path]]:
+    """(dataset, url, destination) pinning jobs for every period of one day.
+
+    Datasets are emitted per period in the order given; DISPTAV expands to
+    one job per direction (offer, then bid). Destinations follow the pinned
+    corpus layout in `grid_mysteries.corpus`, so every investigation that
+    pins a per-period artefact lands it where every reader looks.
+    """
+    jobs: list[tuple[str, str, Path]] = []
+    for period in periods:
+        for dataset in datasets:
+            if dataset == "BOD":
+                url = bid_offer_url(settlement_date, period)
+                jobs.append((dataset, url, window_path("bod", settlement_date, period)))
+            elif dataset == "DISPTAV":
+                for direction in DIRECTIONS:
+                    url = acceptance_volumes_url(direction, settlement_date, period)
+                    destination = window_path(f"disptav_{direction}", settlement_date, period)
+                    jobs.append((dataset, url, destination))
+            elif dataset == "BOALF":
+                url = acceptances_url(settlement_date, period)
+                jobs.append((dataset, url, window_path("boalf", settlement_date, period)))
+            elif dataset in PHYSICAL_DATASETS:
+                url = physical_url(dataset, settlement_date, period)
+                jobs.append((dataset, url, physical_path(dataset, settlement_date, period)))
+            else:
+                raise ValueError(f"no per-period pinning layout for dataset {dataset!r}")
+    return jobs
 
 
 def fetch_pinned(

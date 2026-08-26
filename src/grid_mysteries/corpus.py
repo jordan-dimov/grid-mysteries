@@ -9,31 +9,37 @@ never re-runs against this corpus; new windows belong to new
 investigations with their own declarations.
 """
 
-from __future__ import annotations
-
 import json
 from datetime import date, timedelta
 from decimal import Decimal
 from pathlib import Path
+from typing import Literal
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
 RAW_ROOT = REPO_ROOT / "data" / "raw" / "elexon"
 BMUNITS_PATH = RAW_ROOT / "case-001" / "bmunits.json"
 
+Direction = Literal["offer", "bid"]
+
 WINDOW_START = date(2026, 8, 4)
 WINDOW_DAYS = 7
 PERIODS = range(1, 49)
-DIRECTIONS = ("offer", "bid")
+DIRECTIONS: tuple[Direction, ...] = ("offer", "bid")
 TOTAL_PERIODS = WINDOW_DAYS * len(PERIODS)
 
 
+def day_range(start: date, days: int) -> list[str]:
+    """ISO dates of `days` consecutive calendar days from `start` inclusive."""
+    return [(start + timedelta(days=offset)).isoformat() for offset in range(days)]
+
+
 def window_dates() -> list[str]:
-    return [(WINDOW_START + timedelta(days=day)).isoformat() for day in range(WINDOW_DAYS)]
+    return day_range(WINDOW_START, WINDOW_DAYS)
 
 
 def window_path(kind: str, settlement_date: str, period: int) -> Path:
-    """A pinned per-period window artefact: kind is bod, disptav_offer or
-    disptav_bid."""
+    """A pinned per-period window artefact: kind is bod, disptav_offer,
+    disptav_bid or boalf."""
     return RAW_ROOT / settlement_date / f"{kind}_p{period:02d}.json"
 
 
@@ -47,6 +53,15 @@ def load_records(path: Path) -> list[dict]:
     binary floating-point never enters an analytical path."""
     payload = json.loads(path.read_text(), parse_float=Decimal)
     return payload["data"] if isinstance(payload, dict) else payload
+
+
+def load_table_rows(parquet_path: Path) -> list[dict]:
+    """Named rows of a committed evidence table (e.g. Method Study 001's
+    classified alternatives). Parquet I/O stays here, outside the pure
+    investigation modules, so those replay from plain rows."""
+    import polars as pl
+
+    return list(pl.read_parquet(parquet_path).iter_rows(named=True))
 
 
 def unit_maps() -> tuple[dict[str, str], dict[str, str]]:

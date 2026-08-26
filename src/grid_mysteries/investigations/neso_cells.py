@@ -8,19 +8,9 @@ same construction, so it lives here rather than being imported across
 study directories.
 """
 
-from __future__ import annotations
-
 from decimal import Decimal
-from pathlib import Path
 
 Cell = tuple[str, str, str]  # settlement date, direction, NGC unit
-
-
-def load_alternative_rows(parquet_path: Path) -> list[dict]:
-    """Named rows of Method Study 001's classified-alternatives table."""
-    import polars as pl
-
-    return list(pl.read_parquet(parquet_path).iter_rows(named=True))
 
 
 def intensity_by_cell(

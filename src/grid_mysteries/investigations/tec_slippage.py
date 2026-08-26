@@ -73,8 +73,14 @@ def normalise(text: object) -> str:
     return re.sub(r"[^a-z0-9]+", " ", str(text or "").lower()).strip()
 
 
-def identity(row: dict[str, object]) -> str:
-    project_id = str(row.get("Project ID") or "").strip()
+def identity(row: dict[str, object], *, use_project_id: bool = True) -> str:
+    """Project ID when allowed and present, else the normalised name triple.
+
+    Project ID exists only from November 2021, so a span that crosses that
+    boundary must key on the triple throughout (`use_project_id=False`);
+    the declaration permits the ID only where present in both vintages.
+    """
+    project_id = str(row.get("Project ID") or "").strip() if use_project_id else ""
     if project_id:
         return f"id:{project_id}"
     triple = (
@@ -110,11 +116,45 @@ def _decimal(value: object) -> Decimal | None:
         return None
 
 
-def build_timelines(vintages: list[Vintage]) -> dict[str, list[Observation]]:
+def stage_keys(rows: tuple[dict[str, object], ...], *, use_project_id: bool) -> list[str]:
+    """One key per register row: identity plus the register's own Stage.
+
+    The register's grain is project-stage — from 2023 a project can carry
+    several rows with different effective dates. Pooling them under one
+    identity would manufacture revisions, so the unit is (identity, stage).
+    The register's `Stage` value is used where present; rows sharing an
+    identity without a usable Stage are ordered by effective date and MW.
+    """
+    groups: dict[str, list[int]] = defaultdict(list)
+    for index, row in enumerate(rows):
+        groups[identity(row, use_project_id=use_project_id)].append(index)
+    keys = [""] * len(rows)
+    for key, indices in groups.items():
+        stages = [str(rows[i].get("Stage") or "").strip() for i in indices]
+        if len(indices) == 1 or (all(stages) and len(set(stages)) == len(stages)):
+            for i, stage in zip(indices, stages, strict=True):
+                keys[i] = f"{key}#{stage or '1'}"
+            continue
+        ordered = sorted(
+            indices,
+            key=lambda i: (
+                parse_date(rows[i].get("MW Effective From")) or date.max,
+                _decimal(rows[i].get("Cumulative Total Capacity (MW)")) or Decimal(0),
+            ),
+        )
+        for ordinal, i in enumerate(ordered, start=1):
+            keys[i] = f"{key}#{ordinal}"
+    return keys
+
+
+def build_timelines(
+    vintages: list[Vintage], *, use_project_id: bool = True
+) -> dict[str, list[Observation]]:
     timelines: dict[str, list[Observation]] = defaultdict(list)
     for vintage in sorted(vintages, key=lambda v: v.t_public):
-        for row in vintage.rows:
-            timelines[identity(row)].append(
+        keys = stage_keys(vintage.rows, use_project_id=use_project_id)
+        for key, row in zip(keys, vintage.rows, strict=True):
+            timelines[key].append(
                 Observation(
                     t_public=vintage.t_public,
                     effective=parse_date(row.get("MW Effective From")),

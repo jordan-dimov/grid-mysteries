@@ -61,6 +61,7 @@ def test_months_between_is_signed_and_additive(start, months):
 def test_identity_prefers_project_id_then_normalised_triple():
     assert identity(row(pid="P1")) == "id:P1"
     assert identity(row(name="Wind  A!", customer="Co.", site="SITE")) == "name:wind a|co|site"
+    assert identity(row(pid="P1"), use_project_id=False) == "name:wind a|co|site"
 
 
 def test_timeline_metrics_count_revisions_and_signed_slip():
@@ -90,9 +91,9 @@ def test_disappearance_is_separate_from_slip():
     by_key = {
         m.key: m for m in all_metrics(build_timelines(vintages), last_vintage=date(2023, 1, 1))
     }
-    assert by_key["name:gone|co|site"].disappeared is True
-    assert by_key["name:gone|co|site"].net_slip_months is None
-    assert by_key["name:stays|co|site"].disappeared is False
+    assert by_key["name:gone|co|site#1"].disappeared is True
+    assert by_key["name:gone|co|site#1"].net_slip_months is None
+    assert by_key["name:stays|co|site#1"].disappeared is False
 
 
 def _pop(slips, first_observed=date(2020, 1, 1), plant="Wind"):
@@ -151,3 +152,20 @@ def test_match_report_counts_identity_kinds():
         report.by_name_triple,
         report.single_vintage_only,
     ) == (2, 1, 1, 2)
+
+
+def test_multi_stage_rows_do_not_manufacture_revisions():
+    stage_rows = (
+        {**row(name="Multi", eff="2026-01-01"), "Stage": "1"},
+        {**row(name="Multi", eff="2029-01-01"), "Stage": "2"},
+    )
+    vintages = [Vintage(date(2023, 1, 1), stage_rows), Vintage(date(2025, 6, 1), stage_rows)]
+    metrics = {
+        m.key: m for m in all_metrics(build_timelines(vintages), last_vintage=date(2025, 6, 1))
+    }
+    assert set(metrics) == {"name:multi|co|site#1", "name:multi|co|site#2"}
+    assert all(m.revisions == 0 and m.net_slip_months == 0 for m in metrics.values())
+    # without a Stage column, rows sharing an identity are ordered by effective date
+    bare = tuple({k: v for k, v in r.items() if k != "Stage"} for r in stage_rows)
+    keys = set(build_timelines([Vintage(date(2023, 1, 1), bare)]))
+    assert keys == {"name:multi|co|site#1", "name:multi|co|site#2"}

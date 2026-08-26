@@ -1,0 +1,359 @@
+{
+ "first_status": {
+  "cohort_2019_2021": {
+   "Scoping": [
+    143,
+    0.182
+   ],
+   "Built": [
+    18,
+    0.111
+   ],
+   "Consents Approved": [
+    51,
+    0.235
+   ],
+   "Awaiting Consents": [
+    50,
+    0.34
+   ],
+   "Under Construction/Commissioning": [
+    11,
+    0.182
+   ],
+   "": [
+    1,
+    0.0
+   ]
+  },
+  "cohort_2022_2024": {
+   "Scoping": [
+    393,
+    0.094
+   ],
+   "Awaiting Consents": [
+    63,
+    0.19
+   ],
+   "Consents Approved": [
+    48,
+    0.125
+   ],
+   "Under Construction/Commissioning": [
+    7,
+    0.0
+   ],
+   "Built": [
+    10,
+    0.1
+   ],
+   "": [
+    2,
+    0.0
+   ]
+  },
+  "all_by_first_year": {}
+ },
+ "initial_lead_time_band": {
+  "cohort_2019_2021": {
+   "3-5y": [
+    97,
+    0.351
+   ],
+   "<3y": [
+    82,
+    0.256
+   ],
+   ">5y": [
+    75,
+    0.027
+   ],
+   "unknown": [
+    20,
+    0.1
+   ]
+  },
+  "cohort_2022_2024": {
+   ">5y": [
+    281,
+    0.039
+   ],
+   "<3y": [
+    132,
+    0.159
+   ],
+   "3-5y": [
+    89,
+    0.202
+   ],
+   "unknown": [
+    21,
+    0.286
+   ]
+  },
+  "all_by_first_year": {}
+ },
+ "plant_type": {
+  "cohort_2019_2021": {
+   "HYBRID": [
+    5,
+    0.4
+   ],
+   "Coal": [
+    3,
+    0.333
+   ],
+   "CHP": [
+    1,
+    1.0
+   ],
+   "Wind Onshore": [
+    92,
+    0.207
+   ],
+   "PV Array": [
+    2,
+    0.0
+   ],
+   "Pump Storage": [
+    2,
+    0.5
+   ],
+   "Battery Storage": [
+    12,
+    0.333
+   ],
+   "Wind Offshore": [
+    41,
+    0.195
+   ],
+   "CCGT": [
+    1,
+    1.0
+   ],
+   "Gas Reciprocating": [
+    8,
+    0.125
+   ],
+   "Energy Storage System": [
+    39,
+    0.231
+   ],
+   "Hybrid": [
+    16,
+    0.25
+   ],
+   "PV Array (Photo Voltaic/solar)": [
+    6,
+    0.167
+   ],
+   "CCGT (Combined Cycle Gas Turbine)": [
+    17,
+    0.0
+   ],
+   "OCGT (Open Cycle Gas Turbine)": [
+    4,
+    0.25
+   ],
+   "Tidal": [
+    2,
+    1.0
+   ],
+   "Nuclear": [
+    2,
+    0.0
+   ],
+   "Biomass": [
+    2,
+    0.5
+   ],
+   "Thermal": [
+    1,
+    0.0
+   ],
+   "Energy Storage System; PV Array (Photo Voltaic/solar)": [
+    13,
+    0.231
+   ],
+   "Energy Storage System; Reactive Compensation": [
+    1,
+    0.0
+   ],
+   "Waste": [
+    1,
+    0.0
+   ],
+   "Energy Storage System; PV Array (Photo Voltaic/solar); Wind Onshore": [
+    1,
+    0.0
+   ],
+   "Reactive Compensation": [
+    2,
+    0.0
+   ]
+  },
+  "cohort_2022_2024": {
+   "Energy Storage System; PV Array (Photo Voltaic/solar)": [
+    137,
+    0.117
+   ],
+   "Energy Storage System": [
+    151,
+    0.053
+   ],
+   "Wind Offshore": [
+    43,
+    0.093
+   ],
+   "PV Array (Photo Voltaic/solar)": [
+    19,
+    0.105
+   ],
+   "Wind Onshore": [
+    75,
+    0.2
+   ],
+   "Hybrid": [
+    3,
+    0.0
+   ],
+   "Energy Storage System; PV Array (Photo Voltaic/solar); Wind Onshore": [
+    7,
+    0.143
+   ],
+   "Pump Storage": [
+    5,
+    0.0
+   ],
+   "Energy Storage System; Wind Onshore": [
+    12,
+    0.0
+   ],
+   "CCGT (Combined Cycle Gas Turbine)": [
+    8,
+    0.5
+   ],
+   "Reactive Compensation": [
+    11,
+    0.0
+   ],
+   "Demand; Energy Storage System": [
+    5,
+    0.0
+   ],
+   "CHP (Combined Heat and Power)": [
+    1,
+    0.0
+   ],
+   "Waste": [
+    1,
+    0.0
+   ],
+   "Energy Storage System; Reactive Compensation": [
+    5,
+    0.4
+   ],
+   "Nuclear": [
+    1,
+    0.0
+   ],
+   "Hydro": [
+    2,
+    0.0
+   ],
+   "PV Array (Photo Voltaic/solar); Wind Onshore": [
+    2,
+    0.0
+   ],
+   "Thermal": [
+    4,
+    0.25
+   ],
+   "CCGT (Combined Cycle Gas Turbine); Demand": [
+    1,
+    0.0
+   ],
+   "Gas Reciprocating": [
+    3,
+    0.0
+   ],
+   "Tidal": [
+    4,
+    0.75
+   ],
+   "Energy Storage System; PV Array (Photo Voltaic/solar); Wind Offshore": [
+    1,
+    0.0
+   ],
+   "OCGT (Open Cycle Gas Turbine)": [
+    1,
+    0.0
+   ],
+   "CCGT (Combined Cycle Gas Turbine); Energy Storage System": [
+    2,
+    0.0
+   ],
+   "Demand; Wind Offshore": [
+    1,
+    0.0
+   ],
+   "Coal": [
+    1,
+    0.0
+   ],
+   "Energy Storage System; OCGT (Open Cycle Gas Turbine)": [
+    1,
+    0.0
+   ],
+   "Energy Storage System; PV Array (Photo Voltaic/solar); Reactive Compensation": [
+    1,
+    0.0
+   ],
+   "Demand; Energy Storage System; PV Array (Photo Voltaic/solar); Reactive Compensation": [
+    1,
+    0.0
+   ],
+   "Energy Storage System; Nuclear; PV Array (Photo Voltaic/solar); Reactive Compensation; Wind Onshore": [
+    1,
+    0.0
+   ],
+   "Demand": [
+    1,
+    0.0
+   ],
+   "Energy Storage System;PV Array (Photo Voltaic/solar)": [
+    11,
+    0.0
+   ],
+   "Energy Storage System;PV Array (Photo Voltaic/solar);Wind Onshore": [
+    1,
+    0.0
+   ]
+  },
+  "all_by_first_year": {}
+ },
+ "population_by_first_observed_year": {
+  "2014": 144,
+  "2015": 92,
+  "2016": 57,
+  "2017": 42,
+  "2018": 29,
+  "2019": 32,
+  "2020": 173,
+  "2021": 69,
+  "2022": 281,
+  "2023": 242
+ },
+ "mean_slip_months_per_observed_year_by_lead_band": {
+  "<3y": 4.37,
+  "unknown": 3.76,
+  ">5y": 1.21,
+  "3-5y": 4.85
+ },
+ "mean_observation_span_years_by_lead_band": {
+  "<3y": 3.59,
+  "unknown": 3.58,
+  ">5y": 3.03,
+  "3-5y": 3.47
+ }
+}

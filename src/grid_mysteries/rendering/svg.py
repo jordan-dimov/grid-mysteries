@@ -21,6 +21,9 @@ ORANGE = "#eb6834"
 AQUA = "#1baf7a"
 # Diverging warm pole (validated reference palette slot).
 RED = "#e34948"
+# De-emphasis mark colour for the emphasis form: context bars/lines that
+# must recede behind the one or two series the story is about.
+MUTED = "#c8c6c1"
 
 FONT = "font-family=\"system-ui, 'Segoe UI', sans-serif\""
 

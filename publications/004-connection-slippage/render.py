@@ -9,7 +9,7 @@ from decimal import Decimal
 from pathlib import Path
 
 from grid_mysteries.corpus import REPO_ROOT
-from grid_mysteries.rendering.svg import BLUE, GRID, INK, INK_2, ORANGE, document, text
+from grid_mysteries.rendering.svg import BLUE, GRID, INK, INK_2, MUTED, ORANGE, document, text
 
 OUT = Path(__file__).resolve().parent
 E005 = (
@@ -37,6 +37,9 @@ def pct(rate: Decimal) -> str:
     return f"{float(rate) * 100:.1f}%"
 
 
+EMPHASISED = ("Awaiting Consents", "Under Construction/Commissioning")
+
+
 def slip_by_status() -> str:
     summary = json.loads(E005.read_text())
     rates = next(r for r in summary["q2"] if r["name"] == "first_status")["rates"]
@@ -45,20 +48,24 @@ def slip_by_status() -> str:
         key=lambda t: t[2],
         reverse=True,
     )
+    by_status = {status: rate for status, _, rate in rows}
+    ratio = by_status[EMPHASISED[0]] / by_status[EMPHASISED[1]]
     pooled = Decimal(summary["q3"]["pooled_rate"])
     label_w = 300
     plot_w = W - LEFT - RIGHT - label_w - 90
-    top, gap = 118, 40
+    top, gap = 140, 40
     height = top + len(rows) * gap + 80
     parts = document(
-        W, height, title="Which grid connection dates slip? Share slipping by two years or more"
+        W,
+        height,
+        title=f"Same connection date. {float(ratio):.1f}\u00d7 different historical risk.",
     )
     parts.append(
         text(
             30,
-            60,
-            "GB transmission-connected projects by the status they carried when first "
-            "seen in the TEC Register, 2014–2025 (old regime)",
+            62,
+            "Share of GB transmission connection positions that subsequently slipped by 2+ years, "
+            "by development status",
             size=13,
             fill=INK_2,
         )
@@ -67,8 +74,8 @@ def slip_by_status() -> str:
         text(
             30,
             80,
-            f"n = {summary['q1']['n']:,} project-stages observed ≥ 2 years; "
-            "bars are the share whose contracted date moved ≥ 24 months",
+            f"when first observed. NESO TEC Register, 2014\u20132025 (old regime); n = "
+            f"{summary['q1']['n']:,} project-stages observed \u2265 2 years.",
             size=13,
             fill=INK_2,
         )
@@ -77,10 +84,30 @@ def slip_by_status() -> str:
     x0 = LEFT + label_w
     for i, (status, n, rate) in enumerate(rows):
         y = top + i * gap
-        parts.append(text(x0 - 12, y + 16, status, size=13.5, fill=INK, anchor="end"))
+        emphasised = status in EMPHASISED
+        parts.append(
+            text(
+                x0 - 12,
+                y + 16,
+                status,
+                size=13.5,
+                weight=700 if emphasised else None,
+                fill=INK if emphasised else INK_2,
+                anchor="end",
+            )
+        )
         w = float(rate) * scale
-        parts.append(hbar(x0, y, w, BLUE))
-        parts.append(text(f"{x0 + w + 8:.1f}", y + 16, pct(rate), size=13.5, weight=700))
+        parts.append(hbar(x0, y, w, BLUE if emphasised else MUTED))
+        parts.append(
+            text(
+                f"{x0 + w + 8:.1f}",
+                y + 16,
+                pct(rate),
+                size=13.5,
+                weight=700 if emphasised else None,
+                fill=INK if emphasised else INK_2,
+            )
+        )
         parts.append(text(f"{x0 + w + 60:.1f}", y + 16, f"n = {n}", size=12, fill=INK_2))
     px = x0 + float(pooled) * scale
     parts.append(
@@ -98,8 +125,8 @@ def slip_by_status() -> str:
         text(
             30,
             height - 24,
-            "Source: NESO TEC Register archive (FOI-24-0031, FOI-24-0040, FOI-25-129, "
-            "FOI-26-051, Wayback), Investigation 005. Pre-declared thresholds; see expert corner.",
+            "Source: NESO TEC Register archive (FOI-24-0031, FOI-24-0040, FOI-25-129, FOI-26-051, "
+            "Wayback), Investigation 005. Pre-declared thresholds; see expert corner.",
             size=11,
             fill=INK_2,
         )

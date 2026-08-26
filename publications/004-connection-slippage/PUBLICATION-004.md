@@ -1,6 +1,6 @@
 # Publication Pack 004 — how much should you believe a grid connection date?
 
-No new analysis. Every number here and in the two visuals
+No new analysis. Every number here and in the visuals
 (`slip-by-status.svg`, `works-history.svg`, rendered by `render.py` **from
 the committed evidence of Investigations 005 and 006, never typed by
 hand**) is in `investigations/005-connection-date-credibility/evidence/`
@@ -11,69 +11,62 @@ rendered bytes.**
 
 ## Draft post copy
 
-> Every large generator waiting to plug into Britain's transmission grid
-> has a date written on its contract. How much should anyone — a lender,
-> a buyer, a planner — believe that date?
+> **A grid connection date is not really a date.**
 >
-> NESO publishes the list twice a week and, it turns out, has kept every
-> old copy since 2014. It released them under environmental-information
-> requests. I recovered 731 versions and followed each project from copy
-> to copy to see what happened to its promised date.
+> It is a risk estimate pretending to be one.
 >
-> The short answer: most dates don't move. About one in five moves by two
-> years or more.
+> I reconstructed 12 years of NESO's historical connection register — 731
+> versions, following 1,161 project positions through time.
 >
-> Across 1,161 project-stages watched for at least two years (first seen
-> before 2025, so this is the old regime, before connections reform
-> re-baselined everything), the median slip is zero, but 21% slipped by
-> 24 months or more. A fifth of this historical sample ended up at least
-> two years later than its first-observed contractual date. This is
-> evidence about the old queue; it is not a claim that Gate 2 projects
-> will behave the same way.
+> **21% ended up at least two years later than their first-observed
+> contractual connection date.**
 >
-> And the risk is not evenly spread. A project first seen at "Awaiting
-> Consents" went on to slip two-plus years 36% of the time. A project
-> already under construction: 11%. Roughly three and a half times the
-> odds, and the gap holds in two separate cohorts of projects.
+> But that wasn't the interesting part.
 >
-> One result runs against intuition. Projects whose date was three to
-> five years out slipped far *more* often (36%) than projects whose date
-> was more than five years out (12%). Longer dates were not less
-> reliable. I don't know why. I'm leaving it on the record as a fact
-> that needs explaining.
+> Projects first seen **Awaiting Consents** slipped by 2+ years **35.8% of
+> the time**.
 >
-> Then I asked the obvious next question. Connection dates depend on
-> transmission works — new substations, reinforced lines — that NESO
-> also lists, project by project. Does knowing that a project's enabling
-> works have already slipped tell you its date is unreliable?
+> Projects already **Under Construction: 10.5%**.
 >
-> Not in the disclosed data. Projects whose enabling works had already
-> slipped went on to slip
-> *slightly less* often (22%) than projects whose works were on plan
-> (27%). The sign was the same in every transmission owner's area. I set
-> myself a bar before opening the works register — a 20-point gap — and
-> missed it by the width of a barn.
+> Same system. Same kind of contractual date.
 >
-> So here is what the public record can and cannot say. It can tell you
-> the base rate of slippage and which development stages carry more of
-> it. In this test, the disclosed works register did not add useful
-> information about which dates would slip. And I decided in advance
-> not to turn any of this into a "credibility score": the facts are
-> worth publishing; the product they might have become did not earn
-> itself.
+> **3.4× different historical risk.**
 >
-> Everything — the 731 register copies, the frozen thresholds, the code,
-> the one amendment made mid-way and why — is in the repository.
+> If you're buying, financing or developing a battery, wind farm or solar
+> project, that distinction matters.
+>
+> A project valued on a 2030 connection date can look very different if
+> meaningful revenue actually begins in 2032.
+>
+> Yet connection due diligence still tends to start with:
+>
+> **"What is the connection date?"**
+>
+> The better question may be:
+>
+> **"How much should I believe it?"**
+>
+> This dataset is from the old GB connections regime, so I'm not claiming
+> Gate 2 will behave the same way.
+>
+> In fact, that creates the next interesting question:
+>
+> **Will connections reform actually make a contracted MW in 2030 more
+> bankable — or merely give it a new label?**
+>
+> We'll be able to measure that.
 
-## The two visuals
+## The visuals
 
-1. **`slip-by-status.svg`** — the rate of ≥ 24-month slippage by the
-   status a project carried when first observed, with the pooled 21.4%
-   as a hairline. Five statuses, one hue: this is magnitude, not identity.
-2. **`works-history.svg`** — two bars, on the matched subset (74.3 %) of
-   the same population: projects whose enabling works had already slipped
-   within a year of first observation versus projects whose works had
-   not. The bar the reader expects to be taller is shorter.
+1. **`slip-by-status.svg` — attached to the post.** Headline "Same
+   connection date. 3.4× different historical risk." (the ratio is
+   computed by `render.py` from the evidence file, not typed). Five
+   statuses; *Awaiting Consents* and *Under Construction* carry the hue,
+   the other three recede; the pooled 21.4% stays as a hairline.
+2. **`works-history.svg` — record only, not attached.** The failed
+   second hypothesis (006) strengthens the research record and is in the
+   expert corner, but the post is about one thing: connection-date
+   credibility is part of asset quality.
 
 ## Expert corner
 

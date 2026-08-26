@@ -1,30 +1,30 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="920" height="398" viewBox="0 0 920 398">
-<rect width="920" height="398" fill="#fcfcfb"/>
-<text x="30" y="36" font-family="system-ui, 'Segoe UI', sans-serif" font-size="19" font-weight="600" fill="#0b0b0b">Which grid connection dates slip? Share slipping by two years or more</text>
-<text x="30" y="60" font-family="system-ui, 'Segoe UI', sans-serif" font-size="13" fill="#52514e">GB transmission-connected projects by the status they carried when first seen in the TEC Register, 2014–2025 (old regime)</text>
-<text x="30" y="80" font-family="system-ui, 'Segoe UI', sans-serif" font-size="13" fill="#52514e">n = 1,161 project-stages observed ≥ 2 years; bars are the share whose contracted date moved ≥ 24 months</text>
-<text x="336" y="134" font-family="system-ui, 'Segoe UI', sans-serif" font-size="13.5" fill="#0b0b0b" text-anchor="end">Awaiting Consents</text>
-<path d="M348.0,118.0 H732.3 A4,4 0 0 1 736.3,122.0 V136.0 A4,4 0 0 1 732.3,140.0 H348.0 Z" fill="#2a78d6"/>
-<text x="744.3" y="134" font-family="system-ui, 'Segoe UI', sans-serif" font-size="13.5" font-weight="700" fill="#0b0b0b">35.8%</text>
-<text x="796.3" y="134" font-family="system-ui, 'Segoe UI', sans-serif" font-size="12" fill="#52514e">n = 190</text>
-<text x="336" y="174" font-family="system-ui, 'Segoe UI', sans-serif" font-size="13.5" fill="#0b0b0b" text-anchor="end">Consents Approved</text>
-<path d="M348.0,158.0 H620.6 A4,4 0 0 1 624.6,162.0 V176.0 A4,4 0 0 1 620.6,180.0 H348.0 Z" fill="#2a78d6"/>
-<text x="632.6" y="174" font-family="system-ui, 'Segoe UI', sans-serif" font-size="13.5" font-weight="700" fill="#0b0b0b">25.5%</text>
-<text x="684.6" y="174" font-family="system-ui, 'Segoe UI', sans-serif" font-size="12" fill="#52514e">n = 204</text>
-<text x="336" y="214" font-family="system-ui, 'Segoe UI', sans-serif" font-size="13.5" fill="#0b0b0b" text-anchor="end">Built</text>
-<path d="M348.0,198.0 H550.7 A4,4 0 0 1 554.7,202.0 V216.0 A4,4 0 0 1 550.7,220.0 H348.0 Z" fill="#2a78d6"/>
-<text x="562.7" y="214" font-family="system-ui, 'Segoe UI', sans-serif" font-size="13.5" font-weight="700" fill="#0b0b0b">19.0%</text>
-<text x="614.7" y="214" font-family="system-ui, 'Segoe UI', sans-serif" font-size="12" fill="#52514e">n = 105</text>
-<text x="336" y="254" font-family="system-ui, 'Segoe UI', sans-serif" font-size="13.5" fill="#0b0b0b" text-anchor="end">Scoping</text>
-<path d="M348.0,238.0 H526.3 A4,4 0 0 1 530.3,242.0 V256.0 A4,4 0 0 1 526.3,260.0 H348.0 Z" fill="#2a78d6"/>
-<text x="538.3" y="254" font-family="system-ui, 'Segoe UI', sans-serif" font-size="13.5" font-weight="700" fill="#0b0b0b">16.8%</text>
-<text x="590.3" y="254" font-family="system-ui, 'Segoe UI', sans-serif" font-size="12" fill="#52514e">n = 619</text>
-<text x="336" y="294" font-family="system-ui, 'Segoe UI', sans-serif" font-size="13.5" fill="#0b0b0b" text-anchor="end">Under Construction/Commissioning</text>
-<path d="M348.0,278.0 H458.2 A4,4 0 0 1 462.2,282.0 V296.0 A4,4 0 0 1 458.2,300.0 H348.0 Z" fill="#2a78d6"/>
-<text x="470.2" y="294" font-family="system-ui, 'Segoe UI', sans-serif" font-size="13.5" font-weight="700" fill="#0b0b0b">10.5%</text>
-<text x="522.2" y="294" font-family="system-ui, 'Segoe UI', sans-serif" font-size="12" fill="#52514e">n = 38</text>
-<line x1="579.8" y1="108" x2="579.8" y2="318" stroke="#52514e" stroke-width="1"/>
-<text x="585.8" y="104" font-family="system-ui, 'Segoe UI', sans-serif" font-size="12" fill="#52514e">all project-stages 21.4%</text>
-<line x1="348" y1="112" x2="348" y2="318" stroke="#e5e4e0" stroke-width="1"/>
-<text x="30" y="374" font-family="system-ui, 'Segoe UI', sans-serif" font-size="11" fill="#52514e">Source: NESO TEC Register archive (FOI-24-0031, FOI-24-0040, FOI-25-129, FOI-26-051, Wayback), Investigation 005. Pre-declared thresholds; see expert corner.</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="420" viewBox="0 0 920 420">
+<rect width="920" height="420" fill="#fcfcfb"/>
+<text x="30" y="36" font-family="system-ui, 'Segoe UI', sans-serif" font-size="19" font-weight="600" fill="#0b0b0b">Same connection date. 3.4× different historical risk.</text>
+<text x="30" y="62" font-family="system-ui, 'Segoe UI', sans-serif" font-size="13" fill="#52514e">Share of GB transmission connection positions that subsequently slipped by 2+ years, by development status</text>
+<text x="30" y="80" font-family="system-ui, 'Segoe UI', sans-serif" font-size="13" fill="#52514e">when first observed. NESO TEC Register, 2014–2025 (old regime); n = 1,161 project-stages observed ≥ 2 years.</text>
+<text x="336" y="156" font-family="system-ui, 'Segoe UI', sans-serif" font-size="13.5" font-weight="700" fill="#0b0b0b" text-anchor="end">Awaiting Consents</text>
+<path d="M348.0,140.0 H732.3 A4,4 0 0 1 736.3,144.0 V158.0 A4,4 0 0 1 732.3,162.0 H348.0 Z" fill="#2a78d6"/>
+<text x="744.3" y="156" font-family="system-ui, 'Segoe UI', sans-serif" font-size="13.5" font-weight="700" fill="#0b0b0b">35.8%</text>
+<text x="796.3" y="156" font-family="system-ui, 'Segoe UI', sans-serif" font-size="12" fill="#52514e">n = 190</text>
+<text x="336" y="196" font-family="system-ui, 'Segoe UI', sans-serif" font-size="13.5" fill="#52514e" text-anchor="end">Consents Approved</text>
+<path d="M348.0,180.0 H620.6 A4,4 0 0 1 624.6,184.0 V198.0 A4,4 0 0 1 620.6,202.0 H348.0 Z" fill="#c8c6c1"/>
+<text x="632.6" y="196" font-family="system-ui, 'Segoe UI', sans-serif" font-size="13.5" fill="#52514e">25.5%</text>
+<text x="684.6" y="196" font-family="system-ui, 'Segoe UI', sans-serif" font-size="12" fill="#52514e">n = 204</text>
+<text x="336" y="236" font-family="system-ui, 'Segoe UI', sans-serif" font-size="13.5" fill="#52514e" text-anchor="end">Built</text>
+<path d="M348.0,220.0 H550.7 A4,4 0 0 1 554.7,224.0 V238.0 A4,4 0 0 1 550.7,242.0 H348.0 Z" fill="#c8c6c1"/>
+<text x="562.7" y="236" font-family="system-ui, 'Segoe UI', sans-serif" font-size="13.5" fill="#52514e">19.0%</text>
+<text x="614.7" y="236" font-family="system-ui, 'Segoe UI', sans-serif" font-size="12" fill="#52514e">n = 105</text>
+<text x="336" y="276" font-family="system-ui, 'Segoe UI', sans-serif" font-size="13.5" fill="#52514e" text-anchor="end">Scoping</text>
+<path d="M348.0,260.0 H526.3 A4,4 0 0 1 530.3,264.0 V278.0 A4,4 0 0 1 526.3,282.0 H348.0 Z" fill="#c8c6c1"/>
+<text x="538.3" y="276" font-family="system-ui, 'Segoe UI', sans-serif" font-size="13.5" fill="#52514e">16.8%</text>
+<text x="590.3" y="276" font-family="system-ui, 'Segoe UI', sans-serif" font-size="12" fill="#52514e">n = 619</text>
+<text x="336" y="316" font-family="system-ui, 'Segoe UI', sans-serif" font-size="13.5" font-weight="700" fill="#0b0b0b" text-anchor="end">Under Construction/Commissioning</text>
+<path d="M348.0,300.0 H458.2 A4,4 0 0 1 462.2,304.0 V318.0 A4,4 0 0 1 458.2,322.0 H348.0 Z" fill="#2a78d6"/>
+<text x="470.2" y="316" font-family="system-ui, 'Segoe UI', sans-serif" font-size="13.5" font-weight="700" fill="#0b0b0b">10.5%</text>
+<text x="522.2" y="316" font-family="system-ui, 'Segoe UI', sans-serif" font-size="12" fill="#52514e">n = 38</text>
+<line x1="579.8" y1="130" x2="579.8" y2="340" stroke="#52514e" stroke-width="1"/>
+<text x="585.8" y="126" font-family="system-ui, 'Segoe UI', sans-serif" font-size="12" fill="#52514e">all project-stages 21.4%</text>
+<line x1="348" y1="134" x2="348" y2="340" stroke="#e5e4e0" stroke-width="1"/>
+<text x="30" y="396" font-family="system-ui, 'Segoe UI', sans-serif" font-size="11" fill="#52514e">Source: NESO TEC Register archive (FOI-24-0031, FOI-24-0040, FOI-25-129, FOI-26-051, Wayback), Investigation 005. Pre-declared thresholds; see expert corner.</text>
 </svg>

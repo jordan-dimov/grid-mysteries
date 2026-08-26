@@ -7,11 +7,11 @@ so it is drawn, labelled and never truncated.
 """
 
 import json
-from pathlib import Path
 
-from grid_mysteries.rendering.svg import BLUE, BLUE_LIGHT, FONT, INK, INK_2, SURFACE
+from grid_mysteries.evidence import evidence_dir
+from grid_mysteries.rendering.svg import BLUE, BLUE_LIGHT, INK_2, document, text
 
-EVIDENCE = Path(__file__).resolve().parent / "evidence"
+EVIDENCE = evidence_dir(__file__)
 
 
 LABELS = {
@@ -37,15 +37,18 @@ def render() -> None:
     height = top + len(waterfall) * (row_h + gap) + 44
     plot_w = width - left - right
     parts = [
-        f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" '
-        f'viewBox="0 0 {width} {height}">',
-        f'<rect width="{width}" height="{height}" fill="{SURFACE}"/>',
-        f'<text x="30" y="36" {FONT} font-size="19" font-weight="600" fill="{INK}">'
-        "Agreement with NESO, one layer of operational truth at a time</text>",
-        f'<text x="30" y="58" {FONT} font-size="13" fill="{INK_2}">'
-        "Share of 6,390 unit-day cells where the screen and NESO's stage-5 skip "
-        "methodology agree. Adopting volumetric exclusions as binary filters "
-        "over-corrects: the decline is the finding.</text>",
+        *document(
+            width, height, title="Agreement with NESO, one layer of operational truth at a time"
+        ),
+        text(
+            30,
+            58,
+            "Share of 6,390 unit-day cells where the screen and NESO's stage-5 skip "
+            "methodology agree. Adopting volumetric exclusions as binary filters "
+            "over-corrects: the decline is the finding.",
+            size=13,
+            fill=INK_2,
+        ),
     ]
     y = top
     for row in waterfall:
@@ -53,25 +56,19 @@ def render() -> None:
         is_peak = rate == peak
         bar_w = max(3, round(plot_w * rate))
         parts.append(
-            f'<text x="{left - 12}" y="{y + 18}" {FONT} font-size="13" fill="{INK_2}" '
-            f'text-anchor="end">{LABELS[row["layer"]]}</text>'
+            text(left - 12, y + 18, LABELS[row["layer"]], size=13, fill=INK_2, anchor="end")
         )
         parts.append(
             f'<rect x="{left}" y="{y}" width="{bar_w}" height="28" rx="4" '
             f'fill="{BLUE if is_peak else BLUE_LIGHT}"/>'
         )
         peak_note = "  ← peak" if is_peak else ""
-        parts.append(
-            f'<text x="{left + bar_w + 10}" y="{y + 19}" {FONT} font-size="14" '
-            f'font-weight="600" fill="{INK}">{rate:.1%}{peak_note}</text>'
-        )
+        parts.append(text(left + bar_w + 10, y + 19, f"{rate:.1%}{peak_note}", size=14, weight=600))
         detail = (
             f"catches {row['neso_skips_caught']:,}/{row['neso_skips_total']:,}"
             f" · false alarms {row['false_alarms']:,}"
         )
-        parts.append(
-            f'<text x="{left}" y="{y + 40}" {FONT} font-size="11" fill="{INK_2}">{detail}</text>'
-        )
+        parts.append(text(left, y + 40, detail, size=11, fill=INK_2))
         y += row_h + gap
     parts.append("</svg>")
     (EVIDENCE / "waterfall.svg").write_text("\n".join(parts) + "\n")

@@ -11,6 +11,7 @@ import json
 from decimal import Decimal
 from pathlib import Path
 
+from grid_mysteries.corpus import REPO_ROOT
 from grid_mysteries.rendering.svg import (
     AQUA,
     BLUE,
@@ -21,9 +22,10 @@ from grid_mysteries.rendering.svg import (
     INK_2,
     ORANGE,
     SURFACE,
+    document,
+    text,
 )
 
-REPO_ROOT = Path(__file__).resolve().parents[2]
 OUT = Path(__file__).resolve().parent
 EVIDENCE = REPO_ROOT / "investigations" / "003-follow-the-constraint" / "evidence"
 
@@ -58,14 +60,9 @@ def load() -> dict:
     }
 
 
-def title(parts: list, text: str, subtitle: str) -> None:
-    parts.append(
-        f'<text x="{LEFT}" y="46" {FONT} font-size="23" font-weight="700" fill="{INK}">'
-        f"{text}</text>"
-    )
-    parts.append(
-        f'<text x="{LEFT}" y="70" {FONT} font-size="13.5" fill="{INK_2}">{subtitle}</text>'
-    )
+def title(parts: list, heading: str, subtitle: str) -> None:
+    parts.append(text(LEFT, 46, heading, size=23, weight=700))
+    parts.append(text(LEFT, 70, subtitle, size=13.5, fill=INK_2))
 
 
 def footer(parts: list, height: int, source: str) -> None:
@@ -73,9 +70,14 @@ def footer(parts: list, height: int, source: str) -> None:
         f'<line x1="{LEFT}" y1="{height - 52}" x2="{W - LEFT}" y2="{height - 52}" stroke="{GRID}"/>'
     )
     parts.append(
-        f'<text x="{LEFT}" y="{height - 30}" {FONT} font-size="11.5" fill="{INK_2}">'
-        f"Evidence: {source} · pre-declared, pinned, governed · "
-        "github.com/jordan-dimov/grid-mysteries</text>"
+        text(
+            LEFT,
+            height - 30,
+            f"Evidence: {source} · pre-declared, pinned, governed · "
+            "github.com/jordan-dimov/grid-mysteries",
+            size=11.5,
+            fill=INK_2,
+        )
     )
 
 
@@ -93,11 +95,7 @@ def overview_svg(d: dict) -> str:
     n = len(days)
     slot = PLOT_W / n
     bar_w = slot - 10
-    parts = [
-        f'<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{height}" '
-        f'viewBox="0 0 {W} {height}">',
-        f'<rect width="{W}" height="{height}" fill="{SURFACE}"/>',
-    ]
+    parts = document(W, height)
     title(
         parts,
         "Fourteen days of constraint cost — and of GB-wide repetition",
@@ -122,13 +120,23 @@ def overview_svg(d: dict) -> str:
         )
         if cost == max_cost:
             parts.append(
-                f'<text x="{x + bar_w + 6:.1f}" y="{top1 + 16}" {FONT} '
-                f'font-size="12" font-weight="700" fill="{INK}">'
-                f"£{float(cost) / 1e6:.1f}m</text>"
+                text(
+                    f"{x + bar_w + 6:.1f}",
+                    top1 + 16,
+                    f"£{float(cost) / 1e6:.1f}m",
+                    size=12,
+                    weight=700,
+                )
             )
     parts.append(
-        f'<text x="{W - LEFT}" y="{top1 + 12}" {FONT} font-size="12" fill="{INK_2}" '
-        f'text-anchor="end">episode total £{float(d["group_cost"]) / 1e6:.1f}m</text>'
+        text(
+            W - LEFT,
+            top1 + 12,
+            f"episode total £{float(d['group_cost']) / 1e6:.1f}m",
+            size=12,
+            fill=INK_2,
+            anchor="end",
+        )
     )
 
     # Panel 2 — GB-wide concurrence.
@@ -148,30 +156,52 @@ def overview_svg(d: dict) -> str:
         )
         if r["gb_cycles"] == max_cycles and i == 2:
             parts.append(
-                f'<text x="{x + bar_w + 6:.1f}" y="{top2 + 16}" {FONT} '
-                f'font-size="12" font-weight="700" fill="{INK}">'
-                f"{r['gb_cycles']:,} cycles</text>"
+                text(
+                    f"{x + bar_w + 6:.1f}",
+                    top2 + 16,
+                    f"{r['gb_cycles']:,} cycles",
+                    size=12,
+                    weight=700,
+                )
             )
         parts.append(
-            f'<text x="{x + bar_w / 2:.1f}" y="{top2 + h2 + 18}" {FONT} font-size="10.5" '
-            f'fill="{INK_2}" text-anchor="middle">{r["date"][8:]}</text>'
+            text(
+                f"{x + bar_w / 2:.1f}",
+                top2 + h2 + 18,
+                r["date"][8:],
+                size=10.5,
+                fill=INK_2,
+                anchor="middle",
+            )
         )
     parts.append(
-        f'<text x="{LEFT + 6.5 * slot:.1f}" y="{top2 + h2 + 36}" {FONT} font-size="11.5" '
-        f'fill="{INK_2}">May 2026 · window ends 31 May — '
-        "the episode may not (right-censored)</text>"
+        text(
+            f"{LEFT + 6.5 * slot:.1f}",
+            top2 + h2 + 36,
+            "May 2026 · window ends 31 May — the episode may not (right-censored)",
+            size=11.5,
+            fill=INK_2,
+        )
     )
 
     # The honest punchline the two panels force.
     parts.append(
-        f'<text x="{LEFT}" y="{top2 + h2 + 76}" {FONT} font-size="14.5" fill="{INK}">'
-        f'The most expensive day (19 May) had the <tspan font-weight="700">fewest</tspan> '
-        "cycles; the busiest cycle day (20 May) cost 2% as much.</text>"
+        text(
+            LEFT,
+            top2 + h2 + 76,
+            'The most expensive day (19 May) had the <tspan font-weight="700">fewest</tspan> '
+            "cycles; the busiest cycle day (20 May) cost 2% as much.",
+            size=14.5,
+        )
     )
     parts.append(
-        f'<text x="{LEFT}" y="{top2 + h2 + 98}" {FONT} font-size="14.5" fill="{INK}">'
-        "The two series cannot be reconciled from public data — "
-        f'<tspan font-weight="700">no public mapping ties units to the boundary.</tspan></text>'
+        text(
+            LEFT,
+            top2 + h2 + 98,
+            "The two series cannot be reconciled from public data — "
+            '<tspan font-weight="700">no public mapping ties units to the boundary.</tspan>',
+            size=14.5,
+        )
     )
     footer(parts, height, "presentation-series.json, episode-accounting.json")
     parts.append("</svg>")
@@ -182,11 +212,7 @@ def reel_svg(d: dict) -> str:
     height = 560
     focus = d["focus"]
     trajectory = focus["trajectory"]
-    parts = [
-        f'<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{height}" '
-        f'viewBox="0 0 {W} {height}">',
-        f'<rect width="{W}" height="{height}" fill="{SURFACE}"/>',
-    ]
+    parts = document(W, height)
     title(
         parts,
         f"One battery's day: {focus['unit']}, {focus['day']}",
@@ -205,10 +231,7 @@ def reel_svg(d: dict) -> str:
         f'<line x1="{LEFT}" y1="{zero_y:.1f}" x2="{W - LEFT}" y2="{zero_y:.1f}" '
         f'stroke="{INK_2}" stroke-width="1" stroke-dasharray="4 3"/>'
     )
-    parts.append(
-        f'<text x="{W - LEFT}" y="{zero_y - 6:.1f}" {FONT} font-size="11" fill="{INK_2}" '
-        f'text-anchor="end">0 MW</text>'
-    )
+    parts.append(text(W - LEFT, f"{zero_y - 6:.1f}", "0 MW", size=11, fill=INK_2, anchor="end"))
     slot = PLOT_W / 48
     # FPN schedule (final vintage) as a step band; instructed depth as bars.
     for t in trajectory:
@@ -236,36 +259,64 @@ def reel_svg(d: dict) -> str:
         (Decimal(t["instructed_min_mw"]) for t in trajectory if t["instructed_min_mw"]),
     )
     parts.append(
-        f'<text x="{LEFT + 5.5 * slot:.1f}" y="{y(float(deepest)) + 4:.1f}" {FONT} '
-        f'font-size="12" font-weight="600" fill="{ORANGE}">'
-        f"instructed to {deepest:.0f} MW (import)</text>"
+        text(
+            f"{LEFT + 5.5 * slot:.1f}",
+            f"{y(float(deepest)) + 4:.1f}",
+            f"instructed to {deepest:.0f} MW (import)",
+            size=12,
+            weight=600,
+            fill=ORANGE,
+        )
     )
     for hour_period in (1, 12, 24, 36, 48):
         hx = LEFT + (hour_period - 1) * slot + (slot - 2) / 2
         parts.append(
-            f'<text x="{hx:.1f}" y="{top + plot_h + 14}" {FONT} font-size="10.5" '
-            f'fill="{INK_2}" text-anchor="middle">P{hour_period}</text>'
+            text(
+                f"{hx:.1f}",
+                top + plot_h + 14,
+                f"P{hour_period}",
+                size=10.5,
+                fill=INK_2,
+                anchor="middle",
+            )
         )
     parts.append(
         f'<rect x="{LEFT}" y="{top + plot_h + 30}" width="12" height="12" fill="{BLUE_LIGHT}"/>'
-        f'<text x="{LEFT + 18}" y="{top + plot_h + 40}" {FONT} font-size="12" fill="{INK}">'
-        "final physical notification — scheduled export (final vintage; revision history "
-        "is never published)</text>"
+        + text(
+            LEFT + 18,
+            top + plot_h + 40,
+            "final physical notification — scheduled export (final vintage; revision history "
+            "is never published)",
+            size=12,
+        )
     )
     parts.append(
         f'<rect x="{LEFT}" y="{top + plot_h + 52}" width="12" height="12" fill="{ORANGE}"/>'
-        f'<text x="{LEFT + 18}" y="{top + plot_h + 62}" {FONT} font-size="12" fill="{INK}">'
-        "deepest accepted instruction in the period (BOALF)</text>"
+        + text(
+            LEFT + 18,
+            top + plot_h + 62,
+            "deepest accepted instruction in the period (BOALF)",
+            size=12,
+        )
     )
     parts.append(
-        f'<text x="{LEFT}" y="{top + plot_h + 94}" {FONT} font-size="13.5" fill="{INK}">'
-        "Between any two instructions sits the step the public record cannot show: "
-        f'<tspan font-weight="700">whether retained energy was re-sold intraday.</tspan></text>'
+        text(
+            LEFT,
+            top + plot_h + 94,
+            "Between any two instructions sits the step the public record cannot show: "
+            '<tspan font-weight="700">whether retained energy was re-sold intraday.</tspan>',
+            size=13.5,
+        )
     )
     parts.append(
-        f'<text x="{LEFT}" y="{top + plot_h + 114}" {FONT} font-size="13" fill="{INK_2}">'
-        "Zero SO-flags also means NESO's own RRT methodology (which requires a "
-        "system-flagged acceptance) would not count this day at all.</text>"
+        text(
+            LEFT,
+            top + plot_h + 114,
+            "Zero SO-flags also means NESO's own RRT methodology (which requires a "
+            "system-flagged acceptance) would not count this day at all.",
+            size=13,
+            fill=INK_2,
+        )
     )
     footer(parts, height, "presentation-series.json, excerpt.json, so-flag-tally.json")
     parts.append("</svg>")
@@ -274,11 +325,7 @@ def reel_svg(d: dict) -> str:
 
 def diagram_svg(d: dict) -> str:
     height = 724
-    parts = [
-        f'<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{height}" '
-        f'viewBox="0 0 {W} {height}">',
-        f'<rect width="{W}" height="{height}" fill="{SURFACE}"/>',
-    ]
+    parts = document(W, height)
     title(
         parts,
         "What the public record can and cannot show",
@@ -309,28 +356,30 @@ def diagram_svg(d: dict) -> str:
             f'font-size="{size}" font-weight="{weight}" fill="{color}" '
             f'text-anchor="middle" letter-spacing="1">{label}</text>'
         )
-        parts.append(
-            f'<text x="{anchor}" y="{y0 + 54}" {FONT} font-size="13" font-weight="600" '
-            f'fill="{INK}" text-anchor="middle">{headline}</text>'
-        )
-        parts.append(
-            f'<text x="{anchor}" y="{y0 + 74}" {FONT} font-size="11" fill="{INK_2}" '
-            f'text-anchor="middle">{sub}</text>'
-        )
+        parts.append(text(anchor, y0 + 54, headline, size=13, weight=600, anchor="middle"))
+        parts.append(text(anchor, y0 + 74, sub, size=11, fill=INK_2, anchor="middle"))
         if x + box_w + gap < W - LEFT:
             arrow(parts, x + box_w + gap - 3, y0 + box_h / 2, gap - 6)
         x += box_w + gap
     score = d["selected"]["repeat_curtailment_score"]
     mwh = Decimal(d["selected"]["storage_bid_down_mwh"])
     parts.append(
-        f'<text x="{LEFT}" y="{y0 + box_h + 34}" {FONT} font-size="14" fill="{INK}">'
-        f'This shape occurred <tspan font-weight="700">{score:,} times</tspan> across GB '
-        f"storage during the fourteen episode dates</text>"
+        text(
+            LEFT,
+            y0 + box_h + 34,
+            f'This shape occurred <tspan font-weight="700">{score:,} times</tspan> across GB '
+            f"storage during the fourteen episode dates",
+            size=14,
+        )
     )
     parts.append(
-        f'<text x="{LEFT}" y="{y0 + box_h + 54}" {FONT} font-size="14" fill="{INK}">'
-        f"({mwh:,.0f} MWh bid down) — GB-wide concurrence, "
-        '<tspan font-weight="700">not attributed to the boundary</tspan>.</text>'
+        text(
+            LEFT,
+            y0 + box_h + 54,
+            f"({mwh:,.0f} MWh bid down) — GB-wide concurrence, "
+            '<tspan font-weight="700">not attributed to the boundary</tspan>.',
+            size=14,
+        )
     )
 
     # The money, side by side.
@@ -350,18 +399,27 @@ def diagram_svg(d: dict) -> str:
     ]
     ry = my + 16
     for label, value in rows:
+        parts.append(text(LEFT, ry + 15, label, size=13))
         parts.append(
-            f'<text x="{LEFT}" y="{ry + 15}" {FONT} font-size="13" fill="{INK}">{label}</text>'
-        )
-        parts.append(
-            f'<text x="{W - LEFT}" y="{ry + 15}" {FONT} font-size="13" font-weight="700" '
-            f'fill="{INK}" text-anchor="end">£{float(value) / 1e6:+.2f}m</text>'
+            text(
+                W - LEFT,
+                ry + 15,
+                f"£{float(value) / 1e6:+.2f}m",
+                size=13,
+                weight=700,
+                anchor="end",
+            )
         )
         ry += 24
     parts.append(
-        f'<text x="{LEFT}" y="{ry + 14}" {FONT} font-size="11.5" fill="{INK_2}">'
-        "Published indicative BM cashflows (BSC sign convention) and NESO's published "
-        "outturn — presented side by side, never reconciled to each other.</text>"
+        text(
+            LEFT,
+            ry + 14,
+            "Published indicative BM cashflows (BSC sign convention) and NESO's published "
+            "outturn — presented side by side, never reconciled to each other.",
+            size=11.5,
+            fill=INK_2,
+        )
     )
 
     # The two structural gaps.
@@ -389,14 +447,8 @@ def diagram_svg(d: dict) -> str:
             f'<rect x="{gx}" y="{gy + 12}" width="{col_w:.0f}" height="104" rx="8" '
             f'fill="{SURFACE}" stroke="{INK}" stroke-width="1.5" stroke-dasharray="6 4"/>'
         )
-        parts.append(
-            f'<text x="{gx + 16}" y="{gy + 48}" {FONT} font-size="26" font-weight="700" '
-            f'fill="{INK}">?</text>'
-        )
-        parts.append(
-            f'<text x="{gx + 44}" y="{gy + 42}" {FONT} font-size="13" font-weight="600" '
-            f'fill="{INK}">{q}</text>'
-        )
+        parts.append(text(gx + 16, gy + 48, "?", size=26, weight=700))
+        parts.append(text(gx + 44, gy + 42, q, size=13, weight=600))
         words = a.split()
         line, lines = [], []
         for word in words:
@@ -406,11 +458,8 @@ def diagram_svg(d: dict) -> str:
                 line = []
         if line:
             lines.append(" ".join(line))
-        for j, text in enumerate(lines):
-            parts.append(
-                f'<text x="{gx + 16}" y="{gy + 66 + j * 16}" {FONT} font-size="11.5" '
-                f'fill="{INK_2}">{text}</text>'
-            )
+        for j, wrapped in enumerate(lines):
+            parts.append(text(gx + 16, gy + 66 + j * 16, wrapped, size=11.5, fill=INK_2))
     parts.append(
         f'<text x="{LEFT}" y="{gy + 152}" {FONT} font-size="15" font-style="italic" '
         f'fill="{INK}">The public record can show the repetitive part. It cannot, by '

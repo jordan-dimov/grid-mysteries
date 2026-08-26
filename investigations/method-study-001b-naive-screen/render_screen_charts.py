@@ -8,11 +8,12 @@ ordinal blue ramp (before/after), ink text tokens, explicit light surface.
 import json
 import math
 from decimal import Decimal
-from pathlib import Path
 
-from grid_mysteries.rendering.svg import BLUE, BLUE_LIGHT, FONT, GRID, INK, INK_2, SURFACE
+from grid_mysteries.corpus import load_table_rows
+from grid_mysteries.evidence import evidence_dir
+from grid_mysteries.rendering.svg import BLUE, BLUE_LIGHT, GRID, INK_2, SURFACE, document, text
 
-EVIDENCE = Path(__file__).resolve().parent / "evidence"
+EVIDENCE = evidence_dir(__file__)
 
 
 def funnel_svg(analysis: dict) -> str:
@@ -27,21 +28,19 @@ def funnel_svg(analysis: dict) -> str:
     left, bar_h, gap = 30, 34, 12
     plot_w = width - 2 * left - 200
     parts = [
-        f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" '
-        f'viewBox="0 0 {width} {height}">',
-        f'<rect width="{width}" height="{height}" fill="{SURFACE}"/>',
-        f'<text x="{left}" y="36" {FONT} font-size="19" font-weight="600" fill="{INK}">'
-        "What happens to the opportunity screen?</text>",
-        f'<text x="{left}" y="58" {FONT} font-size="13" fill="{INK_2}">'
-        "One week of GB balancing data, 2026-08-04 to 2026-08-10. 25,326 accepted actions "
-        "had an apparently better-priced alternative in raw bid-offer data.</text>",
+        *document(width, height, title="What happens to the opportunity screen?", x=left),
+        text(
+            left,
+            58,
+            "One week of GB balancing data, 2026-08-04 to 2026-08-10. 25,326 accepted actions "
+            "had an apparently better-priced alternative in raw bid-offer data.",
+            size=13,
+            fill=INK_2,
+        ),
     ]
 
     def panel(y: int, title: str, rows: list[tuple[str, float, float, str]]) -> int:
-        parts.append(
-            f'<text x="{left}" y="{y}" {FONT} font-size="14" font-weight="600" '
-            f'fill="{INK}">{title}</text>'
-        )
+        parts.append(text(left, y, title, size=14, weight=600))
         y0 = y + 12
         for label, value, fraction, color in rows:
             bar_w = max(3, round(plot_w * fraction))
@@ -49,14 +48,8 @@ def funnel_svg(analysis: dict) -> str:
                 f'<rect x="{left}" y="{y0}" width="{bar_w}" height="{bar_h}" rx="4" '
                 f'fill="{color}"/>'
             )
-            parts.append(
-                f'<text x="{left + bar_w + 10}" y="{y0 + bar_h / 2 + 5}" {FONT} '
-                f'font-size="14" font-weight="600" fill="{INK}">{value}</text>'
-            )
-            parts.append(
-                f'<text x="{left}" y="{y0 + bar_h + 15}" {FONT} font-size="12" '
-                f'fill="{INK_2}">{label}</text>'
-            )
+            parts.append(text(left + bar_w + 10, y0 + bar_h / 2 + 5, value, size=14, weight=600))
+            parts.append(text(left, y0 + bar_h + 15, label, size=12, fill=INK_2))
             y0 += bar_h + gap + 14
         return y0
 
@@ -98,11 +91,8 @@ def funnel_svg(analysis: dict) -> str:
 
 
 def dumbbell_svg() -> str:
-    import polars as pl
-
-    table = pl.read_parquet(EVIDENCE / "screen.parquet")
     rows = sorted(
-        table.iter_rows(named=True),
+        load_table_rows(EVIDENCE / "screen.parquet"),
         key=lambda r: (
             -Decimal(r["naive_gap_gbp_per_mwh"]),
             r["settlement_date"],
@@ -124,14 +114,17 @@ def dumbbell_svg() -> str:
         )
 
     parts = [
-        f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" '
-        f'viewBox="0 0 {width} {height}">',
-        f'<rect width="{width}" height="{height}" fill="{SURFACE}"/>',
-        f'<text x="30" y="36" {FONT} font-size="19" font-weight="600" fill="{INK}">'
-        "The screen's top 20, before and after one physics question</text>",
-        f'<text x="30" y="58" {FONT} font-size="13" fill="{INK_2}">'
-        "Apparent £/MWh advantage of the best alternative: taking bid-offer data at face "
-        "value (light) vs keeping only alternatives that could deliver (dark).</text>",
+        *document(
+            width, height, title="The screen's top 20, before and after one physics question"
+        ),
+        text(
+            30,
+            58,
+            "Apparent £/MWh advantage of the best alternative: taking bid-offer data at face "
+            "value (light) vs keeping only alternatives that could deliver (dark).",
+            size=13,
+            fill=INK_2,
+        ),
     ]
     for tick in (100, 1000, 10000):
         tx = x_at(tick)
@@ -140,12 +133,17 @@ def dumbbell_svg() -> str:
             f'stroke="{GRID}" stroke-width="1"/>'
         )
         parts.append(
-            f'<text x="{tx}" y="{top + plot_h + 20}" {FONT} font-size="12" fill="{INK_2}" '
-            f'text-anchor="middle">£{tick:,}</text>'
+            text(tx, top + plot_h + 20, f"£{tick:,}", size=12, fill=INK_2, anchor="middle")
         )
     parts.append(
-        f'<text x="{left + plot_w / 2}" y="{height - 12}" {FONT} font-size="13" '
-        f'fill="{INK_2}" text-anchor="middle">apparent gap, £/MWh (log scale)</text>'
+        text(
+            left + plot_w / 2,
+            height - 12,
+            "apparent gap, £/MWh (log scale)",
+            size=13,
+            fill=INK_2,
+            anchor="middle",
+        )
     )
 
     step = plot_h / len(rows)
@@ -154,10 +152,7 @@ def dumbbell_svg() -> str:
         naive_x = x_at(float(Decimal(r["naive_gap_gbp_per_mwh"])))
         post_x = x_at(float(Decimal(r["post_gap_gbp_per_mwh"])))
         label = f"{r['accepted_unit']}  {r['settlement_date'][5:]} p{r['settlement_period']}"
-        parts.append(
-            f'<text x="{left - 12}" y="{cy + 4}" {FONT} font-size="12" fill="{INK_2}" '
-            f'text-anchor="end">{label}</text>'
-        )
+        parts.append(text(left - 12, cy + 4, label, size=12, fill=INK_2, anchor="end"))
         parts.append(
             f'<line x1="{post_x}" y1="{cy}" x2="{naive_x}" y2="{cy}" '
             f'stroke="{BLUE_LIGHT}" stroke-width="2"/>'
@@ -174,11 +169,9 @@ def dumbbell_svg() -> str:
     legend_y = top - 18
     parts.append(
         f'<circle cx="{left + 8}" cy="{legend_y}" r="5" fill="{BLUE_LIGHT}"/>'
-        f'<text x="{left + 18}" y="{legend_y + 4}" {FONT} font-size="12" fill="{INK}">'
-        "raw bid-offer data</text>"
-        f'<circle cx="{left + 158}" cy="{legend_y}" r="5" fill="{BLUE}"/>'
-        f'<text x="{left + 168}" y="{legend_y + 4}" {FONT} font-size="12" fill="{INK}">'
-        "deliverable alternatives only (~40× smaller)</text>"
+        + text(left + 18, legend_y + 4, "raw bid-offer data", size=12)
+        + f'<circle cx="{left + 158}" cy="{legend_y}" r="5" fill="{BLUE}"/>'
+        + text(left + 168, legend_y + 4, "deliverable alternatives only (~40× smaller)", size=12)
     )
     parts.append("</svg>")
     return "\n".join(parts)

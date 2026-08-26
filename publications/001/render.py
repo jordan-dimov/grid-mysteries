@@ -9,9 +9,19 @@ import json
 from decimal import Decimal
 from pathlib import Path
 
-from grid_mysteries.rendering.svg import AQUA, BLUE, BLUE_LIGHT, FONT, INK, INK_2, ORANGE, SURFACE
+from grid_mysteries.corpus import REPO_ROOT
+from grid_mysteries.rendering.svg import (
+    AQUA,
+    BLUE,
+    BLUE_LIGHT,
+    FONT,
+    INK,
+    INK_2,
+    ORANGE,
+    document,
+    text,
+)
 
-REPO_ROOT = Path(__file__).resolve().parents[2]
 OUT = Path(__file__).resolve().parent
 MS1 = REPO_ROOT / "investigations" / "method-study-001-phantom-liquidity" / "evidence"
 MS1B = REPO_ROOT / "investigations" / "method-study-001b-naive-screen" / "evidence"
@@ -71,10 +81,10 @@ def load() -> dict:
     }
 
 
-def chip(parts: list, y: int, text: str) -> None:
+def chip(parts: list, y: int, label: str) -> None:
     parts.append(
         f'<text x="{LEFT}" y="{y}" {FONT} font-size="13" font-weight="700" fill="{BLUE}" '
-        f'letter-spacing="2">{text}</text>'
+        f'letter-spacing="2">{label}</text>'
     )
 
 
@@ -94,13 +104,9 @@ def attribution_bar(parts: list, y: int, data: dict, bar_h: int = 40) -> None:
         )
         share = count / total
         if share > 0.08:
+            parts.append(text(x + 6, y + bar_h + 18, label, size=12, fill=INK_2))
             parts.append(
-                f'<text x="{x + 6}" y="{y + bar_h + 18}" {FONT} font-size="12" '
-                f'fill="{INK_2}">{label}</text>'
-            )
-            parts.append(
-                f'<text x="{x + 6}" y="{y + bar_h + 34}" {FONT} font-size="13" '
-                f'font-weight="600" fill="{INK}">{count:,} · {share:.1%}</text>'
+                text(x + 6, y + bar_h + 34, f"{count:,} · {share:.1%}", size=13, weight=600)
             )
         x += seg_w + 2
     end_x = x - 2
@@ -108,58 +114,79 @@ def attribution_bar(parts: list, y: int, data: dict, bar_h: int = 40) -> None:
         f'<line x1="{end_x}" y1="{y - 14}" x2="{end_x}" y2="{y - 2}" '
         f'stroke="{INK}" stroke-width="1.5"/>'
     )
-    parts.append(
-        f'<text x="{end_x}" y="{y - 20}" {FONT} font-size="13" font-weight="600" '
-        f'fill="{INK}" text-anchor="end">6 unmatched</text>'
-    )
+    parts.append(text(end_x, y - 20, "6 unmatched", size=13, weight=600, anchor="end"))
 
 
 def story_svg(d: dict) -> str:
     height = 1130
     parts = [
-        f'<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{height}" '
-        f'viewBox="0 0 {W} {height}">',
-        f'<rect width="{W}" height="{height}" fill="{SURFACE}"/>',
-        f'<text x="{LEFT}" y="52" {FONT} font-size="26" font-weight="700" fill="{INK}">'
-        "Anatomy of a phantom opportunity screen</text>",
-        f'<text x="{LEFT}" y="78" {FONT} font-size="14" fill="{INK_2}">'
-        "One week of Britain's Balancing Mechanism, 4–10 August 2026, reconstructed "
-        "from public data — layer by layer.</text>",
+        *document(
+            W,
+            height,
+            title="Anatomy of a phantom opportunity screen",
+            x=LEFT,
+            y=52,
+            size=26,
+            weight=700,
+        ),
+        text(
+            LEFT,
+            78,
+            "One week of Britain's Balancing Mechanism, 4–10 August 2026, reconstructed "
+            "from public data — layer by layer.",
+            size=14,
+            fill=INK_2,
+        ),
     ]
 
     # Act 1 — PRICE
     chip(parts, 128, "PRICE")
+    parts.append(text(LEFT, 176, f"{d['f1']:,}", size=40, weight=700))
     parts.append(
-        f'<text x="{LEFT}" y="176" {FONT} font-size="40" font-weight="700" fill="{INK}">'
-        f"{d['f1']:,}</text>"
-    )
-    parts.append(
-        f'<text x="{LEFT}" y="200" {FONT} font-size="14" fill="{INK_2}">'
-        "apparent price-order inversions — cases where a better-priced action looks "
-        "ignored if bid-offer data is taken at face value.</text>"
+        text(
+            LEFT,
+            200,
+            "apparent price-order inversions — cases where a better-priced action looks "
+            "ignored if bid-offer data is taken at face value.",
+            size=14,
+            fill=INK_2,
+        )
     )
     parts.append(
         f'<rect x="{LEFT}" y="214" width="{PLOT_W}" height="26" rx="4" fill="{BLUE_LIGHT}"/>'
     )
     parts.append(
-        f'<text x="{LEFT}" y="262" {FONT} font-size="14" fill="{INK_2}">'
-        f"Apparent counterfactual notional — arithmetic on public numbers, not value: "
-        f'<tspan font-weight="700" fill="{INK}">£{d["raw_m"]:.1f}m</tspan></text>'
+        text(
+            LEFT,
+            262,
+            f"Apparent counterfactual notional — arithmetic on public numbers, not value: "
+            f'<tspan font-weight="700" fill="{INK}">£{d["raw_m"]:.1f}m</tspan>',
+            size=14,
+            fill=INK_2,
+        )
     )
 
     # Act 2 — PHYSICS
     chip(parts, 318, "PHYSICS")
     parts.append(
-        f'<text x="{LEFT}" y="344" {FONT} font-size="16" font-weight="600" fill="{INK}">'
-        "One question: could the “better” alternative actually deliver a "
-        "single megawatt?</text>"
+        text(
+            LEFT,
+            344,
+            "One question: could the “better” alternative actually deliver a single megawatt?",
+            size=16,
+            weight=600,
+        )
     )
     post_w = max(6, round(PLOT_W * float(d["post_m"] / d["raw_m"])))
     parts.append(f'<rect x="{LEFT}" y="358" width="{post_w}" height="26" rx="4" fill="{BLUE}"/>')
     parts.append(
-        f'<text x="{LEFT + post_w + 10}" y="{358 + 18}" {FONT} font-size="14" '
-        f'font-weight="700" fill="{INK}">£{d["post_m"]:.1f}m remains — '
-        f"{d['vanished_pct']:.1f}% vanished</text>"
+        text(
+            LEFT + post_w + 10,
+            358 + 18,
+            f"£{d['post_m']:.1f}m remains — {d['vanished_pct']:.1f}% vanished",
+            size=14,
+            weight=700,
+        )
     )
     bullets = [
         f"top 1,000 apparent opportunities: {d['top1000_phantom']:,}/1,000 led by a "
@@ -169,53 +196,72 @@ def story_svg(d: dict) -> str:
         f"{d['agree_post']:.0%}, still catching {d['catches']:,} of "
         f"{d['skips_total']:,} skips",
     ]
-    for i, text in enumerate(bullets):
+    for i, bullet in enumerate(bullets):
         parts.append(
             f'<circle cx="{LEFT + 5}" cy="{412 + i * 26}" r="3" fill="{BLUE}"/>'
-            f'<text x="{LEFT + 18}" y="{417 + i * 26}" {FONT} font-size="14" '
-            f'fill="{INK}">{text}</text>'
+            + text(LEFT + 18, 417 + i * 26, bullet, size=14)
         )
 
     # Act 3 — OPERATIONAL CONTEXT (attribution, not an accuracy funnel)
     chip(parts, 542, "OPERATIONAL CONTEXT")
     parts.append(
-        f'<text x="{LEFT}" y="568" {FONT} font-size="16" font-weight="600" fill="{INK}">'
-        f"The {d['disagreements']:,} unit-days where the physics-aware screen still "
-        "disagreed with NESO…</text>"
+        text(
+            LEFT,
+            568,
+            f"The {d['disagreements']:,} unit-days where the physics-aware screen still "
+            "disagreed with NESO…",
+            size=16,
+            weight=600,
+        )
     )
     parts.append(
-        f'<text x="{LEFT}" y="588" {FONT} font-size="13" fill="{INK_2}">'
-        "…attributed through the operator's published exclusions. This is an "
-        "attribution of disagreement, not an accuracy funnel: the exclusions are "
-        "volumetric, and adopting them as binary filters degrades agreement.</text>"
+        text(
+            LEFT,
+            588,
+            "…attributed through the operator's published exclusions. This is an "
+            "attribution of disagreement, not an accuracy funnel: the exclusions are "
+            "volumetric, and adopting them as binary filters degrades agreement.",
+            size=13,
+            fill=INK_2,
+        )
     )
     attribution_bar(parts, 622, d)
     parts.append(
-        f'<text x="{LEFT}" y="712" {FONT} font-size="15" fill="{INK}">'
-        f'<tspan font-weight="700">{d["attributed_pct"]:.1f}%</tspan> of the remaining '
-        "disagreement has a public operational explanation.</text>"
+        text(
+            LEFT,
+            712,
+            f'<tspan font-weight="700">{d["attributed_pct"]:.1f}%</tspan> of the remaining '
+            "disagreement has a public operational explanation.",
+            size=15,
+        )
     )
 
     # Act 4 — RESOLUTION
     chip(parts, 776, "RESOLUTION")
+    parts.append(text(LEFT, 850, f"{d['residual_after_001d']}", size=64, weight=700))
     parts.append(
-        f'<text x="{LEFT}" y="850" {FONT} font-size="64" font-weight="700" fill="{INK}">'
-        f"{d['residual_after_001d']}</text>"
+        text(
+            LEFT + 70,
+            820,
+            f"unexplained cases left in the week. The last {d['unmatched']} unit-days fell",
+            size=15,
+        )
     )
     parts.append(
-        f'<text x="{LEFT + 70}" y="820" {FONT} font-size="15" fill="{INK}">'
-        f"unexplained cases left in the week. The last {d['unmatched']} unit-days fell"
-        "</text>"
+        text(
+            LEFT + 70,
+            842,
+            "too: the mistake was on the other side of the comparison — accepted",
+            size=15,
+        )
     )
     parts.append(
-        f'<text x="{LEFT + 70}" y="842" {FONT} font-size="15" fill="{INK}">'
-        "too: the mistake was on the other side of the comparison — accepted"
-        "</text>"
-    )
-    parts.append(
-        f'<text x="{LEFT + 70}" y="864" {FONT} font-size="15" fill="{INK}">'
-        "actions NESO itself removes from its skip stack as constraint management."
-        "</text>"
+        text(
+            LEFT + 70,
+            864,
+            "actions NESO itself removes from its skip stack as constraint management.",
+            size=15,
+        )
     )
     parts.append(
         f'<text x="{LEFT}" y="908" {FONT} font-size="15" font-style="italic" fill="{INK}">'
@@ -227,23 +273,38 @@ def story_svg(d: dict) -> str:
         "if you reconstruct the system at the wrong level of resolution.</text>"
     )
     parts.append(
-        f'<text x="{LEFT}" y="972" {FONT} font-size="14" font-weight="600" fill="{BLUE}">'
-        "Next: a completely untouched week, rules frozen before the data is seen, "
-        "the selector now physics- and constraint-aware. Now we find out what survives."
-        "</text>"
+        text(
+            LEFT,
+            972,
+            "Next: a completely untouched week, rules frozen before the data is seen, "
+            "the selector now physics- and constraint-aware. Now we find out what survives.",
+            size=14,
+            weight=600,
+            fill=BLUE,
+        )
     )
 
     # Verification footer
     parts.append(f'<line x1="{LEFT}" y1="1030" x2="{W - LEFT}" y2="1030" stroke="#e5e4e0"/>')
     parts.append(
-        f'<text x="{LEFT}" y="1056" {FONT} font-size="12" fill="{INK_2}">'
-        "Pre-registered hypotheses · pinned evidence (SHA-256) · governed "
-        "Morpholog audit record · reproducible CI</text>"
+        text(
+            LEFT,
+            1056,
+            "Pre-registered hypotheses · pinned evidence (SHA-256) · governed "
+            "Morpholog audit record · reproducible CI",
+            size=12,
+            fill=INK_2,
+        )
     )
     parts.append(
-        f'<text x="{LEFT}" y="1076" {FONT} font-size="12" fill="{INK_2}">'
-        "github.com/jordan-dimov/grid-mysteries — every number above is bound to a "
-        "committed evidence artefact (see PUBLICATION-001.md).</text>"
+        text(
+            LEFT,
+            1076,
+            "github.com/jordan-dimov/grid-mysteries — every number above is bound to a "
+            "committed evidence artefact (see PUBLICATION-001.md).",
+            size=12,
+            fill=INK_2,
+        )
     )
     parts.append("</svg>")
     return "\n".join(parts)
@@ -252,14 +313,21 @@ def story_svg(d: dict) -> str:
 def anatomy_svg(d: dict) -> str:
     height = 330
     parts = [
-        f'<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{height}" '
-        f'viewBox="0 0 {W} {height}">',
-        f'<rect width="{W}" height="{height}" fill="{SURFACE}"/>',
-        f'<text x="{LEFT}" y="44" {FONT} font-size="19" font-weight="600" fill="{INK}">'
-        f"Anatomy of the {d['disagreements']:,} remaining disagreements with NESO</text>",
-        f'<text x="{LEFT}" y="66" {FONT} font-size="13" fill="{INK_2}">'
-        "Primary attribution per unit-day cell, from NESO's published in-merit and "
-        "exclusion data. Attribution of disagreement — not an accuracy funnel.</text>",
+        *document(
+            W,
+            height,
+            title=f"Anatomy of the {d['disagreements']:,} remaining disagreements with NESO",
+            x=LEFT,
+            y=44,
+        ),
+        text(
+            LEFT,
+            66,
+            "Primary attribution per unit-day cell, from NESO's published in-merit and "
+            "exclusion data. Attribution of disagreement — not an accuracy funnel.",
+            size=13,
+            fill=INK_2,
+        ),
     ]
     attribution_bar(parts, 100, d)
     detail = (
@@ -267,17 +335,26 @@ def anatomy_svg(d: dict) -> str:
         "wind offer 122 · unwind 106 · fully accepted in merit 39 · "
         "system-tagged 25 · invalid parameters 1"
     )
-    parts.append(f'<text x="{LEFT}" y="196" {FONT} font-size="12" fill="{INK_2}">{detail}</text>')
+    parts.append(text(LEFT, 196, detail, size=12, fill=INK_2))
     parts.append(
-        f'<text x="{LEFT}" y="240" {FONT} font-size="15" fill="{INK}">'
-        f'<tspan font-weight="700">{d["attributed_pct"]:.1f}%</tspan> publicly '
-        f'attributed · <tspan font-weight="700">{d["unmatched"]}</tspan> unit-days '
-        "unmatched (all bid-side battery/small units)</text>"
+        text(
+            LEFT,
+            240,
+            f'<tspan font-weight="700">{d["attributed_pct"]:.1f}%</tspan> publicly '
+            f'attributed · <tspan font-weight="700">{d["unmatched"]}</tspan> unit-days '
+            "unmatched (all bid-side battery/small units)",
+            size=15,
+        )
     )
     parts.append(
-        f'<text x="{LEFT}" y="290" {FONT} font-size="12" fill="{INK_2}">'
-        "Source: Method Study 001C, evidence/disagreement-analysis.json · "
-        "github.com/jordan-dimov/grid-mysteries</text>"
+        text(
+            LEFT,
+            290,
+            "Source: Method Study 001C, evidence/disagreement-analysis.json · "
+            "github.com/jordan-dimov/grid-mysteries",
+            size=12,
+            fill=INK_2,
+        )
     )
     parts.append("</svg>")
     return "\n".join(parts)

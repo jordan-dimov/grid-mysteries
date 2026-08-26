@@ -9,11 +9,11 @@ curve, text in ink tokens.
 
 import json
 import math
-from pathlib import Path
 
-from grid_mysteries.rendering.svg import BLUE, BLUE_LIGHT, FONT, GRID, INK, INK_2, SURFACE
+from grid_mysteries.evidence import evidence_dir
+from grid_mysteries.rendering.svg import BLUE, BLUE_LIGHT, GRID, INK_2, SURFACE, document, text
 
-EVIDENCE = Path(__file__).resolve().parent / "evidence"
+EVIDENCE = evidence_dir(__file__)
 
 
 def _fmt(n: int) -> str:
@@ -39,22 +39,25 @@ def funnel_svg(analysis: dict) -> str:
     panel_h = 2 * bar_h + gap + 58
     height = 88 + len(panels) * (panel_h + 26)
     parts = [
-        f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" '
-        f'viewBox="0 0 {width} {height}">',
-        f'<rect width="{width}" height="{height}" fill="{SURFACE}"/>',
-        f'<text x="{left}" y="36" {FONT} font-size="19" font-weight="600" fill="{INK}">'
-        "What survives when apparent alternatives face public physical state?</text>",
-        f'<text x="{left}" y="58" {FONT} font-size="13" fill="{INK_2}">'
-        "GB Balancing Mechanism, 336 settlement periods, 2026-08-04 to 2026-08-10. "
-        "Conservative bound: ruled out only when zero headroom is provable.</text>",
+        *document(
+            width,
+            height,
+            title="What survives when apparent alternatives face public physical state?",
+            x=left,
+        ),
+        text(
+            left,
+            58,
+            "GB Balancing Mechanism, 336 settlement periods, 2026-08-04 to 2026-08-10. "
+            "Conservative bound: ruled out only when zero headroom is provable.",
+            size=13,
+            fill=INK_2,
+        ),
     ]
     y = 88
     plot_w = width - left - right - 190
     for title, before, after in panels:
-        parts.append(
-            f'<text x="{left}" y="{y + 14}" {FONT} font-size="14" font-weight="600" '
-            f'fill="{INK}">{title}</text>'
-        )
+        parts.append(text(left, y + 14, title, size=14, weight=600))
         y0 = y + 26
         for label, value, color in (
             ("raw (BOD taken at face value)", before, BLUE_LIGHT),
@@ -68,13 +71,9 @@ def funnel_svg(analysis: dict) -> str:
             share = value / before
             share_text = f" ({share:.1%} of raw)" if value != before else ""
             parts.append(
-                f'<text x="{left + bar_w + 10}" y="{y0 + bar_h / 2 + 5}" {FONT} '
-                f'font-size="14" font-weight="600" fill="{INK}">{_fmt(value)}</text>'
+                text(left + bar_w + 10, y0 + bar_h / 2 + 5, _fmt(value), size=14, weight=600)
             )
-            parts.append(
-                f'<text x="{left}" y="{y0 + bar_h + 15}" {FONT} font-size="12" '
-                f'fill="{INK_2}">{label}{share_text}</text>'
-            )
+            parts.append(text(left, y0 + bar_h + 15, f"{label}{share_text}", size=12, fill=INK_2))
             y0 += bar_h + gap + 8
         y += panel_h + 26
     parts.append("</svg>")
@@ -97,14 +96,15 @@ def pareto_svg(analysis: dict) -> str:
         return top + plot_h * (1 - share)
 
     parts = [
-        f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" '
-        f'viewBox="0 0 {width} {height}">',
-        f'<rect width="{width}" height="{height}" fill="{SURFACE}"/>',
-        f'<text x="30" y="36" {FONT} font-size="19" font-weight="600" fill="{INK}">'
-        "How concentrated is the raw illusion?</text>",
-        f'<text x="30" y="58" {FONT} font-size="13" fill="{INK_2}">'
-        "Cumulative share of all raw pairwise inversions attributable to the top-ranked "
-        "(BM unit, submitted price) groups.</text>",
+        *document(width, height, title="How concentrated is the raw illusion?"),
+        text(
+            30,
+            58,
+            "Cumulative share of all raw pairwise inversions attributable to the top-ranked "
+            "(BM unit, submitted price) groups.",
+            size=13,
+            fill=INK_2,
+        ),
     ]
     for pct in (0.25, 0.5, 0.75, 1.0):
         gy = y_at(pct)
@@ -112,10 +112,7 @@ def pareto_svg(analysis: dict) -> str:
             f'<line x1="{left}" y1="{gy}" x2="{left + plot_w}" y2="{gy}" '
             f'stroke="{GRID}" stroke-width="1"/>'
         )
-        parts.append(
-            f'<text x="{left - 8}" y="{gy + 4}" {FONT} font-size="12" fill="{INK_2}" '
-            f'text-anchor="end">{pct:.0%}</text>'
-        )
+        parts.append(text(left - 8, gy + 4, f"{pct:.0%}", size=12, fill=INK_2, anchor="end"))
     tick = 1
     while tick <= n_groups:
         tx = x_at(tick)
@@ -123,15 +120,17 @@ def pareto_svg(analysis: dict) -> str:
             f'<line x1="{tx}" y1="{top + plot_h}" x2="{tx}" y2="{top + plot_h + 5}" '
             f'stroke="{INK_2}" stroke-width="1"/>'
         )
-        parts.append(
-            f'<text x="{tx}" y="{top + plot_h + 22}" {FONT} font-size="12" fill="{INK_2}" '
-            f'text-anchor="middle">{_fmt(tick)}</text>'
-        )
+        parts.append(text(tx, top + plot_h + 22, _fmt(tick), size=12, fill=INK_2, anchor="middle"))
         tick *= 10
     parts.append(
-        f'<text x="{left + plot_w / 2}" y="{height - 12}" {FONT} font-size="13" '
-        f'fill="{INK_2}" text-anchor="middle">group rank (log scale) — {_fmt(n_groups)} '
-        "groups in total</text>"
+        text(
+            left + plot_w / 2,
+            height - 12,
+            f"group rank (log scale) — {_fmt(n_groups)} groups in total",
+            size=13,
+            fill=INK_2,
+            anchor="middle",
+        )
     )
 
     points = sorted(shares.items())
@@ -150,8 +149,7 @@ def pareto_svg(analysis: dict) -> str:
             f'<circle cx="{px}" cy="{py}" r="5" fill="{BLUE}" stroke="{SURFACE}" stroke-width="2"/>'
         )
         parts.append(
-            f'<text x="{px + 10}" y="{py - 8}" {FONT} font-size="13" font-weight="600" '
-            f'fill="{INK}">top {_fmt(rank)}: {shares[rank]:.1%}</text>'
+            text(px + 10, py - 8, f"top {_fmt(rank)}: {shares[rank]:.1%}", size=13, weight=600)
         )
     parts.append("</svg>")
     return "\n".join(parts)

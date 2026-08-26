@@ -1,0 +1,72 @@
+[
+ {
+  "source": "forward-f003-reconnaissance",
+  "dataset": "ESO-CAPACITY-MAP-2021-PAGE",
+  "url": "https://webapps.eso.bg/capacity/",
+  "path": "data/raw/eso/eso-capacity-map-2021-page_2026-08-26.html",
+  "sha256": "7523254a65423195d7124e13fca124afcc7cf9de6c57561eb6206ef01639c743",
+  "fetched_at": "2026-08-26T04:47:00Z",
+  "bytes": 1015939,
+  "note": "Fetched during pre-declaration reconnaissance. Structure (field names, counts) inspected; node-level values not analysed."
+ },
+ {
+  "source": "forward-f003-reconnaissance",
+  "dataset": "ESO-CAPACITY-MAP-2021-EXPLANATION",
+  "url": "https://webapps.eso.bg/capacity/%D0%95xplanation_bg.pdf",
+  "path": "data/raw/eso/eso-capacity-map-2021-explanation_2026-08-26.pdf",
+  "sha256": "d0b08c0c26e476c806a310f059f9a211fa7bf1f45972facce8be92a8a092a366",
+  "fetched_at": "2026-08-26T04:47:00Z",
+  "bytes": 304454,
+  "note": "Fetched during pre-declaration reconnaissance. Structure (field names, counts) inspected; node-level values not analysed."
+ },
+ {
+  "source": "forward-f003-reconnaissance",
+  "dataset": "ESO-JOINING-MAP-SHELL",
+  "url": "https://webapps.eso.bg/joining/public/map/",
+  "path": "data/raw/eso/eso-joining-map-shell_2026-08-26.html",
+  "sha256": "da55c1ff722add09358aa111607ac6710e1c2d82845c72d72cd448371171503d",
+  "fetched_at": "2026-08-26T04:49:00Z",
+  "bytes": 780,
+  "note": "Fetched during pre-declaration reconnaissance. Structure (field names, counts) inspected; node-level values not analysed."
+ },
+ {
+  "source": "forward-f003-reconnaissance",
+  "dataset": "ESO-JOINING-MAP-GET-POINTS",
+  "url": "https://webapps.eso.bg/joining/public/map/api/get-points.php",
+  "path": "data/raw/eso/eso-joining-map-get-points_2026-08-26.geojson",
+  "sha256": "89d9566ee4a92eb7c7e27d5e1ca6b7c2073b13f01e2a07d8d3a6404b6b2f8fcb",
+  "fetched_at": "2026-08-26T04:50:00Z",
+  "bytes": 1231107,
+  "note": "Fetched during pre-declaration reconnaissance. Structure (field names, counts) inspected; node-level values not analysed."
+ },
+ {
+  "source": "forward-f003-reconnaissance",
+  "dataset": "ESO-JOINING-MAP-GET-LINES",
+  "url": "https://webapps.eso.bg/joining/public/map/api/get-lines.php",
+  "path": "data/raw/eso/eso-joining-map-get-lines_2026-08-26.geojson",
+  "sha256": "4f766314fb1b8d57da0309edd97e9ddebf11cb8987f64a457097796a25f93279",
+  "fetched_at": "2026-08-26T04:50:00Z",
+  "bytes": 706507,
+  "note": "Fetched during pre-declaration reconnaissance. Structure (field names, counts) inspected; node-level values not analysed."
+ },
+ {
+  "source": "forward-f003-reconnaissance",
+  "dataset": "ESO-JOINING-MAP-GET-POINT-JSON-PROBE",
+  "url": "https://webapps.eso.bg/joining/public/map/api/get-point-json.php (POST id=<first 400 kV feature id>)",
+  "path": "data/raw/eso/eso-joining-map-get-point-json-probe_2026-08-26.json",
+  "sha256": "0736016009f2a181a7c10080797992d9143558f529c7110bd9056a4feb19149a",
+  "fetched_at": "2026-08-26T04:51:00Z",
+  "bytes": 7693,
+  "note": "Fetched during pre-declaration reconnaissance. Structure (field names, counts) inspected; node-level values not analysed."
+ },
+ {
+  "source": "forward-f003-reconnaissance",
+  "dataset": "ECONOMIC-BG-ESO-DATA-CENTRE-REQUESTS-2026-08-12",
+  "url": "https://www.economic.bg/bg/a/view/zajavkite-za-dejta-centrove-v-bylgarija-na-hartija-nadhvyrljat-9-gw",
+  "path": "data/raw/press/economic-bg-data-centre-requests-9gw_2026-08-12.html",
+  "sha256": "5f2491a1dfb4fc38ed5b743b9e0b917d4b9efd7904e7767e0219b63b336fd93f",
+  "fetched_at": "2026-08-26T05:20:00Z",
+  "bytes": 180364,
+  "note": "Press article carrying ESO EAD figures supplied on request: 9,330 MW of data-centre applications and intentions as of 2026-08-03 (t_event), of which 5.535 GW intentions and the remainder with issued opinions; opinions valid one year. t_public 2026-08-12. Secondary carrier of a first-party statement."
+ }
+]

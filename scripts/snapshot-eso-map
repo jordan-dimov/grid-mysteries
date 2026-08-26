@@ -1,0 +1,48 @@
+#!/usr/bin/env bash
+# Daily snapshot of ESO EAD's public "ESO Map" connection-capacity data —
+# the O2 instrument of F004 (investigations/forward/F004-stranded-pipeline-bg).
+# Idempotent per calendar day: an existing day directory is verified against
+# its journal and left alone. Stdlib only, so it runs from cron without uv.
+set -euo pipefail
+cd "$(dirname "$0")/.."
+exec python3 - "$@" <<'PY'
+import hashlib, json, sys, time, urllib.request, urllib.parse
+from datetime import datetime, timezone
+from pathlib import Path
+
+BASE = "https://webapps.eso.bg/joining/public/map/api/"
+UA = "grid-mysteries-snapshot/1 (research; jdimov@a115.bg)"
+today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+root = Path("data/raw/eso/snapshots") / today
+journal = root / "journal.ndjson"
+
+def fetch(url, data=None):
+    req = urllib.request.Request(url, data=data, headers={"User-Agent": UA})
+    with urllib.request.urlopen(req, timeout=60) as r:
+        return r.read()
+
+def record(name, url, body):
+    path = root / name
+    if path.exists():
+        return False
+    path.write_bytes(body)
+    with journal.open("a") as j:
+        j.write(json.dumps({"dataset": name, "url": url, "path": str(path),
+                            "sha256": hashlib.sha256(body).hexdigest(), "bytes": len(body),
+                            "fetched_at": datetime.now(timezone.utc).isoformat()}) + "\n")
+    return True
+
+root.mkdir(parents=True, exist_ok=True)
+n = 0
+points = fetch(BASE + "get-points.php")
+n += record("get-points.geojson", BASE + "get-points.php", points)
+n += record("get-lines.geojson", BASE + "get-lines.php", fetch(BASE + "get-lines.php"))
+ids = [f["properties"]["id"] for f in json.loads(points)["features"]]
+for i in ids:
+    if (root / f"point-{i}.json").exists():
+        continue
+    body = fetch(BASE + "get-point-json.php", urllib.parse.urlencode({"id": i}).encode())
+    n += record(f"point-{i}.json", BASE + f"get-point-json.php?id={i}", body)
+    time.sleep(0.15)
+print(f"snapshot {today}: {n} new files, {len(ids)} substations, journal {journal}")
+PY

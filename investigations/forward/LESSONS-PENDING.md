@@ -1,4 +1,8 @@
-# Lessons observed during batch 01 — logged, deliberately not applied
+# Lessons observed during batch 01 — logged; promotions to Generator v4 recorded 2026-08-26
+
+**Promoted to v4 (2026-08-26):** L1, L2, L5, L7, L10, L11, L12, L13, L14.
+**Remain guidance:** L3 (positive control), L4, L6, L8, L9.
+The text below is the record as logged and is not rewritten.
 
 Nothing in this file has been promoted into Generator v3, the kill
 protocol, or `CLAUDE.md`. It is held here until batch 01 is complete, so

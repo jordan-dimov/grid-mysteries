@@ -234,3 +234,51 @@ And the second half of the eligibility test, which C5–C6 did not need:
 > causes** in this instrument?
 
 If not, `not determinable`, quickly.
+
+## L10 · No buyer evidence, no candidate (from F003 + F004, commissioned studies outside batch 01)
+
+**Recorded 2026-08-26. Not applied to Generator v3 or to batch 01's remaining
+kills; held for v4 under this file's own rule.**
+
+F003 and F004 killed, in one day each, a thesis that every macro fact
+supported — AI demand is real, connections are scarce, developers are
+scrambling, 9.3 GW has been applied for in a 7 GW system — because the
+demand side was never evidenced: no buyer at ≥50 MW, no price, ~30 MW
+installed. The forcing variable was enormous and the opportunity was zero.
+
+> **big forcing variable ≠ big opportunity.** Roughly:
+> `Opportunity ≈ ForcedExternalisation × BuyerCompulsion × RepeatSpend ×
+> Capture` — if any factor is near zero the macro story is irrelevant.
+
+v3 already refuses to promote `ProvisionExists` into `BuyerSpend`, but it
+applies that rule *late*, at the absorption kill. The candidate rule that
+wants to become v4:
+
+> **No buyer evidence, no candidate.** A candidate must carry, at
+> generation, a pointer to money already changing hands — a mandate, a
+> procurement, a budget line, a repeat purchase — for the function or its
+> nearest neighbour. Not a forecast that money will appear.
+
+Two cautions for the v4 design, so this is not applied naively:
+
+- v3 deliberately keeps *incumbent-market* evidence out of generation to
+  prevent selection leakage. Buyer-spend evidence is demand-side and can be
+  admitted at generation without examining incumbents' strain — but the two
+  are entangled (money changing hands with an incumbent *is* absorption
+  evidence). The cleaner implementation may be a **K0 buyer kill that runs
+  first**, before the absorption kill, on a still-blind batch, rather than a
+  generation filter.
+- The candidate generator question the sponsor proposes for v4: *where is the
+  AI / power / electrification build-out forcing organisations to buy a new
+  external capability repeatedly, with evidence that money is already
+  changing hands?* — favouring buyers already spending badly over buyers
+  hoped for. Shapes named: grid-connection and compliance bottlenecks,
+  power-procurement and flexibility obligations, verification and assurance,
+  capacity-right optimisation, operational coordination, financial-risk
+  products created by very large new loads.
+
+**Recurrences: F003, F004** (the same failure, found twice in one thread).
+Batch 01's C10 — "grid-impact and consent evidence for large new demand" —
+is the batch candidate nearest to this family and is still pending; its kill
+should be run before v4 is drafted, so that v4 is scored against a completed
+batch rather than argued from two commissioned studies.

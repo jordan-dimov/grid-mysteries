@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="424" viewBox="0 0 920 424">
+<rect width="920" height="424" fill="#fcfcfb"/>
+<text x="30" y="36" font-family="system-ui, 'Segoe UI', sans-serif" font-size="19" font-weight="600" fill="#0b0b0b">Bulgaria's data-centre pipeline, stage by stage (MW)</text>
+<text x="30" y="60" font-family="system-ui, 'Segoe UI', sans-serif" font-size="13" fill="#52514e">ESO EAD figures as of 3 August 2026; installed capacity as reported August 2026. One scale for all four bars.</text>
+<text x="366" y="134" font-family="system-ui, 'Segoe UI', sans-serif" font-size="13.5" fill="#0b0b0b" text-anchor="end">Requested (applications and intentions)</text>
+<path d="M378.0,118.0 H758.0 A4,4 0 0 1 762.0,122.0 V136.0 A4,4 0 0 1 758.0,140.0 H378.0 Z" fill="#2a78d6"/>
+<text x="770.0" y="134" font-family="system-ui, 'Segoe UI', sans-serif" font-size="13.5" font-weight="700" fill="#0b0b0b">9,330 MW</text>
+<text x="366" y="178" font-family="system-ui, 'Segoe UI', sans-serif" font-size="13.5" fill="#0b0b0b" text-anchor="end">Holding an ESO connection opinion</text>
+<path d="M378.0,162.0 H530.2 A4,4 0 0 1 534.2,166.0 V180.0 A4,4 0 0 1 530.2,184.0 H378.0 Z" fill="#2a78d6"/>
+<text x="542.2" y="178" font-family="system-ui, 'Segoe UI', sans-serif" font-size="13.5" font-weight="700" fill="#0b0b0b">3,795 MW</text>
+<text x="366" y="222" font-family="system-ui, 'Segoe UI', sans-serif" font-size="13.5" fill="#0b0b0b" text-anchor="end">Preliminary contracts signed with data-centre applicants</text>
+
+<text x="388.0" y="222" font-family="system-ui, 'Segoe UI', sans-serif" font-size="13.5" font-weight="700" fill="#0b0b0b">0 MW</text>
+<text x="366" y="266" font-family="system-ui, 'Segoe UI', sans-serif" font-size="13.5" fill="#0b0b0b" text-anchor="end">Data-centre capacity installed nationally</text>
+<path d="M378.0,250.0 H379.0 A1.0,1.0 0 0 1 380.0,251.0 V271.0 A1.0,1.0 0 0 1 379.0,272.0 H378.0 Z" fill="#eb6834"/>
+<text x="388.0" y="266" font-family="system-ui, 'Segoe UI', sans-serif" font-size="13.5" font-weight="700" fill="#0b0b0b">≈30 MW</text>
+<line x1="704.0" y1="108" x2="704.0" y2="294" stroke="#52514e" stroke-width="1"/>
+<text x="704.0" y="104" font-family="system-ui, 'Segoe UI', sans-serif" font-size="12" fill="#52514e" text-anchor="middle">Forecast national peak demand, 2035: 7,920 MW</text>
+<line x1="378" y1="112" x2="378" y2="294" stroke="#e5e4e0" stroke-width="1"/>
+<text x="30" y="324" font-family="system-ui, 'Segoe UI', sans-serif" font-size="12.5" fill="#0b0b0b">“obtaining a positive opinion increases the value of the project and allows it to be sold to a strategic investor”</text>
+<text x="30" y="342" font-family="system-ui, 'Segoe UI', sans-serif" font-size="12" fill="#52514e">— Kiril Georgiev, CEO of ESO EAD, Capital.bg, 19 August 2026</text>
+<text x="30" y="384" font-family="system-ui, 'Segoe UI', sans-serif" font-size="11" fill="#52514e">Sources per bar in evidence.json: economic.bg 2026-08-12 (ESO figures); Mediapool 2026-05-26;</text>
+<text x="30" y="400" font-family="system-ui, 'Segoe UI', sans-serif" font-size="11" fill="#52514e">Capital.bg 2026-08-19; ESO draft development plan 2026–2035. Forward Mysteries F003 / F004.</text>
+</svg>

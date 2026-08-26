@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="306" viewBox="0 0 920 306">
+<rect width="920" height="306" fill="#fcfcfb"/>
+<text x="30" y="36" font-family="system-ui, 'Segoe UI', sans-serif" font-size="19" font-weight="600" fill="#0b0b0b">Does a late network make a late project? Not in the public record</text>
+<text x="30" y="60" font-family="system-ui, 'Segoe UI', sans-serif" font-size="13" fill="#52514e">Same population, matched to NESO's Transmission Works Register (31 reports, 2017–2025). Share slipping ≥ 24 months, by whether the project's</text>
+<text x="30" y="80" font-family="system-ui, 'Segoe UI', sans-serif" font-size="13" fill="#52514e">enabling works had already slipped within a year of the project first appearing.</text>
+<text x="416" y="134" font-family="system-ui, 'Segoe UI', sans-serif" font-size="13.5" fill="#0b0b0b" text-anchor="end">Enabling works had already slipped ≥ 6 months</text>
+<path d="M428.0,118.0 H615.6 A4,4 0 0 1 619.6,122.0 V136.0 A4,4 0 0 1 615.6,140.0 H428.0 Z" fill="#eb6834"/>
+<text x="627.6" y="134" font-family="system-ui, 'Segoe UI', sans-serif" font-size="13.5" font-weight="700" fill="#0b0b0b">21.7%</text>
+<text x="679.6" y="134" font-family="system-ui, 'Segoe UI', sans-serif" font-size="12" fill="#52514e">n = 351</text>
+<text x="416" y="178" font-family="system-ui, 'Segoe UI', sans-serif" font-size="13.5" fill="#0b0b0b" text-anchor="end">Enabling works were on plan</text>
+<path d="M428.0,162.0 H659.1 A4,4 0 0 1 663.1,166.0 V180.0 A4,4 0 0 1 659.1,184.0 H428.0 Z" fill="#2a78d6"/>
+<text x="671.1" y="178" font-family="system-ui, 'Segoe UI', sans-serif" font-size="13.5" font-weight="700" fill="#0b0b0b">26.6%</text>
+<text x="723.1" y="178" font-family="system-ui, 'Segoe UI', sans-serif" font-size="12" fill="#52514e">n = 512</text>
+<line x1="428" y1="112" x2="428" y2="206" stroke="#e5e4e0" stroke-width="1"/>
+<text x="30" y="236" font-family="system-ui, 'Segoe UI', sans-serif" font-size="12.5" fill="#0b0b0b">Gap -4.9 points against a pre-declared bar of +20; the sign holds in both cohorts and in NGET, SHET and SPT areas.</text>
+<text x="30" y="282" font-family="system-ui, 'Segoe UI', sans-serif" font-size="11" fill="#52514e">Source: NESO FOI-25-133 (TWR reports) joined to the TEC archive; Investigation 006. Works completion dates proxied by the earliest dependent connection date (Amendment 1).</text>
+</svg>

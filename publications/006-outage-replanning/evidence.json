@@ -1,0 +1,12 @@
+{
+ "transcribed_from": "investigations/forward/F002-batch/KILL-C7.md (verified FY25 table, National Grid Network Access Planning KPIs, July 2026; NESO Network Access Planning page)",
+ "within_year_requests": [
+  {"phase": "Before the optimisation phase", "fy24": 470, "fy25": 711},
+  {"phase": "During optimisation", "fy24": 928, "fy25": 1253},
+  {"phase": "During delivery (final weeks)", "fy24": 1438, "fy25": 2184}
+ ],
+ "plan_delivered_pct": {"fy22": 61, "fy23": 50, "fy24": 46, "fy25": 50},
+ "neso_workload": {"year_ahead_plan_outages": 2500, "changes_processed": 17000, "engineers": 65, "source": "NESO Network Access Planning page, fetched and verified 2026-08-23"},
+ "kpi5_unreportable_years": 4,
+ "source_kpi": "National Grid Electricity Transmission, Network Access Planning KPIs, July 2026 (FY25 / T2Y4)"
+}

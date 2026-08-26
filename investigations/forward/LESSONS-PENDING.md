@@ -353,3 +353,15 @@ have changed nothing in GB, where every counted candidate but C9 has a
 paying buyer class. The evidence therefore supports L10 as a **K0 cheap
 first kill**, and supports L11 as the **generation-time gate**. Neither is
 applied here.
+
+---
+
+## L15 · The instrument-quality metric must say whether proxy-measured verdicts count (from Batch 02 scoring)
+
+Batch 02 pre-declared instrument quality = measured verdicts ÷ K0-passers,
+threshold 0.5, without defining "measured". Three of six verdicts came from
+declared proxies with stated gaps. Read as v4's verdict codes read them
+(they are "measured stable (proxy)") the ratio is 0.75; read on eligible-
+now instruments only it is 0.375. The pre-declared reading stands (0.75);
+the next batch file must declare which reading it will use before its
+kills run. Not applied to v4. **Recurrences: Batch 02.**

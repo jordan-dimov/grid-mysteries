@@ -24,8 +24,6 @@ timing, dynamics, prior instructions and constraint location remain
 untested. Missing public state always yields ``not_ruled_out``.
 """
 
-from __future__ import annotations
-
 from dataclasses import dataclass
 from decimal import Decimal
 from typing import Final, Literal

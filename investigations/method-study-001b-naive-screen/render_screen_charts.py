@@ -5,8 +5,6 @@ only; no analytics happen here. Validated reference dataviz palette:
 ordinal blue ramp (before/after), ink text tokens, explicit light surface.
 """
 
-from __future__ import annotations
-
 import json
 import math
 from decimal import Decimal

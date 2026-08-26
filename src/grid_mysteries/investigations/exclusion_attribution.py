@@ -11,8 +11,6 @@ atomic vocabulary below was confirmed from the July 2026 resource
 ``unrecognised`` rather than silently dropped.
 """
 
-from __future__ import annotations
-
 from decimal import Decimal
 
 #: Atomic reason -> category, in the declared layer order (July 2026

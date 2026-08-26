@@ -5,8 +5,6 @@ Studies 001, 001B and 001C — nothing is typed in here, so the graphic
 cannot drift from the governed record. No new analytical claim is made.
 """
 
-from __future__ import annotations
-
 import json
 from decimal import Decimal
 from pathlib import Path

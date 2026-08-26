@@ -33,8 +33,6 @@ in `investigations/002-hardened-selector/README.md` governs):
   inputs always yield identical output.
 """
 
-from __future__ import annotations
-
 from dataclasses import dataclass
 from decimal import Decimal
 from typing import Final

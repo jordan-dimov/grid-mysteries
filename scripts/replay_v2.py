@@ -12,8 +12,6 @@ Ordering is preserved (row by row, batch by batch); the mapping is taken
 from the record, never hardcoded, so a future rename replays correctly.
 """
 
-from __future__ import annotations
-
 import json
 import subprocess
 import sys

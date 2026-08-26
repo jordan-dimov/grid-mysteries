@@ -25,8 +25,6 @@ All prices and volumes must arrive as `Decimal`, `int` or numeric strings.
 Binary floats are rejected so a lossy JSON load cannot weaken a claim.
 """
 
-from __future__ import annotations
-
 from dataclasses import dataclass
 from decimal import Decimal, InvalidOperation
 from typing import Literal

@@ -14,8 +14,6 @@ BESS Study 001's declared semantics, implemented as pure functions:
   interpolated, never partially credited.
 """
 
-from __future__ import annotations
-
 from dataclasses import dataclass
 from datetime import datetime
 from decimal import Decimal

@@ -7,8 +7,6 @@ monotonic rungs; the revision flows are drawn as a diverging pair, not a
 net bar.
 """
 
-from __future__ import annotations
-
 import json
 from decimal import Decimal
 from pathlib import Path

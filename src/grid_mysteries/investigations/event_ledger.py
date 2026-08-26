@@ -22,8 +22,6 @@ structural, not conventional:
   retrieved at pin time, not necessarily the value observable in-month.
 """
 
-from __future__ import annotations
-
 from dataclasses import dataclass, field
 from decimal import Decimal
 from typing import Literal

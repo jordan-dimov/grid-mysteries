@@ -5,8 +5,6 @@ dependency, and every artefact digest the research record relies on is
 computed by `grid_mysteries.hashing`, not here.
 """
 
-from __future__ import annotations
-
 import argparse
 import platform
 import shutil

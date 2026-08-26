@@ -11,8 +11,6 @@ programme's model hash at the handshake), so a drifted programme fails
 loudly before any value is read.
 """
 
-from __future__ import annotations
-
 import os
 from decimal import Decimal
 from pathlib import Path

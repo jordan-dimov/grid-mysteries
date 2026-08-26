@@ -7,8 +7,6 @@ classification. Pure logic; the study script feeds it candidates and the
 classification map and computes aggregates.
 """
 
-from __future__ import annotations
-
 from dataclasses import dataclass
 from decimal import Decimal
 

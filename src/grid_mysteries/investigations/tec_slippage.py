@@ -18,8 +18,6 @@ Contracts:
   the declared inequality holds exactly as written.
 """
 
-from __future__ import annotations
-
 import re
 from collections import Counter, defaultdict
 from dataclasses import dataclass

@@ -6,8 +6,6 @@ light ordinal step. The decline after the peak is the finding, not a bug,
 so it is drawn, labelled and never truncated.
 """
 
-from __future__ import annotations
-
 import json
 from pathlib import Path
 

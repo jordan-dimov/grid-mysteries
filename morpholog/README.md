@@ -6,7 +6,7 @@ the machine it was produced on:
 | File | What it is |
 |---|---|
 | `research.morph` | the governing v1 programme (rules) |
-| `research-v2-draft.morph` | the v2 research state machine — check-clean, control-tested, **not yet deployed** (see `RESEARCH-V2-DESIGN.md`) |
+| `research-v2-draft.morph` | the v2 research state machine — check-clean, control-tested, **deployed for Investigations 002 and 004** (batches `090-*.v2.ndjson`, `100-*.v2.ndjson`); v1 remains frozen for the earlier investigations (see `RESEARCH-V2-DESIGN.md`) |
 | `PROGRAMME_HASH.json` / `V2_DRAFT_HASH.json` | stable ruleset fingerprints (`morpholog hash`); no programme identity is stored in the database, so these files are the out-of-band record |
 | `batches/*.ndjson` | **the canonical input**: every governed transition as a replayable proposal batch, in replay order |
 | `controls/` | negative tests: transitions that must be **refused**, with the exact refusing rule pinned (`scripts/check-controls`, CI-run against a disposable database) |

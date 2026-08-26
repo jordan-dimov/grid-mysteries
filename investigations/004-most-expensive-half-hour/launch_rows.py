@@ -29,7 +29,7 @@ from pathlib import Path
 
 from grid_mysteries.hashing import sha256_file
 
-DECLARATION = Path(__file__).resolve().parent / "README.md"
+DECLARATION = Path(__file__).resolve().parent / "DECLARATION-as-sealed.md"
 INQUIRY = "inq-004"
 CORPUS = "corpus-2026-06"
 TITLE = "Mystery 004 - Britain's most expensive half-hour"

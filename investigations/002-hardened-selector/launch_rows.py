@@ -23,7 +23,7 @@ from selection import INQUIRY, PARAM_MIN_ACCEPTED_MWH, PARAM_MIN_AVAILABLE_MW
 
 from grid_mysteries.hashing import sha256_file
 
-DECLARATION = Path(__file__).resolve().parent / "README.md"
+DECLARATION = Path(__file__).resolve().parent / "DECLARATION-as-sealed.md"
 CORPUS = "corpus-2026-08-w2"
 LINEAGE_V1 = "inv-001-largest-apparent-inversion"
 TITLE = "Mystery 002 - what survives a hardened selector on an untouched week"

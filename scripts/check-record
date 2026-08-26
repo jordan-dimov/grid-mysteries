@@ -101,8 +101,10 @@ for claim in claims:
         args = [a["value"] for a in claim["args"]]
         sealed[args[0]] = args[1]
 on_disk = {}
-declarations = list(Path("investigations").glob("*/DECLARATION-as-sealed.md"))
-declarations += list(Path("investigations").glob("*/*/DECLARATION.md"))
+# Every frozen declaration anywhere under investigations/: forensic
+# (DECLARATION-as-sealed.md), forward (F*/DECLARATION.md) and the newer
+# top-level DECLARATION.md form. A narrower glob silently exempted 005.
+declarations = list(Path("investigations").rglob("DECLARATION*.md"))
 for candidate in declarations:
     on_disk[hashlib.sha256(candidate.read_bytes()).hexdigest()] = candidate
 missing = {i: d for i, d in sealed.items() if d not in on_disk}

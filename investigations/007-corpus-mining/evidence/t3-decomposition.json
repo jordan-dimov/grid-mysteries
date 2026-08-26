@@ -1,0 +1,304 @@
+{
+ "declaration": "DECLARATION-T3-DECOMPOSITION.md",
+ "system_totals": {
+  "may": {
+   "raw_mwh": 1758287,
+   "residual_mwh": 190028,
+   "S": 1434739,
+   "U": 31236,
+   "T": 409647
+  },
+  "jul": {
+   "raw_mwh": 1962777,
+   "residual_mwh": 240882,
+   "S": 1631333,
+   "U": 32471,
+   "T": 480392
+  },
+  "aug": {
+   "raw_mwh": 963689,
+   "residual_mwh": 105311,
+   "S": 789660,
+   "U": 19039,
+   "T": 283680
+  }
+ },
+ "transitions": [
+  {
+   "label": "may->jul",
+   "units_in_both": 670,
+   "raw_top_quartile": {
+    "exposed_n": 159,
+    "persisted": 106,
+    "conditional": "0.666667",
+    "unconditional": "0.231343"
+   },
+   "A1_majority_groups_month1": {
+    "S": {
+     "n": 124,
+     "persist_rate": "0.645161"
+    },
+    "R": {
+     "n": 10,
+     "persist_rate": "0.7"
+    },
+    "T": {
+     "n": 35,
+     "persist_rate": "0.685714"
+    },
+    "U": {
+     "n": 0,
+     "persist_rate": null
+    }
+   },
+   "A1_gap_S_minus_R_pp": "-5.4839",
+   "A2_B2_persistent_set": {
+    "n": 106,
+    "month_1": {
+     "S": {
+      "mwh": 80843,
+      "share_of_raw": "0.34929"
+     },
+     "U": {
+      "mwh": 830,
+      "share_of_raw": "0.003588"
+     },
+     "T": {
+      "mwh": 162404,
+      "share_of_raw": "0.701679"
+     },
+     "R": {
+      "mwh": 2201,
+      "share_of_raw": "0.00951"
+     },
+     "raw_mwh": 231450,
+     "unit_median_share": {
+      "S": "0.928091",
+      "U": "0.0",
+      "T": "0.001393",
+      "R": "0.014642"
+     }
+    },
+    "month_2": {
+     "S": {
+      "mwh": 92640,
+      "share_of_raw": "0.285156"
+     },
+     "U": {
+      "mwh": 986,
+      "share_of_raw": "0.003035"
+     },
+     "T": {
+      "mwh": 245315,
+      "share_of_raw": "0.755108"
+     },
+     "R": {
+      "mwh": 1925,
+      "share_of_raw": "0.005925"
+     },
+     "raw_mwh": 324874,
+     "unit_median_share": {
+      "S": "0.954876",
+      "U": "0.0",
+      "T": "0.026693",
+      "R": "0.003039"
+     }
+    },
+    "fuel_mix_top5": [
+     {
+      "fuel": "BATTERY",
+      "n": 23
+     },
+     {
+      "fuel": "WIND",
+      "n": 19
+     },
+     {
+      "fuel": null,
+      "n": 17
+     },
+     {
+      "fuel": "GAS",
+      "n": 17
+     },
+     {
+      "fuel": "NPSHYD",
+      "n": 11
+     }
+    ],
+    "S_majority_persistent_fuel_top5": [
+     {
+      "fuel": "BATTERY",
+      "n": 23
+     },
+     {
+      "fuel": null,
+      "n": 15
+     },
+     {
+      "fuel": "GAS",
+      "n": 15
+     },
+     {
+      "fuel": "NPSHYD",
+      "n": 11
+     },
+     {
+      "fuel": "CCGT",
+      "n": 6
+     }
+    ]
+   },
+   "B1_residual_top_quartile": {
+    "exposed_n": 163,
+    "persisted": 80,
+    "conditional": "0.490798",
+    "unconditional": "0.252239",
+    "spearman_share_resid": 0.5745514524447599
+   },
+   "spearman_share_S": 0.39995048594391436
+  },
+  {
+   "label": "jul->aug",
+   "units_in_both": 783,
+   "raw_top_quartile": {
+    "exposed_n": 190,
+    "persisted": 109,
+    "conditional": "0.573684",
+    "unconditional": "0.217114"
+   },
+   "A1_majority_groups_month1": {
+    "S": {
+     "n": 157,
+     "persist_rate": "0.547771"
+    },
+    "R": {
+     "n": 16,
+     "persist_rate": "0.25"
+    },
+    "T": {
+     "n": 41,
+     "persist_rate": "0.804878"
+    },
+    "U": {
+     "n": 0,
+     "persist_rate": null
+    }
+   },
+   "A1_gap_S_minus_R_pp": "29.7771",
+   "A2_B2_persistent_set": {
+    "n": 109,
+    "month_1": {
+     "S": {
+      "mwh": 118633,
+      "share_of_raw": "0.341926"
+     },
+     "U": {
+      "mwh": 1017,
+      "share_of_raw": "0.00293"
+     },
+     "T": {
+      "mwh": 250139,
+      "share_of_raw": "0.720952"
+     },
+     "R": {
+      "mwh": 1924,
+      "share_of_raw": "0.005546"
+     },
+     "raw_mwh": 346956,
+     "unit_median_share": {
+      "S": "1.0",
+      "U": "0.0",
+      "T": "0.044615",
+      "R": "0.001752"
+     }
+    },
+    "month_2": {
+     "S": {
+      "mwh": 59982,
+      "share_of_raw": "0.312246"
+     },
+     "U": {
+      "mwh": 425,
+      "share_of_raw": "0.002214"
+     },
+     "T": {
+      "mwh": 146725,
+      "share_of_raw": "0.763795"
+     },
+     "R": {
+      "mwh": 977,
+      "share_of_raw": "0.005084"
+     },
+     "raw_mwh": 192100,
+     "unit_median_share": {
+      "S": "1.0",
+      "U": "0.0",
+      "T": "0.03778",
+      "R": "0.0"
+     }
+    },
+    "fuel_mix_top5": [
+     {
+      "fuel": "WIND",
+      "n": 27
+     },
+     {
+      "fuel": "BATTERY",
+      "n": 27
+     },
+     {
+      "fuel": "GAS",
+      "n": 13
+     },
+     {
+      "fuel": null,
+      "n": 11
+     },
+     {
+      "fuel": "NPSHYD",
+      "n": 11
+     }
+    ],
+    "S_majority_persistent_fuel_top5": [
+     {
+      "fuel": "BATTERY",
+      "n": 27
+     },
+     {
+      "fuel": "GAS",
+      "n": 13
+     },
+     {
+      "fuel": null,
+      "n": 11
+     },
+     {
+      "fuel": "NPSHYD",
+      "n": 11
+     },
+     {
+      "fuel": "CCGT",
+      "n": 8
+     }
+    ]
+   },
+   "B1_residual_top_quartile": {
+    "exposed_n": 206,
+    "persisted": 105,
+    "conditional": "0.509709",
+    "unconditional": "0.250319",
+    "spearman_share_resid": 0.5959855079150944
+   },
+   "spearman_share_S": 0.622938653743131
+  }
+ ],
+ "verdict": {
+  "A1": false,
+  "A2": false,
+  "A": false,
+  "B1": false,
+  "B2": false,
+  "B": false
+ }
+}

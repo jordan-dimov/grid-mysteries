@@ -101,3 +101,14 @@ comparison) and never asked this question of. Cheapest next step if
 wanted: the exclusion-reason split (dataset #6) to say whether persistence
 is locational or behavioural — a new declaration, not an extension of this
 one.
+
+## Addendum (2026-08-26): T3 decomposition run — see `RESULTS-T3-DECOMPOSITION.md`
+
+Run under a separate frozen declaration (`DECLARATION-T3-DECOMPOSITION.md`).
+Verdict C: neither a locational nor a commercial component passed the
+pre-declared thresholds. Correction to T3: about a fifth of the persistent
+set by count and two-thirds by volume are wind units whose offers are
+excluded by rule at NESO's stage 1, so their persistence is definitional.
+The non-trivial residue is that persistently skipped non-wind units are
+skipped almost entirely for behind-constraint / system-tagged reasons;
+the commercial residual is 0.5–1 % of the persistent set's volume.

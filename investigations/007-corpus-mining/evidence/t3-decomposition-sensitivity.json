@@ -1,0 +1,79 @@
+{
+ "status": "post-hoc sensitivity, not part of the frozen test",
+ "transitions": [
+  {
+   "label": "may->jul",
+   "persistent_n": 106,
+   "wind_n": 19,
+   "month_1": {
+    "non_wind_n": 70,
+    "non_wind_raw_mwh": 73628,
+    "non_wind_S_share_unclipped": "1.057626",
+    "non_wind_R_share": "0.026303",
+    "non_wind_units_S_majority": 65,
+    "non_wind_units_R_ge_25pct": 8,
+    "wind_raw_mwh": 156470,
+    "wind_stage1_share": "1.0"
+   },
+   "month_2": {
+    "non_wind_n": 70,
+    "non_wind_raw_mwh": 82759,
+    "non_wind_S_share_unclipped": "1.083711",
+    "non_wind_R_share": "0.017301",
+    "non_wind_units_S_majority": 67,
+    "non_wind_units_R_ge_25pct": 7,
+    "wind_raw_mwh": 240234,
+    "wind_stage1_share": "1.0"
+   },
+   "non_wind_exposed": {
+    "n": 112,
+    "persist_rate": "0.625",
+    "S_majority": {
+     "n": 104,
+     "persist_rate": "0.625"
+    },
+    "not_S_majority": {
+     "n": 8,
+     "persist_rate": "0.625"
+    }
+   }
+  },
+  {
+   "label": "jul->aug",
+   "persistent_n": 109,
+   "wind_n": 27,
+   "month_1": {
+    "non_wind_n": 71,
+    "non_wind_raw_mwh": 101130,
+    "non_wind_S_share_unclipped": "1.119973",
+    "non_wind_R_share": "0.018054",
+    "non_wind_units_S_majority": 69,
+    "non_wind_units_R_ge_25pct": 10,
+    "wind_raw_mwh": 244546,
+    "wind_stage1_share": "0.996418"
+   },
+   "month_2": {
+    "non_wind_n": 71,
+    "non_wind_raw_mwh": 48325,
+    "non_wind_S_share_unclipped": "1.155697",
+    "non_wind_R_share": "0.017969",
+    "non_wind_units_S_majority": 67,
+    "non_wind_units_R_ge_25pct": 9,
+    "wind_raw_mwh": 142561,
+    "wind_stage1_share": "0.998153"
+   },
+   "non_wind_exposed": {
+    "n": 127,
+    "persist_rate": "0.559055",
+    "S_majority": {
+     "n": 121,
+     "persist_rate": "0.570248"
+    },
+    "not_S_majority": {
+     "n": 6,
+     "persist_rate": "0.333333"
+    }
+   }
+  }
+ ]
+}

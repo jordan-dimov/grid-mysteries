@@ -9,15 +9,13 @@ Deterministic and post-selection: reads only pinned artefacts, changes
 no earlier evidence file (their digests are bound in the record).
 """
 
-from __future__ import annotations
-
-import json
 import re
 from decimal import Decimal
 
 from acquire import EVIDENCE, RAW
 
 from grid_mysteries.corpus import fuel_types, load_records, physical_path
+from grid_mysteries.evidence import write_json
 
 DAY = "2026-06-24"
 DOOR = 39  # first period of the originally warned 19:00-22:00 BST window
@@ -69,7 +67,7 @@ def run() -> None:
             None,
         ),
     }
-    (EVIDENCE / "starting-state.json").write_text(json.dumps(out, indent=1) + "\n")
+    write_json(EVIDENCE / "starting-state.json", out)
     print(f"CCGT published headroom at p{DOOR}: {headroom.get('CCGT')} MW")
     print(f"NESO stated exclusions: {[e['megawatts'] for e in excluded]}")
 

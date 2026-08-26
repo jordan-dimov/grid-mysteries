@@ -8,19 +8,18 @@ Settlement periods follow the GB local day (BST in July), so period 1 of
 date D starts at D 00:00 Europe/London.
 """
 
-from __future__ import annotations
-
 import json
 from datetime import datetime, timedelta
 from decimal import Decimal
 from zoneinfo import ZoneInfo
 
-from bench import EVIDENCE, MDX_RAW, REPO_ROOT, day_stream_url, july_dates, stream_dates
+from bench import EVIDENCE, MDX_RAW, REPO_ROOT, july_dates, stream_dates
 
 from grid_mysteries.corpus import load_records
+from grid_mysteries.evidence import write_json
 from grid_mysteries.investigations.duration_envelope import EnvelopeRecord, energy_bound_mwh
 from grid_mysteries.sources import elexon
-from grid_mysteries.sources.pinning import fetch_journalled
+from grid_mysteries.sources.pinning import pin
 
 LONDON = ZoneInfo("Europe/London")
 PANEL_THRESHOLD = Decimal("0.8")  # displays the governed value; see METHOD-STUDY-BESS-001.md
@@ -94,18 +93,14 @@ def run_panel() -> None:
             flush=True,
         )
     panel = [r["bm_unit"] for r in rows if r["in_panel"]]
-    EVIDENCE.mkdir(exist_ok=True)
-    (EVIDENCE / "panel.json").write_text(
-        json.dumps(
-            {
-                "rule": "coverage >= 0.8 of July periods reconstructable in BOTH directions",
-                "periods_in_july": PERIODS_IN_JULY,
-                "candidates": rows,
-                "panel": panel,
-            },
-            indent=1,
-        )
-        + "\n"
+    write_json(
+        EVIDENCE / "panel.json",
+        {
+            "rule": "coverage >= 0.8 of July periods reconstructable in BOTH directions",
+            "periods_in_july": PERIODS_IN_JULY,
+            "candidates": rows,
+            "panel": panel,
+        },
     )
     print(f"panel: {panel}")
 
@@ -118,17 +113,15 @@ def fetch_physical() -> None:
     jobs = [
         (
             dataset,
-            day_stream_url(dataset, day, panel),
+            elexon.day_stream_url(dataset, day, panel),
             PHYSICAL_RAW / f"{dataset.lower()}_{day}.json",
         )
-        for dataset in ("PN", "MELS", "MILS")
+        for dataset in elexon.PHYSICAL_DATASETS
         for day in july_dates()
     ]
-    fetched, skipped = fetch_journalled(
+    pin(
         jobs,
         journal_path=EVIDENCE / "physical-july-journal.ndjson",
         manifest_path=EVIDENCE / "physical-july-manifest.json",
-        repo_root=REPO_ROOT,
         fetch=elexon.fetch_pinned,
     )
-    print(f"fetched {fetched}, verified and skipped {skipped}")

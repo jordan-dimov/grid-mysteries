@@ -7,28 +7,33 @@ evidence and NESO stage profiles into ``evidence/six-anatomy.json``.
 Interpretation belongs in NOTE.md.
 """
 
-from __future__ import annotations
-
 import json
 import sys
 from collections import Counter
 from decimal import Decimal
 from pathlib import Path
 
-from grid_mysteries.corpus import REPO_ROOT, load_records, unit_maps, window_path
+from grid_mysteries.corpus import (
+    RAW_ROOT,
+    REPO_ROOT,
+    load_records,
+    load_table_rows,
+    unit_maps,
+    window_path,
+)
+from grid_mysteries.evidence import evidence_dir, write_json
 from grid_mysteries.investigations.bod_inversion import (
     accepted_pairs,
     find_inversion_candidates,
     submitted_pairs,
 )
-from grid_mysteries.investigations.neso_cells import load_alternative_rows
 from grid_mysteries.sources import elexon, neso
-from grid_mysteries.sources.pinning import fetch_journalled
+from grid_mysteries.sources.pinning import pin
 
-EVIDENCE = Path(__file__).resolve().parent / "evidence"
+EVIDENCE = evidence_dir(__file__)
 MS1_EVIDENCE = REPO_ROOT / "investigations" / "method-study-001-phantom-liquidity" / "evidence"
 MS1C_EVIDENCE = REPO_ROOT / "investigations" / "method-study-001c-disagreement-anatomy" / "evidence"
-BOALF_RAW = REPO_ROOT / "data" / "raw" / "elexon" / "sixcases-001d"
+BOALF_RAW = RAW_ROOT / "sixcases-001d"
 
 
 def cases() -> list[dict]:
@@ -37,7 +42,7 @@ def cases() -> list[dict]:
 
 
 def qualifying_periods(elexon_unit: str, date: str) -> list[dict]:
-    rows = load_alternative_rows(MS1_EVIDENCE / "alternatives.parquet")
+    rows = load_table_rows(MS1_EVIDENCE / "alternatives.parquet")
     return sorted(
         (
             r
@@ -73,23 +78,13 @@ def fetch() -> None:
             if destination in seen:
                 continue
             seen.add(destination)
-            jobs.append(
-                (
-                    "BOALF",
-                    f"{elexon.BASE_URL}/balancing/acceptances/all"
-                    f"?settlementDate={date}&settlementPeriod={period}",
-                    destination,
-                )
-            )
-    EVIDENCE.mkdir(exist_ok=True)
-    fetched, skipped = fetch_journalled(
+            jobs.append(("BOALF", elexon.acceptances_url(date, period), destination))
+    pin(
         jobs,
         journal_path=EVIDENCE / "boalf-journal.ndjson",
         manifest_path=EVIDENCE / "boalf-manifest.json",
-        repo_root=REPO_ROOT,
         fetch=elexon.fetch_pinned,
     )
-    print(f"fetched {fetched}, verified and skipped {skipped}")
 
 
 def analyse() -> None:
@@ -175,10 +170,7 @@ def analyse() -> None:
         )
         print(f"analysed {date} {ngc}", flush=True)
 
-    EVIDENCE.mkdir(exist_ok=True)
-    (EVIDENCE / "six-anatomy.json").write_text(
-        json.dumps({"cases": out_cases}, indent=1, default=str) + "\n"
-    )
+    write_json(EVIDENCE / "six-anatomy.json", {"cases": out_cases})
     for case in out_cases:
         print(
             case["cell"]["date"],

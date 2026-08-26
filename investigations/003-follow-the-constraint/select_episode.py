@@ -6,15 +6,14 @@ candidates is printed or stored; the code recomputes deterministically
 for anyone reproducing the selection.
 """
 
-from __future__ import annotations
-
 import json
 from collections import defaultdict
 from decimal import Decimal
 
-from acquire import EVIDENCE, PN_RAW, RAW, may_dates
+from acquire import EVIDENCE, PN_RAW, may_dates
 
-from grid_mysteries.corpus import PERIODS, load_records, unit_maps
+from grid_mysteries.corpus import PERIODS, load_records, unit_maps, window_path
+from grid_mysteries.evidence import write_json
 from grid_mysteries.investigations.constraint_episodes import (
     ScoredEpisode,
     episodes,
@@ -65,7 +64,7 @@ def bid_downs_by_unit(units: set[str]) -> tuple[dict[str, set], dict[tuple, Deci
     fields = [f"negative{i}" for i in range(1, 7)]
     for day in may_dates():
         for period in PERIODS:
-            for r in load_records(RAW / day / f"disptav_bid_p{period:02d}.json"):
+            for r in load_records(window_path("disptav_bid", day, period)):
                 unit = str(r["bmUnit"])
                 if unit not in units or r.get("dataType") != "Original":
                     continue
@@ -119,7 +118,7 @@ def run() -> None:
         },
         "coverage": coverage,
     }
-    (EVIDENCE / "selected-episode.json").write_text(json.dumps(result, indent=1) + "\n")
+    write_json(EVIDENCE / "selected-episode.json", result)
     if winner is None:
         print("Selected: none — no episode has a positive score (not evaluable)")
     else:

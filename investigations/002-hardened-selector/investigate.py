@@ -13,15 +13,13 @@ Both read only pinned artefacts and write evidence; neither changes the
 selection, which is closed.
 """
 
-from __future__ import annotations
-
 import csv
 import json
 import sys
 from collections import Counter
 from decimal import Decimal
 
-from selection import EVIDENCE, RAW, governed_thresholds, scan
+from selection import EVIDENCE, governed_thresholds, scan
 
 from grid_mysteries.corpus import (
     BMUNITS_PATH,
@@ -31,6 +29,7 @@ from grid_mysteries.corpus import (
     unit_maps,
     window_path,
 )
+from grid_mysteries.evidence import write_json
 from grid_mysteries.investigations.bod_inversion import accepted_volume_mwh
 from grid_mysteries.investigations.exclusion_attribution import categorise
 from grid_mysteries.investigations.hardened_selection import screen
@@ -98,7 +97,7 @@ def day_profile(unit: str, day: str) -> dict:
                 "acceptance_time": r.get("acceptanceTime"),
                 "so_flag": bool(r["soFlag"]),
             }
-            for r in load_records(RAW / day / f"boalf_p{period:02d}.json")
+            for r in load_records(window_path("boalf", day, period))
             if str(r["bmUnit"]) == unit
         ]
         periods.append(
@@ -157,7 +156,7 @@ def case() -> None:
             "about a unit's pair, not per-period ones."
         ),
     }
-    (EVIDENCE / "case-report.json").write_text(json.dumps(report, indent=1, default=str) + "\n")
+    write_json(EVIDENCE / "case-report.json", report)
     print(f"wrote case-report.json for {day} period {selected['settlement_period']}")
     for unit, block in report["neso_published_exclusions"].items():
         print(
@@ -221,7 +220,7 @@ def crosscheck() -> None:
         "accepted_side_categories": dict(accepted_side.most_common()),
         "alternative_side_categories": dict(alternative_side.most_common()),
     }
-    (EVIDENCE / "neso-crosscheck.json").write_text(json.dumps(result, indent=1) + "\n")
+    write_json(EVIDENCE / "neso-crosscheck.json", result)
     share = either_side / len(surviving) * 100 if surviving else 0
     print(f"surviving candidates: {len(surviving):,}")
     print(f"with a NESO-published exclusion on either side: {either_side:,} ({share:.1f}%)")

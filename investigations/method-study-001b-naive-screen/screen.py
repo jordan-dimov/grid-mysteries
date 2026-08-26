@@ -15,8 +15,6 @@ surviving actions (journalled, immutable). ``anatomy`` is offline.
 Interpretation belongs in NOTE.md.
 """
 
-from __future__ import annotations
-
 import json
 import sys
 from collections import Counter
@@ -29,25 +27,27 @@ from grid_mysteries.corpus import (
     BMUNITS_PATH,
     DIRECTIONS,
     PERIODS,
+    RAW_ROOT,
     REPO_ROOT,
     load_records,
+    load_table_rows,
     unit_maps,
     window_dates,
     window_path,
 )
+from grid_mysteries.evidence import evidence_dir, write_json
 from grid_mysteries.investigations.bod_inversion import (
     accepted_pairs,
     find_inversion_candidates,
     submitted_pairs,
 )
 from grid_mysteries.investigations.naive_screen import screen_accepted_actions
-from grid_mysteries.investigations.neso_cells import intensity_by_cell, load_alternative_rows
+from grid_mysteries.investigations.neso_cells import intensity_by_cell
 from grid_mysteries.sources import elexon, neso
-from grid_mysteries.sources.pinning import fetch_journalled
-from grid_mysteries.stats import percentile
+from grid_mysteries.sources.pinning import pin
+from grid_mysteries.stats import percentile, spearman
 
-RAW_ROOT = REPO_ROOT / "data" / "raw" / "elexon"
-EVIDENCE = Path(__file__).resolve().parent / "evidence"
+EVIDENCE = evidence_dir(__file__)
 MS001_EVIDENCE = REPO_ROOT / "investigations" / "method-study-001-phantom-liquidity" / "evidence"
 ANATOMY_RAW = RAW_ROOT / "anatomy-001b"
 
@@ -56,7 +56,6 @@ ANATOMY_N = 20
 
 
 def load_classification() -> dict[tuple, str]:
-    table = pl.read_parquet(MS001_EVIDENCE / "alternatives.parquet")
     return {
         (
             r["settlement_date"],
@@ -65,7 +64,7 @@ def load_classification() -> dict[tuple, str]:
             r["bm_unit"],
             r["pair_id"],
         ): r["classification"]
-        for r in table.iter_rows(named=True)
+        for r in load_table_rows(MS001_EVIDENCE / "alternatives.parquet")
     }
 
 
@@ -191,8 +190,7 @@ def analyse() -> None:
         "surviving_top100_alternative_fuel_types": dict(top100_fuel.most_common()),
         "surviving_top100_alternative_gsp_groups": dict(top100_gsp.most_common()),
     }
-    EVIDENCE.mkdir(exist_ok=True)
-    (EVIDENCE / "screen-analysis.json").write_text(json.dumps(analysis, indent=1) + "\n")
+    write_json(EVIDENCE / "screen-analysis.json", analysis)
 
     table = pl.DataFrame(
         [
@@ -222,8 +220,11 @@ def analyse() -> None:
 
 
 def top_survivors(n: int = ANATOMY_N) -> list[dict]:
-    table = pl.read_parquet(EVIDENCE / "screen.parquet")
-    rows = [r for r in table.iter_rows(named=True) if Decimal(r["post_gap_gbp_per_mwh"]) > 0]
+    rows = [
+        r
+        for r in load_table_rows(EVIDENCE / "screen.parquet")
+        if Decimal(r["post_gap_gbp_per_mwh"]) > 0
+    ]
     rows.sort(
         key=lambda r: (
             -Decimal(r["post_gap_gbp_per_mwh"]),
@@ -247,27 +248,16 @@ def fetch_anatomy() -> None:
         date, period = row["settlement_date"], row["settlement_period"]
         destination = boalf_path(date, period)
         if all(job[2] != destination for job in jobs):
-            jobs.append(
-                (
-                    "BOALF",
-                    f"{elexon.BASE_URL}/balancing/acceptances/all"
-                    f"?settlementDate={date}&settlementPeriod={period}",
-                    destination,
-                )
-            )
-    EVIDENCE.mkdir(exist_ok=True)
-    fetched, skipped = fetch_journalled(
+            jobs.append(("BOALF", elexon.acceptances_url(date, period), destination))
+    pin(
         jobs,
         journal_path=EVIDENCE / "case-boalf-journal.ndjson",
         manifest_path=EVIDENCE / "case-boalf-manifest.json",
-        repo_root=REPO_ROOT,
         fetch=elexon.fetch_pinned,
     )
-    print(f"fetched {fetched}, verified and skipped {skipped}")
 
 
 def anatomy() -> None:
-    ms001 = pl.read_parquet(MS001_EVIDENCE / "alternatives.parquet")
     headroom = {
         (
             r["settlement_date"],
@@ -276,7 +266,7 @@ def anatomy() -> None:
             r["bm_unit"],
             r["pair_id"],
         ): r["headroom_ub_mw"]
-        for r in ms001.iter_rows(named=True)
+        for r in load_table_rows(MS001_EVIDENCE / "alternatives.parquet")
     }
     reference = {
         str(r["elexonBmUnit"]): {
@@ -336,9 +326,7 @@ def anatomy() -> None:
             Counter((c["surviving_alt_reference"] or {}).get("gsp") or "unknown" for c in cases)
         ),
     }
-    (EVIDENCE / "anatomy.json").write_text(
-        json.dumps({"summary": summary, "cases": cases}, indent=1, default=str) + "\n"
-    )
+    write_json(EVIDENCE / "anatomy.json", {"summary": summary, "cases": cases})
     print(json.dumps(summary, indent=1))
 
 
@@ -355,65 +343,24 @@ NESO_RESOURCES = [
 ]
 
 
-def neso_fetch(*, url: str, destination: Path, dataset: str):
-    from grid_mysteries.sources.http import fetch_artifact
-
-    return fetch_artifact(
-        url=url,
-        destination=destination,
-        source=neso.SOURCE,
-        dataset=dataset,
-        timeout_seconds=180.0,
-    )
-
-
 def fetch_neso() -> None:
     jobs = [
         (dataset, neso.dump_url(resource_id), neso.NESO_RAW / filename)
         for dataset, resource_id, filename in NESO_RESOURCES
     ]
-    EVIDENCE.mkdir(exist_ok=True)
-    fetched, skipped = fetch_journalled(
+    pin(
         jobs,
         journal_path=EVIDENCE / "neso-journal.ndjson",
         manifest_path=EVIDENCE / "neso-manifest.json",
-        repo_root=REPO_ROOT,
-        fetch=neso_fetch,
+        fetch=neso.fetch_pinned,
         sleep_seconds=0.5,
     )
-    print(f"fetched {fetched}, verified and skipped {skipped}")
-
-
-def spearman(pairs: list[tuple]) -> float | None:
-    def ranks(values: list) -> list[float]:
-        order = sorted(range(len(values)), key=lambda i: values[i])
-        ranked = [0.0] * len(values)
-        i = 0
-        while i < len(order):
-            j = i
-            while j + 1 < len(order) and values[order[j + 1]] == values[order[i]]:
-                j += 1
-            average = (i + j) / 2 + 1
-            for k in range(i, j + 1):
-                ranked[order[k]] = average
-            i = j + 1
-        return ranked
-
-    if len(pairs) < 3:
-        return None
-    xs, ys = ranks([p[0] for p in pairs]), ranks([p[1] for p in pairs])
-    n = len(pairs)
-    mean_x, mean_y = sum(xs) / n, sum(ys) / n
-    cov = sum((x - mean_x) * (y - mean_y) for x, y in zip(xs, ys, strict=True))
-    var_x = sum((x - mean_x) ** 2 for x in xs)
-    var_y = sum((y - mean_y) ** 2 for y in ys)
-    return cov / (var_x * var_y) ** 0.5 if var_x and var_y else None
 
 
 def neso_compare() -> None:
     window = set(window_dates())
     _ngc_to_elexon, elexon_to_ngc = unit_maps()
-    rows = load_alternative_rows(MS001_EVIDENCE / "alternatives.parquet")
+    rows = load_table_rows(MS001_EVIDENCE / "alternatives.parquet")
     naive, post = intensity_by_cell(rows, elexon_to_ngc)
 
     inmerit = neso.read_csv("inmerit_allbm_2026-08.csv")
@@ -503,7 +450,7 @@ def neso_compare() -> None:
         "top20_disagreement_exclusion_reason_totals": dict(reason_counter.most_common()),
         "converse_disagreement_neso_skip_but_naive_silent": converse,
     }
-    (EVIDENCE / "neso-comparison.json").write_text(json.dumps(result, indent=1) + "\n")
+    write_json(EVIDENCE / "neso-comparison.json", result)
     summary = {k: result[k] for k in list(result)[1:7]}
     print(json.dumps(summary, indent=1, default=str))
 

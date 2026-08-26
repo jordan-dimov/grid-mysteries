@@ -7,22 +7,20 @@ the unit's bound changes per rung. Missing duration data is unknown,
 never a fallback. Every price and volume is Decimal.
 """
 
-from __future__ import annotations
-
 import json
 from collections import defaultdict
 from datetime import timedelta
 from decimal import Decimal
 
-from bench import EVIDENCE, REPO_ROOT, july_dates
+from bench import EVIDENCE, july_dates
 from panel import PHYSICAL_RAW, load_envelopes, period_window
 
-from grid_mysteries.corpus import BMUNITS_PATH, load_records, unit_maps
+from grid_mysteries.corpus import load_records, registered_capacities, unit_maps, window_path
+from grid_mysteries.evidence import write_json
 from grid_mysteries.investigations.duration_envelope import energy_bound_mwh
 from grid_mysteries.investigations.phantom_liquidity import headroom_upper_bound, level_extremes
 from grid_mysteries.sources import neso
 
-RAW = REPO_ROOT / "data" / "raw" / "elexon"
 HALF_HOUR = Decimal("0.5")
 CUTOFF_MINUTES = 60  # the declared decision cutoff: period start minus 60 minutes
 RUNGS = (
@@ -114,13 +112,7 @@ def run_analyse() -> None:
     physical = load_physical_by_day()
     context = load_context_presence()
     _ngc_to_elexon, elexon_to_ngc = unit_maps()
-    capacities = {
-        str(r["elexonBmUnit"]): (
-            Decimal(r["generationCapacity"]) if r.get("generationCapacity") is not None else None,
-            Decimal(r["demandCapacity"]) if r.get("demandCapacity") is not None else None,
-        )
-        for r in load_records(BMUNITS_PATH)
-    }
+    capacities = registered_capacities()
 
     totals: dict[tuple, dict[str, Decimal]] = defaultdict(lambda: defaultdict(Decimal))
     unknown_public: dict[tuple, int] = defaultdict(int)
@@ -134,11 +126,11 @@ def run_analyse() -> None:
 
     for day in july_dates():
         for period in range(1, 49):
-            bod_records = load_records(RAW / day / f"bod_p{period:02d}.json")
+            bod_records = load_records(window_path("bod", day, period))
             start, end = period_window(day, period)
             cutoff = start - timedelta(minutes=CUTOFF_MINUTES)
             for direction in ("offer", "bid"):
-                disptav = load_records(RAW / day / f"disptav_{direction}_p{period:02d}.json")
+                disptav = load_records(window_path(f"disptav_{direction}", day, period))
                 for unit in panel:
                     key = (unit, direction)
                     best_price, band = unit_bod_and_market(bod_records, unit, direction)
@@ -257,7 +249,7 @@ def run_analyse() -> None:
         "revised_away_gbp": serialise(revised_away_gbp),
         "r3p_context_present_gbp": serialise(context_present_gbp),
     }
-    (EVIDENCE / "fragility-analysis.json").write_text(json.dumps(result, indent=1) + "\n")
+    write_json(EVIDENCE / "fragility-analysis.json", result)
     print(json.dumps(result["pooled"], indent=1))
 
 

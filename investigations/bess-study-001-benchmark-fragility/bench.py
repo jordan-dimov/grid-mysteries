@@ -14,18 +14,16 @@ streams filtered to the panel units. ``analyse`` computes the five-rung
 Benchmark Fragility table. Interpretation belongs in NOTE.md.
 """
 
-from __future__ import annotations
-
 import sys
 from datetime import date, timedelta
 from pathlib import Path
 
-from grid_mysteries.corpus import PERIODS, REPO_ROOT
+from grid_mysteries.corpus import PERIODS, REPO_ROOT, day_range
+from grid_mysteries.evidence import evidence_dir
 from grid_mysteries.sources import elexon, neso
-from grid_mysteries.sources.http import fetch_artifact
-from grid_mysteries.sources.pinning import fetch_journalled
+from grid_mysteries.sources.pinning import pin, progress
 
-EVIDENCE = Path(__file__).resolve().parent / "evidence"
+EVIDENCE = evidence_dir(__file__)
 RAW = REPO_ROOT / "data" / "raw" / "elexon"
 MDX_RAW = RAW / "mdx-2026-07"
 
@@ -46,69 +44,41 @@ NESO_JULY_RESOURCES = [
 
 
 def july_dates() -> list[str]:
-    return [(JULY_START + timedelta(days=day)).isoformat() for day in range(JULY_DAYS)]
+    return day_range(JULY_START, JULY_DAYS)
 
 
 def stream_dates() -> list[str]:
-    return [(STREAM_START + timedelta(days=day)).isoformat() for day in range(JULY_DAYS + 1)]
-
-
-def neso_fetch(*, url: str, destination: Path, dataset: str):
-    return fetch_artifact(
-        url=url, destination=destination, source=neso.SOURCE, dataset=dataset, timeout_seconds=180.0
-    )
-
-
-def day_stream_url(dataset: str, day: str, bm_units: list[str] | None = None) -> str:
-    next_day = (date.fromisoformat(day) + timedelta(days=1)).isoformat()
-    url = f"{elexon.BASE_URL}/datasets/{dataset}/stream?from={day}T00:00Z&to={next_day}T00:00Z"
-    if bm_units:
-        url += "".join(f"&bmUnit={unit}" for unit in bm_units)
-    return url
+    return day_range(STREAM_START, JULY_DAYS + 1)
 
 
 def fetch() -> None:
-    jobs: list[tuple[str, str, Path]] = []
-    for dataset in ("MDO", "MDB"):
-        for day in stream_dates():
-            jobs.append(
-                (dataset, day_stream_url(dataset, day), MDX_RAW / f"{dataset.lower()}_{day}.json")
-            )
+    jobs: list[tuple[str, str, Path]] = [
+        (dataset, elexon.day_stream_url(dataset, day), MDX_RAW / f"{dataset.lower()}_{day}.json")
+        for dataset in ("MDO", "MDB")
+        for day in stream_dates()
+    ]
     for day in july_dates():
-        for period in PERIODS:
-            jobs.append(
-                ("BOD", elexon.bid_offer_url(day, period), RAW / day / f"bod_p{period:02d}.json")
-            )
-            for direction in ("offer", "bid"):
-                jobs.append(
-                    (
-                        "DISPTAV",
-                        elexon.acceptance_volumes_url(direction, day, period),
-                        RAW / day / f"disptav_{direction}_p{period:02d}.json",
-                    )
-                )
-    EVIDENCE.mkdir(exist_ok=True)
-    fetched, skipped = fetch_journalled(
+        jobs.extend(elexon.period_jobs(day, PERIODS, datasets=("BOD", "DISPTAV")))
+    pin(
         jobs,
         journal_path=EVIDENCE / "july-journal.ndjson",
         manifest_path=EVIDENCE / "july-manifest.json",
-        repo_root=REPO_ROOT,
         fetch=elexon.fetch_pinned,
-        progress=lambda path: print(f"pinned {path}", flush=True) if "p48" in path else None,
+        label="elexon",
+        progress=lambda path: progress(path) if "p48" in path else None,
     )
     neso_jobs = [
         (dataset, neso.dump_url(resource_id), neso.NESO_RAW / filename)
         for dataset, resource_id, filename in NESO_JULY_RESOURCES
     ]
-    neso_fetched, neso_skipped = fetch_journalled(
+    pin(
         neso_jobs,
         journal_path=EVIDENCE / "neso-july-journal.ndjson",
         manifest_path=EVIDENCE / "neso-july-manifest.json",
-        repo_root=REPO_ROOT,
-        fetch=neso_fetch,
+        fetch=neso.fetch_pinned,
+        label="neso",
         sleep_seconds=0.5,
     )
-    print(f"elexon: fetched {fetched}, skipped {skipped}; neso: {neso_fetched}/{neso_skipped}")
 
 
 def main() -> None:

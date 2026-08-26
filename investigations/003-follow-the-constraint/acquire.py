@@ -15,21 +15,17 @@ by NESO's May fuel field — classification therefore precedes it.
 All journalled, immutable, restart-safe.
 """
 
-from __future__ import annotations
-
-import json
 import sys
-from datetime import date, timedelta
-from pathlib import Path
+from datetime import date
 
 import httpx
 
-from grid_mysteries.corpus import PERIODS, REPO_ROOT
+from grid_mysteries.corpus import DIRECTIONS, PERIODS, REPO_ROOT, day_range
+from grid_mysteries.evidence import evidence_dir, write_json
 from grid_mysteries.sources import elexon, neso
-from grid_mysteries.sources.http import fetch_artifact
-from grid_mysteries.sources.pinning import fetch_journalled
+from grid_mysteries.sources.pinning import pin, progress
 
-EVIDENCE = Path(__file__).resolve().parent / "evidence"
+EVIDENCE = evidence_dir(__file__)
 RAW = REPO_ROOT / "data" / "raw" / "elexon"
 PN_RAW = RAW / "pn-2026-05"
 
@@ -48,13 +44,7 @@ NESO_MAY_SKIP = [
 
 
 def may_dates() -> list[str]:
-    return [(MAY_START + timedelta(days=day)).isoformat() for day in range(MAY_DAYS)]
-
-
-def neso_fetch(*, url: str, destination: Path, dataset: str):
-    return fetch_artifact(
-        url=url, destination=destination, source=neso.SOURCE, dataset=dataset, timeout_seconds=300.0
-    )
+    return day_range(MAY_START, MAY_DAYS)
 
 
 def constraint_cost_resources() -> list[tuple[str, str, str]]:
@@ -77,7 +67,6 @@ def constraint_cost_resources() -> list[tuple[str, str, str]]:
 
 
 def fetch() -> None:
-    EVIDENCE.mkdir(exist_ok=True)
     neso_jobs = [
         (
             "NESO-DA-FLOWS-LIMITS",
@@ -93,47 +82,27 @@ def fetch() -> None:
             for dataset, rid, filename in constraint_cost_resources()
         ),
     ]
-    fetched, skipped = fetch_journalled(
+    pin(
         neso_jobs,
         journal_path=EVIDENCE / "neso-may-journal.ndjson",
         manifest_path=EVIDENCE / "neso-may-manifest.json",
-        repo_root=REPO_ROOT,
-        fetch=neso_fetch,
+        fetch=neso.fetch_pinned,
+        label="neso",
         sleep_seconds=0.5,
     )
-    print(f"neso: fetched {fetched}, skipped {skipped}", flush=True)
-
-    jobs = []
-    for day in may_dates():
-        for period in PERIODS:
-            jobs.append(
-                (
-                    "BOALF",
-                    f"{elexon.BASE_URL}/balancing/acceptances/all"
-                    f"?settlementDate={day}&settlementPeriod={period}",
-                    RAW / day / f"boalf_p{period:02d}.json",
-                )
-            )
-            jobs.append(
-                ("BOD", elexon.bid_offer_url(day, period), RAW / day / f"bod_p{period:02d}.json")
-            )
-            for direction in ("offer", "bid"):
-                jobs.append(
-                    (
-                        "DISPTAV",
-                        elexon.acceptance_volumes_url(direction, day, period),
-                        RAW / day / f"disptav_{direction}_p{period:02d}.json",
-                    )
-                )
-    fetched, skipped = fetch_journalled(
+    jobs = [
+        job
+        for day in may_dates()
+        for job in elexon.period_jobs(day, PERIODS, datasets=("BOALF", "BOD", "DISPTAV"))
+    ]
+    pin(
         jobs,
         journal_path=EVIDENCE / "may-journal.ndjson",
         manifest_path=EVIDENCE / "may-manifest.json",
-        repo_root=REPO_ROOT,
         fetch=elexon.fetch_pinned,
-        progress=lambda path: print(f"pinned {path}", flush=True) if "p48" in path else None,
+        label="elexon",
+        progress=lambda path: progress(path) if "p48" in path else None,
     )
-    print(f"elexon: fetched {fetched}, skipped {skipped}")
 
 
 def storage_units() -> list[str]:
@@ -145,7 +114,7 @@ def storage_units() -> list[str]:
             if r.get("fuel", "").upper() in ("BATTERY", "PS", "PUMPED STORAGE")
         }
     )
-    (EVIDENCE / "storage-units.json").write_text(json.dumps(units, indent=1) + "\n")
+    write_json(EVIDENCE / "storage-units.json", units)
     return units
 
 
@@ -156,44 +125,34 @@ def fetch_pn() -> None:
     ngc_to_elexon, _ = unit_maps()
     elexon_units = sorted({ngc_to_elexon.get(u, u) for u in ngc_units})
     print(f"{len(elexon_units)} storage units classified by NESO fuel field")
-    jobs = []
-    for day in may_dates():
-        next_day = (date.fromisoformat(day) + timedelta(days=1)).isoformat()
-        url = (
-            f"{elexon.BASE_URL}/datasets/PN/stream?from={day}T00:00Z&to={next_day}T00:00Z"
-            + "".join(f"&bmUnit={u}" for u in elexon_units)
-        )
-        jobs.append(("PN", url, PN_RAW / f"pn_{day}.json"))
-    fetched, skipped = fetch_journalled(
+    jobs = [
+        ("PN", elexon.day_stream_url("PN", day, elexon_units), PN_RAW / f"pn_{day}.json")
+        for day in may_dates()
+    ]
+    pin(
         jobs,
         journal_path=EVIDENCE / "pn-may-journal.ndjson",
         manifest_path=EVIDENCE / "pn-may-manifest.json",
-        repo_root=REPO_ROOT,
         fetch=elexon.fetch_pinned,
+        label="pn",
     )
-    print(f"pn: fetched {fetched}, skipped {skipped}")
 
 
 def fetch_ebocf() -> None:
     """EBOCF: published indicative BM cashflows, per date and direction
     (one request covers all 48 periods, per-pair, TLM-inclusive)."""
     jobs = [
-        (
-            "EBOCF",
-            f"{elexon.BASE_URL}/balancing/settlement/indicative/cashflows/all/{direction}/{day}",
-            RAW / day / f"ebocf_{direction}.json",
-        )
+        ("EBOCF", elexon.cashflows_url(direction, day), RAW / day / f"ebocf_{direction}.json")
         for day in may_dates()
-        for direction in ("offer", "bid")
+        for direction in DIRECTIONS
     ]
-    fetched, skipped = fetch_journalled(
+    pin(
         jobs,
         journal_path=EVIDENCE / "ebocf-may-journal.ndjson",
         manifest_path=EVIDENCE / "ebocf-may-manifest.json",
-        repo_root=REPO_ROOT,
         fetch=elexon.fetch_pinned,
+        label="ebocf",
     )
-    print(f"ebocf: fetched {fetched}, skipped {skipped}")
 
 
 def main() -> None:

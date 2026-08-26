@@ -25,8 +25,6 @@ be rebuilt from layer 2. The question is what physical operation
 coincided with it and how much of that is independently reconstructable.
 """
 
-from __future__ import annotations
-
 import csv
 import json
 from collections import defaultdict
@@ -35,6 +33,7 @@ from decimal import Decimal
 from acquire import EVIDENCE, RAW
 
 from grid_mysteries.corpus import fuel_types, load_records, window_path
+from grid_mysteries.evidence import write_json
 from grid_mysteries.investigations.bod_inversion import accepted_volume_mwh
 from grid_mysteries.investigations.period_costs import parse_cost_rows
 from grid_mysteries.sources import neso
@@ -195,7 +194,7 @@ def run() -> None:
         "material_threshold_mwh": str(MATERIAL_MWH),
         "periods": periods,
     }
-    (EVIDENCE / "episode-diagnostic.json").write_text(json.dumps(out, indent=1) + "\n")
+    write_json(EVIDENCE / "episode-diagnostic.json", out)
 
     print(
         f"{'p':>4}  {'layer1 Constraints':>19}  {'L2 offer MWh':>13}  {'L2 bid MWh':>11}  "

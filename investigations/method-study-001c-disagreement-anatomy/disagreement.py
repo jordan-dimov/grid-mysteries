@@ -5,24 +5,22 @@ Entirely offline: reuses 001B's cell definitions and pinned NESO CSVs.
 renders ``evidence/waterfall.svg``. Interpretation belongs in NOTE.md.
 """
 
-from __future__ import annotations
-
 import json
 import sys
 from collections import Counter
 from decimal import Decimal
-from pathlib import Path
 
-from grid_mysteries.corpus import REPO_ROOT, unit_maps, window_dates
+from grid_mysteries.corpus import REPO_ROOT, load_table_rows, unit_maps, window_dates
+from grid_mysteries.evidence import evidence_dir, write_json
 from grid_mysteries.investigations.exclusion_attribution import (
     LAYER_ORDER,
     categorise,
     primary_category,
 )
-from grid_mysteries.investigations.neso_cells import intensity_by_cell, load_alternative_rows
+from grid_mysteries.investigations.neso_cells import intensity_by_cell
 from grid_mysteries.sources import neso
 
-EVIDENCE = Path(__file__).resolve().parent / "evidence"
+EVIDENCE = evidence_dir(__file__)
 MS001_EVIDENCE = REPO_ROOT / "investigations" / "method-study-001-phantom-liquidity" / "evidence"
 
 
@@ -30,7 +28,7 @@ def build_state() -> dict:
     """Everything both subcommands need, computed once from pinned inputs."""
     window = set(window_dates())
     _ngc_to_elexon, elexon_to_ngc = unit_maps()
-    rows = load_alternative_rows(MS001_EVIDENCE / "alternatives.parquet")
+    rows = load_table_rows(MS001_EVIDENCE / "alternatives.parquet")
     naive, post = intensity_by_cell(rows, elexon_to_ngc)
 
     inmerit = neso.read_csv("inmerit_allbm_2026-08.csv")
@@ -170,10 +168,7 @@ def analyse() -> None:
             for c in residual_flagged[:10]
         ],
     }
-    EVIDENCE.mkdir(exist_ok=True)
-    (EVIDENCE / "disagreement-analysis.json").write_text(
-        json.dumps(analysis, indent=1, default=str) + "\n"
-    )
+    write_json(EVIDENCE / "disagreement-analysis.json", analysis)
     print(json.dumps({k: analysis[k] for k in list(analysis)[1:6]}, indent=1, default=str))
     print(json.dumps(analysis["waterfall"], indent=1, default=str))
 

@@ -20,15 +20,12 @@ Built blind: the selection logic lives in
 against synthetic fixtures before any June row was read.
 """
 
-from __future__ import annotations
-
 import json
 import sys
 from datetime import date, timedelta
-from functools import partial
-from pathlib import Path
 
-from grid_mysteries.corpus import DIRECTIONS, PERIODS, REPO_ROOT, physical_path, window_path
+from grid_mysteries.corpus import DIRECTIONS, PERIODS, REPO_ROOT, day_range
+from grid_mysteries.evidence import evidence_dir, write_json
 from grid_mysteries.governance import require_acquisition_authorised
 from grid_mysteries.investigations.period_costs import (
     CONSTRAINTS_COLUMN,
@@ -36,16 +33,14 @@ from grid_mysteries.investigations.period_costs import (
     select_most_expensive,
 )
 from grid_mysteries.sources import elexon, neso
-from grid_mysteries.sources.http import fetch_artifact
-from grid_mysteries.sources.pinning import fetch_journalled
+from grid_mysteries.sources.pinning import pin, progress
 
-EVIDENCE = Path(__file__).resolve().parent / "evidence"
+EVIDENCE = evidence_dir(__file__)
 RAW = REPO_ROOT / "data" / "raw" / "elexon"
 INQUIRY = "inq-004"
 
 WINDOW_START = date(2026, 6, 1)
 WINDOW_DAYS = 30
-PHYSICAL_DATASETS = ("PN", "MELS", "MILS")
 
 #: Declared selection input and its companions (NESO data-portal resources).
 SELECTION_INPUTS = [
@@ -68,31 +63,25 @@ SELECTION_INPUTS = [
 
 
 def window_dates() -> list[str]:
-    return [(WINDOW_START + timedelta(days=day)).isoformat() for day in range(WINDOW_DAYS)]
-
-
-def neso_fetch(**kwargs):
-    return fetch_artifact(source=neso.SOURCE, timeout_seconds=300.0, **kwargs)
+    return day_range(WINDOW_START, WINDOW_DAYS)
 
 
 def costs() -> None:
     """Phase A: pin the selection input and its declared companions."""
     require_acquisition_authorised(INQUIRY)
-    EVIDENCE.mkdir(exist_ok=True)
     jobs = [
         (dataset, neso.dump_url(resource), neso.NESO_RAW / filename)
         for dataset, resource, filename in SELECTION_INPUTS
     ]
-    fetched, skipped = fetch_journalled(
+    pin(
         jobs,
         journal_path=EVIDENCE / "neso-journal.ndjson",
         manifest_path=EVIDENCE / "neso-manifest.json",
-        repo_root=REPO_ROOT,
-        fetch=partial(neso_fetch),
+        fetch=neso.fetch_pinned,
+        label="selection inputs",
         sleep_seconds=0.5,
-        progress=lambda path: print(f"pinned {path}", flush=True),
+        progress=progress,
     )
-    print(f"selection inputs: fetched {fetched}, verified and skipped {skipped}")
 
 
 def select() -> None:
@@ -122,7 +111,7 @@ def select() -> None:
             "all_categories_gbp": {k: str(v) for k, v in chosen.categories.items()},
         },
     }
-    (EVIDENCE / "selected-period.json").write_text(json.dumps(result, indent=1) + "\n")
+    write_json(EVIDENCE / "selected-period.json", result)
     if chosen is None:
         print("Selected: none — no June period carries a published Constraints value")
         return
@@ -133,52 +122,25 @@ def select() -> None:
     )
 
 
-def day() -> None:
-    """Phase B: pin the deep Elexon record for the selected settlement day."""
-    require_acquisition_authorised(INQUIRY)
+def selected_day() -> str:
     selected = json.loads((EVIDENCE / "selected-period.json").read_text())["selected"]
     if selected is None:
         raise SystemExit("no period selected; run `select` first")
-    target = selected["settlement_date"]
-    jobs = []
-    for period in PERIODS:
-        jobs.append(
-            ("BOD", elexon.bid_offer_url(target, period), window_path("bod", target, period))
-        )
-        for direction in DIRECTIONS:
-            jobs.append(
-                (
-                    "DISPTAV",
-                    elexon.acceptance_volumes_url(direction, target, period),
-                    window_path(f"disptav_{direction}", target, period),
-                )
-            )
-        jobs.append(
-            (
-                "BOALF",
-                f"{elexon.BASE_URL}/balancing/acceptances/all"
-                f"?settlementDate={target}&settlementPeriod={period}",
-                RAW / target / f"boalf_p{period:02d}.json",
-            )
-        )
-        for dataset in PHYSICAL_DATASETS:
-            jobs.append(
-                (
-                    dataset,
-                    f"{elexon.BASE_URL}/balancing/physical/all"
-                    f"?dataset={dataset}&settlementDate={target}&settlementPeriod={period}",
-                    physical_path(dataset, target, period),
-                )
-            )
-    fetched, skipped = fetch_journalled(
-        jobs,
+    return selected["settlement_date"]
+
+
+def day() -> None:
+    """Phase B: pin the deep Elexon record for the selected settlement day."""
+    require_acquisition_authorised(INQUIRY)
+    target = selected_day()
+    pin(
+        elexon.period_jobs(target, PERIODS),
         journal_path=EVIDENCE / "day-journal.ndjson",
         manifest_path=EVIDENCE / "day-manifest.json",
-        repo_root=REPO_ROOT,
         fetch=elexon.fetch_pinned,
-        progress=lambda path: print(f"pinned {path}", flush=True),
+        label=target,
+        progress=progress,
     )
-    print(f"{target}: fetched {fetched}, verified and skipped {skipped}")
 
 
 def context() -> None:
@@ -192,26 +154,13 @@ def context() -> None:
     these are whole-day requests, not per-period ones.
     """
     require_acquisition_authorised(INQUIRY)
-    selected = json.loads((EVIDENCE / "selected-period.json").read_text())["selected"]
-    if selected is None:
-        raise SystemExit("no period selected; run `select` first")
-    target = selected["settlement_date"]
+    target = selected_day()
     following = (date.fromisoformat(target) + timedelta(days=1)).isoformat()
     jobs = [
-        (
-            "EBOCF",
-            f"{elexon.BASE_URL}/balancing/settlement/indicative/cashflows/all/{direction}/{target}",
-            RAW / target / f"ebocf_{direction}.json",
-        )
+        ("EBOCF", elexon.cashflows_url(direction, target), RAW / target / f"ebocf_{direction}.json")
         for direction in DIRECTIONS
     ]
-    jobs.append(
-        (
-            "B1610",
-            f"{elexon.BASE_URL}/datasets/B1610/stream?from={target}T00:00Z&to={following}T00:00Z",
-            RAW / target / "b1610.json",
-        )
-    )
+    jobs.append(("B1610", elexon.day_stream_url("B1610", target), RAW / target / "b1610.json"))
     jobs.append(
         (
             "FUELINST",
@@ -220,15 +169,14 @@ def context() -> None:
             RAW / target / "fuelinst.json",
         )
     )
-    fetched, skipped = fetch_journalled(
+    pin(
         jobs,
         journal_path=EVIDENCE / "context-journal.ndjson",
         manifest_path=EVIDENCE / "context-manifest.json",
-        repo_root=REPO_ROOT,
         fetch=elexon.fetch_pinned,
-        progress=lambda path: print(f"pinned {path}", flush=True),
+        label="context",
+        progress=progress,
     )
-    print(f"context: fetched {fetched}, verified and skipped {skipped}")
 
 
 COMMANDS = {"costs": costs, "select": select, "day": day, "context": context}

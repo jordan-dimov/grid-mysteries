@@ -13,17 +13,13 @@ the alternatives table. ``charts`` renders the two SVGs from
 ``analysis.json``. Interpretation belongs in NOTE.md, not here.
 """
 
-from __future__ import annotations
-
 import json
 import sys
 from collections import Counter
-from pathlib import Path
 
 from grid_mysteries.corpus import (
     DIRECTIONS,
     PERIODS,
-    REPO_ROOT,
     TOTAL_PERIODS,
     load_records,
     physical_path,
@@ -31,6 +27,7 @@ from grid_mysteries.corpus import (
     window_dates,
     window_path,
 )
+from grid_mysteries.evidence import evidence_dir, write_json
 from grid_mysteries.investigations.bod_inversion import (
     accepted_pairs,
     find_inversion_candidates,
@@ -43,35 +40,26 @@ from grid_mysteries.investigations.phantom_liquidity import (
     level_extremes,
 )
 from grid_mysteries.sources import elexon
-from grid_mysteries.sources.pinning import fetch_journalled
+from grid_mysteries.sources.elexon import PHYSICAL_DATASETS
+from grid_mysteries.sources.pinning import pin, progress
 from grid_mysteries.stats import percentile
 
-EVIDENCE = Path(__file__).resolve().parent / "evidence"
-PHYSICAL_DATASETS = ("PN", "MELS", "MILS")
+EVIDENCE = evidence_dir(__file__)
 
 
 def fetch() -> None:
     jobs = [
-        (
-            dataset,
-            f"{elexon.BASE_URL}/balancing/physical/all"
-            f"?dataset={dataset}&settlementDate={settlement_date}&settlementPeriod={period}",
-            physical_path(dataset, settlement_date, period),
-        )
+        job
         for settlement_date in window_dates()
-        for period in PERIODS
-        for dataset in PHYSICAL_DATASETS
+        for job in elexon.period_jobs(settlement_date, PERIODS, datasets=PHYSICAL_DATASETS)
     ]
-    EVIDENCE.mkdir(exist_ok=True)
-    fetched, skipped = fetch_journalled(
+    pin(
         jobs,
         journal_path=EVIDENCE / "physical-fetch-journal.ndjson",
         manifest_path=EVIDENCE / "physical-manifest.json",
-        repo_root=REPO_ROOT,
         fetch=elexon.fetch_pinned,
-        progress=lambda path: print(f"pinned {path}", flush=True),
+        progress=progress,
     )
-    print(f"fetched {fetched}, verified and skipped {skipped}")
 
 
 def analyse() -> None:
@@ -235,8 +223,7 @@ def analyse() -> None:
             for k, a in sorted(residual.items(), key=lambda kv: -kv[1]["n_inversions"])[:10]
         ],
     }
-    EVIDENCE.mkdir(exist_ok=True)
-    (EVIDENCE / "analysis.json").write_text(json.dumps(analysis, indent=1, default=str) + "\n")
+    write_json(EVIDENCE / "analysis.json", analysis)
 
     import polars as pl
 

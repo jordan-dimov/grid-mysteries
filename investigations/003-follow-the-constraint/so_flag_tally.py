@@ -8,14 +8,13 @@ June 2026), whose second criterion admits only system-flagged bid
 acceptances. Output: evidence/so-flag-tally.json.
 """
 
-from __future__ import annotations
-
 import json
 
-from acquire import EVIDENCE, RAW
+from acquire import EVIDENCE
 from select_episode import storage_universe
 
-from grid_mysteries.corpus import PERIODS, load_records
+from grid_mysteries.corpus import PERIODS, load_records, window_path
+from grid_mysteries.evidence import write_json
 
 EPISODE_DATES = [f"2026-05-{day:02d}" for day in range(18, 32)]
 FOCUS_UNIT = "E_DOLLB-1"
@@ -27,7 +26,7 @@ def run() -> None:
     acceptances: dict[tuple[str, int], bool] = {}
     for day in EPISODE_DATES:
         for period in PERIODS:
-            for r in load_records(RAW / day / f"boalf_p{period:02d}.json"):
+            for r in load_records(window_path("boalf", day, period)):
                 unit = str(r["bmUnit"])
                 if unit in units:
                     key = (unit, int(r["acceptanceNumber"]))
@@ -47,7 +46,7 @@ def run() -> None:
         f"focus_unit_{FOCUS_UNIT}_acceptances": len(focus),
         f"focus_unit_{FOCUS_UNIT}_so_flagged": sum(1 for _, v in focus if v),
     }
-    (EVIDENCE / "so-flag-tally.json").write_text(json.dumps(out, indent=1) + "\n")
+    write_json(EVIDENCE / "so-flag-tally.json", out)
     print(json.dumps(out, indent=1))
 
 

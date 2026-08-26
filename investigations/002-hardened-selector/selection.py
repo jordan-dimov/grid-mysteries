@@ -20,24 +20,22 @@ Built blind: this module was written and tested before any artefact of
 (``tests/test_hardened_selection.py``).
 """
 
-from __future__ import annotations
-
 import dataclasses
-import json
 import sys
-from datetime import date, timedelta
+from datetime import date
 from decimal import Decimal
-from pathlib import Path
 
 from grid_mysteries.corpus import (
     DIRECTIONS,
     PERIODS,
     REPO_ROOT,
+    day_range,
     load_records,
     physical_path,
     registered_capacities,
     window_path,
 )
+from grid_mysteries.evidence import evidence_dir, write_json
 from grid_mysteries.governance import require_acquisition_authorised
 from grid_mysteries.investigations.bod_inversion import (
     accepted_pairs,
@@ -58,15 +56,14 @@ from grid_mysteries.investigations.phantom_liquidity import (
     level_extremes,
 )
 from grid_mysteries.sources import elexon
-from grid_mysteries.sources.pinning import fetch_journalled
+from grid_mysteries.sources.elexon import PHYSICAL_DATASETS
+from grid_mysteries.sources.pinning import pin, progress
 
-EVIDENCE = Path(__file__).resolve().parent / "evidence"
-RAW = REPO_ROOT / "data" / "raw" / "elexon"
+EVIDENCE = evidence_dir(__file__)
 
 #: The reserved window, fixed by prior commitment (see README.md).
 WINDOW_START = date(2026, 8, 11)
 WINDOW_DAYS = 7
-PHYSICAL_DATASETS = ("PN", "MELS", "MILS")
 
 INQUIRY = "inq-002"
 V2_PROGRAMME = str(REPO_ROOT / "morpholog" / "research-v2-draft.morph")
@@ -80,7 +77,7 @@ PARAM_MIN_AVAILABLE_MW = "min_available_level_mw"
 
 
 def window_dates() -> list[str]:
-    return [(WINDOW_START + timedelta(days=day)).isoformat() for day in range(WINDOW_DAYS)]
+    return day_range(WINDOW_START, WINDOW_DAYS)
 
 
 def governed_thresholds() -> tuple[Decimal, Decimal]:
@@ -109,51 +106,20 @@ def governed_thresholds() -> tuple[Decimal, Decimal]:
 
 def fetch() -> None:
     require_acquisition_authorised(INQUIRY)
-    jobs = []
-    for day in window_dates():
-        for period in PERIODS:
-            jobs.append(("BOD", elexon.bid_offer_url(day, period), window_path("bod", day, period)))
-            for direction in DIRECTIONS:
-                jobs.append(
-                    (
-                        "DISPTAV",
-                        elexon.acceptance_volumes_url(direction, day, period),
-                        window_path(f"disptav_{direction}", day, period),
-                    )
-                )
-            jobs.append(
-                (
-                    "BOALF",
-                    f"{elexon.BASE_URL}/balancing/acceptances/all"
-                    f"?settlementDate={day}&settlementPeriod={period}",
-                    RAW / day / f"boalf_p{period:02d}.json",
-                )
-            )
-            for dataset in PHYSICAL_DATASETS:
-                jobs.append(
-                    (
-                        dataset,
-                        f"{elexon.BASE_URL}/balancing/physical/all"
-                        f"?dataset={dataset}&settlementDate={day}&settlementPeriod={period}",
-                        physical_path(dataset, day, period),
-                    )
-                )
-    EVIDENCE.mkdir(exist_ok=True)
-    fetched, skipped = fetch_journalled(
+    jobs = [job for day in window_dates() for job in elexon.period_jobs(day, PERIODS)]
+    pin(
         jobs,
         journal_path=EVIDENCE / "fetch-journal.ndjson",
         manifest_path=EVIDENCE / "manifest.json",
-        repo_root=REPO_ROOT,
         fetch=elexon.fetch_pinned,
-        progress=lambda path: print(f"pinned {path}", flush=True),
+        progress=progress,
     )
-    print(f"fetched {fetched}, verified and skipped {skipped}")
 
 
 def system_flagged_units(day: str, period: int) -> set[tuple[str, int, str]]:
     """(date, period, unit) for every unit with a system-flagged acceptance."""
     flagged = set()
-    for record in load_records(RAW / day / f"boalf_p{period:02d}.json"):
+    for record in load_records(window_path("boalf", day, period)):
         if bool(record.get("soFlag")):
             flagged.add((day, period, str(record["bmUnit"])))
     return flagged
@@ -223,40 +189,32 @@ def select() -> None:
     )
     chosen = select_case(surviving)
 
-    EVIDENCE.mkdir(exist_ok=True)
-    (EVIDENCE / "funnel.json").write_text(
-        json.dumps(
-            {
-                "window": [window_dates()[0], window_dates()[-1]],
-                "governed_parameters": {
-                    PARAM_MIN_ACCEPTED_MWH: str(min_accepted_mwh),
-                    PARAM_MIN_AVAILABLE_MW: str(min_available_mw),
-                },
-                "labelling": (
-                    "Naive counterfactual notional is arithmetic on public numbers "
-                    "(|accepted volume| x best gap, once per accepted action) — never a "
-                    "saving, loss or waste. Screens are Amendment A (deliverability) then "
-                    "Amendment B (system-flagged accepted action), in that declared order."
-                ),
-                "system_flagged_unit_periods": len(system_flagged),
-                "stages": funnel.as_dict(),
+    write_json(
+        EVIDENCE / "funnel.json",
+        {
+            "window": [window_dates()[0], window_dates()[-1]],
+            "governed_parameters": {
+                PARAM_MIN_ACCEPTED_MWH: str(min_accepted_mwh),
+                PARAM_MIN_AVAILABLE_MW: str(min_available_mw),
             },
-            indent=1,
-        )
-        + "\n"
+            "labelling": (
+                "Naive counterfactual notional is arithmetic on public numbers "
+                "(|accepted volume| x best gap, once per accepted action) — never a "
+                "saving, loss or waste. Screens are Amendment A (deliverability) then "
+                "Amendment B (system-flagged accepted action), in that declared order."
+            ),
+            "system_flagged_unit_periods": len(system_flagged),
+            "stages": funnel.as_dict(),
+        },
     )
     head = [dataclasses.asdict(c) for c in rank_candidates(surviving)[:50]]
-    (EVIDENCE / "candidates-top50.json").write_text(json.dumps(head, indent=1, default=str) + "\n")
-    (EVIDENCE / "selected.json").write_text(
-        json.dumps(
-            {
-                "selected": dataclasses.asdict(chosen) if chosen else None,
-                "outcome": "selected" if chosen else "no_candidate_survived",
-            },
-            indent=1,
-            default=str,
-        )
-        + "\n"
+    write_json(EVIDENCE / "candidates-top50.json", head)
+    write_json(
+        EVIDENCE / "selected.json",
+        {
+            "selected": dataclasses.asdict(chosen) if chosen else None,
+            "outcome": "selected" if chosen else "no_candidate_survived",
+        },
     )
     for stage in funnel.stages:
         print(f"{stage.name}: {stage.candidates:,} candidates, {stage.accepted_actions:,} actions")

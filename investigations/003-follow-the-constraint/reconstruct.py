@@ -23,15 +23,14 @@ described as CONCURRENT — causal substitution is never asserted; the
 episode is right-censored by the declared window and says so.
 """
 
-from __future__ import annotations
-
 import json
 from collections import defaultdict
 from decimal import Decimal
 
 from acquire import EVIDENCE, PN_RAW, RAW
 
-from grid_mysteries.corpus import PERIODS, load_records, unit_maps
+from grid_mysteries.corpus import PERIODS, load_records, unit_maps, window_path
+from grid_mysteries.evidence import write_json
 from grid_mysteries.investigations.constraint_episodes import repeat_curtailment_cycles
 from grid_mysteries.investigations.event_ledger import (
     LedgerEntry,
@@ -69,7 +68,7 @@ def unit_day_signals(dates: list[str], units: set[str]):
             ):
                 exports[unit].add((str(r["settlementDate"]), int(r["settlementPeriod"])))
         for period in PERIODS:
-            for r in load_records(RAW / day / f"disptav_bid_p{period:02d}.json"):
+            for r in load_records(window_path("disptav_bid", day, period)):
                 unit = str(r["bmUnit"])
                 if unit not in units or r.get("dataType") != "Original":
                     continue
@@ -122,7 +121,7 @@ def pick_excerpt() -> None:
         "focus_unit_cycles": unit_stats(focus_unit)[0],
         "focus_unit_bid_down_mwh": str(unit_stats(focus_unit)[1]),
     }
-    (EVIDENCE / "excerpt.json").write_text(json.dumps(result, indent=1) + "\n")
+    write_json(EVIDENCE / "excerpt.json", result)
     print(f"Excerpt day: {excerpt_day} ({stats[excerpt_day][0]} cycles)")
     print(f"Focus unit: {focus_unit} ({unit_stats(focus_unit)[0]} cycles)")
 
@@ -174,7 +173,7 @@ def build_ledger() -> None:
 
     # Bid-down acceptances with timestamps.
     for period in PERIODS:
-        for r in load_records(RAW / day / f"boalf_p{period:02d}.json"):
+        for r in load_records(window_path("boalf", day, period)):
             if str(r["bmUnit"]) == unit:
                 entries.append(
                     LedgerEntry(
@@ -268,7 +267,7 @@ def build_ledger() -> None:
         ],
         "period_gaps": gaps,
     }
-    (EVIDENCE / "episode-ledger.json").write_text(json.dumps(out, indent=1) + "\n")
+    write_json(EVIDENCE / "episode-ledger.json", out)
     print(f"ledger: {len(timeline)} frames, {len(gaps)} period gaps surfaced")
 
 
@@ -318,7 +317,7 @@ def accounting() -> None:
         "storage_bid_down_mwh": episode["storage_bid_down_mwh"],
         "intraday_re_sales": "not publicly observable",
     }
-    (EVIDENCE / "episode-accounting.json").write_text(json.dumps(result, indent=1) + "\n")
+    write_json(EVIDENCE / "episode-accounting.json", result)
     for k, v in totals.items():
         print(f"{k}: {v:.0f}")
     print(f"constraint cost ({episode['constraint_group']}): {constraint_cost:.0f}")

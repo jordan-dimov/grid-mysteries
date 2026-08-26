@@ -10,15 +10,14 @@ schedule extremes, deepest instructed level, acceptance and SO-flag
 counts. Rendering reads this file and never recomputes.
 """
 
-from __future__ import annotations
-
 import json
 from decimal import Decimal
 
-from acquire import EVIDENCE, PN_RAW, RAW
+from acquire import EVIDENCE, PN_RAW
 from reconstruct import selected, storage_elexon_units, unit_day_signals
 
-from grid_mysteries.corpus import PERIODS, load_records
+from grid_mysteries.corpus import PERIODS, load_records, window_path
+from grid_mysteries.evidence import write_json
 from grid_mysteries.investigations.constraint_episodes import repeat_curtailment_cycles
 from grid_mysteries.sources import neso
 
@@ -61,7 +60,7 @@ def focus_trajectory(day: str, unit: str) -> list[dict]:
         accepted: list[Decimal] = []
         acceptances: set[int] = set()
         so_flagged: set[int] = set()
-        for r in load_records(RAW / day / f"boalf_p{period:02d}.json"):
+        for r in load_records(window_path("boalf", day, period)):
             if str(r["bmUnit"]) == unit:
                 accepted += [Decimal(str(r["levelFrom"])), Decimal(str(r["levelTo"]))]
                 acceptances.add(int(r["acceptanceNumber"]))
@@ -106,7 +105,7 @@ def run() -> None:
             "trajectory": focus_trajectory(excerpt["excerpt_day"], excerpt["focus_unit"]),
         },
     }
-    (EVIDENCE / "presentation-series.json").write_text(json.dumps(out, indent=1) + "\n")
+    write_json(EVIDENCE / "presentation-series.json", out)
     total = sum(Decimal(r["published_group_cost_gbp"]) for r in series)
     print(f"days: {len(series)}, group cost total: {total:.0f} GBP")
     active = sum(1 for t in out["focus"]["trajectory"] if t["acceptances"])

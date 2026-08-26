@@ -9,19 +9,16 @@ plus a per-project metrics table under data/derived/. All analytical rules live 
 grid_mysteries.investigations.tec_slippage; this file only does I/O and column mapping.
 """
 
-from __future__ import annotations
-
 import csv
 import json
-import sys
 from collections import Counter
 from dataclasses import asdict
 from datetime import date, datetime
-from decimal import Decimal
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "src"))
-from grid_mysteries.investigations.tec_slippage import (  # noqa: E402
+from grid_mysteries.corpus import REPO_ROOT
+from grid_mysteries.evidence import dumps, evidence_dir, write_json
+from grid_mysteries.investigations.tec_slippage import (
     Vintage,
     all_metrics,
     build_timelines,
@@ -32,10 +29,9 @@ from grid_mysteries.investigations.tec_slippage import (  # noqa: E402
     q3_materiality,
 )
 
-ROOT = Path(__file__).resolve().parents[2]
-RAW = ROOT / "data/raw/neso/tec-history"
-DERIVED = ROOT / "data/derived/tec-history"
-EVIDENCE = Path(__file__).resolve().parent / "evidence"
+RAW = REPO_ROOT / "data/raw/neso/tec-history"
+DERIVED = REPO_ROOT / "data/derived/tec-history"
+EVIDENCE = evidence_dir(__file__)
 REGIME_CUTOFF = date(2025, 12, 1)  # vintages from Dec 2025 are analysed separately (declaration)
 
 ALIASES = {
@@ -143,7 +139,7 @@ def load_vintages() -> tuple[list[Vintage], list[dict]]:
             by_date[d] = entry
     vintages, skipped = [], []
     for d, entry in sorted(by_date.items()):
-        path = ROOT / entry["path"]
+        path = REPO_ROOT / entry["path"]
         try:
             rows = read_vintage(path, entry.get("format", ""))
         except Exception as exc:  # noqa: BLE001 - recorded, not hidden
@@ -154,22 +150,6 @@ def load_vintages() -> tuple[list[Vintage], list[dict]]:
             continue
         vintages.append(Vintage(date.fromisoformat(d), tuple(rows)))
     return vintages, skipped
-
-
-def jsonable(obj):
-    if isinstance(obj, Decimal):
-        return str(obj)
-    if isinstance(obj, date):
-        return obj.isoformat()
-    if isinstance(obj, tuple):
-        return [jsonable(x) for x in obj]
-    if isinstance(obj, list):
-        return [jsonable(x) for x in obj]
-    if isinstance(obj, dict):
-        return {k: jsonable(v) for k, v in obj.items()}
-    if hasattr(obj, "__dataclass_fields__"):
-        return jsonable(asdict(obj))
-    return obj
 
 
 def main() -> None:
@@ -216,8 +196,8 @@ def main() -> None:
             for q, f in (("p10", 0.1), ("p25", 0.25), ("p50", 0.5), ("p75", 0.75), ("p90", 0.9))
         },
     }
-    EVIDENCE.mkdir(exist_ok=True)
-    (EVIDENCE / "tec-slippage-summary.json").write_text(json.dumps(jsonable(summary), indent=1))
+    # Committed before the trailing-newline convention; its pinned bytes stay.
+    write_json(EVIDENCE / "tec-slippage-summary.json", summary, trailing_newline=False)
     DERIVED.mkdir(parents=True, exist_ok=True)
     with (DERIVED / "project-metrics.csv").open("w", newline="") as f:
         w = csv.writer(f)
@@ -231,20 +211,17 @@ def main() -> None:
                 + [";".join("->".join(t) for t in m.status_transitions)]
             )
     print(
-        json.dumps(
-            jsonable(
-                {
-                    k: summary[k]
-                    for k in (
-                        "vintages_loaded",
-                        "identities_total",
-                        "identities_with_2_plus_years_and_slip",
-                        "q1",
-                        "q3",
-                    )
-                }
-            ),
-            indent=1,
+        dumps(
+            {
+                k: summary[k]
+                for k in (
+                    "vintages_loaded",
+                    "identities_total",
+                    "identities_with_2_plus_years_and_slip",
+                    "q1",
+                    "q3",
+                )
+            }
         )
     )
     for r in q2:

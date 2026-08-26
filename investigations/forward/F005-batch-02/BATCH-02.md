@@ -96,3 +96,77 @@ Eight candidates count.
 ## 6. Freeze — appended after the gate
 
 *(kill order, pre-declared thresholds, freeze digest)*
+
+---
+
+## 5. Instrument states — appended by the gate, 2026-08-26
+
+Gate run by two agents on metadata only (schemas, headings, field names,
+cadences, publication dates); records in `gate/gate-A.md`, `gate/gate-B.md`;
+every metadata page pinned by SHA-256 (`gate/pins-index.txt`,
+`gate/pins.jsonl`; files under `data/raw/batch-02-gate/`). The session's
+web-search budget was exhausted, so discovery ran on publisher URLs,
+sitemaps, CKAN APIs and Wayback. No substitute symptom was proposed by
+either gate: every failure was a population or existence failure with no
+same-chain alternative, so the originals stand with their failure reasons.
+
+**Hindsight-guard disclosure (gate B).** One grep line from a DNO PDF
+(ENWL Major Connections report) contained a masked but directional
+sentence about a DNO time-to-quote metric. It was excluded from the gate
+report and is not to be used downstream; it touches C11's and C17's
+territory and is recorded here so its existence is not deniable later.
+
+| # | symptom (a) | symptom (b) | symptom (c) | **state** |
+|---|---|---|---|---|
+| C11 | Ofgem RIIO-2 ED annual report + XLSM, sheet "Ch2 outputs – connections": GSOP cases / not met / penalties (£) — observed, per DNO, annual; no technology split; connect-and-notify never enters | same sheet: Time to Quote, Time to Connect, TTC incentive — observed | — | **eligible now** |
+| C12 | Ofgem's 2017 derogations guidance promises a register; **none exists** on ofgem.gov.uk; NESO compliance pages generation-centred, no register | NESO Timely Connections report does not attribute delay causes; no demand register | — | **no viable public instrument** |
+| C14 | Ofgem RIIO-2 re-opener cycle (applications consultation → FDs; ED2 LRE re-opener DDs 2026-06-12, 2026-08-19; LRE volume-driver consultation 2026-06-11) — existence published; "citing demand connections" is documentary, read from applications | FES Data Workbook + "Changes from FES 2024 to 2025"; DFES packages — revision derivable only by diffing editions; pipeline proxied by demand categories | — | **eligible now (a)**; (b) proxy only |
+| C15 | UKPN / NPg / SPEN curtailment datasets are all generation-framed (fields der_name, generation_lost…); UKPN's import-curtailment tool exists, output unpublished; nationalgrid.co.uk curtailment-reports 403 — manual check outstanding | no flexible-connection uptake series for demand anywhere | no dispute series; SI 2015/698 covers GSOP disputes only | **no viable public instrument** (proxy considered: UKPN Constraint Breaches History, customer class not a field) |
+| C16 | EA corporate scorecards: "% permits issued within timescales" by complexity category — EPR-wide, MCP/SG not separable; installations register has no application date | no pending-applications register; SR2018 standard-rules SG applications not advertised | EA Enforcement Actions register (no permit linkage) + Compliance Classification / National Compliance Assessment annual (per permit, joinable to installations register whose activity vocabulary includes "Specified Generator") — large loads not identifiable | **proxy only** |
+| C17 | ICPs private; no series | **NERS register could not be located** (lr.org / lrqa.com 404s; no sitemap or Wayback entry) — existence unverified | RIGs Annex G defines quarterly GSOP templates; Ofgem ED2 outturn publication not located; per-DNO Major Connections Annual Reports give TTQ/TTC by market segment (Demand HV/EHV, EHV+), contestable vs non-contestable — ICP adoption time not isolated | **proxy only** |
+| C18 | FMAR design consultation Sep 2026; go-live undated — not before 2027 | Elexon Market Facilitator Delivery Plan 2026–28, original and "Reviewed July 2026" versions with archived-versions section; deadline and implementation trackers per Flexibility Market Rule ID; milestone O3.2 "Deliver FMAR" — observable by version diff | Ofgem SLC 31E flexibility procurement reports (annual per DNO, latest 2025-10-06) — attribution to registration not observable | **eligible now (b)**; (a) eligible later (date not fixed); (c) proxy |
+| C19 | NSAR is a rail body; Energy & Utility Skills demand estimates one-off, not AP-specific; ENA blocked | HSE RIDKIND / RIDDO / ESQCR annual — private HV networks at large loads not identified; outside ESQCR duty | Contracts Finder / Find a Tender APIs — public-sector authorities only; requires text classification | **proxy only** |
+| C13 | — | — | — | quarantined (adjacency), not gated |
+| C20 | — | — | — | quarantined (adjacency), not gated |
+
+Tally of the eight counted: **eligible now 3** (C11, C14, C18) ·
+**proxy only 3** (C16, C17, C19) · **no viable public instrument 2** (C12,
+C15) · eligible later 0 as best state (C18(a) carries a later date).
+
+## 6. Freeze — 2026-08-26
+
+Nothing above this line is edited after this commit. The digest of this
+file at the freezing commit is the batch's identity.
+
+**K0 (Buyer Reality) runs on all eight counted candidates**, in generation
+order, including C12 and C15. Evidence classes A/B/C per v4 §5; class B
+requires an identifiable budget or function owner; nothing about the
+forcing variable's growth counts.
+
+**K1/K2 order** for K0-passers with an instrument, by ascending cost of
+the frozen observation: **C11** (one Ofgem XLSM) → **C18** (diff of two plan
+versions and the trackers) → **C14** (reading re-opener applications and
+DDs) → **C16** (register joins) → **C19** (two annual HSE tables plus
+tender-text classification) → **C17** (six DNO PDFs; NERS still unlocated).
+C12 and C15, if they pass K0, are quarantined as *buyer-real, not publicly
+strain-testable* with their resolving observations named (Ofgem's
+promised derogation register; a demand-curtailment series from any DNO).
+
+**Pre-declared thresholds (v4 §8).** This batch is judged primarily on the
+out-of-sample question — does v4 reduce instrument blindness before
+research effort is spent? — and secondarily on whether v4 preserved v3's
+ability to find forced functions:
+
+- **instrument quality** = candidates reaching a measured K1/K2 verdict ÷
+  candidates passing K0. Batch 01, replayed, was 3 ÷ 8 = 0.375. **v4's
+  gate is judged to have worked if ≥ 0.5.**
+- **P(buyer-real | generated)** on the eight counted. Batch 01 was 8 ÷ 9.
+  v4 is judged to have preserved forced-function generation if ≥ 6 ÷ 8.
+- **generator quality** = (K1 inadequate or K2 measured strain) ÷ measured
+  candidates. Reported, no threshold: n is too small to threshold
+  honestly, and a threshold chosen now would be chosen to flatter.
+- The four conversion rates are reported whole and appended to the
+  cross-batch record.
+
+Verdicts carry their reason (v4 §6). Kill records go in `KILL-C<nn>.md`;
+results accumulate in `RESULTS.md`; this file is never edited again.

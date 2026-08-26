@@ -130,3 +130,7 @@ in the journal; effective-date column names were "TEC Effective from
 Date" (2014), "MW Effective Date" (2014–2020) and "MW Effective From"
 (2020–). NESO's own caveat applies throughout: project status is its
 best-known classification, not authoritative project information.
+
+## Status
+
+**Closed 2026-08-26** by sponsor decision after 006. The empirical findings above are the publishable result (Publication Pack 004). No phase 2, no snapshot, no score. Watch `w-005-tec-hole` and the EIR request remain open.

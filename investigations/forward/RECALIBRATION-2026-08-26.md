@@ -69,3 +69,15 @@ Progress is now counted as: buyer conversations · real artefacts obtained
 Not: investigations completed, hypotheses governed, generator accuracy
 improved. Those remain supporting capabilities and cannot become the
 game.
+
+## Addendum — 2026-08-26, after 005/006
+
+005 (connection-date slippage) and 006 (works attribution) closed on the
+same day: measurable, partly predictable, not an underwriting instrument.
+Decision: publish the fact, do not explain the near-miss, no 007. Effort
+shifts to packaging the strongest accumulated findings for publication —
+GB connection slippage (005/006), the Bulgarian 9.3 GW / buyer-reality
+result (F003/F004), and outage replanning strain (C7) — so that the
+economically interesting readers find us. Inbound from people who
+recognise themselves in a finding is now the path from grid knowledge to
+money, not further desk-based opportunity generation.

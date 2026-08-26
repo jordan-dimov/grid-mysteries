@@ -111,3 +111,7 @@ NESO FOI-25-133 (document 371516, 7 Nov 2025): "TWR Report" workbooks 4 May
 2017 → 3 Oct 2025; TEC vintages per 005. CUSC Section 6 (Transmission Works
 Register obligations) as the description of what the register is meant to
 publish.
+
+## Status
+
+**Closed 2026-08-26** by sponsor decision. The F-5 ordering test is **not run**: it might explain the negative sign but cannot change the commercial verdict. The EIR request (005) now also asks whether NESO's internal TWR carries per-scheme completion dates; if it does, 006 may be re-run on better data under a new declaration. No 007.

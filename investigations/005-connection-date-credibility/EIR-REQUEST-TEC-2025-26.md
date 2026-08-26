@@ -23,7 +23,13 @@ archive copies of the TEC Register from 2014 to present"):
    connections-reform re-baselining and is the one I cannot reconstruct.
 2. Any Transmission Works Register reports published or held after those
    disclosed under FOI-25-133 (2017–2025), to the date of this request.
-3. If a data-portal archive of historic TEC Registers has been made
+3. Whether the Transmission Works Register as held internally by NESO
+   carries **per-scheme completion dates** (as CUSC Section 6 describes),
+   distinct from the dependent project's connection date that appears on
+   every row of the reports disclosed under FOI-25-133 — and, if it does,
+   copies of the register with those scheme-level dates for the same
+   2017–2025 period.
+4. If a data-portal archive of historic TEC Registers has been made
    available since FOI-25-129 ("We are currently exploring making an archive
    of the TEC Register available on the Data Portal"), a pointer to it
    would satisfy item 1.

@@ -1,8 +1,26 @@
 # 008 · J2 — SPV financing events and TEC connection-date volatility
 
 **Frozen**: 2026-08-27, before any Companies House record has been
-requested. Sealed by the commit that adds this file. Builds on 005
-(`data/derived/tec-history/project-metrics.csv`) and 006's attribution.
+requested. First committed at `e8ee111` (sha256 `540ede41…`); **amended
+the same day, before the seal and before any fetch**, to add the sponsor's
+age/timing guard (below). Sealed by the commit that adds this amended
+text. Builds on 005 (`data/derived/tec-history/project-metrics.csv`) and
+006's attribution.
+
+## Age/timing guard (sponsor's amendment, binding)
+
+> Stage 1 may **screen** charge incidence, but it **cannot pass J2
+> commercially by itself.** Built projects and their companies are older
+> and have simply had more time to accumulate charges. Any positive
+> Stage-1 result must survive Stage 2 using the **first charge created
+> after the project first appears in TEC**, with project age and
+> observation time controlled by the placebo design.
+
+Consequences fixed now: a Stage-1 pass triggers Stage 2 immediately and
+is **not interpreted** on its own; no decision sentence is attached to
+Stage 1; the Stage-1 figures are published only as the screen that they
+are, with company incorporation age reported per arm so the reader can
+see the confound's size.
 
 ## Hypothesis under test
 
@@ -40,17 +58,39 @@ no usable information at SPV level and **stage 2 is not run**. Banked as:
 *project finance is not visible at the TEC customer entity for most GB
 storage projects* — itself a fact about where delivery risk sits.
 
+**Survival is only a screen.** Under the age/timing guard, a Built-arm
+excess ≥ 15 pp proves nothing about credibility of dates; it only
+justifies the Stage-2 fetch. Reported with it: median company age
+(incorporation to last TEC vintage) per arm, and charge incidence
+restricted to charges created **after** the project's `first_observed`
+TEC vintage — the Stage-2 clock — so that the "older companies have more
+charges" explanation is visible in the same table.
+
 ## Stage 2 — the event study (only if stage 1 survives)
 
-**Population**: all resolved 005 projects (any plant type) with ≥ 1 SPV
-charge whose `created_on` falls inside the project's TEC observation span
-with ≥ 12 months of vintages on each side. Minimum **n ≥ 60**.
+**Event clock**: the **first charge whose `created_on` is after the
+project's `first_observed` TEC vintage** ("first financing charge").
+Charges created before the project appeared in TEC are ignored for the
+event study (they cannot have hardened a date that did not yet exist) and
+are counted separately.
 
-**Measure**: per project, TEC revision rate (revisions of `MW Effective
-From` per 12 months of observation) in the 12 months **before** the first
-charge and the 12 months **after**; and the share of 006's "project-led"
-slips (from `attribution.csv`, `outcome`) that fall before versus after
-the first charge, among projects present in both tables.
+**Population**: all resolved 005 projects (any plant type) whose first
+financing charge falls inside the project's TEC observation span with
+≥ 12 months of vintages on each side. Minimum **n ≥ 60**.
+
+**Primary measure** — *does connection-date volatility fall after the
+first financing charge?* Per project, TEC revision rate (revisions of
+`MW Effective From` per 12 months of observation) in the 12 months
+**before** the first financing charge and the 12 months **after**; and
+the share of 006's "project-led" slips (from `attribution.csv`,
+`outcome`) that fall before versus after it, among projects present in
+both tables.
+
+**Sister outcome** (reported, scored only as stated in bar 4) — *does the
+first financing charge raise P(moves to construction/built)?* Among
+projects observed ≥ 24 months after the charge, the share whose TEC status
+reaches Under Construction/Commissioning or Built within 24 months,
+against the same share for the placebo date in the same projects.
 
 **Bars**
 1. Median post/pre revision-rate ratio **≤ 0.5** with the paired sign test
@@ -58,11 +98,19 @@ the first charge, among projects present in both tables.
 2. Median ratio in [0.8, 1.25], or the after-charge share of project-led
    slips ≥ 40 % → **(b) financing does not harden dates**.
 3. Otherwise indeterminate, reported as such.
+4. **Age control, binding on (a)**: (a) is awarded only if the median
+   post/pre ratio around the first financing charge is at least 0.25
+   lower than the same ratio around the **placebo date** — the midpoint of
+   each project's observation span — in the same projects. If the placebo
+   shows a fall of the same size, the result is "dates stop moving with
+   age, not with financing" and (b) is recorded.
+5. Sister outcome: P(construction/built within 24 months) after the
+   charge minus after the placebo date, with n; reported with a 95 %
+   Wilson interval, not thresholded.
 
-Control (reported, not scored): the same before/after ratio around a
-*placebo* date — the midpoint of each project's observation span — for the
-same projects, to separate the charge effect from the general tendency of
-older projects to stop revising.
+The placebo is what carries the age/observation-time control: every
+project is its own comparator at a date that has nothing to do with
+financing.
 
 ## Outcomes, fixed now
 

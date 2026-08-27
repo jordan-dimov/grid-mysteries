@@ -1,7 +1,12 @@
 # 008 · J1 — EAC ancillary-service substitution for the battery BM access discount
 
 **Frozen**: 2026-08-27, before any EAC quantity or price has been placed
-beside any unit's BM measure. Sealed by the commit that adds this file.
+beside any unit's BM measure. First committed at `e8ee111` (sha256
+`741b60f2…`); **amended the same day, before the seal and before any
+fetch**, on the sponsor's condition that every scored measure be
+normalised by registered battery MW and that Response and Reserve be
+reported separately before any aggregate. Sealed by the commit that adds
+this amended text.
 Depends on `007/DECLARATION-T3-SEPTEMBER.md` (sha256 `6a1253d9…`) for the
 definition of the per-unit access-discount measure $R'$ and shares its
 trigger and seal.
@@ -42,23 +47,39 @@ missing data). **Minimum n ≥ 100** in September; below that the test is
 - **Access discount** $R'$: exactly as defined in the 007 September
   declaration, pooled across directions (offers and bids reported
   separately as secondary).
-- **EAC commitment (MW)**: $C = \sum \text{executedQuantity} \times h / (H \cdot P)$,
-  where $h$ is the delivery-window length in hours, $H$ the hours in the
-  month and $P$ the unit's capacity denominator: Elexon `generationCapacity`
-  where > 0, else the unit's maximum `executedQuantity` observed in the EAC
-  file across the two months (flagged; secondary reading excludes these
-  units).
-- **EAC gross value (£/MW)**: $V = \sum \text{executedQuantity} \times \text{clearingPrice} \times h / P$.
+- **Registered battery MW** $P$: Elexon `generationCapacity` from the
+  pinned `reference/bmunits/all` snapshot. **Only units with $P > 0$ enter
+  the scored population** (133 of the 155 currently matched units have
+  it). Units without it are listed, and a secondary unscored reading uses
+  the unit's maximum `executedQuantity` across the two months as $P$ —
+  flagged as biased, because it bounds commitment at 1 by construction.
+- **EAC commitment (MW·h per registered MW)**:
+  $C = \sum \text{executedQuantity} \times h \,/\, P$, where $h$ is each
+  delivery window's length in hours. This is the sponsor's
+  "cleared EAC MW-hours ÷ registered battery MW". (Dividing further by the
+  hours in the month gives a capacity fraction; reported alongside, same
+  ranks.)
+- **EAC gross value (£ per registered MW)**:
+  $V = \sum \text{executedQuantity} \times \text{clearingPrice} \times h \,/\, P$.
   Labelled *gross availability payment*; never "revenue" net of anything.
-- Service split (Response: DC/DM/DR; Reserve: QR/SR/BR) reported as a
-  secondary breakdown, not scored.
+- **Product split is reported first.** $C$ and $V$ are computed and
+  tabulated separately for **Response** (DC, DM, DR) and **Reserve** (QR,
+  SR, BR), with the correlations of the next section shown per family,
+  *before* the pooled figures appear. The bars below are applied to the
+  pooled measures; a family-level result that contradicts the pooled one
+  is reported next to it and the verdict says so.
+
+The size confound this guards against, stated so it cannot be forgotten:
+without $P$ a large battery would show both more constrained in-merit
+volume and more cleared EAC MW, manufacturing outcome (a).
 
 ## Bars
 
 Scored on **September** only; August is in-sample and reported alongside.
 
-1. **Direction**: Spearman rank correlation across the population between
-   $R'$ and $C$, and between $R'$ and $V$.
+1. **Direction**: Spearman rank correlation across the scored population
+   (registered MW known) between $R'$ and $C$, and between $R'$ and $V$,
+   both per registered MW.
    - **(a) hedged** if ρ($R'$, $C$) ≥ +0.3 **and** ρ($R'$, $V$) ≥ +0.3;
    - **(b) unhedged / penalised** if ρ($R'$, $C$) ≤ −0.3 **or** both
      |ρ| < 0.2 with n ≥ 100;
@@ -87,6 +108,9 @@ results before use).
   constrained units.*
 - **Not determinable** → recorded; may re-run on October under this same
   declaration, no amendment.
+
+The question, in the sponsor's words: **does poor BM access get compensated
+elsewhere in the revenue stack?**
 
 ## What this does not say
 

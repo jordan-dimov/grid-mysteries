@@ -59,3 +59,19 @@ recorded as such. A widened cohort (all plant types: 125 / 112) is a
 pre-fetch amendment the sponsor may make; if made, the storage projects
 fetched here are reused from their pinned copies (the journal refuses to
 refetch), and the widened run is the first run that can be scored.
+
+## Banked (sponsor decision, 2026-08-27)
+
+> **Storage-only screen not determinable; suggestive pattern observed; no
+> conclusion.**
+
+J2 is **not widened**. Before the fetch, widening to all plant types would
+have been a legitimate power amendment; after seeing 10/10 against 5/13 it
+is not — enlarging a sample after an attractive directional result cannot
+be distinguished from signal-chasing, however it is declared. The Stage-1
+figures are not evidence for any further financing hypothesis. If the
+causal question (*secured financing event → change in TEC behaviour*) is
+ever revisited, it is a new investigation with its population chosen
+before any further Companies House outcome is read. The incidental
+observation that a dissolved company can still hold a Scoping TEC position
+is carried forward as the seed of a separate question (009).

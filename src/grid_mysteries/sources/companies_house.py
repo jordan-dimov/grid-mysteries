@@ -93,3 +93,11 @@ class AuthenticatedFetcher:
             sha256=sha256_file(destination),
             fetched_at=datetime.now(UTC),
         )
+
+
+def advanced_search_url(name: str, *, size: int = 20) -> str:
+    return f"{BASE_URL}/advanced-search/companies?company_name_includes={quote(name)}&size={size}"
+
+
+def filing_history_url(company_number: str) -> str:
+    return f"{BASE_URL}/company/{company_number}/filing-history?items_per_page=100"

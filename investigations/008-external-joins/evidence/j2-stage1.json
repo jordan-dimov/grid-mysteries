@@ -1,0 +1,383 @@
+{
+ "declaration": "DECLARATION-J2-SPV-FINANCING.md",
+ "run_date": "2026-08-27",
+ "cohort": "storage only (as sealed)",
+ "raw_manifest": "data/raw/companies-house/2026-08-27/manifest.json",
+ "arms": {
+  "built_spv": {
+   "label": "built (non-portfolio)",
+   "n_projects": 15,
+   "n_resolved": 10,
+   "resolved_share": "0.6667",
+   "n_with_charge": 10,
+   "incidence": "1.0000",
+   "n_with_charge_after_first_observed": 5,
+   "incidence_after_first_observed": "0.5000",
+   "median_company_age_years": "6.2"
+  },
+  "scoping_spv": {
+   "label": "scoping (non-portfolio)",
+   "n_projects": 21,
+   "n_resolved": 13,
+   "resolved_share": "0.6190",
+   "n_with_charge": 5,
+   "incidence": "0.3846",
+   "n_with_charge_after_first_observed": 1,
+   "incidence_after_first_observed": "0.0769",
+   "median_company_age_years": "5.0"
+  },
+  "built_portfolio": {
+   "label": "built (portfolio customers)",
+   "n_projects": 11,
+   "n_resolved": 11,
+   "resolved_share": "1.0000",
+   "n_with_charge": 9,
+   "incidence": "0.8182",
+   "n_with_charge_after_first_observed": 6,
+   "incidence_after_first_observed": "0.5455",
+   "median_company_age_years": "7.5"
+  },
+  "scoping_portfolio": {
+   "label": "scoping (portfolio customers)",
+   "n_projects": 8,
+   "n_resolved": 8,
+   "resolved_share": "1.0000",
+   "n_with_charge": 7,
+   "incidence": "0.8750",
+   "n_with_charge_after_first_observed": 2,
+   "incidence_after_first_observed": "0.2500",
+   "median_company_age_years": "7.5"
+  }
+ },
+ "verdict": {
+  "determinable": false,
+  "resolved_ok": false,
+  "gap_pp": null,
+  "survives": false,
+  "note": "arm below n >= 40: not determinable"
+ },
+ "resolutions": {
+  "aberthaw energy limited": {
+   "customer": "aberthaw energy limited",
+   "company_number": "13334556",
+   "reason": "unique-active-exact",
+   "candidates": [
+    "13334556"
+   ]
+  },
+  "alcemi storage developments 1 limited": {
+   "customer": "alcemi storage developments 1 limited",
+   "company_number": "12376951",
+   "reason": "unique-active-exact",
+   "candidates": [
+    "12376951"
+   ]
+  },
+  "alcemi storage developments 4 limited": {
+   "customer": "alcemi storage developments 4 limited",
+   "company_number": "12376965",
+   "reason": "unique-active-exact",
+   "candidates": [
+    "12376965"
+   ]
+  },
+  "alcemi storage developments 5 limited": {
+   "customer": "alcemi storage developments 5 limited",
+   "company_number": "12376959",
+   "reason": "unique-active-exact",
+   "candidates": [
+    "12376959"
+   ]
+  },
+  "alcemi storage developments 6 limited": {
+   "customer": "alcemi storage developments 6 limited",
+   "company_number": "13848257",
+   "reason": "unique-active-exact",
+   "candidates": [
+    "13848257"
+   ]
+  },
+  "balwen limited": {
+   "customer": "balwen limited",
+   "company_number": "12896619",
+   "reason": "unique-active-exact",
+   "candidates": [
+    "12896619"
+   ]
+  },
+  "bolney green limited": {
+   "customer": "bolney green limited",
+   "company_number": "12725566",
+   "reason": "unique-active-exact",
+   "candidates": [
+    "12725566"
+   ]
+  },
+  "cowley baldon green limited": {
+   "customer": "cowley baldon green limited",
+   "company_number": "12517381",
+   "reason": "unique-active-exact",
+   "candidates": [
+    "12517381"
+   ]
+  },
+  "cs uk holdings iii limited": {
+   "customer": "cs uk holdings iii limited",
+   "company_number": "10909660",
+   "reason": "unique-active-exact",
+   "candidates": [
+    "10909660"
+   ]
+  },
+  "cse25 limited": {
+   "customer": "cse25 limited",
+   "company_number": "11354620",
+   "reason": "unique-active-exact",
+   "candidates": [
+    "11354620"
+   ]
+  },
+  "cyp solar limited": {
+   "customer": "cyp solar limited",
+   "company_number": "12357995",
+   "reason": "unique-active-exact",
+   "candidates": [
+    "12357995"
+   ]
+  },
+  "drax cruachan expansion limited": {
+   "customer": "drax cruachan expansion limited",
+   "company_number": "06657393",
+   "reason": "unique-active-exact",
+   "candidates": [
+    "06657393"
+   ]
+  },
+  "east anglia grid storage one limited": {
+   "customer": "east anglia grid storage one limited",
+   "company_number": null,
+   "reason": "no-exact-match",
+   "candidates": []
+  },
+  "energygridpower3 ltd": {
+   "customer": "energygridpower3 ltd",
+   "company_number": null,
+   "reason": "no-exact-match",
+   "candidates": []
+  },
+  "enso green holdings a limited": {
+   "customer": "enso green holdings a limited",
+   "company_number": "12759332",
+   "reason": "unique-active-exact",
+   "candidates": [
+    "12759332"
+   ]
+  },
+  "harmony bf ltd": {
+   "customer": "harmony bf ltd",
+   "company_number": null,
+   "reason": "no-exact-match",
+   "candidates": []
+  },
+  "harmony cf limited": {
+   "customer": "harmony cf limited",
+   "company_number": "11344280",
+   "reason": "unique-active-exact",
+   "candidates": [
+    "11344280"
+   ]
+  },
+  "harmony jf limited": {
+   "customer": "harmony jf limited",
+   "company_number": "10959382",
+   "reason": "unique-active-exact",
+   "candidates": [
+    "10959382"
+   ]
+  },
+  "harmony pw 2 limited": {
+   "customer": "harmony pw 2 limited",
+   "company_number": null,
+   "reason": "no-exact-match",
+   "candidates": []
+  },
+  "harmony pw limited": {
+   "customer": "harmony pw limited",
+   "company_number": null,
+   "reason": "no-exact-match",
+   "candidates": []
+  },
+  "hawkers hill energy park limited": {
+   "customer": "hawkers hill energy park limited",
+   "company_number": "10010531",
+   "reason": "unique-active-exact",
+   "candidates": [
+    "10010531"
+   ]
+  },
+  "hd143ock ltd": {
+   "customer": "hd143ock ltd",
+   "company_number": "12023540",
+   "reason": "unique-active-exact",
+   "candidates": [
+    "12023540"
+   ]
+  },
+  "hd777fry ltd": {
+   "customer": "hd777fry ltd",
+   "company_number": "12023701",
+   "reason": "unique-active-exact",
+   "candidates": [
+    "12023701"
+   ]
+  },
+  "igp solar 19 limited": {
+   "customer": "igp solar 19 limited",
+   "company_number": null,
+   "reason": "no-exact-match",
+   "candidates": []
+  },
+  "igp solar 20 limited": {
+   "customer": "igp solar 20 limited",
+   "company_number": null,
+   "reason": "no-exact-match",
+   "candidates": []
+  },
+  "igp solar 21 limited": {
+   "customer": "igp solar 21 limited",
+   "company_number": null,
+   "reason": "no-exact-match",
+   "candidates": []
+  },
+  "igp solar 25 limited": {
+   "customer": "igp solar 25 limited",
+   "company_number": null,
+   "reason": "no-exact-match",
+   "candidates": []
+  },
+  "ili highlands psh limited": {
+   "customer": "ili highlands psh limited",
+   "company_number": null,
+   "reason": "no-exact-match",
+   "candidates": []
+  },
+  "keith storage solutions limited": {
+   "customer": "keith storage solutions limited",
+   "company_number": "11248767",
+   "reason": "unique-active-exact",
+   "candidates": [
+    "11248767"
+   ]
+  },
+  "native river ltd": {
+   "customer": "native river ltd",
+   "company_number": "12997344",
+   "reason": "unique-active-exact",
+   "candidates": [
+    "12997344"
+   ]
+  },
+  "nursling energy two limited": {
+   "customer": "nursling energy two limited",
+   "company_number": "11020721",
+   "reason": "unique-active-exact",
+   "candidates": [
+    "11020721"
+   ]
+  },
+  "organic power ltd": {
+   "customer": "organic power ltd",
+   "company_number": null,
+   "reason": "exact-but-not-active",
+   "candidates": [
+    "03432968"
+   ]
+  },
+  "pivoted power llp": {
+   "customer": "pivoted power llp",
+   "company_number": "OC420973",
+   "reason": "unique-active-exact",
+   "candidates": [
+    "OC420973"
+   ]
+  },
+  "richborough energy park limited": {
+   "customer": "richborough energy park limited",
+   "company_number": "10158720",
+   "reason": "unique-active-exact",
+   "candidates": [
+    "10158720"
+   ]
+  },
+  "roaring hill energy storage ltd": {
+   "customer": "roaring hill energy storage ltd",
+   "company_number": "10272710",
+   "reason": "unique-active-exact",
+   "candidates": [
+    "10272710"
+   ]
+  },
+  "sizing john limited": {
+   "customer": "sizing john limited",
+   "company_number": "12997545",
+   "reason": "unique-active-exact",
+   "candidates": [
+    "12997545"
+   ]
+  },
+  "spectrumreserve ltd": {
+   "customer": "spectrumreserve ltd",
+   "company_number": null,
+   "reason": "no-exact-match",
+   "candidates": []
+  },
+  "sse utility solutions limited": {
+   "customer": "sse utility solutions limited",
+   "company_number": "06894120",
+   "reason": "unique-active-exact",
+   "candidates": [
+    "06894120"
+   ]
+  },
+  "strath tirry wind energy 2021 ltd": {
+   "customer": "strath tirry wind energy 2021 ltd",
+   "company_number": "13659419",
+   "reason": "unique-active-exact",
+   "candidates": [
+    "13659419"
+   ]
+  },
+  "tollgate energy storage limited": {
+   "customer": "tollgate energy storage limited",
+   "company_number": "13048014",
+   "reason": "unique-active-exact",
+   "candidates": [
+    "13048014"
+   ]
+  },
+  "zenobe capenhurst limited": {
+   "customer": "zenobe capenhurst limited",
+   "company_number": "12246481",
+   "reason": "unique-active-exact",
+   "candidates": [
+    "12246481"
+   ]
+  },
+  "zenobe energy limited": {
+   "customer": "zenobe energy limited",
+   "company_number": "10436249",
+   "reason": "unique-active-exact",
+   "candidates": [
+    "10436249"
+   ]
+  },
+  "zenobe wishaw limited": {
+   "customer": "zenobe wishaw limited",
+   "company_number": "10726477",
+   "reason": "unique-active-exact",
+   "candidates": [
+    "10726477"
+   ]
+  }
+ }
+}

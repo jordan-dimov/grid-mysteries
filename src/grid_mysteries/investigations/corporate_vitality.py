@@ -172,7 +172,7 @@ def classify(
 
 
 def signal(state: State, *, first_observed: date, as_of: date) -> str:
-    """'strong' | 'moderate' | 'none' | 'identity-error' (state dated before the project existed)."""
+    """'strong' | 'moderate' | 'none' | 'identity-error' (dated before the project existed)."""
     if state.tier not in STRONG and state.tier != "V4":
         return "none"
     if state.on is not None and not state.undated and state.on < first_observed:

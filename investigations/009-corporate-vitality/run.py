@@ -80,7 +80,7 @@ def main() -> None:
 
     # customer → (original name, earliest first appearance across arms)
     customers: dict[str, tuple[str, date]] = {}
-    for arm_name, stages in arms.items():
+    for stages in arms.values():
         for s in stages:
             first = date.fromisoformat(s.get("first_observed") or s.get("first_seen"))
             cur = customers.get(s["customer_norm"])

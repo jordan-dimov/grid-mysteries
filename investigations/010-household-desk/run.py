@@ -11,6 +11,7 @@ journalled under data/raw/ before any price is read into the model.
 import argparse
 import hashlib
 import json
+import re
 import sys
 from datetime import UTC, date, datetime
 from decimal import Decimal
@@ -19,8 +20,10 @@ from pathlib import Path
 from typing import Any
 
 from grid_mysteries.corpus import REPO_ROOT, day_range
+from grid_mysteries.hashing import sha256_file
 from grid_mysteries.investigations import household_desk as hd
 from grid_mysteries.investigations.household_desk import LONDON, BatterySpec, Rate
+from grid_mysteries.models import SourceArtifact
 from grid_mysteries.sources import elexon, octopus
 from grid_mysteries.sources.pinning import fetch_journalled, progress
 
@@ -40,6 +43,13 @@ FREE_SWEEP = tuple(Decimal(x) for x in (0, 10, 20, 30, 40, 60, 80, 100))
 CAPACITY, INVERTER, EFFICIENCY = Decimal("200"), Decimal("20"), Decimal("0.90")
 BLOOMBERG_DAY = date(2026, 6, 24)
 
+#: Sources deliberately not fetched, with the reason, so the record shows
+#: the gap rather than a browser-agent workaround.
+RULES_NOT_ATTEMPTED = {
+    "ukpn-g98-g99-pages": "UK Power Networks refuses scripted fetches; recorded as unavailable "
+    "at the sponsor's instruction rather than retried with a browser agent",
+}
+
 RULES_DOCUMENTS = {
     "octopus-agile": "https://octopus.energy/smart/agile/",
     "octopus-agile-pricing-explained": "https://octopus.energy/blog/agile-pricing-explained/",
@@ -48,7 +58,11 @@ RULES_DOCUMENTS = {
     "octopus-intelligent-go": "https://octopus.energy/smart/intelligent-octopus-go/",
     "octopus-flux": "https://octopus.energy/smart/flux/",
     "octopus-intelligent-flux": "https://octopus.energy/smart/intelligent-flux/",
-    "ena-g98-g99": "https://www.energynetworks.org/industry/connecting-to-the-networks/g98-and-g99",
+    # ENA library pages supplied by the sponsor at seal (the earlier
+    # /industry/... path returned 404); G99 untested from here.
+    "ena-erec-g98": "https://www.energynetworks.org/publications/engineering-recommendation-g98",
+    "ena-erec-g99": "https://www.energynetworks.org/publications/engineering-recommendation-g99",
+    "distribution-code": "https://www.dcode.org.uk/",
     "hmrc-vat-701-19": "https://www.gov.uk/guidance/vat-on-fuel-and-power-notice-70119",
 }
 
@@ -148,6 +162,7 @@ def acquire_elexon(acq: Acquirer) -> None:
 
 
 def acquire_rules(acq: Acquirer, extra: dict[str, str], log: dict[str, Any]) -> None:
+    log["rules_documents_not_attempted"] = RULES_NOT_ATTEMPTED
     for name, url in {**RULES_DOCUMENTS, **extra}.items():
         suffix = ".pdf" if url.lower().endswith(".pdf") else ".html"
         try:
@@ -419,10 +434,18 @@ def main() -> int:
         "--seal", required=True, help="prefix (≥ 8 hex) of DECLARATION.md's SHA-256"
     )
     parser.add_argument("--run-date", default=datetime.now(UTC).date().isoformat())
-    parser.add_argument("--phase", choices=("acquire", "evaluate", "rules", "all"), default="all")
+    parser.add_argument(
+        "--phase", choices=("acquire", "evaluate", "rules", "press", "all"), default="all"
+    )
     parser.add_argument(
         "--press-url", help="URL of the Bloomberg feature, pinned under data/raw/press/"
     )
+    parser.add_argument("--press-note", help="metadata recorded with the press pin (token expiry)")
+    parser.add_argument(
+        "--press-file",
+        help="a saved copy of the article (HTML or PDF) to pin when the publisher refuses fetches",
+    )
+    parser.add_argument("--note", action="append", default=[], help="note for the acquisition log")
     parser.add_argument(
         "--rules-url", action="append", default=[], help="name=url, extra rules document"
     )
@@ -439,11 +462,12 @@ def main() -> int:
     raw_octopus = REPO_ROOT / "data/raw/octopus" / f"{args.run_date}-010"
     raw_elexon = REPO_ROOT / "data/raw/elexon/010"
     raw_rules = REPO_ROOT / "data/raw/rules/010"
-    log: dict[str, Any] = {
-        "declaration_sha256": digest,
-        "seal": args.seal,
-        "run_date": args.run_date,
-    }
+    EVIDENCE.mkdir(parents=True, exist_ok=True)
+    log_path = EVIDENCE / "acquisition-log.json"
+    log: dict[str, Any] = json.loads(log_path.read_text()) if log_path.exists() else {}
+    log.update({"declaration_sha256": digest, "seal": args.seal, "run_date": args.run_date})
+    if args.note:
+        log.setdefault("notes", []).extend(args.note)
     EVIDENCE.mkdir(parents=True, exist_ok=True)
     codes_path = EVIDENCE / "tariff-codes.json"
 
@@ -454,16 +478,44 @@ def main() -> int:
             json.dumps({f"{p}/{r}": c for (p, r), c in sorted(codes.items())}, indent=1) + "\n"
         )
         acquire_elexon(Acquirer(raw_elexon, elexon.fetch_pinned))
-        if args.press_url:
-            Acquirer(REPO_ROOT / "data/raw/press", octopus.fetch_pinned).pin(
-                [
-                    (
-                        "press",
-                        args.press_url,
-                        REPO_ROOT / "data/raw/press" / "010-bloomberg-2026-09-03.html",
-                    )
-                ]
+    if args.phase in ("press", "all") and (args.press_url or args.press_file):
+        press = REPO_ROOT / "data/raw/press"
+        # A gift link carries a bearer token; the committed log keeps the
+        # article identity, never the credential.
+        redacted = re.sub(r"accessToken=[^&]+", "accessToken=<redacted>", args.press_url or "")
+        record: dict[str, Any] = {"url": redacted, "note": args.press_note}
+        if args.press_file:
+            source = Path(args.press_file)
+            suffix = source.suffix.lower() or ".html"
+            destination = press / f"010-bloomberg-2026-09-03{suffix}"
+
+            def copy_saved(*, url: str, destination: Path, dataset: str) -> SourceArtifact:
+                if destination.exists():
+                    raise FileExistsError(f"pinned artefact already exists: {destination}")
+                destination.parent.mkdir(parents=True, exist_ok=True)
+                destination.write_bytes(source.read_bytes())
+                return SourceArtifact(
+                    source="sponsor-saved-copy",
+                    dataset=dataset,
+                    path=destination,
+                    sha256=sha256_file(destination),
+                    fetched_at=datetime.now(UTC),
+                )
+
+            Acquirer(press, copy_saved).pin(
+                [("press", args.press_url or f"file:{source.name}", destination)]
             )
+            record["saved_copy"] = str(source)
+        else:
+            try:
+                Acquirer(press, octopus.fetch_pinned).pin(
+                    [("press", args.press_url, press / "010-bloomberg-2026-09-03.html")]
+                )
+            except Exception as error:  # noqa: BLE001 — recorded, not retried elsewhere
+                record["error"] = re.sub(
+                    r"accessToken=[^&']+", "accessToken=<redacted>", str(error).splitlines()[0]
+                )
+        log.setdefault("press_attempts", []).append(record)
     if args.phase in ("evaluate", "all"):
         codes = {tuple(k.split("/")): v for k, v in json.loads(codes_path.read_text()).items()}  # type: ignore[misc]
         results = evaluate(raw_octopus, raw_elexon, codes)
@@ -491,7 +543,7 @@ def main() -> int:
     (EVIDENCE / "manifest.json").write_text(
         json.dumps(sorted(manifest, key=lambda e: e["path"]), indent=1) + "\n"
     )
-    (EVIDENCE / "acquisition-log.json").write_text(json.dumps(log, indent=1, default=str) + "\n")
+    log_path.write_text(json.dumps(log, indent=1, default=str) + "\n")
     return 0
 
 

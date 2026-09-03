@@ -86,6 +86,31 @@ def test_slots_take_the_union_of_boundaries_and_slice_a_fixed_tariff() -> None:
     assert all(s.import_p == D(20) and s.hours == D("0.5") for s in slots)
 
 
+def test_two_fixed_tariffs_are_still_sliced_to_the_settlement_grid() -> None:
+    # Amendment 2: a Go-style night rate and a Flux-style export schedule
+    # would otherwise make seven multi-hour slots, and free daylight energy
+    # would collide with the inverter budget of one giant slot.
+    (day,) = decision_days(date(2026, 6, 24), date(2026, 6, 24))
+    night_start = datetime(2026, 6, 24, 0, 30, tzinfo=LONDON).astimezone(UTC)
+    night_end = datetime(2026, 6, 24, 5, 30, tzinfo=LONDON).astimezone(UTC)
+    imp = [
+        Rate(datetime(2020, 1, 1, tzinfo=UTC), night_start, D(30)),
+        Rate(night_start, night_end, D("8.5")),
+        Rate(night_end, None, D(30)),
+    ]
+    exp = [Rate(datetime(2020, 1, 1, tzinfo=UTC), None, D(10))]
+    slots, why = slots_for(day, imp, exp)
+    assert why is None and len(slots) == 48
+    assert all(s.hours == D("0.5") for s in slots)
+    coarse, _ = slots_for(day, imp, exp, resolution=timedelta(days=1))
+    assert len(coarse) == 3
+    # Free energy now reaches the export at 20 kW where the coarse grid lost it.
+    spec = BatterySpec(D(200), D(20), D(20), D("0.90"), free_energy_kwh_per_day=D(40))
+    fine = optimise_day(date(2026, 6, 24), slots, spec, free_energy_by_slot(slots, D(40)))
+    rough = optimise_day(date(2026, 6, 24), coarse, spec, free_energy_by_slot(coarse, D(40)))
+    assert fine.free_kwh == D(40) and fine.net_p >= rough.net_p
+
+
 def test_a_gap_or_an_unpublished_price_drops_the_day_with_a_reason() -> None:
     (day,) = decision_days(date(2026, 6, 24), date(2026, 6, 24))
     imp = half_hours(day, lambda h: D(20))

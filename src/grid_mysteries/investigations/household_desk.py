@@ -28,8 +28,9 @@ LONDON = ZoneInfo("Europe/London")
 ZERO = Decimal(0)
 ONE = Decimal(1)
 PENNY = Decimal("0.01")
-RULE = "010/per-day-optimum/v1"
+RULE = "010/per-day-optimum/v2"
 MIN_SCORED_DAYS_PER_MONTH = 25
+RESOLUTION = timedelta(minutes=30)
 DAYLIGHT = (time(9, 0), time(17, 0))
 
 
@@ -225,11 +226,22 @@ def _covering(rates: Sequence[Rate], start: datetime, end: datetime) -> Rate | N
 
 
 def slots_for(
-    day: DecisionDay, import_rates: Sequence[Rate], export_rates: Sequence[Rate]
+    day: DecisionDay,
+    import_rates: Sequence[Rate],
+    export_rates: Sequence[Rate],
+    *,
+    resolution: timedelta = RESOLUTION,
 ) -> tuple[list[Slot], str | None]:
-    """Slots at the union of both series' boundaries inside the day, or the
-    reason the day cannot be scored (a gap, or a price not yet known)."""
+    """Slots at the union of both series' boundaries and the settlement grid
+    inside the day (Amendment 2), or the reason the day cannot be scored (a
+    gap, or a price not yet known). A finer grid never loses value: every
+    coarse schedule stays feasible, and free daylight energy lands in the
+    half-hours it belongs to rather than in one multi-hour fixed-rate slot."""
     boundaries = {day.start, day.end}
+    tick = day.start
+    while tick < day.end:
+        boundaries.add(tick)
+        tick += resolution
     for rates in (import_rates, export_rates):
         for rate in rates:
             for edge in (rate.valid_from, rate.valid_to):

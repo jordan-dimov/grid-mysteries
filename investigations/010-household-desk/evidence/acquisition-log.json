@@ -1,0 +1,34 @@
+{
+ "declaration_sha256": "6b91dd96686fdb416b7f774440b7f6b025f03367d916bdc09f83b32f43b79f74",
+ "seal": "6b91dd96",
+ "run_date": "2026-09-03",
+ "notes": [
+  "Seal granted by the sponsor on 2026-09-03 on digest 6b91dd96 with Amendment 1 standing; run launched the same day",
+  "Rules phase re-run 2026-09-03 to pin the pairing FAQ, Go FAQ and smart-tariff terms pages linked from the pinned Octopus pages, and the Distribution Code engineering-documents page linked from dcode.org.uk",
+  "Evaluate phase re-run 2026-09-03 under Amendment 2 (settlement-grid slots, rule v2) on the same pinned data; pre-amendment results preserved as evidence/results-PRE-AMENDMENT-2.json",
+  "Rules phase 2026-09-03: pinned the help article the Outgoing FAQ links as the full list of Outgoing-compatible import tariffs"
+ ],
+ "products_absent_from_index": [
+  "INTELLI-VAR-22-10-14"
+ ],
+ "rules_documents_not_attempted": {
+  "ukpn-g98-g99-pages": "UK Power Networks refuses scripted fetches; recorded as unavailable at the sponsor's instruction rather than retried with a browser agent"
+ },
+ "rules_documents_unavailable": {
+  "ena-erec-g98": {
+   "url": "https://www.energynetworks.org/publications/engineering-recommendation-g98",
+   "error": "Client error '403 Forbidden' for url 'https://www.energynetworks.org/publications/engineering-recommendation-g98'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403"
+  },
+  "ena-erec-g99": {
+   "url": "https://www.energynetworks.org/publications/engineering-recommendation-g99",
+   "error": "Client error '403 Forbidden' for url 'https://www.energynetworks.org/publications/engineering-recommendation-g99'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403"
+  }
+ },
+ "press_attempts": [
+  {
+   "url": "https://www.bloomberg.com/news/features/2026-09-03/consumers-profit-off-solar-batteries-selling-excess-energy-back-to-grid?accessToken=<redacted>",
+   "note": "Bloomberg subscriber gift link supplied by the sponsor on 2026-09-03; access token expires 2026-09-10T12:52:01Z (JWT exp 1789044721); article id TKRSG5KIP3I900; scripted fetch refused with 403",
+   "error": "Client error '403 Forbidden' for url 'https://www.bloomberg.com/news/features/2026-09-03/consumers-profit-off-solar-batteries-selling-excess-energy-back-to-grid?accessToken=<redacted>'"
+  }
+ ]
+}

@@ -1,0 +1,4079 @@
+[
+ {
+  "source": "elexon-insights",
+  "dataset": "MID",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MID/stream?from=2026-01-01T00:00Z&to=2026-01-02T00:00Z",
+  "path": "data/raw/elexon/010/2026-01-01/mid.json",
+  "sha256": "eb0a2c5c005dbd0f3a5d37b2326a3a8efa8f287c8a6089afbf057d0aef79b593",
+  "fetched_at": "2026-09-03T20:55:42.307231+00:00",
+  "bytes": 15710
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "SYSTEM-PRICES",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/system-prices/2026-01-01",
+  "path": "data/raw/elexon/010/2026-01-01/system-prices.json",
+  "sha256": "9214da96b4b4ad1b75d56c9a7bda69a02a49b6ea3327319a579ca1a09dff8aaf",
+  "fetched_at": "2026-09-03T20:55:42.628158+00:00",
+  "bytes": 43499
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MID",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MID/stream?from=2026-01-02T00:00Z&to=2026-01-03T00:00Z",
+  "path": "data/raw/elexon/010/2026-01-02/mid.json",
+  "sha256": "26a733a47e82d2215714851b4972c061bbbe9616ca6eada51b2f45d1827bdd04",
+  "fetched_at": "2026-09-03T20:55:42.939375+00:00",
+  "bytes": 15716
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "SYSTEM-PRICES",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/system-prices/2026-01-02",
+  "path": "data/raw/elexon/010/2026-01-02/system-prices.json",
+  "sha256": "528faeac73a3d08fe48c87864ced841784e1c22055c60de6ebac6b860fbeca66",
+  "fetched_at": "2026-09-03T20:55:43.250787+00:00",
+  "bytes": 42839
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MID",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MID/stream?from=2026-01-03T00:00Z&to=2026-01-04T00:00Z",
+  "path": "data/raw/elexon/010/2026-01-03/mid.json",
+  "sha256": "23f9b3825cac1b2b1224a51d89de0783bf9d5a5d695ca6866460a61f1cc43a68",
+  "fetched_at": "2026-09-03T20:55:43.558095+00:00",
+  "bytes": 15713
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "SYSTEM-PRICES",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/system-prices/2026-01-03",
+  "path": "data/raw/elexon/010/2026-01-03/system-prices.json",
+  "sha256": "8a52d1c457283777516d13faf360a71cc78548fe1bb4cbfb68f779bc72401753",
+  "fetched_at": "2026-09-03T20:55:43.865545+00:00",
+  "bytes": 43125
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MID",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MID/stream?from=2026-01-04T00:00Z&to=2026-01-05T00:00Z",
+  "path": "data/raw/elexon/010/2026-01-04/mid.json",
+  "sha256": "29299fa86546275c497194916d762db0e9608c194151ec0d0eacbde5ed05f368",
+  "fetched_at": "2026-09-03T20:55:44.207731+00:00",
+  "bytes": 15719
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "SYSTEM-PRICES",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/system-prices/2026-01-04",
+  "path": "data/raw/elexon/010/2026-01-04/system-prices.json",
+  "sha256": "3010167af6dfa35eae7c13e17dba41df847799229ed79e74acd4f7cc7ea0c930",
+  "fetched_at": "2026-09-03T20:55:44.527160+00:00",
+  "bytes": 42583
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MID",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MID/stream?from=2026-01-05T00:00Z&to=2026-01-06T00:00Z",
+  "path": "data/raw/elexon/010/2026-01-05/mid.json",
+  "sha256": "947658d62f387111386a84451676914f929b164f2ca25c99a19a3307b2a9e155",
+  "fetched_at": "2026-09-03T20:55:44.849953+00:00",
+  "bytes": 15743
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "SYSTEM-PRICES",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/system-prices/2026-01-05",
+  "path": "data/raw/elexon/010/2026-01-05/system-prices.json",
+  "sha256": "06dece386e3970f5cb938440fadc3467497df3d98f5c50aa0feb01874d7b82f3",
+  "fetched_at": "2026-09-03T20:55:45.162843+00:00",
+  "bytes": 42602
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MID",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MID/stream?from=2026-01-06T00:00Z&to=2026-01-07T00:00Z",
+  "path": "data/raw/elexon/010/2026-01-06/mid.json",
+  "sha256": "6b4773b49f843d9d5299cd869cae598d8a1e5dbbae36230d6b12ab5ed758abca",
+  "fetched_at": "2026-09-03T20:55:45.479463+00:00",
+  "bytes": 15747
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "SYSTEM-PRICES",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/system-prices/2026-01-06",
+  "path": "data/raw/elexon/010/2026-01-06/system-prices.json",
+  "sha256": "23677b3674a0827ddf2e9e4782cf201f99e77ab8d21fef42fd1971ee7d574d1e",
+  "fetched_at": "2026-09-03T20:55:45.791732+00:00",
+  "bytes": 43570
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MID",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MID/stream?from=2026-01-07T00:00Z&to=2026-01-08T00:00Z",
+  "path": "data/raw/elexon/010/2026-01-07/mid.json",
+  "sha256": "d7b364d10b3bb53671e7dc6d07eb7fc6f4988ce2be6f4c513428c2c3912f6ba9",
+  "fetched_at": "2026-09-03T20:55:46.100931+00:00",
+  "bytes": 15710
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "SYSTEM-PRICES",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/system-prices/2026-01-07",
+  "path": "data/raw/elexon/010/2026-01-07/system-prices.json",
+  "sha256": "20c630114f9f42c5cf8e4a5d4effe1bf4a5ac4f40613b73a10b9b4ef6a9bc3bc",
+  "fetched_at": "2026-09-03T20:55:46.409450+00:00",
+  "bytes": 42872
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MID",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MID/stream?from=2026-01-08T00:00Z&to=2026-01-09T00:00Z",
+  "path": "data/raw/elexon/010/2026-01-08/mid.json",
+  "sha256": "0258871d2b46ee97496a4fd25c433341761cf871a443b212e43fa1d74c6196cd",
+  "fetched_at": "2026-09-03T20:55:46.725276+00:00",
+  "bytes": 15735
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "SYSTEM-PRICES",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/system-prices/2026-01-08",
+  "path": "data/raw/elexon/010/2026-01-08/system-prices.json",
+  "sha256": "0d1ffcf2fae665126adae5050cfbc43ad3736314794e2e046fbfd964528e3750",
+  "fetched_at": "2026-09-03T20:55:47.051209+00:00",
+  "bytes": 42442
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MID",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MID/stream?from=2026-01-09T00:00Z&to=2026-01-10T00:00Z",
+  "path": "data/raw/elexon/010/2026-01-09/mid.json",
+  "sha256": "ac202bc6ba28a6730ddc02ceee511fe91983f8ee316c11f13bdea685e516bd62",
+  "fetched_at": "2026-09-03T20:55:47.354159+00:00",
+  "bytes": 15712
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "SYSTEM-PRICES",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/system-prices/2026-01-09",
+  "path": "data/raw/elexon/010/2026-01-09/system-prices.json",
+  "sha256": "8fad6d1422dd6cc2e8ab427de8d3066a5089390832e6d7611c1114995a9baf77",
+  "fetched_at": "2026-09-03T20:55:47.679796+00:00",
+  "bytes": 42584
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MID",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MID/stream?from=2026-01-10T00:00Z&to=2026-01-11T00:00Z",
+  "path": "data/raw/elexon/010/2026-01-10/mid.json",
+  "sha256": "72ee28489df773122553fe2fdb105efdeed34824a218f0366167c04fed46cc4d",
+  "fetched_at": "2026-09-03T20:55:47.994677+00:00",
+  "bytes": 15706
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "SYSTEM-PRICES",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/system-prices/2026-01-10",
+  "path": "data/raw/elexon/010/2026-01-10/system-prices.json",
+  "sha256": "4c2b77362bdb5a91a97d654783ef66cb656d0aa48e82698bad8ba0bd3097833a",
+  "fetched_at": "2026-09-03T20:55:48.318930+00:00",
+  "bytes": 42895
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MID",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MID/stream?from=2026-01-11T00:00Z&to=2026-01-12T00:00Z",
+  "path": "data/raw/elexon/010/2026-01-11/mid.json",
+  "sha256": "3461b3a89d04fd4f9ba1d1bf60d82dc18d0af470cde469e2c032d1ac9d63a975",
+  "fetched_at": "2026-09-03T20:55:48.651847+00:00",
+  "bytes": 15710
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "SYSTEM-PRICES",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/system-prices/2026-01-11",
+  "path": "data/raw/elexon/010/2026-01-11/system-prices.json",
+  "sha256": "f65d2d83863fda77076c19873cd8a01336e4628bfcfba06396da809b1b32f6fd",
+  "fetched_at": "2026-09-03T20:55:48.968260+00:00",
+  "bytes": 43286
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MID",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MID/stream?from=2026-01-12T00:00Z&to=2026-01-13T00:00Z",
+  "path": "data/raw/elexon/010/2026-01-12/mid.json",
+  "sha256": "96a578e960a054f0526e8192ace2f13de4ab7228c8988f7a086adb02136b196a",
+  "fetched_at": "2026-09-03T20:55:49.289197+00:00",
+  "bytes": 15077
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "SYSTEM-PRICES",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/system-prices/2026-01-12",
+  "path": "data/raw/elexon/010/2026-01-12/system-prices.json",
+  "sha256": "d1804d28e588d3dd01c401462de724989cb90abe4ca83cf7660137775a8fa864",
+  "fetched_at": "2026-09-03T20:55:49.608575+00:00",
+  "bytes": 43209
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MID",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MID/stream?from=2026-01-13T00:00Z&to=2026-01-14T00:00Z",
+  "path": "data/raw/elexon/010/2026-01-13/mid.json",
+  "sha256": "d1b84e36d5da03e94eda80eb634212afdefba19a3dfdc5c00f4aea0881f5f3fc",
+  "fetched_at": "2026-09-03T20:55:49.925642+00:00",
+  "bytes": 15718
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "SYSTEM-PRICES",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/system-prices/2026-01-13",
+  "path": "data/raw/elexon/010/2026-01-13/system-prices.json",
+  "sha256": "eb1227bea44453632b6b4991a93bd1207564c9026ba319967ffc56c241a7b3da",
+  "fetched_at": "2026-09-03T20:55:50.231579+00:00",
+  "bytes": 42584
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MID",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MID/stream?from=2026-01-14T00:00Z&to=2026-01-15T00:00Z",
+  "path": "data/raw/elexon/010/2026-01-14/mid.json",
+  "sha256": "7529c68c1b991b036ee749f0f974a9d1664137889eeed2d2b49168cc95c0e508",
+  "fetched_at": "2026-09-03T20:55:50.585008+00:00",
+  "bytes": 15723
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "SYSTEM-PRICES",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/system-prices/2026-01-14",
+  "path": "data/raw/elexon/010/2026-01-14/system-prices.json",
+  "sha256": "c892c36bfc03c16b982e6001c6c45ccfaa6351c96fe8447ed19bb42a707beb5f",
+  "fetched_at": "2026-09-03T20:55:50.886883+00:00",
+  "bytes": 43780
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MID",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MID/stream?from=2026-01-15T00:00Z&to=2026-01-16T00:00Z",
+  "path": "data/raw/elexon/010/2026-01-15/mid.json",
+  "sha256": "d0a91a09a5096ee630fd49d4f5d625fa1e6f976a326488b32927caa7421ec3e8",
+  "fetched_at": "2026-09-03T20:55:51.212355+00:00",
+  "bytes": 15728
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "SYSTEM-PRICES",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/system-prices/2026-01-15",
+  "path": "data/raw/elexon/010/2026-01-15/system-prices.json",
+  "sha256": "2dd99894640798baebbace0f7014cdf3b680f4f8acc8419a4cc9df72f3b987af",
+  "fetched_at": "2026-09-03T20:55:51.515303+00:00",
+  "bytes": 42676
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MID",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MID/stream?from=2026-01-16T00:00Z&to=2026-01-17T00:00Z",
+  "path": "data/raw/elexon/010/2026-01-16/mid.json",
+  "sha256": "7a315408d3996a83a17ae046eccda410d597708047f40cb5e494639454a76c0c",
+  "fetched_at": "2026-09-03T20:55:51.830187+00:00",
+  "bytes": 15736
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "SYSTEM-PRICES",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/system-prices/2026-01-16",
+  "path": "data/raw/elexon/010/2026-01-16/system-prices.json",
+  "sha256": "195d99b2928c6a5ac3f16e94abbe237d97336b46f3cbd0b5ce7d4a944bc963cf",
+  "fetched_at": "2026-09-03T20:55:52.160934+00:00",
+  "bytes": 42204
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MID",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MID/stream?from=2026-01-17T00:00Z&to=2026-01-18T00:00Z",
+  "path": "data/raw/elexon/010/2026-01-17/mid.json",
+  "sha256": "550d82731e5fdb1edd807c444a067455d1af53e2236b5f5b9bd62ab29b2614ea",
+  "fetched_at": "2026-09-03T20:55:52.465693+00:00",
+  "bytes": 15741
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "SYSTEM-PRICES",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/system-prices/2026-01-17",
+  "path": "data/raw/elexon/010/2026-01-17/system-prices.json",
+  "sha256": "493b2ac899df73b0b343ca3a5b9c5ddbdbd86a7d8e8b1fa59aa964af466fcce7",
+  "fetched_at": "2026-09-03T20:55:52.790056+00:00",
+  "bytes": 43172
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MID",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MID/stream?from=2026-01-18T00:00Z&to=2026-01-19T00:00Z",
+  "path": "data/raw/elexon/010/2026-01-18/mid.json",
+  "sha256": "a5a83b1971c49b098b6ca02dde3c01c84e3ee28a31977a365794b4f646cbc0bf",
+  "fetched_at": "2026-09-03T20:55:53.124596+00:00",
+  "bytes": 15732
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "SYSTEM-PRICES",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/system-prices/2026-01-18",
+  "path": "data/raw/elexon/010/2026-01-18/system-prices.json",
+  "sha256": "45b1872afd8f6bec2d0cbca50f7d0a343fb33216b3f969cef4ba7d8949bed9c0",
+  "fetched_at": "2026-09-03T20:55:53.441936+00:00",
+  "bytes": 42660
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MID",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MID/stream?from=2026-01-19T00:00Z&to=2026-01-20T00:00Z",
+  "path": "data/raw/elexon/010/2026-01-19/mid.json",
+  "sha256": "4848bb8054ef928c855d40c7cc206b3452bd28060cc1b71b3a4ab9f817910a47",
+  "fetched_at": "2026-09-03T20:55:53.759768+00:00",
+  "bytes": 15733
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "SYSTEM-PRICES",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/system-prices/2026-01-19",
+  "path": "data/raw/elexon/010/2026-01-19/system-prices.json",
+  "sha256": "65df440f0d813ea7e55d940453603bf2e823382c145c701204dc152ba5882797",
+  "fetched_at": "2026-09-03T20:55:54.091046+00:00",
+  "bytes": 42661
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MID",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MID/stream?from=2026-01-20T00:00Z&to=2026-01-21T00:00Z",
+  "path": "data/raw/elexon/010/2026-01-20/mid.json",
+  "sha256": "2ed46d35bfbf6222be777d8da1ae3e9e953665fa2708963c15ac520c05f2b038",
+  "fetched_at": "2026-09-03T20:55:54.406375+00:00",
+  "bytes": 15718
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "SYSTEM-PRICES",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/system-prices/2026-01-20",
+  "path": "data/raw/elexon/010/2026-01-20/system-prices.json",
+  "sha256": "c0a0826e2100df86b710026ed1eac1b4072d428d8b350129f97f7be203fc2d2d",
+  "fetched_at": "2026-09-03T20:55:54.722573+00:00",
+  "bytes": 43396
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MID",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MID/stream?from=2026-01-21T00:00Z&to=2026-01-22T00:00Z",
+  "path": "data/raw/elexon/010/2026-01-21/mid.json",
+  "sha256": "fc1ca25e92f7e00a6af74b5be49325da3a073faa1888db67cb820a1485f3f958",
+  "fetched_at": "2026-09-03T20:55:55.030828+00:00",
+  "bytes": 15722
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "SYSTEM-PRICES",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/system-prices/2026-01-21",
+  "path": "data/raw/elexon/010/2026-01-21/system-prices.json",
+  "sha256": "50f844413dbf3f80a71e75194f32a87aba0046f69fd66ec2670ea4c50175cec3",
+  "fetched_at": "2026-09-03T20:55:55.345847+00:00",
+  "bytes": 43185
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MID",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MID/stream?from=2026-01-22T00:00Z&to=2026-01-23T00:00Z",
+  "path": "data/raw/elexon/010/2026-01-22/mid.json",
+  "sha256": "e4f1c55b783e2768a591638a41b37f01373043e4b989904d1f948d8206cdb549",
+  "fetched_at": "2026-09-03T20:55:55.676424+00:00",
+  "bytes": 15736
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "SYSTEM-PRICES",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/system-prices/2026-01-22",
+  "path": "data/raw/elexon/010/2026-01-22/system-prices.json",
+  "sha256": "9a8d7ec6a2d70c919901f831efd944964aa8a9a2cf6fed9b0918dabde1ea0344",
+  "fetched_at": "2026-09-03T20:55:55.998843+00:00",
+  "bytes": 43470
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MID",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MID/stream?from=2026-01-23T00:00Z&to=2026-01-24T00:00Z",
+  "path": "data/raw/elexon/010/2026-01-23/mid.json",
+  "sha256": "dbc62566ff61f360f991a15dd57d8f46dc2a7c79aac261f0391ef9ae730f8b6d",
+  "fetched_at": "2026-09-03T20:55:56.301224+00:00",
+  "bytes": 15726
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "SYSTEM-PRICES",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/system-prices/2026-01-23",
+  "path": "data/raw/elexon/010/2026-01-23/system-prices.json",
+  "sha256": "aa8576b49053b14c3dce308ba43ab3f97c37f3f7b7ce984a5fcab094b3dd2b8a",
+  "fetched_at": "2026-09-03T20:55:56.629143+00:00",
+  "bytes": 43180
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MID",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MID/stream?from=2026-01-24T00:00Z&to=2026-01-25T00:00Z",
+  "path": "data/raw/elexon/010/2026-01-24/mid.json",
+  "sha256": "d638410ad20fe4c6ec3ae837d1d6ab4297ddba77df7baab05024b5d9f83b00ce",
+  "fetched_at": "2026-09-03T20:55:56.945582+00:00",
+  "bytes": 15721
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "SYSTEM-PRICES",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/system-prices/2026-01-24",
+  "path": "data/raw/elexon/010/2026-01-24/system-prices.json",
+  "sha256": "b62af9cea74348fc9ae14e147a05ab6990a70ef70051e0e6aa850a2e52fb16ce",
+  "fetched_at": "2026-09-03T20:55:57.242426+00:00",
+  "bytes": 43376
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MID",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MID/stream?from=2026-01-25T00:00Z&to=2026-01-26T00:00Z",
+  "path": "data/raw/elexon/010/2026-01-25/mid.json",
+  "sha256": "38cbf3b732ad479e6a825d371449ae7a05868864bbf83a96c4712be5466695bf",
+  "fetched_at": "2026-09-03T20:55:57.563460+00:00",
+  "bytes": 15733
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "SYSTEM-PRICES",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/system-prices/2026-01-25",
+  "path": "data/raw/elexon/010/2026-01-25/system-prices.json",
+  "sha256": "e718b54f3f0cbdd4b1e66dd8ea64b12435af9b1786ff431ba2b4994ea3d165bf",
+  "fetched_at": "2026-09-03T20:55:57.871032+00:00",
+  "bytes": 43447
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MID",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MID/stream?from=2026-01-26T00:00Z&to=2026-01-27T00:00Z",
+  "path": "data/raw/elexon/010/2026-01-26/mid.json",
+  "sha256": "c8aa0af0913f8c816d90cf538f265ba5215b3e6457e335130b6a2de8b2fff154",
+  "fetched_at": "2026-09-03T20:55:58.194656+00:00",
+  "bytes": 15740
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "SYSTEM-PRICES",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/system-prices/2026-01-26",
+  "path": "data/raw/elexon/010/2026-01-26/system-prices.json",
+  "sha256": "7859ea6fb08d4fa384159365aa98d211a321339b87aacdb17324f541a21b69e7",
+  "fetched_at": "2026-09-03T20:55:58.510560+00:00",
+  "bytes": 43009
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MID",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MID/stream?from=2026-01-27T00:00Z&to=2026-01-28T00:00Z",
+  "path": "data/raw/elexon/010/2026-01-27/mid.json",
+  "sha256": "90df8c4ea682bb6f78790146824d9f8ed93bc6d71524b66898859276b0967a7c",
+  "fetched_at": "2026-09-03T20:55:58.815928+00:00",
+  "bytes": 15730
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "SYSTEM-PRICES",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/system-prices/2026-01-27",
+  "path": "data/raw/elexon/010/2026-01-27/system-prices.json",
+  "sha256": "5fe4ea194a3e3487bd4512f81721687e4930a5968ca433fa936c646d0cfc12f5",
+  "fetched_at": "2026-09-03T20:55:59.123433+00:00",
+  "bytes": 42939
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MID",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MID/stream?from=2026-01-28T00:00Z&to=2026-01-29T00:00Z",
+  "path": "data/raw/elexon/010/2026-01-28/mid.json",
+  "sha256": "7e2cffde7aa0fe282e7eb8db20e93404a16c1e1c7444023ae2a586188e5103c0",
+  "fetched_at": "2026-09-03T20:55:59.448105+00:00",
+  "bytes": 15752
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "SYSTEM-PRICES",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/system-prices/2026-01-28",
+  "path": "data/raw/elexon/010/2026-01-28/system-prices.json",
+  "sha256": "99b57d9f1f24e5be705c9163b68caa87bcfb0141271c92f510335d8f952cec4c",
+  "fetched_at": "2026-09-03T20:55:59.756274+00:00",
+  "bytes": 43003
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MID",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MID/stream?from=2026-01-29T00:00Z&to=2026-01-30T00:00Z",
+  "path": "data/raw/elexon/010/2026-01-29/mid.json",
+  "sha256": "5c70569b0ecce410fea04b9b2edc02453ede28f6d77bf595e258f88d3b0a198d",
+  "fetched_at": "2026-09-03T20:56:00.071742+00:00",
+  "bytes": 15748
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "SYSTEM-PRICES",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/system-prices/2026-01-29",
+  "path": "data/raw/elexon/010/2026-01-29/system-prices.json",
+  "sha256": "103f648165e33120c1bdd045f1fef486e2cd8f76b295ab0b746fbb7986ae37b1",
+  "fetched_at": "2026-09-03T20:56:00.384958+00:00",
+  "bytes": 43128
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MID",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MID/stream?from=2026-01-30T00:00Z&to=2026-01-31T00:00Z",
+  "path": "data/raw/elexon/010/2026-01-30/mid.json",
+  "sha256": "6ffb8698366610a3ad039bf4ebaf2ebce7c872eb8d03e969e262e3d182b143f2",
+  "fetched_at": "2026-09-03T20:56:00.692554+00:00",
+  "bytes": 15725
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "SYSTEM-PRICES",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/system-prices/2026-01-30",
+  "path": "data/raw/elexon/010/2026-01-30/system-prices.json",
+  "sha256": "a294506ea187e304b9bee032ef2e2d8124ee5777df27a1045d72280eecea484c",
+  "fetched_at": "2026-09-03T20:56:00.991423+00:00",
+  "bytes": 42644
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MID",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MID/stream?from=2026-01-31T00:00Z&to=2026-02-01T00:00Z",
+  "path": "data/raw/elexon/010/2026-01-31/mid.json",
+  "sha256": "b071566b629295a84272376cd2170c57b8efead8d0db6f2b2c6ff2273fbbfca9",
+  "fetched_at": "2026-09-03T20:56:01.315983+00:00",
+  "bytes": 15721
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "SYSTEM-PRICES",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/system-prices/2026-01-31",
+  "path": "data/raw/elexon/010/2026-01-31/system-prices.json",
+  "sha256": "ebdf512a6bf2f6416398d997686353718ee471a51d435fb421626130526e9372",
+  "fetched_at": "2026-09-03T20:56:01.630915+00:00",
+  "bytes": 43078
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MID",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MID/stream?from=2026-02-01T00:00Z&to=2026-02-02T00:00Z",
+  "path": "data/raw/elexon/010/2026-02-01/mid.json",
+  "sha256": "cc566e7aa7bda68bd307e3346a2a1641a7f61922ae8d65378b978226055c7b4c",
+  "fetched_at": "2026-09-03T20:56:01.951721+00:00",
+  "bytes": 15728
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "SYSTEM-PRICES",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/system-prices/2026-02-01",
+  "path": "data/raw/elexon/010/2026-02-01/system-prices.json",
+  "sha256": "afa7a4fb46e40bda9e101d9cb5606eee6ac97d8c7b0cd8868a88e6520161d65e",
+  "fetched_at": "2026-09-03T20:56:02.259646+00:00",
+  "bytes": 42584
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MID",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MID/stream?from=2026-02-02T00:00Z&to=2026-02-03T00:00Z",
+  "path": "data/raw/elexon/010/2026-02-02/mid.json",
+  "sha256": "9686515f71fb4661fd5f6a474c48c1dac88b9ace551e6b63e40365392e3093df",
+  "fetched_at": "2026-09-03T20:56:02.563131+00:00",
+  "bytes": 15723
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "SYSTEM-PRICES",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/system-prices/2026-02-02",
+  "path": "data/raw/elexon/010/2026-02-02/system-prices.json",
+  "sha256": "c8ac5090005e2f9d1a6068e0a25b709c4b97c9d06ebc97ffd1b7ca0d99542e1a",
+  "fetched_at": "2026-09-03T20:56:02.901334+00:00",
+  "bytes": 43264
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MID",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MID/stream?from=2026-02-03T00:00Z&to=2026-02-04T00:00Z",
+  "path": "data/raw/elexon/010/2026-02-03/mid.json",
+  "sha256": "35986723cf3ca649ac43cd94796adf274f778545002cb31540ec7b637b308e27",
+  "fetched_at": "2026-09-03T20:56:03.206484+00:00",
+  "bytes": 15720
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "SYSTEM-PRICES",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/system-prices/2026-02-03",
+  "path": "data/raw/elexon/010/2026-02-03/system-prices.json",
+  "sha256": "7c9ad0770bc784d230ec7e1055e60e9740a362284e36656a21f4c32f75adacab",
+  "fetched_at": "2026-09-03T20:56:03.521887+00:00",
+  "bytes": 43271
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MID",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MID/stream?from=2026-02-04T00:00Z&to=2026-02-05T00:00Z",
+  "path": "data/raw/elexon/010/2026-02-04/mid.json",
+  "sha256": "144764f9e9e0edec571f435b196d8841483f206ad06d1c19d1a47ee0d10f0b40",
+  "fetched_at": "2026-09-03T20:56:03.831069+00:00",
+  "bytes": 15723
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "SYSTEM-PRICES",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/system-prices/2026-02-04",
+  "path": "data/raw/elexon/010/2026-02-04/system-prices.json",
+  "sha256": "7528b0993d0182772d9b004cfa369c3b5ce51e86054c53018f26afe6eb0b3b29",
+  "fetched_at": "2026-09-03T20:56:04.141550+00:00",
+  "bytes": 42664
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MID",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MID/stream?from=2026-02-05T00:00Z&to=2026-02-06T00:00Z",
+  "path": "data/raw/elexon/010/2026-02-05/mid.json",
+  "sha256": "e59db5941e3dc1a79b958bd951503fe160bb6fb56e75f52067a251e7507b2abf",
+  "fetched_at": "2026-09-03T20:56:04.457720+00:00",
+  "bytes": 15715
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "SYSTEM-PRICES",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/system-prices/2026-02-05",
+  "path": "data/raw/elexon/010/2026-02-05/system-prices.json",
+  "sha256": "151798f5ff142289cfa03d303ebb201cd91b22455646747b0c997c40145c86d8",
+  "fetched_at": "2026-09-03T20:56:04.769535+00:00",
+  "bytes": 43195
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MID",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MID/stream?from=2026-02-06T00:00Z&to=2026-02-07T00:00Z",
+  "path": "data/raw/elexon/010/2026-02-06/mid.json",
+  "sha256": "0f197a4a081e37d919ff74f7f6316ffb0c4e4a10b274935978b01034be342e98",
+  "fetched_at": "2026-09-03T20:56:05.087925+00:00",
+  "bytes": 15724
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "SYSTEM-PRICES",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/system-prices/2026-02-06",
+  "path": "data/raw/elexon/010/2026-02-06/system-prices.json",
+  "sha256": "e09ea63a124971a96a926b051e31cc6c00881fc745a81b4c08c29fed4cc355a3",
+  "fetched_at": "2026-09-03T20:56:05.406216+00:00",
+  "bytes": 42642
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MID",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MID/stream?from=2026-02-07T00:00Z&to=2026-02-08T00:00Z",
+  "path": "data/raw/elexon/010/2026-02-07/mid.json",
+  "sha256": "719606983bba023c25dad53be5de54a934337633581039b7d3032507a187e636",
+  "fetched_at": "2026-09-03T20:56:05.742884+00:00",
+  "bytes": 15715
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "SYSTEM-PRICES",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/system-prices/2026-02-07",
+  "path": "data/raw/elexon/010/2026-02-07/system-prices.json",
+  "sha256": "d838a7dfd6f254954dd96ac6b14fd7af4e0e3cc164442b782253cd058d8b7733",
+  "fetched_at": "2026-09-03T20:56:06.047408+00:00",
+  "bytes": 43127
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MID",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MID/stream?from=2026-02-08T00:00Z&to=2026-02-09T00:00Z",
+  "path": "data/raw/elexon/010/2026-02-08/mid.json",
+  "sha256": "2dd15138177a5d9ad1f38f8df6e639233fb66684b5cd2969fc39ba80be4b4b7a",
+  "fetched_at": "2026-09-03T20:56:06.370104+00:00",
+  "bytes": 15715
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "SYSTEM-PRICES",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/system-prices/2026-02-08",
+  "path": "data/raw/elexon/010/2026-02-08/system-prices.json",
+  "sha256": "0b4ef000341cd3cbbb9fd8d8fd407b8eae92049fe39acbc871ea00fb81cec7ed",
+  "fetched_at": "2026-09-03T20:56:06.681159+00:00",
+  "bytes": 43568
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MID",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MID/stream?from=2026-02-09T00:00Z&to=2026-02-10T00:00Z",
+  "path": "data/raw/elexon/010/2026-02-09/mid.json",
+  "sha256": "ba6a12cfaa727deda69b4973aac305aa795354bc25cdad08dbc24a229b849fe3",
+  "fetched_at": "2026-09-03T20:56:07.000664+00:00",
+  "bytes": 15726
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "SYSTEM-PRICES",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/system-prices/2026-02-09",
+  "path": "data/raw/elexon/010/2026-02-09/system-prices.json",
+  "sha256": "17f519993ef8e94f34236bafbed8f7dd7ea3035ec6c0423354e5e3b15fe753da",
+  "fetched_at": "2026-09-03T20:56:07.327852+00:00",
+  "bytes": 43000
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MID",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MID/stream?from=2026-02-10T00:00Z&to=2026-02-11T00:00Z",
+  "path": "data/raw/elexon/010/2026-02-10/mid.json",
+  "sha256": "d96c76744a0252ffda08f673cd441a228624c3a3bcf8bc503eff0e687d967f48",
+  "fetched_at": "2026-09-03T20:56:07.636033+00:00",
+  "bytes": 15710
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "SYSTEM-PRICES",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/system-prices/2026-02-10",
+  "path": "data/raw/elexon/010/2026-02-10/system-prices.json",
+  "sha256": "1689b5c86174f66e83891d27d4e65e0be7fbce7e22f20e4252667bd5b0838486",
+  "fetched_at": "2026-09-03T20:56:07.950982+00:00",
+  "bytes": 43819
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MID",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MID/stream?from=2026-02-11T00:00Z&to=2026-02-12T00:00Z",
+  "path": "data/raw/elexon/010/2026-02-11/mid.json",
+  "sha256": "b78cd41c64ac3a66f1126347fcd87158761f801d49d5e29e14ceb58bcb7bf75a",
+  "fetched_at": "2026-09-03T20:56:08.252150+00:00",
+  "bytes": 15710
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "SYSTEM-PRICES",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/system-prices/2026-02-11",
+  "path": "data/raw/elexon/010/2026-02-11/system-prices.json",
+  "sha256": "e101d8060cd9c42d7ff94e251db8e1775f2e1ada0830545edbf04b6185015bc4",
+  "fetched_at": "2026-09-03T20:56:08.560353+00:00",
+  "bytes": 44039
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MID",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MID/stream?from=2026-02-12T00:00Z&to=2026-02-13T00:00Z",
+  "path": "data/raw/elexon/010/2026-02-12/mid.json",
+  "sha256": "6e852757f796333385763fa93009e69980d290412a5a88355b6fe86dba30f789",
+  "fetched_at": "2026-09-03T20:56:08.892802+00:00",
+  "bytes": 15710
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "SYSTEM-PRICES",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/system-prices/2026-02-12",
+  "path": "data/raw/elexon/010/2026-02-12/system-prices.json",
+  "sha256": "5d29e10bb1a7d190c049a63870617ad5b9e848ce16a2473ad5aeafbce876ff2b",
+  "fetched_at": "2026-09-03T20:56:09.202712+00:00",
+  "bytes": 42454
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MID",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MID/stream?from=2026-02-13T00:00Z&to=2026-02-14T00:00Z",
+  "path": "data/raw/elexon/010/2026-02-13/mid.json",
+  "sha256": "619270181e477a6b34e4b764b0476e70a7e97c363243f3c4ff459475956ee278",
+  "fetched_at": "2026-09-03T20:56:09.514197+00:00",
+  "bytes": 15715
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "SYSTEM-PRICES",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/system-prices/2026-02-13",
+  "path": "data/raw/elexon/010/2026-02-13/system-prices.json",
+  "sha256": "66eb3cc7d2edb08a5805c2efdd798bbdd96d3e8a036dd5469a2ed6c64704b772",
+  "fetched_at": "2026-09-03T20:56:09.836514+00:00",
+  "bytes": 42396
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MID",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MID/stream?from=2026-02-14T00:00Z&to=2026-02-15T00:00Z",
+  "path": "data/raw/elexon/010/2026-02-14/mid.json",
+  "sha256": "ce882a1b3583ac090048500ceed74389547d524ffa01c366710904bb66824865",
+  "fetched_at": "2026-09-03T20:56:10.153633+00:00",
+  "bytes": 15719
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "SYSTEM-PRICES",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/system-prices/2026-02-14",
+  "path": "data/raw/elexon/010/2026-02-14/system-prices.json",
+  "sha256": "b6653cfd3901424e9e779eb94b6fe6af1e3071bcef797bba36fdf0f17d569d28",
+  "fetched_at": "2026-09-03T20:56:10.470253+00:00",
+  "bytes": 42104
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MID",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MID/stream?from=2026-02-15T00:00Z&to=2026-02-16T00:00Z",
+  "path": "data/raw/elexon/010/2026-02-15/mid.json",
+  "sha256": "b468242c98953d79c590d38e300ca4f622076d5512a603dea04d5367ba3e868f",
+  "fetched_at": "2026-09-03T20:56:10.796148+00:00",
+  "bytes": 15710
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "SYSTEM-PRICES",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/system-prices/2026-02-15",
+  "path": "data/raw/elexon/010/2026-02-15/system-prices.json",
+  "sha256": "40fdd8ce376fec409ea9bb5141c87b689ddfbb39b03fbc669a46c3e72d5860c9",
+  "fetched_at": "2026-09-03T20:56:11.106341+00:00",
+  "bytes": 43593
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MID",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MID/stream?from=2026-02-16T00:00Z&to=2026-02-17T00:00Z",
+  "path": "data/raw/elexon/010/2026-02-16/mid.json",
+  "sha256": "f63bad2c15f34d2ce44eeba841b3596c041519740270cbfda1471d9d766c0302",
+  "fetched_at": "2026-09-03T20:56:11.419715+00:00",
+  "bytes": 15712
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "SYSTEM-PRICES",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/system-prices/2026-02-16",
+  "path": "data/raw/elexon/010/2026-02-16/system-prices.json",
+  "sha256": "2e656fcda867ad2322a8b23f4f022bef4e3e6c06caf71ed5de8cedaaad44198b",
+  "fetched_at": "2026-09-03T20:56:11.726547+00:00",
+  "bytes": 43312
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MID",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MID/stream?from=2026-02-17T00:00Z&to=2026-02-18T00:00Z",
+  "path": "data/raw/elexon/010/2026-02-17/mid.json",
+  "sha256": "9e71d10b8f0f8269820775a6d646425e53aa45914139f530e76748b3a4fc6780",
+  "fetched_at": "2026-09-03T20:56:12.030589+00:00",
+  "bytes": 15719
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "SYSTEM-PRICES",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/system-prices/2026-02-17",
+  "path": "data/raw/elexon/010/2026-02-17/system-prices.json",
+  "sha256": "73a455c3fcd4421d70303af96b5676be3f58ee170402a7e1fc58ddf4aea4f852",
+  "fetched_at": "2026-09-03T20:56:12.369816+00:00",
+  "bytes": 43058
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MID",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MID/stream?from=2026-02-18T00:00Z&to=2026-02-19T00:00Z",
+  "path": "data/raw/elexon/010/2026-02-18/mid.json",
+  "sha256": "4ee27ca74a5cc946f9ca00c6db7e16cb091ded4c5721c07f27491ecfc22a1d21",
+  "fetched_at": "2026-09-03T20:56:12.677801+00:00",
+  "bytes": 15710
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "SYSTEM-PRICES",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/system-prices/2026-02-18",
+  "path": "data/raw/elexon/010/2026-02-18/system-prices.json",
+  "sha256": "a4035fbdd6dab84a5d08103a5bd047b2ec781315b9e1b422fde0acb94a1eaafe",
+  "fetched_at": "2026-09-03T20:56:13.046050+00:00",
+  "bytes": 43459
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MID",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MID/stream?from=2026-02-19T00:00Z&to=2026-02-20T00:00Z",
+  "path": "data/raw/elexon/010/2026-02-19/mid.json",
+  "sha256": "caf7f61d32107628fbe25cc2bdff93d41a3a32173ed308f9717174a4ee5f31a9",
+  "fetched_at": "2026-09-03T20:56:13.355396+00:00",
+  "bytes": 15721
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "SYSTEM-PRICES",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/system-prices/2026-02-19",
+  "path": "data/raw/elexon/010/2026-02-19/system-prices.json",
+  "sha256": "19e1a5182e96c8b76c9d0dbaf92a42c2f715b69109e79dd1be6f2fa923db263e",
+  "fetched_at": "2026-09-03T20:56:13.660755+00:00",
+  "bytes": 43288
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MID",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MID/stream?from=2026-02-20T00:00Z&to=2026-02-21T00:00Z",
+  "path": "data/raw/elexon/010/2026-02-20/mid.json",
+  "sha256": "38d45b02ba454ab0436d19359ed2205bc19b6b5342cf45c58c4afdb6627bb8b8",
+  "fetched_at": "2026-09-03T20:56:13.971114+00:00",
+  "bytes": 15710
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "SYSTEM-PRICES",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/system-prices/2026-02-20",
+  "path": "data/raw/elexon/010/2026-02-20/system-prices.json",
+  "sha256": "2e6d2abea02e01794c7810c74f829389764467c7d86413facd64a89d0c5852dd",
+  "fetched_at": "2026-09-03T20:56:14.269700+00:00",
+  "bytes": 43098
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MID",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MID/stream?from=2026-02-21T00:00Z&to=2026-02-22T00:00Z",
+  "path": "data/raw/elexon/010/2026-02-21/mid.json",
+  "sha256": "f2cc3a159bee19b3f6acefd00abc26d81686b34cc0127ee32b81fd91bba38545",
+  "fetched_at": "2026-09-03T20:56:14.598046+00:00",
+  "bytes": 15710
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "SYSTEM-PRICES",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/system-prices/2026-02-21",
+  "path": "data/raw/elexon/010/2026-02-21/system-prices.json",
+  "sha256": "d812ff688495eafe11cc4f7ea040bd84681987f9081a7873274edec54868cee5",
+  "fetched_at": "2026-09-03T20:56:14.924453+00:00",
+  "bytes": 42659
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MID",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MID/stream?from=2026-02-22T00:00Z&to=2026-02-23T00:00Z",
+  "path": "data/raw/elexon/010/2026-02-22/mid.json",
+  "sha256": "b36979f9795a3300bc378f14eec6bcbb6276294ec481b4fe5e113a69d5bf9587",
+  "fetched_at": "2026-09-03T20:56:15.239856+00:00",
+  "bytes": 15712
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "SYSTEM-PRICES",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/system-prices/2026-02-22",
+  "path": "data/raw/elexon/010/2026-02-22/system-prices.json",
+  "sha256": "f379a65503a57efe2ecd3de6d4f8af2594a0ca5bf56dbeb4a14be2d59dfac3a7",
+  "fetched_at": "2026-09-03T20:56:15.565832+00:00",
+  "bytes": 43656
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MID",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MID/stream?from=2026-02-23T00:00Z&to=2026-02-24T00:00Z",
+  "path": "data/raw/elexon/010/2026-02-23/mid.json",
+  "sha256": "902483c283564716129f7cfff7a7686d945318f4cc2982549ab1f87251c6cf9d",
+  "fetched_at": "2026-09-03T20:56:15.869202+00:00",
+  "bytes": 15709
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "SYSTEM-PRICES",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/system-prices/2026-02-23",
+  "path": "data/raw/elexon/010/2026-02-23/system-prices.json",
+  "sha256": "55fc663c80e25eb6760269aa5a8d2ba1214f5878c0f1ae9edbe136dc27d1912b",
+  "fetched_at": "2026-09-03T20:56:16.170411+00:00",
+  "bytes": 42912
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MID",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MID/stream?from=2026-02-24T00:00Z&to=2026-02-25T00:00Z",
+  "path": "data/raw/elexon/010/2026-02-24/mid.json",
+  "sha256": "e5050193229d36f044c2f3dd1d36aee2f94cfd9f87eea2988f2c8b0a541affaf",
+  "fetched_at": "2026-09-03T20:56:16.484968+00:00",
+  "bytes": 15714
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "SYSTEM-PRICES",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/system-prices/2026-02-24",
+  "path": "data/raw/elexon/010/2026-02-24/system-prices.json",
+  "sha256": "9e90fc61f46daced00063a562d9915b63030f467d3ab3f98797dd8f392c00eaa",
+  "fetched_at": "2026-09-03T20:56:16.785880+00:00",
+  "bytes": 43317
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MID",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MID/stream?from=2026-02-25T00:00Z&to=2026-02-26T00:00Z",
+  "path": "data/raw/elexon/010/2026-02-25/mid.json",
+  "sha256": "891958a1dbcd9fc127f2c0632b3c056d59270fee5668026591f5e9de1327764a",
+  "fetched_at": "2026-09-03T20:56:17.110688+00:00",
+  "bytes": 15710
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "SYSTEM-PRICES",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/system-prices/2026-02-25",
+  "path": "data/raw/elexon/010/2026-02-25/system-prices.json",
+  "sha256": "e68f3b7ad8d7430fd16b334345b5983a62881a9727010f5077e9e0608b43703a",
+  "fetched_at": "2026-09-03T20:56:17.415566+00:00",
+  "bytes": 42334
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MID",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MID/stream?from=2026-02-26T00:00Z&to=2026-02-27T00:00Z",
+  "path": "data/raw/elexon/010/2026-02-26/mid.json",
+  "sha256": "d8b940110cef01cd8485f3f9e038a437a4132879596d3d35b79b33eb7c2a3411",
+  "fetched_at": "2026-09-03T20:56:17.765360+00:00",
+  "bytes": 15708
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "SYSTEM-PRICES",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/system-prices/2026-02-26",
+  "path": "data/raw/elexon/010/2026-02-26/system-prices.json",
+  "sha256": "95a17524992a159f567b22de852d3548f6855f16144ee09c3802bfad100ac642",
+  "fetched_at": "2026-09-03T20:56:18.075550+00:00",
+  "bytes": 43244
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MID",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MID/stream?from=2026-02-27T00:00Z&to=2026-02-28T00:00Z",
+  "path": "data/raw/elexon/010/2026-02-27/mid.json",
+  "sha256": "025be7da8e3c2a4cc8be4a7625b277796cbde7da09ee9367dc46e6034c9e77c8",
+  "fetched_at": "2026-09-03T20:56:18.396412+00:00",
+  "bytes": 15714
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "SYSTEM-PRICES",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/system-prices/2026-02-27",
+  "path": "data/raw/elexon/010/2026-02-27/system-prices.json",
+  "sha256": "2cd9cdace8e3a05280dfd0807e6b314b4897534a6cbed70a1d0fc49bdbf7967f",
+  "fetched_at": "2026-09-03T20:56:18.690245+00:00",
+  "bytes": 42755
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MID",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MID/stream?from=2026-02-28T00:00Z&to=2026-03-01T00:00Z",
+  "path": "data/raw/elexon/010/2026-02-28/mid.json",
+  "sha256": "6b50fada34acc539e5a2446a10042a91522543c6431c12bf1d182f59adb5e9f6",
+  "fetched_at": "2026-09-03T20:56:18.997951+00:00",
+  "bytes": 15717
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "SYSTEM-PRICES",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/system-prices/2026-02-28",
+  "path": "data/raw/elexon/010/2026-02-28/system-prices.json",
+  "sha256": "ba9cffa14e647ff9d7972355bccdbba53f39d37da4d32656f36ef36587415572",
+  "fetched_at": "2026-09-03T20:56:19.306348+00:00",
+  "bytes": 42655
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MID",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MID/stream?from=2026-06-01T00:00Z&to=2026-06-02T00:00Z",
+  "path": "data/raw/elexon/010/2026-06-01/mid.json",
+  "sha256": "a1b26116c4b8193a2c88d8abcf322fea1d8c558f6e34413d075f9ee124811997",
+  "fetched_at": "2026-09-03T20:54:43.925649+00:00",
+  "bytes": 15741
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "SYSTEM-PRICES",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/system-prices/2026-06-01",
+  "path": "data/raw/elexon/010/2026-06-01/system-prices.json",
+  "sha256": "56ef4bfd3763a7bb833042baea8bb2f7fa34c930c2962f4f4fb34a6b4ecc9abe",
+  "fetched_at": "2026-09-03T20:54:44.243323+00:00",
+  "bytes": 42291
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MID",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MID/stream?from=2026-06-02T00:00Z&to=2026-06-03T00:00Z",
+  "path": "data/raw/elexon/010/2026-06-02/mid.json",
+  "sha256": "85e6da87ec6ace1cb84e0e8b98ac89c1173258b1b8e82d1e17e3687c1621a890",
+  "fetched_at": "2026-09-03T20:54:44.554156+00:00",
+  "bytes": 15750
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "SYSTEM-PRICES",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/system-prices/2026-06-02",
+  "path": "data/raw/elexon/010/2026-06-02/system-prices.json",
+  "sha256": "3dcbd6367c7b880b4ab31728f7441c755c8fba457616d835a690056ff1384821",
+  "fetched_at": "2026-09-03T20:54:44.875700+00:00",
+  "bytes": 42716
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MID",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MID/stream?from=2026-06-03T00:00Z&to=2026-06-04T00:00Z",
+  "path": "data/raw/elexon/010/2026-06-03/mid.json",
+  "sha256": "66da34075dd507776c5285685406bd22638be15a885a5540ec5c021d61d2f480",
+  "fetched_at": "2026-09-03T20:54:45.188717+00:00",
+  "bytes": 15739
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "SYSTEM-PRICES",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/system-prices/2026-06-03",
+  "path": "data/raw/elexon/010/2026-06-03/system-prices.json",
+  "sha256": "3be93d2980dd737cd92bede93b4a5075cbb5225372f2fecfcd2283a80e649665",
+  "fetched_at": "2026-09-03T20:54:45.492925+00:00",
+  "bytes": 42797
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MID",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MID/stream?from=2026-06-04T00:00Z&to=2026-06-05T00:00Z",
+  "path": "data/raw/elexon/010/2026-06-04/mid.json",
+  "sha256": "a441f75cec435527b7e75a5264c2d4df25cc246f8936d70733e8b23dc426a336",
+  "fetched_at": "2026-09-03T20:54:45.805639+00:00",
+  "bytes": 15714
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "SYSTEM-PRICES",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/system-prices/2026-06-04",
+  "path": "data/raw/elexon/010/2026-06-04/system-prices.json",
+  "sha256": "25a07b80c6b7112e8a553a937dd522327652bccec46436cc1b5dac6ebcfa0b0e",
+  "fetched_at": "2026-09-03T20:54:46.106466+00:00",
+  "bytes": 43376
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MID",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MID/stream?from=2026-06-05T00:00Z&to=2026-06-06T00:00Z",
+  "path": "data/raw/elexon/010/2026-06-05/mid.json",
+  "sha256": "4a64e38f610be52a5ca94327030d50944f55392fb004178d6c209e29577e3253",
+  "fetched_at": "2026-09-03T20:54:46.410432+00:00",
+  "bytes": 15736
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "SYSTEM-PRICES",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/system-prices/2026-06-05",
+  "path": "data/raw/elexon/010/2026-06-05/system-prices.json",
+  "sha256": "0889a776020e5931cf2eae981c19180dbe3461f24420683d1ffd8b302efcb981",
+  "fetched_at": "2026-09-03T20:54:46.712208+00:00",
+  "bytes": 42686
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MID",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MID/stream?from=2026-06-06T00:00Z&to=2026-06-07T00:00Z",
+  "path": "data/raw/elexon/010/2026-06-06/mid.json",
+  "sha256": "78587efb6c84086e3238b4acb3f05a8b2dd09f212c46deef5678f99b7c5912b1",
+  "fetched_at": "2026-09-03T20:54:47.020632+00:00",
+  "bytes": 15732
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "SYSTEM-PRICES",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/system-prices/2026-06-06",
+  "path": "data/raw/elexon/010/2026-06-06/system-prices.json",
+  "sha256": "35f2a443961949cccfd9112df8e58c85392bc2bab390113f6ecbfb485c324591",
+  "fetched_at": "2026-09-03T20:54:47.332844+00:00",
+  "bytes": 43560
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MID",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MID/stream?from=2026-06-07T00:00Z&to=2026-06-08T00:00Z",
+  "path": "data/raw/elexon/010/2026-06-07/mid.json",
+  "sha256": "f662138e31bf877a9a99c634a7167a838b796edac833807cfddb8f634e2679c2",
+  "fetched_at": "2026-09-03T20:54:47.659422+00:00",
+  "bytes": 15725
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "SYSTEM-PRICES",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/system-prices/2026-06-07",
+  "path": "data/raw/elexon/010/2026-06-07/system-prices.json",
+  "sha256": "5b41bd3577148a0251c379e9dd6515e867bbb4cb75b706af8b021ccc563f9873",
+  "fetched_at": "2026-09-03T20:54:47.964368+00:00",
+  "bytes": 43673
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MID",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MID/stream?from=2026-06-08T00:00Z&to=2026-06-09T00:00Z",
+  "path": "data/raw/elexon/010/2026-06-08/mid.json",
+  "sha256": "a954c20e39113bea2cc11a44bb8641c903871a5819f8b7afe5a602cd618824fd",
+  "fetched_at": "2026-09-03T20:54:48.270499+00:00",
+  "bytes": 15746
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "SYSTEM-PRICES",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/system-prices/2026-06-08",
+  "path": "data/raw/elexon/010/2026-06-08/system-prices.json",
+  "sha256": "42361dcc9be26e5a04c3b99299765c9d2c4813205ebc0385d863bb6b06585150",
+  "fetched_at": "2026-09-03T20:54:48.595777+00:00",
+  "bytes": 42644
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MID",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MID/stream?from=2026-06-09T00:00Z&to=2026-06-10T00:00Z",
+  "path": "data/raw/elexon/010/2026-06-09/mid.json",
+  "sha256": "5c38fa2b9f05267cbced707981776c7114d607d5db202913189a12622c0b059b",
+  "fetched_at": "2026-09-03T20:54:48.913324+00:00",
+  "bytes": 15735
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "SYSTEM-PRICES",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/system-prices/2026-06-09",
+  "path": "data/raw/elexon/010/2026-06-09/system-prices.json",
+  "sha256": "997c08c201ad3f66fb8405eeed8e0075207e7415ebd591729273b3be774c8366",
+  "fetched_at": "2026-09-03T20:54:49.216916+00:00",
+  "bytes": 42437
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MID",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MID/stream?from=2026-06-10T00:00Z&to=2026-06-11T00:00Z",
+  "path": "data/raw/elexon/010/2026-06-10/mid.json",
+  "sha256": "596e977c983f497402d7b981e5d4e9f1eab78084b890e9ec9d0bb8488d223fa7",
+  "fetched_at": "2026-09-03T20:54:49.562290+00:00",
+  "bytes": 15738
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "SYSTEM-PRICES",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/system-prices/2026-06-10",
+  "path": "data/raw/elexon/010/2026-06-10/system-prices.json",
+  "sha256": "364e0be94da0abf1c25be8b813bf94c56d737454467bee3145473065ee638185",
+  "fetched_at": "2026-09-03T20:54:49.882387+00:00",
+  "bytes": 42757
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MID",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MID/stream?from=2026-06-11T00:00Z&to=2026-06-12T00:00Z",
+  "path": "data/raw/elexon/010/2026-06-11/mid.json",
+  "sha256": "bec3442ce0765e6422cb49cd8ec1c2652f5eaedd2f637ed6d9ae847996afe562",
+  "fetched_at": "2026-09-03T20:54:50.199651+00:00",
+  "bytes": 15753
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "SYSTEM-PRICES",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/system-prices/2026-06-11",
+  "path": "data/raw/elexon/010/2026-06-11/system-prices.json",
+  "sha256": "91540ae059efb44ba1b6760e04583ea0cf93b62535ff3aade1b2197324950ca8",
+  "fetched_at": "2026-09-03T20:54:50.523248+00:00",
+  "bytes": 42425
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MID",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MID/stream?from=2026-06-12T00:00Z&to=2026-06-13T00:00Z",
+  "path": "data/raw/elexon/010/2026-06-12/mid.json",
+  "sha256": "d659ab9bd2cf4c30d90650ca6d9dda4ffab6f5bdef10ea57299037a44ae15070",
+  "fetched_at": "2026-09-03T20:54:50.868026+00:00",
+  "bytes": 15725
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "SYSTEM-PRICES",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/system-prices/2026-06-12",
+  "path": "data/raw/elexon/010/2026-06-12/system-prices.json",
+  "sha256": "5efc09313fa8918174c23ad3cd686badb791879fc0ab0729d4367a785a4b29d4",
+  "fetched_at": "2026-09-03T20:54:51.182781+00:00",
+  "bytes": 42473
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MID",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MID/stream?from=2026-06-13T00:00Z&to=2026-06-14T00:00Z",
+  "path": "data/raw/elexon/010/2026-06-13/mid.json",
+  "sha256": "54b2a368155f4180808e413fc413127d865c46b8ed070f2343508191458eb61d",
+  "fetched_at": "2026-09-03T20:54:51.500649+00:00",
+  "bytes": 15717
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "SYSTEM-PRICES",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/system-prices/2026-06-13",
+  "path": "data/raw/elexon/010/2026-06-13/system-prices.json",
+  "sha256": "c7ee4fedfaf33f445d27af22216b0e6f473a80b2c18f4f62b1806471ef8a0eba",
+  "fetched_at": "2026-09-03T20:54:51.831268+00:00",
+  "bytes": 43348
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MID",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MID/stream?from=2026-06-14T00:00Z&to=2026-06-15T00:00Z",
+  "path": "data/raw/elexon/010/2026-06-14/mid.json",
+  "sha256": "035fa9f11c3909e52bc54555b692100c09d5d9b6930fd6a2583a0e4dee7e363f",
+  "fetched_at": "2026-09-03T20:54:52.155793+00:00",
+  "bytes": 15715
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "SYSTEM-PRICES",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/system-prices/2026-06-14",
+  "path": "data/raw/elexon/010/2026-06-14/system-prices.json",
+  "sha256": "a92adb54f98596171ef620511e6a2b7bed676477ac7138178d511631d86a534c",
+  "fetched_at": "2026-09-03T20:54:52.475169+00:00",
+  "bytes": 43465
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MID",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MID/stream?from=2026-06-15T00:00Z&to=2026-06-16T00:00Z",
+  "path": "data/raw/elexon/010/2026-06-15/mid.json",
+  "sha256": "25b20c4cba095b52d9f7d2dc477a72eb546bba84f24e15cf41ab9de7c8a665c5",
+  "fetched_at": "2026-09-03T20:54:52.850899+00:00",
+  "bytes": 15737
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "SYSTEM-PRICES",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/system-prices/2026-06-15",
+  "path": "data/raw/elexon/010/2026-06-15/system-prices.json",
+  "sha256": "ce1e3d9f54b637b24472990f119e655f7ba21cb1f842b6d6bdbb1f2e98bb68f1",
+  "fetched_at": "2026-09-03T20:54:53.142629+00:00",
+  "bytes": 42090
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MID",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MID/stream?from=2026-06-16T00:00Z&to=2026-06-17T00:00Z",
+  "path": "data/raw/elexon/010/2026-06-16/mid.json",
+  "sha256": "3aaf5cc8de64a3ab3e1c3b11a85f727e45488419d72f557acba7ae3f2fb1770d",
+  "fetched_at": "2026-09-03T20:54:53.463547+00:00",
+  "bytes": 15743
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "SYSTEM-PRICES",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/system-prices/2026-06-16",
+  "path": "data/raw/elexon/010/2026-06-16/system-prices.json",
+  "sha256": "111b5b103b4434669eb2062cef4efc6861e7dd344edc05649e9a1f712233f7df",
+  "fetched_at": "2026-09-03T20:54:53.767601+00:00",
+  "bytes": 42401
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MID",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MID/stream?from=2026-06-17T00:00Z&to=2026-06-18T00:00Z",
+  "path": "data/raw/elexon/010/2026-06-17/mid.json",
+  "sha256": "ba145af5a59344cde9795eba0f5902c7bba651081b645c87a8f77ed91eff8957",
+  "fetched_at": "2026-09-03T20:54:54.075520+00:00",
+  "bytes": 15741
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "SYSTEM-PRICES",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/system-prices/2026-06-17",
+  "path": "data/raw/elexon/010/2026-06-17/system-prices.json",
+  "sha256": "3f65f6b5a45305ab0ca51068757c1b9b39c66149487cbc494eb8d949b8d8e96f",
+  "fetched_at": "2026-09-03T20:54:54.373367+00:00",
+  "bytes": 42550
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MID",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MID/stream?from=2026-06-18T00:00Z&to=2026-06-19T00:00Z",
+  "path": "data/raw/elexon/010/2026-06-18/mid.json",
+  "sha256": "34a8f4502d6c1074c54c2ad4e8049c4d77eb58280a41d798abdbefeec0509320",
+  "fetched_at": "2026-09-03T20:54:54.698445+00:00",
+  "bytes": 15738
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "SYSTEM-PRICES",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/system-prices/2026-06-18",
+  "path": "data/raw/elexon/010/2026-06-18/system-prices.json",
+  "sha256": "9c191603470876d64da6cca3a43a87c2a28939fed67d9de099772a411bc783ca",
+  "fetched_at": "2026-09-03T20:54:55.022727+00:00",
+  "bytes": 42483
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MID",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MID/stream?from=2026-06-19T00:00Z&to=2026-06-20T00:00Z",
+  "path": "data/raw/elexon/010/2026-06-19/mid.json",
+  "sha256": "975d153c778444a387d8967a878fde7248b2520897a6c02948c78df0a3573881",
+  "fetched_at": "2026-09-03T20:54:55.366273+00:00",
+  "bytes": 15719
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "SYSTEM-PRICES",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/system-prices/2026-06-19",
+  "path": "data/raw/elexon/010/2026-06-19/system-prices.json",
+  "sha256": "f1e45d8ff8e03514254d69a4b526b721e2321c53dfd0eb7c7597207a4b3680cd",
+  "fetched_at": "2026-09-03T20:54:55.683217+00:00",
+  "bytes": 42898
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MID",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MID/stream?from=2026-06-20T00:00Z&to=2026-06-21T00:00Z",
+  "path": "data/raw/elexon/010/2026-06-20/mid.json",
+  "sha256": "6fb82a8c25f4d71c87e2ecfe1c69064b016eff0e622ec8de2233004f5955b4c6",
+  "fetched_at": "2026-09-03T20:54:55.983496+00:00",
+  "bytes": 15744
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "SYSTEM-PRICES",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/system-prices/2026-06-20",
+  "path": "data/raw/elexon/010/2026-06-20/system-prices.json",
+  "sha256": "dbe6825567aa43593829ef0aa47db08d8ae3f40b3b22e6bcfd8e355ad4ec7fb6",
+  "fetched_at": "2026-09-03T20:54:56.303880+00:00",
+  "bytes": 42875
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MID",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MID/stream?from=2026-06-21T00:00Z&to=2026-06-22T00:00Z",
+  "path": "data/raw/elexon/010/2026-06-21/mid.json",
+  "sha256": "15bfb5a9238527bbb689c254a727eefbada570e96dd39b7aac5d7d4385cc61f1",
+  "fetched_at": "2026-09-03T20:54:56.616371+00:00",
+  "bytes": 15734
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "SYSTEM-PRICES",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/system-prices/2026-06-21",
+  "path": "data/raw/elexon/010/2026-06-21/system-prices.json",
+  "sha256": "94d30d2f5ba7bda83d1913bfc9485848ff9723fbbc35e82d770f075f609da102",
+  "fetched_at": "2026-09-03T20:54:56.917914+00:00",
+  "bytes": 42320
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MID",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MID/stream?from=2026-06-22T00:00Z&to=2026-06-23T00:00Z",
+  "path": "data/raw/elexon/010/2026-06-22/mid.json",
+  "sha256": "b597067af1595d43a611015c3ca3c87c1274b40503a5bede4340cf2c4cc37bc9",
+  "fetched_at": "2026-09-03T20:54:57.262370+00:00",
+  "bytes": 15725
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "SYSTEM-PRICES",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/system-prices/2026-06-22",
+  "path": "data/raw/elexon/010/2026-06-22/system-prices.json",
+  "sha256": "d3684293f131a323572d957d8ac05e4db34ec7b8c8b8b3e07f8c26e2f090ef9c",
+  "fetched_at": "2026-09-03T20:54:57.580453+00:00",
+  "bytes": 42197
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MID",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MID/stream?from=2026-06-23T00:00Z&to=2026-06-24T00:00Z",
+  "path": "data/raw/elexon/010/2026-06-23/mid.json",
+  "sha256": "54b801e1094448437430d18dc9f9b22d2d98f19fe3134e043128d20b7218b1ec",
+  "fetched_at": "2026-09-03T20:54:57.897266+00:00",
+  "bytes": 15745
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "SYSTEM-PRICES",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/system-prices/2026-06-23",
+  "path": "data/raw/elexon/010/2026-06-23/system-prices.json",
+  "sha256": "2a787021b86b2729a819b431782f620465ad79bcc46e8ad48728f36f2edaa76a",
+  "fetched_at": "2026-09-03T20:54:58.207398+00:00",
+  "bytes": 42543
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MID",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MID/stream?from=2026-06-24T00:00Z&to=2026-06-25T00:00Z",
+  "path": "data/raw/elexon/010/2026-06-24/mid.json",
+  "sha256": "73820082cadf3bfb66bf3fa45f70951ed8267d10db08166cb4be9ae2e6a0a8db",
+  "fetched_at": "2026-09-03T20:54:58.524081+00:00",
+  "bytes": 15741
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "SYSTEM-PRICES",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/system-prices/2026-06-24",
+  "path": "data/raw/elexon/010/2026-06-24/system-prices.json",
+  "sha256": "b6269299f44137278d7b8ae11d73b4e723c3517e426904856959051e07e7baae",
+  "fetched_at": "2026-09-03T20:54:58.841801+00:00",
+  "bytes": 42611
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MID",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MID/stream?from=2026-06-25T00:00Z&to=2026-06-26T00:00Z",
+  "path": "data/raw/elexon/010/2026-06-25/mid.json",
+  "sha256": "c4efa67a63288c5519b3e369ac3643d001c8cff5af509cc59db22ebdfaa1a03d",
+  "fetched_at": "2026-09-03T20:54:59.143469+00:00",
+  "bytes": 15735
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "SYSTEM-PRICES",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/system-prices/2026-06-25",
+  "path": "data/raw/elexon/010/2026-06-25/system-prices.json",
+  "sha256": "3b26bdb4a8f54289b94847f18e180f8c5f8f78a63b695d9bdc236a8af6d9a8f8",
+  "fetched_at": "2026-09-03T20:54:59.457185+00:00",
+  "bytes": 42311
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MID",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MID/stream?from=2026-06-26T00:00Z&to=2026-06-27T00:00Z",
+  "path": "data/raw/elexon/010/2026-06-26/mid.json",
+  "sha256": "13eb12ed17fdb0d6b63e364d8f8280bf43c327db3c35e59da3b076fb8e44aadd",
+  "fetched_at": "2026-09-03T20:54:59.771970+00:00",
+  "bytes": 15742
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "SYSTEM-PRICES",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/system-prices/2026-06-26",
+  "path": "data/raw/elexon/010/2026-06-26/system-prices.json",
+  "sha256": "93139bc9c227fa2c392822c317f067561df5c9b19fc93a4f59d137dd75d97bbd",
+  "fetched_at": "2026-09-03T20:55:00.109744+00:00",
+  "bytes": 42680
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MID",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MID/stream?from=2026-06-27T00:00Z&to=2026-06-28T00:00Z",
+  "path": "data/raw/elexon/010/2026-06-27/mid.json",
+  "sha256": "bcdf3b58b7c9087e726a05de9a197200222d742d04820a4944f913b208bb9674",
+  "fetched_at": "2026-09-03T20:55:00.445637+00:00",
+  "bytes": 15726
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "SYSTEM-PRICES",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/system-prices/2026-06-27",
+  "path": "data/raw/elexon/010/2026-06-27/system-prices.json",
+  "sha256": "b1a72788b7d4fcc351b79ebdacfa9ce54a9d3afd315dbfc2a4fdc63abb7bce00",
+  "fetched_at": "2026-09-03T20:55:00.755275+00:00",
+  "bytes": 43367
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MID",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MID/stream?from=2026-06-28T00:00Z&to=2026-06-29T00:00Z",
+  "path": "data/raw/elexon/010/2026-06-28/mid.json",
+  "sha256": "09dae784140d17de8ffa1c2cd3d957c9013dd6d1fa571e92bf4e9bf43df66726",
+  "fetched_at": "2026-09-03T20:55:01.080201+00:00",
+  "bytes": 15739
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "SYSTEM-PRICES",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/system-prices/2026-06-28",
+  "path": "data/raw/elexon/010/2026-06-28/system-prices.json",
+  "sha256": "d4539cc6cd94af79e55a43ce7ceb5017ab87a4701b9a4709c0985eacf17286a8",
+  "fetched_at": "2026-09-03T20:55:01.400604+00:00",
+  "bytes": 42946
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MID",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MID/stream?from=2026-06-29T00:00Z&to=2026-06-30T00:00Z",
+  "path": "data/raw/elexon/010/2026-06-29/mid.json",
+  "sha256": "4f17346a310f97c1c4b79fd2c600ae6984556b7cdf38283ffb787a10347d0fda",
+  "fetched_at": "2026-09-03T20:55:01.721934+00:00",
+  "bytes": 15739
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "SYSTEM-PRICES",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/system-prices/2026-06-29",
+  "path": "data/raw/elexon/010/2026-06-29/system-prices.json",
+  "sha256": "6d487b58764a578cad5f03b29d833b43dde9daae1028e9b3626e1af16c62113f",
+  "fetched_at": "2026-09-03T20:55:02.050444+00:00",
+  "bytes": 43313
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MID",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MID/stream?from=2026-06-30T00:00Z&to=2026-07-01T00:00Z",
+  "path": "data/raw/elexon/010/2026-06-30/mid.json",
+  "sha256": "1444a9987dc59c99ed5b9ec2ecd2e216e6c3baa3b5c223fe6008c39360442925",
+  "fetched_at": "2026-09-03T20:55:02.359626+00:00",
+  "bytes": 15263
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "SYSTEM-PRICES",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/system-prices/2026-06-30",
+  "path": "data/raw/elexon/010/2026-06-30/system-prices.json",
+  "sha256": "7e454d0d2ff43ca59ef181160040531836fd55bd6f1091f5cbb9d99571c839ae",
+  "fetched_at": "2026-09-03T20:55:02.687025+00:00",
+  "bytes": 42507
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MID",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MID/stream?from=2026-07-01T00:00Z&to=2026-07-02T00:00Z",
+  "path": "data/raw/elexon/010/2026-07-01/mid.json",
+  "sha256": "8abaec7d08760f43222431f4780267653ef0717f1671322fa0129154cdc7b666",
+  "fetched_at": "2026-09-03T20:55:03.006831+00:00",
+  "bytes": 15744
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "SYSTEM-PRICES",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/system-prices/2026-07-01",
+  "path": "data/raw/elexon/010/2026-07-01/system-prices.json",
+  "sha256": "c9d25e464de0438cbeefc352aa4f1cb67ec581361216eae45745c4c0f5f7ad6e",
+  "fetched_at": "2026-09-03T20:55:03.316324+00:00",
+  "bytes": 42899
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MID",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MID/stream?from=2026-07-02T00:00Z&to=2026-07-03T00:00Z",
+  "path": "data/raw/elexon/010/2026-07-02/mid.json",
+  "sha256": "f9cfefebf9943e71efc1ddfcee6b219817e6991c8f3bdac4585e5886873d2e67",
+  "fetched_at": "2026-09-03T20:55:03.628849+00:00",
+  "bytes": 15718
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "SYSTEM-PRICES",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/system-prices/2026-07-02",
+  "path": "data/raw/elexon/010/2026-07-02/system-prices.json",
+  "sha256": "4c5f5738040315aa30d71fcd30bcf17de18d5fcfedabf6e1f72fa243e8266056",
+  "fetched_at": "2026-09-03T20:55:03.934546+00:00",
+  "bytes": 43498
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MID",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MID/stream?from=2026-07-03T00:00Z&to=2026-07-04T00:00Z",
+  "path": "data/raw/elexon/010/2026-07-03/mid.json",
+  "sha256": "db54d505ff3119a02c05b9247a363cc5648fa8395f7c11e396eb53f0ae332aa2",
+  "fetched_at": "2026-09-03T20:55:04.250652+00:00",
+  "bytes": 15748
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "SYSTEM-PRICES",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/system-prices/2026-07-03",
+  "path": "data/raw/elexon/010/2026-07-03/system-prices.json",
+  "sha256": "fa990863403e73a32e7440091dcd1eafa89635abb41cafa4f739a9a83c0479dd",
+  "fetched_at": "2026-09-03T20:55:04.567411+00:00",
+  "bytes": 42825
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MID",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MID/stream?from=2026-07-04T00:00Z&to=2026-07-05T00:00Z",
+  "path": "data/raw/elexon/010/2026-07-04/mid.json",
+  "sha256": "5d9a5e13a6564df513c57c3a20a387f6ab08b35bf31ed8771a1aada0bb2cd95e",
+  "fetched_at": "2026-09-03T20:55:04.892135+00:00",
+  "bytes": 15722
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "SYSTEM-PRICES",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/system-prices/2026-07-04",
+  "path": "data/raw/elexon/010/2026-07-04/system-prices.json",
+  "sha256": "a919890bae08b76ed8431c6f71d095ad903fa8b20304fb5b21a7d641db663dbb",
+  "fetched_at": "2026-09-03T20:55:05.214067+00:00",
+  "bytes": 42905
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MID",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MID/stream?from=2026-07-05T00:00Z&to=2026-07-06T00:00Z",
+  "path": "data/raw/elexon/010/2026-07-05/mid.json",
+  "sha256": "9bccb82be99f16a17e502f5992a7893fa8145e92548ee2d2f59f4592f49ca45f",
+  "fetched_at": "2026-09-03T20:55:05.523968+00:00",
+  "bytes": 15733
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "SYSTEM-PRICES",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/system-prices/2026-07-05",
+  "path": "data/raw/elexon/010/2026-07-05/system-prices.json",
+  "sha256": "0b7d9516ae2901eb26d5cad5a526156b140258cda730cba123b0722d51bec266",
+  "fetched_at": "2026-09-03T20:55:05.904073+00:00",
+  "bytes": 43555
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MID",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MID/stream?from=2026-07-06T00:00Z&to=2026-07-07T00:00Z",
+  "path": "data/raw/elexon/010/2026-07-06/mid.json",
+  "sha256": "3e8eb7f8def3792232eab518197326a313c61e1e93f5a4874ff5620801d56dca",
+  "fetched_at": "2026-09-03T20:55:06.224419+00:00",
+  "bytes": 15726
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "SYSTEM-PRICES",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/system-prices/2026-07-06",
+  "path": "data/raw/elexon/010/2026-07-06/system-prices.json",
+  "sha256": "ea53746c6565b899ae1070c86db95d7f467ae872a854f5467ddc0e2e8f62eb0f",
+  "fetched_at": "2026-09-03T20:55:06.539602+00:00",
+  "bytes": 43045
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MID",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MID/stream?from=2026-07-07T00:00Z&to=2026-07-08T00:00Z",
+  "path": "data/raw/elexon/010/2026-07-07/mid.json",
+  "sha256": "4ae7361647fccf0f15fa0036576834c55914987f0857f3f3bca76f8492db72a1",
+  "fetched_at": "2026-09-03T20:55:06.849632+00:00",
+  "bytes": 15736
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "SYSTEM-PRICES",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/system-prices/2026-07-07",
+  "path": "data/raw/elexon/010/2026-07-07/system-prices.json",
+  "sha256": "dd173e431b49ebedaad634fea7b0df11b5a72b0fee0a3f161f16065910e6973a",
+  "fetched_at": "2026-09-03T20:55:07.173244+00:00",
+  "bytes": 43203
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MID",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MID/stream?from=2026-07-08T00:00Z&to=2026-07-09T00:00Z",
+  "path": "data/raw/elexon/010/2026-07-08/mid.json",
+  "sha256": "d8f55b86cc1743197d714023a5a11eddef7f065fb9afad76882b8fcd7e5fc94f",
+  "fetched_at": "2026-09-03T20:55:07.506205+00:00",
+  "bytes": 15755
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "SYSTEM-PRICES",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/system-prices/2026-07-08",
+  "path": "data/raw/elexon/010/2026-07-08/system-prices.json",
+  "sha256": "ff43c7d762d4d1758787e9412ea70ac51f2893920a3e6f14486bbd628dbe12d9",
+  "fetched_at": "2026-09-03T20:55:07.817607+00:00",
+  "bytes": 42784
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MID",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MID/stream?from=2026-07-09T00:00Z&to=2026-07-10T00:00Z",
+  "path": "data/raw/elexon/010/2026-07-09/mid.json",
+  "sha256": "4dd598a0c50c518df74d1d6016168edfe53afaca55731bd0cc9638b5414ed851",
+  "fetched_at": "2026-09-03T20:55:08.116902+00:00",
+  "bytes": 15750
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "SYSTEM-PRICES",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/system-prices/2026-07-09",
+  "path": "data/raw/elexon/010/2026-07-09/system-prices.json",
+  "sha256": "ffd2afcd220a5e6b14f75f77f3e0f2e2fa14c61460bcaede21ce9eeba5b04d32",
+  "fetched_at": "2026-09-03T20:55:08.445069+00:00",
+  "bytes": 42896
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MID",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MID/stream?from=2026-07-10T00:00Z&to=2026-07-11T00:00Z",
+  "path": "data/raw/elexon/010/2026-07-10/mid.json",
+  "sha256": "79eef0012e2f1cf5646059f22fe57a98f71a5a6f7df56ce59dcd7dd3b5e2b1b5",
+  "fetched_at": "2026-09-03T20:55:08.765629+00:00",
+  "bytes": 15759
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "SYSTEM-PRICES",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/system-prices/2026-07-10",
+  "path": "data/raw/elexon/010/2026-07-10/system-prices.json",
+  "sha256": "8b12d1e2b50b85712b334680c7edbfb178f2550783f7637846da0d76fe232f35",
+  "fetched_at": "2026-09-03T20:55:09.131046+00:00",
+  "bytes": 42689
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MID",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MID/stream?from=2026-07-11T00:00Z&to=2026-07-12T00:00Z",
+  "path": "data/raw/elexon/010/2026-07-11/mid.json",
+  "sha256": "7f38d17ffa7ff4ddb72a4ad3d1d2097d8fccd9c02523d80af9101d136016294c",
+  "fetched_at": "2026-09-03T20:55:09.451791+00:00",
+  "bytes": 15759
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "SYSTEM-PRICES",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/system-prices/2026-07-11",
+  "path": "data/raw/elexon/010/2026-07-11/system-prices.json",
+  "sha256": "698c306969f3c4bd7cdfbff5040682ba6d4d74fda12052e829d1807cc3ac2bd9",
+  "fetched_at": "2026-09-03T20:55:09.756402+00:00",
+  "bytes": 43468
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MID",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MID/stream?from=2026-07-12T00:00Z&to=2026-07-13T00:00Z",
+  "path": "data/raw/elexon/010/2026-07-12/mid.json",
+  "sha256": "74d55a70c1bfeeac070a30973352266354b556a7dc410d49ff9fea79db9a0bf5",
+  "fetched_at": "2026-09-03T20:55:10.085387+00:00",
+  "bytes": 15732
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "SYSTEM-PRICES",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/system-prices/2026-07-12",
+  "path": "data/raw/elexon/010/2026-07-12/system-prices.json",
+  "sha256": "9a0fbed9e18f25b521c13f14baf33dac65db276e2de42878035df9f13219ecf9",
+  "fetched_at": "2026-09-03T20:55:10.394740+00:00",
+  "bytes": 43576
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MID",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MID/stream?from=2026-07-13T00:00Z&to=2026-07-14T00:00Z",
+  "path": "data/raw/elexon/010/2026-07-13/mid.json",
+  "sha256": "df53a112d99abfa84d8dd4efa958eb88b9e370c024a3cad952a1ede942f56549",
+  "fetched_at": "2026-09-03T20:55:10.721153+00:00",
+  "bytes": 15746
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "SYSTEM-PRICES",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/system-prices/2026-07-13",
+  "path": "data/raw/elexon/010/2026-07-13/system-prices.json",
+  "sha256": "0df5f4442cf58f485461e7f43dbc2490783a372af5a9215e58759e628db44143",
+  "fetched_at": "2026-09-03T20:55:11.058451+00:00",
+  "bytes": 43088
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MID",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MID/stream?from=2026-07-14T00:00Z&to=2026-07-15T00:00Z",
+  "path": "data/raw/elexon/010/2026-07-14/mid.json",
+  "sha256": "8017a0e27b5d5774b03ad9ab9d0edfce70ddfee9bc3256add71970949fffc0c7",
+  "fetched_at": "2026-09-03T20:55:11.362206+00:00",
+  "bytes": 15747
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "SYSTEM-PRICES",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/system-prices/2026-07-14",
+  "path": "data/raw/elexon/010/2026-07-14/system-prices.json",
+  "sha256": "26bcbc3bfd218c5ec2be4ef4f9784e1b99db42f58a629ca6eddee9cece198c0a",
+  "fetched_at": "2026-09-03T20:55:11.729078+00:00",
+  "bytes": 42999
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MID",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MID/stream?from=2026-07-15T00:00Z&to=2026-07-16T00:00Z",
+  "path": "data/raw/elexon/010/2026-07-15/mid.json",
+  "sha256": "18a8047c7c301c2b182c23560a0eb46a9ffac5d9a231bada21f904b82920d256",
+  "fetched_at": "2026-09-03T20:55:12.050597+00:00",
+  "bytes": 15752
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "SYSTEM-PRICES",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/system-prices/2026-07-15",
+  "path": "data/raw/elexon/010/2026-07-15/system-prices.json",
+  "sha256": "e7d6762cccc2284260ac453a84f7fdb0c86df41f3c288378a7891e0f39161298",
+  "fetched_at": "2026-09-03T20:55:12.363641+00:00",
+  "bytes": 42596
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MID",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MID/stream?from=2026-07-16T00:00Z&to=2026-07-17T00:00Z",
+  "path": "data/raw/elexon/010/2026-07-16/mid.json",
+  "sha256": "fe1c0b08ba94649bba6a70b75d4a41eaeee1a2b90f595028bacdf2f9c1d72b04",
+  "fetched_at": "2026-09-03T20:55:12.689679+00:00",
+  "bytes": 15749
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "SYSTEM-PRICES",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/system-prices/2026-07-16",
+  "path": "data/raw/elexon/010/2026-07-16/system-prices.json",
+  "sha256": "5934c58386b2a439e752067f05cbad77237684103037c4adfaa34e01bb2e65fc",
+  "fetched_at": "2026-09-03T20:55:12.999632+00:00",
+  "bytes": 42991
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MID",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MID/stream?from=2026-07-17T00:00Z&to=2026-07-18T00:00Z",
+  "path": "data/raw/elexon/010/2026-07-17/mid.json",
+  "sha256": "67a6ada305c7b54ffc894e146d9a5d631b04dab17ad330c75481b2a927344255",
+  "fetched_at": "2026-09-03T20:55:13.303373+00:00",
+  "bytes": 15748
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "SYSTEM-PRICES",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/system-prices/2026-07-17",
+  "path": "data/raw/elexon/010/2026-07-17/system-prices.json",
+  "sha256": "0460d24de57b2848be4fbd2aa9897abf368830852e9db8875aaf6d62e6a241c3",
+  "fetched_at": "2026-09-03T20:55:13.636066+00:00",
+  "bytes": 43059
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MID",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MID/stream?from=2026-07-18T00:00Z&to=2026-07-19T00:00Z",
+  "path": "data/raw/elexon/010/2026-07-18/mid.json",
+  "sha256": "b92dc92703975201b8db7b4cbf7c1dc1bb78c4078f0311467b58f32254dd50c9",
+  "fetched_at": "2026-09-03T20:55:13.960911+00:00",
+  "bytes": 15739
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "SYSTEM-PRICES",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/system-prices/2026-07-18",
+  "path": "data/raw/elexon/010/2026-07-18/system-prices.json",
+  "sha256": "1ca2a4cf5bd8cc0720b1f33e03ac96565b97d26f3fbfc9cd18e2ea1289b1b03c",
+  "fetched_at": "2026-09-03T20:55:14.284309+00:00",
+  "bytes": 43199
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MID",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MID/stream?from=2026-07-19T00:00Z&to=2026-07-20T00:00Z",
+  "path": "data/raw/elexon/010/2026-07-19/mid.json",
+  "sha256": "fb8e54576e35dc7b21098d81236715c978e708d03256a065be2025bec219450f",
+  "fetched_at": "2026-09-03T20:55:14.596126+00:00",
+  "bytes": 15725
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "SYSTEM-PRICES",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/system-prices/2026-07-19",
+  "path": "data/raw/elexon/010/2026-07-19/system-prices.json",
+  "sha256": "db4c61e19eb9f14d5b4ea5e7c2ad692b02ce4cf91c5c379729f1d26450f292d1",
+  "fetched_at": "2026-09-03T20:55:14.905472+00:00",
+  "bytes": 42735
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MID",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MID/stream?from=2026-07-20T00:00Z&to=2026-07-21T00:00Z",
+  "path": "data/raw/elexon/010/2026-07-20/mid.json",
+  "sha256": "9f9e6ede79f45168697087aaae72ea77cfe316c52494d46dfb97ee3603b876d5",
+  "fetched_at": "2026-09-03T20:55:15.209294+00:00",
+  "bytes": 15749
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "SYSTEM-PRICES",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/system-prices/2026-07-20",
+  "path": "data/raw/elexon/010/2026-07-20/system-prices.json",
+  "sha256": "8d420687e4cd777a4486422bc22cd790ae29c48e94a6e2f321772812d3c4e56f",
+  "fetched_at": "2026-09-03T20:55:15.512056+00:00",
+  "bytes": 42443
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MID",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MID/stream?from=2026-07-21T00:00Z&to=2026-07-22T00:00Z",
+  "path": "data/raw/elexon/010/2026-07-21/mid.json",
+  "sha256": "ab4c9ba3b78b0a19df2db561dce56540e7ae2348422654a2ddd1b0330ffb1150",
+  "fetched_at": "2026-09-03T20:55:15.812089+00:00",
+  "bytes": 15759
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "SYSTEM-PRICES",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/system-prices/2026-07-21",
+  "path": "data/raw/elexon/010/2026-07-21/system-prices.json",
+  "sha256": "a696d3498661ebb0fd47af7224f394b115cde5bc0e973a91f24fd66e872326ae",
+  "fetched_at": "2026-09-03T20:55:16.101584+00:00",
+  "bytes": 42721
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MID",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MID/stream?from=2026-07-22T00:00Z&to=2026-07-23T00:00Z",
+  "path": "data/raw/elexon/010/2026-07-22/mid.json",
+  "sha256": "a6e06677635152852e7b70baad44a7896613019ea707a9f98bccffb947270641",
+  "fetched_at": "2026-09-03T20:55:16.406337+00:00",
+  "bytes": 15759
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "SYSTEM-PRICES",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/system-prices/2026-07-22",
+  "path": "data/raw/elexon/010/2026-07-22/system-prices.json",
+  "sha256": "32aa7afac6cb4218e27663aabc85b703235157f24ad5dbb90e79d2a5e50356c2",
+  "fetched_at": "2026-09-03T20:55:16.713181+00:00",
+  "bytes": 42961
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MID",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MID/stream?from=2026-07-23T00:00Z&to=2026-07-24T00:00Z",
+  "path": "data/raw/elexon/010/2026-07-23/mid.json",
+  "sha256": "69d9f867f13d0c5f0b7b9c53723639536c5a63c3df0013eaf9799dba97820ede",
+  "fetched_at": "2026-09-03T20:55:17.006031+00:00",
+  "bytes": 15755
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "SYSTEM-PRICES",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/system-prices/2026-07-23",
+  "path": "data/raw/elexon/010/2026-07-23/system-prices.json",
+  "sha256": "bdde3650952fee69fe6c1206f4dcfb7adfb2cbf2aebc43923057bdbf29011b71",
+  "fetched_at": "2026-09-03T20:55:17.336201+00:00",
+  "bytes": 43432
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MID",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MID/stream?from=2026-07-24T00:00Z&to=2026-07-25T00:00Z",
+  "path": "data/raw/elexon/010/2026-07-24/mid.json",
+  "sha256": "ee22b6f2369f04010895f3b65c04fd1a119a4d8d47bc7f35afce815ed9d55bd0",
+  "fetched_at": "2026-09-03T20:55:17.650220+00:00",
+  "bytes": 15747
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "SYSTEM-PRICES",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/system-prices/2026-07-24",
+  "path": "data/raw/elexon/010/2026-07-24/system-prices.json",
+  "sha256": "2dded8e1a4aefdc32b7d74369b16067de969971a1c830e4c6a5f491683de9ad9",
+  "fetched_at": "2026-09-03T20:55:17.962485+00:00",
+  "bytes": 43286
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MID",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MID/stream?from=2026-07-25T00:00Z&to=2026-07-26T00:00Z",
+  "path": "data/raw/elexon/010/2026-07-25/mid.json",
+  "sha256": "a0cdcc41942d8277d32a5cf473bf12ced30664ec17117496db13828aa9a57063",
+  "fetched_at": "2026-09-03T20:55:18.270466+00:00",
+  "bytes": 15735
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "SYSTEM-PRICES",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/system-prices/2026-07-25",
+  "path": "data/raw/elexon/010/2026-07-25/system-prices.json",
+  "sha256": "60ab500dda5c5bd4be34d5e0a0065d0133bd627b0bbdd50fa480dc78d05880af",
+  "fetched_at": "2026-09-03T20:55:18.584739+00:00",
+  "bytes": 42821
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MID",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MID/stream?from=2026-07-26T00:00Z&to=2026-07-27T00:00Z",
+  "path": "data/raw/elexon/010/2026-07-26/mid.json",
+  "sha256": "5ccd4eb0711b6e61c6c21c734e8ee1ab1ade1a4977ee488d78c6c3c06d70d49f",
+  "fetched_at": "2026-09-03T20:55:18.901285+00:00",
+  "bytes": 15730
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "SYSTEM-PRICES",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/system-prices/2026-07-26",
+  "path": "data/raw/elexon/010/2026-07-26/system-prices.json",
+  "sha256": "5ff4cebf54a0a4dd85af72a70209ced70df48adc003ddaa865a936e7b7a294d2",
+  "fetched_at": "2026-09-03T20:55:19.215051+00:00",
+  "bytes": 43347
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MID",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MID/stream?from=2026-07-27T00:00Z&to=2026-07-28T00:00Z",
+  "path": "data/raw/elexon/010/2026-07-27/mid.json",
+  "sha256": "024ed809fd8ef2c25c3e5183a78f71150ed76074d1a6bef28f48724b62ed7dd2",
+  "fetched_at": "2026-09-03T20:55:19.579502+00:00",
+  "bytes": 15695
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "SYSTEM-PRICES",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/system-prices/2026-07-27",
+  "path": "data/raw/elexon/010/2026-07-27/system-prices.json",
+  "sha256": "71dc3ef84341b5cedc9ae4c60d3f2e046264b0092150a147cbd05b1faeee7c85",
+  "fetched_at": "2026-09-03T20:55:19.894683+00:00",
+  "bytes": 43063
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MID",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MID/stream?from=2026-07-28T00:00Z&to=2026-07-29T00:00Z",
+  "path": "data/raw/elexon/010/2026-07-28/mid.json",
+  "sha256": "6b66ca93a100459a85f24926ddb4cdb1583fc2d9d9b8b5a961acee7c50a78cc9",
+  "fetched_at": "2026-09-03T20:55:20.217831+00:00",
+  "bytes": 15742
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "SYSTEM-PRICES",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/system-prices/2026-07-28",
+  "path": "data/raw/elexon/010/2026-07-28/system-prices.json",
+  "sha256": "2dff8cba578634c40145c04a8befc5ec89f7776511340c829ca3a5dc3fac97ff",
+  "fetched_at": "2026-09-03T20:55:20.525814+00:00",
+  "bytes": 43291
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MID",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MID/stream?from=2026-07-29T00:00Z&to=2026-07-30T00:00Z",
+  "path": "data/raw/elexon/010/2026-07-29/mid.json",
+  "sha256": "8b02b962a6b04e3b0a6cc7c487cbfd42cefa9816dd8b71dbd57d26753c268614",
+  "fetched_at": "2026-09-03T20:55:20.844982+00:00",
+  "bytes": 15759
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "SYSTEM-PRICES",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/system-prices/2026-07-29",
+  "path": "data/raw/elexon/010/2026-07-29/system-prices.json",
+  "sha256": "08e3b7b6a0ca15c95dbb07785610f03550a3f78cf8884c02755eb4c764ef4775",
+  "fetched_at": "2026-09-03T20:55:21.164357+00:00",
+  "bytes": 43145
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MID",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MID/stream?from=2026-07-30T00:00Z&to=2026-07-31T00:00Z",
+  "path": "data/raw/elexon/010/2026-07-30/mid.json",
+  "sha256": "18cef3e294e1767fdf543145a8132dd84629208d60cb32ee2b6b77b66e08d757",
+  "fetched_at": "2026-09-03T20:55:21.484355+00:00",
+  "bytes": 15759
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "SYSTEM-PRICES",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/system-prices/2026-07-30",
+  "path": "data/raw/elexon/010/2026-07-30/system-prices.json",
+  "sha256": "2c41e37e6e59b0376b231a85870bf3af61c418ef62d31caedf6f68dba017d6ea",
+  "fetched_at": "2026-09-03T20:55:21.806199+00:00",
+  "bytes": 43172
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MID",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MID/stream?from=2026-07-31T00:00Z&to=2026-08-01T00:00Z",
+  "path": "data/raw/elexon/010/2026-07-31/mid.json",
+  "sha256": "2fe99f8868880022b6ce072bee5093a051db55278d813ecef6acf02b33748f7b",
+  "fetched_at": "2026-09-03T20:55:22.116224+00:00",
+  "bytes": 15759
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "SYSTEM-PRICES",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/system-prices/2026-07-31",
+  "path": "data/raw/elexon/010/2026-07-31/system-prices.json",
+  "sha256": "f071a5d8fc364e42e932c05eb9ba8bced26638453d1bc43d85c6d64c42bb5ba6",
+  "fetched_at": "2026-09-03T20:55:22.420633+00:00",
+  "bytes": 42592
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MID",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MID/stream?from=2026-08-01T00:00Z&to=2026-08-02T00:00Z",
+  "path": "data/raw/elexon/010/2026-08-01/mid.json",
+  "sha256": "f837c0262decf1c809edd38548c2079901419fc354117836567a831701da178b",
+  "fetched_at": "2026-09-03T20:55:22.768335+00:00",
+  "bytes": 15745
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "SYSTEM-PRICES",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/system-prices/2026-08-01",
+  "path": "data/raw/elexon/010/2026-08-01/system-prices.json",
+  "sha256": "a6571f4bb62cc179b727de5d302adae8d3280c37a52a6ee804c6e3016742b904",
+  "fetched_at": "2026-09-03T20:55:23.090876+00:00",
+  "bytes": 42915
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MID",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MID/stream?from=2026-08-02T00:00Z&to=2026-08-03T00:00Z",
+  "path": "data/raw/elexon/010/2026-08-02/mid.json",
+  "sha256": "e1c7ea9371ccbe832789f52c8f2929291534bd2016a7e11bcaf02bd049d48939",
+  "fetched_at": "2026-09-03T20:55:23.418148+00:00",
+  "bytes": 15759
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "SYSTEM-PRICES",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/system-prices/2026-08-02",
+  "path": "data/raw/elexon/010/2026-08-02/system-prices.json",
+  "sha256": "a7463fd5bcf217d77ab8e6f9a9c64fb47997705ac782078eb5a08e73884fcfc8",
+  "fetched_at": "2026-09-03T20:55:23.752519+00:00",
+  "bytes": 43444
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MID",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MID/stream?from=2026-08-03T00:00Z&to=2026-08-04T00:00Z",
+  "path": "data/raw/elexon/010/2026-08-03/mid.json",
+  "sha256": "9b6cd34ab3270eb160f076ddc72f89c9f978a747ef1bb39c6ffdaf464ba75f1d",
+  "fetched_at": "2026-09-03T20:55:24.085575+00:00",
+  "bytes": 15755
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "SYSTEM-PRICES",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/system-prices/2026-08-03",
+  "path": "data/raw/elexon/010/2026-08-03/system-prices.json",
+  "sha256": "112a70fc34b4eb829052f1eed92f793bfcb2e1cd2b3ecb91ae378d275485b15a",
+  "fetched_at": "2026-09-03T20:55:24.416469+00:00",
+  "bytes": 42883
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MID",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MID/stream?from=2026-08-04T00:00Z&to=2026-08-05T00:00Z",
+  "path": "data/raw/elexon/010/2026-08-04/mid.json",
+  "sha256": "8320ec64359e5b1fb3ab22e3c65dd9258a0ef7a1599bb12f5fefeab39f991852",
+  "fetched_at": "2026-09-03T20:55:24.746760+00:00",
+  "bytes": 15755
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "SYSTEM-PRICES",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/system-prices/2026-08-04",
+  "path": "data/raw/elexon/010/2026-08-04/system-prices.json",
+  "sha256": "79f2550150a98bb7a07d8cbbe0688204f628d287802599ff3f5a36b6c04d8b74",
+  "fetched_at": "2026-09-03T20:55:25.065689+00:00",
+  "bytes": 43448
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MID",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MID/stream?from=2026-08-05T00:00Z&to=2026-08-06T00:00Z",
+  "path": "data/raw/elexon/010/2026-08-05/mid.json",
+  "sha256": "84ca0e2f46941db299d4eb83169b7de7830dd4eae6068637e9ffa6da7b2d686e",
+  "fetched_at": "2026-09-03T20:55:25.374251+00:00",
+  "bytes": 15733
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "SYSTEM-PRICES",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/system-prices/2026-08-05",
+  "path": "data/raw/elexon/010/2026-08-05/system-prices.json",
+  "sha256": "f248ccd59ff278da44f0d7428739ec711f90f441ea88e31a9b19934d4040b534",
+  "fetched_at": "2026-09-03T20:55:25.688910+00:00",
+  "bytes": 42834
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MID",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MID/stream?from=2026-08-06T00:00Z&to=2026-08-07T00:00Z",
+  "path": "data/raw/elexon/010/2026-08-06/mid.json",
+  "sha256": "7a3c3f91dac56ada1def1f5a581ec92418c71b4c57ef2741f6ac6cb28f0b4cad",
+  "fetched_at": "2026-09-03T20:55:26.008420+00:00",
+  "bytes": 15747
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "SYSTEM-PRICES",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/system-prices/2026-08-06",
+  "path": "data/raw/elexon/010/2026-08-06/system-prices.json",
+  "sha256": "bdea38cba09611e2ef6310b2ce3c579c42e78cb8bfa36e61b8f8b0537557a353",
+  "fetched_at": "2026-09-03T20:55:26.332396+00:00",
+  "bytes": 42880
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MID",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MID/stream?from=2026-08-07T00:00Z&to=2026-08-08T00:00Z",
+  "path": "data/raw/elexon/010/2026-08-07/mid.json",
+  "sha256": "c273776b58128172ee7ed707cf9ff97403ff98cb6a9f1aa1bdcebb5e5b04ce16",
+  "fetched_at": "2026-09-03T20:55:26.663803+00:00",
+  "bytes": 15744
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "SYSTEM-PRICES",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/system-prices/2026-08-07",
+  "path": "data/raw/elexon/010/2026-08-07/system-prices.json",
+  "sha256": "88a61bebe5d42b0fdc992431ff162e7348a2f6742690f8b2530be273642d54c2",
+  "fetched_at": "2026-09-03T20:55:26.986660+00:00",
+  "bytes": 43343
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MID",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MID/stream?from=2026-08-08T00:00Z&to=2026-08-09T00:00Z",
+  "path": "data/raw/elexon/010/2026-08-08/mid.json",
+  "sha256": "7f1d8762379e1e5ab22af86c13b2629feb61cc18f0b4d463df2c7a021db40b0f",
+  "fetched_at": "2026-09-03T20:55:27.327688+00:00",
+  "bytes": 15737
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "SYSTEM-PRICES",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/system-prices/2026-08-08",
+  "path": "data/raw/elexon/010/2026-08-08/system-prices.json",
+  "sha256": "96412846a6171018a6f0f049cbc5cefaa5bba011dd3b0e87a29c54e7e18dc81b",
+  "fetched_at": "2026-09-03T20:55:27.646624+00:00",
+  "bytes": 43552
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MID",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MID/stream?from=2026-08-09T00:00Z&to=2026-08-10T00:00Z",
+  "path": "data/raw/elexon/010/2026-08-09/mid.json",
+  "sha256": "ad622f798e94d506417412cc7edb003c2e5b79189871ffd16f790538d5369b32",
+  "fetched_at": "2026-09-03T20:55:27.962223+00:00",
+  "bytes": 15736
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "SYSTEM-PRICES",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/system-prices/2026-08-09",
+  "path": "data/raw/elexon/010/2026-08-09/system-prices.json",
+  "sha256": "b95ac02652e6d985fe08e411c90288e7a40a2121f8610ad25387750883f4da22",
+  "fetched_at": "2026-09-03T20:55:28.272951+00:00",
+  "bytes": 43192
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MID",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MID/stream?from=2026-08-10T00:00Z&to=2026-08-11T00:00Z",
+  "path": "data/raw/elexon/010/2026-08-10/mid.json",
+  "sha256": "a39f8a6595243d83946d4f30f15d5a80a009f80c172b8ad619f293a59cf9ad94",
+  "fetched_at": "2026-09-03T20:55:28.591762+00:00",
+  "bytes": 15746
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "SYSTEM-PRICES",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/system-prices/2026-08-10",
+  "path": "data/raw/elexon/010/2026-08-10/system-prices.json",
+  "sha256": "5a5444ca7475a462015b4788865f5d704dc6ee242b65fe6193f09728045bee1b",
+  "fetched_at": "2026-09-03T20:55:28.907461+00:00",
+  "bytes": 43194
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MID",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MID/stream?from=2026-08-11T00:00Z&to=2026-08-12T00:00Z",
+  "path": "data/raw/elexon/010/2026-08-11/mid.json",
+  "sha256": "cb77dca3799a81ee392a046aba8205971a3b5a350b932b41a57472871616c258",
+  "fetched_at": "2026-09-03T20:55:29.221136+00:00",
+  "bytes": 15747
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "SYSTEM-PRICES",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/system-prices/2026-08-11",
+  "path": "data/raw/elexon/010/2026-08-11/system-prices.json",
+  "sha256": "c7a86b55f8a31d3113028788ee1c4e5a3a7e59ac4b8808c9615ab114dd6dca5c",
+  "fetched_at": "2026-09-03T20:55:29.536075+00:00",
+  "bytes": 42839
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MID",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MID/stream?from=2026-08-12T00:00Z&to=2026-08-13T00:00Z",
+  "path": "data/raw/elexon/010/2026-08-12/mid.json",
+  "sha256": "e1fd9173c439f40f67f3599bbaf6ab1d84594ca995975952561349e98d6a01db",
+  "fetched_at": "2026-09-03T20:55:29.857127+00:00",
+  "bytes": 15759
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "SYSTEM-PRICES",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/system-prices/2026-08-12",
+  "path": "data/raw/elexon/010/2026-08-12/system-prices.json",
+  "sha256": "8f17c067f389eb229d7da88c78dc4605ec796b4e18b192abe993f324c87abd3c",
+  "fetched_at": "2026-09-03T20:55:30.166503+00:00",
+  "bytes": 42654
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MID",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MID/stream?from=2026-08-13T00:00Z&to=2026-08-14T00:00Z",
+  "path": "data/raw/elexon/010/2026-08-13/mid.json",
+  "sha256": "3c8c0fa3c27fd78666b463e3df7e76e0bbad535bf9f6b34dce5ab9f5443cfd8a",
+  "fetched_at": "2026-09-03T20:55:30.470398+00:00",
+  "bytes": 15759
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "SYSTEM-PRICES",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/system-prices/2026-08-13",
+  "path": "data/raw/elexon/010/2026-08-13/system-prices.json",
+  "sha256": "29647fb05558b22a097df8f3de2f67066e21ded5386493febf06e200a6d14a19",
+  "fetched_at": "2026-09-03T20:55:30.776081+00:00",
+  "bytes": 42940
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MID",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MID/stream?from=2026-08-14T00:00Z&to=2026-08-15T00:00Z",
+  "path": "data/raw/elexon/010/2026-08-14/mid.json",
+  "sha256": "d4fefebca6f5c677e9455ef20ac815d49ad9b3dbe03df3c409d2258c01240c5d",
+  "fetched_at": "2026-09-03T20:55:31.080979+00:00",
+  "bytes": 15759
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "SYSTEM-PRICES",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/system-prices/2026-08-14",
+  "path": "data/raw/elexon/010/2026-08-14/system-prices.json",
+  "sha256": "b2c231be495b03ac4c057a1b6f5315bc404dd0421904c1bbd5c8c8b20494a557",
+  "fetched_at": "2026-09-03T20:55:31.386575+00:00",
+  "bytes": 42950
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MID",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MID/stream?from=2026-08-15T00:00Z&to=2026-08-16T00:00Z",
+  "path": "data/raw/elexon/010/2026-08-15/mid.json",
+  "sha256": "77e34bfefb235dd96799eeecfc83f6f7470b671a3688fb5f7637b735516739cc",
+  "fetched_at": "2026-09-03T20:55:31.717021+00:00",
+  "bytes": 15759
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "SYSTEM-PRICES",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/system-prices/2026-08-15",
+  "path": "data/raw/elexon/010/2026-08-15/system-prices.json",
+  "sha256": "ce44a36f81a0d74b9d91de63d85c52648f8c090786d71d9a2221aa88a86aabd5",
+  "fetched_at": "2026-09-03T20:55:32.032850+00:00",
+  "bytes": 42631
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MID",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MID/stream?from=2026-08-16T00:00Z&to=2026-08-17T00:00Z",
+  "path": "data/raw/elexon/010/2026-08-16/mid.json",
+  "sha256": "96a5cd254b8e30be96d3660cc82f84aa32bd0c803954ed214be29d4cc831e0a3",
+  "fetched_at": "2026-09-03T20:55:32.358984+00:00",
+  "bytes": 15755
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "SYSTEM-PRICES",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/system-prices/2026-08-16",
+  "path": "data/raw/elexon/010/2026-08-16/system-prices.json",
+  "sha256": "ea92f7c86903aeb236ba7f8fbfeb52d99fb106916e9f7516c7e23807491745aa",
+  "fetched_at": "2026-09-03T20:55:32.664320+00:00",
+  "bytes": 43270
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MID",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MID/stream?from=2026-08-17T00:00Z&to=2026-08-18T00:00Z",
+  "path": "data/raw/elexon/010/2026-08-17/mid.json",
+  "sha256": "2d65fb6354a305d2029bc57061194a341f4851339d580b468ce65469e8c63ad7",
+  "fetched_at": "2026-09-03T20:55:32.982701+00:00",
+  "bytes": 15759
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "SYSTEM-PRICES",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/system-prices/2026-08-17",
+  "path": "data/raw/elexon/010/2026-08-17/system-prices.json",
+  "sha256": "28dbc70f398b2e46e6cc2c6cb8a2d45cd772f30e8cf3a2a017be07be40291ab3",
+  "fetched_at": "2026-09-03T20:55:33.295206+00:00",
+  "bytes": 42438
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MID",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MID/stream?from=2026-08-18T00:00Z&to=2026-08-19T00:00Z",
+  "path": "data/raw/elexon/010/2026-08-18/mid.json",
+  "sha256": "f5665eb9b9729293df2d7e301b037b42d0ea2bf952e4f730b812b937e0bdfed6",
+  "fetched_at": "2026-09-03T20:55:33.615320+00:00",
+  "bytes": 15762
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "SYSTEM-PRICES",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/system-prices/2026-08-18",
+  "path": "data/raw/elexon/010/2026-08-18/system-prices.json",
+  "sha256": "2742988591f14e870b0d04832c2b2f537ed093183e2efadf6a7a8393bcd75bfc",
+  "fetched_at": "2026-09-03T20:55:33.916433+00:00",
+  "bytes": 42684
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MID",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MID/stream?from=2026-08-19T00:00Z&to=2026-08-20T00:00Z",
+  "path": "data/raw/elexon/010/2026-08-19/mid.json",
+  "sha256": "4033b821c48655ad437b8bcd61f16dc261d2fe60d6d2dfea046bec3c5ac2d039",
+  "fetched_at": "2026-09-03T20:55:34.237548+00:00",
+  "bytes": 15759
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "SYSTEM-PRICES",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/system-prices/2026-08-19",
+  "path": "data/raw/elexon/010/2026-08-19/system-prices.json",
+  "sha256": "05f6263bc304e99df99a0ce2abec0fc902e6dcfdc6ddc16573e9965f46fbc973",
+  "fetched_at": "2026-09-03T20:55:34.537921+00:00",
+  "bytes": 43223
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MID",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MID/stream?from=2026-08-20T00:00Z&to=2026-08-21T00:00Z",
+  "path": "data/raw/elexon/010/2026-08-20/mid.json",
+  "sha256": "0a68ce61186e90da33c53c5c98345196b28427f91050eb734b160d3ec7eff6ef",
+  "fetched_at": "2026-09-03T20:55:34.848605+00:00",
+  "bytes": 15759
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "SYSTEM-PRICES",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/system-prices/2026-08-20",
+  "path": "data/raw/elexon/010/2026-08-20/system-prices.json",
+  "sha256": "d37a04402fd27860fd63882b8fb961493a260210181ccf59d20b8ac6fdb0584e",
+  "fetched_at": "2026-09-03T20:55:35.166627+00:00",
+  "bytes": 43417
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MID",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MID/stream?from=2026-08-21T00:00Z&to=2026-08-22T00:00Z",
+  "path": "data/raw/elexon/010/2026-08-21/mid.json",
+  "sha256": "2b6c943507311002a49db7dbd26b8b0b2466e16ddb478c93d41fc69efa3f9965",
+  "fetched_at": "2026-09-03T20:55:35.472449+00:00",
+  "bytes": 15759
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "SYSTEM-PRICES",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/system-prices/2026-08-21",
+  "path": "data/raw/elexon/010/2026-08-21/system-prices.json",
+  "sha256": "d1475f801699765c82e10859c7d58a0822f61a8c1859bb8c4fca2b54fc10bff8",
+  "fetched_at": "2026-09-03T20:55:35.785396+00:00",
+  "bytes": 43143
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MID",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MID/stream?from=2026-08-22T00:00Z&to=2026-08-23T00:00Z",
+  "path": "data/raw/elexon/010/2026-08-22/mid.json",
+  "sha256": "17b17893d1274f071ccc064e16ea7470189c6413155abafb1a57dc8ed426f670",
+  "fetched_at": "2026-09-03T20:55:36.095362+00:00",
+  "bytes": 15732
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "SYSTEM-PRICES",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/system-prices/2026-08-22",
+  "path": "data/raw/elexon/010/2026-08-22/system-prices.json",
+  "sha256": "67e96d237e9648c775280a41b2ea65c00bcd2d5ac5f6448ccd9dbf687057b8a2",
+  "fetched_at": "2026-09-03T20:55:36.390714+00:00",
+  "bytes": 43015
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MID",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MID/stream?from=2026-08-23T00:00Z&to=2026-08-24T00:00Z",
+  "path": "data/raw/elexon/010/2026-08-23/mid.json",
+  "sha256": "478b5a0795c519b6938e81fedeab2b2478d7b99fdc82bfcaa3f5362dcc5f4d4d",
+  "fetched_at": "2026-09-03T20:55:36.715906+00:00",
+  "bytes": 15735
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "SYSTEM-PRICES",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/system-prices/2026-08-23",
+  "path": "data/raw/elexon/010/2026-08-23/system-prices.json",
+  "sha256": "1eca352d6fe605316ee5726498ba18203339b6488ba65ca552615a093f234c75",
+  "fetched_at": "2026-09-03T20:55:37.033147+00:00",
+  "bytes": 43638
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MID",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MID/stream?from=2026-08-24T00:00Z&to=2026-08-25T00:00Z",
+  "path": "data/raw/elexon/010/2026-08-24/mid.json",
+  "sha256": "a98610140ebac5c787274fdf8cd82f84fa33f344bf673401168288d15a172dcd",
+  "fetched_at": "2026-09-03T20:55:37.347049+00:00",
+  "bytes": 15758
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "SYSTEM-PRICES",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/system-prices/2026-08-24",
+  "path": "data/raw/elexon/010/2026-08-24/system-prices.json",
+  "sha256": "f8925caef714f5ead13412f5a24f2e539d452a87e750a01cab48bad63bde0c10",
+  "fetched_at": "2026-09-03T20:55:37.655451+00:00",
+  "bytes": 43098
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MID",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MID/stream?from=2026-08-25T00:00Z&to=2026-08-26T00:00Z",
+  "path": "data/raw/elexon/010/2026-08-25/mid.json",
+  "sha256": "a7742537e0c18a3fa0143bdaf4a02759722a72b106876de78abf7847d4f976e4",
+  "fetched_at": "2026-09-03T20:55:37.963315+00:00",
+  "bytes": 15754
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "SYSTEM-PRICES",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/system-prices/2026-08-25",
+  "path": "data/raw/elexon/010/2026-08-25/system-prices.json",
+  "sha256": "092bfb110e7419b438e154c61e270b88491b0ec3093ef993897319d213439ef4",
+  "fetched_at": "2026-09-03T20:55:38.269080+00:00",
+  "bytes": 42736
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MID",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MID/stream?from=2026-08-26T00:00Z&to=2026-08-27T00:00Z",
+  "path": "data/raw/elexon/010/2026-08-26/mid.json",
+  "sha256": "c9654c7383c0a4af4cfe033a4f8a529cdad903e4066bfbbbe68a4e58c2db51ea",
+  "fetched_at": "2026-09-03T20:55:38.592828+00:00",
+  "bytes": 15759
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "SYSTEM-PRICES",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/system-prices/2026-08-26",
+  "path": "data/raw/elexon/010/2026-08-26/system-prices.json",
+  "sha256": "f5923352d4af15175dd88a930df6e91032bac704000d08612e16f351d1d2a27e",
+  "fetched_at": "2026-09-03T20:55:38.906575+00:00",
+  "bytes": 42851
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MID",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MID/stream?from=2026-08-27T00:00Z&to=2026-08-28T00:00Z",
+  "path": "data/raw/elexon/010/2026-08-27/mid.json",
+  "sha256": "c97c778fc3a0091e95d68e90e92a9a483ebf46955482aad94df4c8561f9174db",
+  "fetched_at": "2026-09-03T20:55:39.226236+00:00",
+  "bytes": 15759
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "SYSTEM-PRICES",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/system-prices/2026-08-27",
+  "path": "data/raw/elexon/010/2026-08-27/system-prices.json",
+  "sha256": "0c397c9d7fb49ffd617480d3e485999903aaf3c09f0de794a800585b47934ca4",
+  "fetched_at": "2026-09-03T20:55:39.539271+00:00",
+  "bytes": 42480
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MID",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MID/stream?from=2026-08-28T00:00Z&to=2026-08-29T00:00Z",
+  "path": "data/raw/elexon/010/2026-08-28/mid.json",
+  "sha256": "b907829280a8eec9ea36d7896382c3858b3ddce4e1cf5333502678f22dc0834c",
+  "fetched_at": "2026-09-03T20:55:39.853306+00:00",
+  "bytes": 15756
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "SYSTEM-PRICES",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/system-prices/2026-08-28",
+  "path": "data/raw/elexon/010/2026-08-28/system-prices.json",
+  "sha256": "74de5ee90ea4bc7231333a18975f8fa8b46d9d03b9368c9dcc78294a81f61563",
+  "fetched_at": "2026-09-03T20:55:40.154230+00:00",
+  "bytes": 42961
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MID",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MID/stream?from=2026-08-29T00:00Z&to=2026-08-30T00:00Z",
+  "path": "data/raw/elexon/010/2026-08-29/mid.json",
+  "sha256": "12a2f23855daead7fb894321537687b5f5d69fbaa2973ce4411ac6c518c99106",
+  "fetched_at": "2026-09-03T20:55:40.460143+00:00",
+  "bytes": 15752
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "SYSTEM-PRICES",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/system-prices/2026-08-29",
+  "path": "data/raw/elexon/010/2026-08-29/system-prices.json",
+  "sha256": "88e7415e72c97aef59a2ab3fb4ab08e92325adb8730909e1bc1eb3dd749a524e",
+  "fetched_at": "2026-09-03T20:55:40.759256+00:00",
+  "bytes": 43351
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MID",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MID/stream?from=2026-08-30T00:00Z&to=2026-08-31T00:00Z",
+  "path": "data/raw/elexon/010/2026-08-30/mid.json",
+  "sha256": "7bc7302a83e674f912eddfe94858ecbff6689c69e7f5dd18990494d789c4fdad",
+  "fetched_at": "2026-09-03T20:55:41.075503+00:00",
+  "bytes": 15759
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "SYSTEM-PRICES",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/system-prices/2026-08-30",
+  "path": "data/raw/elexon/010/2026-08-30/system-prices.json",
+  "sha256": "14f67cc8724c74e90ee52c57f83f88bb61448d86e75d0ef25f8ec9d3e35ea2b9",
+  "fetched_at": "2026-09-03T20:55:41.377242+00:00",
+  "bytes": 43830
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MID",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MID/stream?from=2026-08-31T00:00Z&to=2026-09-01T00:00Z",
+  "path": "data/raw/elexon/010/2026-08-31/mid.json",
+  "sha256": "ecad5370d44c97dcb61b97d3019f6d9ebb03d8edd859875646ff6aa76c123cf8",
+  "fetched_at": "2026-09-03T20:55:41.692598+00:00",
+  "bytes": 15749
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "SYSTEM-PRICES",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/system-prices/2026-08-31",
+  "path": "data/raw/elexon/010/2026-08-31/system-prices.json",
+  "sha256": "9cb7580ab86bc2f598c2ddaf334aa2d6b8f663f2c0b967d5c12f010f35b1b973",
+  "fetched_at": "2026-09-03T20:55:41.992636+00:00",
+  "bytes": 43543
+ },
+ {
+  "source": "octopus-energy-api",
+  "dataset": "octopus-product",
+  "url": "https://api.octopus.energy/v1/products/AGILE-24-10-01/",
+  "path": "data/raw/octopus/2026-09-03-010/product/AGILE-24-10-01.json",
+  "sha256": "43cab5401b35ce1eaedf82847287aa4a0a79249385c1ae7cc8a1e2d4a4b3b1a7",
+  "fetched_at": "2026-09-03T20:53:53.631541+00:00",
+  "bytes": 13140
+ },
+ {
+  "source": "octopus-energy-api",
+  "dataset": "octopus-product",
+  "url": "https://api.octopus.energy/v1/products/AGILE-OUTGOING-19-05-13/",
+  "path": "data/raw/octopus/2026-09-03-010/product/AGILE-OUTGOING-19-05-13.json",
+  "sha256": "709ba3d750af20ad1f09668c605ee961566cfc17f48ff5c880ade45ff9df78f7",
+  "fetched_at": "2026-09-03T20:53:55.590640+00:00",
+  "bytes": 13552
+ },
+ {
+  "source": "octopus-energy-api",
+  "dataset": "octopus-product",
+  "url": "https://api.octopus.energy/v1/products/FLUX-EXPORT-23-02-14/",
+  "path": "data/raw/octopus/2026-09-03-010/product/FLUX-EXPORT-23-02-14.json",
+  "sha256": "7290550be9d2bc6e5b56a16815d536b899ee3c6baabe72a6913ecf6ce82303b9",
+  "fetched_at": "2026-09-03T20:53:56.489857+00:00",
+  "bytes": 13302
+ },
+ {
+  "source": "octopus-energy-api",
+  "dataset": "octopus-product",
+  "url": "https://api.octopus.energy/v1/products/FLUX-IMPORT-23-02-14/",
+  "path": "data/raw/octopus/2026-09-03-010/product/FLUX-IMPORT-23-02-14.json",
+  "sha256": "1c179c39a14b7d337133b224c05e76f874a3e502aa212f934f472cb51b45612f",
+  "fetched_at": "2026-09-03T20:53:54.754774+00:00",
+  "bytes": 13568
+ },
+ {
+  "source": "octopus-energy-api",
+  "dataset": "octopus-product",
+  "url": "https://api.octopus.energy/v1/products/GO-VAR-22-10-14/",
+  "path": "data/raw/octopus/2026-09-03-010/product/GO-VAR-22-10-14.json",
+  "sha256": "cc98aee3c9a517c7d434d15b51b6addd17a2ce461b3ff4693e785d806165aee6",
+  "fetched_at": "2026-09-03T20:53:53.930996+00:00",
+  "bytes": 13144
+ },
+ {
+  "source": "octopus-energy-api",
+  "dataset": "octopus-product",
+  "url": "https://api.octopus.energy/v1/products/INTELLI-FLUX-IMPORT-23-07-14/",
+  "path": "data/raw/octopus/2026-09-03-010/product/INTELLI-FLUX-IMPORT-23-07-14.json",
+  "sha256": "44458d6af8ce75004a19190e87298b5614e015515cf0faf330708a912632c1c3",
+  "fetched_at": "2026-09-03T20:53:55.055492+00:00",
+  "bytes": 14173
+ },
+ {
+  "source": "octopus-energy-api",
+  "dataset": "octopus-product",
+  "url": "https://api.octopus.energy/v1/products/INTELLI-VAR-22-10-14/",
+  "path": "data/raw/octopus/2026-09-03-010/product/INTELLI-VAR-22-10-14.json",
+  "sha256": "22de0cafbbd0572afdcb6318ff15602f2c62db0a3d7db10027b197cc04e76067",
+  "fetched_at": "2026-09-03T20:53:54.464190+00:00",
+  "bytes": 13348
+ },
+ {
+  "source": "octopus-energy-api",
+  "dataset": "octopus-product",
+  "url": "https://api.octopus.energy/v1/products/OUTGOING-PRIME-FIX-12M-26-06-23/",
+  "path": "data/raw/octopus/2026-09-03-010/product/OUTGOING-PRIME-FIX-12M-26-06-23.json",
+  "sha256": "6c158fdea1825d7d1eae98af1d51a01822494555bb336c00fccfc42b0d72fdf6",
+  "fetched_at": "2026-09-03T20:53:56.191117+00:00",
+  "bytes": 14099
+ },
+ {
+  "source": "octopus-energy-api",
+  "dataset": "octopus-product",
+  "url": "https://api.octopus.energy/v1/products/OUTGOING-VAR-24-10-26/",
+  "path": "data/raw/octopus/2026-09-03-010/product/OUTGOING-VAR-24-10-26.json",
+  "sha256": "bcad21bb88e87b46851857e90136d76682e44e8401cfdefa58612c97fb30a91d",
+  "fetched_at": "2026-09-03T20:53:55.889709+00:00",
+  "bytes": 13330
+ },
+ {
+  "source": "octopus-energy-api",
+  "dataset": "octopus-products",
+  "url": "https://api.octopus.energy/v1/products/?page=1",
+  "path": "data/raw/octopus/2026-09-03-010/products/page-1.json",
+  "sha256": "57819c1bc9f9a14fea51c638e1c08f92036f06fe2e2065d2c16f42aa215d44c7",
+  "fetched_at": "2026-09-03T20:53:53.327797+00:00",
+  "bytes": 22349
+ },
+ {
+  "source": "octopus-energy-api",
+  "dataset": "octopus-standard-unit-rates",
+  "url": "https://api.octopus.energy/v1/products/AGILE-24-10-01/electricity-tariffs/E-1R-AGILE-24-10-01-C/standard-unit-rates/?period_from=2026-05-31T21:00Z&period_to=2026-09-01T00:00Z&page_size=1500&page=1",
+  "path": "data/raw/octopus/2026-09-03-010/rates/AGILE-24-10-01/C/summer/page-1.json",
+  "sha256": "7a32a6ce36ec0fce918092441c3fde67b1a10d3d85aba53cb0d8f5a868c05ab2",
+  "fetched_at": "2026-09-03T20:53:57.125683+00:00",
+  "bytes": 208957
+ },
+ {
+  "source": "octopus-energy-api",
+  "dataset": "octopus-standard-unit-rates",
+  "url": "https://api.octopus.energy/v1/products/AGILE-24-10-01/electricity-tariffs/E-1R-AGILE-24-10-01-C/standard-unit-rates/?page=2&page_size=1500&period_from=2026-05-31T21%3A00Z&period_to=2026-09-01T00%3A00Z",
+  "path": "data/raw/octopus/2026-09-03-010/rates/AGILE-24-10-01/C/summer/page-2.json",
+  "sha256": "f7eca78f81c870890882e833c70ea2dbeab38a4663f1f94a55d2e45c6ce1d02f",
+  "fetched_at": "2026-09-03T20:53:57.640334+00:00",
+  "bytes": 208997
+ },
+ {
+  "source": "octopus-energy-api",
+  "dataset": "octopus-standard-unit-rates",
+  "url": "https://api.octopus.energy/v1/products/AGILE-24-10-01/electricity-tariffs/E-1R-AGILE-24-10-01-C/standard-unit-rates/?page=3&page_size=1500&period_from=2026-05-31T21%3A00Z&period_to=2026-09-01T00%3A00Z",
+  "path": "data/raw/octopus/2026-09-03-010/rates/AGILE-24-10-01/C/summer/page-3.json",
+  "sha256": "cf92066739bad12bb3a2a9b449029afc61c400c96726cb1a21b58fe4517b4d0b",
+  "fetched_at": "2026-09-03T20:53:58.030539+00:00",
+  "bytes": 197869
+ },
+ {
+  "source": "octopus-energy-api",
+  "dataset": "octopus-standard-unit-rates",
+  "url": "https://api.octopus.energy/v1/products/AGILE-24-10-01/electricity-tariffs/E-1R-AGILE-24-10-01-C/standard-unit-rates/?period_from=2025-12-31T22:00Z&period_to=2026-03-01T00:00Z&page_size=1500&page=1",
+  "path": "data/raw/octopus/2026-09-03-010/rates/AGILE-24-10-01/C/winter/page-1.json",
+  "sha256": "a62f347bc25af637cad3af3f203e07ed6c90cf4be7b3f83b35be1fe245597f3a",
+  "fetched_at": "2026-09-03T20:53:58.903444+00:00",
+  "bytes": 207882
+ },
+ {
+  "source": "octopus-energy-api",
+  "dataset": "octopus-standard-unit-rates",
+  "url": "https://api.octopus.energy/v1/products/AGILE-24-10-01/electricity-tariffs/E-1R-AGILE-24-10-01-C/standard-unit-rates/?page=2&page_size=1500&period_from=2025-12-31T22%3A00Z&period_to=2026-03-01T00%3A00Z",
+  "path": "data/raw/octopus/2026-09-03-010/rates/AGILE-24-10-01/C/winter/page-2.json",
+  "sha256": "a1195a525a961e74bb9a92722a3e21e47b6f937211a87a5176f8c81f3b9516d6",
+  "fetched_at": "2026-09-03T20:53:59.301249+00:00",
+  "bytes": 185071
+ },
+ {
+  "source": "octopus-energy-api",
+  "dataset": "octopus-standard-unit-rates",
+  "url": "https://api.octopus.energy/v1/products/AGILE-24-10-01/electricity-tariffs/E-1R-AGILE-24-10-01-E/standard-unit-rates/?period_from=2026-05-31T21:00Z&period_to=2026-09-01T00:00Z&page_size=1500&page=1",
+  "path": "data/raw/octopus/2026-09-03-010/rates/AGILE-24-10-01/E/summer/page-1.json",
+  "sha256": "f683663e4fed0bfce607a70d16aa4d3949ca096f09c4737d9ce4e97d49470fd0",
+  "fetched_at": "2026-09-03T20:54:00.025753+00:00",
+  "bytes": 209137
+ },
+ {
+  "source": "octopus-energy-api",
+  "dataset": "octopus-standard-unit-rates",
+  "url": "https://api.octopus.energy/v1/products/AGILE-24-10-01/electricity-tariffs/E-1R-AGILE-24-10-01-E/standard-unit-rates/?page=2&page_size=1500&period_from=2026-05-31T21%3A00Z&period_to=2026-09-01T00%3A00Z",
+  "path": "data/raw/octopus/2026-09-03-010/rates/AGILE-24-10-01/E/summer/page-2.json",
+  "sha256": "5e47c843ecefe76e2e0c2a3d004210b343149db98eda9cee25afe6e1448ac317",
+  "fetched_at": "2026-09-03T20:54:00.433983+00:00",
+  "bytes": 209237
+ },
+ {
+  "source": "octopus-energy-api",
+  "dataset": "octopus-standard-unit-rates",
+  "url": "https://api.octopus.energy/v1/products/AGILE-24-10-01/electricity-tariffs/E-1R-AGILE-24-10-01-E/standard-unit-rates/?page=3&page_size=1500&period_from=2026-05-31T21%3A00Z&period_to=2026-09-01T00%3A00Z",
+  "path": "data/raw/octopus/2026-09-03-010/rates/AGILE-24-10-01/E/summer/page-3.json",
+  "sha256": "9ff63c006cc81948df89341aee5ce6cff5cdea118ef9161e6a6dda64432fe54f",
+  "fetched_at": "2026-09-03T20:54:00.831829+00:00",
+  "bytes": 198093
+ },
+ {
+  "source": "octopus-energy-api",
+  "dataset": "octopus-standard-unit-rates",
+  "url": "https://api.octopus.energy/v1/products/AGILE-24-10-01/electricity-tariffs/E-1R-AGILE-24-10-01-E/standard-unit-rates/?period_from=2025-12-31T22:00Z&period_to=2026-03-01T00:00Z&page_size=1500&page=1",
+  "path": "data/raw/octopus/2026-09-03-010/rates/AGILE-24-10-01/E/winter/page-1.json",
+  "sha256": "38f99940b62bf5ca7fbc8fbec346a97bb1007722a0c2f49b60469a6f384c0df4",
+  "fetched_at": "2026-09-03T20:54:01.724499+00:00",
+  "bytes": 209071
+ },
+ {
+  "source": "octopus-energy-api",
+  "dataset": "octopus-standard-unit-rates",
+  "url": "https://api.octopus.energy/v1/products/AGILE-24-10-01/electricity-tariffs/E-1R-AGILE-24-10-01-E/standard-unit-rates/?page=2&page_size=1500&period_from=2025-12-31T22%3A00Z&period_to=2026-03-01T00%3A00Z",
+  "path": "data/raw/octopus/2026-09-03-010/rates/AGILE-24-10-01/E/winter/page-2.json",
+  "sha256": "eb787903e0ea7892cb89923fea2c891c67b0b9e34bbdd7c331de62c5d372e6b2",
+  "fetched_at": "2026-09-03T20:54:02.126953+00:00",
+  "bytes": 186247
+ },
+ {
+  "source": "octopus-energy-api",
+  "dataset": "octopus-standard-unit-rates",
+  "url": "https://api.octopus.energy/v1/products/AGILE-24-10-01/electricity-tariffs/E-1R-AGILE-24-10-01-J/standard-unit-rates/?period_from=2026-05-31T21:00Z&period_to=2026-09-01T00:00Z&page_size=1500&page=1",
+  "path": "data/raw/octopus/2026-09-03-010/rates/AGILE-24-10-01/J/summer/page-1.json",
+  "sha256": "6d2c942294b80aa06110dbfe99993c0812aa6c93a0988ca2acbcdb4d03a3dcd3",
+  "fetched_at": "2026-09-03T20:54:02.965270+00:00",
+  "bytes": 209038
+ },
+ {
+  "source": "octopus-energy-api",
+  "dataset": "octopus-standard-unit-rates",
+  "url": "https://api.octopus.energy/v1/products/AGILE-24-10-01/electricity-tariffs/E-1R-AGILE-24-10-01-J/standard-unit-rates/?page=2&page_size=1500&period_from=2026-05-31T21%3A00Z&period_to=2026-09-01T00%3A00Z",
+  "path": "data/raw/octopus/2026-09-03-010/rates/AGILE-24-10-01/J/summer/page-2.json",
+  "sha256": "eca3abdac44e028562ce52ce1041dbbb9c4e352efc18d0aa79f22681af098857",
+  "fetched_at": "2026-09-03T20:54:03.374784+00:00",
+  "bytes": 209082
+ },
+ {
+  "source": "octopus-energy-api",
+  "dataset": "octopus-standard-unit-rates",
+  "url": "https://api.octopus.energy/v1/products/AGILE-24-10-01/electricity-tariffs/E-1R-AGILE-24-10-01-J/standard-unit-rates/?page=3&page_size=1500&period_from=2026-05-31T21%3A00Z&period_to=2026-09-01T00%3A00Z",
+  "path": "data/raw/octopus/2026-09-03-010/rates/AGILE-24-10-01/J/summer/page-3.json",
+  "sha256": "7b994123fdb3d3b5276212e97ce01443d5fcb3bc09a35fea331e21930c550e88",
+  "fetched_at": "2026-09-03T20:54:03.954112+00:00",
+  "bytes": 198074
+ },
+ {
+  "source": "octopus-energy-api",
+  "dataset": "octopus-standard-unit-rates",
+  "url": "https://api.octopus.energy/v1/products/AGILE-24-10-01/electricity-tariffs/E-1R-AGILE-24-10-01-J/standard-unit-rates/?period_from=2025-12-31T22:00Z&period_to=2026-03-01T00:00Z&page_size=1500&page=1",
+  "path": "data/raw/octopus/2026-09-03-010/rates/AGILE-24-10-01/J/winter/page-1.json",
+  "sha256": "9daa4daf81a015dcb24837d9bd6e590837c73ee344d5fa6adf294fc8840a325c",
+  "fetched_at": "2026-09-03T20:54:04.807921+00:00",
+  "bytes": 208870
+ },
+ {
+  "source": "octopus-energy-api",
+  "dataset": "octopus-standard-unit-rates",
+  "url": "https://api.octopus.energy/v1/products/AGILE-24-10-01/electricity-tariffs/E-1R-AGILE-24-10-01-J/standard-unit-rates/?page=2&page_size=1500&period_from=2025-12-31T22%3A00Z&period_to=2026-03-01T00%3A00Z",
+  "path": "data/raw/octopus/2026-09-03-010/rates/AGILE-24-10-01/J/winter/page-2.json",
+  "sha256": "2140d20c00448676cfd067b1919fe736ced39efc934547930046f4356ce20670",
+  "fetched_at": "2026-09-03T20:54:05.191300+00:00",
+  "bytes": 185981
+ },
+ {
+  "source": "octopus-energy-api",
+  "dataset": "octopus-standard-unit-rates",
+  "url": "https://api.octopus.energy/v1/products/AGILE-OUTGOING-19-05-13/electricity-tariffs/E-1R-AGILE-OUTGOING-19-05-13-C/standard-unit-rates/?period_from=2026-05-31T21:00Z&period_to=2026-09-01T00:00Z&page_size=1500&page=1",
+  "path": "data/raw/octopus/2026-09-03-010/rates/AGILE-OUTGOING-19-05-13/C/summer/page-1.json",
+  "sha256": "f8a2f010dd73eb5ee5ea29acc3911dbab42a40af7fcfd3be5473062fbfe9dade",
+  "fetched_at": "2026-09-03T20:54:06.037104+00:00",
+  "bytes": 206682
+ },
+ {
+  "source": "octopus-energy-api",
+  "dataset": "octopus-standard-unit-rates",
+  "url": "https://api.octopus.energy/v1/products/AGILE-OUTGOING-19-05-13/electricity-tariffs/E-1R-AGILE-OUTGOING-19-05-13-C/standard-unit-rates/?page=2&page_size=1500&period_from=2026-05-31T21%3A00Z&period_to=2026-09-01T00%3A00Z",
+  "path": "data/raw/octopus/2026-09-03-010/rates/AGILE-OUTGOING-19-05-13/C/summer/page-2.json",
+  "sha256": "da495bb23518b84ba145622060dc1e2b4d40be1cf2e04bfc44d3c03c89cc15d7",
+  "fetched_at": "2026-09-03T20:54:06.472516+00:00",
+  "bytes": 206489
+ },
+ {
+  "source": "octopus-energy-api",
+  "dataset": "octopus-standard-unit-rates",
+  "url": "https://api.octopus.energy/v1/products/AGILE-OUTGOING-19-05-13/electricity-tariffs/E-1R-AGILE-OUTGOING-19-05-13-C/standard-unit-rates/?page=3&page_size=1500&period_from=2026-05-31T21%3A00Z&period_to=2026-09-01T00%3A00Z",
+  "path": "data/raw/octopus/2026-09-03-010/rates/AGILE-OUTGOING-19-05-13/C/summer/page-3.json",
+  "sha256": "46d58c45695b52b9bcebfd0930d2b6d76ca284f737de75a4caa64ed6f8d189cc",
+  "fetched_at": "2026-09-03T20:54:06.927127+00:00",
+  "bytes": 195254
+ },
+ {
+  "source": "octopus-energy-api",
+  "dataset": "octopus-standard-unit-rates",
+  "url": "https://api.octopus.energy/v1/products/AGILE-OUTGOING-19-05-13/electricity-tariffs/E-1R-AGILE-OUTGOING-19-05-13-C/standard-unit-rates/?period_from=2025-12-31T22:00Z&period_to=2026-03-01T00:00Z&page_size=1500&page=1",
+  "path": "data/raw/octopus/2026-09-03-010/rates/AGILE-OUTGOING-19-05-13/C/winter/page-1.json",
+  "sha256": "986b0d6b27a333ea9d4e73f01876a8a3fdf3fe296fd249829bedf56521432d62",
+  "fetched_at": "2026-09-03T20:54:07.776149+00:00",
+  "bytes": 204876
+ },
+ {
+  "source": "octopus-energy-api",
+  "dataset": "octopus-standard-unit-rates",
+  "url": "https://api.octopus.energy/v1/products/AGILE-OUTGOING-19-05-13/electricity-tariffs/E-1R-AGILE-OUTGOING-19-05-13-C/standard-unit-rates/?page=2&page_size=1500&period_from=2025-12-31T22%3A00Z&period_to=2026-03-01T00%3A00Z",
+  "path": "data/raw/octopus/2026-09-03-010/rates/AGILE-OUTGOING-19-05-13/C/winter/page-2.json",
+  "sha256": "ab63daf423edcf7c43d6d35832fc60e55893aa146fad5d98824264229db3a2d1",
+  "fetched_at": "2026-09-03T20:54:08.494160+00:00",
+  "bytes": 182925
+ },
+ {
+  "source": "octopus-energy-api",
+  "dataset": "octopus-standard-unit-rates",
+  "url": "https://api.octopus.energy/v1/products/AGILE-OUTGOING-19-05-13/electricity-tariffs/E-1R-AGILE-OUTGOING-19-05-13-E/standard-unit-rates/?period_from=2026-05-31T21:00Z&period_to=2026-09-01T00:00Z&page_size=1500&page=1",
+  "path": "data/raw/octopus/2026-09-03-010/rates/AGILE-OUTGOING-19-05-13/E/summer/page-1.json",
+  "sha256": "5eee8fb2a117abfc9481e843fd5dfb665498de32c56d514aa7e00f2c828288c9",
+  "fetched_at": "2026-09-03T20:54:09.415197+00:00",
+  "bytes": 206610
+ },
+ {
+  "source": "octopus-energy-api",
+  "dataset": "octopus-standard-unit-rates",
+  "url": "https://api.octopus.energy/v1/products/AGILE-OUTGOING-19-05-13/electricity-tariffs/E-1R-AGILE-OUTGOING-19-05-13-E/standard-unit-rates/?page=2&page_size=1500&period_from=2026-05-31T21%3A00Z&period_to=2026-09-01T00%3A00Z",
+  "path": "data/raw/octopus/2026-09-03-010/rates/AGILE-OUTGOING-19-05-13/E/summer/page-2.json",
+  "sha256": "368abf71a406122e04999e06e1529948662bf126a6a0068d3fdb90ffcd283537",
+  "fetched_at": "2026-09-03T20:54:09.933524+00:00",
+  "bytes": 206355
+ },
+ {
+  "source": "octopus-energy-api",
+  "dataset": "octopus-standard-unit-rates",
+  "url": "https://api.octopus.energy/v1/products/AGILE-OUTGOING-19-05-13/electricity-tariffs/E-1R-AGILE-OUTGOING-19-05-13-E/standard-unit-rates/?page=3&page_size=1500&period_from=2026-05-31T21%3A00Z&period_to=2026-09-01T00%3A00Z",
+  "path": "data/raw/octopus/2026-09-03-010/rates/AGILE-OUTGOING-19-05-13/E/summer/page-3.json",
+  "sha256": "4f6626f1e675a2f19ba0aa4f80d3ce00d18b60e4beb821bfc33087bc3d95dc6e",
+  "fetched_at": "2026-09-03T20:54:10.438767+00:00",
+  "bytes": 195046
+ },
+ {
+  "source": "octopus-energy-api",
+  "dataset": "octopus-standard-unit-rates",
+  "url": "https://api.octopus.energy/v1/products/AGILE-OUTGOING-19-05-13/electricity-tariffs/E-1R-AGILE-OUTGOING-19-05-13-E/standard-unit-rates/?period_from=2025-12-31T22:00Z&period_to=2026-03-01T00:00Z&page_size=1500&page=1",
+  "path": "data/raw/octopus/2026-09-03-010/rates/AGILE-OUTGOING-19-05-13/E/winter/page-1.json",
+  "sha256": "beb08a1148aff103a070e6bc1b90a2906e487d04221d0813cd4b4a5e91880708",
+  "fetched_at": "2026-09-03T20:54:11.189101+00:00",
+  "bytes": 204568
+ },
+ {
+  "source": "octopus-energy-api",
+  "dataset": "octopus-standard-unit-rates",
+  "url": "https://api.octopus.energy/v1/products/AGILE-OUTGOING-19-05-13/electricity-tariffs/E-1R-AGILE-OUTGOING-19-05-13-E/standard-unit-rates/?page=2&page_size=1500&period_from=2025-12-31T22%3A00Z&period_to=2026-03-01T00%3A00Z",
+  "path": "data/raw/octopus/2026-09-03-010/rates/AGILE-OUTGOING-19-05-13/E/winter/page-2.json",
+  "sha256": "1b12d26ed550deef065146d4bc0d71df90bc5dc847856e0d44d26ca30f530250",
+  "fetched_at": "2026-09-03T20:54:11.775284+00:00",
+  "bytes": 182701
+ },
+ {
+  "source": "octopus-energy-api",
+  "dataset": "octopus-standard-unit-rates",
+  "url": "https://api.octopus.energy/v1/products/AGILE-OUTGOING-19-05-13/electricity-tariffs/E-1R-AGILE-OUTGOING-19-05-13-J/standard-unit-rates/?period_from=2026-05-31T21:00Z&period_to=2026-09-01T00:00Z&page_size=1500&page=1",
+  "path": "data/raw/octopus/2026-09-03-010/rates/AGILE-OUTGOING-19-05-13/J/summer/page-1.json",
+  "sha256": "8e669c446479941d9f25b37cea6bc917b06276c6b7412acb10e629d429358626",
+  "fetched_at": "2026-09-03T20:54:12.590262+00:00",
+  "bytes": 206688
+ },
+ {
+  "source": "octopus-energy-api",
+  "dataset": "octopus-standard-unit-rates",
+  "url": "https://api.octopus.energy/v1/products/AGILE-OUTGOING-19-05-13/electricity-tariffs/E-1R-AGILE-OUTGOING-19-05-13-J/standard-unit-rates/?page=2&page_size=1500&period_from=2026-05-31T21%3A00Z&period_to=2026-09-01T00%3A00Z",
+  "path": "data/raw/octopus/2026-09-03-010/rates/AGILE-OUTGOING-19-05-13/J/summer/page-2.json",
+  "sha256": "430d2f3884ef395e4a1a213f3b71f25d68cdd05aa8220cf4bd26039c69a036e7",
+  "fetched_at": "2026-09-03T20:54:13.104296+00:00",
+  "bytes": 206511
+ },
+ {
+  "source": "octopus-energy-api",
+  "dataset": "octopus-standard-unit-rates",
+  "url": "https://api.octopus.energy/v1/products/AGILE-OUTGOING-19-05-13/electricity-tariffs/E-1R-AGILE-OUTGOING-19-05-13-J/standard-unit-rates/?page=3&page_size=1500&period_from=2026-05-31T21%3A00Z&period_to=2026-09-01T00%3A00Z",
+  "path": "data/raw/octopus/2026-09-03-010/rates/AGILE-OUTGOING-19-05-13/J/summer/page-3.json",
+  "sha256": "3aece977d861d3a9b823ee7a88ac7dade797a644ee15412cd5902e102918c19b",
+  "fetched_at": "2026-09-03T20:54:13.608367+00:00",
+  "bytes": 195166
+ },
+ {
+  "source": "octopus-energy-api",
+  "dataset": "octopus-standard-unit-rates",
+  "url": "https://api.octopus.energy/v1/products/AGILE-OUTGOING-19-05-13/electricity-tariffs/E-1R-AGILE-OUTGOING-19-05-13-J/standard-unit-rates/?period_from=2025-12-31T22:00Z&period_to=2026-03-01T00:00Z&page_size=1500&page=1",
+  "path": "data/raw/octopus/2026-09-03-010/rates/AGILE-OUTGOING-19-05-13/J/winter/page-1.json",
+  "sha256": "6523bd5a62f939121600e2de81dd627db26970a0303b1abaff7045795a444a0b",
+  "fetched_at": "2026-09-03T20:54:14.339779+00:00",
+  "bytes": 204746
+ },
+ {
+  "source": "octopus-energy-api",
+  "dataset": "octopus-standard-unit-rates",
+  "url": "https://api.octopus.energy/v1/products/AGILE-OUTGOING-19-05-13/electricity-tariffs/E-1R-AGILE-OUTGOING-19-05-13-J/standard-unit-rates/?page=2&page_size=1500&period_from=2025-12-31T22%3A00Z&period_to=2026-03-01T00%3A00Z",
+  "path": "data/raw/octopus/2026-09-03-010/rates/AGILE-OUTGOING-19-05-13/J/winter/page-2.json",
+  "sha256": "1a478bf5ae527260dae54e3cfd693441b60597551ec5d36719d287db55e04edc",
+  "fetched_at": "2026-09-03T20:54:15.047642+00:00",
+  "bytes": 182801
+ },
+ {
+  "source": "octopus-energy-api",
+  "dataset": "octopus-standard-unit-rates",
+  "url": "https://api.octopus.energy/v1/products/FLUX-EXPORT-23-02-14/electricity-tariffs/E-1R-FLUX-EXPORT-23-02-14-C/standard-unit-rates/?period_from=2026-05-31T21:00Z&period_to=2026-09-01T00:00Z&page_size=1500&page=1",
+  "path": "data/raw/octopus/2026-09-03-010/rates/FLUX-EXPORT-23-02-14/C/summer/page-1.json",
+  "sha256": "d239787f02e3292a69645391616329578c99d1400b513a0c27a5e846b643ad38",
+  "fetched_at": "2026-09-03T20:54:15.798157+00:00",
+  "bytes": 52037
+ },
+ {
+  "source": "octopus-energy-api",
+  "dataset": "octopus-standard-unit-rates",
+  "url": "https://api.octopus.energy/v1/products/FLUX-EXPORT-23-02-14/electricity-tariffs/E-1R-FLUX-EXPORT-23-02-14-C/standard-unit-rates/?period_from=2025-12-31T22:00Z&period_to=2026-03-01T00:00Z&page_size=1500&page=1",
+  "path": "data/raw/octopus/2026-09-03-010/rates/FLUX-EXPORT-23-02-14/C/winter/page-1.json",
+  "sha256": "c20d0e09568c3cf8bdb54a06ae220f1345b8402d1f66512bbf4e716005511c20",
+  "fetched_at": "2026-09-03T20:54:16.479703+00:00",
+  "bytes": 33351
+ },
+ {
+  "source": "octopus-energy-api",
+  "dataset": "octopus-standard-unit-rates",
+  "url": "https://api.octopus.energy/v1/products/FLUX-EXPORT-23-02-14/electricity-tariffs/E-1R-FLUX-EXPORT-23-02-14-E/standard-unit-rates/?period_from=2026-05-31T21:00Z&period_to=2026-09-01T00:00Z&page_size=1500&page=1",
+  "path": "data/raw/octopus/2026-09-03-010/rates/FLUX-EXPORT-23-02-14/E/summer/page-1.json",
+  "sha256": "5e1b62306e506e8da150cc8fa1c561af055a5637f0cf768e8e4cb53435985776",
+  "fetched_at": "2026-09-03T20:54:17.103844+00:00",
+  "bytes": 52037
+ },
+ {
+  "source": "octopus-energy-api",
+  "dataset": "octopus-standard-unit-rates",
+  "url": "https://api.octopus.energy/v1/products/FLUX-EXPORT-23-02-14/electricity-tariffs/E-1R-FLUX-EXPORT-23-02-14-E/standard-unit-rates/?period_from=2025-12-31T22:00Z&period_to=2026-03-01T00:00Z&page_size=1500&page=1",
+  "path": "data/raw/octopus/2026-09-03-010/rates/FLUX-EXPORT-23-02-14/E/winter/page-1.json",
+  "sha256": "e7d30d2fe7bf0dc0fe55aed18112db718adf8a6fbd5c7ea445689bb691765d3e",
+  "fetched_at": "2026-09-03T20:54:18.057754+00:00",
+  "bytes": 33351
+ },
+ {
+  "source": "octopus-energy-api",
+  "dataset": "octopus-standard-unit-rates",
+  "url": "https://api.octopus.energy/v1/products/FLUX-EXPORT-23-02-14/electricity-tariffs/E-1R-FLUX-EXPORT-23-02-14-J/standard-unit-rates/?period_from=2026-05-31T21:00Z&period_to=2026-09-01T00:00Z&page_size=1500&page=1",
+  "path": "data/raw/octopus/2026-09-03-010/rates/FLUX-EXPORT-23-02-14/J/summer/page-1.json",
+  "sha256": "2728518a6584d7611d9644fc6e8315898eb426c130f75f8b29ccb87a3c53d321",
+  "fetched_at": "2026-09-03T20:54:18.678509+00:00",
+  "bytes": 52409
+ },
+ {
+  "source": "octopus-energy-api",
+  "dataset": "octopus-standard-unit-rates",
+  "url": "https://api.octopus.energy/v1/products/FLUX-EXPORT-23-02-14/electricity-tariffs/E-1R-FLUX-EXPORT-23-02-14-J/standard-unit-rates/?period_from=2025-12-31T22:00Z&period_to=2026-03-01T00:00Z&page_size=1500&page=1",
+  "path": "data/raw/octopus/2026-09-03-010/rates/FLUX-EXPORT-23-02-14/J/winter/page-1.json",
+  "sha256": "c07d6e41a980a2e42d310955a0ccca5e63d53777af99a16fff3e24f9b40ab125",
+  "fetched_at": "2026-09-03T20:54:19.292931+00:00",
+  "bytes": 33589
+ },
+ {
+  "source": "octopus-energy-api",
+  "dataset": "octopus-standard-unit-rates",
+  "url": "https://api.octopus.energy/v1/products/FLUX-IMPORT-23-02-14/electricity-tariffs/E-1R-FLUX-IMPORT-23-02-14-C/standard-unit-rates/?period_from=2026-05-31T21:00Z&period_to=2026-09-01T00:00Z&page_size=1500&page=1",
+  "path": "data/raw/octopus/2026-09-03-010/rates/FLUX-IMPORT-23-02-14/C/summer/page-1.json",
+  "sha256": "bb2894e940e259768b9c3d715158ed4d66b2febe814599e885462aed7ef35333",
+  "fetched_at": "2026-09-03T20:54:19.913460+00:00",
+  "bytes": 53005
+ },
+ {
+  "source": "octopus-energy-api",
+  "dataset": "octopus-standard-unit-rates",
+  "url": "https://api.octopus.energy/v1/products/FLUX-IMPORT-23-02-14/electricity-tariffs/E-1R-FLUX-IMPORT-23-02-14-C/standard-unit-rates/?period_from=2025-12-31T22:00Z&period_to=2026-03-01T00:00Z&page_size=1500&page=1",
+  "path": "data/raw/octopus/2026-09-03-010/rates/FLUX-IMPORT-23-02-14/C/winter/page-1.json",
+  "sha256": "6f8a618b415111c7e783b953693ccb45d770a21f5d2639167d5946f72ab9d1d9",
+  "fetched_at": "2026-09-03T20:54:20.527002+00:00",
+  "bytes": 34206
+ },
+ {
+  "source": "octopus-energy-api",
+  "dataset": "octopus-standard-unit-rates",
+  "url": "https://api.octopus.energy/v1/products/FLUX-IMPORT-23-02-14/electricity-tariffs/E-1R-FLUX-IMPORT-23-02-14-E/standard-unit-rates/?period_from=2026-05-31T21:00Z&period_to=2026-09-01T00:00Z&page_size=1500&page=1",
+  "path": "data/raw/octopus/2026-09-03-010/rates/FLUX-IMPORT-23-02-14/E/summer/page-1.json",
+  "sha256": "d3f088492cbcea8731e8340d4c2fdb59154f34c3f4eee6a36f44e275f9422855",
+  "fetched_at": "2026-09-03T20:54:21.232395+00:00",
+  "bytes": 53004
+ },
+ {
+  "source": "octopus-energy-api",
+  "dataset": "octopus-standard-unit-rates",
+  "url": "https://api.octopus.energy/v1/products/FLUX-IMPORT-23-02-14/electricity-tariffs/E-1R-FLUX-IMPORT-23-02-14-E/standard-unit-rates/?period_from=2025-12-31T22:00Z&period_to=2026-03-01T00:00Z&page_size=1500&page=1",
+  "path": "data/raw/octopus/2026-09-03-010/rates/FLUX-IMPORT-23-02-14/E/winter/page-1.json",
+  "sha256": "e44ae2318c03c9916fcabc55d09dc317d7d9270cdadaa2e4665c13879c96af26",
+  "fetched_at": "2026-09-03T20:54:21.847411+00:00",
+  "bytes": 34146
+ },
+ {
+  "source": "octopus-energy-api",
+  "dataset": "octopus-standard-unit-rates",
+  "url": "https://api.octopus.energy/v1/products/FLUX-IMPORT-23-02-14/electricity-tariffs/E-1R-FLUX-IMPORT-23-02-14-J/standard-unit-rates/?period_from=2026-05-31T21:00Z&period_to=2026-09-01T00:00Z&page_size=1500&page=1",
+  "path": "data/raw/octopus/2026-09-03-010/rates/FLUX-IMPORT-23-02-14/J/summer/page-1.json",
+  "sha256": "4bfb703611f6dbcacad9450ece16ae04ab7b36cef805da1114bcd707b89a8c00",
+  "fetched_at": "2026-09-03T20:54:22.499060+00:00",
+  "bytes": 52912
+ },
+ {
+  "source": "octopus-energy-api",
+  "dataset": "octopus-standard-unit-rates",
+  "url": "https://api.octopus.energy/v1/products/FLUX-IMPORT-23-02-14/electricity-tariffs/E-1R-FLUX-IMPORT-23-02-14-J/standard-unit-rates/?period_from=2025-12-31T22:00Z&period_to=2026-03-01T00:00Z&page_size=1500&page=1",
+  "path": "data/raw/octopus/2026-09-03-010/rates/FLUX-IMPORT-23-02-14/J/winter/page-1.json",
+  "sha256": "835053bc2ec03f485ba50dd07bc09030fb60effb8538f089f48a65a8d9f22c37",
+  "fetched_at": "2026-09-03T20:54:23.263701+00:00",
+  "bytes": 34087
+ },
+ {
+  "source": "octopus-energy-api",
+  "dataset": "octopus-standard-unit-rates",
+  "url": "https://api.octopus.energy/v1/products/GO-VAR-22-10-14/electricity-tariffs/E-1R-GO-VAR-22-10-14-C/standard-unit-rates/?period_from=2026-05-31T21:00Z&period_to=2026-09-01T00:00Z&page_size=1500&page=1",
+  "path": "data/raw/octopus/2026-09-03-010/rates/GO-VAR-22-10-14/C/summer/page-1.json",
+  "sha256": "01df17f2b70f0fca62b970fceb06cbf706ca0e1acac90f180d424658c8f332f2",
+  "fetched_at": "2026-09-03T20:54:23.880591+00:00",
+  "bytes": 26558
+ },
+ {
+  "source": "octopus-energy-api",
+  "dataset": "octopus-standard-unit-rates",
+  "url": "https://api.octopus.energy/v1/products/GO-VAR-22-10-14/electricity-tariffs/E-1R-GO-VAR-22-10-14-C/standard-unit-rates/?period_from=2025-12-31T22:00Z&period_to=2026-03-01T00:00Z&page_size=1500&page=1",
+  "path": "data/raw/octopus/2026-09-03-010/rates/GO-VAR-22-10-14/C/winter/page-1.json",
+  "sha256": "1e1afaac3ffe375676f6243b2c99be6779f1cb1d3578046adf53f7c72709055e",
+  "fetched_at": "2026-09-03T20:54:24.484847+00:00",
+  "bytes": 17097
+ },
+ {
+  "source": "octopus-energy-api",
+  "dataset": "octopus-standard-unit-rates",
+  "url": "https://api.octopus.energy/v1/products/GO-VAR-22-10-14/electricity-tariffs/E-1R-GO-VAR-22-10-14-E/standard-unit-rates/?period_from=2026-05-31T21:00Z&period_to=2026-09-01T00:00Z&page_size=1500&page=1",
+  "path": "data/raw/octopus/2026-09-03-010/rates/GO-VAR-22-10-14/E/summer/page-1.json",
+  "sha256": "5b920d2afbdb67d01ff36c404d6b60b40894b2379beba0f7d3435392834eb326",
+  "fetched_at": "2026-09-03T20:54:25.490749+00:00",
+  "bytes": 26558
+ },
+ {
+  "source": "octopus-energy-api",
+  "dataset": "octopus-standard-unit-rates",
+  "url": "https://api.octopus.energy/v1/products/GO-VAR-22-10-14/electricity-tariffs/E-1R-GO-VAR-22-10-14-E/standard-unit-rates/?period_from=2025-12-31T22:00Z&period_to=2026-03-01T00:00Z&page_size=1500&page=1",
+  "path": "data/raw/octopus/2026-09-03-010/rates/GO-VAR-22-10-14/E/winter/page-1.json",
+  "sha256": "62aea97df7ac8898b5155a3cb4c5529422dc9b0881d424ee2fe43a5c1ba0df78",
+  "fetched_at": "2026-09-03T20:54:26.123143+00:00",
+  "bytes": 17097
+ },
+ {
+  "source": "octopus-energy-api",
+  "dataset": "octopus-standard-unit-rates",
+  "url": "https://api.octopus.energy/v1/products/GO-VAR-22-10-14/electricity-tariffs/E-1R-GO-VAR-22-10-14-J/standard-unit-rates/?period_from=2026-05-31T21:00Z&period_to=2026-09-01T00:00Z&page_size=1500&page=1",
+  "path": "data/raw/octopus/2026-09-03-010/rates/GO-VAR-22-10-14/J/summer/page-1.json",
+  "sha256": "eb00865e61cd71a7229afe28da3a9b4b573506ddece3a9f4daf081b65f9b03e3",
+  "fetched_at": "2026-09-03T20:54:26.780690+00:00",
+  "bytes": 26465
+ },
+ {
+  "source": "octopus-energy-api",
+  "dataset": "octopus-standard-unit-rates",
+  "url": "https://api.octopus.energy/v1/products/GO-VAR-22-10-14/electricity-tariffs/E-1R-GO-VAR-22-10-14-J/standard-unit-rates/?period_from=2025-12-31T22:00Z&period_to=2026-03-01T00:00Z&page_size=1500&page=1",
+  "path": "data/raw/octopus/2026-09-03-010/rates/GO-VAR-22-10-14/J/winter/page-1.json",
+  "sha256": "66b0af65533142ef3f65570262260bda29e83dfb7bda3ae3b36296eac85520ee",
+  "fetched_at": "2026-09-03T20:54:27.414568+00:00",
+  "bytes": 17097
+ },
+ {
+  "source": "octopus-energy-api",
+  "dataset": "octopus-standard-unit-rates",
+  "url": "https://api.octopus.energy/v1/products/INTELLI-FLUX-IMPORT-23-07-14/electricity-tariffs/E-1R-INTELLI-FLUX-IMPORT-23-07-14-C/standard-unit-rates/?period_from=2026-05-31T21:00Z&period_to=2026-09-01T00:00Z&page_size=1500&page=1",
+  "path": "data/raw/octopus/2026-09-03-010/rates/INTELLI-FLUX-IMPORT-23-07-14/C/summer/page-1.json",
+  "sha256": "22ccbcd5e95f7709636d293391997ee6b6160723eae891fdb60232ff98d8d139",
+  "fetched_at": "2026-09-03T20:54:28.098701+00:00",
+  "bytes": 26693
+ },
+ {
+  "source": "octopus-energy-api",
+  "dataset": "octopus-standard-unit-rates",
+  "url": "https://api.octopus.energy/v1/products/INTELLI-FLUX-IMPORT-23-07-14/electricity-tariffs/E-1R-INTELLI-FLUX-IMPORT-23-07-14-C/standard-unit-rates/?period_from=2025-12-31T22:00Z&period_to=2026-03-01T00:00Z&page_size=1500&page=1",
+  "path": "data/raw/octopus/2026-09-03-010/rates/INTELLI-FLUX-IMPORT-23-07-14/C/winter/page-1.json",
+  "sha256": "8861071f568460814b7f35c42d5d224664c748b2d33027fae01d5a640483c6d2",
+  "fetched_at": "2026-09-03T20:54:28.777017+00:00",
+  "bytes": 17271
+ },
+ {
+  "source": "octopus-energy-api",
+  "dataset": "octopus-standard-unit-rates",
+  "url": "https://api.octopus.energy/v1/products/INTELLI-FLUX-IMPORT-23-07-14/electricity-tariffs/E-1R-INTELLI-FLUX-IMPORT-23-07-14-E/standard-unit-rates/?period_from=2026-05-31T21:00Z&period_to=2026-09-01T00:00Z&page_size=1500&page=1",
+  "path": "data/raw/octopus/2026-09-03-010/rates/INTELLI-FLUX-IMPORT-23-07-14/E/summer/page-1.json",
+  "sha256": "d1a01a634449405fff7de68279b9445b28d282b5a3bf1508ede86f5134b09c54",
+  "fetched_at": "2026-09-03T20:54:29.401502+00:00",
+  "bytes": 26508
+ },
+ {
+  "source": "octopus-energy-api",
+  "dataset": "octopus-standard-unit-rates",
+  "url": "https://api.octopus.energy/v1/products/INTELLI-FLUX-IMPORT-23-07-14/electricity-tariffs/E-1R-INTELLI-FLUX-IMPORT-23-07-14-E/standard-unit-rates/?period_from=2025-12-31T22:00Z&period_to=2026-03-01T00:00Z&page_size=1500&page=1",
+  "path": "data/raw/octopus/2026-09-03-010/rates/INTELLI-FLUX-IMPORT-23-07-14/E/winter/page-1.json",
+  "sha256": "f9e0d4f9c1f7e77a25b8432c3bdc839097c338af3fae576bf22fe18abec563de",
+  "fetched_at": "2026-09-03T20:54:30.064455+00:00",
+  "bytes": 17273
+ },
+ {
+  "source": "octopus-energy-api",
+  "dataset": "octopus-standard-unit-rates",
+  "url": "https://api.octopus.energy/v1/products/INTELLI-FLUX-IMPORT-23-07-14/electricity-tariffs/E-1R-INTELLI-FLUX-IMPORT-23-07-14-J/standard-unit-rates/?period_from=2026-05-31T21:00Z&period_to=2026-09-01T00:00Z&page_size=1500&page=1",
+  "path": "data/raw/octopus/2026-09-03-010/rates/INTELLI-FLUX-IMPORT-23-07-14/J/summer/page-1.json",
+  "sha256": "f3d85525584a7a7f9c3ee8b4ef0dc5f940b69d6edc30b21381f24130122b4a34",
+  "fetched_at": "2026-09-03T20:54:30.918087+00:00",
+  "bytes": 26228
+ },
+ {
+  "source": "octopus-energy-api",
+  "dataset": "octopus-standard-unit-rates",
+  "url": "https://api.octopus.energy/v1/products/INTELLI-FLUX-IMPORT-23-07-14/electricity-tariffs/E-1R-INTELLI-FLUX-IMPORT-23-07-14-J/standard-unit-rates/?period_from=2025-12-31T22:00Z&period_to=2026-03-01T00:00Z&page_size=1500&page=1",
+  "path": "data/raw/octopus/2026-09-03-010/rates/INTELLI-FLUX-IMPORT-23-07-14/J/winter/page-1.json",
+  "sha256": "4c17c4affd272188aff2ed6df44c991dba6c25d0f471d8833a76f7b1177babd9",
+  "fetched_at": "2026-09-03T20:54:31.767917+00:00",
+  "bytes": 17214
+ },
+ {
+  "source": "octopus-energy-api",
+  "dataset": "octopus-standard-unit-rates",
+  "url": "https://api.octopus.energy/v1/products/INTELLI-VAR-22-10-14/electricity-tariffs/E-1R-INTELLI-VAR-22-10-14-C/standard-unit-rates/?period_from=2026-05-31T21:00Z&period_to=2026-09-01T00:00Z&page_size=1500&page=1",
+  "path": "data/raw/octopus/2026-09-03-010/rates/INTELLI-VAR-22-10-14/C/summer/page-1.json",
+  "sha256": "0595424161ea863805d9b92c0e52d7aa1e3c46ec58cd8f0d6933759006a5fb74",
+  "fetched_at": "2026-09-03T20:54:32.359301+00:00",
+  "bytes": 52
+ },
+ {
+  "source": "octopus-energy-api",
+  "dataset": "octopus-standard-unit-rates",
+  "url": "https://api.octopus.energy/v1/products/INTELLI-VAR-22-10-14/electricity-tariffs/E-1R-INTELLI-VAR-22-10-14-C/standard-unit-rates/?period_from=2025-12-31T22:00Z&period_to=2026-03-01T00:00Z&page_size=1500&page=1",
+  "path": "data/raw/octopus/2026-09-03-010/rates/INTELLI-VAR-22-10-14/C/winter/page-1.json",
+  "sha256": "0595424161ea863805d9b92c0e52d7aa1e3c46ec58cd8f0d6933759006a5fb74",
+  "fetched_at": "2026-09-03T20:54:33.042488+00:00",
+  "bytes": 52
+ },
+ {
+  "source": "octopus-energy-api",
+  "dataset": "octopus-standard-unit-rates",
+  "url": "https://api.octopus.energy/v1/products/INTELLI-VAR-22-10-14/electricity-tariffs/E-1R-INTELLI-VAR-22-10-14-E/standard-unit-rates/?period_from=2026-05-31T21:00Z&period_to=2026-09-01T00:00Z&page_size=1500&page=1",
+  "path": "data/raw/octopus/2026-09-03-010/rates/INTELLI-VAR-22-10-14/E/summer/page-1.json",
+  "sha256": "0595424161ea863805d9b92c0e52d7aa1e3c46ec58cd8f0d6933759006a5fb74",
+  "fetched_at": "2026-09-03T20:54:33.652957+00:00",
+  "bytes": 52
+ },
+ {
+  "source": "octopus-energy-api",
+  "dataset": "octopus-standard-unit-rates",
+  "url": "https://api.octopus.energy/v1/products/INTELLI-VAR-22-10-14/electricity-tariffs/E-1R-INTELLI-VAR-22-10-14-E/standard-unit-rates/?period_from=2025-12-31T22:00Z&period_to=2026-03-01T00:00Z&page_size=1500&page=1",
+  "path": "data/raw/octopus/2026-09-03-010/rates/INTELLI-VAR-22-10-14/E/winter/page-1.json",
+  "sha256": "0595424161ea863805d9b92c0e52d7aa1e3c46ec58cd8f0d6933759006a5fb74",
+  "fetched_at": "2026-09-03T20:54:34.265115+00:00",
+  "bytes": 52
+ },
+ {
+  "source": "octopus-energy-api",
+  "dataset": "octopus-standard-unit-rates",
+  "url": "https://api.octopus.energy/v1/products/INTELLI-VAR-22-10-14/electricity-tariffs/E-1R-INTELLI-VAR-22-10-14-J/standard-unit-rates/?period_from=2026-05-31T21:00Z&period_to=2026-09-01T00:00Z&page_size=1500&page=1",
+  "path": "data/raw/octopus/2026-09-03-010/rates/INTELLI-VAR-22-10-14/J/summer/page-1.json",
+  "sha256": "0595424161ea863805d9b92c0e52d7aa1e3c46ec58cd8f0d6933759006a5fb74",
+  "fetched_at": "2026-09-03T20:54:34.937124+00:00",
+  "bytes": 52
+ },
+ {
+  "source": "octopus-energy-api",
+  "dataset": "octopus-standard-unit-rates",
+  "url": "https://api.octopus.energy/v1/products/INTELLI-VAR-22-10-14/electricity-tariffs/E-1R-INTELLI-VAR-22-10-14-J/standard-unit-rates/?period_from=2025-12-31T22:00Z&period_to=2026-03-01T00:00Z&page_size=1500&page=1",
+  "path": "data/raw/octopus/2026-09-03-010/rates/INTELLI-VAR-22-10-14/J/winter/page-1.json",
+  "sha256": "0595424161ea863805d9b92c0e52d7aa1e3c46ec58cd8f0d6933759006a5fb74",
+  "fetched_at": "2026-09-03T20:54:35.549964+00:00",
+  "bytes": 52
+ },
+ {
+  "source": "octopus-energy-api",
+  "dataset": "octopus-standard-unit-rates",
+  "url": "https://api.octopus.energy/v1/products/OUTGOING-PRIME-FIX-12M-26-06-23/electricity-tariffs/E-1R-OUTGOING-PRIME-FIX-12M-26-06-23-C/standard-unit-rates/?period_from=2026-05-31T21:00Z&period_to=2026-09-01T00:00Z&page_size=1500&page=1",
+  "path": "data/raw/octopus/2026-09-03-010/rates/OUTGOING-PRIME-FIX-12M-26-06-23/C/summer/page-1.json",
+  "sha256": "92ae8adf22ef1f6f7f76044c74c0fd7e66c973593d21aad27b33250abc6bc629",
+  "fetched_at": "2026-09-03T20:54:36.199186+00:00",
+  "bytes": 19087
+ },
+ {
+  "source": "octopus-energy-api",
+  "dataset": "octopus-standard-unit-rates",
+  "url": "https://api.octopus.energy/v1/products/OUTGOING-PRIME-FIX-12M-26-06-23/electricity-tariffs/E-1R-OUTGOING-PRIME-FIX-12M-26-06-23-C/standard-unit-rates/?period_from=2025-12-31T22:00Z&period_to=2026-03-01T00:00Z&page_size=1500&page=1",
+  "path": "data/raw/octopus/2026-09-03-010/rates/OUTGOING-PRIME-FIX-12M-26-06-23/C/winter/page-1.json",
+  "sha256": "0595424161ea863805d9b92c0e52d7aa1e3c46ec58cd8f0d6933759006a5fb74",
+  "fetched_at": "2026-09-03T20:54:36.782220+00:00",
+  "bytes": 52
+ },
+ {
+  "source": "octopus-energy-api",
+  "dataset": "octopus-standard-unit-rates",
+  "url": "https://api.octopus.energy/v1/products/OUTGOING-PRIME-FIX-12M-26-06-23/electricity-tariffs/E-1R-OUTGOING-PRIME-FIX-12M-26-06-23-E/standard-unit-rates/?period_from=2026-05-31T21:00Z&period_to=2026-09-01T00:00Z&page_size=1500&page=1",
+  "path": "data/raw/octopus/2026-09-03-010/rates/OUTGOING-PRIME-FIX-12M-26-06-23/E/summer/page-1.json",
+  "sha256": "92ae8adf22ef1f6f7f76044c74c0fd7e66c973593d21aad27b33250abc6bc629",
+  "fetched_at": "2026-09-03T20:54:37.388918+00:00",
+  "bytes": 19087
+ },
+ {
+  "source": "octopus-energy-api",
+  "dataset": "octopus-standard-unit-rates",
+  "url": "https://api.octopus.energy/v1/products/OUTGOING-PRIME-FIX-12M-26-06-23/electricity-tariffs/E-1R-OUTGOING-PRIME-FIX-12M-26-06-23-E/standard-unit-rates/?period_from=2025-12-31T22:00Z&period_to=2026-03-01T00:00Z&page_size=1500&page=1",
+  "path": "data/raw/octopus/2026-09-03-010/rates/OUTGOING-PRIME-FIX-12M-26-06-23/E/winter/page-1.json",
+  "sha256": "0595424161ea863805d9b92c0e52d7aa1e3c46ec58cd8f0d6933759006a5fb74",
+  "fetched_at": "2026-09-03T20:54:38.077373+00:00",
+  "bytes": 52
+ },
+ {
+  "source": "octopus-energy-api",
+  "dataset": "octopus-standard-unit-rates",
+  "url": "https://api.octopus.energy/v1/products/OUTGOING-PRIME-FIX-12M-26-06-23/electricity-tariffs/E-1R-OUTGOING-PRIME-FIX-12M-26-06-23-J/standard-unit-rates/?period_from=2026-05-31T21:00Z&period_to=2026-09-01T00:00Z&page_size=1500&page=1",
+  "path": "data/raw/octopus/2026-09-03-010/rates/OUTGOING-PRIME-FIX-12M-26-06-23/J/summer/page-1.json",
+  "sha256": "92ae8adf22ef1f6f7f76044c74c0fd7e66c973593d21aad27b33250abc6bc629",
+  "fetched_at": "2026-09-03T20:54:38.679741+00:00",
+  "bytes": 19087
+ },
+ {
+  "source": "octopus-energy-api",
+  "dataset": "octopus-standard-unit-rates",
+  "url": "https://api.octopus.energy/v1/products/OUTGOING-PRIME-FIX-12M-26-06-23/electricity-tariffs/E-1R-OUTGOING-PRIME-FIX-12M-26-06-23-J/standard-unit-rates/?period_from=2025-12-31T22:00Z&period_to=2026-03-01T00:00Z&page_size=1500&page=1",
+  "path": "data/raw/octopus/2026-09-03-010/rates/OUTGOING-PRIME-FIX-12M-26-06-23/J/winter/page-1.json",
+  "sha256": "0595424161ea863805d9b92c0e52d7aa1e3c46ec58cd8f0d6933759006a5fb74",
+  "fetched_at": "2026-09-03T20:54:39.593211+00:00",
+  "bytes": 52
+ },
+ {
+  "source": "octopus-energy-api",
+  "dataset": "octopus-standard-unit-rates",
+  "url": "https://api.octopus.energy/v1/products/OUTGOING-VAR-24-10-26/electricity-tariffs/E-1R-OUTGOING-VAR-24-10-26-C/standard-unit-rates/?period_from=2026-05-31T21:00Z&period_to=2026-09-01T00:00Z&page_size=1500&page=1",
+  "path": "data/raw/octopus/2026-09-03-010/rates/OUTGOING-VAR-24-10-26/C/summer/page-1.json",
+  "sha256": "11936a1657b6db3563f8d1ce557aa2a12d2a099353b80e24b46c696f3a87f7ed",
+  "fetched_at": "2026-09-03T20:54:40.216494+00:00",
+  "bytes": 169
+ },
+ {
+  "source": "octopus-energy-api",
+  "dataset": "octopus-standard-unit-rates",
+  "url": "https://api.octopus.energy/v1/products/OUTGOING-VAR-24-10-26/electricity-tariffs/E-1R-OUTGOING-VAR-24-10-26-C/standard-unit-rates/?period_from=2025-12-31T22:00Z&period_to=2026-03-01T00:00Z&page_size=1500&page=1",
+  "path": "data/raw/octopus/2026-09-03-010/rates/OUTGOING-VAR-24-10-26/C/winter/page-1.json",
+  "sha256": "1d291a5e1188b051fca2ae3a083254493c00f8c3c6c2a3baf975101050e8ca81",
+  "fetched_at": "2026-09-03T20:54:40.814148+00:00",
+  "bytes": 187
+ },
+ {
+  "source": "octopus-energy-api",
+  "dataset": "octopus-standard-unit-rates",
+  "url": "https://api.octopus.energy/v1/products/OUTGOING-VAR-24-10-26/electricity-tariffs/E-1R-OUTGOING-VAR-24-10-26-E/standard-unit-rates/?period_from=2026-05-31T21:00Z&period_to=2026-09-01T00:00Z&page_size=1500&page=1",
+  "path": "data/raw/octopus/2026-09-03-010/rates/OUTGOING-VAR-24-10-26/E/summer/page-1.json",
+  "sha256": "11936a1657b6db3563f8d1ce557aa2a12d2a099353b80e24b46c696f3a87f7ed",
+  "fetched_at": "2026-09-03T20:54:41.454546+00:00",
+  "bytes": 169
+ },
+ {
+  "source": "octopus-energy-api",
+  "dataset": "octopus-standard-unit-rates",
+  "url": "https://api.octopus.energy/v1/products/OUTGOING-VAR-24-10-26/electricity-tariffs/E-1R-OUTGOING-VAR-24-10-26-E/standard-unit-rates/?period_from=2025-12-31T22:00Z&period_to=2026-03-01T00:00Z&page_size=1500&page=1",
+  "path": "data/raw/octopus/2026-09-03-010/rates/OUTGOING-VAR-24-10-26/E/winter/page-1.json",
+  "sha256": "1d291a5e1188b051fca2ae3a083254493c00f8c3c6c2a3baf975101050e8ca81",
+  "fetched_at": "2026-09-03T20:54:42.083320+00:00",
+  "bytes": 187
+ },
+ {
+  "source": "octopus-energy-api",
+  "dataset": "octopus-standard-unit-rates",
+  "url": "https://api.octopus.energy/v1/products/OUTGOING-VAR-24-10-26/electricity-tariffs/E-1R-OUTGOING-VAR-24-10-26-J/standard-unit-rates/?period_from=2026-05-31T21:00Z&period_to=2026-09-01T00:00Z&page_size=1500&page=1",
+  "path": "data/raw/octopus/2026-09-03-010/rates/OUTGOING-VAR-24-10-26/J/summer/page-1.json",
+  "sha256": "11936a1657b6db3563f8d1ce557aa2a12d2a099353b80e24b46c696f3a87f7ed",
+  "fetched_at": "2026-09-03T20:54:42.686374+00:00",
+  "bytes": 169
+ },
+ {
+  "source": "octopus-energy-api",
+  "dataset": "octopus-standard-unit-rates",
+  "url": "https://api.octopus.energy/v1/products/OUTGOING-VAR-24-10-26/electricity-tariffs/E-1R-OUTGOING-VAR-24-10-26-J/standard-unit-rates/?period_from=2025-12-31T22:00Z&period_to=2026-03-01T00:00Z&page_size=1500&page=1",
+  "path": "data/raw/octopus/2026-09-03-010/rates/OUTGOING-VAR-24-10-26/J/winter/page-1.json",
+  "sha256": "1d291a5e1188b051fca2ae3a083254493c00f8c3c6c2a3baf975101050e8ca81",
+  "fetched_at": "2026-09-03T20:54:43.262505+00:00",
+  "bytes": 187
+ },
+ {
+  "source": "octopus-energy-api",
+  "dataset": "octopus-standing-charges",
+  "url": "https://api.octopus.energy/v1/products/AGILE-24-10-01/electricity-tariffs/E-1R-AGILE-24-10-01-C/standing-charges/?period_from=2026-05-31T21:00Z&period_to=2026-09-01T00:00Z&page_size=1500&page=1",
+  "path": "data/raw/octopus/2026-09-03-010/standing/AGILE-24-10-01/C/summer/page-1.json",
+  "sha256": "a4065883b147ba9c9a03365bd4466c117330715c81185f44fece14a510e6ad43",
+  "fetched_at": "2026-09-03T20:53:58.490910+00:00",
+  "bytes": 177
+ },
+ {
+  "source": "octopus-energy-api",
+  "dataset": "octopus-standing-charges",
+  "url": "https://api.octopus.energy/v1/products/AGILE-24-10-01/electricity-tariffs/E-1R-AGILE-24-10-01-C/standing-charges/?period_from=2025-12-31T22:00Z&period_to=2026-03-01T00:00Z&page_size=1500&page=1",
+  "path": "data/raw/octopus/2026-09-03-010/standing/AGILE-24-10-01/C/winter/page-1.json",
+  "sha256": "a4065883b147ba9c9a03365bd4466c117330715c81185f44fece14a510e6ad43",
+  "fetched_at": "2026-09-03T20:53:59.611302+00:00",
+  "bytes": 177
+ },
+ {
+  "source": "octopus-energy-api",
+  "dataset": "octopus-standing-charges",
+  "url": "https://api.octopus.energy/v1/products/AGILE-24-10-01/electricity-tariffs/E-1R-AGILE-24-10-01-E/standing-charges/?period_from=2026-05-31T21:00Z&period_to=2026-09-01T00:00Z&page_size=1500&page=1",
+  "path": "data/raw/octopus/2026-09-03-010/standing/AGILE-24-10-01/E/summer/page-1.json",
+  "sha256": "e02f832a4ebc4de81deb9769d4aeb545cd2f510325d967b7f390c425c77dcc4d",
+  "fetched_at": "2026-09-03T20:54:01.324150+00:00",
+  "bytes": 176
+ },
+ {
+  "source": "octopus-energy-api",
+  "dataset": "octopus-standing-charges",
+  "url": "https://api.octopus.energy/v1/products/AGILE-24-10-01/electricity-tariffs/E-1R-AGILE-24-10-01-E/standing-charges/?period_from=2025-12-31T22:00Z&period_to=2026-03-01T00:00Z&page_size=1500&page=1",
+  "path": "data/raw/octopus/2026-09-03-010/standing/AGILE-24-10-01/E/winter/page-1.json",
+  "sha256": "e02f832a4ebc4de81deb9769d4aeb545cd2f510325d967b7f390c425c77dcc4d",
+  "fetched_at": "2026-09-03T20:54:02.423915+00:00",
+  "bytes": 176
+ },
+ {
+  "source": "octopus-energy-api",
+  "dataset": "octopus-standing-charges",
+  "url": "https://api.octopus.energy/v1/products/AGILE-24-10-01/electricity-tariffs/E-1R-AGILE-24-10-01-J/standing-charges/?period_from=2026-05-31T21:00Z&period_to=2026-09-01T00:00Z&page_size=1500&page=1",
+  "path": "data/raw/octopus/2026-09-03-010/standing/AGILE-24-10-01/J/summer/page-1.json",
+  "sha256": "1ca28cf0cfef9cadeb9f77b30ce42e28abac5646b7a705b3ecf33acbf7666e16",
+  "fetched_at": "2026-09-03T20:54:04.258524+00:00",
+  "bytes": 176
+ },
+ {
+  "source": "octopus-energy-api",
+  "dataset": "octopus-standing-charges",
+  "url": "https://api.octopus.energy/v1/products/AGILE-24-10-01/electricity-tariffs/E-1R-AGILE-24-10-01-J/standing-charges/?period_from=2025-12-31T22:00Z&period_to=2026-03-01T00:00Z&page_size=1500&page=1",
+  "path": "data/raw/octopus/2026-09-03-010/standing/AGILE-24-10-01/J/winter/page-1.json",
+  "sha256": "1ca28cf0cfef9cadeb9f77b30ce42e28abac5646b7a705b3ecf33acbf7666e16",
+  "fetched_at": "2026-09-03T20:54:05.502761+00:00",
+  "bytes": 176
+ },
+ {
+  "source": "octopus-energy-api",
+  "dataset": "octopus-standing-charges",
+  "url": "https://api.octopus.energy/v1/products/AGILE-OUTGOING-19-05-13/electricity-tariffs/E-1R-AGILE-OUTGOING-19-05-13-C/standing-charges/?period_from=2026-05-31T21:00Z&period_to=2026-09-01T00:00Z&page_size=1500&page=1",
+  "path": "data/raw/octopus/2026-09-03-010/standing/AGILE-OUTGOING-19-05-13/C/summer/page-1.json",
+  "sha256": "68a96d3ab86219caffb76ecedabfcffba161247260b13ec6eea69521de17fe5e",
+  "fetched_at": "2026-09-03T20:54:07.236056+00:00",
+  "bytes": 149
+ },
+ {
+  "source": "octopus-energy-api",
+  "dataset": "octopus-standing-charges",
+  "url": "https://api.octopus.energy/v1/products/AGILE-OUTGOING-19-05-13/electricity-tariffs/E-1R-AGILE-OUTGOING-19-05-13-C/standing-charges/?period_from=2025-12-31T22:00Z&period_to=2026-03-01T00:00Z&page_size=1500&page=1",
+  "path": "data/raw/octopus/2026-09-03-010/standing/AGILE-OUTGOING-19-05-13/C/winter/page-1.json",
+  "sha256": "68a96d3ab86219caffb76ecedabfcffba161247260b13ec6eea69521de17fe5e",
+  "fetched_at": "2026-09-03T20:54:08.812532+00:00",
+  "bytes": 149
+ },
+ {
+  "source": "octopus-energy-api",
+  "dataset": "octopus-standing-charges",
+  "url": "https://api.octopus.energy/v1/products/AGILE-OUTGOING-19-05-13/electricity-tariffs/E-1R-AGILE-OUTGOING-19-05-13-E/standing-charges/?period_from=2026-05-31T21:00Z&period_to=2026-09-01T00:00Z&page_size=1500&page=1",
+  "path": "data/raw/octopus/2026-09-03-010/standing/AGILE-OUTGOING-19-05-13/E/summer/page-1.json",
+  "sha256": "68a96d3ab86219caffb76ecedabfcffba161247260b13ec6eea69521de17fe5e",
+  "fetched_at": "2026-09-03T20:54:10.751865+00:00",
+  "bytes": 149
+ },
+ {
+  "source": "octopus-energy-api",
+  "dataset": "octopus-standing-charges",
+  "url": "https://api.octopus.energy/v1/products/AGILE-OUTGOING-19-05-13/electricity-tariffs/E-1R-AGILE-OUTGOING-19-05-13-E/standing-charges/?period_from=2025-12-31T22:00Z&period_to=2026-03-01T00:00Z&page_size=1500&page=1",
+  "path": "data/raw/octopus/2026-09-03-010/standing/AGILE-OUTGOING-19-05-13/E/winter/page-1.json",
+  "sha256": "68a96d3ab86219caffb76ecedabfcffba161247260b13ec6eea69521de17fe5e",
+  "fetched_at": "2026-09-03T20:54:12.075907+00:00",
+  "bytes": 149
+ },
+ {
+  "source": "octopus-energy-api",
+  "dataset": "octopus-standing-charges",
+  "url": "https://api.octopus.energy/v1/products/AGILE-OUTGOING-19-05-13/electricity-tariffs/E-1R-AGILE-OUTGOING-19-05-13-J/standing-charges/?period_from=2026-05-31T21:00Z&period_to=2026-09-01T00:00Z&page_size=1500&page=1",
+  "path": "data/raw/octopus/2026-09-03-010/standing/AGILE-OUTGOING-19-05-13/J/summer/page-1.json",
+  "sha256": "68a96d3ab86219caffb76ecedabfcffba161247260b13ec6eea69521de17fe5e",
+  "fetched_at": "2026-09-03T20:54:13.917455+00:00",
+  "bytes": 149
+ },
+ {
+  "source": "octopus-energy-api",
+  "dataset": "octopus-standing-charges",
+  "url": "https://api.octopus.energy/v1/products/AGILE-OUTGOING-19-05-13/electricity-tariffs/E-1R-AGILE-OUTGOING-19-05-13-J/standing-charges/?period_from=2025-12-31T22:00Z&period_to=2026-03-01T00:00Z&page_size=1500&page=1",
+  "path": "data/raw/octopus/2026-09-03-010/standing/AGILE-OUTGOING-19-05-13/J/winter/page-1.json",
+  "sha256": "68a96d3ab86219caffb76ecedabfcffba161247260b13ec6eea69521de17fe5e",
+  "fetched_at": "2026-09-03T20:54:15.366640+00:00",
+  "bytes": 149
+ },
+ {
+  "source": "octopus-energy-api",
+  "dataset": "octopus-standing-charges",
+  "url": "https://api.octopus.energy/v1/products/FLUX-EXPORT-23-02-14/electricity-tariffs/E-1R-FLUX-EXPORT-23-02-14-C/standing-charges/?period_from=2026-05-31T21:00Z&period_to=2026-09-01T00:00Z&page_size=1500&page=1",
+  "path": "data/raw/octopus/2026-09-03-010/standing/FLUX-EXPORT-23-02-14/C/summer/page-1.json",
+  "sha256": "33b4fe36af0abce008be8df010631b019b306ae31561ce7539c720a0908916c0",
+  "fetched_at": "2026-09-03T20:54:16.105227+00:00",
+  "bytes": 167
+ },
+ {
+  "source": "octopus-energy-api",
+  "dataset": "octopus-standing-charges",
+  "url": "https://api.octopus.energy/v1/products/FLUX-EXPORT-23-02-14/electricity-tariffs/E-1R-FLUX-EXPORT-23-02-14-C/standing-charges/?period_from=2025-12-31T22:00Z&period_to=2026-03-01T00:00Z&page_size=1500&page=1",
+  "path": "data/raw/octopus/2026-09-03-010/standing/FLUX-EXPORT-23-02-14/C/winter/page-1.json",
+  "sha256": "33b4fe36af0abce008be8df010631b019b306ae31561ce7539c720a0908916c0",
+  "fetched_at": "2026-09-03T20:54:16.789701+00:00",
+  "bytes": 167
+ },
+ {
+  "source": "octopus-energy-api",
+  "dataset": "octopus-standing-charges",
+  "url": "https://api.octopus.energy/v1/products/FLUX-EXPORT-23-02-14/electricity-tariffs/E-1R-FLUX-EXPORT-23-02-14-E/standing-charges/?period_from=2026-05-31T21:00Z&period_to=2026-09-01T00:00Z&page_size=1500&page=1",
+  "path": "data/raw/octopus/2026-09-03-010/standing/FLUX-EXPORT-23-02-14/E/summer/page-1.json",
+  "sha256": "33b4fe36af0abce008be8df010631b019b306ae31561ce7539c720a0908916c0",
+  "fetched_at": "2026-09-03T20:54:17.709469+00:00",
+  "bytes": 167
+ },
+ {
+  "source": "octopus-energy-api",
+  "dataset": "octopus-standing-charges",
+  "url": "https://api.octopus.energy/v1/products/FLUX-EXPORT-23-02-14/electricity-tariffs/E-1R-FLUX-EXPORT-23-02-14-E/standing-charges/?period_from=2025-12-31T22:00Z&period_to=2026-03-01T00:00Z&page_size=1500&page=1",
+  "path": "data/raw/octopus/2026-09-03-010/standing/FLUX-EXPORT-23-02-14/E/winter/page-1.json",
+  "sha256": "33b4fe36af0abce008be8df010631b019b306ae31561ce7539c720a0908916c0",
+  "fetched_at": "2026-09-03T20:54:18.350073+00:00",
+  "bytes": 167
+ },
+ {
+  "source": "octopus-energy-api",
+  "dataset": "octopus-standing-charges",
+  "url": "https://api.octopus.energy/v1/products/FLUX-EXPORT-23-02-14/electricity-tariffs/E-1R-FLUX-EXPORT-23-02-14-J/standing-charges/?period_from=2026-05-31T21:00Z&period_to=2026-09-01T00:00Z&page_size=1500&page=1",
+  "path": "data/raw/octopus/2026-09-03-010/standing/FLUX-EXPORT-23-02-14/J/summer/page-1.json",
+  "sha256": "33b4fe36af0abce008be8df010631b019b306ae31561ce7539c720a0908916c0",
+  "fetched_at": "2026-09-03T20:54:18.984962+00:00",
+  "bytes": 167
+ },
+ {
+  "source": "octopus-energy-api",
+  "dataset": "octopus-standing-charges",
+  "url": "https://api.octopus.energy/v1/products/FLUX-EXPORT-23-02-14/electricity-tariffs/E-1R-FLUX-EXPORT-23-02-14-J/standing-charges/?period_from=2025-12-31T22:00Z&period_to=2026-03-01T00:00Z&page_size=1500&page=1",
+  "path": "data/raw/octopus/2026-09-03-010/standing/FLUX-EXPORT-23-02-14/J/winter/page-1.json",
+  "sha256": "33b4fe36af0abce008be8df010631b019b306ae31561ce7539c720a0908916c0",
+  "fetched_at": "2026-09-03T20:54:19.601222+00:00",
+  "bytes": 167
+ },
+ {
+  "source": "octopus-energy-api",
+  "dataset": "octopus-standing-charges",
+  "url": "https://api.octopus.energy/v1/products/FLUX-IMPORT-23-02-14/electricity-tariffs/E-1R-FLUX-IMPORT-23-02-14-C/standing-charges/?period_from=2026-05-31T21:00Z&period_to=2026-09-01T00:00Z&page_size=1500&page=1",
+  "path": "data/raw/octopus/2026-09-03-010/standing/FLUX-IMPORT-23-02-14/C/summer/page-1.json",
+  "sha256": "68cb2e737b5ee00cbb447d785a4b685d72188bd94641c5b40be51406fc810856",
+  "fetched_at": "2026-09-03T20:54:20.208241+00:00",
+  "bytes": 177
+ },
+ {
+  "source": "octopus-energy-api",
+  "dataset": "octopus-standing-charges",
+  "url": "https://api.octopus.energy/v1/products/FLUX-IMPORT-23-02-14/electricity-tariffs/E-1R-FLUX-IMPORT-23-02-14-C/standing-charges/?period_from=2025-12-31T22:00Z&period_to=2026-03-01T00:00Z&page_size=1500&page=1",
+  "path": "data/raw/octopus/2026-09-03-010/standing/FLUX-IMPORT-23-02-14/C/winter/page-1.json",
+  "sha256": "5b0da8ca9114a8a14abfb6b1b5889e12aafb2669549e72fb1ad210632488e2a1",
+  "fetched_at": "2026-09-03T20:54:20.903385+00:00",
+  "bytes": 338
+ },
+ {
+  "source": "octopus-energy-api",
+  "dataset": "octopus-standing-charges",
+  "url": "https://api.octopus.energy/v1/products/FLUX-IMPORT-23-02-14/electricity-tariffs/E-1R-FLUX-IMPORT-23-02-14-E/standing-charges/?period_from=2026-05-31T21:00Z&period_to=2026-09-01T00:00Z&page_size=1500&page=1",
+  "path": "data/raw/octopus/2026-09-03-010/standing/FLUX-IMPORT-23-02-14/E/summer/page-1.json",
+  "sha256": "106d1c9016bcc595da3b1fe30375b5b1ad67dd5c0f5567696dedba3fc1e384f2",
+  "fetched_at": "2026-09-03T20:54:21.534851+00:00",
+  "bytes": 175
+ },
+ {
+  "source": "octopus-energy-api",
+  "dataset": "octopus-standing-charges",
+  "url": "https://api.octopus.energy/v1/products/FLUX-IMPORT-23-02-14/electricity-tariffs/E-1R-FLUX-IMPORT-23-02-14-E/standing-charges/?period_from=2025-12-31T22:00Z&period_to=2026-03-01T00:00Z&page_size=1500&page=1",
+  "path": "data/raw/octopus/2026-09-03-010/standing/FLUX-IMPORT-23-02-14/E/winter/page-1.json",
+  "sha256": "a894af88246513bbd7f9efe87270255ee606a7e0de768c72c448d4ebd23de855",
+  "fetched_at": "2026-09-03T20:54:22.153870+00:00",
+  "bytes": 338
+ },
+ {
+  "source": "octopus-energy-api",
+  "dataset": "octopus-standing-charges",
+  "url": "https://api.octopus.energy/v1/products/FLUX-IMPORT-23-02-14/electricity-tariffs/E-1R-FLUX-IMPORT-23-02-14-J/standing-charges/?period_from=2026-05-31T21:00Z&period_to=2026-09-01T00:00Z&page_size=1500&page=1",
+  "path": "data/raw/octopus/2026-09-03-010/standing/FLUX-IMPORT-23-02-14/J/summer/page-1.json",
+  "sha256": "5dd69fbc453eb889e47a2b8a7d34420ebc5a83f3ad6e6fd5ec087e06329ff2bc",
+  "fetched_at": "2026-09-03T20:54:22.878738+00:00",
+  "bytes": 176
+ },
+ {
+  "source": "octopus-energy-api",
+  "dataset": "octopus-standing-charges",
+  "url": "https://api.octopus.energy/v1/products/FLUX-IMPORT-23-02-14/electricity-tariffs/E-1R-FLUX-IMPORT-23-02-14-J/standing-charges/?period_from=2025-12-31T22:00Z&period_to=2026-03-01T00:00Z&page_size=1500&page=1",
+  "path": "data/raw/octopus/2026-09-03-010/standing/FLUX-IMPORT-23-02-14/J/winter/page-1.json",
+  "sha256": "5598b970149010fa4d7432b18f77ae2f6191aac5730c651e13bbe550f78ce14c",
+  "fetched_at": "2026-09-03T20:54:23.568313+00:00",
+  "bytes": 337
+ },
+ {
+  "source": "octopus-energy-api",
+  "dataset": "octopus-standing-charges",
+  "url": "https://api.octopus.energy/v1/products/GO-VAR-22-10-14/electricity-tariffs/E-1R-GO-VAR-22-10-14-C/standing-charges/?period_from=2026-05-31T21:00Z&period_to=2026-09-01T00:00Z&page_size=1500&page=1",
+  "path": "data/raw/octopus/2026-09-03-010/standing/GO-VAR-22-10-14/C/summer/page-1.json",
+  "sha256": "2416b561132498f8048f7a91f55cec55e2326d8be29f97e3b207491489967f5b",
+  "fetched_at": "2026-09-03T20:54:24.180952+00:00",
+  "bytes": 177
+ },
+ {
+  "source": "octopus-energy-api",
+  "dataset": "octopus-standing-charges",
+  "url": "https://api.octopus.energy/v1/products/GO-VAR-22-10-14/electricity-tariffs/E-1R-GO-VAR-22-10-14-C/standing-charges/?period_from=2025-12-31T22:00Z&period_to=2026-03-01T00:00Z&page_size=1500&page=1",
+  "path": "data/raw/octopus/2026-09-03-010/standing/GO-VAR-22-10-14/C/winter/page-1.json",
+  "sha256": "5b0da8ca9114a8a14abfb6b1b5889e12aafb2669549e72fb1ad210632488e2a1",
+  "fetched_at": "2026-09-03T20:54:24.797952+00:00",
+  "bytes": 338
+ },
+ {
+  "source": "octopus-energy-api",
+  "dataset": "octopus-standing-charges",
+  "url": "https://api.octopus.energy/v1/products/GO-VAR-22-10-14/electricity-tariffs/E-1R-GO-VAR-22-10-14-E/standing-charges/?period_from=2026-05-31T21:00Z&period_to=2026-09-01T00:00Z&page_size=1500&page=1",
+  "path": "data/raw/octopus/2026-09-03-010/standing/GO-VAR-22-10-14/E/summer/page-1.json",
+  "sha256": "03f53f9ddf017078367d41efdaa89b51af7360080bfb58e07b46fb34012281ee",
+  "fetched_at": "2026-09-03T20:54:25.811719+00:00",
+  "bytes": 174
+ },
+ {
+  "source": "octopus-energy-api",
+  "dataset": "octopus-standing-charges",
+  "url": "https://api.octopus.energy/v1/products/GO-VAR-22-10-14/electricity-tariffs/E-1R-GO-VAR-22-10-14-E/standing-charges/?period_from=2025-12-31T22:00Z&period_to=2026-03-01T00:00Z&page_size=1500&page=1",
+  "path": "data/raw/octopus/2026-09-03-010/standing/GO-VAR-22-10-14/E/winter/page-1.json",
+  "sha256": "a894af88246513bbd7f9efe87270255ee606a7e0de768c72c448d4ebd23de855",
+  "fetched_at": "2026-09-03T20:54:26.425373+00:00",
+  "bytes": 338
+ },
+ {
+  "source": "octopus-energy-api",
+  "dataset": "octopus-standing-charges",
+  "url": "https://api.octopus.energy/v1/products/GO-VAR-22-10-14/electricity-tariffs/E-1R-GO-VAR-22-10-14-J/standing-charges/?period_from=2026-05-31T21:00Z&period_to=2026-09-01T00:00Z&page_size=1500&page=1",
+  "path": "data/raw/octopus/2026-09-03-010/standing/GO-VAR-22-10-14/J/summer/page-1.json",
+  "sha256": "d71d2da7fa4a099bfb4c7e177eabb88845181abeb1a933bcc4306f25b6615746",
+  "fetched_at": "2026-09-03T20:54:27.089209+00:00",
+  "bytes": 176
+ },
+ {
+  "source": "octopus-energy-api",
+  "dataset": "octopus-standing-charges",
+  "url": "https://api.octopus.energy/v1/products/GO-VAR-22-10-14/electricity-tariffs/E-1R-GO-VAR-22-10-14-J/standing-charges/?period_from=2025-12-31T22:00Z&period_to=2026-03-01T00:00Z&page_size=1500&page=1",
+  "path": "data/raw/octopus/2026-09-03-010/standing/GO-VAR-22-10-14/J/winter/page-1.json",
+  "sha256": "5598b970149010fa4d7432b18f77ae2f6191aac5730c651e13bbe550f78ce14c",
+  "fetched_at": "2026-09-03T20:54:27.772590+00:00",
+  "bytes": 337
+ },
+ {
+  "source": "octopus-energy-api",
+  "dataset": "octopus-standing-charges",
+  "url": "https://api.octopus.energy/v1/products/INTELLI-FLUX-IMPORT-23-07-14/electricity-tariffs/E-1R-INTELLI-FLUX-IMPORT-23-07-14-C/standing-charges/?period_from=2026-05-31T21:00Z&period_to=2026-09-01T00:00Z&page_size=1500&page=1",
+  "path": "data/raw/octopus/2026-09-03-010/standing/INTELLI-FLUX-IMPORT-23-07-14/C/summer/page-1.json",
+  "sha256": "68cb2e737b5ee00cbb447d785a4b685d72188bd94641c5b40be51406fc810856",
+  "fetched_at": "2026-09-03T20:54:28.406320+00:00",
+  "bytes": 177
+ },
+ {
+  "source": "octopus-energy-api",
+  "dataset": "octopus-standing-charges",
+  "url": "https://api.octopus.energy/v1/products/INTELLI-FLUX-IMPORT-23-07-14/electricity-tariffs/E-1R-INTELLI-FLUX-IMPORT-23-07-14-C/standing-charges/?period_from=2025-12-31T22:00Z&period_to=2026-03-01T00:00Z&page_size=1500&page=1",
+  "path": "data/raw/octopus/2026-09-03-010/standing/INTELLI-FLUX-IMPORT-23-07-14/C/winter/page-1.json",
+  "sha256": "5b0da8ca9114a8a14abfb6b1b5889e12aafb2669549e72fb1ad210632488e2a1",
+  "fetched_at": "2026-09-03T20:54:29.073552+00:00",
+  "bytes": 338
+ },
+ {
+  "source": "octopus-energy-api",
+  "dataset": "octopus-standing-charges",
+  "url": "https://api.octopus.energy/v1/products/INTELLI-FLUX-IMPORT-23-07-14/electricity-tariffs/E-1R-INTELLI-FLUX-IMPORT-23-07-14-E/standing-charges/?period_from=2026-05-31T21:00Z&period_to=2026-09-01T00:00Z&page_size=1500&page=1",
+  "path": "data/raw/octopus/2026-09-03-010/standing/INTELLI-FLUX-IMPORT-23-07-14/E/summer/page-1.json",
+  "sha256": "106d1c9016bcc595da3b1fe30375b5b1ad67dd5c0f5567696dedba3fc1e384f2",
+  "fetched_at": "2026-09-03T20:54:29.760878+00:00",
+  "bytes": 175
+ },
+ {
+  "source": "octopus-energy-api",
+  "dataset": "octopus-standing-charges",
+  "url": "https://api.octopus.energy/v1/products/INTELLI-FLUX-IMPORT-23-07-14/electricity-tariffs/E-1R-INTELLI-FLUX-IMPORT-23-07-14-E/standing-charges/?period_from=2025-12-31T22:00Z&period_to=2026-03-01T00:00Z&page_size=1500&page=1",
+  "path": "data/raw/octopus/2026-09-03-010/standing/INTELLI-FLUX-IMPORT-23-07-14/E/winter/page-1.json",
+  "sha256": "a894af88246513bbd7f9efe87270255ee606a7e0de768c72c448d4ebd23de855",
+  "fetched_at": "2026-09-03T20:54:30.613321+00:00",
+  "bytes": 338
+ },
+ {
+  "source": "octopus-energy-api",
+  "dataset": "octopus-standing-charges",
+  "url": "https://api.octopus.energy/v1/products/INTELLI-FLUX-IMPORT-23-07-14/electricity-tariffs/E-1R-INTELLI-FLUX-IMPORT-23-07-14-J/standing-charges/?period_from=2026-05-31T21:00Z&period_to=2026-09-01T00:00Z&page_size=1500&page=1",
+  "path": "data/raw/octopus/2026-09-03-010/standing/INTELLI-FLUX-IMPORT-23-07-14/J/summer/page-1.json",
+  "sha256": "5dd69fbc453eb889e47a2b8a7d34420ebc5a83f3ad6e6fd5ec087e06329ff2bc",
+  "fetched_at": "2026-09-03T20:54:31.430038+00:00",
+  "bytes": 176
+ },
+ {
+  "source": "octopus-energy-api",
+  "dataset": "octopus-standing-charges",
+  "url": "https://api.octopus.energy/v1/products/INTELLI-FLUX-IMPORT-23-07-14/electricity-tariffs/E-1R-INTELLI-FLUX-IMPORT-23-07-14-J/standing-charges/?period_from=2025-12-31T22:00Z&period_to=2026-03-01T00:00Z&page_size=1500&page=1",
+  "path": "data/raw/octopus/2026-09-03-010/standing/INTELLI-FLUX-IMPORT-23-07-14/J/winter/page-1.json",
+  "sha256": "5598b970149010fa4d7432b18f77ae2f6191aac5730c651e13bbe550f78ce14c",
+  "fetched_at": "2026-09-03T20:54:32.063494+00:00",
+  "bytes": 337
+ },
+ {
+  "source": "octopus-energy-api",
+  "dataset": "octopus-standing-charges",
+  "url": "https://api.octopus.energy/v1/products/INTELLI-VAR-22-10-14/electricity-tariffs/E-1R-INTELLI-VAR-22-10-14-C/standing-charges/?period_from=2026-05-31T21:00Z&period_to=2026-09-01T00:00Z&page_size=1500&page=1",
+  "path": "data/raw/octopus/2026-09-03-010/standing/INTELLI-VAR-22-10-14/C/summer/page-1.json",
+  "sha256": "0595424161ea863805d9b92c0e52d7aa1e3c46ec58cd8f0d6933759006a5fb74",
+  "fetched_at": "2026-09-03T20:54:32.739611+00:00",
+  "bytes": 52
+ },
+ {
+  "source": "octopus-energy-api",
+  "dataset": "octopus-standing-charges",
+  "url": "https://api.octopus.energy/v1/products/INTELLI-VAR-22-10-14/electricity-tariffs/E-1R-INTELLI-VAR-22-10-14-C/standing-charges/?period_from=2025-12-31T22:00Z&period_to=2026-03-01T00:00Z&page_size=1500&page=1",
+  "path": "data/raw/octopus/2026-09-03-010/standing/INTELLI-VAR-22-10-14/C/winter/page-1.json",
+  "sha256": "0595424161ea863805d9b92c0e52d7aa1e3c46ec58cd8f0d6933759006a5fb74",
+  "fetched_at": "2026-09-03T20:54:33.346789+00:00",
+  "bytes": 52
+ },
+ {
+  "source": "octopus-energy-api",
+  "dataset": "octopus-standing-charges",
+  "url": "https://api.octopus.energy/v1/products/INTELLI-VAR-22-10-14/electricity-tariffs/E-1R-INTELLI-VAR-22-10-14-E/standing-charges/?period_from=2026-05-31T21:00Z&period_to=2026-09-01T00:00Z&page_size=1500&page=1",
+  "path": "data/raw/octopus/2026-09-03-010/standing/INTELLI-VAR-22-10-14/E/summer/page-1.json",
+  "sha256": "0595424161ea863805d9b92c0e52d7aa1e3c46ec58cd8f0d6933759006a5fb74",
+  "fetched_at": "2026-09-03T20:54:33.964968+00:00",
+  "bytes": 52
+ },
+ {
+  "source": "octopus-energy-api",
+  "dataset": "octopus-standing-charges",
+  "url": "https://api.octopus.energy/v1/products/INTELLI-VAR-22-10-14/electricity-tariffs/E-1R-INTELLI-VAR-22-10-14-E/standing-charges/?period_from=2025-12-31T22:00Z&period_to=2026-03-01T00:00Z&page_size=1500&page=1",
+  "path": "data/raw/octopus/2026-09-03-010/standing/INTELLI-VAR-22-10-14/E/winter/page-1.json",
+  "sha256": "0595424161ea863805d9b92c0e52d7aa1e3c46ec58cd8f0d6933759006a5fb74",
+  "fetched_at": "2026-09-03T20:54:34.629588+00:00",
+  "bytes": 52
+ },
+ {
+  "source": "octopus-energy-api",
+  "dataset": "octopus-standing-charges",
+  "url": "https://api.octopus.energy/v1/products/INTELLI-VAR-22-10-14/electricity-tariffs/E-1R-INTELLI-VAR-22-10-14-J/standing-charges/?period_from=2026-05-31T21:00Z&period_to=2026-09-01T00:00Z&page_size=1500&page=1",
+  "path": "data/raw/octopus/2026-09-03-010/standing/INTELLI-VAR-22-10-14/J/summer/page-1.json",
+  "sha256": "0595424161ea863805d9b92c0e52d7aa1e3c46ec58cd8f0d6933759006a5fb74",
+  "fetched_at": "2026-09-03T20:54:35.240681+00:00",
+  "bytes": 52
+ },
+ {
+  "source": "octopus-energy-api",
+  "dataset": "octopus-standing-charges",
+  "url": "https://api.octopus.energy/v1/products/INTELLI-VAR-22-10-14/electricity-tariffs/E-1R-INTELLI-VAR-22-10-14-J/standing-charges/?period_from=2025-12-31T22:00Z&period_to=2026-03-01T00:00Z&page_size=1500&page=1",
+  "path": "data/raw/octopus/2026-09-03-010/standing/INTELLI-VAR-22-10-14/J/winter/page-1.json",
+  "sha256": "0595424161ea863805d9b92c0e52d7aa1e3c46ec58cd8f0d6933759006a5fb74",
+  "fetched_at": "2026-09-03T20:54:35.854646+00:00",
+  "bytes": 52
+ },
+ {
+  "source": "octopus-energy-api",
+  "dataset": "octopus-standing-charges",
+  "url": "https://api.octopus.energy/v1/products/OUTGOING-PRIME-FIX-12M-26-06-23/electricity-tariffs/E-1R-OUTGOING-PRIME-FIX-12M-26-06-23-C/standing-charges/?period_from=2026-05-31T21:00Z&period_to=2026-09-01T00:00Z&page_size=1500&page=1",
+  "path": "data/raw/octopus/2026-09-03-010/standing/OUTGOING-PRIME-FIX-12M-26-06-23/C/summer/page-1.json",
+  "sha256": "ef37891011f01eb21c6f77469f7f9dc876ac5aec68f0b3d2b599fbad66855e4a",
+  "fetched_at": "2026-09-03T20:54:36.491974+00:00",
+  "bytes": 167
+ },
+ {
+  "source": "octopus-energy-api",
+  "dataset": "octopus-standing-charges",
+  "url": "https://api.octopus.energy/v1/products/OUTGOING-PRIME-FIX-12M-26-06-23/electricity-tariffs/E-1R-OUTGOING-PRIME-FIX-12M-26-06-23-C/standing-charges/?period_from=2025-12-31T22:00Z&period_to=2026-03-01T00:00Z&page_size=1500&page=1",
+  "path": "data/raw/octopus/2026-09-03-010/standing/OUTGOING-PRIME-FIX-12M-26-06-23/C/winter/page-1.json",
+  "sha256": "0595424161ea863805d9b92c0e52d7aa1e3c46ec58cd8f0d6933759006a5fb74",
+  "fetched_at": "2026-09-03T20:54:37.087236+00:00",
+  "bytes": 52
+ },
+ {
+  "source": "octopus-energy-api",
+  "dataset": "octopus-standing-charges",
+  "url": "https://api.octopus.energy/v1/products/OUTGOING-PRIME-FIX-12M-26-06-23/electricity-tariffs/E-1R-OUTGOING-PRIME-FIX-12M-26-06-23-E/standing-charges/?period_from=2026-05-31T21:00Z&period_to=2026-09-01T00:00Z&page_size=1500&page=1",
+  "path": "data/raw/octopus/2026-09-03-010/standing/OUTGOING-PRIME-FIX-12M-26-06-23/E/summer/page-1.json",
+  "sha256": "ef37891011f01eb21c6f77469f7f9dc876ac5aec68f0b3d2b599fbad66855e4a",
+  "fetched_at": "2026-09-03T20:54:37.781578+00:00",
+  "bytes": 167
+ },
+ {
+  "source": "octopus-energy-api",
+  "dataset": "octopus-standing-charges",
+  "url": "https://api.octopus.energy/v1/products/OUTGOING-PRIME-FIX-12M-26-06-23/electricity-tariffs/E-1R-OUTGOING-PRIME-FIX-12M-26-06-23-E/standing-charges/?period_from=2025-12-31T22:00Z&period_to=2026-03-01T00:00Z&page_size=1500&page=1",
+  "path": "data/raw/octopus/2026-09-03-010/standing/OUTGOING-PRIME-FIX-12M-26-06-23/E/winter/page-1.json",
+  "sha256": "0595424161ea863805d9b92c0e52d7aa1e3c46ec58cd8f0d6933759006a5fb74",
+  "fetched_at": "2026-09-03T20:54:38.377663+00:00",
+  "bytes": 52
+ },
+ {
+  "source": "octopus-energy-api",
+  "dataset": "octopus-standing-charges",
+  "url": "https://api.octopus.energy/v1/products/OUTGOING-PRIME-FIX-12M-26-06-23/electricity-tariffs/E-1R-OUTGOING-PRIME-FIX-12M-26-06-23-J/standing-charges/?period_from=2026-05-31T21:00Z&period_to=2026-09-01T00:00Z&page_size=1500&page=1",
+  "path": "data/raw/octopus/2026-09-03-010/standing/OUTGOING-PRIME-FIX-12M-26-06-23/J/summer/page-1.json",
+  "sha256": "ef37891011f01eb21c6f77469f7f9dc876ac5aec68f0b3d2b599fbad66855e4a",
+  "fetched_at": "2026-09-03T20:54:39.244122+00:00",
+  "bytes": 167
+ },
+ {
+  "source": "octopus-energy-api",
+  "dataset": "octopus-standing-charges",
+  "url": "https://api.octopus.energy/v1/products/OUTGOING-PRIME-FIX-12M-26-06-23/electricity-tariffs/E-1R-OUTGOING-PRIME-FIX-12M-26-06-23-J/standing-charges/?period_from=2025-12-31T22:00Z&period_to=2026-03-01T00:00Z&page_size=1500&page=1",
+  "path": "data/raw/octopus/2026-09-03-010/standing/OUTGOING-PRIME-FIX-12M-26-06-23/J/winter/page-1.json",
+  "sha256": "0595424161ea863805d9b92c0e52d7aa1e3c46ec58cd8f0d6933759006a5fb74",
+  "fetched_at": "2026-09-03T20:54:39.909552+00:00",
+  "bytes": 52
+ },
+ {
+  "source": "octopus-energy-api",
+  "dataset": "octopus-standing-charges",
+  "url": "https://api.octopus.energy/v1/products/OUTGOING-VAR-24-10-26/electricity-tariffs/E-1R-OUTGOING-VAR-24-10-26-C/standing-charges/?period_from=2026-05-31T21:00Z&period_to=2026-09-01T00:00Z&page_size=1500&page=1",
+  "path": "data/raw/octopus/2026-09-03-010/standing/OUTGOING-VAR-24-10-26/C/summer/page-1.json",
+  "sha256": "d4ac465e5321b2c6afd8dcbcd822a1ed2260a65c708329aea662218f916472d2",
+  "fetched_at": "2026-09-03T20:54:40.512312+00:00",
+  "bytes": 167
+ },
+ {
+  "source": "octopus-energy-api",
+  "dataset": "octopus-standing-charges",
+  "url": "https://api.octopus.energy/v1/products/OUTGOING-VAR-24-10-26/electricity-tariffs/E-1R-OUTGOING-VAR-24-10-26-C/standing-charges/?period_from=2025-12-31T22:00Z&period_to=2026-03-01T00:00Z&page_size=1500&page=1",
+  "path": "data/raw/octopus/2026-09-03-010/standing/OUTGOING-VAR-24-10-26/C/winter/page-1.json",
+  "sha256": "d4ac465e5321b2c6afd8dcbcd822a1ed2260a65c708329aea662218f916472d2",
+  "fetched_at": "2026-09-03T20:54:41.111909+00:00",
+  "bytes": 167
+ },
+ {
+  "source": "octopus-energy-api",
+  "dataset": "octopus-standing-charges",
+  "url": "https://api.octopus.energy/v1/products/OUTGOING-VAR-24-10-26/electricity-tariffs/E-1R-OUTGOING-VAR-24-10-26-E/standing-charges/?period_from=2026-05-31T21:00Z&period_to=2026-09-01T00:00Z&page_size=1500&page=1",
+  "path": "data/raw/octopus/2026-09-03-010/standing/OUTGOING-VAR-24-10-26/E/summer/page-1.json",
+  "sha256": "d4ac465e5321b2c6afd8dcbcd822a1ed2260a65c708329aea662218f916472d2",
+  "fetched_at": "2026-09-03T20:54:41.767098+00:00",
+  "bytes": 167
+ },
+ {
+  "source": "octopus-energy-api",
+  "dataset": "octopus-standing-charges",
+  "url": "https://api.octopus.energy/v1/products/OUTGOING-VAR-24-10-26/electricity-tariffs/E-1R-OUTGOING-VAR-24-10-26-E/standing-charges/?period_from=2025-12-31T22:00Z&period_to=2026-03-01T00:00Z&page_size=1500&page=1",
+  "path": "data/raw/octopus/2026-09-03-010/standing/OUTGOING-VAR-24-10-26/E/winter/page-1.json",
+  "sha256": "d4ac465e5321b2c6afd8dcbcd822a1ed2260a65c708329aea662218f916472d2",
+  "fetched_at": "2026-09-03T20:54:42.391627+00:00",
+  "bytes": 167
+ },
+ {
+  "source": "octopus-energy-api",
+  "dataset": "octopus-standing-charges",
+  "url": "https://api.octopus.energy/v1/products/OUTGOING-VAR-24-10-26/electricity-tariffs/E-1R-OUTGOING-VAR-24-10-26-J/standing-charges/?period_from=2026-05-31T21:00Z&period_to=2026-09-01T00:00Z&page_size=1500&page=1",
+  "path": "data/raw/octopus/2026-09-03-010/standing/OUTGOING-VAR-24-10-26/J/summer/page-1.json",
+  "sha256": "d4ac465e5321b2c6afd8dcbcd822a1ed2260a65c708329aea662218f916472d2",
+  "fetched_at": "2026-09-03T20:54:42.977023+00:00",
+  "bytes": 167
+ },
+ {
+  "source": "octopus-energy-api",
+  "dataset": "octopus-standing-charges",
+  "url": "https://api.octopus.energy/v1/products/OUTGOING-VAR-24-10-26/electricity-tariffs/E-1R-OUTGOING-VAR-24-10-26-J/standing-charges/?period_from=2025-12-31T22:00Z&period_to=2026-03-01T00:00Z&page_size=1500&page=1",
+  "path": "data/raw/octopus/2026-09-03-010/standing/OUTGOING-VAR-24-10-26/J/winter/page-1.json",
+  "sha256": "d4ac465e5321b2c6afd8dcbcd822a1ed2260a65c708329aea662218f916472d2",
+  "fetched_at": "2026-09-03T20:54:43.572850+00:00",
+  "bytes": 167
+ },
+ {
+  "source": "octopus-energy-api",
+  "dataset": "rules-document",
+  "url": "https://www.dcode.org.uk/engineering-documents.html",
+  "path": "data/raw/rules/010/dcode-engineering-documents.html",
+  "sha256": "5217d91b8f61b3fa8e71bc56a1aa53b86e08f707e86d3e995358d8583b38fe97",
+  "fetched_at": "2026-09-03T21:03:48.579521+00:00",
+  "bytes": 13193
+ },
+ {
+  "source": "octopus-energy-api",
+  "dataset": "rules-document",
+  "url": "https://www.dcode.org.uk/",
+  "path": "data/raw/rules/010/distribution-code.html",
+  "sha256": "173f9f5dd06f58749a0469d2d7a5abd2445f6c5e6da005cf28ee540c434c39d2",
+  "fetched_at": "2026-09-03T21:00:12.261681+00:00",
+  "bytes": 15066
+ },
+ {
+  "source": "octopus-energy-api",
+  "dataset": "rules-document",
+  "url": "http://www.ena-eng.org/ENA-Docs/",
+  "path": "data/raw/rules/010/ena-eng-docs.html",
+  "sha256": "b49df69f6ff13b93b6dafce88a4ffba76512bff08b5953afa2038c6b4a509766",
+  "fetched_at": "2026-09-03T21:03:49.365244+00:00",
+  "bytes": 272595
+ },
+ {
+  "source": "octopus-energy-api",
+  "dataset": "rules-document",
+  "url": "https://www.gov.uk/guidance/vat-on-fuel-and-power-notice-70119",
+  "path": "data/raw/rules/010/hmrc-vat-701-19.html",
+  "sha256": "ab45c1f2db51337f874a665b21ceb359f771a80be05d80e6de6e44f542917a1b",
+  "fetched_at": "2026-09-03T21:00:12.658190+00:00",
+  "bytes": 216215
+ },
+ {
+  "source": "octopus-energy-api",
+  "dataset": "rules-document",
+  "url": "https://octopus.energy/blog/agile-pricing-explained/",
+  "path": "data/raw/rules/010/octopus-agile-pricing-explained.html",
+  "sha256": "1439b75608d07611ecb9a3c8f8bc4acf4cf65a8e69d5ae8b693d1023436aa446",
+  "fetched_at": "2026-09-03T21:00:09.658791+00:00",
+  "bytes": 387117
+ },
+ {
+  "source": "octopus-energy-api",
+  "dataset": "rules-document",
+  "url": "https://octopus.energy/smart/agile/",
+  "path": "data/raw/rules/010/octopus-agile.html",
+  "sha256": "3b7aa735dba9843d50f838af542e8cbb891bde75ef3b50720eefd1b6e297fdf5",
+  "fetched_at": "2026-09-03T21:00:09.249546+00:00",
+  "bytes": 255960
+ },
+ {
+  "source": "octopus-energy-api",
+  "dataset": "rules-document",
+  "url": "https://octopus.energy/help-and-faqs/articles/which-export-tariff-can-i-combine-with-my-import-tariff/",
+  "path": "data/raw/rules/010/octopus-export-import-combinations.html",
+  "sha256": "2536e8e9ec2b8769d3f0382f51aac59ac5e961913657cbb258c5d5e848032cd8",
+  "fetched_at": "2026-09-03T21:14:39.540991+00:00",
+  "bytes": 249232
+ },
+ {
+  "source": "octopus-energy-api",
+  "dataset": "rules-document",
+  "url": "https://octopus.energy/smart/flux/",
+  "path": "data/raw/rules/010/octopus-flux.html",
+  "sha256": "a30e4985425afb0f459c212ab1047039e55478fcd1cca1ed1fb291e551b3b471",
+  "fetched_at": "2026-09-03T21:00:11.084084+00:00",
+  "bytes": 259074
+ },
+ {
+  "source": "octopus-energy-api",
+  "dataset": "rules-document",
+  "url": "https://octopus.energy/blog/go-faqs/",
+  "path": "data/raw/rules/010/octopus-go-faqs.html",
+  "sha256": "0ff687dbabc248b066ee9f34dd3260fa6e36bbb80dfb628007f0644432ea9055",
+  "fetched_at": "2026-09-03T21:03:47.611724+00:00",
+  "bytes": 305701
+ },
+ {
+  "source": "octopus-energy-api",
+  "dataset": "rules-document",
+  "url": "https://octopus.energy/go/",
+  "path": "data/raw/rules/010/octopus-go.html",
+  "sha256": "c8bc7f56822f25237e5eeedca5d18c99c7fae76f584f3a9d5428ae8faada5b77",
+  "fetched_at": "2026-09-03T21:00:10.329610+00:00",
+  "bytes": 214287
+ },
+ {
+  "source": "octopus-energy-api",
+  "dataset": "rules-document",
+  "url": "https://octopus.energy/smart/intelligent-flux/",
+  "path": "data/raw/rules/010/octopus-intelligent-flux.html",
+  "sha256": "cd9691ca4437ac16d8ef7b1ec73b554e2cc1ece28b279c57895901b4aac2e8b7",
+  "fetched_at": "2026-09-03T21:00:11.427328+00:00",
+  "bytes": 129331
+ },
+ {
+  "source": "octopus-energy-api",
+  "dataset": "rules-document",
+  "url": "https://octopus.energy/smart/intelligent-octopus-go/",
+  "path": "data/raw/rules/010/octopus-intelligent-go.html",
+  "sha256": "3b67f867101f5ba811bcc51ef29281315ec61859937434d367d62b845eb54b23",
+  "fetched_at": "2026-09-03T21:00:10.737301+00:00",
+  "bytes": 257715
+ },
+ {
+  "source": "octopus-energy-api",
+  "dataset": "rules-document",
+  "url": "https://octopus.energy/blog/outgoing-faqs/",
+  "path": "data/raw/rules/010/octopus-outgoing-faqs.html",
+  "sha256": "207ca8ce724b817201ffdd5e47f4c3fbc9eb978bbce5a999187daa3a31de3993",
+  "fetched_at": "2026-09-03T21:03:47.194207+00:00",
+  "bytes": 504158
+ },
+ {
+  "source": "octopus-energy-api",
+  "dataset": "rules-document",
+  "url": "https://octopus.energy/smart/outgoing/",
+  "path": "data/raw/rules/010/octopus-outgoing.html",
+  "sha256": "f79ecc01e7e2c54d06ea12e1efacbb4604f9590238e8927903c7208868e809ad",
+  "fetched_at": "2026-09-03T21:00:09.990775+00:00",
+  "bytes": 207830
+ },
+ {
+  "source": "octopus-energy-api",
+  "dataset": "rules-document",
+  "url": "https://octopus.energy/policies/smart-tariffs-terms-and-condition/",
+  "path": "data/raw/rules/010/octopus-smart-tariff-terms.html",
+  "sha256": "d9aed921de689446c071c475a64af2a0b33b656b06340e953ae5845fa74c5c2b",
+  "fetched_at": "2026-09-03T21:03:48.129589+00:00",
+  "bytes": 823430
+ }
+]

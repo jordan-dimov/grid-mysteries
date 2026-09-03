@@ -44,3 +44,33 @@ that it matches a brute-force enumeration on a small instance.
 
 Nothing else in the declaration changes: information set, day boundary,
 cases, bars and falsifiers stand as frozen.
+
+## Amendment 2 — 2026-09-03, after the sealed run, before any result was written up: slots are sliced to the settlement grid
+
+**What the declaration said.** "Slots are the union of both series'
+boundaries within the day."
+
+**What was wrong with it.** A fixed schedule (Octopus Go: two rates a day;
+Flux export: three) meets a half-hourly series only at its own few
+boundaries, so a Go ↔ Flux day had seven slots, one of them ten and a half
+hours long. Two consequences: the free-energy rule ("spread over daylight
+slots by duration") put a whole day's solar into the single slot starting
+inside 09:00–17:00, which at 20 kW was the 16:00–19:00 export slot whose
+inverter budget was already spent — so the sweep in case 5 showed free
+energy having **no effect at all** at 20 kW; and the inverter budget itself
+was enforced over multi-hour spans, which is coarser than the model
+intends. Found while reading `evidence/results.json` (case 5, every 20 kW
+row identical across the sweep); traced on 2026-06-24, region C, Go ↔
+Flux export, where the day had 7 slots and zero free energy was used.
+
+**The amendment.** Slot boundaries are the union of both series'
+boundaries **and the half-hour settlement grid** from the day's start
+(`RESOLUTION = 30 min`; a later five-minute source passes its own). Rule
+id becomes `010/per-day-optimum/v2`. This can only raise an optimum: every
+schedule on the coarse grid is feasible on the fine one. Nothing about
+information set, bars, cases or falsifiers changes.
+
+**Record.** The pre-amendment evaluation is preserved byte for byte as
+`evidence/results-PRE-AMENDMENT-2.json`; `evidence/results.json` is the
+re-evaluation on the same pinned data (no fetch). `RESULTS.md` reports the
+post-amendment numbers and names any case whose reading changes.

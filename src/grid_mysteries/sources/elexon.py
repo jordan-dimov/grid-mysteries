@@ -128,3 +128,8 @@ def fetch_pinned(
             if attempt < attempts - 1:
                 time.sleep(retry_delay_seconds * (attempt + 1))
     raise RuntimeError(f"failed to fetch {url} after {attempts} attempts") from last_error
+
+
+def system_prices_url(settlement_date: str) -> str:
+    """Settlement system prices (buy and sell) for every period of one day."""
+    return f"{BASE_URL}/balancing/settlement/system-prices/{settlement_date}"

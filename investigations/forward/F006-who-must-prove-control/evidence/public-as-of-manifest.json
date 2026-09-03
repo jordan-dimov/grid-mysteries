@@ -1,0 +1,614 @@
+[
+ {
+  "source": "web",
+  "dataset": "bsi-pas-1878-page",
+  "url": "https://www.bsigroup.com/en-GB/insights-and-media/insights/brochures/pas-1878-energy-smart-appliances-system-functionality-and-architecture/",
+  "path": "data/raw/forward-f006/public-as-of/bsi-pas-1878-page.html",
+  "sha256": "2e90fc8f07f4d496e01a5d91174a3e1eb03f094f76a349d05832811db57cd2c3",
+  "fetched_at": "2026-09-03T21:53:25.784498+00:00",
+  "bytes": 204405
+ },
+ {
+  "source": "web",
+  "dataset": "bsi-pas-1879-page",
+  "url": "https://www.bsigroup.com/en-GB/insights-and-media/insights/brochures/pas-1879-energy-smart-appliances-demand-side-response-operation/",
+  "path": "data/raw/forward-f006/public-as-of/bsi-pas-1879-page.html",
+  "sha256": "0ba34766baa8fd8f4a3cab9c2cbc037d876475f2b42439b69b6fa63764652cd3",
+  "fetched_at": "2026-09-03T21:53:26.732223+00:00",
+  "bytes": 203796
+ },
+ {
+  "source": "web",
+  "dataset": "ch-axle-energy-14633671",
+  "url": "https://find-and-update.company-information.service.gov.uk/company/14633671",
+  "path": "data/raw/forward-f006/public-as-of/ch-axle-energy-14633671.html",
+  "sha256": "bec92cf71a0fa2cae59476fcfd4d06227e0675168b4eac1e1c68e493a34f170c",
+  "fetched_at": "2026-09-03T21:55:28.346111+00:00",
+  "bytes": 35528
+ },
+ {
+  "source": "web",
+  "dataset": "ch-ev-energy-15046510",
+  "url": "https://find-and-update.company-information.service.gov.uk/company/15046510",
+  "path": "data/raw/forward-f006/public-as-of/ch-ev-energy-15046510.html",
+  "sha256": "07bc2205381fc08be384912b880fefd6d026046f497a2c5e199c064ed52f320a",
+  "fetched_at": "2026-09-03T21:57:29.992461+00:00",
+  "bytes": 35411
+ },
+ {
+  "source": "web",
+  "dataset": "ch-kaluza-12218299",
+  "url": "https://find-and-update.company-information.service.gov.uk/company/12218299",
+  "path": "data/raw/forward-f006/public-as-of/ch-kaluza-12218299.html",
+  "sha256": "92023b662f177085ec93cc2f0e7a1b8449990a2f71fc2ab170bb0486a83aa6fb",
+  "fetched_at": "2026-09-03T21:56:27.644350+00:00",
+  "bytes": 36383
+ },
+ {
+  "source": "web",
+  "dataset": "ch-kraken-technologies-12014731",
+  "url": "https://find-and-update.company-information.service.gov.uk/company/12014731",
+  "path": "data/raw/forward-f006/public-as-of/ch-kraken-technologies-12014731.html",
+  "sha256": "7a950240e22b0f23aecce9cc6245eb742a3681f10bcdae25f8702e98c0c5bf56",
+  "fetched_at": "2026-09-03T21:55:27.672539+00:00",
+  "bytes": 35858
+ },
+ {
+  "source": "web",
+  "dataset": "citizens-advice-response-desnz-lcl",
+  "url": "https://www.citizensadvice.org.uk/policy/publications/citizens-advice-response-to-desnz-consultation-on-draft-load-control-licence/",
+  "path": "data/raw/forward-f006/public-as-of/citizens-advice-response-desnz-lcl.html",
+  "sha256": "25449abb03f23daf2cf7b1babfb6528c1808cc5ec88abb62532379d94b079f9d",
+  "fetched_at": "2026-09-03T21:58:43.052882+00:00",
+  "bytes": 28277
+ },
+ {
+  "source": "web",
+  "dataset": "citizens-advice-response-ofgem-lcl",
+  "url": "https://www.citizensadvice.org.uk/policy/publications/citizens-advice-response-to-ofgems-consultation-on-the-implementation-of-the/",
+  "path": "data/raw/forward-f006/public-as-of/citizens-advice-response-ofgem-lcl.html",
+  "sha256": "d02db75541b9f35a60e611d33d708c755ce0b591d9e4e9941a86398374af1972",
+  "fetched_at": "2026-09-03T21:53:35.581206+00:00",
+  "bytes": 27461
+ },
+ {
+  "source": "web",
+  "dataset": "class-exemptions-order-2001",
+  "url": "https://www.legislation.gov.uk/uksi/2001/3270/contents",
+  "path": "data/raw/forward-f006/public-as-of/class-exemptions-order-2001.html",
+  "sha256": "7fca83d64ecc6c635a918d8d021ceb037ebd796a59be03b54890fbaf3134217b",
+  "fetched_at": "2026-09-03T21:53:33.508852+00:00",
+  "bytes": 36433
+ },
+ {
+  "source": "web",
+  "dataset": "desnz-class-exemptions-draft-order-2027-pdf",
+  "url": "https://assets.publishing.service.gov.uk/media/6a745417ff25cc81486b243f/The_Electricity__Class_Exemptions_from_the_Requirement_for_a_Licence___Amendment__Order_2027.pdf",
+  "path": "data/raw/forward-f006/public-as-of/desnz-class-exemptions-draft-order-2027-pdf.pdf",
+  "sha256": "b649965b2f8b191da3178cf82281594c367a766939e40ff9e77c767dc5bcfeef",
+  "fetched_at": "2026-09-03T21:59:39.882280+00:00",
+  "bytes": 160595
+ },
+ {
+  "source": "web",
+  "dataset": "desnz-class-exemptions-statutory-notice-page",
+  "url": "https://www.gov.uk/government/publications/smart-secure-electricity-systems-proposed-class-exemptions-from-the-requirement-to-hold-a-load-control-licence",
+  "path": "data/raw/forward-f006/public-as-of/desnz-class-exemptions-statutory-notice-page.html",
+  "sha256": "d70eb2cc2bfc097cc087b2572e91279800ec3f4fd836c470005c23b6c770a40a",
+  "fetched_at": "2026-09-03T21:59:15.918962+00:00",
+  "bytes": 83583
+ },
+ {
+  "source": "web",
+  "dataset": "desnz-class-exemptions-statutory-notice-pdf",
+  "url": "https://assets.publishing.service.gov.uk/media/6a75a793bde92a23046b24e0/SSES-proposed-class-exemptions-from-the-requirement-to-hold-a-load-control-licence.pdf",
+  "path": "data/raw/forward-f006/public-as-of/desnz-class-exemptions-statutory-notice-pdf.pdf",
+  "sha256": "8eeeb6adfca9be1a5ffacdcf16b97f496c186416cd8d2820a9d452c395bdccca",
+  "fetched_at": "2026-09-03T21:59:40.778964+00:00",
+  "bytes": 479130
+ },
+ {
+  "source": "web",
+  "dataset": "desnz-esa-consultation-2024-pdf",
+  "url": "https://assets.publishing.service.gov.uk/media/6659f0147b792ffff71a8601/smart-secure-electricity-systems-2024-energy-smart-appliances-consultation.pdf",
+  "path": "data/raw/forward-f006/public-as-of/desnz-esa-consultation-2024-pdf.pdf",
+  "sha256": "bda5e52bcfe439fc7254c14e5522ee5cc9b528fbc8b664aedb9500804c23861e",
+  "fetched_at": "2026-09-03T21:53:22.378917+00:00",
+  "bytes": 713951
+ },
+ {
+  "source": "web",
+  "dataset": "desnz-esa-phase1-citizen-space",
+  "url": "https://energygovuk.citizenspace.com/energy-security/sses-first-phase-esa-regulations/",
+  "path": "data/raw/forward-f006/public-as-of/desnz-esa-phase1-citizen-space.html",
+  "sha256": "bb5c39fe6b7e4249d188b1ca70486711bf842f9734eb76bb01690fb401089bd4",
+  "fetched_at": "2026-09-03T21:55:22.568977+00:00",
+  "bytes": 26523
+ },
+ {
+  "source": "web",
+  "dataset": "desnz-esa-phase1-consultation-2025-12-pdf",
+  "url": "https://assets.publishing.service.gov.uk/media/692d8f60b3b9afff34e962c8/sses-programme-first-phase-energy-smart-appliances-regulations-consultation-document.pdf",
+  "path": "data/raw/forward-f006/public-as-of/desnz-esa-phase1-consultation-2025-12-pdf.pdf",
+  "sha256": "102ed8c54e1b1b2a61bda4e24cdbb9ce74fc7897dafa65e1fa08bf8b58e2401a",
+  "fetched_at": "2026-09-03T21:55:20.350930+00:00",
+  "bytes": 455291
+ },
+ {
+  "source": "web",
+  "dataset": "desnz-esa-phase1-consultation-page",
+  "url": "https://www.gov.uk/government/consultations/smart-secure-electricity-systems-sses-programme-first-phase-energy-smart-appliances-regulations",
+  "path": "data/raw/forward-f006/public-as-of/desnz-esa-phase1-consultation-page.html",
+  "sha256": "99c0e00907c0545ae998f87b238eee8069164ef1e5e50a30a20e98ac4f82f6d8",
+  "fetched_at": "2026-09-03T21:55:21.003675+00:00",
+  "bytes": 89183
+ },
+ {
+  "source": "web",
+  "dataset": "desnz-esa-phase1-impact-assessment-pdf",
+  "url": "https://assets.publishing.service.gov.uk/media/692d8412b3b9afff34e962b2/first-phase-regulations-energy-smart-appliances-impact-assessment.pdf",
+  "path": "data/raw/forward-f006/public-as-of/desnz-esa-phase1-impact-assessment-pdf.pdf",
+  "sha256": "fe8ab398ca47414e8a0c6fecc4c6473a5135a626ef2f0b77d1f3506253fc2e05",
+  "fetched_at": "2026-09-03T21:55:21.777326+00:00",
+  "bytes": 504232
+ },
+ {
+  "source": "web",
+  "dataset": "desnz-lcl-citizen-space",
+  "url": "https://energygovuk.citizenspace.com/energy-security/sses-load-control-draft-regs-licence-conditions/",
+  "path": "data/raw/forward-f006/public-as-of/desnz-lcl-citizen-space.html",
+  "sha256": "15b0735e19c092bc40d4152c7800f3c46403cd27ab2f50fdd3dafbe268b39170",
+  "fetched_at": "2026-09-03T21:54:29.714838+00:00",
+  "bytes": 25742
+ },
+ {
+  "source": "web",
+  "dataset": "desnz-lcl-consultation-page",
+  "url": "https://www.gov.uk/government/consultations/smart-secure-electricity-systems-sses-programme-draft-load-control-licence-regulations-and-conditions/sses-proposals-on-load-control-licence-regulations-and-licence-conditions-accessible-webpage",
+  "path": "data/raw/forward-f006/public-as-of/desnz-lcl-consultation-page.html",
+  "sha256": "5c5b646940a559c3cd8d7e9e3cc8cabe541b73a9075b04bf4e3f6458615a253d",
+  "fetched_at": "2026-09-03T21:53:11.091230+00:00",
+  "bytes": 621630
+ },
+ {
+  "source": "web",
+  "dataset": "desnz-lcl-consultation-parent-page",
+  "url": "https://www.gov.uk/government/consultations/smart-secure-electricity-systems-sses-programme-draft-load-control-licence-regulations-and-conditions",
+  "path": "data/raw/forward-f006/public-as-of/desnz-lcl-consultation-parent-page.html",
+  "sha256": "0427734bbf3419df5314f7c9ec49db1f93efcf18b24a5a0aee3490d44fb32cb2",
+  "fetched_at": "2026-09-03T21:58:41.550433+00:00",
+  "bytes": 97989
+ },
+ {
+  "source": "web",
+  "dataset": "desnz-lcl-consultation-pdf-alt",
+  "url": "https://assets.publishing.service.gov.uk/media/6939569ae447374889cd901c/load-control-licensing-consultation.pdf",
+  "path": "data/raw/forward-f006/public-as-of/desnz-lcl-consultation-pdf-alt.pdf",
+  "sha256": "fd14bb7f9eb196874181af7d186fbd57bd3a21b564aae04dcffb9de0c0a2e67d",
+  "fetched_at": "2026-09-03T21:55:19.556811+00:00",
+  "bytes": 800686
+ },
+ {
+  "source": "web",
+  "dataset": "desnz-lcl-consultation-pdf",
+  "url": "https://assets.publishing.service.gov.uk/media/6939455bcfacd5e888491cec/load-control-licensing-consultation.pdf",
+  "path": "data/raw/forward-f006/public-as-of/desnz-lcl-consultation-pdf.pdf",
+  "sha256": "fd14bb7f9eb196874181af7d186fbd57bd3a21b564aae04dcffb9de0c0a2e67d",
+  "fetched_at": "2026-09-03T21:53:12.011286+00:00",
+  "bytes": 800686
+ },
+ {
+  "source": "web",
+  "dataset": "desnz-lcl-draft-regulations-2026",
+  "url": "https://assets.publishing.service.gov.uk/media/6937ef6d7a605b2d61cd8f36/electricity-act-1989-load-control-licence-regulations-2026-consultation-draft.pdf",
+  "path": "data/raw/forward-f006/public-as-of/desnz-lcl-draft-regulations-2026.pdf",
+  "sha256": "290a5f4ec81059c3e6bdd1fc6627eab4e3619b4bda32637ffb683f5df6e3a122",
+  "fetched_at": "2026-09-03T21:53:12.865356+00:00",
+  "bytes": 289777
+ },
+ {
+  "source": "web",
+  "dataset": "desnz-lcl-draft-standard-conditions-pdf",
+  "url": "https://assets.publishing.service.gov.uk/media/6937f1fb5cc812f50aa41e19/standard-conditions-load-control-licence.pdf",
+  "path": "data/raw/forward-f006/public-as-of/desnz-lcl-draft-standard-conditions-pdf.pdf",
+  "sha256": "ccea58443098552d237d05e0e0e27585adc54e733c4cfae573c03554b06ca7a0",
+  "fetched_at": "2026-09-03T21:59:14.436752+00:00",
+  "bytes": 384868
+ },
+ {
+  "source": "web",
+  "dataset": "desnz-lcl-government-response-2026-pdf",
+  "url": "https://assets.publishing.service.gov.uk/media/6a85c2818d785493a9c89811/sses-licensing-consultation-government-response.pdf",
+  "path": "data/raw/forward-f006/public-as-of/desnz-lcl-government-response-2026-pdf.pdf",
+  "sha256": "6ab9ffd86a786174d18a65142364edd2566d65e08e61e2499d7c64cb405f7e38",
+  "fetched_at": "2026-09-03T21:59:13.550757+00:00",
+  "bytes": 535345
+ },
+ {
+  "source": "web",
+  "dataset": "desnz-lcl-impact-assessment-pdf",
+  "url": "https://assets.publishing.service.gov.uk/media/6937f96e7a605b2d61cd8f45/licencing-consultation-impact-assessment.pdf",
+  "path": "data/raw/forward-f006/public-as-of/desnz-lcl-impact-assessment-pdf.pdf",
+  "sha256": "d3a588706d17c6d0d1e3579936cc604537a4f4c0d5f7932dab8e73b15c85eb57",
+  "fetched_at": "2026-09-03T21:59:15.286034+00:00",
+  "bytes": 650018
+ },
+ {
+  "source": "web",
+  "dataset": "desnz-licence-exemptions-guidance-2026",
+  "url": "https://assets.publishing.service.gov.uk/media/6967bf7db122b8f5f68d0ddd/electricity-licence-exemptions-guidance.pdf",
+  "path": "data/raw/forward-f006/public-as-of/desnz-licence-exemptions-guidance-2026.pdf",
+  "sha256": "07bf446710742fc0a9fd8bf849e4c7ed29972562c97db9885fd3625f90704603",
+  "fetched_at": "2026-09-03T21:53:32.563650+00:00",
+  "bytes": 308716
+ },
+ {
+  "source": "web",
+  "dataset": "desnz-sses-2023-government-response-pdf",
+  "url": "https://assets.publishing.service.gov.uk/media/6425a2d23d885d000fdadfc0/smart-secure-energy-system-government-response.pdf",
+  "path": "data/raw/forward-f006/public-as-of/desnz-sses-2023-government-response-pdf.pdf",
+  "sha256": "124ccda11ca214749f54c34e1e0450c3a081594a0830b14f3177d4eaa346bbf2",
+  "fetched_at": "2026-09-03T21:54:28.105742+00:00",
+  "bytes": 687396
+ },
+ {
+  "source": "web",
+  "dataset": "desnz-sses-2024-licensing-consultation-pdf",
+  "url": "https://assets.publishing.service.gov.uk/media/661e439ad4a839725cbd3d95/smart-secure-electricity-systems-2024-licensing-consultation.pdf",
+  "path": "data/raw/forward-f006/public-as-of/desnz-sses-2024-licensing-consultation-pdf.pdf",
+  "sha256": "728464019e67d4f9a9fe665116e6c89fac5e29a0a3448b158e62f5442bcd36bf",
+  "fetched_at": "2026-09-03T21:54:27.232880+00:00",
+  "bytes": 781993
+ },
+ {
+  "source": "web",
+  "dataset": "desnz-sses-enduring-governance-response",
+  "url": "https://www.gov.uk/government/consultations/smart-secure-electricity-systems-programme-sses-enduring-governance/outcome/smart-secure-electricity-systems-programme-sses-enduring-governance-government-response-accessible-webpage",
+  "path": "data/raw/forward-f006/public-as-of/desnz-sses-enduring-governance-response.html",
+  "sha256": "ab65c4c6a12de0cf1fcdf9a7198ee3e0f07db035706eea7fd7382195ae4b7a94",
+  "fetched_at": "2026-09-03T21:55:23.992285+00:00",
+  "bytes": 376636
+ },
+ {
+  "source": "web",
+  "dataset": "desnz-sses-government-response-2025-04-pdf",
+  "url": "https://assets.publishing.service.gov.uk/media/6808a2630324470d6a394eb2/SSES-consultation-response.pdf",
+  "path": "data/raw/forward-f006/public-as-of/desnz-sses-government-response-2025-04-pdf.pdf",
+  "sha256": "6b046d72a9269085bc8ed00db400d76bc58c5aa8710186aa6307907af51e9ec4",
+  "fetched_at": "2026-09-03T21:55:18.891423+00:00",
+  "bytes": 1104037
+ },
+ {
+  "source": "web",
+  "dataset": "desnz-sses-implementation-2024-outcome-page",
+  "url": "https://www.gov.uk/government/consultations/delivering-a-smart-and-secure-electricity-system-implementation",
+  "path": "data/raw/forward-f006/public-as-of/desnz-sses-implementation-2024-outcome-page.html",
+  "sha256": "26f4e3183f84c0a68926c62ce412f0167d09009c7d1b0d14918be1be359f3553",
+  "fetched_at": "2026-09-03T21:58:42.177249+00:00",
+  "bytes": 103070
+ },
+ {
+  "source": "web",
+  "dataset": "desnz-sses-interoperability-consultation-outcome",
+  "url": "https://www.gov.uk/government/consultations/delivering-a-smart-and-secure-electricity-system-the-interoperability-and-cyber-security-of-energy-smart-appliances-and-remote-load-control",
+  "path": "data/raw/forward-f006/public-as-of/desnz-sses-interoperability-consultation-outcome.html",
+  "sha256": "81998d58c39e8f6b5864f5bb2faab4409de725724f93ddcf3124b40b9f1c4ba3",
+  "fetched_at": "2026-09-03T21:55:23.273768+00:00",
+  "bytes": 91076
+ },
+ {
+  "source": "web",
+  "dataset": "desnz-tier-1-load-control-consultation-2026",
+  "url": "https://assets.publishing.service.gov.uk/media/6a3505ff0bea238415c9a2ad/tier-1-load-control-consultation.pdf",
+  "path": "data/raw/forward-f006/public-as-of/desnz-tier-1-load-control-consultation-2026.pdf",
+  "sha256": "83e43a2aa135a9a5ce374ec0a526ab1b50bd1a85edb79d4f723cce9f6193724a",
+  "fetched_at": "2026-09-03T21:53:13.646048+00:00",
+  "bytes": 405482
+ },
+ {
+  "source": "web",
+  "dataset": "electricity-act-1989-s4",
+  "url": "https://www.legislation.gov.uk/ukpga/1989/29/section/4",
+  "path": "data/raw/forward-f006/public-as-of/electricity-act-1989-s4.html",
+  "sha256": "a5a06abdf0f0ced97c018f42d29b69070633ee51afd0e5273584de8e5dd1e005",
+  "fetched_at": "2026-09-03T21:53:17.774221+00:00",
+  "bytes": 115832
+ },
+ {
+  "source": "web",
+  "dataset": "electricity-act-1989-s5",
+  "url": "https://www.legislation.gov.uk/ukpga/1989/29/section/5",
+  "path": "data/raw/forward-f006/public-as-of/electricity-act-1989-s5.html",
+  "sha256": "3dce8b37e9b6374374ad33e54ddab60e63d55ebb6d90b411967c372e282271e9",
+  "fetched_at": "2026-09-03T21:53:18.457095+00:00",
+  "bytes": 71105
+ },
+ {
+  "source": "web",
+  "dataset": "elexon-mhhs-page",
+  "url": "https://www.elexon.co.uk/bsc/operational/market-wide-half-hourly-settlement/",
+  "path": "data/raw/forward-f006/public-as-of/elexon-mhhs-page.html",
+  "sha256": "c678664a893ab319d184cddb22e4d0ab055b584cc31442413aa6e7ff87bce7da",
+  "fetched_at": "2026-09-03T21:53:31.024371+00:00",
+  "bytes": 212148
+ },
+ {
+  "source": "web",
+  "dataset": "elexon-sses-about",
+  "url": "https://www.elexon.co.uk/sses/about-smart-secure-electricity-systems/",
+  "path": "data/raw/forward-f006/public-as-of/elexon-sses-about.html",
+  "sha256": "7f8ae5f2bdce709a87bb736e7bd2a494521f97887b2c1c00017545e662841056",
+  "fetched_at": "2026-09-03T21:55:30.141254+00:00",
+  "bytes": 56364
+ },
+ {
+  "source": "web",
+  "dataset": "energy-act-2023-part-9-ch-3",
+  "url": "https://www.legislation.gov.uk/ukpga/2023/52/part/9/chapter/3/enacted",
+  "path": "data/raw/forward-f006/public-as-of/energy-act-2023-part-9-ch-3.html",
+  "sha256": "cbcdd7b4ae23d8aef32d845e93b143545ffefc29e1a071a23691213c9509aff1",
+  "fetched_at": "2026-09-03T21:53:19.570804+00:00",
+  "bytes": 50378
+ },
+ {
+  "source": "web",
+  "dataset": "energy-act-2023-s238",
+  "url": "https://www.legislation.gov.uk/ukpga/2023/52/section/238",
+  "path": "data/raw/forward-f006/public-as-of/energy-act-2023-s238.html",
+  "sha256": "75ed83b11bdb9c4ca0dafbde7f7051ea3cc1b3030b955fbd6d0f65833d6ebf4e",
+  "fetched_at": "2026-09-03T21:57:29.223788+00:00",
+  "bytes": 39256
+ },
+ {
+  "source": "web",
+  "dataset": "energy-act-2023-s245",
+  "url": "https://www.legislation.gov.uk/ukpga/2023/52/section/245",
+  "path": "data/raw/forward-f006/public-as-of/energy-act-2023-s245.html",
+  "sha256": "cb3f94bba69cbabedeb12c8fba0973989899291a1611e911e32cbbe5174dbe34",
+  "fetched_at": "2026-09-03T21:53:20.627483+00:00",
+  "bytes": 43258
+ },
+ {
+  "source": "web",
+  "dataset": "energy-act-2023-sch-19",
+  "url": "https://www.legislation.gov.uk/ukpga/2023/52/schedule/19",
+  "path": "data/raw/forward-f006/public-as-of/energy-act-2023-sch-19.html",
+  "sha256": "b1cbc358d159a88b2b2ef95028a95c70f751612a6a99d118e4dfc9cdf1153bb9",
+  "fetched_at": "2026-09-03T21:53:21.456159+00:00",
+  "bytes": 55263
+ },
+ {
+  "source": "web",
+  "dataset": "energy-ombudsman-complaints-data",
+  "url": "https://www.energyombudsman.org/complaints-data/explaining-our-complaints-data",
+  "path": "data/raw/forward-f006/public-as-of/energy-ombudsman-complaints-data.html",
+  "sha256": "a706df39ae6cfabe46041e9eb8b40fd088622a2beb6708a07bd862b42d1115c6",
+  "fetched_at": "2026-09-03T21:54:36.908652+00:00",
+  "bytes": 55421
+ },
+ {
+  "source": "web",
+  "dataset": "energy-uk-response-lcl",
+  "url": "https://www.energy-uk.org.uk/publications/energy-uk-response-to-smart-and-secure-electricity-systems-sses-desnz-draft-load-control-licence-regulations-and-conditions-and-ofgem-implementing-the-load-control-licensing-regime/",
+  "path": "data/raw/forward-f006/public-as-of/energy-uk-response-lcl.html",
+  "sha256": "40ed6b2e4fcf3eb36471b68187c6c9291d4087ac38427c659c169b4cdec9998b",
+  "fetched_at": "2026-09-03T21:53:34.735573+00:00",
+  "bytes": 177050
+ },
+ {
+  "source": "web",
+  "dataset": "eu-nc-dr-commission-consultation",
+  "url": "https://energy.ec.europa.eu/consultations/targeted-consultation-support-establishment-new-network-code-demand-response_en",
+  "path": "data/raw/forward-f006/public-as-of/eu-nc-dr-commission-consultation.html",
+  "sha256": "042a5d26f0091594ca86c73b50aea5b3f94112a83b3437378dbcf337fe6dea98",
+  "fetched_at": "2026-09-03T21:53:31.799165+00:00",
+  "bytes": 93103
+ },
+ {
+  "source": "web",
+  "dataset": "ev-smart-charge-points-regs-2021-reg-log",
+  "url": "https://www.legislation.gov.uk/uksi/2021/1467/made",
+  "path": "data/raw/forward-f006/public-as-of/ev-smart-charge-points-regs-2021-reg-log.html",
+  "sha256": "aea276265bf3fae8cbd810a59b4d80ed7b31f7bb598ad87bdc50239f2aff4c81",
+  "fetched_at": "2026-09-03T21:53:24.044190+00:00",
+  "bytes": 136734
+ },
+ {
+  "source": "web",
+  "dataset": "ev-smart-charge-points-regs-2021",
+  "url": "https://www.legislation.gov.uk/uksi/2021/1467/contents/made",
+  "path": "data/raw/forward-f006/public-as-of/ev-smart-charge-points-regs-2021.html",
+  "sha256": "50f87e4cbf3f97d2f79d08081dc4b6a074935ffcee1a58093d13ef0c6dfd0d7e",
+  "fetched_at": "2026-09-03T21:53:23.074365+00:00",
+  "bytes": 44396
+ },
+ {
+  "source": "web",
+  "dataset": "mhhs-programme-home",
+  "url": "https://www.mhhsprogramme.co.uk/",
+  "path": "data/raw/forward-f006/public-as-of/mhhs-programme-home.html",
+  "sha256": "a65a8a51968c4e8d55977b886d684bc20456a621e05f506fc372c6562e8d181f",
+  "fetched_at": "2026-09-03T21:53:27.597031+00:00",
+  "bytes": 53511
+ },
+ {
+  "source": "web",
+  "dataset": "ofgem-apply-energy-licence",
+  "url": "https://www.ofgem.gov.uk/energy-regulation/how-we-regulate/energy-licences-and-guidance/apply-energy-licence",
+  "path": "data/raw/forward-f006/public-as-of/ofgem-apply-energy-licence.html",
+  "sha256": "ea40bb742bb83b6ad07140ed7636c65ef821ee42bb50f2d3d55013d08db76664",
+  "fetched_at": "2026-09-03T21:54:35.605996+00:00",
+  "bytes": 190040
+ },
+ {
+  "source": "web",
+  "dataset": "ofgem-compliance-cases",
+  "url": "https://www.ofgem.gov.uk/energy-regulation/how-we-regulate/compliance-and-enforcement/compliance-cases",
+  "path": "data/raw/forward-f006/public-as-of/ofgem-compliance-cases.html",
+  "sha256": "81cc9d55b7433b1cb6c7c61ce67b5f0c56dc47805a6f03d13fc20dda6562e724",
+  "fetched_at": "2026-09-03T21:54:33.645252+00:00",
+  "bytes": 187807
+ },
+ {
+  "source": "web",
+  "dataset": "ofgem-customer-service-data-portal",
+  "url": "https://www.ofgem.gov.uk/news-and-insight/data/data-portal/customer-service-data",
+  "path": "data/raw/forward-f006/public-as-of/ofgem-customer-service-data-portal.html",
+  "sha256": "0764802338917f7503cd64e28ed038da9018f9295c8976aceb9b1aeba3f4aaa6",
+  "fetched_at": "2026-09-03T21:54:31.703468+00:00",
+  "bytes": 249404
+ },
+ {
+  "source": "web",
+  "dataset": "ofgem-enforcement-cases",
+  "url": "https://www.ofgem.gov.uk/energy-regulation/how-we-regulate/compliance-and-enforcement/enforcement-cases",
+  "path": "data/raw/forward-f006/public-as-of/ofgem-enforcement-cases.html",
+  "sha256": "6258dd16320df250f3b0245b66915c15800fa4716787f9bb3c0c6300decfbf3c",
+  "fetched_at": "2026-09-03T21:54:34.320084+00:00",
+  "bytes": 188927
+ },
+ {
+  "source": "web",
+  "dataset": "ofgem-epr-home",
+  "url": "https://epr.ofgem.gov.uk/",
+  "path": "data/raw/forward-f006/public-as-of/ofgem-epr-home.html",
+  "sha256": "594fe8f7d90c09562d1eb7a080b1946b29a4891b71c6bd4b56552e7536ecb475",
+  "fetched_at": "2026-09-03T21:54:32.395590+00:00",
+  "bytes": 606
+ },
+ {
+  "source": "web",
+  "dataset": "ofgem-lcl-annex-c-application-form-decision-2026-08",
+  "url": "https://www.ofgem.gov.uk/sites/default/files/2026-08/Annex-C-load-control-application-form-Decision.pdf",
+  "path": "data/raw/forward-f006/public-as-of/ofgem-lcl-annex-c-application-form-decision-2026-08.pdf",
+  "sha256": "76e5a4810beb144fc6cbde16bbe13737344cf1a5acb3222ae1f1e6008142be5a",
+  "fetched_at": "2026-09-03T21:58:40.008305+00:00",
+  "bytes": 445405
+ },
+ {
+  "source": "web",
+  "dataset": "ofgem-lcl-annex-c-application-form",
+  "url": "https://www.ofgem.gov.uk/sites/default/files/2025-12/Annex-C-Draft-load-control-licence-application-form-final-for-consultation.pdf",
+  "path": "data/raw/forward-f006/public-as-of/ofgem-lcl-annex-c-application-form.pdf",
+  "sha256": "bfc38746215b2c735dc228f83f036d59129ae87ef754717a6235782cd5fef8e5",
+  "fetched_at": "2026-09-03T21:53:16.398265+00:00",
+  "bytes": 597270
+ },
+ {
+  "source": "web",
+  "dataset": "ofgem-lcl-annex-d-consumer-protection-guidance",
+  "url": "https://www.ofgem.gov.uk/sites/default/files/2025-12/Annex-D-Draft-load-control-consumer-protection-guidance.pdf",
+  "path": "data/raw/forward-f006/public-as-of/ofgem-lcl-annex-d-consumer-protection-guidance.pdf",
+  "sha256": "fcd03951fcf89cff31719c7b6a67ce9d291f1e09be302004b1c08fdda03f40b0",
+  "fetched_at": "2026-09-03T21:53:17.045085+00:00",
+  "bytes": 280466
+ },
+ {
+  "source": "web",
+  "dataset": "ofgem-lcl-consultation-responses-2026-08-zip",
+  "url": "https://www.ofgem.gov.uk/sites/default/files/2026-08/Responses-for-SSES-load-control-consultation.zip",
+  "path": "data/raw/forward-f006/public-as-of/ofgem-lcl-consultation-responses-2026-08-zip.html",
+  "sha256": "8a645a8f701cc82009a559f5951ad53f8253dd721060622392e732bfb7663a81",
+  "fetched_at": "2026-09-03T21:58:40.891913+00:00",
+  "bytes": 9659179
+ },
+ {
+  "source": "web",
+  "dataset": "ofgem-lcl-implementing-consultation-pdf",
+  "url": "https://www.ofgem.gov.uk/sites/default/files/2025-12/Smart-Secure-Electricity-Systems-Implementing-the-load-control-licensing-regime-consultation.pdf",
+  "path": "data/raw/forward-f006/public-as-of/ofgem-lcl-implementing-consultation-pdf.pdf",
+  "sha256": "2bdb79218cb7072d60d9d247e8dfdbdfc1b2dc69fc810d3900ece481aadcd63c",
+  "fetched_at": "2026-09-03T21:53:15.685753+00:00",
+  "bytes": 904349
+ },
+ {
+  "source": "web",
+  "dataset": "ofgem-lcl-implementing-page",
+  "url": "https://www.ofgem.gov.uk/consultation/smart-secure-electricity-systems-implementing-load-control-licensing-regime",
+  "path": "data/raw/forward-f006/public-as-of/ofgem-lcl-implementing-page.html",
+  "sha256": "98f0ee52d2affe5a0db178755082e730940560da2ff8c171164dfb732dc9d1ac",
+  "fetched_at": "2026-09-03T21:53:14.971087+00:00",
+  "bytes": 205858
+ },
+ {
+  "source": "web",
+  "dataset": "ofgem-mhhs-cr055-decision-page",
+  "url": "https://www.ofgem.gov.uk/decision/market-wide-half-hourly-settlement-change-request-cr055-amendments-m10-and-corresponding-milestones-decision",
+  "path": "data/raw/forward-f006/public-as-of/ofgem-mhhs-cr055-decision-page.html",
+  "sha256": "6193a7e27fab0d3ef9597761e56ca246b4b4d304c50fbeed9394ffc7633d2ddc",
+  "fetched_at": "2026-09-03T21:55:25.771613+00:00",
+  "bytes": 193787
+ },
+ {
+  "source": "web",
+  "dataset": "ofgem-mhhs-cr055-decision-pdf",
+  "url": "https://www.ofgem.gov.uk/sites/default/files/2024-11/CR055_decision_document.pdf",
+  "path": "data/raw/forward-f006/public-as-of/ofgem-mhhs-cr055-decision-pdf.pdf",
+  "sha256": "274a179d0c80f1ed262508e8e3bbc33e7da403cc0ba6f2053a782e4bc8da55f5",
+  "fetched_at": "2026-09-03T21:55:24.654195+00:00",
+  "bytes": 329773
+ },
+ {
+  "source": "web",
+  "dataset": "ofgem-mhhs-governance-decision-2025-05",
+  "url": "https://www.ofgem.gov.uk/sites/default/files/2025-05/Decision-Amendments-to-Market-wide-Half-Hourly-Settlement-Governance-Framework.pdf",
+  "path": "data/raw/forward-f006/public-as-of/ofgem-mhhs-governance-decision-2025-05.pdf",
+  "sha256": "256544a5171630eeecd6747a1e86658f9fa5819fc7bba0afe5eeafddac319715",
+  "fetched_at": "2026-09-03T21:54:36.262690+00:00",
+  "bytes": 355057
+ },
+ {
+  "source": "web",
+  "dataset": "ofgem-slc31e-reports-2024-25",
+  "url": "https://www.ofgem.gov.uk/data/electricity-distribution-standard-licence-condition-31e-flexibility-procurement-reports-and-supporting-data-2024-2025",
+  "path": "data/raw/forward-f006/public-as-of/ofgem-slc31e-reports-2024-25.html",
+  "sha256": "8cbd5e123533942af9e2439b130e6c5d7dba1922d98128f13178e26c4c557a0d",
+  "fetched_at": "2026-09-03T21:55:26.933819+00:00",
+  "bytes": 195176
+ },
+ {
+  "source": "web",
+  "dataset": "ofgem-sses-implementation-decision-2026-08",
+  "url": "https://www.ofgem.gov.uk/sites/default/files/2026-08/SSES-Implementation-Decision.pdf",
+  "path": "data/raw/forward-f006/public-as-of/ofgem-sses-implementation-decision-2026-08.pdf",
+  "sha256": "f6ad04195723c51d7c9788f1ff41651e7ec3fd30fd913cfa5372965b58249a73",
+  "fetched_at": "2026-09-03T21:58:39.341385+00:00",
+  "bytes": 732561
+ },
+ {
+  "source": "web",
+  "dataset": "opss-evscp-enforcement-page",
+  "url": "https://www.gov.uk/government/publications/opss-enforcement-enforcement-actions/electric-vehicle-smart-charge-points-regulations",
+  "path": "data/raw/forward-f006/public-as-of/opss-evscp-enforcement-page.html",
+  "sha256": "5304625210b27b1c0fed9e059be3cb961b010f7a03e1f5e41a129c0fd4e55c05",
+  "fetched_at": "2026-09-03T21:54:30.392003+00:00",
+  "bytes": 126708
+ },
+ {
+  "source": "web",
+  "dataset": "ozev-approved-chargepoint-list-page",
+  "url": "https://www.gov.uk/guidance/approval-process-for-ev-chargepoint-manufacturers",
+  "path": "data/raw/forward-f006/public-as-of/ozev-approved-chargepoint-list-page.html",
+  "sha256": "4fd1aa118e91e525b162a930ebb9fe5492f5c04e2c5078a69c28655d9e22f323",
+  "fetched_at": "2026-09-03T21:54:31.046995+00:00",
+  "bytes": 97605
+ },
+ {
+  "source": "web",
+  "dataset": "ozev-guide-evscp-2021-v2-1",
+  "url": "https://assets.publishing.service.gov.uk/media/628ce214e90e071f653a494a/Guide-to-evscp-regulations-2021-V2.1.pdf",
+  "path": "data/raw/forward-f006/public-as-of/ozev-guide-evscp-2021-v2-1.pdf",
+  "sha256": "1df707928eb685be6115d7e1e07214c2d7b1f92d6fcf7dbe47eb61149840152b",
+  "fetched_at": "2026-09-03T21:53:24.873112+00:00",
+  "bytes": 673958
+ },
+ {
+  "source": "web",
+  "dataset": "recco-response-desnz-lcl",
+  "url": "https://retailenergycode.co.uk/our-response-to-desnz-load-control-licensing-consultation/",
+  "path": "data/raw/forward-f006/public-as-of/recco-response-desnz-lcl.html",
+  "sha256": "d31db9e4249ee68898a94a5f300c7f7054b5cb670ccecb0fffc027b1a1fd227f",
+  "fetched_at": "2026-09-03T21:58:43.681844+00:00",
+  "bytes": 138062
+ }
+]

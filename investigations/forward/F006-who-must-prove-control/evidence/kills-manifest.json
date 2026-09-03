@@ -1,0 +1,209 @@
+[
+ {
+  "source": "web",
+  "dataset": "axle-careers",
+  "url": "https://www.axle.energy/careers",
+  "path": "data/raw/forward-f006/kills/axle-careers.html",
+  "sha256": "78806bc4429475256c595507d2812ef0f99a873a359880d6fbca4a56f8b01630",
+  "fetched_at": "2026-09-03T22:06:30.108367+00:00",
+  "bytes": 96141
+ },
+ {
+  "source": "web",
+  "dataset": "axle-home",
+  "url": "https://www.axle.energy/",
+  "path": "data/raw/forward-f006/kills/axle-home.html",
+  "sha256": "21624c8b82e6fc43d5295eb88c6bfd1881fab8b917cd6a0c6b2898db922633cd",
+  "fetched_at": "2026-09-03T22:06:30.706504+00:00",
+  "bytes": 80454
+ },
+ {
+  "source": "web",
+  "dataset": "elexon-sses-enduring-governance-role-2025-11",
+  "url": "https://www.elexon.co.uk/2025/11/28/elexon-to-deliver-smart-secure-electricity-systems-programme-enduring-governance-role/",
+  "path": "data/raw/forward-f006/kills/elexon-sses-enduring-governance-role-2025-11.html",
+  "sha256": "c483c686e4eeaa0584d972f34431a611094a6ccfb9a86afd7c3e681bb2cab4eb",
+  "fetched_at": "2026-09-03T22:05:41.429772+00:00",
+  "bytes": 52675
+ },
+ {
+  "source": "web",
+  "dataset": "elexon-sses-governance-framework-summary",
+  "url": "https://www.elexon.co.uk/elexondocuments/smart-secure-electricity-systems/summary-of-draft-sses-governance-framework/",
+  "path": "data/raw/forward-f006/kills/elexon-sses-governance-framework-summary.html",
+  "sha256": "32b833dc255dcff9eba5a0f0cfb982bd16e0dc801b6a535cadc83ef72963d34b",
+  "fetched_at": "2026-09-03T22:05:38.265007+00:00",
+  "bytes": 272027
+ },
+ {
+  "source": "web",
+  "dataset": "elexon-sses-sgg-page",
+  "url": "https://www.elexon.co.uk/what-we-do/about-our-services/smart-secure-electricity-systems/sses-security-governance-group/",
+  "path": "data/raw/forward-f006/kills/elexon-sses-sgg-page.html",
+  "sha256": "b6140b2367af0d3f63d7447efbc0786b9d16bf97fd580eda4955d60dd04df858",
+  "fetched_at": "2026-09-03T22:05:35.192006+00:00",
+  "bytes": 58661
+ },
+ {
+  "source": "web",
+  "dataset": "enwl-flex-assure",
+  "url": "https://www.enwl.co.uk/future-energy/flexibility-hub/flexibility-faqs/flex-assure/",
+  "path": "data/raw/forward-f006/kills/enwl-flex-assure.html",
+  "sha256": "02d066688f3be02a215cf88ad700b540eb141914fa78a75a24155f92719397ba",
+  "fetched_at": "2026-09-03T22:04:55.699810+00:00",
+  "bytes": 163097
+ },
+ {
+  "source": "web",
+  "dataset": "flex-assure-about",
+  "url": "https://www.flexassure.org/about",
+  "path": "data/raw/forward-f006/kills/flex-assure-about.html",
+  "sha256": "8c516e513eac022238b44719a28d9e6c17d5bf6badd592b093f0444d23a62cc2",
+  "fetched_at": "2026-09-03T22:04:53.850139+00:00",
+  "bytes": 99286
+ },
+ {
+  "source": "web",
+  "dataset": "flex-assure-apply",
+  "url": "https://www.flexassure.org/scheme-members/apply",
+  "path": "data/raw/forward-f006/kills/flex-assure-apply.html",
+  "sha256": "7e8f88d03bc9f0eafa457544015cef6e5dd8ed9018f744f9e8d39afe211dd7e9",
+  "fetched_at": "2026-09-03T22:06:28.465584+00:00",
+  "bytes": 127535
+ },
+ {
+  "source": "web",
+  "dataset": "flex-assure-audits",
+  "url": "https://www.flexassure.org/audits",
+  "path": "data/raw/forward-f006/kills/flex-assure-audits.html",
+  "sha256": "1b3ec40d3f6320e4b09dbb0f856db449f26d29aae4482587fa2d512ff2698128",
+  "fetched_at": "2026-09-03T22:07:16.658581+00:00",
+  "bytes": 93110
+ },
+ {
+  "source": "web",
+  "dataset": "flex-assure-governance",
+  "url": "https://flexassure.org/gov",
+  "path": "data/raw/forward-f006/kills/flex-assure-governance.html",
+  "sha256": "1b3ec40d3f6320e4b09dbb0f856db449f26d29aae4482587fa2d512ff2698128",
+  "fetched_at": "2026-09-03T22:04:54.919072+00:00",
+  "bytes": 93110
+ },
+ {
+  "source": "web",
+  "dataset": "flex-assure-homeflex",
+  "url": "https://www.flexassure.org/homeflex",
+  "path": "data/raw/forward-f006/kills/flex-assure-homeflex.html",
+  "sha256": "8e1ec8518a03fe4b148f3a0e40be89f85a5782873e6e77388df613aca544f804",
+  "fetched_at": "2026-09-03T22:06:29.486464+00:00",
+  "bytes": 165911
+ },
+ {
+  "source": "web",
+  "dataset": "flex-assure-members-register",
+  "url": "https://flexassure.org/members-register",
+  "path": "data/raw/forward-f006/kills/flex-assure-members-register.html",
+  "sha256": "342f227fd5fcdfa090eca6701b79f60797e1f4dfed715c68229185f6948afe7b",
+  "fetched_at": "2026-09-03T22:07:17.611899+00:00",
+  "bytes": 86885
+ },
+ {
+  "source": "web",
+  "dataset": "lcp-household-flexibility-market-monitor",
+  "url": "https://www.lcp.com/en/insights/publications/beyond-tariffs-gb-household-flexibility-market-monitor",
+  "path": "data/raw/forward-f006/kills/lcp-household-flexibility-market-monitor.html",
+  "sha256": "e407568a30567ba1cbbc14f3a4a449a16b4498d526615455d67ed67498c56575",
+  "fetched_at": "2026-09-03T22:05:42.310998+00:00",
+  "bytes": 74761
+ },
+ {
+  "source": "web",
+  "dataset": "neso-dfs-2026-08-10-doc",
+  "url": "https://www.neso.energy/document/346011/download",
+  "path": "data/raw/forward-f006/kills/neso-dfs-2026-08-10-doc.html",
+  "sha256": "b3cdf3e89c4e5fe9fc17160b578cf2163ec5b0063d5383be5661fd66d6e84cfd",
+  "fetched_at": "2026-09-03T22:04:56.452366+00:00",
+  "bytes": 1111511
+ },
+ {
+  "source": "web",
+  "dataset": "neso-dfs-page",
+  "url": "https://www.neso.energy/industry-information/balancing-services/demand-flexibility-service-dfs",
+  "path": "data/raw/forward-f006/kills/neso-dfs-page.html",
+  "sha256": "1cb50446d1d7c51dd259cdf928ae7df482485283d226b1cfb57b265d2dc51cf3",
+  "fetched_at": "2026-09-03T22:04:57.483390+00:00",
+  "bytes": 1347630
+ },
+ {
+  "source": "web",
+  "dataset": "neso-dfs-registered-providers-list",
+  "url": "https://www.neso.energy/industry-information/balancing-services/demand-flexibility-service/dfs-registered-providers-list",
+  "path": "data/raw/forward-f006/kills/neso-dfs-registered-providers-list.html",
+  "sha256": "8f98b13f832506caf220da5e131c184290952479de64602b1cff4c6a3f69e276",
+  "fetched_at": "2026-09-03T22:06:27.592996+00:00",
+  "bytes": 1248844
+ },
+ {
+  "source": "web",
+  "dataset": "neso-dfs-shakeup",
+  "url": "https://www.neso.energy/neso-announces-shakeup-new-look-demand-flexibility-service",
+  "path": "data/raw/forward-f006/kills/neso-dfs-shakeup.html",
+  "sha256": "b0648327c90f8e40df7330f750bbe63e16d2586b687fcc52b9eba5a04b62b18f",
+  "fetched_at": "2026-09-03T22:04:58.314571+00:00",
+  "bytes": 1243318
+ },
+ {
+  "source": "web",
+  "dataset": "newpower-flex-assure-first-providers-2026-04",
+  "url": "https://www.newpower.info/2026/04/domestic-flexibility-assurance-scheme-signs-up-first-providers/",
+  "path": "data/raw/forward-f006/kills/newpower-flex-assure-first-providers-2026-04.html",
+  "sha256": "279ec7c29b603ad07dc2c1649f7fc220f91d5441e37c6c0111cf32f8cff0cd8a",
+  "fetched_at": "2026-09-03T22:06:26.781522+00:00",
+  "bytes": 26996
+ },
+ {
+  "source": "web",
+  "dataset": "octopus-intelligent-go-faqs",
+  "url": "https://octopus.energy/blog/intelligent-go-faqs/",
+  "path": "data/raw/forward-f006/kills/octopus-intelligent-go-faqs.html",
+  "sha256": "6bfbfa23e0387de8ed925d1e2f077ff44a8da5817a363bef6e73cc307f088db8",
+  "fetched_at": "2026-09-03T22:04:52.860418+00:00",
+  "bytes": 501415
+ },
+ {
+  "source": "web",
+  "dataset": "octopus-iog-third-party-control-faq",
+  "url": "https://octopus.energy/help-and-faqs/articles/why-can-t-i-have-both-intelligent-octopus-go-and-a-third-party-controlling-my-charging-/",
+  "path": "data/raw/forward-f006/kills/octopus-iog-third-party-control-faq.html",
+  "sha256": "0c38b42b34a36f34d2a4195ddf9bb566d78278c04f3327cda81852d6dd01b2f2",
+  "fetched_at": "2026-09-03T22:04:51.360491+00:00",
+  "bytes": 256676
+ },
+ {
+  "source": "web",
+  "dataset": "octopus-smart-tariff-terms",
+  "url": "https://octopus.energy/policies/smart-tariffs-terms-and-condition/",
+  "path": "data/raw/forward-f006/kills/octopus-smart-tariff-terms.html",
+  "sha256": "f75e33a7af32e46c87e9ec7b81990fc7bc02bfab6506cebb2a5d3ff600370571",
+  "fetched_at": "2026-09-03T22:04:52.104820+00:00",
+  "bytes": 823430
+ },
+ {
+  "source": "web",
+  "dataset": "ombudsman-adr-fsps-news",
+  "url": "https://www.energyombudsman.org/news/energy-ombudsman-confirmed-as-adr-for-flexibility-service-providers",
+  "path": "data/raw/forward-f006/kills/ombudsman-adr-fsps-news.html",
+  "sha256": "0319377ae4cf110be895271d716327592b6e29f4704f388ae0ed9b6b9ead451b",
+  "fetched_at": "2026-09-03T22:06:25.012809+00:00",
+  "bytes": 64654
+ },
+ {
+  "source": "web",
+  "dataset": "ombudsman-fsp-disputes-info",
+  "url": "https://www.energyombudsman.org/how-we-can-help/information-for-disputes-with-flexibility-service-providers",
+  "path": "data/raw/forward-f006/kills/ombudsman-fsp-disputes-info.html",
+  "sha256": "79b2adc28682174eeca1868fc1202406daa47531bb0218322645891f35a0eed6",
+  "fetched_at": "2026-09-03T22:06:25.617536+00:00",
+  "bytes": 62688
+ }
+]

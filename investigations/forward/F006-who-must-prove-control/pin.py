@@ -32,8 +32,11 @@ def fetch(*, url: str, destination: Path, dataset: str) -> SourceArtifact:
         response.raise_for_status()
         destination.write_bytes(response.content)
     return SourceArtifact(
-        source="web", dataset=dataset, path=destination,
-        sha256=sha256_file(destination), fetched_at=datetime.now(UTC),
+        source="web",
+        dataset=dataset,
+        path=destination,
+        sha256=sha256_file(destination),
+        fetched_at=datetime.now(UTC),
     )
 
 
@@ -49,15 +52,23 @@ def main() -> int:
                 [(name, url, raw / f"{name}{suffix}")],
                 journal_path=raw / "journal.ndjson",
                 manifest_path=raw / "manifest.json",
-                repo_root=REPO_ROOT, fetch=fetch, sleep_seconds=0.5, progress=progress,
+                repo_root=REPO_ROOT,
+                fetch=fetch,
+                sleep_seconds=0.5,
+                progress=progress,
             )
         except Exception as error:  # noqa: BLE001 — recorded, never worked around
-            unavailable[name] = {"url": url, "error": str(error).splitlines()[0],
-                                 "at": datetime.now(UTC).isoformat()}
+            unavailable[name] = {
+                "url": url,
+                "error": str(error).splitlines()[0],
+                "at": datetime.now(UTC).isoformat(),
+            }
             print(f"UNAVAILABLE {name}: {unavailable[name]['error']}", flush=True)
     (HERE / "evidence").mkdir(exist_ok=True)
     if (raw / "manifest.json").exists():
-        (HERE / "evidence" / f"{batch}-manifest.json").write_bytes((raw / "manifest.json").read_bytes())
+        (HERE / "evidence" / f"{batch}-manifest.json").write_bytes(
+            (raw / "manifest.json").read_bytes()
+        )
     if unavailable:
         unavailable_path.write_text(json.dumps(unavailable, indent=1) + "\n")
     return 0

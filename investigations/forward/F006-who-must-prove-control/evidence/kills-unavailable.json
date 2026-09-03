@@ -1,0 +1,17 @@
+{
+ "flex-assure-first-audit": {
+  "url": "https://flexassure.org.uk/latest-news/104-flex-assure-completes-first-member-audit",
+  "error": "[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self-signed certificate (_ssl.c:1081)",
+  "at": "2026-09-03T22:04:54.476957+00:00"
+ },
+ "flex-assure-ic-eso-funding": {
+  "url": "https://flexassure.org.uk/latest-news/111-the-flex-assure-industrial-and-commercial-scheme-receives-funding-from-national-grid-eso",
+  "error": "[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self-signed certificate (_ssl.c:1081)",
+  "at": "2026-09-03T22:07:18.207296+00:00"
+ },
+ "ade-flex-assure-scheme-administrator": {
+  "url": "https://www.theade.co.uk/news/flex-assure-scheme-administrator",
+  "error": "Client error '404 Not Found' for url 'https://www.theade.co.uk/news/flex-assure-scheme-administrator'",
+  "at": "2026-09-03T22:07:18.446868+00:00"
+ }
+}

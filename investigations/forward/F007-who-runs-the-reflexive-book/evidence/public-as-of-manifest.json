@@ -1,0 +1,551 @@
+[
+ {
+  "source": "web",
+  "dataset": "acer-news-rewarding-flexibility-2025",
+  "url": "https://www.acer.europa.eu/news/rewarding-flexibility-how-retail-markets-can-empower-electricity-consumers-and-improve-affordability",
+  "path": "data/raw/forward-f007/public-as-of/acer-news-rewarding-flexibility-2025.html",
+  "sha256": "e9bc173e203cbb227e16b837c6fa9ed184b579d1b3ecb47ff3ddbe31cc2b6059",
+  "fetched_at": "2026-09-04T10:04:09.884218+00:00",
+  "bytes": 168280
+ },
+ {
+  "source": "web",
+  "dataset": "acer-retail-mmr-page",
+  "url": "https://www.acer.europa.eu/electricity/market-monitoring-report",
+  "path": "data/raw/forward-f007/public-as-of/acer-retail-mmr-page.html",
+  "sha256": "06d899db413474ef18b7f592a1b3fb97144d79862f8624b29572265d7ad9902a",
+  "fetched_at": "2026-09-04T10:00:36.349780+00:00",
+  "bytes": 166629
+ },
+ {
+  "source": "web",
+  "dataset": "bdew-stellungnahme-enwg-2025-themenpapiere-pdf",
+  "url": "https://www.bdew.de/media/documents/251017_BDEW-Stellungnahme_EnWG_2025_-_Themenpapiere.pdf",
+  "path": "data/raw/forward-f007/public-as-of/bdew-stellungnahme-enwg-2025-themenpapiere-pdf.pdf",
+  "sha256": "bb783ce7004f18bd639c269910c351bd5fe649006247a38031549f87a36cbc59",
+  "fetched_at": "2026-09-04T10:05:31.168573+00:00",
+  "bytes": 3319596
+ },
+ {
+  "source": "web",
+  "dataset": "bmwk-smart-meter-rollout",
+  "url": "https://www.bmwk.de/Redaktion/DE/Artikel/Energie/smart-meter-rollout.html",
+  "path": "data/raw/forward-f007/public-as-of/bmwk-smart-meter-rollout.html",
+  "sha256": "589844c114480d467ea6e257e541b55360502c6fdb35b0288fd67dffe4bbdbe2",
+  "fetched_at": "2026-09-04T10:00:38.792428+00:00",
+  "bytes": 118413
+ },
+ {
+  "source": "web",
+  "dataset": "bnetza-ee-statistik-mastr-pdf",
+  "url": "https://www.bundesnetzagentur.de/DE/Fachthemen/ElektrizitaetundGas/ErneuerbareEnergien/EE-Statistik/DL/EEStatistikMaStR.pdf?__blob=publicationFile&v=48",
+  "path": "data/raw/forward-f007/public-as-of/bnetza-ee-statistik-mastr-pdf.pdf",
+  "sha256": "baa36018f0d747763d26de0b58134598d43dfb782e4d284d67b6a6b9cef83d04",
+  "fetched_at": "2026-09-04T10:06:57.603269+00:00",
+  "bytes": 188905
+ },
+ {
+  "source": "web",
+  "dataset": "bnetza-ee-statistik-page",
+  "url": "https://www.bundesnetzagentur.de/DE/Fachthemen/ElektrizitaetundGas/ErneuerbareEnergien/EE-Statistik/artikel.html",
+  "path": "data/raw/forward-f007/public-as-of/bnetza-ee-statistik-page.html",
+  "sha256": "c6eacd74ceb74a04629296e0c236e41ca21dae72d8255cda82328bfbe53f91fe",
+  "fetched_at": "2026-09-04T10:06:56.717682+00:00",
+  "bytes": 69445
+ },
+ {
+  "source": "web",
+  "dataset": "bnetza-imsys-rollout-article",
+  "url": "https://www.bundesnetzagentur.de/DE/Fachthemen/ElektrizitaetundGas/NetzzugangMesswesen/Mess-undZaehlwesen/iMSys/artikel.html",
+  "path": "data/raw/forward-f007/public-as-of/bnetza-imsys-rollout-article.html",
+  "sha256": "4f94c77117047bb0dc67a375210af4e87231f95e59ba0d5fbb92cd117d31255c",
+  "fetched_at": "2026-09-04T10:03:54.571784+00:00",
+  "bytes": 93456
+ },
+ {
+  "source": "web",
+  "dataset": "bnetza-mastr-page",
+  "url": "https://www.bundesnetzagentur.de/DE/Fachthemen/ElektrizitaetundGas/Monitoringberichte/Marktstammdatenregister/start.html",
+  "path": "data/raw/forward-f007/public-as-of/bnetza-mastr-page.html",
+  "sha256": "0f3881fddacb21300cea64778b2360937674de6bcb33b6add530e0d80e09529c",
+  "fetched_at": "2026-09-04T10:03:58.534974+00:00",
+  "bytes": 71540
+ },
+ {
+  "source": "web",
+  "dataset": "bnetza-mastr-statistik",
+  "url": "https://www.marktstammdatenregister.de/MaStR/Datendownload",
+  "path": "data/raw/forward-f007/public-as-of/bnetza-mastr-statistik.html",
+  "sha256": "dfe73bf1df70ffbc85adee18b294ee5dcb2cd2724db7871b03ca2300d8625a87",
+  "fetched_at": "2026-09-04T09:59:16.929213+00:00",
+  "bytes": 75687
+ },
+ {
+  "source": "web",
+  "dataset": "bnetza-monitoringbericht-2025-pdf",
+  "url": "https://data.bundesnetzagentur.de/Bundesnetzagentur/SharedDocs/Mediathek/Monitoringberichte/MonitoringberichtEnergie2025.pdf",
+  "path": "data/raw/forward-f007/public-as-of/bnetza-monitoringbericht-2025-pdf.pdf",
+  "sha256": "29695eeb24c6b6d247ba86adba0f8df54039ef4cbb9380cc466f8c37f921297a",
+  "fetched_at": "2026-09-04T10:03:52.043455+00:00",
+  "bytes": 11908487
+ },
+ {
+  "source": "web",
+  "dataset": "bnetza-monitoringbericht-page",
+  "url": "https://www.bundesnetzagentur.de/DE/Fachthemen/ElektrizitaetundGas/Monitoringberichte/start.html",
+  "path": "data/raw/forward-f007/public-as-of/bnetza-monitoringbericht-page.html",
+  "sha256": "18545deb0e382692c13828332755c62c312deed0255dc2f12c78f15a230fadd5",
+  "fetched_at": "2026-09-04T09:59:15.159256+00:00",
+  "bytes": 78039
+ },
+ {
+  "source": "web",
+  "dataset": "bnetza-press-2025-12-02-smard-dynamische-tarife",
+  "url": "https://www.bundesnetzagentur.de/SharedDocs/Pressemitteilungen/DE/2025/20251202_Stromtarife.html",
+  "path": "data/raw/forward-f007/public-as-of/bnetza-press-2025-12-02-smard-dynamische-tarife.html",
+  "sha256": "bdedf7230ecaa514391dddf42f314152ffca2561a14edcffcf68036b05e0120e",
+  "fetched_at": "2026-09-04T10:03:53.641025+00:00",
+  "bytes": 58191
+ },
+ {
+  "source": "web",
+  "dataset": "bnetza-press-2026-01-08-eeg",
+  "url": "https://www.bundesnetzagentur.de/SharedDocs/Pressemitteilungen/DE/2026/20260108_EEG.html",
+  "path": "data/raw/forward-f007/public-as-of/bnetza-press-2026-01-08-eeg.html",
+  "sha256": "dd970f02b2b50e3adec899264f7e6a4c73f99dc366c4d5d56933bbc87fa2a6b5",
+  "fetched_at": "2026-09-04T10:06:59.475891+00:00",
+  "bytes": 60465
+ },
+ {
+  "source": "web",
+  "dataset": "bnetza-press-2026-03-27-aufsichtsverfahren-messwesen",
+  "url": "https://www.bundesnetzagentur.de/SharedDocs/Pressemitteilungen/DE/2026/20260327_AufsichtsverfahrenMesswesen.html",
+  "path": "data/raw/forward-f007/public-as-of/bnetza-press-2026-03-27-aufsichtsverfahren-messwesen.html",
+  "sha256": "34e87920b45179f6d03c3bd27175b6da9aac0905733f37144f3cf0de50a4ac86",
+  "fetched_at": "2026-09-04T10:03:55.352587+00:00",
+  "bytes": 59313
+ },
+ {
+  "source": "web",
+  "dataset": "bnetza-press-monitoringbericht-2025",
+  "url": "https://www.bundesnetzagentur.de/1081882",
+  "path": "data/raw/forward-f007/public-as-of/bnetza-press-monitoringbericht-2025.html",
+  "sha256": "0af88a62e34e3038bfd78e374570746376bc7f2b4b6b14c67b441cf34d6f09e6",
+  "fetched_at": "2026-09-04T10:03:52.846809+00:00",
+  "bytes": 61741
+ },
+ {
+  "source": "web",
+  "dataset": "bnetza-stromspeicher-page",
+  "url": "https://www.bundesnetzagentur.de/DE/Fachthemen/ElektrizitaetundGas/Speicher/start.html",
+  "path": "data/raw/forward-f007/public-as-of/bnetza-stromspeicher-page.html",
+  "sha256": "d680cca51d2cfa1852285e1481d7302df4aab40f0ec61c08cbc2f233d36a222c",
+  "fetched_at": "2026-09-04T10:06:58.703715+00:00",
+  "bytes": 105253
+ },
+ {
+  "source": "web",
+  "dataset": "bnetza-vportal-dynstromtarife",
+  "url": "https://www.bundesnetzagentur.de/DE/Vportal/Energie/Vertragsarten/DynStromtarife/start.html",
+  "path": "data/raw/forward-f007/public-as-of/bnetza-vportal-dynstromtarife.html",
+  "sha256": "9ea887feec42a2566233a322cedd4d71f0f5db5e343b87be5e8081494c5efba4",
+  "fetched_at": "2026-09-04T10:03:56.295044+00:00",
+  "bytes": 73266
+ },
+ {
+  "source": "web",
+  "dataset": "bnetza-vportal-metering",
+  "url": "https://www.bundesnetzagentur.de/DE/Vportal/Energie/Metering/start.html",
+  "path": "data/raw/forward-f007/public-as-of/bnetza-vportal-metering.html",
+  "sha256": "6028e71d0b7c2074f4c77283c7e2b099dd811a1850e6b703304159084a86d4ca",
+  "fetched_at": "2026-09-04T10:03:57.683141+00:00",
+  "bytes": 154538
+ },
+ {
+  "source": "web",
+  "dataset": "bt-drucksache-20-5549-gndew-pdf",
+  "url": "https://dserver.bundestag.de/btd/20/055/2005549.pdf",
+  "path": "data/raw/forward-f007/public-as-of/bt-drucksache-20-5549-gndew-pdf.pdf",
+  "sha256": "6d5794510fa061e08ed0a04c8de4be010efbf401582c43fb458c240f000893a3",
+  "fetched_at": "2026-09-04T10:04:00.349351+00:00",
+  "bytes": 866035
+ },
+ {
+  "source": "web",
+  "dataset": "bt-drucksache-21-2793-pdf",
+  "url": "https://dserver.bundestag.de/btd/21/027/2102793.pdf",
+  "path": "data/raw/forward-f007/public-as-of/bt-drucksache-21-2793-pdf.pdf",
+  "sha256": "6c1e7b39ab0779ae09ae4a30aa29014e36d75e8635c8a0d29380560ba2dacde1",
+  "fetched_at": "2026-09-04T10:03:59.440871+00:00",
+  "bytes": 1816155
+ },
+ {
+  "source": "web",
+  "dataset": "ceer-mmr-2025-page",
+  "url": "https://www.ceer.eu/national-report/market-monitoring-reports-2025/",
+  "path": "data/raw/forward-f007/public-as-of/ceer-mmr-2025-page.html",
+  "sha256": "d5fce4626aad2180352e12accb2815b84cd9a3f3349447b6b9ef1a35c9fc11af",
+  "fetched_at": "2026-09-04T10:04:14.198621+00:00",
+  "bytes": 205171
+ },
+ {
+  "source": "web",
+  "dataset": "elexon-bsc-change-register",
+  "url": "https://www.elexon.co.uk/bsc/change/change-register/",
+  "path": "data/raw/forward-f007/public-as-of/elexon-bsc-change-register.html",
+  "sha256": "1854bde407e8ff89ea691ab45957873c780f36461cb161247a5a17c7f09dd6be",
+  "fetched_at": "2026-09-04T10:11:08.684610+00:00",
+  "bytes": 218927
+ },
+ {
+  "source": "web",
+  "dataset": "elexon-mhhs-page",
+  "url": "https://www.elexon.co.uk/mhhs/",
+  "path": "data/raw/forward-f007/public-as-of/elexon-mhhs-page.html",
+  "sha256": "03edf0622c6526c7dfa5b6976052360a1c279d99c3cbc2c844d9088fda8ca6f5",
+  "fetched_at": "2026-09-04T10:00:28.784455+00:00",
+  "bytes": 225263
+ },
+ {
+  "source": "web",
+  "dataset": "enbw-beschaffung-stadtwerke",
+  "url": "https://www.enbw.com/dienstleistungen/beschaffung/stadtwerke",
+  "path": "data/raw/forward-f007/public-as-of/enbw-beschaffung-stadtwerke.html",
+  "sha256": "e3f8f4c9a7dd2399f0e6a9396341a50a22bbb91449a56a995904834b0592c882",
+  "fetched_at": "2026-09-04T10:05:33.208909+00:00",
+  "bytes": 82724
+ },
+ {
+  "source": "web",
+  "dataset": "enbw-energy-factory-stadtwerke",
+  "url": "https://energyfactory.de/stadtwerke/",
+  "path": "data/raw/forward-f007/public-as-of/enbw-energy-factory-stadtwerke.html",
+  "sha256": "4f22ebc5893e62d8337a6b852e7b262f06487be9b04b24a87591526c8863f866",
+  "fetched_at": "2026-09-04T10:05:37.644409+00:00",
+  "bytes": 112038
+ },
+ {
+  "source": "web",
+  "dataset": "enwg-14a-gesetze-im-internet",
+  "url": "https://www.gesetze-im-internet.de/enwg_2005/__14a.html",
+  "path": "data/raw/forward-f007/public-as-of/enwg-14a-gesetze-im-internet.html",
+  "sha256": "ac053a2eba6613f0a52ef507cd5b4b26951a60970cbd6542e672d70b60237784",
+  "fetched_at": "2026-09-04T09:59:09.603270+00:00",
+  "bytes": 9848
+ },
+ {
+  "source": "web",
+  "dataset": "enwg-3-gesetze-im-internet",
+  "url": "https://www.gesetze-im-internet.de/enwg_2005/__3.html",
+  "path": "data/raw/forward-f007/public-as-of/enwg-3-gesetze-im-internet.html",
+  "sha256": "7f68e3cd481e32bcd32751351a10e1cfc128ad5ee438af84cc86eddbcb57debe",
+  "fetched_at": "2026-09-04T10:10:07.866466+00:00",
+  "bytes": 51800
+ },
+ {
+  "source": "web",
+  "dataset": "enwg-35-gesetze-im-internet",
+  "url": "https://www.gesetze-im-internet.de/enwg_2005/__35.html",
+  "path": "data/raw/forward-f007/public-as-of/enwg-35-gesetze-im-internet.html",
+  "sha256": "0d02a0a19b8cfa8b23cd07eb363c9961e4bcd5ac0549311fb31cce429dfe2043",
+  "fetched_at": "2026-09-04T10:10:07.211226+00:00",
+  "bytes": 10747
+ },
+ {
+  "source": "web",
+  "dataset": "enwg-41-gesetze-im-internet",
+  "url": "https://www.gesetze-im-internet.de/enwg_2005/__41.html",
+  "path": "data/raw/forward-f007/public-as-of/enwg-41-gesetze-im-internet.html",
+  "sha256": "1a49ebcec48bcd5bb2c35e7344f1da63e39648280a870244f06605685f68337a",
+  "fetched_at": "2026-09-04T09:59:08.954021+00:00",
+  "bytes": 13327
+ },
+ {
+  "source": "web",
+  "dataset": "enwg-41a-gesetze-im-internet",
+  "url": "https://www.gesetze-im-internet.de/enwg_2005/__41a.html",
+  "path": "data/raw/forward-f007/public-as-of/enwg-41a-gesetze-im-internet.html",
+  "sha256": "58ecfa8920851d53c9214cabe9a52dcbabadc63dc6ea42f47ae5532fcbb1e9c2",
+  "fetched_at": "2026-09-04T09:59:08.293762+00:00",
+  "bytes": 9522
+ },
+ {
+  "source": "web",
+  "dataset": "mastr-home",
+  "url": "https://www.marktstammdatenregister.de/MaStR",
+  "path": "data/raw/forward-f007/public-as-of/mastr-home.html",
+  "sha256": "1ae2be0b5832e585edba488f04291052819c5be1b20a00857b5f4819978751c5",
+  "fetched_at": "2026-09-04T09:59:17.931044+00:00",
+  "bytes": 52888
+ },
+ {
+  "source": "web",
+  "dataset": "mastr-json-storage-units-all",
+  "url": "https://www.marktstammdatenregister.de/MaStR/Einheit/EinheitJson/GetErweiterteOeffentlicheEinheitStromerzeugung?sort=&page=1&pageSize=1&filter=Energietr%C3%A4ger~eq~%272496%27",
+  "path": "data/raw/forward-f007/public-as-of/mastr-json-storage-units-all.html",
+  "sha256": "a1cc48a1a047128c69ba17c9818ffd9f46137bc0de90169f93b1f1e25633c489",
+  "fetched_at": "2026-09-04T10:13:26.828650+00:00",
+  "bytes": 4111
+ },
+ {
+  "source": "web",
+  "dataset": "mastr-json-storage-units-in-operation-lt30kw",
+  "url": "https://www.marktstammdatenregister.de/MaStR/Einheit/EinheitJson/GetErweiterteOeffentlicheEinheitStromerzeugung?sort=&page=1&pageSize=1&filter=Energietr%C3%A4ger~eq~%272496%27~and~Betriebs-Status~eq~%2735%27~and~Bruttoleistung%20der%20Einheit~lt~%2730%27",
+  "path": "data/raw/forward-f007/public-as-of/mastr-json-storage-units-in-operation-lt30kw.html",
+  "sha256": "2a2e7aaecdf183b68b3b4bb44f7e5d4d8d961796dcb28cfe45c84ee40764e35c",
+  "fetched_at": "2026-09-04T10:13:28.975083+00:00",
+  "bytes": 4111
+ },
+ {
+  "source": "web",
+  "dataset": "mastr-json-storage-units-in-operation",
+  "url": "https://www.marktstammdatenregister.de/MaStR/Einheit/EinheitJson/GetErweiterteOeffentlicheEinheitStromerzeugung?sort=&page=1&pageSize=1&filter=Energietr%C3%A4ger~eq~%272496%27~and~Betriebs-Status~eq~%2735%27",
+  "path": "data/raw/forward-f007/public-as-of/mastr-json-storage-units-in-operation.html",
+  "sha256": "dfb6c0375a9e79a1942616d90b280596860eb8a122225f6236db49770d89cdd8",
+  "fetched_at": "2026-09-04T10:13:27.922744+00:00",
+  "bytes": 4111
+ },
+ {
+  "source": "web",
+  "dataset": "mhhs-key-programme-milestones",
+  "url": "https://www.mhhsprogramme.co.uk/programme-information/key-programme-milestones",
+  "path": "data/raw/forward-f007/public-as-of/mhhs-key-programme-milestones.html",
+  "sha256": "62f9859a452b7768d4097689251e839b2514e449a8525de41845b1ab784b6c82",
+  "fetched_at": "2026-09-04T10:04:03.803626+00:00",
+  "bytes": 55049
+ },
+ {
+  "source": "web",
+  "dataset": "mhhs-migration-home",
+  "url": "https://www.mhhsprogramme.co.uk/migration-home/migration",
+  "path": "data/raw/forward-f007/public-as-of/mhhs-migration-home.html",
+  "sha256": "a249d1fda1e77376f006e971c0ae535480d49970130077cb2b8d1b3aa30858f7",
+  "fetched_at": "2026-09-04T10:04:04.476231+00:00",
+  "bytes": 52914
+ },
+ {
+  "source": "web",
+  "dataset": "mhhs-programme-home",
+  "url": "https://www.mhhsprogramme.co.uk/",
+  "path": "data/raw/forward-f007/public-as-of/mhhs-programme-home.html",
+  "sha256": "68a1f44c7a852ec76cf9e51c3bb449715f2514f85d822d160afd7df72b0716cd",
+  "fetched_at": "2026-09-04T10:00:19.027531+00:00",
+  "bytes": 53511
+ },
+ {
+  "source": "web",
+  "dataset": "msbg-29-gesetze-im-internet",
+  "url": "https://www.gesetze-im-internet.de/messbg/__29.html",
+  "path": "data/raw/forward-f007/public-as-of/msbg-29-gesetze-im-internet.html",
+  "sha256": "dbd160bfa7bc34d8d9dcf797b3b9f52a53c1a323aa1505d22680a19622653560",
+  "fetched_at": "2026-09-04T09:59:10.265281+00:00",
+  "bytes": 7641
+ },
+ {
+  "source": "web",
+  "dataset": "msbg-30-gesetze-im-internet",
+  "url": "https://www.gesetze-im-internet.de/messbg/__30.html",
+  "path": "data/raw/forward-f007/public-as-of/msbg-30-gesetze-im-internet.html",
+  "sha256": "e3843ce9fc430bafbae74eff075deba9329d6d46ab43c10a104cc21040ec8a38",
+  "fetched_at": "2026-09-04T09:59:10.923686+00:00",
+  "bytes": 11716
+ },
+ {
+  "source": "web",
+  "dataset": "msbg-31-gesetze-im-internet",
+  "url": "https://www.gesetze-im-internet.de/messbg/__31.html",
+  "path": "data/raw/forward-f007/public-as-of/msbg-31-gesetze-im-internet.html",
+  "sha256": "87b258a54461019f27c189724a692820456429b33bfe29e375c8899497d963f6",
+  "fetched_at": "2026-09-04T09:59:11.583515+00:00",
+  "bytes": 5029
+ },
+ {
+  "source": "web",
+  "dataset": "msbg-45-gesetze-im-internet",
+  "url": "https://www.gesetze-im-internet.de/messbg/__45.html",
+  "path": "data/raw/forward-f007/public-as-of/msbg-45-gesetze-im-internet.html",
+  "sha256": "67c874302966b677971ec3810e8bcf560b44e0c557b28e171bed57bc500fed50",
+  "fetched_at": "2026-09-04T09:59:12.233573+00:00",
+  "bytes": 12240
+ },
+ {
+  "source": "web",
+  "dataset": "netztransparenz-bilanzkreisvertrag-konsultation-2023",
+  "url": "https://www.netztransparenz.de/de-de/Strommarktdesign/Electricity-Balancing-EB/Bilanzkreisvertrag/Konsultation-Bilanzkreisvertrag-2023",
+  "path": "data/raw/forward-f007/public-as-of/netztransparenz-bilanzkreisvertrag-konsultation-2023.html",
+  "sha256": "33ad1754948b458b4b0e86a5068b4516f5928cad52fdfac262e6ecfb31d2c476",
+  "fetched_at": "2026-09-04T10:05:28.895836+00:00",
+  "bytes": 188797
+ },
+ {
+  "source": "web",
+  "dataset": "netztransparenz-rebap",
+  "url": "https://www.netztransparenz.de/de-de/Erneuerbare-Energien-und-Umlagen/Ausgleichsenergiepreis-reBAP",
+  "path": "data/raw/forward-f007/public-as-of/netztransparenz-rebap.html",
+  "sha256": "ff5fc2af6d554a8eb82e5547b9ffdc7b5304f65293fb31060296b3bf18608077",
+  "fetched_at": "2026-09-04T10:00:37.780214+00:00",
+  "bytes": 155888
+ },
+ {
+  "source": "web",
+  "dataset": "ofgem-indicators-timetable-q1-2026-pdf",
+  "url": "https://www.ofgem.gov.uk/sites/default/files/2026-01/Ofgem%20indicators%20publication%20timetable%20January%20to%20March%202026.pdf",
+  "path": "data/raw/forward-f007/public-as-of/ofgem-indicators-timetable-q1-2026-pdf.pdf",
+  "sha256": "6c3028518039690301dbe2cb5789f07624317d7d029ed59cd5dbcc64f1836f58",
+  "fetched_at": "2026-09-04T10:04:08.537562+00:00",
+  "bytes": 143902
+ },
+ {
+  "source": "web",
+  "dataset": "ofgem-retail-market-indicators",
+  "url": "https://www.ofgem.gov.uk/energy-data-and-research/data-portal/retail-market-indicators",
+  "path": "data/raw/forward-f007/public-as-of/ofgem-retail-market-indicators.html",
+  "sha256": "b4c70679bc356d748bab02cdd5c566afa6c9bf1ad3e6968ed55bdafd3ddb6269",
+  "fetched_at": "2026-09-04T10:00:34.905051+00:00",
+  "bytes": 320865
+ },
+ {
+  "source": "web",
+  "dataset": "ofgem-state-of-market-retail-jan-2026-pdf",
+  "url": "https://www.ofgem.gov.uk/sites/default/files/2026-01/State-of-the-Market-Energy-Retail-Highlights-January-2026.pdf",
+  "path": "data/raw/forward-f007/public-as-of/ofgem-state-of-market-retail-jan-2026-pdf.pdf",
+  "sha256": "a8dfd17adddec68f4c8e8daaf58954a9ebb7fd47990cd5257e625341c6d50173",
+  "fetched_at": "2026-09-04T10:04:07.883726+00:00",
+  "bytes": 1674240
+ },
+ {
+  "source": "web",
+  "dataset": "ofgem-state-of-market-retail-page",
+  "url": "https://www.ofgem.gov.uk/research/state-energy-market-report-retail",
+  "path": "data/raw/forward-f007/public-as-of/ofgem-state-of-market-retail-page.html",
+  "sha256": "e6265337e5f06f7d17faa147494f7892671cad296ed51b68b87685ee262c868e",
+  "fetched_at": "2026-09-04T10:06:55.820388+00:00",
+  "bytes": 203060
+ },
+ {
+  "source": "web",
+  "dataset": "smard-modellierter-dynamischer-strompreis",
+  "url": "https://www.smard.de/page/home/topic-article/211816/218350/modellierter-dynamischer-strompreis",
+  "path": "data/raw/forward-f007/public-as-of/smard-modellierter-dynamischer-strompreis.html",
+  "sha256": "c7085ff0243c1611a47adba531b795beb99f241b300e2ebd37a7fea6b3fa956a",
+  "fetched_at": "2026-09-04T10:11:29.838208+00:00",
+  "bytes": 38750
+ },
+ {
+  "source": "web",
+  "dataset": "sse-taetigkeitsbericht-2025-pdf",
+  "url": "https://www.schlichtungsstelle-energie.de/presse.html?file=files%2Fsse%2Fcontent%2Fpdf%2Fpresse%2FTaetigkeitsbericht+SSE+2025.pdf",
+  "path": "data/raw/forward-f007/public-as-of/sse-taetigkeitsbericht-2025-pdf.pdf",
+  "sha256": "e47678f59e6d31e764873f91adb4bf27a1b714e7a4875925186d1067c32d175d",
+  "fetched_at": "2026-09-04T10:04:15.141404+00:00",
+  "bytes": 362386
+ },
+ {
+  "source": "web",
+  "dataset": "sse-taetigkeitsbericht-2025-press-page",
+  "url": "https://www.schlichtungsstelle-energie.de/presse/presseartikel/taetigkeitsbereicht_2025_der_schlichtungsstelle_energie.html",
+  "path": "data/raw/forward-f007/public-as-of/sse-taetigkeitsbericht-2025-press-page.html",
+  "sha256": "850553edebdb3784d57268dd22f42c3058955967ce35c765fcc5f026f70fcc93",
+  "fetched_at": "2026-09-04T10:04:15.904311+00:00",
+  "bytes": 16088
+ },
+ {
+  "source": "web",
+  "dataset": "syneco-portfoliomanagement",
+  "url": "https://www.syneco.net/leistungen/portfoliomanagement",
+  "path": "data/raw/forward-f007/public-as-of/syneco-portfoliomanagement.html",
+  "sha256": "c32265e29bf34698c7bcab68bfae1e71ba8c23a1216b69c00b125bd5705019bd",
+  "fetched_at": "2026-09-04T10:04:18.096973+00:00",
+  "bytes": 119900
+ },
+ {
+  "source": "web",
+  "dataset": "syneco-risiko-portfolio",
+  "url": "https://www.syneco.net/risiko-portfolio/",
+  "path": "data/raw/forward-f007/public-as-of/syneco-risiko-portfolio.html",
+  "sha256": "c32265e29bf34698c7bcab68bfae1e71ba8c23a1216b69c00b125bd5705019bd",
+  "fetched_at": "2026-09-04T10:04:19.096655+00:00",
+  "bytes": 119900
+ },
+ {
+  "source": "web",
+  "dataset": "thuega-press-rwe-syneco",
+  "url": "https://www.thuega.de/pressemitteilungen/rwe-und-syneco-bauen-kooperation-im-bereich-handel-und-portfoliomanagement-weiter-aus/",
+  "path": "data/raw/forward-f007/public-as-of/thuega-press-rwe-syneco.html",
+  "sha256": "bbcc277b90a148b4736090e787d50111382ca82fa4ece286813897d8d64ca282",
+  "fetched_at": "2026-09-04T10:04:20.098720+00:00",
+  "bytes": 61556
+ },
+ {
+  "source": "web",
+  "dataset": "trianel-liefer-und-bilanzkreismanagement",
+  "url": "https://www.trianel.com/produkte/liefer-und-bilanzkreismanagement",
+  "path": "data/raw/forward-f007/public-as-of/trianel-liefer-und-bilanzkreismanagement.html",
+  "sha256": "da618245158f301f69ce4a5032e6b94ee7b9a7c41170a6d828f07b4fddc6181a",
+  "fetched_at": "2026-09-04T10:04:17.391796+00:00",
+  "bytes": 197493
+ },
+ {
+  "source": "web",
+  "dataset": "trianel-portfoliomanagement",
+  "url": "https://www.trianel.com/produkte/beschaffung/portfoliomanagement",
+  "path": "data/raw/forward-f007/public-as-of/trianel-portfoliomanagement.html",
+  "sha256": "62c95c5c4cb0aecaa7e89a929102be2de9142927e584c9df44de35cfcbc99bab",
+  "fetched_at": "2026-09-04T10:04:16.707948+00:00",
+  "bytes": 200390
+ },
+ {
+  "source": "web",
+  "dataset": "uenb-standard-bilanzkreisvertrag-2024-pdf",
+  "url": "https://www.netztransparenz.de/xspproxy/api/staticfiles/ntp-relaunch/dokumente/strommarktdesign/electricity%20balancing/konsulation%20bilanzkreisvertrag%202023/231221_%C3%BCnb%20standard%20bilanzkreisvertrag%202024%20final.pdf",
+  "path": "data/raw/forward-f007/public-as-of/uenb-standard-bilanzkreisvertrag-2024-pdf.pdf",
+  "sha256": "f6a85b173ab3f1573d455b9009f091edc54db1a67d263a9b8c796c71c4d8c18b",
+  "fetched_at": "2026-09-04T10:05:29.975307+00:00",
+  "bytes": 473333
+ },
+ {
+  "source": "web",
+  "dataset": "uk-legislation-eudr-2019-944-art11",
+  "url": "https://www.legislation.gov.uk/eudr/2019/944/article/11",
+  "path": "data/raw/forward-f007/public-as-of/uk-legislation-eudr-2019-944-art11.html",
+  "sha256": "c4e7489331064c3b1ad5ba0dff4cbe8d160abc012408045fb50677a8a57ff81c",
+  "fetched_at": "2026-09-04T10:04:03.159377+00:00",
+  "bytes": 33570
+ },
+ {
+  "source": "web",
+  "dataset": "vattenfall-balancing-group-management",
+  "url": "https://energysales.vattenfall.de/en/sustainable-energy-services/portfolio-services/balancing-group-management",
+  "path": "data/raw/forward-f007/public-as-of/vattenfall-balancing-group-management.html",
+  "sha256": "20903a0914fd9b876beee105129c99a35dddf50e0b1de9fb90b29dfb8ea6c044",
+  "fetched_at": "2026-09-04T10:05:39.056313+00:00",
+  "bytes": 65543
+ },
+ {
+  "source": "web",
+  "dataset": "vattenfall-portfolio-management",
+  "url": "https://energysales.vattenfall.de/en/sustainable-energy-services/portfolio-services/portfolio-management",
+  "path": "data/raw/forward-f007/public-as-of/vattenfall-portfolio-management.html",
+  "sha256": "96c0334d5a7891b5e82f32e27a3dbdae22ff09772ef48362ba55852e74dbcd04",
+  "fetched_at": "2026-09-04T10:05:38.358276+00:00",
+  "bytes": 58419
+ },
+ {
+  "source": "web",
+  "dataset": "vku-dynamische-tarife",
+  "url": "https://www.vku.de/themen/energiewende/dynamische-tarife/",
+  "path": "data/raw/forward-f007/public-as-of/vku-dynamische-tarife.html",
+  "sha256": "2dd9aacc0c9dd1097f0ed2392f722657416a86efc113ba88bdbf19f6dca19381",
+  "fetched_at": "2026-09-04T10:00:40.359267+00:00",
+  "bytes": 420273
+ },
+ {
+  "source": "web",
+  "dataset": "vzbv-positionspapier-dynamische-tarife-2023-pdf",
+  "url": "https://www.vzbv.de/sites/default/files/2023-12/23-12-01_Positionspapier_Dynamische_Tarife.pdf",
+  "path": "data/raw/forward-f007/public-as-of/vzbv-positionspapier-dynamische-tarife-2023-pdf.pdf",
+  "sha256": "0541db7820cc66bac2e9f883111e82a4c9a3edc251999c13ec39364784447fbd",
+  "fetched_at": "2026-09-04T10:05:32.038754+00:00",
+  "bytes": 205436
+ }
+]

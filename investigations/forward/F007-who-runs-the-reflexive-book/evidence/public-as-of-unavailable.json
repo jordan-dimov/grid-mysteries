@@ -1,0 +1,87 @@
+{
+ "bnetza-dynamische-tarife-page": {
+  "url": "https://www.bundesnetzagentur.de/DE/Vportal/Energie/Vertragsarten/DynamischeTarife/start.html",
+  "error": "Client error '404 404' for url 'https://www.bundesnetzagentur.de/DE/Vportal/Energie/Vertragsarten/DynamischeTarife/start.html'",
+  "at": "2026-09-04T09:59:16.038882+00:00"
+ },
+ "bnetza-smart-meter-page": {
+  "url": "https://www.bundesnetzagentur.de/DE/Vportal/Energie/Metering/SmartMeter/start.html",
+  "error": "Client error '404 404' for url 'https://www.bundesnetzagentur.de/DE/Vportal/Energie/Metering/SmartMeter/start.html'",
+  "at": "2026-09-04T09:59:16.384517+00:00"
+ },
+ "ofgem-mhhs-cr055-decision-page": {
+  "url": "https://www.ofgem.gov.uk/decision/decision-mhhs-programme-timetable-and-transition-cr055",
+  "error": "The read operation timed out",
+  "at": "2026-09-04T10:00:18.589590+00:00"
+ },
+ "mhhs-programme-migration": {
+  "url": "https://www.mhhsprogramme.co.uk/programme-information/migration",
+  "error": "Client error '404 Not Found' for url 'https://www.mhhsprogramme.co.uk/programme-information/migration'",
+  "at": "2026-09-04T10:00:19.716174+00:00"
+ },
+ "bdew-dynamische-tarife": {
+  "url": "https://www.bdew.de/energie/dynamische-stromtarife/",
+  "error": "Client error '404 Not Found' for url 'https://www.bdew.de/energie/dynamische-stromtarife/'",
+  "at": "2026-09-04T10:00:39.519735+00:00"
+ },
+ "eu-directive-2019-944-eurlex": {
+  "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32019L0944",
+  "error": "empty response body (0 bytes) \u2014 recorded as unavailable, artefact removed",
+  "at": "2026-09-04T09:59:12.854007+00:00"
+ },
+ "eu-directive-2024-1711-eurlex": {
+  "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32024L1711",
+  "error": "empty response body (0 bytes) \u2014 recorded as unavailable, artefact removed",
+  "at": "2026-09-04T09:59:13.449477+00:00"
+ },
+ "eu-directive-2019-944-consolidated": {
+  "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:02019L0944-20240716",
+  "error": "empty response body (0 bytes) \u2014 recorded as unavailable, artefact removed",
+  "at": "2026-09-04T09:59:14.041583+00:00"
+ },
+ "eu-directive-2019-944-pdf": {
+  "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=CELEX:32019L0944",
+  "error": "empty response body (0 bytes) \u2014 recorded as unavailable, artefact removed",
+  "at": "2026-09-04T10:02:00.374393+00:00"
+ },
+ "eu-directive-2024-1711-pdf": {
+  "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=CELEX:32024L1711",
+  "error": "empty response body (0 bytes) \u2014 recorded as unavailable, artefact removed",
+  "at": "2026-09-04T10:02:00.968607+00:00"
+ },
+ "eu-directive-2019-944-consolidated-pdf": {
+  "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=CELEX:02019L0944-20240716",
+  "error": "empty response body (0 bytes) \u2014 recorded as unavailable, artefact removed",
+  "at": "2026-09-04T10:02:01.576963+00:00"
+ },
+ "elexon-bsc-modifications": {
+  "url": "https://www.elexon.co.uk/bsc/modifications/",
+  "error": "Client error '404 Not Found' for url 'https://www.elexon.co.uk/bsc/modifications/'",
+  "at": "2026-09-04T10:04:24.675910+00:00"
+ },
+ "eu-directive-2019-944-eli": {
+  "url": "https://eur-lex.europa.eu/eli/dir/2019/944/oj/eng",
+  "error": "empty response body (0 bytes) \u2014 recorded as unavailable, artefact removed",
+  "at": "2026-09-04T10:04:00.976714+00:00"
+ },
+ "eu-directive-2019-944-eli-2024-07-16": {
+  "url": "https://eur-lex.europa.eu/eli/dir/2019/944/2024-07-16/eng",
+  "error": "empty response body (0 bytes) \u2014 recorded as unavailable, artefact removed",
+  "at": "2026-09-04T10:04:01.590524+00:00"
+ },
+ "eu-directive-2024-1711-eli": {
+  "url": "https://eur-lex.europa.eu/eli/dir/2024/1711/oj/eng",
+  "error": "empty response body (0 bytes) \u2014 recorded as unavailable, artefact removed",
+  "at": "2026-09-04T10:04:02.181111+00:00"
+ },
+ "elexon-tog-meeting-28-slides-page": {
+  "url": "https://www.elexon.co.uk/bsc/documents/groups/mhhs-transitional-operations-group/transitional-operations-group-meeting-28-slides/",
+  "error": "empty response body (0 bytes) \u2014 recorded as unavailable, artefact removed",
+  "at": "2026-09-04T10:04:07.122013+00:00"
+ },
+ "ofgem-market-shares-domestic-gb": {
+  "url": "https://www.ofgem.gov.uk/data-portal/electricity-supply-market-shares-company-domestic-gb",
+  "error": "The read operation timed out",
+  "at": "2026-09-04T10:11:08.517811+00:00"
+ }
+}

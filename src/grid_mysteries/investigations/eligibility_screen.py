@@ -211,10 +211,15 @@ def response_family(service_type: object, auction_product: object = "") -> str |
     ):
         if any(w in text for w in words):
             return family
-    code = str(service_type).upper().replace("-", "").replace(" ", "")
-    for family in ("DC", "DM", "DR"):
-        if code.startswith(family) and (len(code) == 2 or code[2] in "HL"):
-            return family
+    # The EAC results carry `serviceType == "Response"` and the family in
+    # the product code (DCH, DCL, DMH, DML, DRH, DRL); older vocabularies
+    # put the code in the service field. Either is read; reserve codes
+    # (PSR, PQR, PBR, NQR, ...) match neither.
+    for raw in (auction_product, service_type):
+        code = str(raw).upper().replace("-", "").replace(" ", "")
+        for family in ("DC", "DM", "DR"):
+            if code.startswith(family) and (len(code) == 2 or code[2] in "HL"):
+                return family
     return None
 
 
@@ -449,6 +454,61 @@ def screen(
                 }
                 for r, t in totals_by_rule.items()
             },
+        },
+        "units": units_out,
+    }
+
+
+# --------------------------------------------------------------------------
+# The register-flag rule (Amendment 1)
+
+
+def flag_screen(result: Mapping[str, Any], fpn_flag: Mapping[str, Any]) -> dict[str, Any]:
+    """The pinned rule: a BM Participating unit whose registration FPN flag
+    is FALSE is deemed unavailable for every product until it is reset. The
+    register is a point-in-time snapshot with no history, so a unit whose
+    flag is FALSE at the pin has its whole window's revenue at stake and a
+    unit whose flag is TRUE has none; a unit absent from the register is
+    reported separately. Same output shape as `screen`, so concentration
+    and the milestone test apply unchanged."""
+    units_out: dict[str, Any] = {}
+    held_total = at_stake_total = ZERO
+    k = 0
+    periods_at_risk = 0
+    for unit_id, u in result["units"].items():
+        held = Decimal(u["revenue_held_gbp"])
+        flag = fpn_flag.get(unit_id)
+        state = "unknown" if flag is None else ("true" if flag else "false")
+        deemed = state == "false"
+        at_stake = held if deemed else ZERO
+        held_total += held
+        at_stake_total += at_stake
+        k += int(deemed)
+        periods_at_risk += u["periods_held"] if deemed else 0
+        runs = [u["periods_held"]] if deemed else []
+        units_out[unit_id] = {
+            "fpn_flag": state,
+            "periods_held": u["periods_held"],
+            "revenue_held_gbp": money(held),
+            "primary": {
+                "periods_deemed_unavailable": u["periods_held"] if deemed else 0,
+                "share_of_held_periods": ratio(int(deemed), 1),
+                "revenue_at_stake_gbp": money(at_stake),
+                "share_of_revenue_held": ratio(at_stake, held),
+                "runs": runs,
+            },
+        }
+    return {
+        "rule": RULE + "/register-flag",
+        "window": dict(result["window"]),
+        "totals": {
+            "units_holding": len(units_out),
+            "units_with_any_unavailable": k,
+            "units_flag_unknown": sum(1 for u in units_out.values() if u["fpn_flag"] == "unknown"),
+            "periods_at_risk": periods_at_risk,
+            "revenue_held_gbp": money(held_total),
+            "revenue_at_stake_gbp": money(at_stake_total),
+            "share_of_revenue_held": ratio(at_stake_total, held_total),
         },
         "units": units_out,
     }

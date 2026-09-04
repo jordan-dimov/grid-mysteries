@@ -135,18 +135,22 @@ def acquire_documents(supplied: dict[str, str], log: dict) -> None:
         if not url:
             log["documents"][name] = {"state": "not supplied at seal"}
             continue
-        destination = RAW_RULES / f"{name}{documents.suffix_for(url)}"
+        destination = RAW_RULES / f"{name}{suffix(url)}"
         ok = acq.try_pin("rules-document", url, destination, log, f"document:{name}")
         log["documents"][name] = {"state": "pinned" if ok else "unavailable", "url": url}
     for name, url in supplied.items():
         if name not in DECLARED_DOCUMENTS:
-            destination = RAW_RULES / f"{name}{documents.suffix_for(url)}"
+            destination = RAW_RULES / f"{name}{suffix(url)}"
             ok = acq.try_pin("rules-document", url, destination, log, f"document:{name}")
             log["documents"][name] = {
                 "state": "pinned" if ok else "unavailable",
                 "url": url,
                 "note": "supplied at seal beyond the declared list",
             }
+
+
+def suffix(url: str) -> str:
+    return documents.suffix_for(url, documents.probe_content_type(url))
 
 
 # --------------------------------------------------------------------------
@@ -436,6 +440,7 @@ def build_population(rows: list[dict], register: dict[str, Any], basis: str) -> 
             "elexon_unit": elexon_id,
             **labels,
             "lead_party": register["lead_party"].get(elexon_id or ""),
+            "fpn_flag": register["fpn_flag"].get(elexon_id or ""),
         }
         (members if elexon_id else unmapped).append(entry)
     return {
@@ -557,8 +562,19 @@ def evaluate(
         }
         result = es.screen(request, pn, built["positions"])
         parties = es.concentration(result, register["lead_party"])
+        # Amendment 1: the pinned Service Terms (5.10) deem a BM Participating
+        # unit unavailable while its registration FPN flag is FALSE; that is
+        # the primary test, and the per-period rules are sensitivity only.
+        flag = es.flag_screen(result, register["fpn_flag"])
+        flag_parties = es.concentration(flag, register["lead_party"])
         results["windows"][window] = {
             "label": "post-rule (test)" if window == "post_rule" else "counterfactual (pre-rule)",
+            "flag_rule": {
+                "primary": True,
+                "screen": flag,
+                "concentration_by_lead_party": flag_parties,
+                "milestone_cleared": es.milestone(flag_parties),
+            },
             "screen": result,
             "context": context(window, result, units),
             "concentration_by_lead_party": parties,
@@ -588,10 +604,15 @@ def acquire_owners(
     fetch = ch.AuthenticatedFetcher(key)
     raw = REPO_ROOT / "data/raw/companies-house" / f"{run_date}-011"
     acq = Acquirer(raw, fetch)
+    # Amendment 1: owners are resolved for exposure under the primary
+    # (register-flag) rule; the per-period screen is sensitivity only.
+    post = results["windows"]["post_rule"]
+    ranked = (
+        post.get("flag_rule", {}).get("concentration_by_lead_party")
+        or post["concentration_by_lead_party"]
+    )
     parties = [
-        p
-        for p in results["windows"]["post_rule"]["concentration_by_lead_party"]
-        if Decimal(p["revenue_at_stake_gbp"]) > 0 and p["party"] != "unknown"
+        p for p in ranked if Decimal(p["revenue_at_stake_gbp"]) > 0 and p["party"] != "unknown"
     ][:10]
     out: dict[str, Any] = {}
     start = WINDOWS["post_rule"][0]

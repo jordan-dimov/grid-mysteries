@@ -1,0 +1,497 @@
+{
+ "probe_day": "2026-09-01",
+ "note": "keys and counts only",
+ "PN": {
+  "fields": [
+   "bmUnit",
+   "dataset",
+   "levelFrom",
+   "levelTo",
+   "nationalGridBmUnit",
+   "settlementDate",
+   "settlementPeriod",
+   "timeFrom",
+   "timeTo"
+  ],
+  "records": 2631,
+  "distinct_units": 2466,
+  "registered_units": 3062,
+  "registered_units_with_fpn_flag": 2815,
+  "zero_level_records": 1969,
+  "submission_timestamp_field": [],
+  "absence_distinguishable_from_zero": true,
+  "state": "eligible now"
+ },
+ "MELS": {
+  "fields": [
+   "bmUnit",
+   "dataset",
+   "levelFrom",
+   "levelTo",
+   "nationalGridBmUnit",
+   "settlementDate",
+   "settlementPeriod",
+   "timeFrom",
+   "timeTo"
+  ],
+  "records": 2785,
+  "distinct_units": 2466,
+  "registered_units": 3062,
+  "registered_units_with_fpn_flag": 2815,
+  "zero_level_records": 1921,
+  "submission_timestamp_field": [],
+  "absence_distinguishable_from_zero": true,
+  "state": "eligible now"
+ },
+ "MILS": {
+  "fields": [
+   "bmUnit",
+   "dataset",
+   "levelFrom",
+   "levelTo",
+   "nationalGridBmUnit",
+   "settlementDate",
+   "settlementPeriod",
+   "timeFrom",
+   "timeTo"
+  ],
+  "records": 2835,
+  "distinct_units": 2368,
+  "registered_units": 3062,
+  "registered_units_with_fpn_flag": 2815,
+  "zero_level_records": 2222,
+  "submission_timestamp_field": [],
+  "absence_distinguishable_from_zero": true,
+  "state": "eligible now"
+ },
+ "BOALF": {
+  "fields": [
+   "acceptanceNumber",
+   "acceptanceTime",
+   "bmUnit",
+   "deemedBoFlag",
+   "levelFrom",
+   "levelTo",
+   "nationalGridBmUnit",
+   "rrFlag",
+   "settlementDate",
+   "settlementPeriodFrom",
+   "settlementPeriodTo",
+   "soFlag",
+   "storFlag",
+   "timeFrom",
+   "timeTo"
+  ],
+  "records": 714,
+  "state": "eligible now (context)"
+ },
+ "stream": {
+  "PN": {
+   "fields": [
+    "bmUnit",
+    "dataset",
+    "levelFrom",
+    "levelTo",
+    "nationalGridBmUnit",
+    "settlementDate",
+    "settlementPeriod",
+    "timeFrom",
+    "timeTo"
+   ],
+   "records": 148,
+   "units_requested": [
+    "E_ABERDARE",
+    "T_ABRBO-1"
+   ],
+   "units_returned": [
+    "E_ABERDARE",
+    "T_ABRBO-1"
+   ]
+  },
+  "MELS": {
+   "fields": [
+    "bmUnit",
+    "dataset",
+    "levelFrom",
+    "levelTo",
+    "nationalGridBmUnit",
+    "notificationSequence",
+    "notificationTime",
+    "settlementDate",
+    "settlementPeriod",
+    "timeFrom",
+    "timeTo"
+   ],
+   "records": 98,
+   "units_requested": [
+    "E_ABERDARE",
+    "T_ABRBO-1"
+   ],
+   "units_returned": [
+    "E_ABERDARE",
+    "T_ABRBO-1"
+   ]
+  },
+  "MILS": {
+   "fields": [
+    "bmUnit",
+    "dataset",
+    "levelFrom",
+    "levelTo",
+    "nationalGridBmUnit",
+    "notificationSequence",
+    "notificationTime",
+    "settlementDate",
+    "settlementPeriod",
+    "timeFrom",
+    "timeTo"
+   ],
+   "records": 98,
+   "units_requested": [
+    "E_ABERDARE",
+    "T_ABRBO-1"
+   ],
+   "units_returned": [
+    "E_ABERDARE",
+    "T_ABRBO-1"
+   ]
+  },
+  "BOALF": {
+   "fields": [],
+   "records": 0,
+   "units_requested": [
+    "E_ABERDARE",
+    "T_ABRBO-1"
+   ],
+   "units_returned": []
+  }
+ },
+ "EAC": {
+  "fields": [
+   "_id",
+   "registeredAuctionParticipant",
+   "auctionUnit",
+   "serviceType",
+   "auctionProduct",
+   "executedQuantity",
+   "clearingPrice",
+   "deliveryStart",
+   "deliveryEnd",
+   "technologyType",
+   "postCode",
+   "unitResultID"
+  ],
+  "total_rows": 1184476,
+  "missing_fields": [],
+  "state": "eligible now"
+ },
+ "compliance": {
+  "queries": {
+   "dynamic containment performance": {
+    "count": 11,
+    "packages": [
+     "dynamic-containment-4-day-forecast",
+     "dynamic-containment-data",
+     "day-ahead-half-hourly-demand-forecast-performance",
+     "dynamic-regulation-requirements",
+     "dynamic-moderation-requirements",
+     "ancillary-services-important-industry-notifications",
+     "long-term-forecasts-for-dc-dm-dr-requirements",
+     "obp-non-bm-physical-notifications",
+     "balancing-reserve-auction-requirement-forecast",
+     "building-heat-model",
+     "eac-auction-results"
+    ]
+   },
+   "dynamic response performance monitoring": {
+    "count": 0,
+    "packages": []
+   },
+   "response services compliance": {
+    "count": 14,
+    "packages": [
+     "static-firm-frequency-response-requirement",
+     "static-firm-frequency-response-auction-results",
+     "firm-frequency-response-post-tender-reports",
+     "ancillary-services-important-industry-notifications",
+     "eac-mock-auction-results",
+     "eac-auction-results",
+     "dynamic-containment-4-day-forecast",
+     "obp-non-bm-physical-notifications",
+     "contract-transfer-of-obligation",
+     "long-term-forecasts-for-dc-dm-dr-requirements",
+     "phase-2-ffr-auction-results-summary",
+     "gis-boundaries-for-gb-dno-license-areas",
+     "optional-downward-flexibility-management-odfm-market-information",
+     "skip-rates"
+    ]
+   },
+   "baseline compliance": {
+    "count": 0,
+    "packages": []
+   },
+   "frequency response delivery": {
+    "count": 9,
+    "packages": [
+     "firm-frequency-response-post-tender-reports",
+     "static-firm-frequency-response-requirement",
+     "static-firm-frequency-response-auction-results",
+     "optional-downward-flexibility-management-odfm-market-information",
+     "ancillary-services-important-industry-notifications",
+     "quick-reserve-auction-requirement-forecast",
+     "eac-auction-results",
+     "phase-2-ffr-auction-results-summary",
+     "skip-rates"
+    ]
+   }
+  },
+  "candidates": [
+   {
+    "package": "day-ahead-half-hourly-demand-forecast-performance",
+    "resource": "Day Ahead Half Hourly Demand Forecast Performance",
+    "id": "08e41551-80f8-4e28-a416-ea473a695db9",
+    "format": "CSV",
+    "fields": [
+     "_id",
+     "Month",
+     "Date",
+     "Datetime",
+     "Settlement_Period",
+     "Demand_Forecast",
+     "Demand_Outturn",
+     "TRIAD_Avoidance_Estimate",
+     "TRIAD_Avoidance_Corrected_Demand_Outturn",
+     "APE",
+     "Absolute_Error",
+     "Publish_Datetime"
+    ],
+    "per_bmu": false
+   },
+   {
+    "package": "firm-frequency-response-post-tender-reports",
+    "resource": "Post Tender Report TR130 October 2020",
+    "id": "4b4a2e83-094c-4566-90c1-98366469b504",
+    "format": "XLSX"
+   },
+   {
+    "package": "firm-frequency-response-post-tender-reports",
+    "resource": "Post Tender Report TR132 December 2020 EXT",
+    "id": "ce75bd6e-5c16-41b5-bf7f-ebf3b44508f3",
+    "format": "XLSX"
+   },
+   {
+    "package": "firm-frequency-response-post-tender-reports",
+    "resource": "Post Tender Report TR146 February 2022 CSV- EXT ",
+    "id": "66e127dc-5e95-49b5-bc55-915269d09e1a",
+    "format": "CSV",
+    "fields": [
+     "_id",
+     "Tender Ref",
+     "Status",
+     "Rejection Codes",
+     "Company Name",
+     "Tendered Unit  (BMU/Unit ID)",
+     "TO connection  /  DNO connection",
+     "Generation Type",
+     "Start Date",
+     "End Date",
+     "Tendered Period  (dd.mm.yy - dd.mm.yy)",
+     "Applicable FFR Capability Data Table",
+     "Tendered Frames per Service Day - From (Mon-Fri)",
+     "Tendered Frames per Service Day - To (Mon- Fri)",
+     "Tendered Frames per Service Day - Duration (Mon-Fri)",
+     "Tendered Frames per Service Day - From (Saturday)",
+     "Tendered Frames per Service Day - To (Saturday)",
+     "Tendered Frames per Service Day - Duration (Saturday)",
+     "Tendered Frames per Service Day - From (Sunday/Bank Holidays)",
+     "Tendered Frames per Service Day - To (Sunday/Bank Holidays)",
+     "Tendered Frames per Service Day - Duration (Sunday/Bank Hol)",
+     "Tendered Prices - Availability Fee (\u00a3/h)",
+     "Tendered Prices - Nomination Fee (\u00a3/h)",
+     "Tendered Prices -  Window Initiation Fee (\u00a3/window)",
+     "BMUs  Only",
+     "Maximum Part Load Point (MW)",
+     "Minimum Part Load Point (MW)",
+     "Minimum MEL (MW)",
+     "Maximum SEL (MW)",
+     "Primary Response (max.) @ 0.2Hz (MW)",
+     "Primary Response (max.) @ 0.5Hz (MW)",
+     "Primary Response (max.) @ 0.8Hz (MW)",
+     "Secondary Response (max.) @ 0.2/0.2Hz (MW)",
+     "Secondary Response (max.) @ 0.5/0.5Hz (MW)",
+     "High Frequency Response (max.) @ 0.2Hz (MW)",
+     "High Frequency Response (max.) @ 0.5Hz (MW)",
+     "Are you adding volume as per detail change provision",
+     "Please state the accepted tender that you are stacking onto",
+     "Please state if this is an all or nothing bid.",
+     "Please indicate if this is a mutually exclusive tender",
+     "Automatic Response Energy Deliverable by 10s (MW)",
+     "Automatic Response Energy Deliverable by 30s (MW)",
+     "Post code",
+     "Comments"
+    ],
+    "per_bmu": true
+   },
+   {
+    "package": "firm-frequency-response-post-tender-reports",
+    "resource": "Post Tender Report TR151 July 2022 CSV EXT ",
+    "id": "fcc91d6f-e35a-4878-a77d-d2882d01c357",
+    "format": "CSV",
+    "fields": [
+     "_id",
+     "Tender Ref",
+     "Status",
+     "Rejection Codes",
+     "Company Name",
+     "Tendered Unit \n(BMU/Unit ID)",
+     "TO connection  /  DNO connection",
+     "Generation Type",
+     "Start Date",
+     "End Date",
+     "Tendered Period \n(dd.mm.yy - dd.mm.yy)",
+     "Applicable FFR Capability Data Table",
+     "Tendered Frames per Service Day - From (Mon-Fri)",
+     "Tendered Frames per Service Day - To (Mon- Fri)",
+     "Tendered Frames per Service Day - Duration (Mon-Fri)",
+     "Tendered Frames per Service Day - From (Saturday)",
+     "Tendered Frames per Service Day - To (Saturday)",
+     "Tendered Frames per Service Day - Duration (Saturday)",
+     "Tendered Frames per Service Day - From (Sunday/Bank Holidays)",
+     "Tendered Frames per Service Day - To (Sunday/Bank Holidays)",
+     "Tendered Frames per Service Day - Duration (Sunday/Bank Hol)",
+     "Tendered Prices - Availability Fee (\u00a3/h)",
+     "Tendered Prices - Nomination Fee (\u00a3/h)",
+     "Tendered Prices -  Window Initiation Fee (\u00a3/window)",
+     "BMUs  Only",
+     "Maximum Part Load Point (MW)",
+     "Minimum Part Load Point (MW)",
+     "Minimum MEL (MW)",
+     "Maximum SEL (MW)",
+     "Primary Response (max.) @ 0.2Hz (MW)",
+     "Primary Response (max.) @ 0.5Hz (MW)",
+     "Primary Response (max.) @ 0.8Hz (MW)",
+     "Secondary Response (max.) @ 0.2/0.2Hz (MW)",
+     "Secondary Response (max.) @ 0.5/0.5Hz (MW)",
+     "High Frequency Response (max.) @ 0.2Hz (MW)",
+     "High Frequency Response (max.) @ 0.5Hz (MW)",
+     "Are you adding volume as per detail change provision",
+     "Please state the accepted tender that you are stacking onto",
+     "Please state if this is an all or nothing bid.",
+     "Please indicate if this is a mutually exclusive tender",
+     "Automatic Response Energy Deliverable by 10s (MW)",
+     "Automatic Response Energy Deliverable by 30s (MW)",
+     "Post code",
+     "Comments"
+    ],
+    "per_bmu": true
+   },
+   {
+    "package": "firm-frequency-response-post-tender-reports",
+    "resource": "Post Tender Report TR151 July 2022 EXT ",
+    "id": "0ad0f7f5-314e-4d7a-b6df-84a7b77c9908",
+    "format": "XLSM"
+   },
+   {
+    "package": "optional-downward-flexibility-management-odfm-market-information",
+    "resource": "Market Information Report for 10.05.20",
+    "id": "b435a5d1-9d94-477e-bf50-b99a7693d65c",
+    "format": "PDF"
+   },
+   {
+    "package": "optional-downward-flexibility-management-odfm-market-information",
+    "resource": "Market Information Report for 22.05.20",
+    "id": "5ebec109-4cbf-4792-88d6-18feef004f9c",
+    "format": "PDF"
+   },
+   {
+    "package": "optional-downward-flexibility-management-odfm-market-information",
+    "resource": "Market Information Report for 23.05.20",
+    "id": "8348d8b3-3156-4e40-bdd5-ac5215564735",
+    "format": "PDF"
+   },
+   {
+    "package": "optional-downward-flexibility-management-odfm-market-information",
+    "resource": "Market Information Report for 24.05.20",
+    "id": "0ffd097f-b4c9-42e9-954f-0f68c6773577",
+    "format": "PDF"
+   },
+   {
+    "package": "optional-downward-flexibility-management-odfm-market-information",
+    "resource": "Market Information Report for 05.07.20",
+    "id": "b6f57985-df24-4207-83fa-2f1dc6a949f8",
+    "format": "PDF"
+   },
+   {
+    "package": "firm-frequency-response-post-tender-reports",
+    "resource": "Post Tender Report TR130 October 2020",
+    "id": "4b4a2e83-094c-4566-90c1-98366469b504",
+    "format": "XLSX"
+   },
+   {
+    "package": "firm-frequency-response-post-tender-reports",
+    "resource": "Post Tender Report TR132 December 2020 EXT",
+    "id": "ce75bd6e-5c16-41b5-bf7f-ebf3b44508f3",
+    "format": "XLSX"
+   },
+   {
+    "package": "firm-frequency-response-post-tender-reports",
+    "resource": "Post Tender Report TR146 February 2022 CSV- EXT ",
+    "id": "66e127dc-5e95-49b5-bc55-915269d09e1a",
+    "format": "CSV"
+   },
+   {
+    "package": "firm-frequency-response-post-tender-reports",
+    "resource": "Post Tender Report TR151 July 2022 CSV EXT ",
+    "id": "fcc91d6f-e35a-4878-a77d-d2882d01c357",
+    "format": "CSV"
+   },
+   {
+    "package": "firm-frequency-response-post-tender-reports",
+    "resource": "Post Tender Report TR151 July 2022 EXT ",
+    "id": "0ad0f7f5-314e-4d7a-b6df-84a7b77c9908",
+    "format": "XLSM"
+   },
+   {
+    "package": "optional-downward-flexibility-management-odfm-market-information",
+    "resource": "Market Information Report for 10.05.20",
+    "id": "b435a5d1-9d94-477e-bf50-b99a7693d65c",
+    "format": "PDF"
+   },
+   {
+    "package": "optional-downward-flexibility-management-odfm-market-information",
+    "resource": "Market Information Report for 22.05.20",
+    "id": "5ebec109-4cbf-4792-88d6-18feef004f9c",
+    "format": "PDF"
+   },
+   {
+    "package": "optional-downward-flexibility-management-odfm-market-information",
+    "resource": "Market Information Report for 23.05.20",
+    "id": "8348d8b3-3156-4e40-bdd5-ac5215564735",
+    "format": "PDF"
+   },
+   {
+    "package": "optional-downward-flexibility-management-odfm-market-information",
+    "resource": "Market Information Report for 24.05.20",
+    "id": "0ffd097f-b4c9-42e9-954f-0f68c6773577",
+    "format": "PDF"
+   },
+   {
+    "package": "optional-downward-flexibility-management-odfm-market-information",
+    "resource": "Market Information Report for 05.07.20",
+    "id": "b6f57985-df24-4207-83fa-2f1dc6a949f8",
+    "format": "PDF"
+   },
+   {
+    "package": "quick-reserve-auction-requirement-forecast",
+    "resource": "Quick Reserve Auction Requirement Forecast",
+    "id": "f012de08-b258-408b-bc41-f885e183f97f",
+    "format": "CSV"
+   }
+  ],
+  "state": "candidate per-BMU series found, human review required: ['Post Tender Report TR146 February 2022 CSV- EXT ', 'Post Tender Report TR151 July 2022 CSV EXT ']"
+ },
+ "register": {
+  "state": "eligible now",
+  "units": 3062
+ }
+}

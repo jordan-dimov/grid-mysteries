@@ -26,6 +26,30 @@ def test_fetch_pinned_uses_the_public_document_source(monkeypatch, tmp_path: Pat
     assert seen["dataset"] == "ofgem"
 
 
-def test_suffix_follows_the_url_not_a_guess() -> None:
+def test_suffix_follows_the_url_then_the_served_type_not_a_guess() -> None:
     assert documents.suffix_for("https://a/b/decision.PDF?download=1") == ".pdf"
     assert documents.suffix_for("https://a/b/decision") == ".html"
+    assert documents.suffix_for("https://a/document/1/download", "application/pdf") == ".pdf"
+    assert (
+        documents.suffix_for("https://a/document/1/download", "text/html; charset=utf-8") == ".html"
+    )
+    assert documents.suffix_for("https://a/b/terms.docx", "application/octet-stream") == ".docx"
+    assert documents.suffix_for("https://a/b/c", None) == ".html"
+
+
+def test_probe_content_type_swallows_transport_errors(monkeypatch) -> None:
+    class Boom:
+        def __init__(self, **kwargs):
+            pass
+
+        def __enter__(self):
+            return self
+
+        def __exit__(self, *args):
+            return False
+
+        def head(self, url):
+            raise documents.httpx.ConnectError("no network in tests")
+
+    monkeypatch.setattr(documents.httpx, "Client", Boom)
+    assert documents.probe_content_type("https://a/b") is None

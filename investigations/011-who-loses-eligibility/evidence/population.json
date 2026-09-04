@@ -1,0 +1,1563 @@
+{
+ "rule": "holds >= 1 accepted response position in the post-rule window and is a battery by EAC technologyType or in-merit fuel",
+ "window": {
+  "from": "2026-08-04",
+  "to": "2026-08-31"
+ },
+ "timestamp_basis": "utc",
+ "holders_any_technology": 181,
+ "units": [
+  {
+   "ng_unit": "AG-ASTK05",
+   "elexon_unit": "2__ASTAT005",
+   "eac_batteries": true,
+   "in_merit_battery": true,
+   "lead_party": "Statkraft Markets Gmbh",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "AG-ASTK08",
+   "elexon_unit": "2__ASTAT008",
+   "eac_batteries": false,
+   "in_merit_battery": true,
+   "lead_party": "Statkraft Markets Gmbh",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "AG-ASTK09",
+   "elexon_unit": "2__ASTAT009",
+   "eac_batteries": true,
+   "in_merit_battery": true,
+   "lead_party": "Statkraft Markets Gmbh",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "AG-BFLX01",
+   "elexon_unit": "2__BFLEX001",
+   "eac_batteries": true,
+   "in_merit_battery": true,
+   "lead_party": "Flexitricity Limited",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "AG-BFLX04",
+   "elexon_unit": "2__BFLEX004",
+   "eac_batteries": true,
+   "in_merit_battery": true,
+   "lead_party": "Flexitricity Limited",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "AG-BUKP01",
+   "elexon_unit": "2__BUKPR001",
+   "eac_batteries": true,
+   "in_merit_battery": true,
+   "lead_party": "UK Power Reserve Limited",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "AG-CBS05L",
+   "elexon_unit": "V__LCEND005",
+   "eac_batteries": true,
+   "in_merit_battery": true,
+   "lead_party": "Centrica Business Solutions UK",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "AG-CBS06B",
+   "elexon_unit": "V__BCEND004",
+   "eac_batteries": true,
+   "in_merit_battery": true,
+   "lead_party": "Centrica Business Solutions UK",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "AG-DSK01G",
+   "elexon_unit": "V__GDSKC001",
+   "eac_batteries": true,
+   "in_merit_battery": true,
+   "lead_party": "Danske Commodities A/S",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "AG-DSK01H",
+   "elexon_unit": "V__HDSKC001",
+   "eac_batteries": false,
+   "in_merit_battery": true,
+   "lead_party": "Danske Commodities A/S",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "AG-DUKP01",
+   "elexon_unit": "2__DUKPR001",
+   "eac_batteries": true,
+   "in_merit_battery": true,
+   "lead_party": "UK Power Reserve Limited",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "AG-DUKP08",
+   "elexon_unit": "2__DUKPR008",
+   "eac_batteries": true,
+   "in_merit_battery": true,
+   "lead_party": "UK Power Reserve Limited",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "AG-EDF01C",
+   "elexon_unit": "V__AFEEL002",
+   "eac_batteries": true,
+   "in_merit_battery": true,
+   "lead_party": "EDF Energy Limited",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "AG-EDF01P",
+   "elexon_unit": "V__PFEEL400",
+   "eac_batteries": true,
+   "in_merit_battery": false,
+   "lead_party": "EDF Energy Limited",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "AG-FLX00L",
+   "elexon_unit": "V__LFLEX001",
+   "eac_batteries": true,
+   "in_merit_battery": true,
+   "lead_party": "Flexitricity Limited",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "AG-FLX02N",
+   "elexon_unit": "V__NFLEX001",
+   "eac_batteries": true,
+   "in_merit_battery": true,
+   "lead_party": "Flexitricity Limited",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "AG-GEDF05",
+   "elexon_unit": "2__GLOND005",
+   "eac_batteries": true,
+   "in_merit_battery": true,
+   "lead_party": "EDF Energy Customers Limited",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "AG-GFLX08",
+   "elexon_unit": "2__GFLEX008",
+   "eac_batteries": true,
+   "in_merit_battery": true,
+   "lead_party": "Flexitricity Limited",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "AG-GFLX09",
+   "elexon_unit": "2__GFLEX009",
+   "eac_batteries": true,
+   "in_merit_battery": true,
+   "lead_party": "Flexitricity Limited",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "AG-GLIM01",
+   "elexon_unit": "2__GANGE001",
+   "eac_batteries": true,
+   "in_merit_battery": true,
+   "lead_party": "Limejump Energy Limited",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "AG-GSTK09",
+   "elexon_unit": "2__GSTAT009",
+   "eac_batteries": true,
+   "in_merit_battery": true,
+   "lead_party": "Statkraft Markets Gmbh",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "AG-GSTK16",
+   "elexon_unit": "2__GSTAT016",
+   "eac_batteries": true,
+   "in_merit_battery": true,
+   "lead_party": "Statkraft Markets Gmbh",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "AG-GSTK19",
+   "elexon_unit": "2__GSTAT019",
+   "eac_batteries": true,
+   "in_merit_battery": true,
+   "lead_party": "Statkraft Markets Gmbh",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "AG-HAB01B",
+   "elexon_unit": "V__BHABI013",
+   "eac_batteries": true,
+   "in_merit_battery": true,
+   "lead_party": "Habitat Energy Limited",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "AG-HAB01D",
+   "elexon_unit": "V__GHABI016",
+   "eac_batteries": true,
+   "in_merit_battery": true,
+   "lead_party": "Habitat Energy Limited",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "AG-HAB01F",
+   "elexon_unit": "V__FHABI014",
+   "eac_batteries": true,
+   "in_merit_battery": true,
+   "lead_party": "Habitat Energy Limited",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "AG-HAB01G",
+   "elexon_unit": "V__GHABI020",
+   "eac_batteries": true,
+   "in_merit_battery": true,
+   "lead_party": "Habitat Energy Limited",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "AG-HAB01H",
+   "elexon_unit": "V__HHABI019",
+   "eac_batteries": true,
+   "in_merit_battery": false,
+   "lead_party": "Habitat Energy Limited",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "AG-HAB01J",
+   "elexon_unit": "V__JHABI009",
+   "eac_batteries": true,
+   "in_merit_battery": true,
+   "lead_party": "Habitat Energy Limited",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "AG-HAB02B",
+   "elexon_unit": "V__BHABI012",
+   "eac_batteries": true,
+   "in_merit_battery": true,
+   "lead_party": "Habitat Energy Limited",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "AG-HAB02F",
+   "elexon_unit": "V__FHABI017",
+   "eac_batteries": true,
+   "in_merit_battery": true,
+   "lead_party": "Habitat Energy Limited",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "AG-HAB02P",
+   "elexon_unit": "V__PHABI011",
+   "eac_batteries": true,
+   "in_merit_battery": true,
+   "lead_party": "Habitat Energy Limited",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "AG-HAB03P",
+   "elexon_unit": "V__PHABI015",
+   "eac_batteries": true,
+   "in_merit_battery": true,
+   "lead_party": "Habitat Energy Limited",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "AG-HEDF02",
+   "elexon_unit": "2__HLOND002",
+   "eac_batteries": true,
+   "in_merit_battery": true,
+   "lead_party": "EDF Energy Customers Limited",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "AG-HEL0CP",
+   "elexon_unit": "V__PHABI004",
+   "eac_batteries": true,
+   "in_merit_battery": true,
+   "lead_party": "Habitat Energy Limited",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "AG-HEL0DN",
+   "elexon_unit": "V__NHABI005",
+   "eac_batteries": true,
+   "in_merit_battery": true,
+   "lead_party": "Habitat Energy Limited",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "AG-HEL0EP",
+   "elexon_unit": "V__PHABI006",
+   "eac_batteries": true,
+   "in_merit_battery": true,
+   "lead_party": "Habitat Energy Limited",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "AG-HLIM02",
+   "elexon_unit": "2__HANGE002",
+   "eac_batteries": true,
+   "in_merit_battery": true,
+   "lead_party": "Limejump Energy Limited",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "AG-HLIM03",
+   "elexon_unit": "2__HANGE003",
+   "eac_batteries": true,
+   "in_merit_battery": true,
+   "lead_party": "Limejump Energy Limited",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "AG-HLIM04",
+   "elexon_unit": "2__HANGE004",
+   "eac_batteries": true,
+   "in_merit_battery": true,
+   "lead_party": "Limejump Energy Limited",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "AG-HLIM05",
+   "elexon_unit": "2__HANGE005",
+   "eac_batteries": false,
+   "in_merit_battery": true,
+   "lead_party": "Limejump Energy Limited",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "AG-HSTK01",
+   "elexon_unit": "2__HSTAT001",
+   "eac_batteries": true,
+   "in_merit_battery": true,
+   "lead_party": "Statkraft Markets Gmbh",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "AG-HSTK02",
+   "elexon_unit": "2__HSTAT002",
+   "eac_batteries": true,
+   "in_merit_battery": true,
+   "lead_party": "Statkraft Markets Gmbh",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "AG-HSTK07",
+   "elexon_unit": "2__HSTAT007",
+   "eac_batteries": true,
+   "in_merit_battery": true,
+   "lead_party": "Statkraft Markets Gmbh",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "AG-JUKP01",
+   "elexon_unit": "2__JUKPR001",
+   "eac_batteries": true,
+   "in_merit_battery": true,
+   "lead_party": "UK Power Reserve Limited",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "AG-LFLX01",
+   "elexon_unit": "2__LFLEX001",
+   "eac_batteries": true,
+   "in_merit_battery": true,
+   "lead_party": "Flexitricity Limited",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "AG-LLIM02",
+   "elexon_unit": "2__LANGE002",
+   "eac_batteries": true,
+   "in_merit_battery": true,
+   "lead_party": "Limejump Energy Limited",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "AG-MCAM01",
+   "elexon_unit": "2__MCMRO002",
+   "eac_batteries": true,
+   "in_merit_battery": true,
+   "lead_party": "BGI Trading Limited",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "AG-MSTK01",
+   "elexon_unit": "2__MSTAT001",
+   "eac_batteries": true,
+   "in_merit_battery": true,
+   "lead_party": "Statkraft Markets Gmbh",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "AG-MSTK05",
+   "elexon_unit": "2__MSTAT005",
+   "eac_batteries": true,
+   "in_merit_battery": true,
+   "lead_party": "Statkraft Markets Gmbh",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "AG-NFLX01",
+   "elexon_unit": "2__NFLEX001",
+   "eac_batteries": true,
+   "in_merit_battery": true,
+   "lead_party": "Flexitricity Limited",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "AG-NFLX09",
+   "elexon_unit": "2__NFLEX009",
+   "eac_batteries": true,
+   "in_merit_battery": true,
+   "lead_party": "Flexitricity Limited",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "AG-PFLX01",
+   "elexon_unit": "2__PFLEX001",
+   "eac_batteries": true,
+   "in_merit_battery": true,
+   "lead_party": "Flexitricity Limited",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "AG-PFLX02",
+   "elexon_unit": "2__PFLEX002",
+   "eac_batteries": true,
+   "in_merit_battery": true,
+   "lead_party": "Flexitricity Limited",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "AG-REC05L",
+   "elexon_unit": "2__LECOT003",
+   "eac_batteries": true,
+   "in_merit_battery": true,
+   "lead_party": "ECOTRICITY LIMITED",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "AG-ZEN03J",
+   "elexon_unit": "V__JZENO001",
+   "eac_batteries": true,
+   "in_merit_battery": true,
+   "lead_party": "BESS Holdco 2 Limited",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "AG-ZEN7H",
+   "elexon_unit": "V__HZENO004",
+   "eac_batteries": true,
+   "in_merit_battery": true,
+   "lead_party": "BESS Holdco 2 Limited",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "ARNKB-2",
+   "elexon_unit": "E_ARNKB-2",
+   "eac_batteries": true,
+   "in_merit_battery": true,
+   "lead_party": "Flexitricity Limited",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "BARNB-1",
+   "elexon_unit": "E_BARNB-1",
+   "eac_batteries": true,
+   "in_merit_battery": true,
+   "lead_party": "EDF Energy Customers Limited",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "BERKB-2",
+   "elexon_unit": "E_BERKB-2",
+   "eac_batteries": true,
+   "in_merit_battery": true,
+   "lead_party": "EDF Energy Customers Limited",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "BFSE03",
+   "elexon_unit": "2__BCMRO002",
+   "eac_batteries": true,
+   "in_merit_battery": true,
+   "lead_party": "BGI Trading Limited",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "BHOLB-1",
+   "elexon_unit": "E_BHOLB-1",
+   "eac_batteries": true,
+   "in_merit_battery": true,
+   "lead_party": "Tesla Motors Limited",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "BLHLB-1",
+   "elexon_unit": "T_BLHLB-1",
+   "eac_batteries": true,
+   "in_merit_battery": true,
+   "lead_party": "ZENOBE BLACKHILLOCK LIMITED",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "BLHLB-2",
+   "elexon_unit": "T_BLHLB-2",
+   "eac_batteries": true,
+   "in_merit_battery": true,
+   "lead_party": "ZENOBE BLACKHILLOCK LIMITED",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "BLHLB-3",
+   "elexon_unit": "T_BLHLB-3",
+   "eac_batteries": true,
+   "in_merit_battery": true,
+   "lead_party": "ZENOBE BLACKHILLOCK LIMITED",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "BLHLB-4",
+   "elexon_unit": "T_BLHLB-4",
+   "eac_batteries": true,
+   "in_merit_battery": true,
+   "lead_party": "ZENOBE BLACKHILLOCK LIMITED",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "BLKPB-1",
+   "elexon_unit": "E_BLKPB-1",
+   "eac_batteries": true,
+   "in_merit_battery": true,
+   "lead_party": "Conrad Energy (Trading) Ltd",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "BLPFB-1",
+   "elexon_unit": "T_BLPFB-1",
+   "eac_batteries": true,
+   "in_merit_battery": true,
+   "lead_party": "EDF Energy Customers Limited",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "BREDB-1",
+   "elexon_unit": "T_BREDB-1",
+   "eac_batteries": true,
+   "in_merit_battery": true,
+   "lead_party": "Pivoted Power LLP",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "BRETB-2",
+   "elexon_unit": "E_BRETB-2",
+   "eac_batteries": true,
+   "in_merit_battery": true,
+   "lead_party": "EDF Energy Customers Limited",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "BROAB-1",
+   "elexon_unit": "E_BROAB-1",
+   "eac_batteries": true,
+   "in_merit_battery": true,
+   "lead_party": "Tesla Motors Limited",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "BROFB-1",
+   "elexon_unit": "E_BROFB-1",
+   "eac_batteries": true,
+   "in_merit_battery": true,
+   "lead_party": "EDF Energy Customers Limited",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "BURWB-2",
+   "elexon_unit": "E_BURWB-2",
+   "eac_batteries": true,
+   "in_merit_battery": true,
+   "lead_party": "EDF Energy Customers Limited",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "BURWB-3",
+   "elexon_unit": "E_BURWB-3",
+   "eac_batteries": true,
+   "in_merit_battery": false,
+   "lead_party": "EDF Energy Customers Limited",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "BUSTB-1",
+   "elexon_unit": "T_BUSTB-1",
+   "eac_batteries": true,
+   "in_merit_battery": true,
+   "lead_party": "Pivoted Power LLP",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "BUXTB-1",
+   "elexon_unit": "2__GCMRO001",
+   "eac_batteries": true,
+   "in_merit_battery": true,
+   "lead_party": "BGI Trading Limited",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "CHAPB-1",
+   "elexon_unit": "E_CHAPB-1",
+   "eac_batteries": true,
+   "in_merit_battery": true,
+   "lead_party": "Tesla Motors Limited",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "CLAYB-1",
+   "elexon_unit": "E_CLAYB-1",
+   "eac_batteries": true,
+   "in_merit_battery": true,
+   "lead_party": "Tesla Motors Limited",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "CLAYB-2",
+   "elexon_unit": "E_CLAYB-2",
+   "eac_batteries": true,
+   "in_merit_battery": true,
+   "lead_party": "Tesla Motors Limited",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "CONTB-1",
+   "elexon_unit": "E_CONTB-1",
+   "eac_batteries": true,
+   "in_merit_battery": true,
+   "lead_party": "Tesla Motors Limited",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "COVNB-1",
+   "elexon_unit": "T_COVNB-1",
+   "eac_batteries": true,
+   "in_merit_battery": true,
+   "lead_party": "Pivoted Power LLP",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "COWB-1",
+   "elexon_unit": "T_COWB-1",
+   "eac_batteries": true,
+   "in_merit_battery": true,
+   "lead_party": "Pivoted Power LLP",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "CRSSB-1",
+   "elexon_unit": "E_CRSSB-1",
+   "eac_batteries": true,
+   "in_merit_battery": true,
+   "lead_party": "Arenko Cleantech Limited",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "DOLLB-1",
+   "elexon_unit": "E_DOLLB-1",
+   "eac_batteries": true,
+   "in_merit_battery": true,
+   "lead_party": "Dollymans Storage Limited",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "EDF01N",
+   "elexon_unit": "V__NFEEL400",
+   "eac_batteries": true,
+   "in_merit_battery": false,
+   "lead_party": "EDF Energy Limited",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "ERSKB-1",
+   "elexon_unit": "E_ERSKB-1",
+   "eac_batteries": true,
+   "in_merit_battery": true,
+   "lead_party": "EDF Energy Customers Limited",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "FARNB-1",
+   "elexon_unit": "E_FARNB-1",
+   "eac_batteries": true,
+   "in_merit_battery": true,
+   "lead_party": "Tesla Motors Limited",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "FBPG01",
+   "elexon_unit": "2__FBPGM001",
+   "eac_batteries": true,
+   "in_merit_battery": true,
+   "lead_party": "BP Gas Marketing Limited",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "FBPG02",
+   "elexon_unit": "2__FBPGM002",
+   "eac_batteries": true,
+   "in_merit_battery": true,
+   "lead_party": "BP Gas Marketing Limited",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "FERRB-1",
+   "elexon_unit": "T_FERRB-1",
+   "eac_batteries": true,
+   "in_merit_battery": true,
+   "lead_party": "SSE BATTERY SALISBURY LIMITED",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "FERRB-2",
+   "elexon_unit": "T_FERRB-2",
+   "eac_batteries": true,
+   "in_merit_battery": true,
+   "lead_party": "SSE BATTERY SALISBURY LIMITED",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "FFSE02",
+   "elexon_unit": "2__FCMRO003",
+   "eac_batteries": true,
+   "in_merit_battery": true,
+   "lead_party": "BGI Trading Limited",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "GRCRB-1",
+   "elexon_unit": "E_GRCRB-1",
+   "eac_batteries": true,
+   "in_merit_battery": true,
+   "lead_party": "FIELD GERRARDS CROSS LTD",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "GRFLB-1",
+   "elexon_unit": "E_GRFLB-1",
+   "eac_batteries": true,
+   "in_merit_battery": false,
+   "lead_party": "Conrad Energy (Trading) Ltd",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "HAWKB-1",
+   "elexon_unit": "E_HAWKB-1",
+   "eac_batteries": true,
+   "in_merit_battery": true,
+   "lead_party": "Tesla Motors Limited",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "HFSE02",
+   "elexon_unit": "2__HCMRO002",
+   "eac_batteries": true,
+   "in_merit_battery": true,
+   "lead_party": "BGI Trading Limited",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "HIRWB-1",
+   "elexon_unit": "V__KHABI007",
+   "eac_batteries": true,
+   "in_merit_battery": true,
+   "lead_party": "Habitat Energy Limited",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "HRSTB-1",
+   "elexon_unit": "T_HRSTB-1",
+   "eac_batteries": true,
+   "in_merit_battery": false,
+   "lead_party": "SP Renewables (UK) Limited",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "HSSE01",
+   "elexon_unit": "2__HIMPO002",
+   "eac_batteries": true,
+   "in_merit_battery": true,
+   "lead_party": "SSE Energy Supply Limited",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "ILMEB-1",
+   "elexon_unit": "E_ILMEB-1",
+   "eac_batteries": true,
+   "in_merit_battery": true,
+   "lead_party": "Tesla Motors Limited",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "JAMBB-1",
+   "elexon_unit": "E_JAMBB-1",
+   "eac_batteries": true,
+   "in_merit_battery": true,
+   "lead_party": "Tesla Motors Limited",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "JAMBB-2",
+   "elexon_unit": "E_JAMBB-2",
+   "eac_batteries": true,
+   "in_merit_battery": true,
+   "lead_party": "Tesla Motors Limited",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "KEMB-1",
+   "elexon_unit": "T_KEMB-1",
+   "eac_batteries": true,
+   "in_merit_battery": false,
+   "lead_party": "EDF Energy Customers Limited",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "KILSB-1",
+   "elexon_unit": "T_KILSB-1",
+   "eac_batteries": true,
+   "in_merit_battery": true,
+   "lead_party": "ZENOBE KILMARNOCK SOUTH LTD",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "KILSB-2",
+   "elexon_unit": "T_KILSB-2",
+   "eac_batteries": true,
+   "in_merit_battery": true,
+   "lead_party": "ZENOBE KILMARNOCK SOUTH LTD",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "KILSB-3",
+   "elexon_unit": "T_KILSB-3",
+   "eac_batteries": true,
+   "in_merit_battery": true,
+   "lead_party": "ZENOBE KILMARNOCK SOUTH LTD",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "KILSB-4",
+   "elexon_unit": "T_KILSB-4",
+   "eac_batteries": true,
+   "in_merit_battery": true,
+   "lead_party": "ZENOBE KILMARNOCK SOUTH LTD",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "KILSB-5",
+   "elexon_unit": "T_KILSB-5",
+   "eac_batteries": true,
+   "in_merit_battery": true,
+   "lead_party": "ZENOBE KILMARNOCK SOUTH LTD",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "KILSB-6",
+   "elexon_unit": "T_KILSB-6",
+   "eac_batteries": true,
+   "in_merit_battery": true,
+   "lead_party": "ZENOBE KILMARNOCK SOUTH LTD",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "LARKB-1",
+   "elexon_unit": "T_LARKB-1",
+   "eac_batteries": true,
+   "in_merit_battery": true,
+   "lead_party": "EDF Energy Customers Limited",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "LITRB-1",
+   "elexon_unit": "E_LITRB-1",
+   "eac_batteries": true,
+   "in_merit_battery": true,
+   "lead_party": "Tesla Motors Limited",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "LKSDB-1",
+   "elexon_unit": "T_LKSDB-1",
+   "eac_batteries": true,
+   "in_merit_battery": true,
+   "lead_party": "Lakeside Energy Storage Ltd",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "MANNB-1",
+   "elexon_unit": "V__HFEEL002",
+   "eac_batteries": true,
+   "in_merit_battery": true,
+   "lead_party": "EDF Energy Limited",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "MELKB-1",
+   "elexon_unit": "V__HHABI008",
+   "eac_batteries": true,
+   "in_merit_battery": true,
+   "lead_party": "Habitat Energy Limited",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "MKFRB-1",
+   "elexon_unit": "T_MKFRB-1",
+   "eac_batteries": true,
+   "in_merit_battery": true,
+   "lead_party": "HD777FRY Ltd",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "NEWPB-1",
+   "elexon_unit": "E_NEWPB-1",
+   "eac_batteries": true,
+   "in_merit_battery": true,
+   "lead_party": "Field Newport Ltd",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "NEWTB-1",
+   "elexon_unit": "E_NEWTB-1",
+   "eac_batteries": true,
+   "in_merit_battery": true,
+   "lead_party": "EDF Energy Customers Limited",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "NTAWB-1",
+   "elexon_unit": "E_NTAWB-1",
+   "eac_batteries": true,
+   "in_merit_battery": true,
+   "lead_party": "EDF Energy Customers Limited",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "NTRVB-1",
+   "elexon_unit": "T_NTRVB-1",
+   "eac_batteries": true,
+   "in_merit_battery": true,
+   "lead_party": "Arenko Cleantech Limited",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "NURSB-1",
+   "elexon_unit": "T_NURSB-1",
+   "eac_batteries": true,
+   "in_merit_battery": true,
+   "lead_party": "EDF Energy Customers Limited",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "OCHLB-1",
+   "elexon_unit": "T_OCHLB-1",
+   "eac_batteries": true,
+   "in_merit_battery": true,
+   "lead_party": "HD143OCK Ltd",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "OLDHB-1",
+   "elexon_unit": "E_OLDHB-1",
+   "eac_batteries": true,
+   "in_merit_battery": true,
+   "lead_party": "Field Oldham Ltd",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "PILLB-1",
+   "elexon_unit": "E_PILLB-1",
+   "eac_batteries": true,
+   "in_merit_battery": true,
+   "lead_party": "BP Gas Marketing Limited",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "PILLB-2",
+   "elexon_unit": "E_PILLB-2",
+   "eac_batteries": true,
+   "in_merit_battery": true,
+   "lead_party": "BP Gas Marketing Limited",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "PINFB-1",
+   "elexon_unit": "T_PINFB-1",
+   "eac_batteries": true,
+   "in_merit_battery": true,
+   "lead_party": "Zenobe Capenhurst Limited",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "PINFB-2",
+   "elexon_unit": "T_PINFB-2",
+   "eac_batteries": true,
+   "in_merit_battery": true,
+   "lead_party": "Zenobe Capenhurst Limited",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "PINFB-3",
+   "elexon_unit": "T_PINFB-3",
+   "eac_batteries": true,
+   "in_merit_battery": true,
+   "lead_party": "Zenobe Capenhurst Limited",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "PINFB-4",
+   "elexon_unit": "T_PINFB-4",
+   "eac_batteries": true,
+   "in_merit_battery": true,
+   "lead_party": "Zenobe Capenhurst Limited",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "POTES-1",
+   "elexon_unit": "E_POTES-1",
+   "eac_batteries": true,
+   "in_merit_battery": true,
+   "lead_party": "Arenko Cleantech Limited",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "RCKFB-1",
+   "elexon_unit": "V__EFEEL400",
+   "eac_batteries": true,
+   "in_merit_battery": true,
+   "lead_party": "EDF Energy Limited",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "RICHB-1",
+   "elexon_unit": "T_RICHB-1",
+   "eac_batteries": true,
+   "in_merit_battery": true,
+   "lead_party": "Limejump Energy Limited",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "RICHB-2",
+   "elexon_unit": "T_RICHB-2",
+   "eac_batteries": true,
+   "in_merit_battery": true,
+   "lead_party": "Limejump Energy Limited",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "ROARB-1",
+   "elexon_unit": "E_ROARB-1",
+   "eac_batteries": true,
+   "in_merit_battery": true,
+   "lead_party": "Tesla Motors Limited",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "ROOSB-1",
+   "elexon_unit": "E_ROOSB-1",
+   "eac_batteries": true,
+   "in_merit_battery": true,
+   "lead_party": "CBS ENERGY STORAGE ASSETS LTD",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "SKELB-1",
+   "elexon_unit": "E_SKELB-1",
+   "eac_batteries": true,
+   "in_merit_battery": true,
+   "lead_party": "Tesla Motors Limited",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "STALB-1",
+   "elexon_unit": "E_STALB-1",
+   "eac_batteries": true,
+   "in_merit_battery": true,
+   "lead_party": "KXP Immingham Ltd",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "SUNDB-1",
+   "elexon_unit": "T_SUNDB-1",
+   "eac_batteries": true,
+   "in_merit_battery": true,
+   "lead_party": "Pivoted Power LLP",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "TEBWB-1",
+   "elexon_unit": "T_TEBWB-1",
+   "eac_batteries": true,
+   "in_merit_battery": true,
+   "lead_party": "Arenko Cleantech Limited",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "THMRB-1",
+   "elexon_unit": "E_THMRB-1",
+   "eac_batteries": true,
+   "in_merit_battery": true,
+   "lead_party": "Tesla Motors Limited",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "THURB-2",
+   "elexon_unit": "T_THURB-2",
+   "eac_batteries": true,
+   "in_merit_battery": true,
+   "lead_party": "THURROCK STORAGE LIMITED",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "THURB-3",
+   "elexon_unit": "T_THURB-3",
+   "eac_batteries": true,
+   "in_merit_battery": true,
+   "lead_party": "THURROCK STORAGE LIMITED",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "TOLLB-1",
+   "elexon_unit": "E_TOLLB-1",
+   "eac_batteries": true,
+   "in_merit_battery": true,
+   "lead_party": "Tollgate Energy Storage Ltd",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "TYLNB-1",
+   "elexon_unit": "T_TYLNB-1",
+   "eac_batteries": true,
+   "in_merit_battery": true,
+   "lead_party": "Pivoted Power LLP",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "WBURB-41",
+   "elexon_unit": "T_WBURB-41",
+   "eac_batteries": false,
+   "in_merit_battery": true,
+   "lead_party": "West Burton B Limited",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "WBURB-43",
+   "elexon_unit": "T_WBURB-43",
+   "eac_batteries": true,
+   "in_merit_battery": true,
+   "lead_party": "West Burton B Limited",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "WHLWB-1",
+   "elexon_unit": "T_WHLWB-1",
+   "eac_batteries": true,
+   "in_merit_battery": true,
+   "lead_party": "SP Renewables (UK) Limited",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "WHTBB-1",
+   "elexon_unit": "E_WHTBB-1",
+   "eac_batteries": true,
+   "in_merit_battery": true,
+   "lead_party": "Field Whitebirk Ltd",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "WISHB-1",
+   "elexon_unit": "T_WISHB-1",
+   "eac_batteries": true,
+   "in_merit_battery": true,
+   "lead_party": "Zenobe Wishaw Limited",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "WNCHB-1",
+   "elexon_unit": "E_WNCHB-1",
+   "eac_batteries": true,
+   "in_merit_battery": false,
+   "lead_party": "Conrad Energy (Trading) Ltd",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "WNCRB-1",
+   "elexon_unit": "V__HFEEL400",
+   "eac_batteries": true,
+   "in_merit_battery": true,
+   "lead_party": "EDF Energy Limited",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "WOLVB-1",
+   "elexon_unit": "E_WOLVB-1",
+   "eac_batteries": true,
+   "in_merit_battery": true,
+   "lead_party": "EDF Energy Customers Limited",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "WTRSB-1",
+   "elexon_unit": "2__GCMRO002",
+   "eac_batteries": true,
+   "in_merit_battery": true,
+   "lead_party": "BGI Trading Limited",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "ZEN02A",
+   "elexon_unit": "V__AZENO002",
+   "eac_batteries": true,
+   "in_merit_battery": true,
+   "lead_party": "BESS Holdco 2 Limited",
+   "fpn_flag": true
+  }
+ ],
+ "unmapped": [
+  {
+   "ng_unit": "AFFR-1",
+   "elexon_unit": null,
+   "eac_batteries": true,
+   "in_merit_battery": false,
+   "lead_party": null,
+   "fpn_flag": null
+  },
+  {
+   "ng_unit": "CLTR-01",
+   "elexon_unit": null,
+   "eac_batteries": true,
+   "in_merit_battery": false,
+   "lead_party": null,
+   "fpn_flag": null
+  },
+  {
+   "ng_unit": "EDFE-01",
+   "elexon_unit": null,
+   "eac_batteries": true,
+   "in_merit_battery": false,
+   "lead_party": null,
+   "fpn_flag": null
+  },
+  {
+   "ng_unit": "EDFE-12",
+   "elexon_unit": null,
+   "eac_batteries": true,
+   "in_merit_battery": false,
+   "lead_party": null,
+   "fpn_flag": null
+  },
+  {
+   "ng_unit": "EDFE-19",
+   "elexon_unit": null,
+   "eac_batteries": true,
+   "in_merit_battery": false,
+   "lead_party": null,
+   "fpn_flag": null
+  },
+  {
+   "ng_unit": "EONDC-01",
+   "elexon_unit": null,
+   "eac_batteries": true,
+   "in_merit_battery": false,
+   "lead_party": null,
+   "fpn_flag": null
+  },
+  {
+   "ng_unit": "EONDC-03",
+   "elexon_unit": null,
+   "eac_batteries": true,
+   "in_merit_battery": false,
+   "lead_party": null,
+   "fpn_flag": null
+  },
+  {
+   "ng_unit": "FRHM-01",
+   "elexon_unit": null,
+   "eac_batteries": true,
+   "in_merit_battery": false,
+   "lead_party": null,
+   "fpn_flag": null
+  },
+  {
+   "ng_unit": "GSET-01",
+   "elexon_unit": null,
+   "eac_batteries": true,
+   "in_merit_battery": false,
+   "lead_party": null,
+   "fpn_flag": null
+  },
+  {
+   "ng_unit": "GSET-02",
+   "elexon_unit": null,
+   "eac_batteries": true,
+   "in_merit_battery": false,
+   "lead_party": null,
+   "fpn_flag": null
+  },
+  {
+   "ng_unit": "GSET-03",
+   "elexon_unit": null,
+   "eac_batteries": true,
+   "in_merit_battery": false,
+   "lead_party": null,
+   "fpn_flag": null
+  },
+  {
+   "ng_unit": "GSET-04",
+   "elexon_unit": null,
+   "eac_batteries": true,
+   "in_merit_battery": false,
+   "lead_party": null,
+   "fpn_flag": null
+  },
+  {
+   "ng_unit": "GSET-05",
+   "elexon_unit": null,
+   "eac_batteries": true,
+   "in_merit_battery": false,
+   "lead_party": null,
+   "fpn_flag": null
+  },
+  {
+   "ng_unit": "GSET-06",
+   "elexon_unit": null,
+   "eac_batteries": true,
+   "in_merit_battery": false,
+   "lead_party": null,
+   "fpn_flag": null
+  },
+  {
+   "ng_unit": "GSET-07",
+   "elexon_unit": null,
+   "eac_batteries": true,
+   "in_merit_battery": false,
+   "lead_party": null,
+   "fpn_flag": null
+  },
+  {
+   "ng_unit": "GSET-08",
+   "elexon_unit": null,
+   "eac_batteries": true,
+   "in_merit_battery": false,
+   "lead_party": null,
+   "fpn_flag": null
+  },
+  {
+   "ng_unit": "HAB-23",
+   "elexon_unit": null,
+   "eac_batteries": true,
+   "in_merit_battery": false,
+   "lead_party": null,
+   "fpn_flag": null
+  },
+  {
+   "ng_unit": "HAB-28",
+   "elexon_unit": null,
+   "eac_batteries": true,
+   "in_merit_battery": false,
+   "lead_party": null,
+   "fpn_flag": null
+  },
+  {
+   "ng_unit": "HAB-29",
+   "elexon_unit": null,
+   "eac_batteries": true,
+   "in_merit_battery": false,
+   "lead_party": null,
+   "fpn_flag": null
+  },
+  {
+   "ng_unit": "HAB12-FFR",
+   "elexon_unit": null,
+   "eac_batteries": true,
+   "in_merit_battery": false,
+   "lead_party": null,
+   "fpn_flag": null
+  },
+  {
+   "ng_unit": "HAB13-FFR",
+   "elexon_unit": null,
+   "eac_batteries": true,
+   "in_merit_battery": false,
+   "lead_party": null,
+   "fpn_flag": null
+  },
+  {
+   "ng_unit": "HAB8-FFR",
+   "elexon_unit": null,
+   "eac_batteries": true,
+   "in_merit_battery": false,
+   "lead_party": null,
+   "fpn_flag": null
+  },
+  {
+   "ng_unit": "HAB9-FFR",
+   "elexon_unit": null,
+   "eac_batteries": true,
+   "in_merit_battery": false,
+   "lead_party": null,
+   "fpn_flag": null
+  },
+  {
+   "ng_unit": "HNOR-01",
+   "elexon_unit": null,
+   "eac_batteries": true,
+   "in_merit_battery": false,
+   "lead_party": null,
+   "fpn_flag": null
+  },
+  {
+   "ng_unit": "LNOR-01",
+   "elexon_unit": null,
+   "eac_batteries": true,
+   "in_merit_battery": false,
+   "lead_party": null,
+   "fpn_flag": null
+  },
+  {
+   "ng_unit": "MDSM-1",
+   "elexon_unit": null,
+   "eac_batteries": true,
+   "in_merit_battery": false,
+   "lead_party": null,
+   "fpn_flag": null
+  },
+  {
+   "ng_unit": "SWDN-1",
+   "elexon_unit": null,
+   "eac_batteries": true,
+   "in_merit_battery": false,
+   "lead_party": null,
+   "fpn_flag": null
+  },
+  {
+   "ng_unit": "WDID-01",
+   "elexon_unit": null,
+   "eac_batteries": true,
+   "in_merit_battery": false,
+   "lead_party": null,
+   "fpn_flag": null
+  }
+ ],
+ "classification_disagreements": [
+  {
+   "ng_unit": "AG-ASTK08",
+   "elexon_unit": "2__ASTAT008",
+   "eac_batteries": false,
+   "in_merit_battery": true,
+   "lead_party": "Statkraft Markets Gmbh",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "AG-DSK01H",
+   "elexon_unit": "V__HDSKC001",
+   "eac_batteries": false,
+   "in_merit_battery": true,
+   "lead_party": "Danske Commodities A/S",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "AG-EDF01P",
+   "elexon_unit": "V__PFEEL400",
+   "eac_batteries": true,
+   "in_merit_battery": false,
+   "lead_party": "EDF Energy Limited",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "AG-HAB01H",
+   "elexon_unit": "V__HHABI019",
+   "eac_batteries": true,
+   "in_merit_battery": false,
+   "lead_party": "Habitat Energy Limited",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "AG-HLIM05",
+   "elexon_unit": "2__HANGE005",
+   "eac_batteries": false,
+   "in_merit_battery": true,
+   "lead_party": "Limejump Energy Limited",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "BURWB-3",
+   "elexon_unit": "E_BURWB-3",
+   "eac_batteries": true,
+   "in_merit_battery": false,
+   "lead_party": "EDF Energy Customers Limited",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "EDF01N",
+   "elexon_unit": "V__NFEEL400",
+   "eac_batteries": true,
+   "in_merit_battery": false,
+   "lead_party": "EDF Energy Limited",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "GRFLB-1",
+   "elexon_unit": "E_GRFLB-1",
+   "eac_batteries": true,
+   "in_merit_battery": false,
+   "lead_party": "Conrad Energy (Trading) Ltd",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "HRSTB-1",
+   "elexon_unit": "T_HRSTB-1",
+   "eac_batteries": true,
+   "in_merit_battery": false,
+   "lead_party": "SP Renewables (UK) Limited",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "KEMB-1",
+   "elexon_unit": "T_KEMB-1",
+   "eac_batteries": true,
+   "in_merit_battery": false,
+   "lead_party": "EDF Energy Customers Limited",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "WBURB-41",
+   "elexon_unit": "T_WBURB-41",
+   "eac_batteries": false,
+   "in_merit_battery": true,
+   "lead_party": "West Burton B Limited",
+   "fpn_flag": true
+  },
+  {
+   "ng_unit": "WNCHB-1",
+   "elexon_unit": "E_WNCHB-1",
+   "eac_batteries": true,
+   "in_merit_battery": false,
+   "lead_party": "Conrad Energy (Trading) Ltd",
+   "fpn_flag": true
+  }
+ ],
+ "in_merit_files_read": {
+  "inmerit_allbm_2026-07.csv": 161,
+  "inmerit_allbm_2026-08.csv": 162
+ }
+}

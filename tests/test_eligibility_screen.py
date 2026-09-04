@@ -151,6 +151,12 @@ def test_response_family_reads_the_dataset_vocabulary_not_a_guess() -> None:
     assert response_family("dr-l") == "DR"
     assert response_family("Quick Reserve", "QR") is None
     assert response_family("DRIVER") is None  # 'DR' followed by a non-H/L letter
+    # The live EAC vocabulary: the family sits in the product code only.
+    assert response_family("Response", "DCH") == "DC"
+    assert response_family("Response", "DML") == "DM"
+    assert response_family("Response", "DRH") == "DR"
+    assert response_family("Slow Reserve", "PSR") is None
+    assert response_family("Balancing Reserve", "NBR") is None
 
 
 def eac_row(**overrides):
@@ -326,6 +332,38 @@ def test_unknown_rule_or_scope_is_refused() -> None:
         screen({**REQUEST, "validity_rule": "strict"}, [], [])
     with pytest.raises(ValueError):
         screen({**REQUEST, "forfeit_scope": "month"}, [], [])
+
+
+# --------------------------------------------------------------------------
+# The register-flag rule (Amendment 1)
+
+
+def test_flag_screen_puts_the_whole_window_at_stake_for_a_false_flag_only() -> None:
+    records = full_day("2__ABATT001") + full_day("2__ABATT002", skip={16, 17})
+    result = screen(
+        {**REQUEST, "units": [*REQUEST["units"], "2__ABATT003"]},
+        records,
+        [block_position(u) for u in ("2__ABATT001", "2__ABATT002", "2__ABATT003")],
+    )
+    flag = es.flag_screen(result, {"2__ABATT001": True, "2__ABATT002": False})
+    a, b, c = (flag["units"][u] for u in ("2__ABATT001", "2__ABATT002", "2__ABATT003"))
+    assert a["fpn_flag"] == "true" and a["primary"]["revenue_at_stake_gbp"] == "0.00"
+    assert b["fpn_flag"] == "false" and b["primary"]["revenue_at_stake_gbp"] == "49.20"
+    assert b["primary"]["periods_deemed_unavailable"] == 8 and b["primary"]["runs"] == [8]
+    assert c["fpn_flag"] == "unknown" and c["primary"]["revenue_at_stake_gbp"] == "0.00"
+    t = flag["totals"]
+    assert t == {
+        "units_holding": 3,
+        "units_with_any_unavailable": 1,
+        "units_flag_unknown": 1,
+        "periods_at_risk": 8,
+        "revenue_held_gbp": "147.60",
+        "revenue_at_stake_gbp": "49.20",
+        "share_of_revenue_held": "0.3333",
+    }
+    parties = concentration(flag, {"2__ABATT002": "Beta Ltd"})
+    assert parties[0]["party"] == "Beta Ltd" and parties[0]["share_of_revenue_held"] == "1.0000"
+    assert milestone(parties) == []  # one run of eight periods is a single short outage
 
 
 # --------------------------------------------------------------------------

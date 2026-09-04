@@ -1,0 +1,168 @@
+{
+ "declaration_sha256": "99498205c1720532303afd4dd5d6a59db364951fa4f760a9f4fac67b7cdd5917",
+ "seal": "99498205",
+ "run_date": "2026-09-04",
+ "effective_date": "2026-07-31",
+ "notes": [],
+ "primary_rule": {
+  "validity_rule": "covering",
+  "forfeit_scope": "period",
+  "note": "Service Terms 5.10: a BM Participating Response Unit whose Service Provider sets its FPN flag to FALSE is deemed unavailable for all Auction Products until reset to TRUE. Registration flag, not per-period FPN presence; per-period rules are sensitivity only. Schedule 3 settles per Settlement Period, Faij = 0 at 0.1% unavailability."
+ },
+ "documents": {
+  "ofgem-decision-page": {
+   "state": "pinned",
+   "url": "https://www.ofgem.gov.uk/decision/nesos-proposed-dynamic-response-services-amendments-terms-and-conditions-related-balancing"
+  },
+  "ofgem-decision-pdf": {
+   "state": "pinned",
+   "url": "https://www.ofgem.gov.uk/sites/default/files/2026-06/Decision-to-approve-Dynamic-Response-Services%20proposed-amendments-to-the-Terms-and-Conditions-related-to-Balancing-Effective-by-31-July-26.pdf"
+  },
+  "neso-drs-consultation-2025-11": {
+   "state": "pinned",
+   "url": "https://www.neso.energy/document/372326/download"
+  },
+  "neso-drs-final-submission": {
+   "state": "pinned",
+   "url": "https://www.neso.energy/document/381566/download"
+  },
+  "neso-dc-service-terms": {
+   "state": "pinned",
+   "url": "https://www.neso.energy/document/384606/download"
+  },
+  "neso-dm-service-terms": {
+   "state": "pinned",
+   "url": "https://www.neso.energy/document/384606/download"
+  },
+  "neso-dr-service-terms": {
+   "state": "pinned",
+   "url": "https://www.neso.energy/document/384606/download"
+  },
+  "grid-code-glossary-physical-notification": {
+   "state": "pinned",
+   "url": "https://www.neso.energy/document/104896/download"
+  },
+  "bsc-section-q-physical-notifications": {
+   "state": "pinned",
+   "url": "https://bscdocs.elexon.co.uk/bsc/bsc-section-q-balancing-mechanism-activities/v-41-0/id-646333094476f9f17e2e1ceb"
+  },
+  "bsc-gate-closure-definition": {
+   "state": "pinned",
+   "url": "https://www.elexon.co.uk/the-bsc/bsc-section-x-annex-x-1-general-glossary/"
+  },
+  "ofgem-decision-pdf-jan27": {
+   "state": "pinned",
+   "url": "https://www.ofgem.gov.uk/sites/default/files/2026-06/Decision-to-approve-Dynamic-Response-Services%20proposed-amendments-to-the-Terms-and-Conditions-related-to-Balancing-Effective-1-January-2027.pdf",
+   "note": "supplied at seal beyond the declared list"
+  },
+  "ofgem-decision-reject": {
+   "state": "pinned",
+   "url": "https://www.ofgem.gov.uk/sites/default/files/2026-06/Decision-to-reject-proposed-Dynamic-Response-Services-amendments-to-the-Terms-and-Conditions-related-to-Balancing.pdf",
+   "note": "supplied at seal beyond the declared list"
+  },
+  "neso-procurement-rules-2026-07": {
+   "state": "pinned",
+   "url": "https://www.neso.energy/document/384601/download",
+   "note": "supplied at seal beyond the declared list"
+  }
+ },
+ "unavailable": {
+  "gate:fields:4b4a2e83-094c-4566-90c1-98366469b504": {
+   "url": "https://api.neso.energy/api/3/action/datastore_search?resource_id=4b4a2e83-094c-4566-90c1-98366469b504&limit=0",
+   "error": "Client error '404 Not Found' for url 'https://api.neso.energy/api/3/action/datastore_search?resource_id=4b4a2e83-094c-4566-90c1-98366469b504&limit=0'"
+  },
+  "gate:fields:ce75bd6e-5c16-41b5-bf7f-ebf3b44508f3": {
+   "url": "https://api.neso.energy/api/3/action/datastore_search?resource_id=ce75bd6e-5c16-41b5-bf7f-ebf3b44508f3&limit=0",
+   "error": "Client error '404 Not Found' for url 'https://api.neso.energy/api/3/action/datastore_search?resource_id=ce75bd6e-5c16-41b5-bf7f-ebf3b44508f3&limit=0'"
+  },
+  "gate:fields:0ad0f7f5-314e-4d7a-b6df-84a7b77c9908": {
+   "url": "https://api.neso.energy/api/3/action/datastore_search?resource_id=0ad0f7f5-314e-4d7a-b6df-84a7b77c9908&limit=0",
+   "error": "Client error '404 Not Found' for url 'https://api.neso.energy/api/3/action/datastore_search?resource_id=0ad0f7f5-314e-4d7a-b6df-84a7b77c9908&limit=0'"
+  },
+  "gate:fields:b435a5d1-9d94-477e-bf50-b99a7693d65c": {
+   "url": "https://api.neso.energy/api/3/action/datastore_search?resource_id=b435a5d1-9d94-477e-bf50-b99a7693d65c&limit=0",
+   "error": "Client error '404 Not Found' for url 'https://api.neso.energy/api/3/action/datastore_search?resource_id=b435a5d1-9d94-477e-bf50-b99a7693d65c&limit=0'"
+  },
+  "gate:fields:5ebec109-4cbf-4792-88d6-18feef004f9c": {
+   "url": "https://api.neso.energy/api/3/action/datastore_search?resource_id=5ebec109-4cbf-4792-88d6-18feef004f9c&limit=0",
+   "error": "Client error '404 Not Found' for url 'https://api.neso.energy/api/3/action/datastore_search?resource_id=5ebec109-4cbf-4792-88d6-18feef004f9c&limit=0'"
+  },
+  "gate:fields:8348d8b3-3156-4e40-bdd5-ac5215564735": {
+   "url": "https://api.neso.energy/api/3/action/datastore_search?resource_id=8348d8b3-3156-4e40-bdd5-ac5215564735&limit=0",
+   "error": "Client error '404 Not Found' for url 'https://api.neso.energy/api/3/action/datastore_search?resource_id=8348d8b3-3156-4e40-bdd5-ac5215564735&limit=0'"
+  },
+  "gate:fields:0ffd097f-b4c9-42e9-954f-0f68c6773577": {
+   "url": "https://api.neso.energy/api/3/action/datastore_search?resource_id=0ffd097f-b4c9-42e9-954f-0f68c6773577&limit=0",
+   "error": "Client error '404 Not Found' for url 'https://api.neso.energy/api/3/action/datastore_search?resource_id=0ffd097f-b4c9-42e9-954f-0f68c6773577&limit=0'"
+  }
+ },
+ "eac_package": {
+  "package_id": "291e3c28-75f2-4a8f-b5f5-008bebaac368",
+  "resources": [
+   "NESO Response-Reserve Results By Unit",
+   "NESO Response-Reserve Buy Orders",
+   "NESO Response-Reserve Sell Orders",
+   "NESO Response-Reserve Results Summary",
+   "NESO Response-Reserve Results By Unit FY2023 (Archive)",
+   "NESO Response-Reserve Sell Orders 202311 (Archive)",
+   "NESO Response-Reserve Buy Orders FY2023 (Archive)",
+   "NESO Response-Reserve Results Summary FY2023 (Archive)",
+   "NESO Response-Reserve Sell Orders 202312 (Archive)",
+   "NESO Response-Reserve Sell Orders 202401 (Archive)",
+   "NESO Response-Reserve Sell Orders 202402 (Archive)",
+   "NESO Response-Reserve Sell Orders 202403 (Archive)",
+   "NESO Response-Reserve Sell Orders 202404 (Archive)",
+   "NESO Response-Reserve Sell Orders 202405 (Archive)",
+   "NESO Response-Reserve Sell Orders 202406 (Archive)",
+   "NESO Response-Reserve Sell Orders 202407 (Archive)",
+   "NESO Response-Reserve Sell Orders 202408 (Archive)",
+   "NESO Response-Reserve Sell Orders 202409 (Archive)",
+   "NESO Response-Reserve Sell Orders 202410 (Archive)",
+   "NESO Response-Reserve Sell Orders 202411 (Archive)",
+   "NESO Response-Reserve Sell Orders 202412 (Archive)",
+   "NESO Response-Reserve Sell Orders 202501 (Archive)",
+   "NESO Response-Reserve Sell Orders 202502 (Archive)",
+   "NESO Response-Reserve Sell Orders 202503 (Archive)",
+   "NESO Response-Reserve Sell Orders 202504 (Archive)",
+   "NESO Response-Reserve Sell Orders 202505 (Archive)",
+   "NESO Response-Reserve Sell Orders 202506 (Archive)",
+   "NESO Response-Reserve Sell Orders 202507 (Archive)",
+   "NESO Response-Reserve Sell Orders 202508 (Archive)",
+   "NESO Response-Reserve Sell Orders 202509 (Archive)",
+   "NESO Response-Reserve Sell Orders 202510 (Archive)",
+   "NESO Response-Reserve Sell Orders 202511 (Archive)",
+   "NESO Response-Reserve Sell Orders 202512 (Archive)",
+   "NESO Response-Reserve Sell Orders 202601 (Archive)",
+   "NESO Response-Reserve Sell Orders 202602 (Archive)",
+   "NESO Response-Reserve Sell Orders 202603 (Archive)",
+   "NESO Response-Reserve Results Summary FY2024 (Archive)",
+   "NESO Response-Reserve Buy Orders FY2024 (Archive)",
+   "NESO Response-Reserve Results By Unit FY2024 (Archive)",
+   "NESO Response-Reserve Results Summary FY2025 (Archive)",
+   "NESO Response-Reserve Buy Orders FY2025 (Archive)",
+   "NESO Response-Reserve Results By Unit FY2025 (Archive)",
+   "NESO Response-Reserve Daily Results Summary",
+   "NESO Response-Reserve Daily Sell Orders",
+   "NESO Response-Reserve Daily Buy Orders",
+   "NESO Response-Reserve Daily Results By Unit",
+   "NESO Response-Reserve Sell Orders 202604 (Archive)",
+   "NESO Response-Reserve Sell Orders 202605 (Archive)",
+   "NESO Response-Reserve Sell Orders 202606 (Archive)",
+   "NESO Response-Reserve Sell Orders 202607 (Archive)"
+  ]
+ },
+ "eac_resources_pinned": [
+  [
+   "eac-live",
+   "a63ab354-7e68-44c2-ad96-c6f920c30e85"
+  ]
+ ],
+ "timestamp_basis": {
+  "basis": "utc",
+  "rows": 236575,
+  "on_efa_boundary": {
+   "utc": 64927,
+   "local": 24380
+  }
+ }
+}

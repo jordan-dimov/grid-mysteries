@@ -1,0 +1,353 @@
+[
+ {
+  "source": "web",
+  "dataset": "1komma5-dynamic-pulse-mit-speicher",
+  "url": "https://1komma5.com/de/heartbeat/dynamischer-stromtarif-dynamic-pulse/mit-speicher/",
+  "path": "data/raw/forward-f007/kills/1komma5-dynamic-pulse-mit-speicher.html",
+  "sha256": "22dcd51c11677c473df2f1cb784bb9481e62ddef635323b56860cb90997258d5",
+  "fetched_at": "2026-09-04T10:19:49.002244+00:00",
+  "bytes": 483750
+ },
+ {
+  "source": "web",
+  "dataset": "1komma5-dynamic-pulse",
+  "url": "https://1komma5.com/de/heartbeat/dynamischer-stromtarif-dynamic-pulse/",
+  "path": "data/raw/forward-f007/kills/1komma5-dynamic-pulse.html",
+  "sha256": "17466fa8fd805c74a550842f4b16457fa94c2dbc2c39cc21163ced5c84cb50cf",
+  "fetched_at": "2026-09-04T10:19:47.777070+00:00",
+  "bytes": 735646
+ },
+ {
+  "source": "web",
+  "dataset": "1komma5-heartbeat",
+  "url": "https://1komma5.com/de/heartbeat/",
+  "path": "data/raw/forward-f007/kills/1komma5-heartbeat.html",
+  "sha256": "809261fc0355542a4d749f54bd697f1cd037eadca37fb10ea8dcd3fcfa4ec06a",
+  "fetched_at": "2026-09-04T10:19:50.037323+00:00",
+  "bytes": 651571
+ },
+ {
+  "source": "web",
+  "dataset": "aer-annual-retail-markets-report-2024-25-pdf",
+  "url": "https://www.aer.gov.au/system/files/2025-12/Annual%20Retail%20Markets%20Report%202024%E2%80%9325%20-%2030%20November%202025.pdf",
+  "path": "data/raw/forward-f007/kills/aer-annual-retail-markets-report-2024-25-pdf.pdf",
+  "sha256": "de0fa9d7962573d08bdddee16669e56a0fd12fd13388ca0fbce9f2ab8847d634",
+  "fetched_at": "2026-09-04T10:20:22.852863+00:00",
+  "bytes": 14400000
+ },
+ {
+  "source": "web",
+  "dataset": "asa-news-greener-homes-savings-claims",
+  "url": "https://www.asa.org.uk/news/bill-ieve-it-or-not-making-greener-homes-savings-claims-add-up.html",
+  "path": "data/raw/forward-f007/kills/asa-news-greener-homes-savings-claims.html",
+  "sha256": "56a69775e328325a7f1417f5329505eb2f694122adfa1ebbf4afe20ae603a263",
+  "fetched_at": "2026-09-04T10:20:26.871723+00:00",
+  "bytes": 52358
+ },
+ {
+  "source": "web",
+  "dataset": "asa-ruling-centrica-hive-2025",
+  "url": "https://www.asa.org.uk/rulings/centrica-hive-ltd-a25-1295069-centrica-hive-ltd.html",
+  "path": "data/raw/forward-f007/kills/asa-ruling-centrica-hive-2025.html",
+  "sha256": "e6020c4b57079878511465b8f8a054b756dcb463a86551136ecfda6528cabf51",
+  "fetched_at": "2026-09-04T10:20:23.709815+00:00",
+  "bytes": 54884
+ },
+ {
+  "source": "web",
+  "dataset": "asa-ruling-contact-solar",
+  "url": "https://www.asa.org.uk/rulings/contact-solar-ltd.html",
+  "path": "data/raw/forward-f007/kills/asa-ruling-contact-solar.html",
+  "sha256": "d332c11d11e58eeeb51a83f0672c9a2fbb32a99d951b1ff12bbe4c08ea034aaf",
+  "fetched_at": "2026-09-04T10:20:25.439197+00:00",
+  "bytes": 49959
+ },
+ {
+  "source": "web",
+  "dataset": "asa-ruling-ggrs-energie-2025",
+  "url": "https://www.asa.org.uk/rulings/ggrs-energie-ltd-a25-1295074-ggrs-energie-ltd.html",
+  "path": "data/raw/forward-f007/kills/asa-ruling-ggrs-energie-2025.html",
+  "sha256": "09e031f8724206b6a5f484204767fd91178557832cf6a23a03914ead20c7c071",
+  "fetched_at": "2026-09-04T10:20:26.257022+00:00",
+  "bytes": 50943
+ },
+ {
+  "source": "web",
+  "dataset": "asa-ruling-good-energy-2025",
+  "url": "https://www.asa.org.uk/rulings/good-energy-ltd-a25-1295070-good-energy-ltd.html",
+  "path": "data/raw/forward-f007/kills/asa-ruling-good-energy-2025.html",
+  "sha256": "b7d94d5c49e6c27c3ab41c052f267e945df7bcd739805967cda257de8ed0f3d3",
+  "fetched_at": "2026-09-04T10:20:24.577533+00:00",
+  "bytes": 52497
+ },
+ {
+  "source": "web",
+  "dataset": "cortility-sap-dynamische-tarife",
+  "url": "https://cortility.de/portfolio/dynamische-tarife/",
+  "path": "data/raw/forward-f007/kills/cortility-sap-dynamische-tarife.html",
+  "sha256": "22095e1c488c0dfffb7ab0b8df32693c87d33ceb2a228ddc085e0d8cb37222b9",
+  "fetched_at": "2026-09-04T10:20:14.210091+00:00",
+  "bytes": 14462
+ },
+ {
+  "source": "web",
+  "dataset": "enpal-dynamischer-stromtarif",
+  "url": "https://www.enpal.de/strom/dynamischer-stromtarif",
+  "path": "data/raw/forward-f007/kills/enpal-dynamischer-stromtarif.html",
+  "sha256": "06288fb648a5f0303c85870e18e6521709440df325569d396df364cf5a6ebb2e",
+  "fetched_at": "2026-09-04T10:19:51.142043+00:00",
+  "bytes": 251551
+ },
+ {
+  "source": "web",
+  "dataset": "enpal-one",
+  "url": "https://www.enpal.de/enpal-one",
+  "path": "data/raw/forward-f007/kills/enpal-one.html",
+  "sha256": "8b6c86400c749039e89005f8ec34459496622ff0fc67651381c0846a2d84a198",
+  "fetched_at": "2026-09-04T10:19:51.756637+00:00",
+  "bytes": 242182
+ },
+ {
+  "source": "web",
+  "dataset": "enpal-press-enpal-one",
+  "url": "https://www.corporate.enpal.com/pressemitteilungen/enpal-zundet-mit-enpal-one-die-nachste-stufe-der-energierevolution",
+  "path": "data/raw/forward-f007/kills/enpal-press-enpal-one.html",
+  "sha256": "8c23285639ffe2a15e127786fcbfd0bd322c4a6b4ffde78a6c86f4189240590b",
+  "fetched_at": "2026-09-04T10:19:53.086020+00:00",
+  "bytes": 73296
+ },
+ {
+  "source": "web",
+  "dataset": "enpal-stromtarif",
+  "url": "https://www.enpal.de/stromtarif",
+  "path": "data/raw/forward-f007/kills/enpal-stromtarif.html",
+  "sha256": "47483c907a23beadc3530520bdf3e31a5f61e9a81fabc37a851bd8ca44a55dee",
+  "fetched_at": "2026-09-04T10:19:52.403594+00:00",
+  "bytes": 239842
+ },
+ {
+  "source": "web",
+  "dataset": "ensek-beyond-compliance-mhhs",
+  "url": "https://ensek.com/resources/beyond-compliance-the-commercial-dividend-of-market-wide-half-hourly-settlement-mhhs",
+  "path": "data/raw/forward-f007/kills/ensek-beyond-compliance-mhhs.html",
+  "sha256": "89ccc6720653940df2193bdd79a705b0cadb389a100b2c2fcd2e750c8eb9534e",
+  "fetched_at": "2026-09-04T10:20:16.734049+00:00",
+  "bytes": 85428
+ },
+ {
+  "source": "web",
+  "dataset": "ensek-exceptionless-settlement",
+  "url": "https://ensek.com/resources/exceptionless-settlement-the-hidden-battle-for-profitability-in-a-post-mhhs-world",
+  "path": "data/raw/forward-f007/kills/ensek-exceptionless-settlement.html",
+  "sha256": "8d932499560624fee5c6e254cbdb4dc90c5ac11d16ed07c384fcfb500e95b821",
+  "fetched_at": "2026-09-04T10:20:16.062289+00:00",
+  "bytes": 92958
+ },
+ {
+  "source": "web",
+  "dataset": "ensek-mhhs-insights",
+  "url": "https://ensek.com/market-wide-half-hourly-settlement-mhhs-insights-from-ensek",
+  "path": "data/raw/forward-f007/kills/ensek-mhhs-insights.html",
+  "sha256": "4e5c22b2f196c1f5616551d1bf22f133f46cc4abb2fbcda4682f73cf0aa7220f",
+  "fetched_at": "2026-09-04T10:20:15.414438+00:00",
+  "bytes": 89211
+ },
+ {
+  "source": "web",
+  "dataset": "gentrack-mhhs-new-normal",
+  "url": "https://gentrack.com/market-half-hourly-settlements-mhhs-the-new-normal/",
+  "path": "data/raw/forward-f007/kills/gentrack-mhhs-new-normal.html",
+  "sha256": "3a3313fc8e03fac5c2ededef727dd91d2c482811094fd9c7268b2ed4e15a912d",
+  "fetched_at": "2026-09-04T10:20:18.181752+00:00",
+  "bytes": 977551
+ },
+ {
+  "source": "web",
+  "dataset": "kraken-asset-optimization",
+  "url": "https://www.kraken.tech/asset-optimization",
+  "path": "data/raw/forward-f007/kills/kraken-asset-optimization.html",
+  "sha256": "5fbb711611f13127421f702b3b451ea6840dafdbb92a7b6b1dbd22f5a43d4ffc",
+  "fetched_at": "2026-09-04T10:19:44.317407+00:00",
+  "bytes": 124440
+ },
+ {
+  "source": "web",
+  "dataset": "kraken-ktl-annual-report-fy24-pdf",
+  "url": "https://octoenergy-production-media.s3.amazonaws.com/documents/A0883_Kraken_FY24_Annual_Report_-_signed.pdf",
+  "path": "data/raw/forward-f007/kills/kraken-ktl-annual-report-fy24-pdf.pdf",
+  "sha256": "42a636f4e9cfa6ba119c61af7fac8ddee05bb965ea527cee33a9949ae2371908",
+  "fetched_at": "2026-09-04T10:19:43.436573+00:00",
+  "bytes": 538767
+ },
+ {
+  "source": "web",
+  "dataset": "kraken-ktl-annual-report-fy25-pdf",
+  "url": "https://octopusenergy.group/static/documents/KTL_Financial_statements_Annual_Report_FY25.pdf",
+  "path": "data/raw/forward-f007/kills/kraken-ktl-annual-report-fy25-pdf.pdf",
+  "sha256": "93fc8a6012351455b8f8ebdcb23b5a18690c2bd7cf1fedb33d8db99291b32fdd",
+  "fetched_at": "2026-09-04T10:19:42.486105+00:00",
+  "bytes": 1020271
+ },
+ {
+  "source": "web",
+  "dataset": "kraken-press-releases-index",
+  "url": "https://www.kraken.tech/press-releases",
+  "path": "data/raw/forward-f007/kills/kraken-press-releases-index.html",
+  "sha256": "976ee7b2ad49c9b165e8824027c3a9aff29b2a9ca69cb1a872ac3c3a5db5a522",
+  "fetched_at": "2026-09-04T10:19:38.085588+00:00",
+  "bytes": 84826
+ },
+ {
+  "source": "web",
+  "dataset": "kraken-press-spin-off-2025-09",
+  "url": "https://www.kraken.tech/press-releases/octopus-energy-group-to-spin-off-kraken",
+  "path": "data/raw/forward-f007/kills/kraken-press-spin-off-2025-09.html",
+  "sha256": "807b349ec4dff8aa51dac66a6e79c69d9ae531b0c0488be7fc59adfb9cc8baaf",
+  "fetched_at": "2026-09-04T10:19:39.053067+00:00",
+  "bytes": 105989
+ },
+ {
+  "source": "web",
+  "dataset": "kraken-press-tokyo-gas",
+  "url": "https://www.kraken.tech/press-releases/tech-platform-licensed-by-tokyo-gas-to-manage-3-million-japanese-homes",
+  "path": "data/raw/forward-f007/kills/kraken-press-tokyo-gas.html",
+  "sha256": "43d201bd0a5aa6709838aaa00ae47ff7aa63dd66cb3dc9996b2c51e88bf6ea77",
+  "fetched_at": "2026-09-04T10:19:40.120750+00:00",
+  "bytes": 104512
+ },
+ {
+  "source": "web",
+  "dataset": "octopus-de-dynamischer-stromtarif",
+  "url": "https://octopusenergy.de/wissen/strom/dynamischer-stromtarif",
+  "path": "data/raw/forward-f007/kills/octopus-de-dynamischer-stromtarif.html",
+  "sha256": "5ca4960c6b45e72afcb48727eaed6b433d33ba92b7d857577f6bcc70f9a0dd89",
+  "fetched_at": "2026-09-04T10:19:54.092505+00:00",
+  "bytes": 527707
+ },
+ {
+  "source": "web",
+  "dataset": "octopus-de-intelligent-octopus-newsroom",
+  "url": "https://octopusenergy.de/newsroom/ein-tarif-fuer-alles-mit-intelligent-octopus-vernetzt-octopus-energy-e-auto-speicher-und-bald-auch-waermepumpe-und-pv",
+  "path": "data/raw/forward-f007/kills/octopus-de-intelligent-octopus-newsroom.html",
+  "sha256": "333647d798d7100f11404daa65f6d779450b4deb24018aeb7bfc6ea0fdea2616",
+  "fetched_at": "2026-09-04T10:19:55.020933+00:00",
+  "bytes": 397205
+ },
+ {
+  "source": "web",
+  "dataset": "octopus-press-tenaska-2023",
+  "url": "https://octopus.energy/press/energy-tech-giant-kraken-lands-first-us-licensing-deal-with-energy-manager-tenaska-power-services/",
+  "path": "data/raw/forward-f007/kills/octopus-press-tenaska-2023.html",
+  "sha256": "081519d1a818bd1798647092fc95b5970ed372395f2a4ba17fd2699df2de92a8",
+  "fetched_at": "2026-09-04T10:19:41.364479+00:00",
+  "bytes": 271561
+ },
+ {
+  "source": "web",
+  "dataset": "pv-magazine-wettbewerbszentrale-1komma5-2024-11",
+  "url": "https://www.pv-magazine.de/2024/11/15/wettbewerbszentrale-beanstandet-werbung-von-1komma5-fuer-kostenlosen-strom/",
+  "path": "data/raw/forward-f007/kills/pv-magazine-wettbewerbszentrale-1komma5-2024-11.html",
+  "sha256": "36866f6bd88b8d462d839b254be4a3533387b6dfe2ce736da013dbb17872085f",
+  "fetched_at": "2026-09-04T10:20:28.496666+00:00",
+  "bytes": 275772
+ },
+ {
+  "source": "web",
+  "dataset": "schleupen-home",
+  "url": "https://www.schleupen.de/",
+  "path": "data/raw/forward-f007/kills/schleupen-home.html",
+  "sha256": "d84adab7f76f6a64f19cb20c9d9fb86ac5f9dea81cfe9d00893e36b7f02659ad",
+  "fetched_at": "2026-09-04T10:20:13.470012+00:00",
+  "bytes": 166778
+ },
+ {
+  "source": "web",
+  "dataset": "stw-aschaffenburg-dynamischer-tarif",
+  "url": "https://www.stwab.de/dynamischertarif",
+  "path": "data/raw/forward-f007/kills/stw-aschaffenburg-dynamischer-tarif.html",
+  "sha256": "64dc68ed9f980a3179d7a78e8a156834cc861e53a4d7ff34ad65dca229eb18a9",
+  "fetched_at": "2026-09-04T10:19:56.747245+00:00",
+  "bytes": 156959
+ },
+ {
+  "source": "web",
+  "dataset": "stw-bochum-holding-geschaeftsbericht-2024-pdf",
+  "url": "https://www.stadtwerke-bochum.de/fileadmin/Dateien/PDF/Geschaeftsberichte/Stadtwerke_Bochum_Holding_GmbH_Geschaeftsbericht_2024.pdf",
+  "path": "data/raw/forward-f007/kills/stw-bochum-holding-geschaeftsbericht-2024-pdf.pdf",
+  "sha256": "7a6cc5a3a078507804206a8e8b5bf01f8e65341400b470c75336c1e405ef1589",
+  "fetched_at": "2026-09-04T10:20:11.196947+00:00",
+  "bytes": 694281
+ },
+ {
+  "source": "web",
+  "dataset": "stw-merseburg-dynamische-tarife",
+  "url": "https://www.stadtwerke-merseburg.de/unternehmen/nachrichten/dynamische-tarife-ab-2025",
+  "path": "data/raw/forward-f007/kills/stw-merseburg-dynamische-tarife.html",
+  "sha256": "42183529f849bf6c123db51fb91fd5d35a5c710f7a336afc7feac53891e32e14",
+  "fetched_at": "2026-09-04T10:20:04.019139+00:00",
+  "bytes": 94342
+ },
+ {
+  "source": "web",
+  "dataset": "stw-oerlinghausen-dynamische-stromtarife",
+  "url": "https://www.stadtwerke-oerlinghausen.de/produkte-services/strom/dynamische-stromtarife.html",
+  "path": "data/raw/forward-f007/kills/stw-oerlinghausen-dynamische-stromtarife.html",
+  "sha256": "abd9126b6342e0d11392a7dc33715e3d7011dbe3cd17aed4f2f0542a0bd5102f",
+  "fetched_at": "2026-09-04T10:20:09.413745+00:00",
+  "bytes": 97176
+ },
+ {
+  "source": "web",
+  "dataset": "stw-osnabrueck-blog-zwischenbilanz-2025-08",
+  "url": "https://www.stadtwerke-osnabrueck.de/blog/2025/08/22/dynamischer-stromtarif-zwischenbilanz/",
+  "path": "data/raw/forward-f007/kills/stw-osnabrueck-blog-zwischenbilanz-2025-08.html",
+  "sha256": "90448c21522572c193b9b499ae14f82293c0cc436fd4d13f04352bea6ba2917b",
+  "fetched_at": "2026-09-04T10:19:58.100701+00:00",
+  "bytes": 71642
+ },
+ {
+  "source": "web",
+  "dataset": "stw-solingen-so-dynamisch",
+  "url": "https://www.so.de/de/produkte/strom/strom-so-dynamisch/",
+  "path": "data/raw/forward-f007/kills/stw-solingen-so-dynamisch.html",
+  "sha256": "747d6605d6edcd2d50bc6db1d21763eb9b85c70c7f240950a329b913102ab8f7",
+  "fetched_at": "2026-09-04T10:20:08.559586+00:00",
+  "bytes": 222458
+ },
+ {
+  "source": "web",
+  "dataset": "syneco-ueber-uns",
+  "url": "https://www.syneco.net/ueber-uns",
+  "path": "data/raw/forward-f007/kills/syneco-ueber-uns.html",
+  "sha256": "892f98f7e08be315a97bd2246db636d52b8b4e1dc3ee564c58259b0848792bd1",
+  "fetched_at": "2026-09-04T10:20:11.864291+00:00",
+  "bytes": 61675
+ },
+ {
+  "source": "web",
+  "dataset": "tibber-dynamischer-stromtarif",
+  "url": "https://tibber.com/de/stromtarif/dynamischer-stromtarif",
+  "path": "data/raw/forward-f007/kills/tibber-dynamischer-stromtarif.html",
+  "sha256": "e72336388df371ce6721dfa769622430798d35711ab37ad8156c4e41ed9d10c4",
+  "fetched_at": "2026-09-04T10:19:45.132364+00:00",
+  "bytes": 473098
+ },
+ {
+  "source": "web",
+  "dataset": "tibber-smart-battery",
+  "url": "https://tibber.com/de/smart-battery",
+  "path": "data/raw/forward-f007/kills/tibber-smart-battery.html",
+  "sha256": "ac65d47f637d07b63ac0e15c20587272a22903fd802f9300725ca5385f7886d9",
+  "fetched_at": "2026-09-04T10:19:45.997569+00:00",
+  "bytes": 552248
+ },
+ {
+  "source": "web",
+  "dataset": "wilken-dynamische-tarife",
+  "url": "https://www.wilken.de/dynamische-tarife",
+  "path": "data/raw/forward-f007/kills/wilken-dynamische-tarife.html",
+  "sha256": "4e9bba8e005d6260b3f166eeb0749b5efcd4827c30cedd61b6f42ab8e6946111",
+  "fetched_at": "2026-09-04T10:20:12.655372+00:00",
+  "bytes": 143889
+ }
+]

@@ -1,0 +1,42 @@
+{
+ "kraken-press-saint-john-energy": {
+  "url": "https://kraken.tech/press-releases/kraken-s-customer-platform-signs-first-north-american-utility-licensee-with-saint-john-energy",
+  "error": "Client error '404 Not Found' for url 'https://www.kraken.tech/press-releases/kraken-s-customer-platform-signs-first-north-american-utility-licensee-with-saint-john-energy'",
+  "at": "2026-09-04T10:19:41.063469+00:00"
+ },
+ "tibber-agb": {
+  "url": "https://tibber.com/de/agb",
+  "error": "Client error '404 Not Found' for url 'https://tibber.com/de/agb'",
+  "at": "2026-09-04T10:19:46.903045+00:00"
+ },
+ "1komma5-agb": {
+  "url": "https://1komma5.com/de/agb/",
+  "error": "Client error '404 Not Found' for url 'https://1komma5.com/de/agb/'",
+  "at": "2026-09-04T10:19:50.931254+00:00"
+ },
+ "octopus-de-agb": {
+  "url": "https://octopusenergy.de/agb",
+  "error": "Client error '404 Not Found' for url 'https://octopusenergy.de/agb'",
+  "at": "2026-09-04T10:19:56.503664+00:00"
+ },
+ "stw-stuttgart-dynamischer-stromtarif": {
+  "url": "https://www.stadtwerke-stuttgart.de/produkte/dynamischer-stromtarif/",
+  "error": "Client error '403 Forbidden' for url 'https://www.stadtwerke-stuttgart.de/produkte/dynamischer-stromtarif/'",
+  "at": "2026-09-04T10:19:57.461148+00:00"
+ },
+ "stw-lingen-dynamische-stromtarife": {
+  "url": "https://www.stadtwerke-lingen.de/strom/dynamische-stromtarife",
+  "error": "Client error '404 Not Found' for url 'https://www.stadtwerke-lingen.de/strom/dynamische-stromtarife'",
+  "at": "2026-09-04T10:20:10.682294+00:00"
+ },
+ "solarize-dynamische-tarife-b2c": {
+  "url": "https://www.solarize.de/dynamische-tarife-b2c",
+  "error": "Client error '404 Not Found' for url 'https://www.solarize.de/dynamische-tarife-b2c'",
+  "at": "2026-09-04T10:20:15.155708+00:00"
+ },
+ "recc-consumer-code": {
+  "url": "https://www.recc.org.uk/consumer-code",
+  "error": "Client error '404 Not Found' for url 'https://www.recc.org.uk/consumer-code'",
+  "at": "2026-09-04T10:20:29.164789+00:00"
+ }
+}

@@ -79,3 +79,7 @@ def test_period_jobs_honours_a_dataset_subset_and_its_order() -> None:
     assert elexon.period_jobs("2026-05-01", [], datasets=("BOD",)) == []
     with pytest.raises(ValueError, match="FUELINST"):
         elexon.period_jobs("2026-05-01", [1], datasets=("FUELINST",))
+
+
+def test_bmunits_url_is_the_reference_endpoint() -> None:
+    assert elexon.bmunits_url() == f"{API}/reference/bmunits/all"

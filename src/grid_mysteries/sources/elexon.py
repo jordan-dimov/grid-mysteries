@@ -130,6 +130,12 @@ def fetch_pinned(
     raise RuntimeError(f"failed to fetch {url} after {attempts} attempts") from last_error
 
 
+def bmunits_url() -> str:
+    """The BM Unit registration reference: id map, lead party, fuel type,
+    capacities, FPN flag — one snapshot per pin, kept as a vintage."""
+    return f"{BASE_URL}/reference/bmunits/all"
+
+
 def system_prices_url(settlement_date: str) -> str:
     """Settlement system prices (buy and sell) for every period of one day."""
     return f"{BASE_URL}/balancing/settlement/system-prices/{settlement_date}"

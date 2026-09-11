@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+# One-shot, from cron: batch 1 of 013 (settlement dates 2026-09-09..15) under
+# the sponsor's seal d20d5920, given 2026-09-11. Refuses to run before the
+# declared earliest fetch date (2026-09-19); exits quietly once the batch has
+# been acquired, so a daily cron line is safe and the laptop being off on the
+# 19th only delays the run. The runner itself is idempotent over pinned bytes.
+#
+#   0 9 * * * /home/jdimov/dev/grid-mysteries/scripts/run-013-batch-1 >> /home/jdimov/dev/grid-mysteries/data/raw/elexon/013-cron.log 2>&1
+set -euo pipefail
+cd "$(dirname "$0")/.."
+export PATH="${HOME}/.local/bin:${PATH}"
+today=$(date -u +%F)
+[[ "$today" < "2026-09-19" ]] && exit 0
+marker=data/raw/elexon/013/batch-01.done
+[[ -e "$marker" ]] && exit 0
+echo "=== $(date -u +%FT%TZ) run-013-batch-1 on $today"
+uv run python investigations/013-the-cover-price-tracker/run.py \
+  --seal d20d5920 --phase all --run-date "$today"
+touch "$marker"
+echo "=== batch 1 acquired; review and commit investigations/013-the-cover-price-tracker"

@@ -115,3 +115,65 @@ def test_evaluate_thresholds_and_none_inputs():
 def test_evaluate_with_no_paid_out_gives_none_for_p1():
     led = rd.ledger("d", rd.cashflow_rows([ebocf(1, "W1", "-5")], "bid"), FUEL)
     assert rd.evaluate(led, None, None)["P1"]["holds"] is None
+
+
+def test_mid_prices_filters_to_the_settlement_day():
+    records = [
+        {
+            "dataProvider": "APXMIDP",
+            "settlementDate": "2026-09-08",
+            "settlementPeriod": 3,
+            "price": "100",
+            "volume": "1",
+        },
+        {
+            "dataProvider": "APXMIDP",
+            "settlementDate": "2026-09-09",
+            "settlementPeriod": 1,
+            "price": "999",
+            "volume": "1",
+        },
+    ]
+    assert rd.mid_prices(records, settlement_date="2026-09-08") == {3: D("100.00")}
+    assert rd.mid_prices(records) == {3: D("100.00"), 1: D("999.00")}  # unfiltered, for contrast
+
+
+def bsad(cost, volume, flag="T"):
+    return {"DisaggregatedBSADCost": cost, "DisaggregatedBSADVolume": volume, "TradeFlag": flag}
+
+
+def test_bsad_summary_splits_by_trade_flag():
+    out = rd.bsad_summary([bsad("100", "10"), bsad("-20", "-2", "F"), bsad("0", "0")])
+    assert out["system_cost_gbp"] == "100" and out["energy_cost_gbp"] == "-20"
+    assert out["system_volume_mwh"] == "10" and out["energy_volume_mwh"] == "-2"
+    assert out["net_cost_gbp"] == "80"
+    assert out["rows"] == 3 and out["nonzero_rows"] == 2
+    assert out["available"] is True and out["placeholder_only"] is False
+
+
+def test_bsad_summary_all_zero_placeholder_day_is_not_populated():
+    out = rd.bsad_summary([bsad("0", "0")] * 48)
+    assert out["rows"] == 48 and out["nonzero_rows"] == 0
+    assert out["available"] is False and out["placeholder_only"] is True
+    empty = rd.bsad_summary([])
+    assert empty["available"] is False and empty["placeholder_only"] is False
+
+
+def test_sign_convention_needs_rows_and_signed_sum_to_agree():
+    offers = rd.cashflow_rows([ebocf(1, "G1", "900")], "offer")
+    # two small positive rows, one large negative: rows say yes, pounds say no -> F2
+    bids = rd.cashflow_rows(
+        [ebocf(1, "W1", "1"), ebocf(2, "W1", "1"), ebocf(3, "W2", "-50")], "bid"
+    )
+    out = rd.evaluate(rd.ledger("d", bids + offers, FUEL), None, None)
+    assert out["sign_convention_holds"] is False
+    assert out["wind_bid_rows"] == {"positive": 2, "negative": 1}
+    assert out["wind_bid_signed_sum_gbp"] == "-48"
+    # one large positive row, two small negatives: pounds say yes, rows say no -> F2
+    bids = rd.cashflow_rows(
+        [ebocf(1, "W1", "500"), ebocf(2, "W1", "-1"), ebocf(3, "W2", "-1")], "bid"
+    )
+    assert (
+        rd.evaluate(rd.ledger("d", bids + offers, FUEL), None, None)["sign_convention_holds"]
+        is False
+    )

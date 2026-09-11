@@ -67,6 +67,27 @@ def journal(name: str) -> dict[str, Path]:
     }
 
 
+def mid_stream_url(day: str) -> str:
+    """MID rows for the BST settlement day `day`: period 1 starts at 23:00Z the
+    evening before, period 48 at 22:30Z; the stream's `to` bound is inclusive
+    (verified on 010's pinned 2026-08-06 file). A clock-day window would drop
+    periods 1-2 and pick up the next day's, which for 2026-09-08 lies outside
+    the declared window (review note, 2026-09-11)."""
+    previous = (date.fromisoformat(day) - timedelta(days=1)).isoformat()
+    return f"{elexon.BASE_URL}/datasets/MID/stream?from={previous}T23:00Z&to={day}T22:30Z"
+
+
+def fuelinst_stream_url(day: str) -> str:
+    """FUELINST rows published from 23:00Z the evening before to 23:00Z on
+    `day` (each five-minute row is published at its end); records are then
+    filtered to `settlementDate == day` before any value is read."""
+    previous = (date.fromisoformat(day) - timedelta(days=1)).isoformat()
+    return (
+        f"{elexon.BASE_URL}/datasets/FUELINST/stream"
+        f"?publishDateTimeFrom={previous}T23:00Z&publishDateTimeTo={day}T23:00Z"
+    )
+
+
 # ---------------------------------------------------------------- acquisition
 
 
@@ -117,7 +138,6 @@ def acquire_window() -> None:
 def acquire_deep(days: list[str]) -> None:
     jobs: list[tuple[str, str, Path]] = []
     for day in days:
-        following = (date.fromisoformat(day) + timedelta(days=1)).isoformat()
         for period in PERIODS:
             for direction in DIRECTIONS:
                 jobs.append(
@@ -127,14 +147,8 @@ def acquire_deep(days: list[str]) -> None:
                         RAW_ELEXON / day / f"disptav_{direction}_p{period:02d}.json",
                     )
                 )
-        jobs.append(("MID", elexon.day_stream_url("MID", day), RAW_ELEXON / day / "mid.json"))
-        jobs.append(
-            (
-                "FUELINST",
-                f"{elexon.BASE_URL}/datasets/FUELINST/stream?publishDateTimeFrom={day}T00:00Z&publishDateTimeTo={following}T00:00Z",
-                RAW_ELEXON / day / "fuelinst.json",
-            )
-        )
+        jobs.append(("MID", mid_stream_url(day), RAW_ELEXON / day / "mid.json"))
+        jobs.append(("FUELINST", fuelinst_stream_url(day), RAW_ELEXON / day / "fuelinst.json"))
         jobs.append(
             (
                 "SYSTEM-PRICES",
@@ -186,23 +200,9 @@ def layer1(day: str) -> dict[str, Any]:
 
 
 def layer3(day: str) -> dict[str, Any]:
-    rows = neso_rows("disaggregated_bsad_2026-27.csv", day, "Date")
-    out = {
-        "rows": len(rows),
-        "system_cost_gbp": rd.ZERO,
-        "energy_cost_gbp": rd.ZERO,
-        "system_volume_mwh": rd.ZERO,
-        "energy_volume_mwh": rd.ZERO,
-    }
-    for row in rows:
-        kind = "system" if row["TradeFlag"].strip().upper() == "T" else "energy"
-        out[f"{kind}_cost_gbp"] += Decimal(row["DisaggregatedBSADCost"] or "0")
-        out[f"{kind}_volume_mwh"] += Decimal(row["DisaggregatedBSADVolume"] or "0")
-    net = out["system_cost_gbp"] + out["energy_cost_gbp"]
-    return {k: (str(v) if isinstance(v, Decimal) else v) for k, v in out.items()} | {
-        "net_cost_gbp": str(net),
-        "available": bool(rows),
-    }
+    """Disaggregated BSAD split by TradeFlag; all-zero placeholder rows mean
+    not yet populated, never zero (Amendment 1)."""
+    return rd.bsad_summary(neso_rows("disaggregated_bsad_2026-27.csv", day, "Date"))
 
 
 def layer4(day: str) -> dict[str, Any]:
@@ -247,7 +247,7 @@ def deep_layers(day: str, fuel_of: dict[str, str], gsp_of: dict[str, str]) -> di
                     wind_bid_gbp[period] += cash_by_unit_period.get(
                         (unit, period, direction), rd.ZERO
                     )
-    mid = rd.mid_prices(load_records(RAW_ELEXON / day / "mid.json"))
+    mid = rd.mid_prices(load_records(RAW_ELEXON / day / "mid.json"), settlement_date=day)
     price = rd.gas_offer_price(dict(gas_offer_gbp), dict(gas_offer_mwh), mid)
     wind_gbp = sum(wind_bid_gbp.values(), rd.ZERO)
     wind_mwh = sum(wind_bid_mwh.values(), rd.ZERO)
@@ -283,7 +283,7 @@ def fuel_context(day: str) -> dict[str, Any]:
     acc: dict[str, list[Decimal]] = defaultdict(list)
     for record in load_records(path):
         fuel, gen = record.get("fuelType"), record.get("generation")
-        if fuel is None or gen is None:
+        if fuel is None or gen is None or record.get("settlementDate") != day:
             continue
         acc[str(fuel)].append(Decimal(str(gen)))
     return {

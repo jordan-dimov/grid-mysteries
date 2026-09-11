@@ -190,12 +190,21 @@ def vwap(gbp: Decimal, mwh: Decimal) -> Decimal | None:
     return (gbp / mwh).quantize(PENNY)
 
 
-def mid_prices(records: list[dict], provider: str = MID_PROVIDER) -> dict[int, Decimal]:
-    """Settlement period -> volume-weighted MID price for one provider."""
+def mid_prices(
+    records: list[dict], provider: str = MID_PROVIDER, settlement_date: str | None = None
+) -> dict[int, Decimal]:
+    """Settlement period -> volume-weighted MID price for one provider.
+
+    A stream pulled by clock time straddles settlement days (BST), so rows
+    are keyed by period only after `settlement_date` filters them; without
+    the filter the next day's periods 1-2 would masquerade as this day's.
+    """
     cash: dict[int, Decimal] = defaultdict(lambda: ZERO)
     volume: dict[int, Decimal] = defaultdict(lambda: ZERO)
     for record in records:
         if record.get("dataProvider") != provider:
+            continue
+        if settlement_date is not None and record.get("settlementDate") != settlement_date:
             continue
         price = _decimal(record.get("price"))
         vol = _decimal(record.get("volume"))
@@ -205,6 +214,39 @@ def mid_prices(records: list[dict], provider: str = MID_PROVIDER) -> dict[int, D
         cash[int(period)] += price * vol
         volume[int(period)] += vol
     return {p: (cash[p] / volume[p]).quantize(PENNY) for p in cash if volume[p] > ZERO}
+
+
+def bsad_summary(rows: list[dict]) -> dict:
+    """L3 from one day's Disaggregated BSAD rows, split by `TradeFlag`.
+
+    NESO's dump carries 48 all-zero rows for days it has not populated yet
+    (the 2026-08-22 vintage held them for the fetch day and the day after).
+    Such a day is *not yet populated*, not "BSAD is zero": `available` is
+    False and P2 stays undecided (Amendment 1).
+    """
+    out: dict[str, Decimal] = {
+        "system_cost_gbp": ZERO,
+        "energy_cost_gbp": ZERO,
+        "system_volume_mwh": ZERO,
+        "energy_volume_mwh": ZERO,
+    }
+    nonzero = 0
+    for row in rows:
+        kind = "system" if (row.get("TradeFlag") or "").strip().upper() == "T" else "energy"
+        cost = _decimal(row.get("DisaggregatedBSADCost")) or ZERO
+        volume = _decimal(row.get("DisaggregatedBSADVolume")) or ZERO
+        out[f"{kind}_cost_gbp"] += cost
+        out[f"{kind}_volume_mwh"] += volume
+        if cost != ZERO or volume != ZERO:
+            nonzero += 1
+    net = out["system_cost_gbp"] + out["energy_cost_gbp"]
+    return {k: str(v) for k, v in out.items()} | {
+        "rows": len(rows),
+        "nonzero_rows": nonzero,
+        "net_cost_gbp": str(net),
+        "available": nonzero > 0,
+        "placeholder_only": bool(rows) and nonzero == 0,
+    }
 
 
 def gas_offer_price(
@@ -264,9 +306,17 @@ def evaluate(led: DayLedger, bsad_net_cost: Decimal | None, gas_vwap: Decimal | 
     if gas_vwap is not None:
         band = P3_REFERENCE_GBP_PER_MWH * P3_TOLERANCE
         p3 = abs(gas_vwap - P3_REFERENCE_GBP_PER_MWH) <= band
-    sign_ok = led.wind_bid_positive_rows > led.wind_bid_negative_rows
+    # Amendment 2: "predominantly positive" must hold by row count *and* by
+    # signed pounds; disagreement between the two is a failed convention (F2).
+    wind_bid_signed = led.by_class["wind"]["bid"]
+    sign_ok = led.wind_bid_positive_rows > led.wind_bid_negative_rows and wind_bid_signed > ZERO
     return {
         "sign_convention_holds": sign_ok,
+        "wind_bid_rows": {
+            "positive": led.wind_bid_positive_rows,
+            "negative": led.wind_bid_negative_rows,
+        },
+        "wind_bid_signed_sum_gbp": str(wind_bid_signed),
         "P1": {
             "wind_bid_share_of_paid_out": shown(wind_share),
             "gas_offer_share_of_paid_out": shown(gas_share),

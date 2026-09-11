@@ -1,0 +1,1491 @@
+{
+ "investigation": "013 the cover price tracker",
+ "declaration_sha256": "d20d59203e7b7fda174c2c6deb2807159687bd9ddea39fe760961af884416473",
+ "computed_at": "2026-09-11T19:29:34.000339+00:00",
+ "run_date": "2026-09-11",
+ "neso_vintages": [],
+ "rows": [
+  {
+   "settlement_date": "2026-09-01",
+   "seed": true,
+   "source": "012 the record day (published figures, not recomputed)",
+   "available": true,
+   "periods_with_rows": 48,
+   "units": 269,
+   "paid_out_gbp": "12725616.752426904988920298",
+   "net_gbp": "10562530.922111980143685112",
+   "paid_in_gbp": "-2163085.830314924845235186",
+   "wind_bid_gbp": "1441239.168889447711387996",
+   "wind_bid_share": "0.1133",
+   "gas_offer_gbp": "9651504.549294256585030495",
+   "gas_offer_share": "0.7584",
+   "other_gbp": "1632873.034243200692501807",
+   "other_share": "0.1283",
+   "two_cut_gbp": "11092743.718183704296418491",
+   "sign_convention_holds": true,
+   "wind_bid_rows": {
+    "positive": 1394,
+    "negative": 91
+   },
+   "wind_bid_signed_gbp": "1119286.987684755711702745",
+   "disptav_type": null,
+   "reconciliation": null,
+   "gas_offer_vwap_gbp_per_mwh": null,
+   "premium_gbp_per_mwh": null,
+   "bsad_available": false,
+   "bsad_net_gbp": null,
+   "bsad_share": null,
+   "artefacts": [
+    {
+     "dataset": "BMUNITS",
+     "path": "data/raw/elexon/012/bmunits.json",
+     "sha256": "2ec3f7f5cccf953199bc9b8bc7f21451387e201fa439aa49b7de33818305f24c"
+    },
+    {
+     "dataset": "NESO-DISAGGREGATED-BSAD-26-27",
+     "path": "data/raw/neso/012/disaggregated_bsad_2026-27.csv",
+     "sha256": "6b319340454d738b882a130f15b3c5dea7dfb82c0572767e7130f3045a9915b8"
+    },
+    {
+     "dataset": "EBOCF",
+     "path": "data/raw/elexon/012/2026-09-01/ebocf_bid.json",
+     "sha256": "b2308d1f292bff85e042333a0d52fcfd83442d94c96a0ed72d016fb6a1af9b74"
+    },
+    {
+     "dataset": "EBOCF",
+     "path": "data/raw/elexon/012/2026-09-01/ebocf_offer.json",
+     "sha256": "50ddde08080afa5a012580a277bcf770cb254252fcd9cf5bc31bb85f2ff2a4fc"
+    }
+   ],
+   "outcome": null,
+   "outcome_revisions": [],
+   "record": false,
+   "prior_max_paid_out_gbp": null
+  },
+  {
+   "settlement_date": "2026-09-02",
+   "seed": true,
+   "source": "012 the record day (published figures, not recomputed)",
+   "available": true,
+   "periods_with_rows": 48,
+   "units": 232,
+   "paid_out_gbp": "4763415.030652451054963724",
+   "net_gbp": "2201315.945305368243437528",
+   "paid_in_gbp": "-2562099.085347082811526196",
+   "wind_bid_gbp": "44169.222594812038790840",
+   "wind_bid_share": "0.0093",
+   "gas_offer_gbp": "4515242.224300165751394982",
+   "gas_offer_share": "0.9479",
+   "other_gbp": "204003.583757473264777902",
+   "other_share": "0.0428",
+   "two_cut_gbp": "4559411.446894977790185822",
+   "sign_convention_holds": false,
+   "wind_bid_rows": {
+    "positive": 129,
+    "negative": 34
+   },
+   "wind_bid_signed_gbp": "-46621.556287271276959312",
+   "disptav_type": null,
+   "reconciliation": null,
+   "gas_offer_vwap_gbp_per_mwh": null,
+   "premium_gbp_per_mwh": null,
+   "bsad_available": false,
+   "bsad_net_gbp": null,
+   "bsad_share": null,
+   "artefacts": [
+    {
+     "dataset": "BMUNITS",
+     "path": "data/raw/elexon/012/bmunits.json",
+     "sha256": "2ec3f7f5cccf953199bc9b8bc7f21451387e201fa439aa49b7de33818305f24c"
+    },
+    {
+     "dataset": "NESO-DISAGGREGATED-BSAD-26-27",
+     "path": "data/raw/neso/012/disaggregated_bsad_2026-27.csv",
+     "sha256": "6b319340454d738b882a130f15b3c5dea7dfb82c0572767e7130f3045a9915b8"
+    },
+    {
+     "dataset": "EBOCF",
+     "path": "data/raw/elexon/012/2026-09-02/ebocf_bid.json",
+     "sha256": "12b1ee41aa030aef66adcd99387049bd67363e4776a80b2bcbd11c644be4dbb8"
+    },
+    {
+     "dataset": "EBOCF",
+     "path": "data/raw/elexon/012/2026-09-02/ebocf_offer.json",
+     "sha256": "b4bb1d812f6b8d832c0fa249ae550573ddfb428436d356515976438b4d8853e4"
+    }
+   ],
+   "outcome": null,
+   "outcome_revisions": [],
+   "record": false,
+   "prior_max_paid_out_gbp": "12725616.752426904988920298"
+  },
+  {
+   "settlement_date": "2026-09-03",
+   "seed": true,
+   "source": "012 the record day (published figures, not recomputed)",
+   "available": true,
+   "periods_with_rows": 48,
+   "units": 298,
+   "paid_out_gbp": "15787024.683021597278190323",
+   "net_gbp": "14656900.413561481777197641",
+   "paid_in_gbp": "-1130124.269460115500992682",
+   "wind_bid_gbp": "1875970.464236546771495493",
+   "wind_bid_share": "0.1188",
+   "gas_offer_gbp": "12573918.771981337589135530",
+   "gas_offer_share": "0.7965",
+   "other_gbp": "1337135.446803712917559300",
+   "other_share": "0.0847",
+   "two_cut_gbp": "14449889.236217884360631023",
+   "sign_convention_holds": true,
+   "wind_bid_rows": {
+    "positive": 2095,
+    "negative": 107
+   },
+   "wind_bid_signed_gbp": "1659699.226112864796114572",
+   "disptav_type": null,
+   "reconciliation": null,
+   "gas_offer_vwap_gbp_per_mwh": null,
+   "premium_gbp_per_mwh": null,
+   "bsad_available": false,
+   "bsad_net_gbp": null,
+   "bsad_share": null,
+   "artefacts": [
+    {
+     "dataset": "BMUNITS",
+     "path": "data/raw/elexon/012/bmunits.json",
+     "sha256": "2ec3f7f5cccf953199bc9b8bc7f21451387e201fa439aa49b7de33818305f24c"
+    },
+    {
+     "dataset": "NESO-DISAGGREGATED-BSAD-26-27",
+     "path": "data/raw/neso/012/disaggregated_bsad_2026-27.csv",
+     "sha256": "6b319340454d738b882a130f15b3c5dea7dfb82c0572767e7130f3045a9915b8"
+    },
+    {
+     "dataset": "EBOCF",
+     "path": "data/raw/elexon/012/2026-09-03/ebocf_bid.json",
+     "sha256": "72a551b17ef5a0a80ef27cba69d46207dbf4f14604fef89860682898c0074f0f"
+    },
+    {
+     "dataset": "EBOCF",
+     "path": "data/raw/elexon/012/2026-09-03/ebocf_offer.json",
+     "sha256": "f1c7a27ae6aeb0326cf0bee6f143147e58dcc4031ef804b3027e6333a2b431b3"
+    }
+   ],
+   "outcome": null,
+   "outcome_revisions": [],
+   "record": false,
+   "prior_max_paid_out_gbp": "12725616.752426904988920298"
+  },
+  {
+   "settlement_date": "2026-09-04",
+   "seed": true,
+   "source": "012 the record day (published figures, not recomputed)",
+   "available": true,
+   "periods_with_rows": 48,
+   "units": 403,
+   "paid_out_gbp": "30049726.049950159098647198",
+   "net_gbp": "29260439.324657287257996179",
+   "paid_in_gbp": "-789286.725292871840651019",
+   "wind_bid_gbp": "5394895.486054802082547247",
+   "wind_bid_share": "0.1795",
+   "gas_offer_gbp": "18677715.543382856579881960",
+   "gas_offer_share": "0.6216",
+   "other_gbp": "5977115.020512500436217991",
+   "other_share": "0.1989",
+   "two_cut_gbp": "24072611.029437658662429207",
+   "sign_convention_holds": true,
+   "wind_bid_rows": {
+    "positive": 3328,
+    "negative": 82
+   },
+   "wind_bid_signed_gbp": "5253172.740581323083459248",
+   "disptav_type": "Original",
+   "reconciliation": null,
+   "gas_offer_vwap_gbp_per_mwh": "201.77",
+   "premium_gbp_per_mwh": "110.65",
+   "bsad_available": true,
+   "bsad_net_gbp": "1459840.60",
+   "bsad_share": "0.0486",
+   "artefacts": [
+    {
+     "dataset": "BMUNITS",
+     "path": "data/raw/elexon/012/bmunits.json",
+     "sha256": "2ec3f7f5cccf953199bc9b8bc7f21451387e201fa439aa49b7de33818305f24c"
+    },
+    {
+     "dataset": "NESO-DISAGGREGATED-BSAD-26-27",
+     "path": "data/raw/neso/012/disaggregated_bsad_2026-27.csv",
+     "sha256": "6b319340454d738b882a130f15b3c5dea7dfb82c0572767e7130f3045a9915b8"
+    },
+    {
+     "dataset": "EBOCF",
+     "path": "data/raw/elexon/012/2026-09-04/ebocf_bid.json",
+     "sha256": "3daa0d89da65accaea4a1bc438be5ce2681f0fbcd18540c1223b286df4660bae"
+    },
+    {
+     "dataset": "EBOCF",
+     "path": "data/raw/elexon/012/2026-09-04/ebocf_offer.json",
+     "sha256": "4c29e40206e7a39327a1a89a278b185fee4d821b005bdc02e68da91736909e9c"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-04/disptav_bid_p01.json",
+     "sha256": "3e1fc26ba6f76e4548707d525642a347cc6e7673acac2ed61e4a97c1296f8664"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-04/disptav_bid_p02.json",
+     "sha256": "248f38c77b85734a6038736d33196a56ebff7a92061b78093cd31772f805c780"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-04/disptav_bid_p03.json",
+     "sha256": "6ac50002265bbb8d0d1d79b04d8a567f643c96fa299f5219d9c4cd10542951c7"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-04/disptav_bid_p04.json",
+     "sha256": "c33b33242f76a9e987c12b0d4b8692ce5f87994cf9104d75ef8e637f6a5b50a3"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-04/disptav_bid_p05.json",
+     "sha256": "7c600c3c0c19b3623dbae61fcc7561734baa09cadea64876a88548466ff73b1b"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-04/disptav_bid_p06.json",
+     "sha256": "99f958e8df8c61d3796f2e81428499e70d431abd7aaff406d0b82ceccfbca0b0"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-04/disptav_bid_p07.json",
+     "sha256": "ecb7510ff9178268aab44ef8d18d3f0519245bf844f045429cc4dd1c0f17ffcb"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-04/disptav_bid_p08.json",
+     "sha256": "a6ef1396158d6fc790cf8cb352434902e0dbd854c36e3a5604428405cfc98151"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-04/disptav_bid_p09.json",
+     "sha256": "934849b86b55c6077707071094ffe99169b94645886c20d898d2617ea1390b48"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-04/disptav_bid_p10.json",
+     "sha256": "a5e27545d0afe899e3b061fe2ee181bd9a5f84f0118107eba03934b5e679ef15"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-04/disptav_bid_p11.json",
+     "sha256": "17c5c8c261f0efbe7e291bc18d993f38cfacb4cd416d97e95e7b3cf345405d9e"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-04/disptav_bid_p12.json",
+     "sha256": "4ff1f993fd83905b38662bc874cd0f16aeface18bd79ae5ab1f6e5762ba40181"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-04/disptav_bid_p13.json",
+     "sha256": "beaefb961d9c124e4cc960ab1ffaf0304f65d1b8deccf25a99a75f481d17a4ba"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-04/disptav_bid_p14.json",
+     "sha256": "5bf0c3ec08c0a8ec2247b9cf55850914cf7989a53beb3f5c8f2d8869f6a4b064"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-04/disptav_bid_p15.json",
+     "sha256": "843430c754f9ea4666da3b2efb0ba13483900f37108c2e98bb6be4fd384b8aac"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-04/disptav_bid_p16.json",
+     "sha256": "2dc997af7fc9472b4198fe450aa553e7b019c8274bd6bcf5ffb913ef97bb5e00"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-04/disptav_bid_p17.json",
+     "sha256": "efa6dc5275194f12dd07d34279aa909b685a5b568d92f3797880f6a29659eb88"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-04/disptav_bid_p18.json",
+     "sha256": "106ccea12503f6180556e6af1df913dbe399255d2e7ac8e02bb5e79706341fc8"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-04/disptav_bid_p19.json",
+     "sha256": "8e992ef7d2fec27a0adca8843eb66731bd18d6978ab19273e48ef8d87b3c40c5"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-04/disptav_bid_p20.json",
+     "sha256": "6844166dddd6f85a0428d440da65feb3ce4066358cb72c9d5141cc0969a506bd"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-04/disptav_bid_p21.json",
+     "sha256": "ec937e76a0f44d87be24dfea551f12bd0ab1545fa3dc7559257b571891dbda00"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-04/disptav_bid_p22.json",
+     "sha256": "1e1fa6aaf00ce364c5917a602318611de7fecbb309930c9b466770e84339940f"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-04/disptav_bid_p23.json",
+     "sha256": "b2a4fae8bea6aef214d5a3ab311728a3cb614ad72eb5c2aa4a054b511f03638a"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-04/disptav_bid_p24.json",
+     "sha256": "c3cf337ec7ebcd09c7418d4a7fc519d0e1e10533e935cd756335d943ecf21f2b"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-04/disptav_bid_p25.json",
+     "sha256": "bf54508b280f2f18c163f559055f6b1c086cd34f79f0a068919d1af24f2ecf06"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-04/disptav_bid_p26.json",
+     "sha256": "4aaa94b2f23fc23adef1da480e23a39b7c0044ef5dd388300c7ef9a576984afa"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-04/disptav_bid_p27.json",
+     "sha256": "2e7247ea64e4939626518795e0cce6dca76fb19c720e8e2107fbb535702a7243"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-04/disptav_bid_p28.json",
+     "sha256": "8ff85cab581af7b99b02f8fb54f2b088160891f792a5ed9d65544f18a7469c3f"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-04/disptav_bid_p29.json",
+     "sha256": "1dca303270742ebe90fa88e4ad395e709dd06c579c4ca54480d9d8ab7904fa57"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-04/disptav_bid_p30.json",
+     "sha256": "fb85723c3f1c286c19c06bf8b881cefc78eea3b24b907a1dd174703813c4c080"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-04/disptav_bid_p31.json",
+     "sha256": "c891f59da0f9e7d39fabc6759540112e709bd14070e0d6ea0e65fc53a590df65"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-04/disptav_bid_p32.json",
+     "sha256": "c78e4d33afeaac82f6cfb391976269e07a4622531b1f4db0c3c0f79f885a5c3e"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-04/disptav_bid_p33.json",
+     "sha256": "a7fb941a485a8d2e4765112eb383cef5fbabe58fa995d730d78fe46408d3754d"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-04/disptav_bid_p34.json",
+     "sha256": "fe52a0cd28f8a6881de5d75ae0869590581ea73beaea266ad8ed7d24f02504d8"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-04/disptav_bid_p35.json",
+     "sha256": "a860d03c8d0432570170b681799138ed0999d8d4ea823452d1b163f237533b84"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-04/disptav_bid_p36.json",
+     "sha256": "b95a6fe79d07b52a52d17d8c32f2e87e3b084fdc8c567e18d7421c1859abbe9f"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-04/disptav_bid_p37.json",
+     "sha256": "a48b2fca2294ee1cc0cb66bdf25c825878a233b01de78fb36ae5044e0635b029"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-04/disptav_bid_p38.json",
+     "sha256": "1245480f4f15ff88240ea28aaaaec2b46d6f2fb59802c98f5d00b385120065f8"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-04/disptav_bid_p39.json",
+     "sha256": "b347120b060d88c090c00d5c7a0fd7152aedff7e057a360866046f6a9c392ed7"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-04/disptav_bid_p40.json",
+     "sha256": "c736be850f0e4a6436fee05c0aff8e57439a81018e640ca2a54e0e73fcf732a6"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-04/disptav_bid_p41.json",
+     "sha256": "0b1db5519186145add88b81b85fb241e3ffd913872615c80c8abb95d01805634"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-04/disptav_bid_p42.json",
+     "sha256": "da700c1d7dc5cf3991d36b5b67254f8a9f5c08634dc8e78e1d468f3ce0258022"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-04/disptav_bid_p43.json",
+     "sha256": "c821cae509452de6086aefff8f4188d4c42c95ca0b9df4840787ccd4bf81784f"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-04/disptav_bid_p44.json",
+     "sha256": "341b65ae9c996f913cdc40c2f7297f711ded1c698892c7a9d0a94c8db59ce66e"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-04/disptav_bid_p45.json",
+     "sha256": "f0346d6a26501fa00c7095613278211dff9a6c451d79966ddf64a512b37714e0"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-04/disptav_bid_p46.json",
+     "sha256": "62450e95fb35eabcc9f3e1dc4fa4eae89cebc77e977c0670acaa67ac5fb088a5"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-04/disptav_bid_p47.json",
+     "sha256": "5dc81fe83e6795256be819ee1cfce91f04a84459316bb247170bb7c4d2ffa134"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-04/disptav_bid_p48.json",
+     "sha256": "e48b64cc06697dbf615f12b1067912463ae757131a8fddf1a47faa6f85352f6a"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-04/disptav_offer_p01.json",
+     "sha256": "5bc4699a63bd737fc0fefb7c60aba97dbdcc20b85e270a7ff5050a9828a9d788"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-04/disptav_offer_p02.json",
+     "sha256": "5f3c6797528a59f06d7b402cd150d5f1e3c2ec1d1c9463287341cd9c3700e0ac"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-04/disptav_offer_p03.json",
+     "sha256": "a9c79c79e76b3fa2daec9c1ccdd428b18e25327693e38eed60a71f8a555e6a90"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-04/disptav_offer_p04.json",
+     "sha256": "90e86b321e82978011be1c6e093f97f28131211b57282cdcbff6560eaaacf384"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-04/disptav_offer_p05.json",
+     "sha256": "5b5410e0d5faf3fc1df699123e3b41cd33d68e2188ee667843156204a7dee343"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-04/disptav_offer_p06.json",
+     "sha256": "133e882123fe0a0e8b4c7a26d5039af8b923386f7fc6dd4b0dbb9b40a63b3438"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-04/disptav_offer_p07.json",
+     "sha256": "653aa3428e52ae4d09f366714158be29a04e83fbf3facde3274ec8f7f59ea782"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-04/disptav_offer_p08.json",
+     "sha256": "857e7a62ced4300ad66a3dd1c8033a5f329af60ea7e2e89fc6fa7c11e95c4955"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-04/disptav_offer_p09.json",
+     "sha256": "fc764f9629e2f4be7ee68966650ca5a31211081bd347ea5f3220f38fca6c6f6c"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-04/disptav_offer_p10.json",
+     "sha256": "bf36a165b36eaf721ac8844b2b4750e9f0937f678edd9d2176bf6c5027e871bc"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-04/disptav_offer_p11.json",
+     "sha256": "1aff4dc9114258ef1ea218b2d4a2f359d0a1d42e1c45431f620a0af698fba598"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-04/disptav_offer_p12.json",
+     "sha256": "7dd931280257d2c3034cba55b594c5160b35d57add1ff55998882196344de1e7"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-04/disptav_offer_p13.json",
+     "sha256": "b5ae6048fbc3abfc1e40c72a34b0d7858ebd60b23a307ea2b0397247632a492b"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-04/disptav_offer_p14.json",
+     "sha256": "fd4640802757d2fd4f486f7e936bdfc7cbf1d9f6ed7b81cb7bab60e56b53a653"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-04/disptav_offer_p15.json",
+     "sha256": "1913e77edd96d150bbeed682d773c93bdc8f90d55a1ddacf79d128502008015b"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-04/disptav_offer_p16.json",
+     "sha256": "4c2f72acc0ff539120978e13a791160268757000dab16d32eab6ec7f4ac99fc0"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-04/disptav_offer_p17.json",
+     "sha256": "31370a33c67de1657e9875a8c957b7d0b6c44207c4dbcbe3dba611e0dae90ee4"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-04/disptav_offer_p18.json",
+     "sha256": "e30d0d1d875d18a334d28107be3855037b50ed0c7d434321fe8aadbbd039d9ed"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-04/disptav_offer_p19.json",
+     "sha256": "bb57e4819ad1be8996c9acb0c8d4f577d70a0aa7b92d0a0fd1ed627bd18a951c"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-04/disptav_offer_p20.json",
+     "sha256": "efb99b45c1c19784a5222b3ca601d1e6ebe4aff3ca74d38dbb10d21f19840ee0"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-04/disptav_offer_p21.json",
+     "sha256": "47649e2a58ae51648a4d11ae6119d757fcefe9f9107d56c0666f7a576e905e63"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-04/disptav_offer_p22.json",
+     "sha256": "4723b940da0ac56e4d9717f6ea74e5dd34f9402cf594277e247dd7704d3f8c26"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-04/disptav_offer_p23.json",
+     "sha256": "58741f14b127013b0c077e672b129edd65419bd5fbde7dc4a210079166dc8e9a"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-04/disptav_offer_p24.json",
+     "sha256": "75c330c8c9945531a776fbf3812d16b5445bc1dd0d3525f148d019b87e5b53c9"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-04/disptav_offer_p25.json",
+     "sha256": "ee4a7d37d823739b30d71c3b51a1efdd1c3395ba4c1aae05f7c66796da0dca60"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-04/disptav_offer_p26.json",
+     "sha256": "0a705348d6ef24bc4eb3e0fbcbe9918d454ead89bee9cfa301bb87dd55c77fc7"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-04/disptav_offer_p27.json",
+     "sha256": "18f4d5bdddbdc0589975373b3df31fd81816e7cb2dd4180e6d98e9e931b228c4"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-04/disptav_offer_p28.json",
+     "sha256": "98465849216a38d5de2e11593523ee1c7c871f4a4c586fe8e7c622c06810a8cd"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-04/disptav_offer_p29.json",
+     "sha256": "b823ad66b7b8601c293bfe61c4801c8b28ed2448bc669a58de452b8f97b51eaf"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-04/disptav_offer_p30.json",
+     "sha256": "4ac9107511135c6a802f5ef73f093f5658756380a4e04188524210de3ad6a38c"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-04/disptav_offer_p31.json",
+     "sha256": "6fc68cac41f040808337e57cd63d4443fbf6a1348dd80fbd76955c845dcc9472"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-04/disptav_offer_p32.json",
+     "sha256": "7102606835a214000ca40439a0bd15f0b50bf7f012e9691c775e588339e1136a"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-04/disptav_offer_p33.json",
+     "sha256": "e1e4f4102d780e9de8435bddc3f5c97c19aa1395f56ab2697885af5c9202ca75"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-04/disptav_offer_p34.json",
+     "sha256": "de7ac440d0ecb9c695f69a4671c366beb8e07ad9eed17c691a59cb42abf2a307"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-04/disptav_offer_p35.json",
+     "sha256": "8a7daa42564658cc499738d13ddde43379c63a7920101565b5db752f3f3234de"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-04/disptav_offer_p36.json",
+     "sha256": "856f5ca71e28a50044d46e610d36c1664dd2ef294aae29380a786c3204fe8e06"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-04/disptav_offer_p37.json",
+     "sha256": "364a034c7761971e99f1e450551bb9d0e91fb28ebaa5095dd227be4af8a186ff"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-04/disptav_offer_p38.json",
+     "sha256": "a7f9c61f9ab3a4f5d0ac22310cf058bf4880891fe0565470730a6abb1cc808e2"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-04/disptav_offer_p39.json",
+     "sha256": "c8d485b91a60c9cadd0d6a8d88059eade408489d2820e11701362cebf5cc5466"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-04/disptav_offer_p40.json",
+     "sha256": "3a5c3f07fa7d722f2bd18e5583109fa7fb0950c4095750ce658f71c7a3d636c0"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-04/disptav_offer_p41.json",
+     "sha256": "e30cdca7f1ff0d05d7d34a34c4cb7b8211682f0e0ca274d245ee01849f8021e8"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-04/disptav_offer_p42.json",
+     "sha256": "8e6bf17aaba7eb4f24f15b7a96459e4d2eaf876e248df8a2205fd62775328bfd"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-04/disptav_offer_p43.json",
+     "sha256": "370c422e256146e7ac4a45d82ec9ee17809f80039dfa9039e54acef03af78d73"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-04/disptav_offer_p44.json",
+     "sha256": "183c400a42bed5879b5b15dc117e7e260ecdb457ad2b6973ebd391435a33b871"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-04/disptav_offer_p45.json",
+     "sha256": "1d8e07985472d7399a328412336a436a7fde61e426045073fb4d43cfbb408063"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-04/disptav_offer_p46.json",
+     "sha256": "13a2d4c756dcab08073a7c47df405d250bb4b040394231b5e2914d7c59301dea"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-04/disptav_offer_p47.json",
+     "sha256": "cc576c02f80f67f648113a134c6e730e2cf88310ca11a55d33a43212273ac450"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-04/disptav_offer_p48.json",
+     "sha256": "d0602fec83c24ad6d54252ad8731ed38183bd16ea5b4de689f610a0beb667dbe"
+    },
+    {
+     "dataset": "FUELINST",
+     "path": "data/raw/elexon/012/2026-09-04/fuelinst.json",
+     "sha256": "26e76ca8f750f9312c1f10ffe1e041a80e0d9bf895210e5fe9b1c28f25af24e2"
+    },
+    {
+     "dataset": "MID",
+     "path": "data/raw/elexon/012/2026-09-04/mid.json",
+     "sha256": "fa7394b8fb48786819ea4ece7c29845a4431c3f8a864c255fc6252cd5430ccb2"
+    },
+    {
+     "dataset": "SYSTEM-PRICES",
+     "path": "data/raw/elexon/012/2026-09-04/system-prices.json",
+     "sha256": "97e0664c87d3be78c5641033997a19158a34ed4a873b1628a57f60d921379f20"
+    }
+   ],
+   "disptav_basis": "012 declared rule; offer-side Original and Tagged nearly coincide (115.0 vs 116.6 GWh on 8 September), bid-side Original does not reconcile; see 012 AMENDMENTS.md post-acquisition note",
+   "gas_offer_mwh": "77628.662559675887527128",
+   "mid_vwap_same_periods_gbp_per_mwh": "91.12",
+   "bsad_placeholder_only": false,
+   "bsad_rows": 312,
+   "bsad_vintage": "2026-09-11 (012)",
+   "outcome": null,
+   "outcome_revisions": [],
+   "record": false,
+   "prior_max_paid_out_gbp": "15787024.683021597278190323"
+  },
+  {
+   "settlement_date": "2026-09-05",
+   "seed": true,
+   "source": "012 the record day (published figures, not recomputed)",
+   "available": true,
+   "periods_with_rows": 48,
+   "units": 311,
+   "paid_out_gbp": "17512041.121878660350301916",
+   "net_gbp": "16747646.718562200466188783",
+   "paid_in_gbp": "-764394.403316459884113133",
+   "wind_bid_gbp": "3836992.154091134340218010",
+   "wind_bid_share": "0.2191",
+   "gas_offer_gbp": "9067705.600394250123451949",
+   "gas_offer_share": "0.5178",
+   "other_gbp": "4607343.367393275886631957",
+   "other_share": "0.2631",
+   "two_cut_gbp": "12904697.754485384463669959",
+   "sign_convention_holds": true,
+   "wind_bid_rows": {
+    "positive": 2180,
+    "negative": 7
+   },
+   "wind_bid_signed_gbp": "3831922.107765023773628703",
+   "disptav_type": null,
+   "reconciliation": null,
+   "gas_offer_vwap_gbp_per_mwh": null,
+   "premium_gbp_per_mwh": null,
+   "bsad_available": false,
+   "bsad_net_gbp": null,
+   "bsad_share": null,
+   "artefacts": [
+    {
+     "dataset": "BMUNITS",
+     "path": "data/raw/elexon/012/bmunits.json",
+     "sha256": "2ec3f7f5cccf953199bc9b8bc7f21451387e201fa439aa49b7de33818305f24c"
+    },
+    {
+     "dataset": "NESO-DISAGGREGATED-BSAD-26-27",
+     "path": "data/raw/neso/012/disaggregated_bsad_2026-27.csv",
+     "sha256": "6b319340454d738b882a130f15b3c5dea7dfb82c0572767e7130f3045a9915b8"
+    },
+    {
+     "dataset": "EBOCF",
+     "path": "data/raw/elexon/012/2026-09-05/ebocf_bid.json",
+     "sha256": "0abb4e6c0bda80d6e542b49f23e094b797c5e068658781ef3384358b1a614b3a"
+    },
+    {
+     "dataset": "EBOCF",
+     "path": "data/raw/elexon/012/2026-09-05/ebocf_offer.json",
+     "sha256": "bda797c23f59256b0fc9a705939f58e01643e1453f16ea622bdee3886a1130c8"
+    }
+   ],
+   "outcome": null,
+   "outcome_revisions": [],
+   "record": false,
+   "prior_max_paid_out_gbp": "30049726.049950159098647198"
+  },
+  {
+   "settlement_date": "2026-09-06",
+   "seed": true,
+   "source": "012 the record day (published figures, not recomputed)",
+   "available": true,
+   "periods_with_rows": 48,
+   "units": 352,
+   "paid_out_gbp": "19336490.688778230943130603",
+   "net_gbp": "18133297.473776199086911959",
+   "paid_in_gbp": "-1203193.215002031856218644",
+   "wind_bid_gbp": "2027321.448961455829268943",
+   "wind_bid_share": "0.1048",
+   "gas_offer_gbp": "14839933.489197366537701383",
+   "gas_offer_share": "0.7675",
+   "other_gbp": "2469235.750619408576160277",
+   "other_share": "0.1277",
+   "two_cut_gbp": "16867254.938158822366970326",
+   "sign_convention_holds": true,
+   "wind_bid_rows": {
+    "positive": 1488,
+    "negative": 105
+   },
+   "wind_bid_signed_gbp": "1715252.475770486937820315",
+   "disptav_type": null,
+   "reconciliation": null,
+   "gas_offer_vwap_gbp_per_mwh": null,
+   "premium_gbp_per_mwh": null,
+   "bsad_available": false,
+   "bsad_net_gbp": null,
+   "bsad_share": null,
+   "artefacts": [
+    {
+     "dataset": "BMUNITS",
+     "path": "data/raw/elexon/012/bmunits.json",
+     "sha256": "2ec3f7f5cccf953199bc9b8bc7f21451387e201fa439aa49b7de33818305f24c"
+    },
+    {
+     "dataset": "NESO-DISAGGREGATED-BSAD-26-27",
+     "path": "data/raw/neso/012/disaggregated_bsad_2026-27.csv",
+     "sha256": "6b319340454d738b882a130f15b3c5dea7dfb82c0572767e7130f3045a9915b8"
+    },
+    {
+     "dataset": "EBOCF",
+     "path": "data/raw/elexon/012/2026-09-06/ebocf_bid.json",
+     "sha256": "2e971d0b4a803e98a6c0754cf7fc025fe9795549db6b49443f34cd1918ec8246"
+    },
+    {
+     "dataset": "EBOCF",
+     "path": "data/raw/elexon/012/2026-09-06/ebocf_offer.json",
+     "sha256": "e01a46748dbbe02c150f168974d7a9cc937446ab0457a5158a04232a60220f7a"
+    }
+   ],
+   "outcome": null,
+   "outcome_revisions": [],
+   "record": false,
+   "prior_max_paid_out_gbp": "30049726.049950159098647198"
+  },
+  {
+   "settlement_date": "2026-09-07",
+   "seed": true,
+   "source": "012 the record day (published figures, not recomputed)",
+   "available": true,
+   "periods_with_rows": 48,
+   "units": 342,
+   "paid_out_gbp": "19747992.697880656939075340",
+   "net_gbp": "17818585.563439284162868824",
+   "paid_in_gbp": "-1929407.134441372776206516",
+   "wind_bid_gbp": "1493449.088442631937565947",
+   "wind_bid_share": "0.0756",
+   "gas_offer_gbp": "16993978.946297457331905423",
+   "gas_offer_share": "0.8605",
+   "other_gbp": "1260564.663140567669603970",
+   "other_share": "0.0638",
+   "two_cut_gbp": "18487428.034740089269471370",
+   "sign_convention_holds": true,
+   "wind_bid_rows": {
+    "positive": 1304,
+    "negative": 233
+   },
+   "wind_bid_signed_gbp": "889401.574999955371049851",
+   "disptav_type": null,
+   "reconciliation": null,
+   "gas_offer_vwap_gbp_per_mwh": null,
+   "premium_gbp_per_mwh": null,
+   "bsad_available": false,
+   "bsad_net_gbp": null,
+   "bsad_share": null,
+   "artefacts": [
+    {
+     "dataset": "BMUNITS",
+     "path": "data/raw/elexon/012/bmunits.json",
+     "sha256": "2ec3f7f5cccf953199bc9b8bc7f21451387e201fa439aa49b7de33818305f24c"
+    },
+    {
+     "dataset": "NESO-DISAGGREGATED-BSAD-26-27",
+     "path": "data/raw/neso/012/disaggregated_bsad_2026-27.csv",
+     "sha256": "6b319340454d738b882a130f15b3c5dea7dfb82c0572767e7130f3045a9915b8"
+    },
+    {
+     "dataset": "EBOCF",
+     "path": "data/raw/elexon/012/2026-09-07/ebocf_bid.json",
+     "sha256": "899c700eefccc8752fa55da4a4dff78e85c4bf4bcfcb301b7e155acece6bef52"
+    },
+    {
+     "dataset": "EBOCF",
+     "path": "data/raw/elexon/012/2026-09-07/ebocf_offer.json",
+     "sha256": "e046816c07403d90f3edfc6413026976b10a83659c152a80b5fdfed7d9c114a9"
+    }
+   ],
+   "outcome": null,
+   "outcome_revisions": [],
+   "record": false,
+   "prior_max_paid_out_gbp": "30049726.049950159098647198"
+  },
+  {
+   "settlement_date": "2026-09-08",
+   "seed": true,
+   "source": "012 the record day (published figures, not recomputed)",
+   "available": true,
+   "periods_with_rows": 48,
+   "units": 352,
+   "paid_out_gbp": "33610462.712976159288981078",
+   "net_gbp": "31561031.823637318056408151",
+   "paid_in_gbp": "-2049430.889338841232572927",
+   "wind_bid_gbp": "3768601.305298115938623229",
+   "wind_bid_share": "0.1121",
+   "gas_offer_gbp": "26820639.172920768961194702",
+   "gas_offer_share": "0.7980",
+   "other_gbp": "3021222.234757274389163147",
+   "other_share": "0.0899",
+   "two_cut_gbp": "30589240.478218884899817931",
+   "sign_convention_holds": true,
+   "wind_bid_rows": {
+    "positive": 2558,
+    "negative": 192
+   },
+   "wind_bid_signed_gbp": "3244522.546522000755475642",
+   "disptav_type": "Original",
+   "reconciliation": null,
+   "gas_offer_vwap_gbp_per_mwh": "229.53",
+   "premium_gbp_per_mwh": "82.64",
+   "bsad_available": true,
+   "bsad_net_gbp": "3333989.85",
+   "bsad_share": "0.0992",
+   "artefacts": [
+    {
+     "dataset": "BMUNITS",
+     "path": "data/raw/elexon/012/bmunits.json",
+     "sha256": "2ec3f7f5cccf953199bc9b8bc7f21451387e201fa439aa49b7de33818305f24c"
+    },
+    {
+     "dataset": "NESO-DISAGGREGATED-BSAD-26-27",
+     "path": "data/raw/neso/012/disaggregated_bsad_2026-27.csv",
+     "sha256": "6b319340454d738b882a130f15b3c5dea7dfb82c0572767e7130f3045a9915b8"
+    },
+    {
+     "dataset": "EBOCF",
+     "path": "data/raw/elexon/012/2026-09-08/ebocf_bid.json",
+     "sha256": "c50c7f90ae44f45956c637814251a7256db5e8a9853195bc228253cb222e423d"
+    },
+    {
+     "dataset": "EBOCF",
+     "path": "data/raw/elexon/012/2026-09-08/ebocf_offer.json",
+     "sha256": "f03067a4d0858805924429b2f4f5351d5d4615c54218add8c3b266710a267243"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-08/disptav_bid_p01.json",
+     "sha256": "72e71d92fae43cae726cdc65e800beac01d22a31090fd1ae57cf74fc7878d105"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-08/disptav_bid_p02.json",
+     "sha256": "0dda8a8bc7e22b6639cd6ea6154dd8c5e8e913f75ba40e012b0ac485c62fb672"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-08/disptav_bid_p03.json",
+     "sha256": "f52adf2e76319a13ca1a3cf1065cc3403acd2f6276be2c081cf8fc1995354483"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-08/disptav_bid_p04.json",
+     "sha256": "cf518465d2e87d204f13940cbc1859e255d0742db3753b0a2520ff014eb53867"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-08/disptav_bid_p05.json",
+     "sha256": "686d9cbda5dc85ab998d0e824e6bb35e28f1e33ef88730ff4e5074e9299d9de4"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-08/disptav_bid_p06.json",
+     "sha256": "4963400c920e03d77f70c5e774a7d3e6a3092ef3bab8f2f3d9f30e71a49e3580"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-08/disptav_bid_p07.json",
+     "sha256": "694cd06d4d920d222e0e6fb657fe80de93b27adc3cebd86fdf0dd6ff7fa5e67c"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-08/disptav_bid_p08.json",
+     "sha256": "7234e0fe9da3c295e4b1c114bd8587315fb2334e4e0b730dc13313e55922f8fa"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-08/disptav_bid_p09.json",
+     "sha256": "206331f34649ec27ed27a3091259868d87765f89082a97f5fac16a7d0d84cf35"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-08/disptav_bid_p10.json",
+     "sha256": "ce836815f3fb103a8f00c96ecd6e9592b852dc46598385c25e5511b836eb29bc"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-08/disptav_bid_p11.json",
+     "sha256": "2b4c5ec919ec9b3c32c49757eb339e7cfdfff8f68b2435e700f9e4ed2200fe4b"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-08/disptav_bid_p12.json",
+     "sha256": "8e930672c528c5dcda340b0682816f473b70c4ebdb2555f16657d7a855813294"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-08/disptav_bid_p13.json",
+     "sha256": "f940c6890c00b4db6767f2d37fe95a1d1f808d3881ccedceaf7873508245f60b"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-08/disptav_bid_p14.json",
+     "sha256": "f8ad91d94308f69b5c35ae6c94f418aa999cb0b2b4979a34742bfab7409d206e"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-08/disptav_bid_p15.json",
+     "sha256": "7746208eaf7981825299c660029f4cb1949075b3ff1b815cc226d2a290535da3"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-08/disptav_bid_p16.json",
+     "sha256": "bc83cf4e875cff9c1f2454d6996304f94b043ee7474dd4daa856e3f520d8bb3a"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-08/disptav_bid_p17.json",
+     "sha256": "b64e9319b757393901d336baf3bcb32f664fc5b825e27b041013aa6956d63bf3"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-08/disptav_bid_p18.json",
+     "sha256": "29149b417de9ef161ec1fa35eda429f31ad60625d0b7ce60e2d6951173c931de"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-08/disptav_bid_p19.json",
+     "sha256": "899f2a97f4f12d3abac9eef3a3c9114328147138d853b1ab6e59e2987ae641d8"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-08/disptav_bid_p20.json",
+     "sha256": "38e409fb7aa3c249d10d533c1e31e93a25b9b4348553442f1f31ab23b6951e68"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-08/disptav_bid_p21.json",
+     "sha256": "ef51dd87e624236ef7b96d9c961ded192948870989586b1db5f50fe0ae983856"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-08/disptav_bid_p22.json",
+     "sha256": "d2665fb7ea0891ce85b2b99008022bf4cedd065de6902feb78eee9771a261899"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-08/disptav_bid_p23.json",
+     "sha256": "f556844767b5fd609bbcf8703f5ecc7c0ae8bb384311ef4d1a6a2206f7dbf7d8"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-08/disptav_bid_p24.json",
+     "sha256": "0ed96d60e40a38860441b285eaaf33be6c171429837ff3b7030ae049ec56375c"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-08/disptav_bid_p25.json",
+     "sha256": "0166f80586fb8e79461c206979a3431c2c01a81c0f82266c0941d6a841d5d6b1"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-08/disptav_bid_p26.json",
+     "sha256": "43b24f37fbf7bf86ddad978196d04e3275d8a096645a741d74dd44fc3030d27f"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-08/disptav_bid_p27.json",
+     "sha256": "2df59b1daf46737990c7ffc9c963928f2f981e55529723f249a74675f5db7e23"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-08/disptav_bid_p28.json",
+     "sha256": "1ce6bd085a6c73c7f96b5fe508bf52794107c26f2667416e465e7afb5509206d"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-08/disptav_bid_p29.json",
+     "sha256": "f89245a53b3d3c34055c12a7bfa17e4b13900d29713acbbcc7855b208b8ea262"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-08/disptav_bid_p30.json",
+     "sha256": "b499eb25bca4bc8371d983129c32740e1240d18a9c2be059f98ee6b912a2346f"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-08/disptav_bid_p31.json",
+     "sha256": "5b7905227ff258770f6ba0c4bf956385b9a1d111bafc83270d80f113056af9e7"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-08/disptav_bid_p32.json",
+     "sha256": "ce743e265c44dc2cf83b042381fa49cca8d24e7f4ca5f5de5a92a913e03a2f44"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-08/disptav_bid_p33.json",
+     "sha256": "a90fd51a6f93376a05a5c76696e2895a86dfbe42a0f42bcacafa6642f630ecce"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-08/disptav_bid_p34.json",
+     "sha256": "3ececa756c055701dd3a668f503d0836c95deeca41c562c1d7bbaa9488d621c6"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-08/disptav_bid_p35.json",
+     "sha256": "c05f1f645333540091cc1b7f6c45485101e2d1a67ac4e66788535bf3cb390b09"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-08/disptav_bid_p36.json",
+     "sha256": "39a9ae07923a3bf558dfd21de20b80cfa76165c2fc5925b8e1887e6784ea9e38"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-08/disptav_bid_p37.json",
+     "sha256": "813722dea20c9420dfec0e8fbeea95b32cb51603a74f80eb87bd29c8a47563e3"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-08/disptav_bid_p38.json",
+     "sha256": "3b9a3ad8c98f4c0274732217223fdafad50a15207fd4f3b397a267ba8737ae3d"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-08/disptav_bid_p39.json",
+     "sha256": "9a5b1673e4208c8c51fe2067edd996c9cedb03ef82886901cfe25c610bb76609"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-08/disptav_bid_p40.json",
+     "sha256": "83287cd7a2991d0619a41cb6da4d1be0106b284d473fb0d22e4268d1b4b82a62"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-08/disptav_bid_p41.json",
+     "sha256": "8d4de2a7d91167b5f62884f0a3f21f5a831f80048e57304a5b7379bb5c77a1b2"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-08/disptav_bid_p42.json",
+     "sha256": "5422673ea51cebc3e74d456850dd30268ff39bef43d156043ffaec5c17686419"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-08/disptav_bid_p43.json",
+     "sha256": "35f290c717f60193a23fdcf59d2551a4d9fbc97f1543bc6e87adce7aa97f95db"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-08/disptav_bid_p44.json",
+     "sha256": "85bc20fe8a5ff05d68cced6a26117dd53072ee2d0e0a8c6719ee8e9f80cbc246"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-08/disptav_bid_p45.json",
+     "sha256": "85008527709dab26978f000f58a7258747bdf4f228820033f11a7f903e1f957d"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-08/disptav_bid_p46.json",
+     "sha256": "dcdf4a5fe77a8796d20784687c70d582a36a612f8a77ec1a8be945c1d8c67737"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-08/disptav_bid_p47.json",
+     "sha256": "dbc25e1bb6fe39e13c303149095810d4427f8290ecc34e9cf60462ed5ef4119e"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-08/disptav_bid_p48.json",
+     "sha256": "c747953cfaa5b81d15390d89c67d5f6e507f1099a64d0f8eccd3d70589629fc4"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-08/disptav_offer_p01.json",
+     "sha256": "cdeed272e6b575ebe86fa89e28b2aad2bb9b0b4ed1906152374287c1f25e560d"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-08/disptav_offer_p02.json",
+     "sha256": "e4254d1e2995b3bab3e60c79d8b0668d3716a1dcb7c8fa740c3a8fc3abe6598b"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-08/disptav_offer_p03.json",
+     "sha256": "508e75cadb225db53365631592e6fd9db516c48bf72d7f90b9e579d4f733f687"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-08/disptav_offer_p04.json",
+     "sha256": "0080c8cd2a1496cc1309be9fce1f1d7a0804774bca6d40de84e4f5c53e79f14f"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-08/disptav_offer_p05.json",
+     "sha256": "5c2f1cb30a287c024e17015435893fe133b9cd308a4ae3c7df503882c26ee4f1"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-08/disptav_offer_p06.json",
+     "sha256": "a6925f5592524a34a1870cb8f567384c088343243f80dfa5590d345e05504e99"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-08/disptav_offer_p07.json",
+     "sha256": "e4d77ddfa14b95b8ed2ec0d0bc6121f72628d5afa6828c77a12d85ace917da21"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-08/disptav_offer_p08.json",
+     "sha256": "2adb16d70e7cb91a431749541b76d7faf32de08d8422f173283514aae01f5d16"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-08/disptav_offer_p09.json",
+     "sha256": "f2bd6f1e8c29a40ceeae8e2b6b0b265b5f9f17903904e2413b0b369945a7cc95"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-08/disptav_offer_p10.json",
+     "sha256": "71dd26f872af8cbbf1104abc784926c52afbefe1ceb06ef26ae4081ffb097ac1"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-08/disptav_offer_p11.json",
+     "sha256": "6cd6dca6f887ef7b0ddba43532f927d947bc8264e904f38fb7c8d6e19eb82440"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-08/disptav_offer_p12.json",
+     "sha256": "a6c24131f2aecda123f6c906c477b9ea4dd24ec3945849d2f1a484bfdb60d680"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-08/disptav_offer_p13.json",
+     "sha256": "39f866aac28ae750bb01e8bf7d881641e82ee28ec139bd409d6619e7e2cc6b90"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-08/disptav_offer_p14.json",
+     "sha256": "da88fb23390a98e0a7544c2e0f6a04c7538192b340c7bf60c4fafa2f6145c528"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-08/disptav_offer_p15.json",
+     "sha256": "1b8f615e0df9159b9b5ddc16fd838ce65f37df423e374cd2dcb73f078c5f53bc"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-08/disptav_offer_p16.json",
+     "sha256": "c4f75394ec15638b8e9316bf5f700ea9ee3ab2270e869364885de0c9c3f60f8e"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-08/disptav_offer_p17.json",
+     "sha256": "57bd7a6af8b90e0e8f209f611b3a970ade7e03ebffeabea5199d34ce038205c2"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-08/disptav_offer_p18.json",
+     "sha256": "87e72181b8fe3a08e02458ab9274a920f47540594c2d5d325761f1f230c712a8"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-08/disptav_offer_p19.json",
+     "sha256": "ad67ce3468a2f709e3eee6d33b247d235f8a80d02a7cb4bea6b6715c7e366421"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-08/disptav_offer_p20.json",
+     "sha256": "e535e0cedf01aab94645c5e5322c654996ddc07c6a005cdbffd6d176ff357958"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-08/disptav_offer_p21.json",
+     "sha256": "7a5eaf5b5879a55fb87d772b2df02152fdd69708d408ca11b3cccc66752cd3d5"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-08/disptav_offer_p22.json",
+     "sha256": "ef20bce13cbb07440c57e6474b5e67117c558c257258188e93f8792e428f885b"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-08/disptav_offer_p23.json",
+     "sha256": "8a1e8e11acf7ed4bd3a91a679a3431faace9cde1000c41be45a31711d26012dd"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-08/disptav_offer_p24.json",
+     "sha256": "29d3253d743bf33ac2628da2b1e92916fe63a1c534f98471db64c73571093bf1"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-08/disptav_offer_p25.json",
+     "sha256": "6dff718795ef4ebe35edc8a379f23e0a756cef1d2316c51a0d72c7208e998d7e"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-08/disptav_offer_p26.json",
+     "sha256": "6d98b38495ba01a47afd989ef02fe8ba085b65f26e4d9eb105d1805df8baa1bb"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-08/disptav_offer_p27.json",
+     "sha256": "1e47b8bc0b2a65e84fe53e1cf321f761b2528d9caa3fe5348b14c901c89eaa8c"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-08/disptav_offer_p28.json",
+     "sha256": "a7c86dbaaa4f60300afaece08cda5cb7bb9e4898aa0a3dade72fddf639c21f04"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-08/disptav_offer_p29.json",
+     "sha256": "f7b2846735e9150a4e3c33f2044b43f6842dbb428329ebc46da2b601458cbca7"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-08/disptav_offer_p30.json",
+     "sha256": "6c36b0efdd691160ca0242f9d74477592d5596ed5a4b9e8af3fa16a21673d40c"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-08/disptav_offer_p31.json",
+     "sha256": "add99b0598815219fd12d5f55134c691b74623e6182c6ee0fd6e964584140cc3"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-08/disptav_offer_p32.json",
+     "sha256": "4f3153496a5bc7609ebd3effa950a95a24422436cc4ba55ff805b8c61df39958"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-08/disptav_offer_p33.json",
+     "sha256": "4b8a1e57dbcc449df488116480ace6be04607549a57c084ae2cb9dca48fd2afb"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-08/disptav_offer_p34.json",
+     "sha256": "16ffd21f64f4b29bde949046624b5abceecaadc77eff597d153c74001b12b0ce"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-08/disptav_offer_p35.json",
+     "sha256": "8475fe10d65c30bedc4a1418ad837bd02e8c4cc4cbe358005e2a77a29900ac7f"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-08/disptav_offer_p36.json",
+     "sha256": "c2f47bfa25c4fb9f21db906fa94c694b37f79bb471763fae70266441a59f0b98"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-08/disptav_offer_p37.json",
+     "sha256": "0dcf992b0b234293b2bffd7251bc1390e41ed3b0ebd77a562043f3c449f0df77"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-08/disptav_offer_p38.json",
+     "sha256": "01442d5d92c1a3aa51cf26455f8fb41f6be9a9febe16ecb1705e71490d018f39"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-08/disptav_offer_p39.json",
+     "sha256": "17dfc24b1023273b5629f08ea128d089fab2a9ea0c53a28fb346bee108627e28"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-08/disptav_offer_p40.json",
+     "sha256": "5f26ef67d0f805630903eec79bf79c2f40547a1944a9a6a51ff9125e5618eed2"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-08/disptav_offer_p41.json",
+     "sha256": "10d618f330e124683347915fe043f68cd04ae9c22f237b0ed809eb34e1ea9d1a"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-08/disptav_offer_p42.json",
+     "sha256": "cea7f08b390fc85f3b42ed1453502a5d77952314a6f975a77324ca4f71c25efe"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-08/disptav_offer_p43.json",
+     "sha256": "c09e1209b0cc2be2201a888042d244642063bb758e985a5415be6d7aff59e237"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-08/disptav_offer_p44.json",
+     "sha256": "210d580db870a4407d25c930b4ef576e2c41d6ac78af63966d24beccaf06f62b"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-08/disptav_offer_p45.json",
+     "sha256": "b879e9677bc65c4fed5db11eb1ff263fe8121739a8c1b3acdb0e0e2d956166cf"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-08/disptav_offer_p46.json",
+     "sha256": "2efa56f4616a38a597a8a520c6ebe5ddc2ce596d2f8a79ee5ac8c11dd71c2d11"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-08/disptav_offer_p47.json",
+     "sha256": "71dbb014a1ef6cafb6d377e035893aac38cb2c5e1ad356663b3d0c0ee3ddb10f"
+    },
+    {
+     "dataset": "DISPTAV",
+     "path": "data/raw/elexon/012/2026-09-08/disptav_offer_p48.json",
+     "sha256": "81cdc0298c9e3abaaa843e793ac702f4e5f1689f41c1b04640a3fe94217dbcbe"
+    },
+    {
+     "dataset": "FUELINST",
+     "path": "data/raw/elexon/012/2026-09-08/fuelinst.json",
+     "sha256": "24d0a85aaf3ebf3d65b50d222fb1677e46f6bbbe0e2f29ec04b35ba8caef711a"
+    },
+    {
+     "dataset": "MID",
+     "path": "data/raw/elexon/012/2026-09-08/mid.json",
+     "sha256": "00d3f877b87f36ec65363a794ed2e5b0305f88d73af1cab3e4520b617b94a890"
+    },
+    {
+     "dataset": "SYSTEM-PRICES",
+     "path": "data/raw/elexon/012/2026-09-08/system-prices.json",
+     "sha256": "4c2c01b21feed42411a1e823c8b737a44d5a531c4ba938ba7810f8ca3084c00f"
+    }
+   ],
+   "disptav_basis": "012 declared rule; offer-side Original and Tagged nearly coincide (115.0 vs 116.6 GWh on 8 September), bid-side Original does not reconcile; see 012 AMENDMENTS.md post-acquisition note",
+   "gas_offer_mwh": "115014.244229551482656346",
+   "mid_vwap_same_periods_gbp_per_mwh": "146.89",
+   "bsad_placeholder_only": false,
+   "bsad_rows": 617,
+   "bsad_vintage": "2026-09-11 (012)",
+   "outcome": null,
+   "outcome_revisions": [],
+   "record": false,
+   "prior_max_paid_out_gbp": "30049726.049950159098647198"
+  }
+ ],
+ "propositions": {
+  "as_of": "2026-09-11",
+  "falsifier_date": "2027-03-31",
+  "falsifier_date_reached": false,
+  "record_days": [],
+  "T1": {
+   "claim": "on record days the Disaggregated BSAD net share of paid-out exceeds 5 %",
+   "threshold": "0.05",
+   "instances": [],
+   "holds": null
+  },
+  "T2": {
+   "claim": "NESO's Constraints figure, when published, exceeds the two cuts (wind-unit bids + gas-unit offers paid) for the same day",
+   "instances": [],
+   "deciding_instances": 0,
+   "holds": null
+  },
+  "T3": {
+   "claim": "on record days the gas-offer premium over APXMIDP exceeds \u00a350/MWh",
+   "threshold_gbp_per_mwh": "50",
+   "instances": [],
+   "holds": null
+  }
+ }
+}

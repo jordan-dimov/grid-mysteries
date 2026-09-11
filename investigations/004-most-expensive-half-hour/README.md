@@ -609,3 +609,26 @@ rewritten.
    `evidence/metric-sources.json` and checked. A third gap — four
    governed numbers with no evidence file behind them at all — is closed
    by `starting_state.py`, which emits the door snapshot they came from.
+
+## Outcomes appended
+
+Appended later, never edited into the text above. The sealed declaration
+(`DECLARATION-as-sealed.md`) and the results as written stand.
+
+1. **2026-09-11, from Investigation 012.** 004's accepted MWh per unit
+   (`diagnose.py`, `accepted_volumes`) were read from DISPTAV rows with
+   `dataType == "Original"`, and the accepted bid volumes in the tables
+   above (618 MWh in p38, 1,085 MWh in p42, "1,085 MWh across 113 units")
+   rest on that rule. On 012's pinned 4 and 8 September 2026, `Original`
+   rows carried about a sixth of the day's accepted bid volume published in
+   the system-prices dataset, while `Tagged` rows reconciled with it to
+   within 0.02 %; on the offer side the two nearly coincided. Elexon's
+   endpoint description gives no semantics for the four data types, so the
+   meaning of `Original` is left open. Consequence for 004: its bid-side
+   accepted volumes **may understate**, possibly by a large factor, and the
+   per-unit bid-down ranking should be read as a ranking under that rule,
+   not as the day's settlement volumes; its offer-side figures (zero
+   throughout) are as robust as 012's P3. Whether the June rows behave as
+   the September rows did is not tested here: that would mean re-reading
+   004's pinned window under an amended rule, which the project's doctrine
+   forbids. The lesson is applied as a declared gate in 013.

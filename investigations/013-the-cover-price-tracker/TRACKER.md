@@ -1,0 +1,62 @@
+# 013 — the cover price: tracker
+
+**One number, on a schedule.** For every GB settlement date from
+2026-09-09, the gross money paid out to units in the Balancing Mechanism
+(Elexon's published indicative cashflows, EBOCF, both directions, positive
+values only, labelled *paid out*), with the same day split four ways and
+laid beside what sits outside the mechanism. The method is 012's, frozen in
+`DECLARATION.md` (SHA-256 `d20d59203e7b7fda174c2c6deb2807159687bd9ddea39fe760961af884416473`), and every rule below was fixed before
+any tracker day was fetched. Batches are weekly and fetched at least three
+full days after their last date. Every day gets a row; nothing is selected
+by hand. A day is flagged **record** when its paid-out exceeds every earlier
+row's, seed rows included.
+
+**Columns.** *Paid out* and *net* are the mechanism's gross and net published
+cashflow. *Wind bids* is money paid on bids by units the register types
+`WIND` (paid to reduce); *gas offers* is money paid on offers by `CCGT` and
+`OCGT` units (paid to increase); *other* is the residual of paid-out. *Gas
+offer £/MWh* pairs those pounds with accepted MWh from the DISPTAV data type
+that reconciles with the day's system-prices acceptance totals within 0.1 %
+in both directions (the *DISPTAV type* column names it); if none reconciles
+the price is not computed. *Premium* is that price less the APX market
+index (`APXMIDP`) weighted by the same MWh in the same periods. *BSAD net*
+is NESO's Disaggregated BSAD for the day, outside the mechanism; an all-zero
+day is *unpopulated*, not zero. *Sign* records that wind-unit bid cashflows
+were predominantly positive by rows and by pounds. *NESO Constraints* is
+NESO's own attribution (Daily Balancing Costs 2026-27), blank until its file
+reaches the day, then appended with the vintage date and never revised in
+place; *L1 ÷ two cuts* divides it by wind bids plus gas offers.
+
+**Seed rows** (1–8 September, marked *seed (012)*) are 012's published
+figures, copied, not recomputed; they set the bar for the first record and
+are never flagged. Their price columns (†) are 012's declared `Original`
+rule, which reconciles on offers but not on bids. Cashflows are indicative
+and pre-settlement; nothing here is a saving, a loss, a boundary attribution
+or a characterisation of any party. Every artefact digest is in
+`evidence/tracker.json`.
+
+Last computed 2026-09-11T19:29:34Z (run date 2026-09-11). NESO vintages on disk:
+none.
+
+## Propositions
+
+- **T1** — on record days the Disaggregated BSAD net share of paid-out exceeds 5 %: undecided (0 instances). Falsifier date 2027-03-31.
+- **T2** — NESO's Constraints figure, when published, exceeds the two cuts (wind-unit bids + gas-unit offers paid) for the same day: undecided (0 instances, 0 deciding). Falsifier date 2027-03-31.
+- **T3** — on record days the gas-offer premium over APXMIDP exceeds £50/MWh: undecided (0 instances). Falsifier date 2027-03-31.
+- Record days so far: none. As of 2026-09-11.
+
+## The table
+
+Money in £m; shares of paid-out. Blank means not computable from what is
+pinned, never zero.
+
+| Day | Flag | Paid out £m | Net £m | Wind bids £m (share) | Gas offers £m (share) | Other £m (share) | Gas offer £/MWh | Premium £/MWh | DISPTAV type | BSAD net £m (share) | Sign | NESO Constraints £m (vintage) | L1 ÷ two cuts |
+|---|---|---:|---:|---:|---:|---:|---:|---:|---|---:|---|---:|---:|
+| 2026-09-01 | seed (012) | 12.73 | 10.56 | 1.44 (11.3 %) | 9.65 (75.8 %) | 1.63 (12.8 %) |  |  |  |  | holds |  |  |
+| 2026-09-02 | seed (012) | 4.76 | 2.20 | 0.04 (0.9 %) | 4.52 (94.8 %) | 0.20 (4.3 %) |  |  |  |  | **fails** |  |  |
+| 2026-09-03 | seed (012) | 15.79 | 14.66 | 1.88 (11.9 %) | 12.57 (79.6 %) | 1.34 (8.5 %) |  |  |  |  | holds |  |  |
+| 2026-09-04 | seed (012) | 30.05 | 29.26 | 5.39 (18.0 %) | 18.68 (62.2 %) | 5.98 (19.9 %) | 201.77 | 110.65 | Original † | 1.46 (4.9 %) | holds |  |  |
+| 2026-09-05 | seed (012) | 17.51 | 16.75 | 3.84 (21.9 %) | 9.07 (51.8 %) | 4.61 (26.3 %) |  |  |  |  | holds |  |  |
+| 2026-09-06 | seed (012) | 19.34 | 18.13 | 2.03 (10.5 %) | 14.84 (76.8 %) | 2.47 (12.8 %) |  |  |  |  | holds |  |  |
+| 2026-09-07 | seed (012) | 19.75 | 17.82 | 1.49 (7.6 %) | 16.99 (86.0 %) | 1.26 (6.4 %) |  |  |  |  | holds |  |  |
+| 2026-09-08 | seed (012) | 33.61 | 31.56 | 3.77 (11.2 %) | 26.82 (79.8 %) | 3.02 (9.0 %) | 229.53 | 82.64 | Original † | 3.33 (9.9 %) | holds |  |  |

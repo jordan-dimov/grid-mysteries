@@ -75,3 +75,46 @@ more readily, never less.
   `Original` DISPTAV volume are excluded from both sides. `results.json`
   carries the L2 gas-offer total beside the P3 numerator so the gap is
   visible. No change; noted so the reader is not surprised.
+
+## Post-acquisition note of 2026-09-11 (after the sealed run; **not applied** to this window)
+
+Written after `run.py --seal a349ea80 --phase all` completed at
+2026-09-11T17:00Z. Nothing in it changes a verdict of this run; the
+declared rule stands as run and is reported as such in `RESULTS.md`.
+
+**DISPTAV `dataType`.** The declaration bound accepted MWh to DISPTAV rows
+with `dataType == "Original"`. On the pinned data those rows carry 24.8 GWh
+of accepted bids on 2026-09-08 against 143.7 GWh of total accepted bid
+volume published in the same day's system-prices dataset, and for
+wind-classified units 16.5 GWh. Rows with `dataType == "Tagged"` sum to
+143.7 GWh (both directions reconcile with the system-prices totals to
+within 0.02 %); for wind units they carry 118.8 GWh, beside the source's
+114 GWh. On the offer side `Original` and `Tagged` nearly coincide
+(130.1 vs 132.1 GWh), which is why P3's gas-offer price is barely
+sensitive (£229.53 under the declared rule, £230.09 under `Tagged`).
+
+Elexon's Insights API description for the endpoint states no semantics
+for the four data types (`Original`, `Original-Priced`, `Re-priced`,
+`Tagged`). The legacy BMRA interface definition, read through a
+third-party transcription that cites Elexon's interface definition
+documents, disaggregates the period total acceptance volume into
+*tagged*, *repriced* and *originally-priced* elements. On the pinned
+data the four Insights types do not sum to the settlement total, so
+their exact meaning is left **open**. What is established empirically:
+`Tagged` is the type that reconciles with the settlement total, and
+`Original` under-reads bid volume by a factor of about six on both days.
+
+Consequences, recorded rather than applied:
+
+- The run's wind-bid MWh and £/MWh under the declared rule (16.5 GWh,
+  £16.15/MWh on 8 September) are reported as what the rule produced and
+  labelled as not reconciling. The `Tagged` pairing is reported beside
+  them as a **post-hoc sensitivity** from `posthoc_disptav.py`, never as
+  a verdict.
+- Investigation 004 used the same `Original` rule for its half-hour; its
+  offer-side figures are as robust as P3 here, its bid-side volumes are
+  not, and that is noted for 004 as an outcome to append, not a rewrite.
+- Any future declaration that pairs cashflow with DISPTAV volume should
+  bind to the data type that reconciles with the system-prices totals
+  and make that reconciliation a declared gate. Under the project's rule,
+  that amended method may not be run against 1–8 September 2026.

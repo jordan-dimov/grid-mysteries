@@ -1,0 +1,11 @@
+{
+ "declaration_sha256": "a349ea80378d05c1ae498291f22b599c245b486c8bfbf9de5c160523cf098b2c",
+ "seal": "a349ea80",
+ "run_date": "2026-09-11",
+ "phases": [
+  {
+   "phase": "all",
+   "at": "2026-09-11T17:00:09.389121+00:00"
+  }
+ ]
+}

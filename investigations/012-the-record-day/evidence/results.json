@@ -1,0 +1,308 @@
+{
+ "declaration_sha256": "a349ea80378d05c1ae498291f22b599c245b486c8bfbf9de5c160523cf098b2c",
+ "days": {
+  "2026-09-08": {
+   "role": "selected",
+   "L1": {
+    "rows": 0,
+    "constraints_gbp": null
+   },
+   "L2": {
+    "settlement_date": "2026-09-08",
+    "available": true,
+    "periods_with_rows": 48,
+    "units": 352,
+    "total_gbp": "31561031.823637318056408151",
+    "paid_out_gbp": "33610462.712976159288981078",
+    "paid_in_gbp": "-2049430.889338841232572927",
+    "by_class_gbp": {
+     "wind": {
+      "offer": "-4185.530817132836780981",
+      "bid": "3244522.546522000755475642"
+     },
+     "gas": {
+      "offer": "26820639.172920768961194702",
+      "bid": "-172797.764522404240201085"
+     },
+     "other": {
+      "offer": "2960139.188250135392266145",
+      "bid": "-1287285.788716049975546272"
+     }
+    },
+    "paid_out_by_class_gbp": {
+     "wind": {
+      "offer": "500.139033912621691091",
+      "bid": "3768601.305298115938623229"
+     },
+     "gas": {
+      "offer": "26820639.172920768961194702",
+      "bid": "0.008387557958496005"
+     },
+     "other": {
+      "offer": "2960139.188250135392266145",
+      "bid": "60582.899085668416709906"
+     }
+    },
+    "wind_bid_rows": {
+     "positive": 2558,
+     "negative": 192
+    },
+    "accepted_mwh_by_class": {
+     "wind": {
+      "offer": "0",
+      "bid": "16464.459166666666696641"
+     },
+     "gas": {
+      "offer": "115014.244229551482656346",
+      "bid": "1224.134111842231861898"
+     },
+     "other": {
+      "offer": "15120.632132640893553261",
+      "bid": "7116.997197165817913440"
+     }
+    },
+    "gas_offer_price": {
+     "gas_offer_gbp": "26399222.574746160590322593",
+     "gas_offer_mwh": "115014.244229551482656346",
+     "gas_offer_vwap_gbp_per_mwh": "229.53",
+     "mid_vwap_same_periods_gbp_per_mwh": "146.89",
+     "premium_gbp_per_mwh": "82.64",
+     "periods_without_mid": 0
+    },
+    "wind_bid": {
+     "gbp": "265944.512004606500998001",
+     "mwh": "16464.459166666666696641",
+     "vwap_gbp_per_mwh": "16.15"
+    },
+    "wind_bid_paid_by_gsp_group_gbp": {
+     "_N": "80037.414291570630538789",
+     "_P": "132244.510484018883460064",
+     "unknown": "3556319.380522526424624376"
+    },
+    "mid_periods": 48
+   },
+   "L3": {
+    "system_cost_gbp": "963780.50",
+    "energy_cost_gbp": "2370209.35",
+    "system_volume_mwh": "3600.684",
+    "energy_volume_mwh": "12594.60",
+    "rows": 617,
+    "nonzero_rows": 600,
+    "net_cost_gbp": "3333989.85",
+    "available": true,
+    "placeholder_only": false
+   },
+   "L4": {
+    "rows": 0,
+    "constraint_offers_mwh": null,
+    "constraint_bids_mwh": null
+   },
+   "context": {
+    "available": true,
+    "mean_mw_by_fuel": {
+     "BIOMASS": "2602",
+     "CCGT": "5554",
+     "COAL": "0",
+     "INTELEC": "91",
+     "INTEW": "-196",
+     "INTFR": "485",
+     "INTGRNL": "-219",
+     "INTIFA2": "19",
+     "INTIRL": "-258",
+     "INTNED": "0",
+     "INTNEM": "-405",
+     "INTNSL": "206",
+     "INTVKL": "-180",
+     "NPSHYD": "333",
+     "NUCLEAR": "3244",
+     "OCGT": "9",
+     "OIL": "0",
+     "OTHER": "783",
+     "PS": "-123",
+     "WIND": "13109"
+    }
+   },
+   "propositions": {
+    "sign_convention_holds": true,
+    "wind_bid_rows": {
+     "positive": 2558,
+     "negative": 192
+    },
+    "wind_bid_signed_sum_gbp": "3244522.546522000755475642",
+    "P1": {
+     "wind_bid_share_of_paid_out": "0.1121",
+     "gas_offer_share_of_paid_out": "0.7980",
+     "thresholds": {
+      "wind_bid_share_max": "0.25",
+      "gas_offer_share_min": "0.50"
+     },
+     "holds": true
+    },
+    "P2": {
+     "bsad_net_cost_gbp": "3333989.85",
+     "bsad_share_of_paid_out": "0.0992",
+     "threshold_min": "0.05",
+     "holds": true
+    },
+    "P3": {
+     "gas_offer_vwap_gbp_per_mwh": "229.53",
+     "reference_gbp_per_mwh": "231",
+     "tolerance": "0.15",
+     "holds": true
+    }
+   }
+  },
+  "2026-09-04": {
+   "role": "comparison",
+   "L1": {
+    "rows": 0,
+    "constraints_gbp": null
+   },
+   "L2": {
+    "settlement_date": "2026-09-04",
+    "available": true,
+    "periods_with_rows": 48,
+    "units": 403,
+    "total_gbp": "29260439.324657287257996179",
+    "paid_out_gbp": "30049726.049950159098647198",
+    "paid_in_gbp": "-789286.725292871840651019",
+    "by_class_gbp": {
+     "wind": {
+      "offer": "35457.781533212955870522",
+      "bid": "5253172.740581323083459248"
+     },
+     "gas": {
+      "offer": "18677715.543382856579881960",
+      "bid": "-327.202437071483250178"
+     },
+     "other": {
+      "offer": "5748024.202518886750744313",
+      "bid": "-453603.740921920628709686"
+     }
+    },
+    "paid_out_by_class_gbp": {
+     "wind": {
+      "offer": "38119.187841379622447176",
+      "bid": "5394895.486054802082547247"
+     },
+     "gas": {
+      "offer": "18677715.543382856579881960",
+      "bid": "0"
+     },
+     "other": {
+      "offer": "5748024.202518886750744313",
+      "bid": "190971.630152234063026502"
+     }
+    },
+    "wind_bid_rows": {
+     "positive": 3328,
+     "negative": 82
+    },
+    "accepted_mwh_by_class": {
+     "wind": {
+      "offer": "5.589194908840575405",
+      "bid": "6266.380393750000044273"
+     },
+     "gas": {
+      "offer": "77628.662559675887527128",
+      "bid": "2.165236109006734132"
+     },
+     "other": {
+      "offer": "34420.602633198685256114",
+      "bid": "6477.460333612197264871"
+     }
+    },
+    "gas_offer_price": {
+     "gas_offer_gbp": "15663093.427810224850944118",
+     "gas_offer_mwh": "77628.662559675887527128",
+     "gas_offer_vwap_gbp_per_mwh": "201.77",
+     "mid_vwap_same_periods_gbp_per_mwh": "91.12",
+     "premium_gbp_per_mwh": "110.65",
+     "periods_without_mid": 0
+    },
+    "wind_bid": {
+     "gbp": "10077.276610903047284754",
+     "mwh": "6266.380393750000044273",
+     "vwap_gbp_per_mwh": "1.61"
+    },
+    "wind_bid_paid_by_gsp_group_gbp": {
+     "_D": "2789.011692329084326047",
+     "_N": "102362.576083806985223214",
+     "_P": "374822.106078200332181161",
+     "unknown": "4914921.792200465680816825"
+    },
+    "mid_periods": 48
+   },
+   "L3": {
+    "system_cost_gbp": "1057950.78",
+    "energy_cost_gbp": "401889.82",
+    "system_volume_mwh": "8020.0",
+    "energy_volume_mwh": "2500.0",
+    "rows": 312,
+    "nonzero_rows": 282,
+    "net_cost_gbp": "1459840.60",
+    "available": true,
+    "placeholder_only": false
+   },
+   "L4": {
+    "rows": 0,
+    "constraint_offers_mwh": null,
+    "constraint_bids_mwh": null
+   },
+   "context": {
+    "available": true,
+    "mean_mw_by_fuel": {
+     "BIOMASS": "2983",
+     "CCGT": "4120",
+     "COAL": "0",
+     "INTELEC": "-225",
+     "INTEW": "-140",
+     "INTFR": "133",
+     "INTGRNL": "-275",
+     "INTIFA2": "-263",
+     "INTIRL": "-221",
+     "INTNED": "-264",
+     "INTNEM": "-491",
+     "INTNSL": "147",
+     "INTVKL": "468",
+     "NPSHYD": "208",
+     "NUCLEAR": "4571",
+     "OCGT": "13",
+     "OIL": "0",
+     "OTHER": "787",
+     "PS": "-464",
+     "WIND": "13019"
+    }
+   },
+   "propositions": {
+    "sign_convention_holds": true,
+    "wind_bid_rows": {
+     "positive": 3328,
+     "negative": 82
+    },
+    "wind_bid_signed_sum_gbp": "5253172.740581323083459248",
+    "P1": {
+     "wind_bid_share_of_paid_out": "0.1795",
+     "gas_offer_share_of_paid_out": "0.6216",
+     "thresholds": {
+      "wind_bid_share_max": "0.25",
+      "gas_offer_share_min": "0.50"
+     },
+     "holds": true
+    },
+    "P2": {
+     "bsad_net_cost_gbp": "1459840.60",
+     "bsad_share_of_paid_out": "0.0486",
+     "threshold_min": "0.05",
+     "holds": false
+    },
+    "P3": {
+     "gas_offer_vwap_gbp_per_mwh": "201.77",
+     "reference_gbp_per_mwh": "231",
+     "tolerance": "0.15",
+     "holds": true
+    }
+   }
+  }
+ }
+}

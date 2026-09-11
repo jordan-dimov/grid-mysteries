@@ -41,7 +41,7 @@ and pre-settlement; nothing here is a saving, a loss, a boundary attribution
 or a characterisation of any party. Every artefact digest is in
 `evidence/tracker.json`.
 
-Last computed 2026-09-11T19:56:17Z (run date 2026-09-11). NESO vintages on disk:
+Last computed 2026-09-11T20:09:46Z (run date 2026-09-11). NESO vintages on disk:
 none.
 
 ## Propositions

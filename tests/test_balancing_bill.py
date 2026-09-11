@@ -66,7 +66,7 @@ def test_blank_neso_column_says_not_yet_published_as_of_the_run_date():
     )
     cells = bb.row_cells(published, "2026-10-02")
     assert cells[8] == "£40.00m (published 2 Oct 2026)"
-    assert cells[9] == "theirs is 1.31× ours"
+    assert cells[9] == "1.31× the headline number"
 
 
 def test_record_flag_renders_the_badge_and_seed_rows_the_dagger_and_label():
@@ -122,6 +122,8 @@ def test_page_is_self_contained_and_a_pure_function_of_the_tracker():
     for heading in bb.COLUMNS:
         assert f'<th scope="col">{escape(heading)}</th>' in page
     assert "No day has yet exceeded" in page
+    assert "which is what the daily trackers add up" in page
+    assert "Official figure vs the headline number" in page
     with_record = bb.render_page(
         tracker([ROW, dict(ROW, settlement_date="2026-09-09", record=True)])
     )

@@ -41,7 +41,7 @@ COLUMNS = (
     "Above the market price by",
     "Spent outside the main market",
     "Grid operator's own figure",
-    "Our figure vs theirs",
+    "Official figure vs the headline number",
 )
 
 BLANK = "—"
@@ -103,7 +103,7 @@ def row_cells(row: dict[str, Any], as_of: str) -> list[str]:
         neso_cell = f"{money_m(l1)} (published {day_label(outcome['vintage'])})"
         ratio = outcome.get("ratio_l1_to_two_cut")
         versus = (
-            f"theirs is {Decimal(ratio).quantize(Decimal('0.01'))}× ours"
+            f"{Decimal(ratio).quantize(Decimal('0.01'))}× the headline number"
             if ratio is not None
             else BLANK
         )
@@ -255,8 +255,9 @@ settlement totals, and if none does the price is left blank.
 <em>Not yet populated</em> means the grid operator's file for that day still holds
 placeholder rows. <em>Not yet published</em> means the grid operator's own
 attribution has not yet reached that day; it is added, with the date it
-appeared, when it does. A blank means the figure could not be computed from
-what is pinned, never that it is zero.
+appeared, when it does. The <em>headline number</em> is wind payments plus gas
+payments, which is what the daily trackers add up. A blank means the figure
+could not be computed from what is pinned, never that it is zero.
 {record_line}</p>
 
 <h2>How the numbers are made</h2>

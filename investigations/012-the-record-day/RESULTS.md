@@ -2,9 +2,17 @@
 
 **Status**: run 2026-09-11 under seal `a349ea80` (declaration SHA-256
 `a349ea80378d05c1ae498291f22b599c245b486c8bfbf9de5c160523cf098b2c`,
-byte-identical to the frozen file). Not published. Amendments 1 and 2
+byte-identical to the frozen file). Amendments 1 and 2
 (`AMENDMENTS.md`, pre-acquisition) applied; the post-acquisition note
 there is not applied.
+
+**Released**: the sponsor posted `draft-post.md` on LinkedIn on
+2026-09-11, which is the second seal for this investigation. The text as
+released is the version committed at 104d27e; the post's URL is not
+recorded here. Anything learned after release (NESO's L1/L4 rows for the
+window, settlement revisions of the indicative cashflows, the meaning of
+the DISPTAV data types) is appended as outcome, never edited into the
+sections below.
 
 ## 1. The mystery
 

@@ -1,6 +1,6 @@
-# The record day, reconstructed (draft, not published)
+# The record day, reconstructed
 
-*Grid Mysteries 012. Draft of 2026-09-11; awaiting the second seal.*
+*Grid Mysteries 012. Drafted and posted on LinkedIn by the sponsor on 2026-09-11 (second seal). This file is the text as released, at commit 104d27e.*
 
 On 8 September 2026, Kilowatts' *Dispatches* called it the most expensive
 day of constraint management in at least five years, and said something

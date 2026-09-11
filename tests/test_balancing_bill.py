@@ -1,0 +1,128 @@
+import re
+from html import escape
+
+from grid_mysteries.rendering import balancing_bill as bb
+
+ROW = {
+    "settlement_date": "2026-09-08",
+    "seed": False,
+    "available": True,
+    "record": False,
+    "paid_out_gbp": "33610462.712976159288981078",
+    "net_gbp": "31561031.82",
+    "wind_bid_gbp": "3768601.305298115938623229",
+    "wind_bid_share": "0.1121",
+    "gas_offer_gbp": "26820639.172920768961194702",
+    "gas_offer_share": "0.7980",
+    "other_gbp": "3021222.234757274389163147",
+    "other_share": "0.0899",
+    "two_cut_gbp": "30589240.48",
+    "disptav_type": "Tagged",
+    "gas_offer_vwap_gbp_per_mwh": "229.53",
+    "premium_gbp_per_mwh": "82.64",
+    "bsad_net_gbp": "3333989.85",
+    "bsad_share": "0.0992",
+    "bsad_placeholder_only": False,
+    "outcome": None,
+}
+
+
+def tracker(rows, **extra):
+    return {
+        "declaration_sha256": "d20d59203e7b7fda174c2c6deb2807159687bd9ddea39fe760961af884416473",
+        "computed_at": "2026-09-11T20:00:00+00:00",
+        "run_date": "2026-09-11",
+        "rows": rows,
+        **extra,
+    }
+
+
+def test_fixture_row_renders_to_the_expected_cells():
+    assert bb.row_cells(ROW, "2026-09-11") == [
+        "8 Sep 2026",
+        "£33.61m",
+        "£3.77m (11.2%)",
+        "£26.82m (79.8%)",
+        "£3.02m (9.0%)",
+        "£229.53",
+        "£82.64",
+        "£3.33m (9.9%)",
+        "not yet published (as of 11 Sep 2026)",
+        "—",
+    ]
+
+
+def test_blank_neso_column_says_not_yet_published_as_of_the_run_date():
+    cells = bb.row_cells(ROW, "2026-10-02")
+    assert cells[8] == "not yet published (as of 2 Oct 2026)"
+    assert cells[9] == "—"
+    published = dict(
+        ROW,
+        outcome={
+            "vintage": "2026-10-02",
+            "l1_constraints_gbp": "40000000",
+            "ratio_l1_to_two_cut": "1.3076",
+        },
+    )
+    cells = bb.row_cells(published, "2026-10-02")
+    assert cells[8] == "£40.00m (published 2 Oct 2026)"
+    assert cells[9] == "theirs is 1.31× ours"
+
+
+def test_record_flag_renders_the_badge_and_seed_rows_the_dagger_and_label():
+    html = bb.render_table_row(dict(ROW, record=True), "2026-09-11")
+    assert '<span class="tag record">record</span>' in html
+    assert 'class="record"' in html
+    seed = bb.render_table_row(dict(ROW, seed=True), "2026-09-11")
+    assert '<span class="tag seed"' in seed
+    assert "£229.53 †" in seed
+    assert "record</span>" not in seed
+    plain = bb.render_table_row(ROW, "2026-09-11")
+    assert "tag" not in plain
+
+
+def test_unavailable_and_placeholder_rows():
+    cells = bb.row_cells({"settlement_date": "2026-09-12", "available": False}, "2026-09-11")
+    assert cells[:2] == ["12 Sep 2026", "no published data"] and set(cells[2:]) == {"—"}
+    cells = bb.row_cells(
+        dict(ROW, bsad_net_gbp=None, bsad_share=None, bsad_placeholder_only=True), "2026-09-11"
+    )
+    assert cells[7] == "not yet populated"
+    cells = bb.row_cells(
+        dict(ROW, gas_offer_vwap_gbp_per_mwh=None, premium_gbp_per_mwh=None), "2026-09-11"
+    )
+    assert cells[5] == "—" and cells[6] == "—"
+
+
+def test_table_is_newest_first():
+    rows = [dict(ROW, settlement_date=d) for d in ("2026-09-01", "2026-09-08", "2026-09-04")]
+    html = bb.render_table(rows, "2026-09-11")
+    assert re.findall(r'datetime="([^"]+)"', html) == ["2026-09-08", "2026-09-04", "2026-09-01"]
+
+
+def test_corrections_section_renders_its_empty_state():
+    assert "None so far" in bb.render_corrections(None)
+    assert "None so far" in bb.render_corrections([])
+    listed = bb.render_corrections([{"date": "2026-10-01", "text": "Fixed <x>"}])
+    assert "<ol>" in listed and "Fixed &lt;x&gt;" in listed and "1 Oct 2026" in listed
+
+
+def test_page_is_self_contained_and_a_pure_function_of_the_tracker():
+    page = bb.render_page(tracker([ROW]))
+    assert page == bb.render_page(tracker([ROW]))
+    assert "<script" not in page and "http" not in page.split("<body>")[0].split("<style>")[
+        0
+    ].replace('lang="en-GB"', "")
+    assert page.count("<link") == 0 and 'src="' not in page
+    assert "The Balancing Bill" in page and "Who got paid to keep Britain" in page
+    assert "None so far" in page
+    assert "jdimov@a115.co.uk" in page and "Shell, Centrica and Limejump" in page
+    assert "investigations/013-the-cover-price-tracker/DECLARATION.md" in page
+    assert "d20d59203e7b7fda" in page
+    for heading in bb.COLUMNS:
+        assert f'<th scope="col">{escape(heading)}</th>' in page
+    assert "No day has yet exceeded" in page
+    with_record = bb.render_page(
+        tracker([ROW, dict(ROW, settlement_date="2026-09-09", record=True)])
+    )
+    assert "Record days so far: 9 Sep 2026." in with_record

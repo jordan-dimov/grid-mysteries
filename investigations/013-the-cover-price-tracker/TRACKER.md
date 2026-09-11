@@ -1,4 +1,10 @@
-# 013 — the cover price: tracker
+# The Balancing Bill — tracker (investigation 013, the cover price tracker)
+
+*Public name: **The Balancing Bill**, who got paid to keep Britain's grid
+balanced, day by day. The investigation's id, folder, declaration, module and
+evidence paths keep their names; only the render, the page and the drafts use
+the public name. The page at `site/index.html` is a pure function of
+`evidence/tracker.json`.*
 
 **One number, on a schedule.** For every GB settlement date from
 2026-09-09, the gross money paid out to units in the Balancing Mechanism
@@ -35,7 +41,7 @@ and pre-settlement; nothing here is a saving, a loss, a boundary attribution
 or a characterisation of any party. Every artefact digest is in
 `evidence/tracker.json`.
 
-Last computed 2026-09-11T19:29:34Z (run date 2026-09-11). NESO vintages on disk:
+Last computed 2026-09-11T19:56:17Z (run date 2026-09-11). NESO vintages on disk:
 none.
 
 ## Propositions

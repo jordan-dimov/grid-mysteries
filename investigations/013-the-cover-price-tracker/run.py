@@ -32,6 +32,7 @@ from grid_mysteries.corpus import PERIODS, REPO_ROOT, load_records
 from grid_mysteries.evidence import write_json
 from grid_mysteries.investigations import cover_price as cp
 from grid_mysteries.investigations import record_day as rd
+from grid_mysteries.rendering import balancing_bill
 from grid_mysteries.sources import elexon, neso
 from grid_mysteries.sources.pinning import load_journal, pin, progress
 
@@ -41,6 +42,7 @@ DRAFTS = HERE / "drafts"
 DECLARATION = HERE / "DECLARATION.md"
 TRACKER_JSON = EVIDENCE / "tracker.json"
 TRACKER_MD = HERE / "TRACKER.md"
+SITE_INDEX = REPO_ROOT / "site" / "index.html"
 RAW_ELEXON = REPO_ROOT / "data" / "raw" / "elexon" / "013"
 RAW_NESO = REPO_ROOT / "data" / "raw" / "neso" / "013"
 SEED_EVIDENCE = REPO_ROOT / "investigations" / "012-the-record-day" / "evidence"
@@ -419,7 +421,13 @@ def compute(run_date: str) -> dict[str, Any]:
 
 
 METHOD = """\
-# 013 — the cover price: tracker
+# The Balancing Bill — tracker (investigation 013, the cover price tracker)
+
+*Public name: **The Balancing Bill**, who got paid to keep Britain's grid
+balanced, day by day. The investigation's id, folder, declaration, module and
+evidence paths keep their names; only the render, the page and the drafts use
+the public name. The page at `site/index.html` is a pure function of
+`evidence/tracker.json`.*
 
 **One number, on a schedule.** For every GB settlement date from
 2026-09-09, the gross money paid out to units in the Balancing Mechanism
@@ -502,20 +510,22 @@ def render(tracker: dict[str, Any]) -> None:
         propositions=render_propositions(tracker["propositions"]),
     )
     TRACKER_MD.write_text(text + cp.render_table(tracker["rows"]) + "\n")
+    SITE_INDEX.parent.mkdir(parents=True, exist_ok=True)
+    SITE_INDEX.write_text(balancing_bill.render_page(tracker))
     for row in tracker["rows"]:
         if row.get("record"):
             write_draft(row)
 
 
 DRAFT = """\
-# {day}: a new cover price
+# The Balancing Bill: {day} sets a new record
 
-*Grid Mysteries 013, draft held for the sponsor. Not released. Figures are
-published indicative cashflows, pre-settlement; every digest is in
-`evidence/tracker.json`.*
+*Grid Mysteries 013 (public name: The Balancing Bill), draft held for the
+sponsor. Not released. Figures are published indicative cashflows,
+pre-settlement; every digest is in `evidence/tracker.json`.*
 
 On {day}, gross money paid out to units in Britain's Balancing Mechanism
-was **£{paid_out}m**, above every earlier day this tracker holds (the
+was **£{paid_out}m**, above every earlier day The Balancing Bill holds (the
 previous bar was £{prior}m). Net of money paid in, the mechanism's figure
 was £{net}m.
 

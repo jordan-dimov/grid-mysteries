@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+# The tracker-013 cron job on Render (ops/VINTAGE-CAPTURE.md, section 5):
+# pull the instrument's state from the archive, acquire every batch eligible
+# today under the declaration seal supplied by the environment, push the new
+# pinned artefacts and journals back, ping the healthcheck. Compute and render
+# stay on the laptop after the watchdog syncs the state into the repository.
+#
+# Environment: VINTAGE_STORE, SEAL_013 (the declaration's digest prefix),
+# HEALTHCHECK_URL_013 (optional), AWS credentials for the capture writer.
+set -uo pipefail
+cd "$(dirname "$0")/.."
+export PATH="${HOME}/.local/bin:${PATH}"
+: "${VINTAGE_STORE:?VINTAGE_STORE is required}"
+: "${SEAL_013:?SEAL_013 is required (prefix of the 013 declaration SHA-256)}"
+today=$(date -u +%F)
+run() { uv run --no-sync --group capture --group registers "$@"; }
+ping() {  # ok|fail
+  [[ -n "${HEALTHCHECK_URL_013:-}" ]] || return 0
+  local url="$HEALTHCHECK_URL_013"; [[ "$1" == fail ]] && url="${url%/}/fail"
+  curl -fsS -m 20 --retry 3 -o /dev/null "$url" || true
+}
+echo "=== $(date -u +%FT%TZ) tracker-013 on $today"
+run grid-mysteries capture pull-state --name 013 || { ping fail; exit 1; }
+run python investigations/013-the-cover-price-tracker/run.py \
+  --seal "$SEAL_013" --phase acquire --run-date "$today"
+status=$?
+# 2 is the runner's "nothing eligible / seal mismatch" refusal; only a real
+# failure (anything else non-zero) fails the check.
+if [[ $status -ne 0 && $status -ne 2 ]]; then ping fail; exit $status; fi
+run grid-mysteries capture push-state --name 013 \
+  --path data/raw/elexon/013 --path data/raw/neso/013 \
+  --path investigations/013-the-cover-price-tracker/evidence || { ping fail; exit 1; }
+ping ok
+echo "=== done"

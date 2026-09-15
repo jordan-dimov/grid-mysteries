@@ -174,6 +174,17 @@ is then a legitimate source for a declaration frozen after that date.
    sync into the repo; `scripts/run-013-batch-1` documented as retired on
    deploy.
 
+## 10a. Build status (2026-09-15)
+
+Parts 1 to 6 are built and committed; nothing is deployed and no crontab
+line has been changed. Part 5 (the ESO map) is the plan's `ESO-MAP`
+resource from part 2 plus the retirement notice on
+`scripts/snapshot-eso-map`; part 6 is `scripts/run-013-render` with the
+`tracker-013` cron entry and `capture pull-state` / `push-state`. Not
+built: the log-position record at freeze (needs the log bucket to exist)
+and the `ots upgrade` sweep in the watchdog (a follow-up once proofs exist
+in the bucket).
+
 ## 11. Cost
 
 Render cron: about one dollar a month plus minutes of compute a day. S3:

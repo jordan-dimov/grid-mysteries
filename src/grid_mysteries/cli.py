@@ -46,6 +46,15 @@ def app(argv: list[str] | None = None) -> None:
     run.add_argument(
         "--no-witness", action="store_true", help="skip the manifest timestamping step"
     )
+    for name, help_text in (
+        ("pull-state", "Download an instrument's state from the archive into the repository."),
+        ("push-state", "Upload an instrument's pinned artefacts and journals to the archive."),
+    ):
+        sub = capture_commands.add_parser(name, help=help_text)
+        sub.add_argument("--store", default=os.environ.get("VINTAGE_STORE", ""))
+        sub.add_argument("--name", required=True, help="instrument name, e.g. 013")
+        sub.add_argument("--repo-root", default=".", type=Path)
+        sub.add_argument("--path", action="append", default=[], type=Path, help="repo-relative")
     check = capture_commands.add_parser("check", help="The watchdog: five checks and a sync.")
     check.add_argument("--store", default=os.environ.get("VINTAGE_STORE", ""))
     check.add_argument("--repo-root", default=".", type=Path)
@@ -80,6 +89,9 @@ def capture_command(args: argparse.Namespace) -> None:
         raise SystemExit("capture: --store or VINTAGE_STORE is required")
     if args.capture_command == "check":
         watchdog_command(args)
+        return
+    if args.capture_command in ("pull-state", "push-state"):
+        state_command(args)
         return
     from grid_mysteries.capture.fetch import HttpFetcher
     from grid_mysteries.capture.run import healthcheck_pinger, run_capture
@@ -118,6 +130,25 @@ def capture_command(args: argparse.Namespace) -> None:
         print(f"witnessed: {', '.join(status.proof_keys)}")
     print(f"{'ok' if status.ok else 'FAILED'}: manifest {status.manifest_key}")
     if not status.ok:
+        sys.exit(1)
+
+
+def state_command(args: argparse.Namespace) -> None:
+    from grid_mysteries.capture import state
+    from grid_mysteries.capture.store import store_from_url
+
+    store = store_from_url(args.store)
+    root = args.repo_root.resolve()
+    if args.capture_command == "pull-state":
+        lines = state.pull(store, root, args.name)
+    else:
+        if not args.path:
+            raise SystemExit("push-state: at least one --path is required")
+        lines = state.push(store, root, args.name, args.path)
+    for line in lines:
+        print(line)
+    print(f"{args.capture_command} {args.name}: {len(lines)} file(s)")
+    if any(line.startswith("MISMATCH") for line in lines):
         sys.exit(1)
 
 

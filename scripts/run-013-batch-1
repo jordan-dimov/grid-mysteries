@@ -6,6 +6,12 @@
 # 19th only delays the run. The runner itself is idempotent over pinned bytes.
 #
 #   0 9 * * * /home/jdimov/dev/grid-mysteries/scripts/run-013-batch-1 >> /home/jdimov/dev/grid-mysteries/data/raw/elexon/013-cron.log 2>&1
+#
+# RETIRED ON DEPLOY of the tracker-013 Render cron job (ops/VINTAGE-CAPTURE.md,
+# scripts/run-013-render): acquisition then runs unattended under the
+# instrument's declaration seal from the environment, and the watchdog syncs
+# the pinned artefacts and journals into this repository. Remove this
+# script's crontab line when the sponsor deploys.
 set -euo pipefail
 cd "$(dirname "$0")/.."
 export PATH="${HOME}/.local/bin:${PATH}"

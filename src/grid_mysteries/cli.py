@@ -124,6 +124,8 @@ def capture_command(args: argparse.Namespace) -> None:
             f"{r.name:36s} {r.artefacts:5d} artefacts {r.bytes:11,d} bytes"
             + (f"  ERROR {r.error}" if r.error else "")
         )
+    if status.store_error:
+        print(f"store: {status.store_error}")
     if status.witness_error:
         print(f"witness: {status.witness_error}")
     elif status.proof_keys:

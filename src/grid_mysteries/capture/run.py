@@ -45,6 +45,7 @@ class Status:
     manifest_key: str = ""
     proof_keys: list[str] = field(default_factory=list)
     witness_error: str | None = None
+    store_error: str | None = None
     resources: list[ResourceStatus] = field(default_factory=list)
     #: "<resource>/<dataset>" -> {"sha256", "day", "key"}: the latest copy of each artefact.
     digests: dict[str, dict[str, str]] = field(default_factory=dict)
@@ -159,13 +160,15 @@ def run_capture(
                 rs.bytes += len(captured.body)
         except Exception as exc:  # noqa: BLE001 - one resource's failure never stops the others
             rs.error = f"{type(exc).__name__}: {exc}"[:500]
-    existing = store.get(manifest_key(day))
-    text = (existing.decode() if existing else "") + "".join(
-        json.dumps(line) + "\n" for line in lines
-    )
-    store.put(manifest_key(day), text.encode(), content_type="application/x-ndjson")
-    status.manifest_key = manifest_key(day)
-    if witness is not None:
+    text = "".join(json.dumps(line) + "\n" for line in lines)
+    try:
+        existing = store.get(manifest_key(day))
+        text = (existing.decode() if existing else "") + text
+        store.put(manifest_key(day), text.encode(), content_type="application/x-ndjson")
+        status.manifest_key = manifest_key(day)
+    except Exception as exc:  # noqa: BLE001 - the store failing is the loudest failure there is
+        status.store_error = f"{type(exc).__name__}: {exc}"[:500]
+    if status.store_error is None and witness is not None:
         try:
             proofs = witness(text.encode(), f"{day.isoformat()}.ndjson")
             for name, body in proofs.items():
@@ -175,15 +178,22 @@ def run_capture(
         except Exception as exc:  # noqa: BLE001 - a missing proof is reported, never fatal
             status.witness_error = f"{type(exc).__name__}: {exc}"[:500]
     status.finished_at = now().isoformat(timespec="seconds")
-    status.ok = all(r.error is None for r in status.resources)
+    status.ok = status.store_error is None and all(r.error is None for r in status.resources)
     body = json.dumps(asdict(status), indent=1).encode()
-    store.put(status_key(job, day), body, content_type="application/json")
-    store.put(status_key(job, None), body, content_type="application/json")
+    if status.store_error is None:
+        try:
+            store.put(status_key(job, day), body, content_type="application/json")
+            store.put(status_key(job, None), body, content_type="application/json")
+        except Exception as exc:  # noqa: BLE001
+            status.store_error = f"{type(exc).__name__}: {exc}"[:500]
+            status.ok = False
     if ping is not None:
         summary = "; ".join(
             f"{r.name}: {r.artefacts} artefacts" + (f" ERROR {r.error}" if r.error else "")
             for r in status.resources
         )
+        if status.store_error:
+            summary = f"STORE ERROR {status.store_error}; " + summary
         ping(status.ok, summary[:10000])
     return status
 

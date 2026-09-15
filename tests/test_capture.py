@@ -169,6 +169,26 @@ def test_witness_proofs_land_under_proofs_and_a_witness_failure_is_reported(tmp_
     assert status.witness_error == "RuntimeError: no tsa" and status.ok is True
 
 
+def test_a_store_that_refuses_writes_still_pings_fail_and_reports(tmp_path: Path):
+    class Refusing(LocalStore):
+        def put(self, key, data, *, content_type="application/octet-stream"):
+            raise PermissionError("AccessDenied: PutObject")
+
+    pings = []
+    status = cap.run_capture(
+        [TEC],
+        CannedFetcher(canned_tec()),
+        Refusing(tmp_path),
+        day=date(2026, 9, 15),
+        ping=lambda ok, body: pings.append((ok, body)),
+        witness=lambda data, name: {f"{name}.ots": b"OTS"},
+    )
+    assert status.ok is False
+    assert status.store_error is not None and "AccessDenied" in status.store_error
+    assert status.proof_keys == []  # no witnessing of a manifest that was never stored
+    assert pings[0][0] is False and pings[0][1].startswith("STORE ERROR PermissionError")
+
+
 def test_healthcheck_pinger_hits_fail_on_failure_and_never_raises():
     fetcher = CannedFetcher({})
     ping = cap.healthcheck_pinger(fetcher, "https://hc-ping.com/abc")

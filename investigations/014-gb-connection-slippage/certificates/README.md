@@ -31,6 +31,7 @@ it. A bundle is never overwritten; a re-issue is a new directory.
 | `CERTIFICATE.md` | the two-page certificate, rendered from the record and the manifest; quotes the id | no (it quotes the manifest, so listing it would be a hash cycle) |
 | `verify.py` | stdlib-only offline check of every digest and of the as-of copies against the journal | no |
 | `*.ots`, `*.tsq`, `*.tsr`, `*.timestamps.json` | OpenTimestamps and RFC 3161 proofs for the manifest and the certificate | no |
+| `delivery/CERTIFICATE.pdf`, `delivery/COVER-NOTE.md` | the PDF rendering of the certificate (`scripts/certificate-pdf`, two A4 pages, witnessed) and the cover note that goes with it | no |
 
 ## Verifying one, offline
 

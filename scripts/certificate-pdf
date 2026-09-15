@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+# Render a certificate bundle's CERTIFICATE.md to a PDF for delivery.
+#   scripts/certificate-pdf <bundle-dir>
+# Writes <bundle>/delivery/CERTIFICATE.pdf (A4, via pandoc and headless
+# Chrome, no network). The PDF is a rendering of the witnessed Markdown; it
+# is not listed in the manifest, and scripts/timestamp can witness it too.
+set -euo pipefail
+cd "$(dirname "$0")/.."
+bundle="$1"
+[[ -f "$bundle/CERTIFICATE.md" ]] || { echo "no CERTIFICATE.md in $bundle" >&2; exit 1; }
+mkdir -p "$bundle/delivery"
+css=$(mktemp --suffix=.css)
+html=$(mktemp --suffix=.html)
+trap 'rm -f "$css" "$html"' EXIT
+cat > "$css" <<'CSS'
+@page { size: A4; margin: 13mm 13mm; }
+body { font: 9.4pt/1.32 Georgia, "Times New Roman", serif; color: #1c1c1c; max-width: none; margin: 0; }
+h1 { font-size: 15pt; margin: 0 0 5pt; }
+h2 { font-size: 11pt; margin: 9pt 0 3pt; page-break-after: avoid; }
+p { margin: 3pt 0; }
+table { border-collapse: collapse; width: 100%; font-size: 7.8pt; margin: 3pt 0 6pt; page-break-inside: auto; }
+th, td { border: 1px solid #bbb; padding: 1.4pt 3pt; vertical-align: top; text-align: left; word-break: break-word; }
+th { background: #f0efe9; }
+code { font-family: "DejaVu Sans Mono", monospace; font-size: 7.2pt; word-break: break-all; }
+hr { border: 0; border-top: 1px solid #bbb; margin: 10pt 0; }
+em { color: #444; }
+CSS
+pandoc "$bundle/CERTIFICATE.md" --from gfm --to html5 --standalone --metadata pagetitle="As-of Connection Record Certificate" --css "$css" --embed-resources -o "$html" 2>/dev/null \
+  || pandoc "$bundle/CERTIFICATE.md" --from gfm --to html5 --standalone --metadata pagetitle="As-of Connection Record Certificate" --css "$css" --self-contained -o "$html"
+google-chrome --headless=new --disable-gpu --no-sandbox --no-pdf-header-footer \
+  --print-to-pdf="$bundle/delivery/CERTIFICATE.pdf" "file://$html" >/dev/null 2>&1
+echo "wrote $bundle/delivery/CERTIFICATE.pdf ($(pdfinfo "$bundle/delivery/CERTIFICATE.pdf" 2>/dev/null | sed -n 's/^Pages: *//p') pages)"

@@ -1,0 +1,29 @@
+{
+ "file": "CERTIFICATE.pdf",
+ "sha256": "ccc1cb971cdc372cad44acb009508ee08175b7b8e83adf33c821f9eac7f3df6f",
+ "stamped_at_utc_local_clock": "2026-09-15T20:41:15Z",
+ "proofs": [
+  {
+   "kind": "opentimestamps",
+   "path": "CERTIFICATE.pdf.ots",
+   "status": "pending calendar attestation until upgraded",
+   "verify": "ots verify CERTIFICATE.pdf.ots  (needs a Bitcoin node or the calendars; `ots info` reads the proof offline)"
+  },
+  {
+   "kind": "rfc3161",
+   "tsa": "https://freetsa.org/tsr",
+   "path": "CERTIFICATE.pdf.freetsa.tsr",
+   "tsa_time": "Sep 15 20:41:17 2026 GMT",
+   "verify": "openssl ts -verify -in CERTIFICATE.pdf.freetsa.tsr -queryfile CERTIFICATE.pdf.tsq -CAfile trust/tsa/freetsa-cacert.pem"
+  },
+  {
+   "kind": "rfc3161",
+   "tsa": "http://timestamp.digicert.com",
+   "path": "CERTIFICATE.pdf.digicert.tsr",
+   "tsa_time": "Sep 15 20:41:18 2026 GMT",
+   "verify": "openssl ts -verify -in CERTIFICATE.pdf.digicert.tsr -queryfile CERTIFICATE.pdf.tsq -CAfile trust/tsa/digicert-trusted-root-g4.pem"
+  }
+ ],
+ "query": "CERTIFICATE.pdf.tsq",
+ "note": "Each token binds the SHA-256 above to the TSA's clock under the TSA's key; the OpenTimestamps proof binds it to a Bitcoin block once upgraded. The file itself is what is stamped; re-hash it to check."
+}

@@ -1,0 +1,644 @@
+{
+ "amendment": "2 (2026-09-15): 014's reading rules; 005's declared method unchanged",
+ "vintages_loaded": 697,
+ "vintages_old_regime": 693,
+ "vintages_new_regime": [
+  "2026-05-19",
+  "2026-08-22",
+  "2026-08-25",
+  "2026-09-15"
+ ],
+ "vintage_span": [
+  "2014-01-31",
+  "2025-07-22"
+ ],
+ "skipped_vintages": [
+  {
+   "t_public": "2014-02-24",
+   "path": "data/raw/neso/tec-history/2014-02-24_neso-doc.xls",
+   "error": "AssertionError()"
+  },
+  {
+   "t_public": "2014-02-28",
+   "path": "data/raw/neso/tec-history/2014-02-28_neso-doc.xls",
+   "error": "AssertionError()"
+  },
+  {
+   "t_public": "2014-03-04",
+   "path": "data/raw/neso/tec-history/2014-03-04_neso-doc.xls",
+   "error": "AssertionError()"
+  },
+  {
+   "t_public": "2014-03-11",
+   "path": "data/raw/neso/tec-history/2014-03-11_neso-doc.xls",
+   "error": "AssertionError()"
+  },
+  {
+   "t_public": "2014-03-20",
+   "path": "data/raw/neso/tec-history/2014-03-20_neso-doc.xls",
+   "error": "AssertionError()"
+  },
+  {
+   "t_public": "2014-03-25",
+   "path": "data/raw/neso/tec-history/2014-03-25_neso-doc.xls",
+   "error": "AssertionError()"
+  },
+  {
+   "t_public": "2014-03-28",
+   "path": "data/raw/neso/tec-history/2014-03-28_neso-doc.xls",
+   "error": "AssertionError()"
+  },
+  {
+   "t_public": "2014-04-01",
+   "path": "data/raw/neso/tec-history/2014-04-01_neso-doc.xls",
+   "error": "AssertionError()"
+  },
+  {
+   "t_public": "2014-04-08",
+   "path": "data/raw/neso/tec-history/2014-04-08_neso-doc.xls",
+   "error": "AssertionError()"
+  },
+  {
+   "t_public": "2014-04-10",
+   "path": "data/raw/neso/tec-history/2014-04-10_neso-doc.xls",
+   "error": "AssertionError()"
+  },
+  {
+   "t_public": "2014-04-17",
+   "path": "data/raw/neso/tec-history/2014-04-17_neso-doc.xls",
+   "error": "AssertionError()"
+  },
+  {
+   "t_public": "2014-04-23",
+   "path": "data/raw/neso/tec-history/2014-04-23_neso-doc.xls",
+   "error": "AssertionError()"
+  },
+  {
+   "t_public": "2014-04-25",
+   "path": "data/raw/neso/tec-history/2014-04-25_neso-doc.xls",
+   "error": "AssertionError()"
+  },
+  {
+   "t_public": "2014-04-30",
+   "path": "data/raw/neso/tec-history/2014-04-30_neso-doc.xls",
+   "error": "AssertionError()"
+  },
+  {
+   "t_public": "2014-06-13",
+   "path": "data/raw/neso/tec-history/2014-06-13_neso-doc.xls",
+   "error": "AssertionError()"
+  },
+  {
+   "t_public": "2014-06-20",
+   "path": "data/raw/neso/tec-history/2014-06-20_neso-doc.xls",
+   "error": "AssertionError()"
+  },
+  {
+   "t_public": "2014-06-27",
+   "path": "data/raw/neso/tec-history/2014-06-27_neso-doc.xls",
+   "error": "AssertionError()"
+  },
+  {
+   "t_public": "2014-07-11",
+   "path": "data/raw/neso/tec-history/2014-07-11_neso-doc.xls",
+   "error": "AssertionError()"
+  },
+  {
+   "t_public": "2014-07-18",
+   "path": "data/raw/neso/tec-history/2014-07-18_neso-doc.xls",
+   "error": "AssertionError()"
+  },
+  {
+   "t_public": "2014-07-25",
+   "path": "data/raw/neso/tec-history/2014-07-25_neso-doc.xls",
+   "error": "AssertionError()"
+  },
+  {
+   "t_public": "2014-08-01",
+   "path": "data/raw/neso/tec-history/2014-08-01_neso-doc.xls",
+   "error": "AssertionError()"
+  },
+  {
+   "t_public": "2014-08-11",
+   "path": "data/raw/neso/tec-history/2014-08-11_neso-doc.xls",
+   "error": "AssertionError()"
+  },
+  {
+   "t_public": "2014-08-15",
+   "path": "data/raw/neso/tec-history/2014-08-15_neso-doc.xls",
+   "error": "AssertionError()"
+  },
+  {
+   "t_public": "2014-08-22",
+   "path": "data/raw/neso/tec-history/2014-08-22_neso-doc.xls",
+   "error": "AssertionError()"
+  },
+  {
+   "t_public": "2014-08-29",
+   "path": "data/raw/neso/tec-history/2014-08-29_neso-doc.xls",
+   "error": "AssertionError()"
+  },
+  {
+   "t_public": "2014-09-05",
+   "path": "data/raw/neso/tec-history/2014-09-05_neso-doc.xls",
+   "error": "AssertionError()"
+  },
+  {
+   "t_public": "2014-09-12",
+   "path": "data/raw/neso/tec-history/2014-09-12_neso-doc.xls",
+   "error": "AssertionError()"
+  },
+  {
+   "t_public": "2014-09-19",
+   "path": "data/raw/neso/tec-history/2014-09-19_neso-doc.xls",
+   "error": "AssertionError()"
+  },
+  {
+   "t_public": "2014-09-26",
+   "path": "data/raw/neso/tec-history/2014-09-26_neso-doc.xls",
+   "error": "AssertionError()"
+  },
+  {
+   "t_public": "2014-10-17",
+   "path": "data/raw/neso/tec-history/2014-10-17_neso-doc.xls",
+   "error": "AssertionError()"
+  },
+  {
+   "t_public": "2014-10-24",
+   "path": "data/raw/neso/tec-history/2014-10-24_neso-doc.xls",
+   "error": "AssertionError()"
+  },
+  {
+   "t_public": "2021-06-22",
+   "path": "data/raw/neso/tec-history/2021-06-22_neso-doc.xlsx",
+   "error": "no header/rows parsed"
+  }
+ ],
+ "excluded_vintages": [
+  {
+   "t_public": "2020-07-09",
+   "missing": [
+    "Customer Name"
+   ]
+  },
+  {
+   "t_public": "2020-07-16",
+   "missing": [
+    "Customer Name"
+   ]
+  },
+  {
+   "t_public": "2020-07-23",
+   "missing": [
+    "Customer Name"
+   ]
+  }
+ ],
+ "swapped_vintages": [
+  "2021-01-29",
+  "2021-02-19",
+  "2022-03-11"
+ ],
+ "match_report": {
+  "identities": 7248,
+  "by_project_id": 0,
+  "by_name_triple": 7248,
+  "single_vintage_only": 530
+ },
+ "identities_total": 7248,
+ "identities_with_2_plus_years_and_slip": 1163,
+ "disappeared_identities_old_regime": 4968,
+ "q1": {
+  "n": 1163,
+  "median_months": 0,
+  "iqr_months": 22,
+  "share_slipped_ge_24": "0.2338779019776440240756663801",
+  "share_lt_6": "0.6018916595012897678417884781",
+  "passes": true
+ },
+ "q2": [
+  {
+   "name": "first_status",
+   "rates": [
+    {
+     "stratum": "Awaiting Consents",
+     "n": 190,
+     "rate_ge_24": "0.3842105263157894736842105263"
+    },
+    {
+     "stratum": "Built",
+     "n": 107,
+     "rate_ge_24": "0.1869158878504672897196261682"
+    },
+    {
+     "stratum": "Consents Approved",
+     "n": 204,
+     "rate_ge_24": "0.2598039215686274509803921569"
+    },
+    {
+     "stratum": "Scoping",
+     "n": 619,
+     "rate_ge_24": "0.1970920840064620355411954766"
+    },
+    {
+     "stratum": "Under Construction/Commissioning",
+     "n": 38,
+     "rate_ge_24": "0.1052631578947368421052631579"
+    },
+    {
+     "stratum": "unknown",
+     "n": 5,
+     "rate_ge_24": "0"
+    }
+   ],
+   "best_ratio": "3.650000000000000000000000000",
+   "high": "Awaiting Consents",
+   "low": "Under Construction/Commissioning",
+   "holds_in_both_cohorts": true,
+   "passes": true
+  },
+  {
+   "name": "plant_type",
+   "rates": [
+    {
+     "stratum": "Battery Storage",
+     "n": 13,
+     "rate_ge_24": "0.3076923076923076923076923077"
+    },
+    {
+     "stratum": "Biomass",
+     "n": 8,
+     "rate_ge_24": "0.5"
+    },
+    {
+     "stratum": "CCGT",
+     "n": 55,
+     "rate_ge_24": "0.4545454545454545454545454545"
+    },
+    {
+     "stratum": "CCGT (Combined Cycle Gas Turbine)",
+     "n": 26,
+     "rate_ge_24": "0.1538461538461538461538461538"
+    },
+    {
+     "stratum": "CCGT (Combined Cycle Gas Turbine); Demand",
+     "n": 1,
+     "rate_ge_24": "0"
+    },
+    {
+     "stratum": "CCGT (Combined Cycle Gas Turbine); Energy Storage System",
+     "n": 2,
+     "rate_ge_24": "0"
+    },
+    {
+     "stratum": "CHP",
+     "n": 12,
+     "rate_ge_24": "0.1666666666666666666666666667"
+    },
+    {
+     "stratum": "CHP (Combined Heat and Power)",
+     "n": 1,
+     "rate_ge_24": "0"
+    },
+    {
+     "stratum": "Coal",
+     "n": 10,
+     "rate_ge_24": "0.5"
+    },
+    {
+     "stratum": "Demand",
+     "n": 1,
+     "rate_ge_24": "0"
+    },
+    {
+     "stratum": "Demand; Energy Storage System",
+     "n": 5,
+     "rate_ge_24": "0"
+    },
+    {
+     "stratum": "Demand; Energy Storage System; PV Array (Photo Voltaic/solar); Reactive Compensation",
+     "n": 1,
+     "rate_ge_24": "0"
+    },
+    {
+     "stratum": "Demand; Wind Offshore",
+     "n": 1,
+     "rate_ge_24": "0"
+    },
+    {
+     "stratum": "Energy Storage System",
+     "n": 190,
+     "rate_ge_24": "0.1315789473684210526315789474"
+    },
+    {
+     "stratum": "Energy Storage System; Nuclear; PV Array (Photo Voltaic/solar); Reactive Compensation; Wind Onshore",
+     "n": 1,
+     "rate_ge_24": "0"
+    },
+    {
+     "stratum": "Energy Storage System; OCGT (Open Cycle Gas Turbine)",
+     "n": 1,
+     "rate_ge_24": "0"
+    },
+    {
+     "stratum": "Energy Storage System; PV Array (Photo Voltaic/solar)",
+     "n": 150,
+     "rate_ge_24": "0.1733333333333333333333333333"
+    },
+    {
+     "stratum": "Energy Storage System; PV Array (Photo Voltaic/solar); Reactive Compensation",
+     "n": 1,
+     "rate_ge_24": "0"
+    },
+    {
+     "stratum": "Energy Storage System; PV Array (Photo Voltaic/solar); Wind Offshore",
+     "n": 1,
+     "rate_ge_24": "0"
+    },
+    {
+     "stratum": "Energy Storage System; PV Array (Photo Voltaic/solar); Wind Onshore",
+     "n": 8,
+     "rate_ge_24": "0.125"
+    },
+    {
+     "stratum": "Energy Storage System; Reactive Compensation",
+     "n": 6,
+     "rate_ge_24": "0.3333333333333333333333333333"
+    },
+    {
+     "stratum": "Energy Storage System; Wind Onshore",
+     "n": 12,
+     "rate_ge_24": "0.1666666666666666666666666667"
+    },
+    {
+     "stratum": "Energy Storage System;PV Array (Photo Voltaic/solar)",
+     "n": 11,
+     "rate_ge_24": "0"
+    },
+    {
+     "stratum": "Energy Storage System;PV Array (Photo Voltaic/solar);Wind Onshore",
+     "n": 1,
+     "rate_ge_24": "0"
+    },
+    {
+     "stratum": "Gas Reciprocating",
+     "n": 11,
+     "rate_ge_24": "0.09090909090909090909090909091"
+    },
+    {
+     "stratum": "HYBRID",
+     "n": 5,
+     "rate_ge_24": "0.4"
+    },
+    {
+     "stratum": "Hybrid",
+     "n": 19,
+     "rate_ge_24": "0.2105263157894736842105263158"
+    },
+    {
+     "stratum": "Hydro",
+     "n": 3,
+     "rate_ge_24": "0"
+    },
+    {
+     "stratum": "IGCC with CCS",
+     "n": 1,
+     "rate_ge_24": "1"
+    },
+    {
+     "stratum": "Nuclear",
+     "n": 23,
+     "rate_ge_24": "0.3913043478260869565217391304"
+    },
+    {
+     "stratum": "Nuclear APR",
+     "n": 1,
+     "rate_ge_24": "0"
+    },
+    {
+     "stratum": "OCGT",
+     "n": 4,
+     "rate_ge_24": "0"
+    },
+    {
+     "stratum": "OCGT (Open Cycle Gas Turbine)",
+     "n": 5,
+     "rate_ge_24": "0.2"
+    },
+    {
+     "stratum": "Oil & AGT",
+     "n": 1,
+     "rate_ge_24": "0"
+    },
+    {
+     "stratum": "PV Array",
+     "n": 3,
+     "rate_ge_24": "0.3333333333333333333333333333"
+    },
+    {
+     "stratum": "PV Array (Photo Voltaic/solar)",
+     "n": 25,
+     "rate_ge_24": "0.16"
+    },
+    {
+     "stratum": "PV Array (Photo Voltaic/solar); Wind Onshore",
+     "n": 2,
+     "rate_ge_24": "0.5"
+    },
+    {
+     "stratum": "Pump Storage",
+     "n": 13,
+     "rate_ge_24": "0.2307692307692307692307692308"
+    },
+    {
+     "stratum": "Reactive Compensation",
+     "n": 13,
+     "rate_ge_24": "0"
+    },
+    {
+     "stratum": "Small Unit Coal",
+     "n": 1,
+     "rate_ge_24": "1"
+    },
+    {
+     "stratum": "Thermal",
+     "n": 8,
+     "rate_ge_24": "0.125"
+    },
+    {
+     "stratum": "Tidal",
+     "n": 21,
+     "rate_ge_24": "0.6190476190476190476190476190"
+    },
+    {
+     "stratum": "Waste",
+     "n": 2,
+     "rate_ge_24": "0"
+    },
+    {
+     "stratum": "Wave",
+     "n": 6,
+     "rate_ge_24": "0"
+    },
+    {
+     "stratum": "Wind Offshore",
+     "n": 152,
+     "rate_ge_24": "0.2697368421052631578947368421"
+    },
+    {
+     "stratum": "Wind Onshore",
+     "n": 326,
+     "rate_ge_24": "0.2730061349693251533742331288"
+    }
+   ],
+   "best_ratio": "3.454545454545454545454545453",
+   "high": "CCGT",
+   "low": "Energy Storage System",
+   "holds_in_both_cohorts": false,
+   "passes": false
+  },
+  {
+   "name": "host_to",
+   "rates": [
+    {
+     "stratum": "NGET",
+     "n": 662,
+     "rate_ge_24": "0.2175226586102719033232628399"
+    },
+    {
+     "stratum": "OFFSHORE",
+     "n": 3,
+     "rate_ge_24": "0.6666666666666666666666666667"
+    },
+    {
+     "stratum": "OFTO",
+     "n": 3,
+     "rate_ge_24": "0"
+    },
+    {
+     "stratum": "SHE",
+     "n": 38,
+     "rate_ge_24": "0.2894736842105263157894736842"
+    },
+    {
+     "stratum": "SHET",
+     "n": 211,
+     "rate_ge_24": "0.2654028436018957345971563981"
+    },
+    {
+     "stratum": "SPT",
+     "n": 225,
+     "rate_ge_24": "0.2533333333333333333333333333"
+    },
+    {
+     "stratum": "SPTL",
+     "n": 17,
+     "rate_ge_24": "0.1176470588235294117647058824"
+    },
+    {
+     "stratum": "unknown",
+     "n": 4,
+     "rate_ge_24": "0"
+    }
+   ],
+   "best_ratio": "1.330774853801169590643274854",
+   "high": "SHE",
+   "low": "NGET",
+   "holds_in_both_cohorts": false,
+   "passes": false
+  },
+  {
+   "name": "initial_lead_time_band",
+   "rates": [
+    {
+     "stratum": "3-5y",
+     "n": 275,
+     "rate_ge_24": "0.3745454545454545454545454545"
+    },
+    {
+     "stratum": "<3y",
+     "n": 344,
+     "rate_ge_24": "0.2732558139534883720930232558"
+    },
+    {
+     "stratum": ">5y",
+     "n": 475,
+     "rate_ge_24": "0.1347368421052631578947368421"
+    },
+    {
+     "stratum": "unknown",
+     "n": 69,
+     "rate_ge_24": "0.1594202898550724637681159420"
+    }
+   ],
+   "best_ratio": "2.779829545454545454545454545",
+   "high": "3-5y",
+   "low": ">5y",
+   "holds_in_both_cohorts": true,
+   "passes": true
+  },
+  {
+   "name": "capacity_band",
+   "rates": [
+    {
+     "stratum": "200-500",
+     "n": 227,
+     "rate_ge_24": "0.1497797356828193832599118943"
+    },
+    {
+     "stratum": "50-200",
+     "n": 295,
+     "rate_ge_24": "0.2338983050847457627118644068"
+    },
+    {
+     "stratum": "<50",
+     "n": 291,
+     "rate_ge_24": "0.2405498281786941580756013746"
+    },
+    {
+     "stratum": ">=500",
+     "n": 248,
+     "rate_ge_24": "0.2822580645161290322580645161"
+    },
+    {
+     "stratum": "unknown",
+     "n": 102,
+     "rate_ge_24": "0.2843137254901960784313725490"
+    }
+   ],
+   "best_ratio": "1.898212226066897347174163783",
+   "high": "unknown",
+   "low": "200-500",
+   "holds_in_both_cohorts": true,
+   "passes": false
+  }
+ ],
+ "q3": {
+  "pooled_rate": "0.2338779019776440240756663801",
+  "materially_different": [
+   [
+    "first_status",
+    "Awaiting Consents",
+    "0.3842105263157894736842105263"
+   ]
+  ],
+  "passes": true
+ },
+ "revisions_distribution": {
+  "0": 608,
+  "1": 325,
+  "2": 138,
+  "3": 40,
+  "4": 32,
+  "5": 15,
+  "6": 4,
+  "8": 1
+ },
+ "net_slip_quantiles_months": {
+  "p10": 0,
+  "p25": 0,
+  "p50": 0,
+  "p75": 22,
+  "p90": 43
+ }
+}

@@ -70,3 +70,64 @@ all-three-pass. The observed outcome — Q3 missed by 0.6 percentage points
 the snapshot is **not** started on the strength of a near-miss. Recorded
 so that the threshold cannot be quietly relaxed; a phase-2 declaration
 may set a different bar *before* its data is touched, and must say why.
+
+## Amendment 2 — 2026-09-15: the register was under-read; re-run under 014's reading rules, and Q3 moves from a 0.6-point miss to a 0.03-point pass
+
+**Recorded after investigation 014 (GB Connection Slippage) built a tested
+reader for the same archive.** Three defects in this study's runner
+(`run.py`, unchanged) were found there: the stage-capacity column
+(`MW Increase / Decrease`) was never mapped; effective dates spelled
+`YYYY/MM/DD`, `DD-Mon-YY` or as Excel serial numbers were left unparsed and
+so read as undated (7,626 slash-form cells, 1,496 serials and a smaller
+number of `DD-Mon-YY` cells across the archive); and no test existed for
+copies whose date cells carry day and month exchanged (three copies:
+2021-01-29, 2021-02-19, 2022-03-11). Two further reading rules 014 declared
+also apply: stage numerals are unified (`1.00` is `1`) and copies lacking
+an identity column are excluded rather than read with a blank customer
+(2020-07-09, 2020-07-16, 2020-07-23). The stage-capacity column plays no
+part in 005's metrics; the date and stage rules do.
+
+**What was re-run.** `rerun-2026-09-15.py`: the declared method exactly as
+`run.py` runs it (identity triple, (identity, stage) unit of Amendment 1,
+regime cutoff, population, Q1–Q3 thresholds in `tec_slippage`), over the
+same journalled archive, reading it under 014's rules. Output:
+`evidence/tec-slippage-summary-2026-09-15-014-READING-RULES.json`. The
+2026-08-26 evidence files are untouched.
+
+| | 2026-08-26 run | under 014's reading rules |
+|---|---|---|
+| old-regime copies read | 696 | 693 |
+| identities | 7,778 | 7,248 |
+| population (span ≥ 2 y, first seen < 2025, slip observed) | 1,161 | 1,163 |
+| net slip p75 / p90 (months) | 17 / 41 | 22 / 43 |
+| Q1 IQR (months) | 17 | 22 |
+| Q1 share slipped ≥ 24 m | 21.4 % | 23.4 % |
+| Q1 share < 6 m | 63.5 % | 60.2 % |
+| Q2 first-status ratio (Awaiting Consents vs Under Construction) | 3.40 | 3.65 |
+| Q2 lead-time ratio (3–5 y vs > 5 y) | 2.87 | 2.78 |
+| Q3 pooled rate | 21.4 % | 23.4 % |
+| Q3 largest gap to pooled (Awaiting Consents) | +14.4 pp | **+15.03 pp** |
+| Q3 gap, 3–5-year lead time | +14.4 pp | +14.1 pp |
+| projects with ≥ 10 revisions | 2 | 0 |
+| **Verdicts Q1 / Q2 / Q3** | pass / pass / **fail** (by 0.6 pp) | pass / pass / **pass** (by 0.03 pp) |
+
+**What this means, narrowly.** Q1 and Q2 hold under both readings, with
+the same passing strata in the same direction. Q3 was decided by a
+threshold the declaration fixed at 15 percentage points; the 2026-08-26 run
+missed it by 0.6 and this run clears it by 0.03. A verdict that flips on
+a reading correction and sits three hundredths of a point from its bar is
+not evidence that the bar was well placed; it is evidence that the answer
+to "is a 14–15-point gap an underwriting input" was always a commercial
+judgement the threshold could only pretend to settle (the 2026-08-26
+observation above said as much).
+
+**Consequence under the declaration.** Kill condition (d), "all three
+pass", is now met on the corrected reading, and (d) says the snapshot
+instrument starts and phase 2 is declared separately. **Nothing is started
+by this amendment.** The study was closed by sponsor decision on
+2026-08-26; whether the corrected verdict reopens it is that decision's to
+revisit, and the twice-weekly snapshot (d) asked for is in any case now
+being kept by investigation 014's runner and the capture job that follows
+it. The published figures in `RESULTS.md` and Publication Pack 004 stand as
+the 2026-08-26 reading, with this amendment beside them; they are not
+rewritten.

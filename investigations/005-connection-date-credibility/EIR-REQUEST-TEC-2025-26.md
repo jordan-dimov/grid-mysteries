@@ -1,4 +1,12 @@
-# EIR request to NESO — TEC Register vintages 23 July 2025 to 18 May 2026 (ready to send)
+# EIR request to NESO — TEC Register vintages 23 July 2025 to 18 May 2026 (sent)
+
+**Sent 2026-09-15** by the sponsor to InformationRights@neso.energy, as written
+below. Statutory response due **2026-10-13** (20 working days). Watch
+`w-005-tec-hole` moves to that date. Copies received enter
+`data/raw/neso/tec-history/` as new journal rows and are recomputed under
+014's declaration (they fall inside its regime break, so no old-regime row
+can change).
+
 
 **To:** InformationRights@neso.energy  
 **Subject:** EIR request — archived TEC Register copies, 23 July 2025 to 18 May 2026, and Transmission Works Register reports after FOI-25-133

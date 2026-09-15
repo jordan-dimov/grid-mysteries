@@ -134,3 +134,8 @@ best-known classification, not authoritative project information.
 ## Status
 
 **Closed 2026-08-26** by sponsor decision after 006. The empirical findings above are the publishable result (Publication Pack 004). No phase 2, no snapshot, no score. Watch `w-005-tec-hole` and the EIR request remain open.
+
+**2026-09-15.** EIR request sent to InformationRights@neso.energy; response
+due 2026-10-13, and watch `w-005-tec-hole` moves to that date. Investigation
+014 (GB Connection Slippage) found reading defects in this study's runner;
+see `AMENDMENTS.md`, Amendment 2.

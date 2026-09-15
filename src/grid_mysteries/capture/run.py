@@ -43,8 +43,10 @@ class Status:
     finished_at: str = ""
     ok: bool = False
     manifest_key: str = ""
+    proof_keys: list[str] = field(default_factory=list)
+    witness_error: str | None = None
     resources: list[ResourceStatus] = field(default_factory=list)
-    #: "<resource>/<dataset>" -> {"sha256", "day"}: what the latest copy of each artefact was.
+    #: "<resource>/<dataset>" -> {"sha256", "day", "key"}: the latest copy of each artefact.
     digests: dict[str, dict[str, str]] = field(default_factory=dict)
     #: "<resource>/<dataset>" -> the `extra` of its latest capture (e.g. CKAN last_modified).
     extras: dict[str, dict[str, str]] = field(default_factory=dict)
@@ -101,6 +103,7 @@ def run_capture(
     job: str = JOB,
     now: Callable[[], datetime] = lambda: datetime.now(UTC),
     ping: Callable[[bool, str], None] | None = None,
+    witness: Callable[[bytes, str], dict[str, bytes]] | None = None,
 ) -> Status:
     status = Status(job=job, day=day.isoformat(), started_at=now().isoformat(timespec="seconds"))
     before = previous_status(store, job)
@@ -118,11 +121,18 @@ def run_capture(
             kwargs = {"previous": status.extras} if resource.strategy == "ckan" else {}
             for captured in strategy(resource, fetcher, day, **kwargs):
                 sha256 = hashlib.sha256(captured.body).hexdigest()
-                key = raw_key(resource, day, sha256)
                 slot = f"{resource.resource}/{captured.dataset}"
                 previous = status.digests.get(slot)
                 unchanged_from = (
                     previous["day"] if previous and previous["sha256"] == sha256 else None
+                )
+                # The manifest line points at the object that holds the bytes:
+                # the day they were first captured, not today.
+                key = (
+                    previous.get("key")
+                    or raw_key(resource, date.fromisoformat(previous["day"]), sha256)
+                    if unchanged_from is not None and previous
+                    else raw_key(resource, day, sha256)
                 )
                 if unchanged_from is None and not store.exists(key):
                     store.put(
@@ -138,7 +148,11 @@ def run_capture(
                 lines.append(
                     manifest_line(resource, captured, day, sha256, key, fetched_at, unchanged_from)
                 )
-                status.digests[slot] = {"sha256": sha256, "day": unchanged_from or day.isoformat()}
+                status.digests[slot] = {
+                    "sha256": sha256,
+                    "day": unchanged_from or day.isoformat(),
+                    "key": key,
+                }
                 if captured.extra and "skipped" not in captured.extra:
                     status.extras[slot] = dict(captured.extra)
                 rs.artefacts += 1
@@ -151,6 +165,15 @@ def run_capture(
     )
     store.put(manifest_key(day), text.encode(), content_type="application/x-ndjson")
     status.manifest_key = manifest_key(day)
+    if witness is not None:
+        try:
+            proofs = witness(text.encode(), f"{day.isoformat()}.ndjson")
+            for name, body in proofs.items():
+                key = f"proofs/{name}"
+                store.put(key, body, content_type="application/octet-stream")
+                status.proof_keys.append(key)
+        except Exception as exc:  # noqa: BLE001 - a missing proof is reported, never fatal
+            status.witness_error = f"{type(exc).__name__}: {exc}"[:500]
     status.finished_at = now().isoformat(timespec="seconds")
     status.ok = all(r.error is None for r in status.resources)
     body = json.dumps(asdict(status), indent=1).encode()

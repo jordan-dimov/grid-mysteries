@@ -80,17 +80,21 @@ def test_ckan_capture_writes_bytes_manifest_and_status(tmp_path: Path):
 def test_same_bytes_on_a_later_day_are_not_rewritten_and_say_unchanged_from(tmp_path: Path):
     store = LocalStore(tmp_path)
     cap.run_capture([TEC], CannedFetcher(canned_tec()), store, day=date(2026, 9, 15))
-    cap.run_capture([TEC], CannedFetcher(canned_tec()), store, day=date(2026, 9, 16))
+    # the portal re-touched the resource (new last_modified) but the bytes are the same
+    same_bytes = canned_tec(last_modified="2026-09-16T08:00:00")
+    cap.run_capture([TEC], CannedFetcher(same_bytes), store, day=date(2026, 9, 16))
     lines = [
         json.loads(line)
         for line in (tmp_path / "manifests/2026-09-16.ndjson").read_text().splitlines()
     ]
     assert lines[1]["unchanged_from"] == "2026-09-15"
-    assert not (tmp_path / "raw/neso/tec-register/2026-09-16").exists()
+    assert lines[1]["key"].startswith("raw/neso/tec-register/2026-09-15/")
+    # only the metadata (which carries the new date) is new bytes on the 16th
+    assert len(list((tmp_path / "raw/neso/tec-register/2026-09-16").iterdir())) == 1
     latest = json.loads((tmp_path / "status/vintage-capture/latest.json").read_text())
     assert latest["digests"]["tec-register/NESO-TEC-REGISTER"]["day"] == "2026-09-15"
-    assert latest["resources"][0]["unchanged"] == 2
-    changed = canned_tec(body=b"Project Name,Customer\nA,C\n")
+    assert latest["resources"][0]["unchanged"] == 1  # the META response carries a new date
+    changed = canned_tec(body=b"Project Name,Customer\nA,C\n", last_modified="2026-09-17T08:00:00")
     cap.run_capture([TEC], CannedFetcher(changed), store, day=date(2026, 9, 17))
     lines = [
         json.loads(line)
@@ -142,6 +146,27 @@ def test_one_failing_resource_does_not_stop_the_others_and_pings_fail(tmp_path: 
         [unknown], CannedFetcher({}), LocalStore(tmp_path), day=date(2026, 9, 15)
     )
     assert status.resources[0].error == "unknown strategy 'teleport'"
+
+
+def test_witness_proofs_land_under_proofs_and_a_witness_failure_is_reported(tmp_path: Path):
+    store = LocalStore(tmp_path)
+    status = cap.run_capture(
+        [TEC],
+        CannedFetcher(canned_tec()),
+        store,
+        day=date(2026, 9, 15),
+        witness=lambda data, name: {f"{name}.ots": b"OTS", f"{name}.tsq": b"TSQ"},
+    )
+    assert status.proof_keys == ["proofs/2026-09-15.ndjson.ots", "proofs/2026-09-15.ndjson.tsq"]
+    assert store.get("proofs/2026-09-15.ndjson.ots") == b"OTS"
+
+    def broken(data, name):
+        raise RuntimeError("no tsa")
+
+    status = cap.run_capture(
+        [TEC], CannedFetcher(canned_tec()), store, day=date(2026, 9, 16), witness=broken
+    )
+    assert status.witness_error == "RuntimeError: no tsa" and status.ok is True
 
 
 def test_healthcheck_pinger_hits_fail_on_failure_and_never_raises():

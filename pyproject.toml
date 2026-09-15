@@ -17,6 +17,7 @@ grid-mysteries = "grid_mysteries.cli:app"
 [dependency-groups]
 capture = [
     "boto3>=1.35",
+    "opentimestamps-client>=0.7",
 ]
 dev = [
     "hypothesis>=6.165.9",

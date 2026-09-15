@@ -28,7 +28,9 @@ class Response:
 
 
 class Fetcher(Protocol):
-    def get(self, url: str, *, data: bytes | None = None) -> Response: ...
+    def get(
+        self, url: str, *, data: bytes | None = None, content_type: str | None = None
+    ) -> Response: ...
 
 
 class HttpFetcher:
@@ -39,8 +41,15 @@ class HttpFetcher:
             timeout=timeout_seconds, follow_redirects=True, headers={"User-Agent": USER_AGENT}
         )
 
-    def get(self, url: str, *, data: bytes | None = None) -> Response:
-        response = self.client.post(url, content=data) if data is not None else self.client.get(url)
+    def get(
+        self, url: str, *, data: bytes | None = None, content_type: str | None = None
+    ) -> Response:
+        headers = {"Content-Type": content_type} if content_type else {}
+        response = (
+            self.client.post(url, content=data, headers=headers)
+            if data is not None
+            else self.client.get(url)
+        )
         return Response(
             url=str(response.url),
             status=response.status_code,
@@ -56,7 +65,9 @@ class CannedFetcher:
         self.responses = responses
         self.calls: list[tuple[str, bytes | None]] = []
 
-    def get(self, url: str, *, data: bytes | None = None) -> Response:
+    def get(
+        self, url: str, *, data: bytes | None = None, content_type: str | None = None
+    ) -> Response:
         self.calls.append((url, data))
         canned = self.responses.get(url)
         if canned is None:

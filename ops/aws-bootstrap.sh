@@ -33,7 +33,7 @@ bucket_exists() { aws s3api head-bucket --bucket "$1" >/dev/null 2>&1; }
 if ! bucket_exists "$LOGS"; then
   aws s3api create-bucket --bucket "$LOGS" --region "$REGION" \
     --create-bucket-configuration LocationConstraint="$REGION" >/dev/null
-  echo "created $LOGS"
+  echo "created $LOGS" >&2
 fi
 aws s3api put-public-access-block --bucket "$LOGS" --public-access-block-configuration \
   BlockPublicAcls=true,IgnorePublicAcls=true,BlockPublicPolicy=true,RestrictPublicBuckets=true
@@ -51,7 +51,7 @@ if ! bucket_exists "$BUCKET"; then
   aws s3api create-bucket --bucket "$BUCKET" --region "$REGION" \
     --create-bucket-configuration LocationConstraint="$REGION" \
     --object-lock-enabled-for-bucket >/dev/null
-  echo "created $BUCKET (Object Lock enabled)"
+  echo "created $BUCKET (Object Lock enabled)" >&2
 fi
 aws s3api put-bucket-versioning --bucket "$BUCKET" --versioning-configuration Status=Enabled
 aws s3api put-object-lock-configuration --bucket "$BUCKET" --object-lock-configuration \
@@ -75,14 +75,14 @@ policy() {  # name, document
   local arn="arn:aws:iam::$ACCOUNT:policy/$1"
   if ! aws iam get-policy --policy-arn "$arn" >/dev/null 2>&1; then
     aws iam create-policy --policy-name "$1" --policy-document "$2" >/dev/null
-    echo "created policy $1"
+    echo "created policy $1" >&2
   fi
   echo "$arn"
 }
 user() {  # name, policy arn
   if ! aws iam get-user --user-name "$1" >/dev/null 2>&1; then
     aws iam create-user --user-name "$1" >/dev/null
-    echo "created user $1"
+    echo "created user $1" >&2
   fi
   aws iam attach-user-policy --user-name "$1" --policy-arn "$2"
 }

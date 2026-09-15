@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+# The laptop watchdog (ops/VINTAGE-CAPTURE.md, section 7): five checks on
+# the vintage archive and one sync into the repository. Run by the systemd
+# user timer in ops/systemd/, or by hand. Read-only against the bucket (the
+# watchdog credential cannot write); writes only under data/manifests/,
+# data/raw/archive/ and synced instrument state in the repo.
+#
+#   scripts/check-vintages [--include-bytes]
+#
+# Environment: VINTAGE_STORE (default s3://a115-vintages), AWS_PROFILE
+# (default a115-watchdog). Failures go to the log, to notify-send when a
+# desktop session exists, and to the exit status.
+set -uo pipefail
+cd "$(dirname "$0")/.."
+export PATH="${HOME}/.local/bin:${PATH}"
+export VINTAGE_STORE="${VINTAGE_STORE:-s3://a115-vintages}"
+export AWS_PROFILE="${AWS_PROFILE:-a115-watchdog}"
+log=data/vintage-watchdog.log
+mkdir -p data
+{
+  echo "=== $(date -u +%FT%TZ) check-vintages ($VINTAGE_STORE)"
+  uv run --group capture grid-mysteries capture check "$@"
+  status=$?
+  echo "=== exit $status"
+} >> "$log" 2>&1
+if [[ ${status:-1} -ne 0 ]]; then
+  command -v notify-send >/dev/null && notify-send -u critical "Vintage archive check failed" "see $log"
+  exit 1
+fi

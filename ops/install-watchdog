@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+# Install and start the watchdog timer for this user. A deliberate act:
+# nothing in the repository runs until this is executed.
+#   ops/install-watchdog          install and enable
+#   ops/install-watchdog --remove disable and unlink
+set -euo pipefail
+here="$(cd "$(dirname "$0")" && pwd)"
+units="$HOME/.config/systemd/user"
+mkdir -p "$units"
+if [[ "${1:-}" == "--remove" ]]; then
+  systemctl --user disable --now vintage-watchdog.timer || true
+  rm -f "$units/vintage-watchdog.service" "$units/vintage-watchdog.timer"
+  systemctl --user daemon-reload
+  echo "watchdog removed"
+  exit 0
+fi
+ln -sf "$here/systemd/vintage-watchdog.service" "$units/vintage-watchdog.service"
+ln -sf "$here/systemd/vintage-watchdog.timer" "$units/vintage-watchdog.timer"
+systemctl --user daemon-reload
+systemctl --user enable --now vintage-watchdog.timer
+systemctl --user list-timers vintage-watchdog.timer --no-pager
+echo "watchdog installed; log at data/vintage-watchdog.log"

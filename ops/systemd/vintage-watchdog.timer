@@ -1,0 +1,11 @@
+[Unit]
+Description=Run the vintage archive watchdog on boot and every twelve hours
+
+[Timer]
+OnBootSec=5min
+OnUnitActiveSec=12h
+Persistent=true
+Unit=vintage-watchdog.service
+
+[Install]
+WantedBy=timers.target

@@ -15,6 +15,9 @@ dependencies = [
 grid-mysteries = "grid_mysteries.cli:app"
 
 [dependency-groups]
+capture = [
+    "boto3>=1.35",
+]
 dev = [
     "hypothesis>=6.165.9",
     "mypy>=2.3.1",

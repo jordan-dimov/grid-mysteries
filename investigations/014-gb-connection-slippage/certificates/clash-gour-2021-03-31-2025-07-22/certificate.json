@@ -1,0 +1,261 @@
+{
+ "project": "Clash Gour",
+ "stage": null,
+ "dates": [
+  "2021-03-31",
+  "2025-07-22"
+ ],
+ "as_of": [
+  {
+   "as_of": "2021-03-31",
+   "vintage": "2021-03-30",
+   "sha256": "86cadc429add117fcef5b418ce91d1d768a8306c3a186a2a661aba2c2a399254",
+   "path": "data/raw/neso/tec-history/2021-03-30_neso-doc.xlsx",
+   "state": {
+    "Project name": "Clash Gour",
+    "Customer name": "EDF ENERGY RENEWABLES LIMITED",
+    "Connection site": "Clash Gour Wind Farm 132kV",
+    "Stage": "",
+    "MW connected": "0",
+    "MW increase / decrease (stage TEC)": "210",
+    "Cumulative total capacity (MW)": "210",
+    "MW effective from (target date)": "2024-10-30",
+    "Project status": "Awaiting Consents",
+    "Agreement type": "Directly Connected",
+    "Host TO": "SHET",
+    "Plant type": "Wind Onshore",
+    "Project ID": "",
+    "Project number": "",
+    "Gate": ""
+   },
+   "rows_as_published": [
+    {
+     "Project name": "Clash Gour",
+     "Customer name": "EDF ENERGY RENEWABLES LIMITED",
+     "Connection site": "Clash Gour Wind Farm 132kV",
+     "Stage": "",
+     "MW connected": "0",
+     "MW increase / decrease (stage TEC)": "210",
+     "Cumulative total capacity (MW)": "210",
+     "MW effective from (target date)": "2024-10-30",
+     "Project status": "Awaiting Consents",
+     "Agreement type": "Directly Connected",
+     "Host TO": "SHET",
+     "Plant type": "Wind Onshore",
+     "Project ID": "",
+     "Project number": "",
+     "Gate": ""
+    }
+   ]
+  },
+  {
+   "as_of": "2025-07-22",
+   "vintage": "2025-07-22",
+   "sha256": "d875470279cc562b07fbe128ecc66f6215711614eee8bf5134012dbbec97bde3",
+   "path": "data/raw/neso/tec-history/2025-07-22_wayback.csv",
+   "state": {
+    "Project name": "Clash Gour",
+    "Customer name": "EDF ENERGY RENEWABLES LIMITED",
+    "Connection site": "Clash Gour Wind Farm 132kV Substation",
+    "Stage": "",
+    "MW connected": "0",
+    "MW increase / decrease (stage TEC)": "210",
+    "Cumulative total capacity (MW)": "210",
+    "MW effective from (target date)": "2029/10/30",
+    "Project status": "Awaiting Consents",
+    "Agreement type": "Direct Connection",
+    "Host TO": "SHET",
+    "Plant type": "Energy Storage System;Wind Onshore",
+    "Project ID": "a0l4L0000005iaaQAA",
+    "Project number": "PRO-001022",
+    "Gate": ""
+   },
+   "rows_as_published": [
+    {
+     "Project name": "Clash Gour",
+     "Customer name": "EDF ENERGY RENEWABLES LIMITED",
+     "Connection site": "Clash Gour Wind Farm 132kV Substation",
+     "Stage": "",
+     "MW connected": "0",
+     "MW increase / decrease (stage TEC)": "210",
+     "Cumulative total capacity (MW)": "210",
+     "MW effective from (target date)": "2029/10/30",
+     "Project status": "Awaiting Consents",
+     "Agreement type": "Direct Connection",
+     "Host TO": "SHET",
+     "Plant type": "Energy Storage System;Wind Onshore",
+     "Project ID": "a0l4L0000005iaaQAA",
+     "Project number": "PRO-001022",
+     "Gate": ""
+    }
+   ]
+  }
+ ],
+ "changes": [
+  {
+   "field": "MW effective from (target date)",
+   "previous": "2024-10-30",
+   "current": "2025-10-30",
+   "first_shown": "2021-04-06",
+   "first_shown_sha256": "821da57a85ef6b86bc2def6368560725b17e5bca18c98cc4896f323af759e2c7",
+   "last_previous": "2021-03-30"
+  },
+  {
+   "field": "Project ID",
+   "previous": "",
+   "current": "a031v00000sxAoS",
+   "first_shown": "2021-11-26",
+   "first_shown_sha256": "e8053c4f597f311cee22ff98e12e0fecb54150d92d226e87f27250808ff48b3a",
+   "last_previous": "2021-11-23"
+  },
+  {
+   "field": "Project ID",
+   "previous": "a031v00000sxAoS",
+   "current": "a0l4L0000005iaa",
+   "first_shown": "2022-08-24",
+   "first_shown_sha256": "166177c9567bb3679e8d7155f8717485d0b7bcd799d5159538331be18ace9280",
+   "last_previous": "2022-08-19"
+  },
+  {
+   "field": "Connection site",
+   "previous": "Clash Gour Wind Farm 132kV",
+   "current": "Clash Gour Wind Farm 132kV Substation",
+   "first_shown": "2022-12-13",
+   "first_shown_sha256": "cafe2d5749db061aab5b5efad5dc8bc673b93709d5734ccf9fb261f0b82a53c9",
+   "last_previous": "2022-12-09"
+  },
+  {
+   "field": "Presence",
+   "previous": "present (one row)",
+   "current": "absent",
+   "first_shown": "2023-11-28",
+   "first_shown_sha256": "3aca531be8b111c1de0ca665adfc3a3693ba0296c1dc15300ee6d8ebb0853488",
+   "last_previous": "2023-11-24"
+  },
+  {
+   "field": "Presence",
+   "previous": "absent",
+   "current": "present (one row)",
+   "first_shown": "2023-12-01",
+   "first_shown_sha256": "dee743adf91f107a9982862a62ba7a5294f8e5c62558cf96e17a3e5851022e88",
+   "last_previous": "2023-11-28"
+  },
+  {
+   "field": "MW effective from (target date)",
+   "previous": "2025-10-30",
+   "current": "2027-10-30",
+   "first_shown": "2024-05-17",
+   "first_shown_sha256": "58d9c3fad92e735c2df5abb73806190cccf2fa8d23b177b0c32715a703a51c8a",
+   "last_previous": "2024-05-14"
+  },
+  {
+   "field": "Plant type",
+   "previous": "Wind Onshore",
+   "current": "Energy Storage System; Wind Onshore",
+   "first_shown": "2024-05-17",
+   "first_shown_sha256": "58d9c3fad92e735c2df5abb73806190cccf2fa8d23b177b0c32715a703a51c8a",
+   "last_previous": "2024-05-14"
+  },
+  {
+   "field": "Agreement type",
+   "previous": "Directly Connected",
+   "current": "Direct Connection",
+   "first_shown": "2024-05-24",
+   "first_shown_sha256": "fa092c46ebcbcc053d02ab2d364b2d1608ee6a4bf0704a7c2b6aaf85ca7d54be",
+   "last_previous": "2024-05-21"
+  },
+  {
+   "field": "Project ID",
+   "previous": "a0l4L0000005iaa",
+   "current": "a0l4L0000005iaaQAA",
+   "first_shown": "2024-05-24",
+   "first_shown_sha256": "fa092c46ebcbcc053d02ab2d364b2d1608ee6a4bf0704a7c2b6aaf85ca7d54be",
+   "last_previous": "2024-05-21"
+  },
+  {
+   "field": "Agreement type",
+   "previous": "Direct Connection",
+   "current": "Directly Connected",
+   "first_shown": "2024-05-28",
+   "first_shown_sha256": "779aa45b586c80743ea7a4dc9b80fc18df57dfaf777b63d8f6d34a8701c385df",
+   "last_previous": "2024-05-24"
+  },
+  {
+   "field": "Project ID",
+   "previous": "a0l4L0000005iaaQAA",
+   "current": "a0l4L0000005iaa",
+   "first_shown": "2024-05-28",
+   "first_shown_sha256": "779aa45b586c80743ea7a4dc9b80fc18df57dfaf777b63d8f6d34a8701c385df",
+   "last_previous": "2024-05-24"
+  },
+  {
+   "field": "MW effective from (target date)",
+   "previous": "2027-10-30",
+   "current": "2025-10-30",
+   "first_shown": "2024-05-30",
+   "first_shown_sha256": "efc0a8bf642d71d7933e1cd7b7717e1b28163551f988c3672da0b86a8bc0caaa",
+   "last_previous": "2024-05-28"
+  },
+  {
+   "field": "Plant type",
+   "previous": "Energy Storage System; Wind Onshore",
+   "current": "Wind Onshore",
+   "first_shown": "2024-05-30",
+   "first_shown_sha256": "efc0a8bf642d71d7933e1cd7b7717e1b28163551f988c3672da0b86a8bc0caaa",
+   "last_previous": "2024-05-28"
+  },
+  {
+   "field": "MW effective from (target date)",
+   "previous": "2025-10-30",
+   "current": "2027-10-30",
+   "first_shown": "2024-05-31",
+   "first_shown_sha256": "3fc4851ca611557a604094d537a8b51000393bdbd72492806b69d949a65ce83d",
+   "last_previous": "2024-05-30"
+  },
+  {
+   "field": "Agreement type",
+   "previous": "Directly Connected",
+   "current": "Direct Connection",
+   "first_shown": "2024-05-31",
+   "first_shown_sha256": "3fc4851ca611557a604094d537a8b51000393bdbd72492806b69d949a65ce83d",
+   "last_previous": "2024-05-30"
+  },
+  {
+   "field": "Plant type",
+   "previous": "Wind Onshore",
+   "current": "Energy Storage System;Wind Onshore",
+   "first_shown": "2024-05-31",
+   "first_shown_sha256": "3fc4851ca611557a604094d537a8b51000393bdbd72492806b69d949a65ce83d",
+   "last_previous": "2024-05-30"
+  },
+  {
+   "field": "Project ID",
+   "previous": "a0l4L0000005iaa",
+   "current": "a0l4L0000005iaaQAA",
+   "first_shown": "2024-05-31",
+   "first_shown_sha256": "3fc4851ca611557a604094d537a8b51000393bdbd72492806b69d949a65ce83d",
+   "last_previous": "2024-05-30"
+  },
+  {
+   "field": "Project number",
+   "previous": "",
+   "current": "PRO-001022",
+   "first_shown": "2024-06-18",
+   "first_shown_sha256": "01d01e9c4acaf41c3687fd0c0d512fd266a4080ba2550969bca1da6436b4446b",
+   "last_previous": "2024-06-14"
+  },
+  {
+   "field": "MW effective from (target date)",
+   "previous": "30/10/2027",
+   "current": "2029/10/30",
+   "first_shown": "2025-07-01",
+   "first_shown_sha256": "dfca4aeb2ce5d3b5f946a2114d871cc3d3dd87a0b33a62058ca6435336db5b05",
+   "last_previous": "2025-04-01"
+  }
+ ],
+ "vintages_consulted": 375,
+ "vintages_absent": 1,
+ "vintages_ambiguous": 0,
+ "first_vintage": "2021-03-30",
+ "last_vintage": "2025-07-22"
+}

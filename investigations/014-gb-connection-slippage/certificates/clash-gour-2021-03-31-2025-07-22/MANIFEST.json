@@ -1,0 +1,40 @@
+{
+ "bundle": "clash-gour-2021-03-31-2025-07-22",
+ "issued": "2026-09-15",
+ "issuer": "A115 Ltd (Grid Mysteries)",
+ "project": "Clash Gour",
+ "stage": null,
+ "dates": [
+  "2021-03-31",
+  "2025-07-22"
+ ],
+ "declaration_sha256": "e4aba4c923b58e9c36e10d16d9a715d6cae1ce90081c9ed1f1b8bf5196f8c01a",
+ "rule": "the certificate id is the SHA-256 of this file's bytes; every listed file hashes as recorded; CERTIFICATE.md is rendered from certificate.json and this file, quotes the certificate id, and is witnessed beside it",
+ "files": [
+  {
+   "path": "certificate.json",
+   "sha256": "9a67b532c4f342d426f0d6c336b1900fb1b53b70ded82d83589a6620264cfc01",
+   "bytes": 8434
+  },
+  {
+   "path": "extracts.ndjson",
+   "sha256": "04e31f033027ad43244bcf620c21077c2df04132233159ac081168827364da4e",
+   "bytes": 277608
+  },
+  {
+   "path": "journal-extract.ndjson",
+   "sha256": "df4c9b637c93c4c291d9f558a02fe1d4c780673246fe2eb63cdfb0e1358081ab",
+   "bytes": 332675
+  },
+  {
+   "path": "registers/2021-03-30_neso-doc.xlsx",
+   "sha256": "86cadc429add117fcef5b418ce91d1d768a8306c3a186a2a661aba2c2a399254",
+   "bytes": 71827
+  },
+  {
+   "path": "registers/2025-07-22_wayback.csv",
+   "sha256": "d875470279cc562b07fbe128ecc66f6215711614eee8bf5134012dbbec97bde3",
+   "bytes": 429514
+  }
+ ]
+}

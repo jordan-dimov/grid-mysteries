@@ -1,0 +1,75 @@
+#!/usr/bin/env bash
+# Witness a file's SHA-256 against roots this project does not control.
+#
+#   scripts/timestamp <file>
+#
+# Writes, beside the file:
+#   <file>.ots   OpenTimestamps proof (Bitcoin-anchored; starts as a pending
+#                calendar attestation and upgrades with `scripts/timestamp
+#                --upgrade <file>` once the calendar's block is mined)
+#   <file>.tsq   the RFC 3161 timestamp query (SHA-256 of the file, nonce,
+#                certificate requested)
+#   <file>.freetsa.tsr   RFC 3161 token from freetsa.org
+#   <file>.digicert.tsr  RFC 3161 token from timestamp.digicert.com
+#   <file>.timestamps.json  what was stamped, when, by whom, and how to verify
+#
+# Verify offline with scripts/verify-timestamp <file>; the TSA roots are
+# committed under trust/tsa/. Neither the stamping nor the verification
+# touches Morpholog: this is the external witness the seal doctrine
+# (etrmbiz note 2026-09-15, Amendment 1) puts in front of the human seal.
+set -euo pipefail
+cd "$(dirname "$0")/.."
+export PATH="${HOME}/.local/bin:${PATH}"
+
+if [[ "${1:-}" == "--upgrade" ]]; then
+  shift
+  for f in "$@"; do uvx --from opentimestamps-client ots upgrade "$f.ots" || true; done
+  exit 0
+fi
+
+file="$1"
+[[ -f "$file" ]] || { echo "no such file: $file" >&2; exit 1; }
+digest=$(sha256sum "$file" | cut -d' ' -f1)
+stamped_at=$(date -u +%FT%TZ)
+
+# 1. OpenTimestamps (submits the digest to public calendars; nothing else leaves the machine)
+rm -f "$file.ots"
+uvx --from opentimestamps-client ots stamp "$file"
+
+# 2. RFC 3161, two independent authorities
+openssl ts -query -data "$file" -sha256 -cert -out "$file.tsq" 2>/dev/null
+curl -sS -m 60 -o "$file.freetsa.tsr" -H 'Content-Type: application/timestamp-query' \
+  --data-binary @"$file.tsq" https://freetsa.org/tsr
+curl -sS -m 60 -o "$file.digicert.tsr" -H 'Content-Type: application/timestamp-query' \
+  --data-binary @"$file.tsq" http://timestamp.digicert.com
+
+tsa_time() { openssl ts -reply -in "$1" -text 2>/dev/null | sed -n 's/^Time stamp: //p'; }
+python3 - "$file" "$digest" "$stamped_at" "$(tsa_time "$file.freetsa.tsr")" "$(tsa_time "$file.digicert.tsr")" <<'PY'
+import json, sys
+file, digest, stamped_at, freetsa, digicert = sys.argv[1:]
+name = file.rsplit("/", 1)[-1]
+json.dump(
+    {
+        "file": name,
+        "sha256": digest,
+        "stamped_at_utc_local_clock": stamped_at,
+        "proofs": [
+            {"kind": "opentimestamps", "path": f"{name}.ots",
+             "status": "pending calendar attestation until upgraded",
+             "verify": f"ots verify {name}.ots  (needs a Bitcoin node or the calendars; `ots info` reads the proof offline)"},
+            {"kind": "rfc3161", "tsa": "https://freetsa.org/tsr", "path": f"{name}.freetsa.tsr",
+             "tsa_time": freetsa,
+             "verify": f"openssl ts -verify -in {name}.freetsa.tsr -queryfile {name}.tsq -CAfile trust/tsa/freetsa-cacert.pem"},
+            {"kind": "rfc3161", "tsa": "http://timestamp.digicert.com", "path": f"{name}.digicert.tsr",
+             "tsa_time": digicert,
+             "verify": f"openssl ts -verify -in {name}.digicert.tsr -queryfile {name}.tsq -CAfile trust/tsa/digicert-trusted-root-g4.pem"},
+        ],
+        "query": f"{name}.tsq",
+        "note": "Each token binds the SHA-256 above to the TSA's clock under the TSA's key; the OpenTimestamps proof binds it to a Bitcoin block once upgraded. The file itself is what is stamped; re-hash it to check.",
+    },
+    open(f"{file}.timestamps.json", "w"), indent=1)
+PY
+echo "stamped $file  sha256 $digest"
+echo "  freetsa:  $(tsa_time "$file.freetsa.tsr")"
+echo "  digicert: $(tsa_time "$file.digicert.tsr")"
+echo "  ots:      $file.ots (pending; upgrade later with scripts/timestamp --upgrade $file)"

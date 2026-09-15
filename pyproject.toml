@@ -21,6 +21,10 @@ dev = [
     "pytest>=8.4",
     "ruff>=0.12",
 ]
+registers = [
+    "openpyxl>=3.1",
+    "xlrd>=2.0",
+]
 
 [tool.uv]
 package = true

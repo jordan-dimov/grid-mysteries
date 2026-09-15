@@ -1,0 +1,57 @@
+#!/usr/bin/env bash
+# Verify the proofs scripts/timestamp wrote beside a file, offline.
+#   scripts/verify-timestamp <file>
+# Checks: the file's SHA-256 matches the RFC 3161 query; each token verifies
+# against its committed root under trust/tsa/; the OpenTimestamps proof is
+# readable and its file hash matches (the Bitcoin attestation itself needs
+# `ots verify`, which is online or needs a node, so it is printed, not run).
+set -euo pipefail
+cd "$(dirname "$0")/.."
+export PATH="${HOME}/.local/bin:${PATH}"
+file="$1"
+digest=$(sha256sum "$file" | cut -d' ' -f1)
+echo "file:     $file"
+echo "sha256:   $digest"
+python3 - "$file.tsq" "$digest" <<'PY'
+import re, subprocess, sys
+tsq, digest = sys.argv[1:]
+text = subprocess.run(["openssl", "ts", "-query", "-in", tsq, "-text"],
+                      capture_output=True, text=True).stdout
+block = text.split("Message data:", 1)[1] if "Message data:" in text else ""
+hexes = []
+for line in block.splitlines():
+    if " - " not in line:
+        if hexes:
+            break
+        continue
+    body = line.split(" - ", 1)[1][:47]  # 16 bytes of hex, before the ASCII column
+    hexes += re.findall(r"[0-9a-fA-F]{2}", body)
+found = "".join(hexes).lower()[:64]
+if found != digest:
+    print(f"query:    DIGEST MISMATCH (query carries {found})")
+    sys.exit(1)
+print("query:    digest matches the file")
+PY
+for tsa in freetsa digicert; do
+  ca=trust/tsa/freetsa-cacert.pem
+  [[ $tsa == digicert ]] && ca=trust/tsa/digicert-trusted-root-g4.pem
+  if [[ -f "$file.$tsa.tsr" ]]; then
+    when=$(openssl ts -reply -in "$file.$tsa.tsr" -text 2>/dev/null | sed -n 's/^Time stamp: //p')
+    if openssl ts -verify -in "$file.$tsa.tsr" -queryfile "$file.tsq" -CAfile "$ca" >/dev/null 2>&1; then
+      echo "$tsa: Verification OK, stamped $when"
+    else
+      echo "$tsa: VERIFICATION FAILED"
+      exit 1
+    fi
+  fi
+done
+if [[ -f "$file.ots" ]]; then
+  otshash=$(uvx --from opentimestamps-client ots info "$file.ots" 2>/dev/null | sed -n 's/^File sha256 hash: //p')
+  if [[ "$otshash" == "$digest" ]]; then
+    echo "ots:      proof is for this file; 'ots verify $file.ots' (after 'ots upgrade') checks the Bitcoin attestation"
+  else
+    echo "ots:      PROOF HASH MISMATCH ($otshash)"
+    exit 1
+  fi
+fi
+echo "verify-timestamp: OK"

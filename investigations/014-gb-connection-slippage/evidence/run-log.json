@@ -1,0 +1,20 @@
+[
+ {
+  "run_date": "2026-09-15",
+  "computed_at": "2026-09-15T20:13:57+00:00",
+  "seal": "e4aba4c9",
+  "declaration_sha256": "e4aba4c923b58e9c36e10d16d9a715d6cae1ce90081c9ed1f1b8bf5196f8c01a",
+  "vintages_usable": 697,
+  "latest_vintage": "2026-09-15",
+  "amend": false
+ },
+ {
+  "run_date": "2026-09-15",
+  "computed_at": "2026-09-15T20:15:21+00:00",
+  "seal": "e4aba4c9",
+  "declaration_sha256": "e4aba4c923b58e9c36e10d16d9a715d6cae1ce90081c9ed1f1b8bf5196f8c01a",
+  "vintages_usable": 697,
+  "latest_vintage": "2026-09-15",
+  "amend": false
+ }
+]

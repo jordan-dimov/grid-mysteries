@@ -3,6 +3,13 @@
 # the O2 instrument of F004 (investigations/forward/F004-stranded-pipeline-bg).
 # Idempotent per calendar day: an existing day directory is verified against
 # its journal and left alone. Stdlib only, so it runs from cron without uv.
+#
+# RETIRED ON DEPLOY of the vintage capture job (ops/VINTAGE-CAPTURE.md): the
+# same fetch sequence is the plan's ESO-MAP resource (capture/strategies.py,
+# eso_map), which writes to the archive bucket daily. Once the sponsor deploys
+# the job, remove this script's crontab line (06:30 daily); the local
+# snapshots under data/raw/eso/snapshots/ stay as pinned evidence and the
+# archive adapter (sources/archive.py) reads later days from the bucket.
 set -euo pipefail
 cd "$(dirname "$0")/.."
 exec python3 - "$@" <<'PY'

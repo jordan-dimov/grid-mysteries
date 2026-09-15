@@ -11,6 +11,7 @@ runner's own idempotency (verify pinned bytes against the journal, skip)
 then makes acquisition resumable from any machine.
 """
 
+import fnmatch
 import hashlib
 from pathlib import Path
 
@@ -28,8 +29,20 @@ def _same(store: ObjectStore, key: str, body: bytes) -> bool:
     )
 
 
-def push(store: ObjectStore, repo_root: Path, instrument: str, paths: list[Path]) -> list[str]:
-    """Upload files under `paths` (repo-relative) into the instrument's state."""
+def push(
+    store: ObjectStore,
+    repo_root: Path,
+    instrument: str,
+    paths: list[Path],
+    *,
+    include: list[str] | None = None,
+) -> list[str]:
+    """Upload files under `paths` (repo-relative) into the instrument's state.
+
+    `include` restricts uploads to file names matching one of the glob
+    patterns, so a computed file such as an instrument's `tracker.json`
+    (which the laptop recomputes and commits) is never pushed as if it were
+    acquisition state."""
     uploaded = []
     for base in paths:
         root = repo_root / base
@@ -37,6 +50,8 @@ def push(store: ObjectStore, repo_root: Path, instrument: str, paths: list[Path]
             continue
         files = [root] if root.is_file() else sorted(p for p in root.rglob("*") if p.is_file())
         for path in files:
+            if include and not any(fnmatch.fnmatch(path.name, pattern) for pattern in include):
+                continue
             relative = path.relative_to(repo_root).as_posix()
             key = state_key(instrument, relative)
             body = path.read_bytes()

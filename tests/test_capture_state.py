@@ -43,3 +43,26 @@ def test_pull_downloads_grows_journals_and_reports_conflicts(tmp_path: Path):
     report = state.pull(store, repo, "013")
     assert report[0].startswith("MISMATCH state/013/data/raw/elexon/013/a.json")
     assert (repo / "data/raw/elexon/013/a.json").read_bytes() == b"tampered"
+
+
+def test_push_include_globs_keep_computed_files_out(tmp_path: Path):
+    store = LocalStore(tmp_path / "bucket")
+    repo = tmp_path / "repo"
+    ev = repo / "investigations/013/evidence"
+    ev.mkdir(parents=True)
+    (ev / "batch-01-journal.ndjson").write_bytes(b"{}\n")
+    (ev / "batch-01-manifest.json").write_bytes(b"[]")
+    (ev / "acquisition-log.json").write_bytes(b"{}")
+    (ev / "tracker.json").write_bytes(b"{}")
+    pushed = state.push(
+        store,
+        repo,
+        "013",
+        [Path("investigations/013/evidence")],
+        include=["*-journal.ndjson", "*-manifest.json", "acquisition-log.json"],
+    )
+    assert pushed == [
+        "state/013/investigations/013/evidence/acquisition-log.json",
+        "state/013/investigations/013/evidence/batch-01-journal.ndjson",
+        "state/013/investigations/013/evidence/batch-01-manifest.json",
+    ]

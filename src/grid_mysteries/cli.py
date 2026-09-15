@@ -55,6 +55,9 @@ def app(argv: list[str] | None = None) -> None:
         sub.add_argument("--name", required=True, help="instrument name, e.g. 013")
         sub.add_argument("--repo-root", default=".", type=Path)
         sub.add_argument("--path", action="append", default=[], type=Path, help="repo-relative")
+        sub.add_argument(
+            "--include", action="append", default=[], help="file-name glob (push only, repeatable)"
+        )
     check = capture_commands.add_parser("check", help="The watchdog: five checks and a sync.")
     check.add_argument("--store", default=os.environ.get("VINTAGE_STORE", ""))
     check.add_argument("--repo-root", default=".", type=Path)
@@ -146,7 +149,7 @@ def state_command(args: argparse.Namespace) -> None:
     else:
         if not args.path:
             raise SystemExit("push-state: at least one --path is required")
-        lines = state.push(store, root, args.name, args.path)
+        lines = state.push(store, root, args.name, args.path, include=args.include or None)
     for line in lines:
         print(line)
     print(f"{args.capture_command} {args.name}: {len(lines)} file(s)")

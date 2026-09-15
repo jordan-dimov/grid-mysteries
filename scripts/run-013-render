@@ -27,8 +27,14 @@ status=$?
 # 2 is the runner's "nothing eligible / seal mismatch" refusal; only a real
 # failure (anything else non-zero) fails the check.
 if [[ $status -ne 0 && $status -ne 2 ]]; then ping fail; exit $status; fi
+# Acquisition state only: raw artefacts, journals, manifests and the
+# acquisition log. tracker.json and TRACKER.md are computed on the laptop.
 run grid-mysteries capture push-state --name 013 \
   --path data/raw/elexon/013 --path data/raw/neso/013 \
-  --path investigations/013-the-cover-price-tracker/evidence || { ping fail; exit 1; }
+  --path investigations/013-the-cover-price-tracker/evidence \
+  --include '*.csv' --include 'ebocf_*.json' --include 'disptav_*.json' \
+  --include 'mid.json' --include 'system-prices.json' --include 'bmunits.json' \
+  --include '*-journal.ndjson' --include '*-manifest.json' --include 'acquisition-log.json' \
+  || { ping fail; exit 1; }
 ping ok
 echo "=== done"

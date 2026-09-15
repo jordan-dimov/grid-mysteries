@@ -104,6 +104,33 @@ def test_same_bytes_on_a_later_day_are_not_rewritten_and_say_unchanged_from(tmp_
     assert (tmp_path / lines[1]["key"]).exists()
 
 
+def test_a_large_response_spooled_to_disk_is_uploaded_from_the_file(tmp_path: Path):
+    import hashlib
+
+    big = b"x" * 1000
+    spool = tmp_path / "spool.bin"
+    spool.write_bytes(big)
+    responses = canned_tec()
+    responses["https://api.neso.energy/dl/tec.csv"] = Response(
+        "https://api.neso.energy/dl/tec.csv",
+        200,
+        headers={"content-type": "text/csv"},
+        path=spool,
+        size=len(big),
+        sha256=hashlib.sha256(big).hexdigest(),
+    )
+    store = LocalStore(tmp_path / "bucket")
+    status = cap.run_capture([TEC], CannedFetcher(responses), store, day=date(2026, 9, 15))
+    assert status.resources[0].bytes >= 1000
+    lines = [
+        json.loads(line)
+        for line in (tmp_path / "bucket/manifests/2026-09-15.ndjson").read_text().splitlines()
+    ]
+    assert lines[1]["sha256"] == hashlib.sha256(big).hexdigest() and lines[1]["bytes"] == 1000
+    assert (tmp_path / "bucket" / lines[1]["key"]).read_bytes() == big
+    assert not spool.exists()  # the temporary file is removed after upload
+
+
 def test_ckan_download_is_skipped_while_last_modified_is_unchanged(tmp_path: Path):
     store = LocalStore(tmp_path)
     first = CannedFetcher(canned_tec())

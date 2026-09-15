@@ -7,6 +7,7 @@ URL (a CKAN resource's download URL, a REMIT list's detail URLs, a page's
 asset links, a GeoJSON's point ids).
 """
 
+import hashlib
 import json
 import re
 import time
@@ -14,6 +15,7 @@ import urllib.parse
 from collections.abc import Callable, Iterator
 from dataclasses import dataclass, field
 from datetime import date, timedelta
+from pathlib import Path
 
 from grid_mysteries.capture.fetch import Fetcher, Response
 from grid_mysteries.capture.plan import Resource
@@ -29,9 +31,34 @@ OCDS_MAX_PAGES = 200
 class Captured:
     dataset: str
     url: str
-    body: bytes
+    body: bytes = b""
     headers: dict[str, str] = field(default_factory=dict)
     extra: dict[str, str] = field(default_factory=dict)
+    #: A large body spooled to disk by the fetcher: hashed and uploaded from the file.
+    path: Path | None = None
+    size: int = 0
+    sha256: str = ""
+
+    @classmethod
+    def of(
+        cls, dataset: str, response: Response, extra: dict[str, str] | None = None
+    ) -> Captured:
+        return cls(
+            dataset,
+            response.url,
+            response.body,
+            response.kept_headers(),
+            extra or {},
+            response.path,
+            response.size,
+            response.sha256,
+        )
+
+    def digest(self) -> str:
+        return self.sha256 or hashlib.sha256(self.body).hexdigest()
+
+    def length(self) -> int:
+        return self.size if self.path is not None else len(self.body)
 
 
 class FetchError(RuntimeError):
@@ -60,7 +87,7 @@ def ckan(
     hash it would produce anyway."""
     rid = resource.params["resource_id"]
     show = _get(fetcher, f"{CKAN_ACTION}/resource_show?id={rid}")
-    meta = json.loads(show.body)["result"]
+    meta = json.loads(show.text())["result"]
     last_modified = str(meta.get("last_modified") or "")
     before = (previous or {}).get(f"{resource.resource}/{resource.name}", {})
     if last_modified and before.get("ckan_last_modified") == last_modified:
@@ -74,18 +101,16 @@ def ckan(
         return
     yield Captured(f"{resource.name}-META", show.url, show.body, show.kept_headers())
     download = _get(fetcher, meta["url"])
-    yield Captured(
+    yield Captured.of(
         resource.name,
-        download.url,
-        download.body,
-        download.kept_headers(),
+        download,
         {"ckan_last_modified": last_modified, "ckan_name": str(meta.get("name") or "")},
     )
 
 
 def url(resource: Resource, fetcher: Fetcher, day: date) -> Iterator[Captured]:
     response = _get(fetcher, resource.params["url"])
-    yield Captured(resource.name, response.url, response.body, response.kept_headers())
+    yield Captured.of(resource.name, response)
 
 
 def eso_map(
@@ -96,7 +121,7 @@ def eso_map(
     yield Captured(f"{resource.name}-POINTS", points.url, points.body, points.kept_headers())
     lines = _get(fetcher, base + "get-lines.php")
     yield Captured(f"{resource.name}-LINES", lines.url, lines.body, lines.kept_headers())
-    ids = [feature["properties"]["id"] for feature in json.loads(points.body)["features"]]
+    ids = [feature["properties"]["id"] for feature in json.loads(points.text())["features"]]
     for point_id in ids:
         body = urllib.parse.urlencode({"id": point_id}).encode()
         detail = _get(fetcher, base + "get-point-json.php", data=body)
@@ -120,7 +145,7 @@ def elexon_remit(resource: Resource, fetcher: Fetcher, day: date) -> Iterator[Ca
     yield Captured(
         f"{resource.name}-LIST-{previous}", listing.url, listing.body, listing.kept_headers()
     )
-    for item in json.loads(listing.body).get("data", []):
+    for item in json.loads(listing.text()).get("data", []):
         detail = _get(fetcher, item["url"])
         yield Captured(
             f"{resource.name}-MESSAGE-{item['id']}",
@@ -149,7 +174,7 @@ def ocds_daily(resource: Resource, fetcher: Fetcher, day: date) -> Iterator[Capt
             response.kept_headers(),
         )
         try:
-            next_url = json.loads(response.body).get("links", {}).get("next")
+            next_url = json.loads(response.text()).get("links", {}).get("next")
         except ValueError:
             next_url = None
         page += 1
@@ -158,14 +183,9 @@ def ocds_daily(resource: Resource, fetcher: Fetcher, day: date) -> Iterator[Capt
 def gov_assets(resource: Resource, fetcher: Fetcher, day: date) -> Iterator[Captured]:
     page = _get(fetcher, resource.params["url"])
     yield Captured(f"{resource.name}-PAGE", page.url, page.body, page.kept_headers())
-    for link in sorted(set(ASSET_LINK.findall(page.body.decode("utf-8", errors="replace")))):
+    for link in sorted(set(ASSET_LINK.findall(page.text()))):
         asset = _get(fetcher, link)
-        yield Captured(
-            f"{resource.name}-{link.rsplit('/', 1)[-1]}",
-            asset.url,
-            asset.body,
-            asset.kept_headers(),
-        )
+        yield Captured.of(f"{resource.name}-{link.rsplit('/', 1)[-1]}", asset)
 
 
 STRATEGIES: dict[str, Callable[..., Iterator[Captured]]] = {

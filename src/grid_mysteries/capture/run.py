@@ -10,7 +10,6 @@ resource failed. Nothing is parsed, sealed or proposed.
 """
 
 import contextlib
-import hashlib
 import json
 from collections.abc import Callable, Iterable
 from dataclasses import asdict, dataclass, field
@@ -87,7 +86,7 @@ def manifest_line(
         "url": captured.url,
         "key": key,
         "sha256": sha256,
-        "bytes": len(captured.body),
+        "bytes": captured.length(),
         "fetched_at": fetched_at,
         "http": captured.headers,
         "extra": captured.extra,
@@ -121,7 +120,7 @@ def run_capture(
         try:
             kwargs = {"previous": status.extras} if resource.strategy == "ckan" else {}
             for captured in strategy(resource, fetcher, day, **kwargs):
-                sha256 = hashlib.sha256(captured.body).hexdigest()
+                sha256 = captured.digest()
                 slot = f"{resource.resource}/{captured.dataset}"
                 previous = status.digests.get(slot)
                 unchanged_from = (
@@ -136,13 +135,13 @@ def run_capture(
                     else raw_key(resource, day, sha256)
                 )
                 if unchanged_from is None and not store.exists(key):
-                    store.put(
-                        key,
-                        captured.body,
-                        content_type=captured.headers.get(
-                            "content-type", "application/octet-stream"
-                        ),
-                    )
+                    kind = captured.headers.get("content-type", "application/octet-stream")
+                    if captured.path is not None:
+                        store.put_file(key, captured.path, content_type=kind)
+                    else:
+                        store.put(key, captured.body, content_type=kind)
+                if captured.path is not None:
+                    captured.path.unlink(missing_ok=True)
                 if unchanged_from is not None:
                     rs.unchanged += 1
                 fetched_at = now().isoformat(timespec="seconds")
@@ -157,7 +156,7 @@ def run_capture(
                 if captured.extra and "skipped" not in captured.extra:
                     status.extras[slot] = dict(captured.extra)
                 rs.artefacts += 1
-                rs.bytes += len(captured.body)
+                rs.bytes += captured.length()
         except Exception as exc:  # noqa: BLE001 - one resource's failure never stops the others
             rs.error = f"{type(exc).__name__}: {exc}"[:500]
     text = "".join(json.dumps(line) + "\n" for line in lines)

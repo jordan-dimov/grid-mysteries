@@ -5,6 +5,7 @@ do (the status object carries what it needs). `LocalStore` is the test
 double and the laptop mirror; `S3Store` is production. Neither deletes.
 """
 
+import shutil
 from collections.abc import Iterator
 from pathlib import Path
 from typing import Any, Protocol
@@ -13,6 +14,10 @@ from typing import Any, Protocol
 class ObjectStore(Protocol):
     def put(
         self, key: str, data: bytes, *, content_type: str = "application/octet-stream"
+    ) -> None: ...
+
+    def put_file(
+        self, key: str, path: Path, *, content_type: str = "application/octet-stream"
     ) -> None: ...
 
     def get(self, key: str) -> bytes | None: ...
@@ -37,6 +42,13 @@ class LocalStore:
         path = self._path(key)
         path.parent.mkdir(parents=True, exist_ok=True)
         path.write_bytes(data)
+
+    def put_file(
+        self, key: str, path: Path, *, content_type: str = "application/octet-stream"
+    ) -> None:
+        target = self._path(key)
+        target.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copyfile(path, target)
 
     def get(self, key: str) -> bytes | None:
         path = self._path(key)
@@ -66,6 +78,14 @@ class S3Store:
 
     def put(self, key: str, data: bytes, *, content_type: str = "application/octet-stream") -> None:
         self.client.put_object(Bucket=self.bucket, Key=key, Body=data, ContentType=content_type)
+
+    def put_file(
+        self, key: str, path: Path, *, content_type: str = "application/octet-stream"
+    ) -> None:
+        with path.open("rb") as handle:
+            self.client.upload_fileobj(
+                handle, self.bucket, key, ExtraArgs={"ContentType": content_type}
+            )
 
     def get(self, key: str) -> bytes | None:
         try:

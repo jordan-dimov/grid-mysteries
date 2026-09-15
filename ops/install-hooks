@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# Point this clone at the repository's hooks (ops/git-hooks). Local config only.
+set -euo pipefail
+cd "$(git rev-parse --show-toplevel)"
+chmod +x ops/git-hooks/*
+git config core.hooksPath ops/git-hooks
+echo "core.hooksPath = $(git config core.hooksPath); hooks: $(ls ops/git-hooks | tr '\n' ' ')"

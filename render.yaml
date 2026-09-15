@@ -36,3 +36,25 @@ services:
         sync: false
       - key: HEALTHCHECK_URL_CAPTURE
         sync: false
+  - type: cron
+    name: tracker-013
+    runtime: docker
+    region: frankfurt
+    plan: starter
+    schedule: "0 9 * * *"
+    dockerfilePath: ./Dockerfile
+    dockerCommand: scripts/run-013-render
+    autoDeploy: false
+    envVars:
+      - key: VINTAGE_STORE
+        value: s3://a115-vintages
+      - key: AWS_DEFAULT_REGION
+        value: eu-west-2
+      - key: AWS_ACCESS_KEY_ID
+        sync: false
+      - key: AWS_SECRET_ACCESS_KEY
+        sync: false
+      - key: HEALTHCHECK_URL_013
+        sync: false
+      - key: SEAL_013
+        sync: false

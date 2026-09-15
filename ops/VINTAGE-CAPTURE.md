@@ -91,10 +91,14 @@ but the manifest line says `unchanged_from: <date>`. Nothing is parsed.
 
 ## 5. Jobs (render.yaml, `type: cron`, Docker runtime, region Frankfurt)
 
-| job | schedule (UTC) | command | needs |
-|---|---|---|---|
-| `vintage-capture` | daily 06:30 | `grid-mysteries capture run` | S3 writer key, healthchecks URL |
-| `tracker-013` | daily 09:00 | `run.py --phase acquire --seal $SEAL_013` then sync `data/raw/{elexon,neso}/013` and the 013 journals to `state/013/` | S3 writer key, `SEAL_013=d20d5920` |
+| job | schedule (UTC) | command | env vars as values | env vars unsynced (set in the dashboard) |
+|---|---|---|---|---|
+| `vintage-capture` | daily 06:30 | `grid-mysteries capture run` | `VINTAGE_STORE=s3://a115-vintages`, `AWS_DEFAULT_REGION=eu-west-2` | `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY` (the capture writer), `HEALTHCHECK_URL_CAPTURE` |
+| `tracker-013` | daily 09:00 | `scripts/run-013-render` (pull state, `run.py --phase acquire --seal $SEAL_013`, push state, ping) | `VINTAGE_STORE=s3://a115-vintages`, `AWS_DEFAULT_REGION=eu-west-2` | `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`, `HEALTHCHECK_URL_013`, `SEAL_013` (the 013 declaration's digest prefix, `d20d5920`) |
+
+Both jobs: `type: cron`, `runtime: docker`, `dockerfilePath: ./Dockerfile`,
+`region: frankfurt`, `plan: starter`, `autoDeploy: false`. `render.yaml` is
+the blueprint and must match this table.
 
 Compute and render for 013 and 014 stay on the laptop: they need the
 committed evidence, and rendering is a pure function of it. The watchdog
@@ -174,10 +178,18 @@ is then a legitimate source for a declaration frozen after that date.
    sync into the repo; `scripts/run-013-batch-1` documented as retired on
    deploy.
 
-## 10a. Build status (2026-09-15)
+## 10a. Build and deployment status (2026-09-15)
 
 Parts 1 to 6 are built and committed; nothing is deployed and no crontab
-line has been changed. Part 5 (the ESO map) is the plan's `ESO-MAP`
+line has been changed. **Prerequisites done by the sponsor on
+2026-09-15:** both buckets (`a115-vintages`, `a115-vintages-logs`) and the
+three IAM users exist via `ops/aws-bootstrap.sh` (first run failed on a
+stdout capture bug, fixed; second run completed; Object Lock verified); the
+three access keys and the two healthchecks.io ping URLs are held by the
+sponsor; the watchdog profile is on the laptop. **Still to do:** `render
+login`, push the branch, launch the blueprint from the dashboard and enter
+the unsynced variables, then `ops/install-watchdog` and the two crontab
+removals. Part 5 (the ESO map) is the plan's `ESO-MAP`
 resource from part 2 plus the retirement notice on
 `scripts/snapshot-eso-map`; part 6 is `scripts/run-013-render` with the
 `tracker-013` cron entry and `capture pull-state` / `push-state`. Not

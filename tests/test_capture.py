@@ -298,6 +298,9 @@ def test_eso_map_captures_points_lines_and_every_point_with_a_pause():
         "ESO-MAP-POINT-9",
     ]
     assert fetcher.calls[2] == (base + "get-point-json.php", b"id=7")
+    assert (
+        fetcher.content_types[2] == "application/x-www-form-urlencoded"
+    )  # the endpoint 400s without it
     assert got[2].url.endswith("get-point-json.php?id=7")
     assert pauses == [0.15, 0.15]
 

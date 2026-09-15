@@ -109,11 +109,13 @@ class CannedFetcher:
     def __init__(self, responses: dict[str, Response | bytes]) -> None:
         self.responses = responses
         self.calls: list[tuple[str, bytes | None]] = []
+        self.content_types: list[str | None] = []
 
     def get(
         self, url: str, *, data: bytes | None = None, content_type: str | None = None
     ) -> Response:
         self.calls.append((url, data))
+        self.content_types.append(content_type)
         canned = self.responses.get(url)
         if canned is None:
             return Response(url=url, status=404, body=b"", headers={})

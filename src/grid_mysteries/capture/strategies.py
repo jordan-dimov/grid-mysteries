@@ -16,6 +16,7 @@ from collections.abc import Callable, Iterator
 from dataclasses import dataclass, field
 from datetime import date, timedelta
 from pathlib import Path
+from typing import Final
 
 from grid_mysteries.capture.fetch import Fetcher, Response
 from grid_mysteries.capture.plan import Resource
@@ -40,9 +41,7 @@ class Captured:
     sha256: str = ""
 
     @classmethod
-    def of(
-        cls, dataset: str, response: Response, extra: dict[str, str] | None = None
-    ) -> Captured:
+    def of(cls, dataset: str, response: Response, extra: dict[str, str] | None = None) -> Captured:
         return cls(
             dataset,
             response.url,
@@ -65,8 +64,13 @@ class FetchError(RuntimeError):
     pass
 
 
-def _get(fetcher: Fetcher, url: str, *, data: bytes | None = None) -> Response:
-    response = fetcher.get(url, data=data)
+FORM: Final = "application/x-www-form-urlencoded"
+
+
+def _get(
+    fetcher: Fetcher, url: str, *, data: bytes | None = None, content_type: str | None = None
+) -> Response:
+    response = fetcher.get(url, data=data, content_type=content_type)
     if not response.ok:
         raise FetchError(f"HTTP {response.status} for {url}")
     return response
@@ -124,7 +128,7 @@ def eso_map(
     ids = [feature["properties"]["id"] for feature in json.loads(points.text())["features"]]
     for point_id in ids:
         body = urllib.parse.urlencode({"id": point_id}).encode()
-        detail = _get(fetcher, base + "get-point-json.php", data=body)
+        detail = _get(fetcher, base + "get-point-json.php", data=body, content_type=FORM)
         yield Captured(
             f"{resource.name}-POINT-{point_id}",
             f"{base}get-point-json.php?id={point_id}",

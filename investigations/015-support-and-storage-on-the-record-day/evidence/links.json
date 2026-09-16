@@ -1,0 +1,877 @@
+[
+ {
+  "unit": "C__PSTAT011",
+  "register": "cfd",
+  "target": "AAA-NAN-184",
+  "grade": "A",
+  "basis": "LCCC CfD-to-BM-unit mapping, effective on the day",
+  "extra": {
+   "name": "Nanclach Wind Farm",
+   "technology": "Onshore Wind",
+   "capacity_mw": "39.100",
+   "status": "Live (Post-FIC)"
+  }
+ },
+ {
+  "unit": "E_BABAW-1",
+  "register": "ro",
+  "target": "R00186SQSC",
+  "grade": "B",
+  "basis": "station name matches unit name; capacity within 15 %",
+  "extra": {
+   "station": "Baillie Wind farm",
+   "capacity_mw": "52.04"
+  }
+ },
+ {
+  "unit": "E_BABAW-1",
+  "register": "ro",
+  "target": "R19255NGNI",
+  "grade": "C",
+  "basis": "station name matches unit name; capacity outside 15 % or absent",
+  "extra": {
+   "station": "Baillie-BT18-9ET",
+   "capacity_mw": "0.00392"
+  }
+ },
+ {
+  "unit": "E_BABAW-1",
+  "register": "ro",
+  "target": "R20692NGNI",
+  "grade": "C",
+  "basis": "station name matches unit name; capacity outside 15 % or absent",
+  "extra": {
+   "station": "James Baillie-BT20",
+   "capacity_mw": "0.00399"
+  }
+ },
+ {
+  "unit": "E_BABAW-1",
+  "register": "ro",
+  "target": "R21030NGNI",
+  "grade": "C",
+  "basis": "station name matches unit name; capacity outside 15 % or absent",
+  "extra": {
+   "station": "Baillie-BT4-2EG",
+   "capacity_mw": "0.00379"
+  }
+ },
+ {
+  "unit": "E_BABAW-1",
+  "register": "ro",
+  "target": "R21065NGNI",
+  "grade": "C",
+  "basis": "station name matches unit name; capacity outside 15 % or absent",
+  "extra": {
+   "station": "Baillie-BT18-9BJ",
+   "capacity_mw": "0.00379"
+  }
+ },
+ {
+  "unit": "E_HRHLW-1",
+  "register": "ro",
+  "target": "R00139RQEN",
+  "grade": "C",
+  "basis": "station name matches unit name; capacity outside 15 % or absent",
+  "extra": {
+   "station": "Hare Hill Wind Farm (eon) - A, C",
+   "capacity_mw": "2.75"
+  }
+ },
+ {
+  "unit": "E_HRHLW-1",
+  "register": "ro",
+  "target": "R00140RQEN",
+  "grade": "C",
+  "basis": "station name matches unit name; capacity outside 15 % or absent",
+  "extra": {
+   "station": "HARE HILL",
+   "capacity_mw": "2.738"
+  }
+ },
+ {
+  "unit": "E_HRHLW-1",
+  "register": "ro",
+  "target": "R00001SQSC",
+  "grade": "C",
+  "basis": "station name matches unit name; capacity outside 15 % or absent",
+  "extra": {
+   "station": "Hare Hill Wind Farm - A",
+   "capacity_mw": "13.2"
+  }
+ },
+ {
+  "unit": "E_HRHLW-1",
+  "register": "ro",
+  "target": "R00310SQSC",
+  "grade": "B",
+  "basis": "station name matches unit name; capacity within 15 %",
+  "extra": {
+   "station": "Hare Hill Extension",
+   "capacity_mw": "29.75"
+  }
+ },
+ {
+  "unit": "T_BDCHW-1",
+  "register": "cfd",
+  "target": "AAA-BAD-185",
+  "grade": "A",
+  "basis": "LCCC CfD-to-BM-unit mapping, effective on the day",
+  "extra": {
+   "name": "Bad A Cheo Wind Farm",
+   "technology": "Onshore Wind",
+   "capacity_mw": "26.340",
+   "status": "Live (Post-FIC)"
+  }
+ },
+ {
+  "unit": "T_BEATO-1",
+  "register": "cfd",
+  "target": "INV-BEA-001",
+  "grade": "A",
+  "basis": "LCCC CfD-to-BM-unit mapping, effective on the day",
+  "extra": {
+   "name": "Beatrice Offshore Wind Farm Limited (Phase 1)",
+   "technology": "Offshore Wind",
+   "capacity_mw": "252.000",
+   "status": "Live (Post-FIC)"
+  }
+ },
+ {
+  "unit": "T_BEATO-1",
+  "register": "ro",
+  "target": "R00001SPSC",
+  "grade": "C",
+  "basis": "station name matches lead party only",
+  "extra": {
+   "station": "Beatrice Offshore Windfarm"
+  }
+ },
+ {
+  "unit": "T_BEATO-1",
+  "register": "ro",
+  "target": "R11458NGNI",
+  "grade": "C",
+  "basis": "station name matches lead party only",
+  "extra": {
+   "station": "5 Beatrice Villas"
+  }
+ },
+ {
+  "unit": "T_BEATO-2",
+  "register": "cfd",
+  "target": "INV-BEA-001",
+  "grade": "A",
+  "basis": "LCCC CfD-to-BM-unit mapping, effective on the day",
+  "extra": {
+   "name": "Beatrice Offshore Wind Farm Limited (Phase 1)",
+   "technology": "Offshore Wind",
+   "capacity_mw": "252.000",
+   "status": "Live (Post-FIC)"
+  }
+ },
+ {
+  "unit": "T_BEATO-2",
+  "register": "ro",
+  "target": "R00001SPSC",
+  "grade": "C",
+  "basis": "station name matches lead party only",
+  "extra": {
+   "station": "Beatrice Offshore Windfarm"
+  }
+ },
+ {
+  "unit": "T_BEATO-2",
+  "register": "ro",
+  "target": "R11458NGNI",
+  "grade": "C",
+  "basis": "station name matches lead party only",
+  "extra": {
+   "station": "5 Beatrice Villas"
+  }
+ },
+ {
+  "unit": "T_BEATO-3",
+  "register": "cfd",
+  "target": "INV-BEA-002",
+  "grade": "A",
+  "basis": "LCCC CfD-to-BM-unit mapping, effective on the day",
+  "extra": {
+   "name": "Beatrice Offshore Wind Farm Limited (Phase 2)",
+   "technology": "Offshore Wind",
+   "capacity_mw": "336.000",
+   "status": "Live (Post-FIC)"
+  }
+ },
+ {
+  "unit": "T_BEATO-3",
+  "register": "ro",
+  "target": "R00001SPSC",
+  "grade": "C",
+  "basis": "station name matches lead party only",
+  "extra": {
+   "station": "Beatrice Offshore Windfarm"
+  }
+ },
+ {
+  "unit": "T_BEATO-3",
+  "register": "ro",
+  "target": "R11458NGNI",
+  "grade": "C",
+  "basis": "station name matches lead party only",
+  "extra": {
+   "station": "5 Beatrice Villas"
+  }
+ },
+ {
+  "unit": "T_BEATO-4",
+  "register": "cfd",
+  "target": "INV-BEA-002",
+  "grade": "A",
+  "basis": "LCCC CfD-to-BM-unit mapping, effective on the day",
+  "extra": {
+   "name": "Beatrice Offshore Wind Farm Limited (Phase 2)",
+   "technology": "Offshore Wind",
+   "capacity_mw": "336.000",
+   "status": "Live (Post-FIC)"
+  }
+ },
+ {
+  "unit": "T_BEATO-4",
+  "register": "ro",
+  "target": "R00001SPSC",
+  "grade": "C",
+  "basis": "station name matches lead party only",
+  "extra": {
+   "station": "Beatrice Offshore Windfarm"
+  }
+ },
+ {
+  "unit": "T_BEATO-4",
+  "register": "ro",
+  "target": "R11458NGNI",
+  "grade": "C",
+  "basis": "station name matches lead party only",
+  "extra": {
+   "station": "5 Beatrice Villas"
+  }
+ },
+ {
+  "unit": "T_BENBW-1",
+  "register": "cfd",
+  "target": "AR5-BWI-610",
+  "grade": "A",
+  "basis": "LCCC CfD-to-BM-unit mapping, effective on the day",
+  "extra": {
+   "name": "Benbrack Wind Farm",
+   "technology": "Onshore Wind",
+   "capacity_mw": "31.100",
+   "status": "Live (Pre-FIC)"
+  }
+ },
+ {
+  "unit": "T_BENBW-1",
+  "register": "cfd",
+  "target": "AR6-BEN-610",
+  "grade": "A",
+  "basis": "LCCC CfD-to-BM-unit mapping, effective on the day",
+  "extra": {
+   "name": "Benbrack Wind Farm - AR6 - A3",
+   "technology": "Onshore Wind",
+   "capacity_mw": "13.500",
+   "status": "Live (Pre-FIC)"
+  }
+ },
+ {
+  "unit": "T_BENBW-1",
+  "register": "cfd",
+  "target": "AR6-BWA-610",
+  "grade": "A",
+  "basis": "LCCC CfD-to-BM-unit mapping, effective on the day",
+  "extra": {
+   "name": "Benbrack Wind Farm - AR6 - A2",
+   "technology": "Onshore Wind",
+   "capacity_mw": "22.500",
+   "status": "Live (Pre-FIC)"
+  }
+ },
+ {
+  "unit": "T_BLLA-2",
+  "register": "ro",
+  "target": "R00060SQSC",
+  "grade": "C",
+  "basis": "station name matches unit name; capacity outside 15 % or absent",
+  "extra": {
+   "station": "Black Law Windfarm - A,C",
+   "capacity_mw": "124.2"
+  }
+ },
+ {
+  "unit": "T_BLLA-2",
+  "register": "ro",
+  "target": "R00296SQSC",
+  "grade": "B",
+  "basis": "station name matches unit name; capacity within 15 %",
+  "extra": {
+   "station": "BLACK LAW EXTENSION",
+   "capacity_mw": "63.43"
+  }
+ },
+ {
+  "unit": "T_BROCW-1",
+  "register": "cfd",
+  "target": "AR4-BCW-610",
+  "grade": "A",
+  "basis": "LCCC CfD-to-BM-unit mapping, effective on the day",
+  "extra": {
+   "name": "Broken Cross Wind Farm",
+   "technology": "Onshore Wind",
+   "capacity_mw": "42.350",
+   "status": "Live (Pre-FIC)"
+  }
+ },
+ {
+  "unit": "T_CGTHW-1",
+  "register": "ro",
+  "target": "R00285SQSC",
+  "grade": "B",
+  "basis": "station name matches unit name; capacity within 15 %",
+  "extra": {
+   "station": "Corriegarth Wind Energy Centre",
+   "capacity_mw": "69"
+  }
+ },
+ {
+  "unit": "T_CLDNW-1",
+  "register": "ro",
+  "target": "R00187SQSC",
+  "grade": "B",
+  "basis": "station name matches unit name; capacity within 15 %",
+  "extra": {
+   "station": "Clyde Windfarm (North)",
+   "capacity_mw": "192.303"
+  }
+ },
+ {
+  "unit": "T_CRGHW-1",
+  "register": "ro",
+  "target": "R00216SQSC",
+  "grade": "B",
+  "basis": "station name matches unit name; capacity within 15 %",
+  "extra": {
+   "station": "The Carraig Gheal Wind Farm",
+   "capacity_mw": "45.25"
+  }
+ },
+ {
+  "unit": "T_DOREW-1",
+  "register": "cfd",
+  "target": "AAA-DOR-182",
+  "grade": "A",
+  "basis": "LCCC CfD-to-BM-unit mapping, effective on the day",
+  "extra": {
+   "name": "Dorenell Wind Farm",
+   "technology": "Onshore Wind",
+   "capacity_mw": "173.700",
+   "status": "Live (Post-FIC)"
+  }
+ },
+ {
+  "unit": "T_DOREW-2",
+  "register": "cfd",
+  "target": "AAA-DOR-182",
+  "grade": "A",
+  "basis": "LCCC CfD-to-BM-unit mapping, effective on the day",
+  "extra": {
+   "name": "Dorenell Wind Farm",
+   "technology": "Onshore Wind",
+   "capacity_mw": "173.700",
+   "status": "Live (Post-FIC)"
+  }
+ },
+ {
+  "unit": "T_DRSLW-1",
+  "register": "ro",
+  "target": "R00308SQSC",
+  "grade": "B",
+  "basis": "station name matches unit name; capacity within 15 %",
+  "extra": {
+   "station": "Dersalloch",
+   "capacity_mw": "69"
+  }
+ },
+ {
+  "unit": "T_EWHLW-1",
+  "register": "ro",
+  "target": "R00319SQSC",
+  "grade": "B",
+  "basis": "station name matches unit name; capacity within 15 %",
+  "extra": {
+   "station": "Ewe Hill II",
+   "capacity_mw": "36.8"
+  }
+ },
+ {
+  "unit": "T_GORDW-2",
+  "register": "ro",
+  "target": "R00170SQSC",
+  "grade": "C",
+  "basis": "station name matches unit name; capacity outside 15 % or absent",
+  "extra": {
+   "station": "Gordonbush Wind Farm",
+   "capacity_mw": "108"
+  }
+ },
+ {
+  "unit": "T_GRIFW-1",
+  "register": "ro",
+  "target": "R00160SQSC",
+  "grade": "C",
+  "basis": "station name matches lead party only",
+  "extra": {
+   "station": "Griffin Wind Farm"
+  }
+ },
+ {
+  "unit": "T_GRIFW-1",
+  "register": "ro",
+  "target": "R03770NGNI",
+  "grade": "C",
+  "basis": "station name matches lead party only",
+  "extra": {
+   "station": "William Griffin 6.0kwp"
+  }
+ },
+ {
+  "unit": "T_GRIFW-1",
+  "register": "ro",
+  "target": "R09542NGNI",
+  "grade": "C",
+  "basis": "station name matches lead party only",
+  "extra": {
+   "station": "Ronald Griffin Solar Hub"
+  }
+ },
+ {
+  "unit": "T_GRIFW-1",
+  "register": "ro",
+  "target": "R09926NGNI",
+  "grade": "C",
+  "basis": "station name matches lead party only",
+  "extra": {
+   "station": "Griffin PV System"
+  }
+ },
+ {
+  "unit": "T_GRIFW-2",
+  "register": "ro",
+  "target": "R00160SQSC",
+  "grade": "C",
+  "basis": "station name matches lead party only",
+  "extra": {
+   "station": "Griffin Wind Farm"
+  }
+ },
+ {
+  "unit": "T_GRIFW-2",
+  "register": "ro",
+  "target": "R03770NGNI",
+  "grade": "C",
+  "basis": "station name matches lead party only",
+  "extra": {
+   "station": "William Griffin 6.0kwp"
+  }
+ },
+ {
+  "unit": "T_GRIFW-2",
+  "register": "ro",
+  "target": "R09542NGNI",
+  "grade": "C",
+  "basis": "station name matches lead party only",
+  "extra": {
+   "station": "Ronald Griffin Solar Hub"
+  }
+ },
+ {
+  "unit": "T_GRIFW-2",
+  "register": "ro",
+  "target": "R09926NGNI",
+  "grade": "C",
+  "basis": "station name matches lead party only",
+  "extra": {
+   "station": "Griffin PV System"
+  }
+ },
+ {
+  "unit": "T_HAHAW-1",
+  "register": "cfd",
+  "target": "AR4-HHR-610",
+  "grade": "A",
+  "basis": "LCCC CfD-to-BM-unit mapping, effective on the day",
+  "extra": {
+   "name": "Hagshaw Hill Repowering",
+   "technology": "Onshore Wind",
+   "capacity_mw": "79.800",
+   "status": "Live (Pre-FIC)"
+  }
+ },
+ {
+  "unit": "T_HOWBO-1",
+  "register": "cfd",
+  "target": "AR2-HRN-106",
+  "grade": "A",
+  "basis": "LCCC CfD-to-BM-unit mapping, effective on the day",
+  "extra": {
+   "name": "Hornsea Project 2 Phase 1",
+   "technology": "Offshore Wind",
+   "capacity_mw": "449.760",
+   "status": "Live (Post-FIC)"
+  }
+ },
+ {
+  "unit": "T_KILBW-1",
+  "register": "ro",
+  "target": "R00093SQSC",
+  "grade": "C",
+  "basis": "station name matches lead party only",
+  "extra": {
+   "station": "Kilbraur Wind Farm"
+  }
+ },
+ {
+  "unit": "T_KPMRW-1",
+  "register": "cfd",
+  "target": "AAA-BAN-189",
+  "grade": "A",
+  "basis": "LCCC CfD-to-BM-unit mapping, effective on the day",
+  "extra": {
+   "name": "Kype Muir Wind Farm",
+   "technology": "Onshore Wind",
+   "capacity_mw": "87.230",
+   "status": "Live (Post-FIC)"
+  }
+ },
+ {
+  "unit": "T_LCLTW-1",
+  "register": "ro",
+  "target": "R00163SQSC",
+  "grade": "B",
+  "basis": "station name matches unit name; capacity within 15 %",
+  "extra": {
+   "station": "Lochluichart Windfarm",
+   "capacity_mw": "65.34"
+  }
+ },
+ {
+  "unit": "T_LIMKW-1",
+  "register": "ro",
+  "target": "R03431NGNI",
+  "grade": "C",
+  "basis": "station name matches unit name; capacity outside 15 % or absent",
+  "extra": {
+   "station": "9 Limekiln Lane",
+   "capacity_mw": "0.0045"
+  }
+ },
+ {
+  "unit": "T_MIDMW-1",
+  "register": "cfd",
+  "target": "AAA-BAN-192",
+  "grade": "A",
+  "basis": "LCCC CfD-to-BM-unit mapping, effective on the day",
+  "extra": {
+   "name": "Middle Muir Wind Farm",
+   "technology": "Onshore Wind",
+   "capacity_mw": "50.730",
+   "status": "Live (Post-FIC)"
+  }
+ },
+ {
+  "unit": "T_MOWEO-1",
+  "register": "cfd",
+  "target": "AR2-MRY-107",
+  "grade": "A",
+  "basis": "LCCC CfD-to-BM-unit mapping, effective on the day",
+  "extra": {
+   "name": "Moray Offshore Windfarm (East) Phase 1",
+   "technology": "Offshore Wind",
+   "capacity_mw": "309.469",
+   "status": "Live (Post-FIC)"
+  }
+ },
+ {
+  "unit": "T_MOWEO-1",
+  "register": "cfd",
+  "target": "AR2-MRY-207",
+  "grade": "A",
+  "basis": "LCCC CfD-to-BM-unit mapping, effective on the day",
+  "extra": {
+   "name": "Moray Offshore Windfarm (East) Phase 2",
+   "technology": "Offshore Wind",
+   "capacity_mw": "309.363",
+   "status": "Live (Post-FIC)"
+  }
+ },
+ {
+  "unit": "T_MOWEO-1",
+  "register": "cfd",
+  "target": "AR2-MRY-307",
+  "grade": "A",
+  "basis": "LCCC CfD-to-BM-unit mapping, effective on the day",
+  "extra": {
+   "name": "Moray Offshore Windfarm (East) Phase 3",
+   "technology": "Offshore Wind",
+   "capacity_mw": "318.770",
+   "status": "Live (Post-FIC)"
+  }
+ },
+ {
+  "unit": "T_MOWEO-2",
+  "register": "cfd",
+  "target": "AR2-MRY-107",
+  "grade": "A",
+  "basis": "LCCC CfD-to-BM-unit mapping, effective on the day",
+  "extra": {
+   "name": "Moray Offshore Windfarm (East) Phase 1",
+   "technology": "Offshore Wind",
+   "capacity_mw": "309.469",
+   "status": "Live (Post-FIC)"
+  }
+ },
+ {
+  "unit": "T_MOWEO-2",
+  "register": "cfd",
+  "target": "AR2-MRY-207",
+  "grade": "A",
+  "basis": "LCCC CfD-to-BM-unit mapping, effective on the day",
+  "extra": {
+   "name": "Moray Offshore Windfarm (East) Phase 2",
+   "technology": "Offshore Wind",
+   "capacity_mw": "309.363",
+   "status": "Live (Post-FIC)"
+  }
+ },
+ {
+  "unit": "T_MOWEO-2",
+  "register": "cfd",
+  "target": "AR2-MRY-307",
+  "grade": "A",
+  "basis": "LCCC CfD-to-BM-unit mapping, effective on the day",
+  "extra": {
+   "name": "Moray Offshore Windfarm (East) Phase 3",
+   "technology": "Offshore Wind",
+   "capacity_mw": "318.770",
+   "status": "Live (Post-FIC)"
+  }
+ },
+ {
+  "unit": "T_MOWEO-3",
+  "register": "cfd",
+  "target": "AR2-MRY-107",
+  "grade": "A",
+  "basis": "LCCC CfD-to-BM-unit mapping, effective on the day",
+  "extra": {
+   "name": "Moray Offshore Windfarm (East) Phase 1",
+   "technology": "Offshore Wind",
+   "capacity_mw": "309.469",
+   "status": "Live (Post-FIC)"
+  }
+ },
+ {
+  "unit": "T_MOWEO-3",
+  "register": "cfd",
+  "target": "AR2-MRY-207",
+  "grade": "A",
+  "basis": "LCCC CfD-to-BM-unit mapping, effective on the day",
+  "extra": {
+   "name": "Moray Offshore Windfarm (East) Phase 2",
+   "technology": "Offshore Wind",
+   "capacity_mw": "309.363",
+   "status": "Live (Post-FIC)"
+  }
+ },
+ {
+  "unit": "T_MOWEO-3",
+  "register": "cfd",
+  "target": "AR2-MRY-307",
+  "grade": "A",
+  "basis": "LCCC CfD-to-BM-unit mapping, effective on the day",
+  "extra": {
+   "name": "Moray Offshore Windfarm (East) Phase 3",
+   "technology": "Offshore Wind",
+   "capacity_mw": "318.770",
+   "status": "Live (Post-FIC)"
+  }
+ },
+ {
+  "unit": "T_MYGPW-1",
+  "register": "ro",
+  "target": "R00260SQSC",
+  "grade": "B",
+  "basis": "station name matches unit name; capacity within 15 %",
+  "extra": {
+   "station": "Minnygap Wind Farm",
+   "capacity_mw": "24.8"
+  }
+ },
+ {
+  "unit": "T_NNGAO-1",
+  "register": "cfd",
+  "target": "AAA-NEA-195",
+  "grade": "A",
+  "basis": "LCCC CfD-to-BM-unit mapping, effective on the day",
+  "extra": {
+   "name": "Neart na Gaoithe",
+   "technology": "Offshore Wind",
+   "capacity_mw": "448.000",
+   "status": "Live (Post-FIC)"
+  }
+ },
+ {
+  "unit": "T_STLGW-1",
+  "register": "ro",
+  "target": "R00332SQSC",
+  "grade": "C",
+  "basis": "station name matches lead party only",
+  "extra": {
+   "station": "Stronelairg Wind Farm"
+  }
+ },
+ {
+  "unit": "T_STLGW-2",
+  "register": "ro",
+  "target": "R00332SQSC",
+  "grade": "C",
+  "basis": "station name matches lead party only",
+  "extra": {
+   "station": "Stronelairg Wind Farm"
+  }
+ },
+ {
+  "unit": "T_STLGW-3",
+  "register": "ro",
+  "target": "R00332SQSC",
+  "grade": "C",
+  "basis": "station name matches lead party only",
+  "extra": {
+   "station": "Stronelairg Wind Farm"
+  }
+ },
+ {
+  "unit": "T_STRNW-1",
+  "register": "ro",
+  "target": "R00264SQSC",
+  "grade": "C",
+  "basis": "station name matches lead party only",
+  "extra": {
+   "station": "Strathy North"
+  }
+ },
+ {
+  "unit": "T_WDRGW-1",
+  "register": "ro",
+  "target": "R00299SQSC",
+  "grade": "C",
+  "basis": "station name matches unit name; capacity outside 15 % or absent",
+  "extra": {
+   "station": "Windy Standard II (Brockloch Rig)",
+   "capacity_mw": "61"
+  }
+ },
+ {
+  "unit": "T_WISTW-2",
+  "register": "ro",
+  "target": "R00299SQSC",
+  "grade": "C",
+  "basis": "station name matches lead party only",
+  "extra": {
+   "station": "Windy Standard II (Brockloch Rig)"
+  }
+ },
+ {
+  "unit": "T_WLNYO-3",
+  "register": "cfd",
+  "target": "INV-WAL-001",
+  "grade": "A",
+  "basis": "LCCC CfD-to-BM-unit mapping, effective on the day",
+  "extra": {
+   "name": "Walney Extension Offshore Wind Farm Phase 1",
+   "technology": "Offshore Wind",
+   "capacity_mw": "330.000",
+   "status": "Live (Post-FIC)"
+  }
+ },
+ {
+  "unit": "T_WLNYO-3",
+  "register": "ro",
+  "target": "R00547RJEN",
+  "grade": "C",
+  "basis": "station name matches lead party only",
+  "extra": {
+   "station": "Walney Island Power - A"
+  }
+ },
+ {
+  "unit": "T_WLNYO-3",
+  "register": "ro",
+  "target": "R00019RPEN",
+  "grade": "C",
+  "basis": "station name matches lead party only",
+  "extra": {
+   "station": "Walney Offshore Wind Phase I"
+  }
+ },
+ {
+  "unit": "T_WLNYO-3",
+  "register": "ro",
+  "target": "R00023RPEN",
+  "grade": "C",
+  "basis": "station name matches lead party only",
+  "extra": {
+   "station": "Walney Offshore Wind Phase II"
+  }
+ },
+ {
+  "unit": "T_WLNYO-4",
+  "register": "cfd",
+  "target": "INV-WAL-002",
+  "grade": "A",
+  "basis": "LCCC CfD-to-BM-unit mapping, effective on the day",
+  "extra": {
+   "name": "Walney Extension Offshore Wind Farm Phase 2",
+   "technology": "Offshore Wind",
+   "capacity_mw": "330.000",
+   "status": "Live (Post-FIC)"
+  }
+ },
+ {
+  "unit": "T_WLNYO-4",
+  "register": "ro",
+  "target": "R00547RJEN",
+  "grade": "C",
+  "basis": "station name matches lead party only",
+  "extra": {
+   "station": "Walney Island Power - A"
+  }
+ },
+ {
+  "unit": "T_WLNYO-4",
+  "register": "ro",
+  "target": "R00019RPEN",
+  "grade": "C",
+  "basis": "station name matches lead party only",
+  "extra": {
+   "station": "Walney Offshore Wind Phase I"
+  }
+ },
+ {
+  "unit": "T_WLNYO-4",
+  "register": "ro",
+  "target": "R00023RPEN",
+  "grade": "C",
+  "basis": "station name matches lead party only",
+  "extra": {
+   "station": "Walney Offshore Wind Phase II"
+  }
+ }
+]

@@ -1,0 +1,15 @@
+{
+ "declaration": "DECLARATION.md",
+ "rules": {
+  "name test: generic tokens removed, superset match": "tests/test_support_and_storage.py::test_name_match_strips_the_declared_generic_tokens_and_needs_a_superset",
+  "capacity within 15 %": "tests/test_support_and_storage.py::test_capacity_tolerance_is_fifteen_percent_of_the_reference",
+  "period clock: BST on the record day": "tests/test_support_and_storage.py::test_period_start_is_bst_for_the_record_day",
+  "CfD grade A only when effective on the day": "tests/test_support_and_storage.py::test_cfd_link_is_grade_a_only_when_effective_on_the_day",
+  "RO grade B needs name and capacity, C without": "tests/test_support_and_storage.py::test_ro_links_grade_b_needs_name_and_capacity_and_c_without",
+  "RO grade A only with an identifier column": "tests/test_support_and_storage.py::test_ro_grade_a_applies_only_with_an_identifier_column",
+  "scheme both when CfD and RO link": "tests/test_support_and_storage.py::test_scheme_both_when_cfd_and_ro_link",
+  "side of B6 ladder A, B, C, unknown": "tests/test_support_and_storage.py::test_side_of_b6_ladder_grades_a_then_b_then_c_then_unknown",
+  "energy bound R3h and R3p by publish time": "tests/test_support_and_storage.py::test_energy_bound_hindsight_and_public_as_of_differ_by_publish_time",
+  "volume gate, scheme split, constraint duration, propositions": "tests/test_support_and_storage.py::test_run_splits_wind_bids_by_scheme_and_lays_out_the_energy_limited_units"
+ }
+}

@@ -1,0 +1,1856 @@
+{
+ "day": "2026-09-08",
+ "wind_units": 77,
+ "reconciliation": {
+  "tolerance": "0.001",
+  "settlement_mwh": {
+   "offer": "132101.286768847912071581",
+   "bid": "143704.039587563330769630"
+  },
+  "by_type": {
+   "Original": {
+    "offer_mwh": "130134.876362192376209607",
+    "offer_deviation": "0.014886",
+    "bid_mwh": "24805.590475674716471979",
+    "bid_deviation": "0.827384",
+    "reconciles": false
+   },
+   "Original-Priced": {
+    "offer_mwh": "5236.476824307498950471",
+    "offer_deviation": "0.960360",
+    "bid_mwh": "1936.179933978323456443",
+    "bid_deviation": "0.986527",
+    "reconciles": false
+   },
+   "Re-priced": {
+    "offer_mwh": "0",
+    "offer_deviation": "1.000000",
+    "bid_mwh": "1861.725262871659215766",
+    "bid_deviation": "0.987045",
+    "reconciles": false
+   },
+   "Tagged": {
+    "offer_mwh": "132083.286768847911768997",
+    "offer_deviation": "0.000136",
+    "bid_mwh": "143685.039587563331616476",
+    "bid_deviation": "0.000132",
+    "reconciles": true
+   }
+  },
+  "chosen": "Tagged"
+ },
+ "disptav_type": "Tagged",
+ "total_wind_bid_paid_gbp": "3768601.305298115938623229",
+ "table": [
+  {
+   "scheme": "cfd",
+   "units": 20,
+   "bid_mwh": "35294.655339442995734392",
+   "bid_paid_gbp": "953815.362706714488596915",
+   "bid_signed_gbp": "429736.603930599305449328",
+   "gbp_per_mwh": "27.02",
+   "share_of_wind_bid_gbp": "0.2531"
+  },
+  {
+   "scheme": "ro",
+   "units": 10,
+   "bid_mwh": "5006.900396825396827802",
+   "bid_paid_gbp": "393918.742543708813827596",
+   "bid_signed_gbp": "393918.742543708813827596",
+   "gbp_per_mwh": "78.68",
+   "share_of_wind_bid_gbp": "0.1045"
+  },
+  {
+   "scheme": "both",
+   "units": 0,
+   "bid_mwh": "0",
+   "bid_paid_gbp": "0",
+   "bid_signed_gbp": "0",
+   "gbp_per_mwh": null,
+   "share_of_wind_bid_gbp": "0.0000"
+  },
+  {
+   "scheme": "ro-possible",
+   "units": 11,
+   "bid_mwh": "11089.018888888888918370",
+   "bid_paid_gbp": "725930.145652765331611527",
+   "bid_signed_gbp": "725930.145652765331611527",
+   "gbp_per_mwh": "65.46",
+   "share_of_wind_bid_gbp": "0.1926"
+  },
+  {
+   "scheme": "unmatched",
+   "units": 36,
+   "bid_mwh": "67414.200890090598182556",
+   "bid_paid_gbp": "1694937.054394927304587191",
+   "bid_signed_gbp": "1694937.054394927304587191",
+   "gbp_per_mwh": "25.14",
+   "share_of_wind_bid_gbp": "0.4498"
+  }
+ ],
+ "units": [
+  {
+   "unit": "2__PEDGE003",
+   "name": "2__PEDGE003",
+   "lead_party": "Edgware Energy Limited",
+   "generation_capacity_mw": "55.749",
+   "scheme": "unmatched",
+   "links": [],
+   "bid_paid_gbp": "59325.294479360002128492",
+   "bid_signed_gbp": "59325.294479360002128492",
+   "bid_mwh": "591.500000000000000000"
+  },
+  {
+   "unit": "C__PSTAT011",
+   "name": "C__PSTAT011-AAA-NAN-184",
+   "lead_party": "Statkraft Markets Gmbh",
+   "generation_capacity_mw": "40.000",
+   "scheme": "cfd",
+   "links": [
+    {
+     "unit": "C__PSTAT011",
+     "register": "cfd",
+     "target": "AAA-NAN-184",
+     "grade": "A",
+     "basis": "LCCC CfD-to-BM-unit mapping, effective on the day",
+     "extra": {
+      "name": "Nanclach Wind Farm",
+      "technology": "Onshore Wind",
+      "capacity_mw": "39.100",
+      "status": "Live (Post-FIC)"
+     }
+    }
+   ],
+   "bid_paid_gbp": "29207.395811999997704318",
+   "bid_signed_gbp": "29207.395811999997704318",
+   "bid_mwh": "852.000000000000000000"
+  },
+  {
+   "unit": "E_BABAW-1",
+   "name": "Baillie Wind Farm",
+   "lead_party": "Statkraft Markets Gmbh",
+   "generation_capacity_mw": "52.500",
+   "scheme": "ro",
+   "links": [
+    {
+     "unit": "E_BABAW-1",
+     "register": "ro",
+     "target": "R00186SQSC",
+     "grade": "B",
+     "basis": "station name matches unit name; capacity within 15 %",
+     "extra": {
+      "station": "Baillie Wind farm",
+      "capacity_mw": "52.04"
+     }
+    },
+    {
+     "unit": "E_BABAW-1",
+     "register": "ro",
+     "target": "R19255NGNI",
+     "grade": "C",
+     "basis": "station name matches unit name; capacity outside 15 % or absent",
+     "extra": {
+      "station": "Baillie-BT18-9ET",
+      "capacity_mw": "0.00392"
+     }
+    },
+    {
+     "unit": "E_BABAW-1",
+     "register": "ro",
+     "target": "R20692NGNI",
+     "grade": "C",
+     "basis": "station name matches unit name; capacity outside 15 % or absent",
+     "extra": {
+      "station": "James Baillie-BT20",
+      "capacity_mw": "0.00399"
+     }
+    },
+    {
+     "unit": "E_BABAW-1",
+     "register": "ro",
+     "target": "R21030NGNI",
+     "grade": "C",
+     "basis": "station name matches unit name; capacity outside 15 % or absent",
+     "extra": {
+      "station": "Baillie-BT4-2EG",
+      "capacity_mw": "0.00379"
+     }
+    },
+    {
+     "unit": "E_BABAW-1",
+     "register": "ro",
+     "target": "R21065NGNI",
+     "grade": "C",
+     "basis": "station name matches unit name; capacity outside 15 % or absent",
+     "extra": {
+      "station": "Baillie-BT18-9BJ",
+      "capacity_mw": "0.00379"
+     }
+    }
+   ],
+   "bid_paid_gbp": "18450.013178982883459867",
+   "bid_signed_gbp": "18450.013178982883459867",
+   "bid_mwh": "230.352777777777777857"
+  },
+  {
+   "unit": "E_BTUIW-3",
+   "name": "Beinn an Tuirc III Windfarm",
+   "lead_party": "SP Renewables (UK) Limited",
+   "generation_capacity_mw": "52.000",
+   "scheme": "unmatched",
+   "links": [],
+   "bid_paid_gbp": "12079.339812540000423276",
+   "bid_signed_gbp": "12079.339812540000423276",
+   "bid_mwh": "1155.000000000000000000"
+  },
+  {
+   "unit": "E_CMSTW-2",
+   "name": "Camster II",
+   "lead_party": "Edgware Energy Limited",
+   "generation_capacity_mw": "36.000",
+   "scheme": "unmatched",
+   "links": [],
+   "bid_paid_gbp": "13182.467201135999744111",
+   "bid_signed_gbp": "13182.467201135999744111",
+   "bid_mwh": "536.000000000000000000"
+  },
+  {
+   "unit": "E_GRGRW-1",
+   "name": "Greengairs East WF-1",
+   "lead_party": "Evolve Energy Supply Limited",
+   "generation_capacity_mw": "37.649",
+   "scheme": "unmatched",
+   "links": [],
+   "bid_paid_gbp": "51610.851099499997189922",
+   "bid_signed_gbp": "51610.851099499997189922",
+   "bid_mwh": "757.750000000000000000"
+  },
+  {
+   "unit": "E_HRHLW-1",
+   "name": "Hare Hill Extension Windfarm",
+   "lead_party": "SP Renewables (UK) Limited",
+   "generation_capacity_mw": "30.000",
+   "scheme": "ro",
+   "links": [
+    {
+     "unit": "E_HRHLW-1",
+     "register": "ro",
+     "target": "R00139RQEN",
+     "grade": "C",
+     "basis": "station name matches unit name; capacity outside 15 % or absent",
+     "extra": {
+      "station": "Hare Hill Wind Farm (eon) - A, C",
+      "capacity_mw": "2.75"
+     }
+    },
+    {
+     "unit": "E_HRHLW-1",
+     "register": "ro",
+     "target": "R00140RQEN",
+     "grade": "C",
+     "basis": "station name matches unit name; capacity outside 15 % or absent",
+     "extra": {
+      "station": "HARE HILL",
+      "capacity_mw": "2.738"
+     }
+    },
+    {
+     "unit": "E_HRHLW-1",
+     "register": "ro",
+     "target": "R00001SQSC",
+     "grade": "C",
+     "basis": "station name matches unit name; capacity outside 15 % or absent",
+     "extra": {
+      "station": "Hare Hill Wind Farm - A",
+      "capacity_mw": "13.2"
+     }
+    },
+    {
+     "unit": "E_HRHLW-1",
+     "register": "ro",
+     "target": "R00310SQSC",
+     "grade": "B",
+     "basis": "station name matches unit name; capacity within 15 %",
+     "extra": {
+      "station": "Hare Hill Extension",
+      "capacity_mw": "29.75"
+     }
+    }
+   ],
+   "bid_paid_gbp": "28426.563192070633348867",
+   "bid_signed_gbp": "28426.563192070633348867",
+   "bid_mwh": "361.841666666666666951"
+  },
+  {
+   "unit": "T_AKGLW-3",
+   "name": "AIKENGALL2A-W",
+   "lead_party": "AIK2A Sustainable Energy Ltd",
+   "generation_capacity_mw": "163.400",
+   "scheme": "unmatched",
+   "links": [],
+   "bid_paid_gbp": "85704.813221502688655561",
+   "bid_signed_gbp": "85704.813221502688655561",
+   "bid_mwh": "1765.174444444444444402"
+  },
+  {
+   "unit": "T_BDCHW-1",
+   "name": "Bad a Cheo Wind Farm",
+   "lead_party": "RWE Generation UK plc",
+   "generation_capacity_mw": "27.000",
+   "scheme": "cfd",
+   "links": [
+    {
+     "unit": "T_BDCHW-1",
+     "register": "cfd",
+     "target": "AAA-BAD-185",
+     "grade": "A",
+     "basis": "LCCC CfD-to-BM-unit mapping, effective on the day",
+     "extra": {
+      "name": "Bad A Cheo Wind Farm",
+      "technology": "Onshore Wind",
+      "capacity_mw": "26.340",
+      "status": "Live (Post-FIC)"
+     }
+    }
+   ],
+   "bid_paid_gbp": "15358.911908453750356783",
+   "bid_signed_gbp": "15351.673010293750357035",
+   "bid_mwh": "269.791666666666666963"
+  },
+  {
+   "unit": "T_BEATO-1",
+   "name": "Beatrice Offshore WF 1",
+   "lead_party": "Beatrice Offshore Windfarm Ltd",
+   "generation_capacity_mw": "184.000",
+   "scheme": "cfd",
+   "links": [
+    {
+     "unit": "T_BEATO-1",
+     "register": "cfd",
+     "target": "INV-BEA-001",
+     "grade": "A",
+     "basis": "LCCC CfD-to-BM-unit mapping, effective on the day",
+     "extra": {
+      "name": "Beatrice Offshore Wind Farm Limited (Phase 1)",
+      "technology": "Offshore Wind",
+      "capacity_mw": "252.000",
+      "status": "Live (Post-FIC)"
+     }
+    },
+    {
+     "unit": "T_BEATO-1",
+     "register": "ro",
+     "target": "R00001SPSC",
+     "grade": "C",
+     "basis": "station name matches lead party only",
+     "extra": {
+      "station": "Beatrice Offshore Windfarm"
+     }
+    },
+    {
+     "unit": "T_BEATO-1",
+     "register": "ro",
+     "target": "R11458NGNI",
+     "grade": "C",
+     "basis": "station name matches lead party only",
+     "extra": {
+      "station": "5 Beatrice Villas"
+     }
+    }
+   ],
+   "bid_paid_gbp": "48282.382751599750463359",
+   "bid_signed_gbp": "48282.382751599750463359",
+   "bid_mwh": "576.725000000000001421"
+  },
+  {
+   "unit": "T_BEATO-2",
+   "name": "Beatrice Offshore WF 2",
+   "lead_party": "Beatrice Offshore Windfarm Ltd",
+   "generation_capacity_mw": "166.000",
+   "scheme": "cfd",
+   "links": [
+    {
+     "unit": "T_BEATO-2",
+     "register": "cfd",
+     "target": "INV-BEA-001",
+     "grade": "A",
+     "basis": "LCCC CfD-to-BM-unit mapping, effective on the day",
+     "extra": {
+      "name": "Beatrice Offshore Wind Farm Limited (Phase 1)",
+      "technology": "Offshore Wind",
+      "capacity_mw": "252.000",
+      "status": "Live (Post-FIC)"
+     }
+    },
+    {
+     "unit": "T_BEATO-2",
+     "register": "ro",
+     "target": "R00001SPSC",
+     "grade": "C",
+     "basis": "station name matches lead party only",
+     "extra": {
+      "station": "Beatrice Offshore Windfarm"
+     }
+    },
+    {
+     "unit": "T_BEATO-2",
+     "register": "ro",
+     "target": "R11458NGNI",
+     "grade": "C",
+     "basis": "station name matches lead party only",
+     "extra": {
+      "station": "5 Beatrice Villas"
+     }
+    }
+   ],
+   "bid_paid_gbp": "96941.543167525765966274",
+   "bid_signed_gbp": "96941.543167525765966274",
+   "bid_mwh": "1009.191666666666671758"
+  },
+  {
+   "unit": "T_BEATO-3",
+   "name": "Beatrice Offshore WF 3",
+   "lead_party": "Beatrice Offshore Windfarm Ltd",
+   "generation_capacity_mw": "166.000",
+   "scheme": "cfd",
+   "links": [
+    {
+     "unit": "T_BEATO-3",
+     "register": "cfd",
+     "target": "INV-BEA-002",
+     "grade": "A",
+     "basis": "LCCC CfD-to-BM-unit mapping, effective on the day",
+     "extra": {
+      "name": "Beatrice Offshore Wind Farm Limited (Phase 2)",
+      "technology": "Offshore Wind",
+      "capacity_mw": "336.000",
+      "status": "Live (Post-FIC)"
+     }
+    },
+    {
+     "unit": "T_BEATO-3",
+     "register": "ro",
+     "target": "R00001SPSC",
+     "grade": "C",
+     "basis": "station name matches lead party only",
+     "extra": {
+      "station": "Beatrice Offshore Windfarm"
+     }
+    },
+    {
+     "unit": "T_BEATO-3",
+     "register": "ro",
+     "target": "R11458NGNI",
+     "grade": "C",
+     "basis": "station name matches lead party only",
+     "extra": {
+      "station": "5 Beatrice Villas"
+     }
+    }
+   ],
+   "bid_paid_gbp": "114695.775203813483585691",
+   "bid_signed_gbp": "114695.775203813483585691",
+   "bid_mwh": "1382.758333333333339965"
+  },
+  {
+   "unit": "T_BEATO-4",
+   "name": "Beatrice Offshore WF 4",
+   "lead_party": "Beatrice Offshore Windfarm Ltd",
+   "generation_capacity_mw": "165.526",
+   "scheme": "cfd",
+   "links": [
+    {
+     "unit": "T_BEATO-4",
+     "register": "cfd",
+     "target": "INV-BEA-002",
+     "grade": "A",
+     "basis": "LCCC CfD-to-BM-unit mapping, effective on the day",
+     "extra": {
+      "name": "Beatrice Offshore Wind Farm Limited (Phase 2)",
+      "technology": "Offshore Wind",
+      "capacity_mw": "336.000",
+      "status": "Live (Post-FIC)"
+     }
+    },
+    {
+     "unit": "T_BEATO-4",
+     "register": "ro",
+     "target": "R00001SPSC",
+     "grade": "C",
+     "basis": "station name matches lead party only",
+     "extra": {
+      "station": "Beatrice Offshore Windfarm"
+     }
+    },
+    {
+     "unit": "T_BEATO-4",
+     "register": "ro",
+     "target": "R11458NGNI",
+     "grade": "C",
+     "basis": "station name matches lead party only",
+     "extra": {
+      "station": "5 Beatrice Villas"
+     }
+    }
+   ],
+   "bid_paid_gbp": "86170.113362704765222589",
+   "bid_signed_gbp": "86170.113362704765222589",
+   "bid_mwh": "1080.417124444444455733"
+  },
+  {
+   "unit": "T_BENBW-1",
+   "name": "Benbrack WF",
+   "lead_party": "Benbrack Wind Farm Limited",
+   "generation_capacity_mw": "67.000",
+   "scheme": "cfd",
+   "links": [
+    {
+     "unit": "T_BENBW-1",
+     "register": "cfd",
+     "target": "AR5-BWI-610",
+     "grade": "A",
+     "basis": "LCCC CfD-to-BM-unit mapping, effective on the day",
+     "extra": {
+      "name": "Benbrack Wind Farm",
+      "technology": "Onshore Wind",
+      "capacity_mw": "31.100",
+      "status": "Live (Pre-FIC)"
+     }
+    },
+    {
+     "unit": "T_BENBW-1",
+     "register": "cfd",
+     "target": "AR6-BEN-610",
+     "grade": "A",
+     "basis": "LCCC CfD-to-BM-unit mapping, effective on the day",
+     "extra": {
+      "name": "Benbrack Wind Farm - AR6 - A3",
+      "technology": "Onshore Wind",
+      "capacity_mw": "13.500",
+      "status": "Live (Pre-FIC)"
+     }
+    },
+    {
+     "unit": "T_BENBW-1",
+     "register": "cfd",
+     "target": "AR6-BWA-610",
+     "grade": "A",
+     "basis": "LCCC CfD-to-BM-unit mapping, effective on the day",
+     "extra": {
+      "name": "Benbrack Wind Farm - AR6 - A2",
+      "technology": "Onshore Wind",
+      "capacity_mw": "22.500",
+      "status": "Live (Pre-FIC)"
+     }
+    }
+   ],
+   "bid_paid_gbp": "4279.743574196933309395",
+   "bid_signed_gbp": "-20405.467037520583176044",
+   "bid_mwh": "515.916666666666666074"
+  },
+  {
+   "unit": "T_BHLAW-1",
+   "name": "Bhlaraidh Windfarm 1",
+   "lead_party": "SSE Generation Ltd",
+   "generation_capacity_mw": "108.112",
+   "scheme": "unmatched",
+   "links": [],
+   "bid_paid_gbp": "132930.761516638799548675",
+   "bid_signed_gbp": "132930.761516638799548675",
+   "bid_mwh": "1644.225000000000020072"
+  },
+  {
+   "unit": "T_BLLA-2",
+   "name": "Black Law Windfarm Extension",
+   "lead_party": "SP Renewables (UK) Limited",
+   "generation_capacity_mw": "69.000",
+   "scheme": "ro",
+   "links": [
+    {
+     "unit": "T_BLLA-2",
+     "register": "ro",
+     "target": "R00060SQSC",
+     "grade": "C",
+     "basis": "station name matches unit name; capacity outside 15 % or absent",
+     "extra": {
+      "station": "Black Law Windfarm - A,C",
+      "capacity_mw": "124.2"
+     }
+    },
+    {
+     "unit": "T_BLLA-2",
+     "register": "ro",
+     "target": "R00296SQSC",
+     "grade": "B",
+     "basis": "station name matches unit name; capacity within 15 %",
+     "extra": {
+      "station": "BLACK LAW EXTENSION",
+      "capacity_mw": "63.43"
+     }
+    }
+   ],
+   "bid_paid_gbp": "25231.758181193299805046",
+   "bid_signed_gbp": "25231.758181193299805046",
+   "bid_mwh": "321.175000000000000044"
+  },
+  {
+   "unit": "T_BROCW-1",
+   "name": "Broken Cross WF",
+   "lead_party": "Smartestenergy Limited",
+   "generation_capacity_mw": "48.000",
+   "scheme": "cfd",
+   "links": [
+    {
+     "unit": "T_BROCW-1",
+     "register": "cfd",
+     "target": "AR4-BCW-610",
+     "grade": "A",
+     "basis": "LCCC CfD-to-BM-unit mapping, effective on the day",
+     "extra": {
+      "name": "Broken Cross Wind Farm",
+      "technology": "Onshore Wind",
+      "capacity_mw": "42.350",
+      "status": "Live (Pre-FIC)"
+     }
+    }
+   ],
+   "bid_paid_gbp": "13586.247617533499878473",
+   "bid_signed_gbp": "13586.247617533499878473",
+   "bid_mwh": "348.372500000000000900"
+  },
+  {
+   "unit": "T_CGTHW-1",
+   "name": "Corriegarth WF",
+   "lead_party": "Corriegarth Wind Energy LTD",
+   "generation_capacity_mw": "69.000",
+   "scheme": "ro",
+   "links": [
+    {
+     "unit": "T_CGTHW-1",
+     "register": "ro",
+     "target": "R00285SQSC",
+     "grade": "B",
+     "basis": "station name matches unit name; capacity within 15 %",
+     "extra": {
+      "station": "Corriegarth Wind Energy Centre",
+      "capacity_mw": "69"
+     }
+    }
+   ],
+   "bid_paid_gbp": "75452.861120996666426386",
+   "bid_signed_gbp": "75452.861120996666426386",
+   "bid_mwh": "981.583333333333332731"
+  },
+  {
+   "unit": "T_CLDNW-1",
+   "name": "Clyde North",
+   "lead_party": "Clyde Windfarm (Scotland) Ltd",
+   "generation_capacity_mw": "200.000",
+   "scheme": "ro",
+   "links": [
+    {
+     "unit": "T_CLDNW-1",
+     "register": "ro",
+     "target": "R00187SQSC",
+     "grade": "B",
+     "basis": "station name matches unit name; capacity within 15 %",
+     "extra": {
+      "station": "Clyde Windfarm (North)",
+      "capacity_mw": "192.303"
+     }
+    }
+   ],
+   "bid_paid_gbp": "21685.248462834916267640",
+   "bid_signed_gbp": "21685.248462834916267640",
+   "bid_mwh": "241.958333333333333925"
+  },
+  {
+   "unit": "T_CRDEW-1",
+   "name": "Crossdykes WF-1",
+   "lead_party": "EDF Energy Customers Limited",
+   "generation_capacity_mw": "24.000",
+   "scheme": "unmatched",
+   "links": [],
+   "bid_paid_gbp": "9077.662996290000364753",
+   "bid_signed_gbp": "9077.662996290000364753",
+   "bid_mwh": "168.108333333333333060"
+  },
+  {
+   "unit": "T_CRDEW-2",
+   "name": "Crossdykes WF-2",
+   "lead_party": "EDF Energy Customers Limited",
+   "generation_capacity_mw": "24.000",
+   "scheme": "unmatched",
+   "links": [],
+   "bid_paid_gbp": "9077.662996290000364753",
+   "bid_signed_gbp": "9077.662996290000364753",
+   "bid_mwh": "168.108333333333333060"
+  },
+  {
+   "unit": "T_CREAW-1",
+   "name": "Creag Riabhach Wind Farm",
+   "lead_party": "Creag Riabhach Wind Farm Ltd",
+   "generation_capacity_mw": "93.000",
+   "scheme": "unmatched",
+   "links": [],
+   "bid_paid_gbp": "78615.513431554774342656",
+   "bid_signed_gbp": "78615.513431554774342656",
+   "bid_mwh": "1420.249999535042288446"
+  },
+  {
+   "unit": "T_CRGHW-1",
+   "name": "Carraig Gheal Wind Farm",
+   "lead_party": "Statkraft Markets Gmbh",
+   "generation_capacity_mw": "46.000",
+   "scheme": "ro",
+   "links": [
+    {
+     "unit": "T_CRGHW-1",
+     "register": "ro",
+     "target": "R00216SQSC",
+     "grade": "B",
+     "basis": "station name matches unit name; capacity within 15 %",
+     "extra": {
+      "station": "The Carraig Gheal Wind Farm",
+      "capacity_mw": "45.25"
+     }
+    }
+   ],
+   "bid_paid_gbp": "51008.991133099999558452",
+   "bid_signed_gbp": "51008.991133099999558452",
+   "bid_mwh": "695.500000000000000000"
+  },
+  {
+   "unit": "T_CUMHW-1",
+   "name": "Cumberhead wind energy limited",
+   "lead_party": "Uniper UK Limited",
+   "generation_capacity_mw": "52.000",
+   "scheme": "unmatched",
+   "links": [],
+   "bid_paid_gbp": "4865.375437867933328559",
+   "bid_signed_gbp": "4865.375437867933328559",
+   "bid_mwh": "320.941666666666669980"
+  },
+  {
+   "unit": "T_DOREW-1",
+   "name": "Dorenell Wind Farm One",
+   "lead_party": "Dorenell Windfarm Limited",
+   "generation_capacity_mw": "114.000",
+   "scheme": "cfd",
+   "links": [
+    {
+     "unit": "T_DOREW-1",
+     "register": "cfd",
+     "target": "AAA-DOR-182",
+     "grade": "A",
+     "basis": "LCCC CfD-to-BM-unit mapping, effective on the day",
+     "extra": {
+      "name": "Dorenell Wind Farm",
+      "technology": "Onshore Wind",
+      "capacity_mw": "173.700",
+      "status": "Live (Post-FIC)"
+     }
+    }
+   ],
+   "bid_paid_gbp": "36036.670914029499741103",
+   "bid_signed_gbp": "9020.060008082500033305",
+   "bid_mwh": "2218.500000000000000000"
+  },
+  {
+   "unit": "T_DOREW-2",
+   "name": "Dorenell Wind Farm Two",
+   "lead_party": "Dorenell Windfarm Limited",
+   "generation_capacity_mw": "114.000",
+   "scheme": "cfd",
+   "links": [
+    {
+     "unit": "T_DOREW-2",
+     "register": "cfd",
+     "target": "AAA-DOR-182",
+     "grade": "A",
+     "basis": "LCCC CfD-to-BM-unit mapping, effective on the day",
+     "extra": {
+      "name": "Dorenell Wind Farm",
+      "technology": "Onshore Wind",
+      "capacity_mw": "173.700",
+      "status": "Live (Post-FIC)"
+     }
+    }
+   ],
+   "bid_paid_gbp": "30362.586795787999129459",
+   "bid_signed_gbp": "7689.017133778499463402",
+   "bid_mwh": "1853.750000000000000000"
+  },
+  {
+   "unit": "T_DOUGW-1",
+   "name": "T-DOUGW-1",
+   "lead_party": "Erova Energy Limited",
+   "generation_capacity_mw": "45.000",
+   "scheme": "unmatched",
+   "links": [],
+   "bid_paid_gbp": "9059.382403756666533922",
+   "bid_signed_gbp": "9059.382403756666533922",
+   "bid_mwh": "310.356111111111111267"
+  },
+  {
+   "unit": "T_DRSLW-1",
+   "name": "Dersalloch Windfarm",
+   "lead_party": "SP Renewables (UK) Limited",
+   "generation_capacity_mw": "70.900",
+   "scheme": "ro",
+   "links": [
+    {
+     "unit": "T_DRSLW-1",
+     "register": "ro",
+     "target": "R00308SQSC",
+     "grade": "B",
+     "basis": "station name matches unit name; capacity within 15 %",
+     "extra": {
+      "station": "Dersalloch",
+      "capacity_mw": "69"
+     }
+    }
+   ],
+   "bid_paid_gbp": "96087.688741083600461934",
+   "bid_signed_gbp": "96087.688741083600461934",
+   "bid_mwh": "1223.100000000000001421"
+  },
+  {
+   "unit": "T_EWHLW-1",
+   "name": "Ewe Hill II Windfarm",
+   "lead_party": "SP Renewables (UK) Limited",
+   "generation_capacity_mw": "38.000",
+   "scheme": "ro",
+   "links": [
+    {
+     "unit": "T_EWHLW-1",
+     "register": "ro",
+     "target": "R00319SQSC",
+     "grade": "B",
+     "basis": "station name matches unit name; capacity within 15 %",
+     "extra": {
+      "station": "Ewe Hill II",
+      "capacity_mw": "36.8"
+     }
+    }
+   ],
+   "bid_paid_gbp": "20358.371193289433605856",
+   "bid_signed_gbp": "20358.371193289433605856",
+   "bid_mwh": "259.141666666666666718"
+  },
+  {
+   "unit": "T_FARR-1",
+   "name": "Farr Unit 1",
+   "lead_party": "Smartestenergy Limited",
+   "generation_capacity_mw": "92.000",
+   "scheme": "unmatched",
+   "links": [],
+   "bid_paid_gbp": "28372.637600373333725658",
+   "bid_signed_gbp": "28372.637600373333725658",
+   "bid_mwh": "314.866666666666667140"
+  },
+  {
+   "unit": "T_GLNKW-1",
+   "name": "GLEN KYLLACHY WINDFARM",
+   "lead_party": "EDF Energy Customers Limited",
+   "generation_capacity_mw": "52.000",
+   "scheme": "unmatched",
+   "links": [],
+   "bid_paid_gbp": "40796.718085840000895827",
+   "bid_signed_gbp": "40796.718085840000895827",
+   "bid_mwh": "1031.000000000000000000"
+  },
+  {
+   "unit": "T_GORDW-1",
+   "name": "Gordon Bush",
+   "lead_party": "SSE Generation Ltd",
+   "generation_capacity_mw": "86.764",
+   "scheme": "unmatched",
+   "links": [],
+   "bid_paid_gbp": "77577.221829556801651508",
+   "bid_signed_gbp": "77577.221829556801651508",
+   "bid_mwh": "986.400000000000011016"
+  },
+  {
+   "unit": "T_GORDW-2",
+   "name": "Gordonbush WF Extension",
+   "lead_party": "SSE Generation Ltd",
+   "generation_capacity_mw": "58.733",
+   "scheme": "ro-possible",
+   "links": [
+    {
+     "unit": "T_GORDW-2",
+     "register": "ro",
+     "target": "R00170SQSC",
+     "grade": "C",
+     "basis": "station name matches unit name; capacity outside 15 % or absent",
+     "extra": {
+      "station": "Gordonbush Wind Farm",
+      "capacity_mw": "108"
+     }
+    }
+   ],
+   "bid_paid_gbp": "10187.300189959749936020",
+   "bid_signed_gbp": "10187.300189959749936020",
+   "bid_mwh": "684.291666666666668293"
+  },
+  {
+   "unit": "T_GRGBW-1",
+   "name": "Greater Gabbard Module 1",
+   "lead_party": "Greater Gabbard Offshore Winds",
+   "generation_capacity_mw": "205.000",
+   "scheme": "unmatched",
+   "links": [],
+   "bid_paid_gbp": "1188.925511805633327356",
+   "bid_signed_gbp": "1188.925511805633327356",
+   "bid_mwh": "7.316666666666666686"
+  },
+  {
+   "unit": "T_GRIFW-1",
+   "name": "Griffin Wind Farm 1",
+   "lead_party": "Griffin Wind Farm Ltd",
+   "generation_capacity_mw": "102.000",
+   "scheme": "ro-possible",
+   "links": [
+    {
+     "unit": "T_GRIFW-1",
+     "register": "ro",
+     "target": "R00160SQSC",
+     "grade": "C",
+     "basis": "station name matches lead party only",
+     "extra": {
+      "station": "Griffin Wind Farm"
+     }
+    },
+    {
+     "unit": "T_GRIFW-1",
+     "register": "ro",
+     "target": "R03770NGNI",
+     "grade": "C",
+     "basis": "station name matches lead party only",
+     "extra": {
+      "station": "William Griffin 6.0kwp"
+     }
+    },
+    {
+     "unit": "T_GRIFW-1",
+     "register": "ro",
+     "target": "R09542NGNI",
+     "grade": "C",
+     "basis": "station name matches lead party only",
+     "extra": {
+      "station": "Ronald Griffin Solar Hub"
+     }
+    },
+    {
+     "unit": "T_GRIFW-1",
+     "register": "ro",
+     "target": "R09926NGNI",
+     "grade": "C",
+     "basis": "station name matches lead party only",
+     "extra": {
+      "station": "Griffin PV System"
+     }
+    }
+   ],
+   "bid_paid_gbp": "9548.653162226750083617",
+   "bid_signed_gbp": "9548.653162226750083617",
+   "bid_mwh": "112.374999999999997337"
+  },
+  {
+   "unit": "T_GRIFW-2",
+   "name": "Griffin Wind Farm 2",
+   "lead_party": "Griffin Wind Farm Ltd",
+   "generation_capacity_mw": "104.000",
+   "scheme": "ro-possible",
+   "links": [
+    {
+     "unit": "T_GRIFW-2",
+     "register": "ro",
+     "target": "R00160SQSC",
+     "grade": "C",
+     "basis": "station name matches lead party only",
+     "extra": {
+      "station": "Griffin Wind Farm"
+     }
+    },
+    {
+     "unit": "T_GRIFW-2",
+     "register": "ro",
+     "target": "R03770NGNI",
+     "grade": "C",
+     "basis": "station name matches lead party only",
+     "extra": {
+      "station": "William Griffin 6.0kwp"
+     }
+    },
+    {
+     "unit": "T_GRIFW-2",
+     "register": "ro",
+     "target": "R09542NGNI",
+     "grade": "C",
+     "basis": "station name matches lead party only",
+     "extra": {
+      "station": "Ronald Griffin Solar Hub"
+     }
+    },
+    {
+     "unit": "T_GRIFW-2",
+     "register": "ro",
+     "target": "R09926NGNI",
+     "grade": "C",
+     "basis": "station name matches lead party only",
+     "extra": {
+      "station": "Griffin PV System"
+     }
+    }
+   ],
+   "bid_paid_gbp": "67351.816301929683504570",
+   "bid_signed_gbp": "67351.816301929683504570",
+   "bid_mwh": "792.641666666666671049"
+  },
+  {
+   "unit": "T_HAHAW-1",
+   "name": "Hagshaw Repower 1",
+   "lead_party": "HAGSHAW HILL REPOWERING LTD",
+   "generation_capacity_mw": "30.258",
+   "scheme": "cfd",
+   "links": [
+    {
+     "unit": "T_HAHAW-1",
+     "register": "cfd",
+     "target": "AR4-HHR-610",
+     "grade": "A",
+     "basis": "LCCC CfD-to-BM-unit mapping, effective on the day",
+     "extra": {
+      "name": "Hagshaw Hill Repowering",
+      "technology": "Onshore Wind",
+      "capacity_mw": "79.800",
+      "status": "Live (Pre-FIC)"
+     }
+    }
+   ],
+   "bid_paid_gbp": "3109.457815692799925955",
+   "bid_signed_gbp": "3109.457815692799925955",
+   "bid_mwh": "266.843835616438354918"
+  },
+  {
+   "unit": "T_HALSW-1",
+   "name": "Halsary Windfarm",
+   "lead_party": "SP Renewables (UK) Limited",
+   "generation_capacity_mw": "30.000",
+   "scheme": "unmatched",
+   "links": [],
+   "bid_paid_gbp": "6850.988467283999995059",
+   "bid_signed_gbp": "6850.988467283999995059",
+   "bid_mwh": "626.000000000000000000"
+  },
+  {
+   "unit": "T_HOWBO-1",
+   "name": "HORNSEA_WF_2A",
+   "lead_party": "Breesea Limited",
+   "generation_capacity_mw": "440.000",
+   "scheme": "cfd",
+   "links": [
+    {
+     "unit": "T_HOWBO-1",
+     "register": "cfd",
+     "target": "AR2-HRN-106",
+     "grade": "A",
+     "basis": "LCCC CfD-to-BM-unit mapping, effective on the day",
+     "extra": {
+      "name": "Hornsea Project 2 Phase 1",
+      "technology": "Offshore Wind",
+      "capacity_mw": "449.760",
+      "status": "Live (Post-FIC)"
+     }
+    }
+   ],
+   "bid_paid_gbp": "0",
+   "bid_signed_gbp": "-23463.642823293599803946",
+   "bid_mwh": "411.673611111111114269"
+  },
+  {
+   "unit": "T_KENNW-1",
+   "name": "Kennoxhead Wind Farm",
+   "lead_party": "Kennoxhead Wind Farm Limited",
+   "generation_capacity_mw": "60.000",
+   "scheme": "unmatched",
+   "links": [],
+   "bid_paid_gbp": "32892.978198020159524615",
+   "bid_signed_gbp": "32892.978198020159524615",
+   "bid_mwh": "1075.919999999999999929"
+  },
+  {
+   "unit": "T_KILBW-1",
+   "name": "KILBW",
+   "lead_party": "Kilbraur Wind Energy Ltd",
+   "generation_capacity_mw": "68.510",
+   "scheme": "ro-possible",
+   "links": [
+    {
+     "unit": "T_KILBW-1",
+     "register": "ro",
+     "target": "R00093SQSC",
+     "grade": "C",
+     "basis": "station name matches lead party only",
+     "extra": {
+      "station": "Kilbraur Wind Farm"
+     }
+    }
+   ],
+   "bid_paid_gbp": "30158.204866956110663524",
+   "bid_signed_gbp": "30158.204866956110663524",
+   "bid_mwh": "333.290555555555555678"
+  },
+  {
+   "unit": "T_KPMRW-1",
+   "name": "KYPE MUIR WIND FARM",
+   "lead_party": "OnPath Energy Limited",
+   "generation_capacity_mw": "89.000",
+   "scheme": "cfd",
+   "links": [
+    {
+     "unit": "T_KPMRW-1",
+     "register": "cfd",
+     "target": "AAA-BAN-189",
+     "grade": "A",
+     "basis": "LCCC CfD-to-BM-unit mapping, effective on the day",
+     "extra": {
+      "name": "Kype Muir Wind Farm",
+      "technology": "Onshore Wind",
+      "capacity_mw": "87.230",
+      "status": "Live (Post-FIC)"
+     }
+    }
+   ],
+   "bid_paid_gbp": "39466.291356618133406185",
+   "bid_signed_gbp": "34018.591732757133357266",
+   "bid_mwh": "1262.105555555555556069"
+  },
+  {
+   "unit": "T_LCLTW-1",
+   "name": "Lochluichart Windfarm",
+   "lead_party": "Eneco Energy Trade",
+   "generation_capacity_mw": "69.000",
+   "scheme": "ro",
+   "links": [
+    {
+     "unit": "T_LCLTW-1",
+     "register": "ro",
+     "target": "R00163SQSC",
+     "grade": "B",
+     "basis": "station name matches unit name; capacity within 15 %",
+     "extra": {
+      "station": "Lochluichart Windfarm",
+      "capacity_mw": "65.34"
+     }
+    }
+   ],
+   "bid_paid_gbp": "39728.992623844047280102",
+   "bid_signed_gbp": "39728.992623844047280102",
+   "bid_mwh": "455.755952380952381625"
+  },
+  {
+   "unit": "T_LIMKW-1",
+   "name": "Limekiln Wind Farm",
+   "lead_party": "Limekiln Extension Ltd",
+   "generation_capacity_mw": "106.000",
+   "scheme": "ro-possible",
+   "links": [
+    {
+     "unit": "T_LIMKW-1",
+     "register": "ro",
+     "target": "R03431NGNI",
+     "grade": "C",
+     "basis": "station name matches unit name; capacity outside 15 % or absent",
+     "extra": {
+      "station": "9 Limekiln Lane",
+      "capacity_mw": "0.0045"
+     }
+    }
+   ],
+   "bid_paid_gbp": "59770.915366499999322513",
+   "bid_signed_gbp": "59770.915366499999322513",
+   "bid_mwh": "2091.750000000000000000"
+  },
+  {
+   "unit": "T_MIDMW-1",
+   "name": "MIDDLE MUIR WIND FARM",
+   "lead_party": "OnPath Energy Limited",
+   "generation_capacity_mw": "51.000",
+   "scheme": "cfd",
+   "links": [
+    {
+     "unit": "T_MIDMW-1",
+     "register": "cfd",
+     "target": "AAA-BAN-192",
+     "grade": "A",
+     "basis": "LCCC CfD-to-BM-unit mapping, effective on the day",
+     "extra": {
+      "name": "Middle Muir Wind Farm",
+      "technology": "Onshore Wind",
+      "capacity_mw": "50.730",
+      "status": "Live (Post-FIC)"
+     }
+    }
+   ],
+   "bid_paid_gbp": "26786.540766724933178014",
+   "bid_signed_gbp": "22906.240092612433102205",
+   "bid_mwh": "818.155555555555555003"
+  },
+  {
+   "unit": "T_MOWEO-1",
+   "name": "Moray East OWF1",
+   "lead_party": "Moray Offshore Wind East Ltd",
+   "generation_capacity_mw": "300.000",
+   "scheme": "cfd",
+   "links": [
+    {
+     "unit": "T_MOWEO-1",
+     "register": "cfd",
+     "target": "AR2-MRY-107",
+     "grade": "A",
+     "basis": "LCCC CfD-to-BM-unit mapping, effective on the day",
+     "extra": {
+      "name": "Moray Offshore Windfarm (East) Phase 1",
+      "technology": "Offshore Wind",
+      "capacity_mw": "309.469",
+      "status": "Live (Post-FIC)"
+     }
+    },
+    {
+     "unit": "T_MOWEO-1",
+     "register": "cfd",
+     "target": "AR2-MRY-207",
+     "grade": "A",
+     "basis": "LCCC CfD-to-BM-unit mapping, effective on the day",
+     "extra": {
+      "name": "Moray Offshore Windfarm (East) Phase 2",
+      "technology": "Offshore Wind",
+      "capacity_mw": "309.363",
+      "status": "Live (Post-FIC)"
+     }
+    },
+    {
+     "unit": "T_MOWEO-1",
+     "register": "cfd",
+     "target": "AR2-MRY-307",
+     "grade": "A",
+     "basis": "LCCC CfD-to-BM-unit mapping, effective on the day",
+     "extra": {
+      "name": "Moray Offshore Windfarm (East) Phase 3",
+      "technology": "Offshore Wind",
+      "capacity_mw": "318.770",
+      "status": "Live (Post-FIC)"
+     }
+    }
+   ],
+   "bid_paid_gbp": "67067.605650955001237888",
+   "bid_signed_gbp": "-83431.749295492000442210",
+   "bid_mwh": "6822.474386468027205410"
+  },
+  {
+   "unit": "T_MOWEO-2",
+   "name": "Moray East OWF2",
+   "lead_party": "Moray Offshore Wind East Ltd",
+   "generation_capacity_mw": "300.000",
+   "scheme": "cfd",
+   "links": [
+    {
+     "unit": "T_MOWEO-2",
+     "register": "cfd",
+     "target": "AR2-MRY-107",
+     "grade": "A",
+     "basis": "LCCC CfD-to-BM-unit mapping, effective on the day",
+     "extra": {
+      "name": "Moray Offshore Windfarm (East) Phase 1",
+      "technology": "Offshore Wind",
+      "capacity_mw": "309.469",
+      "status": "Live (Post-FIC)"
+     }
+    },
+    {
+     "unit": "T_MOWEO-2",
+     "register": "cfd",
+     "target": "AR2-MRY-207",
+     "grade": "A",
+     "basis": "LCCC CfD-to-BM-unit mapping, effective on the day",
+     "extra": {
+      "name": "Moray Offshore Windfarm (East) Phase 2",
+      "technology": "Offshore Wind",
+      "capacity_mw": "309.363",
+      "status": "Live (Post-FIC)"
+     }
+    },
+    {
+     "unit": "T_MOWEO-2",
+     "register": "cfd",
+     "target": "AR2-MRY-307",
+     "grade": "A",
+     "basis": "LCCC CfD-to-BM-unit mapping, effective on the day",
+     "extra": {
+      "name": "Moray Offshore Windfarm (East) Phase 3",
+      "technology": "Offshore Wind",
+      "capacity_mw": "318.770",
+      "status": "Live (Post-FIC)"
+     }
+    }
+   ],
+   "bid_paid_gbp": "59862.577914451000424380",
+   "bid_signed_gbp": "-75837.483782456065398493",
+   "bid_mwh": "6026.579471577368998681"
+  },
+  {
+   "unit": "T_MOWEO-3",
+   "name": "Moray East OWF3",
+   "lead_party": "Moray Offshore Wind East Ltd",
+   "generation_capacity_mw": "300.000",
+   "scheme": "cfd",
+   "links": [
+    {
+     "unit": "T_MOWEO-3",
+     "register": "cfd",
+     "target": "AR2-MRY-107",
+     "grade": "A",
+     "basis": "LCCC CfD-to-BM-unit mapping, effective on the day",
+     "extra": {
+      "name": "Moray Offshore Windfarm (East) Phase 1",
+      "technology": "Offshore Wind",
+      "capacity_mw": "309.469",
+      "status": "Live (Post-FIC)"
+     }
+    },
+    {
+     "unit": "T_MOWEO-3",
+     "register": "cfd",
+     "target": "AR2-MRY-207",
+     "grade": "A",
+     "basis": "LCCC CfD-to-BM-unit mapping, effective on the day",
+     "extra": {
+      "name": "Moray Offshore Windfarm (East) Phase 2",
+      "technology": "Offshore Wind",
+      "capacity_mw": "309.363",
+      "status": "Live (Post-FIC)"
+     }
+    },
+    {
+     "unit": "T_MOWEO-3",
+     "register": "cfd",
+     "target": "AR2-MRY-307",
+     "grade": "A",
+     "basis": "LCCC CfD-to-BM-unit mapping, effective on the day",
+     "extra": {
+      "name": "Moray Offshore Windfarm (East) Phase 3",
+      "technology": "Offshore Wind",
+      "capacity_mw": "318.770",
+      "status": "Live (Post-FIC)"
+     }
+    }
+   ],
+   "bid_paid_gbp": "57850.035640279999256563",
+   "bid_signed_gbp": "-72855.033293380000600337",
+   "bid_mwh": "5908.538299114494492415"
+  },
+  {
+   "unit": "T_MOWWO-1",
+   "name": "Moray West OWF1",
+   "lead_party": "Moray Offshore Wind West Ltd",
+   "generation_capacity_mw": "215.000",
+   "scheme": "unmatched",
+   "links": [],
+   "bid_paid_gbp": "71556.317814280000220609",
+   "bid_signed_gbp": "71556.317814280000220609",
+   "bid_mwh": "4599.000000000000000000"
+  },
+  {
+   "unit": "T_MOWWO-2",
+   "name": "Moray West OWF2",
+   "lead_party": "Moray Offshore Wind West Ltd",
+   "generation_capacity_mw": "215.000",
+   "scheme": "unmatched",
+   "links": [],
+   "bid_paid_gbp": "73963.999154460999648111",
+   "bid_signed_gbp": "73963.999154460999648111",
+   "bid_mwh": "4739.000000000000000000"
+  },
+  {
+   "unit": "T_MOWWO-3",
+   "name": "Moray West OWF3",
+   "lead_party": "Moray Offshore Wind West Ltd",
+   "generation_capacity_mw": "143.000",
+   "scheme": "unmatched",
+   "links": [],
+   "bid_paid_gbp": "53079.782725293999988028",
+   "bid_signed_gbp": "53079.782725293999988028",
+   "bid_mwh": "3415.000000000000000000"
+  },
+  {
+   "unit": "T_MOWWO-4",
+   "name": "Moray West OWF4",
+   "lead_party": "Moray Offshore Wind West Ltd",
+   "generation_capacity_mw": "287.000",
+   "scheme": "unmatched",
+   "links": [],
+   "bid_paid_gbp": "173017.747872801003268248",
+   "bid_signed_gbp": "173017.747872801003268248",
+   "bid_mwh": "5499.500000000000000000"
+  },
+  {
+   "unit": "T_MYGPW-1",
+   "name": "Minnygap Wind Farm",
+   "lead_party": "Minnygap Energy Limited",
+   "generation_capacity_mw": "25.000",
+   "scheme": "ro",
+   "links": [
+    {
+     "unit": "T_MYGPW-1",
+     "register": "ro",
+     "target": "R00260SQSC",
+     "grade": "B",
+     "basis": "station name matches unit name; capacity within 15 %",
+     "extra": {
+      "station": "Minnygap Wind Farm",
+      "capacity_mw": "24.8"
+     }
+    }
+   ],
+   "bid_paid_gbp": "17488.254716313333613446",
+   "bid_signed_gbp": "17488.254716313333613446",
+   "bid_mwh": "236.491666666666666530"
+  },
+  {
+   "unit": "T_NNGAO-1",
+   "name": "Neart Na Gaiothe WF 1",
+   "lead_party": "Neart Na Gaoithe Offshore Wind",
+   "generation_capacity_mw": "224.000",
+   "scheme": "cfd",
+   "links": [
+    {
+     "unit": "T_NNGAO-1",
+     "register": "cfd",
+     "target": "AAA-NEA-195",
+     "grade": "A",
+     "basis": "LCCC CfD-to-BM-unit mapping, effective on the day",
+     "extra": {
+      "name": "Neart na Gaoithe",
+      "technology": "Offshore Wind",
+      "capacity_mw": "448.000",
+      "status": "Live (Post-FIC)"
+     }
+    }
+   ],
+   "bid_paid_gbp": "171135.705593502464473946",
+   "bid_signed_gbp": "171135.705593502464473946",
+   "bid_mwh": "2915.699999999999999290"
+  },
+  {
+   "unit": "T_NOKYW-1",
+   "name": "North Kyle Wind Farm-1",
+   "lead_party": "North Kyle Wind farm Ltd",
+   "generation_capacity_mw": "106.000",
+   "scheme": "unmatched",
+   "links": [],
+   "bid_paid_gbp": "27633.884137780249943713",
+   "bid_signed_gbp": "27633.884137780249943713",
+   "bid_mwh": "1894.624999999999998224"
+  },
+  {
+   "unit": "T_NOKYW-2",
+   "name": "North Kyle Wind Farm-2",
+   "lead_party": "North Kyle Wind farm Ltd",
+   "generation_capacity_mw": "106.000",
+   "scheme": "unmatched",
+   "links": [],
+   "bid_paid_gbp": "31454.880953867482379136",
+   "bid_signed_gbp": "31454.880953867482379136",
+   "bid_mwh": "2156.598888888888888804"
+  },
+  {
+   "unit": "T_SAKNW-1",
+   "name": "Sandy Knowe Wind Farm",
+   "lead_party": "Sandy Knowe Wind Farm Ltd",
+   "generation_capacity_mw": "87.000",
+   "scheme": "unmatched",
+   "links": [],
+   "bid_paid_gbp": "64470.273064486667323085",
+   "bid_signed_gbp": "64470.273064486667323085",
+   "bid_mwh": "1656.465833333333336764"
+  },
+  {
+   "unit": "T_SGRWO-1",
+   "name": "Seagreen1 Offshore WF 1",
+   "lead_party": "Seagreen Wind Energy Limited",
+   "generation_capacity_mw": "358.000",
+   "scheme": "unmatched",
+   "links": [],
+   "bid_paid_gbp": "76193.913475546532254160",
+   "bid_signed_gbp": "76193.913475546532254160",
+   "bid_mwh": "5864.716666666666725406"
+  },
+  {
+   "unit": "T_SGRWO-2",
+   "name": "Seagreen1 Offshore WF 2",
+   "lead_party": "Seagreen Wind Energy Limited",
+   "generation_capacity_mw": "220.000",
+   "scheme": "unmatched",
+   "links": [],
+   "bid_paid_gbp": "20852.460208427466398012",
+   "bid_signed_gbp": "20852.460208427466398012",
+   "bid_mwh": "1605.033333333333331438"
+  },
+  {
+   "unit": "T_SGRWO-3",
+   "name": "Seagreen1 Offshore WF 3",
+   "lead_party": "Seagreen Wind Energy Limited",
+   "generation_capacity_mw": "374.618",
+   "scheme": "unmatched",
+   "links": [],
+   "bid_paid_gbp": "38221.246079216199404983",
+   "bid_signed_gbp": "38221.246079216199404983",
+   "bid_mwh": "2941.925000000000004260"
+  },
+  {
+   "unit": "T_SGRWO-4",
+   "name": "Seagreen1 Offshore WF 4",
+   "lead_party": "Seagreen Wind Energy Limited",
+   "generation_capacity_mw": "140.000",
+   "scheme": "unmatched",
+   "links": [],
+   "bid_paid_gbp": "41029.990317068133776962",
+   "bid_signed_gbp": "41029.990317068133776962",
+   "bid_mwh": "3158.116666666666752404"
+  },
+  {
+   "unit": "T_SGRWO-5",
+   "name": "Seagreen1 Offshore WF 5",
+   "lead_party": "Seagreen Wind Energy Limited",
+   "generation_capacity_mw": "300.000",
+   "scheme": "unmatched",
+   "links": [],
+   "bid_paid_gbp": "20722.432770210599926471",
+   "bid_signed_gbp": "20722.432770210599926471",
+   "bid_mwh": "1595.024999999999998580"
+  },
+  {
+   "unit": "T_SGRWO-6",
+   "name": "Seagreen1 Offshore WF 6",
+   "lead_party": "Seagreen Wind Energy Limited",
+   "generation_capacity_mw": "380.000",
+   "scheme": "unmatched",
+   "links": [],
+   "bid_paid_gbp": "108362.658384008599568915",
+   "bid_signed_gbp": "108362.658384008599568915",
+   "bid_mwh": "8340.775000000000119373"
+  },
+  {
+   "unit": "T_SOKYW-1",
+   "name": "South Kyle Wind Farm",
+   "lead_party": "South Kyle Wind Farm Limited",
+   "generation_capacity_mw": "426.916",
+   "scheme": "unmatched",
+   "links": [],
+   "bid_paid_gbp": "119904.337565759999051809",
+   "bid_signed_gbp": "119904.337565759999051809",
+   "bid_mwh": "2567.300000000000011369"
+  },
+  {
+   "unit": "T_STLGW-1",
+   "name": "Stronelairg Windfarm 1",
+   "lead_party": "Stronelairg Windfarm Limited",
+   "generation_capacity_mw": "108.000",
+   "scheme": "ro-possible",
+   "links": [
+    {
+     "unit": "T_STLGW-1",
+     "register": "ro",
+     "target": "R00332SQSC",
+     "grade": "C",
+     "basis": "station name matches lead party only",
+     "extra": {
+      "station": "Stronelairg Wind Farm"
+     }
+    }
+   ],
+   "bid_paid_gbp": "115814.764637003467669274",
+   "bid_signed_gbp": "115814.764637003467669274",
+   "bid_mwh": "1432.516666666666672823"
+  },
+  {
+   "unit": "T_STLGW-2",
+   "name": "Stronelairg Windfarm 2",
+   "lead_party": "Stronelairg Windfarm Limited",
+   "generation_capacity_mw": "108.000",
+   "scheme": "ro-possible",
+   "links": [
+    {
+     "unit": "T_STLGW-2",
+     "register": "ro",
+     "target": "R00332SQSC",
+     "grade": "C",
+     "basis": "station name matches lead party only",
+     "extra": {
+      "station": "Stronelairg Wind Farm"
+     }
+    }
+   ],
+   "bid_paid_gbp": "134660.888656450003281851",
+   "bid_signed_gbp": "134660.888656450003281851",
+   "bid_mwh": "1665.625000000000010655"
+  },
+  {
+   "unit": "T_STLGW-3",
+   "name": "Stronelairg Windfarm 3",
+   "lead_party": "Stronelairg Windfarm Limited",
+   "generation_capacity_mw": "108.000",
+   "scheme": "ro-possible",
+   "links": [
+    {
+     "unit": "T_STLGW-3",
+     "register": "ro",
+     "target": "R00332SQSC",
+     "grade": "C",
+     "basis": "station name matches lead party only",
+     "extra": {
+      "station": "Stronelairg Wind Farm"
+     }
+    }
+   ],
+   "bid_paid_gbp": "113071.354312505333382429",
+   "bid_signed_gbp": "113071.354312505333382429",
+   "bid_mwh": "1398.583333333333335700"
+  },
+  {
+   "unit": "T_STRNW-1",
+   "name": "Strathy North Wind Farm 1",
+   "lead_party": "Strathy Wind Farm Limited",
+   "generation_capacity_mw": "70.000",
+   "scheme": "ro-possible",
+   "links": [
+    {
+     "unit": "T_STRNW-1",
+     "register": "ro",
+     "target": "R00264SQSC",
+     "grade": "C",
+     "basis": "station name matches lead party only",
+     "extra": {
+      "station": "Strathy North"
+     }
+    }
+   ],
+   "bid_paid_gbp": "72029.487440021800125578",
+   "bid_signed_gbp": "72029.487440021800125578",
+   "bid_mwh": "914.641666666666672824"
+  },
+  {
+   "unit": "T_VKNGW-1",
+   "name": "Viking Energy Windfarm BMU-1",
+   "lead_party": "Viking Energy Wind Farm LLP",
+   "generation_capacity_mw": "121.800",
+   "scheme": "unmatched",
+   "links": [],
+   "bid_paid_gbp": "13555.446396023999898081",
+   "bid_signed_gbp": "13555.446396023999898081",
+   "bid_mwh": "988.308333333333343783"
+  },
+  {
+   "unit": "T_VKNGW-2",
+   "name": "Viking Energy Windfarm BMU-2",
+   "lead_party": "Viking Energy Wind Farm LLP",
+   "generation_capacity_mw": "121.800",
+   "scheme": "unmatched",
+   "links": [],
+   "bid_paid_gbp": "13429.946761608000027620",
+   "bid_signed_gbp": "13429.946761608000027620",
+   "bid_mwh": "979.158333333333351869"
+  },
+  {
+   "unit": "T_VKNGW-3",
+   "name": "Viking Energy Windfarm BMU-3",
+   "lead_party": "Viking Energy Wind Farm LLP",
+   "generation_capacity_mw": "121.800",
+   "scheme": "unmatched",
+   "links": [],
+   "bid_paid_gbp": "11442.297724727999997715",
+   "bid_signed_gbp": "11442.297724727999997715",
+   "bid_mwh": "834.241666666666665361"
+  },
+  {
+   "unit": "T_VKNGW-4",
+   "name": "Viking Energy Windfarm BMU-4",
+   "lead_party": "Viking Energy Wind Farm LLP",
+   "generation_capacity_mw": "121.800",
+   "scheme": "unmatched",
+   "links": [],
+   "bid_paid_gbp": "12313.365770159999918576",
+   "bid_signed_gbp": "12313.365770159999918576",
+   "bid_mwh": "897.750000000000003551"
+  },
+  {
+   "unit": "T_WDRGW-1",
+   "name": "Windy Rig Wind Farm",
+   "lead_party": "Windy Rig Wind Farm Limited",
+   "generation_capacity_mw": "42.800",
+   "scheme": "ro-possible",
+   "links": [
+    {
+     "unit": "T_WDRGW-1",
+     "register": "ro",
+     "target": "R00299SQSC",
+     "grade": "C",
+     "basis": "station name matches unit name; capacity outside 15 % or absent",
+     "extra": {
+      "station": "Windy Standard II (Brockloch Rig)",
+      "capacity_mw": "61"
+     }
+    }
+   ],
+   "bid_paid_gbp": "13062.324426009832862401",
+   "bid_signed_gbp": "13062.324426009832862401",
+   "bid_mwh": "467.758333333333333304"
+  },
+  {
+   "unit": "T_WHILW-1",
+   "name": "T_WHILW-1",
+   "lead_party": "SP Renewables (UK) Limited",
+   "generation_capacity_mw": "309.000",
+   "scheme": "unmatched",
+   "links": [],
+   "bid_paid_gbp": "70523.478929882579848254",
+   "bid_signed_gbp": "70523.478929882579848254",
+   "bid_mwh": "802.743946111111106312"
+  },
+  {
+   "unit": "T_WISTW-2",
+   "name": "Brockloch Rig 2 WF Exp A",
+   "lead_party": "BROCKLOCH RIG WINDFARM LTD",
+   "generation_capacity_mw": "61.500",
+   "scheme": "ro-possible",
+   "links": [
+    {
+     "unit": "T_WISTW-2",
+     "register": "ro",
+     "target": "R00299SQSC",
+     "grade": "C",
+     "basis": "station name matches lead party only",
+     "extra": {
+      "station": "Windy Standard II (Brockloch Rig)"
+     }
+    }
+   ],
+   "bid_paid_gbp": "100274.436293202600779750",
+   "bid_signed_gbp": "100274.436293202600779750",
+   "bid_mwh": "1195.545000000000000707"
+  },
+  {
+   "unit": "T_WLNYO-3",
+   "name": "WALNEY_3",
+   "lead_party": "Walney Extension Ltd",
+   "generation_capacity_mw": "330.000",
+   "scheme": "cfd",
+   "links": [
+    {
+     "unit": "T_WLNYO-3",
+     "register": "cfd",
+     "target": "INV-WAL-001",
+     "grade": "A",
+     "basis": "LCCC CfD-to-BM-unit mapping, effective on the day",
+     "extra": {
+      "name": "Walney Extension Offshore Wind Farm Phase 1",
+      "technology": "Offshore Wind",
+      "capacity_mw": "330.000",
+      "status": "Live (Post-FIC)"
+     }
+    },
+    {
+     "unit": "T_WLNYO-3",
+     "register": "ro",
+     "target": "R00547RJEN",
+     "grade": "C",
+     "basis": "station name matches lead party only",
+     "extra": {
+      "station": "Walney Island Power - A"
+     }
+    },
+    {
+     "unit": "T_WLNYO-3",
+     "register": "ro",
+     "target": "R00019RPEN",
+     "grade": "C",
+     "basis": "station name matches lead party only",
+     "extra": {
+      "station": "Walney Offshore Wind Phase I"
+     }
+    },
+    {
+     "unit": "T_WLNYO-3",
+     "register": "ro",
+     "target": "R00023RPEN",
+     "grade": "C",
+     "basis": "station name matches lead party only",
+     "extra": {
+      "station": "Walney Offshore Wind Phase II"
+     }
+    }
+   ],
+   "bid_paid_gbp": "43325.027513211411132943",
+   "bid_signed_gbp": "43325.027513211411132943",
+   "bid_mwh": "655.971666666666657797"
+  },
+  {
+   "unit": "T_WLNYO-4",
+   "name": "WALNEY_4",
+   "lead_party": "Walney Extension Ltd",
+   "generation_capacity_mw": "330.000",
+   "scheme": "cfd",
+   "links": [
+    {
+     "unit": "T_WLNYO-4",
+     "register": "cfd",
+     "target": "INV-WAL-002",
+     "grade": "A",
+     "basis": "LCCC CfD-to-BM-unit mapping, effective on the day",
+     "extra": {
+      "name": "Walney Extension Offshore Wind Farm Phase 2",
+      "technology": "Offshore Wind",
+      "capacity_mw": "330.000",
+      "status": "Live (Post-FIC)"
+     }
+    },
+    {
+     "unit": "T_WLNYO-4",
+     "register": "ro",
+     "target": "R00547RJEN",
+     "grade": "C",
+     "basis": "station name matches lead party only",
+     "extra": {
+      "station": "Walney Island Power - A"
+     }
+    },
+    {
+     "unit": "T_WLNYO-4",
+     "register": "ro",
+     "target": "R00019RPEN",
+     "grade": "C",
+     "basis": "station name matches lead party only",
+     "extra": {
+      "station": "Walney Offshore Wind Phase I"
+     }
+    },
+    {
+     "unit": "T_WLNYO-4",
+     "register": "ro",
+     "target": "R00023RPEN",
+     "grade": "C",
+     "basis": "station name matches lead party only",
+     "extra": {
+      "station": "Walney Offshore Wind Phase II"
+     }
+    }
+   ],
+   "bid_paid_gbp": "10290.749347633300203597",
+   "bid_signed_gbp": "10290.749347633300203597",
+   "bid_mwh": "99.189999999999997726"
+  }
+ ]
+}

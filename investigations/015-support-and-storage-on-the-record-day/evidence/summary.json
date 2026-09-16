@@ -1,0 +1,190 @@
+{
+ "day": "2026-09-08",
+ "constraint": {
+  "periods": 48,
+  "hours": "24",
+  "longest_run_periods": 48,
+  "longest_run_hours": "24",
+  "first_period": 1,
+  "period_list": [
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9,
+   10,
+   11,
+   12,
+   13,
+   14,
+   15,
+   16,
+   17,
+   18,
+   19,
+   20,
+   21,
+   22,
+   23,
+   24,
+   25,
+   26,
+   27,
+   28,
+   29,
+   30,
+   31,
+   32,
+   33,
+   34,
+   35,
+   36,
+   37,
+   38,
+   39,
+   40,
+   41,
+   42,
+   43,
+   44,
+   45,
+   46,
+   47,
+   48
+  ],
+  "b1_deciding_units": 1,
+  "b1_covering_units": []
+ },
+ "storage_units": 28,
+ "propositions": {
+  "S1": "not determinable",
+  "S2": "holds",
+  "B1": "holds"
+ },
+ "reconciliation": {
+  "tolerance": "0.001",
+  "settlement_mwh": {
+   "offer": "132101.286768847912071581",
+   "bid": "143704.039587563330769630"
+  },
+  "by_type": {
+   "Original": {
+    "offer_mwh": "130134.876362192376209607",
+    "offer_deviation": "0.014886",
+    "bid_mwh": "24805.590475674716471979",
+    "bid_deviation": "0.827384",
+    "reconciles": false
+   },
+   "Original-Priced": {
+    "offer_mwh": "5236.476824307498950471",
+    "offer_deviation": "0.960360",
+    "bid_mwh": "1936.179933978323456443",
+    "bid_deviation": "0.986527",
+    "reconciles": false
+   },
+   "Re-priced": {
+    "offer_mwh": "0",
+    "offer_deviation": "1.000000",
+    "bid_mwh": "1861.725262871659215766",
+    "bid_deviation": "0.987045",
+    "reconciles": false
+   },
+   "Tagged": {
+    "offer_mwh": "132083.286768847911768997",
+    "offer_deviation": "0.000136",
+    "bid_mwh": "143685.039587563331616476",
+    "bid_deviation": "0.000132",
+    "reconciles": true
+   }
+  },
+  "chosen": "Tagged"
+ },
+ "declaration_sha256": "77a192f103fde8964bc1f295b7ee1f8f56ed3f884881e78a8865993660fb48d7",
+ "computed_at": "2026-09-16T09:41:44+00:00",
+ "artefacts_acquired": [
+  {
+   "dataset": "LCCC-CFD-BMU-MAPPING-META",
+   "path": "data/raw/lccc/015/c16f141d-2db9-4160-ade1-d0d19d224dc9.resource_show.json",
+   "sha256": "051873579b88f9108572c6969310cebe747813af0422ba9dfe080e25d1847d33"
+  },
+  {
+   "dataset": "LCCC-CFD-BMU-MAPPING",
+   "path": "data/raw/lccc/015/c16f141d-2db9-4160-ade1-d0d19d224dc9.dump.csv",
+   "sha256": "9af5e3ab22349a6757f12cd960881e32f8a8a3fd0391f8a1b7caaafb1592e730"
+  },
+  {
+   "dataset": "LCCC-CFD-BMU-MAPPING-CSV-META",
+   "path": "data/raw/lccc/015/26fc2b66-7c92-45d4-9a70-acbd1631f4c3.resource_show.json",
+   "sha256": "4ededeafa3e17c74e8b927df8004e7aab11f50c37a35ffc6a83f89c05903f183"
+  },
+  {
+   "dataset": "LCCC-CFD-BMU-MAPPING-CSV",
+   "path": "data/raw/lccc/015/26fc2b66-7c92-45d4-9a70-acbd1631f4c3.csv",
+   "sha256": "59ec621f52aaecc824af063adac1f48063519688aacd0143078233ab0a7599ff"
+  },
+  {
+   "dataset": "LCCC-CFD-BMU-MAPPING-DEFINITIONS-META",
+   "path": "data/raw/lccc/015/d49acec2-cab0-4342-8bac-b77cba8bf092.resource_show.json",
+   "sha256": "04e70cd5b1b97921a9cc767d0b47db90d0d6845c43ee2318e3a3f8ae83db9bf4"
+  },
+  {
+   "dataset": "LCCC-CFD-BMU-MAPPING-DEFINITIONS",
+   "path": "data/raw/lccc/015/d49acec2-cab0-4342-8bac-b77cba8bf092.csv",
+   "sha256": "c49d00ce326e7d7a5582ef3e62730c9f89d4885a9e70b4489254730ab6a8b679"
+  },
+  {
+   "dataset": "LCCC-CFD-PORTFOLIO-META",
+   "path": "data/raw/lccc/015/fdaf09d2-8cff-4799-a5b0-1c59444e492b.resource_show.json",
+   "sha256": "716fbf59ef3a9e7566be680ab8f029a89d726ab5379528212e47142cc1eee183"
+  },
+  {
+   "dataset": "LCCC-CFD-PORTFOLIO",
+   "path": "data/raw/lccc/015/fdaf09d2-8cff-4799-a5b0-1c59444e492b.dump.csv",
+   "sha256": "4e6829ae430be9e41181aeccc1b8ad28483959d35ea33ca65cf40e3f9fcd1996"
+  },
+  {
+   "dataset": "LCCC-CFD-PORTFOLIO-CSV-META",
+   "path": "data/raw/lccc/015/7bdfb0cb-fe99-44eb-b07b-2047e82f5601.resource_show.json",
+   "sha256": "b84abc65966c36138718d2be44da7199a9c5a456a796891ef48873b6815a1af7"
+  },
+  {
+   "dataset": "LCCC-CFD-PORTFOLIO-CSV",
+   "path": "data/raw/lccc/015/7bdfb0cb-fe99-44eb-b07b-2047e82f5601.csv",
+   "sha256": "398c9bb2dc837a8dc4480808b8bd99427f0dd5af5722a3fd0d49fbf12e65e288"
+  },
+  {
+   "dataset": "LCCC-CFD-PORTFOLIO-DEFINITIONS-META",
+   "path": "data/raw/lccc/015/b6fed2c0-e679-4c02-8716-dbd0caa100dd.resource_show.json",
+   "sha256": "f5c7afb081601aa0897c3141a6505e48f9c5e0aaeb32e84ec866274aeb9e6dbd"
+  },
+  {
+   "dataset": "LCCC-CFD-PORTFOLIO-DEFINITIONS",
+   "path": "data/raw/lccc/015/b6fed2c0-e679-4c02-8716-dbd0caa100dd.csv",
+   "sha256": "c1eb3ecf02a9f3bc621532da2904964c7234f9da5780405f7b76ea3b6b4dd81c"
+  },
+  {
+   "dataset": "OFGEM-RER-DASHBOARD",
+   "path": "data/raw/ofgem/015/rer-reports-dashboard.html",
+   "sha256": "ffae0b8ff877acab3ea501432b39ebb895067636963e6c22197d7f78622f9100"
+  },
+  {
+   "dataset": "OFGEM-RO-ACCREDITED-STATIONS",
+   "path": "data/raw/ofgem/015/ro-accredited-stations.csv",
+   "sha256": "d10ee51cfbddb0e44cbd932a826e282b539ea023f717d604708d10f10646eb9b"
+  },
+  {
+   "dataset": "MDO",
+   "path": "data/raw/elexon/015/mdo_2026-09-08.json",
+   "sha256": "5cc02e3387366ec167384e27b0cea979e36017d0a7f6504c492b7b0ffd2fec9b"
+  },
+  {
+   "dataset": "MDB",
+   "path": "data/raw/elexon/015/mdb_2026-09-08.json",
+   "sha256": "8d783504bf3e96a59a75952aab29cf8e2e0e90b9ca4f8cb119fc9406cf9f663f"
+  }
+ ]
+}

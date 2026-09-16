@@ -1,0 +1,469 @@
+[
+ {
+  "first": "2014-01-31",
+  "last": "2014-05-09",
+  "copies": 6,
+  "headers": [
+   "User",
+   "Project Name",
+   "Connection Point",
+   "Mw Connected",
+   "Mw Increase/Decrease",
+   "MW Total",
+   "TEC Effective from Date",
+   "Project Status",
+   "Host TO",
+   "Plant Type"
+  ]
+ },
+ {
+  "first": "2014-05-12",
+  "last": "2014-05-12",
+  "copies": 1,
+  "headers": [
+   "User",
+   "Project Name",
+   "Connection Point",
+   "Mw Connected",
+   "Mw Increase/Decrease",
+   "MW Total",
+   "TEC Effective from Date",
+   "Project Status",
+   "Host TO",
+   "Plant Type"
+  ]
+ },
+ {
+  "first": "2014-05-26",
+  "last": "2014-05-26",
+  "copies": 1,
+  "headers": [
+   "User",
+   "Project Name",
+   "Connection Point",
+   "Mw Connected",
+   "Mw Increase/Decrease",
+   "MW Total",
+   "TEC Effective from Date",
+   "Project Status",
+   "Host TO",
+   "Plant Type"
+  ]
+ },
+ {
+  "first": "2014-07-04",
+  "last": "2014-07-04",
+  "copies": 1,
+  "headers": [
+   "Agreement Type",
+   "User",
+   "Project Name",
+   "Connection Point",
+   "Mw Connected",
+   "Mw Increase/Decrease",
+   "MW Total",
+   "TEC Effective from Date",
+   "Project Status",
+   "Host TO",
+   "Plant Type"
+  ]
+ },
+ {
+  "first": "2014-10-07",
+  "last": "2016-04-25",
+  "copies": 52,
+  "headers": [
+   "User",
+   "Project Name",
+   "Connection Point",
+   "Mw Connected",
+   "Mw Increase/Decrease",
+   "MW Total",
+   "TEC Effective from Date",
+   "Project Status",
+   "Host TO",
+   "Plant Type"
+  ]
+ },
+ {
+  "first": "2016-04-26",
+  "last": "2016-05-04",
+  "copies": 2,
+  "headers": [
+   "Agreement Type",
+   "Customer Name",
+   "Project Name",
+   "Connection Site",
+   "MW Connected",
+   "MW Increase / Decrease",
+   "MW Total",
+   "MW Effective Date",
+   "Project Status",
+   "HOST TO",
+   "Plant Type"
+  ]
+ },
+ {
+  "first": "2016-05-25",
+  "last": "2016-08-12",
+  "copies": 10,
+  "headers": [
+   "Customer Name",
+   "Project Name",
+   "Connection Site",
+   "MW Connected",
+   "MW Increase / Decrease",
+   "MW Total",
+   "MW Effective Date",
+   "Project Status",
+   "HOST TO",
+   "Plant Type"
+  ]
+ },
+ {
+  "first": "2016-08-15",
+  "last": "2016-08-15",
+  "copies": 1,
+  "headers": [
+   "Agreement Type",
+   "Customer Name",
+   "Project Name",
+   "Connection Site",
+   "MW Connected",
+   "MW Increase / Decrease",
+   "MW Total",
+   "MW Effective Date",
+   "Project Status",
+   "HOST TO",
+   "Plant Type"
+  ]
+ },
+ {
+  "first": "2016-08-30",
+  "last": "2016-10-28",
+  "copies": 8,
+  "headers": [
+   "Customer Name",
+   "Project Name",
+   "Connection Site",
+   "MW Connected",
+   "MW Increase / Decrease",
+   "MW Total",
+   "MW Effective Date",
+   "Project Status",
+   "HOST TO",
+   "Plant Type"
+  ]
+ },
+ {
+  "first": "2016-11-08",
+  "last": "2016-11-08",
+  "copies": 1,
+  "headers": [
+   "Agreement Type",
+   "Customer Name",
+   "Project Name",
+   "Connection Site",
+   "MW Connected",
+   "MW Increase / Decrease",
+   "MW Total",
+   "MW Effective Date",
+   "Project Status",
+   "HOST TO",
+   "Plant Type"
+  ]
+ },
+ {
+  "first": "2016-11-17",
+  "last": "2020-02-06",
+  "copies": 170,
+  "headers": [
+   "Customer Name",
+   "Project Name",
+   "Connection Site",
+   "MW Connected",
+   "MW Increase / Decrease",
+   "MW Total",
+   "MW Effective Date",
+   "Project Status",
+   "HOST TO",
+   "Plant Type"
+  ]
+ },
+ {
+  "first": "2020-02-14",
+  "last": "2020-02-14",
+  "copies": 1,
+  "headers": [
+   "Agreement Type",
+   "Customer Name",
+   "Project Name",
+   "Connection Site",
+   "MW Connected",
+   "MW Increase / Decrease",
+   "MW Total",
+   "MW Effective Date",
+   "Project Status",
+   "HOST TO",
+   "Plant Type"
+  ]
+ },
+ {
+  "first": "2020-02-20",
+  "last": "2020-02-20",
+  "copies": 1,
+  "headers": [
+   "Generation Connection Type",
+   "Customer Name",
+   "Project Name",
+   "Connection Site",
+   "MW Connected",
+   "MW Increase / Decrease",
+   "MW Total",
+   "MW Effective Date",
+   "Project Status",
+   "HOST TO",
+   "Plant Type"
+  ]
+ },
+ {
+  "first": "2020-02-27",
+  "last": "2020-03-18",
+  "copies": 4,
+  "headers": [
+   "Agreement Type",
+   "Customer Name",
+   "Project Name",
+   "Connection Site",
+   "MW Connected",
+   "MW Increase / Decrease",
+   "MW Total",
+   "MW Effective Date",
+   "Project Status",
+   "HOST TO",
+   "Plant Type"
+  ]
+ },
+ {
+  "first": "2020-03-26",
+  "last": "2020-05-28",
+  "copies": 10,
+  "headers": [
+   "Generation Connection Type",
+   "Customer Name",
+   "Project Name",
+   "Connection Site",
+   "MW Connected",
+   "MW Increase / Decrease",
+   "MW Total",
+   "MW Effective Date",
+   "Project Status",
+   "HOST TO",
+   "Plant Type"
+  ]
+ },
+ {
+  "first": "2020-06-05",
+  "last": "2020-06-11",
+  "copies": 2,
+  "headers": [
+   "",
+   "Generation Type",
+   "Customer Name",
+   "Project Name",
+   "Connection Site",
+   "Stage",
+   "MW Connected",
+   "MW Increase / Decrease",
+   "MW Effective From",
+   "Project Status",
+   "HOST TO",
+   "Plant Type"
+  ]
+ },
+ {
+  "first": "2020-06-18",
+  "last": "2020-07-02",
+  "copies": 2,
+  "headers": [
+   "",
+   "Project Name",
+   "Customer Name",
+   "",
+   "Connection Site",
+   "Stage",
+   "MW Connected",
+   "MW Increase / Decrease",
+   "MW Effective From",
+   "Project Status",
+   "Agreement Type",
+   "HOST TO",
+   "Plant Type"
+  ]
+ },
+ {
+  "first": "2020-07-09",
+  "last": "2020-07-16",
+  "copies": 2,
+  "headers": [
+   "",
+   "Project Name",
+   "Customer",
+   "",
+   "Connection Site",
+   "Stage",
+   "MW Connected",
+   "MW Increase / Decrease",
+   "Cumulative Total Capacity (MW)",
+   "MW Effective From",
+   "Project Status",
+   "Agreement Type",
+   "HOST TO",
+   "Plant Type"
+  ]
+ },
+ {
+  "first": "2020-07-23",
+  "last": "2020-07-23",
+  "copies": 1,
+  "headers": [
+   "",
+   "Project Name",
+   "Customer",
+   "",
+   "Connection Site",
+   "Stage",
+   "MW Connected",
+   "MW Increase / Decrease",
+   "Cumulative Total Capacity (MW)",
+   "MW Effective From",
+   "Project Status",
+   "Agreement Type",
+   "HOST TO",
+   "Electricity Connection: Plant Type"
+  ]
+ },
+ {
+  "first": "2020-07-30",
+  "last": "2021-09-28",
+  "copies": 94,
+  "headers": [
+   "",
+   "Project Name",
+   "Customer Name",
+   "",
+   "Connection Site",
+   "Stage",
+   "MW Connected",
+   "MW Increase / Decrease",
+   "Cumulative Total Capacity (MW)",
+   "MW Effective From",
+   "Project Status",
+   "Agreement Type",
+   "HOST TO",
+   "Plant Type"
+  ]
+ },
+ {
+  "first": "2021-10-01",
+  "last": "2021-10-01",
+  "copies": 1,
+  "headers": [
+   "Agreement Type",
+   "Customer Name",
+   "Project Name",
+   "Connection Site",
+   "MW Connected",
+   "MW Increase / Decrease",
+   "Cumulative Total Capacity (MW)",
+   "MW Effective From",
+   "Project Status",
+   "HOST TO",
+   "Plant Type"
+  ]
+ },
+ {
+  "first": "2021-10-05",
+  "last": "2021-11-23",
+  "copies": 14,
+  "headers": [
+   "Project Name",
+   "Customer Name",
+   "Connection Site",
+   "Stage",
+   "MW Connected",
+   "MW Increase / Decrease",
+   "Cumulative Total Capacity (MW)",
+   "MW Effective From",
+   "Project Status",
+   "Agreement Type",
+   "HOST TO",
+   "Plant Type"
+  ]
+ },
+ {
+  "first": "2021-11-26",
+  "last": "2024-06-14",
+  "copies": 248,
+  "headers": [
+   "Project Name",
+   "Customer Name",
+   "Connection Site",
+   "Stage",
+   "MW Connected",
+   "MW Increase / Decrease",
+   "Cumulative Total Capacity (MW)",
+   "MW Effective From",
+   "Project Status",
+   "Agreement Type",
+   "HOST TO",
+   "Plant Type",
+   "Project ID"
+  ]
+ },
+ {
+  "first": "2024-06-18",
+  "last": "2025-07-22",
+  "copies": 63,
+  "headers": [
+   "Project Name",
+   "Customer Name",
+   "Connection Site",
+   "Stage",
+   "MW Connected",
+   "MW Increase Decrease",
+   "Cumulative Total Capacity (MW)",
+   "MW Effective From",
+   "Project Status",
+   "Agreement Type",
+   "Host TO",
+   "Plant Type",
+   "Project ID",
+   "Project Number"
+  ]
+ },
+ {
+  "first": "2026-05-19",
+  "last": "2026-09-15",
+  "copies": 4,
+  "headers": [
+   "Project Name",
+   "Customer Name",
+   "Connection Site",
+   "Stage",
+   "MW Connected",
+   "MW Increase / Decrease",
+   "Cumulative Total Capacity (MW)",
+   "MW Effective From",
+   "Project Status",
+   "Agreement Type",
+   "HOST TO",
+   "Plant Type",
+   "Project ID",
+   "Project Number",
+   "Gate",
+   "Transmission Zone",
+   "Distribution Zone"
+  ]
+ }
+]

@@ -35,7 +35,7 @@ import re
 from datetime import date, datetime, timedelta
 from decimal import Decimal, InvalidOperation
 from pathlib import Path
-from typing import Final
+from typing import Any, Final
 
 from grid_mysteries.hashing import sha256_file
 
@@ -53,6 +53,7 @@ ALIASES: Final[dict[str, str]] = {
     "project number": "Project Number",
     "project name": "Project Name",
     "customer name": "Customer Name",
+    "customer": "Customer Name",
     "user": "Customer Name",
     "connection site": "Connection Site",
     "connection point": "Connection Site",
@@ -70,6 +71,7 @@ ALIASES: Final[dict[str, str]] = {
     "agreement type": "Agreement Type",
     "host to": "HOST TO",
     "plant type": "Plant Type",
+    "electricity connection: plant type": "Plant Type",
     "gate": "Gate",
 }
 
@@ -365,3 +367,127 @@ def pin_live_vintage(
     with journal_path.open("a") as out:
         out.write(json.dumps(entry) + "\n")
     return entry
+
+
+# ------------------------------------------------------------- schema report
+
+DATE_SPELLINGS: Final = (
+    "date-cell",
+    "iso-dash",
+    "iso-slash",
+    "uk",
+    "dd-mon-yy",
+    "serial",
+    "blank",
+    "other",
+)
+REQUIRED_COLUMNS: Final = (
+    "Project Name",
+    "Customer Name",
+    "Connection Site",
+    "MW Increase / Decrease",
+    "MW Effective From",
+)
+#: A copy whose row count falls by more than this share against the previous
+#: copy is flagged as a possible partial export.
+ROW_COUNT_DROP: Final = Decimal("0.2")
+UNDATED_SHARE: Final = Decimal("0.5")
+
+
+def date_spelling(value: object) -> str:
+    """Which of the register's date spellings a cell uses (for the report)."""
+    if isinstance(value, datetime | date):
+        return "date-cell"
+    if isinstance(value, int | float) and not isinstance(value, bool):
+        return "serial" if 20000 <= value <= 80000 else "other"
+    text = str(value or "").strip()
+    if not text:
+        return "blank"
+    if _ISO.match(text):
+        return "iso-dash" if "-" in text[:8] else "iso-slash"
+    if _UK.match(text):
+        return "uk"
+    if _MON.match(text):
+        return "dd-mon-yy"
+    if _SERIAL.match(text):
+        return "serial"
+    return "other"
+
+
+def copy_report(
+    t_public: date, rows: list[dict[str, object]], entry: dict, previous_rows: int | None
+) -> dict[str, Any]:
+    """One copy's schema facts: columns, blank rates, date spellings, row-count
+    change, and the flags a reader should see before trusting the copy."""
+    columns = sorted({tr for tr in (canon(c) for c in (entry.get("columns") or [])) if tr})
+    n = len(rows)
+    blanks = {
+        col: sum(1 for r in rows if not str(r.get(col) or "").strip()) for col in REQUIRED_COLUMNS
+    }
+    spellings = dict.fromkeys(DATE_SPELLINGS, 0)
+    for r in rows:
+        spellings[date_spelling(r.get("MW Effective From"))] += 1
+    flags: list[str] = []
+    missing = [c for c in REQUIRED_COLUMNS if c not in columns]
+    if missing:
+        flags.append(f"missing columns {missing}")
+    change: Decimal | None = None
+    if previous_rows:
+        change = (Decimal(n) - Decimal(previous_rows)) / Decimal(previous_rows)
+        if change <= -ROW_COUNT_DROP:
+            flags.append(f"row count fell {abs(change) * 100:.0f}% (possible partial export)")
+    if n and Decimal(spellings["blank"] + spellings["other"]) / Decimal(n) > UNDATED_SHARE:
+        flags.append("more than half of rows undated")
+    if spellings["other"]:
+        flags.append(f"{spellings['other']} unparseable date cells")
+    return {
+        "t_public": t_public.isoformat(),
+        "source": entry.get("source"),
+        "format": entry.get("format"),
+        "sha256": entry.get("sha256"),
+        "rows": n,
+        "row_count_change": str(change.quantize(Decimal("0.001"))) if change is not None else None,
+        "columns": columns,
+        "blank": blanks,
+        "date_spellings": spellings,
+        "flags": flags,
+    }
+
+
+def schema_report(
+    vintages: list[tuple[date, list[dict[str, object]], dict]], skipped: list[dict]
+) -> dict[str, Any]:
+    """The archive's schema report: every copy's facts, the eras (runs of one
+    column vocabulary), the spelling totals, and the flagged copies."""
+    copies: list[dict[str, Any]] = []
+    previous: int | None = None
+    for t, rows, entry in vintages:
+        copies.append(copy_report(t, rows, entry, previous))
+        previous = len(rows)
+    eras: list[dict[str, Any]] = []
+    for c in copies:
+        if eras and eras[-1]["columns"] == c["columns"]:
+            eras[-1]["last"] = c["t_public"]
+            eras[-1]["copies"] += 1
+        else:
+            eras.append(
+                {
+                    "first": c["t_public"],
+                    "last": c["t_public"],
+                    "copies": 1,
+                    "columns": c["columns"],
+                }
+            )
+    totals = dict.fromkeys(DATE_SPELLINGS, 0)
+    for c in copies:
+        for k, v in c["date_spellings"].items():
+            totals[k] += v
+    return {
+        "archive": "neso/tec-register",
+        "copies": len(copies),
+        "unparseable": skipped,
+        "eras": eras,
+        "date_spelling_totals": totals,
+        "flagged": [{"t_public": c["t_public"], "flags": c["flags"]} for c in copies if c["flags"]],
+        "per_copy": copies,
+    }

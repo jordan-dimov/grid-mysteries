@@ -131,3 +131,13 @@ being kept by investigation 014's runner and the capture job that follows
 it. The published figures in `RESULTS.md` and Publication Pack 004 stand as
 the 2026-08-26 reading, with this amendment beside them; they are not
 rewritten.
+
+## Correction to Amendment 2 — 2026-09-16
+
+Amendment 2 says three copies (2020-07-09, 2020-07-16, 2020-07-23) were
+excluded because they lack an identity column. The archive schema report
+(`archives/tec-register/SCHEMA.md`) shows they carry the customer column
+under the header "Customer", which neither this study's runner nor 014's
+reader mapped at the time. The exclusion in the 2026-09-15 re-run stands as
+run and its figures are not changed; the stated cause was wrong and is
+corrected here. The reader now maps the header.

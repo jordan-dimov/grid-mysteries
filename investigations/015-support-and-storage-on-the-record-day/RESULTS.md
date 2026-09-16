@@ -65,32 +65,32 @@ unknown otherwise).
 
 | Unit | Name | Fuel | Export MW | Import MW | Side of B6 (grade) | Export h R3p | Export h R3h | Import h R3p | Offer MWh | Offer £ | Bid MWh | Bid £ |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
-| `E_LITRB-1` | Little Raith BESS | OTHER | 50.0 | -50.0 | north (C) | 1.14 | 1.72 | -0.10 | 50 | £6,692 | 224 | £0 |
-| `E_ROARB-1` | Roaring Hill BESS | OTHER | 50.0 | -50.0 | north (C) | 0.97 | 1.67 | -0.05 | 37 | £4,868 | 200 | £0 |
-| `E_JAMBB-1` | Jamesfield 1 Battery Storage | OTHER | 30.0 | -30.0 | north (C) | 0.94 | 1.47 | 0.00 | 21 | £2,895 | 124 | £0 |
-| `E_JAMBB-2` | Jamesfield 2 Battery Storage | OTHER | 19.0 | -19.3 | north (B) | 0.93 | 1.31 | -0.23 | 18 | £2,387 | 60 | £0 |
-| `T_NTRVB-1` | Native River | — | 57.0 | -57.0 | south (B) | 0.14 | 0.98 | -0.85 | 21 | £3,671 | 0 | £0 |
-| `E_BURWB-2` | Burwell 1 | — | 52.0 | -52.0 | south (C) | 0.68 | 0.68 | 0.00 | 19 | £3,943 | 0 | £0 |
-| `E_CHAPB-1` | Chapel Farm BESS | — | 50.2 | -50.2 | south (C) | 0.99 | 1.19 | -0.12 | 6 | £961 | 0 | £0 |
-| `E_SKELB-1` | Skelmersdale Battery | — | 49.9 | -50.6 | south (C) | 0.88 | 0.88 | 0.00 | 0 | — | 0 | — |
-| `E_CLAYB-1` | ClayTye Farm 1 Battery Storage | — | 49.5 | -49.5 | south (C) | 0.76 | 1.08 | -0.08 | 15 | £2,668 | 0 | £0 |
-| `E_CLAYB-2` | ClayTye Farm 2 Battery Storage | — | 49.5 | -49.5 | south (C) | 1.06 | 1.19 | -0.12 | 11 | £1,882 | 0 | £0 |
-| `E_ILMEB-1` | Ilmer Lane BESS | — | 49.5 | -49.5 | south (C) | 0.94 | 1.52 | -0.47 | 38 | £6,803 | 7 | £0 |
-| `E_THMRB-1` | Thame Road  BESS | — | 49.5 | -49.5 | south (C) | 0.89 | 1.71 | -0.03 | 114 | £22,519 | 22 | £0 |
-| `2__HANGE004` | 2__HANGE004 | — | 49.3 | -51.8 | south (C) | 0.68 | 0.68 | -0.09 | 22 | £3,357 | 6 | £0 |
-| `2__HCMRO002` | 2__HCMRO002 | — | 47.4 | -37.4 | south (C) | 0.18 | 0.42 | -0.26 | 0 | £88 | 0 | £0 |
-| `E_BARNB-1` | Hunningley Stairfoot BESS | — | 44.0 | -44.0 | south (B) | 0.61 | 0.61 | 0.00 | 45 | £8,121 | 3 | £0 |
-| `2__MCMRO002` | 2__MCMRO002 | — | 36.8 | -37.1 | south (C) | 0.61 | 0.77 | -0.03 | 15 | £2,545 | 35 | £0 |
-| `E_CONTB-1` | Contego Battery | — | 35.8 | -34.4 | south (B) | 0.56 | 0.81 | -0.41 | 22 | £3,941 | 0 | £0 |
-| `2__FCMRO004` | 2__FCMRO004 | — | 35.7 | -35.7 | south (C) | 0.96 | 1.44 | -0.09 | 41 | £7,855 | 11 | £0 |
-| `T_PINFB-1` | T_PINFB-1 | OTHER | 27.1 | -27.9 | unknown (-) | 0.92 | 0.92 | 0.00 | 9 | £1,720 | 9 | £0 |
-| `E_CRSSB-1` | Carnegie Road 1 | — | 20.0 | -20.6 | south (C) | 0.00 | 0.26 | 0.00 | 4 | £497 | 0 | £0 |
-| `E_FARNB-1` | Farnham BESS | — | 20.0 | -20.0 | south (B) | 0.91 | 1.11 | -0.43 | 14 | £2,328 | 1 | £0 |
-| `E_HAWKB-1` | HawkersHill  Battery | — | 20.0 | -20.0 | south (C) | 0.95 | 0.95 | -1.05 | 6 | £1,261 | 0 | £0 |
-| `E_OLDHB-1` | Oldham BESS | — | 20.0 | -20.0 | south (C) | 0.22 | 0.57 | 0.00 | 14 | £2,782 | 4 | £0 |
-| `2__FCMRO003` | 2__FCMRO003 | — | 19.7 | -20.2 | south (C) | 1.19 | 1.83 | -0.40 | 0 | £44 | 21 | £0 |
-| `E_BROAB-1` | Broadditch Battery | — | 11.0 | -11.0 | south (C) | 0.94 | 1.42 | -0.02 | 3 | £497 | 0 | £0 |
-| `E_BHOLB-1` | Holes Bay Battery | — | 7.1 | -7.4 | south (C) | 0.67 | 0.99 | -0.66 | 0 | £19 | 0 | £0 |
+| `E_LITRB-1` | Little Raith BESS | OTHER | 50.0 | -50.0 | north (C) | 1.14 | 1.72 | 1.57 | 50 | £6,692 | 224 | £0 |
+| `E_ROARB-1` | Roaring Hill BESS | OTHER | 50.0 | -50.0 | north (C) | 0.97 | 1.67 | 1.43 | 37 | £4,868 | 200 | £0 |
+| `E_JAMBB-1` | Jamesfield 1 Battery Storage | OTHER | 30.0 | -30.0 | north (C) | 0.94 | 1.47 | 1.05 | 21 | £2,895 | 124 | £0 |
+| `E_JAMBB-2` | Jamesfield 2 Battery Storage | OTHER | 19.0 | -19.3 | north (B) | 0.93 | 1.31 | 1.51 | 18 | £2,387 | 60 | £0 |
+| `T_NTRVB-1` | Native River | — | 57.0 | -57.0 | south (B) | 0.14 | 0.98 | 1.59 | 21 | £3,671 | 0 | £0 |
+| `E_BURWB-2` | Burwell 1 | — | 52.0 | -52.0 | south (C) | 0.68 | 0.68 | 0.74 | 19 | £3,943 | 0 | £0 |
+| `E_CHAPB-1` | Chapel Farm BESS | — | 50.2 | -50.2 | south (C) | 0.99 | 1.19 | 1.54 | 6 | £961 | 0 | £0 |
+| `E_SKELB-1` | Skelmersdale Battery | — | 49.9 | -50.6 | south (C) | 0.88 | 0.88 | 0.96 | 0 | — | 0 | — |
+| `E_CLAYB-1` | ClayTye Farm 1 Battery Storage | — | 49.5 | -49.5 | south (C) | 0.76 | 1.08 | 1.45 | 15 | £2,668 | 0 | £0 |
+| `E_CLAYB-2` | ClayTye Farm 2 Battery Storage | — | 49.5 | -49.5 | south (C) | 1.06 | 1.19 | 1.50 | 11 | £1,882 | 0 | £0 |
+| `E_ILMEB-1` | Ilmer Lane BESS | — | 49.5 | -49.5 | south (C) | 0.94 | 1.52 | 1.40 | 38 | £6,803 | 7 | £0 |
+| `E_THMRB-1` | Thame Road  BESS | — | 49.5 | -49.5 | south (C) | 0.89 | 1.71 | 1.30 | 114 | £22,519 | 22 | £0 |
+| `2__HANGE004` | 2__HANGE004 | — | 49.3 | -51.8 | south (C) | 0.68 | 0.68 | 0.98 | 22 | £3,357 | 6 | £0 |
+| `2__HCMRO002` | 2__HCMRO002 | — | 47.4 | -37.4 | south (C) | 0.18 | 0.42 | 1.02 | 0 | £88 | 0 | £0 |
+| `E_BARNB-1` | Hunningley Stairfoot BESS | — | 44.0 | -44.0 | south (B) | 0.61 | 0.61 | 0.69 | 45 | £8,121 | 3 | £0 |
+| `2__MCMRO002` | 2__MCMRO002 | — | 36.8 | -37.1 | south (C) | 0.61 | 0.77 | 0.87 | 15 | £2,545 | 35 | £0 |
+| `E_CONTB-1` | Contego Battery | — | 35.8 | -34.4 | south (B) | 0.56 | 0.81 | 0.92 | 22 | £3,941 | 0 | £0 |
+| `2__FCMRO004` | 2__FCMRO004 | — | 35.7 | -35.7 | south (C) | 0.96 | 1.44 | 1.31 | 41 | £7,855 | 11 | £0 |
+| `T_PINFB-1` | T_PINFB-1 | OTHER | 27.1 | -27.9 | unknown (-) | 0.92 | 0.92 | 0.90 | 9 | £1,720 | 9 | £0 |
+| `E_CRSSB-1` | Carnegie Road 1 | — | 20.0 | -20.6 | south (C) | 0.00 | 0.26 | 0.19 | 4 | £497 | 0 | £0 |
+| `E_FARNB-1` | Farnham BESS | — | 20.0 | -20.0 | south (B) | 0.91 | 1.11 | 1.33 | 14 | £2,328 | 1 | £0 |
+| `E_HAWKB-1` | HawkersHill  Battery | — | 20.0 | -20.0 | south (C) | 0.95 | 0.95 | 1.87 | 6 | £1,261 | 0 | £0 |
+| `E_OLDHB-1` | Oldham BESS | — | 20.0 | -20.0 | south (C) | 0.22 | 0.57 | 0.67 | 14 | £2,782 | 4 | £0 |
+| `2__FCMRO003` | 2__FCMRO003 | — | 19.7 | -20.2 | south (C) | 1.19 | 1.83 | 1.27 | 0 | £44 | 21 | £0 |
+| `E_BROAB-1` | Broadditch Battery | — | 11.0 | -11.0 | south (C) | 0.94 | 1.42 | 1.48 | 3 | £497 | 0 | £0 |
+| `E_BHOLB-1` | Holes Bay Battery | — | 7.1 | -7.4 | south (C) | 0.67 | 0.99 | 1.38 | 0 | £19 | 0 | £0 |
 | `V__AZENO002` | V__AZENO002 | OTHER | 0.0 | 0.0 | south (C) | — | — | — | 16 | £3,652 | 3 | £0 |
 | `V__JZENO001` | V__JZENO001 | OTHER | 0.0 | 0.0 | south (C) | — | — | — | 0 | £73 | 0 | £0 |
 
@@ -110,8 +110,9 @@ unknown otherwise).
   the bidding units sits outside the 15 % band. The rule compares what bid,
   not what exists; recorded as a limit, not corrected.
 - **CfD units paid, or paying?** 10 of the 20 CfD-linked units carried
-  negative bid cashflows on the day, £524,079 in all, so their
-  signed total (£429,737) is well below their paid-out total
+  negative bid rows on the day and 5 netted negative over the day; the
+  negative rows sum to £524,079, so the group's signed total
+  (£429,737) is well below its paid-out total
   (£953,815). The table shows both. Why a unit's bids are priced as they
   are is not a question this record answers.
 - **Is the RO capacity column usable?** Yes: every one of the 26,578 rows
@@ -124,8 +125,10 @@ unknown otherwise).
   energy-limited unit that day.
 - **Could any of them have covered the constraint?** Not on the published
   numbers: export hours of energy at R3p run from 0.00 to 1.19 hours
-  against a constraint that ran all day. The table draws no further
-  conclusion, and none of this is a counterfactual.
+  across the 26 units with a published bound (0.93 to
+  1.14 for the 4 north of B6), against a constraint that ran all
+  day. The table draws no further conclusion, and none of this is a
+  counterfactual.
 
 ## 4. The conclusion
 

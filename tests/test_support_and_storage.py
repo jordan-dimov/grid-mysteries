@@ -205,6 +205,10 @@ def test_energy_bound_hindsight_and_public_as_of_differ_by_publish_time():
     assert ss.energy_bound(records, "B1", datetime(2026, 9, 8, 6, 0, tzinfo=UTC)) == D("40")
     assert ss.energy_bound(records, "B3", None) is None
     assert ss.hours(D("60"), D("30")) == D("2.00") and ss.hours(D("60"), D("-30")) == D("2.00")
+    assert ss.hours(D("-60"), D("-30")) == D("2.00")  # MDB levels are published negative
+    assert ss.energy_bound(
+        [mdo("B9", -40, "2026-09-07T20:00:00Z"), mdo("B9", -60, "2026-09-07T21:00:00Z")], "B9", None
+    ) == D("-60")
     assert ss.hours(None, D("30")) is None and ss.hours(D("60"), D("0")) is None
 
 

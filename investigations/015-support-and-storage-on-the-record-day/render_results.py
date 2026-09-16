@@ -71,6 +71,8 @@ def main() -> None:
     export_north = sum((Decimal(r["export_capacity_mw"] or 0) for r in north), Decimal(0))
     paid_any = sum(1 for r in storage if r["bid_paid_gbp"] or r["offer_paid_gbp"])
     r3p = [Decimal(r["export_hours_r3p"]) for r in storage if r["export_hours_r3p"] is not None]
+    r3p_north = [Decimal(r["export_hours_r3p"]) for r in north if r["export_hours_r3p"] is not None]
+    net_negative = [u for u in cfd_units if Decimal(u["bid_signed_gbp"]) < 0]
 
     rows1 = "\n".join(
         f"| {labels[s]} | {table[s]['units']} | {mwh(table[s]['bid_mwh'])} | {gbp(table[s]['bid_paid_gbp'])} | "
@@ -163,8 +165,9 @@ unknown otherwise).
   the bidding units sits outside the 15 % band. The rule compares what bid,
   not what exists; recorded as a limit, not corrected.
 - **CfD units paid, or paying?** {len(cfd_negative)} of the {len(cfd_units)} CfD-linked units carried
-  negative bid cashflows on the day, {gbp(-cfd_negative_total)} in all, so their
-  signed total ({gbp(table["cfd"]["bid_signed_gbp"])}) is well below their paid-out total
+  negative bid rows on the day and {len(net_negative)} netted negative over the day; the
+  negative rows sum to {gbp(-cfd_negative_total)}, so the group's signed total
+  ({gbp(table["cfd"]["bid_signed_gbp"])}) is well below its paid-out total
   ({gbp(table["cfd"]["bid_paid_gbp"])}). The table shows both. Why a unit's bids are priced as they
   are is not a question this record answers.
 - **Is the RO capacity column usable?** Yes: every one of the 26,578 rows
@@ -177,8 +180,10 @@ unknown otherwise).
   energy-limited unit that day.
 - **Could any of them have covered the constraint?** Not on the published
   numbers: export hours of energy at R3p run from {min(r3p) if r3p else "—"} to {max(r3p) if r3p else "—"} hours
-  against a constraint that ran all day. The table draws no further
-  conclusion, and none of this is a counterfactual.
+  across the {len(r3p)} units with a published bound ({min(r3p_north) if r3p_north else "—"} to
+  {max(r3p_north) if r3p_north else "—"} for the {len(r3p_north)} north of B6), against a constraint that ran all
+  day. The table draws no further conclusion, and none of this is a
+  counterfactual.
 
 ## 4. The conclusion
 

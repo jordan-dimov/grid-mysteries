@@ -407,8 +407,9 @@ def side_of_b6(
 
 
 def energy_bound(records: list[dict], unit: str, before: datetime | None) -> Decimal | None:
-    """The unit's maximum published level on the day (MWh); with `before`,
-    only records published before that instant (public-as-of)."""
+    """The unit's largest published level on the day by magnitude (MWh; MDB
+    levels are negative as published); with `before`, only records
+    published before that instant (public-as-of)."""
     best: Decimal | None = None
     for r in records:
         if r.get("bmUnit") != unit:
@@ -419,15 +420,17 @@ def energy_bound(records: list[dict], unit: str, before: datetime | None) -> Dec
                 continue
         for key in ("levelFrom", "levelTo"):
             level = decimal(r.get(key))
-            if level is not None and (best is None or level > best):
+            if level is not None and (best is None or abs(level) > abs(best)):
                 best = level
     return best
 
 
 def hours(energy: Decimal | None, capacity: Decimal | None) -> Decimal | None:
+    """Hours at the registered capacity. MDB levels are published negative
+    (import), as is the import capacity; both are taken by magnitude."""
     if energy is None or capacity is None or capacity == ZERO:
         return None
-    return (energy / abs(capacity)).quantize(Decimal("0.01"))
+    return (abs(energy) / abs(capacity)).quantize(Decimal("0.01"))
 
 
 def constraint_duration(volumes: Volumes, chosen: str | None) -> dict[str, Any]:

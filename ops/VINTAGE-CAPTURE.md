@@ -104,6 +104,19 @@ Both jobs: `type: cron`, `runtime: docker`, `dockerfilePath: ./Dockerfile`,
 `region: frankfurt`, `plan: starter`, `autoDeploy: false`. `render.yaml` is
 the blueprint and must match this table.
 
+**Where the unsynced values live (from 2026-09-16).** The five secrets are
+in the dashboard-managed environment group `vintage-secrets`, linked to both
+cron jobs and referenced from the blueprint with `fromGroup`; they are no
+longer declared per job. Background: the first scheduled `tracker-013` run
+(09:00 UTC, 2026-09-16) failed with the `a115-cli-jordan` key although the
+manual run at 22:22 UTC the night before had succeeded with the writer key.
+The hypothesis that a blueprint sync had re-applied the launch-time value
+did not fit the timeline: the last sync-triggered deploy was at 21:56 UTC
+and the last deploy of any kind (a1c2624) at 22:20 UTC, both before the
+22:22 UTC success, and no deploy followed. The likely cause is a per-job
+dashboard edit that was not saved on that job. The group removes the
+per-job edit as a failure mode either way.
+
 Compute and render for 013 and 014 stay on the laptop: they need the
 committed evidence, and rendering is a pure function of it. The watchdog
 syncs `state/013/` into the repo's `data/raw` and `evidence/` paths; the

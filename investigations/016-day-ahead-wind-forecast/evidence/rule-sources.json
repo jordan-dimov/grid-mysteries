@@ -1,0 +1,17 @@
+{
+  "what": "The reading rules 016 states, each mapped to the test that holds it. 016 is a data pack with no declaration, so these are not sealed rules; they are the rules AMENDMENTS.md states, and scripts/check-rules fails if any of them stops being tested.",
+  "rules": {
+    "A settlement period is identified by the UTC instant it starts, and WINDFOR's hourly target time is placed on the period that starts at that instant": "tests/test_wind_forecast_pack.py::test_period_of_matches_elexons_own_mapping_for_the_witnessed_hour",
+    "D1 the side is taken only where every passing register row agrees, and the cited row is the one whose capacity is closest -- never the one that sorts first": "tests/test_wind_forecast_pack.py::test_the_closest_capacity_row_is_cited_not_the_first_one_in_the_file",
+    "D1 where passing rows disagree on the side the rule declines rather than resolving the disagreement by file order": "tests/test_wind_forecast_pack.py::test_rows_that_disagree_on_the_side_make_the_rule_decline_rather_than_pick",
+    "D2 a wind BM unit may only link to a register row whose plant type names wind": "tests/test_wind_forecast_pack.py::test_a_wind_unit_never_links_to_a_biomass_row_however_well_the_name_fits",
+    "D3 an OFTO row places a unit only where the committed per-vintage enumeration names it, and never from the OFTO label": "tests/test_wind_forecast_pack.py::test_an_ofto_row_is_unplaced_unless_the_vintage_enumeration_names_it",
+    "D4 roman numerals i to x are read as digits on both sides of the name test": "tests/test_wind_forecast_pack.py::test_walney_i_and_walney_1_are_the_same_project",
+    "D4 the name test still never matches a name the unit's tokens are not wholly contained in": "tests/test_wind_forecast_pack.py::test_the_rule_still_never_matches_a_name_the_unit_does_not_contain",
+    "One register row, many BM units: the capacity test passes on the unit's own capacity or on the sum over the row's name group, de-duplicated on the Elexon id": "tests/test_wind_forecast_pack.py::test_a_row_facing_four_bm_units_is_matched_on_the_group_total",
+    "A single-unit station is 015's capacity rule unchanged": "tests/test_wind_forecast_pack.py::test_a_single_unit_station_is_015s_capacity_rule_unchanged",
+    "A model-proposed link is graded R, carries the model name and probability as provenance, and never overrides the rule or the arming list": "tests/test_wind_forecast_pack.py::test_a_reviewed_link_never_overrides_the_rule_or_the_arming_list",
+    "Dropping every grade R row recovers a classification no model and no reviewer touched": "tests/test_wind_forecast_pack.py::test_dropping_every_reviewed_row_recovers_a_classification_no_human_touched",
+    "015's sealed ladder is left exactly as it ran and is never re-run under the corrected rule": "tests/test_wind_forecast_pack.py::test_015s_own_ladder_is_left_exactly_as_it_ran_under_its_seal"
+  }
+}

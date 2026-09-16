@@ -3,7 +3,7 @@ bm_unit,national_grid_bm_unit,eic,bm_unit_name,lead_party,bm_unit_type,generatio
 2__NNATP001,NNPW01,,2__NNATP001,Npower Commercial Gas Limited,S,50.000,_N,True,north,C,GSP group _N,True,
 2__PEDGE003,CMSTW-1,,2__PEDGE003,Edgware Energy Limited,S,55.749,_P,True,north,C,GSP group _P,True,59325.294479360002128492
 2__PEDGE004,RSHLW-1,48W00000RSHLW-1S,2__PEDGE004,Edgware Energy Limited,S,27.376,_P,True,north,C,GSP group _P,True,
-2__PENEC001,ROTHW-1,,Rothes Windfarm,Eneco Energy Trade,S,54.501,_P,True,north,B,TEC register row 'Markinch (Rothes) Biomass CHP Plant' hosted by SPT,True,
+2__PENEC001,ROTHW-1,,Rothes Windfarm,Eneco Energy Trade,S,54.501,_P,True,north,C,GSP group _P,True,
 2__PENEC002,PAUHW-1,48W00000PAUHW-11,Pauls Hill Windfarm,Eneco Energy Trade,S,70.167,_P,True,north,C,GSP group _P,True,
 2__PSMAE001,CAUSW-1,48W00000CAUSW-1D,2__PSMAE001,Smartestenergy Limited,S,0.000,_P,True,north,C,GSP group _P,True,
 2__PSMAE003,TACHW-1,,CE Tacher Turbines Limited,Smartestenergy Limited,S,12.900,_P,True,north,C,GSP group _P,True,
@@ -16,7 +16,7 @@ E_ABRTW-1,ABRTW-1,48W00000ABRTW-1Z,Auchrobert Wind Farm,Npower Commercial Gas Li
 E_AIRSW-1,AIRSW-1,,Airies,ENGIE Power Limited,E,38.000,_N,True,north,B,TEC register row 'Airies Wind Farm' hosted by SPT,True,
 E_ASHWW-1,ASHWW-1,48W00000ASHWW-1Z,Andershaw Wind Farm,Statkraft Markets Gmbh,E,35.000,_N,True,north,B,TEC register row 'Andershaw Wind Farm' hosted by SPT,True,
 E_ASLVW-1,ASLVW-1,,Assel Valley Wind Farm,Npower Commercial Gas Limited,E,26.000,_N,True,north,C,GSP group _N,True,
-E_BABAW-1,BABAW-1,48W00000BABAW-13,Baillie Wind Farm,Statkraft Markets Gmbh,E,52.500,_P,True,north,B,TEC register row 'Baillie Greener Grid Park' hosted by SHET,True,18450.013178982883459867
+E_BABAW-1,BABAW-1,48W00000BABAW-13,Baillie Wind Farm,Statkraft Markets Gmbh,E,52.500,_P,True,north,B,TEC register row 'Baillie Wind Farm' hosted by SHET,True,18450.013178982883459867
 E_BETHW-1,BETHW-1,48W00000BETHW-1H,BETHW-1,SP Renewables (UK) Limited,E,29.750,_P,True,north,C,GSP group _P,True,
 E_BLARW-1,BLARW-1,,E_BLARW-1,Erova Energy Limited,E,35.000,_P,True,north,C,GSP group _P,True,
 E_BNWKW-1,BNWKW-1,48W00000BNWKW-1W,Burn of Whilk Windfarm,Eneco Energy Trade,E,22.500,_P,True,north,B,TEC register row 'Burn of Whilk Wind Farm' hosted by SHET,True,
@@ -24,13 +24,13 @@ E_BRDUW-1,BRDUW-1,48W00000BRDUW-1V,Braes of Doune,Erova Energy Limited,E,74.000,
 E_BRNLW-1,BRNLW-1,,Brownieleys,ENGIE Power Limited,E,7.500,_P,True,north,B,TEC register row 'Brownieleys' hosted by SHET,True,
 E_BRYBW-1,BRYBW-1,48W00000BRYBW-10,Berry Burn Wind Farm,Statkraft Markets Gmbh,E,62.708,_P,True,north,B,TEC register row 'Berry Burn Wind Farm' hosted by SHET,True,
 E_BTUIW-2,BTUIW-2,48W00000BTUIW-2A,Beinn An Tuirc 2,SP Renewables (UK) Limited,E,43.700,_P,True,north,B,TEC register row 'Beinn an Tuirc 2' hosted by SHET,True,
-E_BTUIW-3,BTUIW-3,,Beinn an Tuirc III Windfarm,SP Renewables (UK) Limited,E,52.000,_P,True,north,C,GSP group _P,True,12079.339812540000423276
+E_BTUIW-3,BTUIW-3,,Beinn an Tuirc III Windfarm,SP Renewables (UK) Limited,E,52.000,_P,True,north,B,TEC register row 'Beinn an Tuirc 3' hosted by SHET,True,12079.339812540000423276
 E_BURBO,BURBW-1,48W00000BURBW-1L,Burbo Offshore Wind,Orsted Burbo (UK) Limited,E,90.000,_D,False,south,B,TEC register row 'Burbo Bank Offshore Wind Farm' hosted by NGET,True,
 E_CLDRW-1,CLDRW-1,48W00000CLDRW-16,CLDRW-1,Vattenfall Energy Trading,E,39.000,_P,True,north,C,GSP group _P,True,
 E_CLFLW-1,CLFLW-1,48W00000CLFLW-1O,Clachan Flats,SP Renewables (UK) Limited,E,15.000,_P,True,north,C,GSP group _P,True,
 E_CMSTW-2,CMSTW-2,,Camster II,Edgware Energy Limited,E,36.000,_P,True,north,C,GSP group _P,True,13182.467201135999744111
 E_CNCLW-1,CNCLW-1,,Coire Na Cloiche WF,Statkraft Markets Gmbh,E,30.520,_P,True,north,B,TEC register row 'Coire Na Cloiche' hosted by SHET,True,
-E_CRGTW-1,CRGTW-1,,Craig 2 Wind Farm,British Gas Trading Ltd,E,4.700,_N,True,north,C,GSP group _N,True,
+E_CRGTW-1,CRGTW-1,,Craig 2 Wind Farm,British Gas Trading Ltd,E,4.700,_N,True,north,B,TEC register row 'Craig II Wind Farm' hosted by SPT,True,
 E_DALSW-1,DALSW-1,48W00000DALSW-1M,Dalswinton Windfarm,Mobius Renewables Gen. (GB),E,30.000,_N,True,north,B,TEC register row 'Dalswinton' hosted by SPT,True,
 E_GDSTW-1,GDSTW-1,48W00000GDSTW-14,Gordonstown,Mobius Renewables Gen. (GB),E,13.289,_P,True,north,B,TEC register row 'Gordonstown Hill Wind Farm' hosted by SHET,True,
 E_GLCHW-1,GLCHW-1,,Glenchamber,ENGIE Power Limited,E,27.440,_N,True,north,B,TEC register row 'Glenchamber Wind Farm' hosted by SPT,True,
@@ -56,7 +56,7 @@ T_ACHRW-1,ACHRW-1,48W00000ACHRW-1O,AChruach Wind Farm,Mobius Renewables Gen. (GB
 T_AFTOW-1,AFTOW-1,,Afton Wind Farm,Afton Wind Farm Limited,T,50.000,,True,north,B,TEC register row 'Afton Wind Farm' hosted by SPT,True,
 T_AKGLW-2,AKGLW-2,48W00000AKGLW-22,AIKENGALL II,Aikengall 2 CWCL,T,63.840,,True,north,A,CMIS intertrip arming lists the unit against B6,True,
 T_AKGLW-3,AKGLW-3,,AIKENGALL2A-W,AIK2A Sustainable Energy Ltd,T,163.400,,True,north,A,CMIS intertrip arming lists the unit against B6,True,85704.813221502688655561
-T_ANSUW-1,ANSUW-1,48W00000ANSUW-1E,An Suidhe 1,Statkraft Markets Gmbh,T,19.360,,False,unknown,-,no graded evidence,True,
+T_ANSUW-1,ANSUW-1,48W00000ANSUW-1E,An Suidhe 1,Statkraft Markets Gmbh,T,19.360,,True,north,R,"reviewed link to TEC register row 'An Suidhe Wind Farm - Argyll (SRO)' hosted by SHET (proposed by jev-latest at p 0.81, accepted on review 2026-09-16)",True,
 T_ARCHW-1,ARCHW-1,48W10000ARCHW-1N,Arecleoch,SP Renewables (UK) Limited,T,114.000,,True,north,B,TEC register row 'Arecleoch' hosted by SPT,True,
 T_BDCHW-1,BDCHW-1,,Bad a Cheo Wind Farm,RWE Generation UK plc,T,27.000,,True,north,B,TEC register row 'Bad a Cheo Wind Farm' hosted by SHET,True,15358.911908453750356783
 T_BEATO-1,BEATO-1,48W00000BEATO-1T,Beatrice Offshore WF 1,Beatrice Offshore Windfarm Ltd,T,184.000,,False,unknown,-,no graded evidence,True,48282.382751599750463359
@@ -65,21 +65,21 @@ T_BEATO-3,BEATO-3,48W00000BEATO-3P,Beatrice Offshore WF 3,Beatrice Offshore Wind
 T_BEATO-4,BEATO-4,48W00000BEATO-4N,Beatrice Offshore WF 4,Beatrice Offshore Windfarm Ltd,T,165.526,,False,unknown,-,no graded evidence,True,86170.113362704765222589
 T_BEINW-1,BEINW-1,48W00000BEINW-1G,Beinneun Wind farm,Beinneun Wind Farm Ltd,T,108.800,,True,north,B,TEC register row 'Beinneun Wind Farm' hosted by SHET,True,
 T_BENBW-1,BENBW-1,,Benbrack WF,Benbrack Wind Farm Limited,T,67.000,,True,north,B,TEC register row 'Benbrack Wind Farm' hosted by SPT,True,4279.743574196933309395
-T_BHLAW-1,BHLAW-1,48W00000BHLAW-15,Bhlaraidh Windfarm 1,SSE Generation Ltd,T,108.112,,False,unknown,-,no graded evidence,True,132930.761516638799548675
+T_BHLAW-1,BHLAW-1,48W00000BHLAW-15,Bhlaraidh Windfarm 1,SSE Generation Ltd,T,108.112,,True,north,R,"reviewed link to TEC register row 'Bhlaraidh Wind Farm' hosted by SHET (proposed by jev-latest at p 0.91, accepted on review 2026-09-16)",True,132930.761516638799548675
 T_BLKWW-1,BLKWW-1,48W00000BLKWW-1L,Blackcraig Windfarm,Blackcraig Wind Farm Limited,T,56.216,,True,north,B,TEC register row 'Blackcraig Wind Farm' hosted by SPT,True,
 T_BLLA-1,BLLA-1,48W000000BLLA-1K,T_BLLA-1,SP Renewables (UK) Limited,T,118.000,,True,north,A,CMIS intertrip arming lists the unit against B6,True,
 T_BLLA-2,BLLA-2,48W000000BLLA-2I,Black Law Windfarm Extension,SP Renewables (UK) Limited,T,69.000,,False,unknown,-,no graded evidence,True,25231.758181193299805046
-T_BOWLW-1,BOWLW-1,48W00000BOWLW-1K,Barrow Offshore Wind,Barrow Offshore Wind Limited,T,90.000,,False,unknown,-,no graded evidence,True,
+T_BOWLW-1,BOWLW-1,48W00000BOWLW-1K,Barrow Offshore Wind,Barrow Offshore Wind Limited,T,90.000,,False,south,B,TEC register row 'Barrow Offshore Wind Farm' hosted by OFTO,True,
 T_BRBEO-1,BRBEO-1,48W00000BRBEO-17,BURBO_EXTENSION,Burbo Extension Limited,T,257.700,,False,south,B,TEC register row 'Burbo Bank Extension Offshore Wind Farm' hosted by NGET,True,
 T_BROCW-1,BROCW-1,,Broken Cross WF,Smartestenergy Limited,T,48.000,,True,north,B,TEC register row 'Broken Cross Windfarm' hosted by SPT,True,13586.247617533499878473
-T_CGTHW-1,CGTHW-1,48W00000CGTHW-1W,Corriegarth WF,Corriegarth Wind Energy LTD,T,69.000,,True,north,B,TEC register row 'Corriegarth' hosted by SHET,True,75452.861120996666426386
+T_CGTHW-1,CGTHW-1,48W00000CGTHW-1W,Corriegarth WF,Corriegarth Wind Energy LTD,T,69.000,,True,north,B,"TEC register row 'Corriegarth' hosted by SHET, 2 matching rows all north",True,75452.861120996666426386
 T_CLDCW-1,CLDCW-1,48W00000CLDCW-17,Clyde Central,Clyde Windfarm (Scotland) Ltd,T,200.000,,False,unknown,-,no graded evidence,True,
 T_CLDNW-1,CLDNW-1,48W00000CLDNW-1Q,Clyde North,Clyde Windfarm (Scotland) Ltd,T,200.000,,False,unknown,-,no graded evidence,True,21685.248462834916267640
 T_CLDSW-1,CLDSW-1,48W00000CLDSW-11,Clyde South,Clyde Windfarm (Scotland) Ltd,T,150.000,,True,north,B,TEC register row 'Clyde South' hosted by SPT,True,
 T_COUWW-1,COUWW-1,48W00000COUWW-16,Cour Wind Farm,Cour Wind farm (Scotland) Ltd,T,20.500,,True,north,B,TEC register row 'Cour Wind Farm' hosted by SHET,True,
 T_CRDEW-1,CRDEW-1,,Crossdykes WF-1,EDF Energy Customers Limited,T,24.000,,False,unknown,-,no graded evidence,True,9077.662996290000364753
 T_CRDEW-2,CRDEW-2,,Crossdykes WF-2,EDF Energy Customers Limited,T,24.000,,False,unknown,-,no graded evidence,True,9077.662996290000364753
-T_CREAW-1,CREAW-1,,Creag Riabhach Wind Farm,Creag Riabhach Wind Farm Ltd,T,93.000,,True,north,B,TEC register row 'Creag Riabhach Wind Farm' hosted by SHET,True,78615.513431554774342656
+T_CREAW-1,CREAW-1,,Creag Riabhach Wind Farm,Creag Riabhach Wind Farm Ltd,T,93.000,,True,north,B,"TEC register row 'Creag Riabhach Wind Farm' hosted by SHET, 2 matching rows all north",True,78615.513431554774342656
 T_CRGHW-1,CRGHW-1,48W00000CRGHW-1X,Carraig Gheal Wind Farm,Statkraft Markets Gmbh,T,46.000,,True,north,B,TEC register row 'Carraig Gheal Wind Farm' hosted by SHET,True,51008.991133099999558452
 T_CRMLW-1,CRMLW-1,48W00000CRMLW-1E,Corriemoillie,EDF Energy Customers Limited,T,48.000,,True,north,B,TEC register row 'Corriemoillie Wind Farm' hosted by SHET,True,
 T_CRYRW-2,CRYRW-2,48W00000CRYRW-2L,Crystal Rig II Windfarm,Eneco Energy Trade,T,150.620,,True,north,A,CMIS intertrip arming lists the unit against B6,True,
@@ -115,8 +115,8 @@ T_EDINW-1,EDINW-1,48W10000EDINW-1N,Edinbane Windfarm,Vattenfall Wind Power Ltd,T
 T_ENHLW-1,ENHLW-1,,Enoch Hill Wind Farm,RWE Generation UK plc,T,70.000,,True,north,B,TEC register row 'Enoch Hill' hosted by SPT,True,
 T_EWHLW-1,EWHLW-1,48W00000EWHLW-1U,Ewe Hill II Windfarm,SP Renewables (UK) Limited,T,38.000,,False,unknown,-,no graded evidence,True,20358.371193289433605856
 T_FALGW-1,FALGW-1,48W00000FALGW-1T,Fallago Rig Wind Farm,Fallago Rig Wind Farm Limited,T,144.000,,True,north,A,CMIS intertrip arming lists the unit against B6,True,
-T_FARR-1,FAARW-1,48W00000FAARW-13,Farr Unit 1,Smartestenergy Limited,T,92.000,,False,unknown,-,no graded evidence,True,28372.637600373333725658
-T_FARR-2,FAARW-2,48W00000FAARW-21,Farr Unit 2,Smartestenergy Limited,T,92.000,,False,unknown,-,no graded evidence,True,
+T_FARR-1,FAARW-1,48W00000FAARW-13,Farr Unit 1,Smartestenergy Limited,T,92.000,,True,north,R,"reviewed link to TEC register row 'Farr Wind Farm - Tomatin' hosted by SHET (proposed by jev-latest at p 0.82, accepted on review 2026-09-16)",True,28372.637600373333725658
+T_FARR-2,FAARW-2,48W00000FAARW-21,Farr Unit 2,Smartestenergy Limited,T,92.000,,True,north,R,"reviewed link to TEC register row 'Farr Wind Farm - Tomatin' hosted by SHET (proposed by jev-latest at p 0.77, accepted on review 2026-09-16)",True,
 T_FSDLW-1,FSDLW-1,48W00000FSDLW-10,Freasdail Wind Farm,Freasdail Energy Limited,T,22.200,,True,north,B,TEC register row 'Freasdail' hosted by SHET,True,
 T_GANW-11,GAOFO-1,48W00000GAOFO-13,Galloper OSP 11,Galloper Offshore WindFarm Ltd,T,88.000,,False,unknown,-,no graded evidence,True,
 T_GANW-13,GAOFO-3,48W10000GAOFO-3N,Galloper OSP 13,Galloper Offshore WindFarm Ltd,T,88.000,,False,unknown,-,no graded evidence,True,
@@ -126,7 +126,7 @@ T_GLNKW-1,GLNKW-1,,GLEN KYLLACHY WINDFARM,EDF Energy Customers Limited,T,52.000,
 T_GLWSW-1,GLWSW-1,48W00000GLWSW-13,Galawhistle Wind Farm,GALAWHISTLE WIND FARM,T,55.200,,True,north,B,TEC register row 'Galawhistle Wind Farm' hosted by SPT,True,
 T_GNAPW-1,GNAPW-1,48W00000GNAPW-1P,Glen App Windfarm,SP Renewables (UK) Limited,T,22.000,,False,unknown,-,no graded evidence,True,
 T_GNFSW-1,GNFSW-1,48W00000GNFSW-1H,Gunfleet Sands 1,Gunfleet Sands Limited,T,108.000,,False,unknown,-,no graded evidence,True,
-T_GNFSW-2,GNFSW-2,48W00000GNFSW-2F,Gunfleet Sands 2,Gunfleet Sands II Limited,T,64.480,,False,unknown,-,no graded evidence,True,
+T_GNFSW-2,GNFSW-2,48W00000GNFSW-2F,Gunfleet Sands 2,Gunfleet Sands II Limited,T,64.480,,False,south,B,TEC register row 'Gunfleet Sands II Offshore Wind Farm' hosted by NGET,True,
 T_GORDW-1,GORDW-1,48W00000GORDW-1D,Gordon Bush,SSE Generation Ltd,T,86.764,,False,unknown,-,no graded evidence,True,77577.221829556801651508
 T_GORDW-2,GORDW-2,,Gordonbush WF Extension,SSE Generation Ltd,T,58.733,,False,unknown,-,no graded evidence,True,10187.300189959749936020
 T_GRGBW-1,GRGBW-1,48W00000GRGBW-1V,Greater Gabbard Module 1,Greater Gabbard Offshore Winds,T,205.000,,False,unknown,-,no graded evidence,True,1188.925511805633327356
@@ -149,7 +149,7 @@ T_HOWAO-3,HOWAO-3,48W00000HOWAO-3I,HORNSEA_1C,Hornsea 1 Limited,T,400.000,,False
 T_HOWBO-1,HOWBO-1,48W00000HOWBO-3H,HORNSEA_WF_2A,Breesea Limited,T,440.000,,False,south,B,TEC register row 'Hornsea Power Station 2A' hosted by NGET,True,0
 T_HOWBO-2,HOWBO-2,48W00000HOWBO-2F,HORNSEA_WF_2B,Sonningmay Wind Limited,T,440.000,,False,south,B,TEC register row 'Hornsea Power Station 2B' hosted by NGET,True,
 T_HOWBO-3,HOWBO-3,48W00000HOWBO-3D,HORNSEA_WF_2C,Soundmark Wind Limited,T,440.000,,False,south,B,TEC register row 'Hornsea Power Station 2C' hosted by NGET,True,
-T_HRSTW-1,HRSTW-1,48W00000HRSTW-19,Harestanes,SP Renewables (UK) Limited,T,142.300,,True,north,B,TEC register row 'Harestanes' hosted by SPT,True,
+T_HRSTW-1,HRSTW-1,48W00000HRSTW-19,Harestanes,SP Renewables (UK) Limited,T,142.300,,True,north,B,"TEC register row 'Harestanes' hosted by SPT, 2 matching rows all north",True,
 T_KENNW-1,KENNW-1,,Kennoxhead Wind Farm,Kennoxhead Wind Farm Limited,T,60.000,,True,north,B,TEC register row 'Kennoxhead Wind Farm Extension' hosted by SPT,True,32892.978198020159524615
 T_KILBW-1,KILBW-1,48W00000KILBW-1W,KILBW,Kilbraur Wind Energy Ltd,T,68.510,,False,unknown,-,no graded evidence,True,30158.204866956110663524
 T_KLGLW-1,KLGLW-1,48W00000KLGLW-1S,Kilgallioch Windfarm,SP Renewables (UK) Limited,T,228.000,,False,unknown,-,no graded evidence,True,
@@ -179,7 +179,7 @@ T_NNGAO-1,NNGAO-1,,Neart Na Gaiothe WF 1,Neart Na Gaoithe Offshore Wind,T,224.00
 T_NNGAO-2,NNGAO-2,,Neart Na Gaiothe WF 2,Neart Na Gaoithe Offshore Wind,T,224.000,,False,unknown,-,no graded evidence,True,
 T_NOKYW-1,NOKYW-1,,North Kyle Wind Farm-1,North Kyle Wind farm Ltd,T,106.000,,False,unknown,-,no graded evidence,True,27633.884137780249943713
 T_NOKYW-2,NOKYW-2,,North Kyle Wind Farm-2,North Kyle Wind farm Ltd,T,106.000,,False,unknown,-,no graded evidence,True,31454.880953867482379136
-T_OMNDW-1,OMNDO-1,48W00000OMNDO-1J,Ormonde Energy Limited 1,Ormonde Energy Ltd,T,150.760,,False,unknown,-,no graded evidence,True,
+T_OMNDW-1,OMNDO-1,48W00000OMNDO-1J,Ormonde Energy Limited 1,Ormonde Energy Ltd,T,150.760,,False,south,R,"reviewed link to TEC register row 'Ormonde Offshore Wind Farm' hosted by OFTO (proposed by jev-latest at p 0.86, accepted on review 2026-09-16)",True,
 T_PGBIW-1,PGBIW-1,,Pogbie WF,EDF Energy Customers Limited,T,10.000,,True,north,B,TEC register row 'Pogbie Wind Farm' hosted by SPT,True,
 T_PLOEW-1,PLOEW-1,,PENCLOE WIND 1,PENCLOE WIND ENERGY LIMITED,T,81.000,,False,unknown,-,no graded evidence,True,
 T_PNYCW-1,PNYCW-1,,PNYCW-1 Export,Pen y Cymoedd Wind Farm LTD,T,228.000,,False,unknown,-,no graded evidence,True,
@@ -207,7 +207,7 @@ T_SOKYW-1,SOKYW-1,,South Kyle Wind Farm,South Kyle Wind Farm Limited,T,426.916,,
 T_STLGW-1,STLGW-1,48W00000STLGW-1E,Stronelairg Windfarm 1,Stronelairg Windfarm Limited,T,108.000,,False,unknown,-,no graded evidence,True,115814.764637003467669274
 T_STLGW-2,STLGW-2,48W00000STLGW-2C,Stronelairg Windfarm 2,Stronelairg Windfarm Limited,T,108.000,,False,unknown,-,no graded evidence,True,134660.888656450003281851
 T_STLGW-3,STLGW-3,48W00000STLGW-3A,Stronelairg Windfarm 3,Stronelairg Windfarm Limited,T,108.000,,False,unknown,-,no graded evidence,True,113071.354312505333382429
-T_STRNW-1,STRNW-1,48W00000STRNW-1H,Strathy North Wind Farm 1,Strathy Wind Farm Limited,T,70.000,,False,unknown,-,no graded evidence,True,72029.487440021800125578
+T_STRNW-1,STRNW-1,48W00000STRNW-1H,Strathy North Wind Farm 1,Strathy Wind Farm Limited,T,70.000,,True,north,R,"reviewed link to TEC register row 'Strathy North Wind' hosted by SHET (proposed by jev-latest at p 0.8, accepted on review 2026-09-16)",True,72029.487440021800125578
 T_TDBNW-1,TDBNW-1,48W00000TDBNW-1W,Toddleburn,SSE Generation Ltd,T,31.600,,True,north,B,TEC register row 'Toddleburn Wind Farm' hosted by SPT,True,
 T_THNTO-1,THNTO-1,,Thanet Offshore Wind Limited 1,Thanet Offshore Wind Limited,T,287.699,,False,unknown,-,no graded evidence,True,
 T_THNTO-2,THNTO-2,,Thanet Offshore Wind Limited 2,Thanet Offshore Wind Limited,T,230.159,,False,unknown,-,no graded evidence,True,
@@ -226,12 +226,12 @@ T_WHIHW-1,WHIHW-1,48W00000WHIHW-15,Whiteside Hill WF,Whiteside Hill,T,27.520,,Tr
 T_WHILW-1,WHILW-1,48W00000WHILW-1M,T_WHILW-1,SP Renewables (UK) Limited,T,309.000,,True,north,A,CMIS intertrip arming lists the unit against B6,True,70523.478929882579848254
 T_WHILW-2,WHILW-2,48W00000WHILW-2K,Whitelee Extension,SP Renewables (UK) Limited,T,206.000,,True,north,A,CMIS intertrip arming lists the unit against B6,True,
 T_WISTW-2,WISTW-2,,Brockloch Rig 2 WF Exp A,BROCKLOCH RIG WINDFARM LTD,T,61.500,,False,unknown,-,no graded evidence,True,100274.436293202600779750
-T_WLNYO-2,WLNYO-2,48W00000WLNYO-23,WALNEY_2,Walney Offshore Windfarms Ltd,T,183.600,,False,unknown,-,no graded evidence,True,
+T_WLNYO-2,WLNYO-2,48W00000WLNYO-23,WALNEY_2,Walney Offshore Windfarms Ltd,T,183.600,,False,south,B,TEC register row 'Walney II Offshore Wind Farm' hosted by OFTO,True,
 T_WLNYO-3,WLNYO-3,48W00000WLNYO-31,WALNEY_3,Walney Extension Ltd,T,330.000,,False,south,B,TEC register row 'Walney 3 Offshore Wind Farm' hosted by NGET,True,43325.027513211411132943
 T_WLNYO-4,WLNYO-4,48W00000WLNYO-4-,WALNEY_4,Walney Extension Ltd,T,330.000,,False,south,B,TEC register row 'Walney 4 Offshore Wind Farm' hosted by NGET,True,10290.749347633300203597
 T_WLNYO-4,WLNYO-4,48W00001WLNYO-4R,WALNEY_4,Walney Extension Ltd,T,330.000,,False,south,B,TEC register row 'Walney 4 Offshore Wind Farm' hosted by NGET,True,10290.749347633300203597
-T_WLNYW-1,WLNYW-1,48W00000WLNYW-1A,WALNEY_1,Walney Offshore Windfarms Ltd,T,182.000,,False,unknown,-,no graded evidence,True,
-T_WTMSO-1,WTMSO-1,48W00000WTMSO-1M,WESTERMOST_ROUGH,Westermost Rough Limited,T,205.000,,False,unknown,-,no graded evidence,True,
+T_WLNYW-1,WLNYW-1,48W00000WLNYW-1A,WALNEY_1,Walney Offshore Windfarms Ltd,T,182.000,,False,south,B,TEC register row 'Walney I Offshore Wind Farm' hosted by OFTO,True,
+T_WTMSO-1,WTMSO-1,48W00000WTMSO-1M,WESTERMOST_ROUGH,Westermost Rough Limited,T,205.000,,False,south,B,TEC register row 'Westermost Rough Offshore Wind Farm' hosted by OFTO,True,
 ,ACHYW-1,,,,,,,False,unknown,-,no graded evidence,False,
 ,AKGLW-1,,,,,,,False,unknown,-,no graded evidence,False,
 ,BENBW-2,,,,,,,False,unknown,-,no graded evidence,False,

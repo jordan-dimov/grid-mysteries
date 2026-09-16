@@ -1,7 +1,7 @@
 {
  "day": "2026-09-08",
  "kind": "data pack (no declaration, no sealed result)",
- "exported_at": "2026-09-16T14:26:52+00:00",
+ "exported_at": "2026-09-16T20:13:00+00:00",
  "csv_rows": {
   "forecast_issues.csv": 384,
   "b1440_day_ahead.csv": 144,
@@ -18,14 +18,21 @@
   "forecast_issues.csv": "c14a555c7dbef70551b9a04bafb5f6479c58e7d2c9d5f90f22d9ddbe41e27973",
   "fuelinst_wind_5min.csv": "8af131d8b93e003bb97297c6fde179b920e567bc4227b366afaf46e5e0e929ef",
   "pn_final.csv": "a5d35064e13fb781c167bf4b5af2f0325d23fccd6dbffcd6a020dc329d4df9c2",
-  "wind_units.csv": "870502db9ed30fc4d35e59c52bcca84b026d7d5e2ce45b81e870594b8acc20dc"
+  "wind_units.csv": "0949c44fd612d7207c877731267c0109eb9b163fe4c5db9c28df59700cd5b3be"
  },
  "wind_register_rows": 284,
  "wind_units_queryable": 233,
  "wind_units_by_side_of_b6": {
-  "south": 12,
-  "north": 99,
-  "unknown": 173
+  "south": 18,
+  "north": 104,
+  "unknown": 162
+ },
+ "wind_units_by_side_grade": {
+  "C": 24,
+  "B": 81,
+  "-": 162,
+  "A": 11,
+  "R": 6
  },
  "duplicate_bm_units": [
   "T_WLNYO-4"
@@ -93,6 +100,16 @@
   {
    "path": "data/raw/neso/tec-history/2026-09-15_neso-ckan.csv",
    "sha256": "d13406e495746f1b80e725321a5c7f95e21e0da16830bb6bd1f94ece172c9d5b"
+  }
+ ],
+ "side_evidence": [
+  {
+   "path": "investigations/016-day-ahead-wind-forecast/evidence/ofto-rows.json",
+   "sha256": "7f62b4c6d0a819ee409e90f8961d9db85e065bc33fbf2112bd104f7400df9a65"
+  },
+  {
+   "path": "investigations/016-day-ahead-wind-forecast/evidence/reviewed-links.json",
+   "sha256": "8c0f143b1b16ea8475dd1462abc13e555d1493bda25b93b4c69016eb816b6c37"
   }
  ],
  "reused_evidence": [

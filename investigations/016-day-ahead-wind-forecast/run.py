@@ -322,11 +322,22 @@ def export() -> dict[str, Any]:
         ],
     )
 
+    ofto = json.loads((EVIDENCE / "ofto-rows.json").read_text())
+    reviewed = json.loads((EVIDENCE / "reviewed-links.json").read_text())
     units = pack.wind_unit_rows(
         register(),
         cmis=read_csv(CMIS),
         tec=read_csv(TEC),
         bid_paid_by_unit=bid_paid_by_unit(),
+        ofto_verified={r["project_name"]: r["side_of_b6"] for r in ofto["rows"]},
+        reviewed={
+            link["bm_unit"]: {
+                **link,
+                "proposer": reviewed["proposer"]["model"],
+                "reviewed_on": reviewed["reviewed_on"],
+            }
+            for link in reviewed["links"]
+        },
     )
     emit(
         "wind_units.csv",
@@ -405,8 +416,10 @@ def export() -> dict[str, Any]:
         "data/raw/neso/tec-history/2026-09-15_neso-ckan.csv",
     ]
     sides: dict[str, int] = {}
+    grades: dict[str, int] = {}
     for unit in units:
         sides[str(unit["side_of_b6"])] = sides.get(str(unit["side_of_b6"]), 0) + 1
+        grades[str(unit["side_grade"])] = grades.get(str(unit["side_grade"]), 0) + 1
     asked = set(pack.queryable_units(units))
     served = {
         name: {str(row["bm_unit"]) for row in rows}
@@ -428,6 +441,7 @@ def export() -> dict[str, Any]:
         "wind_register_rows": len(units),
         "wind_units_queryable": sum(1 for u in units if u["queryable"]),
         "wind_units_by_side_of_b6": sides,
+        "wind_units_by_side_grade": grades,
         "duplicate_bm_units": pack.duplicate_bm_units(units),
         "units_asked_for": len(asked),
         "units_served": {name: len(ids) for name, ids in served.items()},
@@ -439,6 +453,12 @@ def export() -> dict[str, Any]:
             for e in sorted(manifest.values(), key=lambda e: e["path"])
         ],
         "reused_pinned": [{"path": p, "sha256": sha256_file(REPO_ROOT / p)} for p in reused],
+        # The two committed evidence files the corrected side-of-B6 ladder reads:
+        # the per-vintage OFTO enumeration and the reviewed model-proposed links.
+        "side_evidence": [
+            {"path": str(p.relative_to(REPO_ROOT)), "sha256": sha256_file(p)}
+            for p in [EVIDENCE / "ofto-rows.json", EVIDENCE / "reviewed-links.json"]
+        ],
         "reused_evidence": [
             {"path": str(p.relative_to(REPO_ROOT)), "sha256": sha256_file(p)}
             for p in [

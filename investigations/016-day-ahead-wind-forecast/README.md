@@ -29,11 +29,16 @@ the traps.
 |---|---|---|
 | `forecast_issues.csv` | 384 | NESO's wind forecast (WINDFOR), **every one of the 16 issues** published on 7 and 8 September, hourly, with its publish time. The forecast's evolution, not just its final value. |
 | `b1440_day_ahead.csv` | 144 | The day-ahead wind and solar forecast (DGWS, ex-B1440), 48 periods × offshore / onshore / solar. |
-| `wind_units.csv` | 284 | Every wind BM unit in the register — **not just the Scottish ones** — with capacity, lead party, and which side of the B6 boundary it sits on, graded. |
+| `wind_units.csv` | 284 | Every wind BM unit in the register — **not just the Scottish ones** — with capacity, lead party, and which side of the B6 boundary it sits on, graded. **Corrected on 2026-09-16** — see `AMENDMENTS.md`. |
 | `pn_final.csv` | 12,416 | Final physical notifications for 227 wind units, all 48 periods: what each generator said it intended to do. |
 | `b1610_actuals.csv` | 11,136 | Metered half-hourly output for 232 wind units, all 48 periods. |
 | `fuelinst_wind_5min.csv` | 288 | Five-minute wind outturn for the day, re-exported from 012's pinned file. |
 | `cost_context.csv` | 14 | The 012 and 015 cost figures you may cite, each with the evidence file it comes from. |
+
+`AMENDMENTS.md` is the append-only record of what changed in the pack after it
+was first published, and why. One entry so far: four defects in the
+side-of-B6 ladder, found on 2026-09-16, corrected, and tested. If you are using
+`wind_units.csv`, read it.
 
 `evidence/` holds the acquisition manifest, the SHA-256 of every fetched and
 every exported file (`pack.json`), and an RFC 3161 and OpenTimestamps witness
@@ -92,6 +97,10 @@ tested and killed belongs in the note, not in the bin.
    figure in the pack is wrong, say so and we will correct it in the open.
 3. If your analysis fetches anything, record where it came from, when, and its
    digest. Pinned bytes or it did not happen.
+3. If a model proposed something you then relied on, name the model and its
+   version, say what threshold selected it, and say who checked it and against
+   what. A model is a proposer here, never a source — the rule is written out in
+   `AMENDMENTS.md` and in `evidence/reviewed-links.json`.
 4. Open a pull request. `scripts/check` runs the project's checks if you have
    touched Python in `src/`; analysis code is not held to that bar.
 

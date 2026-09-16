@@ -92,19 +92,57 @@ vintage of 2026-09-11 (the same vintage 015 read). **Not** filtered to Scotland.
 | `gsp_group_id` | Grid supply point group, where the register carries one. Null for most transmission-connected units. |
 | `north_of_b6` | `True` only where `side_of_b6` is `north`. **`False` also means "unknown"** — read `side_of_b6`, not this column, if the distinction matters. |
 | `side_of_b6` | `north`, `south` or `unknown`. |
-| `side_grade` | `A` CMIS intertrip arming lists the unit against B6; `B` TEC register host TO by name and capacity; `C` GSP group; `-` no graded evidence. |
-| `side_basis` | The sentence justifying the grade. |
+| `side_grade` | `A` CMIS intertrip arming lists the unit against B6; `B` the corrected TEC register rule (name, capacity, plant type, host TO); `R` a reviewed link — proposed by a named model, admitted by a named human against the same register evidence; `C` GSP group; `-` no graded evidence. |
+| `side_basis` | The sentence justifying the grade. For `B` it names the register row, its host TO, and — where more than one row matched — how many did and that they agreed. For `R` it names the row, the proposing model, its probability and the review date. |
 | `queryable` | `True` where the unit has an Elexon id, so `pn_final.csv` and `b1610_actuals.csv` could be asked for it. |
 | `bid_paid_gbp_015` | 015's figure for what this unit was paid out on bids that day, carried across verbatim. Blank where 015 recorded no bid cashflow. |
 
-**Where the B6 classification comes from and how far to trust it.** It is 015's
-declared ladder (`side_of_b6` in `src/grid_mysteries/investigations/support_and_storage.py`),
-applied unchanged to wind. 015 declared and tested that ladder for 28
-energy-limited units; running it over 233 wind units is a wider use of the same
-rule, and it shows: **99 north, 12 south, 173 unknown**. Of the unknowns, 51 are
-the id-less rows below; the other 122 are transmission-connected units with no
-GSP group in the register and no name-and-capacity match in the TEC vintage.
-The ladder never guesses from a name. Grades: A 11, B 75, C 25.
+**Where the B6 classification comes from and how far to trust it.** It began as
+015's declared ladder (`side_of_b6` in
+`src/grid_mysteries/investigations/support_and_storage.py`), applied unchanged
+to wind. Running a rule declared and tested for 28 energy-limited units over 233
+wind units is a much wider use of it, and it showed: four defects in the
+register step, all corrected on 2026-09-16. **Read `AMENDMENTS.md` before you
+rely on a side** — it names each defect, the five cases that exposed them, and
+what was and was not adopted. In short:
+
+- a row was chosen by **file order** where several passed, which put Baillie
+  Wind Farm on a battery-and-reactive-compensation project;
+- nothing tested **what the plant burns**, which put Rothes Windfarm on a
+  biomass CHP plant;
+- **`OFTO`** was in neither the north nor the south set, so offshore units that
+  matched a row were silently left ungraded;
+- the name test could not see that **`Walney I` and `WALNEY_1`** are one project.
+
+The corrected rule is `side_of_b6_corrected` in
+`src/grid_mysteries/investigations/wind_forecast_pack.py`. It still never
+guesses from a name: the unit's name tokens must be wholly contained in the
+row's, and a capacity must agree. What it does *not* do is strip a BM-unit index
+(`Ormonde Energy Limited 1`, `Farr Unit 1`); those units are placed, if at all,
+through a reviewed link.
+
+**One register row, many BM units.** A TEC row is a connection, not a meter —
+Dudgeon's 400 MW row faces four BM units, Farr's 92 MW row two — so the capacity
+test is declared at two levels: the row's capacity must sit within 15 % of
+**either** the unit's own registered capacity **or** the sum over the distinct
+wind BM units whose name test also passes against that row, de-duplicated on the
+Elexon id. Where that group is the unit alone the two are the same test, so
+single-unit stations are 015's rule unchanged.
+
+**Grade `R` is a human-admitted link.** Six rows carry it. Each was proposed by
+an external classifier (TypeSafe `jev-latest`, 2026-09-16) with a probability,
+then checked by hand against the register vintage and accepted, with the
+evidence and the verdict — including the two rejections — recorded in
+`evidence/reviewed-links.json` together with the admission rule. **Dropping every
+grade `R` row is a filter, not a re-run**, and recovers a classification no model
+and no reviewer touched: 99 north, 17 south, 168 unknown.
+
+The counts as published: **104 north, 18 south, 162 unknown**. Grades: A 11,
+B 81, C 24, R 6, ungraded 162. Of the 162 unknown, 51 are the id-less rows
+below; the rest are transmission-connected units with no GSP group in the
+register and no row this rule will accept. Two units the classifier proposed
+confidently — `T_SOKYW-1` South Kyle and `T_THNTO-1` Thanet — were **rejected**
+on capacity and left unknown; `AMENDMENTS.md` says why.
 
 **51 rows carry no Elexon BM unit id.** They are skeleton register entries —
 an NGESO id and `fuelType: WIND`, every other field null. No per-unit dataset in
@@ -210,7 +248,8 @@ them in one calculation.
 
 **There is no north-of-B6 share of the wind bill in the record**, and the file
 says so in a row rather than leaving a gap. 015 graded sides of B6 for the 28
-energy-limited units only. `wind_units.csv` applies the same ladder to wind, so
+energy-limited units only. `wind_units.csv` applies a corrected form of that
+ladder to wind (`AMENDMENTS.md`, 2026-09-16), so
 the material for such a split is here — but 173 of 284 rows are `unknown`, and
 015 already found that 45 % of the wind bid money sits on units it could not
 link to any support register. Any split you compute should carry those two

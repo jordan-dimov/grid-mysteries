@@ -1,0 +1,133 @@
+{
+  "what": "Every HOST TO = OFTO row of the TEC register vintage below, with the side of B6 it implies, checked by hand.",
+  "why": "OFTO names an offshore transmission owner, not a geography: the licence says nothing about which side of the Anglo-Scottish boundary the export cable lands. 015's ladder put SHET and SPT north and NGET south and left OFTO in neither set, so a unit that matched an OFTO row was silently left ungraded (defect D3). The side is therefore taken from the row's onshore landfall, one row at a time, and only from this file.",
+  "scope": "This enumeration is valid for the vintage named below and for no other. A register vintage whose OFTO set has not been enumerated and checked this way yields unknown, never south. Note that in this vintage every Scottish offshore project (Beatrice, Moray East, Moray West, Seagreen, Inch Cape, Neart na Gaoithe, Kincardine, Hywind, Aberdeen) is hosted by SHET or SPT, not by OFTO, which is why all 15 OFTO rows here land in England or Wales. That is an observed fact about this vintage, not a property of the OFTO licence.",
+  "register_vintage": {
+    "path": "data/raw/neso/tec-history/2026-09-15_neso-ckan.csv",
+    "sha256": "d13406e495746f1b80e725321a5c7f95e21e0da16830bb6bd1f94ece172c9d5b"
+  },
+  "checked_by": "Jordan Dimov",
+  "checked_on": "2026-09-16",
+  "rows": [
+    {
+      "project_name": "Barrow Offshore Wind Farm",
+      "connection_site": "Barrow 132/33kV Offshore Substation",
+      "capacity_mw": "90",
+      "plant_type": "Wind Offshore",
+      "onshore_landfall": "Heysham, Lancashire (England)",
+      "side_of_b6": "south"
+    },
+    {
+      "project_name": "Greater Gabbard Offshore Wind Farm",
+      "connection_site": "Gabbard 33/132kV Offshore Substation",
+      "capacity_mw": "500",
+      "plant_type": "Wind Offshore",
+      "onshore_landfall": "Sizewell, Suffolk (England)",
+      "side_of_b6": "south"
+    },
+    {
+      "project_name": "Gwynt Y Mor Offshore Wind Farm",
+      "connection_site": "Gwynt y Mor 132/33kV Offshore Substation",
+      "capacity_mw": "574",
+      "plant_type": "Wind Offshore",
+      "onshore_landfall": "Bodelwyddan, Denbighshire (Wales)",
+      "side_of_b6": "south"
+    },
+    {
+      "project_name": "Humber Gateway Offshore Wind Farm",
+      "connection_site": "Humber Gateway 33/132kV Offshore Substation",
+      "capacity_mw": "220",
+      "plant_type": "Wind Offshore",
+      "onshore_landfall": "Salt End, East Yorkshire (England)",
+      "side_of_b6": "south"
+    },
+    {
+      "project_name": "Lincs Offshore Wind Farm",
+      "connection_site": "Lincs 33/132kV Offshore Substation",
+      "capacity_mw": "265",
+      "plant_type": "Wind Offshore",
+      "onshore_landfall": "Walpole, Norfolk (England)",
+      "side_of_b6": "south"
+    },
+    {
+      "project_name": "London Array Offshore Wind Farm",
+      "connection_site": "London Array 33/150kV Offshore Substations",
+      "capacity_mw": "630",
+      "plant_type": "Wind Offshore",
+      "onshore_landfall": "Cleve Hill, Kent (England)",
+      "side_of_b6": "south"
+    },
+    {
+      "project_name": "Ormonde Offshore Wind Farm",
+      "connection_site": "Ormonde 33/132kV Offshore Substation",
+      "capacity_mw": "150",
+      "plant_type": "Wind Offshore",
+      "onshore_landfall": "Heysham, Lancashire (England)",
+      "side_of_b6": "south"
+    },
+    {
+      "project_name": "Robin Rigg East Offshore Wind Farm",
+      "connection_site": "Robin Rigg East 132/33kV Offshore Substation",
+      "capacity_mw": "86",
+      "plant_type": "Wind Offshore",
+      "onshore_landfall": "Seaton, Cumbria (England)",
+      "side_of_b6": "south"
+    },
+    {
+      "project_name": "Robin Rigg West Offshore Wind Farm",
+      "connection_site": "Robin Rigg West Offshore Wind Farm Substation",
+      "capacity_mw": "92",
+      "plant_type": "Wind Offshore",
+      "onshore_landfall": "Seaton, Cumbria (England)",
+      "side_of_b6": "south"
+    },
+    {
+      "project_name": "Sheringham Shoal Offshore Wind Farm",
+      "connection_site": "Sheringham Shoal 33/132kV Offshore Substations",
+      "capacity_mw": "315",
+      "plant_type": "Wind Offshore",
+      "onshore_landfall": "Salle, Norfolk (England)",
+      "side_of_b6": "south"
+    },
+    {
+      "project_name": "Thanet Offshore Wind Farm",
+      "connection_site": "Thanet 33/132kV Offshore Substation",
+      "capacity_mw": "300",
+      "plant_type": "Wind Offshore",
+      "onshore_landfall": "Richborough, Kent (England)",
+      "side_of_b6": "south"
+    },
+    {
+      "project_name": "Walney I Offshore Wind Farm",
+      "connection_site": "Walney 1 33/132kV Offshore Substation",
+      "capacity_mw": "182",
+      "plant_type": "Wind Offshore",
+      "onshore_landfall": "Heysham, Lancashire (England)",
+      "side_of_b6": "south"
+    },
+    {
+      "project_name": "Walney II Offshore Wind Farm",
+      "connection_site": "Walney 2 33/132kV Substation",
+      "capacity_mw": "182",
+      "plant_type": "Wind Offshore",
+      "onshore_landfall": "Heysham, Lancashire (England)",
+      "side_of_b6": "south"
+    },
+    {
+      "project_name": "West of Duddon Sands Offshore Wind Farm",
+      "connection_site": "West of Duddon Sands 34/155kV Offshore Substation",
+      "capacity_mw": "382",
+      "plant_type": "Wind Offshore",
+      "onshore_landfall": "Heysham, Lancashire (England)",
+      "side_of_b6": "south"
+    },
+    {
+      "project_name": "Westermost Rough Offshore Wind Farm",
+      "connection_site": "Westermost Rough Offshore Substation",
+      "capacity_mw": "206.5",
+      "plant_type": "Wind Offshore",
+      "onshore_landfall": "Salt End, East Yorkshire (England)",
+      "side_of_b6": "south"
+    }
+  ]
+}

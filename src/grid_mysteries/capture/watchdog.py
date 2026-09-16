@@ -24,8 +24,11 @@ from typing import Any
 from grid_mysteries.capture.run import manifest_key, status_key
 from grid_mysteries.capture.store import ObjectStore
 
-#: job -> hours its latest status may be old before the check fails
-DEFAULT_JOBS: dict[str, float] = {"vintage-capture": 26.0, "tracker-013": 26.0}
+#: job -> hours its latest status may be old before the check fails. The
+#: 013 job writes no status object (its state is the pinned artefacts and
+#: journals under state/013/ and healthchecks.io watches its ping), so only
+#: the capture job is checked for freshness here.
+DEFAULT_JOBS: dict[str, float] = {"vintage-capture": 26.0}
 BAND_RUNS = 30
 BAND_LOW = 0.5
 BAND_HIGH = 3.0

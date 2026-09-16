@@ -183,6 +183,45 @@ def test_swap_test_flags_a_vintage_whose_disagreements_are_mostly_swaps():
     assert unflagged.flagged is False  # fewer than three explained
 
 
+# ---------------------------------------------------------- partial exports
+
+
+def test_partial_export_rule_excludes_a_dip_that_recovers_and_keeps_a_real_shrink():
+    d = [date(2023, 11, i) for i in (17, 21, 24, 28)] + [date(2023, 12, 1), date(2023, 12, 5)]
+    counts = list(zip(d, [1500, 1510, 1520, 730, 1530, 1540], strict=True))
+    found = cs.partial_exports(counts)
+    assert [(s.t_public, s.excluded) for s in found] == [(date(2023, 11, 28), True)]
+    assert found[0].note == "730 rows against 1520 in the previous copy (52% fewer)"
+    shrink = list(zip(d, [1500, 1510, 1520, 730, 735, 740], strict=True))
+    kept = cs.partial_exports(shrink)
+    assert [(s.t_public, s.excluded) for s in kept] == [(date(2023, 11, 28), False)]
+    assert cs.partial_exports(list(zip(d, [1500, 1300, 1250, 1240, 1230, 1220], strict=True))) == []
+    assert cs.partial_exports([]) == [] and cs.partial_exports([(d[0], 5)]) == []
+    tail = cs.partial_exports(list(zip(d[:4], [1500, 1510, 1520, 730], strict=True)))
+    assert tail[0].excluded is False and tail[0].next_rows is None  # last copy cannot recover yet
+
+
+def test_series_under_the_rule_skips_the_excluded_copy_and_lists_it():
+    rows = lambda n: [row(name=f"P{i}", eff="2027-10-30") for i in range(n)]  # noqa: E731
+    vintages = [
+        vintage(date(2023, 11, 24), rows(10)),
+        vintage(date(2023, 11, 28), rows(4)),
+        vintage(date(2023, 12, 1), rows(10)),
+    ]
+    plain = cs.series(vintages)
+    assert plain["suspect_copies"] == [] and plain["segments"][0]["vintages"] == 3
+    ruled = cs.series(vintages, partial_export_rule=True)
+    assert ruled["segments"][0]["vintages"] == 2
+    assert [r["t_public"] for r in ruled["segments"][0]["rows"]] == [
+        date(2023, 11, 24),
+        date(2023, 12, 1),
+    ]
+    assert ruled["suspect_copies"][0]["t_public"] == date(2023, 11, 28)
+    assert ruled["suspect_copies"][0]["excluded"] is True
+    link = ruled["segments"][0]["rows"][1]["vs_previous"]
+    assert link["baseline"] == date(2023, 11, 24) and link["removed"] == 0
+
+
 # ------------------------------------------------------------------- series
 
 

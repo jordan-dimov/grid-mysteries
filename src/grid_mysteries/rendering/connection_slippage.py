@@ -149,10 +149,26 @@ def annual_pairs(segment: dict[str, Any]) -> list[dict[str, Any]]:
     return out
 
 
+ROWS_WINDOW_DAYS = 400
+
+
+def recent_rows(segment: dict[str, Any]) -> list[dict[str, Any]]:
+    """The segment's rows from the last ROWS_WINDOW_DAYS before its last copy;
+    the full history is the rows file the page links."""
+    if not segment["rows"]:
+        return []
+    last = date.fromisoformat(segment["last"])
+    return [
+        r
+        for r in segment["rows"]
+        if (last - date.fromisoformat(r["t_public"])).days <= ROWS_WINDOW_DAYS
+    ]
+
+
 def vintage_pairs(segment: dict[str, Any]) -> list[dict[str, Any]]:
-    """Newest first: each vintage against its year-earlier baseline."""
+    """Newest first: each recent copy against its year-earlier baseline."""
     out = []
-    for row in reversed(segment["rows"]):
+    for row in reversed(recent_rows(segment)):
         pair = row.get("vs_year_earlier")
         if pair is None:
             continue
@@ -176,7 +192,7 @@ def increment_rows(segment: dict[str, Any]) -> str:
         )
     )
     rows = []
-    for row in reversed(segment["rows"]):
+    for row in reversed(recent_rows(segment)):
         pair = row.get("vs_previous")
         test = row["swap_test"]
         flag = (
@@ -297,6 +313,17 @@ def render_gaps(series: dict[str, Any]) -> str:
                 f"<li>The copy of {day_label(swapped)} carried dates with day and month "
                 f"exchanged; it is read with them exchanged back.</li>"
             )
+    for s in series.get("suspect_copies", []):
+        items.append(
+            f"<li>The copy of {day_label(s['t_public'])} is a <strong>suspect copy</strong>: "
+            f"{escape(s['note'])}; "
+            + (
+                "the next copy recovered, so it is left out of the series."
+                if s.get("excluded")
+                else "the shrink persisted, so it stays in the series and is marked here."
+            )
+            + "</li>"
+        )
     skipped = series.get("vintages", {}).get("skipped", [])
     excluded = series.get("vintages", {}).get("excluded", [])
     if skipped:
@@ -346,8 +373,17 @@ table{font-size:.8rem}th,td{padding:.35rem .4rem}}
 
 
 def render_page(series: dict[str, Any], repo_url: str = REPO_URL) -> str:
-    declaration = f"{repo_url}/blob/main/{INVESTIGATION_PATH}/DECLARATION.md"
-    evidence = f"{repo_url}/tree/main/{INVESTIGATION_PATH}/evidence"
+    declaration_name = series.get("declaration", "DECLARATION.md")
+    declaration = f"{repo_url}/blob/main/{INVESTIGATION_PATH}/{declaration_name}"
+    evidence_dir = "evidence" if declaration_name == "DECLARATION.md" else "evidence/v2"
+    evidence = f"{repo_url}/tree/main/{INVESTIGATION_PATH}/{evidence_dir}"
+    rows_note = (
+        f" The two tables of individual copies show the last {ROWS_WINDOW_DAYS} days; "
+        f"every copy since 2014 is one line of <code>{evidence_dir}/"
+        f"{escape(series.get('rows_file', 'series.json'))}</code>, appended and never rewritten."
+        if series.get("rows_file")
+        else ""
+    )
     digest = series.get("declaration_sha256", "")
     old = next((s for s in series["segments"] if s["regime"] == "old"), None)
     new = next((s for s in series["segments"] if s["regime"] == "new"), None)
@@ -468,12 +504,14 @@ contribute nothing. Nothing here says why a date moved, whether a project will
 connect, or what any party is entitled to; the grid operator's own caveat that
 project status is its best-known classification applies throughout.</p>
 <p class="notes">Declaration (SHA-256 <code>{escape(digest[:16])}…</code>):
-<a href="{escape(declaration)}">{escape(INVESTIGATION_PATH)}/DECLARATION.md</a>,
+<a href="{escape(declaration)}">{escape(INVESTIGATION_PATH)}/{escape(declaration_name)}</a>,
 witnessed by OpenTimestamps and two RFC 3161 authorities before the series was computed.
-Evidence, every copy's digest and every row: <a href="{escape(evidence)}">evidence/</a>.
+Evidence, every copy's digest and every row:
+<a href="{escape(evidence)}">{escape(evidence_dir)}/</a>.
 Code and tests: <a href="{escape(repo_url)}">{escape(repo_url.removeprefix("https://"))}</a>.
 Page generated {escape(series.get("computed_at", "")[:10])} from
-<code>evidence/series.json</code>; the page is a pure function of that file.</p>
+<code>{escape(evidence_dir)}/series.json</code>; the page is a pure function of the
+evidence.{rows_note}</p>
 
 <h2>Corrections</h2>
 {render_corrections(series.get("corrections"))}
@@ -540,8 +578,8 @@ def render_markdown(series: dict[str, Any]) -> str:
         f"*{SUBTITLE}. The page at `site/connection-slippage/index.html` and this file are pure "
         "functions of `evidence/series.json`.*",
         "",
-        f"**Declaration** SHA-256 `{series.get('declaration_sha256', '')}`, "
-        "witnessed before the run. "
+        f"**Declaration** `{series.get('declaration', 'DECLARATION.md')}`, SHA-256 "
+        f"`{series.get('declaration_sha256', '')}`, witnessed before the run. "
         f"Computed {series.get('computed_at', '')[:19]}Z (run date {series.get('run_date', '')}). "
         f"Copies of the register: {counts.get('journal_rows', 0)} journal rows, "
         f"{counts.get('distinct_dates', 0)} distinct publication dates, "
@@ -580,6 +618,11 @@ def render_markdown(series: dict[str, Any]) -> str:
             f"- Regime break: no copy between {rb['last_old']} and {rb['first_new']} "
             f"({rb['days']} days); "
             "nothing is chained across it."
+        )
+    for s in series.get("suspect_copies", []):
+        lines.append(
+            f"- {s['t_public']}: suspect copy, {s['note']}; "
+            + ("excluded (the next copy recovered)." if s.get("excluded") else "kept and marked.")
         )
     for seg in series["segments"]:
         for hole in seg.get("holes", []):

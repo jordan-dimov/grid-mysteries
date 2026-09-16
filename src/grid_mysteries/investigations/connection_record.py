@@ -94,6 +94,9 @@ class Observation:
     sha256: str
     path: str
     rows: tuple[dict[str, object], ...]
+    #: Set when the copy is suspect under the partial-export rule (the note
+    #: says how many rows it had against the previous copy).
+    suspect: str | None = None
 
     @property
     def count(self) -> int:
@@ -113,11 +116,16 @@ def matches(rows: list[dict[str, object]], name: str, stage: str | None) -> list
 
 
 def track(
-    vintages: list[tuple[date, list[dict[str, object]], str, str]], name: str, stage: str | None
+    vintages: list[tuple[date, list[dict[str, object]], str, str]],
+    name: str,
+    stage: str | None,
+    *,
+    suspect: dict[date, str] | None = None,
 ) -> list[Observation]:
-    """One observation per vintage (t_public, rows, sha256, path), in date order."""
+    """One observation per vintage (t_public, rows, sha256, path), in date
+    order; `suspect` maps a copy's date to the partial-export note."""
     return [
-        Observation(t, sha, path, tuple(matches(rows, name, stage)))
+        Observation(t, sha, path, tuple(matches(rows, name, stage)), (suspect or {}).get(t))
         for t, rows, sha, path in sorted(vintages, key=lambda v: v[0])
     ]
 
@@ -140,6 +148,8 @@ class Change:
 
 def _state(observation: Observation) -> dict[str, tuple[object, str]] | str:
     if observation.count == 0:
+        if observation.suspect:
+            return f"absent from a suspect copy ({observation.suspect})"
         return "absent"
     if observation.count > 1:
         return f"ambiguous ({observation.count} rows)"
@@ -242,6 +252,7 @@ def record(
         "changes": [c.__dict__ for c in changes(observations, start, end)],
         "vintages_consulted": len(consulted),
         "vintages_absent": sum(1 for o in consulted if o.count == 0),
+        "vintages_suspect": sum(1 for o in consulted if o.suspect),
         "vintages_ambiguous": sum(1 for o in consulted if o.count > 1),
         "first_vintage": consulted[0].t_public if consulted else None,
         "last_vintage": consulted[-1].t_public if consulted else None,

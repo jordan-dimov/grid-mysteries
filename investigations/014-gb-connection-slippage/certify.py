@@ -34,6 +34,7 @@ from pathlib import Path
 from grid_mysteries.corpus import REPO_ROOT
 from grid_mysteries.evidence import dumps, write_json
 from grid_mysteries.investigations import connection_record as cr
+from grid_mysteries.investigations import connection_slippage as cs
 from grid_mysteries.rendering import connection_certificate as cert
 from grid_mysteries.sources import tec_register as tr
 
@@ -111,7 +112,10 @@ def main(argv: list[str] | None = None) -> None:
     journal = {e["path"]: e for e in tr.one_per_date(tr.read_journal(JOURNAL))}
     parsed, _skipped = tr.load_vintages(JOURNAL, REPO_ROOT)
     vintages = [(t, rows, entry["sha256"], entry["path"]) for t, rows, entry in parsed]
-    observations = cr.track(vintages, args.project, args.stage)
+    suspect = {
+        s.t_public: s.note for s in cs.partial_exports([(t, len(rows)) for t, rows, _e in parsed])
+    }
+    observations = cr.track(vintages, args.project, args.stage, suspect=suspect)
     record = cr.record(observations, args.project, args.stage, (args.start, args.end))
     if any(s.get("vintage") is None for s in record["as_of"]):
         raise SystemExit("no register copy on or before one of the dates; nothing to certify")

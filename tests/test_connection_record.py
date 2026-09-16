@@ -147,6 +147,23 @@ def test_absence_and_ambiguity_are_recorded_as_changes_of_presence():
     )
 
 
+def test_an_absence_from_a_suspect_copy_is_named_as_such():
+    v = vintages(
+        (date(2023, 11, 24), [row()]),
+        (date(2023, 11, 28), []),
+        (date(2023, 12, 1), [row()]),
+    )
+    note = "730 rows against 1520 in the previous copy (52% fewer)"
+    obs = cr.track(v, "Clash Gour", None, suspect={date(2023, 11, 28): note})
+    out = cr.changes(obs, date(2023, 11, 24), date(2023, 12, 1))
+    assert [(c.field, c.current) for c in out][0] == (
+        "Presence",
+        f"absent from a suspect copy ({note})",
+    )
+    rec = cr.record(obs, "Clash Gour", None, (date(2023, 11, 24), date(2023, 12, 1)))
+    assert rec["vintages_suspect"] == 1 and rec["vintages_absent"] == 1
+
+
 def test_record_states_what_was_published_on_each_date_and_nothing_more():
     v = vintages(
         (date(2021, 1, 5), [row(eff="2025-10-30")]), (date(2021, 6, 5), [row(eff="2027-10-30")])
@@ -167,6 +184,7 @@ def test_record_states_what_was_published_on_each_date_and_nothing_more():
         "vintages_consulted",
         "vintages_absent",
         "vintages_ambiguous",
+        "vintages_suspect",
         "first_vintage",
         "last_vintage",
     }

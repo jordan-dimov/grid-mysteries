@@ -69,6 +69,13 @@ archive of copies can re-run `certify.py` and diff the result.
 - Every change is dated by the first copy that showed it and by the last
   copy that still carried the previous value. No copy is held between the
   two, so the change entered the published register in that interval.
+- A copy whose row count falls by more than a fifth against the previous
+  copy and whose successor recovers by more than a fifth is a *suspect
+  copy* (a partial export; `connection_slippage.partial_exports`). The
+  certificate names the suspect copies it consulted, and an absence from
+  one is reported as "absent from a suspect copy", never as an absence
+  from the register. The Clash Gour exemplar predates this rule; its change
+  5 (absent on 2023-11-28) is exactly such a copy.
 - The archive's own reading rules apply (every era's column names, every
   date spelling, day-month swapped copies read back), as declared for the
   series.

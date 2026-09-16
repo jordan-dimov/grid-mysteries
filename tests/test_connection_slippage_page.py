@@ -99,6 +99,17 @@ def series(**extra):
         },
         "f1_links": ["2020-07-30"],
         "f2_rows": ["2025-07-22"],
+        "suspect_copies": [
+            {
+                "regime": "old",
+                "t_public": "2023-11-28",
+                "rows": 730,
+                "previous_rows": 1520,
+                "next_rows": 1530,
+                "excluded": True,
+                "note": "730 rows against 1520 in the previous copy (52% fewer)",
+            }
+        ],
         "headline": {
             "t_public": "2025-07-22",
             "baseline": "2024-07-05",
@@ -162,6 +173,8 @@ def test_page_is_self_contained_and_deterministic():
     assert "<strong>P1</strong>" in html and "not positive in 2016" in html
     assert "falsifier date 30 Jun 2027" in html
     assert "F1</strong> fired on 1 link(s)" in html
+    assert "suspect copy</strong>: 730 rows against 1520" in html
+    assert "left out of the series" in html
 
 
 def test_markdown_lists_gaps_and_points_to_the_evidence():
@@ -171,6 +184,10 @@ def test_markdown_lists_gaps_and_points_to_the_evidence():
     assert "- Regime break: no copy between 2025-07-22 and 2026-05-19 (301 days)" in md
     assert "- 2021-01-29: day-month swapped dates" in md
     assert "evidence/series.json" in md
+    assert (
+        "- 2023-11-28: suspect copy, 730 rows against 1520 in the previous copy (52% fewer); "
+        "excluded" in md
+    )
     assert (
         "- **P1** — every complete year positive: **fails** "
         "(2 complete years; not positive in 2016)." in md

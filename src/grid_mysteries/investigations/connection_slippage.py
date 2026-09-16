@@ -42,6 +42,11 @@ REGIME_CUTOFF: Final = date(2025, 12, 1)
 DAYS_PER_YEAR: Final = Decimal("365.25")
 YEAR_BASELINE_DAYS: Final = 365
 HOLE_DAYS: Final = 60
+#: Partial-export rule (declaration v2): a copy whose row count falls by more
+#: than this share against the previous kept copy is *suspect*; it is
+#: excluded from the series only if the next copy recovers by more than the
+#: same share against it (a shrink that persists is a real shrink, flagged and kept).
+PARTIAL_EXPORT_SHARE: Final = Decimal("0.2")
 MW_YEARS_QUANTUM: Final = Decimal("0.001")
 MW_QUANTUM: Final = Decimal("0.01")
 SWAP_MIN_EXPLAINED: Final = 3
@@ -295,6 +300,53 @@ def year_earlier_baseline(dates: list[date], current: date) -> date | None:
     return max(earlier) if earlier else None
 
 
+@dataclass(frozen=True)
+class SuspectCopy:
+    t_public: date
+    rows: int
+    previous_rows: int
+    next_rows: int | None
+    excluded: bool
+
+    @property
+    def note(self) -> str:
+        fell = (Decimal(self.previous_rows - self.rows) / Decimal(self.previous_rows)) * 100
+        return (
+            f"{self.rows} rows against {self.previous_rows} in the previous copy "
+            f"({fell:.0f}% fewer)"
+        )
+
+
+def partial_exports(counts: list[tuple[date, int]]) -> list[SuspectCopy]:
+    """The partial-export rule over (t_public, row count) pairs in date order.
+
+    A copy is suspect when its count falls by more than PARTIAL_EXPORT_SHARE
+    against the previous *kept* copy. It is excluded when the following copy
+    recovers by more than PARTIAL_EXPORT_SHARE against it; otherwise it is
+    flagged and kept, and becomes the baseline for the next comparison.
+    """
+    out: list[SuspectCopy] = []
+    previous: int | None = None
+    for index, (t, n) in enumerate(counts):
+        if previous is None or previous == 0:
+            previous = n
+            continue
+        fell = Decimal(previous - n) / Decimal(previous) > PARTIAL_EXPORT_SHARE
+        if not fell:
+            previous = n
+            continue
+        following = counts[index + 1][1] if index + 1 < len(counts) else None
+        recovers = (
+            following is not None
+            and n > 0
+            and (Decimal(following - n) / Decimal(n) > PARTIAL_EXPORT_SHARE)
+        )
+        out.append(SuspectCopy(t, n, previous, following, excluded=bool(recovers)))
+        if not recovers:
+            previous = n
+    return out
+
+
 def split_segments(vintages: list[VintageInput]) -> list[tuple[str, list[VintageInput]]]:
     ordered = sorted(vintages, key=lambda v: v.t_public)
     old = [v for v in ordered if v.t_public < REGIME_CUTOFF]
@@ -369,10 +421,21 @@ def propositions(segments_out: list[dict[str, Any]]) -> dict[str, Any]:
     return {"P1": p1, "P2": p2}
 
 
-def series(vintages: list[VintageInput]) -> dict[str, Any]:
-    """Every row of the series, segment by segment, from parsed vintages."""
+def series(vintages: list[VintageInput], *, partial_export_rule: bool = False) -> dict[str, Any]:
+    """Every row of the series, segment by segment, from parsed vintages.
+
+    With `partial_export_rule` (declaration v2) suspect copies are found
+    per segment before any comparison; excluded ones take no part in the
+    links and are listed, flagged ones stay and are listed.
+    """
     segments_out: list[dict[str, Any]] = []
+    suspects: list[dict[str, Any]] = []
     for label, segment in split_segments(vintages):
+        if partial_export_rule:
+            found = partial_exports([(v.t_public, len(v.rows)) for v in segment])
+            excluded = {s.t_public for s in found if s.excluded}
+            suspects += [{"regime": label, **s.__dict__, "note": s.note} for s in found]
+            segment = [v for v in segment if v.t_public not in excluded]
         entries_by_date: dict[date, dict[str, Entry]] = {}
         rows: list[dict[str, Any]] = []
         previous: dict[str, Entry] | None = None
@@ -433,6 +496,7 @@ def series(vintages: list[VintageInput]) -> dict[str, Any]:
         "segments": segments_out,
         "regime_break": None,
         "headline": None,
+        "suspect_copies": suspects,
         "propositions": propositions(segments_out),
         "f1_links": [
             r["t_public"]

@@ -31,7 +31,10 @@ METHOD = (
     "to the project by the register's own project name (letters and digits, case "
     "ignored) and, where stated, stage; customer name and connection site are "
     "attributes whose changes are recorded. A copy with no matching row is an absence "
-    "and one with several is ambiguous; both are recorded as changes of presence. "
+    "and one with several is ambiguous; both are recorded as changes of presence. A "
+    "copy whose row count is more than a fifth below the previous copy's and whose "
+    "successor recovers is a suspect copy (a partial export); an absence from such a "
+    "copy is reported as that, not as an absence from the register. "
     "Values are compared as published, with dates parsed (so a respelled date is not a "
     "change), numbers compared numerically and text compared ignoring case and "
     "whitespace; the printed values are the published spellings. Two declared "
@@ -104,7 +107,8 @@ def render_certificate(record: dict[str, Any], bundle: dict[str, Any]) -> str:
         f"**Register copies consulted:** {record['vintages_consulted']} "
         f"({day(record['first_vintage'])} to {day(record['last_vintage'])}); "
         f"{record['vintages_absent']} with no matching row, "
-        f"{record['vintages_ambiguous']} ambiguous",
+        f"{record['vintages_ambiguous']} ambiguous, "
+        f"{record.get('vintages_suspect', 0)} suspect (partial exports)",
         "",
         f"*{CLAIM}*",
         "",

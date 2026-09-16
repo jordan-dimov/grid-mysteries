@@ -1,5 +1,8 @@
 {
- "declaration": "DECLARATION.md",
+ "declaration": [
+  "DECLARATION.md",
+  "DECLARATION-v2.md"
+ ],
  "rules": {
   "reading: every date spelling parses": "tests/test_tec_register.py::test_every_date_spelling_the_register_has_used_parses",
   "reading: unparseable dates stay undated": "tests/test_tec_register.py::test_unparseable_dates_are_undated_not_guessed",
@@ -24,6 +27,12 @@
   "P1 and P2 decided by instances or undecided": "tests/test_connection_slippage.py::test_propositions_are_decided_by_their_instances_or_stay_undecided",
   "F1 churn and F2 thin shares": "tests/test_connection_slippage.py::test_f1_and_f2_flags_follow_the_declared_shares",
   "F1 shown only on consecutive links": "tests/test_connection_slippage_page.py::test_f1_is_shown_only_on_consecutive_links",
-  "page: pure function of the evidence": "tests/test_connection_slippage_page.py::test_page_is_self_contained_and_deterministic"
+  "page: pure function of the evidence": "tests/test_connection_slippage_page.py::test_page_is_self_contained_and_deterministic",
+  "v2 reading: the July 2020 'Customer' header maps to Customer Name": "tests/test_tec_register.py::test_header_aliases_cover_every_era",
+  "v2 partial-export rule: a dip that recovers is excluded, a real shrink is kept": "tests/test_connection_slippage.py::test_partial_export_rule_excludes_a_dip_that_recovers_and_keeps_a_real_shrink",
+  "v2 partial-export rule: excluded copies take no part in links and are listed": "tests/test_connection_slippage.py::test_series_under_the_rule_skips_the_excluded_copy_and_lists_it",
+  "v2 page: suspect copies are disclosed": "tests/test_connection_slippage_page.py::test_page_is_self_contained_and_deterministic",
+  "certificate: an absence from a suspect copy is named as such": "tests/test_connection_record.py::test_an_absence_from_a_suspect_copy_is_named_as_such",
+  "certificate: declared label variants and Salesforce id forms are not changes": "tests/test_connection_record.py::test_declared_label_variants_and_salesforce_id_forms_are_not_changes"
  }
 }

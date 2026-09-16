@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+# Every committed proof sidecar (*.timestamps.json) must still describe the
+# file beside it, and its RFC 3161 tokens must verify against the committed
+# roots. Offline. Pending OpenTimestamps proofs are counted, not failed.
+# Part of scripts/check.
+set -euo pipefail
+cd "$(dirname "$0")/.."
+status=0; n=0; pending=0
+while IFS= read -r sidecar; do
+  file="${sidecar%.timestamps.json}"
+  n=$((n+1))
+  [[ -f "$file" ]] || { echo "   !! $sidecar: stamped file missing"; status=1; continue; }
+  want=$(python3 -c "import json,sys;print(json.load(open(sys.argv[1]))['sha256'])" "$sidecar")
+  have=$(sha256sum "$file" | cut -d' ' -f1)
+  [[ "$want" == "$have" ]] || { echo "   !! $file: bytes changed since it was stamped"; status=1; continue; }
+  for tsa in freetsa digicert; do
+    ca=trust/tsa/freetsa-cacert.pem; [[ $tsa == digicert ]] && ca=trust/tsa/digicert-trusted-root-g4.pem
+    if [[ -f "$file.$tsa.tsr" ]] && ! openssl ts -verify -in "$file.$tsa.tsr" -queryfile "$file.tsq" -CAfile "$ca" >/dev/null 2>&1; then
+      echo "   !! $file: $tsa token does not verify"; status=1
+    fi
+  done
+  if [[ -f "$file.ots" ]] && ! grep -q '"status": "complete"' "$sidecar" 2>/dev/null; then pending=$((pending+1)); fi
+done < <(git ls-files '*.timestamps.json')
+echo "verify-proofs: $n stamped file(s) checked, $pending OpenTimestamps proof(s) still pending upgrade"
+[[ $status -eq 0 ]] && echo "verify-proofs: OK" || { echo "verify-proofs: FAILED"; exit 1; }

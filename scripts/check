@@ -8,6 +8,7 @@ uv run ruff format --check .
 uv run pytest
 uv run mypy
 scripts/check-rules
+scripts/verify-proofs
 morpholog check morpholog/research.morph
 morpholog check morpholog/research-v2-draft.morph
 morpholog check morpholog/research-v3-draft.morph

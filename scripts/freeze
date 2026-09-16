@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+# The freeze act, in one step: witness a declaration and commit it with its
+# proofs, so a declaration cannot be committed unstamped or stamped uncommitted.
+#
+#   scripts/freeze investigations/<id>/DECLARATION.md [commit message]
+#
+# Refuses if the file has uncommitted changes that are not staged with the
+# proofs by this script, or if it is already committed with a proof sidecar
+# (a frozen declaration is never re-stamped; amend in AMENDMENTS.md).
+set -euo pipefail
+cd "$(dirname "$0")/.."
+export PATH="${HOME}/.local/bin:${PATH}"
+file="${1:?declaration path}"
+[[ -f "$file" ]] || { echo "no such file: $file" >&2; exit 1; }
+if [[ -f "$file.timestamps.json" ]] && git ls-files --error-unmatch "$file.timestamps.json" >/dev/null 2>&1; then
+  echo "freeze: $file already has a committed proof sidecar; a frozen declaration is not re-stamped" >&2
+  exit 1
+fi
+scripts/timestamp "$file"
+scripts/verify-timestamp "$file"
+digest=$(sha256sum "$file" | cut -d' ' -f1)
+git add "$file" "$file.ots" "$file.tsq" "$file.freetsa.tsr" "$file.digicert.tsr" "$file.timestamps.json"
+message="${2:-$(dirname "$file" | xargs basename): frozen declaration (SHA-256 ${digest:0:8}…) witnessed by OpenTimestamps and RFC 3161 (freetsa.org, DigiCert) at the moment of the freeze}"
+git commit -q -m "$message
+
+Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>"
+echo "frozen and committed: $file  sha256 $digest"
+git log --oneline | head -1

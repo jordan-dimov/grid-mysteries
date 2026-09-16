@@ -139,3 +139,66 @@ def bmunits_url() -> str:
 def system_prices_url(settlement_date: str) -> str:
     """Settlement system prices (buy and sell) for every period of one day."""
     return f"{BASE_URL}/balancing/settlement/system-prices/{settlement_date}"
+
+
+def windfor_stream_url(publish_from: str, publish_to: str) -> str:
+    """Every WINDFOR issue published in [publish_from, publish_to].
+
+    WINDFOR is NESO's wind generation forecast for the wind farms visible to
+    it with operational metering, published up to eight times a day (03:30,
+    05:30, 08:30, 10:30, 12:30, 16:30, 19:30, 23:30). Filtering by publish
+    time — rather than taking the endpoint's default latest issue — is what
+    makes the forecast's evolution, not just its final value, recoverable.
+    """
+    return (
+        f"{BASE_URL}/datasets/WINDFOR/stream"
+        f"?publishDateTimeFrom={publish_from}&publishDateTimeTo={publish_to}"
+    )
+
+
+def wind_forecast_evolution_url(start_time: str) -> str:
+    """Every WINDFOR issue for one target hour, carrying the publisher's own
+    settlement date and period for that hour."""
+    return f"{BASE_URL}/forecast/generation/wind/evolution?startTime={start_time}&format=json"
+
+
+def wind_solar_day_ahead_url(
+    start_from: str, start_to: str, process_type: str = "day ahead"
+) -> str:
+    """Day-ahead wind and solar generation forecast (DGWS, ex-B1440) for
+    target times in [start_from, start_to]."""
+    encoded = process_type.replace(" ", "%20")
+    return (
+        f"{BASE_URL}/forecast/generation/wind-and-solar/day-ahead"
+        f"?from={start_from}&to={start_to}&processType={encoded}&format=json"
+    )
+
+
+def _unit_filter(bm_units: Iterable[str]) -> str:
+    return "".join(f"&bmUnit={unit}" for unit in bm_units)
+
+
+def pn_stream_url(
+    settlement_date: str, bm_units: Iterable[str], *, period_from: int = 1, period_to: int = 48
+) -> str:
+    """Final physical notifications for one settlement day, for the given
+    BM units. PN rows are point-MW segments, not per-period levels."""
+    return (
+        f"{BASE_URL}/datasets/PN/stream"
+        f"?from={settlement_date}&to={settlement_date}"
+        f"&settlementPeriodFrom={period_from}&settlementPeriodTo={period_to}"
+        + _unit_filter(bm_units)
+    )
+
+
+def b1610_stream_url(
+    settlement_date: str, bm_units: Iterable[str], *, period_from: int = 1, period_to: int = 48
+) -> str:
+    """Half-hourly actual metered generation (B1610) for one settlement day,
+    for the given BM units. Metered volume (MWh), not instantaneous power."""
+    return (
+        f"{BASE_URL}/datasets/B1610/stream"
+        f"?from={settlement_date}&to={settlement_date}"
+        f"&settlementPeriodFrom={period_from}&settlementPeriodTo={period_to}"
+        + _unit_filter(bm_units)
+    )

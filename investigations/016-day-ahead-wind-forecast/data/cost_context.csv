@@ -1,0 +1,15 @@
+figure,value,unit,source_investigation,evidence_file,note
+total_balancing_paid_out,33610462.71,GBP,012,investigations/012-the-record-day/evidence/results.json,"L2 paid_out_gbp: EBOCF indicative cashflows, positive rows only. The headline £33.6m."
+total_balancing_net,31561031.82,GBP,012,investigations/012-the-record-day/evidence/results.json,"L2 total_gbp: every row signed, so paid-in nets off."
+wind_bid_paid_out,3768601.31,GBP,012 and 015,investigations/015-support-and-storage-on-the-record-day/evidence/wind-by-scheme.json,Paid out on wind bids across 77 wind units that carried bid cashflow.
+wind_bid_share_of_paid_out,0.1121,fraction,derived,investigations/012-the-record-day/evidence/results.json; investigations/015-support-and-storage-on-the-record-day/evidence/wind-by-scheme.json,Derived: the two rows above divided. No new measurement.
+gas_offer_paid_out,26820639.17,GBP,012,investigations/012-the-record-day/evidence/results.json,What replaced the wind that was bid off.
+wind_accepted_bid_volume,118804.776,MWh,015,investigations/015-support-and-storage-on-the-record-day/evidence/wind-by-scheme.json,"DISPTAV Tagged, the type that reconciles with the day's settlement totals. 012's own accepted_mwh used DISPTAV Original, which under-reads bids; do not mix the two."
+gas_offer_vwap,229.53,GBP/MWh,012,investigations/012-the-record-day/evidence/results.json,
+mid_vwap_same_periods,146.89,GBP/MWh,012,investigations/012-the-record-day/evidence/results.json,Market index price over the same periods.
+wind_outturn_mean,13109,MW,012,investigations/012-the-record-day/evidence/results.json,FUELINST mean over the day: transmission-visible wind only.
+constraint_periods,48,settlement periods,015,investigations/015-support-and-storage-on-the-record-day/evidence/summary.json,Periods carrying accepted wind-unit bid volume: all 48.
+energy_limited_units,28,BM units,015,investigations/015-support-and-storage-on-the-record-day/evidence/storage.json,Units publishing a maximum delivery volume (MDO or MDB) on the day.
+energy_limited_export_capacity,949.963,MW,015,investigations/015-support-and-storage-on-the-record-day/evidence/storage.json,Registered export capacity of those 28 units.
+energy_limited_export_capacity_north_of_b6,149.000,MW,015,investigations/015-support-and-storage-on-the-record-day/evidence/storage.json,"4 of 28 units, by 015's graded side-of-B6 ladder."
+wind_bill_share_north_of_b6,,,not in the record,,"015 graded sides of B6 for the 28 energy-limited units only, never for wind. data/wind_units.csv applies the same ladder to wind, but no north/south split of the wind bill has been declared, run or sealed, so none is quoted here. 45 % of the wind bid money sits on units 015 could not link to any support register at all."

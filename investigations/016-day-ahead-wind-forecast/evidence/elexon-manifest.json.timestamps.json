@@ -1,0 +1,29 @@
+{
+ "file": "elexon-manifest.json",
+ "sha256": "ffbdc2bbebc8235b876c26f2a19768d346533a1aff02af0cb1172e2c5dd592a1",
+ "stamped_at_utc_local_clock": "2026-09-16T14:26:09Z",
+ "proofs": [
+  {
+   "kind": "opentimestamps",
+   "path": "elexon-manifest.json.ots",
+   "status": "pending calendar attestation until upgraded",
+   "verify": "ots verify elexon-manifest.json.ots  (needs a Bitcoin node or the calendars; `ots info` reads the proof offline)"
+  },
+  {
+   "kind": "rfc3161",
+   "tsa": "https://freetsa.org/tsr",
+   "path": "elexon-manifest.json.freetsa.tsr",
+   "tsa_time": "Sep 16 14:26:12 2026 GMT",
+   "verify": "openssl ts -verify -in elexon-manifest.json.freetsa.tsr -queryfile elexon-manifest.json.tsq -CAfile trust/tsa/freetsa-cacert.pem"
+  },
+  {
+   "kind": "rfc3161",
+   "tsa": "http://timestamp.digicert.com",
+   "path": "elexon-manifest.json.digicert.tsr",
+   "tsa_time": "Sep 16 14:26:12 2026 GMT",
+   "verify": "openssl ts -verify -in elexon-manifest.json.digicert.tsr -queryfile elexon-manifest.json.tsq -CAfile trust/tsa/digicert-trusted-root-g4.pem"
+  }
+ ],
+ "query": "elexon-manifest.json.tsq",
+ "note": "Each token binds the SHA-256 above to the TSA's clock under the TSA's key; the OpenTimestamps proof binds it to a Bitcoin block once upgraded. The file itself is what is stamped; re-hash it to check."
+}

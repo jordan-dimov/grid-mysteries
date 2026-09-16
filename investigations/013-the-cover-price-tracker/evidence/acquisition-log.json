@@ -1,0 +1,18 @@
+{
+ "declaration_sha256": "d20d59203e7b7fda174c2c6deb2807159687bd9ddea39fe760961af884416473",
+ "seal": "d20d5920",
+ "runs": [
+  {
+   "run_date": "2026-09-15",
+   "at": "2026-09-15T22:22:07.508265+00:00",
+   "batches": [],
+   "refetch": null
+  },
+  {
+   "run_date": "2026-09-16",
+   "at": "2026-09-16T09:58:24.262417+00:00",
+   "batches": [],
+   "refetch": null
+  }
+ ]
+}

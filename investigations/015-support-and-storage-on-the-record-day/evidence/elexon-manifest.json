@@ -1,0 +1,20 @@
+[
+ {
+  "source": "elexon-insights",
+  "dataset": "MDB",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MDB/stream?from=2026-09-08T00:00Z&to=2026-09-09T00:00Z",
+  "path": "data/raw/elexon/015/mdb_2026-09-08.json",
+  "sha256": "8d783504bf3e96a59a75952aab29cf8e2e0e90b9ca4f8cb119fc9406cf9f663f",
+  "fetched_at": "2026-09-16T09:37:43.708928+00:00",
+  "bytes": 1525439
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "MDO",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/MDO/stream?from=2026-09-08T00:00Z&to=2026-09-09T00:00Z",
+  "path": "data/raw/elexon/015/mdo_2026-09-08.json",
+  "sha256": "5cc02e3387366ec167384e27b0cea979e36017d0a7f6504c492b7b0ffd2fec9b",
+  "fetched_at": "2026-09-16T09:37:42.826616+00:00",
+  "bytes": 1349027
+ }
+]

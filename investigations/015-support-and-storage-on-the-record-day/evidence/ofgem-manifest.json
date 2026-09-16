@@ -1,0 +1,20 @@
+[
+ {
+  "source": "ofgem",
+  "dataset": "OFGEM-RER-DASHBOARD",
+  "url": "https://rer.ofgem.gov.uk/Reports/Dashboard",
+  "path": "data/raw/ofgem/015/rer-reports-dashboard.html",
+  "sha256": "ffae0b8ff877acab3ea501432b39ebb895067636963e6c22197d7f78622f9100",
+  "fetched_at": "2026-09-16T09:37:41.275401+00:00",
+  "bytes": 20675
+ },
+ {
+  "source": "ofgem",
+  "dataset": "OFGEM-RO-ACCREDITED-STATIONS",
+  "url": "https://ofgemcloud.sharepoint.com/:x:/s/RERExternalReportsLive/IQBsiTXOIbd8S52wfbQBuA9CASjPlhDkd6KTS6CXhvX61fM?download=1",
+  "path": "data/raw/ofgem/015/ro-accredited-stations.csv",
+  "sha256": "d10ee51cfbddb0e44cbd932a826e282b539ea023f717d604708d10f10646eb9b",
+  "fetched_at": "2026-09-16T09:37:42.347765+00:00",
+  "bytes": 3984174
+ }
+]

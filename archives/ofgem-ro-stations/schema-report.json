@@ -1,0 +1,154 @@
+{
+ "file": "data/raw/ofgem/015/ro-accredited-stations.csv",
+ "sha256": "d10ee51cfbddb0e44cbd932a826e282b539ea023f717d604708d10f10646eb9b",
+ "rows": 26578,
+ "columns": [
+  {
+   "name": "Accreditation reference",
+   "blank": 0,
+   "distinct": 26578,
+   "forms": {
+    "text": 26578
+   },
+   "sample": [
+    "R00108SESC",
+    "R00085SESC",
+    "R00129RJEN"
+   ]
+  },
+  {
+   "name": "Station name",
+   "blank": 0,
+   "distinct": 26578,
+   "forms": {
+    "text": 26537,
+    "uk-date": 3,
+    "integer": 38
+   },
+   "sample": [
+    "Achanalt Power Station - A",
+    "Allt Na Lairige Power Station",
+    "ARDLEY FIELDS FARM"
+   ]
+  },
+  {
+   "name": "Organisation name",
+   "blank": 0,
+   "distinct": 1966,
+   "forms": {
+    "text": 26578
+   },
+   "sample": [
+    "SSE Generation Ltd",
+    "SSE Generation Ltd",
+    "Valencia Energy Ltd"
+   ]
+  },
+  {
+   "name": "Station DNC in kW",
+   "blank": 0,
+   "distinct": 2405,
+   "forms": {
+    "text": 2006,
+    "integer": 9940,
+    "decimal": 14632
+   },
+   "sample": [
+    "3,100",
+    "6,000",
+    "4,727"
+   ]
+  },
+  {
+   "name": "Technology",
+   "blank": 0,
+   "distinct": 17,
+   "forms": {
+    "text": 26578
+   },
+   "sample": [
+    "Hydro with a DNC of 20MW or less",
+    "Hydro with a DNC of 20MW or less",
+    "Landfill gas"
+   ]
+  },
+  {
+   "name": "Commissioning date",
+   "blank": 0,
+   "distinct": 2662,
+   "forms": {
+    "uk-date": 26578
+   },
+   "sample": [
+    "01/01/1956",
+    "01/01/1956",
+    "01/11/1996"
+   ]
+  },
+  {
+   "name": "Effective date",
+   "blank": 0,
+   "distinct": 2006,
+   "forms": {
+    "uk-date": 26578
+   },
+   "sample": [
+    "01/11/2004",
+    "01/10/2004",
+    "01/04/2002"
+   ]
+  },
+  {
+   "name": "Country",
+   "blank": 0,
+   "distinct": 4,
+   "forms": {
+    "text": 26578
+   },
+   "sample": [
+    "Scotland",
+    "Scotland",
+    "England"
+   ]
+  },
+  {
+   "name": "Contract type",
+   "blank": 0,
+   "distinct": 2,
+   "forms": {
+    "text": 26578
+   },
+   "sample": [
+    "General",
+    "General",
+    "General"
+   ]
+  },
+  {
+   "name": "Organisation address",
+   "blank": 0,
+   "distinct": 1541,
+   "forms": {
+    "text": 26578
+   },
+   "sample": [
+    "Scottish Hydro Electric plc, Inveralmond House, 200 Dunkeld Road, Perth, PH1 3AQ, Scotland",
+    "Scottish Hydro Electric plc, Inveralmond House, 200 Dunkeld Road, Perth, PH1 3AQ, Scotland",
+    "The Oil Depot, 242 London Road, Stretton-on-Dunsmore, CV23 9JA, England"
+   ]
+  },
+  {
+   "name": "Station address",
+   "blank": 0,
+   "distinct": 3718,
+   "forms": {
+    "text": 26578
+   },
+   "sample": [
+    "Achanalt Power Station, Achanalt Power Station By Loch a'Chuillin Near G, IV23 2QD, Scotland",
+    "Allt na Lairige Power Station, CairndowArgyll, PA26 8BJ, Scotland",
+    "Ardley Power Plant, Ardley, Oxford, OX27 7PH, England"
+   ]
+  }
+ ]
+}

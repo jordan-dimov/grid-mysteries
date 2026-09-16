@@ -1,0 +1,110 @@
+[
+ {
+  "source": "lccc",
+  "dataset": "LCCC-CFD-BMU-MAPPING-CSV",
+  "url": "https://dp.lowcarboncontracts.uk/dataset/8743291b-3646-4a69-a599-364cc6ae9d6e/resource/26fc2b66-7c92-45d4-9a70-acbd1631f4c3/download/cfd_to_bm_unit_mapping.csv",
+  "path": "data/raw/lccc/015/26fc2b66-7c92-45d4-9a70-acbd1631f4c3.csv",
+  "sha256": "59ec621f52aaecc824af063adac1f48063519688aacd0143078233ab0a7599ff",
+  "fetched_at": "2026-09-16T09:37:37.969901+00:00",
+  "bytes": 9542
+ },
+ {
+  "source": "lccc",
+  "dataset": "LCCC-CFD-BMU-MAPPING-CSV-META",
+  "url": "https://dp.lowcarboncontracts.uk/api/3/action/resource_show?id=26fc2b66-7c92-45d4-9a70-acbd1631f4c3",
+  "path": "data/raw/lccc/015/26fc2b66-7c92-45d4-9a70-acbd1631f4c3.resource_show.json",
+  "sha256": "4ededeafa3e17c74e8b927df8004e7aab11f50c37a35ffc6a83f89c05903f183",
+  "fetched_at": "2026-09-16T09:37:37.386644+00:00",
+  "bytes": 844
+ },
+ {
+  "source": "lccc",
+  "dataset": "LCCC-CFD-PORTFOLIO-CSV",
+  "url": "https://dp.lowcarboncontracts.uk/dataset/754ae1ec-3539-4bdf-86f5-ba204a56be76/resource/7bdfb0cb-fe99-44eb-b07b-2047e82f5601/download/cfd_contract_portfolio_status.csv",
+  "path": "data/raw/lccc/015/7bdfb0cb-fe99-44eb-b07b-2047e82f5601.csv",
+  "sha256": "398c9bb2dc837a8dc4480808b8bd99427f0dd5af5722a3fd0d49fbf12e65e288",
+  "fetched_at": "2026-09-16T09:37:40.204365+00:00",
+  "bytes": 80783
+ },
+ {
+  "source": "lccc",
+  "dataset": "LCCC-CFD-PORTFOLIO-CSV-META",
+  "url": "https://dp.lowcarboncontracts.uk/api/3/action/resource_show?id=7bdfb0cb-fe99-44eb-b07b-2047e82f5601",
+  "path": "data/raw/lccc/015/7bdfb0cb-fe99-44eb-b07b-2047e82f5601.resource_show.json",
+  "sha256": "b84abc65966c36138718d2be44da7199a9c5a456a796891ef48873b6815a1af7",
+  "fetched_at": "2026-09-16T09:37:39.631722+00:00",
+  "bytes": 859
+ },
+ {
+  "source": "lccc",
+  "dataset": "LCCC-CFD-PORTFOLIO-DEFINITIONS",
+  "url": "https://dp.lowcarboncontracts.uk/dataset/754ae1ec-3539-4bdf-86f5-ba204a56be76/resource/b6fed2c0-e679-4c02-8716-dbd0caa100dd/download/cfd-contract-portfolio-status-data-type-definitions.csv",
+  "path": "data/raw/lccc/015/b6fed2c0-e679-4c02-8716-dbd0caa100dd.csv",
+  "sha256": "c1eb3ecf02a9f3bc621532da2904964c7234f9da5780405f7b76ea3b6b4dd81c",
+  "fetched_at": "2026-09-16T09:37:40.980631+00:00",
+  "bytes": 274
+ },
+ {
+  "source": "lccc",
+  "dataset": "LCCC-CFD-PORTFOLIO-DEFINITIONS-META",
+  "url": "https://dp.lowcarboncontracts.uk/api/3/action/resource_show?id=b6fed2c0-e679-4c02-8716-dbd0caa100dd",
+  "path": "data/raw/lccc/015/b6fed2c0-e679-4c02-8716-dbd0caa100dd.resource_show.json",
+  "sha256": "f5c7afb081601aa0897c3141a6505e48f9c5e0aaeb32e84ec866274aeb9e6dbd",
+  "fetched_at": "2026-09-16T09:37:40.444954+00:00",
+  "bytes": 903
+ },
+ {
+  "source": "lccc",
+  "dataset": "LCCC-CFD-BMU-MAPPING",
+  "url": "https://dp.lowcarboncontracts.uk/datastore/dump/c16f141d-2db9-4160-ade1-d0d19d224dc9",
+  "path": "data/raw/lccc/015/c16f141d-2db9-4160-ade1-d0d19d224dc9.dump.csv",
+  "sha256": "9af5e3ab22349a6757f12cd960881e32f8a8a3fd0391f8a1b7caaafb1592e730",
+  "fetched_at": "2026-09-16T09:37:37.153712+00:00",
+  "bytes": 10024
+ },
+ {
+  "source": "lccc",
+  "dataset": "LCCC-CFD-BMU-MAPPING-META",
+  "url": "https://dp.lowcarboncontracts.uk/api/3/action/resource_show?id=c16f141d-2db9-4160-ade1-d0d19d224dc9",
+  "path": "data/raw/lccc/015/c16f141d-2db9-4160-ade1-d0d19d224dc9.resource_show.json",
+  "sha256": "051873579b88f9108572c6969310cebe747813af0422ba9dfe080e25d1847d33",
+  "fetched_at": "2026-09-16T09:37:36.847021+00:00",
+  "bytes": 742
+ },
+ {
+  "source": "lccc",
+  "dataset": "LCCC-CFD-BMU-MAPPING-DEFINITIONS",
+  "url": "https://dp.lowcarboncontracts.uk/dataset/8743291b-3646-4a69-a599-364cc6ae9d6e/resource/d49acec2-cab0-4342-8bac-b77cba8bf092/download/cfd-to-bm-unit-mapping-data-type-definitions.csv",
+  "path": "data/raw/lccc/015/d49acec2-cab0-4342-8bac-b77cba8bf092.csv",
+  "sha256": "c49d00ce326e7d7a5582ef3e62730c9f89d4885a9e70b4489254730ab6a8b679",
+  "fetched_at": "2026-09-16T09:37:38.825514+00:00",
+  "bytes": 106
+ },
+ {
+  "source": "lccc",
+  "dataset": "LCCC-CFD-BMU-MAPPING-DEFINITIONS-META",
+  "url": "https://dp.lowcarboncontracts.uk/api/3/action/resource_show?id=d49acec2-cab0-4342-8bac-b77cba8bf092",
+  "path": "data/raw/lccc/015/d49acec2-cab0-4342-8bac-b77cba8bf092.resource_show.json",
+  "sha256": "04e70cd5b1b97921a9cc767d0b47db90d0d6845c43ee2318e3a3f8ae83db9bf4",
+  "fetched_at": "2026-09-16T09:37:38.208481+00:00",
+  "bytes": 889
+ },
+ {
+  "source": "lccc",
+  "dataset": "LCCC-CFD-PORTFOLIO",
+  "url": "https://dp.lowcarboncontracts.uk/datastore/dump/fdaf09d2-8cff-4799-a5b0-1c59444e492b",
+  "path": "data/raw/lccc/015/fdaf09d2-8cff-4799-a5b0-1c59444e492b.dump.csv",
+  "sha256": "4e6829ae430be9e41181aeccc1b8ad28483959d35ea33ca65cf40e3f9fcd1996",
+  "fetched_at": "2026-09-16T09:37:39.390884+00:00",
+  "bytes": 76084
+ },
+ {
+  "source": "lccc",
+  "dataset": "LCCC-CFD-PORTFOLIO-META",
+  "url": "https://dp.lowcarboncontracts.uk/api/3/action/resource_show?id=fdaf09d2-8cff-4799-a5b0-1c59444e492b",
+  "path": "data/raw/lccc/015/fdaf09d2-8cff-4799-a5b0-1c59444e492b.resource_show.json",
+  "sha256": "716fbf59ef3a9e7566be680ab8f029a89d726ab5379528212e47142cc1eee183",
+  "fetched_at": "2026-09-16T09:37:39.069117+00:00",
+  "bytes": 749
+ }
+]

@@ -1,0 +1,28 @@
+{
+ "note": "Role-to-column bindings from the schema pass (archives/*), written before any join was computed; roles are the declaration's.",
+ "schema_reports": {
+  "lccc-cfd-mapping": "1819479e4501faee16e66c29e3ff379f32f4b4728c05bdbc502e6b07c40d5b8f",
+  "lccc-cfd-portfolio": "bb51083583b83c5557c74be8c74211fe361249d882c55526067255f2c24a8cbe",
+  "ofgem-ro-stations": "b153d0d0d8ed496b00b325e191e4fad05657e96a6034d97dad4a5f3fe8207124"
+ },
+ "cfd_map_bmu": "BMU_Id",
+ "cfd_map_id": "CFD_Id",
+ "cfd_map_from": "Effective_From",
+ "cfd_map_to": "Effective_date_to",
+ "cfd_id": "CFD_ID",
+ "cfd_name": "Name_of_CFD_Unit",
+ "cfd_technology": "Technology_Type",
+ "cfd_capacity": "Maximum_Contract_Capacity_MW",
+ "cfd_status": "Status",
+ "ro_id": "Accreditation reference",
+ "ro_station": "Station name",
+ "ro_organisation": "Organisation name",
+ "ro_capacity": "Station DNC in kW",
+ "ro_capacity_unit": "kW",
+ "ro_technology": "Technology",
+ "ro_country": "Country",
+ "ro_bmu": null,
+ "not_applicable": [
+  "RO grade A: the Accredited Stations (RO) report carries no BM-unit, MPAN or other unit identifier (11 columns, none of them); grade B uses Station DNC in kW / 1000 against the register's generationCapacity in MW"
+ ]
+}

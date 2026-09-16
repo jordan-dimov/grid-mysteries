@@ -1,0 +1,125 @@
+{
+ "file": "data/raw/lccc/015/fdaf09d2-8cff-4799-a5b0-1c59444e492b.dump.csv",
+ "sha256": "4e6829ae430be9e41181aeccc1b8ad28483959d35ea33ca65cf40e3f9fcd1996",
+ "rows": 612,
+ "columns": [
+  {
+   "name": "_id",
+   "blank": 0,
+   "distinct": 612,
+   "forms": {
+    "integer": 612
+   },
+   "sample": [
+    "1",
+    "2",
+    "3"
+   ]
+  },
+  {
+   "name": "CFD_ID",
+   "blank": 0,
+   "distinct": 612,
+   "forms": {
+    "text": 612
+   },
+   "sample": [
+    "AAA-ACH-183",
+    "AAA-BAD-185",
+    "AAA-BAN-189"
+   ]
+  },
+  {
+   "name": "Name_of_CFD_Unit",
+   "blank": 0,
+   "distinct": 611,
+   "forms": {
+    "text": 612
+   },
+   "sample": [
+    "Achlachan Wind Farm",
+    "Bad A Cheo Wind Farm",
+    "Kype Muir Wind Farm"
+   ]
+  },
+  {
+   "name": "Allocation_Round",
+   "blank": 0,
+   "distinct": 9,
+   "forms": {
+    "text": 612
+   },
+   "sample": [
+    "Allocation Round 1",
+    "Allocation Round 1",
+    "Allocation Round 1"
+   ]
+  },
+  {
+   "name": "Technology_Type",
+   "blank": 0,
+   "distinct": 12,
+   "forms": {
+    "text": 612
+   },
+   "sample": [
+    "Onshore Wind",
+    "Onshore Wind",
+    "Onshore Wind"
+   ]
+  },
+  {
+   "name": "Transmission_or_Distribution_connection",
+   "blank": 0,
+   "distinct": 2,
+   "forms": {
+    "text": 612
+   },
+   "sample": [
+    "Distribution",
+    "Transmission",
+    "Transmission"
+   ]
+  },
+  {
+   "name": "Status",
+   "blank": 0,
+   "distinct": 5,
+   "forms": {
+    "text": 612
+   },
+   "sample": [
+    "Live (Post-FIC)",
+    "Live (Post-FIC)",
+    "Live (Post-FIC)"
+   ]
+  },
+  {
+   "name": "Expected_Start_Date",
+   "blank": 47,
+   "distinct": 200,
+   "forms": {
+    "blank": 47,
+    "iso-date": 565
+   },
+   "sample": [
+    "2025-02-28 00:00:00.0000000",
+    "2020-10-13 00:00:00.0000000",
+    "2024-04-01 00:00:00.0000000"
+   ]
+  },
+  {
+   "name": "Maximum_Contract_Capacity_MW",
+   "blank": 0,
+   "distinct": 314,
+   "forms": {
+    "decimal": 612
+   },
+   "sample": [
+    "10.000",
+    "26.340",
+    "87.230"
+   ]
+  }
+ ]
+}

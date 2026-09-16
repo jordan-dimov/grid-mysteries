@@ -38,26 +38,45 @@ FIELDS: Final[tuple[tuple[str, str, str], ...]] = (
     ("Cumulative total capacity (MW)", "Cumulative Total Capacity (MW)", "number"),
     ("MW effective from (target date)", "MW Effective From", "date"),
     ("Project status", "Project Status", "text"),
-    ("Agreement type", "Agreement Type", "text"),
+    ("Agreement type", "Agreement Type", "label"),
     ("Host TO", "HOST TO", "text"),
     ("Plant type", "Plant Type", "text"),
-    ("Project ID", "Project ID", "text"),
+    ("Project ID", "Project ID", "salesforce-id"),
     ("Project number", "Project Number", "text"),
     ("Gate", "Gate", "text"),
 )
 
 
+#: Label variants the register has printed for one meaning, declared here and
+#: in certificates/README.md; a change between two spellings of one label is
+#: not a change of what was published, and the printed values keep their
+#: spellings. Keys and values are the whitespace-free, lower-case forms.
+LABEL_VARIANTS: Final[dict[str, str]] = {
+    "directconnection": "directlyconnected",
+}
+#: Salesforce record ids come in a 15-character case-sensitive form and an
+#: 18-character form that appends a checksum; the first 15 characters name
+#: the same record.
+SALESFORCE_ID_LENGTH: Final = 15
+
+
 def comparable(value: object, kind: str) -> object:
     """The value the certificate compares: dates parsed, numbers as Decimal,
     stage numerics unified, text ignoring letter case and whitespace (a
-    respelling is not a change; a different word is)."""
+    respelling is not a change; a different word is), labels with declared
+    variants unified, Salesforce ids on their 15-character form."""
     if kind == "date":
         return parse_date(value)
     if kind == "number":
         return parse_decimal(value)
     if kind == "stage":
         return normalise_stage(value)
-    return "".join(str(value or "").split()).lower()
+    if kind == "salesforce-id":
+        return "".join(str(value or "").split())[:SALESFORCE_ID_LENGTH]
+    folded = "".join(str(value or "").split()).lower()
+    if kind == "label":
+        return LABEL_VARIANTS.get(folded, folded)
+    return folded
 
 
 def shown(value: object, kind: str) -> str:

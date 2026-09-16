@@ -56,6 +56,16 @@ archive of copies can re-run `certify.py` and diff the result.
 - Values are compared as published: dates parsed (a respelling is not a
   change), numbers numerically, text ignoring case and whitespace. The
   printed values are the published spellings.
+- Two label unifications are declared (`connection_record.LABEL_VARIANTS`
+  and `SALESFORCE_ID_LENGTH`): the project id is compared on its
+  15-character form, because the register alternates between the
+  15-character Salesforce id and the 18-character form that appends a
+  checksum to it; and the agreement-type labels "Directly Connected" and
+  "Direct Connection", which alternate between source files, are one label.
+  Any further variant is added here before it is used, never after a
+  certificate has been read. The Clash Gour exemplar was issued before
+  these unifications and shows those flips as changes 2, 3, 9 to 12, 16
+  and 18; a re-issue would not.
 - Every change is dated by the first copy that showed it and by the last
   copy that still carried the previous value. No copy is held between the
   two, so the change entered the published register in that interval.

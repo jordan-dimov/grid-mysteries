@@ -98,15 +98,31 @@ def test_changes_record_each_field_with_the_first_vintage_that_showed_it():
             date(2021, 1, 19),
             date(2021, 1, 15),
         ),
-        (
-            "Agreement type",
-            "Directly Connected",
-            "Direct Connection",
-            date(2021, 1, 19),
-            date(2021, 1, 15),
-        ),
-    ]
+    ]  # the agreement-type respelling on 2021-01-19 is a declared label variant, not a change
     assert out[0].first_shown_sha256 == "sha-2021-01-12"
+
+
+def test_declared_label_variants_and_salesforce_id_forms_are_not_changes():
+    v = vintages(
+        (date(2024, 5, 21), [dict(row(), **{"Project ID": "a0l4L0000005iaa"})]),
+        (
+            date(2024, 5, 24),
+            [dict(row(agreement="Direct Connection"), **{"Project ID": "a0l4L0000005iaaQAA"})],
+        ),
+        (
+            date(2024, 5, 28),
+            [dict(row(agreement="Directly Connected"), **{"Project ID": "a0l4L0000005iab"})],
+        ),
+    )
+    obs = cr.track(v, "Clash Gour", None)
+    out = cr.changes(obs, date(2024, 5, 21), date(2024, 5, 28))
+    assert [(c.field, c.previous, c.current) for c in out] == [
+        ("Project ID", "a0l4L0000005iaaQAA", "a0l4L0000005iab"),
+    ]
+    assert cr.comparable("Direct Connection", "label") == cr.comparable(
+        "Directly Connected", "label"
+    )
+    assert cr.comparable("Bilateral", "label") == "bilateral"
 
 
 def test_absence_and_ambiguity_are_recorded_as_changes_of_presence():

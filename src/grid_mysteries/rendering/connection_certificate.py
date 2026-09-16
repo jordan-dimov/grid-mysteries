@@ -34,7 +34,11 @@ METHOD = (
     "and one with several is ambiguous; both are recorded as changes of presence. "
     "Values are compared as published, with dates parsed (so a respelled date is not a "
     "change), numbers compared numerically and text compared ignoring case and "
-    "whitespace; the printed values are the published spellings."
+    "whitespace; the printed values are the published spellings. Two declared "
+    "unifications apply: the register's project id is compared on its 15-character "
+    "form (the 18-character form appends a checksum to the same id), and the "
+    'agreement-type labels "Directly Connected" and "Direct Connection" are one '
+    "label. Every other difference in published text is a change."
 )
 
 

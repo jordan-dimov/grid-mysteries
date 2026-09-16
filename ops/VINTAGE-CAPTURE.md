@@ -85,9 +85,13 @@ resource with a fetch strategy. Strategies:
   sequence per message is what the revision-fingerprint work needs.
 
 Every strategy produces the same manifest line. Bytes go to
-`raw/<source>/<resource>/<date>/<sha256>`; a resource whose bytes hash to
-the previous day's digest is still written (a day's copy is a day's copy)
-but the manifest line says `unchanged_from: <date>`. Nothing is parsed.
+`raw/<source>/<resource>/<date>/<sha256>`; bytes identical to an earlier
+day's are not written again, and the manifest line points at the object
+that holds them with `unchanged_from: <date>`. A CKAN resource whose
+`last_modified` is unchanged since the previous capture is not downloaded
+at all (its metadata is captured and the line says `skipped`). Responses
+over 8 MB are streamed to disk and uploaded from the file. Nothing is
+parsed.
 
 ## 5. Jobs (render.yaml, `type: cron`, Docker runtime, region Frankfurt)
 
@@ -112,10 +116,10 @@ journal, and skips the fetch (it is idempotent by construction).
 ## 6. Timestamping
 
 After the manifest is written, the job stamps it: OpenTimestamps (pending
-until the calendar's block is mined; the watchdog runs `ots upgrade` on
-proofs older than a day and re-uploads) and RFC 3161 tokens from
-freetsa.org and DigiCert. Proofs go to `proofs/`. The same script stamps
-every declaration at freeze.
+until the calendar's block is mined; an `ots upgrade` sweep in the watchdog
+is a follow-up, not yet built) and RFC 3161 tokens from freetsa.org and
+DigiCert. Proofs go to `proofs/`. `scripts/freeze` stamps every
+declaration at the freeze with the same three proofs.
 
 ## 7. Watchdog (`scripts/check-vintages`, systemd user timer)
 

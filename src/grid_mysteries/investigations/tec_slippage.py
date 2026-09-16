@@ -7,6 +7,12 @@ per-project timelines, computes the declared metrics, and evaluates the
 three declared questions against their frozen thresholds. It reads no
 files and knows nothing about where a vintage came from.
 
+Reading note (2026-09-16): `parse_date` here accepts only `YYYY-MM-DD` and
+`DD/MM/YYYY`; the archive also uses `YYYY/MM/DD`, `DD-Mon-YY` and Excel
+serials, which `sources.tec_register.parse_date` handles. This module is
+kept as 005 ran it (see 005 AMENDMENTS, Amendment 2); new work reads the
+archive through `sources.tec_register`.
+
 Contracts:
 
 - Project identity is `Project ID` when present, otherwise the normalised

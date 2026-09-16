@@ -1,6 +1,6 @@
 """Investigation 005 runner: load journaled TEC vintages, run the declared Q1-Q3.
 
-Usage: uv run --with openpyxl --with xlrd python \
+Usage: uv run --group registers python \
     investigations/005-connection-date-credibility/run.py
 
 Reads data/raw/neso/tec-history/journal.ndjson, normalises each era's column

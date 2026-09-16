@@ -1,0 +1,10 @@
+# The image is built from the repository as pushed; nothing local rides along.
+.git
+.venv
+data
+.pytest_cache
+.ruff_cache
+.mypy_cache
+.hypothesis
+__pycache__
+*.egg-info

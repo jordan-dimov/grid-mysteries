@@ -14,6 +14,7 @@ data/raw/*
 !data/raw/.gitkeep
 data/derived/*
 !data/derived/.gitkeep
+data/vintage-watchdog.log
 
 # Generated publication artefacts are opt-in per investigation.
 artifacts/

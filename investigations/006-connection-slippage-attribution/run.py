@@ -1,6 +1,6 @@
 """Investigation 006 runner: join 005's TEC timelines to the TWR and run T1-T4.
 
-Usage: uv run --with openpyxl --with xlrd python \
+Usage: uv run --group registers python \
     investigations/006-connection-slippage-attribution/run.py
 
 I/O and column mapping only; the declared logic lives in

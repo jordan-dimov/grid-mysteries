@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+# Every declared rule must be backed by a named test that exists.
+# Each investigation may carry evidence/rule-sources.json mapping a rule (as
+# the declaration states it) to a pytest node id; a rule whose test does not
+# exist, or a mapping that names no rules, fails. Part of scripts/check.
+set -euo pipefail
+cd "$(dirname "$0")/.."
+export PATH="${HOME}/.local/bin:${PATH}"
+collected=$(uv run pytest --collect-only -q 2>/dev/null | grep '::' || true)
+status=0
+for spec in $(find investigations -path '*/evidence/rule-sources.json' | sort); do
+  dir=$(dirname "$(dirname "$spec")")
+  n=0; missing=0
+  while IFS= read -r test; do
+    n=$((n+1))
+    if ! grep -qxF "$test" <<<"$collected"; then
+      echo "   !! $dir: no such test $test"; missing=$((missing+1))
+    fi
+  done < <(python3 -c "import json,sys; [print(v) for v in json.load(open(sys.argv[1]))['rules'].values()]" "$spec")
+  echo "   $dir: $n rule(s) mapped, $missing missing"
+  [[ $missing -eq 0 && $n -gt 0 ]] || status=1
+done
+[[ $status -eq 0 ]] && echo "check-rules: OK" || { echo "check-rules: FAILED"; exit 1; }

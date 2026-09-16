@@ -1,0 +1,29 @@
+{
+ "declaration": "DECLARATION.md",
+ "rules": {
+  "reading: every date spelling parses": "tests/test_tec_register.py::test_every_date_spelling_the_register_has_used_parses",
+  "reading: unparseable dates stay undated": "tests/test_tec_register.py::test_unparseable_dates_are_undated_not_guessed",
+  "reading: column aliases per era": "tests/test_tec_register.py::test_every_era_header_row_maps_the_required_columns",
+  "reading: stage numerals unified": "tests/test_tec_register.py::test_stage_numeric_spellings_are_one_stage",
+  "reading: one copy per date": "tests/test_tec_register.py::test_one_per_date_drops_duplicates_and_prefers_the_richer_file",
+  "unit: (identity, stage)": "tests/test_connection_slippage.py::test_identity_is_the_normalised_triple_and_stage_unifies_numeric_spellings",
+  "unit: rows without distinct stages numbered by date": "tests/test_connection_slippage.py::test_rows_sharing_an_identity_without_distinct_stages_are_numbered_by_date",
+  "unit: a rename is a removal plus a new entry": "tests/test_connection_slippage.py::test_a_rename_is_a_removal_plus_a_new_entry_never_repaired",
+  "headline: baseline MW times years later positive": "tests/test_connection_slippage.py::test_headline_is_baseline_mw_times_years_moved_later_positive",
+  "headline: gross sides kept, net is their sum": "tests/test_connection_slippage.py::test_an_advance_is_negative_and_net_can_hide_it_so_gross_sides_are_kept",
+  "headline: capacity changes never enter it": "tests/test_connection_slippage.py::test_capacity_changes_never_enter_the_headline_the_baseline_mw_weighs",
+  "reconciliation: new entries and removals beside, never inside": "tests/test_connection_slippage.py::test_new_entries_and_removals_are_reconciliation_items_not_headline",
+  "reconciliation: undated and unweighted counted, contribute nothing": "tests/test_connection_slippage.py::test_undated_and_unweighted_units_are_counted_and_contribute_nothing",
+  "reconciliation: negative stage MW weighs by absolute value": "tests/test_connection_slippage.py::test_negative_stage_mw_weighs_by_its_absolute_value",
+  "reconciliation: identities hold for any population": "tests/test_connection_slippage.py::test_reconciliation_identity_holds_for_any_population",
+  "swap test: threshold and share": "tests/test_connection_slippage.py::test_swap_test_flags_a_vintage_whose_disagreements_are_mostly_swaps",
+  "swap test: flagged copy read exchanged back": "tests/test_connection_slippage.py::test_a_swapped_vintage_is_read_swapped_so_no_movement_is_manufactured",
+  "baselines: latest copy at least 365 days earlier": "tests/test_connection_slippage.py::test_year_earlier_baseline_is_the_latest_vintage_at_least_365_days_back",
+  "segments: regime cutoff, nothing chained across": "tests/test_connection_slippage.py::test_series_splits_at_the_regime_cutoff_and_chains_nothing_across_it",
+  "annual windows: first copy of year to first of next, last partial": "tests/test_connection_slippage.py::test_annual_windows_run_first_vintage_of_year_to_first_of_next_and_mark_partial",
+  "P1 and P2 decided by instances or undecided": "tests/test_connection_slippage.py::test_propositions_are_decided_by_their_instances_or_stay_undecided",
+  "F1 churn and F2 thin shares": "tests/test_connection_slippage.py::test_f1_and_f2_flags_follow_the_declared_shares",
+  "F1 shown only on consecutive links": "tests/test_connection_slippage_page.py::test_f1_is_shown_only_on_consecutive_links",
+  "page: pure function of the evidence": "tests/test_connection_slippage_page.py::test_page_is_self_contained_and_deterministic"
+ }
+}

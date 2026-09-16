@@ -83,6 +83,7 @@ PAIR_COLUMNS = (
     "From",
     "To",
     "Project-stages at both dates",
+    "Dated at both ends",
     "Net movement, MW-years",
     "Moved later, MW-years",
     "Moved earlier, MW-years",
@@ -100,6 +101,7 @@ def pair_cells(pair: dict[str, Any]) -> list[str]:
         day_label(pair["baseline"]),
         day_label(pair["current"]),
         count(pair["matched"]),
+        count(pair["dated_both"]),
         signed_mw_years(pair["mw_years_net"]),
         mw_years(pair["mw_years_later"]),
         mw_years(pair["mw_years_earlier"]),
@@ -222,18 +224,60 @@ def increment_rows(segment: dict[str, Any]) -> str:
     )
 
 
+def unsigned(value: str | None) -> str:
+    """Magnitude only, for prose that already names the direction."""
+    if value is None:
+        return BLANK
+    return f"{abs(whole(value)):,}"
+
+
+def headline_row(series: dict[str, Any]) -> dict[str, Any] | None:
+    """The year-earlier comparison of the headline copy, from the rows."""
+    h = series.get("headline")
+    if not h:
+        return None
+    for segment in series["segments"]:
+        for row in segment.get("rows", []):
+            if row["t_public"] == h["t_public"] and row.get("vs_year_earlier"):
+                return row["vs_year_earlier"]
+    return None
+
+
+def annual_sum(segment: dict[str, Any]) -> Decimal:
+    """The year windows' net movements added up (formatting arithmetic only)."""
+    return sum((Decimal(a["mw_years_net"]) for a in segment.get("annual", [])), Decimal(0))
+
+
 def headline_sentence(series: dict[str, Any]) -> str:
     h = series.get("headline")
     if not h:
         return "No vintage yet has a baseline a year earlier, so there is no headline."
+    pair = headline_row(series) or {}
+    old = next((s for s in series["segments"] if s["regime"] == "old"), None)
+    counts = (
+        f" Among those, {pair['later']:,} moved later, {pair['earlier']:,} earlier and "
+        f"{pair['unchanged']:,} did not move."
+        if pair
+        else ""
+    )
+    chain = ""
+    if old:
+        chain = (
+            f" Chained copy to copy across the old regime only ({old['vintages']:,} copies, "
+            f"{day_label(old['first'])} to {day_label(old['last'])}; the reformed regime is a "
+            f"separate series), the movement is "
+            f"{signed_mw_years(h['cumulative_mw_years_net'])} megawatt-years. That exceeds the "
+            f"sum of the year windows below ({signed_mw_years(str(annual_sum(old)))}) because "
+            "the chain also counts project-stages present in two consecutive copies but not at "
+            "both ends of a year."
+        )
     return (
-        f"Between {day_label(h['baseline'])} and {day_label(h['t_public'])}, the "
-        f"{h['matched']:,} project-stages on the register at both dates moved their "
-        f"published connection dates by a net {signed_mw_years(h['mw_years_net'])} "
-        f"megawatt-years ({mw_years(h['mw_years_later'])} later, "
-        f"{mw_years(h['mw_years_earlier'])} earlier). Chained vintage to vintage since "
-        f"the series began, the movement is {signed_mw_years(h['cumulative_mw_years_net'])} "
-        f"megawatt-years."
+        f"Between {day_label(h['baseline'])} and {day_label(h['t_public'])}, "
+        f"{h['matched']:,} project-stages were on the register at both dates and "
+        f"{h['dated_both']:,} of them carried a connection date on both copies.{counts} "
+        f"Their dates moved by a net {signed_mw_years(h['mw_years_net'])} megawatt-years "
+        f"({unsigned(h['mw_years_later'])} later, {unsigned(h['mw_years_earlier'])} "
+        f"earlier).{chain}"
     )
 
 
@@ -284,6 +328,17 @@ def render_corrections(corrections: list[dict[str, Any]] | None) -> str:
         for c in corrections
     )
     return f"<ol>{items}</ol>"
+
+
+def plain_reason(skipped: dict[str, Any]) -> str:
+    """A reader's reason for a copy the archive holds but the reader cannot parse."""
+    error = str(skipped.get("error", ""))
+    path = str(skipped.get("path", ""))
+    if path.endswith(".xls") and error.startswith("AssertionError"):
+        return "2014 .xls layout the spreadsheet reader rejects"
+    if "no header" in error:
+        return "no header row found"
+    return error
 
 
 def render_gaps(series: dict[str, Any]) -> str:
@@ -452,11 +507,17 @@ copy from {escape(day_label(new["first"]))}, and are never added to the figures 
 first copy of the next. <em>Project-stages at both dates</em> is the population the
 movement is summed over; a project that was renamed, changed customer or changed
 its connection site in between counts as having left and joined, never as moved.
+<em>Dated at both ends</em> is how many of those carried a connection date on both
+copies; only they can move, so the later, earlier and unchanged counts add up to it.
 <em>Joined</em> and <em>left</em> show the count and the capacity in megawatts. A
 positive movement is later; megawatt-years are rounded to whole numbers here and
 kept to three decimals in the evidence file. The last column marks a comparison whose
 population at both dates is under half of the earlier copy's rows (the declaration's
-F2): the figure stands, and the reader is told it rests on a thin population.</p>
+F2): the figure stands, and the reader is told it rests on a thin population. The
+2020 and 2022 windows straddle the register's own format changes (a new column set
+from June 2020; connection-site names respelled from December 2022), which the
+earlier investigation found break the identity of many rows; F2 there reflects the
+register, not the projects.</p>
 <div class="scroll">
 {old_annual}
 </div>
@@ -633,7 +694,7 @@ def render_markdown(series: dict[str, Any]) -> str:
         for sw in seg.get("swapped_vintages", []):
             lines.append(f"- {sw}: day-month swapped dates, read exchanged back.")
     for s in counts.get("skipped", []):
-        lines.append(f"- {s['t_public']}: not parsed ({s['error']}).")
+        lines.append(f"- {s['t_public']}: not parsed ({plain_reason(s)}).")
     for s in counts.get("excluded", []):
         lines.append(f"- {s['t_public']}: excluded, lacks {', '.join(s['missing'])}.")
     lines += [

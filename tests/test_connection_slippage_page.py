@@ -51,7 +51,13 @@ def series(**extra):
             "distinct_dates": 731,
             "parsed": 699,
             "usable": 697,
-            "skipped": [],
+            "skipped": [
+                {
+                    "t_public": "2014-02-24",
+                    "path": "data/raw/neso/tec-history/2014-02-24_neso-doc.xls",
+                    "error": "AssertionError()",
+                }
+            ],
             "excluded": [],
         },
         "segments": [
@@ -129,6 +135,7 @@ def test_pair_cells_round_to_whole_units_and_keep_signs():
         "5 Jul 2024",
         "22 Jul 2025",
         "1,500",
+        "1,400",
         "+12,346",
         "14,000",
         "-1,654",
@@ -152,10 +159,14 @@ def test_f1_is_shown_only_on_consecutive_links():
 def test_headline_sentence_reads_from_the_headline_block_only():
     text = page.headline_sentence(series())
     assert "Between 5 Jul 2024 and 22 Jul 2025" in text
-    assert "1,500 project-stages" in text
+    assert "1,500 project-stages were on the register at both dates" in text
+    assert "1,400 of them carried a connection date on both copies" in text
+    assert "350 moved later, 50 earlier and 1,000 did not move" in text
     assert "+12,346 megawatt-years" in text
-    assert "14,000 later, -1,654 earlier" in text
+    assert "14,000 later, 1,654 earlier" in text
+    assert "old regime only (694 copies, 31 Jan 2014 to 22 Jul 2025" in text
     assert "+100,000 megawatt-years" in text
+    assert "sum of the year windows below (+12,346)" in text
     assert "no headline" in page.headline_sentence(dict(series(), headline=None))
 
 
@@ -184,6 +195,7 @@ def test_markdown_lists_gaps_and_points_to_the_evidence():
     assert "- Regime break: no copy between 2025-07-22 and 2026-05-19 (301 days)" in md
     assert "- 2021-01-29: day-month swapped dates" in md
     assert "evidence/series.json" in md
+    assert "not parsed (2014 .xls layout the spreadsheet reader rejects)" in md
     assert (
         "- 2023-11-28: suspect copy, 730 rows against 1520 in the previous copy (52% fewer); "
         "excluded" in md

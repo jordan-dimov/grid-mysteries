@@ -292,12 +292,11 @@ def load_vintages(
         try:
             rows = read_vintage(path, entry.get("format", ""))
         except Exception as exc:  # noqa: BLE001 - recorded, not hidden
+            reason = repr(exc)[:200]
+            if path.suffix.lower() == ".xls" and isinstance(exc, AssertionError):
+                reason = "xls layout the spreadsheet reader rejects (xlrd AssertionError)"
             skipped.append(
-                {
-                    "t_public": entry["t_public"][:10],
-                    "path": entry["path"],
-                    "error": repr(exc)[:200],
-                }
+                {"t_public": entry["t_public"][:10], "path": entry["path"], "error": reason}
             )
             continue
         if not rows:

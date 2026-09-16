@@ -41,3 +41,18 @@ in the certificate exemplar. A rule excluding copies whose row count falls
 by more than a fifth against the previous copy, or reporting them as
 suspect, belongs in the next declaration of this series and in the
 certificate template, not in this one by amendment.
+
+## Release seal — 2026-09-16 (version 2)
+
+The sponsor's reconciliation review of the version 2 evidence found it
+reconciled (headline arithmetic, the chained total's move from version 1,
+every proposition, flag and gap traceable to a field) and asked for three
+presentation changes, none touching evidence and none requiring a rerun:
+a "dated at both ends" column so the movement counts close on the
+population that can move; the headline sentence attributing movement to
+those dated project-stages and scoping the chained total to the old regime,
+with the year-window sum beside it; and a plain reason for the 32 copies
+the reader cannot parse. Applied in the renderer, re-rendered, and sealed
+for release by the sponsor's instruction of 2026-09-16. The page is served
+at the unlisted Render hostname only and is not announced until the sponsor
+says so.

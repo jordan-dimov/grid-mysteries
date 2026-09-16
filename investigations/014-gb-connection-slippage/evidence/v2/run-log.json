@@ -1,0 +1,12 @@
+[
+ {
+  "run_date": "2026-09-16",
+  "computed_at": "2026-09-16T07:37:17+00:00",
+  "seal": "f2209b3c",
+  "declaration_sha256": "f2209b3cfd4dd0b276f1776293d60f83c65f3354db42b13e28348848c79a7a45",
+  "vintages_usable": 700,
+  "rows_appended": 698,
+  "latest_vintage": "2026-09-15",
+  "amend": false
+ }
+]

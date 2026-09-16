@@ -19,6 +19,9 @@ Phases:
   entry in AMENDMENTS.md).
 - ``render``: ``SERIES.md`` and ``site/connection-slippage/index.html`` as
   pure functions of ``evidence/series.json``. Needs no seal.
+- ``check`` (needs the seal): recompute and compare with the committed rows
+  without writing anything, not even a run-log line. The idempotency check
+  that belongs before a commit.
 
 The seal is the declaration's digest: the command that computed carries the
 prefix of the frozen rules it ran under, and the run log records it beside
@@ -133,7 +136,7 @@ def previous_rows() -> dict[tuple[str, str], str]:
     return out
 
 
-def compute(run_date: str, seal: str, *, amend: bool) -> dict[str, Any]:
+def compute(run_date: str, seal: str, *, amend: bool, write: bool = True) -> dict[str, Any]:
     digest = require_seal(seal)
     journal = tr.read_journal(JOURNAL)
     distinct = tr.one_per_date(journal)
@@ -152,6 +155,22 @@ def compute(run_date: str, seal: str, *, amend: bool) -> dict[str, Any]:
             key = (row["t_public"].isoformat(), row["sha256"])
             if key in committed and committed[key] != dumps(json.loads(dumps(row))):
                 changed.append(key[0])
+    if not write:
+        total = sum(len(s["rows"]) for s in result["segments"])
+        new_rows = total - sum(
+            1
+            for s in result["segments"]
+            for r in s["rows"]
+            if (r["t_public"].isoformat(), r["sha256"]) in committed
+        )
+        print(
+            f"check: {total} rows recomputed, {new_rows} not yet committed, "
+            f"{len(changed)} committed row(s) would change"
+            + (f" ({', '.join(changed[:5])})" if changed else "")
+        )
+        if changed:
+            raise SystemExit(1)
+        return result
     if changed and not amend:
         raise SystemExit(
             f"refusing: {len(changed)} committed row(s) would change on recompute "
@@ -232,13 +251,18 @@ def render() -> None:
 def main(argv: list[str] | None = None) -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--seal", help="prefix of DECLARATION.md's SHA-256 (fetch, compute)")
-    parser.add_argument("--phase", choices=("fetch", "compute", "render", "all"), default="render")
+    parser.add_argument(
+        "--phase", choices=("fetch", "compute", "render", "check", "all"), default="render"
+    )
     parser.add_argument("--run-date", default=date.today().isoformat())
     parser.add_argument("--amend", action="store_true", help="allow committed rows to change")
     args = parser.parse_args(argv)
     if args.phase in ("fetch", "all"):
         require_seal(args.seal)
         fetch(args.run_date)
+    if args.phase == "check":
+        compute(args.run_date, args.seal, amend=False, write=False)
+        return
     if args.phase in ("compute", "all"):
         compute(args.run_date, args.seal, amend=args.amend)
     if args.phase in ("render", "all"):

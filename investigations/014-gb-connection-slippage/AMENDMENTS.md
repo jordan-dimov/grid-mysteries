@@ -20,13 +20,15 @@ Plant Type" (the 2020-07-23 spelling).
 **Effect on the sealed series: none applied.** The committed
 `evidence/series.json` was computed with the three copies excluded, exactly
 as the declaration's rule read them at the time, and `run.py` refuses to
-change a committed row without `--amend`. Including them would alter only
-the links 2020-07-02 → 2020-07-30 (one link becomes four) and the
-trailing-year rows whose baseline falls on those dates; no annual window
-changes its endpoints. Whether to recompute under `--amend` (rows for those
-dates change; every other row is byte-identical by construction) or to
-leave the first publication as run is the sponsor's decision, recorded
-here when made.
+change a committed row without `--amend`. `run.py --phase check` (added
+2026-09-16) measures the effect: with the three copies included, **420 of
+the 697 committed rows would change**, because the chained total
+(`cumulative_mw_years_net`) carries every increment forward from 2020-07-30
+and the trailing-year rows whose baseline falls in the affected window
+move too; the annual windows keep their endpoints, and the headline row's
+year-on-year figure is unaffected. Whether to recompute under `--amend`
+(a restated chain, recorded as such) or to leave the first publication as
+run is the sponsor's decision, recorded here when made.
 
 ## Finding — 2026-09-16: two copies look like partial exports and are inside the series
 

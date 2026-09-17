@@ -203,11 +203,40 @@ read or written, and no key material passed through the session.
 `AWS_SECRET_ACCESS_KEY`. It was left alone deliberately: it works today, and
 changing a working job is a separate decision.
 
-**Still outstanding: the deploy.** Clearing the variables does not reach the
-schedule on its own, because a cron job's scheduled runs use the environment
-captured by its last deploy, which is still `a1c2624` from 2026-09-15. Until
-`tracker-013` is deployed, the 09:00 UTC run keeps using the old snapshot and
-keeps failing. Batch 1 becomes eligible on 2026-09-19.
+**Deployed and verified, 2026-09-17 14:37-14:38 UTC. The job is fixed.**
+
+`render deploys create --commit <sha>` is refused for a cron job ("cannot
+deploy cron job service ... by commit reference ID"), so the deploy takes the
+branch head: `render deploys create crn-dakrtsbl550s73alah40 --wait`. That
+built `fa41084` rather than `a1c2624`. Checked before deploying: the build
+inputs (`pyproject.toml`, `uv.lock`, `Dockerfile`, `.python-version`) are
+identical between the two, and the only code the job runs that differs is
+`scripts/run-013-render` (the exit-code fix above) and
+`capture/state.py` (the `--include` globs of `f6eea13`, which the current
+`run-013-render` already depends on). Deploying the head is therefore the
+coherent pair, not a mixture.
+
+A one-off verification run on the new deploy
+(`render jobs create crn-dakrtsbl550s73alah40 --start-command scripts/run-013-render`)
+succeeded in 25 seconds and did the whole job:
+
+    pull-state 013: 7 file(s)
+    pinned data/raw/neso/013/2026-09-17/daily_balancing_costs_2026-27.csv
+    pinned data/raw/neso/013/2026-09-17/daily_balancing_volume_2026-27.csv
+    pinned data/raw/neso/013/2026-09-17/disaggregated_bsad_2026-27.csv
+    neso 2026-09-17: fetched 3, verified and skipped 0
+    push-state 013: 6 file(s)
+    === done
+
+So `AccessDenied` is gone, and the 2026-09-17 vintage the failed 09:00 run
+missed is pinned after all — the gap in the daily NESO series is closed
+rather than left. Batch 1 remains eligible from 2026-09-19 and nothing about
+it has been fetched.
+
+**A one-off job's logs are a separate resource from the service's.** Use
+`render logs --resources job-<id>` for a triggered run; the service's own log
+stream does not carry it, which makes a successful triggered run look silent
+if you only watch the service.
 
 **Standing consequence for this file:** whenever a secret or environment
 value used by a cron job changes, the job must be deployed for the schedule

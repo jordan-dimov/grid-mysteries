@@ -602,6 +602,11 @@
   "Active": 110,
   "Consented": 4
  },
+ "gate_totals": {
+  "": 590778,
+  "1": 2808,
+  "2": 267
+ },
  "flagged": [
   {
    "t_public": "2015-05-08",
@@ -666,6 +671,9 @@
     "Scoping": 125,
     "Under Construction/Commissioning": 14
    },
+   "gate": {
+    "": 420
+   },
    "flags": []
   },
   {
@@ -710,6 +718,9 @@
     "Consents Approved": 46,
     "Scoping": 117,
     "Under Construction/Commissioning": 14
+   },
+   "gate": {
+    "": 412
    },
    "flags": []
   },
@@ -756,6 +767,9 @@
     "Scoping": 123,
     "Under Construction/Commissioning": 14
    },
+   "gate": {
+    "": 417
+   },
    "flags": []
   },
   {
@@ -800,6 +814,9 @@
     "Consents Approved": 45,
     "Scoping": 116,
     "Under Construction/Commissioning": 14
+   },
+   "gate": {
+    "": 410
    },
    "flags": []
   },
@@ -846,6 +863,9 @@
     "Scoping": 113,
     "Under Construction/Commissioning": 11
    },
+   "gate": {
+    "": 405
+   },
    "flags": []
   },
   {
@@ -891,6 +911,9 @@
     "Consents Approved": 50,
     "Scoping": 92,
     "Under Construction/Commissioning": 11
+   },
+   "gate": {
+    "": 415
    },
    "flags": []
   },
@@ -939,6 +962,9 @@
     "Scoping": 87,
     "Under Construction/Commissioning": 11
    },
+   "gate": {
+    "": 414
+   },
    "flags": []
   },
   {
@@ -984,6 +1010,9 @@
     "Consents Approved": 50,
     "Scoping": 89,
     "Under Construction/Commissioning": 11
+   },
+   "gate": {
+    "": 416
    },
    "flags": []
   },
@@ -1032,6 +1061,9 @@
     "Scoping": 82,
     "Under Construction/Commissioning": 9
    },
+   "gate": {
+    "": 406
+   },
    "flags": []
   },
   {
@@ -1076,6 +1108,9 @@
     "Consents Approved": 69,
     "Scoping": 78,
     "Under Construction/Commissioning": 9
+   },
+   "gate": {
+    "": 410
    },
    "flags": []
   },
@@ -1122,6 +1157,9 @@
     "Scoping": 83,
     "Under Construction/Commissioning": 4
    },
+   "gate": {
+    "": 425
+   },
    "flags": []
   },
   {
@@ -1166,6 +1204,9 @@
     "Consents Approved": 76,
     "Scoping": 83,
     "Under Construction/Commissioning": 4
+   },
+   "gate": {
+    "": 426
    },
    "flags": []
   },
@@ -1212,6 +1253,9 @@
     "Scoping": 83,
     "Under Construction/Commissioning": 4
    },
+   "gate": {
+    "": 425
+   },
    "flags": []
   },
   {
@@ -1256,6 +1300,9 @@
     "Consents Approved": 77,
     "Scoping": 84,
     "Under Construction/Commissioning": 4
+   },
+   "gate": {
+    "": 426
    },
    "flags": []
   },
@@ -1302,6 +1349,9 @@
     "Scoping": 85,
     "Under Construction/Commissioning": 4
    },
+   "gate": {
+    "": 427
+   },
    "flags": []
   },
   {
@@ -1347,6 +1397,9 @@
     "Scoping": 82,
     "Under Construction/Commissioning": 4
    },
+   "gate": {
+    "": 423
+   },
    "flags": []
   },
   {
@@ -1391,6 +1444,9 @@
     "Consents Approved": 80,
     "Scoping": 82,
     "Under Construction/Commissioning": 4
+   },
+   "gate": {
+    "": 423
    },
    "flags": []
   },
@@ -1438,6 +1494,9 @@
     "Scoping": 82,
     "Under Construction/Commissioning": 3
    },
+   "gate": {
+    "": 426
+   },
    "flags": []
   },
   {
@@ -1483,6 +1542,9 @@
     "Consents Approved": 84,
     "Scoping": 83,
     "Under Construction/Commissioning": 4
+   },
+   "gate": {
+    "": 428
    },
    "flags": []
   },
@@ -1530,6 +1592,9 @@
     "Scoping": 83,
     "Under Construction/Commissioning": 5
    },
+   "gate": {
+    "": 426
+   },
    "flags": []
   },
   {
@@ -1574,6 +1639,9 @@
     "Consents Approved": 88,
     "Scoping": 84,
     "Under Construction/Commissioning": 4
+   },
+   "gate": {
+    "": 429
    },
    "flags": []
   },
@@ -1622,6 +1690,9 @@
     "Terminated": 1,
     "Under Construction/Commissioning": 4
    },
+   "gate": {
+    "": 423
+   },
    "flags": []
   },
   {
@@ -1667,6 +1738,9 @@
     "Scoping": 85,
     "Terminated": 1,
     "Under Construction/Commissioning": 4
+   },
+   "gate": {
+    "": 424
    },
    "flags": []
   },
@@ -1714,6 +1788,9 @@
     "Terminated": 1,
     "Under Construction/Commissioning": 4
    },
+   "gate": {
+    "": 415
+   },
    "flags": []
   },
   {
@@ -1760,6 +1837,9 @@
     "Terminated": 1,
     "Under Construction/Commissioning": 4
    },
+   "gate": {
+    "": 415
+   },
    "flags": []
   },
   {
@@ -1804,6 +1884,9 @@
     "Consents Approved": 92,
     "Scoping": 82,
     "Under Construction/Commissioning": 4
+   },
+   "gate": {
+    "": 416
    },
    "flags": []
   },
@@ -1850,6 +1933,9 @@
     "Scoping": 81,
     "Under Construction/Commissioning": 9
    },
+   "gate": {
+    "": 412
+   },
    "flags": []
   },
   {
@@ -1894,6 +1980,9 @@
     "Consents Approved": 87,
     "Scoping": 81,
     "Under Construction/Commissioning": 9
+   },
+   "gate": {
+    "": 410
    },
    "flags": []
   },
@@ -1940,6 +2029,9 @@
     "Scoping": 81,
     "Under Construction/Commissioning": 9
    },
+   "gate": {
+    "": 409
+   },
    "flags": []
   },
   {
@@ -1984,6 +2076,9 @@
     "Consents Approved": 87,
     "Scoping": 82,
     "Under Construction/Commissioning": 9
+   },
+   "gate": {
+    "": 412
    },
    "flags": []
   },
@@ -2031,6 +2126,9 @@
     "Terminated": 1,
     "Under Construction/Commissioning": 9
    },
+   "gate": {
+    "": 413
+   },
    "flags": []
   },
   {
@@ -2075,6 +2173,9 @@
     "Scoping": 70,
     "Terminated": 1,
     "Under Construction/Commissioning": 9
+   },
+   "gate": {
+    "": 225
    },
    "flags": [
     "row count fell 46% (possible partial export)"
@@ -2124,6 +2225,9 @@
     "Terminated": 1,
     "Under Construction/Commissioning": 9
    },
+   "gate": {
+    "": 411
+   },
    "flags": []
   },
   {
@@ -2169,6 +2273,9 @@
     "Scoping": 80,
     "Terminated": 1,
     "Under Construction/Commissioning": 10
+   },
+   "gate": {
+    "": 413
    },
    "flags": []
   },
@@ -2216,6 +2323,9 @@
     "Terminated": 1,
     "Under Construction/Commissioning": 16
    },
+   "gate": {
+    "": 420
+   },
    "flags": []
   },
   {
@@ -2261,6 +2371,9 @@
     "Scoping": 78,
     "Terminated": 1,
     "Under Construction/Commissioning": 16
+   },
+   "gate": {
+    "": 418
    },
    "flags": []
   },
@@ -2308,6 +2421,9 @@
     "Terminated": 1,
     "Under Construction/Commissioning": 13
    },
+   "gate": {
+    "": 427
+   },
    "flags": []
   },
   {
@@ -2352,6 +2468,9 @@
     "Consents Approved": 101,
     "Scoping": 78,
     "Under Construction/Commissioning": 14
+   },
+   "gate": {
+    "": 429
    },
    "flags": []
   },
@@ -2399,6 +2518,9 @@
     "Terminated": 3,
     "Under Construction/Commissioning": 17
    },
+   "gate": {
+    "": 428
+   },
    "flags": []
   },
   {
@@ -2444,6 +2566,9 @@
     "Scoping": 77,
     "Terminated": 3,
     "Under Construction/Commissioning": 18
+   },
+   "gate": {
+    "": 428
    },
    "flags": []
   },
@@ -2491,6 +2616,9 @@
     "Terminated": 4,
     "Under Construction/Commissioning": 18
    },
+   "gate": {
+    "": 428
+   },
    "flags": []
   },
   {
@@ -2535,6 +2663,9 @@
     "Consents Approved": 100,
     "Scoping": 74,
     "Under Construction/Commissioning": 19
+   },
+   "gate": {
+    "": 424
    },
    "flags": []
   },
@@ -2581,6 +2712,9 @@
     "Scoping": 74,
     "Under Construction/Commissioning": 19
    },
+   "gate": {
+    "": 425
+   },
    "flags": []
   },
   {
@@ -2625,6 +2759,9 @@
     "Consents Approved": 100,
     "Scoping": 72,
     "Under Construction/Commissioning": 19
+   },
+   "gate": {
+    "": 428
    },
    "flags": []
   },
@@ -2671,6 +2808,9 @@
     "Scoping": 72,
     "Under Construction/Commissioning": 18
    },
+   "gate": {
+    "": 432
+   },
    "flags": []
   },
   {
@@ -2715,6 +2855,9 @@
     "Consents Approved": 100,
     "Scoping": 72,
     "Under Construction/Commissioning": 19
+   },
+   "gate": {
+    "": 431
    },
    "flags": []
   },
@@ -2761,6 +2904,9 @@
     "Scoping": 73,
     "Under Construction/Commissioning": 19
    },
+   "gate": {
+    "": 426
+   },
    "flags": []
   },
   {
@@ -2805,6 +2951,9 @@
     "Consents Approved": 101,
     "Scoping": 73,
     "Under Construction/Commissioning": 16
+   },
+   "gate": {
+    "": 426
    },
    "flags": []
   },
@@ -2851,6 +3000,9 @@
     "Scoping": 73,
     "Under Construction/Commissioning": 16
    },
+   "gate": {
+    "": 426
+   },
    "flags": []
   },
   {
@@ -2896,6 +3048,9 @@
     "Scoping": 72,
     "Under Construction/Commissioning": 16
    },
+   "gate": {
+    "": 424
+   },
    "flags": []
   },
   {
@@ -2940,6 +3095,9 @@
     "Consents Approved": 102,
     "Scoping": 70,
     "Under Construction/Commissioning": 16
+   },
+   "gate": {
+    "": 423
    },
    "flags": []
   },
@@ -2987,6 +3145,9 @@
     "Scoping": 74,
     "Under Construction/Commissioning": 16
    },
+   "gate": {
+    "": 431
+   },
    "flags": []
   },
   {
@@ -3032,6 +3193,9 @@
     "Consents Approved": 104,
     "Scoping": 73,
     "Under Construction/Commissioning": 16
+   },
+   "gate": {
+    "": 430
    },
    "flags": []
   },
@@ -3079,6 +3243,9 @@
     "Scoping": 73,
     "Under Construction/Commissioning": 16
    },
+   "gate": {
+    "": 430
+   },
    "flags": []
   },
   {
@@ -3124,6 +3291,9 @@
     "Consents Approved": 106,
     "Scoping": 71,
     "Under Construction/Commissioning": 13
+   },
+   "gate": {
+    "": 427
    },
    "flags": []
   },
@@ -3171,6 +3341,9 @@
     "Scoping": 70,
     "Under Construction/Commissioning": 13
    },
+   "gate": {
+    "": 425
+   },
    "flags": []
   },
   {
@@ -3216,6 +3389,9 @@
     "Consents Approved": 106,
     "Scoping": 68,
     "Under Construction/Commissioning": 12
+   },
+   "gate": {
+    "": 426
    },
    "flags": []
   },
@@ -3263,6 +3439,9 @@
     "Scoping": 68,
     "Under Construction/Commissioning": 13
    },
+   "gate": {
+    "": 418
+   },
    "flags": []
   },
   {
@@ -3308,6 +3487,9 @@
     "Consents Approved": 103,
     "Scoping": 68,
     "Under Construction/Commissioning": 13
+   },
+   "gate": {
+    "": 418
    },
    "flags": []
   },
@@ -3355,6 +3537,9 @@
     "Scoping": 68,
     "Under Construction/Commissioning": 13
    },
+   "gate": {
+    "": 418
+   },
    "flags": []
   },
   {
@@ -3400,6 +3585,9 @@
     "Consents Approved": 103,
     "Scoping": 68,
     "Under Construction/Commissioning": 13
+   },
+   "gate": {
+    "": 420
    },
    "flags": []
   },
@@ -3448,6 +3636,9 @@
     "Scoping": 68,
     "Under Construction/Commissioning": 13
    },
+   "gate": {
+    "": 420
+   },
    "flags": []
   },
   {
@@ -3495,6 +3686,9 @@
     "Scoping": 68,
     "Under Construction/Commissioning": 13
    },
+   "gate": {
+    "": 419
+   },
    "flags": []
   },
   {
@@ -3540,6 +3734,9 @@
     "Consents Approved": 106,
     "Scoping": 68,
     "Under Construction/Commissioning": 15
+   },
+   "gate": {
+    "": 424
    },
    "flags": []
   },
@@ -3587,6 +3784,9 @@
     "Scoping": 68,
     "Under Construction/Commissioning": 15
    },
+   "gate": {
+    "": 424
+   },
    "flags": []
   },
   {
@@ -3632,6 +3832,9 @@
     "Consents Approved": 106,
     "Scoping": 68,
     "Under Construction/Commissioning": 15
+   },
+   "gate": {
+    "": 423
    },
    "flags": []
   },
@@ -3679,6 +3882,9 @@
     "Scoping": 68,
     "Under Construction/Commissioning": 15
    },
+   "gate": {
+    "": 425
+   },
    "flags": []
   },
   {
@@ -3724,6 +3930,9 @@
     "Consents Approved": 105,
     "Scoping": 68,
     "Under Construction/Commissioning": 15
+   },
+   "gate": {
+    "": 424
    },
    "flags": []
   },
@@ -3771,6 +3980,9 @@
     "Scoping": 69,
     "Under Construction/Commissioning": 14
    },
+   "gate": {
+    "": 425
+   },
    "flags": []
   },
   {
@@ -3816,6 +4028,9 @@
     "Consents Approved": 105,
     "Scoping": 69,
     "Under Construction/Commissioning": 14
+   },
+   "gate": {
+    "": 425
    },
    "flags": []
   },
@@ -3863,6 +4078,9 @@
     "Scoping": 69,
     "Under Construction/Commissioning": 14
    },
+   "gate": {
+    "": 424
+   },
    "flags": []
   },
   {
@@ -3909,6 +4127,9 @@
     "Scoping": 68,
     "Under Construction/Commissioning": 14
    },
+   "gate": {
+    "": 423
+   },
    "flags": []
   },
   {
@@ -3954,6 +4175,9 @@
     "Consents Approved": 104,
     "Scoping": 67,
     "Under Construction/Commissioning": 14
+   },
+   "gate": {
+    "": 422
    },
    "flags": []
   },
@@ -4002,6 +4226,9 @@
     "Scoping": 67,
     "Under Construction/Commissioning": 15
    },
+   "gate": {
+    "": 421
+   },
    "flags": []
   },
   {
@@ -4047,6 +4274,9 @@
     "Consents Approved": 104,
     "Scoping": 67,
     "Under Construction/Commissioning": 14
+   },
+   "gate": {
+    "": 425
    },
    "flags": []
   },
@@ -4094,6 +4324,9 @@
     "Scoping": 67,
     "Under Construction/Commissioning": 11
    },
+   "gate": {
+    "": 425
+   },
    "flags": []
   },
   {
@@ -4139,6 +4372,9 @@
     "Consents Approved": 104,
     "Scoping": 69,
     "Under Construction/Commissioning": 12
+   },
+   "gate": {
+    "": 426
    },
    "flags": []
   },
@@ -4186,6 +4422,9 @@
     "Scoping": 69,
     "Under Construction/Commissioning": 12
    },
+   "gate": {
+    "": 425
+   },
    "flags": []
   },
   {
@@ -4231,6 +4470,9 @@
     "Consents Approved": 101,
     "Scoping": 69,
     "Under Construction/Commissioning": 12
+   },
+   "gate": {
+    "": 425
    },
    "flags": []
   },
@@ -4278,6 +4520,9 @@
     "Scoping": 69,
     "Under Construction/Commissioning": 12
    },
+   "gate": {
+    "": 425
+   },
    "flags": []
   },
   {
@@ -4324,6 +4569,9 @@
     "Scoping": 69,
     "Under Construction/Commissioning": 11
    },
+   "gate": {
+    "": 425
+   },
    "flags": []
   },
   {
@@ -4369,6 +4617,9 @@
     "Consents Approved": 99,
     "Scoping": 69,
     "Under Construction/Commissioning": 11
+   },
+   "gate": {
+    "": 428
    },
    "flags": []
   },
@@ -4417,6 +4668,9 @@
     "Scoping": 67,
     "Under Construction/Commissioning": 11
    },
+   "gate": {
+    "": 392
+   },
    "flags": []
   },
   {
@@ -4462,6 +4716,9 @@
     "Consents Approved": 97,
     "Scoping": 69,
     "Under Construction/Commissioning": 11
+   },
+   "gate": {
+    "": 429
    },
    "flags": []
   },
@@ -4509,6 +4766,9 @@
     "Scoping": 67,
     "Under Construction/Commissioning": 11
    },
+   "gate": {
+    "": 427
+   },
    "flags": []
   },
   {
@@ -4554,6 +4814,9 @@
     "Consents Approved": 95,
     "Scoping": 70,
     "Under Construction/Commissioning": 10
+   },
+   "gate": {
+    "": 428
    },
    "flags": []
   },
@@ -4601,6 +4864,9 @@
     "Scoping": 70,
     "Under Construction/Commissioning": 10
    },
+   "gate": {
+    "": 428
+   },
    "flags": []
   },
   {
@@ -4646,6 +4912,9 @@
     "Consents Approved": 96,
     "Scoping": 69,
     "Under Construction/Commissioning": 9
+   },
+   "gate": {
+    "": 428
    },
    "flags": []
   },
@@ -4693,6 +4962,9 @@
     "Scoping": 69,
     "Under Construction/Commissioning": 9
    },
+   "gate": {
+    "": 429
+   },
    "flags": []
   },
   {
@@ -4738,6 +5010,9 @@
     "Consents Approved": 96,
     "Scoping": 69,
     "Under Construction/Commissioning": 9
+   },
+   "gate": {
+    "": 429
    },
    "flags": []
   },
@@ -4785,6 +5060,9 @@
     "Scoping": 68,
     "Under Construction/Commissioning": 9
    },
+   "gate": {
+    "": 429
+   },
    "flags": []
   },
   {
@@ -4830,6 +5108,9 @@
     "Consents Approved": 96,
     "Scoping": 68,
     "Under Construction/Commissioning": 8
+   },
+   "gate": {
+    "": 430
    },
    "flags": []
   },
@@ -4877,6 +5158,9 @@
     "Scoping": 68,
     "Under Construction/Commissioning": 9
    },
+   "gate": {
+    "": 431
+   },
    "flags": []
   },
   {
@@ -4922,6 +5206,9 @@
     "Consents Approved": 98,
     "Scoping": 68,
     "Under Construction/Commissioning": 10
+   },
+   "gate": {
+    "": 432
    },
    "flags": []
   },
@@ -4969,6 +5256,9 @@
     "Scoping": 68,
     "Under Construction/Commissioning": 13
    },
+   "gate": {
+    "": 433
+   },
    "flags": []
   },
   {
@@ -5014,6 +5304,9 @@
     "Consents Approved": 94,
     "Scoping": 66,
     "Under Construction/Commissioning": 15
+   },
+   "gate": {
+    "": 433
    },
    "flags": []
   },
@@ -5062,6 +5355,9 @@
     "Terminated": 1,
     "Under Construction/Commissioning": 14
    },
+   "gate": {
+    "": 432
+   },
    "flags": []
   },
   {
@@ -5108,6 +5404,9 @@
     "Scoping": 65,
     "Terminated": 1,
     "Under Construction/Commissioning": 14
+   },
+   "gate": {
+    "": 431
    },
    "flags": []
   },
@@ -5156,6 +5455,9 @@
     "Terminated": 1,
     "Under Construction/Commissioning": 14
    },
+   "gate": {
+    "": 431
+   },
    "flags": []
   },
   {
@@ -5203,6 +5505,9 @@
     "Terminated": 1,
     "Under Construction/Commissioning": 14
    },
+   "gate": {
+    "": 432
+   },
    "flags": []
   },
   {
@@ -5248,6 +5553,9 @@
     "Scoping": 64,
     "Terminated": 1,
     "Under Construction/Commissioning": 14
+   },
+   "gate": {
+    "": 423
    },
    "flags": []
   },
@@ -5296,6 +5604,9 @@
     "Terminated": 1,
     "Under Construction/Commissioning": 13
    },
+   "gate": {
+    "": 426
+   },
    "flags": []
   },
   {
@@ -5342,6 +5653,9 @@
     "Scoping": 64,
     "Terminated": 1,
     "Under Construction/Commissioning": 13
+   },
+   "gate": {
+    "": 426
    },
    "flags": []
   },
@@ -5390,6 +5704,9 @@
     "Terminated": 1,
     "Under Construction/Commissioning": 13
    },
+   "gate": {
+    "": 427
+   },
    "flags": []
   },
   {
@@ -5436,6 +5753,9 @@
     "Scoping": 63,
     "Terminated": 1,
     "Under Construction/Commissioning": 14
+   },
+   "gate": {
+    "": 427
    },
    "flags": []
   },
@@ -5484,6 +5804,9 @@
     "Terminated": 1,
     "Under Construction/Commissioning": 14
    },
+   "gate": {
+    "": 426
+   },
    "flags": []
   },
   {
@@ -5530,6 +5853,9 @@
     "Scoping": 63,
     "Terminated": 1,
     "Under Construction/Commissioning": 14
+   },
+   "gate": {
+    "": 428
    },
    "flags": []
   },
@@ -5578,6 +5904,9 @@
     "Terminated": 1,
     "Under Construction/Commissioning": 14
    },
+   "gate": {
+    "": 428
+   },
    "flags": []
   },
   {
@@ -5624,6 +5953,9 @@
     "Scoping": 63,
     "Terminated": 1,
     "Under Construction/Commissioning": 14
+   },
+   "gate": {
+    "": 428
    },
    "flags": []
   },
@@ -5672,6 +6004,9 @@
     "Terminated": 1,
     "Under Construction/Commissioning": 14
    },
+   "gate": {
+    "": 426
+   },
    "flags": []
   },
   {
@@ -5718,6 +6053,9 @@
     "Scoping": 62,
     "Terminated": 1,
     "Under Construction/Commissioning": 15
+   },
+   "gate": {
+    "": 428
    },
    "flags": []
   },
@@ -5766,6 +6104,9 @@
     "Terminated": 1,
     "Under Construction/Commissioning": 15
    },
+   "gate": {
+    "": 431
+   },
    "flags": []
   },
   {
@@ -5812,6 +6153,9 @@
     "Scoping": 62,
     "Terminated": 1,
     "Under Construction/Commissioning": 15
+   },
+   "gate": {
+    "": 431
    },
    "flags": []
   },
@@ -5860,6 +6204,9 @@
     "Terminated": 1,
     "Under Construction/Commissioning": 15
    },
+   "gate": {
+    "": 432
+   },
    "flags": []
   },
   {
@@ -5906,6 +6253,9 @@
     "Scoping": 64,
     "Terminated": 1,
     "Under Construction/Commissioning": 15
+   },
+   "gate": {
+    "": 433
    },
    "flags": []
   },
@@ -5954,6 +6304,9 @@
     "Terminated": 1,
     "Under Construction/Commissioning": 16
    },
+   "gate": {
+    "": 435
+   },
    "flags": []
   },
   {
@@ -6000,6 +6353,9 @@
     "Scoping": 65,
     "Terminated": 1,
     "Under Construction/Commissioning": 15
+   },
+   "gate": {
+    "": 436
    },
    "flags": []
   },
@@ -6048,6 +6404,9 @@
     "Terminated": 1,
     "Under Construction/Commissioning": 15
    },
+   "gate": {
+    "": 437
+   },
    "flags": []
   },
   {
@@ -6094,6 +6453,9 @@
     "Scoping": 65,
     "Terminated": 1,
     "Under Construction/Commissioning": 14
+   },
+   "gate": {
+    "": 437
    },
    "flags": []
   },
@@ -6142,6 +6504,9 @@
     "Terminated": 1,
     "Under Construction/Commissioning": 13
    },
+   "gate": {
+    "": 439
+   },
    "flags": []
   },
   {
@@ -6188,6 +6553,9 @@
     "Scoping": 66,
     "Terminated": 1,
     "Under Construction/Commissioning": 13
+   },
+   "gate": {
+    "": 439
    },
    "flags": []
   },
@@ -6236,6 +6604,9 @@
     "Terminated": 1,
     "Under Construction/Commissioning": 13
    },
+   "gate": {
+    "": 439
+   },
    "flags": []
   },
   {
@@ -6282,6 +6653,9 @@
     "Scoping": 66,
     "Terminated": 1,
     "Under Construction/Commissioning": 13
+   },
+   "gate": {
+    "": 438
    },
    "flags": []
   },
@@ -6330,6 +6704,9 @@
     "Terminated": 1,
     "Under Construction/Commissioning": 13
    },
+   "gate": {
+    "": 438
+   },
    "flags": []
   },
   {
@@ -6376,6 +6753,9 @@
     "Scoping": 66,
     "Terminated": 1,
     "Under Construction/Commissioning": 15
+   },
+   "gate": {
+    "": 438
    },
    "flags": []
   },
@@ -6424,6 +6804,9 @@
     "Terminated": 1,
     "Under Construction/Commissioning": 17
    },
+   "gate": {
+    "": 441
+   },
    "flags": []
   },
   {
@@ -6469,6 +6852,9 @@
     "Scoping": 67,
     "Terminated": 3,
     "Under Construction/Commissioning": 17
+   },
+   "gate": {
+    "": 434
    },
    "flags": []
   },
@@ -6516,6 +6902,9 @@
     "Terminated": 3,
     "Under Construction/Commissioning": 18
    },
+   "gate": {
+    "": 436
+   },
    "flags": []
   },
   {
@@ -6561,6 +6950,9 @@
     "Scoping": 67,
     "Terminated": 3,
     "Under Construction/Commissioning": 17
+   },
+   "gate": {
+    "": 437
    },
    "flags": []
   },
@@ -6608,6 +7000,9 @@
     "Terminated": 4,
     "Under Construction/Commissioning": 17
    },
+   "gate": {
+    "": 436
+   },
    "flags": []
   },
   {
@@ -6653,6 +7048,9 @@
     "Scoping": 67,
     "Terminated": 4,
     "Under Construction/Commissioning": 17
+   },
+   "gate": {
+    "": 436
    },
    "flags": []
   },
@@ -6700,6 +7098,9 @@
     "Terminated": 4,
     "Under Construction/Commissioning": 17
    },
+   "gate": {
+    "": 436
+   },
    "flags": []
   },
   {
@@ -6745,6 +7146,9 @@
     "Scoping": 65,
     "Terminated": 4,
     "Under Construction/Commissioning": 17
+   },
+   "gate": {
+    "": 436
    },
    "flags": []
   },
@@ -6792,6 +7196,9 @@
     "Terminated": 5,
     "Under Construction/Commissioning": 17
    },
+   "gate": {
+    "": 436
+   },
    "flags": []
   },
   {
@@ -6837,6 +7244,9 @@
     "Scoping": 65,
     "Terminated": 5,
     "Under Construction/Commissioning": 18
+   },
+   "gate": {
+    "": 437
    },
    "flags": []
   },
@@ -6884,6 +7294,9 @@
     "Terminated": 5,
     "Under Construction/Commissioning": 18
    },
+   "gate": {
+    "": 438
+   },
    "flags": []
   },
   {
@@ -6929,6 +7342,9 @@
     "Scoping": 65,
     "Terminated": 4,
     "Under Construction/Commissioning": 18
+   },
+   "gate": {
+    "": 438
    },
    "flags": []
   },
@@ -6976,6 +7392,9 @@
     "Terminated": 4,
     "Under Construction/Commissioning": 18
    },
+   "gate": {
+    "": 437
+   },
    "flags": []
   },
   {
@@ -7021,6 +7440,9 @@
     "Scoping": 64,
     "Terminated": 4,
     "Under Construction/Commissioning": 18
+   },
+   "gate": {
+    "": 437
    },
    "flags": []
   },
@@ -7068,6 +7490,9 @@
     "Terminated": 4,
     "Under Construction/Commissioning": 18
    },
+   "gate": {
+    "": 442
+   },
    "flags": []
   },
   {
@@ -7113,6 +7538,9 @@
     "Scoping": 68,
     "Terminated": 4,
     "Under Construction/Commissioning": 20
+   },
+   "gate": {
+    "": 441
    },
    "flags": []
   },
@@ -7160,6 +7588,9 @@
     "Terminated": 4,
     "Under Construction/Commissioning": 20
    },
+   "gate": {
+    "": 441
+   },
    "flags": []
   },
   {
@@ -7205,6 +7636,9 @@
     "Scoping": 68,
     "Terminated": 5,
     "Under Construction/Commissioning": 20
+   },
+   "gate": {
+    "": 440
    },
    "flags": []
   },
@@ -7252,6 +7686,9 @@
     "Terminated": 5,
     "Under Construction/Commissioning": 20
    },
+   "gate": {
+    "": 440
+   },
    "flags": []
   },
   {
@@ -7297,6 +7734,9 @@
     "Scoping": 68,
     "Terminated": 5,
     "Under Construction/Commissioning": 20
+   },
+   "gate": {
+    "": 440
    },
    "flags": []
   },
@@ -7344,6 +7784,9 @@
     "Terminated": 5,
     "Under Construction/Commissioning": 19
    },
+   "gate": {
+    "": 440
+   },
    "flags": []
   },
   {
@@ -7389,6 +7832,9 @@
     "Scoping": 68,
     "Terminated": 5,
     "Under Construction/Commissioning": 19
+   },
+   "gate": {
+    "": 440
    },
    "flags": []
   },
@@ -7436,6 +7882,9 @@
     "Terminated": 5,
     "Under Construction/Commissioning": 19
    },
+   "gate": {
+    "": 441
+   },
    "flags": []
   },
   {
@@ -7481,6 +7930,9 @@
     "Scoping": 69,
     "Terminated": 5,
     "Under Construction/Commissioning": 19
+   },
+   "gate": {
+    "": 441
    },
    "flags": []
   },
@@ -7528,6 +7980,9 @@
     "Terminated": 5,
     "Under Construction/Commissioning": 20
    },
+   "gate": {
+    "": 438
+   },
    "flags": []
   },
   {
@@ -7574,6 +8029,9 @@
     "Terminated": 5,
     "Under Construction/Commissioning": 20
    },
+   "gate": {
+    "": 438
+   },
    "flags": []
   },
   {
@@ -7619,6 +8077,9 @@
     "Scoping": 69,
     "Terminated": 5,
     "Under Construction/Commissioning": 20
+   },
+   "gate": {
+    "": 438
    },
    "flags": []
   },
@@ -7667,6 +8128,9 @@
     "Terminated": 5,
     "Under Construction/Commissioning": 19
    },
+   "gate": {
+    "": 442
+   },
    "flags": []
   },
   {
@@ -7712,6 +8176,9 @@
     "Consents Approved": 86,
     "Scoping": 70,
     "Under Construction/Commissioning": 19
+   },
+   "gate": {
+    "": 436
    },
    "flags": []
   },
@@ -7759,6 +8226,9 @@
     "Scoping": 69,
     "Under Construction/Commissioning": 19
    },
+   "gate": {
+    "": 438
+   },
    "flags": []
   },
   {
@@ -7804,6 +8274,9 @@
     "Consents Approved": 84,
     "Scoping": 70,
     "Under Construction/Commissioning": 18
+   },
+   "gate": {
+    "": 438
    },
    "flags": []
   },
@@ -7851,6 +8324,9 @@
     "Scoping": 70,
     "Under Construction/Commissioning": 17
    },
+   "gate": {
+    "": 439
+   },
    "flags": []
   },
   {
@@ -7896,6 +8372,9 @@
     "Consents Approved": 80,
     "Scoping": 70,
     "Under Construction/Commissioning": 17
+   },
+   "gate": {
+    "": 439
    },
    "flags": []
   },
@@ -7943,6 +8422,9 @@
     "Scoping": 70,
     "Under Construction/Commissioning": 19
    },
+   "gate": {
+    "": 440
+   },
    "flags": []
   },
   {
@@ -7988,6 +8470,9 @@
     "Consents Approved": 78,
     "Scoping": 69,
     "Under Construction/Commissioning": 18
+   },
+   "gate": {
+    "": 442
    },
    "flags": []
   },
@@ -8035,6 +8520,9 @@
     "Scoping": 69,
     "Under Construction/Commissioning": 18
    },
+   "gate": {
+    "": 441
+   },
    "flags": []
   },
   {
@@ -8080,6 +8568,9 @@
     "Consents Approved": 78,
     "Scoping": 69,
     "Under Construction/Commissioning": 17
+   },
+   "gate": {
+    "": 440
    },
    "flags": []
   },
@@ -8127,6 +8618,9 @@
     "Scoping": 69,
     "Under Construction/Commissioning": 17
    },
+   "gate": {
+    "": 440
+   },
    "flags": []
   },
   {
@@ -8172,6 +8666,9 @@
     "Consents Approved": 79,
     "Scoping": 68,
     "Under Construction/Commissioning": 17
+   },
+   "gate": {
+    "": 440
    },
    "flags": []
   },
@@ -8219,6 +8716,9 @@
     "Scoping": 68,
     "Under Construction/Commissioning": 17
    },
+   "gate": {
+    "": 441
+   },
    "flags": []
   },
   {
@@ -8264,6 +8764,9 @@
     "Consents Approved": 79,
     "Scoping": 68,
     "Under Construction/Commissioning": 17
+   },
+   "gate": {
+    "": 441
    },
    "flags": []
   },
@@ -8311,6 +8814,9 @@
     "Scoping": 68,
     "Under Construction/Commissioning": 17
    },
+   "gate": {
+    "": 441
+   },
    "flags": []
   },
   {
@@ -8357,6 +8863,9 @@
     "Scoping": 67,
     "Under Construction/Commissioning": 17
    },
+   "gate": {
+    "": 442
+   },
    "flags": []
   },
   {
@@ -8402,6 +8911,9 @@
     "Consents Approved": 79,
     "Scoping": 67,
     "Under Construction/Commissioning": 17
+   },
+   "gate": {
+    "": 444
    },
    "flags": []
   },
@@ -8450,6 +8962,9 @@
     "Terminated": 1,
     "Under Construction/Commissioning": 17
    },
+   "gate": {
+    "": 444
+   },
    "flags": []
   },
   {
@@ -8496,6 +9011,9 @@
     "Scoping": 67,
     "Terminated": 1,
     "Under Construction/Commissioning": 17
+   },
+   "gate": {
+    "": 444
    },
    "flags": []
   },
@@ -8544,6 +9062,9 @@
     "Terminated": 1,
     "Under Construction/Commissioning": 17
    },
+   "gate": {
+    "": 444
+   },
    "flags": []
   },
   {
@@ -8590,6 +9111,9 @@
     "Scoping": 67,
     "Terminated": 1,
     "Under Construction/Commissioning": 17
+   },
+   "gate": {
+    "": 444
    },
    "flags": []
   },
@@ -8638,6 +9162,9 @@
     "Terminated": 1,
     "Under Construction/Commissioning": 16
    },
+   "gate": {
+    "": 441
+   },
    "flags": []
   },
   {
@@ -8684,6 +9211,9 @@
     "Scoping": 66,
     "Terminated": 1,
     "Under Construction/Commissioning": 15
+   },
+   "gate": {
+    "": 441
    },
    "flags": []
   },
@@ -8732,6 +9262,9 @@
     "Terminated": 1,
     "Under Construction/Commissioning": 15
    },
+   "gate": {
+    "": 440
+   },
    "flags": []
   },
   {
@@ -8778,6 +9311,9 @@
     "Scoping": 67,
     "Terminated": 1,
     "Under Construction/Commissioning": 15
+   },
+   "gate": {
+    "": 441
    },
    "flags": []
   },
@@ -8826,6 +9362,9 @@
     "Terminated": 1,
     "Under Construction/Commissioning": 14
    },
+   "gate": {
+    "": 440
+   },
    "flags": []
   },
   {
@@ -8872,6 +9411,9 @@
     "Scoping": 68,
     "Terminated": 1,
     "Under Construction/Commissioning": 14
+   },
+   "gate": {
+    "": 440
    },
    "flags": []
   },
@@ -8920,6 +9462,9 @@
     "Terminated": 1,
     "Under Construction/Commissioning": 13
    },
+   "gate": {
+    "": 439
+   },
    "flags": []
   },
   {
@@ -8966,6 +9511,9 @@
     "Scoping": 64,
     "Terminated": 1,
     "Under Construction/Commissioning": 12
+   },
+   "gate": {
+    "": 435
    },
    "flags": []
   },
@@ -9014,6 +9562,9 @@
     "Terminated": 1,
     "Under Construction/Commissioning": 12
    },
+   "gate": {
+    "": 442
+   },
    "flags": []
   },
   {
@@ -9060,6 +9611,9 @@
     "Scoping": 72,
     "Terminated": 1,
     "Under Construction/Commissioning": 12
+   },
+   "gate": {
+    "": 444
    },
    "flags": []
   },
@@ -9108,6 +9662,9 @@
     "Terminated": 1,
     "Under Construction/Commissioning": 11
    },
+   "gate": {
+    "": 445
+   },
    "flags": []
   },
   {
@@ -9154,6 +9711,9 @@
     "Terminated": 1,
     "Under Construction/Commissioning": 12
    },
+   "gate": {
+    "": 441
+   },
    "flags": []
   },
   {
@@ -9199,6 +9759,9 @@
     "Scoping": 74,
     "Terminated": 1,
     "Under Construction/Commissioning": 12
+   },
+   "gate": {
+    "": 448
    },
    "flags": []
   },
@@ -9247,6 +9810,9 @@
     "Terminated": 1,
     "Under Construction/Commissioning": 14
    },
+   "gate": {
+    "": 450
+   },
    "flags": []
   },
   {
@@ -9293,6 +9859,9 @@
     "Scoping": 74,
     "Terminated": 1,
     "Under Construction/Commissioning": 14
+   },
+   "gate": {
+    "": 451
    },
    "flags": []
   },
@@ -9341,6 +9910,9 @@
     "Terminated": 1,
     "Under Construction/Commissioning": 14
    },
+   "gate": {
+    "": 487
+   },
    "flags": []
   },
   {
@@ -9387,6 +9959,9 @@
     "Scoping": 75,
     "Terminated": 1,
     "Under Construction/Commissioning": 13
+   },
+   "gate": {
+    "": 468
    },
    "flags": []
   },
@@ -9435,6 +10010,9 @@
     "Terminated": 1,
     "Under Construction/Commissioning": 16
    },
+   "gate": {
+    "": 472
+   },
    "flags": []
   },
   {
@@ -9480,6 +10058,9 @@
     "Consents Approved": 76,
     "Scoping": 76,
     "Under Construction/Commissioning": 13
+   },
+   "gate": {
+    "": 471
    },
    "flags": []
   },
@@ -9527,6 +10108,9 @@
     "Scoping": 76,
     "Under Construction/Commissioning": 20
    },
+   "gate": {
+    "": 479
+   },
    "flags": []
   },
   {
@@ -9572,6 +10156,9 @@
     "Consents Approved": 77,
     "Scoping": 76,
     "Under Construction/Commissioning": 20
+   },
+   "gate": {
+    "": 479
    },
    "flags": []
   },
@@ -9619,6 +10206,9 @@
     "Scoping": 77,
     "Under Construction/Commissioning": 20
    },
+   "gate": {
+    "": 480
+   },
    "flags": []
   },
   {
@@ -9664,6 +10254,9 @@
     "Consents Approved": 76,
     "Scoping": 77,
     "Under Construction/Commissioning": 20
+   },
+   "gate": {
+    "": 480
    },
    "flags": []
   },
@@ -9711,6 +10304,9 @@
     "Scoping": 83,
     "Under Construction/Commissioning": 19
    },
+   "gate": {
+    "": 486
+   },
    "flags": []
   },
   {
@@ -9757,6 +10353,9 @@
     "Scoping": 81,
     "Under Construction/Commissioning": 19
    },
+   "gate": {
+    "": 486
+   },
    "flags": []
   },
   {
@@ -9802,6 +10401,9 @@
     "Scoping": 82,
     "Under Construction/Commissioning": 19
    },
+   "gate": {
+    "": 485
+   },
    "flags": []
   },
   {
@@ -9846,6 +10448,9 @@
     "Consents Approved": 78,
     "Scoping": 84,
     "Under Construction/Commissioning": 19
+   },
+   "gate": {
+    "": 484
    },
    "flags": []
   },
@@ -9893,6 +10498,9 @@
     "Terminated": 2,
     "Under Construction/Commissioning": 19
    },
+   "gate": {
+    "": 484
+   },
    "flags": []
   },
   {
@@ -9938,6 +10546,9 @@
     "Scoping": 79,
     "Terminated": 2,
     "Under Construction/Commissioning": 19
+   },
+   "gate": {
+    "": 480
    },
    "flags": []
   },
@@ -9986,6 +10597,9 @@
     "Terminated": 2,
     "Under Construction/Commissioning": 20
    },
+   "gate": {
+    "": 491
+   },
    "flags": []
   },
   {
@@ -10032,6 +10646,9 @@
     "Scoping": 80,
     "Terminated": 2,
     "Under Construction/Commissioning": 20
+   },
+   "gate": {
+    "": 493
    },
    "flags": []
   },
@@ -10080,6 +10697,9 @@
     "Terminated": 3,
     "Under Construction/Commissioning": 20
    },
+   "gate": {
+    "": 494
+   },
    "flags": []
   },
   {
@@ -10126,6 +10746,9 @@
     "Scoping": 80,
     "Terminated": 3,
     "Under Construction/Commissioning": 20
+   },
+   "gate": {
+    "": 496
    },
    "flags": []
   },
@@ -10174,6 +10797,9 @@
     "Terminated": 3,
     "Under Construction/Commissioning": 20
    },
+   "gate": {
+    "": 497
+   },
    "flags": []
   },
   {
@@ -10219,6 +10845,9 @@
     "Scoping": 75,
     "Terminated": 6,
     "Under Construction/Commissioning": 21
+   },
+   "gate": {
+    "": 493
    },
    "flags": []
   },
@@ -10266,6 +10895,9 @@
     "Terminated": 6,
     "Under Construction/Commissioning": 21
    },
+   "gate": {
+    "": 494
+   },
    "flags": []
   },
   {
@@ -10311,6 +10943,9 @@
     "Scoping": 75,
     "Terminated": 6,
     "Under Construction/Commissioning": 21
+   },
+   "gate": {
+    "": 494
    },
    "flags": []
   },
@@ -10358,6 +10993,9 @@
     "Terminated": 6,
     "Under Construction/Commissioning": 21
    },
+   "gate": {
+    "": 495
+   },
    "flags": []
   },
   {
@@ -10404,6 +11042,9 @@
     "Terminated": 6,
     "Under Construction/Commissioning": 21
    },
+   "gate": {
+    "": 495
+   },
    "flags": []
   },
   {
@@ -10449,6 +11090,9 @@
     "Scoping": 76,
     "Terminated": 7,
     "Under Construction/Commissioning": 21
+   },
+   "gate": {
+    "": 496
    },
    "flags": []
   },
@@ -10497,6 +11141,9 @@
     "Terminated": 7,
     "Under Construction/Commissioning": 21
    },
+   "gate": {
+    "": 499
+   },
    "flags": []
   },
   {
@@ -10543,6 +11190,9 @@
     "Scoping": 78,
     "Terminated": 7,
     "Under Construction/Commissioning": 21
+   },
+   "gate": {
+    "": 504
    },
    "flags": []
   },
@@ -10591,6 +11241,9 @@
     "Terminated": 7,
     "Under Construction/Commissioning": 21
    },
+   "gate": {
+    "": 505
+   },
    "flags": []
   },
   {
@@ -10637,6 +11290,9 @@
     "Scoping": 80,
     "Terminated": 7,
     "Under Construction/Commissioning": 21
+   },
+   "gate": {
+    "": 506
    },
    "flags": []
   },
@@ -10685,6 +11341,9 @@
     "Terminated": 7,
     "Under Construction/Commissioning": 21
    },
+   "gate": {
+    "": 509
+   },
    "flags": []
   },
   {
@@ -10732,6 +11391,9 @@
     "Terminated": 7,
     "Under Construction/Commissioning": 20
    },
+   "gate": {
+    "": 510
+   },
    "flags": []
   },
   {
@@ -10777,6 +11439,9 @@
     "Scoping": 86,
     "Terminated": 7,
     "Under Construction/Commissioning": 20
+   },
+   "gate": {
+    "": 508
    },
    "flags": []
   },
@@ -10825,6 +11490,9 @@
     "Terminated": 7,
     "Under Construction/Commissioning": 20
    },
+   "gate": {
+    "": 508
+   },
    "flags": []
   },
   {
@@ -10871,6 +11539,9 @@
     "Scoping": 84,
     "Terminated": 7,
     "Under Construction/Commissioning": 19
+   },
+   "gate": {
+    "": 508
    },
    "flags": []
   },
@@ -10919,6 +11590,9 @@
     "Terminated": 7,
     "Under Construction/Commissioning": 19
    },
+   "gate": {
+    "": 508
+   },
    "flags": []
   },
   {
@@ -10965,6 +11639,9 @@
     "Scoping": 84,
     "Terminated": 7,
     "Under Construction/Commissioning": 19
+   },
+   "gate": {
+    "": 508
    },
    "flags": []
   },
@@ -11013,6 +11690,9 @@
     "Terminated": 7,
     "Under Construction/Commissioning": 19
    },
+   "gate": {
+    "": 506
+   },
    "flags": []
   },
   {
@@ -11059,6 +11739,9 @@
     "Scoping": 84,
     "Terminated": 7,
     "Under Construction/Commissioning": 19
+   },
+   "gate": {
+    "": 506
    },
    "flags": []
   },
@@ -11107,6 +11790,9 @@
     "Terminated": 7,
     "Under Construction/Commissioning": 19
    },
+   "gate": {
+    "": 507
+   },
    "flags": []
   },
   {
@@ -11153,6 +11839,9 @@
     "Scoping": 83,
     "Terminated": 7,
     "Under Construction/Commissioning": 19
+   },
+   "gate": {
+    "": 508
    },
    "flags": []
   },
@@ -11201,6 +11890,9 @@
     "Terminated": 7,
     "Under Construction/Commissioning": 19
    },
+   "gate": {
+    "": 510
+   },
    "flags": []
   },
   {
@@ -11247,6 +11939,9 @@
     "Scoping": 84,
     "Terminated": 7,
     "Under Construction/Commissioning": 19
+   },
+   "gate": {
+    "": 510
    },
    "flags": []
   },
@@ -11295,6 +11990,9 @@
     "Terminated": 4,
     "Under Construction/Commissioning": 21
    },
+   "gate": {
+    "": 510
+   },
    "flags": []
   },
   {
@@ -11341,6 +12039,9 @@
     "Scoping": 82,
     "Terminated": 4,
     "Under Construction/Commissioning": 21
+   },
+   "gate": {
+    "": 510
    },
    "flags": []
   },
@@ -11389,6 +12090,9 @@
     "Terminated": 4,
     "Under Construction/Commissioning": 21
    },
+   "gate": {
+    "": 510
+   },
    "flags": []
   },
   {
@@ -11435,6 +12139,9 @@
     "Scoping": 82,
     "Terminated": 4,
     "Under Construction/Commissioning": 21
+   },
+   "gate": {
+    "": 510
    },
    "flags": []
   },
@@ -11483,6 +12190,9 @@
     "Terminated": 4,
     "Under Construction/Commissioning": 21
    },
+   "gate": {
+    "": 512
+   },
    "flags": []
   },
   {
@@ -11529,6 +12239,9 @@
     "Scoping": 85,
     "Terminated": 4,
     "Under Construction/Commissioning": 21
+   },
+   "gate": {
+    "": 515
    },
    "flags": []
   },
@@ -11577,6 +12290,9 @@
     "Terminated": 4,
     "Under Construction/Commissioning": 21
    },
+   "gate": {
+    "": 516
+   },
    "flags": []
   },
   {
@@ -11623,6 +12339,9 @@
     "Scoping": 88,
     "Terminated": 4,
     "Under Construction/Commissioning": 23
+   },
+   "gate": {
+    "": 520
    },
    "flags": []
   },
@@ -11671,6 +12390,9 @@
     "Terminated": 4,
     "Under Construction/Commissioning": 23
    },
+   "gate": {
+    "": 519
+   },
    "flags": []
   },
   {
@@ -11717,6 +12439,9 @@
     "Scoping": 91,
     "Terminated": 4,
     "Under Construction/Commissioning": 23
+   },
+   "gate": {
+    "": 521
    },
    "flags": []
   },
@@ -11765,6 +12490,9 @@
     "Terminated": 4,
     "Under Construction/Commissioning": 23
    },
+   "gate": {
+    "": 526
+   },
    "flags": []
   },
   {
@@ -11811,6 +12539,9 @@
     "Scoping": 97,
     "Terminated": 4,
     "Under Construction/Commissioning": 23
+   },
+   "gate": {
+    "": 532
    },
    "flags": []
   },
@@ -11859,6 +12590,9 @@
     "Terminated": 3,
     "Under Construction/Commissioning": 23
    },
+   "gate": {
+    "": 534
+   },
    "flags": []
   },
   {
@@ -11903,6 +12637,9 @@
     "Consents Approved": 82,
     "Scoping": 107,
     "Under Construction/Commissioning": 23
+   },
+   "gate": {
+    "": 535
    },
    "flags": []
   },
@@ -11949,6 +12686,9 @@
     "Scoping": 107,
     "Under Construction/Commissioning": 23
    },
+   "gate": {
+    "": 531
+   },
    "flags": []
   },
   {
@@ -11993,6 +12733,9 @@
     "Consents Approved": 85,
     "Scoping": 107,
     "Under Construction/Commissioning": 23
+   },
+   "gate": {
+    "": 534
    },
    "flags": []
   },
@@ -12039,6 +12782,9 @@
     "Scoping": 108,
     "Under Construction/Commissioning": 23
    },
+   "gate": {
+    "": 536
+   },
    "flags": []
   },
   {
@@ -12083,6 +12829,9 @@
     "Consents Approved": 85,
     "Scoping": 107,
     "Under Construction/Commissioning": 23
+   },
+   "gate": {
+    "": 535
    },
    "flags": []
   },
@@ -12129,6 +12878,9 @@
     "Scoping": 107,
     "Under Construction/Commissioning": 23
    },
+   "gate": {
+    "": 537
+   },
    "flags": []
   },
   {
@@ -12173,6 +12925,9 @@
     "Consents Approved": 88,
     "Scoping": 110,
     "Under Construction/Commissioning": 23
+   },
+   "gate": {
+    "": 540
    },
    "flags": []
   },
@@ -12219,6 +12974,9 @@
     "Scoping": 110,
     "Under Construction/Commissioning": 23
    },
+   "gate": {
+    "": 540
+   },
    "flags": []
   },
   {
@@ -12263,6 +13021,9 @@
     "Consents Approved": 88,
     "Scoping": 112,
     "Under Construction/Commissioning": 23
+   },
+   "gate": {
+    "": 541
    },
    "flags": []
   },
@@ -12309,6 +13070,9 @@
     "Consents Approved": 88,
     "Scoping": 113,
     "Under Construction/Commissioning": 24
+   },
+   "gate": {
+    "": 544
    },
    "flags": []
   },
@@ -12357,6 +13121,9 @@
     "Scoping": 110,
     "Under Construction/Commissioning": 24
    },
+   "gate": {
+    "": 543
+   },
    "flags": []
   },
   {
@@ -12402,6 +13169,9 @@
     "Consents Approved": 91,
     "Scoping": 108,
     "Under Construction/Commissioning": 24
+   },
+   "gate": {
+    "": 542
    },
    "flags": []
   },
@@ -12450,6 +13220,9 @@
     "Scoping": 111,
     "Under Construction/Commissioning": 24
    },
+   "gate": {
+    "": 545
+   },
    "flags": []
   },
   {
@@ -12497,6 +13270,9 @@
     "Scoping": 112,
     "Under Construction/Commissioning": 24
    },
+   "gate": {
+    "": 546
+   },
    "flags": []
   },
   {
@@ -12542,6 +13318,9 @@
     "Consents Approved": 92,
     "Scoping": 111,
     "Under Construction/Commissioning": 24
+   },
+   "gate": {
+    "": 544
    },
    "flags": []
   },
@@ -12589,6 +13368,9 @@
     "Scoping": 111,
     "Under Construction/Commissioning": 24
    },
+   "gate": {
+    "": 545
+   },
    "flags": []
   },
   {
@@ -12633,6 +13415,9 @@
     "Consents Approved": 93,
     "Scoping": 111,
     "Under Construction/Commissioning": 24
+   },
+   "gate": {
+    "": 544
    },
    "flags": []
   },
@@ -12679,6 +13464,9 @@
     "Scoping": 112,
     "Under Construction/Commissioning": 24
    },
+   "gate": {
+    "": 545
+   },
    "flags": []
   },
   {
@@ -12723,6 +13511,9 @@
     "Consents Approved": 96,
     "Scoping": 114,
     "Under Construction/Commissioning": 22
+   },
+   "gate": {
+    "": 548
    },
    "flags": []
   },
@@ -12769,6 +13560,9 @@
     "Scoping": 116,
     "Under Construction/Commissioning": 22
    },
+   "gate": {
+    "": 550
+   },
    "flags": []
   },
   {
@@ -12813,6 +13607,9 @@
     "Consents Approved": 96,
     "Scoping": 119,
     "Under Construction/Commissioning": 22
+   },
+   "gate": {
+    "": 554
    },
    "flags": []
   },
@@ -12859,6 +13656,9 @@
     "Scoping": 118,
     "Under Construction/Commissioning": 21
    },
+   "gate": {
+    "": 553
+   },
    "flags": []
   },
   {
@@ -12903,6 +13703,9 @@
     "Consents Approved": 96,
     "Scoping": 121,
     "Under Construction/Commissioning": 21
+   },
+   "gate": {
+    "": 556
    },
    "flags": []
   },
@@ -12949,6 +13752,9 @@
     "Scoping": 121,
     "Under Construction/Commissioning": 21
    },
+   "gate": {
+    "": 557
+   },
    "flags": []
   },
   {
@@ -12994,6 +13800,9 @@
     "Scoping": 122,
     "Under Construction/Commissioning": 21
    },
+   "gate": {
+    "": 558
+   },
    "flags": []
   },
   {
@@ -13038,6 +13847,9 @@
     "Consents Approved": 96,
     "Scoping": 123,
     "Under Construction/Commissioning": 21
+   },
+   "gate": {
+    "": 559
    },
    "flags": []
   },
@@ -13085,6 +13897,9 @@
     "Terminated": 4,
     "Under Construction/Commissioning": 22
    },
+   "gate": {
+    "": 567
+   },
    "flags": []
   },
   {
@@ -13131,6 +13946,9 @@
     "Scoping": 114,
     "Terminated": 5,
     "Under Construction/Commissioning": 22
+   },
+   "gate": {
+    "": 568
    },
    "flags": []
   },
@@ -13180,6 +13998,9 @@
     "Terminated": 4,
     "Under Construction/Commissioning": 13
    },
+   "gate": {
+    "": 515
+   },
    "flags": []
   },
   {
@@ -13226,6 +14047,9 @@
     "Consents Approved": 72,
     "Scoping": 110,
     "Under Construction/Commissioning": 13
+   },
+   "gate": {
+    "": 516
    },
    "flags": []
   },
@@ -13275,6 +14099,9 @@
     "Scoping": 112,
     "Under Construction/Commissioning": 13
    },
+   "gate": {
+    "": 520
+   },
    "flags": []
   },
   {
@@ -13322,6 +14149,9 @@
     "Consents Approved": 75,
     "Scoping": 112,
     "Under Construction/Commissioning": 13
+   },
+   "gate": {
+    "": 519
    },
    "flags": []
   },
@@ -13371,6 +14201,9 @@
     "Scoping": 112,
     "Under Construction/Commissioning": 13
    },
+   "gate": {
+    "": 517
+   },
    "flags": []
   },
   {
@@ -13418,6 +14251,9 @@
     "Consents Approved": 74,
     "Scoping": 113,
     "Under Construction/Commissioning": 13
+   },
+   "gate": {
+    "": 518
    },
    "flags": []
   },
@@ -13468,6 +14304,9 @@
     "Scoping": 113,
     "Under Construction/Commissioning": 13
    },
+   "gate": {
+    "": 519
+   },
    "flags": []
   },
   {
@@ -13515,6 +14354,9 @@
     "Consents Approved": 74,
     "Scoping": 115,
     "Under Construction/Commissioning": 13
+   },
+   "gate": {
+    "": 522
    },
    "flags": []
   },
@@ -13564,6 +14406,9 @@
     "Scoping": 117,
     "Under Construction/Commissioning": 13
    },
+   "gate": {
+    "": 523
+   },
    "flags": []
   },
   {
@@ -13611,6 +14456,9 @@
     "Consents Approved": 74,
     "Scoping": 119,
     "Under Construction/Commissioning": 13
+   },
+   "gate": {
+    "": 525
    },
    "flags": []
   },
@@ -13660,6 +14508,9 @@
     "Scoping": 122,
     "Under Construction/Commissioning": 13
    },
+   "gate": {
+    "": 524
+   },
    "flags": []
   },
   {
@@ -13707,6 +14558,9 @@
     "Consents Approved": 73,
     "Scoping": 123,
     "Under Construction/Commissioning": 13
+   },
+   "gate": {
+    "": 526
    },
    "flags": []
   },
@@ -13756,6 +14610,9 @@
     "Scoping": 125,
     "Under Construction/Commissioning": 13
    },
+   "gate": {
+    "": 528
+   },
    "flags": []
   },
   {
@@ -13803,6 +14660,9 @@
     "Consents Approved": 73,
     "Scoping": 125,
     "Under Construction/Commissioning": 13
+   },
+   "gate": {
+    "": 529
    },
    "flags": []
   },
@@ -13852,6 +14712,9 @@
     "Scoping": 128,
     "Under Construction/Commissioning": 13
    },
+   "gate": {
+    "": 532
+   },
    "flags": []
   },
   {
@@ -13899,6 +14762,9 @@
     "Consents Approved": 73,
     "Scoping": 130,
     "Under Construction/Commissioning": 13
+   },
+   "gate": {
+    "": 534
    },
    "flags": []
   },
@@ -13948,6 +14814,9 @@
     "Scoping": 131,
     "Under Construction/Commissioning": 7
    },
+   "gate": {
+    "": 535
+   },
    "flags": []
   },
   {
@@ -13995,6 +14864,9 @@
     "Consents Approved": 73,
     "Scoping": 133,
     "Under Construction/Commissioning": 7
+   },
+   "gate": {
+    "": 537
    },
    "flags": []
   },
@@ -14044,6 +14916,9 @@
     "Scoping": 140,
     "Under Construction/Commissioning": 7
    },
+   "gate": {
+    "": 547
+   },
    "flags": []
   },
   {
@@ -14091,6 +14966,9 @@
     "Consents Approved": 76,
     "Scoping": 142,
     "Under Construction/Commissioning": 7
+   },
+   "gate": {
+    "": 549
    },
    "flags": []
   },
@@ -14140,6 +15018,9 @@
     "Scoping": 142,
     "Under Construction/Commissioning": 6
    },
+   "gate": {
+    "": 548
+   },
    "flags": []
   },
   {
@@ -14187,6 +15068,9 @@
     "Consents Approved": 75,
     "Scoping": 144,
     "Under Construction/Commissioning": 4
+   },
+   "gate": {
+    "": 550
    },
    "flags": []
   },
@@ -14236,6 +15120,9 @@
     "Scoping": 158,
     "Under Construction/Commissioning": 4
    },
+   "gate": {
+    "": 563
+   },
    "flags": []
   },
   {
@@ -14283,6 +15170,9 @@
     "Consents Approved": 69,
     "Scoping": 160,
     "Under Construction/Commissioning": 10
+   },
+   "gate": {
+    "": 564
    },
    "flags": []
   },
@@ -14332,6 +15222,9 @@
     "Scoping": 161,
     "Under Construction/Commissioning": 13
    },
+   "gate": {
+    "": 568
+   },
    "flags": []
   },
   {
@@ -14379,6 +15272,9 @@
     "Consents Approved": 68,
     "Scoping": 165,
     "Under Construction/Commissioning": 13
+   },
+   "gate": {
+    "": 573
    },
    "flags": []
   },
@@ -14428,6 +15324,9 @@
     "Scoping": 165,
     "Under Construction/Commissioning": 13
    },
+   "gate": {
+    "": 573
+   },
    "flags": []
   },
   {
@@ -14475,6 +15374,9 @@
     "Consents Approved": 70,
     "Scoping": 165,
     "Under Construction/Commissioning": 13
+   },
+   "gate": {
+    "": 574
    },
    "flags": []
   },
@@ -14524,6 +15426,9 @@
     "Scoping": 166,
     "Under Construction/Commissioning": 13
    },
+   "gate": {
+    "": 576
+   },
    "flags": []
   },
   {
@@ -14570,6 +15475,9 @@
     "Consents Approved": 71,
     "Scoping": 166,
     "Under Construction/Commissioning": 13
+   },
+   "gate": {
+    "": 576
    },
    "flags": []
   },
@@ -14618,6 +15526,9 @@
     "Scoping": 166,
     "Under Construction/Commissioning": 13
    },
+   "gate": {
+    "": 576
+   },
    "flags": []
   },
   {
@@ -14664,6 +15575,9 @@
     "Consents Approved": 71,
     "Scoping": 167,
     "Under Construction/Commissioning": 13
+   },
+   "gate": {
+    "": 577
    },
    "flags": []
   },
@@ -14712,6 +15626,9 @@
     "Scoping": 168,
     "Under Construction/Commissioning": 13
    },
+   "gate": {
+    "": 578
+   },
    "flags": []
   },
   {
@@ -14758,6 +15675,9 @@
     "Consents Approved": 71,
     "Scoping": 170,
     "Under Construction/Commissioning": 13
+   },
+   "gate": {
+    "": 580
    },
    "flags": []
   },
@@ -14806,6 +15726,9 @@
     "Scoping": 170,
     "Under Construction/Commissioning": 13
    },
+   "gate": {
+    "": 580
+   },
    "flags": []
   },
   {
@@ -14852,6 +15775,9 @@
     "Consents Approved": 71,
     "Scoping": 170,
     "Under Construction/Commissioning": 13
+   },
+   "gate": {
+    "": 580
    },
    "flags": []
   },
@@ -14900,6 +15826,9 @@
     "Scoping": 171,
     "Under Construction/Commissioning": 12
    },
+   "gate": {
+    "": 579
+   },
    "flags": []
   },
   {
@@ -14946,6 +15875,9 @@
     "Consents Approved": 70,
     "Scoping": 171,
     "Under Construction/Commissioning": 12
+   },
+   "gate": {
+    "": 579
    },
    "flags": []
   },
@@ -14994,6 +15926,9 @@
     "Scoping": 170,
     "Under Construction/Commissioning": 12
    },
+   "gate": {
+    "": 578
+   },
    "flags": []
   },
   {
@@ -15040,6 +15975,9 @@
     "Consents Approved": 69,
     "Scoping": 171,
     "Under Construction/Commissioning": 12
+   },
+   "gate": {
+    "": 579
    },
    "flags": []
   },
@@ -15088,6 +16026,9 @@
     "Scoping": 172,
     "Under Construction/Commissioning": 12
    },
+   "gate": {
+    "": 580
+   },
    "flags": []
   },
   {
@@ -15134,6 +16075,9 @@
     "Consents Approved": 69,
     "Scoping": 172,
     "Under Construction/Commissioning": 12
+   },
+   "gate": {
+    "": 580
    },
    "flags": []
   },
@@ -15182,6 +16126,9 @@
     "Scoping": 173,
     "Under Construction/Commissioning": 12
    },
+   "gate": {
+    "": 581
+   },
    "flags": []
   },
   {
@@ -15228,6 +16175,9 @@
     "Consents Approved": 68,
     "Scoping": 173,
     "Under Construction/Commissioning": 12
+   },
+   "gate": {
+    "": 580
    },
    "flags": []
   },
@@ -15276,6 +16226,9 @@
     "Scoping": 173,
     "Under Construction/Commissioning": 12
    },
+   "gate": {
+    "": 579
+   },
    "flags": []
   },
   {
@@ -15322,6 +16275,9 @@
     "Consents Approved": 68,
     "Scoping": 173,
     "Under Construction/Commissioning": 12
+   },
+   "gate": {
+    "": 579
    },
    "flags": []
   },
@@ -15370,6 +16326,9 @@
     "Scoping": 176,
     "Under Construction/Commissioning": 12
    },
+   "gate": {
+    "": 582
+   },
    "flags": []
   },
   {
@@ -15416,6 +16375,9 @@
     "Consents Approved": 68,
     "Scoping": 177,
     "Under Construction/Commissioning": 12
+   },
+   "gate": {
+    "": 583
    },
    "flags": []
   },
@@ -15464,6 +16426,9 @@
     "Scoping": 178,
     "Under Construction/Commissioning": 12
    },
+   "gate": {
+    "": 584
+   },
    "flags": []
   },
   {
@@ -15510,6 +16475,9 @@
     "Consents Approved": 68,
     "Scoping": 177,
     "Under Construction/Commissioning": 12
+   },
+   "gate": {
+    "": 583
    },
    "flags": []
   },
@@ -15558,6 +16526,9 @@
     "Scoping": 176,
     "Under Construction/Commissioning": 12
    },
+   "gate": {
+    "": 582
+   },
    "flags": []
   },
   {
@@ -15604,6 +16575,9 @@
     "Consents Approved": 69,
     "Scoping": 178,
     "Under Construction/Commissioning": 11
+   },
+   "gate": {
+    "": 585
    },
    "flags": []
   },
@@ -15652,6 +16626,9 @@
     "Scoping": 179,
     "Under Construction/Commissioning": 11
    },
+   "gate": {
+    "": 586
+   },
    "flags": []
   },
   {
@@ -15698,6 +16675,9 @@
     "Consents Approved": 69,
     "Scoping": 179,
     "Under Construction/Commissioning": 11
+   },
+   "gate": {
+    "": 586
    },
    "flags": []
   },
@@ -15746,6 +16726,9 @@
     "Scoping": 180,
     "Under Construction/Commissioning": 11
    },
+   "gate": {
+    "": 588
+   },
    "flags": []
   },
   {
@@ -15793,6 +16776,9 @@
     "Scoping": 182,
     "Under Construction/Commissioning": 11
    },
+   "gate": {
+    "": 590
+   },
    "flags": []
   },
   {
@@ -15839,6 +16825,9 @@
     "Consents Approved": 69,
     "Scoping": 182,
     "Under Construction/Commissioning": 11
+   },
+   "gate": {
+    "": 590
    },
    "flags": []
   },
@@ -15888,6 +16877,9 @@
     "Terminated": 2,
     "Under Construction/Commissioning": 11
    },
+   "gate": {
+    "": 592
+   },
    "flags": []
   },
   {
@@ -15934,6 +16926,9 @@
     "Consents Approved": 70,
     "Scoping": 184,
     "Under Construction/Commissioning": 11
+   },
+   "gate": {
+    "": 590
    },
    "flags": []
   },
@@ -15982,6 +16977,9 @@
     "Scoping": 186,
     "Under Construction/Commissioning": 11
    },
+   "gate": {
+    "": 592
+   },
    "flags": []
   },
   {
@@ -16028,6 +17026,9 @@
     "Consents Approved": 70,
     "Scoping": 187,
     "Under Construction/Commissioning": 11
+   },
+   "gate": {
+    "": 592
    },
    "flags": []
   },
@@ -16076,6 +17077,9 @@
     "Scoping": 188,
     "Under Construction/Commissioning": 11
    },
+   "gate": {
+    "": 592
+   },
    "flags": []
   },
   {
@@ -16122,6 +17126,9 @@
     "Consents Approved": 70,
     "Scoping": 189,
     "Under Construction/Commissioning": 11
+   },
+   "gate": {
+    "": 593
    },
    "flags": []
   },
@@ -16170,6 +17177,9 @@
     "Scoping": 190,
     "Under Construction/Commissioning": 11
    },
+   "gate": {
+    "": 595
+   },
    "flags": []
   },
   {
@@ -16216,6 +17226,9 @@
     "Consents Approved": 71,
     "Scoping": 193,
     "Under Construction/Commissioning": 11
+   },
+   "gate": {
+    "": 598
    },
    "flags": []
   },
@@ -16264,6 +17277,9 @@
     "Scoping": 193,
     "Under Construction/Commissioning": 11
    },
+   "gate": {
+    "": 598
+   },
    "flags": []
   },
   {
@@ -16310,6 +17326,9 @@
     "Consents Approved": 71,
     "Scoping": 192,
     "Under Construction/Commissioning": 11
+   },
+   "gate": {
+    "": 599
    },
    "flags": []
   },
@@ -16358,6 +17377,9 @@
     "Scoping": 192,
     "Under Construction/Commissioning": 11
    },
+   "gate": {
+    "": 599
+   },
    "flags": []
   },
   {
@@ -16404,6 +17426,9 @@
     "Consents Approved": 90,
     "Scoping": 251,
     "Under Construction/Commissioning": 16
+   },
+   "gate": {
+    "": 692
    },
    "flags": []
   },
@@ -16452,6 +17477,9 @@
     "Scoping": 196,
     "Under Construction/Commissioning": 11
    },
+   "gate": {
+    "": 602
+   },
    "flags": []
   },
   {
@@ -16498,6 +17526,9 @@
     "Consents Approved": 69,
     "Scoping": 196,
     "Under Construction/Commissioning": 11
+   },
+   "gate": {
+    "": 603
    },
    "flags": []
   },
@@ -16546,6 +17577,9 @@
     "Scoping": 198,
     "Under Construction/Commissioning": 11
    },
+   "gate": {
+    "": 605
+   },
    "flags": []
   },
   {
@@ -16592,6 +17626,9 @@
     "Consents Approved": 69,
     "Scoping": 202,
     "Under Construction/Commissioning": 11
+   },
+   "gate": {
+    "": 609
    },
    "flags": []
   },
@@ -16640,6 +17677,9 @@
     "Scoping": 202,
     "Under Construction/Commissioning": 11
    },
+   "gate": {
+    "": 609
+   },
    "flags": []
   },
   {
@@ -16686,6 +17726,9 @@
     "Consents Approved": 69,
     "Scoping": 205,
     "Under Construction/Commissioning": 11
+   },
+   "gate": {
+    "": 612
    },
    "flags": []
   },
@@ -16735,6 +17778,9 @@
     "Scoping": 206,
     "Under Construction/Commissioning": 10
    },
+   "gate": {
+    "": 614
+   },
    "flags": []
   },
   {
@@ -16781,6 +17827,9 @@
     "Consents Approved": 67,
     "Scoping": 213,
     "Under Construction/Commissioning": 10
+   },
+   "gate": {
+    "": 621
    },
    "flags": []
   },
@@ -16829,6 +17878,9 @@
     "Scoping": 214,
     "Under Construction/Commissioning": 10
    },
+   "gate": {
+    "": 622
+   },
    "flags": []
   },
   {
@@ -16875,6 +17927,9 @@
     "Consents Approved": 70,
     "Scoping": 212,
     "Under Construction/Commissioning": 10
+   },
+   "gate": {
+    "": 622
    },
    "flags": []
   },
@@ -16923,6 +17978,9 @@
     "Scoping": 210,
     "Under Construction/Commissioning": 10
    },
+   "gate": {
+    "": 620
+   },
    "flags": []
   },
   {
@@ -16969,6 +18027,9 @@
     "Consents Approved": 70,
     "Scoping": 210,
     "Under Construction/Commissioning": 10
+   },
+   "gate": {
+    "": 620
    },
    "flags": []
   },
@@ -17017,6 +18078,9 @@
     "Scoping": 210,
     "Under Construction/Commissioning": 10
    },
+   "gate": {
+    "": 620
+   },
    "flags": []
   },
   {
@@ -17063,6 +18127,9 @@
     "Consents Approved": 69,
     "Scoping": 217,
     "Under Construction/Commissioning": 10
+   },
+   "gate": {
+    "": 628
    },
    "flags": []
   },
@@ -17111,6 +18178,9 @@
     "Scoping": 217,
     "Under Construction/Commissioning": 10
    },
+   "gate": {
+    "": 628
+   },
    "flags": []
   },
   {
@@ -17157,6 +18227,9 @@
     "Consents Approved": 71,
     "Scoping": 217,
     "Under Construction/Commissioning": 10
+   },
+   "gate": {
+    "": 630
    },
    "flags": []
   },
@@ -17205,6 +18278,9 @@
     "Scoping": 219,
     "Under Construction/Commissioning": 10
    },
+   "gate": {
+    "": 632
+   },
    "flags": []
   },
   {
@@ -17251,6 +18327,9 @@
     "Consents Approved": 71,
     "Scoping": 219,
     "Under Construction/Commissioning": 10
+   },
+   "gate": {
+    "": 632
    },
    "flags": []
   },
@@ -17299,6 +18378,9 @@
     "Scoping": 221,
     "Under Construction/Commissioning": 10
    },
+   "gate": {
+    "": 635
+   },
    "flags": []
   },
   {
@@ -17345,6 +18427,9 @@
     "Consents Approved": 71,
     "Scoping": 223,
     "Under Construction/Commissioning": 10
+   },
+   "gate": {
+    "": 637
    },
    "flags": []
   },
@@ -17393,6 +18478,9 @@
     "Scoping": 225,
     "Under Construction/Commissioning": 10
    },
+   "gate": {
+    "": 639
+   },
    "flags": []
   },
   {
@@ -17439,6 +18527,9 @@
     "Consents Approved": 72,
     "Scoping": 227,
     "Under Construction/Commissioning": 8
+   },
+   "gate": {
+    "": 641
    },
    "flags": []
   },
@@ -17487,6 +18578,9 @@
     "Scoping": 229,
     "Under Construction/Commissioning": 8
    },
+   "gate": {
+    "": 644
+   },
    "flags": []
   },
   {
@@ -17534,6 +18628,9 @@
     "Scoping": 288,
     "Under Construction/Commissioning": 15
    },
+   "gate": {
+    "": 738
+   },
    "flags": []
   },
   {
@@ -17580,6 +18677,9 @@
     "Consents Approved": 72,
     "Scoping": 230,
     "Under Construction/Commissioning": 8
+   },
+   "gate": {
+    "": 645
    },
    "flags": []
   },
@@ -17629,6 +18729,9 @@
     "Scoping": 230,
     "Under Construction/Commissioning": 8
    },
+   "gate": {
+    "": 654
+   },
    "flags": []
   },
   {
@@ -17675,6 +18778,9 @@
     "Consents Approved": 73,
     "Scoping": 230,
     "Under Construction/Commissioning": 8
+   },
+   "gate": {
+    "": 654
    },
    "flags": []
   },
@@ -17723,6 +18829,9 @@
     "Scoping": 233,
     "Under Construction/Commissioning": 8
    },
+   "gate": {
+    "": 656
+   },
    "flags": []
   },
   {
@@ -17769,6 +18878,9 @@
     "Consents Approved": 72,
     "Scoping": 234,
     "Under Construction/Commissioning": 8
+   },
+   "gate": {
+    "": 657
    },
    "flags": []
   },
@@ -17817,6 +18929,9 @@
     "Scoping": 234,
     "Under Construction/Commissioning": 8
    },
+   "gate": {
+    "": 656
+   },
    "flags": []
   },
   {
@@ -17862,6 +18977,9 @@
     "Consents Approved": 88,
     "Scoping": 291,
     "Under Construction/Commissioning": 14
+   },
+   "gate": {
+    "": 748
    },
    "flags": []
   },
@@ -17911,6 +19029,9 @@
     "Scoping": 293,
     "Under Construction/Commissioning": 14
    },
+   "gate": {
+    "": 751
+   },
    "flags": []
   },
   {
@@ -17957,6 +19078,9 @@
     "Consents Approved": 71,
     "Scoping": 239,
     "Under Construction/Commissioning": 8
+   },
+   "gate": {
+    "": 661
    },
    "flags": []
   },
@@ -18005,6 +19129,9 @@
     "Scoping": 239,
     "Under Construction/Commissioning": 8
    },
+   "gate": {
+    "": 662
+   },
    "flags": []
   },
   {
@@ -18051,6 +19178,9 @@
     "Consents Approved": 71,
     "Scoping": 242,
     "Under Construction/Commissioning": 7
+   },
+   "gate": {
+    "": 665
    },
    "flags": []
   },
@@ -18099,6 +19229,9 @@
     "Scoping": 243,
     "Under Construction/Commissioning": 7
    },
+   "gate": {
+    "": 667
+   },
    "flags": []
   },
   {
@@ -18145,6 +19278,9 @@
     "Consents Approved": 71,
     "Scoping": 243,
     "Under Construction/Commissioning": 7
+   },
+   "gate": {
+    "": 667
    },
    "flags": []
   },
@@ -18193,6 +19329,9 @@
     "Scoping": 243,
     "Under Construction/Commissioning": 7
    },
+   "gate": {
+    "": 667
+   },
    "flags": []
   },
   {
@@ -18239,6 +19378,9 @@
     "Consents Approved": 71,
     "Scoping": 245,
     "Under Construction/Commissioning": 7
+   },
+   "gate": {
+    "": 673
    },
    "flags": []
   },
@@ -18287,6 +19429,9 @@
     "Scoping": 246,
     "Under Construction/Commissioning": 7
    },
+   "gate": {
+    "": 674
+   },
    "flags": []
   },
   {
@@ -18333,6 +19478,9 @@
     "Consents Approved": 71,
     "Scoping": 246,
     "Under Construction/Commissioning": 7
+   },
+   "gate": {
+    "": 674
    },
    "flags": []
   },
@@ -18381,6 +19529,9 @@
     "Scoping": 247,
     "Under Construction/Commissioning": 7
    },
+   "gate": {
+    "": 675
+   },
    "flags": []
   },
   {
@@ -18427,6 +19578,9 @@
     "Consents Approved": 71,
     "Scoping": 247,
     "Under Construction/Commissioning": 7
+   },
+   "gate": {
+    "": 679
    },
    "flags": []
   },
@@ -18475,6 +19629,9 @@
     "Scoping": 247,
     "Under Construction/Commissioning": 7
    },
+   "gate": {
+    "": 679
+   },
    "flags": []
   },
   {
@@ -18521,6 +19678,9 @@
     "Consents Approved": 70,
     "Scoping": 249,
     "Under Construction/Commissioning": 6
+   },
+   "gate": {
+    "": 682
    },
    "flags": []
   },
@@ -18570,6 +19730,9 @@
     "Scoping": 250,
     "Under Construction/Commissioning": 6
    },
+   "gate": {
+    "": 683
+   },
    "flags": []
   },
   {
@@ -18617,6 +19780,9 @@
     "Consents Approved": 70,
     "Scoping": 265,
     "Under Construction/Commissioning": 7
+   },
+   "gate": {
+    "": 701
    },
    "flags": []
   },
@@ -18666,6 +19832,9 @@
     "Scoping": 267,
     "Under Construction/Commissioning": 7
    },
+   "gate": {
+    "": 708
+   },
    "flags": []
   },
   {
@@ -18713,6 +19882,9 @@
     "Consents Approved": 74,
     "Scoping": 268,
     "Under Construction/Commissioning": 7
+   },
+   "gate": {
+    "": 709
    },
    "flags": []
   },
@@ -18762,6 +19934,9 @@
     "Scoping": 276,
     "Under Construction/Commissioning": 7
    },
+   "gate": {
+    "": 717
+   },
    "flags": []
   },
   {
@@ -18809,6 +19984,9 @@
     "Consents Approved": 74,
     "Scoping": 279,
     "Under Construction/Commissioning": 7
+   },
+   "gate": {
+    "": 722
    },
    "flags": []
   },
@@ -18858,6 +20036,9 @@
     "Scoping": 279,
     "Under Construction/Commissioning": 7
    },
+   "gate": {
+    "": 722
+   },
    "flags": []
   },
   {
@@ -18905,6 +20086,9 @@
     "Consents Approved": 74,
     "Scoping": 287,
     "Under Construction/Commissioning": 7
+   },
+   "gate": {
+    "": 730
    },
    "flags": []
   },
@@ -18954,6 +20138,9 @@
     "Scoping": 288,
     "Under Construction/Commissioning": 7
    },
+   "gate": {
+    "": 733
+   },
    "flags": []
   },
   {
@@ -19001,6 +20188,9 @@
     "Consents Approved": 74,
     "Scoping": 288,
     "Under Construction/Commissioning": 7
+   },
+   "gate": {
+    "": 733
    },
    "flags": []
   },
@@ -19050,6 +20240,9 @@
     "Scoping": 290,
     "Under Construction/Commissioning": 7
    },
+   "gate": {
+    "": 735
+   },
    "flags": []
   },
   {
@@ -19097,6 +20290,9 @@
     "Consents Approved": 74,
     "Scoping": 290,
     "Under Construction/Commissioning": 7
+   },
+   "gate": {
+    "": 736
    },
    "flags": []
   },
@@ -19146,6 +20342,9 @@
     "Scoping": 291,
     "Under Construction/Commissioning": 7
    },
+   "gate": {
+    "": 739
+   },
    "flags": []
   },
   {
@@ -19193,6 +20392,9 @@
     "Consents Approved": 78,
     "Scoping": 291,
     "Under Construction/Commissioning": 7
+   },
+   "gate": {
+    "": 740
    },
    "flags": []
   },
@@ -19242,6 +20444,9 @@
     "Scoping": 292,
     "Under Construction/Commissioning": 7
    },
+   "gate": {
+    "": 741
+   },
    "flags": []
   },
   {
@@ -19289,6 +20494,9 @@
     "Consents Approved": 77,
     "Scoping": 293,
     "Under Construction/Commissioning": 7
+   },
+   "gate": {
+    "": 742
    },
    "flags": []
   },
@@ -19338,6 +20546,9 @@
     "Scoping": 296,
     "Under Construction/Commissioning": 8
    },
+   "gate": {
+    "": 746
+   },
    "flags": []
   },
   {
@@ -19385,6 +20596,9 @@
     "Consents Approved": 77,
     "Scoping": 299,
     "Under Construction/Commissioning": 8
+   },
+   "gate": {
+    "": 749
    },
    "flags": []
   },
@@ -19434,6 +20648,9 @@
     "Scoping": 300,
     "Under Construction/Commissioning": 8
    },
+   "gate": {
+    "": 752
+   },
    "flags": []
   },
   {
@@ -19481,6 +20698,9 @@
     "Consents Approved": 77,
     "Scoping": 300,
     "Under Construction/Commissioning": 8
+   },
+   "gate": {
+    "": 752
    },
    "flags": []
   },
@@ -19530,6 +20750,9 @@
     "Scoping": 302,
     "Under Construction/Commissioning": 8
    },
+   "gate": {
+    "": 754
+   },
    "flags": []
   },
   {
@@ -19577,6 +20800,9 @@
     "Consents Approved": 77,
     "Scoping": 305,
     "Under Construction/Commissioning": 8
+   },
+   "gate": {
+    "": 759
    },
    "flags": []
   },
@@ -19626,6 +20852,9 @@
     "Scoping": 309,
     "Under Construction/Commissioning": 8
    },
+   "gate": {
+    "": 763
+   },
    "flags": []
   },
   {
@@ -19673,6 +20902,9 @@
     "Consents Approved": 77,
     "Scoping": 308,
     "Under Construction/Commissioning": 8
+   },
+   "gate": {
+    "": 762
    },
    "flags": []
   },
@@ -19722,6 +20954,9 @@
     "Scoping": 311,
     "Under Construction/Commissioning": 8
    },
+   "gate": {
+    "": 765
+   },
    "flags": []
   },
   {
@@ -19769,6 +21004,9 @@
     "Consents Approved": 77,
     "Scoping": 311,
     "Under Construction/Commissioning": 8
+   },
+   "gate": {
+    "": 765
    },
    "flags": []
   },
@@ -19818,6 +21056,9 @@
     "Scoping": 314,
     "Under Construction/Commissioning": 8
    },
+   "gate": {
+    "": 767
+   },
    "flags": []
   },
   {
@@ -19865,6 +21106,9 @@
     "Consents Approved": 79,
     "Scoping": 314,
     "Under Construction/Commissioning": 8
+   },
+   "gate": {
+    "": 768
    },
    "flags": []
   },
@@ -19914,6 +21158,9 @@
     "Scoping": 313,
     "Under Construction/Commissioning": 8
    },
+   "gate": {
+    "": 767
+   },
    "flags": []
   },
   {
@@ -19961,6 +21208,9 @@
     "Consents Approved": 79,
     "Scoping": 317,
     "Under Construction/Commissioning": 8
+   },
+   "gate": {
+    "": 771
    },
    "flags": []
   },
@@ -20010,6 +21260,9 @@
     "Scoping": 318,
     "Under Construction/Commissioning": 8
    },
+   "gate": {
+    "": 770
+   },
    "flags": []
   },
   {
@@ -20057,6 +21310,9 @@
     "Consents Approved": 79,
     "Scoping": 319,
     "Under Construction/Commissioning": 8
+   },
+   "gate": {
+    "": 771
    },
    "flags": []
   },
@@ -20106,6 +21362,9 @@
     "Scoping": 319,
     "Under Construction/Commissioning": 8
    },
+   "gate": {
+    "": 771
+   },
    "flags": []
   },
   {
@@ -20153,6 +21412,9 @@
     "Consents Approved": 79,
     "Scoping": 320,
     "Under Construction/Commissioning": 8
+   },
+   "gate": {
+    "": 772
    },
    "flags": []
   },
@@ -20202,6 +21464,9 @@
     "Scoping": 320,
     "Under Construction/Commissioning": 7
    },
+   "gate": {
+    "": 772
+   },
    "flags": []
   },
   {
@@ -20249,6 +21514,9 @@
     "Consents Approved": 80,
     "Scoping": 321,
     "Under Construction/Commissioning": 7
+   },
+   "gate": {
+    "": 773
    },
    "flags": []
   },
@@ -20298,6 +21566,9 @@
     "Scoping": 324,
     "Under Construction/Commissioning": 7
    },
+   "gate": {
+    "": 776
+   },
    "flags": []
   },
   {
@@ -20345,6 +21616,9 @@
     "Consents Approved": 80,
     "Scoping": 327,
     "Under Construction/Commissioning": 7
+   },
+   "gate": {
+    "": 779
    },
    "flags": []
   },
@@ -20394,6 +21668,9 @@
     "Scoping": 328,
     "Under Construction/Commissioning": 7
    },
+   "gate": {
+    "": 780
+   },
    "flags": []
   },
   {
@@ -20441,6 +21718,9 @@
     "Consents Approved": 80,
     "Scoping": 329,
     "Under Construction/Commissioning": 7
+   },
+   "gate": {
+    "": 781
    },
    "flags": []
   },
@@ -20490,6 +21770,9 @@
     "Scoping": 332,
     "Under Construction/Commissioning": 7
    },
+   "gate": {
+    "": 783
+   },
    "flags": []
   },
   {
@@ -20538,6 +21821,9 @@
     "Scoping": 334,
     "Under Construction/Commissioning": 7
    },
+   "gate": {
+    "": 785
+   },
    "flags": []
   },
   {
@@ -20585,6 +21871,9 @@
     "Consents Approved": 80,
     "Scoping": 337,
     "Under Construction/Commissioning": 7
+   },
+   "gate": {
+    "": 788
    },
    "flags": []
   },
@@ -20635,6 +21924,9 @@
     "Scoping": 334,
     "Under Construction/Commissioning": 7
    },
+   "gate": {
+    "": 788
+   },
    "flags": []
   },
   {
@@ -20683,6 +21975,9 @@
     "Scoping": 336,
     "Under Construction/Commissioning": 7
    },
+   "gate": {
+    "": 789
+   },
    "flags": []
   },
   {
@@ -20730,6 +22025,9 @@
     "Consents Approved": 82,
     "Scoping": 337,
     "Under Construction/Commissioning": 7
+   },
+   "gate": {
+    "": 790
    },
    "flags": []
   },
@@ -20780,6 +22078,9 @@
     "Scoping": 336,
     "Under Construction/Commissioning": 7
    },
+   "gate": {
+    "": 790
+   },
    "flags": []
   },
   {
@@ -20829,6 +22130,9 @@
     "Scoping": 337,
     "Under Construction/Commissioning": 7
    },
+   "gate": {
+    "": 791
+   },
    "flags": []
   },
   {
@@ -20876,6 +22180,9 @@
     "Consents Approved": 82,
     "Scoping": 340,
     "Under Construction/Commissioning": 8
+   },
+   "gate": {
+    "": 794
    },
    "flags": []
   },
@@ -20925,6 +22232,9 @@
     "Scoping": 341,
     "Under Construction/Commissioning": 8
    },
+   "gate": {
+    "": 795
+   },
    "flags": []
   },
   {
@@ -20972,6 +22282,9 @@
     "Consents Approved": 82,
     "Scoping": 341,
     "Under Construction/Commissioning": 8
+   },
+   "gate": {
+    "": 794
    },
    "flags": []
   },
@@ -21021,6 +22334,9 @@
     "Scoping": 344,
     "Under Construction/Commissioning": 8
    },
+   "gate": {
+    "": 797
+   },
    "flags": []
   },
   {
@@ -21068,6 +22384,9 @@
     "Consents Approved": 83,
     "Scoping": 352,
     "Under Construction/Commissioning": 8
+   },
+   "gate": {
+    "": 805
    },
    "flags": []
   },
@@ -21117,6 +22436,9 @@
     "Scoping": 352,
     "Under Construction/Commissioning": 9
    },
+   "gate": {
+    "": 806
+   },
    "flags": []
   },
   {
@@ -21164,6 +22486,9 @@
     "Consents Approved": 83,
     "Scoping": 356,
     "Under Construction/Commissioning": 9
+   },
+   "gate": {
+    "": 811
    },
    "flags": []
   },
@@ -21214,6 +22539,9 @@
     "Scoping": 356,
     "Under Construction/Commissioning": 9
    },
+   "gate": {
+    "": 813
+   },
    "flags": []
   },
   {
@@ -21261,6 +22589,9 @@
     "Consents Approved": 82,
     "Scoping": 356,
     "Under Construction/Commissioning": 9
+   },
+   "gate": {
+    "": 813
    },
    "flags": []
   },
@@ -21310,6 +22641,9 @@
     "Scoping": 360,
     "Under Construction/Commissioning": 9
    },
+   "gate": {
+    "": 816
+   },
    "flags": []
   },
   {
@@ -21357,6 +22691,9 @@
     "Consents Approved": 82,
     "Scoping": 361,
     "Under Construction/Commissioning": 9
+   },
+   "gate": {
+    "": 817
    },
    "flags": []
   },
@@ -21406,6 +22743,9 @@
     "Scoping": 362,
     "Under Construction/Commissioning": 9
    },
+   "gate": {
+    "": 818
+   },
    "flags": []
   },
   {
@@ -21453,6 +22793,9 @@
     "Consents Approved": 82,
     "Scoping": 366,
     "Under Construction/Commissioning": 9
+   },
+   "gate": {
+    "": 822
    },
    "flags": []
   },
@@ -21502,6 +22845,9 @@
     "Scoping": 366,
     "Under Construction/Commissioning": 9
    },
+   "gate": {
+    "": 822
+   },
    "flags": []
   },
   {
@@ -21549,6 +22895,9 @@
     "Consents Approved": 83,
     "Scoping": 366,
     "Under Construction/Commissioning": 9
+   },
+   "gate": {
+    "": 823
    },
    "flags": []
   },
@@ -21598,6 +22947,9 @@
     "Scoping": 366,
     "Under Construction/Commissioning": 9
    },
+   "gate": {
+    "": 823
+   },
    "flags": []
   },
   {
@@ -21645,6 +22997,9 @@
     "Consents Approved": 83,
     "Scoping": 366,
     "Under Construction/Commissioning": 9
+   },
+   "gate": {
+    "": 823
    },
    "flags": []
   },
@@ -21694,6 +23049,9 @@
     "Scoping": 367,
     "Under Construction/Commissioning": 9
    },
+   "gate": {
+    "": 824
+   },
    "flags": []
   },
   {
@@ -21741,6 +23099,9 @@
     "Consents Approved": 83,
     "Scoping": 369,
     "Under Construction/Commissioning": 9
+   },
+   "gate": {
+    "": 826
    },
    "flags": []
   },
@@ -21790,6 +23151,9 @@
     "Scoping": 369,
     "Under Construction/Commissioning": 9
    },
+   "gate": {
+    "": 826
+   },
    "flags": []
   },
   {
@@ -21837,6 +23201,9 @@
     "Consents Approved": 83,
     "Scoping": 371,
     "Under Construction/Commissioning": 9
+   },
+   "gate": {
+    "": 828
    },
    "flags": []
   },
@@ -21886,6 +23253,9 @@
     "Scoping": 372,
     "Under Construction/Commissioning": 9
    },
+   "gate": {
+    "": 829
+   },
    "flags": []
   },
   {
@@ -21933,6 +23303,9 @@
     "Consents Approved": 83,
     "Scoping": 376,
     "Under Construction/Commissioning": 9
+   },
+   "gate": {
+    "": 833
    },
    "flags": []
   },
@@ -21982,6 +23355,9 @@
     "Scoping": 376,
     "Under Construction/Commissioning": 9
    },
+   "gate": {
+    "": 833
+   },
    "flags": []
   },
   {
@@ -22029,6 +23405,9 @@
     "Consents Approved": 82,
     "Scoping": 375,
     "Under Construction/Commissioning": 9
+   },
+   "gate": {
+    "": 834
    },
    "flags": []
   },
@@ -22078,6 +23457,9 @@
     "Scoping": 376,
     "Under Construction/Commissioning": 9
    },
+   "gate": {
+    "": 835
+   },
    "flags": []
   },
   {
@@ -22125,6 +23507,9 @@
     "Consents Approved": 82,
     "Scoping": 379,
     "Under Construction/Commissioning": 9
+   },
+   "gate": {
+    "": 838
    },
    "flags": []
   },
@@ -22174,6 +23559,9 @@
     "Scoping": 379,
     "Under Construction/Commissioning": 9
    },
+   "gate": {
+    "": 838
+   },
    "flags": []
   },
   {
@@ -22221,6 +23609,9 @@
     "Consents Approved": 82,
     "Scoping": 381,
     "Under Construction/Commissioning": 9
+   },
+   "gate": {
+    "": 840
    },
    "flags": []
   },
@@ -22270,6 +23661,9 @@
     "Scoping": 382,
     "Under Construction/Commissioning": 9
    },
+   "gate": {
+    "": 843
+   },
    "flags": []
   },
   {
@@ -22317,6 +23711,9 @@
     "Consents Approved": 83,
     "Scoping": 381,
     "Under Construction/Commissioning": 9
+   },
+   "gate": {
+    "": 843
    },
    "flags": []
   },
@@ -22366,6 +23763,9 @@
     "Scoping": 384,
     "Under Construction/Commissioning": 9
    },
+   "gate": {
+    "": 848
+   },
    "flags": []
   },
   {
@@ -22413,6 +23813,9 @@
     "Consents Approved": 85,
     "Scoping": 386,
     "Under Construction/Commissioning": 11
+   },
+   "gate": {
+    "": 852
    },
    "flags": []
   },
@@ -22462,6 +23865,9 @@
     "Scoping": 388,
     "Under Construction/Commissioning": 11
    },
+   "gate": {
+    "": 854
+   },
    "flags": []
   },
   {
@@ -22509,6 +23915,9 @@
     "Consents Approved": 85,
     "Scoping": 393,
     "Under Construction/Commissioning": 11
+   },
+   "gate": {
+    "": 860
    },
    "flags": []
   },
@@ -22558,6 +23967,9 @@
     "Scoping": 396,
     "Under Construction/Commissioning": 11
    },
+   "gate": {
+    "": 864
+   },
    "flags": []
   },
   {
@@ -22605,6 +24017,9 @@
     "Consents Approved": 86,
     "Scoping": 395,
     "Under Construction/Commissioning": 11
+   },
+   "gate": {
+    "": 863
    },
    "flags": []
   },
@@ -22654,6 +24069,9 @@
     "Scoping": 396,
     "Under Construction/Commissioning": 11
    },
+   "gate": {
+    "": 864
+   },
    "flags": []
   },
   {
@@ -22701,6 +24119,9 @@
     "Consents Approved": 86,
     "Scoping": 397,
     "Under Construction/Commissioning": 10
+   },
+   "gate": {
+    "": 865
    },
    "flags": []
   },
@@ -22751,6 +24172,9 @@
     "Scoping": 398,
     "Under Construction/Commissioning": 9
    },
+   "gate": {
+    "": 869
+   },
    "flags": []
   },
   {
@@ -22800,6 +24224,9 @@
     "Scoping": 398,
     "Under Construction/Commissioning": 9
    },
+   "gate": {
+    "": 869
+   },
    "flags": []
   },
   {
@@ -22847,6 +24274,9 @@
     "Consents Approved": 86,
     "Scoping": 400,
     "Under Construction/Commissioning": 9
+   },
+   "gate": {
+    "": 869
    },
    "flags": []
   },
@@ -22896,6 +24326,9 @@
     "Scoping": 401,
     "Under Construction/Commissioning": 9
    },
+   "gate": {
+    "": 870
+   },
    "flags": []
   },
   {
@@ -22943,6 +24376,9 @@
     "Consents Approved": 86,
     "Scoping": 402,
     "Under Construction/Commissioning": 9
+   },
+   "gate": {
+    "": 871
    },
    "flags": [
     "1 unparseable date cells"
@@ -22994,6 +24430,9 @@
     "Scoping": 403,
     "Under Construction/Commissioning": 9
    },
+   "gate": {
+    "": 871
+   },
    "flags": []
   },
   {
@@ -23041,6 +24480,9 @@
     "Consents Approved": 87,
     "Scoping": 407,
     "Under Construction/Commissioning": 9
+   },
+   "gate": {
+    "": 874
    },
    "flags": []
   },
@@ -23090,6 +24532,9 @@
     "Scoping": 410,
     "Under Construction/Commissioning": 9
    },
+   "gate": {
+    "": 877
+   },
    "flags": []
   },
   {
@@ -23137,6 +24582,9 @@
     "Consents Approved": 87,
     "Scoping": 412,
     "Under Construction/Commissioning": 9
+   },
+   "gate": {
+    "": 880
    },
    "flags": []
   },
@@ -23186,6 +24634,9 @@
     "Scoping": 414,
     "Under Construction/Commissioning": 9
    },
+   "gate": {
+    "": 883
+   },
    "flags": []
   },
   {
@@ -23233,6 +24684,9 @@
     "Consents Approved": 88,
     "Scoping": 418,
     "Under Construction/Commissioning": 10
+   },
+   "gate": {
+    "": 889
    },
    "flags": []
   },
@@ -23283,6 +24737,9 @@
     "Scoping": 431,
     "Under Construction/Commissioning": 10
    },
+   "gate": {
+    "": 903
+   },
    "flags": []
   },
   {
@@ -23330,6 +24787,9 @@
     "Consents Approved": 88,
     "Scoping": 433,
     "Under Construction/Commissioning": 11
+   },
+   "gate": {
+    "": 905
    },
    "flags": []
   },
@@ -23379,6 +24839,9 @@
     "Scoping": 434,
     "Under Construction/Commissioning": 11
    },
+   "gate": {
+    "": 906
+   },
    "flags": []
   },
   {
@@ -23426,6 +24889,9 @@
     "Consents Approved": 88,
     "Scoping": 437,
     "Under Construction/Commissioning": 11
+   },
+   "gate": {
+    "": 909
    },
    "flags": []
   },
@@ -23475,6 +24941,9 @@
     "Scoping": 438,
     "Under Construction/Commissioning": 11
    },
+   "gate": {
+    "": 911
+   },
    "flags": []
   },
   {
@@ -23522,6 +24991,9 @@
     "Consents Approved": 88,
     "Scoping": 443,
     "Under Construction/Commissioning": 11
+   },
+   "gate": {
+    "": 916
    },
    "flags": []
   },
@@ -23571,6 +25043,9 @@
     "Scoping": 447,
     "Under Construction/Commissioning": 11
    },
+   "gate": {
+    "": 921
+   },
    "flags": []
   },
   {
@@ -23618,6 +25093,9 @@
     "Consents Approved": 90,
     "Scoping": 448,
     "Under Construction/Commissioning": 11
+   },
+   "gate": {
+    "": 924
    },
    "flags": []
   },
@@ -23667,6 +25145,9 @@
     "Scoping": 456,
     "Under Construction/Commissioning": 11
    },
+   "gate": {
+    "": 930
+   },
    "flags": []
   },
   {
@@ -23714,6 +25195,9 @@
     "Consents Approved": 91,
     "Scoping": 445,
     "Under Construction/Commissioning": 11
+   },
+   "gate": {
+    "": 922
    },
    "flags": []
   },
@@ -23763,6 +25247,9 @@
     "Scoping": 447,
     "Under Construction/Commissioning": 11
    },
+   "gate": {
+    "": 922
+   },
    "flags": []
   },
   {
@@ -23810,6 +25297,9 @@
     "Consents Approved": 91,
     "Scoping": 445,
     "Under Construction/Commissioning": 11
+   },
+   "gate": {
+    "": 922
    },
    "flags": []
   },
@@ -23859,6 +25349,9 @@
     "Scoping": 446,
     "Under Construction/Commissioning": 11
    },
+   "gate": {
+    "": 923
+   },
    "flags": []
   },
   {
@@ -23906,6 +25399,9 @@
     "Consents Approved": 91,
     "Scoping": 449,
     "Under Construction/Commissioning": 11
+   },
+   "gate": {
+    "": 926
    },
    "flags": []
   },
@@ -23955,6 +25451,9 @@
     "Scoping": 446,
     "Under Construction/Commissioning": 11
    },
+   "gate": {
+    "": 923
+   },
    "flags": []
   },
   {
@@ -24002,6 +25501,9 @@
     "Consents Approved": 91,
     "Scoping": 452,
     "Under Construction/Commissioning": 12
+   },
+   "gate": {
+    "": 931
    },
    "flags": []
   },
@@ -24051,6 +25553,9 @@
     "Scoping": 453,
     "Under Construction/Commissioning": 12
    },
+   "gate": {
+    "": 932
+   },
    "flags": []
   },
   {
@@ -24098,6 +25603,9 @@
     "Consents Approved": 91,
     "Scoping": 457,
     "Under Construction/Commissioning": 12
+   },
+   "gate": {
+    "": 936
    },
    "flags": []
   },
@@ -24147,6 +25655,9 @@
     "Scoping": 459,
     "Under Construction/Commissioning": 12
    },
+   "gate": {
+    "": 938
+   },
    "flags": []
   },
   {
@@ -24194,6 +25705,9 @@
     "Consents Approved": 91,
     "Scoping": 460,
     "Under Construction/Commissioning": 12
+   },
+   "gate": {
+    "": 939
    },
    "flags": []
   },
@@ -24243,6 +25757,9 @@
     "Scoping": 539,
     "Under Construction/Commissioning": 19
    },
+   "gate": {
+    "": 1063
+   },
    "flags": []
   },
   {
@@ -24290,6 +25807,9 @@
     "Consents Approved": 100,
     "Scoping": 450,
     "Under Construction/Commissioning": 12
+   },
+   "gate": {
+    "": 940
    },
    "flags": []
   },
@@ -24339,6 +25859,9 @@
     "Scoping": 452,
     "Under Construction/Commissioning": 12
    },
+   "gate": {
+    "": 942
+   },
    "flags": []
   },
   {
@@ -24386,6 +25909,9 @@
     "Consents Approved": 100,
     "Scoping": 454,
     "Under Construction/Commissioning": 12
+   },
+   "gate": {
+    "": 944
    },
    "flags": []
   },
@@ -24435,6 +25961,9 @@
     "Scoping": 456,
     "Under Construction/Commissioning": 12
    },
+   "gate": {
+    "": 946
+   },
    "flags": []
   },
   {
@@ -24482,6 +26011,9 @@
     "Consents Approved": 100,
     "Scoping": 457,
     "Under Construction/Commissioning": 12
+   },
+   "gate": {
+    "": 947
    },
    "flags": []
   },
@@ -24531,6 +26063,9 @@
     "Scoping": 459,
     "Under Construction/Commissioning": 12
    },
+   "gate": {
+    "": 949
+   },
    "flags": []
   },
   {
@@ -24578,6 +26113,9 @@
     "Consents Approved": 100,
     "Scoping": 471,
     "Under Construction/Commissioning": 12
+   },
+   "gate": {
+    "": 961
    },
    "flags": []
   },
@@ -24627,6 +26165,9 @@
     "Scoping": 471,
     "Under Construction/Commissioning": 11
    },
+   "gate": {
+    "": 961
+   },
    "flags": []
   },
   {
@@ -24674,6 +26215,9 @@
     "Consents Approved": 100,
     "Scoping": 471,
     "Under Construction/Commissioning": 11
+   },
+   "gate": {
+    "": 963
    },
    "flags": []
   },
@@ -24723,6 +26267,9 @@
     "Scoping": 476,
     "Under Construction/Commissioning": 11
    },
+   "gate": {
+    "": 968
+   },
    "flags": []
   },
   {
@@ -24770,6 +26317,9 @@
     "Consents Approved": 100,
     "Scoping": 479,
     "Under Construction/Commissioning": 11
+   },
+   "gate": {
+    "": 971
    },
    "flags": []
   },
@@ -24820,6 +26370,9 @@
     "Scoping": 486,
     "Under Construction/Commissioning": 11
    },
+   "gate": {
+    "": 981
+   },
    "flags": []
   },
   {
@@ -24867,6 +26420,9 @@
     "Consents Approved": 99,
     "Scoping": 491,
     "Under Construction/Commissioning": 11
+   },
+   "gate": {
+    "": 985
    },
    "flags": []
   },
@@ -24916,6 +26472,9 @@
     "Scoping": 492,
     "Under Construction/Commissioning": 11
    },
+   "gate": {
+    "": 986
+   },
    "flags": []
   },
   {
@@ -24963,6 +26522,9 @@
     "Consents Approved": 99,
     "Scoping": 495,
     "Under Construction/Commissioning": 11
+   },
+   "gate": {
+    "": 990
    },
    "flags": []
   },
@@ -25012,6 +26574,9 @@
     "Scoping": 504,
     "Under Construction/Commissioning": 11
    },
+   "gate": {
+    "": 1000
+   },
    "flags": []
   },
   {
@@ -25059,6 +26624,9 @@
     "Consents Approved": 99,
     "Scoping": 506,
     "Under Construction/Commissioning": 11
+   },
+   "gate": {
+    "": 1007
    },
    "flags": []
   },
@@ -25108,6 +26676,9 @@
     "Scoping": 519,
     "Under Construction/Commissioning": 11
    },
+   "gate": {
+    "": 1022
+   },
    "flags": []
   },
   {
@@ -25155,6 +26726,9 @@
     "Consents Approved": 99,
     "Scoping": 517,
     "Under Construction/Commissioning": 11
+   },
+   "gate": {
+    "": 1023
    },
    "flags": []
   },
@@ -25204,6 +26778,9 @@
     "Scoping": 519,
     "Under Construction/Commissioning": 11
    },
+   "gate": {
+    "": 1024
+   },
    "flags": []
   },
   {
@@ -25251,6 +26828,9 @@
     "Consents Approved": 98,
     "Scoping": 519,
     "Under Construction/Commissioning": 11
+   },
+   "gate": {
+    "": 1024
    },
    "flags": []
   },
@@ -25300,6 +26880,9 @@
     "Scoping": 528,
     "Under Construction/Commissioning": 11
    },
+   "gate": {
+    "": 1033
+   },
    "flags": []
   },
   {
@@ -25347,6 +26930,9 @@
     "Consents Approved": 98,
     "Scoping": 530,
     "Under Construction/Commissioning": 11
+   },
+   "gate": {
+    "": 1035
    },
    "flags": []
   },
@@ -25396,6 +26982,9 @@
     "Scoping": 532,
     "Under Construction/Commissioning": 11
    },
+   "gate": {
+    "": 1037
+   },
    "flags": []
   },
   {
@@ -25443,6 +27032,9 @@
     "Consents Approved": 98,
     "Scoping": 542,
     "Under Construction/Commissioning": 11
+   },
+   "gate": {
+    "": 1051
    },
    "flags": []
   },
@@ -25492,6 +27084,9 @@
     "Scoping": 546,
     "Under Construction/Commissioning": 11
    },
+   "gate": {
+    "": 1056
+   },
    "flags": []
   },
   {
@@ -25539,6 +27134,9 @@
     "Consents Approved": 98,
     "Scoping": 561,
     "Under Construction/Commissioning": 16
+   },
+   "gate": {
+    "": 1076
    },
    "flags": []
   },
@@ -25588,6 +27186,9 @@
     "Scoping": 565,
     "Under Construction/Commissioning": 16
    },
+   "gate": {
+    "": 1081
+   },
    "flags": []
   },
   {
@@ -25635,6 +27236,9 @@
     "Consents Approved": 101,
     "Scoping": 567,
     "Under Construction/Commissioning": 16
+   },
+   "gate": {
+    "": 1087
    },
    "flags": []
   },
@@ -25684,6 +27288,9 @@
     "Scoping": 570,
     "Under Construction/Commissioning": 16
    },
+   "gate": {
+    "": 1089
+   },
    "flags": []
   },
   {
@@ -25731,6 +27338,9 @@
     "Consents Approved": 101,
     "Scoping": 575,
     "Under Construction/Commissioning": 16
+   },
+   "gate": {
+    "": 1094
    },
    "flags": []
   },
@@ -25780,6 +27390,9 @@
     "Scoping": 678,
     "Under Construction/Commissioning": 23
    },
+   "gate": {
+    "": 1256
+   },
    "flags": []
   },
   {
@@ -25827,6 +27440,9 @@
     "Consents Approved": 101,
     "Scoping": 588,
     "Under Construction/Commissioning": 16
+   },
+   "gate": {
+    "": 1111
    },
    "flags": []
   },
@@ -25876,6 +27492,9 @@
     "Scoping": 599,
     "Under Construction/Commissioning": 16
    },
+   "gate": {
+    "": 1122
+   },
    "flags": []
   },
   {
@@ -25923,6 +27542,9 @@
     "Consents Approved": 101,
     "Scoping": 649,
     "Under Construction/Commissioning": 16
+   },
+   "gate": {
+    "": 1172
    },
    "flags": []
   },
@@ -25973,6 +27595,9 @@
     "Scoping": 654,
     "Under Construction/Commissioning": 16
    },
+   "gate": {
+    "": 1179
+   },
    "flags": []
   },
   {
@@ -26022,6 +27647,9 @@
     "Scoping": 662,
     "Under Construction/Commissioning": 16
    },
+   "gate": {
+    "": 1195
+   },
    "flags": []
   },
   {
@@ -26069,6 +27697,9 @@
     "Consents Approved": 103,
     "Scoping": 676,
     "Under Construction/Commissioning": 16
+   },
+   "gate": {
+    "": 1212
    },
    "flags": []
   },
@@ -26118,6 +27749,9 @@
     "Scoping": 678,
     "Under Construction/Commissioning": 16
    },
+   "gate": {
+    "": 1214
+   },
    "flags": []
   },
   {
@@ -26165,6 +27799,9 @@
     "Consents Approved": 103,
     "Scoping": 684,
     "Under Construction/Commissioning": 16
+   },
+   "gate": {
+    "": 1223
    },
    "flags": []
   },
@@ -26214,6 +27851,9 @@
     "Scoping": 684,
     "Under Construction/Commissioning": 16
    },
+   "gate": {
+    "": 1223
+   },
    "flags": []
   },
   {
@@ -26261,6 +27901,9 @@
     "Consents Approved": 103,
     "Scoping": 692,
     "Under Construction/Commissioning": 17
+   },
+   "gate": {
+    "": 1232
    },
    "flags": []
   },
@@ -26311,6 +27954,9 @@
     "Scoping": 703,
     "Under Construction/Commissioning": 17
    },
+   "gate": {
+    "": 1251
+   },
    "flags": []
   },
   {
@@ -26360,6 +28006,9 @@
     "Scoping": 714,
     "Under Construction/Commissioning": 17
    },
+   "gate": {
+    "": 1265
+   },
    "flags": []
   },
   {
@@ -26408,6 +28057,9 @@
     "Scoping": 719,
     "Under Construction/Commissioning": 17
    },
+   "gate": {
+    "": 1269
+   },
    "flags": []
   },
   {
@@ -26455,6 +28107,9 @@
     "Consents Approved": 107,
     "Scoping": 725,
     "Under Construction/Commissioning": 17
+   },
+   "gate": {
+    "": 1275
    },
    "flags": []
   },
@@ -26505,6 +28160,9 @@
     "Scoping": 727,
     "Under Construction/Commissioning": 17
    },
+   "gate": {
+    "": 1280
+   },
    "flags": []
   },
   {
@@ -26552,6 +28210,9 @@
     "Consents Approved": 109,
     "Scoping": 729,
     "Under Construction/Commissioning": 17
+   },
+   "gate": {
+    "": 1281
    },
    "flags": []
   },
@@ -26601,6 +28262,9 @@
     "Scoping": 736,
     "Under Construction/Commissioning": 17
    },
+   "gate": {
+    "": 1288
+   },
    "flags": []
   },
   {
@@ -26648,6 +28312,9 @@
     "Consents Approved": 109,
     "Scoping": 739,
     "Under Construction/Commissioning": 17
+   },
+   "gate": {
+    "": 1291
    },
    "flags": []
   },
@@ -26697,6 +28364,9 @@
     "Scoping": 741,
     "Under Construction/Commissioning": 17
    },
+   "gate": {
+    "": 1295
+   },
    "flags": []
   },
   {
@@ -26744,6 +28414,9 @@
     "Consents Approved": 109,
     "Scoping": 741,
     "Under Construction/Commissioning": 17
+   },
+   "gate": {
+    "": 1295
    },
    "flags": []
   },
@@ -26793,6 +28466,9 @@
     "Scoping": 749,
     "Under Construction/Commissioning": 17
    },
+   "gate": {
+    "": 1304
+   },
    "flags": []
   },
   {
@@ -26840,6 +28516,9 @@
     "Consents Approved": 109,
     "Scoping": 751,
     "Under Construction/Commissioning": 17
+   },
+   "gate": {
+    "": 1307
    },
    "flags": []
   },
@@ -26889,6 +28568,9 @@
     "Scoping": 755,
     "Under Construction/Commissioning": 17
    },
+   "gate": {
+    "": 1311
+   },
    "flags": []
   },
   {
@@ -26936,6 +28618,9 @@
     "Consents Approved": 109,
     "Scoping": 756,
     "Under Construction/Commissioning": 17
+   },
+   "gate": {
+    "": 1312
    },
    "flags": []
   },
@@ -26985,6 +28670,9 @@
     "Scoping": 762,
     "Under Construction/Commissioning": 17
    },
+   "gate": {
+    "": 1318
+   },
    "flags": []
   },
   {
@@ -27032,6 +28720,9 @@
     "Consents Approved": 108,
     "Scoping": 767,
     "Under Construction/Commissioning": 18
+   },
+   "gate": {
+    "": 1323
    },
    "flags": []
   },
@@ -27081,6 +28772,9 @@
     "Scoping": 770,
     "Under Construction/Commissioning": 19
    },
+   "gate": {
+    "": 1324
+   },
    "flags": []
   },
   {
@@ -27128,6 +28822,9 @@
     "Consents Approved": 108,
     "Scoping": 773,
     "Under Construction/Commissioning": 19
+   },
+   "gate": {
+    "": 1327
    },
    "flags": []
   },
@@ -27177,6 +28874,9 @@
     "Scoping": 777,
     "Under Construction/Commissioning": 19
    },
+   "gate": {
+    "": 1331
+   },
    "flags": []
   },
   {
@@ -27224,6 +28924,9 @@
     "Consents Approved": 108,
     "Scoping": 780,
     "Under Construction/Commissioning": 19
+   },
+   "gate": {
+    "": 1334
    },
    "flags": []
   },
@@ -27273,6 +28976,9 @@
     "Scoping": 785,
     "Under Construction/Commissioning": 19
    },
+   "gate": {
+    "": 1339
+   },
    "flags": []
   },
   {
@@ -27320,6 +29026,9 @@
     "Consents Approved": 108,
     "Scoping": 786,
     "Under Construction/Commissioning": 19
+   },
+   "gate": {
+    "": 1340
    },
    "flags": []
   },
@@ -27369,6 +29078,9 @@
     "Scoping": 787,
     "Under Construction/Commissioning": 19
    },
+   "gate": {
+    "": 1337
+   },
    "flags": []
   },
   {
@@ -27416,6 +29128,9 @@
     "Consents Approved": 108,
     "Scoping": 790,
     "Under Construction/Commissioning": 19
+   },
+   "gate": {
+    "": 1341
    },
    "flags": []
   },
@@ -27465,6 +29180,9 @@
     "Scoping": 793,
     "Under Construction/Commissioning": 19
    },
+   "gate": {
+    "": 1344
+   },
    "flags": []
   },
   {
@@ -27512,6 +29230,9 @@
     "Consents Approved": 108,
     "Scoping": 796,
     "Under Construction/Commissioning": 19
+   },
+   "gate": {
+    "": 1347
    },
    "flags": []
   },
@@ -27561,6 +29282,9 @@
     "Scoping": 808,
     "Under Construction/Commissioning": 19
    },
+   "gate": {
+    "": 1357
+   },
    "flags": []
   },
   {
@@ -27608,6 +29332,9 @@
     "Consents Approved": 108,
     "Scoping": 809,
     "Under Construction/Commissioning": 19
+   },
+   "gate": {
+    "": 1358
    },
    "flags": []
   },
@@ -27657,6 +29384,9 @@
     "Scoping": 810,
     "Under Construction/Commissioning": 19
    },
+   "gate": {
+    "": 1360
+   },
    "flags": []
   },
   {
@@ -27704,6 +29434,9 @@
     "Consents Approved": 109,
     "Scoping": 811,
     "Under Construction/Commissioning": 19
+   },
+   "gate": {
+    "": 1362
    },
    "flags": []
   },
@@ -27753,6 +29486,9 @@
     "Scoping": 821,
     "Under Construction/Commissioning": 19
    },
+   "gate": {
+    "": 1374
+   },
    "flags": []
   },
   {
@@ -27800,6 +29536,9 @@
     "Consents Approved": 108,
     "Scoping": 822,
     "Under Construction/Commissioning": 19
+   },
+   "gate": {
+    "": 1377
    },
    "flags": []
   },
@@ -27849,6 +29588,9 @@
     "Scoping": 826,
     "Under Construction/Commissioning": 19
    },
+   "gate": {
+    "": 1381
+   },
    "flags": []
   },
   {
@@ -27896,6 +29638,9 @@
     "Consents Approved": 108,
     "Scoping": 834,
     "Under Construction/Commissioning": 19
+   },
+   "gate": {
+    "": 1389
    },
    "flags": []
   },
@@ -27945,6 +29690,9 @@
     "Scoping": 836,
     "Under Construction/Commissioning": 19
    },
+   "gate": {
+    "": 1392
+   },
    "flags": []
   },
   {
@@ -27991,6 +29739,9 @@
     "Consents Approved": 52,
     "Scoping": 498,
     "Under Construction/Commissioning": 16
+   },
+   "gate": {
+    "": 673
    },
    "flags": [
     "row count fell 52% (possible partial export)"
@@ -28042,6 +29793,9 @@
     "Scoping": 836,
     "Under Construction/Commissioning": 19
    },
+   "gate": {
+    "": 1392
+   },
    "flags": []
   },
   {
@@ -28089,6 +29843,9 @@
     "Consents Approved": 135,
     "Scoping": 934,
     "Under Construction/Commissioning": 19
+   },
+   "gate": {
+    "": 1546
    },
    "flags": []
   },
@@ -28138,6 +29895,9 @@
     "Scoping": 839,
     "Under Construction/Commissioning": 20
    },
+   "gate": {
+    "": 1396
+   },
    "flags": []
   },
   {
@@ -28185,6 +29945,9 @@
     "Consents Approved": 109,
     "Scoping": 869,
     "Under Construction/Commissioning": 20
+   },
+   "gate": {
+    "": 1426
    },
    "flags": []
   },
@@ -28234,6 +29997,9 @@
     "Scoping": 876,
     "Under Construction/Commissioning": 22
    },
+   "gate": {
+    "": 1434
+   },
    "flags": []
   },
   {
@@ -28281,6 +30047,9 @@
     "Consents Approved": 109,
     "Scoping": 890,
     "Under Construction/Commissioning": 22
+   },
+   "gate": {
+    "": 1448
    },
    "flags": []
   },
@@ -28330,6 +30099,9 @@
     "Scoping": 892,
     "Under Construction/Commissioning": 22
    },
+   "gate": {
+    "": 1452
+   },
    "flags": []
   },
   {
@@ -28377,6 +30149,9 @@
     "Consents Approved": 109,
     "Scoping": 901,
     "Under Construction/Commissioning": 22
+   },
+   "gate": {
+    "": 1463
    },
    "flags": []
   },
@@ -28426,6 +30201,9 @@
     "Scoping": 903,
     "Under Construction/Commissioning": 22
    },
+   "gate": {
+    "": 1465
+   },
    "flags": []
   },
   {
@@ -28473,6 +30251,9 @@
     "Consents Approved": 109,
     "Scoping": 915,
     "Under Construction/Commissioning": 22
+   },
+   "gate": {
+    "": 1477
    },
    "flags": []
   },
@@ -28522,6 +30303,9 @@
     "Scoping": 921,
     "Under Construction/Commissioning": 22
    },
+   "gate": {
+    "": 1483
+   },
    "flags": []
   },
   {
@@ -28569,6 +30353,9 @@
     "Consents Approved": 110,
     "Scoping": 938,
     "Under Construction/Commissioning": 22
+   },
+   "gate": {
+    "": 1500
    },
    "flags": []
   },
@@ -28618,6 +30405,9 @@
     "Scoping": 951,
     "Under Construction/Commissioning": 22
    },
+   "gate": {
+    "": 1513
+   },
    "flags": []
   },
   {
@@ -28665,6 +30455,9 @@
     "Consents Approved": 110,
     "Scoping": 967,
     "Under Construction/Commissioning": 22
+   },
+   "gate": {
+    "": 1529
    },
    "flags": []
   },
@@ -28714,6 +30507,9 @@
     "Scoping": 969,
     "Under Construction/Commissioning": 22
    },
+   "gate": {
+    "": 1533
+   },
    "flags": []
   },
   {
@@ -28761,6 +30557,9 @@
     "Consents Approved": 110,
     "Scoping": 989,
     "Under Construction/Commissioning": 22
+   },
+   "gate": {
+    "": 1547
    },
    "flags": []
   },
@@ -28810,6 +30609,9 @@
     "Scoping": 990,
     "Under Construction/Commissioning": 22
    },
+   "gate": {
+    "": 1548
+   },
    "flags": []
   },
   {
@@ -28857,6 +30659,9 @@
     "Consents Approved": 110,
     "Scoping": 1003,
     "Under Construction/Commissioning": 22
+   },
+   "gate": {
+    "": 1561
    },
    "flags": []
   },
@@ -28906,6 +30711,9 @@
     "Scoping": 1004,
     "Under Construction/Commissioning": 22
    },
+   "gate": {
+    "": 1562
+   },
    "flags": []
   },
   {
@@ -28953,6 +30761,9 @@
     "Consents Approved": 110,
     "Scoping": 1020,
     "Under Construction/Commissioning": 22
+   },
+   "gate": {
+    "": 1578
    },
    "flags": []
   },
@@ -29002,6 +30813,9 @@
     "Scoping": 1023,
     "Under Construction/Commissioning": 22
    },
+   "gate": {
+    "": 1581
+   },
    "flags": []
   },
   {
@@ -29049,6 +30863,9 @@
     "Consents Approved": 110,
     "Scoping": 1056,
     "Under Construction/Commissioning": 22
+   },
+   "gate": {
+    "": 1613
    },
    "flags": []
   },
@@ -29098,6 +30915,9 @@
     "Scoping": 1060,
     "Under Construction/Commissioning": 22
    },
+   "gate": {
+    "": 1617
+   },
    "flags": []
   },
   {
@@ -29145,6 +30965,9 @@
     "Consents Approved": 110,
     "Scoping": 1063,
     "Under Construction/Commissioning": 22
+   },
+   "gate": {
+    "": 1620
    },
    "flags": []
   },
@@ -29194,6 +31017,9 @@
     "Scoping": 1067,
     "Under Construction/Commissioning": 22
    },
+   "gate": {
+    "": 1624
+   },
    "flags": []
   },
   {
@@ -29241,6 +31067,9 @@
     "Consents Approved": 110,
     "Scoping": 1075,
     "Under Construction/Commissioning": 22
+   },
+   "gate": {
+    "": 1632
    },
    "flags": []
   },
@@ -29290,6 +31119,9 @@
     "Scoping": 1076,
     "Under Construction/Commissioning": 21
    },
+   "gate": {
+    "": 1632
+   },
    "flags": []
   },
   {
@@ -29337,6 +31169,9 @@
     "Consents Approved": 110,
     "Scoping": 1076,
     "Under Construction/Commissioning": 21
+   },
+   "gate": {
+    "": 1632
    },
    "flags": []
   },
@@ -29386,6 +31221,9 @@
     "Scoping": 1076,
     "Under Construction/Commissioning": 21
    },
+   "gate": {
+    "": 1632
+   },
    "flags": []
   },
   {
@@ -29433,6 +31271,9 @@
     "Consents Approved": 137,
     "Scoping": 1189,
     "Under Construction/Commissioning": 27
+   },
+   "gate": {
+    "": 1815
    },
    "flags": []
   },
@@ -29482,6 +31323,9 @@
     "Scoping": 1170,
     "Under Construction/Commissioning": 27
    },
+   "gate": {
+    "": 1783
+   },
    "flags": []
   },
   {
@@ -29529,6 +31373,9 @@
     "Consents Approved": 109,
     "Scoping": 1078,
     "Under Construction/Commissioning": 21
+   },
+   "gate": {
+    "": 1632
    },
    "flags": []
   },
@@ -29578,6 +31425,9 @@
     "Scoping": 1078,
     "Under Construction/Commissioning": 21
    },
+   "gate": {
+    "": 1633
+   },
    "flags": []
   },
   {
@@ -29625,6 +31475,9 @@
     "Consents Approved": 139,
     "Scoping": 1190,
     "Under Construction/Commissioning": 26
+   },
+   "gate": {
+    "": 1817
    },
    "flags": []
   },
@@ -29674,6 +31527,9 @@
     "Scoping": 1080,
     "Under Construction/Commissioning": 20
    },
+   "gate": {
+    "": 1636
+   },
    "flags": []
   },
   {
@@ -29721,6 +31577,9 @@
     "Consents Approved": 139,
     "Scoping": 1191,
     "Under Construction/Commissioning": 26
+   },
+   "gate": {
+    "": 1819
    },
    "flags": []
   },
@@ -29770,6 +31629,9 @@
     "Scoping": 1193,
     "Under Construction/Commissioning": 26
    },
+   "gate": {
+    "": 1822
+   },
    "flags": []
   },
   {
@@ -29817,6 +31679,9 @@
     "Consents Approved": 112,
     "Scoping": 1081,
     "Under Construction/Commissioning": 20
+   },
+   "gate": {
+    "": 1639
    },
    "flags": []
   },
@@ -29866,6 +31731,9 @@
     "Scoping": 1087,
     "Under Construction/Commissioning": 20
    },
+   "gate": {
+    "": 1645
+   },
    "flags": []
   },
   {
@@ -29913,6 +31781,9 @@
     "Consents Approved": 112,
     "Scoping": 1091,
     "Under Construction/Commissioning": 20
+   },
+   "gate": {
+    "": 1649
    },
    "flags": []
   },
@@ -29962,6 +31833,9 @@
     "Scoping": 1092,
     "Under Construction/Commissioning": 20
    },
+   "gate": {
+    "": 1650
+   },
    "flags": []
   },
   {
@@ -30009,6 +31883,9 @@
     "Consents Approved": 112,
     "Scoping": 1095,
     "Under Construction/Commissioning": 20
+   },
+   "gate": {
+    "": 1653
    },
    "flags": []
   },
@@ -30058,6 +31935,9 @@
     "Scoping": 1094,
     "Under Construction/Commissioning": 20
    },
+   "gate": {
+    "": 1652
+   },
    "flags": []
   },
   {
@@ -30105,6 +31985,9 @@
     "Consents Approved": 138,
     "Scoping": 1205,
     "Under Construction/Commissioning": 26
+   },
+   "gate": {
+    "": 1834
    },
    "flags": []
   },
@@ -30154,6 +32037,9 @@
     "Scoping": 1094,
     "Under Construction/Commissioning": 20
    },
+   "gate": {
+    "": 1652
+   },
    "flags": []
   },
   {
@@ -30201,6 +32087,9 @@
     "Consents Approved": 112,
     "Scoping": 1087,
     "Under Construction/Commissioning": 20
+   },
+   "gate": {
+    "": 1645
    },
    "flags": []
   },
@@ -30250,6 +32139,9 @@
     "Scoping": 1209,
     "Under Construction/Commissioning": 26
    },
+   "gate": {
+    "": 1838
+   },
    "flags": []
   },
   {
@@ -30297,6 +32189,9 @@
     "Consents Approved": 138,
     "Scoping": 1210,
     "Under Construction/Commissioning": 26
+   },
+   "gate": {
+    "": 1839
    },
    "flags": []
   },
@@ -30346,6 +32241,9 @@
     "Scoping": 1210,
     "Under Construction/Commissioning": 26
    },
+   "gate": {
+    "": 1841
+   },
    "flags": []
   },
   {
@@ -30393,6 +32291,9 @@
     "Consents Approved": 138,
     "Scoping": 1211,
     "Under Construction/Commissioning": 26
+   },
+   "gate": {
+    "": 1842
    },
    "flags": []
   },
@@ -30443,6 +32344,9 @@
     "Scoping": 1212,
     "Under Construction/Commissioning": 26
    },
+   "gate": {
+    "": 1845
+   },
    "flags": []
   },
   {
@@ -30491,6 +32395,9 @@
     "Consents Approved": 139,
     "Scoping": 1216,
     "Under Construction/Commissioning": 26
+   },
+   "gate": {
+    "": 1848
    },
    "flags": []
   },
@@ -30541,6 +32448,9 @@
     "Scoping": 1221,
     "Under Construction/Commissioning": 26
    },
+   "gate": {
+    "": 1852
+   },
    "flags": []
   },
   {
@@ -30589,6 +32499,9 @@
     "Consents Approved": 139,
     "Scoping": 1225,
     "Under Construction/Commissioning": 26
+   },
+   "gate": {
+    "": 1859
    },
    "flags": []
   },
@@ -30639,6 +32552,9 @@
     "Scoping": 1235,
     "Under Construction/Commissioning": 25
    },
+   "gate": {
+    "": 1870
+   },
    "flags": []
   },
   {
@@ -30687,6 +32603,9 @@
     "Consents Approved": 139,
     "Scoping": 1235,
     "Under Construction/Commissioning": 25
+   },
+   "gate": {
+    "": 1870
    },
    "flags": []
   },
@@ -30737,6 +32656,9 @@
     "Scoping": 1237,
     "Under Construction/Commissioning": 25
    },
+   "gate": {
+    "": 1872
+   },
    "flags": []
   },
   {
@@ -30785,6 +32707,9 @@
     "Consents Approved": 139,
     "Scoping": 1237,
     "Under Construction/Commissioning": 25
+   },
+   "gate": {
+    "": 1872
    },
    "flags": []
   },
@@ -30835,6 +32760,9 @@
     "Scoping": 1237,
     "Under Construction/Commissioning": 25
    },
+   "gate": {
+    "": 1874
+   },
    "flags": []
   },
   {
@@ -30883,6 +32811,9 @@
     "Consents Approved": 139,
     "Scoping": 1236,
     "Under Construction/Commissioning": 25
+   },
+   "gate": {
+    "": 1873
    },
    "flags": []
   },
@@ -30933,6 +32864,9 @@
     "Scoping": 1243,
     "Under Construction/Commissioning": 25
    },
+   "gate": {
+    "": 1880
+   },
    "flags": []
   },
   {
@@ -30981,6 +32915,9 @@
     "Consents Approved": 143,
     "Scoping": 1239,
     "Under Construction/Commissioning": 25
+   },
+   "gate": {
+    "": 1879
    },
    "flags": []
   },
@@ -31031,6 +32968,9 @@
     "Scoping": 1241,
     "Under Construction/Commissioning": 25
    },
+   "gate": {
+    "": 1881
+   },
    "flags": []
   },
   {
@@ -31079,6 +33019,9 @@
     "Consents Approved": 143,
     "Scoping": 1241,
     "Under Construction/Commissioning": 25
+   },
+   "gate": {
+    "": 1882
    },
    "flags": []
   },
@@ -31129,6 +33072,9 @@
     "Scoping": 1243,
     "Under Construction/Commissioning": 25
    },
+   "gate": {
+    "": 1885
+   },
    "flags": []
   },
   {
@@ -31177,6 +33123,9 @@
     "Consents Approved": 146,
     "Scoping": 1243,
     "Under Construction/Commissioning": 25
+   },
+   "gate": {
+    "": 1886
    },
    "flags": []
   },
@@ -31227,6 +33176,9 @@
     "Scoping": 1248,
     "Under Construction/Commissioning": 25
    },
+   "gate": {
+    "": 1892
+   },
    "flags": []
   },
   {
@@ -31275,6 +33227,9 @@
     "Consents Approved": 146,
     "Scoping": 1248,
     "Under Construction/Commissioning": 25
+   },
+   "gate": {
+    "": 1892
    },
    "flags": []
   },
@@ -31325,6 +33280,9 @@
     "Scoping": 1248,
     "Under Construction/Commissioning": 25
    },
+   "gate": {
+    "": 1891
+   },
    "flags": []
   },
   {
@@ -31373,6 +33331,9 @@
     "Consents Approved": 145,
     "Scoping": 1248,
     "Under Construction/Commissioning": 25
+   },
+   "gate": {
+    "": 1888
    },
    "flags": []
   },
@@ -31423,6 +33384,9 @@
     "Scoping": 1247,
     "Under Construction/Commissioning": 25
    },
+   "gate": {
+    "": 1887
+   },
    "flags": []
   },
   {
@@ -31471,6 +33435,9 @@
     "Consents Approved": 145,
     "Scoping": 1248,
     "Under Construction/Commissioning": 25
+   },
+   "gate": {
+    "": 1887
    },
    "flags": []
   },
@@ -31521,6 +33488,9 @@
     "Scoping": 1250,
     "Under Construction/Commissioning": 25
    },
+   "gate": {
+    "": 1889
+   },
    "flags": []
   },
   {
@@ -31569,6 +33539,9 @@
     "Consents Approved": 146,
     "Scoping": 1242,
     "Under Construction/Commissioning": 25
+   },
+   "gate": {
+    "": 1881
    },
    "flags": []
   },
@@ -31619,6 +33592,9 @@
     "Scoping": 1246,
     "Under Construction/Commissioning": 25
    },
+   "gate": {
+    "": 1885
+   },
    "flags": []
   },
   {
@@ -31667,6 +33643,9 @@
     "Consents Approved": 147,
     "Scoping": 1246,
     "Under Construction/Commissioning": 25
+   },
+   "gate": {
+    "": 1886
    },
    "flags": []
   },
@@ -31717,6 +33696,9 @@
     "Scoping": 1246,
     "Under Construction/Commissioning": 25
    },
+   "gate": {
+    "": 1887
+   },
    "flags": []
   },
   {
@@ -31765,6 +33747,9 @@
     "Consents Approved": 148,
     "Scoping": 1246,
     "Under Construction/Commissioning": 25
+   },
+   "gate": {
+    "": 1887
    },
    "flags": []
   },
@@ -31815,6 +33800,9 @@
     "Scoping": 1249,
     "Under Construction/Commissioning": 25
    },
+   "gate": {
+    "": 1890
+   },
    "flags": []
   },
   {
@@ -31863,6 +33851,9 @@
     "Consents Approved": 148,
     "Scoping": 1254,
     "Under Construction/Commissioning": 25
+   },
+   "gate": {
+    "": 1896
    },
    "flags": []
   },
@@ -31913,6 +33904,9 @@
     "Scoping": 1254,
     "Under Construction/Commissioning": 25
    },
+   "gate": {
+    "": 1896
+   },
    "flags": []
   },
   {
@@ -31961,6 +33955,9 @@
     "Consents Approved": 149,
     "Scoping": 1255,
     "Under Construction/Commissioning": 25
+   },
+   "gate": {
+    "": 1899
    },
    "flags": []
   },
@@ -32011,6 +34008,9 @@
     "Scoping": 1256,
     "Under Construction/Commissioning": 25
    },
+   "gate": {
+    "": 1900
+   },
    "flags": []
   },
   {
@@ -32060,6 +34060,9 @@
     "Scoping": 1261,
     "Under Construction/Commissioning": 25
    },
+   "gate": {
+    "": 1906
+   },
    "flags": []
   },
   {
@@ -32108,6 +34111,9 @@
     "Consents Approved": 151,
     "Scoping": 1263,
     "Under Construction/Commissioning": 25
+   },
+   "gate": {
+    "": 1908
    },
    "flags": []
   },
@@ -32159,6 +34165,9 @@
     "Scoping": 1275,
     "Under Construction/Commissioning": 24
    },
+   "gate": {
+    "": 1922
+   },
    "flags": []
   },
   {
@@ -32207,6 +34216,9 @@
     "Consents Approved": 155,
     "Scoping": 1273,
     "Under Construction/Commissioning": 24
+   },
+   "gate": {
+    "": 1919
    },
    "flags": []
   },
@@ -32257,6 +34269,9 @@
     "Scoping": 1276,
     "Under Construction/Commissioning": 24
    },
+   "gate": {
+    "": 1924
+   },
    "flags": []
   },
   {
@@ -32306,6 +34321,9 @@
     "Scoping": 1278,
     "Under Construction/Commissioning": 24
    },
+   "gate": {
+    "": 1926
+   },
    "flags": []
   },
   {
@@ -32354,6 +34372,9 @@
     "Consents Approved": 154,
     "Scoping": 1280,
     "Under Construction/Commissioning": 24
+   },
+   "gate": {
+    "": 1928
    },
    "flags": []
   },
@@ -32405,6 +34426,9 @@
     "Scoping": 1290,
     "Under Construction/Commissioning": 24
    },
+   "gate": {
+    "": 1942
+   },
    "flags": []
   },
   {
@@ -32453,6 +34477,9 @@
     "Consents Approved": 157,
     "Scoping": 1296,
     "Under Construction/Commissioning": 24
+   },
+   "gate": {
+    "": 1947
    },
    "flags": []
   },
@@ -32503,6 +34530,9 @@
     "Scoping": 1295,
     "Under Construction/Commissioning": 24
    },
+   "gate": {
+    "": 1947
+   },
    "flags": []
   },
   {
@@ -32552,6 +34582,9 @@
     "Scoping": 1288,
     "Under Construction/Commissioning": 24
    },
+   "gate": {
+    "": 1943
+   },
    "flags": []
   },
   {
@@ -32600,6 +34633,9 @@
     "Consents Approved": 158,
     "Scoping": 1290,
     "Under Construction/Commissioning": 24
+   },
+   "gate": {
+    "": 1945
    },
    "flags": []
   },
@@ -32651,6 +34687,9 @@
     "Scoping": 1292,
     "Under Construction/Commissioning": 24
    },
+   "gate": {
+    "": 1949
+   },
    "flags": []
   },
   {
@@ -32699,6 +34738,9 @@
     "Consents Approved": 157,
     "Scoping": 1294,
     "Under Construction/Commissioning": 24
+   },
+   "gate": {
+    "": 1950
    },
    "flags": []
   },
@@ -32749,6 +34791,9 @@
     "Scoping": 1304,
     "Under Construction/Commissioning": 24
    },
+   "gate": {
+    "": 1961
+   },
    "flags": []
   },
   {
@@ -32797,6 +34842,9 @@
     "Consents Approved": 157,
     "Scoping": 1305,
     "Under Construction/Commissioning": 24
+   },
+   "gate": {
+    "": 1962
    },
    "flags": []
   },
@@ -32847,6 +34895,9 @@
     "Scoping": 1307,
     "Under Construction/Commissioning": 24
    },
+   "gate": {
+    "": 1964
+   },
    "flags": []
   },
   {
@@ -32895,6 +34946,9 @@
     "Consents Approved": 157,
     "Scoping": 1315,
     "Under Construction/Commissioning": 24
+   },
+   "gate": {
+    "": 1970
    },
    "flags": []
   },
@@ -32945,6 +34999,9 @@
     "Scoping": 1316,
     "Under Construction/Commissioning": 24
    },
+   "gate": {
+    "": 1973
+   },
    "flags": []
   },
   {
@@ -32993,6 +35050,9 @@
     "Consents Approved": 157,
     "Scoping": 1316,
     "Under Construction/Commissioning": 24
+   },
+   "gate": {
+    "": 1973
    },
    "flags": []
   },
@@ -33043,6 +35103,9 @@
     "Scoping": 1321,
     "Under Construction/Commissioning": 24
    },
+   "gate": {
+    "": 1977
+   },
    "flags": []
   },
   {
@@ -33091,6 +35154,9 @@
     "Consents Approved": 156,
     "Scoping": 1320,
     "Under Construction/Commissioning": 24
+   },
+   "gate": {
+    "": 1977
    },
    "flags": []
   },
@@ -33142,6 +35208,9 @@
     "Scoping": 1319,
     "Under Construction/Commissioning": 24
    },
+   "gate": {
+    "": 1977
+   },
    "flags": []
   },
   {
@@ -33190,6 +35259,9 @@
     "Consents Approved": 156,
     "Scoping": 1319,
     "Under Construction/Commissioning": 24
+   },
+   "gate": {
+    "": 1977
    },
    "flags": []
   },
@@ -33240,6 +35312,9 @@
     "Scoping": 1320,
     "Under Construction/Commissioning": 24
    },
+   "gate": {
+    "": 1978
+   },
    "flags": []
   },
   {
@@ -33288,6 +35363,9 @@
     "Consents Approved": 156,
     "Scoping": 1329,
     "Under Construction/Commissioning": 22
+   },
+   "gate": {
+    "": 1985
    },
    "flags": []
   },
@@ -33338,6 +35416,9 @@
     "Scoping": 1336,
     "Under Construction/Commissioning": 22
    },
+   "gate": {
+    "": 1991
+   },
    "flags": []
   },
   {
@@ -33386,6 +35467,9 @@
     "Consents Approved": 162,
     "Scoping": 1368,
     "Under Construction/Commissioning": 25
+   },
+   "gate": {
+    "": 2034
    },
    "flags": []
   },
@@ -33436,6 +35520,9 @@
     "Scoping": 1383,
     "Under Construction/Commissioning": 25
    },
+   "gate": {
+    "": 2048
+   },
    "flags": []
   },
   {
@@ -33485,6 +35572,9 @@
     "Scoping": 1529,
     "Under Construction/Commissioning": 21
    },
+   "gate": {
+    "": 2224
+   },
    "flags": []
   },
   {
@@ -33533,6 +35623,9 @@
     "Consents Approved": 179,
     "Scoping": 1566,
     "Under Construction/Commissioning": 21
+   },
+   "gate": {
+    "": 2280
    },
    "flags": []
   },
@@ -33584,6 +35677,11 @@
     "Scoping": 1531,
     "Under Construction/Commissioning": 22
    },
+   "gate": {
+    "": 1650,
+    "1": 576,
+    "2": 4
+   },
    "flags": []
   },
   {
@@ -33633,6 +35731,11 @@
     "Consents Approved": 173,
     "Scoping": 1484,
     "Under Construction/Commissioning": 19
+   },
+   "gate": {
+    "": 1382,
+    "1": 733,
+    "2": 83
    },
    "flags": []
   },
@@ -33684,6 +35787,11 @@
     "Scoping": 1486,
     "Under Construction/Commissioning": 19
    },
+   "gate": {
+    "": 1372,
+    "1": 743,
+    "2": 85
+   },
    "flags": []
   },
   {
@@ -33733,6 +35841,11 @@
     "Consents Approved": 172,
     "Scoping": 1484,
     "Under Construction/Commissioning": 19
+   },
+   "gate": {
+    "": 1349,
+    "1": 756,
+    "2": 95
    },
    "flags": []
   }

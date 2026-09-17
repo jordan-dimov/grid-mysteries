@@ -273,3 +273,19 @@ def test_copy_report_counts_every_spelling_of_project_status():
     whole = tr.schema_report([(date(2026, 9, 15), rows, entry)], [])
     assert whole["project_status_totals"] == {"Built": 2, "": 1, "Under Construction": 1}
     assert list(whole["project_status_totals"]) == ["Built", "", "Under Construction"]
+
+
+def test_the_gate_column_gets_the_same_vocabulary_pass_as_status():
+    """017 version 2 selects on Gate, so the schema report carries its
+    vocabulary too, and a blank Gate is counted as a blank, not dropped."""
+    rows: list[dict[str, object]] = [
+        {"Project Name": "A", "Project Status": "Scoping", "Gate": "Gate 2"},
+        {"Project Name": "B", "Project Status": "Scoping", "Gate": " Gate  1 "},
+        {"Project Name": "C", "Project Status": "Scoping", "Gate": None},
+        {"Project Name": "D", "Project Status": "Scoping"},
+    ]
+    entry: dict = {"columns": ["Project Name", "Project Status", "Gate"], "sha256": "x"}
+    report = tr.copy_report(date(2026, 9, 15), rows, entry, None)
+    assert report["gate"] == {"": 2, "Gate 1": 1, "Gate 2": 1}
+    whole = tr.schema_report([(date(2026, 9, 15), rows, entry)], [])
+    assert whole["gate_totals"] == {"": 2, "Gate 1": 1, "Gate 2": 1}

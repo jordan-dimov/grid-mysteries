@@ -81,11 +81,12 @@ for e in report["eras"]:
     lines.append(f"| {e['first']} | {e['last']} | {e['copies']} | {', '.join(e['columns'])} |")
 lines += ["", "## Date spellings in the effective-from column (cells, all copies)", ""]
 lines += [f"- {k}: {v:,}" for k, v in report["date_spelling_totals"].items()]
-lines += ["", "## Project status, every spelling printed (cells, all copies)", ""]
-lines += ["| status as printed | cells, all copies | cells in the latest copy |", "|---|---|---|"]
-latest = report["per_copy"][-1] if report["per_copy"] else {"project_status": {}, "t_public": "-"}
-for k, v in report["project_status_totals"].items():
-    lines.append(f"| {k or '(blank)'} | {v:,} | {latest['project_status'].get(k, 0):,} |")
+latest = report["per_copy"][-1] if report["per_copy"] else {"t_public": "-"}
+for column, key in tr.VOCABULARY_COLUMNS:
+    lines += ["", f"## {column}, every spelling printed (cells, all copies)", ""]
+    lines += [f"| {column} as printed | cells, all copies | cells in the latest copy |", "|---|---|---|"]
+    for k, v in report[f"{key}_totals"].items():
+        lines.append(f"| {k or '(blank)'} | {v:,} | {latest.get(key, {}).get(k, 0):,} |")
 lines += ["", f"The latest column above is the copy of {latest['t_public']}."]
 lines += ["", f"## Flagged copies ({len(report['flagged'])})", ""]
 for f in report["flagged"]:

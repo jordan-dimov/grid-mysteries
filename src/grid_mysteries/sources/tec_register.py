@@ -391,11 +391,15 @@ REQUIRED_COLUMNS: Final = (
 #: copy is flagged as a possible partial export.
 ROW_COUNT_DROP: Final = Decimal("0.2")
 UNDATED_SHARE: Final = Decimal("0.5")
-#: The status column is not a required column for the series (a copy without
-#: it is still usable there), but a reader that selects on status is declared
-#: against the vocabulary the register has actually printed, so the schema
-#: report counts every spelling of it, blanks included, per copy.
+#: Columns that are not required for the series (a copy without one is still
+#: usable there) but whose full printed vocabulary a reader may select on. The
+#: schema report counts every spelling of each, blanks included, per copy and
+#: across the archive, so that such a rule is declared against what the
+#: register printed rather than against memory of it. The report key is given
+#: beside the column because a declaration cites the key: 017 version 1's
+#: check C1 names `project_status`, so that name does not change.
 STATUS_COLUMN: Final = "Project Status"
+VOCABULARY_COLUMNS: Final = (("Project Status", "project_status"), ("Gate", "gate"))
 
 
 def date_spelling(value: object) -> str:
@@ -429,11 +433,12 @@ def copy_report(
         col: sum(1 for r in rows if not str(r.get(col) or "").strip()) for col in REQUIRED_COLUMNS
     }
     spellings = dict.fromkeys(DATE_SPELLINGS, 0)
-    statuses: dict[str, int] = {}
+    vocabularies: dict[str, dict[str, int]] = {key: {} for _col, key in VOCABULARY_COLUMNS}
     for r in rows:
         spellings[date_spelling(r.get("MW Effective From"))] += 1
-        status = " ".join(str(r.get(STATUS_COLUMN) or "").split())
-        statuses[status] = statuses.get(status, 0) + 1
+        for column, key in VOCABULARY_COLUMNS:
+            printed = " ".join(str(r.get(column) or "").split())
+            vocabularies[key][printed] = vocabularies[key].get(printed, 0) + 1
     flags: list[str] = []
     missing = [c for c in REQUIRED_COLUMNS if c not in columns]
     if missing:
@@ -457,7 +462,7 @@ def copy_report(
         "columns": columns,
         "blank": blanks,
         "date_spellings": spellings,
-        "project_status": dict(sorted(statuses.items())),
+        **{key: dict(sorted(counts.items())) for key, counts in vocabularies.items()},
         "flags": flags,
     }
 
@@ -487,19 +492,23 @@ def schema_report(
                 }
             )
     totals = dict.fromkeys(DATE_SPELLINGS, 0)
-    statuses: dict[str, int] = {}
+    vocabularies: dict[str, dict[str, int]] = {key: {} for _col, key in VOCABULARY_COLUMNS}
     for c in copies:
         for k, v in c["date_spellings"].items():
             totals[k] += v
-        for k, v in c["project_status"].items():
-            statuses[k] = statuses.get(k, 0) + v
+        for _column, key in VOCABULARY_COLUMNS:
+            for k, v in c[key].items():
+                vocabularies[key][k] = vocabularies[key].get(k, 0) + v
     return {
         "archive": "neso/tec-register",
         "copies": len(copies),
         "unparseable": skipped,
         "eras": eras,
         "date_spelling_totals": totals,
-        "project_status_totals": dict(sorted(statuses.items(), key=lambda kv: (-kv[1], kv[0]))),
+        **{
+            f"{key}_totals": dict(sorted(counts.items(), key=lambda kv: (-kv[1], kv[0])))
+            for key, counts in vocabularies.items()
+        },
         "flagged": [{"t_public": c["t_public"], "flags": c["flags"]} for c in copies if c["flags"]],
         "per_copy": copies,
     }

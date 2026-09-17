@@ -529,3 +529,25 @@ sponsor's act:** deploy `vintage-capture`
 change is a code change and an environment change alike reach the schedule
 only through a deploy (§5).
 
+**Deployed 2026-09-18 (`dep-dam7kb142hec738jkrb0`, by the sponsor), and
+verified with a one-off `capture plan` job: the deployed image lists all 30
+plan entries, the eleven demand sources and the three keyed UKPN datasets
+among them. The first scheduled capture under the new plan is the 06:30 UTC
+run of 2026-09-18.**
+
+**A mistake, recorded.** The first verification job was written as
+`sh -c "… test -n \"$UKPN_API_KEY\" …"` to report whether the variable was
+present without printing it. Two things were wrong with that. Render
+substitutes environment variables into a one-off job's start command
+*before* the shell sees it, and the quoting collapsed so the shell tried to
+execute the whole string as one command name and failed with "File name too
+long", echoing the entire substituted command, **key value included**, into
+that job's log (`job-dam7kqtbedkc73achrig`). The key is therefore visible to
+anyone who can read the service's job logs on Render, and it passed through
+the session transcript. The remedy is rotation: revoke the key on UKPN's
+API-keys page, generate a new one, save it to `~/.aws/ukpn-api-key`, and set
+it in `vintage-secrets` again through the API, then deploy. **Standing rule
+from this:** never reference a secret variable in a Render start command,
+even to test its presence; the environment group's variable list, read
+through the API, is the check.
+

@@ -238,6 +238,50 @@ it has been fetched.
 stream does not carry it, which makes a successful triggered run look silent
 if you only watch the service.
 
+### `vintage-capture` cleaned up the same way, 2026-09-17 14:44-14:46 UTC
+
+Its three duplicated job-level variables (`AWS_ACCESS_KEY_ID`,
+`AWS_SECRET_ACCESS_KEY`, `HEALTHCHECK_URL_CAPTURE`) were deleted, leaving
+`AWS_DEFAULT_REGION` and `VINTAGE_STORE`, and the job was deployed
+(`dep-dalvq3u1egvs73814ee0`). Both cron jobs now take every secret from
+`vintage-secrets` and nothing else, which is what the group was created for.
+
+**The capture was not re-run to verify, deliberately.** A second `capture run`
+on the same day is *not* idempotent in the way it looks: `run.py` reads the
+day's manifest and writes `existing + new` back, then re-witnesses the
+concatenated bytes and overwrites `proofs/<day>.ndjson.*`. A verification run
+would therefore have lengthened today's manifest and destroyed the timestamp
+proofs over the bytes the 06:30 run actually captured. Anyone tempted to
+"just trigger it again" to test something should read that code first.
+
+The safe check is the watchdog, which only ever calls `get` and `keys`:
+
+    render jobs create crn-dakrtsbl550s73alah50 \
+      --start-command "uv run --no-sync --group capture --group registers grid-mysteries capture check"
+
+It read `manifests/`, `proofs/` and all of `state/013/` without a single
+access error, and named the identity it was running as:
+
+    User: arn:aws:iam::713341927530:user/vintage-capture-writer
+
+So the group supplies the **capture writer**, not `a115-cli-jordan`, and the
+cleanup is confirmed good on both jobs.
+
+**Two things that check turned up, neither caused by the cleanup.**
+
+1. `check-vintages` reports FAILED under the writer key, and always will:
+   `check_bucket_settings` calls `GetBucketVersioning`, which
+   `vintage-capture-writer` is not authorised for. The watchdog is a laptop
+   tool run with an administrative identity; it is not runnable as a Render
+   job as it stands. Either grant the writer `s3:GetBucketVersioning` or have
+   the check skip that one when the call is refused.
+2. `sync MISMATCH` on `state/013/.../acquisition-log.json` and
+   `.../neso-manifest.json`: the store is ahead of the repository, because the
+   14:38 recovery run pinned the 2026-09-17 vintages and nothing has synced
+   them down yet. **The laptop watchdog needs a run and a commit** — note that
+   the laptop's own AWS session was expired as of this afternoon, so that
+   needs re-authenticating first.
+
 **Standing consequence for this file:** whenever a secret or environment
 value used by a cron job changes, the job must be deployed for the schedule
 to see it. Add the deploy to the change, or the next scheduled run keeps the

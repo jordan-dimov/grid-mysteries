@@ -1,0 +1,29 @@
+{
+ "file": "MANIFEST.json",
+ "sha256": "0ed046aeba0f7d93c34b5fd78287dcbde92dc1eccc78eb0380452f011e3889e8",
+ "stamped_at_utc_local_clock": "2026-09-17T11:13:47Z",
+ "proofs": [
+  {
+   "kind": "opentimestamps",
+   "path": "MANIFEST.json.ots",
+   "status": "pending calendar attestation until upgraded",
+   "verify": "ots verify MANIFEST.json.ots  (needs a Bitcoin node or the calendars; `ots info` reads the proof offline)"
+  },
+  {
+   "kind": "rfc3161",
+   "tsa": "https://freetsa.org/tsr",
+   "path": "MANIFEST.json.freetsa.tsr",
+   "tsa_time": "Sep 17 11:13:50 2026 GMT",
+   "verify": "openssl ts -verify -in MANIFEST.json.freetsa.tsr -queryfile MANIFEST.json.tsq -CAfile trust/tsa/freetsa-cacert.pem"
+  },
+  {
+   "kind": "rfc3161",
+   "tsa": "http://timestamp.digicert.com",
+   "path": "MANIFEST.json.digicert.tsr",
+   "tsa_time": "Sep 17 11:13:50 2026 GMT",
+   "verify": "openssl ts -verify -in MANIFEST.json.digicert.tsr -queryfile MANIFEST.json.tsq -CAfile trust/tsa/digicert-trusted-root-g4.pem"
+  }
+ ],
+ "query": "MANIFEST.json.tsq",
+ "note": "Each token binds the SHA-256 above to the TSA's clock under the TSA's key; the OpenTimestamps proof binds it to a Bitcoin block once upgraded. The file itself is what is stamped; re-hash it to check."
+}

@@ -1,0 +1,50 @@
+{
+ "bundle": "eggborough-ccgt-and-bess-2024-01-05-2025-07-22",
+ "issued": "2026-09-17",
+ "issuer": "A115 Ltd (Grid Mysteries)",
+ "project": "Eggborough CCGT and BESS",
+ "stage": null,
+ "dates": [
+  "2024-01-05",
+  "2025-07-22"
+ ],
+ "declaration_sha256": "e4aba4c923b58e9c36e10d16d9a715d6cae1ce90081c9ed1f1b8bf5196f8c01a",
+ "declarations": [
+  {
+   "file": "DECLARATION.md",
+   "sha256": "e4aba4c923b58e9c36e10d16d9a715d6cae1ce90081c9ed1f1b8bf5196f8c01a"
+  },
+  {
+   "file": "DECLARATION-v2.md",
+   "sha256": "f2209b3cfd4dd0b276f1776293d60f83c65f3354db42b13e28348848c79a7a45"
+  }
+ ],
+ "rule": "the certificate id is the SHA-256 of this file's bytes; every listed file hashes as recorded; CERTIFICATE.md is rendered from certificate.json and this file, quotes the certificate id, and is witnessed beside it",
+ "files": [
+  {
+   "path": "certificate.json",
+   "sha256": "bd1e972ae9474566bf9196a6fdcd6cf2e050702d271eedaca4b1dc870c5d3fd6",
+   "bytes": 2883
+  },
+  {
+   "path": "extracts.ndjson",
+   "sha256": "43365a7b5fbd11b59f8a9378ec2f6a94a460eb82297475065e862687d306ce82",
+   "bytes": 94088
+  },
+  {
+   "path": "journal-extract.ndjson",
+   "sha256": "9dcdd2d1173392c81c1e172b9fc18d566412ddfd343940d7a90937726d97758f",
+   "bytes": 96560
+  },
+  {
+   "path": "registers/2024-01-05_neso-doc.xlsx",
+   "sha256": "04e301644373bd28dab7d68d44fa8a6a89cbe4bab0cffcc363bb04a7d19d8535",
+   "bytes": 171618
+  },
+  {
+   "path": "registers/2025-07-22_wayback.csv",
+   "sha256": "d875470279cc562b07fbe128ecc66f6215711614eee8bf5134012dbbec97bde3",
+   "bytes": 429514
+  }
+ ]
+}

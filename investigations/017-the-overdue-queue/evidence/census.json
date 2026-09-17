@@ -1,0 +1,428 @@
+{
+ "investigation": "017",
+ "declaration": "DECLARATION.md",
+ "declaration_sha256": "400b42f72b8c77759f88702d113594cdb2bb1b397f903486aaf39e92c7bc4b6d",
+ "declaration_timestamps": {
+  "sha256": "400b42f72b8c77759f88702d113594cdb2bb1b397f903486aaf39e92c7bc4b6d",
+  "matches_declaration": true,
+  "proofs": [
+   {
+    "kind": "opentimestamps",
+    "path": "DECLARATION.md.ots",
+    "status": "pending calendar attestation until upgraded"
+   },
+   {
+    "kind": "rfc3161",
+    "tsa": "https://freetsa.org/tsr",
+    "path": "DECLARATION.md.freetsa.tsr",
+    "tsa_time": "Sep 17 11:01:49 2026 GMT"
+   },
+   {
+    "kind": "rfc3161",
+    "tsa": "http://timestamp.digicert.com",
+    "path": "DECLARATION.md.digicert.tsr",
+    "tsa_time": "Sep 17 11:01:49 2026 GMT"
+   }
+  ]
+ },
+ "schema_report_sha256": "ce3c61d735ff6349b553e6956d43ee042bd45a85995696dc15fff8620d33f570",
+ "seal": "400b42f7",
+ "run_date": "2026-09-17",
+ "computed_at": "2026-09-17T11:08:21+00:00",
+ "copy": {
+  "t_public": "2026-09-15",
+  "path": "data/raw/neso/tec-history/2026-09-15_neso-ckan.csv",
+  "sha256": "d13406e495746f1b80e725321a5c7f95e21e0da16830bb6bd1f94ece172c9d5b",
+  "bytes": 421159,
+  "source": "neso-ckan",
+  "url": "https://api.neso.energy/dataset/cbd45e54-e6e2-4a38-99f1-8de6fd96d7c1/resource/17becbab-e3e8-473f-b303-3806f43a6a10/download/tec-register-15-september-2026.csv",
+  "t_public_basis": "CKAN resource last_modified 2026-09-15T16:48:30.055757 and filename tec-register-15-september-2026.csv; fetched live 2026-09-15"
+ },
+ "status_counts_all_rows": {
+  "Scoping": 1484,
+  "Built": 377,
+  "Consents Approved": 172,
+  "Awaiting Consents": 148,
+  "Under Construction/Commissioning": 19
+ },
+ "rows_file": "rows.ndjson",
+ "rows_appended": 0,
+ "falsifiers_fired": [],
+ "as_of": "2026-09-15",
+ "rows_total": 2200,
+ "undated": 362,
+ "dated": 1838,
+ "dated_built": 15,
+ "dated_not_built_future": 1725,
+ "selected_rows": 98,
+ "selected_mw": "12034.86",
+ "selected_rows_without_capacity": 0,
+ "selected_rows_zero_capacity": 8,
+ "selected_rows_negative_capacity": 0,
+ "selected_mw_negative": "0",
+ "selected_rows_without_project_id": 0,
+ "distinct_project_ids": 96,
+ "selected_mw_largest_per_id": "11984.86",
+ "by_status": [
+  {
+   "status": "Consents Approved",
+   "rows": 46,
+   "mw": "7204.09"
+  },
+  {
+   "status": "Scoping",
+   "rows": 35,
+   "mw": "2877.5"
+  },
+  {
+   "status": "Under Construction/Commissioning",
+   "rows": 8,
+   "mw": "1435.52"
+  },
+  {
+   "status": "Awaiting Consents",
+   "rows": 9,
+   "mw": "517.75"
+  }
+ ],
+ "by_plant_type": [
+  {
+   "plant_type": "Wind Offshore",
+   "rows": 5,
+   "mw": "4800"
+  },
+  {
+   "plant_type": "Energy Storage System",
+   "rows": 43,
+   "mw": "3706.95"
+  },
+  {
+   "plant_type": "Energy Storage System;PV Array (Photo Voltaic/solar)",
+   "rows": 23,
+   "mw": "1081.12"
+  },
+  {
+   "plant_type": "OCGT (Open Cycle Gas Turbine)",
+   "rows": 3,
+   "mw": "897"
+  },
+  {
+   "plant_type": "Wind Onshore",
+   "rows": 10,
+   "mw": "555.79"
+  },
+  {
+   "plant_type": "CCGT (Combined Cycle Gas Turbine)",
+   "rows": 1,
+   "mw": "380"
+  },
+  {
+   "plant_type": "Energy Storage System;Gas Reciprocating",
+   "rows": 1,
+   "mw": "375"
+  },
+  {
+   "plant_type": "Biomass",
+   "rows": 1,
+   "mw": "150"
+  },
+  {
+   "plant_type": "Thermal",
+   "rows": 1,
+   "mw": "57"
+  },
+  {
+   "plant_type": "Demand;PV Array (Photo Voltaic/solar)",
+   "rows": 1,
+   "mw": "20"
+  },
+  {
+   "plant_type": "Energy Storage System;Reactive Compensation",
+   "rows": 4,
+   "mw": "12"
+  },
+  {
+   "plant_type": "Reactive Compensation",
+   "rows": 5,
+   "mw": "0"
+  }
+ ],
+ "by_year": [
+  {
+   "year": 2020,
+   "rows": 1,
+   "mw": "380"
+  },
+  {
+   "year": 2022,
+   "rows": 2,
+   "mw": "75"
+  },
+  {
+   "year": 2023,
+   "rows": 6,
+   "mw": "336.6"
+  },
+  {
+   "year": 2024,
+   "rows": 16,
+   "mw": "1280.3"
+  },
+  {
+   "year": 2025,
+   "rows": 39,
+   "mw": "4792.37"
+  },
+  {
+   "year": 2026,
+   "rows": 34,
+   "mw": "5170.59"
+  }
+ ],
+ "swap_sensitivity": {
+  "rows_with_a_swapped_reading": 18,
+  "mw_with_a_swapped_reading": "4072.2",
+  "rows_swapped_reading_not_past": 2,
+  "mw_swapped_reading_not_past": "500"
+ },
+ "scale": {
+  "rows_dated_on_or_after_as_of": 1736,
+  "mw_dated_on_or_after_as_of": "586036.24",
+  "rows_scoping_dated_on_or_after_as_of": 1449,
+  "mw_scoping_dated_on_or_after_as_of": "503676.63"
+ },
+ "checks": {
+  "C2 dated plus undated is every row": true,
+  "C3 the four classes partition every row": true,
+  "C1 the status counts equal the schema report's for this copy": true,
+  "C4 the copy is in the series' reading with the same row count, and is not suspect": true
+ },
+ "falsifiers": {
+  "F1 swapped dates could move more than a fifth of the selected MW to the future": false,
+  "F3 the two readings of the unit differ by more than a tenth": false
+ },
+ "earliest": [
+  {
+   "index": 1683,
+   "project_name": "Powersite @ Drakelow",
+   "customer_name": "POWERSITE LTD",
+   "connection_site": "Drakelow 400kV Substation",
+   "stage": "",
+   "project_id": "a0l4L0000005ilF",
+   "project_number": "PRO-000364",
+   "plant_type": "CCGT (Combined Cycle Gas Turbine)",
+   "status": "Under Construction/Commissioning",
+   "mw": "380",
+   "effective": "2020-10-01",
+   "effective_as_published": "01/10/2020",
+   "effective_swapped": "2020-01-10"
+  },
+  {
+   "index": 70,
+   "project_name": "Arbroath Battery Substation",
+   "customer_name": "ARBROATH LIMITED",
+   "connection_site": "Arbroath GSP",
+   "stage": "",
+   "project_id": "a0l4L0000005iSw",
+   "project_number": "PRO-000950",
+   "plant_type": "Energy Storage System",
+   "status": "Consents Approved",
+   "mw": "35",
+   "effective": "2022-02-21",
+   "effective_as_published": "21/02/2022",
+   "effective_swapped": null
+  },
+  {
+   "index": 476,
+   "project_name": "Coupar Angus Battery",
+   "customer_name": "COUPAR LIMITED",
+   "connection_site": "Coupar Angus 132/33kV GSP",
+   "stage": "",
+   "project_id": "a0l4L0000005iPx",
+   "project_number": "PRO-000905",
+   "plant_type": "Energy Storage System",
+   "status": "Consents Approved",
+   "mw": "40",
+   "effective": "2022-02-21",
+   "effective_as_published": "21/02/2022",
+   "effective_swapped": null
+  },
+  {
+   "index": 594,
+   "project_name": "Dollymans Storage",
+   "customer_name": "Dollymans Storage Limited",
+   "connection_site": "Rayleigh Main 132kV Substation",
+   "stage": "",
+   "project_id": "a0l4L0000005iXU",
+   "project_number": "PRO-002261",
+   "plant_type": "Energy Storage System",
+   "status": "Scoping",
+   "mw": "99.8",
+   "effective": "2023-01-12",
+   "effective_as_published": "12/01/2023",
+   "effective_swapped": "2023-12-01"
+  },
+  {
+   "index": 534,
+   "project_name": "Cuxton 49.5MW BESS",
+   "customer_name": "Cuxton Energy Storage Limited",
+   "connection_site": "Kingsnorth 400kV Substation",
+   "stage": "",
+   "project_id": "a0l4L0000005iXw",
+   "project_number": "PRO-002373",
+   "plant_type": "Energy Storage System",
+   "status": "Consents Approved",
+   "mw": "49.5",
+   "effective": "2023-05-31",
+   "effective_as_published": "31/05/2023",
+   "effective_swapped": null
+  },
+  {
+   "index": 1662,
+   "project_name": "Pines Burn Wind Farm",
+   "customer_name": "PINES BURN WIND FARM LLP",
+   "connection_site": "Hawick GSP",
+   "stage": "",
+   "project_id": "a0l4L0000005iQo",
+   "project_number": "PRO-000897",
+   "plant_type": "Wind Onshore",
+   "status": "Consents Approved",
+   "mw": "50",
+   "effective": "2023-08-02",
+   "effective_as_published": "02/08/2023",
+   "effective_swapped": "2023-02-08"
+  },
+  {
+   "index": 1525,
+   "project_name": "Newtonwood BESS",
+   "customer_name": "CARE POWER (NEWTONWOOD) LIMITED",
+   "connection_site": "Chesterfield GSP",
+   "stage": "",
+   "project_id": "a0l8e000001Hpwk",
+   "project_number": "PRO-004156",
+   "plant_type": "Energy Storage System",
+   "status": "Under Construction/Commissioning",
+   "mw": "49.9",
+   "effective": "2023-08-15",
+   "effective_as_published": "15/08/2023",
+   "effective_swapped": null
+  },
+  {
+   "index": 598,
+   "project_name": "Dorenell Battery",
+   "customer_name": "CLASHINDARROCH WINDFARM EXTENSION LIMITED",
+   "connection_site": "Dorenell BESS 132KV substation",
+   "stage": "",
+   "project_id": "a0l4L0000005ilv",
+   "project_number": "PRO-000427",
+   "plant_type": "Wind Onshore",
+   "status": "Scoping",
+   "mw": "37.5",
+   "effective": "2023-10-31",
+   "effective_as_published": "31/10/2023",
+   "effective_swapped": null
+  },
+  {
+   "index": 1798,
+   "project_name": "Seabank (Tertiary)",
+   "customer_name": "PIVOTED POWER LLP",
+   "connection_site": "SEABANK 400/33kV SUBSTATION",
+   "stage": "",
+   "project_id": "a0l4L0000005icu",
+   "project_number": "PRO-001068",
+   "plant_type": "Energy Storage System",
+   "status": "Awaiting Consents",
+   "mw": "49.9",
+   "effective": "2023-11-01",
+   "effective_as_published": "01/11/2023",
+   "effective_swapped": "2023-01-11"
+  },
+  {
+   "index": 544,
+   "project_name": "Dalmarnock Road BESS",
+   "customer_name": "DALMARNOCK BESS LTD",
+   "connection_site": "DALMARNOCK 132/33KV SUBSTATION",
+   "stage": "",
+   "project_id": "a0l4L0000005idK",
+   "project_number": "PRO-001660",
+   "plant_type": "Energy Storage System",
+   "status": "Scoping",
+   "mw": "40",
+   "effective": "2024-02-23",
+   "effective_as_published": "23/02/2024",
+   "effective_swapped": null
+  }
+ ],
+ "repeated_project_ids": [
+  {
+   "project_id": "a0l4L0000005ihQ",
+   "rows": [
+    {
+     "index": 487,
+     "project_name": "Coylton 275kV Greener Grid Park",
+     "customer_name": "COYLTON ENERGY LIMITED",
+     "connection_site": "Coylton 275kV substation",
+     "stage": "1",
+     "project_id": "a0l4L0000005ihQ",
+     "project_number": "PRO-001551-1",
+     "plant_type": "Energy Storage System",
+     "status": "Consents Approved",
+     "mw": "50",
+     "effective": "2026-05-18",
+     "effective_as_published": "18/05/2026",
+     "effective_swapped": null
+    },
+    {
+     "index": 488,
+     "project_name": "Coylton 275kV Greener Grid Park",
+     "customer_name": "COYLTON ENERGY LIMITED",
+     "connection_site": "Coylton 275kV substation",
+     "stage": "2",
+     "project_id": "a0l4L0000005ihQ",
+     "project_number": "PRO-001551-2",
+     "plant_type": "Energy Storage System",
+     "status": "Scoping",
+     "mw": "100",
+     "effective": "2026-04-30",
+     "effective_as_published": "30/04/2026",
+     "effective_swapped": null
+    }
+   ]
+  },
+  {
+   "project_id": "a0l8e0000011zBp",
+   "rows": [
+    {
+     "index": 849,
+     "project_name": "GF Upper Boat",
+     "customer_name": "PULSE CLEAN ENERGY SPV FRANKLIN LIMITED",
+     "connection_site": "Upper Boat 275kV Substation",
+     "stage": "1",
+     "project_id": "a0l8e0000011zBp",
+     "project_number": "PRO-003568-1",
+     "plant_type": "Energy Storage System;Reactive Compensation",
+     "status": "Scoping",
+     "mw": "0",
+     "effective": "2025-05-31",
+     "effective_as_published": "31/05/2025",
+     "effective_swapped": null
+    },
+    {
+     "index": 850,
+     "project_name": "GF Upper Boat",
+     "customer_name": "PULSE CLEAN ENERGY SPV FRANKLIN LIMITED",
+     "connection_site": "Upper Boat 275kV Substation",
+     "stage": "2",
+     "project_id": "a0l8e0000011zBp",
+     "project_number": "PRO-003568-2",
+     "plant_type": "Energy Storage System;Reactive Compensation",
+     "status": "Scoping",
+     "mw": "0",
+     "effective": "2025-10-31",
+     "effective_as_published": "31/10/2025",
+     "effective_swapped": null
+    }
+   ]
+  }
+ ]
+}

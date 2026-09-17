@@ -1,0 +1,93 @@
+{
+ "project": "Eggborough CCGT - OCGT - BESS",
+ "stage": null,
+ "dates": [
+  "2018-11-08",
+  "2026-09-15"
+ ],
+ "as_of": [
+  {
+   "as_of": "2018-11-08",
+   "vintage": "2018-11-08",
+   "sha256": "0f585ac816b65fb19b14bee9a26c525e2f31e0f6af37ec25561f1ea9765c3d8c",
+   "path": "data/raw/neso/tec-history/2018-11-08_neso-doc.xlsx",
+   "state": "absent",
+   "rows_as_published": []
+  },
+  {
+   "as_of": "2026-09-15",
+   "vintage": "2026-09-15",
+   "sha256": "d13406e495746f1b80e725321a5c7f95e21e0da16830bb6bd1f94ece172c9d5b",
+   "path": "data/raw/neso/tec-history/2026-09-15_neso-ckan.csv",
+   "state": "ambiguous (2 rows)",
+   "rows_as_published": [
+    {
+     "Project name": "Eggborough CCGT - OCGT - BESS",
+     "Customer name": "EGGBOROUGH POWER LIMITED",
+     "Connection site": "Eggborough 400kV Substation",
+     "Stage": "1",
+     "MW connected": "0",
+     "MW increase / decrease (stage TEC)": "1999",
+     "Cumulative total capacity (MW)": "1999",
+     "MW effective from (target date)": "01/10/2026",
+     "Project status": "Awaiting Consents",
+     "Agreement type": "Direct Connection",
+     "Host TO": "NGET",
+     "Plant type": "CCGT (Combined Cycle Gas Turbine);Energy Storage System;OCGT (Open Cycle Gas Turbine)",
+     "Project ID": "a0l4L0000005iktQAA",
+     "Project number": "PRO-000136-1",
+     "Gate": ""
+    },
+    {
+     "Project name": "Eggborough CCGT - OCGT - BESS",
+     "Customer name": "EGGBOROUGH POWER LIMITED",
+     "Connection site": "Eggborough 400kV Substation",
+     "Stage": "2",
+     "MW connected": "0",
+     "MW increase / decrease (stage TEC)": "451",
+     "Cumulative total capacity (MW)": "2450",
+     "MW effective from (target date)": "01/10/2027",
+     "Project status": "Awaiting Consents",
+     "Agreement type": "Direct Connection",
+     "Host TO": "NGET",
+     "Plant type": "CCGT (Combined Cycle Gas Turbine);Energy Storage System;OCGT (Open Cycle Gas Turbine)",
+     "Project ID": "a0l4L0000005iktQAA",
+     "Project number": "PRO-000136-2",
+     "Gate": ""
+    }
+   ]
+  }
+ ],
+ "changes": [
+  {
+   "field": "Presence",
+   "previous": "absent",
+   "current": "absent from a suspect copy (673 rows against 1392 in the previous copy (52% fewer))",
+   "first_shown": "2023-11-28",
+   "first_shown_sha256": "3aca531be8b111c1de0ca665adfc3a3693ba0296c1dc15300ee6d8ebb0853488",
+   "last_previous": "2023-11-24"
+  },
+  {
+   "field": "Presence",
+   "previous": "absent from a suspect copy (673 rows against 1392 in the previous copy (52% fewer))",
+   "current": "absent",
+   "first_shown": "2023-12-01",
+   "first_shown_sha256": "dee743adf91f107a9982862a62ba7a5294f8e5c62558cf96e17a3e5851022e88",
+   "last_previous": "2023-11-28"
+  },
+  {
+   "field": "Presence",
+   "previous": "absent",
+   "current": "ambiguous (2 rows)",
+   "first_shown": "2025-07-01",
+   "first_shown_sha256": "dfca4aeb2ce5d3b5f946a2114d871cc3d3dd87a0b33a62058ca6435336db5b05",
+   "last_previous": "2025-04-01"
+  }
+ ],
+ "vintages_consulted": 512,
+ "vintages_absent": 506,
+ "vintages_suspect": 1,
+ "vintages_ambiguous": 6,
+ "first_vintage": "2018-11-08",
+ "last_vintage": "2026-09-15"
+}

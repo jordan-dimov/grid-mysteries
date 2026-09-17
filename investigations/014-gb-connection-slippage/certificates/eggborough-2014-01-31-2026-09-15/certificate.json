@@ -1,0 +1,558 @@
+{
+ "project": "Eggborough",
+ "stage": null,
+ "dates": [
+  "2014-01-31",
+  "2026-09-15"
+ ],
+ "as_of": [
+  {
+   "as_of": "2014-01-31",
+   "vintage": "2014-01-31",
+   "sha256": "a1201fdf502c9da27efa72c23fc4edf0ab1068aaf2cd74ab18dd9358d959bbfe",
+   "path": "data/raw/neso/tec-history/2014-01-31_neso-doc.xlsx",
+   "state": {
+    "Project name": "Eggborough",
+    "Customer name": "Eggborough Power Ltd",
+    "Connection site": "Eggborough 400kV Substation",
+    "Stage": "",
+    "MW connected": "1940",
+    "MW increase / decrease (stage TEC)": "0",
+    "Cumulative total capacity (MW)": "1940",
+    "MW effective from (target date)": "",
+    "Project status": "Built",
+    "Agreement type": "",
+    "Host TO": "NGET",
+    "Plant type": "Coal",
+    "Project ID": "",
+    "Project number": "",
+    "Gate": ""
+   },
+   "rows_as_published": [
+    {
+     "Project name": "Eggborough",
+     "Customer name": "Eggborough Power Ltd",
+     "Connection site": "Eggborough 400kV Substation",
+     "Stage": "",
+     "MW connected": "1940",
+     "MW increase / decrease (stage TEC)": "0",
+     "Cumulative total capacity (MW)": "1940",
+     "MW effective from (target date)": "",
+     "Project status": "Built",
+     "Agreement type": "",
+     "Host TO": "NGET",
+     "Plant type": "Coal",
+     "Project ID": "",
+     "Project number": "",
+     "Gate": ""
+    }
+   ]
+  },
+  {
+   "as_of": "2026-09-15",
+   "vintage": "2026-09-15",
+   "sha256": "d13406e495746f1b80e725321a5c7f95e21e0da16830bb6bd1f94ece172c9d5b",
+   "path": "data/raw/neso/tec-history/2026-09-15_neso-ckan.csv",
+   "state": {
+    "Project name": "Eggborough",
+    "Customer name": "SSE EGGBOROUGH LIMITED",
+    "Connection site": "Eggborough 400kV Substation",
+    "Stage": "",
+    "MW connected": "0",
+    "MW increase / decrease (stage TEC)": "550",
+    "Cumulative total capacity (MW)": "550",
+    "MW effective from (target date)": "16/06/2032",
+    "Project status": "Scoping",
+    "Agreement type": "Direct Connection",
+    "Host TO": "NGET",
+    "Plant type": "Energy Storage System",
+    "Project ID": "a0l4L0000005ibxQAA",
+    "Project number": "PRO-002049",
+    "Gate": ""
+   },
+   "rows_as_published": [
+    {
+     "Project name": "Eggborough",
+     "Customer name": "SSE EGGBOROUGH LIMITED",
+     "Connection site": "Eggborough 400kV Substation",
+     "Stage": "",
+     "MW connected": "0",
+     "MW increase / decrease (stage TEC)": "550",
+     "Cumulative total capacity (MW)": "550",
+     "MW effective from (target date)": "16/06/2032",
+     "Project status": "Scoping",
+     "Agreement type": "Direct Connection",
+     "Host TO": "NGET",
+     "Plant type": "Energy Storage System",
+     "Project ID": "a0l4L0000005ibxQAA",
+     "Project number": "PRO-002049",
+     "Gate": ""
+    }
+   ]
+  }
+ ],
+ "changes": [
+  {
+   "field": "Agreement type",
+   "previous": "",
+   "current": "BCA",
+   "first_shown": "2014-05-12",
+   "first_shown_sha256": "387f9e19377ce975ecdb286adff2f45b2618bf3bfafd2cd5ae0ebd73298727d9",
+   "last_previous": "2014-05-09"
+  },
+  {
+   "field": "Agreement type",
+   "previous": "BCA",
+   "current": "",
+   "first_shown": "2014-05-26",
+   "first_shown_sha256": "5f397277ce0b51136aff53358227e58cf3fd395a45561f5326457f9be8a8de3d",
+   "last_previous": "2014-05-12"
+  },
+  {
+   "field": "Agreement type",
+   "previous": "",
+   "current": "BCA",
+   "first_shown": "2014-07-04",
+   "first_shown_sha256": "ab31c67c2191fcd9515dbaafa9addc0744780b8acf5622f987df75589cdb7d67",
+   "last_previous": "2014-05-26"
+  },
+  {
+   "field": "Agreement type",
+   "previous": "BCA",
+   "current": "",
+   "first_shown": "2014-10-07",
+   "first_shown_sha256": "0714d9c5466b7a14d1e2c766a5fa2fd221733393fd264348869f7ee60978ac51",
+   "last_previous": "2014-07-04"
+  },
+  {
+   "field": "Presence",
+   "previous": "present (one row)",
+   "current": "absent from a suspect copy (225 rows against 413 in the previous copy (46% fewer))",
+   "first_shown": "2015-05-08",
+   "first_shown_sha256": "1989d49d121ef1cec08862daa17ca0af01e1ec4f70cdae65df830c26de30a88d",
+   "last_previous": "2015-04-24"
+  },
+  {
+   "field": "Presence",
+   "previous": "absent from a suspect copy (225 rows against 413 in the previous copy (46% fewer))",
+   "current": "present (one row)",
+   "first_shown": "2015-05-18",
+   "first_shown_sha256": "2c66a037bf6a7bada06b5aef8241d2406260030a5d4930c834e3055bcb2a4134",
+   "last_previous": "2015-05-08"
+  },
+  {
+   "field": "MW increase / decrease (stage TEC)",
+   "previous": "0",
+   "current": "-1940",
+   "first_shown": "2015-09-23",
+   "first_shown_sha256": "4c14e6eaaaeaaad9f2f2cefb6ea419b9f642fc05146469a7ae6459f860d29c31",
+   "last_previous": "2015-09-11"
+  },
+  {
+   "field": "Cumulative total capacity (MW)",
+   "previous": "1940",
+   "current": "0",
+   "first_shown": "2015-09-23",
+   "first_shown_sha256": "4c14e6eaaaeaaad9f2f2cefb6ea419b9f642fc05146469a7ae6459f860d29c31",
+   "last_previous": "2015-09-11"
+  },
+  {
+   "field": "MW effective from (target date)",
+   "previous": "",
+   "current": "2016-04-01",
+   "first_shown": "2015-09-23",
+   "first_shown_sha256": "4c14e6eaaaeaaad9f2f2cefb6ea419b9f642fc05146469a7ae6459f860d29c31",
+   "last_previous": "2015-09-11"
+  },
+  {
+   "field": "MW connected",
+   "previous": "1940",
+   "current": "0",
+   "first_shown": "2016-04-05",
+   "first_shown_sha256": "df901aa1d96c3900305443e152b5a99890f8ed8de22e2ba33e4d9c578ae8545f",
+   "last_previous": "2016-03-31"
+  },
+  {
+   "field": "MW increase / decrease (stage TEC)",
+   "previous": "-1940",
+   "current": "0",
+   "first_shown": "2016-04-05",
+   "first_shown_sha256": "df901aa1d96c3900305443e152b5a99890f8ed8de22e2ba33e4d9c578ae8545f",
+   "last_previous": "2016-03-31"
+  },
+  {
+   "field": "MW effective from (target date)",
+   "previous": "2016-04-01",
+   "current": "",
+   "first_shown": "2016-04-05",
+   "first_shown_sha256": "df901aa1d96c3900305443e152b5a99890f8ed8de22e2ba33e4d9c578ae8545f",
+   "last_previous": "2016-03-31"
+  },
+  {
+   "field": "Agreement type",
+   "previous": "",
+   "current": "BCA",
+   "first_shown": "2016-04-26",
+   "first_shown_sha256": "d1700f150f3e201497e5a7da9e0a9bdeeca53e9bb74ff87c5bde5e65df18f6b4",
+   "last_previous": "2016-04-25"
+  },
+  {
+   "field": "Agreement type",
+   "previous": "BCA",
+   "current": "",
+   "first_shown": "2016-05-25",
+   "first_shown_sha256": "054c29c67fd8a452506e4beed2c67f12ee0c12a71548d35f59bda7a9199f1c1d",
+   "last_previous": "2016-05-04"
+  },
+  {
+   "field": "Agreement type",
+   "previous": "",
+   "current": "BCA",
+   "first_shown": "2016-08-15",
+   "first_shown_sha256": "f6579351e61dc6b28bed73dab8a43721b6a21237f15efd239fbf9857b5bdfeef",
+   "last_previous": "2016-08-12"
+  },
+  {
+   "field": "Agreement type",
+   "previous": "BCA",
+   "current": "",
+   "first_shown": "2016-08-30",
+   "first_shown_sha256": "c769e548fd9921bce07c478b3e38460a1ff29ac43c0a45472d99daa065169858",
+   "last_previous": "2016-08-15"
+  },
+  {
+   "field": "Presence",
+   "previous": "present (one row)",
+   "current": "absent",
+   "first_shown": "2016-11-08",
+   "first_shown_sha256": "416813554c3f78146a9288a0464b788184aa706e27d9a541e2d31e3fb4e50d10",
+   "last_previous": "2016-10-28"
+  },
+  {
+   "field": "Presence",
+   "previous": "absent",
+   "current": "present (one row)",
+   "first_shown": "2016-11-17",
+   "first_shown_sha256": "5a3bf398565f5d73d2f3881b9d4462b97473852b4800f44b90f1e6b00f30cef5",
+   "last_previous": "2016-11-08"
+  },
+  {
+   "field": "Cumulative total capacity (MW)",
+   "previous": "0",
+   "current": "1870",
+   "first_shown": "2017-03-16",
+   "first_shown_sha256": "8ba7b8c783c2f6b2dc22c00f603feebd5d6a2799ea9b9a8b2d57cf9b82c6cb0d",
+   "last_previous": "2017-03-10"
+  },
+  {
+   "field": "MW effective from (target date)",
+   "previous": "",
+   "current": "2017-04-01",
+   "first_shown": "2017-03-16",
+   "first_shown_sha256": "8ba7b8c783c2f6b2dc22c00f603feebd5d6a2799ea9b9a8b2d57cf9b82c6cb0d",
+   "last_previous": "2017-03-10"
+  },
+  {
+   "field": "MW connected",
+   "previous": "0",
+   "current": "1870",
+   "first_shown": "2017-06-23",
+   "first_shown_sha256": "404715857d457f110ae224851e84378c4cd30b521ab822b3a2cd0a82ab2ae471",
+   "last_previous": "2017-06-15"
+  },
+  {
+   "field": "Presence",
+   "previous": "present (one row)",
+   "current": "ambiguous (2 rows)",
+   "first_shown": "2018-11-08",
+   "first_shown_sha256": "0f585ac816b65fb19b14bee9a26c525e2f31e0f6af37ec25561f1ea9765c3d8c",
+   "last_previous": "2018-11-01"
+  },
+  {
+   "field": "Presence",
+   "previous": "ambiguous (2 rows)",
+   "current": "present (one row)",
+   "first_shown": "2020-04-09",
+   "first_shown_sha256": "fdfaffbfd2d6a25ef3af26e2e214aaaf8d8c84bb77e186fd64fe744360844b1e",
+   "last_previous": "2020-04-02"
+  },
+  {
+   "field": "Connection site",
+   "previous": "Eggborough 400kV Substation",
+   "current": "Eggborough 400kV",
+   "first_shown": "2020-06-05",
+   "first_shown_sha256": "379c13147213659a3dd62e67f3ac0c1ab810ad7a8afaee6a8fb86aeddc80efac",
+   "last_previous": "2020-05-28"
+  },
+  {
+   "field": "Cumulative total capacity (MW)",
+   "previous": "2450",
+   "current": "",
+   "first_shown": "2020-06-05",
+   "first_shown_sha256": "379c13147213659a3dd62e67f3ac0c1ab810ad7a8afaee6a8fb86aeddc80efac",
+   "last_previous": "2020-05-28"
+  },
+  {
+   "field": "Agreement type",
+   "previous": "",
+   "current": "Directly Connected",
+   "first_shown": "2020-06-18",
+   "first_shown_sha256": "f02fd12a966c242139b79606713aac1c30b70be544935e81d7ce6d8bda5c22c5",
+   "last_previous": "2020-06-11"
+  },
+  {
+   "field": "Cumulative total capacity (MW)",
+   "previous": "",
+   "current": "2450",
+   "first_shown": "2020-07-09",
+   "first_shown_sha256": "f545397effb307ad789923c5019bd8bb7660de231a1b5c3ba53494f29e856f1b",
+   "last_previous": "2020-07-02"
+  },
+  {
+   "field": "Plant type",
+   "previous": "Hybrid",
+   "current": "CCGT (Combined Cycle Gas Turbine); Energy Storage System; OCGT (Open Cycle Gas Turbine)",
+   "first_shown": "2020-10-08",
+   "first_shown_sha256": "aea815bd2af2ccac692193635d2be05a8ef58c4ce8fa1558ed9720bde6dcc2be",
+   "last_previous": "2020-10-01"
+  },
+  {
+   "field": "MW effective from (target date)",
+   "previous": "2024-10-01",
+   "current": "2024-01-10",
+   "first_shown": "2021-01-29",
+   "first_shown_sha256": "c9d11a1829a5e09563a3660083ecf8dda378574ded0399c1466beeb940bb595a",
+   "last_previous": "2021-01-26"
+  },
+  {
+   "field": "MW effective from (target date)",
+   "previous": "2024-01-10",
+   "current": "2024-10-01",
+   "first_shown": "2021-02-02",
+   "first_shown_sha256": "88ae34aa5a1b8e24f79f6acfd470acaf53efda854f04c98b9fc8e4f0a4fea17d",
+   "last_previous": "2021-01-29"
+  },
+  {
+   "field": "MW effective from (target date)",
+   "previous": "2024-10-01",
+   "current": "2024-01-10",
+   "first_shown": "2021-02-19",
+   "first_shown_sha256": "02e3f9b2a711922775ce5dd34c16d12c40367f3c1b7e72b9afac0c58323a42cc",
+   "last_previous": "2021-02-16"
+  },
+  {
+   "field": "MW effective from (target date)",
+   "previous": "2024-01-10",
+   "current": "2024-10-01",
+   "first_shown": "2021-02-23",
+   "first_shown_sha256": "3fec40be05641ef188a9c97f8be7f401693c30ccb928a3c6d89ddd184b891fd5",
+   "last_previous": "2021-02-19"
+  },
+  {
+   "field": "MW effective from (target date)",
+   "previous": "2024-10-01",
+   "current": "2025-10-01",
+   "first_shown": "2021-04-23",
+   "first_shown_sha256": "104e03d1c0c5e7f22650529f150436687b9db13e3d422849cb3d802ec1332fa5",
+   "last_previous": "2021-04-20"
+  },
+  {
+   "field": "Customer name",
+   "previous": "Eggborough Power Ltd",
+   "current": "EGGBOROUGH POWER LIMITED",
+   "first_shown": "2021-05-28",
+   "first_shown_sha256": "03e4eb509001f0d9d993e510c4aab013aa91d53cab99f524bf01f14ba30461f9",
+   "last_previous": "2021-05-25"
+  },
+  {
+   "field": "Plant type",
+   "previous": "CCGT (Combined Cycle Gas Turbine); Energy Storage System; OCGT (Open Cycle Gas Turbine)",
+   "current": "Coal",
+   "first_shown": "2021-07-30",
+   "first_shown_sha256": "75c61d49a1ed10d372d6367a83bebe60d91237272d25715768f67428386b204a",
+   "last_previous": "2021-07-27"
+  },
+  {
+   "field": "Plant type",
+   "previous": "Coal",
+   "current": "CCGT (Combined Cycle Gas Turbine); Energy Storage System; OCGT (Open Cycle Gas Turbine)",
+   "first_shown": "2021-08-03",
+   "first_shown_sha256": "5ba3024d93bcb7ab17d2465e80c796ff4d9829f9fa758be0471944b8e0f0e79c",
+   "last_previous": "2021-07-30"
+  },
+  {
+   "field": "Project ID",
+   "previous": "",
+   "current": "a030Y000009rm7N",
+   "first_shown": "2021-11-26",
+   "first_shown_sha256": "e8053c4f597f311cee22ff98e12e0fecb54150d92d226e87f27250808ff48b3a",
+   "last_previous": "2021-11-23"
+  },
+  {
+   "field": "MW effective from (target date)",
+   "previous": "01/10/2025",
+   "current": "2025-01-10",
+   "first_shown": "2022-03-11",
+   "first_shown_sha256": "333d5715c5c5f85de3b1ac14f778b6774865c8214b83adadfdd9df076a820344",
+   "last_previous": "2022-03-09"
+  },
+  {
+   "field": "MW effective from (target date)",
+   "previous": "2025-01-10",
+   "current": "2025-10-01",
+   "first_shown": "2022-03-16",
+   "first_shown_sha256": "d2cf7f0a2f5c3405d77185ed74c684ed2cb9d8852fdf8658066bbd9052d8215b",
+   "last_previous": "2022-03-11"
+  },
+  {
+   "field": "Project ID",
+   "previous": "a030Y000009rm7N",
+   "current": "a0l4L0000005ikt",
+   "first_shown": "2022-08-24",
+   "first_shown_sha256": "166177c9567bb3679e8d7155f8717485d0b7bcd799d5159538331be18ace9280",
+   "last_previous": "2022-08-19"
+  },
+  {
+   "field": "MW effective from (target date)",
+   "previous": "2025-10-01",
+   "current": "2026-10-01",
+   "first_shown": "2022-09-16",
+   "first_shown_sha256": "f00697a3cf1a36b1a256181dd382e1563cd84122c1384497205bbc53b8ea696c",
+   "last_previous": "2022-09-13"
+  },
+  {
+   "field": "Connection site",
+   "previous": "Eggborough 400kV",
+   "current": "Eggborough 400kV Substation",
+   "first_shown": "2022-12-13",
+   "first_shown_sha256": "cafe2d5749db061aab5b5efad5dc8bc673b93709d5734ccf9fb261f0b82a53c9",
+   "last_previous": "2022-12-09"
+  },
+  {
+   "field": "Presence",
+   "previous": "present (one row)",
+   "current": "ambiguous (2 rows)",
+   "first_shown": "2023-06-16",
+   "first_shown_sha256": "98a604da1e6df0f0f883b0e9a20e5fbb971c11d67d0d125050d5e15c93d6754c",
+   "last_previous": "2023-06-13"
+  },
+  {
+   "field": "Presence",
+   "previous": "ambiguous (2 rows)",
+   "current": "present (one row)",
+   "first_shown": "2023-06-20",
+   "first_shown_sha256": "dff736d9b85d03d9a39cbf794a0f4746345a81c62ac8dfbcb43a64cd87c52543",
+   "last_previous": "2023-06-16"
+  },
+  {
+   "field": "Presence",
+   "previous": "present (one row)",
+   "current": "ambiguous (2 rows)",
+   "first_shown": "2023-12-05",
+   "first_shown_sha256": "595e842feee25923a693aa2221810979859a82bfa423485f29756af0bd4ff918",
+   "last_previous": "2023-12-01"
+  },
+  {
+   "field": "Presence",
+   "previous": "ambiguous (2 rows)",
+   "current": "present (one row)",
+   "first_shown": "2023-12-08",
+   "first_shown_sha256": "503b3340df754f4fabf598cf6594859155d29770b97e8bdc4baa07c5172cee9a",
+   "last_previous": "2023-12-05"
+  },
+  {
+   "field": "Customer name",
+   "previous": "EGGBOROUGH POWER LIMITED",
+   "current": "SSE UTILITY SOLUTIONS LIMITED",
+   "first_shown": "2024-01-05",
+   "first_shown_sha256": "04e301644373bd28dab7d68d44fa8a6a89cbe4bab0cffcc363bb04a7d19d8535",
+   "last_previous": "2023-12-29"
+  },
+  {
+   "field": "MW increase / decrease (stage TEC)",
+   "previous": "2450",
+   "current": "550",
+   "first_shown": "2024-01-05",
+   "first_shown_sha256": "04e301644373bd28dab7d68d44fa8a6a89cbe4bab0cffcc363bb04a7d19d8535",
+   "last_previous": "2023-12-29"
+  },
+  {
+   "field": "Cumulative total capacity (MW)",
+   "previous": "2450",
+   "current": "550",
+   "first_shown": "2024-01-05",
+   "first_shown_sha256": "04e301644373bd28dab7d68d44fa8a6a89cbe4bab0cffcc363bb04a7d19d8535",
+   "last_previous": "2023-12-29"
+  },
+  {
+   "field": "MW effective from (target date)",
+   "previous": "2026-10-01",
+   "current": "2032-06-16",
+   "first_shown": "2024-01-05",
+   "first_shown_sha256": "04e301644373bd28dab7d68d44fa8a6a89cbe4bab0cffcc363bb04a7d19d8535",
+   "last_previous": "2023-12-29"
+  },
+  {
+   "field": "Project status",
+   "previous": "Awaiting Consents",
+   "current": "Scoping",
+   "first_shown": "2024-01-05",
+   "first_shown_sha256": "04e301644373bd28dab7d68d44fa8a6a89cbe4bab0cffcc363bb04a7d19d8535",
+   "last_previous": "2023-12-29"
+  },
+  {
+   "field": "Plant type",
+   "previous": "CCGT (Combined Cycle Gas Turbine); Energy Storage System; OCGT (Open Cycle Gas Turbine)",
+   "current": "Energy Storage System; PV Array (Photo Voltaic/solar)",
+   "first_shown": "2024-01-05",
+   "first_shown_sha256": "04e301644373bd28dab7d68d44fa8a6a89cbe4bab0cffcc363bb04a7d19d8535",
+   "last_previous": "2023-12-29"
+  },
+  {
+   "field": "Project ID",
+   "previous": "a0l4L0000005ikt",
+   "current": "a0l4L0000005ibx",
+   "first_shown": "2024-01-05",
+   "first_shown_sha256": "04e301644373bd28dab7d68d44fa8a6a89cbe4bab0cffcc363bb04a7d19d8535",
+   "last_previous": "2023-12-29"
+  },
+  {
+   "field": "Project number",
+   "previous": "",
+   "current": "PRO-002049",
+   "first_shown": "2024-06-18",
+   "first_shown_sha256": "01d01e9c4acaf41c3687fd0c0d512fd266a4080ba2550969bca1da6436b4446b",
+   "last_previous": "2024-06-14"
+  },
+  {
+   "field": "Customer name",
+   "previous": "SSE UTILITY SOLUTIONS LIMITED",
+   "current": "",
+   "first_shown": "2024-11-12",
+   "first_shown_sha256": "247bec8908405af820ae7c5036e2f1cfd3aa5e6f35472ed5f7cee827acc6629a",
+   "last_previous": "2024-11-05"
+  },
+  {
+   "field": "Customer name",
+   "previous": "",
+   "current": "SSE EGGBOROUGH LIMITED",
+   "first_shown": "2024-11-15",
+   "first_shown_sha256": "ee50ff1e7fc8694f9c6dee4a91b507f22008a9bfe1ed8f23275cc09a86c8ee80",
+   "last_previous": "2024-11-12"
+  },
+  {
+   "field": "Plant type",
+   "previous": "Energy Storage System;PV Array (Photo Voltaic/solar)",
+   "current": "Energy Storage System",
+   "first_shown": "2025-07-01",
+   "first_shown_sha256": "dfca4aeb2ce5d3b5f946a2114d871cc3d3dd87a0b33a62058ca6435336db5b05",
+   "last_previous": "2025-04-01"
+  }
+ ],
+ "vintages_consulted": 700,
+ "vintages_absent": 2,
+ "vintages_suspect": 2,
+ "vintages_ambiguous": 75,
+ "first_vintage": "2014-01-31",
+ "last_vintage": "2026-09-15"
+}

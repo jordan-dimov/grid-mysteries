@@ -1,0 +1,101 @@
+{
+ "project": "Eggborough CCGT - OCGT - BESS",
+ "stage": "1",
+ "dates": [
+  "2025-07-01",
+  "2026-09-15"
+ ],
+ "as_of": [
+  {
+   "as_of": "2025-07-01",
+   "vintage": "2025-07-01",
+   "sha256": "dfca4aeb2ce5d3b5f946a2114d871cc3d3dd87a0b33a62058ca6435336db5b05",
+   "path": "data/raw/neso/tec-history/2025-07-01_neso-doc.csv",
+   "state": {
+    "Project name": "Eggborough CCGT - OCGT - BESS",
+    "Customer name": "EGGBOROUGH POWER LIMITED",
+    "Connection site": "Eggborough 400kV Substation",
+    "Stage": "1",
+    "MW connected": "0",
+    "MW increase / decrease (stage TEC)": "1999",
+    "Cumulative total capacity (MW)": "1999",
+    "MW effective from (target date)": "2026/10/01",
+    "Project status": "Awaiting Consents",
+    "Agreement type": "Direct Connection",
+    "Host TO": "NGET",
+    "Plant type": "CCGT (Combined Cycle Gas Turbine);Energy Storage System;OCGT (Open Cycle Gas Turbine)",
+    "Project ID": "a0l4L0000005iktQAA",
+    "Project number": "PRO-000136-1",
+    "Gate": ""
+   },
+   "rows_as_published": [
+    {
+     "Project name": "Eggborough CCGT - OCGT - BESS",
+     "Customer name": "EGGBOROUGH POWER LIMITED",
+     "Connection site": "Eggborough 400kV Substation",
+     "Stage": "1",
+     "MW connected": "0",
+     "MW increase / decrease (stage TEC)": "1999",
+     "Cumulative total capacity (MW)": "1999",
+     "MW effective from (target date)": "2026/10/01",
+     "Project status": "Awaiting Consents",
+     "Agreement type": "Direct Connection",
+     "Host TO": "NGET",
+     "Plant type": "CCGT (Combined Cycle Gas Turbine);Energy Storage System;OCGT (Open Cycle Gas Turbine)",
+     "Project ID": "a0l4L0000005iktQAA",
+     "Project number": "PRO-000136-1",
+     "Gate": ""
+    }
+   ]
+  },
+  {
+   "as_of": "2026-09-15",
+   "vintage": "2026-09-15",
+   "sha256": "d13406e495746f1b80e725321a5c7f95e21e0da16830bb6bd1f94ece172c9d5b",
+   "path": "data/raw/neso/tec-history/2026-09-15_neso-ckan.csv",
+   "state": {
+    "Project name": "Eggborough CCGT - OCGT - BESS",
+    "Customer name": "EGGBOROUGH POWER LIMITED",
+    "Connection site": "Eggborough 400kV Substation",
+    "Stage": "1",
+    "MW connected": "0",
+    "MW increase / decrease (stage TEC)": "1999",
+    "Cumulative total capacity (MW)": "1999",
+    "MW effective from (target date)": "01/10/2026",
+    "Project status": "Awaiting Consents",
+    "Agreement type": "Direct Connection",
+    "Host TO": "NGET",
+    "Plant type": "CCGT (Combined Cycle Gas Turbine);Energy Storage System;OCGT (Open Cycle Gas Turbine)",
+    "Project ID": "a0l4L0000005iktQAA",
+    "Project number": "PRO-000136-1",
+    "Gate": ""
+   },
+   "rows_as_published": [
+    {
+     "Project name": "Eggborough CCGT - OCGT - BESS",
+     "Customer name": "EGGBOROUGH POWER LIMITED",
+     "Connection site": "Eggborough 400kV Substation",
+     "Stage": "1",
+     "MW connected": "0",
+     "MW increase / decrease (stage TEC)": "1999",
+     "Cumulative total capacity (MW)": "1999",
+     "MW effective from (target date)": "01/10/2026",
+     "Project status": "Awaiting Consents",
+     "Agreement type": "Direct Connection",
+     "Host TO": "NGET",
+     "Plant type": "CCGT (Combined Cycle Gas Turbine);Energy Storage System;OCGT (Open Cycle Gas Turbine)",
+     "Project ID": "a0l4L0000005iktQAA",
+     "Project number": "PRO-000136-1",
+     "Gate": ""
+    }
+   ]
+  }
+ ],
+ "changes": [],
+ "vintages_consulted": 6,
+ "vintages_absent": 0,
+ "vintages_suspect": 0,
+ "vintages_ambiguous": 0,
+ "first_vintage": "2025-07-01",
+ "last_vintage": "2026-09-15"
+}

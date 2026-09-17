@@ -1,0 +1,22 @@
+[
+ {
+  "run_date": "2026-09-17",
+  "computed_at": "2026-09-17T11:06:51+00:00",
+  "seal": "400b42f7",
+  "declaration_sha256": "400b42f72b8c77759f88702d113594cdb2bb1b397f903486aaf39e92c7bc4b6d",
+  "copy": "2026-09-15",
+  "selected_rows": 98,
+  "rows_appended": 98,
+  "falsifiers_fired": []
+ },
+ {
+  "run_date": "2026-09-17",
+  "computed_at": "2026-09-17T11:08:21+00:00",
+  "seal": "400b42f7",
+  "declaration_sha256": "400b42f72b8c77759f88702d113594cdb2bb1b397f903486aaf39e92c7bc4b6d",
+  "copy": "2026-09-15",
+  "selected_rows": 98,
+  "rows_appended": 0,
+  "falsifiers_fired": []
+ }
+]

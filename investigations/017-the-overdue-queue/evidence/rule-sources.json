@@ -1,0 +1,27 @@
+{
+ "declaration": [
+  "DECLARATION.md"
+ ],
+ "note": "Checks C1, C4 and C5 are enforced by run.py against artefacts outside the pure logic (the committed schema report, the series' reading of the archive, and the append-only rows file) and have no unit test; every rule below does.",
+ "rules": {
+  "R1/R2 past its date is strictly before the copy's own publication date": "tests/test_overdue_queue.py::test_past_its_date_is_strictly_before_the_copys_own_publication_date",
+  "R3 every spelling the register has used parses": "tests/test_tec_register.py::test_every_date_spelling_the_register_has_used_parses",
+  "R3 an unparseable date is undated, never guessed, and outside the census": "tests/test_overdue_queue.py::test_an_undated_row_is_never_guessed_and_is_outside_the_census",
+  "R3 the day-month swap is published as a sensitivity, not applied": "tests/test_overdue_queue.py::test_the_swap_sensitivity_counts_the_dates_that_could_read_the_other_way",
+  "R4 not Built ignores case and whitespace and excludes nothing else": "tests/test_overdue_queue.py::test_built_is_excluded_and_every_other_spelling_is_not",
+  "R5 the measure is the stage's own TEC, never the cumulative column": "tests/test_overdue_queue.py::test_the_cumulative_column_is_never_the_measure",
+  "R5 a missing capacity is absent and a parseable zero is a row": "tests/test_overdue_queue.py::test_a_missing_capacity_is_absent_and_a_zero_is_a_row_with_no_capacity",
+  "R6 the row is the unit and a repeated project id is published both ways": "tests/test_overdue_queue.py::test_the_row_is_the_unit_and_a_repeated_project_id_is_published_both_ways",
+  "R6 a row with no project id cannot be shown to share one": "tests/test_overdue_queue.py::test_a_row_without_a_project_id_cannot_be_shown_to_share_one",
+  "R7 compound plant types are kept whole": "tests/test_overdue_queue.py::test_compound_plant_types_are_kept_whole",
+  "R7 the year table reads forwards and the earliest rows head the list": "tests/test_overdue_queue.py::test_breakdowns_by_year_are_in_year_order_and_the_earliest_are_first",
+  "R7 the scale line covers every row dated on or after the as-of date": "tests/test_overdue_queue.py::test_the_scale_line_covers_every_row_dated_on_or_after_the_as_of_date",
+  "C2/C3 the four classes partition every row": "tests/test_overdue_queue.py::test_the_four_classes_partition_every_row",
+  "F1 swapping could move more than a fifth of the selected MW to the future": "tests/test_overdue_queue.py::test_f1_fires_when_swapping_would_move_more_than_a_fifth_to_the_future",
+  "F3 the two readings of the unit differ by more than a tenth": "tests/test_overdue_queue.py::test_f3_fires_when_the_two_readings_of_the_unit_diverge",
+  "inherited reading: the archive's column aliases per era": "tests/test_tec_register.py::test_every_era_header_row_maps_the_required_columns",
+  "schema pass: the status vocabulary is recorded per copy and archive-wide": "tests/test_tec_register.py::test_copy_report_counts_every_spelling_of_project_status",
+  "exhibit: the matcher separates the gas plant from what shared its name": "tests/test_overdue_queue.py::test_the_exhibit_matcher_separates_the_gas_plant_from_what_shared_its_name",
+  "exhibit: every status a bundle's rows were published under": "tests/test_overdue_queue.py::test_status_trace_reports_every_status_a_bundles_rows_were_published_under"
+ }
+}

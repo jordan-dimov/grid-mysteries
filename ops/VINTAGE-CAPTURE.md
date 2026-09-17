@@ -519,10 +519,13 @@ exports carry their rows (496 / 45 / 70). `plan.py` carries them as
 from `UKPN_API_KEY`; a resource whose variable is unset is **reported as an
 error and never fetched**, because a keyless export is a header-only file that
 would otherwise be captured as a vintage, and the secret never reaches a
-manifest (tested). **Still to do, the sponsor's acts:** add `UKPN_API_KEY` to
-the `vintage-secrets` group in the Render dashboard, then deploy
-`vintage-capture` (`render deploys create crn-dakrtsbl550s73alah50 --wait`),
-because a plan change is a code change and the schedule keeps the old plan
-until the job is deployed (§5). Until the variable exists, the daily run will
-report the three UKPN resources as errors and capture everything else.
+manifest (tested). **`UKPN_API_KEY` added to `vintage-secrets` on 2026-09-18**, at the sponsor's
+request, through the Render REST API (`PUT /env-groups/evg-dal68s5g1s2s73ecrrb0/env-vars/UKPN_API_KEY`)
+with the value read from the local key file; the group now holds six
+variables and is linked to both cron jobs. The Render CLI has no env-group
+command, so the API with the CLI's own token is the route. **Still to do, the
+sponsor's act:** deploy `vintage-capture`
+(`render deploys create crn-dakrtsbl550s73alah50 --wait`), because a plan
+change is a code change and an environment change alike reach the schedule
+only through a deploy (§5).
 

@@ -391,6 +391,11 @@ REQUIRED_COLUMNS: Final = (
 #: copy is flagged as a possible partial export.
 ROW_COUNT_DROP: Final = Decimal("0.2")
 UNDATED_SHARE: Final = Decimal("0.5")
+#: The status column is not a required column for the series (a copy without
+#: it is still usable there), but a reader that selects on status is declared
+#: against the vocabulary the register has actually printed, so the schema
+#: report counts every spelling of it, blanks included, per copy.
+STATUS_COLUMN: Final = "Project Status"
 
 
 def date_spelling(value: object) -> str:
@@ -424,8 +429,11 @@ def copy_report(
         col: sum(1 for r in rows if not str(r.get(col) or "").strip()) for col in REQUIRED_COLUMNS
     }
     spellings = dict.fromkeys(DATE_SPELLINGS, 0)
+    statuses: dict[str, int] = {}
     for r in rows:
         spellings[date_spelling(r.get("MW Effective From"))] += 1
+        status = " ".join(str(r.get(STATUS_COLUMN) or "").split())
+        statuses[status] = statuses.get(status, 0) + 1
     flags: list[str] = []
     missing = [c for c in REQUIRED_COLUMNS if c not in columns]
     if missing:
@@ -449,6 +457,7 @@ def copy_report(
         "columns": columns,
         "blank": blanks,
         "date_spellings": spellings,
+        "project_status": dict(sorted(statuses.items())),
         "flags": flags,
     }
 
@@ -478,15 +487,19 @@ def schema_report(
                 }
             )
     totals = dict.fromkeys(DATE_SPELLINGS, 0)
+    statuses: dict[str, int] = {}
     for c in copies:
         for k, v in c["date_spellings"].items():
             totals[k] += v
+        for k, v in c["project_status"].items():
+            statuses[k] = statuses.get(k, 0) + v
     return {
         "archive": "neso/tec-register",
         "copies": len(copies),
         "unparseable": skipped,
         "eras": eras,
         "date_spelling_totals": totals,
+        "project_status_totals": dict(sorted(statuses.items(), key=lambda kv: (-kv[1], kv[0]))),
         "flagged": [{"t_public": c["t_public"], "flags": c["flags"]} for c in copies if c["flags"]],
         "per_copy": copies,
     }

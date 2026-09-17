@@ -255,3 +255,21 @@ def test_schema_report_groups_eras_by_column_vocabulary():
     ]
     assert report["date_spelling_totals"]["iso-dash"] == 3
     assert report["unparseable"][0]["t_public"] == "2014-02-24"
+
+
+def test_copy_report_counts_every_spelling_of_project_status():
+    """A reader that selects on status is declared against the vocabulary the
+    register printed, so the schema report carries it, blanks included."""
+    rows: list[dict[str, object]] = [
+        {"Project Name": "A", "Project Status": "Built"},
+        {"Project Name": "B", "Project Status": " Under  Construction "},
+        {"Project Name": "C", "Project Status": "Built"},
+        {"Project Name": "D", "Project Status": None},
+    ]
+    entry: dict = {"columns": ["Project Name", "Project Status"], "sha256": "x", "source": "s"}
+    report = tr.copy_report(date(2026, 9, 15), rows, entry, None)
+    assert report["project_status"] == {"": 1, "Built": 2, "Under Construction": 1}
+
+    whole = tr.schema_report([(date(2026, 9, 15), rows, entry)], [])
+    assert whole["project_status_totals"] == {"Built": 2, "": 1, "Under Construction": 1}
+    assert list(whole["project_status_totals"]) == ["Built", "", "Under Construction"]

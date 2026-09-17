@@ -40,7 +40,11 @@ from grid_mysteries.sources import tec_register as tr
 
 HERE = Path(__file__).parent
 CERTIFICATES = HERE / "certificates"
-DECLARATION = HERE / "DECLARATION.md"
+#: Both declarations the bundle is produced under: version 1 states the
+#: archive's reading rules and the record's scope; version 2 adds the July
+#: 2020 column aliases and the partial-export rule, which `certify.py`
+#: applies (`cs.partial_exports`). Both digests go in the manifest.
+DECLARATIONS = (HERE / "DECLARATION.md", HERE / "DECLARATION-v2.md")
 JOURNAL = REPO_ROOT / tr.JOURNAL_PATH
 
 VERIFY_PY = '''#!/usr/bin/env python3
@@ -170,7 +174,11 @@ def main(argv: list[str] | None = None) -> None:
         listing.append(
             {"path": rel, "sha256": hashlib.sha256(data).hexdigest(), "bytes": len(data)}
         )
-    declaration_sha256 = hashlib.sha256(DECLARATION.read_bytes()).hexdigest()
+    declarations = [
+        {"file": path.name, "sha256": hashlib.sha256(path.read_bytes()).hexdigest()}
+        for path in DECLARATIONS
+    ]
+    declaration_sha256 = declarations[0]["sha256"]
     manifest = {
         "bundle": name,
         "issued": args.issued,
@@ -179,6 +187,7 @@ def main(argv: list[str] | None = None) -> None:
         "stage": args.stage,
         "dates": [args.start.isoformat(), args.end.isoformat()],
         "declaration_sha256": declaration_sha256,
+        "declarations": declarations,
         "rule": (
             "the certificate id is the SHA-256 of this file's bytes; every listed file hashes "
             "as recorded; CERTIFICATE.md is rendered from certificate.json and this file, "
@@ -195,6 +204,7 @@ def main(argv: list[str] | None = None) -> None:
         "manifest_sha256": digest,
         "files": len(listing),
         "declaration_sha256": declaration_sha256,
+        "declarations": declarations,
         "proofs": [],
     }
     (bundle_dir / "CERTIFICATE.md").write_text(cert.render_certificate(record, bundle_meta))

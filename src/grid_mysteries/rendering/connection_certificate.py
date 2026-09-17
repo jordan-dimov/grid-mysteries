@@ -51,6 +51,13 @@ def day(value: object) -> str:
     return str(value or "")
 
 
+def _presence(state: object) -> str:
+    """How a date's state reads on the presence line: a single row is
+    "present (one row)", as `connection_record.changes` names it; anything
+    else is the absence or ambiguity note the record carries."""
+    return "present (one row)" if isinstance(state, dict) else str(state)
+
+
 def _as_of_table(record: dict[str, Any]) -> list[str]:
     a, b = record["as_of"]
     lines = [
@@ -59,11 +66,19 @@ def _as_of_table(record: dict[str, Any]) -> list[str]:
         f"{day(b['as_of'])} (copy of {day(b.get('vintage'))}) |",
         "|---|---|---|",
     ]
-    if isinstance(a.get("state"), dict) and isinstance(b.get("state"), dict):
-        for field in a["state"]:
-            lines.append(f"| {field} | {a['state'][field] or '—'} | {b['state'][field] or '—'} |")
+    left, right = a.get("state"), b.get("state")
+    if isinstance(left, dict) or isinstance(right, dict):
+        # One date may be a full row and the other an absence or an ambiguity;
+        # then the presence line carries the difference and the field rows show
+        # a dash on the side that has no single row to print.
+        if not (isinstance(left, dict) and isinstance(right, dict)):
+            lines.append(f"| Presence | {_presence(left)} | {_presence(right)} |")
+        for field in left if isinstance(left, dict) else right:
+            shown_left = left[field] if isinstance(left, dict) else ""
+            shown_right = right[field] if isinstance(right, dict) else ""
+            lines.append(f"| {field} | {shown_left or '—'} | {shown_right or '—'} |")
     else:
-        lines.append(f"| Presence | {a.get('state')} | {b.get('state')} |")
+        lines.append(f"| Presence | {left} | {right} |")
     lines += [
         "",
         f"Copy in force on {day(a['as_of'])}: SHA-256 `{a.get('sha256', '')}`  ",
@@ -93,7 +108,9 @@ def render_certificate(record: dict[str, Any], bundle: dict[str, Any]) -> str:
     """The certificate, two pages of Markdown.
 
     `bundle` carries: issued (date), certificate_id, manifest_sha256,
-    files (count), declaration_sha256, proofs (list of text lines).
+    files (count), proofs (list of text lines), and the declarations the
+    bundle is produced under — `declarations`, a list of {file, sha256};
+    a bundle predating that field carries `declaration_sha256` alone.
     """
     a, b = record["as_of"]
     stage = f", stage {record['stage']}" if record.get("stage") else ""
@@ -150,11 +167,14 @@ def render_certificate(record: dict[str, Any], bundle: dict[str, Any]) -> str:
     ]
     for proof in bundle.get("proofs", []):
         lines.append(f"- {proof}")
+    declarations = bundle.get("declarations") or [
+        {"file": "DECLARATION.md", "sha256": bundle["declaration_sha256"]}
+    ]
+    named = "; ".join(f"`{d['file']}` SHA-256 `{d['sha256']}`" for d in declarations)
     lines += [
         "",
-        f"Series declaration under which the register archive is maintained: SHA-256 "
-        f"`{bundle['declaration_sha256']}` "
-        "(investigations/014-gb-connection-slippage/DECLARATION.md).",
+        f"Declarations under which the register archive is maintained and this "
+        f"certificate produced, in investigations/014-gb-connection-slippage/: {named}.",
         "",
         "---",
         "",

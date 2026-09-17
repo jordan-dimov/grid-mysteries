@@ -1,0 +1,226 @@
+{
+ "file": "data/raw/demand-sources/neso/2026-09-18/bsuos-forecast-september-2026-v2.csv",
+ "sha256": "6c96b96b70a0d5159eae080e59739b12c6753dd5e369c900dac7de28ad55d470",
+ "header_line": 1,
+ "delimiter": "comma",
+ "preamble_lines": [],
+ "rows": 24,
+ "blank_rows_dropped": 0,
+ "columns": [
+  {
+   "name": "Month",
+   "blank": 0,
+   "distinct": 24,
+   "forms": {
+    "uk-date": 24
+   },
+   "sample": [
+    "01/08/2026",
+    "01/09/2026",
+    "01/10/2026"
+   ]
+  },
+  {
+   "name": "Energy_Imbalance_\u00a3m",
+   "blank": 0,
+   "distinct": 21,
+   "forms": {
+    "decimal": 21,
+    "integer": 3
+   },
+   "sample": [
+    "10.7",
+    "10.1",
+    "9.6"
+   ]
+  },
+  {
+   "name": "Positive_Reserve_\u00a3m",
+   "blank": 0,
+   "distinct": 23,
+   "forms": {
+    "decimal": 22,
+    "integer": 2
+   },
+   "sample": [
+    "10.7",
+    "10.8",
+    "10.9"
+   ]
+  },
+  {
+   "name": "Negative_Reserve_\u00a3m",
+   "blank": 0,
+   "distinct": 4,
+   "forms": {
+    "decimal": 9,
+    "integer": 15
+   },
+   "sample": [
+    "1.1",
+    "1",
+    "1"
+   ]
+  },
+  {
+   "name": "Frequency_Control_\u00a3m",
+   "blank": 0,
+   "distinct": 21,
+   "forms": {
+    "decimal": 21,
+    "integer": 3
+   },
+   "sample": [
+    "34.9",
+    "34.9",
+    "32.8"
+   ]
+  },
+  {
+   "name": "Constraints_\u00a3m",
+   "blank": 0,
+   "distinct": 24,
+   "forms": {
+    "decimal": 23,
+    "integer": 1
+   },
+   "sample": [
+    "187.8",
+    "219.8",
+    "311.4"
+   ]
+  },
+  {
+   "name": "Other_\u00a3m",
+   "blank": 0,
+   "distinct": 21,
+   "forms": {
+    "decimal": 22,
+    "integer": 2
+   },
+   "sample": [
+    "22.7",
+    "22.7",
+    "20.1"
+   ]
+  },
+  {
+   "name": "Restoration_\u00a3m",
+   "blank": 0,
+   "distinct": 1,
+   "forms": {
+    "decimal": 24
+   },
+   "sample": [
+    "6.2",
+    "6.2",
+    "6.2"
+   ]
+  },
+  {
+   "name": "Balancing Costs (Central) \u00a3m",
+   "blank": 0,
+   "distinct": 24,
+   "forms": {
+    "decimal": 22,
+    "integer": 2
+   },
+   "sample": [
+    "274.1",
+    "305.5",
+    "392"
+   ]
+  },
+  {
+   "name": "Estimated Internal BSUoS & ESO Incentive \u00a3m",
+   "blank": 0,
+   "distinct": 6,
+   "forms": {
+    "decimal": 24
+   },
+   "sample": [
+    "67.75",
+    "65.57",
+    "67.75"
+   ]
+  },
+  {
+   "name": "Winter Security of Supply Cost (\u00a3m) ",
+   "blank": 0,
+   "distinct": 1,
+   "forms": {
+    "integer": 24
+   },
+   "sample": [
+    "0",
+    "0",
+    "0"
+   ]
+  },
+  {
+   "name": " 21/22 Under-Recovered Costs (\u00a3m) ",
+   "blank": 0,
+   "distinct": 1,
+   "forms": {
+    "integer": 24
+   },
+   "sample": [
+    "0",
+    "0",
+    "0"
+   ]
+  },
+  {
+   "name": "CMP398/412 Claim Costs (\u00a3m) ",
+   "blank": 0,
+   "distinct": 2,
+   "forms": {
+    "integer": 24
+   },
+   "sample": [
+    "0",
+    "0",
+    "0"
+   ]
+  },
+  {
+   "name": " Interest Repayment (\u00a3m) ",
+   "blank": 0,
+   "distinct": 1,
+   "forms": {
+    "integer": 24
+   },
+   "sample": [
+    "0",
+    "0",
+    "0"
+   ]
+  },
+  {
+   "name": "Additional NESO Framework Costs (\u00a3m) ",
+   "blank": 0,
+   "distinct": 1,
+   "forms": {
+    "integer": 24
+   },
+   "sample": [
+    "0",
+    "0",
+    "0"
+   ]
+  },
+  {
+   "name": "Estimated BSUoS Volume (TWh) ",
+   "blank": 0,
+   "distinct": 22,
+   "forms": {
+    "decimal": 24
+   },
+   "sample": [
+    "20.14",
+    "20.57",
+    "22.75"
+   ]
+  }
+ ]
+}

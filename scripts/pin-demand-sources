@@ -1,0 +1,192 @@
+#!/usr/bin/env bash
+# First sealed fetch of the demand-connection sources inventoried in
+# ops/DEMAND-CONNECTION-SOURCES.md (seal given by the sponsor, 2026-09-18),
+# plus the NESO constraint-forecast files the 013 note asked for.
+#
+#   scripts/pin-demand-sources [YYYY-MM-DD]
+#
+# Every artefact is pinned under data/raw/demand-sources/<source>/<day>/ and
+# journalled with its SHA-256 the moment it lands (restart-safe, never
+# overwritten). The manifest is copied to archives/demand-sources/ for the
+# commit, because data/raw is local by design. Nothing is parsed here except
+# the CKAN package listings, read only to find the download URLs of the
+# resources they list.
+set -euo pipefail
+cd "$(dirname "$0")/.."
+export PATH="${HOME}/.local/bin:${PATH}"
+day="${1:-$(date -u +%F)}"
+exec uv run --group registers python - "$day" <<'PY'
+import json
+import shutil
+import sys
+from datetime import UTC, datetime
+from pathlib import Path
+
+import httpx
+
+from grid_mysteries.corpus import REPO_ROOT
+from grid_mysteries.hashing import sha256_file
+from grid_mysteries.models import SourceArtifact
+from grid_mysteries.sources.pinning import fetch_journalled, progress
+
+day = sys.argv[1]
+RAW = REPO_ROOT / "data" / "raw" / "demand-sources"
+JOURNAL = RAW / "journal.ndjson"
+MANIFEST = RAW / "manifest.json"
+COMMITTED = REPO_ROOT / "archives" / "demand-sources" / f"manifest-{day}.json"
+
+# SSEN's portal and the ENA site sit behind Cloudflare and refuse a bare
+# client (403); a browser user agent is sent to those two and to nothing
+# else. The journal records the source, so the exception is visible.
+BROWSER_UA = (
+    "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) "
+    "Chrome/128.0 Safari/537.36"
+)
+NESO_CKAN = "https://api.neso.energy/api/3/action"
+NGED_CKAN = "https://connecteddata.nationalgrid.co.uk/api/3/action"
+SSEN_CKAN = "https://data-api.ssen.co.uk/api/3/action"
+UKPN = "https://ukpowernetworks.opendatasoft.com/api/explore/v2.1/catalog/datasets"
+
+
+def fetch(*, url: str, destination: Path, dataset: str) -> SourceArtifact:
+    source = dataset.split("/")[0]
+    if destination.exists():
+        raise FileExistsError(destination)
+    destination.parent.mkdir(parents=True, exist_ok=True)
+    headers = {"User-Agent": BROWSER_UA} if source in ("ssen", "ena") else {}
+    with httpx.Client(timeout=120.0, follow_redirects=True, headers=headers) as client:
+        response = client.get(url)
+        response.raise_for_status()
+        destination.write_bytes(response.content)
+    return SourceArtifact(
+        source=source,
+        dataset=dataset,
+        path=destination,
+        sha256=sha256_file(destination),
+        fetched_at=datetime.now(UTC),
+    )
+
+
+def dest(source: str, name: str) -> Path:
+    return RAW / source / day / name
+
+
+def pin(jobs: list[tuple[str, str, Path]], label: str) -> None:
+    fetched, skipped = fetch_journalled(
+        jobs,
+        journal_path=JOURNAL,
+        manifest_path=MANIFEST,
+        repo_root=REPO_ROOT,
+        fetch=fetch,
+        sleep_seconds=0.3,
+        progress=progress,
+    )
+    print(f"{label}: fetched {fetched}, verified and skipped {skipped}", flush=True)
+
+
+def resources(package_json: Path) -> list[dict]:
+    return json.loads(package_json.read_text())["result"]["resources"]
+
+
+# ---- NESO: documents, pages, and the constraint-forecast datasets ----------
+neso_docs = [
+    ("neso/existing-agreements-register", "https://www.neso.energy/document/373996/download",
+     dest("neso", "existing-agreements-register.xlsx")),
+    ("neso/connections-reform-results-page",
+     "https://www.neso.energy/industry-information/connections-reform/connections-reform-results",
+     dest("neso", "connections-reform-results.html")),
+    ("neso/foi-25-174", "https://www.neso.energy/document/374976/download",
+     dest("neso", "foi-25-174-demand-register.pdf")),
+    ("neso/foi-25-074", "https://www.neso.energy/document/366321/download",
+     dest("neso", "foi-25-074-demand-register.pdf")),
+    ("neso/demand-cfi-summary", "https://www.neso.energy/document/378226/download",
+     dest("neso", "demand-call-for-input-summary-2026-03.pdf")),
+    ("neso/connections-reform-detailed-results", "https://www.neso.energy/document/374936/download",
+     dest("neso", "connections-reform-detailed-results.pdf")),
+    ("neso/demand-irn-page",
+     "https://www.neso.energy/industry-information/connections/demand-information-request-notice-irn",
+     dest("neso", "demand-irn-page.html")),
+    ("neso/24ma-constraint-cost-forecast-meta",
+     f"{NESO_CKAN}/resource_show?id=28b85d3f-a1cc-4bb9-80af-600f2cca266a",
+     dest("neso", "24ma-constraint-cost-forecast.resource_show.json")),
+    ("neso/24ma-constraint-limits-meta",
+     f"{NESO_CKAN}/package_show?id=24-months-ahead-constraint-limits",
+     dest("neso", "24ma-constraint-limits.package_show.json")),
+    ("neso/bsuos-monthly-forecast-meta", f"{NESO_CKAN}/package_show?id=bsuos-monthly-forecast",
+     dest("neso", "bsuos-monthly-forecast.package_show.json")),
+    ("neso/bsuos-forecast-report-2026-08", "https://www.neso.energy/document/384581/download",
+     dest("neso", "bsuos-forecast-report-august-2026.pdf")),
+    ("neso/bsuos-forecast-report-2026-09", "https://www.neso.energy/document/385726/download",
+     dest("neso", "bsuos-forecast-report-september-2026.pdf")),
+    ("neso/bsuos-outturn-report-2026-06", "https://www.neso.energy/document/384586/download",
+     dest("neso", "bsuos-outturn-report-june-2026.pdf")),
+]
+pin(neso_docs, "neso documents and metadata")
+
+cost_meta = json.loads(dest("neso", "24ma-constraint-cost-forecast.resource_show.json").read_text())
+cost_url = cost_meta["result"]["url"]
+limits = [r for r in resources(dest("neso", "24ma-constraint-limits.package_show.json"))
+          if r["format"].upper() == "CSV"]
+bsuos = [r for r in resources(dest("neso", "bsuos-monthly-forecast.package_show.json"))
+         if r["format"].upper() == "CSV" and any(
+             m in r["name"] for m in ("June 2026", "July 2026", "August 2026", "September 2026"))]
+neso_data = [
+    ("neso/24ma-constraint-cost-forecast", cost_url, dest("neso", Path(cost_url).name)),
+] + [
+    ("neso/24ma-constraint-limits", r["url"], dest("neso", Path(r["url"]).name)) for r in limits
+] + [
+    ("neso/bsuos-monthly-forecast", r["url"], dest("neso", Path(r["url"]).name)) for r in bsuos
+]
+pin(neso_data, "neso constraint and bsuos forecast files")
+
+# ---- UKPN: Opendatasoft metadata and CSV exports ---------------------------
+ukpn = []
+for ds in ("ukpn-large-demand-list", "ukpn-data-centres-by-local-authority",
+           "ukpn-overall-queue-insights", "ukpn-modification-application"):
+    ukpn.append((f"ukpn/{ds}-meta", f"{UKPN}/{ds}", dest("ukpn", f"{ds}.dataset.json")))
+    ukpn.append((f"ukpn/{ds}", f"{UKPN}/{ds}/exports/csv", dest("ukpn", f"{ds}.csv")))
+pin(ukpn, "ukpn")
+
+# ---- NGED: CKAN metadata, the two CSVs and their data-sharing PDFs ---------
+nged_meta = [
+    (f"nged/{p}-meta", f"{NGED_CKAN}/package_show?id={p}", dest("nged", f"{p}.package_show.json"))
+    for p in ("nged-connections-reform-register", "nged-projects-connections-reforms-outcomes")
+]
+pin(nged_meta, "nged metadata")
+nged = []
+for p in ("nged-connections-reform-register", "nged-projects-connections-reforms-outcomes"):
+    for r in resources(dest("nged", f"{p}.package_show.json")):
+        nged.append((f"nged/{p}", r["url"], dest("nged", Path(r["url"]).name)))
+pin(nged, "nged files")
+
+# ---- SSEN: every archived ECR vintage the portal lists -------------------
+pin([("ssen/embedded-capacity-register-meta",
+      f"{SSEN_CKAN}/package_show?id=embedded_capacity_register",
+      dest("ssen", "embedded_capacity_register.package_show.json"))], "ssen metadata")
+ssen = []
+for r in resources(dest("ssen", "embedded_capacity_register.package_show.json")):
+    if r["format"].upper() in ("XLSX", "CSV", "PDF") and r.get("url"):
+        ssen.append((f"ssen/embedded-capacity-register", r["url"], dest("ssen", Path(r["url"]).name)))
+pin(ssen, "ssen vintages")
+
+# ---- Ofgem and ENA pages and documents ---------------------------------------
+other = [
+    ("ofgem/curate-consultation-page",
+     "https://www.ofgem.gov.uk/consultation/proposed-data-centre-connection-reforms",
+     dest("ofgem", "proposed-data-centre-connection-reforms.html")),
+    ("ofgem/curate-consultation-document",
+     "https://www.ofgem.gov.uk/sites/default/files/2026-07/Proposed-data-centre-connection-reforms-curate-consultation-document.pdf",
+     dest("ofgem", "curate-consultation-document.pdf")),
+    ("ofgem/demand-connections-update-2025-11",
+     "https://www.ofgem.gov.uk/sites/default/files/2025-11/Demand%20connections%20update.pdf",
+     dest("ofgem", "demand-connections-update-2025-11.pdf")),
+    ("ena/connections-data-page",
+     "https://www.energynetworks.org/industry/connecting-to-the-networks/connections-data",
+     dest("ena", "connections-data.html")),
+]
+pin(other, "ofgem and ena")
+
+COMMITTED.parent.mkdir(parents=True, exist_ok=True)
+shutil.copy(MANIFEST, COMMITTED)
+print(f"manifest copied to {COMMITTED.relative_to(REPO_ROOT)}")
+PY

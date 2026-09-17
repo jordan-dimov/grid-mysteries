@@ -1,0 +1,837 @@
+{
+ "file": "data/raw/demand-sources/ssen/2026-09-18/ssen_ecr_part_1_1mw_september_2026_csv.csv",
+ "sha256": "4fcafb27c6180eed9d6d1b883c1059eb799f4c35292f0d9155159c9bcf081c91",
+ "header_line": 1,
+ "delimiter": "comma",
+ "preamble_lines": [],
+ "rows": 1322,
+ "blank_rows_dropped": 59,
+ "columns": [
+  {
+   "name": "Export MPAN / MSID",
+   "blank": 0,
+   "distinct": 1321,
+   "forms": {
+    "integer": 704,
+    "text": 618
+   },
+   "sample": [
+    "1700051730846",
+    "1700051730873",
+    "1700051730882"
+   ]
+  },
+  {
+   "name": "Import MPAN / MSID",
+   "blank": 0,
+   "distinct": 1218,
+   "forms": {
+    "text": 718,
+    "integer": 604
+   },
+   "sample": [
+    "DATA NOT AVAILABLE",
+    "DATA NOT AVAILABLE",
+    "DATA NOT AVAILABLE"
+   ]
+  },
+  {
+   "name": "Customer Name ",
+   "blank": 0,
+   "distinct": 722,
+   "forms": {
+    "text": 1322
+   },
+   "sample": [
+    "SSE GENERATION LTD",
+    "SSE GENERATION LTD",
+    "SSE GENERATION LTD"
+   ]
+  },
+  {
+   "name": "Customer Site ",
+   "blank": 0,
+   "distinct": 1106,
+   "forms": {
+    "text": 1322
+   },
+   "sample": [
+    "LERWICK PS G13 ",
+    "LERWICK PS G14 ",
+    "LERWICK PS G21 "
+   ]
+  },
+  {
+   "name": "Address Line 1",
+   "blank": 0,
+   "distinct": 926,
+   "forms": {
+    "text": 1321,
+    "integer": 1
+   },
+   "sample": [
+    "LERWICK PS G13 ",
+    "LERWICK PS G14 ",
+    "LERWICK PS G21 "
+   ]
+  },
+  {
+   "name": "Address Line 2",
+   "blank": 0,
+   "distinct": 814,
+   "forms": {
+    "text": 1321,
+    "integer": 1
+   },
+   "sample": [
+    "GREMISTA",
+    "LERWICK",
+    "LERWICK"
+   ]
+  },
+  {
+   "name": "Town/ City ",
+   "blank": 0,
+   "distinct": 312,
+   "forms": {
+    "text": 1322
+   },
+   "sample": [
+    "SHETLAND",
+    "SHETLAND",
+    "SHETLAND"
+   ]
+  },
+  {
+   "name": "County ",
+   "blank": 0,
+   "distinct": 75,
+   "forms": {
+    "text": 1322
+   },
+   "sample": [
+    "SHETLAND ISLANDS",
+    "SHETLAND ISLANDS",
+    "SHETLAND ISLANDS"
+   ]
+  },
+  {
+   "name": "Postcode ",
+   "blank": 0,
+   "distinct": 1004,
+   "forms": {
+    "text": 1322
+   },
+   "sample": [
+    "ZE1 0PS",
+    "ZE1 0PS",
+    "ZE1 0PS"
+   ]
+  },
+  {
+   "name": "Country",
+   "blank": 0,
+   "distinct": 2,
+   "forms": {
+    "text": 1322
+   },
+   "sample": [
+    "SCOTLAND",
+    "SCOTLAND",
+    "SCOTLAND"
+   ]
+  },
+  {
+   "name": "Location (X-coordinate):\nEastings (where data is held)",
+   "blank": 0,
+   "distinct": 1063,
+   "forms": {
+    "integer": 1250,
+    "text": 72
+   },
+   "sample": [
+    "446456",
+    "446456",
+    "446456"
+   ]
+  },
+  {
+   "name": "Location (y-coordinate):\nNorthings (where data is held)",
+   "blank": 0,
+   "distinct": 1070,
+   "forms": {
+    "integer": 1250,
+    "text": 72
+   },
+   "sample": [
+    "1142794",
+    "1142794",
+    "1142794"
+   ]
+  },
+  {
+   "name": "Grid Supply Point",
+   "blank": 0,
+   "distinct": 97,
+   "forms": {
+    "text": 1322
+   },
+   "sample": [
+    "GREMISTA",
+    "GREMISTA",
+    "GREMISTA"
+   ]
+  },
+  {
+   "name": "Bulk Supply Point",
+   "blank": 0,
+   "distinct": 73,
+   "forms": {
+    "text": 1322
+   },
+   "sample": [
+    "DATA NOT APPLICABLE",
+    "DATA NOT APPLICABLE",
+    "DATA NOT APPLICABLE"
+   ]
+  },
+  {
+   "name": "Primary",
+   "blank": 0,
+   "distinct": 500,
+   "forms": {
+    "text": 1322
+   },
+   "sample": [
+    "GREMISTA",
+    "GREMISTA",
+    "GREMISTA"
+   ]
+  },
+  {
+   "name": "Point of Connection (POC)\nVoltage (kV)",
+   "blank": 0,
+   "distinct": 9,
+   "forms": {
+    "integer": 1314,
+    "decimal": 5,
+    "text": 3
+   },
+   "sample": [
+    "11",
+    "11",
+    "11"
+   ]
+  },
+  {
+   "name": "Licence Area ",
+   "blank": 0,
+   "distinct": 2,
+   "forms": {
+    "text": 1322
+   },
+   "sample": [
+    "SCOTTISH HYDRO ELECTRIC POWER DISTRIBUTION PLC",
+    "SCOTTISH HYDRO ELECTRIC POWER DISTRIBUTION PLC",
+    "SCOTTISH HYDRO ELECTRIC POWER DISTRIBUTION PLC"
+   ]
+  },
+  {
+   "name": "Energy Source 1",
+   "blank": 0,
+   "distinct": 22,
+   "forms": {
+    "text": 1322
+   },
+   "sample": [
+    "BIOFUEL - LANDFILL GAS",
+    "HYDROGEN",
+    "WIND"
+   ]
+  },
+  {
+   "name": "Energy Conversion Technology 1",
+   "blank": 0,
+   "distinct": 14,
+   "forms": {
+    "text": 1322
+   },
+   "sample": [
+    "DATA NOT AVAILABLE",
+    "ENGINE (COMBUSTION / RECIPROCATING)",
+    "ONSHORE WIND TURBINES"
+   ]
+  },
+  {
+   "name": "CHP Cogeneration (Yes/No)",
+   "blank": 0,
+   "distinct": 2,
+   "forms": {
+    "text": 1322
+   },
+   "sample": [
+    "NO",
+    "YES",
+    "NO"
+   ]
+  },
+  {
+   "name": "Storage Capacity 1 (MWh)",
+   "blank": 0,
+   "distinct": 1,
+   "forms": {
+    "text": 1322
+   },
+   "sample": [
+    "DATA NOT AVAILABLE",
+    "DATA NOT AVAILABLE",
+    "DATA NOT AVAILABLE"
+   ]
+  },
+  {
+   "name": "Storage Duration 1 (Hours)",
+   "blank": 0,
+   "distinct": 1,
+   "forms": {
+    "text": 1322
+   },
+   "sample": [
+    "DATA NOT AVAILABLE",
+    "DATA NOT AVAILABLE",
+    "DATA NOT AVAILABLE"
+   ]
+  },
+  {
+   "name": "Energy Source & Energy Conversion Technology 1 - Registered Capacity (MW)",
+   "blank": 0,
+   "distinct": 531,
+   "forms": {
+    "decimal": 1322
+   },
+   "sample": [
+    "4.275",
+    "4.275",
+    "3.325"
+   ]
+  },
+  {
+   "name": "Energy Source 2",
+   "blank": 0,
+   "distinct": 5,
+   "forms": {
+    "text": 1322
+   },
+   "sample": [
+    "DATA NOT AVAILABLE",
+    "DATA NOT AVAILABLE",
+    "DATA NOT AVAILABLE"
+   ]
+  },
+  {
+   "name": "Energy Conversion Technology 2",
+   "blank": 0,
+   "distinct": 5,
+   "forms": {
+    "text": 1322
+   },
+   "sample": [
+    "DATA NOT AVAILABLE",
+    "DATA NOT AVAILABLE",
+    "DATA NOT AVAILABLE"
+   ]
+  },
+  {
+   "name": "CHP Cogeneration 2 (Yes/No)",
+   "blank": 0,
+   "distinct": 1,
+   "forms": {
+    "text": 1322
+   },
+   "sample": [
+    "DATA NOT AVAILABLE",
+    "DATA NOT AVAILABLE",
+    "DATA NOT AVAILABLE"
+   ]
+  },
+  {
+   "name": "Storage Capacity 2 (MWh)",
+   "blank": 0,
+   "distinct": 1,
+   "forms": {
+    "text": 1322
+   },
+   "sample": [
+    "DATA NOT AVAILABLE",
+    "DATA NOT AVAILABLE",
+    "DATA NOT AVAILABLE"
+   ]
+  },
+  {
+   "name": "Storage Duration 2 (Hours)",
+   "blank": 0,
+   "distinct": 1,
+   "forms": {
+    "text": 1322
+   },
+   "sample": [
+    "DATA NOT AVAILABLE",
+    "DATA NOT AVAILABLE",
+    "DATA NOT AVAILABLE"
+   ]
+  },
+  {
+   "name": "Energy Source & Energy Conversion Technology 2 - Registered Capacity (MW)",
+   "blank": 0,
+   "distinct": 73,
+   "forms": {
+    "text": 1233,
+    "decimal": 89
+   },
+   "sample": [
+    "DATA NOT AVAILABLE",
+    "DATA NOT AVAILABLE",
+    "DATA NOT AVAILABLE"
+   ]
+  },
+  {
+   "name": "Energy Source 3",
+   "blank": 0,
+   "distinct": 1,
+   "forms": {
+    "text": 1322
+   },
+   "sample": [
+    "DATA NOT AVAILABLE",
+    "DATA NOT AVAILABLE",
+    "DATA NOT AVAILABLE"
+   ]
+  },
+  {
+   "name": "Energy Conversion Technology 3",
+   "blank": 0,
+   "distinct": 1,
+   "forms": {
+    "text": 1322
+   },
+   "sample": [
+    "DATA NOT AVAILABLE",
+    "DATA NOT AVAILABLE",
+    "DATA NOT AVAILABLE"
+   ]
+  },
+  {
+   "name": "CHP Cogeneration 3 (Yes/No)",
+   "blank": 0,
+   "distinct": 1,
+   "forms": {
+    "text": 1322
+   },
+   "sample": [
+    "DATA NOT AVAILABLE",
+    "DATA NOT AVAILABLE",
+    "DATA NOT AVAILABLE"
+   ]
+  },
+  {
+   "name": "Storage Capacity 3 (MWh)",
+   "blank": 0,
+   "distinct": 1,
+   "forms": {
+    "text": 1322
+   },
+   "sample": [
+    "DATA NOT AVAILABLE",
+    "DATA NOT AVAILABLE",
+    "DATA NOT AVAILABLE"
+   ]
+  },
+  {
+   "name": "Storage Duration 3 (Hours)",
+   "blank": 0,
+   "distinct": 1,
+   "forms": {
+    "text": 1322
+   },
+   "sample": [
+    "DATA NOT AVAILABLE",
+    "DATA NOT AVAILABLE",
+    "DATA NOT AVAILABLE"
+   ]
+  },
+  {
+   "name": "Energy Source & Energy Conversion Technology 3 - Registered Capacity (MW)",
+   "blank": 0,
+   "distinct": 1,
+   "forms": {
+    "text": 1322
+   },
+   "sample": [
+    "DATA NOT AVAILABLE",
+    "DATA NOT AVAILABLE",
+    "DATA NOT AVAILABLE"
+   ]
+  },
+  {
+   "name": "Flexible Connection (Yes/No)",
+   "blank": 0,
+   "distinct": 3,
+   "forms": {
+    "text": 1322
+   },
+   "sample": [
+    "NO",
+    "NO",
+    "NO"
+   ]
+  },
+  {
+   "name": "Connection Status ",
+   "blank": 0,
+   "distinct": 2,
+   "forms": {
+    "text": 1322
+   },
+   "sample": [
+    "CONNECTED",
+    "CONNECTED",
+    "CONNECTED"
+   ]
+  },
+  {
+   "name": "Already connected Registered Capacity (MW) ",
+   "blank": 0,
+   "distinct": 302,
+   "forms": {
+    "decimal": 706,
+    "text": 616
+   },
+   "sample": [
+    "4.275",
+    "4.275",
+    "3.325"
+   ]
+  },
+  {
+   "name": "Maximum Export Capacity (MW)",
+   "blank": 0,
+   "distinct": 296,
+   "forms": {
+    "decimal": 706,
+    "text": 616
+   },
+   "sample": [
+    "4.275",
+    "4.275",
+    "3.325"
+   ]
+  },
+  {
+   "name": "Maximum Export Capacity (MVA)",
+   "blank": 0,
+   "distinct": 297,
+   "forms": {
+    "decimal": 706,
+    "text": 616
+   },
+   "sample": [
+    "4.500",
+    "4.500",
+    "3.500"
+   ]
+  },
+  {
+   "name": "Maximum Import Capacity (MW)",
+   "blank": 0,
+   "distinct": 74,
+   "forms": {
+    "text": 1133,
+    "decimal": 189
+   },
+   "sample": [
+    "DATA NOT AVAILABLE",
+    "DATA NOT AVAILABLE",
+    "DATA NOT AVAILABLE"
+   ]
+  },
+  {
+   "name": "Maximum Import Capacity (MVA)",
+   "blank": 0,
+   "distinct": 76,
+   "forms": {
+    "text": 1133,
+    "decimal": 189
+   },
+   "sample": [
+    "DATA NOT AVAILABLE",
+    "DATA NOT AVAILABLE",
+    "DATA NOT AVAILABLE"
+   ]
+  },
+  {
+   "name": "Date Connected",
+   "blank": 0,
+   "distinct": 185,
+   "forms": {
+    "text": 1087,
+    "uk-date": 235
+   },
+   "sample": [
+    "DATA NOT AVAILABLE",
+    "DATA NOT AVAILABLE",
+    "DATA NOT AVAILABLE"
+   ]
+  },
+  {
+   "name": "Accepted to Connect Registered Capacity (MW)",
+   "blank": 0,
+   "distinct": 284,
+   "forms": {
+    "text": 706,
+    "decimal": 616
+   },
+   "sample": [
+    "DATA NOT AVAILABLE",
+    "DATA NOT AVAILABLE",
+    "DATA NOT AVAILABLE"
+   ]
+  },
+  {
+   "name": "Change to Maximum Export Capacity (MW) ",
+   "blank": 0,
+   "distinct": 214,
+   "forms": {
+    "text": 706,
+    "decimal": 616
+   },
+   "sample": [
+    "DATA NOT AVAILABLE",
+    "DATA NOT AVAILABLE",
+    "DATA NOT AVAILABLE"
+   ]
+  },
+  {
+   "name": "Change to Maximum Export Capacity (MVA) ",
+   "blank": 0,
+   "distinct": 214,
+   "forms": {
+    "text": 706,
+    "decimal": 616
+   },
+   "sample": [
+    "DATA NOT AVAILABLE",
+    "DATA NOT AVAILABLE",
+    "DATA NOT AVAILABLE"
+   ]
+  },
+  {
+   "name": "Change to Maximum Import Capacity (MW) ",
+   "blank": 0,
+   "distinct": 317,
+   "forms": {
+    "text": 706,
+    "decimal": 616
+   },
+   "sample": [
+    "DATA NOT AVAILABLE",
+    "DATA NOT AVAILABLE",
+    "DATA NOT AVAILABLE"
+   ]
+  },
+  {
+   "name": "Change to Maximum Import Capacity (MVA) ",
+   "blank": 0,
+   "distinct": 301,
+   "forms": {
+    "text": 706,
+    "decimal": 616
+   },
+   "sample": [
+    "DATA NOT AVAILABLE",
+    "DATA NOT AVAILABLE",
+    "DATA NOT AVAILABLE"
+   ]
+  },
+  {
+   "name": "Date Accepted",
+   "blank": 0,
+   "distinct": 503,
+   "forms": {
+    "text": 706,
+    "uk-date": 616
+   },
+   "sample": [
+    "DATA NOT AVAILABLE",
+    "DATA NOT AVAILABLE",
+    "DATA NOT AVAILABLE"
+   ]
+  },
+  {
+   "name": "Target Energisation Date",
+   "blank": 0,
+   "distinct": 280,
+   "forms": {
+    "text": 716,
+    "uk-date": 606
+   },
+   "sample": [
+    "DATA NOT AVAILABLE",
+    "DATA NOT AVAILABLE",
+    "DATA NOT AVAILABLE"
+   ]
+  },
+  {
+   "name": "Distribution Service Provider (Y/N)",
+   "blank": 0,
+   "distinct": 2,
+   "forms": {
+    "text": 1322
+   },
+   "sample": [
+    "N",
+    "N",
+    "N"
+   ]
+  },
+  {
+   "name": "Transmission Service Provider (Y/N)",
+   "blank": 0,
+   "distinct": 1,
+   "forms": {
+    "text": 1322
+   },
+   "sample": [
+    "DATA NOT AVAILABLE",
+    "DATA NOT AVAILABLE",
+    "DATA NOT AVAILABLE"
+   ]
+  },
+  {
+   "name": "Reference",
+   "blank": 0,
+   "distinct": 1,
+   "forms": {
+    "text": 1322
+   },
+   "sample": [
+    "DATA NOT AVAILABLE",
+    "DATA NOT AVAILABLE",
+    "DATA NOT AVAILABLE"
+   ]
+  },
+  {
+   "name": "In a Connection Queue (Y/N)",
+   "blank": 0,
+   "distinct": 1,
+   "forms": {
+    "text": 1322
+   },
+   "sample": [
+    "DATA NOT AVAILABLE",
+    "DATA NOT AVAILABLE",
+    "DATA NOT AVAILABLE"
+   ]
+  },
+  {
+   "name": "Distribution Reinforcement Reference",
+   "blank": 0,
+   "distinct": 1,
+   "forms": {
+    "text": 1322
+   },
+   "sample": [
+    "DATA NOT AVAILABLE",
+    "DATA NOT AVAILABLE",
+    "DATA NOT AVAILABLE"
+   ]
+  },
+  {
+   "name": "Transmission Reinforcement Reference",
+   "blank": 0,
+   "distinct": 1,
+   "forms": {
+    "text": 1322
+   },
+   "sample": [
+    "DATA NOT AVAILABLE",
+    "DATA NOT AVAILABLE",
+    "DATA NOT AVAILABLE"
+   ]
+  },
+  {
+   "name": "Last Updated",
+   "blank": 0,
+   "distinct": 10,
+   "forms": {
+    "uk-date": 1322
+   },
+   "sample": [
+    "12/02/2026",
+    "12/02/2026",
+    "12/02/2026"
+   ]
+  },
+  {
+   "name": "Transmission and Distribution contracted (T/D)",
+   "blank": 0,
+   "distinct": 4,
+   "forms": {
+    "text": 1322
+   },
+   "sample": [
+    "DATA NOT APPLICABLE",
+    "DATA NOT APPLICABLE",
+    "DATA NOT APPLICABLE"
+   ]
+  },
+  {
+   "name": "Latitude",
+   "blank": 0,
+   "distinct": 1082,
+   "forms": {
+    "decimal": 1251,
+    "text": 71
+   },
+   "sample": [
+    "60.166964",
+    "60.166964",
+    "60.166964"
+   ]
+  },
+  {
+   "name": "Longitude",
+   "blank": 0,
+   "distinct": 1094,
+   "forms": {
+    "decimal": 1251,
+    "text": 71
+   },
+   "sample": [
+    "-1.1647167",
+    "-1.1647167",
+    "-1.1647167"
+   ]
+  },
+  {
+   "name": "Unique ID",
+   "blank": 0,
+   "distinct": 1322,
+   "forms": {
+    "text": 1322
+   },
+   "sample": [
+    "SSEN0001-1MW-CONNECTED",
+    "SSEN0002-1MW-CONNECTED",
+    "SSEN0003-1MW-CONNECTED"
+   ]
+  },
+  {
+   "name": "",
+   "blank": 1322,
+   "distinct": 1,
+   "forms": {
+    "blank": 1322
+   },
+   "sample": []
+  }
+ ]
+}

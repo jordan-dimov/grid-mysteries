@@ -84,20 +84,46 @@ opening the file" is written where that is the case.
 9. A register of AI Growth Zones with grid capacity.
 10. The FOI passage the Perplexity report attributed to aprs.scot.
 
-## 4. Schema pass: not done, and why
+## 4. The sealed first fetch and the schema pass, 2026-09-18
 
-The doctrine's schema pass inspects columns, spellings, blank rates and row
-counts, which means opening the files, which is the fetch the seal gates.
-Nothing in §2 was opened. Once Jordan seals the first fetch, the pass runs
-`scripts/schema-report csv <file> <archive>` on each CSV export and
-`scripts/schema-report xlsx <file> <archive>` on the EA Register and the SSEN
-vintages (the `xlsx` branch is added alongside this inventory so the pass can
-run the day the seal lands), producing `archives/<name>/SCHEMA.md` and
-`schema-report.json` for: `neso-ea-register`, `ukpn-large-demand-list`,
-`nged-connections-reform`, `ssen-ecr` (the archived vintages, which are the
-one place a DNO's own history can be read back) and, if their exports prove
-readable, the UKPN and NPg aggregates. A declaration over any of them cites
-that report's digest, as the TEC work does.
+Jordan sealed the fetch on 2026-09-18. `scripts/pin-demand-sources 2026-09-18`
+pinned **82 artefacts** under `data/raw/demand-sources/<source>/2026-09-18/`
+(local, gitignored), journalled each with its SHA-256, and copied the manifest
+to `archives/demand-sources/manifest-2026-09-18.json`. SSEN's portal and the
+ENA site refuse the project's identifying user agent with a 403 and were sent a
+browser user agent; the manifest records the source, so the exception is
+visible. Then `scripts/schema-report` (which gained an `xlsx` branch and, on
+the day, header-row, delimiter-sniff and blank-row handling, because three of
+the files needed them) produced a report per file under `archives/`:
+
+| archive | file | what the pass found |
+|---|---|---|
+| `neso-ea-register` | Existing Agreements Register v.2.0, XLSX, SHA-256 `a96e29b4…` | One sheet; three preamble rows ("PUBLIC - last updated 11/6/25 following developer request to remove a project from the public EA list"), header on row 5, **3,397 rows, 6 columns**: Project Name, Associated Installed Capacity, Existing Connection Date (all date cells), Existing Connection Point, Expressed an interest in Gate 1 agreement with reservation (N/Y), Technology Type (**18 distinct values**, including `Transmission Connected Demand`). No blanks, no ids, no status, no Gate outcome. |
+| `nged-connections-reform-register` | CSV dated 251212, SHA-256 `67776ba6…` | Three preamble lines, header on line 4, **814 rows, 9 columns**, then 1,047,461 blank Excel rows dropped. Columns: Licence Area, GSP, Company Name, Site Name, G2TWQ Status (2 values), Technology (11), **Export Capacity (MW)**, Firm and Non-Firm Connection Date (UK spelling). Export capacity only: **no demand rows**, as the register's own preamble implies. |
+| `nged-connections-reform-outcomes` | CSV dated 260709, SHA-256 `dd9b5780…` | **873 rows, 15 columns**, header names carry embedded newlines: Licence_Area, GSP, GSP_FL_Constrained, Installed and Export Capacity (MW), Firm and Non-Firm dates, TQE, acceptance dates, **Gate / Phase / Protections NESO Outcome, Final D Queue Position NGED**. Generation and storage. |
+| `ssen-ecr` | ECR 4.0 September 2026, XLSX, SHA-256 `a370ae6f…` | Sheets Contents, Definitions, **Register Part 1 50kW–<1MW (1,484 rows)**, **Register Part 1 ≥1MW (1,322 rows)**, Lists; two-row header (group row, then 57 column names on row 2). The register carries Import MPAN, Maximum Import Capacity (MW/MVA), Energy Source 1–3, Connection Status, Date Connected, Date Accepted; import fields are largely `DATA NOT AVAILABLE` on the ≥1 MW sheet (1,133 of 1,322). 37 earlier monthly vintages (Aug 2023 to Aug 2026) are pinned beside it, not yet reported. |
+| `ssen-ecr-part1-1mw` | the CSV twin of the ≥1 MW sheet | 1,322 rows, 62 columns. |
+| `ukpn-overall-queue-insights` | Opendatasoft export | Semicolon-delimited, **20 rows, 3 columns** (technology; status; contracted_ders_mw). |
+| `ukpn-large-demand-list`, `ukpn-data-centres-by-local-authority`, `ukpn-modification-application` | Opendatasoft exports | **Header only, 0 rows.** The datasets are `domain` visibility (`data_visible: false` anonymously); the records endpoint answers `ForbiddenAccess`; an export with a key parameter answers 401 to a wrong key, so a key is what is checked. Column names are in the header: the Large Demand List's six fields match the metadata. **Blocked on a UK Power Networks open-data account and API key**; registration was started in Chrome on 2026-09-18. |
+| `neso-24ma-constraint-cost-forecast` | `…_sept26.csv`, SHA-256 `c56921b4…` | 24 rows, 2 columns (Month `MMM-YY` from Oct-26, Constraint Cost £m decimal). |
+| `neso-24ma-constraint-limits` | `…_sept26.csv` | 105 rows, 14 columns. |
+| `neso-bsuos-monthly-forecast` | `bsuos-forecast-september-2026-v2.csv` | 24 rows, 16 columns: Month, Energy_Imbalance, Positive and Negative Reserve, Frequency_Control, **Constraints_£m**, Other, Restoration, Balancing Costs (Central), internal BSUoS and the recovery adjustments, volume. |
+
+Also pinned, not schema-reported because they are documents rather than
+tables: NESO FOI/25/174 and FOI/25/074, the demand call-for-input summary, the
+detailed results PDF, the IRN page, the BSUoS forecast reports (Aug, Sep 2026)
+and June outturn, the four June to September BSUoS forecast CSVs, the NGED
+data-sharing PDFs, SSEN's attributes CSV and methodology PDF, Ofgem's Curate
+consultation page and document and the November 2025 demand update, and the
+ENA page.
+
+**What the pass settles for a future declaration.** The EA register is the
+only file here with a demand technology label on named projects, and it has
+no outcome, id or status column, so a demand reading over it can only count
+names, MW, dates and points by technology, and can only be compared across
+vintages by name. NGED's two files are generation and storage. SSEN's register
+is generation and storage with import fields that are mostly unavailable. The
+UKPN demand datasets remain unread until the key exists.
 
 ## 5. Caveats carried from the discovery pass
 

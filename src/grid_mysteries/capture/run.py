@@ -118,7 +118,9 @@ def run_capture(
             rs.error = f"unknown strategy {resource.strategy!r}"
             continue
         try:
-            kwargs = {"previous": status.extras} if resource.strategy == "ckan" else {}
+            kwargs = (
+                {"previous": status.extras} if resource.strategy in ("ckan", "ckan_package") else {}
+            )
             for captured in strategy(resource, fetcher, day, **kwargs):
                 sha256 = captured.digest()
                 slot = f"{resource.resource}/{captured.dataset}"

@@ -1,0 +1,137 @@
+{
+ "file": "data/raw/demand-sources/nged/2026-09-18/251212_cdpdata_nged-connections-reform-register.csv",
+ "sha256": "67776ba68e675581f0da4df1ca85cfda438e7b15dacbf4ffa5c1850fc1bf0f48",
+ "header_line": 4,
+ "delimiter": "comma",
+ "preamble_lines": [
+  "NGED Connections Reform Register,,,,,,,,",
+  "The NGED Connections Reform Projects Register details all projects that were included by NGED in the CMP435 process. It does not contain any Large projects handled by NESO. It does not outline any out",
+  ",,,,,,,,"
+ ],
+ "rows": 814,
+ "blank_rows_dropped": 1047458,
+ "columns": [
+  {
+   "name": "Licence Area",
+   "blank": 0,
+   "distinct": 4,
+   "forms": {
+    "text": 814
+   },
+   "sample": [
+    "East Midlands",
+    "East Midlands",
+    "East Midlands"
+   ]
+  },
+  {
+   "name": "GSP",
+   "blank": 0,
+   "distinct": 61,
+   "forms": {
+    "text": 814
+   },
+   "sample": [
+    "BERKSWELL 132kV S STN",
+    "BERKSWELL 132kV S STN",
+    "BERKSWELL 132kV S STN"
+   ]
+  },
+  {
+   "name": "Company Name",
+   "blank": 9,
+   "distinct": 568,
+   "forms": {
+    "text": 805,
+    "blank": 9
+   },
+   "sample": [
+    "JBM Solar Projects 24 Limited",
+    "Coventry Energy Storage Limited",
+    "Exagen Holly Lane Limited"
+   ]
+  },
+  {
+   "name": "Site Name",
+   "blank": 1,
+   "distinct": 715,
+   "forms": {
+    "text": 813,
+    "blank": 1
+   },
+   "sample": [
+    "Ashorne Solar",
+    "Nailcote Energy Storage",
+    "Solihull, CV8 1PT"
+   ]
+  },
+  {
+   "name": "G2TWQ Status",
+   "blank": 0,
+   "distinct": 2,
+   "forms": {
+    "text": 814
+   },
+   "sample": [
+    "CMP435",
+    "CMP435",
+    "CMP435"
+   ]
+  },
+  {
+   "name": "Technology",
+   "blank": 3,
+   "distinct": 11,
+   "forms": {
+    "text": 811,
+    "blank": 3
+   },
+   "sample": [
+    "Batteries",
+    "Batteries",
+    "Batteries"
+   ]
+  },
+  {
+   "name": "Export Capacity (MW)",
+   "blank": 0,
+   "distinct": 181,
+   "forms": {
+    "decimal": 814
+   },
+   "sample": [
+    "49.9",
+    "49.9",
+    "75.0"
+   ]
+  },
+  {
+   "name": "Firm Connection Date",
+   "blank": 43,
+   "distinct": 211,
+   "forms": {
+    "uk-date": 771,
+    "blank": 43
+   },
+   "sample": [
+    "26/09/2025",
+    "31/10/2026",
+    "28/06/2033"
+   ]
+  },
+  {
+   "name": "Non-Firm Connection Date",
+   "blank": 736,
+   "distinct": 51,
+   "forms": {
+    "blank": 736,
+    "uk-date": 78
+   },
+   "sample": [
+    "28/03/2027",
+    "01/06/2026",
+    "28/03/2027"
+   ]
+  }
+ ]
+}

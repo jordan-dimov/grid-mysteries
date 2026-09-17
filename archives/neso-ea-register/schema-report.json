@@ -1,0 +1,108 @@
+{
+ "file": "data/raw/demand-sources/neso/2026-09-18/existing-agreements-register.xlsx",
+ "sha256": "a96e29b4bf2d43c2d69a552ddecf7244e01a2ef045e93bbdfc2c318e60b0960c",
+ "header_row": 5,
+ "sheets_all": [
+  "Sheet1"
+ ],
+ "sheets": [
+  {
+   "name": "Sheet1",
+   "rows": 3397,
+   "blank_rows_dropped": 78,
+   "preamble_rows": [
+    [
+     "Existing Agreements (EA) Register"
+    ],
+    [
+     "What this data shows: The Existing Agreement (EA) Register details all projects that applied for \"Gate 2\" in the Connect"
+    ],
+    [
+     "PUBLIC - last updated 11/6/25 following developer request to remove a project form the public EA list "
+    ],
+    []
+   ],
+   "columns": [
+    {
+     "name": "Project Name",
+     "blank": 0,
+     "distinct": 2566,
+     "forms": {
+      "text": 3397
+     },
+     "sample": [
+      "West Burton Solar Project",
+      "West Burton Solar Project",
+      "Claverhouse Gas Generation"
+     ]
+    },
+    {
+     "name": "Associated Installed Capacity",
+     "blank": 0,
+     "distinct": 774,
+     "forms": {
+      "integer": 1955,
+      "decimal": 1442
+     },
+     "sample": [
+      "624",
+      "20",
+      "20.7"
+     ]
+    },
+    {
+     "name": "Existing Connection Date",
+     "blank": 0,
+     "distinct": 493,
+     "forms": {
+      "date-cell": 3397
+     },
+     "sample": [
+      "2028-11-30T00:00:00",
+      "2028-11-30T00:00:00",
+      "2026-04-30T00:00:00"
+     ]
+    },
+    {
+     "name": "Existing Connection Point",
+     "blank": 0,
+     "distinct": 1018,
+     "forms": {
+      "text": 3397
+     },
+     "sample": [
+      "West Burton 400kV Substation",
+      "West Burton 400kV Substation",
+      "Milton of Craigie GSP"
+     ]
+    },
+    {
+     "name": "Expressed an interest in Gate 1 agreement with reservation",
+     "blank": 0,
+     "distinct": 2,
+     "forms": {
+      "text": 3397
+     },
+     "sample": [
+      "N",
+      "N",
+      "N"
+     ]
+    },
+    {
+     "name": "Technology Type",
+     "blank": 0,
+     "distinct": 18,
+     "forms": {
+      "text": 3397
+     },
+     "sample": [
+      "Solar",
+      "Battery",
+      "Unabated Gas"
+     ]
+    }
+   ]
+  }
+ ]
+}

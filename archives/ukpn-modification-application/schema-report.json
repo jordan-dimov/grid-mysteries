@@ -1,0 +1,10 @@
+{
+ "file": "data/raw/demand-sources/ukpn/2026-09-18/ukpn-modification-application.csv",
+ "sha256": "203a47d3d747a101395f2bfffb0a60370adb91a6beb5a6b41df9daabc8f65c6f",
+ "header_line": 1,
+ "delimiter": "semicolon",
+ "preamble_lines": [],
+ "rows": 0,
+ "blank_rows_dropped": 0,
+ "columns": []
+}

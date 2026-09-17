@@ -488,3 +488,30 @@ variant built and tested against the local store; (5) deploy `vintage-capture`
 (a plan change is a code change, so the cron job must be deployed for the
 schedule to see it, per §5). Nothing analytical follows from this section:
 a declaration over any of these archives is a separate, later act.
+
+**Built and live-tested 2026-09-18, not deployed.** The seal was given the
+same day. `plan.py` now carries `NESO-EA-REGISTER`,
+`NESO-CONNECTIONS-REFORM-RESULTS-PAGE`, `NESO-24MA-CONSTRAINT-COST-FORECAST`,
+`NESO-24MA-CONSTRAINT-LIMITS`, `NESO-BSUOS-MONTHLY-FORECAST`,
+`UKPN-OVERALL-QUEUE-INSIGHTS`, `NGED-CONNECTIONS-REFORM-REGISTER`,
+`NGED-CONNECTIONS-REFORM-OUTCOMES`, `SSEN-ECR`, `OFGEM-CURATE-PAGE` and
+`ENA-CONNECTIONS-DASHBOARD`. Three pieces of machinery were needed and are
+tested: a per-resource `headers` field (the browser user agent SSEN's and the
+ENA's edges require, declared on those two resources only), a `base`
+parameter on the `ckan` strategy for portals other than NESO's, and a
+`ckan_package` strategy that reads `package_show` and downloads only the listed
+resources whose `last_modified` differs from the last capture, each file its
+own dataset (`<name>-<resource id>`), so SSEN's 38 vintages and NESO's monthly
+BSUoS files are captured once each. Against a local store on 2026-09-18 the
+eleven entries captured 199 artefacts with no error (SSEN 43 files, 89 MB; the
+BSUoS package 141 CSVs), and a second-day run downloaded only the changed
+listings. The first sealed fetch itself was done by hand with
+`scripts/pin-demand-sources` and is recorded in
+`archives/demand-sources/manifest-2026-09-18.json`; the schema pass is in
+`ops/DEMAND-CONNECTION-SOURCES.md` §4. **Still to do:** the UKPN demand
+datasets need an open-data API key (registration started; the key goes in the
+`vintage-secrets` group as `UKPN_API_KEY`, and the three `url` entries are
+added with an `apikey` header once it exists); then deploy `vintage-capture`,
+because a plan change is a code change and the schedule keeps the old plan
+until the job is deployed (§5).
+

@@ -1,0 +1,193 @@
+{
+ "file": "data/raw/demand-sources/neso/2026-09-18/24-months-ahead-constraint-limit_sept26.csv",
+ "sha256": "3eef5064db597f3e98f7c15f906930f8a7bc0bf2cf7ea04e111fa6584cd4e712",
+ "header_line": 1,
+ "delimiter": "comma",
+ "preamble_lines": [],
+ "rows": 105,
+ "blank_rows_dropped": 0,
+ "columns": [
+  {
+   "name": "YEAR",
+   "blank": 0,
+   "distinct": 3,
+   "forms": {
+    "integer": 105
+   },
+   "sample": [
+    "2026",
+    "2026",
+    "2026"
+   ]
+  },
+  {
+   "name": "Week No",
+   "blank": 0,
+   "distinct": 52,
+   "forms": {
+    "integer": 105
+   },
+   "sample": [
+    "40",
+    "41",
+    "42"
+   ]
+  },
+  {
+   "name": "DRESHEX1",
+   "blank": 0,
+   "distinct": 35,
+   "forms": {
+    "integer": 105
+   },
+   "sample": [
+    "6400",
+    "6300",
+    "6100"
+   ]
+  },
+  {
+   "name": "ESTEX",
+   "blank": 0,
+   "distinct": 36,
+   "forms": {
+    "integer": 105
+   },
+   "sample": [
+    "6600",
+    "6075",
+    "5050"
+   ]
+  },
+  {
+   "name": "FLOWSTH",
+   "blank": 0,
+   "distinct": 33,
+   "forms": {
+    "integer": 105
+   },
+   "sample": [
+    "9900",
+    "8900",
+    "9700"
+   ]
+  },
+  {
+   "name": "GM_SNOW5A",
+   "blank": 0,
+   "distinct": 35,
+   "forms": {
+    "integer": 105
+   },
+   "sample": [
+    "1550",
+    "1500",
+    "1500"
+   ]
+  },
+  {
+   "name": "HARSPNBLY",
+   "blank": 0,
+   "distinct": 32,
+   "forms": {
+    "integer": 105
+   },
+   "sample": [
+    "5400",
+    "5400",
+    "4850"
+   ]
+  },
+  {
+   "name": "NKILGRMO",
+   "blank": 0,
+   "distinct": 28,
+   "forms": {
+    "integer": 105
+   },
+   "sample": [
+    "1400",
+    "1451",
+    "1814"
+   ]
+  },
+  {
+   "name": "SCOTEX",
+   "blank": 0,
+   "distinct": 31,
+   "forms": {
+    "integer": 105
+   },
+   "sample": [
+    "4347",
+    "4200",
+    "5127"
+   ]
+  },
+  {
+   "name": "SEIMPPR2",
+   "blank": 0,
+   "distinct": 42,
+   "forms": {
+    "integer": 105
+   },
+   "sample": [
+    "5372",
+    "4749",
+    "4749"
+   ]
+  },
+  {
+   "name": "SSE_GRM",
+   "blank": 0,
+   "distinct": 24,
+   "forms": {
+    "integer": 105
+   },
+   "sample": [
+    "1570",
+    "1645",
+    "2225"
+   ]
+  },
+  {
+   "name": "SSEN_S",
+   "blank": 0,
+   "distinct": 24,
+   "forms": {
+    "integer": 105
+   },
+   "sample": [
+    "2050",
+    "961",
+    "2580"
+   ]
+  },
+  {
+   "name": "SSE_SP2",
+   "blank": 0,
+   "distinct": 26,
+   "forms": {
+    "integer": 105
+   },
+   "sample": [
+    "1600",
+    "973",
+    "2100"
+   ]
+  },
+  {
+   "name": "SSHARN3",
+   "blank": 0,
+   "distinct": 44,
+   "forms": {
+    "integer": 105
+   },
+   "sample": [
+    "7200",
+    "7200",
+    "7250"
+   ]
+  }
+ ]
+}

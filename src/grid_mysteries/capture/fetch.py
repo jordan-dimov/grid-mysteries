@@ -12,6 +12,13 @@ from pathlib import Path
 from typing import Protocol
 
 USER_AGENT = "grid-mysteries-capture/1 (research; jdimov@a115.co.uk)"
+#: Sent only to publishers whose edge refuses the identifying agent above with
+#: a 403 (SSEN's portal, the ENA site); a resource opts in through its
+#: `headers`, so the exception is visible in the plan, never silent.
+BROWSER_USER_AGENT = (
+    "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) "
+    "Chrome/128.0 Safari/537.36"
+)
 KEPT_HEADERS = ("last-modified", "etag", "content-type", "content-length", "date")
 #: Responses larger than this are streamed to a temporary file, never held whole
 #: in memory: the job runs in 512 MB and one NESO dump is 192 MB.
@@ -52,7 +59,12 @@ class Response:
 
 class Fetcher(Protocol):
     def get(
-        self, url: str, *, data: bytes | None = None, content_type: str | None = None
+        self,
+        url: str,
+        *,
+        data: bytes | None = None,
+        content_type: str | None = None,
+        headers: dict[str, str] | None = None,
     ) -> Response: ...
 
 
@@ -65,9 +77,14 @@ class HttpFetcher:
         )
 
     def get(
-        self, url: str, *, data: bytes | None = None, content_type: str | None = None
+        self,
+        url: str,
+        *,
+        data: bytes | None = None,
+        content_type: str | None = None,
+        headers: dict[str, str] | None = None,
     ) -> Response:
-        headers = {"Content-Type": content_type} if content_type else {}
+        headers = {**(headers or {}), **({"Content-Type": content_type} if content_type else {})}
         if data is not None:
             response = self.client.post(url, content=data, headers=headers)
             return Response(
@@ -76,7 +93,7 @@ class HttpFetcher:
                 body=response.content,
                 headers={k.lower(): v for k, v in response.headers.items()},
             )
-        with self.client.stream("GET", url) as stream:
+        with self.client.stream("GET", url, headers=headers) as stream:
             kept = {k.lower(): v for k, v in stream.headers.items()}
             digest = hashlib.sha256()
             size = 0
@@ -110,12 +127,19 @@ class CannedFetcher:
         self.responses = responses
         self.calls: list[tuple[str, bytes | None]] = []
         self.content_types: list[str | None] = []
+        self.headers: list[dict[str, str]] = []
 
     def get(
-        self, url: str, *, data: bytes | None = None, content_type: str | None = None
+        self,
+        url: str,
+        *,
+        data: bytes | None = None,
+        content_type: str | None = None,
+        headers: dict[str, str] | None = None,
     ) -> Response:
         self.calls.append((url, data))
         self.content_types.append(content_type)
+        self.headers.append(dict(headers or {}))
         canned = self.responses.get(url)
         if canned is None:
             return Response(url=url, status=404, body=b"", headers={})

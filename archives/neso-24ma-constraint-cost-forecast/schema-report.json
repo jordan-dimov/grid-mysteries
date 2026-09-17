@@ -1,0 +1,37 @@
+{
+ "file": "data/raw/demand-sources/neso/2026-09-18/24-months-ahead-constraint-cost-forecast_sept26.csv",
+ "sha256": "c56921b48966cd3e2e5b681d40491ab48ea6dc91f79b1240b9569a90b57a501a",
+ "header_line": 1,
+ "delimiter": "comma",
+ "preamble_lines": [],
+ "rows": 24,
+ "blank_rows_dropped": 0,
+ "columns": [
+  {
+   "name": "Month",
+   "blank": 0,
+   "distinct": 24,
+   "forms": {
+    "text": 24
+   },
+   "sample": [
+    "Oct-26",
+    "Nov-26",
+    "Dec-26"
+   ]
+  },
+  {
+   "name": "Constraint Cost",
+   "blank": 0,
+   "distinct": 24,
+   "forms": {
+    "decimal": 24
+   },
+   "sample": [
+    "606.2",
+    "551.4",
+    "450.6"
+   ]
+  }
+ ]
+}

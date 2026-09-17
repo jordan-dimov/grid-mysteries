@@ -1,0 +1,10 @@
+{
+ "file": "data/raw/demand-sources/ukpn/2026-09-18/ukpn-data-centres-by-local-authority.csv",
+ "sha256": "affd2472271cd94ea0535e3c8e54224ef3b9c5c0d6fd2f871c9ac4c6cf17a440",
+ "header_line": 1,
+ "delimiter": "semicolon",
+ "preamble_lines": [],
+ "rows": 0,
+ "blank_rows_dropped": 0,
+ "columns": []
+}

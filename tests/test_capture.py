@@ -337,3 +337,72 @@ def test_local_store_refuses_unsafe_keys_and_lists_by_prefix(tmp_path: Path):
     ]
     assert list(store.keys("nothing")) == []
     assert store.get("missing") is None
+
+
+def test_ckan_base_parameter_and_headers_reach_the_fetcher():
+    from grid_mysteries.capture.strategies import ckan
+
+    base = "https://data-api.example/api/3/action"
+    meta = {"result": {"url": "https://data-api.example/dl/x.csv", "last_modified": "t1"}}
+    fetcher = CannedFetcher(
+        {
+            f"{base}/resource_show?id=r1": json.dumps(meta).encode(),
+            "https://data-api.example/dl/x.csv": b"a,b\n1,2\n",
+        }
+    )
+    resource = Resource(
+        "X", "x", "x", "ckan", {"resource_id": "r1", "base": base}, headers={"User-Agent": "UA"}
+    )
+    captured = list(ckan(resource, fetcher, date(2026, 9, 18)))
+    assert [c[0] for c in fetcher.calls] == [
+        f"{base}/resource_show?id=r1",
+        "https://data-api.example/dl/x.csv",
+    ]
+    assert fetcher.headers == [{"User-Agent": "UA"}, {"User-Agent": "UA"}]
+    assert [c.dataset for c in captured] == ["X-META", "X"]
+
+
+def test_ckan_package_captures_each_listed_file_once_per_vintage(tmp_path: Path):
+    base = "https://data-api.example/api/3/action"
+
+    def package(*items):
+        return json.dumps({"result": {"resources": list(items)}}).encode()
+
+    aug = {"id": "aaa", "url": "https://x/aug.xlsx", "format": "XLSX", "last_modified": "t-aug"}
+    sep = {"id": "bbb", "url": "https://x/sep.xlsx", "format": "XLSX", "last_modified": "t-sep"}
+    pdf = {"id": "ccc", "url": "https://x/note.pdf", "format": "PDF", "last_modified": "t-pdf"}
+    resource = Resource(
+        "R", "r", "register", "ckan_package", {"base": base, "package_id": "p", "formats": "XLSX"}
+    )
+    store = LocalStore(tmp_path)
+    first = CannedFetcher(
+        {f"{base}/package_show?id=p": package(aug, pdf), "https://x/aug.xlsx": b"AUG"}
+    )
+    status = cap.run_capture([resource], first, store, day=date(2026, 9, 18))
+    assert [c[0] for c in first.calls] == [f"{base}/package_show?id=p", "https://x/aug.xlsx"]
+    assert status.resources[0].artefacts == 2  # the listing and the one wanted file
+    second = CannedFetcher(
+        {f"{base}/package_show?id=p": package(aug, sep, pdf), "https://x/sep.xlsx": b"SEP"}
+    )
+    status = cap.run_capture([resource], second, store, day=date(2026, 9, 19))
+    # August is unchanged by last_modified and is not re-downloaded; September is new.
+    assert [c[0] for c in second.calls] == [f"{base}/package_show?id=p", "https://x/sep.xlsx"]
+    lines = [
+        json.loads(line)
+        for line in (tmp_path / "manifests/2026-09-19.ndjson").read_text().splitlines()
+    ]
+    assert {line["dataset"] for line in lines} == {"R-META", "R-bbb"}
+    latest = json.loads((tmp_path / "status/vintage-capture/latest.json").read_text())
+    assert latest["extras"]["register/R-aaa"]["ckan_last_modified"] == "t-aug"
+    assert latest["extras"]["register/R-bbb"]["ckan_last_modified"] == "t-sep"
+
+
+def test_url_strategy_sends_the_resources_headers():
+    from grid_mysteries.capture.strategies import url as url_strategy
+
+    fetcher = CannedFetcher({"https://ena.example/page": b"<html/>"})
+    resource = Resource(
+        "E", "ena", "page", "url", {"url": "https://ena.example/page"}, headers={"User-Agent": "B"}
+    )
+    list(url_strategy(resource, fetcher, date(2026, 9, 18)))
+    assert fetcher.headers == [{"User-Agent": "B"}]

@@ -10,6 +10,8 @@ The job never parses what it captures.
 from dataclasses import dataclass, field
 from typing import Final
 
+from grid_mysteries.capture.fetch import BROWSER_USER_AGENT
+
 
 @dataclass(frozen=True)
 class Resource:
@@ -19,9 +21,16 @@ class Resource:
     strategy: str
     params: dict[str, str] = field(default_factory=dict)
     note: str = ""
+    #: Request headers this resource needs (a browser user agent for an edge
+    #: that refuses the job's own); empty for everything that does not.
+    headers: dict[str, str] = field(default_factory=dict)
 
 
 NESO_TEC_REGISTER: Final = "17becbab-e3e8-473f-b303-3806f43a6a10"
+BROWSER: Final = {"User-Agent": BROWSER_USER_AGENT}
+SSEN_CKAN: Final = "https://data-api.ssen.co.uk/api/3/action"
+NGED_CKAN: Final = "https://connecteddata.nationalgrid.co.uk/api/3/action"
+UKPN_EXPORT: Final = "https://ukpowernetworks.opendatasoft.com/api/explore/v2.1/catalog/datasets"
 
 PLAN: Final[tuple[Resource, ...]] = (
     # NESO data portal (CKAN): one resource_show plus the download per resource.
@@ -174,6 +183,105 @@ PLAN: Final[tuple[Resource, ...]] = (
         {"url": "https://octopus.energy/smart/agile/"},
         "010",
     ),
+    # Demand-connection sources (ops/DEMAND-CONNECTION-SOURCES.md, sealed
+    # 2026-09-18) and the NESO constraint forecast the 013 note asked for.
+    Resource(
+        "NESO-EA-REGISTER",
+        "neso",
+        "existing-agreements-register",
+        "url",
+        {"url": "https://www.neso.energy/document/373996/download"},
+        "the one NESO list naming demand projects; overwritten in place under one document id",
+    ),
+    Resource(
+        "NESO-CONNECTIONS-REFORM-RESULTS-PAGE",
+        "neso",
+        "connections-reform-results-page",
+        "url",
+        {
+            "url": (
+                "https://www.neso.energy/industry-information/connections-reform/"
+                "connections-reform-results"
+            )
+        },
+        "links the EA register; catches a re-issue or a Phase 2 demand publication",
+    ),
+    Resource(
+        "NESO-24MA-CONSTRAINT-COST-FORECAST",
+        "neso",
+        "24-months-ahead-constraint-cost-forecast",
+        "ckan",
+        {"resource_id": "28b85d3f-a1cc-4bb9-80af-600f2cca266a"},
+        "013 forecast note; 384 bytes, overwritten monthly, the July 2026 vintage is lost",
+    ),
+    Resource(
+        "NESO-24MA-CONSTRAINT-LIMITS",
+        "neso",
+        "24-months-ahead-constraint-limits",
+        "ckan",
+        {"resource_id": "3c359e33-3dac-4bdd-87d1-efbf4cbc2f07"},
+        "sister dataset, same overwrite pattern",
+    ),
+    Resource(
+        "NESO-BSUOS-MONTHLY-FORECAST",
+        "neso",
+        "bsuos-monthly-forecast",
+        "ckan_package",
+        {"package_id": "bsuos-monthly-forecast", "formats": "CSV"},
+        "a new resource each month, dated by NESO; every CSV the package lists",
+    ),
+    Resource(
+        "UKPN-OVERALL-QUEUE-INSIGHTS",
+        "ukpn",
+        "overall-queue-insights",
+        "url",
+        {"url": f"{UKPN_EXPORT}/ukpn-overall-queue-insights/exports/csv"},
+        "semicolon-delimited export; the one UKPN dataset readable without a key",
+    ),
+    Resource(
+        "NGED-CONNECTIONS-REFORM-REGISTER",
+        "nged",
+        "connections-reform-register",
+        "ckan_package",
+        {"base": NGED_CKAN, "package_id": "nged-connections-reform-register"},
+        "CMP435 projects NGED manages; generation and storage (Export Capacity), no demand",
+    ),
+    Resource(
+        "NGED-CONNECTIONS-REFORM-OUTCOMES",
+        "nged",
+        "connections-reform-outcomes",
+        "ckan_package",
+        {"base": NGED_CKAN, "package_id": "nged-projects-connections-reforms-outcomes"},
+        "NESO Gate, Phase and queue position per NGED-managed project",
+    ),
+    Resource(
+        "SSEN-ECR",
+        "ssen",
+        "embedded-capacity-register",
+        "ckan_package",
+        {"base": SSEN_CKAN, "package_id": "embedded_capacity_register", "formats": "XLSX,CSV"},
+        "the one DNO that keeps monthly vintages as separate resources; edge needs a browser agent",
+        BROWSER,
+    ),
+    Resource(
+        "OFGEM-CURATE-PAGE",
+        "ofgem",
+        "data-centre-connection-reforms",
+        "url",
+        {"url": "https://www.ofgem.gov.uk/consultation/proposed-data-centre-connection-reforms"},
+        "catches the decision document the day it is published",
+    ),
+    Resource(
+        "ENA-CONNECTIONS-DASHBOARD",
+        "ena",
+        "connections-data-page",
+        "url",
+        {
+            "url": "https://www.energynetworks.org/industry/connecting-to-the-networks/connections-data"
+        },
+        "weekly overwrite, zero Wayback captures; edge needs a browser agent",
+        BROWSER,
+    ),
 )
 
 TO_ADD: Final[tuple[tuple[str, str], ...]] = (
@@ -184,7 +292,13 @@ TO_ADD: Final[tuple[tuple[str, str], ...]] = (
         "NESO skip-rate monthly resources",
         "a new resource id each month; a package_show listing strategy is part 3's follow-up",
     ),
-    ("DNO connection registers", "when published; no URL pinned"),
+    (
+        "UKPN large demand list, data centres by local authority, demand ModApp lead times",
+        "domain-visibility datasets: the anonymous export is header-only and the records API "
+        "refuses; needs a UKPN open-data API key (UKPN_API_KEY) before the url strategy can "
+        "carry them",
+    ),
+    ("NPg, ENWL, SPEN demand aggregates", "login or unavailable; no URL pinned"),
     ("Companies House filings", "waits for the identity link table (move 3)"),
 )
 

@@ -1,0 +1,740 @@
+[
+ {
+  "source": "ena",
+  "dataset": "ena/connections-data-page",
+  "url": "https://www.energynetworks.org/industry/connecting-to-the-networks/connections-data",
+  "path": "data/raw/demand-sources/ena/2026-09-18/connections-data.html",
+  "sha256": "f9c444059d311d44749a76205b41214d020d929b466f0d7aa6ca44578f0d748a",
+  "fetched_at": "2026-09-17T23:18:05.739634+00:00",
+  "bytes": 277462
+ },
+ {
+  "source": "neso",
+  "dataset": "neso/24ma-constraint-cost-forecast",
+  "url": "https://api.neso.energy/dataset/51bb8f5a-3c95-4f7f-9a72-3b36cb7f1dc0/resource/28b85d3f-a1cc-4bb9-80af-600f2cca266a/download/24-months-ahead-constraint-cost-forecast_sept26.csv",
+  "path": "data/raw/demand-sources/neso/2026-09-18/24-months-ahead-constraint-cost-forecast_sept26.csv",
+  "sha256": "c56921b48966cd3e2e5b681d40491ab48ea6dc91f79b1240b9569a90b57a501a",
+  "fetched_at": "2026-09-17T23:16:38.267884+00:00",
+  "bytes": 362
+ },
+ {
+  "source": "neso",
+  "dataset": "neso/24ma-constraint-limits",
+  "url": "https://api.neso.energy/dataset/d515b4a9-60a1-489c-a126-004efc04f121/resource/3c359e33-3dac-4bdd-87d1-efbf4cbc2f07/download/24-months-ahead-constraint-limit_sept26.csv",
+  "path": "data/raw/demand-sources/neso/2026-09-18/24-months-ahead-constraint-limit_sept26.csv",
+  "sha256": "3eef5064db597f3e98f7c15f906930f8a7bc0bf2cf7ea04e111fa6584cd4e712",
+  "fetched_at": "2026-09-17T23:16:40.949704+00:00",
+  "bytes": 7406
+ },
+ {
+  "source": "neso",
+  "dataset": "neso/24ma-constraint-cost-forecast-meta",
+  "url": "https://api.neso.energy/api/3/action/resource_show?id=28b85d3f-a1cc-4bb9-80af-600f2cca266a",
+  "path": "data/raw/demand-sources/neso/2026-09-18/24ma-constraint-cost-forecast.resource_show.json",
+  "sha256": "13a919df037386d9a0f0bc1881c1d93470aa3d0a3004c349170df96f34183dea",
+  "fetched_at": "2026-09-17T23:16:33.375354+00:00",
+  "bytes": 1021
+ },
+ {
+  "source": "neso",
+  "dataset": "neso/24ma-constraint-limits-meta",
+  "url": "https://api.neso.energy/api/3/action/package_show?id=24-months-ahead-constraint-limits",
+  "path": "data/raw/demand-sources/neso/2026-09-18/24ma-constraint-limits.package_show.json",
+  "sha256": "df9bc459135743739fe6c9a9b67e79554ccb3e401c0de3b2d986463235e097ec",
+  "fetched_at": "2026-09-17T23:16:33.823793+00:00",
+  "bytes": 5482
+ },
+ {
+  "source": "neso",
+  "dataset": "neso/bsuos-monthly-forecast",
+  "url": "https://api.neso.energy/dataset/c0376ed7-3205-4fe2-9496-28496f1f287a/resource/ebd99538-2dcf-4ab1-9791-099690200658/download/bsuos-forecast-august-2026.csv",
+  "path": "data/raw/demand-sources/neso/2026-09-18/bsuos-forecast-august-2026.csv",
+  "sha256": "5d6e634ab9f4050b701719463c29fc2d23a92930c393a2ead27e2b64b4c8b20a",
+  "fetched_at": "2026-09-17T23:16:48.625156+00:00",
+  "bytes": 2015
+ },
+ {
+  "source": "neso",
+  "dataset": "neso/bsuos-monthly-forecast",
+  "url": "https://api.neso.energy/dataset/c0376ed7-3205-4fe2-9496-28496f1f287a/resource/108aeff1-ed0c-42cb-a2fa-51940395fe5f/download/bsuos-forecast-july-2026.csv",
+  "path": "data/raw/demand-sources/neso/2026-09-18/bsuos-forecast-july-2026.csv",
+  "sha256": "15b13a7874b15bd7c54f4aea960329b9f50f3325db0fb00f961113538a204b0f",
+  "fetched_at": "2026-09-17T23:16:46.512472+00:00",
+  "bytes": 2242
+ },
+ {
+  "source": "neso",
+  "dataset": "neso/bsuos-monthly-forecast",
+  "url": "https://api.neso.energy/dataset/c0376ed7-3205-4fe2-9496-28496f1f287a/resource/ce1cc6a0-8a7e-41ae-9a97-097932c5a474/download/bsuos-forecast-june-2026.csv",
+  "path": "data/raw/demand-sources/neso/2026-09-18/bsuos-forecast-june-2026.csv",
+  "sha256": "74f71a8940012c1ade062690e688edfd7c8cfd8923eb32bad5ae35e8f36965d8",
+  "fetched_at": "2026-09-17T23:16:44.005553+00:00",
+  "bytes": 2089
+ },
+ {
+  "source": "neso",
+  "dataset": "neso/bsuos-forecast-report-2026-08",
+  "url": "https://www.neso.energy/document/384581/download",
+  "path": "data/raw/demand-sources/neso/2026-09-18/bsuos-forecast-report-august-2026.pdf",
+  "sha256": "8c7fd902845de35854c83b0197eebf29ceeb9eab4ae99ddd291d6b0615f67769",
+  "fetched_at": "2026-09-17T23:16:34.814919+00:00",
+  "bytes": 148292
+ },
+ {
+  "source": "neso",
+  "dataset": "neso/bsuos-forecast-report-2026-09",
+  "url": "https://www.neso.energy/document/385726/download",
+  "path": "data/raw/demand-sources/neso/2026-09-18/bsuos-forecast-report-september-2026.pdf",
+  "sha256": "51830824099e0c65d8834e1a52de75e4b159ffc90e48ca7b0e5e15dd1fed0e4f",
+  "fetched_at": "2026-09-17T23:16:35.286291+00:00",
+  "bytes": 149114
+ },
+ {
+  "source": "neso",
+  "dataset": "neso/bsuos-monthly-forecast",
+  "url": "https://api.neso.energy/dataset/c0376ed7-3205-4fe2-9496-28496f1f287a/resource/5e835054-6f5b-433c-a063-6a573107d561/download/bsuos-forecast-september-2026-v2.csv",
+  "path": "data/raw/demand-sources/neso/2026-09-18/bsuos-forecast-september-2026-v2.csv",
+  "sha256": "6c96b96b70a0d5159eae080e59739b12c6753dd5e369c900dac7de28ad55d470",
+  "fetched_at": "2026-09-17T23:16:50.561724+00:00",
+  "bytes": 2105
+ },
+ {
+  "source": "neso",
+  "dataset": "neso/bsuos-monthly-forecast-meta",
+  "url": "https://api.neso.energy/api/3/action/package_show?id=bsuos-monthly-forecast",
+  "path": "data/raw/demand-sources/neso/2026-09-18/bsuos-monthly-forecast.package_show.json",
+  "sha256": "54cd84f345555ed5d8d1563319d8e9cbacba651c9bad85bd735de5b5dfda354b",
+  "fetched_at": "2026-09-17T23:16:34.338000+00:00",
+  "bytes": 123449
+ },
+ {
+  "source": "neso",
+  "dataset": "neso/bsuos-outturn-report-2026-06",
+  "url": "https://www.neso.energy/document/384586/download",
+  "path": "data/raw/demand-sources/neso/2026-09-18/bsuos-outturn-report-june-2026.pdf",
+  "sha256": "7e5c038182c7e71a7c76ce5e730134cc6d5fed6128de2f735b0788efcdad3bbb",
+  "fetched_at": "2026-09-17T23:16:35.724895+00:00",
+  "bytes": 74767
+ },
+ {
+  "source": "neso",
+  "dataset": "neso/connections-reform-detailed-results",
+  "url": "https://www.neso.energy/document/374936/download",
+  "path": "data/raw/demand-sources/neso/2026-09-18/connections-reform-detailed-results.pdf",
+  "sha256": "cbc12955a992fd37e364d43b90834335bf158dd87d71d60a09164755f4a78f75",
+  "fetched_at": "2026-09-17T23:16:32.304331+00:00",
+  "bytes": 5951900
+ },
+ {
+  "source": "neso",
+  "dataset": "neso/connections-reform-results-page",
+  "url": "https://www.neso.energy/industry-information/connections-reform/connections-reform-results",
+  "path": "data/raw/demand-sources/neso/2026-09-18/connections-reform-results.html",
+  "sha256": "1a9187b4ddb25b4ee21d90d7cc99c069a34fc678b31443a8bbe588a3eaae2982",
+  "fetched_at": "2026-09-17T23:16:30.163188+00:00",
+  "bytes": 1309261
+ },
+ {
+  "source": "neso",
+  "dataset": "neso/demand-cfi-summary",
+  "url": "https://www.neso.energy/document/378226/download",
+  "path": "data/raw/demand-sources/neso/2026-09-18/demand-call-for-input-summary-2026-03.pdf",
+  "sha256": "8af6585390f61407df9220aba5033e24ea4ca19113bd9da230d60ac127354282",
+  "fetched_at": "2026-09-17T23:16:31.666370+00:00",
+  "bytes": 689792
+ },
+ {
+  "source": "neso",
+  "dataset": "neso/demand-irn-page",
+  "url": "https://www.neso.energy/industry-information/connections/demand-information-request-notice-irn",
+  "path": "data/raw/demand-sources/neso/2026-09-18/demand-irn-page.html",
+  "sha256": "207ef2282fca96333edc0e44ea2d15d316fb4480a32c425a40176669f2367c8f",
+  "fetched_at": "2026-09-17T23:16:32.890212+00:00",
+  "bytes": 1268098
+ },
+ {
+  "source": "neso",
+  "dataset": "neso/existing-agreements-register",
+  "url": "https://www.neso.energy/document/373996/download",
+  "path": "data/raw/demand-sources/neso/2026-09-18/existing-agreements-register.xlsx",
+  "sha256": "a96e29b4bf2d43c2d69a552ddecf7244e01a2ef045e93bbdfc2c318e60b0960c",
+  "fetched_at": "2026-09-17T23:16:29.553862+00:00",
+  "bytes": 168268
+ },
+ {
+  "source": "neso",
+  "dataset": "neso/foi-25-074",
+  "url": "https://www.neso.energy/document/366321/download",
+  "path": "data/raw/demand-sources/neso/2026-09-18/foi-25-074-demand-register.pdf",
+  "sha256": "362ef303ecf2a36934ef43d90c526897618fd6a3ad9b07227317c7c4fd50f508",
+  "fetched_at": "2026-09-17T23:16:31.129078+00:00",
+  "bytes": 156463
+ },
+ {
+  "source": "neso",
+  "dataset": "neso/foi-25-174",
+  "url": "https://www.neso.energy/document/374976/download",
+  "path": "data/raw/demand-sources/neso/2026-09-18/foi-25-174-demand-register.pdf",
+  "sha256": "9ed5d7bf277def6e7f42fafe1e6f3c1b4316721ec86c1eaa032e906b7eb9de4c",
+  "fetched_at": "2026-09-17T23:16:30.647799+00:00",
+  "bytes": 196292
+ },
+ {
+  "source": "nged",
+  "dataset": "nged/nged-connections-reform-register",
+  "url": "https://connecteddata.nationalgrid.co.uk/dataset/a1b2a409-3c43-4551-b623-311c5ca7b665/resource/88906436-9c30-465f-a5f5-6800263e8d05/download/251212_cdpdata_nged-connections-reform-register.csv",
+  "path": "data/raw/demand-sources/nged/2026-09-18/251212_cdpdata_nged-connections-reform-register.csv",
+  "sha256": "67776ba68e675581f0da4df1ca85cfda438e7b15dacbf4ffa5c1850fc1bf0f48",
+  "fetched_at": "2026-09-17T23:16:56.527299+00:00",
+  "bytes": 10570867
+ },
+ {
+  "source": "nged",
+  "dataset": "nged/nged-projects-connections-reforms-outcomes",
+  "url": "https://connecteddata.nationalgrid.co.uk/dataset/f18340d3-b4ae-41da-b558-8b2c13f3c766/resource/e8235b1c-413c-4724-af9e-0a18b514d553/download/260709_cdpdata_nged-projects-connections-reforms-outcomes.csv",
+  "path": "data/raw/demand-sources/nged/2026-09-18/260709_cdpdata_nged-projects-connections-reforms-outcomes.csv",
+  "sha256": "dd9b57800c6c2a7ceae93d0fd77c77abc6b200d2f72a641add1994adfc5d4f02",
+  "fetched_at": "2026-09-17T23:16:57.769791+00:00",
+  "bytes": 85144
+ },
+ {
+  "source": "nged",
+  "dataset": "nged/nged-projects-connections-reforms-outcomes",
+  "url": "https://connecteddata.nationalgrid.co.uk/dataset/f18340d3-b4ae-41da-b558-8b2c13f3c766/resource/ca3ed35e-b727-468b-a1cb-b34556a2687e/download/dsa096-nged-projects-connections-reforms-outcomes.pdf",
+  "path": "data/raw/demand-sources/nged/2026-09-18/dsa096-nged-projects-connections-reforms-outcomes.pdf",
+  "sha256": "3fa3c19502f295ef6ec2ece31959fa8595f1fca4376eebe988fab0b074eeadc6",
+  "fetched_at": "2026-09-17T23:16:58.837866+00:00",
+  "bytes": 265531
+ },
+ {
+  "source": "nged",
+  "dataset": "nged/nged-connections-reform-register",
+  "url": "https://connecteddata.nationalgrid.co.uk/dataset/a1b2a409-3c43-4551-b623-311c5ca7b665/resource/742af341-6a2d-486e-b33e-2bd226d88733/download/dsa097-nged-connections-reform-register.pdf",
+  "path": "data/raw/demand-sources/nged/2026-09-18/dsa097-nged-connections-reform-register.pdf",
+  "sha256": "0b15a81f98684a86727612ee4336e857fed574305a4a5fb2bf4a60ce74bc638b",
+  "fetched_at": "2026-09-17T23:16:57.112016+00:00",
+  "bytes": 264488
+ },
+ {
+  "source": "nged",
+  "dataset": "nged/nged-connections-reform-register-meta",
+  "url": "https://connecteddata.nationalgrid.co.uk/api/3/action/package_show?id=nged-connections-reform-register",
+  "path": "data/raw/demand-sources/nged/2026-09-18/nged-connections-reform-register.package_show.json",
+  "sha256": "57da9fee544f780f7041d52e1b301a4984e9a2ae63d51d7f1f277b2c751e3918",
+  "fetched_at": "2026-09-17T23:16:55.334303+00:00",
+  "bytes": 5116
+ },
+ {
+  "source": "nged",
+  "dataset": "nged/nged-projects-connections-reforms-outcomes-meta",
+  "url": "https://connecteddata.nationalgrid.co.uk/api/3/action/package_show?id=nged-projects-connections-reforms-outcomes",
+  "path": "data/raw/demand-sources/nged/2026-09-18/nged-projects-connections-reforms-outcomes.package_show.json",
+  "sha256": "14d1657159976639f6c2139ca931e3591141de48f3abdbf76c58939384eabacf",
+  "fetched_at": "2026-09-17T23:16:55.773630+00:00",
+  "bytes": 5144
+ },
+ {
+  "source": "ofgem",
+  "dataset": "ofgem/curate-consultation-document",
+  "url": "https://www.ofgem.gov.uk/sites/default/files/2026-07/Proposed-data-centre-connection-reforms-curate-consultation-document.pdf",
+  "path": "data/raw/demand-sources/ofgem/2026-09-18/curate-consultation-document.pdf",
+  "sha256": "3d524d86d42f4bfd993a4230e6e7d33e5f5afd21f4b9efd23f40075523d673ac",
+  "fetched_at": "2026-09-17T23:17:52.215243+00:00",
+  "bytes": 1643994
+ },
+ {
+  "source": "ofgem",
+  "dataset": "ofgem/demand-connections-update-2025-11",
+  "url": "https://www.ofgem.gov.uk/sites/default/files/2025-11/Demand%20connections%20update.pdf",
+  "path": "data/raw/demand-sources/ofgem/2026-09-18/demand-connections-update-2025-11.pdf",
+  "sha256": "43de4af719302d7757ee548087ad5106b4db0433f5002b5c7337996aae6566a2",
+  "fetched_at": "2026-09-17T23:17:52.661646+00:00",
+  "bytes": 155935
+ },
+ {
+  "source": "ofgem",
+  "dataset": "ofgem/curate-consultation-page",
+  "url": "https://www.ofgem.gov.uk/consultation/proposed-data-centre-connection-reforms",
+  "path": "data/raw/demand-sources/ofgem/2026-09-18/proposed-data-centre-connection-reforms.html",
+  "sha256": "fb78c2bb440b174bb9db374fb567c42a57f5be012f4bc3500e5cdc858b3e4af8",
+  "fetched_at": "2026-09-17T23:17:51.668132+00:00",
+  "bytes": 208280
+ },
+ {
+  "source": "ssen",
+  "dataset": "ssen/embedded-capacity-register",
+  "url": "https://ssen.tractivity.co.uk/images/blob/b5547b09-3bcf-4221-88cd-7efa01b895b7/DSO%20in%20Action%20Spring%20Series%20Enhanced%20Data%20Surgery%20270325%20Slides.pdf",
+  "path": "data/raw/demand-sources/ssen/2026-09-18/DSO%20in%20Action%20Spring%20Series%20Enhanced%20Data%20Surgery%20270325%20Slides.pdf",
+  "sha256": "1752aeee92116fc4e125f99bd7f21582ba45cf925757faf3dc99e2e7bd9aa0aa",
+  "fetched_at": "2026-09-17T23:17:50.399277+00:00",
+  "bytes": 4863857
+ },
+ {
+  "source": "ssen",
+  "dataset": "ssen/embedded-capacity-register",
+  "url": "https://data-api.ssen.co.uk/dataset/655eb750-7b3f-4c55-93b6-9bc4c26a57ab/resource/5e63eb14-cb3b-4be2-9220-e446bae97df4/download/embedded-capacity-register-4.0_april_2024.xlsx",
+  "path": "data/raw/demand-sources/ssen/2026-09-18/embedded-capacity-register-4.0_april_2024.xlsx",
+  "sha256": "216527be23dd8eaa418448f2d4afac0bec5e28de397cdc5adbec825b0aad104b",
+  "fetched_at": "2026-09-17T23:17:36.894601+00:00",
+  "bytes": 3945571
+ },
+ {
+  "source": "ssen",
+  "dataset": "ssen/embedded-capacity-register",
+  "url": "https://data-api.ssen.co.uk/dataset/655eb750-7b3f-4c55-93b6-9bc4c26a57ab/resource/c1b20cd2-1975-4d85-98ec-9948ad35fb60/download/embedded-capacity-register-4.0_april_2025.xlsx",
+  "path": "data/raw/demand-sources/ssen/2026-09-18/embedded-capacity-register-4.0_april_2025.xlsx",
+  "sha256": "e4e196bc52a164c4b47dc975ad45c133994c7ef42e05704772c41ba6f0d66b8c",
+  "fetched_at": "2026-09-17T23:17:22.561627+00:00",
+  "bytes": 1039640
+ },
+ {
+  "source": "ssen",
+  "dataset": "ssen/embedded-capacity-register",
+  "url": "https://data-api.ssen.co.uk/dataset/655eb750-7b3f-4c55-93b6-9bc4c26a57ab/resource/a4419bf2-46b4-4e64-b13c-d3b1d5c02add/download/embedded-capacity-register-4.0_april_2026.xlsx",
+  "path": "data/raw/demand-sources/ssen/2026-09-18/embedded-capacity-register-4.0_april_2026.xlsx",
+  "sha256": "182e62782b9bc29ead4b0d3b69a0cc9798f0524aaed1b0f6a7402bc81aa8a5d9",
+  "fetched_at": "2026-09-17T23:17:08.712831+00:00",
+  "bytes": 1394611
+ },
+ {
+  "source": "ssen",
+  "dataset": "ssen/embedded-capacity-register",
+  "url": "https://data-api.ssen.co.uk/dataset/655eb750-7b3f-4c55-93b6-9bc4c26a57ab/resource/e3c901b2-34ad-4161-b0f7-6af40443e800/download/embedded-capacity-register-4.0_august_2023.xlsx",
+  "path": "data/raw/demand-sources/ssen/2026-09-18/embedded-capacity-register-4.0_august_2023.xlsx",
+  "sha256": "013449b50b156944c650c5fb0f84bce4872fec127ab7736d3ccd8a8af86f578f",
+  "fetched_at": "2026-09-17T23:17:46.484679+00:00",
+  "bytes": 3709057
+ },
+ {
+  "source": "ssen",
+  "dataset": "ssen/embedded-capacity-register",
+  "url": "https://data-api.ssen.co.uk/dataset/655eb750-7b3f-4c55-93b6-9bc4c26a57ab/resource/1a797084-7105-4c3b-a29e-17bc86b1c692/download/embedded-capacity-register-4.0_august_2024.xlsx",
+  "path": "data/raw/demand-sources/ssen/2026-09-18/embedded-capacity-register-4.0_august_2024.xlsx",
+  "sha256": "c0c372a832b2dab5268738c01dec11cf77d710320dc3798a9eddbc0e93e924fb",
+  "fetched_at": "2026-09-17T23:17:31.820312+00:00",
+  "bytes": 3981881
+ },
+ {
+  "source": "ssen",
+  "dataset": "ssen/embedded-capacity-register",
+  "url": "https://data-api.ssen.co.uk/dataset/655eb750-7b3f-4c55-93b6-9bc4c26a57ab/resource/4ccd2461-7161-4a67-a973-202086a807a4/download/embedded-capacity-register-4.0_august_2025.xlsx",
+  "path": "data/raw/demand-sources/ssen/2026-09-18/embedded-capacity-register-4.0_august_2025.xlsx",
+  "sha256": "eeaa3f07bf8be806719d13817fd304669ebf34b2e075cd572a8ce3b75c9d68e9",
+  "fetched_at": "2026-09-17T23:17:17.976595+00:00",
+  "bytes": 1372345
+ },
+ {
+  "source": "ssen",
+  "dataset": "ssen/embedded-capacity-register",
+  "url": "https://data-api.ssen.co.uk/dataset/655eb750-7b3f-4c55-93b6-9bc4c26a57ab/resource/61121956-ddd5-47bb-a927-d56cb965b1d2/download/embedded-capacity-register-4.0_august_2026.xlsx",
+  "path": "data/raw/demand-sources/ssen/2026-09-18/embedded-capacity-register-4.0_august_2026.xlsx",
+  "sha256": "f3073a1ec83e5109078200a149d9114f0fe1a65b671d5702854e6f0aeaaa9a15",
+  "fetched_at": "2026-09-17T23:17:04.329839+00:00",
+  "bytes": 1399027
+ },
+ {
+  "source": "ssen",
+  "dataset": "ssen/embedded-capacity-register",
+  "url": "https://data-api.ssen.co.uk/dataset/655eb750-7b3f-4c55-93b6-9bc4c26a57ab/resource/4fe6f437-78e2-4bfb-8fa3-450ffeaf4991/download/embedded-capacity-register-4.0_december_2023.xlsx",
+  "path": "data/raw/demand-sources/ssen/2026-09-18/embedded-capacity-register-4.0_december_2023.xlsx",
+  "sha256": "fc6b1b6feac717bbc36b14b65a1b6333a562255f80c82dff04bfa3a2c81167e8",
+  "fetched_at": "2026-09-17T23:17:41.770161+00:00",
+  "bytes": 3928415
+ },
+ {
+  "source": "ssen",
+  "dataset": "ssen/embedded-capacity-register",
+  "url": "https://data-api.ssen.co.uk/dataset/655eb750-7b3f-4c55-93b6-9bc4c26a57ab/resource/2d48a2f1-a80f-4a6e-9a97-13557066f8ea/download/embedded-capacity-register-4.0_december_2024.xlsx",
+  "path": "data/raw/demand-sources/ssen/2026-09-18/embedded-capacity-register-4.0_december_2024.xlsx",
+  "sha256": "c93c4e11b038fc8671248f95d7fd5a61ae859673715f35fd5f4da34c0ce89e2d",
+  "fetched_at": "2026-09-17T23:17:27.097437+00:00",
+  "bytes": 1033021
+ },
+ {
+  "source": "ssen",
+  "dataset": "ssen/embedded-capacity-register",
+  "url": "https://data-api.ssen.co.uk/dataset/655eb750-7b3f-4c55-93b6-9bc4c26a57ab/resource/0f12d6be-4de7-4b0c-8d08-cc502becf05b/download/embedded-capacity-register-4.0_december_2025.xlsx",
+  "path": "data/raw/demand-sources/ssen/2026-09-18/embedded-capacity-register-4.0_december_2025.xlsx",
+  "sha256": "14d4e1f946f83db50735bebdc134f1c1defeb6566200cbfcb14a72fd7a8fbeac",
+  "fetched_at": "2026-09-17T23:17:13.161931+00:00",
+  "bytes": 1399958
+ },
+ {
+  "source": "ssen",
+  "dataset": "ssen/embedded-capacity-register",
+  "url": "https://data-api.ssen.co.uk/dataset/655eb750-7b3f-4c55-93b6-9bc4c26a57ab/resource/fd9c1525-6b9f-4177-93dc-da69fc1b6f7c/download/embedded-capacity-register-4.0_feb_2025.xlsx",
+  "path": "data/raw/demand-sources/ssen/2026-09-18/embedded-capacity-register-4.0_feb_2025.xlsx",
+  "sha256": "01fcdbc7db4b75f27ac478659f3973d6dca158f58831b49a57e3ee93db1ee874",
+  "fetched_at": "2026-09-17T23:17:24.900269+00:00",
+  "bytes": 1042435
+ },
+ {
+  "source": "ssen",
+  "dataset": "ssen/embedded-capacity-register",
+  "url": "https://data-api.ssen.co.uk/dataset/655eb750-7b3f-4c55-93b6-9bc4c26a57ab/resource/29d7267c-7827-437e-9c16-f5b04c20c65d/download/embedded-capacity-register-4.0_february_2024.xlsx",
+  "path": "data/raw/demand-sources/ssen/2026-09-18/embedded-capacity-register-4.0_february_2024.xlsx",
+  "sha256": "bfc8dd76fbb34a21df5b3b48c210e56ca9f36c0a646c497cc9ee732e676405bb",
+  "fetched_at": "2026-09-17T23:17:39.500771+00:00",
+  "bytes": 3936574
+ },
+ {
+  "source": "ssen",
+  "dataset": "ssen/embedded-capacity-register",
+  "url": "https://data-api.ssen.co.uk/dataset/655eb750-7b3f-4c55-93b6-9bc4c26a57ab/resource/2c551e95-09da-4e8f-9057-42da7b5baab3/download/embedded-capacity-register-4.0_february_2026.xlsx",
+  "path": "data/raw/demand-sources/ssen/2026-09-18/embedded-capacity-register-4.0_february_2026.xlsx",
+  "sha256": "9e7b5f8086204722c2a673f3c307476c8fee2faef88933223190c6a4fea48cec",
+  "fetched_at": "2026-09-17T23:17:11.009376+00:00",
+  "bytes": 1350617
+ },
+ {
+  "source": "ssen",
+  "dataset": "ssen/embedded-capacity-register",
+  "url": "https://data-api.ssen.co.uk/dataset/655eb750-7b3f-4c55-93b6-9bc4c26a57ab/resource/302b7235-88f1-4aab-802e-4399f1ef2334/download/embedded-capacity-register-4.0_january_2024.xlsx",
+  "path": "data/raw/demand-sources/ssen/2026-09-18/embedded-capacity-register-4.0_january_2024.xlsx",
+  "sha256": "eab27cee86b0ffb8f74ed47dbcfbe59148accc11fae9c5807e1aa14fc7d46e8e",
+  "fetched_at": "2026-09-17T23:17:40.697102+00:00",
+  "bytes": 3950281
+ },
+ {
+  "source": "ssen",
+  "dataset": "ssen/embedded-capacity-register",
+  "url": "https://data-api.ssen.co.uk/dataset/655eb750-7b3f-4c55-93b6-9bc4c26a57ab/resource/fca1f220-9f8c-4b63-8c99-bb991fdf4a03/download/embedded-capacity-register-4.0_january_2025.xlsx",
+  "path": "data/raw/demand-sources/ssen/2026-09-18/embedded-capacity-register-4.0_january_2025.xlsx",
+  "sha256": "c26108a0fec19068bcea372e9aa315146b22300dc0e651e07beca954883e8d6f",
+  "fetched_at": "2026-09-17T23:17:26.000426+00:00",
+  "bytes": 1042442
+ },
+ {
+  "source": "ssen",
+  "dataset": "ssen/embedded-capacity-register",
+  "url": "https://data-api.ssen.co.uk/dataset/655eb750-7b3f-4c55-93b6-9bc4c26a57ab/resource/808a8e87-7cd6-46dc-97a3-7c1dbb46fa65/download/embedded-capacity-register-4.0_january_2026.xlsx",
+  "path": "data/raw/demand-sources/ssen/2026-09-18/embedded-capacity-register-4.0_january_2026.xlsx",
+  "sha256": "08d2ac335577262c79e9fb6e1062b07f37b7a412e11be2d8f1103cbbd9aafd8a",
+  "fetched_at": "2026-09-17T23:17:12.171430+00:00",
+  "bytes": 1401771
+ },
+ {
+  "source": "ssen",
+  "dataset": "ssen/embedded-capacity-register",
+  "url": "https://data-api.ssen.co.uk/dataset/655eb750-7b3f-4c55-93b6-9bc4c26a57ab/resource/c6497c5c-5664-4b9b-ba9e-f5f84398aa11/download/embedded-capacity-register-4.0_july_2024.xlsx",
+  "path": "data/raw/demand-sources/ssen/2026-09-18/embedded-capacity-register-4.0_july_2024.xlsx",
+  "sha256": "6a69501d8752efc44891388be7249e59c3f9d9707adfa9817f0efee8c4b802a0",
+  "fetched_at": "2026-09-17T23:17:32.954610+00:00",
+  "bytes": 3969329
+ },
+ {
+  "source": "ssen",
+  "dataset": "ssen/embedded-capacity-register",
+  "url": "https://data-api.ssen.co.uk/dataset/655eb750-7b3f-4c55-93b6-9bc4c26a57ab/resource/ecd61f1e-afea-4eb9-92e0-41228b59fbe1/download/embedded-capacity-register-4.0_july_2025.xlsx",
+  "path": "data/raw/demand-sources/ssen/2026-09-18/embedded-capacity-register-4.0_july_2025.xlsx",
+  "sha256": "6d3458a4dcb943ed45ecf5e989219c1326598ccb16c5be2ba3a4c16a2ad6ef93",
+  "fetched_at": "2026-09-17T23:17:19.217509+00:00",
+  "bytes": 1016771
+ },
+ {
+  "source": "ssen",
+  "dataset": "ssen/embedded-capacity-register",
+  "url": "https://data-api.ssen.co.uk/dataset/655eb750-7b3f-4c55-93b6-9bc4c26a57ab/resource/8eec528e-30bb-448e-937b-5571d58ff5d3/download/embedded-capacity-register-4.0_july_2026.xlsx",
+  "path": "data/raw/demand-sources/ssen/2026-09-18/embedded-capacity-register-4.0_july_2026.xlsx",
+  "sha256": "0342783c502f59233e09a5c987723d4bad18066392f2cc9cb3dcda22b40aa8bd",
+  "fetched_at": "2026-09-17T23:17:05.343977+00:00",
+  "bytes": 1398551
+ },
+ {
+  "source": "ssen",
+  "dataset": "ssen/embedded-capacity-register",
+  "url": "https://data-api.ssen.co.uk/dataset/655eb750-7b3f-4c55-93b6-9bc4c26a57ab/resource/f3804824-7aae-4244-a7ad-ce3ccefe9cdc/download/embedded-capacity-register-4.0_june_2024.xlsx",
+  "path": "data/raw/demand-sources/ssen/2026-09-18/embedded-capacity-register-4.0_june_2024.xlsx",
+  "sha256": "a678ef46301eab949f5170a262d53694921bbe99ae04637cf83aa0ab25315617",
+  "fetched_at": "2026-09-17T23:17:34.349261+00:00",
+  "bytes": 3967334
+ },
+ {
+  "source": "ssen",
+  "dataset": "ssen/embedded-capacity-register",
+  "url": "https://data-api.ssen.co.uk/dataset/655eb750-7b3f-4c55-93b6-9bc4c26a57ab/resource/28eda2a1-c96b-43ef-81da-922c00d12aad/download/embedded-capacity-register-4.0_june_2025.xlsx",
+  "path": "data/raw/demand-sources/ssen/2026-09-18/embedded-capacity-register-4.0_june_2025.xlsx",
+  "sha256": "956304b6c82930d8ce35995150135d31f6cbd57005458ac2081c4882791030a4",
+  "fetched_at": "2026-09-17T23:17:20.404752+00:00",
+  "bytes": 1018528
+ },
+ {
+  "source": "ssen",
+  "dataset": "ssen/embedded-capacity-register",
+  "url": "https://data-api.ssen.co.uk/dataset/655eb750-7b3f-4c55-93b6-9bc4c26a57ab/resource/14171cc6-0605-4482-9a4a-17330bbcb944/download/embedded-capacity-register-4.0_june_2026.xlsx",
+  "path": "data/raw/demand-sources/ssen/2026-09-18/embedded-capacity-register-4.0_june_2026.xlsx",
+  "sha256": "f3e0bf62c26af907e02ca896f5ea1fda029709378304222825e8349e1adab93d",
+  "fetched_at": "2026-09-17T23:17:06.410478+00:00",
+  "bytes": 1404206
+ },
+ {
+  "source": "ssen",
+  "dataset": "ssen/embedded-capacity-register",
+  "url": "https://data-api.ssen.co.uk/dataset/655eb750-7b3f-4c55-93b6-9bc4c26a57ab/resource/8ad71dc6-b803-4517-8164-67b0391fd0dd/download/embedded-capacity-register-4.0_march_2024.xlsx",
+  "path": "data/raw/demand-sources/ssen/2026-09-18/embedded-capacity-register-4.0_march_2024.xlsx",
+  "sha256": "e4ec7f8aeb085382764c9e3e8a1f85132ca7f52b8b290e0fc5dd40ee51c43616",
+  "fetched_at": "2026-09-17T23:17:38.325421+00:00",
+  "bytes": 3943233
+ },
+ {
+  "source": "ssen",
+  "dataset": "ssen/embedded-capacity-register",
+  "url": "https://data-api.ssen.co.uk/dataset/655eb750-7b3f-4c55-93b6-9bc4c26a57ab/resource/507bf8f0-f5f3-4cb8-b4e3-944907343be1/download/embedded-capacity-register-4.0_march_2025.xlsx",
+  "path": "data/raw/demand-sources/ssen/2026-09-18/embedded-capacity-register-4.0_march_2025.xlsx",
+  "sha256": "49a9012f32d646c9a89ee88211427a473ef4c9a583edc28c48425ffdcc28f306",
+  "fetched_at": "2026-09-17T23:17:23.714902+00:00",
+  "bytes": 1038207
+ },
+ {
+  "source": "ssen",
+  "dataset": "ssen/embedded-capacity-register",
+  "url": "https://data-api.ssen.co.uk/dataset/655eb750-7b3f-4c55-93b6-9bc4c26a57ab/resource/c909c385-b521-478a-8624-adf8d3dc98d8/download/embedded-capacity-register-4.0_march_2026.xlsx",
+  "path": "data/raw/demand-sources/ssen/2026-09-18/embedded-capacity-register-4.0_march_2026.xlsx",
+  "sha256": "10f63ec24e2ab467015ead00c6c718475434124d4f69c1b06c980599145007bb",
+  "fetched_at": "2026-09-17T23:17:09.777809+00:00",
+  "bytes": 1360787
+ },
+ {
+  "source": "ssen",
+  "dataset": "ssen/embedded-capacity-register",
+  "url": "https://data-api.ssen.co.uk/dataset/655eb750-7b3f-4c55-93b6-9bc4c26a57ab/resource/c96b0ef8-0f8a-4e2a-a112-6174f982dae4/download/embedded-capacity-register-4.0_may_2024.xlsx",
+  "path": "data/raw/demand-sources/ssen/2026-09-18/embedded-capacity-register-4.0_may_2024.xlsx",
+  "sha256": "d0c5ee2d544fb5ed6c44887d5b64f87b3df0f95fb053778f5b9f29aac6a83ec3",
+  "fetched_at": "2026-09-17T23:17:35.584098+00:00",
+  "bytes": 3951663
+ },
+ {
+  "source": "ssen",
+  "dataset": "ssen/embedded-capacity-register",
+  "url": "https://data-api.ssen.co.uk/dataset/655eb750-7b3f-4c55-93b6-9bc4c26a57ab/resource/4ab9168f-e456-4ab4-8a64-3612eac83206/download/embedded-capacity-register-4.0_may_2025.xlsx",
+  "path": "data/raw/demand-sources/ssen/2026-09-18/embedded-capacity-register-4.0_may_2025.xlsx",
+  "sha256": "cb69372b7e9d2f6f63e472f00052718cd5206cf74d46472b6e3dd9abfcdde367",
+  "fetched_at": "2026-09-17T23:17:21.463543+00:00",
+  "bytes": 1008380
+ },
+ {
+  "source": "ssen",
+  "dataset": "ssen/embedded-capacity-register",
+  "url": "https://data-api.ssen.co.uk/dataset/655eb750-7b3f-4c55-93b6-9bc4c26a57ab/resource/c3627888-b643-4cc8-9e72-bed9868d4968/download/embedded-capacity-register-4.0_may_2026.xlsx",
+  "path": "data/raw/demand-sources/ssen/2026-09-18/embedded-capacity-register-4.0_may_2026.xlsx",
+  "sha256": "48eeffe75c583da0ff5f7501afe4756f316554355d9ab290502732cdfaeabb4b",
+  "fetched_at": "2026-09-17T23:17:07.551492+00:00",
+  "bytes": 1410163
+ },
+ {
+  "source": "ssen",
+  "dataset": "ssen/embedded-capacity-register",
+  "url": "https://data-api.ssen.co.uk/dataset/655eb750-7b3f-4c55-93b6-9bc4c26a57ab/resource/1ce63daa-11bf-48e4-84c7-1dce6c151111/download/embedded-capacity-register-4.0_november_2023.xlsx",
+  "path": "data/raw/demand-sources/ssen/2026-09-18/embedded-capacity-register-4.0_november_2023.xlsx",
+  "sha256": "dad759b84715a2beb934fda899146f94b31cce4d439d879ab2fc7b4c7251174a",
+  "fetched_at": "2026-09-17T23:17:43.031332+00:00",
+  "bytes": 3879423
+ },
+ {
+  "source": "ssen",
+  "dataset": "ssen/embedded-capacity-register",
+  "url": "https://data-api.ssen.co.uk/dataset/655eb750-7b3f-4c55-93b6-9bc4c26a57ab/resource/ee8e6e1d-4865-4192-a898-a223b8a454c3/download/embedded-capacity-register-4.0_november_2024.xlsx",
+  "path": "data/raw/demand-sources/ssen/2026-09-18/embedded-capacity-register-4.0_november_2024.xlsx",
+  "sha256": "2689517ceae014571b6a08a2d8c8b71630061728fd0b3c6a0072fe980cb3ad44",
+  "fetched_at": "2026-09-17T23:17:28.392358+00:00",
+  "bytes": 1037510
+ },
+ {
+  "source": "ssen",
+  "dataset": "ssen/embedded-capacity-register",
+  "url": "https://data-api.ssen.co.uk/dataset/655eb750-7b3f-4c55-93b6-9bc4c26a57ab/resource/942487ff-6c29-4c0d-b88b-0cefaa7a2412/download/embedded-capacity-register-4.0_november_2025.xlsx",
+  "path": "data/raw/demand-sources/ssen/2026-09-18/embedded-capacity-register-4.0_november_2025.xlsx",
+  "sha256": "f0073be04e6e9b0d72fe71bc6135d71572989d5424cdce7283ab8aad907cb493",
+  "fetched_at": "2026-09-17T23:17:14.480223+00:00",
+  "bytes": 1403668
+ },
+ {
+  "source": "ssen",
+  "dataset": "ssen/embedded-capacity-register",
+  "url": "https://data-api.ssen.co.uk/dataset/655eb750-7b3f-4c55-93b6-9bc4c26a57ab/resource/dfb93b17-eb16-4e74-9f95-47200493ca29/download/embedded-capacity-register-4.0_october_2023.xlsx",
+  "path": "data/raw/demand-sources/ssen/2026-09-18/embedded-capacity-register-4.0_october_2023.xlsx",
+  "sha256": "38fae7fa8ee1ae826d257875678d3ed875c6085bb4bb6f81b1c2d9da5e7503d0",
+  "fetched_at": "2026-09-17T23:17:44.083594+00:00",
+  "bytes": 3924452
+ },
+ {
+  "source": "ssen",
+  "dataset": "ssen/embedded-capacity-register",
+  "url": "https://data-api.ssen.co.uk/dataset/655eb750-7b3f-4c55-93b6-9bc4c26a57ab/resource/1d3ce9bf-224d-440d-8d5f-f84de84941be/download/embedded-capacity-register-4.0_october_2024.xlsx",
+  "path": "data/raw/demand-sources/ssen/2026-09-18/embedded-capacity-register-4.0_october_2024.xlsx",
+  "sha256": "9c14cc10eda6ebc7bf49be1df237b52dce71dc645b2c5aa37e3f2ea18338b602",
+  "fetched_at": "2026-09-17T23:17:29.460597+00:00",
+  "bytes": 1036596
+ },
+ {
+  "source": "ssen",
+  "dataset": "ssen/embedded-capacity-register",
+  "url": "https://data-api.ssen.co.uk/dataset/655eb750-7b3f-4c55-93b6-9bc4c26a57ab/resource/33673137-b9b5-473a-a064-0b5dc2e20f75/download/embedded-capacity-register-4.0_october_2025.xlsx",
+  "path": "data/raw/demand-sources/ssen/2026-09-18/embedded-capacity-register-4.0_october_2025.xlsx",
+  "sha256": "6b4c2dad1c76f5490e600b4c3a92d79b5849558f903de08ceef3bf2fa8f695df",
+  "fetched_at": "2026-09-17T23:17:15.591651+00:00",
+  "bytes": 1376326
+ },
+ {
+  "source": "ssen",
+  "dataset": "ssen/embedded-capacity-register",
+  "url": "https://data-api.ssen.co.uk/dataset/655eb750-7b3f-4c55-93b6-9bc4c26a57ab/resource/7c3c4d3c-87d2-4f83-821d-5d58f4e451c8/download/embedded-capacity-register-4.0_september_2023.xlsx",
+  "path": "data/raw/demand-sources/ssen/2026-09-18/embedded-capacity-register-4.0_september_2023.xlsx",
+  "sha256": "bc87303bcc7871692cf5ee9229af76396153ed6009f9e3d9acd76e36276c9bfd",
+  "fetched_at": "2026-09-17T23:17:45.318357+00:00",
+  "bytes": 3918822
+ },
+ {
+  "source": "ssen",
+  "dataset": "ssen/embedded-capacity-register",
+  "url": "https://data-api.ssen.co.uk/dataset/655eb750-7b3f-4c55-93b6-9bc4c26a57ab/resource/6c9f422b-bb5f-4888-93a1-2c87d968ec51/download/embedded-capacity-register-4.0_september_2024.xlsx",
+  "path": "data/raw/demand-sources/ssen/2026-09-18/embedded-capacity-register-4.0_september_2024.xlsx",
+  "sha256": "eb7f61d46978b91233d095f4b6b391ca0315da76f8a4731fe547a1b09ba54b1f",
+  "fetched_at": "2026-09-17T23:17:30.662996+00:00",
+  "bytes": 3984996
+ },
+ {
+  "source": "ssen",
+  "dataset": "ssen/embedded-capacity-register",
+  "url": "https://data-api.ssen.co.uk/dataset/655eb750-7b3f-4c55-93b6-9bc4c26a57ab/resource/d85cdd63-668d-415c-9a02-b51f4f43a800/download/embedded-capacity-register-4.0_september_2025.xlsx",
+  "path": "data/raw/demand-sources/ssen/2026-09-18/embedded-capacity-register-4.0_september_2025.xlsx",
+  "sha256": "06ed367b956e55090f2f63559e18e991b1f0ede7a9e038238e801130adce120f",
+  "fetched_at": "2026-09-17T23:17:16.838239+00:00",
+  "bytes": 1364584
+ },
+ {
+  "source": "ssen",
+  "dataset": "ssen/embedded-capacity-register",
+  "url": "https://data-api.ssen.co.uk/dataset/655eb750-7b3f-4c55-93b6-9bc4c26a57ab/resource/d421d6cc-6d61-45eb-b70c-0f4c0484e8b2/download/embedded-capacity-register-4.0_september_2026.xlsx",
+  "path": "data/raw/demand-sources/ssen/2026-09-18/embedded-capacity-register-4.0_september_2026.xlsx",
+  "sha256": "a370ae6f496dd76d55234cc74510b3dabf2c4c6fb6e07d53394e35faba2e0c49",
+  "fetched_at": "2026-09-17T23:17:00.878585+00:00",
+  "bytes": 1392428
+ },
+ {
+  "source": "ssen",
+  "dataset": "ssen/embedded-capacity-register",
+  "url": "https://data-api.ssen.co.uk/dataset/655eb750-7b3f-4c55-93b6-9bc4c26a57ab/resource/16bc7142-6f53-4b5e-8c2c-2a1168519ffe/download/embedded-capacity-register-attributes.csv",
+  "path": "data/raw/demand-sources/ssen/2026-09-18/embedded-capacity-register-attributes.csv",
+  "sha256": "7d01a8b50b72d347f21c7296d51b3c0fc37acadd60d42ae73a94c72ca53b028b",
+  "fetched_at": "2026-09-17T23:17:48.625652+00:00",
+  "bytes": 13712
+ },
+ {
+  "source": "ssen",
+  "dataset": "ssen/embedded-capacity-register-meta",
+  "url": "https://data-api.ssen.co.uk/api/3/action/package_show?id=embedded_capacity_register",
+  "path": "data/raw/demand-sources/ssen/2026-09-18/embedded_capacity_register.package_show.json",
+  "sha256": "780407903871e3c3e664399bc38e3109a531b127a6b190490532c50156eb93df",
+  "fetched_at": "2026-09-17T23:16:59.467624+00:00",
+  "bytes": 69907
+ },
+ {
+  "source": "ssen",
+  "dataset": "ssen/embedded-capacity-register",
+  "url": "https://data-api.ssen.co.uk/dataset/655eb750-7b3f-4c55-93b6-9bc4c26a57ab/resource/93232168-eba7-4c1f-b923-2a97a199b121/download/external-data-triage-ecr-artefact.pdf",
+  "path": "data/raw/demand-sources/ssen/2026-09-18/external-data-triage-ecr-artefact.pdf",
+  "sha256": "680c292bd08c56ef9206c506f505fd444949e72f5b58653894f8406fee8638e1",
+  "fetched_at": "2026-09-17T23:17:47.760895+00:00",
+  "bytes": 283431
+ },
+ {
+  "source": "ssen",
+  "dataset": "ssen/embedded-capacity-register",
+  "url": "https://data-api.ssen.co.uk/dataset/655eb750-7b3f-4c55-93b6-9bc4c26a57ab/resource/d00f69bf-5300-46cf-a607-abf2cc879061/download/methodology-statement-embedded-capacity-register.pdf",
+  "path": "data/raw/demand-sources/ssen/2026-09-18/methodology-statement-embedded-capacity-register.pdf",
+  "sha256": "d9971a2ecef9983a9fee9297b25fab283afa69b0b930cbe6e35fa91b6e2ee50c",
+  "fetched_at": "2026-09-17T23:17:49.714842+00:00",
+  "bytes": 50454
+ },
+ {
+  "source": "ssen",
+  "dataset": "ssen/embedded-capacity-register",
+  "url": "https://data-api.ssen.co.uk/dataset/655eb750-7b3f-4c55-93b6-9bc4c26a57ab/resource/bbae6797-364a-4b2d-a01a-8395e21bee76/download/ssen_ecr_part_1_1mw_september_2026_csv.csv",
+  "path": "data/raw/demand-sources/ssen/2026-09-18/ssen_ecr_part_1_1mw_september_2026_csv.csv",
+  "sha256": "4fcafb27c6180eed9d6d1b883c1059eb799f4c35292f0d9155159c9bcf081c91",
+  "fetched_at": "2026-09-17T23:17:01.961379+00:00",
+  "bytes": 1272186
+ },
+ {
+  "source": "ssen",
+  "dataset": "ssen/embedded-capacity-register",
+  "url": "https://data-api.ssen.co.uk/dataset/655eb750-7b3f-4c55-93b6-9bc4c26a57ab/resource/d258bd7b-22db-4d32-9450-b3783591b66d/download/ssen_ecr_part_1_50kw_september_2026_csv.csv",
+  "path": "data/raw/demand-sources/ssen/2026-09-18/ssen_ecr_part_1_50kw_september_2026_csv.csv",
+  "sha256": "62ae7faa4937943a2529ee2c2a4ea9d9561e69e8c0aefd534ff7f81543a6b409",
+  "fetched_at": "2026-09-17T23:17:03.100269+00:00",
+  "bytes": 1441754
+ },
+ {
+  "source": "ukpn",
+  "dataset": "ukpn/ukpn-data-centres-by-local-authority",
+  "url": "https://ukpowernetworks.opendatasoft.com/api/explore/v2.1/catalog/datasets/ukpn-data-centres-by-local-authority/exports/csv",
+  "path": "data/raw/demand-sources/ukpn/2026-09-18/ukpn-data-centres-by-local-authority.csv",
+  "sha256": "affd2472271cd94ea0535e3c8e54224ef3b9c5c0d6fd2f871c9ac4c6cf17a440",
+  "fetched_at": "2026-09-17T23:16:52.824731+00:00",
+  "bytes": 139
+ },
+ {
+  "source": "ukpn",
+  "dataset": "ukpn/ukpn-data-centres-by-local-authority-meta",
+  "url": "https://ukpowernetworks.opendatasoft.com/api/explore/v2.1/catalog/datasets/ukpn-data-centres-by-local-authority",
+  "path": "data/raw/demand-sources/ukpn/2026-09-18/ukpn-data-centres-by-local-authority.dataset.json",
+  "sha256": "0cae620579e3e8584ecfb02e8e71f7a10da319e5afb55f2c8a94a662e0b64c51",
+  "fetched_at": "2026-09-17T23:16:52.337782+00:00",
+  "bytes": 12938
+ },
+ {
+  "source": "ukpn",
+  "dataset": "ukpn/ukpn-large-demand-list",
+  "url": "https://ukpowernetworks.opendatasoft.com/api/explore/v2.1/catalog/datasets/ukpn-large-demand-list/exports/csv",
+  "path": "data/raw/demand-sources/ukpn/2026-09-18/ukpn-large-demand-list.csv",
+  "sha256": "93979bb49daddd037632049a920f88c665dce535a5e8574993115a149123fb67",
+  "fetched_at": "2026-09-17T23:16:51.814765+00:00",
+  "bytes": 120
+ },
+ {
+  "source": "ukpn",
+  "dataset": "ukpn/ukpn-large-demand-list-meta",
+  "url": "https://ukpowernetworks.opendatasoft.com/api/explore/v2.1/catalog/datasets/ukpn-large-demand-list",
+  "path": "data/raw/demand-sources/ukpn/2026-09-18/ukpn-large-demand-list.dataset.json",
+  "sha256": "87d0e07a4abee54fee1eba910bf68ef58739efd48f5a82291068a9421b35953f",
+  "fetched_at": "2026-09-17T23:16:51.160335+00:00",
+  "bytes": 14228
+ },
+ {
+  "source": "ukpn",
+  "dataset": "ukpn/ukpn-modification-application",
+  "url": "https://ukpowernetworks.opendatasoft.com/api/explore/v2.1/catalog/datasets/ukpn-modification-application/exports/csv",
+  "path": "data/raw/demand-sources/ukpn/2026-09-18/ukpn-modification-application.csv",
+  "sha256": "203a47d3d747a101395f2bfffb0a60370adb91a6beb5a6b41df9daabc8f65c6f",
+  "fetched_at": "2026-09-17T23:16:54.901014+00:00",
+  "bytes": 664
+ },
+ {
+  "source": "ukpn",
+  "dataset": "ukpn/ukpn-modification-application-meta",
+  "url": "https://ukpowernetworks.opendatasoft.com/api/explore/v2.1/catalog/datasets/ukpn-modification-application",
+  "path": "data/raw/demand-sources/ukpn/2026-09-18/ukpn-modification-application.dataset.json",
+  "sha256": "eff9eb659d7e2f4243f7ce4d608a91af01047e7981e6a0f4e3f6501703f732a6",
+  "fetched_at": "2026-09-17T23:16:54.396281+00:00",
+  "bytes": 18001
+ },
+ {
+  "source": "ukpn",
+  "dataset": "ukpn/ukpn-overall-queue-insights",
+  "url": "https://ukpowernetworks.opendatasoft.com/api/explore/v2.1/catalog/datasets/ukpn-overall-queue-insights/exports/csv",
+  "path": "data/raw/demand-sources/ukpn/2026-09-18/ukpn-overall-queue-insights.csv",
+  "sha256": "59f9041fbd3c5147e270981cde6141e02fad34b38b816c3bbc62b1251b084dfa",
+  "fetched_at": "2026-09-17T23:16:53.885989+00:00",
+  "bytes": 1360
+ },
+ {
+  "source": "ukpn",
+  "dataset": "ukpn/ukpn-overall-queue-insights-meta",
+  "url": "https://ukpowernetworks.opendatasoft.com/api/explore/v2.1/catalog/datasets/ukpn-overall-queue-insights",
+  "path": "data/raw/demand-sources/ukpn/2026-09-18/ukpn-overall-queue-insights.dataset.json",
+  "sha256": "d48c8cefbc44878cf83b5a079f2ecd0c08d13b871645eb209168dcafc1f552b8",
+  "fetched_at": "2026-09-17T23:16:53.341773+00:00",
+  "bytes": 7596
+ }
+]

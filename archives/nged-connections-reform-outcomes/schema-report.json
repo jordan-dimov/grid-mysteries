@@ -1,0 +1,218 @@
+{
+ "file": "data/raw/demand-sources/nged/2026-09-18/260709_cdpdata_nged-projects-connections-reforms-outcomes.csv",
+ "sha256": "dd9b57800c6c2a7ceae93d0fd77c77abc6b200d2f72a641add1994adfc5d4f02",
+ "header_line": 1,
+ "delimiter": "comma",
+ "preamble_lines": [],
+ "rows": 873,
+ "blank_rows_dropped": 0,
+ "columns": [
+  {
+   "name": "Licence_Area",
+   "blank": 0,
+   "distinct": 4,
+   "forms": {
+    "text": 873
+   },
+   "sample": [
+    "South Wales",
+    "South Wales",
+    "South Wales"
+   ]
+  },
+  {
+   "name": "GSP",
+   "blank": 0,
+   "distinct": 55,
+   "forms": {
+    "text": 873
+   },
+   "sample": [
+    "Swansea North Grid",
+    "Rassau G.S.P.",
+    "Swansea North Grid"
+   ]
+  },
+  {
+   "name": "GSP_FL_Constrained",
+   "blank": 679,
+   "distinct": 2,
+   "forms": {
+    "blank": 679,
+    "text": 194
+   },
+   "sample": [
+    "TRUE",
+    "TRUE",
+    "TRUE"
+   ]
+  },
+  {
+   "name": "Installed_Capacity\n(MW)",
+   "blank": 15,
+   "distinct": 275,
+   "forms": {
+    "integer": 408,
+    "blank": 15,
+    "decimal": 450
+   },
+   "sample": [
+    "15",
+    "14",
+    "5"
+   ]
+  },
+  {
+   "name": "Export_Capacity\n(MW)",
+   "blank": 0,
+   "distinct": 214,
+   "forms": {
+    "integer": 431,
+    "decimal": 442
+   },
+   "sample": [
+    "15",
+    "12.5",
+    "5"
+   ]
+  },
+  {
+   "name": "Firm_Connection_Date",
+   "blank": 60,
+   "distinct": 189,
+   "forms": {
+    "integer": 813,
+    "blank": 60
+   },
+   "sample": [
+    "46477",
+    "45961",
+    "45839"
+   ]
+  },
+  {
+   "name": "Non-Firm_Connection_Date",
+   "blank": 790,
+   "distinct": 54,
+   "forms": {
+    "blank": 790,
+    "integer": 83
+   },
+   "sample": [
+    "46112",
+    "46690",
+    "46690"
+   ]
+  },
+  {
+   "name": "TQE_Date",
+   "blank": 48,
+   "distinct": 224,
+   "forms": {
+    "integer": 822,
+    "blank": 48,
+    "text": 3
+   },
+   "sample": [
+    "42619",
+    "42619",
+    "42619"
+   ]
+  },
+  {
+   "name": "DNO_Acceptance_Date",
+   "blank": 31,
+   "distinct": 201,
+   "forms": {
+    "integer": 842,
+    "blank": 31
+   },
+   "sample": [
+    "42614",
+    "42614",
+    "42614"
+   ]
+  },
+  {
+   "name": "Customer_Acceptance_Date",
+   "blank": 8,
+   "distinct": 590,
+   "forms": {
+    "integer": 865,
+    "blank": 8
+   },
+   "sample": [
+    "40865",
+    "44169",
+    "41339"
+   ]
+  },
+  {
+   "name": "Obtain_Min_Info_Date",
+   "blank": 0,
+   "distinct": 605,
+   "forms": {
+    "integer": 873
+   },
+   "sample": [
+    "40702",
+    "41115",
+    "41194"
+   ]
+  },
+  {
+   "name": "Gate\nNESO Outcome",
+   "blank": 0,
+   "distinct": 4,
+   "forms": {
+    "text": 873
+   },
+   "sample": [
+    "Gate 2",
+    "Gate 2",
+    "Gate 2"
+   ]
+  },
+  {
+   "name": "Phase\nNESO Outcome",
+   "blank": 270,
+   "distinct": 5,
+   "forms": {
+    "text": 603,
+    "blank": 270
+   },
+   "sample": [
+    "Phase 1",
+    "Phase 1",
+    "Phase 1"
+   ]
+  },
+  {
+   "name": "Protections\nNESO Outcome",
+   "blank": 547,
+   "distinct": 4,
+   "forms": {
+    "text": 326,
+    "blank": 547
+   },
+   "sample": [
+    "Clause 2a*",
+    "Clause 1",
+    "Clause 1"
+   ]
+  },
+  {
+   "name": "Final D Queue Position\nNGED",
+   "blank": 0,
+   "distinct": 746,
+   "forms": {
+    "integer": 873
+   },
+   "sample": [
+    "1",
+    "3",
+    "4"
+   ]
+  }
+ ]
+}

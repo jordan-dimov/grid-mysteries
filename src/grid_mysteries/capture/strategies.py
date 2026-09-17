@@ -68,9 +68,14 @@ FORM: Final = "application/x-www-form-urlencoded"
 
 
 def _get(
-    fetcher: Fetcher, url: str, *, data: bytes | None = None, content_type: str | None = None
+    fetcher: Fetcher,
+    url: str,
+    *,
+    data: bytes | None = None,
+    content_type: str | None = None,
+    headers: dict[str, str] | None = None,
 ) -> Response:
-    response = fetcher.get(url, data=data, content_type=content_type)
+    response = fetcher.get(url, data=data, content_type=content_type, headers=headers or None)
     if not response.ok:
         raise FetchError(f"HTTP {response.status} for {url}")
     return response
@@ -90,7 +95,8 @@ def ckan(
     that has not changed is not downloaded daily on the strength of a
     hash it would produce anyway."""
     rid = resource.params["resource_id"]
-    show = _get(fetcher, f"{CKAN_ACTION}/resource_show?id={rid}")
+    base = resource.params.get("base", CKAN_ACTION)
+    show = _get(fetcher, f"{base}/resource_show?id={rid}", headers=resource.headers)
     meta = json.loads(show.text())["result"]
     last_modified = str(meta.get("last_modified") or "")
     before = (previous or {}).get(f"{resource.resource}/{resource.name}", {})
@@ -104,7 +110,7 @@ def ckan(
         )
         return
     yield Captured(f"{resource.name}-META", show.url, show.body, show.kept_headers())
-    download = _get(fetcher, meta["url"])
+    download = _get(fetcher, meta["url"], headers=resource.headers)
     yield Captured.of(
         resource.name,
         download,
@@ -112,8 +118,45 @@ def ckan(
     )
 
 
+def ckan_package(
+    resource: Resource,
+    fetcher: Fetcher,
+    day: date,
+    *,
+    previous: dict[str, dict[str, str]] | None = None,
+) -> Iterator[Captured]:
+    """A whole CKAN package: `package_show`, then every listed resource whose
+    format is in `formats` (all, when unset) and whose `last_modified` differs
+    from the one recorded at its last capture. Each file is its own dataset,
+    `<name>-<resource id>`, so a package that adds a resource a month (NESO's
+    BSUoS forecast) or keeps every monthly vintage (SSEN's register) is
+    captured once per vintage and the unchanged ones cost one metadata line.
+    `base` points the strategy at a portal other than NESO's."""
+    base = resource.params.get("base", CKAN_ACTION)
+    pid = resource.params["package_id"]
+    wanted = {f.strip().upper() for f in resource.params.get("formats", "").split(",") if f}
+    show = _get(fetcher, f"{base}/package_show?id={pid}", headers=resource.headers)
+    yield Captured(f"{resource.name}-META", show.url, show.body, show.kept_headers())
+    for item in json.loads(show.text())["result"].get("resources", []):
+        rid, href = str(item.get("id") or ""), str(item.get("url") or "")
+        fmt = str(item.get("format") or "").upper()
+        if not rid or not href or (wanted and fmt not in wanted):
+            continue
+        dataset = f"{resource.name}-{rid}"
+        last_modified = str(item.get("last_modified") or "")
+        before = (previous or {}).get(f"{resource.resource}/{dataset}", {})
+        if last_modified and before.get("ckan_last_modified") == last_modified:
+            continue
+        download = _get(fetcher, href, headers=resource.headers)
+        yield Captured.of(
+            dataset,
+            download,
+            {"ckan_last_modified": last_modified, "ckan_name": str(item.get("name") or "")},
+        )
+
+
 def url(resource: Resource, fetcher: Fetcher, day: date) -> Iterator[Captured]:
-    response = _get(fetcher, resource.params["url"])
+    response = _get(fetcher, resource.params["url"], headers=resource.headers)
     yield Captured.of(resource.name, response)
 
 
@@ -194,6 +237,7 @@ def gov_assets(resource: Resource, fetcher: Fetcher, day: date) -> Iterator[Capt
 
 STRATEGIES: dict[str, Callable[..., Iterator[Captured]]] = {
     "ckan": ckan,
+    "ckan_package": ckan_package,
     "url": url,
     "eso_map": eso_map,
     "elexon_remit": elexon_remit,

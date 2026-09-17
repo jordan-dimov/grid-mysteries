@@ -1,0 +1,50 @@
+{
+ "file": "data/raw/demand-sources/ukpn/2026-09-18/ukpn-overall-queue-insights.csv",
+ "sha256": "59f9041fbd3c5147e270981cde6141e02fad34b38b816c3bbc62b1251b084dfa",
+ "header_line": 1,
+ "delimiter": "semicolon",
+ "preamble_lines": [],
+ "rows": 20,
+ "blank_rows_dropped": 0,
+ "columns": [
+  {
+   "name": "technology",
+   "blank": 0,
+   "distinct": 4,
+   "forms": {
+    "text": 20
+   },
+   "sample": [
+    "Solar",
+    "Battery",
+    "UKPN"
+   ]
+  },
+  {
+   "name": "status",
+   "blank": 0,
+   "distinct": 5,
+   "forms": {
+    "text": 20
+   },
+   "sample": [
+    "Connected, cancelled, CMP446 or reduced capacity since the opening of the window",
+    "Connected, cancelled, CMP446 or reduced capacity since the opening of the window",
+    "Connected, cancelled, CMP446 or reduced capacity since the opening of the window"
+   ]
+  },
+  {
+   "name": "contracted_ders_mw",
+   "blank": 0,
+   "distinct": 20,
+   "forms": {
+    "integer": 20
+   },
+   "sample": [
+    "1637",
+    "4067",
+    "6157"
+   ]
+  }
+ ]
+}

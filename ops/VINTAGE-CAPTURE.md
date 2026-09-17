@@ -154,10 +154,41 @@ changes:
 
     render deploys create crn-dakrtsbl550s73alah40 --commit a1c2624 --wait
 
-Before deploying, confirm that `tracker-013` carries no per-job
-`AWS_ACCESS_KEY_ID` / `AWS_SECRET_ACCESS_KEY`: a per-job value overrides the
-linked group, which would reproduce the fault on the next deploy. The CLI
-does not expose environment variables, so that check is a dashboard one.
+**Checked in the dashboard, same day: it does.** Both cron jobs define the
+AWS key pair at the job level *as well as* linking the group, so every secret
+in `vintage-secrets` is duplicated on the job that uses it:
+
+| | job-level variables | linked group |
+|---|---|---|
+| `tracker-013` | `AWS_ACCESS_KEY_ID`, `AWS_DEFAULT_REGION`, `AWS_SECRET_ACCESS_KEY`, `HEALTHCHECK_URL_013`, `SEAL_013`, `VINTAGE_STORE` | `vintage-secrets` |
+| `vintage-capture` | `AWS_ACCESS_KEY_ID`, `AWS_DEFAULT_REGION`, `AWS_SECRET_ACCESS_KEY`, `HEALTHCHECK_URL_CAPTURE`, `VINTAGE_STORE` | `vintage-secrets` |
+| `vintage-secrets` holds | `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`, `HEALTHCHECK_URL_013`, `HEALTHCHECK_URL_CAPTURE`, `SEAL_013` | — |
+
+Four of `tracker-013`'s six job-level variables are also in the group. The
+group therefore did not replace the per-job values; it shadowed them, or was
+shadowed by them, and the job has carried two sources for the same secret
+since 2026-09-16. `vintage-capture` has the same duplication and works only
+because its job-level pair happens to hold the writer key.
+
+That leaves exactly one fact undetermined from here, and it is a two-second
+check by eye that should not be done by reading key material into a
+transcript: **is `tracker-013`'s job-level `AWS_ACCESS_KEY_ID` the same as
+the group's?**
+
+- If it differs, the job-level value is the `a115-cli-jordan` key and a
+  deploy on its own would re-apply it. Deploying alone would not fix this.
+- If it matches, the job-level value was corrected on 2026-09-16 and only the
+  deploy snapshot is stale.
+
+**The fix that is correct either way, and the one to take:** delete from
+`tracker-013` the four job-level variables the group already defines
+(`AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`, `HEALTHCHECK_URL_013`,
+`SEAL_013`), leaving `AWS_DEFAULT_REGION` and `VINTAGE_STORE`, which is what
+`render.yaml` declares as plain values. Then deploy. That makes the group the
+single source of every secret, which is what creating it was for, and removes
+the duplication as a failure mode rather than guessing which copy is live.
+The same duplication on `vintage-capture` should go the same way before it
+bites there too.
 
 **Standing consequence for this file:** whenever a secret or environment
 value used by a cron job changes, the job must be deployed for the schedule

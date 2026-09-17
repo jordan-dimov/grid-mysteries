@@ -270,13 +270,27 @@ day's manifest and its five proof files — the container check listed them.
 **And the reason nobody noticed is structural.** Both Render jobs ping
 healthchecks.io and are watched. The watchdog's only failure channel was
 `notify-send`, which under a systemd *user* service reaches no desktop bus,
-and the unit sets no environment at all. `scripts/check-vintages` now pings
+and the unit sets no environment at all. `scripts/check-vintages` pings
 `HEALTHCHECK_URL_WATCHDOG` on success and `/fail` on failure, and is a no-op
-until that variable is set. To arm it: create a healthchecks.io check on a
-twice-daily schedule with a generous grace, add
-`Environment=HEALTHCHECK_URL_WATCHDOG=<url>` to
-`ops/systemd/vintage-watchdog.service`, reinstall with `ops/install-watchdog`
-and `systemctl --user daemon-reload`. Until then the watchdog is still silent.
+until that variable is set.
+
+**Armed 2026-09-17.** A fourth healthchecks.io check, `vintage-watchdog`, was
+created in the same project (12 hour period, 2 hour grace, e-mail integration
+like the other three) to match the timer's twice-daily schedule. The ping URL
+is **not** in this repository and must not be put here: a healthchecks.io ping
+URL is a capability URL, and `render.yaml` keeps the other two out of git for
+exactly that reason. It lives in a local drop-in,
+`~/.config/systemd/user/vintage-watchdog.service.d/healthcheck.conf` (0600),
+and is recorded beside the other two in
+`~/.aws/vintage-bootstrap-2026-09-15.txt`. Verified end to end:
+`systemctl --user start vintage-watchdog.service` exits 0 and the check shows
+the ping. The committed unit in `ops/systemd/` is unchanged, so
+`ops/install-watchdog` stays safe to re-run — the drop-in survives it.
+
+**`s3:GetBucketVersioning` is not worth granting after all.** Under the
+watchdog's own identity `bucket-settings` reports "as expected"; it only fails
+when `capture check` is run as a Render job under the writer key, which is an
+ad-hoc diagnostic and not part of normal operation. Nothing to do.
 
 ### `vintage-capture` cleaned up the same way, 2026-09-17 14:44-14:46 UTC
 

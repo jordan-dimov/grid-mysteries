@@ -649,6 +649,85 @@
     "2 of the rows, 550 MW, are published with a date that is not past in another held copy. On that reading the figure is 1,947.92 MW over 15 rows.",
     "Nothing here is a statement about delivery, readiness or NESO's assessment."
    ]
+  },
+  "gb-tec-gate2-overdue-scoping-2026-09": {
+   "as_of": "2026-09-15",
+   "source": "NESO TEC Register",
+   "source_sha256": "d13406e495746f1b80e725321a5c7f95e21e0da16830bb6bd1f94ece172c9d5b",
+   "declaration_sha256": "82856d65ae7300fca7e8ddb5ff43cff3bceb38fdc7b25fb42a761906930ef0b3",
+   "declared_breakdowns": [
+    "G3",
+    "G4",
+    "G6"
+   ],
+   "value": "1172.8",
+   "unit": "MW",
+   "rows": 9,
+   "row_share_of_the_overdue_tier": "0.5294",
+   "capacity_share_of_the_overdue_tier": "0.4695",
+   "claim": "9 of the 17 entries in the confirmed tier that are past their confirmed date \u2014 1,172.8 MW of 2,497.92 MW \u2014 carry a project status of \u201cScoping\u201d in the same copy.",
+   "the_rows": [
+    {
+     "project": "Eccles BESS",
+     "mw": "500",
+     "effective_from_as_printed": "12/04/2026",
+     "status": "Scoping"
+    },
+    {
+     "project": "Zenobe Eccles Battery Storage",
+     "mw": "400",
+     "effective_from_as_printed": "30/04/2026",
+     "status": "Scoping"
+    },
+    {
+     "project": "Whitelaw Brae Windfarm",
+     "mw": "57",
+     "effective_from_as_printed": "31/07/2026",
+     "status": "Scoping"
+    },
+    {
+     "project": "Persley Croft BESS",
+     "mw": "50",
+     "effective_from_as_printed": "31/07/2026",
+     "status": "Scoping"
+    },
+    {
+     "project": "Holmston Farm Battery Energy Storage System",
+     "mw": "49.9",
+     "effective_from_as_printed": "31/07/2026",
+     "status": "Scoping"
+    },
+    {
+     "project": "Lovat Estate BESS",
+     "mw": "49.9",
+     "effective_from_as_printed": "31/05/2026",
+     "status": "Scoping"
+    },
+    {
+     "project": "Dalmarnock Road BESS",
+     "mw": "40",
+     "effective_from_as_printed": "23/02/2024",
+     "status": "Scoping"
+    },
+    {
+     "project": "Bilbo Farm",
+     "mw": "25",
+     "effective_from_as_printed": "31/10/2024",
+     "status": "Scoping"
+    },
+    {
+     "project": "Whitelaw Brae BESS",
+     "mw": "1",
+     "effective_from_as_printed": "31/07/2026",
+     "status": "Scoping"
+    }
+   ],
+   "must_travel_with_the_claim": [
+    "For each of these 9 rows individually, not only for the wider 17, the date had already passed in the first held copy whose Gate cell reads 2. None was given a confirmed date in these copies and then missed it.",
+    "2 of the 9 rows, 550 MW \u2014 46.9% of this figure, a much larger share than of the tier total \u2014 are rows another held copy publishes with a date that is not past. On that reading this figure is 622.8 MW over 7 rows. The two must be quoted together.",
+    "\u201cScoping\u201d is the register's own status word, which this copy also prints on 1,484 of its 2,200 rows, 1,449 of them dated in the future. No conclusion is drawn here from the pairing of that status with the confirmed tier; the two columns are reported side by side.",
+    "Nothing here is a statement about delivery, readiness or NESO's assessment."
+   ]
   }
  }
 }

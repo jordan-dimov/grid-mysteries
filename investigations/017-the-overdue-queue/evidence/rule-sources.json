@@ -36,6 +36,7 @@
   "F4 a Gate value the pinned definition does not cover": "tests/test_overdue_queue.py::test_f4_fires_on_a_gate_value_the_pinned_definition_does_not_cover",
   "F5 repetition holding more than a tenth of the overdue Gate 2 MW": "tests/test_overdue_queue.py::test_f5_fires_when_repetition_holds_more_than_a_tenth_of_the_tier",
   "F6 fewer than three gated copies are readable": "tests/test_overdue_queue.py::test_f6_fires_when_too_few_gated_copies_are_readable",
-  "schema pass: the Gate vocabulary is recorded per copy and archive-wide": "tests/test_tec_register.py::test_the_gate_column_gets_the_same_vocabulary_pass_as_status"
+  "schema pass: the Gate vocabulary is recorded per copy and archive-wide": "tests/test_tec_register.py::test_the_gate_column_gets_the_same_vocabulary_pass_as_status",
+  "G3/G4 the confirmed-tier rows at one status, promoted with their qualifiers": "tests/test_overdue_queue.py::test_the_scoping_slot_carries_its_qualifiers_and_lists_only_projects"
  }
 }

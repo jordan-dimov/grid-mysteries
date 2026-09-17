@@ -10,6 +10,7 @@ from decimal import Decimal
 from typing import Any
 
 from grid_mysteries.investigations import overdue_queue as oq
+from grid_mysteries.investigations.overdue_queue import share
 
 #: Fields of a register row the page shows in its tables. The evidence keeps
 #: every cell as published; the page shows the ones the census is about.
@@ -567,6 +568,92 @@ def _gate_slots(census: dict[str, Any], gate: dict[str, Any]) -> dict[str, Any]:
                 "Nothing here is a statement about delivery, readiness or NESO's assessment.",
             ],
         },
+        **_scoping_slot(census, gate),
+    }
+
+
+def _scoping_slot(census: dict[str, Any], gate: dict[str, Any]) -> dict[str, Any]:
+    """The rows that sit in the confirmed tier at status "Scoping" (G3), and
+    the rows themselves (G4).
+
+    Both are inside version 2's declared breakdowns, so this promotes a figure
+    that already exists under the seal rather than computing a new one. Every
+    qualifier below is per-row evidence from G4 and G6, not an inference from
+    the wider claim.
+    """
+    overdue = next(g for g in gate["g2_overdue_by_gate"] if g["gate"] == "2")
+    rows = [r for r in gate["g4_confirmed_tier_overdue"] if r["status"] == SCOPING_STATUS]
+    if not rows:
+        return {}
+    total = sum((Decimal(str(r["mw"])) for r in rows if r["mw"] is not None), Decimal(0))
+    contested = [r for r in rows if r["dates_across_gated_copies_not_past"]]
+    contested_mw = sum(
+        (Decimal(str(r["mw"])) for r in contested if r["mw"] is not None), Decimal(0)
+    )
+    all_already_past = all(r["already_past_when_first_in_the_tier"] for r in rows)
+    scoping_all = census["status_counts_all_rows"].get(SCOPING_STATUS, 0)
+    travels = []
+    if all_already_past:
+        travels.append(
+            f"For each of these {len(rows)} rows individually, not only for the wider "
+            f"{overdue['rows']}, the date had already passed in the first held copy whose "
+            "Gate cell reads 2. None was given a confirmed date in these copies and then "
+            "missed it."
+        )
+    else:
+        travels.append(
+            "The 'already past on entering the tier' finding holds for the wider set but "
+            f"not for every one of these {len(rows)} rows; "
+            f"{sum(1 for r in rows if r['already_past_when_first_in_the_tier'])} of them "
+            "carry it."
+        )
+    if contested:
+        travels.append(
+            f"{len(contested)} of the {len(rows)} rows, {mw(contested_mw)} MW \u2014 "
+            f"{pct(share(contested_mw, total))} of this figure, a much larger share than of "
+            "the tier total \u2014 are rows another held copy publishes with a date that "
+            f"is not past. On that reading this figure is {mw(total - contested_mw)} MW over "
+            f"{len(rows) - len(contested)} rows. The two must be quoted together."
+        )
+    travels += [
+        (
+            f"\u201c{SCOPING_STATUS}\u201d is the register's own status word, which this "
+            f"copy also prints on {scoping_all:,} of its {census['rows_total']:,} rows, "
+            f"{census['scale']['rows_scoping_dated_on_or_after_as_of']:,} of them dated in "
+            "the future. No conclusion is drawn here from the pairing of that status with "
+            "the confirmed tier; the two columns are reported side by side."
+        ),
+        "Nothing here is a statement about delivery, readiness or NESO's assessment.",
+    ]
+    return {
+        "gb-tec-gate2-overdue-scoping-2026-09": {
+            "as_of": census["as_of"],
+            "source": "NESO TEC Register",
+            "source_sha256": census["copy"]["sha256"],
+            "declaration_sha256": gate["declaration_sha256"],
+            "declared_breakdowns": ["G3", "G4", "G6"],
+            "value": total,
+            "unit": "MW",
+            "rows": len(rows),
+            "row_share_of_the_overdue_tier": share(len(rows), overdue["rows"]),
+            "capacity_share_of_the_overdue_tier": share(total, Decimal(str(overdue["mw"]))),
+            "claim": (
+                f"{len(rows)} of the {overdue['rows']} entries in the confirmed tier that "
+                f"are past their confirmed date \u2014 {mw(total)} MW of "
+                f"{mw(overdue['mw'])} MW \u2014 carry a project status of "
+                f"\u201c{SCOPING_STATUS}\u201d in the same copy."
+            ),
+            "the_rows": [
+                {
+                    "project": r["project_name"],
+                    "mw": r["mw"],
+                    "effective_from_as_printed": r["effective_as_published"],
+                    "status": r["status"],
+                }
+                for r in rows
+            ],
+            "must_travel_with_the_claim": travels,
+        }
     }
 
 
@@ -722,6 +809,26 @@ def render_post(
     respelled = [r for r in contested if r["a_not_past_date_is_the_day_month_swap"]]
     moved = [r for r in contested if not r["a_not_past_date_is_the_day_month_swap"]]
     long_record = _cert(certificates, "eggborough-2014-01-31")
+    scoping_slot = facts["gb-tec-gate2-overdue-scoping-2026-09"]
+    scoping_contested = [
+        r
+        for r in gate["g4_confirmed_tier_overdue"]
+        if r["status"] == SCOPING_STATUS and r["dates_across_gated_copies_not_past"]
+    ]
+    scoping_contested_rows = len(scoping_contested)
+    scoping_contested_mw = sum(
+        (Decimal(str(r["mw"])) for r in scoping_contested if r["mw"] is not None), Decimal(0)
+    )
+    scoping_slot = facts["gb-tec-gate2-overdue-scoping-2026-09"]
+    scoping_contested = [
+        r
+        for r in gate["g4_confirmed_tier_overdue"]
+        if r["status"] == SCOPING_STATUS and r["dates_across_gated_copies_not_past"]
+    ]
+    scoping_contested_rows = len(scoping_contested)
+    scoping_contested_mw = sum(
+        (Decimal(str(r["mw"])) for r in scoping_contested if r["mw"] is not None), Decimal(0)
+    )
     return "\n".join(
         [
             "<!-- DRAFT, held for the sponsor's second seal. Not posted. Rendered from",
@@ -782,6 +889,33 @@ def render_post(
             "dated years into the future. I am not going to tell you what to make of a "
             "project being ready enough to confirm and still at Scoping. I am telling you "
             "the two columns say that, side by side, in NESO's own file.",
+            "",
+            "Here they are. Names as the register prints them, dates as the register prints them:",
+            "",
+            *_table(
+                ["Project", "MW", "Connection date the register gives it", "Status"],
+                [
+                    [
+                        r["project"],
+                        mw(r["mw"]),
+                        f"`{r['effective_from_as_printed']}`",
+                        r["status"],
+                    ]
+                    for r in scoping_slot["the_rows"]
+                ],
+            ),
+            "",
+            "Every one of those nine, individually and not just as part of the wider "
+            f"{overdue['rows']}, was already past its date in the first copy I hold where "
+            "its Gate cell reads 2.",
+            "",
+            "Two of the nine are the ones I am least sure about \u2014 see the next "
+            f"section \u2014 and they are {mw(scoping_contested_mw)} of the "
+            f"{mw(scoping['mw'])} MW, which is "
+            f"{pct(share(scoping_contested_mw, Decimal(str(scoping['mw']))))} of this "
+            "particular figure. Without them it is "
+            f"{mw(Decimal(str(scoping['mw'])) - scoping_contested_mw)} MW over "
+            f"{scoping['rows'] - scoping_contested_rows} projects.",
             "",
             "## Here is where I might be wrong, before anyone tells me",
             "",
@@ -860,6 +994,10 @@ def render_post(
 
 
 # --------------------------------------------------- version 2: the Gate column
+
+
+#: The register's own word, quoted rather than characterised.
+SCOPING_STATUS: str = "Scoping"
 
 
 def pct(value: object) -> str:

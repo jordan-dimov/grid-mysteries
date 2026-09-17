@@ -2,8 +2,10 @@
 
 from datetime import date
 from decimal import Decimal
+from typing import Any
 
 from grid_mysteries.investigations import overdue_queue as oq
+from grid_mysteries.rendering import overdue_queue as page
 
 AS_OF = date(2026, 9, 15)
 
@@ -494,3 +496,65 @@ def test_a_gated_copy_that_publishes_a_date_in_the_future_is_flagged():
     plain = next(g for g in result["g4_confirmed_tier_overdue"] if g.project_name == "Plain")
     assert plain.dates_across_gated_copies_not_past == ()
     assert plain.a_not_past_date_is_the_day_month_swap is False
+
+
+def test_the_scoping_slot_carries_its_qualifiers_and_lists_only_projects():
+    """G3 and G4 are declared breakdowns, so the figure is promoted rather
+    than computed anew; the two readings and the per-row form of the
+    'already past on entering the tier' finding travel with it, and no
+    customer name leaves the repository."""
+    census: dict[str, Any] = {
+        "as_of": "2026-09-15",
+        "rows_total": 2200,
+        "copy": {"sha256": "d" * 64},
+        "status_counts_all_rows": {"Scoping": 1484},
+        "scale": {"rows_scoping_dated_on_or_after_as_of": 1449},
+    }
+    gate: dict[str, Any] = {
+        "declaration_sha256": "8" * 64,
+        "g2_overdue_by_gate": [{"gate": "2", "rows": 3, "mw": "600"}],
+        "g4_confirmed_tier_overdue": [
+            {
+                "project_name": "Contested",
+                "status": "Scoping",
+                "mw": "300",
+                "effective_as_published": "12/04/2026",
+                "already_past_when_first_in_the_tier": True,
+                "dates_across_gated_copies_not_past": ["2026-12-04"],
+            },
+            {
+                "project_name": "Plain",
+                "status": "Scoping",
+                "mw": "100",
+                "effective_as_published": "30/10/2025",
+                "already_past_when_first_in_the_tier": True,
+                "dates_across_gated_copies_not_past": [],
+            },
+            {
+                "project_name": "Elsewhere",
+                "status": "Consents Approved",
+                "mw": "200",
+                "effective_as_published": "30/10/2025",
+                "already_past_when_first_in_the_tier": True,
+                "dates_across_gated_copies_not_past": [],
+            },
+        ],
+    }
+    slot = page._scoping_slot(census, gate)["gb-tec-gate2-overdue-scoping-2026-09"]
+    assert slot["rows"] == 2
+    assert slot["value"] == Decimal("400")
+    assert [r["project"] for r in slot["the_rows"]] == ["Contested", "Plain"]
+    assert all(
+        set(r) == {"project", "mw", "effective_from_as_printed", "status"} for r in slot["the_rows"]
+    )
+    travels = " ".join(slot["must_travel_with_the_claim"])
+    assert "For each of these 2 rows individually" in travels
+    assert "100 MW over 1 rows" in travels
+    assert "1,484 of its 2,200 rows" in travels
+
+    # If the finding did not hold for every one of them, the slot says so.
+    gate["g4_confirmed_tier_overdue"][1]["already_past_when_first_in_the_tier"] = False
+    weaker = page._scoping_slot(census, gate)["gb-tec-gate2-overdue-scoping-2026-09"]
+    assert "holds for the wider set but not for every one" in (
+        " ".join(weaker["must_travel_with_the_claim"])
+    )

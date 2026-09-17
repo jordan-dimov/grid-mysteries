@@ -24,9 +24,21 @@ run grid-mysteries capture pull-state --name 013 || { ping fail; exit 1; }
 run python investigations/013-the-cover-price-tracker/run.py \
   --seal "$SEAL_013" --phase acquire --run-date "$today"
 status=$?
-# 2 is the runner's "nothing eligible / seal mismatch" refusal; only a real
-# failure (anything else non-zero) fails the check.
-if [[ $status -ne 0 && $status -ne 2 ]]; then ping fail; exit $status; fi
+# The runner's exit codes (investigations/013-the-cover-price-tracker/run.py):
+#   0  it ran. A run on a day with no eligible batch is a normal 0: it fetches
+#      no batch and still pins that day's three NESO 2026-27 vintages.
+#   2  --seal does not match DECLARATION.md, so nothing was fetched at all.
+#   3  a batch named with --batch is not yet fetchable.
+# 2 must fail the check. Treating it as benign (as this script did until
+# 2026-09-17) would leave a wrong SEAL_013 reporting healthy every morning
+# while acquiring nothing -- the failure mode the healthcheck exists to catch.
+# 3 cannot arise here because this job names no batch, and is benign if it
+# ever does.
+if [[ $status -eq 3 ]]; then
+  echo "no batch named today is fetchable yet; continuing to push state"
+elif [[ $status -ne 0 ]]; then
+  ping fail; exit $status
+fi
 # Acquisition state only: raw artefacts, journals, manifests and the
 # acquisition log. tracker.json and TRACKER.md are computed on the laptop.
 run grid-mysteries capture push-state --name 013 \

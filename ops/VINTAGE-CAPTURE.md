@@ -117,6 +117,53 @@ and the last deploy of any kind (a1c2624) at 22:20 UTC, both before the
 dashboard edit that was not saved on that job. The group removes the
 per-job edit as a failure mode either way.
 
+**Superseded on 2026-09-17, kept above as it was written.** The paragraph
+above is wrong in its conclusion, and the evidence is a second identical
+failure. `tracker-013` failed again on its scheduled run at 09:01 UTC on
+2026-09-17 with the same error, in `pull-state`:
+
+    botocore.errorfactory.AccessDenied: An error occurred (AccessDenied)
+    when calling the GetObject operation: User:
+    arn:aws:iam::713341927530:user/a115-cli-jordan is not authorized to
+    perform: s3:GetObject on resource:
+    "arn:aws:s3:::a115-vintages/state/013/data/raw/neso/013/2026-09-15/
+    daily_balancing_costs_2026-27.csv"
+
+The pattern across the three runs held so far is the diagnostic one:
+
+| run | trigger | outcome |
+|---|---|---|
+| 2026-09-16 09:00 UTC | schedule | AccessDenied as `a115-cli-jordan`, exit 1 |
+| 2026-09-16 09:58 UTC | manual | succeeded; pulled 6 files, pinned 3, pushed 6 |
+| 2026-09-17 09:01 UTC | schedule | AccessDenied as `a115-cli-jordan`, exit 1 |
+
+So the environment group was created and the manual run saw it, but the
+**scheduled** runs did not. Neither cron job has been deployed since
+`dep-daks9adbedkc73cu5keg` at 2026-09-15T22:20Z (commit `a1c2624`), which
+is *before* the group was made on 2026-09-16. A Render cron job's scheduled
+runs use the environment captured by its last deploy; a manually triggered
+run picks up the current values. That is the whole discrepancy, and it means
+**an environment fix to a cron job with `autoDeploy: false` does nothing
+until the job is deployed.**
+
+`vintage-capture` is unaffected and ran clean at 06:35 UTC on 2026-09-17, so
+whatever key its deployed environment carries is adequate for what it does;
+only `tracker-013`'s deployed environment is wrong. The fix is a deploy of
+`tracker-013` alone, at the same commit, so that only the environment
+changes:
+
+    render deploys create crn-dakrtsbl550s73alah40 --commit a1c2624 --wait
+
+Before deploying, confirm that `tracker-013` carries no per-job
+`AWS_ACCESS_KEY_ID` / `AWS_SECRET_ACCESS_KEY`: a per-job value overrides the
+linked group, which would reproduce the fault on the next deploy. The CLI
+does not expose environment variables, so that check is a dashboard one.
+
+**Standing consequence for this file:** whenever a secret or environment
+value used by a cron job changes, the job must be deployed for the schedule
+to see it. Add the deploy to the change, or the next scheduled run keeps the
+old value silently.
+
 Compute and render for 013 and 014 stay on the laptop: they need the
 committed evidence, and rendering is a pure function of it. The watchdog
 syncs `state/013/` into the repo's `data/raw` and `evidence/` paths; the

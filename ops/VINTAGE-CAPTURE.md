@@ -238,6 +238,46 @@ it has been fetched.
 stream does not carry it, which makes a successful triggered run look silent
 if you only watch the service.
 
+### The laptop watchdog has been failing since 2026-09-16, and nothing said so
+
+Found while checking what cleanup remained, 2026-09-17. The systemd user timer
+is installed and enabled and fires twice daily, and its last three runs all
+failed in about a second:
+
+| run | result |
+|---|---|
+| Sep 16 10:59 BST | ok (this is the sync committed at `4609d3c`) |
+| Sep 16 22:59 BST | FAILED |
+| Sep 17 11:00 BST | FAILED |
+
+    botocore.exceptions.ProfileNotFound: The config profile (a115-watchdog)
+    could not be found
+
+`scripts/check-vintages` runs with `AWS_PROFILE=a115-watchdog`, which the
+bootstrap note of 2026-09-15 says to put in `~/.aws/credentials`. That file
+now holds `[default]` and nothing else, and was itself rewritten at 15:10 on
+2026-09-17 to 991 bytes — the same size as `credentials.bak.1780496153` from
+June, which also holds only `[default]`. Something is rewriting that file and
+dropping the section. Restoring it needs the watchdog access key from the
+bootstrap note, which is the sponsor's to handle; no key material was read
+here.
+
+**The consequence is the part that matters:** the archive has not synced into
+the repository since the morning of 2026-09-16. `data/manifests/` holds
+2026-09-15 and 2026-09-16 and not 2026-09-17, although the store has that
+day's manifest and its five proof files — the container check listed them.
+
+**And the reason nobody noticed is structural.** Both Render jobs ping
+healthchecks.io and are watched. The watchdog's only failure channel was
+`notify-send`, which under a systemd *user* service reaches no desktop bus,
+and the unit sets no environment at all. `scripts/check-vintages` now pings
+`HEALTHCHECK_URL_WATCHDOG` on success and `/fail` on failure, and is a no-op
+until that variable is set. To arm it: create a healthchecks.io check on a
+twice-daily schedule with a generous grace, add
+`Environment=HEALTHCHECK_URL_WATCHDOG=<url>` to
+`ops/systemd/vintage-watchdog.service`, reinstall with `ops/install-watchdog`
+and `systemctl --user daemon-reload`. Until then the watchdog is still silent.
+
 ### `vintage-capture` cleaned up the same way, 2026-09-17 14:44-14:46 UTC
 
 Its three duplicated job-level variables (`AWS_ACCESS_KEY_ID`,

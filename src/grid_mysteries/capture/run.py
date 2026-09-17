@@ -10,8 +10,10 @@ resource failed. Nothing is parsed, sealed or proposed.
 """
 
 import contextlib
+import dataclasses
 import json
-from collections.abc import Callable, Iterable
+import os
+from collections.abc import Callable, Iterable, Mapping
 from dataclasses import asdict, dataclass, field
 from datetime import UTC, date, datetime
 from typing import Any
@@ -62,6 +64,23 @@ def manifest_key(day: date) -> str:
 
 def status_key(job: str, day: date | None) -> str:
     return f"status/{job}/{day.isoformat() if day else 'latest'}.json"
+
+
+class MissingSecret(RuntimeError):
+    pass
+
+
+def with_secret_header(resource: Resource, environ: Mapping[str, str] = os.environ) -> Resource:
+    """The resource with its secret header resolved from the environment, or
+    `MissingSecret` when the variable is unset: a keyed dataset is never
+    fetched without its key."""
+    if resource.secret_header is None:
+        return resource
+    header, variable, prefix = resource.secret_header
+    value = environ.get(variable, "").strip()
+    if not value:
+        raise MissingSecret(f"{variable} is not set; {resource.name} needs it and was not fetched")
+    return dataclasses.replace(resource, headers={**resource.headers, header: prefix + value})
 
 
 def previous_status(store: ObjectStore, job: str) -> dict[str, Any]:
@@ -121,6 +140,7 @@ def run_capture(
             kwargs = (
                 {"previous": status.extras} if resource.strategy in ("ckan", "ckan_package") else {}
             )
+            resource = with_secret_header(resource)
             for captured in strategy(resource, fetcher, day, **kwargs):
                 sha256 = captured.digest()
                 slot = f"{resource.resource}/{captured.dataset}"

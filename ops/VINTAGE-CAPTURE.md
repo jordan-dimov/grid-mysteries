@@ -508,10 +508,21 @@ BSUoS package 141 CSVs), and a second-day run downloaded only the changed
 listings. The first sealed fetch itself was done by hand with
 `scripts/pin-demand-sources` and is recorded in
 `archives/demand-sources/manifest-2026-09-18.json`; the schema pass is in
-`ops/DEMAND-CONNECTION-SOURCES.md` §4. **Still to do:** the UKPN demand
-datasets need an open-data API key (registration started; the key goes in the
-`vintage-secrets` group as `UKPN_API_KEY`, and the three `url` entries are
-added with an `apikey` header once it exists); then deploy `vintage-capture`,
+`ops/DEMAND-CONNECTION-SOURCES.md` §4. **The UKPN key, same day.** The
+sponsor registered on UKPN's open-data portal (Huwise login) and generated an
+API key labelled `grid-mysteries vintage-capture` (permission: browse all
+datasets); the extension refused to hand the value to the session, so the
+sponsor saved it to `~/.aws/ukpn-api-key` (0600) by hand. With it the three
+exports carry their rows (496 / 45 / 70). `plan.py` carries them as
+`UKPN-LARGE-DEMAND-LIST`, `UKPN-DATA-CENTRES-BY-LA` and
+`UKPN-DEMAND-MODAPP-LEAD-TIMES` with a `secret_header` resolved at run time
+from `UKPN_API_KEY`; a resource whose variable is unset is **reported as an
+error and never fetched**, because a keyless export is a header-only file that
+would otherwise be captured as a vintage, and the secret never reaches a
+manifest (tested). **Still to do, the sponsor's acts:** add `UKPN_API_KEY` to
+the `vintage-secrets` group in the Render dashboard, then deploy
+`vintage-capture` (`render deploys create crn-dakrtsbl550s73alah50 --wait`),
 because a plan change is a code change and the schedule keeps the old plan
-until the job is deployed (§5).
+until the job is deployed (§5). Until the variable exists, the daily run will
+report the three UKPN resources as errors and capture everything else.
 

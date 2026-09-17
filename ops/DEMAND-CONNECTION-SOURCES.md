@@ -104,7 +104,7 @@ the files needed them) produced a report per file under `archives/`:
 | `ssen-ecr` | ECR 4.0 September 2026, XLSX, SHA-256 `a370ae6f…` | Sheets Contents, Definitions, **Register Part 1 50kW–<1MW (1,484 rows)**, **Register Part 1 ≥1MW (1,322 rows)**, Lists; two-row header (group row, then 57 column names on row 2). The register carries Import MPAN, Maximum Import Capacity (MW/MVA), Energy Source 1–3, Connection Status, Date Connected, Date Accepted; import fields are largely `DATA NOT AVAILABLE` on the ≥1 MW sheet (1,133 of 1,322). 37 earlier monthly vintages (Aug 2023 to Aug 2026) are pinned beside it, not yet reported. |
 | `ssen-ecr-part1-1mw` | the CSV twin of the ≥1 MW sheet | 1,322 rows, 62 columns. |
 | `ukpn-overall-queue-insights` | Opendatasoft export | Semicolon-delimited, **20 rows, 3 columns** (technology; status; contracted_ders_mw). |
-| `ukpn-large-demand-list`, `ukpn-data-centres-by-local-authority`, `ukpn-modification-application` | Opendatasoft exports | **Header only, 0 rows.** The datasets are `domain` visibility (`data_visible: false` anonymously); the records endpoint answers `ForbiddenAccess`; an export with a key parameter answers 401 to a wrong key, so a key is what is checked. Column names are in the header: the Large Demand List's six fields match the metadata. **Blocked on a UK Power Networks open-data account and API key**; registration was started in Chrome on 2026-09-18. |
+| `ukpn-large-demand-list`, `ukpn-data-centres-by-local-authority`, `ukpn-modification-application` | Opendatasoft exports | Without a key: **header only, 0 rows** (the datasets are `domain` visibility, `data_visible: false`; the records endpoint answers `ForbiddenAccess`). Those keyless files stay pinned as served. **With the UKPN open-data API key** (account registered and key generated in Chrome on 2026-09-18, key kept in `~/.aws/ukpn-api-key`, never in the repository) the same exports were pinned again as `*.authenticated.csv`: Large Demand List **496 rows, 6 columns** (licence_area 3 values, grid_supply_point 55, anonymised_name all distinct `DER #n`, demand_technology_type **2 values**, required_import_capacity_kva decimal, application_date ISO, 393 distinct from 2009); Data Centres by Local Authority **45 rows, 4 columns**; Demand ModApp Lead Times **70 rows, 13 columns**. Row counts equal the metadata's record counts exactly. |
 | `neso-24ma-constraint-cost-forecast` | `…_sept26.csv`, SHA-256 `c56921b4…` | 24 rows, 2 columns (Month `MMM-YY` from Oct-26, Constraint Cost £m decimal). |
 | `neso-24ma-constraint-limits` | `…_sept26.csv` | 105 rows, 14 columns. |
 | `neso-bsuos-monthly-forecast` | `bsuos-forecast-september-2026-v2.csv` | 24 rows, 16 columns: Month, Energy_Imbalance, Positive and Negative Reserve, Frequency_Control, **Constraints_£m**, Other, Restoration, Balancing Costs (Central), internal BSUoS and the recovery adjustments, volume. |
@@ -123,7 +123,9 @@ no outcome, id or status column, so a demand reading over it can only count
 names, MW, dates and points by technology, and can only be compared across
 vintages by name. NGED's two files are generation and storage. SSEN's register
 is generation and storage with import fields that are mostly unavailable. The
-UKPN demand datasets remain unread until the key exists.
+UKPN Large Demand List is anonymised and dated by application, so it can
+support counts and kVA by GSP and technology across vintages, never a named
+project.
 
 ## 5. Caveats carried from the discovery pass
 

@@ -48,12 +48,17 @@ SSEN_CKAN = "https://data-api.ssen.co.uk/api/3/action"
 UKPN = "https://ukpowernetworks.opendatasoft.com/api/explore/v2.1/catalog/datasets"
 
 
+UKPN_KEY_FILE = Path.home() / ".aws" / "ukpn-api-key"
+
+
 def fetch(*, url: str, destination: Path, dataset: str) -> SourceArtifact:
     source = dataset.split("/")[0]
     if destination.exists():
         raise FileExistsError(destination)
     destination.parent.mkdir(parents=True, exist_ok=True)
     headers = {"User-Agent": BROWSER_UA} if source in ("ssen", "ena") else {}
+    if dataset.endswith("-authenticated"):
+        headers["Authorization"] = "Apikey " + UKPN_KEY_FILE.read_text().strip()
     with httpx.Client(timeout=120.0, follow_redirects=True, headers=headers) as client:
         response = client.get(url)
         response.raise_for_status()
@@ -146,6 +151,19 @@ for ds in ("ukpn-large-demand-list", "ukpn-data-centres-by-local-authority",
     ukpn.append((f"ukpn/{ds}-meta", f"{UKPN}/{ds}", dest("ukpn", f"{ds}.dataset.json")))
     ukpn.append((f"ukpn/{ds}", f"{UKPN}/{ds}/exports/csv", dest("ukpn", f"{ds}.csv")))
 pin(ukpn, "ukpn")
+# The three domain-visibility datasets export header-only without a key; with
+# the key (kept outside the repository) they are pinned again as separate
+# artefacts, so the keyless header-only files stay on record as served.
+if UKPN_KEY_FILE.exists():
+    keyed = [
+        (f"ukpn/{ds}-authenticated", f"{UKPN}/{ds}/exports/csv",
+         dest("ukpn", f"{ds}.authenticated.csv"))
+        for ds in ("ukpn-large-demand-list", "ukpn-data-centres-by-local-authority",
+                   "ukpn-modification-application")
+    ]
+    pin(keyed, "ukpn with the api key")
+else:
+    print(f"ukpn with the api key: skipped, {UKPN_KEY_FILE} does not exist")
 
 # ---- NGED: CKAN metadata, the two CSVs and their data-sharing PDFs ---------
 nged_meta = [

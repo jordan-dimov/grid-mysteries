@@ -1,10 +1,189 @@
 {
- "file": "data/raw/demand-sources/ukpn/2026-09-18/ukpn-modification-application.csv",
- "sha256": "203a47d3d747a101395f2bfffb0a60370adb91a6beb5a6b41df9daabc8f65c6f",
+ "file": "data/raw/demand-sources/ukpn/2026-09-18/ukpn-modification-application.authenticated.csv",
+ "sha256": "0563223e441fe87d813800d8b2b521ce98821d2ed3a937be230457db8bbd5e72",
  "header_line": 1,
  "delimiter": "semicolon",
  "preamble_lines": [],
- "rows": 0,
+ "rows": 70,
  "blank_rows_dropped": 0,
- "columns": []
+ "columns": [
+  {
+   "name": "dno",
+   "blank": 12,
+   "distinct": 4,
+   "forms": {
+    "blank": 12,
+    "text": 58
+   },
+   "sample": [
+    "EPN",
+    "LPN",
+    "SPN"
+   ]
+  },
+  {
+   "name": "site_functional_location",
+   "blank": 12,
+   "distinct": 58,
+   "forms": {
+    "blank": 12,
+    "text": 58
+   },
+   "sample": [
+    "EPN-S0000000C7139",
+    "LPN-S000000003617",
+    "SPN-S000000009905"
+   ]
+  },
+  {
+   "name": "proposed_point_of_connection_gsp_from_modapp_outcome",
+   "blank": 0,
+   "distinct": 69,
+   "forms": {
+    "text": 70
+   },
+   "sample": [
+    "London East Connection Node A",
+    "South Anglia Connection Node F",
+    "West Anglia Connection Node B"
+   ]
+  },
+  {
+   "name": "longest_modapp_quoted_date_for_demand_project_signed",
+   "blank": 51,
+   "distinct": 11,
+   "forms": {
+    "iso-date": 19,
+    "blank": 51
+   },
+   "sample": [
+    "2038-10-31",
+    "2034-10-31",
+    "2034-10-31"
+   ]
+  },
+  {
+   "name": "most_recent_date_of_issue_for_longest_modapp_quoted_date_for_demand_project_signed",
+   "blank": 51,
+   "distinct": 19,
+   "forms": {
+    "iso-date": 19,
+    "blank": 51
+   },
+   "sample": [
+    "2025-10-15",
+    "2025-02-27",
+    "2024-05-13"
+   ]
+  },
+  {
+   "name": "longest_modapp_quoted_date_for_demand_project_offered_then_cancelled",
+   "blank": 62,
+   "distinct": 8,
+   "forms": {
+    "blank": 62,
+    "iso-date": 8
+   },
+   "sample": [
+    "2033-10-31",
+    "2037-10-31",
+    "2038-09-30"
+   ]
+  },
+  {
+   "name": "most_recent_date_of_issue_for_longest_modapp_quoted_date_for_demand_project_offered_then_cancelled",
+   "blank": 62,
+   "distinct": 9,
+   "forms": {
+    "blank": 62,
+    "iso-date": 8
+   },
+   "sample": [
+    "2024-11-21",
+    "2024-06-21",
+    "2023-03-07"
+   ]
+  },
+  {
+   "name": "longest_modapp_quoted_date_for_demand_project_offered",
+   "blank": 62,
+   "distinct": 9,
+   "forms": {
+    "blank": 62,
+    "iso-date": 8
+   },
+   "sample": [
+    "2037-10-31",
+    "2034-10-31",
+    "2033-10-31"
+   ]
+  },
+  {
+   "name": "most_recent_date_of_issue_for_longest_modapp_quoted_date_for_demand_project_offered",
+   "blank": 62,
+   "distinct": 9,
+   "forms": {
+    "blank": 62,
+    "iso-date": 8
+   },
+   "sample": [
+    "2025-09-25",
+    "2025-12-10",
+    "2026-01-12"
+   ]
+  },
+  {
+   "name": "new_node_triggered_for_demand",
+   "blank": 0,
+   "distinct": 4,
+   "forms": {
+    "text": 70
+   },
+   "sample": [
+    "N/A",
+    "N/A",
+    "N/A"
+   ]
+  },
+  {
+   "name": "gsp_s_where_applications_were_originally_made",
+   "blank": 0,
+   "distinct": 13,
+   "forms": {
+    "text": 70
+   },
+   "sample": [
+    "Barking C (EPN), Barking C (LPN), West Ham",
+    "Burwell",
+    "Pelham"
+   ]
+  },
+  {
+   "name": "of_submitted_offers_at_gsp_awaiting_an_outcome",
+   "blank": 0,
+   "distinct": 2,
+   "forms": {
+    "integer": 70
+   },
+   "sample": [
+    "0",
+    "0",
+    "0"
+   ]
+  },
+  {
+   "name": "geo_point_2d",
+   "blank": 12,
+   "distinct": 48,
+   "forms": {
+    "blank": 12,
+    "text": 58
+   },
+   "sample": [
+    "51.5202093829223, 0.113449665828831",
+    "51.5202093829223, 0.113449665828831",
+    "50.9753813909161, -0.235344477487464"
+   ]
+  }
+ ]
 }

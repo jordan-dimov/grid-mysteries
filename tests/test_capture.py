@@ -406,3 +406,30 @@ def test_url_strategy_sends_the_resources_headers():
     )
     list(url_strategy(resource, fetcher, date(2026, 9, 18)))
     assert fetcher.headers == [{"User-Agent": "B"}]
+
+
+def test_a_keyed_resource_is_never_fetched_without_its_key_and_gets_the_header_with_it(
+    tmp_path: Path,
+):
+    import os
+
+    from grid_mysteries.capture.plan import UKPN_KEY
+
+    resource = Resource(
+        "K", "ukpn", "keyed", "url", {"url": "https://u/export.csv"}, secret_header=UKPN_KEY
+    )
+    store = LocalStore(tmp_path)
+    fetcher = CannedFetcher({"https://u/export.csv": b"a;b\n1;2\n"})
+    os.environ.pop("UKPN_API_KEY", None)
+    status = cap.run_capture([resource], fetcher, store, day=date(2026, 9, 18))
+    assert fetcher.calls == []
+    assert status.resources[0].error is not None and "UKPN_API_KEY" in status.resources[0].error
+    os.environ["UKPN_API_KEY"] = "k3y"
+    try:
+        status = cap.run_capture([resource], fetcher, store, day=date(2026, 9, 18))
+    finally:
+        del os.environ["UKPN_API_KEY"]
+    assert status.resources[0].error is None and status.resources[0].artefacts == 1
+    assert fetcher.headers == [{"Authorization": "Apikey k3y"}]
+    lines = (tmp_path / "manifests/2026-09-18.ndjson").read_text()
+    assert "k3y" not in lines  # the secret never reaches the manifest

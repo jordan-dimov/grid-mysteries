@@ -1,10 +1,89 @@
 {
- "file": "data/raw/demand-sources/ukpn/2026-09-18/ukpn-large-demand-list.csv",
- "sha256": "93979bb49daddd037632049a920f88c665dce535a5e8574993115a149123fb67",
+ "file": "data/raw/demand-sources/ukpn/2026-09-18/ukpn-large-demand-list.authenticated.csv",
+ "sha256": "22644a1d1d1233c1009c3c388d0f195ee2a42d036d89250cb1406fc37607e981",
  "header_line": 1,
  "delimiter": "semicolon",
  "preamble_lines": [],
- "rows": 0,
+ "rows": 496,
  "blank_rows_dropped": 0,
- "columns": []
+ "columns": [
+  {
+   "name": "licence_area",
+   "blank": 0,
+   "distinct": 3,
+   "forms": {
+    "text": 496
+   },
+   "sample": [
+    "EPN",
+    "EPN",
+    "SPN"
+   ]
+  },
+  {
+   "name": "grid_supply_point",
+   "blank": 0,
+   "distinct": 55,
+   "forms": {
+    "text": 496
+   },
+   "sample": [
+    "WALPOLE",
+    "PELHAM",
+    "NORTHFLEET EAST"
+   ]
+  },
+  {
+   "name": "anonymised_name",
+   "blank": 0,
+   "distinct": 496,
+   "forms": {
+    "text": 496
+   },
+   "sample": [
+    "DER #205",
+    "DER #141",
+    "DER #114"
+   ]
+  },
+  {
+   "name": "demand_technology_type",
+   "blank": 0,
+   "distinct": 2,
+   "forms": {
+    "text": 496
+   },
+   "sample": [
+    "Distributed Energy Resource",
+    "Distributed Energy Resource",
+    "Distributed Energy Resource"
+   ]
+  },
+  {
+   "name": "required_import_capacity_kva",
+   "blank": 0,
+   "distinct": 170,
+   "forms": {
+    "decimal": 496
+   },
+   "sample": [
+    "2000.0",
+    "10000.0",
+    "35000.0"
+   ]
+  },
+  {
+   "name": "application_date",
+   "blank": 0,
+   "distinct": 393,
+   "forms": {
+    "iso-date": 496
+   },
+   "sample": [
+    "2009-07-10",
+    "2016-09-21",
+    "2017-02-20"
+   ]
+  }
+ ]
 }

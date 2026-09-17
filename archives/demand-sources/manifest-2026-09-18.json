@@ -667,6 +667,15 @@
  },
  {
   "source": "ukpn",
+  "dataset": "ukpn/ukpn-data-centres-by-local-authority-authenticated",
+  "url": "https://ukpowernetworks.opendatasoft.com/api/explore/v2.1/catalog/datasets/ukpn-data-centres-by-local-authority/exports/csv",
+  "path": "data/raw/demand-sources/ukpn/2026-09-18/ukpn-data-centres-by-local-authority.authenticated.csv",
+  "sha256": "e64534464e47f6a106e33ece10b655c5e7ad1d1017a0007178ab2ac2588afbee",
+  "fetched_at": "2026-09-17T23:35:43.356576+00:00",
+  "bytes": 1520
+ },
+ {
+  "source": "ukpn",
   "dataset": "ukpn/ukpn-data-centres-by-local-authority",
   "url": "https://ukpowernetworks.opendatasoft.com/api/explore/v2.1/catalog/datasets/ukpn-data-centres-by-local-authority/exports/csv",
   "path": "data/raw/demand-sources/ukpn/2026-09-18/ukpn-data-centres-by-local-authority.csv",
@@ -685,6 +694,15 @@
  },
  {
   "source": "ukpn",
+  "dataset": "ukpn/ukpn-large-demand-list-authenticated",
+  "url": "https://ukpowernetworks.opendatasoft.com/api/explore/v2.1/catalog/datasets/ukpn-large-demand-list/exports/csv",
+  "path": "data/raw/demand-sources/ukpn/2026-09-18/ukpn-large-demand-list.authenticated.csv",
+  "sha256": "22644a1d1d1233c1009c3c388d0f195ee2a42d036d89250cb1406fc37607e981",
+  "fetched_at": "2026-09-17T23:35:42.813252+00:00",
+  "bytes": 33595
+ },
+ {
+  "source": "ukpn",
   "dataset": "ukpn/ukpn-large-demand-list",
   "url": "https://ukpowernetworks.opendatasoft.com/api/explore/v2.1/catalog/datasets/ukpn-large-demand-list/exports/csv",
   "path": "data/raw/demand-sources/ukpn/2026-09-18/ukpn-large-demand-list.csv",
@@ -700,6 +718,15 @@
   "sha256": "87d0e07a4abee54fee1eba910bf68ef58739efd48f5a82291068a9421b35953f",
   "fetched_at": "2026-09-17T23:16:51.160335+00:00",
   "bytes": 14228
+ },
+ {
+  "source": "ukpn",
+  "dataset": "ukpn/ukpn-modification-application-authenticated",
+  "url": "https://ukpowernetworks.opendatasoft.com/api/explore/v2.1/catalog/datasets/ukpn-modification-application/exports/csv",
+  "path": "data/raw/demand-sources/ukpn/2026-09-18/ukpn-modification-application.authenticated.csv",
+  "sha256": "0563223e441fe87d813800d8b2b521ce98821d2ed3a937be230457db8bbd5e72",
+  "fetched_at": "2026-09-17T23:35:43.931176+00:00",
+  "bytes": 7048
  },
  {
   "source": "ukpn",

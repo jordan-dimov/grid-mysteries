@@ -24,6 +24,12 @@ class Resource:
     #: Request headers this resource needs (a browser user agent for an edge
     #: that refuses the job's own); empty for everything that does not.
     headers: dict[str, str] = field(default_factory=dict)
+    #: A header whose value is a secret: (header name, environment variable,
+    #: value prefix). Resolved by the job at run time; a resource whose
+    #: variable is unset is reported as an error and never fetched, because an
+    #: unauthenticated export of a keyed dataset is a header-only file that
+    #: would otherwise be captured as if it were a vintage.
+    secret_header: tuple[str, str, str] | None = None
 
 
 NESO_TEC_REGISTER: Final = "17becbab-e3e8-473f-b303-3806f43a6a10"
@@ -31,6 +37,8 @@ BROWSER: Final = {"User-Agent": BROWSER_USER_AGENT}
 SSEN_CKAN: Final = "https://data-api.ssen.co.uk/api/3/action"
 NGED_CKAN: Final = "https://connecteddata.nationalgrid.co.uk/api/3/action"
 UKPN_EXPORT: Final = "https://ukpowernetworks.opendatasoft.com/api/explore/v2.1/catalog/datasets"
+#: UKPN's open-data API key, held in the vintage-secrets group as UKPN_API_KEY.
+UKPN_KEY: Final = ("Authorization", "UKPN_API_KEY", "Apikey ")
 
 PLAN: Final[tuple[Resource, ...]] = (
     # NESO data portal (CKAN): one resource_show plus the download per resource.
@@ -239,6 +247,33 @@ PLAN: Final[tuple[Resource, ...]] = (
         "semicolon-delimited export; the one UKPN dataset readable without a key",
     ),
     Resource(
+        "UKPN-LARGE-DEMAND-LIST",
+        "ukpn",
+        "large-demand-list",
+        "url",
+        {"url": f"{UKPN_EXPORT}/ukpn-large-demand-list/exports/csv"},
+        "anonymised, the only DNO demand-project list; domain visibility, needs the key",
+        secret_header=UKPN_KEY,
+    ),
+    Resource(
+        "UKPN-DATA-CENTRES-BY-LA",
+        "ukpn",
+        "data-centres-by-local-authority",
+        "url",
+        {"url": f"{UKPN_EXPORT}/ukpn-data-centres-by-local-authority/exports/csv"},
+        "operational and pipeline data-centre MVA per local authority; needs the key",
+        secret_header=UKPN_KEY,
+    ),
+    Resource(
+        "UKPN-DEMAND-MODAPP-LEAD-TIMES",
+        "ukpn",
+        "demand-modification-application-lead-times",
+        "url",
+        {"url": f"{UKPN_EXPORT}/ukpn-modification-application/exports/csv"},
+        "longest demand ModApp lead times per GSP; needs the key",
+        secret_header=UKPN_KEY,
+    ),
+    Resource(
         "NGED-CONNECTIONS-REFORM-REGISTER",
         "nged",
         "connections-reform-register",
@@ -291,12 +326,6 @@ TO_ADD: Final[tuple[tuple[str, str], ...]] = (
     (
         "NESO skip-rate monthly resources",
         "a new resource id each month; a package_show listing strategy is part 3's follow-up",
-    ),
-    (
-        "UKPN large demand list, data centres by local authority, demand ModApp lead times",
-        "domain-visibility datasets: the anonymous export is header-only and the records API "
-        "refuses; needs a UKPN open-data API key (UKPN_API_KEY) before the url strategy can "
-        "carry them",
     ),
     ("NPg, ENWL, SPEN demand aggregates", "login or unavailable; no URL pinned"),
     ("Companies House filings", "waits for the identity link table (move 3)"),

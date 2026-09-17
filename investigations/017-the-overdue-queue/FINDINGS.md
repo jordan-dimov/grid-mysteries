@@ -84,7 +84,7 @@ The register prints compound plant types; this census keeps them whole and does 
 
 A census of one copy cannot tell a reader whether a date that has passed is news or is eight years old, and it cannot see the entries whose date has not passed *yet* but has been rewritten repeatedly. For that the copies have to be read in sequence. The As-of Connection Record Certificate is 014's instrument for exactly that, and it is applied here to `Eggborough CCGT - OCGT - BESS`, 2,450 MW at Eggborough 400kV Substation, whose first stage is dated a fortnight after the copy this census reads.
 
-It takes three certificates, and that is the first finding: **the register has called this project three different things.** A reader who searches today's copy for its current name and then looks for that name in older copies finds nothing before 1 July 2025.
+It takes more than one certificate, and that is the first finding: **the register has called this project three different things.** A reader who searches today's copy for its current name and then looks for that name in older copies finds nothing before 1 July 2025.
 
 Each bundle below is hash-addressed: its manifest's SHA-256 is the certificate id, the manifest lists every evidence file with its digest, and both the manifest and the certificate are witnessed by OpenTimestamps and by RFC 3161 tokens from two authorities. `python3 verify.py` inside a bundle recomputes every digest offline.
 
@@ -94,9 +94,9 @@ Bundle `eggborough-2014-01-31-2026-09-15`, certificate id `9896e04cbaf031b5a3de8
 
 Every status the register published for this project's own row in the copies this bundle consulted — the row whose published plant type names a gas turbine plant or the hybrid label, which is what separates it from the coal station that shared its name until 2020 and from the storage project that took the name in 2024:
 
-| Status as published | Rows | First copy | Last copy |
-|---|---|---|---|
-| Awaiting Consents | 400 | 2018-11-08 | 2023-12-29 |
+| Status as published | Copies | Rows | First copy | Last copy |
+|---|---|---|---|---|
+| Awaiting Consents | 400 | 400 | 2018-11-08 | 2023-12-29 |
 
 | # | First shown in copy of | Field | Previously (last seen) | Now |
 |---|---|---|---|---|
@@ -164,9 +164,9 @@ Bundle `eggborough-ccgt-and-bess-2024-01-05-2025-07-22`, certificate id `0ed046a
 
 Every status the register published for this project's own row in the copies this bundle consulted — the row whose published plant type names a gas turbine plant or the hybrid label, which is what separates it from the coal station that shared its name until 2020 and from the storage project that took the name in 2024:
 
-| Status as published | Rows | First copy | Last copy |
-|---|---|---|---|
-| Awaiting Consents | 116 | 2024-01-05 | 2025-04-01 |
+| Status as published | Copies | Rows | First copy | Last copy |
+|---|---|---|---|---|
+| Awaiting Consents | 105 | 116 | 2024-01-05 | 2025-04-01 |
 
 | # | First shown in copy of | Field | Previously (last seen) | Now |
 |---|---|---|---|---|
@@ -180,9 +180,9 @@ Bundle `eggborough-ccgt-ocgt-bess-2018-11-08-2026-09-15`, certificate id `73b915
 
 Every status the register published for this project's own row in the copies this bundle consulted — the row whose published plant type names a gas turbine plant or the hybrid label, which is what separates it from the coal station that shared its name until 2020 and from the storage project that took the name in 2024:
 
-| Status as published | Rows | First copy | Last copy |
-|---|---|---|---|
-| Awaiting Consents | 12 | 2025-07-01 | 2026-09-15 |
+| Status as published | Copies | Rows | First copy | Last copy |
+|---|---|---|---|---|
+| Awaiting Consents | 6 | 12 | 2025-07-01 | 2026-09-15 |
 
 | # | First shown in copy of | Field | Previously (last seen) | Now |
 |---|---|---|---|---|
@@ -196,13 +196,13 @@ Bundle `eggborough-ccgt-ocgt-bess-2025-07-01-2026-09-15`, certificate id `268237
 
 Every status the register published for this project's own row in the copies this bundle consulted — the row whose published plant type names a gas turbine plant or the hybrid label, which is what separates it from the coal station that shared its name until 2020 and from the storage project that took the name in 2024:
 
-| Status as published | Rows | First copy | Last copy |
-|---|---|---|---|
-| Awaiting Consents | 6 | 2025-07-01 | 2026-09-15 |
+| Status as published | Copies | Rows | First copy | Last copy |
+|---|---|---|---|---|
+| Awaiting Consents | 6 | 6 | 2025-07-01 | 2026-09-15 |
 
 No change between the two copies in force.
 
-### Reading the three bundles in order
+### Reading the bundles in order
 
 - The coal station's capacity leaves the register in the copy of **23 September 2015**: the stage TEC goes from 0 to −1,940 MW and the cumulative total from 1,940 MW to 0, effective 1 April 2016.
 - A **second** row named `Eggborough` appears in the copy of **8 November 2018**. The bundle's extract for that copy publishes it as 2,450 MW, effective **1 April 2022**, status **Awaiting Consents**, plant type CCGT — beside the coal row, by then “Built” at 1,870 MW.
@@ -210,7 +210,7 @@ No change between the two copies in force.
 - Six of the changes listed above are the register printing one of those dates with day and month exchanged and then exchanging them back (1 October 2024 and 10 January 2024; 1 October 2025 and 10 January 2025). The certificate records what was published; the day-month correction is a test between two consecutive copies, which a certificate does not apply.
 - In the copy of **5 January 2024** the name `Eggborough` stops being this project's. That one copy changes the customer, the capacity, the target date, the status, the plant type **and the project id** — the register has given the bare name to a different, smaller project, and this one continues under `Eggborough CCGT and BESS`.
 - In the copy of **24 December 2024** that entry becomes two rows: the split into stages. By the copy of **1 July 2025** the name is `Eggborough CCGT - OCGT - BESS`, stage 1 at **1,999 MW effective 1 October 2026** and stage 2 at 451 MW effective 1 October 2027.
-- Across the three bundles, **534 published rows** in copies from 8 November 2018 to 15 September 2026 carry exactly one status: “Awaiting Consents”.
+- The bundles between them see this project in **511 copies** of the register, from 2018-11-08 to 2026-09-15, and in every one of them the status reads “Awaiting Consents” — it has never read anything else.
 
 ### The two readings, and which one this investigation takes
 

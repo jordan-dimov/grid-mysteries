@@ -251,7 +251,27 @@ def test_status_trace_reports_every_status_a_bundles_rows_were_published_under()
     assert trace == {
         "Awaiting Consents": {
             "rows": 2,
+            "copies": ["2018-11-08", "2020-04-09"],
             "first_copy": "2018-11-08",
             "last_copy": "2020-04-09",
         }
     }
+
+
+def test_two_stage_rows_in_one_copy_are_two_rows_but_one_copy():
+    """A project split into stages publishes two rows per copy, and two
+    bundles may consult the same copy; the copies are what aggregates."""
+    extracts = [
+        {
+            "t_public": "2026-09-15",
+            "rows": [
+                {"Project status": "Awaiting Consents", "Plant type": "CCGT;OCGT"},
+                {"Project status": "Awaiting Consents", "Plant type": "CCGT;OCGT"},
+            ],
+        }
+    ]
+    matcher = lambda r: oq.names_a_gas_turbine_plant(r["Plant type"])  # noqa: E731
+    trace = oq.status_trace(extracts, matcher)
+    assert trace["Awaiting Consents"]["rows"] == 2
+    assert trace["Awaiting Consents"]["copies"] == ["2026-09-15"]
+    assert oq.distinct_copies([trace, trace]) == ["2026-09-15"]

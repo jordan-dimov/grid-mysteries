@@ -276,21 +276,31 @@ def names_a_gas_turbine_plant(plant_type: object) -> bool:
 
 def status_trace(extracts: list[dict[str, Any]], matches: Any) -> dict[str, dict[str, Any]]:
     """Every status a certificate bundle's matching rows were published under,
-    with how many rows carried it and the first and last copy that did.
+    with the rows that carried it and the copies they appeared in.
 
     `extracts` are the bundle's `extracts.ndjson` lines (one per copy
     consulted, with the matching rows as published); `matches` decides which
-    of a copy's rows are the project's.
+    of a copy's rows are the project's. Copies are listed, not just counted,
+    because two bundles may consult the same copy — a project split into
+    stages has one row per stage — and the copies are what a reader
+    aggregates across bundles without double counting.
     """
     trace: dict[str, dict[str, Any]] = {}
     for copy in extracts:
         for row in copy["rows"]:
             if not matches(row):
                 continue
-            seen = trace.setdefault(
-                row["Project status"],
-                {"rows": 0, "first_copy": copy["t_public"], "last_copy": copy["t_public"]},
-            )
+            seen = trace.setdefault(row["Project status"], {"rows": 0, "copies": []})
             seen["rows"] += 1
-            seen["last_copy"] = copy["t_public"]
+            if copy["t_public"] not in seen["copies"]:
+                seen["copies"].append(copy["t_public"])
+    for seen in trace.values():
+        seen["copies"].sort()
+        seen["first_copy"] = seen["copies"][0]
+        seen["last_copy"] = seen["copies"][-1]
     return trace
+
+
+def distinct_copies(traces: list[dict[str, dict[str, Any]]]) -> list[str]:
+    """The copies any of these traces saw the project in, each counted once."""
+    return sorted({copy for trace in traces for seen in trace.values() for copy in seen["copies"]})

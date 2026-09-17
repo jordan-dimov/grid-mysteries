@@ -9,6 +9,8 @@ the investigation; it characterises no company and attributes no cause.
 from decimal import Decimal
 from typing import Any
 
+from grid_mysteries.investigations import overdue_queue as oq
+
 #: Fields of a register row the page shows in its tables. The evidence keeps
 #: every cell as published; the page shows the ones the census is about.
 ROW_COLUMNS: tuple[tuple[str, str], ...] = (
@@ -265,7 +267,7 @@ def _certificate_section(certificates: list[dict[str, Any]]) -> list[str]:
         "Eggborough 400kV Substation, whose first stage is dated a fortnight after the "
         "copy this census reads.",
         "",
-        "It takes three certificates, and that is the first finding: **the register has "
+        "It takes more than one certificate, and that is the first finding: **the register has "
         "called this project three different things.** A reader who searches today's copy "
         "for its current name and then looks for that name in older copies finds nothing "
         "before 1 July 2025.",
@@ -301,10 +303,11 @@ def _certificate_section(certificates: list[dict[str, Any]]) -> list[str]:
                 "took the name in 2024:",
                 "",
                 *_table(
-                    ["Status as published", "Rows", "First copy", "Last copy"],
+                    ["Status as published", "Copies", "Rows", "First copy", "Last copy"],
                     [
                         [
                             name or "(blank)",
+                            f"{len(seen['copies']):,}",
                             f"{seen['rows']:,}",
                             str(seen["first_copy"]),
                             str(seen["last_copy"]),
@@ -338,12 +341,10 @@ def _certificate_section(certificates: list[dict[str, Any]]) -> list[str]:
 def _exhibit_reading(certificates: list[dict[str, Any]]) -> list[str]:
     """What the three bundles say when read in order. Every statement here is
     a line of a table above or a row of a bundle's `extracts.ndjson`."""
-    rows = sum(
-        seen["rows"] for cert in certificates for seen in (cert.get("status_trace") or {}).values()
-    )
+    copies = oq.distinct_copies([cert.get("status_trace") or {} for cert in certificates])
     statuses = sorted({name for cert in certificates for name in (cert.get("status_trace") or {})})
     return [
-        "### Reading the three bundles in order",
+        "### Reading the bundles in order",
         "",
         "- The coal station's capacity leaves the register in the copy of **23 September "
         "2015**: the stage TEC goes from 0 to −1,940 MW and the cumulative total from "
@@ -370,12 +371,13 @@ def _exhibit_reading(certificates: list[dict[str, Any]]) -> list[str]:
         "stages. By the copy of **1 July 2025** the name is `Eggborough CCGT - OCGT - "
         "BESS`, stage 1 at **1,999 MW effective 1 October 2026** and stage 2 at 451 MW "
         "effective 1 October 2027.",
-        f"- Across the three bundles, **{rows:,} published rows** in copies from 8 November "
-        f"2018 to 15 September 2026 carry "
+        f"- The bundles between them see this project in **{len(copies):,} copies** of the "
+        f"register, from {copies[0]} to {copies[-1]}, and in every one of them the status "
+        "reads "
         + (
-            f"exactly one status: “{statuses[0]}”."
+            f"“{statuses[0]}” — it has never read anything else."
             if len(statuses) == 1
-            else "these statuses: " + ", ".join(f"“{n}”" for n in statuses) + "."
+            else "one of: " + ", ".join(f"“{n}”" for n in statuses) + "."
         ),
         "",
         "### The two readings, and which one this investigation takes",
@@ -463,6 +465,243 @@ def render_findings(
         "change. `scripts/check-rules` maps every rule in the declaration to the test that "
         "holds it; `scripts/verify-proofs` checks the declaration's timestamps against the "
         "roots committed under `trust/tsa/`.",
+        "",
+    ]
+    return "\n".join(lines)
+
+
+# ------------------------------------------------------- the outbound document
+# Numbers that leave the repository are governed before they go. `post_facts`
+# is the machine-readable form, one entry per slot, each carrying the exact
+# sentence it licenses and the artefacts that hold it up; `render_post` is the
+# draft that quotes them.
+
+
+def _cert(certificates: list[dict[str, Any]], bundle_prefix: str) -> dict[str, Any]:
+    return next(c for c in certificates if c["bundle"].startswith(bundle_prefix))
+
+
+def post_facts(census: dict[str, Any], certificates: list[dict[str, Any]]) -> dict[str, Any]:
+    """Every figure the draft below uses, as a register of slots."""
+    scale = census["scale"]
+    long_record = _cert(certificates, "eggborough-2014-01-31")
+    current = _cert(certificates, "eggborough-ccgt-ocgt-bess-2025-07-01")
+    now = current["record"]["as_of"][1]["state"]
+    trace_copies = oq.distinct_copies([c.get("status_trace") or {} for c in certificates])
+    trace_statuses = sorted({n for c in certificates for n in (c.get("status_trace") or {})})
+    common = {
+        "as_of": census["as_of"],
+        "source": "NESO TEC Register",
+        "source_sha256": census["copy"]["sha256"],
+        "source_path": census["copy"]["path"],
+        "declaration_sha256": census["declaration_sha256"],
+        "schema_report_sha256": census["schema_report_sha256"],
+    }
+    slots = {
+        "gb-tec-overdue-entries-2026-09": {
+            **common,
+            "value": census["selected_rows"],
+            "unit": "register rows",
+            "claim": (
+                f"In the copy of NESO's TEC Register published on {census['as_of']}, "
+                f"{census['selected_rows']} entries have an effective date earlier than that "
+                "publication date and a project status other than “Built”."
+            ),
+            "evidence": "investigations/017-the-overdue-queue/evidence/rows.ndjson",
+        },
+        "gb-tec-overdue-capacity-2026-09": {
+            **common,
+            "value": census["selected_mw"],
+            "unit": "MW (MW Increase / Decrease, summed over rows)",
+            "claim": (
+                f"Those {census['selected_rows']} entries carry "
+                f"{mw(census['selected_mw'])} MW of stage TEC as published."
+            ),
+            "second_reading": {
+                "value": census["selected_mw_largest_per_id"],
+                "distinct_project_ids": census["distinct_project_ids"],
+                "rule": "each project id counted once, keeping the largest of its rows",
+            },
+            "evidence": "investigations/017-the-overdue-queue/evidence/census.json",
+        },
+        "gb-tec-queue-future-capacity-2026-09": {
+            **common,
+            "value": scale["mw_dated_on_or_after_as_of"],
+            "unit": "MW",
+            "claim": (
+                f"The same copy carries {mw(scale['mw_dated_on_or_after_as_of'])} MW dated on "
+                f"or after {census['as_of']}, across "
+                f"{scale['rows_dated_on_or_after_as_of']:,} rows."
+            ),
+        },
+        "gb-tec-queue-scoping-capacity-2026-09": {
+            **common,
+            "value": scale["mw_scoping_dated_on_or_after_as_of"],
+            "unit": "MW",
+            "claim": (
+                f"Of that, {mw(scale['mw_scoping_dated_on_or_after_as_of'])} MW is at status "
+                "“Scoping”."
+            ),
+        },
+        "gb-tec-undated-rows-are-built-2026-09": {
+            **common,
+            "value": census["undated"],
+            "unit": "rows",
+            "claim": (
+                f"Every one of the copy's {census['undated']} rows with no readable effective "
+                f"date is a row the register calls “Built”: the copy carries "
+                f"{census['status_counts_all_rows'].get('Built', 0)} “Built” rows, "
+                f"{census['dated_built']} of them dated."
+            ),
+        },
+        "eggborough-tec-record-2018-2026": {
+            **common,
+            "value": len(trace_copies),
+            "unit": "copies of the register the project appears in",
+            "copies": trace_copies,
+            "claim": (
+                f"In every one of the {len(trace_copies):,} copies of the register in which "
+                "the project now named \u201cEggborough CCGT - OCGT - BESS\u201d appears, "
+                f"from {trace_copies[0]} to {trace_copies[-1]}, its published status reads "
+                + (
+                    f"\u201c{trace_statuses[0]}\u201d."
+                    if len(trace_statuses) == 1
+                    else "one of: " + ", ".join(f"\u201c{n}\u201d" for n in trace_statuses) + "."
+                )
+            ),
+            "certificate_ids": {c["bundle"]: c["certificate_id"] for c in certificates},
+            "names_the_register_has_used": [c["record"]["project"] for c in certificates],
+            "long_record_copies_consulted": long_record["record"]["vintages_consulted"],
+        },
+        "eggborough-stage-1-tec-2026-09": {
+            **common,
+            "value": now.get("MW increase / decrease (stage TEC)"),
+            "unit": "MW",
+            "claim": (
+                "As published on "
+                f"{census['as_of']}, stage 1 of “Eggborough CCGT - OCGT - BESS” at "
+                f"Eggborough 400kV Substation reads "
+                f"{now.get('MW increase / decrease (stage TEC)')} MW, effective from "
+                f"{now.get('MW effective from (target date)')}, status "
+                f"“{now.get('Project status')}”."
+            ),
+            "certificate_id": current["certificate_id"],
+        },
+    }
+    return {
+        "register": "BEDROCK candidate slots",
+        "governed_by": "investigations/017-the-overdue-queue/DECLARATION.md",
+        "not_pinned_here": [
+            "The Planning Inspectorate's decision on the Eggborough development consent "
+            "order, 20 September 2018. Stated from the public planning record; no artefact "
+            "for it is held in this repository. Any outbound use must carry that caveat."
+        ],
+        "slots": slots,
+    }
+
+
+def render_post(census: dict[str, Any], certificates: list[dict[str, Any]]) -> str:
+    """The draft post, quoting only the slots above."""
+    facts = post_facts(census, certificates)["slots"]
+    scale = census["scale"]
+    current = _cert(certificates, "eggborough-ccgt-ocgt-bess-2025-07-01")
+    lines = [
+        "<!-- DRAFT, held for the sponsor's second seal. Not posted. Rendered from",
+        "investigations/017-the-overdue-queue/evidence by render_post.py. -->",
+        "",
+        "# 12 GW of Britain's connection queue is past its own date. That is a fact about "
+        "a spreadsheet, not a fact about the grid.",
+        "",
+        "NESO publishes the TEC Register: every transmission connection, its capacity, the "
+        "date that capacity is expected to take effect, and a status.",
+        "",
+        f"In the copy published on {census['as_of']}, **{census['selected_rows']} entries "
+        f"carrying {mw(census['selected_mw'])} MW** have an effective date that has already "
+        "passed and a status other than “Built”.",
+        "",
+        "I want to be careful about what that sentence is, because the interesting part is "
+        "what it is *not*. It is not “12 GW is late”. The register cannot support "
+        "that: its status is NESO's own best-known classification, and a project may have "
+        "connected without the status being refreshed. It is the narrower claim that this "
+        "many entries **say the date has passed and do not say Built**.",
+        "",
+        "| Status as the register prints it | Entries | MW |",
+        "|---|---|---|",
+        *[
+            f"| {g['status'] or '(blank)'} | {g['rows']} | {mw(g['mw'])} |"
+            for g in census["by_status"]
+        ],
+        "",
+        "| Year the date fell in | Entries | MW |",
+        "|---|---|---|",
+        *[f"| {g['year']} | {g['rows']} | {mw(g['mw'])} |" for g in census["by_year"]],
+        "",
+        f"For scale, the same copy carries {mw(scale['mw_dated_on_or_after_as_of'])} MW dated "
+        f"in the future, {mw(scale['mw_scoping_dated_on_or_after_as_of'])} MW of it at "
+        "“Scoping”. The oldest entry on the overdue list is "
+        f"{census['earliest'][0]['project_name']}, {mw(census['earliest'][0]['mw'])} MW, dated "
+        f"{census['earliest'][0]['effective']}, still reading "
+        f"“{census['earliest'][0]['status']}”.",
+        "",
+        "## One thing fell out of the arithmetic",
+        "",
+        facts["gb-tec-undated-rows-are-built-2026-09"]["claim"],
+        "",
+        "The register clears the date when a project is built. So the "
+        f"{census['selected_rows']} are precisely the entries it has neither moved on nor "
+        "cleared — which is what makes them worth counting, and what makes the next "
+        "question unavoidable.",
+        "",
+        "## Why one copy of a register is never enough",
+        "",
+        "A single copy cannot tell you whether a date that has passed is news or is eight "
+        "years old. Only the sequence of copies can, and the sequence is not published — "
+        "it has to be rebuilt. I have been rebuilding it: 700 readable copies of this "
+        "register back to January 2014.",
+        "",
+        "Take one entry. Today it reads:",
+        "",
+        "> " + facts["eggborough-stage-1-tec-2026-09"]["claim"],
+        "",
+        "That date is a fortnight after the copy. Here is what the sequence says about it.",
+        "",
+        "- The register has called this project **three different things**. Search today's "
+        "copy for its current name, then look for that name in older copies, and you find "
+        "nothing before 1 July 2025.",
+        "- The entry first appears in the copy of **8 November 2018**, at 2,450 MW, dated "
+        "**1 April 2022**, status **Awaiting Consents**.",
+        "- The date then walks: 1 October 2024 by April 2020, 1 October 2025 by April 2021, "
+        "1 October 2026 by September 2022. It has not moved in four years.",
+        "- In the copy of **5 January 2024** the bare name is handed to a different, smaller "
+        "project — customer, capacity, date, status, plant type and **project id** all "
+        "change in one copy. A reader tracking this project by name would have followed the "
+        "wrong row from that day on.",
+        "- " + facts["eggborough-tec-record-2018-2026"]["claim"],
+        "",
+        "The development consent order for this scheme was decided by the Planning "
+        "Inspectorate on **20 September 2018**, seven weeks before the register's first "
+        "“Awaiting Consents” copy for it. So either the status field means a "
+        "consent other than that order, or it has not been refreshed in eight years. I am "
+        "not going to tell you which. I have asked NESO under the Environmental Information "
+        "Regulations (FOI/26/216, due 13 October) and I will publish the answer either way.",
+        "",
+        "## What is published with this",
+        "",
+        "The selection rule was written down and witnessed by OpenTimestamps and by two "
+        "RFC 3161 authorities **before** any figure was computed "
+        f"(SHA-256 `{census['declaration_sha256'][:16]}…`), including a record of the "
+        "rough numbers I had already seen and the two places where the governed run "
+        "contradicted them. The copy of the register is pinned by digest. The project's "
+        "history comes as four hash-addressed certificate bundles that verify offline "
+        f"(the current one is `{current['certificate_id'][:16]}…`).",
+        "",
+        "If you think the count is wrong, the fastest way to show it is to take the same "
+        "copy, apply the same rule, and get a different number. That is the point of "
+        "publishing the rule first.",
+        "",
+        "*Caveat carried deliberately: the consent order decision date above is from the "
+        "public planning record and is not pinned in the repository. Everything else here "
+        "is.*",
         "",
     ]
     return "\n".join(lines)

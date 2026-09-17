@@ -444,3 +444,47 @@ Render cron: about one dollar a month plus minutes of compute a day. S3:
 gigabytes a month at Intelligent Tiering rates, under a pound.
 healthchecks.io: free tier. OpenTimestamps and freetsa.org: free; DigiCert's
 public TSA: free.
+
+## 12. Proposed, 2026-09-17: demand-connection sources and the constraint forecast (not built, not fetched)
+
+*From the inventory in `ops/DEMAND-CONNECTION-SOURCES.md` (Job 1 of the
+session brief of 2026-09-17) and the 013 forecast note. Nothing below is in
+`plan.py` yet, no schema pass has run, and the first fetch waits for the
+sponsor's seal. The inventory's headline is that no public register of
+demand connections exists, so this section captures the few artefacts that
+do, in vintages, before Gate 2 Phase 2 demand offers (September 2026 to
+March 2027) and Ofgem's fee decisions change them.*
+
+Proposed `PLAN` entries, in the plan's own terms (bytes identical to an
+earlier day are linked, not rewritten, so a daily cadence on a monthly file
+costs one HEAD-sized manifest line a day):
+
+| name | source / resource | strategy | params | why |
+|---|---|---|---|---|
+| `NESO-EA-REGISTER` | `neso` / `existing-agreements-register` | `url` | `https://www.neso.energy/document/373996/download` | the one NESO list naming demand projects; overwritten in place under one document id (v.2.0, 11 Jun 2026; the 2026-01-22 bytes differ) |
+| `NESO-CONNECTIONS-REFORM-RESULTS-PAGE` | `neso` / `connections-reform-results-page` | `url` | `https://www.neso.energy/industry-information/connections-reform/connections-reform-results` | the page that links the EA register; catches a re-issue or a Phase 2 demand publication the day it lands |
+| `NESO-24MA-CONSTRAINT-COST-FORECAST` | `neso` / `24-months-ahead-constraint-cost-forecast` | `ckan` | `resource_id=28b85d3f-a1cc-4bb9-80af-600f2cca266a` | 013 forecast note: 384 bytes, overwritten monthly, July 2026 vintage already lost |
+| `NESO-24MA-CONSTRAINT-LIMITS` | `neso` / `24-months-ahead-constraint-limits` | `ckan` | resource id to record from the package (`24-months-ahead-constraint-limits`) | sister dataset, same overwrite pattern |
+| `NESO-BSUOS-MONTHLY-FORECAST` | `neso` / `bsuos-monthly-forecast` | `ckan` (needs a package-listing variant: a new resource id each month, like the skip-rate files) | package `bsuos-monthly-forecast` | dated by NESO already; cheap insurance against a page reorganisation like the MBSS one (`data-portal/mbss` now 403) |
+| `UKPN-LARGE-DEMAND-LIST` | `ukpn` / `large-demand-list` | `url` | the Opendatasoft CSV export of `ukpn-large-demand-list` (export URL to confirm on the dataset page; the API export form is `/api/explore/v2.1/catalog/datasets/ukpn-large-demand-list/exports/csv`) | anonymised, but the only DNO demand-project list; single live dataset, last modified 2025-11-04 |
+| `UKPN-DATA-CENTRES-BY-LA`, `UKPN-DEMAND-MOD-LEAD-TIMES` | `ukpn` / … | `url` | same export form, dataset ids from the inventory | aggregates that name no project but move when the queue moves |
+| `NGED-CONNECTIONS-REFORM` | `nged` / `connections-reform-register`, `connections-reform-outcomes` | `url` | the two CSV URLs on `connecteddata.nationalgrid.co.uk` (to record; dated file names `251212`, `260709`) | CMP435 projects NGED manages; demand inclusion undetermined until the schema pass |
+| `SSEN-ECR` | `ssen` / `embedded-capacity-register` | `ckan` with a `base` parameter (`https://data-api.ssen.co.uk`) — a small change to `strategies.ckan`, which today assumes the NESO API base | package `embedded_capacity_register` | SSEN is the one DNO that keeps monthly vintages (Oct 2023 to Sep 2026) as separate resources; capturing them makes a DNO's own history readable back |
+| `OFGEM-CURATE-PAGE` | `ofgem` / `data-centre-connection-reforms` | `url` | the consultation page | catches the decision document the day it is published |
+| `ENA-CONNECTIONS-DASHBOARD` | `ena` / `connections-data-page` | `url` | `https://www.energynetworks.org/industry/connecting-to-the-networks/connections-data` | weekly overwrite, zero Wayback captures; the HTML alone may not carry the widget's data, which the first capture will show |
+
+Not proposed: the ECRs of NGED, UKPN, NPg, SPEN and ENWL (generation and
+storage only; demand is not in scope, and the vintage archive's purpose here
+is demand); the NESO Demand IRN and the DNO call for input (confidential,
+unpublished); DESNZ's strategic demand list (promised, not published).
+
+Order of work once the sponsor says so: (1) seal; (2) one manual fetch of
+each artefact into `data/raw/<source>/…`, journalled with digest; (3) the
+schema pass, `scripts/schema-report csv|xlsx <file> <archive>`, committed
+under `archives/neso-ea-register/`, `archives/ukpn-large-demand-list/`,
+`archives/nged-connections-reform/`, `archives/ssen-ecr/`; (4) the `PLAN`
+entries above, with the `ckan` base parameter and the package-listing
+variant built and tested against the local store; (5) deploy `vintage-capture`
+(a plan change is a code change, so the cron job must be deployed for the
+schedule to see it, per §5). Nothing analytical follows from this section:
+a declaration over any of these archives is a separate, later act.

@@ -410,7 +410,10 @@ def _exhibit_reading(certificates: list[dict[str, Any]]) -> list[str]:
 
 
 def render_findings(
-    census: dict[str, Any], rows: list[dict[str, Any]], certificates: list[dict[str, Any]]
+    census: dict[str, Any],
+    rows: list[dict[str, Any]],
+    certificates: list[dict[str, Any]],
+    gate: dict[str, Any] | None = None,
 ) -> str:
     """The findings page. `rows` is the append-only evidence of selected rows;
     it is not re-derived here, only counted, so the page can never disagree
@@ -433,6 +436,7 @@ def render_findings(
         "such an entry means is the second question, and the register does not answer it.",
         "",
         *_census_section(census),
+        *(_gate_section(gate, census) if gate else []),
         *_certificate_section(certificates),
         *_limits_section(census),
         "## Expert corner",
@@ -441,8 +445,29 @@ def render_findings(
         f"`{census['declaration_sha256']}`, witnessed by OpenTimestamps and by RFC 3161 "
         "tokens from freetsa.org and DigiCert at the moment of the freeze, and committed "
         "with its proofs by `scripts/freeze`.",
-        f"- Archive schema report the reading rules were written against: SHA-256 "
-        f"`{census['schema_report_sha256']}` (`archives/tec-register/`).",
+        *(
+            [
+                "- Version 2 of the declaration, the Gate cross-tab: "
+                "`investigations/017-the-overdue-queue/DECLARATION-v2.md`, SHA-256 "
+                f"`{gate['declaration_sha256']}`, witnessed the same way and frozen after "
+                "version 1 had run. Its evidence is `evidence/gate.json` and "
+                "`evidence/gate-rows.ndjson`; NESO's definition of the tiers is pinned at "
+                f"`{gate['gate_definition']['path']}`, SHA-256 "
+                f"`{gate['gate_definition']['sha256']}`.",
+                "- Checks version 2 had to pass: " + "; ".join(sorted(gate["checks"])) + ".",
+            ]
+            if gate
+            else []
+        ),
+        "- Archive schema report version 1's reading rules were written against: SHA-256 "
+        f"`{census['schema_report_sha256']}` (`archives/tec-register/`)."
+        + (
+            f" Version 2 was written against `{gate['schema_report_sha256']}`, which adds "
+            "the Gate vocabulary to the same pass and changes no status count, so version "
+            "1's check C1 passes against both."
+            if gate
+            else ""
+        ),
         f"- The one copy: `{census['copy']['path']}`, SHA-256 `{census['copy']['sha256']}`, "
         f"{census['copy'].get('bytes', 0):,} bytes, source `{census['copy'].get('source')}`, "
         f"publication basis: {census['copy'].get('t_public_basis')}",
@@ -481,7 +506,75 @@ def _cert(certificates: list[dict[str, Any]], bundle_prefix: str) -> dict[str, A
     return next(c for c in certificates if c["bundle"].startswith(bundle_prefix))
 
 
-def post_facts(census: dict[str, Any], certificates: list[dict[str, Any]]) -> dict[str, Any]:
+def _gate_slots(census: dict[str, Any], gate: dict[str, Any]) -> dict[str, Any]:
+    """The two slots version 2 adds, each with the sentence it licenses and
+    the caveat that must travel with it."""
+    tier = next(g for g in gate["g1_copy_by_gate"] if g["gate"] == "2")
+    overdue = next(g for g in gate["g2_overdue_by_gate"] if g["gate"] == "2")
+    g6 = gate["g6_summary"]
+    common = {
+        "as_of": census["as_of"],
+        "source": "NESO TEC Register",
+        "source_sha256": census["copy"]["sha256"],
+        "declaration_sha256": gate["declaration_sha256"],
+        "gate_definition_sha256": gate["gate_definition"]["sha256"],
+        "reading": (
+            "the register prints 1 and 2 in the Gate column, not the words; reading 2 as "
+            "Gate 2 is an interpretation against NESO's pinned definition, and a blank "
+            "Gate is never interpreted"
+        ),
+    }
+    return {
+        "gb-tec-gate2-capacity-2026-09": {
+            **common,
+            "value": tier["mw"],
+            "unit": "MW",
+            "rows": tier["rows"],
+            "claim": (
+                f"In the copy of NESO's TEC Register published on {census['as_of']}, "
+                f"{tier['rows']} entries carrying {mw(tier['mw'])} MW read `2` in the Gate "
+                "column \u2014 the tier NESO defines as holding a confirmed connection "
+                "date, point and queue position."
+            ),
+        },
+        "gb-tec-gate2-overdue-2026-09": {
+            **common,
+            "value": overdue["mw"],
+            "unit": "MW",
+            "rows": overdue["rows"],
+            "row_share_of_the_tier": overdue["row_share_of_its_gate"],
+            "capacity_share_of_the_tier": overdue["capacity_share_of_its_gate"],
+            "claim": (
+                f"{overdue['rows']} of those {tier['rows']} entries, "
+                f"{mw(overdue['mw'])} MW, carry a confirmed date earlier than that "
+                f"publication date: {pct(overdue['row_share_of_its_gate'])} of the tier's "
+                f"rows and {pct(overdue['capacity_share_of_its_gate'])} of its capacity, "
+                "which are two separate shares that happen to be close."
+            ),
+            "must_travel_with_the_claim": [
+                (
+                    f"In all {g6['rows']} cases the date had already passed in the first "
+                    "held copy whose Gate cell reads 2; none was given a confirmed date in "
+                    "these copies and then missed it."
+                ),
+                (
+                    f"{g6['rows_a_gated_copy_publishes_as_not_past']} of the rows, "
+                    f"{mw(g6['mw_a_gated_copy_publishes_as_not_past'])} MW, are published "
+                    "with a date that is not past in another held copy. On that reading the "
+                    f"figure is {mw(g6['mw_if_those_rows_are_read_as_not_past'])} MW over "
+                    f"{g6['rows_if_those_rows_are_read_as_not_past']} rows."
+                ),
+                "Nothing here is a statement about delivery, readiness or NESO's assessment.",
+            ],
+        },
+    }
+
+
+def post_facts(
+    census: dict[str, Any],
+    certificates: list[dict[str, Any]],
+    gate: dict[str, Any] | None = None,
+) -> dict[str, Any]:
     """Every figure the draft below uses, as a register of slots."""
     scale = census["scale"]
     long_record = _cert(certificates, "eggborough-2014-01-31")
@@ -588,9 +681,14 @@ def post_facts(census: dict[str, Any], certificates: list[dict[str, Any]]) -> di
             "certificate_id": current["certificate_id"],
         },
     }
+    if gate:
+        slots.update(_gate_slots(census, gate))
     return {
         "register": "BEDROCK candidate slots",
-        "governed_by": "investigations/017-the-overdue-queue/DECLARATION.md",
+        "governed_by": [
+            "investigations/017-the-overdue-queue/DECLARATION.md",
+            "investigations/017-the-overdue-queue/DECLARATION-v2.md",
+        ],
         "not_pinned_here": [
             "The Planning Inspectorate's decision on the Eggborough development consent "
             "order, 20 September 2018. Stated from the public planning record; no artefact "
@@ -600,108 +698,421 @@ def post_facts(census: dict[str, Any], certificates: list[dict[str, Any]]) -> di
     }
 
 
-def render_post(census: dict[str, Any], certificates: list[dict[str, Any]]) -> str:
-    """The draft post, quoting only the slots above."""
-    facts = post_facts(census, certificates)["slots"]
-    scale = census["scale"]
-    current = _cert(certificates, "eggborough-ccgt-ocgt-bess-2025-07-01")
-    lines = [
-        "<!-- DRAFT, held for the sponsor's second seal. Not posted. Rendered from",
-        "investigations/017-the-overdue-queue/evidence by render_post.py. -->",
-        "",
-        "# 12 GW of Britain's connection queue is past its own date. That is a fact about "
-        "a spreadsheet, not a fact about the grid.",
-        "",
-        "NESO publishes the TEC Register: every transmission connection, its capacity, the "
-        "date that capacity is expected to take effect, and a status.",
-        "",
-        f"In the copy published on {census['as_of']}, **{census['selected_rows']} entries "
-        f"carrying {mw(census['selected_mw'])} MW** have an effective date that has already "
-        "passed and a status other than “Built”.",
-        "",
-        "I want to be careful about what that sentence is, because the interesting part is "
-        "what it is *not*. It is not “12 GW is late”. The register cannot support "
-        "that: its status is NESO's own best-known classification, and a project may have "
-        "connected without the status being refreshed. It is the narrower claim that this "
-        "many entries **say the date has passed and do not say Built**.",
-        "",
-        "| Status as the register prints it | Entries | MW |",
-        "|---|---|---|",
-        *[
-            f"| {g['status'] or '(blank)'} | {g['rows']} | {mw(g['mw'])} |"
-            for g in census["by_status"]
+def render_post(
+    census: dict[str, Any],
+    certificates: list[dict[str, Any]],
+    gate: dict[str, Any] | None = None,
+) -> str:
+    """The draft post. Plain words, the stake first, the method at the end;
+    every figure comes from a slot in `post_facts`."""
+    facts = post_facts(census, certificates, gate)["slots"]
+    tier = next(g for g in (gate or {}).get("g1_copy_by_gate", []) if g["gate"] == "2")
+    overdue = next(g for g in gate["g2_overdue_by_gate"] if g["gate"] == "2") if gate else None
+    assert gate is not None and overdue is not None
+    g6 = gate["g6_summary"]
+    scoping = next(
+        c
+        for c in gate["g3_overdue_by_gate_and_status"]
+        if c["gate"] == "2" and c["status"] == "Scoping"
+    )
+    oldest = min(gate["g4_confirmed_tier_overdue"], key=lambda r: str(r["effective"]))
+    contested = [
+        r for r in gate["g4_confirmed_tier_overdue"] if r["dates_across_gated_copies_not_past"]
+    ]
+    respelled = [r for r in contested if r["a_not_past_date_is_the_day_month_swap"]]
+    moved = [r for r in contested if not r["a_not_past_date_is_the_day_month_swap"]]
+    long_record = _cert(certificates, "eggborough-2014-01-31")
+    return "\n".join(
+        [
+            "<!-- DRAFT, held for the sponsor's second seal. Not posted. Rendered from",
+            "investigations/017-the-overdue-queue/evidence by render_post.py. -->",
+            "",
+            "# Britain's connection queue has a tier that means \u201cconfirmed\u201d. "
+            f"{pct(overdue['capacity_share_of_its_gate'])} of it is already past the date "
+            "it confirmed.",
+            "",
+            "Last year the rules for connecting to the grid changed. Projects used to join "
+            "a queue in the order they applied. Now NESO sorts them into two tiers, and the "
+            "whole point of the reform is what the tiers mean. Here is NESO's own wording:",
+            "",
+            "> Gate 2 applies to projects that meet the new requirements for readiness [\u2026] "
+            "These projects can secure a **confirmed** connection date, connection point, "
+            "and queue position. Gate 1 applies to projects that do not meet the Gate 2 "
+            "criteria [and] will not be assigned a confirmed connection date.",
+            "",
+            "So Gate 2 is the promise. It is the tier a developer raises money against, a "
+            "supply chain plans around, and a system operator counts on when it says how "
+            "much capacity is coming and when.",
+            "",
+            f"In the register NESO published on {census['as_of']}, the confirmed tier holds "
+            f"{tier['rows']} projects and {mw(tier['mw'])} MW.",
+            "",
+            f"**{overdue['rows']} of them, {mw(overdue['mw'])} MW, are already past the date "
+            "they confirmed.** That is "
+            f"{pct(overdue['row_share_of_its_gate'])} of the tier's projects and "
+            f"{pct(overdue['capacity_share_of_its_gate'])} of its capacity \u2014 two "
+            "different measures that happen to land in the same place.",
+            "",
+            "## The part I did not expect",
+            "",
+            "A date can pass for ordinary reasons. A project is confirmed for a Tuesday in "
+            "March, something slips, and the date goes by. That is a normal thing for a "
+            "register to record.",
+            "",
+            "That is not what happened here.",
+            "",
+            "I hold four copies of the register that carry the Gate column: "
+            + ", ".join(gate["g6_gated_copies"])
+            + f". In **every one of the {g6['rows']} cases**, the date had already passed "
+            "in the first copy where that project shows up in the confirmed tier. Not one "
+            "of them was confirmed for a future date and then missed it. Every one was put "
+            "into the confirmed tier carrying a date that had already gone \u2014 "
+            f"{oldest['project_name']} by more than two years.",
+            "",
+            "The tier is doing what it was designed to do for the projects in it. It is "
+            "just that for these, the date it confirms is a date in the past.",
+            "",
+            "## And one more thing in the same table",
+            "",
+            f"{scoping['rows']} of the {overdue['rows']} \u2014 {mw(scoping['mw'])} MW "
+            "\u2014 sit in the confirmed tier at a project status of "
+            "\u201cScoping\u201d. That is the status this copy of the register also gives "
+            f"to {census['status_counts_all_rows'].get('Scoping', 0):,} other entries, "
+            f"{census['scale']['rows_scoping_dated_on_or_after_as_of']:,} of which are "
+            "dated years into the future. I am not going to tell you what to make of a "
+            "project being ready enough to confirm and still at Scoping. I am telling you "
+            "the two columns say that, side by side, in NESO's own file.",
+            "",
+            "## Here is where I might be wrong, before anyone tells me",
+            "",
+            f"{len(contested)} of the {overdue['rows']} entries are ones another copy of "
+            "the register publishes with a date that is not past at all, and together they "
+            f"are {mw(g6['mw_a_gated_copy_publishes_as_not_past'])} MW of the "
+            f"{mw(overdue['mw'])}.",
+            "",
+            *[
+                f"- **{r['project_name']}, {mw(r['mw'])} MW.** This copy prints its date as "
+                f"`{r['effective_as_published']}`. An earlier copy prints the same digits "
+                "with the day and the month the other way round, as "
+                + ", ".join(f"`{d}`" for d in r["dates_across_gated_copies_not_past"])
+                + ", which has not happened yet. I cannot tell you from one file which "
+                "reading is right."
+                for r in respelled
+            ],
+            *[
+                f"- **{r['project_name']}, {mw(r['mw'])} MW.** An earlier copy gave it "
+                + ", ".join(f"`{d}`" for d in r["dates_across_gated_copies_not_past"])
+                + f"; this one gives `{r['effective']}`. The register moved the date "
+                "earlier, and the earlier date is the one still ahead of us."
+                for r in moved
+            ],
+            "",
+            f"Take them out and the number is "
+            f"{mw(g6['mw_if_those_rows_are_read_as_not_past'])} MW over "
+            f"{g6['rows_if_those_rows_are_read_as_not_past']} projects instead of "
+            f"{mw(overdue['mw'])} MW over {overdue['rows']}.",
+            "",
+            "I am publishing the larger number because that is what the rule I wrote down "
+            "in advance produces from the file as it is spelled, and I am publishing this "
+            "paragraph in the same breath because that is the honest size of the "
+            "uncertainty. If you quote one, quote the other.",
+            "",
+            "There is no double counting to net off. The two 540 MW offshore platform rows "
+            "on the list are separate entries with different project numbers, not one "
+            "project counted twice. I checked, because I assumed the opposite.",
+            "",
+            "## Why any of this is hard to see",
+            "",
+            "NESO publishes this register weekly and replaces it each time. There is no "
+            "history. If you want to know whether a date has just moved or has been wrong "
+            "for eight years, you have to have kept the old copies \u2014 so I have: "
+            f"{long_record['record']['vintages_consulted']:,} readable copies back to "
+            "January 2014.",
+            "",
+            "What that archive shows is that the register is harder to read than it looks. "
+            "One project in it has been called three different things; in the copy of 5 "
+            "January 2024 its old name was handed to a completely different, smaller "
+            "project, id and all, so anyone tracking it by name has been following the "
+            "wrong row ever since. Today that project reads "
+            f"{mw(facts['eggborough-stage-1-tec-2026-09']['value'])} MW, due in a fortnight, at "
+            "a status it has carried in every one of "
+            f"{facts['eggborough-tec-record-2018-2026']['value']} copies since November "
+            "2018.",
+            "",
+            "## The boring part that makes the rest worth reading",
+            "",
+            "Both counting rules were written down, timestamped and published **before** "
+            "the numbers were computed \u2014 including a written record of the rough "
+            "figures I already had in my head, and of the two places where the careful run "
+            "disagreed with them. The file is pinned by its digest. NESO's definition of "
+            "the tiers is pinned too. Anyone can take the same file, apply the same rule, "
+            "and get a different answer if I have this wrong.",
+            "",
+            "That is the whole method: say what you will count before you count it, then "
+            "publish the thing that would prove you wrong next to the thing you found.",
+            "",
+            "*What this does not say: that any of these projects is late, has failed, or "
+            "will fail. A register records a tier and a date. It does not record whether "
+            "anything got built, and I have not inferred that it does.*",
+            "",
+        ]
+    )
+
+
+# --------------------------------------------------- version 2: the Gate column
+
+
+def pct(value: object) -> str:
+    """A declared share as a percentage. R11 keeps the row share and the
+    capacity share apart, so this never merges two of them."""
+    if value is None or value == "":
+        return "—"
+    return f"{Decimal(str(value)) * 100:.1f}%"
+
+
+def gate_label(entry: dict[str, Any]) -> str:
+    """A Gate class as the page names it: the register's own cell, and the
+    tier only where NESO's pinned definition supplies one."""
+    printed = entry.get("gate") or ""
+    if not printed:
+        return "(blank)"
+    tier = entry.get("tier")
+    return f"`{printed}` ({tier})" if tier else f"`{printed}`"
+
+
+def _gate_rows_table(rows: list[dict[str, Any]]) -> list[str]:
+    return _table(
+        ["Due", "Project", "Connection site", "Stage", "Plant type", "Status", "MW"],
+        [
+            [
+                str(r["effective"]),
+                str(r["project_name"]),
+                str(r["connection_site"]),
+                str(r["stage"] or "—"),
+                str(r["plant_type"]),
+                str(r["status"]),
+                mw(r["mw"]),
+            ]
+            for r in rows
         ],
+    )
+
+
+def _gate_section(gate: dict[str, Any], census: dict[str, Any]) -> list[str]:
+    confirmed_row = next((g for g in gate["g1_copy_by_gate"] if g["gate"] == "2"), None)
+    overdue2 = next((g for g in gate["g2_overdue_by_gate"] if g["gate"] == "2"), None)
+    g6 = gate["g6_summary"]
+    already_past_mw = g6["mw_whose_date_had_already_passed_when_first_in_the_tier"]
+    scoping = next(
+        (
+            c
+            for c in gate["g3_overdue_by_gate_and_status"]
+            if c["gate"] == "2" and c["status"] == "Scoping"
+        ),
+        None,
+    )
+    scoping_all = census["status_counts_all_rows"].get("Scoping", 0)
+    lines = [
+        "## What the count is *of*: the confirmed tier",
         "",
-        "| Year the date fell in | Entries | MW |",
-        "|---|---|---|",
-        *[f"| {g['year']} | {g['rows']} | {mw(g['mw'])} |" for g in census["by_year"]],
+        "*This section is version 2 of the declaration (`DECLARATION-v2.md`, SHA-256 "
+        f"`{gate['declaration_sha256']}`), frozen after the census above had run and before "
+        "any figure in this section was computed. Version 1's census is unchanged by it.*",
         "",
-        f"For scale, the same copy carries {mw(scale['mw_dated_on_or_after_as_of'])} MW dated "
-        f"in the future, {mw(scale['mw_scoping_dated_on_or_after_as_of'])} MW of it at "
-        "“Scoping”. The oldest entry on the overdue list is "
-        f"{census['earliest'][0]['project_name']}, {mw(census['earliest'][0]['mw'])} MW, dated "
-        f"{census['earliest'][0]['effective']}, still reading "
-        f"“{census['earliest'][0]['status']}”.",
+        "Under NESO's connections reform the queue is sorted into tiers. NESO's own "
+        "published definition, pinned in this repository "
+        f"(`{gate['gate_definition']['path']}`, SHA-256 "
+        f"`{gate['gate_definition']['sha256'][:16]}…`, fetched "
+        f"{gate['gate_definition']['fetched_at'][:10]}), says it in these words:",
         "",
-        "## One thing fell out of the arithmetic",
+        "> Gate 2 applies to projects that meet the new requirements for readiness and "
+        "Strategic Alignment. These projects can secure a **confirmed** connection date, "
+        "connection point, and queue position. Gate 1 applies to projects that do not meet "
+        "the Gate 2 criteria. […] Gate 1 projects will not be assigned a confirmed "
+        "connection date but may progress through future windows if readiness is "
+        "demonstrated.",
         "",
-        facts["gb-tec-undated-rows-are-built-2026-09"]["claim"],
+        "So a date in the Gate 2 tier is a *confirmed* date in NESO's own sense. Every "
+        f"copy of the register this archive holds from {gate['g6_gated_copies'][0]} carries "
+        "a `Gate` column; the archive holds none at all between 22 July 2025 and that date, "
+        "so the column's earlier history is not reconstructable here. Two cautions, both "
+        "declared before this was computed: the register does **not** print the words "
+        "“Gate 1” and “Gate 2” — it prints `1` and `2`, and "
+        "reading those as the two tiers is the one interpretation made here; and NESO's "
+        "definition says nothing about a **blank** cell, so a blank is reported as a blank "
+        "and is never called “not assessed” or folded into either tier.",
         "",
-        "The register clears the date when a project is built. So the "
-        f"{census['selected_rows']} are precisely the entries it has neither moved on nor "
-        "cleared — which is what makes them worth counting, and what makes the next "
-        "question unavoidable.",
+        "### The copy, split by Gate (G1)",
         "",
-        "## Why one copy of a register is never enough",
+        *_table(
+            ["Gate cell", "Rows", "MW"],
+            [[gate_label(g), f"{g['rows']:,}", mw(g["mw"])] for g in gate["g1_copy_by_gate"]],
+        ),
         "",
-        "A single copy cannot tell you whether a date that has passed is news or is eight "
-        "years old. Only the sequence of copies can, and the sequence is not published — "
-        "it has to be rebuilt. I have been rebuilding it: 700 readable copies of this "
-        "register back to January 2014.",
+        "### The overdue entries, split by Gate (G2)",
         "",
-        "Take one entry. Today it reads:",
-        "",
-        "> " + facts["eggborough-stage-1-tec-2026-09"]["claim"],
-        "",
-        "That date is a fortnight after the copy. Here is what the sequence says about it.",
-        "",
-        "- The register has called this project **three different things**. Search today's "
-        "copy for its current name, then look for that name in older copies, and you find "
-        "nothing before 1 July 2025.",
-        "- The entry first appears in the copy of **8 November 2018**, at 2,450 MW, dated "
-        "**1 April 2022**, status **Awaiting Consents**.",
-        "- The date then walks: 1 October 2024 by April 2020, 1 October 2025 by April 2021, "
-        "1 October 2026 by September 2022. It has not moved in four years.",
-        "- In the copy of **5 January 2024** the bare name is handed to a different, smaller "
-        "project — customer, capacity, date, status, plant type and **project id** all "
-        "change in one copy. A reader tracking this project by name would have followed the "
-        "wrong row from that day on.",
-        "- " + facts["eggborough-tec-record-2018-2026"]["claim"],
-        "",
-        "The development consent order for this scheme was decided by the Planning "
-        "Inspectorate on **20 September 2018**, seven weeks before the register's first "
-        "“Awaiting Consents” copy for it. So either the status field means a "
-        "consent other than that order, or it has not been refreshed in eight years. I am "
-        "not going to tell you which. I have asked NESO under the Environmental Information "
-        "Regulations (FOI/26/216, due 13 October) and I will publish the answer either way.",
-        "",
-        "## What is published with this",
-        "",
-        "The selection rule was written down and witnessed by OpenTimestamps and by two "
-        "RFC 3161 authorities **before** any figure was computed "
-        f"(SHA-256 `{census['declaration_sha256'][:16]}…`), including a record of the "
-        "rough numbers I had already seen and the two places where the governed run "
-        "contradicted them. The copy of the register is pinned by digest. The project's "
-        "history comes as four hash-addressed certificate bundles that verify offline "
-        f"(the current one is `{current['certificate_id'][:16]}…`).",
-        "",
-        "If you think the count is wrong, the fastest way to show it is to take the same "
-        "copy, apply the same rule, and get a different number. That is the point of "
-        "publishing the rule first.",
-        "",
-        "*Caveat carried deliberately: the consent order decision date above is from the "
-        "public planning record and is not pinned in the repository. Everything else here "
-        "is.*",
+        *_table(
+            [
+                "Gate cell",
+                "Rows",
+                "MW",
+                "Row share of the overdue",
+                "Capacity share of the overdue",
+                "Row share of its own Gate",
+                "Capacity share of its own Gate",
+            ],
+            [
+                [
+                    gate_label(g),
+                    f"{g['rows']:,}",
+                    mw(g["mw"]),
+                    pct(g["row_share_of_overdue"]),
+                    pct(g["capacity_share_of_overdue"]),
+                    pct(g["row_share_of_its_gate"]),
+                    pct(g["capacity_share_of_its_gate"]),
+                ]
+                for g in gate["g2_overdue_by_gate"]
+            ],
+        ),
         "",
     ]
-    return "\n".join(lines)
+    if confirmed_row and overdue2:
+        lines += [
+            f"**{overdue2['rows']} of the {confirmed_row['rows']} entries in the confirmed "
+            f"tier are already past their confirmed date**, carrying "
+            f"{mw(overdue2['mw'])} MW of the tier's {mw(confirmed_row['mw'])} MW. That is "
+            f"{pct(overdue2['row_share_of_its_gate'])} of the tier's rows and "
+            f"{pct(overdue2['capacity_share_of_its_gate'])} of its capacity. The two shares "
+            "are close here, which is a coincidence of this copy and not a general fact; "
+            "they are computed and printed separately for that reason, and neither stands "
+            "for the other.",
+            "",
+        ]
+    lines += [
+        "### Which statuses sit inside the tier (G3)",
+        "",
+        *_table(
+            ["Gate cell", "Status as printed", "Rows", "MW"],
+            [
+                [gate_label(c), c["status"] or "(blank)", f"{c['rows']:,}", mw(c["mw"])]
+                for c in gate["g3_overdue_by_gate_and_status"]
+            ],
+        ),
+        "",
+    ]
+    if scoping:
+        lines += [
+            f"{scoping['rows']} of the {overdue2['rows'] if overdue2 else 0} overdue "
+            f"confirmed-tier entries — {mw(scoping['mw'])} MW — read "
+            "“Scoping”. That is the status the register prints for "
+            f"{scoping_all:,} of this copy's {census['rows_total']:,} rows, "
+            f"{census['scale']['rows_scoping_dated_on_or_after_as_of']:,} of which are dated "
+            "in the future. The page draws no conclusion from that pairing; it is what the "
+            "two columns say side by side.",
+            "",
+        ]
+    lines += [
+        "### Every overdue entry in the confirmed tier (G4)",
+        "",
+        *_gate_rows_table(gate["g4_confirmed_tier_overdue"]),
+        "",
+        "### What the gated copies show (G6), and the question they answer",
+        "",
+        "A single copy cannot say whether a confirmed date was set and then passed, or "
+        "whether the entry was moved into the confirmed tier with the date already gone. "
+        "Only the copies can, and the archive holds "
+        f"{len(gate['g6_gated_copies'])} that carry a `Gate` column: "
+        + ", ".join(gate["g6_gated_copies"])
+        + ".",
+        "",
+        *_table(
+            ["Project", "MW", "Due, as this copy prints it"]
+            + [f"Gate / date in the copy of {d}" for d in gate["g6_gated_copies"]],
+            [
+                [r["project_name"], mw(r["mw"]), str(r["effective"])]
+                + [
+                    (
+                        f"{(x['gate'] or 'blank')} / {x['effective_as_published']}"
+                        if x["found"]
+                        else "no matching row"
+                    )
+                    for x in r["readings"]
+                ]
+                for r in gate["g4_confirmed_tier_overdue"]
+            ],
+        ),
+        "",
+        f"**In every one of the {g6['rows']} cases, the date had already passed in the first "
+        "of these copies whose Gate cell reads `2`.** Not one of them was given a confirmed "
+        "date in these copies and then watched it go by: each was published into the "
+        "confirmed tier carrying a date that was already behind it, some by weeks and some "
+        f"by more than two years. That covers {mw(already_past_mw)} "
+        "MW. It is a statement about what the register published and when, not about any "
+        "project's readiness and not about delivery.",
+        "",
+    ]
+    if g6["rows_a_gated_copy_publishes_as_not_past"]:
+        swap_rows = [
+            r for r in gate["g4_confirmed_tier_overdue"] if r["dates_across_gated_copies_not_past"]
+        ]
+        lines += [
+            "**And the figure has to carry this against itself.** "
+            f"{g6['rows_a_gated_copy_publishes_as_not_past']} of the "
+            f"{g6['rows']} rows, {mw(g6['mw_a_gated_copy_publishes_as_not_past'])} MW, are "
+            "rows some copy above publishes with a date that is **not** past at all:",
+            "",
+            *_table(
+                ["Project", "MW", "This copy", "Another copy", "Which kind of difference"],
+                [
+                    [
+                        r["project_name"],
+                        mw(r["mw"]),
+                        str(r["effective"]),
+                        ", ".join(str(d) for d in r["dates_across_gated_copies_not_past"]),
+                        (
+                            "the same digits with day and month exchanged"
+                            if r["a_not_past_date_is_the_day_month_swap"]
+                            else "the register moved the date"
+                        ),
+                    ]
+                    for r in swap_rows
+                ],
+            ),
+            "",
+            "The census rule reads each copy as it is spelled and does not apply the "
+            "day-month correction to a single copy, so those rows are inside the count "
+            "above, as declared. On the other reading the confirmed tier's overdue capacity "
+            f"is {mw(g6['mw_if_those_rows_are_read_as_not_past'])} MW over "
+            f"{g6['rows_if_those_rows_are_read_as_not_past']} rows. Both numbers are "
+            "published here; anyone quoting the larger one should quote this paragraph "
+            "with it.",
+            "",
+        ]
+    repetition = gate["g5_repetition"]
+    if not repetition["sharing_a_project_id"] and not repetition["sharing_a_project_name"]:
+        lines += [
+            "**Repetition (G5).** None. No two of the overdue confirmed-tier rows share a "
+            "project id, and no two share a project name: the two 540 MW offshore platform "
+            "rows are printed as separate entries, `Platform 1` and `Platform 2`, with "
+            "different project ids and different project numbers. There is no double count "
+            "to net off and no second reading to publish.",
+            "",
+        ]
+    else:
+        lines += [
+            "**Repetition (G5).** Rows sharing a project id: "
+            + (", ".join(f"`{g['key']}`" for g in repetition["sharing_a_project_id"]) or "none")
+            + ". Rows sharing a project name: "
+            + (", ".join(f"{g['key']}" for g in repetition["sharing_a_project_name"]) or "none")
+            + f". Together they carry {mw(repetition['mw_in_repeated_rows'])} MW.",
+            "",
+        ]
+    lines += [
+        "**What this section does not say.** That any of these projects has failed to "
+        "deliver, or will. The register records a tier and a date; it does not record "
+        "delivery, and nothing is inferred about it here. Nor is anything said about "
+        "whether NESO's assessment was right — that is not a question this evidence "
+        "can reach.",
+        "",
+    ]
+    return lines

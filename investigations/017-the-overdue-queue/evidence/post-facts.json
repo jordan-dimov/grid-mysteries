@@ -1,6 +1,9 @@
 {
  "register": "BEDROCK candidate slots",
- "governed_by": "investigations/017-the-overdue-queue/DECLARATION.md",
+ "governed_by": [
+  "investigations/017-the-overdue-queue/DECLARATION.md",
+  "investigations/017-the-overdue-queue/DECLARATION-v2.md"
+ ],
  "not_pinned_here": [
   "The Planning Inspectorate's decision on the Eggborough development consent order, 20 September 2018. Stated from the public planning record; no artefact for it is held in this repository. Any outbound use must carry that caveat."
  ],
@@ -615,6 +618,37 @@
    "unit": "MW",
    "claim": "As published on 2026-09-15, stage 1 of \u201cEggborough CCGT - OCGT - BESS\u201d at Eggborough 400kV Substation reads 1999 MW, effective from 01/10/2026, status \u201cAwaiting Consents\u201d.",
    "certificate_id": "268237d523cfa2a94a211250fe363b18efdd39873b254aa3419cf3026d47ec09"
+  },
+  "gb-tec-gate2-capacity-2026-09": {
+   "as_of": "2026-09-15",
+   "source": "NESO TEC Register",
+   "source_sha256": "d13406e495746f1b80e725321a5c7f95e21e0da16830bb6bd1f94ece172c9d5b",
+   "declaration_sha256": "82856d65ae7300fca7e8ddb5ff43cff3bceb38fdc7b25fb42a761906930ef0b3",
+   "gate_definition_sha256": "cb5c712b7f43fa545725bae4cb942c2c4353b8c0a2095c5a65ce7694de6bb514",
+   "reading": "the register prints 1 and 2 in the Gate column, not the words; reading 2 as Gate 2 is an interpretation against NESO's pinned definition, and a blank Gate is never interpreted",
+   "value": "13524.45",
+   "unit": "MW",
+   "rows": 95,
+   "claim": "In the copy of NESO's TEC Register published on 2026-09-15, 95 entries carrying 13,524.45 MW read `2` in the Gate column \u2014 the tier NESO defines as holding a confirmed connection date, point and queue position."
+  },
+  "gb-tec-gate2-overdue-2026-09": {
+   "as_of": "2026-09-15",
+   "source": "NESO TEC Register",
+   "source_sha256": "d13406e495746f1b80e725321a5c7f95e21e0da16830bb6bd1f94ece172c9d5b",
+   "declaration_sha256": "82856d65ae7300fca7e8ddb5ff43cff3bceb38fdc7b25fb42a761906930ef0b3",
+   "gate_definition_sha256": "cb5c712b7f43fa545725bae4cb942c2c4353b8c0a2095c5a65ce7694de6bb514",
+   "reading": "the register prints 1 and 2 in the Gate column, not the words; reading 2 as Gate 2 is an interpretation against NESO's pinned definition, and a blank Gate is never interpreted",
+   "value": "2497.92",
+   "unit": "MW",
+   "rows": 17,
+   "row_share_of_the_tier": "0.1789",
+   "capacity_share_of_the_tier": "0.1847",
+   "claim": "17 of those 95 entries, 2,497.92 MW, carry a confirmed date earlier than that publication date: 17.9% of the tier's rows and 18.5% of its capacity, which are two separate shares that happen to be close.",
+   "must_travel_with_the_claim": [
+    "In all 17 cases the date had already passed in the first held copy whose Gate cell reads 2; none was given a confirmed date in these copies and then missed it.",
+    "2 of the rows, 550 MW, are published with a date that is not past in another held copy. On that reading the figure is 1,947.92 MW over 15 rows.",
+    "Nothing here is a statement about delivery, readiness or NESO's assessment."
+   ]
   }
  }
 }

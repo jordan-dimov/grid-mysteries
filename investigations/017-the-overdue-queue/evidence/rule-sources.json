@@ -1,8 +1,9 @@
 {
  "declaration": [
-  "DECLARATION.md"
+  "DECLARATION.md",
+  "DECLARATION-v2.md"
  ],
- "note": "Checks C1, C4 and C5 are enforced by run.py against artefacts outside the pure logic (the committed schema report, the series' reading of the archive, and the append-only rows file) and have no unit test; every rule below does.",
+ "note": "Checks C1, C4, C5 (version 1) and C6 to C9 (version 2) are enforced by run.py against artefacts outside the pure logic - the committed schema report, the series' reading of the archive, version 1's committed rows and the append-only Gate rows - and have no unit test; every rule below does.",
  "rules": {
   "R1/R2 past its date is strictly before the copy's own publication date": "tests/test_overdue_queue.py::test_past_its_date_is_strictly_before_the_copys_own_publication_date",
   "R3 every spelling the register has used parses": "tests/test_tec_register.py::test_every_date_spelling_the_register_has_used_parses",
@@ -22,6 +23,19 @@
   "inherited reading: the archive's column aliases per era": "tests/test_tec_register.py::test_every_era_header_row_maps_the_required_columns",
   "schema pass: the status vocabulary is recorded per copy and archive-wide": "tests/test_tec_register.py::test_copy_report_counts_every_spelling_of_project_status",
   "exhibit: the matcher separates the gas plant from what shared its name": "tests/test_overdue_queue.py::test_the_exhibit_matcher_separates_the_gas_plant_from_what_shared_its_name",
-  "exhibit: every status a bundle's rows were published under": "tests/test_overdue_queue.py::test_status_trace_reports_every_status_a_bundles_rows_were_published_under"
+  "exhibit: every status a bundle's rows were published under": "tests/test_overdue_queue.py::test_status_trace_reports_every_status_a_bundles_rows_were_published_under",
+  "R8/R9 the register prints 1 and 2, and the mapping to the tiers is the one interpretation": "tests/test_overdue_queue.py::test_the_register_prints_1_and_2_and_the_mapping_is_the_only_interpretation",
+  "R10 a blank Gate is reported as blank and never folded into a tier": "tests/test_overdue_queue.py::test_the_whole_copy_and_the_overdue_rows_are_both_split_by_gate",
+  "R11 a share is always a row share and a capacity share, never one number": "tests/test_overdue_queue.py::test_shares_are_always_a_row_share_and_a_capacity_share",
+  "G3 the Gate and status cross-tab": "tests/test_overdue_queue.py::test_the_gate_and_status_cross_tab_shows_which_statuses_sit_in_the_tier",
+  "G5 a shared name is not a shared entry, and both readings are published": "tests/test_overdue_queue.py::test_a_shared_name_is_not_a_shared_entry_and_both_are_published",
+  "G6 each gated copy's reading, with an absence recorded and never guessed": "tests/test_overdue_queue.py::test_g6_reports_each_gated_copys_reading_and_never_guesses_an_absence",
+  "G6 the matching rule is the project id with the stage, inherited from R6": "tests/test_overdue_queue.py::test_the_matching_rule_is_the_project_id_with_the_stage",
+  "R12 whether the date had already passed when the Gate cell first read the tier": "tests/test_overdue_queue.py::test_g6_says_whether_the_date_had_already_passed_when_the_tier_was_set",
+  "R12 a gated copy publishing a date that is not past is flagged, with the figure without it": "tests/test_overdue_queue.py::test_a_gated_copy_that_publishes_a_date_in_the_future_is_flagged",
+  "F4 a Gate value the pinned definition does not cover": "tests/test_overdue_queue.py::test_f4_fires_on_a_gate_value_the_pinned_definition_does_not_cover",
+  "F5 repetition holding more than a tenth of the overdue Gate 2 MW": "tests/test_overdue_queue.py::test_f5_fires_when_repetition_holds_more_than_a_tenth_of_the_tier",
+  "F6 fewer than three gated copies are readable": "tests/test_overdue_queue.py::test_f6_fires_when_too_few_gated_copies_are_readable",
+  "schema pass: the Gate vocabulary is recorded per copy and archive-wide": "tests/test_tec_register.py::test_the_gate_column_gets_the_same_vocabulary_pass_as_status"
  }
 }

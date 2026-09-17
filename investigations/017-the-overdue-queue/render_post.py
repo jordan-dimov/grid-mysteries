@@ -25,14 +25,15 @@ DRAFTS = HERE / "drafts"
 
 def main() -> None:
     sys.path.insert(0, str(HERE))
-    from run import certificates  # noqa: PLC0415 - the runner owns bundle reading
+    from run import GATE_JSON, certificates  # noqa: PLC0415 - the runner owns bundle reading
 
     census = json.loads(CENSUS_JSON.read_text())
     certs = certificates()
-    write_json(FACTS_JSON, page.post_facts(census, certs))
+    gate = json.loads(GATE_JSON.read_text()) if GATE_JSON.exists() else None
+    write_json(FACTS_JSON, page.post_facts(census, certs, gate))
     DRAFTS.mkdir(exist_ok=True)
     draft = DRAFTS / f"post-{census['run_date']}.md"
-    draft.write_text(page.render_post(census, certs))
+    draft.write_text(page.render_post(census, certs, gate))
     print(f"wrote {FACTS_JSON.relative_to(REPO_ROOT)} and {draft.relative_to(REPO_ROOT)}")
     print("Draft only. Nothing is posted.")
 

@@ -80,6 +80,113 @@ The register prints compound plant types; this census keeps them whole and does 
 | 2023-11-01 | Seabank (Tertiary) | SEABANK 400/33kV SUBSTATION | — | Energy Storage System | Awaiting Consents | 49.9 |
 | 2024-02-23 | Dalmarnock Road BESS | DALMARNOCK 132/33KV SUBSTATION | — | Energy Storage System | Scoping | 40 |
 
+## What the count is *of*: the confirmed tier
+
+*This section is version 2 of the declaration (`DECLARATION-v2.md`, SHA-256 `82856d65ae7300fca7e8ddb5ff43cff3bceb38fdc7b25fb42a761906930ef0b3`), frozen after the census above had run and before any figure in this section was computed. Version 1's census is unchanged by it.*
+
+Under NESO's connections reform the queue is sorted into tiers. NESO's own published definition, pinned in this repository (`data/raw/neso/neso-g2wq-evidence-handbook-resources.html`, SHA-256 `cb5c712b7f43fa54…`, fetched 2026-08-23), says it in these words:
+
+> Gate 2 applies to projects that meet the new requirements for readiness and Strategic Alignment. These projects can secure a **confirmed** connection date, connection point, and queue position. Gate 1 applies to projects that do not meet the Gate 2 criteria. […] Gate 1 projects will not be assigned a confirmed connection date but may progress through future windows if readiness is demonstrated.
+
+So a date in the Gate 2 tier is a *confirmed* date in NESO's own sense. Every copy of the register this archive holds from 2026-05-19 carries a `Gate` column; the archive holds none at all between 22 July 2025 and that date, so the column's earlier history is not reconstructable here. Two cautions, both declared before this was computed: the register does **not** print the words “Gate 1” and “Gate 2” — it prints `1` and `2`, and reading those as the two tiers is the one interpretation made here; and NESO's definition says nothing about a **blank** cell, so a blank is reported as a blank and is never called “not assessed” or folded into either tier.
+
+### The copy, split by Gate (G1)
+
+| Gate cell | Rows | MW |
+|---|---|---|
+| (blank) | 1,349 | 311,980.78 |
+| `1` (Gate 1) | 756 | 272,882.67 |
+| `2` (Gate 2) | 95 | 13,524.45 |
+
+### The overdue entries, split by Gate (G2)
+
+| Gate cell | Rows | MW | Row share of the overdue | Capacity share of the overdue | Row share of its own Gate | Capacity share of its own Gate |
+|---|---|---|---|---|---|---|
+| (blank) | 74 | 9,166.64 | 75.5% | 76.2% | 5.5% | 2.9% |
+| `2` (Gate 2) | 17 | 2,497.92 | 17.4% | 20.8% | 17.9% | 18.5% |
+| `1` (Gate 1) | 7 | 370.3 | 7.1% | 3.1% | 0.9% | 0.1% |
+
+**17 of the 95 entries in the confirmed tier are already past their confirmed date**, carrying 2,497.92 MW of the tier's 13,524.45 MW. That is 17.9% of the tier's rows and 18.5% of its capacity. The two shares are close here, which is a coincidence of this copy and not a general fact; they are computed and printed separately for that reason, and neither stands for the other.
+
+### Which statuses sit inside the tier (G3)
+
+| Gate cell | Status as printed | Rows | MW |
+|---|---|---|---|
+| (blank) | Consents Approved | 39 | 5,907.09 |
+| (blank) | Scoping | 22 | 1,540.3 |
+| (blank) | Under Construction/Commissioning | 7 | 1,414.9 |
+| (blank) | Awaiting Consents | 6 | 304.35 |
+| `1` (Gate 1) | Awaiting Consents | 2 | 169.9 |
+| `1` (Gate 1) | Scoping | 4 | 164.4 |
+| `1` (Gate 1) | Consents Approved | 1 | 36 |
+| `2` (Gate 2) | Consents Approved | 6 | 1,261 |
+| `2` (Gate 2) | Scoping | 9 | 1,172.8 |
+| `2` (Gate 2) | Awaiting Consents | 1 | 43.5 |
+| `2` (Gate 2) | Under Construction/Commissioning | 1 | 20.62 |
+
+9 of the 17 overdue confirmed-tier entries — 1,172.8 MW — read “Scoping”. That is the status the register prints for 1,484 of this copy's 2,200 rows, 1,449 of which are dated in the future. The page draws no conclusion from that pairing; it is what the two columns say side by side.
+
+### Every overdue entry in the confirmed tier (G4)
+
+| Due | Project | Connection site | Stage | Plant type | Status | MW |
+|---|---|---|---|---|---|---|
+| 2026-02-21 | Inch Cape Offshore Wind Farm Platform 1 | Cockenzie 400/275kV | — | Wind Offshore | Consents Approved | 540 |
+| 2026-02-21 | Inch Cape Offshore Wind Farm Platform 2 | Cockenzie 275kV substation | — | Wind Offshore | Consents Approved | 540 |
+| 2026-04-12 | Eccles BESS | Eccles 400kV Substation | — | Energy Storage System | Scoping | 500 |
+| 2026-04-30 | Zenobe Eccles Battery Storage | Eccles 400kV Substation | — | Energy Storage System | Scoping | 400 |
+| 2026-07-31 | Whitelaw Brae Windfarm | Whitelaw Brae 'A' and 'B' 33kV Substations | — | Wind Onshore | Scoping | 57 |
+| 2026-05-18 | Coylton 275kV Greener Grid Park | Coylton 275kV substation | 1 | Energy Storage System | Consents Approved | 50 |
+| 2026-07-31 | Persley Croft BESS | Persley 132/33kV GSP Substation | — | Energy Storage System | Scoping | 50 |
+| 2026-07-31 | Holmston Farm Battery Energy Storage System | Ayr 275/33kV | — | Energy Storage System | Scoping | 49.9 |
+| 2026-05-31 | Lovat Estate BESS | Beauly 132/33 kV GSP Substation | — | Energy Storage System | Scoping | 49.9 |
+| 2025-10-30 | Glenrothes BESS | Glenrothes 275/33kV | — | Energy Storage System | Consents Approved | 46 |
+| 2026-06-01 | Windy Standard III Wind Farm | Dun Hill 132/33kV | 1 | Wind Onshore | Awaiting Consents | 43.5 |
+| 2025-11-24 | Bankside BESS | Bainsford 132/33kV | — | Energy Storage System | Consents Approved | 43 |
+| 2026-07-31 | Balbougie Energy Centre | Inverkeithing 132/33kV | — | Energy Storage System | Consents Approved | 42 |
+| 2024-02-23 | Dalmarnock Road BESS | DALMARNOCK 132/33KV SUBSTATION | — | Energy Storage System | Scoping | 40 |
+| 2024-10-31 | Bilbo Farm | Strichen 132/33kV GSP Substation | 1 | Energy Storage System;PV Array (Photo Voltaic/solar) | Scoping | 25 |
+| 2025-04-30 | Kincraig Energy Centre | Dyce 132/33kV GSP | — | Energy Storage System;PV Array (Photo Voltaic/solar) | Under Construction/Commissioning | 20.62 |
+| 2026-07-31 | Whitelaw Brae BESS | Whitelaw Brae BESS 33kV substation | — | Energy Storage System | Scoping | 1 |
+
+### What the gated copies show (G6), and the question they answer
+
+A single copy cannot say whether a confirmed date was set and then passed, or whether the entry was moved into the confirmed tier with the date already gone. Only the copies can, and the archive holds 4 that carry a `Gate` column: 2026-05-19, 2026-08-22, 2026-08-25, 2026-09-15.
+
+| Project | MW | Due, as this copy prints it | Gate / date in the copy of 2026-05-19 | Gate / date in the copy of 2026-08-22 | Gate / date in the copy of 2026-08-25 | Gate / date in the copy of 2026-09-15 |
+|---|---|---|---|---|---|---|
+| Inch Cape Offshore Wind Farm Platform 1 | 540 | 2026-02-21 | blank / 2026-02-21 | 2 / 2026-02-21 | 2 / 2026-02-21 | 2 / 21/02/2026 |
+| Inch Cape Offshore Wind Farm Platform 2 | 540 | 2026-02-21 | blank / 2026-02-21 | 2 / 2026-02-21 | 2 / 2026-02-21 | 2 / 21/02/2026 |
+| Eccles BESS | 500 | 2026-04-12 | blank / 2026-12-04 | blank / 2026-04-12 | blank / 2026-04-12 | 2 / 12/04/2026 |
+| Zenobe Eccles Battery Storage | 400 | 2026-04-30 | blank / 2026-04-30 | 2 / 2026-04-30 | 2 / 2026-04-30 | 2 / 30/04/2026 |
+| Whitelaw Brae Windfarm | 57 | 2026-07-31 | blank / 2026-07-31 | 2 / 2026-07-31 | 2 / 2026-07-31 | 2 / 31/07/2026 |
+| Coylton 275kV Greener Grid Park | 50 | 2026-05-18 | blank / 2026-02-28 | 2 / 2026-05-18 | 2 / 2026-05-18 | 2 / 18/05/2026 |
+| Persley Croft BESS | 50 | 2026-07-31 | blank / 2026-10-31 | 2 / 2026-07-31 | 2 / 2026-07-31 | 2 / 31/07/2026 |
+| Holmston Farm Battery Energy Storage System | 49.9 | 2026-07-31 | blank / 2025-06-30 | 2 / 2026-07-31 | 2 / 2026-07-31 | 2 / 31/07/2026 |
+| Lovat Estate BESS | 49.9 | 2026-05-31 | blank / 2026-05-31 | 2 / 2026-05-31 | 2 / 2026-05-31 | 2 / 31/05/2026 |
+| Glenrothes BESS | 46 | 2025-10-30 | blank / 2025-10-30 | 2 / 2025-10-30 | 2 / 2025-10-30 | 2 / 30/10/2025 |
+| Windy Standard III Wind Farm | 43.5 | 2026-06-01 | blank / 2026-06-01 | 2 / 2026-06-01 | 2 / 2026-06-01 | 2 / 01/06/2026 |
+| Bankside BESS | 43 | 2025-11-24 | blank / 2025-11-24 | 2 / 2025-11-24 | 2 / 2025-11-24 | 2 / 24/11/2025 |
+| Balbougie Energy Centre | 42 | 2026-07-31 | blank / 2025-04-30 | 2 / 2026-07-31 | 2 / 2026-07-31 | 2 / 31/07/2026 |
+| Dalmarnock Road BESS | 40 | 2024-02-23 | blank / 2023-10-30 | 2 / 2024-02-23 | 2 / 2024-02-23 | 2 / 23/02/2024 |
+| Bilbo Farm | 25 | 2024-10-31 | blank / 2024-10-31 | 2 / 2024-10-31 | 2 / 2024-10-31 | 2 / 31/10/2024 |
+| Kincraig Energy Centre | 20.62 | 2025-04-30 | blank / 2026-04-30 | blank / 2025-04-30 | blank / 2025-04-30 | 2 / 30/04/2025 |
+| Whitelaw Brae BESS | 1 | 2026-07-31 | blank / 2026-07-31 | 2 / 2026-07-31 | 2 / 2026-07-31 | 2 / 31/07/2026 |
+
+**In every one of the 17 cases, the date had already passed in the first of these copies whose Gate cell reads `2`.** Not one of them was given a confirmed date in these copies and then watched it go by: each was published into the confirmed tier carrying a date that was already behind it, some by weeks and some by more than two years. That covers 2,497.92 MW. It is a statement about what the register published and when, not about any project's readiness and not about delivery.
+
+**And the figure has to carry this against itself.** 2 of the 17 rows, 550 MW, are rows some copy above publishes with a date that is **not** past at all:
+
+| Project | MW | This copy | Another copy | Which kind of difference |
+|---|---|---|---|---|
+| Eccles BESS | 500 | 2026-04-12 | 2026-12-04 | the same digits with day and month exchanged |
+| Persley Croft BESS | 50 | 2026-07-31 | 2026-10-31 | the register moved the date |
+
+The census rule reads each copy as it is spelled and does not apply the day-month correction to a single copy, so those rows are inside the count above, as declared. On the other reading the confirmed tier's overdue capacity is 1,947.92 MW over 15 rows. Both numbers are published here; anyone quoting the larger one should quote this paragraph with it.
+
+**Repetition (G5).** None. No two of the overdue confirmed-tier rows share a project id, and no two share a project name: the two 540 MW offshore platform rows are printed as separate entries, `Platform 1` and `Platform 2`, with different project ids and different project numbers. There is no double count to net off and no second reading to publish.
+
+**What this section does not say.** That any of these projects has failed to deliver, or will. The register records a tier and a date; it does not record delivery, and nothing is inferred about it here. Nor is anything said about whether NESO's assessment was right — that is not a question this evidence can reach.
+
 ## The exhibit: one project, traced across every copy
 
 A census of one copy cannot tell a reader whether a date that has passed is news or is eight years old, and it cannot see the entries whose date has not passed *yet* but has been rewritten repeatedly. For that the copies have to be read in sequence. The As-of Connection Record Certificate is 014's instrument for exactly that, and it is applied here to `Eggborough CCGT - OCGT - BESS`, 2,450 MW at Eggborough 400kV Substation, whose first stage is dated a fortnight after the copy this census reads.
@@ -249,7 +356,9 @@ That is the general point the exhibit is for. A status in this register is not d
 ## Expert corner
 
 - Declaration: `investigations/017-the-overdue-queue/DECLARATION.md`, SHA-256 `400b42f72b8c77759f88702d113594cdb2bb1b397f903486aaf39e92c7bc4b6d`, witnessed by OpenTimestamps and by RFC 3161 tokens from freetsa.org and DigiCert at the moment of the freeze, and committed with its proofs by `scripts/freeze`.
-- Archive schema report the reading rules were written against: SHA-256 `ce3c61d735ff6349b553e6956d43ee042bd45a85995696dc15fff8620d33f570` (`archives/tec-register/`).
+- Version 2 of the declaration, the Gate cross-tab: `investigations/017-the-overdue-queue/DECLARATION-v2.md`, SHA-256 `82856d65ae7300fca7e8ddb5ff43cff3bceb38fdc7b25fb42a761906930ef0b3`, witnessed the same way and frozen after version 1 had run. Its evidence is `evidence/gate.json` and `evidence/gate-rows.ndjson`; NESO's definition of the tiers is pinned at `data/raw/neso/neso-g2wq-evidence-handbook-resources.html`, SHA-256 `cb5c712b7f43fa545725bae4cb942c2c4353b8c0a2095c5a65ce7694de6bb514`.
+- Checks version 2 had to pass: C6 the Gate counts equal the schema report's for this copy; C7 the selection is version 1's, unchanged; C8 the Gate split sums to version 1's committed census; C9 every selected row's Gate cell is in the copy's vocabulary.
+- Archive schema report version 1's reading rules were written against: SHA-256 `ce3c61d735ff6349b553e6956d43ee042bd45a85995696dc15fff8620d33f570` (`archives/tec-register/`). Version 2 was written against `be060a7c671887010b3ad93c2d57f2c3caff0b01ed9dbe1dbbc6f91aac39b211`, which adds the Gate vocabulary to the same pass and changes no status count, so version 1's check C1 passes against both.
 - The one copy: `data/raw/neso/tec-history/2026-09-15_neso-ckan.csv`, SHA-256 `d13406e495746f1b80e725321a5c7f95e21e0da16830bb6bd1f94ece172c9d5b`, 421,159 bytes, source `neso-ckan`, publication basis: CKAN resource last_modified 2026-09-15T16:48:30.055757 and filename tec-register-15-september-2026.csv; fetched live 2026-09-15
 - Measure: `MW Increase / Decrease` as published, read as `Decimal`. The cumulative column is never added to it and never substituted for it.
 - Boundary: an effective date **strictly earlier** than 2026-09-15, the copy's own publication date — not the date the census was run.

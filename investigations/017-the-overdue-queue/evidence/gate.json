@@ -1,0 +1,1204 @@
+{
+ "investigation": "017",
+ "declaration": "DECLARATION-v2.md",
+ "declaration_sha256": "82856d65ae7300fca7e8ddb5ff43cff3bceb38fdc7b25fb42a761906930ef0b3",
+ "declaration_timestamps": {
+  "sha256": "82856d65ae7300fca7e8ddb5ff43cff3bceb38fdc7b25fb42a761906930ef0b3",
+  "matches_declaration": true,
+  "proofs": [
+   {
+    "kind": "opentimestamps",
+    "path": "DECLARATION-v2.md.ots",
+    "status": "pending calendar attestation until upgraded"
+   },
+   {
+    "kind": "rfc3161",
+    "tsa": "https://freetsa.org/tsr",
+    "path": "DECLARATION-v2.md.freetsa.tsr",
+    "tsa_time": "Sep 17 11:38:59 2026 GMT"
+   },
+   {
+    "kind": "rfc3161",
+    "tsa": "http://timestamp.digicert.com",
+    "path": "DECLARATION-v2.md.digicert.tsr",
+    "tsa_time": "Sep 17 11:38:59 2026 GMT"
+   }
+  ]
+ },
+ "version_1_declaration_sha256": "400b42f72b8c77759f88702d113594cdb2bb1b397f903486aaf39e92c7bc4b6d",
+ "schema_report_sha256": "be060a7c671887010b3ad93c2d57f2c3caff0b01ed9dbe1dbbc6f91aac39b211",
+ "gate_definition": {
+  "path": "data/raw/neso/neso-g2wq-evidence-handbook-resources.html",
+  "sha256": "cb5c712b7f43fa545725bae4cb942c2c4353b8c0a2095c5a65ce7694de6bb514",
+  "url": "https://www.neso.energy/industry-information/connections-reform/evidence-handbook-and-other-g2wq-submission-resources",
+  "fetched_at": "2026-08-23T07:14:26.611756+00:00",
+  "journal": "investigations/forward/F001-connection-readiness/evidence/public-as-of-journal.ndjson"
+ },
+ "seal": "82856d65",
+ "run_date": "2026-09-17",
+ "computed_at": "2026-09-17T11:45:56+00:00",
+ "copy": {
+  "t_public": "2026-09-15",
+  "path": "data/raw/neso/tec-history/2026-09-15_neso-ckan.csv",
+  "sha256": "d13406e495746f1b80e725321a5c7f95e21e0da16830bb6bd1f94ece172c9d5b"
+ },
+ "rows_total": 2200,
+ "checks": {
+  "C6 the Gate counts equal the schema report's for this copy": true,
+  "C8 the Gate split sums to version 1's committed census": true,
+  "C9 every selected row's Gate cell is in the copy's vocabulary": true,
+  "C7 the selection is version 1's, unchanged": true
+ },
+ "falsifiers_fired": [],
+ "g6_suppressed": false,
+ "g1_copy_by_gate": [
+  {
+   "gate": "",
+   "tier": null,
+   "rows": 1349,
+   "mw": "311980.78"
+  },
+  {
+   "gate": "1",
+   "tier": "Gate 1",
+   "rows": 756,
+   "mw": "272882.67"
+  },
+  {
+   "gate": "2",
+   "tier": "Gate 2",
+   "rows": 95,
+   "mw": "13524.45"
+  }
+ ],
+ "g2_overdue_by_gate": [
+  {
+   "gate": "",
+   "tier": null,
+   "rows": 74,
+   "mw": "9166.64",
+   "row_share_of_overdue": "0.7551",
+   "capacity_share_of_overdue": "0.7617",
+   "rows_in_copy": 1349,
+   "mw_in_copy": "311980.78",
+   "row_share_of_its_gate": "0.0549",
+   "capacity_share_of_its_gate": "0.0294"
+  },
+  {
+   "gate": "2",
+   "tier": "Gate 2",
+   "rows": 17,
+   "mw": "2497.92",
+   "row_share_of_overdue": "0.1735",
+   "capacity_share_of_overdue": "0.2076",
+   "rows_in_copy": 95,
+   "mw_in_copy": "13524.45",
+   "row_share_of_its_gate": "0.1789",
+   "capacity_share_of_its_gate": "0.1847"
+  },
+  {
+   "gate": "1",
+   "tier": "Gate 1",
+   "rows": 7,
+   "mw": "370.3",
+   "row_share_of_overdue": "0.0714",
+   "capacity_share_of_overdue": "0.0308",
+   "rows_in_copy": 756,
+   "mw_in_copy": "272882.67",
+   "row_share_of_its_gate": "0.0093",
+   "capacity_share_of_its_gate": "0.0014"
+  }
+ ],
+ "g3_overdue_by_gate_and_status": [
+  {
+   "gate": "",
+   "tier": null,
+   "status": "Consents Approved",
+   "rows": 39,
+   "mw": "5907.09"
+  },
+  {
+   "gate": "",
+   "tier": null,
+   "status": "Scoping",
+   "rows": 22,
+   "mw": "1540.3"
+  },
+  {
+   "gate": "",
+   "tier": null,
+   "status": "Under Construction/Commissioning",
+   "rows": 7,
+   "mw": "1414.9"
+  },
+  {
+   "gate": "",
+   "tier": null,
+   "status": "Awaiting Consents",
+   "rows": 6,
+   "mw": "304.35"
+  },
+  {
+   "gate": "1",
+   "tier": "Gate 1",
+   "status": "Awaiting Consents",
+   "rows": 2,
+   "mw": "169.9"
+  },
+  {
+   "gate": "1",
+   "tier": "Gate 1",
+   "status": "Scoping",
+   "rows": 4,
+   "mw": "164.4"
+  },
+  {
+   "gate": "1",
+   "tier": "Gate 1",
+   "status": "Consents Approved",
+   "rows": 1,
+   "mw": "36"
+  },
+  {
+   "gate": "2",
+   "tier": "Gate 2",
+   "status": "Consents Approved",
+   "rows": 6,
+   "mw": "1261"
+  },
+  {
+   "gate": "2",
+   "tier": "Gate 2",
+   "status": "Scoping",
+   "rows": 9,
+   "mw": "1172.8"
+  },
+  {
+   "gate": "2",
+   "tier": "Gate 2",
+   "status": "Awaiting Consents",
+   "rows": 1,
+   "mw": "43.5"
+  },
+  {
+   "gate": "2",
+   "tier": "Gate 2",
+   "status": "Under Construction/Commissioning",
+   "rows": 1,
+   "mw": "20.62"
+  }
+ ],
+ "g4_confirmed_tier_overdue": [
+  {
+   "index": 1063,
+   "project_name": "Inch Cape Offshore Wind Farm Platform 1",
+   "connection_site": "Cockenzie 400/275kV",
+   "stage": "",
+   "plant_type": "Wind Offshore",
+   "status": "Consents Approved",
+   "project_id": "a0l4L0000005it3",
+   "project_number": "PRO-000348",
+   "mw": "540",
+   "effective": "2026-02-21",
+   "effective_as_published": "21/02/2026",
+   "gate": "2",
+   "tier": "Gate 2",
+   "readings": [
+    {
+     "t_public": "2026-05-19",
+     "found": true,
+     "gate": "",
+     "status": "Consents Approved",
+     "effective_as_published": "2026-02-21",
+     "effective": "2026-02-21"
+    },
+    {
+     "t_public": "2026-08-22",
+     "found": true,
+     "gate": "2",
+     "status": "Consents Approved",
+     "effective_as_published": "2026-02-21",
+     "effective": "2026-02-21"
+    },
+    {
+     "t_public": "2026-08-25",
+     "found": true,
+     "gate": "2",
+     "status": "Consents Approved",
+     "effective_as_published": "2026-02-21",
+     "effective": "2026-02-21"
+    },
+    {
+     "t_public": "2026-09-15",
+     "found": true,
+     "gate": "2",
+     "status": "Consents Approved",
+     "effective_as_published": "21/02/2026",
+     "effective": "2026-02-21"
+    }
+   ],
+   "first_copy_in_the_tier": "2026-08-22",
+   "date_when_first_in_the_tier": "2026-02-21",
+   "already_past_when_first_in_the_tier": true,
+   "dates_across_gated_copies": [
+    "2026-02-21"
+   ],
+   "dates_across_gated_copies_not_past": [],
+   "a_not_past_date_is_the_day_month_swap": false
+  },
+  {
+   "index": 1064,
+   "project_name": "Inch Cape Offshore Wind Farm Platform 2",
+   "connection_site": "Cockenzie 275kV substation",
+   "stage": "",
+   "plant_type": "Wind Offshore",
+   "status": "Consents Approved",
+   "project_id": "a0l4L0000005it4",
+   "project_number": "PRO-000349",
+   "mw": "540",
+   "effective": "2026-02-21",
+   "effective_as_published": "21/02/2026",
+   "gate": "2",
+   "tier": "Gate 2",
+   "readings": [
+    {
+     "t_public": "2026-05-19",
+     "found": true,
+     "gate": "",
+     "status": "Consents Approved",
+     "effective_as_published": "2026-02-21",
+     "effective": "2026-02-21"
+    },
+    {
+     "t_public": "2026-08-22",
+     "found": true,
+     "gate": "2",
+     "status": "Consents Approved",
+     "effective_as_published": "2026-02-21",
+     "effective": "2026-02-21"
+    },
+    {
+     "t_public": "2026-08-25",
+     "found": true,
+     "gate": "2",
+     "status": "Consents Approved",
+     "effective_as_published": "2026-02-21",
+     "effective": "2026-02-21"
+    },
+    {
+     "t_public": "2026-09-15",
+     "found": true,
+     "gate": "2",
+     "status": "Consents Approved",
+     "effective_as_published": "21/02/2026",
+     "effective": "2026-02-21"
+    }
+   ],
+   "first_copy_in_the_tier": "2026-08-22",
+   "date_when_first_in_the_tier": "2026-02-21",
+   "already_past_when_first_in_the_tier": true,
+   "dates_across_gated_copies": [
+    "2026-02-21"
+   ],
+   "dates_across_gated_copies_not_past": [],
+   "a_not_past_date_is_the_day_month_swap": false
+  },
+  {
+   "index": 665,
+   "project_name": "Eccles BESS",
+   "connection_site": "Eccles 400kV Substation",
+   "stage": "",
+   "plant_type": "Energy Storage System",
+   "status": "Scoping",
+   "project_id": "a0l4L0000005idE",
+   "project_number": "PRO-001470",
+   "mw": "500",
+   "effective": "2026-04-12",
+   "effective_as_published": "12/04/2026",
+   "gate": "2",
+   "tier": "Gate 2",
+   "readings": [
+    {
+     "t_public": "2026-05-19",
+     "found": true,
+     "gate": "",
+     "status": "Scoping",
+     "effective_as_published": "2026-12-04",
+     "effective": "2026-12-04"
+    },
+    {
+     "t_public": "2026-08-22",
+     "found": true,
+     "gate": "",
+     "status": "Scoping",
+     "effective_as_published": "2026-04-12",
+     "effective": "2026-04-12"
+    },
+    {
+     "t_public": "2026-08-25",
+     "found": true,
+     "gate": "",
+     "status": "Scoping",
+     "effective_as_published": "2026-04-12",
+     "effective": "2026-04-12"
+    },
+    {
+     "t_public": "2026-09-15",
+     "found": true,
+     "gate": "2",
+     "status": "Scoping",
+     "effective_as_published": "12/04/2026",
+     "effective": "2026-04-12"
+    }
+   ],
+   "first_copy_in_the_tier": "2026-09-15",
+   "date_when_first_in_the_tier": "2026-04-12",
+   "already_past_when_first_in_the_tier": true,
+   "dates_across_gated_copies": [
+    "2026-04-12",
+    "2026-12-04"
+   ],
+   "dates_across_gated_copies_not_past": [
+    "2026-12-04"
+   ],
+   "a_not_past_date_is_the_day_month_swap": true
+  },
+  {
+   "index": 2189,
+   "project_name": "Zenobe Eccles Battery Storage",
+   "connection_site": "Eccles 400kV Substation",
+   "stage": "",
+   "plant_type": "Energy Storage System",
+   "status": "Scoping",
+   "project_id": "a0l4L0000005ij4",
+   "project_number": "PRO-001779",
+   "mw": "400",
+   "effective": "2026-04-30",
+   "effective_as_published": "30/04/2026",
+   "gate": "2",
+   "tier": "Gate 2",
+   "readings": [
+    {
+     "t_public": "2026-05-19",
+     "found": true,
+     "gate": "",
+     "status": "Scoping",
+     "effective_as_published": "2026-04-30",
+     "effective": "2026-04-30"
+    },
+    {
+     "t_public": "2026-08-22",
+     "found": true,
+     "gate": "2",
+     "status": "Scoping",
+     "effective_as_published": "2026-04-30",
+     "effective": "2026-04-30"
+    },
+    {
+     "t_public": "2026-08-25",
+     "found": true,
+     "gate": "2",
+     "status": "Scoping",
+     "effective_as_published": "2026-04-30",
+     "effective": "2026-04-30"
+    },
+    {
+     "t_public": "2026-09-15",
+     "found": true,
+     "gate": "2",
+     "status": "Scoping",
+     "effective_as_published": "30/04/2026",
+     "effective": "2026-04-30"
+    }
+   ],
+   "first_copy_in_the_tier": "2026-08-22",
+   "date_when_first_in_the_tier": "2026-04-30",
+   "already_past_when_first_in_the_tier": true,
+   "dates_across_gated_copies": [
+    "2026-04-30"
+   ],
+   "dates_across_gated_copies_not_past": [],
+   "a_not_past_date_is_the_day_month_swap": false
+  },
+  {
+   "index": 2120,
+   "project_name": "Whitelaw Brae Windfarm",
+   "connection_site": "Whitelaw Brae 'A' and 'B' 33kV Substations",
+   "stage": "",
+   "plant_type": "Wind Onshore",
+   "status": "Scoping",
+   "project_id": "a0l4L0000005isx",
+   "project_number": "PRO-000341",
+   "mw": "57",
+   "effective": "2026-07-31",
+   "effective_as_published": "31/07/2026",
+   "gate": "2",
+   "tier": "Gate 2",
+   "readings": [
+    {
+     "t_public": "2026-05-19",
+     "found": true,
+     "gate": "",
+     "status": "Scoping",
+     "effective_as_published": "2026-07-31",
+     "effective": "2026-07-31"
+    },
+    {
+     "t_public": "2026-08-22",
+     "found": true,
+     "gate": "2",
+     "status": "Scoping",
+     "effective_as_published": "2026-07-31",
+     "effective": "2026-07-31"
+    },
+    {
+     "t_public": "2026-08-25",
+     "found": true,
+     "gate": "2",
+     "status": "Scoping",
+     "effective_as_published": "2026-07-31",
+     "effective": "2026-07-31"
+    },
+    {
+     "t_public": "2026-09-15",
+     "found": true,
+     "gate": "2",
+     "status": "Scoping",
+     "effective_as_published": "31/07/2026",
+     "effective": "2026-07-31"
+    }
+   ],
+   "first_copy_in_the_tier": "2026-08-22",
+   "date_when_first_in_the_tier": "2026-07-31",
+   "already_past_when_first_in_the_tier": true,
+   "dates_across_gated_copies": [
+    "2026-07-31"
+   ],
+   "dates_across_gated_copies_not_past": [],
+   "a_not_past_date_is_the_day_month_swap": false
+  },
+  {
+   "index": 487,
+   "project_name": "Coylton 275kV Greener Grid Park",
+   "connection_site": "Coylton 275kV substation",
+   "stage": "1",
+   "plant_type": "Energy Storage System",
+   "status": "Consents Approved",
+   "project_id": "a0l4L0000005ihQ",
+   "project_number": "PRO-001551-1",
+   "mw": "50",
+   "effective": "2026-05-18",
+   "effective_as_published": "18/05/2026",
+   "gate": "2",
+   "tier": "Gate 2",
+   "readings": [
+    {
+     "t_public": "2026-05-19",
+     "found": true,
+     "gate": "",
+     "status": "Consents Approved",
+     "effective_as_published": "2026-02-28",
+     "effective": "2026-02-28"
+    },
+    {
+     "t_public": "2026-08-22",
+     "found": true,
+     "gate": "2",
+     "status": "Consents Approved",
+     "effective_as_published": "2026-05-18",
+     "effective": "2026-05-18"
+    },
+    {
+     "t_public": "2026-08-25",
+     "found": true,
+     "gate": "2",
+     "status": "Consents Approved",
+     "effective_as_published": "2026-05-18",
+     "effective": "2026-05-18"
+    },
+    {
+     "t_public": "2026-09-15",
+     "found": true,
+     "gate": "2",
+     "status": "Consents Approved",
+     "effective_as_published": "18/05/2026",
+     "effective": "2026-05-18"
+    }
+   ],
+   "first_copy_in_the_tier": "2026-08-22",
+   "date_when_first_in_the_tier": "2026-05-18",
+   "already_past_when_first_in_the_tier": true,
+   "dates_across_gated_copies": [
+    "2026-02-28",
+    "2026-05-18"
+   ],
+   "dates_across_gated_copies_not_past": [],
+   "a_not_past_date_is_the_day_month_swap": false
+  },
+  {
+   "index": 1647,
+   "project_name": "Persley Croft BESS",
+   "connection_site": "Persley 132/33kV GSP Substation",
+   "stage": "",
+   "plant_type": "Energy Storage System",
+   "status": "Scoping",
+   "project_id": "a0l4L000002yQXE",
+   "project_number": "PRO-002546",
+   "mw": "50",
+   "effective": "2026-07-31",
+   "effective_as_published": "31/07/2026",
+   "gate": "2",
+   "tier": "Gate 2",
+   "readings": [
+    {
+     "t_public": "2026-05-19",
+     "found": true,
+     "gate": "",
+     "status": "Scoping",
+     "effective_as_published": "2026-10-31",
+     "effective": "2026-10-31"
+    },
+    {
+     "t_public": "2026-08-22",
+     "found": true,
+     "gate": "2",
+     "status": "Scoping",
+     "effective_as_published": "2026-07-31",
+     "effective": "2026-07-31"
+    },
+    {
+     "t_public": "2026-08-25",
+     "found": true,
+     "gate": "2",
+     "status": "Scoping",
+     "effective_as_published": "2026-07-31",
+     "effective": "2026-07-31"
+    },
+    {
+     "t_public": "2026-09-15",
+     "found": true,
+     "gate": "2",
+     "status": "Scoping",
+     "effective_as_published": "31/07/2026",
+     "effective": "2026-07-31"
+    }
+   ],
+   "first_copy_in_the_tier": "2026-08-22",
+   "date_when_first_in_the_tier": "2026-07-31",
+   "already_past_when_first_in_the_tier": true,
+   "dates_across_gated_copies": [
+    "2026-07-31",
+    "2026-10-31"
+   ],
+   "dates_across_gated_copies_not_past": [
+    "2026-10-31"
+   ],
+   "a_not_past_date_is_the_day_month_swap": false
+  },
+  {
+   "index": 1022,
+   "project_name": "Holmston Farm Battery Energy Storage System",
+   "connection_site": "Ayr 275/33kV",
+   "stage": "",
+   "plant_type": "Energy Storage System",
+   "status": "Scoping",
+   "project_id": "a0l4L0000005iXi",
+   "project_number": "PRO-002359",
+   "mw": "49.9",
+   "effective": "2026-07-31",
+   "effective_as_published": "31/07/2026",
+   "gate": "2",
+   "tier": "Gate 2",
+   "readings": [
+    {
+     "t_public": "2026-05-19",
+     "found": true,
+     "gate": "",
+     "status": "Scoping",
+     "effective_as_published": "2025-06-30",
+     "effective": "2025-06-30"
+    },
+    {
+     "t_public": "2026-08-22",
+     "found": true,
+     "gate": "2",
+     "status": "Scoping",
+     "effective_as_published": "2026-07-31",
+     "effective": "2026-07-31"
+    },
+    {
+     "t_public": "2026-08-25",
+     "found": true,
+     "gate": "2",
+     "status": "Scoping",
+     "effective_as_published": "2026-07-31",
+     "effective": "2026-07-31"
+    },
+    {
+     "t_public": "2026-09-15",
+     "found": true,
+     "gate": "2",
+     "status": "Scoping",
+     "effective_as_published": "31/07/2026",
+     "effective": "2026-07-31"
+    }
+   ],
+   "first_copy_in_the_tier": "2026-08-22",
+   "date_when_first_in_the_tier": "2026-07-31",
+   "already_past_when_first_in_the_tier": true,
+   "dates_across_gated_copies": [
+    "2025-06-30",
+    "2026-07-31"
+   ],
+   "dates_across_gated_copies_not_past": [],
+   "a_not_past_date_is_the_day_month_swap": false
+  },
+  {
+   "index": 1322,
+   "project_name": "Lovat Estate BESS",
+   "connection_site": "Beauly 132/33 kV GSP Substation",
+   "stage": "",
+   "plant_type": "Energy Storage System",
+   "status": "Scoping",
+   "project_id": "a0l8e0000010xRk",
+   "project_number": "PRO-003062",
+   "mw": "49.9",
+   "effective": "2026-05-31",
+   "effective_as_published": "31/05/2026",
+   "gate": "2",
+   "tier": "Gate 2",
+   "readings": [
+    {
+     "t_public": "2026-05-19",
+     "found": true,
+     "gate": "",
+     "status": "Scoping",
+     "effective_as_published": "2026-05-31",
+     "effective": "2026-05-31"
+    },
+    {
+     "t_public": "2026-08-22",
+     "found": true,
+     "gate": "2",
+     "status": "Scoping",
+     "effective_as_published": "2026-05-31",
+     "effective": "2026-05-31"
+    },
+    {
+     "t_public": "2026-08-25",
+     "found": true,
+     "gate": "2",
+     "status": "Scoping",
+     "effective_as_published": "2026-05-31",
+     "effective": "2026-05-31"
+    },
+    {
+     "t_public": "2026-09-15",
+     "found": true,
+     "gate": "2",
+     "status": "Scoping",
+     "effective_as_published": "31/05/2026",
+     "effective": "2026-05-31"
+    }
+   ],
+   "first_copy_in_the_tier": "2026-08-22",
+   "date_when_first_in_the_tier": "2026-05-31",
+   "already_past_when_first_in_the_tier": true,
+   "dates_across_gated_copies": [
+    "2026-05-31"
+   ],
+   "dates_across_gated_copies_not_past": [],
+   "a_not_past_date_is_the_day_month_swap": false
+  },
+  {
+   "index": 880,
+   "project_name": "Glenrothes BESS",
+   "connection_site": "Glenrothes 275/33kV",
+   "stage": "",
+   "plant_type": "Energy Storage System",
+   "status": "Consents Approved",
+   "project_id": "a0l4L0000005iTw",
+   "project_number": "PRO-002089",
+   "mw": "46",
+   "effective": "2025-10-30",
+   "effective_as_published": "30/10/2025",
+   "gate": "2",
+   "tier": "Gate 2",
+   "readings": [
+    {
+     "t_public": "2026-05-19",
+     "found": true,
+     "gate": "",
+     "status": "Consents Approved",
+     "effective_as_published": "2025-10-30",
+     "effective": "2025-10-30"
+    },
+    {
+     "t_public": "2026-08-22",
+     "found": true,
+     "gate": "2",
+     "status": "Consents Approved",
+     "effective_as_published": "2025-10-30",
+     "effective": "2025-10-30"
+    },
+    {
+     "t_public": "2026-08-25",
+     "found": true,
+     "gate": "2",
+     "status": "Consents Approved",
+     "effective_as_published": "2025-10-30",
+     "effective": "2025-10-30"
+    },
+    {
+     "t_public": "2026-09-15",
+     "found": true,
+     "gate": "2",
+     "status": "Consents Approved",
+     "effective_as_published": "30/10/2025",
+     "effective": "2025-10-30"
+    }
+   ],
+   "first_copy_in_the_tier": "2026-08-22",
+   "date_when_first_in_the_tier": "2025-10-30",
+   "already_past_when_first_in_the_tier": true,
+   "dates_across_gated_copies": [
+    "2025-10-30"
+   ],
+   "dates_across_gated_copies_not_past": [],
+   "a_not_past_date_is_the_day_month_swap": false
+  },
+  {
+   "index": 2152,
+   "project_name": "Windy Standard III Wind Farm",
+   "connection_site": "Dun Hill 132/33kV",
+   "stage": "1",
+   "plant_type": "Wind Onshore",
+   "status": "Awaiting Consents",
+   "project_id": "a0l4L0000005ite",
+   "project_number": "PRO-000359-1",
+   "mw": "43.5",
+   "effective": "2026-06-01",
+   "effective_as_published": "01/06/2026",
+   "gate": "2",
+   "tier": "Gate 2",
+   "readings": [
+    {
+     "t_public": "2026-05-19",
+     "found": true,
+     "gate": "",
+     "status": "Awaiting Consents",
+     "effective_as_published": "2026-06-01",
+     "effective": "2026-06-01"
+    },
+    {
+     "t_public": "2026-08-22",
+     "found": true,
+     "gate": "2",
+     "status": "Awaiting Consents",
+     "effective_as_published": "2026-06-01",
+     "effective": "2026-06-01"
+    },
+    {
+     "t_public": "2026-08-25",
+     "found": true,
+     "gate": "2",
+     "status": "Awaiting Consents",
+     "effective_as_published": "2026-06-01",
+     "effective": "2026-06-01"
+    },
+    {
+     "t_public": "2026-09-15",
+     "found": true,
+     "gate": "2",
+     "status": "Awaiting Consents",
+     "effective_as_published": "01/06/2026",
+     "effective": "2026-06-01"
+    }
+   ],
+   "first_copy_in_the_tier": "2026-08-22",
+   "date_when_first_in_the_tier": "2026-06-01",
+   "already_past_when_first_in_the_tier": true,
+   "dates_across_gated_copies": [
+    "2026-06-01"
+   ],
+   "dates_across_gated_copies_not_past": [],
+   "a_not_past_date_is_the_day_month_swap": false
+  },
+  {
+   "index": 122,
+   "project_name": "Bankside BESS",
+   "connection_site": "Bainsford 132/33kV",
+   "stage": "",
+   "plant_type": "Energy Storage System",
+   "status": "Consents Approved",
+   "project_id": "a0l4L0000005iWY",
+   "project_number": "PRO-002151",
+   "mw": "43",
+   "effective": "2025-11-24",
+   "effective_as_published": "24/11/2025",
+   "gate": "2",
+   "tier": "Gate 2",
+   "readings": [
+    {
+     "t_public": "2026-05-19",
+     "found": true,
+     "gate": "",
+     "status": "Consents Approved",
+     "effective_as_published": "2025-11-24",
+     "effective": "2025-11-24"
+    },
+    {
+     "t_public": "2026-08-22",
+     "found": true,
+     "gate": "2",
+     "status": "Consents Approved",
+     "effective_as_published": "2025-11-24",
+     "effective": "2025-11-24"
+    },
+    {
+     "t_public": "2026-08-25",
+     "found": true,
+     "gate": "2",
+     "status": "Consents Approved",
+     "effective_as_published": "2025-11-24",
+     "effective": "2025-11-24"
+    },
+    {
+     "t_public": "2026-09-15",
+     "found": true,
+     "gate": "2",
+     "status": "Consents Approved",
+     "effective_as_published": "24/11/2025",
+     "effective": "2025-11-24"
+    }
+   ],
+   "first_copy_in_the_tier": "2026-08-22",
+   "date_when_first_in_the_tier": "2025-11-24",
+   "already_past_when_first_in_the_tier": true,
+   "dates_across_gated_copies": [
+    "2025-11-24"
+   ],
+   "dates_across_gated_copies_not_past": [],
+   "a_not_past_date_is_the_day_month_swap": false
+  },
+  {
+   "index": 108,
+   "project_name": "Balbougie Energy Centre",
+   "connection_site": "Inverkeithing 132/33kV",
+   "stage": "",
+   "plant_type": "Energy Storage System",
+   "status": "Consents Approved",
+   "project_id": "a0l4L0000005iTp",
+   "project_number": "PRO-002065",
+   "mw": "42",
+   "effective": "2026-07-31",
+   "effective_as_published": "31/07/2026",
+   "gate": "2",
+   "tier": "Gate 2",
+   "readings": [
+    {
+     "t_public": "2026-05-19",
+     "found": true,
+     "gate": "",
+     "status": "Consents Approved",
+     "effective_as_published": "2025-04-30",
+     "effective": "2025-04-30"
+    },
+    {
+     "t_public": "2026-08-22",
+     "found": true,
+     "gate": "2",
+     "status": "Consents Approved",
+     "effective_as_published": "2026-07-31",
+     "effective": "2026-07-31"
+    },
+    {
+     "t_public": "2026-08-25",
+     "found": true,
+     "gate": "2",
+     "status": "Consents Approved",
+     "effective_as_published": "2026-07-31",
+     "effective": "2026-07-31"
+    },
+    {
+     "t_public": "2026-09-15",
+     "found": true,
+     "gate": "2",
+     "status": "Consents Approved",
+     "effective_as_published": "31/07/2026",
+     "effective": "2026-07-31"
+    }
+   ],
+   "first_copy_in_the_tier": "2026-08-22",
+   "date_when_first_in_the_tier": "2026-07-31",
+   "already_past_when_first_in_the_tier": true,
+   "dates_across_gated_copies": [
+    "2025-04-30",
+    "2026-07-31"
+   ],
+   "dates_across_gated_copies_not_past": [],
+   "a_not_past_date_is_the_day_month_swap": false
+  },
+  {
+   "index": 544,
+   "project_name": "Dalmarnock Road BESS",
+   "connection_site": "DALMARNOCK 132/33KV SUBSTATION",
+   "stage": "",
+   "plant_type": "Energy Storage System",
+   "status": "Scoping",
+   "project_id": "a0l4L0000005idK",
+   "project_number": "PRO-001660",
+   "mw": "40",
+   "effective": "2024-02-23",
+   "effective_as_published": "23/02/2024",
+   "gate": "2",
+   "tier": "Gate 2",
+   "readings": [
+    {
+     "t_public": "2026-05-19",
+     "found": true,
+     "gate": "",
+     "status": "Scoping",
+     "effective_as_published": "2023-10-30",
+     "effective": "2023-10-30"
+    },
+    {
+     "t_public": "2026-08-22",
+     "found": true,
+     "gate": "2",
+     "status": "Scoping",
+     "effective_as_published": "2024-02-23",
+     "effective": "2024-02-23"
+    },
+    {
+     "t_public": "2026-08-25",
+     "found": true,
+     "gate": "2",
+     "status": "Scoping",
+     "effective_as_published": "2024-02-23",
+     "effective": "2024-02-23"
+    },
+    {
+     "t_public": "2026-09-15",
+     "found": true,
+     "gate": "2",
+     "status": "Scoping",
+     "effective_as_published": "23/02/2024",
+     "effective": "2024-02-23"
+    }
+   ],
+   "first_copy_in_the_tier": "2026-08-22",
+   "date_when_first_in_the_tier": "2024-02-23",
+   "already_past_when_first_in_the_tier": true,
+   "dates_across_gated_copies": [
+    "2023-10-30",
+    "2024-02-23"
+   ],
+   "dates_across_gated_copies_not_past": [],
+   "a_not_past_date_is_the_day_month_swap": false
+  },
+  {
+   "index": 194,
+   "project_name": "Bilbo Farm",
+   "connection_site": "Strichen 132/33kV GSP Substation",
+   "stage": "1",
+   "plant_type": "Energy Storage System;PV Array (Photo Voltaic/solar)",
+   "status": "Scoping",
+   "project_id": "a0l4L0000005iXh",
+   "project_number": "PRO-001301-1",
+   "mw": "25",
+   "effective": "2024-10-31",
+   "effective_as_published": "31/10/2024",
+   "gate": "2",
+   "tier": "Gate 2",
+   "readings": [
+    {
+     "t_public": "2026-05-19",
+     "found": true,
+     "gate": "",
+     "status": "Scoping",
+     "effective_as_published": "2024-10-31",
+     "effective": "2024-10-31"
+    },
+    {
+     "t_public": "2026-08-22",
+     "found": true,
+     "gate": "2",
+     "status": "Scoping",
+     "effective_as_published": "2024-10-31",
+     "effective": "2024-10-31"
+    },
+    {
+     "t_public": "2026-08-25",
+     "found": true,
+     "gate": "2",
+     "status": "Scoping",
+     "effective_as_published": "2024-10-31",
+     "effective": "2024-10-31"
+    },
+    {
+     "t_public": "2026-09-15",
+     "found": true,
+     "gate": "2",
+     "status": "Scoping",
+     "effective_as_published": "31/10/2024",
+     "effective": "2024-10-31"
+    }
+   ],
+   "first_copy_in_the_tier": "2026-08-22",
+   "date_when_first_in_the_tier": "2024-10-31",
+   "already_past_when_first_in_the_tier": true,
+   "dates_across_gated_copies": [
+    "2024-10-31"
+   ],
+   "dates_across_gated_copies_not_past": [],
+   "a_not_past_date_is_the_day_month_swap": false
+  },
+  {
+   "index": 1144,
+   "project_name": "Kincraig Energy Centre",
+   "connection_site": "Dyce 132/33kV GSP",
+   "stage": "",
+   "plant_type": "Energy Storage System;PV Array (Photo Voltaic/solar)",
+   "status": "Under Construction/Commissioning",
+   "project_id": "a0l4L0000005iUa",
+   "project_number": "PRO-001810",
+   "mw": "20.62",
+   "effective": "2025-04-30",
+   "effective_as_published": "30/04/2025",
+   "gate": "2",
+   "tier": "Gate 2",
+   "readings": [
+    {
+     "t_public": "2026-05-19",
+     "found": true,
+     "gate": "",
+     "status": "Under Construction/Commissioning",
+     "effective_as_published": "2026-04-30",
+     "effective": "2026-04-30"
+    },
+    {
+     "t_public": "2026-08-22",
+     "found": true,
+     "gate": "",
+     "status": "Under Construction/Commissioning",
+     "effective_as_published": "2025-04-30",
+     "effective": "2025-04-30"
+    },
+    {
+     "t_public": "2026-08-25",
+     "found": true,
+     "gate": "",
+     "status": "Under Construction/Commissioning",
+     "effective_as_published": "2025-04-30",
+     "effective": "2025-04-30"
+    },
+    {
+     "t_public": "2026-09-15",
+     "found": true,
+     "gate": "2",
+     "status": "Under Construction/Commissioning",
+     "effective_as_published": "30/04/2025",
+     "effective": "2025-04-30"
+    }
+   ],
+   "first_copy_in_the_tier": "2026-09-15",
+   "date_when_first_in_the_tier": "2025-04-30",
+   "already_past_when_first_in_the_tier": true,
+   "dates_across_gated_copies": [
+    "2025-04-30",
+    "2026-04-30"
+   ],
+   "dates_across_gated_copies_not_past": [],
+   "a_not_past_date_is_the_day_month_swap": false
+  },
+  {
+   "index": 2119,
+   "project_name": "Whitelaw Brae BESS",
+   "connection_site": "Whitelaw Brae BESS 33kV substation",
+   "stage": "",
+   "plant_type": "Energy Storage System",
+   "status": "Scoping",
+   "project_id": "a0l8e000000TPIW",
+   "project_number": "PRO-003247",
+   "mw": "1",
+   "effective": "2026-07-31",
+   "effective_as_published": "31/07/2026",
+   "gate": "2",
+   "tier": "Gate 2",
+   "readings": [
+    {
+     "t_public": "2026-05-19",
+     "found": true,
+     "gate": "",
+     "status": "Scoping",
+     "effective_as_published": "2026-07-31",
+     "effective": "2026-07-31"
+    },
+    {
+     "t_public": "2026-08-22",
+     "found": true,
+     "gate": "2",
+     "status": "Scoping",
+     "effective_as_published": "2026-07-31",
+     "effective": "2026-07-31"
+    },
+    {
+     "t_public": "2026-08-25",
+     "found": true,
+     "gate": "2",
+     "status": "Scoping",
+     "effective_as_published": "2026-07-31",
+     "effective": "2026-07-31"
+    },
+    {
+     "t_public": "2026-09-15",
+     "found": true,
+     "gate": "2",
+     "status": "Scoping",
+     "effective_as_published": "31/07/2026",
+     "effective": "2026-07-31"
+    }
+   ],
+   "first_copy_in_the_tier": "2026-08-22",
+   "date_when_first_in_the_tier": "2026-07-31",
+   "already_past_when_first_in_the_tier": true,
+   "dates_across_gated_copies": [
+    "2026-07-31"
+   ],
+   "dates_across_gated_copies_not_past": [],
+   "a_not_past_date_is_the_day_month_swap": false
+  }
+ ],
+ "g5_repetition": {
+  "sharing_a_project_id": [],
+  "sharing_a_project_name": [],
+  "mw_in_repeated_rows": "0"
+ },
+ "g6_gated_copies": [
+  "2026-05-19",
+  "2026-08-22",
+  "2026-08-25",
+  "2026-09-15"
+ ],
+ "g6_summary": {
+  "rows": 17,
+  "rows_seen_in_the_tier_in_a_gated_copy": 17,
+  "rows_whose_date_had_already_passed_when_first_in_the_tier": 17,
+  "mw_whose_date_had_already_passed_when_first_in_the_tier": "2497.92",
+  "rows_whose_gated_copies_publish_more_than_one_date": 7,
+  "mw_whose_gated_copies_publish_more_than_one_date": "752.52",
+  "rows_a_gated_copy_publishes_as_not_past": 2,
+  "mw_a_gated_copy_publishes_as_not_past": "550",
+  "mw_if_those_rows_are_read_as_not_past": "1947.92",
+  "rows_if_those_rows_are_read_as_not_past": 15
+ },
+ "confirmed_tier_overdue_rows": 17,
+ "confirmed_tier_overdue_mw": "2497.92",
+ "unknown_gate_values": [],
+ "falsifiers": {
+  "F4 the Gate column carries a value the pinned definition does not cover": false,
+  "F5 repeated ids or names hold more than a tenth of the overdue Gate 2 MW": false,
+  "F6 fewer than three gated copies are readable": false
+ }
+}

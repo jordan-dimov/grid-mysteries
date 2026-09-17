@@ -275,3 +275,222 @@ def test_two_stage_rows_in_one_copy_are_two_rows_but_one_copy():
     assert trace["Awaiting Consents"]["rows"] == 2
     assert trace["Awaiting Consents"]["copies"] == ["2026-09-15"]
     assert oq.distinct_copies([trace, trace]) == ["2026-09-15"]
+
+
+# ------------------------------------------------- version 2: the Gate column
+
+
+def gated(
+    name: str,
+    effective: object,
+    gate: str,
+    status: str = "Scoping",
+    mw: object = "100",
+    pid: str = "",
+    stage: str = "",
+    site: str = "A Site 400kV",
+) -> dict[str, object]:
+    row_ = row(name, effective, status, mw, pid=pid, stage=stage)
+    row_["Gate"] = gate
+    row_["Connection Site"] = site
+    return row_
+
+
+def gate_run(
+    rows: list[dict[str, object]], copies: list[tuple[str, list[dict[str, object]]]] | None = None
+) -> dict:
+    return oq.gate_census(rows, oq.census(rows, AS_OF), copies or [])
+
+
+def test_the_register_prints_1_and_2_and_the_mapping_is_the_only_interpretation():
+    """R9/R10: 1 and 2 map to the tiers; a blank maps to nothing and is
+    never folded into a tier; an unknown value maps to nothing either."""
+    assert oq.tier_of("1") == "Gate 1"
+    assert oq.tier_of("2") == "Gate 2"
+    assert oq.tier_of("") is None
+    assert oq.tier_of("3") is None
+    assert oq.gate_of({"Gate": " 2 "}) == "2"
+    assert oq.gate_of({"Gate": None}) == ""
+    assert oq.gate_of({}) == ""
+
+
+def test_the_whole_copy_and_the_overdue_rows_are_both_split_by_gate():
+    """G1 and G2, over the same rows, with the blank kept as its own class."""
+    rows = [
+        gated("Overdue confirmed", "01/10/2024", "2", mw="500"),
+        gated("Overdue provisional", "01/10/2024", "1", mw="100"),
+        gated("Overdue blank", "01/10/2024", "", mw="50"),
+        gated("Future confirmed", "01/10/2030", "2", mw="900"),
+    ]
+    result = gate_run(rows)
+    assert {g["gate"]: (g["rows"], g["mw"]) for g in result["g1_copy_by_gate"]} == {
+        "2": (2, Decimal("1400")),
+        "1": (1, Decimal("100")),
+        "": (1, Decimal("50")),
+    }
+    overdue = {g["gate"]: g for g in result["g2_overdue_by_gate"]}
+    assert overdue["2"]["rows"] == 1
+    assert overdue["2"]["mw"] == Decimal("500")
+    assert overdue["2"]["tier"] == "Gate 2"
+    assert overdue[""]["tier"] is None
+    assert result["confirmed_tier_overdue_rows"] == 1
+    assert result["confirmed_tier_overdue_mw"] == Decimal("500")
+
+
+def test_shares_are_always_a_row_share_and_a_capacity_share():
+    """R11: the two are computed separately and neither stands for the other."""
+    rows = [
+        gated("Big overdue", "01/10/2024", "2", mw="900"),
+        gated("Small overdue", "01/10/2024", "1", mw="100"),
+        gated("Big future", "01/10/2030", "2", mw="9100"),
+    ]
+    confirmed = next(g for g in gate_run(rows)["g2_overdue_by_gate"] if g["gate"] == "2")
+    assert confirmed["row_share_of_overdue"] == Decimal("0.5")
+    assert confirmed["capacity_share_of_overdue"] == Decimal("0.9")
+    assert confirmed["row_share_of_its_gate"] == Decimal("0.5")
+    assert confirmed["capacity_share_of_its_gate"] == Decimal("0.09")
+    assert oq.share(1, 0) is None
+
+
+def test_the_gate_and_status_cross_tab_shows_which_statuses_sit_in_the_tier():
+    """G3: the sharpest line in the piece has to come from a table."""
+    rows = [
+        gated("Scoping in the tier", "01/10/2024", "2", "Scoping", mw="500"),
+        gated("Consented in the tier", "01/10/2024", "2", "Consents Approved", mw="300"),
+        gated("Scoping outside", "01/10/2024", "", "Scoping", mw="20"),
+    ]
+    cross = gate_run(rows)["g3_overdue_by_gate_and_status"]
+    assert [(c["gate"], c["status"], c["rows"], c["mw"]) for c in cross] == [
+        ("", "Scoping", 1, Decimal("20")),
+        ("2", "Scoping", 1, Decimal("500")),
+        ("2", "Consents Approved", 1, Decimal("300")),
+    ]
+
+
+def test_a_shared_name_is_not_a_shared_entry_and_both_are_published():
+    """G5: two rows of one name with different ids are two entries; the
+    census says so and reports both readings."""
+    rows = [
+        gated("Platform", "01/10/2024", "2", mw="540", pid="a0l0000000000aa"),
+        gated("Platform", "01/10/2024", "2", mw="540", pid="a0l0000000000bb"),
+        gated("Twinned", "01/10/2024", "2", mw="200", pid="a0l0000000000cc", stage="1"),
+        gated("Twinned", "01/10/2024", "2", mw="300", pid="a0l0000000000cc", stage="2"),
+    ]
+    g5 = gate_run(rows)["g5_repetition"]
+    assert [g["key"] for g in g5["sharing_a_project_id"]] == ["a0l0000000000cc"]
+    assert [g["key"] for g in g5["sharing_a_project_name"]] == ["platform", "twinned"]
+    by_id = g5["sharing_a_project_id"][0]
+    assert by_id["mw_summed"] == Decimal("500")
+    assert by_id["mw_largest"] == Decimal("300")
+
+
+def test_f5_fires_when_repetition_holds_more_than_a_tenth_of_the_tier():
+    rows = [
+        gated("Twin", "01/10/2024", "2", mw="500", pid="dup", stage="1"),
+        gated("Twin", "01/10/2024", "2", mw="500", pid="dup", stage="2"),
+    ]
+    result = gate_run(rows)
+    key = "F5 repeated ids or names hold more than a tenth of the overdue Gate 2 MW"
+    assert result["falsifiers"][key] is True
+
+
+def test_f4_fires_on_a_gate_value_the_pinned_definition_does_not_cover():
+    rows = [gated("Odd", "01/10/2024", "3", mw="10")]
+    result = gate_run(rows)
+    assert result["unknown_gate_values"] == ["3"]
+    key = "F4 the Gate column carries a value the pinned definition does not cover"
+    assert result["falsifiers"][key] is True
+    assert result["confirmed_tier_overdue_rows"] == 0
+
+
+def test_f6_fires_when_too_few_gated_copies_are_readable():
+    rows = [gated("A", "01/10/2024", "2", mw="10")]
+    key = "F6 fewer than three gated copies are readable"
+    assert gate_run(rows, [])["falsifiers"][key] is True
+    three = [("2026-05-19", rows), ("2026-08-22", rows), ("2026-09-15", rows)]
+    assert gate_run(rows, three)["falsifiers"][key] is False
+
+
+def test_g6_reports_each_gated_copys_reading_and_never_guesses_an_absence():
+    """The only evidence on whether a confirmed date was carried in already
+    past, or set and then passed (R12)."""
+    now = gated("P", "12/04/2026", "2", "Scoping", mw="500", pid="a0l0000000000aa")
+    older = gated("P", "12/04/2026", "", "Scoping", mw="500", pid="a0l0000000000aa")
+    moved = gated("P", "01/12/2026", "2", "Scoping", mw="500", pid="a0l0000000000aa")
+    result = gate_run(
+        [now],
+        [("2026-05-19", [older]), ("2026-08-22", [moved]), ("2026-09-15", [now])],
+    )
+    entry = result["g4_confirmed_tier_overdue"][0]
+    assert [(r.t_public, r.found, r.gate, r.effective_as_published) for r in entry.readings] == [
+        ("2026-05-19", True, "", "12/04/2026"),
+        ("2026-08-22", True, "2", "01/12/2026"),
+        ("2026-09-15", True, "2", "12/04/2026"),
+    ]
+    absent = gate_run([now], [("2026-05-19", []), ("2026-09-15", [now])])
+    first = absent["g4_confirmed_tier_overdue"][0].readings[0]
+    assert first.found is False and first.effective is None and first.gate == ""
+
+
+def test_the_matching_rule_is_the_project_id_with_the_stage():
+    """Inherited from R6; the name and site are the fallback when a row
+    carries no id, which on this copy never happens."""
+    with_id = gated("A", "01/10/2024", "2", pid="a0l0000000000aaAAA", stage="1.0")
+    assert oq.identity_key(with_id) == ("id:a0l0000000000aa", "1")
+    without = gated("A", "01/10/2024", "2", stage="2", site="Some GSP")
+    assert oq.identity_key(without) == ("name:a|some gsp", "2")
+
+
+def test_g6_says_whether_the_date_had_already_passed_when_the_tier_was_set():
+    """R12: the only question the four copies can answer. A row whose cell
+    first reads the confirmed tier in a copy published after its date was
+    assessed into the tier already carrying a date in the past."""
+    now = gated("Late already", "23/02/2024", "2", mw="40", pid="a0l0000000000aa")
+    before = gated("Late already", "23/02/2024", "", mw="40", pid="a0l0000000000aa")
+    result = gate_run(
+        [now],
+        [("2026-05-19", [before]), ("2026-08-22", [now]), ("2026-09-15", [now])],
+    )
+    entry = result["g4_confirmed_tier_overdue"][0]
+    assert entry.first_copy_in_the_tier == "2026-08-22"
+    assert entry.date_when_first_in_the_tier == date(2024, 2, 23)
+    assert entry.already_past_when_first_in_the_tier is True
+    assert result["g6_summary"]["rows_whose_date_had_already_passed_when_first_in_the_tier"] == 1
+
+    # A row gated while its date was still ahead of it is the other story.
+    ahead = gated("Gated early", "30/10/2026", "2", mw="10", pid="a0l0000000000bb")
+    ahead_before = gated("Gated early", "30/10/2026", "", mw="10", pid="a0l0000000000bb")
+    passed = gated("Gated early", "30/06/2026", "2", mw="10", pid="a0l0000000000bb")
+    second = gate_run(
+        [passed],
+        [("2026-05-19", [ahead_before]), ("2026-08-22", [ahead]), ("2026-09-15", [passed])],
+    )
+    row_ = second["g4_confirmed_tier_overdue"][0]
+    assert row_.already_past_when_first_in_the_tier is False
+    assert row_.dates_across_gated_copies == (date(2026, 6, 30), date(2026, 10, 30))
+    assert second["g6_summary"]["rows_whose_gated_copies_publish_more_than_one_date"] == 1
+
+
+def test_a_gated_copy_that_publishes_a_date_in_the_future_is_flagged():
+    """The register printing one row's date two ways is the difference
+    between a row being overdue and not being overdue at all, so the census
+    reports the alternative reading and what the tier looks like without it."""
+    now = gated("Ambiguous", "12/04/2026", "2", mw="500", pid="a0l0000000000aa")
+    iso = gated("Ambiguous", "2026-12-04", "", mw="500", pid="a0l0000000000aa")
+    other = gated("Plain", "30/10/2025", "2", mw="100", pid="a0l0000000000bb")
+    result = gate_run(
+        [now, other],
+        [("2026-05-19", [iso, other]), ("2026-08-22", [now, other]), ("2026-09-15", [now, other])],
+    )
+    entry = next(g for g in result["g4_confirmed_tier_overdue"] if g.project_name == "Ambiguous")
+    assert entry.dates_across_gated_copies_not_past == (date(2026, 12, 4),)
+    assert entry.a_not_past_date_is_the_day_month_swap is True
+    summary = result["g6_summary"]
+    assert summary["rows_a_gated_copy_publishes_as_not_past"] == 1
+    assert summary["mw_a_gated_copy_publishes_as_not_past"] == Decimal("500")
+    assert summary["mw_if_those_rows_are_read_as_not_past"] == Decimal("100")
+    assert summary["rows_if_those_rows_are_read_as_not_past"] == 1
+
+    plain = next(g for g in result["g4_confirmed_tier_overdue"] if g.project_name == "Plain")
+    assert plain.dates_across_gated_copies_not_past == ()
+    assert plain.a_not_past_date_is_the_day_month_swap is False

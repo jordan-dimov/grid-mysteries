@@ -24,6 +24,16 @@ cd "$(dirname "$0")/.."
 export PATH="${HOME}/.local/bin:${PATH}"
 export VINTAGE_STORE="${VINTAGE_STORE:-s3://a115-vintages}"
 export AWS_PROFILE="${AWS_PROFILE:-a115-watchdog}"
+# The watchdog's credentials live in their own file, not ~/.aws/credentials.
+# The BBC login helpers in ~/.local/bin (aws-login.sh line 45, aws-login-mok.sh
+# line 17) and ~/dev/ecreation/bbc/aws-login-and-assume-role.sh write the new
+# [default] with a single `>` redirect, which truncates the file and takes
+# every other profile with it. That is what removed [a115-watchdog] between
+# 2026-09-16 morning and evening and left this watchdog failing three runs in
+# a row with ProfileNotFound.
+if [[ -z "${AWS_SHARED_CREDENTIALS_FILE:-}" && -f "$HOME/.aws/credentials-vintage" ]]; then
+  export AWS_SHARED_CREDENTIALS_FILE="$HOME/.aws/credentials-vintage"
+fi
 log=data/vintage-watchdog.log
 mkdir -p data
 {

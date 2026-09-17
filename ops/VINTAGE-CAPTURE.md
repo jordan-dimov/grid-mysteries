@@ -190,6 +190,25 @@ the duplication as a failure mode rather than guessing which copy is live.
 The same duplication on `vintage-capture` should go the same way before it
 bites there too.
 
+**Done on `tracker-013`, 2026-09-17, at the sponsor's instruction.** The four
+duplicated job-level variables were deleted from the job; `AWS_DEFAULT_REGION`
+and `VINTAGE_STORE` remain, which is exactly what `render.yaml` declares as
+plain values, and `vintage-secrets` is still linked with its five. Verified
+after a reload: the job's own Environment Variables list is now those two and
+nothing else, so the group is the single source of `AWS_ACCESS_KEY_ID`,
+`AWS_SECRET_ACCESS_KEY`, `HEALTHCHECK_URL_013` and `SEAL_013`. No value was
+read or written, and no key material passed through the session.
+
+`vintage-capture` still carries its own duplicate `AWS_ACCESS_KEY_ID` and
+`AWS_SECRET_ACCESS_KEY`. It was left alone deliberately: it works today, and
+changing a working job is a separate decision.
+
+**Still outstanding: the deploy.** Clearing the variables does not reach the
+schedule on its own, because a cron job's scheduled runs use the environment
+captured by its last deploy, which is still `a1c2624` from 2026-09-15. Until
+`tracker-013` is deployed, the 09:00 UTC run keeps using the old snapshot and
+keeps failing. Batch 1 becomes eligible on 2026-09-19.
+
 **Standing consequence for this file:** whenever a secret or environment
 value used by a cron job changes, the job must be deployed for the schedule
 to see it. Add the deploy to the change, or the next scheduled run keeps the

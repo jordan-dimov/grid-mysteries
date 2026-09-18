@@ -608,3 +608,44 @@ run under this plan is the 06:30 UTC run of 2026-09-19; the capture
 healthcheck clears on its success, and the watchdog's freshness check
 follows at the next 16:12 or 04:12 run after that.**
 
+
+
+### 2026-09-18 09:00 UTC: `tracker-013` failed at pull-state, the day before batch 1
+
+**10:01 BST, `tracker-013` DOWN, "Exited with status 1".** The log ends at
+`pull-state 013: 12 file(s)` with two `MISMATCH` lines
+(`evidence/acquisition-log.json`, `evidence/neso-manifest.json`) and no
+runner output: `pull-state` exits 1 on any MISMATCH, so `scripts/run-013-render`
+stopped before `run.py`, and nothing was acquired for 2026-09-18
+(`state/013/data/raw/neso/013/` ends at 2026-09-17).
+
+**Cause, structural.** The live image (`dep-dalvm9e1egvs7380li60`, commit
+`fa41084`) carries the repository's copies of those two files as they were at
+build time. The 14:44 recovery run of 2026-09-17 then pinned that day's
+vintages and pushed a newer log and manifest to the archive; the laptop synced
+and committed them (`0444cb8`), but the image did not change. `pull` replaces
+a local file only when the archive's bytes extend it, and `write_json`
+re-serialises the whole document, so the two are MISMATCH, not `grew`. This
+would recur after every run that pushes state: the job can succeed only on
+the first run after a deploy. It would have failed again on 2026-09-19, batch
+1's first eligible day.
+
+**Fix.** `pull-state --overwrite`: the archive wins for a file that differs,
+reported as `replaced`. The job passes it (the image's copy is a snapshot,
+never an authority); the laptop watchdog does not (a MISMATCH there means the
+repository and the archive diverged, and a person looks). Test
+`test_pull_overwrite_lets_the_archive_win_for_the_unattended_job`.
+
+**What today's miss cost.** The tracker's own 2026-09-18 pin is absent from
+`state/013/`. The 06:30 capture job holds NESO's 2026-09-18 BSAD file under
+`raw/neso/disaggregated-bsad-2026-27/2026-09-18/`, and its CKAN metadata for
+the costs and volume files is unchanged since 2026-09-15, so the archive holds
+what NESO published today either way. A one-off `scripts/run-013-render` on
+the new image pins the day into `state/013/` as the 2026-09-17 recovery did.
+
+**Sponsor's acts, in order:** push; `render deploys create
+crn-dakrtsbl550s73alah40 --wait --confirm`; then `render jobs create
+crn-dakrtsbl550s73alah40 --start-command scripts/run-013-render` and read its
+log with `render logs --resources job-<id>`; then the laptop watchdog
+(`systemctl --user start vintage-watchdog.service`) syncs the new state down
+for a commit. All before 09:00 UTC on 2026-09-19.

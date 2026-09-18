@@ -20,7 +20,13 @@ ping() {  # ok|fail
   curl -fsS -m 20 --retry 3 -o /dev/null "$url" || true
 }
 echo "=== $(date -u +%FT%TZ) tracker-013 on $today"
-run grid-mysteries capture pull-state --name 013 || { ping fail; exit 1; }
+# --overwrite: the image's copies of the acquisition log and manifests are a
+# build-time snapshot of the repository; the archive is the authority for
+# acquisition state, so a differing local file is replaced, not refused.
+# Without it, the run after any run that pushed state fails at this line with
+# MISMATCH before acquiring anything (2026-09-18 09:00 UTC, the day before
+# batch 1's first eligible day).
+run grid-mysteries capture pull-state --name 013 --overwrite || { ping fail; exit 1; }
 run python investigations/013-the-cover-price-tracker/run.py \
   --seal "$SEAL_013" --phase acquire --run-date "$today"
 status=$?

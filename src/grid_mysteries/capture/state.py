@@ -6,9 +6,15 @@ path>` so the laptop can sync them into the repository.
 does not already hold with the same bytes; `pull` downloads the instrument's
 state into the repository. Files that only grow (journals, regenerated
 manifests) may be replaced by a longer version that starts with the local
-bytes; anything else that differs is reported, never overwritten. The
-runner's own idempotency (verify pinned bytes against the journal, skip)
-then makes acquisition resumable from any machine.
+bytes; anything else that differs is reported, never overwritten, unless
+the caller says the archive wins (`overwrite=True`). The laptop never says
+so: a difference there means the repository and the archive have diverged
+and a person should look. The unattended job always says so: its working
+copy is the Docker image's snapshot of the repository at build time, which
+is stale the moment the job's previous run has pushed state, and refusing
+to replace it fails the job on every run after the first (tracker-013,
+2026-09-18 09:00 UTC). The runner's own idempotency (verify pinned bytes
+against the journal, skip) then makes acquisition resumable from any machine.
 """
 
 import fnmatch
@@ -62,9 +68,13 @@ def push(
     return uploaded
 
 
-def pull(store: ObjectStore, repo_root: Path, instrument: str) -> list[str]:
+def pull(
+    store: ObjectStore, repo_root: Path, instrument: str, *, overwrite: bool = False
+) -> list[str]:
     """Download the instrument's state into the repository; growth-only
-    replacement, and a report line for anything that differs otherwise."""
+    replacement, and a report line for anything that differs otherwise.
+    With `overwrite`, a differing local file is replaced by the archive's and
+    reported as `replaced` rather than `MISMATCH`."""
     prefix = f"state/{instrument}/"
     report = []
     for key in store.keys(prefix):
@@ -80,6 +90,10 @@ def pull(store: ObjectStore, repo_root: Path, instrument: str) -> list[str]:
             if body.startswith(local):
                 target.write_bytes(body)
                 report.append(f"grew {key} -> {target}")
+                continue
+            if overwrite:
+                target.write_bytes(body)
+                report.append(f"replaced {key} -> {target}")
                 continue
             report.append(f"MISMATCH {key} -> {target}")
             continue

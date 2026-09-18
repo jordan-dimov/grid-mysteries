@@ -58,6 +58,12 @@ def app(argv: list[str] | None = None) -> None:
         sub.add_argument(
             "--include", action="append", default=[], help="file-name glob (push only, repeatable)"
         )
+        sub.add_argument(
+            "--overwrite",
+            action="store_true",
+            help="pull only: the archive wins for a file that differs (the unattended job, "
+            "whose working copy is the image's build-time snapshot); never on the laptop",
+        )
     check = capture_commands.add_parser("check", help="The watchdog: five checks and a sync.")
     check.add_argument("--store", default=os.environ.get("VINTAGE_STORE", ""))
     check.add_argument("--repo-root", default=".", type=Path)
@@ -145,7 +151,7 @@ def state_command(args: argparse.Namespace) -> None:
     store = store_from_url(args.store)
     root = args.repo_root.resolve()
     if args.capture_command == "pull-state":
-        lines = state.pull(store, root, args.name)
+        lines = state.pull(store, root, args.name, overwrite=args.overwrite)
     else:
         if not args.path:
             raise SystemExit("push-state: at least one --path is required")

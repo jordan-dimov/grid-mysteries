@@ -96,6 +96,18 @@ visible. Then `scripts/schema-report` (which gained an `xlsx` branch and, on
 the day, header-row, delimiter-sniff and blank-row handling, because three of
 the files needed them) produced a report per file under `archives/`:
 
+> **Correction, 2026-09-18 (later the same day).** The user-agent reading was
+> the laptop's, and it was wrong for the ENA site. The first scheduled capture
+> from Render (06:30 UTC) got HTTP 403 on the ENA page *with* the browser
+> agent, and on both NGED DSA PDFs, while the NGED CSVs from the same host
+> passed. A probe run from the job's own egress (74.220.51.146, Frankfurt)
+> showed Cloudflare's managed challenge (`cf-mitigated: challenge`, "Just a
+> moment...") on all three URLs under three user agents; the same URLs return
+> 200 from this laptop under any agent. The block is on the address, not the
+> header. The ENA page is out of the plan (`TO_ADD`), the NGED entries fetch
+> `CSV,XLSX` only, and the two PDFs stay as the 2026-09-18 pins above. See
+> `ops/VINTAGE-CAPTURE.md`, "2026-09-18: two alerts".
+
 | archive | file | what the pass found |
 |---|---|---|
 | `neso-ea-register` | Existing Agreements Register v.2.0, XLSX, SHA-256 `a96e29b4…` | One sheet; three preamble rows ("PUBLIC - last updated 11/6/25 following developer request to remove a project from the public EA list"), header on row 5, **3,397 rows, 6 columns**: Project Name, Associated Installed Capacity, Existing Connection Date (all date cells), Existing Connection Point, Expressed an interest in Gate 1 agreement with reservation (N/Y), Technology Type (**18 distinct values**, including `Transmission Connected Demand`). No blanks, no ids, no status, no Gate outcome. |

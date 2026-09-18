@@ -115,14 +115,31 @@ def test_a_source_that_shrinks_to_a_login_page_fails_the_band(tmp_path: Path):
             "error": None,
         }
     ]
-    store.put("status/vintage-capture/2026-09-16.json", status(date(2026, 9, 16), resources=tiny))
-    checks = wd.check_bands(store, "vintage-capture", date(2026, 9, 16))
+    store.put("status/vintage-capture/latest.json", status(date(2026, 9, 16), resources=tiny))
+    checks = wd.check_bands(store, "vintage-capture")
     assert checks[0].ok is False and "1,200 bytes" in checks[0].detail
     fresh = LocalStore(tmp_path / "new")
-    fresh.put("status/vintage-capture/2026-09-16.json", status(date(2026, 9, 16)))
-    assert wd.check_bands(fresh, "vintage-capture", date(2026, 9, 16))[0].detail.endswith(
-        "no band yet"
+    fresh.put("status/vintage-capture/latest.json", status(date(2026, 9, 16)))
+    assert wd.check_bands(fresh, "vintage-capture")[0].detail.endswith("no band yet")
+    assert wd.check_bands(LocalStore(tmp_path / "empty"), "vintage-capture")[0].ok is False
+
+
+def test_a_run_before_the_day_s_capture_bands_the_latest_status_not_today_s(tmp_path: Path):
+    """The 04:12 watchdog run precedes the 06:30 capture; the band is anchored
+    on latest.json (yesterday's run), and the absence of today's dated
+    status is not a failure. Regression for the 2026-09-18 04:12 alert."""
+    store = LocalStore(tmp_path)
+    seed(store, today=date(2026, 9, 17))  # latest is the 17th; "today" is the 18th
+    report = wd.run_watchdog(
+        store,
+        repo_root=tmp_path / "repo",
+        now=lambda: datetime(2026, 9, 18, 3, 12, tzinfo=UTC),
+        jobs={"vintage-capture": 26},
+        rng=random.Random(1),
     )
+    bands = [c for c in report.checks if c.name.startswith("band:")]
+    assert bands and all(c.ok for c in bands)
+    assert "no status for" not in " ".join(c.detail for c in report.checks)
 
 
 def test_sample_detects_a_corrupted_object_and_proofs_detect_a_missing_sidecar(tmp_path: Path):

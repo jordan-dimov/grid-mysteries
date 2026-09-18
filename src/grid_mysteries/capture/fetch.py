@@ -13,8 +13,10 @@ from typing import Protocol
 
 USER_AGENT = "grid-mysteries-capture/1 (research; jdimov@a115.co.uk)"
 #: Sent only to publishers whose edge refuses the identifying agent above with
-#: a 403 (SSEN's portal, the ENA site); a resource opts in through its
-#: `headers`, so the exception is visible in the plan, never silent.
+#: a 403 (SSEN's portal); a resource opts in through its `headers`, so the
+#: exception is visible in the plan, never silent. It does not help against a
+#: Cloudflare JavaScript challenge of the egress address (the ENA page from
+#: Render, 2026-09-18): that is a plan question, not a header one.
 BROWSER_USER_AGENT = (
     "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) "
     "Chrome/128.0 Safari/537.36"

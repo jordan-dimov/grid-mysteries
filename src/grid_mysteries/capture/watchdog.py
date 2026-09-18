@@ -79,16 +79,22 @@ def check_freshness(store: ObjectStore, jobs: dict[str, float], now: datetime) -
     return out
 
 
-def check_bands(store: ObjectStore, job: str, today: date) -> list[Check]:
-    """Today's artefact count and bytes per resource against the median of
-    the previous BAND_RUNS days that have a status: a source that shrinks
-    to a login page fails BAND_LOW, one that explodes fails BAND_HIGH."""
-    latest = _load(store, status_key(job, today))
+def check_bands(store: ObjectStore, job: str) -> list[Check]:
+    """The latest run's artefact count and bytes per resource against the
+    median of the BAND_RUNS days before it that have a status: a source that
+    shrinks to a login page fails BAND_LOW, one that explodes fails BAND_HIGH.
+    The anchor is `status/latest.json`, not today's date: the watchdog fires
+    twice a day and the 04:12 run precedes the 06:30 capture, so "today's
+    status" does not exist yet and is not a fault (2026-09-18, the first
+    pre-capture run after the timer was re-enabled, failed on exactly that).
+    Staleness is check_freshness's question, not this one's."""
+    latest = _load(store, status_key(job, None))
     if latest is None:
-        return [Check(f"band:{job}", False, f"no status for {today}")]
+        return [Check(f"band:{job}", False, "no status object yet")]
+    day = date.fromisoformat(latest["day"])
     history: dict[str, list[tuple[int, int]]] = {}
     for back in range(1, BAND_RUNS + 1):
-        past = _load(store, status_key(job, today - timedelta(days=back)))
+        past = _load(store, status_key(job, day - timedelta(days=back)))
         if past is None:
             continue
         for r in past.get("resources", []):
@@ -259,7 +265,7 @@ def run_watchdog(
     report.checks += check_freshness(store, jobs or DEFAULT_JOBS, moment)
     for job in jobs or DEFAULT_JOBS:
         if store.get(status_key(job, None)) is not None:
-            report.checks += check_bands(store, job, today)
+            report.checks += check_bands(store, job)
     report.checks.append(check_sample(store, today - timedelta(days=1), rng=rng))
     report.checks += check_proofs(store, today)
     report.checks.append(check_bucket_settings(settings, EXPECTED_SETTINGS))

@@ -22,7 +22,10 @@ class Resource:
     params: dict[str, str] = field(default_factory=dict)
     note: str = ""
     #: Request headers this resource needs (a browser user agent for an edge
-    #: that refuses the job's own); empty for everything that does not.
+    #: that refuses the job's own); empty for everything that does not. A
+    #: header cannot pass a Cloudflare JavaScript challenge: when an edge
+    #: challenges the job's egress address (the ENA page, NGED's PDF paths,
+    #: 2026-09-18), the resource leaves the plan rather than gaining a header.
     headers: dict[str, str] = field(default_factory=dict)
     #: A header whose value is a secret: (header name, environment variable,
     #: value prefix). Resolved by the job at run time; a resource whose
@@ -278,15 +281,25 @@ PLAN: Final[tuple[Resource, ...]] = (
         "nged",
         "connections-reform-register",
         "ckan_package",
-        {"base": NGED_CKAN, "package_id": "nged-connections-reform-register"},
-        "CMP435 projects NGED manages; generation and storage (Export Capacity), no demand",
+        {
+            "base": NGED_CKAN,
+            "package_id": "nged-connections-reform-register",
+            "formats": "CSV,XLSX",
+        },
+        "CMP435 projects NGED manages; generation and storage (Export Capacity), no demand; "
+        "the DSA PDF is Cloudflare-challenged from Render's egress (2026-09-18) and is pinned "
+        "in archives/demand-sources already",
     ),
     Resource(
         "NGED-CONNECTIONS-REFORM-OUTCOMES",
         "nged",
         "connections-reform-outcomes",
         "ckan_package",
-        {"base": NGED_CKAN, "package_id": "nged-projects-connections-reforms-outcomes"},
+        {
+            "base": NGED_CKAN,
+            "package_id": "nged-projects-connections-reforms-outcomes",
+            "formats": "CSV,XLSX",
+        },
         "NESO Gate, Phase and queue position per NGED-managed project",
     ),
     Resource(
@@ -306,17 +319,6 @@ PLAN: Final[tuple[Resource, ...]] = (
         {"url": "https://www.ofgem.gov.uk/consultation/proposed-data-centre-connection-reforms"},
         "catches the decision document the day it is published",
     ),
-    Resource(
-        "ENA-CONNECTIONS-DASHBOARD",
-        "ena",
-        "connections-data-page",
-        "url",
-        {
-            "url": "https://www.energynetworks.org/industry/connecting-to-the-networks/connections-data"
-        },
-        "weekly overwrite, zero Wayback captures; edge needs a browser agent",
-        BROWSER,
-    ),
 )
 
 TO_ADD: Final[tuple[tuple[str, str], ...]] = (
@@ -328,6 +330,14 @@ TO_ADD: Final[tuple[tuple[str, str], ...]] = (
         "a new resource id each month; a package_show listing strategy is part 3's follow-up",
     ),
     ("NPg, ENWL, SPEN demand aggregates", "login or unavailable; no URL pinned"),
+    (
+        "ENA connections dashboard page",
+        "energynetworks.org/industry/connecting-to-the-networks/connections-data: weekly "
+        "overwrite, zero Wayback captures; Cloudflare serves a JavaScript challenge "
+        "(cf-mitigated: challenge) to Render's egress whatever the user agent, while the "
+        "laptop gets 200 with any agent (probed 2026-09-18); needs a laptop capture or a "
+        "browser agent, not a header",
+    ),
     ("Companies House filings", "waits for the identity link table (move 3)"),
 )
 

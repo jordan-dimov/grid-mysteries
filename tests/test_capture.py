@@ -45,6 +45,13 @@ def test_plan_names_are_unique_and_every_strategy_is_known():
 
     assert {r.strategy for r in PLAN} <= set(STRATEGIES)
     assert TO_ADD  # what is not captured is written down
+    # 2026-09-18: Cloudflare challenges Render's egress on NGED's PDF paths and
+    # the whole ENA page, whatever the user agent; the PDFs are excluded by
+    # format and the ENA page is written down, not fetched.
+    for name in ("NGED-CONNECTIONS-REFORM-REGISTER", "NGED-CONNECTIONS-REFORM-OUTCOMES"):
+        assert "PDF" not in by_name(name).params["formats"].upper().split(",")
+    assert all(r.name != "ENA-CONNECTIONS-DASHBOARD" for r in PLAN)
+    assert any("ENA connections dashboard" in item for item, _ in TO_ADD)
 
 
 def test_ckan_capture_writes_bytes_manifest_and_status(tmp_path: Path):

@@ -361,9 +361,10 @@ declaration at the freeze with the same three proofs.
 ## 7. Watchdog (`scripts/check-vintages`, systemd user timer)
 
 `Persistent=true`, on boot and every twelve hours. Five checks: every job's
-`status/latest.json` is younger than its schedule allows; artefact counts
-and bytes per resource sit inside a band learned from the last thirty
-runs; a random sample of yesterday's manifest entries re-downloads and
+`status/latest.json` is younger than its schedule allows; the latest run's
+artefact counts and bytes per resource sit inside a band learned from the
+thirty days before it (anchored on `latest.json`, not on today's date, since
+the 04:12 run precedes the 06:30 capture); a random sample of yesterday's manifest entries re-downloads and
 matches its digest; a proof exists for each manifest; Object Lock, logging
 and public-access settings are unchanged. Then one sync: manifests and
 proofs into `data/manifests/`, `state/` into the repo, bytes optionally
@@ -550,4 +551,52 @@ it in `vintage-secrets` again through the API, then deploy. **Standing rule
 from this:** never reference a secret variable in a Render start command,
 even to test its presence; the environment group's variable list, read
 through the API, is the check.
+
+### 2026-09-18: two alerts, one watchdog bug and one Cloudflare finding
+
+**04:12 BST, `vintage-watchdog` DOWN.** The first pre-capture run since the
+timer was re-enabled. `check_bands` looked up `status/vintage-capture/
+2026-09-18.json`, which cannot exist at 04:12 because the capture runs at
+06:30 UTC, and reported `no status for 2026-09-18` as a failure. Every other
+check passed. Fixed: the band is anchored on `status/latest.json` and its
+history is the thirty days before *that* day; staleness stays with
+`check_freshness`. Regression test
+`test_a_run_before_the_day_s_capture_bands_the_latest_status_not_today_s`.
+The 16:12 run would have passed on its own; the 04:12 run would have failed
+every day.
+
+**07:41 BST, `vintage-capture` DOWN, Render "Exited with status 1".** The
+first scheduled run under the demand-source plan. 26 of 29 entries captured
+(the manifest for 2026-09-18 was written and witnessed; nothing is lost).
+Three errors, all HTTP 403: both NGED DSA PDFs (the CSVs from the same host
+passed) and the ENA connections page (sent the browser agent). Probe from the
+job's own egress (one-off job `job-dameoo2d0e5s73f5skf0`, egress
+74.220.51.146): all three URLs answer 403 with `cf-mitigated: challenge` and
+Cloudflare's "Just a moment..." page under the project agent, two browser
+agents and a browser agent with Accept headers; the NGED CSV answers 200
+under all of them. From the laptop (82.44.101.149) every URL answers 200
+under every agent. So the 2026-09-18 note in `ops/DEMAND-CONNECTION-SOURCES.md`
+that "the ENA site refuses the identifying user agent" was a laptop finding
+that does not transfer: the edge challenges the *address*, and no header
+passes a JavaScript challenge. Remedy in the plan: NGED's two `ckan_package`
+entries take `formats: CSV,XLSX` (the PDFs are methodology documents, pinned
+in `archives/demand-sources/manifest-2026-09-18.json`); the ENA page leaves
+the plan for `TO_ADD` with the finding. A Wayback save was also tried from
+the laptop and was rate-limited (429), so that route is untested. Reaches the
+schedule only through a push and `render deploys create
+crn-dakrtsbl550s73alah50 --wait --confirm`; until then the 06:30 run fails
+daily on the same three entries and the healthcheck stays down.
+
+**How to probe from Render's egress without quoting.** Render's one-off
+start command keeps quote characters literally and splits on whitespace
+(`sh -c "…"` hands the shell a string that begins with a quote, and
+`echo <b64> | base64 -d | sh` echoes the pipe), which is the same parsing
+that leaked the UKPN key above. A single token with no whitespace survives:
+
+    render jobs create crn-dakrtsbl550s73alah50 \
+      --start-command "/usr/local/bin/python3 -c exec(bytes.fromhex('<hex of a script>').decode())"
+
+with `xxd -p script.py | tr -d '\n'` for the hex. The script uses the stdlib
+only, touches no store and references no variable. Its log is read with
+`render logs --resources job-<id>`.
 

@@ -600,3 +600,11 @@ with `xxd -p script.py | tr -d '\n'` for the hex. The script uses the stdlib
 only, touches no store and references no variable. Its log is read with
 `render logs --resources job-<id>`.
 
+**Pushed and deployed 2026-09-18 07:55 UTC (`b5bff1a`, `dep-damet6v40ujc73amb0ag`,
+by the sponsor), verified with a one-off `capture plan` job
+(`job-dametiad0e5s73f6duv0`): the deployed image lists 28 plan entries, both
+NGED entries among them, and the ENA page under TO ADD. The first scheduled
+run under this plan is the 06:30 UTC run of 2026-09-19; the capture
+healthcheck clears on its success, and the watchdog's freshness check
+follows at the next 16:12 or 04:12 run after that.**
+

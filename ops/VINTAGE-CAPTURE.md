@@ -649,3 +649,23 @@ crn-dakrtsbl550s73alah40 --start-command scripts/run-013-render` and read its
 log with `render logs --resources job-<id>`; then the laptop watchdog
 (`systemctl --user start vintage-watchdog.service`) syncs the new state down
 for a commit. All before 09:00 UTC on 2026-09-19.
+
+**Done 2026-09-18 09:15-09:20 UTC.** Pushed (`b5a580a`), deployed
+(`dep-damg3p5bedkc73bkqiu0`), and the one-off run (`job-damg45p42hec738vt6k0`)
+pulled clean (10 files, no MISMATCH), pinned the three 2026-09-18 NESO
+vintages, pushed six files and pinged ok. The `render jobs create` command
+failed with "unknown resource type" from the sponsor's terminal and worked
+from the automation with `-o json`; the difference is presumably the CLI's
+interactive mode, not the service. The laptop watchdog then synced the new
+state down for the commit that follows this note.
+The sync reported MISMATCH on all three evidence files; each was purely
+additive (one run in the log, three manifest entries, three journal lines),
+the three CSVs re-hash to the manifest's digests, and the BSAD digest equals
+the one the 06:30 capture stored under `raw/neso/disaggregated-bsad-2026-27/
+2026-09-18/`. Adopted and committed. Note that the watchdog's `sync` compares
+bytes exactly (no growth rule, unlike `state.pull`), so every tracker run that
+pushes state leaves the next watchdog run red until someone adopts; from
+2026-09-19 that is daily. Whether the sync should take additive growth
+automatically, or the red watchdog is the wanted prompt to look, is the
+sponsor's call.
+

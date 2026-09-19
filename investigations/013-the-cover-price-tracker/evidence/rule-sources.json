@@ -1,0 +1,18 @@
+{
+ "declaration": [
+  "DECLARATION-T4.md"
+ ],
+ "note": "Maps T4's rules only. DECLARATION.md (T1 to T3) was frozen on 2026-09-11, before the rule-to-test map existed; its rules are tested in tests/test_cover_price.py but are not mapped here after the fact.",
+ "rules": {
+  "W1 no seed day and no day before 2026-09-16 or after 2027-03-31 qualifies": "tests/test_cover_price_t4.py::test_no_day_before_2026_09_16_and_no_seed_day_ever_qualifies",
+  "X1 x is wind-unit accepted bid MWh over settlement accepted bid MWh, absolute, only when a DISPTAV type reconciles": "tests/test_cover_price_t4.py::test_x_is_wind_bid_volume_over_settlement_bid_volume_and_needs_the_gate",
+  "Y1 y is first-vintage L1 over the two cuts, exact; absent, late (after 2027-03-31) or non-positive two cuts do not qualify": "tests/test_cover_price_t4.py::test_y_is_exact_first_vintage_l1_over_the_two_cuts",
+  "S1 Spearman's rho uses average ranks for ties": "tests/test_cover_price_t4.py::test_ties_share_the_average_rank",
+  "S2 rho >= 0.50 is compared exactly; exactly 0.50 holds": "tests/test_cover_price_t4.py::test_the_threshold_is_exact_at_one_half",
+  "S3 a constant variable cannot rise and does not reach the bound": "tests/test_cover_price_t4.py::test_a_constant_variable_cannot_rise",
+  "V1 before 2027-03-31 only the count of qualifying days is reported": "tests/test_cover_price_t4.py::test_before_the_falsifier_date_only_the_count_is_reported",
+  "V2 on or after 2027-03-31: n >= 20 decides holds or fails; n < 20 is undecided": "tests/test_cover_price_t4.py::test_the_verdict_on_the_falsifier_date",
+  "V3 an L1 published after 2027-03-31 never enters, so a later run reaches the same verdict": "tests/test_cover_price_t4.py::test_a_later_run_reaches_the_same_verdict",
+  "R1 no running statistic is displayed before the falsifier date": "tests/test_cover_price_t4.py::test_describe_shows_only_the_count_before_the_date_and_both_renderers_use_it"
+ }
+}

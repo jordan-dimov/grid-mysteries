@@ -31,6 +31,7 @@ from typing import Any
 from grid_mysteries.corpus import PERIODS, REPO_ROOT, load_records
 from grid_mysteries.evidence import write_json
 from grid_mysteries.investigations import cover_price as cp
+from grid_mysteries.investigations import cover_price_t4 as t4
 from grid_mysteries.investigations import record_day as rd
 from grid_mysteries.rendering import balancing_bill
 from grid_mysteries.sources import elexon, neso
@@ -40,6 +41,7 @@ HERE = Path(__file__).parent
 EVIDENCE = HERE / "evidence"
 DRAFTS = HERE / "drafts"
 DECLARATION = HERE / "DECLARATION.md"
+DECLARATION_T4 = HERE / "DECLARATION-T4.md"
 TRACKER_JSON = EVIDENCE / "tracker.json"
 TRACKER_MD = HERE / "TRACKER.md"
 SITE_INDEX = REPO_ROOT / "site" / "index.html"
@@ -70,6 +72,16 @@ NESO_INPUTS = [
 
 def declaration_digest() -> str:
     return hashlib.sha256(DECLARATION.read_bytes()).hexdigest()
+
+
+def t4_frozen() -> bool:
+    """T4 is computed only once DECLARATION-T4.md is witnessed: its proof
+    sidecar exists and still describes the file's bytes."""
+    sidecar = DECLARATION_T4.with_name(DECLARATION_T4.name + ".timestamps.json")
+    if not DECLARATION_T4.exists() or not sidecar.exists():
+        return False
+    stamped = json.loads(sidecar.read_text())["sha256"]
+    return stamped == hashlib.sha256(DECLARATION_T4.read_bytes()).hexdigest()
 
 
 def journal(name: str) -> dict[str, Path]:
@@ -413,6 +425,12 @@ def compute(run_date: str) -> dict[str, Any]:
         "rows": ordered,
         "propositions": cp.evaluate(ordered, date.fromisoformat(run_date)),
     }
+    if t4_frozen():
+        tracker["propositions"]["T4"] = t4.evaluate(
+            ordered,
+            date.fromisoformat(run_date),
+            hashlib.sha256(DECLARATION_T4.read_bytes()).hexdigest(),
+        )
     write_json(TRACKER_JSON, tracker)
     return tracker
 
@@ -493,12 +511,23 @@ def render_propositions(verdicts: dict[str, Any]) -> str:
             + (f", {block['deciding_instances']} deciding" if "deciding_instances" in block else "")
             + f"). Falsifier date {verdicts['falsifier_date']}."
         )
+    if "T4" in verdicts:
+        lines.append(render_t4(verdicts["T4"]))
     records = verdicts["record_days"]
     lines.append(
         f"- Record days so far: {', '.join(records) if records else 'none'}. "
         f"As of {verdicts['as_of']}."
     )
     return "\n".join(lines)
+
+
+def render_t4(block: dict[str, Any]) -> str:
+    word, detail = t4.describe(block)
+    word = "**fails**" if word == "fails" else word
+    return (
+        f"- **T4** — {block['claim']}: {word} ({detail}). Declaration SHA-256 "
+        f"`{block['declaration_sha256'][:8]}…`."
+    )
 
 
 def render(tracker: dict[str, Any]) -> None:

@@ -12,6 +12,7 @@ from decimal import Decimal
 from html import escape
 from typing import Any
 
+from grid_mysteries.investigations import cover_price_t4
 from grid_mysteries.investigations.cover_price import (
     BSAD_PROVISIONAL,
     BSAD_PROVISIONAL_CAUTION,
@@ -215,6 +216,15 @@ def render_propositions(propositions: dict[str, Any] | None) -> str:
             f"<li><strong>{key}</strong> — {escape(block['claim'])}: {_word(block['holds'])} "
             f"({n} instance{'s' if n != 1 else ''}{deciding}). "
             f"Falsifier date {escape(propositions['falsifier_date'])}.</li>"
+        )
+    if "T4" in propositions:
+        block = propositions["T4"]
+        word, detail = cover_price_t4.describe(block)
+        shown = "<strong>fails</strong>" if word == "fails" else word
+        items.append(
+            f"<li><strong>T4</strong> — {escape(block['claim'])}: {shown} "
+            f"({escape(detail)}). Sealed separately, SHA-256 "
+            f"<code>{escape(block['declaration_sha256'][:8])}…</code>.</li>"
         )
     return "<ul>\n" + "\n".join(items) + "\n</ul>\n"
 

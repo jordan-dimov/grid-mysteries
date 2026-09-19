@@ -186,9 +186,32 @@ def test_sync_never_overwrites_different_local_bytes(tmp_path: Path):
         f"MISMATCH manifests/2026-09-15.ndjson -> {repo / 'data/manifests/2026-09-15.ndjson'}"
     ]
     assert (repo / "data/manifests/2026-09-15.ndjson").read_bytes() == b"old"
-    store.put("raw/neso/x/2026-09-15/abc", b"bytes")
+    good = f"raw/neso/x/2026-09-15/{hashlib.sha256(b'bytes').hexdigest()}"
+    store.put(good, b"bytes")
     wd.sync(store, repo, include_bytes=True)
-    assert (repo / "data/raw/archive/raw/neso/x/2026-09-15/abc").read_bytes() == b"bytes"
+    assert (repo / "data/raw/archive" / good).read_bytes() == b"bytes"
+
+
+def test_the_raw_mirror_downloads_each_object_once_and_refuses_bad_bytes(tmp_path: Path):
+    class Counting(LocalStore):
+        gets: list[str] = []
+
+        def get(self, key):
+            self.gets.append(key)
+            return super().get(key)
+
+    store = Counting(tmp_path / "bucket")
+    good = f"raw/neso/x/2026-09-15/{hashlib.sha256(b'bytes').hexdigest()}"
+    bad = f"raw/neso/x/2026-09-15/{hashlib.sha256(b'other').hexdigest()}"
+    store.put(good, b"bytes")
+    store.put(bad, b"tampered")
+    repo = tmp_path / "repo"
+    synced = wd.sync(store, repo, include_bytes=True)
+    assert f"MISMATCH {bad}: bytes do not hash to the key" in synced
+    assert not (repo / "data/raw/archive" / bad).exists()
+    store.gets.clear()
+    wd.sync(store, repo, include_bytes=True)
+    assert store.gets == [bad]  # the good object is not fetched again
 
 
 LOG = {"seal": "d20d5920", "runs": [{"run_date": "2026-09-18", "batches": []}]}

@@ -200,14 +200,15 @@ if __name__ == "__main__":
 
 
 def proofs_command(args: argparse.Namespace) -> None:
-    """Every committed `*.ots` (git ls-files), so a proof nobody committed is
-    never swept and a committed one is never missed."""
+    """Every committed `*.ots` (git ls-files) outside tests/ (whose fixtures
+    are proofs of the real 2026-09-15 manifest, frozen pending on purpose), so
+    a proof nobody committed is never swept and a committed one never missed."""
     import subprocess
 
     from grid_mysteries import proofs
 
     listed = subprocess.run(
-        ["git", "ls-files", "*.ots"], check=True, capture_output=True, text=True
+        ["git", "ls-files", "*.ots", ":!tests/"], check=True, capture_output=True, text=True
     ).stdout.split()
     paths = [Path(p) for p in listed]
     if args.proofs_command == "status":

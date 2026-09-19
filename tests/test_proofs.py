@@ -99,6 +99,13 @@ def test_a_proof_for_other_bytes_than_its_sidecar_is_a_fault(tmp_path: Path):
     assert path.read_bytes() == PENDING
 
 
+def test_a_proof_without_a_sidecar_is_a_fault_not_a_crash(tmp_path: Path):
+    path = tmp_path / "orphan.md.ots"
+    path.write_bytes(PENDING)
+    [line] = run(path)
+    assert not line.ok and line.detail == "no sidecar orphan.md.timestamps.json"
+
+
 def test_verify_all_reconfirms_complete_proofs(tmp_path: Path):
     path = stamped(tmp_path, UPGRADED)
     [line] = run(path, verify_all=True)

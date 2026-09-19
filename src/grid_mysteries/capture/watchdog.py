@@ -270,12 +270,12 @@ def sync(store: ObjectStore, repo_root: Path, *, include_bytes: bool = False) ->
         ("manifests/", repo_root / "data/manifests"),
         ("proofs/", repo_root / "data/manifests"),
     ]
-    if include_bytes:
-        targets.append(("raw/", repo_root / "data/raw/archive"))
     for prefix, base in targets:
         for key in store.keys(prefix):
-            rel = key[len(prefix) :] if prefix != "raw/" else key
-            _place(store, key, base / rel, synced)
+            _place(store, key, base / key[len(prefix) :], synced)
+    if include_bytes:
+        for key in store.keys("raw/"):
+            _mirror_raw(store, key, repo_root / "data/raw/archive" / key, synced)
     for key in store.keys("state/"):
         parts = key.split("/", 2)
         if len(parts) < 3:
@@ -303,6 +303,24 @@ def _place(
             synced.append(f"grew {key} -> {target}")
             return
         synced.append(f"MISMATCH {key} -> {target}")
+        return
+    target.parent.mkdir(parents=True, exist_ok=True)
+    target.write_bytes(body)
+    synced.append(f"{key} -> {target}")
+
+
+def _mirror_raw(store: ObjectStore, key: str, target: Path, synced: list[str]) -> None:
+    """Raw keys end in the SHA-256 of their bytes (`run.raw_key`) and are
+    never rewritten, so an existing local copy is not downloaded again, and
+    a download that does not hash to its own key is refused. A whole-archive
+    mirror twice a day then costs one listing plus the day's new objects."""
+    if target.exists():
+        return
+    body = store.get(key)
+    if body is None:
+        return
+    if hashlib.sha256(body).hexdigest() != key.rsplit("/", 1)[-1]:
+        synced.append(f"MISMATCH {key}: bytes do not hash to the key")
         return
     target.parent.mkdir(parents=True, exist_ok=True)
     target.write_bytes(body)

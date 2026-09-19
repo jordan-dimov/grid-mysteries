@@ -127,9 +127,11 @@ def sweep(
     re-confirmed against the explorers too."""
     lines = []
     for path in proofs:
-        sidecar = json.loads(
-            path.with_name(path.name[: -len(".ots")] + ".timestamps.json").read_text()
-        )
+        sidecar_path = path.with_name(path.name[: -len(".ots")] + ".timestamps.json")
+        if not sidecar_path.exists():
+            lines.append(Line(path, False, f"no sidecar {sidecar_path.name}"))
+            continue
+        sidecar = json.loads(sidecar_path.read_text())
         body = path.read_bytes()
         proof = read(body)
         if proof.digest != sidecar["sha256"]:

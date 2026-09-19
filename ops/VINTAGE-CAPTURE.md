@@ -712,3 +712,14 @@ new content as `new` (news, passing) when its runs are usually all unchanged,
 and treats rising above the band as news as well. Falling below the band, or
 an error, is still a fault. The first case was NESO's TEC register on
 2026-09-19.
+
+**Raw bytes mirrored to the laptop (2026-09-19).** Before this, the raw capture
+bytes existed only in the bucket; the laptop had manifests and proofs but not
+the data they describe. The watchdog unit now runs `check-vintages
+--include-bytes`. The mirror (`data/raw/archive/`, gitignored) only downloads
+objects it does not already have, since each raw key ends in the SHA-256 of its
+bytes and is never rewritten, and it refuses any download that does not hash
+to its key. First mirror: 1,043 objects, 817 MB on disk; the archive grows
+~55 MB/day, ~20 GB/year. After `git pull` on a new machine, re-run
+`ops/install-watchdog` or `systemctl --user daemon-reload`. A copy with a second
+provider (R2/B2) is not built; the laptop is the second copy.

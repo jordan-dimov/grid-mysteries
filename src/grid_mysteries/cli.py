@@ -179,8 +179,9 @@ def watchdog_command(args: argparse.Namespace) -> None:
         print(f"{'ok ' if check.ok else '!! '} {check.name}: {check.detail}")
     for line in report.synced:
         print(f"sync {line}")
-    print("check-vintages: OK" if report.ok else "check-vintages: FAILED")
-    if not report.ok or any(s.startswith("MISMATCH") for s in report.synced):
+    failed = not report.ok or any(s.startswith("MISMATCH") for s in report.synced)
+    print("check-vintages: FAILED" if failed else "check-vintages: OK")
+    if failed:
         sys.exit(1)
 
 

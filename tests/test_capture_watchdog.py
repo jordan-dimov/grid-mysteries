@@ -189,3 +189,66 @@ def test_sync_never_overwrites_different_local_bytes(tmp_path: Path):
     store.put("raw/neso/x/2026-09-15/abc", b"bytes")
     wd.sync(store, repo, include_bytes=True)
     assert (repo / "data/raw/archive/raw/neso/x/2026-09-15/abc").read_bytes() == b"bytes"
+
+
+LOG = {"seal": "d20d5920", "runs": [{"run_date": "2026-09-18", "batches": []}]}
+
+
+def test_extends_accepts_appended_lines_and_appended_json_entries():
+    assert wd.extends(b'{"a":1}\n', b'{"a":1}\n{"a":2}\n')
+    grown = {**LOG, "runs": [*LOG["runs"], {"run_date": "2026-09-19", "batches": [1]}]}
+    assert wd.extends(json.dumps(LOG).encode(), json.dumps(grown, indent=1).encode())
+    assert wd.extends(json.dumps([{"p": 1}]).encode(), json.dumps([{"p": 1}, {"p": 2}]).encode())
+
+
+def test_extends_rejects_edits_reorders_truncation_and_reformatting():
+    local = json.dumps([{"p": 1}, {"p": 2}]).encode()
+    assert not wd.extends(local, local)
+    assert not wd.extends(local, json.dumps([{"p": 1}, {"p": 2}], indent=2).encode())
+    assert not wd.extends(local, json.dumps([{"p": 1}, {"p": 3}, {"p": 4}]).encode())
+    assert not wd.extends(local, json.dumps([{"p": 2}, {"p": 1}, {"p": 3}]).encode())
+    assert not wd.extends(local, json.dumps([{"p": 1}]).encode())
+    assert not wd.extends(b'{"a":1}\n{"a":2}\n', b'{"a":1}\n')
+    assert not wd.extends(b'{"a":1}\n', b'{"a":9}\n{"a":2}\n')
+    edited_seal = {**LOG, "seal": "00000000", "runs": [*LOG["runs"], {"run_date": "x"}]}
+    assert not wd.extends(json.dumps(LOG).encode(), json.dumps(edited_seal).encode())
+    extra_key = {**LOG, "runs": [*LOG["runs"], {"run_date": "x"}], "note": "?"}
+    assert not wd.extends(json.dumps(LOG).encode(), json.dumps(extra_key).encode())
+    assert not wd.extends(b"not json", b"also not json")
+
+
+def test_sync_adopts_grown_state_but_never_grows_raw_manifests_or_proofs(tmp_path: Path):
+    store = LocalStore(tmp_path / "bucket")
+    repo = tmp_path / "repo"
+    evidence = "investigations/013-x/evidence"
+    local = {
+        f"{evidence}/acquisition-log.json": json.dumps(LOG).encode(),
+        f"{evidence}/neso-journal.ndjson": b'{"n":1}\n',
+        f"{evidence}/neso-manifest.json": json.dumps([{"n": 1}]).encode(),
+        "data/raw/elexon/013/a.json": b'{"n":1}\n',
+        "data/manifests/2026-09-15.ndjson": b'{"n":1}\n',
+    }
+    for path, body in local.items():
+        (repo / path).parent.mkdir(parents=True, exist_ok=True)
+        (repo / path).write_bytes(body)
+    grown_log = {**LOG, "runs": [*LOG["runs"], {"run_date": "2026-09-19", "batches": [1]}]}
+    store.put(f"state/013/{evidence}/acquisition-log.json", json.dumps(grown_log).encode())
+    store.put(f"state/013/{evidence}/neso-journal.ndjson", b'{"n":1}\n{"n":2}\n')
+    store.put(f"state/013/{evidence}/neso-manifest.json", json.dumps([{"n": 9}]).encode())
+    store.put("state/013/data/raw/elexon/013/a.json", b'{"n":1}\n{"n":2}\n')
+    store.put("manifests/2026-09-15.ndjson", b'{"n":1}\n{"n":2}\n')
+    synced = wd.sync(store, repo)
+    grew = sorted(s for s in synced if s.startswith("grew"))
+    mismatched = sorted(s for s in synced if s.startswith("MISMATCH"))
+    assert [s.split()[1] for s in grew] == [
+        f"state/013/{evidence}/acquisition-log.json",
+        f"state/013/{evidence}/neso-journal.ndjson",
+    ]
+    assert [s.split()[1] for s in mismatched] == [
+        "manifests/2026-09-15.ndjson",
+        "state/013/data/raw/elexon/013/a.json",
+        f"state/013/{evidence}/neso-manifest.json",
+    ]
+    assert json.loads((repo / evidence / "acquisition-log.json").read_bytes()) == grown_log
+    for path in ("data/raw/elexon/013/a.json", f"{evidence}/neso-manifest.json"):
+        assert (repo / path).read_bytes() == local[path]

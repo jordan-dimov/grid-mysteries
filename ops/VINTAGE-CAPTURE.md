@@ -682,3 +682,15 @@ the three CSVs re-hash to the manifest, and the BSAD digest equals the 06:30
 capture's copy. Adopted. (2) The TEC register band (2 artefacts / 424 KB
 against medians 1 / 2.5 KB). NESO published a new register, so the capture
 fetched the file as well as the metadata; that is a new vintage, not a fault.
+
+**Growth rule adopted (sponsor, 2026-09-19).** Daily hand adoption was a red
+light that is usually harmless, so it trains the eye to skip the one that is not.
+`watchdog.sync` now replaces instrument state outside `data/raw/` when the
+archive's copy only extends the local one (`watchdog.extends`: a byte prefix,
+or JSON whose lists keep every local entry unchanged and in order with the
+same keys around them) and logs it as `grew`. An edit, reorder, truncation,
+reformat or new key is still MISMATCH and still red. Witnessed manifests,
+proofs and raw artefacts never grow. Committing the grown files stays a human
+step: git is the record, and the watchdog only brings the second copy up to date.
+The CLI also no longer prints `check-vintages: OK` before exiting 1 on a
+MISMATCH-only run.

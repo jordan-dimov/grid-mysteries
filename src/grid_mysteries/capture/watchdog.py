@@ -212,11 +212,40 @@ def s3_settings(bucket: str, client: Any) -> Callable[[], dict[str, Any]]:
     return read
 
 
+def extends(local: bytes, remote: bytes) -> bool:
+    """Whether `remote` is `local` with entries appended and nothing else
+    changed: a byte prefix (journals, NDJSON), or JSON whose lists each keep
+    every local entry, unchanged and in order, with the same keys around them
+    (manifests, the acquisition log). Byte-identical or merely reformatted
+    content is not growth, and neither is an edit, reorder or truncation."""
+    if remote == local:
+        return False
+    if remote.startswith(local):
+        return True
+    try:
+        old, new = json.loads(local), json.loads(remote)
+    except ValueError:
+        return False
+    return old != new and _json_extends(old, new)
+
+
+def _json_extends(old: Any, new: Any) -> bool:
+    if isinstance(old, list) and isinstance(new, list):
+        return len(new) >= len(old) and new[: len(old)] == old
+    if isinstance(old, dict) and isinstance(new, dict):
+        return old.keys() == new.keys() and all(_json_extends(old[k], new[k]) for k in old)
+    return old == new
+
+
 def sync(store: ObjectStore, repo_root: Path, *, include_bytes: bool = False) -> list[str]:
     """Copy manifests and proofs into data/manifests/, instrument state
     (`state/<instrument>/<repo-relative path>`) into the repository, and
     optionally the raw bytes into data/raw/archive/. Never overwrites a
-    local file with different bytes; a mismatch is reported in the list."""
+    local file with different bytes, with one exception: instrument state
+    outside data/raw/ that only grew (see `extends`) is replaced and reported
+    as `grew`, because every tracker run appends to its log, manifests and
+    journals (2026-09-19). Anything else that differs is reported as
+    MISMATCH. Witnessed manifests, proofs and raw artefacts never grow."""
     synced: list[str] = []
     targets = [
         ("manifests/", repo_root / "data/manifests"),
@@ -232,17 +261,27 @@ def sync(store: ObjectStore, repo_root: Path, *, include_bytes: bool = False) ->
         parts = key.split("/", 2)
         if len(parts) < 3:
             continue
-        _place(store, key, repo_root / parts[2], synced)
+        _place(
+            store, key, repo_root / parts[2], synced, may_grow=not parts[2].startswith("data/raw/")
+        )
     return synced
 
 
-def _place(store: ObjectStore, key: str, target: Path, synced: list[str]) -> None:
+def _place(
+    store: ObjectStore, key: str, target: Path, synced: list[str], *, may_grow: bool = False
+) -> None:
     body = store.get(key)
     if body is None:
         return
     if target.exists():
-        if target.read_bytes() != body:
-            synced.append(f"MISMATCH {key} -> {target}")
+        local = target.read_bytes()
+        if local == body:
+            return
+        if may_grow and extends(local, body):
+            target.write_bytes(body)
+            synced.append(f"grew {key} -> {target}")
+            return
+        synced.append(f"MISMATCH {key} -> {target}")
         return
     target.parent.mkdir(parents=True, exist_ok=True)
     target.write_bytes(body)

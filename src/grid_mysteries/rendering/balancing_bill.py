@@ -12,6 +12,14 @@ from decimal import Decimal
 from html import escape
 from typing import Any
 
+from grid_mysteries.investigations.cover_price import (
+    BSAD_PROVISIONAL,
+    BSAD_PROVISIONAL_CAUTION,
+    WIND_AMBIGUOUS,
+    bsad_provisional,
+    wind_ambiguous,
+)
+
 TITLE = "The Balancing Bill"
 SUBTITLE = "Who got paid to keep Britain's grid balanced, day by day"
 REPO_URL = "https://github.com/jordan-dimov/grid-mysteries"
@@ -42,6 +50,18 @@ COLUMNS = (
     "Spent outside the main market",
     "Grid operator's own figure",
     "Official figure vs the headline number",
+)
+
+#: The sponsor-approved note on T2's failure (etrmbiz notes/2026-09-19-balancing-
+#: bill-t2-failure-drafts.md, section 1), verbatim. Markdown: one bold lead line.
+#: Rendered only beside a tracker whose T2 failed on 2026-09-09 (t2_failure_note).
+T2_FAILURE_NOTE: tuple[str, ...] = (
+    "**T2 failed on 9 September 2026.**",
+    "Before any tracker day was fetched, the declaration stated that NESO's own Constraints figure for a day would come out larger than two cuts of the mechanism's payouts: money paid on bids to wind units (paid to reduce output) plus money paid on offers to gas units (paid to increase it). The first day that could decide it was 9 September. NESO's figure is £4.13m; the two cuts come to £8.0m, so NESO's figure is 51.5% of them. NESO's file covers all 48 settlement periods for that day and is identical across five daily versions (15 to 19 September), so this is not a revision still to come. The declaration says this outcome is the publication. This note is that publication.",  # noqa: E501 - verbatim approved text
+    "What it means: the two cuts are not contained in what NESO calls constraints. Money paid to gas units to increase output buys more than constraint management, and on some days most of it is booked by NESO under other headings.",  # noqa: E501 - verbatim approved text
+    "What it does not mean: it says nothing about whether NESO's figure is right, and nothing about the size of the bill. The paid-out column is unaffected.",  # noqa: E501 - verbatim approved text
+    "A reading, not yet tested: the ratio seems to follow the wind. On the windiest seed days (4 and 5 September) NESO's figure was about 130% of the two cuts; on the calmest (2 and 9 September) about half. That pattern was noticed after the numbers were seen, so it proves nothing. It will be sealed as a new proposition before batch 2 is fetched on 26 September and decided by later days only. T2 stays marked failed.",  # noqa: E501 - verbatim approved text
+    "Two cautions on the table. The sign check on wind-unit bids failed on six of seven tracker days, so the wind-bids column is ambiguous on those days; the verdict above does not depend on it, because gas offers alone (£7.85m) exceed NESO's figure. And BSAD for 12 and 13 September reads close to zero (£72.86 and £47.48); that is correct under the declared rule, but NESO may not have finished filling those days, so read them as provisional.",  # noqa: E501 - verbatim approved text
 )
 
 BLANK = "—"
@@ -116,10 +136,15 @@ def row_cells(row: dict[str, Any], as_of: str) -> list[str]:
         outside = "not yet populated"
     else:
         outside = BLANK
+    if bsad_provisional(row):
+        outside += f" {BSAD_PROVISIONAL}"
+    wind = money_and_share(row["wind_bid_gbp"], row.get("wind_bid_share"))
+    if wind_ambiguous(row):
+        wind += f" {WIND_AMBIGUOUS}"
     return [
         day_label(row["settlement_date"]),
         money_m(row["paid_out_gbp"]),
-        money_and_share(row["wind_bid_gbp"], row.get("wind_bid_share")),
+        wind,
         money_and_share(row["gas_offer_gbp"], row.get("gas_offer_share")),
         money_and_share(row["other_gbp"], row.get("other_share")),
         gas_price,
@@ -152,6 +177,69 @@ def render_table(rows: list[dict[str, Any]], as_of: str) -> str:
     head = "".join(f'<th scope="col">{escape(c)}</th>' for c in COLUMNS)
     body = "\n".join(render_table_row(r, as_of) for r in ordered)
     return f"<table>\n<thead><tr>{head}</tr></thead>\n<tbody>\n{body}\n</tbody>\n</table>"
+
+
+def render_cautions(rows: list[dict[str, Any]]) -> str:
+    """One line per display-only caution present on the page, else nothing."""
+    lines = []
+    if any(wind_ambiguous(r) for r in rows):
+        lines.append(
+            f"{WIND_AMBIGUOUS} Wind figure ambiguous: on the marked days the check that "
+            "payments to wind farms for switching off ran in the expected direction failed, "
+            "so the figure has two readings; both are in the evidence file."
+        )
+    if any(bsad_provisional(r) for r in rows):
+        lines.append(
+            f"{BSAD_PROVISIONAL} Provisional: the grid operator may not have finished filling "
+            f"the marked days. {BSAD_PROVISIONAL_CAUTION}"
+        )
+    return "".join(f'<p class="notes">{escape(line)}</p>\n' for line in lines)
+
+
+def _word(holds: bool | None) -> str:
+    return "undecided" if holds is None else ("holds" if holds else "<strong>fails</strong>")
+
+
+def render_propositions(propositions: dict[str, Any] | None) -> str:
+    """The sealed propositions as they stand, in TRACKER.md's words."""
+    if not propositions:
+        return ""
+    items = []
+    for key in ("T1", "T2", "T3"):
+        block = propositions[key]
+        n = len(block["instances"])
+        deciding = (
+            f", {block['deciding_instances']} deciding" if "deciding_instances" in block else ""
+        )
+        items.append(
+            f"<li><strong>{key}</strong> — {escape(block['claim'])}: {_word(block['holds'])} "
+            f"({n} instance{'s' if n != 1 else ''}{deciding}). "
+            f"Falsifier date {escape(propositions['falsifier_date'])}.</li>"
+        )
+    return "<ul>\n" + "\n".join(items) + "\n</ul>\n"
+
+
+def t2_failure_note(propositions: dict[str, Any] | None) -> tuple[str, ...]:
+    """The approved note, when T2 has failed; a tracker whose T2 failed on
+    any day but 2026-09-09 is refused, so the note can never sit beside
+    figures that contradict it."""
+    t2 = (propositions or {}).get("T2")
+    if not t2 or t2.get("holds") is not False:
+        return ()
+    first = next(i for i in t2["instances"] if not i.get("seed") and i.get("holds") is False)
+    if first["settlement_date"] != "2026-09-09":
+        raise ValueError(f"T2 note is about 2026-09-09; tracker's first failure is {first}")
+    return T2_FAILURE_NOTE
+
+
+def render_note(paragraphs: tuple[str, ...]) -> str:
+    out = []
+    for para in paragraphs:
+        text = escape(para)
+        if text.startswith("**") and text.endswith("**"):
+            text = f"<strong>{text[2:-2]}</strong>"
+        out.append(f"<p>{text}</p>")
+    return "\n".join(out) + ("\n" if out else "")
 
 
 def render_corrections(corrections: list[dict[str, Any]] | None) -> str:
@@ -259,7 +347,11 @@ appeared, when it does. The <em>headline number</em> is wind payments plus gas
 payments, which is what the daily trackers add up. A blank means the figure
 could not be computed from what is pinned, never that it is zero.
 {record_line}</p>
-
+{render_cautions(rows)}
+<h2>Propositions</h2>
+<p>Sealed and timestamped before any tracker day was fetched; each is decided by
+its instances and reported as it stands.</p>
+{render_propositions(tracker.get("propositions"))}{render_note(t2_failure_note(tracker.get("propositions")))}
 <h2>How the numbers are made</h2>
 <p>The rules that pick the days, split the money and decide what counts were
 written down and sealed before any day's data was fetched, and the sealed

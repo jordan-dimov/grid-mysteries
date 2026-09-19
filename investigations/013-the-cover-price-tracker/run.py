@@ -470,7 +470,7 @@ Last computed {computed_at} (run date {run_date}). NESO vintages on disk:
 ## Propositions
 
 {propositions}
-
+{note}
 ## The table
 
 Money in £m; shares of paid-out. Blank means not computable from what is
@@ -508,6 +508,7 @@ def render(tracker: dict[str, Any]) -> None:
         run_date=tracker["run_date"],
         vintages=", ".join(tracker["neso_vintages"]) or "none",
         propositions=render_propositions(tracker["propositions"]),
+        note="".join(f"\n{p}\n" for p in balancing_bill.t2_failure_note(tracker["propositions"])),
     )
     TRACKER_MD.write_text(text + cp.render_table(tracker["rows"]) + "\n")
     SITE_INDEX.parent.mkdir(parents=True, exist_ok=True)

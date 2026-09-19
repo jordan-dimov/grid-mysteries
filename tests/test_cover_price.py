@@ -334,3 +334,37 @@ def test_render_row_blank_columns_and_seed_marker():
     unavailable = {"settlement_date": "2026-09-12", "seed": False, "available": False}
     assert cp.render_row(unavailable).startswith("| 2026-09-12 | unavailable |")
     assert cp.render_table([unavailable]).startswith(cp.TABLE_HEADER)
+
+
+def test_display_cautions_mark_values_without_changing_them():
+    base = {
+        "settlement_date": "2026-09-12",
+        "seed": False,
+        "available": True,
+        "paid_out_gbp": "23540000",
+        "net_gbp": "22400000",
+        "wind_bid_gbp": "2800000",
+        "wind_bid_share": "0.119",
+        "gas_offer_gbp": "17680000",
+        "gas_offer_share": "0.751",
+        "other_gbp": "3070000",
+        "other_share": "0.130",
+        "bsad_net_gbp": "72.86",
+        "bsad_share": "0.0000",
+        "sign_convention_holds": True,
+        "outcome": None,
+    }
+    quiet = dict(base, settlement_date="2026-09-16")
+    assert cp.render_table([quiet]) == "\n".join([cp.TABLE_HEADER, cp.render_row(quiet)])
+    assert "‡" not in cp.render_row(quiet) and "§" not in cp.render_row(quiet)
+    line = cp.render_row(dict(base, sign_convention_holds=False))
+    assert "| 2.80 (11.9 %) ‡ |" in line and "| 0.00 (0.0 %) § |" in line
+    table = cp.render_table([dict(base, sign_convention_holds=False)])
+    assert table.endswith(
+        "§ BSAD provisional: NESO may not have finished filling the marked days. The declared "
+        "rule treats a day with rows as populated, so this is a caution, not a reclassification."
+    )
+    assert "\n\n‡ The sign check on wind-unit bids failed" in table
+    unpopulated = dict(base, bsad_net_gbp=None, bsad_share=None, bsad_placeholder_only=True)
+    assert "§" not in cp.render_row(unpopulated)  # nothing to caution on a blank
+    assert "‡" not in cp.render_row(dict(base, sign_convention_holds=None))

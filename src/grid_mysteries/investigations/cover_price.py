@@ -475,6 +475,30 @@ TABLE_HEADER = (
 )
 
 
+#: Display-only cautions (sponsor, 2026-09-19); they never change a value in
+#: tracker.json or a verdict. Wind bids are marked ‡ on any row whose sign
+#: check fails. BSAD is marked § on days that are populated under the declared
+#: rule but look unfinished; the set is named, not inferred, so no later day
+#: is marked by a rule nobody declared.
+WIND_AMBIGUOUS = "‡"
+BSAD_PROVISIONAL = "§"
+PROVISIONAL_BSAD_DAYS = frozenset({"2026-09-12", "2026-09-13"})
+BSAD_PROVISIONAL_CAUTION = (
+    "The declared rule treats a day with rows as populated, so this is a caution, "
+    "not a reclassification."
+)
+
+
+def wind_ambiguous(row: dict[str, Any]) -> bool:
+    return row.get("available", False) and row.get("sign_convention_holds") is False
+
+
+def bsad_provisional(row: dict[str, Any]) -> bool:
+    return (
+        row.get("settlement_date") in PROVISIONAL_BSAD_DAYS and row.get("bsad_net_gbp") is not None
+    )
+
+
 def render_row(row: dict[str, Any]) -> str:
     flag = "seed (012)" if row.get("seed") else ("**record**" if row.get("record") else "")
     if not row.get("available"):
@@ -495,9 +519,12 @@ def render_row(row: dict[str, Any]) -> str:
         if row.get("bsad_net_gbp") is not None
         else ("unpopulated" if row.get("bsad_placeholder_only") else "")
     )
+    if bsad_provisional(row):
+        bsad += f" {BSAD_PROVISIONAL}"
+    wind_mark = f" {WIND_AMBIGUOUS}" if wind_ambiguous(row) else ""
     return (
         f"| {row['settlement_date']} | {flag} | {_m(row['paid_out_gbp'])} | {_m(row['net_gbp'])} "
-        f"| {_m(row['wind_bid_gbp'])} ({_pct(row['wind_bid_share'])}) "
+        f"| {_m(row['wind_bid_gbp'])} ({_pct(row['wind_bid_share'])}){wind_mark} "
         f"| {_m(row['gas_offer_gbp'])} ({_pct(row['gas_offer_share'])}) "
         f"| {_m(row['other_gbp'])} ({_pct(row['other_share'])}) "
         f"| {_price(row.get('gas_offer_vwap_gbp_per_mwh'))} "
@@ -507,4 +534,17 @@ def render_row(row: dict[str, Any]) -> str:
 
 
 def render_table(rows: list[dict[str, Any]]) -> str:
-    return "\n".join([TABLE_HEADER, *(render_row(r) for r in rows)])
+    notes = []
+    if any(wind_ambiguous(r) for r in rows):
+        notes.append(
+            f"{WIND_AMBIGUOUS} The sign check on wind-unit bids failed on the marked days, so "
+            "the wind-bids figure on those days is ambiguous; each row in "
+            "`evidence/tracker.json` carries both readings."
+        )
+    if any(bsad_provisional(r) for r in rows):
+        notes.append(
+            f"{BSAD_PROVISIONAL} BSAD provisional: NESO may not have finished filling the "
+            f"marked days. {BSAD_PROVISIONAL_CAUTION}"
+        )
+    table = "\n".join([TABLE_HEADER, *(render_row(r) for r in rows)])
+    return table + "".join(f"\n\n{n}" for n in notes)

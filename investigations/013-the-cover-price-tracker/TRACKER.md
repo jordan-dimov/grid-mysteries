@@ -55,7 +55,7 @@ Last computed 2026-09-19T19:21:14Z (run date 2026-09-19). NESO vintages on disk:
 
 Before any tracker day was fetched, the declaration stated that NESO's own Constraints figure for a day would come out larger than two cuts of the mechanism's payouts: money paid on bids to wind units (paid to reduce output) plus money paid on offers to gas units (paid to increase it). The first day that could decide it was 9 September. NESO's figure is £4.13m; the two cuts come to £8.0m, so NESO's figure is 51.5% of them. NESO's file covers all 48 settlement periods for that day and is identical across five daily versions (15 to 19 September), so this is not a revision still to come. The declaration says this outcome is the publication. This note is that publication.
 
-What it means: the two cuts are not contained in what NESO calls constraints. Money paid to gas units to increase output buys more than constraint management, and on some days most of it is booked by NESO under other headings.
+What it means: the two cuts are not contained in what NESO calls constraints. Money paid to gas units to increase output buys more than constraint management: on 9 September at least £3.72m of the £7.85m, close to half, sits outside NESO's Constraints figure. Where NESO books it has not been checked here.
 
 What it does not mean: it says nothing about whether NESO's figure is right, and nothing about the size of the bill. The paid-out column is unaffected.
 

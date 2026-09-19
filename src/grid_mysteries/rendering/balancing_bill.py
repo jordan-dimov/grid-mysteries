@@ -54,12 +54,16 @@ COLUMNS = (
 )
 
 #: The sponsor-approved note on T2's failure (etrmbiz notes/2026-09-19-balancing-
-#: bill-t2-failure-drafts.md, section 1), verbatim. Markdown: one bold lead line.
+#: bill-t2-failure-drafts.md, section 1), verbatim except one sentence in the
+#: third paragraph, which the sponsor replaced on 2026-09-19 because "most of it
+#: is booked by NESO under other headings" went beyond the evidence (at least
+#: 47.4 % of 9 September's gas offers sit outside L1; NESO's other headings
+#: were not examined). Markdown: one bold lead line.
 #: Rendered only beside a tracker whose T2 failed on 2026-09-09 (t2_failure_note).
 T2_FAILURE_NOTE: tuple[str, ...] = (
     "**T2 failed on 9 September 2026.**",
     "Before any tracker day was fetched, the declaration stated that NESO's own Constraints figure for a day would come out larger than two cuts of the mechanism's payouts: money paid on bids to wind units (paid to reduce output) plus money paid on offers to gas units (paid to increase it). The first day that could decide it was 9 September. NESO's figure is £4.13m; the two cuts come to £8.0m, so NESO's figure is 51.5% of them. NESO's file covers all 48 settlement periods for that day and is identical across five daily versions (15 to 19 September), so this is not a revision still to come. The declaration says this outcome is the publication. This note is that publication.",  # noqa: E501 - verbatim approved text
-    "What it means: the two cuts are not contained in what NESO calls constraints. Money paid to gas units to increase output buys more than constraint management, and on some days most of it is booked by NESO under other headings.",  # noqa: E501 - verbatim approved text
+    "What it means: the two cuts are not contained in what NESO calls constraints. Money paid to gas units to increase output buys more than constraint management: on 9 September at least £3.72m of the £7.85m, close to half, sits outside NESO's Constraints figure. Where NESO books it has not been checked here.",  # noqa: E501 - verbatim approved text
     "What it does not mean: it says nothing about whether NESO's figure is right, and nothing about the size of the bill. The paid-out column is unaffected.",  # noqa: E501 - verbatim approved text
     "A reading, not yet tested: the ratio seems to follow the wind. On the windiest seed days (4 and 5 September) NESO's figure was about 130% of the two cuts; on the calmest (2 and 9 September) about half. That pattern was noticed after the numbers were seen, so it proves nothing. It will be sealed as a new proposition before batch 2 is fetched on 26 September and decided by later days only. T2 stays marked failed.",  # noqa: E501 - verbatim approved text
     "Two cautions on the table. The sign check on wind-unit bids failed on six of seven tracker days, so the wind-bids column is ambiguous on those days; the verdict above does not depend on it, because gas offers alone (£7.85m) exceed NESO's figure. And BSAD for 12 and 13 September reads close to zero (£72.86 and £47.48); that is correct under the declared rule, but NESO may not have finished filling those days, so read them as provisional.",  # noqa: E501 - verbatim approved text

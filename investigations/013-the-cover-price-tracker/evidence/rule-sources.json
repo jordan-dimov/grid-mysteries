@@ -13,6 +13,7 @@
   "V1 before 2027-03-31 only the count of qualifying days is reported": "tests/test_cover_price_t4.py::test_before_the_falsifier_date_only_the_count_is_reported",
   "V2 on or after 2027-03-31: n >= 20 decides holds or fails; n < 20 is undecided": "tests/test_cover_price_t4.py::test_the_verdict_on_the_falsifier_date",
   "V3 an L1 published after 2027-03-31 never enters, so a later run reaches the same verdict": "tests/test_cover_price_t4.py::test_a_later_run_reaches_the_same_verdict",
-  "R1 no running statistic is displayed before the falsifier date": "tests/test_cover_price_t4.py::test_describe_shows_only_the_count_before_the_date_and_both_renderers_use_it"
+  "R1 no running statistic is displayed before the falsifier date": "tests/test_cover_price_t4.py::test_describe_shows_only_the_count_before_the_date_and_both_renderers_use_it",
+  "C1 context rho values and points are reported only with the verdict and never decide it": "tests/test_cover_price_t4.py::test_context_is_reported_only_with_the_verdict_and_never_changes_it"
  }
 }

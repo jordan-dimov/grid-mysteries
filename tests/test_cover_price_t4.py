@@ -147,3 +147,18 @@ def test_describe_shows_only_the_count_before_the_date_and_both_renderers_use_it
     html = bb.render_propositions(props)
     assert "<strong>T4</strong>" in html and "3 qualifying days; decided once" in html
     assert not re.search(r"rho -?\d", html)  # the claim names rho; no computed value appears
+
+
+def test_context_is_reported_only_with_the_verdict_and_never_changes_it():
+    rows = monotone(20)
+    for i, r in enumerate(rows):
+        r["wind_bid_share"] = str(Decimal("0.3") - Decimal(i) / 100)  # falls as x rises
+        r["sign_convention_holds"] = i % 2 == 0
+    early = t4.evaluate(rows, date(2027, 3, 30), SHA)
+    assert "context" not in early
+    block = t4.evaluate(rows, DECIDED, SHA)
+    assert block["holds"] is True and block["rho"] == "1.0000"
+    ctx = block["context"]
+    assert ctx["rho_with_gbp_wind_bid_share"] == "-1.0000"  # reported, not deciding
+    assert ctx["rho_on_sign_check_holds_days"] == "1.0000" and ctx["sign_check_holds_days"] == 10
+    assert len(ctx["points"]) == 20 and ctx["points"][0]["settlement_date"] == "2026-09-16"

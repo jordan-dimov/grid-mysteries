@@ -130,7 +130,41 @@ def evaluate(rows: list[dict[str, Any]], as_of: date, declaration_sha256: str) -
         return block
     reaches, rho = spearman_at_least([x for _, x, _ in days], [y for _, _, y in days], RHO_MIN)
     block.update(rho=None if rho is None else str(rho), holds=reaches)
+    block["context"] = context(rows, days)
     return block
+
+
+def context(rows: list[dict[str, Any]], days: list[tuple[str, Fraction, Fraction]]) -> dict:
+    """Reported with the verdict and never deciding it: rho with the £
+    wind-bid share of paid-out in place of x, rho over the qualifying days
+    whose sign check holds, and every qualifying day's (x, y)."""
+    by_day = {r["settlement_date"]: r for r in rows}
+
+    def rho_of(pairs: list[tuple[Fraction, Fraction]]) -> str | None:
+        if len(pairs) < 2:
+            return None
+        rho = spearman_at_least([a for a, _ in pairs], [b for _, b in pairs], RHO_MIN)[1]
+        return None if rho is None else str(rho)
+
+    gbp = [
+        (Fraction(Decimal(by_day[d]["wind_bid_share"])), y)
+        for d, _, y in days
+        if by_day[d].get("wind_bid_share") is not None
+    ]
+    sign_holds = [(x, y) for d, x, y in days if by_day[d].get("sign_convention_holds") is True]
+    return {
+        "rho_with_gbp_wind_bid_share": rho_of(gbp),
+        "rho_on_sign_check_holds_days": rho_of(sign_holds),
+        "sign_check_holds_days": len(sign_holds),
+        "points": [
+            {
+                "settlement_date": d,
+                "x": str(Decimal(x.numerator) / Decimal(x.denominator)),
+                "y": str(Decimal(y.numerator) / Decimal(y.denominator)),
+            }
+            for d, x, y in days
+        ],
+    }
 
 
 def describe(block: dict[str, Any]) -> tuple[str, str]:

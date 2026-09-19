@@ -669,3 +669,16 @@ pushes state leaves the next watchdog run red until someone adopts; from
 automatically, or the red watchdog is the wanted prompt to look, is the
 sponsor's call.
 
+
+### 2026-09-19: batch 1 fetched; first daily adoption
+
+The 06:30 UTC capture ran clean on the new plan (all entries captured, no
+Cloudflare failures). `tracker-013` ran batch 1 at 09:01-09:04 UTC: 701
+Elexon artefacts for 2026-09-09..15 plus the three 2026-09-19 NESO vintages.
+All 701 re-hash to `batch-01-manifest.json`. The 13:21 BST watchdog run was
+red for two reasons. (1) MISMATCH on the acquisition log, the NESO manifest and
+the NESO journal. Each is purely additive (one run; three entries; three lines),
+the three CSVs re-hash to the manifest, and the BSAD digest equals the 06:30
+capture's copy. Adopted. (2) The TEC register band (2 artefacts / 424 KB
+against medians 1 / 2.5 KB). NESO published a new register, so the capture
+fetched the file as well as the metadata; that is a new vintage, not a fault.

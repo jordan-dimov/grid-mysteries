@@ -68,6 +68,13 @@ def app(argv: list[str] | None = None) -> None:
     check.add_argument("--store", default=os.environ.get("VINTAGE_STORE", ""))
     check.add_argument("--repo-root", default=".", type=Path)
     check.add_argument("--include-bytes", action="store_true", help="also mirror raw/ locally")
+    proofs = commands.add_parser("proofs", help="OpenTimestamps proofs in the repository.")
+    proofs_commands = proofs.add_subparsers(dest="proofs_command", required=True)
+    proofs_commands.add_parser("status", help="Offline: pending and complete proofs.")
+    sweep = proofs_commands.add_parser(
+        "sweep", help="Upgrade pending proofs, confirmed against two block explorers."
+    )
+    sweep.add_argument("--verify-all", action="store_true", help="re-confirm complete proofs")
     run.add_argument(
         "--healthcheck",
         default=os.environ.get("HEALTHCHECK_URL_CAPTURE", ""),
@@ -79,6 +86,8 @@ def app(argv: list[str] | None = None) -> None:
         doctor()
     elif args.command == "capture":
         capture_command(args)
+    elif args.command == "proofs":
+        proofs_command(args)
     else:
         print(sha256_file(args.path))
 
@@ -176,7 +185,8 @@ def watchdog_command(args: argparse.Namespace) -> None:
         include_bytes=args.include_bytes,
     )
     for check in report.checks:
-        print(f"{'ok ' if check.ok else '!! '} {check.name}: {check.detail}")
+        mark = "!! " if not check.ok else "new" if check.news else "ok "
+        print(f"{mark} {check.name}: {check.detail}")
     for line in report.synced:
         print(f"sync {line}")
     failed = not report.ok or any(s.startswith("MISMATCH") for s in report.synced)
@@ -187,3 +197,35 @@ def watchdog_command(args: argparse.Namespace) -> None:
 
 if __name__ == "__main__":
     app()
+
+
+def proofs_command(args: argparse.Namespace) -> None:
+    """Every committed `*.ots` (git ls-files), so a proof nobody committed is
+    never swept and a committed one is never missed."""
+    import subprocess
+
+    from grid_mysteries import proofs
+
+    listed = subprocess.run(
+        ["git", "ls-files", "*.ots"], check=True, capture_output=True, text=True
+    ).stdout.split()
+    paths = [Path(p) for p in listed]
+    if args.proofs_command == "status":
+        pending = [p for p in paths if not proofs.read(p.read_bytes()).complete]
+        for p in pending:
+            print(f"pending {p}")
+        print(f"proofs: {len(paths)} OpenTimestamps proof(s), {len(pending)} pending")
+        return
+    explorers = {name: proofs.explorer(base) for name, base in proofs.EXPLORERS.items()}
+    lines = proofs.sweep(
+        paths, upgrade=proofs.ots_upgrade, explorers=explorers, verify_all=args.verify_all
+    )
+    for line in lines:
+        print(f"{'ok ' if line.ok else '!! '} proof:{line.path}: {line.detail}")
+    failed = any(not line.ok for line in lines)
+    upgraded = sum(line.changed for line in lines)
+    print(
+        f"proofs sweep: {len(paths)} proof(s), {upgraded} upgraded; {'FAILED' if failed else 'OK'}"
+    )
+    if failed:
+        sys.exit(1)

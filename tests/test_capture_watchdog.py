@@ -252,3 +252,60 @@ def test_sync_adopts_grown_state_but_never_grows_raw_manifests_or_proofs(tmp_pat
     assert json.loads((repo / evidence / "acquisition-log.json").read_bytes()) == grown_log
     for path in ("data/raw/elexon/013/a.json", f"{evidence}/neso-manifest.json"):
         assert (repo / path).read_bytes() == local[path]
+
+
+def resource(name, artefacts, size, unchanged, error=None):
+    return {
+        "name": name,
+        "strategy": "ckan",
+        "artefacts": artefacts,
+        "bytes": size,
+        "unchanged": unchanged,
+        "error": error,
+    }
+
+
+def history(store: LocalStore, quiet, latest, *, today=date(2026, 9, 19), days=4):
+    for back in range(1, days + 1):
+        day = today - timedelta(days=back)
+        store.put(f"status/vintage-capture/{day}.json", status(day, resources=quiet))
+    store.put("status/vintage-capture/latest.json", status(today, resources=latest))
+    return {c.name.rsplit(":", 1)[1]: c for c in wd.check_bands(store, "vintage-capture")}
+
+
+def test_a_new_publication_is_news_not_a_fault(tmp_path: Path):
+    """NESO's TEC register, 2026-09-19: quiet runs fetch only the unchanged
+    metadata (1 artefact, 2,528 bytes); a publication day fetches both."""
+    checks = history(
+        LocalStore(tmp_path),
+        [resource("TEC", 1, 2_528, 1)],
+        [resource("TEC", 2, 424_474, 0)],
+    )
+    assert checks["TEC"].ok and checks["TEC"].news
+    assert checks["TEC"].detail.startswith("NEW VERSION published")
+
+
+def test_new_content_below_the_band_is_news_and_a_fault_is_still_a_fault(tmp_path: Path):
+    quiet = [resource("TEC", 1, 2_528, 1), resource("REMIT", 80, 120_000, 0)]
+    checks = history(
+        LocalStore(tmp_path),
+        quiet,
+        [resource("TEC", 1, 2_600, 0), resource("REMIT", 400, 900_000, 0)],
+    )
+    assert checks["TEC"].ok and checks["TEC"].news  # metadata changed, same size
+    assert checks["REMIT"].ok and checks["REMIT"].news
+    assert checks["REMIT"].detail.startswith("above band")
+    checks = history(
+        LocalStore(tmp_path / "b"),
+        quiet,
+        [resource("TEC", 1, 2_528, 1), resource("REMIT", 80, 30_000, 0)],
+    )
+    assert checks["TEC"].ok and not checks["TEC"].news  # a quiet day stays quiet
+    assert not checks["REMIT"].ok and checks["REMIT"].detail.endswith("below band")
+    checks = history(
+        LocalStore(tmp_path / "c"),
+        quiet,
+        [resource("TEC", 2, 424_474, 0, error="HTTPError: 403"), resource("REMIT", 80, 120_000, 0)],
+    )
+    assert not checks["TEC"].ok and "ERROR HTTPError: 403" in checks["TEC"].detail
+    assert checks["REMIT"].ok and not checks["REMIT"].news

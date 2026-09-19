@@ -1,11 +1,12 @@
 #!/usr/bin/env bash
 # Every committed proof sidecar (*.timestamps.json) must still describe the
 # file beside it, and its RFC 3161 tokens must verify against the committed
-# roots. Offline. Pending OpenTimestamps proofs are counted, not failed.
+# roots. Offline. Pending OpenTimestamps proofs are counted, not failed; the
+# watchdog's `proofs sweep` is what upgrades them and fails on a stale one.
 # Part of scripts/check.
 set -euo pipefail
 cd "$(dirname "$0")/.."
-status=0; n=0; pending=0
+status=0; n=0
 while IFS= read -r sidecar; do
   file="${sidecar%.timestamps.json}"
   n=$((n+1))
@@ -19,7 +20,8 @@ while IFS= read -r sidecar; do
       echo "   !! $file: $tsa token does not verify"; status=1
     fi
   done
-  if [[ -f "$file.ots" ]] && ! grep -q '"status": "complete"' "$sidecar" 2>/dev/null; then pending=$((pending+1)); fi
 done < <(git ls-files '*.timestamps.json')
-echo "verify-proofs: $n stamped file(s) checked, $pending OpenTimestamps proof(s) still pending upgrade"
+# Pending or complete is read from the proof itself (a Bitcoin attestation),
+# not the sidecar, which records the proof as issued and is never rewritten.
+echo "verify-proofs: $n stamped file(s) checked; $(uv run --group capture grid-mysteries proofs status | tail -1)"
 [[ $status -eq 0 ]] && echo "verify-proofs: OK" || { echo "verify-proofs: FAILED"; exit 1; }

@@ -23,6 +23,7 @@ from typing import Any
 
 from grid_mysteries.capture.run import manifest_key, status_key
 from grid_mysteries.capture.store import ObjectStore
+from grid_mysteries.proofs import is_upgrade_of
 
 #: job -> hours its latest status may be old before the check fails. The
 #: 013 job writes no status object (its state is the pinned artefacts and
@@ -38,9 +39,13 @@ PROOF_DAYS = 7
 
 @dataclass
 class Check:
+    """`news` marks a passing check that reports a change in the world (a
+    source published a new version) rather than a fault in the archive."""
+
     name: str
     ok: bool
     detail: str
+    news: bool = False
 
 
 @dataclass
@@ -81,8 +86,13 @@ def check_freshness(store: ObjectStore, jobs: dict[str, float], now: datetime) -
 
 def check_bands(store: ObjectStore, job: str) -> list[Check]:
     """The latest run's artefact count and bytes per resource against the
-    median of the BAND_RUNS days before it that have a status: a source that
-    shrinks to a login page fails BAND_LOW, one that explodes fails BAND_HIGH.
+    median of the BAND_RUNS days before it that have a status. Falling below
+    BAND_LOW is a fault: a source that shrinks to a login page. Rising above
+    BAND_HIGH is news, not a fault, and so is new content from a resource
+    whose runs are usually all unchanged: both are what a source publishing
+    a new version looks like (NESO's TEC register, 2026-09-19: 2 artefacts /
+    424 KB against 1 / 2.5 KB on quiet days, when only the unchanged metadata
+    is fetched). An error is always a fault.
     The anchor is `status/latest.json`, not today's date: the watchdog fires
     twice a day and the 04:12 run precedes the 06:30 capture, so "today's
     status" does not exist yet and is not a fault (2026-09-18, the first
@@ -92,38 +102,45 @@ def check_bands(store: ObjectStore, job: str) -> list[Check]:
     if latest is None:
         return [Check(f"band:{job}", False, "no status object yet")]
     day = date.fromisoformat(latest["day"])
-    history: dict[str, list[tuple[int, int]]] = {}
+    history: dict[str, list[tuple[int, int, int]]] = {}
     for back in range(1, BAND_RUNS + 1):
         past = _load(store, status_key(job, day - timedelta(days=back)))
         if past is None:
             continue
         for r in past.get("resources", []):
             if r.get("error") is None:
-                history.setdefault(r["name"], []).append((r["artefacts"], r["bytes"]))
+                new = r["artefacts"] - r.get("unchanged", 0)
+                history.setdefault(r["name"], []).append((r["artefacts"], r["bytes"], new))
     out = []
     for r in latest.get("resources", []):
+        name = f"band:{job}:{r['name']}"
         runs = history.get(r["name"], [])
         if len(runs) < 3:
-            out.append(
-                Check(f"band:{job}:{r['name']}", True, f"{len(runs)} prior runs; no band yet")
-            )
+            out.append(Check(name, True, f"{len(runs)} prior runs; no band yet"))
             continue
-        med_count = statistics.median(c for c, _ in runs)
-        med_bytes = statistics.median(b for _, b in runs)
-        ok = (
-            r.get("error") is None
-            and BAND_LOW * med_count <= r["artefacts"] <= BAND_HIGH * max(med_count, 1)
-            and BAND_LOW * med_bytes <= r["bytes"] <= BAND_HIGH * max(med_bytes, 1)
+        med_count = statistics.median(c for c, _, _ in runs)
+        med_bytes = statistics.median(b for _, b, _ in runs)
+        med_new = statistics.median(n for _, _, n in runs)
+        new = r["artefacts"] - r.get("unchanged", 0)
+        detail = (
+            f"{r['artefacts']} artefacts ({new} new) / {r['bytes']:,} bytes against medians "
+            f"{med_count:.0f} ({med_new:.0f} new) / {med_bytes:,.0f} over {len(runs)} runs"
         )
-        out.append(
-            Check(
-                f"band:{job}:{r['name']}",
-                ok,
-                f"{r['artefacts']} artefacts / {r['bytes']:,} bytes against medians "
-                f"{med_count:.0f} / {med_bytes:,.0f} over {len(runs)} runs"
-                + (f"; ERROR {r['error']}" if r.get("error") else ""),
-            )
+        if r.get("error"):
+            out.append(Check(name, False, f"{detail}; ERROR {r['error']}"))
+            continue
+        if r["artefacts"] < BAND_LOW * med_count or r["bytes"] < BAND_LOW * med_bytes:
+            out.append(Check(name, False, f"{detail}; below band"))
+            continue
+        above = r["artefacts"] > BAND_HIGH * max(med_count, 1) or r["bytes"] > BAND_HIGH * max(
+            med_bytes, 1
         )
+        if new > 0 and med_new == 0:
+            out.append(Check(name, True, f"NEW VERSION published; {detail}", news=True))
+        elif above:
+            out.append(Check(name, True, f"above band; {detail}", news=True))
+        else:
+            out.append(Check(name, True, detail))
     return out
 
 
@@ -245,7 +262,9 @@ def sync(store: ObjectStore, repo_root: Path, *, include_bytes: bool = False) ->
     outside data/raw/ that only grew (see `extends`) is replaced and reported
     as `grew`, because every tracker run appends to its log, manifests and
     journals (2026-09-19). Anything else that differs is reported as
-    MISMATCH. Witnessed manifests, proofs and raw artefacts never grow."""
+    MISMATCH. Witnessed manifests, proofs and raw artefacts never grow; a
+    local OpenTimestamps proof that upgrades the archive's issued one is
+    kept silently (`proofs.is_upgrade_of`)."""
     synced: list[str] = []
     targets = [
         ("manifests/", repo_root / "data/manifests"),
@@ -277,6 +296,8 @@ def _place(
         local = target.read_bytes()
         if local == body:
             return
+        if key.startswith("proofs/") and key.endswith(".ots") and is_upgrade_of(local, body):
+            return  # upgraded on the laptop (grid_mysteries.proofs); the archive keeps the issue
         if may_grow and extends(local, body):
             target.write_bytes(body)
             synced.append(f"grew {key} -> {target}")

@@ -694,3 +694,21 @@ proofs and raw artefacts never grow. Committing the grown files stays a human
 step: git is the record, and the watchdog only brings the second copy up to date.
 The CLI also no longer prints `check-vintages: OK` before exiting 1 on a
 MISMATCH-only run.
+
+**Proof upgrades and news vs faults (2026-09-19).** Two changes to the watchdog.
+(1) `grid-mysteries proofs sweep` (`src/grid_mysteries/proofs.py`) runs after
+every watchdog check. It upgrades each committed pending OpenTimestamps proof
+in place and keeps the upgrade only if every Bitcoin block it names has the
+Merkle root that both blockstream.info and mempool.space report. A contradiction
+is a fault; an unreachable explorer holds the upgrade for the next run. A
+proof still pending 48 h after its sidecar's stamp time fails the watchdog.
+First sweep: all 23 proofs upgraded and confirmed (blocks 967186-967678).
+The archive keeps each proof as issued; `sync` treats a local proof that is a
+Bitcoin-anchored upgrade of the same digest as expected, not a MISMATCH.
+Sidecars and the evidence files that said "pending until upgraded" are
+unchanged: that was true when they were written. Upgraded proofs need a
+human commit, like grown state. (2) `check_bands` now marks a resource with
+new content as `new` (news, passing) when its runs are usually all unchanged,
+and treats rising above the band as news as well. Falling below the band, or
+an error, is still a fault. The first case was NESO's TEC register on
+2026-09-19.

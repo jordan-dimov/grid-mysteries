@@ -40,6 +40,10 @@ mkdir -p data
   echo "=== $(date -u +%FT%TZ) check-vintages ($VINTAGE_STORE)"
   uv run --group capture grid-mysteries capture check "$@"
   status=$?
+  # Upgrade pending OpenTimestamps proofs in place (confirmed against two
+  # block explorers); one pending past 48 h fails the watchdog. Upgraded
+  # files are left for a human commit, like grown state.
+  uv run --group capture grid-mysteries proofs sweep || status=1
   echo "=== exit $status"
 } >> "$log" 2>&1
 ping() {  # ok|fail — no-op until HEALTHCHECK_URL_WATCHDOG is set

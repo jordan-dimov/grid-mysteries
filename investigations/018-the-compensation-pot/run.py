@@ -46,6 +46,7 @@ ELEXON_FEB_PAID = Decimal("5576308")
 ELEXON_FEB_VTP_MWH = Decimal("63827.48")
 MAX_MISSING = 2
 DECISIVE = ("C1", "C2", "C3", "C6", "C7")
+PRE_CONTEXT_PARTY = "ALMAPERJ"
 
 
 def declaration_digest() -> str:
@@ -199,20 +200,26 @@ def compute() -> None:
     missing = {k: len(sel["missing"][k]) + len(excluded[k]) for k in sel["missing"]}
     decidable = {k: missing[k] <= MAX_MISSING for k in ("FEB", "PRE", "POST")}
 
-    c4_paid = sum((d.supplier_cash_total for d in windows["C4"]), Decimal(0))
-    c4_vtp = sum((d.vtp_volume_total for d in windows["C4"]), Decimal(0))
-    c4 = {
-        "days": len(windows["C4"]),
-        "paid": c4_paid,
-        "vtp_volume": c4_vtp,
-        "paid_vs_elexon": c4_paid / ELEXON_FEB_PAID - 1,
-        "vtp_vs_elexon": c4_vtp / ELEXON_FEB_VTP_MWH - 1,
-    }
+    def against_elexon(days: list[p4.DaySummary]) -> dict:
+        paid = sum((d.supplier_cash_total for d in days), Decimal(0))
+        vtp = sum((d.vtp_volume_total for d in days), Decimal(0))
+        return {
+            "days": len(days),
+            "runs": sorted({d.run for d in days}),
+            "paid": paid,
+            "vtp_volume": vtp,
+            "paid_vs_elexon": paid / ELEXON_FEB_PAID - 1,
+            "vtp_vs_elexon": vtp / ELEXON_FEB_VTP_MWH - 1,
+        }
+
+    # C4 is decided on each February day's SF run; the latest run is beside it.
+    c4 = against_elexon(windows["C4"])
     c4["passes"] = (
         c4["days"] == 28
         and abs(c4["paid_vs_elexon"]) <= C4_BAND
         and abs(c4["vtp_vs_elexon"]) <= C4_BAND
     )
+    c4["latest_run_beside"] = against_elexon(windows["C4-LATEST"])
 
     results: dict = {
         "declaration_sha256": declaration_digest(),
@@ -228,13 +235,15 @@ def compute() -> None:
     h: dict = {}
     for base in ("FEB", "PRE"):
         if decidable[base] and decidable["POST"]:
-            h[f"H1-{base}"] = p4.h1_ratio(windows["POST"], windows[base], kill_below=KILL_H1)
-            h[f"H1-{base}"]["supplier_volume_ratio"] = p4.mean_daily(
-                windows["POST"], "supplier_volume_total"
-            ) / p4.mean_daily(windows[base], "supplier_volume_total")
-            h[f"H1-{base}"]["charged_ratio"] = p4.mean_daily(
-                windows["POST"], "charged_total"
-            ) / p4.mean_daily(windows[base], "charged_total")
+            h[f"H1-{base}"] = p4.h1_ratio(
+                windows["POST"], windows[base], kill_below=KILL_H1, measure=p4.H1_MEASURE[base]
+            )
+            h[f"H1-{base}"]["reported"] = {
+                m: p4.mean_daily(windows["POST"], m) / p4.mean_daily(windows[base], m)
+                if p4.mean_daily(windows[base], m)
+                else None
+                for m in p4.H1_REPORTED
+            }
         else:
             h[f"H1-{base}"] = {"verdict": "not decided"}
     if decidable["FEB"] and decidable["POST"]:
@@ -279,6 +288,16 @@ def compute() -> None:
             h[k]["published"] = "provisional until POST reaches R1 (H3 holds)"
     results["hypotheses"] = h
     results["context"] = {
+        # PRE follows Ofgem's 10/08 decision and may already be affected.
+        "pre_almaperj_vtp_volume": {
+            "by_day": {
+                str(d.settlement_date): d.vtp_volume.get(PRE_CONTEXT_PARTY, Decimal(0))
+                for d in sorted(windows["PRE"], key=lambda d: d.settlement_date)
+            },
+            "share_of_pre": dict(
+                (k, sh) for k, _, sh in p4.shares(p4.pooled(windows["PRE"], "vtp_volume"))
+            ).get(PRE_CONTEXT_PARTY),
+        },
         "largest": {
             name: {
                 "vtp_volume": p4.shares(p4.pooled(v, "vtp_volume"))[:5],
@@ -286,7 +305,7 @@ def compute() -> None:
                 "charged": p4.shares(p4.pooled(v, "charged"))[:5],
             }
             for name, v in windows.items()
-            if v and name != "C4"
+            if v and name not in ("C4", "C4-LATEST")
         },
         "series": [
             {

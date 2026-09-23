@@ -42,27 +42,27 @@
   },
   {
    "path": "data/raw/elexon/018/docs/p510-iwa-slides.pdf",
-   "url": null,
+   "url": "https://www.elexon.co.uk/bsc/documents/change/modifications/p501-p550/p510-iwa-slides/",
    "fetched_at": "2026-09-23",
    "sha256": "d044098a1ff8989fdbf60da2a9ba9ed38229e85b0fcb2ead4b26254297410385",
    "bytes": 818392,
-   "why": "P510 Initial Written Assessment slides: February 2026 paid GBP 5,576,308 (MR1A) and VTP volume 63,827.48 MWh (SAA-I014); copied from etrmbiz research/p415-sources, downloaded there from elexon.co.uk, URL not recorded"
+   "why": "P510 Initial Written Assessment slides: February 2026 paid GBP 5,576,308 (MR1A) and VTP volume 63,827.48 MWh (SAA-I014); downloaded 2026-09-23 in etrmbiz (research/p415-sources), URL matched there by SHA-256 (etrmbiz c1894f0)"
   },
   {
    "path": "data/raw/elexon/018/docs/p511-ofgem-decision-letter.pdf",
-   "url": null,
+   "url": "https://www.elexon.co.uk/bsc/documents/change/modifications/p501-p550/p511-ofgem-decision-letter/",
    "fetched_at": "2026-09-23",
    "sha256": "b69c83a4cb776b933fa8e0f750e2953837cdf4db0a2f26c17ca9db70b9368166",
    "bytes": 199188,
-   "why": "Ofgem P511 decision (published 2026-08-10, implementation 2026-08-24); copied from etrmbiz research/p415-sources, URL not recorded"
+   "why": "Ofgem P511 decision (published 2026-08-10, implementation 2026-08-24); downloaded 2026-09-23 in etrmbiz (research/p415-sources), URL matched there by SHA-256 (etrmbiz c1894f0)"
   },
   {
    "path": "data/raw/elexon/018/docs/p511-proposal-form.pdf",
-   "url": null,
+   "url": "https://www.elexon.co.uk/bsc/documents/change/modifications/p511-proposal-form/",
    "fetched_at": "2026-09-23",
    "sha256": "83d0181816d4542532d3276890bce6227aa75d86f69e47ff63f8ca91577d7099",
    "bytes": 594778,
-   "why": "Axle's P511 proposal form; copied from etrmbiz research/p415-sources, URL not recorded"
+   "why": "Axle's P511 proposal form; downloaded 2026-09-23 in etrmbiz (research/p415-sources), URL matched there by SHA-256 (etrmbiz c1894f0)"
   }
  ],
  "schema_pass": [

@@ -266,3 +266,34 @@ def test_checks_pass_on_a_consistent_file_and_fail_on_a_foreign_layout():
     off = p4.summarise([*lines[:-1], bph("B"), "SP7|1|\n", bp7("2__BBBBB001", cash="5"), "ZZZ|\n"])
     assert not p4.checks(off, expect=expect)["C6 paid cash is volume x Supplier Sourcing Cost"]
     assert not p4.checks(off, expect=expect)["C7 BP7 cash equals the APC day total, party by party"]
+
+
+def test_c4_reads_each_february_day_on_its_sf_run_and_the_latest_beside_it():
+    names = [
+        "S0142_20260217_SF_20260310000000.gz",
+        "S0142_20260217_SF_20260311000000.gz",  # SF republished: the later wins
+        "S0142_20260217_R3_20260922224432.gz",
+        "S0142_20260218_R1_20260420000000.gz",  # no SF listed: C4 misses the day
+    ]
+    out = p4.select(p4.build_index(names))
+    assert out["chosen"]["C4"][date(2026, 2, 17)].filename == names[1]
+    assert out["chosen"]["C4-LATEST"][date(2026, 2, 17)].run == "R3"
+    assert date(2026, 2, 18) in out["missing"]["C4"]
+    assert out["chosen"]["C4-LATEST"][date(2026, 2, 18)].run == "R1"
+    assert out["chosen"]["FEB"][date(2026, 2, 18)].run == "R1"  # test windows stay on latest
+
+
+def test_h1_against_february_is_decided_on_volume_and_against_august_on_cash():
+    assert p4.H1_MEASURE == {"FEB": "supplier_volume_total", "PRE": "supplier_cash_total"}
+
+    def day(cash, vol):
+        s = summary({"A": cash})
+        s.supplier_volume["A"] = D(vol)
+        return s
+
+    # price rose between quarters: cash alone would hold, volume kills
+    feb, post = [day("870", "10")], [day("490", "4.9")]
+    by_volume = p4.h1_ratio(post, feb, kill_below=D("0.5"), measure=p4.H1_MEASURE["FEB"])
+    by_cash = p4.h1_ratio(post, feb, kill_below=D("0.5"), measure="supplier_cash_total")
+    assert by_volume["verdict"] == "killed" and by_volume["measure"] == "supplier_volume_total"
+    assert by_cash["verdict"] == "holds"

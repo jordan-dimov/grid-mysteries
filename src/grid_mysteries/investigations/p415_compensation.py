@@ -257,17 +257,29 @@ def mean_daily(days: Sequence[DaySummary], attr: str) -> Decimal:
     return sum((getattr(d, attr) for d in days), Decimal(0)) / len(days)
 
 
+# H1's deciding measure per baseline (declaration, amendment of 2026-09-23
+# before the freeze): February on volume, because the SCRP changed between
+# price-cap quarters; 10-23 August on cash, within POST's quarter.
+H1_MEASURE = {"FEB": "supplier_volume_total", "PRE": "supplier_cash_total"}
+H1_REPORTED = ("supplier_cash_total", "supplier_volume_total", "vtp_volume_total", "charged_total")
+
+
 def h1_ratio(
-    post: Sequence[DaySummary], baseline: Sequence[DaySummary], *, kill_below: Decimal
+    post: Sequence[DaySummary],
+    baseline: Sequence[DaySummary],
+    *,
+    kill_below: Decimal,
+    measure: str = "supplier_cash_total",
 ) -> dict:
-    """H1: mean daily supplier compensation cash, post over baseline.
+    """H1: mean daily ``measure``, post over baseline.
 
     Killed if the ratio is below ``kill_below``; holds otherwise. A baseline
     whose mean is not positive decides nothing."""
-    post_mean = mean_daily(post, "supplier_cash_total")
-    base_mean = mean_daily(baseline, "supplier_cash_total")
+    post_mean = mean_daily(post, measure)
+    base_mean = mean_daily(baseline, measure)
     if base_mean <= 0:
         return {
+            "measure": measure,
             "post_mean": post_mean,
             "baseline_mean": base_mean,
             "ratio": None,
@@ -275,6 +287,7 @@ def h1_ratio(
         }
     ratio = post_mean / base_mean
     return {
+        "measure": measure,
         "post_mean": post_mean,
         "baseline_mean": base_mean,
         "ratio": ratio,
@@ -368,15 +381,23 @@ def build_index(names: Iterable[str]) -> dict[date, list[S0142File]]:
     return dict(index)
 
 
+def sf_run(files: Iterable[S0142File]) -> S0142File | None:
+    """C4: the day's SF run itself (the later publication if SF was republished)."""
+    sf = [f for f in files if f.run == "SF"]
+    return max(sf, key=lambda f: f.published) if sf else None
+
+
 def select(index: Mapping[date, Sequence[S0142File]]) -> dict:
     """R4 and C5: the file each window day is read on, the RESTATE runs, and
-    the window days with no run at or after SF (missing)."""
+    the window days with no qualifying run (missing). C4 is read on each
+    day's SF run; C4-LATEST, reported beside it, on the latest at or after SF."""
     chosen: dict[str, dict[date, S0142File]] = {}
     missing: dict[str, list[date]] = {}
-    for name, days in WINDOWS.items():
+    for name, days in {**WINDOWS, "C4-LATEST": WINDOWS["C4"]}.items():
         chosen[name], missing[name] = {}, []
         for d in days:
-            f = latest_run(index.get(d, ()))
+            files = index.get(d, ())
+            f = sf_run(files) if name == "C4" else latest_run(files)
             if f is None:
                 missing[name].append(d)
             else:

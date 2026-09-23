@@ -2,7 +2,7 @@
  "declaration": [
   "DECLARATION.md"
  ],
- "note": "C2 is tested with R3; C4 and the seal and freeze refusals are enforced by run.py against artefacts outside the pure logic (Elexon's February figures, the proof sidecar) and have no unit test. R5 is the choice of fields summed, covered by the R1-R3 tests. R6 (names from the pinned register) lands with the RESULTS renderer, after the run.",
+ "note": "C2 is tested with R3; C4's band against Elexon's figures and the seal and freeze refusals are enforced by run.py against artefacts outside the pure logic (Elexon's February figures, the proof sidecar) and have no unit test. R5 is the choice of fields summed, covered by the R1-R3 tests. R6 (names from the pinned register) lands with the RESULTS renderer, after the run.",
  "rules": {
   "R1 the party is the BPH above the BP7, never the unit code": "tests/test_p415_compensation.py::test_the_party_is_the_bph_above_the_bp7_never_the_unit_code",
   "R1 a BP7 without a BPH and SP7 above it is an orphan": "tests/test_p415_compensation.py::test_a_bp7_without_a_bph_and_sp7_above_it_is_an_orphan",
@@ -15,12 +15,14 @@
   "Windows as declared; schema-pass days in no test window": "tests/test_p415_compensation.py::test_the_windows_are_the_declarations_and_the_seen_days_are_in_none_of_the_tests",
   "C5 selection lists missing POST days and keeps every RESTATE run": "tests/test_p415_compensation.py::test_selection_takes_sf_or_later_lists_missing_days_and_keeps_every_restate_run",
   "C1 C3 C6 C7 on a consistent and an inconsistent file": "tests/test_p415_compensation.py::test_checks_pass_on_a_consistent_file_and_fail_on_a_foreign_layout",
-  "H1 ratio of mean daily paid, killed below 0.50": "tests/test_p415_compensation.py::test_h1_is_a_ratio_of_mean_daily_cash_killed_below_the_threshold",
   "H1 decides nothing on an empty or non-positive baseline": "tests/test_p415_compensation.py::test_h1_decides_nothing_against_an_empty_or_non_positive_baseline",
   "H2 party chosen on FEB alone, its POST share read after": "tests/test_p415_compensation.py::test_h2_chooses_the_party_on_the_baseline_and_only_reads_it_after",
   "H2 needs a concentrated baseline": "tests/test_p415_compensation.py::test_h2_needs_a_concentrated_baseline",
   "H3 movement is measured against the latest run": "tests/test_p415_compensation.py::test_restatement_is_measured_against_the_latest_run",
   "H3 holds on two of four days above five percent": "tests/test_p415_compensation.py::test_restatement_matters_only_on_two_of_four_days_above_five_percent",
-  "Acquisition gate: the Portal key never enters a journalled URL or an error": "tests/test_p415_compensation.py::test_the_portal_key_never_enters_an_identity_url_or_an_error"
+  "Acquisition gate: the Portal key never enters a journalled URL or an error": "tests/test_p415_compensation.py::test_the_portal_key_never_enters_an_identity_url_or_an_error",
+  "C4 each February day on its SF run, the latest run beside it": "tests/test_p415_compensation.py::test_c4_reads_each_february_day_on_its_sf_run_and_the_latest_beside_it",
+  "H1 February decided on volume, 10-23 August on cash": "tests/test_p415_compensation.py::test_h1_against_february_is_decided_on_volume_and_against_august_on_cash",
+  "H1 ratio of mean daily paid, killed below 0.50": "tests/test_p415_compensation.py::test_h1_is_a_ratio_of_mean_daily_cash_killed_below_the_threshold"
  }
 }

@@ -1,0 +1,84 @@
+{
+ "docs": [
+  {
+   "path": "data/raw/elexon/018/docs/NETA-IDD-Part-2_spreadsheet_v43.0.xls",
+   "url": "https://assets.elexon.co.uk/wp-content/uploads/sites/11/2026/06/23161551/NETA-IDD-Part-2_spreadsheet_v43.0.xls",
+   "fetched_at": "2026-09-23T10:37:46Z",
+   "sha256": "814c506592f4418bf981693969c7402db45020fedfb8b47573d431eacb23a117",
+   "bytes": 1871360,
+   "why": "S0142 field definitions (sheet SO, flow version 014)"
+  },
+  {
+   "path": "data/raw/elexon/018/docs/NETA-IDD-Part-1_spreadsheet_v47.0-1.xls",
+   "url": "https://assets.elexon.co.uk/wp-content/uploads/sites/11/2025/11/31150026/NETA-IDD-Part-1_spreadsheet_v47.0-1.xls",
+   "fetched_at": "2026-09-23T10:37:02Z",
+   "sha256": "13a7f69ce5fb21a211fd8a9c5132f24c16684b67a26f93f36fb89dc68daa079f",
+   "bytes": 2300928,
+   "why": "S0141, the party variant (BPD in place of BP7)"
+  },
+  {
+   "path": "data/raw/elexon/018/docs/P415-CSDs-approved-in-October-2024-1.zip",
+   "url": "https://assets.elexon.co.uk/wp-content/uploads/sites/11/2024/10/21095147/P415-CSDs-approved-in-October-2024-1.zip",
+   "fetched_at": "2026-09-23T10:37:02Z",
+   "sha256": "e8ce44fe450329deb910d228d80abbc08e6cfdceb678bd925a11198b43d4748d",
+   "bytes": 4077577,
+   "why": "P415 code subsidiary documents"
+  },
+  {
+   "path": "data/raw/elexon/018/docs/section-t.html",
+   "url": "https://bscdocs.elexon.co.uk/bsc/bsc-section-t-settlement-and-trading-charges",
+   "fetched_at": "2026-09-23T10:40:08Z",
+   "sha256": "dfa45350b9b8d6979f28944ee3fb3908aed31fc80d95fc614cf1c15ad94bc8c9",
+   "bytes": 1174351,
+   "why": "BSC Section T v45.0: sign convention 1.2.3, formulae 4.3C and 4.11"
+  },
+  {
+   "path": "data/raw/elexon/018/docs/scrp-methodology.html",
+   "url": "https://bscdocs.elexon.co.uk/category-3-documents/supplier-compensation-reference-price-methodology-document",
+   "fetched_at": "2026-09-23T10:40:08Z",
+   "sha256": "0506d01f12502a74627605909877d48c86d14f73b9c8aab5c4e83b76ae54f20b",
+   "bytes": 70971,
+   "why": "SCRP Methodology Document v2.0"
+  },
+  {
+   "path": "data/raw/elexon/018/docs/p510-iwa-slides.pdf",
+   "url": null,
+   "fetched_at": "2026-09-23",
+   "sha256": "d044098a1ff8989fdbf60da2a9ba9ed38229e85b0fcb2ead4b26254297410385",
+   "bytes": 818392,
+   "why": "P510 Initial Written Assessment slides: February 2026 paid GBP 5,576,308 (MR1A) and VTP volume 63,827.48 MWh (SAA-I014); copied from etrmbiz research/p415-sources, downloaded there from elexon.co.uk, URL not recorded"
+  },
+  {
+   "path": "data/raw/elexon/018/docs/p511-ofgem-decision-letter.pdf",
+   "url": null,
+   "fetched_at": "2026-09-23",
+   "sha256": "b69c83a4cb776b933fa8e0f750e2953837cdf4db0a2f26c17ca9db70b9368166",
+   "bytes": 199188,
+   "why": "Ofgem P511 decision (published 2026-08-10, implementation 2026-08-24); copied from etrmbiz research/p415-sources, URL not recorded"
+  },
+  {
+   "path": "data/raw/elexon/018/docs/p511-proposal-form.pdf",
+   "url": null,
+   "fetched_at": "2026-09-23",
+   "sha256": "83d0181816d4542532d3276890bce6227aa75d86f69e47ff63f8ca91577d7099",
+   "bytes": 594778,
+   "why": "Axle's P511 proposal form; copied from etrmbiz research/p415-sources, URL not recorded"
+  }
+ ],
+ "schema_pass": [
+  {
+   "path": "data/raw/elexon/018/schema-pass/S0142_20260217_R3_20260922224432.gz",
+   "sha256": "8a06ca4a5ad32ede8a19a3117f4e39039e7ce9d60153789e8d74b6a95c9a34ca",
+   "bytes": 10933776,
+   "fetched_at": "2026-09-23T11:23Z (approximate; fetched by etrmbiz tools/p415_s0142.py with the Portal scripting key)",
+   "url": "https://downloads.elexonportal.co.uk/p114/download?filename=S0142_20260217_R3_20260922224432.gz"
+  },
+  {
+   "path": "data/raw/elexon/018/schema-pass/S0142_20260828_SF_20260922223519.gz",
+   "sha256": "fd7dd099e6939392bfa3d96ee8f421ed8e261f3cdc540b3fe932afb47b738b8f",
+   "bytes": 12373220,
+   "fetched_at": "2026-09-23T11:23Z (approximate; fetched by etrmbiz tools/p415_s0142.py with the Portal scripting key)",
+   "url": "https://downloads.elexonportal.co.uk/p114/download?filename=S0142_20260828_SF_20260922223519.gz"
+  }
+ ]
+}

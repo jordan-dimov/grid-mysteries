@@ -15,6 +15,7 @@ the machine it was produced on:
 | `audit-anchor.json` | externally-held Merkle checkpoint over the audit log — **signed** (Ed25519, key `audit-2026`) from tree_size 34 onward |
 | `evidence-pack.json` | portable audit pack; verifies **offline** against the anchor with no database (embedded signatures crypto-checked; key authority folded from the pack's own `AuditSigningKey` claim; the signer pinned to `trust/audit-2026.pub` from tree_size 34 on) |
 | `trust/audit-2026.pub` | the signing public key the verifier pins (`audit verify-pack --require-signing-key`): a checkpoint signed by any other key fails, even one authorised by a claim in the log |
+| `MIGRATION-RUNBOOK.md` | how each database is migrated when the Morpholog pin moves (forward-only; rehearse on a copy, back up, migrate, verify byte-identical). Audit rows written before schema 14 (v0.0.11) carry no parameter names; later rows do |
 
 ## Verify it yourself
 

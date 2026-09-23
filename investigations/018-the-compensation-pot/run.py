@@ -263,6 +263,22 @@ def compute() -> None:
         )
     else:
         h["H2-VTP"] = h["H2-SUP"] = {"verdict": "not decided"}
+    # the same computation against PRE, reported with no threshold
+    h2_pre = {}
+    if windows["PRE"] and windows["POST"]:
+        for side, attr, below in (
+            ("VTP", "vtp_volume", H2_VTP_POST_BELOW),
+            ("SUP", "supplier_cash", H2_SUP_POST_BELOW),
+        ):
+            out = p4.h2_handover(
+                windows["PRE"],
+                windows["POST"],
+                attr,
+                baseline_above=H2_BASELINE_ABOVE,
+                post_below=below,
+            )
+            out.pop("verdict")
+            h2_pre[side] = out
 
     restate = {}
     movements = []
@@ -289,6 +305,7 @@ def compute() -> None:
     results["hypotheses"] = h
     results["context"] = {
         # PRE follows Ofgem's 10/08 decision and may already be affected.
+        "h2_against_pre": h2_pre,
         "pre_almaperj_vtp_volume": {
             "by_day": {
                 str(d.settlement_date): d.vtp_volume.get(PRE_CONTEXT_PARTY, Decimal(0))

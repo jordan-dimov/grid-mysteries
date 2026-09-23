@@ -2,7 +2,13 @@
 # The freeze act, in one step: witness a declaration and commit it with its
 # proofs, so a declaration cannot be committed unstamped or stamped uncommitted.
 #
-#   scripts/freeze investigations/<id>/DECLARATION.md [commit message]
+#   scripts/freeze [--co-author "Name <email>"] investigations/<id>/DECLARATION.md [commit message]
+#
+# The commit carries a Co-Authored-By trailer only when a co-author is named:
+# by --co-author, else by FREEZE_CO_AUTHOR in the environment (a session that
+# freezes on the sponsor's behalf passes its own attribution). With neither,
+# the commit has no trailer; the script never names a co-author of its own.
+# The co-author is checked before anything is stamped.
 #
 # Refuses if the file has uncommitted changes that are not staged with the
 # proofs by this script, or if it is already committed with a proof sidecar
@@ -10,6 +16,20 @@
 set -euo pipefail
 cd "$(dirname "$0")/.."
 export PATH="${HOME}/.local/bin:${PATH}"
+co_author="${FREEZE_CO_AUTHOR:-}"
+args=()
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    --co-author) co_author="${2:?--co-author needs \"Name <email>\"}"; shift 2 ;;
+    --co-author=*) co_author="${1#--co-author=}"; shift ;;
+    *) args+=("$1"); shift ;;
+  esac
+done
+set -- "${args[@]+"${args[@]}"}"
+if [[ -n "$co_author" && ! "$co_author" =~ ^[^\<\>]*[^\<\>\ ]\ \<[^\<\>@\ ]+@[^\<\>@\ ]+\>$ ]]; then
+  echo "freeze: co-author must read \"Name <email>\", got: $co_author" >&2
+  exit 1
+fi
 file="${1:?declaration path}"
 [[ -f "$file" ]] || { echo "no such file: $file" >&2; exit 1; }
 if [[ -f "$file.timestamps.json" ]] && git ls-files --error-unmatch "$file.timestamps.json" >/dev/null 2>&1; then
@@ -21,8 +41,11 @@ scripts/verify-timestamp "$file"
 digest=$(sha256sum "$file" | cut -d' ' -f1)
 git add "$file" "$file.ots" "$file.tsq" "$file.freetsa.tsr" "$file.digicert.tsr" "$file.timestamps.json"
 message="${2:-$(dirname "$file" | xargs basename): frozen declaration (SHA-256 ${digest:0:8}…) witnessed by OpenTimestamps and RFC 3161 (freetsa.org, DigiCert) at the moment of the freeze}"
-git commit -q -m "$message
+if [[ -n "$co_author" ]]; then
+  message="$message
 
-Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>"
+Co-Authored-By: $co_author"
+fi
+git commit -q -m "$message"
 echo "frozen and committed: $file  sha256 $digest"
 git log --oneline | head -1

@@ -1,4 +1,4 @@
-"""014 declaration version 3: the determined part, the two named rules, F4 and F5."""
+"""014 declarations 3 and 4: the determined part, the two named rules, F4 and F5."""
 
 import hashlib
 from dataclasses import replace
@@ -12,9 +12,8 @@ from grid_mysteries.investigations import connection_slippage as cs
 from grid_mysteries.investigations import connection_slippage_v3 as v3
 from grid_mysteries.tec import analysis
 
-DECLARATION = Path(__file__).parents[1] / (
-    "investigations/014-gb-connection-slippage/DECLARATION-v3.md"
-)
+HERE = Path(__file__).parents[1] / "investigations/014-gb-connection-slippage"
+DECLARATIONS = (HERE / "DECLARATION-v3.md", HERE / "DECLARATION-v4.md")
 
 
 def row(name, stage, mw, eff):
@@ -39,8 +38,9 @@ def digest(path: Path) -> str:
 # ------------------------------------------------------------------- F5
 
 
-def test_the_frozen_declaration_states_the_content_rules_digest_and_it_matches():
-    stated = v3.declared_rule_digest(DECLARATION.read_text())
+@pytest.mark.parametrize("declaration", DECLARATIONS, ids=lambda p: p.name)
+def test_the_frozen_declaration_states_the_content_rules_digest_and_it_matches(declaration):
+    stated = v3.declared_rule_digest(declaration.read_text())
     assert stated == digest(v3.CONTENT_RULE_FILE)
 
 
@@ -66,7 +66,7 @@ def two_stage_history():
 
 def test_the_determined_part_is_the_same_under_both_rules_and_is_reported():
     result = v3.series(two_stage_history(), rule_digest=digest(v3.CONTENT_RULE_FILE))
-    link = result["segments"][0]["rows"][1]["v3"]["vs_previous"]
+    link = result["segments"][0]["rows"][1]["split"]["vs_previous"]
     assert link["undetermined_groups"] == 0
     assert link["determined"] == link["total"][v3.RULE_V2] == link["total"][v3.RULE_CONTENT]
     assert link["determined"] > 0
@@ -93,11 +93,8 @@ def test_f4_a_planted_disagreement_on_a_determined_group_refuses():
         )
 
 
-def test_f4_fires_on_a_group_restructured_between_two_determined_ends():
-    # Barry Power Station's shape (2015-16): one row at each end, a second
-    # row in between; the carried content rule follows the rows, version 2's
-    # rule pairs the two ends. Recorded in AMENDMENTS.md, 2026-09-23.
-    history = [
+def barry_history():
+    return [
         copy("2015-04-13", [row("B", None, -136, "2016-04-01")]),
         copy(
             "2016-03-07",
@@ -105,8 +102,46 @@ def test_f4_fires_on_a_group_restructured_between_two_determined_ends():
         ),
         copy("2016-04-12", [row("B", None, 235, "2018-04-01")]),
     ]
+
+
+def test_version_3_f4_fires_on_a_group_restructured_between_two_determined_ends():
+    # Barry Power Station's shape (2015-16): one row at each end, a second
+    # row in between; the carried content rule follows the rows, version 2's
+    # rule pairs the two ends. Recorded in AMENDMENTS.md, 2026-09-23.
     with pytest.raises(v3.RuleDisagreement, match="F4"):
-        v3.series(history, rule_digest=digest(v3.CONTENT_RULE_FILE))
+        v3.series(barry_history(), rule_digest=digest(v3.CONTENT_RULE_FILE), definition="ends")
+
+
+def test_version_4_counts_that_group_undetermined_so_f4_holds():
+    result = v3.series(barry_history(), rule_digest=digest(v3.CONTENT_RULE_FILE))
+    rows = result["segments"][0]["rows"]
+    year = rows[2]["split"]["vs_year_earlier"]
+    assert year["undetermined_groups"] == 1 and year["determined"] == 0
+    assert year["total"][v3.RULE_V2] != year["total"][v3.RULE_CONTENT]
+
+
+def test_version_4_definition_missing_or_repeated_in_any_copy_between_is_undetermined():
+    same = [row("S", "1", 1, "2025-01-01")]
+    copies = [
+        same + [row("M", "1", 1, "2025-01-01"), row("R", "1", 1, "2025-01-01")],
+        same + [row("R", "1", 1, "2025-01-01"), row("R", "1", 2, "2025-01-01")],
+        same + [row("M", "1", 1, "2025-01-01"), row("R", "1", 1, "2025-01-01")],
+    ]
+    d = v3.Determinacy(copies)
+    names = {g.split("|")[0] for g in d.undetermined(0, 2)}
+    assert names == {"name:m", "name:r"}  # M missing from copy 1; R repeats in copy 1
+    assert {g.split("|")[0] for g in d.undetermined(0, 1)} == {"name:r"}
+
+
+def test_version_4_equals_version_3_on_consecutive_copies():
+    a = [
+        row("A", None, 5, "2025-01-01"),
+        row("A", None, 6, "2025-02-01"),
+        row("B", "1", 1, "2025-01-01"),
+    ]
+    b = [row("A", "1", 5, "2025-01-01"), row("B", "1", 1, "2026-01-01")]
+    d = v3.Determinacy([a, b])
+    assert d.undetermined(0, 1) == analysis.undetermined(a, b)
 
 
 def test_equal_movements_summed_in_another_order_are_not_a_disagreement():
@@ -123,10 +158,5 @@ def test_equal_movements_summed_in_another_order_are_not_a_disagreement():
         {k: v2[0][k] for k in reversed(list(v2[0]))},
         {k: v2[1][k] for k in reversed(list(v2[1]))},
     )
-    rows: list[dict[str, object]] = [
-        {"Project Name": "g", "Stage": s, "Customer Name": "", "Connection Site": ""} for s in "123"
-    ]
-    out = v3.split(
-        v2, reordered, (rows, rows), baseline=date(2024, 10, 15), current=date(2024, 10, 22)
-    )
+    out = v3.split(v2, reordered, set(), baseline=date(2024, 10, 15), current=date(2024, 10, 22))
     assert out["total"][v3.RULE_V2] == out["total"][v3.RULE_CONTENT]

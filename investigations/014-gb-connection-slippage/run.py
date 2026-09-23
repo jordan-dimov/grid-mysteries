@@ -4,14 +4,17 @@
         --seal <prefix of the declaration's SHA-256> --phase all [--run-date YYYY-MM-DD]
     uv run --group registers python investigations/014-gb-connection-slippage/run.py --phase render
 
-Three declarations exist. ``--version 3`` (the default) is
-``DECLARATION-v3.md`` with evidence under ``evidence/v3/``: version 2's
+Four declarations exist. ``--version 4`` (the default) is
+``DECLARATION-v4.md`` with evidence under ``evidence/v4/``: version 2's
 series unchanged, with every movement figure split into the part the
-register's stage labels determine and the figure under each of two named
-identity rules (F4 and F5 refuse). Its render goes to a preview directory
-until the ``release`` phase, which is the sponsor's separate seal.
+register's stage labels determine over every copy the comparison spans and
+the figure under each of two named identity rules (F4 and F5 refuse). Its
+render goes to a preview directory until the ``release`` phase, which is
+the sponsor's separate seal. ``--version 3`` is ``DECLARATION-v3.md``:
+frozen, never run to completion (its first compute refused on F4; see
+AMENDMENTS.md, 2026-09-23), kept runnable so the refusal can be reproduced.
 ``--version 2`` is ``DECLARATION-v2.md`` with ``evidence/v2/`` (the
-published series until version 3 is released). ``--version 1`` is the
+published series until version 4 is released). ``--version 1`` is the
 first, ``DECLARATION.md`` with ``evidence/``: closed, kept as run, and
 available to ``check`` only.
 
@@ -34,9 +37,10 @@ Phases:
 - ``render``: the record page and the site page as pure functions of the
   evidence. Needs no seal. Version 3 renders to ``PREVIEW`` (gitignored)
   until it is released.
-- ``release`` (version 3 only, ``--confirm-release``): the sponsor's second
-  seal, done by hand. Version 2's record page moves to ``SERIES-v2.md``;
-  version 3's becomes ``SERIES.md`` and the site page.
+- ``release`` (the latest version only, ``--confirm-release``): the
+  sponsor's second seal, done by hand. Version 2's record page moves to
+  ``SERIES-v2.md``; the latest version's becomes ``SERIES.md`` and the site
+  page.
 """
 
 import argparse
@@ -56,9 +60,11 @@ from grid_mysteries.sources import tec_register as tr
 
 HERE = Path(__file__).parent
 SITE_INDEX = REPO_ROOT / "site" / "connection-slippage" / "index.html"
-#: Version 3's pages before the sponsor's release seal: gitignored, so no
-#: merge or push can publish them by accident.
-PREVIEW = REPO_ROOT / "data" / "derived" / "014-v3-preview"
+#: Pages of a version not yet released: gitignored, so no merge or push can
+#: publish them by accident.
+PREVIEW = REPO_ROOT / "data" / "derived" / "014-preview"
+#: The declaration whose pages the release phase publishes.
+LATEST = 4
 JOURNAL = REPO_ROOT / tr.JOURNAL_PATH
 RAW_DIR = REPO_ROOT / tr.RAW_DIR
 SCHEMA_REPORT = REPO_ROOT / "archives" / "tec-register" / "schema-report.json"
@@ -84,11 +90,14 @@ class Version:
         self.append_only_rows = number >= 2
         self.closed = number == 1
         self.split = number >= 3
+        #: Version 3 judged determinacy at the two copies compared; version 4
+        #: over every copy the comparison spans.
+        self.definition = "ends" if number == 3 else "path"
 
     @property
     def released(self) -> bool:
-        """Version 3 is released once its record page has become SERIES.md,
-        which moves version 2's to SERIES-v2.md."""
+        """The latest version is released once its record page has become
+        SERIES.md, which moves version 2's to SERIES-v2.md."""
         return (HERE / "SERIES-v2.md").exists()
 
     @property
@@ -97,15 +106,19 @@ class Version:
             return HERE / "SERIES-v1.md"
         if self.number == 2:
             return HERE / ("SERIES-v2.md" if self.released else "SERIES.md")
-        return HERE / "SERIES.md" if self.released else PREVIEW / "SERIES.md"
+        if self.number == LATEST and self.released:
+            return HERE / "SERIES.md"
+        return PREVIEW / f"v{self.number}" / "SERIES.md"
 
     @property
     def site_index(self) -> Path | None:
         """Where this version's site page goes, if anywhere."""
         if self.number == 2:
             return None if self.released else SITE_INDEX
-        if self.number == 3:
-            return SITE_INDEX if self.released else PREVIEW / "index.html"
+        if self.number >= 3:
+            if self.number == LATEST and self.released:
+                return SITE_INDEX
+            return PREVIEW / f"v{self.number}" / "index.html"
         return None
 
     @property
@@ -209,12 +222,12 @@ def committed_rows(version: Version) -> dict[tuple[str, str], str]:
 
 def require_v2_side_unchanged(rows: list[dict[str, Any]]) -> None:
     """Every row's version 2 fields must serialise byte for byte as version
-    2's committed line for the same copy: version 3 only adds a `v3` key."""
+    2's committed line for the same copy: versions 3 and 4 only add `split`."""
     committed = committed_rows(Version(2))
     differing, missing = [], []
     for r in rows:
         key = (r["t_public"].isoformat(), r["sha256"])
-        line = row_line({k: v for k, v in r.items() if k != "v3"})
+        line = row_line({k: v for k, v in r.items() if k != "split"})
         if key not in committed:
             missing.append(key[0])
         elif committed[key] != line:
@@ -251,7 +264,9 @@ def compute(version: Version, run_date: str, seal: str, *, amend: bool, write: b
     if version.split:
         try:
             result = v3.series(
-                usable, rule_digest=v3.declared_rule_digest(version.declaration.read_text())
+                usable,
+                rule_digest=v3.declared_rule_digest(version.declaration.read_text()),
+                definition=version.definition,
             )
         except (v3.RuleDisagreement, v3.ContentRuleChanged) as exc:
             raise SystemExit(f"refusing: {exc}") from None
@@ -362,16 +377,16 @@ def compute(version: Version, run_date: str, seal: str, *, amend: bool, write: b
     write_json(version.run_log, log)
     head = summary["headline"]
     if head and version.split:
-        split = head["v3"]["vs_year_earlier"]
+        split = head["split"]["vs_year_earlier"]
         print(
-            f"v3 headline: determined {split['determined']} over "
+            f"split headline: determined {split['determined']} over "
             f"{split['undetermined_groups']} undetermined group(s); "
             + ", ".join(f"{rule} {total}" for rule, total in split["total"].items())
         )
         print(
-            f"v3 chain (old): determined {head['v3']['determined']}; "
-            + ", ".join(f"{rule} {total}" for rule, total in head["v3"]["total"].items())
-            + f"; undetermined share {head['v3']['undetermined_share_percent']}"
+            f"split chain (old): determined {head['split']['determined']}; "
+            + ", ".join(f"{rule} {total}" for rule, total in head["split"]["total"].items())
+            + f"; undetermined share {head['split']['undetermined_share_percent']}"
         )
     if head:
         print(
@@ -420,12 +435,13 @@ def render(version: Version) -> None:
 
 
 def release(confirm: bool) -> None:
-    """The sponsor's second seal for version 3: its pages replace version 2's."""
+    """The sponsor's second seal for the latest version: its pages replace
+    version 2's."""
     if not confirm:
         raise SystemExit("refusing: release is the sponsor's seal; pass --confirm-release")
-    version = Version(3)
+    version = Version(LATEST)
     if version.released:
-        raise SystemExit("version 3 is already released")
+        raise SystemExit(f"version {LATEST} is already released")
     (HERE / "SERIES-v2.md").write_text(page.render_markdown(load_series(Version(2))))
     render(version)
 
@@ -440,7 +456,7 @@ def main(argv: list[str] | None = None) -> None:
         choices=("fetch", "compute", "render", "check", "all", "release"),
         default="render",
     )
-    parser.add_argument("--version", type=int, choices=(1, 2, 3), default=3)
+    parser.add_argument("--version", type=int, choices=(1, 2, 3, 4), default=LATEST)
     parser.add_argument(
         "--confirm-release", action="store_true", help="the sponsor's release seal (release)"
     )

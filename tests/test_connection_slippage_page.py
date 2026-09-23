@@ -204,3 +204,26 @@ def test_markdown_lists_gaps_and_points_to_the_evidence():
         "- **P1** — every complete year positive: **fails** "
         "(2 complete years; not positive in 2016)." in md
     )
+
+
+def test_a_split_page_prints_the_frozen_declarations_headline_sentence_with_the_evidence_numbers():
+    """014 v4: the headline is the declaration's sentence, numbers from evidence/v4."""
+    import json
+    import re
+    from pathlib import Path
+
+    here = Path(__file__).parents[1] / "investigations/014-gb-connection-slippage"
+    series = json.loads((here / "evidence/v4/series.json").read_text())
+    rows = [json.loads(x) for x in (here / "evidence/v4/rows.ndjson").read_text().splitlines()]
+    for segment in series["segments"]:
+        segment["rows"] = [r for r in rows if r["regime"] == segment["regime"]]
+    declared = re.search(
+        r'The headline is written in this form: "(.*?)"',
+        (here / "DECLARATION-v4.md").read_text(),
+        re.S,
+    )
+    assert declared
+    sentence = " ".join(declared[1].split())
+    assert sentence in page.headline_sentence(series)
+    html = page.render_page(series)
+    assert "Determined by stage labels, MW-years" in html and "evidence/v4" in html

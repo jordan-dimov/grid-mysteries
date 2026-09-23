@@ -95,8 +95,55 @@ PAIR_COLUMNS = (
 )
 
 
+#: With a split (declaration 3 onwards): the determined part, the number of
+#: groups whose pairing is undetermined, and each named rule's net, in place
+#: of the single net; the gross sides are version 2's rule's.
+SPLIT_COLUMNS = (
+    "From",
+    "To",
+    "Project-stages at both dates",
+    "Dated at both ends",
+    "Determined by stage labels, MW-years",
+    "Groups not determined",
+    "Net, version 2's rule, MW-years",
+    "Net, content matching, MW-years",
+    "Moved later, MW-years (version 2's rule)",
+    "Moved earlier, MW-years (version 2's rule)",
+    "Dates later / earlier / unchanged",
+    "Joined (MW)",
+    "Left (MW)",
+    "Capacity changed (net MW)",
+    "F2 thin population",
+)
+RULE_V2 = "014-v2"
+RULE_CONTENT = "tec-identity-content-v1"
+
+
+def columns(split: bool) -> tuple[str, ...]:
+    return SPLIT_COLUMNS if split else PAIR_COLUMNS
+
+
 def pair_cells(pair: dict[str, Any]) -> list[str]:
     """The cells of one baseline-to-current comparison, as plain text."""
+    split = pair.get("split")
+    if split:
+        return [
+            day_label(pair["baseline"]),
+            day_label(pair["current"]),
+            count(pair["matched"]),
+            count(pair["dated_both"]),
+            signed_mw_years(split["determined"]),
+            count(split["undetermined_groups"]),
+            signed_mw_years(split["total"][RULE_V2]),
+            signed_mw_years(split["total"][RULE_CONTENT]),
+            mw_years(pair["mw_years_later"]),
+            mw_years(pair["mw_years_earlier"]),
+            f"{pair['later']:,} / {pair['earlier']:,} / {pair['unchanged']:,}",
+            f"{pair['new_entries']:,} ({mw(pair['new_mw'])})",
+            f"{pair['removed']:,} ({mw(pair['removed_mw'])})",
+            f"{pair['capacity_changed']:,} ({signed_mw(pair['capacity_delta_mw'])})",
+            "F2: matched under half of baseline" if pair.get("f2_thin") else BLANK,
+        ]
     return [
         day_label(pair["baseline"]),
         day_label(pair["current"]),
@@ -121,10 +168,10 @@ def signed_mw(value: str | None) -> str:
 
 
 def render_pair_table(pairs: list[dict[str, Any]], first_label: str | None = None) -> str:
-    columns = list(PAIR_COLUMNS)
+    names = list(columns(any(p.get("split") for p in pairs)))
     if first_label:
-        columns = [first_label] + columns
-    head = "".join(f'<th scope="col">{escape(c)}</th>' for c in columns)
+        names = [first_label] + names
+    head = "".join(f'<th scope="col">{escape(c)}</th>' for c in names)
     body_rows = []
     for pair in pairs:
         cells = pair_cells(pair)
@@ -174,15 +221,29 @@ def vintage_pairs(segment: dict[str, Any]) -> list[dict[str, Any]]:
         pair = row.get("vs_year_earlier")
         if pair is None:
             continue
-        out.append({**pair, "label": day_label(row["t_public"])})
+        split = (row.get("split") or {}).get("vs_year_earlier")
+        out.append({**pair, "label": day_label(row["t_public"]), "split": split})
     return out
 
 
 def increment_rows(segment: dict[str, Any]) -> str:
     """Newest first: each vintage against the previous one, with the chain."""
-    head = "".join(
-        f'<th scope="col">{escape(c)}</th>'
-        for c in (
+    split = any(r.get("split") for r in segment["rows"])
+    names = (
+        (
+            "Vintage",
+            "Previous vintage",
+            "Net since previous, version 2's rule, MW-years",
+            "Chained, determined by stage labels, MW-years",
+            "Chained, version 2's rule, MW-years",
+            "Chained, content matching, MW-years",
+            "Joined",
+            "Left",
+            "F1 churn",
+            "Day-month swap test",
+        )
+        if split
+        else (
             "Vintage",
             "Previous vintage",
             "Net movement since previous, MW-years",
@@ -193,6 +254,7 @@ def increment_rows(segment: dict[str, Any]) -> str:
             "Day-month swap test",
         )
     )
+    head = "".join(f'<th scope="col">{escape(c)}</th>' for c in names)
     rows = []
     for row in reversed(recent_rows(segment)):
         pair = row.get("vs_previous")
@@ -202,11 +264,21 @@ def increment_rows(segment: dict[str, Any]) -> str:
             if test["flagged"]
             else ("clean" if pair else BLANK)
         )
+        chained = (row.get("split") or {}).get("chained")
+        chain_cells = (
+            [
+                signed_mw_years(chained["determined"]),
+                signed_mw_years(chained["total"][RULE_V2]),
+                signed_mw_years(chained["total"][RULE_CONTENT]),
+            ]
+            if split and chained
+            else [signed_mw_years(row["cumulative_mw_years_net"])]
+        )
         cells = [
             day_label(row["t_public"]),
             day_label(pair["baseline"]) if pair else BLANK,
             signed_mw_years(pair["mw_years_net"]) if pair else BLANK,
-            signed_mw_years(row["cumulative_mw_years_net"]),
+            *chain_cells,
             count(pair["new_entries"]) if pair else BLANK,
             count(pair["removed"]) if pair else BLANK,
             ("F1: joined plus left over 20% of baseline" if pair["f1_churn"] else BLANK)
@@ -248,10 +320,60 @@ def annual_sum(segment: dict[str, Any]) -> Decimal:
     return sum((Decimal(a["mw_years_net"]) for a in segment.get("annual", [])), Decimal(0))
 
 
+def percent(value: str | None) -> str:
+    return BLANK if value is None else f"{Decimal(value):.1f}%"
+
+
+def split_headline_sentence(series: dict[str, Any]) -> str:
+    """Declarations 3 and 4: the determined part, then each named rule; the
+    wording is the frozen declaration's, the numbers are the evidence's."""
+    h = series["headline"]
+    split = h["split"]
+    year = split["vs_year_earlier"]
+    old = next((s for s in series["segments"] if s["regime"] == "old"), None)
+    missing = (
+        ", or that went missing from a copy between,"
+        if series.get("split", {}).get("definition") == "path"
+        else ""
+    )
+    between = ", at either end or in any copy between" if missing else ""
+    sentence = (
+        f"Between {day_label(h['baseline'])} and {day_label(h['t_public'])}, "
+        f"{h['matched']:,} project-stages were on the register at both dates and "
+        f"{h['dated_both']:,} of them carried a connection date on both copies. "
+        f"{signed_mw_years(year['determined'])} MW-years is movement the register's own "
+        f"stage labels determine. {year['undetermined_groups']:,} project groups that were "
+        f"split, merged, renumbered or printed repeated stages{between}{missing} add "
+        f"{signed_mw_years(year['undetermined'][RULE_V2])} under version 2's rule and "
+        f"{signed_mw_years(year['undetermined'][RULE_CONTENT])} under content matching, so "
+        f"the headline is {signed_mw_years(year['total'][RULE_V2])} or "
+        f"{signed_mw_years(year['total'][RULE_CONTENT])} depending on the rule; other "
+        "pairings are possible and are not bounded here."
+    )
+    if old:
+        shares = split["undetermined_share_percent"]
+        sentence += (
+            f" Chained copy to copy across the old regime only ({old['vintages']:,} copies, "
+            f"{day_label(old['first'])} to {day_label(old['last'])}; the reformed regime is a "
+            f"separate series), the movement the stage labels determine is "
+            f"{signed_mw_years(split['determined'])} megawatt-years; with the rest it is "
+            f"{signed_mw_years(split['total'][RULE_V2])} under version 2's rule "
+            f"({percent(shares[RULE_V2])} undetermined) or "
+            f"{signed_mw_years(split['total'][RULE_CONTENT])} under content matching "
+            f"({percent(shares[RULE_CONTENT])} undetermined). Under version 2's rule the chain "
+            f"exceeds the sum of the year windows below "
+            f"({signed_mw_years(str(annual_sum(old)))}) because it also counts "
+            "project-stages present in two consecutive copies but not at both ends of a year."
+        )
+    return sentence
+
+
 def headline_sentence(series: dict[str, Any]) -> str:
     h = series.get("headline")
     if not h:
         return "No vintage yet has a baseline a year earlier, so there is no headline."
+    if h.get("split"):
+        return split_headline_sentence(series)
     pair = headline_row(series) or {}
     old = next((s for s in series["segments"] if s["regime"] == "old"), None)
     counts = (
@@ -427,10 +549,29 @@ table{font-size:.8rem}th,td{padding:.35rem .4rem}}
 """
 
 
+def evidence_dir_of(declaration_name: str) -> str:
+    """`evidence` for the first declaration, `evidence/vN` for `DECLARATION-vN.md`."""
+    if declaration_name == "DECLARATION.md":
+        return "evidence"
+    return "evidence/" + declaration_name.removeprefix("DECLARATION-").removesuffix(".md")
+
+
+SPLIT_NOTE = (
+    "Where a project prints several rows, the register does not always say which row of "
+    "one copy is which row of another: when its stages were split, merged or renumbered, "
+    "printed the same stage twice, or went missing from a copy in between. Movement in "
+    "every other project is determined by the register's own stage labels, and every "
+    "identity rule that pairs a stage with the stage of the same label gives the same "
+    "figure. For the rest this page gives the figure under two named rules: version 2's "
+    "rule (rows numbered by date) and content matching (rows followed by their capacity "
+    "and date). The two are not bounds; other pairings are possible."
+)
+
+
 def render_page(series: dict[str, Any], repo_url: str = REPO_URL) -> str:
     declaration_name = series.get("declaration", "DECLARATION.md")
     declaration = f"{repo_url}/blob/main/{INVESTIGATION_PATH}/{declaration_name}"
-    evidence_dir = "evidence" if declaration_name == "DECLARATION.md" else "evidence/v2"
+    evidence_dir = evidence_dir_of(declaration_name)
     evidence = f"{repo_url}/tree/main/{INVESTIGATION_PATH}/{evidence_dir}"
     rows_note = (
         f" The two tables of individual copies show the last {ROWS_WINDOW_DAYS} days; "
@@ -457,6 +598,11 @@ def render_page(series: dict[str, Any], repo_url: str = REPO_URL) -> str:
             "under the reformed regime"
         )
     coverage += "." if coverage else ""
+    split_note = (
+        f'<p class="notes">{escape(SPLIT_NOTE)}</p>\n'
+        if (series.get("headline") or {}).get("split")
+        else ""
+    )
     old_annual = render_pair_table(annual_pairs(old), "Year") if old else "<p>No copies.</p>"
     old_vintages = render_pair_table(vintage_pairs(old), "Copy of") if old else ""
     old_increments = increment_rows(old) if old else ""
@@ -466,7 +612,8 @@ def render_page(series: dict[str, Any], repo_url: str = REPO_URL) -> str:
         for row in reversed(new["rows"]):
             pair = row.get("vs_previous")
             if pair is not None:
-                new_pairs.append({**pair, "label": day_label(row["t_public"])})
+                split = (row.get("split") or {}).get("vs_previous")
+                new_pairs.append({**pair, "label": day_label(row["t_public"]), "split": split})
         new_table = (
             render_pair_table(new_pairs, "Copy of")
             if new_pairs
@@ -501,7 +648,7 @@ copy from {escape(day_label(new["first"]))}, and are never added to the figures 
 <p>{escape(INTRO)}{escape(coverage)}</p>
 
 <p class="headline">{escape(headline_sentence(series))}</p>
-
+{split_note}
 <h2>Year by year</h2>
 <p class="notes">Each row compares the first copy of the register in one year with the
 first copy of the next. <em>Project-stages at both dates</em> is the population the
@@ -626,18 +773,18 @@ def render_markdown(series: dict[str, Any]) -> str:
     old = next((s for s in series["segments"] if s["regime"] == "old"), None)
     new = next((s for s in series["segments"] if s["regime"] == "new"), None)
     counts = series.get("vintages", {})
-    head = (
-        "| "
-        + " | ".join(["Year"] + list(PAIR_COLUMNS))
-        + " |\n|"
-        + "---|" * (len(PAIR_COLUMNS) + 1)
-    )
+    split = bool((series.get("headline") or {}).get("split"))
+    names = columns(split)
+    # Version 2's released record page keeps its wording; a split page names
+    # its own evidence directory.
+    evidence = evidence_dir_of(series.get("declaration", "DECLARATION.md")) if split else "evidence"
+    head = "| " + " | ".join(["Year", *names]) + " |\n|" + "---|" * (len(names) + 1)
     annual = "\n".join(md_pair_row(p["label"], p) for p in annual_pairs(old)) if old else ""
     lines = [
         f"# {TITLE} — series (investigation 014)",
         "",
         f"*{SUBTITLE}. The page at `site/connection-slippage/index.html` and this file are pure "
-        "functions of `evidence/series.json`.*",
+        f"functions of `{evidence}/series.json`.*",
         "",
         f"**Declaration** `{series.get('declaration', 'DECLARATION.md')}`, SHA-256 "
         f"`{series.get('declaration_sha256', '')}`, witnessed before the run. "
@@ -652,6 +799,7 @@ def render_markdown(series: dict[str, Any]) -> str:
         "",
         headline_sentence(series),
         "",
+        *([SPLIT_NOTE, ""] if (series.get("headline") or {}).get("split") else []),
         "## Propositions",
         "",
         *markdown_propositions(series),
@@ -670,7 +818,12 @@ def render_markdown(series: dict[str, Any]) -> str:
         ]
         for row in reversed(new["rows"]):
             if row.get("vs_previous"):
-                lines.append(md_pair_row(day_label(row["t_public"]), row["vs_previous"]))
+                row_split = (row.get("split") or {}).get("vs_previous")
+                lines.append(
+                    md_pair_row(
+                        day_label(row["t_public"]), {**row["vs_previous"], "split": row_split}
+                    )
+                )
         lines.append("")
     rb = series.get("regime_break")
     lines += ["## Gaps, breaks and copies not used", ""]
@@ -699,8 +852,8 @@ def render_markdown(series: dict[str, Any]) -> str:
         lines.append(f"- {s['t_public']}: excluded, lacks {', '.join(s['missing'])}.")
     lines += [
         "",
-        "Every copy's row, both comparisons and the swap test are in `evidence/series.json`; "
-        "the copies themselves are listed with digests in `evidence/vintage-manifest.json`.",
+        f"Every copy's row, both comparisons and the swap test are in `{evidence}/series.json`; "
+        f"the copies themselves are listed with digests in `{evidence}/vintage-manifest.json`.",
         "",
     ]
     return "\n".join(lines)

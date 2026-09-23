@@ -49,9 +49,14 @@ accepted proposal, in the same commit:
 1. append the proposal row to the investigation's batch file under
    `batches/`;
 2. refresh `claims-export.json` (`morpholog inspect claims`);
-3. record a new checkpoint over the extended log
-   (`morpholog audit checkpoint > audit-anchor.json`) and re-export
-   `evidence-pack.json`.
+3. record a new signed checkpoint over the extended log, witnessed by
+   two RFC 3161 authorities (freetsa.org, DigiCert), into
+   `audit-anchor.json`, and re-export `evidence-pack.json`.
+
+Checkpoints before tree_size 140 carry no witness. freetsa.org's tokens
+are stored but reported `unsupported` by Morpholog v0.0.11, which cannot
+yet check their signature algorithm (ECDSA with SHA-512); DigiCert's
+verify against `trust/tsa/`.
 
 `scripts/replay-research` fails if any of these drift, so CI enforces the
 discipline. The research doctrine for *what* belongs in the record (narrow

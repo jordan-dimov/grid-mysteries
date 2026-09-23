@@ -82,9 +82,23 @@ fi
 # the marker in place for manual recovery.
 printf '%s\n' "$ROW" >> "$BATCH_FILE"
 morpholog inspect claims > morpholog/claims-export.json
-morpholog audit checkpoint --signing-key "$SIGNING_KEY" --key-id audit-2026 > morpholog/audit-anchor.json
+# Two RFC 3161 authorities countersign the signed head, the same two that
+# witness frozen declarations (scripts/timestamp). Only the head's hash
+# leaves the machine. The checkpoint is recorded even if one fails.
+WITNESSES=(--witness rfc3161:https://freetsa.org/tsr --witness rfc3161:http://timestamp.digicert.com)
+if ! morpholog audit checkpoint --signing-key "$SIGNING_KEY" --key-id audit-2026 "${WITNESSES[@]}" \
+    > morpholog/audit-anchor.json; then
+  tree_size=$(python3 -c "import json; print(json.load(open('morpholog/audit-anchor.json'))['tree_size'])" 2>/dev/null || echo '<tree_size>')
+  echo "record: checkpoint recorded but a timestamp authority failed; marker left at $MARKER." >&2
+  echo "record: retry, then finish by hand:" >&2
+  echo "  morpholog audit witness --tree-size $tree_size ${WITNESSES[*]} > morpholog/audit-anchor.json" >&2
+  echo "  morpholog audit export > morpholog/evidence-pack.json" >&2
+  echo "  (verify as below, then rm $MARKER)" >&2
+  exit 1
+fi
 morpholog audit export > morpholog/evidence-pack.json
 morpholog audit verify-pack morpholog/evidence-pack.json --anchor-file morpholog/audit-anchor.json \
-  --require-signing-key morpholog/trust/audit-2026.pub --require-signatures-from 34 >/dev/null
+  --require-signing-key morpholog/trust/audit-2026.pub --require-signatures-from 34 \
+  --trusted-tsa-file <(cat trust/tsa/freetsa-cacert.pem trust/tsa/digicert-trusted-root-g4.pem) >/dev/null
 rm -f "$MARKER"
 echo "record: committed and recorded in $BATCH_FILE (remember to commit the morpholog/ changes)"

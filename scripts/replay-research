@@ -37,8 +37,11 @@ echo "== offline evidence-pack verification (no database consulted)"
 # AuditSigningKey claim through the retained v1 rules. A rogue key can
 # never satisfy this pin. Checkpoints were signed from tree_size 34
 # onward; the earlier ones are honestly unsigned and are not asked.
+# RFC 3161 witnesses on the checkpoints are judged against the committed
+# TSA roots (trust/tsa/); an invalid one fails the verification.
 morpholog audit verify-pack morpholog/evidence-pack.json --anchor-file morpholog/audit-anchor.json \
-  --require-signing-key morpholog/trust/audit-2026.pub --require-signatures-from 34
+  --require-signing-key morpholog/trust/audit-2026.pub --require-signatures-from 34 \
+  --trusted-tsa-file <(cat trust/tsa/freetsa-cacert.pem trust/tsa/digicert-trusted-root-g4.pem)
 
 echo "== governance-attestation check (misconfiguration + naive-forgery control)"
 EXPECTED_HUMAN_LOGIN_ROLE="${EXPECTED_HUMAN_LOGIN_ROLE:-gm_human}" python3 -c "

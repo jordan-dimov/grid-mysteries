@@ -93,6 +93,17 @@ def check_bands(store: ObjectStore, job: str) -> list[Check]:
     a new version looks like (NESO's TEC register, 2026-09-19: 2 artefacts /
     424 KB against 1 / 2.5 KB on quiet days, when only the unchanged metadata
     is fetched). An error is always a fault.
+    A run in which every artefact was unchanged is quiet, not a fault: the
+    source published nothing and the capture skipped the download (the
+    manifest's `extra.skipped`). Without this, a working dedup reads as a
+    collapse -- NESO's day-ahead constraint flows, 2026-09-20: 1 artefact /
+    1,722 bytes of metadata against 2 / 27 MB, because CKAN's last_modified
+    had not moved since 09-18. The distinction is safe in the direction that
+    matters: a login page or a challenge interstitial is NEW bytes under a
+    new digest, so it still falls below the band. It is not safe in one
+    direction -- a resource that vanished from a listing while its remaining
+    artefact stayed unchanged would read as quiet; check_freshness and the
+    error path are what catch that.
     The anchor is `status/latest.json`, not today's date: the watchdog fires
     twice a day and the 04:12 run precedes the 06:30 capture, so "today's
     status" does not exist yet and is not a fault (2026-09-18, the first
@@ -128,6 +139,9 @@ def check_bands(store: ObjectStore, job: str) -> list[Check]:
         )
         if r.get("error"):
             out.append(Check(name, False, f"{detail}; ERROR {r['error']}"))
+            continue
+        if r.get("unchanged", 0) == r["artefacts"] > 0:
+            out.append(Check(name, True, f"quiet, published nothing; {detail}"))
             continue
         if r["artefacts"] < BAND_LOW * med_count or r["bytes"] < BAND_LOW * med_bytes:
             out.append(Check(name, False, f"{detail}; below band"))

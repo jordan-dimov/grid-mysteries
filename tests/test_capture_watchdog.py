@@ -332,3 +332,40 @@ def test_new_content_below_the_band_is_news_and_a_fault_is_still_a_fault(tmp_pat
     )
     assert not checks["TEC"].ok and "ERROR HTTPError: 403" in checks["TEC"].detail
     assert checks["REMIT"].ok and not checks["REMIT"].news
+
+
+def test_a_skipped_unchanged_fetch_is_quiet_not_a_collapse(tmp_path: Path):
+    """NESO's day-ahead constraint flows, 2026-09-20: CKAN's last_modified had
+    not moved since 09-18, so the capture wrote the 1,722-byte metadata record
+    and skipped the 27 MB CSV. Counting only bytes written, that is a 99.99 %
+    collapse; it is in fact the dedup working."""
+    checks = history(
+        LocalStore(tmp_path),
+        [resource("DA-CONSTRAINT", 2, 27_359_276, 0)],
+        [resource("DA-CONSTRAINT", 1, 1_722, 1)],
+    )
+    assert checks["DA-CONSTRAINT"].ok and not checks["DA-CONSTRAINT"].news
+    assert checks["DA-CONSTRAINT"].detail.startswith("quiet, published nothing")
+
+
+def test_quiet_does_not_excuse_new_bytes_or_a_source_that_went_away(tmp_path: Path):
+    """The quiet rule keys on every artefact being bytes already held. A login
+    page, a challenge interstitial or an empty response is new or absent
+    content, not unchanged content, and still fails."""
+    usual = [resource("DA-CONSTRAINT", 2, 27_359_276, 0)]
+    checks = history(  # a challenge interstitial: small, but NEW bytes
+        LocalStore(tmp_path / "a"), usual, [resource("DA-CONSTRAINT", 1, 1_722, 0)]
+    )
+    assert not checks["DA-CONSTRAINT"].ok
+    assert checks["DA-CONSTRAINT"].detail.endswith("below band")
+    checks = history(  # the source returned nothing at all
+        LocalStore(tmp_path / "b"), usual, [resource("DA-CONSTRAINT", 0, 0, 0)]
+    )
+    assert not checks["DA-CONSTRAINT"].ok
+    checks = history(  # unchanged, but the fetch itself errored
+        LocalStore(tmp_path / "c"),
+        usual,
+        [resource("DA-CONSTRAINT", 1, 1_722, 1, error="HTTPError: 403")],
+    )
+    assert not checks["DA-CONSTRAINT"].ok
+    assert "ERROR HTTPError: 403" in checks["DA-CONSTRAINT"].detail

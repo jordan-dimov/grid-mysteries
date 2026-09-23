@@ -1,0 +1,131 @@
+-- NESO's TEC register as a governed record.
+--
+-- The record is what NESO published, row by row, publication by
+-- publication. Nothing here corrects, reinterprets or fills a cell: a row
+-- is its cells as the declared reader extracts them (text verbatim,
+-- numbers written canonically, spreadsheet date cells as ISO dates), and
+-- `RowKinds` says what each cell was, one character per column (t text,
+-- i integer, f float, d date cell, - blank or absent). A row's key is a
+-- digest of its cells plus its occurrence among identical rows of the same
+-- publication; a copy that prints the same cells in another file format
+-- changes the row's kinds (`rekind`), not the row. The record makes no
+-- claim about which row of one publication "is" which row of another.
+-- That is identity, and it belongs to the analysis, which names its rule
+-- version.
+--
+-- Each publication imports as one transact: `publish` (or `open_register`
+-- for the first), then `add_row` and `drop_row` for the rows that changed,
+-- then `close_import`, which also records the publication's line order. Only the publication being imported can change the
+-- record, publications import in date order, and nothing changes it
+-- between imports. "What did the register say on date D" is a read as of
+-- the `close_import` of the last publication on or before D.
+--
+-- Every invariant here must stay inside the compiled fragment (no `or`,
+-- no defined calls); scripts/check fails otherwise.
+
+program tec_register
+
+-- A publication we hold, by the digest of its bytes, the file format it
+-- came in and the canonical columns it carried (comma-separated).
+predicate Vintage(vintage: Subject, published_on: Date, sha256: Subject, file_format: Subject, columns: Subject)
+    unique by (vintage)
+    append only
+predicate CurrentVintage(register: Subject, vintage: Subject, published_on: Date)
+    current pointer by (register)
+-- Held between a publication's first act and its `close_import`.
+predicate Importing(register: Subject, vintage: Subject)
+    unique by (register)
+predicate Imported(vintage: Subject)
+    append only
+
+-- One row as published. Columns in the reader's canonical order.
+predicate Row(row: Subject, project_id: Subject, project_number: Subject, project_name: Subject, customer_name: Subject, connection_site: Subject, stage: Subject, mw_connected: Subject, mw_change: Subject, cumulative_mw: Subject, mw_effective_from: Subject, project_status: Subject, agreement_type: Subject, host_to: Subject, plant_type: Subject, gate: Subject)
+    unique by (row)
+-- What each of the row's cells was in the copy imported last.
+predicate RowKinds(row: Subject, kinds: Subject)
+    current pointer by (row)
+-- The publications in which a row (re)appeared.
+predicate RowAppeared(row: Subject, vintage: Subject)
+    append only
+predicate RowDropped(row: Subject, vintage: Subject)
+    append only
+-- The publication's line order: its rows' keys sorted, then listed by
+-- file position as comma-separated indexes into that sorted list.
+predicate RowOrder(vintage: Subject, order: Subject)
+    unique by (vintage)
+    append only
+
+-- Audit-checkpoint signing (reserved predicate name). The verifier pins
+-- the key it trusts (`verify-pack --require-signing-key`), so a key
+-- registered here is necessary for signing, never sufficient for trust.
+predicate AuditSigningKey(key_id: Subject, purpose: Subject, public_key: Subject)
+    append only
+
+invariant appearances_name_a_publication:
+    RowAppeared(_, v) implies Vintage(v, _, _, _, _)
+
+invariant drops_name_a_publication:
+    RowDropped(_, v) implies Vintage(v, _, _, _, _)
+
+invariant rows_appeared_in_a_publication:
+    Row(r, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _) implies RowAppeared(r, _)
+
+invariant kinds_describe_a_row:
+    RowKinds(r, _) implies Row(r, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _)
+
+invariant imports_name_a_publication:
+    Imported(v) implies Vintage(v, _, _, _, _)
+
+invariant orders_name_a_publication:
+    RowOrder(v, _) implies Vintage(v, _, _, _, _)
+
+transformation open_register(vintage, published_on, sha256, file_format, columns):
+    require first_publication: not CurrentVintage(#tec, _, _)
+    admit Vintage(vintage, published_on, sha256, file_format, columns)
+    admit CurrentVintage(#tec, vintage, published_on)
+    admit Importing(#tec, vintage)
+
+transformation publish(vintage, published_on, sha256, file_format, columns, prior, prior_on):
+    require prior_is_current: CurrentVintage(#tec, prior, prior_on)
+    require prior_import_closed: Imported(prior)
+    require no_import_open: not Importing(#tec, _)
+    require publications_in_order: prior_on before published_on
+    require vintage_is_new: not Vintage(vintage, _, _, _, _)
+    admit Vintage(vintage, published_on, sha256, file_format, columns)
+    retract CurrentVintage(#tec, prior, prior_on)
+    admit CurrentVintage(#tec, vintage, published_on)
+    admit Importing(#tec, vintage)
+
+-- Only the publication being imported changes the record.
+transformation add_row(row, vintage, kinds, project_id, project_number, project_name, customer_name, connection_site, stage, mw_connected, mw_change, cumulative_mw, mw_effective_from, project_status, agreement_type, host_to, plant_type, gate):
+    require only_the_publication_being_imported: Importing(#tec, vintage)
+    require row_is_new: not Row(row, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _)
+    admit Row(row, project_id, project_number, project_name, customer_name, connection_site, stage, mw_connected, mw_change, cumulative_mw, mw_effective_from, project_status, agreement_type, host_to, plant_type, gate)
+    admit RowKinds(row, kinds)
+    admit RowAppeared(row, vintage)
+
+transformation drop_row(row, vintage):
+    require only_the_publication_being_imported: Importing(#tec, vintage)
+    bind the_row: Row(row, a, b, c, d, e, f, g, h, i, j, l, m, n, o, p)
+    bind its_kinds: RowKinds(row, k)
+    retract Row(row, a, b, c, d, e, f, g, h, i, j, l, m, n, o, p)
+    retract RowKinds(row, k)
+    admit RowDropped(row, vintage)
+
+-- The same cells, printed as other kinds (another file format).
+transformation rekind(row, vintage, kinds):
+    require only_the_publication_being_imported: Importing(#tec, vintage)
+    bind its_kinds: RowKinds(row, previous)
+    require kinds_changed: previous != kinds
+    retract RowKinds(row, previous)
+    admit RowKinds(row, kinds)
+
+transformation close_import(vintage, order):
+    require only_the_publication_being_imported: Importing(#tec, vintage)
+    retract Importing(#tec, vintage)
+    admit Imported(vintage)
+    admit RowOrder(vintage, order)
+
+transformation register_audit_signing_key(key_id, public_key):
+    require key_not_already_registered: not AuditSigningKey(key_id, _, _)
+    admit AuditSigningKey(key_id, #audit_checkpoint_v1, public_key)

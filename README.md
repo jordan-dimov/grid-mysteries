@@ -62,8 +62,10 @@ src/grid_mysteries/
     investigations/          # tested analytical logic, one module per study concept
     rendering/               # the chart palette and SVG tokens; the two public pages; the certificate
     capture/                 # the unattended vintage capture: plan, strategies, stores, witnessing, watchdog, state
+    tec/                     # the TEC record engine: cells, importer, replay, identity, analysis, certificates
 archives/                    # committed schema reports of the archives the readers are declared against
 morpholog/                   # the governed research record (see morpholog/README.md)
+tec/                         # the TEC register as its own governed record (see tec/README.md)
 ops/                         # deployment design, AWS bootstrap, git hooks, systemd units for the watchdog
 trust/tsa/                   # the RFC 3161 roots proofs are verified against
 investigations/              # one directory per investigation or method study:

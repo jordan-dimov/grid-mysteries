@@ -13,6 +13,21 @@ morpholog check morpholog/research.morph
 morpholog check morpholog/research-v2-draft.morph
 morpholog check morpholog/research-v3-draft.morph
 
+# The TEC record must stay on the compiled route (its flat per-change cost
+# depends on it: no `or`, no defined calls in an invariant), and its rules
+# change only with a deliberate update of the pinned hash.
+morpholog check tec/tec-register.morph
+if ! morpholog check -v tec/tec-register.morph | grep -qx '  invariant checks: compiled'; then
+  echo "tec/tec-register.morph is no longer compiled: see 'morpholog check -v'" >&2
+  exit 1
+fi
+tec_expected=$(python3 -c "import json; print(json.load(open('tec/PROGRAMME_HASH.json'))['hash'])")
+tec_actual=$(morpholog hash tec/tec-register.morph | python3 -c "import json,sys; print(json.load(sys.stdin)['hash'])")
+if [[ "$tec_expected" != "$tec_actual" ]]; then
+  echo "tec/tec-register.morph hash $tec_actual differs from the pinned $tec_expected" >&2
+  exit 1
+fi
+
 # The vendored typed client must be byte-identical to what the pinned
 # binary generates from the v2 programme — drift is a hard failure.
 morpholog generate python-client morpholog/research-v2-draft.morph --out src --check

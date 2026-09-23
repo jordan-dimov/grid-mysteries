@@ -1,0 +1,3467 @@
+[
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2025-09-03&filter=s0142",
+  "path": "data/raw/elexon/018/list/2025-09-03.json",
+  "sha256": "bc37e38d6544afd6852e8f08be8e6bbc664b60305b5c31992d59a7b9e56f4a89",
+  "fetched_at": "2026-09-23T11:02:55.870911+00:00",
+  "bytes": 361
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2025-09-04&filter=s0142",
+  "path": "data/raw/elexon/018/list/2025-09-04.json",
+  "sha256": "2090341cf89982794d3ee19b3a01a83ddf647eea6dff87a8cc52cb93e99e5d68",
+  "fetched_at": "2026-09-23T11:02:56.376319+00:00",
+  "bytes": 481
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2025-09-05&filter=s0142",
+  "path": "data/raw/elexon/018/list/2025-09-05.json",
+  "sha256": "424bc18e587ec7aaab93b1ffb9cac8666a000a114bfdce15647ff991a7d184eb",
+  "fetched_at": "2026-09-23T11:02:56.837845+00:00",
+  "bytes": 841
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2025-09-06&filter=s0142",
+  "path": "data/raw/elexon/018/list/2025-09-06.json",
+  "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "fetched_at": "2026-09-23T11:02:57.276531+00:00",
+  "bytes": 2
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2025-09-07&filter=s0142",
+  "path": "data/raw/elexon/018/list/2025-09-07.json",
+  "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "fetched_at": "2026-09-23T11:02:57.693174+00:00",
+  "bytes": 2
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2025-09-08&filter=s0142",
+  "path": "data/raw/elexon/018/list/2025-09-08.json",
+  "sha256": "411d89606ffe622a5d5af759a746888af7b2cc7ba20d1c5e983a395ce200f9ab",
+  "fetched_at": "2026-09-23T11:02:58.179563+00:00",
+  "bytes": 481
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2025-09-09&filter=s0142",
+  "path": "data/raw/elexon/018/list/2025-09-09.json",
+  "sha256": "a13a2ceb00690261d26fb33242268ea834ed595e338b2a254eda13e8d633f971",
+  "fetched_at": "2026-09-23T11:02:58.621150+00:00",
+  "bytes": 781
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2025-09-10&filter=s0142",
+  "path": "data/raw/elexon/018/list/2025-09-10.json",
+  "sha256": "aea093dc4e6567d5b48f4b1018bd05965938a50795b4cfefd1b1e6f92c97157c",
+  "fetched_at": "2026-09-23T11:02:59.087263+00:00",
+  "bytes": 361
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2025-09-11&filter=s0142",
+  "path": "data/raw/elexon/018/list/2025-09-11.json",
+  "sha256": "8e5be4bf7698f2e82a7e8e98731c84621b4df8d2ea09c984bb47635b55bef975",
+  "fetched_at": "2026-09-23T11:02:59.512452+00:00",
+  "bytes": 541
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2025-09-12&filter=s0142",
+  "path": "data/raw/elexon/018/list/2025-09-12.json",
+  "sha256": "57260df5dc7d1a769faf26d2730262179af3f8d4ee74c661894fdbb486d79e99",
+  "fetched_at": "2026-09-23T11:03:00.169244+00:00",
+  "bytes": 841
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2025-09-13&filter=s0142",
+  "path": "data/raw/elexon/018/list/2025-09-13.json",
+  "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "fetched_at": "2026-09-23T11:03:01.005428+00:00",
+  "bytes": 2
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2025-09-14&filter=s0142",
+  "path": "data/raw/elexon/018/list/2025-09-14.json",
+  "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "fetched_at": "2026-09-23T11:03:01.838132+00:00",
+  "bytes": 2
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2025-09-15&filter=s0142",
+  "path": "data/raw/elexon/018/list/2025-09-15.json",
+  "sha256": "97c8306526c2551325b8da3bdccc0c843ca97e3506fccfbe9e44893776b231e9",
+  "fetched_at": "2026-09-23T11:03:02.601003+00:00",
+  "bytes": 481
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2025-09-16&filter=s0142",
+  "path": "data/raw/elexon/018/list/2025-09-16.json",
+  "sha256": "334f9df8834923fdb2bd514759112c30b4afd0b3611fd5aa6ea53ac8a1550f6e",
+  "fetched_at": "2026-09-23T11:03:03.136616+00:00",
+  "bytes": 841
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2025-09-17&filter=s0142",
+  "path": "data/raw/elexon/018/list/2025-09-17.json",
+  "sha256": "529a4e902e1ef71c54467e7cfa12af75f5a5121646515372b5dfb7fb2d34a3db",
+  "fetched_at": "2026-09-23T11:03:03.593454+00:00",
+  "bytes": 361
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2025-09-18&filter=s0142",
+  "path": "data/raw/elexon/018/list/2025-09-18.json",
+  "sha256": "a6ec0f34982af90133bd7a540992433e135908c934fd97d15e8d41749c7cfc74",
+  "fetched_at": "2026-09-23T11:03:04.051669+00:00",
+  "bytes": 481
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2025-09-19&filter=s0142",
+  "path": "data/raw/elexon/018/list/2025-09-19.json",
+  "sha256": "029e0f251b655993d21d2bb1828a886e45842b692b1a9426ea349e838a957472",
+  "fetched_at": "2026-09-23T11:03:04.477912+00:00",
+  "bytes": 841
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2025-09-20&filter=s0142",
+  "path": "data/raw/elexon/018/list/2025-09-20.json",
+  "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "fetched_at": "2026-09-23T11:03:04.880656+00:00",
+  "bytes": 2
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2025-09-21&filter=s0142",
+  "path": "data/raw/elexon/018/list/2025-09-21.json",
+  "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "fetched_at": "2026-09-23T11:03:05.312166+00:00",
+  "bytes": 2
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2025-09-22&filter=s0142",
+  "path": "data/raw/elexon/018/list/2025-09-22.json",
+  "sha256": "10628a0423042ccccbca338760dc3ad5ddebb5ce1ef93559499244ae15bfa68e",
+  "fetched_at": "2026-09-23T11:03:05.739299+00:00",
+  "bytes": 721
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2025-09-23&filter=s0142",
+  "path": "data/raw/elexon/018/list/2025-09-23.json",
+  "sha256": "caaea1955921eaaf873052de7c27f9859138387d4bafcb58b207046df3463334",
+  "fetched_at": "2026-09-23T11:03:06.251292+00:00",
+  "bytes": 481
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2025-09-24&filter=s0142",
+  "path": "data/raw/elexon/018/list/2025-09-24.json",
+  "sha256": "82a3c59402b7117c8e4c28279ec12ceaee5c529489ea65e2d2702d82244d27ac",
+  "fetched_at": "2026-09-23T11:03:06.711363+00:00",
+  "bytes": 421
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2025-09-25&filter=s0142",
+  "path": "data/raw/elexon/018/list/2025-09-25.json",
+  "sha256": "06c20d2e1a52f26ceff50784217bda90c7655cde078bb6e412ca018142fc5f1f",
+  "fetched_at": "2026-09-23T11:03:07.169875+00:00",
+  "bytes": 661
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2025-09-26&filter=s0142",
+  "path": "data/raw/elexon/018/list/2025-09-26.json",
+  "sha256": "28ca7bb322aeee5caf5473861638518ffdacd80191ece30b39a323b2d344b3c6",
+  "fetched_at": "2026-09-23T11:03:07.620020+00:00",
+  "bytes": 1021
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2025-09-27&filter=s0142",
+  "path": "data/raw/elexon/018/list/2025-09-27.json",
+  "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "fetched_at": "2026-09-23T11:03:08.088862+00:00",
+  "bytes": 2
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2025-09-28&filter=s0142",
+  "path": "data/raw/elexon/018/list/2025-09-28.json",
+  "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "fetched_at": "2026-09-23T11:03:08.543921+00:00",
+  "bytes": 2
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2025-09-29&filter=s0142",
+  "path": "data/raw/elexon/018/list/2025-09-29.json",
+  "sha256": "8c353dbc197a532224f210867e330cf5e0c869db7e5773eedee11c9316db235f",
+  "fetched_at": "2026-09-23T11:03:09.005035+00:00",
+  "bytes": 901
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2025-09-30&filter=s0142",
+  "path": "data/raw/elexon/018/list/2025-09-30.json",
+  "sha256": "76b219f4a30a97de7a4f1a2e4dd7a6958fb1783be9d9102926bf295137135f7e",
+  "fetched_at": "2026-09-23T11:03:09.468372+00:00",
+  "bytes": 661
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2025-10-01&filter=s0142",
+  "path": "data/raw/elexon/018/list/2025-10-01.json",
+  "sha256": "caf333a7ae6e1d10dbf34dc27848f100b4d5d7db1b5b15b7f98e13129cf53512",
+  "fetched_at": "2026-09-23T11:03:09.948110+00:00",
+  "bytes": 601
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2025-10-02&filter=s0142",
+  "path": "data/raw/elexon/018/list/2025-10-02.json",
+  "sha256": "802b7298180357c598ead1537fb64959272acd21d36df0195b65b2d4d89ed1be",
+  "fetched_at": "2026-09-23T11:03:10.410895+00:00",
+  "bytes": 721
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2025-10-03&filter=s0142",
+  "path": "data/raw/elexon/018/list/2025-10-03.json",
+  "sha256": "a53c536a37919ca50b40cbcc75a1cd3dd4aece5ecba665fc12772a7bc7a26157",
+  "fetched_at": "2026-09-23T11:03:10.867960+00:00",
+  "bytes": 961
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2025-10-04&filter=s0142",
+  "path": "data/raw/elexon/018/list/2025-10-04.json",
+  "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "fetched_at": "2026-09-23T11:03:11.319873+00:00",
+  "bytes": 2
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2025-10-05&filter=s0142",
+  "path": "data/raw/elexon/018/list/2025-10-05.json",
+  "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "fetched_at": "2026-09-23T11:03:11.764608+00:00",
+  "bytes": 2
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2025-10-06&filter=s0142",
+  "path": "data/raw/elexon/018/list/2025-10-06.json",
+  "sha256": "58f0e2afa5f06b11735d97f34465afb2d39eda037172f69c91a75be0359f98cb",
+  "fetched_at": "2026-09-23T11:03:12.225070+00:00",
+  "bytes": 721
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2025-10-07&filter=s0142",
+  "path": "data/raw/elexon/018/list/2025-10-07.json",
+  "sha256": "244423558542bdd58541858c003733a821352ef2d718efc485208dd216d7b813",
+  "fetched_at": "2026-09-23T11:03:12.672726+00:00",
+  "bytes": 481
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2025-10-08&filter=s0142",
+  "path": "data/raw/elexon/018/list/2025-10-08.json",
+  "sha256": "9ac38aafed9c634f1bf0ebb17456281fdd4ab369e3963660e585a6e6e123c90d",
+  "fetched_at": "2026-09-23T11:03:13.160152+00:00",
+  "bytes": 421
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2025-10-09&filter=s0142",
+  "path": "data/raw/elexon/018/list/2025-10-09.json",
+  "sha256": "623b9f8582fb66126e1cc2b0ee65e5216012a77cbbd7540e00e8cca291af7ef6",
+  "fetched_at": "2026-09-23T11:03:13.631632+00:00",
+  "bytes": 481
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2025-10-10&filter=s0142",
+  "path": "data/raw/elexon/018/list/2025-10-10.json",
+  "sha256": "9c3b01b0542d8d04633275316737e76efed19ec56525cc033948a69d93e1c404",
+  "fetched_at": "2026-09-23T11:03:14.109323+00:00",
+  "bytes": 841
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2025-10-11&filter=s0142",
+  "path": "data/raw/elexon/018/list/2025-10-11.json",
+  "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "fetched_at": "2026-09-23T11:03:14.568186+00:00",
+  "bytes": 2
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2025-10-12&filter=s0142",
+  "path": "data/raw/elexon/018/list/2025-10-12.json",
+  "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "fetched_at": "2026-09-23T11:03:15.080819+00:00",
+  "bytes": 2
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2025-10-13&filter=s0142",
+  "path": "data/raw/elexon/018/list/2025-10-13.json",
+  "sha256": "65732cdfc5b0c414d92ddd343df9391e55a7c57b3f52ee7218a6b560ec15a1f3",
+  "fetched_at": "2026-09-23T11:03:15.542666+00:00",
+  "bytes": 781
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2025-10-14&filter=s0142",
+  "path": "data/raw/elexon/018/list/2025-10-14.json",
+  "sha256": "8458f4c3e4cd3354d18a47d9b448a5c2c5965635d0b1aa2e0a667dfcad13bdb4",
+  "fetched_at": "2026-09-23T11:03:16.088793+00:00",
+  "bytes": 481
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2025-10-15&filter=s0142",
+  "path": "data/raw/elexon/018/list/2025-10-15.json",
+  "sha256": "6d363dc8fb7978d76ce16288062cb1d202cba3322a8717237208531d4d07b0b1",
+  "fetched_at": "2026-09-23T11:03:16.550199+00:00",
+  "bytes": 481
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2025-10-16&filter=s0142",
+  "path": "data/raw/elexon/018/list/2025-10-16.json",
+  "sha256": "51de3235bc56e72e9097866e73f38bca467f83bd04f54be2e3681018f74c57f7",
+  "fetched_at": "2026-09-23T11:03:17.101826+00:00",
+  "bytes": 541
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2025-10-17&filter=s0142",
+  "path": "data/raw/elexon/018/list/2025-10-17.json",
+  "sha256": "25a8abeec0a48ea52860857f3f9a78085a20b208e414cb588391035b1f011096",
+  "fetched_at": "2026-09-23T11:03:17.665103+00:00",
+  "bytes": 901
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2025-10-18&filter=s0142",
+  "path": "data/raw/elexon/018/list/2025-10-18.json",
+  "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "fetched_at": "2026-09-23T11:03:18.292618+00:00",
+  "bytes": 2
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2025-10-19&filter=s0142",
+  "path": "data/raw/elexon/018/list/2025-10-19.json",
+  "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "fetched_at": "2026-09-23T11:03:18.760194+00:00",
+  "bytes": 2
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2025-10-20&filter=s0142",
+  "path": "data/raw/elexon/018/list/2025-10-20.json",
+  "sha256": "26affcb2604f25c939fcb89a96da8810d3f075c3f2216151d82f8cb5c30f9f05",
+  "fetched_at": "2026-09-23T11:03:19.274726+00:00",
+  "bytes": 721
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2025-10-21&filter=s0142",
+  "path": "data/raw/elexon/018/list/2025-10-21.json",
+  "sha256": "8e15ba3c045ccc754117671f0c76849ee4c94cb80e57117f1e4a09c9dfb6051c",
+  "fetched_at": "2026-09-23T11:03:19.740483+00:00",
+  "bytes": 361
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2025-10-22&filter=s0142",
+  "path": "data/raw/elexon/018/list/2025-10-22.json",
+  "sha256": "bda7a97bc6a5e9824f2d5889062c5a4e23260321f7ee16e2de956bbc2a636c63",
+  "fetched_at": "2026-09-23T11:03:20.201157+00:00",
+  "bytes": 421
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2025-10-23&filter=s0142",
+  "path": "data/raw/elexon/018/list/2025-10-23.json",
+  "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "fetched_at": "2026-09-23T11:03:20.650680+00:00",
+  "bytes": 2
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2025-10-24&filter=s0142",
+  "path": "data/raw/elexon/018/list/2025-10-24.json",
+  "sha256": "949ce0380f0efef303a488bcaf15009e059d3b74aa7d80e36064ade405730f28",
+  "fetched_at": "2026-09-23T11:03:21.087931+00:00",
+  "bytes": 61
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2025-10-25&filter=s0142",
+  "path": "data/raw/elexon/018/list/2025-10-25.json",
+  "sha256": "00b382b544213552cd0dc6a54c50766c3c9d499ee6474606164174529c07700f",
+  "fetched_at": "2026-09-23T11:03:21.597178+00:00",
+  "bytes": 1321
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2025-10-26&filter=s0142",
+  "path": "data/raw/elexon/018/list/2025-10-26.json",
+  "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "fetched_at": "2026-09-23T11:03:22.079212+00:00",
+  "bytes": 2
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2025-10-27&filter=s0142",
+  "path": "data/raw/elexon/018/list/2025-10-27.json",
+  "sha256": "fdb4dcf3790660f88e30f00fa79b8abb5678d7dd9074ebdc8ca241adf908454a",
+  "fetched_at": "2026-09-23T11:03:22.514524+00:00",
+  "bytes": 781
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2025-10-28&filter=s0142",
+  "path": "data/raw/elexon/018/list/2025-10-28.json",
+  "sha256": "b886540fc88d49cf57113ef3688f6dd2d9d92c6ce92470ebed0c2c65a1ba2ff6",
+  "fetched_at": "2026-09-23T11:03:22.943907+00:00",
+  "bytes": 361
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2025-10-29&filter=s0142",
+  "path": "data/raw/elexon/018/list/2025-10-29.json",
+  "sha256": "e6168633c465ddb85cc70d771df99e480d1be90de732180b3bfa03053fcf9db0",
+  "fetched_at": "2026-09-23T11:03:23.404643+00:00",
+  "bytes": 421
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2025-10-30&filter=s0142",
+  "path": "data/raw/elexon/018/list/2025-10-30.json",
+  "sha256": "199b951dda740aca31468c27bc22113ed55d2c68592af6ddbe85b537a8dd1f0b",
+  "fetched_at": "2026-09-23T11:03:23.910143+00:00",
+  "bytes": 481
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2025-10-31&filter=s0142",
+  "path": "data/raw/elexon/018/list/2025-10-31.json",
+  "sha256": "dfda3539bb6685618de15aa709c201ad2070a48b325bfd7a936ea461373b0a52",
+  "fetched_at": "2026-09-23T11:03:24.354054+00:00",
+  "bytes": 901
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2025-11-01&filter=s0142",
+  "path": "data/raw/elexon/018/list/2025-11-01.json",
+  "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "fetched_at": "2026-09-23T11:03:24.875082+00:00",
+  "bytes": 2
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2025-11-02&filter=s0142",
+  "path": "data/raw/elexon/018/list/2025-11-02.json",
+  "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "fetched_at": "2026-09-23T11:03:25.317880+00:00",
+  "bytes": 2
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2025-11-03&filter=s0142",
+  "path": "data/raw/elexon/018/list/2025-11-03.json",
+  "sha256": "0fe6eb6cdb813cab6b1e5ea14be26f46df6e342d73a78f30ee7017647ae2e9f8",
+  "fetched_at": "2026-09-23T11:03:25.754369+00:00",
+  "bytes": 721
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2025-11-04&filter=s0142",
+  "path": "data/raw/elexon/018/list/2025-11-04.json",
+  "sha256": "0fd7b132353c40c9fba4a45053b8db86a761dd467d5359e5a91f36091436f180",
+  "fetched_at": "2026-09-23T11:03:26.241244+00:00",
+  "bytes": 361
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2025-11-05&filter=s0142",
+  "path": "data/raw/elexon/018/list/2025-11-05.json",
+  "sha256": "4960bd3123e0c8a17294fba39ebd2c40ff1772283290cad875f689e621e25f05",
+  "fetched_at": "2026-09-23T11:03:26.717313+00:00",
+  "bytes": 421
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2025-11-06&filter=s0142",
+  "path": "data/raw/elexon/018/list/2025-11-06.json",
+  "sha256": "faf03b2914f866f0c19082750e6fe753d669fbf8ea8bba7495298b336a7cf5b7",
+  "fetched_at": "2026-09-23T11:03:27.169590+00:00",
+  "bytes": 541
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2025-11-07&filter=s0142",
+  "path": "data/raw/elexon/018/list/2025-11-07.json",
+  "sha256": "788f1005e93ceae0933753b354d77683e8a01e0987ea50a7326ec71d90e3e114",
+  "fetched_at": "2026-09-23T11:03:27.613413+00:00",
+  "bytes": 901
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2025-11-08&filter=s0142",
+  "path": "data/raw/elexon/018/list/2025-11-08.json",
+  "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "fetched_at": "2026-09-23T11:03:28.010668+00:00",
+  "bytes": 2
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2025-11-09&filter=s0142",
+  "path": "data/raw/elexon/018/list/2025-11-09.json",
+  "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "fetched_at": "2026-09-23T11:03:28.412471+00:00",
+  "bytes": 2
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2025-11-10&filter=s0142",
+  "path": "data/raw/elexon/018/list/2025-11-10.json",
+  "sha256": "89a8a97e22cd6034130d7681e3cf093b43682fe0d136d11c226ce25a3505775f",
+  "fetched_at": "2026-09-23T11:03:28.848817+00:00",
+  "bytes": 721
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2025-11-11&filter=s0142",
+  "path": "data/raw/elexon/018/list/2025-11-11.json",
+  "sha256": "c998b184eaaeb8946e2eb422388c75d7b9a734a5e776b9f4d05ea7e52718964e",
+  "fetched_at": "2026-09-23T11:03:29.294459+00:00",
+  "bytes": 361
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2025-11-12&filter=s0142",
+  "path": "data/raw/elexon/018/list/2025-11-12.json",
+  "sha256": "b02a71b752350e255f5a80b9d6e4f6ea6ca772bbe8ef64fd4d01962dbd8b44e3",
+  "fetched_at": "2026-09-23T11:03:29.785369+00:00",
+  "bytes": 421
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2025-11-13&filter=s0142",
+  "path": "data/raw/elexon/018/list/2025-11-13.json",
+  "sha256": "2edf5c44f9c18f6b194b92e5b6394a2ee2629481eb6304363db5be7c5a2355da",
+  "fetched_at": "2026-09-23T11:03:30.287413+00:00",
+  "bytes": 541
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2025-11-14&filter=s0142",
+  "path": "data/raw/elexon/018/list/2025-11-14.json",
+  "sha256": "4e34b5b57084c6bb161fa9aa40faf999841080a489844f18d6d2c1bb7d1b1355",
+  "fetched_at": "2026-09-23T11:03:31.740822+00:00",
+  "bytes": 901
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2025-11-15&filter=s0142",
+  "path": "data/raw/elexon/018/list/2025-11-15.json",
+  "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "fetched_at": "2026-09-23T11:03:32.175577+00:00",
+  "bytes": 2
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2025-11-16&filter=s0142",
+  "path": "data/raw/elexon/018/list/2025-11-16.json",
+  "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "fetched_at": "2026-09-23T11:03:32.584194+00:00",
+  "bytes": 2
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2025-11-17&filter=s0142",
+  "path": "data/raw/elexon/018/list/2025-11-17.json",
+  "sha256": "68dcc954a263a89a36b42b6443a05281873c1d24d1be5a2a579196dfd2a3be66",
+  "fetched_at": "2026-09-23T11:03:33.096688+00:00",
+  "bytes": 721
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2025-11-18&filter=s0142",
+  "path": "data/raw/elexon/018/list/2025-11-18.json",
+  "sha256": "2ce5d5ae364b48f1f08dc3926c8446ccac65a2875726557bd5e144048cb2df71",
+  "fetched_at": "2026-09-23T11:03:33.542027+00:00",
+  "bytes": 361
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2025-11-19&filter=s0142",
+  "path": "data/raw/elexon/018/list/2025-11-19.json",
+  "sha256": "3e8c222e46831a5c64e4565cdb73639911609645d25984693e05f22b7d6624a7",
+  "fetched_at": "2026-09-23T11:03:33.963364+00:00",
+  "bytes": 541
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2025-11-20&filter=s0142",
+  "path": "data/raw/elexon/018/list/2025-11-20.json",
+  "sha256": "d8632ab75785857e46d21d487a6185027d6b05804a6c82901cd6bb39fd4b3f05",
+  "fetched_at": "2026-09-23T11:03:34.408350+00:00",
+  "bytes": 841
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2025-11-21&filter=s0142",
+  "path": "data/raw/elexon/018/list/2025-11-21.json",
+  "sha256": "cbf750b5e2ab62106199b5c1fa38b6205ae52356c3a716379ccc57c1de4379da",
+  "fetched_at": "2026-09-23T11:03:34.898715+00:00",
+  "bytes": 601
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2025-11-22&filter=s0142",
+  "path": "data/raw/elexon/018/list/2025-11-22.json",
+  "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "fetched_at": "2026-09-23T11:03:35.314697+00:00",
+  "bytes": 2
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2025-11-23&filter=s0142",
+  "path": "data/raw/elexon/018/list/2025-11-23.json",
+  "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "fetched_at": "2026-09-23T11:03:35.719595+00:00",
+  "bytes": 2
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2025-11-24&filter=s0142",
+  "path": "data/raw/elexon/018/list/2025-11-24.json",
+  "sha256": "b7a7b750843cbfa2a5a72e960d536fadbeda2957d993b94590430fc117ac9df3",
+  "fetched_at": "2026-09-23T11:03:36.188330+00:00",
+  "bytes": 721
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2025-11-25&filter=s0142",
+  "path": "data/raw/elexon/018/list/2025-11-25.json",
+  "sha256": "8df8259d7d78313e6905f015e37af2d87d0719817cb4092d768a528e93ce97af",
+  "fetched_at": "2026-09-23T11:03:36.605636+00:00",
+  "bytes": 361
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2025-11-26&filter=s0142",
+  "path": "data/raw/elexon/018/list/2025-11-26.json",
+  "sha256": "b646b226521d4c93aee2c598651693f2d371607afe2cd30393e0feb332425e2f",
+  "fetched_at": "2026-09-23T11:03:37.052988+00:00",
+  "bytes": 601
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2025-11-27&filter=s0142",
+  "path": "data/raw/elexon/018/list/2025-11-27.json",
+  "sha256": "01c1e0c943a35b679b99d39373ffbc6638ad5d5bca51c7698be2d11df02e24c8",
+  "fetched_at": "2026-09-23T11:03:37.477994+00:00",
+  "bytes": 481
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2025-11-28&filter=s0142",
+  "path": "data/raw/elexon/018/list/2025-11-28.json",
+  "sha256": "a2e0344e6a5075a98cc47f7c46c9025351572b6d4e4ccaee2c5d8ecf0b279ce4",
+  "fetched_at": "2026-09-23T11:03:37.940369+00:00",
+  "bytes": 841
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2025-11-29&filter=s0142",
+  "path": "data/raw/elexon/018/list/2025-11-29.json",
+  "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "fetched_at": "2026-09-23T11:03:38.346333+00:00",
+  "bytes": 2
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2025-11-30&filter=s0142",
+  "path": "data/raw/elexon/018/list/2025-11-30.json",
+  "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "fetched_at": "2026-09-23T11:03:38.753021+00:00",
+  "bytes": 2
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2025-12-01&filter=s0142",
+  "path": "data/raw/elexon/018/list/2025-12-01.json",
+  "sha256": "d7681a0087ad54ab206fdb823315e1b841df8e9d8487fc04d8433ccdec70b1e4",
+  "fetched_at": "2026-09-23T11:03:39.260730+00:00",
+  "bytes": 721
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2025-12-02&filter=s0142",
+  "path": "data/raw/elexon/018/list/2025-12-02.json",
+  "sha256": "7df0cfc65daacfa7206e1d921156ca3c96dcbb0f2e649b939ff3885e5546f52a",
+  "fetched_at": "2026-09-23T11:03:39.748226+00:00",
+  "bytes": 361
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2025-12-03&filter=s0142",
+  "path": "data/raw/elexon/018/list/2025-12-03.json",
+  "sha256": "aff0faca7bcdc8706d0083bb8865738887de9607ddb07d9c8718c1e585a4a82c",
+  "fetched_at": "2026-09-23T11:03:40.284725+00:00",
+  "bytes": 661
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2025-12-04&filter=s0142",
+  "path": "data/raw/elexon/018/list/2025-12-04.json",
+  "sha256": "88ed2115ec9364ad0e9bdede2797d451ec954bc23686706fd7fe9df693328907",
+  "fetched_at": "2026-09-23T11:03:40.707200+00:00",
+  "bytes": 421
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2025-12-05&filter=s0142",
+  "path": "data/raw/elexon/018/list/2025-12-05.json",
+  "sha256": "09101488f9a65fd07131a226a95c73c20dd3200a5000e444deb29bc25cba0a3b",
+  "fetched_at": "2026-09-23T11:03:41.137762+00:00",
+  "bytes": 841
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2025-12-06&filter=s0142",
+  "path": "data/raw/elexon/018/list/2025-12-06.json",
+  "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "fetched_at": "2026-09-23T11:03:41.544164+00:00",
+  "bytes": 2
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2025-12-07&filter=s0142",
+  "path": "data/raw/elexon/018/list/2025-12-07.json",
+  "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "fetched_at": "2026-09-23T11:03:41.953399+00:00",
+  "bytes": 2
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2025-12-08&filter=s0142",
+  "path": "data/raw/elexon/018/list/2025-12-08.json",
+  "sha256": "35e10afd624e0c98e63a4daa9119d78d397b1e7fdc4f3b3f488962d8ab3c7eb5",
+  "fetched_at": "2026-09-23T11:03:42.373741+00:00",
+  "bytes": 721
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2025-12-09&filter=s0142",
+  "path": "data/raw/elexon/018/list/2025-12-09.json",
+  "sha256": "f4b83c763a6311b7f43645cbfd4786a334478e3f6a060142db3334920adf21bd",
+  "fetched_at": "2026-09-23T11:03:42.809005+00:00",
+  "bytes": 541
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2025-12-10&filter=s0142",
+  "path": "data/raw/elexon/018/list/2025-12-10.json",
+  "sha256": "f8df77dd9fd8647a64e23abde5244f1fc9629a2881fb26b541f129443cc4ab21",
+  "fetched_at": "2026-09-23T11:03:43.252168+00:00",
+  "bytes": 421
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2025-12-11&filter=s0142",
+  "path": "data/raw/elexon/018/list/2025-12-11.json",
+  "sha256": "84820d2c98a24a09183ee6555fc7b28e62cf53a70bfcf2833449754f49fe5cdc",
+  "fetched_at": "2026-09-23T11:03:43.741048+00:00",
+  "bytes": 541
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2025-12-12&filter=s0142",
+  "path": "data/raw/elexon/018/list/2025-12-12.json",
+  "sha256": "b0a16eb73791df648ab8d8b871317e5d7e87a6045ff4ff2e2693343b6affe2e2",
+  "fetched_at": "2026-09-23T11:03:44.185685+00:00",
+  "bytes": 841
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2025-12-13&filter=s0142",
+  "path": "data/raw/elexon/018/list/2025-12-13.json",
+  "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "fetched_at": "2026-09-23T11:03:44.601625+00:00",
+  "bytes": 2
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2025-12-14&filter=s0142",
+  "path": "data/raw/elexon/018/list/2025-12-14.json",
+  "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "fetched_at": "2026-09-23T11:03:45.024507+00:00",
+  "bytes": 2
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2025-12-15&filter=s0142",
+  "path": "data/raw/elexon/018/list/2025-12-15.json",
+  "sha256": "96b3f46c53640cd7801cd64da7e3a767a876f9079c18928911177292bbcfb222",
+  "fetched_at": "2026-09-23T11:03:45.483499+00:00",
+  "bytes": 781
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2025-12-16&filter=s0142",
+  "path": "data/raw/elexon/018/list/2025-12-16.json",
+  "sha256": "83e2dd7b31dc0d59f508631a33faa51a17ae5328743653fac301c4d15111cc13",
+  "fetched_at": "2026-09-23T11:03:45.923379+00:00",
+  "bytes": 481
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2025-12-17&filter=s0142",
+  "path": "data/raw/elexon/018/list/2025-12-17.json",
+  "sha256": "bafe9f019affc4453f02fca235d3df34b921b9a951c18fd9f87fe579133252dd",
+  "fetched_at": "2026-09-23T11:03:46.388901+00:00",
+  "bytes": 481
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2025-12-18&filter=s0142",
+  "path": "data/raw/elexon/018/list/2025-12-18.json",
+  "sha256": "75456ffa004ea3588ca2f5a5428986880f29c5a5d6bc1b7127519b17b742df49",
+  "fetched_at": "2026-09-23T11:03:46.819808+00:00",
+  "bytes": 601
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2025-12-19&filter=s0142",
+  "path": "data/raw/elexon/018/list/2025-12-19.json",
+  "sha256": "9450743bc986c8b7969c7907cc96805b8a9101c2ed6b45c7b03050224364a7bc",
+  "fetched_at": "2026-09-23T11:03:47.253510+00:00",
+  "bytes": 961
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2025-12-20&filter=s0142",
+  "path": "data/raw/elexon/018/list/2025-12-20.json",
+  "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "fetched_at": "2026-09-23T11:03:47.651874+00:00",
+  "bytes": 2
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2025-12-21&filter=s0142",
+  "path": "data/raw/elexon/018/list/2025-12-21.json",
+  "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "fetched_at": "2026-09-23T11:03:48.106963+00:00",
+  "bytes": 2
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2025-12-22&filter=s0142",
+  "path": "data/raw/elexon/018/list/2025-12-22.json",
+  "sha256": "00a359998a8865382bb57634c27fabeeead5715f1a3d823181b9273d22ae6617",
+  "fetched_at": "2026-09-23T11:03:48.528305+00:00",
+  "bytes": 601
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2025-12-23&filter=s0142",
+  "path": "data/raw/elexon/018/list/2025-12-23.json",
+  "sha256": "d9fc5c05e858ca97afc9a2a5e59d409fbfb4cb966bbd5a78ed9eae34ada67858",
+  "fetched_at": "2026-09-23T11:03:48.972600+00:00",
+  "bytes": 541
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2025-12-24&filter=s0142",
+  "path": "data/raw/elexon/018/list/2025-12-24.json",
+  "sha256": "f9e1792dcbb246fd41a19c064e52fddca9aac4de3a0b5b7609e2123fc8365d89",
+  "fetched_at": "2026-09-23T11:03:49.414264+00:00",
+  "bytes": 421
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2025-12-25&filter=s0142",
+  "path": "data/raw/elexon/018/list/2025-12-25.json",
+  "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "fetched_at": "2026-09-23T11:03:49.839765+00:00",
+  "bytes": 2
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2025-12-26&filter=s0142",
+  "path": "data/raw/elexon/018/list/2025-12-26.json",
+  "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "fetched_at": "2026-09-23T11:03:50.244493+00:00",
+  "bytes": 2
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2025-12-27&filter=s0142",
+  "path": "data/raw/elexon/018/list/2025-12-27.json",
+  "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "fetched_at": "2026-09-23T11:03:50.708486+00:00",
+  "bytes": 2
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2025-12-28&filter=s0142",
+  "path": "data/raw/elexon/018/list/2025-12-28.json",
+  "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "fetched_at": "2026-09-23T11:03:51.127716+00:00",
+  "bytes": 2
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2025-12-29&filter=s0142",
+  "path": "data/raw/elexon/018/list/2025-12-29.json",
+  "sha256": "a4bcd36d43aaaf3bffcf5166012d82bfca5052d9aaecfa8dc8c8cb3bfd7d89dc",
+  "fetched_at": "2026-09-23T11:03:51.573776+00:00",
+  "bytes": 601
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2025-12-30&filter=s0142",
+  "path": "data/raw/elexon/018/list/2025-12-30.json",
+  "sha256": "a73a624d11fede3d5925542f1d0529b4144191985c5291f02c5d1d96f8c0ba97",
+  "fetched_at": "2026-09-23T11:03:52.019576+00:00",
+  "bytes": 901
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2025-12-31&filter=s0142",
+  "path": "data/raw/elexon/018/list/2025-12-31.json",
+  "sha256": "9af4f3c97bc31a2d0da8599e7fb2c5bb0909f158b1b99d20140aaaf89094b52a",
+  "fetched_at": "2026-09-23T11:03:52.453454+00:00",
+  "bytes": 721
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-01-01&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-01-01.json",
+  "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "fetched_at": "2026-09-23T11:03:52.855078+00:00",
+  "bytes": 2
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-01-02&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-01-02.json",
+  "sha256": "58b4e9c01f9afec4abbc96352197409280c32c92ccc97ece335632bb204425fc",
+  "fetched_at": "2026-09-23T11:03:53.340792+00:00",
+  "bytes": 361
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-01-03&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-01-03.json",
+  "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "fetched_at": "2026-09-23T11:03:53.745887+00:00",
+  "bytes": 2
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-01-04&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-01-04.json",
+  "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "fetched_at": "2026-09-23T11:03:54.152977+00:00",
+  "bytes": 2
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-01-05&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-01-05.json",
+  "sha256": "f2828dbaa8c9132a456dd029176f2e9c416437682fc3a5ca4475860f2e358f73",
+  "fetched_at": "2026-09-23T11:03:54.564842+00:00",
+  "bytes": 1021
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-01-06&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-01-06.json",
+  "sha256": "aa76dfe7ab333236efdb38c72b7a8a9e42c2f99c6369bc997f1da547c73edc7f",
+  "fetched_at": "2026-09-23T11:03:54.979618+00:00",
+  "bytes": 361
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-01-07&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-01-07.json",
+  "sha256": "e749e4c1456d436a8214a5723bfb526c55c845e95f5b15ffa214aef57e12576c",
+  "fetched_at": "2026-09-23T11:03:55.408836+00:00",
+  "bytes": 601
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-01-08&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-01-08.json",
+  "sha256": "ec6e3e1094798107f910b59008805a5415a28de1285c55bbf3378fb3ae655dbd",
+  "fetched_at": "2026-09-23T11:03:55.847116+00:00",
+  "bytes": 781
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-01-09&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-01-09.json",
+  "sha256": "0ccd0d787a9a1920a56871a996f8f293c4e124f4792bbfda80c67c4d556ddf0c",
+  "fetched_at": "2026-09-23T11:03:56.269802+00:00",
+  "bytes": 481
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-01-10&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-01-10.json",
+  "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "fetched_at": "2026-09-23T11:03:56.690492+00:00",
+  "bytes": 2
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-01-11&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-01-11.json",
+  "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "fetched_at": "2026-09-23T11:03:57.098987+00:00",
+  "bytes": 2
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-01-12&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-01-12.json",
+  "sha256": "d30a20af7996ee5391f98290df44b19f87bfedde81633cfcb91e8c3297f57b1e",
+  "fetched_at": "2026-09-23T11:03:57.652678+00:00",
+  "bytes": 481
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-01-13&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-01-13.json",
+  "sha256": "b513cfc5bb24d42890b51ac0c2001dda58b34acb05ef4bcf56e95822f2281c28",
+  "fetched_at": "2026-09-23T11:03:58.105634+00:00",
+  "bytes": 601
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-01-14&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-01-14.json",
+  "sha256": "2f2c59b82610e30e85565fca581292df52b133854ae0b3e43f63538fe4d0c801",
+  "fetched_at": "2026-09-23T11:03:58.541916+00:00",
+  "bytes": 781
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-01-15&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-01-15.json",
+  "sha256": "72332ad8ff8ca0510e0af8892b593ff6223662f8921a06e063ee978c43569836",
+  "fetched_at": "2026-09-23T11:03:58.970670+00:00",
+  "bytes": 721
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-01-16&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-01-16.json",
+  "sha256": "9526ee7d84db8fc779574793b39a3e58291525e4956b7049396a7e7ccbc47067",
+  "fetched_at": "2026-09-23T11:03:59.388748+00:00",
+  "bytes": 481
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-01-17&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-01-17.json",
+  "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "fetched_at": "2026-09-23T11:03:59.792087+00:00",
+  "bytes": 2
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-01-18&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-01-18.json",
+  "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "fetched_at": "2026-09-23T11:04:00.207561+00:00",
+  "bytes": 2
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-01-19&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-01-19.json",
+  "sha256": "1aca2d882f0e7e2c110a62ab1425d10dd74811d863e1e497e1d55ea1950744a2",
+  "fetched_at": "2026-09-23T11:04:00.837457+00:00",
+  "bytes": 481
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-01-20&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-01-20.json",
+  "sha256": "d6326fbdbb53b13078d7e9502031f6f2e7c4b677a0e37a626a67e690fa9ff602",
+  "fetched_at": "2026-09-23T11:04:01.276081+00:00",
+  "bytes": 841
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-01-21&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-01-21.json",
+  "sha256": "48a1c502ace2a4028c02f4878d5e970ce3d4ac780c00a78ddb1b2c192829d708",
+  "fetched_at": "2026-09-23T11:04:01.788390+00:00",
+  "bytes": 601
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-01-22&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-01-22.json",
+  "sha256": "79d2752c97cf4b7f528c03a6bb19e1ea58177cd1320c865b4b030c5c4a77f876",
+  "fetched_at": "2026-09-23T11:04:02.305567+00:00",
+  "bytes": 721
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-01-23&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-01-23.json",
+  "sha256": "29a4b0965f3bda95bce55bb82901a8477de977e6e1e70289944d028cfa9dcf49",
+  "fetched_at": "2026-09-23T11:04:02.758733+00:00",
+  "bytes": 601
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-01-24&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-01-24.json",
+  "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "fetched_at": "2026-09-23T11:04:03.217107+00:00",
+  "bytes": 2
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-01-25&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-01-25.json",
+  "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "fetched_at": "2026-09-23T11:04:03.648038+00:00",
+  "bytes": 2
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-01-26&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-01-26.json",
+  "sha256": "463e385425611939b43fe6015ecb8e17650151ab65637214794e4ecc4418fdf3",
+  "fetched_at": "2026-09-23T11:04:04.203957+00:00",
+  "bytes": 541
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-01-27&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-01-27.json",
+  "sha256": "f7cab34c1218e626739addbc66a2a41ecb856c3a205068ca27622d66bccba9db",
+  "fetched_at": "2026-09-23T11:04:04.625453+00:00",
+  "bytes": 481
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-01-28&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-01-28.json",
+  "sha256": "aa4287f6c2b2c6cca4f70f219db915150716c4acedbc3ce656cfc0e2d272b2e9",
+  "fetched_at": "2026-09-23T11:04:05.089554+00:00",
+  "bytes": 841
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-01-29&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-01-29.json",
+  "sha256": "58bbb9edd9b8d16f3c4b94109d6076930caa4212c10c0a573c2289b9435255e3",
+  "fetched_at": "2026-09-23T11:04:05.629932+00:00",
+  "bytes": 601
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-01-30&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-01-30.json",
+  "sha256": "fc06a0e4ab0de630a66a9f5e9c9639646ba40cb0c558b8d8376aace0efa09ee6",
+  "fetched_at": "2026-09-23T11:04:06.082274+00:00",
+  "bytes": 481
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-01-31&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-01-31.json",
+  "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "fetched_at": "2026-09-23T11:04:06.493575+00:00",
+  "bytes": 2
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-02-01&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-02-01.json",
+  "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "fetched_at": "2026-09-23T11:04:06.927928+00:00",
+  "bytes": 2
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-02-02&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-02-02.json",
+  "sha256": "b676b2e7e93c7867329e5853c81629847606be9a1554a7dc50bc1848cbbf7e51",
+  "fetched_at": "2026-09-23T11:04:07.365014+00:00",
+  "bytes": 601
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-02-03&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-02-03.json",
+  "sha256": "6df1c4f1d3d80358969d0358ab506b6eda5986c1f26963ec848c84d131053be8",
+  "fetched_at": "2026-09-23T11:04:07.793129+00:00",
+  "bytes": 481
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-02-04&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-02-04.json",
+  "sha256": "7ffb11266d39b1e79f7ae294b2568934babbfc9d0800a573d8dc16c4b94ed611",
+  "fetched_at": "2026-09-23T11:04:08.217945+00:00",
+  "bytes": 841
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-02-05&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-02-05.json",
+  "sha256": "4c4baad184e543dc9bee6c74eeb5325ab0975003641997207c381d8a50861d40",
+  "fetched_at": "2026-09-23T11:04:08.705108+00:00",
+  "bytes": 601
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-02-06&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-02-06.json",
+  "sha256": "54da966817c2ac592173c9ed3b343acf893f16b8220a178fa972643fda87c25e",
+  "fetched_at": "2026-09-23T11:04:09.162771+00:00",
+  "bytes": 481
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-02-07&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-02-07.json",
+  "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "fetched_at": "2026-09-23T11:04:09.577545+00:00",
+  "bytes": 2
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-02-08&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-02-08.json",
+  "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "fetched_at": "2026-09-23T11:04:09.993992+00:00",
+  "bytes": 2
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-02-09&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-02-09.json",
+  "sha256": "5e021b9d8d60332e4308eba082dae75e04912066de91c6a5eb8b8334dddaa515",
+  "fetched_at": "2026-09-23T11:04:10.462417+00:00",
+  "bytes": 601
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-02-10&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-02-10.json",
+  "sha256": "cc072a2cab671a3b9f419a78d668e41a1cd2e6bb8daa3b9c171be1bdda673108",
+  "fetched_at": "2026-09-23T11:04:10.944547+00:00",
+  "bytes": 481
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-02-11&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-02-11.json",
+  "sha256": "a8e974ec328a8435406bcc56bc0b464f77204d7ccf94de675e31664917ef7129",
+  "fetched_at": "2026-09-23T11:04:11.392967+00:00",
+  "bytes": 841
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-02-12&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-02-12.json",
+  "sha256": "7fc54e67ce0fcd9c009a9cf4d79e4f98f4ed6e822945e18c76c25a3003136190",
+  "fetched_at": "2026-09-23T11:04:11.877897+00:00",
+  "bytes": 601
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-02-13&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-02-13.json",
+  "sha256": "f2b91cccc6360a6e2bb3b4ee8d1fbd14a6b4f35f966d63502c6fc6bdb1341474",
+  "fetched_at": "2026-09-23T11:04:12.349460+00:00",
+  "bytes": 541
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-02-14&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-02-14.json",
+  "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "fetched_at": "2026-09-23T11:04:12.860700+00:00",
+  "bytes": 2
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-02-15&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-02-15.json",
+  "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "fetched_at": "2026-09-23T11:04:13.276785+00:00",
+  "bytes": 2
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-02-16&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-02-16.json",
+  "sha256": "7268ce9cab71610e7eb7e6e57fe8d1babbf9b95fddb34a5fd7115361df69ece3",
+  "fetched_at": "2026-09-23T11:04:13.713504+00:00",
+  "bytes": 781
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-02-17&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-02-17.json",
+  "sha256": "4bf7df4a2d853991da495b081e2146ec8af5c3338df78733795cf2123b7a5349",
+  "fetched_at": "2026-09-23T11:04:14.162835+00:00",
+  "bytes": 481
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-02-18&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-02-18.json",
+  "sha256": "17d2bcc083c6aa66463d5228959fd90b19678acf7e0273c54593663f7c46f3e7",
+  "fetched_at": "2026-09-23T11:04:14.603171+00:00",
+  "bytes": 601
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-02-19&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-02-19.json",
+  "sha256": "5ed7623ff121244fd15459bacb6adf36baa78963a259e26fa3bd4e35de9d092f",
+  "fetched_at": "2026-09-23T11:04:15.100882+00:00",
+  "bytes": 721
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-02-20&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-02-20.json",
+  "sha256": "27c87fb6b373f6368d65200e650825a07ca11d424e72e9276ca7580d6039eee1",
+  "fetched_at": "2026-09-23T11:04:15.520350+00:00",
+  "bytes": 601
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-02-21&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-02-21.json",
+  "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "fetched_at": "2026-09-23T11:04:15.932687+00:00",
+  "bytes": 2
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-02-22&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-02-22.json",
+  "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "fetched_at": "2026-09-23T11:04:16.357828+00:00",
+  "bytes": 2
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-02-23&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-02-23.json",
+  "sha256": "3a102e3138da02d8ad05835299db703d791c40eaf23f185f0e5f1b07aab5ab10",
+  "fetched_at": "2026-09-23T11:04:16.954951+00:00",
+  "bytes": 601
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-02-24&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-02-24.json",
+  "sha256": "e8933361c799e04e2316a51055459e494f7b31eac6a35f5aa85f8a2e39b9a396",
+  "fetched_at": "2026-09-23T11:04:17.393182+00:00",
+  "bytes": 361
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-02-25&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-02-25.json",
+  "sha256": "5b2d5863736c9a9efb931cf339a1f5e9c2f740341c6913163149fdb7679a348e",
+  "fetched_at": "2026-09-23T11:04:17.917936+00:00",
+  "bytes": 721
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-02-26&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-02-26.json",
+  "sha256": "aae92bae8c3d0832805ba09aceb7f6ff11ab2936a32df0d724facbb1a6309eb4",
+  "fetched_at": "2026-09-23T11:04:18.336142+00:00",
+  "bytes": 601
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-02-27&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-02-27.json",
+  "sha256": "db19ea69d5977c5704f37e29aaa53aefe256a81bcd892a2a7bf1b91256bbbbd4",
+  "fetched_at": "2026-09-23T11:04:18.763739+00:00",
+  "bytes": 61
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-02-28&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-02-28.json",
+  "sha256": "3a08b7db9d196599e0e28ec960d1a1127c9aa1b887b0b4b39dcb4da1926b4afc",
+  "fetched_at": "2026-09-23T11:04:19.173169+00:00",
+  "bytes": 661
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-03-01&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-03-01.json",
+  "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "fetched_at": "2026-09-23T11:04:19.570542+00:00",
+  "bytes": 2
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-03-02&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-03-02.json",
+  "sha256": "330ef1725aacbb2becd37b4845624bd4eaa5542f569824cbff4289c84b0b0cfe",
+  "fetched_at": "2026-09-23T11:04:19.978830+00:00",
+  "bytes": 601
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-03-03&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-03-03.json",
+  "sha256": "51be796655b4dd94c19455bea3d99a6a8898ed99c45fa827e48cdc2da34a6adc",
+  "fetched_at": "2026-09-23T11:04:20.413769+00:00",
+  "bytes": 361
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-03-04&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-03-04.json",
+  "sha256": "2855eae95fcc3b0cf49171ac6a532e5f132f2b53d58985b4f85fc935f41df7d8",
+  "fetched_at": "2026-09-23T11:04:20.902724+00:00",
+  "bytes": 661
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-03-05&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-03-05.json",
+  "sha256": "875888bbe8b3fc68d334ad6bfa671a633a359f64a7b1f300e71789ff3db5868e",
+  "fetched_at": "2026-09-23T11:04:21.337355+00:00",
+  "bytes": 601
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-03-06&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-03-06.json",
+  "sha256": "bb4719782fade2a8a865923e31e1659bf90027145ad1151cb6a9d64e7d98bf31",
+  "fetched_at": "2026-09-23T11:04:21.766890+00:00",
+  "bytes": 721
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-03-07&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-03-07.json",
+  "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "fetched_at": "2026-09-23T11:04:22.176347+00:00",
+  "bytes": 2
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-03-08&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-03-08.json",
+  "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "fetched_at": "2026-09-23T11:04:22.559689+00:00",
+  "bytes": 2
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-03-09&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-03-09.json",
+  "sha256": "4128298d8d3724d58f0ea2acde7b5a0c8e7ad6ca5b5d867efeb4c9380787fef6",
+  "fetched_at": "2026-09-23T11:04:22.992504+00:00",
+  "bytes": 601
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-03-10&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-03-10.json",
+  "sha256": "62f42f969541316c757f2d4597e25799a79d922658be2c9d7032d61af4b32b5a",
+  "fetched_at": "2026-09-23T11:04:23.468174+00:00",
+  "bytes": 361
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-03-11&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-03-11.json",
+  "sha256": "2dc6a03a6951f5a188366b2a1913c5f7139e292b79a33e69ef3728f38c20f6ef",
+  "fetched_at": "2026-09-23T11:04:23.886526+00:00",
+  "bytes": 661
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-03-12&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-03-12.json",
+  "sha256": "231b9ef08d11e9b3413775b1e225a8c95cb3f8a6411f7e829acdfb95d745bf76",
+  "fetched_at": "2026-09-23T11:04:24.284295+00:00",
+  "bytes": 601
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-03-13&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-03-13.json",
+  "sha256": "d5d729cc1aad5fd47f9a2642b738793d0f03ca5ba51dba87f71eeae9e14b333e",
+  "fetched_at": "2026-09-23T11:04:24.695366+00:00",
+  "bytes": 721
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-03-14&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-03-14.json",
+  "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "fetched_at": "2026-09-23T11:04:25.108364+00:00",
+  "bytes": 2
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-03-15&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-03-15.json",
+  "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "fetched_at": "2026-09-23T11:04:25.514718+00:00",
+  "bytes": 2
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-03-16&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-03-16.json",
+  "sha256": "ef9ceae85a333a69aae2af1c9fed1dafe6c0de892ef6b1e846b903bea4fd5425",
+  "fetched_at": "2026-09-23T11:04:25.927011+00:00",
+  "bytes": 601
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-03-17&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-03-17.json",
+  "sha256": "7c349bdd4887fd4a53393033001852383e71b88dee269b5263a92cb7fe471869",
+  "fetched_at": "2026-09-23T11:04:26.346883+00:00",
+  "bytes": 361
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-03-18&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-03-18.json",
+  "sha256": "45d31f2b625b5a6e3de1c724a74321bdca4b91b4f7c6d7ebf94c7ca8ce2bdffc",
+  "fetched_at": "2026-09-23T11:04:26.777275+00:00",
+  "bytes": 661
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-03-19&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-03-19.json",
+  "sha256": "67238e15da165b68f947fdb42098edc4c8a3897d831e0064b8472f594e275591",
+  "fetched_at": "2026-09-23T11:04:27.201939+00:00",
+  "bytes": 601
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-03-20&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-03-20.json",
+  "sha256": "36c3412a9dafad6ca2ef9e9585ade6d7970733c22f1cc72655e7f0fa6629dee8",
+  "fetched_at": "2026-09-23T11:04:27.618291+00:00",
+  "bytes": 721
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-03-21&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-03-21.json",
+  "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "fetched_at": "2026-09-23T11:04:28.035428+00:00",
+  "bytes": 2
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-03-22&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-03-22.json",
+  "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "fetched_at": "2026-09-23T11:04:28.444843+00:00",
+  "bytes": 2
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-03-23&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-03-23.json",
+  "sha256": "8cf52cbb645f3ec3f0874d2c19be3d63335b8e8640ddb0ba05315a604ac9ccaa",
+  "fetched_at": "2026-09-23T11:04:28.871630+00:00",
+  "bytes": 601
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-03-24&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-03-24.json",
+  "sha256": "e3a359397b497da0e7994623d6715adc6976897a018177440750449341df1954",
+  "fetched_at": "2026-09-23T11:04:29.294549+00:00",
+  "bytes": 361
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-03-25&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-03-25.json",
+  "sha256": "57a93950d1070306f29aafeb31c6e2523623fb78c55fdafd6eb743b26cc8e6dd",
+  "fetched_at": "2026-09-23T11:04:29.709788+00:00",
+  "bytes": 721
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-03-26&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-03-26.json",
+  "sha256": "8aaa1ba6936b8bb386553fa44bdebc3f19a49aba914f5e10a367a6ab3d964fcd",
+  "fetched_at": "2026-09-23T11:04:30.167167+00:00",
+  "bytes": 661
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-03-27&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-03-27.json",
+  "sha256": "eaff5dbbb67f248502d86572453c8496ff99f70e42b580738f16ce67c2f07c50",
+  "fetched_at": "2026-09-23T11:04:30.611183+00:00",
+  "bytes": 661
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-03-28&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-03-28.json",
+  "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "fetched_at": "2026-09-23T11:04:31.006979+00:00",
+  "bytes": 2
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-03-29&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-03-29.json",
+  "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "fetched_at": "2026-09-23T11:04:31.400851+00:00",
+  "bytes": 2
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-03-30&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-03-30.json",
+  "sha256": "64f9110524449dc1f421e8582762391ebf8aab6ae100cd37d487be8fc51eff51",
+  "fetched_at": "2026-09-23T11:04:31.826936+00:00",
+  "bytes": 601
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-03-31&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-03-31.json",
+  "sha256": "53e0420fbbd3880c010590067dfe929a9d7d88278b28dceb1889550a8e57e4e0",
+  "fetched_at": "2026-09-23T11:04:32.253537+00:00",
+  "bytes": 361
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-04-01&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-04-01.json",
+  "sha256": "6c2590c7966530a701db69d1600cb4bdbd6c4520bcf9a1c569034548365ca302",
+  "fetched_at": "2026-09-23T11:04:33.693837+00:00",
+  "bytes": 781
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-04-02&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-04-02.json",
+  "sha256": "425d026953a6300c1ee13baabe7e03160b8fb143fa37ce17dadea231f1cb5e1e",
+  "fetched_at": "2026-09-23T11:04:34.158984+00:00",
+  "bytes": 361
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-04-03&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-04-03.json",
+  "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "fetched_at": "2026-09-23T11:04:34.549312+00:00",
+  "bytes": 2
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-04-04&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-04-04.json",
+  "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "fetched_at": "2026-09-23T11:04:34.957028+00:00",
+  "bytes": 2
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-04-05&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-04-05.json",
+  "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "fetched_at": "2026-09-23T11:04:35.376986+00:00",
+  "bytes": 2
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-04-06&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-04-06.json",
+  "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "fetched_at": "2026-09-23T11:04:35.781427+00:00",
+  "bytes": 2
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-04-07&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-04-07.json",
+  "sha256": "1c182446e40ec66e371252694f72bd034c90052350f7908df4326e23c15fadce",
+  "fetched_at": "2026-09-23T11:04:36.208809+00:00",
+  "bytes": 961
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-04-08&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-04-08.json",
+  "sha256": "c6de8956e5e5944f71ad9f441c7553d8b994d0f092158d2b2f1f49510df83ae8",
+  "fetched_at": "2026-09-23T11:04:36.612030+00:00",
+  "bytes": 541
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-04-09&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-04-09.json",
+  "sha256": "7b4ae4885f82f6b1124c08fc34b787a16a3fdad35d24db13b534ebd415033f60",
+  "fetched_at": "2026-09-23T11:04:37.057616+00:00",
+  "bytes": 421
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-04-10&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-04-10.json",
+  "sha256": "9ebc94fb1105eaa6841836c3bd011c96f822986b2990f69c510e23b99b33a9c0",
+  "fetched_at": "2026-09-23T11:04:37.482190+00:00",
+  "bytes": 661
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-04-11&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-04-11.json",
+  "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "fetched_at": "2026-09-23T11:04:37.897234+00:00",
+  "bytes": 2
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-04-12&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-04-12.json",
+  "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "fetched_at": "2026-09-23T11:04:38.308339+00:00",
+  "bytes": 2
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-04-13&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-04-13.json",
+  "sha256": "6d740b953082c74ecf195ce28740060297261580bab4adb56ae2ac1125041cc1",
+  "fetched_at": "2026-09-23T11:04:38.727596+00:00",
+  "bytes": 661
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-04-14&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-04-14.json",
+  "sha256": "ed56755ff92e371a4371c373658f88e0107f2eccd0d5edc2dd1ed0e1f3f5124e",
+  "fetched_at": "2026-09-23T11:04:39.155448+00:00",
+  "bytes": 721
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-04-15&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-04-15.json",
+  "sha256": "3699555adf3f566ef8420d09195d24eaa12a4c7b176a611518f9d297de703e66",
+  "fetched_at": "2026-09-23T11:04:39.669617+00:00",
+  "bytes": 601
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-04-16&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-04-16.json",
+  "sha256": "0745a6009cc5bdba7a0bfca15fe6720c3f4cbcf565441a14a0ad59873bb621fa",
+  "fetched_at": "2026-09-23T11:04:40.105421+00:00",
+  "bytes": 421
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-04-17&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-04-17.json",
+  "sha256": "eac87cb9e5a2e979df8a7ebdcb331c978a0b3340b5b055d67e872be12a7182ba",
+  "fetched_at": "2026-09-23T11:04:40.561170+00:00",
+  "bytes": 781
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-04-18&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-04-18.json",
+  "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "fetched_at": "2026-09-23T11:04:40.950850+00:00",
+  "bytes": 2
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-04-19&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-04-19.json",
+  "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "fetched_at": "2026-09-23T11:04:41.372052+00:00",
+  "bytes": 2
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-04-20&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-04-20.json",
+  "sha256": "28366c3d44a2e69710cdf71eed67f90805e82653f09ab3b41a43fabd025923cd",
+  "fetched_at": "2026-09-23T11:04:41.794212+00:00",
+  "bytes": 421
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-04-21&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-04-21.json",
+  "sha256": "b276fb17daa1b62e1f9936cc61a11b9fa55aa4b027e5cc57cc3ce6cb8a9ae154",
+  "fetched_at": "2026-09-23T11:04:42.208247+00:00",
+  "bytes": 781
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-04-22&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-04-22.json",
+  "sha256": "9206f2156da5609aac1b68b8b1100e49fb8cab7dd4de78b9b18281cc4efc8d51",
+  "fetched_at": "2026-09-23T11:04:42.709565+00:00",
+  "bytes": 781
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-04-23&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-04-23.json",
+  "sha256": "fa44aa7d28af1f74e534ee708984bddf62fa3590486982c2c26e02f507b313ee",
+  "fetched_at": "2026-09-23T11:04:43.130779+00:00",
+  "bytes": 421
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-04-24&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-04-24.json",
+  "sha256": "a7211689aef01ceed21b8d46129fca9ba782f457dac813fecf4ae787bed3b4ba",
+  "fetched_at": "2026-09-23T11:04:43.571173+00:00",
+  "bytes": 601
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-04-25&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-04-25.json",
+  "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "fetched_at": "2026-09-23T11:04:43.985175+00:00",
+  "bytes": 2
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-04-26&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-04-26.json",
+  "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "fetched_at": "2026-09-23T11:04:44.394357+00:00",
+  "bytes": 2
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-04-27&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-04-27.json",
+  "sha256": "d2287b7afb2c8e48fd2c8bbf26d07bdb9f2e041fd837784d849e09c43e4ea225",
+  "fetched_at": "2026-09-23T11:04:44.834357+00:00",
+  "bytes": 601
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-04-28&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-04-28.json",
+  "sha256": "89c8f207a5aca5df28f9035e1d1ad594ee29b38705918a0a2676fd52f72e21cb",
+  "fetched_at": "2026-09-23T11:04:45.257575+00:00",
+  "bytes": 901
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-04-29&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-04-29.json",
+  "sha256": "d589977362bdc61f8d4026175ff34df3cc57ade6f1d8daacea42614c491607fc",
+  "fetched_at": "2026-09-23T11:04:45.672729+00:00",
+  "bytes": 601
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-04-30&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-04-30.json",
+  "sha256": "ec21759fbef97f2d1b84ad0042fb4420c47ee754acee3878518f4b8a78888dbf",
+  "fetched_at": "2026-09-23T11:04:46.202955+00:00",
+  "bytes": 481
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-05-01&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-05-01.json",
+  "sha256": "e74b716079734908a2e2cbebbc6ea494d70d4fc7429187b98e470c102f63865c",
+  "fetched_at": "2026-09-23T11:04:46.606818+00:00",
+  "bytes": 841
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-05-02&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-05-02.json",
+  "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "fetched_at": "2026-09-23T11:04:47.012266+00:00",
+  "bytes": 2
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-05-03&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-05-03.json",
+  "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "fetched_at": "2026-09-23T11:04:47.416982+00:00",
+  "bytes": 2
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-05-04&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-05-04.json",
+  "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "fetched_at": "2026-09-23T11:04:47.809471+00:00",
+  "bytes": 2
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-05-05&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-05-05.json",
+  "sha256": "e65c4871ca2cad63eafbaba85f6fc2a86c432098e4984b6675c757ed7fa12b11",
+  "fetched_at": "2026-09-23T11:04:48.252539+00:00",
+  "bytes": 481
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-05-06&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-05-06.json",
+  "sha256": "7ea55f848cfd8461e9d5855eba5d96ec8f6ee0a2cf563d1fa2a97992adbe7bdc",
+  "fetched_at": "2026-09-23T11:04:48.688167+00:00",
+  "bytes": 721
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-05-07&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-05-07.json",
+  "sha256": "45dc7caec994b01399bd2fc29eea7c57093b95b58feedc48e6c9b8114e052e60",
+  "fetched_at": "2026-09-23T11:04:50.094058+00:00",
+  "bytes": 481
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-05-08&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-05-08.json",
+  "sha256": "4b72b6114d821ebac632d3e48ee7eb4f377ea4372063f1c23579b39665c9f83f",
+  "fetched_at": "2026-09-23T11:04:50.568557+00:00",
+  "bytes": 481
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-05-09&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-05-09.json",
+  "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "fetched_at": "2026-09-23T11:04:50.980359+00:00",
+  "bytes": 2
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-05-10&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-05-10.json",
+  "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "fetched_at": "2026-09-23T11:04:51.425247+00:00",
+  "bytes": 2
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-05-11&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-05-11.json",
+  "sha256": "07eec0cef390bc5492511e044b4c10f03a2ca714d5f710dc761c63ec925ad246",
+  "fetched_at": "2026-09-23T11:04:51.870695+00:00",
+  "bytes": 901
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-05-12&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-05-12.json",
+  "sha256": "f3b95135d6c8faaa45279d01905f7470b36a0920b7036d6e7af8c91d29f21d2a",
+  "fetched_at": "2026-09-23T11:04:52.284106+00:00",
+  "bytes": 481
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-05-13&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-05-13.json",
+  "sha256": "4aed46e99fa223f1224ec15e4d33f95edf1527ac44bf88323bf327ffd9f1c664",
+  "fetched_at": "2026-09-23T11:04:52.756728+00:00",
+  "bytes": 721
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-05-14&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-05-14.json",
+  "sha256": "0205be794953f0dbe739e7d4f4293749fa17d9ff2e463c44c9919e9aa66b6e7d",
+  "fetched_at": "2026-09-23T11:04:53.162943+00:00",
+  "bytes": 481
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-05-15&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-05-15.json",
+  "sha256": "4d144758ff79e5475e93169310cc43d9343a7713ed4b9375a00f4bc10c90d5e9",
+  "fetched_at": "2026-09-23T11:04:53.592617+00:00",
+  "bytes": 601
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-05-16&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-05-16.json",
+  "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "fetched_at": "2026-09-23T11:04:53.998571+00:00",
+  "bytes": 2
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-05-17&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-05-17.json",
+  "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "fetched_at": "2026-09-23T11:04:55.433523+00:00",
+  "bytes": 2
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-05-18&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-05-18.json",
+  "sha256": "1004f0617e4794d311600a64a3ceaa0733528358b3ced7a9468021b4f024971c",
+  "fetched_at": "2026-09-23T11:04:55.893938+00:00",
+  "bytes": 601
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-05-19&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-05-19.json",
+  "sha256": "f1cab2d9864ac2cd242eb9e9562cac7fb0268d1b8a5841b4c6e8ca2bc9e3049c",
+  "fetched_at": "2026-09-23T11:04:56.346983+00:00",
+  "bytes": 601
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-05-20&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-05-20.json",
+  "sha256": "798d56b0417db37980972302b8a9364b18be2d5a77ad6b9129c8372c7ae19f65",
+  "fetched_at": "2026-09-23T11:04:56.772755+00:00",
+  "bytes": 721
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-05-21&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-05-21.json",
+  "sha256": "4aec0ee9f2810455d7e91805f49acd9a8488f39247fc010ddeba689f32443344",
+  "fetched_at": "2026-09-23T11:04:57.210190+00:00",
+  "bytes": 481
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-05-22&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-05-22.json",
+  "sha256": "9ec103ec95641c681708d785427e7c979395ea9edbe53fb0df81fe59419a331e",
+  "fetched_at": "2026-09-23T11:04:57.641032+00:00",
+  "bytes": 721
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-05-23&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-05-23.json",
+  "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "fetched_at": "2026-09-23T11:04:58.109315+00:00",
+  "bytes": 2
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-05-24&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-05-24.json",
+  "sha256": "620501e40ccd86ce42e0a1b895f8de37f6b82ce0ee43268ba8fd930b8431cb2f",
+  "fetched_at": "2026-09-23T11:04:58.507450+00:00",
+  "bytes": 301
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-05-25&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-05-25.json",
+  "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "fetched_at": "2026-09-23T11:04:58.932178+00:00",
+  "bytes": 2
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-05-26&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-05-26.json",
+  "sha256": "c776211c048f38b58730f4fc7d8480d6fbcd39ec45297d792d1e2276140871ed",
+  "fetched_at": "2026-09-23T11:04:59.398003+00:00",
+  "bytes": 601
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-05-27&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-05-27.json",
+  "sha256": "c2a99b0a56e8554832b51bad6a6279d3ed8041f055c4c3b81c60980887f9a301",
+  "fetched_at": "2026-09-23T11:04:59.833312+00:00",
+  "bytes": 961
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-05-28&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-05-28.json",
+  "sha256": "1e107e3c1b5904597161df76d6473834c15c7dcc63a24d54e234c41d4bcf71cb",
+  "fetched_at": "2026-09-23T11:05:00.312339+00:00",
+  "bytes": 121
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-05-29&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-05-29.json",
+  "sha256": "d849bebb942787e47881028d3286d7f1cd49316873c218264adb06c64a21eecf",
+  "fetched_at": "2026-09-23T11:05:00.788922+00:00",
+  "bytes": 1561
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-05-30&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-05-30.json",
+  "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "fetched_at": "2026-09-23T11:05:01.212544+00:00",
+  "bytes": 2
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-05-31&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-05-31.json",
+  "sha256": "465cc83e7ab62b71f57370cd4115cb44c8b24230e852f3ee80f963b77dc041de",
+  "fetched_at": "2026-09-23T11:05:06.697397+00:00",
+  "bytes": 241
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-06-01&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-06-01.json",
+  "sha256": "615ec5e68ed58df10a1b0167d800170001dce272fff437ae69ef9154dd3a95ee",
+  "fetched_at": "2026-09-23T11:05:12.188335+00:00",
+  "bytes": 661
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-06-02&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-06-02.json",
+  "sha256": "422569d18f0e99d79f1050b1372245f6d7e52c31385fa444b60ce1a6407b3408",
+  "fetched_at": "2026-09-23T11:05:12.818974+00:00",
+  "bytes": 781
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-06-03&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-06-03.json",
+  "sha256": "d9fe9f04c5e27bccdcbe79721b7def89704f5a0dbb17946fd4937d5ded5a1175",
+  "fetched_at": "2026-09-23T11:05:13.366558+00:00",
+  "bytes": 361
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-06-04&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-06-04.json",
+  "sha256": "a2552dc8244ea697103d8a008442bdb38e40bcc8d8940f8c4c931218c1169339",
+  "fetched_at": "2026-09-23T11:05:13.871238+00:00",
+  "bytes": 1501
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-06-05&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-06-05.json",
+  "sha256": "2f78a91f8c4953f797729e9857a7186e40e8d7d58294f1c25d7703e748027e56",
+  "fetched_at": "2026-09-23T11:05:14.362125+00:00",
+  "bytes": 901
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-06-06&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-06-06.json",
+  "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "fetched_at": "2026-09-23T11:05:14.773726+00:00",
+  "bytes": 2
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-06-07&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-06-07.json",
+  "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "fetched_at": "2026-09-23T11:05:15.192161+00:00",
+  "bytes": 2
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-06-08&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-06-08.json",
+  "sha256": "036f8eb5e36dd06a18a8d7bd9c60e1401f23892534ec0f3b6de12a832a30d196",
+  "fetched_at": "2026-09-23T11:05:15.615910+00:00",
+  "bytes": 481
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-06-09&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-06-09.json",
+  "sha256": "f62356851a69e43353063b8f1e94fa85be5161214768491c82361bfd810ca478",
+  "fetched_at": "2026-09-23T11:05:16.277162+00:00",
+  "bytes": 961
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-06-10&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-06-10.json",
+  "sha256": "7e5ae53e05c55a02f7db652b32387b181b6973e02421f9031ae0d8ad3608048e",
+  "fetched_at": "2026-09-23T11:05:16.731479+00:00",
+  "bytes": 361
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-06-11&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-06-11.json",
+  "sha256": "97f90a61e2984869a47f2e9e0123cca7e7c7cbdb7bc9a58b5bb3ecde0bdcd839",
+  "fetched_at": "2026-09-23T11:05:17.291178+00:00",
+  "bytes": 901
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-06-12&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-06-12.json",
+  "sha256": "d6ecc060df730ba60ce5ad083aeef1da62a1fe6cfc2bf653e06e972ed85f9cad",
+  "fetched_at": "2026-09-23T11:05:17.761865+00:00",
+  "bytes": 481
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-06-13&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-06-13.json",
+  "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "fetched_at": "2026-09-23T11:05:18.168456+00:00",
+  "bytes": 2
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-06-14&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-06-14.json",
+  "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "fetched_at": "2026-09-23T11:05:18.613210+00:00",
+  "bytes": 2
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-06-15&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-06-15.json",
+  "sha256": "686c66ef58cba82ac843dcab25e485764909ebb900b48d6e430d4169f19011bf",
+  "fetched_at": "2026-09-23T11:05:19.108020+00:00",
+  "bytes": 481
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-06-16&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-06-16.json",
+  "sha256": "d4375f9ea30533cde032163f93b1333e07c034172906ff3d14e556ca32a684f9",
+  "fetched_at": "2026-09-23T11:05:19.613531+00:00",
+  "bytes": 961
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-06-17&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-06-17.json",
+  "sha256": "324000d3c8de6c0ddc08777bf7a13de3cac4390728b6758526b0cd3aa6d98a66",
+  "fetched_at": "2026-09-23T11:05:20.079896+00:00",
+  "bytes": 481
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-06-18&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-06-18.json",
+  "sha256": "eb1b580442c9f792cc3f56da2c2978b40a4eed60d1ce4d730b661f253c6a3570",
+  "fetched_at": "2026-09-23T11:05:20.568340+00:00",
+  "bytes": 661
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-06-19&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-06-19.json",
+  "sha256": "eedc5b9fa0778739e4c8dfe37733872fdde46c622d9e3c3bce62a9094ee806fa",
+  "fetched_at": "2026-09-23T11:05:21.008656+00:00",
+  "bytes": 721
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-06-20&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-06-20.json",
+  "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "fetched_at": "2026-09-23T11:05:21.405312+00:00",
+  "bytes": 2
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-06-21&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-06-21.json",
+  "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "fetched_at": "2026-09-23T11:05:21.811301+00:00",
+  "bytes": 2
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-06-22&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-06-22.json",
+  "sha256": "0c556aa2df09cfd9200fafa5edb1d4977034d022d78819a5731df5a6c099d222",
+  "fetched_at": "2026-09-23T11:05:22.234805+00:00",
+  "bytes": 601
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-06-23&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-06-23.json",
+  "sha256": "e3eec2015deb71fb934abedd1257493ae1327fe23524d5288c8590fb47dca673",
+  "fetched_at": "2026-09-23T11:05:22.651237+00:00",
+  "bytes": 661
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-06-24&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-06-24.json",
+  "sha256": "a2cf95b5fc2ef5a8e64b2687dbc94566174bbee860d41a0ec37385980260eb55",
+  "fetched_at": "2026-09-23T11:05:23.082228+00:00",
+  "bytes": 541
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-06-25&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-06-25.json",
+  "sha256": "2b90c03e31afafd26576c2e969220174b81720087808e9facee5a1b0a2496845",
+  "fetched_at": "2026-09-23T11:05:23.509378+00:00",
+  "bytes": 541
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-06-26&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-06-26.json",
+  "sha256": "ce10daee0bbebf600504718426b924ce80aaaadf7044789b26cdb9a5414eadac",
+  "fetched_at": "2026-09-23T11:05:23.926963+00:00",
+  "bytes": 601
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-06-27&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-06-27.json",
+  "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "fetched_at": "2026-09-23T11:05:24.344121+00:00",
+  "bytes": 2
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-06-28&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-06-28.json",
+  "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "fetched_at": "2026-09-23T11:05:24.757117+00:00",
+  "bytes": 2
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-06-29&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-06-29.json",
+  "sha256": "133dc41491925d0909f3da0e94346e1ba2b400e0b09166343e9f37274b42e2bb",
+  "fetched_at": "2026-09-23T11:05:25.165573+00:00",
+  "bytes": 721
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-06-30&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-06-30.json",
+  "sha256": "6cd538688c4e9ce251c42de87811a93a59ca043b4cce09682bb8f01c4976727a",
+  "fetched_at": "2026-09-23T11:05:25.582200+00:00",
+  "bytes": 601
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-07-01&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-07-01.json",
+  "sha256": "0f1a9dbe79edc3bfb0d8799bbab12e6e6270eccbec6090ec26a165ec40be51ef",
+  "fetched_at": "2026-09-23T11:05:25.984731+00:00",
+  "bytes": 541
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-07-02&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-07-02.json",
+  "sha256": "a5764dbdff8ec0a663dadcaa627122a391680680382edc37c61d25ab6f772df7",
+  "fetched_at": "2026-09-23T11:05:26.406152+00:00",
+  "bytes": 841
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-07-03&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-07-03.json",
+  "sha256": "8d9803508e0ac0f1e072c51880bceed1bf76691b51a7d9fbf552a2d78d88a3e5",
+  "fetched_at": "2026-09-23T11:05:26.825236+00:00",
+  "bytes": 601
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-07-04&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-07-04.json",
+  "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "fetched_at": "2026-09-23T11:05:27.223518+00:00",
+  "bytes": 2
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-07-05&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-07-05.json",
+  "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "fetched_at": "2026-09-23T11:05:27.640131+00:00",
+  "bytes": 2
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-07-06&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-07-06.json",
+  "sha256": "4f10d022d5fb7502001a4a911720629e9c8cd902fb9e31a748d841dd65bcf437",
+  "fetched_at": "2026-09-23T11:05:28.073926+00:00",
+  "bytes": 661
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-07-07&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-07-07.json",
+  "sha256": "4a8e89105485be481a6d3163e6e76bca1ed24ce36846fef20ba991391d392c71",
+  "fetched_at": "2026-09-23T11:05:28.489432+00:00",
+  "bytes": 661
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-07-08&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-07-08.json",
+  "sha256": "af5769b72d823050ae2ad76e419ca4d21ff35bb0298fb96827778bb5c6dfb295",
+  "fetched_at": "2026-09-23T11:05:28.888860+00:00",
+  "bytes": 361
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-07-09&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-07-09.json",
+  "sha256": "bf5c8b2d6eb71d4f5f16a25586e30644f96f63e02c410c31e138fe3a6f72f8a3",
+  "fetched_at": "2026-09-23T11:05:29.305985+00:00",
+  "bytes": 661
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-07-10&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-07-10.json",
+  "sha256": "c592a9a37eae50aae7b1870fe130725c097843a9be3d9a930ad7807da3ad435a",
+  "fetched_at": "2026-09-23T11:05:29.794177+00:00",
+  "bytes": 601
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-07-11&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-07-11.json",
+  "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "fetched_at": "2026-09-23T11:05:30.210067+00:00",
+  "bytes": 2
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-07-12&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-07-12.json",
+  "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "fetched_at": "2026-09-23T11:05:30.623170+00:00",
+  "bytes": 2
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-07-13&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-07-13.json",
+  "sha256": "634bfcba78d5cfa6158596d498b819e7423aff9d7d9ad74d1e929967e3ac17c7",
+  "fetched_at": "2026-09-23T11:05:31.032135+00:00",
+  "bytes": 721
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-07-14&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-07-14.json",
+  "sha256": "725e6388faba826e80a69d0f3024cefa28f1b38d5754f086ad40df9fa95893c8",
+  "fetched_at": "2026-09-23T11:05:31.454855+00:00",
+  "bytes": 661
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-07-15&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-07-15.json",
+  "sha256": "6b92dac03cf564b32bb0bf6e7d6fda03ac75200d0d9acabf5d47afba72f24f81",
+  "fetched_at": "2026-09-23T11:05:31.857582+00:00",
+  "bytes": 421
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-07-16&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-07-16.json",
+  "sha256": "967e7956a23ff6980946a3054c541b45988c5979bf285d8b135d395294b6f0b9",
+  "fetched_at": "2026-09-23T11:05:32.277413+00:00",
+  "bytes": 721
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-07-17&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-07-17.json",
+  "sha256": "2531d6f9bca428ab6ed56d34c8dfd83d98edf2fb7109436de82737b1005a3710",
+  "fetched_at": "2026-09-23T11:05:32.691996+00:00",
+  "bytes": 721
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-07-18&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-07-18.json",
+  "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "fetched_at": "2026-09-23T11:05:33.106186+00:00",
+  "bytes": 2
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-07-19&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-07-19.json",
+  "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "fetched_at": "2026-09-23T11:05:33.535491+00:00",
+  "bytes": 2
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-07-20&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-07-20.json",
+  "sha256": "0b2ef6e6a3305b6d22156571b772c3b038ef35111abaec748c1eb0cddab1a1e0",
+  "fetched_at": "2026-09-23T11:05:33.961989+00:00",
+  "bytes": 541
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-07-21&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-07-21.json",
+  "sha256": "12142ef8b4e09970c464a63d014386ec0b8eda60678088a4c43581c2e1d0d85f",
+  "fetched_at": "2026-09-23T11:05:34.378405+00:00",
+  "bytes": 541
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-07-22&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-07-22.json",
+  "sha256": "9b8fec1e93773c98230dddb3371bfedb678270daf6fd928571a30877664cfd36",
+  "fetched_at": "2026-09-23T11:05:34.863048+00:00",
+  "bytes": 481
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-07-23&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-07-23.json",
+  "sha256": "5bb3a5723c7a6a0ef940c24b6b21ecc0eee09068ff3206912c677e17ce8e6b4d",
+  "fetched_at": "2026-09-23T11:05:35.267002+00:00",
+  "bytes": 721
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-07-24&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-07-24.json",
+  "sha256": "682078341fdf664b717a5e4231945e7adf68ac59116d2b0c523c8cfb21ee25c8",
+  "fetched_at": "2026-09-23T11:05:35.681788+00:00",
+  "bytes": 721
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-07-25&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-07-25.json",
+  "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "fetched_at": "2026-09-23T11:05:36.109539+00:00",
+  "bytes": 2
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-07-26&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-07-26.json",
+  "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "fetched_at": "2026-09-23T11:05:36.535047+00:00",
+  "bytes": 2
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-07-27&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-07-27.json",
+  "sha256": "2bad9a7bab7a95db34faf07a5eb11fa8d2bce0332cb9d32cea23c80e995af58d",
+  "fetched_at": "2026-09-23T11:05:36.956698+00:00",
+  "bytes": 541
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-07-28&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-07-28.json",
+  "sha256": "9668309abbfda445b1db52e284616a69605655a1556bd5e46ac974995993c453",
+  "fetched_at": "2026-09-23T11:05:37.404960+00:00",
+  "bytes": 541
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-07-29&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-07-29.json",
+  "sha256": "2d90abc94da21dd48d87a2dd44fdd5daeaefc3f1062f51ccee77fcdad9305efb",
+  "fetched_at": "2026-09-23T11:05:37.852464+00:00",
+  "bytes": 721
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-07-30&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-07-30.json",
+  "sha256": "794e8b92036fb5e2c17c33394ffc931dde35453e0c556b62bff19916574216d5",
+  "fetched_at": "2026-09-23T11:05:38.257199+00:00",
+  "bytes": 361
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-07-31&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-07-31.json",
+  "sha256": "481b6fe4c5e51204740fbe109b26c8d5d46d246cb1e5d40b46542309e597c36a",
+  "fetched_at": "2026-09-23T11:05:38.676598+00:00",
+  "bytes": 1081
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-08-01&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-08-01.json",
+  "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "fetched_at": "2026-09-23T11:05:39.089151+00:00",
+  "bytes": 2
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-08-02&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-08-02.json",
+  "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "fetched_at": "2026-09-23T11:05:39.498099+00:00",
+  "bytes": 2
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-08-03&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-08-03.json",
+  "sha256": "97a93763d4136977ac6eb9b75be6efb3b9eb72baf4aa95c6d136eebbbed875aa",
+  "fetched_at": "2026-09-23T11:05:39.911513+00:00",
+  "bytes": 541
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-08-04&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-08-04.json",
+  "sha256": "27bf4c7b8b5c6a57d828d54cf62fa20fbaf84c8164a1783abc64d7e50caf39dc",
+  "fetched_at": "2026-09-23T11:05:40.324612+00:00",
+  "bytes": 541
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-08-05&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-08-05.json",
+  "sha256": "36022ed068bd7e4829b7d460e37077e00fb4d9aed80e3f8c71830e37a3d50c7d",
+  "fetched_at": "2026-09-23T11:05:40.742678+00:00",
+  "bytes": 661
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-08-06&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-08-06.json",
+  "sha256": "e4629c94a700f6bb58fe035a51535770e4eea4c960717d80d3341a0138f68cd8",
+  "fetched_at": "2026-09-23T11:05:41.160906+00:00",
+  "bytes": 661
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-08-07&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-08-07.json",
+  "sha256": "bddb06729071a17c13dafdf5a96d9a5eb8171ce9e47b32c2a984cf8c7e55ca0a",
+  "fetched_at": "2026-09-23T11:05:46.569986+00:00",
+  "bytes": 721
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-08-08&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-08-08.json",
+  "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "fetched_at": "2026-09-23T11:05:46.975319+00:00",
+  "bytes": 2
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-08-09&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-08-09.json",
+  "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "fetched_at": "2026-09-23T11:05:47.375067+00:00",
+  "bytes": 2
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-08-10&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-08-10.json",
+  "sha256": "f7f7c14aed9fafbd8d35912471acaef6918f129a520b1e3cbcb658e708803d6a",
+  "fetched_at": "2026-09-23T11:05:47.805148+00:00",
+  "bytes": 541
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-08-11&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-08-11.json",
+  "sha256": "b485386c9b2e7de5527473fadc7766b264826f003f8a4bdcd18eaf8b3a2b165f",
+  "fetched_at": "2026-09-23T11:05:48.215765+00:00",
+  "bytes": 541
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-08-12&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-08-12.json",
+  "sha256": "748c60df9d1d33337e3a33ba9fadd7eb1996f4ffd82bbc601267578c4ac68fc7",
+  "fetched_at": "2026-09-23T11:05:48.630761+00:00",
+  "bytes": 421
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-08-13&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-08-13.json",
+  "sha256": "a0e2a258c1f5b009630d869ec678fab68de522753380319fb4e3ed657811d228",
+  "fetched_at": "2026-09-23T11:05:49.048169+00:00",
+  "bytes": 721
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-08-14&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-08-14.json",
+  "sha256": "e8b6c6a73e56807d4e70d4b5da3c2172171051186851bf6284c197e6fb6e527c",
+  "fetched_at": "2026-09-23T11:05:49.476680+00:00",
+  "bytes": 721
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-08-15&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-08-15.json",
+  "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "fetched_at": "2026-09-23T11:05:49.880570+00:00",
+  "bytes": 2
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-08-16&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-08-16.json",
+  "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "fetched_at": "2026-09-23T11:05:50.287492+00:00",
+  "bytes": 2
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-08-17&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-08-17.json",
+  "sha256": "7e77cd324360b1c633239a3474ff54748ddc396c2e62e4ac98576617240f1da9",
+  "fetched_at": "2026-09-23T11:05:50.700419+00:00",
+  "bytes": 541
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-08-18&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-08-18.json",
+  "sha256": "32c67467c125da34396a8c00650012b7c03d4f818b80d55023413970d8f4fde9",
+  "fetched_at": "2026-09-23T11:05:51.110049+00:00",
+  "bytes": 541
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-08-19&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-08-19.json",
+  "sha256": "ef1baf7c4d512af8b9f818b936a5656833ddace9cdbd522acc1d2c2e4e2d1b8c",
+  "fetched_at": "2026-09-23T11:05:51.561058+00:00",
+  "bytes": 421
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-08-20&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-08-20.json",
+  "sha256": "dd939f71af092785c69c59b048ec09254b3927458fc87890e016b56228dc49c3",
+  "fetched_at": "2026-09-23T11:05:51.976841+00:00",
+  "bytes": 721
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-08-21&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-08-21.json",
+  "sha256": "27f740bd2ff0fc9606dabbdbf57b0ecc0e9b40494e7af27fb4080ef21c6c36f8",
+  "fetched_at": "2026-09-23T11:05:52.431760+00:00",
+  "bytes": 721
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-08-22&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-08-22.json",
+  "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "fetched_at": "2026-09-23T11:05:52.848589+00:00",
+  "bytes": 2
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-08-23&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-08-23.json",
+  "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "fetched_at": "2026-09-23T11:05:53.255857+00:00",
+  "bytes": 2
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-08-24&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-08-24.json",
+  "sha256": "9b1aaeaca0de50fd0b466298b26ec4bd7fee743633d8506eeaf28b056e9d6824",
+  "fetched_at": "2026-09-23T11:05:53.664592+00:00",
+  "bytes": 541
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-08-25&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-08-25.json",
+  "sha256": "854da09715400e88192ceb0748779c87d34b31ecf0538c41193cf7117f33b137",
+  "fetched_at": "2026-09-23T11:05:54.064521+00:00",
+  "bytes": 601
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-08-26&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-08-26.json",
+  "sha256": "9c0ee7a9790b3760e4fd0813ded7d1e43a76ff54df5955763617c74e795cd45d",
+  "fetched_at": "2026-09-23T11:05:54.465812+00:00",
+  "bytes": 421
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-08-27&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-08-27.json",
+  "sha256": "505b61b2421e4a900e96774341a087bb97f5c11e614c9be5125a3fb81ee84717",
+  "fetched_at": "2026-09-23T11:05:54.866587+00:00",
+  "bytes": 721
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-08-28&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-08-28.json",
+  "sha256": "9319b055940a8b06c691651fc08243ed46618a4ac92ab795fa4f910cd4f46569",
+  "fetched_at": "2026-09-23T11:05:55.286509+00:00",
+  "bytes": 721
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-08-29&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-08-29.json",
+  "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "fetched_at": "2026-09-23T11:05:55.702238+00:00",
+  "bytes": 2
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-08-30&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-08-30.json",
+  "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "fetched_at": "2026-09-23T11:05:56.110708+00:00",
+  "bytes": 2
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-08-31&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-08-31.json",
+  "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "fetched_at": "2026-09-23T11:05:56.540310+00:00",
+  "bytes": 2
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-09-01&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-09-01.json",
+  "sha256": "c819c0f30fed0a4a65696de77810bbeaf44a453b75348556633b954fed542599",
+  "fetched_at": "2026-09-23T11:05:56.947383+00:00",
+  "bytes": 661
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-09-02&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-09-02.json",
+  "sha256": "d2bbf77d83c31f673316b4b15d065b350400e55ad0fb213ef537aff2b13c35d2",
+  "fetched_at": "2026-09-23T11:05:57.368568+00:00",
+  "bytes": 421
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-09-03&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-09-03.json",
+  "sha256": "bd5af9e6f8b48b5189093daca53f5e1a5aa94ea825c02a38dd57d9b5f4bd4f16",
+  "fetched_at": "2026-09-23T11:05:57.821033+00:00",
+  "bytes": 421
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-09-04&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-09-04.json",
+  "sha256": "b6a1cef79b502204d1e5468f1a12993ed1e2e051d0d4cabdfe64e2abab92fd4a",
+  "fetched_at": "2026-09-23T11:05:58.242131+00:00",
+  "bytes": 721
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-09-05&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-09-05.json",
+  "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "fetched_at": "2026-09-23T11:05:58.649927+00:00",
+  "bytes": 2
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-09-06&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-09-06.json",
+  "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "fetched_at": "2026-09-23T11:05:59.058626+00:00",
+  "bytes": 2
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-09-07&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-09-07.json",
+  "sha256": "291f3d158caa6d62206d5bdcdbece846aa11deeaafd43e058854ed2199ec11f4",
+  "fetched_at": "2026-09-23T11:05:59.470251+00:00",
+  "bytes": 781
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-09-08&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-09-08.json",
+  "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "fetched_at": "2026-09-23T11:05:59.893013+00:00",
+  "bytes": 2
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-09-09&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-09-09.json",
+  "sha256": "ed3de35f13c2225896d3643d38b6a213c3e6a91fc3177e999bb6dc01f40a90c5",
+  "fetched_at": "2026-09-23T11:06:00.492441+00:00",
+  "bytes": 661
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-09-10&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-09-10.json",
+  "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "fetched_at": "2026-09-23T11:06:01.058966+00:00",
+  "bytes": 2
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-09-11&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-09-11.json",
+  "sha256": "1a4a13ed2c10530795d5fd1a28385f2ab16da248a63b8edd852366d9ed10b005",
+  "fetched_at": "2026-09-23T11:06:01.595857+00:00",
+  "bytes": 481
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-09-12&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-09-12.json",
+  "sha256": "60563ce5fd280510753e373bf54663c541343313e707e8ac41c0d0a879003a3c",
+  "fetched_at": "2026-09-23T11:06:02.045077+00:00",
+  "bytes": 181
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-09-13&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-09-13.json",
+  "sha256": "67a41dc76fd827c6139291f66ffb7b2422b06e0ee54a1aef8cdaabed7899b6b9",
+  "fetched_at": "2026-09-23T11:06:02.620427+00:00",
+  "bytes": 721
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-09-14&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-09-14.json",
+  "sha256": "f139563f226040026709a13159e4f6b5cb7cf0c766f03a9430ceb1722b489dd0",
+  "fetched_at": "2026-09-23T11:06:03.081016+00:00",
+  "bytes": 841
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-09-15&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-09-15.json",
+  "sha256": "dd14b6e087f92e8de3c1252679c948f21d5102f24043d4295002c600e08eab1e",
+  "fetched_at": "2026-09-23T11:06:03.567965+00:00",
+  "bytes": 721
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-09-16&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-09-16.json",
+  "sha256": "ee8f9b2185918b378aa98e7ec74b8fbe4dbd3e1912e28308c6a517869c849324",
+  "fetched_at": "2026-09-23T11:06:03.986618+00:00",
+  "bytes": 481
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-09-17&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-09-17.json",
+  "sha256": "f195012223d1f99226a6bf9d0d975ffa673e48474d0384dfda55ad8aebae2e69",
+  "fetched_at": "2026-09-23T11:06:04.508822+00:00",
+  "bytes": 481
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-09-18&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-09-18.json",
+  "sha256": "fe33671f6a05ddd94f5917a356817b8c467bc390c1cb5b948f2a23115cfcbb61",
+  "fetched_at": "2026-09-23T11:06:05.054977+00:00",
+  "bytes": 721
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-09-19&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-09-19.json",
+  "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "fetched_at": "2026-09-23T11:06:06.487939+00:00",
+  "bytes": 2
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-09-20&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-09-20.json",
+  "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "fetched_at": "2026-09-23T11:06:06.944125+00:00",
+  "bytes": 2
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-09-21&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-09-21.json",
+  "sha256": "def782ad88697411e3f9de5ad0917bf58cbee225125a4bd973702a70669dc389",
+  "fetched_at": "2026-09-23T11:06:07.380435+00:00",
+  "bytes": 421
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-09-22&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-09-22.json",
+  "sha256": "fd16fa1cdd51d3b224a414a1b6da2879d8469d768b002c129502d49b8a0de34b",
+  "fetched_at": "2026-09-23T11:06:07.833336+00:00",
+  "bytes": 481
+ }
+]

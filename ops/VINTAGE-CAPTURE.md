@@ -94,6 +94,15 @@ explicit deny on `a115-cli-jordan`, which overrides the managed allow:
   "Resource": ["arn:aws:s3:::a115-vintages-logs", "arn:aws:s3:::a115-vintages-logs/*"]}]}
 ```
 
+**The `tracker.json` orphan, deleted 2026-09-23 on the sponsor's instruction.**
+`state/013/investigations/013-the-cover-price-tracker/evidence/tracker.json`
+(the stale 2026-09-11 compute, 8 rows, which `push-state` no longer pushes
+and which turned every watchdog run red from 2026-09-19) was deleted by
+`a115-cli-jordan` without a version id: delete marker
+`ptLDb8lQgjyW3bguxnf2j4YWXVV4C93Z`; the retained version
+`r1WVBtSsk0O8QEC73CXSbJaohX9ZtGN_` is intact (GOVERNANCE until
+2031-09-15T22:22:13Z). The next watchdog run exited 0 (`check-vintages: OK`).
+
 Known CLI snag on the laptop (2026-09-23): `aws s3api list-object-versions`
 fails with "badly formed help string"; other `s3api` calls work. Nothing in
 the capture, the watchdog or the scripts uses it (they go through boto3 and

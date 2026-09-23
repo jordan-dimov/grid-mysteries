@@ -10,9 +10,9 @@ staged=$(git diff --cached --name-only --diff-filter=ACMR)
 py=$(echo "$staged" | grep -E '\.py$' || true)
 if [[ -n "$py" ]]; then
   # shellcheck disable=SC2086
-  uv run ruff format --check $py || { echo "pre-commit: run 'uv run ruff format' and re-stage" >&2; exit 1; }
+  uv run ruff format --check --force-exclude $py || { echo "pre-commit: run 'uv run ruff format' and re-stage" >&2; exit 1; }
   # shellcheck disable=SC2086
-  uv run ruff check $py
+  uv run ruff check --force-exclude $py
   uv run mypy
   uv run pytest -q -x
 fi

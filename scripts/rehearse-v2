@@ -340,13 +340,17 @@ print('   OK  audit verify exits non-zero and reports replay DIVERGENT (forged c
 print('       (but the seal already emitted acquisition authority — detection cannot un-see data)')
 EOF
 echo "   -- and attestation.authenticated_by is ALSO forgeable (raw DML on morpholog.audit):"
+# Since v0.0.11 (migration 014) a new audit row must name its parameters,
+# one per argument. The forger supplies them as easily as the attestation.
 PGPASSWORD=rehearse-machine psql "postgres://${MACHINE_ROLE}:rehearse-machine@${HOST}/${DB}" -q -tAc \
   "INSERT INTO morpholog.audit (transition_id, transformation_name, arguments, actor,
-     invariant_epoch, invariants_checked, asserted_claims, retracted_claims, emitted_intents, attestation)
+     invariant_epoch, invariants_checked, asserted_claims, retracted_claims, emitted_intents, attestation,
+     parameters)
    VALUES (gen_random_uuid(), 'seal_protocol', '[]'::jsonb,
      '{\"type\":\"subject\",\"value\":\"jordan_dimov\"}'::jsonb, 1,
      '[]'::jsonb, '[]'::jsonb, '[]'::jsonb, '[]'::jsonb,
-     '{\"mode\":\"gateway\",\"authenticated_by\":\"${HUMAN_ROLE}\"}'::jsonb)" >/dev/null
+     '{\"mode\":\"gateway\",\"authenticated_by\":\"${HUMAN_ROLE}\"}'::jsonb,
+     '[]'::jsonb)" >/dev/null
 forged_att=$(psql "$ADMIN_DB_URL" -tAc \
   "select attestation->>'authenticated_by' from morpholog.audit
    where transformation_name='seal_protocol' and asserted_claims='[]'::jsonb limit 1")
@@ -375,7 +379,7 @@ echo "   -- why single-role least-privilege cannot fix this:"
 psql "$ADMIN_DB_URL" -q -c "DROP ROLE IF EXISTS ${MACHINE_ROLE}_norw" -c "CREATE ROLE ${MACHINE_ROLE}_norw LOGIN PASSWORD 'norw'" >/dev/null
 psql "$ADMIN_DB_URL" -q -c "GRANT USAGE ON SCHEMA morpholog TO ${MACHINE_ROLE}_norw" -c "GRANT SELECT ON ALL TABLES IN SCHEMA morpholog TO ${MACHINE_ROLE}_norw" >/dev/null
 NORW_URL="postgres://${MACHINE_ROLE}_norw:norw@${HOST}/${DB}"
-psql "$ADMIN_DB_URL" -q -tAc "insert into morpholog.claims values ('ActorAssertionAuthority','[{\"type\":\"subject\",\"value\":\"probe_actor\"},{\"type\":\"subject\",\"value\":\"${MACHINE_ROLE}_norw\"}]'::jsonb, gen_random_uuid())" >/dev/null
+psql "$ADMIN_DB_URL" -q -tAc "insert into morpholog.claims (predicate_name, arguments, asserted_in) values ('ActorAssertionAuthority','[{\"type\":\"subject\",\"value\":\"probe_actor\"},{\"type\":\"subject\",\"value\":\"${MACHINE_ROLE}_norw\"}]'::jsonb, gen_random_uuid())" >/dev/null
 norw_out=$(propose "$NORW_URL" register_corpus probe_actor '{"corpus": "c-norw", "first_day": "30000101", "last_day": "30000102"}')
 python3 - "$norw_out" <<'EOF'
 import sys

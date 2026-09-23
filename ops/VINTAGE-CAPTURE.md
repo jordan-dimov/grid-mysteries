@@ -59,6 +59,46 @@ default, so no ordinary credential can overwrite or delete; Intelligent
 Tiering; `manifests/` and `proofs/` public-read (the public good), `raw/`
 and `state/` private (the moat). Access logs to `a115-vintages-logs`.
 
+### Who can do what to the archive (recorded 2026-09-23)
+
+| Identity | Rights (from `ops/aws-bootstrap.sh`, or as stated) |
+|---|---|
+| `vintage-capture-writer` (Render) | `s3:PutObject`, `s3:GetObject` on objects; `s3:ListBucket`. A put adds a new version; it cannot delete or shorten a retention. |
+| `vintage-analysis-reader` | `s3:GetObject`, `s3:ListBucket`. |
+| `vintage-watchdog` (laptop) | `s3:GetObject`, `s3:ListBucket`, and reads of versioning, Object Lock configuration, logging, bucket policy and public-access block, on both buckets. **Not** `s3:GetObjectRetention`: `head-object` under this identity omits the lock fields, so their absence is not evidence that an object is unlocked. (That misreading was made on 2026-09-23 about the `tracker.json` orphan and corrected the same day.) |
+| `a115-cli-jordan` (laptop, `~/.aws/credentials-a115`, profile `a115`) | Since 2026-09-23, the AWS-managed `AmazonS3FullAccess` (`s3:*` on every bucket). No IAM read rights, so its other policies cannot be listed from the laptop. |
+
+**Governance retention is not a lock against everyone.** Every object
+version is retained in governance mode for five years by the bucket default
+(checked 2026-09-23 on `state/013/.../evidence/tracker.json`: `GOVERNANCE`
+until 2031-09-15T22:22:13Z). A plain delete without a version id only adds
+a delete marker, and the retained version stays intact and recoverable. But
+**anyone holding `s3:BypassGovernanceRetention` can delete a retained
+version, or shorten its retention, by sending the bypass header**, and
+`s3:*` includes that permission. So the three job identities cannot remove
+history, while `a115-cli-jordan` currently can, as it can change the bucket's
+Object Lock default, delete the bucket once empty, and delete access logs
+in `a115-vintages-logs`.
+
+Recommended (may not be attached yet; not verifiable from the laptop): an
+explicit deny on `a115-cli-jordan`, which overrides the managed allow:
+
+```json
+{"Version": "2012-10-17", "Statement": [
+ {"Sid": "KeepArchiveHistory", "Effect": "Deny",
+  "Action": ["s3:BypassGovernanceRetention", "s3:PutObjectRetention",
+             "s3:PutBucketObjectLockConfiguration", "s3:DeleteBucket"],
+  "Resource": ["arn:aws:s3:::a115-vintages", "arn:aws:s3:::a115-vintages/*"]},
+ {"Sid": "KeepAccessLogs", "Effect": "Deny",
+  "Action": ["s3:DeleteObject", "s3:DeleteObjectVersion", "s3:DeleteBucket"],
+  "Resource": ["arn:aws:s3:::a115-vintages-logs", "arn:aws:s3:::a115-vintages-logs/*"]}]}
+```
+
+Known CLI snag on the laptop (2026-09-23): `aws s3api list-object-versions`
+fails with "badly formed help string"; other `s3api` calls work. Nothing in
+the capture, the watchdog or the scripts uses it (they go through boto3 and
+never list versions).
+
 ## 4. The capture plan, version 1
 
 Declared in `src/grid_mysteries/capture/plan.py` as data, one entry per

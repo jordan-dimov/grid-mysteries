@@ -78,7 +78,9 @@ def cmd_import(args: argparse.Namespace) -> None:
     until = date.fromisoformat(args.until) if args.until else None
     started = time.monotonic()
     try:
-        done = importer.run(REPO_ROOT, url(), until=until, limit=args.limit)
+        done = importer.run(
+            REPO_ROOT, url(), until=until, limit=args.limit, accept_stranded=args.accept_stranded
+        )
     except importer.ImportError_ as exc:
         raise SystemExit(f"import: {exc}") from None
     acts = sum(d["acts"] for d in done)
@@ -267,9 +269,12 @@ def render(cert: dict[str, Any], anchor: dict[str, Any], issued: str) -> str:
         f"`tec_register`, {cert['publications_in_record']} publications), checkpoint at tree "
         f"size {anchor['tree_size']}, root `{anchor['root_hash']}`, signed with key `tec-2026`.",
         "",
-        "This is what NESO's TEC register printed about the project on each date: the rows",
-        "exactly as published, from the publication in force on that date (the latest",
-        "published on or before it). It is not a forecast and says nothing about entitlement.",
+        "This is what NESO's TEC register printed about the project, as of each date: the rows",
+        "exactly as published, from the latest publication the record holds on or before",
+        "that date. The archive has gaps; where the publication relied on is more than",
+        f"{certificate.GAP_DAYS} days older than the date, or a copy held for the interval is not",
+        "in the record, the entry says so. It is not a forecast and says nothing about",
+        "entitlement.",
         "Rows are matched by the register's normalised project name"
         + (" and stage." if cert["stage"] else "."),
         "",
@@ -292,11 +297,19 @@ def render(cert: dict[str, Any], anchor: dict[str, Any], issued: str) -> str:
             f"SHA-256 `{a['sha256']}`.",
             f"Source: {source.split('?')[0]}  ",
             f"Dated by: {basis}  ",
-            f"Record transition closing its import: `{a['close_transition']}`",
+            f"Record transition closing its import: `{a['close_transition']}`  ",
+            f"Published {a['days_before']} day(s) before the date asked about"
+            + (f" (**a gap of more than {certificate.GAP_DAYS} days**)." if a["gap"] else "."),
             "",
             f"**{a['state']}**",
             "",
         ]
+        for u in a["held_but_not_in_record"]:
+            out.append(
+                f"A copy published {u['published_on']} (`{u['sha256'][:12]}…`) is held but is not "
+                "in the record (it does not parse); what it printed is not stated here."
+            )
+            out.append("")
         for ln in a["lines"]:
             out.append(f"Line {ln['line']} (record key `{ln['row']}`, kinds `{ln['kinds']}`):")
             out.append("")
@@ -364,7 +377,13 @@ def cmd_certify(args: argparse.Namespace) -> None:
     pack = exported_pack(anchor_path, anchor)
     t_pack = time.monotonic() - started
     publications = publications_from(pack)
-    cert = certificate.record(publications, args.project, args.stage, dates, provenance_map())
+    in_record = {p.sha256 for p in publications}
+    not_in_record = [
+        (c.published_on, c.sha256) for c in sources.copies(REPO_ROOT) if c.sha256 not in in_record
+    ]
+    cert = certificate.record(
+        publications, args.project, args.stage, dates, provenance_map(), not_in_record
+    )
     # The runtime's own as-of read must agree with the pack.
     for a in cert["as_of"]:
         if not a.get("close_transition"):
@@ -446,6 +465,11 @@ def main(argv: list[str] | None = None) -> None:
     imp = commands.add_parser("import")
     imp.add_argument("--until", default=None)
     imp.add_argument("--limit", type=int, default=None)
+    imp.add_argument(
+        "--accept-stranded",
+        action="store_true",
+        help="import newer copies although older readable ones are missing from the record",
+    )
     cp = commands.add_parser("checkpoint")
     cp.add_argument("--witness", action="store_true", help="DigiCert countersigns the head")
     commands.add_parser("analyse")

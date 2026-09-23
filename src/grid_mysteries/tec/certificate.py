@@ -1,13 +1,16 @@
 """As-of TEC record certificates: what the register printed about a project.
 
-Pure assembly; the CLI does the I/O. A certificate states, for each date
-asked about, the publication in force (the last published on or before
-it), the transition that closed that publication's import, and the
-project's lines exactly as the record holds them: kinds, cells, record
+Pure assembly; the CLI does the I/O. For each date asked about, a
+certificate relies on the latest publication the record holds on or before
+it. That is not necessarily the one NESO had in force, because the archive
+has gaps, so the certificate states the days between the two, flags more
+than 60, and names any copy held for the interval that the record does not
+include. It gives the transition that closed that publication's import and
+the project's lines exactly as the record holds them: kinds, cells, record
 key and line number. Between the first and last date it lists every
 publication in which the project's lines changed (a line printed or no
-longer printed), which is a statement about the record, not about
-identity. It forecasts nothing and says nothing about entitlement.
+longer printed), which is a statement about the record, not about identity.
+It forecasts nothing and says nothing about entitlement.
 
 Matching follows the existing certificate rule (`connection_record`): the
 register's normalised project name and, where given, stage.
@@ -44,7 +47,10 @@ def stage(s):
         return s
     whole = d == d.to_integral_value()
     return str(d.normalize().to_integral_value()) if whole else str(d.normalize())
-wanted = {a["close_transition"]: a["as_of"] for a in cert["as_of"] if a.get("close_transition")}
+wanted = {}
+for a in cert["as_of"]:
+    if a.get("close_transition"):
+        wanted.setdefault(a["close_transition"], []).append(a)
 held = {}
 ok = True
 for row in pack["rows"]:
@@ -54,18 +60,15 @@ for row in pack["rows"]:
     for c in row["asserted_claims"]:
         if c["predicate"] == "Row":
             held[c["args"][0]["value"]] = [a["value"] for a in c["args"]]
-    if row["transition_id"] in wanted:
+    for a in wanted.get(row["transition_id"], []):
         lines = sorted(
             k for k, v in held.items()
             if norm(v[3]) == norm(cert["project"])
             and (cert["stage"] is None or stage(v[6]) == stage(cert["stage"]))
         )
-        claimed = sorted(line["row"] for a in cert["as_of"]
-                         if a.get("close_transition") == row["transition_id"]
-                         for line in a["lines"])
-        same = lines == claimed
+        same = lines == sorted(line["row"] for line in a["lines"])
         ok = ok and same
-        print(f"{wanted[row['transition_id']]}: {len(lines)} line(s) in the pack, "
+        print(f"{a['as_of']}: {len(lines)} line(s) in the pack, "
               f"{'as the certificate states' if same else 'DIFFERENT from the certificate'}")
 sys.exit(0 if ok else 1)
 '''
@@ -103,7 +106,7 @@ def lines(p: Publication, project: str, stage: str | None) -> list[dict[str, Any
 def changes(
     publications: list[Publication], project: str, stage: str | None, start: date, end: date
 ) -> list[dict[str, Any]]:
-    """Each publication after the one in force on `start`, up to `end`, whose
+    """Each publication after the one relied on for `start`, up to `end`, whose
     set of matching lines differs from the previous publication's: lines
     printed, and lines no longer printed."""
     first = in_force(publications, start)
@@ -133,15 +136,22 @@ def changes(
     return out
 
 
+#: 014's hole rule: more than this many days between the publication a
+#: certificate relies on and the date asked about is stated as a gap.
+GAP_DAYS: Final = 60
+
+
 def record(
     publications: list[Publication],
     project: str,
     stage: str | None,
     dates: list[date],
     provenance: dict[str, dict[str, Any]],
+    not_in_record: list[tuple[date, str]] | None = None,
 ) -> dict[str, Any]:
     """The certificate's content. `provenance` maps a copy's sha256 to its
-    journal or capture line."""
+    journal or capture line; `not_in_record` lists copies we hold that the
+    record does not (unreadable ones), as (publication date, sha256)."""
     as_of: list[dict[str, Any]] = []
     for on in dates:
         p = in_force(publications, on)
@@ -149,11 +159,20 @@ def record(
             as_of.append({"as_of": on, "publication": None, "note": "no publication on or before"})
             continue
         found = lines(p, project, stage)
+        days = (on - p.published_on).days
+        unread = [
+            {"published_on": d, "sha256": sha}
+            for d, sha in sorted(not_in_record or [])
+            if p.published_on < d <= on
+        ]
         as_of.append(
             {
                 "as_of": on,
                 "publication": p.vintage,
                 "published_on": p.published_on,
+                "days_before": days,
+                "gap": days > GAP_DAYS,
+                "held_but_not_in_record": unread,
                 "sha256": p.sha256,
                 "file_format": p.file_format,
                 "close_transition": p.close_transition,

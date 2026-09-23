@@ -53,6 +53,10 @@ uv run --group registers python -m grid_mysteries.tec certify --project "East An
     --on 2016-06-20 --on 2019-06-27 --on 2022-06-30
 ```
 
+`import` refuses when a readable copy dated at or before the record's
+current publication is missing from it (an EIR reply filling a gap, say):
+the record is forward-only, so such a copy means rebuilding it into a fresh
+database. `--accept-stranded` imports newer copies anyway and lists them.
 `import` reads the journal (`data/raw/neso/tec-history/journal.ndjson`) and
 the capture archive's TEC copies, dated by the CKAN `last_modified` captured
 beside them; it writes neither. Nothing here runs on Render; the capture
@@ -67,14 +71,20 @@ record (`CurrentVintage`, `Importing`) and removed it.
 ## Certificates
 
 `certify` writes `data/derived/tec/certificates/<project>-<dates>/`:
-`CERTIFICATE.md` and `certificate.json` (the lines as published on each
-date, the publication in force with its SHA-256 and journal or capture
-provenance, the transition that closed its import, and every publication
-in between where the project's lines changed), the **complete** audit pack
-(`pack.json.gz`), its signed and witnessed `anchor.json`, the pinned key,
-DigiCert's root, `lines_from_pack.py` and `MANIFEST.json`. Before writing,
-the generator checks that the runtime's own as-of read and a fold of the
-verified pack give the same lines, and runs the bundled script on the pack.
+
+- `CERTIFICATE.md` and `certificate.json`: for each date, the lines as
+  published in the latest publication the record holds on or before it, with
+  that copy's SHA-256 and journal or capture provenance, the days between
+  (flagged past 60), any copy held for the interval that the record does not
+  include, and the transition that closed its import; then every publication
+  in between where the project's lines changed;
+- the **complete** audit pack (`pack.json.gz`) and its signed, witnessed
+  `anchor.json`, the pinned key, DigiCert's root, `lines_from_pack.py` and
+  `MANIFEST.json`.
+
+Before writing, the generator checks that the runtime's own as-of read and a
+fold of the verified pack give the same lines, and runs the bundled script on
+the pack.
 
 ```bash
 gunzip -k pack.json.gz

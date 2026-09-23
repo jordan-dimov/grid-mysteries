@@ -158,6 +158,33 @@ def classify(result: object, error: BaseException | None) -> Outcome:
 # --------------------------------------------------------------------- run
 
 
+def readable(copy: sources.Copy) -> bool:
+    """Does the declared reader get rows out of this copy? (Digest checked first.)"""
+    sources.verify(copy)
+    try:
+        return bool(sources.read(copy))
+    except Exception:  # noqa: BLE001 - an unreadable copy is a fact, not an error
+        return False
+
+
+def stranded(
+    held: list[sources.Copy],
+    in_record: set[str],
+    current: date,
+    can_read: Callable[[sources.Copy], bool],
+) -> list[sources.Copy]:
+    """Readable copies dated at or before the record's current publication
+    that the record does not hold: they can only enter a rebuilt record."""
+    return [
+        c for c in held if c.published_on <= current and c.sha256 not in in_record and can_read(c)
+    ]
+
+
+def recorded_copies(api: Any) -> set[str]:
+    """The SHA-256 of every publication the record holds."""
+    return {str(c.args["sha256"]) for c in api.claims_named("Vintage")}
+
+
 def read_state(api: Any) -> tuple[tuple[str, date] | None, RowState, bool]:
     """(current publication, current rows, an import left open)."""
     current = api.claims_named("CurrentVintage")
@@ -179,9 +206,15 @@ def run(
     *,
     until: date | None = None,
     limit: int | None = None,
+    accept_stranded: bool = False,
     log: Callable[[str], None] = print,
 ) -> list[dict[str, Any]]:
-    """Import every held publication newer than the record's current one."""
+    """Import every held publication newer than the record's current one.
+
+    Refuses, unless `accept_stranded`, when a readable copy dated at or
+    before the record's current publication is missing from it (an EIR
+    reply filling a gap, say): such a copy can only enter a rebuilt record,
+    and importing past it silently would hide the gap."""
     from morpholog_client.adapter import Morpholog
 
     marker = marker_path(repo_root, database_url)
@@ -194,9 +227,22 @@ def run(
     prior, held, open_import = read_state(api)
     if open_import:
         raise ImportError_("the record has an import open (Importing): refusing to continue")
+    held_copies = sources.copies(repo_root)
+    if prior is not None:
+        behind = stranded(held_copies, recorded_copies(api), prior[1], readable)
+        if behind and not accept_stranded:
+            raise ImportError_(
+                f"{len(behind)} readable cop{'y' if len(behind) == 1 else 'ies'} dated at or "
+                f"before the record's current publication ({prior[1]}) are not in the record: "
+                + ", ".join(str(c.published_on) for c in behind[:10])
+                + ". The record imports in publication order only; rebuild it into a fresh "
+                "database to include them, or pass --accept-stranded to import newer copies anyway."
+            )
+        for c in behind:
+            log(f"stranded (accepted): {c.published_on} {c.sha256[:12]} is not in the record")
     todo = [
         c
-        for c in sources.copies(repo_root)
+        for c in held_copies
         if (prior is None or c.published_on > prior[1])
         and (until is None or c.published_on <= until)
     ]

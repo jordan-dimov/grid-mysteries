@@ -308,3 +308,62 @@ def test_certificate_changes_list_publications_where_lines_changed():
     out = certificate.record(pubs, "alpha", None, [date(2020, 1, 15), date(2020, 3, 15)], {})
     assert [c["published_on"] for c in out["changes"]] == [date(2020, 2, 1)]
     assert out["as_of"][1]["lines"][0]["cells"]["MW Effective From"] == "2026-01-01"
+
+
+# ------------------------------------------------------ gaps and strandings
+
+
+def held_copy(day: str, sha: str) -> sources.Copy:
+    return sources.Copy(date.fromisoformat(day), sha, Path("x.csv"), "csv", {})
+
+
+def test_a_readable_copy_behind_the_record_is_stranded_and_an_unreadable_one_is_not():
+    held = [
+        held_copy("2025-07-22", "a"),
+        held_copy("2025-10-01", "b"),
+        held_copy("2025-11-01", "c"),
+    ]
+    out = importer.stranded(held, {"a"}, date(2026, 5, 19), lambda c: c.sha256 != "c")
+    assert [c.sha256 for c in out] == ["b"]
+    assert importer.stranded(held, {"a"}, date(2025, 7, 22), lambda c: True) == []
+
+
+def test_a_certificate_states_the_gap_and_copies_held_but_not_in_the_record():
+    p1 = importer.plan(None, {}, copy("2025-07-22"), [row()])
+    pubs = list(replay.fold(audit_rows_for([p1])))
+    out = certificate.record(
+        pubs,
+        "alpha",
+        None,
+        [date(2025, 8, 1), date(2026, 1, 1)],
+        {},
+        [(date(2025, 10, 1), "b" * 64)],
+    )
+    near, far = out["as_of"]
+    assert (near["days_before"], near["gap"], near["held_but_not_in_record"]) == (10, False, [])
+    assert far["gap"] is True
+    assert far["held_but_not_in_record"] == [
+        {"published_on": date(2025, 10, 1), "sha256": "b" * 64}
+    ]
+
+
+def test_the_bundled_script_checks_each_date_even_when_two_share_a_publication(tmp_path):
+    import json
+    import subprocess
+    import sys
+
+    p1 = importer.plan(None, {}, copy("2025-07-22"), [row(), row(mw=5, eff="2027-01-01")])
+    pack = {"rows": audit_rows_for([p1])}
+    pubs = list(replay.fold(pack["rows"]))
+    cert = certificate.record(pubs, "alpha", None, [date(2025, 8, 1), date(2026, 1, 1)], {})
+    (tmp_path / "pack.json").write_text(json.dumps(pack))
+    (tmp_path / "certificate.json").write_text(json.dumps(cert, default=str))
+    (tmp_path / "lines_from_pack.py").write_text(certificate.LINES_FROM_PACK)
+    run = subprocess.run(
+        [sys.executable, "lines_from_pack.py", "pack.json", "certificate.json"],
+        cwd=tmp_path,
+        capture_output=True,
+        text=True,
+    )
+    assert run.returncode == 0, run.stdout
+    assert run.stdout.count("2 line(s) in the pack, as the certificate states") == 2

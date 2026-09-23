@@ -324,6 +324,65 @@ def percent(value: str | None) -> str:
     return BLANK if value is None else f"{Decimal(value):.1f}%"
 
 
+RULE_NAMES = {RULE_V2: "version 2's rule", RULE_CONTENT: "content matching"}
+
+
+def thin_years(segment: dict[str, Any]) -> list[dict[str, Any]]:
+    """Year windows whose determined part is under half of the year's figure
+    under at least one of the two rules (compared in absolute value)."""
+    out = []
+    for window in segment.get("annual", []):
+        split = window.get("split")
+        if not split:
+            continue
+        determined = Decimal(split["determined"])
+        rules = [
+            rule
+            for rule in (RULE_V2, RULE_CONTENT)
+            if abs(determined) * 2 < abs(Decimal(split["total"][rule]))
+        ]
+        if rules:
+            out.append({**window, "rules": rules})
+    return out
+
+
+def year_label(window: dict[str, Any]) -> str:
+    return f"{window['year']} (partial)" if window["partial"] else str(window["year"])
+
+
+def join_words(words: list[str]) -> str:
+    return words[0] if len(words) == 1 else ", ".join(words[:-1]) + " and " + words[-1]
+
+
+def determined_share_sentence(series: dict[str, Any]) -> str | None:
+    """Which years of the year-by-year table rest mostly on pairings the
+    register does not determine, computed from the evidence."""
+    old = next((s for s in series["segments"] if s["regime"] == "old"), None)
+    if not old or not any(w.get("split") for w in old.get("annual", [])):
+        return None
+    years = thin_years(old)
+    if not years:
+        return (
+            "In every year of the table the movement the register's stage labels determine "
+            "is at least half of the year's figure under both rules."
+        )
+    details = []
+    for w in years:
+        split = w["split"]
+        figures = " and ".join(
+            f"{signed_mw_years(split['total'][rule])} under {RULE_NAMES[rule]}"
+            for rule in w["rules"]
+        )
+        details.append(f"{year_label(w)}, {signed_mw_years(split['determined'])} of {figures}")
+    return (
+        f"In {join_words([year_label(w) for w in years])} the movement the register's stage "
+        "labels determine is under half of the year's figure under at least one rule: "
+        + "; ".join(details)
+        + ". In those years more than half of that figure comes from project groups whose "
+        "pairing the register does not determine."
+    )
+
+
 def split_headline_sentence(series: dict[str, Any]) -> str:
     """Declarations 3 and 4: the determined part, then each named rule; the
     wording is the frozen declaration's, the numbers are the evidence's."""
@@ -604,6 +663,8 @@ def render_page(series: dict[str, Any], repo_url: str = REPO_URL) -> str:
         else ""
     )
     old_annual = render_pair_table(annual_pairs(old), "Year") if old else "<p>No copies.</p>"
+    share = determined_share_sentence(series)
+    share_note = f"<p>{escape(share)}</p>\n" if share else ""
     old_vintages = render_pair_table(vintage_pairs(old), "Copy of") if old else ""
     old_increments = increment_rows(old) if old else ""
     new_block = ""
@@ -668,7 +729,7 @@ register, not the projects.</p>
 <div class="scroll">
 {old_annual}
 </div>
-
+{share_note}
 <details>
 <summary>Every copy against the copy a year earlier</summary>
 <p class="notes">The same calculation for every copy held, each against the latest copy at
@@ -810,6 +871,9 @@ def render_markdown(series: dict[str, Any]) -> str:
         annual,
         "",
     ]
+    share = determined_share_sentence(series)
+    if share:
+        lines += [share, ""]
     if new:
         lines += [
             "## Since the reform (separate series, copy to copy)",

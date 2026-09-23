@@ -206,10 +206,9 @@ def test_markdown_lists_gaps_and_points_to_the_evidence():
     )
 
 
-def test_a_split_page_prints_the_frozen_declarations_headline_sentence_with_the_evidence_numbers():
-    """014 v4: the headline is the declaration's sentence, numbers from evidence/v4."""
+def v4_series():
+    """014's version 4 evidence with its rows re-attached, as the runner renders it."""
     import json
-    import re
     from pathlib import Path
 
     here = Path(__file__).parents[1] / "investigations/014-gb-connection-slippage"
@@ -217,6 +216,14 @@ def test_a_split_page_prints_the_frozen_declarations_headline_sentence_with_the_
     rows = [json.loads(x) for x in (here / "evidence/v4/rows.ndjson").read_text().splitlines()]
     for segment in series["segments"]:
         segment["rows"] = [r for r in rows if r["regime"] == segment["regime"]]
+    return here, series
+
+
+def test_a_split_page_prints_the_frozen_declarations_headline_sentence_with_the_evidence_numbers():
+    """014 v4: the headline is the declaration's sentence, numbers from evidence/v4."""
+    import re
+
+    here, series = v4_series()
     declared = re.search(
         r'The headline is written in this form: "(.*?)"',
         (here / "DECLARATION-v4.md").read_text(),
@@ -227,3 +234,46 @@ def test_a_split_page_prints_the_frozen_declarations_headline_sentence_with_the_
     assert sentence in page.headline_sentence(series)
     html = page.render_page(series)
     assert "Determined by stage labels, MW-years" in html and "evidence/v4" in html
+
+
+def test_the_page_names_every_year_whose_determined_part_is_under_half_of_either_rule():
+    """014 v4: the years are recomputed here from the evidence, independently."""
+    from decimal import Decimal
+
+    _, series = v4_series()
+    old = next(s for s in series["segments"] if s["regime"] == "old")
+    expected = []
+    for w in old["annual"]:
+        d = abs(Decimal(w["split"]["determined"]))
+        if any(d * 2 < abs(Decimal(v)) for v in w["split"]["total"].values()):
+            expected.append(f"{w['year']} (partial)" if w["partial"] else str(w["year"]))
+    assert {"2018", "2023"} <= set(expected)  # the years seen before release
+    sentence = page.determined_share_sentence(series)
+    assert sentence is not None
+    named = sentence.split(" the movement ")[0].removeprefix("In ")
+    assert named == page.join_words(expected)
+    for w in page.thin_years(old):
+        assert page.signed_mw_years(w["split"]["determined"]) in sentence
+    from html import escape
+
+    assert escape(sentence) in page.render_page(series)
+    assert sentence in page.render_markdown(series)
+
+
+def test_the_share_sentence_says_so_when_no_year_is_under_half():
+    from typing import Any
+
+    window: dict[str, Any] = {
+        "year": 2030,
+        "partial": True,
+        "split": {
+            "determined": "60.000",
+            "total": {page.RULE_V2: "100.000", page.RULE_CONTENT: "110.000"},
+        },
+    }
+    series = {"segments": [{"regime": "old", "annual": [window]}]}
+    assert "at least half" in (page.determined_share_sentence(series) or "")
+    window["split"]["determined"] = "50.000"
+    sentence = page.determined_share_sentence(series) or ""
+    assert sentence.startswith("In 2030 (partial) the movement")
+    assert "under content matching" in sentence and "version 2's rule" not in sentence

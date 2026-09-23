@@ -45,6 +45,8 @@
   "v4 definition: equals version 3's on consecutive copies": "tests/test_connection_slippage_v3.py::test_version_4_equals_version_3_on_consecutive_copies",
   "v4 F4 holds where version 3's failed (Barry's shape)": "tests/test_connection_slippage_v3.py::test_version_4_counts_that_group_undetermined_so_f4_holds",
   "v4 rounding: determined part by version 2's convention, parts add up": "tests/test_connection_slippage_v3.py::test_the_determined_part_is_the_same_under_both_rules_and_is_reported",
-  "v4 F5: the declaration states the content rule's digest": "tests/test_connection_slippage_v3.py::test_the_frozen_declaration_states_the_content_rules_digest_and_it_matches[DECLARATION-v4.md]"
+  "v4 F5: the declaration states the content rule's digest": "tests/test_connection_slippage_v3.py::test_the_frozen_declaration_states_the_content_rules_digest_and_it_matches[DECLARATION-v4.md]",
+  "v4 page: the frozen headline sentence, numbers from the evidence": "tests/test_connection_slippage_page.py::test_a_split_page_prints_the_frozen_declarations_headline_sentence_with_the_evidence_numbers",
+  "v4 page: years whose determined part is under half of either rule are named": "tests/test_connection_slippage_page.py::test_the_page_names_every_year_whose_determined_part_is_under_half_of_either_rule"
  }
 }

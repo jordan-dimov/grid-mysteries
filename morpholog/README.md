@@ -24,6 +24,17 @@ the machine it was produced on:
 ./scripts/replay-research   # needs PostgreSQL
 ```
 
+The offline check alone, with no database, pins the signing key (a
+checkpoint signed by any key other than the committed `audit-2026` fails,
+even one the log itself authorises; checkpoints are signed from tree size
+34 on):
+
+```bash
+morpholog audit verify-pack morpholog/evidence-pack.json \
+  --anchor-file morpholog/audit-anchor.json \
+  --require-signing-key morpholog/trust/audit-2026.pub --require-signatures-from 34
+```
+
 A precision note on what is and is not in the audit log: only **committed
 transitions** are Merkle-audited (the anchor's `tree_size` is their exact
 count). **Refusals are not transitions** — a business rejection (such as

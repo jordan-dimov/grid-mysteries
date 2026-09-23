@@ -100,6 +100,15 @@ pinned FY26-27 CSVs — so it is 004's reserved window, not pristine
 untouched data); the August week is 002's reserved window and is
 consumed only at acquisition.
 
+> **Amended 23/09/2026: H3a no longer applies.** `morpholog_writer` is a
+> cluster-wide group role, not a per-database one: on this cluster it also
+> holds `INSERT` on the audit log of `bizgov` (and of every other database
+> initialised with `--least-privilege`). Granting it to `gm_machine` would
+> give the machine credential write access to every one of those logs, not
+> only this record's. The machine role therefore stays a **reader**; its
+> proposals, when there are any, go through the human-run `scripts/record`.
+> See "Before the next v2/v3 governed write" at the end of this file.
+
 **H3a — grant the machine role its write privileges NOW** (governance
 exists, so the race window is closed):
 
@@ -315,3 +324,45 @@ launch, and both are larger than a Friday change. A cheap partial
 hardening available today: restrict `pg_hba.conf` so the machine role
 cannot reach a superuser/peer-auth login (defence in depth; the governed
 record's tamper-evidence does not depend on it).
+
+## Before the next v2/v3 governed write (23/09/2026)
+
+On 23/09/2026 the live record binds `jordan_dimov` to `gm_human` and
+`claude_fable_5` to `gm_machine`, and neither login exists on this
+cluster, so every governed v2/v3 proposal is refused at the adapter. Do
+this once, immediately before the next such write, and not before. Both
+passwords are typed by Jordan at the `\password` prompt, nowhere else.
+
+```
+psql -d grid_mysteries_morpholog
+  REVOKE CONNECT ON DATABASE grid_mysteries_morpholog FROM PUBLIC;
+  CREATE ROLE gm_human LOGIN;
+  \password gm_human
+  CREATE ROLE gm_machine LOGIN;
+  \password gm_machine
+  GRANT morpholog_writer TO gm_human;
+  GRANT morpholog_reader TO gm_machine;   -- READER ONLY; H3a's writer grant is withdrawn
+  GRANT CONNECT ON DATABASE grid_mysteries_morpholog TO gm_human, gm_machine;
+  \q
+```
+
+`REVOKE CONNECT ... FROM PUBLIC` first, because the roles are
+cluster-wide and a login that can connect to a database with PUBLIC
+privileges needs no grant of its own. Remember that the owner (`jdimov`)
+keeps connecting, and that `scripts/replay-research` must still never
+run on this cluster (it creates these same two role names).
+
+Verify, in Jordan's shell:
+
+```
+psql "postgres://gm_human@localhost/grid_mysteries_morpholog" -tAc "select session_user"    # gm_human
+psql "postgres://gm_machine@localhost/grid_mysteries_morpholog" -tAc "select session_user"  # gm_machine
+morpholog explain morpholog/research-v2-draft.morph open_inquiry --actor jordan_dimov \
+  --args-named '{"inquiry": "probe", "kind": "prospective", "title": "role check", "opened_at": "2026-09-23T00:00:00Z"}' \
+  --database-url "postgres://gm_human@localhost/grid_mysteries_morpholog"
+```
+
+`explain` commits nothing; it must answer as admissible, not as an
+actor-assertion refusal. The same `explain` over `gm_machine` must be
+refused (the binding is to `gm_human`).
+

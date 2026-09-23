@@ -113,3 +113,19 @@ replayable from `morpholog/batches/` and verifiable offline
 --anchor-file morpholog/audit-anchor.json`) · CI reruns the full gate and
 the record replay on every push. Repository:
 github.com/jordan-dimov/grid-mysteries.
+
+### Verification, updated 23/09/2026
+
+The footer above stands as published. With Morpholog v0.0.11 the offline
+check pins the signing key:
+
+```bash
+morpholog audit verify-pack morpholog/evidence-pack.json \
+  --anchor-file morpholog/audit-anchor.json \
+  --require-signing-key morpholog/trust/audit-2026.pub --require-signatures-from 34
+```
+
+Why the pin matters: the log itself can authorise a signing key, so
+without the pin a checkpoint signed by a key someone registered through the
+record's own rules would still verify; with it, only the committed
+`audit-2026` key counts (checkpoints were signed from tree size 34 on).

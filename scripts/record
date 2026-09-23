@@ -45,10 +45,35 @@ printf '%s\n' "$ROW" > "$tmp"
 
 receipt=$(morpholog propose "$PROGRAMME" --batch "$tmp" --explain-on-reject)
 rm -f "$tmp"
-status=$(printf '%s' "$receipt" | python3 -c "import json,sys; print(json.loads(sys.stdin.readline())['status'])")
-if [[ "$status" != "committed" ]]; then
+# The marker is cleared only on a positive non-commit: a rejection (a
+# lawful answer), or an error receipt whose stable `code` the runtime
+# documents as "nothing was recorded". `commit_outcome_unknown`, a code
+# this script does not know, or a receipt it cannot read all keep it.
+outcome=$(printf '%s' "$receipt" | python3 -c "
+import json, sys
+NOT_COMMITTED = {'actor_assertion_unauthorised', 'duplicate_intent', 'invalid_arguments',
+                 'invalid_request', 'kernel_error', 'not_committed', 'serialization_failure',
+                 'unknown_transformation'}
+try:
+    r = json.loads(sys.stdin.readline())
+except ValueError:
+    r = {}
+if r.get('status') == 'committed':
+    print('committed')
+elif r.get('status') == 'rejected' or (r.get('status') == 'error' and r.get('code') in NOT_COMMITTED):
+    print('not-committed')
+else:
+    print('unknown')
+")
+if [[ "$outcome" == "not-committed" ]]; then
   rm -f "$MARKER"
-  echo "record: proposal was ${status} (a lawful answer, nothing to clean up):" >&2
+  echo "record: proposal was not committed (nothing to clean up):" >&2
+  printf '%s\n' "$receipt" >&2
+  exit 1
+fi
+if [[ "$outcome" != "committed" ]]; then
+  echo "record: the commit outcome is UNKNOWN; marker left at $MARKER." >&2
+  echo "record: read the record (morpholog inspect claims) before anything else:" >&2
   printf '%s\n' "$receipt" >&2
   exit 1
 fi

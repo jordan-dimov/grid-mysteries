@@ -1,8 +1,9 @@
 # 014 — GB Connection Slippage: declaration, version 4
 
-**DRAFT, not frozen.** This text is frozen with `scripts/freeze` only after
-the sponsor seals it; the freeze replaces this paragraph with the date and
-changes nothing else. Until then no figure under it is published. Release
+**Frozen**: 2026-09-23 with `scripts/freeze`, which witnesses this file by
+OpenTimestamps and RFC 3161 tokens from freetsa.org and DigiCert and
+commits it with the proofs. Sealed by the sponsor's instruction of
+2026-09-23 ("Seal 014 declaration v4 with one edit, then freeze"). Release
 of the page remains the separate second seal, and this version is meant to
 be in force before the series is first announced.
 
@@ -61,6 +62,12 @@ paired as determined, because the two ends alone do not show the second row
 arriving. Both sets of figures were in view when (a) was chosen; (a)
 gives the smaller determined part.
 
+**One edit was made after the sponsor's review of the draft, on
+2026-09-23, before freezing:** the headline sentence takes the sponsor's
+wording, which names groups "that went missing from a copy between"
+separately from those restructured at either end or in a copy between.
+Nothing else changed from the draft committed at `df4afdd`.
+
 P1 and P2 are inherited unchanged and decided on version 2's figures, so
 this version cannot improve the propositions' record.
 
@@ -113,10 +120,11 @@ already seen).
 
 The headline is written in this form: "+53,221 MW-years is movement the
 register's own stage labels determine. 88 project groups that were split,
-merged, renumbered, printed repeated stages or went missing, at either end
-or in any copy between, add +4,602 under version 2's rule and +8,322 under
-content matching, so the headline is +57,823 or +61,543 depending on the rule;
-other pairings are possible and are not bounded here."
+merged, renumbered or printed repeated stages, at either end or in any copy
+between, or that went missing from a copy between, add +4,602 under
+version 2's rule and +8,322 under content matching, so the headline is
++57,823 or +61,543 depending on the rule; other pairings are possible and
+are not bounded here."
 
 ## Falsifiers of the instrument
 

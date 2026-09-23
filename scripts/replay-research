@@ -31,27 +31,14 @@ fi
 echo "   $actual"
 
 echo "== offline evidence-pack verification (no database consulted)"
-morpholog audit verify-pack morpholog/evidence-pack.json --anchor-file morpholog/audit-anchor.json
-python3 -c "
-import json
-anchor = json.load(open('morpholog/audit-anchor.json'))
-signatures = anchor.get('signatures') or []
-if not signatures:
-    raise SystemExit('current anchor is unsigned; checkpoints must be signed with audit-2026')
 # Trust is the REPO-PINNED public key, never the claim set or the key a
 # checkpoint carries: v1's key registration predates the authority
 # vocabulary and is ungated, so a machine credential could mint a rogue
 # AuditSigningKey claim through the retained v1 rules. A rogue key can
-# never satisfy this pin.
-pinned = open('morpholog/trust/audit-2026.pub').read().strip()
-sig = signatures[0]
-if sig.get('key_id') != 'audit-2026' or sig.get('public_key') != pinned:
-    raise SystemExit(
-        f'anchor signed by unpinned key: key_id={sig.get(\"key_id\")!r} — '
-        'only the committed morpholog/trust/audit-2026.pub is trusted'
-    )
-print(f'   anchor signed by the pinned key ({sig[\"key_id\"]})')
-"
+# never satisfy this pin. Checkpoints were signed from tree_size 34
+# onward; the earlier ones are honestly unsigned and are not asked.
+morpholog audit verify-pack morpholog/evidence-pack.json --anchor-file morpholog/audit-anchor.json \
+  --require-signing-key morpholog/trust/audit-2026.pub --require-signatures-from 34
 
 echo "== governance-attestation check (misconfiguration + naive-forgery control)"
 EXPECTED_HUMAN_LOGIN_ROLE="${EXPECTED_HUMAN_LOGIN_ROLE:-gm_human}" python3 -c "

@@ -346,9 +346,9 @@ psql -d grid_mysteries_morpholog
   \q
 ```
 
-`REVOKE CONNECT ... FROM PUBLIC` first, because the roles are
-cluster-wide and a login that can connect to a database with PUBLIC
-privileges needs no grant of its own. Remember that the owner (`jdimov`)
+`REVOKE CONNECT ... FROM PUBLIC` first: PostgreSQL grants CONNECT on every
+database to PUBLIC by default, and roles are cluster-wide, so without it any
+login on the cluster could connect to the record. Remember that the owner (`jdimov`)
 keeps connecting, and that `scripts/replay-research` must still never
 run on this cluster (it creates these same two role names).
 
@@ -362,7 +362,10 @@ morpholog explain morpholog/research-v2-draft.morph open_inquiry --actor jordan_
   --database-url "postgres://gm_human@localhost/grid_mysteries_morpholog"
 ```
 
-`explain` commits nothing; it must answer as admissible, not as an
-actor-assertion refusal. The same `explain` over `gm_machine` must be
-refused (the binding is to `gm_human`).
+`explain` commits nothing; it must answer as admissible. It evaluates the
+programme's gates, and its documentation does not say that it applies the
+adapter's `session_user` binding, so it is not evidence that `gm_machine`
+cannot assert `jordan_dimov`. That binding was proved by propose in
+`scripts/rehearse-v2` (section A); the first real governed write over
+`gm_human` is its check on this cluster.
 

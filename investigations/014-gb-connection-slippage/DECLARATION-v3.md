@@ -1,10 +1,11 @@
 # 014 — GB Connection Slippage: declaration, version 3
 
-**DRAFT, not frozen.** This text is frozen with `scripts/freeze` only after
-the sponsor seals it; the freeze replaces this paragraph with the date and
-witnesses nothing else. Until then no figure under it is published.
-Release of the page remains the separate second seal, and version 3 is
-meant to be in force before the series is first announced.
+**Frozen**: 2026-09-23 with `scripts/freeze`, which witnesses this file by
+OpenTimestamps and RFC 3161 tokens from freetsa.org and DigiCert and
+commits it with the proofs. Sealed by the sponsor's instruction of
+2026-09-23 ("Seal 014 declaration v3 with two edits, then freeze"). Release
+of the page remains the separate second seal, and version 3 is meant to be
+in force before the series is first announced.
 
 ## What this version is, and is not
 
@@ -17,8 +18,9 @@ propositions, all of which are inherited from version 2 verbatim.
 
 One thing changes. Every movement figure the series reports is split into
 the part the register itself determines and the part that depends on an
-identity rule, and the second part is published as a stated range under
-two named rules. The figure version 2 publishes is one end of that range.
+identity rule, and the second part is published under each of two named
+rules. The two are not bounds: other pairings are possible and are not
+bounded here. The figure version 2 publishes is one of the two.
 
 ## Why (forced by an artefact made after version 2 was frozen)
 
@@ -51,6 +53,16 @@ The author has seen, from the record at anchor `tec/anchors/tree-137384.json`
 - date moves reversed by the unit's next move: 6 of 87 under version 2's
   rule are not printed that way in the files, 0 of 81 under content
   matching.
+
+**Two edits were made after the sponsor's review of the draft, on
+2026-09-23, before freezing.** (1) The headline sentence names two rules
+instead of stating bounds (the sponsor's wording), and the same
+two-named-rules wording replaces every place the draft spoke of a range,
+its ends, or the lower and higher figure. (2) The undetermined share of
+the chained total is stated beside it as a percentage; on the figures
+already seen it is 26.4% under version 2's rule (140,654.748 of
+532,780.315) and 26.6% under content matching (142,055.021 of
+534,180.588). Nothing else changed from the draft committed at `a75d772`.
 
 **The definition below was chosen after seeing that it closes both gaps
 exactly.** It is a reporting rule, and it cannot change any proposition's
@@ -88,20 +100,23 @@ increment of the chain, and every calendar-year window:
   `tec-identity-content-v1` (`src/grid_mysteries/tec/identity.py`, SHA-256
   `a0ee2ac0dcc6919e37061f89a5b0fc1c663cf566cb1a7df3a55f75c761aa0fb8`),
   whose units are carried from copy to copy within a segment;
-- the number of groups with an undetermined pairing, and the range: the
-  determined part plus the lower and the higher of the two undetermined
-  figures, with the rule that gives each end named.
+- the number of groups with an undetermined pairing, and the movement
+  under each rule: the determined part plus that rule's undetermined
+  figure, named by its rule. The two are not bounds; other pairings are
+  possible and are not bounded here.
 
 The chained total is reported the same way: the determined parts of the
-increments summed, and the chain under each rule. Version 2's figure is
-always one end of the range and is still reported by name, so no published
-number disappears.
+increments summed, and the chain under each rule. Beside the chained total
+stands the undetermined share of it under each rule, as a percentage
+(about 26% on the figures already seen). Version 2's figure is always one of
+the two and is still reported by name, so no published number disappears.
 
 The headline is written in this form: "+57,400 MW-years is movement the
-register's own stage labels determine; 54 project groups that were split,
-merged, renumbered or printed repeated stages add between +423 and +4,143
-depending on how their rows are paired, so the headline is between +57,823
-(version 2's rule) and +61,543 (content matching)."
+register's own stage labels determine. 54 project groups that were split,
+merged, renumbered or printed repeated stages add +423 under version 2's
+rule and +4,143 under content matching, so the headline is +57,823 or
++61,543 depending on the rule; other pairings are possible and are not
+bounded here."
 
 ## Falsifiers of the instrument (added)
 

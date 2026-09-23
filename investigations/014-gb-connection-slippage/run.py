@@ -4,11 +4,16 @@
         --seal <prefix of the declaration's SHA-256> --phase all [--run-date YYYY-MM-DD]
     uv run --group registers python investigations/014-gb-connection-slippage/run.py --phase render
 
-Two declarations exist. ``--version 2`` (the default) is ``DECLARATION-v2.md``
-with evidence under ``evidence/v2/``: reading rules with the July 2020
-header aliases, the partial-export rule, and append-only rows. ``--version
-1`` is the first, ``DECLARATION.md`` with ``evidence/``: closed, kept as
-run, and available to ``check`` only.
+Three declarations exist. ``--version 3`` (the default) is
+``DECLARATION-v3.md`` with evidence under ``evidence/v3/``: version 2's
+series unchanged, with every movement figure split into the part the
+register's stage labels determine and the figure under each of two named
+identity rules (F4 and F5 refuse). Its render goes to a preview directory
+until the ``release`` phase, which is the sponsor's separate seal.
+``--version 2`` is ``DECLARATION-v2.md`` with ``evidence/v2/`` (the
+published series until version 3 is released). ``--version 1`` is the
+first, ``DECLARATION.md`` with ``evidence/``: closed, kept as run, and
+available to ``check`` only.
 
 Phases:
 
@@ -26,8 +31,12 @@ Phases:
   rewritten each run.
 - ``check`` (needs the seal): recompute and compare with the committed
   rows without writing anything.
-- ``render``: ``SERIES.md`` and ``site/connection-slippage/index.html`` as
-  pure functions of the evidence. Needs no seal.
+- ``render``: the record page and the site page as pure functions of the
+  evidence. Needs no seal. Version 3 renders to ``PREVIEW`` (gitignored)
+  until it is released.
+- ``release`` (version 3 only, ``--confirm-release``): the sponsor's second
+  seal, done by hand. Version 2's record page moves to ``SERIES-v2.md``;
+  version 3's becomes ``SERIES.md`` and the site page.
 """
 
 import argparse
@@ -41,11 +50,15 @@ from typing import Any
 from grid_mysteries.corpus import REPO_ROOT
 from grid_mysteries.evidence import dumps, write_json
 from grid_mysteries.investigations import connection_slippage as cs
+from grid_mysteries.investigations import connection_slippage_v3 as v3
 from grid_mysteries.rendering import connection_slippage as page
 from grid_mysteries.sources import tec_register as tr
 
 HERE = Path(__file__).parent
 SITE_INDEX = REPO_ROOT / "site" / "connection-slippage" / "index.html"
+#: Version 3's pages before the sponsor's release seal: gitignored, so no
+#: merge or push can publish them by accident.
+PREVIEW = REPO_ROOT / "data" / "derived" / "014-v3-preview"
 JOURNAL = REPO_ROOT / tr.JOURNAL_PATH
 RAW_DIR = REPO_ROOT / tr.RAW_DIR
 SCHEMA_REPORT = REPO_ROOT / "archives" / "tec-register" / "schema-report.json"
@@ -67,10 +80,33 @@ class Version:
         name = "DECLARATION.md" if number == 1 else f"DECLARATION-v{number}.md"
         self.declaration = HERE / name
         self.evidence = HERE / "evidence" if number == 1 else HERE / "evidence" / f"v{number}"
-        self.series_md = HERE / ("SERIES-v1.md" if number == 1 else "SERIES.md")
         self.partial_export_rule = number >= 2
         self.append_only_rows = number >= 2
         self.closed = number == 1
+        self.split = number >= 3
+
+    @property
+    def released(self) -> bool:
+        """Version 3 is released once its record page has become SERIES.md,
+        which moves version 2's to SERIES-v2.md."""
+        return (HERE / "SERIES-v2.md").exists()
+
+    @property
+    def series_md(self) -> Path:
+        if self.number == 1:
+            return HERE / "SERIES-v1.md"
+        if self.number == 2:
+            return HERE / ("SERIES-v2.md" if self.released else "SERIES.md")
+        return HERE / "SERIES.md" if self.released else PREVIEW / "SERIES.md"
+
+    @property
+    def site_index(self) -> Path | None:
+        """Where this version's site page goes, if anywhere."""
+        if self.number == 2:
+            return None if self.released else SITE_INDEX
+        if self.number == 3:
+            return SITE_INDEX if self.released else PREVIEW / "index.html"
+        return None
 
     @property
     def series_json(self) -> Path:
@@ -171,6 +207,29 @@ def committed_rows(version: Version) -> dict[tuple[str, str], str]:
     return out
 
 
+def require_v2_side_unchanged(rows: list[dict[str, Any]]) -> None:
+    """Every row's version 2 fields must serialise byte for byte as version
+    2's committed line for the same copy: version 3 only adds a `v3` key."""
+    committed = committed_rows(Version(2))
+    differing, missing = [], []
+    for r in rows:
+        key = (r["t_public"].isoformat(), r["sha256"])
+        line = row_line({k: v for k, v in r.items() if k != "v3"})
+        if key not in committed:
+            missing.append(key[0])
+        elif committed[key] != line:
+            differing.append(key[0])
+    if differing:
+        raise SystemExit(
+            f"refusing: the version 2 side of {len(differing)} row(s) differs from "
+            f"evidence/v2 ({', '.join(differing[:5])})"
+        )
+    print(
+        f"version 2 side: {len(rows) - len(missing)} row(s) byte-identical to evidence/v2"
+        + (f"; {len(missing)} copy(ies) newer than version 2's last run" if missing else "")
+    )
+
+
 def row_line(row: dict[str, Any]) -> str:
     """One row as one NDJSON line, through the evidence serialiser."""
     return json.dumps(json.loads(dumps(row)), separators=(",", ":"))
@@ -189,8 +248,18 @@ def compute(version: Version, run_date: str, seal: str, *, amend: bool, write: b
         f"{len(parsed)} parsed, {len(usable)} usable, {len(skipped)} unparseable, "
         f"{len(excluded)} excluded"
     )
-    result = cs.series(usable, partial_export_rule=version.partial_export_rule)
+    if version.split:
+        try:
+            result = v3.series(
+                usable, rule_digest=v3.declared_rule_digest(version.declaration.read_text())
+            )
+        except (v3.RuleDisagreement, v3.ContentRuleChanged) as exc:
+            raise SystemExit(f"refusing: {exc}") from None
+    else:
+        result = cs.series(usable, partial_export_rule=version.partial_export_rule)
     rows = flatten_rows(result)
+    if version.split:
+        require_v2_side_unchanged(rows)
     committed = committed_rows(version)
     serialised = {
         (r["t_public"].isoformat(), r["sha256"]): (
@@ -239,6 +308,7 @@ def compute(version: Version, run_date: str, seal: str, *, amend: bool, write: b
         "seal": seal,
         "run_date": run_date,
         "computed_at": computed_at,
+        "released": version.released if version.split else None,
         "rows_file": version.rows_ndjson.name,
         "rows_appended": len(new),
         "rows_total": len(rows),
@@ -291,6 +361,18 @@ def compute(version: Version, run_date: str, seal: str, *, amend: bool, write: b
     )
     write_json(version.run_log, log)
     head = summary["headline"]
+    if head and version.split:
+        split = head["v3"]["vs_year_earlier"]
+        print(
+            f"v3 headline: determined {split['determined']} over "
+            f"{split['undetermined_groups']} undetermined group(s); "
+            + ", ".join(f"{rule} {total}" for rule, total in split["total"].items())
+        )
+        print(
+            f"v3 chain (old): determined {head['v3']['determined']}; "
+            + ", ".join(f"{rule} {total}" for rule, total in head["v3"]["total"].items())
+            + f"; undetermined share {head['v3']['undetermined_share_percent']}"
+        )
     if head:
         print(
             f"headline: {head['baseline']} -> {head['t_public']}: "
@@ -326,13 +408,26 @@ def load_series(version: Version) -> dict[str, Any]:
 
 def render(version: Version) -> None:
     series = load_series(version)
+    version.series_md.parent.mkdir(parents=True, exist_ok=True)
     version.series_md.write_text(page.render_markdown(series))
-    SITE_INDEX.parent.mkdir(parents=True, exist_ok=True)
-    SITE_INDEX.write_text(page.render_page(series))
-    print(
-        f"rendered {version.series_md.relative_to(REPO_ROOT)} and "
-        f"{SITE_INDEX.relative_to(REPO_ROOT)}"
-    )
+    written = [version.series_md]
+    site = version.site_index
+    if site is not None:
+        site.parent.mkdir(parents=True, exist_ok=True)
+        site.write_text(page.render_page(series))
+        written.append(site)
+    print("rendered " + " and ".join(str(p.relative_to(REPO_ROOT)) for p in written))
+
+
+def release(confirm: bool) -> None:
+    """The sponsor's second seal for version 3: its pages replace version 2's."""
+    if not confirm:
+        raise SystemExit("refusing: release is the sponsor's seal; pass --confirm-release")
+    version = Version(3)
+    if version.released:
+        raise SystemExit("version 3 is already released")
+    (HERE / "SERIES-v2.md").write_text(page.render_markdown(load_series(Version(2))))
+    render(version)
 
 
 def main(argv: list[str] | None = None) -> None:
@@ -341,13 +436,21 @@ def main(argv: list[str] | None = None) -> None:
         "--seal", help="prefix of the declaration's SHA-256 (fetch, compute, check)"
     )
     parser.add_argument(
-        "--phase", choices=("fetch", "compute", "render", "check", "all"), default="render"
+        "--phase",
+        choices=("fetch", "compute", "render", "check", "all", "release"),
+        default="render",
     )
-    parser.add_argument("--version", type=int, choices=(1, 2), default=2)
+    parser.add_argument("--version", type=int, choices=(1, 2, 3), default=3)
+    parser.add_argument(
+        "--confirm-release", action="store_true", help="the sponsor's release seal (release)"
+    )
     parser.add_argument("--run-date", default=date.today().isoformat())
     parser.add_argument("--amend", action="store_true", help="allow committed rows to change")
     args = parser.parse_args(argv)
     version = Version(args.version)
+    if args.phase == "release":
+        release(args.confirm_release)
+        return
     if args.phase in ("fetch", "all"):
         version.require_seal(args.seal)
         fetch()

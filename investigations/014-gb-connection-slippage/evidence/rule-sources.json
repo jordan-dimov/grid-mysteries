@@ -1,7 +1,8 @@
 {
  "declaration": [
   "DECLARATION.md",
-  "DECLARATION-v2.md"
+  "DECLARATION-v2.md",
+  "DECLARATION-v3.md"
  ],
  "rules": {
   "reading: every date spelling parses": "tests/test_tec_register.py::test_every_date_spelling_the_register_has_used_parses",
@@ -33,6 +34,11 @@
   "v2 partial-export rule: excluded copies take no part in links and are listed": "tests/test_connection_slippage.py::test_series_under_the_rule_skips_the_excluded_copy_and_lists_it",
   "v2 page: suspect copies are disclosed": "tests/test_connection_slippage_page.py::test_page_is_self_contained_and_deterministic",
   "certificate: an absence from a suspect copy is named as such": "tests/test_connection_record.py::test_an_absence_from_a_suspect_copy_is_named_as_such",
-  "certificate: declared label variants and Salesforce id forms are not changes": "tests/test_connection_record.py::test_declared_label_variants_and_salesforce_id_forms_are_not_changes"
+  "certificate: declared label variants and Salesforce id forms are not changes": "tests/test_connection_record.py::test_declared_label_variants_and_salesforce_id_forms_are_not_changes",
+  "v3 determined part: the same under both rules, reported beside each figure": "tests/test_connection_slippage_v3.py::test_the_determined_part_is_the_same_under_both_rules_and_is_reported",
+  "v3 F4: a disagreement on a determined group refuses": "tests/test_connection_slippage_v3.py::test_f4_a_planted_disagreement_on_a_determined_group_refuses",
+  "v3 F4 finding (2026-09-23): restructured between determined ends": "tests/test_connection_slippage_v3.py::test_f4_fires_on_a_group_restructured_between_two_determined_ends",
+  "v3 F5: a changed content-rule file refuses": "tests/test_connection_slippage_v3.py::test_f5_a_changed_content_rule_file_refuses",
+  "v3 F5: the declaration states the content rule's digest": "tests/test_connection_slippage_v3.py::test_the_frozen_declaration_states_the_content_rules_digest_and_it_matches"
  }
 }

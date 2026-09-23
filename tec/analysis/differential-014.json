@@ -1,0 +1,18 @@
+{
+ "rule": "014-v2",
+ "record": {
+  "database": "grid_mysteries_tec",
+  "anchor": "tec/anchors/tree-137384.json",
+  "tree_size": 137384,
+  "root_hash": "sha256:6cb18535c092129900fe7172efbdb994b3098a1540676da2ea18b7c4550d9b83",
+  "checkpoint_hash": "sha256:f65b3da7acdbf4cc862d998ddda7652fb3b3e63c6ee7ac2de4c7a47a735d9da7"
+ },
+ "against": "investigations/014-gb-connection-slippage/evidence/v2/rows.ndjson",
+ "publications_to": "2026-09-15",
+ "excluded_by_reading_rule_2": [],
+ "compared": 698,
+ "identical": 698,
+ "differing": [],
+ "missing_from_engine": [],
+ "extra_in_engine": []
+}

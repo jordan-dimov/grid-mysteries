@@ -1,0 +1,284 @@
+{
+ "rule": "tec-identity-content-v1",
+ "reading": "014-v2",
+ "record": {
+  "database": "grid_mysteries_tec",
+  "anchor": "tec/anchors/tree-137384.json",
+  "tree_size": 137384,
+  "root_hash": "sha256:6cb18535c092129900fe7172efbdb994b3098a1540676da2ea18b7c4550d9b83",
+  "checkpoint_hash": "sha256:f65b3da7acdbf4cc862d998ddda7652fb3b3e63c6ee7ac2de4c7a47a735d9da7"
+ },
+ "publications_to": "2026-09-15",
+ "comparison_with_014_v2": {
+  "headline_a": {
+   "t_public": "2025-07-22",
+   "baseline": "2024-07-19",
+   "mw_years_net": "57823.493",
+   "matched": 1147,
+   "cumulative_mw_years_net": "532780.315"
+  },
+  "headline_b": {
+   "t_public": "2025-07-22",
+   "baseline": "2024-07-19",
+   "mw_years_net": "61542.867",
+   "matched": 1148,
+   "cumulative_mw_years_net": "534180.588"
+  },
+  "annual": [
+   {
+    "regime": "new",
+    "year": 2026,
+    "partial": true,
+    "a_mw_years_net": "25057.662",
+    "b_mw_years_net": "24390.623",
+    "a_matched": 2012,
+    "b_matched": 2012
+   },
+   {
+    "regime": "old",
+    "year": 2014,
+    "partial": false,
+    "a_mw_years_net": "20197.587",
+    "b_mw_years_net": "20391.943",
+    "a_matched": 213,
+    "b_matched": 213
+   },
+   {
+    "regime": "old",
+    "year": 2015,
+    "partial": false,
+    "a_mw_years_net": "23194.339",
+    "b_mw_years_net": "22551.574",
+    "a_matched": 237,
+    "b_matched": 236
+   },
+   {
+    "regime": "old",
+    "year": 2016,
+    "partial": false,
+    "a_mw_years_net": "23131.791",
+    "b_mw_years_net": "23080.178",
+    "a_matched": 341,
+    "b_matched": 340
+   },
+   {
+    "regime": "old",
+    "year": 2017,
+    "partial": false,
+    "a_mw_years_net": "26175.460",
+    "b_mw_years_net": "26192.901",
+    "a_matched": 342,
+    "b_matched": 341
+   },
+   {
+    "regime": "old",
+    "year": 2018,
+    "partial": false,
+    "a_mw_years_net": "68399.039",
+    "b_mw_years_net": "68220.296",
+    "a_matched": 351,
+    "b_matched": 350
+   },
+   {
+    "regime": "old",
+    "year": 2019,
+    "partial": false,
+    "a_mw_years_net": "10999.549",
+    "b_mw_years_net": "10054.584",
+    "a_matched": 334,
+    "b_matched": 334
+   },
+   {
+    "regime": "old",
+    "year": 2020,
+    "partial": false,
+    "a_mw_years_net": "2902.705",
+    "b_mw_years_net": "2902.705",
+    "a_matched": 102,
+    "b_matched": 102
+   },
+   {
+    "regime": "old",
+    "year": 2021,
+    "partial": false,
+    "a_mw_years_net": "12744.567",
+    "b_mw_years_net": "12744.567",
+    "a_matched": 425,
+    "b_matched": 425
+   },
+   {
+    "regime": "old",
+    "year": 2022,
+    "partial": false,
+    "a_mw_years_net": "8396.471",
+    "b_mw_years_net": "8396.471",
+    "a_matched": 182,
+    "b_matched": 182
+   },
+   {
+    "regime": "old",
+    "year": 2023,
+    "partial": false,
+    "a_mw_years_net": "13584.267",
+    "b_mw_years_net": "13584.267",
+    "a_matched": 665,
+    "b_matched": 665
+   },
+   {
+    "regime": "old",
+    "year": 2024,
+    "partial": false,
+    "a_mw_years_net": "48796.870",
+    "b_mw_years_net": "49162.189",
+    "a_matched": 990,
+    "b_matched": 986
+   },
+   {
+    "regime": "old",
+    "year": 2025,
+    "partial": true,
+    "a_mw_years_net": "35075.943",
+    "b_mw_years_net": "38364.280",
+    "a_matched": 1578,
+    "b_matched": 1579
+   }
+  ]
+ },
+ "headline_difference": {
+  "baseline": "2024-07-19",
+  "current": "2025-07-22",
+  "a_total": "57823.493",
+  "b_total": "61542.867",
+  "groups_differing": 16,
+  "groups_differing_restructured": 16,
+  "restructured_groups": 54,
+  "a_without_restructured": "57400.290",
+  "b_without_restructured": "57400.290",
+  "groups": [
+   {
+    "group": "name:fiddlers ferry bess|fiddlers ferry ltd|fiddlers ferry 275kv substation",
+    "a": "-9075.154",
+    "b": "-7273.922",
+    "restructured": true
+   },
+   {
+    "group": "name:rat hall mod app|downing renewable developments llp|burwell south 400kv substation",
+    "a": "-1.369",
+    "b": "999.316",
+    "restructured": true
+   },
+   {
+    "group": "name:sofia offshore wind farm|sofia offshore wind farm limited|dogger bank 220kv offshores",
+    "a": "186.480",
+    "b": "988.780",
+    "restructured": true
+   },
+   {
+    "group": "name:capenhurst|enso green holdings limited|capenhurst 275kv substation",
+    "a": "394.965",
+    "b": "1166.324",
+    "restructured": true
+   },
+   {
+    "group": "name:lovedean tertiary|lovedean green limited|lovedean 400kv substation",
+    "a": "262.035",
+    "b": "31.374",
+    "restructured": true
+   },
+   {
+    "group": "name:port of mostyn|mostyn seapower limited|connah s quay 400kv substation",
+    "a": "770.431",
+    "b": "998.111",
+    "restructured": true
+   },
+   {
+    "group": "name:wymondley|enso green holdings limited|wymondley 400kv substation",
+    "a": "200.411",
+    "b": "0.000",
+    "restructured": true
+   },
+   {
+    "group": "name:bramford tertiary|bramford green limited|bramford 400kv substation",
+    "a": "9.520",
+    "b": "192.575",
+    "restructured": true
+   },
+   {
+    "group": "name:bolney tertiary|bolney green limited|bolney 400kv substation",
+    "a": "178.561",
+    "b": "18.311",
+    "restructured": true
+   },
+   {
+    "group": "name:melksham tertiary|melksham calne green limited|melksham 400kv substation",
+    "a": "149.871",
+    "b": "14.210",
+    "restructured": true
+   },
+   {
+    "group": "name:kingsnorth|enso green holdings g limited|kingsnorth 132kv substation",
+    "a": "166.538",
+    "b": "37.109",
+    "restructured": true
+   },
+   {
+    "group": "name:cowley tertiary|cowley baldon green limited|cowley 400kv substation",
+    "a": "133.067",
+    "b": "11.838",
+    "restructured": true
+   },
+   {
+    "group": "name:west burton|enso green holdings a limited|west burton 132kv substation",
+    "a": "99.732",
+    "b": "10.065",
+    "restructured": true
+   },
+   {
+    "group": "name:strath tirry|strath tirry wind energy 2021 ltd|lairg gsp",
+    "a": "82.683",
+    "b": "32.862",
+    "restructured": true
+   },
+   {
+    "group": "name:cryogenic battery system synchronous|cryobattery one limited|carrington 400kv substation",
+    "a": "75.687",
+    "b": "100.825",
+    "restructured": true
+   },
+   {
+    "group": "name:coylton 275kv greener grid park|coylton energy limited|coylton 275 33kv substation",
+    "a": "112.526",
+    "b": "137.577",
+    "restructured": true
+   }
+  ]
+ },
+ "propositions": {
+  "P1": {
+   "statement": "every complete calendar-year window of the old regime has positive net movement",
+   "windows": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023,
+    2024
+   ],
+   "failing_years": [],
+   "verdict": "holds"
+  },
+  "P2": {
+   "statement": "chained net movement of the reformed regime from its first copy to the first copy at least 365 days later is positive",
+   "start": "2026-05-19",
+   "falsifier_date": "2027-06-30",
+   "verdict": "undecided",
+   "decided_on": null,
+   "chained_mw_years_net": null
+  }
+ }
+}

@@ -1,0 +1,583 @@
+{
+ "record": {
+  "database": "grid_mysteries_tec",
+  "anchor": "tec/anchors/tree-137384.json",
+  "tree_size": 137384,
+  "root_hash": "sha256:6cb18535c092129900fe7172efbdb994b3098a1540676da2ea18b7c4550d9b83",
+  "checkpoint_hash": "sha256:f65b3da7acdbf4cc862d998ddda7652fb3b3e63c6ee7ac2de4c7a47a735d9da7"
+ },
+ "rules": [
+  {
+   "rule": "spike-positional",
+   "segments": 1,
+   "publications": 700,
+   "moves": 2826,
+   "moves_on_repeated_keys": 936,
+   "reversed_by_next": 1015,
+   "reversed_on_repeated_keys": 474,
+   "reversed_file_backed": 553,
+   "reversed_not_in_files": 462,
+   "reversed_not_in_files_on_repeated_keys": 462,
+   "examples_not_in_files": [
+    {
+     "unit": "name:pencloe windfarm|pencloe wind energy ltd|pencloe 132 33kv|stage:",
+     "moves": [
+      [
+       "2019-02-07",
+       "2019-02-14",
+       "2020-09-30",
+       "2022-08-30",
+       "63",
+       "33"
+      ],
+      [
+       "2019-02-21",
+       "2019-02-28",
+       "2022-08-30",
+       "2020-09-30",
+       "33",
+       "63"
+      ]
+     ]
+    },
+    {
+     "unit": "name:pencloe windfarm|pencloe wind energy ltd|pencloe 132 33kv|stage:",
+     "moves": [
+      [
+       "2019-02-21",
+       "2019-02-28",
+       "2022-08-30",
+       "2020-09-30",
+       "33",
+       "63"
+      ],
+      [
+       "2019-02-28",
+       "2019-03-07",
+       "2020-09-30",
+       "2022-08-30",
+       "63",
+       "33"
+      ]
+     ]
+    },
+    {
+     "unit": "name:pencloe windfarm|pencloe wind energy ltd|pencloe 132 33kv|stage:",
+     "moves": [
+      [
+       "2019-02-28",
+       "2019-03-07",
+       "2020-09-30",
+       "2022-08-30",
+       "63",
+       "33"
+      ],
+      [
+       "2019-03-07",
+       "2019-03-14",
+       "2022-08-30",
+       "2020-09-30",
+       "33",
+       "63"
+      ]
+     ]
+    },
+    {
+     "unit": "name:pencloe windfarm|pencloe wind energy ltd|pencloe 132 33kv|stage:",
+     "moves": [
+      [
+       "2019-03-07",
+       "2019-03-14",
+       "2022-08-30",
+       "2020-09-30",
+       "33",
+       "63"
+      ],
+      [
+       "2019-03-14",
+       "2019-03-21",
+       "2020-09-30",
+       "2022-08-30",
+       "63",
+       "33"
+      ]
+     ]
+    },
+    {
+     "unit": "name:pencloe windfarm|pencloe wind energy ltd|pencloe 132 33kv|stage:",
+     "moves": [
+      [
+       "2019-03-14",
+       "2019-03-21",
+       "2020-09-30",
+       "2022-08-30",
+       "63",
+       "33"
+      ],
+      [
+       "2019-03-21",
+       "2019-03-28",
+       "2022-08-30",
+       "2020-09-30",
+       "33",
+       "63"
+      ]
+     ]
+    },
+    {
+     "unit": "name:pencloe windfarm|pencloe wind energy ltd|pencloe 132 33kv|stage:",
+     "moves": [
+      [
+       "2019-03-21",
+       "2019-03-28",
+       "2022-08-30",
+       "2020-09-30",
+       "33",
+       "63"
+      ],
+      [
+       "2019-10-31",
+       "2019-11-07",
+       "2020-09-30",
+       "2022-08-30",
+       "63",
+       "33"
+      ]
+     ]
+    },
+    {
+     "unit": "name:pencloe windfarm|pencloe wind energy ltd|pencloe 132 33kv|stage:",
+     "moves": [
+      [
+       "2019-10-31",
+       "2019-11-07",
+       "2020-09-30",
+       "2022-08-30",
+       "63",
+       "33"
+      ],
+      [
+       "2019-11-21",
+       "2019-11-28",
+       "2022-08-30",
+       "2020-09-30",
+       "33",
+       "63"
+      ]
+     ]
+    },
+    {
+     "unit": "name:pencloe windfarm|pencloe wind energy ltd|pencloe 132 33kv|stage:",
+     "moves": [
+      [
+       "2019-11-21",
+       "2019-11-28",
+       "2022-08-30",
+       "2020-09-30",
+       "33",
+       "63"
+      ],
+      [
+       "2019-12-19",
+       "2019-12-23",
+       "2020-09-30",
+       "2022-08-30",
+       "63",
+       "33"
+      ]
+     ]
+    },
+    {
+     "unit": "name:pencloe windfarm|pencloe wind energy ltd|pencloe 132 33kv|stage:",
+     "moves": [
+      [
+       "2019-12-19",
+       "2019-12-23",
+       "2020-09-30",
+       "2022-08-30",
+       "63",
+       "33"
+      ],
+      [
+       "2020-01-09",
+       "2020-01-16",
+       "2022-08-30",
+       "2020-09-30",
+       "33",
+       "63"
+      ]
+     ]
+    },
+    {
+     "unit": "name:pencloe windfarm|pencloe wind energy ltd|pencloe 132 33kv|stage:",
+     "moves": [
+      [
+       "2020-01-09",
+       "2020-01-16",
+       "2022-08-30",
+       "2020-09-30",
+       "33",
+       "63"
+      ],
+      [
+       "2020-01-30",
+       "2020-02-06",
+       "2020-09-30",
+       "2022-08-30",
+       "63",
+       "33"
+      ]
+     ]
+    }
+   ],
+   "examples_file_backed": [
+    {
+     "unit": "name:pogbie wind farm|pogbie wind farm limited|pogbie 33kv substation|stage:",
+     "moves": [
+      [
+       "2018-01-04",
+       "2018-01-11",
+       "2016-08-01",
+       "2018-01-28",
+       "11.8",
+       "11.8"
+      ],
+      [
+       "2018-03-15",
+       "2018-03-22",
+       "2018-01-28",
+       "2016-08-01",
+       "11.8",
+       "11.8"
+      ]
+     ]
+    },
+    {
+     "unit": "name:spalding energy expansion|spalding energy expansion limited|spalding|stage:",
+     "moves": [
+      [
+       "2019-01-17",
+       "2019-01-24",
+       "2018-08-30",
+       "2018-08-31",
+       "299.99",
+       "299.99"
+      ],
+      [
+       "2019-01-24",
+       "2019-01-31",
+       "2018-08-31",
+       "2018-08-30",
+       "299.99",
+       "299.99"
+      ]
+     ]
+    },
+    {
+     "unit": "name:inch cape offshore wind farm platform 2|inch cape offshore ltd|cockenzie 275kv|stage:",
+     "moves": [
+      [
+       "2019-02-07",
+       "2019-02-14",
+       "2023-04-30",
+       "2023-04-01",
+       "370",
+       "370"
+      ],
+      [
+       "2020-06-05",
+       "2020-06-11",
+       "2023-04-01",
+       "2023-04-30",
+       "370",
+       "468"
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "rule": "014-v2",
+   "segments": 2,
+   "publications": 698,
+   "moves": 1606,
+   "moves_on_repeated_keys": 379,
+   "reversed_by_next": 87,
+   "reversed_on_repeated_keys": 29,
+   "reversed_file_backed": 81,
+   "reversed_not_in_files": 6,
+   "reversed_not_in_files_on_repeated_keys": 6,
+   "examples_not_in_files": [
+    {
+     "unit": "name:beatrice wind farm|beatrice offshore windfarm ltd|beatrice 33 132kv offshore substations#1",
+     "moves": [
+      [
+       "2018-11-15",
+       "2018-11-29",
+       "2019-04-01",
+       "2018-09-10",
+       "294",
+       "259"
+      ],
+      [
+       "2019-02-14",
+       "2019-02-21",
+       "2018-09-10",
+       "2019-04-01",
+       "0",
+       "35"
+      ]
+     ]
+    },
+    {
+     "unit": "name:moray firth offshore wind farm|moray offshore renewables ltd|moray firth 220 33kv platform 1 2 offshore substation#2",
+     "moves": [
+      [
+       "2016-02-22",
+       "2016-02-29",
+       "2021-04-01",
+       "2020-04-01",
+       "496",
+       "484"
+      ],
+      [
+       "2017-08-30",
+       "2017-09-14",
+       "2020-04-01",
+       "2021-04-01",
+       "484",
+       "484"
+      ]
+     ]
+    },
+    {
+     "unit": "name:rugeley|rugeley power ltd|rugeley#1",
+     "moves": [
+      [
+       "2016-03-14",
+       "2016-03-31",
+       "2017-04-01",
+       "2016-04-01",
+       "-980",
+       "-492"
+      ],
+      [
+       "2016-03-31",
+       "2016-04-05",
+       "2016-04-01",
+       "2017-04-01",
+       "-492",
+       "-488"
+      ]
+     ]
+    },
+    {
+     "unit": "name:race bank wind farm|dong energy rb uk limited|race bank 132 33kv substation#2",
+     "moves": [
+      [
+       "2017-07-21",
+       "2017-07-27",
+       "2017-04-01",
+       "2017-01-01",
+       "0",
+       "0"
+      ],
+      [
+       "2017-10-12",
+       "2017-10-19",
+       "2017-01-01",
+       "2017-04-01",
+       "0",
+       "0"
+      ]
+     ]
+    },
+    {
+     "unit": "name:capenhurst|enso green holdings limited|capenhurst 275kv substation#1",
+     "moves": [
+      [
+       "2024-05-30",
+       "2024-05-31",
+       "2030-10-31",
+       "2025-10-31",
+       "400",
+       "49.9"
+      ],
+      [
+       "2024-11-01",
+       "2024-11-05",
+       "2025-10-31",
+       "2030-10-31",
+       "49.9",
+       "400"
+      ]
+     ]
+    },
+    {
+     "unit": "name:iron acton|iron acton green limited|iron acton 275kv substation#2",
+     "moves": [
+      [
+       "2024-10-15",
+       "2024-10-22",
+       "2024-09-30",
+       "2027-09-30",
+       "49.5",
+       "20.6"
+      ],
+      [
+       "2024-10-25",
+       "2024-10-29",
+       "2027-09-30",
+       "2024-09-30",
+       "20.6",
+       "49.5"
+      ]
+     ]
+    }
+   ],
+   "examples_file_backed": [
+    {
+     "unit": "name:pogbie wind farm|pogbie wind farm limited|pogbie 33kv substation#1",
+     "moves": [
+      [
+       "2018-01-04",
+       "2018-01-11",
+       "2016-08-01",
+       "2018-01-28",
+       "11.8",
+       "11.8"
+      ],
+      [
+       "2018-03-15",
+       "2018-03-22",
+       "2018-01-28",
+       "2016-08-01",
+       "11.8",
+       "11.8"
+      ]
+     ]
+    },
+    {
+     "unit": "name:spalding energy expansion|spalding energy expansion limited|spalding#1",
+     "moves": [
+      [
+       "2018-11-15",
+       "2018-11-29",
+       "2018-08-31",
+       "2018-08-30",
+       "299.99",
+       "299.99"
+      ],
+      [
+       "2019-01-17",
+       "2019-01-24",
+       "2018-08-30",
+       "2018-08-31",
+       "299.99",
+       "299.99"
+      ]
+     ]
+    },
+    {
+     "unit": "name:spalding energy expansion|spalding energy expansion limited|spalding#1",
+     "moves": [
+      [
+       "2019-01-17",
+       "2019-01-24",
+       "2018-08-30",
+       "2018-08-31",
+       "299.99",
+       "299.99"
+      ],
+      [
+       "2019-01-24",
+       "2019-01-31",
+       "2018-08-31",
+       "2018-08-30",
+       "299.99",
+       "299.99"
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "rule": "tec-identity-content-v1",
+   "segments": 2,
+   "publications": 698,
+   "moves": 1555,
+   "moves_on_repeated_keys": 325,
+   "reversed_by_next": 81,
+   "reversed_on_repeated_keys": 23,
+   "reversed_file_backed": 81,
+   "reversed_not_in_files": 0,
+   "reversed_not_in_files_on_repeated_keys": 0,
+   "examples_not_in_files": [],
+   "examples_file_backed": [
+    {
+     "unit": "name:meygen tidal|meygen ltd|gills bay#u2",
+     "moves": [
+      [
+       "2018-03-08",
+       "2018-03-15",
+       "2022-10-31",
+       "2021-10-31",
+       "56",
+       "56"
+      ],
+      [
+       "2019-06-13",
+       "2019-06-20",
+       "2021-10-31",
+       "2022-10-31",
+       "56",
+       "56"
+      ]
+     ]
+    },
+    {
+     "unit": "name:pogbie wind farm|pogbie wind farm limited|pogbie 33kv substation#u1",
+     "moves": [
+      [
+       "2018-01-04",
+       "2018-01-11",
+       "2016-08-01",
+       "2018-01-28",
+       "11.8",
+       "11.8"
+      ],
+      [
+       "2018-03-15",
+       "2018-03-22",
+       "2018-01-28",
+       "2016-08-01",
+       "11.8",
+       "11.8"
+      ]
+     ]
+    },
+    {
+     "unit": "name:spalding energy expansion|spalding energy expansion limited|spalding#u1",
+     "moves": [
+      [
+       "2018-11-15",
+       "2018-11-29",
+       "2018-08-31",
+       "2018-08-30",
+       "299.99",
+       "299.99"
+      ],
+      [
+       "2019-01-17",
+       "2019-01-24",
+       "2018-08-30",
+       "2018-08-31",
+       "299.99",
+       "299.99"
+      ]
+     ]
+    }
+   ]
+  }
+ ]
+}

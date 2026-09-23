@@ -367,3 +367,15 @@ def test_the_bundled_script_checks_each_date_even_when_two_share_a_publication(t
     )
     assert run.returncode == 0, run.stdout
     assert run.stdout.count("2 line(s) in the pack, as the certificate states") == 2
+
+
+def test_pairing_is_undetermined_on_a_split_or_on_repeated_labels_only():
+    split_before = [row(name="S", Stage=None)]
+    split_after = [row(name="S", Stage="1"), row(name="S", Stage="2")]
+    repeated = [row(name="R", mw=1), row(name="R", mw=2)]
+    distinct = [row(name="D", Stage="1"), row(name="D", Stage="2", mw=5)]
+    single = [row(name="O")]
+    before = split_before + repeated + distinct + single
+    after = split_after + repeated + distinct + single
+    found = analysis.undetermined(before, after)
+    assert {g.split("|")[0] for g in found} == {"name:s", "name:r"}

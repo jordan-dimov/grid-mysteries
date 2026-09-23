@@ -375,32 +375,38 @@ def contributions(entries: Entries, baseline: Entries) -> dict[str, Decimal]:
     return out
 
 
-def restructured(baseline: list[dict[str, object]], current: list[dict[str, object]]) -> set[str]:
-    """Groups whose printed stage labels (as a multiset, so row count
-    included) differ between the two publications: a split, a merge or a
-    renumbering. 014 never repairs these, so any pairing inside them is the
-    identity rule's choice, not a published move."""
+def undetermined(baseline: list[dict[str, object]], current: list[dict[str, object]]) -> set[str]:
+    """Groups in which the register itself does not say which row is which:
+    their printed stage labels differ between the two publications (a split,
+    a merge or a renumbering), or a label, blank included, repeats within a
+    group on either side. Any pairing of rows inside them is an identity
+    rule's choice. Elsewhere every row carries its own stage label on both
+    sides, so any rule that pairs a stage with the same stage agrees."""
 
-    def stages(rows: list[dict[str, object]]) -> dict[str, Counter[str]]:
+    def labels(rows: list[dict[str, object]]) -> dict[str, Counter[str]]:
         out: dict[str, Counter[str]] = defaultdict(Counter)
         for row in rows:
             out[cs.identity(row)][normalise_stage(row.get("Stage"))] += 1
         return out
 
-    a, b = stages(baseline), stages(current)
-    return {g for g in a.keys() & b.keys() if a[g] != b[g]}
+    a, b = labels(baseline), labels(current)
+    return {
+        g
+        for g in a.keys() & b.keys()
+        if a[g] != b[g] or max(a[g].values()) > 1 or max(b[g].values()) > 1
+    }
 
 
 def headline_difference(
     a: list[tuple[Kept, Entries]], b: list[tuple[Kept, Entries]], baseline: date, current: date
 ) -> dict[str, Any]:
     """Where two identity rules' headlines differ, group by group, and the
-    headline each gives once restructured groups are set aside."""
+    headline each gives over the groups whose pairing the register determines."""
     ea = {k.vintage.t_public: e for k, e in a}
     eb = {k.vintage.t_public: e for k, e in b}
     ca = contributions(ea[current], ea[baseline])
     cb = contributions(eb[current], eb[baseline])
-    moved = restructured(_rows(a, baseline), _rows(a, current))
+    moved = undetermined(_rows(a, baseline), _rows(a, current))
     groups: list[dict[str, Any]] = []
     for g in sorted(ca.keys() | cb.keys()):
         x, y = ca.get(g, Decimal(0)), cb.get(g, Decimal(0))
@@ -410,7 +416,7 @@ def headline_difference(
                     "group": g,
                     "a": x.quantize(cs.MW_YEARS_QUANTUM),
                     "b": y.quantize(cs.MW_YEARS_QUANTUM),
-                    "restructured": g in moved,
+                    "undetermined": g in moved,
                 }
             )
     groups.sort(key=lambda r: -abs(Decimal(r["b"]) - Decimal(r["a"])))
@@ -422,11 +428,77 @@ def headline_difference(
         "a_total": sum(ca.values(), Decimal(0)).quantize(cs.MW_YEARS_QUANTUM),
         "b_total": sum(cb.values(), Decimal(0)).quantize(cs.MW_YEARS_QUANTUM),
         "groups_differing": len(groups),
-        "groups_differing_restructured": sum(1 for r in groups if r["restructured"]),
-        "restructured_groups": len(moved),
-        "a_without_restructured": kept_a.quantize(cs.MW_YEARS_QUANTUM),
-        "b_without_restructured": kept_b.quantize(cs.MW_YEARS_QUANTUM),
+        "groups_differing_undetermined": sum(1 for r in groups if r["undetermined"]),
+        "undetermined_groups": len(moved),
+        "a_determined": kept_a.quantize(cs.MW_YEARS_QUANTUM),
+        "b_determined": kept_b.quantize(cs.MW_YEARS_QUANTUM),
         "groups": groups,
+    }
+
+
+def chain_difference(
+    a: list[tuple[Kept, Entries]], b: list[tuple[Kept, Entries]], regime: str = "old"
+) -> dict[str, Any]:
+    """The chained total of two identity rules, link by link: which links and
+    groups differ, and each rule's chain over, on every link, only the groups
+    whose pairing the register determines across that link."""
+    sa = [(k, e) for k, e in a if k.regime == regime]
+    sb = [(k, e) for k, e in b if k.regime == regime]
+    total_a = total_b = kept_a = kept_b = Decimal(0)
+    links: list[dict[str, Any]] = []
+    by_group: dict[str, Decimal] = defaultdict(Decimal)
+    undetermined_links = 0
+    for (k0, a0), (k1, a1), (_, b0), (_, b1) in zip(sa, sa[1:], sb, sb[1:], strict=False):
+        # 014 quantises each link's two gross sides; the chain sums those.
+        la = cs.compare(a0, a1, baseline_date=k0.vintage.t_public, current_date=k1.vintage.t_public)
+        lb = cs.compare(b0, b1, baseline_date=k0.vintage.t_public, current_date=k1.vintage.t_public)
+        total_a += la.mw_years_net
+        total_b += lb.mw_years_net
+        moved = undetermined(list(k0.vintage.rows), list(k1.vintage.rows))
+        undetermined_links += bool(moved)
+        ca, cb = contributions(a1, a0), contributions(b1, b0)
+        kept_a += sum((v for g, v in ca.items() if g not in moved), Decimal(0))
+        kept_b += sum((v for g, v in cb.items() if g not in moved), Decimal(0))
+        differing = []
+        for g in ca.keys() | cb.keys():
+            d = cb.get(g, Decimal(0)) - ca.get(g, Decimal(0))
+            if d.quantize(cs.MW_YEARS_QUANTUM) != 0:
+                by_group[g] += d
+                differing.append(
+                    {
+                        "group": g,
+                        "difference": d.quantize(cs.MW_YEARS_QUANTUM),
+                        "undetermined": g in moved,
+                    }
+                )
+        if la.mw_years_net != lb.mw_years_net:
+            links.append(
+                {
+                    "baseline": k0.vintage.t_public,
+                    "current": k1.vintage.t_public,
+                    "a": la.mw_years_net,
+                    "b": lb.mw_years_net,
+                    "groups": sorted(differing, key=lambda r: -abs(Decimal(r["difference"]))),
+                }
+            )
+    groups = sorted(by_group.items(), key=lambda kv: -abs(kv[1]))
+    return {
+        "regime": regime,
+        "a_chained": total_a,
+        "b_chained": total_b,
+        "links": len(sa) - 1,
+        "links_with_undetermined_groups": undetermined_links,
+        "links_differing": len(links),
+        "groups_differing_on_any_link": [g for g, _ in groups],
+        "differing_links_where_every_differing_group_is_undetermined": sum(
+            1 for link in links if all(r["undetermined"] for r in link["groups"])
+        ),
+        "a_determined": kept_a.quantize(cs.MW_YEARS_QUANTUM),
+        "b_determined": kept_b.quantize(cs.MW_YEARS_QUANTUM),
+        "by_group": [
+            {"group": g, "difference": d.quantize(cs.MW_YEARS_QUANTUM)} for g, d in groups
+        ],
+        "differing": links,
     }
 
 

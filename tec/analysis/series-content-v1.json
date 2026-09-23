@@ -150,106 +150,1279 @@
   "a_total": "57823.493",
   "b_total": "61542.867",
   "groups_differing": 16,
-  "groups_differing_restructured": 16,
-  "restructured_groups": 54,
-  "a_without_restructured": "57400.290",
-  "b_without_restructured": "57400.290",
+  "groups_differing_undetermined": 16,
+  "undetermined_groups": 54,
+  "a_determined": "57400.290",
+  "b_determined": "57400.290",
   "groups": [
    {
     "group": "name:fiddlers ferry bess|fiddlers ferry ltd|fiddlers ferry 275kv substation",
     "a": "-9075.154",
     "b": "-7273.922",
-    "restructured": true
+    "undetermined": true
    },
    {
     "group": "name:rat hall mod app|downing renewable developments llp|burwell south 400kv substation",
     "a": "-1.369",
     "b": "999.316",
-    "restructured": true
+    "undetermined": true
    },
    {
     "group": "name:sofia offshore wind farm|sofia offshore wind farm limited|dogger bank 220kv offshores",
     "a": "186.480",
     "b": "988.780",
-    "restructured": true
+    "undetermined": true
    },
    {
     "group": "name:capenhurst|enso green holdings limited|capenhurst 275kv substation",
     "a": "394.965",
     "b": "1166.324",
-    "restructured": true
+    "undetermined": true
    },
    {
     "group": "name:lovedean tertiary|lovedean green limited|lovedean 400kv substation",
     "a": "262.035",
     "b": "31.374",
-    "restructured": true
+    "undetermined": true
    },
    {
     "group": "name:port of mostyn|mostyn seapower limited|connah s quay 400kv substation",
     "a": "770.431",
     "b": "998.111",
-    "restructured": true
+    "undetermined": true
    },
    {
     "group": "name:wymondley|enso green holdings limited|wymondley 400kv substation",
     "a": "200.411",
     "b": "0.000",
-    "restructured": true
+    "undetermined": true
    },
    {
     "group": "name:bramford tertiary|bramford green limited|bramford 400kv substation",
     "a": "9.520",
     "b": "192.575",
-    "restructured": true
+    "undetermined": true
    },
    {
     "group": "name:bolney tertiary|bolney green limited|bolney 400kv substation",
     "a": "178.561",
     "b": "18.311",
-    "restructured": true
+    "undetermined": true
    },
    {
     "group": "name:melksham tertiary|melksham calne green limited|melksham 400kv substation",
     "a": "149.871",
     "b": "14.210",
-    "restructured": true
+    "undetermined": true
    },
    {
     "group": "name:kingsnorth|enso green holdings g limited|kingsnorth 132kv substation",
     "a": "166.538",
     "b": "37.109",
-    "restructured": true
+    "undetermined": true
    },
    {
     "group": "name:cowley tertiary|cowley baldon green limited|cowley 400kv substation",
     "a": "133.067",
     "b": "11.838",
-    "restructured": true
+    "undetermined": true
    },
    {
     "group": "name:west burton|enso green holdings a limited|west burton 132kv substation",
     "a": "99.732",
     "b": "10.065",
-    "restructured": true
+    "undetermined": true
    },
    {
     "group": "name:strath tirry|strath tirry wind energy 2021 ltd|lairg gsp",
     "a": "82.683",
     "b": "32.862",
-    "restructured": true
+    "undetermined": true
    },
    {
     "group": "name:cryogenic battery system synchronous|cryobattery one limited|carrington 400kv substation",
     "a": "75.687",
     "b": "100.825",
-    "restructured": true
+    "undetermined": true
    },
    {
     "group": "name:coylton 275kv greener grid park|coylton energy limited|coylton 275 33kv substation",
     "a": "112.526",
     "b": "137.577",
-    "restructured": true
+    "undetermined": true
+   }
+  ]
+ },
+ "chain_difference": {
+  "regime": "old",
+  "a_chained": "532780.315",
+  "b_chained": "534180.588",
+  "links": 693,
+  "links_with_undetermined_groups": 412,
+  "links_differing": 57,
+  "groups_differing_on_any_link": [
+   "name:bicker fenn energy park|beacon fen energy park limited|bicker fen 400kv substation",
+   "name:bradwell energy park|low carbon solar park 28 limited|rayleigh 400kv substation",
+   "name:fiddlers ferry bess|fiddlers ferry ltd|fiddlers ferry 275kv substation",
+   "name:capenhurst|enso green holdings limited|capenhurst 275kv substation",
+   "name:rat hall mod app|downing renewable developments llp|burwell south 400kv substation",
+   "name:spalding energy expansion|spalding energy expansion limited|spalding",
+   "name:sofia offshore wind farm|sofia offshore wind farm limited|dogger bank 220kv offshores",
+   "name:boom power llanbabo generation|carrog storage facility limited|wylfa 400kv substation",
+   "name:thorpe marsh|thorpe marsh power ltd|thorpe marsh",
+   "name:corby|corby power ltd|corby 132kv substation",
+   "name:beatrice wind farm|beatrice offshore windfarm ltd|beatrice 33 132kv offshore substations",
+   "name:dogger bank project 2|dogger bank offshore wind farm project 3 projco limited|dogger bank 220 33kv offshore substations",
+   "name:moray firth offshore wind farm|moray offshore renewables ltd|moray firth 220 33kv platform 1 2 offshore substation",
+   "name:rugeley|rugeley power ltd|rugeley",
+   "name:moray firth offshore wind farm|moray offshore renewables ltd|moray north 33 220kv offshore substation",
+   "name:south kyle|vattenfall wind power ltd|new cummock 132 33kv",
+   "name:windy standard ii brockloch rig 1 wind farm|brockloch rig windfarm ltd|dun hill 132 33kv substation",
+   "name:ironbridge|e on uk plc|ironbridge",
+   "name:vpi immingham b ocgt|vpi immingham b limited|humber refinery 400kv",
+   "name:kilgallioch|scottish power renewables uk ltd|kilgallioch 132 33kv substation",
+   "name:meygen tidal|meygen ltd|gills bay",
+   "name:lovedean tertiary|lovedean green limited|lovedean 400kv substation",
+   "name:elstree tertiary|elstree green limited|elstree 275kv substation",
+   "name:port of mostyn|mostyn seapower limited|connah s quay 400kv substation",
+   "name:pencloe windfarm|pencloe wind energy ltd|pencloe 132 33kv",
+   "name:wymondley|enso green holdings limited|wymondley 400kv substation",
+   "name:barry power station|centrica barry ltd|aberthaw 132kv substation",
+   "name:thorpe marsh 1 tertiary|enso green holdings limited|thorpe marsh 400kv substation",
+   "name:bramford tertiary|bramford green limited|bramford 400kv substation",
+   "name:hirfynydd and mynydd drumaur|edf energy renewables limited|swansea north 400kv substation",
+   "name:south kyle|south kyle wind farm limited|new cumnock",
+   "name:zenobe kilmarnock south|zenobe kilmarnock south limited|kilmarnock south gsp",
+   "name:bolney tertiary|bolney green limited|bolney 400kv substation",
+   "name:glenchamber wind farm|res uk ireland limited|glenluce",
+   "name:axminster new connection|enso green holdings b limited|axminster 400kv substation",
+   "name:rayleigh 2 tertiary|enso green holdings limited|rayleigh main 400kv substation",
+   "name:stornoway wind farm|lewis wind power ltd|stornoway 132 33kv substation",
+   "name:melksham tertiary|melksham calne green limited|melksham 400kv substation",
+   "name:kingsnorth|enso green holdings g limited|kingsnorth 132kv substation",
+   "name:cowley tertiary|cowley baldon green limited|cowley 400kv substation",
+   "name:sizing john rainhill|sizing john limited|rainhill gsp",
+   "name:gateway energy centre power station|gateway energy centre limited|coryton south 400kv substation",
+   "name:rye house tertiary|enso green holdings n limited|rye house 400kv substation",
+   "name:strathy north and south wind|sse generation ltd|strathy north and strathy south",
+   "name:west burton|enso green holdings a limited|west burton 132kv substation",
+   "name:iron acton|iron acton green limited|iron acton 275kv substation",
+   "name:westray south|westray south tidal development limited|crook 132 33kv substation",
+   "name:westray south|sse renewables developments uk ltd|crook 132 33kv substation",
+   "name:walney 4 offshore wind farm|dong energy walney extension uk ltd|walney 4 offshore substation",
+   "name:crystal rig 3 wind farm|crystal rig iii limited|crystal rig 400 132kv substation",
+   "name:south kyle|vattenfall wind power ltd|south kyle wind farm",
+   "name:galloper wind farm|sse renewables galloper no 1 ltd|galloper north 132 33kv",
+   "name:galloper wind farm|galloper wind farm limited|galloper north 132 33kv",
+   "name:a chruach wind farm|a chruach wind farm limited|a chruach wind farm",
+   "name:allt duine wind farm|rwe innogy uk ltd|allt duine 132 33kv substation",
+   "name:harestanes|scottishpower renewables uk ltd|harestanes",
+   "name:cantick head|brims tidal array limited|bay of skaill 132 33kv substation",
+   "name:cryogenic battery system synchronous|cryobattery one limited|carrington 400kv substation",
+   "name:coylton 275kv greener grid park|coylton energy limited|coylton 275 33kv substation",
+   "name:hopsrig wind farm|hopsrig wind farm limited|hopsrig wind farm 132 33kv substation",
+   "name:j g pears|j g pears grid connection ltd|high marnham",
+   "name:sneddon law wind|sneddon law community wind company limited|kilmarnock town 275 33kv",
+   "name:whiteside hill wind farm|sse renewables developments uk ltd|coylton",
+   "name:harestanes|scottish power renewables uk ltd|harestanes"
+  ],
+  "differing_links_where_every_differing_group_is_undetermined": 57,
+  "a_determined": "392125.567",
+  "b_determined": "392125.567",
+  "by_group": [
+   {
+    "group": "name:bicker fenn energy park|beacon fen energy park limited|bicker fen 400kv substation",
+    "difference": "-2999.589"
+   },
+   {
+    "group": "name:bradwell energy park|low carbon solar park 28 limited|rayleigh 400kv substation",
+    "difference": "2598.220"
+   },
+   {
+    "group": "name:fiddlers ferry bess|fiddlers ferry ltd|fiddlers ferry 275kv substation",
+    "difference": "1801.232"
+   },
+   {
+    "group": "name:capenhurst|enso green holdings limited|capenhurst 275kv substation",
+    "difference": "1750.260"
+   },
+   {
+    "group": "name:rat hall mod app|downing renewable developments llp|burwell south 400kv substation",
+    "difference": "1000.684"
+   },
+   {
+    "group": "name:spalding energy expansion|spalding energy expansion limited|spalding",
+    "difference": "-924.815"
+   },
+   {
+    "group": "name:sofia offshore wind farm|sofia offshore wind farm limited|dogger bank 220kv offshores",
+    "difference": "802.300"
+   },
+   {
+    "group": "name:boom power llanbabo generation|carrog storage facility limited|wylfa 400kv substation",
+    "difference": "699.795"
+   },
+   {
+    "group": "name:thorpe marsh|thorpe marsh power ltd|thorpe marsh",
+    "difference": "-641.314"
+   },
+   {
+    "group": "name:corby|corby power ltd|corby 132kv substation",
+    "difference": "-601.637"
+   },
+   {
+    "group": "name:beatrice wind farm|beatrice offshore windfarm ltd|beatrice 33 132kv offshore substations",
+    "difference": "-513.424"
+   },
+   {
+    "group": "name:dogger bank project 2|dogger bank offshore wind farm project 3 projco limited|dogger bank 220 33kv offshore substations",
+    "difference": "-501.027"
+   },
+   {
+    "group": "name:moray firth offshore wind farm|moray offshore renewables ltd|moray firth 220 33kv platform 1 2 offshore substation",
+    "difference": "495.661"
+   },
+   {
+    "group": "name:rugeley|rugeley power ltd|rugeley",
+    "difference": "487.666"
+   },
+   {
+    "group": "name:moray firth offshore wind farm|moray offshore renewables ltd|moray north 33 220kv offshore substation",
+    "difference": "-360.739"
+   },
+   {
+    "group": "name:south kyle|vattenfall wind power ltd|new cummock 132 33kv",
+    "difference": "331.992"
+   },
+   {
+    "group": "name:windy standard ii brockloch rig 1 wind farm|brockloch rig windfarm ltd|dun hill 132 33kv substation",
+    "difference": "-300.049"
+   },
+   {
+    "group": "name:ironbridge|e on uk plc|ironbridge",
+    "difference": "-295.606"
+   },
+   {
+    "group": "name:vpi immingham b ocgt|vpi immingham b limited|humber refinery 400kv",
+    "difference": "274.237"
+   },
+   {
+    "group": "name:kilgallioch|scottish power renewables uk ltd|kilgallioch 132 33kv substation",
+    "difference": "272.159"
+   },
+   {
+    "group": "name:meygen tidal|meygen ltd|gills bay",
+    "difference": "241.429"
+   },
+   {
+    "group": "name:lovedean tertiary|lovedean green limited|lovedean 400kv substation",
+    "difference": "-230.661"
+   },
+   {
+    "group": "name:elstree tertiary|elstree green limited|elstree 275kv substation",
+    "difference": "-228.161"
+   },
+   {
+    "group": "name:port of mostyn|mostyn seapower limited|connah s quay 400kv substation",
+    "difference": "227.680"
+   },
+   {
+    "group": "name:pencloe windfarm|pencloe wind energy ltd|pencloe 132 33kv",
+    "difference": "200.756"
+   },
+   {
+    "group": "name:wymondley|enso green holdings limited|wymondley 400kv substation",
+    "difference": "-200.411"
+   },
+   {
+    "group": "name:barry power station|centrica barry ltd|aberthaw 132kv substation",
+    "difference": "-188.498"
+   },
+   {
+    "group": "name:thorpe marsh 1 tertiary|enso green holdings limited|thorpe marsh 400kv substation",
+    "difference": "-185.273"
+   },
+   {
+    "group": "name:bramford tertiary|bramford green limited|bramford 400kv substation",
+    "difference": "183.055"
+   },
+   {
+    "group": "name:hirfynydd and mynydd drumaur|edf energy renewables limited|swansea north 400kv substation",
+    "difference": "179.877"
+   },
+   {
+    "group": "name:south kyle|south kyle wind farm limited|new cumnock",
+    "difference": "-161.426"
+   },
+   {
+    "group": "name:zenobe kilmarnock south|zenobe kilmarnock south limited|kilmarnock south gsp",
+    "difference": "-160.712"
+   },
+   {
+    "group": "name:bolney tertiary|bolney green limited|bolney 400kv substation",
+    "difference": "-160.249"
+   },
+   {
+    "group": "name:glenchamber wind farm|res uk ireland limited|glenluce",
+    "difference": "-158.069"
+   },
+   {
+    "group": "name:axminster new connection|enso green holdings b limited|axminster 400kv substation",
+    "difference": "-149.107"
+   },
+   {
+    "group": "name:rayleigh 2 tertiary|enso green holdings limited|rayleigh main 400kv substation",
+    "difference": "-142.620"
+   },
+   {
+    "group": "name:stornoway wind farm|lewis wind power ltd|stornoway 132 33kv substation",
+    "difference": "-139.264"
+   },
+   {
+    "group": "name:melksham tertiary|melksham calne green limited|melksham 400kv substation",
+    "difference": "-135.661"
+   },
+   {
+    "group": "name:kingsnorth|enso green holdings g limited|kingsnorth 132kv substation",
+    "difference": "-129.429"
+   },
+   {
+    "group": "name:cowley tertiary|cowley baldon green limited|cowley 400kv substation",
+    "difference": "-121.228"
+   },
+   {
+    "group": "name:sizing john rainhill|sizing john limited|rainhill gsp",
+    "difference": "-108.304"
+   },
+   {
+    "group": "name:gateway energy centre power station|gateway energy centre limited|coryton south 400kv substation",
+    "difference": "100.185"
+   },
+   {
+    "group": "name:rye house tertiary|enso green holdings n limited|rye house 400kv substation",
+    "difference": "-96.099"
+   },
+   {
+    "group": "name:strathy north and south wind|sse generation ltd|strathy north and strathy south",
+    "difference": "-93.904"
+   },
+   {
+    "group": "name:west burton|enso green holdings a limited|west burton 132kv substation",
+    "difference": "-89.666"
+   },
+   {
+    "group": "name:iron acton|iron acton green limited|iron acton 275kv substation",
+    "difference": "-86.641"
+   },
+   {
+    "group": "name:westray south|westray south tidal development limited|crook 132 33kv substation",
+    "difference": "85.202"
+   },
+   {
+    "group": "name:westray south|sse renewables developments uk ltd|crook 132 33kv substation",
+    "difference": "-76.715"
+   },
+   {
+    "group": "name:walney 4 offshore wind farm|dong energy walney extension uk ltd|walney 4 offshore substation",
+    "difference": "-50.021"
+   },
+   {
+    "group": "name:crystal rig 3 wind farm|crystal rig iii limited|crystal rig 400 132kv substation",
+    "difference": "-47.152"
+   },
+   {
+    "group": "name:south kyle|vattenfall wind power ltd|south kyle wind farm",
+    "difference": "40.630"
+   },
+   {
+    "group": "name:galloper wind farm|sse renewables galloper no 1 ltd|galloper north 132 33kv",
+    "difference": "38.867"
+   },
+   {
+    "group": "name:galloper wind farm|galloper wind farm limited|galloper north 132 33kv",
+    "difference": "-38.439"
+   },
+   {
+    "group": "name:a chruach wind farm|a chruach wind farm limited|a chruach wind farm",
+    "difference": "-33.788"
+   },
+   {
+    "group": "name:allt duine wind farm|rwe innogy uk ltd|allt duine 132 33kv substation",
+    "difference": "-33.202"
+   },
+   {
+    "group": "name:harestanes|scottishpower renewables uk ltd|harestanes",
+    "difference": "-30.021"
+   },
+   {
+    "group": "name:cantick head|brims tidal array limited|bay of skaill 132 33kv substation",
+    "difference": "-27.050"
+   },
+   {
+    "group": "name:cryogenic battery system synchronous|cryobattery one limited|carrington 400kv substation",
+    "difference": "25.138"
+   },
+   {
+    "group": "name:coylton 275kv greener grid park|coylton energy limited|coylton 275 33kv substation",
+    "difference": "25.051"
+   },
+   {
+    "group": "name:hopsrig wind farm|hopsrig wind farm limited|hopsrig wind farm 132 33kv substation",
+    "difference": "-18.686"
+   },
+   {
+    "group": "name:j g pears|j g pears grid connection ltd|high marnham",
+    "difference": "-18.366"
+   },
+   {
+    "group": "name:sneddon law wind|sneddon law community wind company limited|kilmarnock town 275 33kv",
+    "difference": "14.648"
+   },
+   {
+    "group": "name:whiteside hill wind farm|sse renewables developments uk ltd|coylton",
+    "difference": "0.568"
+   },
+   {
+    "group": "name:harestanes|scottish power renewables uk ltd|harestanes",
+    "difference": "0.000"
+   }
+  ],
+  "differing": [
+   {
+    "baseline": "2014-02-21",
+    "current": "2014-04-04",
+    "a": "6399.778",
+    "b": "6369.758",
+    "groups": [
+     {
+      "group": "name:harestanes|scottishpower renewables uk ltd|harestanes",
+      "difference": "-30.021",
+      "undetermined": true
+     }
+    ]
+   },
+   {
+    "baseline": "2014-05-12",
+    "current": "2014-05-26",
+    "a": "34.776",
+    "b": "276.205",
+    "groups": [
+     {
+      "group": "name:meygen tidal|meygen ltd|gills bay",
+      "difference": "241.429",
+      "undetermined": true
+     }
+    ]
+   },
+   {
+    "baseline": "2014-07-04",
+    "current": "2014-10-07",
+    "a": "625.166",
+    "b": "465.183",
+    "groups": [
+     {
+      "group": "name:moray firth offshore wind farm|moray offshore renewables ltd|moray north 33 220kv offshore substation",
+      "difference": "-360.739",
+      "undetermined": true
+     },
+     {
+      "group": "name:pencloe windfarm|pencloe wind energy ltd|pencloe 132 33kv",
+      "difference": "200.756",
+      "undetermined": true
+     }
+    ]
+   },
+   {
+    "baseline": "2014-10-07",
+    "current": "2014-11-07",
+    "a": "11012.349",
+    "b": "10935.635",
+    "groups": [
+     {
+      "group": "name:westray south|sse renewables developments uk ltd|crook 132 33kv substation",
+      "difference": "-76.715",
+      "undetermined": true
+     }
+    ]
+   },
+   {
+    "baseline": "2014-12-05",
+    "current": "2014-12-19",
+    "a": "902.486",
+    "b": "911.505",
+    "groups": [
+     {
+      "group": "name:whiteside hill wind farm|sse renewables developments uk ltd|coylton",
+      "difference": "9.018",
+      "undetermined": true
+     }
+    ]
+   },
+   {
+    "baseline": "2015-01-26",
+    "current": "2015-02-13",
+    "a": "8834.352",
+    "b": "8801.150",
+    "groups": [
+     {
+      "group": "name:allt duine wind farm|rwe innogy uk ltd|allt duine 132 33kv substation",
+      "difference": "-33.202",
+      "undetermined": true
+     }
+    ]
+   },
+   {
+    "baseline": "2015-03-31",
+    "current": "2015-04-07",
+    "a": "388.797",
+    "b": "93.191",
+    "groups": [
+     {
+      "group": "name:ironbridge|e on uk plc|ironbridge",
+      "difference": "-295.606",
+      "undetermined": true
+     }
+    ]
+   },
+   {
+    "baseline": "2015-04-24",
+    "current": "2015-05-18",
+    "a": "1021.144",
+    "b": "1012.694",
+    "groups": [
+     {
+      "group": "name:whiteside hill wind farm|sse renewables developments uk ltd|coylton",
+      "difference": "-8.451",
+      "undetermined": true
+     }
+    ]
+   },
+   {
+    "baseline": "2015-06-11",
+    "current": "2015-07-03",
+    "a": "118.648",
+    "b": "157.514",
+    "groups": [
+     {
+      "group": "name:galloper wind farm|sse renewables galloper no 1 ltd|galloper north 132 33kv",
+      "difference": "38.867",
+      "undetermined": true
+     }
+    ]
+   },
+   {
+    "baseline": "2015-07-17",
+    "current": "2015-09-11",
+    "a": "8162.558",
+    "b": "8068.654",
+    "groups": [
+     {
+      "group": "name:strathy north and south wind|sse generation ltd|strathy north and strathy south",
+      "difference": "-93.904",
+      "undetermined": true
+     }
+    ]
+   },
+   {
+    "baseline": "2015-12-01",
+    "current": "2015-12-14",
+    "a": "87.099",
+    "b": "-52.164",
+    "groups": [
+     {
+      "group": "name:stornoway wind farm|lewis wind power ltd|stornoway 132 33kv substation",
+      "difference": "-139.264",
+      "undetermined": true
+     }
+    ]
+   },
+   {
+    "baseline": "2015-12-14",
+    "current": "2016-01-04",
+    "a": "8401.172",
+    "b": "8018.147",
+    "groups": [
+     {
+      "group": "name:beatrice wind farm|beatrice offshore windfarm ltd|beatrice 33 132kv offshore substations",
+      "difference": "-383.025",
+      "undetermined": true
+     }
+    ]
+   },
+   {
+    "baseline": "2016-02-22",
+    "current": "2016-02-29",
+    "a": "7.994",
+    "b": "503.655",
+    "groups": [
+     {
+      "group": "name:moray firth offshore wind farm|moray offshore renewables ltd|moray firth 220 33kv platform 1 2 offshore substation",
+      "difference": "495.661",
+      "undetermined": true
+     }
+    ]
+   },
+   {
+    "baseline": "2016-02-29",
+    "current": "2016-03-07",
+    "a": "538.181",
+    "b": "504.393",
+    "groups": [
+     {
+      "group": "name:a chruach wind farm|a chruach wind farm limited|a chruach wind farm",
+      "difference": "-33.788",
+      "undetermined": true
+     }
+    ]
+   },
+   {
+    "baseline": "2016-03-14",
+    "current": "2016-03-31",
+    "a": "-677.633",
+    "b": "305.394",
+    "groups": [
+     {
+      "group": "name:rugeley|rugeley power ltd|rugeley",
+      "difference": "979.329",
+      "undetermined": true
+     },
+     {
+      "group": "name:harestanes|scottish power renewables uk ltd|harestanes",
+      "difference": "3.697",
+      "undetermined": true
+     }
+    ]
+   },
+   {
+    "baseline": "2016-03-31",
+    "current": "2016-04-05",
+    "a": "1614.359",
+    "b": "47.682",
+    "groups": [
+     {
+      "group": "name:corby|corby power ltd|corby 132kv substation",
+      "difference": "-601.637",
+      "undetermined": true
+     },
+     {
+      "group": "name:rugeley|rugeley power ltd|rugeley",
+      "difference": "-491.663",
+      "undetermined": true
+     },
+     {
+      "group": "name:barry power station|centrica barry ltd|aberthaw 132kv substation",
+      "difference": "-469.678",
+      "undetermined": true
+     },
+     {
+      "group": "name:harestanes|scottish power renewables uk ltd|harestanes",
+      "difference": "-3.697",
+      "undetermined": true
+     }
+    ]
+   },
+   {
+    "baseline": "2016-05-04",
+    "current": "2016-05-25",
+    "a": "-71.129",
+    "b": "280.808",
+    "groups": [
+     {
+      "group": "name:barry power station|centrica barry ltd|aberthaw 132kv substation",
+      "difference": "351.937",
+      "undetermined": true
+     }
+    ]
+   },
+   {
+    "baseline": "2016-07-11",
+    "current": "2016-07-25",
+    "a": "4940.036",
+    "b": "4781.967",
+    "groups": [
+     {
+      "group": "name:glenchamber wind farm|res uk ireland limited|glenluce",
+      "difference": "-158.069",
+      "undetermined": true
+     }
+    ]
+   },
+   {
+    "baseline": "2016-08-12",
+    "current": "2016-08-15",
+    "a": "1147.606",
+    "b": "506.292",
+    "groups": [
+     {
+      "group": "name:thorpe marsh|thorpe marsh power ltd|thorpe marsh",
+      "difference": "-641.314",
+      "undetermined": true
+     }
+    ]
+   },
+   {
+    "baseline": "2016-11-21",
+    "current": "2016-12-01",
+    "a": "-875.528",
+    "b": "-993.438",
+    "groups": [
+     {
+      "group": "name:barry power station|centrica barry ltd|aberthaw 132kv substation",
+      "difference": "-70.757",
+      "undetermined": true
+     },
+     {
+      "group": "name:crystal rig 3 wind farm|crystal rig iii limited|crystal rig 400 132kv substation",
+      "difference": "-47.152",
+      "undetermined": true
+     }
+    ]
+   },
+   {
+    "baseline": "2016-12-14",
+    "current": "2016-12-22",
+    "a": "261.705",
+    "b": "1882.825",
+    "groups": [
+     {
+      "group": "name:kilgallioch|scottish power renewables uk ltd|kilgallioch 132 33kv substation",
+      "difference": "1621.120",
+      "undetermined": true
+     }
+    ]
+   },
+   {
+    "baseline": "2017-01-05",
+    "current": "2017-01-12",
+    "a": "1348.961",
+    "b": "0.000",
+    "groups": [
+     {
+      "group": "name:kilgallioch|scottish power renewables uk ltd|kilgallioch 132 33kv substation",
+      "difference": "-1348.961",
+      "undetermined": true
+     }
+    ]
+   },
+   {
+    "baseline": "2017-06-23",
+    "current": "2017-06-30",
+    "a": "300.049",
+    "b": "0.000",
+    "groups": [
+     {
+      "group": "name:windy standard ii brockloch rig 1 wind farm|brockloch rig windfarm ltd|dun hill 132 33kv substation",
+      "difference": "-300.049",
+      "undetermined": true
+     }
+    ]
+   },
+   {
+    "baseline": "2017-07-21",
+    "current": "2017-07-27",
+    "a": "1311.211",
+    "b": "1272.772",
+    "groups": [
+     {
+      "group": "name:galloper wind farm|galloper wind farm limited|galloper north 132 33kv",
+      "difference": "-38.439",
+      "undetermined": true
+     }
+    ]
+   },
+   {
+    "baseline": "2017-08-24",
+    "current": "2017-08-30",
+    "a": "-17.577",
+    "b": "0.000",
+    "groups": [
+     {
+      "group": "name:sneddon law wind|sneddon law community wind company limited|kilmarnock town 275 33kv",
+      "difference": "17.577",
+      "undetermined": true
+     }
+    ]
+   },
+   {
+    "baseline": "2018-03-22",
+    "current": "2018-03-29",
+    "a": "49854.979",
+    "b": "49804.959",
+    "groups": [
+     {
+      "group": "name:walney 4 offshore wind farm|dong energy walney extension uk ltd|walney 4 offshore substation",
+      "difference": "-50.021",
+      "undetermined": true
+     }
+    ]
+   },
+   {
+    "baseline": "2018-06-07",
+    "current": "2018-06-14",
+    "a": "-3.948",
+    "b": "-30.998",
+    "groups": [
+     {
+      "group": "name:cantick head|brims tidal array limited|bay of skaill 132 33kv substation",
+      "difference": "-27.050",
+      "undetermined": true
+     }
+    ]
+   },
+   {
+    "baseline": "2018-08-16",
+    "current": "2018-08-24",
+    "a": "2.930",
+    "b": "0.000",
+    "groups": [
+     {
+      "group": "name:sneddon law wind|sneddon law community wind company limited|kilmarnock town 275 33kv",
+      "difference": "-2.930",
+      "undetermined": true
+     }
+    ]
+   },
+   {
+    "baseline": "2018-08-30",
+    "current": "2018-09-06",
+    "a": "4264.131",
+    "b": "3970.332",
+    "groups": [
+     {
+      "group": "name:beatrice wind farm|beatrice offshore windfarm ltd|beatrice 33 132kv offshore substations",
+      "difference": "-293.799",
+      "undetermined": true
+     }
+    ]
+   },
+   {
+    "baseline": "2018-11-08",
+    "current": "2018-11-15",
+    "a": "18.366",
+    "b": "0.000",
+    "groups": [
+     {
+      "group": "name:j g pears|j g pears grid connection ltd|high marnham",
+      "difference": "-18.366",
+      "undetermined": true
+     }
+    ]
+   },
+   {
+    "baseline": "2018-11-15",
+    "current": "2018-11-29",
+    "a": "-165.728",
+    "b": "-2.327",
+    "groups": [
+     {
+      "group": "name:beatrice wind farm|beatrice offshore windfarm ltd|beatrice 33 132kv offshore substations",
+      "difference": "163.400",
+      "undetermined": true
+     }
+    ]
+   },
+   {
+    "baseline": "2019-02-14",
+    "current": "2019-02-21",
+    "a": "115.523",
+    "b": "155.550",
+    "groups": [
+     {
+      "group": "name:westray south|westray south tidal development limited|crook 132 33kv substation",
+      "difference": "40.027",
+      "undetermined": true
+     }
+    ]
+   },
+   {
+    "baseline": "2019-03-21",
+    "current": "2019-03-28",
+    "a": "1548.571",
+    "b": "1593.746",
+    "groups": [
+     {
+      "group": "name:westray south|westray south tidal development limited|crook 132 33kv substation",
+      "difference": "45.175",
+      "undetermined": true
+     }
+    ]
+   },
+   {
+    "baseline": "2019-05-23",
+    "current": "2019-05-30",
+    "a": "29.040",
+    "b": "10.355",
+    "groups": [
+     {
+      "group": "name:hopsrig wind farm|hopsrig wind farm limited|hopsrig wind farm 132 33kv substation",
+      "difference": "-18.686",
+      "undetermined": true
+     }
+    ]
+   },
+   {
+    "baseline": "2019-06-13",
+    "current": "2019-06-20",
+    "a": "986.784",
+    "b": "1318.775",
+    "groups": [
+     {
+      "group": "name:south kyle|vattenfall wind power ltd|new cummock 132 33kv",
+      "difference": "331.992",
+      "undetermined": true
+     }
+    ]
+   },
+   {
+    "baseline": "2019-09-19",
+    "current": "2019-09-26",
+    "a": "1037.450",
+    "b": "112.635",
+    "groups": [
+     {
+      "group": "name:spalding energy expansion|spalding energy expansion limited|spalding",
+      "difference": "-924.815",
+      "undetermined": true
+     }
+    ]
+   },
+   {
+    "baseline": "2019-10-24",
+    "current": "2019-10-31",
+    "a": "501.027",
+    "b": "0.000",
+    "groups": [
+     {
+      "group": "name:dogger bank project 2|dogger bank offshore wind farm project 3 projco limited|dogger bank 220 33kv offshore substations",
+      "difference": "-501.027",
+      "undetermined": true
+     }
+    ]
+   },
+   {
+    "baseline": "2019-12-12",
+    "current": "2019-12-19",
+    "a": "88.226",
+    "b": "128.856",
+    "groups": [
+     {
+      "group": "name:south kyle|vattenfall wind power ltd|south kyle wind farm",
+      "difference": "40.630",
+      "undetermined": true
+     }
+    ]
+   },
+   {
+    "baseline": "2020-03-26",
+    "current": "2020-04-02",
+    "a": "2361.915",
+    "b": "2200.489",
+    "groups": [
+     {
+      "group": "name:south kyle|south kyle wind farm limited|new cumnock",
+      "difference": "-161.426",
+      "undetermined": true
+     }
+    ]
+   },
+   {
+    "baseline": "2020-04-02",
+    "current": "2020-04-09",
+    "a": "12014.194",
+    "b": "12114.379",
+    "groups": [
+     {
+      "group": "name:gateway energy centre power station|gateway energy centre limited|coryton south 400kv substation",
+      "difference": "100.185",
+      "undetermined": true
+     }
+    ]
+   },
+   {
+    "baseline": "2020-12-10",
+    "current": "2020-12-15",
+    "a": "-1071.787",
+    "b": "-797.550",
+    "groups": [
+     {
+      "group": "name:vpi immingham b ocgt|vpi immingham b limited|humber refinery 400kv",
+      "difference": "274.237",
+      "undetermined": true
+     }
+    ]
+   },
+   {
+    "baseline": "2023-09-29",
+    "current": "2023-10-03",
+    "a": "0.000",
+    "b": "699.795",
+    "groups": [
+     {
+      "group": "name:boom power llanbabo generation|carrog storage facility limited|wylfa 400kv substation",
+      "difference": "699.795",
+      "undetermined": true
+     }
+    ]
+   },
+   {
+    "baseline": "2024-03-26",
+    "current": "2024-04-02",
+    "a": "5513.465",
+    "b": "5352.753",
+    "groups": [
+     {
+      "group": "name:zenobe kilmarnock south|zenobe kilmarnock south limited|kilmarnock south gsp",
+      "difference": "-160.712",
+      "undetermined": true
+     }
+    ]
+   },
+   {
+    "baseline": "2024-05-30",
+    "current": "2024-05-31",
+    "a": "-1651.355",
+    "b": "348.371",
+    "groups": [
+     {
+      "group": "name:capenhurst|enso green holdings limited|capenhurst 275kv substation",
+      "difference": "1999.726",
+      "undetermined": true
+     }
+    ]
+   },
+   {
+    "baseline": "2024-06-18",
+    "current": "2024-06-21",
+    "a": "-2579.055",
+    "b": "19.165",
+    "groups": [
+     {
+      "group": "name:bradwell energy park|low carbon solar park 28 limited|rayleigh 400kv substation",
+      "difference": "2598.220",
+      "undetermined": true
+     }
+    ]
+   },
+   {
+    "baseline": "2024-07-05",
+    "current": "2024-07-09",
+    "a": "-708.830",
+    "b": "-3708.419",
+    "groups": [
+     {
+      "group": "name:bicker fenn energy park|beacon fen energy park limited|bicker fen 400kv substation",
+      "difference": "-2999.589",
+      "undetermined": true
+     }
+    ]
+   },
+   {
+    "baseline": "2024-08-13",
+    "current": "2024-08-16",
+    "a": "-1021.580",
+    "b": "-1151.009",
+    "groups": [
+     {
+      "group": "name:kingsnorth|enso green holdings g limited|kingsnorth 132kv substation",
+      "difference": "-129.429",
+      "undetermined": true
+     }
+    ]
+   },
+   {
+    "baseline": "2024-09-03",
+    "current": "2024-09-06",
+    "a": "3535.791",
+    "b": "3265.456",
+    "groups": [
+     {
+      "group": "name:axminster new connection|enso green holdings b limited|axminster 400kv substation",
+      "difference": "-149.107",
+      "undetermined": true
+     },
+     {
+      "group": "name:cowley tertiary|cowley baldon green limited|cowley 400kv substation",
+      "difference": "-121.228",
+      "undetermined": true
+     }
+    ]
+   },
+   {
+    "baseline": "2024-10-15",
+    "current": "2024-10-22",
+    "a": "4674.005",
+    "b": "4525.607",
+    "groups": [
+     {
+      "group": "name:iron acton|iron acton green limited|iron acton 275kv substation",
+      "difference": "-148.398",
+      "undetermined": true
+     }
+    ]
+   },
+   {
+    "baseline": "2024-10-25",
+    "current": "2024-10-29",
+    "a": "305.298",
+    "b": "277.389",
+    "groups": [
+     {
+      "group": "name:west burton|enso green holdings a limited|west burton 132kv substation",
+      "difference": "-89.666",
+      "undetermined": true
+     },
+     {
+      "group": "name:iron acton|iron acton green limited|iron acton 275kv substation",
+      "difference": "61.758",
+      "undetermined": true
+     }
+    ]
+   },
+   {
+    "baseline": "2024-11-01",
+    "current": "2024-11-05",
+    "a": "1745.701",
+    "b": "1496.235",
+    "groups": [
+     {
+      "group": "name:capenhurst|enso green holdings limited|capenhurst 275kv substation",
+      "difference": "-249.466",
+      "undetermined": true
+     }
+    ]
+   },
+   {
+    "baseline": "2024-11-19",
+    "current": "2024-11-22",
+    "a": "-696.250",
+    "b": "-924.411",
+    "groups": [
+     {
+      "group": "name:elstree tertiary|elstree green limited|elstree 275kv substation",
+      "difference": "-228.161",
+      "undetermined": true
+     }
+    ]
+   },
+   {
+    "baseline": "2024-12-13",
+    "current": "2024-12-17",
+    "a": "7333.855",
+    "b": "7191.235",
+    "groups": [
+     {
+      "group": "name:rayleigh 2 tertiary|enso green holdings limited|rayleigh main 400kv substation",
+      "difference": "-142.620",
+      "undetermined": true
+     }
+    ]
+   },
+   {
+    "baseline": "2025-01-14",
+    "current": "2025-01-17",
+    "a": "1562.628",
+    "b": "1742.505",
+    "groups": [
+     {
+      "group": "name:hirfynydd and mynydd drumaur|edf energy renewables limited|swansea north 400kv substation",
+      "difference": "179.877",
+      "undetermined": true
+     }
+    ]
+   },
+   {
+    "baseline": "2025-01-28",
+    "current": "2025-03-21",
+    "a": "9299.087",
+    "b": "10110.419",
+    "groups": [
+     {
+      "group": "name:rat hall mod app|downing renewable developments llp|burwell south 400kv substation",
+      "difference": "1000.684",
+      "undetermined": true
+     },
+     {
+      "group": "name:port of mostyn|mostyn seapower limited|connah s quay 400kv substation",
+      "difference": "227.680",
+      "undetermined": true
+     },
+     {
+      "group": "name:thorpe marsh 1 tertiary|enso green holdings limited|thorpe marsh 400kv substation",
+      "difference": "-185.273",
+      "undetermined": true
+     },
+     {
+      "group": "name:melksham tertiary|melksham calne green limited|melksham 400kv substation",
+      "difference": "-135.661",
+      "undetermined": true
+     },
+     {
+      "group": "name:rye house tertiary|enso green holdings n limited|rye house 400kv substation",
+      "difference": "-96.099",
+      "undetermined": true
+     }
+    ]
+   },
+   {
+    "baseline": "2025-04-01",
+    "current": "2025-07-01",
+    "a": "18318.534",
+    "b": "19653.386",
+    "groups": [
+     {
+      "group": "name:fiddlers ferry bess|fiddlers ferry ltd|fiddlers ferry 275kv substation",
+      "difference": "1801.232",
+      "undetermined": true
+     },
+     {
+      "group": "name:lovedean tertiary|lovedean green limited|lovedean 400kv substation",
+      "difference": "-230.661",
+      "undetermined": true
+     },
+     {
+      "group": "name:wymondley|enso green holdings limited|wymondley 400kv substation",
+      "difference": "-200.411",
+      "undetermined": true
+     },
+     {
+      "group": "name:bramford tertiary|bramford green limited|bramford 400kv substation",
+      "difference": "183.055",
+      "undetermined": true
+     },
+     {
+      "group": "name:bolney tertiary|bolney green limited|bolney 400kv substation",
+      "difference": "-160.249",
+      "undetermined": true
+     },
+     {
+      "group": "name:sizing john rainhill|sizing john limited|rainhill gsp",
+      "difference": "-108.304",
+      "undetermined": true
+     },
+     {
+      "group": "name:cryogenic battery system synchronous|cryobattery one limited|carrington 400kv substation",
+      "difference": "25.138",
+      "undetermined": true
+     },
+     {
+      "group": "name:coylton 275kv greener grid park|coylton energy limited|coylton 275 33kv substation",
+      "difference": "25.051",
+      "undetermined": true
+     }
+    ]
+   },
+   {
+    "baseline": "2025-07-01",
+    "current": "2025-07-22",
+    "a": "4967.155",
+    "b": "5769.455",
+    "groups": [
+     {
+      "group": "name:sofia offshore wind farm|sofia offshore wind farm limited|dogger bank 220kv offshores",
+      "difference": "802.300",
+      "undetermined": true
+     }
+    ]
    }
   ]
  },

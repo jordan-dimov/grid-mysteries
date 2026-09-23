@@ -242,6 +242,7 @@ def cmd_analyse(args: argparse.Namespace) -> None:
                 reproduced["headline"]["baseline"],
                 reproduced["headline"]["t_public"],
             ),
+            "chain_difference": analysis.chain_difference(by_014, by_content),
             "propositions": content_series["propositions"],
         },
     )

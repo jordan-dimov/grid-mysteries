@@ -418,6 +418,11 @@ def load_series(version: Version) -> dict[str, Any]:
                 (r for r in rows if r["regime"] == segment["regime"]),
                 key=lambda r: r["t_public"],
             )
+    # Dated corrections to the published page (append-only, hand-written,
+    # each with its old and new value); version 2's record page predates them.
+    corrections = HERE / page.CORRECTIONS_FILE
+    if version.split and corrections.exists():
+        series["corrections"] = json.loads(corrections.read_text())
     return series
 
 

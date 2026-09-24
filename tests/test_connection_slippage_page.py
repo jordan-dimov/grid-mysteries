@@ -277,3 +277,88 @@ def test_the_share_sentence_says_so_when_no_year_is_under_half():
     sentence = page.determined_share_sentence(series) or ""
     assert sentence.startswith("In 2030 (partial) the movement")
     assert "under content matching" in sentence and "version 2's rule" not in sentence
+
+
+def test_every_increment_on_a_split_page_reports_its_split_with_f1_before_the_figures():
+    """014 v4 declares the split for every increment of the chain, and version 1
+    lists an F1 link as such before its figures."""
+    from html import escape
+
+    _, series = v4_series()
+    html = page.render_page(series)
+    head = html.split("<summary>Every copy against the previous copy")[1].split("</thead>")[0]
+    names = [
+        escape(n) for n in ("F1 churn", "Since previous, determined by stage labels, MW-years")
+    ]
+    assert all(n in head for n in names)
+    assert head.index(names[0]) < head.index(escape("Since previous, version 2's rule, MW-years"))
+    old = next(s for s in series["segments"] if s["regime"] == "old")
+    last = max(old["rows"], key=lambda r: r["t_public"])
+    link = last["split"]["vs_previous"]
+    table = html.split("<summary>Every copy against the previous copy")[1].split("</table>")[0]
+    first_row = table.split("<tbody>")[1].split("</tr>")[0]
+    cells = [page.signed_mw_years(link["determined"]), page.count(link["undetermined_groups"])]
+    cells += [page.signed_mw_years(link["total"][r]) for r in (page.RULE_V2, page.RULE_CONTENT)]
+    assert "".join(f"<td>{c}</td>" for c in cells) in first_row
+
+
+def test_copy_to_copy_links_of_the_reformed_segment_carry_f1_not_f2():
+    """F2 is defined on trailing-year comparisons; the reformed table compares
+    consecutive copies, so its falsifier is F1."""
+    import copy
+
+    _, series = v4_series()
+    new = next(s for s in series["segments"] if s["regime"] == "new")
+    html = page.render_page(series)
+    table = html.split("Since the reform: a separate series")[1].split("</table>")[0]
+    assert "F1 churn" in table and "F2 thin population" not in table
+    md = page.render_markdown(series)
+    reform = md.split("## Since the reform")[1].split("\n\n")[1]
+    assert "F1 churn" in reform and "F2" not in reform
+    churned = copy.deepcopy(series)
+    row = max(
+        next(s for s in churned["segments"] if s is not None and s["regime"] == "new")["rows"],
+        key=lambda r: r["t_public"],
+    )
+    row["vs_previous"]["f1_churn"] = True
+    table = page.render_page(churned).split("Since the reform: a separate series")[1]
+    assert page.F1_TEXT in table.split("</table>")[0]
+    assert len(new["rows"]) == 4
+
+
+def test_coverage_counts_the_old_segments_own_copies():
+    """The old-regime copies plus the reformed ones, never every usable copy plus
+    the reformed ones again (corrected 2026-09-24)."""
+    _, series = v4_series()
+    old = next(s for s in series["segments"] if s["regime"] == "old")
+    new = next(s for s in series["segments"] if s["regime"] == "new")
+    html = page.render_page(series)
+    assert f"built from {old['vintages']:,} copies of the register" in html
+    assert f"plus {new['vintages']} copies since" in html
+    assert old["vintages"] + new["vintages"] < series["vintages"]["usable"]
+
+
+def test_a_correction_is_listed_with_its_date_and_named_in_the_footer():
+    import json
+    from pathlib import Path
+
+    here = Path(__file__).parents[1] / "investigations/014-gb-connection-slippage"
+    corrections = json.loads((here / page.CORRECTIONS_FILE).read_text())
+    assert all({"date", "text", "old", "new"} <= set(c) for c in corrections)
+    _, series = v4_series()
+    series["corrections"] = corrections
+    html = page.render_page(series)
+    assert "None so far" not in html and "24 Sep 2026" in html
+    assert "of <code>corrections.json</code>" in html
+    assert "- 2026-09-24: The introduction said" in page.render_markdown(series)
+
+
+def test_the_split_page_uses_no_dash_punctuation_in_its_prose():
+    import re
+
+    _, series = v4_series()
+    html = page.render_page(series)
+    prose = re.sub(r"<td>—</td>", "", html.split("<body>")[1])
+    assert "—" not in prose and "–" not in prose
+    md = page.render_markdown(series)
+    assert "—" not in md.replace("| — |", "").replace("| —", "")

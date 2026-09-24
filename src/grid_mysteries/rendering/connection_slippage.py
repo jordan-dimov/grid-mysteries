@@ -36,6 +36,9 @@ INTRO = (
 )
 
 BLANK = "—"
+#: Dated page corrections, kept beside the declarations and attached to the
+#: series by the runner; each keeps the old and the new value.
+CORRECTIONS_FILE = "corrections.json"
 
 
 # ---------------------------------------------------------------- formatting
@@ -119,8 +122,25 @@ RULE_V2 = "014-v2"
 RULE_CONTENT = "tec-identity-content-v1"
 
 
+#: A copy-to-copy comparison (the reformed segment's table, declaration 3
+#: onwards): F1 is the link's falsifier and is listed before its figures
+#: (declaration 1); F2 is defined on trailing-year comparisons only.
+LINK_COLUMNS = SPLIT_COLUMNS[:2] + ("F1 churn",) + SPLIT_COLUMNS[2:-1]
+F1_TEXT = "F1: joined plus left over 20% of baseline"
+
+
+def f1_cell(pair: dict[str, Any]) -> str:
+    return F1_TEXT if pair["f1_churn"] else BLANK
+
+
 def columns(split: bool) -> tuple[str, ...]:
     return SPLIT_COLUMNS if split else PAIR_COLUMNS
+
+
+def link_cells(pair: dict[str, Any]) -> list[str]:
+    """The cells of one copy-to-copy comparison with a split (LINK_COLUMNS)."""
+    cells = pair_cells(pair)[:-1]
+    return cells[:2] + [f1_cell(pair)] + cells[2:]
 
 
 def pair_cells(pair: dict[str, Any]) -> list[str]:
@@ -167,14 +187,19 @@ def signed_mw(value: str | None) -> str:
     return f"+{number:,}" if number > 0 else f"{number:,}"
 
 
-def render_pair_table(pairs: list[dict[str, Any]], first_label: str | None = None) -> str:
-    names = list(columns(any(p.get("split") for p in pairs)))
+def render_pair_table(
+    pairs: list[dict[str, Any]], first_label: str | None = None, *, links: bool = False
+) -> str:
+    """`links`: copy-to-copy comparisons, which carry F1 instead of F2 when split."""
+    split = any(p.get("split") for p in pairs)
+    as_links = links and split
+    names = list(LINK_COLUMNS if as_links else columns(split))
     if first_label:
         names = [first_label] + names
     head = "".join(f'<th scope="col">{escape(c)}</th>' for c in names)
     body_rows = []
     for pair in pairs:
-        cells = pair_cells(pair)
+        cells = link_cells(pair) if as_links else pair_cells(pair)
         if first_label:
             label = str(pair.get("label", ""))
             cells = [label] + cells
@@ -233,13 +258,16 @@ def increment_rows(segment: dict[str, Any]) -> str:
         (
             "Vintage",
             "Previous vintage",
-            "Net since previous, version 2's rule, MW-years",
+            "F1 churn",
+            "Since previous, determined by stage labels, MW-years",
+            "Groups not determined",
+            "Since previous, version 2's rule, MW-years",
+            "Since previous, content matching, MW-years",
             "Chained, determined by stage labels, MW-years",
             "Chained, version 2's rule, MW-years",
             "Chained, content matching, MW-years",
             "Joined",
             "Left",
-            "F1 churn",
             "Day-month swap test",
         )
         if split
@@ -274,18 +302,39 @@ def increment_rows(segment: dict[str, Any]) -> str:
             if split and chained
             else [signed_mw_years(row["cumulative_mw_years_net"])]
         )
-        cells = [
-            day_label(row["t_public"]),
-            day_label(pair["baseline"]) if pair else BLANK,
-            signed_mw_years(pair["mw_years_net"]) if pair else BLANK,
-            *chain_cells,
-            count(pair["new_entries"]) if pair else BLANK,
-            count(pair["removed"]) if pair else BLANK,
-            ("F1: joined plus left over 20% of baseline" if pair["f1_churn"] else BLANK)
-            if pair
-            else BLANK,
-            flag,
-        ]
+        f1 = f1_cell(pair) if pair else BLANK
+        if split:
+            link = (row.get("split") or {}).get("vs_previous")
+            cells = [
+                day_label(row["t_public"]),
+                day_label(pair["baseline"]) if pair else BLANK,
+                f1,
+                *(
+                    [
+                        signed_mw_years(link["determined"]),
+                        count(link["undetermined_groups"]),
+                        signed_mw_years(link["total"][RULE_V2]),
+                        signed_mw_years(link["total"][RULE_CONTENT]),
+                    ]
+                    if pair and link
+                    else [BLANK] * 4
+                ),
+                *chain_cells,
+                count(pair["new_entries"]) if pair else BLANK,
+                count(pair["removed"]) if pair else BLANK,
+                flag,
+            ]
+        else:
+            cells = [
+                day_label(row["t_public"]),
+                day_label(pair["baseline"]) if pair else BLANK,
+                signed_mw_years(pair["mw_years_net"]) if pair else BLANK,
+                *chain_cells,
+                count(pair["new_entries"]) if pair else BLANK,
+                count(pair["removed"]) if pair else BLANK,
+                f1,
+                flag,
+            ]
         first = f'<th scope="row">{escape(cells[0])}</th>'
         rest = "".join(f"<td>{escape(c)}</td>" for c in cells[1:])
         rows.append(f"<tr>{first}{rest}</tr>")
@@ -468,16 +517,16 @@ def render_propositions(series: dict[str, Any]) -> str:
     if not p1 or not p2:
         return "<p>Not yet computed.</p>"
     p1_text = (
-        f"<strong>P1</strong> — {escape(p1['statement'])}: <strong>{escape(p1['verdict'])}</strong>"
+        f"<strong>P1</strong>: {escape(p1['statement'])}: <strong>{escape(p1['verdict'])}</strong>"
     )
     if p1["windows"]:
         p1_text += (
-            f" over {len(p1['windows'])} complete years ({p1['windows'][0]}–{p1['windows'][-1]})"
+            f" over {len(p1['windows'])} complete years ({p1['windows'][0]} to {p1['windows'][-1]})"
         )
     if p1["failing_years"]:
         p1_text += "; not positive in " + ", ".join(str(y) for y in p1["failing_years"])
     p2_text = (
-        f"<strong>P2</strong> — {escape(p2['statement'])}: <strong>{escape(p2['verdict'])}</strong>"
+        f"<strong>P2</strong>: {escape(p2['statement'])}: <strong>{escape(p2['verdict'])}</strong>"
         f" (falsifier date {escape(day_label(p2['falsifier_date']))}"
     )
     if p2.get("decided_on"):
@@ -640,13 +689,15 @@ def render_page(series: dict[str, Any], repo_url: str = REPO_URL) -> str:
         else ""
     )
     digest = series.get("declaration_sha256", "")
+    corrections_note = (
+        f" and of <code>{escape(CORRECTIONS_FILE)}</code>" if series.get("corrections") else ""
+    )
     old = next((s for s in series["segments"] if s["regime"] == "old"), None)
     new = next((s for s in series["segments"] if s["regime"] == "new"), None)
     prompt, email = CALL_TO_ACTION.removesuffix(CALL_TO_ACTION_EMAIL), CALL_TO_ACTION_EMAIL
     contact = f'{escape(prompt)}<a href="mailto:{email}">{email}</a>'
-    counts = series.get("vintages", {})
     coverage = (
-        f" The series is built from {counts.get('usable', 0):,} copies of the register, "
+        f" The series is built from {old['vintages']:,} copies of the register, "
         f"{day_label(old['first'])} to {day_label(old['last'])}"
         if old
         else ""
@@ -676,7 +727,7 @@ def render_page(series: dict[str, Any], repo_url: str = REPO_URL) -> str:
                 split = (row.get("split") or {}).get("vs_previous")
                 new_pairs.append({**pair, "label": day_label(row["t_public"]), "split": split})
         new_table = (
-            render_pair_table(new_pairs, "Copy of")
+            render_pair_table(new_pairs, "Copy of", links=True)
             if new_pairs
             else "<p>One copy only; nothing to compare yet.</p>"
         )
@@ -778,9 +829,9 @@ witnessed by OpenTimestamps and two RFC 3161 authorities before the series was c
 Evidence, every copy's digest and every row:
 <a href="{escape(evidence)}">{escape(evidence_dir)}/</a>.
 Code and tests: <a href="{escape(repo_url)}">{escape(repo_url.removeprefix("https://"))}</a>.
-Page generated {escape(series.get("computed_at", "")[:10])} from
+Figures computed {escape(series.get("computed_at", "")[:10])} and read from
 <code>{escape(evidence_dir)}/series.json</code>; the page is a pure function of the
-evidence.{rows_note}</p>
+evidence{corrections_note}.{rows_note}</p>
 
 <h2>Corrections</h2>
 {render_corrections(series.get("corrections"))}
@@ -802,13 +853,13 @@ def md_pair_row(label: str, pair: dict[str, Any]) -> str:
     return "| " + " | ".join([label] + cells) + " |"
 
 
-def markdown_propositions(series: dict[str, Any]) -> list[str]:
+def markdown_propositions(series: dict[str, Any], *, sep: str = " —") -> list[str]:
     props = series.get("propositions") or {}
     p1, p2 = props.get("P1"), props.get("P2")
     if not p1 or not p2:
         return ["- Not yet computed."]
     lines = [
-        f"- **P1** — {p1['statement']}: **{p1['verdict']}** "
+        f"- **P1**{sep} {p1['statement']}: **{p1['verdict']}** "
         f"({len(p1['windows'])} complete years"
         + (
             f"; not positive in {', '.join(str(y) for y in p1['failing_years'])}"
@@ -816,7 +867,8 @@ def markdown_propositions(series: dict[str, Any]) -> list[str]:
             else ""
         )
         + ").",
-        f"- **P2** — {p2['statement']}: **{p2['verdict']}** (falsifier date {p2['falsifier_date']}"
+        f"- **P2**{sep} {p2['statement']}: **{p2['verdict']}** "
+        f"(falsifier date {p2['falsifier_date']}"
         + (
             f"; decided on {p2['decided_on']}, chained {p2['chained_mw_years_net']} MW-years"
             if p2.get("decided_on")
@@ -841,11 +893,20 @@ def render_markdown(series: dict[str, Any]) -> str:
     evidence = evidence_dir_of(series.get("declaration", "DECLARATION.md")) if split else "evidence"
     head = "| " + " | ".join(["Year", *names]) + " |\n|" + "---|" * (len(names) + 1)
     annual = "\n".join(md_pair_row(p["label"], p) for p in annual_pairs(old)) if old else ""
+    # Version 2's rows file is named as its record page named it; a split
+    # page names the append-only rows file its declaration defines.
+    rows_source = (
+        f"{evidence}/{series.get('rows_file', 'series.json')}"
+        if split
+        else (f"{evidence}/series.json")
+    )
     lines = [
-        f"# {TITLE} — series (investigation 014)",
+        f"# {TITLE}{':' if split else ' —'} series (investigation 014)",
         "",
         f"*{SUBTITLE}. The page at `site/connection-slippage/index.html` and this file are pure "
-        f"functions of `{evidence}/series.json`.*",
+        f"functions of `{evidence}/series.json`"
+        + (f" and `{rows_source}`" if split else "")
+        + ".*",
         "",
         f"**Declaration** `{series.get('declaration', 'DECLARATION.md')}`, SHA-256 "
         f"`{series.get('declaration_sha256', '')}`, witnessed before the run. "
@@ -863,7 +924,7 @@ def render_markdown(series: dict[str, Any]) -> str:
         *([SPLIT_NOTE, ""] if (series.get("headline") or {}).get("split") else []),
         "## Propositions",
         "",
-        *markdown_propositions(series),
+        *markdown_propositions(series, sep=":" if split else " —"),
         "",
         "## Year by year (old regime)",
         "",
@@ -878,15 +939,22 @@ def render_markdown(series: dict[str, Any]) -> str:
         lines += [
             "## Since the reform (separate series, copy to copy)",
             "",
-            head.replace("Year", "Copy of", 1),
+            head.replace("Year", "Copy of", 1)
+            if not split
+            else "| "
+            + " | ".join(["Copy of", *LINK_COLUMNS])
+            + " |\n|"
+            + "---|" * (len(LINK_COLUMNS) + 1),
         ]
         for row in reversed(new["rows"]):
             if row.get("vs_previous"):
                 row_split = (row.get("split") or {}).get("vs_previous")
+                pair = {**row["vs_previous"], "split": row_split}
+                label = day_label(row["t_public"])
                 lines.append(
-                    md_pair_row(
-                        day_label(row["t_public"]), {**row["vs_previous"], "split": row_split}
-                    )
+                    "| " + " | ".join([label, *link_cells(pair)]) + " |"
+                    if split and row_split
+                    else md_pair_row(label, pair)
                 )
         lines.append("")
     rb = series.get("regime_break")
@@ -914,9 +982,12 @@ def render_markdown(series: dict[str, Any]) -> str:
         lines.append(f"- {s['t_public']}: not parsed ({plain_reason(s)}).")
     for s in counts.get("excluded", []):
         lines.append(f"- {s['t_public']}: excluded, lacks {', '.join(s['missing'])}.")
+    if split and series.get("corrections"):
+        lines += ["", "## Corrections", ""]
+        lines += [f"- {c['date']}: {c['text']}" for c in series["corrections"]]
     lines += [
         "",
-        f"Every copy's row, both comparisons and the swap test are in `{evidence}/series.json`; "
+        f"Every copy's row, both comparisons and the swap test are in `{rows_source}`; "
         f"the copies themselves are listed with digests in `{evidence}/vintage-manifest.json`.",
         "",
     ]

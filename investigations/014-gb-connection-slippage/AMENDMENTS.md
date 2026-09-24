@@ -109,3 +109,44 @@ quantised as version 2 quantises a net (each gross side to 0.001), is
 +57,400.291; the +57,400.290 in version 3's prior-exposure section was the
 total quantised once. The choice between (a), (b) or something else is the
 sponsor's; version 3 stays frozen and unrun.
+
+## Page checked against version 4 before release, 2026-09-24 (presentation only; no rule, row or figure changed)
+
+The preview rendered on 2026-09-23 was read against `DECLARATION-v4.md` and
+what it inherits from versions 3, 2 and 1, line by line, before the
+release seal. The headline sentence, the chained total with its two
+undetermined shares, the year windows, the trailing-year table and P1/P2
+match. Five things did not, all in the renderer; the sealed declarations
+and the evidence under `evidence/v4/` are untouched:
+
+1. **Increments without their split.** Version 4 declares the determined
+   part, the group count and each rule's figure for every increment of the
+   chain; the table showed version 2's net alone. It now shows all four for
+   each increment, beside the chained columns.
+2. **F2 on copy-to-copy rows.** The reformed segment's table is copy to
+   copy, but carried an "F2 thin population" column; F2 is defined on
+   trailing-year comparisons only, and F1, which is defined on consecutive
+   copies, was not shown there. It now carries F1 and not F2. Neither
+   fired on the reformed segment, so no flag changes.
+3. **F1 after its figures.** Version 1: an F1 link "is listed as such on the
+   page before its figures". The F1 column now precedes the figures in both
+   copy-to-copy tables.
+4. **The coverage count.** The introduction said "700 copies … 31 Jan 2014 to
+   22 Jul 2025, plus 4 copies since 19 May 2026": 700 is every usable copy,
+   so the 4 reformed copies were counted twice and the 2 copies excluded by
+   the partial-export rule as used. The old-regime series uses 694. The
+   same sentence was on version 2's page served since 2026-09-16, so it is
+   listed in `corrections.json`, which the page's Corrections section now
+   reads (version 2's record page is not affected).
+5. **Wording.** "Page generated" gave the compute date, which is not the
+   date the page is rendered at release; it now says "Figures computed".
+   The record page names `evidence/v4/rows.ndjson` as where the rows are
+   (it said `series.json`, which since version 2 holds only the summary).
+   Dash punctuation in the propositions is replaced.
+
+Considered and left: the tables give each comparison's determined part and
+each rule's total, not the undetermined part as a column. The declaration
+defines the undetermined part as that difference, the headline states it
+in words, and the evidence carries it to 0.001 for every comparison;
+adding two more columns to fifteen was judged to cost more reading than it
+returns. Tests: `tests/test_connection_slippage_page.py`, five added.

@@ -369,6 +369,58 @@ def test_the_bundled_script_checks_each_date_even_when_two_share_a_publication(t
     assert run.stdout.count("2 line(s) in the pack, as the certificate states") == 2
 
 
+def test_pack_rows_and_the_bundled_script_read_the_ndjson_pack_form(tmp_path):
+    """Morpholog v0.0.12 exports a prefix pack as NDJSON (format 4): a
+    manifest line, `checkpoint_count` checkpoint lines, then one audit row
+    per line. Both readers must give the same rows as the earlier
+    single-document form, and the manifest's row count is checked."""
+    import json
+    import subprocess
+    import sys
+
+    p1 = importer.plan(None, {}, copy("2025-07-22"), [row(), row(mw=5, eff="2027-01-01")])
+    rows = audit_rows_for([p1])
+    manifest = {
+        "pack_format_version": 4,
+        "pack_kind": "prefix",
+        "tree_size": len(rows),
+        "root_hash": "sha256:" + "0" * 64,
+        "checkpoint_hash": "sha256:" + "1" * 64,
+        "checkpoint_count": 2,
+    }
+    checkpoints = [{"tree_size": 1, "root_hash": "x"}, {"tree_size": len(rows), "root_hash": "y"}]
+    ndjson = "".join(json.dumps(x) + "\n" for x in [manifest, *checkpoints, *rows])
+    (tmp_path / "pack.ndjson").write_text(ndjson)
+    (tmp_path / "pack.json").write_text(json.dumps({"rows": rows}))
+
+    assert replay.pack_rows(tmp_path / "pack.ndjson") == rows
+    assert replay.pack_rows(tmp_path / "pack.json") == rows
+
+    short = dict(manifest, tree_size=len(rows) + 1)
+    (tmp_path / "short.ndjson").write_text(
+        "".join(json.dumps(x) + "\n" for x in [short, *checkpoints, *rows])
+    )
+    with pytest.raises(replay.ReplayError):
+        replay.pack_rows(tmp_path / "short.ndjson")
+
+    pubs = list(replay.fold(rows))
+    cert = certificate.record(pubs, "alpha", None, [date(2025, 8, 1), date(2026, 1, 1)], {})
+    (tmp_path / "certificate.json").write_text(json.dumps(cert, default=str))
+    (tmp_path / "lines_from_pack.py").write_text(certificate.LINES_FROM_PACK)
+    outputs = []
+    for pack in ("pack.ndjson", "pack.json"):
+        run = subprocess.run(
+            [sys.executable, "lines_from_pack.py", pack, "certificate.json"],
+            cwd=tmp_path,
+            capture_output=True,
+            text=True,
+        )
+        assert run.returncode == 0, run.stdout
+        outputs.append(run.stdout)
+    assert outputs[0] == outputs[1]
+    assert outputs[0].count("2 line(s) in the pack, as the certificate states") == 2
+
+
 def test_pairing_is_undetermined_on_a_split_or_on_repeated_labels_only():
     split_before = [row(name="S", Stage=None)]
     split_after = [row(name="S", Stage="1"), row(name="S", Stage="2")]

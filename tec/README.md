@@ -78,7 +78,9 @@ record (`CurrentVintage`, `Importing`) and removed it.
   (flagged past 60), any copy held for the interval that the record does not
   include, and the transition that closed its import; then every publication
   in between where the project's lines changed;
-- the **complete** audit pack (`pack.json.gz`) and its signed, witnessed
+- the **complete** audit pack (`pack.ndjson.gz`; `pack.json.gz` in bundles
+  issued before Morpholog v0.0.12, one JSON document rather than a line per
+  row, which still verifies) and its signed, witnessed
   `anchor.json`, the pinned key, DigiCert's root, `lines_from_pack.py` and
   `MANIFEST.json`.
 
@@ -87,10 +89,10 @@ fold of the verified pack give the same lines, and runs the bundled script on
 the pack.
 
 ```bash
-gunzip -k pack.json.gz
-morpholog audit verify-pack pack.json --anchor-file anchor.json \
+gunzip -k pack.ndjson.gz
+morpholog audit verify-pack pack.ndjson --anchor-file anchor.json \
   --require-signing-key tec-2026.pub --trusted-tsa-file digicert-trusted-root-g4.pem
-python3 lines_from_pack.py pack.json certificate.json
+python3 lines_from_pack.py pack.ndjson certificate.json
 ```
 
 The complete pack proves both that the lines are authentic and that nothing

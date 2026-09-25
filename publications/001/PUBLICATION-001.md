@@ -129,3 +129,18 @@ Why the pin matters: the log itself can authorise a signing key, so
 without the pin a checkpoint signed by a key someone registered through the
 record's own rules would still verify; with it, only the committed
 `audit-2026` key counts (checkpoints were signed from tree size 34 on).
+
+### Verification, updated 25/09/2026
+
+The footer above stands as published. Since Morpholog v0.0.12 the
+committed pack is `morpholog/evidence-pack.ndjson` (one audit row per
+line; the same 139 rows and 113 checkpoints as the `evidence-pack.json`
+it replaces, verified against the same anchor), and the earlier binaries
+cannot read that form:
+
+```bash
+morpholog audit verify-pack morpholog/evidence-pack.ndjson \
+  --anchor-file morpholog/audit-anchor.json \
+  --require-signing-key morpholog/trust/audit-2026.pub --require-signatures-from 34
+```
+

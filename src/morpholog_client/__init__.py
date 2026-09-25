@@ -16,11 +16,11 @@ if sys.version_info < (3, 10):
 
 PROGRAM = "grid_mysteries_research_v2"
 MODEL_HASH = "sha256:c9e4b9371e3db420726d501424b8ca1f0766535fe9f549da5fe843e302dbbda2"
-MORPHOLOG_VERSION = "0.0.11"
+MORPHOLOG_VERSION = "0.0.12"
 PYTHON_FLOOR = (3, 10)
 
 from . import envelopes, models, values  # noqa: E402
-from .adapter import Morpholog, MorphologError  # noqa: E402
+from .adapter import Morpholog, MorphologBatchIncomplete, MorphologError  # noqa: E402
 from .session import (  # noqa: E402
     MorphologOutcomeUnknown,
     MorphologRequestError,
@@ -53,6 +53,7 @@ __all__ = [
     "MORPHOLOG_VERSION",
     "PYTHON_FLOOR",
     "Morpholog",
+    "MorphologBatchIncomplete",
     "MorphologError",
     "MorphologOutcomeUnknown",
     "MorphologRequestError",

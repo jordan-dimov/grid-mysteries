@@ -13,9 +13,9 @@ the machine it was produced on:
 | `controls/` | negative tests: transitions that must be **refused**, with the exact refusing rule pinned (`scripts/check-controls`, CI-run against a disposable database) |
 | `claims-export.json` | derived convenience export of the admitted claims |
 | `audit-anchor.json` | externally-held Merkle checkpoint over the audit log — **signed** (Ed25519, key `audit-2026`) from tree_size 34 onward |
-| `evidence-pack.json` | portable audit pack; verifies **offline** against the anchor with no database (embedded signatures crypto-checked; key authority folded from the pack's own `AuditSigningKey` claim; the signer pinned to `trust/audit-2026.pub` from tree_size 34 on) |
+| `evidence-pack.ndjson` | portable audit pack (Morpholog pack format 4: a manifest line, the checkpoints, then one audit row per line, so it streams; `evidence-pack.json`, the single-document form, until 25/09/2026); verifies **offline** against the anchor with no database (embedded signatures crypto-checked; key authority folded from the pack's own `AuditSigningKey` claim; the signer pinned to `trust/audit-2026.pub` from tree_size 34 on) |
 | `trust/audit-2026.pub` | the signing public key the verifier pins (`audit verify-pack --require-signing-key`): a checkpoint signed by any other key fails, even one authorised by a claim in the log |
-| `MIGRATION-RUNBOOK.md` | how each database is migrated when the Morpholog pin moves (forward-only; rehearse on a copy, back up, migrate, verify byte-identical). Audit rows written before schema 14 (v0.0.11) carry no parameter names; later rows do |
+| `MIGRATION-RUNBOOK.md` | how each database is migrated when the Morpholog pin moves (forward-only; rehearse on a copy, back up, migrate, verify byte-identical, re-provision the managed indexes). Audit rows written before schema 14 (v0.0.11) carry no parameter names; later rows do |
 
 ## Verify it yourself
 
@@ -30,7 +30,7 @@ even one the log itself authorises; checkpoints are signed from tree size
 34 on):
 
 ```bash
-morpholog audit verify-pack morpholog/evidence-pack.json \
+morpholog audit verify-pack morpholog/evidence-pack.ndjson \
   --anchor-file morpholog/audit-anchor.json \
   --require-signing-key morpholog/trust/audit-2026.pub --require-signatures-from 34
 ```
@@ -62,12 +62,12 @@ accepted proposal, in the same commit:
 2. refresh `claims-export.json` (`morpholog inspect claims`);
 3. record a new signed checkpoint over the extended log, witnessed by
    two RFC 3161 authorities (freetsa.org, DigiCert), into
-   `audit-anchor.json`, and re-export `evidence-pack.json`.
+   `audit-anchor.json`, and re-export `evidence-pack.ndjson`.
 
 Checkpoints before tree_size 140 carry no witness. freetsa.org's tokens
-are stored but reported `unsupported` by Morpholog v0.0.11, which cannot
-yet check their signature algorithm (ECDSA with SHA-512); DigiCert's
-verify against `trust/tsa/`.
+are stored but reported `unsupported` by Morpholog v0.0.11 and v0.0.12,
+which cannot yet check their signature algorithm (ECDSA with SHA-512);
+DigiCert's verify against `trust/tsa/`.
 
 `scripts/replay-research` fails if any of these drift, so CI enforces the
 discipline. The research doctrine for *what* belongs in the record (narrow

@@ -113,4 +113,30 @@ def stream_audit(database_url: str, limit: int | None = None) -> Iterator[dict[s
 
 
 def pack_rows(pack_path: Path) -> list[dict[str, Any]]:
+    """The audit rows of a complete-prefix pack, in log order, whichever
+    form the pack takes: NDJSON (Morpholog pack format 4, from v0.0.12: a
+    manifest line, `checkpoint_count` checkpoint lines, then one row per
+    line) or the earlier single JSON document with a `rows` array."""
+    with pack_path.open() as handle:
+        first = handle.readline()
+        try:
+            head = json.loads(first)
+        except json.JSONDecodeError:
+            head = None
+        streamed = isinstance(head, dict) and head.get("pack_kind") == "prefix"
+        if streamed and "checkpoint_count" in head:
+            to_skip = int(head["checkpoint_count"])
+            rows: list[dict[str, Any]] = []
+            for line in handle:
+                if not line.strip():
+                    continue
+                if to_skip:
+                    to_skip -= 1
+                    continue
+                rows.append(json.loads(line))
+            if len(rows) != int(head["tree_size"]):
+                raise ReplayError(
+                    f"pack holds {len(rows)} rows, its manifest says {head['tree_size']}"
+                )
+            return rows
     return list(json.loads(pack_path.read_text())["rows"])

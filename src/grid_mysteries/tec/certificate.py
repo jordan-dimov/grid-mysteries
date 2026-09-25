@@ -28,15 +28,29 @@ from grid_mysteries.tec.replay import Publication
 LINES_FROM_PACK: Final = '''#!/usr/bin/env python3
 """Re-derive this certificate's lines from the pack alone (standard library).
 
-    python3 lines_from_pack.py pack.json certificate.json
+    python3 lines_from_pack.py pack.ndjson certificate.json
 
 Folds the pack's transitions in order, keeping the Row claims, and at each
 closing transition the certificate names prints the rows whose project name
-(and stage, if the certificate names one) match. Run it after verify-pack."""
+(and stage, if the certificate names one) match. Run it after verify-pack.
+The pack may be NDJSON (Morpholog pack format 4: a manifest line, the
+checkpoints, then one row per line) or the earlier single JSON document."""
 import json, re, sys
 from decimal import Decimal, InvalidOperation
 
-pack = json.load(open(sys.argv[1]))
+def pack_rows(path):
+    with open(path) as handle:
+        try:
+            head = json.loads(handle.readline())
+        except ValueError:
+            head = None
+        streamed = isinstance(head, dict) and head.get("pack_kind") == "prefix"
+        if streamed and "checkpoint_count" in head:
+            lines = [line for line in handle if line.strip()]
+            return [json.loads(line) for line in lines[head["checkpoint_count"]:]]
+    return json.load(open(path))["rows"]
+
+rows = pack_rows(sys.argv[1])
 cert = json.load(open(sys.argv[2]))
 norm = lambda s: re.sub(r"[^a-z0-9]+", " ", str(s or "").lower()).strip()
 def stage(s):
@@ -53,7 +67,7 @@ for a in cert["as_of"]:
         wanted.setdefault(a["close_transition"], []).append(a)
 held = {}
 ok = True
-for row in pack["rows"]:
+for row in rows:
     for c in row["retracted_claims"]:
         if c["predicate"] == "Row":
             held.pop(c["args"][0]["value"], None)

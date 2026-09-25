@@ -39,7 +39,7 @@ echo "== offline evidence-pack verification (no database consulted)"
 # onward; the earlier ones are honestly unsigned and are not asked.
 # RFC 3161 witnesses on the checkpoints are judged against the committed
 # TSA roots (trust/tsa/); an invalid one fails the verification.
-morpholog audit verify-pack morpholog/evidence-pack.json --anchor-file morpholog/audit-anchor.json \
+morpholog audit verify-pack morpholog/evidence-pack.ndjson --anchor-file morpholog/audit-anchor.json \
   --require-signing-key morpholog/trust/audit-2026.pub --require-signatures-from 34 \
   --trusted-tsa-file <(cat trust/tsa/freetsa-cacert.pem trust/tsa/digicert-trusted-root-g4.pem)
 
@@ -62,11 +62,19 @@ import json, os
 # held by the machine) plus claims-vs-audit replay divergence — both
 # asserted elsewhere in this script. No-op until the pack has v2
 # governance rows.
-pack = json.load(open('morpholog/evidence-pack.json'))
+# The pack is NDJSON (Morpholog pack format 4): a manifest line, then
+# checkpoint_count checkpoint lines, then one audit row per line.
+with open('morpholog/evidence-pack.ndjson') as pack_file:
+    manifest = json.loads(pack_file.readline())
+    lines = [line for line in pack_file if line.strip()]
+rows = [json.loads(line) for line in lines[manifest['checkpoint_count']:]]
+declared = manifest['tree_size']
+if len(rows) != declared:
+    raise SystemExit(f'pack holds {len(rows)} rows, its manifest says {declared}')
 expected = os.environ['EXPECTED_HUMAN_LOGIN_ROLE']
 governance = {'establish_governance', 'seal_protocol', 'approve_publication'}
 checked = 0
-for row in pack['rows']:
+for row in rows:
     if row['transformation_name'] in governance:
         who = (row.get('attestation') or {}).get('authenticated_by')
         if who != expected:

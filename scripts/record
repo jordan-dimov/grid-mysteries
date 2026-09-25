@@ -92,12 +92,12 @@ if ! morpholog audit checkpoint --signing-key "$SIGNING_KEY" --key-id audit-2026
   echo "record: checkpoint recorded but a timestamp authority failed; marker left at $MARKER." >&2
   echo "record: retry, then finish by hand:" >&2
   echo "  morpholog audit witness --tree-size $tree_size ${WITNESSES[*]} > morpholog/audit-anchor.json" >&2
-  echo "  morpholog audit export > morpholog/evidence-pack.json" >&2
+  echo "  morpholog audit export > morpholog/evidence-pack.ndjson" >&2
   echo "  (verify as below, then rm $MARKER)" >&2
   exit 1
 fi
-morpholog audit export > morpholog/evidence-pack.json
-morpholog audit verify-pack morpholog/evidence-pack.json --anchor-file morpholog/audit-anchor.json \
+morpholog audit export > morpholog/evidence-pack.ndjson
+morpholog audit verify-pack morpholog/evidence-pack.ndjson --anchor-file morpholog/audit-anchor.json \
   --require-signing-key morpholog/trust/audit-2026.pub --require-signatures-from 34 \
   --trusted-tsa-file <(cat trust/tsa/freetsa-cacert.pem trust/tsa/digicert-trusted-root-g4.pem) >/dev/null
 rm -f "$MARKER"

@@ -147,7 +147,12 @@ def exported_pack(anchor_path: Path, anchor: dict[str, Any]) -> Path:
     """The complete pack at the anchor's tree size, exported once, verified
     offline against the anchor with the pinned key, and kept."""
     tree = anchor["tree_size"]
-    pack = DERIVED / "packs" / f"tree-{tree}.json"
+    pack = DERIVED / "packs" / f"tree-{tree}.ndjson"
+    # Morpholog up to v0.0.11 exported one JSON document; a pack exported
+    # then is kept as it is (it still verifies) rather than re-exported.
+    legacy = pack.with_suffix(".json")
+    if legacy.exists() and not pack.exists():
+        pack = legacy
     if not pack.exists():
         pack.parent.mkdir(parents=True, exist_ok=True)
         tmp = pack.with_suffix(".tmp")
@@ -261,7 +266,7 @@ def slug(project: str, stage: str | None, dates: list[date]) -> str:
     return f"{base}{stage_part}-" + "-".join(d.isoformat() for d in dates)
 
 
-def render(cert: dict[str, Any], anchor: dict[str, Any], issued: str) -> str:
+def render(cert: dict[str, Any], anchor: dict[str, Any], issued: str, pack_name: str) -> str:
     out = [
         f"# TEC register record: {cert['project']}"
         + (f", stage {cert['stage']}" if cert["stage"] else ""),
@@ -334,10 +339,10 @@ def render(cert: dict[str, Any], anchor: dict[str, Any], issued: str) -> str:
         "## Verify it yourself",
         "",
         "```bash",
-        "gunzip -k pack.json.gz",
-        "morpholog audit verify-pack pack.json --anchor-file anchor.json \\",
+        f"gunzip -k {pack_name}.gz",
+        f"morpholog audit verify-pack {pack_name} --anchor-file anchor.json \\",
         "  --require-signing-key tec-2026.pub --trusted-tsa-file digicert-trusted-root-g4.pem",
-        "python3 lines_from_pack.py pack.json certificate.json",
+        f"python3 lines_from_pack.py {pack_name} certificate.json",
         "```",
         "",
         "The first command checks, with no database, that the pack is the complete record up",
@@ -350,7 +355,7 @@ def render(cert: dict[str, Any], anchor: dict[str, Any], issued: str) -> str:
 
 
 def compressed(pack: Path) -> Path:
-    gz = pack.with_suffix(".json.gz")
+    gz = pack.with_name(pack.name + ".gz")
     if not gz.exists() or gz.stat().st_mtime < pack.stat().st_mtime:
         with pack.open("rb") as src, gzip.open(gz, "wb", compresslevel=6) as dst:
             shutil.copyfileobj(src, dst)
@@ -424,12 +429,12 @@ def cmd_certify(args: argparse.Namespace) -> None:
     cert["issued"] = issued
     cert["anchor"] = {k: anchor[k] for k in ("tree_size", "root_hash", "checkpoint_hash")}
     write_json(out / "certificate.json", cert)
-    (out / "CERTIFICATE.md").write_text(render(cert, anchor, issued))
+    (out / "CERTIFICATE.md").write_text(render(cert, anchor, issued, f"pack{pack.suffix}"))
     shutil.copyfile(anchor_path, out / "anchor.json")
     shutil.copyfile(PUBLIC_KEY, out / "tec-2026.pub")
     shutil.copyfile(DIGICERT_ROOT, out / "digicert-trusted-root-g4.pem")
     (out / "lines_from_pack.py").write_text(certificate.LINES_FROM_PACK)
-    shutil.copyfile(compressed(pack), out / "pack.json.gz")
+    shutil.copyfile(compressed(pack), out / f"pack{pack.suffix}.gz")
     files = sorted(p for p in out.iterdir() if p.name != "MANIFEST.json")
     manifest = {
         "certificate": out.name,

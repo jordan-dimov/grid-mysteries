@@ -3472,5 +3472,14 @@
   "sha256": "6662cce1b709548a8b346b24b73038c4ae08a1828b11e8faa56f9e760c28ccae",
   "fetched_at": "2026-09-24T06:23:02.481341+00:00",
   "bytes": 241
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-09-24&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-09-24.json",
+  "sha256": "6c1eeb810fb48dd4add20d23c8e64900e879a2f0cfb09b047563932a7c20a724",
+  "fetched_at": "2026-09-25T06:23:02.219570+00:00",
+  "bytes": 721
  }
 ]

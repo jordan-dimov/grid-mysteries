@@ -195,8 +195,9 @@ def render_cautions(rows: list[dict[str, Any]]) -> str:
         )
     if any(bsad_provisional(r) for r in rows):
         lines.append(
-            f"{BSAD_PROVISIONAL} Provisional: the grid operator may not have finished filling "
-            f"the marked days. {BSAD_PROVISIONAL_CAUTION}"
+            f"{BSAD_PROVISIONAL} Provisional: on the marked days the grid operator's figure "
+            f"has appeared once and has not yet been repeated by a later file. "
+            f"{BSAD_PROVISIONAL_CAUTION}"
         )
     return "".join(f'<p class="notes">{escape(line)}</p>\n' for line in lines)
 

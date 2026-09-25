@@ -173,14 +173,16 @@ def test_the_t2_note_renders_only_beside_the_failure_it_describes():
 
 
 def test_page_cautions_mark_cells_and_add_one_line_each():
-    ambiguous = dict(ROW, settlement_date="2026-09-12", sign_convention_holds=False)
+    ambiguous = dict(
+        ROW, settlement_date="2026-09-12", sign_convention_holds=False, bsad_provisional=True
+    )
     cells = bb.row_cells(ambiguous, "2026-09-19")
     assert cells[2] == "£3.77m (11.2%) ‡" and cells[7] == "£3.33m (9.9%) §"
     page = bb.render_page(tracker([ambiguous]))
     assert page.count('<p class="notes">‡ Wind figure ambiguous') == 1
     assert (
-        "the marked days. The declared rule treats a day with rows as populated, so this is "
-        "a caution, not a reclassification.</p>" in page
+        "not yet been repeated by a later file. A reading counts once the next pinned NESO "
+        "vintage reproduces it unchanged (013 Amendment 1)" in page
     )
     assert "‡ Wind" not in bb.render_page(tracker([ROW])) and "§ Prov" not in bb.render_page(
         tracker([ROW])

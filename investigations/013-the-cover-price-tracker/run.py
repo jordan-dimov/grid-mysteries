@@ -233,7 +233,7 @@ def day_vintage(day: str) -> Path | None:
 # --------------------------------------------------------------------- rows
 
 
-def tracked_row(day: str, entries: dict[str, dict], neso_vintage: str | None) -> dict[str, Any]:
+def tracked_row(day: str, entries: dict[str, dict]) -> dict[str, Any]:
     index = cp.batch_index(day)
     folder = day_vintage(day)
     row: dict[str, Any] = {
@@ -282,9 +282,11 @@ def tracked_row(day: str, entries: dict[str, dict], neso_vintage: str | None) ->
     mid = rd.mid_prices(load_records(mid_path), settlement_date=day) if mid_path.exists() else {}
     row["mid_periods"] = len(mid)
     row.update(cp.volume_columns(pairing, reconciliation["chosen"], mid))
-    # L3 from the latest NESO vintage on disk (Amendment 1 of 012 applies).
-    row["bsad_vintage"] = neso_vintage
-    row.update(cp.bsad_columns(bsad_for(day, neso_vintage) if neso_vintage else None, led.paid_out))
+    # L3 append-only (013 Amendment 1): every pinned NESO vintage in order,
+    # first populated reading kept, later differing readings listed, the
+    # reading confirmed by the next vintage decides T1. 012 Amendment 1
+    # (all-zero rows are unpopulated) applies to each vintage.
+    row.update(cp.bsad_by_vintage([(v, bsad_for(day, v)) for v in neso_vintages()], led.paid_out))
     return row
 
 
@@ -404,7 +406,6 @@ def append_outcomes(rows: list[dict[str, Any]], previous: dict[str, dict[str, An
 def compute(run_date: str) -> dict[str, Any]:
     entries = manifest_entries()
     vintages = neso_vintages()
-    latest_neso = vintages[-1] if vintages else None
     previous = {r["settlement_date"]: r for r in load_tracker().get("rows", [])}
     rows = seed_rows()
     pinned_days = (
@@ -413,7 +414,7 @@ def compute(run_date: str) -> dict[str, Any]:
         else []
     )
     for day in pinned_days:
-        rows.append(tracked_row(day, entries, latest_neso))
+        rows.append(tracked_row(day, entries))
     append_outcomes(rows, previous)
     ordered = cp.flag_records(rows)
     tracker = {

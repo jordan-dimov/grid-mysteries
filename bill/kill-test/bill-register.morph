@@ -1,0 +1,16 @@
+-- Kill test, 25/09/2026: can the kernel refuse a changed row that the
+-- current 013 runner accepts silently? One predicate, one transformation,
+-- no way to change a row once admitted.
+program balancing_bill_kill_test
+
+-- One tracker row per settlement day per rule version. Values are the
+-- declared figures as printed by the runner (Decimal text, "-" where not
+-- computable), and artefacts_digest is the SHA-256 over the sorted digests
+-- of every pinned artefact the row was computed from.
+predicate DayRow(day: Date, rule: Subject, source: Subject, paid_out_gbp: Subject, net_gbp: Subject, wind_bid_gbp: Subject, gas_offer_gbp: Subject, other_gbp: Subject, two_cut_gbp: Subject, sign: Subject, disptav_type: Subject, gas_offer_vwap: Subject, premium: Subject, bsad_net_gbp: Subject, artefacts_digest: Subject)
+    unique by (day, rule)
+    append only
+
+transformation add_day(day, rule, source, paid_out_gbp, net_gbp, wind_bid_gbp, gas_offer_gbp, other_gbp, two_cut_gbp, sign, disptav_type, gas_offer_vwap, premium, bsad_net_gbp, artefacts_digest):
+    require day_is_new: not DayRow(day, rule, _, _, _, _, _, _, _, _, _, _, _, _, _)
+    admit DayRow(day, rule, source, paid_out_gbp, net_gbp, wind_bid_gbp, gas_offer_gbp, other_gbp, two_cut_gbp, sign, disptav_type, gas_offer_vwap, premium, bsad_net_gbp, artefacts_digest)

@@ -258,9 +258,16 @@ def test_evaluate_none_without_instances_and_counterexample_fails():
     rows = cp.flag_records(
         [
             row("2026-09-08", "100", seed=True),
-            row("2026-09-09", "120", bsad_share="0.0600", premium_gbp_per_mwh="51"),
-            row("2026-09-10", "130", bsad_share="0.0500", premium_gbp_per_mwh="49.99"),
-            row("2026-09-11", "140", bsad_share=None, premium_gbp_per_mwh=None),
+            row("2026-09-09", "120", bsad_deciding_share="0.0600", premium_gbp_per_mwh="51"),
+            row("2026-09-10", "130", bsad_deciding_share="0.0500", premium_gbp_per_mwh="49.99"),
+            # populated but provisional: shown on the page, undecided for T1
+            row(
+                "2026-09-11",
+                "140",
+                bsad_share="0.0700",
+                bsad_deciding_share=None,
+                premium_gbp_per_mwh=None,
+            ),
         ]
     )
     verdicts = cp.evaluate(rows, date(2027, 3, 31))
@@ -269,6 +276,56 @@ def test_evaluate_none_without_instances_and_counterexample_fails():
     assert verdicts["T3"]["holds"] is False
     assert [i["holds"] for i in verdicts["T1"]["instances"]] == [True, False, None]
     assert verdicts["falsifier_date_reached"] is True
+
+
+# ------------------------------------------------- L3 append-only (Amendment 1)
+
+
+def _bsad(rows_nonzero: int, cost: str = "10") -> dict:
+    live = [{"TradeFlag": "T", "DisaggregatedBSADCost": cost, "DisaggregatedBSADVolume": "1"}]
+    placeholder = [{"TradeFlag": "F", "DisaggregatedBSADCost": "0", "DisaggregatedBSADVolume": "0"}]
+    return rd.bsad_summary(live * rows_nonzero + placeholder * (48 - rows_nonzero))
+
+
+def test_bsad_first_populated_vintage_is_kept_and_later_changes_are_listed():
+    readings = [
+        ("2026-09-15", _bsad(0)),  # placeholder only: not populated
+        ("2026-09-16", _bsad(3)),  # first populated: kept
+        ("2026-09-17", _bsad(5)),  # grew: a revision
+        ("2026-09-18", _bsad(5)),  # reproduced: confirms 09-17
+        ("2026-09-19", _bsad(5)),
+    ]
+    out = cp.bsad_by_vintage(readings, D("1000"))
+    assert out["bsad_vintage"] == "2026-09-16" and out["bsad_net_gbp"] == "30"
+    assert out["bsad_share"] == "0.0300" and out["bsad_rows"] == 48
+    assert [r["vintage"] for r in out["bsad_revisions"]] == ["2026-09-17"]
+    assert out["bsad_revisions"][0]["bsad_net_gbp"] == "50"
+    assert out["bsad_confirmed_vintage"] == "2026-09-17"
+    assert out["bsad_deciding_net_gbp"] == "50" and out["bsad_deciding_share"] == "0.0500"
+    assert out["bsad_provisional"] is False
+
+
+def test_bsad_is_provisional_until_the_next_vintage_reproduces_it():
+    out = cp.bsad_by_vintage([("2026-09-15", _bsad(0)), ("2026-09-16", _bsad(3))], D("1000"))
+    assert out["bsad_vintage"] == "2026-09-16" and out["bsad_net_gbp"] == "30"
+    assert out["bsad_provisional"] is True and out["bsad_confirmed_vintage"] is None
+    assert out["bsad_deciding_share"] is None and out["bsad_revisions"] == []
+    assert cp.bsad_provisional({"bsad_provisional": True, "bsad_net_gbp": "30"}) is True
+    # a change of reading each vintage stays provisional and lists each change
+    out = cp.bsad_by_vintage(
+        [("2026-09-16", _bsad(3)), ("2026-09-17", _bsad(4)), ("2026-09-18", _bsad(5))], D("1000")
+    )
+    assert out["bsad_provisional"] is True
+    assert [r["vintage"] for r in out["bsad_revisions"]] == ["2026-09-17", "2026-09-18"]
+
+
+def test_bsad_unpopulated_in_every_vintage_stays_blank_never_zero():
+    out = cp.bsad_by_vintage([("2026-09-15", _bsad(0)), ("2026-09-16", _bsad(0))], D("1000"))
+    assert out["bsad_vintage"] == "2026-09-16" and out["bsad_placeholder_only"] is True
+    assert out["bsad_net_gbp"] is None and out["bsad_provisional"] is False
+    assert out["bsad_revisions"] == [] and out["bsad_deciding_share"] is None
+    none = cp.bsad_by_vintage([], D("1000"))
+    assert none["bsad_vintage"] is None and none["bsad_available"] is False
 
 
 def test_t2_decided_on_tracked_days_only_seeds_shown_as_context():
@@ -351,18 +408,22 @@ def test_display_cautions_mark_values_without_changing_them():
         "other_share": "0.130",
         "bsad_net_gbp": "72.86",
         "bsad_share": "0.0000",
+        "bsad_provisional": True,
         "sign_convention_holds": True,
         "outcome": None,
     }
-    quiet = dict(base, settlement_date="2026-09-16")
+    quiet = dict(base, settlement_date="2026-09-16", bsad_provisional=False)
     assert cp.render_table([quiet]) == "\n".join([cp.TABLE_HEADER, cp.render_row(quiet)])
     assert "‡" not in cp.render_row(quiet) and "§" not in cp.render_row(quiet)
     line = cp.render_row(dict(base, sign_convention_holds=False))
     assert "| 2.80 (11.9 %) ‡ |" in line and "| 0.00 (0.0 %) § |" in line
     table = cp.render_table([dict(base, sign_convention_holds=False)])
     assert table.endswith(
-        "§ BSAD provisional: NESO may not have finished filling the marked days. The declared "
-        "rule treats a day with rows as populated, so this is a caution, not a reclassification."
+        "§ BSAD provisional on the marked days: populated in the vintage shown, not yet "
+        "reproduced by a later one. A reading counts once the next pinned NESO vintage "
+        "reproduces it unchanged (013 Amendment 1); the first reading stays on the page, later "
+        "ones are listed in `evidence/tracker.json` as revisions, and T1 is decided on the "
+        "confirmed reading."
     )
     assert "\n\n‡ The sign check on wind-unit bids failed" in table
     unpopulated = dict(base, bsad_net_gbp=None, bsad_share=None, bsad_placeholder_only=True)

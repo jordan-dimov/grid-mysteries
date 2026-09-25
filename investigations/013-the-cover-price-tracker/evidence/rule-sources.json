@@ -1,8 +1,9 @@
 {
  "declaration": [
-  "DECLARATION-T4.md"
+  "DECLARATION-T4.md",
+  "AMENDMENT-1.md"
  ],
- "note": "Maps T4's rules only. DECLARATION.md (T1 to T3) was frozen on 2026-09-11, before the rule-to-test map existed; its rules are tested in tests/test_cover_price.py but are not mapped here after the fact.",
+ "note": "Maps T4's rules only. DECLARATION.md (T1 to T3) was frozen on 2026-09-11, before the rule-to-test map existed; its rules are tested in tests/test_cover_price.py but are not mapped here after the fact. AMENDMENT-1.md (L3 append-only, 2026-09-25) is mapped below as A1.*.",
  "rules": {
   "W1 no seed day and no day before 2026-09-16 or after 2027-03-31 qualifies": "tests/test_cover_price_t4.py::test_no_day_before_2026_09_16_and_no_seed_day_ever_qualifies",
   "X1 x is wind-unit accepted bid MWh over settlement accepted bid MWh, absolute, only when a DISPTAV type reconciles": "tests/test_cover_price_t4.py::test_x_is_wind_bid_volume_over_settlement_bid_volume_and_needs_the_gate",
@@ -14,6 +15,11 @@
   "V2 on or after 2027-03-31: n >= 20 decides holds or fails; n < 20 is undecided": "tests/test_cover_price_t4.py::test_the_verdict_on_the_falsifier_date",
   "V3 an L1 published after 2027-03-31 never enters, so a later run reaches the same verdict": "tests/test_cover_price_t4.py::test_a_later_run_reaches_the_same_verdict",
   "R1 no running statistic is displayed before the falsifier date": "tests/test_cover_price_t4.py::test_describe_shows_only_the_count_before_the_date_and_both_renderers_use_it",
-  "C1 context rho values and points are reported only with the verdict and never decide it": "tests/test_cover_price_t4.py::test_context_is_reported_only_with_the_verdict_and_never_changes_it"
+  "C1 context rho values and points are reported only with the verdict and never decide it": "tests/test_cover_price_t4.py::test_context_is_reported_only_with_the_verdict_and_never_changes_it",
+  "A1.1 L3 keeps the first vintage in which the day is populated; a later differing reading is listed as a dated revision, never edited": "tests/test_cover_price.py::test_bsad_first_populated_vintage_is_kept_and_later_changes_are_listed",
+  "A1.2 a reading is confirmed when the next pinned vintage reproduces it unchanged; until then the day is provisional": "tests/test_cover_price.py::test_bsad_is_provisional_until_the_next_vintage_reproduces_it",
+  "A1.3 a day populated in no vintage stays blank, never zero": "tests/test_cover_price.py::test_bsad_unpopulated_in_every_vintage_stays_blank_never_zero",
+  "A1.4 T1 is decided on the confirmed reading; a provisional record day is undecided": "tests/test_cover_price.py::test_evaluate_none_without_instances_and_counterexample_fails",
+  "A1.5 the provisional mark comes from the row's own flag and the note says what it means": "tests/test_cover_price.py::test_display_cautions_mark_values_without_changing_them"
  }
 }

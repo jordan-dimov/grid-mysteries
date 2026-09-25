@@ -20,6 +20,7 @@ instrument needs:
 """
 
 from collections import defaultdict
+from collections.abc import Sequence
 from dataclasses import dataclass, field
 from datetime import date, timedelta
 from decimal import Decimal
@@ -320,6 +321,68 @@ def bsad_columns(summary: dict[str, Any] | None, paid_out: Decimal) -> dict[str,
     }
 
 
+def _bsad_reading(summary: dict[str, Any] | None) -> tuple[int, str] | None:
+    """(rows, net £) of a populated reading; None when unpopulated or absent."""
+    if summary is None or not summary.get("available"):
+        return None
+    return int(summary["rows"]), str(Decimal(summary["net_cost_gbp"]))
+
+
+def bsad_by_vintage(
+    readings: Sequence[tuple[str, dict[str, Any] | None]], paid_out: Decimal
+) -> dict[str, Any]:
+    """L3 append-only (013 Amendment 1), pure over the day's BSAD summaries
+    in pinned-vintage order.
+
+    The first vintage in which the day is populated is kept as the row's
+    L3 columns and never edited; a later vintage whose (rows, net £) differ
+    from the last reading listed is appended to `bsad_revisions`. The first
+    populated vintage whose reading is reproduced unchanged by the next
+    pinned vintage is the confirmed one, and T1 is decided on it; until it
+    exists the day is provisional. A day populated in no vintage keeps the
+    placeholder columns of the last vintage read (blank, never zero).
+    """
+    populated: list[tuple[str, dict[str, Any]]] = [
+        (v, s) for v, s in readings if s is not None and _bsad_reading(s) is not None
+    ]
+    if not populated:
+        last = readings[-1][1] if readings else None
+        return {
+            "bsad_vintage": readings[-1][0] if readings else None,
+            **bsad_columns(last, paid_out),
+            "bsad_revisions": [],
+            "bsad_confirmed_vintage": None,
+            "bsad_deciding_net_gbp": None,
+            "bsad_deciding_share": None,
+            "bsad_provisional": False,
+        }
+    first_vintage, first = populated[0]
+    out: dict[str, Any] = {"bsad_vintage": first_vintage, **bsad_columns(first, paid_out)}
+    revisions: list[dict[str, Any]] = []
+    listed = _bsad_reading(first)
+    for vintage, summary in populated[1:]:
+        reading = _bsad_reading(summary)
+        if reading != listed:
+            revisions.append({"vintage": vintage, **bsad_columns(summary, paid_out)})
+            listed = reading
+    confirmed: tuple[str, dict[str, Any]] | None = None
+    for (vintage, summary), (_, following) in zip(populated, populated[1:], strict=False):
+        if _bsad_reading(summary) == _bsad_reading(following):
+            confirmed = (vintage, summary)
+            break
+    deciding = bsad_columns(confirmed[1], paid_out) if confirmed else None
+    out.update(
+        {
+            "bsad_revisions": revisions,
+            "bsad_confirmed_vintage": confirmed[0] if confirmed else None,
+            "bsad_deciding_net_gbp": deciding["bsad_net_gbp"] if deciding else None,
+            "bsad_deciding_share": deciding["bsad_share"] if deciding else None,
+            "bsad_provisional": confirmed is None,
+        }
+    )
+    return out
+
+
 def outcome_columns(
     constraints_gbp: Decimal | None,
     constraint_offers_mwh: Decimal | None,
@@ -391,11 +454,15 @@ def evaluate(rows: list[dict[str, Any]], as_of: date) -> dict[str, Any]:
     record days) and are shown as context for T2, which is decided on
     tracked days only."""
     records = [r for r in rows if r.get("record")]
+    # T1 is decided on the confirmed reading (013 Amendment 1): a record day
+    # whose BSAD is still provisional leaves its instance undecided.
     t1 = [
         _instance(
             r,
-            r.get("bsad_share"),
-            None if r.get("bsad_share") is None else Decimal(r["bsad_share"]) > T1_BSAD_SHARE_MIN,
+            r.get("bsad_deciding_share"),
+            None
+            if r.get("bsad_deciding_share") is None
+            else Decimal(r["bsad_deciding_share"]) > T1_BSAD_SHARE_MIN,
         )
         for r in records
     ]
@@ -482,10 +549,10 @@ TABLE_HEADER = (
 #: is marked by a rule nobody declared.
 WIND_AMBIGUOUS = "‡"
 BSAD_PROVISIONAL = "§"
-PROVISIONAL_BSAD_DAYS = frozenset({"2026-09-12", "2026-09-13"})
 BSAD_PROVISIONAL_CAUTION = (
-    "The declared rule treats a day with rows as populated, so this is a caution, "
-    "not a reclassification."
+    "A reading counts once the next pinned NESO vintage reproduces it unchanged "
+    "(013 Amendment 1); the first reading stays on the page, later ones are listed "
+    "in `evidence/tracker.json` as revisions, and T1 is decided on the confirmed reading."
 )
 
 
@@ -494,9 +561,8 @@ def wind_ambiguous(row: dict[str, Any]) -> bool:
 
 
 def bsad_provisional(row: dict[str, Any]) -> bool:
-    return (
-        row.get("settlement_date") in PROVISIONAL_BSAD_DAYS and row.get("bsad_net_gbp") is not None
-    )
+    """Populated in a pinned vintage but not yet reproduced by the next one."""
+    return bool(row.get("bsad_provisional")) and row.get("bsad_net_gbp") is not None
 
 
 def render_row(row: dict[str, Any]) -> str:
@@ -543,8 +609,8 @@ def render_table(rows: list[dict[str, Any]]) -> str:
         )
     if any(bsad_provisional(r) for r in rows):
         notes.append(
-            f"{BSAD_PROVISIONAL} BSAD provisional: NESO may not have finished filling the "
-            f"marked days. {BSAD_PROVISIONAL_CAUTION}"
+            f"{BSAD_PROVISIONAL} BSAD provisional on the marked days: populated in the "
+            f"vintage shown, not yet reproduced by a later one. {BSAD_PROVISIONAL_CAUTION}"
         )
     table = "\n".join([TABLE_HEADER, *(render_row(r) for r in rows)])
     return table + "".join(f"\n\n{n}" for n in notes)

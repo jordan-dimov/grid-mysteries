@@ -2652,5 +2652,2735 @@
         "value": "2026-06-25"
       }
     ]
+  },
+  {
+    "predicate": "DeclarationSealAuthority",
+    "args": [
+      {
+        "type": "subject",
+        "value": "jordan_dimov"
+      }
+    ]
+  },
+  {
+    "predicate": "Declaration",
+    "args": [
+      {
+        "type": "subject",
+        "value": "decl-f001"
+      },
+      {
+        "type": "subject",
+        "value": "forward_study"
+      },
+      {
+        "type": "subject",
+        "value": "F001 connection readiness - declaration"
+      },
+      {
+        "type": "subject",
+        "value": "5238933dace91aa450b88c4625ee2a51f75de04df157f26dc73e8f5a300b0bb9"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-08-23T07:09:49Z"
+      }
+    ]
+  },
+  {
+    "predicate": "Declaration",
+    "args": [
+      {
+        "type": "subject",
+        "value": "decl-f001-stage-test"
+      },
+      {
+        "type": "subject",
+        "value": "kill_test"
+      },
+      {
+        "type": "subject",
+        "value": "F001 category-maturity test v2"
+      },
+      {
+        "type": "subject",
+        "value": "619412bfc3d5eb92e7ae657ff8925041d58a9fb5b07b46af4bbfb0da40c83f7c"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-08-23T07:51:55Z"
+      }
+    ]
+  },
+  {
+    "predicate": "Declaration",
+    "args": [
+      {
+        "type": "subject",
+        "value": "decl-generator-v3"
+      },
+      {
+        "type": "subject",
+        "value": "generator"
+      },
+      {
+        "type": "subject",
+        "value": "Candidate protocol, Generator v3"
+      },
+      {
+        "type": "subject",
+        "value": "ab45edbe72961374801f72677bbc74e1953aa9380341c904cd7b1e2ed40535c6"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-08-26T09:40:57Z"
+      }
+    ]
+  },
+  {
+    "predicate": "Declaration",
+    "args": [
+      {
+        "type": "subject",
+        "value": "decl-generator-v4"
+      },
+      {
+        "type": "subject",
+        "value": "generator"
+      },
+      {
+        "type": "subject",
+        "value": "Candidate protocol, Generator v4"
+      },
+      {
+        "type": "subject",
+        "value": "2ac6efa8e873100d4d06937d61e3f06e38cdcccd86b4fc50fca7ef3d911b2558"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-08-26T09:40:57Z"
+      }
+    ]
+  },
+  {
+    "predicate": "Declaration",
+    "args": [
+      {
+        "type": "subject",
+        "value": "decl-batch-01"
+      },
+      {
+        "type": "subject",
+        "value": "batch"
+      },
+      {
+        "type": "subject",
+        "value": "Generator batch 01"
+      },
+      {
+        "type": "subject",
+        "value": "5f352ebb096b6194571732bed281623879038d9c156b70fb6b36c2f6f80ba8a6"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-08-23T08:34:09Z"
+      }
+    ]
+  },
+  {
+    "predicate": "Declaration",
+    "args": [
+      {
+        "type": "subject",
+        "value": "decl-batch-02"
+      },
+      {
+        "type": "subject",
+        "value": "batch"
+      },
+      {
+        "type": "subject",
+        "value": "Generator batch 02"
+      },
+      {
+        "type": "subject",
+        "value": "4563941874715c0ff1e9a5524c7a6c7ce9ec6501bdcb8ed89db9d48eeb2d2ff4"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-08-26T10:00:06Z"
+      }
+    ]
+  },
+  {
+    "predicate": "Declaration",
+    "args": [
+      {
+        "type": "subject",
+        "value": "decl-f004-kill"
+      },
+      {
+        "type": "subject",
+        "value": "kill_test"
+      },
+      {
+        "type": "subject",
+        "value": "F004 stranded-pipeline absorption kill"
+      },
+      {
+        "type": "subject",
+        "value": "25b50dc64f42b40e535962e6048eb0b4db393138dcad10cfe349ca3448573a40"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-08-26T07:08:15Z"
+      }
+    ]
+  },
+  {
+    "predicate": "Declaration",
+    "args": [
+      {
+        "type": "subject",
+        "value": "decl-k3-c18"
+      },
+      {
+        "type": "subject",
+        "value": "kill_test"
+      },
+      {
+        "type": "subject",
+        "value": "Batch 02 K3 capture test for C18"
+      },
+      {
+        "type": "subject",
+        "value": "592f0162710bb6c43327efd2a46ccbad053a5ad8d3ed8829aca10bf701103bd9"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-08-26T11:08:45Z"
+      }
+    ]
+  },
+  {
+    "predicate": "Declaration",
+    "args": [
+      {
+        "type": "subject",
+        "value": "decl-005"
+      },
+      {
+        "type": "subject",
+        "value": "forensic_study"
+      },
+      {
+        "type": "subject",
+        "value": "Investigation 005 connection-date credibility"
+      },
+      {
+        "type": "subject",
+        "value": "ee48de7859b4100227c2259710b7777fe434edd8e2a265ac7bea700b43d87936"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-08-26T11:44:46Z"
+      }
+    ]
+  },
+  {
+    "predicate": "DeclarationSealed",
+    "args": [
+      {
+        "type": "subject",
+        "value": "decl-f001"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-09-25T22:06:58Z"
+      }
+    ]
+  },
+  {
+    "predicate": "DeclarationSealed",
+    "args": [
+      {
+        "type": "subject",
+        "value": "decl-f001-stage-test"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-09-25T22:06:59Z"
+      }
+    ]
+  },
+  {
+    "predicate": "DeclarationSealed",
+    "args": [
+      {
+        "type": "subject",
+        "value": "decl-generator-v3"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-09-25T22:07:01Z"
+      }
+    ]
+  },
+  {
+    "predicate": "DeclarationSealed",
+    "args": [
+      {
+        "type": "subject",
+        "value": "decl-generator-v4"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-09-25T22:07:02Z"
+      }
+    ]
+  },
+  {
+    "predicate": "DeclarationSealed",
+    "args": [
+      {
+        "type": "subject",
+        "value": "decl-batch-01"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-09-25T22:07:04Z"
+      }
+    ]
+  },
+  {
+    "predicate": "DeclarationSealed",
+    "args": [
+      {
+        "type": "subject",
+        "value": "decl-batch-02"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-09-25T22:07:05Z"
+      }
+    ]
+  },
+  {
+    "predicate": "DeclarationSealed",
+    "args": [
+      {
+        "type": "subject",
+        "value": "decl-f004-kill"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-09-25T22:07:06Z"
+      }
+    ]
+  },
+  {
+    "predicate": "DeclarationSealed",
+    "args": [
+      {
+        "type": "subject",
+        "value": "decl-k3-c18"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-09-25T22:07:08Z"
+      }
+    ]
+  },
+  {
+    "predicate": "DeclarationSealed",
+    "args": [
+      {
+        "type": "subject",
+        "value": "decl-005"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-09-25T22:07:09Z"
+      }
+    ]
+  },
+  {
+    "predicate": "DeclarationSupersedes",
+    "args": [
+      {
+        "type": "subject",
+        "value": "decl-generator-v4"
+      },
+      {
+        "type": "subject",
+        "value": "decl-generator-v3"
+      }
+    ]
+  },
+  {
+    "predicate": "Verdict",
+    "args": [
+      {
+        "type": "subject",
+        "value": "v-b01-c5-k1"
+      },
+      {
+        "type": "subject",
+        "value": "decl-batch-01"
+      },
+      {
+        "type": "subject",
+        "value": "C5"
+      },
+      {
+        "type": "subject",
+        "value": "k1"
+      },
+      {
+        "type": "subject",
+        "value": "absorption_stable"
+      },
+      {
+        "type": "subject",
+        "value": "externalisation already completed (Modo); category mature"
+      },
+      {
+        "type": "subject",
+        "value": "7fd4427e3d5183f9538e36eab3348a6737025b2e4f5feea7fe7ca88b08265c5e"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-08-23T13:11:04Z"
+      }
+    ]
+  },
+  {
+    "predicate": "Verdict",
+    "args": [
+      {
+        "type": "subject",
+        "value": "v-b01-c1-k1"
+      },
+      {
+        "type": "subject",
+        "value": "decl-batch-01"
+      },
+      {
+        "type": "subject",
+        "value": "C1"
+      },
+      {
+        "type": "subject",
+        "value": "k1"
+      },
+      {
+        "type": "subject",
+        "value": "absorption_stable"
+      },
+      {
+        "type": "subject",
+        "value": "transition mistaken for structural change; absorber investing ahead in software"
+      },
+      {
+        "type": "subject",
+        "value": "30bfcac2bc877e23457214e581c56762b91aebc72fbfdec6f50af395561812d7"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-08-23T13:17:17Z"
+      }
+    ]
+  },
+  {
+    "predicate": "Verdict",
+    "args": [
+      {
+        "type": "subject",
+        "value": "v-b01-c6-k1"
+      },
+      {
+        "type": "subject",
+        "value": "decl-batch-01"
+      },
+      {
+        "type": "subject",
+        "value": "C6"
+      },
+      {
+        "type": "subject",
+        "value": "k1"
+      },
+      {
+        "type": "subject",
+        "value": "absorption_plausible_unmeasured"
+      },
+      {
+        "type": "subject",
+        "value": "eligible instrument, series unpublished (DSR test-certificate failures, NESO)"
+      },
+      {
+        "type": "subject",
+        "value": "1deadc22179936142d930cfac2d64b72dc516559977cde0dd90211daab135647"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-08-23T13:27:52Z"
+      }
+    ]
+  },
+  {
+    "predicate": "Verdict",
+    "args": [
+      {
+        "type": "subject",
+        "value": "v-b01-c7-k1"
+      },
+      {
+        "type": "subject",
+        "value": "decl-batch-01"
+      },
+      {
+        "type": "subject",
+        "value": "C7"
+      },
+      {
+        "type": "subject",
+        "value": "k1"
+      },
+      {
+        "type": "subject",
+        "value": "absorption_strain_evidenced"
+      },
+      {
+        "type": "subject",
+        "value": "replanning volume outrunning plan improvement; NESO 17,000 changes vs 2,500-outage plan, 65 engineers"
+      },
+      {
+        "type": "subject",
+        "value": "27e223e24b40d3f1cfa7831ad62b376f79dd3e247b965e21d54e4ebcd32bbe43"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-08-23T14:40:21Z"
+      }
+    ]
+  },
+  {
+    "predicate": "Verdict",
+    "args": [
+      {
+        "type": "subject",
+        "value": "v-b01-c8-k1"
+      },
+      {
+        "type": "subject",
+        "value": "decl-batch-01"
+      },
+      {
+        "type": "subject",
+        "value": "C8"
+      },
+      {
+        "type": "subject",
+        "value": "k1"
+      },
+      {
+        "type": "subject",
+        "value": "absorption_not_determinable"
+      },
+      {
+        "type": "subject",
+        "value": "two of three frozen symptoms unobservable by construction; measurable one leans stable"
+      },
+      {
+        "type": "subject",
+        "value": "ebdff7cfdd82ea2103ac4f382e0b682366a4e9586deda571165675f982ffda49"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-08-26T08:26:58Z"
+      }
+    ]
+  },
+  {
+    "predicate": "Verdict",
+    "args": [
+      {
+        "type": "subject",
+        "value": "v-b01-c3-k1"
+      },
+      {
+        "type": "subject",
+        "value": "decl-batch-01"
+      },
+      {
+        "type": "subject",
+        "value": "C3"
+      },
+      {
+        "type": "subject",
+        "value": "k1"
+      },
+      {
+        "type": "subject",
+        "value": "absorption_plausible_unmeasured"
+      },
+      {
+        "type": "subject",
+        "value": "unit cost of failure published (15 working days per resubmission), failure rate not"
+      },
+      {
+        "type": "subject",
+        "value": "1d8d8e116726d52c8ea592322c775845e2e9b258f128487a9820ccde4663823d"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-08-23T14:49:18Z"
+      }
+    ]
+  },
+  {
+    "predicate": "Verdict",
+    "args": [
+      {
+        "type": "subject",
+        "value": "v-b01-c10-k1"
+      },
+      {
+        "type": "subject",
+        "value": "decl-batch-01"
+      },
+      {
+        "type": "subject",
+        "value": "C10"
+      },
+      {
+        "type": "subject",
+        "value": "k1"
+      },
+      {
+        "type": "subject",
+        "value": "absorption_plausible_unmeasured"
+      },
+      {
+        "type": "subject",
+        "value": "instruments type-blind; new NSIP route absorbed by existing advisers within weeks"
+      },
+      {
+        "type": "subject",
+        "value": "0b149d3e5fda768c8b87c1234b25452c2c5b32a0a8d88c41633ad99fd9fe96fc"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-08-26T08:26:58Z"
+      }
+    ]
+  },
+  {
+    "predicate": "Verdict",
+    "args": [
+      {
+        "type": "subject",
+        "value": "v-b01-c9-k1"
+      },
+      {
+        "type": "subject",
+        "value": "decl-batch-01"
+      },
+      {
+        "type": "subject",
+        "value": "C9"
+      },
+      {
+        "type": "subject",
+        "value": "k1"
+      },
+      {
+        "type": "subject",
+        "value": "absorption_plausible_unmeasured"
+      },
+      {
+        "type": "subject",
+        "value": "assurance spend unobservable; transient IT-migration strain only; GHGP timeline slipped"
+      },
+      {
+        "type": "subject",
+        "value": "bf3b1109a935ed12582dc1ece867c8a44aa41158b07c89273d3a028ad75cf390"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-08-26T08:26:58Z"
+      }
+    ]
+  },
+  {
+    "predicate": "Verdict",
+    "args": [
+      {
+        "type": "subject",
+        "value": "v-b01-c4-k1"
+      },
+      {
+        "type": "subject",
+        "value": "decl-batch-01"
+      },
+      {
+        "type": "subject",
+        "value": "C4"
+      },
+      {
+        "type": "subject",
+        "value": "k1"
+      },
+      {
+        "type": "subject",
+        "value": "absorption_plausible_unmeasured"
+      },
+      {
+        "type": "subject",
+        "value": "disputes private; insurers exclude the peril; one in-house purchase"
+      },
+      {
+        "type": "subject",
+        "value": "b7f2c28c440979ef36af66b01a2ec891bcb3a4120a5e5db96a1ee08a0d68a3f2"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-08-26T08:26:58Z"
+      }
+    ]
+  },
+  {
+    "predicate": "Verdict",
+    "args": [
+      {
+        "type": "subject",
+        "value": "v-b01-c2-k1"
+      },
+      {
+        "type": "subject",
+        "value": "decl-batch-01"
+      },
+      {
+        "type": "subject",
+        "value": "C2"
+      },
+      {
+        "type": "subject",
+        "value": "k1"
+      },
+      {
+        "type": "subject",
+        "value": "absorption_plausible_unmeasured"
+      },
+      {
+        "type": "subject",
+        "value": "quarantined (adjacency); resolving series CMP448 activation metric 0 MW, next 2027-02-01"
+      },
+      {
+        "type": "subject",
+        "value": "de9f7065ce102a3afe4e1eb7b26a4f5432c76bfef3abf37786b9d8ebf73b82ac"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-08-26T08:26:58Z"
+      }
+    ]
+  },
+  {
+    "predicate": "Verdict",
+    "args": [
+      {
+        "type": "subject",
+        "value": "v-b02-c11-gate"
+      },
+      {
+        "type": "subject",
+        "value": "decl-batch-02"
+      },
+      {
+        "type": "subject",
+        "value": "C11"
+      },
+      {
+        "type": "subject",
+        "value": "gate"
+      },
+      {
+        "type": "subject",
+        "value": "eligible_now"
+      },
+      {
+        "type": "subject",
+        "value": "metadata-only instrument gate, see gate/"
+      },
+      {
+        "type": "subject",
+        "value": "4563941874715c0ff1e9a5524c7a6c7ce9ec6501bdcb8ed89db9d48eeb2d2ff4"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-08-26T10:00:06Z"
+      }
+    ]
+  },
+  {
+    "predicate": "Verdict",
+    "args": [
+      {
+        "type": "subject",
+        "value": "v-b02-c12-gate"
+      },
+      {
+        "type": "subject",
+        "value": "decl-batch-02"
+      },
+      {
+        "type": "subject",
+        "value": "C12"
+      },
+      {
+        "type": "subject",
+        "value": "gate"
+      },
+      {
+        "type": "subject",
+        "value": "no_viable_instrument"
+      },
+      {
+        "type": "subject",
+        "value": "metadata-only instrument gate, see gate/"
+      },
+      {
+        "type": "subject",
+        "value": "4563941874715c0ff1e9a5524c7a6c7ce9ec6501bdcb8ed89db9d48eeb2d2ff4"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-08-26T10:00:06Z"
+      }
+    ]
+  },
+  {
+    "predicate": "Verdict",
+    "args": [
+      {
+        "type": "subject",
+        "value": "v-b02-c14-gate"
+      },
+      {
+        "type": "subject",
+        "value": "decl-batch-02"
+      },
+      {
+        "type": "subject",
+        "value": "C14"
+      },
+      {
+        "type": "subject",
+        "value": "gate"
+      },
+      {
+        "type": "subject",
+        "value": "eligible_now"
+      },
+      {
+        "type": "subject",
+        "value": "metadata-only instrument gate, see gate/"
+      },
+      {
+        "type": "subject",
+        "value": "4563941874715c0ff1e9a5524c7a6c7ce9ec6501bdcb8ed89db9d48eeb2d2ff4"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-08-26T10:00:06Z"
+      }
+    ]
+  },
+  {
+    "predicate": "Verdict",
+    "args": [
+      {
+        "type": "subject",
+        "value": "v-b02-c15-gate"
+      },
+      {
+        "type": "subject",
+        "value": "decl-batch-02"
+      },
+      {
+        "type": "subject",
+        "value": "C15"
+      },
+      {
+        "type": "subject",
+        "value": "gate"
+      },
+      {
+        "type": "subject",
+        "value": "no_viable_instrument"
+      },
+      {
+        "type": "subject",
+        "value": "metadata-only instrument gate, see gate/"
+      },
+      {
+        "type": "subject",
+        "value": "4563941874715c0ff1e9a5524c7a6c7ce9ec6501bdcb8ed89db9d48eeb2d2ff4"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-08-26T10:00:06Z"
+      }
+    ]
+  },
+  {
+    "predicate": "Verdict",
+    "args": [
+      {
+        "type": "subject",
+        "value": "v-b02-c16-gate"
+      },
+      {
+        "type": "subject",
+        "value": "decl-batch-02"
+      },
+      {
+        "type": "subject",
+        "value": "C16"
+      },
+      {
+        "type": "subject",
+        "value": "gate"
+      },
+      {
+        "type": "subject",
+        "value": "proxy_only"
+      },
+      {
+        "type": "subject",
+        "value": "metadata-only instrument gate, see gate/"
+      },
+      {
+        "type": "subject",
+        "value": "4563941874715c0ff1e9a5524c7a6c7ce9ec6501bdcb8ed89db9d48eeb2d2ff4"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-08-26T10:00:06Z"
+      }
+    ]
+  },
+  {
+    "predicate": "Verdict",
+    "args": [
+      {
+        "type": "subject",
+        "value": "v-b02-c17-gate"
+      },
+      {
+        "type": "subject",
+        "value": "decl-batch-02"
+      },
+      {
+        "type": "subject",
+        "value": "C17"
+      },
+      {
+        "type": "subject",
+        "value": "gate"
+      },
+      {
+        "type": "subject",
+        "value": "proxy_only"
+      },
+      {
+        "type": "subject",
+        "value": "metadata-only instrument gate, see gate/"
+      },
+      {
+        "type": "subject",
+        "value": "4563941874715c0ff1e9a5524c7a6c7ce9ec6501bdcb8ed89db9d48eeb2d2ff4"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-08-26T10:00:06Z"
+      }
+    ]
+  },
+  {
+    "predicate": "Verdict",
+    "args": [
+      {
+        "type": "subject",
+        "value": "v-b02-c18-gate"
+      },
+      {
+        "type": "subject",
+        "value": "decl-batch-02"
+      },
+      {
+        "type": "subject",
+        "value": "C18"
+      },
+      {
+        "type": "subject",
+        "value": "gate"
+      },
+      {
+        "type": "subject",
+        "value": "eligible_now"
+      },
+      {
+        "type": "subject",
+        "value": "metadata-only instrument gate, see gate/"
+      },
+      {
+        "type": "subject",
+        "value": "4563941874715c0ff1e9a5524c7a6c7ce9ec6501bdcb8ed89db9d48eeb2d2ff4"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-08-26T10:00:06Z"
+      }
+    ]
+  },
+  {
+    "predicate": "Verdict",
+    "args": [
+      {
+        "type": "subject",
+        "value": "v-b02-c19-gate"
+      },
+      {
+        "type": "subject",
+        "value": "decl-batch-02"
+      },
+      {
+        "type": "subject",
+        "value": "C19"
+      },
+      {
+        "type": "subject",
+        "value": "gate"
+      },
+      {
+        "type": "subject",
+        "value": "proxy_only"
+      },
+      {
+        "type": "subject",
+        "value": "metadata-only instrument gate, see gate/"
+      },
+      {
+        "type": "subject",
+        "value": "4563941874715c0ff1e9a5524c7a6c7ce9ec6501bdcb8ed89db9d48eeb2d2ff4"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-08-26T10:00:06Z"
+      }
+    ]
+  },
+  {
+    "predicate": "Verdict",
+    "args": [
+      {
+        "type": "subject",
+        "value": "v-b02-c11-k0"
+      },
+      {
+        "type": "subject",
+        "value": "decl-batch-02"
+      },
+      {
+        "type": "subject",
+        "value": "C11"
+      },
+      {
+        "type": "subject",
+        "value": "k0"
+      },
+      {
+        "type": "subject",
+        "value": "buyer_real_obligation"
+      },
+      {
+        "type": "subject",
+        "value": "SI 2015/698 connection standards; ED2 LVSVD allowance"
+      },
+      {
+        "type": "subject",
+        "value": "c110aedf04f311a2c5f341fddba9b98d25b12327eb693e154dec55aeb4ba865e"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-08-26T10:23:57Z"
+      }
+    ]
+  },
+  {
+    "predicate": "Verdict",
+    "args": [
+      {
+        "type": "subject",
+        "value": "v-b02-c12-k0"
+      },
+      {
+        "type": "subject",
+        "value": "decl-batch-02"
+      },
+      {
+        "type": "subject",
+        "value": "C12"
+      },
+      {
+        "type": "subject",
+        "value": "k0"
+      },
+      {
+        "type": "subject",
+        "value": "buyer_real_obligation"
+      },
+      {
+        "type": "subject",
+        "value": "DCC Art 34; Distribution Code DPC4.2.3.2"
+      },
+      {
+        "type": "subject",
+        "value": "c110aedf04f311a2c5f341fddba9b98d25b12327eb693e154dec55aeb4ba865e"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-08-26T10:23:57Z"
+      }
+    ]
+  },
+  {
+    "predicate": "Verdict",
+    "args": [
+      {
+        "type": "subject",
+        "value": "v-b02-c14-k0"
+      },
+      {
+        "type": "subject",
+        "value": "decl-batch-02"
+      },
+      {
+        "type": "subject",
+        "value": "C14"
+      },
+      {
+        "type": "subject",
+        "value": "k0"
+      },
+      {
+        "type": "subject",
+        "value": "buyer_real_internal"
+      },
+      {
+        "type": "subject",
+        "value": "NESO Curate-Plan-Connect; Demand IRN under statutory powers"
+      },
+      {
+        "type": "subject",
+        "value": "c110aedf04f311a2c5f341fddba9b98d25b12327eb693e154dec55aeb4ba865e"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-08-26T10:23:57Z"
+      }
+    ]
+  },
+  {
+    "predicate": "Verdict",
+    "args": [
+      {
+        "type": "subject",
+        "value": "v-b02-c15-k0"
+      },
+      {
+        "type": "subject",
+        "value": "decl-batch-02"
+      },
+      {
+        "type": "subject",
+        "value": "C15"
+      },
+      {
+        "type": "subject",
+        "value": "k0"
+      },
+      {
+        "type": "subject",
+        "value": "buyer_real_obligation"
+      },
+      {
+        "type": "subject",
+        "value": "Access SCR curtailment-hours rule, effective 2023-04-01"
+      },
+      {
+        "type": "subject",
+        "value": "c110aedf04f311a2c5f341fddba9b98d25b12327eb693e154dec55aeb4ba865e"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-08-26T10:23:57Z"
+      }
+    ]
+  },
+  {
+    "predicate": "Verdict",
+    "args": [
+      {
+        "type": "subject",
+        "value": "v-b02-c16-k0"
+      },
+      {
+        "type": "subject",
+        "value": "decl-batch-02"
+      },
+      {
+        "type": "subject",
+        "value": "C16"
+      },
+      {
+        "type": "subject",
+        "value": "k0"
+      },
+      {
+        "type": "subject",
+        "value": "buyer_real_obligation"
+      },
+      {
+        "type": "subject",
+        "value": "MCP permit deadlines; EA charging scheme"
+      },
+      {
+        "type": "subject",
+        "value": "c110aedf04f311a2c5f341fddba9b98d25b12327eb693e154dec55aeb4ba865e"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-08-26T10:23:57Z"
+      }
+    ]
+  },
+  {
+    "predicate": "Verdict",
+    "args": [
+      {
+        "type": "subject",
+        "value": "v-b02-c17-k0"
+      },
+      {
+        "type": "subject",
+        "value": "decl-batch-02"
+      },
+      {
+        "type": "subject",
+        "value": "C17"
+      },
+      {
+        "type": "subject",
+        "value": "k0"
+      },
+      {
+        "type": "subject",
+        "value": "buyer_real_external"
+      },
+      {
+        "type": "subject",
+        "value": "customers pay NERS ICPs under the CiC Code of Practice"
+      },
+      {
+        "type": "subject",
+        "value": "c110aedf04f311a2c5f341fddba9b98d25b12327eb693e154dec55aeb4ba865e"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-08-26T10:23:57Z"
+      }
+    ]
+  },
+  {
+    "predicate": "Verdict",
+    "args": [
+      {
+        "type": "subject",
+        "value": "v-b02-c18-k0"
+      },
+      {
+        "type": "subject",
+        "value": "decl-batch-02"
+      },
+      {
+        "type": "subject",
+        "value": "C18"
+      },
+      {
+        "type": "subject",
+        "value": "k0"
+      },
+      {
+        "type": "subject",
+        "value": "buyer_real_obligation"
+      },
+      {
+        "type": "subject",
+        "value": "licence obligations on DNOs/NESO; BSC-funded Elexon programme"
+      },
+      {
+        "type": "subject",
+        "value": "c110aedf04f311a2c5f341fddba9b98d25b12327eb693e154dec55aeb4ba865e"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-08-26T10:23:57Z"
+      }
+    ]
+  },
+  {
+    "predicate": "Verdict",
+    "args": [
+      {
+        "type": "subject",
+        "value": "v-b02-c19-k0"
+      },
+      {
+        "type": "subject",
+        "value": "decl-batch-02"
+      },
+      {
+        "type": "subject",
+        "value": "C19"
+      },
+      {
+        "type": "subject",
+        "value": "k0"
+      },
+      {
+        "type": "subject",
+        "value": "buyer_real_internal"
+      },
+      {
+        "type": "subject",
+        "value": "operators and FM/HV contractors employ APs/SAPs; HTM 06-03"
+      },
+      {
+        "type": "subject",
+        "value": "c110aedf04f311a2c5f341fddba9b98d25b12327eb693e154dec55aeb4ba865e"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-08-26T10:23:57Z"
+      }
+    ]
+  },
+  {
+    "predicate": "Verdict",
+    "args": [
+      {
+        "type": "subject",
+        "value": "v-b02-c12-k1"
+      },
+      {
+        "type": "subject",
+        "value": "decl-batch-02"
+      },
+      {
+        "type": "subject",
+        "value": "C12"
+      },
+      {
+        "type": "subject",
+        "value": "k1"
+      },
+      {
+        "type": "subject",
+        "value": "quarantined"
+      },
+      {
+        "type": "subject",
+        "value": "buyer-real, not publicly strain-testable; resolving observation Ofgem derogation register"
+      },
+      {
+        "type": "subject",
+        "value": "c110aedf04f311a2c5f341fddba9b98d25b12327eb693e154dec55aeb4ba865e"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-08-26T10:23:57Z"
+      }
+    ]
+  },
+  {
+    "predicate": "Verdict",
+    "args": [
+      {
+        "type": "subject",
+        "value": "v-b02-c15-k1"
+      },
+      {
+        "type": "subject",
+        "value": "decl-batch-02"
+      },
+      {
+        "type": "subject",
+        "value": "C15"
+      },
+      {
+        "type": "subject",
+        "value": "k1"
+      },
+      {
+        "type": "subject",
+        "value": "quarantined"
+      },
+      {
+        "type": "subject",
+        "value": "buyer-real, not publicly strain-testable; resolving observation a DNO demand-curtailment series"
+      },
+      {
+        "type": "subject",
+        "value": "c110aedf04f311a2c5f341fddba9b98d25b12327eb693e154dec55aeb4ba865e"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-08-26T10:23:57Z"
+      }
+    ]
+  },
+  {
+    "predicate": "Verdict",
+    "args": [
+      {
+        "type": "subject",
+        "value": "v-b02-c11-k1"
+      },
+      {
+        "type": "subject",
+        "value": "decl-batch-02"
+      },
+      {
+        "type": "subject",
+        "value": "C11"
+      },
+      {
+        "type": "subject",
+        "value": "k1"
+      },
+      {
+        "type": "subject",
+        "value": "absorption_stable"
+      },
+      {
+        "type": "subject",
+        "value": "volume designed out via connect-and-notify; time-to-connect down 15-17%"
+      },
+      {
+        "type": "subject",
+        "value": "a932048ed4a0582272f2f984975f52a38096153ec5db7ebe5a95e4c0c3129250"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-08-26T10:51:14Z"
+      }
+    ]
+  },
+  {
+    "predicate": "Verdict",
+    "args": [
+      {
+        "type": "subject",
+        "value": "v-b02-c11-k2"
+      },
+      {
+        "type": "subject",
+        "value": "decl-batch-02"
+      },
+      {
+        "type": "subject",
+        "value": "C11"
+      },
+      {
+        "type": "subject",
+        "value": "k2"
+      },
+      {
+        "type": "subject",
+        "value": "measured_stable"
+      },
+      {
+        "type": "subject",
+        "value": "volume designed out via connect-and-notify; time-to-connect down 15-17%"
+      },
+      {
+        "type": "subject",
+        "value": "a932048ed4a0582272f2f984975f52a38096153ec5db7ebe5a95e4c0c3129250"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-08-26T10:51:14Z"
+      }
+    ]
+  },
+  {
+    "predicate": "Verdict",
+    "args": [
+      {
+        "type": "subject",
+        "value": "v-b02-c18-k1"
+      },
+      {
+        "type": "subject",
+        "value": "decl-batch-02"
+      },
+      {
+        "type": "subject",
+        "value": "C18"
+      },
+      {
+        "type": "subject",
+        "value": "k1"
+      },
+      {
+        "type": "subject",
+        "value": "absorption_strain_evidenced"
+      },
+      {
+        "type": "subject",
+        "value": "regulator-declared inadequate; FMAR assigned to Elexon and late; Ofgem rating 2/5 Poor"
+      },
+      {
+        "type": "subject",
+        "value": "77587ac1552fafc1f9b220f8af55061e6ad528944ca4aeadc9eea11e83723c42"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-08-26T10:51:14Z"
+      }
+    ]
+  },
+  {
+    "predicate": "Verdict",
+    "args": [
+      {
+        "type": "subject",
+        "value": "v-b02-c18-k2"
+      },
+      {
+        "type": "subject",
+        "value": "decl-batch-02"
+      },
+      {
+        "type": "subject",
+        "value": "C18"
+      },
+      {
+        "type": "subject",
+        "value": "k2"
+      },
+      {
+        "type": "subject",
+        "value": "measured_strain"
+      },
+      {
+        "type": "subject",
+        "value": "regulator-declared inadequate; FMAR assigned to Elexon and late; Ofgem rating 2/5 Poor"
+      },
+      {
+        "type": "subject",
+        "value": "77587ac1552fafc1f9b220f8af55061e6ad528944ca4aeadc9eea11e83723c42"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-08-26T10:51:14Z"
+      }
+    ]
+  },
+  {
+    "predicate": "Verdict",
+    "args": [
+      {
+        "type": "subject",
+        "value": "v-b02-c14-k1"
+      },
+      {
+        "type": "subject",
+        "value": "decl-batch-02"
+      },
+      {
+        "type": "subject",
+        "value": "C14"
+      },
+      {
+        "type": "subject",
+        "value": "k1"
+      },
+      {
+        "type": "subject",
+        "value": "absorption_stable"
+      },
+      {
+        "type": "subject",
+        "value": "DFES partly externalised; NESO tRESP added; re-opener count 0/1/1/0"
+      },
+      {
+        "type": "subject",
+        "value": "ddf3ec0f0359ee3a41da20c7976af11f5b364cdef426fd60566e343b0cf65117"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-08-26T10:51:14Z"
+      }
+    ]
+  },
+  {
+    "predicate": "Verdict",
+    "args": [
+      {
+        "type": "subject",
+        "value": "v-b02-c14-k2"
+      },
+      {
+        "type": "subject",
+        "value": "decl-batch-02"
+      },
+      {
+        "type": "subject",
+        "value": "C14"
+      },
+      {
+        "type": "subject",
+        "value": "k2"
+      },
+      {
+        "type": "subject",
+        "value": "measured_stable"
+      },
+      {
+        "type": "subject",
+        "value": "DFES partly externalised; NESO tRESP added; re-opener count 0/1/1/0"
+      },
+      {
+        "type": "subject",
+        "value": "ddf3ec0f0359ee3a41da20c7976af11f5b364cdef426fd60566e343b0cf65117"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-08-26T10:51:14Z"
+      }
+    ]
+  },
+  {
+    "predicate": "Verdict",
+    "args": [
+      {
+        "type": "subject",
+        "value": "v-b02-c16-k1"
+      },
+      {
+        "type": "subject",
+        "value": "decl-batch-02"
+      },
+      {
+        "type": "subject",
+        "value": "C16"
+      },
+      {
+        "type": "subject",
+        "value": "k1"
+      },
+      {
+        "type": "subject",
+        "value": "absorption_stable"
+      },
+      {
+        "type": "subject",
+        "value": "EA simplified tiers and raised fees; forcing variable arrives 2029-01-01"
+      },
+      {
+        "type": "subject",
+        "value": "03c090cae542197e3040a39d0dda0e56910f20cec715c9f653967e0f0253aaca"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-08-26T10:51:14Z"
+      }
+    ]
+  },
+  {
+    "predicate": "Verdict",
+    "args": [
+      {
+        "type": "subject",
+        "value": "v-b02-c16-k2"
+      },
+      {
+        "type": "subject",
+        "value": "decl-batch-02"
+      },
+      {
+        "type": "subject",
+        "value": "C16"
+      },
+      {
+        "type": "subject",
+        "value": "k2"
+      },
+      {
+        "type": "subject",
+        "value": "measured_stable"
+      },
+      {
+        "type": "subject",
+        "value": "EA simplified tiers and raised fees; forcing variable arrives 2029-01-01"
+      },
+      {
+        "type": "subject",
+        "value": "03c090cae542197e3040a39d0dda0e56910f20cec715c9f653967e0f0253aaca"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-08-26T10:51:14Z"
+      }
+    ]
+  },
+  {
+    "predicate": "Verdict",
+    "args": [
+      {
+        "type": "subject",
+        "value": "v-b02-c19-k1"
+      },
+      {
+        "type": "subject",
+        "value": "decl-batch-02"
+      },
+      {
+        "type": "subject",
+        "value": "C19"
+      },
+      {
+        "type": "subject",
+        "value": "k1"
+      },
+      {
+        "type": "subject",
+        "value": "absorption_stable"
+      },
+      {
+        "type": "subject",
+        "value": "AE/AP model externalised since 2006/2009; HSE series flat, population unresolved"
+      },
+      {
+        "type": "subject",
+        "value": "ffe707d69d450fd45c50b68084e3c61a19eff56ed963d7c83f14f3ae2c67b851"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-08-26T10:51:14Z"
+      }
+    ]
+  },
+  {
+    "predicate": "Verdict",
+    "args": [
+      {
+        "type": "subject",
+        "value": "v-b02-c19-k2"
+      },
+      {
+        "type": "subject",
+        "value": "decl-batch-02"
+      },
+      {
+        "type": "subject",
+        "value": "C19"
+      },
+      {
+        "type": "subject",
+        "value": "k2"
+      },
+      {
+        "type": "subject",
+        "value": "measured_stable"
+      },
+      {
+        "type": "subject",
+        "value": "AE/AP model externalised since 2006/2009; HSE series flat, population unresolved"
+      },
+      {
+        "type": "subject",
+        "value": "ffe707d69d450fd45c50b68084e3c61a19eff56ed963d7c83f14f3ae2c67b851"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-08-26T10:51:14Z"
+      }
+    ]
+  },
+  {
+    "predicate": "Verdict",
+    "args": [
+      {
+        "type": "subject",
+        "value": "v-b02-c17-k1"
+      },
+      {
+        "type": "subject",
+        "value": "decl-batch-02"
+      },
+      {
+        "type": "subject",
+        "value": "C17"
+      },
+      {
+        "type": "subject",
+        "value": "k1"
+      },
+      {
+        "type": "subject",
+        "value": "absorption_stable"
+      },
+      {
+        "type": "subject",
+        "value": "competition in connections since 2000/2015; 132 kV-scope providers 75 to 242"
+      },
+      {
+        "type": "subject",
+        "value": "8fe4840eda407c7535495b930ed7bd8589ccc2299a5e129051521e32ee11ea7c"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-08-26T10:51:14Z"
+      }
+    ]
+  },
+  {
+    "predicate": "Verdict",
+    "args": [
+      {
+        "type": "subject",
+        "value": "v-b02-c17-k2"
+      },
+      {
+        "type": "subject",
+        "value": "decl-batch-02"
+      },
+      {
+        "type": "subject",
+        "value": "C17"
+      },
+      {
+        "type": "subject",
+        "value": "k2"
+      },
+      {
+        "type": "subject",
+        "value": "measured_stable"
+      },
+      {
+        "type": "subject",
+        "value": "competition in connections since 2000/2015; 132 kV-scope providers 75 to 242"
+      },
+      {
+        "type": "subject",
+        "value": "8fe4840eda407c7535495b930ed7bd8589ccc2299a5e129051521e32ee11ea7c"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-08-26T10:51:14Z"
+      }
+    ]
+  },
+  {
+    "predicate": "Verdict",
+    "args": [
+      {
+        "type": "subject",
+        "value": "v-k3-c18"
+      },
+      {
+        "type": "subject",
+        "value": "decl-k3-c18"
+      },
+      {
+        "type": "subject",
+        "value": "C18"
+      },
+      {
+        "type": "subject",
+        "value": "k3"
+      },
+      {
+        "type": "subject",
+        "value": "killed"
+      },
+      {
+        "type": "subject",
+        "value": "strain internal to a funded, licence-backed Elexon programme; no external spend; tens of FSPs; no repeat-spend route"
+      },
+      {
+        "type": "subject",
+        "value": "1d745e626a24278e8a6aceec695485e10abcf79d49a2ab62aeae44d4decbbc0c"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-08-26T11:17:38Z"
+      }
+    ]
+  },
+  {
+    "predicate": "Verdict",
+    "args": [
+      {
+        "type": "subject",
+        "value": "v-f004-k1"
+      },
+      {
+        "type": "subject",
+        "value": "decl-f004-kill"
+      },
+      {
+        "type": "subject",
+        "value": "F004"
+      },
+      {
+        "type": "subject",
+        "value": "k1"
+      },
+      {
+        "type": "subject",
+        "value": "absorption_plausible_unmeasured"
+      },
+      {
+        "type": "subject",
+        "value": "function self-supplied by promoters; ESO holds the lapse/conversion series unpublished"
+      },
+      {
+        "type": "subject",
+        "value": "c69b9e88a307aabba61b7f15e09e154c4cdf8ff89371f97dd3db3c87344c8f3f"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-08-26T07:30:45Z"
+      }
+    ]
+  },
+  {
+    "predicate": "Verdict",
+    "args": [
+      {
+        "type": "subject",
+        "value": "v-f004-k3"
+      },
+      {
+        "type": "subject",
+        "value": "decl-f004-kill"
+      },
+      {
+        "type": "subject",
+        "value": "F004"
+      },
+      {
+        "type": "subject",
+        "value": "k3"
+      },
+      {
+        "type": "subject",
+        "value": "killed"
+      },
+      {
+        "type": "subject",
+        "value": "F-A fired: no buyer at >= 50 MW; largest transaction 14.8 MW operating; ~30 MW installed"
+      },
+      {
+        "type": "subject",
+        "value": "c69b9e88a307aabba61b7f15e09e154c4cdf8ff89371f97dd3db3c87344c8f3f"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-08-26T07:30:45Z"
+      }
+    ]
+  },
+  {
+    "predicate": "Verdict",
+    "args": [
+      {
+        "type": "subject",
+        "value": "v-005-q1"
+      },
+      {
+        "type": "subject",
+        "value": "decl-005"
+      },
+      {
+        "type": "subject",
+        "value": "005"
+      },
+      {
+        "type": "subject",
+        "value": "q1"
+      },
+      {
+        "type": "subject",
+        "value": "pass"
+      },
+      {
+        "type": "subject",
+        "value": "IQR 17 months; 21.4% slipped >= 24 months; 63.5% < 6"
+      },
+      {
+        "type": "subject",
+        "value": "a25ea2ae3d6208505b2433c274422fbae9dedbe9ef69505eeadaeeaba77d2e70"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-08-26T12:31:19Z"
+      }
+    ]
+  },
+  {
+    "predicate": "Verdict",
+    "args": [
+      {
+        "type": "subject",
+        "value": "v-005-q2"
+      },
+      {
+        "type": "subject",
+        "value": "decl-005"
+      },
+      {
+        "type": "subject",
+        "value": "005"
+      },
+      {
+        "type": "subject",
+        "value": "q2"
+      },
+      {
+        "type": "subject",
+        "value": "pass"
+      },
+      {
+        "type": "subject",
+        "value": "first-status ratio 3.4 and lead-time ratio 2.9, both cohorts"
+      },
+      {
+        "type": "subject",
+        "value": "a25ea2ae3d6208505b2433c274422fbae9dedbe9ef69505eeadaeeaba77d2e70"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-08-26T12:31:19Z"
+      }
+    ]
+  },
+  {
+    "predicate": "Verdict",
+    "args": [
+      {
+        "type": "subject",
+        "value": "v-005-q3"
+      },
+      {
+        "type": "subject",
+        "value": "decl-005"
+      },
+      {
+        "type": "subject",
+        "value": "005"
+      },
+      {
+        "type": "subject",
+        "value": "q3"
+      },
+      {
+        "type": "subject",
+        "value": "fail"
+      },
+      {
+        "type": "subject",
+        "value": "largest gap to pooled 14.4 pp against a 15 pp bar"
+      },
+      {
+        "type": "subject",
+        "value": "a25ea2ae3d6208505b2433c274422fbae9dedbe9ef69505eeadaeeaba77d2e70"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-08-26T12:31:19Z"
+      }
+    ]
+  },
+  {
+    "predicate": "Watch",
+    "args": [
+      {
+        "type": "subject",
+        "value": "w-c2-pcf"
+      },
+      {
+        "type": "subject",
+        "value": "C2"
+      },
+      {
+        "type": "subject",
+        "value": "NESO PCF activation metric (CMP448), six-monthly"
+      },
+      {
+        "type": "subject",
+        "value": "NESO"
+      },
+      {
+        "type": "date",
+        "value": "2027-02-01"
+      }
+    ]
+  },
+  {
+    "predicate": "Watch",
+    "args": [
+      {
+        "type": "subject",
+        "value": "w-c18-fmar-review"
+      },
+      {
+        "type": "subject",
+        "value": "C18"
+      },
+      {
+        "type": "subject",
+        "value": "Ofgem informal FMAR review covering 2026-04-01 to 2026-09-30"
+      },
+      {
+        "type": "subject",
+        "value": "Ofgem"
+      },
+      {
+        "type": "date",
+        "value": "2026-10-31"
+      }
+    ]
+  },
+  {
+    "predicate": "Watch",
+    "args": [
+      {
+        "type": "subject",
+        "value": "w-c14-ssen-lre-fd"
+      },
+      {
+        "type": "subject",
+        "value": "C14"
+      },
+      {
+        "type": "subject",
+        "value": "SSEN LRE re-opener final determination"
+      },
+      {
+        "type": "subject",
+        "value": "Ofgem"
+      },
+      {
+        "type": "date",
+        "value": "2026-09-30"
+      }
+    ]
+  },
+  {
+    "predicate": "Watch",
+    "args": [
+      {
+        "type": "subject",
+        "value": "w-c11-ed-annual-2526"
+      },
+      {
+        "type": "subject",
+        "value": "C11"
+      },
+      {
+        "type": "subject",
+        "value": "Ofgem RIIO-2 ED annual report FY2025-26, connections GSOP and TTC"
+      },
+      {
+        "type": "subject",
+        "value": "Ofgem"
+      },
+      {
+        "type": "date",
+        "value": "2027-04-30"
+      }
+    ]
+  },
+  {
+    "predicate": "Watch",
+    "args": [
+      {
+        "type": "subject",
+        "value": "w-c16-defra-registration"
+      },
+      {
+        "type": "subject",
+        "value": "C16"
+      },
+      {
+        "type": "subject",
+        "value": "Defra decision on registration vs permitting for MCP/SG from 2029"
+      },
+      {
+        "type": "subject",
+        "value": "Defra"
+      },
+      {
+        "type": "date",
+        "value": "2027-06-30"
+      }
+    ]
+  },
+  {
+    "predicate": "Watch",
+    "args": [
+      {
+        "type": "subject",
+        "value": "w-c17-mcar-2526"
+      },
+      {
+        "type": "subject",
+        "value": "C17"
+      },
+      {
+        "type": "subject",
+        "value": "any DNO Major Connections Annual Report 2025-26"
+      },
+      {
+        "type": "subject",
+        "value": "DNOs"
+      },
+      {
+        "type": "date",
+        "value": "2026-12-31"
+      }
+    ]
+  },
+  {
+    "predicate": "Watch",
+    "args": [
+      {
+        "type": "subject",
+        "value": "w-eso-map-90d"
+      },
+      {
+        "type": "subject",
+        "value": "F004"
+      },
+      {
+        "type": "subject",
+        "value": "ESO map 90-day read: opinion -> pd conversions and lapses by node"
+      },
+      {
+        "type": "subject",
+        "value": "A115"
+      },
+      {
+        "type": "date",
+        "value": "2026-11-24"
+      }
+    ]
+  },
+  {
+    "predicate": "Watch",
+    "args": [
+      {
+        "type": "subject",
+        "value": "w-c12-derogations"
+      },
+      {
+        "type": "subject",
+        "value": "C12"
+      },
+      {
+        "type": "subject",
+        "value": "Ofgem register of granted and refused DCC derogations"
+      },
+      {
+        "type": "subject",
+        "value": "Ofgem"
+      },
+      {
+        "type": "date",
+        "value": "2027-08-26"
+      }
+    ]
+  },
+  {
+    "predicate": "Watch",
+    "args": [
+      {
+        "type": "subject",
+        "value": "w-c15-demand-curtailment"
+      },
+      {
+        "type": "subject",
+        "value": "C15"
+      },
+      {
+        "type": "subject",
+        "value": "a DNO demand-customer curtailment series"
+      },
+      {
+        "type": "subject",
+        "value": "DNOs"
+      },
+      {
+        "type": "date",
+        "value": "2027-08-26"
+      }
+    ]
+  },
+  {
+    "predicate": "Watch",
+    "args": [
+      {
+        "type": "subject",
+        "value": "w-005-tec-hole"
+      },
+      {
+        "type": "subject",
+        "value": "005"
+      },
+      {
+        "type": "subject",
+        "value": "TEC register vintages 2025-07-22 to 2026-05-19 via EIR request"
+      },
+      {
+        "type": "subject",
+        "value": "NESO"
+      },
+      {
+        "type": "date",
+        "value": "2027-02-26"
+      }
+    ]
+  },
+  {
+    "predicate": "WatchReading",
+    "args": [
+      {
+        "type": "subject",
+        "value": "w-c2-pcf"
+      },
+      {
+        "type": "date",
+        "value": "2026-08-03"
+      },
+      {
+        "type": "subject",
+        "value": "de9f7065ce102a3afe4e1eb7b26a4f5432c76bfef3abf37786b9d8ebf73b82ac"
+      },
+      {
+        "type": "subject",
+        "value": "unchanged"
+      }
+    ]
+  },
+  {
+    "predicate": "ReopenTrigger",
+    "args": [
+      {
+        "type": "subject",
+        "value": "t-f004-acquisition"
+      },
+      {
+        "type": "subject",
+        "value": "F004"
+      },
+      {
+        "type": "subject",
+        "value": "acquisition or JV of a Bulgarian development site >= 50 MW with a named buyer"
+      }
+    ]
+  },
+  {
+    "predicate": "ReopenTrigger",
+    "args": [
+      {
+        "type": "subject",
+        "value": "t-f004-capacity-agreement"
+      },
+      {
+        "type": "subject",
+        "value": "F004"
+      },
+      {
+        "type": "subject",
+        "value": "binding hyperscaler/operator capacity agreement for a Bulgarian site"
+      }
+    ]
+  },
+  {
+    "predicate": "ReopenTrigger",
+    "args": [
+      {
+        "type": "subject",
+        "value": "t-f004-fid"
+      },
+      {
+        "type": "subject",
+        "value": "F004"
+      },
+      {
+        "type": "subject",
+        "value": "disclosed project financing or FID for an announced Bulgarian mega-project"
+      }
+    ]
+  },
+  {
+    "predicate": "ReopenTrigger",
+    "args": [
+      {
+        "type": "subject",
+        "value": "t-f004-permits"
+      },
+      {
+        "type": "subject",
+        "value": "F004"
+      },
+      {
+        "type": "subject",
+        "value": "several opinion-stage projects progressing through PUP/OVOS/building permit into construction"
+      }
+    ]
+  },
+  {
+    "predicate": "ReopenTrigger",
+    "args": [
+      {
+        "type": "subject",
+        "value": "t-f004-bidding"
+      },
+      {
+        "type": "subject",
+        "value": "F004"
+      },
+      {
+        "type": "subject",
+        "value": "evidence of strategic buyers actively bidding for partially developed positions"
+      }
+    ]
+  },
+  {
+    "predicate": "EvidenceClaim",
+    "args": [
+      {
+        "type": "subject",
+        "value": "ec-f001-abl-mandate"
+      },
+      {
+        "type": "subject",
+        "value": "F001"
+      },
+      {
+        "type": "subject",
+        "value": "provision_purchased"
+      },
+      {
+        "type": "subject",
+        "value": "5f892d16bcc1ae1f1a46911d1563c77025bdf9d817c5b330e1c57bfa69167912"
+      },
+      {
+        "type": "date",
+        "value": "2023-11-01"
+      },
+      {
+        "type": "date",
+        "value": "2023-11-13"
+      }
+    ]
+  },
+  {
+    "predicate": "EvidenceClaim",
+    "args": [
+      {
+        "type": "subject",
+        "value": "ec-f001-cairnel"
+      },
+      {
+        "type": "subject",
+        "value": "F001"
+      },
+      {
+        "type": "subject",
+        "value": "provision_exists"
+      },
+      {
+        "type": "subject",
+        "value": "5f892d16bcc1ae1f1a46911d1563c77025bdf9d817c5b330e1c57bfa69167912"
+      },
+      {
+        "type": "date",
+        "value": "2026-07-13"
+      },
+      {
+        "type": "date",
+        "value": "2026-07-13"
+      }
+    ]
+  },
+  {
+    "predicate": "Watch",
+    "args": [
+      {
+        "type": "subject",
+        "value": "w-005-eir-response"
+      },
+      {
+        "type": "subject",
+        "value": "005"
+      },
+      {
+        "type": "subject",
+        "value": "NESO's response to the EIR request of 2026-09-15 for TEC register vintages 2025-07-22 to 2026-05-19 (statutory due date)"
+      },
+      {
+        "type": "subject",
+        "value": "NESO"
+      },
+      {
+        "type": "date",
+        "value": "2026-10-13"
+      }
+    ]
+  },
+  {
+    "predicate": "Watch",
+    "args": [
+      {
+        "type": "subject",
+        "value": "w-007-t3-september"
+      },
+      {
+        "type": "subject",
+        "value": "007"
+      },
+      {
+        "type": "subject",
+        "value": "NESO full-month September 2026 in-merit and exclusion-reasons files published, releasing the T3 September test after the human seal"
+      },
+      {
+        "type": "subject",
+        "value": "NESO"
+      },
+      {
+        "type": "date",
+        "value": "2026-10-15"
+      }
+    ]
+  },
+  {
+    "predicate": "Watch",
+    "args": [
+      {
+        "type": "subject",
+        "value": "w-018-sf-post-days"
+      },
+      {
+        "type": "subject",
+        "value": "018"
+      },
+      {
+        "type": "subject",
+        "value": "P114 listings show an SF run for every POST day (C5), releasing the 018 acquisition"
+      },
+      {
+        "type": "subject",
+        "value": "Elexon"
+      },
+      {
+        "type": "date",
+        "value": "2026-10-03"
+      }
+    ]
+  },
+  {
+    "predicate": "Watch",
+    "args": [
+      {
+        "type": "subject",
+        "value": "w-f006-lcl-regs-laid"
+      },
+      {
+        "type": "subject",
+        "value": "F006"
+      },
+      {
+        "type": "subject",
+        "value": "Load Control Licence Regulations laid before Parliament (falsifier F1)"
+      },
+      {
+        "type": "subject",
+        "value": "DESNZ"
+      },
+      {
+        "type": "date",
+        "value": "2026-12-31"
+      }
+    ]
+  },
+  {
+    "predicate": "Watch",
+    "args": [
+      {
+        "type": "subject",
+        "value": "w-f006-application-window"
+      },
+      {
+        "type": "subject",
+        "value": "F006"
+      },
+      {
+        "type": "subject",
+        "value": "load-control licence application window opens; EPR notices (P1(b), P5 instruments become eligible)"
+      },
+      {
+        "type": "subject",
+        "value": "Ofgem"
+      },
+      {
+        "type": "date",
+        "value": "2027-03-01"
+      }
+    ]
+  },
+  {
+    "predicate": "Watch",
+    "args": [
+      {
+        "type": "subject",
+        "value": "w-f006-first-wave"
+      },
+      {
+        "type": "subject",
+        "value": "F006"
+      },
+      {
+        "type": "subject",
+        "value": "end of the apply-within-three-months period: volume of the first wave of applications"
+      },
+      {
+        "type": "subject",
+        "value": "Ofgem"
+      },
+      {
+        "type": "date",
+        "value": "2027-06-01"
+      }
+    ]
+  },
+  {
+    "predicate": "Watch",
+    "args": [
+      {
+        "type": "subject",
+        "value": "w-f007-mhhs-m14"
+      },
+      {
+        "type": "subject",
+        "value": "F007"
+      },
+      {
+        "type": "subject",
+        "value": "MHHS milestone M14: any supplier losing the right to take on new MPANs (R5(a) GB per-supplier slippage)"
+      },
+      {
+        "type": "subject",
+        "value": "Elexon"
+      },
+      {
+        "type": "date",
+        "value": "2026-10-28"
+      }
+    ]
+  },
+  {
+    "predicate": "Watch",
+    "args": [
+      {
+        "type": "subject",
+        "value": "w-f007-monitoringbericht-2026"
+      },
+      {
+        "type": "subject",
+        "value": "F007"
+      },
+      {
+        "type": "subject",
+        "value": "Bundesnetzagentur Monitoringbericht 2026: section 35 no. 10 market offer and price volatility of section 41a contracts; customers on dynamic tariffs (F2 term iii, F3, R1(c)/R3(c))"
+      },
+      {
+        "type": "subject",
+        "value": "Bundesnetzagentur"
+      },
+      {
+        "type": "date",
+        "value": "2026-11-30"
+      }
+    ]
+  },
+  {
+    "predicate": "Watch",
+    "args": [
+      {
+        "type": "subject",
+        "value": "w-f007-mhhs-m15"
+      },
+      {
+        "type": "subject",
+        "value": "F007"
+      },
+      {
+        "type": "subject",
+        "value": "MHHS milestone M15: every GB supplier's imbalance settled on actuals"
+      },
+      {
+        "type": "subject",
+        "value": "Elexon"
+      },
+      {
+        "type": "date",
+        "value": "2027-05-07"
+      }
+    ]
+  },
+  {
+    "predicate": "Watch",
+    "args": [
+      {
+        "type": "subject",
+        "value": "w-f007-mhhs-m16"
+      },
+      {
+        "type": "subject",
+        "value": "F007"
+      },
+      {
+        "type": "subject",
+        "value": "MHHS milestone M16: four-month settlement (R5 GB timeline)"
+      },
+      {
+        "type": "subject",
+        "value": "Elexon"
+      },
+      {
+        "type": "date",
+        "value": "2027-07-02"
+      }
+    ]
   }
 ]

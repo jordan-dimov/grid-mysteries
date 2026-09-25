@@ -1,10 +1,14 @@
 # Research programme v3: the forward and verifier vocabulary
 
-Status: **drafted, control-tested, not yet deployed.** `research-v3-draft.morph`
-is check-clean under the pinned release (fingerprint in `V3_DRAFT_HASH.json`);
-`scripts/check-controls v3` proves 16 lifecycle rows commit and 14 violations
-are refused by their exact named rules. Launch rows for everything the
-forward track produced in August 2026 are in `launch-forward/`.
+Status: **deployed 25/09/2026** on the live record, same database and audit
+chain as v1 and v2 (batch `110-forward-launch.v3.ndjson`, 94 rows: the
+bootstrap and nine seals by Jordan as `gm_human`, the declarations, verdicts,
+watches, triggers and evidence claims by the machine as `gm_machine`).
+`research-v3-draft.morph` is unchanged from the draft (fingerprint in
+`V3_DRAFT_HASH.json`, the file name kept so the pinned hash and the batch
+dispatch stay as they were); `scripts/check-controls v3` proves 16 lifecycle
+rows commit and 14 violations are refused by their exact named rules. The
+launch rows and how they were run are in `launch-forward/`.
 
 ## Why a third programme
 

@@ -37,3 +37,37 @@ gated those kills.
 
 Dry-run verified 2026-08-26 against a disposable database: H1, M1, H2 (with
 a placeholder time) and M2 all commit under `research-v3-draft.morph`.
+
+## Addendum, 25/09/2026: the launch as run
+
+- One more machine step, **M3** (`M3-watches-2026-09.v3.ndjson.template`):
+  ten `open_watch` rows for the dated obligations the September work left
+  in documents and nowhere else, each with its resolving observation and
+  holder taken from the document that states it. `w-005-eir-response`
+  (due 2026-10-13, `EIR-REQUEST-TEC-2025-26.md`); `w-007-t3-september`
+  (NESO's full-month September file, "expected early October",
+  `DECLARATION-T3-SEPTEMBER.md`; read date 2026-10-15 chosen here);
+  `w-018-sf-post-days` (C5 of 018's declaration; read date 2026-10-03
+  chosen here); three F006 watches and four F007 watches from the
+  "Watches (dated)" tables of their RESULTS files (a month-only date is
+  the last day of that month). `w-005-tec-hole` stays as drafted in
+  August (due 2027-02-26): `RESULTS.md` of 005 says the watch "moves to"
+  2026-10-13, and a watch is append-only, so the interim obligation is a
+  second watch rather than an edit.
+- `scripts/launch-forward <step-file>` runs a step through
+  `scripts/record` row by row and stops at the first row that does not
+  commit; `{SEALED_AT}` is filled with the wall-clock time of proposing.
+- The three 005 verdicts (`v-005-q1/q2/q3`) cite `evidence_digest`
+  `a25ea2ae…`, the SHA-256 of `005/RESULTS.md` at commit `0d8a470`
+  (26/08/2026). The file has since grown (the EIR request of 15/09), so
+  that digest matches no file on disk today; it is recoverable from git
+  (`git show 0d8a470:investigations/005-connection-date-credibility/RESULTS.md`).
+  A verdict names the evidence it was given, not the file's later state.
+- Every `declared_at` and `recorded_at` is still the August commit time;
+  every `sealed_at` is the time Jordan sealed on 25/09/2026. The record
+  shows, truthfully, git as the seal until then and Morpholog from then on.
+- Rehearsed first on a restored copy of the live record on a throwaway
+  cluster, through the real login roles (see `V2-LAUNCH-RUNBOOK.md`,
+  25/09 amendment): all 94 rows commit, `check-record` lists 20 watches
+  with none overdue and verifies the 9 sealed digests against disk.
+

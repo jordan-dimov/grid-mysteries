@@ -341,10 +341,40 @@ psql -d grid_mysteries_morpholog
   CREATE ROLE gm_machine LOGIN;
   \password gm_machine
   GRANT morpholog_writer TO gm_human;
-  GRANT morpholog_reader TO gm_machine;   -- READER ONLY; H3a's writer grant is withdrawn
+  GRANT morpholog_reader TO gm_machine;   -- the cluster-wide writer group is NOT granted to the machine
   GRANT CONNECT ON DATABASE grid_mysteries_morpholog TO gm_human, gm_machine;
+  -- write on THIS record only (amended 25/09/2026, below): the same privileges
+  -- morpholog_writer holds here, granted per table, so bizgov and the other
+  -- --least-privilege databases on the cluster are not reachable
+  GRANT INSERT ON morpholog.audit, morpholog.rejections TO gm_machine;
+  GRANT INSERT, DELETE ON morpholog.claims TO gm_machine;
+  GRANT INSERT, UPDATE ON morpholog.audit_checkpoints, morpholog.outbox TO gm_machine;
+  GRANT INSERT, UPDATE, DELETE ON morpholog_read.derived_active, morpholog_read.derived_claims, morpholog_read.derived_refreshes TO gm_machine;
   \q
 ```
+
+> **Amended 25/09/2026: the machine role writes this record, and only this
+> record.** The 23/09 amendment left `gm_machine` a reader, but a reader
+> cannot propose at all (the adapter inserts the audit row and the claims
+> through the machine's own connection), and the actor policy binds every
+> `claude_fable_5` row to `gm_machine`, so no path existed for a machine
+> row. The worry behind 23/09 was the cluster-wide `morpholog_writer`
+> group, which also holds INSERT on the audit log of `bizgov`. The grants
+> above give `gm_machine` exactly the writer's privileges on this
+> database's tables and nothing on any other database. The threat-model
+> posture is unchanged: the machine can append to this record's audit log
+> and cannot rewrite it. Rehearsed on a restored copy of the live record
+> on a throwaway cluster on 25/09/2026: the whole v3 launch (H1, M1, H2,
+> M2, M3) commits through these two logins, `gm_machine` asserting
+> `jordan_dimov` is refused (`actor_assertion_unauthorised`), and so is
+> `gm_human` asserting `claude_fable_5`.
+>
+> Re-creating the roles gives them new OIDs. Morpholog v0.0.12 records the
+> role's OID in every new attestation and reports a role seen under a new
+> OID as a `role_rebindings` finding; the 139 rows written before 25/09
+> carry no OID, so the first rows after the re-creation cannot be compared
+> with them, and the finding stays empty. That is stated here so nobody
+> reads the empty finding as proof the roles were never re-created.
 
 `REVOKE CONNECT ... FROM PUBLIC` first: PostgreSQL grants CONNECT on every
 database to PUBLIC by default, and roles are cluster-wide, so without it any

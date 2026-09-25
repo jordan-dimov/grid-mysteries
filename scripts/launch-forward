@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+# Propose one launch step of the v3 forward record, row by row, through
+# scripts/record (which appends the row to the batch, re-exports the
+# claims, checkpoints with two witnesses and re-exports the pack after
+# every committed proposal). Stops at the first row that does not commit.
+#
+#   scripts/launch-forward <step-file> [<batch-basename>]
+#
+# The step file is one of morpholog/launch-forward/*.v3.ndjson.template;
+# `{SEALED_AT}` in a row is replaced by the wall-clock time of proposing.
+# DATABASE_URL must connect as the login role the row's actor is bound to
+# (H steps: gm_human, run by Jordan; M steps: gm_machine).
+set -euo pipefail
+cd "$(dirname "$0")/.."
+STEP="$1"
+BATCH="${2:-110-forward-launch.v3.ndjson}"
+[[ -f "$STEP" ]] || { echo "launch-forward: no such step file $STEP" >&2; exit 2; }
+n=0
+while IFS= read -r row || [[ -n "$row" ]]; do
+  [[ -z "${row// }" ]] && continue
+  n=$((n + 1))
+  now=$(date -u +%Y-%m-%dT%H:%M:%SZ)
+  row="${row//\{SEALED_AT\}/$now}"
+  echo "== row $n: $(python3 -c 'import json,sys; r=json.loads(sys.argv[1]); a=r["args_named"]; print(r["transformation"], a.get("declaration") or a.get("verdict") or a.get("watch") or a.get("trigger") or a.get("claim") or a.get("successor") or a.get("human_actor"))' "$row")"
+  scripts/record "$BATCH" "$row"
+done < "$STEP"
+echo "launch-forward: $n row(s) committed from $STEP"

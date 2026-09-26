@@ -1,10 +1,16 @@
 [Unit]
-Description=Run the vintage archive watchdog on boot and every twelve hours
+Description=Run the vintage archive watchdog on boot and twice a day (10:30 and 22:30 UTC, after both Render jobs)
 
 [Timer]
+# Wall-clock, not monotonic: OnUnitActiveSec=12h stopped after a reboot on
+# 26/09/2026 (next elapse "infinity"; a monotonic interval is measured from
+# the unit's last activation in the previous boot and never re-arms) and it
+# does not count time spent suspended. OnCalendar with Persistent=true runs
+# the missed slot as soon as the laptop is back.
 OnBootSec=5min
-OnUnitActiveSec=12h
+OnCalendar=*-*-* 10,22:30:00 UTC
 Persistent=true
+RandomizedDelaySec=5min
 Unit=vintage-watchdog.service
 
 [Install]

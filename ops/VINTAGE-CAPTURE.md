@@ -409,7 +409,7 @@ declaration at the freeze with the same three proofs.
 
 ## 7. Watchdog (`scripts/check-vintages`, systemd user timer)
 
-`Persistent=true`, on boot and every twelve hours. Five checks: every job's
+`Persistent=true`, on boot and at 10:30 and 22:30 UTC (wall-clock, after both Render jobs; a monotonic twelve-hour interval stopped re-arming after a reboot on 26/09/2026 and did not count time asleep). Five checks: every job's
 `status/latest.json` is younger than its schedule allows; the latest run's
 artefact counts and bytes per resource sit inside a band learned from the
 thirty days before it (anchored on `latest.json`, not on today's date, since

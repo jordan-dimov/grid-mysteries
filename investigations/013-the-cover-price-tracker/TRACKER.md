@@ -41,15 +41,16 @@ and pre-settlement; nothing here is a saving, a loss, a boundary attribution
 or a characterisation of any party. Every artefact digest is in
 `evidence/tracker.json`.
 
-Last computed 2026-09-19T19:21:14Z (run date 2026-09-19). NESO vintages on disk:
-2026-09-15, 2026-09-16, 2026-09-17, 2026-09-18, 2026-09-19.
+Last computed 2026-09-26T13:12:13Z (run date 2026-09-26). NESO vintages on disk:
+2026-09-15, 2026-09-16, 2026-09-17, 2026-09-18, 2026-09-19, 2026-09-20, 2026-09-21, 2026-09-22, 2026-09-23, 2026-09-24, 2026-09-25, 2026-09-26.
 
 ## Propositions
 
 - **T1** — on record days the Disaggregated BSAD net share of paid-out exceeds 5 %: undecided (0 instances). Falsifier date 2027-03-31.
-- **T2** — NESO's Constraints figure, when published, exceeds the two cuts (wind-unit bids + gas-unit offers paid) for the same day: **fails** (8 instances, 1 deciding). Falsifier date 2027-03-31.
+- **T2** — NESO's Constraints figure, when published, exceeds the two cuts (wind-unit bids + gas-unit offers paid) for the same day: **fails** (22 instances, 14 deciding). Falsifier date 2027-03-31.
 - **T3** — on record days the gas-offer premium over APXMIDP exceeds £50/MWh: undecided (0 instances). Falsifier date 2027-03-31.
-- Record days so far: none. As of 2026-09-19.
+- **T4** — NESO's Constraints figure as a share of the two cuts rises with the wind share of accepted bid volume (Spearman rho >= 0.50 over at least 20 qualifying days from 2026-09-16): undecided (6 qualifying days; decided once on 2027-03-31). Declaration SHA-256 `0f3b5a96…`.
+- Record days so far: none. As of 2026-09-26.
 
 **T2 failed on 9 September 2026.**
 
@@ -76,16 +77,21 @@ pinned, never zero.
 | 2026-09-04 | seed (012) | 30.05 | 29.26 | 5.39 (18.0 %) | 18.68 (62.2 %) | 5.98 (19.9 %) | 201.77 | 110.65 | Original † | 1.46 (4.9 %) | holds | 31.66 (2026-09-15) | 131.5 % |
 | 2026-09-05 | seed (012) | 17.51 | 16.75 | 3.84 (21.9 %) | 9.07 (51.8 %) | 4.61 (26.3 %) |  |  |  |  | holds | 17.02 (2026-09-15) | 131.9 % |
 | 2026-09-06 | seed (012) | 19.34 | 18.13 | 2.03 (10.5 %) | 14.84 (76.8 %) | 2.47 (12.8 %) |  |  |  |  | holds | 18.13 (2026-09-15) | 107.5 % |
-| 2026-09-07 | seed (012) | 19.75 | 17.82 | 1.49 (7.6 %) | 16.99 (86.0 %) | 1.26 (6.4 %) |  |  |  |  | holds |  |  |
+| 2026-09-07 | seed (012) | 19.75 | 17.82 | 1.49 (7.6 %) | 16.99 (86.0 %) | 1.26 (6.4 %) |  |  |  |  | holds | 19.83 (2026-09-21) | 107.3 % |
 | 2026-09-08 | seed (012) | 33.61 | 31.56 | 3.77 (11.2 %) | 26.82 (79.8 %) | 3.02 (9.0 %) | 229.53 | 82.64 | Original † | 3.33 (9.9 %) | holds | 32.67 (2026-09-15) | 106.8 % |
 | 2026-09-09 |  | 8.13 | 5.39 | 0.17 (2.0 %) ‡ | 7.85 (96.5 %) | 0.12 (1.5 %) | 224.54 | 73.89 | Tagged | 0.25 (3.0 %) | **fails** | 4.13 (2026-09-15) | 51.5 % |
-| 2026-09-10 |  | 15.13 | 11.96 | 0.49 (3.2 %) ‡ | 13.90 (91.9 %) | 0.74 (4.9 %) | 229.81 | 93.43 | Tagged | 2.25 (14.8 %) | **fails** |  |  |
-| 2026-09-11 |  | 9.78 | 6.88 | 0.19 (2.0 %) ‡ | 7.72 (78.9 %) | 1.87 (19.1 %) | 252.39 | 83.61 | Tagged | 2.11 (21.5 %) | **fails** |  |  |
-| 2026-09-12 |  | 23.54 | 22.40 | 2.80 (11.9 %) | 17.68 (75.1 %) | 3.07 (13.0 %) | 228.22 | 120.93 | Tagged | 0.00 (0.0 %) § | holds |  |  |
-| 2026-09-13 |  | 4.28 | 2.88 | 0.00 (0.0 %) ‡ | 3.86 (90.3 %) | 0.41 (9.7 %) |  |  | none reconciles | 0.00 (0.0 %) § | **fails** |  |  |
-| 2026-09-14 |  | 6.71 | 2.23 | 0.01 (0.2 %) ‡ | 6.60 (98.4 %) | 0.09 (1.4 %) | 240.23 | 61.28 | Tagged | 2.61 (38.9 %) | **fails** |  |  |
-| 2026-09-15 |  | 11.52 | 8.56 | 0.44 (3.8 %) ‡ | 9.89 (85.9 %) | 1.19 (10.3 %) | 239.22 | 90.96 | Tagged | 1.35 (11.8 %) | **fails** |  |  |
+| 2026-09-10 |  | 15.13 | 11.96 | 0.49 (3.2 %) ‡ | 13.90 (91.9 %) | 0.74 (4.9 %) | 229.81 | 93.43 | Tagged | 2.25 (14.8 %) | **fails** | 12.69 (2026-09-21) | 88.2 % |
+| 2026-09-11 |  | 9.78 | 6.88 | 0.19 (2.0 %) ‡ | 7.72 (78.9 %) | 1.87 (19.1 %) | 252.39 | 83.61 | Tagged | 2.11 (21.5 %) | **fails** | 8.33 (2026-09-21) | 105.3 % |
+| 2026-09-12 |  | 23.54 | 22.40 | 2.80 (11.9 %) | 17.68 (75.1 %) | 3.07 (13.0 %) | 228.22 | 120.93 | Tagged | 0.00 (0.0 %) | holds | 21.91 (2026-09-26) | 107.0 % |
+| 2026-09-13 |  | 4.28 | 2.88 | 0.00 (0.0 %) ‡ | 3.86 (90.3 %) | 0.41 (9.7 %) |  |  | none reconciles | 0.00 (0.0 %) | **fails** | 0.38 (2026-09-21) | 9.9 % |
+| 2026-09-14 |  | 6.71 | 2.23 | 0.01 (0.2 %) ‡ | 6.60 (98.4 %) | 0.09 (1.4 %) | 240.23 | 61.28 | Tagged | 2.61 (38.9 %) | **fails** | 3.01 (2026-09-21) | 45.4 % |
+| 2026-09-15 |  | 11.52 | 8.56 | 0.44 (3.8 %) ‡ | 9.89 (85.9 %) | 1.19 (10.3 %) | 239.22 | 90.96 | Tagged | 1.35 (11.8 %) | **fails** | 8.88 (2026-09-21) | 85.9 % |
+| 2026-09-16 |  | 9.33 | 6.37 | 0.50 (5.4 %) | 8.50 (91.1 %) | 0.33 (3.6 %) | 239.37 | 88.84 | Tagged | 1.50 (16.1 %) | holds | 8.19 (2026-09-21) | 91.1 % |
+| 2026-09-17 |  | 28.81 | 27.60 | 4.09 (14.2 %) | 20.46 (71.0 %) | 4.27 (14.8 %) | 229.79 | 111.49 | Tagged | 1.68 (5.8 %) | holds | 29.29 (2026-09-26) | 119.3 % |
+| 2026-09-18 |  | 25.29 | 24.62 | 4.06 (16.0 %) | 17.49 (69.2 %) | 3.74 (14.8 %) | 224.45 | 139.77 | Tagged | 1.42 (5.6 %) | holds | 28.36 (2026-09-26) | 131.6 % |
+| 2026-09-19 |  | 29.32 | 29.21 | 6.82 (23.3 %) | 18.37 (62.7 %) | 4.12 (14.1 %) | 223.54 | 182.43 | Tagged | 0.96 (3.3 %) | holds | 31.83 (2026-09-26) | 126.3 % |
+| 2026-09-20 |  | 22.11 | 21.53 | 5.37 (24.3 %) | 14.31 (64.7 %) | 2.43 (11.0 %) | 206.10 | 156.46 | Tagged | 0.52 (2.4 %) | holds | 23.04 (2026-09-26) | 117.1 % |
+| 2026-09-21 |  | 6.56 | 4.36 | 0.14 (2.2 %) ‡ | 5.28 (80.5 %) | 1.14 (17.3 %) | 246.38 | 73.87 | Tagged | 0.40 (6.1 %) | **fails** | 4.31 (2026-09-26) | 79.4 % |
+| 2026-09-22 |  | 3.95 | 2.17 | 0.11 (2.9 %) ‡ | 3.17 (80.3 %) | 0.67 (16.9 %) |  |  | none reconciles | 0.86 (21.8 %) | **fails** | 2.91 (2026-09-26) | 88.7 % |
 
 ‡ The sign check on wind-unit bids failed on the marked days, so the wind-bids figure on those days is ambiguous; each row in `evidence/tracker.json` carries both readings.
-
-§ BSAD provisional: NESO may not have finished filling the marked days. The declared rule treats a day with rows as populated, so this is a caution, not a reclassification.

@@ -28,6 +28,19 @@ if [[ "$tec_expected" != "$tec_actual" ]]; then
   exit 1
 fi
 
+# The Balancing Bill record (013) likewise: compiled route, pinned hash.
+morpholog check bill/bill-register.morph
+if ! morpholog check -v bill/bill-register.morph | grep -qx '  invariant checks: compiled'; then
+  echo "bill/bill-register.morph is no longer compiled: see 'morpholog check -v'" >&2
+  exit 1
+fi
+bill_expected=$(python3 -c "import json; print(json.load(open('bill/PROGRAMME_HASH.json'))['hash'])")
+bill_actual=$(morpholog hash bill/bill-register.morph | python3 -c "import json,sys; print(json.load(sys.stdin)['hash'])")
+if [[ "$bill_expected" != "$bill_actual" ]]; then
+  echo "bill/bill-register.morph hash $bill_actual differs from the pinned $bill_expected" >&2
+  exit 1
+fi
+
 # The vendored typed client must be byte-identical to what the pinned
 # binary generates from the v2 programme — drift is a hard failure.
 morpholog generate python-client morpholog/research-v2-draft.morph --out src --check

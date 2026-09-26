@@ -187,3 +187,20 @@ def test_page_cautions_mark_cells_and_add_one_line_each():
     assert "‡ Wind" not in bb.render_page(tracker([ROW])) and "§ Prov" not in bb.render_page(
         tracker([ROW])
     )
+
+
+def test_page_cites_the_record_anchor_only_when_given_one():
+    plain = bb.render_page(tracker([ROW]))
+    assert "governed record" not in plain
+    record = {
+        "tree_size": 84,
+        "root_hash": "sha256:7a8db97df0d566c45a635670ea3997bcd1ef4cef9bea8e6e03ca777c363e147d",
+        "anchor_path": "bill/anchors/tree-84.json",
+    }
+    cited = bb.render_page(tracker([ROW]), record=record)
+    assert "checkpoint at tree size 84, root <code>sha256:7a8db97df0d566c4…</code>" in cited
+    assert (
+        'href="https://github.com/jordan-dimov/grid-mysteries/blob/main/bill/anchors/tree-84.json"'
+        in cited
+    )
+    assert cited == bb.render_page(tracker([ROW]), record=record)

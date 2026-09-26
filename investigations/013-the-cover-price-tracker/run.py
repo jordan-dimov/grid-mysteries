@@ -531,6 +531,23 @@ def render_t4(block: dict[str, Any]) -> str:
     )
 
 
+def latest_record_anchor() -> dict[str, Any] | None:
+    """The Balancing Bill record's latest checkpoint (bill/anchors/), for the
+    page to cite; None before the record's first checkpoint."""
+    anchors = sorted(
+        (REPO_ROOT / "bill" / "anchors").glob("tree-*.json"),
+        key=lambda p: int(p.stem.split("-")[1]),
+    )
+    if not anchors:
+        return None
+    anchor = json.loads(anchors[-1].read_text())
+    return {
+        "tree_size": anchor["tree_size"],
+        "root_hash": anchor["root_hash"],
+        "anchor_path": str(anchors[-1].relative_to(REPO_ROOT)),
+    }
+
+
 def render(tracker: dict[str, Any]) -> None:
     text = METHOD.format(
         digest=tracker["declaration_sha256"],
@@ -542,7 +559,7 @@ def render(tracker: dict[str, Any]) -> None:
     )
     TRACKER_MD.write_text(text + cp.render_table(tracker["rows"]) + "\n")
     SITE_INDEX.parent.mkdir(parents=True, exist_ok=True)
-    SITE_INDEX.write_text(balancing_bill.render_page(tracker))
+    SITE_INDEX.write_text(balancing_bill.render_page(tracker, record=latest_record_anchor()))
     for row in tracker["rows"]:
         if row.get("record"):
             write_draft(row)
@@ -705,8 +722,17 @@ def main() -> int:
                 acquire_batch(index)
         acquire_neso(args.run_date)
     tracker = None
-    if args.phase in ("compute", "render", "all"):
+    if args.phase in ("compute", "all"):
         tracker = compute(args.run_date)
+    elif args.phase == "render":
+        # The page and TRACKER.md are pure functions of the committed
+        # tracker.json, which the Balancing Bill record names by digest: a
+        # render never recomputes it (a recompute would re-stamp computed_at
+        # and change the digest the record holds).
+        if not TRACKER_JSON.exists():
+            print("nothing to render: run --phase compute first", file=sys.stderr)
+            return 1
+        tracker = load_tracker()
     if args.phase in ("render", "all") and tracker is not None:
         render(tracker)
         records = tracker["propositions"]["record_days"]

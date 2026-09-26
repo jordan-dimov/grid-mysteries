@@ -1,0 +1,171 @@
+-- The Balancing Bill (investigation 013) as a governed record.
+--
+-- Python measures: the tracker's runner computes each settlement day's row
+-- from pinned bytes under a frozen declaration and its amendments. The
+-- record holds what was computed, and refuses to let it change: a row is
+-- admitted once per (day, rule version) and there is no transformation
+-- that alters or retracts it. A day recomputed under a new rule version is
+-- a second row beside the first, never a replacement. NESO's outcome
+-- columns (L1, L4) and the BSAD reading (L3) are append-only: the first
+-- vintage kept as admitted, later differing vintages as revisions, and the
+-- BSAD reading that the next vintage reproduced as the confirmed one
+-- (013 Amendment 1). Verdicts are recorded per run, as of the run date.
+--
+-- Each compute run imports as one transact: `open_run`, then `add_day` /
+-- `append_outcome` / `revise_outcome` / `revise_bsad` / `confirm_bsad` /
+-- `record_verdict` for what is new, then `close_run`. Only the run being
+-- imported can change the record, runs import in date order, and nothing
+-- changes it between runs.
+--
+-- Every invariant here must stay inside the compiled fragment (no `or`,
+-- no defined calls); scripts/check fails otherwise.
+
+program balancing_bill
+
+-- A rule version rows are computed under: the declaration's digest and the
+-- amendments in force, e.g. "013-d20d5920-A1", or "seed-012" for the eight
+-- September days copied from investigation 012 and never recomputed.
+predicate RuleVersion(rule: Subject, declaration_sha256: Subject, amendments: Subject)
+    unique by (rule)
+    append only
+
+-- A compute run: the tracker file it produced, by digest, and its run date.
+predicate Run(run: Subject, run_date: Date, tracker_sha256: Subject, rule: Subject)
+    unique by (run)
+    append only
+predicate CurrentRun(register: Subject, run: Subject, run_date: Date)
+    current pointer by (register)
+predicate Importing(register: Subject, run: Subject)
+    unique by (register)
+predicate Imported(run: Subject)
+    append only
+
+-- One settlement day as computed under one rule version. Money in £ as the
+-- runner prints it (Decimal text), "-" where the declaration leaves a cell
+-- blank; artefacts_sha256 is the SHA-256 over the sorted digests of every
+-- pinned artefact the row was computed from; flag is #seed, #record or #none.
+predicate DayRow(day: Date, rule: Subject, source: Subject, batch: Subject, flag: Subject, paid_out_gbp: Subject, net_gbp: Subject, paid_in_gbp: Subject, wind_bid_gbp: Subject, gas_offer_gbp: Subject, other_gbp: Subject, two_cut_gbp: Subject, sign: Subject, disptav_type: Subject, gas_offer_mwh: Subject, gas_offer_vwap_gbp_per_mwh: Subject, mid_vwap_gbp_per_mwh: Subject, premium_gbp_per_mwh: Subject, bsad_vintage: Subject, bsad_net_gbp: Subject, bsad_share: Subject, artefacts_sha256: Subject)
+    unique by (day, rule)
+    append only
+
+-- NESO's outcome columns: the first vintage that carried the day, kept;
+-- every later vintage that differs, as a revision.
+predicate Outcome(day: Date, vintage: Subject, l1_constraints_gbp: Subject, l4_offers_mwh: Subject, l4_bids_mwh: Subject, ratio_l1_to_two_cut: Subject)
+    unique by (day)
+    append only
+predicate OutcomeRevision(day: Date, vintage: Subject, l1_constraints_gbp: Subject, l4_offers_mwh: Subject, l4_bids_mwh: Subject)
+    unique by (day, vintage)
+    append only
+
+-- L3 (013 Amendment 1): later differing readings, and the reading the next
+-- pinned vintage reproduced, which decides T1.
+predicate BsadRevision(day: Date, vintage: Subject, bsad_net_gbp: Subject, bsad_share: Subject)
+    unique by (day, vintage)
+    append only
+predicate BsadConfirmed(day: Date, vintage: Subject, bsad_net_gbp: Subject, bsad_share: Subject)
+    unique by (day)
+    append only
+
+-- A proposition's verdict as of a run: holds is #true, #false or
+-- #undecided; detail is the runner's own summary (instances, qualifying days).
+predicate Verdict(run: Subject, proposition: Subject, holds: Subject, detail: Subject)
+    unique by (run, proposition)
+    append only
+
+-- Audit-checkpoint signing (reserved predicate name). The verifier pins
+-- the key it trusts (`verify-pack --require-signing-key`), so a key
+-- registered here is necessary for signing, never sufficient for trust.
+predicate AuditSigningKey(key_id: Subject, purpose: Subject, public_key: Subject)
+    append only
+
+invariant runs_name_a_rule:
+    Run(_, _, _, r) implies RuleVersion(r, _, _)
+
+invariant rows_name_a_rule:
+    DayRow(_, r, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _) implies RuleVersion(r, _, _)
+
+invariant outcomes_name_a_day:
+    Outcome(d, _, _, _, _, _) implies DayRow(d, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _)
+
+invariant revisions_follow_an_outcome:
+    OutcomeRevision(d, _, _, _, _) implies Outcome(d, _, _, _, _, _)
+
+invariant bsad_revisions_name_a_day:
+    BsadRevision(d, _, _, _) implies DayRow(d, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _)
+
+invariant bsad_confirmations_name_a_day:
+    BsadConfirmed(d, _, _, _) implies DayRow(d, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _)
+
+invariant verdicts_name_a_run:
+    Verdict(r, _, _, _) implies Run(r, _, _, _)
+
+invariant imports_name_a_run:
+    Imported(r) implies Run(r, _, _, _)
+
+transformation declare_rule(rule, declaration_sha256, amendments):
+    require rule_is_new: not RuleVersion(rule, _, _)
+    admit RuleVersion(rule, declaration_sha256, amendments)
+
+transformation open_first_run(run, run_date, tracker_sha256, rule):
+    require first_run: not CurrentRun(#bill, _, _)
+    require run_rule_declared: RuleVersion(rule, _, _)
+    admit Run(run, run_date, tracker_sha256, rule)
+    admit CurrentRun(#bill, run, run_date)
+    admit Importing(#bill, run)
+
+transformation open_run(run, run_date, tracker_sha256, rule, prior, prior_on):
+    require prior_is_current: CurrentRun(#bill, prior, prior_on)
+    require prior_import_closed: Imported(prior)
+    require no_import_open: not Importing(#bill, _)
+    require runs_in_order: prior_on on_or_before run_date
+    require run_is_new: not Run(run, _, _, _)
+    require run_rule_declared: RuleVersion(rule, _, _)
+    admit Run(run, run_date, tracker_sha256, rule)
+    retract CurrentRun(#bill, prior, prior_on)
+    admit CurrentRun(#bill, run, run_date)
+    admit Importing(#bill, run)
+
+-- A day is admitted once per rule version; nothing alters or retracts it.
+transformation add_day(run, day, rule, source, batch, flag, paid_out_gbp, net_gbp, paid_in_gbp, wind_bid_gbp, gas_offer_gbp, other_gbp, two_cut_gbp, sign, disptav_type, gas_offer_mwh, gas_offer_vwap_gbp_per_mwh, mid_vwap_gbp_per_mwh, premium_gbp_per_mwh, bsad_vintage, bsad_net_gbp, bsad_share, artefacts_sha256):
+    require only_the_run_being_imported: Importing(#bill, run)
+    require row_rule_declared: RuleVersion(rule, _, _)
+    require day_is_new: not DayRow(day, rule, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _)
+    admit DayRow(day, rule, source, batch, flag, paid_out_gbp, net_gbp, paid_in_gbp, wind_bid_gbp, gas_offer_gbp, other_gbp, two_cut_gbp, sign, disptav_type, gas_offer_mwh, gas_offer_vwap_gbp_per_mwh, mid_vwap_gbp_per_mwh, premium_gbp_per_mwh, bsad_vintage, bsad_net_gbp, bsad_share, artefacts_sha256)
+
+transformation append_outcome(run, day, vintage, l1_constraints_gbp, l4_offers_mwh, l4_bids_mwh, ratio_l1_to_two_cut):
+    require only_the_run_being_imported: Importing(#bill, run)
+    require outcome_day_recorded: DayRow(day, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _)
+    require outcome_is_new: not Outcome(day, _, _, _, _, _)
+    admit Outcome(day, vintage, l1_constraints_gbp, l4_offers_mwh, l4_bids_mwh, ratio_l1_to_two_cut)
+
+transformation revise_outcome(run, day, vintage, l1_constraints_gbp, l4_offers_mwh, l4_bids_mwh):
+    require only_the_run_being_imported: Importing(#bill, run)
+    require revised_outcome_exists: Outcome(day, _, _, _, _, _)
+    require revision_is_new: not OutcomeRevision(day, vintage, _, _, _)
+    admit OutcomeRevision(day, vintage, l1_constraints_gbp, l4_offers_mwh, l4_bids_mwh)
+
+transformation revise_bsad(run, day, vintage, bsad_net_gbp, bsad_share):
+    require only_the_run_being_imported: Importing(#bill, run)
+    require bsad_day_recorded: DayRow(day, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _)
+    require bsad_revision_is_new: not BsadRevision(day, vintage, _, _)
+    admit BsadRevision(day, vintage, bsad_net_gbp, bsad_share)
+
+transformation confirm_bsad(run, day, vintage, bsad_net_gbp, bsad_share):
+    require only_the_run_being_imported: Importing(#bill, run)
+    require confirmed_day_recorded: DayRow(day, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _)
+    require confirmation_is_new: not BsadConfirmed(day, _, _, _)
+    admit BsadConfirmed(day, vintage, bsad_net_gbp, bsad_share)
+
+transformation record_verdict(run, proposition, holds, detail):
+    require only_the_run_being_imported: Importing(#bill, run)
+    require verdict_is_new: not Verdict(run, proposition, _, _)
+    admit Verdict(run, proposition, holds, detail)
+
+transformation close_run(run):
+    require only_the_run_being_imported: Importing(#bill, run)
+    retract Importing(#bill, run)
+    admit Imported(run)
+
+transformation register_audit_signing_key(key_id, public_key):
+    require key_not_already_registered: not AuditSigningKey(key_id, _, _)
+    admit AuditSigningKey(key_id, #audit_checkpoint_v1, public_key)

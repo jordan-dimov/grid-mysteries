@@ -309,7 +309,25 @@ table{font-size:.8rem}th,td{padding:.35rem .4rem}}
 """
 
 
-def render_page(tracker: dict[str, Any], repo_url: str = REPO_URL) -> str:
+def render_record_line(record: dict[str, Any] | None, repo_url: str) -> str:
+    """The governed record's checkpoint the page's rows stand under, when the
+    runner was given one (`bill/anchors/tree-<n>.json`); nothing otherwise."""
+    if not record:
+        return ""
+    anchor = f"{repo_url}/blob/main/{record['anchor_path']}"
+    return (
+        f'\n<p class="notes">Record: every day above stands in a governed record that admits a '
+        f'computed row once and refuses to change it (<a href="{escape(repo_url)}/tree/main/bill">'
+        f"bill/</a>); checkpoint at tree size {int(record['tree_size'])}, root "
+        f"<code>{escape(str(record['root_hash'])[:23])}…</code>, signed with key "
+        f"<code>bill-2026</code> and countersigned by DigiCert; anchor "
+        f'<a href="{escape(anchor)}">{escape(record["anchor_path"])}</a>.</p>'
+    )
+
+
+def render_page(
+    tracker: dict[str, Any], repo_url: str = REPO_URL, record: dict[str, Any] | None = None
+) -> str:
     rows = tracker["rows"]
     as_of = tracker["run_date"]
     declaration = f"{repo_url}/blob/main/{INVESTIGATION_PATH}/DECLARATION.md"
@@ -325,6 +343,7 @@ def render_page(tracker: dict[str, Any], repo_url: str = REPO_URL) -> str:
     contact = f'{escape(prompt)}<a href="mailto:{email}">{email}</a>'
     latest = max((r["settlement_date"] for r in rows), default=None)
     latest_text = f" The latest day shown is {day_label(latest)}." if latest else ""
+    anchor_line = render_record_line(record, repo_url)
     return f"""<!doctype html>
 <html lang="en-GB">
 <head>
@@ -387,7 +406,7 @@ any cable or company.</p>
 Evidence, every row and every source digest: <a href="{escape(evidence)}">evidence/</a>.
 Code and tests: <a href="{escape(repo_url)}">{escape(repo_url.removeprefix("https://"))}</a>.
 Page generated {escape(tracker.get("computed_at", "")[:10])} from
-<code>evidence/tracker.json</code>; the page is a pure function of that file.</p>
+<code>evidence/tracker.json</code>; the page is a pure function of that file.</p>{anchor_line}
 
 <h2>Corrections</h2>
 {render_corrections(tracker.get("corrections"))}

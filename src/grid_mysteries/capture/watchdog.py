@@ -33,6 +33,14 @@ DEFAULT_JOBS: dict[str, float] = {"vintage-capture": 26.0}
 BAND_RUNS = 30
 BAND_LOW = 0.5
 BAND_HIGH = 3.0
+#: Strategies whose run holds one calendar day (the previous UTC day) of a
+#: publisher that works office hours. A run covering a working day is banded
+#: against prior working-day runs; a run covering a Saturday or Sunday has no
+#: size band, because the portals publish a handful of notices and the sizes
+#: seen (7 to 58 KB) vary eightfold, so no size separates a thin package from
+#: a challenge page. Errors and an empty response are still faults.
+WEEKEND_QUIET: frozenset[str] = frozenset({"ocds_daily"})
+WINDOW_LAG_DAYS = 1
 SAMPLE_SIZE = 5
 PROOF_DAYS = 7
 
@@ -108,34 +116,65 @@ def check_bands(store: ObjectStore, job: str) -> list[Check]:
     twice a day and the 04:12 run precedes the 06:30 capture, so "today's
     status" does not exist yet and is not a fault (2026-09-18, the first
     pre-capture run after the timer was re-enabled, failed on exactly that).
-    Staleness is check_freshness's question, not this one's."""
+    Staleness is check_freshness's question, not this one's.
+    A resource whose strategy is in WEEKEND_QUIET (the daily OCDS windows of
+    Contracts Finder and Find a Tender) holds the previous UTC day's notices,
+    and the portals publish on working days. The Sunday and Monday runs of
+    2026-09-20/21 and 2026-09-27 read 1 artefact / 7-66 KB against medians of
+    2-5 / 0.9-4.7 MB and failed the watchdog three times with nothing wrong.
+    Its working-day runs are banded against prior working-day runs; its
+    weekend runs have no size band (the weekend sizes seen span 7 to 58 KB, so
+    a challenge interstitial is not distinguishable by size from a quiet
+    Saturday) and fail only on an error or an empty response. A challenge that
+    begins on a Saturday is therefore caught by Tuesday's run, not Sunday's;
+    the working-day median also reads a bank holiday as below band."""
     latest = _load(store, status_key(job, None))
     if latest is None:
         return [Check(f"band:{job}", False, "no status object yet")]
     day = date.fromisoformat(latest["day"])
-    history: dict[str, list[tuple[int, int, int]]] = {}
+    history: dict[str, list[tuple[int, int, int, date]]] = {}
     for back in range(1, BAND_RUNS + 1):
-        past = _load(store, status_key(job, day - timedelta(days=back)))
+        past_day = day - timedelta(days=back)
+        past = _load(store, status_key(job, past_day))
         if past is None:
             continue
         for r in past.get("resources", []):
             if r.get("error") is None:
                 new = r["artefacts"] - r.get("unchanged", 0)
-                history.setdefault(r["name"], []).append((r["artefacts"], r["bytes"], new))
+                history.setdefault(r["name"], []).append(
+                    (r["artefacts"], r["bytes"], new, past_day)
+                )
     out = []
     for r in latest.get("resources", []):
         name = f"band:{job}:{r['name']}"
         runs = history.get(r["name"], [])
+        kind = "prior runs"
+        if r.get("strategy") in WEEKEND_QUIET:
+            covered = day - timedelta(days=WINDOW_LAG_DAYS)
+            if r.get("error"):
+                out.append(Check(name, False, f"ERROR {r['error']}"))
+                continue
+            if _weekend(covered):
+                thin = f"{r['artefacts']} artefacts / {r['bytes']:,} bytes"
+                if r["artefacts"] == 0:
+                    out.append(Check(name, False, f"weekend window ({covered}); no page captured"))
+                else:
+                    out.append(
+                        Check(name, True, f"weekend window ({covered}), no size band; {thin}")
+                    )
+                continue
+            runs = [t for t in runs if not _weekend(t[3] - timedelta(days=WINDOW_LAG_DAYS))]
+            kind = "prior working-day runs"
         if len(runs) < 3:
-            out.append(Check(name, True, f"{len(runs)} prior runs; no band yet"))
+            out.append(Check(name, True, f"{len(runs)} {kind}; no band yet"))
             continue
-        med_count = statistics.median(c for c, _, _ in runs)
-        med_bytes = statistics.median(b for _, b, _ in runs)
-        med_new = statistics.median(n for _, _, n in runs)
+        med_count = statistics.median(c for c, _, _, _ in runs)
+        med_bytes = statistics.median(b for _, b, _, _ in runs)
+        med_new = statistics.median(n for _, _, n, _ in runs)
         new = r["artefacts"] - r.get("unchanged", 0)
         detail = (
             f"{r['artefacts']} artefacts ({new} new) / {r['bytes']:,} bytes against medians "
-            f"{med_count:.0f} ({med_new:.0f} new) / {med_bytes:,.0f} over {len(runs)} runs"
+            f"{med_count:.0f} ({med_new:.0f} new) / {med_bytes:,.0f} over {len(runs)} {kind}"
         )
         if r.get("error"):
             out.append(Check(name, False, f"{detail}; ERROR {r['error']}"))
@@ -156,6 +195,10 @@ def check_bands(store: ObjectStore, job: str) -> list[Check]:
         else:
             out.append(Check(name, True, detail))
     return out
+
+
+def _weekend(day: date) -> bool:
+    return day.weekday() >= 5
 
 
 def check_sample(

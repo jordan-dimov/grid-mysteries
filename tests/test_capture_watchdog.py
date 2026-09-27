@@ -1,4 +1,5 @@
 import hashlib
+import itertools
 import json
 import random
 from datetime import UTC, date, datetime, timedelta
@@ -277,10 +278,10 @@ def test_sync_adopts_grown_state_but_never_grows_raw_manifests_or_proofs(tmp_pat
         assert (repo / path).read_bytes() == local[path]
 
 
-def resource(name, artefacts, size, unchanged, error=None):
+def resource(name, artefacts, size, unchanged, error=None, strategy="ckan"):
     return {
         "name": name,
-        "strategy": "ckan",
+        "strategy": strategy,
         "artefacts": artefacts,
         "bytes": size,
         "unchanged": unchanged,
@@ -369,3 +370,53 @@ def test_quiet_does_not_excuse_new_bytes_or_a_source_that_went_away(tmp_path: Pa
     )
     assert not checks["DA-CONSTRAINT"].ok
     assert "ERROR HTTPError: 403" in checks["DA-CONSTRAINT"].detail
+
+
+def ocds(artefacts, size, error=None):
+    return resource("CF-OCDS", artefacts, size, 0, error=error, strategy="ocds_daily")
+
+
+def daily_windows(store: LocalStore, today: date, latest):
+    """Thirty days of runs: a daily OCDS window holding a weekday's notices
+    (2 pages / 900 KB) or a weekend day's (1 page / 7 to 58 KB, as seen on
+    2026-09-20/21 and 09-27), beside a CKAN resource with no weekly pattern."""
+    sizes = itertools.cycle([22_661, 58_396, 7_210, 16_094, 66_717, 46_161])
+    for back in range(1, 31):
+        day = today - timedelta(days=back)
+        covered = day - timedelta(days=1)
+        window = ocds(1, next(sizes)) if covered.weekday() >= 5 else ocds(2, 900_000)
+        store.put(
+            f"status/vintage-capture/{day}.json",
+            status(day, resources=[window, resource("TEC", 1, 2_528, 0)]),
+        )
+    store.put("status/vintage-capture/latest.json", status(today, resources=latest))
+    return {c.name.rsplit(":", 1)[1]: c for c in wd.check_bands(store, "vintage-capture")}
+
+
+def test_a_working_day_publisher_s_weekend_window_is_thin_not_collapsed(tmp_path: Path):
+    """Contracts Finder and Find a Tender, the Sunday and Monday runs of
+    2026-09-20/21 and 2026-09-27: each holds Saturday's or Sunday's notices,
+    1 artefact / 7-66 KB against weekday medians of 2-5 / 0.9-4.7 MB. Nothing
+    was wrong, and the watchdog failed three times. Weekend sizes span
+    eightfold, so a weekend window has no size band; a working-day window is
+    banded against working-day windows only, and the same bytes on a Tuesday
+    are still a collapse."""
+    sunday, monday, tuesday = date(2026, 10, 11), date(2026, 10, 12), date(2026, 10, 13)
+    checks = daily_windows(
+        LocalStore(tmp_path / "sun"), sunday, [ocds(1, 7_210), resource("TEC", 1, 2_528, 0)]
+    )
+    assert checks["CF-OCDS"].ok and not checks["CF-OCDS"].news
+    assert checks["CF-OCDS"].detail.startswith("weekend window (2026-10-10), no size band")
+    assert "over 30 prior runs" in checks["TEC"].detail  # other resources see every run
+    checks = daily_windows(LocalStore(tmp_path / "mon"), monday, [ocds(1, 66_717)])
+    assert checks["CF-OCDS"].ok and "(2026-10-11)" in checks["CF-OCDS"].detail
+    checks = daily_windows(LocalStore(tmp_path / "tue"), tuesday, [ocds(1, 7_210)])
+    assert not checks["CF-OCDS"].ok and checks["CF-OCDS"].detail.endswith("below band")
+    assert "over 20 prior working-day runs" in checks["CF-OCDS"].detail
+    checks = daily_windows(LocalStore(tmp_path / "tue-ok"), tuesday, [ocds(2, 850_000)])
+    assert checks["CF-OCDS"].ok and not checks["CF-OCDS"].news
+    # What a weekend window still fails on: nothing captured, or an error.
+    checks = daily_windows(LocalStore(tmp_path / "empty"), sunday, [ocds(0, 0)])
+    assert not checks["CF-OCDS"].ok and checks["CF-OCDS"].detail.endswith("no page captured")
+    checks = daily_windows(LocalStore(tmp_path / "err"), sunday, [ocds(1, 7_210, "HTTPError: 503")])
+    assert not checks["CF-OCDS"].ok and "ERROR HTTPError: 503" in checks["CF-OCDS"].detail

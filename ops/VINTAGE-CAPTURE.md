@@ -413,7 +413,9 @@ declaration at the freeze with the same three proofs.
 `status/latest.json` is younger than its schedule allows; the latest run's
 artefact counts and bytes per resource sit inside a band learned from the
 thirty days before it (anchored on `latest.json`, not on today's date, since
-the 04:12 run precedes the 06:30 capture); a random sample of yesterday's manifest entries re-downloads and
+the 04:12 run precedes the 06:30 capture; a daily OCDS window covering a
+weekend day has no size band, and one covering a working day is banded
+against working-day windows only); a random sample of yesterday's manifest entries re-downloads and
 matches its digest; a proof exists for each manifest; Object Lock, logging
 and public-access settings are unchanged. Then one sync: manifests and
 proofs into `data/manifests/`, `state/` into the repo, bytes optionally
@@ -772,3 +774,21 @@ to its key. First mirror: 1,043 objects, 817 MB on disk; the archive grows
 ~55 MB/day, ~20 GB/year. After `git pull` on a new machine, re-run
 `ops/install-watchdog` or `systemctl --user daemon-reload`. A copy with a second
 provider (R2/B2) is not built; the laptop is the second copy.
+
+**Weekend windows of working-day publishers (2026-09-27).** The two daily OCDS
+resources (Contracts Finder, Find a Tender) fetch the previous UTC day's
+notices. Their Sunday and Monday runs hold a Saturday's or Sunday's, when the
+portals publish a handful: 1 artefact / 7 to 66 KB against weekday medians of
+2 to 5 / 0.9 to 4.7 MB. That read as `below band` and failed the watchdog on
+20, 21 and 27 September with nothing wrong (healthchecks.io DOWN at 11:37 BST
+on the 27th). Deferred on the 20th; fixed now. `check_bands` treats a
+strategy in `WEEKEND_QUIET` in two classes by the day the window covers: a
+working-day window is banded against prior working-day windows; a weekend
+window has no size band and fails only on an error or an empty response. The
+size band is given up on weekends deliberately: the weekend sizes seen span
+eightfold, and `ocds_daily` captures whatever the portal returns (a challenge
+interstitial is 1 artefact of a few KB, like a quiet Saturday), so no median
+separates them. A challenge that begins on a Saturday is caught by Tuesday's
+run. A bank holiday will read as below band on the working-day median; that
+is a known false positive, not yet handled. Test:
+`test_a_working_day_publisher_s_weekend_window_is_thin_not_collapsed`.

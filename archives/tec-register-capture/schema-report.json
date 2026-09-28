@@ -1,0 +1,294 @@
+{
+ "archive": "neso/tec-register (daily capture)",
+ "copies": 4,
+ "unparseable": [],
+ "eras": [
+  {
+   "first": "2026-09-15",
+   "last": "2026-09-25",
+   "copies": 4,
+   "columns": [
+    "Agreement Type",
+    "Connection Site",
+    "Cumulative Total Capacity (MW)",
+    "Customer Name",
+    "Gate",
+    "HOST TO",
+    "MW Connected",
+    "MW Effective From",
+    "MW Increase / Decrease",
+    "Plant Type",
+    "Project ID",
+    "Project Name",
+    "Project Number",
+    "Project Status",
+    "Stage"
+   ]
+  }
+ ],
+ "date_spelling_totals": {
+  "date-cell": 0,
+  "iso-dash": 0,
+  "iso-slash": 0,
+  "uk": 7345,
+  "dd-mon-yy": 0,
+  "serial": 0,
+  "blank": 1451,
+  "other": 0
+ },
+ "project_status_totals": {
+  "Scoping": 5670,
+  "Built": 1514,
+  "Consents Approved": 797,
+  "Awaiting Consents": 664,
+  "Under Construction/Commissioning": 151
+ },
+ "gate_totals": {
+  "": 5350,
+  "1": 3050,
+  "2": 396
+ },
+ "flagged": [],
+ "per_copy": [
+  {
+   "t_public": "2026-09-15",
+   "source": "neso-ckan-capture",
+   "format": "csv",
+   "sha256": "d13406e495746f1b80e725321a5c7f95e21e0da16830bb6bd1f94ece172c9d5b",
+   "rows": 2200,
+   "row_count_change": null,
+   "columns": [
+    "Agreement Type",
+    "Connection Site",
+    "Cumulative Total Capacity (MW)",
+    "Customer Name",
+    "Gate",
+    "HOST TO",
+    "MW Connected",
+    "MW Effective From",
+    "MW Increase / Decrease",
+    "Plant Type",
+    "Project ID",
+    "Project Name",
+    "Project Number",
+    "Project Status",
+    "Stage"
+   ],
+   "blank": {
+    "Project Name": 0,
+    "Customer Name": 0,
+    "Connection Site": 0,
+    "MW Increase / Decrease": 0,
+    "MW Effective From": 362
+   },
+   "date_spellings": {
+    "date-cell": 0,
+    "iso-dash": 0,
+    "iso-slash": 0,
+    "uk": 1838,
+    "dd-mon-yy": 0,
+    "serial": 0,
+    "blank": 362,
+    "other": 0
+   },
+   "project_status": {
+    "Awaiting Consents": 148,
+    "Built": 377,
+    "Consents Approved": 172,
+    "Scoping": 1484,
+    "Under Construction/Commissioning": 19
+   },
+   "gate": {
+    "": 1349,
+    "1": 756,
+    "2": 95
+   },
+   "flags": [],
+   "filename": "tec-register-15-september-2026.csv",
+   "key": "raw/neso/tec-register/2026-09-15/d13406e495746f1b80e725321a5c7f95e21e0da16830bb6bd1f94ece172c9d5b",
+   "manifest": "2026-09-15.ndjson",
+   "fetched_at": "2026-09-15T22:09:49+00:00",
+   "t_public_basis": "CKAN resource last_modified 2026-09-15T16:48:30.055757; NESO filename tec-register-15-september-2026.csv; fetched by the daily capture 2026-09-15T22:09:49+00:00"
+  },
+  {
+   "t_public": "2026-09-18",
+   "source": "neso-ckan-capture",
+   "format": "csv",
+   "sha256": "ad73b5045973b080f4695664fef08a11d45dfb5e0ac0a72808d9d863a1051fa5",
+   "rows": 2198,
+   "row_count_change": "-0.001",
+   "columns": [
+    "Agreement Type",
+    "Connection Site",
+    "Cumulative Total Capacity (MW)",
+    "Customer Name",
+    "Gate",
+    "HOST TO",
+    "MW Connected",
+    "MW Effective From",
+    "MW Increase / Decrease",
+    "Plant Type",
+    "Project ID",
+    "Project Name",
+    "Project Number",
+    "Project Status",
+    "Stage"
+   ],
+   "blank": {
+    "Project Name": 0,
+    "Customer Name": 0,
+    "Connection Site": 0,
+    "MW Increase / Decrease": 0,
+    "MW Effective From": 362
+   },
+   "date_spellings": {
+    "date-cell": 0,
+    "iso-dash": 0,
+    "iso-slash": 0,
+    "uk": 1836,
+    "dd-mon-yy": 0,
+    "serial": 0,
+    "blank": 362,
+    "other": 0
+   },
+   "project_status": {
+    "Awaiting Consents": 172,
+    "Built": 378,
+    "Consents Approved": 205,
+    "Scoping": 1399,
+    "Under Construction/Commissioning": 44
+   },
+   "gate": {
+    "": 1339,
+    "1": 763,
+    "2": 96
+   },
+   "flags": [],
+   "filename": "tec-register-18-september-2026.csv",
+   "key": "raw/neso/tec-register/2026-09-19/ad73b5045973b080f4695664fef08a11d45dfb5e0ac0a72808d9d863a1051fa5",
+   "manifest": "2026-09-19.ndjson",
+   "fetched_at": "2026-09-19T06:30:54+00:00",
+   "t_public_basis": "CKAN resource last_modified 2026-09-18T16:41:13.072051; NESO filename tec-register-18-september-2026.csv; fetched by the daily capture 2026-09-19T06:30:54+00:00"
+  },
+  {
+   "t_public": "2026-09-22",
+   "source": "neso-ckan-capture",
+   "format": "csv",
+   "sha256": "cfb307e51252e77487f9a7e2296e27d3aa9a6b84c8b44423f48240415b8ac2e8",
+   "rows": 2198,
+   "row_count_change": "0.000",
+   "columns": [
+    "Agreement Type",
+    "Connection Site",
+    "Cumulative Total Capacity (MW)",
+    "Customer Name",
+    "Gate",
+    "HOST TO",
+    "MW Connected",
+    "MW Effective From",
+    "MW Increase / Decrease",
+    "Plant Type",
+    "Project ID",
+    "Project Name",
+    "Project Number",
+    "Project Status",
+    "Stage"
+   ],
+   "blank": {
+    "Project Name": 0,
+    "Customer Name": 0,
+    "Connection Site": 0,
+    "MW Increase / Decrease": 0,
+    "MW Effective From": 362
+   },
+   "date_spellings": {
+    "date-cell": 0,
+    "iso-dash": 0,
+    "iso-slash": 0,
+    "uk": 1836,
+    "dd-mon-yy": 0,
+    "serial": 0,
+    "blank": 362,
+    "other": 0
+   },
+   "project_status": {
+    "Awaiting Consents": 172,
+    "Built": 378,
+    "Consents Approved": 210,
+    "Scoping": 1394,
+    "Under Construction/Commissioning": 44
+   },
+   "gate": {
+    "": 1333,
+    "1": 763,
+    "2": 102
+   },
+   "flags": [],
+   "filename": "tec-register-21-september-2026.csv",
+   "key": "raw/neso/tec-register/2026-09-23/cfb307e51252e77487f9a7e2296e27d3aa9a6b84c8b44423f48240415b8ac2e8",
+   "manifest": "2026-09-23.ndjson",
+   "fetched_at": "2026-09-23T06:31:03+00:00",
+   "t_public_basis": "CKAN resource last_modified 2026-09-22T07:57:31.317790; NESO filename tec-register-21-september-2026.csv; fetched by the daily capture 2026-09-23T06:31:03+00:00"
+  },
+  {
+   "t_public": "2026-09-25",
+   "source": "neso-ckan-capture",
+   "format": "csv",
+   "sha256": "da0b67b5ea34a85606f3a98269916f647c32a0f3b496f91a1136e80069175a6c",
+   "rows": 2200,
+   "row_count_change": "0.001",
+   "columns": [
+    "Agreement Type",
+    "Connection Site",
+    "Cumulative Total Capacity (MW)",
+    "Customer Name",
+    "Gate",
+    "HOST TO",
+    "MW Connected",
+    "MW Effective From",
+    "MW Increase / Decrease",
+    "Plant Type",
+    "Project ID",
+    "Project Name",
+    "Project Number",
+    "Project Status",
+    "Stage"
+   ],
+   "blank": {
+    "Project Name": 0,
+    "Customer Name": 0,
+    "Connection Site": 0,
+    "MW Increase / Decrease": 0,
+    "MW Effective From": 365
+   },
+   "date_spellings": {
+    "date-cell": 0,
+    "iso-dash": 0,
+    "iso-slash": 0,
+    "uk": 1835,
+    "dd-mon-yy": 0,
+    "serial": 0,
+    "blank": 365,
+    "other": 0
+   },
+   "project_status": {
+    "Awaiting Consents": 172,
+    "Built": 381,
+    "Consents Approved": 210,
+    "Scoping": 1393,
+    "Under Construction/Commissioning": 44
+   },
+   "gate": {
+    "": 1329,
+    "1": 768,
+    "2": 103
+   },
+   "flags": [],
+   "filename": "tec-register-24-september-2026.csv",
+   "key": "raw/neso/tec-register/2026-09-26/da0b67b5ea34a85606f3a98269916f647c32a0f3b496f91a1136e80069175a6c",
+   "manifest": "2026-09-26.ndjson",
+   "fetched_at": "2026-09-26T06:31:03+00:00",
+   "t_public_basis": "CKAN resource last_modified 2026-09-25T09:06:59.612526; NESO filename tec-register-24-september-2026.csv; fetched by the daily capture 2026-09-26T06:31:03+00:00"
+  }
+ ]
+}

@@ -312,6 +312,76 @@ def load_vintages(
     return vintages, skipped
 
 
+# ------------------------------------------------------------ capture copies
+
+CAPTURE_DATASET: Final = "NESO-TEC-REGISTER"
+
+
+def capture_entries(manifests: list[Path]) -> list[dict]:
+    """The TEC Register copies the daily capture fetched, as journal-shaped
+    entries, one per digest, from the committed daily manifests.
+
+    A manifest records a fetched copy with the CKAN resource's
+    `last_modified`; that date is the copy's `t_public`, the convention of
+    every earlier live pin. Days on which the capture skipped an unchanged
+    resource carry only the metadata record and add nothing. The entry keeps
+    the archive key, the manifest that recorded it and NESO's filename, which
+    can name a different day from `last_modified`.
+    """
+    by_digest: dict[str, dict] = {}
+    for manifest in sorted(manifests):
+        for line in manifest.read_text().splitlines():
+            if not line.strip():
+                continue
+            record = json.loads(line)
+            if record.get("dataset") != CAPTURE_DATASET or record["sha256"] in by_digest:
+                continue
+            last_modified = str((record.get("extra") or {}).get("ckan_last_modified") or "")
+            if not last_modified:
+                raise ValueError(f"{manifest.name}: TEC copy {record['key']} has no last_modified")
+            filename = record["url"].split("?", 1)[0].rsplit("/", 1)[-1]
+            by_digest[record["sha256"]] = {
+                "source": "neso-ckan-capture",
+                "t_public": last_modified[:10],
+                "t_public_basis": (
+                    f"CKAN resource last_modified {last_modified}; NESO filename {filename}; "
+                    f"fetched by the daily capture {record['fetched_at']}"
+                ),
+                "filename": filename,
+                "key": record["key"],
+                "manifest": str(manifest.name),
+                "sha256": record["sha256"],
+                "bytes": record["bytes"],
+                "format": "csv",
+                "fetched_at": record["fetched_at"],
+            }
+    return sorted(by_digest.values(), key=lambda e: (e["t_public"], e["fetched_at"]))
+
+
+def load_capture_copies(
+    manifests: list[Path], mirror: Path
+) -> list[tuple[date, list[dict[str, object]], dict]]:
+    """Every captured copy as (t_public, rows, entry), each read from the
+    local mirror of the archive (`<mirror>/<key>`) after its bytes are
+    checked against the manifested digest; a missing or altered copy stops."""
+    out = []
+    for entry in capture_entries(manifests):
+        path = mirror / entry["key"]
+        if sha256_file(path) != entry["sha256"]:
+            raise RuntimeError(f"{entry['key']} does not match its manifested digest")
+        with path.open(newline="", encoding="utf-8-sig", errors="replace") as f:
+            header = next(csv.reader(f), [])
+        rows = read_vintage(path, "csv")
+        out.append(
+            (
+                date.fromisoformat(entry["t_public"]),
+                rows,
+                {**entry, "columns": header, "row_count": len(rows)},
+            )
+        )
+    return out
+
+
 # ----------------------------------------------------------------- live pin
 
 

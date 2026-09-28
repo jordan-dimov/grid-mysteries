@@ -289,3 +289,96 @@ def test_the_gate_column_gets_the_same_vocabulary_pass_as_status():
     assert report["gate"] == {"": 2, "Gate 1": 1, "Gate 2": 1}
     whole = tr.schema_report([(date(2026, 9, 15), rows, entry)], [])
     assert whole["gate_totals"] == {"": 2, "Gate 1": 1, "Gate 2": 1}
+
+
+def _capture_manifest(tmp_path, name, records):
+    import json
+
+    path = tmp_path / name
+    path.write_text("".join(json.dumps(r) + "\n" for r in records))
+    return path
+
+
+def _capture_record(day, digest, last_modified, filename, dataset="NESO-TEC-REGISTER"):
+    return {
+        "day": day,
+        "dataset": dataset,
+        "url": f"https://example.invalid/r/{filename}?X-Amz-Signature=x",
+        "key": f"raw/neso/tec-register/{day}/{digest}",
+        "sha256": digest,
+        "bytes": 10,
+        "fetched_at": f"{day}T06:31:03+00:00",
+        "extra": {"ckan_last_modified": last_modified},
+    }
+
+
+def test_capture_copies_are_dated_by_last_modified_and_keep_nesos_filename(tmp_path):
+    a = _capture_manifest(
+        tmp_path,
+        "2026-09-26.ndjson",
+        [
+            _capture_record(
+                "2026-09-26",
+                "b" * 64,
+                "2026-09-25T09:06:59.6",
+                "tec-register-24-september-2026.csv",
+            ),
+            _capture_record(
+                "2026-09-26",
+                "m" * 64,
+                "2026-09-25T09:06:59.6",
+                "x.json",
+                dataset="NESO-TEC-REGISTER-META",
+            ),
+        ],
+    )
+    b = _capture_manifest(
+        tmp_path,
+        "2026-09-23.ndjson",
+        [
+            _capture_record(
+                "2026-09-23",
+                "a" * 64,
+                "2026-09-22T07:57:31.3",
+                "tec-register-21-september-2026.csv",
+            )
+        ],
+    )
+    entries = tr.capture_entries([a, b])
+    assert [e["t_public"] for e in entries] == ["2026-09-22", "2026-09-25"]
+    assert entries[1]["filename"] == "tec-register-24-september-2026.csv"
+    assert entries[1]["manifest"] == "2026-09-26.ndjson"
+    assert all(e["source"] == "neso-ckan-capture" for e in entries)
+
+
+def test_capture_copy_recorded_twice_counts_once_and_a_missing_date_refuses(tmp_path):
+    import pytest
+
+    rec = _capture_record("2026-09-26", "c" * 64, "2026-09-25T09:06:59", "f.csv")
+    a = _capture_manifest(tmp_path, "2026-09-26.ndjson", [rec])
+    b = _capture_manifest(tmp_path, "2026-09-27.ndjson", [{**rec, "day": "2026-09-27"}])
+    assert len(tr.capture_entries([a, b])) == 1
+    bad = _capture_manifest(
+        tmp_path, "2026-09-28.ndjson", [{**rec, "sha256": "d" * 64, "extra": {}}]
+    )
+    with pytest.raises(ValueError):
+        tr.capture_entries([bad])
+
+
+def test_capture_copy_whose_bytes_changed_stops(tmp_path):
+    import hashlib
+
+    import pytest
+
+    body = b"Project Name,Customer Name\nX,Y\n"
+    digest = hashlib.sha256(body).hexdigest()
+    rec = _capture_record("2026-09-26", digest, "2026-09-25T09:06:59", "f.csv")
+    manifest = _capture_manifest(tmp_path, "2026-09-26.ndjson", [rec])
+    copy = tmp_path / "mirror" / rec["key"]
+    copy.parent.mkdir(parents=True)
+    copy.write_bytes(body)
+    [(t, _rows, entry)] = tr.load_capture_copies([manifest], tmp_path / "mirror")
+    assert t == date(2026, 9, 25) and entry["columns"] == ["Project Name", "Customer Name"]
+    copy.write_bytes(body + b"Z,W\n")
+    with pytest.raises(RuntimeError):
+        tr.load_capture_copies([manifest], tmp_path / "mirror")

@@ -6,7 +6,10 @@ and statuses, because those are the register's own cells and the subject of
 the investigation; it characterises no company and attributes no cause.
 """
 
+import re
+from datetime import date
 from decimal import Decimal
+from html import escape
 from typing import Any
 
 from grid_mysteries.investigations import overdue_queue as oq
@@ -415,10 +418,12 @@ def render_findings(
     rows: list[dict[str, Any]],
     certificates: list[dict[str, Any]],
     gate: dict[str, Any] | None = None,
+    corrections: list[dict[str, Any]] | None = None,
 ) -> str:
     """The findings page. `rows` is the append-only evidence of selected rows;
     it is not re-derived here, only counted, so the page can never disagree
-    with the file it cites."""
+    with the file it cites. `corrections` are inserted where they govern
+    (`apply_corrections`), so a re-render keeps every one."""
     lines = [
         "# 017 — The queue that is past its own date",
         "",
@@ -493,6 +498,23 @@ def render_findings(
         "roots committed under `trust/tsa/`.",
         "",
     ]
+    return apply_corrections("\n".join(lines), corrections)
+
+
+def apply_corrections(markdown: str, corrections: list[dict[str, Any]] | None) -> str:
+    """Insert each correction as its own paragraph directly after the line it
+    governs, which is the one line starting with its `after` text. The text it
+    corrects is kept as written. An anchor that matches no line, or more than
+    one, stops the render: a correction is never dropped or misplaced."""
+    lines = markdown.split("\n")
+    for correction in corrections or []:
+        hits = [i for i, line in enumerate(lines) if line.startswith(correction["after"])]
+        if len(hits) != 1:
+            raise ValueError(
+                f"correction of {correction['date']}: anchor {correction['after']!r} "
+                f"matches {len(hits)} lines, not one"
+            )
+        lines[hits[0] + 1 : hits[0] + 1] = ["", correction["markdown"]]
     return "\n".join(lines)
 
 
@@ -1254,3 +1276,232 @@ def _gate_section(gate: dict[str, Any], census: dict[str, Any]) -> list[str]:
         "",
     ]
     return lines
+
+
+# ------------------------------------------------------------------ the web page
+# `site/overdue-queue/index.html` is FINDINGS.md in the style of 014's page,
+# with a lead that leads on the row share. Every number in the lead is read
+# from the evidence; the one sentence about the exhibit is checked against
+# FINDINGS.md before it is printed.
+
+PAGE_TITLE = "The queue that is past its own date"
+PAGE_SUBTITLE = (
+    "Entries in Britain's grid-connection register whose own connection date has passed, "
+    "counted under a method sealed before the count"
+)
+PAGE_INVESTIGATION = "investigations/017-the-overdue-queue"
+#: The exhibit sentence of the lead, and the phrases of FINDINGS.md it rests
+#: on; if FINDINGS.md stops carrying any of them the page is not rendered.
+EXHIBIT_LEAD = (
+    "A single copy cannot tell a date written last week from one written years ago. "
+    "One project shows why the copies have to be kept: the register has called the "
+    "2,450 MW project at Eggborough by three different names, has given its old name to "
+    "a different project (in January 2024), and in every one of the 511 copies that show it, "
+    "from November 2018 to September 2026, has printed its status as “Awaiting Consents”."
+)
+EXHIBIT_SUPPORT = (
+    "the register has called this project three different things",
+    "the register has given the bare name to a different, smaller project",
+    "**511 copies** of the register, from 2018-11-08 to 2026-09-15",
+    "the status reads “Awaiting Consents”",
+    "2,450 MW at Eggborough 400kV Substation",
+)
+PAGE_CSS = """\
+table{min-width:40rem}
+th,td,thead th{text-align:left;white-space:normal}
+h3{font-size:1.05rem;margin:1.5rem 0 .4rem}
+blockquote{margin:1rem 0;padding:.25rem 0 .25rem 1rem;border-left:3px solid var(--rule);
+max-width:44rem}
+blockquote p{margin:.4rem 0}
+pre{overflow-x:auto;background:var(--seed);padding:.75rem;font-size:.85rem}
+li{max-width:44rem;margin:.3rem 0}
+code{font-size:.9em;overflow-wrap:anywhere}
+.forward{max-width:44rem}
+"""
+
+_BOLD = re.compile(r"\*\*(.+?)\*\*")
+_ITALIC = re.compile(r"(?<![*\w])\*(?![\s*])(.+?)(?<![\s*])\*(?![*\w])")
+
+
+def inline_html(text: str) -> str:
+    """The inline markdown FINDINGS.md uses: code spans, bold, italic.
+    Everything else is escaped as text. Code spans are set aside first, so
+    emphasis may run across one and nothing inside one is emphasised."""
+    spans: list[str] = []
+
+    def hold(m: re.Match[str]) -> str:
+        spans.append(f"<code>{escape(m.group(1))}</code>")
+        return f"\x00{len(spans) - 1}\x00"
+
+    out = escape(re.sub(r"`([^`]*)`", hold, text), quote=False)
+    out = _ITALIC.sub(r"<em>\1</em>", _BOLD.sub(r"<strong>\1</strong>", out))
+    return re.sub("\x00(\\d+)\x00", lambda m: spans[int(m.group(1))], out)
+
+
+def _cells(line: str) -> list[str]:
+    return [c.strip() for c in line.strip().strip("|").split("|")]
+
+
+def markdown_html(markdown: str) -> str:
+    """The block markdown FINDINGS.md uses, and no more: headings, paragraphs,
+    pipe tables, block quotes, bullet lists and fenced code."""
+    lines = markdown.split("\n")
+    html: list[str] = []
+    i = 0
+    while i < len(lines):
+        line = lines[i]
+        if not line.strip():
+            i += 1
+        elif line.startswith("```"):
+            end = next(j for j in range(i + 1, len(lines)) if lines[j].startswith("```"))
+            html.append("<pre><code>" + escape("\n".join(lines[i + 1 : end])) + "</code></pre>")
+            i = end + 1
+        elif m := re.match(r"(#{1,4}) (.*)", line):
+            level = len(m.group(1))
+            html.append(f"<h{level}>{inline_html(m.group(2))}</h{level}>")
+            i += 1
+        elif line.startswith("|"):
+            block = []
+            while i < len(lines) and lines[i].startswith("|"):
+                block.append(lines[i])
+                i += 1
+            head, body = _cells(block[0]), [_cells(r) for r in block[2:]]
+            html.append(
+                '<div class="scroll"><table><thead><tr>'
+                + "".join(f"<th>{inline_html(c)}</th>" for c in head)
+                + "</tr></thead><tbody>"
+                + "".join(
+                    "<tr>" + "".join(f"<td>{inline_html(c)}</td>" for c in r) + "</tr>"
+                    for r in body
+                )
+                + "</tbody></table></div>"
+            )
+        elif line.startswith(">"):
+            block = []
+            while i < len(lines) and lines[i].startswith(">"):
+                block.append(lines[i].removeprefix(">").strip())
+                i += 1
+            html.append(f"<blockquote><p>{inline_html(' '.join(block))}</p></blockquote>")
+        elif line.startswith("- "):
+            items = []
+            while i < len(lines) and lines[i].startswith("- "):
+                items.append(lines[i][2:])
+                i += 1
+            html.append("<ul>" + "".join(f"<li>{inline_html(t)}</li>" for t in items) + "</ul>")
+        else:
+            block = []
+            while (
+                i < len(lines)
+                and lines[i].strip()
+                and not re.match(r"(#{1,4} |\||>|- |```)", lines[i])
+            ):
+                block.append(lines[i])
+                i += 1
+            html.append(f"<p>{inline_html(' '.join(block))}</p>")
+    return "\n".join(html)
+
+
+def day(iso: str) -> str:
+    """`2026-09-15` as `15 September 2026`."""
+    d = date.fromisoformat(iso)
+    return f"{d.day} {d.strftime('%B')} {d.year}"
+
+
+def page_lead(census: dict[str, Any], gate: dict[str, Any]) -> list[str]:
+    """The lead, as HTML paragraphs: the confirmed tier's row share first and
+    its capacity share beside it (R11), the other reading of the tier in the
+    next sentence, the whole census by rows with its id reading (R6), and
+    what none of it says."""
+    tier = next(e for e in gate["g2_overdue_by_gate"] if e["gate"] == oq.CONFIRMED_TIER)
+    other = gate["g6_summary"]
+    return [
+        '<p class="headline">'
+        f"Of the {tier['rows_in_copy']} entries in the confirmed tier of NESO's connection "
+        "register, the tier NESO says carries a confirmed connection date, "
+        f"<strong>{tier['rows']} were already past that date</strong> in the copy published "
+        f"on {day(census['as_of'])}: {pct(tier['row_share_of_its_gate'])} of the tier's "
+        f"entries, and {pct(tier['capacity_share_of_its_gate'])} of its capacity.</p>",
+        "<p>Another copy of the register prints "
+        f"{other['rows_a_gated_copy_publishes_as_not_past']} of those {tier['rows']} "
+        "dates as not yet past, so on that reading it is "
+        f"{other['rows_if_those_rows_are_read_as_not_past']} entries. Both readings are set "
+        "out below, and neither is quoted here without the other. Across the whole register, "
+        f"{census['selected_rows']} entries ({census['distinct_project_ids']} distinct project "
+        "ids) say their date has passed and do not say “Built”.</p>",
+        "<p>None of this says that any project is late. The register records a date and a "
+        "status, not delivery, and NESO describes the status as its best-known "
+        "classification. What is counted is what the document says.</p>",
+        f"<p>{escape(EXHIBIT_LEAD)}</p>",
+    ]
+
+
+def render_page(
+    findings: str,
+    census: dict[str, Any],
+    gate: dict[str, Any],
+    *,
+    next_declaration: tuple[str, str] | None = None,
+    repo_url: str = "https://github.com/jordan-dimov/grid-mysteries",
+    credibility: str = "",
+    contact_email: str = "",
+) -> str:
+    """The web page: the lead, then FINDINGS.md as rendered (its title
+    replaced by the page's), then where the record lives. `next_declaration`
+    is (file name, SHA-256) of a declaration frozen for a later copy."""
+    missing = [p for p in EXHIBIT_SUPPORT if p not in findings]
+    if missing:
+        raise ValueError(f"FINDINGS.md no longer supports the page's exhibit sentence: {missing}")
+    body = findings.split("\n", 1)[1] if findings.startswith("# ") else findings
+    base = f"{repo_url}/blob/main/{PAGE_INVESTIGATION}"
+    forward = ""
+    if next_declaration:
+        name, sha = next_declaration
+        forward = (
+            '<p class="forward"><strong>The next copy is already declared.</strong> '
+            f'<a href="{escape(base)}/{escape(name)}">{escape(name)}</a> '
+            f"(SHA-256 <code>{escape(sha[:16])}…</code>) was sealed before any figure in it "
+            "was computed. It applies this method to the copy NESO published on 25 September "
+            "2026 and to the first copy published on or after 29 September 2026, and it "
+            "declares how the two will be compared. Both results will be reported in the "
+            "findings, whichever way they come out.</p>"
+        )
+    contact = (
+        f'<p>Questions or challenges: <a href="mailto:{escape(contact_email)}">'
+        f"{escape(contact_email)}</a></p>"
+        if contact_email
+        else ""
+    )
+    from grid_mysteries.rendering.connection_slippage import CSS
+
+    lead = "\n".join(page_lead(census, gate))
+    return f"""<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{escape(PAGE_TITLE)}</title>
+<meta name="description" content="{escape(PAGE_SUBTITLE)}">
+<style>
+{CSS}{PAGE_CSS}</style>
+</head>
+<body>
+<header>
+<h1>{escape(PAGE_TITLE)}</h1>
+<p class="subtitle">{escape(PAGE_SUBTITLE)}</p>
+</header>
+<main>
+{lead}
+{forward}
+{markdown_html(body)}
+<p class="notes">This page is <a href="{escape(base)}/FINDINGS.md">FINDINGS.md</a>
+with a lead added, both pure functions of the committed evidence
+(<a href="{escape(repo_url)}/tree/main/{PAGE_INVESTIGATION}/evidence">evidence/</a>)
+and of the corrections in <code>corrections.json</code>.</p>
+</main>
+<footer>
+<p>{escape(credibility)}</p>
+{contact}
+</footer>
+</body>
+</html>
+"""

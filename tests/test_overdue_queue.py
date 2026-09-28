@@ -558,3 +558,84 @@ def test_the_scoping_slot_carries_its_qualifiers_and_lists_only_projects():
     assert "holds for the wider set but not for every one" in (
         " ".join(weaker["must_travel_with_the_claim"])
     )
+
+
+def test_a_correction_is_inserted_after_the_line_it_governs_and_the_text_is_kept():
+    md = "# T\n\n**Claim that says too much.** More.\n\nNext paragraph."
+    fixed = page.apply_corrections(
+        md, [{"date": "2026-09-24", "after": "**Claim", "markdown": "> **Correction.** Narrower."}]
+    )
+    assert fixed == (
+        "# T\n\n**Claim that says too much.** More.\n\n"
+        "> **Correction.** Narrower.\n\nNext paragraph."
+    )
+    assert page.apply_corrections(md, None) == md
+
+
+def test_a_correction_whose_anchor_is_missing_or_ambiguous_stops_the_render():
+    import pytest
+
+    for md in ("no anchor here", "**Claim a\n**Claim b"):
+        with pytest.raises(ValueError):
+            page.apply_corrections(md, [{"date": "d", "after": "**Claim", "markdown": "x"}])
+
+
+def test_inline_markdown_escapes_text_and_lets_emphasis_run_across_code():
+    assert page.inline_html("**reads `2`.** <b> & *say it*") == (
+        "<strong>reads <code>2</code>.</strong> &lt;b&gt; &amp; <em>say it</em>"
+    )
+    assert page.inline_html("`a **not bold** <x>`") == "<code>a **not bold** &lt;x&gt;</code>"
+
+
+def test_block_markdown_covers_what_findings_uses():
+    html = page.markdown_html(
+        "## H\n\npara one\ncontinues\n\n| a | b |\n|---|---|\n| 1 | 2 |\n\n"
+        "> quote\n\n- x\n- y\n\n```\ncode <1>\n```"
+    )
+    assert "<h2>H</h2>" in html
+    assert "<p>para one continues</p>" in html
+    assert "<th>a</th><th>b</th>" in html and "<td>1</td><td>2</td>" in html
+    assert "<blockquote><p>quote</p></blockquote>" in html
+    assert "<ul><li>x</li><li>y</li></ul>" in html
+    assert "<pre><code>code &lt;1&gt;</code></pre>" in html
+
+
+def _page_inputs():
+    census = {"as_of": "2026-09-15", "selected_rows": 98, "distinct_project_ids": 96}
+    gate = {
+        "g2_overdue_by_gate": [
+            {"gate": "1", "rows": 7, "rows_in_copy": 756},
+            {
+                "gate": "2",
+                "rows": 17,
+                "rows_in_copy": 95,
+                "row_share_of_its_gate": "0.1789",
+                "capacity_share_of_its_gate": "0.1847",
+            },
+        ],
+        "g6_summary": {
+            "rows_a_gated_copy_publishes_as_not_past": 2,
+            "rows_if_those_rows_are_read_as_not_past": 15,
+        },
+    }
+    return census, gate
+
+
+def test_the_page_leads_on_the_row_share_with_the_capacity_share_and_the_other_reading():
+    census, gate = _page_inputs()
+    findings = "# 017\n\n" + "\n\n".join(page.EXHIBIT_SUPPORT)
+    html = page.render_page(findings, census, gate, next_declaration=("D-v3.md", "ab" * 32))
+    lead = html[html.index('<p class="headline">') :]
+    assert lead.index("17.9% of the tier's entries") < lead.index("18.5% of its capacity")
+    assert "on that reading it is 15 entries" in html
+    assert "98 entries (96 distinct project ids)" in html
+    assert "D-v3.md" in html and "abababababababab…" in html
+    assert "<h1>017</h1>" not in html
+
+
+def test_the_page_refuses_when_findings_no_longer_supports_its_exhibit_sentence():
+    import pytest
+
+    census, gate = _page_inputs()
+    with pytest.raises(ValueError):
+        page.render_page("# 017\n\nnothing about Eggborough", census, gate)

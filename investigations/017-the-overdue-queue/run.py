@@ -11,8 +11,9 @@ Phases:
   (``evidence/rows.ndjson``); a line that would change on recompute stops
   the run.
 - ``check`` (needs the seal): recompute and compare without writing.
-- ``render``: ``FINDINGS.md`` as a pure function of the evidence and of the
-  certificates 014 issued. Needs no seal.
+- ``render``: ``FINDINGS.md`` as a pure function of the evidence, of the
+  certificates 014 issued and of ``corrections.json``, and the web page
+  ``site/overdue-queue/index.html`` from it. Needs no seal.
 
 ``--version 2`` runs the Gate cross-tab under ``DECLARATION-v2.md`` instead:
 it takes version 1's committed selection as given (and refuses if it reads a
@@ -49,6 +50,9 @@ RUN_LOG = EVIDENCE / "run-log.json"
 GATE_JSON = EVIDENCE / "gate.json"
 GATE_ROWS = EVIDENCE / "gate-rows.ndjson"
 FINDINGS = HERE / "FINDINGS.md"
+CORRECTIONS = HERE / "corrections.json"
+DECLARATION_V3 = HERE / "DECLARATION-v3.md"
+PAGE = REPO_ROOT / "site" / "overdue-queue" / "index.html"
 JOURNAL = REPO_ROOT / tr.JOURNAL_PATH
 SCHEMA_REPORT = REPO_ROOT / "archives" / "tec-register" / "schema-report.json"
 CERTIFICATES = REPO_ROOT / "investigations" / "014-gb-connection-slippage" / "certificates"
@@ -419,8 +423,29 @@ def render() -> None:
     census = json.loads(CENSUS_JSON.read_text())
     rows = [json.loads(line) for line in ROWS_NDJSON.read_text().splitlines() if line.strip()]
     gate = json.loads(GATE_JSON.read_text()) if GATE_JSON.exists() else None
-    FINDINGS.write_text(page.render_findings(census, rows, certificates(), gate))
+    corrections = json.loads(CORRECTIONS.read_text()) if CORRECTIONS.exists() else None
+    findings = page.render_findings(census, rows, certificates(), gate, corrections)
+    FINDINGS.write_text(findings)
     print(f"rendered {FINDINGS.relative_to(REPO_ROOT)}")
+    if gate is None:
+        return
+    from grid_mysteries.rendering import connection_slippage as site
+
+    PAGE.parent.mkdir(parents=True, exist_ok=True)
+    PAGE.write_text(
+        page.render_page(
+            findings,
+            census,
+            gate,
+            next_declaration=(
+                (DECLARATION_V3.name, digest(DECLARATION_V3)) if DECLARATION_V3.exists() else None
+            ),
+            repo_url=site.REPO_URL,
+            credibility=site.CREDIBILITY,
+            contact_email=site.CALL_TO_ACTION_EMAIL,
+        )
+    )
+    print(f"rendered {PAGE.relative_to(REPO_ROOT)}")
 
 
 def main(argv: list[str] | None = None) -> None:

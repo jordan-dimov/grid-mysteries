@@ -1,0 +1,866 @@
+[
+ {
+  "source": "elexon-insights",
+  "dataset": "BOALF",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/acceptances/all?settlementDate=2026-09-08&settlementPeriod=1",
+  "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/boalf_p01.json",
+  "sha256": "504993dd398c5ecde1e65aee7f5fb198118245c633162e273a7e6a07e92db0ff",
+  "fetched_at": "2026-09-29T10:09:04.741881+00:00",
+  "bytes": 323279
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "BOALF",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/acceptances/all?settlementDate=2026-09-08&settlementPeriod=2",
+  "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/boalf_p02.json",
+  "sha256": "e7446dfe0f160acce7fac5e996e2e8e5c92effb905e806cdbb91fa859e7d70eb",
+  "fetched_at": "2026-09-29T10:09:05.185981+00:00",
+  "bytes": 280098
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "BOALF",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/acceptances/all?settlementDate=2026-09-08&settlementPeriod=3",
+  "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/boalf_p03.json",
+  "sha256": "517c55f30b1a4191e310176696292ebce72577f24cd6b9c71dd7e6c47f317480",
+  "fetched_at": "2026-09-29T10:09:05.691215+00:00",
+  "bytes": 364082
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "BOALF",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/acceptances/all?settlementDate=2026-09-08&settlementPeriod=4",
+  "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/boalf_p04.json",
+  "sha256": "a465156e35c19438822fb4f46c16fbe5394dc461582961e937d4731ab77cce16",
+  "fetched_at": "2026-09-29T10:09:06.145348+00:00",
+  "bytes": 463332
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "BOALF",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/acceptances/all?settlementDate=2026-09-08&settlementPeriod=5",
+  "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/boalf_p05.json",
+  "sha256": "12b24f4a633eb912e343666d0c1d26f964c7e842b4039c34415db42f05d2f5f7",
+  "fetched_at": "2026-09-29T10:09:06.633030+00:00",
+  "bytes": 230165
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "BOALF",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/acceptances/all?settlementDate=2026-09-08&settlementPeriod=6",
+  "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/boalf_p06.json",
+  "sha256": "8f75db11f943483695ee9029be36d6e3f64ba612483b0d8e17a2bb56e5be2d18",
+  "fetched_at": "2026-09-29T10:09:07.088110+00:00",
+  "bytes": 382726
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "BOALF",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/acceptances/all?settlementDate=2026-09-08&settlementPeriod=7",
+  "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/boalf_p07.json",
+  "sha256": "a067d26b4a857980ad37b4446733b7a8ad9b2cace9968d336f797268d5b0b38c",
+  "fetched_at": "2026-09-29T10:09:07.513510+00:00",
+  "bytes": 340053
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "BOALF",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/acceptances/all?settlementDate=2026-09-08&settlementPeriod=8",
+  "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/boalf_p08.json",
+  "sha256": "cefa095c2cc7794a9388422407f2fa29685b625f083db4e667cf1f5d696aa467",
+  "fetched_at": "2026-09-29T10:09:07.977892+00:00",
+  "bytes": 477929
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "BOALF",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/acceptances/all?settlementDate=2026-09-08&settlementPeriod=9",
+  "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/boalf_p09.json",
+  "sha256": "61dedb68424508835c0768daa6def34122eefc260776afca55130ad26aba3e39",
+  "fetched_at": "2026-09-29T10:09:08.431835+00:00",
+  "bytes": 407891
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "BOALF",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/acceptances/all?settlementDate=2026-09-08&settlementPeriod=10",
+  "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/boalf_p10.json",
+  "sha256": "dae8014a9d48b8c94208674361a40b76b7735881238cc253768bf64e6ed883e0",
+  "fetched_at": "2026-09-29T10:09:08.908865+00:00",
+  "bytes": 383670
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "BOALF",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/acceptances/all?settlementDate=2026-09-08&settlementPeriod=11",
+  "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/boalf_p11.json",
+  "sha256": "2be1e9d84899cdaba29cf80368a90afedcaeeb608bec9942f7c521a11d392ee3",
+  "fetched_at": "2026-09-29T10:09:09.391345+00:00",
+  "bytes": 382719
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "BOALF",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/acceptances/all?settlementDate=2026-09-08&settlementPeriod=12",
+  "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/boalf_p12.json",
+  "sha256": "ae16b3a84681502d2ca8ddce71b6eb32aff0d6111589743baf004b1a2e94f848",
+  "fetched_at": "2026-09-29T10:09:09.813187+00:00",
+  "bytes": 308224
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "BOALF",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/acceptances/all?settlementDate=2026-09-08&settlementPeriod=13",
+  "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/boalf_p13.json",
+  "sha256": "84dc9b5af89ff3411dc4c8c1b3c38f1d0e7654186db8c86b96120523bce76aaf",
+  "fetched_at": "2026-09-29T10:09:10.300057+00:00",
+  "bytes": 365501
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "BOALF",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/acceptances/all?settlementDate=2026-09-08&settlementPeriod=14",
+  "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/boalf_p14.json",
+  "sha256": "ebef6757974d06cc749654c25554523d50ca90cb9acd613493615b7156572dce",
+  "fetched_at": "2026-09-29T10:09:10.724790+00:00",
+  "bytes": 285542
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "BOALF",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/acceptances/all?settlementDate=2026-09-08&settlementPeriod=15",
+  "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/boalf_p15.json",
+  "sha256": "4aab482dc70c50d029f9b6c20bfa8ea0a866b2b230a1e35c21e002696124bade",
+  "fetched_at": "2026-09-29T10:09:11.191081+00:00",
+  "bytes": 354414
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "BOALF",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/acceptances/all?settlementDate=2026-09-08&settlementPeriod=16",
+  "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/boalf_p16.json",
+  "sha256": "988784644e00ab0404c65bd8781d01f6106be22e0b044ae55b732d6550c78dbf",
+  "fetched_at": "2026-09-29T10:09:11.633292+00:00",
+  "bytes": 387735
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "BOALF",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/acceptances/all?settlementDate=2026-09-08&settlementPeriod=17",
+  "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/boalf_p17.json",
+  "sha256": "f5a6f0a75b058d1c5b1817af0b930a19d2671a297a00241b84014eef710ac799",
+  "fetched_at": "2026-09-29T10:09:12.122198+00:00",
+  "bytes": 249561
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "BOALF",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/acceptances/all?settlementDate=2026-09-08&settlementPeriod=18",
+  "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/boalf_p18.json",
+  "sha256": "83d0fda662c9a5347dddb767681af86efba827dffc51c209cd9e8cff488a1301",
+  "fetched_at": "2026-09-29T10:09:12.555541+00:00",
+  "bytes": 278091
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "BOALF",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/acceptances/all?settlementDate=2026-09-08&settlementPeriod=19",
+  "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/boalf_p19.json",
+  "sha256": "8b499e891af42996d02168af996c2b0f52c0b992e9193ed0bea90250f7896174",
+  "fetched_at": "2026-09-29T10:09:12.987729+00:00",
+  "bytes": 158163
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "BOALF",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/acceptances/all?settlementDate=2026-09-08&settlementPeriod=20",
+  "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/boalf_p20.json",
+  "sha256": "537c0b91b7c1e26657c5a412d99b5d6cf2f556125c3efa7b5eb012214d56f114",
+  "fetched_at": "2026-09-29T10:09:13.447395+00:00",
+  "bytes": 220359
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "BOALF",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/acceptances/all?settlementDate=2026-09-08&settlementPeriod=21",
+  "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/boalf_p21.json",
+  "sha256": "f1db4426c574d5164a492b2d19a4693804ed5470a8085bdcc1560faaf10a84a6",
+  "fetched_at": "2026-09-29T10:09:13.864531+00:00",
+  "bytes": 153544
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "BOALF",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/acceptances/all?settlementDate=2026-09-08&settlementPeriod=22",
+  "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/boalf_p22.json",
+  "sha256": "63f088400daedbf7b9d7168de251b61ef5151d11e0ce1fd71252d2044c423b6a",
+  "fetched_at": "2026-09-29T10:09:14.285724+00:00",
+  "bytes": 204258
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "BOALF",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/acceptances/all?settlementDate=2026-09-08&settlementPeriod=23",
+  "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/boalf_p23.json",
+  "sha256": "5e45587748d8b44649daa0542e3f869801dd48791f61f384cbe5f833dd7f0437",
+  "fetched_at": "2026-09-29T10:09:14.713628+00:00",
+  "bytes": 167662
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "BOALF",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/acceptances/all?settlementDate=2026-09-08&settlementPeriod=24",
+  "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/boalf_p24.json",
+  "sha256": "5f2929fd1781904270ff2bc1f0d64f05d138f78a26627f2c426cc500a215da51",
+  "fetched_at": "2026-09-29T10:09:15.136418+00:00",
+  "bytes": 146671
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "BOALF",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/acceptances/all?settlementDate=2026-09-08&settlementPeriod=25",
+  "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/boalf_p25.json",
+  "sha256": "9e1f6d50a297b3045b365223ecd23f5eb5d2bb351fc87f4e768645b2fcfc9b80",
+  "fetched_at": "2026-09-29T10:09:15.701026+00:00",
+  "bytes": 175924
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "BOALF",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/acceptances/all?settlementDate=2026-09-08&settlementPeriod=26",
+  "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/boalf_p26.json",
+  "sha256": "ddde980589703404069a0433e4f8c96dd326ca08e4605d29ea2dbbe17c0f5d73",
+  "fetched_at": "2026-09-29T10:09:16.126487+00:00",
+  "bytes": 152583
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "BOALF",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/acceptances/all?settlementDate=2026-09-08&settlementPeriod=27",
+  "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/boalf_p27.json",
+  "sha256": "f8c6d72f32ec33c39b0135d70fdb8d8a49b121f6ed504b9c7b6c24e877d8cc86",
+  "fetched_at": "2026-09-29T10:09:16.483143+00:00",
+  "bytes": 135970
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "BOALF",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/acceptances/all?settlementDate=2026-09-08&settlementPeriod=28",
+  "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/boalf_p28.json",
+  "sha256": "36ae57ad80a0b51bb8cd3421b571993209b014e6a2545e4ee02dd5dd1a98a42a",
+  "fetched_at": "2026-09-29T10:09:16.849742+00:00",
+  "bytes": 133503
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "BOALF",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/acceptances/all?settlementDate=2026-09-08&settlementPeriod=29",
+  "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/boalf_p29.json",
+  "sha256": "5017b71afbd59ae22128c2d53a03a1c33dcd75989ba0683abf326fc00b05a2bb",
+  "fetched_at": "2026-09-29T10:09:17.289211+00:00",
+  "bytes": 380561
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "BOALF",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/acceptances/all?settlementDate=2026-09-08&settlementPeriod=30",
+  "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/boalf_p30.json",
+  "sha256": "11fea9c4ba9b908d63806a34242a1f6e10dd9e147eacedbfa0361d7f340bf465",
+  "fetched_at": "2026-09-29T10:09:17.766915+00:00",
+  "bytes": 247193
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "BOALF",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/acceptances/all?settlementDate=2026-09-08&settlementPeriod=31",
+  "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/boalf_p31.json",
+  "sha256": "389237363d4d30d5ede99f50a9c9182263421c21758b450766f99d3ccd36540d",
+  "fetched_at": "2026-09-29T10:09:18.246568+00:00",
+  "bytes": 290001
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "BOALF",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/acceptances/all?settlementDate=2026-09-08&settlementPeriod=32",
+  "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/boalf_p32.json",
+  "sha256": "fe29a3e1953fa193d83d5e4ef9ffa57bed8b088e871303f0ff3bf624d2d218d4",
+  "fetched_at": "2026-09-29T10:09:18.679544+00:00",
+  "bytes": 298355
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "BOALF",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/acceptances/all?settlementDate=2026-09-08&settlementPeriod=33",
+  "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/boalf_p33.json",
+  "sha256": "0e6933456a72f367bf15a7b4f090500e5109c2eb0cfdee3916645b7e28c65aef",
+  "fetched_at": "2026-09-29T10:09:19.114050+00:00",
+  "bytes": 143723
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "BOALF",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/acceptances/all?settlementDate=2026-09-08&settlementPeriod=34",
+  "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/boalf_p34.json",
+  "sha256": "9e79e4a96a251612c59bf8ab50710d6b77685e41ce5d5357f5048578803cf505",
+  "fetched_at": "2026-09-29T10:09:19.559840+00:00",
+  "bytes": 375739
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "BOALF",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/acceptances/all?settlementDate=2026-09-08&settlementPeriod=35",
+  "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/boalf_p35.json",
+  "sha256": "48048901ea5f76949a72bdb6531f136c43b8ba713c0f60162d6ae263b9c39368",
+  "fetched_at": "2026-09-29T10:09:20.139669+00:00",
+  "bytes": 531038
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "BOALF",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/acceptances/all?settlementDate=2026-09-08&settlementPeriod=36",
+  "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/boalf_p36.json",
+  "sha256": "4f3b1bf619ea258b5d0fcdcf44cc51c7d3682ce917700d9ba1ef7f9b27d720e2",
+  "fetched_at": "2026-09-29T10:09:20.678938+00:00",
+  "bytes": 571948
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "BOALF",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/acceptances/all?settlementDate=2026-09-08&settlementPeriod=37",
+  "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/boalf_p37.json",
+  "sha256": "c8d442e58c7d53a928b3c8513e5c5ac0772a5cc9466b945c579a1b765c32908e",
+  "fetched_at": "2026-09-29T10:09:21.113372+00:00",
+  "bytes": 335992
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "BOALF",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/acceptances/all?settlementDate=2026-09-08&settlementPeriod=38",
+  "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/boalf_p38.json",
+  "sha256": "433ce9507157d012600ca648d91d11e3280c870876fbd4f28c64a2474d259dd9",
+  "fetched_at": "2026-09-29T10:09:21.532057+00:00",
+  "bytes": 195817
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "BOALF",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/acceptances/all?settlementDate=2026-09-08&settlementPeriod=39",
+  "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/boalf_p39.json",
+  "sha256": "13938752a3dee96f357316263df10c271103afc9a0edb4cfce96902d9ed973bf",
+  "fetched_at": "2026-09-29T10:09:21.958175+00:00",
+  "bytes": 289774
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "BOALF",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/acceptances/all?settlementDate=2026-09-08&settlementPeriod=40",
+  "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/boalf_p40.json",
+  "sha256": "2685b74fc6faace91a17e1c1d3bf83165a2a8a90857149471a1ea664a77ce770",
+  "fetched_at": "2026-09-29T10:09:22.374264+00:00",
+  "bytes": 311729
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "BOALF",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/acceptances/all?settlementDate=2026-09-08&settlementPeriod=41",
+  "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/boalf_p41.json",
+  "sha256": "5e16ec211f9e7b6a36e512715926a4b7cca317ce49679b5782aa1b2f21071005",
+  "fetched_at": "2026-09-29T10:09:22.813394+00:00",
+  "bytes": 183724
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "BOALF",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/acceptances/all?settlementDate=2026-09-08&settlementPeriod=42",
+  "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/boalf_p42.json",
+  "sha256": "321df11813163e8dfbdf306246ea99c4987fc4e90e0332bb6db2a1acc4d36285",
+  "fetched_at": "2026-09-29T10:09:23.259233+00:00",
+  "bytes": 256324
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "BOALF",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/acceptances/all?settlementDate=2026-09-08&settlementPeriod=43",
+  "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/boalf_p43.json",
+  "sha256": "6de048ae1c98e0852156b3e3f05d4de8e5e22e6d24649f58578902b4875ad064",
+  "fetched_at": "2026-09-29T10:09:23.698363+00:00",
+  "bytes": 449276
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "BOALF",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/acceptances/all?settlementDate=2026-09-08&settlementPeriod=44",
+  "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/boalf_p44.json",
+  "sha256": "cef4e5368b8925df87bbf482f7e347cf04b947789bfcfda33843f703d112181b",
+  "fetched_at": "2026-09-29T10:09:24.184647+00:00",
+  "bytes": 320704
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "BOALF",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/acceptances/all?settlementDate=2026-09-08&settlementPeriod=45",
+  "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/boalf_p45.json",
+  "sha256": "68f73e1fea03d60b49cb164322ae853cd080d1dcf53b3ed71eb9fd6f84192913",
+  "fetched_at": "2026-09-29T10:09:24.606609+00:00",
+  "bytes": 154562
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "BOALF",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/acceptances/all?settlementDate=2026-09-08&settlementPeriod=46",
+  "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/boalf_p46.json",
+  "sha256": "cbed58e5da142b074d20109df3885ec4a04d2f44f19766bfc834ecc99ee866bd",
+  "fetched_at": "2026-09-29T10:09:25.034650+00:00",
+  "bytes": 204320
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "BOALF",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/acceptances/all?settlementDate=2026-09-08&settlementPeriod=47",
+  "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/boalf_p47.json",
+  "sha256": "25fc0e35757e60c02bd386164b83c85baf2a9d95044c83b94533832ab3fb1cbc",
+  "fetched_at": "2026-09-29T10:09:25.456085+00:00",
+  "bytes": 276029
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "BOALF",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/acceptances/all?settlementDate=2026-09-08&settlementPeriod=48",
+  "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/boalf_p48.json",
+  "sha256": "841e328d1b3b88f78c550dd8056fcb1331a8b4d49e30db24b64264cf32bc24b1",
+  "fetched_at": "2026-09-29T10:09:26.132112+00:00",
+  "bytes": 390886
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "DISPTAV",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/indicative/volumes/all/bid/2026-09-08/1",
+  "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/disptav_bid_p01.json",
+  "sha256": "72e71d92fae43cae726cdc65e800beac01d22a31090fd1ae57cf74fc7878d105",
+  "fetched_at": "2026-09-29T10:08:44.491872+00:00",
+  "bytes": 333774
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "DISPTAV",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/indicative/volumes/all/bid/2026-09-08/2",
+  "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/disptav_bid_p02.json",
+  "sha256": "0dda8a8bc7e22b6639cd6ea6154dd8c5e8e913f75ba40e012b0ac485c62fb672",
+  "fetched_at": "2026-09-29T10:08:44.908909+00:00",
+  "bytes": 290574
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "DISPTAV",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/indicative/volumes/all/bid/2026-09-08/3",
+  "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/disptav_bid_p03.json",
+  "sha256": "f52adf2e76319a13ca1a3cf1065cc3403acd2f6276be2c081cf8fc1995354483",
+  "fetched_at": "2026-09-29T10:08:45.320297+00:00",
+  "bytes": 386025
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "DISPTAV",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/indicative/volumes/all/bid/2026-09-08/4",
+  "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/disptav_bid_p04.json",
+  "sha256": "cf518465d2e87d204f13940cbc1859e255d0742db3753b0a2520ff014eb53867",
+  "fetched_at": "2026-09-29T10:08:45.746952+00:00",
+  "bytes": 427507
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "DISPTAV",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/indicative/volumes/all/bid/2026-09-08/5",
+  "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/disptav_bid_p05.json",
+  "sha256": "686d9cbda5dc85ab998d0e824e6bb35e28f1e33ef88730ff4e5074e9299d9de4",
+  "fetched_at": "2026-09-29T10:08:46.170906+00:00",
+  "bytes": 371182
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "DISPTAV",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/indicative/volumes/all/bid/2026-09-08/6",
+  "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/disptav_bid_p06.json",
+  "sha256": "4963400c920e03d77f70c5e774a7d3e6a3092ef3bab8f2f3d9f30e71a49e3580",
+  "fetched_at": "2026-09-29T10:08:46.584580+00:00",
+  "bytes": 383254
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "DISPTAV",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/indicative/volumes/all/bid/2026-09-08/7",
+  "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/disptav_bid_p07.json",
+  "sha256": "694cd06d4d920d222e0e6fb657fe80de93b27adc3cebd86fdf0dd6ff7fa5e67c",
+  "fetched_at": "2026-09-29T10:08:47.004613+00:00",
+  "bytes": 333772
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "DISPTAV",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/indicative/volumes/all/bid/2026-09-08/8",
+  "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/disptav_bid_p08.json",
+  "sha256": "7234e0fe9da3c295e4b1c114bd8587315fb2334e4e0b730dc13313e55922f8fa",
+  "fetched_at": "2026-09-29T10:08:47.429133+00:00",
+  "bytes": 337227
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "DISPTAV",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/indicative/volumes/all/bid/2026-09-08/9",
+  "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/disptav_bid_p09.json",
+  "sha256": "206331f34649ec27ed27a3091259868d87765f89082a97f5fac16a7d0d84cf35",
+  "fetched_at": "2026-09-29T10:08:47.889530+00:00",
+  "bytes": 334893
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "DISPTAV",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/indicative/volumes/all/bid/2026-09-08/10",
+  "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/disptav_bid_p10.json",
+  "sha256": "ce836815f3fb103a8f00c96ecd6e9592b852dc46598385c25e5511b836eb29bc",
+  "fetched_at": "2026-09-29T10:08:48.351651+00:00",
+  "bytes": 304476
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "DISPTAV",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/indicative/volumes/all/bid/2026-09-08/11",
+  "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/disptav_bid_p11.json",
+  "sha256": "2b4c5ec919ec9b3c32c49757eb339e7cfdfff8f68b2435e700f9e4ed2200fe4b",
+  "fetched_at": "2026-09-29T10:08:48.786557+00:00",
+  "bytes": 347588
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "DISPTAV",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/indicative/volumes/all/bid/2026-09-08/12",
+  "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/disptav_bid_p12.json",
+  "sha256": "8e930672c528c5dcda340b0682816f473b70c4ebdb2555f16657d7a855813294",
+  "fetched_at": "2026-09-29T10:08:49.220534+00:00",
+  "bytes": 311894
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "DISPTAV",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/indicative/volumes/all/bid/2026-09-08/13",
+  "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/disptav_bid_p13.json",
+  "sha256": "f940c6890c00b4db6767f2d37fe95a1d1f808d3881ccedceaf7873508245f60b",
+  "fetched_at": "2026-09-29T10:08:49.658815+00:00",
+  "bytes": 380407
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "DISPTAV",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/indicative/volumes/all/bid/2026-09-08/14",
+  "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/disptav_bid_p14.json",
+  "sha256": "f8ad91d94308f69b5c35ae6c94f418aa999cb0b2b4979a34742bfab7409d206e",
+  "fetched_at": "2026-09-29T10:08:50.103958+00:00",
+  "bytes": 385185
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "DISPTAV",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/indicative/volumes/all/bid/2026-09-08/15",
+  "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/disptav_bid_p15.json",
+  "sha256": "7746208eaf7981825299c660029f4cb1949075b3ff1b815cc226d2a290535da3",
+  "fetched_at": "2026-09-29T10:08:50.548957+00:00",
+  "bytes": 460967
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "DISPTAV",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/indicative/volumes/all/bid/2026-09-08/16",
+  "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/disptav_bid_p16.json",
+  "sha256": "bc83cf4e875cff9c1f2454d6996304f94b043ee7474dd4daa856e3f520d8bb3a",
+  "fetched_at": "2026-09-29T10:08:50.967458+00:00",
+  "bytes": 492106
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "DISPTAV",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/indicative/volumes/all/bid/2026-09-08/17",
+  "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/disptav_bid_p17.json",
+  "sha256": "b64e9319b757393901d336baf3bcb32f664fc5b825e27b041013aa6956d63bf3",
+  "fetched_at": "2026-09-29T10:08:51.449602+00:00",
+  "bytes": 407768
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "DISPTAV",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/indicative/volumes/all/bid/2026-09-08/18",
+  "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/disptav_bid_p18.json",
+  "sha256": "29149b417de9ef161ec1fa35eda429f31ad60625d0b7ce60e2d6951173c931de",
+  "fetched_at": "2026-09-29T10:08:51.870188+00:00",
+  "bytes": 296780
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "DISPTAV",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/indicative/volumes/all/bid/2026-09-08/19",
+  "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/disptav_bid_p19.json",
+  "sha256": "899f2a97f4f12d3abac9eef3a3c9114328147138d853b1ab6e59e2987ae641d8",
+  "fetched_at": "2026-09-29T10:08:52.240004+00:00",
+  "bytes": 218419
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "DISPTAV",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/indicative/volumes/all/bid/2026-09-08/20",
+  "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/disptav_bid_p20.json",
+  "sha256": "38e409fb7aa3c249d10d533c1e31e93a25b9b4348553442f1f31ab23b6951e68",
+  "fetched_at": "2026-09-29T10:08:52.673565+00:00",
+  "bytes": 296501
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "DISPTAV",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/indicative/volumes/all/bid/2026-09-08/21",
+  "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/disptav_bid_p21.json",
+  "sha256": "ef51dd87e624236ef7b96d9c961ded192948870989586b1db5f50fe0ae983856",
+  "fetched_at": "2026-09-29T10:08:53.055463+00:00",
+  "bytes": 236155
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "DISPTAV",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/indicative/volumes/all/bid/2026-09-08/22",
+  "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/disptav_bid_p22.json",
+  "sha256": "d2665fb7ea0891ce85b2b99008022bf4cedd065de6902feb78eee9771a261899",
+  "fetched_at": "2026-09-29T10:08:53.455741+00:00",
+  "bytes": 286271
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "DISPTAV",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/indicative/volumes/all/bid/2026-09-08/23",
+  "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/disptav_bid_p23.json",
+  "sha256": "f556844767b5fd609bbcf8703f5ecc7c0ae8bb384311ef4d1a6a2206f7dbf7d8",
+  "fetched_at": "2026-09-29T10:08:53.902748+00:00",
+  "bytes": 274329
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "DISPTAV",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/indicative/volumes/all/bid/2026-09-08/24",
+  "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/disptav_bid_p24.json",
+  "sha256": "0ed96d60e40a38860441b285eaaf33be6c171429837ff3b7030ae049ec56375c",
+  "fetched_at": "2026-09-29T10:08:54.264369+00:00",
+  "bytes": 224862
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "DISPTAV",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/indicative/volumes/all/bid/2026-09-08/25",
+  "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/disptav_bid_p25.json",
+  "sha256": "0166f80586fb8e79461c206979a3431c2c01a81c0f82266c0941d6a841d5d6b1",
+  "fetched_at": "2026-09-29T10:08:54.649053+00:00",
+  "bytes": 285218
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "DISPTAV",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/indicative/volumes/all/bid/2026-09-08/26",
+  "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/disptav_bid_p26.json",
+  "sha256": "43b24f37fbf7bf86ddad978196d04e3275d8a096645a741d74dd44fc3030d27f",
+  "fetched_at": "2026-09-29T10:08:55.012254+00:00",
+  "bytes": 253824
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "DISPTAV",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/indicative/volumes/all/bid/2026-09-08/27",
+  "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/disptav_bid_p27.json",
+  "sha256": "2df59b1daf46737990c7ffc9c963928f2f981e55529723f249a74675f5db7e23",
+  "fetched_at": "2026-09-29T10:08:55.428826+00:00",
+  "bytes": 238019
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "DISPTAV",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/indicative/volumes/all/bid/2026-09-08/28",
+  "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/disptav_bid_p28.json",
+  "sha256": "1ce6bd085a6c73c7f96b5fe508bf52794107c26f2667416e465e7afb5509206d",
+  "fetched_at": "2026-09-29T10:08:55.789621+00:00",
+  "bytes": 274092
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "DISPTAV",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/indicative/volumes/all/bid/2026-09-08/29",
+  "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/disptav_bid_p29.json",
+  "sha256": "f89245a53b3d3c34055c12a7bfa17e4b13900d29713acbbcc7855b208b8ea262",
+  "fetched_at": "2026-09-29T10:08:56.201162+00:00",
+  "bytes": 360147
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "DISPTAV",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/indicative/volumes/all/bid/2026-09-08/30",
+  "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/disptav_bid_p30.json",
+  "sha256": "b499eb25bca4bc8371d983129c32740e1240d18a9c2be059f98ee6b912a2346f",
+  "fetched_at": "2026-09-29T10:08:56.630499+00:00",
+  "bytes": 375233
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "DISPTAV",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/indicative/volumes/all/bid/2026-09-08/31",
+  "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/disptav_bid_p31.json",
+  "sha256": "5b7905227ff258770f6ba0c4bf956385b9a1d111bafc83270d80f113056af9e7",
+  "fetched_at": "2026-09-29T10:08:57.046095+00:00",
+  "bytes": 354395
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "DISPTAV",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/indicative/volumes/all/bid/2026-09-08/32",
+  "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/disptav_bid_p32.json",
+  "sha256": "ce743e265c44dc2cf83b042381fa49cca8d24e7f4ca5f5de5a92a913e03a2f44",
+  "fetched_at": "2026-09-29T10:08:57.457467+00:00",
+  "bytes": 363270
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "DISPTAV",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/indicative/volumes/all/bid/2026-09-08/33",
+  "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/disptav_bid_p33.json",
+  "sha256": "a90fd51a6f93376a05a5c76696e2895a86dfbe42a0f42bcacafa6642f630ecce",
+  "fetched_at": "2026-09-29T10:08:57.892407+00:00",
+  "bytes": 282535
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "DISPTAV",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/indicative/volumes/all/bid/2026-09-08/34",
+  "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/disptav_bid_p34.json",
+  "sha256": "3ececa756c055701dd3a668f503d0836c95deeca41c562c1d7bbaa9488d621c6",
+  "fetched_at": "2026-09-29T10:08:58.321873+00:00",
+  "bytes": 401838
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "DISPTAV",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/indicative/volumes/all/bid/2026-09-08/35",
+  "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/disptav_bid_p35.json",
+  "sha256": "c05f1f645333540091cc1b7f6c45485101e2d1a67ac4e66788535bf3cb390b09",
+  "fetched_at": "2026-09-29T10:08:58.752371+00:00",
+  "bytes": 455752
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "DISPTAV",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/indicative/volumes/all/bid/2026-09-08/36",
+  "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/disptav_bid_p36.json",
+  "sha256": "39a9ae07923a3bf558dfd21de20b80cfa76165c2fc5925b8e1887e6784ea9e38",
+  "fetched_at": "2026-09-29T10:08:59.165672+00:00",
+  "bytes": 468438
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "DISPTAV",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/indicative/volumes/all/bid/2026-09-08/37",
+  "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/disptav_bid_p37.json",
+  "sha256": "813722dea20c9420dfec0e8fbeea95b32cb51603a74f80eb87bd29c8a47563e3",
+  "fetched_at": "2026-09-29T10:08:59.598228+00:00",
+  "bytes": 468086
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "DISPTAV",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/indicative/volumes/all/bid/2026-09-08/38",
+  "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/disptav_bid_p38.json",
+  "sha256": "3b9a3ad8c98f4c0274732217223fdafad50a15207fd4f3b397a267ba8737ae3d",
+  "fetched_at": "2026-09-29T10:09:00.019707+00:00",
+  "bytes": 340389
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "DISPTAV",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/indicative/volumes/all/bid/2026-09-08/39",
+  "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/disptav_bid_p39.json",
+  "sha256": "9a5b1673e4208c8c51fe2067edd996c9cedb03ef82886901cfe25c610bb76609",
+  "fetched_at": "2026-09-29T10:09:00.490095+00:00",
+  "bytes": 427400
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "DISPTAV",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/indicative/volumes/all/bid/2026-09-08/40",
+  "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/disptav_bid_p40.json",
+  "sha256": "83287cd7a2991d0619a41cb6da4d1be0106b284d473fb0d22e4268d1b4b82a62",
+  "fetched_at": "2026-09-29T10:09:00.902605+00:00",
+  "bytes": 475854
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "DISPTAV",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/indicative/volumes/all/bid/2026-09-08/41",
+  "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/disptav_bid_p41.json",
+  "sha256": "8d4de2a7d91167b5f62884f0a3f21f5a831f80048e57304a5b7379bb5c77a1b2",
+  "fetched_at": "2026-09-29T10:09:01.367741+00:00",
+  "bytes": 329392
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "DISPTAV",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/indicative/volumes/all/bid/2026-09-08/42",
+  "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/disptav_bid_p42.json",
+  "sha256": "5422673ea51cebc3e74d456850dd30268ff39bef43d156043ffaec5c17686419",
+  "fetched_at": "2026-09-29T10:09:01.785296+00:00",
+  "bytes": 393690
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "DISPTAV",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/indicative/volumes/all/bid/2026-09-08/43",
+  "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/disptav_bid_p43.json",
+  "sha256": "35f290c717f60193a23fdcf59d2551a4d9fbc97f1543bc6e87adce7aa97f95db",
+  "fetched_at": "2026-09-29T10:09:02.242448+00:00",
+  "bytes": 455425
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "DISPTAV",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/indicative/volumes/all/bid/2026-09-08/44",
+  "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/disptav_bid_p44.json",
+  "sha256": "85bc20fe8a5ff05d68cced6a26117dd53072ee2d0e0a8c6719ee8e9f80cbc246",
+  "fetched_at": "2026-09-29T10:09:02.666869+00:00",
+  "bytes": 390846
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "DISPTAV",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/indicative/volumes/all/bid/2026-09-08/45",
+  "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/disptav_bid_p45.json",
+  "sha256": "85008527709dab26978f000f58a7258747bdf4f228820033f11a7f903e1f957d",
+  "fetched_at": "2026-09-29T10:09:03.096108+00:00",
+  "bytes": 282592
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "DISPTAV",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/indicative/volumes/all/bid/2026-09-08/46",
+  "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/disptav_bid_p46.json",
+  "sha256": "dcdf4a5fe77a8796d20784687c70d582a36a612f8a77ec1a8be945c1d8c67737",
+  "fetched_at": "2026-09-29T10:09:03.461530+00:00",
+  "bytes": 254461
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "DISPTAV",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/indicative/volumes/all/bid/2026-09-08/47",
+  "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/disptav_bid_p47.json",
+  "sha256": "dbc25e1bb6fe39e13c303149095810d4427f8290ecc34e9cf60462ed5ef4119e",
+  "fetched_at": "2026-09-29T10:09:03.892058+00:00",
+  "bytes": 291891
+ },
+ {
+  "source": "elexon-insights",
+  "dataset": "DISPTAV",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/balancing/settlement/indicative/volumes/all/bid/2026-09-08/48",
+  "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/disptav_bid_p48.json",
+  "sha256": "c747953cfaa5b81d15390d89c67d5f6e507f1099a64d0f8eccd3d70589629fc4",
+  "fetched_at": "2026-09-29T10:09:04.303764+00:00",
+  "bytes": 275764
+ }
+]

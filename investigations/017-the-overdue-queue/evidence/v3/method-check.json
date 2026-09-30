@@ -1,0 +1,113 @@
+{
+ "investigation": "017",
+ "check": "C10",
+ "declaration": "DECLARATION-v3.md",
+ "declaration_sha256": "dd396986922a16041766de865bcf9d145583dcecdd9b6fb438114b8eb34f262f",
+ "computed_at": "2026-09-30T12:17:48+00:00",
+ "copy": {
+  "t_public": "2026-09-15",
+  "sha256": "d13406e495746f1b80e725321a5c7f95e21e0da16830bb6bd1f94ece172c9d5b",
+  "key": "raw/neso/tec-register/2026-09-15/d13406e495746f1b80e725321a5c7f95e21e0da16830bb6bd1f94ece172c9d5b",
+  "manifest": "2026-09-15.ndjson",
+  "manifest_sha256": "0b27d12e50071e275c434d1837ac138b6865132b1ec02ba39174a73e4c3f7ece",
+  "filename": "tec-register-15-september-2026.csv",
+  "same_digest_as_versions_1_and_2": true
+ },
+ "version_1": {
+  "declaration_sha256": "400b42f72b8c77759f88702d113594cdb2bb1b397f903486aaf39e92c7bc4b6d",
+  "rows_ndjson_sha256": "696d9a1841a631069f80dfd1a453b3614f4bb195ef8506106762fe3fc7a6dad5",
+  "census_json_sha256": "dfde14da46aa7409437b8a3585f74a583c1185410c04f23006b6c0a987c1a050",
+  "rows_line_for_line": {
+   "committed": 98,
+   "recomputed": 98,
+   "identical": 98,
+   "differing_line_numbers": [],
+   "pass": true
+  },
+  "totals_and_breakdowns": {
+   "status_counts_all_rows": true,
+   "as_of": true,
+   "rows_total": true,
+   "undated": true,
+   "dated": true,
+   "dated_built": true,
+   "dated_not_built_future": true,
+   "selected_rows": true,
+   "selected_mw": true,
+   "selected_rows_without_capacity": true,
+   "selected_rows_zero_capacity": true,
+   "selected_rows_negative_capacity": true,
+   "selected_mw_negative": true,
+   "selected_rows_without_project_id": true,
+   "distinct_project_ids": true,
+   "selected_mw_largest_per_id": true,
+   "by_status": true,
+   "by_plant_type": true,
+   "by_year": true,
+   "swap_sensitivity": true,
+   "scale": true,
+   "checks": true,
+   "falsifiers": true,
+   "earliest": true,
+   "repeated_project_ids": true
+  }
+ },
+ "version_2": {
+  "declaration_sha256": "82856d65ae7300fca7e8ddb5ff43cff3bceb38fdc7b25fb42a761906930ef0b3",
+  "gate_rows_ndjson_sha256": "3b34a38486b962d2834c29bdd0f7146554abf9df75c785e83c47cc2ebd67e8b2",
+  "gate_json_sha256": "ad91e6677b677d866851d2409f926218ebf0e247158d740542c994a116174ce9",
+  "gate_rows_line_for_line": {
+   "committed": 17,
+   "recomputed": 17,
+   "identical": 17,
+   "differing_line_numbers": [],
+   "pass": true
+  },
+  "g1_to_g6": {
+   "rows_total": true,
+   "g1_copy_by_gate": true,
+   "g2_overdue_by_gate": true,
+   "g3_overdue_by_gate_and_status": true,
+   "g4_confirmed_tier_overdue": true,
+   "g5_repetition": true,
+   "g6_gated_copies": true,
+   "g6_summary": true,
+   "confirmed_tier_overdue_rows": true,
+   "confirmed_tier_overdue_mw": true,
+   "unknown_gate_values": true,
+   "falsifiers": true
+  },
+  "gated_copies_read": [
+   {
+    "t_public": "2026-05-19",
+    "sha256": "78b6d0d2046c31ee9b1a89daf4dfb2d6d07f5b7419d74942d32fda6ce38d1d61",
+    "source": "journal"
+   },
+   {
+    "t_public": "2026-08-22",
+    "sha256": "2a27eb1608fa43c27c8100f08ecc50564277097ceeb0ca439c82f1cb582c829a",
+    "source": "journal"
+   },
+   {
+    "t_public": "2026-08-25",
+    "sha256": "31486703d3ba95d04497036313ff727df3b32b7b98c938656f4ea6add2ab5fe8",
+    "source": "journal"
+   },
+   {
+    "t_public": "2026-09-15",
+    "sha256": "d13406e495746f1b80e725321a5c7f95e21e0da16830bb6bd1f94ece172c9d5b",
+    "source": "journal"
+   }
+  ]
+ },
+ "filename_sensitivity": {
+  "filename_date": "2026-09-15",
+  "as_of": "2026-09-15",
+  "differs": false,
+  "rows": 0,
+  "mw": "0",
+  "moved": [],
+  "F10 the filename reading moves more than a tenth of the selected MW": false
+ },
+ "pass": true
+}

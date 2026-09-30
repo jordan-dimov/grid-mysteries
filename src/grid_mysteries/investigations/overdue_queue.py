@@ -29,6 +29,7 @@ Pure logic over one vintage's rows; no I/O. The declaration in
   and of that the MW whose status is `Scoping`.
 """
 
+import re
 from dataclasses import dataclass
 from datetime import date
 from decimal import Decimal
@@ -644,3 +645,354 @@ def _repeats(confirmed: list[GateRow], key: Any) -> list[dict[str, Any]]:
         for k, members in groups.items()
         if len(members) > 1
     ]
+
+
+# ------------------------------------------------------------- version 3
+# Version 3 of the declaration (SHA-256 `dd396986…`). The same method, R3 to
+# R12 and G1 to G6, applied to the reference copy (CKAN `last_modified`
+# 2026-09-25) and to the first captured copy dated on or after 2026-09-29,
+# with one declared comparison between them (D1, D2). Nothing above changes:
+# the method check C10 requires this code to reproduce versions 1 and 2 on
+# the copy they read, byte for byte.
+
+#: R1′: the next copy is the earliest captured copy dated on or after this day.
+NEXT_COPY_FROM: Final = date(2026, 9, 29)
+#: R1′: if no such copy is captured by this day, no next census is run.
+NEXT_COPY_DEADLINE: Final = date(2026, 10, 31)
+#: N0: what the next copy's schema pass must show before its census runs.
+N0_STATUSES: Final = frozenset(
+    {
+        "Awaiting Consents",
+        "Built",
+        "Consents Approved",
+        "Scoping",
+        "Under Construction/Commissioning",
+    }
+)
+N0_GATES: Final = frozenset({"", "1", "2"})
+N0_DATE_SPELLINGS: Final = frozenset({"uk", "blank"})
+#: F9: the share of a copy's selected rows that may be ambiguous or carry no
+#: project id before D2 is withheld and the comparison is D1 alone.
+F9_UNMATCHABLE_SHARE: Final = Decimal("0.1")
+#: F10: the share of a copy's selected MW the filename reading may move
+#: before that copy's headline is published as a range.
+F10_FILENAME_SHARE: Final = Decimal("0.1")
+
+_MONTHS: Final = {
+    name: number
+    for number, name in enumerate(
+        (
+            "january",
+            "february",
+            "march",
+            "april",
+            "may",
+            "june",
+            "july",
+            "august",
+            "september",
+            "october",
+            "november",
+            "december",
+        ),
+        start=1,
+    )
+}
+
+
+def filename_date(filename: str) -> date | None:
+    """The date NESO's filename names (`tec-register-24-september-2026.csv`),
+    or None when the filename names none. R2′ reports it; it never sets the
+    as-of date, which is the copy's CKAN `last_modified` date."""
+    match = re.search(r"(\d{1,2})-([a-z]+)-(\d{4})", filename.casefold())
+    if not match or match.group(2) not in _MONTHS:
+        return None
+    try:
+        return date(int(match.group(3)), _MONTHS[match.group(2)], int(match.group(1)))
+    except ValueError:
+        return None
+
+
+def filename_sensitivity(census_result: dict[str, Any], named: date | None) -> dict[str, Any]:
+    """R2′: the selected rows that are past on the as-of reading and not on
+    the filename's, i.e. dated on or after the filename's date and before the
+    as-of date. Empty when the two dates agree or the filename names none."""
+    as_of = census_result["as_of"]
+    moved = (
+        [r for r in census_result["rows"] if named <= r.effective < as_of]
+        if named is not None and named < as_of
+        else []
+    )
+    mw = total_mw(moved)
+    selected_mw = census_result["selected_mw"]
+    return {
+        "filename_date": named,
+        "as_of": as_of,
+        "differs": named is not None and named != as_of,
+        "rows": len(moved),
+        "mw": mw,
+        "moved": sorted(moved, key=lambda r: (r.effective, r.project_name, r.index)),
+        "F10 the filename reading moves more than a tenth of the selected MW": (
+            selected_mw > ZERO and mw / selected_mw > F10_FILENAME_SHARE
+        ),
+    }
+
+
+def next_copy(entries: list[dict[str, Any]], on_or_after: date = NEXT_COPY_FROM) -> dict | None:
+    """R1′: the captured copy with the earliest `t_public` on or after the
+    date, or None. `entries` are `tec_register.capture_entries`."""
+    later = [e for e in entries if date.fromisoformat(e["t_public"]) >= on_or_after]
+    return min(later, key=lambda e: (e["t_public"], e["fetched_at"]), default=None)
+
+
+def capture_gaps(days_with_a_record: set[date], first: date, last: date) -> list[date]:
+    """R1′: the days from `first` to `last` inclusive on which the capture's
+    manifests hold no TEC record at all, neither a copy nor the metadata
+    record of an unchanged day."""
+    gaps = []
+    day_ = first
+    while day_ <= last:
+        if day_ not in days_with_a_record:
+            gaps.append(day_)
+        day_ = date.fromordinal(day_.toordinal() + 1)
+    return gaps
+
+
+def n0(copy_report: dict[str, Any], columns: list[str]) -> dict[str, bool]:
+    """N0: the conditions the next copy's schema pass must meet before its
+    census is computed. `copy_report` is that copy's entry in the capture
+    schema report; `columns` are the fifteen of the current era."""
+    spellings = {k for k, v in copy_report["date_spellings"].items() if v}
+    return {
+        "N0 the same fifteen columns": sorted(copy_report["columns"]) == sorted(columns),
+        "N0 date spellings only uk and blank": spellings <= N0_DATE_SPELLINGS,
+        "N0 only the five Project Status spellings": (
+            set(copy_report["project_status"]) <= N0_STATUSES
+        ),
+        "N0 only 1, 2 and blank under Gate": set(copy_report.get("gate") or {}) <= N0_GATES,
+        "N0 no flag": not copy_report["flags"],
+    }
+
+
+def _figures(census_result: dict[str, Any], gate: dict[str, Any]) -> dict[str, Any]:
+    scale = census_result["scale"]
+    return {
+        "as_of": census_result["as_of"],
+        "selected_rows": census_result["selected_rows"],
+        "selected_mw": census_result["selected_mw"],
+        "distinct_project_ids": census_result["distinct_project_ids"],
+        "selected_mw_largest_per_id": census_result["selected_mw_largest_per_id"],
+        "gate2_overdue_rows": gate["confirmed_tier_overdue_rows"],
+        "gate2_overdue_mw": gate["confirmed_tier_overdue_mw"],
+        "mw_dated_on_or_after_as_of": scale["mw_dated_on_or_after_as_of"],
+        "mw_scoping_dated_on_or_after_as_of": scale["mw_scoping_dated_on_or_after_as_of"],
+        "rows_dated_on_or_after_as_of": scale["rows_dated_on_or_after_as_of"],
+        "rows_scoping_dated_on_or_after_as_of": scale["rows_scoping_dated_on_or_after_as_of"],
+    }
+
+
+def side_by_side(
+    reference: tuple[dict[str, Any], dict[str, Any]], later: tuple[dict[str, Any], dict[str, Any]]
+) -> dict[str, Any]:
+    """D1: each copy's figures and the difference, next minus reference, each
+    printed with both as-of dates. `reference` and `later` are (census, gate)."""
+    ref, nxt = _figures(*reference), _figures(*later)
+    return {
+        "reference": ref,
+        "next": nxt,
+        "difference_next_minus_reference": {k: nxt[k] - ref[k] for k in ref if k != "as_of"},
+        "as_of_dates": [ref["as_of"], nxt["as_of"]],
+        "days_between": (nxt["as_of"] - ref["as_of"]).days,
+    }
+
+
+def _keyed(rows: list[dict[str, object]]) -> dict[tuple[str, str], list[int]]:
+    keys: dict[tuple[str, str], list[int]] = {}
+    for index, r in enumerate(rows):
+        keys.setdefault(identity_key(r), []).append(index)
+    return keys
+
+
+@dataclass(frozen=True)
+class Transition:
+    """One selected row in D2: its key, the class it fell in, and what each
+    copy printed for it (None where the copy carries no row with that key)."""
+
+    key: str
+    stage: str
+    klass: str
+    reference: Row | None
+    next: Row | None
+    #: What the other copy printed, as published, when that copy's row is not
+    #: selected: status, date as printed and parsed, and MW.
+    other_status: str
+    other_effective_as_published: str
+    other_effective: date | None
+    other_mw: Decimal | None
+
+
+def _as_row(index: int, row: dict[str, object]) -> Row | None:
+    effective = parse_date(row.get("MW Effective From"))
+    return selected_row(index, row, effective) if effective is not None else None
+
+
+def transitions(
+    ref_rows: list[dict[str, object]],
+    ref: dict[str, Any],
+    next_rows: list[dict[str, object]],
+    nxt: dict[str, Any],
+) -> dict[str, Any]:
+    """D2: selected rows in either copy, matched by `identity_key`, classed.
+
+    Reference only: the next copy has no row with the key; it prints `Built`;
+    it prints a date on or after the next as-of date; or other. Next only:
+    (a) the reference copy has no row with the key; (b) both copies print the
+    same date, on or after the reference as-of date and before the next one,
+    *the date arrived*; (c) other. A key on more than one row of either copy
+    is ambiguous and in no class. C11 holds when the classes, with the
+    ambiguous rows listed beside them, sum to each census's own totals.
+    """
+    ref_keys, next_keys = _keyed(ref_rows), _keyed(next_rows)
+    ref_sel = {identity_key(ref_rows[r.index]): r for r in ref["rows"]}
+    next_sel = {identity_key(next_rows[r.index]): r for r in nxt["rows"]}
+    ambiguous_keys = {
+        k
+        for k in set(ref_sel) | set(next_sel)
+        if len(ref_keys.get(k, [])) > 1 or len(next_keys.get(k, [])) > 1
+    }
+    # A key on two selected rows of one copy collapses in the dicts above, so
+    # the ambiguous rows are read from the selections themselves.
+    ambiguous_ref = [r for r in ref["rows"] if identity_key(ref_rows[r.index]) in ambiguous_keys]
+    ambiguous_next = [r for r in nxt["rows"] if identity_key(next_rows[r.index]) in ambiguous_keys]
+
+    out: list[Transition] = []
+
+    def other(row: dict[str, object] | None) -> dict[str, Any]:
+        if row is None:
+            return {
+                "other_status": "",
+                "other_effective_as_published": "",
+                "other_effective": None,
+                "other_mw": None,
+            }
+        return {
+            "other_status": status(row),
+            "other_effective_as_published": text(row.get("MW Effective From")),
+            "other_effective": parse_date(row.get("MW Effective From")),
+            "other_mw": stage_mw(row),
+        }
+
+    for key in sorted(set(ref_sel) | set(next_sel)):
+        if key in ambiguous_keys:
+            continue
+        r, n = ref_sel.get(key), next_sel.get(key)
+        label = key[0]
+        if r and n:
+            out.append(Transition(label, key[1], "in both", r, n, **other(None)))
+            continue
+        if r:
+            match = next_keys.get(key)
+            there = next_rows[match[0]] if match else None
+            if there is None:
+                klass = "reference only: no row with that key"
+            elif is_built(there):
+                klass = "reference only: Built"
+            elif (d := parse_date(there.get("MW Effective From"))) is not None and d >= nxt[
+                "as_of"
+            ]:
+                klass = "reference only: date on or after the next as-of date"
+            else:
+                klass = "reference only: other"
+            out.append(Transition(label, key[1], klass, r, None, **other(there)))
+            continue
+        assert n is not None
+        match = ref_keys.get(key)
+        before = ref_rows[match[0]] if match else None
+        if before is None:
+            klass = "next only: (a) no row with that key in the reference copy"
+        elif (
+            parse_date(before.get("MW Effective From")) == n.effective
+            and ref["as_of"] <= n.effective < nxt["as_of"]
+        ):
+            klass = "next only: (b) the date arrived"
+        else:
+            klass = "next only: (c) other"
+        out.append(Transition(label, key[1], klass, None, n, **other(before)))
+
+    classes: dict[str, dict[str, Any]] = {}
+    for t in out:
+        entry = classes.setdefault(
+            t.klass, {"rows": 0, "mw_reference": ZERO, "mw_next": ZERO, "members": []}
+        )
+        entry["rows"] += 1
+        if t.reference and t.reference.mw is not None:
+            entry["mw_reference"] += t.reference.mw
+        if t.next and t.next.mw is not None:
+            entry["mw_next"] += t.next.mw
+        entry["members"].append(t)
+
+    def side(which: str) -> tuple[int, Decimal]:
+        members = [t for t in out if getattr(t, which) is not None]
+        return len(members), sum(
+            (getattr(t, which).mw for t in members if getattr(t, which).mw is not None), ZERO
+        )
+
+    ref_classed = side("reference")
+    next_classed = side("next")
+    c11 = (
+        ref_classed[0] + len(ambiguous_ref) == ref["selected_rows"]
+        and ref_classed[1] + total_mw(ambiguous_ref) == ref["selected_mw"]
+        and next_classed[0] + len(ambiguous_next) == nxt["selected_rows"]
+        and next_classed[1] + total_mw(ambiguous_next) == nxt["selected_mw"]
+    )
+    unmatchable_ref = {r.index for r in ambiguous_ref} | {
+        r.index for r in ref["rows"] if not r.project_id
+    }
+    unmatchable_next = {r.index for r in ambiguous_next} | {
+        r.index for r in nxt["rows"] if not r.project_id
+    }
+    f9 = (
+        ref["selected_rows"] > 0
+        and Decimal(len(unmatchable_ref)) / ref["selected_rows"] > F9_UNMATCHABLE_SHARE
+    ) or (
+        nxt["selected_rows"] > 0
+        and Decimal(len(unmatchable_next)) / nxt["selected_rows"] > F9_UNMATCHABLE_SHARE
+    )
+    return {
+        "classes": dict(sorted(classes.items())),
+        "ambiguous": {
+            "keys": sorted(f"{k[0]} | stage {k[1] or '(blank)'}" for k in ambiguous_keys),
+            "reference_rows": ambiguous_ref,
+            "next_rows": ambiguous_next,
+        },
+        "unmatchable_rows": {"reference": len(unmatchable_ref), "next": len(unmatchable_next)},
+        "classed_totals": {
+            "reference": {"rows": ref_classed[0], "mw": ref_classed[1]},
+            "next": {"rows": next_classed[0], "mw": next_classed[1]},
+        },
+        "checks": {"C11 D2's classes sum to each census's selected rows and MW": c11},
+        "falsifiers": {
+            "F9 more than a tenth of either copy's selected rows are ambiguous or have no id": f9
+        },
+    }
+
+
+def gated_copies_for(
+    journalled: list[dict[str, Any]], captured: list[dict[str, Any]], since: date, as_of: date
+) -> list[dict[str, Any]]:
+    """G6′: the gated copies version 2 read (`journalled`), then each captured
+    copy dated later than `since` and no later than the copy under census,
+    one reading per distinct digest, oldest first. Each copy is a dict with
+    at least `t_public` (ISO date) and `sha256`."""
+    out: list[dict[str, Any]] = []
+    seen: set[str] = set()
+    for copy in journalled:
+        if copy["sha256"] not in seen:
+            out.append(copy)
+            seen.add(copy["sha256"])
+    for copy in captured:
+        t_public = date.fromisoformat(copy["t_public"])
+        if since < t_public <= as_of and copy["sha256"] not in seen:
+            out.append(copy)
+            seen.add(copy["sha256"])
+    return sorted(out, key=lambda c: c["t_public"])

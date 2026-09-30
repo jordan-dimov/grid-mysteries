@@ -639,3 +639,220 @@ def test_the_page_refuses_when_findings_no_longer_supports_its_exhibit_sentence(
     census, gate = _page_inputs()
     with pytest.raises(ValueError):
         page.render_page("# 017\n\nnothing about Eggborough", census, gate)
+
+
+# --------------------------------------------------------------- version 3
+
+REF_AS_OF = date(2026, 9, 25)
+NEXT_AS_OF = date(2026, 9, 29)
+
+
+def test_the_filename_date_is_read_and_never_sets_the_as_of_date():
+    """R2′: NESO's filename names a day; the as-of date stays last_modified."""
+    assert oq.filename_date("tec-register-24-september-2026.csv") == date(2026, 9, 24)
+    assert oq.filename_date("tec-register-28-September-2026.csv") == date(2026, 9, 28)
+    assert oq.filename_date("tec-register.csv") is None
+    assert oq.filename_date("tec-register-31-february-2026.csv") is None
+    result = oq.census([row("A", "24/09/2026")], REF_AS_OF)
+    assert result["as_of"] == REF_AS_OF
+
+
+def test_the_filename_sensitivity_counts_rows_past_on_one_reading_only():
+    """R2′: dated on or after the filename's date and before the as-of date."""
+    result = oq.census(
+        [
+            row("Before both", "23/09/2026", mw="10"),
+            row("On the filename day", "24/09/2026", mw="30"),
+            row("On the as-of day", "25/09/2026", mw="50"),
+        ],
+        REF_AS_OF,
+    )
+    sens = oq.filename_sensitivity(result, date(2026, 9, 24))
+    assert sens["differs"] is True
+    assert [r.project_name for r in sens["moved"]] == ["On the filename day"]
+    assert (sens["rows"], sens["mw"]) == (1, Decimal(30))
+    same = oq.filename_sensitivity(result, REF_AS_OF)
+    assert (same["differs"], same["rows"]) == (False, 0)
+    assert oq.filename_sensitivity(result, None)["rows"] == 0
+
+
+def test_f10_fires_when_the_filename_reading_moves_more_than_a_tenth():
+    """F10: more than a tenth of the selected MW moves, so publish a range."""
+    key = "F10 the filename reading moves more than a tenth of the selected MW"
+    rows = [row("Old", "01/01/2025", mw="89"), row("Edge", "24/09/2026", mw="11")]
+    result = oq.census(rows, REF_AS_OF)
+    assert oq.filename_sensitivity(result, date(2026, 9, 24))[key] is True
+    rows = [row("Old", "01/01/2025", mw="90"), row("Edge", "24/09/2026", mw="10")]
+    result = oq.census(rows, REF_AS_OF)
+    assert oq.filename_sensitivity(result, date(2026, 9, 24))[key] is False
+
+
+def test_the_next_copy_is_the_earliest_on_or_after_the_date_and_gaps_are_named():
+    """R1′: earliest last_modified on or after 29/09; a day with no TEC
+    record between that date and the capture day is reported."""
+    entries = [
+        {"t_public": "2026-09-25", "fetched_at": "2026-09-26T06:31:03+00:00", "sha256": "a"},
+        {"t_public": "2026-10-02", "fetched_at": "2026-10-03T06:31:03+00:00", "sha256": "c"},
+        {"t_public": "2026-09-29", "fetched_at": "2026-09-30T06:31:04+00:00", "sha256": "b"},
+    ]
+    chosen = oq.next_copy(entries)
+    assert chosen is not None and chosen["sha256"] == "b"
+    assert oq.next_copy(entries[:1]) is None
+    days = {date(2026, 9, 29), date(2026, 10, 1)}
+    assert oq.capture_gaps(days, date(2026, 9, 29), date(2026, 10, 1)) == [date(2026, 9, 30)]
+    assert oq.capture_gaps(days | {date(2026, 9, 30)}, date(2026, 9, 29), date(2026, 9, 30)) == []
+
+
+def _copy_report(**over: Any) -> dict[str, Any]:
+    report = {
+        "columns": ["B", "A"],
+        "date_spellings": {"uk": 10, "blank": 2, "iso-dash": 0, "other": 0},
+        "project_status": {"Scoping": 5, "Built": 7},
+        "gate": {"": 3, "1": 4, "2": 5},
+        "flags": [],
+    }
+    return {**report, **over}
+
+
+def test_n0_gates_the_next_census_on_its_schema_pass():
+    """N0: same columns, uk and blank dates only, the five statuses, 1, 2 and
+    blank under Gate, and no flag, or no census of that copy."""
+    assert all(oq.n0(_copy_report(), ["A", "B"]).values())
+    failing = {
+        "N0 the same fifteen columns": _copy_report(columns=["A", "B", "C"]),
+        "N0 date spellings only uk and blank": _copy_report(
+            date_spellings={"uk": 10, "blank": 2, "iso-dash": 1}
+        ),
+        "N0 only the five Project Status spellings": _copy_report(
+            project_status={"Scoping": 5, "Withdrawn": 1}
+        ),
+        "N0 only 1, 2 and blank under Gate": _copy_report(gate={"": 3, "3": 1}),
+        "N0 no flag": _copy_report(flags=["row count fell 40% (possible partial export)"]),
+    }
+    for name, report in failing.items():
+        verdict = oq.n0(report, ["A", "B"])
+        assert verdict[name] is False, name
+        assert sum(not ok for ok in verdict.values()) == 1, name
+
+
+def test_g6_prime_reads_one_copy_per_digest_up_to_the_copy_under_census():
+    """G6′: version 2's gated copies, then captured copies later than 15/09
+    and no later than the copy under census, one reading per digest."""
+    journalled = [
+        {"t_public": "2026-08-22", "sha256": "j1"},
+        {"t_public": "2026-09-15", "sha256": "same"},
+    ]
+    captured = [
+        {"t_public": "2026-09-15", "sha256": "same"},
+        {"t_public": "2026-09-18", "sha256": "c1"},
+        {"t_public": "2026-09-25", "sha256": "c2"},
+        {"t_public": "2026-09-29", "sha256": "c3"},
+    ]
+    since = date(2026, 9, 15)
+    got = oq.gated_copies_for(journalled, captured, since, REF_AS_OF)
+    assert [c["sha256"] for c in got] == ["j1", "same", "c1", "c2"]
+    got = oq.gated_copies_for(journalled, captured, since, since)
+    assert [c["sha256"] for c in got] == ["j1", "same"]
+
+
+def _pair(ref_rows: list[dict[str, object]], next_rows: list[dict[str, object]]) -> Any:
+    ref, nxt = oq.census(ref_rows, REF_AS_OF), oq.census(next_rows, NEXT_AS_OF)
+    return oq.transitions(ref_rows, ref, next_rows, nxt), ref, nxt
+
+
+def test_d2_classes_every_selected_row_and_the_classes_sum():
+    """D2 and C11: in both; reference only (no row, Built, date later, other);
+    next only ((a) new key, (b) the date arrived, (c) other)."""
+    ref_rows = [
+        row("Stays", "01/01/2025", pid="a0lSTAYS0000001"),
+        row("Goes", "01/01/2025", pid="a0lGOES00000001", mw="10"),
+        row("Built later", "01/01/2025", pid="a0lBUILT0000001", mw="20"),
+        row("Moved later", "01/01/2025", pid="a0lMOVED0000001", mw="30"),
+        row("Blanked", "01/01/2025", pid="a0lBLANK0000001", mw="40"),
+        row("Arrives", "27/09/2026", pid="a0lARRIVE000001", mw="50"),
+        row("Moved earlier", "01/12/2026", pid="a0lEARLY0000001", mw="60"),
+    ]
+    next_rows = [
+        row("Stays", "01/01/2025", pid="a0lSTAYS0000001", mw="120"),
+        row("Built later", "01/01/2025", "Built", pid="a0lBUILT0000001", mw="20"),
+        row("Moved later", "01/01/2027", pid="a0lMOVED0000001", mw="30"),
+        row("Blanked", "", pid="a0lBLANK0000001", mw="40"),
+        row("Arrives", "27/09/2026", pid="a0lARRIVE000001", mw="50"),
+        row("Moved earlier", "01/06/2026", pid="a0lEARLY0000001", mw="60"),
+        row("New", "01/01/2026", pid="a0lNEW000000001", mw="70"),
+    ]
+    d2, ref, nxt = _pair(ref_rows, next_rows)
+    names = {
+        k: sorted((t.reference or t.next).project_name for t in v["members"])
+        for k, v in d2["classes"].items()
+    }
+    assert names == {
+        "in both": ["Stays"],
+        "reference only: no row with that key": ["Goes"],
+        "reference only: Built": ["Built later"],
+        "reference only: date on or after the next as-of date": ["Moved later"],
+        "reference only: other": ["Blanked"],
+        "next only: (a) no row with that key in the reference copy": ["New"],
+        "next only: (b) the date arrived": ["Arrives"],
+        "next only: (c) other": ["Moved earlier"],
+    }
+    both = d2["classes"]["in both"]
+    assert (both["mw_reference"], both["mw_next"]) == (Decimal(100), Decimal(120))
+    assert d2["checks"]["C11 D2's classes sum to each census's selected rows and MW"] is True
+    assert d2["classed_totals"]["reference"] == {"rows": 5, "mw": ref["selected_mw"]}
+    assert d2["classed_totals"]["next"] == {"rows": 4, "mw": nxt["selected_mw"]}
+    blanked = d2["classes"]["reference only: other"]["members"][0]
+    assert (blanked.other_status, blanked.other_effective) == ("Awaiting Consents", None)
+
+
+def test_d2_puts_a_key_on_two_rows_of_either_copy_in_no_class():
+    """D2: an ambiguous key is listed, never classed; C11 counts it beside
+    the classes so the totals still meet."""
+    ref_rows = [
+        row("Twice", "01/01/2025", pid="a0lTWICE0000001", mw="10"),
+        row("Twice", "01/01/2026", pid="a0lTWICE0000001", mw="20"),
+        row("Once", "01/01/2025", pid="a0lONCE00000001", mw="5"),
+    ]
+    next_rows = [
+        row("Twice", "01/01/2025", pid="a0lTWICE0000001", mw="10"),
+        row("Once", "01/01/2025", pid="a0lONCE00000001", mw="5"),
+    ]
+    d2, _ref, _nxt = _pair(ref_rows, next_rows)
+    assert d2["ambiguous"]["keys"] == ["id:a0lTWICE0000001 | stage (blank)"]
+    assert len(d2["ambiguous"]["reference_rows"]) == 2
+    assert len(d2["ambiguous"]["next_rows"]) == 1
+    assert list(d2["classes"]) == ["in both"]
+    assert d2["checks"]["C11 D2's classes sum to each census's selected rows and MW"] is True
+
+
+def test_f9_fires_when_more_than_a_tenth_of_a_copys_rows_cannot_be_matched():
+    """F9: ambiguous or id-less selected rows above a tenth of either copy's
+    selection withhold D2, leaving D1 alone."""
+    key = "F9 more than a tenth of either copy's selected rows are ambiguous or have no id"
+    matched = [row(f"R{i}", "01/01/2025", pid=f"a0lROW{i:09d}") for i in range(9)]
+    d2, _r, _n = _pair([*matched, row("No id", "01/01/2025")], matched)
+    assert d2["falsifiers"][key] is False
+    d2, _r, _n = _pair(
+        [*matched, row("No id", "01/01/2025"), row("No id 2", "01/01/2025")], matched
+    )
+    assert d2["unmatchable_rows"]["reference"] == 2
+    assert d2["falsifiers"][key] is True
+
+
+def test_d1_prints_each_copy_and_the_difference_with_both_as_of_dates():
+    """D1: side by side, next minus reference, with both as-of dates."""
+    ref_rows = [{**row("A", "01/01/2025", pid="a0lA00000000001", mw="100"), "Gate": "2"}]
+    next_rows = [
+        {**row("A", "01/01/2025", pid="a0lA00000000001", mw="100"), "Gate": "2"},
+        {**row("B", "27/09/2026", pid="a0lB00000000001", mw="40"), "Gate": "1"},
+        {**row("C", "01/01/2027", "Scoping", pid="a0lC00000000001", mw="7"), "Gate": ""},
+    ]
+    ref, nxt = oq.census(ref_rows, REF_AS_OF), oq.census(next_rows, NEXT_AS_OF)
+    ref_gate, next_gate = oq.gate_census(ref_rows, ref, []), oq.gate_census(next_rows, nxt, [])
+    d1 = oq.side_by_side((ref, ref_gate), (nxt, next_gate))
+    diff = d1["difference_next_minus_reference"]
+    assert d1["as_of_dates"] == [REF_AS_OF, NEXT_AS_OF]
+    assert d1["days_between"] == 4
+    assert (diff["selected_rows"], diff["selected_mw"]) == (1, Decimal(40))
+    assert (diff["gate2_overdue_rows"], diff["gate2_overdue_mw"]) == (0, Decimal(0))
+    assert diff["mw_scoping_dated_on_or_after_as_of"] == Decimal(7)

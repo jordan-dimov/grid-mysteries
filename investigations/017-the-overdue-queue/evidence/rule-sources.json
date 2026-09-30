@@ -1,9 +1,10 @@
 {
  "declaration": [
   "DECLARATION.md",
-  "DECLARATION-v2.md"
+  "DECLARATION-v2.md",
+  "DECLARATION-v3.md"
  ],
- "note": "Checks C1, C4, C5 (version 1) and C6 to C9 (version 2) are enforced by run.py against artefacts outside the pure logic - the committed schema report, the series' reading of the archive, version 1's committed rows and the append-only Gate rows - and have no unit test; every rule below does.",
+ "note": "Checks C1, C4, C5 (version 1) and C6 to C9 (version 2) are enforced by run.py against artefacts outside the pure logic - the committed schema report, the series' reading of the archive, version 1's committed rows and the append-only Gate rows - and have no unit test; every rule below does. Version 3's C1′ to C9′ and C10 are enforced by run.py --version 3 against the capture schema report, the committed manifests, the per-copy append-only files and versions 1 and 2's committed evidence (C10's line-by-line comparison is evidence/v3/method-check.json), and have no unit test; every rule below does.",
  "rules": {
   "R1/R2 past its date is strictly before the copy's own publication date": "tests/test_overdue_queue.py::test_past_its_date_is_strictly_before_the_copys_own_publication_date",
   "R3 every spelling the register has used parses": "tests/test_tec_register.py::test_every_date_spelling_the_register_has_used_parses",
@@ -37,6 +38,16 @@
   "F5 repetition holding more than a tenth of the overdue Gate 2 MW": "tests/test_overdue_queue.py::test_f5_fires_when_repetition_holds_more_than_a_tenth_of_the_tier",
   "F6 fewer than three gated copies are readable": "tests/test_overdue_queue.py::test_f6_fires_when_too_few_gated_copies_are_readable",
   "schema pass: the Gate vocabulary is recorded per copy and archive-wide": "tests/test_tec_register.py::test_the_gate_column_gets_the_same_vocabulary_pass_as_status",
-  "G3/G4 the confirmed-tier rows at one status, promoted with their qualifiers": "tests/test_overdue_queue.py::test_the_scoping_slot_carries_its_qualifiers_and_lists_only_projects"
+  "G3/G4 the confirmed-tier rows at one status, promoted with their qualifiers": "tests/test_overdue_queue.py::test_the_scoping_slot_carries_its_qualifiers_and_lists_only_projects",
+  "R1′ the next copy is the earliest captured on or after 29/09, and a day with no TEC record is reported": "tests/test_overdue_queue.py::test_the_next_copy_is_the_earliest_on_or_after_the_date_and_gaps_are_named",
+  "R2′ the as-of date is last_modified; NESO's filename date is read, never adopted": "tests/test_overdue_queue.py::test_the_filename_date_is_read_and_never_sets_the_as_of_date",
+  "R2′ the filename sensitivity counts the rows past on one reading and not the other": "tests/test_overdue_queue.py::test_the_filename_sensitivity_counts_rows_past_on_one_reading_only",
+  "N0 the next copy's schema pass gates its census": "tests/test_overdue_queue.py::test_n0_gates_the_next_census_on_its_schema_pass",
+  "G6′ the gated copies, then later captured copies up to the copy under census, one per digest": "tests/test_overdue_queue.py::test_g6_prime_reads_one_copy_per_digest_up_to_the_copy_under_census",
+  "D1 side by side with the difference and both as-of dates": "tests/test_overdue_queue.py::test_d1_prints_each_copy_and_the_difference_with_both_as_of_dates",
+  "D2 the transition classes, and C11 their sum": "tests/test_overdue_queue.py::test_d2_classes_every_selected_row_and_the_classes_sum",
+  "D2 a key on more than one row of either copy is ambiguous and in no class": "tests/test_overdue_queue.py::test_d2_puts_a_key_on_two_rows_of_either_copy_in_no_class",
+  "F9 ambiguous or id-less rows above a tenth of either selection withhold D2": "tests/test_overdue_queue.py::test_f9_fires_when_more_than_a_tenth_of_a_copys_rows_cannot_be_matched",
+  "F10 the filename reading moving more than a tenth of the selected MW": "tests/test_overdue_queue.py::test_f10_fires_when_the_filename_reading_moves_more_than_a_tenth"
  }
 }

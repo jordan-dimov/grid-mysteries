@@ -24,3 +24,14 @@ artifacts/
 # governed record), and fetch order is recoverable from the manifest's
 # fetched_at. Kept on disk, out of git.
 investigations/*/evidence/*journal.ndjson
+
+# Sponsor-only until the admissions and amendments are in (sponsor, 30/09/2026):
+# the ownership tables of 019 and both results renderings stay local.
+investigations/019-who-holds-the-queue/RESULTS.md
+investigations/019-who-holds-the-queue/evidence/results.json
+investigations/019-who-holds-the-queue/evidence/companies.ndjson
+investigations/019-who-holds-the-queue/evidence/links.ndjson
+investigations/019-who-holds-the-queue/evidence/links-proposed.json
+investigations/019-who-holds-the-queue/evidence/links-admitted.json
+investigations/020-did-it-energise/RESULTS-v0.md
+investigations/020-did-it-energise/evidence/population-summary.json

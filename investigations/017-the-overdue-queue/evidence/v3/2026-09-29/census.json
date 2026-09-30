@@ -1,0 +1,523 @@
+{
+ "investigation": "017",
+ "version": 3,
+ "declaration": "DECLARATION-v3.md",
+ "declaration_sha256": "dd396986922a16041766de865bcf9d145583dcecdd9b6fb438114b8eb34f262f",
+ "declaration_timestamps": {
+  "sha256": "dd396986922a16041766de865bcf9d145583dcecdd9b6fb438114b8eb34f262f",
+  "matches_declaration": true,
+  "proofs": [
+   {
+    "kind": "opentimestamps",
+    "path": "DECLARATION-v3.md.ots",
+    "status": "pending calendar attestation until upgraded"
+   },
+   {
+    "kind": "rfc3161",
+    "tsa": "https://freetsa.org/tsr",
+    "path": "DECLARATION-v3.md.freetsa.tsr",
+    "tsa_time": "Sep 28 21:12:57 2026 GMT"
+   },
+   {
+    "kind": "rfc3161",
+    "tsa": "http://timestamp.digicert.com",
+    "path": "DECLARATION-v3.md.digicert.tsr",
+    "tsa_time": "Sep 28 21:12:57 2026 GMT"
+   }
+  ]
+ },
+ "capture_schema_report_sha256": "857dfc88949a95b3553d96fa25bd84fbed6f4ed433f1090f324140b644975ebd",
+ "seal": "dd396986",
+ "run_date": "2026-09-30",
+ "computed_at": "2026-09-30T12:44:28+00:00",
+ "which": "next",
+ "selection": {
+  "rule": "the earliest captured copy with last_modified on or after 2026-09-29",
+  "captured_on": "2026-09-30",
+  "days_checked": [
+   "2026-09-29",
+   "2026-09-30"
+  ],
+  "days_with_no_tec_record": []
+ },
+ "copy": {
+  "t_public": "2026-09-29",
+  "t_public_basis": "CKAN resource last_modified 2026-09-29T12:18:57.526163; NESO filename tec-register-28-september-2026.csv; fetched by the daily capture 2026-09-30T06:31:04+00:00",
+  "filename": "tec-register-28-september-2026.csv",
+  "sha256": "d1ccd9e210b4f6bc8f3b0e83d54032dc61f247dbbc1d9e469a342b7766ee5746",
+  "bytes": 440851,
+  "key": "raw/neso/tec-register/2026-09-30/d1ccd9e210b4f6bc8f3b0e83d54032dc61f247dbbc1d9e469a342b7766ee5746",
+  "fetched_at": "2026-09-30T06:31:04+00:00",
+  "manifest": "2026-09-30.ndjson",
+  "manifest_sha256": "ddfa00291f53a73666318573764e42bdf8175469e16931a4d9a21ba3f664c47a"
+ },
+ "n0": {
+  "as_frozen": {
+   "N0 the same fifteen columns": true,
+   "N0 date spellings only uk and blank": false,
+   "N0 only the five Project Status spellings": true,
+   "N0 only 1, 2 and blank under Gate": true,
+   "N0 no flag": true
+  },
+  "under_amendment_1": {
+   "N0 date spellings only iso-dash and blank (amendment 1, A1)": true,
+   "N0 the same fifteen columns": true,
+   "N0 only the five Project Status spellings": true,
+   "N0 only 1, 2 and blank under Gate": true,
+   "N0 no flag": true
+  }
+ },
+ "amendment": {
+  "file": "DECLARATION-v3-amendment-1.md",
+  "sha256": "35b74e13301a0a1c60d61ad9d8ade65387252bfd4aed1a94153c6fc573e4f419",
+  "seal": "35b74e13",
+  "timestamps": {
+   "sha256": "35b74e13301a0a1c60d61ad9d8ade65387252bfd4aed1a94153c6fc573e4f419",
+   "matches_declaration": true,
+   "proofs": [
+    {
+     "kind": "opentimestamps",
+     "path": "DECLARATION-v3-amendment-1.md.ots",
+     "status": "pending calendar attestation until upgraded"
+    },
+    {
+     "kind": "rfc3161",
+     "tsa": "https://freetsa.org/tsr",
+     "path": "DECLARATION-v3-amendment-1.md.freetsa.tsr",
+     "tsa_time": "Sep 30 12:43:15 2026 GMT"
+    },
+    {
+     "kind": "rfc3161",
+     "tsa": "http://timestamp.digicert.com",
+     "path": "DECLARATION-v3-amendment-1.md.digicert.tsr",
+     "tsa_time": "Sep 30 12:43:15 2026 GMT"
+    }
+   ]
+  }
+ },
+ "a2_swap_test": {
+  "rule": "amendment 1, A2: connection_slippage.swap_test, reference copy against next copy",
+  "reference": {
+   "t_public": "2026-09-25",
+   "sha256": "da0b67b5ea34a85606f3a98269916f647c32a0f3b496f91a1136e80069175a6c"
+  },
+  "next": {
+   "t_public": "2026-09-29",
+   "sha256": "d1ccd9e210b4f6bc8f3b0e83d54032dc61f247dbbc1d9e469a342b7766ee5746"
+  },
+  "thresholds": {
+   "min_explained": 3,
+   "min_share_of_disagreements": "0.5"
+  },
+  "disagreements": 0,
+  "swap_explained": 0,
+  "flagged": false,
+  "F11 the swap test flags the next copy": false
+ },
+ "status_counts_all_rows": {
+  "Scoping": 1392,
+  "Built": 381,
+  "Consents Approved": 210,
+  "Awaiting Consents": 172,
+  "Under Construction/Commissioning": 44
+ },
+ "rows_file": "rows.ndjson",
+ "rows_appended": 95,
+ "as_of": "2026-09-29",
+ "rows_total": 2199,
+ "undated": 365,
+ "dated": 1834,
+ "dated_built": 16,
+ "dated_not_built_future": 1723,
+ "selected_rows": 95,
+ "selected_mw": "11940.36",
+ "selected_rows_without_capacity": 0,
+ "selected_rows_zero_capacity": 8,
+ "selected_rows_negative_capacity": 0,
+ "selected_mw_negative": "0",
+ "selected_rows_without_project_id": 0,
+ "distinct_project_ids": 93,
+ "selected_mw_largest_per_id": "11890.36",
+ "repeated_project_ids": [
+  {
+   "project_id": "a0l4L0000005ihQ",
+   "rows": [
+    {
+     "index": 488,
+     "project_name": "Coylton 275kV Greener Grid Park",
+     "customer_name": "COYLTON ENERGY LIMITED",
+     "connection_site": "Coylton 275kV substation",
+     "stage": "1.00",
+     "project_id": "a0l4L0000005ihQ",
+     "project_number": "PRO-001551-1",
+     "plant_type": "Energy Storage System",
+     "status": "Consents Approved",
+     "mw": "50.00",
+     "effective": "2026-05-18",
+     "effective_as_published": "2026-05-18",
+     "effective_swapped": null
+    },
+    {
+     "index": 489,
+     "project_name": "Coylton 275kV Greener Grid Park",
+     "customer_name": "COYLTON ENERGY LIMITED",
+     "connection_site": "Coylton 275kV substation",
+     "stage": "2.00",
+     "project_id": "a0l4L0000005ihQ",
+     "project_number": "PRO-001551-2",
+     "plant_type": "Energy Storage System",
+     "status": "Scoping",
+     "mw": "100.00",
+     "effective": "2026-04-30",
+     "effective_as_published": "2026-04-30",
+     "effective_swapped": null
+    }
+   ]
+  },
+  {
+   "project_id": "a0l8e0000011zBp",
+   "rows": [
+    {
+     "index": 850,
+     "project_name": "GF Upper Boat",
+     "customer_name": "PULSE CLEAN ENERGY SPV FRANKLIN LIMITED",
+     "connection_site": "Upper Boat 275kV Substation",
+     "stage": "1.00",
+     "project_id": "a0l8e0000011zBp",
+     "project_number": "PRO-003568-1",
+     "plant_type": "Energy Storage System;Reactive Compensation",
+     "status": "Scoping",
+     "mw": "0.00",
+     "effective": "2025-05-31",
+     "effective_as_published": "2025-05-31",
+     "effective_swapped": null
+    },
+    {
+     "index": 851,
+     "project_name": "GF Upper Boat",
+     "customer_name": "PULSE CLEAN ENERGY SPV FRANKLIN LIMITED",
+     "connection_site": "Upper Boat 275kV Substation",
+     "stage": "2.00",
+     "project_id": "a0l8e0000011zBp",
+     "project_number": "PRO-003568-2",
+     "plant_type": "Energy Storage System;Reactive Compensation",
+     "status": "Scoping",
+     "mw": "0.00",
+     "effective": "2025-10-31",
+     "effective_as_published": "2025-10-31",
+     "effective_swapped": null
+    }
+   ]
+  }
+ ],
+ "by_status": [
+  {
+   "status": "Consents Approved",
+   "rows": 44,
+   "mw": "6199.99"
+  },
+  {
+   "status": "Under Construction/Commissioning",
+   "rows": 19,
+   "mw": "3681.42"
+  },
+  {
+   "status": "Scoping",
+   "rows": 25,
+   "mw": "1641.70"
+  },
+  {
+   "status": "Awaiting Consents",
+   "rows": 7,
+   "mw": "417.25"
+  }
+ ],
+ "by_plant_type": [
+  {
+   "plant_type": "Wind Offshore",
+   "rows": 5,
+   "mw": "4800.00"
+  },
+  {
+   "plant_type": "Energy Storage System",
+   "rows": 43,
+   "mw": "3735.45"
+  },
+  {
+   "plant_type": "Energy Storage System;PV Array (Photo Voltaic/solar)",
+   "rows": 20,
+   "mw": "958.12"
+  },
+  {
+   "plant_type": "OCGT (Open Cycle Gas Turbine)",
+   "rows": 3,
+   "mw": "897.00"
+  },
+  {
+   "plant_type": "Wind Onshore",
+   "rows": 10,
+   "mw": "555.79"
+  },
+  {
+   "plant_type": "CCGT (Combined Cycle Gas Turbine)",
+   "rows": 1,
+   "mw": "380.00"
+  },
+  {
+   "plant_type": "Energy Storage System;Gas Reciprocating",
+   "rows": 1,
+   "mw": "375.00"
+  },
+  {
+   "plant_type": "Biomass",
+   "rows": 1,
+   "mw": "150.00"
+  },
+  {
+   "plant_type": "Thermal",
+   "rows": 1,
+   "mw": "57.00"
+  },
+  {
+   "plant_type": "Demand;PV Array (Photo Voltaic/solar)",
+   "rows": 1,
+   "mw": "20.00"
+  },
+  {
+   "plant_type": "Energy Storage System;Reactive Compensation",
+   "rows": 4,
+   "mw": "12.00"
+  },
+  {
+   "plant_type": "Reactive Compensation",
+   "rows": 5,
+   "mw": "0.00"
+  }
+ ],
+ "by_year": [
+  {
+   "year": 2020,
+   "rows": 1,
+   "mw": "380.00"
+  },
+  {
+   "year": 2022,
+   "rows": 2,
+   "mw": "75.00"
+  },
+  {
+   "year": 2023,
+   "rows": 6,
+   "mw": "336.60"
+  },
+  {
+   "year": 2024,
+   "rows": 15,
+   "mw": "1223.30"
+  },
+  {
+   "year": 2025,
+   "rows": 37,
+   "mw": "4685.37"
+  },
+  {
+   "year": 2026,
+   "rows": 34,
+   "mw": "5240.09"
+  }
+ ],
+ "earliest": [
+  {
+   "index": 1683,
+   "project_name": "Powersite @ Drakelow",
+   "customer_name": "POWERSITE LTD",
+   "connection_site": "Drakelow 400kV Substation",
+   "stage": "",
+   "project_id": "a0l4L0000005ilF",
+   "project_number": "PRO-000364",
+   "plant_type": "CCGT (Combined Cycle Gas Turbine)",
+   "status": "Under Construction/Commissioning",
+   "mw": "380.00",
+   "effective": "2020-10-01",
+   "effective_as_published": "2020-10-01",
+   "effective_swapped": "2020-01-10"
+  },
+  {
+   "index": 70,
+   "project_name": "Arbroath Battery Substation",
+   "customer_name": "ARBROATH LIMITED",
+   "connection_site": "Arbroath GSP",
+   "stage": "",
+   "project_id": "a0l4L0000005iSw",
+   "project_number": "PRO-000950",
+   "plant_type": "Energy Storage System",
+   "status": "Consents Approved",
+   "mw": "35.00",
+   "effective": "2022-02-21",
+   "effective_as_published": "2022-02-21",
+   "effective_swapped": null
+  },
+  {
+   "index": 477,
+   "project_name": "Coupar Angus Battery",
+   "customer_name": "COUPAR LIMITED",
+   "connection_site": "Coupar Angus 132/33kV GSP",
+   "stage": "",
+   "project_id": "a0l4L0000005iPx",
+   "project_number": "PRO-000905",
+   "plant_type": "Energy Storage System",
+   "status": "Consents Approved",
+   "mw": "40.00",
+   "effective": "2022-02-21",
+   "effective_as_published": "2022-02-21",
+   "effective_swapped": null
+  },
+  {
+   "index": 595,
+   "project_name": "Dollymans Storage",
+   "customer_name": "Dollymans Storage Limited",
+   "connection_site": "Rayleigh Main 132kV Substation",
+   "stage": "",
+   "project_id": "a0l4L0000005iXU",
+   "project_number": "PRO-002261",
+   "plant_type": "Energy Storage System",
+   "status": "Scoping",
+   "mw": "99.80",
+   "effective": "2023-01-12",
+   "effective_as_published": "2023-01-12",
+   "effective_swapped": "2023-12-01"
+  },
+  {
+   "index": 535,
+   "project_name": "Cuxton 49.5MW BESS",
+   "customer_name": "Cuxton Energy Storage Limited",
+   "connection_site": "Kingsnorth 400kV Substation",
+   "stage": "",
+   "project_id": "a0l4L0000005iXw",
+   "project_number": "PRO-002373",
+   "plant_type": "Energy Storage System",
+   "status": "Consents Approved",
+   "mw": "49.50",
+   "effective": "2023-05-31",
+   "effective_as_published": "2023-05-31",
+   "effective_swapped": null
+  },
+  {
+   "index": 1662,
+   "project_name": "Pines Burn Wind Farm",
+   "customer_name": "PINES BURN WIND FARM LLP",
+   "connection_site": "Hawick GSP",
+   "stage": "",
+   "project_id": "a0l4L0000005iQo",
+   "project_number": "PRO-000897",
+   "plant_type": "Wind Onshore",
+   "status": "Consents Approved",
+   "mw": "50.00",
+   "effective": "2023-08-02",
+   "effective_as_published": "2023-08-02",
+   "effective_swapped": "2023-02-08"
+  },
+  {
+   "index": 1525,
+   "project_name": "Newtonwood BESS",
+   "customer_name": "CARE POWER (NEWTONWOOD) LIMITED",
+   "connection_site": "Chesterfield GSP",
+   "stage": "",
+   "project_id": "a0l8e000001Hpwk",
+   "project_number": "PRO-004156",
+   "plant_type": "Energy Storage System",
+   "status": "Under Construction/Commissioning",
+   "mw": "49.90",
+   "effective": "2023-08-15",
+   "effective_as_published": "2023-08-15",
+   "effective_swapped": null
+  },
+  {
+   "index": 599,
+   "project_name": "Dorenell Battery",
+   "customer_name": "CLASHINDARROCH WINDFARM EXTENSION LIMITED",
+   "connection_site": "Dorenell BESS 132KV substation",
+   "stage": "",
+   "project_id": "a0l4L0000005ilv",
+   "project_number": "PRO-000427",
+   "plant_type": "Wind Onshore",
+   "status": "Scoping",
+   "mw": "37.50",
+   "effective": "2023-10-31",
+   "effective_as_published": "2023-10-31",
+   "effective_swapped": null
+  },
+  {
+   "index": 1798,
+   "project_name": "Seabank (Tertiary)",
+   "customer_name": "PIVOTED POWER LLP",
+   "connection_site": "SEABANK 400/33kV SUBSTATION",
+   "stage": "",
+   "project_id": "a0l4L0000005icu",
+   "project_number": "PRO-001068",
+   "plant_type": "Energy Storage System",
+   "status": "Awaiting Consents",
+   "mw": "49.90",
+   "effective": "2023-11-01",
+   "effective_as_published": "2023-11-01",
+   "effective_swapped": "2023-01-11"
+  },
+  {
+   "index": 545,
+   "project_name": "Dalmarnock Road BESS",
+   "customer_name": "DALMARNOCK BESS LTD",
+   "connection_site": "DALMARNOCK 132/33KV SUBSTATION",
+   "stage": "",
+   "project_id": "a0l4L0000005idK",
+   "project_number": "PRO-001660",
+   "plant_type": "Energy Storage System",
+   "status": "Under Construction/Commissioning",
+   "mw": "40.00",
+   "effective": "2024-02-23",
+   "effective_as_published": "2024-02-23",
+   "effective_swapped": null
+  }
+ ],
+ "swap_sensitivity": {
+  "rows_with_a_swapped_reading": 18,
+  "mw_with_a_swapped_reading": "4072.20",
+  "rows_swapped_reading_not_past": 2,
+  "mw_swapped_reading_not_past": "500.00"
+ },
+ "scale": {
+  "rows_dated_on_or_after_as_of": 1735,
+  "mw_dated_on_or_after_as_of": "584983.74",
+  "rows_scoping_dated_on_or_after_as_of": 1367,
+  "mw_scoping_dated_on_or_after_as_of": "483326.62"
+ },
+ "filename_sensitivity": {
+  "filename_date": "2026-09-28",
+  "as_of": "2026-09-29",
+  "differs": true,
+  "rows": 0,
+  "mw": "0",
+  "moved": [],
+  "F10 the filename reading moves more than a tenth of the selected MW": false
+ },
+ "checks": {
+  "C1\u2032 the status counts equal the capture schema report's for this copy": true,
+  "C2\u2032 dated plus undated is every row": true,
+  "C3\u2032 the four classes partition every row": true,
+  "C4\u2032 the copy carries no flag and the partial-export rule does not make it suspect": true,
+  "C6\u2032 the Gate counts equal the capture schema report's for this copy": true,
+  "C8\u2032 the Gate split sums to this version's census of the copy": true,
+  "C9\u2032 every selected row's Gate cell is in the copy's vocabulary": true,
+  "C5\u2032 selected rows written append-only, no committed line changed": true,
+  "C7\u2032 the cross-tab reads exactly the rows this census of the copy selected": true
+ },
+ "falsifiers": {
+  "F1 swapped dates could move more than a fifth of the selected MW to the future": false,
+  "F3 the two readings of the unit differ by more than a tenth": false,
+  "F2 the copy carries a flag or is a suspected partial export": false,
+  "F4 the Gate column carries a value the pinned definition does not cover": false,
+  "F5 repeated ids or names hold more than a tenth of the overdue Gate 2 MW": false,
+  "F6 fewer than three gated copies are readable": false,
+  "F10 the filename reading moves more than a tenth of the selected MW": false
+ },
+ "falsifiers_fired": []
+}

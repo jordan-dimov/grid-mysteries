@@ -1,0 +1,50 @@
+{
+ "investigation": "017",
+ "version": 3,
+ "amendment": {
+  "file": "DECLARATION-v3-amendment-1.md",
+  "sha256": "35b74e13301a0a1c60d61ad9d8ade65387252bfd4aed1a94153c6fc573e4f419",
+  "seal": "35b74e13",
+  "timestamps": {
+   "sha256": "35b74e13301a0a1c60d61ad9d8ade65387252bfd4aed1a94153c6fc573e4f419",
+   "matches_declaration": true,
+   "proofs": [
+    {
+     "kind": "opentimestamps",
+     "path": "DECLARATION-v3-amendment-1.md.ots",
+     "status": "pending calendar attestation until upgraded"
+    },
+    {
+     "kind": "rfc3161",
+     "tsa": "https://freetsa.org/tsr",
+     "path": "DECLARATION-v3-amendment-1.md.freetsa.tsr",
+     "tsa_time": "Sep 30 12:43:15 2026 GMT"
+    },
+    {
+     "kind": "rfc3161",
+     "tsa": "http://timestamp.digicert.com",
+     "path": "DECLARATION-v3-amendment-1.md.digicert.tsr",
+     "tsa_time": "Sep 30 12:43:15 2026 GMT"
+    }
+   ]
+  }
+ },
+ "computed_at": "2026-09-30T12:44:28+00:00",
+ "rule": "amendment 1, A2: connection_slippage.swap_test, reference copy against next copy",
+ "reference": {
+  "t_public": "2026-09-25",
+  "sha256": "da0b67b5ea34a85606f3a98269916f647c32a0f3b496f91a1136e80069175a6c"
+ },
+ "next": {
+  "t_public": "2026-09-29",
+  "sha256": "d1ccd9e210b4f6bc8f3b0e83d54032dc61f247dbbc1d9e469a342b7766ee5746"
+ },
+ "thresholds": {
+  "min_explained": 3,
+  "min_share_of_disagreements": "0.5"
+ },
+ "disagreements": 0,
+ "swap_explained": 0,
+ "flagged": false,
+ "F11 the swap test flags the next copy": false
+}

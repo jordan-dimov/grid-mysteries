@@ -1106,12 +1106,39 @@ def certificates() -> list[dict[str, Any]]:
     return out
 
 
+def v3_evidence() -> dict[str, Any] | None:
+    """Version 3's committed evidence, once the comparison exists; before
+    that the page prints nothing of version 3 but the declaration's name."""
+    if not COMPARISON.exists():
+        return None
+    comparison = json.loads(COMPARISON.read_text())
+    copies = []
+    for which in ("reference", "next"):
+        folder = V3 / comparison[which]["t_public"]
+        copies.append(
+            {
+                "census": json.loads((folder / "census.json").read_text()),
+                "gate": json.loads((folder / "gate.json").read_text()),
+            }
+        )
+    return {
+        "declaration_sha256": comparison["declaration_sha256"],
+        "amendment": comparison["amendment"],
+        "method_check": json.loads(METHOD_CHECK.read_text()),
+        "n0": json.loads((V3 / "n0.json").read_text()),
+        "swap_test": json.loads(SWAP_TEST.read_text()),
+        "comparison": comparison,
+        "copies": copies,
+    }
+
+
 def render() -> None:
     census = json.loads(CENSUS_JSON.read_text())
     rows = [json.loads(line) for line in ROWS_NDJSON.read_text().splitlines() if line.strip()]
     gate = json.loads(GATE_JSON.read_text()) if GATE_JSON.exists() else None
     corrections = json.loads(CORRECTIONS.read_text()) if CORRECTIONS.exists() else None
-    findings = page.render_findings(census, rows, certificates(), gate, corrections)
+    v3 = v3_evidence()
+    findings = page.render_findings(census, rows, certificates(), gate, corrections, v3)
     FINDINGS.write_text(findings)
     print(f"rendered {FINDINGS.relative_to(REPO_ROOT)}")
     if gate is None:
@@ -1127,6 +1154,7 @@ def render() -> None:
             next_declaration=(
                 (DECLARATION_V3.name, digest(DECLARATION_V3)) if DECLARATION_V3.exists() else None
             ),
+            v3=v3,
             repo_url=site.REPO_URL,
             credibility=site.CREDIBILITY,
             contact_email=site.CALL_TO_ACTION_EMAIL,

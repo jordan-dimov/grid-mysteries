@@ -1011,3 +1011,23 @@ def gated_copies_for(
             out.append(copy)
             seen.add(copy["sha256"])
     return sorted(out, key=lambda c: c["t_public"])
+
+
+def settles_entry_into_the_tier(row: dict[str, Any]) -> dict[str, Any]:
+    """R12 over one committed G4 row (its evidence line, readings included):
+    the last copy held before the first copy whose Gate cell reads the
+    confirmed tier, and whether the date was already past in that copy. If it
+    was, the row entered the tier already past in the copies held; if not, or
+    if no earlier copy is held, the copies do not settle it (the correction of
+    2026-09-24). A blank Gate cell in the earlier copy is not interpreted."""
+    first = row.get("first_copy_in_the_tier")
+    published = row.get("date_when_first_in_the_tier")
+    copies = [r["t_public"] for r in row["readings"]]
+    if not first or not published or first not in copies or copies.index(first) == 0:
+        return {"previous_copy": None, "days_between": None, "settled": False}
+    previous = copies[copies.index(first) - 1]
+    return {
+        "previous_copy": previous,
+        "days_between": (date.fromisoformat(first) - date.fromisoformat(previous)).days,
+        "settled": date.fromisoformat(str(published)) < date.fromisoformat(previous),
+    }

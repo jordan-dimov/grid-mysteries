@@ -33,7 +33,7 @@ def mw(value: object) -> str:
         return "—"
     number = Decimal(str(value))
     whole = number.to_integral_value()
-    return f"{whole:,}" if number == whole else f"{number:,}"
+    return f"{whole:,}" if number == whole else f"{number.normalize():,}"
 
 
 def _table(header: list[str], rows: list[list[str]]) -> list[str]:
@@ -413,12 +413,663 @@ def _exhibit_reading(certificates: list[dict[str, Any]]) -> list[str]:
     ]
 
 
+# ------------------------------------------------------------ version 3
+# `DECLARATION-v3.md` (dd396986…) and its amendment 1 (35b74e13…): the same
+# method over two later copies, and one declared comparison. Every figure is
+# read from `evidence/v3/`; nothing is recomputed here.
+
+
+def signed(value: object) -> str:
+    """A difference as the page prints it: a sign, and no trailing zeros."""
+    number = Decimal(str(value))
+    if number == 0:
+        return "0"
+    return ("+" if number > 0 else "−") + mw(abs(number))
+
+
+def _side_by_side(
+    tables: list[list[dict[str, Any]]], label: str
+) -> list[tuple[Any, list[dict[str, Any] | None]]]:
+    """Grouped tables for several copies, one line per label: the labels of
+    the last copy in its order, then any the last copy lacks."""
+    order: list[Any] = [g[label] for g in tables[-1]]
+    for table in tables[:-1]:
+        order += [g[label] for g in table if g[label] not in order]
+    by = [{g[label]: g for g in table} for table in tables]
+    return [(key, [b.get(key) for b in by]) for key in order]
+
+
+def _pair_cells(entries: list[dict[str, Any] | None]) -> list[str]:
+    return [
+        cell for e in entries for cell in ((f"{e['rows']:,}", mw(e["mw"])) if e else ("0", "0"))
+    ]
+
+
+def _same(values: list[Any]) -> bool:
+    return all(v == values[0] for v in values)
+
+
+def _v3_readings_table(rows: list[dict[str, Any]], copies: list[str]) -> list[str]:
+    return _table(
+        ["Project", "MW"] + [day(c) for c in copies],
+        [
+            [r["project_name"], mw(r["mw"])]
+            + [
+                (
+                    f"{x['gate'] or 'blank'} / {x['effective_as_published']}"
+                    if x["found"]
+                    else "no matching row"
+                )
+                for x in r["readings"]
+            ]
+            for r in rows
+        ],
+    )
+
+
+def v3_section(v3: dict[str, Any]) -> list[str]:
+    ref, nxt = v3["copies"]
+    rc, nc = ref["census"], nxt["census"]
+    rg, ng = ref["gate"], nxt["gate"]
+    comp, n0, method = v3["comparison"], v3["n0"], v3["method_check"]
+    d1, d2 = comp["d1"], comp["d2"]
+    dates = [day(rc["as_of"]), day(nc["as_of"])]
+    short = [
+        f"{date.fromisoformat(c['as_of']).day} {date.fromisoformat(c['as_of']):%b}"
+        for c in (rc, nc)
+    ]
+    tiers = [
+        next(g for g in gate["g2_overdue_by_gate"] if g["gate"] == oq.CONFIRMED_TIER)
+        for gate in (rg, ng)
+    ]
+    g6 = [rg["g6_summary"], ng["g6_summary"]]
+    lines = [
+        f"## Two later copies: {dates[0]} and {dates[1]}",
+        "",
+        "*This section is version 3 of the declaration (`DECLARATION-v3.md`, SHA-256 "
+        f"`{v3['declaration_sha256']}`) and its amendment 1 "
+        f"(`{v3['amendment']['file']}`, SHA-256 `{v3['amendment']['sha256']}`), each frozen "
+        "and witnessed before any figure it governs was computed. Versions 1 and 2 above are "
+        "unchanged by it.*",
+        "",
+    ]
+    # The answer first.
+    counts = [
+        f"**{c['selected_rows']} entries carrying {mw(c['selected_mw'])} MW** on {d}"
+        f" ({c['distinct_project_ids']} distinct project ids, "
+        f"{mw(c['selected_mw_largest_per_id'])} MW)"
+        for c, d in zip((rc, nc), dates, strict=True)
+    ]
+    lines += [
+        "The same count, run on the copy NESO published on "
+        f"{dates[0]} and on the first copy it published on or after 29 September, finds "
+        f"{counts[0]} and {counts[1]} with an effective date earlier than that copy's own "
+        "date and a status other than “Built”.",
+        "",
+    ]
+    if _same([(t["rows"], Decimal(str(t["mw"])), t["rows_in_copy"]) for t in tiers]) and _same(
+        [
+            (
+                g["rows_if_those_rows_are_read_as_not_past"],
+                Decimal(str(g["mw_if_those_rows_are_read_as_not_past"])),
+            )
+            for g in g6
+        ]
+    ):
+        t, o = tiers[1], g6[1]
+        lines += [
+            f"**In the confirmed tier, {t['rows']} of its {t['rows_in_copy']} entries are past "
+            f"their confirmed date in both copies**, carrying {mw(t['mw'])} MW: "
+            f"{pct(t['row_share_of_its_gate'])} of the tier's entries and "
+            f"{pct(t['capacity_share_of_its_gate'])} of its capacity. Another copy of the "
+            f"register prints {o['rows_a_gated_copy_publishes_as_not_past']} of those dates as "
+            f"not yet past; on that reading it is {o['rows_if_those_rows_are_read_as_not_past']} "
+            f"entries and {mw(o['mw_if_those_rows_are_read_as_not_past'])} MW, in both copies. "
+            "Neither figure is quoted without the other.",
+            "",
+        ]
+    else:
+        for t, o, d in zip(tiers, g6, dates, strict=True):
+            lines += [
+                f"On {d}, **{t['rows']} of the confirmed tier's {t['rows_in_copy']} entries are "
+                f"past their confirmed date**, carrying {mw(t['mw'])} MW "
+                f"({pct(t['row_share_of_its_gate'])} of its entries, "
+                f"{pct(t['capacity_share_of_its_gate'])} of its capacity); on the other reading, "
+                f"{o['rows_if_those_rows_are_read_as_not_past']} entries and "
+                f"{mw(o['mw_if_those_rows_are_read_as_not_past'])} MW.",
+                "",
+            ]
+    classes = d2["classes"]
+    left = {k: v for k, v in classes.items() if k.startswith("reference only")}
+    joined = {k: v for k, v in classes.items() if k.startswith("next only")}
+    only_arrivals = set(joined) <= {"next only: (b) the date arrived"}
+    both = classes.get("in both", {"rows": 0})
+    summary = (
+        f"Between the two copies, {d1['days_between']} days apart, every one of the "
+        f"{rc['selected_rows']} entries on the first list is still on the second"
+        if not left
+        else f"Between the two copies, {d1['days_between']} days apart, {both['rows']} entries "
+        f"are on both lists and {sum(v['rows'] for v in left.values())} left"
+    )
+    arrivals = classes.get("next only: (b) the date arrived")
+    if joined:
+        summary += f", and {sum(v['rows'] for v in joined.values())} joined" + (
+            ", because the date it already carried arrived; none left."
+            if only_arrivals and not left and arrivals and arrivals["rows"] == 1
+            else (", each because the date it already carried arrived." if only_arrivals else ".")
+        )
+    else:
+        summary += "."
+    lines += [summary, ""]
+
+    # C10.
+    v1, v2 = method["version_1"], method["version_2"]
+    lines += [
+        "### The method was checked first",
+        "",
+        "Before either count, the code for this version was run on the captured copy of "
+        f"{day(method['copy']['t_public'])}, which has the same SHA-256 as the copy versions 1 "
+        f"and 2 read. It reproduced version 1's {v1['rows_line_for_line']['committed']} selected "
+        f"rows line for line and all {len(v1['totals_and_breakdowns'])} of its totals and "
+        f"breakdowns, and version 2's {v2['gate_rows_line_for_line']['committed']} confirmed-tier "
+        "rows with G1 to G6, to the penny (check C10, `evidence/v3/method-check.json`). "
+        + (
+            "It passed." if method["pass"] else "**It failed, so nothing below is published (F7).**"
+        ),
+        "",
+    ]
+
+    # The copies, R1′, R2′, N0 and amendment 1.
+    spell = n0["schema_report_entry"]["date_spellings"]
+    gaps = n0["selection"]["days_with_no_tec_record"]
+    lines += [
+        "### The copies",
+        "",
+        *_table(
+            [
+                "Copy",
+                "Published (CKAN last_modified)",
+                "NESO's filename",
+                "Captured",
+                "Rows",
+                "SHA-256",
+            ],
+            [
+                [
+                    d,
+                    c["copy"]["t_public_basis"]
+                    .split(";")[0]
+                    .removeprefix("CKAN resource last_modified "),
+                    f"`{c['copy']['filename']}`",
+                    c["copy"]["fetched_at"][:16].replace("T", " ") + " UTC",
+                    f"{c['rows_total']:,}",
+                    f"`{c['copy']['sha256'][:16]}…`",
+                ]
+                for c, d in zip((rc, nc), dates, strict=True)
+            ],
+        ),
+        "",
+        "Each copy's date is the day of its CKAN `last_modified`, as for every copy this "
+        "archive has pinned. The first is named by its digest in the declaration; the second is "
+        "the first copy the daily capture holds dated on or after 29 September. The capture runs "
+        "once a day, so a copy NESO published and replaced within a day would never be seen; "
+        + (
+            "the capture's manifests hold a record of the register for every day from 29 "
+            f"September to the day it fetched this one ({day(n0['selection']['captured_on'])}), "
+            "so no day was missed."
+            if not gaps
+            else "the manifests hold no record of the register on "
+            + ", ".join(day(g) for g in gaps)
+            + "."
+        ),
+        "",
+    ]
+    fs = [c["filename_sensitivity"] for c in (rc, nc)]
+    lines += [
+        "NESO's filename names the day before each copy's date ("
+        + " and ".join(day(f["filename_date"]) for f in fs if f["filename_date"])
+        + "). Read against the filename's date instead, "
+        + (
+            "no entry moves on either copy."
+            if all(f["rows"] == 0 for f in fs)
+            else "; ".join(
+                f"{f['rows']} entries ({mw(f['mw'])} MW) move on the copy of {day(f['as_of'])}"
+                for f in fs
+            )
+            + "."
+        ),
+        "",
+        "**The second copy spells its dates differently.** Every one of its "
+        f"{spell['iso-dash']:,} dated cells is written `YYYY-MM-DD`, where the copy of "
+        f"{dates[0]} and every earlier captured copy write `DD/MM/YYYY`. The declaration's "
+        "schema check (N0) required the old spelling, so it stopped the run before anything "
+        "about that copy was computed (`evidence/v3/n0.json`). Amendment 1 was then written from "
+        "the schema report alone, approved and witnessed: the new spelling is read year, month, "
+        "day, which is how the register's earlier ISO copies (22 and 25 August 2026, read by "
+        "version 2) were read; and the day-month swap test the series uses for exactly this "
+        "case was run first between the two copies. "
+        f"It found {v3['swap_test']['disagreements']} dates that differ between them among "
+        f"entries it could match, {v3['swap_test']['swap_explained']} of them explained by "
+        "exchanging day and month, so it did not flag the copy (F11 did not fire). A change of "
+        "spelling alone never moves an entry in the comparison below, which compares dates, not "
+        "the way they are written. The copy also prints capacities with two decimals "
+        "(`540.00`); they are the same numbers.",
+        "",
+    ]
+
+    # D1.
+    rows_d1 = [
+        ("Entries past their date, not “Built”", "selected_rows", False),
+        ("Their capacity, MW", "selected_mw", True),
+        ("Distinct project ids among them", "distinct_project_ids", False),
+        ("Capacity counting each id once, MW", "selected_mw_largest_per_id", True),
+        ("Confirmed-tier entries past their date", "gate2_overdue_rows", False),
+        ("Their capacity, MW", "gate2_overdue_mw", True),
+        ("Entries dated on or after the copy's date", "rows_dated_on_or_after_as_of", False),
+        ("Their capacity, MW", "mw_dated_on_or_after_as_of", True),
+        ("Of those, capacity at “Scoping”, MW", "mw_scoping_dated_on_or_after_as_of", True),
+    ]
+    diff = d1["difference_next_minus_reference"]
+    lines += [
+        "### Side by side",
+        "",
+        "The calendar alone moves entries into the count as their dates arrive, so every "
+        f"difference is read with both dates: {dates[0]} and {dates[1]}, "
+        f"{d1['days_between']} days apart.",
+        "",
+        *_table(
+            ["", short[0], short[1], "Difference"],
+            [
+                [
+                    label,
+                    mw(d1["reference"][key]) if is_mw else f"{d1['reference'][key]:,}",
+                    mw(d1["next"][key]) if is_mw else f"{d1['next'][key]:,}",
+                    signed(diff[key]),
+                ]
+                for label, key, is_mw in rows_d1
+            ],
+        ),
+        "",
+    ]
+
+    # D2.
+    def row_of(t: dict[str, Any]) -> dict[str, Any]:
+        return t["next"] or t["reference"]
+
+    lines += [
+        "### Entry by entry",
+        "",
+        "Every entry on either list, matched by its project id and stage:",
+        "",
+        *_table(
+            ["Class", "Entries", f"MW, {short[0]}", f"MW, {short[1]}"],
+            [
+                [k[0].upper() + k[1:], f"{v['rows']:,}", mw(v["mw_reference"]), mw(v["mw_next"])]
+                for k, v in classes.items()
+            ],
+        ),
+        "",
+    ]
+    listed = [t for k, v in classes.items() if k != "in both" for t in v["members"]]
+    if listed:
+        lines += [
+            *_table(
+                [
+                    "Class",
+                    "Project",
+                    "Connection site",
+                    "Stage",
+                    "Status",
+                    "MW",
+                    "Date",
+                    f"Date on {short[0]}",
+                ],
+                [
+                    [
+                        t["klass"][0].upper() + t["klass"][1:],
+                        row_of(t)["project_name"],
+                        row_of(t)["connection_site"],
+                        row_of(t)["stage"] or "—",
+                        row_of(t)["status"],
+                        mw(row_of(t)["mw"]),
+                        str(row_of(t)["effective"]),
+                        t["other_effective"] or "—",
+                    ]
+                    for t in listed
+                ],
+            ),
+            "",
+        ]
+    amb = d2["ambiguous"]["keys"]
+    lines += [
+        (
+            "No project id and stage is on more than one row of either copy, so every entry is "
+            "classed."
+            if not amb
+            else f"{len(amb)} project id and stage pairs are on more than one row "
+            "and are in no class: " + ", ".join(f"`{k}`" for k in amb) + "."
+        )
+        + " The classes add up to each copy's own totals (check C11). An entry whose date "
+        "arrived is not late for having arrived, and an entry that leaves has not been "
+        "delivered for leaving; the register prints what changed, not why.",
+        "",
+    ]
+
+    # Version 1's breakdowns, side by side.
+    lines += ["### The breakdowns, side by side", ""]
+    for title, key, label, fmt in (
+        ("By status, as the register prints it", "by_status", "status", str),
+        ("By plant type, as the register prints it", "by_plant_type", "plant_type", str),
+        ("By the year the date fell in", "by_year", "year", str),
+    ):
+        lines += [
+            f"#### {title}",
+            "",
+            *_table(
+                [
+                    title.split(",")[0].removeprefix("By ").capitalize(),
+                    f"Entries, {short[0]}",
+                    f"MW, {short[0]}",
+                    f"Entries, {short[1]}",
+                    f"MW, {short[1]}",
+                ],
+                [
+                    [fmt(k) or "(blank)", *_pair_cells(entries)]
+                    for k, entries in _side_by_side([rc[key], nc[key]], label)
+                ],
+            ),
+            "",
+        ]
+    earliest = [
+        [(r["project_name"], r["effective"], mw(r["mw"])) for r in c["earliest"]] for c in (rc, nc)
+    ]
+    lines += ["#### The earliest dates on the list", ""]
+    shown: list[tuple[str | None, dict[str, Any]]]
+    if earliest[0] == earliest[1]:
+        lines += ["The same ten entries head both lists:", ""]
+        shown = [(None, nc)]
+    else:
+        shown = [(when, copy_) for when, copy_ in zip(dates, (rc, nc), strict=True)]
+    for when, copy_ in shown:
+        if when:
+            lines += [f"On {when}:", ""]
+        lines += [
+            *_table(
+                ["Effective from", *[label for _key, label in ROW_COLUMNS], "MW"],
+                [[str(r["effective"]), *_row_cells(r), mw(r["mw"])] for r in copy_["earliest"]],
+            ),
+            "",
+        ]
+    lines += [
+        " ".join(
+            f"On {d}, {c['selected_rows_zero_capacity']} of the {c['selected_rows']} carry 0 MW, "
+            f"{len(c['repeated_project_ids'])} project ids appear on more than one entry, and "
+            f"{c['swap_sensitivity']['rows_with_a_swapped_reading']} dates could be read with day "
+            f"and month exchanged, {c['swap_sensitivity']['rows_swapped_reading_not_past']} of "
+            f"them ({mw(c['swap_sensitivity']['mw_swapped_reading_not_past'])} MW) would then not "
+            "be past."
+            for c, d in zip((rc, nc), dates, strict=True)
+        )
+        + " In a copy that spells dates `YYYY-MM-DD` the other reading would be `YYYY-DD-MM`, "
+        "which is not a spelling the register has used; the figure is given in the same form "
+        "for both copies, as declared.",
+        "",
+    ]
+
+    # Version 2's cross-tab, side by side.
+    lines += [
+        "### The confirmed tier in each copy",
+        "",
+        *_table(
+            [
+                "Gate cell",
+                f"Entries, {short[0]}",
+                f"MW, {short[0]}",
+                f"Entries, {short[1]}",
+                f"MW, {short[1]}",
+            ],
+            [
+                [gate_label(entries[-1] or entries[0] or {"gate": k}), *_pair_cells(entries)]
+                for k, entries in _side_by_side(
+                    [rg["g1_copy_by_gate"], ng["g1_copy_by_gate"]], "gate"
+                )
+            ],
+        ),
+        "",
+        "The entries past their date, by Gate cell, with each Gate's two shares of its own "
+        "total (row share first, capacity share beside it):",
+        "",
+        *_table(
+            ["Gate cell"]
+            + [
+                f"{h}, {s}" for s in short for h in ("Entries", "MW", "Row share", "Capacity share")
+            ],
+            [
+                [gate_label(entries[-1] or entries[0] or {"gate": k})]
+                + [
+                    cell
+                    for e in entries
+                    for cell in (
+                        (
+                            f"{e['rows']:,}",
+                            mw(e["mw"]),
+                            pct(e["row_share_of_its_gate"]),
+                            pct(e["capacity_share_of_its_gate"]),
+                        )
+                        if e
+                        else ("0", "0", "—", "—")
+                    )
+                ]
+                for k, entries in _side_by_side(
+                    [rg["g2_overdue_by_gate"], ng["g2_overdue_by_gate"]], "gate"
+                )
+            ],
+        ),
+        "",
+        *_table(
+            [
+                "Gate cell",
+                "Status as printed",
+                f"Entries, {short[0]}",
+                f"MW, {short[0]}",
+                f"Entries, {short[1]}",
+                f"MW, {short[1]}",
+            ],
+            [
+                [
+                    gate_label({"gate": k[0], "tier": oq.tier_of(k[0])}),
+                    k[1] or "(blank)",
+                    *_pair_cells(entries),
+                ]
+                for k, entries in _side_by_side(
+                    [
+                        [
+                            {**c, "key": (c["gate"], c["status"])}
+                            for c in g["g3_overdue_by_gate_and_status"]
+                        ]
+                        for g in (rg, ng)
+                    ],
+                    "key",
+                )
+            ],
+        ),
+        "",
+    ]
+    names = [
+        sorted(
+            (r["project_name"], r["effective"], Decimal(str(r["mw"])))
+            for r in g["g4_confirmed_tier_overdue"]
+        )
+        for g in (rg, ng)
+    ]
+    lines += [
+        (
+            "The same entries are in the confirmed tier and past their date in both copies:"
+            if names[0] == names[1]
+            else f"The confirmed-tier entries past their date on {dates[1]}:"
+        ),
+        "",
+        *_gate_rows_table(ng["g4_confirmed_tier_overdue"]),
+        "",
+    ]
+    reps = [g["g5_repetition"] for g in (rg, ng)]
+    lines += [
+        (
+            "No two of them share a project id or a project name in either copy."
+            if not any(r["sharing_a_project_id"] or r["sharing_a_project_name"] for r in reps)
+            else "Some share a project id or name; both readings are in `gate.json` for each copy."
+        ),
+        "",
+    ]
+
+    # G6′.
+    gated = ng["g6_gated_copies"]
+    confirmed = ng["g4_confirmed_tier_overdue"]
+    settled = [(r, oq.settles_entry_into_the_tier(r)) for r in confirmed]
+    open_ = [(r, s) for r, s in settled if not s["settled"]]
+    late = [
+        r for r in confirmed if (r["first_copy_in_the_tier"] or "") > method["copy"]["t_public"]
+    ]
+    lines += [
+        f"### What the {len(gated)} copies with a Gate column show",
+        "",
+        "Gate cell and date as each copy prints it, for every entry above, in each copy's own "
+        "spelling of the date.",
+        "",
+        *_v3_readings_table(confirmed, gated),
+        "",
+        f"All {g6[1]['rows']} were already past their date in the first of these copies whose "
+        "Gate cell reads `2`. "
+        f"For {len(settled) - len(open_)} of them the date had already passed in the last copy "
+        "held before that one, so in the copies held they entered the tier already behind "
+        "their date. "
+        + (
+            f"For the other {len(open_)} ("
+            + ", ".join(r["project_name"] for r, _s in open_)
+            + f"; {mw(sum((Decimal(str(r['mw'])) for r, _s in open_), Decimal(0)))} MW) the date "
+            "fell between the last copy held before and the first that reads `2`, a stretch of "
+            + " and ".join(
+                sorted({f"{s['days_between']} days" for _r, s in open_ if s["days_between"]})
+            )
+            + " with no copy held, so these copies do not settle when they entered the tier. "
+            if open_
+            else ""
+        )
+        + "A blank Gate cell in an earlier copy is not interpreted."
+        + (
+            " "
+            + "; ".join(
+                f"{r['project_name']} first reads `2` in the copy of "
+                f"{day(r['first_copy_in_the_tier'])}, after version 2's count"
+                for r in late
+            )
+            + "."
+            if late
+            else ""
+        ),
+        "",
+    ]
+    contested = [r for r in confirmed if r["dates_across_gated_copies_not_past"]]
+    if contested:
+        lines += [
+            "The two readings of the tier's figure come from these entries, which some copy "
+            "prints with a date that is not past:",
+            "",
+            *_table(
+                [
+                    "Project",
+                    "MW",
+                    f"Date on {short[1]}",
+                    "Another copy",
+                    "Which kind of difference",
+                ],
+                [
+                    [
+                        r["project_name"],
+                        mw(r["mw"]),
+                        str(r["effective"]),
+                        ", ".join(str(d) for d in r["dates_across_gated_copies_not_past"]),
+                        (
+                            "the same digits with day and month exchanged"
+                            if r["a_not_past_date_is_the_day_month_swap"]
+                            else "the register moved the date"
+                        ),
+                    ]
+                    for r in contested
+                ],
+            ),
+            "",
+        ]
+
+    # Falsifiers, and what this version never claims.
+    fired = sorted({f for c in (rc, nc) for f in c["falsifiers_fired"]})
+    if d2_fired := [k for k, hit in comp["falsifiers"].items() if hit]:
+        fired += d2_fired
+    lines += [
+        "### What this version never claims",
+        "",
+        "- That any difference between the two copies was caused by the announcement of 29 "
+        "September, by any policy, by NESO's connections reform or by the queue fee. The copies "
+        "are days apart, and the register records dates and statuses, not reasons.",
+        "- That an entry whose date arrived is late, or that an entry leaving the list was "
+        "delivered.",
+        "- That either count measures the queue's health. Each measures what one copy of the "
+        "register printed on its own date.",
+        "",
+        "**Falsifiers declared before the run.** "
+        + ("None fired" if not fired else "Fired: " + "; ".join(fired))
+        + ", on either copy or in the comparison (F1 to F11, including the filename reading, "
+        "unmatched entries and the swap test).",
+        "",
+        "### Expert corner for version 3",
+        "",
+        f"- Declaration `investigations/017-the-overdue-queue/DECLARATION-v3.md`, SHA-256 "
+        f"`{v3['declaration_sha256']}`; amendment "
+        f"`investigations/017-the-overdue-queue/{v3['amendment']['file']}`, SHA-256 "
+        f"`{v3['amendment']['sha256']}`; both witnessed by OpenTimestamps and RFC 3161 tokens "
+        "from freetsa.org and DigiCert and committed with their proofs.",
+        "- Copies read from the local mirror of the daily capture after each digest was checked "
+        "against the committed manifest that recorded it: "
+        + "; ".join(
+            f"{d}, `{c['copy']['key']}` (manifest `{c['copy']['manifest']}`, SHA-256 "
+            f"`{c['copy']['manifest_sha256']}`)"
+            for c, d in zip((rc, nc), dates, strict=True)
+        )
+        + ".",
+        "- Capture schema report (`archives/tec-register-capture/`) the censuses were checked "
+        f"against: `{rc['capture_schema_report_sha256']}` for {dates[0]}, "
+        f"`{nc['capture_schema_report_sha256']}` for {dates[1]} (regenerated with that copy in "
+        "it, N0).",
+        "- Evidence: `evidence/v3/method-check.json` (C10), "
+        + ", ".join(f"`evidence/v3/{c['as_of']}/`" for c in (rc, nc))
+        + " (`census.json`, `rows.ndjson`, `gate.json`, `gate-rows.ndjson`, append-only), "
+        "`evidence/v3/n0.json`, `evidence/v3/a2-swap-test.json`, `evidence/v3/comparison.json`.",
+        "- Checks that had to pass on each copy: "
+        + "; ".join(sorted(nc["checks"]))
+        + "; and in the comparison: "
+        + "; ".join(sorted(comp["checks"]))
+        + ".",
+        "",
+        "```",
+        "uv run --group registers python investigations/017-the-overdue-queue/run.py \\",
+        f"    --version 3 --seal {v3['declaration_sha256'][:12]} \\",
+        f"    --amendment-seal {v3['amendment']['sha256'][:12]} --phase check --copy next",
+        "```",
+        "",
+        "recomputes the second copy's census and fails if a committed row would change; "
+        "`--copy reference` does the first, and `--phase method-check` reruns C10.",
+        "",
+    ]
+    return lines
+
+
 def render_findings(
     census: dict[str, Any],
     rows: list[dict[str, Any]],
     certificates: list[dict[str, Any]],
     gate: dict[str, Any] | None = None,
     corrections: list[dict[str, Any]] | None = None,
+    v3: dict[str, Any] | None = None,
 ) -> str:
     """The findings page. `rows` is the append-only evidence of selected rows;
     it is not re-derived here, only counted, so the page can never disagree
@@ -443,6 +1094,7 @@ def render_findings(
         "",
         *_census_section(census),
         *(_gate_section(gate, census) if gate else []),
+        *(v3_section(v3) if v3 else []),
         *_certificate_section(certificates),
         *_limits_section(census),
         "## Expert corner",
@@ -1435,12 +2087,63 @@ def page_lead(census: dict[str, Any], gate: dict[str, Any]) -> list[str]:
     ]
 
 
+def v3_page_paragraph(v3: dict[str, Any], base: str) -> str:
+    """The page's line on version 3, in place of the promise that it would be
+    run: the two later copies' confirmed-tier figure with its other reading,
+    and what changed between them, all read from the evidence."""
+    ref, nxt = (c["census"] for c in v3["copies"])
+    tiers = [
+        next(g for g in c["gate"]["g2_overdue_by_gate"] if g["gate"] == oq.CONFIRMED_TIER)
+        for c in v3["copies"]
+    ]
+    others = [
+        c["gate"]["g6_summary"]["rows_if_those_rows_are_read_as_not_past"] for c in v3["copies"]
+    ]
+    d2 = v3["comparison"]["d2"]["classes"]
+    left = sum(v["rows"] for k, v in d2.items() if k.startswith("reference only"))
+    arrived = d2.get("next only: (b) the date arrived", {"rows": 0})["rows"]
+    joined = sum(v["rows"] for k, v in d2.items() if k.startswith("next only"))
+    t = tiers[1]
+    if _same([(x["rows"], x["rows_in_copy"]) for x in tiers]) and _same(others):
+        tier = (
+            f"In both, {t['rows']} of the confirmed tier's {t['rows_in_copy']} entries are past "
+            f"their date ({pct(t['row_share_of_its_gate'])} of its entries, "
+            f"{pct(t['capacity_share_of_its_gate'])} of its capacity; {others[1]} on the other "
+            "reading)"
+        )
+    else:
+        tier = "; ".join(
+            f"on {day(c['as_of'])}, {x['rows']} of the confirmed tier's {x['rows_in_copy']} "
+            f"entries are past their date ({o} on the other reading)"
+            for c, x, o in zip((ref, nxt), tiers, others, strict=True)
+        ).capitalize()
+    change = (
+        f"across the register the list went from {ref['selected_rows']} to "
+        f"{nxt['selected_rows']} entries"
+        + (
+            ", only because " + ("one date" if arrived == 1 else f"{arrived} dates") + " arrived"
+            if joined == arrived and not left and arrived
+            else f" ({joined} joined, {left} left)"
+        )
+    )
+    name, sha = "DECLARATION-v3.md", v3["declaration_sha256"]
+    return (
+        '<p class="forward"><strong>Two later copies, counted the same way.</strong> The method '
+        f'was sealed in <a href="{escape(base)}/{escape(name)}">{escape(name)}</a> '
+        f"(SHA-256 <code>{escape(sha[:16])}…</code>) and its amendment before the copies NESO "
+        f"published on {escape(day(ref['as_of']))} and {escape(day(nxt['as_of']))} were counted. "
+        f"{escape(tier)}, and {escape(change)}. The section “Two later copies” below has both "
+        "counts and the comparison.</p>"
+    )
+
+
 def render_page(
     findings: str,
     census: dict[str, Any],
     gate: dict[str, Any],
     *,
     next_declaration: tuple[str, str] | None = None,
+    v3: dict[str, Any] | None = None,
     repo_url: str = "https://github.com/jordan-dimov/grid-mysteries",
     credibility: str = "",
     contact_email: str = "",
@@ -1454,7 +2157,9 @@ def render_page(
     body = findings.split("\n", 1)[1] if findings.startswith("# ") else findings
     base = f"{repo_url}/blob/main/{PAGE_INVESTIGATION}"
     forward = ""
-    if next_declaration:
+    if v3:
+        forward = v3_page_paragraph(v3, base)
+    elif next_declaration:
         name, sha = next_declaration
         forward = (
             '<p class="forward"><strong>The next copy is already declared.</strong> '

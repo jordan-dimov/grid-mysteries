@@ -892,3 +892,81 @@ def test_amendment_1_a_change_of_spelling_alone_never_moves_a_row_in_d2():
         "in both": 1,
         "next only: (b) the date arrived": 1,
     }
+
+
+def test_r12_settles_an_entry_only_when_its_date_had_passed_in_the_copy_before():
+    """R12, as the correction of 2026-09-24 reads it: on version 2's committed
+    Gate rows it separates the same 10 settled and 7 unsettled entries."""
+    import json
+    from pathlib import Path
+
+    here = Path(__file__).parents[1] / "investigations/017-the-overdue-queue/evidence"
+    rows = [json.loads(x) for x in (here / "gate-rows.ndjson").read_text().splitlines() if x]
+    unsettled = sorted(
+        r["project_name"] for r in rows if not oq.settles_entry_into_the_tier(r)["settled"]
+    )
+    assert unsettled == sorted(
+        [
+            "Whitelaw Brae Windfarm",
+            "Persley Croft BESS",
+            "Holmston Farm Battery Energy Storage System",
+            "Lovat Estate BESS",
+            "Windy Standard III Wind Farm",
+            "Balbougie Energy Centre",
+            "Whitelaw Brae BESS",
+        ]
+    )
+    assert len(rows) - len(unsettled) == 10
+    first = {"t_public": "2026-08-22"}
+    lone = {
+        "first_copy_in_the_tier": "2026-08-22",
+        "date_when_first_in_the_tier": "2026-01-01",
+        "readings": [first],
+    }
+    assert oq.settles_entry_into_the_tier(lone) == {
+        "previous_copy": None,
+        "days_between": None,
+        "settled": False,
+    }
+
+
+def _v3_committed() -> dict[str, Any]:
+    import json
+    from pathlib import Path
+
+    v3 = Path(__file__).parents[1] / "investigations/017-the-overdue-queue/evidence/v3"
+    comparison = json.loads((v3 / "comparison.json").read_text())
+    return {
+        "declaration_sha256": comparison["declaration_sha256"],
+        "amendment": comparison["amendment"],
+        "method_check": json.loads((v3 / "method-check.json").read_text()),
+        "n0": json.loads((v3 / "n0.json").read_text()),
+        "swap_test": json.loads((v3 / "a2-swap-test.json").read_text()),
+        "comparison": comparison,
+        "copies": [
+            {
+                "census": json.loads((v3 / comparison[w]["t_public"] / "census.json").read_text()),
+                "gate": json.loads((v3 / comparison[w]["t_public"] / "gate.json").read_text()),
+            }
+            for w in ("reference", "next")
+        ],
+    }
+
+
+def test_the_version_3_section_prints_both_counts_both_readings_and_the_iso_sentence():
+    """Version 3's FINDINGS section and page line, from the committed evidence:
+    both censuses, the tier's two shares and its other reading, the unsettled
+    entries of R12, and amendment 1's A3 sentence on the ISO spelling."""
+    v3 = _v3_committed()
+    text = "\n".join(page.v3_section(v3))
+    assert "**94 entries carrying 11,854.86 MW**" in text
+    assert "**95 entries carrying 11,940.36 MW**" in text
+    assert "17.5% of the tier's entries and 17.7% of its capacity" in text
+    assert "on that reading it is 16 entries and 2,010.92 MW" in text
+    assert "For the other 7 (" in text and "293.3 MW" in text
+    assert "the other reading would be `YYYY-DD-MM`" in text
+    assert "caused" in text and "announcement of 29 September" in text
+    assert not any(line.startswith("**In every one of the 17 cases") for line in text.split("\n"))
+    html = page.v3_page_paragraph(v3, "https://example.org")
+    assert "18 of the confirmed tier&#x27;s 103 entries" in html
+    assert "from 94 to 95 entries, only because one date arrived" in html

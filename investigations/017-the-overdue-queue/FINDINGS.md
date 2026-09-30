@@ -189,6 +189,233 @@ The census rule reads each copy as it is spelled and does not apply the day-mont
 
 **What this section does not say.** That any of these projects has failed to deliver, or will. The register records a tier and a date; it does not record delivery, and nothing is inferred about it here. Nor is anything said about whether NESO's assessment was right — that is not a question this evidence can reach.
 
+## Two later copies: 25 September 2026 and 29 September 2026
+
+*This section is version 3 of the declaration (`DECLARATION-v3.md`, SHA-256 `dd396986922a16041766de865bcf9d145583dcecdd9b6fb438114b8eb34f262f`) and its amendment 1 (`DECLARATION-v3-amendment-1.md`, SHA-256 `35b74e13301a0a1c60d61ad9d8ade65387252bfd4aed1a94153c6fc573e4f419`), each frozen and witnessed before any figure it governs was computed. Versions 1 and 2 above are unchanged by it.*
+
+The same count, run on the copy NESO published on 25 September 2026 and on the first copy it published on or after 29 September, finds **94 entries carrying 11,854.86 MW** on 25 September 2026 (92 distinct project ids, 11,804.86 MW) and **95 entries carrying 11,940.36 MW** on 29 September 2026 (93 distinct project ids, 11,890.36 MW) with an effective date earlier than that copy's own date and a status other than “Built”.
+
+**In the confirmed tier, 18 of its 103 entries are past their confirmed date in both copies**, carrying 2,560.92 MW: 17.5% of the tier's entries and 17.7% of its capacity. Another copy of the register prints 2 of those dates as not yet past; on that reading it is 16 entries and 2,010.92 MW, in both copies. Neither figure is quoted without the other.
+
+Between the two copies, 4 days apart, every one of the 94 entries on the first list is still on the second, and 1 joined, because the date it already carried arrived; none left.
+
+### The method was checked first
+
+Before either count, the code for this version was run on the captured copy of 15 September 2026, which has the same SHA-256 as the copy versions 1 and 2 read. It reproduced version 1's 98 selected rows line for line and all 25 of its totals and breakdowns, and version 2's 17 confirmed-tier rows with G1 to G6, to the penny (check C10, `evidence/v3/method-check.json`). It passed.
+
+### The copies
+
+| Copy | Published (CKAN last_modified) | NESO's filename | Captured | Rows | SHA-256 |
+|---|---|---|---|---|---|
+| 25 September 2026 | 2026-09-25T09:06:59.612526 | `tec-register-24-september-2026.csv` | 2026-09-26 06:31 UTC | 2,200 | `da0b67b5ea34a856…` |
+| 29 September 2026 | 2026-09-29T12:18:57.526163 | `tec-register-28-september-2026.csv` | 2026-09-30 06:31 UTC | 2,199 | `d1ccd9e210b4f6bc…` |
+
+Each copy's date is the day of its CKAN `last_modified`, as for every copy this archive has pinned. The first is named by its digest in the declaration; the second is the first copy the daily capture holds dated on or after 29 September. The capture runs once a day, so a copy NESO published and replaced within a day would never be seen; the capture's manifests hold a record of the register for every day from 29 September to the day it fetched this one (30 September 2026), so no day was missed.
+
+NESO's filename names the day before each copy's date (24 September 2026 and 28 September 2026). Read against the filename's date instead, no entry moves on either copy.
+
+**The second copy spells its dates differently.** Every one of its 1,834 dated cells is written `YYYY-MM-DD`, where the copy of 25 September 2026 and every earlier captured copy write `DD/MM/YYYY`. The declaration's schema check (N0) required the old spelling, so it stopped the run before anything about that copy was computed (`evidence/v3/n0.json`). Amendment 1 was then written from the schema report alone, approved and witnessed: the new spelling is read year, month, day, which is how the register's earlier ISO copies (22 and 25 August 2026, read by version 2) were read; and the day-month swap test the series uses for exactly this case was run first between the two copies. It found 0 dates that differ between them among entries it could match, 0 of them explained by exchanging day and month, so it did not flag the copy (F11 did not fire). A change of spelling alone never moves an entry in the comparison below, which compares dates, not the way they are written. The copy also prints capacities with two decimals (`540.00`); they are the same numbers.
+
+### Side by side
+
+The calendar alone moves entries into the count as their dates arrive, so every difference is read with both dates: 25 September 2026 and 29 September 2026, 4 days apart.
+
+|  | 25 Sep | 29 Sep | Difference |
+|---|---|---|---|
+| Entries past their date, not “Built” | 94 | 95 | +1 |
+| Their capacity, MW | 11,854.86 | 11,940.36 | +85.5 |
+| Distinct project ids among them | 92 | 93 | +1 |
+| Capacity counting each id once, MW | 11,804.86 | 11,890.36 | +85.5 |
+| Confirmed-tier entries past their date | 18 | 18 | 0 |
+| Their capacity, MW | 2,560.92 | 2,560.92 | 0 |
+| Entries dated on or after the copy's date | 1,737 | 1,735 | −2 |
+| Their capacity, MW | 585,159.24 | 584,983.74 | −175.5 |
+| Of those, capacity at “Scoping”, MW | 483,416.62 | 483,326.62 | −90 |
+
+### Entry by entry
+
+Every entry on either list, matched by its project id and stage:
+
+| Class | Entries | MW, 25 Sep | MW, 29 Sep |
+|---|---|---|---|
+| In both | 94 | 11,854.86 | 11,854.86 |
+| Next only: (b) the date arrived | 1 | 0 | 85.5 |
+
+| Class | Project | Connection site | Stage | Status | MW | Date | Date on 25 Sep |
+|---|---|---|---|---|---|---|---|
+| Next only: (b) the date arrived | Sizing John (Rainhill) | Rainhill GSP | 2.00 | Consents Approved | 85.5 | 2026-09-25 | 2026-09-25 |
+
+No project id and stage is on more than one row of either copy, so every entry is classed. The classes add up to each copy's own totals (check C11). An entry whose date arrived is not late for having arrived, and an entry that leaves has not been delivered for leaving; the register prints what changed, not why.
+
+### The breakdowns, side by side
+
+#### By status, as the register prints it
+
+| Status | Entries, 25 Sep | MW, 25 Sep | Entries, 29 Sep | MW, 29 Sep |
+|---|---|---|---|---|
+| Consents Approved | 43 | 6,114.49 | 44 | 6,199.99 |
+| Under Construction/Commissioning | 19 | 3,681.42 | 19 | 3,681.42 |
+| Scoping | 25 | 1,641.7 | 25 | 1,641.7 |
+| Awaiting Consents | 7 | 417.25 | 7 | 417.25 |
+
+#### By plant type, as the register prints it
+
+| Plant type | Entries, 25 Sep | MW, 25 Sep | Entries, 29 Sep | MW, 29 Sep |
+|---|---|---|---|---|
+| Wind Offshore | 5 | 4,800 | 5 | 4,800 |
+| Energy Storage System | 42 | 3,649.95 | 43 | 3,735.45 |
+| Energy Storage System;PV Array (Photo Voltaic/solar) | 20 | 958.12 | 20 | 958.12 |
+| OCGT (Open Cycle Gas Turbine) | 3 | 897 | 3 | 897 |
+| Wind Onshore | 10 | 555.79 | 10 | 555.79 |
+| CCGT (Combined Cycle Gas Turbine) | 1 | 380 | 1 | 380 |
+| Energy Storage System;Gas Reciprocating | 1 | 375 | 1 | 375 |
+| Biomass | 1 | 150 | 1 | 150 |
+| Thermal | 1 | 57 | 1 | 57 |
+| Demand;PV Array (Photo Voltaic/solar) | 1 | 20 | 1 | 20 |
+| Energy Storage System;Reactive Compensation | 4 | 12 | 4 | 12 |
+| Reactive Compensation | 5 | 0 | 5 | 0 |
+
+#### By the year the date fell in
+
+| The year the date fell in | Entries, 25 Sep | MW, 25 Sep | Entries, 29 Sep | MW, 29 Sep |
+|---|---|---|---|---|
+| 2020 | 1 | 380 | 1 | 380 |
+| 2022 | 2 | 75 | 2 | 75 |
+| 2023 | 6 | 336.6 | 6 | 336.6 |
+| 2024 | 15 | 1,223.3 | 15 | 1,223.3 |
+| 2025 | 37 | 4,685.37 | 37 | 4,685.37 |
+| 2026 | 33 | 5,154.59 | 34 | 5,240.09 |
+
+#### The earliest dates on the list
+
+The same ten entries head both lists:
+
+| Effective from | Project | Connection site | Stage | Plant type | Status | MW |
+|---|---|---|---|---|---|---|
+| 2020-10-01 | Powersite @ Drakelow | Drakelow 400kV Substation | — | CCGT (Combined Cycle Gas Turbine) | Under Construction/Commissioning | 380 |
+| 2022-02-21 | Arbroath Battery Substation | Arbroath GSP | — | Energy Storage System | Consents Approved | 35 |
+| 2022-02-21 | Coupar Angus Battery | Coupar Angus 132/33kV GSP | — | Energy Storage System | Consents Approved | 40 |
+| 2023-01-12 | Dollymans Storage | Rayleigh Main 132kV Substation | — | Energy Storage System | Scoping | 99.8 |
+| 2023-05-31 | Cuxton 49.5MW BESS | Kingsnorth 400kV Substation | — | Energy Storage System | Consents Approved | 49.5 |
+| 2023-08-02 | Pines Burn Wind Farm | Hawick GSP | — | Wind Onshore | Consents Approved | 50 |
+| 2023-08-15 | Newtonwood BESS | Chesterfield GSP | — | Energy Storage System | Under Construction/Commissioning | 49.9 |
+| 2023-10-31 | Dorenell Battery | Dorenell BESS 132KV substation | — | Wind Onshore | Scoping | 37.5 |
+| 2023-11-01 | Seabank (Tertiary) | SEABANK 400/33kV SUBSTATION | — | Energy Storage System | Awaiting Consents | 49.9 |
+| 2024-02-23 | Dalmarnock Road BESS | DALMARNOCK 132/33KV SUBSTATION | — | Energy Storage System | Under Construction/Commissioning | 40 |
+
+On 25 September 2026, 8 of the 94 carry 0 MW, 2 project ids appear on more than one entry, and 18 dates could be read with day and month exchanged, 2 of them (500 MW) would then not be past. On 29 September 2026, 8 of the 95 carry 0 MW, 2 project ids appear on more than one entry, and 18 dates could be read with day and month exchanged, 2 of them (500 MW) would then not be past. In a copy that spells dates `YYYY-MM-DD` the other reading would be `YYYY-DD-MM`, which is not a spelling the register has used; the figure is given in the same form for both copies, as declared.
+
+### The confirmed tier in each copy
+
+| Gate cell | Entries, 25 Sep | MW, 25 Sep | Entries, 29 Sep | MW, 29 Sep |
+|---|---|---|---|---|
+| (blank) | 1,329 | 308,590.38 | 1,327 | 308,440.38 |
+| `1` (Gate 1) | 768 | 274,242.57 | 769 | 274,302.57 |
+| `2` (Gate 2) | 103 | 14,497.95 | 103 | 14,497.95 |
+
+The entries past their date, by Gate cell, with each Gate's two shares of its own total (row share first, capacity share beside it):
+
+| Gate cell | Entries, 25 Sep | MW, 25 Sep | Row share, 25 Sep | Capacity share, 25 Sep | Entries, 29 Sep | MW, 29 Sep | Row share, 29 Sep | Capacity share, 29 Sep |
+|---|---|---|---|---|---|---|---|---|
+| (blank) | 68 | 8,887.64 | 5.1% | 2.9% | 69 | 8,973.14 | 5.2% | 2.9% |
+| `2` (Gate 2) | 18 | 2,560.92 | 17.5% | 17.7% | 18 | 2,560.92 | 17.5% | 17.7% |
+| `1` (Gate 1) | 8 | 406.3 | 1.0% | 0.2% | 8 | 406.3 | 1.0% | 0.2% |
+
+| Gate cell | Status as printed | Entries, 25 Sep | MW, 25 Sep | Entries, 29 Sep | MW, 29 Sep |
+|---|---|---|---|---|---|
+| (blank) | Consents Approved | 36 | 5,784.09 | 37 | 5,869.59 |
+| (blank) | Scoping | 20 | 1,441.3 | 20 | 1,441.3 |
+| (blank) | Under Construction/Commissioning | 7 | 1,414.9 | 7 | 1,414.9 |
+| (blank) | Awaiting Consents | 5 | 247.35 | 5 | 247.35 |
+| `1` (Gate 1) | Scoping | 5 | 200.4 | 5 | 200.4 |
+| `1` (Gate 1) | Awaiting Consents | 2 | 169.9 | 2 | 169.9 |
+| `1` (Gate 1) | Consents Approved | 1 | 36 | 1 | 36 |
+| `2` (Gate 2) | Under Construction/Commissioning | 12 | 2,266.52 | 12 | 2,266.52 |
+| `2` (Gate 2) | Consents Approved | 6 | 294.4 | 6 | 294.4 |
+
+The same entries are in the confirmed tier and past their date in both copies:
+
+| Due | Project | Connection site | Stage | Plant type | Status | MW |
+|---|---|---|---|---|---|---|
+| 2026-02-21 | Inch Cape Offshore Wind Farm Platform 1 | Cockenzie 400/275kV | — | Wind Offshore | Under Construction/Commissioning | 540 |
+| 2026-02-21 | Inch Cape Offshore Wind Farm Platform 2 | Cockenzie 275kV substation | — | Wind Offshore | Under Construction/Commissioning | 540 |
+| 2026-04-12 | Eccles BESS | Eccles 400kV Substation | — | Energy Storage System | Under Construction/Commissioning | 500 |
+| 2026-04-30 | Zenobe Eccles Battery Storage | Eccles 400kV Substation | — | Energy Storage System | Under Construction/Commissioning | 400 |
+| 2025-04-03 | Benthead Solar | Kilwinning 132/33kV | — | Energy Storage System;PV Array (Photo Voltaic/solar) | Consents Approved | 63 |
+| 2026-07-31 | Whitelaw Brae Windfarm | Whitelaw Brae 'A' and 'B' 33kV Substations | — | Wind Onshore | Under Construction/Commissioning | 57 |
+| 2026-05-18 | Coylton 275kV Greener Grid Park | Coylton 275kV substation | 1.00 | Energy Storage System | Consents Approved | 50 |
+| 2026-07-30 | Persley Croft BESS | Persley 132/33kV GSP Substation | — | Energy Storage System | Under Construction/Commissioning | 50 |
+| 2026-07-31 | Holmston Farm Battery Energy Storage System | Ayr 275/33kV | — | Energy Storage System | Under Construction/Commissioning | 49.9 |
+| 2026-05-31 | Lovat Estate BESS | Beauly 132/33 kV GSP Substation | — | Energy Storage System | Consents Approved | 49.9 |
+| 2025-10-30 | Glenrothes BESS | Glenrothes 275/33kV | — | Energy Storage System | Consents Approved | 46 |
+| 2026-06-01 | Windy Standard III Wind Farm | Dun Hill 132/33kV | 1.00 | Wind Onshore | Consents Approved | 43.5 |
+| 2025-11-24 | Bankside BESS | Bainsford 132/33kV | — | Energy Storage System | Under Construction/Commissioning | 43 |
+| 2026-07-31 | Balbougie Energy Centre | Inverkeithing 132/33kV | — | Energy Storage System | Consents Approved | 42 |
+| 2024-02-23 | Dalmarnock Road BESS | DALMARNOCK 132/33KV SUBSTATION | — | Energy Storage System | Under Construction/Commissioning | 40 |
+| 2024-10-31 | Bilbo Farm | Strichen 132/33kV GSP Substation | 1.00 | Energy Storage System;PV Array (Photo Voltaic/solar) | Under Construction/Commissioning | 25 |
+| 2025-04-30 | Kincraig Energy Centre | Dyce 132/33kV GSP | — | Energy Storage System;PV Array (Photo Voltaic/solar) | Under Construction/Commissioning | 20.62 |
+| 2026-07-31 | Whitelaw Brae BESS | Whitelaw Brae BESS 33kV substation | — | Energy Storage System | Under Construction/Commissioning | 1 |
+
+No two of them share a project id or a project name in either copy.
+
+### What the 8 copies with a Gate column show
+
+Gate cell and date as each copy prints it, for every entry above, in each copy's own spelling of the date.
+
+| Project | MW | 19 May 2026 | 22 August 2026 | 25 August 2026 | 15 September 2026 | 18 September 2026 | 22 September 2026 | 25 September 2026 | 29 September 2026 |
+|---|---|---|---|---|---|---|---|---|---|
+| Inch Cape Offshore Wind Farm Platform 1 | 540 | blank / 2026-02-21 | 2 / 2026-02-21 | 2 / 2026-02-21 | 2 / 21/02/2026 | 2 / 21/02/2026 | 2 / 21/02/2026 | 2 / 21/02/2026 | 2 / 2026-02-21 |
+| Inch Cape Offshore Wind Farm Platform 2 | 540 | blank / 2026-02-21 | 2 / 2026-02-21 | 2 / 2026-02-21 | 2 / 21/02/2026 | 2 / 21/02/2026 | 2 / 21/02/2026 | 2 / 21/02/2026 | 2 / 2026-02-21 |
+| Eccles BESS | 500 | blank / 2026-12-04 | blank / 2026-04-12 | blank / 2026-04-12 | 2 / 12/04/2026 | 2 / 12/04/2026 | 2 / 12/04/2026 | 2 / 12/04/2026 | 2 / 2026-04-12 |
+| Zenobe Eccles Battery Storage | 400 | blank / 2026-04-30 | 2 / 2026-04-30 | 2 / 2026-04-30 | 2 / 30/04/2026 | 2 / 30/04/2026 | 2 / 30/04/2026 | 2 / 30/04/2026 | 2 / 2026-04-30 |
+| Benthead Solar | 63 | blank / 2025-04-03 | blank / 2025-04-03 | blank / 2025-04-03 | blank / 03/04/2025 | blank / 03/04/2025 | blank / 03/04/2025 | 2 / 03/04/2025 | 2 / 2025-04-03 |
+| Whitelaw Brae Windfarm | 57 | blank / 2026-07-31 | 2 / 2026-07-31 | 2 / 2026-07-31 | 2 / 31/07/2026 | 2 / 31/07/2026 | 2 / 31/07/2026 | 2 / 31/07/2026 | 2 / 2026-07-31 |
+| Coylton 275kV Greener Grid Park | 50 | blank / 2026-02-28 | 2 / 2026-05-18 | 2 / 2026-05-18 | 2 / 18/05/2026 | 2 / 18/05/2026 | 2 / 18/05/2026 | 2 / 18/05/2026 | 2 / 2026-05-18 |
+| Persley Croft BESS | 50 | blank / 2026-10-31 | 2 / 2026-07-31 | 2 / 2026-07-31 | 2 / 31/07/2026 | 2 / 30/07/2026 | 2 / 30/07/2026 | 2 / 30/07/2026 | 2 / 2026-07-30 |
+| Holmston Farm Battery Energy Storage System | 49.9 | blank / 2025-06-30 | 2 / 2026-07-31 | 2 / 2026-07-31 | 2 / 31/07/2026 | 2 / 31/07/2026 | 2 / 31/07/2026 | 2 / 31/07/2026 | 2 / 2026-07-31 |
+| Lovat Estate BESS | 49.9 | blank / 2026-05-31 | 2 / 2026-05-31 | 2 / 2026-05-31 | 2 / 31/05/2026 | 2 / 31/05/2026 | 2 / 31/05/2026 | 2 / 31/05/2026 | 2 / 2026-05-31 |
+| Glenrothes BESS | 46 | blank / 2025-10-30 | 2 / 2025-10-30 | 2 / 2025-10-30 | 2 / 30/10/2025 | 2 / 30/10/2025 | 2 / 30/10/2025 | 2 / 30/10/2025 | 2 / 2025-10-30 |
+| Windy Standard III Wind Farm | 43.5 | blank / 2026-06-01 | 2 / 2026-06-01 | 2 / 2026-06-01 | 2 / 01/06/2026 | 2 / 01/06/2026 | 2 / 01/06/2026 | 2 / 01/06/2026 | 2 / 2026-06-01 |
+| Bankside BESS | 43 | blank / 2025-11-24 | 2 / 2025-11-24 | 2 / 2025-11-24 | 2 / 24/11/2025 | 2 / 24/11/2025 | 2 / 24/11/2025 | 2 / 24/11/2025 | 2 / 2025-11-24 |
+| Balbougie Energy Centre | 42 | blank / 2025-04-30 | 2 / 2026-07-31 | 2 / 2026-07-31 | 2 / 31/07/2026 | 2 / 31/07/2026 | 2 / 31/07/2026 | 2 / 31/07/2026 | 2 / 2026-07-31 |
+| Dalmarnock Road BESS | 40 | blank / 2023-10-30 | 2 / 2024-02-23 | 2 / 2024-02-23 | 2 / 23/02/2024 | 2 / 23/02/2024 | 2 / 23/02/2024 | 2 / 23/02/2024 | 2 / 2024-02-23 |
+| Bilbo Farm | 25 | blank / 2024-10-31 | 2 / 2024-10-31 | 2 / 2024-10-31 | 2 / 31/10/2024 | 2 / 31/10/2024 | 2 / 31/10/2024 | 2 / 31/10/2024 | 2 / 2024-10-31 |
+| Kincraig Energy Centre | 20.62 | blank / 2026-04-30 | blank / 2025-04-30 | blank / 2025-04-30 | 2 / 30/04/2025 | 2 / 30/04/2025 | 2 / 30/04/2025 | 2 / 30/04/2025 | 2 / 2025-04-30 |
+| Whitelaw Brae BESS | 1 | blank / 2026-07-31 | 2 / 2026-07-31 | 2 / 2026-07-31 | 2 / 31/07/2026 | 2 / 31/07/2026 | 2 / 31/07/2026 | 2 / 31/07/2026 | 2 / 2026-07-31 |
+
+All 18 were already past their date in the first of these copies whose Gate cell reads `2`. For 11 of them the date had already passed in the last copy held before that one, so in the copies held they entered the tier already behind their date. For the other 7 (Whitelaw Brae Windfarm, Persley Croft BESS, Holmston Farm Battery Energy Storage System, Lovat Estate BESS, Windy Standard III Wind Farm, Balbougie Energy Centre, Whitelaw Brae BESS; 293.3 MW) the date fell between the last copy held before and the first that reads `2`, a stretch of 95 days with no copy held, so these copies do not settle when they entered the tier. A blank Gate cell in an earlier copy is not interpreted. Benthead Solar first reads `2` in the copy of 25 September 2026, after version 2's count.
+
+The two readings of the tier's figure come from these entries, which some copy prints with a date that is not past:
+
+| Project | MW | Date on 29 Sep | Another copy | Which kind of difference |
+|---|---|---|---|---|
+| Eccles BESS | 500 | 2026-04-12 | 2026-12-04 | the same digits with day and month exchanged |
+| Persley Croft BESS | 50 | 2026-07-30 | 2026-10-31 | the register moved the date |
+
+### What this version never claims
+
+- That any difference between the two copies was caused by the announcement of 29 September, by any policy, by NESO's connections reform or by the queue fee. The copies are days apart, and the register records dates and statuses, not reasons.
+- That an entry whose date arrived is late, or that an entry leaving the list was delivered.
+- That either count measures the queue's health. Each measures what one copy of the register printed on its own date.
+
+**Falsifiers declared before the run.** None fired, on either copy or in the comparison (F1 to F11, including the filename reading, unmatched entries and the swap test).
+
+### Expert corner for version 3
+
+- Declaration `investigations/017-the-overdue-queue/DECLARATION-v3.md`, SHA-256 `dd396986922a16041766de865bcf9d145583dcecdd9b6fb438114b8eb34f262f`; amendment `investigations/017-the-overdue-queue/DECLARATION-v3-amendment-1.md`, SHA-256 `35b74e13301a0a1c60d61ad9d8ade65387252bfd4aed1a94153c6fc573e4f419`; both witnessed by OpenTimestamps and RFC 3161 tokens from freetsa.org and DigiCert and committed with their proofs.
+- Copies read from the local mirror of the daily capture after each digest was checked against the committed manifest that recorded it: 25 September 2026, `raw/neso/tec-register/2026-09-26/da0b67b5ea34a85606f3a98269916f647c32a0f3b496f91a1136e80069175a6c` (manifest `2026-09-26.ndjson`, SHA-256 `d4f2e3c341017e91aea18f519dce75e77f20ada73925dd3d8ecab06c3144e081`); 29 September 2026, `raw/neso/tec-register/2026-09-30/d1ccd9e210b4f6bc8f3b0e83d54032dc61f247dbbc1d9e469a342b7766ee5746` (manifest `2026-09-30.ndjson`, SHA-256 `ddfa00291f53a73666318573764e42bdf8175469e16931a4d9a21ba3f664c47a`).
+- Capture schema report (`archives/tec-register-capture/`) the censuses were checked against: `918a20994341bdaab1b00df5ed6046adca396d93d04874fc9e261f84df39fda3` for 25 September 2026, `857dfc88949a95b3553d96fa25bd84fbed6f4ed433f1090f324140b644975ebd` for 29 September 2026 (regenerated with that copy in it, N0).
+- Evidence: `evidence/v3/method-check.json` (C10), `evidence/v3/2026-09-25/`, `evidence/v3/2026-09-29/` (`census.json`, `rows.ndjson`, `gate.json`, `gate-rows.ndjson`, append-only), `evidence/v3/n0.json`, `evidence/v3/a2-swap-test.json`, `evidence/v3/comparison.json`.
+- Checks that had to pass on each copy: C1′ the status counts equal the capture schema report's for this copy; C2′ dated plus undated is every row; C3′ the four classes partition every row; C4′ the copy carries no flag and the partial-export rule does not make it suspect; C5′ selected rows written append-only, no committed line changed; C6′ the Gate counts equal the capture schema report's for this copy; C7′ the cross-tab reads exactly the rows this census of the copy selected; C8′ the Gate split sums to this version's census of the copy; C9′ every selected row's Gate cell is in the copy's vocabulary; and in the comparison: C11 D2's classes sum to each census's selected rows and MW.
+
+```
+uv run --group registers python investigations/017-the-overdue-queue/run.py \
+    --version 3 --seal dd396986922a \
+    --amendment-seal 35b74e13301a --phase check --copy next
+```
+
+recomputes the second copy's census and fails if a committed row would change; `--copy reference` does the first, and `--phase method-check` reruns C10.
+
 ## The exhibit: one project, traced across every copy
 
 A census of one copy cannot tell a reader whether a date that has passed is news or is eight years old, and it cannot see the entries whose date has not passed *yet* but has been rewritten repeatedly. For that the copies have to be read in sequence. The As-of Connection Record Certificate is 014's instrument for exactly that, and it is applied here to `Eggborough CCGT - OCGT - BESS`, 2,450 MW at Eggborough 400kV Substation, whose first stage is dated a fortnight after the copy this census reads.

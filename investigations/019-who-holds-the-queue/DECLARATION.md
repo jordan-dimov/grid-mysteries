@@ -1,10 +1,12 @@
 # 019 — Who holds the queue: the Companies House join, declaration
 
-**Status: draft for the sponsor's eye, written 2026-09-30. Not frozen, not
-sealed, nothing fetched.** On the sponsor's word it is frozen by
+**Written 2026-09-30 as a draft for the sponsor's eye (committed at
+`6ce2452`, amended once for prior exposure at `6a55f13`); approved by the
+sponsor the same day, with the fetch sealed in the same word.** Frozen by
 `scripts/freeze` (OpenTimestamps and RFC 3161 witnesses, committed with its
-proofs) and the fetch runs only after that freeze and under the seal the
-sponsor gives. Changes after the freeze are amendments, never edits.
+proofs); nothing was fetched before this freeze, and the fetch runs under
+the seal, this file's digest prefix. Changes after the freeze are
+amendments, never edits.
 
 ## The question
 

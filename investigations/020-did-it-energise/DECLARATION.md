@@ -1,9 +1,14 @@
 # 020 — Did it energise: outcome labels for the TEC Register, declaration
 
-**Status: draft for the sponsor's eye, written 2026-09-30. Not frozen, not
-sealed, nothing fetched, no figure computed.** On the sponsor's word it is
-frozen by `scripts/freeze` and run under the seal the sponsor gives.
-Changes after the freeze are amendments.
+**Written 2026-09-30 as a draft for the sponsor's eye (committed at
+`6ce2452`). The sponsor approved the population, the join rule, the checks
+and the falsifiers the same day and asked for the schema pass and a
+register-only first version (P1 with the last date before `Built`) by
+5 October 2026.** Frozen by `scripts/freeze`; nothing was fetched and no
+figure was computed before this freeze. The schema pass and the
+register-only version run under the seal, this file's digest prefix.
+Changes after the freeze are amendments; the reading rules the schema
+pass produces arrive as amendment 1, as the order of work below says.
 
 ## The question
 

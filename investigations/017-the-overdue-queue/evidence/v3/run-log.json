@@ -1,0 +1,14 @@
+[
+ {
+  "run_date": "2026-09-30",
+  "computed_at": "2026-09-30T12:18:00+00:00",
+  "seal": "dd396986",
+  "which": "reference",
+  "copy": "2026-09-25",
+  "sha256": "da0b67b5ea34a85606f3a98269916f647c32a0f3b496f91a1136e80069175a6c",
+  "selected_rows": 94,
+  "rows_appended": 94,
+  "gate_rows_appended": 18,
+  "falsifiers_fired": []
+ }
+]

@@ -1,0 +1,8 @@
+{
+ "run_date": "2026-09-30",
+ "declaration_sha256": "fb8a3428749a73997745e4e852ba64b7a7326afd406528d9fe6315116b13bb2a",
+ "S4_entsoe": {
+  "status": "not available: the repository holds no ENTSO-E Transparency token; no request made",
+  "consequence": "S4 cannot enter amendment 1 until a token is held and a schema pass is run"
+ }
+}

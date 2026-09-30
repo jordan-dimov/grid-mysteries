@@ -1,0 +1,91 @@
+{
+ "runs": [
+  {
+   "phase": "schema",
+   "at": "2026-09-30T13:45:07+00:00",
+   "run_date": "2026-09-30",
+   "s1_units": 3112,
+   "s2_units": 9152,
+   "s3_messages": 102,
+   "probes": {
+    "remit-by-event-2021-01": 581,
+    "remit-by-event-2018-01": 510
+   }
+  },
+  {
+   "phase": "population",
+   "at": "2026-09-30T13:45:39+00:00",
+   "usable": 704,
+   "kept": 702,
+   "transitions": 1672,
+   "new_lines": 1672,
+   "gate2": 103
+  },
+  {
+   "phase": "schema",
+   "at": "2026-09-30T13:45:45+00:00",
+   "run_date": "2026-09-30",
+   "s1_units": 3112,
+   "s2_units": 9152,
+   "s3_messages": 102,
+   "probes": {
+    "remit-by-event-2021-01": 581,
+    "remit-by-event-2018-01": 510
+   }
+  },
+  {
+   "phase": "schema",
+   "at": "2026-09-30T13:46:24+00:00",
+   "run_date": "2026-09-30",
+   "s1_units": 3112,
+   "s2_units": 9152,
+   "s3_messages": 102,
+   "probes": {
+    "remit-by-event-2021-01": 581,
+    "remit-by-event-2018-01": 510
+   }
+  },
+  {
+   "phase": "schema",
+   "at": "2026-09-30T13:47:15+00:00",
+   "run_date": "2026-09-30",
+   "s1_units": 3112,
+   "s2_units": 9152,
+   "s3_messages": 102,
+   "probes": {
+    "remit-by-event-2021-01": 581,
+    "remit-by-event-2018-01": 510
+   }
+  },
+  {
+   "phase": "population",
+   "at": "2026-09-30T13:48:01+00:00",
+   "usable": 704,
+   "kept": 702,
+   "transitions": 1672,
+   "new_lines": 0,
+   "gate2": 103
+  },
+  {
+   "phase": "schema",
+   "at": "2026-09-30T13:48:36+00:00",
+   "run_date": "2026-09-30",
+   "s1_units": 3112,
+   "s2_units": 9152,
+   "s3_messages": 102,
+   "probes": {
+    "remit-by-event-2021-01": 581,
+    "remit-by-event-2018-01": 510
+   }
+  },
+  {
+   "phase": "population",
+   "at": "2026-09-30T13:49:21+00:00",
+   "usable": 704,
+   "kept": 702,
+   "transitions": 1672,
+   "new_lines": 0,
+   "gate2": 103
+  }
+ ]
+}

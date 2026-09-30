@@ -1,0 +1,10 @@
+{
+ "declaration": "DECLARATION.md",
+ "rules": {
+  "P1 Built transitions: the last copy before Built, the date it printed, Built at first sight labelled not measured": "tests/test_energisation.py::test_transition_takes_the_date_printed_in_the_copy_before_built",
+  "P1 one transition per unit (the first), later flaps left to the sightings": "tests/test_energisation.py::test_a_unit_transitions_once_even_if_its_status_flaps",
+  "P1 units are 014's content identity, grouped by name, customer and site": "tests/test_energisation.py::test_a_renamed_unit_is_followed_by_content_identity_only_within_its_group",
+  "P2 the Gate 2 rows of the latest copy, as printed": "tests/test_energisation.py::test_gate_two_rows_are_the_printed_twos_only",
+  "Register-only measure: months from the last printed date to the first Built copy, its distribution": "tests/test_energisation.py::test_quantiles_and_summary"
+ }
+}

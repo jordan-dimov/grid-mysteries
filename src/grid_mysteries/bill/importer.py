@@ -43,7 +43,7 @@ RULES: Final = {
         "1-8 September 2026 as investigation 012 published them, copied, never recomputed",
     ),
 }
-#: Error codes the runtime documents as "nothing was recorded" (v0.0.12,
+#: Error codes the runtime documents as "nothing was recorded" (v0.0.12 and v0.0.13 alike,
 #: `morpholog schema --result`, propose_error_code). `commit_outcome_unknown`
 #: is deliberately absent; a code not listed here keeps the marker.
 NOT_COMMITTED_CODES: Final = frozenset(

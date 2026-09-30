@@ -65,7 +65,7 @@ accepted proposal, in the same commit:
    `audit-anchor.json`, and re-export `evidence-pack.ndjson`.
 
 Checkpoints before tree_size 140 carry no witness. freetsa.org's tokens
-are stored but reported `unsupported` by Morpholog v0.0.11 and v0.0.12,
+are stored but reported `unsupported` by Morpholog v0.0.11 to v0.0.13,
 which cannot yet check their signature algorithm (ECDSA with SHA-512);
 DigiCert's verify against `trust/tsa/`.
 

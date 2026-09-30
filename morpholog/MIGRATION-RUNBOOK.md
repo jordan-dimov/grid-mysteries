@@ -15,6 +15,8 @@ here).
 | Database | What it is | How it is migrated |
 |---|---|---|
 | `grid_mysteries_morpholog` | **the governed record** (live) | by hand, below, after a rehearsal; Jordan decides when |
+| `grid_mysteries_tec` | the TEC record engine (live; `tec/tec-register.morph`, its own signing key) | the same steps, below |
+| `grid_mysteries_bill` | the Balancing Bill record engine (live; `bill/bill-register.morph`, key `bill-2026`) | the same steps, below |
 | `grid_mysteries_replay` | disposable, rebuilt by `scripts/replay-research` | `init --reset` each run |
 | `grid_mysteries_controls` | disposable, rebuilt by `scripts/check-controls` | `init --reset` each run |
 | `gm_rehearsal` | disposable, dropped and recreated by `scripts/rehearse-v2` | recreated each run; **never name a migration rehearsal copy this** |
@@ -37,6 +39,10 @@ morpholog-<old> audit export    --database-url $LIVE > "$OUT/pack.before.ndjson"
 morpholog-<old> audit verify    --database-url $LIVE
 
 # 1. Rehearse on a copy (no other session may be connected to the source).
+#    Stop every process on the database first (nothing scheduled touches
+#    these three: tec-watch, the vintage watchdog and the crons read files,
+#    not the record; scripts/record, the engines' `import`/`checkpoint`
+#    and check-record are run by hand).
 createdb -T grid_mysteries_morpholog gm_migrate_rehearsal
 morpholog migrate --check --database-url postgres:///gm_migrate_rehearsal
 morpholog migrate         --database-url postgres:///gm_migrate_rehearsal
@@ -54,13 +60,16 @@ morpholog audit verify    --database-url $LIVE
 morpholog inspect claims  --database-url $LIVE | cmp - morpholog/claims-export.json
 morpholog audit export    --database-url $LIVE | cmp - morpholog/evidence-pack.ndjson
 
-# 3. Managed indexes, for EVERY programme deployed on the database (from
-#    v0.0.12 the interpreted ones too: a proposal's loads seek through them),
-#    with --prune on the last run so indexes no programme needs are dropped.
-morpholog provision indexes morpholog/research.morph          --dry-run --database-url $LIVE
-morpholog provision indexes morpholog/research-v2-draft.morph --dry-run --database-url $LIVE
-morpholog provision indexes morpholog/research.morph                    --database-url $LIVE
-morpholog provision indexes morpholog/research-v2-draft.morph --prune   --database-url $LIVE
+# 3. Managed indexes and statistics, for EVERY programme deployed on the
+#    database (from v0.0.12 the interpreted ones too: a proposal's loads seek
+#    through them), named together in ONE call (from v0.0.13: the plan is
+#    their union, a conflict in any applies nothing, and --prune acts once
+#    after all are recorded, so indexes no programme needs are dropped).
+#    Naming them one at a time would prune each other's indexes.
+PROGS="morpholog/research.morph morpholog/research-v2-draft.morph morpholog/research-v3-draft.morph"
+morpholog provision indexes $PROGS --dry-run --database-url $LIVE
+morpholog provision indexes $PROGS --prune   --database-url $LIVE
+morpholog provision indexes $PROGS --dry-run --database-url $LIVE   # every line KEEP
 
 dropdb gm_migrate_rehearsal
 ```
@@ -71,9 +80,25 @@ using the old binary (`~/.local/bin/morpholog-<old>`) until the cause is
 understood.
 
 The TEC record (`grid_mysteries_tec`, programme `tec/tec-register.morph`,
-its own signing key) follows the same steps; its baseline is `audit verify
---trusted-tsa-file trust/tsa/digicert-trusted-root-g4.pem` and its pack is
-not committed (it lives under `data/derived/tec/packs/`).
+its own signing key) and the Balancing Bill record (`grid_mysteries_bill`,
+programme `bill/bill-register.morph`) follow the same steps, each with its
+one programme; their baseline is `audit verify --trusted-tsa-file
+trust/tsa/digicert-trusted-root-g4.pem` and their packs are not committed
+(TEC's live under `data/derived/tec/packs/`).
+
+**Binaries and databases move together.** From v0.0.13 every command
+that opens a database, `init` and `migrate` apart, refuses one behind or
+ahead of the binary by name before its first query, and the generated
+client's `open_session()` refuses a binary of another version than it was
+generated for. So the pin in `scripts/install-morpholog`, the vendored
+client, the `morpholog` on `PATH` and the three live schemas change in one
+move, in this order: prepare the repo (pin, client, docs) and rehearse on
+copies; then, when Jordan says, migrate and provision each live record;
+then switch `~/.local/bin/morpholog` to the new binary (keep the old one
+beside it as `morpholog-<old>`). Between the first and the last step
+`scripts/check` fails on the old binary (client drift) and passes on the
+new one, and the engines' `Morpholog(...)` (constructed directly, so
+unchecked) still run on whichever binary `PATH` gives them.
 
 ## v0.0.10 to v0.0.11 (schema 11 to 15), rehearsed 2026-09-23
 
@@ -167,3 +192,89 @@ v2 with `--prune` (a further dry run of each reports every index KEEP);
 and replay databases re-initialised at schema 17; `check-record`
 against the live record clean.
 
+## v0.0.12 to v0.0.13 (schema 17 to 19), rehearsed 2026-09-30
+
+Migrations 018 (`date_ordinal`, the coordinate the compiled checks order
+dates by) and 019 (`requirement_position`, each index requirement records
+the argument position it seeks on). Release v0.0.13 was published
+2026-09-30 19:46 UTC; the three published `.sha256` files match the
+release assets' digests and the x86_64 binary extracted from the tarball
+(`06afb386…`). Rehearsed the same evening on template copies of all
+three live records (`createdb -T`, nothing connected to the sources);
+baselines with the 0.0.12 binary and `pg_dump -Fc` of each in
+`~/backups/morpholog-20260930T210303Z/`:
+
+- `grid_mysteries_morpholog` (233 transitions, 240 claims, 207
+  checkpoints, 13 MB): `migrate` 0.03 s; `audit verify` replay
+  consistent, tree intact; claims and pack byte-identical to the 0.0.12
+  baseline and to the committed `claims-export.json` and
+  `evidence-pack.ndjson`. `provision indexes` naming v1, v2 and v3 in one
+  call: 47 indexes KEEP, 50 CREATE, 8 statistics CREATE, nothing stale,
+  0.3 s; a second dry run reports all 105 KEEP. The 50 are v3's (deployed
+  25/09 after the v0.0.12 provisioning, never provisioned) and the ones
+  for v2 and v3 invariants that now compile.
+- `grid_mysteries_tec` (137,384 transitions, 127,456 claims, 1 witnessed
+  checkpoint, 353 MB): `migrate` 0.03 s; `audit verify` 13.6 s in 300 MB,
+  replay consistent, DigiCert witness verified; claims and pack (334 MB)
+  byte-identical to the baseline. `provision indexes`: 15 KEEP, 21
+  CREATE, 16 statistics CREATE, 1.3 s; second dry run all 52 KEEP.
+- `grid_mysteries_bill` (84 transitions, 85 claims, 1 witnessed
+  checkpoint, 8.7 MB): `migrate` 0.03 s; `audit verify` consistent and
+  intact, DigiCert verified; claims and pack byte-identical. It had never
+  been provisioned (it went live 26/09): 59 indexes and 22 statistics
+  CREATE, second dry run all 81 KEEP.
+- Cross-version, read-only: the 0.0.13 binary against the unmigrated
+  live record is refused by name before any query ("the database schema
+  is behind this binary (2 migration(s) pending, from 18 (date_ordinal))
+  … run `morpholog migrate`"); the 0.0.12 binary against a migrated copy
+  still reads (`inspect claims`, `audit verify` consistent) and its
+  `migrate --check` lists 018 and 019 as `unknown`, exit 1. As the release
+  says, the old binary cannot be retrofitted with the refusal, so switch
+  `PATH` in the same move as the migration.
+- Decisions unchanged on 0.0.13, on a throwaway cluster (initdb, port
+  55434; 55432 is taken by the `morpholog_test` cluster now): both control
+  suites (v2 35 commits + 13 refusals, v3 16 + 14, every rule as
+  expected), `replay-research` (programme hash, pack, replay, claims
+  equality, audit self-check) and `check-record` on the replayed record
+  (20 watches open, none overdue), `rehearse-v2` (60 assertions). The
+  full `scripts/check` passes with 0.0.13 on `PATH` (573 tests; TEC and
+  Bill programmes still `invariant checks: compiled`, pinned hashes
+  unchanged; the regenerated client current).
+- Route changes, no rule changes: v1, TEC and Bill stay wholly compiled;
+  v2 now runs `mixed, 32 compiled, 3 interpreted` and v3 `mixed, 16
+  compiled, 5 interpreted` (the interpreted ones are the `or`
+  vocabulary invariants). `check -v` prints the split.
+
+Things that changed shape, not meaning:
+
+- `hash` reports carry `morpholog_version`; `scripts/check`,
+  `replay-research` and the engines read only `hash` and are unaffected.
+- The generated client is stamped 0.0.13 and gains `open_client()` (a
+  one-shot client checked against the package's version and model hash
+  before its first call), `provision_indexes()` and the `ProvisionReport`
+  envelope; `open_session()` now refuses a binary of another version at
+  the handshake. The engines construct `Morpholog(...)` directly, on
+  purpose: the client is generated from the v2 programme, whose model
+  hash a pinned client would hold the TEC and Bill programmes to.
+- `provision indexes` takes every programme in one call and prints
+  statistics lines beside the index lines; `--json` is the
+  `provision_report` envelope. The `propose` error-code set is unchanged
+  (`NOT_COMMITTED_CODES` in the Bill importer and `scripts/record` still
+  match).
+- freetsa.org witnesses are still `unsupported` (ECDSA P-384 with
+  SHA-512); DigiCert's verify.
+
+Live migration done the same evening (Jordan's go-ahead, in chat), after
+a fresh `pg_dump -Fc` of each record into
+`~/backups/morpholog-20260930T202350Z/` (nothing connected to any of
+them): all three 17 to 19, `audit verify` consistent and intact with the
+DigiCert witnesses verified, claims and packs byte-identical to the
+0.0.12 baselines and, for the research record, to the committed
+`claims-export.json` and `evidence-pack.ndjson`; indexes and statistics
+provisioned with `--prune` in one call per database (research 47 keep +
+50 create + 8 statistics, TEC 15 + 21 + 16, Bill 59 + 22), every line
+KEEP on the following dry run; the provision reports kept beside the
+dumps. Controls and replay databases re-initialised at the new schema;
+`~/.local/bin/morpholog` switched to 0.0.13 (0.0.12 kept as
+`morpholog-0.0.12`); `check-record` against the live record clean (20
+watches open, none overdue); full `scripts/check` green on `PATH`.

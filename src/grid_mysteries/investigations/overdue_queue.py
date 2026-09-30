@@ -774,6 +774,21 @@ def n0(copy_report: dict[str, Any], columns: list[str]) -> dict[str, bool]:
     }
 
 
+#: Amendment 1 to version 3 (`35b74e13…`), A1: for the next copy, N0's
+#: spelling condition is met by `iso-dash` and blank.
+A1_DATE_SPELLINGS: Final = frozenset({"iso-dash", "blank"})
+A1_SPELLING_CONDITION: Final = "N0 date spellings only iso-dash and blank (amendment 1, A1)"
+
+
+def n0_amended(copy_report: dict[str, Any], columns: list[str]) -> dict[str, bool]:
+    """N0 as amendment 1 reads it for the next copy: the spelling condition is
+    met by `iso-dash` and blank; the other four conditions stand unchanged."""
+    verdict = n0(copy_report, columns)
+    del verdict["N0 date spellings only uk and blank"]
+    spellings = {k for k, v in copy_report["date_spellings"].items() if v}
+    return {A1_SPELLING_CONDITION: spellings <= A1_DATE_SPELLINGS, **verdict}
+
+
 def _figures(census_result: dict[str, Any], gate: dict[str, Any]) -> dict[str, Any]:
     scale = census_result["scale"]
     return {

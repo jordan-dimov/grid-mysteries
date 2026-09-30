@@ -2,7 +2,8 @@
  "declaration": [
   "DECLARATION.md",
   "DECLARATION-v2.md",
-  "DECLARATION-v3.md"
+  "DECLARATION-v3.md",
+  "DECLARATION-v3-amendment-1.md"
  ],
  "note": "Checks C1, C4, C5 (version 1) and C6 to C9 (version 2) are enforced by run.py against artefacts outside the pure logic - the committed schema report, the series' reading of the archive, version 1's committed rows and the append-only Gate rows - and have no unit test; every rule below does. Version 3's C1′ to C9′ and C10 are enforced by run.py --version 3 against the capture schema report, the committed manifests, the per-copy append-only files and versions 1 and 2's committed evidence (C10's line-by-line comparison is evidence/v3/method-check.json), and have no unit test; every rule below does.",
  "rules": {
@@ -48,6 +49,9 @@
   "D2 the transition classes, and C11 their sum": "tests/test_overdue_queue.py::test_d2_classes_every_selected_row_and_the_classes_sum",
   "D2 a key on more than one row of either copy is ambiguous and in no class": "tests/test_overdue_queue.py::test_d2_puts_a_key_on_two_rows_of_either_copy_in_no_class",
   "F9 ambiguous or id-less rows above a tenth of either selection withhold D2": "tests/test_overdue_queue.py::test_f9_fires_when_more_than_a_tenth_of_a_copys_rows_cannot_be_matched",
-  "F10 the filename reading moving more than a tenth of the selected MW": "tests/test_overdue_queue.py::test_f10_fires_when_the_filename_reading_moves_more_than_a_tenth"
+  "F10 the filename reading moving more than a tenth of the selected MW": "tests/test_overdue_queue.py::test_f10_fires_when_the_filename_reading_moves_more_than_a_tenth",
+  "A1 N0's spelling condition met by iso-dash and blank for the next copy, the rest unchanged": "tests/test_overdue_queue.py::test_amendment_1_meets_n0s_spelling_condition_with_iso_and_blank_only",
+  "A2 014's swap test between the reference and next copies (F11 if it flags)": "tests/test_connection_slippage.py::test_swap_test_flags_a_vintage_whose_disagreements_are_mostly_swaps",
+  "A4 D2 compares parsed dates, so a change of spelling alone never moves a row": "tests/test_overdue_queue.py::test_amendment_1_a_change_of_spelling_alone_never_moves_a_row_in_d2"
  }
 }

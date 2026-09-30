@@ -856,3 +856,39 @@ def test_d1_prints_each_copy_and_the_difference_with_both_as_of_dates():
     assert (diff["selected_rows"], diff["selected_mw"]) == (1, Decimal(40))
     assert (diff["gate2_overdue_rows"], diff["gate2_overdue_mw"]) == (0, Decimal(0))
     assert diff["mw_scoping_dated_on_or_after_as_of"] == Decimal(7)
+
+
+def test_amendment_1_meets_n0s_spelling_condition_with_iso_and_blank_only():
+    """Amendment 1, A1: for the next copy the spelling condition is met by
+    `iso-dash` and blank; `uk` or anything else fails it; the other four
+    conditions stand unchanged."""
+    iso = _copy_report(date_spellings={"uk": 0, "iso-dash": 10, "blank": 2, "other": 0})
+    frozen, amended = oq.n0(iso, ["A", "B"]), oq.n0_amended(iso, ["A", "B"])
+    assert frozen["N0 date spellings only uk and blank"] is False
+    assert all(amended.values())
+    assert set(amended) - {oq.A1_SPELLING_CONDITION} == set(frozen) - {
+        "N0 date spellings only uk and blank"
+    }
+    mixed = _copy_report(date_spellings={"uk": 3, "iso-dash": 10, "blank": 2})
+    assert oq.n0_amended(mixed, ["A", "B"])[oq.A1_SPELLING_CONDITION] is False
+    flagged = _copy_report(date_spellings={"iso-dash": 10, "blank": 2}, flags=["x"])
+    assert oq.n0_amended(flagged, ["A", "B"])["N0 no flag"] is False
+
+
+def test_amendment_1_a_change_of_spelling_alone_never_moves_a_row_in_d2():
+    """Amendment 1, A4: D2 compares parsed dates; `27/09/2026` and
+    `2026-09-27` are the same date, so the row is (b) the date arrived, and a
+    row past in both copies under either spelling is in both."""
+    ref_rows = [
+        row("Past", "01/01/2025", pid="a0lPAST00000001"),
+        row("Arrives", "27/09/2026", pid="a0lARRIVE000001"),
+    ]
+    next_rows = [
+        row("Past", "2025-01-01", pid="a0lPAST00000001"),
+        row("Arrives", "2026-09-27", pid="a0lARRIVE000001"),
+    ]
+    d2, _ref, _nxt = _pair(ref_rows, next_rows)
+    assert {k: v["rows"] for k, v in d2["classes"].items()} == {
+        "in both": 1,
+        "next only: (b) the date arrived": 1,
+    }

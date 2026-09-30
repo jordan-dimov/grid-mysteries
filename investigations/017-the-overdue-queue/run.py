@@ -60,6 +60,7 @@ GATE_ROWS = EVIDENCE / "gate-rows.ndjson"
 FINDINGS = HERE / "FINDINGS.md"
 CORRECTIONS = HERE / "corrections.json"
 DECLARATION_V3 = HERE / "DECLARATION-v3.md"
+AMENDMENT_V3_1 = HERE / "DECLARATION-v3-amendment-1.md"
 PAGE = REPO_ROOT / "site" / "overdue-queue" / "index.html"
 JOURNAL = REPO_ROOT / tr.JOURNAL_PATH
 SCHEMA_REPORT = REPO_ROOT / "archives" / "tec-register" / "schema-report.json"
@@ -404,6 +405,7 @@ def compute_gate(seal: str, run_date: str, *, write: bool) -> None:
 V3 = EVIDENCE / "v3"
 METHOD_CHECK = V3 / "method-check.json"
 COMPARISON = V3 / "comparison.json"
+SWAP_TEST = V3 / "a2-swap-test.json"
 MANIFESTS = REPO_ROOT / "data" / "manifests"
 MIRROR = REPO_ROOT / "data" / "raw" / "archive"
 CAPTURE_REPORT = REPO_ROOT / "archives" / "tec-register-capture" / "schema-report.json"
@@ -808,7 +810,61 @@ def n0_verdict(seal: str) -> bool:
     return passed
 
 
-def compute_v3(seal: str, run_date: str, which: str, *, write: bool) -> None:
+def require_amendment(seal: str | None) -> dict[str, Any]:
+    """Amendment 1 governs the next copy: its seal is required, and it must be
+    committed with its proofs before anything of that copy is computed."""
+    sealed = require_seal(seal, AMENDMENT_V3_1)
+    if not committed(AMENDMENT_V3_1):
+        raise SystemExit("refusing: amendment 1 is not committed")
+    return {
+        "file": AMENDMENT_V3_1.name,
+        "sha256": sealed,
+        "seal": seal,
+        "timestamps": timestamps(AMENDMENT_V3_1),
+    }
+
+
+def a2_swap_test(entry: dict, amendment: dict[str, Any], *, write: bool) -> dict[str, Any]:
+    """A2: 014's day-month swap test between the reference copy and the next,
+    over every row matched by 014's unit key, before the next census. Its
+    counts are recorded whichever way it comes out (F11)."""
+    ref_entry, _ = which_copy("reference")
+    test = cs.swap_test(cs.entries(read_capture(ref_entry)), cs.entries(read_capture(entry)))
+    record = {
+        "rule": "amendment 1, A2: connection_slippage.swap_test, reference copy against next copy",
+        "reference": {"t_public": ref_entry["t_public"], "sha256": ref_entry["sha256"]},
+        "next": {"t_public": entry["t_public"], "sha256": entry["sha256"]},
+        "thresholds": {
+            "min_explained": cs.SWAP_MIN_EXPLAINED,
+            "min_share_of_disagreements": cs.SWAP_MIN_SHARE,
+        },
+        "disagreements": test.disagreements,
+        "swap_explained": test.swap_explained,
+        "flagged": test.flagged,
+        "F11 the swap test flags the next copy": test.flagged,
+    }
+    if write:
+        write_json(
+            SWAP_TEST,
+            {
+                "investigation": "017",
+                "version": 3,
+                "amendment": amendment,
+                "computed_at": datetime.now(UTC).isoformat(timespec="seconds"),
+                **record,
+            },
+        )
+    print(
+        f"A2 swap test {ref_entry['t_public']} -> {entry['t_public']}: "
+        f"{test.disagreements} dates differ, {test.swap_explained} explained by a swap; "
+        + ("FLAGGED (F11)" if test.flagged else "not flagged")
+    )
+    return record
+
+
+def compute_v3(
+    seal: str, run_date: str, which: str, *, write: bool, amendment_seal: str | None = None
+) -> None:
     sealed = require_seal(seal, DECLARATION_V3)
     if not METHOD_CHECK.exists() or not json.loads(METHOD_CHECK.read_text())["pass"]:
         raise SystemExit("refusing: C10 has not passed; run --phase method-check first (F7)")
@@ -823,14 +879,20 @@ def compute_v3(seal: str, run_date: str, which: str, *, write: bool) -> None:
             raise SystemExit("refusing: commit the N0 schema pass before the next census")
     report, copy = capture_copy_report(entry["sha256"])
     n0 = None
+    amendment = None
+    swap = None
     if which == "next":
+        amendment = require_amendment(amendment_seal)
         columns = next(e["columns"] for e in report["eras"] if e["last"] >= REFERENCE_T_PUBLIC)
-        n0 = oq.n0(copy, columns)
-        if not all(n0.values()):
+        n0 = {"as_frozen": oq.n0(copy, columns), "under_amendment_1": oq.n0_amended(copy, columns)}
+        if not all(n0["under_amendment_1"].values()):
             raise SystemExit(
-                "refusing: N0 fails for the next copy (F8): "
-                + "; ".join(k for k, ok in n0.items() if not ok)
+                "refusing: N0 fails for the next copy under amendment 1 (F8): "
+                + "; ".join(k for k, ok in n0["under_amendment_1"].items() if not ok)
             )
+        swap = a2_swap_test(entry, amendment, write=write)
+        if swap["flagged"]:
+            raise SystemExit("refusing: A2's swap test flags the next copy (F11); recorded")
 
     run = census_of(entry)
     result, gate = run["result"], run["gate"]
@@ -904,6 +966,8 @@ def compute_v3(seal: str, run_date: str, which: str, *, write: bool) -> None:
     census_summary = {
         **provenance,
         "n0": n0,
+        "amendment": amendment,
+        "a2_swap_test": swap,
         "status_counts_all_rows": status_counts,
         "rows_file": rows_file.name,
         "rows_appended": len(new),
@@ -952,9 +1016,10 @@ def compute_v3(seal: str, run_date: str, which: str, *, write: bool) -> None:
     print(f"checks: all {len(checks)} pass; falsifiers fired: {fired or 'none'}")
 
 
-def compare_v3(seal: str, run_date: str, *, write: bool) -> None:
+def compare_v3(seal: str, run_date: str, *, write: bool, amendment_seal: str | None) -> None:
     """D1 and D2, only once both censuses are committed."""
     sealed = require_seal(seal, DECLARATION_V3)
+    amendment = require_amendment(amendment_seal)
     ref_entry, _ = which_copy("reference")
     next_entry, _ = which_copy("next")
     for t in (ref_entry["t_public"], next_entry["t_public"]):
@@ -983,6 +1048,7 @@ def compare_v3(seal: str, run_date: str, *, write: bool) -> None:
         "declaration": DECLARATION_V3.name,
         "declaration_sha256": sealed,
         "seal": seal,
+        "amendment": amendment,
         "run_date": run_date,
         "computed_at": datetime.now(UTC).isoformat(timespec="seconds"),
         "reference": {
@@ -1090,6 +1156,10 @@ def main(argv: list[str] | None = None) -> None:
     parser.add_argument(
         "--copy", choices=("reference", "next"), help="version 3: which copy to census"
     )
+    parser.add_argument(
+        "--amendment-seal",
+        help="version 3: prefix of DECLARATION-v3-amendment-1.md's SHA-256 (next copy, compare)",
+    )
     parser.add_argument("--run-date", default=date.today().isoformat())
     args = parser.parse_args(argv)
     if args.version == 3:
@@ -1100,12 +1170,18 @@ def main(argv: list[str] | None = None) -> None:
             n0_verdict(args.seal)
             return
         if args.phase == "compare":
-            compare_v3(args.seal, args.run_date, write=True)
+            compare_v3(args.seal, args.run_date, write=True, amendment_seal=args.amendment_seal)
             return
         if args.phase in ("compute", "check"):
             if not args.copy:
                 raise SystemExit("--copy reference|next is required")
-            compute_v3(args.seal, args.run_date, args.copy, write=args.phase == "compute")
+            compute_v3(
+                args.seal,
+                args.run_date,
+                args.copy,
+                write=args.phase == "compute",
+                amendment_seal=args.amendment_seal,
+            )
             return
     run_one = compute if args.version == 1 else compute_gate
     if args.phase in ("method-check", "n0", "compare"):

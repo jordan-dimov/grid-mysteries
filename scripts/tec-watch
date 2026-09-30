@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+# The named-project watch on the daily TEC capture (grid_mysteries.tec.watch).
+# Reads the copies the watchdog has mirrored, appends one line per change to
+# data/derived/tec-watch/ (private; data/derived is not committed) and, when
+# there is anything new, emails the sponsor the new lines. Idempotent: a
+# second run on the same copies writes and sends nothing.
+#   scripts/tec-watch            run, and mail new lines
+#   scripts/tec-watch --no-mail  run, print only (first run, or by hand)
+set -uo pipefail
+cd "$(dirname "$0")/.."
+export PATH="${HOME}/.local/bin:${HOME}/bin:${PATH}"
+unset VIRTUAL_ENV
+mail=1
+[[ "${1:-}" == "--no-mail" ]] && mail=0
+to="${TEC_WATCH_TO:-jdimov@a115.co.uk}"
+log=data/derived/tec-watch/run.log
+mkdir -p "$(dirname "$log")"
+err=$(mktemp)
+out=$(uv run --group registers python -m grid_mysteries.tec.watch 2>"$err")
+status=$?
+{ echo "== $(date -u '+%F %T') exit $status"; cat "$err"; [[ -n "$out" ]] && echo "$out"; } >>"$log"
+summary=$(cat "$err"); rm -f "$err"
+[[ -n "$out" ]] && echo "$out"
+echo "$summary" >&2
+if [[ $status -ne 0 && $mail -eq 1 ]]; then
+  gmail send "$to" "TEC watch: run FAILED (exit $status)" \
+    "$(printf 'The named-project watch failed on %s.\n\n%s\n\nLast lines of %s:\n\n' "$(date -u '+%d/%m/%Y %H:%M UTC')" "$summary" "$log"; tail -30 "$log")" >/dev/null 2>&1
+  exit $status
+fi
+if [[ -n "$out" && $mail -eq 1 ]]; then
+  n=$(printf '%s\n' "$out" | grep -c .)
+  gmail send "$to" "TEC watch: $n line(s) on the watched projects" \
+    "$(printf '%s\n\n%s\n\nLog: %s/data/derived/tec-watch/watch-log.ndjson\n' "$out" "$summary" "$PWD")" >/dev/null 2>&1
+fi
+exit $status

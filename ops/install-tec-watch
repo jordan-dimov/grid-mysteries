@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+# Install and start the TEC named-project watch timer for this user. A
+# deliberate act: nothing in the repository runs until this is executed.
+#   ops/install-tec-watch          install and enable
+#   ops/install-tec-watch --remove disable and unlink
+set -euo pipefail
+here="$(cd "$(dirname "$0")" && pwd)"
+units="$HOME/.config/systemd/user"
+mkdir -p "$units"
+if [[ "${1:-}" == "--remove" ]]; then
+  systemctl --user disable --now tec-watch.timer || true
+  rm -f "$units/tec-watch.service" "$units/tec-watch.timer"
+  systemctl --user daemon-reload
+  echo "tec-watch removed"
+  exit 0
+fi
+ln -sf "$here/systemd/tec-watch.service" "$units/tec-watch.service"
+ln -sf "$here/systemd/tec-watch.timer" "$units/tec-watch.timer"
+systemctl --user daemon-reload
+systemctl --user enable --now tec-watch.timer
+systemctl --user list-timers tec-watch.timer --no-pager
+echo "tec-watch installed; watch list and log under data/derived/tec-watch/"

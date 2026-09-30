@@ -1,0 +1,9 @@
+[Unit]
+Description=Grid Mysteries named-project watch on the daily TEC capture
+After=network-online.target vintage-watchdog.service
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+WorkingDirectory=%h/dev/grid-mysteries
+ExecStart=%h/dev/grid-mysteries/scripts/tec-watch

@@ -1,0 +1,14 @@
+[Unit]
+Description=Run the TEC named-project watch twice a day (10:50 and 22:50 UTC, after the watchdog has mirrored the day's copy)
+
+[Timer]
+# Wall-clock and persistent for the same reason as vintage-watchdog.timer:
+# a missed slot (laptop off or asleep) runs as soon as the laptop is back.
+OnBootSec=8min
+OnCalendar=*-*-* 10,22:50:00 UTC
+Persistent=true
+RandomizedDelaySec=3min
+Unit=tec-watch.service
+
+[Install]
+WantedBy=timers.target

@@ -1,15 +1,15 @@
 # 020 — Did it energise: amendment 2 (stages dated after the first `Built` copy)
 
-**Draft, written 2026-09-30 for the sponsor's word; not frozen, nothing
-recomputed under it.** It amends amendment 1's per-project rule A1 by
+**Written 2026-09-30 after version 0.1 under amendment 1 (SHA-256
+`cc01e3cf…`); the sponsor's word to freeze came the same day.** Frozen by
+`scripts/freeze` before any recompute. It amends amendment 1's per-project rule A1 by
 naming a population A1 left inside the measure: the capacity-bearing stages
 whose printed date lies **after** the copy in which the project first
 prints `Built`. Under A1 such a stage can be the "last dated
 capacity-bearing stage" and pull the project's reference date into the
 future, so that a project reads as `Built` before its date by years. This
 amendment separates that population and reports the measure with and
-without it, both medians shown. On the sponsor's word it is frozen by
-`scripts/freeze` before any recompute.
+without it, both medians shown.
 
 ## Prior exposure, stated
 

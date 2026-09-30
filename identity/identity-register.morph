@@ -1,0 +1,177 @@
+-- The identity table as a governed record. DRAFT of 30/09/2026 for the
+-- sponsor's word; not deployed, nothing recorded under it.
+--
+-- What it holds: for each register-side subject (a printed customer name,
+-- a Project ID, or a content-identity row key), which Companies House
+-- company it is, as PROPOSED by a frozen rule version and as ADMITTED or
+-- REFUSED by a named human. 019 did this by hand in files: a rule wrote
+-- `links.ndjson` (one line per name and rule version, append-only) and a
+-- person wrote `links-admitted.json` (initials and a date). Here the
+-- proposal is a claim the machine may assert, admission and refusal are
+-- transformations only a human holding `AdmitAuthority` may run, and an
+-- admission may carry the Companies House tenure during which the company
+-- bore the name (019's copy-date rule), so one subject can be admitted to
+-- several companies over non-overlapping dates.
+--
+-- Nothing is ever retracted. A belief changes by a later act: a refusal
+-- after an admission, or a new admission of the same subject with a
+-- tenure, both recorded with their own date. "What did we believe subject
+-- X was on date D" is a read of `LinkAdmitted` joined to `LinkProposed`
+-- as of the last transition on or before D (`inspect claims --as-of`);
+-- "which company bore X at copy date C" is the admitted link whose tenure
+-- contains C. Two clocks, both answerable without the files.
+--
+-- Actor policy is the two-role pattern of the research record (v2): the
+-- human actor bound to a login role that only a person holds, the machine
+-- actor to the engine's role. Every gate is named. Every invariant stays
+-- inside the compiled fragment (no `or`, no defined calls), like the TEC
+-- and Bill records; scripts/check-programmes would hold it there.
+
+program identity_register
+
+-- Actor policy, as v2: the runtime refuses a proposal whose actor is not
+-- the login role bound to it.
+predicate ActorAssertionRestricted(actor: Subject)
+    append only
+predicate ActorAssertionAuthority(actor: Subject, login_role: Subject)
+    append only
+-- Only the human admits or refuses; only the machine proposes.
+predicate AdmitAuthority(actor: Subject)
+    append only
+predicate ProposeAuthority(actor: Subject)
+    append only
+
+-- A rule version a proposal may name: the frozen declaration (or
+-- amendment) whose reading rule produced it, by digest.
+predicate RuleVersion(rule_version: Subject, declaration_digest: Subject)
+    unique by (rule_version)
+    append only
+
+-- The register-side subject: what kind of thing is being identified.
+-- kind is one of #printed_name, #project_id, #row (the reading rule that
+-- keys it is the rule version's business).
+predicate RegisterSubject(subject: Subject, kind: Subject, first_printed: Date)
+    unique by (subject)
+    append only
+
+-- A rule's proposal: this subject may be this company, under this rule
+-- version, from this evidence (the digest of the pinned search response
+-- or profile that made the case), with the rule's own verdict as class:
+-- #exact and #previous_name are the rule's resolutions, #candidate a
+-- company the rule surfaced and did not resolve (an ambiguous or
+-- unresolved name's candidates, 019's column B). A person admits any
+-- proposal; the rule never admits. One link per (subject, company, rule
+-- version).
+predicate LinkProposed(link: Subject, subject: Subject, company: Subject, class: Subject, rule_version: Subject, evidence_digest: Subject, proposed_on: Date)
+    unique by (link)
+    append only
+-- The rule looked and found nothing: recorded, so absence is a fact of
+-- the record and not of a missing line.
+predicate SubjectUnresolved(subject: Subject, rule_version: Subject, evidence_digest: Subject, proposed_on: Date)
+    append only
+
+-- A person's admission of a proposal, dated, with the tenure during which
+-- the company bore the name (#none at both ends for an admission that
+-- holds for every copy date), and the digest of the note that states the
+-- rule of admission (exactly-one-previous-name, spacing-only, copy-date).
+predicate LinkAdmitted(link: Subject, admitted_on: Date, tenure_from: Subject, tenure_until: Subject, rule_of_admission: Subject, note_digest: Subject)
+    unique by (link)
+    append only
+predicate LinkRefused(link: Subject, refused_on: Date, reason_digest: Subject)
+    unique by (link)
+    append only
+-- A later act that stands down an admission without erasing it: the
+-- admission stays in the record with the date it was withdrawn and why.
+predicate AdmissionWithdrawn(link: Subject, withdrawn_on: Date, reason_digest: Subject)
+    unique by (link)
+    append only
+
+-- Audit-checkpoint signing (reserved predicate name), as the other engines.
+predicate AuditSigningKey(key_id: Subject, purpose: Subject, public_key: Subject)
+    append only
+
+invariant proposals_name_a_subject:
+    LinkProposed(_, s, _, _, _, _, _) implies RegisterSubject(s, _, _)
+
+invariant proposals_name_a_rule_version:
+    LinkProposed(_, _, _, _, r, _, _) implies RuleVersion(r, _)
+
+invariant unresolved_names_a_subject:
+    SubjectUnresolved(s, _, _, _) implies RegisterSubject(s, _, _)
+
+invariant unresolved_names_a_rule_version:
+    SubjectUnresolved(_, r, _, _) implies RuleVersion(r, _)
+
+invariant admissions_name_a_proposal:
+    LinkAdmitted(l, _, _, _, _, _) implies LinkProposed(l, _, _, _, _, _, _)
+
+invariant refusals_name_a_proposal:
+    LinkRefused(l, _, _) implies LinkProposed(l, _, _, _, _, _, _)
+
+invariant withdrawals_name_an_admission:
+    AdmissionWithdrawn(l, _, _) implies LinkAdmitted(l, _, _, _, _, _)
+
+invariant an_admitted_link_was_not_refused:
+    LinkAdmitted(l, _, _, _, _, _) implies not LinkRefused(l, _, _)
+
+-- Bootstrap, once.
+transformation establish_identity_governance(human_actor, human_login_role, machine_actor, machine_login_role):
+    require governance_not_yet_established: not AdmitAuthority(_)
+    admit ActorAssertionRestricted(human_actor)
+    admit ActorAssertionAuthority(human_actor, human_login_role)
+    admit ActorAssertionRestricted(machine_actor)
+    admit ActorAssertionAuthority(machine_actor, machine_login_role)
+    admit AdmitAuthority(human_actor)
+    admit ProposeAuthority(machine_actor)
+
+transformation register_audit_signing_key(key_id, public_key):
+    require key_registration_requires_admit_authority: AdmitAuthority(actor)
+    require key_not_already_registered: not AuditSigningKey(key_id, _, _)
+    admit AuditSigningKey(key_id, #audit_checkpoint_v1, public_key)
+
+-- A rule version is registered by the human: it names a frozen
+-- declaration, and freezing is the human's act.
+transformation register_rule_version(rule_version, declaration_digest):
+    require rule_registration_requires_admit_authority: AdmitAuthority(actor)
+    require rule_version_is_new: not RuleVersion(rule_version, _)
+    admit RuleVersion(rule_version, declaration_digest)
+
+transformation register_subject(subject, kind, first_printed):
+    require subject_registration_requires_propose_authority: ProposeAuthority(actor)
+    require subject_is_new: not RegisterSubject(subject, _, _)
+    admit RegisterSubject(subject, kind, first_printed)
+
+transformation propose_link(link, subject, company, class, rule_version, evidence_digest, proposed_on):
+    require proposal_requires_propose_authority: ProposeAuthority(actor)
+    require proposal_names_a_subject: RegisterSubject(subject, _, _)
+    require proposal_names_a_rule_version: RuleVersion(rule_version, _)
+    require link_is_new: not LinkProposed(link, _, _, _, _, _, _)
+    admit LinkProposed(link, subject, company, class, rule_version, evidence_digest, proposed_on)
+
+transformation record_unresolved(subject, rule_version, evidence_digest, proposed_on):
+    require unresolved_requires_propose_authority: ProposeAuthority(actor)
+    require unresolved_names_a_subject: RegisterSubject(subject, _, _)
+    require unresolved_names_a_rule_version: RuleVersion(rule_version, _)
+    admit SubjectUnresolved(subject, rule_version, evidence_digest, proposed_on)
+
+-- Only a person admits. A refused proposal cannot be admitted afterwards;
+-- a person who changes their mind proposes nothing, they withdraw.
+transformation admit_link(link, admitted_on, tenure_from, tenure_until, rule_of_admission, note_digest):
+    require admission_requires_admit_authority: AdmitAuthority(actor)
+    require admission_names_a_proposal: LinkProposed(link, _, _, _, _, _, _)
+    require link_not_already_admitted: not LinkAdmitted(link, _, _, _, _, _)
+    require link_not_refused: not LinkRefused(link, _, _)
+    admit LinkAdmitted(link, admitted_on, tenure_from, tenure_until, rule_of_admission, note_digest)
+
+transformation refuse_link(link, refused_on, reason_digest):
+    require refusal_requires_admit_authority: AdmitAuthority(actor)
+    require refusal_names_a_proposal: LinkProposed(link, _, _, _, _, _, _)
+    require link_not_already_refused: not LinkRefused(link, _, _)
+    require link_not_admitted: not LinkAdmitted(link, _, _, _, _, _)
+    admit LinkRefused(link, refused_on, reason_digest)
+
+transformation withdraw_admission(link, withdrawn_on, reason_digest):
+    require withdrawal_requires_admit_authority: AdmitAuthority(actor)
+    require withdrawal_names_an_admission: LinkAdmitted(link, _, _, _, _, _)
+    require admission_not_already_withdrawn: not AdmissionWithdrawn(link, _, _)
+    admit AdmissionWithdrawn(link, withdrawn_on, reason_digest)

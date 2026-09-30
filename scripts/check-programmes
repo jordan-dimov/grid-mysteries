@@ -24,13 +24,17 @@ route() { # <programme> -> the `invariant checks:` line of `morpholog check -v`
 }
 
 for programme in morpholog/research.morph morpholog/research-v2-draft.morph \
-    morpholog/research-v3-draft.morph tec/tec-register.morph bill/bill-register.morph; do
+    morpholog/research-v3-draft.morph tec/tec-register.morph bill/bill-register.morph \
+    identity/identity-register.morph; do
   morpholog check "$programme" >/dev/null
 done
 pinned morpholog/research.morph          morpholog/PROGRAMME_HASH.json
 pinned morpholog/research-v2-draft.morph morpholog/V2_DRAFT_HASH.json
 pinned morpholog/research-v3-draft.morph morpholog/V3_DRAFT_HASH.json
-for engine in tec bill; do
+# The identity register is a frozen design (identity/IDENTITY-DESIGN.md),
+# not yet deployed; it is held to its pin and to the compiled route now so
+# the build starts from the programme the sponsor approved.
+for engine in tec bill identity; do
   programme="$engine/$engine-register.morph"
   pinned "$programme" "$engine/PROGRAMME_HASH.json"
   if [[ "$(route "$programme")" != compiled ]]; then

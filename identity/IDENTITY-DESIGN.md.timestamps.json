@@ -1,0 +1,29 @@
+{
+ "file": "IDENTITY-DESIGN.md",
+ "sha256": "4b5dfdee33777150d10a9d58817b6adf795c148101a35d6579c8165e3a98dfd3",
+ "stamped_at_utc_local_clock": "2026-09-30T21:23:05Z",
+ "proofs": [
+  {
+   "kind": "opentimestamps",
+   "path": "IDENTITY-DESIGN.md.ots",
+   "status": "pending calendar attestation until upgraded",
+   "verify": "ots verify IDENTITY-DESIGN.md.ots  (needs a Bitcoin node or the calendars; `ots info` reads the proof offline)"
+  },
+  {
+   "kind": "rfc3161",
+   "tsa": "https://freetsa.org/tsr",
+   "path": "IDENTITY-DESIGN.md.freetsa.tsr",
+   "tsa_time": "Sep 30 21:23:10 2026 GMT",
+   "verify": "openssl ts -verify -in IDENTITY-DESIGN.md.freetsa.tsr -queryfile IDENTITY-DESIGN.md.tsq -CAfile trust/tsa/freetsa-cacert.pem"
+  },
+  {
+   "kind": "rfc3161",
+   "tsa": "http://timestamp.digicert.com",
+   "path": "IDENTITY-DESIGN.md.digicert.tsr",
+   "tsa_time": "Sep 30 21:23:11 2026 GMT",
+   "verify": "openssl ts -verify -in IDENTITY-DESIGN.md.digicert.tsr -queryfile IDENTITY-DESIGN.md.tsq -CAfile trust/tsa/digicert-trusted-root-g4.pem"
+  }
+ ],
+ "query": "IDENTITY-DESIGN.md.tsq",
+ "note": "Each token binds the SHA-256 above to the TSA's clock under the TSA's key; the OpenTimestamps proof binds it to a Bitcoin block once upgraded. The file itself is what is stamped; re-hash it to check."
+}

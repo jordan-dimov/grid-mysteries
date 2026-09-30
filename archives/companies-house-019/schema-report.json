@@ -2,257 +2,259 @@
  "run_date": "2026-09-30",
  "endpoints": {
   "search": {
-   "files": 1375,
+   "files": 1855,
    "not_found_or_empty": 0,
-   "items": 26119,
+   "items": 35150,
    "top_level_fields_present": {
-    "items": 1375,
-    "items_per_page": 1375,
-    "kind": 1375,
-    "page_number": 1375,
-    "start_index": 1375,
-    "total_results": 1375
+    "items_per_page": 1855,
+    "kind": 1855,
+    "page_number": 1855,
+    "start_index": 1855,
+    "total_results": 1855,
+    "items": 1854
    },
    "item_fields_present": {
-    "company_number": 26119,
-    "company_type": 26119,
-    "description": 26119,
-    "description_identifier": 26119,
-    "kind": 26119,
-    "links": 26119,
-    "title": 26119,
-    "matches": 26095,
-    "company_status": 25877,
-    "date_of_creation": 25756,
-    "address": 25739,
-    "address_snippet": 25739,
-    "date_of_cessation": 4342,
-    "snippet": 3549,
-    "external_registration_number": 381
+    "company_number": 35150,
+    "company_type": 35150,
+    "description": 35150,
+    "description_identifier": 35150,
+    "kind": 35150,
+    "links": 35150,
+    "title": 35150,
+    "matches": 35124,
+    "company_status": 34861,
+    "date_of_creation": 34702,
+    "address": 34679,
+    "address_snippet": 34679,
+    "date_of_cessation": 5837,
+    "snippet": 5286,
+    "external_registration_number": 496
    },
    "spellings": {
     "items.company_status": {
-     "active": 21065,
-     "dissolved": 4250,
-     "liquidation": 248,
-     "registered": 97,
-     "converted-closed": 78,
-     "open": 56,
-     "closed": 37,
-     "removed": 16,
-     "closed-on": 11,
-     "administration": 10,
-     "receivership": 7,
+     "active": 28361,
+     "dissolved": 5709,
+     "liquidation": 334,
+     "registered": 145,
+     "converted-closed": 106,
+     "open": 89,
+     "closed": 54,
+     "removed": 20,
+     "closed-on": 17,
+     "administration": 13,
+     "receivership": 11,
      "insolvency-proceedings": 2
     },
     "items.kind": {
-     "searchresults#company": 26119
+     "searchresults#company": 35150
     }
    },
-   "dates_iso": 30021,
-   "dates_other": 77
+   "dates_iso": 40433,
+   "dates_other": 106
   },
   "advanced": {
-   "files": 47,
-   "not_found_or_empty": 40,
-   "items": 21,
+   "files": 108,
+   "not_found_or_empty": 94,
+   "items": 67,
    "top_level_fields_present": {
-    "etag": 7,
-    "top_hit": 7,
-    "items": 7,
-    "kind": 7,
-    "hits": 7
+    "etag": 14,
+    "top_hit": 14,
+    "items": 14,
+    "kind": 14,
+    "hits": 14
    },
    "item_fields_present": {
-    "company_name": 21,
-    "company_number": 21,
-    "company_status": 21,
-    "company_type": 21,
-    "kind": 21,
-    "links": 21,
-    "date_of_creation": 21,
-    "registered_office_address": 21,
-    "sic_codes": 19,
-    "date_of_cessation": 10
+    "company_name": 67,
+    "company_number": 67,
+    "company_status": 67,
+    "company_type": 67,
+    "kind": 67,
+    "links": 67,
+    "date_of_creation": 67,
+    "registered_office_address": 67,
+    "sic_codes": 65,
+    "date_of_cessation": 48
    },
    "spellings": {
     "items.company_status": {
-     "dissolved": 10,
-     "active": 10,
+     "dissolved": 48,
+     "active": 18,
      "open": 1
     },
     "items.kind": {
-     "search-results#company": 21
+     "search-results#company": 67
     }
    },
-   "dates_iso": 31,
+   "dates_iso": 115,
    "dates_other": 0
   },
   "profile": {
-   "files": 1320,
+   "files": 1485,
    "not_found_or_empty": 0,
    "items": 0,
    "top_level_fields_present": {
-    "can_file": 1320,
-    "company_name": 1320,
-    "company_number": 1320,
-    "company_status": 1320,
-    "date_of_creation": 1320,
-    "etag": 1320,
-    "has_charges": 1320,
-    "links": 1320,
-    "registered_office_address": 1320,
-    "type": 1320,
-    "accounts": 1319,
-    "has_insolvency_history": 1319,
-    "jurisdiction": 1319,
-    "undeliverable_registered_office_address": 1319,
-    "registered_office_is_in_dispute": 1318,
-    "has_super_secure_pscs": 1316,
-    "confirmation_statement": 1307,
-    "sic_codes": 1289,
-    "previous_company_names": 490,
-    "last_full_members_list_date": 269,
-    "has_been_liquidated": 244,
-    "date_of_cessation": 25,
-    "company_status_detail": 9,
-    "status": 2,
+    "can_file": 1485,
+    "company_name": 1485,
+    "company_number": 1485,
+    "company_status": 1485,
+    "date_of_creation": 1485,
+    "etag": 1485,
+    "has_charges": 1485,
+    "links": 1485,
+    "registered_office_address": 1485,
+    "type": 1485,
+    "accounts": 1484,
+    "has_insolvency_history": 1484,
+    "jurisdiction": 1484,
+    "undeliverable_registered_office_address": 1484,
+    "registered_office_is_in_dispute": 1470,
+    "has_super_secure_pscs": 1465,
+    "sic_codes": 1453,
+    "confirmation_statement": 1451,
+    "previous_company_names": 571,
+    "last_full_members_list_date": 322,
+    "has_been_liquidated": 288,
+    "date_of_cessation": 55,
+    "status": 13,
+    "company_status_detail": 11,
+    "annual_return": 7,
     "branch_company_details": 1,
     "external_registration_number": 1,
     "foreign_company_details": 1
    },
    "item_fields_present": {
-    "previous_company_names[].name": 1378,
-    "previous_company_names[].effective_from": 1378,
-    "previous_company_names[].ceased_on": 1378
+    "previous_company_names[].name": 1640,
+    "previous_company_names[].effective_from": 1640,
+    "previous_company_names[].ceased_on": 1640
    },
    "spellings": {
     "company_status": {
-     "active": 1293,
-     "dissolved": 25,
-     "liquidation": 1,
+     "active": 1427,
+     "dissolved": 55,
+     "liquidation": 2,
      "open": 1
     },
     "type": {
-     "ltd": 1286,
+     "ltd": 1447,
      "llp": 29,
+     "plc": 4,
      "private-unlimited": 2,
-     "plc": 1,
+     "private-limited-guarant-nsc": 1,
      "uk-establishment": 1,
      "oversea-company": 1
     }
    },
-   "dates_iso": 1320,
+   "dates_iso": 1485,
    "dates_other": 0
   },
   "psc": {
-   "files": 1301,
+   "files": 1443,
    "not_found_or_empty": 0,
-   "items": 2750,
+   "items": 3007,
    "top_level_fields_present": {
-    "items_per_page": 1301,
-    "start_index": 1301,
-    "total_results": 1301,
-    "active_count": 1301,
-    "ceased_count": 1301,
-    "links": 1301,
-    "items": 1295
+    "items_per_page": 1443,
+    "start_index": 1443,
+    "total_results": 1443,
+    "active_count": 1443,
+    "ceased_count": 1443,
+    "links": 1443,
+    "items": 1429
    },
    "item_fields_present": {
-    "etag": 2750,
-    "notified_on": 2750,
-    "name": 2750,
-    "links": 2750,
-    "ceased": 2750,
-    "kind": 2750,
-    "address": 2750,
-    "natures_of_control": 2750,
-    "identification": 2264,
-    "ceased_on": 1250,
-    "country_of_residence": 486,
-    "date_of_birth": 486,
-    "name_elements": 486,
-    "nationality": 486,
-    "identity_verification_details": 195
+    "etag": 3007,
+    "notified_on": 3007,
+    "name": 3007,
+    "links": 3007,
+    "ceased": 3007,
+    "kind": 3007,
+    "address": 3007,
+    "natures_of_control": 3007,
+    "identification": 2443,
+    "ceased_on": 1347,
+    "country_of_residence": 564,
+    "date_of_birth": 564,
+    "name_elements": 564,
+    "nationality": 564,
+    "identity_verification_details": 233
    },
    "spellings": {
     "items.kind": {
-     "corporate-entity-person-with-significant-control": 2258,
-     "individual-person-with-significant-control": 486,
-     "legal-person-person-with-significant-control": 6
+     "corporate-entity-person-with-significant-control": 2436,
+     "individual-person-with-significant-control": 564,
+     "legal-person-person-with-significant-control": 7
     }
    },
-   "dates_iso": 4000,
+   "dates_iso": 4354,
    "dates_other": 0
   },
   "psc-statements": {
-   "files": 1301,
-   "not_found_or_empty": 1203,
-   "items": 105,
+   "files": 1443,
+   "not_found_or_empty": 1329,
+   "items": 121,
    "top_level_fields_present": {
-    "active_count": 98,
-    "ceased_count": 98,
-    "items": 98,
-    "items_per_page": 98,
-    "links": 98,
-    "start_index": 98,
-    "total_results": 98
+    "active_count": 114,
+    "ceased_count": 114,
+    "items": 114,
+    "items_per_page": 114,
+    "links": 114,
+    "start_index": 114,
+    "total_results": 114
    },
    "item_fields_present": {
-    "etag": 105,
-    "kind": 105,
-    "links": 105,
-    "notified_on": 105,
-    "statement": 105,
-    "ceased_on": 82
+    "etag": 121,
+    "kind": 121,
+    "links": 121,
+    "notified_on": 121,
+    "statement": 121,
+    "ceased_on": 90
    },
    "spellings": {
     "items.kind": {
-     "persons-with-significant-control-statement": 105
+     "persons-with-significant-control-statement": 121
     }
    },
-   "dates_iso": 187,
+   "dates_iso": 211,
    "dates_other": 0
   },
   "charges": {
-   "files": 1301,
+   "files": 1443,
    "not_found_or_empty": 0,
-   "items": 2216,
+   "items": 2451,
    "top_level_fields_present": {
-    "part_satisfied_count": 1301,
-    "satisfied_count": 1301,
-    "total_count": 1301,
-    "unfiltered_count": 1301,
-    "etag": 1300,
-    "items": 426
+    "part_satisfied_count": 1443,
+    "satisfied_count": 1443,
+    "total_count": 1443,
+    "unfiltered_count": 1443,
+    "etag": 1440,
+    "items": 476
    },
    "item_fields_present": {
-    "charge_number": 2216,
-    "classification": 2216,
-    "created_on": 2216,
-    "delivered_on": 2216,
-    "etag": 2216,
-    "links": 2216,
-    "particulars": 2216,
-    "persons_entitled": 2216,
-    "status": 2216,
-    "transactions": 2216,
-    "charge_code": 1646,
-    "satisfied_on": 1261,
-    "secured_details": 570,
+    "charge_number": 2451,
+    "classification": 2451,
+    "created_on": 2451,
+    "delivered_on": 2451,
+    "etag": 2451,
+    "links": 2451,
+    "particulars": 2451,
+    "persons_entitled": 2451,
+    "status": 2451,
+    "transactions": 2451,
+    "charge_code": 1796,
+    "satisfied_on": 1418,
+    "secured_details": 655,
     "scottish_alterations": 46,
-    "assets_ceased_released": 28,
-    "more_than_four_persons_entitled": 3,
-    "acquired_on": 2
+    "assets_ceased_released": 37,
+    "more_than_four_persons_entitled": 6,
+    "acquired_on": 3
    },
    "spellings": {
     "items.status": {
-     "fully-satisfied": 1261,
-     "outstanding": 953,
+     "fully-satisfied": 1418,
+     "outstanding": 1031,
      "part-satisfied": 2
     }
    },
-   "dates_iso": 5693,
+   "dates_iso": 6320,
    "dates_other": 0
   }
  }

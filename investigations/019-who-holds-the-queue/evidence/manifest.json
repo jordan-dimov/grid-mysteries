@@ -8,5 +8,26 @@
   "exact": 1302,
   "ambiguous": 26,
   "unresolved": 47
+ },
+ "amendment_1": {
+  "sha256": "9ba963ee3fc007b4c9ce2acf57f5db1ee2ef704dfec5affab7744129a5fd21b2",
+  "rule_version": "019-r2-v2",
+  "journal_sha256": "c3b14f655537cef355ee34c02491b986f1b767de5943bdcf6c61585d26fb9f62",
+  "requests": 1133,
+  "failures": 1,
+  "earlier_names": 480,
+  "classes_all": {
+   "exact": 1553,
+   "ambiguous": 46,
+   "unresolved": 79,
+   "previous-name": 176,
+   "identity-guard": 1
+  },
+  "classes_copy_names": {
+   "exact": 1302,
+   "ambiguous": 26,
+   "unresolved": 18,
+   "previous-name": 29
+  }
  }
 }

@@ -83,6 +83,48 @@
    "admissions": 0,
    "F1": false,
    "F2": false
+  },
+  {
+   "phase": "acquire-amendment-1",
+   "at": "2026-09-30T18:52:39+00:00",
+   "run_date": "2026-09-30",
+   "requests": 1133,
+   "failures": 1,
+   "earlier_names": 480,
+   "classes_copy_names": {
+    "exact": 1302,
+    "ambiguous": 26,
+    "unresolved": 18,
+    "previous-name": 29
+   },
+   "classes_all": {
+    "exact": 1553,
+    "ambiguous": 46,
+    "unresolved": 79,
+    "previous-name": 176,
+    "identity-guard": 1
+   }
+  },
+  {
+   "phase": "schema",
+   "at": "2026-09-30T18:52:50+00:00",
+   "run_date": "2026-09-30",
+   "files": {
+    "search": 1855,
+    "advanced": 108,
+    "profile": 1485,
+    "psc": 1443,
+    "psc-statements": 1443,
+    "charges": 1443
+   }
+  },
+  {
+   "phase": "compute",
+   "at": "2026-09-30T18:52:51+00:00",
+   "run_date": "2026-09-30",
+   "admissions": 0,
+   "F1": false,
+   "F2": false
   }
  ]
 }

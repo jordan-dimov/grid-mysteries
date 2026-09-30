@@ -19,6 +19,7 @@ pinned() { # <programme> <pin file> -> refuses on a hash other than the pinned o
 }
 
 route() { # <programme> -> the `invariant checks:` line of `morpholog check -v`
+  # Prose, until `check --json` carries the route per invariant (morpholog#410).
   morpholog check -v "$1" | sed -n 's/^  invariant checks: //p'
 }
 

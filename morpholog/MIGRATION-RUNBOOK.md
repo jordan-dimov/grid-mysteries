@@ -70,6 +70,10 @@ PROGS="morpholog/research.morph morpholog/research-v2-draft.morph morpholog/rese
 morpholog provision indexes $PROGS --dry-run --database-url $LIVE
 morpholog provision indexes $PROGS --prune   --database-url $LIVE
 morpholog provision indexes $PROGS --dry-run --database-url $LIVE   # every line KEEP
+#    (a `--check` that exits non-zero on anything but KEEP is morpholog#434;
+#    until it ships, read the dry run. A programme deployed after this step,
+#    as v3 and the Bill record were, is unprovisioned until the step is run
+#    again: provisioning belongs in every deploy, not only in migrations.)
 
 dropdb gm_migrate_rehearsal
 ```

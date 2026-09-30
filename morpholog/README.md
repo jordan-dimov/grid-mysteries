@@ -66,7 +66,7 @@ accepted proposal, in the same commit:
 
 Checkpoints before tree_size 140 carry no witness. freetsa.org's tokens
 are stored but reported `unsupported` by Morpholog v0.0.11 to v0.0.13,
-which cannot yet check their signature algorithm (ECDSA with SHA-512);
+which cannot yet check their signature algorithm (ECDSA with SHA-512; morpholog#386);
 DigiCert's verify against `trust/tsa/`.
 
 `scripts/replay-research` fails if any of these drift, so CI enforces the

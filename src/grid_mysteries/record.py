@@ -248,6 +248,9 @@ def exported_pack(
         require_signing_key=str(record.public_key),
         trusted_tsa_file=str(DIGICERT_ROOT),
     )
+    # The command's own pass rule, restated here until the report carries a
+    # `passes` boolean (morpholog#435): the verdict must be intact and no
+    # witness `invalid`; `unsupported` and `unverified` do not fail it.
     invalid = [
         w.submitted_to
         for c in (report.witnesses.checkpoints if report.witnesses else [])

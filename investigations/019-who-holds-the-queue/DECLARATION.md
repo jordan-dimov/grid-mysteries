@@ -31,9 +31,18 @@ from a group company to a project company of the same group; a project
 company renamed from a generic development vehicle to a site-named one; a
 power station whose customer printed three names in turn. The register
 cannot say which of these is a rename and which is a sale. Companies House
-can, dated. The author has read no Companies House record for this
-question; 009's records (2026-08-27) are of other names for another
-question and are not reused.
+can, dated. 009's records (2026-08-27) are of other names for another
+question and are not reused. **Further prior exposure, recorded after the
+first draft:** on 30/09/2026, for the offer-date inventory
+(`ops/OFFER-DATE-SOURCES.md`), a research agent under this session read
+the public Companies House pages of the three watch-list customers
+(Zenobe Stalybridge Limited, Hunterston Grid 1 Ltd, Middleton Energy
+Storage Limited): company numbers, incorporation dates, previous names
+with their dates, and the names of sibling companies at one address. No
+persons with significant control and no charges were read. Those three
+names will resolve under R2 whatever this exposure; nothing about them is
+counted before the run, and the exposure is stated so a reader can weigh
+it.
 
 ## Inputs
 

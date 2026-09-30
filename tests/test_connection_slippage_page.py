@@ -353,6 +353,33 @@ def test_a_correction_is_listed_with_its_date_and_named_in_the_footer():
     assert "- 2026-09-24: The introduction said" in page.render_markdown(series)
 
 
+def test_a_preamble_correction_is_printed_before_the_headline_and_in_the_list():
+    """A caveat on the whole page (gross of cause, 2026-09-30) goes above the
+    headline with its date, and is still listed; a figure correction is not
+    lifted to the top."""
+    _, series = v4_series()
+    series["corrections"] = [
+        {"date": "2026-09-24", "text": "A figure was wrong.", "old": "1", "new": "2"},
+        {
+            "date": "2026-09-30",
+            "text": "The figures are gross of cause.",
+            "old": None,
+            "new": None,
+            "preamble": True,
+        },
+    ]
+    md = page.render_markdown(series)
+    top = md.split("## Headline")[0]
+    assert "**Correction, 30 Sep 2026.** The figures are gross of cause." in top
+    assert "A figure was wrong." not in top
+    assert "- 2026-09-30: The figures are gross of cause." in md
+    html = page.render_page(series)
+    before = html.split('<p class="headline">')[0]
+    assert '<time datetime="2026-09-30">30 Sep 2026</time>.</strong> The figures' in before
+    assert "A figure was wrong." not in before
+    assert html.count("The figures are gross of cause.") == 2
+
+
 def test_the_split_page_uses_no_dash_punctuation_in_its_prose():
     import re
 

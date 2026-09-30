@@ -4,5 +4,24 @@
     "text": "The introduction said the series is built from 700 copies of the register, 31 Jan 2014 to 22 Jul 2025, plus 4 copies since 19 May 2026. 700 was every usable copy, so it counted the 4 reformed-regime copies twice and the 2 copies left out by the partial-export rule as used. The old-regime series is built from 694 copies. No movement figure changed.",
     "old": "700 copies of the register, 31 Jan 2014 to 22 Jul 2025, plus 4 copies since 19 May 2026",
     "new": "694 copies of the register, 31 Jan 2014 to 22 Jul 2025, plus 4 copies since 19 May 2026"
+  },
+  {
+    "date": "2026-09-30",
+    "text": "The megawatt-years on this page are gross of cause: the register never prints why a date moved, and investigation 006, over the 213 slips of 24 months or more among the 863 project-stages it could join to the Transmission Works Register, classed 60% as project-led, 26% as works-led (a same-direction move in an enabling scheme's proxy date inside the window) and 14% as unattributable (investigations/006-connection-slippage-attribution/RESULTS.md and evidence/twr-attribution-summary.json); no figure on this page changes.",
+    "old": null,
+    "new": null,
+    "preamble": true,
+    "sources": [
+      {
+        "path": "investigations/006-connection-slippage-attribution/RESULTS.md",
+        "sha256": "9f9028e6aa6c6143bd028681fd5a7b62541b11a0e44238904252921c3ac24799"
+      },
+      {
+        "path": "investigations/006-connection-slippage-attribution/evidence/twr-attribution-summary.json",
+        "sha256": "3ac322cf7aba85deb9ac70ab40efa701001b4cf2c8a7dd13a685b4e79fbda916",
+        "figures": "t4.attribution_of_big_slips: project_led 128, works_led 56, unattributable 29 of 213"
+      }
+    ],
+    "note": "A caveat, not a recount: no number changes, so old and new are null. Printed in the preamble of SERIES.md and the page, and in the list of corrections."
   }
 ]

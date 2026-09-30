@@ -560,6 +560,20 @@ def render_corrections(corrections: list[dict[str, Any]] | None) -> str:
     return f"<ol>{items}</ol>"
 
 
+def preamble_corrections(corrections: list[dict[str, Any]] | None) -> list[dict[str, Any]]:
+    """Corrections that qualify the whole page rather than one figure, printed
+    at the top as well as in the list, each with its date."""
+    return [c for c in corrections or [] if c.get("preamble")]
+
+
+def render_preamble_corrections(corrections: list[dict[str, Any]] | None) -> str:
+    return "".join(
+        f'<p class="notes"><strong>Correction, <time datetime="{escape(c["date"])}">'
+        f"{escape(day_label(c['date']))}</time>.</strong> {escape(c['text'])}</p>\n"
+        for c in preamble_corrections(corrections)
+    )
+
+
 def plain_reason(skipped: dict[str, Any]) -> str:
     """A reader's reason for a copy the archive holds but the reader cannot parse."""
     error = str(skipped.get("error", ""))
@@ -758,7 +772,7 @@ copy from {escape(day_label(new["first"]))}, and are never added to the figures 
 </header>
 <main>
 <p>{escape(INTRO)}{escape(coverage)}</p>
-
+{render_preamble_corrections(series.get("corrections"))}
 <p class="headline">{escape(headline_sentence(series))}</p>
 {split_note}
 <h2>Year by year</h2>
@@ -917,6 +931,11 @@ def render_markdown(series: dict[str, Any]) -> str:
         f"{counts.get('usable', 0)} usable ({len(counts.get('skipped', []))} unparseable, "
         f"{len(counts.get('excluded', []))} lacking a required column).",
         "",
+        *[
+            line
+            for c in preamble_corrections(series.get("corrections"))
+            for line in (f"**Correction, {day_label(c['date'])}.** {c['text']}", "")
+        ],
         "## Headline",
         "",
         headline_sentence(series),

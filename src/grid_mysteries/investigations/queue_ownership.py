@@ -18,6 +18,8 @@ from grid_mysteries.sources.companies_house import normalise_company_name
 DECLARATION_SHA256: Final = "877682f7bffe52e8b98ff63bf5d14eb1e3d21713e68651d749b94e934b775a6a"
 RULE_VERSION: Final = "019-r2-v1"
 RULE_VERSION_V2: Final = "019-r2-v2"  # DECLARATION-amendment-1.md
+#: 019 amendment 2 (R4 restated): frozen 30/09/2026.
+AMENDMENT_2_PREFIX: Final = "50b3bf7e"
 AS_OF: Final = date(2026, 9, 29)
 UNDER_A_YEAR_FROM: Final = AS_OF - timedelta(days=365)
 RESOLUTION_THRESHOLD: Final = Decimal("0.70")  # F1
@@ -307,6 +309,11 @@ def name_changes(history: dict[str, list[dict[str, str]]]) -> list[NameChange]:
 def classify_change(
     change: NameChange, links: dict[str, Link], profiles: dict[str, dict[str, Any]]
 ) -> dict[str, Any]:
+    """R4 as amended (amendment 2): when both names resolve, the same
+    company is a rename and different companies are a transfer, whatever
+    either company's previous names say (a name borne by two companies in
+    succession passed between them); the previous-name routes decide only
+    when exactly one name resolves."""
     a, b = links.get(change.earlier), links.get(change.later)
     na = a.company_number if a and a.resolved else None
     nb = b.company_number if b and b.resolved else None
@@ -316,14 +323,13 @@ def classify_change(
         for p in profiles[nb].get("previous_company_names") or []:
             if normalise_company_name(p.get("name")) == normalise_company_name(change.earlier):
                 ch_date = p.get("ceased_on")
-    same_company = bool(na and nb and na == nb)
     later_is_previous_of_earlier = bool(
         na and previous_name_matches(change.later, profiles.get(na, {}))
     )
-    if same_company or ch_date is not None or later_is_previous_of_earlier:
+    if na and nb:
+        out["class"] = "rename" if na == nb else "transfer"
+    elif (nb and ch_date is not None) or (na and later_is_previous_of_earlier):
         out["class"] = "rename"
-    elif na and nb:
-        out["class"] = "transfer"
     else:
         out["class"] = "not-determinable"
     out["companies_house_date"] = ch_date

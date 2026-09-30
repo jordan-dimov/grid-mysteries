@@ -170,6 +170,26 @@ def test_r4_name_changes_and_their_classes():
     assert out[2]["class"] == "not-determinable"
 
 
+def test_r4_amendment_2_a_name_borne_by_two_companies_in_succession_is_a_transfer():
+    # The later company once bore the earlier name (it is among its previous
+    # names), but both names resolve to different companies: a transfer.
+    c = qo.NameChange("p", "SOLAR LTD", "SOLAR LTD", "2022-08-24", "2023-08-29")
+    links = {"SOLAR LTD": qo.Link("SOLAR LTD", "admitted", "2", ("1", "2"), "")}
+    links_on = {**links}
+    earlier = {"SOLAR LTD": qo.Link("SOLAR LTD", "admitted", "1", ("1", "2"), "")}
+    profiles = {"2": {"previous_company_names": [{"name": "SOLAR LTD", "ceased_on": "2025-11-06"}]}}
+    # Same name, same company: a rename (the register re-spelt it).
+    assert qo.classify_change(c, links_on, profiles)["class"] == "rename"
+    # The earlier name resolved to company 1 at its copy date, the later to 2.
+    d = qo.NameChange("p", "SOLAR LIMITED", "SOLAR LTD", "2022-08-24", "2023-08-29")
+    both = {**earlier, "SOLAR LIMITED": qo.Link("SOLAR LIMITED", "admitted", "1", ("1",), "")}
+    out = qo.classify_change(d, {**both, "SOLAR LTD": links["SOLAR LTD"]}, profiles)
+    # The date the later company stopped using the name is recorded beside
+    # the event (SOLAR LIMITED normalises to SOLAR LTD) but enters no lag.
+    assert out["class"] == "transfer" and out["register_lag_days"] is None
+    assert out["companies_house_date"] == "2025-11-06"
+
+
 def test_r4_rename_by_previous_name_when_only_the_later_company_resolves():
     c = qo.NameChange("p", "OLD LTD", "NEW LTD", "2022-01-01", "2023-05-01")
     links = {"NEW LTD": qo.Link("NEW LTD", "exact", "7", ("7",), "")}

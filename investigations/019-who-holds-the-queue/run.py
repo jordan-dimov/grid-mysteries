@@ -777,6 +777,7 @@ def phase_schema(run_date: str) -> None:
 
 
 AMENDMENT_1 = HERE / "DECLARATION-amendment-1.md"
+AMENDMENT_2 = HERE / "DECLARATION-amendment-2.md"
 
 
 def require_amendment(amendment_seal: str | None) -> str:
@@ -813,8 +814,19 @@ def load_links(run_date: str, version: str = qo.RULE_VERSION) -> dict[str, qo.Li
     return out
 
 
+def require_frozen(path: Path, prefix: str) -> str:
+    """A frozen amendment: its digest starts as pinned and its proofs exist."""
+    digest = sha(path)
+    if not digest.startswith(prefix):
+        sys.exit(f"{path.name} hashes to {digest[:8]}, not the frozen {prefix}")
+    if not path.with_suffix(".md.timestamps.json").exists():
+        sys.exit(f"refusing: {path.name} has no proof sidecar; freeze it first")
+    return digest
+
+
 def phase_compute(run_date: str) -> None:
     require_seal(qo.DECLARATION_SHA256[:8])
+    amendment_2 = require_frozen(AMENDMENT_2, qo.AMENDMENT_2_PREFIX)
     if not (ARCHIVE / "schema-report.json").exists():
         sys.exit("run the schema phase first")
     raw = REPO_ROOT / "data/raw/companies-house" / f"{run_date}-019"
@@ -1000,6 +1012,7 @@ def phase_compute(run_date: str) -> None:
     results = {
         "rule_version": version,
         "amendment_1_sha256": sha(AMENDMENT_1) if version == qo.RULE_VERSION_V2 else None,
+        "amendment_2_sha256": amendment_2,
         "figure1_resolution_v1": qo.resolution_figure(all_names, links_v1) if links_v1 else None,
         "earlier_names_searched": sum(1 for n in links if n not in all_names),
         "declaration_sha256": qo.DECLARATION_SHA256,
@@ -1107,6 +1120,7 @@ def render(r: dict[str, Any]) -> str:
         "",
         "## 3. The register's own customer-name changes",
         "",
+        f"R4 as restated by amendment 2 (`{r['amendment_2_sha256'][:8]}…`): a name borne by two companies in succession is a transfer. "
         f"{f3['events']} name-change events on project ids present in the copy, across the copies that print a Project ID. "
         f"By class: {f3['by_class']}. Both names resolved for {f3['share_both_resolved']} of events; "
         f"F3 {'fires' if f3['F3_fires'] else 'does not fire'}.",

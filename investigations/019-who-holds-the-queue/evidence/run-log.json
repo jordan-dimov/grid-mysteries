@@ -184,6 +184,14 @@
    "admissions": 119,
    "F1": false,
    "F2": false
+  },
+  {
+   "phase": "compute",
+   "at": "2026-09-30T21:24:00+00:00",
+   "run_date": "2026-09-30",
+   "admissions": 119,
+   "F1": false,
+   "F2": false
   }
  ]
 }

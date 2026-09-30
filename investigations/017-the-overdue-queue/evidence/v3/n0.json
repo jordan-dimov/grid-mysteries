@@ -1,0 +1,78 @@
+{
+ "investigation": "017",
+ "version": 3,
+ "rule": "N0",
+ "declaration": "DECLARATION-v3.md",
+ "declaration_sha256": "dd396986922a16041766de865bcf9d145583dcecdd9b6fb438114b8eb34f262f",
+ "capture_schema_report_sha256": "857dfc88949a95b3553d96fa25bd84fbed6f4ed433f1090f324140b644975ebd",
+ "computed_at": "2026-09-30T12:19:35+00:00",
+ "selection": {
+  "rule": "the earliest captured copy with last_modified on or after 2026-09-29",
+  "captured_on": "2026-09-30",
+  "days_checked": [
+   "2026-09-29",
+   "2026-09-30"
+  ],
+  "days_with_no_tec_record": []
+ },
+ "copy": {
+  "t_public": "2026-09-29",
+  "t_public_basis": "CKAN resource last_modified 2026-09-29T12:18:57.526163; NESO filename tec-register-28-september-2026.csv; fetched by the daily capture 2026-09-30T06:31:04+00:00",
+  "filename": "tec-register-28-september-2026.csv",
+  "sha256": "d1ccd9e210b4f6bc8f3b0e83d54032dc61f247dbbc1d9e469a342b7766ee5746",
+  "bytes": 440851,
+  "key": "raw/neso/tec-register/2026-09-30/d1ccd9e210b4f6bc8f3b0e83d54032dc61f247dbbc1d9e469a342b7766ee5746"
+ },
+ "schema_report_entry": {
+  "rows": 2199,
+  "columns": [
+   "Agreement Type",
+   "Connection Site",
+   "Cumulative Total Capacity (MW)",
+   "Customer Name",
+   "Gate",
+   "HOST TO",
+   "MW Connected",
+   "MW Effective From",
+   "MW Increase / Decrease",
+   "Plant Type",
+   "Project ID",
+   "Project Name",
+   "Project Number",
+   "Project Status",
+   "Stage"
+  ],
+  "date_spellings": {
+   "date-cell": 0,
+   "iso-dash": 1834,
+   "iso-slash": 0,
+   "uk": 0,
+   "dd-mon-yy": 0,
+   "serial": 0,
+   "blank": 365,
+   "other": 0
+  },
+  "project_status": {
+   "Awaiting Consents": 172,
+   "Built": 381,
+   "Consents Approved": 210,
+   "Scoping": 1392,
+   "Under Construction/Commissioning": 44
+  },
+  "gate": {
+   "": 1327,
+   "1": 769,
+   "2": 103
+  },
+  "flags": []
+ },
+ "verdict": {
+  "N0 the same fifteen columns": true,
+  "N0 date spellings only uk and blank": false,
+  "N0 only the five Project Status spellings": true,
+  "N0 only 1, 2 and blank under Gate": true,
+  "N0 no flag": true
+ },
+ "pass": false,
+ "consequence": "F8: no census of this copy is computed under this version and the comparison is not run; a reading for what changed must be declared and witnessed as an amendment, written from the schema report alone, before any figure is computed"
+}

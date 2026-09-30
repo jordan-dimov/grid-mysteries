@@ -26,7 +26,7 @@ daily capture holds, read from the mirror after each digest is checked
 against its committed manifest. In order, each step committed before the
 next: ``--phase method-check`` (C10, versions 1 and 2 reproduced on the
 captured copy of 15 September); ``--phase compute --copy reference``;
-``scripts/schema-report tec-capture`` for the next copy (N0);
+``scripts/schema-report tec-capture`` for the next copy, then ``--phase n0``;
 ``--phase compute --copy next``; ``--phase compare`` (D1, D2).
 
 Nothing is fetched. The copy is the one already journalled on 2026-09-15.
@@ -758,6 +758,56 @@ def which_copy(name: str) -> tuple[dict, dict[str, Any]]:
     }
 
 
+def n0_verdict(seal: str) -> bool:
+    """N0 for the next copy, from the committed capture schema report alone:
+    the verdict is written whichever way it comes out, and no census figure
+    of the next copy is computed here (F8)."""
+    sealed = require_seal(seal, DECLARATION_V3)
+    if not committed(CAPTURE_REPORT):
+        raise SystemExit("refusing: commit the schema pass before recording N0")
+    entry, selection = which_copy("next")
+    report, copy = capture_copy_report(entry["sha256"])
+    columns = next(e["columns"] for e in report["eras"] if e["last"] >= REFERENCE_T_PUBLIC)
+    verdict = oq.n0(copy, columns)
+    passed = all(verdict.values())
+    write_json(
+        V3 / "n0.json",
+        {
+            "investigation": "017",
+            "version": 3,
+            "rule": "N0",
+            "declaration": DECLARATION_V3.name,
+            "declaration_sha256": sealed,
+            "capture_schema_report_sha256": file_sha256(CAPTURE_REPORT),
+            "computed_at": datetime.now(UTC).isoformat(timespec="seconds"),
+            "selection": selection,
+            "copy": {
+                k: entry[k]
+                for k in ("t_public", "t_public_basis", "filename", "sha256", "bytes", "key")
+            },
+            "schema_report_entry": {
+                k: copy[k]
+                for k in ("rows", "columns", "date_spellings", "project_status", "gate", "flags")
+            },
+            "verdict": verdict,
+            "pass": passed,
+            "consequence": (
+                "the next census may be computed under this version"
+                if passed
+                else "F8: no census of this copy is computed under this version and the "
+                "comparison is not run; a reading for what changed must be declared and "
+                "witnessed as an amendment, written from the schema report alone, before "
+                "any figure is computed"
+            ),
+        },
+    )
+    print(
+        f"N0 for {entry['t_public']} ({entry['sha256'][:16]}…): "
+        + ("PASS" if passed else "FAIL: " + "; ".join(k for k, ok in verdict.items() if not ok))
+    )
+    return passed
+
+
 def compute_v3(seal: str, run_date: str, which: str, *, write: bool) -> None:
     sealed = require_seal(seal, DECLARATION_V3)
     if not METHOD_CHECK.exists() or not json.loads(METHOD_CHECK.read_text())["pass"]:
@@ -1024,7 +1074,7 @@ def main(argv: list[str] | None = None) -> None:
     parser.add_argument("--seal", help="prefix of the declaration's SHA-256")
     parser.add_argument(
         "--phase",
-        choices=("compute", "check", "render", "all", "method-check", "compare"),
+        choices=("compute", "check", "render", "all", "method-check", "n0", "compare"),
         default="render",
     )
     parser.add_argument(
@@ -1046,6 +1096,9 @@ def main(argv: list[str] | None = None) -> None:
         if args.phase == "method-check":
             require_seal(args.seal, DECLARATION_V3)
             raise SystemExit(0 if method_check(write=True) else 1)
+        if args.phase == "n0":
+            n0_verdict(args.seal)
+            return
         if args.phase == "compare":
             compare_v3(args.seal, args.run_date, write=True)
             return
@@ -1055,7 +1108,7 @@ def main(argv: list[str] | None = None) -> None:
             compute_v3(args.seal, args.run_date, args.copy, write=args.phase == "compute")
             return
     run_one = compute if args.version == 1 else compute_gate
-    if args.phase in ("method-check", "compare"):
+    if args.phase in ("method-check", "n0", "compare"):
         raise SystemExit(f"--phase {args.phase} belongs to --version 3")
     if args.phase == "check":
         run_one(args.seal, args.run_date, write=False)

@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+# 019 driver: reads the Companies House key from the sponsor's accounting
+# envrc (CH_API_KEY) into the variable the repo reads, never prints it, and
+# runs one phase with its output appended to a private log.
+#   scripts/run-019 <phase> [--seal <prefix>] [--run-date YYYY-MM-DD]
+set -uo pipefail
+cd "$(dirname "$0")/.."
+export PATH="${HOME}/.local/bin:${PATH}"
+unset VIRTUAL_ENV
+phase="${1:?phase}"; shift
+key=$(grep -m1 '^export CH_API_KEY=' "$HOME/dev/accounting/.envrc" | sed 's/^export CH_API_KEY=//; s/[[:space:]]*#.*$//' | tr -d "\"'")
+[[ -n "$key" ]] || { echo "no CH_API_KEY in ~/dev/accounting/.envrc" >&2; exit 1; }
+export COMPANIES_HOUSE_API_KEY="$key"
+log=data/derived/019-run.log
+mkdir -p "$(dirname "$log")"
+echo "== $(date -u '+%F %T') phase $phase $*" >>"$log"
+uv run --group registers python investigations/019-who-holds-the-queue/run.py --phase "$phase" "$@" 2>&1 | sed "s/$key/<key>/g" | tee -a "$log"
+exit "${PIPESTATUS[0]}"

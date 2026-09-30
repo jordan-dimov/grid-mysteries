@@ -262,6 +262,14 @@ for e in report["files"]:
 print(f"{len(files)} file(s) -> archives/{name}/")
 PY4
 fi
+if [[ "$name" == "companies-house" ]]; then
+  # scripts/schema-report companies-house [run-date]: the pinned Companies
+  # House responses of 019 (search, advanced search, profile, PSC, PSC
+  # statements, charges): fields present per endpoint with blank rates, the
+  # spellings of company_status, PSC kind and charge status, and date forms.
+  # Written by the runner's schema phase; no figure is computed.
+  exec uv run --group registers python investigations/019-who-holds-the-queue/run.py --phase schema ${2:+--run-date "$2"}
+fi
 if [[ "$name" == "tec-capture" ]]; then
   # scripts/schema-report tec-capture: the TEC Register copies the daily
   # capture fetched (data/manifests/*.ndjson, dataset NESO-TEC-REGISTER), read

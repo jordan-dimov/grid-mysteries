@@ -1,0 +1,10335 @@
+{
+ "declaration_sha256": "877682f7bffe52e8b98ff63bf5d14eb1e3d21713e68651d749b94e934b775a6a",
+ "copy_sha256": "d1ccd9e210b4f6bc8f3b0e83d54032dc61f247dbbc1d9e469a342b7766ee5746",
+ "copy_manifest": "data/manifests/2026-09-30.ndjson",
+ "schema_report_sha256": "857dfc88949a95b3553d96fa25bd84fbed6f4ed433f1090f324140b644975ebd",
+ "rows": 2199,
+ "distinct_names": 1375,
+ "distinct_casefold": 1374,
+ "case_pairs": [
+  [
+   "Drax Power Limited",
+   "DRAX POWER LIMITED"
+  ]
+ ],
+ "no_suffix": [
+  "Central Bedfordshire Council",
+  "Cwmni Egino",
+  "First Hydro Company",
+  "HP Trotter t/a Printonan Farm",
+  "LG-B-300",
+  "NUCLEAR DECOMMISSIONING AUTHORITY",
+  "PARC YNNI BANC Y CELYN CYF",
+  "RWE Offshore Wind",
+  "SUTTON BRIDGE POWER GENERATION"
+ ],
+ "rows_without_project_id": 0,
+ "names": {
+  "A'CHRUACH WIND FARM LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005itE"
+   ]
+  },
+  "ABBOTSHAUGH ENERGY STORAGE LIMITED": {
+   "rows": 1,
+   "mw": "500.00",
+   "project_ids": [
+    "a0l4L0000005iPM"
+   ]
+  },
+  "ABEI ENERGY LIMITED": {
+   "rows": 4,
+   "mw": "224.76",
+   "project_ids": [
+    "a0lJ9000000PDys",
+    "a0lJ9000000PNKM",
+    "a0lJ9000000POQK",
+    "a0lJ9000000POjP"
+   ]
+  },
+  "ABERARDER WIND FARM LLP": {
+   "rows": 1,
+   "mw": "49.99",
+   "project_ids": [
+    "a0l4L0000005ilH"
+   ]
+  },
+  "ABERDEEN OFFSHORE WIND FARM LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005itB"
+   ]
+  },
+  "ABEREDW ENERGY PARK LIMITED": {
+   "rows": 1,
+   "mw": "133.00",
+   "project_ids": [
+    "a0l4L0000005iUH"
+   ]
+  },
+  "ABERTHAW ENERGY LIMITED": {
+   "rows": 1,
+   "mw": "249.00",
+   "project_ids": [
+    "a0l4L0000005iet"
+   ]
+  },
+  "ABO ENERGY UNITED KINGDOM LTD": {
+   "rows": 1,
+   "mw": "100.00",
+   "project_ids": [
+    "a0lJ9000000PFov"
+   ]
+  },
+  "ADTEK LIMITED": {
+   "rows": 1,
+   "mw": "49.90",
+   "project_ids": [
+    "a0l8e000001HrmU"
+   ]
+  },
+  "ADV 004 LIMITED": {
+   "rows": 1,
+   "mw": "150.00",
+   "project_ids": [
+    "a0l4L0000005iMF"
+   ]
+  },
+  "AEUK BATTERY PROJECT II LTD": {
+   "rows": 1,
+   "mw": "95.76",
+   "project_ids": [
+    "a0l8e0000012ezR"
+   ]
+  },
+  "AEUK BATTERY PROJECT III LTD": {
+   "rows": 1,
+   "mw": "95.00",
+   "project_ids": [
+    "a0l8e0000012jPX"
+   ]
+  },
+  "AEUK WIND PROJECT II LTD": {
+   "rows": 1,
+   "mw": "39.60",
+   "project_ids": [
+    "a0l8e0000012ggk"
+   ]
+  },
+  "AFON WYSG ENERGY LIMITED": {
+   "rows": 1,
+   "mw": "349.00",
+   "project_ids": [
+    "a0l8e0000011zZ5"
+   ]
+  },
+  "AFTON WIND FARM LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005ipi"
+   ]
+  },
+  "AGILE ENERGY RECOVERY (INVERURIE) LIMITED": {
+   "rows": 1,
+   "mw": "40.00",
+   "project_ids": [
+    "a0l4L0000005iU0"
+   ]
+  },
+  "AGR RENEWABLES LIMITED": {
+   "rows": 1,
+   "mw": "35.50",
+   "project_ids": [
+    "a0l8e0000011y2S"
+   ]
+  },
+  "AGR SOLAR 2 LIMITED": {
+   "rows": 2,
+   "mw": "57.01",
+   "project_ids": [
+    "a0l4L0000005iaO"
+   ]
+  },
+  "AGR SOLAR 3 LIMITED": {
+   "rows": 2,
+   "mw": "57.01",
+   "project_ids": [
+    "a0l4L0000005itR"
+   ]
+  },
+  "AGR SOLAR 4 LIMITED": {
+   "rows": 1,
+   "mw": "50.00",
+   "project_ids": [
+    "a0l4L0000005igq"
+   ]
+  },
+  "AGS Harestonhill Ltd": {
+   "rows": 1,
+   "mw": "500.00",
+   "project_ids": [
+    "a0l8e000000ewOT"
+   ]
+  },
+  "AIK2A SUSTAINABLE ENERGY LTD": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005iph"
+   ]
+  },
+  "AIKENGALL II COMMUNITY WIND COMPANY LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005itG"
+   ]
+  },
+  "AIRIES WINDFARM LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005iWS"
+   ]
+  },
+  "AL BOUM PHOTO LTD": {
+   "rows": 1,
+   "mw": "275.00",
+   "project_ids": [
+    "a0l4L0000005ixr"
+   ]
+  },
+  "ALBUSIA LTD": {
+   "rows": 1,
+   "mw": "400.00",
+   "project_ids": [
+    "a0l4L0000005il0"
+   ]
+  },
+  "ALCEMI STORAGE DEVELOPMENTS 1 LIMITED": {
+   "rows": 2,
+   "mw": "1500.00",
+   "project_ids": [
+    "a0l4L0000005iaq",
+    "a0l8e000000TPHY"
+   ]
+  },
+  "ALCEMI STORAGE DEVELOPMENTS 2 LIMITED": {
+   "rows": 1,
+   "mw": "300.00",
+   "project_ids": [
+    "a0l4L0000005iaA"
+   ]
+  },
+  "ALCEMI STORAGE DEVELOPMENTS 3 LIMITED": {
+   "rows": 1,
+   "mw": "500.00",
+   "project_ids": [
+    "a0l4L0000005icy"
+   ]
+  },
+  "ALCEMI STORAGE DEVELOPMENTS 4 LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005id4"
+   ]
+  },
+  "ALCEMI STORAGE DEVELOPMENTS 5 LIMITED": {
+   "rows": 2,
+   "mw": "1000.00",
+   "project_ids": [
+    "a0l4L0000005ikE",
+    "a0l4L0000005izQ"
+   ]
+  },
+  "ALCEMI STORAGE DEVELOPMENTS 6 LIMITED": {
+   "rows": 1,
+   "mw": "500.00",
+   "project_ids": [
+    "a0l4L0000005ifj"
+   ]
+  },
+  "ALCEMI STORAGE DEVELOPMENTS 8 LTD": {
+   "rows": 1,
+   "mw": "280.00",
+   "project_ids": [
+    "a0l8e000000f7gR"
+   ]
+  },
+  "ALLT AN TUIR RENEWABLE ENERGY PARK LIMITED": {
+   "rows": 1,
+   "mw": "50.00",
+   "project_ids": [
+    "a0l4L0000005iNj"
+   ]
+  },
+  "ALTNABREAC WIND FARM LIMITED": {
+   "rows": 1,
+   "mw": "130.00",
+   "project_ids": [
+    "a0lJ9000000blmc"
+   ]
+  },
+  "ALUDRA BESS LTD": {
+   "rows": 1,
+   "mw": "90.00",
+   "project_ids": [
+    "a0lJ9000000PDtd"
+   ]
+  },
+  "AN SUIDHE WIND FARM LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005itH"
+   ]
+  },
+  "ANDERSHAW WIND POWER LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005iWT"
+   ]
+  },
+  "ANESCO LIMITED": {
+   "rows": 7,
+   "mw": "1840.75",
+   "project_ids": [
+    "a0l4L0000005iOs",
+    "a0l4L0000005iY7",
+    "a0l8e0000012gro",
+    "a0l8e0000012gta",
+    "a0l8e0000012hxt",
+    "a0l8e0000012jPI",
+    "a0lJ9000000PNKl"
+   ]
+  },
+  "ANGLO ENERGY STORAGE LTD": {
+   "rows": 1,
+   "mw": "249.00",
+   "project_ids": [
+    "a0l8e0000010wa7"
+   ]
+  },
+  "APPLEFORD 2 RENEWABLES LTD": {
+   "rows": 1,
+   "mw": "200.00",
+   "project_ids": [
+    "a0l8e0000010wYx"
+   ]
+  },
+  "ARBROATH LIMITED": {
+   "rows": 1,
+   "mw": "35.00",
+   "project_ids": [
+    "a0l4L0000005iSw"
+   ]
+  },
+  "ARL Energy Development Limited": {
+   "rows": 1,
+   "mw": "300.00",
+   "project_ids": [
+    "a0l4L0000005iu3"
+   ]
+  },
+  "ARL O09 LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005iQA"
+   ]
+  },
+  "ARLINGTON (GROUP SERVICES) LIMITED": {
+   "rows": 1,
+   "mw": "57.00",
+   "project_ids": [
+    "a0l8e000000TPIb"
+   ]
+  },
+  "ARM Cedar Limited": {
+   "rows": 1,
+   "mw": "480.00",
+   "project_ids": [
+    "a0l8e000000ewOY"
+   ]
+  },
+  "ARRESGILL ENERGY LIMITED": {
+   "rows": 1,
+   "mw": "150.00",
+   "project_ids": [
+    "a0l4L0000005ikZ"
+   ]
+  },
+  "ARTFIELD FOREST WIND FARM LTD": {
+   "rows": 1,
+   "mw": "85.80",
+   "project_ids": [
+    "a0l8e0000011zPN"
+   ]
+  },
+  "ARVEN OFFSHORE WIND FARM LIMITED": {
+   "rows": 1,
+   "mw": "1800.00",
+   "project_ids": [
+    "a0l8e000000TPOF"
+   ]
+  },
+  "ARVEN SOUTH LIMITED": {
+   "rows": 1,
+   "mw": "500.00",
+   "project_ids": [
+    "a0l8e000001HxQ5"
+   ]
+  },
+  "ASHGREEN ENERGYFARM LIMITED": {
+   "rows": 1,
+   "mw": "49.50",
+   "project_ids": [
+    "a0l4L0000005icm"
+   ]
+  },
+  "ASSEL VALLEY WIND ENERGY LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005iWW"
+   ]
+  },
+  "ASTWOOD GREEN ENERGY LTD": {
+   "rows": 1,
+   "mw": "520.00",
+   "project_ids": [
+    "a0lJ9000000blKH"
+   ]
+  },
+  "ASUK HOLDCO 1 LIMITED": {
+   "rows": 1,
+   "mw": "70.00",
+   "project_ids": [
+    "a0l4L0000005iRQ"
+   ]
+  },
+  "AUCHROBERT WIND ENERGY LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005iUp"
+   ]
+  },
+  "AW1 ENERGY STORAGE LIMITED": {
+   "rows": 1,
+   "mw": "120.00",
+   "project_ids": [
+    "a0l4L0000005iyt"
+   ]
+  },
+  "AW2 ENERGY STORAGE LIMITED": {
+   "rows": 1,
+   "mw": "249.00",
+   "project_ids": [
+    "a0l4L0000005ic0"
+   ]
+  },
+  "AWEL Y MOR OFFSHORE WIND FARM LIMITED": {
+   "rows": 1,
+   "mw": "1100.00",
+   "project_ids": [
+    "a0l4L0000005ipB"
+   ]
+  },
+  "AYRE OFFSHORE WIND FARM LIMITED": {
+   "rows": 1,
+   "mw": "1008.00",
+   "project_ids": [
+    "a0l4L0000005ix0"
+   ]
+  },
+  "Aberthaw Green Limited": {
+   "rows": 1,
+   "mw": "57.00",
+   "project_ids": [
+    "a0l4L0000005ixj"
+   ]
+  },
+  "Acorn Power Limited": {
+   "rows": 1,
+   "mw": "200.00",
+   "project_ids": [
+    "a0l8e000001Hxbb"
+   ]
+  },
+  "Advance Grid Solutions Limited": {
+   "rows": 7,
+   "mw": "783.00",
+   "project_ids": [
+    "a0l8e0000010wex",
+    "a0l8e0000012hpw",
+    "a0l8e000001Hrhs",
+    "a0l8e000001Hrv4",
+    "a0l8e000001Hrv9",
+    "a0l8e000001HrvE"
+   ]
+  },
+  "Aitkenhead Storage Facility Limited": {
+   "rows": 1,
+   "mw": "300.00",
+   "project_ids": [
+    "a0l8e0000010wPW"
+   ]
+  },
+  "Akku Tealing Limited": {
+   "rows": 1,
+   "mw": "500.00",
+   "project_ids": [
+    "a0l8e0000010xi1"
+   ]
+  },
+  "Alcemi Storage Developments 23 Ltd": {
+   "rows": 1,
+   "mw": "280.00",
+   "project_ids": [
+    "a0l8e000000TPEF"
+   ]
+  },
+  "Alverdiscott 10 Renewables Ltd": {
+   "rows": 1,
+   "mw": "1000.00",
+   "project_ids": [
+    "a0l4L000002yQZt"
+   ]
+  },
+  "Amersham 10 Renewables Limited": {
+   "rows": 1,
+   "mw": "1000.00",
+   "project_ids": [
+    "a0l8e000000TPQW"
+   ]
+  },
+  "Ancleggan Limited": {
+   "rows": 1,
+   "mw": "250.00",
+   "project_ids": [
+    "a0l4L0000005iXE"
+   ]
+  },
+  "Apatura Battery Ltd": {
+   "rows": 13,
+   "mw": "4370.00",
+   "project_ids": [
+    "a0l8e000000TPEe",
+    "a0l8e000000TPKw",
+    "a0l8e000000TPc5",
+    "a0l8e000000exlb",
+    "a0l8e000000eybq",
+    "a0l8e000000f41i",
+    "a0l8e000000f4PI",
+    "a0l8e000000f5Bd",
+    "a0l8e000000f6J5",
+    "a0l8e0000011y2m",
+    "a0l8e0000011zPm",
+    "a0l8e000001201M",
+    "a0l8e000001205e"
+   ]
+  },
+  "Apatura Project 21 Ltd": {
+   "rows": 1,
+   "mw": "500.00",
+   "project_ids": [
+    "a0l8e000000TPHd"
+   ]
+  },
+  "Apatura Project 22 Ltd": {
+   "rows": 1,
+   "mw": "150.00",
+   "project_ids": [
+    "a0l8e000000TPLz"
+   ]
+  },
+  "Apatura Project 23 Ltd": {
+   "rows": 1,
+   "mw": "250.00",
+   "project_ids": [
+    "a0l8e0000011zPX"
+   ]
+  },
+  "Apatura Project 29 Ltd": {
+   "rows": 1,
+   "mw": "200.00",
+   "project_ids": [
+    "a0l8e000000f41d"
+   ]
+  },
+  "Apatura Project 35 Ltd": {
+   "rows": 1,
+   "mw": "249.00",
+   "project_ids": [
+    "a0l8e000000f6uB"
+   ]
+  },
+  "Appin Wind Farm Limited": {
+   "rows": 1,
+   "mw": "66.00",
+   "project_ids": [
+    "a0l8e0000010wXB"
+   ]
+  },
+  "Appleford 7 Renewables Limited": {
+   "rows": 1,
+   "mw": "700.00",
+   "project_ids": [
+    "a0l8e000000exN3"
+   ]
+  },
+  "Ardonald Renewables Limited": {
+   "rows": 1,
+   "mw": "200.00",
+   "project_ids": [
+    "a0l8e0000011xxp"
+   ]
+  },
+  "Arise Renewable Energy UK Limited": {
+   "rows": 1,
+   "mw": "280.00",
+   "project_ids": [
+    "a0l8e000000ewwx"
+   ]
+  },
+  "Arresgill Energy Storage 1 Limited": {
+   "rows": 1,
+   "mw": "49.00",
+   "project_ids": [
+    "a0l8e000000TPIR"
+   ]
+  },
+  "Asuk Holdco 2 Limited": {
+   "rows": 2,
+   "mw": "99.80",
+   "project_ids": [
+    "a0l4L0000005ikh"
+   ]
+  },
+  "Aukera Energy Limited": {
+   "rows": 1,
+   "mw": "700.00",
+   "project_ids": [
+    "a0l8e000000TPFw"
+   ]
+  },
+  "Ayr Flexpower Limited": {
+   "rows": 1,
+   "mw": "450.00",
+   "project_ids": [
+    "a0l8e0000012gtk"
+   ]
+  },
+  "BAILLIE WINDFARM LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005iUq"
+   ]
+  },
+  "BALWEN LIMITED": {
+   "rows": 4,
+   "mw": "830.01",
+   "project_ids": [
+    "a0l4L0000005ieb"
+   ]
+  },
+  "BANC DU ENERGY PARK LIMITED": {
+   "rows": 1,
+   "mw": "46.00",
+   "project_ids": [
+    "a0l4L0000005ik1"
+   ]
+  },
+  "BARROW OFFSHORE WIND LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005ilX"
+   ]
+  },
+  "BASINGSTOKE EAST 2 RENEWABLES LTD": {
+   "rows": 1,
+   "mw": "200.00",
+   "project_ids": [
+    "a0l8e0000010wYY"
+   ]
+  },
+  "BAYWA R.E. UK LIMITED": {
+   "rows": 6,
+   "mw": "1180.50",
+   "project_ids": [
+    "a0l4L0000005iba",
+    "a0l4L0000005ixs",
+    "a0l8e000000f7BU",
+    "a0l8e0000012hph",
+    "a0lJ9000000PEQc",
+    "a0lJ9000000blib"
+   ]
+  },
+  "BB2 WIND FARM LIMITED": {
+   "rows": 1,
+   "mw": "43.20",
+   "project_ids": [
+    "a0l4L0000005iUG"
+   ]
+  },
+  "BEACON FEN ENERGY PARK LIMITED": {
+   "rows": 1,
+   "mw": "600.00",
+   "project_ids": [
+    "a0l4L0000005iZP"
+   ]
+  },
+  "BEATRICE OFFSHORE WINDFARM LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005ilY"
+   ]
+  },
+  "BEAW FIELD SHETLAND LIMITED": {
+   "rows": 1,
+   "mw": "102.00",
+   "project_ids": [
+    "a0l4L0000005iya"
+   ]
+  },
+  "BEECHGREEN ENERGYFARM LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005ixn"
+   ]
+  },
+  "BEFERLEAH ENERGY PARK LIMITED": {
+   "rows": 1,
+   "mw": "249.90",
+   "project_ids": [
+    "a0l8e0000010wY4"
+   ]
+  },
+  "BEINNEUN 2 LIMITED": {
+   "rows": 1,
+   "mw": "144.00",
+   "project_ids": [
+    "a0lJ9000000POVw"
+   ]
+  },
+  "BEINNEUN WIND FARM LTD": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005ilZ"
+   ]
+  },
+  "BELLMOOR ENERGY PARK LIMITED": {
+   "rows": 1,
+   "mw": "1000.00",
+   "project_ids": [
+    "a0l8e000000exh2"
+   ]
+  },
+  "BENBRACK WIND FARM LIMITED": {
+   "rows": 3,
+   "mw": "42.00",
+   "project_ids": [
+    "a0l4L0000005ila",
+    "a0l4L0000005izC"
+   ]
+  },
+  "BENTHEAD SOLAR LIMITED": {
+   "rows": 1,
+   "mw": "63.00",
+   "project_ids": [
+    "a0l4L0000005iQP"
+   ]
+  },
+  "BERKSWELL BATTERY STORAGE LIMITED": {
+   "rows": 1,
+   "mw": "200.00",
+   "project_ids": [
+    "a0l4L0000005ixb"
+   ]
+  },
+  "BERKSWELL ENERGY PARK LIMITED": {
+   "rows": 1,
+   "mw": "249.90",
+   "project_ids": [
+    "a0l8e000000f4n0"
+   ]
+  },
+  "BERRY BURN WIND FARM LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005iUx"
+   ]
+  },
+  "BERWICK BANK A LIMITED": {
+   "rows": 2,
+   "mw": "1380.00",
+   "project_ids": [
+    "a0l8e0000010wTn"
+   ]
+  },
+  "BERWICK BANK C LIMITED": {
+   "rows": 1,
+   "mw": "1800.00",
+   "project_ids": [
+    "a0l4L0000005io7"
+   ]
+  },
+  "BERWICK RENEWABLES TX LIMITED": {
+   "rows": 1,
+   "mw": "100.00",
+   "project_ids": [
+    "a0l8e0000011xxo"
+   ]
+  },
+  "BEXLEY GREEN ENERGY CENTRE LTD": {
+   "rows": 1,
+   "mw": "228.00",
+   "project_ids": [
+    "a0l8e0000012hq6"
+   ]
+  },
+  "BIOSOUTH ENERGY LIMITED": {
+   "rows": 1,
+   "mw": "43.20",
+   "project_ids": [
+    "a0lJ9000000Pa9M"
+   ]
+  },
+  "BLACKCRAIG WIND FARM (SCOTLAND) LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005ilc"
+   ]
+  },
+  "BLACKFORD RENEWABLES LTD": {
+   "rows": 1,
+   "mw": "500.00",
+   "project_ids": [
+    "a0l4L0000005iZ1"
+   ]
+  },
+  "BLACKHILLOCK FLEXPOWER LTD": {
+   "rows": 1,
+   "mw": "349.00",
+   "project_ids": [
+    "a0l4L0000005iZ0"
+   ]
+  },
+  "BLAENCOTHI ENERGY PARK LIMITED": {
+   "rows": 1,
+   "mw": "145.00",
+   "project_ids": [
+    "a0l4L0000005iRa"
+   ]
+  },
+  "BLARGHOUR WIND FARM LIMITED": {
+   "rows": 1,
+   "mw": "67.20",
+   "project_ids": [
+    "a0l4L0000005ita"
+   ]
+  },
+  "BLARY HILL ENERGY LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005iUz"
+   ]
+  },
+  "BLOXWICH ENERGY STORAGE LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005iOi"
+   ]
+  },
+  "BLUE PLANET SOLAR LIMITED": {
+   "rows": 1,
+   "mw": "500.00",
+   "project_ids": [
+    "a0l4L0000005ig5"
+   ]
+  },
+  "BLUEBELL WIND FARM LIMITED": {
+   "rows": 1,
+   "mw": "36.00",
+   "project_ids": [
+    "a0l4L0000005inU"
+   ]
+  },
+  "BLUEFIELD RENEWABLE DEVELOPMENTS LIMITED": {
+   "rows": 1,
+   "mw": "1000.00",
+   "project_ids": [
+    "a0l8e000001Hy11"
+   ]
+  },
+  "BLUEFLOAT ENERGY UK HOLDINGS LIMITED": {
+   "rows": 2,
+   "mw": "1300.00",
+   "project_ids": [
+    "a0l4L0000005iM5",
+    "a0l4L0000005j1U"
+   ]
+  },
+  "BNRG ALBION LIMITED": {
+   "rows": 1,
+   "mw": "450.00",
+   "project_ids": [
+    "a0l8e0000010wg5"
+   ]
+  },
+  "BNRG LANGMEAD LIMITED": {
+   "rows": 1,
+   "mw": "249.90",
+   "project_ids": [
+    "a0l8e000001HpUi"
+   ]
+  },
+  "BOLNEY GREEN LIMITED": {
+   "rows": 1,
+   "mw": "57.00",
+   "project_ids": [
+    "a0l4L0000005ilr"
+   ]
+  },
+  "BOOM DEVELOPMENTS LTD": {
+   "rows": 1,
+   "mw": "150.00",
+   "project_ids": [
+    "a0lJ9000000PDwD"
+   ]
+  },
+  "BORALEX LIMITED": {
+   "rows": 3,
+   "mw": "871.00",
+   "project_ids": [
+    "a0lJ9000000PDmz",
+    "a0lJ9000000PEG1",
+    "a0lJ9000000POfH"
+   ]
+  },
+  "BORELAND ENERGY LTD": {
+   "rows": 1,
+   "mw": "43.00",
+   "project_ids": [
+    "a0l8e000001HxRc"
+   ]
+  },
+  "BOTLEY GREEN ENERGY CENTRE LTD": {
+   "rows": 1,
+   "mw": "800.00",
+   "project_ids": [
+    "a0l8e0000010wP7"
+   ]
+  },
+  "BOWDUN OFFSHORE WIND FARM LIMITED": {
+   "rows": 1,
+   "mw": "1008.00",
+   "project_ids": [
+    "a0l4L0000005ido"
+   ]
+  },
+  "BPUWL 29 LIMITED": {
+   "rows": 1,
+   "mw": "43.20",
+   "project_ids": [
+    "a0l8e0000012eoK"
+   ]
+  },
+  "BRAES OF DOUNE WIND FARM (SCOTLAND) LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005iV9"
+   ]
+  },
+  "BRAIDFIELD BATTERY STORAGE LIMITED": {
+   "rows": 1,
+   "mw": "100.00",
+   "project_ids": [
+    "a0l4L0000005iyF"
+   ]
+  },
+  "BRAMFORD 2 GREEN ENERGY CENTRE LTD": {
+   "rows": 1,
+   "mw": "57.00",
+   "project_ids": [
+    "a0l8e0000010wO9"
+   ]
+  },
+  "BRAMFORD GREEN ENERGY CENTRE LTD": {
+   "rows": 1,
+   "mw": "650.00",
+   "project_ids": [
+    "a0l8e000000f8Ng"
+   ]
+  },
+  "BRAMFORD GREEN LIMITED": {
+   "rows": 2,
+   "mw": "57.00",
+   "project_ids": [
+    "a0l4L0000005ilN"
+   ]
+  },
+  "BRAMLEY 2 RENEWABLES LTD": {
+   "rows": 1,
+   "mw": "200.00",
+   "project_ids": [
+    "a0l8e0000010wYJ"
+   ]
+  },
+  "BRAMLEY 7 RENEWABLES LTD": {
+   "rows": 1,
+   "mw": "700.00",
+   "project_ids": [
+    "a0l8e0000010wda"
+   ]
+  },
+  "BRAMLEY BESS LIMITED": {
+   "rows": 2,
+   "mw": "57.01",
+   "project_ids": [
+    "a0l4L0000005igr"
+   ]
+  },
+  "BRAMLEY SOLAR LIMITED": {
+   "rows": 1,
+   "mw": "57.00",
+   "project_ids": [
+    "a0l4L0000005ilO"
+   ]
+  },
+  "BRAXBESS LTD": {
+   "rows": 1,
+   "mw": "480.00",
+   "project_ids": [
+    "a0l4L0000005iuu"
+   ]
+  },
+  "BREESEA LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005isr"
+   ]
+  },
+  "BRIDGWATER GREEN LIMITED": {
+   "rows": 1,
+   "mw": "57.00",
+   "project_ids": [
+    "a0l4L0000005iYj"
+   ]
+  },
+  "BROADHAVEN DISTRIBUTION LIMITED": {
+   "rows": 1,
+   "mw": "150.00",
+   "project_ids": [
+    "a0l8e000000f6J0"
+   ]
+  },
+  "BROCKLOCH RIG WINDFARM LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005iqj"
+   ]
+  },
+  "BROCKWELL ENERGY LIMITED": {
+   "rows": 6,
+   "mw": "815.00",
+   "project_ids": [
+    "a0l4L0000005int",
+    "a0l8e000001Ho2y",
+    "a0l8e000001Ho33",
+    "a0l8e000001HoGM",
+    "a0l8e000001HpfG",
+    "a0l8e000001HrdG"
+   ]
+  },
+  "BROCKWELL STORAGE & SOLAR LIMITED": {
+   "rows": 5,
+   "mw": "1420.00",
+   "project_ids": [
+    "a0l4L0000005iXs",
+    "a0l4L0000005iYw",
+    "a0l4L0000005ifs",
+    "a0l4L0000005ivK",
+    "a0lJ9000000Paqd"
+   ]
+  },
+  "BROKEN CROSS WIND FARM LIMITED": {
+   "rows": 1,
+   "mw": "4.80",
+   "project_ids": [
+    "a0l4L0000005ilQ"
+   ]
+  },
+  "BROWNIELEYS RENEWABLES LLP": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005iVB"
+   ]
+  },
+  "BROXBURN ENERGY STORAGE LIMITED": {
+   "rows": 1,
+   "mw": "50.00",
+   "project_ids": [
+    "a0l4L0000005iTt"
+   ]
+  },
+  "BRUTON ONE BESS LIMITED": {
+   "rows": 1,
+   "mw": "300.00",
+   "project_ids": [
+    "a0l8e000000f69r"
+   ]
+  },
+  "BRYN GILWERN ENERGY PARK LIMITED": {
+   "rows": 1,
+   "mw": "74.90",
+   "project_ids": [
+    "a0l4L0000005iUF"
+   ]
+  },
+  "BRYN RHUDD ENERGY PARK LIMITED": {
+   "rows": 1,
+   "mw": "159.00",
+   "project_ids": [
+    "a0l4L0000005iRY"
+   ]
+  },
+  "BRYNGWYN ENERGY PARK LIMITED": {
+   "rows": 1,
+   "mw": "250.00",
+   "project_ids": [
+    "a0l4L0000005iRb"
+   ]
+  },
+  "BSR APPLICATIONS LIMITED": {
+   "rows": 9,
+   "mw": "3539.80",
+   "project_ids": [
+    "a0l8e0000011yYU",
+    "a0l8e0000012hoF",
+    "a0l8e0000012krQ",
+    "a0l8e000001Hxa9",
+    "a0l8e000001Hy5T",
+    "a0lJ9000000PEEN",
+    "a0lJ9000000PFEs",
+    "a0lJ9000000PFJe",
+    "a0lJ9000000blZ0"
+   ]
+  },
+  "BSSL EAST LOTHIAN 1 LTD": {
+   "rows": 1,
+   "mw": "63.00",
+   "project_ids": [
+    "a0l4L0000005iUd"
+   ]
+  },
+  "BUCCLEUCH ESTATES, LTD. (THE)": {
+   "rows": 3,
+   "mw": "483.00",
+   "project_ids": [
+    "a0l8e0000012gtG",
+    "a0l8e0000012hpD",
+    "a0l8e000001Hpji"
+   ]
+  },
+  "BUCHAN OFFSHORE WIND LIMITED": {
+   "rows": 1,
+   "mw": "960.00",
+   "project_ids": [
+    "a0l4L0000005izL"
+   ]
+  },
+  "BUK23 LIMITED": {
+   "rows": 1,
+   "mw": "1.00",
+   "project_ids": [
+    "a0l8e000000TPIW"
+   ]
+  },
+  "BUNTINGTON GREEN ENERGY CENTRE LTD": {
+   "rows": 1,
+   "mw": "850.00",
+   "project_ids": [
+    "a0l8e0000010wOn"
+   ]
+  },
+  "BURBO EXTENSION LTD": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005ilR"
+   ]
+  },
+  "BURWELL GREEN ENERGY CENTRE LTD": {
+   "rows": 1,
+   "mw": "480.00",
+   "project_ids": [
+    "a0l8e000000f5cW"
+   ]
+  },
+  "BUSHBURY GREEN NG LIMITED": {
+   "rows": 1,
+   "mw": "480.00",
+   "project_ids": [
+    "a0l4L0000005iRT"
+   ]
+  },
+  "BUTLERS WOOD NG LIMITED": {
+   "rows": 1,
+   "mw": "1025.00",
+   "project_ids": [
+    "a0l4L0000005ixp"
+   ]
+  },
+  "BW ESS DEVELOPMENT UK LIMITED": {
+   "rows": 4,
+   "mw": "749.00",
+   "project_ids": [
+    "a0l4L0000005ic8",
+    "a0l4L0000005iuw",
+    "a0l8e0000011zKg"
+   ]
+  },
+  "BWLCH GWYN WIND FARM LIMITED": {
+   "rows": 2,
+   "mw": "108.00",
+   "project_ids": [
+    "a0l4L0000005ihM"
+   ]
+  },
+  "Balance Power Projects Limited": {
+   "rows": 2,
+   "mw": "456.00",
+   "project_ids": [
+    "a0l4L0000005ikk",
+    "a0l8e0000010waR"
+   ]
+  },
+  "Balbougie Energy Centre II Limited": {
+   "rows": 1,
+   "mw": "42.00",
+   "project_ids": [
+    "a0l4L0000005iTp"
+   ]
+  },
+  "Basingstoke East 7 Renewables Ltd": {
+   "rows": 1,
+   "mw": "700.00",
+   "project_ids": [
+    "a0l8e0000010wdu"
+   ]
+  },
+  "Beacon Solar Limited": {
+   "rows": 1,
+   "mw": "1200.00",
+   "project_ids": [
+    "a0lJ9000000PDtE"
+   ]
+  },
+  "Bellrock Offshore Wind Farm Limited": {
+   "rows": 2,
+   "mw": "1800.00",
+   "project_ids": [
+    "a0l4L0000005izE"
+   ]
+  },
+  "Berwick Bank B Limited": {
+   "rows": 2,
+   "mw": "1380.00",
+   "project_ids": [
+    "a0l8e000000snsQ"
+   ]
+  },
+  "Biggleswade 10 Renewables Limited": {
+   "rows": 1,
+   "mw": "1000.00",
+   "project_ids": [
+    "a0l8e000000TPRK"
+   ]
+  },
+  "Black Knowe Energy Limited": {
+   "rows": 1,
+   "mw": "180.00",
+   "project_ids": [
+    "a0l8e0000010wgP"
+   ]
+  },
+  "Blackdyke BESS Limited": {
+   "rows": 2,
+   "mw": "1025.00",
+   "project_ids": [
+    "a0l4L0000005igB"
+   ]
+  },
+  "Blue Gem Wind Limited": {
+   "rows": 2,
+   "mw": "395.25",
+   "project_ids": [
+    "a0l4L0000005iZl",
+    "a0l4L0000005inx"
+   ]
+  },
+  "Bluestone Beddington 1 Ltd": {
+   "rows": 1,
+   "mw": "240.00",
+   "project_ids": [
+    "a0l8e000000TPAX"
+   ]
+  },
+  "Bluestone Butt Lane 1 Ltd": {
+   "rows": 1,
+   "mw": "240.00",
+   "project_ids": [
+    "a0l8e0000012gtu"
+   ]
+  },
+  "Bluestone Energy Ltd": {
+   "rows": 20,
+   "mw": "5208.40",
+   "project_ids": [
+    "a0l4L0000005iUR",
+    "a0l4L0000005iWi",
+    "a0l4L0000005iWk",
+    "a0l4L0000005iyc",
+    "a0l8e000000TPCn",
+    "a0l8e000000TPD7",
+    "a0l8e000000ez79",
+    "a0l8e000000f64b",
+    "a0l8e000000f6Jt",
+    "a0l8e000000f6yf",
+    "a0l8e0000011zPI",
+    "a0l8e0000012ghJ",
+    "a0l8e0000012kci",
+    "a0l8e000001HoFx",
+    "a0l8e000001HomM",
+    "a0l8e000001HpUd",
+    "a0l8e000001HxQK",
+    "a0lJ9000000PDmB",
+    "a0lJ9000000PExw",
+    "a0lJ9000000PEy6"
+   ]
+  },
+  "Bluestone Linwood 1 Ltd": {
+   "rows": 1,
+   "mw": "60.00",
+   "project_ids": [
+    "a0l4L0000005iWf"
+   ]
+  },
+  "Bodelwyddan Solar & Energy Storage Limited": {
+   "rows": 1,
+   "mw": "110.00",
+   "project_ids": [
+    "a0l4L0000005iPC"
+   ]
+  },
+  "Bodinglee Wind Farm Limited": {
+   "rows": 1,
+   "mw": "280.00",
+   "project_ids": [
+    "a0l4L0000005iZQ"
+   ]
+  },
+  "Braintree 10 Renewables Limited": {
+   "rows": 1,
+   "mw": "1000.00",
+   "project_ids": [
+    "a0l8e000000TPQg"
+   ]
+  },
+  "Braston New Energy Limited": {
+   "rows": 1,
+   "mw": "500.00",
+   "project_ids": [
+    "a0l8e0000011zmY"
+   ]
+  },
+  "Broadclyst Energy Storage Limited": {
+   "rows": 1,
+   "mw": "249.00",
+   "project_ids": [
+    "a0l4L0000005iNp"
+   ]
+  },
+  "Broadshore Offshore Wind Farm Limited": {
+   "rows": 1,
+   "mw": "900.00",
+   "project_ids": [
+    "a0l4L0000005itd"
+   ]
+  },
+  "Brunt Hill Limited": {
+   "rows": 1,
+   "mw": "99.00",
+   "project_ids": [
+    "a0l8e000001Hy5O"
+   ]
+  },
+  "Burwell 11 Solar Limited": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005ixl"
+   ]
+  },
+  "Bushbury 10 Renewables Limited": {
+   "rows": 1,
+   "mw": "1000.00",
+   "project_ids": [
+    "a0l8e000000TPQv"
+   ]
+  },
+  "C & S ENERGY LIMITED": {
+   "rows": 1,
+   "mw": "300.00",
+   "project_ids": [
+    "a0l4L0000005iem"
+   ]
+  },
+  "CALDERDALE WIND FARM LTD": {
+   "rows": 2,
+   "mw": "482.00",
+   "project_ids": [
+    "a0l8e0000012eIp",
+    "a0l8e0000012kcn"
+   ]
+  },
+  "CALEDONIA OFFSHORE WIND FARM LIMITED": {
+   "rows": 2,
+   "mw": "2000.00",
+   "project_ids": [
+    "a0l4L0000005ibm"
+   ]
+  },
+  "CAMBRIDGE POWER LIMITED": {
+   "rows": 2,
+   "mw": "349.00",
+   "project_ids": [
+    "a0l4L0000005iPY",
+    "a0l8e000000ez2c"
+   ]
+  },
+  "CAPBAL (KILWINNING) LIMITED": {
+   "rows": 1,
+   "mw": "27.00",
+   "project_ids": [
+    "a0l4L0000005iUV"
+   ]
+  },
+  "CAPELLA BESS LTD": {
+   "rows": 1,
+   "mw": "78.00",
+   "project_ids": [
+    "a0lJ9000000PDzH"
+   ]
+  },
+  "CAR DUIBH WIND FARM LIMITED": {
+   "rows": 1,
+   "mw": "99.00",
+   "project_ids": [
+    "a0l4L0000005iMQ"
+   ]
+  },
+  "CARBON FREE 2030 ENERGY LIMITED": {
+   "rows": 1,
+   "mw": "500.00",
+   "project_ids": [
+    "a0l8e0000010x1N"
+   ]
+  },
+  "CARE POWER (BARNSLEY) LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005iQU"
+   ]
+  },
+  "CARE POWER (BRENTWOOD) LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0lJ9000000PeRf"
+   ]
+  },
+  "CARE POWER (BROOK FARM) LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005iWe"
+   ]
+  },
+  "CARE POWER (BURWELL 1) LIMITED": {
+   "rows": 2,
+   "mw": "30.00",
+   "project_ids": [
+    "a0l4L0000005iXk"
+   ]
+  },
+  "CARE POWER (ERSKINE) LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0lJ9000000PeRp"
+   ]
+  },
+  "CARE POWER (KELLINGLEY) LIMITED": {
+   "rows": 1,
+   "mw": "440.00",
+   "project_ids": [
+    "a0l8e000000f65P"
+   ]
+  },
+  "CARE POWER (KINKHALL) LIMITED": {
+   "rows": 1,
+   "mw": "266.00",
+   "project_ids": [
+    "a0l8e000001Hxas"
+   ]
+  },
+  "CARE POWER (MUCKRAW) LIMITED": {
+   "rows": 1,
+   "mw": "99.90",
+   "project_ids": [
+    "a0l8e000001HxbC"
+   ]
+  },
+  "CARE POWER (NEWTONWOOD) LIMITED": {
+   "rows": 1,
+   "mw": "49.90",
+   "project_ids": [
+    "a0l8e000001Hpwk"
+   ]
+  },
+  "CARE POWER (NORTH TAWTON) LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0lJ9000000MK74"
+   ]
+  },
+  "CARE POWER (OVERTON) LIMITED": {
+   "rows": 1,
+   "mw": "440.00",
+   "project_ids": [
+    "a0l8e000000f5zu"
+   ]
+  },
+  "CARE POWER (WOLVERHAMPTON) LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0lJ9000000MK6z"
+   ]
+  },
+  "CARLTON POWER LIMITED": {
+   "rows": 5,
+   "mw": "848.90",
+   "project_ids": [
+    "a0l4L0000005iQV",
+    "a0l4L0000005iaB",
+    "a0l4L0000005ivk",
+    "a0l4L0000005iw1",
+    "a0l4L0000005jAl"
+   ]
+  },
+  "CARNEDD WEN WIND FARM LIMITED": {
+   "rows": 1,
+   "mw": "150.00",
+   "project_ids": [
+    "a0l4L0000005iVE"
+   ]
+  },
+  "CARRAVINDOON LIMITED": {
+   "rows": 1,
+   "mw": "49.90",
+   "project_ids": [
+    "a0l4L0000005iSs"
+   ]
+  },
+  "CARRINGTON POWER LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005ivu"
+   ]
+  },
+  "CARRINGTON STORAGE LIMITED": {
+   "rows": 1,
+   "mw": "680.00",
+   "project_ids": [
+    "a0l4L0000005izi"
+   ]
+  },
+  "CBB SPV LIMITED": {
+   "rows": 1,
+   "mw": "28.50",
+   "project_ids": [
+    "a0l8e000001Ho7S"
+   ]
+  },
+  "CBS ENERGY STORAGE ASSETS UK LIMITED": {
+   "rows": 3,
+   "mw": "500.00",
+   "project_ids": [
+    "a0l4L0000005iS1",
+    "a0l4L0000005iUy",
+    "a0l8e0000012gtz"
+   ]
+  },
+  "CEDARTECH ENERGY LTD": {
+   "rows": 1,
+   "mw": "275.00",
+   "project_ids": [
+    "a0l8e000000f5dj"
+   ]
+  },
+  "CELLARHEAD BESS LTD": {
+   "rows": 1,
+   "mw": "280.00",
+   "project_ids": [
+    "a0l4L0000005iU7"
+   ]
+  },
+  "CENIN RENEWABLES LIMITED": {
+   "rows": 2,
+   "mw": "498.00",
+   "project_ids": [
+    "a0lJ9000000PFDV",
+    "a0lJ9000000PFDa"
+   ]
+  },
+  "CERULEAN WINDS LIMITED": {
+   "rows": 2,
+   "mw": "2000.00",
+   "project_ids": [
+    "a0l8e0000012hnb",
+    "a0l8e000001I31a"
+   ]
+  },
+  "CHICKERELL STORAGE LIMITED": {
+   "rows": 1,
+   "mw": "400.00",
+   "project_ids": [
+    "a0l4L0000005iw2"
+   ]
+  },
+  "CHINT SOLAR UK MANAGEMENT LTD": {
+   "rows": 2,
+   "mw": "299.90",
+   "project_ids": [
+    "a0lJ900000000XV",
+    "a0lJ9000000PDlw"
+   ]
+  },
+  "CHIRMORIE WIND FARM LIMITED": {
+   "rows": 1,
+   "mw": "91.00",
+   "project_ids": [
+    "a0l4L0000005inC"
+   ]
+  },
+  "CILFYNYDD GRID SERVICES LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L000002yQWW"
+   ]
+  },
+  "CILFYNYDD NG LIMITED": {
+   "rows": 2,
+   "mw": "1025.00",
+   "project_ids": [
+    "a0l4L0000005idM"
+   ]
+  },
+  "CINERGY GLOBAL POWER (UK) LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005iVi"
+   ]
+  },
+  "CITIGEN (LONDON) LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005iUt"
+   ]
+  },
+  "CLASH GOUR WINDFARM HOLDINGS LIMITED": {
+   "rows": 1,
+   "mw": "210.00",
+   "project_ids": [
+    "a0l4L0000005iaa"
+   ]
+  },
+  "CLASHINDARROCH WIND FARM LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005iV0"
+   ]
+  },
+  "CLASHINDARROCH WINDFARM EXTENSION LIMITED": {
+   "rows": 2,
+   "mw": "182.70",
+   "project_ids": [
+    "a0l4L0000005ilv",
+    "a0l8e0000012kkv"
+   ]
+  },
+  "CLEAN AIR RENEWABLES LIMITED": {
+   "rows": 1,
+   "mw": "500.00",
+   "project_ids": [
+    "a0l4L0000005iZ2"
+   ]
+  },
+  "CLEVE HILL SOLAR PARK LIMITED": {
+   "rows": 1,
+   "mw": "200.00",
+   "project_ids": [
+    "a0l4L0000005iwH"
+   ]
+  },
+  "CLUMP FARM SOLAR LIMITED": {
+   "rows": 1,
+   "mw": "57.00",
+   "project_ids": [
+    "a0l4L0000005izz"
+   ]
+  },
+  "CLYDE WINDFARM (SCOTLAND) LIMITED": {
+   "rows": 2,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005inD",
+    "a0l4L0000005inE"
+   ]
+  },
+  "CNOC BUIDHE WIND ENERGY HUB LIMITED": {
+   "rows": 2,
+   "mw": "220.00",
+   "project_ids": [
+    "a0l4L0000005idT"
+   ]
+  },
+  "COALBURN ENERGY LIMITED": {
+   "rows": 1,
+   "mw": "500.00",
+   "project_ids": [
+    "a0lJ9000000PDsp"
+   ]
+  },
+  "COCKENZIE STORAGE B LTD": {
+   "rows": 1,
+   "mw": "102.00",
+   "project_ids": [
+    "a0l8e000001Hrm5"
+   ]
+  },
+  "COCKENZIE STORAGE LIMITED": {
+   "rows": 1,
+   "mw": "240.00",
+   "project_ids": [
+    "a0l4L0000005iuF"
+   ]
+  },
+  "CODDINGTON 10 RENEWABLES LTD": {
+   "rows": 1,
+   "mw": "1000.00",
+   "project_ids": [
+    "a0l8e000001Hnxl"
+   ]
+  },
+  "COGLE MOSS RENEWABLES LLP": {
+   "rows": 1,
+   "mw": "36.00",
+   "project_ids": [
+    "a0l4L0000005iWr"
+   ]
+  },
+  "COILLE BEITH WIND FARM LIMITED": {
+   "rows": 1,
+   "mw": "79.20",
+   "project_ids": [
+    "a0l8e0000010wbP"
+   ]
+  },
+  "COIRE GLAS HYDRO PUMPED STORAGE LIMITED": {
+   "rows": 2,
+   "mw": "1296.00",
+   "project_ids": [
+    "a0l4L0000005imh"
+   ]
+  },
+  "COIRE NA CLOICHE WINDFARM LLP": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005iVF"
+   ]
+  },
+  "CONNAHS QUAY ENERGY LIMITED": {
+   "rows": 1,
+   "mw": "500.00",
+   "project_ids": [
+    "a0lJ9000000blK7"
+   ]
+  },
+  "CONNECTID 1 LIMITED": {
+   "rows": 1,
+   "mw": "700.00",
+   "project_ids": [
+    "a0l8e000000TPMd"
+   ]
+  },
+  "CONNECTID 2 LIMITED": {
+   "rows": 1,
+   "mw": "520.00",
+   "project_ids": [
+    "a0l8e000000TPMi"
+   ]
+  },
+  "CONNECTID 3 LIMITED": {
+   "rows": 1,
+   "mw": "800.00",
+   "project_ids": [
+    "a0l8e000000TPN2"
+   ]
+  },
+  "CONRAD (BASINGSTOKE) LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l8e0000012etV"
+   ]
+  },
+  "CONRAD (BISPHAM) LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005iT1"
+   ]
+  },
+  "CONRAD (CHATTERLEY) LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005iSP"
+   ]
+  },
+  "CONRAD (EYE) LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l8e000000eww9"
+   ]
+  },
+  "CONRAD (MIDDLEWICH) LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005iPh"
+   ]
+  },
+  "CONRAD (REDSCAR) LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005iSQ"
+   ]
+  },
+  "CONRAD (SWINDON) LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l8e0000012etf"
+   ]
+  },
+  "CONRAD (TORQUAY) LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l8e0000012euE"
+   ]
+  },
+  "CONRAD (WINCHESTER) LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l8e000000f8Ae"
+   ]
+  },
+  "CONSTANTINE WIND ENERGY LIMITED": {
+   "rows": 1,
+   "mw": "85.00",
+   "project_ids": [
+    "a0lJ9000000PDt4"
+   ]
+  },
+  "CORBY POWER LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005iVG"
+   ]
+  },
+  "CORRIEGARTH 2 WIND FARM LIMITED": {
+   "rows": 1,
+   "mw": "70.00",
+   "project_ids": [
+    "a0l4L0000005imG"
+   ]
+  },
+  "CORRIEGARTH WIND ENERGY LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005inH"
+   ]
+  },
+  "CORYTON ENERGY COMPANY, LTD.": {
+   "rows": 1,
+   "mw": "50.00",
+   "project_ids": [
+    "a0l4L0000005inJ"
+   ]
+  },
+  "COSTA HEAD WIND FARM LIMITED": {
+   "rows": 1,
+   "mw": "16.32",
+   "project_ids": [
+    "a0lJ9000000PDyO"
+   ]
+  },
+  "COTTAM SOLAR PROJECT LIMITED": {
+   "rows": 1,
+   "mw": "600.00",
+   "project_ids": [
+    "a0l4L0000005iz0"
+   ]
+  },
+  "COTTOM TO RYHALL ENERGY LIMITED": {
+   "rows": 1,
+   "mw": "1000.00",
+   "project_ids": [
+    "a0l8e0000012eyY"
+   ]
+  },
+  "COUPAR LIMITED": {
+   "rows": 1,
+   "mw": "40.00",
+   "project_ids": [
+    "a0l4L0000005iPx"
+   ]
+  },
+  "COUPAR TWO LIMITED": {
+   "rows": 1,
+   "mw": "49.90",
+   "project_ids": [
+    "a0l4L0000005iPS"
+   ]
+  },
+  "COUR WIND FARM (SCOTLAND ) LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005inf"
+   ]
+  },
+  "COWLEY 2 RENEWABLES LTD": {
+   "rows": 1,
+   "mw": "200.00",
+   "project_ids": [
+    "a0l8e0000010wYT"
+   ]
+  },
+  "COWLEY 7 RENEWABLES LTD": {
+   "rows": 1,
+   "mw": "700.00",
+   "project_ids": [
+    "a0l8e0000010wdp"
+   ]
+  },
+  "COWLEY BALDON GREEN LIMITED": {
+   "rows": 1,
+   "mw": "57.00",
+   "project_ids": [
+    "a0l4L0000005ixT"
+   ]
+  },
+  "COYLTON ENERGY LIMITED": {
+   "rows": 3,
+   "mw": "450.00",
+   "project_ids": [
+    "a0l4L0000005ihQ"
+   ]
+  },
+  "CRAIG WIND FARM LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005iVI"
+   ]
+  },
+  "CRAKAIG WIND ENERGY HUB LIMITED": {
+   "rows": 1,
+   "mw": "60.00",
+   "project_ids": [
+    "a0l8e000000exYD"
+   ]
+  },
+  "CREAG RIABHACH WIND FARM LTD": {
+   "rows": 2,
+   "mw": "12.60",
+   "project_ids": [
+    "a0l4L0000005ing"
+   ]
+  },
+  "CRH RENEWABLES LIMITED": {
+   "rows": 1,
+   "mw": "400.00",
+   "project_ids": [
+    "a0l8e000001HozE"
+   ]
+  },
+  "CROSSDYKES WF LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005inj"
+   ]
+  },
+  "CRYOBATTERY ONE LIMITED": {
+   "rows": 2,
+   "mw": "49.90",
+   "project_ids": [
+    "a0l4L0000005ipr"
+   ]
+  },
+  "CRYSTAL RIG II LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005imM"
+   ]
+  },
+  "CRYSTAL RIG III LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005ifV"
+   ]
+  },
+  "CRYSTAL RIG IV LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005ipM"
+   ]
+  },
+  "CS UK HOLDINGS III LIMITED": {
+   "rows": 2,
+   "mw": "790.90",
+   "project_ids": [
+    "a0l4L0000005iOt",
+    "a0l8e0000010wdf"
+   ]
+  },
+  "CSE22 LIMITED": {
+   "rows": 1,
+   "mw": "49.90",
+   "project_ids": [
+    "a0l4L0000005iZe"
+   ]
+  },
+  "CSE23 LIMITED": {
+   "rows": 1,
+   "mw": "47.50",
+   "project_ids": [
+    "a0l4L0000005izA"
+   ]
+  },
+  "CSE25 LIMITED": {
+   "rows": 1,
+   "mw": "150.00",
+   "project_ids": [
+    "a0l4L0000005ixi"
+   ]
+  },
+  "CSE27 LIMITED": {
+   "rows": 1,
+   "mw": "49.90",
+   "project_ids": [
+    "a0l4L0000005ib9"
+   ]
+  },
+  "CSE28 LIMITED": {
+   "rows": 1,
+   "mw": "57.00",
+   "project_ids": [
+    "a0l4L0000005ibB"
+   ]
+  },
+  "CSE29 LIMITED": {
+   "rows": 1,
+   "mw": "49.90",
+   "project_ids": [
+    "a0l4L0000005ibC"
+   ]
+  },
+  "CSE33 LIMITED": {
+   "rows": 1,
+   "mw": "300.00",
+   "project_ids": [
+    "a0l4L0000005icD"
+   ]
+  },
+  "CSE34 LIMITED": {
+   "rows": 1,
+   "mw": "49.90",
+   "project_ids": [
+    "a0l4L0000005iuA"
+   ]
+  },
+  "CSE37 Limited": {
+   "rows": 1,
+   "mw": "49.90",
+   "project_ids": [
+    "a0l4L0000005ivc"
+   ]
+  },
+  "CSE38 LIMITED": {
+   "rows": 1,
+   "mw": "49.90",
+   "project_ids": [
+    "a0l4L0000005itq"
+   ]
+  },
+  "CSE39 LIMITED": {
+   "rows": 1,
+   "mw": "400.00",
+   "project_ids": [
+    "a0l4L0000005iyR"
+   ]
+  },
+  "CSE41 LIMITED": {
+   "rows": 1,
+   "mw": "300.00",
+   "project_ids": [
+    "a0l4L0000005itr"
+   ]
+  },
+  "CSE42 LIMITED": {
+   "rows": 1,
+   "mw": "150.00",
+   "project_ids": [
+    "a0l4L0000005il5"
+   ]
+  },
+  "CSE43 LIMITED": {
+   "rows": 1,
+   "mw": "400.00",
+   "project_ids": [
+    "a0l4L000002yQZo"
+   ]
+  },
+  "CSE45 LIMITED": {
+   "rows": 1,
+   "mw": "49.90",
+   "project_ids": [
+    "a0l8e000000f8NW"
+   ]
+  },
+  "CUBICO UK DEVELOPMENT LIMITED": {
+   "rows": 4,
+   "mw": "640.00",
+   "project_ids": [
+    "a0lJ9000000PDlr",
+    "a0lJ9000000PDz2",
+    "a0lJ9000000PFJZ",
+    "a0lJ9000000blQP"
+   ]
+  },
+  "CULHAM STORAGE LIMITED": {
+   "rows": 1,
+   "mw": "500.00",
+   "project_ids": [
+    "a0l4L0000005iwL"
+   ]
+  },
+  "CUMBERHEAD WEST WIND FARM LTD.": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005ix7"
+   ]
+  },
+  "CUMBERHEAD WIND ENERGY LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005inl"
+   ]
+  },
+  "Cairn Duhie Energy Limited": {
+   "rows": 6,
+   "mw": "2517.10",
+   "project_ids": [
+    "a0l4L0000005iU6",
+    "a0l4L0000005iu5",
+    "a0l4L000002yQZU",
+    "a0l8e000000f4xR",
+    "a0l8e0000011zQG",
+    "a0l8e0000012hmY"
+   ]
+  },
+  "Cairnmore Hill Energy Limited": {
+   "rows": 1,
+   "mw": "36.00",
+   "project_ids": [
+    "a0l4L0000005iRL"
+   ]
+  },
+  "Canterbury North 10 Renewables Limited": {
+   "rows": 1,
+   "mw": "1000.00",
+   "project_ids": [
+    "a0l8e000000TPRF"
+   ]
+  },
+  "Care Power (Berkeley) Limited": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0lJ9000000Pj5r"
+   ]
+  },
+  "Carn Fearna Wind Farm Limited": {
+   "rows": 1,
+   "mw": "85.00",
+   "project_ids": [
+    "a0l4L0000005ivT"
+   ]
+  },
+  "Carnegie (BES) Ltd": {
+   "rows": 1,
+   "mw": "57.00",
+   "project_ids": [
+    "a0l4L0000005izr"
+   ]
+  },
+  "Carrog Storage Facility Limited": {
+   "rows": 1,
+   "mw": "300.00",
+   "project_ids": [
+    "a0l4L0000005ihH"
+   ]
+  },
+  "Central Bedfordshire Council": {
+   "rows": 1,
+   "mw": "57.00",
+   "project_ids": [
+    "a0l4L0000005iyj"
+   ]
+  },
+  "Cerulisia Ltd": {
+   "rows": 1,
+   "mw": "50.00",
+   "project_ids": [
+    "a0lJ9000000blmD"
+   ]
+  },
+  "Chessington BESS Ltd": {
+   "rows": 1,
+   "mw": "240.00",
+   "project_ids": [
+    "a0l8e0000012gZ9"
+   ]
+  },
+  "Cilfynydd BESS Limited": {
+   "rows": 1,
+   "mw": "349.90",
+   "project_ids": [
+    "a0l8e0000010wfH"
+   ]
+  },
+  "Clean Planet Solar Farm Limited": {
+   "rows": 1,
+   "mw": "500.00",
+   "project_ids": [
+    "a0l8e0000011yXg"
+   ]
+  },
+  "Cloud Hill Windfarm Limited": {
+   "rows": 2,
+   "mw": "60.00",
+   "project_ids": [
+    "a0l4L0000005iYO"
+   ]
+  },
+  "Community Windpower Limited": {
+   "rows": 2,
+   "mw": "750.00",
+   "project_ids": [
+    "a0l4L0000005isG",
+    "a0l4L0000005ism"
+   ]
+  },
+  "Connectid 9 Limited": {
+   "rows": 1,
+   "mw": "600.00",
+   "project_ids": [
+    "a0l8e000000TPRe"
+   ]
+  },
+  "Conrad (Blackpool) Limited": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l8e0000010xgo"
+   ]
+  },
+  "Conrad (Walpole) Limited": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l8e000000exSn"
+   ]
+  },
+  "Conrad Energy (Developments) II Limited": {
+   "rows": 2,
+   "mw": "540.56",
+   "project_ids": [
+    "a0l8e000000evgL",
+    "a0l8e0000012jJi"
+   ]
+  },
+  "Contullich Energy Storage Limited": {
+   "rows": 1,
+   "mw": "45.00",
+   "project_ids": [
+    "a0l8e000001HxmM"
+   ]
+  },
+  "Copper Nose Energy Ltd": {
+   "rows": 1,
+   "mw": "150.00",
+   "project_ids": [
+    "a0l4L0000005iyC"
+   ]
+  },
+  "Corio Generation Limited": {
+   "rows": 1,
+   "mw": "2000.00",
+   "project_ids": [
+    "a0l8e0000010wdV"
+   ]
+  },
+  "Corshellach Energy Storage Limited": {
+   "rows": 1,
+   "mw": "49.90",
+   "project_ids": [
+    "a0l4L0000005iXz"
+   ]
+  },
+  "Coryton 10 Renewables Limited": {
+   "rows": 1,
+   "mw": "1000.00",
+   "project_ids": [
+    "a0l8e000000TPQl"
+   ]
+  },
+  "Craig Nab Wind Energy Hub Limited": {
+   "rows": 1,
+   "mw": "36.00",
+   "project_ids": [
+    "a0l4L0000005iUe"
+   ]
+  },
+  "Craig Watch Wind Farm Limited": {
+   "rows": 1,
+   "mw": "72.60",
+   "project_ids": [
+    "a0l4L0000005iyh"
+   ]
+  },
+  "Cuxton Energy Storage Limited": {
+   "rows": 1,
+   "mw": "49.50",
+   "project_ids": [
+    "a0l4L0000005iXw"
+   ]
+  },
+  "Cwmni Egino": {
+   "rows": 1,
+   "mw": "940.00",
+   "project_ids": [
+    "a0l8e0000012gZA"
+   ]
+  },
+  "DAINES ENERGY PARK LIMITED": {
+   "rows": 1,
+   "mw": "249.90",
+   "project_ids": [
+    "a0l8e0000010wSk"
+   ]
+  },
+  "DAINES GREEN NG LIMITED": {
+   "rows": 1,
+   "mw": "480.00",
+   "project_ids": [
+    "a0l4L0000005iRP"
+   ]
+  },
+  "DALBY ENERGY LIMITED": {
+   "rows": 1,
+   "mw": "1330.00",
+   "project_ids": [
+    "a0l8e000001I31p"
+   ]
+  },
+  "DALMARNOCK BESS LTD": {
+   "rows": 1,
+   "mw": "40.00",
+   "project_ids": [
+    "a0l4L0000005idK"
+   ]
+  },
+  "DALQUHANDY WIND FARM LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005inm"
+   ]
+  },
+  "DALRIADA RENEWABLES LIMITED": {
+   "rows": 2,
+   "mw": "1096.29",
+   "project_ids": [
+    "a0l8e000000exU0",
+    "a0l8e000001HoBk"
+   ]
+  },
+  "DALSWINTON WINDFARM (SCOTLAND) LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005iVL"
+   ]
+  },
+  "DAMSONGREEN ENERGYFARM LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005iy5"
+   ]
+  },
+  "DE 001 LIMITED": {
+   "rows": 1,
+   "mw": "300.00",
+   "project_ids": [
+    "a0l8e0000012jKv"
+   ]
+  },
+  "DEALANACH LIMITED": {
+   "rows": 1,
+   "mw": "12.00",
+   "project_ids": [
+    "a0l4L0000005igL"
+   ]
+  },
+  "DEESIDE POWER (UK) LIMITED": {
+   "rows": 1,
+   "mw": "189.00",
+   "project_ids": [
+    "a0l4L0000005ieE"
+   ]
+  },
+  "DELL WIND FARM LIMITED": {
+   "rows": 1,
+   "mw": "49.80",
+   "project_ids": [
+    "a0l4L0000005ibP"
+   ]
+  },
+  "DENGIE MARSHES WIND FARM LIMITED": {
+   "rows": 1,
+   "mw": "120.00",
+   "project_ids": [
+    "a0lJ9000000blmS"
+   ]
+  },
+  "DIAMOND WIND LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005irF"
+   ]
+  },
+  "DIDCOT BATTERY LIMITED": {
+   "rows": 1,
+   "mw": "100.00",
+   "project_ids": [
+    "a0l4L0000005idC"
+   ]
+  },
+  "DOGGERBANK OFFSHORE WIND FARM PROJECT 1 PROJCO LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005imP"
+   ]
+  },
+  "DOGGERBANK OFFSHORE WIND FARM PROJECT 2 PROJCO LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005imQ"
+   ]
+  },
+  "DOGGERBANK OFFSHORE WIND FARM PROJECT 3 PROJCO LIMITED": {
+   "rows": 1,
+   "mw": "1200.00",
+   "project_ids": [
+    "a0l4L0000005imR"
+   ]
+  },
+  "DORENELL WINDFARM EXTENSION LIMITED": {
+   "rows": 1,
+   "mw": "610.00",
+   "project_ids": [
+    "a0l4L0000005iuP"
+   ]
+  },
+  "DORENELL WINDFARM LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005ipK"
+   ]
+  },
+  "DOUGLAS WEST EXTENSION LTD": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005ixI"
+   ]
+  },
+  "DOUGLAS WEST WIND FARM LTD": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005inr"
+   ]
+  },
+  "DOWNIEBRAE BESS LTD": {
+   "rows": 1,
+   "mw": "150.00",
+   "project_ids": [
+    "a0l8e000000TPE0"
+   ]
+  },
+  "DRAGON GREEN 7 RENEWABLES LTD": {
+   "rows": 1,
+   "mw": "700.00",
+   "project_ids": [
+    "a0l8e0000010wdQ"
+   ]
+  },
+  "DRAKELOW NG LIMITED": {
+   "rows": 2,
+   "mw": "1025.00",
+   "project_ids": [
+    "a0l4L0000005ieq"
+   ]
+  },
+  "DRAX BESS EK LIMITED": {
+   "rows": 1,
+   "mw": "55.00",
+   "project_ids": [
+    "a0l8e0000011yiJ"
+   ]
+  },
+  "DRAX POWER LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005ixU"
+   ]
+  },
+  "DRAX PUMPED STORAGE LIMITED": {
+   "rows": 2,
+   "mw": "40.00",
+   "project_ids": [
+    "a0l4L0000005ink"
+   ]
+  },
+  "DRUIM LEATHANN WINDFARM LIMITED": {
+   "rows": 1,
+   "mw": "49.70",
+   "project_ids": [
+    "a0l4L0000005iSX"
+   ]
+  },
+  "DRUMLITHIE BATTERY LIMITED": {
+   "rows": 1,
+   "mw": "49.90",
+   "project_ids": [
+    "a0l4L0000005iUU"
+   ]
+  },
+  "DUDGEON OFFSHORE WIND LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005ioF"
+   ]
+  },
+  "DUNMAGLASS WIND FARM LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005imk"
+   ]
+  },
+  "Daines Flexpower Limited": {
+   "rows": 1,
+   "mw": "500.00",
+   "project_ids": [
+    "a0l8e000000TPCd"
+   ]
+  },
+  "Dalzell (Newarthill) Ltd": {
+   "rows": 1,
+   "mw": "300.00",
+   "project_ids": [
+    "a0l4L0000005jAC"
+   ]
+  },
+  "Darlington Solar 1 Limited": {
+   "rows": 1,
+   "mw": "40.90",
+   "project_ids": [
+    "a0l4L0000005ixW"
+   ]
+  },
+  "Decerna Limited": {
+   "rows": 1,
+   "mw": "200.00",
+   "project_ids": [
+    "a0lJ9000000bldH"
+   ]
+  },
+  "Derwent Solar 2 Limited": {
+   "rows": 1,
+   "mw": "200.00",
+   "project_ids": [
+    "a0lJ9000000PFob"
+   ]
+  },
+  "Doggerbank Offshore Wind Farm Project 4 Projco Limited": {
+   "rows": 1,
+   "mw": "1450.00",
+   "project_ids": [
+    "a0l4L0000005idW"
+   ]
+  },
+  "Dollymans Storage Limited": {
+   "rows": 1,
+   "mw": "99.80",
+   "project_ids": [
+    "a0l4L0000005iXU"
+   ]
+  },
+  "Don Cossack Ltd": {
+   "rows": 1,
+   "mw": "70.00",
+   "project_ids": [
+    "a0l8e000000f4ne"
+   ]
+  },
+  "Downing Renewable Developments LLP": {
+   "rows": 8,
+   "mw": "2899.60",
+   "project_ids": [
+    "a0l8e000000TPMJ",
+    "a0l8e000000TPQC",
+    "a0l8e000000TPcA",
+    "a0l8e000000TPcF",
+    "a0l8e000000ViJq",
+    "a0l8e000000f4xC",
+    "a0l8e0000010wRw",
+    "a0l8e0000011yd6"
+   ]
+  },
+  "Dragon Green 2 Renewables Ltd": {
+   "rows": 1,
+   "mw": "200.00",
+   "project_ids": [
+    "a0l8e0000010wYE"
+   ]
+  },
+  "Drax BESS Neilston Limited": {
+   "rows": 1,
+   "mw": "150.00",
+   "project_ids": [
+    "a0l8e0000011zs8"
+   ]
+  },
+  "Drax Cruachan Expansion Limited": {
+   "rows": 1,
+   "mw": "600.00",
+   "project_ids": [
+    "a0l4L0000005iQW"
+   ]
+  },
+  "Drax Power Limited": {
+   "rows": 1,
+   "mw": "3906.00",
+   "project_ids": [
+    "a0l8e0000010wTs"
+   ]
+  },
+  "Drongan Battery Storage Ltd": {
+   "rows": 1,
+   "mw": "100.00",
+   "project_ids": [
+    "a0l4L0000005ika"
+   ]
+  },
+  "Drummarnock Wind Farm Limited": {
+   "rows": 1,
+   "mw": "30.00",
+   "project_ids": [
+    "a0l4L0000005iWa"
+   ]
+  },
+  "Drumore Battery Storage Limited": {
+   "rows": 1,
+   "mw": "49.90",
+   "project_ids": [
+    "a0l4L0000005iWt"
+   ]
+  },
+  "Dunmill Energy Storage Limited": {
+   "rows": 1,
+   "mw": "49.90",
+   "project_ids": [
+    "a0l8e0000011xZW"
+   ]
+  },
+  "E Power Limited": {
+   "rows": 6,
+   "mw": "373.90",
+   "project_ids": [
+    "a0l4L0000005iYx",
+    "a0l4L0000005iuZ",
+    "a0l4L0000005ivF",
+    "a0l4L0000005ixo",
+    "a0lJ9000000POPH",
+    "a0lJ9000000POiV"
+   ]
+  },
+  "EARBA LIMITED": {
+   "rows": 2,
+   "mw": "1800.00",
+   "project_ids": [
+    "a0l8e000000f8OK"
+   ]
+  },
+  "EARL SHILTON ENERGY PARK LIMITED": {
+   "rows": 1,
+   "mw": "249.90",
+   "project_ids": [
+    "a0l8e000000f4nK"
+   ]
+  },
+  "EAST ANGLIA ONE LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005irM"
+   ]
+  },
+  "EAST ANGLIA ONE NORTH LIMITED": {
+   "rows": 2,
+   "mw": "880.00",
+   "project_ids": [
+    "a0l4L0000005irN"
+   ]
+  },
+  "EAST ANGLIA THREE LIMITED": {
+   "rows": 2,
+   "mw": "1300.00",
+   "project_ids": [
+    "a0l4L0000005irO"
+   ]
+  },
+  "EAST ANGLIA TWO LIMITED": {
+   "rows": 2,
+   "mw": "880.00",
+   "project_ids": [
+    "a0l4L0000005ioH"
+   ]
+  },
+  "EAST CLAYDON GREEN NG LIMITED": {
+   "rows": 2,
+   "mw": "2050.00",
+   "project_ids": [
+    "a0l4L0000005ivL"
+   ]
+  },
+  "EAST CLAYDON STORAGE LIMITED": {
+   "rows": 2,
+   "mw": "1500.00",
+   "project_ids": [
+    "a0l4L0000005ivt",
+    "a0l8e0000010wW3"
+   ]
+  },
+  "EAST PYE SOLAR LIMITED": {
+   "rows": 1,
+   "mw": "500.00",
+   "project_ids": [
+    "a0l4L0000005ivJ"
+   ]
+  },
+  "ECLIPSE POWER NETWORKS LIMITED": {
+   "rows": 1,
+   "mw": "249.60",
+   "project_ids": [
+    "a0l4L0000005iZZ"
+   ]
+  },
+  "ECOCEL ENERGY (STORAGE) LTD": {
+   "rows": 1,
+   "mw": "200.00",
+   "project_ids": [
+    "a0l8e0000012hot"
+   ]
+  },
+  "ECODEV (ALYTH) LTD": {
+   "rows": 2,
+   "mw": "900.00",
+   "project_ids": [
+    "a0l4L0000005iZL"
+   ]
+  },
+  "ECODEV (SOUTH) LTD": {
+   "rows": 1,
+   "mw": "300.00",
+   "project_ids": [
+    "a0l4L0000005iWg"
+   ]
+  },
+  "ECODEV GROUP LTD": {
+   "rows": 1,
+   "mw": "240.00",
+   "project_ids": [
+    "a0l8e0000012eEB"
+   ]
+  },
+  "EDF ENERGY RENEWABLES LIMITED": {
+   "rows": 19,
+   "mw": "2631.30",
+   "project_ids": [
+    "a0l4L0000005iNo",
+    "a0l4L0000005iXO",
+    "a0l4L0000005iYG",
+    "a0l4L0000005iZK",
+    "a0l4L0000005iZo",
+    "a0l4L0000005ifb",
+    "a0l4L0000005igy",
+    "a0l4L0000005ipG",
+    "a0l4L0000005itQ",
+    "a0l4L0000005iv0",
+    "a0l4L0000005iv1",
+    "a0l4L0000005iw9",
+    "a0l8e000000f6hC",
+    "a0l8e0000010wbA",
+    "a0l8e0000010wm8",
+    "a0lJ9000000PDtY",
+    "a0lJ9000000PEBH",
+    "a0lJ9000000POh8"
+   ]
+  },
+  "EDF Energy Nuclear Generation Limited": {
+   "rows": 6,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005ioG",
+    "a0l4L0000005ioK",
+    "a0l4L0000005ioL",
+    "a0l4L0000005ioM",
+    "a0l4L0000005ioQ",
+    "a0l4L0000005ioR"
+   ]
+  },
+  "EDP RENEWABLES UK LIMITED": {
+   "rows": 1,
+   "mw": "49.95",
+   "project_ids": [
+    "a0l8e000001HoTY"
+   ]
+  },
+  "EEB68 LIMITED": {
+   "rows": 1,
+   "mw": "150.88",
+   "project_ids": [
+    "a0l4L0000005ib6"
+   ]
+  },
+  "EEB74 LIMITED": {
+   "rows": 1,
+   "mw": "200.00",
+   "project_ids": [
+    "a0l4L0000005itU"
+   ]
+  },
+  "EEW RENEWABLES LTD": {
+   "rows": 2,
+   "mw": "175.00",
+   "project_ids": [
+    "a0l8e0000010wfM"
+   ]
+  },
+  "EGGBOROUGH POWER LIMITED": {
+   "rows": 2,
+   "mw": "2450.00",
+   "project_ids": [
+    "a0l4L0000005ikt"
+   ]
+  },
+  "EKU ENERGY FAUNE PROJECTS (UK) LIMITED": {
+   "rows": 2,
+   "mw": "89.80",
+   "project_ids": [
+    "a0l4L0000005iUg",
+    "a0l4L0000005j9n"
+   ]
+  },
+  "EL (WEST WEYBRIDGE) LIMITED": {
+   "rows": 3,
+   "mw": "114.00",
+   "project_ids": [
+    "a0l4L0000005ipo",
+    "a0l8e000001Hy5Y"
+   ]
+  },
+  "ELAWAN ENERGY UK LIMITED": {
+   "rows": 1,
+   "mw": "49.90",
+   "project_ids": [
+    "a0lJ9000000blnB"
+   ]
+  },
+  "ELCHIES WIND LIMITED": {
+   "rows": 2,
+   "mw": "170.00",
+   "project_ids": [
+    "a0l4L0000005ixh"
+   ]
+  },
+  "ELEMENTS GREEN DEVELOPMENT LTD": {
+   "rows": 2,
+   "mw": "2060.00",
+   "project_ids": [
+    "a0l4L000002yQWa",
+    "a0l8e00000120NS"
+   ]
+  },
+  "ELEMENTS GREEN LIMITED": {
+   "rows": 2,
+   "mw": "2200.00",
+   "project_ids": [
+    "a0l4L0000005ikw",
+    "a0l4L0000005iuE"
+   ]
+  },
+  "ELEMENTS GREEN TRENT LTD": {
+   "rows": 2,
+   "mw": "800.00",
+   "project_ids": [
+    "a0l4L0000005iNY"
+   ]
+  },
+  "ELGIN ENERGY ES CO LIMITED": {
+   "rows": 8,
+   "mw": "1703.90",
+   "project_ids": [
+    "a0l8e0000010wcr",
+    "a0l8e0000010wlo",
+    "a0l8e0000012gYu",
+    "a0l8e0000012gbe",
+    "a0l8e0000012krV",
+    "a0l8e000001HpUO",
+    "a0lJ9000000PDx1",
+    "a0lJ9000000PFJU"
+   ]
+  },
+  "ELMYA RPC UK BRAYBROOKE LIMITED": {
+   "rows": 1,
+   "mw": "252.00",
+   "project_ids": [
+    "a0l4L0000005ikb"
+   ]
+  },
+  "ELMYA RPC UK GRANGE ROAD LIMITED": {
+   "rows": 1,
+   "mw": "300.00",
+   "project_ids": [
+    "a0l4L0000005il8"
+   ]
+  },
+  "ELMYA RPC UK MELBOURNE LIMITED": {
+   "rows": 2,
+   "mw": "300.00",
+   "project_ids": [
+    "a0l4L0000005iyl"
+   ]
+  },
+  "ELMYA RPC UK REDNAL LIMITED": {
+   "rows": 1,
+   "mw": "300.00",
+   "project_ids": [
+    "a0l4L0000005j9Y"
+   ]
+  },
+  "ELSTREE BATTERY STORAGE LIMITED": {
+   "rows": 1,
+   "mw": "170.00",
+   "project_ids": [
+    "a0l8e000000TPDl"
+   ]
+  },
+  "ELSTREE FLEXPOWER LTD": {
+   "rows": 1,
+   "mw": "500.00",
+   "project_ids": [
+    "a0l8e0000010wh8"
+   ]
+  },
+  "ELVANFOOT ENERGY STORAGE 2 LIMITED": {
+   "rows": 1,
+   "mw": "50.00",
+   "project_ids": [
+    "a0l8e000000TPNM"
+   ]
+  },
+  "ELVANFOOT ENERGY STORAGE 3 LIMITED": {
+   "rows": 1,
+   "mw": "25.00",
+   "project_ids": [
+    "a0l8e000000TPNH"
+   ]
+  },
+  "ELVANFOOT ENERGY STORAGE LIMITED": {
+   "rows": 1,
+   "mw": "9.80",
+   "project_ids": [
+    "a0l4L0000005igK"
+   ]
+  },
+  "ENDERBY BATTERY STORAGE LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005ilw"
+   ]
+  },
+  "ENDERBY BESS LIMITED": {
+   "rows": 1,
+   "mw": "1025.00",
+   "project_ids": [
+    "a0l4L0000005itg"
+   ]
+  },
+  "ENDERBY ENERGY LIMITED": {
+   "rows": 1,
+   "mw": "1799.00",
+   "project_ids": [
+    "a0l8e000001Hpe3"
+   ]
+  },
+  "ENECO BURN OF WHILK LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005iVC"
+   ]
+  },
+  "ENECO MOY LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005iVm"
+   ]
+  },
+  "ENERGIEKONTOR UK LTD": {
+   "rows": 2,
+   "mw": "138.60",
+   "project_ids": [
+    "a0l8e000000f8Q7",
+    "a0l8e0000010x1D"
+   ]
+  },
+  "ENERGY ISLES SHETLAND LIMITED": {
+   "rows": 1,
+   "mw": "120.30",
+   "project_ids": [
+    "a0l4L0000005imt"
+   ]
+  },
+  "ENERGY POWER RESOURCES LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005iVD"
+   ]
+  },
+  "ENERGYCOG LTD": {
+   "rows": 1,
+   "mw": "100.00",
+   "project_ids": [
+    "a0lJ9000000PDz7"
+   ]
+  },
+  "ENERGYFARM ALLT DOMHAIN LTD": {
+   "rows": 1,
+   "mw": "64.80",
+   "project_ids": [
+    "a0lJ9000000POFu"
+   ]
+  },
+  "ENERGYFARM DIVOT HILL LTD": {
+   "rows": 1,
+   "mw": "63.00",
+   "project_ids": [
+    "a0l8e0000012jKW"
+   ]
+  },
+  "ENERGYFARM ROWAN LLP": {
+   "rows": 1,
+   "mw": "90.80",
+   "project_ids": [
+    "a0l8e000000f41T"
+   ]
+  },
+  "ENERGYFARM STRATH OYKEL LLP": {
+   "rows": 1,
+   "mw": "74.00",
+   "project_ids": [
+    "a0l8e0000012hwb"
+   ]
+  },
+  "ENERGYFARM UK ACHEILIDH LTD": {
+   "rows": 1,
+   "mw": "84.20",
+   "project_ids": [
+    "a0lJ9000000PDsu"
+   ]
+  },
+  "ENERGYFARM UK BALLACH LTD": {
+   "rows": 1,
+   "mw": "149.00",
+   "project_ids": [
+    "a0lJ9000000PNJc"
+   ]
+  },
+  "ENERGYFARM UK BREACKERIE LTD": {
+   "rows": 1,
+   "mw": "90.80",
+   "project_ids": [
+    "a0lJ9000000PN5R"
+   ]
+  },
+  "ENERGYFARM UK COILLE LINNE LTD": {
+   "rows": 1,
+   "mw": "113.00",
+   "project_ids": [
+    "a0lJ9000000PNK6"
+   ]
+  },
+  "ENERGYFARM UK CORNHARROW LLP": {
+   "rows": 1,
+   "mw": "50.00",
+   "project_ids": [
+    "a0l4L0000005if2"
+   ]
+  },
+  "ENERGYFARM UK CRAIGINMODDIE LLP": {
+   "rows": 1,
+   "mw": "92.40",
+   "project_ids": [
+    "a0l8e000000f41x"
+   ]
+  },
+  "ENERGYFARM UK FELL LLP": {
+   "rows": 1,
+   "mw": "50.00",
+   "project_ids": [
+    "a0l4L0000005izP"
+   ]
+  },
+  "ENERGYFARM UK GLENSHIMMEROCH LLP": {
+   "rows": 1,
+   "mw": "45.00",
+   "project_ids": [
+    "a0l4L0000005in1"
+   ]
+  },
+  "ENERGYFARM UK GLENVERNOCH LTD": {
+   "rows": 1,
+   "mw": "95.80",
+   "project_ids": [
+    "a0lJ9000000PNJr"
+   ]
+  },
+  "ENERGYFARM UK MANQUHILL LTD": {
+   "rows": 1,
+   "mw": "56.00",
+   "project_ids": [
+    "a0l8e0000012jKM"
+   ]
+  },
+  "ENERGYFARM UK MARGREE LLP": {
+   "rows": 1,
+   "mw": "50.00",
+   "project_ids": [
+    "a0l4L0000005ij9"
+   ]
+  },
+  "ENERGYFARM UK MEALL DEARG LTD": {
+   "rows": 1,
+   "mw": "150.20",
+   "project_ids": [
+    "a0lJ9000000PNJw"
+   ]
+  },
+  "ENERGYFARM UK NARACHAN LLP": {
+   "rows": 1,
+   "mw": "72.60",
+   "project_ids": [
+    "a0l4L0000005iSH"
+   ]
+  },
+  "ENERGYFARM UK OVERHILL LLP": {
+   "rows": 1,
+   "mw": "50.00",
+   "project_ids": [
+    "a0l4L0000005inw"
+   ]
+  },
+  "ENERGYHUBDEVELOPMENTS LIMITED": {
+   "rows": 2,
+   "mw": "470.00",
+   "project_ids": [
+    "a0l8e000000TPSr",
+    "a0l8e0000010wkC"
+   ]
+  },
+  "ENIF BESS LIMITED": {
+   "rows": 1,
+   "mw": "130.00",
+   "project_ids": [
+    "a0lJ9000000PDwI"
+   ]
+  },
+  "ENRAY POWER LTD": {
+   "rows": 1,
+   "mw": "240.00",
+   "project_ids": [
+    "a0l8e000000ViF9"
+   ]
+  },
+  "ENSO GREEN HOLDINGS A LIMITED": {
+   "rows": 1,
+   "mw": "120.00",
+   "project_ids": [
+    "a0l4L0000005iYC"
+   ]
+  },
+  "ENSO GREEN HOLDINGS B LIMITED": {
+   "rows": 1,
+   "mw": "120.00",
+   "project_ids": [
+    "a0l4L0000005ixw"
+   ]
+  },
+  "ENSO GREEN HOLDINGS D LIMITED": {
+   "rows": 1,
+   "mw": "190.00",
+   "project_ids": [
+    "a0l4L0000005ixO"
+   ]
+  },
+  "ENSO GREEN HOLDINGS G LIMITED": {
+   "rows": 1,
+   "mw": "120.00",
+   "project_ids": [
+    "a0l4L0000005iZ5"
+   ]
+  },
+  "ENSO GREEN HOLDINGS H LIMITED": {
+   "rows": 1,
+   "mw": "57.00",
+   "project_ids": [
+    "a0l4L0000005ilP"
+   ]
+  },
+  "ENSO GREEN HOLDINGS I LIMITED": {
+   "rows": 1,
+   "mw": "57.00",
+   "project_ids": [
+    "a0l4L0000005iny"
+   ]
+  },
+  "ENSO GREEN HOLDINGS J LIMITED": {
+   "rows": 2,
+   "mw": "87.00",
+   "project_ids": [
+    "a0l4L0000005io2",
+    "a0lJ9000000PDzb"
+   ]
+  },
+  "ENSO GREEN HOLDINGS K LIMITED": {
+   "rows": 1,
+   "mw": "57.00",
+   "project_ids": [
+    "a0l4L0000005ip9"
+   ]
+  },
+  "ENSO GREEN HOLDINGS L LIMITED": {
+   "rows": 1,
+   "mw": "57.00",
+   "project_ids": [
+    "a0l4L0000005iaT"
+   ]
+  },
+  "ENSO GREEN HOLDINGS LIMITED": {
+   "rows": 7,
+   "mw": "2190.00",
+   "project_ids": [
+    "a0l4L0000005idj",
+    "a0l4L0000005itN",
+    "a0l4L0000005iti",
+    "a0l4L0000005iyN",
+    "a0l4L0000005izn"
+   ]
+  },
+  "ENSO GREEN HOLDINGS P LIMITED": {
+   "rows": 1,
+   "mw": "57.00",
+   "project_ids": [
+    "a0l4L0000005iy3"
+   ]
+  },
+  "ENSO GREEN HOLDINGS Q LIMITED": {
+   "rows": 3,
+   "mw": "857.00",
+   "project_ids": [
+    "a0l4L0000005idk",
+    "a0l4L0000005ikT",
+    "a0l4L0000005ioi"
+   ]
+  },
+  "ENSO GREEN HOLDINGS R LIMITED": {
+   "rows": 1,
+   "mw": "100.00",
+   "project_ids": [
+    "a0l4L0000005ioV"
+   ]
+  },
+  "ENSO GREEN HOLDINGS SS LIMITED": {
+   "rows": 1,
+   "mw": "47.50",
+   "project_ids": [
+    "a0l4L0000005ips"
+   ]
+  },
+  "ENSO GREEN HOLDINGS U LIMITED": {
+   "rows": 1,
+   "mw": "47.50",
+   "project_ids": [
+    "a0l4L0000005ipp"
+   ]
+  },
+  "ENSO GREEN HOLDINGS V LIMITED": {
+   "rows": 1,
+   "mw": "120.00",
+   "project_ids": [
+    "a0l4L0000005iwy"
+   ]
+  },
+  "ENSO GREEN HOLDINGS X LIMITED": {
+   "rows": 17,
+   "mw": "5400.00",
+   "project_ids": [
+    "a0l4L0000005idf",
+    "a0l4L0000005idg",
+    "a0l4L0000005idl",
+    "a0l4L0000005ikV",
+    "a0l4L0000005ikW",
+    "a0l4L0000005ikq",
+    "a0l4L0000005ikr",
+    "a0l4L0000005itM",
+    "a0l4L0000005itl",
+    "a0l4L0000005ivv",
+    "a0lJ9000000blPq",
+    "a0lJ9000000blPv"
+   ]
+  },
+  "EP LANGAGE LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005itv"
+   ]
+  },
+  "EP UK Power Development II Ltd": {
+   "rows": 1,
+   "mw": "35.00",
+   "project_ids": [
+    "a0l4L0000005itw"
+   ]
+  },
+  "EPL NEWCO1 LIMITED": {
+   "rows": 1,
+   "mw": "860.00",
+   "project_ids": [
+    "a0l4L0000005iZa"
+   ]
+  },
+  "EPL NEWCO5 LIMITED": {
+   "rows": 1,
+   "mw": "480.00",
+   "project_ids": [
+    "a0l8e000000f5Bs"
+   ]
+  },
+  "EPL NEWCO6 LIMITED": {
+   "rows": 1,
+   "mw": "480.00",
+   "project_ids": [
+    "a0l8e000000f5Bx"
+   ]
+  },
+  "EPL NEWCO7 LIMITED": {
+   "rows": 1,
+   "mw": "480.00",
+   "project_ids": [
+    "a0l8e0000012hp8"
+   ]
+  },
+  "EPL NEWCO8 LIMITED": {
+   "rows": 1,
+   "mw": "480.00",
+   "project_ids": [
+    "a0l8e000000f4yA"
+   ]
+  },
+  "EPL NEWCO9 LIMITED": {
+   "rows": 1,
+   "mw": "480.00",
+   "project_ids": [
+    "a0l8e000000f5BY"
+   ]
+  },
+  "EPPING ENERGY PARK LIMITED": {
+   "rows": 1,
+   "mw": "249.90",
+   "project_ids": [
+    "a0lJ9000000PERu"
+   ]
+  },
+  "EPR GLANFORD LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005iVW"
+   ]
+  },
+  "EPR THETFORD LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005iVp"
+   ]
+  },
+  "EQUINOR NEW ENERGY LIMITED": {
+   "rows": 3,
+   "mw": "2350.00",
+   "project_ids": [
+    "a0l8e000000TP6f",
+    "a0l8e000000f8QC",
+    "a0l8e000000f8QH"
+   ]
+  },
+  "ER PROJECT DEVELOPMENT CO LIMITED": {
+   "rows": 10,
+   "mw": "3770.00",
+   "project_ids": [
+    "a0l8e000000exRz",
+    "a0l8e000000exS4",
+    "a0l8e000000exSE",
+    "a0l8e000000exSJ",
+    "a0l8e000000exSO",
+    "a0l8e000000exST",
+    "a0l8e000000exSY",
+    "a0l8e0000010wTJ",
+    "a0l8e0000011xwR",
+    "a0l8e0000011yBv"
+   ]
+  },
+  "ESB (HARKER) LTD": {
+   "rows": 1,
+   "mw": "342.00",
+   "project_ids": [
+    "a0lJ9000000PMIs"
+   ]
+  },
+  "ESB (SCOTLAND) LTD": {
+   "rows": 1,
+   "mw": "504.00",
+   "project_ids": [
+    "a0lJ9000000PNPF"
+   ]
+  },
+  "ESB ASSET DEVELOPMENT UK LIMITED": {
+   "rows": 5,
+   "mw": "1280.80",
+   "project_ids": [
+    "a0l4L0000005iT2",
+    "a0l4L0000005iY6",
+    "a0l4L0000005iYM",
+    "a0l4L0000005iur",
+    "a0l8e0000012jL5"
+   ]
+  },
+  "ESGAIR GALED ENERGY PARK LIMITED": {
+   "rows": 1,
+   "mw": "125.00",
+   "project_ids": [
+    "a0l4L0000005iUK"
+   ]
+  },
+  "ESSO PETROLEUM COMPANY,LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005iVU"
+   ]
+  },
+  "ETP UK 1 LTD": {
+   "rows": 1,
+   "mw": "480.00",
+   "project_ids": [
+    "a0l8e0000010wgU"
+   ]
+  },
+  "ETP UK 2 LTD": {
+   "rows": 1,
+   "mw": "480.00",
+   "project_ids": [
+    "a0l8e0000010wh3"
+   ]
+  },
+  "EXAGEN GROUP LIMITED": {
+   "rows": 2,
+   "mw": "749.99",
+   "project_ids": [
+    "a0l8e000001Hrhn",
+    "a0lJ9000000blly"
+   ]
+  },
+  "EXETER MAIN BATTERY LIMITED": {
+   "rows": 1,
+   "mw": "57.00",
+   "project_ids": [
+    "a0l4L0000005izU"
+   ]
+  },
+  "East Claydon Energy Limited": {
+   "rows": 1,
+   "mw": "650.00",
+   "project_ids": [
+    "a0l4L0000005iwg"
+   ]
+  },
+  "East Yorkshire Solar Farm Limited": {
+   "rows": 1,
+   "mw": "400.00",
+   "project_ids": [
+    "a0l4L0000005iUE"
+   ]
+  },
+  "EastCoastGridServices Ltd": {
+   "rows": 1,
+   "mw": "750.00",
+   "project_ids": [
+    "a0l4L0000005ida"
+   ]
+  },
+  "Eccles Energy Centre Limited": {
+   "rows": 1,
+   "mw": "500.00",
+   "project_ids": [
+    "a0l4L0000005idE"
+   ]
+  },
+  "Eccles Grid Stability Limited": {
+   "rows": 1,
+   "mw": "49.90",
+   "project_ids": [
+    "a0l8e000000f4Am"
+   ]
+  },
+  "Econergy International Limited": {
+   "rows": 10,
+   "mw": "2341.00",
+   "project_ids": [
+    "a0l4L0000005ic1",
+    "a0l4L0000005iu2",
+    "a0l4L0000005iuG",
+    "a0l4L0000005iv5",
+    "a0l4L0000005j9s",
+    "a0l8e000000ez6u",
+    "a0l8e0000010wPH",
+    "a0l8e0000011xZR",
+    "a0l8e0000011yxG",
+    "a0l8e0000011yxH"
+   ]
+  },
+  "Ecotricity (Heck Fen Solar) Limited": {
+   "rows": 1,
+   "mw": "400.00",
+   "project_ids": [
+    "a0l4L0000005ixu"
+   ]
+  },
+  "Energi Generation 14 Ltd": {
+   "rows": 1,
+   "mw": "400.00",
+   "project_ids": [
+    "a0l8e000000f4nU"
+   ]
+  },
+  "Energi Generation 6 Ltd": {
+   "rows": 1,
+   "mw": "249.00",
+   "project_ids": [
+    "a0l8e0000010wjn"
+   ]
+  },
+  "Enviromena Project Management UK Limited": {
+   "rows": 3,
+   "mw": "290.90",
+   "project_ids": [
+    "a0l8e0000010wSu",
+    "a0lJ9000000POjy",
+    "a0lJ9000000POkc"
+   ]
+  },
+  "Exagen Development Limited": {
+   "rows": 1,
+   "mw": "600.00",
+   "project_ids": [
+    "a0l8e000000f427"
+   ]
+  },
+  "Exagen Normanton Energy Reserve Limited": {
+   "rows": 1,
+   "mw": "500.00",
+   "project_ids": [
+    "a0l4L0000005iYV"
+   ]
+  },
+  "Exeter Storage Limited": {
+   "rows": 2,
+   "mw": "680.00",
+   "project_ids": [
+    "a0l4L0000005ivy"
+   ]
+  },
+  "FALKIRK POWER LTD": {
+   "rows": 1,
+   "mw": "43.00",
+   "project_ids": [
+    "a0l4L0000005iWY"
+   ]
+  },
+  "FALLAGO RIG WINDFARM LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005ioo"
+   ]
+  },
+  "FARR WINDFARM LIMITED": {
+   "rows": 2,
+   "mw": "144.80",
+   "project_ids": [
+    "a0l4L0000005iop",
+    "a0l8e0000012eoe"
+   ]
+  },
+  "FEARNA PSH LIMITED": {
+   "rows": 2,
+   "mw": "1795.00",
+   "project_ids": [
+    "a0l8e0000010wOJ",
+    "a0l8e0000012ezM"
+   ]
+  },
+  "FECKENHAM GREEN NG LIMITED": {
+   "rows": 1,
+   "mw": "1025.00",
+   "project_ids": [
+    "a0l4L0000005iit"
+   ]
+  },
+  "FENWICK SOLAR PROJECT LIMITED": {
+   "rows": 1,
+   "mw": "237.50",
+   "project_ids": [
+    "a0l4L0000005ix1"
+   ]
+  },
+  "FIDDES BATTERY LIMITED": {
+   "rows": 1,
+   "mw": "30.00",
+   "project_ids": [
+    "a0l4L0000005iNs"
+   ]
+  },
+  "FIDDLERS FERRY LTD": {
+   "rows": 3,
+   "mw": "900.00",
+   "project_ids": [
+    "a0l8e000000f4xW"
+   ]
+  },
+  "FIELD BEAULY LTD": {
+   "rows": 1,
+   "mw": "100.00",
+   "project_ids": [
+    "a0l8e000000exTq"
+   ]
+  },
+  "FIELD CORRIEMOILLIE LTD": {
+   "rows": 1,
+   "mw": "200.00",
+   "project_ids": [
+    "a0l8e000000f6u6"
+   ]
+  },
+  "FIELD DEVCO LTD": {
+   "rows": 5,
+   "mw": "950.00",
+   "project_ids": [
+    "a0l8e000000f4iO",
+    "a0l8e0000012i3d",
+    "a0l8e0000012kjJ",
+    "a0l8e0000012kji",
+    "a0l8e0000012kjs"
+   ]
+  },
+  "FIELD HARTMOOR LTD": {
+   "rows": 1,
+   "mw": "200.00",
+   "project_ids": [
+    "a0l8e000000ew2x"
+   ]
+  },
+  "FIELD KNOCKNAGAEL LTD": {
+   "rows": 1,
+   "mw": "200.00",
+   "project_ids": [
+    "a0l8e000000exNN"
+   ]
+  },
+  "FIELD RIGIFA LIMITED": {
+   "rows": 1,
+   "mw": "200.00",
+   "project_ids": [
+    "a0l8e0000010wfR"
+   ]
+  },
+  "FIRSTWAY SOLAR LTD": {
+   "rows": 3,
+   "mw": "611.20",
+   "project_ids": [
+    "a0l8e0000012eyd",
+    "a0l8e0000012jL0",
+    "a0lJ9000000blaX"
+   ]
+  },
+  "FIVE ESTUARIES OFFSHORE WIND FARM LIMITED": {
+   "rows": 1,
+   "mw": "1080.00",
+   "project_ids": [
+    "a0l4L0000005izv"
+   ]
+  },
+  "FLAVUSIA LTD": {
+   "rows": 1,
+   "mw": "300.00",
+   "project_ids": [
+    "a0l4L0000005iyM"
+   ]
+  },
+  "FLEET GREEN LIMITED": {
+   "rows": 1,
+   "mw": "47.50",
+   "project_ids": [
+    "a0l4L0000005ipw"
+   ]
+  },
+  "FLEET HAMPSHIRE ENERGY LIMITED": {
+   "rows": 1,
+   "mw": "1000.00",
+   "project_ids": [
+    "a0l8e000000expy"
+   ]
+  },
+  "FLEET SOLAR LIMITED": {
+   "rows": 2,
+   "mw": "104.50",
+   "project_ids": [
+    "a0l4L0000005j00",
+    "a0l8e0000010wkl"
+   ]
+  },
+  "FLEXIBLE GENERATION 1 LTD": {
+   "rows": 1,
+   "mw": "2000.00",
+   "project_ids": [
+    "a0l4L0000005ikm"
+   ]
+  },
+  "FLEXION ENERGY SPV 2 LTD": {
+   "rows": 1,
+   "mw": "100.00",
+   "project_ids": [
+    "a0l4L0000005iXN"
+   ]
+  },
+  "FLINTON ROAD SOLAR LIMITED": {
+   "rows": 1,
+   "mw": "600.00",
+   "project_ids": [
+    "a0lJ9000000POk8"
+   ]
+  },
+  "FLOTATION ENERGY LIMITED": {
+   "rows": 1,
+   "mw": "1350.00",
+   "project_ids": [
+    "a0l4L0000005iPE"
+   ]
+  },
+  "FOEL FACH WIND FARM LIMITED": {
+   "rows": 1,
+   "mw": "79.20",
+   "project_ids": [
+    "a0l8e000001Hy9v"
+   ]
+  },
+  "FOREPOWER LINCOLN (250) LIMITED": {
+   "rows": 1,
+   "mw": "240.00",
+   "project_ids": [
+    "a0l8e0000012gml"
+   ]
+  },
+  "FORSA ENERGY HOLDINGS LIMITED": {
+   "rows": 1,
+   "mw": "99.90",
+   "project_ids": [
+    "a0lJ9000000bltA"
+   ]
+  },
+  "FOSSE GREEN ENERGY LIMITED": {
+   "rows": 1,
+   "mw": "240.00",
+   "project_ids": [
+    "a0l4L0000005ivB"
+   ]
+  },
+  "FPC ELECTRIC LAND LIMITED": {
+   "rows": 4,
+   "mw": "474.90",
+   "project_ids": [
+    "a0l4L0000005iUb",
+    "a0l4L0000005iX2",
+    "a0l8e0000010wch",
+    "a0l8e000001HxRI"
+   ]
+  },
+  "FREASDAIL ENERGY LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005im3"
+   ]
+  },
+  "FRED OLSEN RENEWABLES LIMITED": {
+   "rows": 7,
+   "mw": "470.10",
+   "project_ids": [
+    "a0l4L0000005ivM",
+    "a0lJ9000000PDv0",
+    "a0lJ9000000PEEs",
+    "a0lJ9000000PEjS",
+    "a0lJ9000000PF4W",
+    "a0lJ9000000PMek",
+    "a0lJ9000000POfq"
+   ]
+  },
+  "FRV Powertek Limited": {
+   "rows": 11,
+   "mw": "3049.92",
+   "project_ids": [
+    "a0l8e000000TPS8",
+    "a0l8e000000TPS9",
+    "a0l8e000000TPSD",
+    "a0l8e0000010wiV",
+    "a0l8e0000010xfQ",
+    "a0l8e0000011ycr",
+    "a0l8e0000012gcN",
+    "a0l8e000001HpCf",
+    "a0l8e000001Hpdt",
+    "a0l8e000001HpeD",
+    "a0l8e000001HrCA"
+   ]
+  },
+  "FRV Tyler Hill BESS 1 Ltd": {
+   "rows": 1,
+   "mw": "200.00",
+   "project_ids": [
+    "a0l8e0000012i3x"
+   ]
+  },
+  "FUTURE ENERGY LLANWERN LIMITED": {
+   "rows": 3,
+   "mw": "380.00",
+   "project_ids": [
+    "a0l4L0000005iwO",
+    "a0l4L0000005iwP",
+    "a0l8e000001HxwD"
+   ]
+  },
+  "FUTURE POINT MANCHESTER LIMITED": {
+   "rows": 1,
+   "mw": "1400.00",
+   "project_ids": [
+    "a0lJ900000000Xf"
+   ]
+  },
+  "FUTURE POWER ENTERPRISES LTD": {
+   "rows": 1,
+   "mw": "200.00",
+   "project_ids": [
+    "a0l8e0000012hp3"
+   ]
+  },
+  "FVS DEAN MOOR LIMITED": {
+   "rows": 1,
+   "mw": "150.00",
+   "project_ids": [
+    "a0l8e000001HrZ3"
+   ]
+  },
+  "Field Bicker Fen Ltd": {
+   "rows": 1,
+   "mw": "400.00",
+   "project_ids": [
+    "a0lJ9000000PEB7"
+   ]
+  },
+  "Field Drum Farm Ltd": {
+   "rows": 1,
+   "mw": "49.90",
+   "project_ids": [
+    "a0l4L0000005iUA"
+   ]
+  },
+  "Field Fyrish Ltd": {
+   "rows": 1,
+   "mw": "200.00",
+   "project_ids": [
+    "a0l8e0000012hng"
+   ]
+  },
+  "Field High Marnham Ltd": {
+   "rows": 1,
+   "mw": "400.00",
+   "project_ids": [
+    "a0lJ9000000PMDz"
+   ]
+  },
+  "Field Holmston Ltd": {
+   "rows": 1,
+   "mw": "49.90",
+   "project_ids": [
+    "a0l4L0000005iXi"
+   ]
+  },
+  "Field Keith Ltd": {
+   "rows": 1,
+   "mw": "39.00",
+   "project_ids": [
+    "a0l4L0000005iU5"
+   ]
+  },
+  "Field Kinardochy Ltd": {
+   "rows": 1,
+   "mw": "400.00",
+   "project_ids": [
+    "a0lJ9000000PDyY"
+   ]
+  },
+  "Field Long Stratton Ltd": {
+   "rows": 1,
+   "mw": "400.00",
+   "project_ids": [
+    "a0lJ9000000blOT"
+   ]
+  },
+  "Field Netherton Ltd": {
+   "rows": 1,
+   "mw": "200.00",
+   "project_ids": [
+    "a0l8e0000012kjd"
+   ]
+  },
+  "Field New Deer Ltd": {
+   "rows": 1,
+   "mw": "200.00",
+   "project_ids": [
+    "a0l8e0000012kk2"
+   ]
+  },
+  "Field Shurton Ltd": {
+   "rows": 1,
+   "mw": "200.00",
+   "project_ids": [
+    "a0l8e000001HxQj"
+   ]
+  },
+  "Field Spittal Ltd": {
+   "rows": 1,
+   "mw": "300.00",
+   "project_ids": [
+    "a0l8e000000TPJo"
+   ]
+  },
+  "Field Woodhead Ltd": {
+   "rows": 1,
+   "mw": "400.00",
+   "project_ids": [
+    "a0lJ9000000PDxz"
+   ]
+  },
+  "Field Yaxley Ltd": {
+   "rows": 1,
+   "mw": "200.00",
+   "project_ids": [
+    "a0l8e000000f6AB"
+   ]
+  },
+  "Fig Power Limited": {
+   "rows": 1,
+   "mw": "200.00",
+   "project_ids": [
+    "a0lJ9000000PDl3"
+   ]
+  },
+  "Firma Vogt Solar Ltd": {
+   "rows": 2,
+   "mw": "800.00",
+   "project_ids": [
+    "a0l8e0000010wlt",
+    "a0l8e0000010xRu"
+   ]
+  },
+  "First Hydro Company": {
+   "rows": 2,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005im8",
+    "a0l4L0000005im9"
+   ]
+  },
+  "Flemyland Battery Storage Limited": {
+   "rows": 1,
+   "mw": "100.00",
+   "project_ids": [
+    "a0l4L0000005iyI"
+   ]
+  },
+  "Forsinain Forest Wind Farm Limited": {
+   "rows": 1,
+   "mw": "99.00",
+   "project_ids": [
+    "a0lJ9000000POkI"
+   ]
+  },
+  "Frodsham Devco Limited": {
+   "rows": 1,
+   "mw": "240.00",
+   "project_ids": [
+    "a0l8e0000010wOP"
+   ]
+  },
+  "Frodsham Solar Limited": {
+   "rows": 2,
+   "mw": "200.00",
+   "project_ids": [
+    "a0l4L0000005iSr"
+   ]
+  },
+  "GALAWHISTLE WIND FARM LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005ios"
+   ]
+  },
+  "GALILEO 01 LIMITED": {
+   "rows": 1,
+   "mw": "70.00",
+   "project_ids": [
+    "a0l8e000000TP9y"
+   ]
+  },
+  "GALILEO 02 LIMITED": {
+   "rows": 1,
+   "mw": "77.00",
+   "project_ids": [
+    "a0l8e0000010wlK"
+   ]
+  },
+  "GALILEO 04 LIMITED": {
+   "rows": 1,
+   "mw": "100.80",
+   "project_ids": [
+    "a0l8e0000010wf7"
+   ]
+  },
+  "GALILEO 07 LIMITED": {
+   "rows": 1,
+   "mw": "150.00",
+   "project_ids": [
+    "a0lJ9000000PDr3"
+   ]
+  },
+  "GALILEO 08 LIMITED": {
+   "rows": 1,
+   "mw": "100.00",
+   "project_ids": [
+    "a0lJ9000000blZA"
+   ]
+  },
+  "GALILEO 09 LIMITED": {
+   "rows": 1,
+   "mw": "297.00",
+   "project_ids": [
+    "a0lJ9000000blKC"
+   ]
+  },
+  "GALILEO 10 LIMITED": {
+   "rows": 1,
+   "mw": "60.00",
+   "project_ids": [
+    "a0l8e000000f65A"
+   ]
+  },
+  "GALILEO 12 LIMITED": {
+   "rows": 1,
+   "mw": "150.80",
+   "project_ids": [
+    "a0lJ9000000blKg"
+   ]
+  },
+  "GALILEO 13 LIMITED": {
+   "rows": 1,
+   "mw": "100.00",
+   "project_ids": [
+    "a0l8e000000f7p3"
+   ]
+  },
+  "GALILEO 14 LIMITED": {
+   "rows": 1,
+   "mw": "200.00",
+   "project_ids": [
+    "a0lJ9000000POOi"
+   ]
+  },
+  "GALILEO 15 LIMITED": {
+   "rows": 1,
+   "mw": "200.00",
+   "project_ids": [
+    "a0l8e0000012hpS"
+   ]
+  },
+  "GALILEO 16 LIMITED": {
+   "rows": 1,
+   "mw": "125.00",
+   "project_ids": [
+    "a0lJ9000000PEBC"
+   ]
+  },
+  "GALILEO 19 LIMITED": {
+   "rows": 1,
+   "mw": "290.00",
+   "project_ids": [
+    "a0lJ9000000PM5N"
+   ]
+  },
+  "GALLOPER WIND FARM LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005iot"
+   ]
+  },
+  "GARBET WIND FARM LLP": {
+   "rows": 1,
+   "mw": "46.20",
+   "project_ids": [
+    "a0l4L0000005iXV"
+   ]
+  },
+  "GARLOGIE ENERGY CENTRE LIMITED": {
+   "rows": 6,
+   "mw": "300.00",
+   "project_ids": [
+    "a0l8e0000012jDo",
+    "a0l8e0000012jDt",
+    "a0l8e0000012jIG",
+    "a0l8e0000012jIL",
+    "a0l8e0000012jIQ",
+    "a0l8e0000012jIV"
+   ]
+  },
+  "GARREG FAWR ENERGY PARK LIMITED": {
+   "rows": 1,
+   "mw": "189.50",
+   "project_ids": [
+    "a0l4L0000005iQQ"
+   ]
+  },
+  "GARSCADDEN PARK LIMITED": {
+   "rows": 1,
+   "mw": "200.00",
+   "project_ids": [
+    "a0l8e000001Hozd"
+   ]
+  },
+  "GARVARY WIND FARM LIMITED": {
+   "rows": 1,
+   "mw": "222.00",
+   "project_ids": [
+    "a0l4L0000005iyq"
+   ]
+  },
+  "GATE BURTON ENERGY PARK LIMITED": {
+   "rows": 2,
+   "mw": "500.00",
+   "project_ids": [
+    "a0l4L0000005iel"
+   ]
+  },
+  "GATEWAY ENERGY CENTRE LIMITED": {
+   "rows": 2,
+   "mw": "1000.00",
+   "project_ids": [
+    "a0l4L0000005im2"
+   ]
+  },
+  "GB WIND FARM LIMITED": {
+   "rows": 1,
+   "mw": "44.00",
+   "project_ids": [
+    "a0l4L0000005iWy"
+   ]
+  },
+  "GF Norwich Energy Ltd": {
+   "rows": 1,
+   "mw": "400.00",
+   "project_ids": [
+    "a0l8e000000f3zm"
+   ]
+  },
+  "GF Sellindge Energy Ltd": {
+   "rows": 1,
+   "mw": "300.00",
+   "project_ids": [
+    "a0l8e000001HrvJ"
+   ]
+  },
+  "GLEN EARRACH ENERGY LIMITED": {
+   "rows": 1,
+   "mw": "1800.00",
+   "project_ids": [
+    "a0lJ9000000blar"
+   ]
+  },
+  "GLEN KYLLACHY WIND FARM LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005iov"
+   ]
+  },
+  "GLEN ULLINISH WF 2 LTD": {
+   "rows": 1,
+   "mw": "240.00",
+   "project_ids": [
+    "a0l4L0000005iYi"
+   ]
+  },
+  "GLEN ULLINISH WF LIMITED": {
+   "rows": 1,
+   "mw": "49.90",
+   "project_ids": [
+    "a0l4L0000005isH"
+   ]
+  },
+  "GLENBURNIE ENERGY LIMITED": {
+   "rows": 1,
+   "mw": "156.00",
+   "project_ids": [
+    "a0l8e0000010wTT"
+   ]
+  },
+  "GLENCHAMBER WIND ENERGY LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005iV2"
+   ]
+  },
+  "GLENDOE STORAGE LIMITED": {
+   "rows": 1,
+   "mw": "900.00",
+   "project_ids": [
+    "a0l4L0000005ic7"
+   ]
+  },
+  "GLENDYE WIND FARM LIMITED": {
+   "rows": 2,
+   "mw": "166.80",
+   "project_ids": [
+    "a0l4L0000005iyy"
+   ]
+  },
+  "GLENMUCKLOCH PUMPED STORAGE HYDRO LIMITED": {
+   "rows": 1,
+   "mw": "210.00",
+   "project_ids": [
+    "a0l4L0000005isI"
+   ]
+  },
+  "GLENMUCKLOCH RENEWABLE ENERGY LIMITED": {
+   "rows": 1,
+   "mw": "33.60",
+   "project_ids": [
+    "a0l4L0000005iwR"
+   ]
+  },
+  "GLENROTHES BESS LTD": {
+   "rows": 1,
+   "mw": "46.00",
+   "project_ids": [
+    "a0l4L0000005iTw"
+   ]
+  },
+  "GLENS OF FOUDLAND WIND FARM LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005iVz"
+   ]
+  },
+  "GLENTAGGART WIND LIMITED": {
+   "rows": 1,
+   "mw": "42.00",
+   "project_ids": [
+    "a0l4L0000005ik6"
+   ]
+  },
+  "GLOUCESTER ENERGY PARK LIMITED": {
+   "rows": 1,
+   "mw": "249.00",
+   "project_ids": [
+    "a0l4L0000005j8W"
+   ]
+  },
+  "GORDONSTOWN HILL WIND FARM LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005iRk"
+   ]
+  },
+  "GPC 013 LTD": {
+   "rows": 1,
+   "mw": "60.00",
+   "project_ids": [
+    "a0l8e000000TPRo"
+   ]
+  },
+  "GPC 1039 Ltd": {
+   "rows": 1,
+   "mw": "200.00",
+   "project_ids": [
+    "a0l8e0000010x1h"
+   ]
+  },
+  "GPC 1127 Ltd": {
+   "rows": 1,
+   "mw": "30.00",
+   "project_ids": [
+    "a0l8e00000120O1"
+   ]
+  },
+  "GPC 1134 Ltd": {
+   "rows": 1,
+   "mw": "100.00",
+   "project_ids": [
+    "a0l8e0000010wav"
+   ]
+  },
+  "GPC 1137 Ltd": {
+   "rows": 1,
+   "mw": "40.00",
+   "project_ids": [
+    "a0l8e0000011z3P"
+   ]
+  },
+  "GPC 1154 Ltd": {
+   "rows": 1,
+   "mw": "700.00",
+   "project_ids": [
+    "a0l4L000002yQZZ"
+   ]
+  },
+  "GPC 1169 Ltd": {
+   "rows": 1,
+   "mw": "25.00",
+   "project_ids": [
+    "a0l8e0000011zKl"
+   ]
+  },
+  "GPC 1210 Ltd": {
+   "rows": 1,
+   "mw": "500.00",
+   "project_ids": [
+    "a0l8e0000012jIB"
+   ]
+  },
+  "GPC 1211 Ltd": {
+   "rows": 1,
+   "mw": "400.00",
+   "project_ids": [
+    "a0l8e0000012eVg"
+   ]
+  },
+  "GPC 2008 Ltd": {
+   "rows": 1,
+   "mw": "100.00",
+   "project_ids": [
+    "a0l8e00000120Iq"
+   ]
+  },
+  "GPC 612 Ltd": {
+   "rows": 1,
+   "mw": "30.00",
+   "project_ids": [
+    "a0l8e0000010wVt"
+   ]
+  },
+  "GPC 678 LTD": {
+   "rows": 1,
+   "mw": "40.00",
+   "project_ids": [
+    "a0l8e0000011z1x"
+   ]
+  },
+  "GPC 700 Ltd": {
+   "rows": 1,
+   "mw": "700.00",
+   "project_ids": [
+    "a0l8e0000011zs9"
+   ]
+  },
+  "GPC Project 11 Ltd": {
+   "rows": 1,
+   "mw": "200.00",
+   "project_ids": [
+    "a0l8e000000TPRt"
+   ]
+  },
+  "GPC Project 12 Ltd": {
+   "rows": 1,
+   "mw": "500.00",
+   "project_ids": [
+    "a0l8e0000011ziL"
+   ]
+  },
+  "GPC Project 13 Ltd": {
+   "rows": 1,
+   "mw": "250.00",
+   "project_ids": [
+    "a0l8e000000TPHT"
+   ]
+  },
+  "GPC Project 16 Ltd": {
+   "rows": 1,
+   "mw": "500.00",
+   "project_ids": [
+    "a0l8e0000011zPw"
+   ]
+  },
+  "GRANGEMOUTH CHP LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005iRI"
+   ]
+  },
+  "GRAYSIDE WF LTD": {
+   "rows": 1,
+   "mw": "108.00",
+   "project_ids": [
+    "a0l8e0000012hwR"
+   ]
+  },
+  "GREATER GABBARD OFFSHORE WINDS LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005iox"
+   ]
+  },
+  "GREEN ENERGY MAB LTD": {
+   "rows": 2,
+   "mw": "1000.00",
+   "project_ids": [
+    "a0l4L0000005iM7",
+    "a0l4L0000005iyV"
+   ]
+  },
+  "GREEN HYDROGEN SOLAR FARM LIMITED": {
+   "rows": 1,
+   "mw": "500.00",
+   "project_ids": [
+    "a0l8e000000ew37"
+   ]
+  },
+  "GREENGAIRS EAST WIND FARM LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005iXf"
+   ]
+  },
+  "GREENHILLS 1 LIMITED": {
+   "rows": 1,
+   "mw": "36.00",
+   "project_ids": [
+    "a0l4L0000005iRi"
+   ]
+  },
+  "GREENPOWER (CARRAIG GHEAL) LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005inA"
+   ]
+  },
+  "GREENTECH INVEST UK (16) LIMITED": {
+   "rows": 1,
+   "mw": "500.00",
+   "project_ids": [
+    "a0l8e0000012hwC"
+   ]
+  },
+  "GREENTECH PROJECTS HOLDING UK LIMITED": {
+   "rows": 6,
+   "mw": "1749.90",
+   "project_ids": [
+    "a0l8e0000012eoA",
+    "a0l8e0000012hpc",
+    "a0l8e0000012kcT",
+    "a0lJ9000000PDyi",
+    "a0lJ9000000POaJ",
+    "a0lJ9000000POaO"
+   ]
+  },
+  "GRETNA ENERGY STORAGE LIMITED": {
+   "rows": 1,
+   "mw": "56.00",
+   "project_ids": [
+    "a0l8e0000010xik"
+   ]
+  },
+  "GRETNA GRID SERVICES LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005ibs"
+   ]
+  },
+  "GREYSTONE KNOWE WINDFARM LIMITED": {
+   "rows": 1,
+   "mw": "67.20",
+   "project_ids": [
+    "a0l4L0000005iXv"
+   ]
+  },
+  "GRIDMOVE LTD": {
+   "rows": 1,
+   "mw": "437.00",
+   "project_ids": [
+    "a0l4L0000005ix9"
+   ]
+  },
+  "GRIFFIN WIND FARM LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005ioy"
+   ]
+  },
+  "GROVEHURST ENERGY LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005iSm"
+   ]
+  },
+  "GRUPOTEC SOLAR UK 5 LIMITED": {
+   "rows": 1,
+   "mw": "36.00",
+   "project_ids": [
+    "a0l8e0000010wiL"
+   ]
+  },
+  "GT R4 LIMITED": {
+   "rows": 1,
+   "mw": "1500.00",
+   "project_ids": [
+    "a0l4L0000005izb"
+   ]
+  },
+  "GUNFLEET SANDS LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005iqJ"
+   ]
+  },
+  "GWYDDELWERN ENERGY LIMITED": {
+   "rows": 1,
+   "mw": "1000.00",
+   "project_ids": [
+    "a0l8e0000012gbU"
+   ]
+  },
+  "GWYNT GLAS OFFSHORE WIND FARM LIMITED": {
+   "rows": 3,
+   "mw": "2800.00",
+   "project_ids": [
+    "a0l4L0000005iiy",
+    "a0l4L0000005iy6",
+    "a0l4L0000005j1N"
+   ]
+  },
+  "GWYNT Y MOR OFFSHORE WIND FARM LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005iq7"
+   ]
+  },
+  "Galileo 20 Limited": {
+   "rows": 1,
+   "mw": "224.00",
+   "project_ids": [
+    "a0lJ9000000POtf"
+   ]
+  },
+  "Galileo 21 Limited": {
+   "rows": 1,
+   "mw": "112.00",
+   "project_ids": [
+    "a0lJ9000000POtp"
+   ]
+  },
+  "Galileo Empower UK Limited": {
+   "rows": 2,
+   "mw": "259.00",
+   "project_ids": [
+    "a0l8e000000f40G",
+    "a0l8e000001Hr2c"
+   ]
+  },
+  "Gas Generation Property Limited": {
+   "rows": 1,
+   "mw": "49.90",
+   "project_ids": [
+    "a0l4L0000005iWq"
+   ]
+  },
+  "Geocore (Kellwood) Ltd": {
+   "rows": 1,
+   "mw": "40.00",
+   "project_ids": [
+    "a0l8e000000exN8"
+   ]
+  },
+  "Geocore Ltd": {
+   "rows": 2,
+   "mw": "349.90",
+   "project_ids": [
+    "a0l8e0000010wWm",
+    "a0l8e0000011y7J"
+   ]
+  },
+  "Glen Lednock Wind Farm Limited": {
+   "rows": 1,
+   "mw": "165.00",
+   "project_ids": [
+    "a0l8e0000012ho5"
+   ]
+  },
+  "Green Hill Solar Farm Limited": {
+   "rows": 1,
+   "mw": "500.00",
+   "project_ids": [
+    "a0l4L0000005iih"
+   ]
+  },
+  "Green Volt Offshore Windfarm Ltd": {
+   "rows": 2,
+   "mw": "560.00",
+   "project_ids": [
+    "a0l4L0000005idD"
+   ]
+  },
+  "Greentech Invest UK (15) Limited": {
+   "rows": 1,
+   "mw": "240.00",
+   "project_ids": [
+    "a0l8e000000TPXJ"
+   ]
+  },
+  "Greentech Invest UK (17) Limited": {
+   "rows": 1,
+   "mw": "500.00",
+   "project_ids": [
+    "a0lJ9000000blQK"
+   ]
+  },
+  "Grenergy Renewables UK Limited": {
+   "rows": 2,
+   "mw": "449.00",
+   "project_ids": [
+    "a0l4L0000005iwo",
+    "a0lJ9000000PMNb"
+   ]
+  },
+  "Greta IV Limited": {
+   "rows": 4,
+   "mw": "2000.00",
+   "project_ids": [
+    "a0l8e0000010wal",
+    "a0l8e0000012guY",
+    "a0l8e0000012gud",
+    "a0l8e0000012gui"
+   ]
+  },
+  "Greyland Energy Park Limited": {
+   "rows": 1,
+   "mw": "60.00",
+   "project_ids": [
+    "a0l8e0000012kpU"
+   ]
+  },
+  "Grupotec Solar UK 4 Ltd": {
+   "rows": 1,
+   "mw": "60.00",
+   "project_ids": [
+    "a0l4L0000005iMV"
+   ]
+  },
+  "Gunfleet Sands II Ltd": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005iqi"
+   ]
+  },
+  "HAGSHAW HILL REPOWERING LTD": {
+   "rows": 2,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005io5",
+    "a0l4L0000005io6"
+   ]
+  },
+  "HAGSHAW LDES LTD": {
+   "rows": 1,
+   "mw": "500.00",
+   "project_ids": [
+    "a0lJ9000000PMvu"
+   ]
+  },
+  "HAGSHAW REPOWERING 2 LTD": {
+   "rows": 1,
+   "mw": "84.00",
+   "project_ids": [
+    "a0l4L0000005iwU"
+   ]
+  },
+  "HALBEATH SOLAR LTD": {
+   "rows": 1,
+   "mw": "150.00",
+   "project_ids": [
+    "a0l4L0000005ivD"
+   ]
+  },
+  "HALDANE ENERGY PROJECT 1 LIMITED": {
+   "rows": 1,
+   "mw": "4800.00",
+   "project_ids": [
+    "a0l8e000001HpdK"
+   ]
+  },
+  "HALDANE ENERGY PROJECT 2 LIMITED": {
+   "rows": 1,
+   "mw": "3600.00",
+   "project_ids": [
+    "a0l8e000001HpdP"
+   ]
+  },
+  "HALDANE ENERGY PROJECT 3 LIMITED": {
+   "rows": 1,
+   "mw": "3600.00",
+   "project_ids": [
+    "a0l8e000001HpdU"
+   ]
+  },
+  "HALDANE ENERGY PROJECT 4 LIMITED": {
+   "rows": 1,
+   "mw": "2400.00",
+   "project_ids": [
+    "a0l8e000001HpdZ"
+   ]
+  },
+  "HALDANE ENERGY PROJECT 5 LIMITED": {
+   "rows": 1,
+   "mw": "3600.00",
+   "project_ids": [
+    "a0l8e000001Hpde"
+   ]
+  },
+  "HALDANE ENERGY PROJECT 7 LIMITED": {
+   "rows": 1,
+   "mw": "2400.00",
+   "project_ids": [
+    "a0l8e0000012jKl"
+   ]
+  },
+  "HAMS HALL NG LIMITED": {
+   "rows": 2,
+   "mw": "1025.00",
+   "project_ids": [
+    "a0l4L0000005iir"
+   ]
+  },
+  "HARE CRAIG WINDFARM LLP": {
+   "rows": 1,
+   "mw": "46.20",
+   "project_ids": [
+    "a0l4L0000005iys"
+   ]
+  },
+  "HARESHAW RIG WF LIMITED": {
+   "rows": 1,
+   "mw": "40.00",
+   "project_ids": [
+    "a0l4L0000005ipd"
+   ]
+  },
+  "HARKER ENERGY PARK LIMITED": {
+   "rows": 1,
+   "mw": "249.90",
+   "project_ids": [
+    "a0l8e0000010wSp"
+   ]
+  },
+  "HARMONY BW LTD": {
+   "rows": 1,
+   "mw": "200.00",
+   "project_ids": [
+    "a0l8e000001Hxbq"
+   ]
+  },
+  "HARMONY CBR LTD": {
+   "rows": 1,
+   "mw": "200.00",
+   "project_ids": [
+    "a0l8e0000010xIg"
+   ]
+  },
+  "HARMONY CF LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005iUI"
+   ]
+  },
+  "HARMONY CTF LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005iPN"
+   ]
+  },
+  "HARMONY DL LTD": {
+   "rows": 1,
+   "mw": "200.00",
+   "project_ids": [
+    "a0l4L0000005ib8"
+   ]
+  },
+  "HARMONY ENERGY LIMITED": {
+   "rows": 5,
+   "mw": "1050.00",
+   "project_ids": [
+    "a0l8e0000012j8l",
+    "a0lJ9000000PEBR",
+    "a0lJ9000000PGmR",
+    "a0lJ9000000PN5C",
+    "a0lJ9000000PNPA"
+   ]
+  },
+  "HARMONY HB LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005iQB"
+   ]
+  },
+  "HARMONY JF LIMITED": {
+   "rows": 2,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005iOj",
+    "a0l4L0000005iOk"
+   ]
+  },
+  "HARMONY MF LIMITED": {
+   "rows": 1,
+   "mw": "200.00",
+   "project_ids": [
+    "a0l4L0000005ixX"
+   ]
+  },
+  "HARMONY TC LIMITED": {
+   "rows": 1,
+   "mw": "99.90",
+   "project_ids": [
+    "a0l4L0000005iwj"
+   ]
+  },
+  "HAVBREDEY LIMITED": {
+   "rows": 1,
+   "mw": "1500.00",
+   "project_ids": [
+    "a0l4L0000005iNU"
+   ]
+  },
+  "HAWKERS HILL ENERGY PARK LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005iUD"
+   ]
+  },
+  "HAWTHORN PIT NG LIMITED": {
+   "rows": 1,
+   "mw": "1025.00",
+   "project_ids": [
+    "a0l4L0000005ilD"
+   ]
+  },
+  "HAZEL SOLAR LTD": {
+   "rows": 1,
+   "mw": "150.00",
+   "project_ids": [
+    "a0lJ9000000blty"
+   ]
+  },
+  "HB333MIL LTD": {
+   "rows": 1,
+   "mw": "57.00",
+   "project_ids": [
+    "a0l4L0000005iw8"
+   ]
+  },
+  "HB411MIN Limited": {
+   "rows": 3,
+   "mw": "142.50",
+   "project_ids": [
+    "a0l4L0000005inP",
+    "a0l4L0000005ixg",
+    "a0l4L0000005ixx"
+   ]
+  },
+  "HB825AXM LTD": {
+   "rows": 1,
+   "mw": "120.00",
+   "project_ids": [
+    "a0l4L0000005ixv"
+   ]
+  },
+  "HD000ACT LTD": {
+   "rows": 2,
+   "mw": "120.00",
+   "project_ids": [
+    "a0l4L0000005inO"
+   ]
+  },
+  "HD143OCK LTD": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005iw7"
+   ]
+  },
+  "HD144WHI LTD": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005io8"
+   ]
+  },
+  "HD639LEG LIMITED": {
+   "rows": 1,
+   "mw": "57.00",
+   "project_ids": [
+    "a0l4L0000005izM"
+   ]
+  },
+  "HD777FRY LTD": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005inc"
+   ]
+  },
+  "HD888CAP LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005iaU"
+   ]
+  },
+  "HEADWIND DEVELOPMENT SERVICES LIMITED": {
+   "rows": 3,
+   "mw": "140.40",
+   "project_ids": [
+    "a0l8e0000012kpt",
+    "a0l8e0000012kqc",
+    "a0l8e000001HoL3"
+   ]
+  },
+  "HEIT LR LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005iQy"
+   ]
+  },
+  "HEIT PW LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005iRR"
+   ]
+  },
+  "HEIT PW2 LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005iRS"
+   ]
+  },
+  "HESTA HEAD WIND FARM LIMITED": {
+   "rows": 1,
+   "mw": "20.40",
+   "project_ids": [
+    "a0lJ9000000PDyE"
+   ]
+  },
+  "HEYSHAM GREEN NG LIMITED": {
+   "rows": 1,
+   "mw": "400.00",
+   "project_ids": [
+    "a0l4L0000005igC"
+   ]
+  },
+  "HIGH CONSTELLATION WINDFARM LIMITED": {
+   "rows": 1,
+   "mw": "50.00",
+   "project_ids": [
+    "a0l4L0000005imK"
+   ]
+  },
+  "HIGHLAND WIND FARM LIMITED": {
+   "rows": 1,
+   "mw": "168.00",
+   "project_ids": [
+    "a0l8e0000012ezH"
+   ]
+  },
+  "HIGHLAND WIND LIMITED": {
+   "rows": 1,
+   "mw": "100.00",
+   "project_ids": [
+    "a0l4L0000005idG"
+   ]
+  },
+  "HILL OF GLASCHYLE RENEWABLES LLP": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005iVw"
+   ]
+  },
+  "HILL OF TOWIE LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005iVn"
+   ]
+  },
+  "HILL STREET SHELFCO 1 LIMITED": {
+   "rows": 1,
+   "mw": "800.00",
+   "project_ids": [
+    "a0l8e000000exlg"
+   ]
+  },
+  "HIRWAUN POWER LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005isP"
+   ]
+  },
+  "HM GB (WIND) LTD": {
+   "rows": 1,
+   "mw": "49.90",
+   "project_ids": [
+    "a0l8e0000012gLd"
+   ]
+  },
+  "HOCKLIFFE GREEN ENERGY CENTRE LTD": {
+   "rows": 1,
+   "mw": "850.00",
+   "project_ids": [
+    "a0l8e000000ViEz"
+   ]
+  },
+  "HOLLYGREEN ENERGYFARM LIMITED": {
+   "rows": 2,
+   "mw": "7.10",
+   "project_ids": [
+    "a0l4L0000005ifg"
+   ]
+  },
+  "HOPSRIG WIND FARM LIMITED": {
+   "rows": 1,
+   "mw": "48.00",
+   "project_ids": [
+    "a0l4L0000005isf"
+   ]
+  },
+  "HORNSEA 1 LIMITED": {
+   "rows": 3,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005isU",
+    "a0l4L0000005isp",
+    "a0l4L0000005isq"
+   ]
+  },
+  "HORNSEA PROJECT THREE (UK) LIMITED": {
+   "rows": 2,
+   "mw": "3000.00",
+   "project_ids": [
+    "a0l4L0000005in7"
+   ]
+  },
+  "HP Trotter t/a Printonan Farm": {
+   "rows": 1,
+   "mw": "51.00",
+   "project_ids": [
+    "a0l4L0000005iT4"
+   ]
+  },
+  "HUNTERSTON GRID 1 LTD": {
+   "rows": 2,
+   "mw": "400.00",
+   "project_ids": [
+    "a0l4L0000005iNg",
+    "a0l4L0000005igz"
+   ]
+  },
+  "HUNTERSTON GRID 3 LTD": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005ibc"
+   ]
+  },
+  "HVS SITECO LTD": {
+   "rows": 1,
+   "mw": "200.00",
+   "project_ids": [
+    "a0l4L0000005iYk"
+   ]
+  },
+  "HYWIND (SCOTLAND) LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005iXR"
+   ]
+  },
+  "Haldane Energy Project 6 Limited": {
+   "rows": 1,
+   "mw": "3600.00",
+   "project_ids": [
+    "a0l8e000001Hpdj"
+   ]
+  },
+  "Harmony BD Ltd": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005iTb"
+   ]
+  },
+  "Harmony BF Ltd": {
+   "rows": 2,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005iXc",
+    "a0l4L0000005iXd"
+   ]
+  },
+  "Harmony CS Ltd": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005iUN"
+   ]
+  },
+  "Harmony CTF 2 Limited": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005iPK"
+   ]
+  },
+  "Harmony FM Limited": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005iSK"
+   ]
+  },
+  "Harmony HM Limited": {
+   "rows": 1,
+   "mw": "334.00",
+   "project_ids": [
+    "a0l4L0000005ivG"
+   ]
+  },
+  "Harmony MS Limited": {
+   "rows": 1,
+   "mw": "200.00",
+   "project_ids": [
+    "a0l8e0000012hnl"
+   ]
+  },
+  "Harmony SH Limited": {
+   "rows": 1,
+   "mw": "200.00",
+   "project_ids": [
+    "a0l8e0000010xJ0"
+   ]
+  },
+  "High Brenfield Wind Farm Limited": {
+   "rows": 2,
+   "mw": "73.20",
+   "project_ids": [
+    "a0lJ9000000blQU",
+    "a0lJ9000000blQZ"
+   ]
+  },
+  "Hydrostor UK Ltd": {
+   "rows": 2,
+   "mw": "1000.00",
+   "project_ids": [
+    "a0lJ9000000POje",
+    "a0lJ9000000POta"
+   ]
+  },
+  "IB VOGT UK LTD": {
+   "rows": 7,
+   "mw": "2020.00",
+   "project_ids": [
+    "a0l8e000000TPHO",
+    "a0l8e000000TPHx",
+    "a0l8e000000f41n",
+    "a0l8e0000011yrK",
+    "a0l8e0000012grt",
+    "a0l8e0000012hvY",
+    "a0l8e000001Hxlx"
+   ]
+  },
+  "IBV BIRTLES HILL ENERGY PARK LTD": {
+   "rows": 1,
+   "mw": "240.00",
+   "project_ids": [
+    "a0l8e000000f5zz"
+   ]
+  },
+  "IBV BRINKBURN ENERGY PARK LIMITED": {
+   "rows": 1,
+   "mw": "400.00",
+   "project_ids": [
+    "a0l4L0000005j8Q"
+   ]
+  },
+  "IBV Burdiehouse Energy Park Limited": {
+   "rows": 1,
+   "mw": "240.00",
+   "project_ids": [
+    "a0lJ9000000blKb"
+   ]
+  },
+  "IBV COACHFORD ENERGY PARK LTD": {
+   "rows": 1,
+   "mw": "400.00",
+   "project_ids": [
+    "a0l8e0000011z3K"
+   ]
+  },
+  "IBV DANETHORPE LANE SOLAR LIMITED": {
+   "rows": 1,
+   "mw": "240.00",
+   "project_ids": [
+    "a0lJ9000000POfC"
+   ]
+  },
+  "IBV Elford Park Solar Limited": {
+   "rows": 1,
+   "mw": "400.00",
+   "project_ids": [
+    "a0l8e000000TPHn"
+   ]
+  },
+  "IBV KELFIELD SOLAR LTD": {
+   "rows": 1,
+   "mw": "150.00",
+   "project_ids": [
+    "a0l8e000000ew2T"
+   ]
+  },
+  "IBV Torness Energy Park Limited": {
+   "rows": 1,
+   "mw": "240.00",
+   "project_ids": [
+    "a0lJ9000000blaw"
+   ]
+  },
+  "IBV WEST MELTON SOLAR PARK LIMITED": {
+   "rows": 1,
+   "mw": "200.00",
+   "project_ids": [
+    "a0l8e000001HoBf"
+   ]
+  },
+  "IBV WILLINGTON ENERGY PARK LIMITED": {
+   "rows": 1,
+   "mw": "240.00",
+   "project_ids": [
+    "a0l8e000000exSi"
+   ]
+  },
+  "IG RENEWABLES SPV 1 LTD": {
+   "rows": 1,
+   "mw": "480.00",
+   "project_ids": [
+    "a0l8e000000f64W"
+   ]
+  },
+  "IGP ENERGY STORAGE 2 LIMITED": {
+   "rows": 1,
+   "mw": "300.00",
+   "project_ids": [
+    "a0l8e000001HxmC"
+   ]
+  },
+  "IGP ENERGY STORAGE 3 LIMITED": {
+   "rows": 1,
+   "mw": "350.00",
+   "project_ids": [
+    "a0l8e0000011zGO"
+   ]
+  },
+  "IGP ENERGY STORAGE 4 LIMITED": {
+   "rows": 1,
+   "mw": "50.00",
+   "project_ids": [
+    "a0l8e0000011zGT"
+   ]
+  },
+  "IGP ENERGY STORAGE 5 LIMITED": {
+   "rows": 2,
+   "mw": "1200.00",
+   "project_ids": [
+    "a0l8e00000120Ig",
+    "a0lJ9000000POVh"
+   ]
+  },
+  "IGP ENERGY STORAGE 6 LIMITED": {
+   "rows": 1,
+   "mw": "500.00",
+   "project_ids": [
+    "a0l8e00000120Ih"
+   ]
+  },
+  "IGP INTERNATIONAL PROSPECTING LIMITED": {
+   "rows": 3,
+   "mw": "1149.00",
+   "project_ids": [
+    "a0l4L0000005iu6",
+    "a0l4L0000005j14",
+    "a0l8e000000ewj7"
+   ]
+  },
+  "IGP SOLAR 14 LIMITED": {
+   "rows": 1,
+   "mw": "500.00",
+   "project_ids": [
+    "a0l4L0000005iOw"
+   ]
+  },
+  "IGP SOLAR 16 LIMITED": {
+   "rows": 1,
+   "mw": "600.00",
+   "project_ids": [
+    "a0l4L0000005iNV"
+   ]
+  },
+  "IGP SOLAR 17 LIMITED": {
+   "rows": 1,
+   "mw": "600.00",
+   "project_ids": [
+    "a0l4L0000005iNW"
+   ]
+  },
+  "IGP SOLAR 19 LIMITED": {
+   "rows": 1,
+   "mw": "500.00",
+   "project_ids": [
+    "a0l4L0000005iOr"
+   ]
+  },
+  "IGP SOLAR 22 LIMITED": {
+   "rows": 1,
+   "mw": "50.00",
+   "project_ids": [
+    "a0l8e000000TPI2"
+   ]
+  },
+  "IGP Solar 26 Limited": {
+   "rows": 1,
+   "mw": "1000.00",
+   "project_ids": [
+    "a0l4L0000005itP"
+   ]
+  },
+  "ILI (Borders PSH) Ltd": {
+   "rows": 1,
+   "mw": "900.00",
+   "project_ids": [
+    "a0l4L0000005iRO"
+   ]
+  },
+  "IMMINGHAM ENERGY STORAGE LIMITED": {
+   "rows": 1,
+   "mw": "1000.00",
+   "project_ids": [
+    "a0l8e0000012hwg"
+   ]
+  },
+  "INCH CAPE OFFSHORE LIMITED": {
+   "rows": 2,
+   "mw": "1080.00",
+   "project_ids": [
+    "a0l4L0000005it3",
+    "a0l4L0000005it4"
+   ]
+  },
+  "INDAVER RIVENHALL LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0lJ9000000PWqa"
+   ]
+  },
+  "INDIAN QUEENS POWER LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005iZD"
+   ]
+  },
+  "INNOVA RENEWABLES LIMITED": {
+   "rows": 2,
+   "mw": "1225.00",
+   "project_ids": [
+    "a0l4L0000005il9",
+    "a0l8e0000012ghO"
+   ]
+  },
+  "IPC GRID CONNECTION LIMITED": {
+   "rows": 1,
+   "mw": "1000.00",
+   "project_ids": [
+    "a0l8e000000eybg"
+   ]
+  },
+  "IPC GRID CONNECTION TWO LIMITED": {
+   "rows": 1,
+   "mw": "500.00",
+   "project_ids": [
+    "a0lJ9000000blLj"
+   ]
+  },
+  "IQ ENERGY CENTRE LIMITED": {
+   "rows": 1,
+   "mw": "47.50",
+   "project_ids": [
+    "a0l4L0000005iZC"
+   ]
+  },
+  "IRON ACTON GREEN LIMITED": {
+   "rows": 2,
+   "mw": "20.60",
+   "project_ids": [
+    "a0l4L0000005iod"
+   ]
+  },
+  "IRONBRIDGE GREEN NG LIMITED": {
+   "rows": 1,
+   "mw": "400.00",
+   "project_ids": [
+    "a0l4L0000005igD"
+   ]
+  },
+  "Innerwick Storage Ltd": {
+   "rows": 1,
+   "mw": "170.00",
+   "project_ids": [
+    "a0l8e0000010wly"
+   ]
+  },
+  "Intwood BESS Ltd": {
+   "rows": 1,
+   "mw": "240.00",
+   "project_ids": [
+    "a0l8e000000TPBL"
+   ]
+  },
+  "Invenergy Development UK Ltd": {
+   "rows": 7,
+   "mw": "1312.00",
+   "project_ids": [
+    "a0l8e000001Hny0",
+    "a0lJ9000000PDlI",
+    "a0lJ9000000PDmk",
+    "a0lJ9000000PDqZ",
+    "a0lJ9000000PNEj",
+    "a0lJ9000000PNJD",
+    "a0lJ9000000POVr"
+   ]
+  },
+  "Irena BESS LIMITED": {
+   "rows": 1,
+   "mw": "500.00",
+   "project_ids": [
+    "a0l4L0000005itZ"
+   ]
+  },
+  "Isenau Energy Storage Resources Eight Limited": {
+   "rows": 1,
+   "mw": "249.00",
+   "project_ids": [
+    "a0l8e000000TP9o"
+   ]
+  },
+  "Isenau Energy Storage Resources Four Limited": {
+   "rows": 1,
+   "mw": "200.00",
+   "project_ids": [
+    "a0l8e0000010xhI"
+   ]
+  },
+  "JBM SOLAR PROJECTS 13 LIMITED": {
+   "rows": 1,
+   "mw": "49.90",
+   "project_ids": [
+    "a0l4L0000005iog"
+   ]
+  },
+  "JBM SOLAR PROJECTS 14 LTD": {
+   "rows": 1,
+   "mw": "47.50",
+   "project_ids": [
+    "a0l4L0000005inQ"
+   ]
+  },
+  "JBM SOLAR PROJECTS 2 LTD": {
+   "rows": 1,
+   "mw": "35.00",
+   "project_ids": [
+    "a0l8e0000012gsX"
+   ]
+  },
+  "JBM Solar Limited": {
+   "rows": 1,
+   "mw": "35.50",
+   "project_ids": [
+    "a0l4L0000005iwK"
+   ]
+  },
+  "JERA NEX BP NORTH EAST LIMITED": {
+   "rows": 1,
+   "mw": "50.00",
+   "project_ids": [
+    "a0l8e0000012kiG"
+   ]
+  },
+  "JG PEARS GRID CONNECTION LIMITED": {
+   "rows": 2,
+   "mw": "920.00",
+   "project_ids": [
+    "a0l4L0000005irE",
+    "a0l8e000000TPcj"
+   ]
+  },
+  "JJS 3 Limited": {
+   "rows": 1,
+   "mw": "240.00",
+   "project_ids": [
+    "a0lJ9000000PDsz"
+   ]
+  },
+  "Juniper Energy Limited": {
+   "rows": 3,
+   "mw": "139.90",
+   "project_ids": [
+    "a0l4L0000005ieN",
+    "a0l4L0000005iue"
+   ]
+  },
+  "KARI ENERGY LIMITED": {
+   "rows": 4,
+   "mw": "4000.00",
+   "project_ids": [
+    "a0l4L0000005igH",
+    "a0l4L0000005igI",
+    "a0l4L0000005igJ",
+    "a0l4L0000005iwT"
+   ]
+  },
+  "KEGWORTH 10 RENEWABLES LTD": {
+   "rows": 1,
+   "mw": "1000.00",
+   "project_ids": [
+    "a0l8e000000f4nF"
+   ]
+  },
+  "KEITH SOLAR PV LIMITED": {
+   "rows": 1,
+   "mw": "150.00",
+   "project_ids": [
+    "a0l8e0000010waM"
+   ]
+  },
+  "KEITH STORAGE SOLUTIONS LIMITED": {
+   "rows": 2,
+   "mw": "48.00",
+   "project_ids": [
+    "a0l4L0000005ifT"
+   ]
+  },
+  "KENNOXHEAD WIND FARM LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005inZ"
+   ]
+  },
+  "KILBRAUR WIND ENERGY LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005iqg"
+   ]
+  },
+  "KINCARDINE GRID 1 LTD": {
+   "rows": 2,
+   "mw": "400.00",
+   "project_ids": [
+    "a0l4L0000005iOR",
+    "a0l4L0000005iP9"
+   ]
+  },
+  "KINCARDINE GRID 3 LTD": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005inR"
+   ]
+  },
+  "KINCARDINE OFFSHORE WINDFARM LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005iW4"
+   ]
+  },
+  "KINCORTH ENERGY STORAGE SYSTEM LTD": {
+   "rows": 1,
+   "mw": "19.80",
+   "project_ids": [
+    "a0l8e000001Hxc5"
+   ]
+  },
+  "KINCRAIG ENERGY CENTRE LIMITED": {
+   "rows": 1,
+   "mw": "20.62",
+   "project_ids": [
+    "a0l4L0000005iUa"
+   ]
+  },
+  "KINMUCK ENERGY STORAGE LIMITED": {
+   "rows": 1,
+   "mw": "105.00",
+   "project_ids": [
+    "a0l4L0000005iev"
+   ]
+  },
+  "KIRK HILL WIND FARM LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005iWM"
+   ]
+  },
+  "KIRKAN WIND FARM LIMITED": {
+   "rows": 1,
+   "mw": "81.60",
+   "project_ids": [
+    "a0l8e0000012g8W"
+   ]
+  },
+  "KIRKBY BATTERY STORAGE LTD": {
+   "rows": 2,
+   "mw": "57.00",
+   "project_ids": [
+    "a0l4L0000005ice"
+   ]
+  },
+  "KIRKBY GREEN NG LIMITED": {
+   "rows": 1,
+   "mw": "400.00",
+   "project_ids": [
+    "a0l4L0000005iPZ"
+   ]
+  },
+  "KISTOS ENERGY STORAGE LTD": {
+   "rows": 1,
+   "mw": "200.00",
+   "project_ids": [
+    "a0l8e000000f6K5"
+   ]
+  },
+  "KNOCKKIPPEN WIND ENERGY LIMITED": {
+   "rows": 1,
+   "mw": "60.00",
+   "project_ids": [
+    "a0l4L0000005iXo"
+   ]
+  },
+  "KONA ASSET 2 LIMITED": {
+   "rows": 2,
+   "mw": "840.00",
+   "project_ids": [
+    "a0l4L0000005iu4",
+    "a0l8e0000010x1m"
+   ]
+  },
+  "KONA ASSET 3 LIMITED": {
+   "rows": 1,
+   "mw": "228.00",
+   "project_ids": [
+    "a0l8e0000010wUM"
+   ]
+  },
+  "KONA ASSET 4 LIMITED": {
+   "rows": 2,
+   "mw": "450.00",
+   "project_ids": [
+    "a0l8e000001205t",
+    "a0l8e0000012063"
+   ]
+  },
+  "KS SPV 75 LIMITED": {
+   "rows": 1,
+   "mw": "249.90",
+   "project_ids": [
+    "a0l8e000001201C"
+   ]
+  },
+  "KXP ALPHA I LIMITED": {
+   "rows": 4,
+   "mw": "448.89",
+   "project_ids": [
+    "a0l4L0000005iyW",
+    "a0l8e000000ew2i",
+    "a0l8e000000eykz",
+    "a0l8e000000f3zI"
+   ]
+  },
+  "KXP ALPHA II LIMITED": {
+   "rows": 3,
+   "mw": "298.89",
+   "project_ids": [
+    "a0l4L0000005iku",
+    "a0l8e000000ew2n",
+    "a0l8e000000eyl4"
+   ]
+  },
+  "KXP ALPHA III LIMITED": {
+   "rows": 4,
+   "mw": "398.79",
+   "project_ids": [
+    "a0l4L0000005iyD",
+    "a0l8e000000ew2s",
+    "a0l8e000000ewYQ",
+    "a0l8e000000eyl5"
+   ]
+  },
+  "KXP IMMINGHAM LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0lJ9000000PEAs"
+   ]
+  },
+  "KYPE EXTENSION WIND FARM LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005isK"
+   ]
+  },
+  "Keadby Generation Limited": {
+   "rows": 7,
+   "mw": "3377.00",
+   "project_ids": [
+    "a0l4L0000005iYv",
+    "a0l4L0000005iZM",
+    "a0l4L0000005iac",
+    "a0l4L0000005iq0",
+    "a0l4L0000005isQ",
+    "a0l8e0000010wlU"
+   ]
+  },
+  "Kearsley North Green NG Limited": {
+   "rows": 1,
+   "mw": "400.00",
+   "project_ids": [
+    "a0l4L0000005iyf"
+   ]
+  },
+  "Kilmarnock Energy Centre Limited": {
+   "rows": 1,
+   "mw": "500.00",
+   "project_ids": [
+    "a0l4L0000005ikQ"
+   ]
+  },
+  "Kilmarnock Flexpower Ltd": {
+   "rows": 1,
+   "mw": "350.00",
+   "project_ids": [
+    "a0l4L0000005iwS"
+   ]
+  },
+  "Kilnside Energy Park Limited": {
+   "rows": 1,
+   "mw": "400.00",
+   "project_ids": [
+    "a0l8e0000012eoU"
+   ]
+  },
+  "Kincardine Storage Limited": {
+   "rows": 1,
+   "mw": "42.00",
+   "project_ids": [
+    "a0l8e000000TPAm"
+   ]
+  },
+  "Kingsway Solar Farm Limited": {
+   "rows": 2,
+   "mw": "700.00",
+   "project_ids": [
+    "a0l8e000000f41Y"
+   ]
+  },
+  "Kirkton Wind Farm Limited": {
+   "rows": 1,
+   "mw": "60.00",
+   "project_ids": [
+    "a0l4L0000005ikR"
+   ]
+  },
+  "Knockcronal Wind Farm Limited": {
+   "rows": 1,
+   "mw": "59.40",
+   "project_ids": [
+    "a0l4L0000005ikK"
+   ]
+  },
+  "Koehler Renewable Energy UK Limited": {
+   "rows": 2,
+   "mw": "117.00",
+   "project_ids": [
+    "a0l4L0000005iMU",
+    "a0lJ9000000PEEJ"
+   ]
+  },
+  "Kona Energy Limited": {
+   "rows": 2,
+   "mw": "453.00",
+   "project_ids": [
+    "a0lJ9000000PDuv",
+    "a0lJ9000000PDvP"
+   ]
+  },
+  "LAGRAE BATTERY STORAGE LIMITED": {
+   "rows": 1,
+   "mw": "400.00",
+   "project_ids": [
+    "a0l8e000001Hrhi"
+   ]
+  },
+  "LAIRDMANNOCH ENERGY PARK LIMITED": {
+   "rows": 1,
+   "mw": "100.00",
+   "project_ids": [
+    "a0l8e000000eytl"
+   ]
+  },
+  "LAIRG II LLP": {
+   "rows": 1,
+   "mw": "50.00",
+   "project_ids": [
+    "a0l4L0000005ibk"
+   ]
+  },
+  "LAKESIDE ENERGY STORAGE LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005ifz"
+   ]
+  },
+  "LAN FAWR ENERGY PARK LIMITED": {
+   "rows": 1,
+   "mw": "246.40",
+   "project_ids": [
+    "a0l4L0000005iP4"
+   ]
+  },
+  "LANGAGE ENERGY PARK LIMITED": {
+   "rows": 1,
+   "mw": "249.00",
+   "project_ids": [
+    "a0l4L0000005iaC"
+   ]
+  },
+  "LDV HARBURNHEAD LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005iVl"
+   ]
+  },
+  "LEGACY GREEN ENERGY LIMITED": {
+   "rows": 2,
+   "mw": "1200.00",
+   "project_ids": [
+    "a0l4L0000005idL"
+   ]
+  },
+  "LEITH ENERGY LIMITED": {
+   "rows": 1,
+   "mw": "1000.00",
+   "project_ids": [
+    "a0l8e000001Hxbl"
+   ]
+  },
+  "LEITHENWATER WIND ENERGY HUB LIMITED": {
+   "rows": 1,
+   "mw": "72.60",
+   "project_ids": [
+    "a0l4L0000005iRW"
+   ]
+  },
+  "LEL BILBO SOLAR LIMITED": {
+   "rows": 2,
+   "mw": "67.10",
+   "project_ids": [
+    "a0l4L0000005iXh"
+   ]
+  },
+  "LETHANS EAST WIND FARM LIMITED": {
+   "rows": 1,
+   "mw": "85.00",
+   "project_ids": [
+    "a0l8e0000011ywS"
+   ]
+  },
+  "LEUCHLAND ENERGY CENTRE LIMITED": {
+   "rows": 2,
+   "mw": "114.00",
+   "project_ids": [
+    "a0lJ9000000PEOW",
+    "a0lJ9000000PEOg"
+   ]
+  },
+  "LG-B-300": {
+   "rows": 1,
+   "mw": "600.00",
+   "project_ids": [
+    "a0l8e000000f52S"
+   ]
+  },
+  "LG-B-50a Limited": {
+   "rows": 1,
+   "mw": "49.90",
+   "project_ids": [
+    "a0l8e0000010xRk"
+   ]
+  },
+  "LH NGET GRID SERVICES LIMITED": {
+   "rows": 1,
+   "mw": "500.00",
+   "project_ids": [
+    "a0l8e000001HxRD"
+   ]
+  },
+  "LIGHTSOURCE SPV 191 LIMITED": {
+   "rows": 1,
+   "mw": "57.00",
+   "project_ids": [
+    "a0l4L0000005ixK"
+   ]
+  },
+  "LIGHTSOURCE SPV 192 LIMITED": {
+   "rows": 1,
+   "mw": "57.00",
+   "project_ids": [
+    "a0l4L0000005ixJ"
+   ]
+  },
+  "LIGHTSOURCE SPV 204 LIMITED": {
+   "rows": 4,
+   "mw": "720.00",
+   "project_ids": [
+    "a0l4L0000005ix8",
+    "a0l4L000002yQb6",
+    "a0l8e000000f4x7"
+   ]
+  },
+  "LIGHTSOURCE SPV 214 LIMITED": {
+   "rows": 1,
+   "mw": "249.00",
+   "project_ids": [
+    "a0l4L0000005ikY"
+   ]
+  },
+  "LIME DOWN SOLAR PARK LIMITED": {
+   "rows": 1,
+   "mw": "500.00",
+   "project_ids": [
+    "a0l4L0000005iP1"
+   ]
+  },
+  "LINCS WIND FARM LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005iqE"
+   ]
+  },
+  "LISTER BATTERY LTD": {
+   "rows": 1,
+   "mw": "57.00",
+   "project_ids": [
+    "a0l4L0000005iz9"
+   ]
+  },
+  "LISTER DRIVE SOLUTIONS LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005iOd"
+   ]
+  },
+  "LITTLEBROOK GREEN ENERGY CENTRE LTD": {
+   "rows": 1,
+   "mw": "400.00",
+   "project_ids": [
+    "a0l8e000000f5cX"
+   ]
+  },
+  "LOCH KEMP STORAGE LIMITED": {
+   "rows": 1,
+   "mw": "660.00",
+   "project_ids": [
+    "a0l4L0000005iwW"
+   ]
+  },
+  "LOCH LIATH WIND FARM LIMITED": {
+   "rows": 1,
+   "mw": "99.00",
+   "project_ids": [
+    "a0l4L0000005idS"
+   ]
+  },
+  "LOCHORE BESS LTD": {
+   "rows": 1,
+   "mw": "900.00",
+   "project_ids": [
+    "a0l8e0000011xxF"
+   ]
+  },
+  "LOGANHEAD WF LIMITED": {
+   "rows": 1,
+   "mw": "36.00",
+   "project_ids": [
+    "a0l4L0000005isN"
+   ]
+  },
+  "LONDON AND ESSEX ENERGY LIMITED": {
+   "rows": 1,
+   "mw": "200.00",
+   "project_ids": [
+    "a0l4L0000005iwp"
+   ]
+  },
+  "LONDON ARRAY LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005ipc"
+   ]
+  },
+  "LONGFIELD SOLAR ENERGY FARM LIMITED": {
+   "rows": 2,
+   "mw": "1000.00",
+   "project_ids": [
+    "a0l4L0000005ivq",
+    "a0lJ9000000PDtT"
+   ]
+  },
+  "LOVEDEAN GREEN LIMITED": {
+   "rows": 1,
+   "mw": "57.00",
+   "project_ids": [
+    "a0l4L0000005inX"
+   ]
+  },
+  "LOW CARBON SOLAR PARK 28 LIMITED": {
+   "rows": 2,
+   "mw": "1050.00",
+   "project_ids": [
+    "a0l8e000000f7CI"
+   ]
+  },
+  "LOW CARBON SOLAR PARK 43 LIMITED": {
+   "rows": 1,
+   "mw": "500.00",
+   "project_ids": [
+    "a0l8e000001Hxm2"
+   ]
+  },
+  "LUMINOUS ENERGY GROUP LIMITED": {
+   "rows": 1,
+   "mw": "320.00",
+   "project_ids": [
+    "a0l8e000001HxQo"
+   ]
+  },
+  "LYNEMOUTH POWER LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005iVy"
+   ]
+  },
+  "LZN LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005iqh"
+   ]
+  },
+  "Ladyfield Renewable Energy Park Ltd": {
+   "rows": 1,
+   "mw": "68.00",
+   "project_ids": [
+    "a0l4L0000005ia0"
+   ]
+  },
+  "Langage 10 Renewables Limited": {
+   "rows": 1,
+   "mw": "1000.00",
+   "project_ids": [
+    "a0l4L000002yQaS"
+   ]
+  },
+  "Learielaw Energy Storage Limited": {
+   "rows": 1,
+   "mw": "100.00",
+   "project_ids": [
+    "a0l4L0000005jA7"
+   ]
+  },
+  "Leighton Buzzard 10 Renewables Limited": {
+   "rows": 1,
+   "mw": "1000.00",
+   "project_ids": [
+    "a0l8e000000TPR0"
+   ]
+  },
+  "Leoda Solar Farm Limited": {
+   "rows": 1,
+   "mw": "500.00",
+   "project_ids": [
+    "a0l4L0000005iaD"
+   ]
+  },
+  "Lethans Wind Farm Limited": {
+   "rows": 1,
+   "mw": "132.00",
+   "project_ids": [
+    "a0l4L0000005iZ9"
+   ]
+  },
+  "Light Valley Solar Limited": {
+   "rows": 1,
+   "mw": "500.00",
+   "project_ids": [
+    "a0l4L0000005iy0"
+   ]
+  },
+  "Lightsource Renewable UK Development Limited": {
+   "rows": 35,
+   "mw": "8537.00",
+   "project_ids": [
+    "a0l4L0000005iux",
+    "a0l8e000000exIe",
+    "a0l8e000000exRk",
+    "a0l8e000000exRu",
+    "a0l8e000000exSd",
+    "a0l8e000000exlR",
+    "a0l8e000000exlW",
+    "a0l8e000000eyX9",
+    "a0l8e000000f42R",
+    "a0l8e000000f4Ar",
+    "a0l8e000000f4PD",
+    "a0l8e000000f4dh",
+    "a0l8e000000f4e1",
+    "a0l8e000000f4rr",
+    "a0l8e000000f69h",
+    "a0l8e000000f6OS",
+    "a0l8e000000f6fp",
+    "a0l8e000000f6pc",
+    "a0l8e0000010x0K",
+    "a0l8e000001HodQ",
+    "a0l8e000001Hq20",
+    "a0lJ9000000PDmG",
+    "a0lJ9000000POV3",
+    "a0lJ9000000POad",
+    "a0lJ9000000blL0",
+    "a0lJ9000000blL5",
+    "a0lJ9000000blLe",
+    "a0lJ9000000blLt",
+    "a0lJ9000000blMD",
+    "a0lJ9000000blMS",
+    "a0lJ9000000blMX",
+    "a0lJ9000000blMh",
+    "a0lJ9000000blMw",
+    "a0lJ9000000blOx",
+    "a0lJ9000000blP7"
+   ]
+  },
+  "Limekiln Extension Limited": {
+   "rows": 2,
+   "mw": "61.00",
+   "project_ids": [
+    "a0l4L0000005itV"
+   ]
+  },
+  "Little Harrowden 10 Renewables Limited": {
+   "rows": 1,
+   "mw": "1000.00",
+   "project_ids": [
+    "a0l8e000000TPRP"
+   ]
+  },
+  "Llyn Lort Energy Park Limited": {
+   "rows": 1,
+   "mw": "165.00",
+   "project_ids": [
+    "a0l4L0000005iUL"
+   ]
+  },
+  "Llyn Lort II Energy Park Limited": {
+   "rows": 1,
+   "mw": "100.00",
+   "project_ids": [
+    "a0l8e0000010waC"
+   ]
+  },
+  "Ll\u0177r Floating Wind Limited": {
+   "rows": 1,
+   "mw": "200.00",
+   "project_ids": [
+    "a0l4L0000005iZN"
+   ]
+  },
+  "Lochaber Energy Centre Limited": {
+   "rows": 1,
+   "mw": "50.00",
+   "project_ids": [
+    "a0l8e000001Hxce"
+   ]
+  },
+  "Low Carbon Solar Park 35 Limited": {
+   "rows": 1,
+   "mw": "500.00",
+   "project_ids": [
+    "a0l8e0000011yGU"
+   ]
+  },
+  "Low Carbon Solar Park 40 Limited": {
+   "rows": 1,
+   "mw": "500.00",
+   "project_ids": [
+    "a0l8e000001HoTd"
+   ]
+  },
+  "M2 Energy Storage Limited": {
+   "rows": 1,
+   "mw": "150.00",
+   "project_ids": [
+    "a0l8e0000010xS4"
+   ]
+  },
+  "MABLETHORPE NG LIMITED": {
+   "rows": 1,
+   "mw": "1025.00",
+   "project_ids": [
+    "a0l4L0000005iv9"
+   ]
+  },
+  "MAGNORA OFFSHORE WIND N3 LIMITED": {
+   "rows": 1,
+   "mw": "495.00",
+   "project_ids": [
+    "a0l4L0000005iis"
+   ]
+  },
+  "MALLARD PASS SOLAR FARM LIMITED": {
+   "rows": 1,
+   "mw": "240.00",
+   "project_ids": [
+    "a0l4L0000005iNf"
+   ]
+  },
+  "MANNINGTON ENERGY CENTRE LIMITED": {
+   "rows": 1,
+   "mw": "47.50",
+   "project_ids": [
+    "a0l4L0000005izW"
+   ]
+  },
+  "MARCHWOOD POWER LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005iq2"
+   ]
+  },
+  "MARKET HARBOROUGH GREEN ENERGY CENTRE LTD": {
+   "rows": 1,
+   "mw": "560.00",
+   "project_ids": [
+    "a0l8e000000ViF4"
+   ]
+  },
+  "MAS 001 Limited": {
+   "rows": 1,
+   "mw": "240.00",
+   "project_ids": [
+    "a0l8e000001Hpew"
+   ]
+  },
+  "MAS 002 LIMITED": {
+   "rows": 1,
+   "mw": "500.00",
+   "project_ids": [
+    "a0l4L0000005iMO"
+   ]
+  },
+  "MEDWAY POWER LIMITED": {
+   "rows": 2,
+   "mw": "675.00",
+   "project_ids": [
+    "a0l4L0000005iq1",
+    "a0l8e0000010wOx"
+   ]
+  },
+  "MELKSHAM CALNE GREEN LIMITED": {
+   "rows": 1,
+   "mw": "57.00",
+   "project_ids": [
+    "a0l4L0000005izl"
+   ]
+  },
+  "MERCIA POWER RESPONSE LIMITED": {
+   "rows": 3,
+   "mw": "129.50",
+   "project_ids": [
+    "a0l8e000000evlR",
+    "a0l8e000000ew2E",
+    "a0l8e000000ew2O"
+   ]
+  },
+  "MERIDIAN SOLAR FARM LIMITED": {
+   "rows": 1,
+   "mw": "750.00",
+   "project_ids": [
+    "a0l4L0000005iuj"
+   ]
+  },
+  "MERSEY REACTIVE POWER LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005iw5"
+   ]
+  },
+  "MGT TEESSIDE LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005irs"
+   ]
+  },
+  "MILLBROOK POWER LIMITED": {
+   "rows": 1,
+   "mw": "299.00",
+   "project_ids": [
+    "a0l4L0000005ilM"
+   ]
+  },
+  "MILLENNIUM WIND ENERGY LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005ipA"
+   ]
+  },
+  "MINNYGAP ENERGY LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005irJ"
+   ]
+  },
+  "MINSCA WINDFARM (SCOTLAND) LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005iVo"
+   ]
+  },
+  "MOEL CHWA ENERGY PARK LIMITED": {
+   "rows": 1,
+   "mw": "81.20",
+   "project_ids": [
+    "a0l4L0000005ifq"
+   ]
+  },
+  "MOELFRE ENERGY PARK LIMITED": {
+   "rows": 1,
+   "mw": "158.40",
+   "project_ids": [
+    "a0l4L0000005iek"
+   ]
+  },
+  "MONETS GARDEN BATTERY LTD": {
+   "rows": 1,
+   "mw": "57.00",
+   "project_ids": [
+    "a0l4L0000005icg"
+   ]
+  },
+  "MORAY OFFSHORE WINDFARM (EAST) LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005ip7"
+   ]
+  },
+  "MORAY OFFSHORE WINDFARM (WEST) LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005ifS"
+   ]
+  },
+  "MORECAMBE OFFSHORE WINDFARM LTD": {
+   "rows": 1,
+   "mw": "480.00",
+   "project_ids": [
+    "a0l4L0000005ibw"
+   ]
+  },
+  "MORECAMBE WIND LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005iq9"
+   ]
+  },
+  "MORRIS LESLIE LIMITED": {
+   "rows": 1,
+   "mw": "500.00",
+   "project_ids": [
+    "a0lJ9000000blm8"
+   ]
+  },
+  "MOSEDALE ENERGY LIMITED": {
+   "rows": 1,
+   "mw": "249.00",
+   "project_ids": [
+    "a0l4L0000005ivU"
+   ]
+  },
+  "MOSSMORRAN ENERGY STORAGE LIMITED": {
+   "rows": 1,
+   "mw": "200.00",
+   "project_ids": [
+    "a0l4L0000005itu"
+   ]
+  },
+  "MOSSY HILL SHETLAND LIMITED": {
+   "rows": 1,
+   "mw": "48.00",
+   "project_ids": [
+    "a0l4L0000005iwm"
+   ]
+  },
+  "MOSTYN SEAPOWER LIMITED": {
+   "rows": 3,
+   "mw": "210.00",
+   "project_ids": [
+    "a0l4L0000005imF"
+   ]
+  },
+  "MOWBRAY ENERGY PARK LIMITED": {
+   "rows": 1,
+   "mw": "1000.00",
+   "project_ids": [
+    "a0l8e000000exh7"
+   ]
+  },
+  "MUIR MH\u00d2R OFFSHORE WIND FARM LIMITED": {
+   "rows": 1,
+   "mw": "1000.00",
+   "project_ids": [
+    "a0l4L0000005izG"
+   ]
+  },
+  "MUIRDEN ENERGY LLP": {
+   "rows": 4,
+   "mw": "123.34",
+   "project_ids": [
+    "a0l8e0000012012",
+    "a0l8e000001Hr31",
+    "a0l8e000001HrCy",
+    "a0l8e000001HrDh"
+   ]
+  },
+  "Maesnant Energy Park Limited": {
+   "rows": 1,
+   "mw": "150.00",
+   "project_ids": [
+    "a0l4L0000005iRZ"
+   ]
+  },
+  "Marramwind Limited": {
+   "rows": 2,
+   "mw": "3000.00",
+   "project_ids": [
+    "a0l4L0000005iai"
+   ]
+  },
+  "Melvich Wind Energy Hub Limited": {
+   "rows": 2,
+   "mw": "100.80",
+   "project_ids": [
+    "a0l4L0000005iep",
+    "a0lJ9000000PNyA"
+   ]
+  },
+  "Menter M\u00f4n Morlais Limited": {
+   "rows": 4,
+   "mw": "180.00",
+   "project_ids": [
+    "a0l4L0000005ieU"
+   ]
+  },
+  "Meygrid Limited": {
+   "rows": 5,
+   "mw": "287.00",
+   "project_ids": [
+    "a0l4L0000005isu"
+   ]
+  },
+  "Middleton Energy Storage Limited": {
+   "rows": 1,
+   "mw": "200.00",
+   "project_ids": [
+    "a0l4L0000005j1Y"
+   ]
+  },
+  "Milligansbush Battery Storage Ltd": {
+   "rows": 1,
+   "mw": "200.00",
+   "project_ids": [
+    "a0l8e000000TPSX"
+   ]
+  },
+  "Mona Offshore Wind Limited": {
+   "rows": 1,
+   "mw": "1500.00",
+   "project_ids": [
+    "a0l4L0000005iZr"
+   ]
+  },
+  "Montreathmont Energy Centre Limited": {
+   "rows": 1,
+   "mw": "34.38",
+   "project_ids": [
+    "a0l4L0000005iPG"
+   ]
+  },
+  "Mooir Vannin Offshore Wind Farm Limited": {
+   "rows": 1,
+   "mw": "1320.00",
+   "project_ids": [
+    "a0l8e000000ex1K"
+   ]
+  },
+  "Morgan Offshore Wind Limited": {
+   "rows": 1,
+   "mw": "1500.00",
+   "project_ids": [
+    "a0l4L0000005ik5"
+   ]
+  },
+  "Morven Offshore Wind Limited": {
+   "rows": 2,
+   "mw": "3000.00",
+   "project_ids": [
+    "a0l4L0000005izJ",
+    "a0l4L0000005izK"
+   ]
+  },
+  "Morwind Ltd": {
+   "rows": 1,
+   "mw": "300.00",
+   "project_ids": [
+    "a0l4L0000005ixt"
+   ]
+  },
+  "NANT AMAN ENERGY PARK LIMITED": {
+   "rows": 1,
+   "mw": "143.00",
+   "project_ids": [
+    "a0l4L0000005iNc"
+   ]
+  },
+  "NANT CEIMENT ENERGY PARK LIMITED": {
+   "rows": 1,
+   "mw": "88.40",
+   "project_ids": [
+    "a0l4L0000005iP5"
+   ]
+  },
+  "NANT MITHIL ENERGY PARK LIMITED": {
+   "rows": 1,
+   "mw": "252.70",
+   "project_ids": [
+    "a0l4L0000005iie"
+   ]
+  },
+  "NATIVE RIVER LTD": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005iib"
+   ]
+  },
+  "NATPOWER MARINE UK LIMITED": {
+   "rows": 1,
+   "mw": "1000.00",
+   "project_ids": [
+    "a0l8e0000012hwM"
+   ]
+  },
+  "NAVENBY ENERGY LIMITED": {
+   "rows": 1,
+   "mw": "1000.00",
+   "project_ids": [
+    "a0lJ9000000PDm1"
+   ]
+  },
+  "NAVENBY GREEN ENERGY CENTRE LTD": {
+   "rows": 1,
+   "mw": "580.00",
+   "project_ids": [
+    "a0l8e000000f5Y8"
+   ]
+  },
+  "NEART NA GAOITHE OFFSHORE WIND LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005irp"
+   ]
+  },
+  "NECTON GREEN ENERGY CENTRE LTD": {
+   "rows": 1,
+   "mw": "850.00",
+   "project_ids": [
+    "a0l8e000000ViFJ"
+   ]
+  },
+  "NEILSTON ENERGY LIMITED": {
+   "rows": 1,
+   "mw": "100.00",
+   "project_ids": [
+    "a0l4L0000005iYh"
+   ]
+  },
+  "NEILSTON GRID SERVICES LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005iah"
+   ]
+  },
+  "NET ZERO MARINE SERVICES LIMITED": {
+   "rows": 1,
+   "mw": "250.00",
+   "project_ids": [
+    "a0l8e0000011yda"
+   ]
+  },
+  "NET ZERO TEESSIDE POWER LIMITED": {
+   "rows": 1,
+   "mw": "860.00",
+   "project_ids": [
+    "a0l4L0000005iyz"
+   ]
+  },
+  "NEW CUMNOCK BESS LTD": {
+   "rows": 1,
+   "mw": "450.00",
+   "project_ids": [
+    "a0l8e0000011xxP"
+   ]
+  },
+  "NEW DEER ENERGY CENTRE LIMITED": {
+   "rows": 1,
+   "mw": "500.00",
+   "project_ids": [
+    "a0l4L0000005ixL"
+   ]
+  },
+  "NEW ENERGY PARTNERSHIP LIMITED": {
+   "rows": 4,
+   "mw": "462.40",
+   "project_ids": [
+    "a0l8e000000f3zX",
+    "a0l8e000001HntM",
+    "a0l8e000001HwvE",
+    "a0l8e000001Hxm7"
+   ]
+  },
+  "NEW MARTON GREEN ENERGY CENTRE LIMITED": {
+   "rows": 1,
+   "mw": "550.00",
+   "project_ids": [
+    "a0lJ9000000blJn"
+   ]
+  },
+  "NEWLANDS HILL WIND ENERGY HUB LIMITED": {
+   "rows": 1,
+   "mw": "119.00",
+   "project_ids": [
+    "a0l4L000002yQY7"
+   ]
+  },
+  "NINFIELD BESS LTD": {
+   "rows": 1,
+   "mw": "240.00",
+   "project_ids": [
+    "a0l8e000000TPAc"
+   ]
+  },
+  "NINFIELD NG LIMITED": {
+   "rows": 1,
+   "mw": "600.00",
+   "project_ids": [
+    "a0l4L0000005iMY"
+   ]
+  },
+  "NLEI LTD": {
+   "rows": 1,
+   "mw": "151.20",
+   "project_ids": [
+    "a0l4L0000005it0"
+   ]
+  },
+  "NNB GENERATION COMPANY (HPC) LIMITED": {
+   "rows": 2,
+   "mw": "3340.00",
+   "project_ids": [
+    "a0l4L0000005idV"
+   ]
+  },
+  "NORFOLK BOREAS LIMITED": {
+   "rows": 2,
+   "mw": "1320.00",
+   "project_ids": [
+    "a0l4L0000005izT"
+   ]
+  },
+  "NORFOLK VANGUARD WEST LIMITED": {
+   "rows": 1,
+   "mw": "1320.00",
+   "project_ids": [
+    "a0l4L0000005izX"
+   ]
+  },
+  "NORIKER POWER LTD": {
+   "rows": 1,
+   "mw": "500.00",
+   "project_ids": [
+    "a0l8e0000010wXV"
+   ]
+  },
+  "NORTH FALLS OFFSHORE WIND FARM LIMITED": {
+   "rows": 1,
+   "mw": "1000.00",
+   "project_ids": [
+    "a0l4L0000005izV"
+   ]
+  },
+  "NORTH KYLE WIND FARM LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005inu"
+   ]
+  },
+  "NORTH RAY SOLAR FARM 2 LTD": {
+   "rows": 1,
+   "mw": "180.00",
+   "project_ids": [
+    "a0l8e0000012hmT"
+   ]
+  },
+  "NORTHAMPTON ENERGY PARK LIMITED": {
+   "rows": 1,
+   "mw": "249.90",
+   "project_ids": [
+    "a0l8e000001Hrhd"
+   ]
+  },
+  "NOVENTUM POWER SOLAR 1 LIMITED": {
+   "rows": 1,
+   "mw": "249.00",
+   "project_ids": [
+    "a0l8e000000eySr"
+   ]
+  },
+  "NOVENTUM POWER SOLAR 11 LIMITED": {
+   "rows": 1,
+   "mw": "510.00",
+   "project_ids": [
+    "a0l8e0000012j9K"
+   ]
+  },
+  "NOVENTUM POWER SOLAR 12 LIMITED": {
+   "rows": 1,
+   "mw": "480.00",
+   "project_ids": [
+    "a0l8e0000012j9P"
+   ]
+  },
+  "NOVENTUM POWER SOLAR 13 LIMITED": {
+   "rows": 1,
+   "mw": "380.00",
+   "project_ids": [
+    "a0l8e0000012jJ4"
+   ]
+  },
+  "NOVENTUM POWER SOLAR 14 LIMITED": {
+   "rows": 1,
+   "mw": "410.00",
+   "project_ids": [
+    "a0l8e0000012jKH"
+   ]
+  },
+  "NOVENTUM POWER SOLAR 15 LIMITED": {
+   "rows": 1,
+   "mw": "380.00",
+   "project_ids": [
+    "a0l8e0000012jJE"
+   ]
+  },
+  "NOVENTUM POWER SOLAR 16 LIMITED": {
+   "rows": 1,
+   "mw": "400.00",
+   "project_ids": [
+    "a0lJ9000000blMI"
+   ]
+  },
+  "NOVENTUM POWER SOLAR 2 LIMITED": {
+   "rows": 1,
+   "mw": "57.00",
+   "project_ids": [
+    "a0l8e000000eySm"
+   ]
+  },
+  "NOVENTUM POWER SOLAR 3 LIMITED": {
+   "rows": 1,
+   "mw": "150.00",
+   "project_ids": [
+    "a0l8e000000eySn"
+   ]
+  },
+  "NOVENTUM POWER SOLAR 4 LIMITED": {
+   "rows": 1,
+   "mw": "249.00",
+   "project_ids": [
+    "a0l8e000000f57E"
+   ]
+  },
+  "NOVENTUM POWER SOLAR 5 LIMITED": {
+   "rows": 1,
+   "mw": "210.00",
+   "project_ids": [
+    "a0l8e000001Hom7"
+   ]
+  },
+  "NOVENTUM POWER SOLAR 6 LIMITED": {
+   "rows": 1,
+   "mw": "49.90",
+   "project_ids": [
+    "a0l8e000001Hxad"
+   ]
+  },
+  "NOVENTUM POWER SOLAR 7 LIMITED": {
+   "rows": 1,
+   "mw": "249.00",
+   "project_ids": [
+    "a0l8e000000ViAS"
+   ]
+  },
+  "NP SPV 29 LIMITED": {
+   "rows": 1,
+   "mw": "1000.00",
+   "project_ids": [
+    "a0lJ9000000blM8"
+   ]
+  },
+  "NP SPV 30 LIMITED": {
+   "rows": 1,
+   "mw": "47.50",
+   "project_ids": [
+    "a0lJ9000000blKv"
+   ]
+  },
+  "NP SPV 34 LIMITED": {
+   "rows": 1,
+   "mw": "800.00",
+   "project_ids": [
+    "a0lJ9000000blLy"
+   ]
+  },
+  "NP SPV 41 LIMITED": {
+   "rows": 1,
+   "mw": "500.00",
+   "project_ids": [
+    "a0lJ9000000blPH"
+   ]
+  },
+  "NP SPV 43 LIMITED": {
+   "rows": 1,
+   "mw": "1000.00",
+   "project_ids": [
+    "a0lJ9000000PDuC"
+   ]
+  },
+  "NP SPV 45 LIMITED": {
+   "rows": 1,
+   "mw": "400.00",
+   "project_ids": [
+    "a0lJ9000000PEnk"
+   ]
+  },
+  "NUCLEAR DECOMMISSIONING AUTHORITY": {
+   "rows": 2,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005iVk",
+    "a0l4L0000005iW1"
+   ]
+  },
+  "NUCLEAR RESTORATION SERVICES LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005ioO"
+   ]
+  },
+  "NURSLING ENERGY TWO LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005iwM"
+   ]
+  },
+  "National Grid Interconnector Holdings Limited": {
+   "rows": 1,
+   "mw": "1800.00",
+   "project_ids": [
+    "a0lJ9000000blmh"
+   ]
+  },
+  "Naturalis Energy Developments Ltd": {
+   "rows": 1,
+   "mw": "60.00",
+   "project_ids": [
+    "a0l4L0000005iWX"
+   ]
+  },
+  "Necton Grid Solutions Limited": {
+   "rows": 2,
+   "mw": "78.00",
+   "project_ids": [
+    "a0l4L000002yQb1"
+   ]
+  },
+  "Nembus BESS Limited": {
+   "rows": 1,
+   "mw": "600.00",
+   "project_ids": [
+    "a0l8e0000010wVF"
+   ]
+  },
+  "Net Zero One Ltd": {
+   "rows": 4,
+   "mw": "1999.80",
+   "project_ids": [
+    "a0l4L0000005iQb",
+    "a0l4L0000005iRc",
+    "a0l4L0000005iYJ"
+   ]
+  },
+  "Newton Energi Limited": {
+   "rows": 1,
+   "mw": "228.00",
+   "project_ids": [
+    "a0l8e000000ewOd"
+   ]
+  },
+  "Ninfield 10 Renewables Limited": {
+   "rows": 1,
+   "mw": "1000.00",
+   "project_ids": [
+    "a0l8e000000TPQq"
+   ]
+  },
+  "Ninfield Grid Solutions Limited": {
+   "rows": 3,
+   "mw": "450.00",
+   "project_ids": [
+    "a0l4L0000005ihh"
+   ]
+  },
+  "Norfolk Vanguard East Ltd": {
+   "rows": 2,
+   "mw": "1320.00",
+   "project_ids": [
+    "a0l4L0000005izd"
+   ]
+  },
+  "North Lanrigg Battery Storage Ltd": {
+   "rows": 1,
+   "mw": "200.00",
+   "project_ids": [
+    "a0l8e0000010wXz"
+   ]
+  },
+  "Northumberland Estates Limited": {
+   "rows": 1,
+   "mw": "149.90",
+   "project_ids": [
+    "a0l4L000002yQaD"
+   ]
+  },
+  "Norwich NG Limited": {
+   "rows": 1,
+   "mw": "400.00",
+   "project_ids": [
+    "a0l4L0000005iix"
+   ]
+  },
+  "Noventum Power Solar 8 Limited": {
+   "rows": 1,
+   "mw": "460.00",
+   "project_ids": [
+    "a0l8e0000012gHL"
+   ]
+  },
+  "Noventum Power Solar 9 Limited": {
+   "rows": 1,
+   "mw": "200.00",
+   "project_ids": [
+    "a0l8e0000012gs3"
+   ]
+  },
+  "O&G Group Limited": {
+   "rows": 1,
+   "mw": "100.00",
+   "project_ids": [
+    "a0l8e000001HxbR"
+   ]
+  },
+  "O&G Solar (SPV 19) Limited": {
+   "rows": 2,
+   "mw": "349.80",
+   "project_ids": [
+    "a0l4L0000005j8V",
+    "a0l8e000000evg6"
+   ]
+  },
+  "O&G Solar (SPV 20) Limited": {
+   "rows": 1,
+   "mw": "249.90",
+   "project_ids": [
+    "a0l8e0000010x1c"
+   ]
+  },
+  "O&G Solar (SPV 30) Limited": {
+   "rows": 1,
+   "mw": "99.90",
+   "project_ids": [
+    "a0l4L0000005its"
+   ]
+  },
+  "O&G Solar (SPV 31) Limited": {
+   "rows": 1,
+   "mw": "249.90",
+   "project_ids": [
+    "a0l4L0000005iyB"
+   ]
+  },
+  "O&G Solar (SPV 36) Limited": {
+   "rows": 2,
+   "mw": "498.90",
+   "project_ids": [
+    "a0l4L000002yQWQ",
+    "a0l4L000002yQWu"
+   ]
+  },
+  "O&G Solar (SPV 38) Limited": {
+   "rows": 1,
+   "mw": "249.90",
+   "project_ids": [
+    "a0l8e000000f4n5"
+   ]
+  },
+  "O&G Solar (SPV 39) Limited": {
+   "rows": 1,
+   "mw": "99.90",
+   "project_ids": [
+    "a0l8e000000f4nA"
+   ]
+  },
+  "O&G Solar (SPV 40) Limited": {
+   "rows": 1,
+   "mw": "249.90",
+   "project_ids": [
+    "a0l8e0000010wOi"
+   ]
+  },
+  "O&G Solar (SPV 44) Limited": {
+   "rows": 1,
+   "mw": "500.00",
+   "project_ids": [
+    "a0l4L000002yQWp"
+   ]
+  },
+  "O&G Solar (SPV 47) Limited": {
+   "rows": 2,
+   "mw": "499.80",
+   "project_ids": [
+    "a0l8e000000f4xD",
+    "a0l8e0000010wQt"
+   ]
+  },
+  "O&G Solar (SPV 52) Limited": {
+   "rows": 1,
+   "mw": "99.90",
+   "project_ids": [
+    "a0l8e0000011yTT"
+   ]
+  },
+  "O&G Solar (SPV 57) Limited": {
+   "rows": 1,
+   "mw": "249.90",
+   "project_ids": [
+    "a0l8e000001Hpem"
+   ]
+  },
+  "OAKLANDS FARM SOLAR LIMITED.": {
+   "rows": 1,
+   "mw": "162.30",
+   "project_ids": [
+    "a0l4L0000005iz6"
+   ]
+  },
+  "OCKER HILL BESS LIMITED": {
+   "rows": 1,
+   "mw": "99.40",
+   "project_ids": [
+    "a0lJ9000000MMn0"
+   ]
+  },
+  "OFFSHORE WIND LIMITED": {
+   "rows": 2,
+   "mw": "1800.00",
+   "project_ids": [
+    "a0l4L0000005iZb",
+    "a0l4L0000005ihV"
+   ]
+  },
+  "OFFSHORE WIND POWER LIMITED": {
+   "rows": 2,
+   "mw": "2250.00",
+   "project_ids": [
+    "a0l4L0000005iqS"
+   ]
+  },
+  "OLD ALLEN ROAD BESS LIMITED": {
+   "rows": 1,
+   "mw": "100.00",
+   "project_ids": [
+    "a0l4L0000005iQL"
+   ]
+  },
+  "ONE EARTH SOLAR FARM LIMITED": {
+   "rows": 1,
+   "mw": "740.00",
+   "project_ids": [
+    "a0l4L0000005izs"
+   ]
+  },
+  "ONE PLANET DEVELOPMENTS LIMITED": {
+   "rows": 1,
+   "mw": "250.00",
+   "project_ids": [
+    "a0l8e000000evgG"
+   ]
+  },
+  "ONPATH ENERGY LIMITED": {
+   "rows": 2,
+   "mw": "1480.00",
+   "project_ids": [
+    "a0l8e0000010xh8",
+    "a0l8e0000011ymb"
+   ]
+  },
+  "OPDE UK LIMITED": {
+   "rows": 3,
+   "mw": "149.90",
+   "project_ids": [
+    "a0l8e000000TPFm",
+    "a0lJ9000000PGmH",
+    "a0lJ9000000PMW3"
+   ]
+  },
+  "ORMONDE ENERGY LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005iqF"
+   ]
+  },
+  "ORSTED BURBO (UK) LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005iS4"
+   ]
+  },
+  "ORSTED ESS MERSEY LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005iXS"
+   ]
+  },
+  "ORSTED HORNSEA PROJECT FOUR LIMITED": {
+   "rows": 2,
+   "mw": "2600.00",
+   "project_ids": [
+    "a0l4L0000005in6"
+   ]
+  },
+  "OSSPV001 LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005iOx"
+   ]
+  },
+  "OURACK WIND FARM LLP": {
+   "rows": 1,
+   "mw": "105.00",
+   "project_ids": [
+    "a0l4L0000005izD"
+   ]
+  },
+  "OVERTON NG LIMITED": {
+   "rows": 1,
+   "mw": "1025.00",
+   "project_ids": [
+    "a0l4L0000005iwq"
+   ]
+  },
+  "Ocker Hill Storage Limited": {
+   "rows": 1,
+   "mw": "240.00",
+   "project_ids": [
+    "a0l4L0000005iuB"
+   ]
+  },
+  "Old Rides Energy Storage Limited": {
+   "rows": 2,
+   "mw": "2000.00",
+   "project_ids": [
+    "a0l8e0000012hy8",
+    "a0l8e000001HrYt"
+   ]
+  },
+  "Oliver Forest Wind Farm Limited": {
+   "rows": 1,
+   "mw": "79.20",
+   "project_ids": [
+    "a0l8e0000010wVj"
+   ]
+  },
+  "OnPath Energy Limited (MIDDLE MUIR WIND FARM) LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005ish"
+   ]
+  },
+  "Onpath Energy Limited (KYPE MUIR WIND FARM) LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005isV"
+   ]
+  },
+  "Opdenergy UK 14 Limited": {
+   "rows": 1,
+   "mw": "50.00",
+   "project_ids": [
+    "a0l8e000000TPFc"
+   ]
+  },
+  "Opdenergy UK 16 Limited": {
+   "rows": 1,
+   "mw": "50.00",
+   "project_ids": [
+    "a0l8e0000011z1i"
+   ]
+  },
+  "Opdenergy UK 8 Limited": {
+   "rows": 1,
+   "mw": "249.00",
+   "project_ids": [
+    "a0l4L0000005itt"
+   ]
+  },
+  "Orddu Energy Park Limited": {
+   "rows": 1,
+   "mw": "85.80",
+   "project_ids": [
+    "a0l8e000000f4ZA"
+   ]
+  },
+  "Ossian Offshore Wind Farm Limited": {
+   "rows": 4,
+   "mw": "3528.00",
+   "project_ids": [
+    "a0l4L0000005iec",
+    "a0l4L0000005ied",
+    "a0l4L0000005iee",
+    "a0l4L0000005iwQ"
+   ]
+  },
+  "Ouse Energy Limited": {
+   "rows": 1,
+   "mw": "249.00",
+   "project_ids": [
+    "a0l4L0000005iPR"
+   ]
+  },
+  "P-FREQUENCY LTD": {
+   "rows": 1,
+   "mw": "400.00",
+   "project_ids": [
+    "a0lJ9000000blJJ"
+   ]
+  },
+  "P3P PARTNERS LLP": {
+   "rows": 1,
+   "mw": "49.90",
+   "project_ids": [
+    "a0l8e0000010xh3"
+   ]
+  },
+  "PARC YNNI BANC Y CELYN CYF": {
+   "rows": 1,
+   "mw": "165.00",
+   "project_ids": [
+    "a0l8e0000012f3t"
+   ]
+  },
+  "PD688IRO LTD": {
+   "rows": 5,
+   "mw": "237.50",
+   "project_ids": [
+    "a0l4L0000005ixe",
+    "a0l4L0000005ixf",
+    "a0l4L0000005ixq",
+    "a0l4L0000005ixz",
+    "a0l4L0000005iyA"
+   ]
+  },
+  "PEAK GEN POWER 11 LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l8e000000f4xb"
+   ]
+  },
+  "PEAK GEN POWER 13 LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l8e000000f4xq"
+   ]
+  },
+  "PEAK GEN POWER 14 LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l8e000000f4y5"
+   ]
+  },
+  "PEAK GEN POWER 18 LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l8e000000f4y0"
+   ]
+  },
+  "PEAK GEN POWER 2 LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005iX9"
+   ]
+  },
+  "PEAK GEN POWER 5 LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l8e000000f4xl"
+   ]
+  },
+  "PEAK GEN POWER 6 LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l8e000000f4xg"
+   ]
+  },
+  "PELHAM ENERGY PARK LIMITED": {
+   "rows": 1,
+   "mw": "249.90",
+   "project_ids": [
+    "a0l8e0000010wVK"
+   ]
+  },
+  "PELHAM GREEN ENERGY CENTRE LTD": {
+   "rows": 1,
+   "mw": "480.00",
+   "project_ids": [
+    "a0l8e000000f7xs"
+   ]
+  },
+  "PEN Y CYMOEDD WIND FARM LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005iwN"
+   ]
+  },
+  "PENCLOE WIND ENERGY LIMITED": {
+   "rows": 2,
+   "mw": "34.00",
+   "project_ids": [
+    "a0l4L0000005isj"
+   ]
+  },
+  "PENWORTHAM (BES) LTD": {
+   "rows": 1,
+   "mw": "57.00",
+   "project_ids": [
+    "a0l4L0000005iuX"
+   ]
+  },
+  "PERIGUS ENERGY UK LIMITED": {
+   "rows": 6,
+   "mw": "732.10",
+   "project_ids": [
+    "a0l4L0000005isg",
+    "a0l8e0000011yY5",
+    "a0l8e0000012gbZ",
+    "a0l8e000001Hr2m",
+    "a0l8e000001HxcZ",
+    "a0lJ9000000PEyB"
+   ]
+  },
+  "PERWINNES SOLAR AND BATTERY STORAGE LIMITED": {
+   "rows": 1,
+   "mw": "45.00",
+   "project_ids": [
+    "a0l4L0000005iYK"
+   ]
+  },
+  "PETERHEAD FLEXPOWER LTD": {
+   "rows": 1,
+   "mw": "500.00",
+   "project_ids": [
+    "a0l4L0000005iZd"
+   ]
+  },
+  "PINES BURN WIND FARM LLP": {
+   "rows": 1,
+   "mw": "50.00",
+   "project_ids": [
+    "a0l4L0000005iQo"
+   ]
+  },
+  "PIVOTED POWER LLP": {
+   "rows": 34,
+   "mw": "1238.00",
+   "project_ids": [
+    "a0l4L0000005iZf",
+    "a0l4L0000005iZg",
+    "a0l4L0000005iZi",
+    "a0l4L0000005iaR",
+    "a0l4L0000005iaX",
+    "a0l4L0000005iad",
+    "a0l4L0000005ibM",
+    "a0l4L0000005ibb",
+    "a0l4L0000005icf",
+    "a0l4L0000005icl",
+    "a0l4L0000005ico",
+    "a0l4L0000005icp",
+    "a0l4L0000005icu",
+    "a0l4L0000005icv",
+    "a0l4L0000005ieF",
+    "a0l4L0000005ieQ",
+    "a0l4L0000005ieS",
+    "a0l4L0000005ifR",
+    "a0l4L0000005ifX",
+    "a0l4L0000005iqf",
+    "a0l4L0000005iqk",
+    "a0l4L0000005isl",
+    "a0l4L0000005iu0",
+    "a0l4L0000005iud",
+    "a0l4L0000005iuf",
+    "a0l4L0000005ixm",
+    "a0l4L0000005iz7"
+   ]
+  },
+  "POGBIE WIND FARM (GRID) LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005irK"
+   ]
+  },
+  "POLLIE HILL WIND FARM LIMITED": {
+   "rows": 1,
+   "mw": "92.40",
+   "project_ids": [
+    "a0l8e000000eybv"
+   ]
+  },
+  "POTENCIA ENERGY (MYBSTER) LTD": {
+   "rows": 1,
+   "mw": "500.00",
+   "project_ids": [
+    "a0l8e0000012gsm"
+   ]
+  },
+  "POTENCIA ENERGY LIMITED": {
+   "rows": 1,
+   "mw": "47.00",
+   "project_ids": [
+    "a0l8e000000TPNR"
+   ]
+  },
+  "POWERSITE LTD": {
+   "rows": 1,
+   "mw": "380.00",
+   "project_ids": [
+    "a0l4L0000005ilF"
+   ]
+  },
+  "PRIESTGILL WIND FARM LIMITED": {
+   "rows": 1,
+   "mw": "43.63",
+   "project_ids": [
+    "a0l4L0000005ims"
+   ]
+  },
+  "PRIVATE ENERGY PARTNERS (UK) LTD": {
+   "rows": 2,
+   "mw": "600.00",
+   "project_ids": [
+    "a0l8e0000012jUG",
+    "a0l8e0000012kr1"
+   ]
+  },
+  "PROGRESS POWER LIMITED": {
+   "rows": 1,
+   "mw": "299.00",
+   "project_ids": [
+    "a0l4L0000005irq"
+   ]
+  },
+  "PROJECT INVICTA LIMITED": {
+   "rows": 1,
+   "mw": "350.00",
+   "project_ids": [
+    "a0l8e000001Hpe8"
+   ]
+  },
+  "PULSE CLEAN ENERGY SPV FRANKLIN LIMITED": {
+   "rows": 3,
+   "mw": "200.00",
+   "project_ids": [
+    "a0l8e0000011zBp"
+   ]
+  },
+  "PULSE CLEAN ENERGY SPV WATT LIMITED": {
+   "rows": 1,
+   "mw": "49.90",
+   "project_ids": [
+    "a0l4L0000005iSu"
+   ]
+  },
+  "Pembroke Green Limited": {
+   "rows": 1,
+   "mw": "120.00",
+   "project_ids": [
+    "a0l4L0000005iok"
+   ]
+  },
+  "Penwortham NG Limited": {
+   "rows": 1,
+   "mw": "600.00",
+   "project_ids": [
+    "a0l4L0000005ier"
+   ]
+  },
+  "Perry Barr Limited": {
+   "rows": 1,
+   "mw": "249.00",
+   "project_ids": [
+    "a0l8e0000012kik"
+   ]
+  },
+  "Persley Croft BESS Ltd": {
+   "rows": 1,
+   "mw": "50.00",
+   "project_ids": [
+    "a0l4L000002yQXE"
+   ]
+  },
+  "Pittlesheugh Farm BESS Limited": {
+   "rows": 1,
+   "mw": "340.00",
+   "project_ids": [
+    "a0l4L000002yQXd"
+   ]
+  },
+  "Point and Sandwick Power Limited": {
+   "rows": 1,
+   "mw": "25.00",
+   "project_ids": [
+    "a0l4L0000005iMM"
+   ]
+  },
+  "Pond Flexible Energy Park Limited": {
+   "rows": 1,
+   "mw": "200.00",
+   "project_ids": [
+    "a0l8e000000TPDM"
+   ]
+  },
+  "Priory Generation Limited": {
+   "rows": 1,
+   "mw": "57.00",
+   "project_ids": [
+    "a0l4L0000005iOg"
+   ]
+  },
+  "Pulse Clean Energy Limited": {
+   "rows": 4,
+   "mw": "998.00",
+   "project_ids": [
+    "a0l8e000000f4ml",
+    "a0l8e000000f6JA",
+    "a0l8e0000011xZ7",
+    "a0l8e0000012kkH"
+   ]
+  },
+  "QAIR RENEWABLES UK LIMITED": {
+   "rows": 15,
+   "mw": "4925.90",
+   "project_ids": [
+    "a0l4L0000005iMI",
+    "a0l8e000000ViKA",
+    "a0l8e000000exIj",
+    "a0l8e000000f41s",
+    "a0l8e000000f6bL",
+    "a0l8e0000010wSf",
+    "a0l8e0000010wk2",
+    "a0l8e0000011y2h",
+    "a0l8e0000012gc8",
+    "a0l8e0000012gcD",
+    "a0l8e000001Hxax",
+    "a0l8e000001Hxld",
+    "a0l8e000001Hxli",
+    "a0lJ9000000PDvo",
+    "a0lJ9000000PDw8"
+   ]
+  },
+  "QAIR SCOTLAND LIMITED": {
+   "rows": 2,
+   "mw": "220.00",
+   "project_ids": [
+    "a0lJ9000000PDm6",
+    "a0lJ9000000blam"
+   ]
+  },
+  "QE KINGSNORTH SPV LIMITED": {
+   "rows": 1,
+   "mw": "400.00",
+   "project_ids": [
+    "a0l8e0000012kfb"
+   ]
+  },
+  "Queequeg Renewables Ltd": {
+   "rows": 5,
+   "mw": "1580.00",
+   "project_ids": [
+    "a0l8e000000TPCY",
+    "a0l8e000000f5Xx",
+    "a0l8e000000f6Ed",
+    "a0l8e0000010wg0",
+    "a0lJ9000000blKl"
+   ]
+  },
+  "RACE BANK WIND FARM LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005iqC"
+   ]
+  },
+  "RAMPION EXTENSION DEVELOPMENT LIMITED": {
+   "rows": 1,
+   "mw": "1200.00",
+   "project_ids": [
+    "a0l4L0000005io1"
+   ]
+  },
+  "RAMPION OFFSHORE WIND LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005iqo"
+   ]
+  },
+  "RAYLEIGH GREEN LIMITED": {
+   "rows": 1,
+   "mw": "57.00",
+   "project_ids": [
+    "a0l4L0000005io4"
+   ]
+  },
+  "RE Projects Development Limited": {
+   "rows": 2,
+   "mw": "300.00",
+   "project_ids": [
+    "a0l4L0000005itj",
+    "a0l8e000000eybR"
+   ]
+  },
+  "REG GREENBURN LIMITED": {
+   "rows": 1,
+   "mw": "90.00",
+   "project_ids": [
+    "a0l4L0000005ibV"
+   ]
+  },
+  "REG KNOCKODHAR LIMITED": {
+   "rows": 1,
+   "mw": "120.00",
+   "project_ids": [
+    "a0l4L0000005inY"
+   ]
+  },
+  "REG Power Developments Limited": {
+   "rows": 1,
+   "mw": "50.00",
+   "project_ids": [
+    "a0lJ9000000blVI"
+   ]
+  },
+  "RENEWABLES NORTH WEST LTD": {
+   "rows": 1,
+   "mw": "150.00",
+   "project_ids": [
+    "a0l8e000000f4P3"
+   ]
+  },
+  "RENEWCO POWER LIMITED": {
+   "rows": 5,
+   "mw": "913.80",
+   "project_ids": [
+    "a0l4L0000005itx",
+    "a0l8e000001HxRS",
+    "a0l8e000001HxRX",
+    "a0lJ9000000PDrN",
+    "a0lJ9000000POi1"
+   ]
+  },
+  "REWE 1 LIMITED": {
+   "rows": 1,
+   "mw": "400.00",
+   "project_ids": [
+    "a0l8e000000f4nZ"
+   ]
+  },
+  "REWE 11 Limited": {
+   "rows": 1,
+   "mw": "200.00",
+   "project_ids": [
+    "a0l8e000001HpCV"
+   ]
+  },
+  "REWE 12 Limited": {
+   "rows": 1,
+   "mw": "200.00",
+   "project_ids": [
+    "a0l4L0000005ikS"
+   ]
+  },
+  "REWE 2 LIMITED": {
+   "rows": 1,
+   "mw": "200.00",
+   "project_ids": [
+    "a0l4L0000005iz1"
+   ]
+  },
+  "REWE 3 LIMITED": {
+   "rows": 1,
+   "mw": "200.00",
+   "project_ids": [
+    "a0l4L0000005ia6"
+   ]
+  },
+  "REWE 4 LIMITED": {
+   "rows": 1,
+   "mw": "200.00",
+   "project_ids": [
+    "a0l4L0000005ia7"
+   ]
+  },
+  "REWE 5 LIMITED": {
+   "rows": 1,
+   "mw": "150.00",
+   "project_ids": [
+    "a0l4L0000005ic6"
+   ]
+  },
+  "REWE 6 LIMITED": {
+   "rows": 1,
+   "mw": "200.00",
+   "project_ids": [
+    "a0l4L000002yQZy"
+   ]
+  },
+  "REWE 7 LIMITED": {
+   "rows": 1,
+   "mw": "240.00",
+   "project_ids": [
+    "a0l8e000000f65F"
+   ]
+  },
+  "REWE 8 LIMITED": {
+   "rows": 2,
+   "mw": "440.00",
+   "project_ids": [
+    "a0l8e000000f6A1",
+    "a0l8e0000011xxt"
+   ]
+  },
+  "REWE 9 LIMITED": {
+   "rows": 1,
+   "mw": "200.00",
+   "project_ids": [
+    "a0l8e000000ewjR"
+   ]
+  },
+  "RHIWLAS ENERGY PARK LIMITED": {
+   "rows": 1,
+   "mw": "106.00",
+   "project_ids": [
+    "a0l4L0000005iXX"
+   ]
+  },
+  "RICHBOROUGH ENERGY PARK LIMITED": {
+   "rows": 2,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005j01",
+    "a0l4L0000005j02"
+   ]
+  },
+  "RIDGE CLEAN ENERGY LTD": {
+   "rows": 2,
+   "mw": "306.00",
+   "project_ids": [
+    "a0l4L0000005iXj",
+    "a0lJ9000000PNpT"
+   ]
+  },
+  "RIVER NENE POWER LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005iVj"
+   ]
+  },
+  "RIVOX WIND ENERGY HUB LIMITED": {
+   "rows": 1,
+   "mw": "220.00",
+   "project_ids": [
+    "a0l4L0000005iYS"
+   ]
+  },
+  "ROARING HILL ENERGY STORAGE LTD": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005iQ8"
+   ]
+  },
+  "ROCKSAVAGE POWER COMPANY, LTD.": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005iq3"
+   ]
+  },
+  "ROTHIENORMAN FLEXPOWER LTD": {
+   "rows": 1,
+   "mw": "50.00",
+   "project_ids": [
+    "a0l4L0000005iWj"
+   ]
+  },
+  "ROTHIENORMAN GRID SERVICES LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005ibt"
+   ]
+  },
+  "ROWAN ONSHORE WINDFARMS LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005inI"
+   ]
+  },
+  "RUFUSIA LTD": {
+   "rows": 1,
+   "mw": "100.00",
+   "project_ids": [
+    "a0l8e000000exgx"
+   ]
+  },
+  "RUGELEY POWER GENERATION LIMITED": {
+   "rows": 1,
+   "mw": "50.00",
+   "project_ids": [
+    "a0l4L0000005iq8"
+   ]
+  },
+  "RWE COGEN UK (HYTHE) LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005iXL"
+   ]
+  },
+  "RWE GENERATION UK PLC": {
+   "rows": 15,
+   "mw": "1636.00",
+   "project_ids": [
+    "a0l4L0000005iRC",
+    "a0l4L0000005iVH",
+    "a0l4L0000005iVJ",
+    "a0l4L0000005iVN",
+    "a0l4L0000005iVO",
+    "a0l4L0000005iVP",
+    "a0l4L0000005iVR",
+    "a0l4L0000005imA",
+    "a0l4L0000005imB",
+    "a0l4L0000005ino",
+    "a0l4L0000005inp",
+    "a0l4L0000005iyY",
+    "a0l8e000000f4mv",
+    "a0l8e000001HxbW"
+   ]
+  },
+  "RWE MARKINCH LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005iVQ"
+   ]
+  },
+  "RWE Offshore Wind": {
+   "rows": 1,
+   "mw": "400.00",
+   "project_ids": [
+    "a0l4L0000005ihk"
+   ]
+  },
+  "RWE RENEWABLES UK DOGGER BANK SOUTH (WEST) LIMITED": {
+   "rows": 2,
+   "mw": "1450.00",
+   "project_ids": [
+    "a0l4L0000005iZn"
+   ]
+  },
+  "RWE RENEWABLES UK HUMBER WIND LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005iqD"
+   ]
+  },
+  "RWE RENEWABLES UK ROBIN RIGG EAST LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005ipa"
+   ]
+  },
+  "RWE RENEWABLES UK ROBIN RIGG WEST LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005ipb"
+   ]
+  },
+  "RWE RENEWABLES UK SWINDON LIMITED": {
+   "rows": 3,
+   "mw": "191.40",
+   "project_ids": [
+    "a0l4L0000005iVX",
+    "a0l4L0000005ilU",
+    "a0l8e0000010wmD"
+   ]
+  },
+  "RWE Renewables UK Dogger Bank South (East) Limited": {
+   "rows": 2,
+   "mw": "1450.00",
+   "project_ids": [
+    "a0l4L0000005iZF"
+   ]
+  },
+  "RWE Renewables UK Onshore Wind Limited": {
+   "rows": 15,
+   "mw": "1079.80",
+   "project_ids": [
+    "a0l4L0000005ia2",
+    "a0l4L0000005ihP",
+    "a0l4L0000005ikX",
+    "a0l4L0000005ind",
+    "a0l4L0000005iom",
+    "a0l4L0000005ion",
+    "a0l4L0000005iqV",
+    "a0l4L0000005iyn",
+    "a0l8e000000TPK3",
+    "a0l8e000000TPKI",
+    "a0l8e000000TPKN",
+    "a0l8e000000f4yF",
+    "a0l8e0000012kqN",
+    "a0l8e000001HrYy"
+   ]
+  },
+  "RWE Renewables UK Solar and Storage Limited": {
+   "rows": 14,
+   "mw": "4764.89",
+   "project_ids": [
+    "a0l4L0000005iTn",
+    "a0l4L0000005iXm",
+    "a0l4L0000005iZU",
+    "a0l4L0000005iiC",
+    "a0l4L000002yQWk",
+    "a0l8e000000eyu0",
+    "a0l8e0000012hpX",
+    "a0l8e0000012hpY",
+    "a0l8e0000012kk7",
+    "a0l8e000001Hq1l",
+    "a0lJ9000000PDxk",
+    "a0lJ9000000PDyd"
+   ]
+  },
+  "RYE HOUSE 10 RENEWABLES LIMITED": {
+   "rows": 1,
+   "mw": "1000.00",
+   "project_ids": [
+    "a0l8e000000TPRA"
+   ]
+  },
+  "Rashley New Energy Limited": {
+   "rows": 1,
+   "mw": "100.00",
+   "project_ids": [
+    "a0l8e0000010wkg"
+   ]
+  },
+  "Rayleigh Storage Limited": {
+   "rows": 1,
+   "mw": "480.00",
+   "project_ids": [
+    "a0l4L0000005iub"
+   ]
+  },
+  "Recell Energy Bloom Developments Limited": {
+   "rows": 2,
+   "mw": "210.00",
+   "project_ids": [
+    "a0l4L0000005iWN"
+   ]
+  },
+  "Redshaw Energy Park Developments LLP": {
+   "rows": 1,
+   "mw": "500.00",
+   "project_ids": [
+    "a0l8e000000f6bG"
+   ]
+  },
+  "Renantis UK Limited": {
+   "rows": 7,
+   "mw": "1799.80",
+   "project_ids": [
+    "a0l4L0000005iQ5",
+    "a0l4L0000005idP",
+    "a0l4L0000005iyS",
+    "a0l8e000000f7gM",
+    "a0l8e0000010wU7",
+    "a0lJ9000000blsM"
+   ]
+  },
+  "Renesola Hercules Energy 1 Limited": {
+   "rows": 1,
+   "mw": "99.90",
+   "project_ids": [
+    "a0l4L0000005ia1"
+   ]
+  },
+  "Renewable Energy Systems Limited": {
+   "rows": 10,
+   "mw": "1610.10",
+   "project_ids": [
+    "a0l4L0000005ivP",
+    "a0l4L0000005iyJ",
+    "a0l8e0000010wNz",
+    "a0l8e0000010wQ0",
+    "a0l8e0000012j2r",
+    "a0l8e0000012jPc",
+    "a0l8e000001Hq2F",
+    "a0lJ9000000PDko",
+    "a0lJ9000000PFJt",
+    "a0lJ9000000POB6"
+   ]
+  },
+  "Rochdale (BES) Ltd": {
+   "rows": 1,
+   "mw": "57.00",
+   "project_ids": [
+    "a0l4L0000005iuU"
+   ]
+  },
+  "Rosefield Energyfarm Limited": {
+   "rows": 1,
+   "mw": "500.00",
+   "project_ids": [
+    "a0l4L0000005iwI"
+   ]
+  },
+  "Rosside Energy Limited": {
+   "rows": 1,
+   "mw": "150.00",
+   "project_ids": [
+    "a0l8e000000TPc0"
+   ]
+  },
+  "Ruith Cnoc Wind Farm Limited": {
+   "rows": 1,
+   "mw": "158.40",
+   "project_ids": [
+    "a0lJ9000000POui"
+   ]
+  },
+  "S & C ENERGY LIMITED": {
+   "rows": 1,
+   "mw": "400.00",
+   "project_ids": [
+    "a0l4L0000005ihj"
+   ]
+  },
+  "S4 UK DEV LTD": {
+   "rows": 4,
+   "mw": "795.00",
+   "project_ids": [
+    "a0l8e000000ewjH",
+    "a0l8e000000f4ZK",
+    "a0l8e0000010xJ5",
+    "a0l8e0000010xRp"
+   ]
+  },
+  "S4N SPITTAL LTD": {
+   "rows": 1,
+   "mw": "162.00",
+   "project_ids": [
+    "a0l4L0000005iaJ"
+   ]
+  },
+  "SAGE NORTH SEA LIMITED": {
+   "rows": 1,
+   "mw": "20.00",
+   "project_ids": [
+    "a0l4L0000005iyb"
+   ]
+  },
+  "SALAMANDER WIND PROJECT COMPANY LIMITED": {
+   "rows": 1,
+   "mw": "200.00",
+   "project_ids": [
+    "a0l4L0000005ifr"
+   ]
+  },
+  "SALLACHY WIND LIMITED": {
+   "rows": 1,
+   "mw": "49.50",
+   "project_ids": [
+    "a0l4L0000005iXP"
+   ]
+  },
+  "SALTEND COGENERATION COMPANY LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005imD"
+   ]
+  },
+  "SAMBAR POWER LIMITED": {
+   "rows": 1,
+   "mw": "47.50",
+   "project_ids": [
+    "a0l4L0000005ivr"
+   ]
+  },
+  "SANDY KNOWE WIND FARM LIMITED": {
+   "rows": 2,
+   "mw": "21.60",
+   "project_ids": [
+    "a0l4L0000005it1"
+   ]
+  },
+  "SANQUHAR COMMUNITY WIND COMPANY LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005iZ8"
+   ]
+  },
+  "SANQUHAR II COMMUNITY WIND CO LTD": {
+   "rows": 2,
+   "mw": "250.00",
+   "project_ids": [
+    "a0l4L0000005it6"
+   ]
+  },
+  "SAVE OUR PLANET ENERGY LIMITED": {
+   "rows": 1,
+   "mw": "500.00",
+   "project_ids": [
+    "a0l8e0000012iy3"
+   ]
+  },
+  "SCARABEN OFFSHORE WIND FARM LIMITED": {
+   "rows": 1,
+   "mw": "100.00",
+   "project_ids": [
+    "a0l4L0000005iul"
+   ]
+  },
+  "SCIRA OFFSHORE ENERGY LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005iqA"
+   ]
+  },
+  "SCLENTEUCH ENERGY LIMITED": {
+   "rows": 1,
+   "mw": "54.00",
+   "project_ids": [
+    "a0l4L0000005iuv"
+   ]
+  },
+  "SCOTTISHPOWER RENEWABLES (UK) LIMITED": {
+   "rows": 41,
+   "mw": "5324.05",
+   "project_ids": [
+    "a0l4L0000005iPm",
+    "a0l4L0000005iUu",
+    "a0l4L0000005iUv",
+    "a0l4L0000005iUw",
+    "a0l4L0000005iWV",
+    "a0l4L0000005iZA",
+    "a0l4L0000005iZs",
+    "a0l4L0000005iaN",
+    "a0l4L0000005iaW",
+    "a0l4L0000005iab",
+    "a0l4L0000005ibQ",
+    "a0l4L0000005ibS",
+    "a0l4L0000005ibY",
+    "a0l4L0000005icn",
+    "a0l4L0000005icw",
+    "a0l4L0000005ieP",
+    "a0l4L0000005ig2",
+    "a0l4L0000005ild",
+    "a0l4L0000005ilz",
+    "a0l4L0000005imE",
+    "a0l4L0000005imO",
+    "a0l4L0000005imY",
+    "a0l4L0000005ima",
+    "a0l4L0000005imb",
+    "a0l4L0000005imc",
+    "a0l4L0000005imd",
+    "a0l4L0000005ime",
+    "a0l4L0000005imf",
+    "a0l4L0000005ipW",
+    "a0l4L0000005itI",
+    "a0l4L0000005ixH",
+    "a0l8e000000f5Bi",
+    "a0l8e000000f6A6",
+    "a0l8e0000011xxK"
+   ]
+  },
+  "SE PORTWIND LTD": {
+   "rows": 1,
+   "mw": "2500.00",
+   "project_ids": [
+    "a0l4L0000005ibK"
+   ]
+  },
+  "SEABANK POWER LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005im6"
+   ]
+  },
+  "SEAGREEN 1A LIMITED": {
+   "rows": 1,
+   "mw": "500.00",
+   "project_ids": [
+    "a0l4L0000005izH"
+   ]
+  },
+  "SELLINDGE GRID SERVICES LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005iki"
+   ]
+  },
+  "SEMBCORP (WILTON BESS) LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005ibW"
+   ]
+  },
+  "SEMBCORP UTILITIES (UK) LIMITED": {
+   "rows": 3,
+   "mw": "1550.00",
+   "project_ids": [
+    "a0l4L0000005ize",
+    "a0lJ9000000PcUp",
+    "a0lJ9000000PcUt"
+   ]
+  },
+  "SETT WIND DEVELOPMENT LIMITED": {
+   "rows": 1,
+   "mw": "84.60",
+   "project_ids": [
+    "a0l4L0000005io9"
+   ]
+  },
+  "SEVERN POWER LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005iq4"
+   ]
+  },
+  "SFEL Bluebell Limited": {
+   "rows": 1,
+   "mw": "240.00",
+   "project_ids": [
+    "a0l8e0000010wjd"
+   ]
+  },
+  "SFEL One Limited": {
+   "rows": 1,
+   "mw": "240.00",
+   "project_ids": [
+    "a0l8e0000012gYM"
+   ]
+  },
+  "SFEL Two Limited": {
+   "rows": 1,
+   "mw": "200.00",
+   "project_ids": [
+    "a0l8e0000012gYQ"
+   ]
+  },
+  "SHAW LANE BESS LIMITED": {
+   "rows": 1,
+   "mw": "230.00",
+   "project_ids": [
+    "a0l8e0000012gc3"
+   ]
+  },
+  "SHAW-ENERGI LTD": {
+   "rows": 3,
+   "mw": "900.00",
+   "project_ids": [
+    "a0l8e000000TPHi",
+    "a0l8e000000ewXc",
+    "a0l8e000000ewXh"
+   ]
+  },
+  "SHEAF ENERGY LIMITED": {
+   "rows": 1,
+   "mw": "249.00",
+   "project_ids": [
+    "a0l4L0000005ihY"
+   ]
+  },
+  "SHERINGHAM SHOAL AND DUDGEON EXTENSIONS PROJCO LIMITED": {
+   "rows": 3,
+   "mw": "1350.00",
+   "project_ids": [
+    "a0l4L0000005izY"
+   ]
+  },
+  "SHREWSBURY ENERGY LTD": {
+   "rows": 1,
+   "mw": "149.60",
+   "project_ids": [
+    "a0lJ9000000blu3"
+   ]
+  },
+  "SINCLAIR OFFSHORE WIND FARM LIMITED": {
+   "rows": 1,
+   "mw": "100.00",
+   "project_ids": [
+    "a0l8e000000ez6z"
+   ]
+  },
+  "SIRIUS ECODEV (KEITHICK) LTD": {
+   "rows": 1,
+   "mw": "16.00",
+   "project_ids": [
+    "a0l4L0000005iQX"
+   ]
+  },
+  "SIRIUS ECODEV (STIRLING) LTD": {
+   "rows": 1,
+   "mw": "49.99",
+   "project_ids": [
+    "a0l4L0000005iU3"
+   ]
+  },
+  "SIRIUS ECODEV (TEALING) LTD": {
+   "rows": 1,
+   "mw": "80.00",
+   "project_ids": [
+    "a0l4L0000005iU1"
+   ]
+  },
+  "SIRIUSECODEV (GASTARD) LTD": {
+   "rows": 1,
+   "mw": "200.00",
+   "project_ids": [
+    "a0l8e0000011yrP"
+   ]
+  },
+  "SIZING JOHN LIMITED": {
+   "rows": 2,
+   "mw": "85.50",
+   "project_ids": [
+    "a0l4L0000005ijx"
+   ]
+  },
+  "SKY UK DEVELOPMENT LIMITED": {
+   "rows": 1,
+   "mw": "227.50",
+   "project_ids": [
+    "a0l8e000001Hxb2"
+   ]
+  },
+  "SLATE ISLAND DEVELOPMENTS LIMITED": {
+   "rows": 1,
+   "mw": "99.00",
+   "project_ids": [
+    "a0l8e000000f4Oe"
+   ]
+  },
+  "SOFIA OFFSHORE WIND FARM LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005imV"
+   ]
+  },
+  "SOLAR 2 LIMITED": {
+   "rows": 1,
+   "mw": "150.00",
+   "project_ids": [
+    "a0l8e0000012gbt"
+   ]
+  },
+  "SOLAR SECURITIES LIMITED": {
+   "rows": 1,
+   "mw": "500.00",
+   "project_ids": [
+    "a0l8e0000010wgF"
+   ]
+  },
+  "SOLARFIVE LTD": {
+   "rows": 1,
+   "mw": "840.00",
+   "project_ids": [
+    "a0l4L0000005ijz"
+   ]
+  },
+  "SOLWAYBANK ENERGY LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005iV4"
+   ]
+  },
+  "SONNINGMAY WIND LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005ist"
+   ]
+  },
+  "SOUNDMARK WIND LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005iss"
+   ]
+  },
+  "SOUTH ENG FLEXIBLE GENERATION LIMITED": {
+   "rows": 1,
+   "mw": "1500.00",
+   "project_ids": [
+    "a0l8e000001Hy5d"
+   ]
+  },
+  "SOUTH GRANTHAM ENERGY CENTRE LIMITED": {
+   "rows": 1,
+   "mw": "810.00",
+   "project_ids": [
+    "a0lJ9000000PDt9"
+   ]
+  },
+  "SOUTH KENT ENERGY PARK LIMITED": {
+   "rows": 2,
+   "mw": "1000.00",
+   "project_ids": [
+    "a0l4L0000005iZR",
+    "a0lJ9000000PDq5"
+   ]
+  },
+  "SOUTH KYLE WIND FARM LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005ioJ"
+   ]
+  },
+  "SOUTHAMPTON ENERGY STORAGE LIMITED": {
+   "rows": 1,
+   "mw": "1000.00",
+   "project_ids": [
+    "a0l8e000001HrCK"
+   ]
+  },
+  "SPALDING ENERGY COMPANY LTD": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005iq5"
+   ]
+  },
+  "SPALDING ENERGY EXPANSION LIMITED": {
+   "rows": 2,
+   "mw": "550.00",
+   "project_ids": [
+    "a0l4L0000005irD"
+   ]
+  },
+  "SPIORAD NA MARA LIMITED": {
+   "rows": 1,
+   "mw": "900.00",
+   "project_ids": [
+    "a0l4L0000005iNe"
+   ]
+  },
+  "SPITTAL BATTERY STORAGE LIMITED": {
+   "rows": 1,
+   "mw": "49.90",
+   "project_ids": [
+    "a0l8e000000eww4"
+   ]
+  },
+  "SPRINGWELL ENERGYFARM LIMITED": {
+   "rows": 3,
+   "mw": "1600.00",
+   "project_ids": [
+    "a0l4L0000005iPH"
+   ]
+  },
+  "SPV GPC 3 Ltd": {
+   "rows": 1,
+   "mw": "400.00",
+   "project_ids": [
+    "a0l8e0000011y79"
+   ]
+  },
+  "SSE BATTERY MONK FRYSTON LIMITED": {
+   "rows": 1,
+   "mw": "320.00",
+   "project_ids": [
+    "a0l4L0000005ixy"
+   ]
+  },
+  "SSE COTTERED SOLAR LIMITED": {
+   "rows": 1,
+   "mw": "600.00",
+   "project_ids": [
+    "a0l4L0000005ivh"
+   ]
+  },
+  "SSE DAINES BESS LIMITED": {
+   "rows": 1,
+   "mw": "600.00",
+   "project_ids": [
+    "a0l4L0000005iby"
+   ]
+  },
+  "SSE DE SOLAR HOLDCO LIMITED": {
+   "rows": 9,
+   "mw": "5400.00",
+   "project_ids": [
+    "a0l4L000002yQa3",
+    "a0l4L000002yQa8",
+    "a0l8e000000TPKS",
+    "a0l8e000000TPSS",
+    "a0l8e000000f40f",
+    "a0l8e000000f40u",
+    "a0l8e000000f414",
+    "a0l8e000000f41E",
+    "a0l8e0000010wRX"
+   ]
+  },
+  "SSE EGGBOROUGH LIMITED": {
+   "rows": 1,
+   "mw": "550.00",
+   "project_ids": [
+    "a0l4L0000005ibx"
+   ]
+  },
+  "SSE ENTERPRISE LIMITED": {
+   "rows": 1,
+   "mw": "200.00",
+   "project_ids": [
+    "a0lJ9000000PERz"
+   ]
+  },
+  "SSE FERRYBRIDGE BATTERY LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005ikA"
+   ]
+  },
+  "SSE FIDDLERS FERRY BATTERY LIMITED": {
+   "rows": 1,
+   "mw": "150.00",
+   "project_ids": [
+    "a0l4L0000005ihm"
+   ]
+  },
+  "SSE GENERATION LIMITED": {
+   "rows": 37,
+   "mw": "638.10",
+   "project_ids": [
+    "a0l4L0000005iQ1",
+    "a0l4L0000005iQs",
+    "a0l4L0000005iV6",
+    "a0l4L0000005iV7",
+    "a0l4L0000005iV8",
+    "a0l4L0000005iVY",
+    "a0l4L0000005iVZ",
+    "a0l4L0000005iVa",
+    "a0l4L0000005iVb",
+    "a0l4L0000005iVc",
+    "a0l4L0000005iXn",
+    "a0l4L0000005ihI",
+    "a0l4L0000005iiY",
+    "a0l4L0000005ilb",
+    "a0l4L0000005iln",
+    "a0l4L0000005ilx",
+    "a0l4L0000005img",
+    "a0l4L0000005imi",
+    "a0l4L0000005imj",
+    "a0l4L0000005iml",
+    "a0l4L0000005imm",
+    "a0l4L0000005imn",
+    "a0l4L0000005imo",
+    "a0l4L0000005imq",
+    "a0l4L0000005ip0",
+    "a0l4L0000005ip1",
+    "a0l4L0000005ip2",
+    "a0l4L0000005ip3",
+    "a0l4L0000005ipO",
+    "a0l4L0000005ipQ",
+    "a0l4L0000005ipR",
+    "a0l4L0000005ipS",
+    "a0l4L0000005ipT",
+    "a0l4L0000005itF",
+    "a0l4L0000005ix6"
+   ]
+  },
+  "SSE Newchurch Solar Limited": {
+   "rows": 1,
+   "mw": "400.00",
+   "project_ids": [
+    "a0l4L0000005ic4"
+   ]
+  },
+  "SSE RENEWABLES OFFSHORE WINDFARM HOLDINGS LIMITED": {
+   "rows": 1,
+   "mw": "1500.00",
+   "project_ids": [
+    "a0l4L0000005iyP"
+   ]
+  },
+  "SSE RENEWABLES SOLAR & BATTERY HOLDINGS LIMITED": {
+   "rows": 3,
+   "mw": "1650.00",
+   "project_ids": [
+    "a0l8e000000f41J",
+    "a0l8e000000f4iJ",
+    "a0l8e0000010wl0"
+   ]
+  },
+  "SSE RENEWABLES WIND FARMS (UK) LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005ioz"
+   ]
+  },
+  "SSE Renewables Services (UK) Limited": {
+   "rows": 4,
+   "mw": "404.00",
+   "project_ids": [
+    "a0l4L0000005iz2",
+    "a0l8e000000f7kl",
+    "a0l8e00000120Nh",
+    "a0l8e000001HoYj"
+   ]
+  },
+  "SSE SOUTHERY SOLAR LIMITED": {
+   "rows": 1,
+   "mw": "600.00",
+   "project_ids": [
+    "a0l4L0000005ivg"
+   ]
+  },
+  "SSE STAYTHORPE POWER LIMITED": {
+   "rows": 1,
+   "mw": "437.00",
+   "project_ids": [
+    "a0l4L0000005ixD"
+   ]
+  },
+  "SSE THERMAL GENERATION (SCOTLAND) LIMITED": {
+   "rows": 2,
+   "mw": "910.00",
+   "project_ids": [
+    "a0l4L0000005imp",
+    "a0l8e0000012hoo"
+   ]
+  },
+  "SSE TODDLEBURN LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005ipV"
+   ]
+  },
+  "SSE UTILITY SOLUTIONS LIMITED": {
+   "rows": 1,
+   "mw": "600.00",
+   "project_ids": [
+    "a0l4L0000005iuY"
+   ]
+  },
+  "STALLINGBOROUGH ENERGY PROJECT LIMITED": {
+   "rows": 1,
+   "mw": "500.00",
+   "project_ids": [
+    "a0l8e0000010wys"
+   ]
+  },
+  "STARLIGHT ENERGY UK LIMITED": {
+   "rows": 5,
+   "mw": "819.90",
+   "project_ids": [
+    "a0l8e000000ey6v",
+    "a0l8e000000f8Nq",
+    "a0l8e0000012eeL",
+    "a0l8e0000012kfg",
+    "a0lJ9000000blt0"
+   ]
+  },
+  "STATKRAFT ENERGY LTD.": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005iVK"
+   ]
+  },
+  "STATKRAFT HIGHLANDS PSH LIMITED": {
+   "rows": 2,
+   "mw": "550.00",
+   "project_ids": [
+    "a0l4L0000005iqQ"
+   ]
+  },
+  "STATKRAFT HYDROGEN UK HOLDING LIMITED": {
+   "rows": 3,
+   "mw": "59.90",
+   "project_ids": [
+    "a0l4L0000005iYq",
+    "a0l8e000000f65U",
+    "a0l8e0000010wXp"
+   ]
+  },
+  "STORNOWAY WIND FARM LIMITED": {
+   "rows": 1,
+   "mw": "180.00",
+   "project_ids": [
+    "a0l4L0000005ixY"
+   ]
+  },
+  "STORY ENERGY LIMITED": {
+   "rows": 1,
+   "mw": "240.00",
+   "project_ids": [
+    "a0l8e000000f5rS"
+   ]
+  },
+  "STRANOCH WINDFARM LIMITED": {
+   "rows": 1,
+   "mw": "102.00",
+   "project_ids": [
+    "a0l4L0000005inq"
+   ]
+  },
+  "STRATHRORY WIND FARM LLP": {
+   "rows": 1,
+   "mw": "36.00",
+   "project_ids": [
+    "a0l4L0000005iUP"
+   ]
+  },
+  "STRATHY WIND FARM LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005ihR"
+   ]
+  },
+  "STRONELAIRG WIND FARM LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005ipU"
+   ]
+  },
+  "SUNBURY BESS LTD": {
+   "rows": 1,
+   "mw": "200.00",
+   "project_ids": [
+    "a0l4L0000005iQR"
+   ]
+  },
+  "SUNDON BATTERY STORAGE LIMITED": {
+   "rows": 1,
+   "mw": "50.00",
+   "project_ids": [
+    "a0l4L0000005ifQ"
+   ]
+  },
+  "SUNDON GREEN LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005inv"
+   ]
+  },
+  "SUNLAWS DEVELOPMENT COMPANY LIMITED": {
+   "rows": 1,
+   "mw": "49.50",
+   "project_ids": [
+    "a0lJ9000000PF4H"
+   ]
+  },
+  "SUNNICA LIMITED": {
+   "rows": 1,
+   "mw": "500.00",
+   "project_ids": [
+    "a0l4L0000005ilS"
+   ]
+  },
+  "SUTTON BRIDGE POWER GENERATION": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005iq6"
+   ]
+  },
+  "SWANSEA GRID SOLUTIONS LIMITED": {
+   "rows": 3,
+   "mw": "97.00",
+   "project_ids": [
+    "a0l4L0000005ibI",
+    "a0l4L0000005ifa"
+   ]
+  },
+  "SWANSEA NORTH GREEN NG LIMITED": {
+   "rows": 2,
+   "mw": "1025.00",
+   "project_ids": [
+    "a0l4L0000005iyg"
+   ]
+  },
+  "SWEET BRIAR 2 ENERGY PARK LIMITED": {
+   "rows": 1,
+   "mw": "800.00",
+   "project_ids": [
+    "a0lJ9000000PDu2"
+   ]
+  },
+  "Sandbrook Capital BES Ltd": {
+   "rows": 1,
+   "mw": "200.00",
+   "project_ids": [
+    "a0l8e0000012i3Y"
+   ]
+  },
+  "Seagreen Wind Energy Limited": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005ipF"
+   ]
+  },
+  "Seatonhill Storage Facility Limited": {
+   "rows": 1,
+   "mw": "300.00",
+   "project_ids": [
+    "a0l8e000000f650"
+   ]
+  },
+  "Sedgeby Solar Limited": {
+   "rows": 1,
+   "mw": "350.00",
+   "project_ids": [
+    "a0l4L0000005iuy"
+   ]
+  },
+  "Sellindge West 10 Renewables Limited": {
+   "rows": 1,
+   "mw": "1000.00",
+   "project_ids": [
+    "a0l8e000000TPR5"
+   ]
+  },
+  "Shama BESS Limited": {
+   "rows": 1,
+   "mw": "500.00",
+   "project_ids": [
+    "a0l8e0000010wUC"
+   ]
+  },
+  "Sheilhill Battery Storage Limited": {
+   "rows": 1,
+   "mw": "100.00",
+   "project_ids": [
+    "a0l4L0000005ivQ"
+   ]
+  },
+  "Shetland Offshore Wind Limited": {
+   "rows": 1,
+   "mw": "500.00",
+   "project_ids": [
+    "a0l8e0000010wXu"
+   ]
+  },
+  "Shotwick Land Limited": {
+   "rows": 1,
+   "mw": "349.99",
+   "project_ids": [
+    "a0l8e0000011yOz"
+   ]
+  },
+  "Sizewell C Limited": {
+   "rows": 2,
+   "mw": "3340.00",
+   "project_ids": [
+    "a0l4L0000005ioP"
+   ]
+  },
+  "Skelmersdale Energy Storage Limited": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005iTk"
+   ]
+  },
+  "Slickly Wind Farm Limited": {
+   "rows": 1,
+   "mw": "114.00",
+   "project_ids": [
+    "a0l4L0000005ifv"
+   ]
+  },
+  "SolarFour Ltd": {
+   "rows": 4,
+   "mw": "2890.00",
+   "project_ids": [
+    "a0l8e000000f7Be",
+    "a0l8e0000011yCA",
+    "a0l8e000001Hpec",
+    "a0l8e000001Hpeh"
+   ]
+  },
+  "SolarNine Ltd": {
+   "rows": 1,
+   "mw": "520.00",
+   "project_ids": [
+    "a0l8e000000f7Bj"
+   ]
+  },
+  "SolarSeven Ltd": {
+   "rows": 1,
+   "mw": "610.00",
+   "project_ids": [
+    "a0l8e000000f7Bo"
+   ]
+  },
+  "SolarTen Ltd": {
+   "rows": 1,
+   "mw": "710.00",
+   "project_ids": [
+    "a0l8e000001HpeX"
+   ]
+  },
+  "SolarThree Ltd": {
+   "rows": 1,
+   "mw": "840.00",
+   "project_ids": [
+    "a0l8e0000010x0F"
+   ]
+  },
+  "Solomons BESS Ltd": {
+   "rows": 1,
+   "mw": "240.00",
+   "project_ids": [
+    "a0l8e000000TPBQ"
+   ]
+  },
+  "Source Galileo Limited": {
+   "rows": 1,
+   "mw": "240.00",
+   "project_ids": [
+    "a0l8e000000f7PN"
+   ]
+  },
+  "South Plean Storage Facility Limited": {
+   "rows": 1,
+   "mw": "200.00",
+   "project_ids": [
+    "a0l8e000000exYN"
+   ]
+  },
+  "South Street BESS Limited": {
+   "rows": 1,
+   "mw": "63.00",
+   "project_ids": [
+    "a0lJ9000000blhx"
+   ]
+  },
+  "South West Wind Holdco Limited": {
+   "rows": 2,
+   "mw": "2016.00",
+   "project_ids": [
+    "a0l4L0000005ivO",
+    "a0l4L0000005iyQ"
+   ]
+  },
+  "Spennymoor Grid Solutions Limited": {
+   "rows": 2,
+   "mw": "500.00",
+   "project_ids": [
+    "a0l4L0000005ibF"
+   ]
+  },
+  "Spirebush Ltd": {
+   "rows": 1,
+   "mw": "400.00",
+   "project_ids": [
+    "a0l4L0000005j1V"
+   ]
+  },
+  "Springbank Energy Storage Park Limited": {
+   "rows": 1,
+   "mw": "49.90",
+   "project_ids": [
+    "a0lJ9000000PDuH"
+   ]
+  },
+  "Starlight Energy SPV 2 Ltd": {
+   "rows": 1,
+   "mw": "200.00",
+   "project_ids": [
+    "a0l4L000002yQX9"
+   ]
+  },
+  "Starlight Energy SPV 4 Limited": {
+   "rows": 1,
+   "mw": "200.00",
+   "project_ids": [
+    "a0l8e000000TPFS"
+   ]
+  },
+  "Statera Energy Limited": {
+   "rows": 1,
+   "mw": "500.00",
+   "project_ids": [
+    "a0l4L0000005ivx"
+   ]
+  },
+  "Statkraft UK Ltd": {
+   "rows": 8,
+   "mw": "1849.50",
+   "project_ids": [
+    "a0l4L0000005iPL",
+    "a0l4L0000005ias",
+    "a0l4L0000005ibT",
+    "a0l4L0000005ig3",
+    "a0l8e000000f4w9",
+    "a0l8e0000012khc",
+    "a0lJ9000000blMr"
+   ]
+  },
+  "Statkraft Windco 1 Limited": {
+   "rows": 1,
+   "mw": "149.00",
+   "project_ids": [
+    "a0l4L0000005ivE"
+   ]
+  },
+  "Steeple Solar Farm Limited": {
+   "rows": 1,
+   "mw": "600.00",
+   "project_ids": [
+    "a0l4L0000005iwu"
+   ]
+  },
+  "Stoke Bardolph 10 Renewables Limited": {
+   "rows": 1,
+   "mw": "1000.00",
+   "project_ids": [
+    "a0l8e000000TPQb"
+   ]
+  },
+  "Strath Tirry Wind Energy 2021 Ltd": {
+   "rows": 1,
+   "mw": "34.80",
+   "project_ids": [
+    "a0l4L0000005iXp"
+   ]
+  },
+  "Stromar Offshore Wind Farm Limited": {
+   "rows": 2,
+   "mw": "1500.00",
+   "project_ids": [
+    "a0l4L0000005izN"
+   ]
+  },
+  "Sunshine Project 03 Limited": {
+   "rows": 1,
+   "mw": "400.00",
+   "project_ids": [
+    "a0l8e000001HoYo"
+   ]
+  },
+  "TAGENERGY DEVELOPMENT UK LIMITED": {
+   "rows": 5,
+   "mw": "1348.90",
+   "project_ids": [
+    "a0l4L0000005iY3",
+    "a0l4L0000005ikM",
+    "a0l8e000000TPJU",
+    "a0l8e000000TPJe",
+    "a0l8e0000010wbK"
+   ]
+  },
+  "TARENNI ENERGY PARK LIMITED": {
+   "rows": 1,
+   "mw": "188.00",
+   "project_ids": [
+    "a0l4L0000005iNd"
+   ]
+  },
+  "TASWAY ENERGY PARK LIMITED": {
+   "rows": 2,
+   "mw": "949.90",
+   "project_ids": [
+    "a0l8e000000f4xH"
+   ]
+  },
+  "TBC 001 LIMITED": {
+   "rows": 1,
+   "mw": "300.00",
+   "project_ids": [
+    "a0l4L0000005iMP"
+   ]
+  },
+  "TBC 002 LIMITED": {
+   "rows": 1,
+   "mw": "170.00",
+   "project_ids": [
+    "a0l4L0000005iM8"
+   ]
+  },
+  "TBC 003 LIMITED": {
+   "rows": 1,
+   "mw": "400.00",
+   "project_ids": [
+    "a0l4L0000005itT"
+   ]
+  },
+  "TEINDLAND WIND FARM LIMITED": {
+   "rows": 1,
+   "mw": "112.20",
+   "project_ids": [
+    "a0l4L0000005iNk"
+   ]
+  },
+  "TELIS ENERGY UK LIMITED": {
+   "rows": 18,
+   "mw": "17100.00",
+   "project_ids": [
+    "a0l8e000000ewvz",
+    "a0l8e000000f40k",
+    "a0l8e0000010wVo",
+    "a0l8e0000010wVy",
+    "a0l8e0000010wWN",
+    "a0l8e0000010wWr",
+    "a0l8e00000120NN",
+    "a0l8e00000120Nc",
+    "a0l8e0000012gbj",
+    "a0l8e0000012gsc",
+    "a0l8e0000012hmn",
+    "a0l8e0000012hms",
+    "a0l8e0000012hmx",
+    "a0l8e0000012hn2",
+    "a0l8e0000012hn7",
+    "a0l8e0000012hnq",
+    "a0l8e0000012hoP",
+    "a0l8e0000012hoU"
+   ]
+  },
+  "TEVIOT WF LIMITED": {
+   "rows": 1,
+   "mw": "522.90",
+   "project_ids": [
+    "a0l4L0000005iPb"
+   ]
+  },
+  "THANET OFFSHORE WIND LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005iqB"
+   ]
+  },
+  "THE CLEAN FUTURE RENEWABLES LIMITED": {
+   "rows": 1,
+   "mw": "500.00",
+   "project_ids": [
+    "a0l4L0000005iaF"
+   ]
+  },
+  "THE DROVES SOLAR FARM LIMITED": {
+   "rows": 1,
+   "mw": "500.00",
+   "project_ids": [
+    "a0l8e000000eyK3"
+   ]
+  },
+  "THEDDLETHORPE FLEXIBLE GENERATION LIMITED": {
+   "rows": 1,
+   "mw": "1500.00",
+   "project_ids": [
+    "a0l4L0000005iw4"
+   ]
+  },
+  "THORNTON ENERGY LTD": {
+   "rows": 1,
+   "mw": "400.00",
+   "project_ids": [
+    "a0l8e000000TPcP"
+   ]
+  },
+  "THORPE MARSH GREEN ENERGY HUB LIMITED": {
+   "rows": 1,
+   "mw": "1400.00",
+   "project_ids": [
+    "a0l4L0000005iNO"
+   ]
+  },
+  "THORPE MARSH NG LTD": {
+   "rows": 2,
+   "mw": "1025.00",
+   "project_ids": [
+    "a0l4L0000005igN"
+   ]
+  },
+  "THURROCK FLEXIBLE GENERATION LIMITED": {
+   "rows": 2,
+   "mw": "375.00",
+   "project_ids": [
+    "a0l4L0000005ivp"
+   ]
+  },
+  "THURSO GRID SERVICES LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005iap"
+   ]
+  },
+  "TILBURY GREEN POWER LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005iVq"
+   ]
+  },
+  "TILLBRIDGE SOLAR LIMITED": {
+   "rows": 1,
+   "mw": "500.00",
+   "project_ids": [
+    "a0l4L0000005ifW"
+   ]
+  },
+  "TINZ PROGRAMME 1 PROJECTCO 3 LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005ihi"
+   ]
+  },
+  "TOLLGATE ENERGY STORAGE LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005iM3"
+   ]
+  },
+  "TRALORG WIND FARM LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005itA"
+   ]
+  },
+  "TRIO POWER LIMITED": {
+   "rows": 1,
+   "mw": "300.00",
+   "project_ids": [
+    "a0lJ9000000blnV"
+   ]
+  },
+  "TRITON KNOLL OFFSHORE WIND FARM LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005ipZ"
+   ]
+  },
+  "TROSTON WINDFARM LIMITED": {
+   "rows": 1,
+   "mw": "68.00",
+   "project_ids": [
+    "a0l4L0000005iff"
+   ]
+  },
+  "TRYDAN GWYRDD CYMRU (Welsh Government) Ltd": {
+   "rows": 2,
+   "mw": "260.80",
+   "project_ids": [
+    "a0l8e000000f4Yq",
+    "a0l8e0000012i2a"
+   ]
+  },
+  "TTEP SHB LTD": {
+   "rows": 1,
+   "mw": "83.00",
+   "project_ids": [
+    "a0l4L0000005itJ"
+   ]
+  },
+  "TULLO WIND FARM LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005iVv"
+   ]
+  },
+  "TULLYMURDOCH LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005iWL"
+   ]
+  },
+  "TURBINE MARKETING SPV LIMITED": {
+   "rows": 1,
+   "mw": "89.00",
+   "project_ids": [
+    "a0l8e000000eygI"
+   ]
+  },
+  "TWENTYSHILLING LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005iZ7"
+   ]
+  },
+  "TWINSHIELS WIND FARM LTD": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005iQq"
+   ]
+  },
+  "TYLER HILL CONSULTING LIMITED": {
+   "rows": 1,
+   "mw": "400.00",
+   "project_ids": [
+    "a0l8e000001Hoz9"
+   ]
+  },
+  "Tarland Limited": {
+   "rows": 1,
+   "mw": "20.00",
+   "project_ids": [
+    "a0l4L0000005iRy"
+   ]
+  },
+  "Templeton Battery Storage Limited": {
+   "rows": 2,
+   "mw": "49.90",
+   "project_ids": [
+    "a0l8e0000010wQK"
+   ]
+  },
+  "Tolkien Solar Farm Limited": {
+   "rows": 1,
+   "mw": "200.00",
+   "project_ids": [
+    "a0l4L0000005ikf"
+   ]
+  },
+  "Torfichen Energy Limited": {
+   "rows": 1,
+   "mw": "150.00",
+   "project_ids": [
+    "a0l8e0000010wRI"
+   ]
+  },
+  "Trent BESS I Limited": {
+   "rows": 1,
+   "mw": "500.00",
+   "project_ids": [
+    "a0l8e000001HoKy"
+   ]
+  },
+  "Trent BESS II Limited": {
+   "rows": 1,
+   "mw": "500.00",
+   "project_ids": [
+    "a0l8e000000exuG"
+   ]
+  },
+  "Twyn Hywel Energy Park Ltd": {
+   "rows": 1,
+   "mw": "107.80",
+   "project_ids": [
+    "a0l4L0000005izF"
+   ]
+  },
+  "UE 1 LTD": {
+   "rows": 1,
+   "mw": "200.00",
+   "project_ids": [
+    "a0l8e0000010wkq"
+   ]
+  },
+  "UE 2 LTD": {
+   "rows": 1,
+   "mw": "180.00",
+   "project_ids": [
+    "a0l8e0000010wkv"
+   ]
+  },
+  "UE 3 LTD": {
+   "rows": 1,
+   "mw": "240.00",
+   "project_ids": [
+    "a0l8e000000evgB"
+   ]
+  },
+  "UE 4 LTD": {
+   "rows": 1,
+   "mw": "200.00",
+   "project_ids": [
+    "a0l8e000001201H"
+   ]
+  },
+  "UISENIS POWER LIMITED": {
+   "rows": 1,
+   "mw": "189.00",
+   "project_ids": [
+    "a0l4L0000005iro"
+   ]
+  },
+  "UK POWER RESERVE LIMITED": {
+   "rows": 4,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005iVx",
+    "a0l4L0000005iW2",
+    "a0l4L0000005iWR",
+    "a0l4L0000005izh"
+   ]
+  },
+  "UK RENFREWSHIRE 1 LTD": {
+   "rows": 1,
+   "mw": "49.90",
+   "project_ids": [
+    "a0l8e0000011zGE"
+   ]
+  },
+  "UK Transition Power Holdings Limited": {
+   "rows": 1,
+   "mw": "1200.00",
+   "project_ids": [
+    "a0lJ9000000blmm"
+   ]
+  },
+  "UK UTILITY RESERVE LIMITED": {
+   "rows": 1,
+   "mw": "162.00",
+   "project_ids": [
+    "a0l4L0000005iVM"
+   ]
+  },
+  "UPM-KYMMENE (UK) LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005iRG"
+   ]
+  },
+  "URUK BESS LIMITED": {
+   "rows": 1,
+   "mw": "200.00",
+   "project_ids": [
+    "a0l8e0000012jIz"
+   ]
+  },
+  "USKMOUTH ENERGY STORAGE LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005izu"
+   ]
+  },
+  "Uniper UK Limited": {
+   "rows": 9,
+   "mw": "589.90",
+   "project_ids": [
+    "a0l4L0000005iVS",
+    "a0l4L0000005iaK",
+    "a0l4L0000005im4",
+    "a0l4L0000005imC",
+    "a0l4L0000005inB",
+    "a0l4L0000005ioS",
+    "a0l4L0000005ioT",
+    "a0l4L0000005iut",
+    "a0l4L0000005izS"
+   ]
+  },
+  "VATTENFALL WIND POWER LTD": {
+   "rows": 7,
+   "mw": "464.00",
+   "project_ids": [
+    "a0l4L0000005iOe",
+    "a0l4L0000005iV1",
+    "a0l4L0000005ioI",
+    "a0l4L0000005ivb",
+    "a0l4L0000005iwr",
+    "a0l8e000000f6Jj"
+   ]
+  },
+  "VICARAGE DROVE BESS LIMITED": {
+   "rows": 1,
+   "mw": "160.00",
+   "project_ids": [
+    "a0lJ9000000PNpY"
+   ]
+  },
+  "VIKING ENERGY WIND FARM LLP": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005isv"
+   ]
+  },
+  "VIRIDIS 178 LIMITED": {
+   "rows": 17,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005iQD",
+    "a0l4L0000005iQJ",
+    "a0l4L0000005iR8",
+    "a0l4L0000005iRB",
+    "a0l4L0000005iSy",
+    "a0l4L0000005iUl",
+    "a0l4L0000005iUm",
+    "a0l4L0000005iUs",
+    "a0l4L0000005iVg",
+    "a0l4L0000005iVh",
+    "a0l4L0000005iVr",
+    "a0l4L0000005iVs",
+    "a0l4L0000005iVt",
+    "a0l4L0000005iVu",
+    "a0l4L0000005iyp",
+    "a0l4L0000005izf",
+    "a0l4L0000005izg"
+   ]
+  },
+  "VIRIDISIA LTD": {
+   "rows": 1,
+   "mw": "42.00",
+   "project_ids": [
+    "a0l8e000000exgs"
+   ]
+  },
+  "VIRMATI ENERGY LTD": {
+   "rows": 1,
+   "mw": "200.00",
+   "project_ids": [
+    "a0lJ9000000PNKR"
+   ]
+  },
+  "VOLTALIA UK LTD": {
+   "rows": 8,
+   "mw": "1496.60",
+   "project_ids": [
+    "a0l8e000000ewwd",
+    "a0l8e000000f4Z0",
+    "a0l8e000000f4Z5",
+    "a0l8e0000010wXG",
+    "a0l8e0000010wXQ",
+    "a0lJ9000000PDma",
+    "a0lJ9000000PDr8",
+    "a0lJ9000000POPv"
+   ]
+  },
+  "VOLTIS PEOPLE LIMITED": {
+   "rows": 2,
+   "mw": "340.00",
+   "project_ids": [
+    "a0l4L0000005iX5",
+    "a0l8e0000011ymg"
+   ]
+  },
+  "VPI IMMINGHAM B LIMITED": {
+   "rows": 1,
+   "mw": "299.00",
+   "project_ids": [
+    "a0l4L0000005iPc"
+   ]
+  },
+  "VPI IMMINGHAM LLP": {
+   "rows": 2,
+   "mw": "50.00",
+   "project_ids": [
+    "a0l4L0000005im7"
+   ]
+  },
+  "VPI Power Limited": {
+   "rows": 4,
+   "mw": "1800.00",
+   "project_ids": [
+    "a0l4L0000005iVf",
+    "a0l4L0000005ieK",
+    "a0l4L0000005inn",
+    "a0l4L0000005ipY"
+   ]
+  },
+  "Vale of Leven Wind Farm Limited": {
+   "rows": 1,
+   "mw": "72.00",
+   "project_ids": [
+    "a0l8e000000TPEZ"
+   ]
+  },
+  "Vital Energi Solutions Limited": {
+   "rows": 5,
+   "mw": "242.60",
+   "project_ids": [
+    "a0l4L0000005iWw",
+    "a0l8e000000TPAN",
+    "a0l8e000000TPAS",
+    "a0l8e000000TPAr",
+    "a0l8e000000TPBG"
+   ]
+  },
+  "Voltwise Power Holdings Limited": {
+   "rows": 4,
+   "mw": "570.00",
+   "project_ids": [
+    "a0l8e0000012hwW",
+    "a0l8e0000012jUB",
+    "a0lJ9000000PEDS",
+    "a0lJ9000000PH5L"
+   ]
+  },
+  "Vox Charlie Ltd": {
+   "rows": 1,
+   "mw": "125.28",
+   "project_ids": [
+    "a0l8e0000010wOY"
+   ]
+  },
+  "W4B RENEWABLE ENERGY LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l8e000000f4xv"
+   ]
+  },
+  "WALNEY (UK) OFFSHORE WINDFARMS LIMITED": {
+   "rows": 2,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005iqG",
+    "a0l4L0000005iqH"
+   ]
+  },
+  "WALNEY EXTENSION LIMITED": {
+   "rows": 2,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005iql",
+    "a0l4L0000005iqm"
+   ]
+  },
+  "WALPOLE GREEN LIMITED": {
+   "rows": 1,
+   "mw": "57.00",
+   "project_ids": [
+    "a0l4L0000005ipk"
+   ]
+  },
+  "WARLEY BATTERY STORAGE LIMITED": {
+   "rows": 1,
+   "mw": "57.00",
+   "project_ids": [
+    "a0l4L0000005ifh"
+   ]
+  },
+  "WARLEY GREEN LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005ipl"
+   ]
+  },
+  "WELBAR ENERGY STORAGE LIMITED": {
+   "rows": 2,
+   "mw": "399.90",
+   "project_ids": [
+    "a0l4L0000005iey"
+   ]
+  },
+  "WEST ANDERSHAW WIND FARM LIMITED": {
+   "rows": 1,
+   "mw": "85.80",
+   "project_ids": [
+    "a0l8e0000010wPR"
+   ]
+  },
+  "WEST BURTON B LIMITED": {
+   "rows": 2,
+   "mw": "548.00",
+   "project_ids": [
+    "a0l4L0000005ilI"
+   ]
+  },
+  "WEST BURTON SOLAR PROJECT LIMITED": {
+   "rows": 1,
+   "mw": "480.00",
+   "project_ids": [
+    "a0l4L0000005ipf"
+   ]
+  },
+  "WESTERMOST ROUGH LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005iqI"
+   ]
+  },
+  "WHITELAW BRAE WINDFARM LIMITED": {
+   "rows": 1,
+   "mw": "57.00",
+   "project_ids": [
+    "a0l4L0000005isx"
+   ]
+  },
+  "WHITESIDE HILL WINDFARM (SCOTLAND) LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005irL"
+   ]
+  },
+  "WHITETOWER ENERGY LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005iVV"
+   ]
+  },
+  "WILLINGTON ENERGY PARK LIMITED": {
+   "rows": 1,
+   "mw": "249.90",
+   "project_ids": [
+    "a0l8e000001Hper"
+   ]
+  },
+  "WILLINGTON NG LIMITED": {
+   "rows": 2,
+   "mw": "1025.00",
+   "project_ids": [
+    "a0l4L0000005ikH"
+   ]
+  },
+  "WILSON RENEWABLES III LLP": {
+   "rows": 1,
+   "mw": "78.00",
+   "project_ids": [
+    "a0l8e000000TPcZ"
+   ]
+  },
+  "WILSON RENEWABLES IV LLP": {
+   "rows": 1,
+   "mw": "34.00",
+   "project_ids": [
+    "a0l8e000000TPcU"
+   ]
+  },
+  "WIND 2 LIMITED": {
+   "rows": 3,
+   "mw": "535.00",
+   "project_ids": [
+    "a0l8e0000012hoy",
+    "a0l8e0000012j9F",
+    "a0lJ9000000POQ5"
+   ]
+  },
+  "WIND ESTATE (UK) LIMITED": {
+   "rows": 3,
+   "mw": "191.60",
+   "project_ids": [
+    "a0lJ9000000PGEg",
+    "a0lJ9000000PMIY",
+    "a0lJ9000000POfg"
+   ]
+  },
+  "WINDBURN WIND FARM LIMITED": {
+   "rows": 2,
+   "mw": "150.00",
+   "project_ids": [
+    "a0l8e0000012kkq",
+    "a0lJ9000000POgF"
+   ]
+  },
+  "WINDEL GRID 1 LIMITED": {
+   "rows": 1,
+   "mw": "200.00",
+   "project_ids": [
+    "a0l8e0000011yx6"
+   ]
+  },
+  "WINDY RIG WIND FARM LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005ilo"
+   ]
+  },
+  "WP GRID SERVICES 13 LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l8e000000f6AL"
+   ]
+  },
+  "WP Grid Services 16 Limited": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l8e000000f5Xs"
+   ]
+  },
+  "WP Grid Storage 3 Limited": {
+   "rows": 1,
+   "mw": "100.00",
+   "project_ids": [
+    "a0l8e000000ewOO"
+   ]
+  },
+  "WYLFA GREEN LIMITED": {
+   "rows": 1,
+   "mw": "120.00",
+   "project_ids": [
+    "a0l4L0000005ioD"
+   ]
+  },
+  "WYMONDLEY GREEN ENERGY CENTRE LTD": {
+   "rows": 1,
+   "mw": "700.00",
+   "project_ids": [
+    "a0l8e000000f5Y7"
+   ]
+  },
+  "WYSEBYHILL ENERGY FARM LIMITED": {
+   "rows": 1,
+   "mw": "750.00",
+   "project_ids": [
+    "a0l4L0000005iQS"
+   ]
+  },
+  "Walsoken Limited": {
+   "rows": 1,
+   "mw": "200.00",
+   "project_ids": [
+    "a0l8e0000010wZd"
+   ]
+  },
+  "Waltham Cross 2 Renewables Limited": {
+   "rows": 1,
+   "mw": "200.00",
+   "project_ids": [
+    "a0l8e0000010wZH"
+   ]
+  },
+  "Waltham Cross 7 Renewables Limited": {
+   "rows": 1,
+   "mw": "700.00",
+   "project_ids": [
+    "a0l8e0000010wed"
+   ]
+  },
+  "Waun Hesgog Energy Park Limited": {
+   "rows": 1,
+   "mw": "251.00",
+   "project_ids": [
+    "a0l4L0000005iUM"
+   ]
+  },
+  "Weaver Island BESS Ltd": {
+   "rows": 1,
+   "mw": "150.00",
+   "project_ids": [
+    "a0l8e0000010wbe"
+   ]
+  },
+  "West Common BESS Limited": {
+   "rows": 1,
+   "mw": "100.00",
+   "project_ids": [
+    "a0l8e000000ViK5"
+   ]
+  },
+  "West Haddon 10 Renewables Limited": {
+   "rows": 1,
+   "mw": "1000.00",
+   "project_ids": [
+    "a0l8e000000TPRU"
+   ]
+  },
+  "West Saval Battery Storage Ltd": {
+   "rows": 1,
+   "mw": "200.00",
+   "project_ids": [
+    "a0l8e0000011yC5"
+   ]
+  },
+  "West Weybridge 10 Renewables Limited": {
+   "rows": 1,
+   "mw": "1000.00",
+   "project_ids": [
+    "a0l8e000000TPQw"
+   ]
+  },
+  "Wheaten Hill BESS Limited": {
+   "rows": 1,
+   "mw": "400.00",
+   "project_ids": [
+    "a0l4L0000005iv8"
+   ]
+  },
+  "Whitehill Battery Storage Ltd": {
+   "rows": 1,
+   "mw": "200.00",
+   "project_ids": [
+    "a0l4L0000005idp"
+   ]
+  },
+  "Wind 2 Project 2 Limited": {
+   "rows": 1,
+   "mw": "165.00",
+   "project_ids": [
+    "a0l4L0000005ia8"
+   ]
+  },
+  "Wind 2 Project 3 Limited": {
+   "rows": 1,
+   "mw": "72.00",
+   "project_ids": [
+    "a0lJ9000000bla3"
+   ]
+  },
+  "Wind 2 Project 6 Limited": {
+   "rows": 1,
+   "mw": "84.00",
+   "project_ids": [
+    "a0l8e000001HrDX"
+   ]
+  },
+  "Windy Standard III Limited": {
+   "rows": 2,
+   "mw": "87.60",
+   "project_ids": [
+    "a0l4L0000005ite"
+   ]
+  },
+  "Windyhill Grid 1 LTD": {
+   "rows": 1,
+   "mw": "200.00",
+   "project_ids": [
+    "a0l4L0000005ies"
+   ]
+  },
+  "Windyhill Grid 2 Ltd": {
+   "rows": 1,
+   "mw": "200.00",
+   "project_ids": [
+    "a0l4L0000005ib7"
+   ]
+  },
+  "Woodcock Faulds Battery Storage Limited": {
+   "rows": 1,
+   "mw": "200.00",
+   "project_ids": [
+    "a0l8e0000010wXL"
+   ]
+  },
+  "Worcestershire Solar 1 Limited": {
+   "rows": 1,
+   "mw": "37.50",
+   "project_ids": [
+    "a0l4L0000005ieL"
+   ]
+  },
+  "Wymondley 10 Renewables Ltd": {
+   "rows": 1,
+   "mw": "1000.00",
+   "project_ids": [
+    "a0l4L000002yQZj"
+   ]
+  },
+  "Y BRYN WIND FARM LIMITED": {
+   "rows": 1,
+   "mw": "151.20",
+   "project_ids": [
+    "a0l4L0000005ib4"
+   ]
+  },
+  "YAXLEY ENERGY LIMITED": {
+   "rows": 2,
+   "mw": "1800.00",
+   "project_ids": [
+    "a0l8e0000012eVv",
+    "a0lJ9000000PEBl"
+   ]
+  },
+  "YAXLEY GREEN ENERGY CENTRE LTD": {
+   "rows": 1,
+   "mw": "450.00",
+   "project_ids": [
+    "a0l8e000000f5YC"
+   ]
+  },
+  "YORK ENERGY PARK LIMITED": {
+   "rows": 2,
+   "mw": "499.80",
+   "project_ids": [
+    "a0l8e0000010wPC",
+    "a0l8e0000010wV5"
+   ]
+  },
+  "ZENOBE BLACKHILLOCK LIMITED": {
+   "rows": 2,
+   "mw": "100.00",
+   "project_ids": [
+    "a0l4L0000005iNT"
+   ]
+  },
+  "ZENOBE CAPENHURST LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005iwG"
+   ]
+  },
+  "ZENOBE ECCLES LIMITED": {
+   "rows": 1,
+   "mw": "400.00",
+   "project_ids": [
+    "a0l4L0000005ij4"
+   ]
+  },
+  "ZENOBE ENERGY LIMITED": {
+   "rows": 9,
+   "mw": "2480.00",
+   "project_ids": [
+    "a0l4L0000005ij3",
+    "a0l4L0000005iy8",
+    "a0l8e000000TPQM",
+    "a0l8e000000ewwY",
+    "a0l8e000000ewx2",
+    "a0l8e000000f8Pi",
+    "a0l8e000001Hod1",
+    "a0l8e000001Hod6",
+    "a0l8e000001HodG"
+   ]
+  },
+  "ZENOBE KILMARNOCK SOUTH LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005ieo"
+   ]
+  },
+  "ZENOBE STALYBRIDGE LIMITED": {
+   "rows": 1,
+   "mw": "150.00",
+   "project_ids": [
+    "a0l4L0000005iuV"
+   ]
+  },
+  "ZENOBE WISHAW LIMITED": {
+   "rows": 1,
+   "mw": "0",
+   "project_ids": [
+    "a0l4L0000005ixR"
+   ]
+  },
+  "Zenobe Coalburn Limited": {
+   "rows": 1,
+   "mw": "200.00",
+   "project_ids": [
+    "a0l4L0000005j1W"
+   ]
+  }
+ }
+}

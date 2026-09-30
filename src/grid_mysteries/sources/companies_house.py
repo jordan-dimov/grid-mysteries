@@ -101,3 +101,16 @@ def advanced_search_url(name: str, *, size: int = 20) -> str:
 
 def filing_history_url(company_number: str) -> str:
     return f"{BASE_URL}/company/{company_number}/filing-history?items_per_page=100"
+
+
+def psc_url(company_number: str) -> str:
+    return (
+        f"{BASE_URL}/company/{company_number}/persons-with-significant-control?items_per_page=100"
+    )
+
+
+def psc_statements_url(company_number: str) -> str:
+    return (
+        f"{BASE_URL}/company/{company_number}/persons-with-significant-control-statements"
+        "?items_per_page=100"
+    )

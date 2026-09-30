@@ -1,0 +1,12 @@
+{
+ "run_date": "2026-09-30",
+ "journal": "data/raw/companies-house/2026-09-30-019/journal.ndjson",
+ "journal_sha256": "930dd057d3a62e8ac272ddd965a065b3ab86b4bb382c3a1a1646756a37fff9c1",
+ "requests": 0,
+ "failures": 0,
+ "classes": {
+  "exact": 1302,
+  "ambiguous": 26,
+  "unresolved": 47
+ }
+}

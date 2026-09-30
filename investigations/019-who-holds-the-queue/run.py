@@ -350,18 +350,34 @@ def phase_acquire(seal: str | None, run_date: str) -> None:
     pin(jobs)
 
     append_links(links, run_date, search_digests)
+
+    def describe(number: str, name: str) -> dict[str, Any]:
+        for hit in [*searches.get(name, []), *advanced.get(name, [])]:
+            if str(hit.get("company_number")) == number:
+                return {
+                    "number": number,
+                    "title": hit.get("title") or hit.get("company_name"),
+                    "status": hit.get("company_status"),
+                    "created": hit.get("date_of_creation"),
+                    "ceased": hit.get("date_of_cessation"),
+                    "address": hit.get("address_snippet"),
+                }
+        return {"number": number}
+
     proposed = [
         {
             "name": lk.name,
             "class": lk.klass,
-            "candidates": list(lk.candidates),
+            "candidates": [describe(c, lk.name) for c in lk.candidates],
             "note": lk.note,
             "rows": all_names[lk.name]["rows"],
             "mw": all_names[lk.name]["mw"],
+            "project_ids": all_names[lk.name]["project_ids"],
         }
         for lk in links
         if not lk.resolved
     ]
+    proposed.sort(key=lambda x: -Decimal(str(x["mw"])))
     write_json(
         PROPOSED_JSON,
         {
@@ -756,7 +772,26 @@ def render(r: dict[str, Any]) -> str:
         "| status \\| age | rows | MW |",
         "|---|---|---|",
     ]
-    L += [f"| {k} | {v['rows']} | {v['mw']} |" for k, v in f2["by_status_and_age_years"].items()]
+    buckets = ("under 1y", "1 to 2y", "2 to 3y", "3 to 5y", "5 to 10y", "10y and over")
+    edges = (1, 2, 3, 5, 10)
+
+    def bucket(years: int) -> str:
+        return next((buckets[i] for i, e in enumerate(edges) if years < e), buckets[-1])
+
+    grouped: dict[str, dict[str, Any]] = {}
+    for k, v in f2["by_status_and_age_years"].items():
+        status_, age = k.rsplit("|", 1)
+        cell = grouped.setdefault(
+            f"{status_} | {bucket(int(age[:-1]))}", {"rows": 0, "mw": Decimal(0)}
+        )
+        cell["rows"] += v["rows"]
+        cell["mw"] += Decimal(str(v["mw"]))
+    ordered = sorted(
+        grouped.items(),
+        key=lambda kv: (kv[0].split(" | ")[0], buckets.index(kv[0].split(" | ")[1])),
+    )
+    L += [f"| {k} | {v['rows']} | {v['mw']} |" for k, v in ordered]
+    L += ["", "(Exact ages per status are in `evidence/results.json`.)"]
     L += [
         "",
         "## 3. The register's own customer-name changes",

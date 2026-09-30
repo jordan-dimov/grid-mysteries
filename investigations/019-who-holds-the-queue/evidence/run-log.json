@@ -10,6 +10,79 @@
    "at": "2026-09-30T13:39:29+00:00",
    "copies": 319,
    "project_ids": 3102
+  },
+  {
+   "phase": "acquire",
+   "at": "2026-09-30T14:57:41+00:00",
+   "run_date": "2026-09-30",
+   "requests": 6645,
+   "failures": 0,
+   "classes": {
+    "exact": 1302,
+    "ambiguous": 26,
+    "unresolved": 47
+   }
+  },
+  {
+   "phase": "schema",
+   "at": "2026-09-30T14:58:08+00:00",
+   "run_date": "2026-09-30",
+   "files": {
+    "search": 1375,
+    "advanced": 47,
+    "profile": 1320,
+    "psc": 1301,
+    "psc-statements": 1301,
+    "charges": 1301
+   }
+  },
+  {
+   "phase": "compute",
+   "at": "2026-09-30T14:58:08+00:00",
+   "run_date": "2026-09-30",
+   "admissions": 0,
+   "F1": false,
+   "F2": false
+  },
+  {
+   "phase": "acquire",
+   "at": "2026-09-30T14:59:03+00:00",
+   "run_date": "2026-09-30",
+   "requests": 0,
+   "failures": 0,
+   "classes": {
+    "exact": 1302,
+    "ambiguous": 26,
+    "unresolved": 47
+   }
+  },
+  {
+   "phase": "compute",
+   "at": "2026-09-30T14:59:04+00:00",
+   "run_date": "2026-09-30",
+   "admissions": 0,
+   "F1": false,
+   "F2": false
+  },
+  {
+   "phase": "acquire",
+   "at": "2026-09-30T14:59:58+00:00",
+   "run_date": "2026-09-30",
+   "requests": 0,
+   "failures": 0,
+   "classes": {
+    "exact": 1302,
+    "ambiguous": 26,
+    "unresolved": 47
+   }
+  },
+  {
+   "phase": "compute",
+   "at": "2026-09-30T14:59:58+00:00",
+   "run_date": "2026-09-30",
+   "admissions": 0,
+   "F1": false,
+   "F2": false
   }
  ]
 }

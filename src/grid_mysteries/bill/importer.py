@@ -10,11 +10,8 @@ nothing. A day the record holds under the same rule version with
 anything is proposed; the kernel's `day_is_new` gate is the backstop.
 
 The run (`run`) reads the record's own state first, so it resumes from
-wherever the record is and never trusts a local log. Each transact is
-guarded by a recovery marker kept per database, cleared only on a positive
-non-commit (a rejection, or an error code the runtime documents as
-"nothing was recorded"); anything else keeps it and the next run refuses
-until someone has read the record and removed it.
+wherever the record is and never trusts a local log. The one transact is
+guarded by the recovery marker of `grid_mysteries.record`.
 """
 
 import hashlib
@@ -26,10 +23,15 @@ from datetime import date
 from pathlib import Path
 from typing import Any, Final
 
-PROGRAMME: Final = Path("bill/bill-register.morph")
-REGISTER: Final = "bill"
-ACTOR: Final = "bill_importer"
-MARKER_DIR: Final = Path("data/derived/bill")
+from grid_mysteries import record
+
+RECORD: Final = record.Record(
+    name="bill",
+    programme=Path("bill/bill-register.morph"),
+    actor="bill_importer",
+    key_id="bill-2026",
+)
+act = RECORD.act
 #: The rule version tracked days are computed under today: 013's declaration
 #: (SHA-256 d20d5920…) with Amendment 1 (SHA-256 326cc5fe…) in force.
 RULE: Final = "013-d20d5920-A1"
@@ -43,21 +45,6 @@ RULES: Final = {
         "1-8 September 2026 as investigation 012 published them, copied, never recomputed",
     ),
 }
-#: Error codes the runtime documents as "nothing was recorded" (v0.0.12 and v0.0.13 alike,
-#: `morpholog schema --result`, propose_error_code). `commit_outcome_unknown`
-#: is deliberately absent; a code not listed here keeps the marker.
-NOT_COMMITTED_CODES: Final = frozenset(
-    {
-        "actor_assertion_unauthorised",
-        "duplicate_intent",
-        "invalid_arguments",
-        "invalid_request",
-        "kernel_error",
-        "not_committed",
-        "serialization_failure",
-        "unknown_transformation",
-    }
-)
 DAY_FIELDS: Final = (
     "source",
     "batch",
@@ -81,10 +68,6 @@ DAY_FIELDS: Final = (
     "artefacts_sha256",
 )
 PROPOSITIONS: Final = ("T1", "T2", "T3", "T4")
-
-
-def act(transformation: str, **args: object) -> dict[str, Any]:
-    return {"transformation": transformation, "actor": ACTOR, "args_named": args}
 
 
 def text(value: object) -> str:
@@ -362,38 +345,6 @@ def plan(state: State, tracker: dict[str, Any], tracker_sha256: str) -> Plan:
 # ------------------------------------------------------------------ outcome
 
 
-class ImportError_(RuntimeError):
-    pass
-
-
-@dataclass
-class Outcome:
-    status: str  # committed | not-committed | unknown
-    detail: str = ""
-    transition_ids: list[str] = field(default_factory=list)
-
-
-def classify(result: object, error: BaseException | None) -> Outcome:
-    """committed / not-committed / unknown, from a transact's result or error."""
-    from morpholog_client import envelopes
-    from morpholog_client.adapter import MorphologRequestError
-
-    if error is None:
-        if isinstance(result, envelopes.AtomicCommitted):
-            return Outcome("committed", "", [a.outcome.transition_id for a in result.acts])
-        if isinstance(result, envelopes.AtomicRejected):
-            return Outcome("not-committed", f"act {result.act} refused [{result.rule}]")
-        return Outcome("unknown", f"unrecognised result {result!r}"[:300])
-    if isinstance(error, MorphologRequestError) and error.code in NOT_COMMITTED_CODES:
-        return Outcome("not-committed", f"{error.code}: {error.error}"[:300])
-    return Outcome("unknown", f"{type(error).__name__}: {error}"[:300])
-
-
-def marker_path(repo_root: Path, database_url: str) -> Path:
-    tag = hashlib.sha256(database_url.encode()).hexdigest()[:12]
-    return repo_root / MARKER_DIR / f".import-{tag}.marker"
-
-
 def run(
     repo_root: Path,
     database_url: str,
@@ -402,40 +353,18 @@ def run(
     log: Callable[[str], None] = print,
 ) -> dict[str, Any]:
     """Record one tracker file's compute run; returns a summary line."""
-    from morpholog_client.adapter import Morpholog
-
-    marker = marker_path(repo_root, database_url)
-    if marker.exists():
-        raise ImportError_(
-            f"recovery marker {marker} exists: a previous run's outcome is unknown. "
-            "Read the record (CurrentRun, Importing) and remove the marker by hand."
-        )
+    marker = record.marker_path(repo_root, RECORD, database_url)
+    record.refuse_if_marked(marker, "CurrentRun, Importing")
     raw = tracker_path.read_bytes()
     tracker = json.loads(raw)
     tracker_sha256 = hashlib.sha256(raw).hexdigest()
-    api = Morpholog(str(repo_root / PROGRAMME), database_url)
+    api = RECORD.client(repo_root, database_url)
     try:
         p = plan(read_state(api), tracker, tracker_sha256)
     except PlanError as exc:
-        raise ImportError_(str(exc)) from None
-    marker.parent.mkdir(parents=True, exist_ok=True)
-    marker.write_text(json.dumps({"run": p.run, "acts": len(p.acts)}) + "\n")
+        raise record.ImportError_(str(exc)) from None
     started = time.monotonic()
-    result: object = None
-    error: BaseException | None = None
-    try:
-        result = api.transact(p.acts)
-    except Exception as exc:  # noqa: BLE001 - classified below
-        error = exc
-    outcome = classify(result, error)
-    if outcome.status == "not-committed":
-        marker.unlink()
-        raise ImportError_(f"{p.run} was not committed ({outcome.detail}); record unchanged")
-    if outcome.status != "committed":
-        raise ImportError_(
-            f"{p.run}: commit outcome UNKNOWN ({outcome.detail}); marker left at {marker}"
-        )
-    marker.unlink()
+    outcome = record.guarded_transact(api, marker, p.run, p.acts, {"run": p.run})
     line = {
         "run": p.run,
         "tracker_sha256": tracker_sha256,

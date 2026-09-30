@@ -7,6 +7,7 @@ from pathlib import Path
 
 import pytest
 
+from grid_mysteries import record
 from grid_mysteries.investigations import connection_slippage as cs
 from grid_mysteries.tec import analysis, cells, certificate, identity, importer, replay, sources
 
@@ -131,18 +132,24 @@ def test_marker_classification_trusts_only_positive_non_commits(monkeypatch):
     import morpholog_client.adapter as adapter
 
     monkeypatch.setattr(adapter, "MorphologRequestError", FakeRequestError)
-    assert importer.classify(None, FakeRequestError("not_committed")).status == "not-committed"
-    assert importer.classify(None, FakeRequestError("commit_outcome_unknown")).status == "unknown"
-    assert importer.classify(None, FakeRequestError("a_code_from_the_future")).status == "unknown"
-    assert importer.classify(None, adapter.MorphologError("killed")).status == "unknown"
-    assert importer.classify(object(), None).status == "unknown"
+    assert record.classify(None, FakeRequestError("not_committed")).status == "not-committed"
+    assert record.classify(None, FakeRequestError("commit_outcome_unknown")).status == "unknown"
+    assert record.classify(None, FakeRequestError("a_code_from_the_future")).status == "unknown"
+    assert record.classify(None, adapter.MorphologError("killed")).status == "unknown"
+    assert record.classify(object(), None).status == "unknown"
 
 
 def test_markers_are_per_database(tmp_path):
-    live = importer.marker_path(tmp_path, "postgres:///grid_mysteries_tec")
-    test = importer.marker_path(tmp_path, "postgres:///grid_mysteries_tec_test")
-    other_host = importer.marker_path(tmp_path, "postgres://u:p@elsewhere/grid_mysteries_tec")
+    live = record.marker_path(tmp_path, importer.RECORD, "postgres:///grid_mysteries_tec")
+    test = record.marker_path(tmp_path, importer.RECORD, "postgres:///grid_mysteries_tec_test")
+    other_host = record.marker_path(
+        tmp_path, importer.RECORD, "postgres://u:p@elsewhere/grid_mysteries_tec"
+    )
+    same_password_changed = record.marker_path(
+        tmp_path, importer.RECORD, "postgres://u:q@elsewhere/grid_mysteries_tec"
+    )
     assert len({live, test, other_host}) == 3
+    assert other_host == same_password_changed
 
 
 # ----------------------------------------------------------------- replay
@@ -353,14 +360,15 @@ def test_the_bundled_script_checks_each_date_even_when_two_share_a_publication(t
     import sys
 
     p1 = importer.plan(None, {}, copy("2025-07-22"), [row(), row(mw=5, eff="2027-01-01")])
-    pack = {"rows": audit_rows_for([p1])}
-    pubs = list(replay.fold(pack["rows"]))
+    rows = audit_rows_for([p1])
+    pubs = list(replay.fold(rows))
     cert = certificate.record(pubs, "alpha", None, [date(2025, 8, 1), date(2026, 1, 1)], {})
-    (tmp_path / "pack.json").write_text(json.dumps(pack))
+    manifest = {"pack_kind": "prefix", "tree_size": len(rows), "checkpoint_count": 0}
+    (tmp_path / "pack.ndjson").write_text("".join(json.dumps(x) + "\n" for x in [manifest, *rows]))
     (tmp_path / "certificate.json").write_text(json.dumps(cert, default=str))
     (tmp_path / "lines_from_pack.py").write_text(certificate.LINES_FROM_PACK)
     run = subprocess.run(
-        [sys.executable, "lines_from_pack.py", "pack.json", "certificate.json"],
+        [sys.executable, "lines_from_pack.py", "pack.ndjson", "certificate.json"],
         cwd=tmp_path,
         capture_output=True,
         text=True,
@@ -370,10 +378,10 @@ def test_the_bundled_script_checks_each_date_even_when_two_share_a_publication(t
 
 
 def test_pack_rows_and_the_bundled_script_read_the_ndjson_pack_form(tmp_path):
-    """Morpholog v0.0.12 exports a prefix pack as NDJSON (format 4): a
-    manifest line, `checkpoint_count` checkpoint lines, then one audit row
-    per line. Both readers must give the same rows as the earlier
-    single-document form, and the manifest's row count is checked."""
+    """A prefix pack is NDJSON (Morpholog pack format 4): a manifest line,
+    `checkpoint_count` checkpoint lines, then one audit row per line. The
+    engine's streaming reader and the bundled stdlib script must agree,
+    and the manifest's row count is checked."""
     import json
     import subprocess
     import sys
@@ -391,34 +399,28 @@ def test_pack_rows_and_the_bundled_script_read_the_ndjson_pack_form(tmp_path):
     checkpoints = [{"tree_size": 1, "root_hash": "x"}, {"tree_size": len(rows), "root_hash": "y"}]
     ndjson = "".join(json.dumps(x) + "\n" for x in [manifest, *checkpoints, *rows])
     (tmp_path / "pack.ndjson").write_text(ndjson)
-    (tmp_path / "pack.json").write_text(json.dumps({"rows": rows}))
 
-    assert replay.pack_rows(tmp_path / "pack.ndjson") == rows
-    assert replay.pack_rows(tmp_path / "pack.json") == rows
+    assert list(record.pack_rows(tmp_path / "pack.ndjson")) == rows
 
     short = dict(manifest, tree_size=len(rows) + 1)
     (tmp_path / "short.ndjson").write_text(
         "".join(json.dumps(x) + "\n" for x in [short, *checkpoints, *rows])
     )
-    with pytest.raises(replay.ReplayError):
-        replay.pack_rows(tmp_path / "short.ndjson")
+    with pytest.raises(record.PackError):
+        list(record.pack_rows(tmp_path / "short.ndjson"))
 
     pubs = list(replay.fold(rows))
     cert = certificate.record(pubs, "alpha", None, [date(2025, 8, 1), date(2026, 1, 1)], {})
     (tmp_path / "certificate.json").write_text(json.dumps(cert, default=str))
     (tmp_path / "lines_from_pack.py").write_text(certificate.LINES_FROM_PACK)
-    outputs = []
-    for pack in ("pack.ndjson", "pack.json"):
-        run = subprocess.run(
-            [sys.executable, "lines_from_pack.py", pack, "certificate.json"],
-            cwd=tmp_path,
-            capture_output=True,
-            text=True,
-        )
-        assert run.returncode == 0, run.stdout
-        outputs.append(run.stdout)
-    assert outputs[0] == outputs[1]
-    assert outputs[0].count("2 line(s) in the pack, as the certificate states") == 2
+    run = subprocess.run(
+        [sys.executable, "lines_from_pack.py", "pack.ndjson", "certificate.json"],
+        cwd=tmp_path,
+        capture_output=True,
+        text=True,
+    )
+    assert run.returncode == 0, run.stdout
+    assert run.stdout.count("2 line(s) in the pack, as the certificate states") == 2
 
 
 def test_pairing_is_undetermined_on_a_split_or_on_repeated_labels_only():

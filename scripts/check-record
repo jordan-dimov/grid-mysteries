@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-# Two checks the governed record deserves and did not have.
+# Four checks the governed record deserves: drift, metric provenance, the
+# recoverability of every sealed digest, and overdue watches.
 #
 # 1. DRIFT: the repo's batches must account for every claim in the live
 #    database. scripts/record keeps them together; proposing directly
@@ -61,7 +62,7 @@ def resolve(document, path: str):
         node = node[int(step)] if step.lstrip("-").isdigit() else node[step]
     return Decimal(str(node))
 
-checked = failures = untraced = 0
+checked = failures = 0
 metric_specs = sorted(Path("investigations").glob("*/evidence/metric-sources.json"))
 metric_specs += sorted(Path("investigations").glob("*/*/evidence/metric-sources.json"))
 for sources in metric_specs:
@@ -71,7 +72,6 @@ for sources in metric_specs:
         key = (inquiry, name)
         if key not in governed:
             print(f"   ?  {inquiry}/{name}: declared source but no governed metric")
-            untraced += 1
             continue
         document = json.loads((sources.parent / rule["file"]).read_text())
         value = resolve(document, rule["path"])
@@ -86,7 +86,6 @@ for sources in metric_specs:
             failures += 1
             print(f"   !! {inquiry}/{name}: governed {governed[key]}, evidence {value} "
                   f"({relation})")
-untraced += len(governed) - checked
 print(f"metric provenance: {checked} checked, {failures} mismatched, "
       f"{len(governed) - checked} governed metric(s) with no declared source")
 if failures:

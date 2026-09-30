@@ -21,31 +21,15 @@ if [[ -z "${REPLAY_DATABASE_URL:-}" ]]; then
   createdb grid_mysteries_replay 2>/dev/null || true
 fi
 
-echo "== programme hash"
-expected=$(python3 -c "import json; print(json.load(open('morpholog/PROGRAMME_HASH.json'))['hash'])")
-actual=$(morpholog hash morpholog/research.morph | python3 -c "import json,sys; print(json.load(sys.stdin)['hash'])")
-if [[ "$expected" != "$actual" ]]; then
-  echo "programme hash mismatch: pinned $expected, actual $actual" >&2
-  exit 1
-fi
-echo "   $actual"
+echo "== programmes check and hash to their pins"
+scripts/check-programmes
 
 echo "== offline evidence-pack verification (no database consulted)"
-# Trust is the REPO-PINNED public key, never the claim set or the key a
-# checkpoint carries: v1's key registration predates the authority
-# vocabulary and is ungated, so a machine credential could mint a rogue
-# AuditSigningKey claim through the retained v1 rules. A rogue key can
-# never satisfy this pin. Checkpoints were signed from tree_size 34
-# onward; the earlier ones are honestly unsigned and are not asked.
-# RFC 3161 witnesses on the checkpoints are judged against the committed
-# TSA roots (trust/tsa/); an invalid one fails the verification.
-morpholog audit verify-pack morpholog/evidence-pack.ndjson --anchor-file morpholog/audit-anchor.json \
-  --require-signing-key morpholog/trust/audit-2026.pub --require-signatures-from 34 \
-  --trusted-tsa-file <(cat trust/tsa/freetsa-cacert.pem trust/tsa/digicert-trusted-root-g4.pem)
+scripts/verify-research-pack
 
 echo "== governance-attestation check (misconfiguration + naive-forgery control)"
-EXPECTED_HUMAN_LOGIN_ROLE="${EXPECTED_HUMAN_LOGIN_ROLE:-gm_human}" python3 -c "
-import json, os
+EXPECTED_HUMAN_LOGIN_ROLE="${EXPECTED_HUMAN_LOGIN_ROLE:-gm_human}" uv run python -c "
+import os
 # attestation.authenticated_by is the session_user Morpholog RECORDS for a
 # row it wrote through the runtime path. This check asserts every
 # governance/seal/approval row shows the human login. What it catches:
@@ -60,17 +44,10 @@ import json, os
 # real tamper-evidence against that attacker is the EXTERNALLY-RETAINED
 # signed checkpoint over its committed prefix (the signing key is not
 # held by the machine) plus claims-vs-audit replay divergence — both
-# asserted elsewhere in this script. No-op until the pack has v2
-# governance rows.
-# The pack is NDJSON (Morpholog pack format 4): a manifest line, then
-# checkpoint_count checkpoint lines, then one audit row per line.
-with open('morpholog/evidence-pack.ndjson') as pack_file:
-    manifest = json.loads(pack_file.readline())
-    lines = [line for line in pack_file if line.strip()]
-rows = [json.loads(line) for line in lines[manifest['checkpoint_count']:]]
-declared = manifest['tree_size']
-if len(rows) != declared:
-    raise SystemExit(f'pack holds {len(rows)} rows, its manifest says {declared}')
+# asserted elsewhere in this script.
+from pathlib import Path
+from grid_mysteries.record import pack_rows
+rows = pack_rows(Path('morpholog/evidence-pack.ndjson'))
 expected = os.environ['EXPECTED_HUMAN_LOGIN_ROLE']
 governance = {'establish_governance', 'seal_protocol', 'approve_publication'}
 checked = 0
@@ -83,9 +60,10 @@ for row in rows:
                 f'{who!r}, not the human role {expected!r} — misconfiguration or naive forgery'
             )
         checked += 1
+if not checked:
+    raise SystemExit('no governance rows in the pack: the v2 launch rows are missing')
 print(f'   {checked} governance rows attest the human login {expected!r} '
-      '(not proof against raw-audit-DML; see comment)'
-      if checked else '   no v2 governance rows yet (no-op against the v1 pack)')
+      '(not proof against raw-audit-DML; see comment)')
 "
 
 echo "== replaying proposal batches into a fresh database"

@@ -168,8 +168,10 @@ Things that changed shape, not meaning:
   record on 25/09/2026 before the migration (the rows and checkpoints
   are those of the format-1 `evidence-pack.json` it replaces, verified
   against the same anchor). A v0.0.11 binary cannot read the new form
-  (`malformed_pack`); v0.0.12 reads both. The TEC engine names new packs
-  `tree-<n>.ndjson` and keeps reading the format-1 `tree-137384.json`.
+  (`malformed_pack`); v0.0.12 reads both. The TEC engine names its packs
+  `tree-<n>.ndjson`; its format-1 `tree-137384.json` was re-exported in the
+  new form on 30/09/2026 (same anchor, verifies the same) and the engine
+  reads only the streaming form since.
 - `audit verify-pack` always prints the report (`verdict` plus
   `role_rebindings`); scripts that parsed a bare verdict must read
   `verdict.status`.

@@ -21,9 +21,7 @@ builds a bundle under `data/derived/tec/certificates/`.
 
 import argparse
 import gzip
-import hashlib
 import json
-import os
 import pickle
 import shutil
 import subprocess
@@ -33,39 +31,23 @@ from datetime import UTC, date, datetime
 from pathlib import Path
 from typing import Any, Final
 
+from grid_mysteries import record
 from grid_mysteries.corpus import REPO_ROOT
-from grid_mysteries.evidence import dumps, write_json
+from grid_mysteries.evidence import write_json
+from grid_mysteries.hashing import sha256_file
 from grid_mysteries.tec import analysis, certificate, importer, replay, sources
 
-DEFAULT_URL: Final = "postgres:///grid_mysteries_tec"
-PROGRAMME: Final = REPO_ROOT / importer.PROGRAMME
-ANCHORS: Final = REPO_ROOT / "tec" / "anchors"
+RECORD: Final = importer.RECORD
 ANALYSIS: Final = REPO_ROOT / "tec" / "analysis"
 DERIVED: Final = REPO_ROOT / "data" / "derived" / "tec"
-PUBLIC_KEY: Final = REPO_ROOT / "tec" / "trust" / "tec-2026.pub"
-KEY_ID: Final = "tec-2026"
-SIGNING_KEY: Final = Path(
-    os.environ.get(
-        "TEC_SIGNING_KEY", str(Path.home() / ".config/grid-mysteries/tec-signing-2026.pem")
-    )
-)
-DIGICERT: Final = "rfc3161:http://timestamp.digicert.com"
-DIGICERT_ROOT: Final = REPO_ROOT / "trust" / "tsa" / "digicert-trusted-root-g4.pem"
 COMMITTED_014: Final = (
     REPO_ROOT / "investigations/014-gb-connection-slippage/evidence/v2/rows.ndjson"
 )
-
-
-def url() -> str:
-    return os.environ.get("TEC_DATABASE_URL", DEFAULT_URL)
-
-
-def morpholog(*args: str) -> str:
-    return subprocess.run(["morpholog", *args], check=True, capture_output=True, text=True).stdout
+url = RECORD.url
 
 
 def latest_anchor() -> tuple[Path, dict[str, Any]]:
-    anchors = sorted(ANCHORS.glob("tree-*.json"), key=lambda p: int(p.stem.split("-")[1]))
+    anchors = sorted(RECORD.anchors.glob("tree-*.json"), key=lambda p: int(p.stem.split("-")[1]))
     if not anchors:
         raise SystemExit("no anchor yet: run `checkpoint` first")
     return anchors[-1], json.loads(anchors[-1].read_text())
@@ -81,7 +63,7 @@ def cmd_import(args: argparse.Namespace) -> None:
         done = importer.run(
             REPO_ROOT, url(), until=until, limit=args.limit, accept_stranded=args.accept_stranded
         )
-    except importer.ImportError_ as exc:
+    except record.ImportError_ as exc:
         raise SystemExit(f"import: {exc}") from None
     acts = sum(d["acts"] for d in done)
     print(
@@ -91,86 +73,13 @@ def cmd_import(args: argparse.Namespace) -> None:
 
 
 def cmd_checkpoint(args: argparse.Namespace) -> None:
-    argv = [
-        "audit",
-        "checkpoint",
-        "--database-url",
-        url(),
-        "--signing-key",
-        str(SIGNING_KEY),
-        "--key-id",
-        KEY_ID,
-    ]
-    if args.witness:
-        argv += ["--witness", DIGICERT]
-    proc = subprocess.run(["morpholog", *argv], capture_output=True, text=True)
-    if not proc.stdout.strip():
-        raise SystemExit(f"checkpoint failed:\n{proc.stderr}")
-    anchor = json.loads(proc.stdout)
-    path = ANCHORS / f"tree-{anchor['tree_size']}.json"
-    path.parent.mkdir(parents=True, exist_ok=True)
-    if not path.exists() or "witnesses" in anchor:
-        path.write_text(proc.stdout if proc.stdout.endswith("\n") else proc.stdout + "\n")
-    print(f"anchor {path.relative_to(REPO_ROOT)} ({anchor.get('status', 'witnessed')})")
-    if proc.returncode == 0:
-        # The complete pack belongs to the checkpoint: export, verify, compress
-        # and fold it once here, so every certificate starts from it.
-        started = time.monotonic()
-        pack = exported_pack(path, json.loads(path.read_text()))
-        compressed(pack)
-        publications_from(pack)
-        print(f"pack {pack.relative_to(REPO_ROOT)} ready in {time.monotonic() - started:.0f} s")
-    if proc.returncode != 0:
-        raise SystemExit(
-            "a timestamp authority failed; the checkpoint is recorded. Retry with\n"
-            f"  morpholog audit witness --database-url {url()} --tree-size {anchor['tree_size']} "
-            f"--witness {DIGICERT} > {path.relative_to(REPO_ROOT)}"
-        )
-
-
-def verify_command(pack: str, anchor: str, key: str, tsa: str) -> list[str]:
-    return [
-        "morpholog",
-        "audit",
-        "verify-pack",
-        pack,
-        "--anchor-file",
-        anchor,
-        "--require-signing-key",
-        key,
-        "--trusted-tsa-file",
-        tsa,
-    ]
-
-
-def exported_pack(anchor_path: Path, anchor: dict[str, Any]) -> Path:
-    """The complete pack at the anchor's tree size, exported once, verified
-    offline against the anchor with the pinned key, and kept."""
-    tree = anchor["tree_size"]
-    pack = DERIVED / "packs" / f"tree-{tree}.ndjson"
-    # Morpholog up to v0.0.11 exported one JSON document; a pack exported
-    # then is kept as it is (it still verifies) rather than re-exported.
-    legacy = pack.with_suffix(".json")
-    if legacy.exists() and not pack.exists():
-        pack = legacy
-    if not pack.exists():
-        pack.parent.mkdir(parents=True, exist_ok=True)
-        tmp = pack.with_suffix(".tmp")
-        with tmp.open("w") as out:
-            subprocess.run(
-                ["morpholog", "audit", "export", "--database-url", url(), "--tree-size", str(tree)],
-                check=True,
-                stdout=out,
-            )
-        tmp.rename(pack)
-    result = subprocess.run(
-        verify_command(str(pack), str(anchor_path), str(PUBLIC_KEY), str(DIGICERT_ROOT)),
-        capture_output=True,
-        text=True,
-    )
-    if result.returncode != 0:
-        raise SystemExit(f"the pack does not verify against {anchor_path.name}:\n{result.stdout}")
-    return pack
+    # The complete pack belongs to the checkpoint: export, verify, compress
+    # and fold it once here, so every certificate starts from it.
+    started = time.monotonic()
+    _, _, pack = record.checkpoint_and_export(RECORD, url(), witness=args.witness)
+    compressed(pack)
+    publications_from(pack)
+    print(f"pack {pack.relative_to(REPO_ROOT)} ready in {time.monotonic() - started:.0f} s")
 
 
 def cmd_analyse(args: argparse.Namespace) -> None:
@@ -255,10 +164,6 @@ def cmd_analyse(args: argparse.Namespace) -> None:
     print(f"014-v2 headline (through series_by): {reproduced['headline']}")
 
 
-def provenance_map() -> dict[str, dict[str, Any]]:
-    return {c.sha256: c.provenance for c in sources.copies(REPO_ROOT)}
-
-
 def slug(project: str, stage: str | None, dates: list[date]) -> str:
     base = "-".join(project.lower().split())
     base = "".join(ch for ch in base if ch.isalnum() or ch == "-")
@@ -266,7 +171,8 @@ def slug(project: str, stage: str | None, dates: list[date]) -> str:
     return f"{base}{stage_part}-" + "-".join(d.isoformat() for d in dates)
 
 
-def render(cert: dict[str, Any], anchor: dict[str, Any], issued: str, pack_name: str) -> str:
+def render(cert: dict[str, Any], pack_name: str) -> str:
+    anchor, issued = cert["anchor"], cert["issued"]
     out = [
         f"# TEC register record: {cert['project']}"
         + (f", stage {cert['stage']}" if cert["stage"] else ""),
@@ -370,7 +276,7 @@ def publications_from(pack: Path) -> list[replay.Publication]:
     if cache.exists() and cache.stat().st_mtime >= pack.stat().st_mtime:
         with cache.open("rb") as handle:
             return list(pickle.load(handle))
-    publications = list(replay.fold(replay.pack_rows(pack)))
+    publications = list(replay.fold(record.pack_rows(pack)))
     with cache.open("wb") as handle:
         pickle.dump(publications, handle, protocol=pickle.HIGHEST_PROTOCOL)
     return publications
@@ -380,39 +286,26 @@ def cmd_certify(args: argparse.Namespace) -> None:
     started = time.monotonic()
     dates = [date.fromisoformat(d) for d in args.on]
     anchor_path, anchor = latest_anchor()
-    pack = exported_pack(anchor_path, anchor)
+    pack = record.exported_pack(RECORD, url(), anchor_path, anchor)
     t_pack = time.monotonic() - started
     publications = publications_from(pack)
     in_record = {p.sha256 for p in publications}
-    not_in_record = [
-        (c.published_on, c.sha256) for c in sources.copies(REPO_ROOT) if c.sha256 not in in_record
-    ]
+    copies = sources.copies(REPO_ROOT)
+    not_in_record = [(c.published_on, c.sha256) for c in copies if c.sha256 not in in_record]
+    provenance = {c.sha256: c.provenance for c in copies}
     cert = certificate.record(
-        publications, args.project, args.stage, dates, provenance_map(), not_in_record
+        publications, args.project, args.stage, dates, provenance, not_in_record
     )
     # The runtime's own as-of read must agree with the pack.
+    api = RECORD.client(REPO_ROOT, url())
     for a in cert["as_of"]:
         if not a.get("close_transition"):
             continue
-        claims = json.loads(
-            morpholog(
-                "inspect",
-                "claims",
-                "--database-url",
-                url(),
-                "--predicate",
-                "Row",
-                "--as-of",
-                a["close_transition"],
-                "--named",
-                str(PROGRAMME),
-            )
-        )
         runtime = sorted(
-            c["args"]["row"]
-            for c in claims
+            str(c.args["row"])
+            for c in api.claims_named("Row", as_of=a["close_transition"])
             if certificate.matches(
-                {"Project Name": c["args"]["project_name"], "Stage": c["args"]["stage"]},
+                {"Project Name": c.args["project_name"], "Stage": c.args["stage"]},
                 args.project,
                 args.stage,
             )
@@ -429,10 +322,10 @@ def cmd_certify(args: argparse.Namespace) -> None:
     cert["issued"] = issued
     cert["anchor"] = {k: anchor[k] for k in ("tree_size", "root_hash", "checkpoint_hash")}
     write_json(out / "certificate.json", cert)
-    (out / "CERTIFICATE.md").write_text(render(cert, anchor, issued, f"pack{pack.suffix}"))
+    (out / "CERTIFICATE.md").write_text(render(cert, f"pack{pack.suffix}"))
     shutil.copyfile(anchor_path, out / "anchor.json")
-    shutil.copyfile(PUBLIC_KEY, out / "tec-2026.pub")
-    shutil.copyfile(DIGICERT_ROOT, out / "digicert-trusted-root-g4.pem")
+    shutil.copyfile(RECORD.public_key, out / f"{RECORD.key_id}.pub")
+    shutil.copyfile(record.DIGICERT_ROOT, out / record.DIGICERT_ROOT.name)
     (out / "lines_from_pack.py").write_text(certificate.LINES_FROM_PACK)
     shutil.copyfile(compressed(pack), out / f"pack{pack.suffix}.gz")
     files = sorted(p for p in out.iterdir() if p.name != "MANIFEST.json")
@@ -440,15 +333,10 @@ def cmd_certify(args: argparse.Namespace) -> None:
         "certificate": out.name,
         "issued": issued,
         "files": [
-            {
-                "path": p.name,
-                "sha256": hashlib.sha256(p.read_bytes()).hexdigest(),
-                "bytes": p.stat().st_size,
-            }
-            for p in files
+            {"path": p.name, "sha256": sha256_file(p), "bytes": p.stat().st_size} for p in files
         ],
     }
-    (out / "MANIFEST.json").write_text(dumps(manifest) + "\n")
+    write_json(out / "MANIFEST.json", manifest)
     # Check the bundle the way a stranger would, from inside it.
     check = subprocess.run(
         [sys.executable, "lines_from_pack.py", str(pack), "certificate.json"],

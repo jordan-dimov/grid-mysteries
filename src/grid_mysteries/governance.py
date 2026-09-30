@@ -13,11 +13,11 @@ loudly before any value is read.
 
 import os
 from decimal import Decimal
-from pathlib import Path
 
-from morpholog_client import Session, open_session
+from grid_mysteries.corpus import REPO_ROOT
+from morpholog_client import Session, models, open_session
 
-V2_PROGRAMME = str(Path(__file__).resolve().parents[2] / "morpholog" / "research-v2-draft.morph")
+V2_PROGRAMME = str(REPO_ROOT / "morpholog" / "research-v2-draft.morph")
 
 
 def declared_parameter(session: Session, inquiry: str, name: str) -> Decimal:
@@ -29,10 +29,9 @@ def declared_parameter(session: Session, inquiry: str, name: str) -> Decimal:
     rows = session.claims_named("DeclaredParameter", where={"inquiry": inquiry, "name": name})
     if not rows:
         raise LookupError(f"no DeclaredParameter({inquiry!r}, {name!r}) in the governed record")
-    if len(rows) > 1:  # unique by (inquiry, name) makes this unreachable
-        raise LookupError(f"ambiguous DeclaredParameter({inquiry!r}, {name!r}): {len(rows)} rows")
-    value = rows[0].args["parameter_value"]
-    return value if isinstance(value, Decimal) else Decimal(str(value))
+    # Unique by (inquiry, name): the programme's own rule, not a code-side one.
+    (row,) = rows
+    return models.DeclaredParameterClaim.from_named(row.args).parameter_value
 
 
 def require_acquisition_authorised(inquiry: str) -> None:

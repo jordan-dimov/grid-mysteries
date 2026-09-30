@@ -4,6 +4,7 @@ from datetime import date
 
 import pytest
 
+from grid_mysteries import record
 from grid_mysteries.bill import importer
 
 
@@ -215,13 +216,13 @@ def test_marker_classification_trusts_only_positive_non_commits(monkeypatch):
     import morpholog_client.adapter as adapter
 
     monkeypatch.setattr(adapter, "MorphologRequestError", FakeRequestError)
-    assert importer.classify(None, FakeRequestError("not_committed")).status == "not-committed"
-    assert importer.classify(None, FakeRequestError("commit_outcome_unknown")).status == "unknown"
-    assert importer.classify(None, adapter.MorphologError("killed")).status == "unknown"
-    assert importer.classify(object(), None).status == "unknown"
+    assert record.classify(None, FakeRequestError("not_committed")).status == "not-committed"
+    assert record.classify(None, FakeRequestError("commit_outcome_unknown")).status == "unknown"
+    assert record.classify(None, adapter.MorphologError("killed")).status == "unknown"
+    assert record.classify(object(), None).status == "unknown"
 
 
 def test_markers_are_per_database(tmp_path):
-    a = importer.marker_path(tmp_path, "postgres:///grid_mysteries_bill")
-    b = importer.marker_path(tmp_path, "postgres:///grid_mysteries_bill_test")
+    a = record.marker_path(tmp_path, importer.RECORD, "postgres:///grid_mysteries_bill")
+    b = record.marker_path(tmp_path, importer.RECORD, "postgres:///grid_mysteries_bill_test")
     assert a != b and a.parent == b.parent

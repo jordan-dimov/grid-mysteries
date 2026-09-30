@@ -141,7 +141,7 @@ for index, (first, last, admissible) in enumerate(cases):
          "--database-url", url, "--json"],
         capture_output=True, text=True)
     verdict = json.loads(explain.stdout)["verdict"]
-    got = verdict == "admissible" or (isinstance(verdict, dict) and "admissible" in verdict)
+    got = verdict == "admissible"
     assert got == admissible, f"{first}..{last}: expected admissible={admissible}, got {verdict}"
     if not admissible:
         assert verdict["rejected"]["rule"] == "prospective_corpus_unexposed", verdict
@@ -213,8 +213,7 @@ row = json.loads('''$claim''')["row"]
 assert row is not None, "seal must have emitted DataAcquisitionAuthorised"
 assert "inq-p1" in json.dumps(row), row
 print("   OK  machine claimed the acquisition intent via outbox lease")
-intent_id = row.get("intent_id") or row.get("id")
-assert intent_id, f"no intent id in outbox row: {row}"
+intent_id = row["intent_id"]
 open("/tmp/gm-rehearsal-outbox-row", "w").write(str(intent_id))
 EOF
 r=$(propose "$M_URL" register_evidence claude_fable_5 '{"artifact": "art-p1", "source": "synthetic", "sha256": "aaaa", "fetched_at": "3000-01-02T00:00:00Z"}')
@@ -303,12 +302,7 @@ echo "== H. SUBSTRATE BYPASS — the honest negative result"
 # SECURITY DEFINER wrapper. So a process holding the machine credential
 # can forge an authority claim directly and then seal through the normal
 # adapter. This section PROVES that, and proves detection is post-hoc.
-psql "$ADMIN_DB_URL" -q -tAc \
-  "INSERT INTO morpholog.claims (predicate_name, arguments, asserted_in)
-   SELECT 'SealAuthority', '[{\"type\":\"subject\",\"value\":\"claude_fable_5\"}]'::jsonb, asserted_in
-   FROM morpholog.claims WHERE predicate_name='SealAuthority' LIMIT 1" \
-  --username "$MACHINE_ROLE" 2>/dev/null \
-  || PGPASSWORD=rehearse-machine psql "postgres://${MACHINE_ROLE}:rehearse-machine@${HOST}/${DB}" -q -tAc \
+psql "$M_URL" -q -tAc \
   "INSERT INTO morpholog.claims (predicate_name, arguments, asserted_in)
    SELECT 'SealAuthority', '[{\"type\":\"subject\",\"value\":\"claude_fable_5\"}]'::jsonb, asserted_in
    FROM morpholog.claims WHERE predicate_name='SealAuthority' LIMIT 1" >/dev/null
@@ -340,9 +334,9 @@ print('   OK  audit verify exits non-zero and reports replay DIVERGENT (forged c
 print('       (but the seal already emitted acquisition authority — detection cannot un-see data)')
 EOF
 echo "   -- and attestation.authenticated_by is ALSO forgeable (raw DML on morpholog.audit):"
-# Since v0.0.11 (migration 014) a new audit row must name its parameters,
-# one per argument. The forger supplies them as easily as the attestation.
-PGPASSWORD=rehearse-machine psql "postgres://${MACHINE_ROLE}:rehearse-machine@${HOST}/${DB}" -q -tAc \
+# An audit row must name its parameters, one per argument. The forger
+# supplies them as easily as the attestation.
+psql "$M_URL" -q -tAc \
   "INSERT INTO morpholog.audit (transition_id, transformation_name, arguments, actor,
      invariant_epoch, invariants_checked, asserted_claims, retracted_claims, emitted_intents, attestation,
      parameters)
@@ -363,8 +357,7 @@ print("      check in replay-research catches misconfiguration/naive forgery onl
 EOF
 echo "   -- what least-privilege DOES buy: forgeries are indelible (audit append-only even for the writer)"
 for statement in "UPDATE morpholog.audit SET actor='{}'::jsonb" "DELETE FROM morpholog.audit"; do
-  out=$(PGPASSWORD=rehearse-machine psql "postgres://${MACHINE_ROLE}:rehearse-machine@${HOST}/${DB}" \
-    -q -tAc "$statement" 2>&1 || true)
+  out=$(psql "$M_URL" -q -tAc "$statement" 2>&1 || true)
   python3 - "$out" "$statement" <<'EOF'
 import sys
 assert "permission denied for table audit" in sys.argv[1], f"{sys.argv[2]!r} was NOT refused: {sys.argv[1][:200]}"

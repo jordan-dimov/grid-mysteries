@@ -40,27 +40,23 @@ assert {"transformation", "actor", "args_named"} <= row.keys(), "row must carry 
 EOF
 
 printf '%s\n' "$ROW" > "$MARKER"
-tmp=$(mktemp)
-printf '%s\n' "$ROW" > "$tmp"
 
-receipt=$(morpholog propose "$PROGRAMME" --batch "$tmp" --explain-on-reject)
-rm -f "$tmp"
+receipt=$(printf '%s\n' "$ROW" | morpholog propose "$PROGRAMME" --batch - --explain-on-reject)
 # The marker is cleared only on a positive non-commit: a rejection (a
 # lawful answer), or an error receipt whose stable `code` the runtime
-# documents as "nothing was recorded". `commit_outcome_unknown`, a code
-# this script does not know, or a receipt it cannot read all keep it.
-outcome=$(printf '%s' "$receipt" | python3 -c "
+# publishes as "nothing was recorded" (the generated client's set, never a
+# copy). `commit_outcome_unknown`, an unpublished code, or a receipt this
+# script cannot read all keep it.
+outcome=$(printf '%s' "$receipt" | uv run python -c "
 import json, sys
-NOT_COMMITTED = {'actor_assertion_unauthorised', 'duplicate_intent', 'invalid_arguments',
-                 'invalid_request', 'kernel_error', 'not_committed', 'serialization_failure',
-                 'unknown_transformation'}
+from morpholog_client.envelopes import NOTHING_RECORDED_CODES
 try:
     r = json.loads(sys.stdin.readline())
 except ValueError:
     r = {}
 if r.get('status') == 'committed':
     print('committed')
-elif r.get('status') == 'rejected' or (r.get('status') == 'error' and r.get('code') in NOT_COMMITTED):
+elif r.get('status') == 'rejected' or (r.get('status') == 'error' and r.get('code') in NOTHING_RECORDED_CODES):
     print('not-committed')
 else:
     print('unknown')
@@ -97,8 +93,6 @@ if ! morpholog audit checkpoint --signing-key "$SIGNING_KEY" --key-id audit-2026
   exit 1
 fi
 morpholog audit export > morpholog/evidence-pack.ndjson
-morpholog audit verify-pack morpholog/evidence-pack.ndjson --anchor-file morpholog/audit-anchor.json \
-  --require-signing-key morpholog/trust/audit-2026.pub --require-signatures-from 34 \
-  --trusted-tsa-file <(cat trust/tsa/freetsa-cacert.pem trust/tsa/digicert-trusted-root-g4.pem) >/dev/null
+scripts/verify-research-pack --quiet
 rm -f "$MARKER"
 echo "record: committed and recorded in $BATCH_FILE (remember to commit the morpholog/ changes)"

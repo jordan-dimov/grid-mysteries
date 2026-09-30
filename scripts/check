@@ -9,37 +9,7 @@ uv run pytest
 uv run mypy
 scripts/check-rules
 scripts/verify-proofs
-morpholog check morpholog/research.morph
-morpholog check morpholog/research-v2-draft.morph
-morpholog check morpholog/research-v3-draft.morph
-
-# The TEC record must stay on the compiled route (its flat per-change cost
-# depends on it: no `or`, no defined calls in an invariant), and its rules
-# change only with a deliberate update of the pinned hash.
-morpholog check tec/tec-register.morph
-if ! morpholog check -v tec/tec-register.morph | grep -qx '  invariant checks: compiled'; then
-  echo "tec/tec-register.morph is no longer compiled: see 'morpholog check -v'" >&2
-  exit 1
-fi
-tec_expected=$(python3 -c "import json; print(json.load(open('tec/PROGRAMME_HASH.json'))['hash'])")
-tec_actual=$(morpholog hash tec/tec-register.morph | python3 -c "import json,sys; print(json.load(sys.stdin)['hash'])")
-if [[ "$tec_expected" != "$tec_actual" ]]; then
-  echo "tec/tec-register.morph hash $tec_actual differs from the pinned $tec_expected" >&2
-  exit 1
-fi
-
-# The Balancing Bill record (013) likewise: compiled route, pinned hash.
-morpholog check bill/bill-register.morph
-if ! morpholog check -v bill/bill-register.morph | grep -qx '  invariant checks: compiled'; then
-  echo "bill/bill-register.morph is no longer compiled: see 'morpholog check -v'" >&2
-  exit 1
-fi
-bill_expected=$(python3 -c "import json; print(json.load(open('bill/PROGRAMME_HASH.json'))['hash'])")
-bill_actual=$(morpholog hash bill/bill-register.morph | python3 -c "import json,sys; print(json.load(sys.stdin)['hash'])")
-if [[ "$bill_expected" != "$bill_actual" ]]; then
-  echo "bill/bill-register.morph hash $bill_actual differs from the pinned $bill_expected" >&2
-  exit 1
-fi
+scripts/check-programmes
 
 # The vendored typed client must be byte-identical to what the pinned
 # binary generates from the v2 programme — drift is a hard failure.

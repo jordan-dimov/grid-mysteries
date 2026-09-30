@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+# Every Morpholog programme the repository deploys: it checks, its hash is
+# the pinned one (a `*_HASH.json` beside it, so a rule changes only with a
+# deliberate update of the pin), and the two record engines stay on the
+# compiled route (their flat per-change cost depends on it: no `or`, no
+# defined calls in an invariant).
+set -euo pipefail
+cd "$(dirname "$0")/.."
+export PATH="${HOME}/.local/bin:${PATH}"
+
+pinned() { # <programme> <pin file> -> refuses on a hash other than the pinned one
+  local expected actual
+  expected=$(python3 -c "import json,sys; print(json.load(open(sys.argv[1]))['hash'])" "$2")
+  actual=$(morpholog hash "$1" | python3 -c "import json,sys; print(json.load(sys.stdin)['hash'])")
+  if [[ "$expected" != "$actual" ]]; then
+    echo "$1 hashes to $actual, the pin $2 says $expected" >&2
+    exit 1
+  fi
+}
+
+route() { # <programme> -> the `invariant checks:` line of `morpholog check -v`
+  morpholog check -v "$1" | sed -n 's/^  invariant checks: //p'
+}
+
+for programme in morpholog/research.morph morpholog/research-v2-draft.morph \
+    morpholog/research-v3-draft.morph tec/tec-register.morph bill/bill-register.morph; do
+  morpholog check "$programme" >/dev/null
+done
+pinned morpholog/research.morph          morpholog/PROGRAMME_HASH.json
+pinned morpholog/research-v2-draft.morph morpholog/V2_DRAFT_HASH.json
+pinned morpholog/research-v3-draft.morph morpholog/V3_DRAFT_HASH.json
+for engine in tec bill; do
+  programme="$engine/$engine-register.morph"
+  pinned "$programme" "$engine/PROGRAMME_HASH.json"
+  if [[ "$(route "$programme")" != compiled ]]; then
+    echo "$programme is no longer compiled: see 'morpholog check -v'" >&2
+    exit 1
+  fi
+done
+echo "check-programmes: OK"

@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+# The research record's committed evidence pack, verified offline (no
+# database) against its committed anchor under the record's trust policy.
+# Trust is the REPO-PINNED public key, never the claim set or the key a
+# checkpoint carries: v1's key registration predates the authority
+# vocabulary and is ungated, so a machine credential could mint a rogue
+# AuditSigningKey claim through the retained v1 rules; a rogue key can
+# never satisfy this pin. Checkpoints were signed from tree_size 34 on; the
+# earlier ones are honestly unsigned and are not asked. RFC 3161 witnesses
+# are judged against the committed TSA roots (trust/tsa/); an invalid one
+# fails the verification. Prints the report unless --quiet.
+set -euo pipefail
+cd "$(dirname "$0")/.."
+export PATH="${HOME}/.local/bin:${PATH}"
+out=/dev/stdout
+[[ "${1:-}" == "--quiet" ]] && out=/dev/null
+morpholog audit verify-pack morpholog/evidence-pack.ndjson --anchor-file morpholog/audit-anchor.json \
+  --require-signing-key morpholog/trust/audit-2026.pub --require-signatures-from 34 \
+  --trusted-tsa-file <(cat trust/tsa/freetsa-cacert.pem trust/tsa/digicert-trusted-root-g4.pem) > "$out"

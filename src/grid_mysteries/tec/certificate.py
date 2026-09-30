@@ -33,22 +33,21 @@ LINES_FROM_PACK: Final = '''#!/usr/bin/env python3
 Folds the pack's transitions in order, keeping the Row claims, and at each
 closing transition the certificate names prints the rows whose project name
 (and stage, if the certificate names one) match. Run it after verify-pack.
-The pack may be NDJSON (Morpholog pack format 4: a manifest line, the
-checkpoints, then one row per line) or the earlier single JSON document."""
+The pack is NDJSON (Morpholog pack format 4): a manifest line, the
+checkpoints, then one audit row per line, read here one row at a time."""
 import json, re, sys
 from decimal import Decimal, InvalidOperation
 
 def pack_rows(path):
     with open(path) as handle:
-        try:
-            head = json.loads(handle.readline())
-        except ValueError:
-            head = None
-        streamed = isinstance(head, dict) and head.get("pack_kind") == "prefix"
-        if streamed and "checkpoint_count" in head:
-            lines = [line for line in handle if line.strip()]
-            return [json.loads(line) for line in lines[head["checkpoint_count"]:]]
-    return json.load(open(path))["rows"]
+        skip = json.loads(handle.readline())["checkpoint_count"]
+        for line in handle:
+            if not line.strip():
+                continue
+            if skip:
+                skip -= 1
+                continue
+            yield json.loads(line)
 
 rows = pack_rows(sys.argv[1])
 cert = json.load(open(sys.argv[2]))
@@ -130,10 +129,11 @@ def changes(
         if (first is None or p.published_on >= first.published_on) and p.published_on <= end
     ]
     out = []
+    was: set[str] = set()
+    if window:
+        first_rows = zip(window[0].keys, window[0].rows, strict=True)
+        was = {k for k, r in first_rows if matches(r, project, stage)}
     for before, after in zip(window, window[1:], strict=False):
-        was = {
-            k for k, r in zip(before.keys, before.rows, strict=True) if matches(r, project, stage)
-        }
         now = {k for k, r in zip(after.keys, after.rows, strict=True) if matches(r, project, stage)}
         if now != was:
             out.append(
@@ -147,6 +147,7 @@ def changes(
                     "no_longer_printed": sorted(was - now),
                 }
             )
+        was = now
     return out
 
 

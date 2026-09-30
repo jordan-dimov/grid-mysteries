@@ -7,55 +7,31 @@ import. Rows that are unchanged cost nothing.
 
 The run (`run`) reads the record's own state first (current publication,
 current rows), so it resumes from wherever the record is and never trusts
-a local log. Each transact is guarded by a recovery marker kept per
-database. The marker is cleared only on a positive non-commit: a
-rejection, or an error whose stable `code` the runtime documents as
-"nothing was recorded". An unknown outcome, an unknown code, or any other
-failure (including the client's by-elimination `MorphologError`, which a
-binary killed after COMMIT also produces) keeps the marker, and the next
-run refuses until someone has read the record and removed it.
+a local log. Each transact is guarded by the recovery marker of
+`grid_mysteries.record`.
 """
 
-import hashlib
 import json
 import time
 from collections.abc import Callable
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 from datetime import date
 from pathlib import Path
 from typing import Any, Final
 
+from grid_mysteries import record
 from grid_mysteries.tec import cells, sources
 
-PROGRAMME: Final = Path("tec/tec-register.morph")
-REGISTER: Final = "tec"
-ACTOR: Final = "tec_importer"
-MARKER_DIR: Final = Path("data/derived/tec")
-#: Error codes the runtime documents as "nothing was recorded" (v0.0.11,
-#: docs/embedder-integration.md). `commit_outcome_unknown` is deliberately
-#: absent; a code not listed here keeps the marker.
-NOT_COMMITTED_CODES: Final = frozenset(
-    {
-        "actor_assertion_unauthorised",
-        "duplicate_intent",
-        "invalid_arguments",
-        "invalid_request",
-        "kernel_error",
-        "not_committed",
-        "serialization_failure",
-        "unknown_transformation",
-    }
+RECORD: Final = record.Record(
+    name="tec", programme=Path("tec/tec-register.morph"), actor="tec_importer", key_id="tec-2026"
 )
+act = RECORD.act
 
 RowState = dict[str, tuple[str, cells.Cells]]
 
 
 def vintage_id(published_on: date) -> str:
     return f"tec-{published_on.isoformat()}"
-
-
-def act(transformation: str, **args: object) -> dict[str, Any]:
-    return {"transformation": transformation, "actor": ACTOR, "args_named": args}
 
 
 @dataclass(frozen=True)
@@ -119,42 +95,6 @@ def plan(
 # ------------------------------------------------------------------ marker
 
 
-def marker_path(repo_root: Path, database_url: str) -> Path:
-    """One marker per database, so a test or rehearsal database can never
-    block, or be unblocked by, the live record's imports."""
-    name = database_url.rsplit("/", 1)[-1].split("?")[0] or "default"
-    ident = hashlib.sha256(database_url.split("@")[-1].encode()).hexdigest()[:12]
-    return repo_root / MARKER_DIR / f".import-recovery.{name}.{ident}"
-
-
-class ImportError_(RuntimeError):
-    pass
-
-
-@dataclass
-class Outcome:
-    vintage: str
-    status: str  # committed | not-committed | unknown
-    detail: str = ""
-    transition_ids: list[str] = field(default_factory=list)
-
-
-def classify(result: object, error: BaseException | None) -> Outcome:
-    """committed / not-committed / unknown, from a transact's result or error."""
-    from morpholog_client import envelopes
-    from morpholog_client.adapter import MorphologRequestError
-
-    if error is None:
-        if isinstance(result, envelopes.AtomicCommitted):
-            return Outcome("", "committed", "", [a.outcome.transition_id for a in result.acts])
-        if isinstance(result, envelopes.AtomicRejected):
-            return Outcome("", "not-committed", f"act {result.act} refused [{result.rule}]")
-        return Outcome("", "unknown", f"unrecognised result {result!r}"[:300])
-    if isinstance(error, MorphologRequestError) and error.code in NOT_COMMITTED_CODES:
-        return Outcome("", "not-committed", f"{error.code}: {error.error}"[:300])
-    return Outcome("", "unknown", f"{type(error).__name__}: {error}"[:300])
-
-
 # --------------------------------------------------------------------- run
 
 
@@ -215,23 +155,17 @@ def run(
     before the record's current publication is missing from it (an EIR
     reply filling a gap, say): such a copy can only enter a rebuilt record,
     and importing past it silently would hide the gap."""
-    from morpholog_client.adapter import Morpholog
-
-    marker = marker_path(repo_root, database_url)
-    if marker.exists():
-        raise ImportError_(
-            f"recovery marker {marker} exists: a previous import's outcome is unknown. "
-            "Read the record (CurrentVintage, Importing) and remove the marker by hand."
-        )
-    api = Morpholog(str(repo_root / PROGRAMME), database_url)
+    marker = record.marker_path(repo_root, RECORD, database_url)
+    record.refuse_if_marked(marker, "CurrentVintage, Importing")
+    api = RECORD.client(repo_root, database_url)
     prior, held, open_import = read_state(api)
     if open_import:
-        raise ImportError_("the record has an import open (Importing): refusing to continue")
+        raise record.ImportError_("the record has an import open (Importing): refusing to continue")
     held_copies = sources.copies(repo_root)
     if prior is not None:
         behind = stranded(held_copies, recorded_copies(api), prior[1], readable)
         if behind and not accept_stranded:
-            raise ImportError_(
+            raise record.ImportError_(
                 f"{len(behind)} readable cop{'y' if len(behind) == 1 else 'ies'} dated at or "
                 f"before the record's current publication ({prior[1]}) are not in the record: "
                 + ", ".join(str(c.published_on) for c in behind[:10])
@@ -249,7 +183,6 @@ def run(
     if limit is not None:
         todo = todo[:limit]
     done: list[dict[str, Any]] = []
-    marker.parent.mkdir(parents=True, exist_ok=True)
     for copy in todo:
         sources.verify(copy)
         try:
@@ -261,26 +194,9 @@ def run(
             log(f"skip {copy.published_on}: no header/rows parsed")
             continue
         p = plan(prior, held, copy, rows)
-        marker.write_text(json.dumps({"vintage": p.vintage, "acts": len(p.acts)}) + "\n")
         started = time.monotonic()
-        result: object = None
-        error: BaseException | None = None
-        try:
-            result = api.transact(p.acts)
-        except Exception as exc:  # noqa: BLE001 - classified below
-            error = exc
-        outcome = classify(result, error)
+        outcome = record.guarded_transact(api, marker, p.vintage, p.acts, {"vintage": p.vintage})
         seconds = round(time.monotonic() - started, 3)
-        if outcome.status == "not-committed":
-            marker.unlink()
-            raise ImportError_(
-                f"{p.vintage} was not committed ({outcome.detail}); record unchanged"
-            )
-        if outcome.status != "committed":
-            raise ImportError_(
-                f"{p.vintage}: commit outcome UNKNOWN ({outcome.detail}); marker left at {marker}"
-            )
-        marker.unlink()
         line = {
             "vintage": p.vintage,
             "sha256": copy.sha256,

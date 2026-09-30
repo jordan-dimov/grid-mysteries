@@ -7,7 +7,7 @@ Companies House responses. No I/O; the runner owns files and requests.
 
 import re
 from collections import defaultdict
-from dataclasses import dataclass, field
+from dataclasses import dataclass, field, replace
 from datetime import date, timedelta
 from decimal import Decimal
 from typing import Any, Final
@@ -17,6 +17,7 @@ from grid_mysteries.sources.companies_house import normalise_company_name
 
 DECLARATION_SHA256: Final = "877682f7bffe52e8b98ff63bf5d14eb1e3d21713e68651d749b94e934b775a6a"
 RULE_VERSION: Final = "019-r2-v1"
+RULE_VERSION_V2: Final = "019-r2-v2"  # DECLARATION-amendment-1.md
 AS_OF: Final = date(2026, 9, 29)
 UNDER_A_YEAR_FROM: Final = AS_OF - timedelta(days=365)
 RESOLUTION_THRESHOLD: Final = Decimal("0.70")  # F1
@@ -417,3 +418,63 @@ def resolution_figure(all_names: dict[str, Name], links: dict[str, Link]) -> dic
         or (share(resolved_mw, total_mw) or Decimal(0)) < RESOLUTION_THRESHOLD,
         "F2_fires": (share(guard, rule_resolved + guard) or Decimal(0)) > IDENTITY_GUARD_THRESHOLD,
     }
+
+
+# ------------------------------------------------------- amendment 1 (A2)
+
+
+def snippet_candidates(name: str, hits: list[dict[str, Any]]) -> list[Candidate]:
+    """A2: search hits the endpoint matched on a previous name, shown in
+    `snippet`, whose snippet normalises to the name."""
+    target = normalise_company_name(name)
+    return [
+        c
+        for h in hits
+        if normalise_company_name(h.get("snippet")) == target
+        for c in candidates([h])
+    ]
+
+
+def resolve_v2(
+    name: str,
+    search_hits: list[dict[str, Any]],
+    advanced_hits: list[dict[str, Any]] | None,
+    profiles: dict[str, dict[str, Any]],
+    first_seen: date | None,
+) -> Link:
+    """R2 under amendment 1: exact candidates as before; then, before the
+    advanced search, a previous-name candidate proposed by the search
+    endpoint's snippet and confirmed by the pinned profile's previous
+    names; then R2's advanced-search route unchanged."""
+    exact = exact_candidates(name, search_hits)
+    if not exact:
+        confirmed = [
+            c
+            for c in snippet_candidates(name, search_hits)
+            if c.number in profiles and previous_name_matches(name, profiles[c.number])
+        ]
+        if len(confirmed) == 1:
+            link = _guarded(name, confirmed[0], "previous-name", first_seen, [confirmed[0].number])
+            return replace(link, rule_version=RULE_VERSION_V2)
+        if len(confirmed) > 1:
+            return Link(
+                name,
+                "ambiguous",
+                None,
+                tuple(c.number for c in confirmed),
+                "several companies confirm the name among their previous names (A2)",
+                RULE_VERSION_V2,
+            )
+    return replace(
+        resolve(name, search_hits, advanced_hits, profiles, first_seen),
+        rule_version=RULE_VERSION_V2,
+    )
+
+
+def earlier_names(names_doc: dict[str, Any], history: dict[str, list[dict[str, str]]]) -> list[str]:
+    """A1: names the history prints against a project id present in the
+    copy, that the copy itself does not print."""
+    current = set(names_doc)
+    ids = {pid for v in names_doc.values() for pid in v["project_ids"]}
+    found = {e["name"] for pid, seq in history.items() if pid in ids for e in seq}
+    return sorted(found - current)

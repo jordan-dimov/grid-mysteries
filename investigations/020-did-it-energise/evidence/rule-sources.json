@@ -5,6 +5,8 @@
   "P1 one transition per unit (the first), later flaps left to the sightings": "tests/test_energisation.py::test_a_unit_transitions_once_even_if_its_status_flaps",
   "P1 units are 014's content identity, grouped by name, customer and site": "tests/test_energisation.py::test_a_renamed_unit_is_followed_by_content_identity_only_within_its_group",
   "P2 the Gate 2 rows of the latest copy, as printed": "tests/test_energisation.py::test_gate_two_rows_are_the_printed_twos_only",
-  "Register-only measure: months from the last printed date to the first Built copy, its distribution": "tests/test_energisation.py::test_quantiles_and_summary"
+  "Register-only measure: months from the last printed date to the first Built copy, its distribution": "tests/test_energisation.py::test_quantiles_and_summary",
+  "Amendment 1 A1: the project reference date is the latest capacity-bearing dated stage of the copy before; zero-MW stages never supply it; the earliest is the sensitivity": "tests/test_energisation.py::test_a1_project_reference_date_is_the_latest_capacity_bearing_stage_date",
+  "Amendment 1 A1: labels built-at-first-sight, undated-before-built and not-sighted-in-copy-before": "tests/test_energisation.py::test_a1_labels_first_sight_undated_and_not_sighted_in_the_copy_before"
  }
 }

@@ -422,6 +422,174 @@ def phase_acquire(seal: str | None, run_date: str) -> None:
     )
 
 
+def phase_acquire_amended(seal: str | None, amendment_seal: str | None, run_date: str) -> None:
+    """Amendment 1: the earlier names (A1) and the snippet route (A2), rule version v2."""
+    require_seal(seal)
+    amendment_digest = require_amendment(amendment_seal)
+    names_doc = load_json(NAMES_JSON)["names"]
+    history_doc = load_json(HISTORY_JSON)
+    first_seen = {k: date.fromisoformat(v) for k, v in history_doc["first_seen"].items()}
+    earlier = qo.earlier_names(names_doc, history_doc["history"])
+    ordered = sorted(names_doc) + earlier
+    raw = REPO_ROOT / "data/raw/companies-house" / f"{run_date}-019"
+    journal, manifest = raw / "journal.ndjson", raw / "manifest.json"
+    fetcher = PatientFetcher(api_key())
+
+    def pin(jobs):
+        return fetch_journalled(
+            jobs,
+            journal_path=journal,
+            manifest_path=manifest,
+            repo_root=REPO_ROOT,
+            fetch=fetcher,
+            sleep_seconds=0,
+            progress=progress,
+        )
+
+    print(f"{len(names_doc)} copy names + {len(earlier)} earlier names (A1); searching", flush=True)
+    pin([("ch-search", search_url(n), raw / "search" / f"{slug(n)}.json") for n in ordered])
+    searches = {n: load_json(raw / "search" / f"{slug(n)}.json").get("items", []) for n in ordered}
+    search_digests = {n: sha(raw / "search" / f"{slug(n)}.json") for n in ordered}
+    no_exact = [n for n in ordered if not qo.exact_candidates(n, searches[n])]
+    snippet_numbers = sorted(
+        {c.number for n in no_exact for c in qo.snippet_candidates(n, searches[n])}
+    )
+    print(
+        f"{len(no_exact)} names with no exact candidate; {len(snippet_numbers)} snippet candidates (A2); profiles",
+        flush=True,
+    )
+    pin(
+        [
+            ("ch-profile", profile_url(x), raw / "company" / x / "profile.json")
+            for x in snippet_numbers
+        ]
+    )
+    profiles = {x: load_json(raw / "company" / x / "profile.json") for x in snippet_numbers}
+    still = [
+        n
+        for n in no_exact
+        if len(
+            [
+                c
+                for c in qo.snippet_candidates(n, searches[n])
+                if c.number in profiles and qo.previous_name_matches(n, profiles[c.number])
+            ]
+        )
+        == 0
+    ]
+    print(f"{len(still)} names on to the advanced search", flush=True)
+    pin(
+        [
+            ("ch-advanced-search", advanced_search_url(n), raw / "advanced" / f"{slug(n)}.json")
+            for n in still
+        ]
+    )
+    advanced = {n: load_json(raw / "advanced" / f"{slug(n)}.json").get("items", []) for n in still}
+    adv_numbers = sorted(
+        {c.number for n in still for c in qo.candidates(advanced[n])} - set(profiles)
+    )
+    pin([("ch-profile", profile_url(x), raw / "company" / x / "profile.json") for x in adv_numbers])
+    for x in adv_numbers:
+        profiles[x] = load_json(raw / "company" / x / "profile.json")
+    links = [
+        qo.resolve_v2(
+            n, searches[n], advanced.get(n) if n in advanced else None, profiles, first_seen.get(n)
+        )
+        for n in ordered
+    ]
+    resolved = sorted({lk.company_number for lk in links if lk.resolved and lk.company_number})
+    print(
+        f"{len(resolved)} companies resolved under v2; profile, PSC, statements, charges",
+        flush=True,
+    )
+    jobs = []
+    for x in resolved:
+        jobs += [
+            ("ch-profile", profile_url(x), raw / "company" / x / "profile.json"),
+            ("ch-psc", psc_url(x), raw / "company" / x / "psc.json"),
+            (
+                "ch-psc-statements",
+                psc_statements_url(x),
+                raw / "company" / x / "psc-statements.json",
+            ),
+            ("ch-charges", charges_url(x), raw / "company" / x / "charges.json"),
+        ]
+    pin(jobs)
+    append_links(links, run_date, search_digests)
+
+    def describe(number: str, name: str) -> dict[str, Any]:
+        for hit in [*searches.get(name, []), *advanced.get(name, [])]:
+            if str(hit.get("company_number")) == number:
+                return {
+                    "number": number,
+                    "title": hit.get("title") or hit.get("company_name"),
+                    "status": hit.get("company_status"),
+                    "created": hit.get("date_of_creation"),
+                    "ceased": hit.get("date_of_cessation"),
+                    "address": hit.get("address_snippet"),
+                    "snippet": hit.get("snippet"),
+                }
+        return {"number": number}
+
+    proposed = [
+        {
+            "name": lk.name,
+            "class": lk.klass,
+            "earlier_name": lk.name not in names_doc,
+            "candidates": [describe(c, lk.name) for c in lk.candidates],
+            "note": lk.note,
+            "rows": names_doc.get(lk.name, {}).get("rows", 0),
+            "mw": names_doc.get(lk.name, {}).get("mw", "0"),
+            "project_ids": names_doc.get(lk.name, {}).get("project_ids", []),
+        }
+        for lk in links
+        if not lk.resolved
+    ]
+    proposed.sort(key=lambda x: (x["earlier_name"], -Decimal(str(x["mw"]))))
+    write_json(
+        PROPOSED_JSON,
+        {
+            "run_date": run_date,
+            "rule_version": qo.RULE_VERSION_V2,
+            "amendment_1_sha256": amendment_digest,
+            "count": len(proposed),
+            "count_copy_names": sum(1 for x in proposed if not x["earlier_name"]),
+            "proposed": proposed,
+        },
+    )
+    previous = load_json(MANIFEST_JSON)
+    classes = dict(Counter(lk.klass for lk in links))
+    classes_copy = dict(Counter(lk.klass for lk in links if lk.name in names_doc))
+    write_json(
+        MANIFEST_JSON,
+        {
+            **previous,
+            "amendment_1": {
+                "sha256": amendment_digest,
+                "rule_version": qo.RULE_VERSION_V2,
+                "journal_sha256": sha(journal),
+                "requests": fetcher.requests,
+                "failures": fetcher.failures,
+                "earlier_names": len(earlier),
+                "classes_all": classes,
+                "classes_copy_names": classes_copy,
+            },
+        },
+    )
+    log_run(
+        "acquire-amendment-1",
+        run_date=run_date,
+        requests=fetcher.requests,
+        failures=fetcher.failures,
+        earlier_names=len(earlier),
+        classes_copy_names=classes_copy,
+        classes_all=classes,
+    )
+    print(
+        f"done under v2: copy names {classes_copy}; all names {classes}; {fetcher.requests} requests, {fetcher.failures} retried"
+    )
+
+
 # ----------------------------------------------------------------- schema
 
 
@@ -538,16 +706,39 @@ def phase_schema(run_date: str) -> None:
 # ---------------------------------------------------------------- compute
 
 
-def load_links(run_date: str) -> dict[str, qo.Link]:
+AMENDMENT_1 = HERE / "DECLARATION-amendment-1.md"
+
+
+def require_amendment(amendment_seal: str | None) -> str:
+    digest = sha(AMENDMENT_1)
+    if not amendment_seal or not digest.startswith(amendment_seal):
+        sys.exit("refusing: --amendment-seal must be a prefix of the frozen amendment's SHA-256")
+    if not (AMENDMENT_1.with_suffix(".md.timestamps.json")).exists():
+        sys.exit("refusing: the amendment has no proof sidecar; freeze it first")
+    return digest
+
+
+def versions_present(run_date: str) -> set[str]:
+    out = set()
+    if LINKS_NDJSON.exists():
+        for line in LINKS_NDJSON.read_text().splitlines():
+            if line.strip():
+                r = json.loads(line)
+                if r["run_date"] == run_date:
+                    out.add(r["rule_version"])
+    return out
+
+
+def load_links(run_date: str, version: str = qo.RULE_VERSION) -> dict[str, qo.Link]:
     out: dict[str, qo.Link] = {}
     for line in LINKS_NDJSON.read_text().splitlines():
         if not line.strip():
             continue
         r = json.loads(line)
-        if r["run_date"] != run_date or r["rule_version"] != qo.RULE_VERSION:
+        if r["run_date"] != run_date or r["rule_version"] != version:
             continue
         out[r["name"]] = qo.Link(
-            r["name"], r["class"], r["company_number"], tuple(r["candidates"]), r["note"]
+            r["name"], r["class"], r["company_number"], tuple(r["candidates"]), r["note"], version
         )
     return out
 
@@ -562,7 +753,20 @@ def phase_compute(run_date: str) -> None:
     for n, facts in names_doc["names"].items():
         all_names[n] = qo.Name(n, facts["rows"], Decimal(facts["mw"]), set(facts["project_ids"]))
     admitted = {a["name"]: a for a in load_json(ADMITTED_JSON).get("admissions", [])}
-    links = {n: qo.apply_admissions(lk, admitted) for n, lk in load_links(run_date).items()}
+    version = (
+        qo.RULE_VERSION_V2 if qo.RULE_VERSION_V2 in versions_present(run_date) else qo.RULE_VERSION
+    )
+    links = {
+        n: qo.apply_admissions(lk, admitted) for n, lk in load_links(run_date, version).items()
+    }
+    links_v1 = (
+        {
+            n: qo.apply_admissions(lk, admitted)
+            for n, lk in load_links(run_date, qo.RULE_VERSION).items()
+        }
+        if version != qo.RULE_VERSION
+        else None
+    )
     missing = [n for n in all_names if n not in links]
     if missing:
         sys.exit(f"C6: {len(missing)} names have no link line (e.g. {missing[0]!r})")
@@ -699,6 +903,10 @@ def phase_compute(run_date: str) -> None:
     if total != len(rows):
         sys.exit(f"C6: charge classes sum to {total}, not {len(rows)} rows")
     results = {
+        "rule_version": version,
+        "amendment_1_sha256": sha(AMENDMENT_1) if version == qo.RULE_VERSION_V2 else None,
+        "figure1_resolution_v1": qo.resolution_figure(all_names, links_v1) if links_v1 else None,
+        "earlier_names_searched": sum(1 for n in links if n not in all_names),
         "declaration_sha256": qo.DECLARATION_SHA256,
         "copy_sha256": COPY_SHA256,
         "run_date": run_date,
@@ -742,6 +950,14 @@ def render(r: dict[str, Any]) -> str:
         f"({r['manifest'].get('requests')} requests), schema report `{r['schema_report_sha256'][:8]}…`, "
         f"{r['admissions']} human admission(s) applied. Every figure is a function of the pinned bytes, "
         "`evidence/links.ndjson` and `evidence/links-admitted.json`.",
+        "",
+        f"Rule version `{r['rule_version']}`"
+        + (
+            f" (amendment 1 `{r['amendment_1_sha256'][:8]}…`; {r['earlier_names_searched']} earlier names searched for figure 3; "
+            f"under v1 the copy's names resolved {r['figure1_resolution_v1']['resolved_names']} of {r['figure1_resolution_v1']['names']})."
+            if r.get("figure1_resolution_v1")
+            else "."
+        ),
         "",
         "## 1. Resolution",
         "",
@@ -832,9 +1048,12 @@ def render(r: dict[str, Any]) -> str:
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__.split("\n\n")[0])
     parser.add_argument(
-        "--phase", required=True, choices=["names", "history", "acquire", "schema", "compute"]
+        "--phase",
+        required=True,
+        choices=["names", "history", "acquire", "acquire-amendment-1", "schema", "compute"],
     )
     parser.add_argument("--seal", default=None)
+    parser.add_argument("--amendment-seal", default=None)
     parser.add_argument("--run-date", default=datetime.now(UTC).date().isoformat())
     args = parser.parse_args()
     EVIDENCE.mkdir(exist_ok=True)
@@ -844,6 +1063,8 @@ def main() -> None:
         phase_history()
     elif args.phase == "acquire":
         phase_acquire(args.seal, args.run_date)
+    elif args.phase == "acquire-amendment-1":
+        phase_acquire_amended(args.seal, args.amendment_seal, args.run_date)
     elif args.phase == "schema":
         phase_schema(args.run_date)
     else:

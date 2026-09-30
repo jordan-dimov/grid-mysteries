@@ -153,3 +153,74 @@ def test_quantiles_and_summary():
         s["built_copy_later_than_six_months"] == 1 and s["by_year_of_built_copy"]["2025"]["n"] == 1
     )
     assert "Energy Storage System" in s["by_plant_type"]
+
+
+# Amendment 1, A1
+
+
+def test_a1_project_reference_date_is_the_latest_capacity_bearing_stage_date():
+    seq = kept(
+        (
+            date(2024, 1, 5),
+            [
+                row(eff="30/06/2024", mw="100", stage="1"),
+                row(eff="31/12/2026", mw="50", stage="2"),
+                row(eff="30/06/2030", mw="0", stage="3"),
+            ],
+        ),
+        (
+            date(2024, 9, 5),
+            [
+                row(eff="", mw="100", stage="1", status="Built"),
+                row(eff="31/12/2026", mw="50", stage="2", status="Built"),
+                row(eff="30/06/2030", mw="0", stage="3", status="Built"),
+            ],
+        ),
+    )
+    seen = en.sightings(seq)
+    found = en.project_transitions(seen, {"new": [date(2024, 1, 5), date(2024, 9, 5)]})
+    assert len(found) == 1
+    t = found[0]
+    assert (
+        t.klass == "transition"
+        and t.reference_date == date(2026, 12, 31)
+        and t.earliest_date == date(2024, 6, 30)
+    )
+    assert (
+        t.capacity_mw == Decimal("150") and t.stages_zero_mw == 1 and t.stages_capacity_dated == 2
+    )
+    assert t.months_reference == Decimal("-27.8") and t.months_earliest == Decimal("2.2")
+    s = en.project_summary(found)
+    assert s["measured"] == 1 and s["built_copy_before_the_date"] == 1
+
+
+def test_a1_labels_first_sight_undated_and_not_sighted_in_the_copy_before():
+    seq = kept(
+        (
+            date(2024, 1, 5),
+            [
+                row(name="First", pid="a0l4L0000005first", status="Built"),
+                row(name="Undated", pid="a0l4L0000005undat", eff="", mw="10"),
+                row(name="Gap", pid="a0l4L0000005gap00", eff="01/01/2024", mw="10"),
+            ],
+        ),
+        (
+            date(2024, 5, 5),
+            [
+                row(name="First", pid="a0l4L0000005first", status="Built"),
+                row(name="Undated", pid="a0l4L0000005undat", eff="", mw="10", status="Built"),
+            ],
+        ),
+        (
+            date(2024, 9, 5),
+            [row(name="Gap", pid="a0l4L0000005gap00", eff="01/01/2024", mw="10", status="Built")],
+        ),
+    )
+    found = en.project_transitions(
+        en.sightings(seq), {"new": [date(2024, 1, 5), date(2024, 5, 5), date(2024, 9, 5)]}
+    )
+    assert {t.project_name: t.klass for t in found} == {
+        "First": "built-at-first-sight",
+        "Undated": "undated-before-built",
+        "Gap": "not-sighted-in-copy-before",
+    }

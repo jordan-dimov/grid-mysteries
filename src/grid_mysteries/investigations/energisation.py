@@ -18,11 +18,13 @@ from datetime import date
 from decimal import Decimal
 from typing import Any, Final
 
+from grid_mysteries.investigations.connection_slippage import identity as project_group
 from grid_mysteries.investigations.overdue_queue import project_id, text
 from grid_mysteries.sources.tec_register import parse_decimal
 from grid_mysteries.tec import identity as content
 
 DECLARATION_SHA256: Final = "fb8a3428749a73997745e4e852ba64b7a7326afd406528d9fe6315116b13bb2a"
+AMENDMENT_1_PREFIX: Final = "cc01e3cf"
 BUILT: Final = "built"
 CONFIRMED_GATE: Final = "2"
 
@@ -228,6 +230,200 @@ def summary(found: list[Transition]) -> dict[str, Any]:
         "built_copy_before_the_date": before,
         "built_copy_within_six_months_after": within_six,
         "built_copy_later_than_six_months": later,
+        "by_year_of_built_copy": {y: quantiles(v) for y, v in sorted(by_year.items())},
+        "by_plant_type": {
+            p: quantiles(v) for p, v in sorted(by_plant.items(), key=lambda kv: -len(kv[1]))
+        },
+    }
+
+
+# ------------------------------------------------- amendment 1, A1: projects
+
+
+@dataclass(frozen=True)
+class ProjectTransition:
+    """A1: a project (014's group) whose units first print `Built` in a kept
+    copy, with the last dated capacity-bearing stage of the copy before."""
+
+    regime: str
+    project: str
+    klass: (
+        str  # transition | built-at-first-sight | undated-before-built | not-sighted-in-copy-before
+    )
+    first_built: date
+    first_built_sha256: str
+    copy_before: date | None
+    copy_before_sha256: str | None
+    reference_date: date | None
+    earliest_date: date | None
+    capacity_mw: Decimal
+    stages_capacity_dated: int
+    stages_capacity_undated: int
+    stages_zero_mw: int
+    stages_not_built_in_first_built_copy: int
+    first_seen: date
+    project_name: str
+    customer: str
+    site: str
+    plant_type: str
+    agreement_type: str
+    host_to: str
+    units: tuple[str, ...]
+
+    def months(self, from_date: date | None) -> Decimal | None:
+        if from_date is None:
+            return None
+        return (Decimal((self.first_built - from_date).days) / Decimal("30.4375")).quantize(
+            Decimal("0.1")
+        )
+
+    @property
+    def months_reference(self) -> Decimal | None:
+        return self.months(self.reference_date)
+
+    @property
+    def months_earliest(self) -> Decimal | None:
+        return self.months(self.earliest_date)
+
+
+def project_transitions(
+    seen: dict[str, dict[str, list[Sighting]]], kept_order: dict[str, list[date]]
+) -> list[ProjectTransition]:
+    """A1 over every regime. `kept_order[regime]` is the publication order of
+    the kept copies, so "the copy immediately before" is well defined."""
+    out: list[ProjectTransition] = []
+    for regime, units in seen.items():
+        order = kept_order[regime]
+        position = {t: i for i, t in enumerate(order)}
+        by_project: dict[str, dict[date, list[tuple[str, Sighting]]]] = defaultdict(
+            lambda: defaultdict(list)
+        )
+        for unit_name, seq in units.items():
+            for s in seq:
+                by_project[project_group(s.row)][s.t_public].append((unit_name, s))
+        for project, copies in by_project.items():
+            dates = sorted(copies)
+            first_built = next(
+                (t for t in dates if any(s.status.casefold() == BUILT for _, s in copies[t])), None
+            )
+            if first_built is None:
+                continue
+            here = copies[first_built]
+            row = here[0][1].row
+            sha = here[0][1].sha256
+            not_built = sum(1 for _, s in here if s.status.casefold() != BUILT)
+            common: dict[str, Any] = {
+                "regime": regime,
+                "project": project,
+                "first_built": first_built,
+                "first_built_sha256": sha,
+                "first_seen": dates[0],
+                "project_name": text(row.get("Project Name")),
+                "customer": text(row.get("Customer Name")),
+                "site": text(row.get("Connection Site")),
+                "plant_type": text(row.get("Plant Type")),
+                "agreement_type": text(row.get("Agreement Type")),
+                "host_to": text(row.get("HOST TO")),
+                "stages_not_built_in_first_built_copy": not_built,
+                "units": tuple(sorted(u for u, _ in here)),
+            }
+            if first_built == dates[0]:
+                out.append(
+                    ProjectTransition(
+                        klass="built-at-first-sight",
+                        copy_before=None,
+                        copy_before_sha256=None,
+                        reference_date=None,
+                        earliest_date=None,
+                        capacity_mw=Decimal(0),
+                        stages_capacity_dated=0,
+                        stages_capacity_undated=0,
+                        stages_zero_mw=0,
+                        **common,
+                    )
+                )
+                continue
+            previous_index = position[first_built] - 1
+            before_date = order[previous_index] if previous_index >= 0 else None
+            if before_date is None or before_date not in copies:
+                out.append(
+                    ProjectTransition(
+                        klass="not-sighted-in-copy-before",
+                        copy_before=before_date,
+                        copy_before_sha256=None,
+                        reference_date=None,
+                        earliest_date=None,
+                        capacity_mw=Decimal(0),
+                        stages_capacity_dated=0,
+                        stages_capacity_undated=0,
+                        stages_zero_mw=0,
+                        **common,
+                    )
+                )
+                continue
+            before = copies[before_date]
+            capacity = [
+                s
+                for _, s in before
+                if (parse_decimal(s.row.get("MW Increase / Decrease")) or Decimal(0)) > 0
+            ]
+            dated = [s.effective for s in capacity if s.effective is not None]
+            zero = len(before) - len(capacity)
+            cap_mw = sum(
+                (
+                    (parse_decimal(s.row.get("MW Increase / Decrease")) or Decimal(0))
+                    for s in capacity
+                ),
+                Decimal(0),
+            )
+            out.append(
+                ProjectTransition(
+                    klass="transition" if dated else "undated-before-built",
+                    copy_before=before_date,
+                    copy_before_sha256=before[0][1].sha256,
+                    reference_date=max(dated) if dated else None,
+                    earliest_date=min(dated) if dated else None,
+                    capacity_mw=cap_mw,
+                    stages_capacity_dated=len(dated),
+                    stages_capacity_undated=len(capacity) - len(dated),
+                    stages_zero_mw=zero,
+                    **common,
+                )
+            )
+    return sorted(out, key=lambda t: (t.first_built, t.regime, t.project))
+
+
+def project_summary(found: list[ProjectTransition]) -> dict[str, Any]:
+    by_class: defaultdict[str, int] = defaultdict(int)
+    by_regime: defaultdict[str, int] = defaultdict(int)
+    for t in found:
+        by_class[t.klass] += 1
+        by_regime[f"{t.regime}|{t.klass}"] += 1
+    measured = [t for t in found if t.klass == "transition"]
+    months: list[Decimal] = [m for t in measured if (m := t.months_reference) is not None]
+    earliest: list[Decimal] = [m for t in measured if (m := t.months_earliest) is not None]
+    by_year: dict[str, list[Decimal]] = defaultdict(list)
+    by_plant: dict[str, list[Decimal]] = defaultdict(list)
+    for t in measured:
+        m = t.months_reference
+        if m is None:
+            continue
+        by_year[str(t.first_built.year)].append(m)
+        by_plant[t.plant_type or "(blank)"].append(m)
+    return {
+        "projects_with_a_built_sighting": len(found),
+        "by_class": dict(by_class),
+        "by_regime_and_class": dict(sorted(by_regime.items())),
+        "measured": len(measured),
+        "measured_capacity_mw": sum((t.capacity_mw for t in measured), Decimal(0)),
+        "measured_with_a_split_status": sum(
+            1 for t in measured if t.stages_not_built_in_first_built_copy
+        ),
+        "months_reference_to_built_copy": quantiles(months),
+        "months_earliest_to_built_copy_sensitivity": quantiles(earliest),
+        "built_copy_before_the_date": sum(1 for m in months if m < 0),
+        "built_copy_within_six_months_after": sum(1 for m in months if 0 <= m <= 6),
+        "built_copy_later_than_six_months": sum(1 for m in months if m > 6),
         "by_year_of_built_copy": {y: quantiles(v) for y, v in sorted(by_year.items())},
         "by_plant_type": {
             p: quantiles(v) for p, v in sorted(by_plant.items(), key=lambda kv: -len(kv[1]))

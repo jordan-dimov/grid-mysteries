@@ -247,3 +247,42 @@ def test_resolution_figure_and_f1_f2():
     assert f["F1_fires"] is True
     assert f["identity_guard_share_of_rule_resolved"] == Decimal("0.500") and f["F2_fires"] is True
     assert qo.share(0, 0) is None and qo.share(1, 3) == Decimal("0.333")
+
+
+# Amendment 1
+
+
+def test_a2_snippet_previous_name_resolves_before_the_advanced_search():
+    hits = [
+        {
+            "company_number": "7",
+            "title": "NEW NAME LTD",
+            "company_status": "active",
+            "date_of_creation": "2015-01-01",
+            "snippet": "OLD NAME LIMITED",
+        }
+    ]
+    profiles = {
+        "7": {"previous_company_names": [{"name": "OLD NAME LIMITED", "ceased_on": "2020-01-01"}]}
+    }
+    lk = qo.resolve_v2("Old Name Ltd", hits, None, profiles, first_seen=date(2016, 1, 1))
+    assert (
+        lk.klass == "previous-name" and lk.company_number == "7" and lk.rule_version == "019-r2-v2"
+    )
+    # the snippet proposes, the profile confirms: without the profile it falls through to R2's route
+    assert qo.resolve_v2("Old Name Ltd", hits, None, {}, None).klass == "unresolved"
+    # an exact match still wins and carries the v2 version
+    exact = qo.resolve_v2("New Name Ltd", hits, None, {}, None)
+    assert exact.klass == "exact" and exact.rule_version == "019-r2-v2"
+
+
+def test_a1_earlier_names_are_those_on_current_ids_not_printed_in_the_copy():
+    names_doc = {"NOW LTD": {"project_ids": ["p1"]}, "OTHER LTD": {"project_ids": ["p2"]}}
+    history = {
+        "p1": [
+            {"t_public": "2022-01-01", "name": "THEN LTD"},
+            {"t_public": "2023-01-01", "name": "NOW LTD"},
+        ],
+        "p9": [{"t_public": "2022-01-01", "name": "GONE LTD"}],
+    }
+    assert qo.earlier_names(names_doc, history) == ["THEN LTD"]

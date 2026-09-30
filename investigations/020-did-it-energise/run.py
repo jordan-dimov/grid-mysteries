@@ -27,7 +27,7 @@ import hashlib
 import json
 import sys
 from collections import Counter
-from datetime import UTC, datetime
+from datetime import UTC, date, datetime
 from decimal import Decimal
 from pathlib import Path
 from typing import Any
@@ -45,6 +45,9 @@ HERE = Path(__file__).parent
 DECLARATION = HERE / "DECLARATION.md"
 EVIDENCE = HERE / "evidence"
 POPULATION = EVIDENCE / "population.ndjson"
+PROJECTS = EVIDENCE / "projects.ndjson"
+PROJECTS_SUMMARY = EVIDENCE / "projects-summary.json"
+AMENDMENT_1 = HERE / "DECLARATION-amendment-1.md"
 SUMMARY = EVIDENCE / "population-summary.json"
 GATE2 = EVIDENCE / "gate2.json"
 COPIES = EVIDENCE / "copies.json"
@@ -340,6 +343,142 @@ def render_v0(s: dict[str, Any], found: list[en.Transition]) -> str:
     return "\n".join(L)
 
 
+def require_amendment(amendment_seal: str | None) -> str:
+    digest = sha(AMENDMENT_1)
+    if (
+        not amendment_seal
+        or not digest.startswith(amendment_seal)
+        or not digest.startswith(en.AMENDMENT_1_PREFIX)
+    ):
+        sys.exit("refusing: --amendment-seal must be a prefix of the frozen amendment's SHA-256")
+    if not AMENDMENT_1.with_suffix(".md.timestamps.json").exists():
+        sys.exit("refusing: the amendment has no proof sidecar; freeze it first")
+    return digest
+
+
+def phase_projects(seal: str | None, amendment_seal: str | None) -> None:
+    """Version 0.1: A1's per-project rule from the archive alone."""
+    require_seal(seal)
+    digest = require_amendment(amendment_seal)
+    usable, excluded, unreadable = load_copies()
+    result = cs.series(usable, partial_export_rule=True)
+    kept = analysis.kept(usable, result)
+    seen = en.sightings(
+        [
+            (k.regime, k.vintage.t_public, k.vintage.sha256, list(k.vintage.rows), k.swapped)
+            for k in kept
+        ]
+    )
+    order: dict[str, list[date]] = {}
+    for k in kept:
+        order.setdefault(k.regime, []).append(k.vintage.t_public)
+    found = en.project_transitions(seen, order)
+    existing: dict[str, str] = {}
+    if PROJECTS.exists():
+        for line in PROJECTS.read_text().splitlines():
+            if line.strip():
+                existing[json.loads(line)["key"]] = line
+    new_lines = []
+    for t in found:
+        record = {
+            "key": f"{t.regime}|{t.project}",
+            **t.__dict__,
+            "months_reference": t.months_reference,
+            "months_earliest": t.months_earliest,
+        }
+        line = dumps(record).replace("\n", "")
+        if record["key"] in existing:
+            if existing[record["key"]] != line:
+                sys.exit(f"C2: projects line for {record['key']} would change on recompute")
+            continue
+        new_lines.append(line)
+    with PROJECTS.open("a") as f:
+        for line in new_lines:
+            f.write(line + "\n")
+    summary = en.project_summary(found)
+    summary.update(
+        {
+            "declaration_sha256": en.DECLARATION_SHA256,
+            "amendment_1_sha256": digest,
+            "copies_usable": len(usable),
+            "copies_kept": len(kept),
+            "computed_at": datetime.now(UTC).isoformat(timespec="seconds"),
+        }
+    )
+    write_json(PROJECTS_SUMMARY, summary)
+    if SUMMARY.exists() and POPULATION.exists():
+        s0 = json.loads(SUMMARY.read_text())
+        found0 = [json.loads(x) for x in POPULATION.read_text().splitlines() if x.strip()]
+        RESULTS_V0.write_text(
+            render_v0(
+                s0,
+                [
+                    en.Transition(
+                        **{
+                            k: v
+                            for k, v in r.items()
+                            if k not in ("key", "months_last_date_to_built_copy")
+                        }
+                    )
+                    for r in found0
+                ],
+            )
+            if False
+            else RESULTS_V0.read_text().split("\n## Version 0.1")[0] + render_v01(summary, found)
+        )
+    log_run(
+        "projects",
+        amendment=digest[:8],
+        projects=len(found),
+        new_lines=len(new_lines),
+        measured=summary["measured"],
+    )
+    print(
+        f"v0.1 {summary['by_class']}; measured {summary['measured']} projects, {summary['measured_capacity_mw']} MW; months median {summary['months_reference_to_built_copy']['median']} (earliest-date sensitivity {summary['months_earliest_to_built_copy_sensitivity']['median']})"
+    )
+
+
+def render_v01(s: dict[str, Any], found: list[en.ProjectTransition]) -> str:
+    q, qe = s["months_reference_to_built_copy"], s["months_earliest_to_built_copy_sensitivity"]
+    L = [
+        "",
+        "## Version 0.1 — the per-project rule of amendment 1 (A1)",
+        "",
+        f"Computed {s['computed_at']} under amendment 1 `{s['amendment_1_sha256'][:8]}…`, register only. A project is 014's group (name, customer, site); "
+        "its first `Built` copy is the first kept copy in which any stage prints `Built`; the reference date is the latest date among its "
+        "capacity-bearing (MW > 0), dated stages in the kept copy immediately before; zero-MW stages never supply the date.",
+        "",
+        f"Projects with a `Built` sighting: {s['projects_with_a_built_sighting']} ({s['by_class']}). By regime: {s['by_regime_and_class']}. "
+        f"Measured: {s['measured']} projects, {s['measured_capacity_mw']} MW of capacity-bearing stages; {s['measured_with_a_split_status']} of them printed `Built` on some stages and not others in that first copy.",
+        "",
+        f"Months from the reference date to the first `Built` copy, n={q['n']}: min {q['min']}, p25 {q['p25']}, median {q['median']}, p75 {q['p75']}, max {q['max']}. "
+        f"Before the date: {s['built_copy_before_the_date']}; within six months after: {s['built_copy_within_six_months_after']}; later: {s['built_copy_later_than_six_months']}. "
+        f"Sensitivity (earliest capacity-bearing date instead of latest), n={qe['n']}: median {qe['median']}, p25 {qe['p25']}, p75 {qe['p75']}.",
+        "",
+        "| year of the `Built` copy | n | min | p25 | median | p75 | max |",
+        "|---|---|---|---|---|---|---|",
+    ]
+    L += [
+        f"| {y} | {v['n']} | {v['min']} | {v['p25']} | {v['median']} | {v['p75']} | {v['max']} |"
+        for y, v in s["by_year_of_built_copy"].items()
+    ]
+    L += [
+        "",
+        "| plant type as printed | n | min | p25 | median | p75 | max |",
+        "|---|---|---|---|---|---|---|",
+    ]
+    L += [
+        f"| {p} | {v['n']} | {v['min']} | {v['p25']} | {v['median']} | {v['p75']} | {v['max']} |"
+        for p, v in list(s["by_plant_type"].items())[:15]
+    ]
+    L += [
+        "",
+        "Version 0 (per unit) stands above as computed and is not the same quantity. `evidence/projects.ndjson` is append-only.",
+        "",
+    ]
+    return "\n".join(L)
+
+
 # ----------------------------------------------------------------- schema
 
 
@@ -568,13 +707,16 @@ def schema_md(name: str, key: str, r: dict[str, Any], run_date: str) -> str:
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__.split("\n\n")[0])
-    parser.add_argument("--phase", required=True, choices=["population", "schema"])
+    parser.add_argument("--phase", required=True, choices=["population", "schema", "projects"])
     parser.add_argument("--seal", default=None)
+    parser.add_argument("--amendment-seal", default=None)
     parser.add_argument("--run-date", default=datetime.now(UTC).date().isoformat())
     args = parser.parse_args()
     EVIDENCE.mkdir(exist_ok=True)
     if args.phase == "population":
         phase_population(args.seal)
+    elif args.phase == "projects":
+        phase_projects(args.seal, args.amendment_seal)
     else:
         phase_schema(args.seal, args.run_date)
 

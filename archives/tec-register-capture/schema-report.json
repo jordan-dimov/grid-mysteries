@@ -1,12 +1,12 @@
 {
  "archive": "neso/tec-register (daily capture)",
- "copies": 4,
+ "copies": 5,
  "unparseable": [],
  "eras": [
   {
    "first": "2026-09-15",
-   "last": "2026-09-25",
-   "copies": 4,
+   "last": "2026-09-29",
+   "copies": 5,
    "columns": [
     "Agreement Type",
     "Connection Site",
@@ -28,25 +28,25 @@
  ],
  "date_spelling_totals": {
   "date-cell": 0,
-  "iso-dash": 0,
+  "iso-dash": 1834,
   "iso-slash": 0,
   "uk": 7345,
   "dd-mon-yy": 0,
   "serial": 0,
-  "blank": 1451,
+  "blank": 1816,
   "other": 0
  },
  "project_status_totals": {
-  "Scoping": 5670,
-  "Built": 1514,
-  "Consents Approved": 797,
-  "Awaiting Consents": 664,
-  "Under Construction/Commissioning": 151
+  "Scoping": 7062,
+  "Built": 1895,
+  "Consents Approved": 1007,
+  "Awaiting Consents": 836,
+  "Under Construction/Commissioning": 195
  },
  "gate_totals": {
-  "": 5350,
-  "1": 3050,
-  "2": 396
+  "": 6677,
+  "1": 3819,
+  "2": 499
  },
  "flagged": [],
  "per_copy": [
@@ -289,6 +289,66 @@
    "manifest": "2026-09-26.ndjson",
    "fetched_at": "2026-09-26T06:31:03+00:00",
    "t_public_basis": "CKAN resource last_modified 2026-09-25T09:06:59.612526; NESO filename tec-register-24-september-2026.csv; fetched by the daily capture 2026-09-26T06:31:03+00:00"
+  },
+  {
+   "t_public": "2026-09-29",
+   "source": "neso-ckan-capture",
+   "format": "csv",
+   "sha256": "d1ccd9e210b4f6bc8f3b0e83d54032dc61f247dbbc1d9e469a342b7766ee5746",
+   "rows": 2199,
+   "row_count_change": "-0.000",
+   "columns": [
+    "Agreement Type",
+    "Connection Site",
+    "Cumulative Total Capacity (MW)",
+    "Customer Name",
+    "Gate",
+    "HOST TO",
+    "MW Connected",
+    "MW Effective From",
+    "MW Increase / Decrease",
+    "Plant Type",
+    "Project ID",
+    "Project Name",
+    "Project Number",
+    "Project Status",
+    "Stage"
+   ],
+   "blank": {
+    "Project Name": 0,
+    "Customer Name": 0,
+    "Connection Site": 0,
+    "MW Increase / Decrease": 0,
+    "MW Effective From": 365
+   },
+   "date_spellings": {
+    "date-cell": 0,
+    "iso-dash": 1834,
+    "iso-slash": 0,
+    "uk": 0,
+    "dd-mon-yy": 0,
+    "serial": 0,
+    "blank": 365,
+    "other": 0
+   },
+   "project_status": {
+    "Awaiting Consents": 172,
+    "Built": 381,
+    "Consents Approved": 210,
+    "Scoping": 1392,
+    "Under Construction/Commissioning": 44
+   },
+   "gate": {
+    "": 1327,
+    "1": 769,
+    "2": 103
+   },
+   "flags": [],
+   "filename": "tec-register-28-september-2026.csv",
+   "key": "raw/neso/tec-register/2026-09-30/d1ccd9e210b4f6bc8f3b0e83d54032dc61f247dbbc1d9e469a342b7766ee5746",
+   "manifest": "2026-09-30.ndjson",
+   "fetched_at": "2026-09-30T06:31:04+00:00",
+   "t_public_basis": "CKAN resource last_modified 2026-09-29T12:18:57.526163; NESO filename tec-register-28-september-2026.csv; fetched by the daily capture 2026-09-30T06:31:04+00:00"
   }
  ]
 }

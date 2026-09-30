@@ -1,0 +1,29 @@
+{
+ "file": "DECLARATION-amendment-1.md",
+ "sha256": "9ba963ee3fc007b4c9ce2acf57f5db1ee2ef704dfec5affab7744129a5fd21b2",
+ "stamped_at_utc_local_clock": "2026-09-30T18:34:57Z",
+ "proofs": [
+  {
+   "kind": "opentimestamps",
+   "path": "DECLARATION-amendment-1.md.ots",
+   "status": "pending calendar attestation until upgraded",
+   "verify": "ots verify DECLARATION-amendment-1.md.ots  (needs a Bitcoin node or the calendars; `ots info` reads the proof offline)"
+  },
+  {
+   "kind": "rfc3161",
+   "tsa": "https://freetsa.org/tsr",
+   "path": "DECLARATION-amendment-1.md.freetsa.tsr",
+   "tsa_time": "Sep 30 18:35:00 2026 GMT",
+   "verify": "openssl ts -verify -in DECLARATION-amendment-1.md.freetsa.tsr -queryfile DECLARATION-amendment-1.md.tsq -CAfile trust/tsa/freetsa-cacert.pem"
+  },
+  {
+   "kind": "rfc3161",
+   "tsa": "http://timestamp.digicert.com",
+   "path": "DECLARATION-amendment-1.md.digicert.tsr",
+   "tsa_time": "Sep 30 18:35:00 2026 GMT",
+   "verify": "openssl ts -verify -in DECLARATION-amendment-1.md.digicert.tsr -queryfile DECLARATION-amendment-1.md.tsq -CAfile trust/tsa/digicert-trusted-root-g4.pem"
+  }
+ ],
+ "query": "DECLARATION-amendment-1.md.tsq",
+ "note": "Each token binds the SHA-256 above to the TSA's clock under the TSA's key; the OpenTimestamps proof binds it to a Bitcoin block once upgraded. The file itself is what is stamped; re-hash it to check."
+}

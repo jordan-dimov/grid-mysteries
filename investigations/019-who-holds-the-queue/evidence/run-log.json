@@ -125,6 +125,31 @@
    "admissions": 0,
    "F1": false,
    "F2": false
+  },
+  {
+   "phase": "compute",
+   "at": "2026-09-30T19:14:26+00:00",
+   "run_date": "2026-09-30",
+   "admissions": 106,
+   "F1": false,
+   "F2": false
+  },
+  {
+   "phase": "acquire-admitted",
+   "at": "2026-09-30T19:16:54+00:00",
+   "run_date": "2026-09-30",
+   "admitted_companies": 63,
+   "fetched": 154,
+   "skipped": 98,
+   "failures": 0
+  },
+  {
+   "phase": "compute",
+   "at": "2026-09-30T19:16:55+00:00",
+   "run_date": "2026-09-30",
+   "admissions": 106,
+   "F1": false,
+   "F2": false
   }
  ]
 }

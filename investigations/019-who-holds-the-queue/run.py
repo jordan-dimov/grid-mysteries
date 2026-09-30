@@ -590,6 +590,69 @@ def phase_acquire_amended(seal: str | None, amendment_seal: str | None, run_date
     )
 
 
+def phase_acquire_admitted(seal: str | None, run_date: str) -> None:
+    """The four resources of every company a person admitted (declaration,
+    acquire: "every company the rule resolves or a person admits")."""
+    require_seal(seal)
+    admitted = sorted(
+        {
+            a["company_number"]
+            for a in load_json(ADMITTED_JSON).get("admissions", [])
+            if a.get("decision") == "admitted" and a.get("company_number")
+        }
+    )
+    raw = REPO_ROOT / "data/raw/companies-house" / f"{run_date}-019"
+    journal, manifest = raw / "journal.ndjson", raw / "manifest.json"
+    fetcher = PatientFetcher(api_key())
+    jobs = []
+    for x in admitted:
+        jobs += [
+            ("ch-profile", profile_url(x), raw / "company" / x / "profile.json"),
+            ("ch-psc", psc_url(x), raw / "company" / x / "psc.json"),
+            (
+                "ch-psc-statements",
+                psc_statements_url(x),
+                raw / "company" / x / "psc-statements.json",
+            ),
+            ("ch-charges", charges_url(x), raw / "company" / x / "charges.json"),
+        ]
+    fetched, skipped = fetch_journalled(
+        jobs,
+        journal_path=journal,
+        manifest_path=manifest,
+        repo_root=REPO_ROOT,
+        fetch=fetcher,
+        sleep_seconds=0,
+        progress=progress,
+    )
+    previous = load_json(MANIFEST_JSON)
+    write_json(
+        MANIFEST_JSON,
+        {
+            **previous,
+            "admitted_companies": {
+                "count": len(admitted),
+                "fetched": fetched,
+                "skipped_already_pinned": skipped,
+                "journal_sha256": sha(journal),
+                "requests": fetcher.requests,
+                "failures": fetcher.failures,
+            },
+        },
+    )
+    log_run(
+        "acquire-admitted",
+        run_date=run_date,
+        admitted_companies=len(admitted),
+        fetched=fetched,
+        skipped=skipped,
+        failures=fetcher.failures,
+    )
+    print(
+        f"{len(admitted)} admitted companies: {fetched} resources fetched, {skipped} already pinned, {fetcher.failures} retried"
+    )
+
+
 # ----------------------------------------------------------------- schema
 
 
@@ -773,6 +836,16 @@ def phase_compute(run_date: str) -> None:
     numbers = sorted(
         {lk.company_number for lk in links.values() if lk.resolved and lk.company_number}
     )
+    unpinned = [
+        x
+        for x in numbers
+        if not (raw / "company" / x / "charges.json").exists()
+        or not (raw / "company" / x / "profile.json").exists()
+    ]
+    if unpinned:
+        sys.exit(
+            f"C3: {len(unpinned)} resolved or admitted companies have no pinned resources (e.g. {unpinned[0]}); run --phase acquire-admitted first"
+        )
     profiles = {x: load_json(raw / "company" / x / "profile.json") for x in numbers}
     companies = []
     for x in numbers:
@@ -1050,7 +1123,15 @@ def main() -> None:
     parser.add_argument(
         "--phase",
         required=True,
-        choices=["names", "history", "acquire", "acquire-amendment-1", "schema", "compute"],
+        choices=[
+            "names",
+            "history",
+            "acquire",
+            "acquire-amendment-1",
+            "acquire-admitted",
+            "schema",
+            "compute",
+        ],
     )
     parser.add_argument("--seal", default=None)
     parser.add_argument("--amendment-seal", default=None)
@@ -1065,6 +1146,8 @@ def main() -> None:
         phase_acquire(args.seal, args.run_date)
     elif args.phase == "acquire-amendment-1":
         phase_acquire_amended(args.seal, args.amendment_seal, args.run_date)
+    elif args.phase == "acquire-admitted":
+        phase_acquire_admitted(args.seal, args.run_date)
     elif args.phase == "schema":
         phase_schema(args.run_date)
     else:

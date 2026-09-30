@@ -1,0 +1,11 @@
+[
+ {
+  "source": "elexon-insights",
+  "dataset": "AGWS",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/generation/actual/per-type/wind-and-solar?from=2026-09-07T23:00Z&to=2026-09-08T22:59Z",
+  "path": "investigations/016-day-ahead-wind-forecast/analysis/data/agws_2026-09-08.json",
+  "sha256": "4192f03ab762f827d5e7df3f32029452c78553bcfc7a1ec36f42185cf1ad1eb7",
+  "fetched_at": "2026-09-20T16:29:19.979687+00:00",
+  "bytes": 29096
+ }
+]

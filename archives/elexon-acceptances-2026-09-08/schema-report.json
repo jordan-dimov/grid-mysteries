@@ -1,0 +1,934 @@
+{
+ "archive": "elexon-acceptances-2026-09-08",
+ "target": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances",
+ "file_count": 96,
+ "records": 68554,
+ "bytes": 30741811,
+ "envelopes": {
+  "dict with a data list": 96
+ },
+ "top_level_keys": {
+  "data": 96,
+  "metadata": 96
+ },
+ "files": [
+  {
+   "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/boalf_p01.json",
+   "bytes": 323279,
+   "sha256": "504993dd398c5ecde1e65aee7f5fb198118245c633162e273a7e6a07e92db0ff",
+   "records": 901
+  },
+  {
+   "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/boalf_p02.json",
+   "bytes": 280098,
+   "sha256": "e7446dfe0f160acce7fac5e996e2e8e5c92effb905e806cdbb91fa859e7d70eb",
+   "records": 781
+  },
+  {
+   "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/boalf_p03.json",
+   "bytes": 364082,
+   "sha256": "517c55f30b1a4191e310176696292ebce72577f24cd6b9c71dd7e6c47f317480",
+   "records": 1014
+  },
+  {
+   "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/boalf_p04.json",
+   "bytes": 463332,
+   "sha256": "a465156e35c19438822fb4f46c16fbe5394dc461582961e937d4731ab77cce16",
+   "records": 1289
+  },
+  {
+   "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/boalf_p05.json",
+   "bytes": 230165,
+   "sha256": "12b24f4a633eb912e343666d0c1d26f964c7e842b4039c34415db42f05d2f5f7",
+   "records": 640
+  },
+  {
+   "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/boalf_p06.json",
+   "bytes": 382726,
+   "sha256": "8f75db11f943483695ee9029be36d6e3f64ba612483b0d8e17a2bb56e5be2d18",
+   "records": 1066
+  },
+  {
+   "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/boalf_p07.json",
+   "bytes": 340053,
+   "sha256": "a067d26b4a857980ad37b4446733b7a8ad9b2cace9968d336f797268d5b0b38c",
+   "records": 947
+  },
+  {
+   "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/boalf_p08.json",
+   "bytes": 477929,
+   "sha256": "cefa095c2cc7794a9388422407f2fa29685b625f083db4e667cf1f5d696aa467",
+   "records": 1330
+  },
+  {
+   "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/boalf_p09.json",
+   "bytes": 407891,
+   "sha256": "61dedb68424508835c0768daa6def34122eefc260776afca55130ad26aba3e39",
+   "records": 1135
+  },
+  {
+   "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/boalf_p10.json",
+   "bytes": 383670,
+   "sha256": "dae8014a9d48b8c94208674361a40b76b7735881238cc253768bf64e6ed883e0",
+   "records": 1063
+  },
+  {
+   "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/boalf_p11.json",
+   "bytes": 382719,
+   "sha256": "2be1e9d84899cdaba29cf80368a90afedcaeeb608bec9942f7c521a11d392ee3",
+   "records": 1060
+  },
+  {
+   "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/boalf_p12.json",
+   "bytes": 308224,
+   "sha256": "ae16b3a84681502d2ca8ddce71b6eb32aff0d6111589743baf004b1a2e94f848",
+   "records": 853
+  },
+  {
+   "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/boalf_p13.json",
+   "bytes": 365501,
+   "sha256": "84dc9b5af89ff3411dc4c8c1b3c38f1d0e7654186db8c86b96120523bce76aaf",
+   "records": 1014
+  },
+  {
+   "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/boalf_p14.json",
+   "bytes": 285542,
+   "sha256": "ebef6757974d06cc749654c25554523d50ca90cb9acd613493615b7156572dce",
+   "records": 791
+  },
+  {
+   "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/boalf_p15.json",
+   "bytes": 354414,
+   "sha256": "4aab482dc70c50d029f9b6c20bfa8ea0a866b2b230a1e35c21e002696124bade",
+   "records": 982
+  },
+  {
+   "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/boalf_p16.json",
+   "bytes": 387735,
+   "sha256": "988784644e00ab0404c65bd8781d01f6106be22e0b044ae55b732d6550c78dbf",
+   "records": 1074
+  },
+  {
+   "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/boalf_p17.json",
+   "bytes": 249561,
+   "sha256": "f5a6f0a75b058d1c5b1817af0b930a19d2671a297a00241b84014eef710ac799",
+   "records": 692
+  },
+  {
+   "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/boalf_p18.json",
+   "bytes": 278091,
+   "sha256": "83d0fda662c9a5347dddb767681af86efba827dffc51c209cd9e8cff488a1301",
+   "records": 772
+  },
+  {
+   "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/boalf_p19.json",
+   "bytes": 158163,
+   "sha256": "8b499e891af42996d02168af996c2b0f52c0b992e9193ed0bea90250f7896174",
+   "records": 439
+  },
+  {
+   "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/boalf_p20.json",
+   "bytes": 220359,
+   "sha256": "537c0b91b7c1e26657c5a412d99b5d6cf2f556125c3efa7b5eb012214d56f114",
+   "records": 611
+  },
+  {
+   "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/boalf_p21.json",
+   "bytes": 153544,
+   "sha256": "f1db4426c574d5164a492b2d19a4693804ed5470a8085bdcc1560faaf10a84a6",
+   "records": 426
+  },
+  {
+   "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/boalf_p22.json",
+   "bytes": 204258,
+   "sha256": "63f088400daedbf7b9d7168de251b61ef5151d11e0ce1fd71252d2044c423b6a",
+   "records": 566
+  },
+  {
+   "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/boalf_p23.json",
+   "bytes": 167662,
+   "sha256": "5e45587748d8b44649daa0542e3f869801dd48791f61f384cbe5f833dd7f0437",
+   "records": 465
+  },
+  {
+   "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/boalf_p24.json",
+   "bytes": 146671,
+   "sha256": "5f2929fd1781904270ff2bc1f0d64f05d138f78a26627f2c426cc500a215da51",
+   "records": 407
+  },
+  {
+   "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/boalf_p25.json",
+   "bytes": 175924,
+   "sha256": "9e1f6d50a297b3045b365223ecd23f5eb5d2bb351fc87f4e768645b2fcfc9b80",
+   "records": 488
+  },
+  {
+   "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/boalf_p26.json",
+   "bytes": 152583,
+   "sha256": "ddde980589703404069a0433e4f8c96dd326ca08e4605d29ea2dbbe17c0f5d73",
+   "records": 424
+  },
+  {
+   "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/boalf_p27.json",
+   "bytes": 135970,
+   "sha256": "f8c6d72f32ec33c39b0135d70fdb8d8a49b121f6ed504b9c7b6c24e877d8cc86",
+   "records": 378
+  },
+  {
+   "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/boalf_p28.json",
+   "bytes": 133503,
+   "sha256": "36ae57ad80a0b51bb8cd3421b571993209b014e6a2545e4ee02dd5dd1a98a42a",
+   "records": 371
+  },
+  {
+   "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/boalf_p29.json",
+   "bytes": 380561,
+   "sha256": "5017b71afbd59ae22128c2d53a03a1c33dcd75989ba0683abf326fc00b05a2bb",
+   "records": 1054
+  },
+  {
+   "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/boalf_p30.json",
+   "bytes": 247193,
+   "sha256": "11fea9c4ba9b908d63806a34242a1f6e10dd9e147eacedbfa0361d7f340bf465",
+   "records": 685
+  },
+  {
+   "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/boalf_p31.json",
+   "bytes": 290001,
+   "sha256": "389237363d4d30d5ede99f50a9c9182263421c21758b450766f99d3ccd36540d",
+   "records": 803
+  },
+  {
+   "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/boalf_p32.json",
+   "bytes": 298355,
+   "sha256": "fe29a3e1953fa193d83d5e4ef9ffa57bed8b088e871303f0ff3bf624d2d218d4",
+   "records": 825
+  },
+  {
+   "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/boalf_p33.json",
+   "bytes": 143723,
+   "sha256": "0e6933456a72f367bf15a7b4f090500e5109c2eb0cfdee3916645b7e28c65aef",
+   "records": 399
+  },
+  {
+   "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/boalf_p34.json",
+   "bytes": 375739,
+   "sha256": "9e79e4a96a251612c59bf8ab50710d6b77685e41ce5d5357f5048578803cf505",
+   "records": 1039
+  },
+  {
+   "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/boalf_p35.json",
+   "bytes": 531038,
+   "sha256": "48048901ea5f76949a72bdb6531f136c43b8ba713c0f60162d6ae263b9c39368",
+   "records": 1467
+  },
+  {
+   "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/boalf_p36.json",
+   "bytes": 571948,
+   "sha256": "4f3b1bf619ea258b5d0fcdcf44cc51c7d3682ce917700d9ba1ef7f9b27d720e2",
+   "records": 1582
+  },
+  {
+   "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/boalf_p37.json",
+   "bytes": 335992,
+   "sha256": "c8d442e58c7d53a928b3c8513e5c5ac0772a5cc9466b945c579a1b765c32908e",
+   "records": 932
+  },
+  {
+   "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/boalf_p38.json",
+   "bytes": 195817,
+   "sha256": "433ce9507157d012600ca648d91d11e3280c870876fbd4f28c64a2474d259dd9",
+   "records": 544
+  },
+  {
+   "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/boalf_p39.json",
+   "bytes": 289774,
+   "sha256": "13938752a3dee96f357316263df10c271103afc9a0edb4cfce96902d9ed973bf",
+   "records": 803
+  },
+  {
+   "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/boalf_p40.json",
+   "bytes": 311729,
+   "sha256": "2685b74fc6faace91a17e1c1d3bf83165a2a8a90857149471a1ea664a77ce770",
+   "records": 864
+  },
+  {
+   "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/boalf_p41.json",
+   "bytes": 183724,
+   "sha256": "5e16ec211f9e7b6a36e512715926a4b7cca317ce49679b5782aa1b2f21071005",
+   "records": 510
+  },
+  {
+   "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/boalf_p42.json",
+   "bytes": 256324,
+   "sha256": "321df11813163e8dfbdf306246ea99c4987fc4e90e0332bb6db2a1acc4d36285",
+   "records": 711
+  },
+  {
+   "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/boalf_p43.json",
+   "bytes": 449276,
+   "sha256": "6de048ae1c98e0852156b3e3f05d4de8e5e22e6d24649f58578902b4875ad064",
+   "records": 1246
+  },
+  {
+   "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/boalf_p44.json",
+   "bytes": 320704,
+   "sha256": "cef4e5368b8925df87bbf482f7e347cf04b947789bfcfda33843f703d112181b",
+   "records": 890
+  },
+  {
+   "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/boalf_p45.json",
+   "bytes": 154562,
+   "sha256": "68f73e1fea03d60b49cb164322ae853cd080d1dcf53b3ed71eb9fd6f84192913",
+   "records": 429
+  },
+  {
+   "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/boalf_p46.json",
+   "bytes": 204320,
+   "sha256": "cbed58e5da142b074d20109df3885ec4a04d2f44f19766bfc834ecc99ee866bd",
+   "records": 566
+  },
+  {
+   "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/boalf_p47.json",
+   "bytes": 276029,
+   "sha256": "25fc0e35757e60c02bd386164b83c85baf2a9d95044c83b94533832ab3fb1cbc",
+   "records": 764
+  },
+  {
+   "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/boalf_p48.json",
+   "bytes": 390886,
+   "sha256": "841e328d1b3b88f78c550dd8056fcb1331a8b4d49e30db24b64264cf32bc24b1",
+   "records": 1082
+  },
+  {
+   "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/disptav_bid_p01.json",
+   "bytes": 333774,
+   "sha256": "72e71d92fae43cae726cdc65e800beac01d22a31090fd1ae57cf74fc7878d105",
+   "records": 588
+  },
+  {
+   "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/disptav_bid_p02.json",
+   "bytes": 290574,
+   "sha256": "0dda8a8bc7e22b6639cd6ea6154dd8c5e8e913f75ba40e012b0ac485c62fb672",
+   "records": 516
+  },
+  {
+   "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/disptav_bid_p03.json",
+   "bytes": 386025,
+   "sha256": "f52adf2e76319a13ca1a3cf1065cc3403acd2f6276be2c081cf8fc1995354483",
+   "records": 688
+  },
+  {
+   "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/disptav_bid_p04.json",
+   "bytes": 427507,
+   "sha256": "cf518465d2e87d204f13940cbc1859e255d0742db3753b0a2520ff014eb53867",
+   "records": 756
+  },
+  {
+   "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/disptav_bid_p05.json",
+   "bytes": 371182,
+   "sha256": "686d9cbda5dc85ab998d0e824e6bb35e28f1e33ef88730ff4e5074e9299d9de4",
+   "records": 660
+  },
+  {
+   "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/disptav_bid_p06.json",
+   "bytes": 383254,
+   "sha256": "4963400c920e03d77f70c5e774a7d3e6a3092ef3bab8f2f3d9f30e71a49e3580",
+   "records": 680
+  },
+  {
+   "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/disptav_bid_p07.json",
+   "bytes": 333772,
+   "sha256": "694cd06d4d920d222e0e6fb657fe80de93b27adc3cebd86fdf0dd6ff7fa5e67c",
+   "records": 588
+  },
+  {
+   "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/disptav_bid_p08.json",
+   "bytes": 337227,
+   "sha256": "7234e0fe9da3c295e4b1c114bd8587315fb2334e4e0b730dc13313e55922f8fa",
+   "records": 592
+  },
+  {
+   "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/disptav_bid_p09.json",
+   "bytes": 334893,
+   "sha256": "206331f34649ec27ed27a3091259868d87765f89082a97f5fac16a7d0d84cf35",
+   "records": 588
+  },
+  {
+   "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/disptav_bid_p10.json",
+   "bytes": 304476,
+   "sha256": "ce836815f3fb103a8f00c96ecd6e9592b852dc46598385c25e5511b836eb29bc",
+   "records": 536
+  },
+  {
+   "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/disptav_bid_p11.json",
+   "bytes": 347588,
+   "sha256": "2b4c5ec919ec9b3c32c49757eb339e7cfdfff8f68b2435e700f9e4ed2200fe4b",
+   "records": 608
+  },
+  {
+   "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/disptav_bid_p12.json",
+   "bytes": 311894,
+   "sha256": "8e930672c528c5dcda340b0682816f473b70c4ebdb2555f16657d7a855813294",
+   "records": 548
+  },
+  {
+   "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/disptav_bid_p13.json",
+   "bytes": 380407,
+   "sha256": "f940c6890c00b4db6767f2d37fe95a1d1f808d3881ccedceaf7873508245f60b",
+   "records": 668
+  },
+  {
+   "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/disptav_bid_p14.json",
+   "bytes": 385185,
+   "sha256": "f8ad91d94308f69b5c35ae6c94f418aa999cb0b2b4979a34742bfab7409d206e",
+   "records": 688
+  },
+  {
+   "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/disptav_bid_p15.json",
+   "bytes": 460967,
+   "sha256": "7746208eaf7981825299c660029f4cb1949075b3ff1b815cc226d2a290535da3",
+   "records": 820
+  },
+  {
+   "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/disptav_bid_p16.json",
+   "bytes": 492106,
+   "sha256": "bc83cf4e875cff9c1f2454d6996304f94b043ee7474dd4daa856e3f520d8bb3a",
+   "records": 876
+  },
+  {
+   "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/disptav_bid_p17.json",
+   "bytes": 407768,
+   "sha256": "b64e9319b757393901d336baf3bcb32f664fc5b825e27b041013aa6956d63bf3",
+   "records": 724
+  },
+  {
+   "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/disptav_bid_p18.json",
+   "bytes": 296780,
+   "sha256": "29149b417de9ef161ec1fa35eda429f31ad60625d0b7ce60e2d6951173c931de",
+   "records": 528
+  },
+  {
+   "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/disptav_bid_p19.json",
+   "bytes": 218419,
+   "sha256": "899f2a97f4f12d3abac9eef3a3c9114328147138d853b1ab6e59e2987ae641d8",
+   "records": 392
+  },
+  {
+   "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/disptav_bid_p20.json",
+   "bytes": 296501,
+   "sha256": "38e409fb7aa3c249d10d533c1e31e93a25b9b4348553442f1f31ab23b6951e68",
+   "records": 528
+  },
+  {
+   "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/disptav_bid_p21.json",
+   "bytes": 236155,
+   "sha256": "ef51dd87e624236ef7b96d9c961ded192948870989586b1db5f50fe0ae983856",
+   "records": 424
+  },
+  {
+   "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/disptav_bid_p22.json",
+   "bytes": 286271,
+   "sha256": "d2665fb7ea0891ce85b2b99008022bf4cedd065de6902feb78eee9771a261899",
+   "records": 504
+  },
+  {
+   "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/disptav_bid_p23.json",
+   "bytes": 274329,
+   "sha256": "f556844767b5fd609bbcf8703f5ecc7c0ae8bb384311ef4d1a6a2206f7dbf7d8",
+   "records": 488
+  },
+  {
+   "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/disptav_bid_p24.json",
+   "bytes": 224862,
+   "sha256": "0ed96d60e40a38860441b285eaaf33be6c171429837ff3b7030ae049ec56375c",
+   "records": 404
+  },
+  {
+   "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/disptav_bid_p25.json",
+   "bytes": 285218,
+   "sha256": "0166f80586fb8e79461c206979a3431c2c01a81c0f82266c0941d6a841d5d6b1",
+   "records": 508
+  },
+  {
+   "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/disptav_bid_p26.json",
+   "bytes": 253824,
+   "sha256": "43b24f37fbf7bf86ddad978196d04e3275d8a096645a741d74dd44fc3030d27f",
+   "records": 456
+  },
+  {
+   "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/disptav_bid_p27.json",
+   "bytes": 238019,
+   "sha256": "2df59b1daf46737990c7ffc9c963928f2f981e55529723f249a74675f5db7e23",
+   "records": 428
+  },
+  {
+   "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/disptav_bid_p28.json",
+   "bytes": 274092,
+   "sha256": "1ce6bd085a6c73c7f96b5fe508bf52794107c26f2667416e465e7afb5509206d",
+   "records": 484
+  },
+  {
+   "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/disptav_bid_p29.json",
+   "bytes": 360147,
+   "sha256": "f89245a53b3d3c34055c12a7bfa17e4b13900d29713acbbcc7855b208b8ea262",
+   "records": 632
+  },
+  {
+   "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/disptav_bid_p30.json",
+   "bytes": 375233,
+   "sha256": "b499eb25bca4bc8371d983129c32740e1240d18a9c2be059f98ee6b912a2346f",
+   "records": 660
+  },
+  {
+   "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/disptav_bid_p31.json",
+   "bytes": 354395,
+   "sha256": "5b7905227ff258770f6ba0c4bf956385b9a1d111bafc83270d80f113056af9e7",
+   "records": 624
+  },
+  {
+   "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/disptav_bid_p32.json",
+   "bytes": 363270,
+   "sha256": "ce743e265c44dc2cf83b042381fa49cca8d24e7f4ca5f5de5a92a913e03a2f44",
+   "records": 640
+  },
+  {
+   "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/disptav_bid_p33.json",
+   "bytes": 282535,
+   "sha256": "a90fd51a6f93376a05a5c76696e2895a86dfbe42a0f42bcacafa6642f630ecce",
+   "records": 504
+  },
+  {
+   "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/disptav_bid_p34.json",
+   "bytes": 401838,
+   "sha256": "3ececa756c055701dd3a668f503d0836c95deeca41c562c1d7bbaa9488d621c6",
+   "records": 708
+  },
+  {
+   "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/disptav_bid_p35.json",
+   "bytes": 455752,
+   "sha256": "c05f1f645333540091cc1b7f6c45485101e2d1a67ac4e66788535bf3cb390b09",
+   "records": 800
+  },
+  {
+   "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/disptav_bid_p36.json",
+   "bytes": 468438,
+   "sha256": "39a9ae07923a3bf558dfd21de20b80cfa76165c2fc5925b8e1887e6784ea9e38",
+   "records": 820
+  },
+  {
+   "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/disptav_bid_p37.json",
+   "bytes": 468086,
+   "sha256": "813722dea20c9420dfec0e8fbeea95b32cb51603a74f80eb87bd29c8a47563e3",
+   "records": 820
+  },
+  {
+   "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/disptav_bid_p38.json",
+   "bytes": 340389,
+   "sha256": "3b9a3ad8c98f4c0274732217223fdafad50a15207fd4f3b397a267ba8737ae3d",
+   "records": 604
+  },
+  {
+   "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/disptav_bid_p39.json",
+   "bytes": 427400,
+   "sha256": "9a5b1673e4208c8c51fe2067edd996c9cedb03ef82886901cfe25c610bb76609",
+   "records": 756
+  },
+  {
+   "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/disptav_bid_p40.json",
+   "bytes": 475854,
+   "sha256": "83287cd7a2991d0619a41cb6da4d1be0106b284d473fb0d22e4268d1b4b82a62",
+   "records": 840
+  },
+  {
+   "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/disptav_bid_p41.json",
+   "bytes": 329392,
+   "sha256": "8d4de2a7d91167b5f62884f0a3f21f5a831f80048e57304a5b7379bb5c77a1b2",
+   "records": 588
+  },
+  {
+   "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/disptav_bid_p42.json",
+   "bytes": 393690,
+   "sha256": "5422673ea51cebc3e74d456850dd30268ff39bef43d156043ffaec5c17686419",
+   "records": 696
+  },
+  {
+   "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/disptav_bid_p43.json",
+   "bytes": 455425,
+   "sha256": "35f290c717f60193a23fdcf59d2551a4d9fbc97f1543bc6e87adce7aa97f95db",
+   "records": 800
+  },
+  {
+   "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/disptav_bid_p44.json",
+   "bytes": 390846,
+   "sha256": "85bc20fe8a5ff05d68cced6a26117dd53072ee2d0e0a8c6719ee8e9f80cbc246",
+   "records": 684
+  },
+  {
+   "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/disptav_bid_p45.json",
+   "bytes": 282592,
+   "sha256": "85008527709dab26978f000f58a7258747bdf4f228820033f11a7f903e1f957d",
+   "records": 500
+  },
+  {
+   "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/disptav_bid_p46.json",
+   "bytes": 254461,
+   "sha256": "dcdf4a5fe77a8796d20784687c70d582a36a612f8a77ec1a8be945c1d8c67737",
+   "records": 448
+  },
+  {
+   "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/disptav_bid_p47.json",
+   "bytes": 291891,
+   "sha256": "dbc25e1bb6fe39e13c303149095810d4427f8290ecc34e9cf60462ed5ef4119e",
+   "records": 508
+  },
+  {
+   "path": "investigations/016-day-ahead-wind-forecast/analysis/data/acceptances/disptav_bid_p48.json",
+   "bytes": 275764,
+   "sha256": "c747953cfaa5b81d15390d89c67d5f6e507f1099a64d0f8eccd3d70589629fc4",
+   "records": 480
+  }
+ ],
+ "columns": [
+  {
+   "name": "acceptanceNumber",
+   "present": 39174,
+   "blank": 0,
+   "distinct": 12610,
+   "forms": {
+    "integer": 39174
+   },
+   "sample": [
+    "29770",
+    "72787",
+    "110932"
+   ]
+  },
+  {
+   "name": "acceptanceTime",
+   "present": 39174,
+   "blank": 0,
+   "distinct": 1410,
+   "forms": {
+    "iso-datetime": 39174
+   },
+   "sample": [
+    "2026-09-07T23:14:00Z",
+    "2026-09-07T23:26:00Z",
+    "2026-09-07T23:02:00Z"
+   ]
+  },
+  {
+   "name": "bmUnit",
+   "present": 68554,
+   "blank": 0,
+   "distinct": 353,
+   "forms": {
+    "text": 68554
+   },
+   "sample": [
+    "T_GLNKW-1",
+    "T_STRNW-1",
+    "T_SVRP-10"
+   ]
+  },
+  {
+   "name": "bmUnitType",
+   "present": 29380,
+   "blank": 0,
+   "distinct": 4,
+   "forms": {
+    "text": 29380
+   },
+   "sample": [
+    "S",
+    "S",
+    "S"
+   ]
+  },
+  {
+   "name": "createdDateTime",
+   "present": 29380,
+   "blank": 0,
+   "distinct": 48,
+   "forms": {
+    "iso-datetime": 29380
+   },
+   "sample": [
+    "2026-09-08T23:44:29Z",
+    "2026-09-08T23:44:29Z",
+    "2026-09-08T23:44:29Z"
+   ]
+  },
+  {
+   "name": "dataType",
+   "present": 29380,
+   "blank": 0,
+   "distinct": 4,
+   "forms": {
+    "text": 29380
+   },
+   "sample": [
+    "Original",
+    "Original-Priced",
+    "Re-priced"
+   ]
+  },
+  {
+   "name": "deemedBoFlag",
+   "present": 39174,
+   "blank": 0,
+   "distinct": 1,
+   "forms": {
+    "bool": 39174
+   },
+   "sample": [
+    "False",
+    "False",
+    "False"
+   ]
+  },
+  {
+   "name": "leadPartyName",
+   "present": 29380,
+   "blank": 0,
+   "distinct": 97,
+   "forms": {
+    "text": 29380
+   },
+   "sample": [
+    "Statkraft Markets Gmbh",
+    "Statkraft Markets Gmbh",
+    "Statkraft Markets Gmbh"
+   ]
+  },
+  {
+   "name": "levelFrom",
+   "present": 39174,
+   "blank": 0,
+   "distinct": 386,
+   "forms": {
+    "integer": 39174
+   },
+   "sample": [
+    "0",
+    "13",
+    "389"
+   ]
+  },
+  {
+   "name": "levelTo",
+   "present": 39174,
+   "blank": 0,
+   "distinct": 491,
+   "forms": {
+    "integer": 39174
+   },
+   "sample": [
+    "0",
+    "13",
+    "220"
+   ]
+  },
+  {
+   "name": "nationalGridBmUnit",
+   "present": 68554,
+   "blank": 0,
+   "distinct": 353,
+   "forms": {
+    "text": 68554
+   },
+   "sample": [
+    "GLNKW-1",
+    "STRNW-1",
+    "SVRP-10"
+   ]
+  },
+  {
+   "name": "pairVolumes",
+   "present": 29380,
+   "blank": 0,
+   "distinct": 2334,
+   "forms": {
+    "object": 29380
+   },
+   "sample": []
+  },
+  {
+   "name": "rrFlag",
+   "present": 39174,
+   "blank": 0,
+   "distinct": 1,
+   "forms": {
+    "bool": 39174
+   },
+   "sample": [
+    "False",
+    "False",
+    "False"
+   ]
+  },
+  {
+   "name": "settlementDate",
+   "present": 68554,
+   "blank": 0,
+   "distinct": 2,
+   "forms": {
+    "iso-date": 68554
+   },
+   "sample": [
+    "2026-09-08",
+    "2026-09-08",
+    "2026-09-08"
+   ]
+  },
+  {
+   "name": "settlementPeriod",
+   "present": 29380,
+   "blank": 0,
+   "distinct": 48,
+   "forms": {
+    "integer": 29380
+   },
+   "sample": [
+    "1",
+    "1",
+    "1"
+   ]
+  },
+  {
+   "name": "settlementPeriodFrom",
+   "present": 39174,
+   "blank": 0,
+   "distinct": 48,
+   "forms": {
+    "integer": 39174
+   },
+   "sample": [
+    "1",
+    "1",
+    "1"
+   ]
+  },
+  {
+   "name": "settlementPeriodTo",
+   "present": 39174,
+   "blank": 0,
+   "distinct": 48,
+   "forms": {
+    "integer": 39174
+   },
+   "sample": [
+    "2",
+    "2",
+    "2"
+   ]
+  },
+  {
+   "name": "soFlag",
+   "present": 39174,
+   "blank": 0,
+   "distinct": 2,
+   "forms": {
+    "bool": 39174
+   },
+   "sample": [
+    "True",
+    "True",
+    "False"
+   ]
+  },
+  {
+   "name": "startTime",
+   "present": 29380,
+   "blank": 0,
+   "distinct": 48,
+   "forms": {
+    "iso-datetime": 29380
+   },
+   "sample": [
+    "2026-09-07T23:00:00Z",
+    "2026-09-07T23:00:00Z",
+    "2026-09-07T23:00:00Z"
+   ]
+  },
+  {
+   "name": "storFlag",
+   "present": 39174,
+   "blank": 0,
+   "distinct": 1,
+   "forms": {
+    "bool": 39174
+   },
+   "sample": [
+    "False",
+    "False",
+    "False"
+   ]
+  },
+  {
+   "name": "timeFrom",
+   "present": 39174,
+   "blank": 0,
+   "distinct": 1473,
+   "forms": {
+    "iso-datetime": 39174
+   },
+   "sample": [
+    "2026-09-07T23:29:00Z",
+    "2026-09-07T23:29:00Z",
+    "2026-09-07T23:29:00Z"
+   ]
+  },
+  {
+   "name": "timeTo",
+   "present": 39174,
+   "blank": 0,
+   "distinct": 1466,
+   "forms": {
+    "iso-datetime": 39174
+   },
+   "sample": [
+    "2026-09-07T23:59:00Z",
+    "2026-09-07T23:44:00Z",
+    "2026-09-07T23:43:00Z"
+   ]
+  },
+  {
+   "name": "totalVolumeAccepted",
+   "present": 29380,
+   "blank": 0,
+   "distinct": 1787,
+   "forms": {
+    "decimal": 29380
+   },
+   "sample": [
+    "0.000000000000000000",
+    "0.000000000000000000",
+    "0.000000000000000000"
+   ]
+  }
+ ],
+ "flags": [
+  "column 'acceptanceNumber' present in 39174/68554 records",
+  "column 'acceptanceTime' present in 39174/68554 records",
+  "column 'bmUnitType' present in 29380/68554 records",
+  "column 'createdDateTime' present in 29380/68554 records",
+  "column 'dataType' present in 29380/68554 records",
+  "column 'deemedBoFlag' present in 39174/68554 records",
+  "column 'leadPartyName' present in 29380/68554 records",
+  "column 'levelFrom' present in 39174/68554 records",
+  "column 'levelTo' present in 39174/68554 records",
+  "column 'pairVolumes' present in 29380/68554 records",
+  "column 'rrFlag' present in 39174/68554 records",
+  "column 'settlementPeriod' present in 29380/68554 records",
+  "column 'settlementPeriodFrom' present in 39174/68554 records",
+  "column 'settlementPeriodTo' present in 39174/68554 records",
+  "column 'soFlag' present in 39174/68554 records",
+  "column 'startTime' present in 29380/68554 records",
+  "column 'storFlag' present in 39174/68554 records",
+  "column 'timeFrom' present in 39174/68554 records",
+  "column 'timeTo' present in 39174/68554 records",
+  "column 'totalVolumeAccepted' present in 29380/68554 records"
+ ]
+}

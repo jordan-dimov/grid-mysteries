@@ -43,7 +43,10 @@ line-length = 100
 # to the generator's output (scripts/check diffs it), so never reformatted.
 # Certificate bundles are generated evidence; their verify.py is the template's
 # output at issue time and is not restyled afterwards.
-extend-exclude = ["src/morpholog_client", "investigations/*/certificates"]
+# Contributor analysis (notebooks, figures, scripts under an investigation's
+# analysis/) is not held to the project's lint bar (016 README, "How to
+# contribute"); it is analysis, never a declared result.
+extend-exclude = ["src/morpholog_client", "investigations/*/certificates", "investigations/*/analysis"]
 
 [tool.ruff.lint]
 select = ["E", "F", "I", "UP", "B", "SIM"]

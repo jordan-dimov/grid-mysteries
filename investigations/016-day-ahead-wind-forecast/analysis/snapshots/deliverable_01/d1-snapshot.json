@@ -1,0 +1,117 @@
+{
+ "what": "D1 artefacts as they stood before the D2 rework",
+ "captured_at_utc": "2026-09-29T10:03:42.395312+00:00",
+ "root": "investigations/016-day-ahead-wind-forecast/analysis",
+ "scope": "every regular file under root except __pycache__/*.pyc and this manifest",
+ "file_count": 18,
+ "files": [
+  {
+   "path": "investigations/016-day-ahead-wind-forecast/analysis/PLAN.md",
+   "sha256": "a9a388ebe14b9ffbdab49ef7eea04fde66cb93d1176458d8707c0567be871f4c",
+   "bytes": 4530,
+   "mtime_utc": "2026-09-18T13:54:01.168619+00:00"
+  },
+  {
+   "path": "investigations/016-day-ahead-wind-forecast/analysis/README.md",
+   "sha256": "9ada6298d4228c5bbf406083e1f2d2ac0d1017740384dce0d80f53d51e5eaced",
+   "bytes": 177,
+   "mtime_utc": "2026-09-17T17:08:18.025650+00:00"
+  },
+  {
+   "path": "investigations/016-day-ahead-wind-forecast/analysis/data/.gitignore",
+   "sha256": "199aa9be17cf916620063ef6a436ec1bcd169101169716cd9856901df5bb18d6",
+   "bytes": 16,
+   "mtime_utc": "2026-09-20T16:28:46.654469+00:00"
+  },
+  {
+   "path": "investigations/016-day-ahead-wind-forecast/analysis/data/agws-journal.ndjson",
+   "sha256": "4fe13200237454657466319a436ed42ef3084bca5c77cb68c34cd98c402c2715",
+   "bytes": 416,
+   "mtime_utc": "2026-09-20T16:29:19.979495+00:00"
+  },
+  {
+   "path": "investigations/016-day-ahead-wind-forecast/analysis/data/agws-manifest.json",
+   "sha256": "14f029810d84ad1efb5c1251cf78804f55d2ab6b7155d5a4d01d7ddef4ed6ee8",
+   "bytes": 438,
+   "mtime_utc": "2026-09-20T16:29:20.079982+00:00"
+  },
+  {
+   "path": "investigations/016-day-ahead-wind-forecast/analysis/data/agws-manifest.json.digicert.tsr",
+   "sha256": "28a6c85767c52ba277935f442b5a27f2eb4e0030e6e186812163ce4c44eadf75",
+   "bytes": 6008,
+   "mtime_utc": "2026-09-20T16:29:28.596834+00:00"
+  },
+  {
+   "path": "investigations/016-day-ahead-wind-forecast/analysis/data/agws-manifest.json.freetsa.tsr",
+   "sha256": "ccf2c47ffa0421d6020c501a193ceb74120cb8ef5f19b84706e974c9175f3adf",
+   "bytes": 4644,
+   "mtime_utc": "2026-09-20T16:29:28.136029+00:00"
+  },
+  {
+   "path": "investigations/016-day-ahead-wind-forecast/analysis/data/agws-manifest.json.ots",
+   "sha256": "d9578a98d4748be6807b8a1a01ed7ac4f77b9d518eced13af94743ba332c6385",
+   "bytes": 805,
+   "mtime_utc": "2026-09-20T16:29:27.369203+00:00"
+  },
+  {
+   "path": "investigations/016-day-ahead-wind-forecast/analysis/data/agws-manifest.json.timestamps.json",
+   "sha256": "a34f592d58c4a829a56186f66000d7c446e67d44dbbffebbfb58b8bbdb50e99f",
+   "bytes": 1302,
+   "mtime_utc": "2026-09-20T16:29:28.614110+00:00"
+  },
+  {
+   "path": "investigations/016-day-ahead-wind-forecast/analysis/data/agws-manifest.json.tsq",
+   "sha256": "0a04e5506081060e0bba65ced19c71622b4cfc399b6167abf9e75ed0fc4fb6e0",
+   "bytes": 70,
+   "mtime_utc": "2026-09-20T16:29:27.388321+00:00"
+  },
+  {
+   "path": "investigations/016-day-ahead-wind-forecast/analysis/data/agws_2026-09-08.json",
+   "sha256": "4192f03ab762f827d5e7df3f32029452c78553bcfc7a1ec36f42185cf1ad1eb7",
+   "bytes": 29096,
+   "mtime_utc": "2026-09-20T16:29:19.979495+00:00"
+  },
+  {
+   "path": "investigations/016-day-ahead-wind-forecast/analysis/deliverable_01.ipynb",
+   "sha256": "8df09c1acd561f87b289b965454a2b05f51cebf62540e21fd2f3d2bede3d33e7",
+   "bytes": 436562,
+   "mtime_utc": "2026-09-22T20:39:31.767611+00:00"
+  },
+  {
+   "path": "investigations/016-day-ahead-wind-forecast/analysis/fetch_agws.py",
+   "sha256": "854208daac7025d1405e91a26e6fb83f0d0ab780244a274fdd0104cd090ea2c6",
+   "bytes": 1319,
+   "mtime_utc": "2026-09-20T16:28:50.287490+00:00"
+  },
+  {
+   "path": "investigations/016-day-ahead-wind-forecast/analysis/output/comparison.csv",
+   "sha256": "672e8b5199e267fb3af01b7999dd6a1dec8540b9681927c5f2699e63348ebbac",
+   "bytes": 2346,
+   "mtime_utc": "2026-09-18T13:54:40.876521+00:00"
+  },
+  {
+   "path": "investigations/016-day-ahead-wind-forecast/analysis/output/dgws_vs_agws.png",
+   "sha256": "c3288194ca0da41c5325ce3f48ab8b5f9da03cb7760c0ca973f9ddd67e120f98",
+   "bytes": 67825,
+   "mtime_utc": "2026-09-22T20:03:45.582010+00:00"
+  },
+  {
+   "path": "investigations/016-day-ahead-wind-forecast/analysis/output/issues_errors.csv",
+   "sha256": "cd5d734ea10b98274ae90883bc862d25f111c6f0c8f72c2a2a0e46d1c04a348b",
+   "bytes": 877,
+   "mtime_utc": "2026-09-18T13:54:40.876759+00:00"
+  },
+  {
+   "path": "investigations/016-day-ahead-wind-forecast/analysis/output/windfor_error_prog.png",
+   "sha256": "86bba1160080fe5cff35c9b4c92d62363691a3dd2dffa488a46053232d97e3c8",
+   "bytes": 186481,
+   "mtime_utc": "2026-09-22T11:14:52.788416+00:00"
+  },
+  {
+   "path": "investigations/016-day-ahead-wind-forecast/analysis/output/windfor_vs_fuelinst.png",
+   "sha256": "766ab3d7ec5e237c0c5216f0af3eb8e6808ffd99d8bf790765e7391b5bb2e71a",
+   "bytes": 64238,
+   "mtime_utc": "2026-09-22T20:02:03.764166+00:00"
+  }
+ ]
+}

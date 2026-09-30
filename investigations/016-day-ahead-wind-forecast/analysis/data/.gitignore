@@ -1,0 +1,11 @@
+*journal.ndjson
+
+# Per-period raw acceptance downloads stay local (30 MB); the manifest and its
+# external witnesses are the committed record, and anyone can refetch the
+# pinned URLs and verify the digests.
+acceptances/
+
+# Raw weather downloads stay local (~121 GB); the manifests and witnesses at
+# this level are the committed record.
+weather/era5/
+weather/mogreps-uk/

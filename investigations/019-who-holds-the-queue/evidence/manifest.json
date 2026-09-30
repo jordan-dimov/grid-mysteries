@@ -31,11 +31,11 @@
   }
  },
  "admitted_companies": {
-  "count": 68,
-  "fetched": 0,
-  "skipped_already_pinned": 272,
-  "journal_sha256": "ce5ea8ec0387cc7abf721763ffe370bcc9ac8f308efea693c4b7750e5a4d1b58",
-  "requests": 0,
+  "count": 72,
+  "fetched": 3,
+  "skipped_already_pinned": 285,
+  "journal_sha256": "22df5f77218c6d4393b84bbfa18b700da84b671087dcaf40ee11e413226f7b82",
+  "requests": 3,
   "failures": 0
  }
 }

@@ -88,6 +88,16 @@ here" beats "wrong"); and never call a counterfactual price difference a saving
 without proving the substitution was available and executable. A hypothesis you
 tested and killed belongs in the note, not in the bin.
 
+**Deliverables 1 and 2 have arrived** (merged 30/09/2026, `analysis/`,
+notebooks `deliverable_01` and `deliverable_02` with their figures, the
+witnessed manifests of what they fetched, and a snapshot of the first
+deliverable as it stood before the rework). Deliverable 2 measures the
+forecast against an unconstrained outturn it reconstructs from metered
+output plus accepted bid volume, with a BOALF cross-check. Its figures are
+the contributor's analysis and are read from the notebooks; none is a
+finding of this pack until a declaration covers the comparator, and none
+is repeated here.
+
 ## How to contribute
 
 1. Fork `https://github.com/jordan-dimov/grid-mysteries`.

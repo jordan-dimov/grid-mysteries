@@ -590,17 +590,24 @@ def phase_acquire_amended(seal: str | None, amendment_seal: str | None, run_date
     )
 
 
+def admitted_numbers(admissions: list[dict[str, Any]]) -> set[str]:
+    """Every company a person admitted: by number, or as a holder under the
+    copy-date rule."""
+    out: set[str] = set()
+    for a in admissions:
+        if a.get("decision") != "admitted":
+            continue
+        if a.get("company_number"):
+            out.add(str(a["company_number"]))
+        out |= {str(h["company_number"]) for h in a.get("holders") or []}
+    return out
+
+
 def phase_acquire_admitted(seal: str | None, run_date: str) -> None:
     """The four resources of every company a person admitted (declaration,
     acquire: "every company the rule resolves or a person admits")."""
     require_seal(seal)
-    admitted = sorted(
-        {
-            a["company_number"]
-            for a in load_json(ADMITTED_JSON).get("admissions", [])
-            if a.get("decision") == "admitted" and a.get("company_number")
-        }
-    )
+    admitted = sorted(admitted_numbers(load_json(ADMITTED_JSON).get("admissions", [])))
     raw = REPO_ROOT / "data/raw/companies-house" / f"{run_date}-019"
     journal, manifest = raw / "journal.ndjson", raw / "manifest.json"
     fetcher = PatientFetcher(api_key())
@@ -835,6 +842,7 @@ def phase_compute(run_date: str) -> None:
         sys.exit(f"C6: {len(missing)} names have no link line (e.g. {missing[0]!r})")
     numbers = sorted(
         {lk.company_number for lk in links.values() if lk.resolved and lk.company_number}
+        | admitted_numbers(list(admitted.values()))
     )
     unpinned = [
         x
@@ -919,7 +927,21 @@ def phase_compute(run_date: str) -> None:
     history = load_json(HISTORY_JSON)["history"]
     current_ids = {pid for n in all_names.values() for pid in n.project_ids}
     changes = [c for c in qo.name_changes(history) if c.project_id in current_ids]
-    classed = [qo.classify_change(c, links, profiles) for c in changes]
+
+    def links_on(change: qo.NameChange) -> dict[str, qo.Link]:
+        """The copy-date rule: a name admitted with holders resolves, for the
+        change's earlier name, to the holder at the last copy printing it,
+        and for its later name, to the holder at the first copy printing it."""
+        out = dict(links)
+        for name, on in (
+            (change.earlier, change.last_copy_with_earlier),
+            (change.later, change.first_copy_with_later),
+        ):
+            if name in out and admitted.get(name, {}).get("holders"):
+                out[name] = qo.apply_admissions(out[name], admitted, on=date.fromisoformat(on))
+        return out
+
+    classed = [qo.classify_change(c, links_on(c), profiles) for c in changes]
     counts = Counter(c["class"] for c in classed)
     both_resolved = sum(1 for c in classed if c["class"] in ("rename", "transfer"))
     lags = sorted(c["register_lag_days"] for c in classed if c["register_lag_days"] is not None)

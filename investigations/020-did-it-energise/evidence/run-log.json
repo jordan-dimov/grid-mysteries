@@ -94,6 +94,15 @@
    "projects": 1608,
    "new_lines": 1608,
    "measured": 164
+  },
+  {
+   "phase": "projects-v02",
+   "at": "2026-09-30T21:08:38+00:00",
+   "amendment_2": "3ef7240c",
+   "projects": 164,
+   "new_lines": 164,
+   "with_later": 164,
+   "without_later": 152
   }
  ]
 }

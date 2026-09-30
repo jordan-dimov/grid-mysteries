@@ -199,11 +199,41 @@ def _guarded(
     return Link(name, klass, c.number, tuple(numbers), f"{c.status} created {c.created}")
 
 
-def apply_admissions(link: Link, admitted: dict[str, dict[str, Any]]) -> Link:
-    """A person's admission or refusal overrides a rule that did not resolve."""
+def holder_on(decision: dict[str, Any], on: date | None) -> str | None:
+    """The copy-date rule: an admission may name several holders of one
+    printed name, each with the Companies House tenure `from` (inclusive)
+    to `until` (exclusive) during which that company bore the name. The
+    name resolves, for a copy published `on`, to the holder whose tenure
+    contains that date; to no company when none did, or when no date is
+    asked."""
+    if on is None:
+        return None
+    for h in decision.get("holders") or []:
+        start, end = _date(h.get("from")), _date(h.get("until"))
+        if (start is None or start <= on) and (end is None or on < end):
+            return str(h["company_number"])
+    return None
+
+
+def apply_admissions(
+    link: Link, admitted: dict[str, dict[str, Any]], on: date | None = None
+) -> Link:
+    """A person's admission or refusal overrides a rule that did not resolve.
+    An admission with `holders` resolves only for a copy date (`on`)."""
     decision = admitted.get(link.name)
     if decision is None or link.resolved:
         return link
+    if decision.get("decision") == "admitted" and decision.get("holders"):
+        number = holder_on(decision, on)
+        if number is None:
+            return link
+        return Link(
+            link.name,
+            "admitted",
+            number,
+            link.candidates,
+            f"admitted {decision.get('on')} by {decision.get('by')} (holder on {on})",
+        )
     if decision.get("decision") == "admitted" and decision.get("company_number"):
         return Link(
             link.name,

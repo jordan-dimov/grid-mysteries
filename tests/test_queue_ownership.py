@@ -101,6 +101,28 @@ def test_r2_admission_overrides_only_unresolved_links():
     assert qo.apply_admissions(exact, admitted) == exact
 
 
+def test_r2_copy_date_admission_names_the_holder_at_the_copy_date():
+    unresolved = qo.Link("N", "ambiguous", None, ("1", "2"), "")
+    admitted = {
+        "N": {
+            "decision": "admitted",
+            "rule": "copy-date",
+            "holders": [
+                {"company_number": "1", "from": "2021-07-01", "until": "2023-05-24"},
+                {"company_number": "2", "from": "2023-05-24", "until": "2025-11-06"},
+            ],
+            "on": "2026-09-30",
+            "by": "JD",
+        }
+    }
+    assert qo.apply_admissions(unresolved, admitted, on=date(2022, 8, 24)).company_number == "1"
+    assert qo.apply_admissions(unresolved, admitted, on=date(2023, 5, 24)).company_number == "2"
+    # A copy dated when no candidate bore the name resolves to no company.
+    assert not qo.apply_admissions(unresolved, admitted, on=date(2026, 5, 19)).resolved
+    # Without a copy date the name stays as the rule left it.
+    assert qo.apply_admissions(unresolved, admitted) == unresolved
+
+
 # R3
 
 

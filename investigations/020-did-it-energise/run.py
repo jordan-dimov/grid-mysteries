@@ -3,6 +3,8 @@
 
     uv run --group registers python investigations/020-did-it-energise/run.py --phase population --seal fb8a3428
     uv run --group registers python investigations/020-did-it-energise/run.py --phase schema --seal fb8a3428
+    uv run --group registers python investigations/020-did-it-energise/run.py --phase projects --seal fb8a3428 --amendment-seal cc01e3cf
+    uv run --group registers python investigations/020-did-it-energise/run.py --phase projects-v02 --seal fb8a3428 --amendment-seal cc01e3cf --amendment-2-seal 3ef7240c
 
 - ``population`` (archive only): every copy of the register the repository
   holds (journal and daily capture, one per publication date, each verified
@@ -48,6 +50,9 @@ POPULATION = EVIDENCE / "population.ndjson"
 PROJECTS = EVIDENCE / "projects.ndjson"
 PROJECTS_SUMMARY = EVIDENCE / "projects-summary.json"
 AMENDMENT_1 = HERE / "DECLARATION-amendment-1.md"
+AMENDMENT_2 = HERE / "DECLARATION-amendment-2.md"
+PROJECTS_V02 = EVIDENCE / "projects-v02.ndjson"
+PROJECTS_V02_SUMMARY = EVIDENCE / "projects-v02-summary.json"
 SUMMARY = EVIDENCE / "population-summary.json"
 GATE2 = EVIDENCE / "gate2.json"
 COPIES = EVIDENCE / "copies.json"
@@ -343,16 +348,14 @@ def render_v0(s: dict[str, Any], found: list[en.Transition]) -> str:
     return "\n".join(L)
 
 
-def require_amendment(amendment_seal: str | None) -> str:
-    digest = sha(AMENDMENT_1)
-    if (
-        not amendment_seal
-        or not digest.startswith(amendment_seal)
-        or not digest.startswith(en.AMENDMENT_1_PREFIX)
-    ):
-        sys.exit("refusing: --amendment-seal must be a prefix of the frozen amendment's SHA-256")
-    if not AMENDMENT_1.with_suffix(".md.timestamps.json").exists():
-        sys.exit("refusing: the amendment has no proof sidecar; freeze it first")
+def require_amendment(
+    amendment_seal: str | None, path: Path = AMENDMENT_1, prefix: str = en.AMENDMENT_1_PREFIX
+) -> str:
+    digest = sha(path)
+    if not amendment_seal or not digest.startswith(amendment_seal) or not digest.startswith(prefix):
+        sys.exit(f"refusing: the seal must be a prefix of the frozen {path.name}'s SHA-256")
+    if not path.with_suffix(".md.timestamps.json").exists():
+        sys.exit(f"refusing: {path.name} has no proof sidecar; freeze it first")
     return digest
 
 
@@ -474,6 +477,168 @@ def render_v01(s: dict[str, Any], found: list[en.ProjectTransition]) -> str:
     L += [
         "",
         "Version 0 (per unit) stands above as computed and is not the same quantity. `evidence/projects.ndjson` is append-only.",
+        "",
+    ]
+    return "\n".join(L)
+
+
+def phase_projects_v02(
+    seal: str | None, amendment_seal: str | None, amendment_2_seal: str | None
+) -> None:
+    """Version 0.2: amendment 2's A1′ (the later stages as a population) and
+    A1″ (the measure with and without them), from the archive alone."""
+    require_seal(seal)
+    digest_1 = require_amendment(amendment_seal)
+    digest_2 = require_amendment(amendment_2_seal, AMENDMENT_2, en.AMENDMENT_2_PREFIX)
+    usable, excluded, unreadable = load_copies()
+    result = cs.series(usable, partial_export_rule=True)
+    kept = analysis.kept(usable, result)
+    seen = en.sightings(
+        [
+            (k.regime, k.vintage.t_public, k.vintage.sha256, list(k.vintage.rows), k.swapped)
+            for k in kept
+        ]
+    )
+    order: dict[str, list[date]] = {}
+    for k in kept:
+        order.setdefault(k.regime, []).append(k.vintage.t_public)
+    found = en.project_stages(seen, order)
+    existing: dict[str, str] = {}
+    if PROJECTS_V02.exists():
+        for line in PROJECTS_V02.read_text().splitlines():
+            if line.strip():
+                existing[json.loads(line)["key"]] = line
+    new_lines = []
+    for t in found:
+        record = {
+            "key": f"{t.regime}|{t.project}",
+            **{k: v for k, v in t.__dict__.items() if k != "stages"},
+            "klass": t.klass,
+            "stages": [s.__dict__ for s in t.stages],
+            "later_stages": len(t.later),
+            "later_mw": t.later_mw,
+            "reference_with": t.reference_with,
+            "reference_without": t.reference_without,
+            "months_with": t.months_with,
+            "months_without": t.months_without,
+            "months_earliest_with": t.months_earliest_with,
+            "months_earliest_without": t.months_earliest_without,
+        }
+        line = dumps(record).replace("\n", "")
+        if record["key"] in existing:
+            if existing[record["key"]] != line:
+                sys.exit(f"C2: projects-v02 line for {record['key']} would change on recompute")
+            continue
+        new_lines.append(line)
+    with PROJECTS_V02.open("a") as f:
+        for line in new_lines:
+            f.write(line + "\n")
+    summary = en.stages_summary(found)
+    summary.update(
+        {
+            "declaration_sha256": en.DECLARATION_SHA256,
+            "amendment_1_sha256": digest_1,
+            "amendment_2_sha256": digest_2,
+            "copies_usable": len(usable),
+            "copies_kept": len(kept),
+            "computed_at": datetime.now(UTC).isoformat(timespec="seconds"),
+        }
+    )
+    write_json(PROJECTS_V02_SUMMARY, summary)
+    if RESULTS_V0.exists():
+        RESULTS_V0.write_text(
+            RESULTS_V0.read_text().split("\n## Version 0.2")[0] + render_v02(summary, found)
+        )
+    log_run(
+        "projects-v02",
+        amendment_2=digest_2[:8],
+        projects=len(found),
+        new_lines=len(new_lines),
+        with_later=summary["with_later_stages"]["measured"],
+        without_later=summary["without_later_stages"]["measured"],
+    )
+    w, wo = summary["with_later_stages"], summary["without_later_stages"]
+    print(
+        f"v0.2 measured {summary['projects_measured']} projects; {summary['projects_with_later_stages']} with later stages "
+        f"({summary['later_stages']} stages, {summary['later_stages_mw']} MW), {summary['only_later_stages']} only later stages; "
+        f"median with {w['months_reference_to_built_copy']['median']} (n={w['measured']}, {w['built_copy_before_the_date']} negative) "
+        f"vs without {wo['months_reference_to_built_copy']['median']} (n={wo['measured']}, {wo['built_copy_before_the_date']} negative); "
+        f"difference {summary['median_difference_without_minus_with']}; {len(summary['moved_from_negative_to_non_negative'])} moved to non-negative"
+    )
+
+
+def _quantile_table(label: str, block: dict[str, Any]) -> list[str]:
+    L = ["", f"| {label} | n | min | p25 | median | p75 | max |", "|---|---|---|---|---|---|---|"]
+    L += [
+        f"| {y} | {v['n']} | {v['min']} | {v['p25']} | {v['median']} | {v['p75']} | {v['max']} |"
+        for y, v in block.items()
+    ]
+    return L
+
+
+def render_v02(s: dict[str, Any], found: list[en.ProjectStages]) -> str:
+    w, wo = s["with_later_stages"], s["without_later_stages"]
+    qw, qwo = w["months_reference_to_built_copy"], wo["months_reference_to_built_copy"]
+    L = [
+        "",
+        "## Version 0.2 — the later stages as a population of their own (amendment 2, A1′ and A1″)",
+        "",
+        f"Computed {s['computed_at']} under amendment 2 `{s['amendment_2_sha256'][:8]}…` (amendment 1 `{s['amendment_1_sha256'][:8]}…`), register only, "
+        "over the same projects as version 0.1: a project's capacity-bearing (MW > 0) dated stages in the kept copy before its first `Built` copy, "
+        "split by their printed date against that copy's publication date.",
+        "",
+        f"Projects measured: {s['projects_measured']}. With at least one later stage: {s['projects_with_later_stages']} projects, "
+        f"{s['later_stages']} later stages carrying {s['later_stages_mw']} MW. Projects whose dated capacity-bearing stages are all later: "
+        f"{s['only_later_stages']} (labelled *only later stages*; no reference date in the second measure).",
+        "",
+        "| measure | n | min | p25 | median | p75 | max | before the date | within six months | later than six months | sensitivity (earliest) median |",
+        "|---|---|---|---|---|---|---|---|---|---|---|",
+        f"| with later stages (A1) | {qw['n']} | {qw['min']} | {qw['p25']} | {qw['median']} | {qw['p75']} | {qw['max']} | {w['built_copy_before_the_date']} | {w['built_copy_within_six_months_after']} | {w['built_copy_later_than_six_months']} | {w['sensitivity_earliest']['median']} |",
+        f"| without later stages | {qwo['n']} | {qwo['min']} | {qwo['p25']} | {qwo['median']} | {qwo['p75']} | {qwo['max']} | {wo['built_copy_before_the_date']} | {wo['built_copy_within_six_months_after']} | {wo['built_copy_later_than_six_months']} | {wo['sensitivity_earliest']['median']} |",
+        "",
+        f"Difference of medians (without minus with): **{s['median_difference_without_minus_with']}** months. "
+        f"Projects that move from negative to non-negative: {len(s['moved_from_negative_to_non_negative'])}.",
+    ]
+    moved = set(s["moved_from_negative_to_non_negative"])
+    if moved:
+        L += [
+            "",
+            "| project | plant type | `Built` copy | with | without |",
+            "|---|---|---|---|---|",
+        ]
+        L += [
+            f"| {t.project_name} | {t.plant_type} | {t.first_built} | {t.months_with} | {t.months_without} |"
+            for t in found
+            if f"{t.regime}|{t.project}" in moved
+        ]
+    L += _quantile_table("year of the `Built` copy, with later stages", w["by_year_of_built_copy"])
+    L += _quantile_table(
+        "year of the `Built` copy, without later stages", wo["by_year_of_built_copy"]
+    )
+    L += _quantile_table(
+        "plant type as printed, with later stages", dict(list(w["by_plant_type"].items())[:15])
+    )
+    L += _quantile_table(
+        "plant type as printed, without later stages", dict(list(wo["by_plant_type"].items())[:15])
+    )
+    L += [
+        "",
+        "Later stages, per project (stage label, MW, printed date):",
+        "",
+        "| project | `Built` copy | later stages |",
+        "|---|---|---|",
+    ]
+    L += [
+        f"| {t.project_name} | {t.first_built} | "
+        + "; ".join(f"{x.stage or '(blank)'} {x.mw} MW {x.effective}" for x in t.later)
+        + " |"
+        for t in found
+        if t.later
+    ]
+    L += [
+        "",
+        "Neither measure is called the true one: which stage a lender's date refers to is a fact about the contract, not the register. "
+        "Version 0.1 stands above as computed. `evidence/projects-v02.ndjson` is append-only.",
         "",
     ]
     return "\n".join(L)
@@ -707,9 +872,12 @@ def schema_md(name: str, key: str, r: dict[str, Any], run_date: str) -> str:
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__.split("\n\n")[0])
-    parser.add_argument("--phase", required=True, choices=["population", "schema", "projects"])
+    parser.add_argument(
+        "--phase", required=True, choices=["population", "schema", "projects", "projects-v02"]
+    )
     parser.add_argument("--seal", default=None)
     parser.add_argument("--amendment-seal", default=None)
+    parser.add_argument("--amendment-2-seal", default=None)
     parser.add_argument("--run-date", default=datetime.now(UTC).date().isoformat())
     args = parser.parse_args()
     EVIDENCE.mkdir(exist_ok=True)
@@ -717,6 +885,8 @@ def main() -> None:
         phase_population(args.seal)
     elif args.phase == "projects":
         phase_projects(args.seal, args.amendment_seal)
+    elif args.phase == "projects-v02":
+        phase_projects_v02(args.seal, args.amendment_seal, args.amendment_2_seal)
     else:
         phase_schema(args.seal, args.run_date)
 

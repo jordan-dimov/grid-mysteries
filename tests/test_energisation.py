@@ -224,3 +224,55 @@ def test_a1_labels_first_sight_undated_and_not_sighted_in_the_copy_before():
         "Undated": "undated-before-built",
         "Gap": "not-sighted-in-copy-before",
     }
+
+
+def test_a1_prime_splits_later_stages_and_measures_twice():
+    seq = kept(
+        (
+            date(2024, 1, 5),
+            [
+                row(eff="30/06/2024", mw="100", stage="1"),
+                row(eff="31/12/2026", mw="50", stage="2"),
+                row(eff="30/06/2030", mw="0", stage="3"),
+            ],
+        ),
+        (
+            date(2024, 9, 5),
+            [
+                row(eff="", mw="100", stage="1", status="Built"),
+                row(eff="31/12/2026", mw="50", stage="2", status="Built"),
+                row(eff="30/06/2030", mw="0", stage="3", status="Built"),
+            ],
+        ),
+    )
+    order = {"new": [date(2024, 1, 5), date(2024, 9, 5)]}
+    found = en.project_stages(en.sightings(seq), order)
+    assert len(found) == 1
+    t = found[0]
+    assert [(s.stage, s.mw, s.later) for s in t.stages] == [
+        ("1", Decimal("100"), False),
+        ("2", Decimal("50"), True),
+    ]
+    assert t.klass == "transition" and t.later_mw == Decimal("50")
+    # With the later stage: amendment 1's A1 exactly (the test above).
+    assert t.months_with == en.project_transitions(en.sightings(seq), order)[0].months_reference
+    assert t.months_with == Decimal("-27.8") and t.months_without == Decimal("2.2")
+    s = en.stages_summary(found)
+    assert s["projects_with_later_stages"] == 1 and s["later_stages_mw"] == Decimal("50")
+    assert s["with_later_stages"]["built_copy_before_the_date"] == 1
+    assert s["without_later_stages"]["built_copy_before_the_date"] == 0
+    assert s["median_difference_without_minus_with"] == Decimal("30.0")
+    assert s["moved_from_negative_to_non_negative"] == ["new|name:alpha|a ltd|s 400kv"]
+
+
+def test_a1_prime_only_later_stages_has_no_second_measure():
+    seq = kept(
+        (date(2024, 1, 5), [row(eff="31/12/2026", mw="50", stage="2")]),
+        (date(2024, 9, 5), [row(eff="31/12/2026", mw="50", stage="2", status="Built")]),
+    )
+    found = en.project_stages(en.sightings(seq), {"new": [date(2024, 1, 5), date(2024, 9, 5)]})
+    (t,) = found
+    assert t.klass == "only-later-stages" and t.months_without is None
+    s = en.stages_summary(found)
+    assert s["only_later_stages"] == 1
+    assert s["with_later_stages"]["measured"] == 1 and s["without_later_stages"]["measured"] == 0

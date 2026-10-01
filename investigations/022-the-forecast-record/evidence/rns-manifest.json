@@ -358,5 +358,2165 @@
   "sha256": "1f8a1056b9364b6111f6e10cc10063dac50f167c00efc560a0d7fb2213dbe544",
   "fetched_at": "2026-10-01T14:23:01.213156+00:00",
   "bytes": 1126928
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/investors",
+  "path": "data/raw/rns/022/041-investors.html",
+  "sha256": "1dc1ce8243b1b2d6eab4c84ef9e4fa23ef957e3dfface3ec158e76d2a32bfce6",
+  "fetched_at": "2026-10-01T16:15:17.322834+00:00",
+  "bytes": 38210
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/trading-update-for-hy-results-to-30-june-2026/9750396",
+  "path": "data/raw/rns/022/042-announcement__rns__gresham-house-energy-storage-fund--grid__trading-update-for-hy-results-to-30-june-2026__9750396.html",
+  "sha256": "435feb6d197add290eca73879c90c82f833b7d911478121511c24eb7d9e44081",
+  "fetched_at": "2026-10-01T16:15:18.087443+00:00",
+  "bytes": 85805
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/2026-capital-markets-webinar/9588712",
+  "path": "data/raw/rns/022/043-announcement__rns__gresham-house-energy-storage-fund--grid__2026-capital-markets-webinar__9588712.html",
+  "sha256": "4c0156326d5ea7e6d88e1fcaa4fd0a57b712976f1c7b5102b6a638460ab6a78a",
+  "fetched_at": "2026-10-01T16:15:18.804397+00:00",
+  "bytes": 62749
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/q1-2026-quarterly-nav-announcement/9581218",
+  "path": "data/raw/rns/022/044-announcement__rns__gresham-house-energy-storage-fund--grid__q1-2026-quarterly-nav-announcement__9581218.html",
+  "sha256": "3da4f07e75969806dadaa99aa30033ae7b03636f9075ca2cb924cd721ee95f10",
+  "fetched_at": "2026-10-01T16:15:19.558080+00:00",
+  "bytes": 65353
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/conditional-acquisition-of-480mw-project/9581193",
+  "path": "data/raw/rns/022/045-announcement__rns__gresham-house-energy-storage-fund--grid__conditional-acquisition-of-480mw-project__9581193.html",
+  "sha256": "6075863c0ed86f29fbced1d4b677db8a75cd5967ae7938eeed32cb373053c5fe",
+  "fetched_at": "2026-10-01T16:15:20.312750+00:00",
+  "bytes": 69469
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/signing-of-ecas-cockenzie-acquisition-completion/9569672",
+  "path": "data/raw/rns/022/046-announcement__rns__gresham-house-energy-storage-fund--grid__signing-of-ecas-cockenzie-acquisition-completion__9569672.html",
+  "sha256": "51eb058e6e99aba3c559267777d91a96af8a7c3c7c39087a109af236b2737bdf",
+  "fetched_at": "2026-10-01T16:15:21.060097+00:00",
+  "bytes": 68923
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/capital-markets-webinar-2026/9547996",
+  "path": "data/raw/rns/022/047-announcement__rns__gresham-house-energy-storage-fund--grid__capital-markets-webinar-2026__9547996.html",
+  "sha256": "774c29d589aa25a5362d6fd02ed8936d9d86456e1883022ede4b42a70dc91b21",
+  "fetched_at": "2026-10-01T16:15:21.796738+00:00",
+  "bytes": 62374
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/unaudited-nav-as-of-31-dec-2025-and-trading-update/9456981",
+  "path": "data/raw/rns/022/048-announcement__rns__gresham-house-energy-storage-fund--grid__unaudited-nav-as-of-31-dec-2025-and-trading-update__9456981.html",
+  "sha256": "b72b460018a92fa9ad4742753669286b9a2ef290d2d188412af9ebb662e4492a",
+  "fetched_at": "2026-10-01T16:15:22.548631+00:00",
+  "bytes": 76611
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/q3-2025-nav-announcement/9245484",
+  "path": "data/raw/rns/022/049-announcement__rns__gresham-house-energy-storage-fund--grid__q3-2025-nav-announcement__9245484.html",
+  "sha256": "ae5bb4b4b0e72f02e5b0e6f7e3a345d4336fd190544100e13de705632932f076",
+  "fetched_at": "2026-10-01T16:15:23.285595+00:00",
+  "bytes": 72087
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/anticipated-acquisition-of-100mw-project/9245370",
+  "path": "data/raw/rns/022/050-announcement__rns__gresham-house-energy-storage-fund--grid__anticipated-acquisition-of-100mw-project__9245370.html",
+  "sha256": "95f832ae25920ddaf3ef08248816687e165743c5cc3a7e5c76e49b41d58e7f7a",
+  "fetched_at": "2026-10-01T16:15:24.040618+00:00",
+  "bytes": 63729
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/eqs/gresham-house-energy-storage-fund--grid/edison-issues-report-on-gresham-house-energy-/9137693",
+  "path": "data/raw/rns/022/051-announcement__eqs__gresham-house-energy-storage-fund--grid__edison-issues-report-on-gresham-house-energy-__9137693.html",
+  "sha256": "44d7214d6eafdb5ceed63410ea22f5f4cf17f3ad620cd7b555fc1dd541237f9a",
+  "fetched_at": "2026-10-01T16:15:24.772924+00:00",
+  "bytes": 52285
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/investor-presentation-via-investor-meet-company/9134708",
+  "path": "data/raw/rns/022/052-announcement__rns__gresham-house-energy-storage-fund--grid__investor-presentation-via-investor-meet-company__9134708.html",
+  "sha256": "070abc8cb41d374e62005970d98627fcb9cea5cdc8d633b2fe024fb1b09ab978",
+  "fetched_at": "2026-10-01T16:15:25.512828+00:00",
+  "bytes": 62774
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/eqs/gresham-house-energy-storage-fund--grid/edison-issues-report-on-gresham-house-energy-/9069913",
+  "path": "data/raw/rns/022/053-announcement__eqs__gresham-house-energy-storage-fund--grid__edison-issues-report-on-gresham-house-energy-__9069913.html",
+  "sha256": "89c87d71f7332d5501d56a92c1a4e07d2eb7253b55070921e0b1d119f3bc5d9a",
+  "fetched_at": "2026-10-01T16:15:26.236968+00:00",
+  "bytes": 51204
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/glassenbury-8-6mn-equity-funding-at-project-nav/8943840",
+  "path": "data/raw/rns/022/054-announcement__rns__gresham-house-energy-storage-fund--grid__glassenbury-8-6mn-equity-funding-at-project-nav__8943840.html",
+  "sha256": "4630b135046627783cd1d62de0160555917f50478644be0cc93d781e69ce9e8a",
+  "fetched_at": "2026-10-01T16:15:26.966576+00:00",
+  "bytes": 71920
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/quarterly-nav-announcement-and-business-update/8891241",
+  "path": "data/raw/rns/022/055-announcement__rns__gresham-house-energy-storage-fund--grid__quarterly-nav-announcement-and-business-update__8891241.html",
+  "sha256": "2c5f7aaa9ccc884d5cec57b8761be1622b457669ca404ec8f1a601de902c8c02",
+  "fetched_at": "2026-10-01T16:15:27.711392+00:00",
+  "bytes": 75385
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/eqs/gresham-house-energy-storage-fund--grid/edison-issues-report-on-gresham-house-energy-/8870654",
+  "path": "data/raw/rns/022/056-announcement__eqs__gresham-house-energy-storage-fund--grid__edison-issues-report-on-gresham-house-energy-__8870654.html",
+  "sha256": "5348bb54ef2fad299773ba7d6e2aea9bcc232fb2fc1a62d98a987389a19df2f9",
+  "fetched_at": "2026-10-01T16:15:28.429306+00:00",
+  "bytes": 50898
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/notice-of-results/8825922",
+  "path": "data/raw/rns/022/057-announcement__rns__gresham-house-energy-storage-fund--grid__notice-of-results__8825922.html",
+  "sha256": "b27a65eae33927884287738b4efa4bc446a35d5eaadfdf7d38a40073ec9a253e",
+  "fetched_at": "2026-10-01T16:15:29.180298+00:00",
+  "bytes": 57859
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/eqs/gresham-house-energy-storage-fund--grid/edison-issues-report-on-gresham-house-energy-/8764661",
+  "path": "data/raw/rns/022/058-announcement__eqs__gresham-house-energy-storage-fund--grid__edison-issues-report-on-gresham-house-energy-__8764661.html",
+  "sha256": "9a5435146776d829e7cb3850680f4dc4b5c58be9361062a10662a95941f8484f",
+  "fetched_at": "2026-10-01T16:15:29.913058+00:00",
+  "bytes": 51028
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/unaudited-nav-at-31-december-2024-trading-update/8758929",
+  "path": "data/raw/rns/022/059-announcement__rns__gresham-house-energy-storage-fund--grid__unaudited-nav-at-31-december-2024-trading-update__8758929.html",
+  "sha256": "0b07b31be1f3f55ab84217a0914ccae87857947b6323d34aa683a5f652c4017c",
+  "fetched_at": "2026-10-01T16:15:30.671497+00:00",
+  "bytes": 78578
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/eqs/gresham-house-energy-storage-fund--grid/edison-issues-report-on-gresham-house-energy-/8589814",
+  "path": "data/raw/rns/022/060-announcement__eqs__gresham-house-energy-storage-fund--grid__edison-issues-report-on-gresham-house-energy-__8589814.html",
+  "sha256": "0b631868e243dbfb53e96640a2712bd42451dca1c12fea274e6a6550d932b42d",
+  "fetched_at": "2026-10-01T16:15:31.395477+00:00",
+  "bytes": 51082
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/quarterly-nav-announcement-and-business-update-/8555139",
+  "path": "data/raw/rns/022/061-announcement__rns__gresham-house-energy-storage-fund--grid__quarterly-nav-announcement-and-business-update-__8555139.html",
+  "sha256": "1357d5c66e56139cd78ba5bc5b89f5b27e86863296c57795b7ecad067b45b959",
+  "fetched_at": "2026-10-01T16:15:32.121546+00:00",
+  "bytes": 68989
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/capital-markets-day-2024/8518407",
+  "path": "data/raw/rns/022/062-announcement__rns__gresham-house-energy-storage-fund--grid__capital-markets-day-2024__8518407.html",
+  "sha256": "b90ca82417ba2e8806fe125998730444abca40f16160dffd32434cbb1eebdcc1",
+  "fetched_at": "2026-10-01T16:15:32.866131+00:00",
+  "bytes": 55939
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/eqs/gresham-house-energy-storage-fund--grid/edison-issues-report-on-gresham-house-energy-/8503800",
+  "path": "data/raw/rns/022/063-announcement__eqs__gresham-house-energy-storage-fund--grid__edison-issues-report-on-gresham-house-energy-__8503800.html",
+  "sha256": "5f71c65914bc79c5ddf4a924d0353856570c2841adeb4df65f91bdd40bdfc454",
+  "fetched_at": "2026-10-01T16:15:33.598537+00:00",
+  "bytes": 50450
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/eqs/gresham-house-energy-storage-fund--grid/edison-issues-report-on-gresham-house-energy-/8457753",
+  "path": "data/raw/rns/022/064-announcement__eqs__gresham-house-energy-storage-fund--grid__edison-issues-report-on-gresham-house-energy-__8457753.html",
+  "sha256": "0ada3cd793628938106102637f18b51e3ee69ba61a4ba35b545e6ca2d2e317ae",
+  "fetched_at": "2026-10-01T16:15:34.340144+00:00",
+  "bytes": 50948
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/eqs/gresham-house-energy-storage-fund--grid/edison-issues-report-on-gresham-house-energy-/8407322",
+  "path": "data/raw/rns/022/065-announcement__eqs__gresham-house-energy-storage-fund--grid__edison-issues-report-on-gresham-house-energy-__8407322.html",
+  "sha256": "836137a30c136bfd00e93f5519dc3f4e94b08b92a4ade5c0343164c8b81bc204",
+  "fetched_at": "2026-10-01T16:15:35.077824+00:00",
+  "bytes": 51597
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/q2-2024-nav-valuation-trading-update-for-h1-24/8405257",
+  "path": "data/raw/rns/022/066-announcement__rns__gresham-house-energy-storage-fund--grid__q2-2024-nav-valuation-trading-update-for-h1-24__8405257.html",
+  "sha256": "33ff0a5bf2a673f3fb2ada9f1b0ed20f0d8bbcfcfaa3d2308c25f374443b4415",
+  "fetched_at": "2026-10-01T16:15:35.842935+00:00",
+  "bytes": 132223
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/quarterly-nav-and-factsheet-publication/8212954",
+  "path": "data/raw/rns/022/067-announcement__rns__gresham-house-energy-storage-fund--grid__quarterly-nav-and-factsheet-publication__8212954.html",
+  "sha256": "882b72877380fe47924726313f9623526d52f254aeeb36fcf6cc6ec4ca495be6",
+  "fetched_at": "2026-10-01T16:15:36.570228+00:00",
+  "bytes": 64212
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/eqs/gresham-house-energy-storage-fund--grid/edison-issues-update-on-gresham-house-energy-/8208038",
+  "path": "data/raw/rns/022/068-announcement__eqs__gresham-house-energy-storage-fund--grid__edison-issues-update-on-gresham-house-energy-__8208038.html",
+  "sha256": "b29d5168efa2de93ca838c1a27a72807d7aaa74450cf70a6a9200f6c7b463370",
+  "fetched_at": "2026-10-01T16:15:37.316410+00:00",
+  "bytes": 52610
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/trading-update/8145402",
+  "path": "data/raw/rns/022/069-announcement__rns__gresham-house-energy-storage-fund--grid__trading-update__8145402.html",
+  "sha256": "3d6585c988db716945b2209255d000578bf5f11d9d393dc8f0320f29b6d395f4",
+  "fetched_at": "2026-10-01T16:15:38.050682+00:00",
+  "bytes": 75369
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/capacity-market-cm-auction-results/8052644",
+  "path": "data/raw/rns/022/070-announcement__rns__gresham-house-energy-storage-fund--grid__capacity-market-cm-auction-results__8052644.html",
+  "sha256": "dc16901cfcef7aa3e86a11c01750cdd8e2a0257ade068e2c8e76b62225bc699e",
+  "fetched_at": "2026-10-01T16:15:38.784360+00:00",
+  "bytes": 63870
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/eqs/gresham-house-energy-storage-fund--grid/edison-issues-flash-on-gresham-house-energy-s-/8022173",
+  "path": "data/raw/rns/022/071-announcement__eqs__gresham-house-energy-storage-fund--grid__edison-issues-flash-on-gresham-house-energy-s-__8022173.html",
+  "sha256": "0ac0ace9402ea45dcc9341ba8ab048e4263e8cf2b6a01191081f27163728d5eb",
+  "fetched_at": "2026-10-01T16:15:39.524888+00:00",
+  "bytes": 53348
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/trading-update/8016260",
+  "path": "data/raw/rns/022/072-announcement__rns__gresham-house-energy-storage-fund--grid__trading-update__8016260.html",
+  "sha256": "3bc21441da24501bf76d934e1bf92c0085871b941e71c8da452ff0d5129aa066",
+  "fetched_at": "2026-10-01T16:15:40.287843+00:00",
+  "bytes": 85971
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/quarterly-nav-and-factsheet-publication/7895789",
+  "path": "data/raw/rns/022/073-announcement__rns__gresham-house-energy-storage-fund--grid__quarterly-nav-and-factsheet-publication__7895789.html",
+  "sha256": "c599580e202861fbc028ff59038334ddf8e56fefd900cd8f20b0b72f254dab8e",
+  "fetched_at": "2026-10-01T16:15:41.036629+00:00",
+  "bytes": 61325
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/half-year-results-to-30-june-2023/7779863",
+  "path": "data/raw/rns/022/074-announcement__rns__gresham-house-energy-storage-fund--grid__half-year-results-to-30-june-2023__7779863.html",
+  "sha256": "216986edab1e927b0d05507f6d861e11fb077a557ceaec952f3e5822189b8f0d",
+  "fetched_at": "2026-10-01T16:15:41.755533+00:00",
+  "bytes": 71515
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/trading-update/7740409",
+  "path": "data/raw/rns/022/075-announcement__rns__gresham-house-energy-storage-fund--grid__trading-update__7740409.html",
+  "sha256": "450388ad0fcb7e95a7511fdc526a2431413a3b69efbd5770e440248dba0b02ff",
+  "fetched_at": "2026-10-01T16:15:42.530481+00:00",
+  "bytes": 119885
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/result-of-issue-and-total-voting-rights/7542016",
+  "path": "data/raw/rns/022/076-announcement__rns__gresham-house-energy-storage-fund--grid__result-of-issue-and-total-voting-rights__7542016.html",
+  "sha256": "bc46c194142e462e5f363bec75883509d6af7f4d5af586f53ea9747921a87a56",
+  "fetched_at": "2026-10-01T16:15:43.280890+00:00",
+  "bytes": 73446
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/proposed-placing-/7531928",
+  "path": "data/raw/rns/022/077-announcement__rns__gresham-house-energy-storage-fund--grid__proposed-placing-__7531928.html",
+  "sha256": "5b1f87e14ea206f7cd52033d0cf757737a4cc18c7ebd7fb7a4cf36eb1549fd47",
+  "fetched_at": "2026-10-01T16:15:44.107892+00:00",
+  "bytes": 166714
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/net-asset-value-s-/7523996",
+  "path": "data/raw/rns/022/078-announcement__rns__gresham-house-energy-storage-fund--grid__net-asset-value-s-__7523996.html",
+  "sha256": "ec0998fef2fa414968d5378771127b797ce3d47e3a42f43e5f6a1ac7d0b69e7d",
+  "fetched_at": "2026-10-01T16:15:44.863245+00:00",
+  "bytes": 60324
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/publication-of-supplementary-prospectus/7491352",
+  "path": "data/raw/rns/022/079-announcement__rns__gresham-house-energy-storage-fund--grid__publication-of-supplementary-prospectus__7491352.html",
+  "sha256": "14f9450c01dcee3a3b5088b92ec0c175c0442c2f4870657b0d8130b97d1103fc",
+  "fetched_at": "2026-10-01T16:15:45.607839+00:00",
+  "bytes": 63069
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/results-to-31-december-2022/7457536",
+  "path": "data/raw/rns/022/080-announcement__rns__gresham-house-energy-storage-fund--grid__results-to-31-december-2022__7457536.html",
+  "sha256": "2cb3d1dfd54fcc7f8bbd491c1a76dc4c4e1536606a7948333bb7693fe9724b38",
+  "fetched_at": "2026-10-01T16:15:46.510729+00:00",
+  "bytes": 1422844
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/notice-of-results/7426643",
+  "path": "data/raw/rns/022/081-announcement__rns__gresham-house-energy-storage-fund--grid__notice-of-results__7426643.html",
+  "sha256": "60a7d1602e6116f7eb48de17a72905e761bc4de9d1411f420737b2759a6e84e0",
+  "fetched_at": "2026-10-01T16:15:47.241153+00:00",
+  "bytes": 57718
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/correction-trading-update/7434364",
+  "path": "data/raw/rns/022/082-announcement__rns__gresham-house-energy-storage-fund--grid__correction-trading-update__7434364.html",
+  "sha256": "511711e359e10aafb5d825928e6f2e5b521ee01af6d9265366f71f223f337a46",
+  "fetched_at": "2026-10-01T16:15:47.969730+00:00",
+  "bytes": 64746
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/trading-update/7396756",
+  "path": "data/raw/rns/022/083-announcement__rns__gresham-house-energy-storage-fund--grid__trading-update__7396756.html",
+  "sha256": "94653f07f0e6c472654974f81533c81e733700cc4b0fd9d658c93858259f6e36",
+  "fetched_at": "2026-10-01T16:15:48.703115+00:00",
+  "bytes": 64039
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/net-asset-value-s-/7328748",
+  "path": "data/raw/rns/022/084-announcement__rns__gresham-house-energy-storage-fund--grid__net-asset-value-s-__7328748.html",
+  "sha256": "ba30369a60a913511cf339be69a61585bb52a26f9cd2008e3f65a1581087dde2",
+  "fetched_at": "2026-10-01T16:15:49.441250+00:00",
+  "bytes": 61948
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/half-year-results-to-30-june-2022/7122918",
+  "path": "data/raw/rns/022/085-announcement__rns__gresham-house-energy-storage-fund--grid__half-year-results-to-30-june-2022__7122918.html",
+  "sha256": "6fc654a2744cf1096248713d2d48cc8a80be2f4b2b66c86e12737bf8f90cb5dc",
+  "fetched_at": "2026-10-01T16:15:50.295494+00:00",
+  "bytes": 944987
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/notice-of-interim-results/7415229",
+  "path": "data/raw/rns/022/086-announcement__rns__gresham-house-energy-storage-fund--grid__notice-of-interim-results__7415229.html",
+  "sha256": "5ccc404e0bc1725c774d9389ea6b60baf443b50e117b011d2d8bb970cda50a1b",
+  "fetched_at": "2026-10-01T16:15:51.057248+00:00",
+  "bytes": 55149
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/result-of-placing-and-total-voting-rights/7029004",
+  "path": "data/raw/rns/022/087-announcement__rns__gresham-house-energy-storage-fund--grid__result-of-placing-and-total-voting-rights__7029004.html",
+  "sha256": "2b5e8fc74b46e11a50e53643b2a92ca5b4c1b2c477e58473441d819a38130378",
+  "fetched_at": "2026-10-01T16:15:51.789542+00:00",
+  "bytes": 73827
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/publication-of-a-prospectus/7025482",
+  "path": "data/raw/rns/022/088-announcement__rns__gresham-house-energy-storage-fund--grid__publication-of-a-prospectus__7025482.html",
+  "sha256": "3eb53cb99d840fa9b4cff59fcf938a5f68d1351ff66341902232f73cc1bb7ad5",
+  "fetched_at": "2026-10-01T16:15:52.504983+00:00",
+  "bytes": 71982
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/publication-of-supplementary-prospectus/7024941",
+  "path": "data/raw/rns/022/089-announcement__rns__gresham-house-energy-storage-fund--grid__publication-of-supplementary-prospectus__7024941.html",
+  "sha256": "88239bbc186407b7e089cfcdb87aaa6df9d4a89c24dd5810c03a6a29815542b2",
+  "fetched_at": "2026-10-01T16:15:53.221448+00:00",
+  "bytes": 71986
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/proposed-placing/6977322",
+  "path": "data/raw/rns/022/090-announcement__rns__gresham-house-energy-storage-fund--grid__proposed-placing__6977322.html",
+  "sha256": "f943651b4aafa98783984a5cea2cbd22039f27b2838378f9bd8cac9bb9962747",
+  "fetched_at": "2026-10-01T16:15:53.994252+00:00",
+  "bytes": 112003
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/quarterly-nav-and-factsheet-publication/7145719",
+  "path": "data/raw/rns/022/091-announcement__rns__gresham-house-energy-storage-fund--grid__quarterly-nav-and-factsheet-publication__7145719.html",
+  "sha256": "38c02cf84300c88873da4a5a71718357d461635a84daecc70cafecf0e163582a",
+  "fetched_at": "2026-10-01T16:15:54.736589+00:00",
+  "bytes": 65699
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/results-to-31-december-2021/6862193",
+  "path": "data/raw/rns/022/092-announcement__rns__gresham-house-energy-storage-fund--grid__results-to-31-december-2021__6862193.html",
+  "sha256": "21c317a8dfe523d71a1191e26f4547849fbdf537affedbefa83d4b66493d775a",
+  "fetched_at": "2026-10-01T16:15:55.655684+00:00",
+  "bytes": 1229956
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/notice-of-results/7140796",
+  "path": "data/raw/rns/022/093-announcement__rns__gresham-house-energy-storage-fund--grid__notice-of-results__7140796.html",
+  "sha256": "816e1e2e589e7c6751271403613aba1ca7ddf6dbcf145e3ba8e6afc05b6dd81d",
+  "fetched_at": "2026-10-01T16:15:56.383236+00:00",
+  "bytes": 56169
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/capacity-market-cm-auction-2022-and-nav-uplift/6959930",
+  "path": "data/raw/rns/022/094-announcement__rns__gresham-house-energy-storage-fund--grid__capacity-market-cm-auction-2022-and-nav-uplift__6959930.html",
+  "sha256": "6e3f00de94928cd0a200c5571db6c6b6d8b5352c737f148518cb949cfcb677d0",
+  "fetched_at": "2026-10-01T16:15:57.122112+00:00",
+  "bytes": 58675
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/trading-update/6805736",
+  "path": "data/raw/rns/022/095-announcement__rns__gresham-house-energy-storage-fund--grid__trading-update__6805736.html",
+  "sha256": "7271089d78d4eb290ddc6613d224e7a75aeed93048b0bc0f24c2528713000759",
+  "fetched_at": "2026-10-01T16:15:57.876925+00:00",
+  "bytes": 76363
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/quarterly-nav-and-factsheet-publication/6688931",
+  "path": "data/raw/rns/022/096-announcement__rns__gresham-house-energy-storage-fund--grid__quarterly-nav-and-factsheet-publication__6688931.html",
+  "sha256": "76473de157ba6e11a3b88e3c31195eb0d4d63c6a8cc0e78ce36498d8482adf06",
+  "fetched_at": "2026-10-01T16:15:58.627576+00:00",
+  "bytes": 89967
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/half-year-results-to-30-june-2021/6510476",
+  "path": "data/raw/rns/022/097-announcement__rns__gresham-house-energy-storage-fund--grid__half-year-results-to-30-june-2021__6510476.html",
+  "sha256": "527a7e3947848fc6407d520358a225405e18fa923b5421246742e9601951904d",
+  "fetched_at": "2026-10-01T16:15:59.453111+00:00",
+  "bytes": 687953
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/result-of-placing-and-total-voting-rights/6610756",
+  "path": "data/raw/rns/022/098-announcement__rns__gresham-house-energy-storage-fund--grid__result-of-placing-and-total-voting-rights__6610756.html",
+  "sha256": "43735c366e69be5ab4f0469e0c42002c52c219a67deab0f6b406ad3548163529",
+  "fetched_at": "2026-10-01T16:16:00.186904+00:00",
+  "bytes": 75321
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/commitment-of-proceeds-new-pipeline-and-placing/6472760",
+  "path": "data/raw/rns/022/099-announcement__rns__gresham-house-energy-storage-fund--grid__commitment-of-proceeds-new-pipeline-and-placing__6472760.html",
+  "sha256": "ad538408b1b121d638964fb2a77e7c5ccdb7328a9a804feab37f3017182aaef6",
+  "fetched_at": "2026-10-01T16:16:00.949850+00:00",
+  "bytes": 113180
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/publication-of-supplementary-prospectus/6436347",
+  "path": "data/raw/rns/022/100-announcement__rns__gresham-house-energy-storage-fund--grid__publication-of-supplementary-prospectus__6436347.html",
+  "sha256": "dcab491399b0b04218baf6fa5e23f02c452f3ceaaaef6dce27254956535babd0",
+  "fetched_at": "2026-10-01T16:16:01.683179+00:00",
+  "bytes": 72315
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/quarterly-nav-dividend-and-factsheet-publication/6628809",
+  "path": "data/raw/rns/022/101-announcement__rns__gresham-house-energy-storage-fund--grid__quarterly-nav-dividend-and-factsheet-publication__6628809.html",
+  "sha256": "ca855a246532f84445a97243905948202eb7ec42520d5f346b045793b731b259",
+  "fetched_at": "2026-10-01T16:16:02.440645+00:00",
+  "bytes": 84331
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/results-to-31-december-2020-and-q1-2021-update/6628658",
+  "path": "data/raw/rns/022/102-announcement__rns__gresham-house-energy-storage-fund--grid__results-to-31-december-2020-and-q1-2021-update__6628658.html",
+  "sha256": "e563d3433f39f6b5d0ed630111c13d3462df935544126e7203857c2e5440e9a6",
+  "fetched_at": "2026-10-01T16:16:03.379771+00:00",
+  "bytes": 1239814
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/annual-results-2020-webinar-and-q-a-session/6583556",
+  "path": "data/raw/rns/022/103-announcement__rns__gresham-house-energy-storage-fund--grid__annual-results-2020-webinar-and-q-a-session__6583556.html",
+  "sha256": "cef6107f19c8dc2158ae087be9960da01b3eb234edf06d9a4afed02514e41358",
+  "fetched_at": "2026-10-01T16:16:04.119481+00:00",
+  "bytes": 52711
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/acquisition-of-battery-storage-project/6545567",
+  "path": "data/raw/rns/022/104-announcement__rns__gresham-house-energy-storage-fund--grid__acquisition-of-battery-storage-project__6545567.html",
+  "sha256": "979c22b2c1bd0c57591094cdba0571aebe5260f4b7fda3bde02b472c419451c0",
+  "fetched_at": "2026-10-01T16:16:04.888292+00:00",
+  "bytes": 68021
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/acquisition-increases-operational-portfolio/6231893",
+  "path": "data/raw/rns/022/105-announcement__rns__gresham-house-energy-storage-fund--grid__acquisition-increases-operational-portfolio__6231893.html",
+  "sha256": "a3ecf7f7cd46b6ccfe301eca82a22b3236e3743b8f02f4bfea25bbed97a74411",
+  "fetched_at": "2026-10-01T16:16:05.645134+00:00",
+  "bytes": 65563
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/acquisition-of-battery-storage-project/6457514",
+  "path": "data/raw/rns/022/106-announcement__rns__gresham-house-energy-storage-fund--grid__acquisition-of-battery-storage-project__6457514.html",
+  "sha256": "faa30a4111a92aef8755c72c711087be0b38ac10618ec361a4c968e5cb9a3bfd",
+  "fetched_at": "2026-10-01T16:16:06.378203+00:00",
+  "bytes": 65643
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/result-of-placing-and-offer-for-subscription/6107761",
+  "path": "data/raw/rns/022/107-announcement__rns__gresham-house-energy-storage-fund--grid__result-of-placing-and-offer-for-subscription__6107761.html",
+  "sha256": "314aeb0a9663fff3abb840db75934a1c57dac07b29b06bf214ed576a8180601c",
+  "fetched_at": "2026-10-01T16:16:07.101551+00:00",
+  "bytes": 75540
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/results-of-general-meeting/6044531",
+  "path": "data/raw/rns/022/108-announcement__rns__gresham-house-energy-storage-fund--grid__results-of-general-meeting__6044531.html",
+  "sha256": "0d42ef55a2048d936e8473538cf8390c53f20e9e9c1b85bb10319c2416718395",
+  "fetched_at": "2026-10-01T16:16:07.830069+00:00",
+  "bytes": 66433
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/publication-of-a-prospectus/5991271",
+  "path": "data/raw/rns/022/109-announcement__rns__gresham-house-energy-storage-fund--grid__publication-of-a-prospectus__5991271.html",
+  "sha256": "b7c0febf5fb9cd3fe98da70756de506851617515315abcb266574c692513af7e",
+  "fetched_at": "2026-10-01T16:16:08.600911+00:00",
+  "bytes": 72105
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/proposed-placing-and-offer-for-subscription/5948117",
+  "path": "data/raw/rns/022/110-announcement__rns__gresham-house-energy-storage-fund--grid__proposed-placing-and-offer-for-subscription__5948117.html",
+  "sha256": "f26196a2f413099fbef907cf0a35a84fa1390e6c330ee09c24d56ff5c1c6df84",
+  "fetched_at": "2026-10-01T16:16:09.359138+00:00",
+  "bytes": 113941
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/quarterly-nav-and-factsheet-publication/6386640",
+  "path": "data/raw/rns/022/111-announcement__rns__gresham-house-energy-storage-fund--grid__quarterly-nav-and-factsheet-publication__6386640.html",
+  "sha256": "50b4a17070f685987656be805bed18cb84bcdf2e01f185f494757fe781376d41",
+  "fetched_at": "2026-10-01T16:16:10.096800+00:00",
+  "bytes": 53850
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/half-year-results-to-30-june-2020-and-dividend/6401601",
+  "path": "data/raw/rns/022/112-announcement__rns__gresham-house-energy-storage-fund--grid__half-year-results-to-30-june-2020-and-dividend__6401601.html",
+  "sha256": "09de400e2b8a610729ea10c96eb3b971f246531ee5a87bd16e6731225910e9b2",
+  "fetched_at": "2026-10-01T16:16:10.953996+00:00",
+  "bytes": 704590
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/acquisition-of-bloxwich-battery-storage-project/30412",
+  "path": "data/raw/rns/022/113-announcement__rns__gresham-house-energy-storage-fund--grid__acquisition-of-bloxwich-battery-storage-project__30412.html",
+  "sha256": "3c2c9a3b66cfa546f4d4d1b66d6b529510445d3fed9ed4ba87e4531b865d00be",
+  "fetched_at": "2026-10-01T16:16:11.711278+00:00",
+  "bytes": 73757
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/quarterly-nav-dividend-and-factsheet-publication/5958184",
+  "path": "data/raw/rns/022/114-announcement__rns__gresham-house-energy-storage-fund--grid__quarterly-nav-dividend-and-factsheet-publication__5958184.html",
+  "sha256": "6305d1ac8a96034028adde86604a967558fccbf4b26991e105b6e1e11c3d985a",
+  "fetched_at": "2026-10-01T16:16:12.459034+00:00",
+  "bytes": 72873
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/full-year-results-to-31-december-2019/5913930",
+  "path": "data/raw/rns/022/115-announcement__rns__gresham-house-energy-storage-fund--grid__full-year-results-to-31-december-2019__5913930.html",
+  "sha256": "ad83314556cdc114676fe7efed5badb998a84a44263e76327a6fbc71909e4b40",
+  "fetched_at": "2026-10-01T16:16:13.340796+00:00",
+  "bytes": 829229
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/acquisition-of-battery-storage-project/6303772",
+  "path": "data/raw/rns/022/116-announcement__rns__gresham-house-energy-storage-fund--grid__acquisition-of-battery-storage-project__6303772.html",
+  "sha256": "d74354b786318166ddb7b85bdcd3ecec8efd6ee2c6bd38f39e40854dd0598f89",
+  "fetched_at": "2026-10-01T16:16:14.096306+00:00",
+  "bytes": 61534
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/acquisition-of-battery-storage-project/6070410",
+  "path": "data/raw/rns/022/117-announcement__rns__gresham-house-energy-storage-fund--grid__acquisition-of-battery-storage-project__6070410.html",
+  "sha256": "34665c62d43faff19f0678b8eb068a0a048c2da4679d410ec8a85535a8b57e32",
+  "fetched_at": "2026-10-01T16:16:14.832724+00:00",
+  "bytes": 63194
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/result-of-placing/5910866",
+  "path": "data/raw/rns/022/118-announcement__rns__gresham-house-energy-storage-fund--grid__result-of-placing__5910866.html",
+  "sha256": "5d31f37d112e957c3c9c7d6c72f9a17abfb484c2b9e2147ce20d38abfe2ee1d8",
+  "fetched_at": "2026-10-01T16:16:15.577516+00:00",
+  "bytes": 67620
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/amended-results-of-the-general-meeting/5906442",
+  "path": "data/raw/rns/022/119-announcement__rns__gresham-house-energy-storage-fund--grid__amended-results-of-the-general-meeting__5906442.html",
+  "sha256": "f7f6d1a9c46aeac47ce347072bfc0566f8fe157970e3bd7140f801bdac5f1118",
+  "fetched_at": "2026-10-01T16:16:16.323199+00:00",
+  "bytes": 61892
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/results-of-the-general-meeting/5905859",
+  "path": "data/raw/rns/022/120-announcement__rns__gresham-house-energy-storage-fund--grid__results-of-the-general-meeting__5905859.html",
+  "sha256": "cc578a6118ecc4f89f26a44aeefff24f752e7312ffc1697bae6ff8c86a80c58c",
+  "fetched_at": "2026-10-01T16:16:17.058732+00:00",
+  "bytes": 60065
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/placing/5765754",
+  "path": "data/raw/rns/022/121-announcement__rns__gresham-house-energy-storage-fund--grid__placing__5765754.html",
+  "sha256": "adf0294f9ea491df54f0097b87fe59cea6a9cc2260dfab7d929cbf2b2c18e891",
+  "fetched_at": "2026-10-01T16:16:17.848066+00:00",
+  "bytes": 145036
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/notice-of-general-meeting-acquisition-and-placing/6161176",
+  "path": "data/raw/rns/022/122-announcement__rns__gresham-house-energy-storage-fund--grid__notice-of-general-meeting-acquisition-and-placing__6161176.html",
+  "sha256": "afa643d7122b4ad70e18a97b7cbc59f6572f0f64e29980e54c04da70ca2cca31",
+  "fetched_at": "2026-10-01T16:16:18.582032+00:00",
+  "bytes": 69066
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/acquisition-of-a-49mw-battery-storage-project/22245",
+  "path": "data/raw/rns/022/123-announcement__rns__gresham-house-energy-storage-fund--grid__acquisition-of-a-49mw-battery-storage-project__22245.html",
+  "sha256": "a6efba3894fe105b44686f1f65cc8d3913de71c94f8f615f0f8978f5de930eef",
+  "fetched_at": "2026-10-01T16:16:19.315794+00:00",
+  "bytes": 59628
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/acquisition-boosts-operational-portfolio-to-125mw/5835139",
+  "path": "data/raw/rns/022/124-announcement__rns__gresham-house-energy-storage-fund--grid__acquisition-boosts-operational-portfolio-to-125mw__5835139.html",
+  "sha256": "08c70ef9e193f6dd43c6428774464020ca50e8aff02e9cc492fc5e44b3cbcd26",
+  "fetched_at": "2026-10-01T16:16:20.055786+00:00",
+  "bytes": 66746
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/factsheet-publication-and-quarterly-nav-update/73131",
+  "path": "data/raw/rns/022/125-announcement__rns__gresham-house-energy-storage-fund--grid__factsheet-publication-and-quarterly-nav-update__73131.html",
+  "sha256": "b7cf7355a6af817abcbfb131f4a68ac137cea4d4dcae618c6f5773b08545338d",
+  "fetched_at": "2026-10-01T16:16:20.770679+00:00",
+  "bytes": 67733
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/acquisition-of-49mw-battery-storage-project/5801129",
+  "path": "data/raw/rns/022/126-announcement__rns__gresham-house-energy-storage-fund--grid__acquisition-of-49mw-battery-storage-project__5801129.html",
+  "sha256": "6ae0cb56be6d032c2ecd847ac0292ada86ed3e6f9cf4b7e148d548aa3fae6ef8",
+  "fetched_at": "2026-10-01T16:16:21.495543+00:00",
+  "bytes": 58615
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/results-of-general-meeting/5755511",
+  "path": "data/raw/rns/022/127-announcement__rns__gresham-house-energy-storage-fund--grid__results-of-general-meeting__5755511.html",
+  "sha256": "5e202f4a0711eda2078784c26441223bbf0b016ea58457f789d4507bcef0a7e8",
+  "fetched_at": "2026-10-01T16:16:22.247632+00:00",
+  "bytes": 60275
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/results-of-placing/5707631",
+  "path": "data/raw/rns/022/128-announcement__rns__gresham-house-energy-storage-fund--grid__results-of-placing__5707631.html",
+  "sha256": "1e041e1d6b13058c32f1f11ba8a1a3bafb3808c5a3c4c3cffefa6bf2f31ac4c3",
+  "fetched_at": "2026-10-01T16:16:22.971279+00:00",
+  "bytes": 70639
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/placing/5647814",
+  "path": "data/raw/rns/022/129-announcement__rns__gresham-house-energy-storage-fund--grid__placing__5647814.html",
+  "sha256": "4f62f1fd858ed226457cf00e134035811cc8527e146f7c63b2df57db58f25580",
+  "fetched_at": "2026-10-01T16:16:23.752429+00:00",
+  "bytes": 130437
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/correction-result-of-placing/5479926",
+  "path": "data/raw/rns/022/130-announcement__rns__gresham-house-energy-storage-fund--grid__correction-result-of-placing__5479926.html",
+  "sha256": "9a29b2ed74881dbbc201966224bd9c76f54294dfc60012f19581f3492a5ad750",
+  "fetched_at": "2026-10-01T16:16:24.469326+00:00",
+  "bytes": 70059
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/interim-results-to-30-june-2019-and-dividend/11387",
+  "path": "data/raw/rns/022/131-announcement__rns__gresham-house-energy-storage-fund--grid__interim-results-to-30-june-2019-and-dividend__11387.html",
+  "sha256": "f7ce13a6ac2c3480d421d65d34a8c82d1bcf883dadd3c01a25ff3f769fe2b0c4",
+  "fetched_at": "2026-10-01T16:16:25.274238+00:00",
+  "bytes": 362481
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/acquisition-of-5mw-battery-storage-project/5831810",
+  "path": "data/raw/rns/022/132-announcement__rns__gresham-house-energy-storage-fund--grid__acquisition-of-5mw-battery-storage-project__5831810.html",
+  "sha256": "ac8eb3d64d652a42802c628b86ff06427bb4353d40f888d6e37f29813a9105cb",
+  "fetched_at": "2026-10-01T16:16:25.992359+00:00",
+  "bytes": 59442
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/result-of-placing/5455982",
+  "path": "data/raw/rns/022/133-announcement__rns__gresham-house-energy-storage-fund--grid__result-of-placing__5455982.html",
+  "sha256": "d5a8c88e98d453d47ab40dc0d7463e2f9831ade91ac2b81b3c1fff241f789b16",
+  "fetched_at": "2026-10-01T16:16:26.740477+00:00",
+  "bytes": 69397
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/placing-under-the-placing-programme/5454277",
+  "path": "data/raw/rns/022/134-announcement__rns__gresham-house-energy-storage-fund--grid__placing-under-the-placing-programme__5454277.html",
+  "sha256": "972a510f73607a4579eef87744a542553093edf064194864126aa7989791a83f",
+  "fetched_at": "2026-10-01T16:16:27.499820+00:00",
+  "bytes": 74394
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/result-of-placing/5633581",
+  "path": "data/raw/rns/022/135-announcement__rns__gresham-house-energy-storage-fund--grid__result-of-placing__5633581.html",
+  "sha256": "3187963a6870b9b30be177dd2dfc7e0d7b16659307b81655d29774cd84153f14",
+  "fetched_at": "2026-10-01T16:16:28.264435+00:00",
+  "bytes": 70001
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/nav-update-dividend-and-placing/5945835",
+  "path": "data/raw/rns/022/136-announcement__rns__gresham-house-energy-storage-fund--grid__nav-update-dividend-and-placing__5945835.html",
+  "sha256": "50ed3171a8a645b3f189a7c8e997063e321397cf88556c3a817219cbecfa0d61",
+  "fetched_at": "2026-10-01T16:16:28.997508+00:00",
+  "bytes": 83903
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/factsheet-publication-and-quarterly-nav-update/5785083",
+  "path": "data/raw/rns/022/137-announcement__rns__gresham-house-energy-storage-fund--grid__factsheet-publication-and-quarterly-nav-update__5785083.html",
+  "sha256": "dc0bb2e788279498af66fc695e3e6d22d5e829bffbce041be577fe3ea39a6d1a",
+  "fetched_at": "2026-10-01T16:16:29.729777+00:00",
+  "bytes": 69226
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/acquisition-and-uk-capacity-market-scheme/5865511",
+  "path": "data/raw/rns/022/138-announcement__rns__gresham-house-energy-storage-fund--grid__acquisition-and-uk-capacity-market-scheme__5865511.html",
+  "sha256": "3cd66a0a8c3c45e7944637c94903c89b7aedae000370e46a06e60200f61736af",
+  "fetched_at": "2026-10-01T16:16:30.466850+00:00",
+  "bytes": 58192
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/fy25-26-esg-and-sustainability-report/9783176",
+  "path": "data/raw/rns/022/139-announcement__rns__gore-street-energy-storage-fund--gsf__fy25-26-esg-and-sustainability-report__9783176.html",
+  "sha256": "7a11b173895b1a8a17a0f5115ae6b2739cb82162cda7fe12289658a8e87ce269",
+  "fetched_at": "2026-10-01T16:16:31.180613+00:00",
+  "bytes": 56640
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/june-end-2026-quarterly-nav-and-portfolio-update-/9771592",
+  "path": "data/raw/rns/022/140-announcement__rns__gore-street-energy-storage-fund--gsf__june-end-2026-quarterly-nav-and-portfolio-update-__9771592.html",
+  "sha256": "bf04caf4342dfd016da5c358dba8fd2e16145cb60f09175ab70df6588855402d",
+  "fetched_at": "2026-10-01T16:16:31.946063+00:00",
+  "bytes": 75996
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/replacement-nav-portfolio-update-and-dividend/9483180",
+  "path": "data/raw/rns/022/141-announcement__rns__gore-street-energy-storage-fund--gsf__replacement-nav-portfolio-update-and-dividend__9483180.html",
+  "sha256": "4087bf9fbf00ca8572349eb9f3962eac3eccee50cc5709a1fbada88bcc813ffe",
+  "fetched_at": "2026-10-01T16:16:32.680191+00:00",
+  "bytes": 91597
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/update-to-strategy-and-capital-allocation-/9476953",
+  "path": "data/raw/rns/022/142-announcement__rns__gore-street-energy-storage-fund--gsf__update-to-strategy-and-capital-allocation-__9476953.html",
+  "sha256": "0b1b46cd9484d353a9f6739773df2ed206610be3d0ed3834399787742f7836e8",
+  "fetched_at": "2026-10-01T16:16:33.429551+00:00",
+  "bytes": 68369
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/unaudited-nav/9097784",
+  "path": "data/raw/rns/022/143-announcement__rns__gore-street-energy-storage-fund--gsf__unaudited-nav__9097784.html",
+  "sha256": "2f4a3f8598a7a91d4fac09df54a4c2371576e6b0be1f1f3c1bf1048d704f6f78",
+  "fetched_at": "2026-10-01T16:16:34.172420+00:00",
+  "bytes": 68038
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/publication-of-esg-and-sustainability-report/9092038",
+  "path": "data/raw/rns/022/144-announcement__rns__gore-street-energy-storage-fund--gsf__publication-of-esg-and-sustainability-report__9092038.html",
+  "sha256": "44a209e900810c8bb977dbf36a1e09cc410f285f4153bb1e2d3ee7cf2088147d",
+  "fetched_at": "2026-10-01T16:16:34.916153+00:00",
+  "bytes": 57780
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/strategy-and-capital-allocation-plan/9011330",
+  "path": "data/raw/rns/022/145-announcement__rns__gore-street-energy-storage-fund--gsf__strategy-and-capital-allocation-plan__9011330.html",
+  "sha256": "7dd1e9aae5ed1f4f772d6db4bf25ee3a963c283b1c3c4226370a0cb9fb18a2c3",
+  "fetched_at": "2026-10-01T16:16:35.700607+00:00",
+  "bytes": 81173
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/strategy-update-dividend-unaudited-nav/8934780",
+  "path": "data/raw/rns/022/146-announcement__rns__gore-street-energy-storage-fund--gsf__strategy-update-dividend-unaudited-nav__8934780.html",
+  "sha256": "2062690ae0723ad626ba398cbbff9b17d47771df61d7dd99e001c55b8cb61576",
+  "fetched_at": "2026-10-01T16:16:36.435813+00:00",
+  "bytes": 73601
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/unaudited-nav-and-dividend-declaration/8772246",
+  "path": "data/raw/rns/022/147-announcement__rns__gore-street-energy-storage-fund--gsf__unaudited-nav-and-dividend-declaration__8772246.html",
+  "sha256": "cc7dd8b24fbce2a7c4c9ef5ed31d588168061f9744823996a961b7a50ac9914e",
+  "fetched_at": "2026-10-01T16:16:37.146795+00:00",
+  "bytes": 68948
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/capital-markets-event/8526556",
+  "path": "data/raw/rns/022/148-announcement__rns__gore-street-energy-storage-fund--gsf__capital-markets-event__8526556.html",
+  "sha256": "be8faccc3391603bc695c831548f4e5dc7f4234b1519dd0c602a7965c8977055",
+  "fetched_at": "2026-10-01T16:16:37.870252+00:00",
+  "bytes": 53426
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/unaudited-nav-and-dividend-declaration/8409888",
+  "path": "data/raw/rns/022/149-announcement__rns__gore-street-energy-storage-fund--gsf__unaudited-nav-and-dividend-declaration__8409888.html",
+  "sha256": "7d32a8afa2c181a9dccac972e7ea60d790b8a97d44bb7b31650deef9f2de8139",
+  "fetched_at": "2026-10-01T16:16:38.611570+00:00",
+  "bytes": 65933
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/publication-of-latest-esg-sustainability-report/8388797",
+  "path": "data/raw/rns/022/150-announcement__rns__gore-street-energy-storage-fund--gsf__publication-of-latest-esg-sustainability-report__8388797.html",
+  "sha256": "29bced1b13f13fd44c69779089079e73e001bc95831eee2f5ff9ba3f18216026",
+  "fetched_at": "2026-10-01T16:16:39.332010+00:00",
+  "bytes": 58634
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/full-year-unaudited-net-asset-value/8268845",
+  "path": "data/raw/rns/022/151-announcement__rns__gore-street-energy-storage-fund--gsf__full-year-unaudited-net-asset-value__8268845.html",
+  "sha256": "bbfae9faa7315226394761b48f1b74e23368e5fcfae770cc047dfa3da47c959f",
+  "fetched_at": "2026-10-01T16:16:40.085213+00:00",
+  "bytes": 79700
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/full-year-trading-update-/8209865",
+  "path": "data/raw/rns/022/152-announcement__rns__gore-street-energy-storage-fund--gsf__full-year-trading-update-__8209865.html",
+  "sha256": "4c3ab39c055fb789af57158d798285ec56863db64034a755ba5ac1dcfaff52e5",
+  "fetched_at": "2026-10-01T16:16:40.852759+00:00",
+  "bytes": 92492
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/issue-of-equity/8103617",
+  "path": "data/raw/rns/022/153-announcement__rns__gore-street-energy-storage-fund--gsf__issue-of-equity__8103617.html",
+  "sha256": "ba3509db51bd2b6b8627a2f709131094452e45052775aa6ecabf03e18643fb26",
+  "fetched_at": "2026-10-01T16:16:41.626393+00:00",
+  "bytes": 63972
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/unaudited-quarterly-nav-and-dividend-declaration/8082267",
+  "path": "data/raw/rns/022/154-announcement__rns__gore-street-energy-storage-fund--gsf__unaudited-quarterly-nav-and-dividend-declaration__8082267.html",
+  "sha256": "0ab2963df66a490729fdd862bbd2ff539bee416b24d89bb7181fae5e7c3d5f06",
+  "fetched_at": "2026-10-01T16:16:42.365046+00:00",
+  "bytes": 77153
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/further-portfolio-and-trading-update/8020805",
+  "path": "data/raw/rns/022/155-announcement__rns__gore-street-energy-storage-fund--gsf__further-portfolio-and-trading-update__8020805.html",
+  "sha256": "1513cdbafc24826230758c01d2d43e89d8581d7f8b2a3b0ae8fe1356dc975061",
+  "fetched_at": "2026-10-01T16:16:43.108629+00:00",
+  "bytes": 64352
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/portfolio-and-trading-update-/7982216",
+  "path": "data/raw/rns/022/156-announcement__rns__gore-street-energy-storage-fund--gsf__portfolio-and-trading-update-__7982216.html",
+  "sha256": "255ce8254dbbd2df72280bb006f9b19995237a6a982d42e67b79a8ed1cad5034",
+  "fetched_at": "2026-10-01T16:16:43.855503+00:00",
+  "bytes": 64274
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/epc-contract-signed-and-14m-new-shares-issued/7949926",
+  "path": "data/raw/rns/022/157-announcement__rns__gore-street-energy-storage-fund--gsf__epc-contract-signed-and-14m-new-shares-issued__7949926.html",
+  "sha256": "6a4c951c5762c3890d5d1f2e7e2d0f18364effce0308b94640aa72b0c9b329dd",
+  "fetched_at": "2026-10-01T16:16:44.582590+00:00",
+  "bytes": 60905
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/statement-re-portfolio-update-and-share-price-/7811441",
+  "path": "data/raw/rns/022/158-announcement__rns__gore-street-energy-storage-fund--gsf__statement-re-portfolio-update-and-share-price-__7811441.html",
+  "sha256": "4b84aac2be7fa2a0161a2b6893e9be267ef10e49deca1dd98e84a377f6bac93e",
+  "fetched_at": "2026-10-01T16:16:45.318450+00:00",
+  "bytes": 64446
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/capital-markets-event/7792469",
+  "path": "data/raw/rns/022/159-announcement__rns__gore-street-energy-storage-fund--gsf__capital-markets-event__7792469.html",
+  "sha256": "546c39f206560e8a8698cf8efed3e96671c7b85a156d6695775632d04edab1ee",
+  "fetched_at": "2026-10-01T16:16:46.060658+00:00",
+  "bytes": 52301
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/quarterly-nav-and-dividend-declaration-/7737676",
+  "path": "data/raw/rns/022/160-announcement__rns__gore-street-energy-storage-fund--gsf__quarterly-nav-and-dividend-declaration-__7737676.html",
+  "sha256": "1965ce814a8d887113381a709d05ef46e5ffe91f3f41cf4befa781e5f56d18c2",
+  "fetched_at": "2026-10-01T16:16:46.823273+00:00",
+  "bytes": 77641
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/publication-of-latest-esg-sustainability-report/7729187",
+  "path": "data/raw/rns/022/161-announcement__rns__gore-street-energy-storage-fund--gsf__publication-of-latest-esg-sustainability-report__7729187.html",
+  "sha256": "e1b633a9be15b000acf5bb2cc737903a585619426ada1f2dd8bb06f20e51ae4b",
+  "fetched_at": "2026-10-01T16:16:47.565648+00:00",
+  "bytes": 56114
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/portfolio-and-trading-update/7615634",
+  "path": "data/raw/rns/022/162-announcement__rns__gore-street-energy-storage-fund--gsf__portfolio-and-trading-update__7615634.html",
+  "sha256": "fe0d7f7884e780cd2ba4cb1eb149de49fa55b9e77c0365625e00c1cd23ebfc5f",
+  "fetched_at": "2026-10-01T16:16:48.306486+00:00",
+  "bytes": 65259
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/nav-uplift-dividend-and-operational-progress/7575844",
+  "path": "data/raw/rns/022/163-announcement__rns__gore-street-energy-storage-fund--gsf__nav-uplift-dividend-and-operational-progress__7575844.html",
+  "sha256": "ea9b1f71734326c323af4ce88ccf6d79a853f30186c40a2ee7f5f6ab7098f4ad",
+  "fetched_at": "2026-10-01T16:16:49.073056+00:00",
+  "bytes": 98821
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/quarterly-nav-and-dividend-declaration/7389189",
+  "path": "data/raw/rns/022/164-announcement__rns__gore-street-energy-storage-fund--gsf__quarterly-nav-and-dividend-declaration__7389189.html",
+  "sha256": "fc735e8464673cfbb6964a281ae85553d33ec66173e72de88018a73a8dab78f8",
+  "fetched_at": "2026-10-01T16:16:49.808777+00:00",
+  "bytes": 55002
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/gb-capacity-market-contracts-and-portfolio-update/7235735",
+  "path": "data/raw/rns/022/165-announcement__rns__gore-street-energy-storage-fund--gsf__gb-capacity-market-contracts-and-portfolio-update__7235735.html",
+  "sha256": "8ee903d683d75968c09cf63c22c736c2f45b3a6df822c76217eca07a113884eb",
+  "fetched_at": "2026-10-01T16:16:50.564051+00:00",
+  "bytes": 59101
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/200-mw-acquisition-in-california/7483931",
+  "path": "data/raw/rns/022/166-announcement__rns__gore-street-energy-storage-fund--gsf__200-mw-acquisition-in-california__7483931.html",
+  "sha256": "81210f86032397372b622bc340c3519523488ed2b3223d0fc55f26d254379b4b",
+  "fetched_at": "2026-10-01T16:16:51.315338+00:00",
+  "bytes": 57735
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/significant-acquisition-and-construction-milestone/7227347",
+  "path": "data/raw/rns/022/167-announcement__rns__gore-street-energy-storage-fund--gsf__significant-acquisition-and-construction-milestone__7227347.html",
+  "sha256": "4cf2eee1fa7ef156d17f8501f6969c88202ddc1562a6f783e77d5e8622f9838f",
+  "fetched_at": "2026-10-01T16:16:52.050241+00:00",
+  "bytes": 57561
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/200mw-battery-storage-acquisition-business-update/7206465",
+  "path": "data/raw/rns/022/168-announcement__rns__gore-street-energy-storage-fund--gsf__200mw-battery-storage-acquisition-business-update__7206465.html",
+  "sha256": "2c44b2c5b8eb61d98219a1b9f74cdd44535ef5fa6af03252a20a22bd3bbe49e3",
+  "fetched_at": "2026-10-01T16:16:52.791502+00:00",
+  "bytes": 61487
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/quarterly-valuation-and-dividend-declaration/7415101",
+  "path": "data/raw/rns/022/169-announcement__rns__gore-street-energy-storage-fund--gsf__quarterly-valuation-and-dividend-declaration__7415101.html",
+  "sha256": "1302cdb13779dae65d6066ceaf5d0348f2d57ea29ff0fdafd9931389c8616a02",
+  "fetched_at": "2026-10-01T16:16:53.523803+00:00",
+  "bytes": 56297
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/publication-of-esg-and-sustainability-report/7107656",
+  "path": "data/raw/rns/022/170-announcement__rns__gore-street-energy-storage-fund--gsf__publication-of-esg-and-sustainability-report__7107656.html",
+  "sha256": "bbfa6389427af0f7bc6ee77645cb1cda90d6ac76c959b8354425e90863470b1a",
+  "fetched_at": "2026-10-01T16:16:54.265950+00:00",
+  "bytes": 58137
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/annual-financial-report/7136140",
+  "path": "data/raw/rns/022/171-announcement__rns__gore-street-energy-storage-fund--gsf__annual-financial-report__7136140.html",
+  "sha256": "1dbeafd97de25bbb3c01567ac47d929c29a8f17bd3346223edc2e4b20f48d0e2",
+  "fetched_at": "2026-10-01T16:16:55.232444+00:00",
+  "bytes": 1589969
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/notice-of-annual-results/6919184",
+  "path": "data/raw/rns/022/172-announcement__rns__gore-street-energy-storage-fund--gsf__notice-of-annual-results__6919184.html",
+  "sha256": "ac6d7efaab37fae9fa4e36c29d6e0b34ffe5584b229f6ea4c006334303b51745",
+  "fetched_at": "2026-10-01T16:16:55.971205+00:00",
+  "bytes": 53794
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/portfolio-update/7074599",
+  "path": "data/raw/rns/022/173-announcement__rns__gore-street-energy-storage-fund--gsf__portfolio-update__7074599.html",
+  "sha256": "e5faa41d3e73e1c9caed560b5e7703bac439811e8c72bc502beb3d14fbd12bb8",
+  "fetched_at": "2026-10-01T16:16:56.698530+00:00",
+  "bytes": 65793
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/results-of-upscaled-oversubscribed-initial-issue/6943719",
+  "path": "data/raw/rns/022/174-announcement__rns__gore-street-energy-storage-fund--gsf__results-of-upscaled-oversubscribed-initial-issue__6943719.html",
+  "sha256": "1aee6ab46b4026d03dfd2c0a5ebe19956360dbfc43f8e4e4fb0786b38f23c71f",
+  "fetched_at": "2026-10-01T16:16:57.460952+00:00",
+  "bytes": 64715
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/results-of-general-meeting/6905980",
+  "path": "data/raw/rns/022/175-announcement__rns__gore-street-energy-storage-fund--gsf__results-of-general-meeting__6905980.html",
+  "sha256": "a696ca2e6aa6b6d468bfbed9ea16149cb01d4a7a0cd51a0290445219912337b8",
+  "fetched_at": "2026-10-01T16:16:58.191529+00:00",
+  "bytes": 64843
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/publication-of-prospectus/7093119",
+  "path": "data/raw/rns/022/176-announcement__rns__gore-street-energy-storage-fund--gsf__publication-of-prospectus__7093119.html",
+  "sha256": "aae5d31d4401376c66864ee5cffc272961e68ae89faa67ad5c7577c19962be2b",
+  "fetched_at": "2026-10-01T16:16:58.932228+00:00",
+  "bytes": 69851
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/first-us-storage-project-acquisition/6845116",
+  "path": "data/raw/rns/022/177-announcement__rns__gore-street-energy-storage-fund--gsf__first-us-storage-project-acquisition__6845116.html",
+  "sha256": "4085a44de760477164cc89e0e56d79c08caf9548a5fe140514b6d343cccc157b",
+  "fetched_at": "2026-10-01T16:16:59.657639+00:00",
+  "bytes": 56291
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/quarterly-valuation-and-dividend-declaration/7018431",
+  "path": "data/raw/rns/022/178-announcement__rns__gore-street-energy-storage-fund--gsf__quarterly-valuation-and-dividend-declaration__7018431.html",
+  "sha256": "81bd685e98ea9810754c63efa32c684ef2e86665e50ec9c7bf65ceb5fcafcb88",
+  "fetched_at": "2026-10-01T16:17:00.377972+00:00",
+  "bytes": 53473
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/operational-energy-storage-acquisition-in-germany/7016902",
+  "path": "data/raw/rns/022/179-announcement__rns__gore-street-energy-storage-fund--gsf__operational-energy-storage-acquisition-in-germany__7016902.html",
+  "sha256": "ab291530c842fd15b64a3d3e6b4c8be79b0d17662a7dc41bf900a4802deeaad2",
+  "fetched_at": "2026-10-01T16:17:01.128673+00:00",
+  "bytes": 56418
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/half-year-results-dividend-declaration/6879338",
+  "path": "data/raw/rns/022/180-announcement__rns__gore-street-energy-storage-fund--gsf__half-year-results-dividend-declaration__6879338.html",
+  "sha256": "faf912526e62b239badf63a880e8d824b9d31e35e6619348137ddf16ac1487f4",
+  "fetched_at": "2026-10-01T16:17:01.952156+00:00",
+  "bytes": 393003
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/notice-of-interim-results/6756194",
+  "path": "data/raw/rns/022/181-announcement__rns__gore-street-energy-storage-fund--gsf__notice-of-interim-results__6756194.html",
+  "sha256": "ea1523408368162484b98db9ef9df1e055cba4691c50b7117d3736aaff97a2ee",
+  "fetched_at": "2026-10-01T16:17:02.690917+00:00",
+  "bytes": 52974
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/portfolio-update/6642055",
+  "path": "data/raw/rns/022/182-announcement__rns__gore-street-energy-storage-fund--gsf__portfolio-update__6642055.html",
+  "sha256": "e43a8792f8153dd2a489e0ca269be8589a7d7c260cb8cd41bc3bdebfd8230bb0",
+  "fetched_at": "2026-10-01T16:17:03.421982+00:00",
+  "bytes": 57254
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/trading-update-correction/6524264",
+  "path": "data/raw/rns/022/183-announcement__rns__gore-street-energy-storage-fund--gsf__trading-update-correction__6524264.html",
+  "sha256": "9eb0ab7879ef41a465e6642a5568af85aacec1b3599b2ac53f1f5aec2fa2a854",
+  "fetched_at": "2026-10-01T16:17:04.147868+00:00",
+  "bytes": 61030
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/trading-update/6860587",
+  "path": "data/raw/rns/022/184-announcement__rns__gore-street-energy-storage-fund--gsf__trading-update__6860587.html",
+  "sha256": "5c06d582e3a91e6db559e2d8862532df0524e9ed09bfca6a9d182e556465d10f",
+  "fetched_at": "2026-10-01T16:17:04.912177+00:00",
+  "bytes": 60615
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/primarybidoffer-oversubscribed-placing-remainsopen/6559360",
+  "path": "data/raw/rns/022/185-announcement__rns__gore-street-energy-storage-fund--gsf__primarybidoffer-oversubscribed-placing-remainsopen__6559360.html",
+  "sha256": "288af3470e8128e10ee720c315fab5982d4b8ba64433efac9ccd86a6a9711826",
+  "fetched_at": "2026-10-01T16:17:05.656142+00:00",
+  "bytes": 72150
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/acquisition-pipeline-update-proposed-fundraise/6510529",
+  "path": "data/raw/rns/022/186-announcement__rns__gore-street-energy-storage-fund--gsf__acquisition-pipeline-update-proposed-fundraise__6510529.html",
+  "sha256": "97b0be83e5b798a1fca027b3d5aa2235f0a9267a09ea6f4712256f52e434f3ad",
+  "fetched_at": "2026-10-01T16:17:06.414806+00:00",
+  "bytes": 84656
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/nav-and-dividend-declaration/6721592",
+  "path": "data/raw/rns/022/187-announcement__rns__gore-street-energy-storage-fund--gsf__nav-and-dividend-declaration__6721592.html",
+  "sha256": "54b35b5528526ede7338010b2cdc928128e36666bc19293e341909ca5d8f3381",
+  "fetched_at": "2026-10-01T16:17:07.156271+00:00",
+  "bytes": 53634
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/publication-of-supplementary-prospectus/6634563",
+  "path": "data/raw/rns/022/188-announcement__rns__gore-street-energy-storage-fund--gsf__publication-of-supplementary-prospectus__6634563.html",
+  "sha256": "49618ecc2cbb4d8f682d2cfca4e00c91854e44943a01195e5d1fec7b29aef23e",
+  "fetched_at": "2026-10-01T16:17:07.889163+00:00",
+  "bytes": 56724
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/annual-financial-report/6652265",
+  "path": "data/raw/rns/022/189-announcement__rns__gore-street-energy-storage-fund--gsf__annual-financial-report__6652265.html",
+  "sha256": "d4ce8b7387d49e1abf0b43249c3e34ce5c96e8a92150d4223e32c251a84346e3",
+  "fetched_at": "2026-10-01T16:17:08.735682+00:00",
+  "bytes": 661307
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/notice-of-results/6470350",
+  "path": "data/raw/rns/022/190-announcement__rns__gore-street-energy-storage-fund--gsf__notice-of-results__6470350.html",
+  "sha256": "632ffc63596ec6d70293c7804af954090517e171c96f1045d7eb898371a639e3",
+  "fetched_at": "2026-10-01T16:17:09.474925+00:00",
+  "bytes": 52922
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/pipeline-portfolio-update/6372126",
+  "path": "data/raw/rns/022/191-announcement__rns__gore-street-energy-storage-fund--gsf__pipeline-portfolio-update__6372126.html",
+  "sha256": "4ebaccfa80a7cf28f9efaa085eea8971b3ace2036e0b3f350c459d7b654242ce",
+  "fetched_at": "2026-10-01T16:17:10.215510+00:00",
+  "bytes": 59676
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/proposed-placing-and-retail-offer/6351711",
+  "path": "data/raw/rns/022/192-announcement__rns__gore-street-energy-storage-fund--gsf__proposed-placing-and-retail-offer__6351711.html",
+  "sha256": "eacf3ce15adff1bd659d0774241106b260470df194f6688620cf0198915439b9",
+  "fetched_at": "2026-10-01T16:17:10.954305+00:00",
+  "bytes": 79404
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/portfolio-update-and-revolving-credit-facility/6323841",
+  "path": "data/raw/rns/022/193-announcement__rns__gore-street-energy-storage-fund--gsf__portfolio-update-and-revolving-credit-facility__6323841.html",
+  "sha256": "db89a9484200c58a8aedeb63e5200c8cc253a52cd10f9f1f0c9d8778449df4b2",
+  "fetched_at": "2026-10-01T16:17:11.701211+00:00",
+  "bytes": 62403
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/dividend-portfolio-update-equity-raise-intention/6586112",
+  "path": "data/raw/rns/022/194-announcement__rns__gore-street-energy-storage-fund--gsf__dividend-portfolio-update-equity-raise-intention__6586112.html",
+  "sha256": "35c3d089460629f9ba0192de2106c3dd2dad6c532200cc253a8d6969575d7964",
+  "fetched_at": "2026-10-01T16:17:12.431258+00:00",
+  "bytes": 59732
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/half-year-report/6423128",
+  "path": "data/raw/rns/022/195-announcement__rns__gore-street-energy-storage-fund--gsf__half-year-report__6423128.html",
+  "sha256": "1446821bd13612feccf0d6588555c8b9ee00dcb48873aa3795c57dd4804ffeda",
+  "fetched_at": "2026-10-01T16:17:13.431393+00:00",
+  "bytes": 407465
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/results-of-oversubscribed-initial-issue/6312255",
+  "path": "data/raw/rns/022/196-announcement__rns__gore-street-energy-storage-fund--gsf__results-of-oversubscribed-initial-issue__6312255.html",
+  "sha256": "e7858f75d64aa2c255e7552e58f5726a45fa2793e3990e45993000533c9acf24",
+  "fetched_at": "2026-10-01T16:17:14.166890+00:00",
+  "bytes": 68521
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/change-to-initial-issue-timetable/6269831",
+  "path": "data/raw/rns/022/197-announcement__rns__gore-street-energy-storage-fund--gsf__change-to-initial-issue-timetable__6269831.html",
+  "sha256": "e7a0cfd041e5d9e7b37cb3c14050f13c13c8d33bf9a7d5424a159a25144b13ea",
+  "fetched_at": "2026-10-01T16:17:14.926206+00:00",
+  "bytes": 73375
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/publication-of-a-prospectus/6207851",
+  "path": "data/raw/rns/022/198-announcement__rns__gore-street-energy-storage-fund--gsf__publication-of-a-prospectus__6207851.html",
+  "sha256": "291f00a386bfc651a6f27c3cad6ac8524e1b1a29191c6d8ac4a7e182c7c18bb2",
+  "fetched_at": "2026-10-01T16:17:15.664818+00:00",
+  "bytes": 69597
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/proposed-placing-and-intermediaries-offer/6163354",
+  "path": "data/raw/rns/022/199-announcement__rns__gore-street-energy-storage-fund--gsf__proposed-placing-and-intermediaries-offer__6163354.html",
+  "sha256": "ba5322c603d9663b845ebc76fae3b673acb7547de866c259c799c6c6174ed910",
+  "fetched_at": "2026-10-01T16:17:16.428959+00:00",
+  "bytes": 107255
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/acquisition-of-81mw-operating-storage-portfolio/6416678",
+  "path": "data/raw/rns/022/200-announcement__rns__gore-street-energy-storage-fund--gsf__acquisition-of-81mw-operating-storage-portfolio__6416678.html",
+  "sha256": "b860d31cf8dad610e7a465664e6208269dead91c71b64ef6bab8382520ef27fc",
+  "fetched_at": "2026-10-01T16:17:17.150113+00:00",
+  "bytes": 61969
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/1-7-uplift-in-unaudited-quarterly-nav-dividend/6099416",
+  "path": "data/raw/rns/022/201-announcement__rns__gore-street-energy-storage-fund--gsf__1-7-uplift-in-unaudited-quarterly-nav-dividend__6099416.html",
+  "sha256": "a73fe978a1e9c0b9a47809ce4a82bf59f3bb3760d925761af04b18868789bc1f",
+  "fetched_at": "2026-10-01T16:17:17.897879+00:00",
+  "bytes": 52435
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/annual-financial-report/5954669",
+  "path": "data/raw/rns/022/202-announcement__rns__gore-street-energy-storage-fund--gsf__annual-financial-report__5954669.html",
+  "sha256": "dab65c3640e92e42c905d3088c40ec23adf5a2c05c51508a52353e922066dcdb",
+  "fetched_at": "2026-10-01T16:17:18.802737+00:00",
+  "bytes": 749966
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/results-of-capital-raise/33144",
+  "path": "data/raw/rns/022/203-announcement__rns__gore-street-energy-storage-fund--gsf__results-of-capital-raise__33144.html",
+  "sha256": "11ea71935c3a6f5c6c2e6385daca8d6eeff9dd92b0959b389248f53a60d18960",
+  "fetched_at": "2026-10-01T16:17:19.530255+00:00",
+  "bytes": 55424
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/update-on-fundraise-timetable/5882485",
+  "path": "data/raw/rns/022/204-announcement__rns__gore-street-energy-storage-fund--gsf__update-on-fundraise-timetable__5882485.html",
+  "sha256": "4a6e783de3c5f0a0ace6f85408f7601daf278117543876434f97b6aced888f7d",
+  "fetched_at": "2026-10-01T16:17:20.265398+00:00",
+  "bytes": 66764
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/acquisition-and-pipeline-update/6379829",
+  "path": "data/raw/rns/022/205-announcement__rns__gore-street-energy-storage-fund--gsf__acquisition-and-pipeline-update__6379829.html",
+  "sha256": "ec4ac19020c2a10b8512acea6c4194007ba3f1e8c24b5d183ebab25c66b75592",
+  "fetched_at": "2026-10-01T16:17:20.992119+00:00",
+  "bytes": 56922
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/proposed-placing-and-dividend-declaration/6378079",
+  "path": "data/raw/rns/022/206-announcement__rns__gore-street-energy-storage-fund--gsf__proposed-placing-and-dividend-declaration__6378079.html",
+  "sha256": "e9ec15c6c19575fce2f9e31c6e9344dbf754d7bf6e8bc0019ad3e7496cf23ba3",
+  "fetched_at": "2026-10-01T16:17:21.750108+00:00",
+  "bytes": 77193
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/nav-update-and-dividend-declaration/5906705",
+  "path": "data/raw/rns/022/207-announcement__rns__gore-street-energy-storage-fund--gsf__nav-update-and-dividend-declaration__5906705.html",
+  "sha256": "28313258d98ee64bf6c3d3d0eb7030b5fd3d4c5a468995937b1fc86e8e586488",
+  "fetched_at": "2026-10-01T16:17:22.480527+00:00",
+  "bytes": 53034
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/result-of-equity-issue/6152540",
+  "path": "data/raw/rns/022/208-announcement__rns__gore-street-energy-storage-fund--gsf__result-of-equity-issue__6152540.html",
+  "sha256": "8d672aab6dae0ea14be7f084da8911f820293db95de95e1d30cdf0fa16910e92",
+  "fetched_at": "2026-10-01T16:17:23.215516+00:00",
+  "bytes": 54260
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/launch-of-placing-via-accelerated-bookbuild/6146121",
+  "path": "data/raw/rns/022/209-announcement__rns__gore-street-energy-storage-fund--gsf__launch-of-placing-via-accelerated-bookbuild__6146121.html",
+  "sha256": "ebd3a706144af2ec71f6726c4a0b0f81cf26bfe7b4a62dba73222a2a4fee60fa",
+  "fetched_at": "2026-10-01T16:17:23.976141+00:00",
+  "bytes": 69385
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/net-asset-value/5795987",
+  "path": "data/raw/rns/022/210-announcement__rns__gore-street-energy-storage-fund--gsf__net-asset-value__5795987.html",
+  "sha256": "ea660a0b502d066e46a1d1cd436605b01a26f5bb815c6573016310429fc450bd",
+  "fetched_at": "2026-10-01T16:17:24.711278+00:00",
+  "bytes": 49275
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/interim-results/5795954",
+  "path": "data/raw/rns/022/211-announcement__rns__gore-street-energy-storage-fund--gsf__interim-results__5795954.html",
+  "sha256": "84743a593fc2c79fc9412065451b8b93477c92f82d7ad155bb9612d624e1f7db",
+  "fetched_at": "2026-10-01T16:17:25.577438+00:00",
+  "bytes": 469092
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/results-of-capital-raise/5756168",
+  "path": "data/raw/rns/022/212-announcement__rns__gore-street-energy-storage-fund--gsf__results-of-capital-raise__5756168.html",
+  "sha256": "0dda9a7074c0d08356d1d435049a44cbf562f104cd77a16ad8a499728ea66dc9",
+  "fetched_at": "2026-10-01T16:17:26.314752+00:00",
+  "bytes": 53871
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/proposed-placing-and-ntma-subscription/5705928",
+  "path": "data/raw/rns/022/213-announcement__rns__gore-street-energy-storage-fund--gsf__proposed-placing-and-ntma-subscription__5705928.html",
+  "sha256": "91d2ff7e107894a66c42317f20f23bcc7a579e7982622f0dd4341298620795dd",
+  "fetched_at": "2026-10-01T16:17:27.048356+00:00",
+  "bytes": 70507
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/quarterly-net-asset-value-uplift/5963282",
+  "path": "data/raw/rns/022/214-announcement__rns__gore-street-energy-storage-fund--gsf__quarterly-net-asset-value-uplift__5963282.html",
+  "sha256": "0734b8b915c222fb6e0aeb3cbcc29e193b0e137344c670e02a1144b800150428",
+  "fetched_at": "2026-10-01T16:17:27.791328+00:00",
+  "bytes": 48793
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/result-of-meetings-and-further-update-on-fundraise/5780650",
+  "path": "data/raw/rns/022/215-announcement__rns__gore-street-energy-storage-fund--gsf__result-of-meetings-and-further-update-on-fundraise__5780650.html",
+  "sha256": "94477cf24a095d44e5e302c2f87c5ea0176b4cb7da9ea730dfe9d112291e4879",
+  "fetched_at": "2026-10-01T16:17:28.568820+00:00",
+  "bytes": 95671
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/result-of-placing-and-offer-for-subscription/5699262",
+  "path": "data/raw/rns/022/216-announcement__rns__gore-street-energy-storage-fund--gsf__result-of-placing-and-offer-for-subscription__5699262.html",
+  "sha256": "758d55ce2efa08cbf96590b5b510ce16aca89bec3f2d965fd06d7a7b0e8055e3",
+  "fetched_at": "2026-10-01T16:17:29.300246+00:00",
+  "bytes": 65564
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/fundraising-update-and-extension-of-timetable/5647725",
+  "path": "data/raw/rns/022/217-announcement__rns__gore-street-energy-storage-fund--gsf__fundraising-update-and-extension-of-timetable__5647725.html",
+  "sha256": "dd5f8f3faed0ba36fd3d03783e6147dcabb202fe4622700fd6ce2da3176700ea",
+  "fetched_at": "2026-10-01T16:17:30.031933+00:00",
+  "bytes": 63616
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/publication-of-prospectus-and-circular/5514380",
+  "path": "data/raw/rns/022/218-announcement__rns__gore-street-energy-storage-fund--gsf__publication-of-prospectus-and-circular__5514380.html",
+  "sha256": "702fe1c46f06761341e7f17dd7ee4b26af73eeedb920ca2fffaaaab29b7edcd4",
+  "fetched_at": "2026-10-01T16:17:30.793914+00:00",
+  "bytes": 77820
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/annual-report-accounts-and-notice-of-agm/5514042",
+  "path": "data/raw/rns/022/219-announcement__rns__gore-street-energy-storage-fund--gsf__annual-report-accounts-and-notice-of-agm__5514042.html",
+  "sha256": "e5f65aab4ab302d8954814d4f9d744059a6e702b5327d2bd590cf09144f759bb",
+  "fetched_at": "2026-10-01T16:17:31.517214+00:00",
+  "bytes": 51295
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/acquisition-30m-commitment-proposed-fundraising/5715419",
+  "path": "data/raw/rns/022/220-announcement__rns__gore-street-energy-storage-fund--gsf__acquisition-30m-commitment-proposed-fundraising__5715419.html",
+  "sha256": "9719ea400d314d47f39e229f9550622e6386f078e7075d946c9f77eee83940fb",
+  "fetched_at": "2026-10-01T16:17:32.295738+00:00",
+  "bytes": 77636
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/full-year-results-nav-dividend-declaration/5715409",
+  "path": "data/raw/rns/022/221-announcement__rns__gore-street-energy-storage-fund--gsf__full-year-results-nav-dividend-declaration__5715409.html",
+  "sha256": "f01822625ab535db8d00998d2721c89b9bc55eae8b250892be70c3774f91d48d",
+  "fetched_at": "2026-10-01T16:17:33.128561+00:00",
+  "bytes": 436649
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/net-asset-value-s-/5739556",
+  "path": "data/raw/rns/022/222-announcement__rns__gore-street-energy-storage-fund--gsf__net-asset-value-s-__5739556.html",
+  "sha256": "c39ff33c2679b6b56ee0cf0d8c28efef6f0af6ddeb25e66925ef3747f6c30b18",
+  "fetched_at": "2026-10-01T16:17:33.843271+00:00",
+  "bytes": 51700
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/interim-results/5771116",
+  "path": "data/raw/rns/022/223-announcement__rns__gore-street-energy-storage-fund--gsf__interim-results__5771116.html",
+  "sha256": "14046fb0a929d6d1bdb73fa37db41d9650ca37cfb63ee503d85721f7db8081f4",
+  "fetched_at": "2026-10-01T16:17:34.655480+00:00",
+  "bytes": 339929
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/notice-of-interim-results/5730457",
+  "path": "data/raw/rns/022/224-announcement__rns__gore-street-energy-storage-fund--gsf__notice-of-interim-results__5730457.html",
+  "sha256": "e391ba9da553b903539ae9b4a85400df991c730d1a26cc2b4b9dc367c2194d03",
+  "fetched_at": "2026-10-01T16:17:35.373301+00:00",
+  "bytes": 47768
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/net-asset-value-s-correction/5376993",
+  "path": "data/raw/rns/022/225-announcement__rns__gore-street-energy-storage-fund--gsf__net-asset-value-s-correction__5376993.html",
+  "sha256": "3ad16d86d42aac9ad37c722a1b8d682d466625ed69ba499992b48cfd3aac803a",
+  "fetched_at": "2026-10-01T16:17:36.116644+00:00",
+  "bytes": 48635
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/net-asset-value-s-/5376110",
+  "path": "data/raw/rns/022/226-announcement__rns__gore-street-energy-storage-fund--gsf__net-asset-value-s-__5376110.html",
+  "sha256": "e99c8a329f290d60a5944aaf5ada9c6070d2f02916b0cdc9088f9aa8154c60af",
+  "fetched_at": "2026-10-01T16:17:36.893596+00:00",
+  "bytes": 48275
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/portfolio-update-and-acquisition-of-two-projects/5317491",
+  "path": "data/raw/rns/022/227-announcement__rns__gore-street-energy-storage-fund--gsf__portfolio-update-and-acquisition-of-two-projects__5317491.html",
+  "sha256": "bd6ce9033ecdac89b9742f590a454799bcb035e2fe254a2f790b09859e8cb7eb",
+  "fetched_at": "2026-10-01T16:17:37.620906+00:00",
+  "bytes": 54233
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/harmony-energy-income-trust--heit/results-of-court-meeting-and-general-meeting/8905555",
+  "path": "data/raw/rns/022/228-announcement__rns__harmony-energy-income-trust--heit__results-of-court-meeting-and-general-meeting__8905555.html",
+  "sha256": "e636281e46b85258f31a5868b431c78e96cab291608d5eacb219d2f65ada50ec",
+  "fetched_at": "2026-10-01T16:17:38.395844+00:00",
+  "bytes": 96402
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/harmony-energy-income-trust--heit/recommended-acquisition-scheme-doc-publication/8860807",
+  "path": "data/raw/rns/022/229-announcement__rns__harmony-energy-income-trust--heit__recommended-acquisition-scheme-doc-publication__8860807.html",
+  "sha256": "3a4aba4f5c70efec36fac0724ad40af0ebcc1e040db244991f8398e2d91a48c2",
+  "fetched_at": "2026-10-01T16:17:39.178031+00:00",
+  "bytes": 123737
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/harmony-energy-income-trust--heit/recommended-acquisition-scheme-doc-publication/8830807",
+  "path": "data/raw/rns/022/230-announcement__rns__harmony-energy-income-trust--heit__recommended-acquisition-scheme-doc-publication__8830807.html",
+  "sha256": "782561f49a602bc279104a21992177c4af4c655a11402ab4348ca2c0579c6b90",
+  "fetched_at": "2026-10-01T16:17:39.945652+00:00",
+  "bytes": 118858
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/harmony-energy-income-trust--heit/replacement-net-asset-value-and-trading-update/8753297",
+  "path": "data/raw/rns/022/231-announcement__rns__harmony-energy-income-trust--heit__replacement-net-asset-value-and-trading-update__8753297.html",
+  "sha256": "0080aee43ebd9bbf1902a7f5aacd5051ac8475c38df3254b412caf49fb017ad7",
+  "fetched_at": "2026-10-01T16:17:40.669072+00:00",
+  "bytes": 79087
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/harmony-energy-income-trust--heit/net-asset-value-and-trading-update/8752688",
+  "path": "data/raw/rns/022/232-announcement__rns__harmony-energy-income-trust--heit__net-asset-value-and-trading-update__8752688.html",
+  "sha256": "8ff651c22a7b2301198a8bf4470a0b894c99a2e07c8951af914f2974fce0fd9f",
+  "fetched_at": "2026-10-01T16:17:41.392147+00:00",
+  "bytes": 77704
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/harmony-energy-income-trust--heit/results-for-financial-year-ended-31-october-2024/8752544",
+  "path": "data/raw/rns/022/233-announcement__rns__harmony-energy-income-trust--heit__results-for-financial-year-ended-31-october-2024__8752544.html",
+  "sha256": "a19c8ce138efc3a773a654d91680bbe65df30b5f7404ce3d6421d0dc43f66b3b",
+  "fetched_at": "2026-10-01T16:17:42.237100+00:00",
+  "bytes": 550290
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/harmony-energy-income-trust--heit/further-re-asset-sale-process-notice-of-results/8744449",
+  "path": "data/raw/rns/022/234-announcement__rns__harmony-energy-income-trust--heit__further-re-asset-sale-process-notice-of-results__8744449.html",
+  "sha256": "c959ed2852db0e1b24dc7026bd57fe44789a2fb16a3cf19e6951f2373c90257b",
+  "fetched_at": "2026-10-01T16:17:42.965737+00:00",
+  "bytes": 55970
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/harmony-energy-income-trust--heit/portfolio-update-nav-and-asset-sale-process/8579721",
+  "path": "data/raw/rns/022/235-announcement__rns__harmony-energy-income-trust--heit__portfolio-update-nav-and-asset-sale-process__8579721.html",
+  "sha256": "21be27d0456d4d29455b49f056558cced2e51593818c6a1f32a9af5521b4ee18",
+  "fetched_at": "2026-10-01T16:17:43.684492+00:00",
+  "bytes": 79168
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/harmony-energy-income-trust--heit/-portfolio-update-nav-and-asset-sale-process/8381121",
+  "path": "data/raw/rns/022/236-announcement__rns__harmony-energy-income-trust--heit__-portfolio-update-nav-and-asset-sale-process__8381121.html",
+  "sha256": "0e49401fafe8516fff45d214aef43498ed9cde52b61b8573922fa403823117c8",
+  "fetched_at": "2026-10-01T16:17:44.417879+00:00",
+  "bytes": 78680
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/harmony-energy-income-trust--heit/interim-results-/8280915",
+  "path": "data/raw/rns/022/237-announcement__rns__harmony-energy-income-trust--heit__interim-results-__8280915.html",
+  "sha256": "6e2452d9c9edd33bcf71713f056116ef36c12d6a3d3c870ab40ed63495fff776",
+  "fetched_at": "2026-10-01T16:17:45.165561+00:00",
+  "bytes": 61349
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/harmony-energy-income-trust--heit/notice-of-interim-results/8268896",
+  "path": "data/raw/rns/022/238-announcement__rns__harmony-energy-income-trust--heit__notice-of-interim-results__8268896.html",
+  "sha256": "a089a41e246e374c26656458de91d2effe356bccc32e3193d499a023b7f40930",
+  "fetched_at": "2026-10-01T16:17:45.897791+00:00",
+  "bytes": 54992
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/harmony-energy-income-trust--heit/portfolio-update-div-policy-nav-asset-sale-process/8230174",
+  "path": "data/raw/rns/022/239-announcement__rns__harmony-energy-income-trust--heit__portfolio-update-div-policy-nav-asset-sale-process__8230174.html",
+  "sha256": "1f1d528672fd90c01d50a20599b685a275199a00209ed67d217f46b31d87db83",
+  "fetched_at": "2026-10-01T16:17:46.630162+00:00",
+  "bytes": 87407
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/harmony-energy-income-trust--heit/agm-trading-update/8143598",
+  "path": "data/raw/rns/022/240-announcement__rns__harmony-energy-income-trust--heit__agm-trading-update__8143598.html",
+  "sha256": "aa83b685366b4b4da856ca46304c318f6b67c2bd40cf552b01b680b5bf643577",
+  "fetched_at": "2026-10-01T16:17:47.353992+00:00",
+  "bytes": 64713
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/harmony-energy-income-trust--heit/investor-presentation/8062289",
+  "path": "data/raw/rns/022/241-announcement__rns__harmony-energy-income-trust--heit__investor-presentation__8062289.html",
+  "sha256": "eeda6088071ae647baffff067d0dd36bbd29f4f2e66f7922dcc80bc840dd2d59",
+  "fetched_at": "2026-10-01T16:17:48.090198+00:00",
+  "bytes": 55510
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/harmony-energy-income-trust--heit/portfolio-update-and-net-asset-value/8059829",
+  "path": "data/raw/rns/022/242-announcement__rns__harmony-energy-income-trust--heit__portfolio-update-and-net-asset-value__8059829.html",
+  "sha256": "0f8d2309fb4079e58f342e5da1130224a20ac3fe61f72dbacdeba57b1400959a",
+  "fetched_at": "2026-10-01T16:17:48.823375+00:00",
+  "bytes": 79750
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/harmony-energy-income-trust--heit/results-for-financial-year-ended-31-october-2023/8059687",
+  "path": "data/raw/rns/022/243-announcement__rns__harmony-energy-income-trust--heit__results-for-financial-year-ended-31-october-2023__8059687.html",
+  "sha256": "8ae296cfccf20af6c2effbbcbebe72880489f4df9daf146810aafc62748a9db7",
+  "fetched_at": "2026-10-01T16:17:49.712202+00:00",
+  "bytes": 637389
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/harmony-energy-income-trust--heit/debt-refinance-market-auction-notice-of-results/8050060",
+  "path": "data/raw/rns/022/244-announcement__rns__harmony-energy-income-trust--heit__debt-refinance-market-auction-notice-of-results__8050060.html",
+  "sha256": "843bf2ecb2a924dee4841af0033be5361efa110bfaada3b7ac19d26e84ead770",
+  "fetched_at": "2026-10-01T16:17:50.430317+00:00",
+  "bytes": 65137
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/harmony-energy-income-trust--heit/acquisition-of-shares-/8027605",
+  "path": "data/raw/rns/022/245-announcement__rns__harmony-energy-income-trust--heit__acquisition-of-shares-__8027605.html",
+  "sha256": "db9fe966371f9c612d23e627ba57aff0e8b243ae8b01ea3861378ffc0943ef99",
+  "fetched_at": "2026-10-01T16:17:51.149364+00:00",
+  "bytes": 56585
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/harmony-energy-income-trust--heit/trading-update/8018764",
+  "path": "data/raw/rns/022/246-announcement__rns__harmony-energy-income-trust--heit__trading-update__8018764.html",
+  "sha256": "61b38ac584f43ddd8f3afb94c3c5ac0829b535c0d1601f368d9aa61b15a19abd",
+  "fetched_at": "2026-10-01T16:17:51.863167+00:00",
+  "bytes": 65968
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/harmony-energy-income-trust--heit/portfolio-update-and-net-asset-value/7911642",
+  "path": "data/raw/rns/022/247-announcement__rns__harmony-energy-income-trust--heit__portfolio-update-and-net-asset-value__7911642.html",
+  "sha256": "c9434339eda53e3fb57699cc03220aad06c80e8918d83a41f59fcdef12adf0b6",
+  "fetched_at": "2026-10-01T16:17:52.606002+00:00",
+  "bytes": 80104
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/harmony-energy-income-trust--heit/portfolio-update-and-net-asset-value-/7729321",
+  "path": "data/raw/rns/022/248-announcement__rns__harmony-energy-income-trust--heit__portfolio-update-and-net-asset-value-__7729321.html",
+  "sha256": "8e61fde03c03638667b85e8479034ac53e4cdc17ffb99e8784e734eaa2cbe698",
+  "fetched_at": "2026-10-01T16:17:53.361578+00:00",
+  "bytes": 80846
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/harmony-energy-income-trust--heit/interim-results/7599090",
+  "path": "data/raw/rns/022/249-announcement__rns__harmony-energy-income-trust--heit__interim-results__7599090.html",
+  "sha256": "3037bf49c80b3958820f63065eb363c1647a305711aefae5e10fd1f2d7c89bb2",
+  "fetched_at": "2026-10-01T16:17:54.213452+00:00",
+  "bytes": 523063
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/harmony-energy-income-trust--heit/notice-of-interim-results/7560728",
+  "path": "data/raw/rns/022/250-announcement__rns__harmony-energy-income-trust--heit__notice-of-interim-results__7560728.html",
+  "sha256": "d627524b2497aae8c5d1959887f728824e19e66a7fe9bd7e3294f99a8a1e5496",
+  "fetched_at": "2026-10-01T16:17:54.943978+00:00",
+  "bytes": 52608
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/harmony-energy-income-trust--heit/trading-update-and-net-asset-value-/7538293",
+  "path": "data/raw/rns/022/251-announcement__rns__harmony-energy-income-trust--heit__trading-update-and-net-asset-value-__7538293.html",
+  "sha256": "8ba0c1fad2c19d47f166d8947f8eb3e94f4143c1f46cefd297edec71027c2dea",
+  "fetched_at": "2026-10-01T16:17:55.690704+00:00",
+  "bytes": 87402
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/harmony-energy-income-trust--heit/investor-presentation/7323717",
+  "path": "data/raw/rns/022/252-announcement__rns__harmony-energy-income-trust--heit__investor-presentation__7323717.html",
+  "sha256": "d2661112ea26079abdb50f8cfdba8854cca1170d11fec6e8c18d2d77be56cced",
+  "fetched_at": "2026-10-01T16:17:56.413814+00:00",
+  "bytes": 54122
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/harmony-energy-income-trust--heit/final-results-and-notice-of-agm/7504988",
+  "path": "data/raw/rns/022/253-announcement__rns__harmony-energy-income-trust--heit__final-results-and-notice-of-agm__7504988.html",
+  "sha256": "90e0e5230b42490a4e17f80b9c9fd7481f21fae43b80f47d4fa3593641b44b7b",
+  "fetched_at": "2026-10-01T16:17:57.228958+00:00",
+  "bytes": 573468
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/harmony-energy-income-trust--heit/net-asset-value-and-portfolio-update/7503113",
+  "path": "data/raw/rns/022/254-announcement__rns__harmony-energy-income-trust--heit__net-asset-value-and-portfolio-update__7503113.html",
+  "sha256": "03c2c8bd765ccba7aede7395a9f683ceebc2ad43aa4ca7474c99c60b40ad79ce",
+  "fetched_at": "2026-10-01T16:17:57.957209+00:00",
+  "bytes": 78865
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/harmony-energy-income-trust--heit/company-update-and-notice-of-results/7485789",
+  "path": "data/raw/rns/022/255-announcement__rns__harmony-energy-income-trust--heit__company-update-and-notice-of-results__7485789.html",
+  "sha256": "8568eec9ff72256f6c62cb369bd6965f408c9219b6ed9138c1756347f63ceffc",
+  "fetched_at": "2026-10-01T16:17:58.679734+00:00",
+  "bytes": 64543
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/harmony-energy-income-trust--heit/notice-of-full-year-results/7451770",
+  "path": "data/raw/rns/022/256-announcement__rns__harmony-energy-income-trust--heit__notice-of-full-year-results__7451770.html",
+  "sha256": "49f0fab3f22c5c1a69510d6830488257f08409162099ddea531cb0cbf8dfba5a",
+  "fetched_at": "2026-10-01T16:17:59.425673+00:00",
+  "bytes": 52480
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/harmony-energy-income-trust--heit/c-share-conversion-portfolio-update/7229212",
+  "path": "data/raw/rns/022/257-announcement__rns__harmony-energy-income-trust--heit__c-share-conversion-portfolio-update__7229212.html",
+  "sha256": "877352b815bc003fc6f9abda02210c1c387221d2d6532b596ae4235ab3cb5146",
+  "fetched_at": "2026-10-01T16:18:00.183711+00:00",
+  "bytes": 92368
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/harmony-energy-income-trust--heit/acquisition-of-three-pipeline-projects/7411203",
+  "path": "data/raw/rns/022/258-announcement__rns__harmony-energy-income-trust--heit__acquisition-of-three-pipeline-projects__7411203.html",
+  "sha256": "5252ace4d47cbd335c940632bd47f72e7bdc0c0470104899adf6358bd0b6723a",
+  "fetched_at": "2026-10-01T16:18:00.934115+00:00",
+  "bytes": 84880
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/harmony-energy-income-trust--heit/net-asset-value-s-/7454116",
+  "path": "data/raw/rns/022/259-announcement__rns__harmony-energy-income-trust--heit__net-asset-value-s-__7454116.html",
+  "sha256": "2a40cb0d5936f89e117a24c9e9ce683a342cd4b3831bd0432a61934cf165e527",
+  "fetched_at": "2026-10-01T16:18:01.678897+00:00",
+  "bytes": 79026
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/harmony-energy-income-trust--heit/result-of-the-issue/7303202",
+  "path": "data/raw/rns/022/260-announcement__rns__harmony-energy-income-trust--heit__result-of-the-issue__7303202.html",
+  "sha256": "055ae219867f05c629290543e102699183f105abafb2c71bdb2557a22a276a1e",
+  "fetched_at": "2026-10-01T16:18:02.405846+00:00",
+  "bytes": 62619
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/harmony-energy-income-trust--heit/net-asset-value-and-portfolio-update/7187226",
+  "path": "data/raw/rns/022/261-announcement__rns__harmony-energy-income-trust--heit__net-asset-value-and-portfolio-update__7187226.html",
+  "sha256": "883475cf1adc8c1b6afd829b244bf2b5e8fd5d5cc9225ddb558c5c24f67fef28",
+  "fetched_at": "2026-10-01T16:18:03.144903+00:00",
+  "bytes": 74232
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/harmony-energy-income-trust--heit/pipeline-project-acquisition-and-adjusted-nav/6954457",
+  "path": "data/raw/rns/022/262-announcement__rns__harmony-energy-income-trust--heit__pipeline-project-acquisition-and-adjusted-nav__6954457.html",
+  "sha256": "e62659bf6521ba48dcb80ad651b0294c26a64cf405e5c7ef4055541191707d31",
+  "fetched_at": "2026-10-01T16:18:03.883647+00:00",
+  "bytes": 59136
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/harmony-energy-income-trust--heit/interim-results/6921067",
+  "path": "data/raw/rns/022/263-announcement__rns__harmony-energy-income-trust--heit__interim-results__6921067.html",
+  "sha256": "f80c7fea264d0c279a76e760ecb5c88c1b8d82d04be447ae804bfe5de995f5f5",
+  "fetched_at": "2026-10-01T16:18:04.726279+00:00",
+  "bytes": 462382
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/harmony-energy-income-trust--heit/interim-results/7154572",
+  "path": "data/raw/rns/022/264-announcement__rns__harmony-energy-income-trust--heit__interim-results__7154572.html",
+  "sha256": "b4c5e5a0c83af6f8424de904c4878c2194ca7dcce74c892d996e2a4558f61166",
+  "fetched_at": "2026-10-01T16:18:05.561209+00:00",
+  "bytes": 432995
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/harmony-energy-income-trust--heit/notice-of-interim-results/7116934",
+  "path": "data/raw/rns/022/265-announcement__rns__harmony-energy-income-trust--heit__notice-of-interim-results__7116934.html",
+  "sha256": "1013ff96922ab24897c50c00947b6b8b1e0952611e2651d9448b76fddcc0f819",
+  "fetched_at": "2026-10-01T16:18:06.300820+00:00",
+  "bytes": 51000
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/harmony-energy-income-trust--heit/net-asset-value-and-portfolio-update/6972816",
+  "path": "data/raw/rns/022/266-announcement__rns__harmony-energy-income-trust--heit__net-asset-value-and-portfolio-update__6972816.html",
+  "sha256": "b018b666d840a19c88edea53aded6bb5a9c23e69f5f9ce351c34ded4ca5187c3",
+  "fetched_at": "2026-10-01T16:18:07.048747+00:00",
+  "bytes": 75365
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/harmony-energy-income-trust--heit/net-asset-value-and-portfolio-update/6886854",
+  "path": "data/raw/rns/022/267-announcement__rns__harmony-energy-income-trust--heit__net-asset-value-and-portfolio-update__6886854.html",
+  "sha256": "14d5d43503ee6ee23c0991253523319e44110b4ed6cb670b39d6ab0b2064448d",
+  "fetched_at": "2026-10-01T16:18:07.785089+00:00",
+  "bytes": 67874
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/harmony-energy-income-trust--heit/portfolio-update/6907873",
+  "path": "data/raw/rns/022/268-announcement__rns__harmony-energy-income-trust--heit__portfolio-update__6907873.html",
+  "sha256": "e6e8c1848823ae8266a43a425bccb2e5fe93462e391fd96516c91bad3d201716",
+  "fetched_at": "2026-10-01T16:18:08.539883+00:00",
+  "bytes": 54425
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.investegate.co.uk/announcement/rns/harmony-energy-income-trust--heit/acquisition-of-shares/6797868",
+  "path": "data/raw/rns/022/269-announcement__rns__harmony-energy-income-trust--heit__acquisition-of-shares__6797868.html",
+  "sha256": "e2738639b6072137ac6ee99833f0dc5be6ca1d5e6baa238d72d1f5a68f98f9ea",
+  "fetched_at": "2026-10-01T16:18:09.270956+00:00",
+  "bytes": 49696
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://greshamhouse.com/sustainable-investment-report-2024/",
+  "path": "data/raw/rns/022/270-sustainable-investment-report-2024.html",
+  "sha256": "ab6b027075b71e2ca07b28a90988113704a56d9945f8871687bb61c88b6ed986",
+  "fetched_at": "2026-10-01T16:18:09.966620+00:00",
+  "bytes": 124180
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://greshamhouse.com/integrated-climate-nature-strategy/",
+  "path": "data/raw/rns/022/271-integrated-climate-nature-strategy.html",
+  "sha256": "74866fcb05071ef921a787f2eb744c4348a14e30a0222518875c63f77f55351b",
+  "fetched_at": "2026-10-01T16:18:10.620606+00:00",
+  "bytes": 111714
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://greshamhouse.com/tcfd/",
+  "path": "data/raw/rns/022/272-tcfd.html",
+  "sha256": "b557bb50c7a9812365bffdbfba4e38e9584a1a84a6d78768aebf5804012d0704",
+  "fetched_at": "2026-10-01T16:18:11.275998+00:00",
+  "bytes": 120552
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://greshamhouse.com/tnfd-reporting/",
+  "path": "data/raw/rns/022/273-tnfd-reporting.html",
+  "sha256": "c99a4762cd7aa189cff6d91732f6a1b1ab92e29f130393c306de8b02c2572e54",
+  "fetched_at": "2026-10-01T16:18:11.964742+00:00",
+  "bytes": 120078
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.londonstockexchange.com/news-article/GRID/result-of-2026-annual-general-meeting/17658126",
+  "path": "data/raw/rns/022/274-news-article__GRID__result-of-2026-annual-general-meeting__17658126.html",
+  "sha256": "c082660492d1bfb06ac164700d1187ed1d47dc1e940d356ff9f622546ef03d25",
+  "fetched_at": "2026-10-01T16:18:12.708593+00:00",
+  "bytes": 54995
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://greshamhouse.com/wp-content/uploads/2022/05/Gresham-House-Energy-Storage-Fund-plc-Tri-Partite-Prospectus-25-May-2022.pdf",
+  "path": "data/raw/rns/022/275-wp-content__uploads__2022__05__Gresham-House-Energy-Storage-Fund-plc-Tri-Partite-Prospectus-25-May-2022.pdf.html",
+  "sha256": "9b96d4aee57e1499589bcc3c2ba8329d6b2791a8a5e1be06476a854950dbb78e",
+  "fetched_at": "2026-10-01T16:18:13.504035+00:00",
+  "bytes": 2944570
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://greshamhouse.com/wp-content/uploads/2023/04/GRID-Supplementary-Prospectus-14.04.23.pdf",
+  "path": "data/raw/rns/022/276-wp-content__uploads__2023__04__GRID-Supplementary-Prospectus-14.04.23.pdf.html",
+  "sha256": "9bfa0b3a4f6eb1f2824298434fe8cfe0aa441298f0bd4cd006fb28d6dd59e996",
+  "fetched_at": "2026-10-01T16:18:14.195893+00:00",
+  "bytes": 115708
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://greshamhouse.com/wp-content/uploads/2019/10/LON_LIB1-21208763-v8-GRID_Placing_October_2019_Circular.pdf",
+  "path": "data/raw/rns/022/277-wp-content__uploads__2019__10__LON_LIB1-21208763-v8-GRID_Placing_October_2019_Circular.pdf.html",
+  "sha256": "9c8479d7e380320ef56628a44ba8d61dc312af845edd8f055c961ebeeef44d7f",
+  "fetched_at": "2026-10-01T16:18:14.872918+00:00",
+  "bytes": 154251
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.gsenergystoragefund.com/content/about/strategy.asp",
+  "path": "data/raw/rns/022/278-content__about__strategy.asp.html",
+  "sha256": "9e77051665499dbd92dfdd19d44017f34ff91170835d7c97424a7291d9679637",
+  "fetched_at": "2026-10-01T16:18:15.740337+00:00",
+  "bytes": 35687
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.gsenergystoragefund.com/content/investors/share-price.asp",
+  "path": "data/raw/rns/022/279-content__investors__share-price.asp.html",
+  "sha256": "cf2c0ff839684226c9f3a04a2691ca1a76a94fdbdac547479f954aafd7001328",
+  "fetched_at": "2026-10-01T16:18:16.588754+00:00",
+  "bytes": 42027
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/fund-document-2",
+  "url": "https://www.gsenergystoragefund.com/content/news/archive/2026/220926.asp",
+  "path": "data/raw/rns/022/280-content__news__archive__2026__220926.asp.html",
+  "sha256": "2287f1ada892b5389cef1ddeeb3d0e797eca3fbc5c3fd880e557a35cf4d7a131",
+  "fetched_at": "2026-10-01T16:18:17.350720+00:00",
+  "bytes": 39410
  }
 ]

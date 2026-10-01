@@ -294,6 +294,35 @@ def title_of(html: str) -> str | None:
     return " ".join(html_module.unescape(t.group(1)).split()) if t else None
 
 
+RNS_HEADER_RE = re.compile(
+    r"RNS Number\s*:[^\n]*\n(?:[^\n]*\n){0,3}?\s*(\d{1,2}\s+[A-Z][a-z]+\s+20\d\d)\b"
+)
+
+
+def rns_header_date(text: str) -> str | None:
+    """S1: the date an RNS announcement page prints in its header, the
+    first `D Month YYYY` line within three lines after `RNS Number :`, as
+    printed."""
+    m = RNS_HEADER_RE.search(text)
+    return m.group(1) if m else None
+
+
+def pdf_info_dates(data: bytes) -> dict[str, list[str]]:
+    """S1: a PDF's CreationDate and ModDate as `pdfinfo` prints them."""
+    import shutil
+    import subprocess
+
+    if not shutil.which("pdfinfo"):
+        return {}
+    done = subprocess.run(["pdfinfo", "-"], input=data, capture_output=True, check=False)
+    out: dict[str, list[str]] = {}
+    for line in done.stdout.decode("utf-8", errors="replace").splitlines():
+        key, _, value = line.partition(":")
+        if key.strip() in ("CreationDate", "ModDate") and value.strip():
+            out[f"pdf:{key.strip()}"] = [value.strip()]
+    return out
+
+
 def date_strings(html: str) -> dict[str, list[str]]:
     """Every date-like declaration the page makes about itself, by where
     it was found, as printed. Which one is the publication date is a
@@ -417,9 +446,14 @@ def page_report(*, url: str, path: str, sha256: str, data: bytes) -> PageReport:
     if is_pdf:
         html = ""
         text = " ".join(pdf_text(data).split())
+        dates = pdf_info_dates(data)
     else:
         html = data.decode("utf-8", errors="replace")
         text = visible_text(html)
+        dates = date_strings(html)
+        header = rns_header_date(text)
+        if header:
+            dates["text:rns-header"] = [header]
     figures = figure_strings(text)
     report = PageReport(
         url=url,
@@ -428,7 +462,7 @@ def page_report(*, url: str, path: str, sha256: str, data: bytes) -> PageReport:
         bytes=len(data),
         format=f"pdf ({PDF_MODE})" if is_pdf else "html",
         title=title_of(html) if html else None,
-        dates=date_strings(html) if html else {},
+        dates=dates,
         text_chars=len(text),
         figures=figures,
         figure_shapes=dict(Counter(f.shape for f in figures).most_common()),

@@ -104,14 +104,16 @@ def test_rs3_the_latest_published_realised_figure_is_read() -> None:
 def test_rm_a_fleet_realised_figure_against_a_duration_forecast_is_a_mismatch_never_adjusted() -> (
     None
 ):
-    realised = [r for r in REALISED if r.scope == "fleet"]
+    realised = [r for r in REALISED if r.scope == "fleet"] + [
+        fig("grid24", "realised", "GRID portfolio", "50000", 2024, published=date(2025, 4, 22))
+    ]
     f = fig("f", "forecast", "4h", "90000", 2024, published=date(2023, 11, 1))
     row = fr.compare(f, fr.realised_index(realised), today=TODAY)
     assert row.status == "scope mismatch"
     assert row.realised == Decimal("55000")
-    assert row.realised_scope == "fleet"
+    assert row.realised_scope == "fleet"  # the fleet outturn first, GRID's listed beside it
     assert row.signed_error is None and row.absolute_error_pct is None
-    assert "never adjusted" in row.note
+    assert "never adjusted" in row.note and "GRID portfolio" in row.note
 
 
 def test_not_yet_scorable_dates_the_day_the_period_ends() -> None:
@@ -264,7 +266,7 @@ def test_rr0_json_title_pdf_and_duplicates_are_declined() -> None:
         "R-R0 JSON payload",
         "R-R0 title or navigation duplicate",
         "R-R5 monthly figure",
-        "R-R0 duplicate string in the same sentence",
+        "R-R5 monthly figure",
     ]
     pdf = page([("£60k/MW/year", "anything")], fmt="pdf", published="")
     assert rules(pdf)[0].startswith("R-R0 PDF")
@@ -276,6 +278,10 @@ def test_rr1_and_rr6_publication_date_precedence_and_the_2023_cutoff() -> None:
     assert fr.publication_date(p) == date(2023, 1, 2)
     p["dates"] = {"json:dateCreated": ["2022-12-31 07:00:00"]}
     assert rules(p) == ["R-R6 published before 2023"]
+    p["dates"] = {"text:rns-header": ["23 May 2023"]}
+    assert fr.publication_date(p) == date(2023, 5, 23)
+    p["dates"] = {"pdf:CreationDate": ["Tue Apr 21 11:39:36 2026 BST"]}
+    assert fr.publication_date(p) == date(2026, 4, 21)
     p["dates"] = {}
     assert rules(p) == ["R-R1 no publication date declared"]
 
@@ -603,3 +609,118 @@ def test_pipeline_runs_end_to_end_on_synthetic_pages_and_f1_fires_without_a_scor
         result["falsifiers"]["F2"]["per_year_strings"] == 2
         and result["falsifiers"]["F2"]["fires"] is False
     )
+
+
+def test_rr4f_a_fund_citing_a_curve_for_a_future_year_is_the_funds_forecast_with_its_source() -> (
+    None
+):
+    fund = page(
+        [
+            (
+                "£75k/MW/year",
+                "The valuation assumes merchant revenues of £75k/MW/year for two-hour assets "
+                "in 2024, based on the Aurora central case.",
+            ),
+            (
+                "£60k/MW/year",
+                "The valuation assumed revenues of £60k/MW/year for the portfolio in 2021.",
+            ),
+            (
+                "£52k/MW/year",
+                "Third-party forecasters anticipate £52k/MW/year for the portfolio in 2024.",
+            ),
+            (
+                "£58k/MW/year",
+                "Third-party forecasters are anticipating 2026 merchant revenue levels for 2-hour "
+                "assets of c.£58k/MW/year.",
+            ),
+        ],
+        url="https://www.investegate.co.uk/announcement/rns/x--grid/nav/1",
+        title="Net Asset Value | Company Announcement | Investegate",
+        published="2022-03-01T07:00:00",
+    )
+    got = fr.read_page(fund, publisher="GRID (fund RNS)", portfolio_scope="GRID portfolio")
+    assert [r.rule for r in got] == [
+        "R-R5 annual figure, basis forecast, cited by the fund (aurora)",
+        "R-R4 an assumption for a past period, not an outturn",
+        "R-R5 annual figure, basis forecast, cited by the fund (third-party)",
+        "R-R5 annual figure, basis forecast, cited by the fund (third-party)",
+    ]
+    assert got[3].figure.scope == "2h" and got[3].figure.period_start == 2026  # type: ignore[union-attr]
+    assert got[0].figure.scope == "2h" and got[0].figure.cited_source == "aurora"  # type: ignore[union-attr]
+    assert got[2].figure.scope == "GRID portfolio"  # type: ignore[union-attr]
+    assert got[0].figure.publisher == "GRID (fund RNS)"  # type: ignore[union-attr]
+
+
+def test_rr0_and_rr6_for_fund_pdfs_in_reading_order_and_the_2021_window() -> None:
+    pdf = page(
+        [
+            (
+                "£60k/MW/year",
+                "Revenues of £60k/MW/year were assumed for 2024 GRID Annual Report 2022 "
+                "Strategic report",
+            ),
+            ("£60k/MW/year", "Revenues of £60k/MW/year were assumed for 2024."),
+        ],
+        fmt="pdf (pdftotext reading order (no -layout))",
+        published="",
+    )
+    pdf["dates"] = {"json:dateCreated": ["2022-04-20"]}
+    got = fr.read_page(pdf, publisher="GRID (fund RNS)", portfolio_scope="GRID portfolio")
+    assert [r.rule for r in got] == [
+        "R-R0 PDF sentence glued to page furniture",
+        "R-R5 annual figure, basis forecast, cited by the fund (source unnamed)",
+    ]
+    layout = dict(pdf, format="pdf")
+    first = fr.read_page(layout, publisher="GRID (fund RNS)", portfolio_scope="GRID portfolio")[0]
+    assert first.rule.startswith("R-R0 PDF: layout")
+    early = dict(pdf, dates={"json:dateCreated": ["2020-12-31"]})
+    first = fr.read_page(early, publisher="GRID (fund RNS)", portfolio_scope="GRID portfolio")[0]
+    assert first.rule == "R-R6 published before 2021"
+
+
+def test_propositions_are_reported_per_publisher_beside_the_whole() -> None:
+    figures = REALISED + [
+        fig("a", "forecast", "2h", "73800", 2024, published=date(2023, 11, 1)),
+        fig("b", "forecast", "2h", "60000", 2024, published=date(2023, 10, 1), publisher="GRID"),
+    ]
+    rows = fr.comparisons(figures, today=TODAY)
+    props = fr.propositions(figures, rows)
+    assert props["P-A"]["verdict"] == "fails"
+    assert props["per_publisher"]["Modo Energy"]["P-A"]["verdict"] == "holds"
+    assert props["per_publisher"]["GRID"]["P-A"]["verdict"] == "fails"
+
+
+def test_rr2_a_string_repeated_verbatim_in_one_sentence_is_read_at_its_own_place() -> None:
+    sentence = (
+        "The adviser revised its assumptions for 2024 from £60,000 per MW/yr to £50,000 per MW/yr "
+        "and for 2025 from £50,000 per MW/yr to £45,000 per MW/yr."
+    )
+    fund = page(
+        [
+            ("£60,000 per MW/yr", sentence),
+            ("£50,000 per MW/yr", sentence),
+            ("£50,000 per MW/yr", sentence),
+            ("£45,000 per MW/yr", sentence),
+        ],
+        url="https://www.investegate.co.uk/announcement/rns/x--heit/nav/1",
+        title="Trading Update | Company Announcement | Investegate",
+        published="2023-05-23T07:00:00",
+    )
+    got = fr.read_page(fund, publisher="HEIT", portfolio_scope="HEIT portfolio")
+    assert [r.rule for r in got] == [
+        "R-R2 the starting point of a stated change, not its level",
+        "R-R5 annual figure, basis forecast, cited by the fund (source unnamed)",
+        "R-R2 the starting point of a stated change, not its level",
+        "R-R5 annual figure, basis forecast, cited by the fund (source unnamed)",
+    ]
+    assert [r.figure.period_start for r in got if r.figure] == [2024, 2025]
+
+
+def test_rr0_the_same_figure_in_an_rns_and_its_report_of_one_day_is_one_publication() -> None:
+    a = fig("a", "forecast", "2h", "70000", 2028, published=date(2025, 9, 24), url="https://x/rns")
+    b = fig("b", "forecast", "2h", "70000", 2028, published=date(2025, 9, 24), url="https://x/pdf")
+    c = fig("c", "forecast", "2h", "71000", 2028, published=date(2025, 9, 24), url="https://x/pdf")
+    kept, duplicates = fr.dedupe_same_day([b, a, c])
+    assert sorted(f.figure_id for f in kept) == ["b", "c"]  # the first by URL is kept
+    assert duplicates == [{"figure_id": "a", "same_as": "b", "url": "https://x/rns"}]

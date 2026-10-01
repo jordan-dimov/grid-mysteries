@@ -195,3 +195,18 @@ def test_a_pdf_is_reported_as_a_pdf_and_scanned_as_text(monkeypatch) -> None:
     monkeypatch.setattr(modo, "pdf_text", lambda data: "")
     empty = modo.page_report(url="u", path="p", sha256="0" * 64, data=b"%PDF-1.7 ...")
     assert "pdf with no extractable text" in empty.flags
+
+
+def test_s1_the_rns_header_date_is_recorded_as_printed() -> None:
+    text = (
+        "Login\nRegister\nNotice of Results\nRNS Number : 1234H\nSome Fund PLC\n"
+        "16 November 2023\nSome Fund plc"
+    )
+    assert modo.rns_header_date(text) == "16 November 2023"
+    assert modo.rns_header_date("no header here 16 November 2023") is None
+    page = (
+        b"<html><body><p>RNS Number : 1234H</p><p>Some Fund PLC</p><p>16 November 2023</p>"
+        b"<p>Revenue of &pound;60k/MW/year in 2022.</p></body></html>"
+    )
+    report = modo.page_report(url="u", path="p", sha256="0" * 64, data=page)
+    assert report.dates["text:rns-header"] == ["16 November 2023"]

@@ -1,9 +1,10 @@
 {
  "declaration": [
   "ACQUISITION.md",
+  "AMENDMENT-1.md",
   "DECLARATION.md"
  ],
- "note": "ACQUISITION.md's discovery and schema-pass rules (A1 to A6, S1 to S4) and DECLARATION.md's reading rules (R-R0 to R-R7), scorability (R-S1 to R-S4), comparison (R-C), mismatch (R-M), revisions (R-V), propositions (P-A to P-C) and F1 to F3 are mapped here. The seal gates, C1 (digests against the frozen declaration and the manifests), C3, C4 and the schema pass's refusal on an empty journal are enforced by run.py against artefacts outside the pure logic and have no unit test.",
+ "note": "ACQUISITION.md's and AMENDMENT-1.md's discovery and schema-pass rules (A1 to A6, S1 to S4) and DECLARATION.md's reading rules (R-R0 to R-R7), scorability (R-S1 to R-S4), comparison (R-C), mismatch (R-M), revisions (R-V), propositions (P-A to P-C) and F1 to F3 are mapped here. The seal gates, C1 (digests against the frozen declaration and the manifests), C3, C4 and the schema pass's refusal on an empty journal are enforced by run.py against artefacts outside the pure logic and have no unit test.",
  "rules": {
   "A1 every Sitemap line of robots.txt once in order": "tests/test_modo.py::test_a1_every_sitemap_line_of_robots_once_in_order",
   "A1 a sitemap index and a urlset parse with lastmod as printed": "tests/test_modo.py::test_sitemap_index_and_urlset_parse_with_lastmod_as_printed",
@@ -43,6 +44,12 @@
   "R-V one figure per vintage, duplicates listed": "tests/test_forecast_record.py::test_pc_reads_one_figure_per_vintage_and_lists_the_duplicates",
   "F3 a committed row that would change is named and the run refuses": "tests/test_forecast_record.py::test_f3_require_unchanged_names_committed_rows_that_would_differ",
   "A figure refuses a negative value or a backwards period": "tests/test_forecast_record.py::test_a_figure_refuses_a_negative_value_or_a_backwards_period",
-  "FINDINGS lists the not-yet-scorable table as a result and never says wrong": "tests/test_forecast_record_page.py::test_findings_lists_the_not_yet_scorable_table_as_a_result_and_never_says_wrong"
+  "FINDINGS lists the not-yet-scorable table as a result and never says wrong": "tests/test_forecast_record_page.py::test_findings_lists_the_not_yet_scorable_table_as_a_result_and_never_says_wrong",
+  "S1 the RNS header date is recorded as printed": "tests/test_modo.py::test_s1_the_rns_header_date_is_recorded_as_printed",
+  "R-R4(f) a fund citing a curve for a future year is the fund's forecast, with its source and scope": "tests/test_forecast_record.py::test_rr4f_a_fund_citing_a_curve_for_a_future_year_is_the_funds_forecast_with_its_source",
+  "R-R0 and R-R6 for fund PDFs in reading order, page furniture, and the 2021 window": "tests/test_forecast_record.py::test_rr0_and_rr6_for_fund_pdfs_in_reading_order_and_the_2021_window",
+  "Propositions are reported per publisher beside the whole": "tests/test_forecast_record.py::test_propositions_are_reported_per_publisher_beside_the_whole",
+  "R-R2 a string repeated verbatim in one sentence is read at its own place": "tests/test_forecast_record.py::test_rr2_a_string_repeated_verbatim_in_one_sentence_is_read_at_its_own_place",
+  "R-R0 the same figure in an RNS and its report of one day is one publication": "tests/test_forecast_record.py::test_rr0_the_same_figure_in_an_rns_and_its_report_of_one_day_is_one_publication"
  }
 }

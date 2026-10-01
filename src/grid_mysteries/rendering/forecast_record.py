@@ -63,18 +63,24 @@ def render_findings(
         "> Battery revenue forecasts move hundreds of millions of pounds of fund value, and nobody "
         "has ever published how accurate they were.",
         "",
-        "## The result, in one paragraph",
+        "## The finding",
         "",
     ]
     if not scored:
+        after = sorted(c["scorable_after"] for c in pending if c["scorable_after"])
+        first = after[0] if after else "no date"
+        publishers = sorted({c["vintage"][0] for c in rows})
         L.append(
-            f"Of the {len(vintages)} forecast vintage(s) the reading rules found on Modo Energy's "
-            f"public pages, **none is scorable today** (F1): every published headline covers a "
-            "period that has not ended, or the year of its own publication (in-year, never "
-            "scored), or no realised figure of its scope has been published for it. The "
-            "not-yet-scorable table below is the result of issue 1, with the date each vintage "
-            "becomes scorable. P-A and P-B are undecided; "
-            f"P-C is {props['P-C']['verdict']} over {props['P-C']['pairs']} revision pair(s)."
+            f"**The forecasts the market prices on cannot be checked in public before {first}.** "
+            f"Of the {len(vintages)} forecast vintage(s) the reading rules found on the public "
+            f"pages of {', '.join(publishers)}, none is scorable today (F1): each covers a period "
+            "that has not ended, or the year of its own publication (in-year, never scored), or "
+            "has no published outturn of its own scope. Per-year, per-duration forecast levels "
+            "and per-asset outturns are not on the public pages read here; what is public is "
+            "the fleet index by month, horizon averages, and the funds' own portfolio figures by "
+            "financial year. The per-asset cut is the paid product behind the public record. "
+            "The not-yet-scorable table below is the result of issue 1, with the date each "
+            "vintage becomes scorable."
         )
     else:
         over = sum(
@@ -136,28 +142,6 @@ def render_findings(
             )
     else:
         L.append("None.")
-    L += ["", "## Revisions between consecutive vintages (R-V)", ""]
-    if revs:
-        L += [
-            "| publisher | scope | period | earlier (date, value) | later (date, value) | "
-            "change | direction |",
-            "|---|---|---|---|---|---|---|",
-        ]
-        for r in revs:
-            period = str(r["period_start"])
-            if r["period_start"] != r["period_end"]:
-                period += f" to {r['period_end']}"
-            L.append(
-                f"| {r['publisher']} | {r['scope']} | {period} | "
-                f"{r['earlier']['published_on']}, {pounds(r['earlier']['value'])} | "
-                f"{r['later']['published_on']}, {pounds(r['later']['value'])} | "
-                f"{pounds(r['change'])} | {r['direction']} |"
-            )
-    else:
-        L.append(
-            "No two consecutive vintages print a forecast for the same scope and period, so no "
-            "revision pair exists; P-C is undecided."
-        )
     L += ["", "## The realised side, as published", ""]
     annual = [r for r in reads if r["outcome"] == "figure" and r["figure"]["basis"] == "realised"]
     L += ["### Annual figures read (R-R5)", ""]
@@ -184,8 +168,8 @@ def render_findings(
     if months["restated"]:
         L += [
             "",
-            "Months printed differently on different pages beyond rounding (F4), the latest "
-            "published read:",
+            "### Months printed differently on different pages (F4): both figures, both "
+            "sources, both dates; the latest published read, nothing resolved",
             "",
         ]
         for x in months["restated"]:
@@ -194,6 +178,28 @@ def render_findings(
                 f"- {x['scope']} {x['year']}-{x['month']:02d}: read {pounds(x['read'])} from "
                 f"`{x['read_from']}`; others {others}"
             )
+    L += ["", "## Revisions between consecutive vintages (R-V)", ""]
+    if revs:
+        L += [
+            "| publisher | scope | period | earlier (date, value) | later (date, value) | "
+            "change | direction |",
+            "|---|---|---|---|---|---|---|",
+        ]
+        for r in revs:
+            period = str(r["period_start"])
+            if r["period_start"] != r["period_end"]:
+                period += f" to {r['period_end']}"
+            L.append(
+                f"| {r['publisher']} | {r['scope']} | {period} | "
+                f"{r['earlier']['published_on']}, {pounds(r['earlier']['value'])} | "
+                f"{r['later']['published_on']}, {pounds(r['later']['value'])} | "
+                f"{pounds(r['change'])} | {r['direction']} |"
+            )
+    else:
+        L.append(
+            "No two consecutive vintages print a forecast for the same scope and period, so no "
+            "revision pair exists; P-C is undecided."
+        )
     L += ["", "## What the reading rules did with every figure-looking string", ""]
     tally = Counter(r["rule"] for r in reads)
     L += ["| rule | strings |", "|---|---|"]
@@ -216,7 +222,23 @@ def render_findings(
     ]
     for k in ("P-A", "P-B", "P-C"):
         L.append(f"- **{k}**: {props[k]['verdict']}.")
+    for pub, pp in props.get("per_publisher", {}).items():
+        L.append(
+            f"- {pub}: P-A {pp['P-A']['verdict']}, P-B {pp['P-B']['verdict']}, "
+            f"P-C {pp['P-C']['verdict']} ({pp['P-C']['pairs']} pair(s))."
+        )
     L += [
+        "",
+        "## Method, in short",
+        "",
+        "Every page was pinned under a sealed plan. A schema pass listed every figure-looking "
+        "string as printed. The reading rules were written against that pass and frozen before "
+        "any figure was read. A forecast is a published headline for a stated future period. An "
+        "outturn is a published realised figure for a past calendar year, or the mean of twelve "
+        "published monthly figures where no annual figure is published. A year counts only if "
+        "the forecast was published before it began. A forecast and an outturn of different "
+        "populations are listed side by side and never adjusted. Every string is in the "
+        "evidence with the rule that read or declined it. No row changes once committed.",
         "",
         "## What this never claims",
         "",

@@ -50,6 +50,7 @@ class Figure:
     period_start: int
     period_end: int
     as_printed: str
+    cited_source: str | None = None
 
     def __post_init__(self) -> None:
         if self.period_end < self.period_start:
@@ -200,8 +201,10 @@ def compare(
             signed_pct=pct(forecast.value - realised, realised),
             note="mean of the realised years" if len(values) > 1 else "",
         )
+    # R-M: the fleet outturn first, then the other scopes by name
     other_scopes = sorted(
-        {s for (s, y), figs in index.items() if y in years and s != forecast.scope and figs}
+        {s for (s, y), figs in index.items() if y in years and s != forecast.scope and figs},
+        key=lambda s: (not s.startswith("fleet"), s),
     )
     complete_other = [s for s in other_scopes if all(realised_for(s, y, index) for y in years)]
     if complete_other:
@@ -426,11 +429,23 @@ def proposition_c(figures: list[Figure]) -> dict:
 
 
 def propositions(figures: list[Figure], rows: list[Comparison]) -> dict[str, dict]:
-    return {
+    """The three propositions over every scorable vintage, and the same
+    three per publisher beside them (reported, never a separate verdict)."""
+    out: dict[str, dict] = {
         "P-A": proposition_a(rows),
         "P-B": proposition_b(rows),
         "P-C": proposition_c(figures),
     }
+    publishers = sorted({f.publisher for f in figures if f.basis == "forecast"})
+    out["per_publisher"] = {
+        pub: {
+            "P-A": proposition_a([r for r in rows if r.vintage[0] == pub]),
+            "P-B": proposition_b([r for r in rows if r.vintage[0] == pub]),
+            "P-C": proposition_c([f for f in figures if f.publisher == pub]),
+        }
+        for pub in publishers
+    }
+    return out
 
 
 def not_yet_scorable_table(rows: list[Comparison]) -> list[dict]:
@@ -497,7 +512,7 @@ FIGURE_RE = re.compile(
     r"(?:\s?(?:/|per)\s?(?P<period>year|yr|y\b|annum|a\b|month|mo\b|hour|hr|h\b))?",
     re.IGNORECASE,
 )
-CLAUSE_SPLIT = re.compile(r"[,;:]|\s[-–—]\s")
+CLAUSE_SPLIT = re.compile(r",(?!\d)|;|:(?!\d)|\s[-–—]\s")  # not a thousands separator
 COMPONENT_WORDS = (
     "wholesale",
     "balancing mechanism",
@@ -581,6 +596,44 @@ POTENTIAL_WORDS = (
     "minimum",
     "floor",
 )
+#: R-R4(f): on a fund page, an assumption with a future period is the
+#: fund's cited forecast; the source named in the sentence is recorded.
+ASSUMPTION_WORDS = (
+    "assum",
+    "forecast",
+    "projection",
+    "projected",
+    "curve",
+    "expected",
+    "anticipat",
+)
+CITED_SOURCES = (
+    "modo",
+    "aurora",
+    "baringa",
+    "cornwall insight",
+    "afry",
+    "lcp",
+    "timera",
+    "energy aspects",
+    "bnef",
+    "bloombergnef",
+    "third-party",
+    "third party",
+    "independent",
+)
+#: A7(iii): reading-order PDF text glues a page's furniture into a
+#: sentence; such a sentence is declined.
+FURNITURE_WORDS = (
+    "annual report",
+    "interim report",
+    "strategic report",
+    "governance",
+    "other information",
+    "investment manager's review",
+    "financial statements",
+    "notes to the",
+)
 FORECAST_WORDS = (
     "forecast",
     "project",
@@ -620,7 +673,8 @@ MONTH_ONLY_RE = re.compile(
 ANNUAL_RE = re.compile(
     r"\b(?:in|for all of|across|throughout|during|over|for)\s+"
     r"(?:the (?:whole|full|calendar) year\s+)?(?P<year>20[2-5]\d)\b"
-    r"|\b(?:the\s+)?(?P<year2>20[2-5]\d)\s+(?:average|revenues|calendar year|as a whole)\b"
+    r"|\b(?:the\s+)?(?P<year2>20[2-5]\d)\s+"
+    r"(?:average|revenues?|merchant|calendar year|as a whole)\b"
     r"|\bFY\s?(?P<year3>20[2-5]\d)\b"
     r"|\baverage\s+(?P<year4>20[2-5]\d)\s+revenues\b",
     re.IGNORECASE,
@@ -732,14 +786,35 @@ def amount_of(match: re.Match[str], sentence: str) -> Decimal | str:
     return value.quantize(GBP_QUANTUM) if value == value.to_integral_value() else value
 
 
+RNS_DATE_RE = re.compile(rf"\b(\d{{1,2}})\s+({MONTH_RE})\s+(20\d\d)\b", re.IGNORECASE)
+PDFINFO_DATE_RE = re.compile(r"\b([A-Z][a-z]{2})\s+(\d{1,2})\s+\d{2}:\d{2}:\d{2}\s+(20\d\d)\b")
+MONTH_ABBREV = {m[:3].title(): n for m, n in MONTHS.items()}
+
+
 def publication_date(page: dict) -> date | None:
     """R-R1: article:published_time, else datePublished, else the RNS
-    listing's dateCreated; the first ten characters as an ISO date."""
+    listing's dateCreated (the first ten characters as an ISO date), else
+    the RNS header line as printed on the page (`D Month YYYY`), else a
+    PDF's CreationDate from its metadata."""
     dates = page.get("dates") or {}
     for key in ("meta:article:published_time", "json:datePublished", "json:dateCreated"):
         if dates.get(key):
             try:
                 return date.fromisoformat(dates[key][0][:10])
+            except ValueError:
+                return None
+    if dates.get("text:rns-header"):
+        m = RNS_DATE_RE.search(dates["text:rns-header"][0])
+        if m:
+            try:
+                return date(int(m.group(3)), MONTHS[m.group(2).lower()], int(m.group(1)))
+            except ValueError:
+                return None
+    if dates.get("pdf:CreationDate"):
+        m = PDFINFO_DATE_RE.search(dates["pdf:CreationDate"][0])
+        if m and m.group(1) in MONTH_ABBREV:
+            try:
+                return date(int(m.group(3)), MONTH_ABBREV[m.group(1)], int(m.group(2)))
             except ValueError:
                 return None
     return None
@@ -793,10 +868,19 @@ def periods_in(
 
 
 def nearest(periods: list[Period], at: int, length: int) -> Period | None:
+    """R-R5: the period named nearest before the figure; only when none
+    is named before it, the nearest after ("for 2024 from £X to £Y and for
+    2025 from £A to £B" gives £Y 2024 and £B 2025; "earned £X in May 2025"
+    gives May 2025)."""
+
     def distance(p: Period) -> int:
         return min(abs(p.at - (at + length)), abs(at - p.at))
 
-    return min(periods, key=distance) if periods else None
+    before = [p for p in periods if p.at < at]
+    after = [p for p in periods if p.at >= at]
+    if before:
+        return min(before, key=distance)
+    return min(after, key=distance) if after else None
 
 
 def scope_of(clause: str, sentence: str, *, default_fleet: bool) -> str | None:
@@ -836,7 +920,6 @@ def read_page(page: dict, *, publisher: str, portfolio_scope: str | None = None)
     page_month = title_month(title, published) if portfolio_scope is None else None
     fund_year = FY_TITLE_RE.search(title) if portfolio_scope else None
     out: list[Reading] = []
-    seen: set[tuple[str, str]] = set()
     monthly_candidates: list[tuple[Decimal, str, dict, str]] = []
 
     def declined(f: dict, rule: str) -> Reading:
@@ -854,7 +937,8 @@ def read_page(page: dict, *, publisher: str, portfolio_scope: str | None = None)
     for f in page.get("figures") or []:
         sentence = " ".join(f["sentence"].split())
         printed = f["as_printed"]
-        if str(page.get("format", "")).startswith("pdf"):
+        fmt = str(page.get("format", ""))
+        if fmt.startswith("pdf") and "reading order" not in fmt:
             out.append(
                 declined(
                     f, "R-R0 PDF: layout text interleaves columns; the RNS text is read instead"
@@ -864,8 +948,12 @@ def read_page(page: dict, *, publisher: str, portfolio_scope: str | None = None)
         if published is None:
             out.append(declined(f, "R-R1 no publication date declared"))
             continue
-        if published < date(2023, 1, 1):
-            out.append(declined(f, "R-R6 published before 2023"))
+        since = date(2021, 1, 1) if portfolio_scope else date(2023, 1, 1)
+        if published < since:
+            out.append(declined(f, f"R-R6 published before {since.year}"))
+            continue
+        if fmt.startswith("pdf") and any(w in sentence.lower() for w in FURNITURE_WORDS):
+            out.append(declined(f, "R-R0 PDF sentence glued to page furniture"))
             continue
         if sentence.startswith("{") or '":"' in sentence:
             out.append(declined(f, "R-R0 JSON payload"))
@@ -875,11 +963,6 @@ def read_page(page: dict, *, publisher: str, portfolio_scope: str | None = None)
         ):
             out.append(declined(f, "R-R0 title or navigation duplicate"))
             continue
-        key = (printed, sentence.lower())
-        if key in seen:
-            out.append(declined(f, "R-R0 duplicate string in the same sentence"))
-            continue
-        seen.add(key)
         m = FIGURE_RE.search(printed)
         if not m:
             out.append(declined(f, "R-R2 unparsed"))
@@ -888,7 +971,20 @@ def read_page(page: dict, *, publisher: str, portfolio_scope: str | None = None)
         if isinstance(value, str):
             out.append(declined(f, value))
             continue
-        at = sentence.find(printed)
+        # the N-th occurrence of this exact string in this sentence, N being
+        # how many earlier strings of the page share both
+        occurrence = sum(
+            1
+            for g in (page.get("figures") or [])
+            if g["offset"] < f["offset"]
+            and g["as_printed"] == printed
+            and " ".join(g["sentence"].split()) == sentence
+        )
+        at = -1
+        for _ in range(occurrence + 1):
+            at = sentence.find(printed, at + 1)
+            if at < 0:
+                break
         if at < 0:
             at, printed_len = 0, 0
         else:
@@ -917,7 +1013,8 @@ def read_page(page: dict, *, publisher: str, portfolio_scope: str | None = None)
         if STARTING_POINT_RE.search(sentence[max(0, at - 16) : at + 1]):
             out.append(declined(f, "R-R2 the starting point of a stated change, not its level"))
             continue
-        if any(w in low_sentence for w in POTENTIAL_WORDS):
+        fund_cited = bool(portfolio_scope) and any(w in low_sentence for w in ASSUMPTION_WORDS)
+        if any(w in low_sentence for w in POTENTIAL_WORDS) and not fund_cited:
             out.append(
                 declined(
                     f,
@@ -926,6 +1023,16 @@ def read_page(page: dict, *, publisher: str, portfolio_scope: str | None = None)
             )
             continue
         scope = portfolio_scope or scope_of(clause, sentence, default_fleet=page_month is not None)
+        if portfolio_scope and EXCL_CM.search(sentence):
+            scope = f"{portfolio_scope}-excl-cm"
+        elif portfolio_scope and INCL_CM.search(sentence):
+            scope = f"{portfolio_scope}-incl-cm"
+        if portfolio_scope and fund_cited:
+            # a fund citing a curve for "two-hour assets" or "the GB market"
+            # names that population, not its own portfolio
+            named = scope_of(clause, sentence, default_fleet=False)
+            if named and (named != "fleet" or "portfolio" not in low_clause):
+                scope = named
         if scope is None:
             out.append(declined(f, "R-R3 no population named in the clause"))
             continue
@@ -976,7 +1083,7 @@ def read_page(page: dict, *, publisher: str, portfolio_scope: str | None = None)
                 )
             )
             continue
-        is_forecast = any(w in low_sentence for w in FORECAST_WORDS)
+        is_forecast = any(w in low_sentence for w in FORECAST_WORDS) or fund_cited
         if period.kind in ("horizon", "endyear") or period.start > published.year:
             basis: Basis = "forecast"
         elif period.start == published.year:
@@ -990,6 +1097,10 @@ def read_page(page: dict, *, publisher: str, portfolio_scope: str | None = None)
         if basis == "forecast" and not is_forecast:
             out.append(declined(f, "R-R4 a future year with no forecast word"))
             continue
+        if fund_cited and basis == "realised":
+            out.append(declined(f, "R-R4 an assumption for a past period, not an outturn"))
+            continue
+        cited = next((w for w in CITED_SOURCES if w in low_sentence), None) if fund_cited else None
         if (
             basis == "realised"
             and is_forecast
@@ -1010,6 +1121,7 @@ def read_page(page: dict, *, publisher: str, portfolio_scope: str | None = None)
             period_start=period.start,
             period_end=period.end,
             as_printed=printed,
+            cited_source=cited,
         )
         out.append(
             Reading(
@@ -1018,7 +1130,8 @@ def read_page(page: dict, *, publisher: str, portfolio_scope: str | None = None)
                 published,
                 printed,
                 sentence,
-                f"R-R5 {period.kind} figure, basis {basis}",
+                f"R-R5 {period.kind} figure, basis {basis}"
+                + (f", cited by the fund ({cited or 'source unnamed'})" if fund_cited else ""),
                 "figure",
                 figure=figure,
                 offset=f["offset"],
@@ -1209,6 +1322,23 @@ def falsifier_f2(readings: list[Reading], *, publisher: str) -> dict:
     }
 
 
+def dedupe_same_day(figures: list[Figure]) -> tuple[list[Figure], list[dict]]:
+    """R-R0: the same figure (publisher, date, basis, scope, period, value)
+    printed in two documents of one day, an RNS and its report, is one
+    publication; the first by URL is kept and the others are listed."""
+    kept: dict[tuple, Figure] = {}
+    duplicates: list[dict] = []
+    for f in sorted(figures, key=lambda f: (f.published_on, f.source_url, f.figure_id)):
+        key = (f.publisher, f.published_on, f.basis, f.scope, f.period_start, f.period_end, f.value)
+        if key in kept:
+            duplicates.append(
+                {"figure_id": f.figure_id, "same_as": kept[key].figure_id, "url": f.source_url}
+            )
+        else:
+            kept[key] = f
+    return list(kept.values()), duplicates
+
+
 def pipeline(
     modo_pages: list[dict],
     rns_pages: list[dict],
@@ -1233,7 +1363,9 @@ def pipeline(
             page, publisher=f"{ticker} (fund RNS)", portfolio_scope=f"{ticker} portfolio"
         )
     means, detail, restated = annual_from_months(readings, publisher="Modo Energy")
-    figures = [r.figure for r in readings if r.outcome == "figure" and r.figure] + means
+    read = [r.figure for r in readings if r.outcome == "figure" and r.figure]
+    figures, same_day = dedupe_same_day(read)
+    figures += means
     rows = comparisons(figures, today=today)
     revision_rows = revisions(figures)
     props = propositions(figures, rows)
@@ -1242,6 +1374,7 @@ def pipeline(
         "readings": readings,
         "figures": figures,
         "months": {"detail": detail, "restated": restated},
+        "same_day_duplicates": same_day,
         "comparisons": rows,
         "revisions": revision_rows,
         "propositions": props,

@@ -1,0 +1,2651 @@
+{
+ "investigation": "022",
+ "plan_sha256": "962cb9b5db8d33a7ae14fe3b516dd5f999936911040316a4fcc03e8aeeb0e188",
+ "amendment_1_sha256": "c39c5f90da09e80ef9e5f6fc6ad4245e817197fb84da498fd9b8910f9f3957b6",
+ "seal": "962cb9b5db8d33a7",
+ "amendment_seal": "c39c5f90da09e80e",
+ "run_date": "2026-10-01",
+ "indexed_at": "2026-10-01T16:15:16+00:00",
+ "link_pattern": "results|report|net asset value|\\bnav\\b|prospectus|placing|issue|fundrais|valuation|trading update|portfolio update|investor presentation|capital markets|business update|acquisition|strategy",
+ "listings": [
+  {
+   "dataset": "rns/listing-investegate-grid-page1",
+   "url": "https://www.investegate.co.uk/company/GRID",
+   "from_plan": true,
+   "links": 16
+  },
+  {
+   "dataset": "rns/listing-investegate-grid-page2",
+   "url": "https://www.investegate.co.uk/company/GRID?page=2",
+   "from_plan": true,
+   "links": 19
+  },
+  {
+   "dataset": "rns/listing-investegate-grid-page3",
+   "url": "https://www.investegate.co.uk/company/GRID?page=3",
+   "from_plan": true,
+   "links": 7
+  },
+  {
+   "dataset": "rns/listing-investegate-grid-page4",
+   "url": "https://www.investegate.co.uk/company/GRID?page=4",
+   "pinned": true,
+   "sha256": "a7b7ad51bdedd6cc1267b9c1ac47550fb92de5cdfbba85678219c9189f9cadf1",
+   "announcement_links": 55,
+   "links": 12
+  },
+  {
+   "dataset": "rns/listing-investegate-grid-page5",
+   "url": "https://www.investegate.co.uk/company/GRID?page=5",
+   "pinned": true,
+   "sha256": "82b2d4793b89818360d2335f67897dffd20c4f84b4bb70c1bc13990cba1f3edd",
+   "announcement_links": 55,
+   "links": 11
+  },
+  {
+   "dataset": "rns/listing-investegate-grid-page6",
+   "url": "https://www.investegate.co.uk/company/GRID?page=6",
+   "pinned": true,
+   "sha256": "cd3b16b87911163450fdd89feb687f83dc1fec73551a583ce5d7c3e48266edeb",
+   "announcement_links": 55,
+   "links": 12
+  },
+  {
+   "dataset": "rns/listing-investegate-grid-page7",
+   "url": "https://www.investegate.co.uk/company/GRID?page=7",
+   "pinned": true,
+   "sha256": "be12bcbafbd6e9dcc781c31477fecba3192cc27c5bab4b983619a035edfbbaeb",
+   "announcement_links": 55,
+   "links": 22
+  },
+  {
+   "dataset": "rns/listing-investegate-grid-page8",
+   "url": "https://www.investegate.co.uk/company/GRID?page=8",
+   "pinned": true,
+   "sha256": "b822607aa84a42232749439844547ae51026118fcb3e8496e96840affc699d52",
+   "announcement_links": 37,
+   "links": 10
+  },
+  {
+   "dataset": "rns/listing-investegate-grid-page9",
+   "url": "https://www.investegate.co.uk/company/GRID?page=9",
+   "pinned": true,
+   "sha256": "f17ed394cc9fdd8014f06ce2108d46792d9e8dd3a54928ab1d3ee302d2a5de98",
+   "announcement_links": 5,
+   "links": 0
+  },
+  {
+   "dataset": "rns/listing-investegate-grid-page10",
+   "url": "https://www.investegate.co.uk/company/GRID?page=10",
+   "pinned": true,
+   "sha256": "2a445c3aef592695aee9acfcebff7b0b63d144ee2108dabe8276911b08943ff2",
+   "announcement_links": 5,
+   "links": 0
+  },
+  {
+   "dataset": "rns/listing-investegate-grid-page11",
+   "url": "https://www.investegate.co.uk/company/GRID?page=11",
+   "pinned": true,
+   "sha256": "f8ccae28c717a741e5cd022a253f0473786b4aa10c6d626cfc95a37223470592",
+   "announcement_links": 5,
+   "links": 0
+  },
+  {
+   "dataset": "rns/listing-investegate-grid-page12",
+   "url": "https://www.investegate.co.uk/company/GRID?page=12",
+   "pinned": true,
+   "sha256": "e4b92e75b48b616bfae1f37f072f98fbc0356622cdacc90065df45bd6eb3f116",
+   "announcement_links": 5,
+   "links": 0
+  },
+  {
+   "dataset": "rns/listing-investegate-grid-page13",
+   "url": "https://www.investegate.co.uk/company/GRID?page=13",
+   "pinned": true,
+   "sha256": "e3058bf0c7cff06bebbf97732ac297373c68080da9781fbacf423e60c4b83361",
+   "announcement_links": 5,
+   "links": 0
+  },
+  {
+   "dataset": "rns/listing-investegate-grid-page14",
+   "url": "https://www.investegate.co.uk/company/GRID?page=14",
+   "pinned": true,
+   "sha256": "226ac40cf0af24d61e7ec6a3484bfe81025e0eb8c58fc2754073e8ebc2c60e81",
+   "announcement_links": 5,
+   "links": 0
+  },
+  {
+   "dataset": "rns/listing-investegate-grid-page15",
+   "url": "https://www.investegate.co.uk/company/GRID?page=15",
+   "pinned": true,
+   "sha256": "9926ce863e05f32da07802012474f5cfc573f145e908d539737caf7d294dbb26",
+   "announcement_links": 5,
+   "links": 0
+  },
+  {
+   "dataset": "rns/listing-investegate-grid-page16",
+   "url": "https://www.investegate.co.uk/company/GRID?page=16",
+   "pinned": true,
+   "sha256": "e90edfc039e2292be89e5c27514dd88da3d64dc2d421bad6e2fa516ddc949651",
+   "announcement_links": 5,
+   "links": 0
+  },
+  {
+   "dataset": "rns/listing-investegate-grid-page17",
+   "url": "https://www.investegate.co.uk/company/GRID?page=17",
+   "pinned": true,
+   "sha256": "830c15b67bb7ab92c089a56032b043af52fdbaef8690624a01225591c55ff0d8",
+   "announcement_links": 5,
+   "links": 0
+  },
+  {
+   "dataset": "rns/listing-investegate-grid-page18",
+   "url": "https://www.investegate.co.uk/company/GRID?page=18",
+   "pinned": true,
+   "sha256": "ab0d79c5c00f5e94cde7a63e212e9853bed1e8036976dccc2c1280cbb3345fe5",
+   "announcement_links": 5,
+   "links": 0
+  },
+  {
+   "dataset": "rns/listing-investegate-grid-page19",
+   "url": "https://www.investegate.co.uk/company/GRID?page=19",
+   "pinned": true,
+   "sha256": "6f3378bd3c7caed4bd19f4fb567b2574950f931335ce430c1a82f55660756a02",
+   "announcement_links": 5,
+   "links": 0
+  },
+  {
+   "dataset": "rns/listing-investegate-grid-page20",
+   "url": "https://www.investegate.co.uk/company/GRID?page=20",
+   "pinned": true,
+   "sha256": "422851119e5fad50e97b3a76066943440954a67d71fdaf13353707a342ae6d2f",
+   "announcement_links": 5,
+   "links": 0
+  },
+  {
+   "dataset": "rns/listing-investegate-grid-page21",
+   "url": "https://www.investegate.co.uk/company/GRID?page=21",
+   "pinned": true,
+   "sha256": "efea9f7fe758392825aca38a1965e40a014e6531ca2047d9a92f3c74dd36663b",
+   "announcement_links": 5,
+   "links": 0
+  },
+  {
+   "dataset": "rns/listing-investegate-grid-page22",
+   "url": "https://www.investegate.co.uk/company/GRID?page=22",
+   "pinned": true,
+   "sha256": "7f4dd24fb6321645013e1e00f183b7397616e9f606d5c6f7ae36777d44307625",
+   "announcement_links": 5,
+   "links": 0
+  },
+  {
+   "dataset": "rns/listing-investegate-grid-page23",
+   "url": "https://www.investegate.co.uk/company/GRID?page=23",
+   "pinned": true,
+   "sha256": "fb7b70ccb0f98a0fb4eb047ce273a80e30ce2c71f605026ce12d92749087f9ae",
+   "announcement_links": 5,
+   "links": 0
+  },
+  {
+   "dataset": "rns/listing-investegate-grid-page24",
+   "url": "https://www.investegate.co.uk/company/GRID?page=24",
+   "pinned": true,
+   "sha256": "ee5248c33fa0a6f14139ddbca753c5e92b000fd6a40be41524098ebb557558cc",
+   "announcement_links": 5,
+   "links": 0
+  },
+  {
+   "dataset": "rns/listing-investegate-grid-page25",
+   "url": "https://www.investegate.co.uk/company/GRID?page=25",
+   "pinned": true,
+   "sha256": "7838034e31b954a7742866b809c222ceff8163f22cb8eecfc2e9a264bf3e8b05",
+   "announcement_links": 5,
+   "links": 0
+  },
+  {
+   "dataset": "rns/listing-investegate-grid-page26",
+   "url": "https://www.investegate.co.uk/company/GRID?page=26",
+   "pinned": true,
+   "sha256": "44da4f3e4a93122f1f58026ac8be508368bac8788b6c02113b78f07b52b7d961",
+   "announcement_links": 5,
+   "links": 0
+  },
+  {
+   "dataset": "rns/listing-investegate-grid-page27",
+   "url": "https://www.investegate.co.uk/company/GRID?page=27",
+   "pinned": true,
+   "sha256": "874ad2b48714ccff2453a2ff061720c31c50a75ab6aa55ae3ac2d60b2f8284fe",
+   "announcement_links": 5,
+   "links": 0
+  },
+  {
+   "dataset": "rns/listing-investegate-grid-page28",
+   "url": "https://www.investegate.co.uk/company/GRID?page=28",
+   "pinned": true,
+   "sha256": "d1973e96ed6b7a93c6836d62657b5029238c7480abb31b95e0029519df4e6739",
+   "announcement_links": 5,
+   "links": 0
+  },
+  {
+   "dataset": "rns/listing-investegate-grid-page29",
+   "url": "https://www.investegate.co.uk/company/GRID?page=29",
+   "pinned": true,
+   "sha256": "a1152465afb8bae1a07c5bfa1bf210bfb022336e312c50abf43fd36cfa067da6",
+   "announcement_links": 5,
+   "links": 0
+  },
+  {
+   "dataset": "rns/listing-investegate-grid-page30",
+   "url": "https://www.investegate.co.uk/company/GRID?page=30",
+   "pinned": true,
+   "sha256": "bba081b2159061857f74c8c79dd65acf5b8d549310b6e2dcba34be0255331064",
+   "announcement_links": 5,
+   "links": 0
+  },
+  {
+   "dataset": "rns/listing-investegate-grid-page31",
+   "url": "https://www.investegate.co.uk/company/GRID?page=31",
+   "pinned": true,
+   "sha256": "08f190279df88ac3a2848e330014ce8193aac45029cb0943232d61e5627f264c",
+   "announcement_links": 5,
+   "links": 0
+  },
+  {
+   "dataset": "rns/listing-investegate-grid-page32",
+   "url": "https://www.investegate.co.uk/company/GRID?page=32",
+   "pinned": true,
+   "sha256": "ad6cbebd149fdb06671e510af3aca20c6739312f69d012b32803b0131f1def50",
+   "announcement_links": 5,
+   "links": 0
+  },
+  {
+   "dataset": "rns/listing-investegate-grid-page33",
+   "url": "https://www.investegate.co.uk/company/GRID?page=33",
+   "pinned": true,
+   "sha256": "75cdbba3eab5f920799333035e51cb89facc958cc93918ac7d5cd30aa46100fc",
+   "announcement_links": 5,
+   "links": 0
+  },
+  {
+   "dataset": "rns/listing-investegate-grid-page34",
+   "url": "https://www.investegate.co.uk/company/GRID?page=34",
+   "pinned": true,
+   "sha256": "ee1a0b3d16c86612ced759ed10b21576873476ef501f8531900176ea6e994947",
+   "announcement_links": 5,
+   "links": 0
+  },
+  {
+   "dataset": "rns/listing-investegate-grid-page35",
+   "url": "https://www.investegate.co.uk/company/GRID?page=35",
+   "pinned": true,
+   "sha256": "684e11c0b3dfefa74ced0301e659b39ed1d599e3c396c75ebb01a830a8985aa3",
+   "announcement_links": 5,
+   "links": 0
+  },
+  {
+   "dataset": "rns/listing-investegate-grid-page36",
+   "url": "https://www.investegate.co.uk/company/GRID?page=36",
+   "pinned": true,
+   "sha256": "4e70fe6a7072160ce7c6c5c192db6ea7dbc468e637c97443c95db970094a2ce2",
+   "announcement_links": 5,
+   "links": 0
+  },
+  {
+   "dataset": "rns/listing-investegate-grid-page37",
+   "url": "https://www.investegate.co.uk/company/GRID?page=37",
+   "pinned": true,
+   "sha256": "f4cde4a34a8801aadbcb87a98b8352d6d48aa17214aa23057e621442cb8c6195",
+   "announcement_links": 5,
+   "links": 0
+  },
+  {
+   "dataset": "rns/listing-investegate-grid-page38",
+   "url": "https://www.investegate.co.uk/company/GRID?page=38",
+   "pinned": true,
+   "sha256": "829d887eb0fb7a9709c05a27da084dc50af1f0103849136c995d6ddffee00dfc",
+   "announcement_links": 5,
+   "links": 0
+  },
+  {
+   "dataset": "rns/listing-investegate-grid-page39",
+   "url": "https://www.investegate.co.uk/company/GRID?page=39",
+   "pinned": true,
+   "sha256": "01a463ca8002cd9abe0b810760e48d6d17fcd62af9a21a9fa0fbf80afe696886",
+   "announcement_links": 5,
+   "links": 0
+  },
+  {
+   "dataset": "rns/listing-investegate-grid-page40",
+   "url": "https://www.investegate.co.uk/company/GRID?page=40",
+   "pinned": true,
+   "sha256": "429b3dd646e030d0b4d7ddd811842ff86b27c3be1eec56e74f21125f823e3144",
+   "announcement_links": 5,
+   "links": 0
+  },
+  {
+   "dataset": "rns/listing-investegate-gsf-page1",
+   "url": "https://www.investegate.co.uk/company/GSF",
+   "from_plan": true,
+   "links": 6
+  },
+  {
+   "dataset": "rns/listing-investegate-gsf-page2",
+   "url": "https://www.investegate.co.uk/company/GSF?page=2",
+   "from_plan": true,
+   "links": 10
+  },
+  {
+   "dataset": "rns/listing-investegate-gsf-page3",
+   "url": "https://www.investegate.co.uk/company/GSF?page=3",
+   "from_plan": true,
+   "links": 27
+  },
+  {
+   "dataset": "rns/listing-investegate-gsf-page4",
+   "url": "https://www.investegate.co.uk/company/GSF?page=4",
+   "pinned": true,
+   "sha256": "6a8a0cc5b73d68c7f13f513e11d1ccd887bbbd3eff2af0c4eb12b1de276e7d76",
+   "announcement_links": 55,
+   "links": 21
+  },
+  {
+   "dataset": "rns/listing-investegate-gsf-page5",
+   "url": "https://www.investegate.co.uk/company/GSF?page=5",
+   "pinned": true,
+   "sha256": "12e2b007d0eeb6d316eb37a56838c6e180d1891619abc8ebbb05d6b427687fae",
+   "announcement_links": 55,
+   "links": 15
+  },
+  {
+   "dataset": "rns/listing-investegate-gsf-page6",
+   "url": "https://www.investegate.co.uk/company/GSF?page=6",
+   "pinned": true,
+   "sha256": "cfee3865993fb430a7d4e9931b5804164c9bdca2d2a8f835a1ecc5bc9b784833",
+   "announcement_links": 53,
+   "links": 23
+  },
+  {
+   "dataset": "rns/listing-investegate-gsf-page7",
+   "url": "https://www.investegate.co.uk/company/GSF?page=7",
+   "pinned": true,
+   "sha256": "0afd418bf90ea0dfb2d39cf18b0eb757eb58a90acdc0e8fa9c3c01e02d22b736",
+   "announcement_links": 5,
+   "links": 0
+  },
+  {
+   "dataset": "rns/listing-investegate-gsf-page8",
+   "url": "https://www.investegate.co.uk/company/GSF?page=8",
+   "pinned": true,
+   "sha256": "b3f03e62df30c339410d408ad0dd2ed85f37bcf72f1fd1b77277f03a43dcfdb2",
+   "announcement_links": 5,
+   "links": 0
+  },
+  {
+   "dataset": "rns/listing-investegate-gsf-page9",
+   "url": "https://www.investegate.co.uk/company/GSF?page=9",
+   "pinned": true,
+   "sha256": "401f78995e3080f18a18b9549a423acc5306c5a73692cfbd7876b5fc779aef91",
+   "announcement_links": 5,
+   "links": 0
+  },
+  {
+   "dataset": "rns/listing-investegate-gsf-page10",
+   "url": "https://www.investegate.co.uk/company/GSF?page=10",
+   "pinned": true,
+   "sha256": "effa260c8bc0bf2097e463ea08f388e6e5284e4d6b90cfe373e412e74fb6443c",
+   "announcement_links": 5,
+   "links": 0
+  },
+  {
+   "dataset": "rns/listing-investegate-gsf-page11",
+   "url": "https://www.investegate.co.uk/company/GSF?page=11",
+   "pinned": true,
+   "sha256": "07291ff501588560db2bf79f01b3260a4ca9812a90c96f3854614c2855b50a41",
+   "announcement_links": 5,
+   "links": 0
+  },
+  {
+   "dataset": "rns/listing-investegate-gsf-page12",
+   "url": "https://www.investegate.co.uk/company/GSF?page=12",
+   "pinned": true,
+   "sha256": "9d50025e5b7d799926cd483fa6042cb17009dc1e706d4f0dce92cb33941560a4",
+   "announcement_links": 5,
+   "links": 0
+  },
+  {
+   "dataset": "rns/listing-investegate-gsf-page13",
+   "url": "https://www.investegate.co.uk/company/GSF?page=13",
+   "pinned": true,
+   "sha256": "e8485af335e71beb72199915899481327d4f7ed6f443dfb14132a12dd77a1230",
+   "announcement_links": 5,
+   "links": 0
+  },
+  {
+   "dataset": "rns/listing-investegate-gsf-page14",
+   "url": "https://www.investegate.co.uk/company/GSF?page=14",
+   "pinned": true,
+   "sha256": "9cd168712f408abe3b0af999ee34ca7aed75f86d2afb175d45fa14f6295456ff",
+   "announcement_links": 5,
+   "links": 0
+  },
+  {
+   "dataset": "rns/listing-investegate-gsf-page15",
+   "url": "https://www.investegate.co.uk/company/GSF?page=15",
+   "pinned": true,
+   "sha256": "2f8ad139265282c5b9c670b73778efc40b5c5f16ceb7431aecb60190862700be",
+   "announcement_links": 5,
+   "links": 0
+  },
+  {
+   "dataset": "rns/listing-investegate-gsf-page16",
+   "url": "https://www.investegate.co.uk/company/GSF?page=16",
+   "pinned": true,
+   "sha256": "4222dce4fd632d28e3bfe8101c9641bf1bd4af28f934f121cef8fc0864748d09",
+   "announcement_links": 5,
+   "links": 0
+  },
+  {
+   "dataset": "rns/listing-investegate-gsf-page17",
+   "url": "https://www.investegate.co.uk/company/GSF?page=17",
+   "pinned": true,
+   "sha256": "dfe45b3556cfce896ea970c547ed882358702c34cd040fae8216225f3eae58f8",
+   "announcement_links": 5,
+   "links": 0
+  },
+  {
+   "dataset": "rns/listing-investegate-gsf-page18",
+   "url": "https://www.investegate.co.uk/company/GSF?page=18",
+   "pinned": true,
+   "sha256": "887edac9684c2391f1dc7ddbddaccb58341a5a41768f9ec926bc545bd04a6753",
+   "announcement_links": 5,
+   "links": 0
+  },
+  {
+   "dataset": "rns/listing-investegate-gsf-page19",
+   "url": "https://www.investegate.co.uk/company/GSF?page=19",
+   "pinned": true,
+   "sha256": "68cbdcfd42768ff916525a209dcad8d295dce2214519a70243ced2ea8532534d",
+   "announcement_links": 5,
+   "links": 0
+  },
+  {
+   "dataset": "rns/listing-investegate-gsf-page20",
+   "url": "https://www.investegate.co.uk/company/GSF?page=20",
+   "pinned": true,
+   "sha256": "20739f4cfad8337e55672c92f228cecdee6122971988e3a94c8cafde75b3508a",
+   "announcement_links": 5,
+   "links": 0
+  },
+  {
+   "dataset": "rns/listing-investegate-gsf-page21",
+   "url": "https://www.investegate.co.uk/company/GSF?page=21",
+   "pinned": true,
+   "sha256": "a6809721f65dd6ca960f1df645df64bcb491fdbd3cc18c683e16c4085b4e5f7c",
+   "announcement_links": 5,
+   "links": 0
+  },
+  {
+   "dataset": "rns/listing-investegate-gsf-page22",
+   "url": "https://www.investegate.co.uk/company/GSF?page=22",
+   "pinned": true,
+   "sha256": "2e79f72c8e3f03cd650af117d86c5c882b6e7aa852ab7f5b1674a1023c639ffe",
+   "announcement_links": 5,
+   "links": 0
+  },
+  {
+   "dataset": "rns/listing-investegate-gsf-page23",
+   "url": "https://www.investegate.co.uk/company/GSF?page=23",
+   "pinned": true,
+   "sha256": "d89041e5dce2daf6da9a79f6b07a47e11763abd6e1343c76811e8d99659a5e2e",
+   "announcement_links": 5,
+   "links": 0
+  },
+  {
+   "dataset": "rns/listing-investegate-gsf-page24",
+   "url": "https://www.investegate.co.uk/company/GSF?page=24",
+   "pinned": true,
+   "sha256": "1092de1653de7d07175b61dc760d901a3d9120512da148027cc2cc9161667687",
+   "announcement_links": 5,
+   "links": 0
+  },
+  {
+   "dataset": "rns/listing-investegate-gsf-page25",
+   "url": "https://www.investegate.co.uk/company/GSF?page=25",
+   "pinned": true,
+   "sha256": "e7f575f98e9054d893372e22316b863a051ad69f2606d1bce9cc293bdee939a3",
+   "announcement_links": 5,
+   "links": 0
+  },
+  {
+   "dataset": "rns/listing-investegate-gsf-page26",
+   "url": "https://www.investegate.co.uk/company/GSF?page=26",
+   "pinned": true,
+   "sha256": "0e65b744b4b1a102f6f57a673b1f02929834c2cca5e7056ec28fad1f35c16e30",
+   "announcement_links": 5,
+   "links": 0
+  },
+  {
+   "dataset": "rns/listing-investegate-gsf-page27",
+   "url": "https://www.investegate.co.uk/company/GSF?page=27",
+   "pinned": true,
+   "sha256": "5c05dcbee0346e6f400808ee6b19b75b27cc93f88015332e0ad94e6e0a6aa221",
+   "announcement_links": 5,
+   "links": 0
+  },
+  {
+   "dataset": "rns/listing-investegate-gsf-page28",
+   "url": "https://www.investegate.co.uk/company/GSF?page=28",
+   "pinned": true,
+   "sha256": "a2649e8e08be7f14009bb71902dcbc220d1e0e5800ba95c0262e53fd9594407b",
+   "announcement_links": 5,
+   "links": 0
+  },
+  {
+   "dataset": "rns/listing-investegate-gsf-page29",
+   "url": "https://www.investegate.co.uk/company/GSF?page=29",
+   "pinned": true,
+   "sha256": "dfe64b630ea046cbbf6bb64bd3c9d78200e6f02db1305d0853b59c4d4f974d78",
+   "announcement_links": 5,
+   "links": 0
+  },
+  {
+   "dataset": "rns/listing-investegate-gsf-page30",
+   "url": "https://www.investegate.co.uk/company/GSF?page=30",
+   "pinned": true,
+   "sha256": "85fe989edb45b235b3e517b9725431f8aca99a706648efb74c681bf78597aaac",
+   "announcement_links": 5,
+   "links": 0
+  },
+  {
+   "dataset": "rns/listing-investegate-gsf-page31",
+   "url": "https://www.investegate.co.uk/company/GSF?page=31",
+   "pinned": true,
+   "sha256": "9ca37d9a4a4076c333e91f541dd8067e262f6bf3dd0ea00f948ed6f794572e13",
+   "announcement_links": 5,
+   "links": 0
+  },
+  {
+   "dataset": "rns/listing-investegate-gsf-page32",
+   "url": "https://www.investegate.co.uk/company/GSF?page=32",
+   "pinned": true,
+   "sha256": "f0f4b7a425a547ded7ba12462a9230d1500d1c433fd0d2fc2f152fab21b25ce2",
+   "announcement_links": 5,
+   "links": 0
+  },
+  {
+   "dataset": "rns/listing-investegate-gsf-page33",
+   "url": "https://www.investegate.co.uk/company/GSF?page=33",
+   "pinned": true,
+   "sha256": "85c39b40a05db5de46859f1f9c901db5b29d9e4b223eee3f933875aab5f49026",
+   "announcement_links": 5,
+   "links": 0
+  },
+  {
+   "dataset": "rns/listing-investegate-gsf-page34",
+   "url": "https://www.investegate.co.uk/company/GSF?page=34",
+   "pinned": true,
+   "sha256": "2ff5a9da543207b0a281fa11f0cb0b72a26665584ed9f5b043b99b59e007c753",
+   "announcement_links": 5,
+   "links": 0
+  },
+  {
+   "dataset": "rns/listing-investegate-gsf-page35",
+   "url": "https://www.investegate.co.uk/company/GSF?page=35",
+   "pinned": true,
+   "sha256": "cb4d1eda919b617b5542b71e03d99511600b0c15f8d997ea1f83a2be60371406",
+   "announcement_links": 5,
+   "links": 0
+  },
+  {
+   "dataset": "rns/listing-investegate-gsf-page36",
+   "url": "https://www.investegate.co.uk/company/GSF?page=36",
+   "pinned": true,
+   "sha256": "2cc21a7409021981d50f82222fe0f1c7ee12ad25184e7e2693127a0bf9b2a0d2",
+   "announcement_links": 5,
+   "links": 0
+  },
+  {
+   "dataset": "rns/listing-investegate-gsf-page37",
+   "url": "https://www.investegate.co.uk/company/GSF?page=37",
+   "pinned": true,
+   "sha256": "46b3c473ff4e96370421a0c5bd515316a01524986ffc74702a2db288686579a0",
+   "announcement_links": 5,
+   "links": 0
+  },
+  {
+   "dataset": "rns/listing-investegate-gsf-page38",
+   "url": "https://www.investegate.co.uk/company/GSF?page=38",
+   "pinned": true,
+   "sha256": "eaffadcae5e0118db99fc539e02a5fd7f35aa188085658f67df36908ae0ee9ff",
+   "announcement_links": 5,
+   "links": 0
+  },
+  {
+   "dataset": "rns/listing-investegate-gsf-page39",
+   "url": "https://www.investegate.co.uk/company/GSF?page=39",
+   "pinned": true,
+   "sha256": "5e5bab62ddd9b144fec0df235e52e2cddcc881e643f94655d5ffc8aa49284da4",
+   "announcement_links": 5,
+   "links": 0
+  },
+  {
+   "dataset": "rns/listing-investegate-gsf-page40",
+   "url": "https://www.investegate.co.uk/company/GSF?page=40",
+   "pinned": true,
+   "sha256": "f6bf29a1daf0c4dc12f0ccb9a990c3194adcbac45e4cfb4377fe6c472a3283a4",
+   "announcement_links": 5,
+   "links": 0
+  },
+  {
+   "dataset": "rns/listing-investegate-heit-page1",
+   "url": "https://www.investegate.co.uk/company/HEIT",
+   "from_plan": true,
+   "links": 1
+  },
+  {
+   "dataset": "rns/listing-investegate-heit-page2",
+   "url": "https://www.investegate.co.uk/company/HEIT?page=2",
+   "from_plan": true,
+   "links": 1
+  },
+  {
+   "dataset": "rns/listing-investegate-heit-page3",
+   "url": "https://www.investegate.co.uk/company/HEIT?page=3",
+   "from_plan": true,
+   "links": 1
+  },
+  {
+   "dataset": "rns/listing-investegate-heit-page4",
+   "url": "https://www.investegate.co.uk/company/HEIT?page=4",
+   "pinned": true,
+   "sha256": "3dbd1762922aa2424094219d548dbfd42e5cd38835f1ac885deffe06bdc03c51",
+   "announcement_links": 55,
+   "links": 0
+  },
+  {
+   "dataset": "rns/listing-investegate-heit-page5",
+   "url": "https://www.investegate.co.uk/company/HEIT?page=5",
+   "pinned": true,
+   "sha256": "3278a919943374b9127bd397b7161647ec57a25992dfb21930e4ced38e2a56a0",
+   "announcement_links": 55,
+   "links": 0
+  },
+  {
+   "dataset": "rns/listing-investegate-heit-page6",
+   "url": "https://www.investegate.co.uk/company/HEIT?page=6",
+   "pinned": true,
+   "sha256": "73c8c940b66bf44d08f7a177b9fcf4cd6d98cbcc146aa5be82a42b9ef9ba3cb7",
+   "announcement_links": 55,
+   "links": 16
+  },
+  {
+   "dataset": "rns/listing-investegate-heit-page7",
+   "url": "https://www.investegate.co.uk/company/HEIT?page=7",
+   "pinned": true,
+   "sha256": "78c9455a55e69d80b422175b26e48a921897139db74600503f50aa3850278231",
+   "announcement_links": 55,
+   "links": 14
+  },
+  {
+   "dataset": "rns/listing-investegate-heit-page8",
+   "url": "https://www.investegate.co.uk/company/HEIT?page=8",
+   "pinned": true,
+   "sha256": "88928b7a663b23610e9ea1e77f054342b375aaa0f3d55f955fe0aa423e9569b8",
+   "announcement_links": 39,
+   "links": 9
+  },
+  {
+   "dataset": "rns/listing-investegate-heit-page9",
+   "url": "https://www.investegate.co.uk/company/HEIT?page=9",
+   "pinned": true,
+   "sha256": "9aa8ef93c507d9810eab0df13104f1db27dede74f4d40ea0fc2906e6c23a1f89",
+   "announcement_links": 5,
+   "links": 0
+  },
+  {
+   "dataset": "rns/listing-investegate-heit-page10",
+   "url": "https://www.investegate.co.uk/company/HEIT?page=10",
+   "pinned": true,
+   "sha256": "57e0edb80563934a711bda9afc35d609c4aa338676d8657af0a7a8105dfd616c",
+   "announcement_links": 5,
+   "links": 0
+  },
+  {
+   "dataset": "rns/listing-investegate-heit-page11",
+   "url": "https://www.investegate.co.uk/company/HEIT?page=11",
+   "pinned": true,
+   "sha256": "47a7d2611b2101aaa92872e886ee19e9f4e238e3e61268cb01d8217ee7493d1b",
+   "announcement_links": 5,
+   "links": 0
+  },
+  {
+   "dataset": "rns/listing-investegate-heit-page12",
+   "url": "https://www.investegate.co.uk/company/HEIT?page=12",
+   "pinned": true,
+   "sha256": "4bb90946e2cb8e8383237eda5eb6c83b020a264e73db616a7707dcf46d328f00",
+   "announcement_links": 5,
+   "links": 0
+  },
+  {
+   "dataset": "rns/listing-investegate-heit-page13",
+   "url": "https://www.investegate.co.uk/company/HEIT?page=13",
+   "pinned": true,
+   "sha256": "b1457be075fe3e010964aa6bfabab5577054ab8fed31b33b49aa2e41b5707d4d",
+   "announcement_links": 5,
+   "links": 0
+  },
+  {
+   "dataset": "rns/listing-investegate-heit-page14",
+   "url": "https://www.investegate.co.uk/company/HEIT?page=14",
+   "pinned": true,
+   "sha256": "bf7b0ebef62a00209100794d46d22310a3cb5a4e6f81a77a9f95a23bcdf3a3f9",
+   "announcement_links": 5,
+   "links": 0
+  },
+  {
+   "dataset": "rns/listing-investegate-heit-page15",
+   "url": "https://www.investegate.co.uk/company/HEIT?page=15",
+   "pinned": true,
+   "sha256": "de003296fe5be4caa09d027e912d4c17cffb2b8028886411ada31a1397e299c0",
+   "announcement_links": 5,
+   "links": 0
+  },
+  {
+   "dataset": "rns/listing-investegate-heit-page16",
+   "url": "https://www.investegate.co.uk/company/HEIT?page=16",
+   "pinned": true,
+   "sha256": "d67cbe89110aa6b87ba52084ca6fedd4f36dde45a8c05134a7d8485e367f52a8",
+   "announcement_links": 5,
+   "links": 0
+  },
+  {
+   "dataset": "rns/listing-investegate-heit-page17",
+   "url": "https://www.investegate.co.uk/company/HEIT?page=17",
+   "pinned": true,
+   "sha256": "547d42108c0949d70ef5305f22c1770c4721bc1d037f6db9351d483463e8d75e",
+   "announcement_links": 5,
+   "links": 0
+  },
+  {
+   "dataset": "rns/listing-investegate-heit-page18",
+   "url": "https://www.investegate.co.uk/company/HEIT?page=18",
+   "pinned": true,
+   "sha256": "8deab8837aade8e189818d396a14a92f6402767abe4b2f5af9380fcd24046149",
+   "announcement_links": 5,
+   "links": 0
+  },
+  {
+   "dataset": "rns/listing-investegate-heit-page19",
+   "url": "https://www.investegate.co.uk/company/HEIT?page=19",
+   "pinned": true,
+   "sha256": "d4b0427e961a5f8255934a181c2ccfa58b83c80db5a9796cb87b06ab263dec9c",
+   "announcement_links": 5,
+   "links": 0
+  },
+  {
+   "dataset": "rns/listing-investegate-heit-page20",
+   "url": "https://www.investegate.co.uk/company/HEIT?page=20",
+   "pinned": true,
+   "sha256": "03102586d58aa217e8fbc1a82365c4a9550c066d781a6859fefcdf1279b41e17",
+   "announcement_links": 5,
+   "links": 0
+  },
+  {
+   "dataset": "rns/listing-investegate-heit-page21",
+   "url": "https://www.investegate.co.uk/company/HEIT?page=21",
+   "pinned": true,
+   "sha256": "24d809ab81502c476c0353863fc757960dcb750b5ad69c103a052704b6c7f26e",
+   "announcement_links": 5,
+   "links": 0
+  },
+  {
+   "dataset": "rns/listing-investegate-heit-page22",
+   "url": "https://www.investegate.co.uk/company/HEIT?page=22",
+   "pinned": true,
+   "sha256": "2f328bb6264ef1162019bcd7defcdb36072457aba1707b2023d41d6ae31ca618",
+   "announcement_links": 5,
+   "links": 0
+  },
+  {
+   "dataset": "rns/listing-investegate-heit-page23",
+   "url": "https://www.investegate.co.uk/company/HEIT?page=23",
+   "pinned": true,
+   "sha256": "2958c2df75d6ba8424558bf984bef7f4c6b92f904d1f2caa2a1131372da5a2bd",
+   "announcement_links": 5,
+   "links": 0
+  },
+  {
+   "dataset": "rns/listing-investegate-heit-page24",
+   "url": "https://www.investegate.co.uk/company/HEIT?page=24",
+   "pinned": true,
+   "sha256": "66224d865673c79d18ce2a2bdfb79a97719fced568d6cc71a5cd75e26fd11f4a",
+   "announcement_links": 5,
+   "links": 0
+  },
+  {
+   "dataset": "rns/listing-investegate-heit-page25",
+   "url": "https://www.investegate.co.uk/company/HEIT?page=25",
+   "pinned": true,
+   "sha256": "d61ffc0a595faa1ddbcbc989507bfc639cdd69aeb12a9e9c959bdb9557d05da1",
+   "announcement_links": 5,
+   "links": 0
+  },
+  {
+   "dataset": "rns/listing-investegate-heit-page26",
+   "url": "https://www.investegate.co.uk/company/HEIT?page=26",
+   "pinned": true,
+   "sha256": "68454bfdda36e2b65121160a434c353ebf1fc2de9fefb761666bacb4b6208896",
+   "announcement_links": 5,
+   "links": 0
+  },
+  {
+   "dataset": "rns/listing-investegate-heit-page27",
+   "url": "https://www.investegate.co.uk/company/HEIT?page=27",
+   "pinned": true,
+   "sha256": "2eb7b2a54a8fe644abcce96dfa13ff8c217815bcb668b88bc3989d132dad68c6",
+   "announcement_links": 5,
+   "links": 0
+  },
+  {
+   "dataset": "rns/listing-investegate-heit-page28",
+   "url": "https://www.investegate.co.uk/company/HEIT?page=28",
+   "pinned": true,
+   "sha256": "d2fa695f87af23252fbd3393a6e05c773d86e38e8047511b5bc24ee86604a747",
+   "announcement_links": 5,
+   "links": 0
+  },
+  {
+   "dataset": "rns/listing-investegate-heit-page29",
+   "url": "https://www.investegate.co.uk/company/HEIT?page=29",
+   "pinned": true,
+   "sha256": "0e4206befc7e0d3c94502982b71f8295d68902307deb96d7cf9ce0f096b22876",
+   "announcement_links": 5,
+   "links": 0
+  },
+  {
+   "dataset": "rns/listing-investegate-heit-page30",
+   "url": "https://www.investegate.co.uk/company/HEIT?page=30",
+   "pinned": true,
+   "sha256": "a2ca1afbda2900a7c38e62f7ea3d4a81b561a18e318a21a39dd578140c5ec73f",
+   "announcement_links": 5,
+   "links": 0
+  },
+  {
+   "dataset": "rns/listing-investegate-heit-page31",
+   "url": "https://www.investegate.co.uk/company/HEIT?page=31",
+   "pinned": true,
+   "sha256": "87dc4c4392ad694774991f6ab03c52e7d8cf379acf1316ed65ed180f8f2d6076",
+   "announcement_links": 5,
+   "links": 0
+  },
+  {
+   "dataset": "rns/listing-investegate-heit-page32",
+   "url": "https://www.investegate.co.uk/company/HEIT?page=32",
+   "pinned": true,
+   "sha256": "fc34c7723fa50a0542d7e37281db0924a551a626e878cd881dbdbfb608f366ff",
+   "announcement_links": 5,
+   "links": 0
+  },
+  {
+   "dataset": "rns/listing-investegate-heit-page33",
+   "url": "https://www.investegate.co.uk/company/HEIT?page=33",
+   "pinned": true,
+   "sha256": "f4f5be2cd7be04b77385b29a78bf78e7237f076ccc9cb0273439b38152b6b490",
+   "announcement_links": 5,
+   "links": 0
+  },
+  {
+   "dataset": "rns/listing-investegate-heit-page34",
+   "url": "https://www.investegate.co.uk/company/HEIT?page=34",
+   "pinned": true,
+   "sha256": "d604b764efec3294bb63d5382d12cc14e98bd4d29118bc742e052efaf692f865",
+   "announcement_links": 5,
+   "links": 0
+  },
+  {
+   "dataset": "rns/listing-investegate-heit-page35",
+   "url": "https://www.investegate.co.uk/company/HEIT?page=35",
+   "pinned": true,
+   "sha256": "338e179faadae0838f0e144345ef1faffa840db5d666a45042c6c8cb1fbaf1e5",
+   "announcement_links": 5,
+   "links": 0
+  },
+  {
+   "dataset": "rns/listing-investegate-heit-page36",
+   "url": "https://www.investegate.co.uk/company/HEIT?page=36",
+   "pinned": true,
+   "sha256": "d5d061d0c80fb7dc565790067421a88e41f8e269e7a7bf86f3880cb642269432",
+   "announcement_links": 5,
+   "links": 0
+  },
+  {
+   "dataset": "rns/listing-investegate-heit-page37",
+   "url": "https://www.investegate.co.uk/company/HEIT?page=37",
+   "pinned": true,
+   "sha256": "00fa8c1a49b85e966db9465c7564896492f3a55fd15070ab5594a21dd2a96bd1",
+   "announcement_links": 5,
+   "links": 0
+  },
+  {
+   "dataset": "rns/listing-investegate-heit-page38",
+   "url": "https://www.investegate.co.uk/company/HEIT?page=38",
+   "pinned": true,
+   "sha256": "6bf3917ba713315918151d2c5cc54bdd58217163e743fbc94950e408adecf0eb",
+   "announcement_links": 5,
+   "links": 0
+  },
+  {
+   "dataset": "rns/listing-investegate-heit-page39",
+   "url": "https://www.investegate.co.uk/company/HEIT?page=39",
+   "pinned": true,
+   "sha256": "3cbc664e3a3608ee936ded445432b28c92da15e4caf47c533467aed0467672d3",
+   "announcement_links": 5,
+   "links": 0
+  },
+  {
+   "dataset": "rns/listing-investegate-heit-page40",
+   "url": "https://www.investegate.co.uk/company/HEIT?page=40",
+   "pinned": true,
+   "sha256": "54d1caba1fa6dd0719121711caed047caf65a3bf95ff29238f772f75032e9c33",
+   "announcement_links": 5,
+   "links": 0
+  },
+  {
+   "dataset": "rns/listing-gresham-house",
+   "url": "https://greshamhouse.com/real-assets/energy-transition-investment/gresham-house-energy-storage-fund-plc/",
+   "from_plan": true,
+   "links": 24
+  },
+  {
+   "dataset": "rns/listing-gore-street",
+   "url": "https://www.gsenergystoragefund.com/investors/results-reports-and-presentations/",
+   "from_plan": true,
+   "links": 3
+  }
+ ],
+ "links": [
+  {
+   "listing": "rns/listing-investegate-grid-page1",
+   "href": "https://www.investegate.co.uk/investors",
+   "text": "Fundraise",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-grid-page1",
+   "href": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/interim-results-for-period-ended-30-june-2026/9785600",
+   "text": "Interim Results for period ended 30 June 2026",
+   "already_pinned": true
+  },
+  {
+   "listing": "rns/listing-investegate-grid-page1",
+   "href": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/notice-of-interim-2026-results/9778560",
+   "text": "Notice of Interim 2026 Results",
+   "already_pinned": true
+  },
+  {
+   "listing": "rns/listing-investegate-grid-page1",
+   "href": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/trading-update-for-hy-results-to-30-june-2026/9750396",
+   "text": "Trading update for HY results to 30 June 2026",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-grid-page1",
+   "href": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/2026-capital-markets-webinar/9588712",
+   "text": "2026 Capital Markets Webinar",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-grid-page1",
+   "href": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/q1-2026-quarterly-nav-announcement/9581218",
+   "text": "Q1 2026 Quarterly NAV announcement",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-grid-page1",
+   "href": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/conditional-acquisition-of-480mw-project/9581193",
+   "text": "Conditional acquisition of 480MW project",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-grid-page1",
+   "href": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/signing-of-ecas-cockenzie-acquisition-completion/9569672",
+   "text": "Signing of ECAs & Cockenzie acquisition completion",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-grid-page1",
+   "href": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/capital-markets-webinar-2026/9547996",
+   "text": "Capital Markets webinar 2026",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-grid-page1",
+   "href": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/full-year-results-to-31-december-2025/9529253",
+   "text": "Full-Year Results to 31 December 2025",
+   "already_pinned": true
+  },
+  {
+   "listing": "rns/listing-investegate-grid-page1",
+   "href": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/notice-of-full-year-2025-results/9521771",
+   "text": "Notice of Full-Year 2025 Results",
+   "already_pinned": true
+  },
+  {
+   "listing": "rns/listing-investegate-grid-page1",
+   "href": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/unaudited-nav-as-of-31-dec-2025-and-trading-update/9456981",
+   "text": "Unaudited NAV as of 31 Dec 2025 and Trading Update",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-grid-page1",
+   "href": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/q3-2025-nav-announcement/9245484",
+   "text": "Q3 2025 NAV announcement",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-grid-page1",
+   "href": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/anticipated-acquisition-of-100mw-project/9245370",
+   "text": "Anticipated acquisition of 100MW project",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-grid-page1",
+   "href": "https://www.investegate.co.uk/announcement/eqs/gresham-house-energy-storage-fund--grid/edison-issues-report-on-gresham-house-energy-/9137693",
+   "text": "Edison issues report on Gresham House Energy ...",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-grid-page1",
+   "href": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/investor-presentation-via-investor-meet-company/9134708",
+   "text": "Investor presentation via Investor Meet Company",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-grid-page2",
+   "href": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/half-year-results-and-capital-allocation-policy/9127370",
+   "text": "Half-year results and capital allocation policy",
+   "already_pinned": true
+  },
+  {
+   "listing": "rns/listing-investegate-grid-page2",
+   "href": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/q2-2025-nav-and-notice-of-interim-results/9109745",
+   "text": "Q2 2025 NAV and Notice of Interim Results",
+   "already_pinned": true
+  },
+  {
+   "listing": "rns/listing-investegate-grid-page2",
+   "href": "https://www.investegate.co.uk/announcement/eqs/gresham-house-energy-storage-fund--grid/edison-issues-report-on-gresham-house-energy-/9069913",
+   "text": "Edison issues report on Gresham House Energy ...",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-grid-page2",
+   "href": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/glassenbury-8-6mn-equity-funding-at-project-nav/8943840",
+   "text": "Glassenbury \u00a38.6mn Equity Funding at Project NAV",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-grid-page2",
+   "href": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/quarterly-nav-announcement-and-business-update/8891241",
+   "text": "Quarterly NAV announcement and business update",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-grid-page2",
+   "href": "https://www.investegate.co.uk/announcement/eqs/gresham-house-energy-storage-fund--grid/edison-issues-report-on-gresham-house-energy-/8870654",
+   "text": "Edison issues report on Gresham House Energy ...",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-grid-page2",
+   "href": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/full-year-results-to-31-december-2024/8840648",
+   "text": "Full-Year Results to 31 December 2024",
+   "already_pinned": true
+  },
+  {
+   "listing": "rns/listing-investegate-grid-page2",
+   "href": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/notice-of-results/8825922",
+   "text": "Notice of Results",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-grid-page2",
+   "href": "https://www.investegate.co.uk/announcement/eqs/gresham-house-energy-storage-fund--grid/edison-issues-report-on-gresham-house-energy-/8764661",
+   "text": "Edison issues report on Gresham House Energy ...",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-grid-page2",
+   "href": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/unaudited-nav-at-31-december-2024-trading-update/8758929",
+   "text": "Unaudited NAV at 31 December 2024 & Trading Update",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-grid-page2",
+   "href": "https://www.investegate.co.uk/announcement/eqs/gresham-house-energy-storage-fund--grid/edison-issues-report-on-gresham-house-energy-/8589814",
+   "text": "Edison issues report on Gresham House Energy ...",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-grid-page2",
+   "href": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/quarterly-nav-announcement-and-business-update-/8555139",
+   "text": "Quarterly NAV announcement and business update",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-grid-page2",
+   "href": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/capital-markets-day-2024/8518407",
+   "text": "Capital Markets Day 2024",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-grid-page2",
+   "href": "https://www.investegate.co.uk/announcement/eqs/gresham-house-energy-storage-fund--grid/edison-issues-report-on-gresham-house-energy-/8503800",
+   "text": "Edison issues report on Gresham House Energy ...",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-grid-page2",
+   "href": "https://www.investegate.co.uk/announcement/eqs/gresham-house-energy-storage-fund--grid/edison-issues-report-on-gresham-house-energy-/8457753",
+   "text": "Edison issues report on Gresham House Energy ...",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-grid-page2",
+   "href": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/half-year-results-to-30-june-2024/8448207",
+   "text": "Half-year results to 30 June 2024",
+   "already_pinned": true
+  },
+  {
+   "listing": "rns/listing-investegate-grid-page2",
+   "href": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/notice-of-interim-results/8423402",
+   "text": "Notice of Interim Results",
+   "already_pinned": true
+  },
+  {
+   "listing": "rns/listing-investegate-grid-page2",
+   "href": "https://www.investegate.co.uk/announcement/eqs/gresham-house-energy-storage-fund--grid/edison-issues-report-on-gresham-house-energy-/8407322",
+   "text": "Edison issues report on Gresham House Energy ...",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-grid-page2",
+   "href": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/q2-2024-nav-valuation-trading-update-for-h1-24/8405257",
+   "text": "Q2 2024 NAV, valuation & trading update for H1'24",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-grid-page3",
+   "href": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/quarterly-nav-and-factsheet-publication/8212954",
+   "text": "Quarterly NAV and Factsheet Publication",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-grid-page3",
+   "href": "https://www.investegate.co.uk/announcement/eqs/gresham-house-energy-storage-fund--grid/edison-issues-update-on-gresham-house-energy-/8208038",
+   "text": "Edison issues update on Gresham House Energy ...",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-grid-page3",
+   "href": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/full-year-results-to-31-december-2023/8160652",
+   "text": "Full-Year Results to 31 December 2023",
+   "already_pinned": true
+  },
+  {
+   "listing": "rns/listing-investegate-grid-page3",
+   "href": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/notice-of-full-year-2023-results/8153272",
+   "text": "Notice of Full-Year 2023 Results",
+   "already_pinned": true
+  },
+  {
+   "listing": "rns/listing-investegate-grid-page3",
+   "href": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/trading-update/8145402",
+   "text": "Trading Update",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-grid-page3",
+   "href": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/capacity-market-cm-auction-results/8052644",
+   "text": "Capacity Market (CM) auction results",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-grid-page3",
+   "href": "https://www.investegate.co.uk/announcement/eqs/gresham-house-energy-storage-fund--grid/edison-issues-flash-on-gresham-house-energy-s-/8022173",
+   "text": "Edison issues flash on Gresham House Energy S...",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-grid-page4",
+   "href": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/trading-update/8016260",
+   "text": "Trading Update",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-grid-page4",
+   "href": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/quarterly-nav-and-factsheet-publication/7895789",
+   "text": "Quarterly NAV and Factsheet publication",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-grid-page4",
+   "href": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/half-year-results-to-30-june-2023/7779863",
+   "text": "Half-year Results to 30 June 2023",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-grid-page4",
+   "href": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/trading-update/7740409",
+   "text": "Trading Update",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-grid-page4",
+   "href": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/result-of-issue-and-total-voting-rights/7542016",
+   "text": "Result of Issue and Total Voting Rights",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-grid-page4",
+   "href": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/proposed-placing-/7531928",
+   "text": "Proposed Placing",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-grid-page4",
+   "href": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/net-asset-value-s-/7523996",
+   "text": "Net Asset Value(s)",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-grid-page4",
+   "href": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/publication-of-supplementary-prospectus/7491352",
+   "text": "Publication of Supplementary Prospectus",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-grid-page4",
+   "href": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/results-to-31-december-2022/7457536",
+   "text": "Results to 31 December 2022",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-grid-page4",
+   "href": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/notice-of-results/7426643",
+   "text": "Notice of Results",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-grid-page4",
+   "href": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/correction-trading-update/7434364",
+   "text": "Correction: Trading Update",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-grid-page4",
+   "href": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/trading-update/7396756",
+   "text": "Trading Update",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-grid-page5",
+   "href": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/net-asset-value-s-/7328748",
+   "text": "Net Asset Value(s)",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-grid-page5",
+   "href": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/half-year-results-to-30-june-2022/7122918",
+   "text": "Half-year Results to 30 June 2022",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-grid-page5",
+   "href": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/notice-of-interim-results/7415229",
+   "text": "Notice of Interim Results",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-grid-page5",
+   "href": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/result-of-placing-and-total-voting-rights/7029004",
+   "text": "Result of Placing and Total Voting Rights",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-grid-page5",
+   "href": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/publication-of-a-prospectus/7025482",
+   "text": "Publication of a Prospectus",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-grid-page5",
+   "href": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/publication-of-supplementary-prospectus/7024941",
+   "text": "Publication of Supplementary Prospectus",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-grid-page5",
+   "href": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/proposed-placing/6977322",
+   "text": "Proposed Placing",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-grid-page5",
+   "href": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/quarterly-nav-and-factsheet-publication/7145719",
+   "text": "Quarterly NAV and Factsheet publication",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-grid-page5",
+   "href": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/results-to-31-december-2021/6862193",
+   "text": "Results to 31 December 2021",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-grid-page5",
+   "href": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/notice-of-results/7140796",
+   "text": "Notice of Results",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-grid-page5",
+   "href": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/capacity-market-cm-auction-2022-and-nav-uplift/6959930",
+   "text": "Capacity Market (CM) Auction 2022 and NAV uplift",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-grid-page6",
+   "href": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/trading-update/6805736",
+   "text": "Trading Update",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-grid-page6",
+   "href": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/quarterly-nav-and-factsheet-publication/6688931",
+   "text": "Quarterly NAV and Factsheet Publication",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-grid-page6",
+   "href": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/half-year-results-to-30-june-2021/6510476",
+   "text": "Half-year results to 30 June 2021",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-grid-page6",
+   "href": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/result-of-placing-and-total-voting-rights/6610756",
+   "text": "Result of Placing and Total Voting Rights",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-grid-page6",
+   "href": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/commitment-of-proceeds-new-pipeline-and-placing/6472760",
+   "text": "Commitment of Proceeds, New Pipeline and Placing",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-grid-page6",
+   "href": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/publication-of-supplementary-prospectus/6436347",
+   "text": "Publication of Supplementary Prospectus",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-grid-page6",
+   "href": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/quarterly-nav-dividend-and-factsheet-publication/6628809",
+   "text": "Quarterly NAV, Dividend and Factsheet publication",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-grid-page6",
+   "href": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/results-to-31-december-2020-and-q1-2021-update/6628658",
+   "text": "Results to 31 December 2020 and Q1 2021 Update",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-grid-page6",
+   "href": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/annual-results-2020-webinar-and-q-a-session/6583556",
+   "text": "Annual Results 2020 webinar and Q&A session",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-grid-page6",
+   "href": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/acquisition-of-battery-storage-project/6545567",
+   "text": "Acquisition of Battery Storage Project",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-grid-page6",
+   "href": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/acquisition-increases-operational-portfolio/6231893",
+   "text": "Acquisition Increases Operational Portfolio",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-grid-page6",
+   "href": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/acquisition-of-battery-storage-project/6457514",
+   "text": "Acquisition of Battery Storage Project",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-grid-page7",
+   "href": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/result-of-placing-and-offer-for-subscription/6107761",
+   "text": "Result of Placing and Offer for Subscription",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-grid-page7",
+   "href": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/results-of-general-meeting/6044531",
+   "text": "Results of General Meeting",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-grid-page7",
+   "href": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/publication-of-a-prospectus/5991271",
+   "text": "Publication of a Prospectus",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-grid-page7",
+   "href": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/proposed-placing-and-offer-for-subscription/5948117",
+   "text": "Proposed Placing and Offer for Subscription",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-grid-page7",
+   "href": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/quarterly-nav-and-factsheet-publication/6386640",
+   "text": "Quarterly NAV and Factsheet publication",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-grid-page7",
+   "href": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/half-year-results-to-30-june-2020-and-dividend/6401601",
+   "text": "Half-year results to 30 June 2020 and Dividend",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-grid-page7",
+   "href": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/acquisition-of-bloxwich-battery-storage-project/30412",
+   "text": "Acquisition of Bloxwich Battery Storage Project",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-grid-page7",
+   "href": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/quarterly-nav-dividend-and-factsheet-publication/5958184",
+   "text": "Quarterly NAV, Dividend and Factsheet publication",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-grid-page7",
+   "href": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/full-year-results-to-31-december-2019/5913930",
+   "text": "Full Year Results to 31 December 2019",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-grid-page7",
+   "href": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/acquisition-of-battery-storage-project/6303772",
+   "text": "Acquisition of Battery Storage Project",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-grid-page7",
+   "href": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/acquisition-of-battery-storage-project/6070410",
+   "text": "Acquisition of Battery Storage Project",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-grid-page7",
+   "href": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/result-of-placing/5910866",
+   "text": "Result of Placing",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-grid-page7",
+   "href": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/amended-results-of-the-general-meeting/5906442",
+   "text": "AMENDED: Results of the General Meeting",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-grid-page7",
+   "href": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/results-of-the-general-meeting/5905859",
+   "text": "Results of the General Meeting",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-grid-page7",
+   "href": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/placing/5765754",
+   "text": "Placing",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-grid-page7",
+   "href": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/notice-of-general-meeting-acquisition-and-placing/6161176",
+   "text": "Notice of General Meeting, Acquisition and Placing",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-grid-page7",
+   "href": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/acquisition-of-a-49mw-battery-storage-project/22245",
+   "text": "Acquisition of a 49MW battery storage project",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-grid-page7",
+   "href": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/acquisition-boosts-operational-portfolio-to-125mw/5835139",
+   "text": "Acquisition boosts operational portfolio to 125MW",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-grid-page7",
+   "href": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/factsheet-publication-and-quarterly-nav-update/73131",
+   "text": "Factsheet publication and quarterly NAV update",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-grid-page7",
+   "href": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/acquisition-of-49mw-battery-storage-project/5801129",
+   "text": "Acquisition of 49MW Battery Storage Project",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-grid-page7",
+   "href": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/results-of-general-meeting/5755511",
+   "text": "Results of General Meeting",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-grid-page7",
+   "href": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/results-of-placing/5707631",
+   "text": "Results of Placing",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-grid-page8",
+   "href": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/placing/5647814",
+   "text": "Placing",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-grid-page8",
+   "href": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/correction-result-of-placing/5479926",
+   "text": "CORRECTION: Result of Placing",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-grid-page8",
+   "href": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/interim-results-to-30-june-2019-and-dividend/11387",
+   "text": "Interim Results to 30 June 2019 and Dividend",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-grid-page8",
+   "href": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/acquisition-of-5mw-battery-storage-project/5831810",
+   "text": "Acquisition of 5MW Battery Storage Project",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-grid-page8",
+   "href": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/result-of-placing/5455982",
+   "text": "Result of Placing",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-grid-page8",
+   "href": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/placing-under-the-placing-programme/5454277",
+   "text": "Placing under the Placing Programme",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-grid-page8",
+   "href": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/result-of-placing/5633581",
+   "text": "Result of Placing",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-grid-page8",
+   "href": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/nav-update-dividend-and-placing/5945835",
+   "text": "NAV Update, Dividend and Placing",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-grid-page8",
+   "href": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/factsheet-publication-and-quarterly-nav-update/5785083",
+   "text": "Factsheet publication and quarterly NAV update",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-grid-page8",
+   "href": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/acquisition-and-uk-capacity-market-scheme/5865511",
+   "text": "Acquisition and UK Capacity Market Scheme",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-gsf-page1",
+   "href": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/fy25-26-esg-and-sustainability-report/9783176",
+   "text": "FY25/26 ESG and Sustainability Report",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-gsf-page1",
+   "href": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/june-end-2026-quarterly-nav-and-portfolio-update-/9771592",
+   "text": "June-end 2026 Quarterly NAV and Portfolio Update",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-gsf-page1",
+   "href": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/final-results/9668965",
+   "text": "Final Results",
+   "already_pinned": true
+  },
+  {
+   "listing": "rns/listing-investegate-gsf-page1",
+   "href": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/notice-of-annual-results/9653026",
+   "text": "Notice of Annual Results",
+   "already_pinned": true
+  },
+  {
+   "listing": "rns/listing-investegate-gsf-page1",
+   "href": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/replacement-nav-portfolio-update-and-dividend/9483180",
+   "text": "Replacement: NAV, Portfolio Update and Dividend",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-gsf-page1",
+   "href": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/update-to-strategy-and-capital-allocation-/9476953",
+   "text": "Update to Strategy and Capital Allocation",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-gsf-page2",
+   "href": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/half-year-financial-report/9295710",
+   "text": "Half-year Financial Report",
+   "already_pinned": true
+  },
+  {
+   "listing": "rns/listing-investegate-gsf-page2",
+   "href": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/notice-of-interim-results/9269179",
+   "text": "Notice of Interim Results",
+   "already_pinned": true
+  },
+  {
+   "listing": "rns/listing-investegate-gsf-page2",
+   "href": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/unaudited-nav/9097784",
+   "text": "Unaudited NAV",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-gsf-page2",
+   "href": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/publication-of-esg-and-sustainability-report/9092038",
+   "text": "Publication of ESG and Sustainability Report",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-gsf-page2",
+   "href": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/strategy-and-capital-allocation-plan/9011330",
+   "text": "Strategy and Capital Allocation Plan",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-gsf-page2",
+   "href": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/final-results/8983474",
+   "text": "Final Results",
+   "already_pinned": true
+  },
+  {
+   "listing": "rns/listing-investegate-gsf-page2",
+   "href": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/strategy-update-dividend-unaudited-nav/8934780",
+   "text": "Strategy Update, Dividend, Unaudited NAV",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-gsf-page2",
+   "href": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/unaudited-nav-and-dividend-declaration/8772246",
+   "text": "Unaudited NAV and Dividend Declaration",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-gsf-page2",
+   "href": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/interim-results-nav-and-dividend-declaration/8605762",
+   "text": "Interim Results, NAV and Dividend Declaration",
+   "already_pinned": true
+  },
+  {
+   "listing": "rns/listing-investegate-gsf-page2",
+   "href": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/notice-of-interim-results/8574682",
+   "text": "Notice of Interim Results",
+   "already_pinned": true
+  },
+  {
+   "listing": "rns/listing-investegate-gsf-page3",
+   "href": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/capital-markets-event/8526556",
+   "text": "Capital Markets Event",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-gsf-page3",
+   "href": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/unaudited-nav-and-dividend-declaration/8409888",
+   "text": "Unaudited NAV and Dividend Declaration",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-gsf-page3",
+   "href": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/publication-of-latest-esg-sustainability-report/8388797",
+   "text": "Publication of latest ESG & Sustainability Report",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-gsf-page3",
+   "href": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/final-results/8310012",
+   "text": "Final Results",
+   "already_pinned": true
+  },
+  {
+   "listing": "rns/listing-investegate-gsf-page3",
+   "href": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/full-year-unaudited-net-asset-value/8268845",
+   "text": "Full-Year Unaudited Net Asset Value",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-gsf-page3",
+   "href": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/full-year-trading-update-/8209865",
+   "text": "Full-Year Trading Update",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-gsf-page3",
+   "href": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/issue-of-equity/8103617",
+   "text": "Issue of Equity",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-gsf-page3",
+   "href": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/unaudited-quarterly-nav-and-dividend-declaration/8082267",
+   "text": "Unaudited Quarterly NAV and Dividend Declaration",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-gsf-page3",
+   "href": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/further-portfolio-and-trading-update/8020805",
+   "text": "Further Portfolio and Trading Update",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-gsf-page3",
+   "href": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/portfolio-and-trading-update-/7982216",
+   "text": "Portfolio and Trading Update",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-gsf-page3",
+   "href": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/epc-contract-signed-and-14m-new-shares-issued/7949926",
+   "text": "EPC contract signed and 14m new shares issued",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-gsf-page3",
+   "href": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/half-year-report/7941091",
+   "text": "Half-year Report",
+   "already_pinned": true
+  },
+  {
+   "listing": "rns/listing-investegate-gsf-page3",
+   "href": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/notice-of-interim-results/7884448",
+   "text": "Notice of Interim Results",
+   "already_pinned": true
+  },
+  {
+   "listing": "rns/listing-investegate-gsf-page3",
+   "href": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/statement-re-portfolio-update-and-share-price-/7811441",
+   "text": "Statement re Portfolio Update and Share Price",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-gsf-page3",
+   "href": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/capital-markets-event/7792469",
+   "text": "Capital Markets Event",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-gsf-page3",
+   "href": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/quarterly-nav-and-dividend-declaration-/7737676",
+   "text": "Quarterly NAV and Dividend Declaration",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-gsf-page3",
+   "href": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/publication-of-latest-esg-sustainability-report/7729187",
+   "text": "Publication of latest ESG & Sustainability Report",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-gsf-page3",
+   "href": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/final-results/7635539",
+   "text": "Final Results",
+   "already_pinned": true
+  },
+  {
+   "listing": "rns/listing-investegate-gsf-page3",
+   "href": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/portfolio-and-trading-update/7615634",
+   "text": "Portfolio and Trading Update",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-gsf-page3",
+   "href": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/nav-uplift-dividend-and-operational-progress/7575844",
+   "text": "NAV uplift, dividend and operational progress",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-gsf-page3",
+   "href": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/quarterly-nav-and-dividend-declaration/7389189",
+   "text": "Quarterly NAV and Dividend Declaration",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-gsf-page3",
+   "href": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/gb-capacity-market-contracts-and-portfolio-update/7235735",
+   "text": "GB Capacity Market Contracts and Portfolio Update",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-gsf-page3",
+   "href": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/200-mw-acquisition-in-california/7483931",
+   "text": "200 MW acquisition in California",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-gsf-page3",
+   "href": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/significant-acquisition-and-construction-milestone/7227347",
+   "text": "Significant Acquisition and Construction Milestone",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-gsf-page3",
+   "href": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/half-year-report-and-amendments-to-aifm-agreement/7445044",
+   "text": "Half-year Report and amendments to AIFM agreement",
+   "already_pinned": true
+  },
+  {
+   "listing": "rns/listing-investegate-gsf-page3",
+   "href": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/notice-of-half-year-results/7220941",
+   "text": "Notice of Half Year Results",
+   "already_pinned": true
+  },
+  {
+   "listing": "rns/listing-investegate-gsf-page3",
+   "href": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/200mw-battery-storage-acquisition-business-update/7206465",
+   "text": "200MW Battery Storage Acquisition, Business Update",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-gsf-page4",
+   "href": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/quarterly-valuation-and-dividend-declaration/7415101",
+   "text": "Quarterly Valuation and Dividend Declaration",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-gsf-page4",
+   "href": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/publication-of-esg-and-sustainability-report/7107656",
+   "text": "Publication of ESG and Sustainability Report",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-gsf-page4",
+   "href": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/annual-financial-report/7136140",
+   "text": "Annual Financial Report",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-gsf-page4",
+   "href": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/notice-of-annual-results/6919184",
+   "text": "Notice of Annual Results",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-gsf-page4",
+   "href": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/portfolio-update/7074599",
+   "text": "Portfolio Update",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-gsf-page4",
+   "href": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/results-of-upscaled-oversubscribed-initial-issue/6943719",
+   "text": "Results of Upscaled & Oversubscribed Initial Issue",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-gsf-page4",
+   "href": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/results-of-general-meeting/6905980",
+   "text": "Results of General Meeting",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-gsf-page4",
+   "href": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/publication-of-prospectus/7093119",
+   "text": "Publication of Prospectus",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-gsf-page4",
+   "href": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/first-us-storage-project-acquisition/6845116",
+   "text": "First US Storage Project Acquisition",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-gsf-page4",
+   "href": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/quarterly-valuation-and-dividend-declaration/7018431",
+   "text": "Quarterly Valuation and Dividend Declaration",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-gsf-page4",
+   "href": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/operational-energy-storage-acquisition-in-germany/7016902",
+   "text": "Operational Energy Storage Acquisition in Germany",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-gsf-page4",
+   "href": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/half-year-results-dividend-declaration/6879338",
+   "text": "Half-year Results & Dividend Declaration",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-gsf-page4",
+   "href": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/notice-of-interim-results/6756194",
+   "text": "Notice of Interim Results",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-gsf-page4",
+   "href": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/portfolio-update/6642055",
+   "text": "Portfolio Update",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-gsf-page4",
+   "href": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/trading-update-correction/6524264",
+   "text": "Trading Update Correction",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-gsf-page4",
+   "href": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/trading-update/6860587",
+   "text": "Trading Update",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-gsf-page4",
+   "href": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/primarybidoffer-oversubscribed-placing-remainsopen/6559360",
+   "text": "PrimaryBidOffer Oversubscribed Placing RemainsOpen",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-gsf-page4",
+   "href": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/acquisition-pipeline-update-proposed-fundraise/6510529",
+   "text": "Acquisition, Pipeline Update, Proposed Fundraise",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-gsf-page4",
+   "href": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/nav-and-dividend-declaration/6721592",
+   "text": "NAV and Dividend Declaration",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-gsf-page4",
+   "href": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/publication-of-supplementary-prospectus/6634563",
+   "text": "Publication of Supplementary Prospectus",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-gsf-page4",
+   "href": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/annual-financial-report/6652265",
+   "text": "Annual Financial Report",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-gsf-page5",
+   "href": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/notice-of-results/6470350",
+   "text": "Notice of Results",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-gsf-page5",
+   "href": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/pipeline-portfolio-update/6372126",
+   "text": "Pipeline & Portfolio Update",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-gsf-page5",
+   "href": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/proposed-placing-and-retail-offer/6351711",
+   "text": "Proposed Placing and Retail Offer",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-gsf-page5",
+   "href": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/portfolio-update-and-revolving-credit-facility/6323841",
+   "text": "Portfolio Update and Revolving Credit Facility",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-gsf-page5",
+   "href": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/dividend-portfolio-update-equity-raise-intention/6586112",
+   "text": "Dividend/Portfolio Update/Equity Raise intention",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-gsf-page5",
+   "href": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/half-year-report/6423128",
+   "text": "Half-year Report",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-gsf-page5",
+   "href": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/results-of-oversubscribed-initial-issue/6312255",
+   "text": "Results of Oversubscribed Initial Issue",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-gsf-page5",
+   "href": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/change-to-initial-issue-timetable/6269831",
+   "text": "Change to Initial Issue Timetable",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-gsf-page5",
+   "href": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/publication-of-a-prospectus/6207851",
+   "text": "Publication of a Prospectus",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-gsf-page5",
+   "href": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/proposed-placing-and-intermediaries-offer/6163354",
+   "text": "Proposed Placing and Intermediaries Offer",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-gsf-page5",
+   "href": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/acquisition-of-81mw-operating-storage-portfolio/6416678",
+   "text": "Acquisition of 81MW Operating Storage Portfolio",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-gsf-page5",
+   "href": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/1-7-uplift-in-unaudited-quarterly-nav-dividend/6099416",
+   "text": "1.7% Uplift in Unaudited Quarterly NAV & Dividend",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-gsf-page5",
+   "href": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/annual-financial-report/5954669",
+   "text": "Annual Financial Report",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-gsf-page5",
+   "href": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/results-of-capital-raise/33144",
+   "text": "Results of Capital Raise",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-gsf-page5",
+   "href": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/update-on-fundraise-timetable/5882485",
+   "text": "Update on Fundraise Timetable",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-gsf-page6",
+   "href": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/acquisition-and-pipeline-update/6379829",
+   "text": "Acquisition and Pipeline Update",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-gsf-page6",
+   "href": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/proposed-placing-and-dividend-declaration/6378079",
+   "text": "Proposed Placing and Dividend Declaration",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-gsf-page6",
+   "href": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/nav-update-and-dividend-declaration/5906705",
+   "text": "NAV Update and Dividend Declaration",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-gsf-page6",
+   "href": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/result-of-equity-issue/6152540",
+   "text": "Result of Equity Issue",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-gsf-page6",
+   "href": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/launch-of-placing-via-accelerated-bookbuild/6146121",
+   "text": "Launch of Placing via Accelerated Bookbuild",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-gsf-page6",
+   "href": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/net-asset-value/5795987",
+   "text": "Net Asset Value",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-gsf-page6",
+   "href": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/interim-results/5795954",
+   "text": "Interim Results",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-gsf-page6",
+   "href": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/results-of-capital-raise/5756168",
+   "text": "Results of Capital Raise",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-gsf-page6",
+   "href": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/proposed-placing-and-ntma-subscription/5705928",
+   "text": "Proposed placing and NTMA subscription",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-gsf-page6",
+   "href": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/quarterly-net-asset-value-uplift/5963282",
+   "text": "Quarterly Net Asset Value Uplift",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-gsf-page6",
+   "href": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/result-of-meetings-and-further-update-on-fundraise/5780650",
+   "text": "Result of Meetings and Further Update on Fundraise",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-gsf-page6",
+   "href": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/result-of-placing-and-offer-for-subscription/5699262",
+   "text": "Result of Placing and Offer for Subscription",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-gsf-page6",
+   "href": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/fundraising-update-and-extension-of-timetable/5647725",
+   "text": "Fundraising update and Extension of Timetable",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-gsf-page6",
+   "href": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/publication-of-prospectus-and-circular/5514380",
+   "text": "Publication of Prospectus and Circular",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-gsf-page6",
+   "href": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/annual-report-accounts-and-notice-of-agm/5514042",
+   "text": "Annual Report & Accounts and Notice of AGM",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-gsf-page6",
+   "href": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/acquisition-30m-commitment-proposed-fundraising/5715419",
+   "text": "Acquisition, \u00a330m Commitment, Proposed Fundraising",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-gsf-page6",
+   "href": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/full-year-results-nav-dividend-declaration/5715409",
+   "text": "Full Year Results, NAV & Dividend Declaration",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-gsf-page6",
+   "href": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/net-asset-value-s-/5739556",
+   "text": "Net Asset Value(s)",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-gsf-page6",
+   "href": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/interim-results/5771116",
+   "text": "Interim Results",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-gsf-page6",
+   "href": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/notice-of-interim-results/5730457",
+   "text": "Notice of Interim Results",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-gsf-page6",
+   "href": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/net-asset-value-s-correction/5376993",
+   "text": "Net Asset Value(s) Correction",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-gsf-page6",
+   "href": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/net-asset-value-s-/5376110",
+   "text": "Net Asset Value(s)",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-gsf-page6",
+   "href": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/portfolio-update-and-acquisition-of-two-projects/5317491",
+   "text": "Portfolio Update and Acquisition of Two Projects",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-heit-page1",
+   "href": "https://www.investegate.co.uk/announcement/rns/harmony-energy-income-trust--heit/results-of-court-meeting-and-general-meeting/8905555",
+   "text": "Results of Court Meeting and General Meeting",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-heit-page2",
+   "href": "https://www.investegate.co.uk/announcement/rns/harmony-energy-income-trust--heit/recommended-acquisition-scheme-doc-publication/8860807",
+   "text": "Recommended Acquisition - Scheme Doc Publication",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-heit-page3",
+   "href": "https://www.investegate.co.uk/announcement/rns/harmony-energy-income-trust--heit/recommended-acquisition-scheme-doc-publication/8830807",
+   "text": "Recommended Acquisition - Scheme Doc Publication",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-heit-page6",
+   "href": "https://www.investegate.co.uk/announcement/rns/harmony-energy-income-trust--heit/replacement-net-asset-value-and-trading-update/8753297",
+   "text": "Replacement: Net Asset Value and Trading Update",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-heit-page6",
+   "href": "https://www.investegate.co.uk/announcement/rns/harmony-energy-income-trust--heit/net-asset-value-and-trading-update/8752688",
+   "text": "Net Asset Value and Trading Update",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-heit-page6",
+   "href": "https://www.investegate.co.uk/announcement/rns/harmony-energy-income-trust--heit/results-for-financial-year-ended-31-october-2024/8752544",
+   "text": "Results for Financial Year Ended 31 October 2024",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-heit-page6",
+   "href": "https://www.investegate.co.uk/announcement/rns/harmony-energy-income-trust--heit/further-re-asset-sale-process-notice-of-results/8744449",
+   "text": "Further Re: Asset Sale Process & Notice of Results",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-heit-page6",
+   "href": "https://www.investegate.co.uk/announcement/rns/harmony-energy-income-trust--heit/portfolio-update-nav-and-asset-sale-process/8579721",
+   "text": "Portfolio Update, NAV and Asset Sale Process",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-heit-page6",
+   "href": "https://www.investegate.co.uk/announcement/rns/harmony-energy-income-trust--heit/-portfolio-update-nav-and-asset-sale-process/8381121",
+   "text": "Portfolio Update, NAV and Asset Sale Process",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-heit-page6",
+   "href": "https://www.investegate.co.uk/announcement/rns/harmony-energy-income-trust--heit/interim-results-/8280915",
+   "text": "Interim Results",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-heit-page6",
+   "href": "https://www.investegate.co.uk/announcement/rns/harmony-energy-income-trust--heit/notice-of-interim-results/8268896",
+   "text": "Notice of Interim Results",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-heit-page6",
+   "href": "https://www.investegate.co.uk/announcement/rns/harmony-energy-income-trust--heit/portfolio-update-div-policy-nav-asset-sale-process/8230174",
+   "text": "Portfolio Update,Div Policy,NAV,Asset Sale Process",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-heit-page6",
+   "href": "https://www.investegate.co.uk/announcement/rns/harmony-energy-income-trust--heit/agm-trading-update/8143598",
+   "text": "AGM Trading Update",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-heit-page6",
+   "href": "https://www.investegate.co.uk/announcement/rns/harmony-energy-income-trust--heit/investor-presentation/8062289",
+   "text": "Investor Presentation",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-heit-page6",
+   "href": "https://www.investegate.co.uk/announcement/rns/harmony-energy-income-trust--heit/portfolio-update-and-net-asset-value/8059829",
+   "text": "Portfolio Update and Net Asset Value",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-heit-page6",
+   "href": "https://www.investegate.co.uk/announcement/rns/harmony-energy-income-trust--heit/results-for-financial-year-ended-31-october-2023/8059687",
+   "text": "Results for Financial Year Ended 31 October 2023",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-heit-page6",
+   "href": "https://www.investegate.co.uk/announcement/rns/harmony-energy-income-trust--heit/debt-refinance-market-auction-notice-of-results/8050060",
+   "text": "Debt Refinance, Market Auction & Notice of Results",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-heit-page6",
+   "href": "https://www.investegate.co.uk/announcement/rns/harmony-energy-income-trust--heit/acquisition-of-shares-/8027605",
+   "text": "Acquisition of Shares",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-heit-page6",
+   "href": "https://www.investegate.co.uk/announcement/rns/harmony-energy-income-trust--heit/trading-update/8018764",
+   "text": "Trading Update",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-heit-page7",
+   "href": "https://www.investegate.co.uk/announcement/rns/harmony-energy-income-trust--heit/portfolio-update-and-net-asset-value/7911642",
+   "text": "Portfolio Update and Net Asset Value",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-heit-page7",
+   "href": "https://www.investegate.co.uk/announcement/rns/harmony-energy-income-trust--heit/portfolio-update-and-net-asset-value-/7729321",
+   "text": "Portfolio Update and Net Asset Value",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-heit-page7",
+   "href": "https://www.investegate.co.uk/announcement/rns/harmony-energy-income-trust--heit/interim-results/7599090",
+   "text": "Interim Results",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-heit-page7",
+   "href": "https://www.investegate.co.uk/announcement/rns/harmony-energy-income-trust--heit/notice-of-interim-results/7560728",
+   "text": "Notice of Interim Results",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-heit-page7",
+   "href": "https://www.investegate.co.uk/announcement/rns/harmony-energy-income-trust--heit/trading-update-and-net-asset-value-/7538293",
+   "text": "Trading Update and Net Asset Value",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-heit-page7",
+   "href": "https://www.investegate.co.uk/announcement/rns/harmony-energy-income-trust--heit/investor-presentation/7323717",
+   "text": "Investor Presentation",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-heit-page7",
+   "href": "https://www.investegate.co.uk/announcement/rns/harmony-energy-income-trust--heit/final-results-and-notice-of-agm/7504988",
+   "text": "Final Results and Notice of AGM",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-heit-page7",
+   "href": "https://www.investegate.co.uk/announcement/rns/harmony-energy-income-trust--heit/net-asset-value-and-portfolio-update/7503113",
+   "text": "Net Asset Value and Portfolio Update",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-heit-page7",
+   "href": "https://www.investegate.co.uk/announcement/rns/harmony-energy-income-trust--heit/company-update-and-notice-of-results/7485789",
+   "text": "Company Update and Notice of Results",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-heit-page7",
+   "href": "https://www.investegate.co.uk/announcement/rns/harmony-energy-income-trust--heit/notice-of-full-year-results/7451770",
+   "text": "Notice of Full Year Results",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-heit-page7",
+   "href": "https://www.investegate.co.uk/announcement/rns/harmony-energy-income-trust--heit/c-share-conversion-portfolio-update/7229212",
+   "text": "C Share Conversion & Portfolio Update",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-heit-page7",
+   "href": "https://www.investegate.co.uk/announcement/rns/harmony-energy-income-trust--heit/acquisition-of-three-pipeline-projects/7411203",
+   "text": "Acquisition of Three Pipeline Projects",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-heit-page7",
+   "href": "https://www.investegate.co.uk/announcement/rns/harmony-energy-income-trust--heit/net-asset-value-s-/7454116",
+   "text": "Net Asset Value(s)",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-heit-page7",
+   "href": "https://www.investegate.co.uk/announcement/rns/harmony-energy-income-trust--heit/result-of-the-issue/7303202",
+   "text": "Result of the Issue",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-heit-page8",
+   "href": "https://www.investegate.co.uk/announcement/rns/harmony-energy-income-trust--heit/net-asset-value-and-portfolio-update/7187226",
+   "text": "Net Asset Value and Portfolio Update",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-heit-page8",
+   "href": "https://www.investegate.co.uk/announcement/rns/harmony-energy-income-trust--heit/pipeline-project-acquisition-and-adjusted-nav/6954457",
+   "text": "Pipeline Project Acquisition and Adjusted NAV",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-heit-page8",
+   "href": "https://www.investegate.co.uk/announcement/rns/harmony-energy-income-trust--heit/interim-results/6921067",
+   "text": "Interim Results",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-heit-page8",
+   "href": "https://www.investegate.co.uk/announcement/rns/harmony-energy-income-trust--heit/interim-results/7154572",
+   "text": "Interim Results",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-heit-page8",
+   "href": "https://www.investegate.co.uk/announcement/rns/harmony-energy-income-trust--heit/notice-of-interim-results/7116934",
+   "text": "Notice of Interim Results",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-heit-page8",
+   "href": "https://www.investegate.co.uk/announcement/rns/harmony-energy-income-trust--heit/net-asset-value-and-portfolio-update/6972816",
+   "text": "Net Asset Value and Portfolio Update",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-heit-page8",
+   "href": "https://www.investegate.co.uk/announcement/rns/harmony-energy-income-trust--heit/net-asset-value-and-portfolio-update/6886854",
+   "text": "Net Asset Value and Portfolio Update",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-heit-page8",
+   "href": "https://www.investegate.co.uk/announcement/rns/harmony-energy-income-trust--heit/portfolio-update/6907873",
+   "text": "Portfolio Update",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-investegate-heit-page8",
+   "href": "https://www.investegate.co.uk/announcement/rns/harmony-energy-income-trust--heit/acquisition-of-shares/6797868",
+   "text": "Acquisition of Shares",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-gresham-house",
+   "href": "https://greshamhouse.com/sustainable-investment-report-2024/",
+   "text": "Sustainable Investment Report",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-gresham-house",
+   "href": "https://greshamhouse.com/integrated-climate-nature-strategy/",
+   "text": "Integrated Climate & Nature Strategy",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-gresham-house",
+   "href": "https://greshamhouse.com/tcfd/",
+   "text": "TCFD Reporting",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-gresham-house",
+   "href": "https://greshamhouse.com/tnfd-reporting/",
+   "text": "TNFD reporting",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-gresham-house",
+   "href": "https://greshamhouse.com/wp-content/uploads/2026/04/GRID-Annual-Review_25_20.04-FINAL.pdf",
+   "text": "Read the Annual Results 2025",
+   "already_pinned": true
+  },
+  {
+   "listing": "rns/listing-gresham-house",
+   "href": "https://vimeo.com/1185147471?share=copy&fl=sv&fe=ci",
+   "text": "Watch the Annual Results webinar",
+   "already_pinned": true
+  },
+  {
+   "listing": "rns/listing-gresham-house",
+   "href": "https://greshamhouse.com/wp-content/uploads/2026/09/GRID-Interim-Report-2026-Final.pdf",
+   "text": "Interim Report 2026",
+   "already_pinned": true
+  },
+  {
+   "listing": "rns/listing-gresham-house",
+   "href": "https://www.londonstockexchange.com/news-article/GRID/result-of-2026-annual-general-meeting/17658126",
+   "text": "2026 AGM Results",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-gresham-house",
+   "href": "https://greshamhouse.com/wp-content/uploads/2022/05/Gresham-House-Energy-Storage-Fund-plc-Tri-Partite-Prospectus-25-May-2022.pdf",
+   "text": "Prospectus May 2022",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-gresham-house",
+   "href": "https://greshamhouse.com/wp-content/uploads/2023/04/GRID-Supplementary-Prospectus-14.04.23.pdf",
+   "text": "Supplementary Prospectus - April 2023",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-gresham-house",
+   "href": "https://greshamhouse.com/wp-content/uploads/2025/04/GRID-Annual-Report-31-December-2024.pdf",
+   "text": "Annual Report 31 December 2024 >>",
+   "already_pinned": true
+  },
+  {
+   "listing": "rns/listing-gresham-house",
+   "href": "https://greshamhouse.com/wp-content/uploads/2024/04/GRID-Annual-Report-2023-Signed.pdf",
+   "text": "Annual Report 31 December 2023 >>",
+   "already_pinned": true
+  },
+  {
+   "listing": "rns/listing-gresham-house",
+   "href": "https://greshamhouse.com/wp-content/uploads/2023/04/GRID_Annual_Report_31_December_2022_FINAL-PUBLISHED.pdf",
+   "text": "Annual Report 31 December 2022 >>",
+   "already_pinned": true
+  },
+  {
+   "listing": "rns/listing-gresham-house",
+   "href": "https://greshamhouse.com/wp-content/uploads/2022/04/Gresham-House-GRID-Annual-Report-31-December-2021-060422-1.pdf",
+   "text": "Annual Report 31 December 2021 >>",
+   "already_pinned": true
+  },
+  {
+   "listing": "rns/listing-gresham-house",
+   "href": "https://greshamhouse.com/wp-content/uploads/2021/04/Gresham-House-Energy-Storage-Fund-plc-Annual-Report-2020-1820-27.4.21.pdf",
+   "text": "Annual Report 31 December 2020 >>",
+   "already_pinned": true
+  },
+  {
+   "listing": "rns/listing-gresham-house",
+   "href": "https://greshamhouse.com/wp-content/uploads/2020/04/GRID-Annual-Report-31-Dec-2019-Final.pdf",
+   "text": "Annual Report 31 December 2019 >>",
+   "already_pinned": true
+  },
+  {
+   "listing": "rns/listing-gresham-house",
+   "href": "https://greshamhouse.com/wp-content/uploads/2025/09/Gresham-House-Energy-Storage-Fund-Interim-Report-to-30-June-2025.pdf",
+   "text": "Interim Report 30 June 2025 >>",
+   "already_pinned": true
+  },
+  {
+   "listing": "rns/listing-gresham-house",
+   "href": "https://greshamhouse.com/wp-content/uploads/2024/09/GRID-Interim-Report-2024.pdf",
+   "text": "Interim Report 30 June 2024 >>",
+   "already_pinned": true
+  },
+  {
+   "listing": "rns/listing-gresham-house",
+   "href": "https://greshamhouse.com/wp-content/uploads/2023/09/GRID-Interim-Report-30-June-2023-FINAL-PUBLISHED.pdf",
+   "text": "Interim Report 30 June 2023 >>",
+   "already_pinned": true
+  },
+  {
+   "listing": "rns/listing-gresham-house",
+   "href": "https://greshamhouse.com/wp-content/uploads/2022/09/GRID-Interim-Report-30-June-2022.pdf",
+   "text": "Interim Report 30 June 2022 >>",
+   "already_pinned": true
+  },
+  {
+   "listing": "rns/listing-gresham-house",
+   "href": "https://greshamhouse.com/wp-content/uploads/2021/09/GRID-Interim-Report-30-June-2021-final.pdf",
+   "text": "Interim Report 30 June 2021 >>",
+   "already_pinned": true
+  },
+  {
+   "listing": "rns/listing-gresham-house",
+   "href": "https://greshamhouse.com/wp-content/uploads/2020/09/GRID-Interim-Report-30-June-2020-FINAL.pdf",
+   "text": "Interim Report 30 June 2020 >>",
+   "already_pinned": true
+  },
+  {
+   "listing": "rns/listing-gresham-house",
+   "href": "https://greshamhouse.com/wp-content/uploads/2020/01/GHESF-INTERIM-REPORT-JUNE-2019-final-2.pdf",
+   "text": "Interim Report 30 June 2019 >>",
+   "already_pinned": true
+  },
+  {
+   "listing": "rns/listing-gresham-house",
+   "href": "https://greshamhouse.com/wp-content/uploads/2019/10/LON_LIB1-21208763-v8-GRID_Placing_October_2019_Circular.pdf",
+   "text": "Placing October 2019 Circular >>",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-gore-street",
+   "href": "https://www.gsenergystoragefund.com/content/about/strategy.asp",
+   "text": "Strategy and Investment Process",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-gore-street",
+   "href": "https://www.gsenergystoragefund.com/content/investors/share-price.asp",
+   "text": "Share Price & NAV",
+   "already_pinned": false
+  },
+  {
+   "listing": "rns/listing-gore-street",
+   "href": "https://www.gsenergystoragefund.com/content/news/archive/2026/220926.asp",
+   "text": "Publication of the FY25/26 ESG and Sustainability Report",
+   "already_pinned": false
+  }
+ ],
+ "links_total": 280,
+ "links_new": 240,
+ "failures": []
+}

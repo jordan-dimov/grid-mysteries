@@ -1,8 +1,9 @@
 # 022 — The Forecast Record, issue 1: the acquisition and schema pass (the sealable plan)
 
-**Status: a draft for the sponsor's eye, written 2026-10-01, not frozen,
-nothing fetched.** The fetch runs only after the sponsor's word. On that
-word this file is frozen by `scripts/freeze` (OpenTimestamps and RFC 3161
+**Status: written 2026-10-01 as a draft for the sponsor's eye (committed
+at `18e5a70`), widened to three funds on the sponsor's reading the same
+evening, then frozen; nothing fetched before the freeze.** The fetch runs
+only after the sponsor's word. On that word this file is frozen by `scripts/freeze` (OpenTimestamps and RFC 3161
 witnesses, committed with its proofs) and the seal for the runner is a
 prefix of its SHA-256 as frozen; `run.py` refuses `index` and `acquire`
 without the seal, without the proof sidecar, or if the bytes have changed
@@ -60,6 +61,19 @@ the corpus and reports its shape; it scores nothing.
    `https://greshamhouse.com/real-assets/energy-transition-investment/gresham-house-energy-storage-fund-plc/`;
    `https://www.londonstockexchange.com/stock/GRID/gresham-house-energy-storage-fund-plc/analysis`
    200. `https://www.investegate.co.uk/companies/GRID` 404 and is not used.
+   **On the sponsor's widening, the same evening, by HEAD only:**
+   `https://www.investegate.co.uk/company/GSF` 200 and
+   `https://www.investegate.co.uk/company/HEIT` 200, and
+   `https://www.investegate.co.uk/company/HEIT?page=2` 200, so the listing
+   paginates by `page`; `https://www.gsenergystoragefund.com/` 200, but so
+   is every path under it including one that cannot exist
+   (`/this-path-does-not-exist-022/` 200), so no page of that site is
+   confirmed to exist by HEAD and the one named below is taken from its
+   URL alone; `https://www.harmonyenergyincometrust.com/` and
+   `https://harmonyenergyincometrust.co.uk/` resolve in DNS but accept no
+   HTTPS connection, so no fund page is named for Harmony Energy Income
+   Trust; `https://harmonyenergy.co.uk/` 200 is the manager's site, not
+   the trust's, and is not used.
 5. Nothing from Modo Energy and no RNS document has been pinned, opened
    or read under this investigation before this file is frozen.
 
@@ -109,6 +123,14 @@ the corpus and reports its shape; it scores nothing.
 - **A6, robots.txt is honoured.** A selected URL whose path falls under a
   `Disallow:` rule for `User-agent: *` is listed in the index as "not
   fetched: disallowed by robots.txt" and is not requested.
+  **The risk this carries, stated rather than worked around:** if Modo's
+  robots.txt disallows the research paths, A6 lists every selected page as
+  not fetched and issue 1 has no forecast side. In that case the runner
+  stops after the index phase, the index is committed as the result of
+  this step, and the sponsor decides whether a request to Modo Energy for
+  permission (which is also the co-publication conversation) comes
+  before any further step. No page is fetched under another user agent,
+  another path or another client to get round the rule.
 
 ### The realised side
 
@@ -117,20 +139,32 @@ the corpus and reports its shape; it scores nothing.
   needed to pin them. Which of them carry a fleet or by-duration realised
   figure, in pounds per megawatt per year, for a stated period, is what
   the schema pass makes visible.
-- **A5(ii), the listed fund's reported figures from RNS.** The runner
-  pins two listing pages as served, `https://www.investegate.co.uk/company/GRID`
-  and the Gresham House Energy Storage Fund page named in prior exposure
-  4 (its redirected URL), and lists every anchor on them whose visible
-  text matches, case-insensitively,
-  `(annual|final|full[- ]year|interim|half[- ]year(ly)?)\b.*\b(results|report)`,
-  as (absolute URL, text) in `evidence/run-index.json`; `acquire` pins
-  every listed document to `data/raw/rns/022/`, journalled, manifest
-  committed as `evidence/rns-manifest.json`. The sponsor's instruction
-  names the fund's FY2024 and FY2025 annual results and its H1 2026
-  interim results as public; if a listing page as served does not carry
-  them (a paginated or client-rendered listing is the expected cause),
-  the index records what it did carry and an amendment to this plan
-  names the direct URLs. No document URL is guessed into this plan.
+- **A5(ii), the listed funds' reported figures from RNS.** Three listed
+  GB battery funds: Gresham House Energy Storage Fund (`GRID`), Gore
+  Street Energy Storage Fund (`GSF`) and Harmony Energy Income Trust
+  (`HEIT`). Issue 1 scores Modo Energy's vintages; the funds are the
+  realised comparator (each a portfolio scope, R-M) and the input to
+  issue 2. The runner pins, as served, the Investegate listing page of
+  each fund and its second and third pages
+  (`https://www.investegate.co.uk/company/<ticker>`, `?page=2`,
+  `?page=3`), and each fund's own results page where one is named:
+  GRID's, the Gresham House page named in prior exposure 4 (its
+  redirected URL); GSF's,
+  `https://www.gsenergystoragefund.com/investors/results-reports-and-presentations/`,
+  named from its URL alone because that site answers 200 to every path;
+  HEIT's, none, because no site of the trust answers. On every listing
+  page pinned, every anchor whose visible text matches, case-insensitively,
+  `(annual|final|full[- ]year|interim|half[- ]year(ly)?)\b.*\b(results|report)`
+  is listed as (absolute URL, text) in `evidence/run-index.json`,
+  duplicates by URL dropped; `acquire` pins every listed document to
+  `data/raw/rns/022/`, journalled, manifest committed as
+  `evidence/rns-manifest.json`. The sponsor's instruction names GRID's
+  FY2024 and FY2025 annual results and its H1 2026 interim results as
+  public; the same documents of GSF and HEIT are expected and not
+  assumed. If a listing page as served does not carry them (a
+  client-rendered listing, or results older than three pages), the index
+  records what it did carry and an amendment to this plan names the
+  direct URLs. No document URL is guessed into this plan.
 
 ## The schema pass: what is recorded, and that nothing is computed
 

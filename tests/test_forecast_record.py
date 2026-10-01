@@ -830,3 +830,45 @@ def test_rm2_a_funds_assumption_meets_its_own_financial_year_outturn_as_a_period
     )
     rows2 = fr.comparisons([in_year, outturn], today=TODAY)
     assert rows2[0].status == "in-year, never scored" and "listed, not compared" in rows2[0].note
+
+
+def test_rr5f2_amendment_3_a_trading_update_stating_the_results_year_is_not_the_years_outturn() -> (
+    None
+):
+    update = page(
+        [
+            (
+                "£97.8k/MW/Yr",
+                "Portfolio revenues of £9.7 million (£97.8k/MW/Yr) for the Period, with revenue "
+                "per MW being 57% higher than the previous quarter (£62.4k/MW/Yr).",
+            ),
+            (
+                "£62.4k/MW/Yr",
+                "Portfolio revenues of £9.7 million (£97.8k/MW/Yr) for the Period, with revenue "
+                "per MW being 57% higher than the previous quarter (£62.4k/MW/Yr).",
+            ),
+        ],
+        url="https://www.investegate.co.uk/announcement/rns/x--heit/net-asset-value-and-trading-update/2",
+        title="Net Asset Value and Trading Update | Company Announcement | Investegate",
+        published="2025-02-26T07:00:00",
+    )
+    update["dates"]["text:period-end"] = ["year ended 31 October 2024"]
+    got = fr.read_page(update, publisher="HEIT (fund RNS)", portfolio_scope="HEIT portfolio")
+    assert got[0].rule == "R-R5 a fund figure for a stated period that is not a year (listed)"
+    assert got[1].rule == "R-R5 a partial period (half, quarter, season or to date)"
+    results = dict(update, title="Results for Financial Year Ended 31 October 2024 | Investegate")
+    results["figures"] = [
+        update["figures"][0],
+        {
+            "as_printed": "£49k / MW/Yr",
+            "sentence": "During the Period, the portfolio generated total revenue of £9.9 million "
+            "(equating to £49k / MW/Yr).",
+            "offset": 900,
+            "shape": "",
+        },
+    ]
+    got = fr.read_page(results, publisher="HEIT (fund RNS)", portfolio_scope="HEIT portfolio")
+    assert got[0].rule == "R-R5 financial-year outturn, basis realised (amendment 2)"
+    assert (
+        got[1].rule == "R-R5 financial-year outturn, basis realised (amendment 2)"
+    )  # the clause before

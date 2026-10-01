@@ -3,7 +3,8 @@
   "ACQUISITION.md",
   "AMENDMENT-1.md",
   "DECLARATION.md",
-  "AMENDMENT-2.md"
+  "AMENDMENT-2.md",
+  "AMENDMENT-3.md"
  ],
  "note": "ACQUISITION.md's and AMENDMENT-1.md's discovery and schema-pass rules (A1 to A6, S1 to S4) and DECLARATION.md's reading rules (R-R0 to R-R7), scorability (R-S1 to R-S4), comparison (R-C), mismatch (R-M), revisions (R-V), propositions (P-A to P-C) and F1 to F3 are mapped here. The seal gates, C1 (digests against the frozen declaration and the manifests), C3, C4 and the schema pass's refusal on an empty journal are enforced by run.py against artefacts outside the pure logic and have no unit test.",
  "rules": {
@@ -55,6 +56,7 @@
   "S1 the stated period a document names is recorded as printed (amendment 2)": "tests/test_modo.py::test_s1_the_period_end_a_document_states_is_recorded_as_printed",
   "R-R5(x) a bracketed month or a high or low is not an annual figure (amendment 2)": "tests/test_forecast_record.py::test_rr5x_a_bracketed_month_or_a_high_or_low_is_not_an_annual_figure",
   "R-R5(f2) a fund's financial-year outturn is its own period (amendment 2)": "tests/test_forecast_record.py::test_rr5f2_a_funds_financial_year_outturn_is_its_own_period",
-  "R-M2 a fund's assumption meets its own financial-year outturn as a period mismatch (amendment 2)": "tests/test_forecast_record.py::test_rm2_a_funds_assumption_meets_its_own_financial_year_outturn_as_a_period_mismatch"
+  "R-M2 a fund's assumption meets its own financial-year outturn as a period mismatch (amendment 2)": "tests/test_forecast_record.py::test_rm2_a_funds_assumption_meets_its_own_financial_year_outturn_as_a_period_mismatch",
+  "R-R5(f2) amendment 3: a trading update stating the results' year is not the year's outturn; the page's title names the full-year results": "tests/test_forecast_record.py::test_rr5f2_amendment_3_a_trading_update_stating_the_results_year_is_not_the_years_outturn"
  }
 }

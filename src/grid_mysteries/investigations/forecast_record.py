@@ -789,7 +789,7 @@ END_YEAR_RE = re.compile(
 )
 PARTIAL_RE = re.compile(
     r"\b(?:h[12]\s+20\d\d|q[1-4](?:\s+20\d\d)?|(?:first|second|third|fourth|last) quarter|"
-    r"quarter ended|first half|second half|half[- ]year|winter|summer|"
+    r"quarter ended|previous quarter|first half|second half|half[- ]year|winter|summer|"
     r"so far|to date|year to date|last (?:four|six|twelve|12|two|three) (?:months|years)|"
     r"past (?:two|three) years|the three months|four months prior|(?:this|last) winter|"
     rf"(?:{MONTH_RE})\s+(?:to|through|-)\s+(?:{MONTH_RE})|the reporting period|"
@@ -1157,12 +1157,19 @@ def read_page(page: dict, *, publisher: str, portfolio_scope: str | None = None)
             and not fund_cited
             and not bracket
             and stated
-            and PERIOD_WORD_RE.search(clause)
+            and (PERIOD_WORD_RE.search(clause) or PERIOD_WORD_RE.search(preceding))
         ):
             m_end = PERIOD_END_RE.match(stated[0].strip())
             kind = m_end.group("kind").lower() if m_end else ""
-            is_year = kind in ("financial year", "year", "twelve months", "12 months") or (
-                kind == "period" and bool(FULL_YEAR_TITLE_RE.search(title))
+            # amendment 3: whatever the stated kind, only a page whose title
+            # names the full-year results reports that year's outturn; a
+            # trading update can state the results' year beside its own quarter
+            is_year = bool(FULL_YEAR_TITLE_RE.search(title)) and kind in (
+                "financial year",
+                "year",
+                "twelve months",
+                "12 months",
+                "period",
             )
             if m_end and is_year:
                 end = date(

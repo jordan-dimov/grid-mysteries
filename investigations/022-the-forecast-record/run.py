@@ -53,6 +53,7 @@ EVIDENCE = HERE / "evidence"
 PLAN = HERE / "ACQUISITION.md"
 AMENDMENT_1 = HERE / "AMENDMENT-1.md"
 AMENDMENT_2 = HERE / "AMENDMENT-2.md"
+AMENDMENT_3 = HERE / "AMENDMENT-3.md"
 DECLARATION = HERE / "DECLARATION.md"
 RUN_INDEX = EVIDENCE / "run-index.json"
 RUN_INDEX_2 = EVIDENCE / "run-index-2.json"
@@ -683,19 +684,30 @@ def require_declaration_seal(seal: str | None) -> str:
     return digest
 
 
-def require_amendment_2_seal(seal: str | None) -> str:
-    digest = sha(AMENDMENT_2)
-    if not seal or len(seal) < MIN_SEAL_LENGTH or not digest.startswith(seal.lower()):
+def frozen_digest(path: Path) -> str:
+    """The digest of a frozen file: proof sidecar present and naming these bytes."""
+    digest = sha(path)
+    sidecar = path.with_name(path.name + ".timestamps.json")
+    if not sidecar.exists():
+        raise SystemExit(f"refusing: {path.name} is not frozen (no proof sidecar)")
+    if json.loads(sidecar.read_text()).get("sha256") != digest:
+        raise SystemExit(f"refusing: {path.name} has changed since it was frozen")
+    return digest
+
+
+def require_declaration_amendments(seal: str | None) -> list[str]:
+    """The declaration's amendments, in order (2, then 3 when it exists):
+    every one frozen, and ``seal`` a prefix of the latest one's digest.
+    Returns their digests."""
+    chain = [a for a in (AMENDMENT_2, AMENDMENT_3) if a.exists()]
+    digests = [frozen_digest(a) for a in chain]
+    latest = chain[-1]
+    if not seal or len(seal) < MIN_SEAL_LENGTH or not digests[-1].startswith(seal.lower()):
         raise SystemExit(
             f"refusing: --amendment-seal must be a prefix (>= {MIN_SEAL_LENGTH} hex) of "
-            f"AMENDMENT-2.md's SHA-256 {digest[:16]}…"
+            f"{latest.name}'s SHA-256 {digests[-1][:16]}…"
         )
-    sidecar = AMENDMENT_2.with_name(AMENDMENT_2.name + ".timestamps.json")
-    if not sidecar.exists():
-        raise SystemExit("refusing: AMENDMENT-2.md is not frozen (no proof sidecar)")
-    if json.loads(sidecar.read_text()).get("sha256") != digest:
-        raise SystemExit("refusing: AMENDMENT-2.md has changed since it was frozen")
-    return digest
+    return digests
 
 
 def cited(text: str, path: str) -> str:
@@ -784,14 +796,17 @@ def compute(
     digest = require_declaration_seal(seal)
     rule_version = digest[:8]
     text = DECLARATION.read_text()
-    amendment = None
     amendment_text = None
+    amendments: list[str] = []
     if amendment_seal:
-        amendment = require_amendment_2_seal(amendment_seal)
-        amendment_text = AMENDMENT_2.read_text()
-        rule_version = f"{digest[:8]}.{amendment[:8]}"
-    elif AMENDMENT_2.exists() and AMENDMENT_2.with_name("AMENDMENT-2.md.timestamps.json").exists():
-        raise SystemExit("refusing: amendment 2 is frozen; compute under it with --amendment-seal")
+        amendments = require_declaration_amendments(amendment_seal)
+        amendment_text = AMENDMENT_2.read_text()  # amendment 2 cites the regenerated fund report
+        rule_version = ".".join([digest[:8]] + [a[:8] for a in amendments])
+    elif any(
+        a.exists() and a.with_name(a.name + ".timestamps.json").exists()
+        for a in (AMENDMENT_2, AMENDMENT_3)
+    ):
+        raise SystemExit("refusing: an amendment is frozen; compute under it with --amendment-seal")
     digests = check_inputs(text, amendment_text)
     modo_pages = json.loads((ARCHIVE_MODO / "schema-report.json").read_text())["per_page"]
     rns_pages = json.loads((ARCHIVE_RNS / "schema-report.json").read_text())["per_page"]
@@ -874,8 +889,11 @@ def compute(
         "declaration": DECLARATION.name,
         "declaration_sha256": digest,
         "plan_sha256": sha(PLAN),
-        "amendment_2_sha256": amendment,
-        "supersedes_rule_version": digest[:8] if amendment else None,
+        "amendment_2_sha256": amendments[0] if amendments else None,
+        "amendments_sha256": amendments,
+        "supersedes_rule_version": (
+            ".".join([digest[:8]] + [a[:8] for a in amendments[:-1]]) if amendments else None
+        ),
         "rule_version": rule_version,
         "seal": seal,
         "run_date": run_date,

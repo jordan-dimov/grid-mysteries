@@ -1,0 +1,11 @@
+[
+ {
+  "run_date": "2026-10-01",
+  "computed_at": "2026-10-01T08:39:32+00:00",
+  "seal": "76ad7dc3",
+  "declaration_sha256": "76ad7dc36ffda6373f798bb3dad08aa4ea8083262037c48a69ecadeb5f6a91d1",
+  "rule_version": "76ad7dc3",
+  "comparisons_appended": 30,
+  "groups_appended": 542
+ }
+]

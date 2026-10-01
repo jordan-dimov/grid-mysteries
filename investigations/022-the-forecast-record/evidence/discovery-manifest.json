@@ -28,12 +28,192 @@
  },
  {
   "source": "rns",
+  "dataset": "rns/listing-investegate-grid-page10",
+  "url": "https://www.investegate.co.uk/company/GRID?page=10",
+  "path": "data/raw/modo/022/2026-10-01/rns-listings/listing-investegate-grid-page10.html",
+  "sha256": "2a445c3aef592695aee9acfcebff7b0b63d144ee2108dabe8276911b08943ff2",
+  "fetched_at": "2026-10-01T16:13:59.166980+00:00",
+  "bytes": 54009
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/listing-investegate-grid-page11",
+  "url": "https://www.investegate.co.uk/company/GRID?page=11",
+  "path": "data/raw/modo/022/2026-10-01/rns-listings/listing-investegate-grid-page11.html",
+  "sha256": "f8ccae28c717a741e5cd022a253f0473786b4aa10c6d626cfc95a37223470592",
+  "fetched_at": "2026-10-01T16:13:59.896090+00:00",
+  "bytes": 54011
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/listing-investegate-grid-page12",
+  "url": "https://www.investegate.co.uk/company/GRID?page=12",
+  "path": "data/raw/modo/022/2026-10-01/rns-listings/listing-investegate-grid-page12.html",
+  "sha256": "e4b92e75b48b616bfae1f37f072f98fbc0356622cdacc90065df45bd6eb3f116",
+  "fetched_at": "2026-10-01T16:14:00.627920+00:00",
+  "bytes": 54011
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/listing-investegate-grid-page13",
+  "url": "https://www.investegate.co.uk/company/GRID?page=13",
+  "path": "data/raw/modo/022/2026-10-01/rns-listings/listing-investegate-grid-page13.html",
+  "sha256": "e3058bf0c7cff06bebbf97732ac297373c68080da9781fbacf423e60c4b83361",
+  "fetched_at": "2026-10-01T16:14:01.364954+00:00",
+  "bytes": 54011
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/listing-investegate-grid-page14",
+  "url": "https://www.investegate.co.uk/company/GRID?page=14",
+  "path": "data/raw/modo/022/2026-10-01/rns-listings/listing-investegate-grid-page14.html",
+  "sha256": "226ac40cf0af24d61e7ec6a3484bfe81025e0eb8c58fc2754073e8ebc2c60e81",
+  "fetched_at": "2026-10-01T16:14:02.092675+00:00",
+  "bytes": 54011
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/listing-investegate-grid-page15",
+  "url": "https://www.investegate.co.uk/company/GRID?page=15",
+  "path": "data/raw/modo/022/2026-10-01/rns-listings/listing-investegate-grid-page15.html",
+  "sha256": "9926ce863e05f32da07802012474f5cfc573f145e908d539737caf7d294dbb26",
+  "fetched_at": "2026-10-01T16:14:02.836540+00:00",
+  "bytes": 54011
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/listing-investegate-grid-page16",
+  "url": "https://www.investegate.co.uk/company/GRID?page=16",
+  "path": "data/raw/modo/022/2026-10-01/rns-listings/listing-investegate-grid-page16.html",
+  "sha256": "e90edfc039e2292be89e5c27514dd88da3d64dc2d421bad6e2fa516ddc949651",
+  "fetched_at": "2026-10-01T16:14:03.587574+00:00",
+  "bytes": 54011
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/listing-investegate-grid-page17",
+  "url": "https://www.investegate.co.uk/company/GRID?page=17",
+  "path": "data/raw/modo/022/2026-10-01/rns-listings/listing-investegate-grid-page17.html",
+  "sha256": "830c15b67bb7ab92c089a56032b043af52fdbaef8690624a01225591c55ff0d8",
+  "fetched_at": "2026-10-01T16:14:04.339620+00:00",
+  "bytes": 54011
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/listing-investegate-grid-page18",
+  "url": "https://www.investegate.co.uk/company/GRID?page=18",
+  "path": "data/raw/modo/022/2026-10-01/rns-listings/listing-investegate-grid-page18.html",
+  "sha256": "ab0d79c5c00f5e94cde7a63e212e9853bed1e8036976dccc2c1280cbb3345fe5",
+  "fetched_at": "2026-10-01T16:14:05.065626+00:00",
+  "bytes": 54011
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/listing-investegate-grid-page19",
+  "url": "https://www.investegate.co.uk/company/GRID?page=19",
+  "path": "data/raw/modo/022/2026-10-01/rns-listings/listing-investegate-grid-page19.html",
+  "sha256": "6f3378bd3c7caed4bd19f4fb567b2574950f931335ce430c1a82f55660756a02",
+  "fetched_at": "2026-10-01T16:14:05.788426+00:00",
+  "bytes": 54011
+ },
+ {
+  "source": "rns",
   "dataset": "rns/listing-investegate-grid-page2",
   "url": "https://www.investegate.co.uk/company/GRID?page=2",
   "path": "data/raw/modo/022/2026-10-01/rns-listings/listing-investegate-grid-page2.html",
   "sha256": "1ed431ca2851527b614644214f6ea7a925b16faba22dcd9db415a970be401138",
   "fetched_at": "2026-10-01T13:40:20.755430+00:00",
   "bytes": 85009
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/listing-investegate-grid-page20",
+  "url": "https://www.investegate.co.uk/company/GRID?page=20",
+  "path": "data/raw/modo/022/2026-10-01/rns-listings/listing-investegate-grid-page20.html",
+  "sha256": "422851119e5fad50e97b3a76066943440954a67d71fdaf13353707a342ae6d2f",
+  "fetched_at": "2026-10-01T16:14:06.507955+00:00",
+  "bytes": 54011
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/listing-investegate-grid-page21",
+  "url": "https://www.investegate.co.uk/company/GRID?page=21",
+  "path": "data/raw/modo/022/2026-10-01/rns-listings/listing-investegate-grid-page21.html",
+  "sha256": "efea9f7fe758392825aca38a1965e40a014e6531ca2047d9a92f3c74dd36663b",
+  "fetched_at": "2026-10-01T16:14:07.243640+00:00",
+  "bytes": 54011
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/listing-investegate-grid-page22",
+  "url": "https://www.investegate.co.uk/company/GRID?page=22",
+  "path": "data/raw/modo/022/2026-10-01/rns-listings/listing-investegate-grid-page22.html",
+  "sha256": "7f4dd24fb6321645013e1e00f183b7397616e9f606d5c6f7ae36777d44307625",
+  "fetched_at": "2026-10-01T16:14:07.976709+00:00",
+  "bytes": 54011
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/listing-investegate-grid-page23",
+  "url": "https://www.investegate.co.uk/company/GRID?page=23",
+  "path": "data/raw/modo/022/2026-10-01/rns-listings/listing-investegate-grid-page23.html",
+  "sha256": "fb7b70ccb0f98a0fb4eb047ce273a80e30ce2c71f605026ce12d92749087f9ae",
+  "fetched_at": "2026-10-01T16:14:08.709496+00:00",
+  "bytes": 54011
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/listing-investegate-grid-page24",
+  "url": "https://www.investegate.co.uk/company/GRID?page=24",
+  "path": "data/raw/modo/022/2026-10-01/rns-listings/listing-investegate-grid-page24.html",
+  "sha256": "ee5248c33fa0a6f14139ddbca753c5e92b000fd6a40be41524098ebb557558cc",
+  "fetched_at": "2026-10-01T16:14:09.438207+00:00",
+  "bytes": 54011
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/listing-investegate-grid-page25",
+  "url": "https://www.investegate.co.uk/company/GRID?page=25",
+  "path": "data/raw/modo/022/2026-10-01/rns-listings/listing-investegate-grid-page25.html",
+  "sha256": "7838034e31b954a7742866b809c222ceff8163f22cb8eecfc2e9a264bf3e8b05",
+  "fetched_at": "2026-10-01T16:14:10.166448+00:00",
+  "bytes": 54011
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/listing-investegate-grid-page26",
+  "url": "https://www.investegate.co.uk/company/GRID?page=26",
+  "path": "data/raw/modo/022/2026-10-01/rns-listings/listing-investegate-grid-page26.html",
+  "sha256": "44da4f3e4a93122f1f58026ac8be508368bac8788b6c02113b78f07b52b7d961",
+  "fetched_at": "2026-10-01T16:14:10.933808+00:00",
+  "bytes": 54011
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/listing-investegate-grid-page27",
+  "url": "https://www.investegate.co.uk/company/GRID?page=27",
+  "path": "data/raw/modo/022/2026-10-01/rns-listings/listing-investegate-grid-page27.html",
+  "sha256": "874ad2b48714ccff2453a2ff061720c31c50a75ab6aa55ae3ac2d60b2f8284fe",
+  "fetched_at": "2026-10-01T16:14:11.692572+00:00",
+  "bytes": 54011
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/listing-investegate-grid-page28",
+  "url": "https://www.investegate.co.uk/company/GRID?page=28",
+  "path": "data/raw/modo/022/2026-10-01/rns-listings/listing-investegate-grid-page28.html",
+  "sha256": "d1973e96ed6b7a93c6836d62657b5029238c7480abb31b95e0029519df4e6739",
+  "fetched_at": "2026-10-01T16:14:12.434414+00:00",
+  "bytes": 54011
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/listing-investegate-grid-page29",
+  "url": "https://www.investegate.co.uk/company/GRID?page=29",
+  "path": "data/raw/modo/022/2026-10-01/rns-listings/listing-investegate-grid-page29.html",
+  "sha256": "a1152465afb8bae1a07c5bfa1bf210bfb022336e312c50abf43fd36cfa067da6",
+  "fetched_at": "2026-10-01T16:14:13.159373+00:00",
+  "bytes": 54011
  },
  {
   "source": "rns",
@@ -46,12 +226,255 @@
  },
  {
   "source": "rns",
+  "dataset": "rns/listing-investegate-grid-page30",
+  "url": "https://www.investegate.co.uk/company/GRID?page=30",
+  "path": "data/raw/modo/022/2026-10-01/rns-listings/listing-investegate-grid-page30.html",
+  "sha256": "bba081b2159061857f74c8c79dd65acf5b8d549310b6e2dcba34be0255331064",
+  "fetched_at": "2026-10-01T16:14:13.894845+00:00",
+  "bytes": 54011
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/listing-investegate-grid-page31",
+  "url": "https://www.investegate.co.uk/company/GRID?page=31",
+  "path": "data/raw/modo/022/2026-10-01/rns-listings/listing-investegate-grid-page31.html",
+  "sha256": "08f190279df88ac3a2848e330014ce8193aac45029cb0943232d61e5627f264c",
+  "fetched_at": "2026-10-01T16:14:14.643305+00:00",
+  "bytes": 54011
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/listing-investegate-grid-page32",
+  "url": "https://www.investegate.co.uk/company/GRID?page=32",
+  "path": "data/raw/modo/022/2026-10-01/rns-listings/listing-investegate-grid-page32.html",
+  "sha256": "ad6cbebd149fdb06671e510af3aca20c6739312f69d012b32803b0131f1def50",
+  "fetched_at": "2026-10-01T16:14:15.382591+00:00",
+  "bytes": 54011
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/listing-investegate-grid-page33",
+  "url": "https://www.investegate.co.uk/company/GRID?page=33",
+  "path": "data/raw/modo/022/2026-10-01/rns-listings/listing-investegate-grid-page33.html",
+  "sha256": "75cdbba3eab5f920799333035e51cb89facc958cc93918ac7d5cd30aa46100fc",
+  "fetched_at": "2026-10-01T16:14:16.109354+00:00",
+  "bytes": 54011
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/listing-investegate-grid-page34",
+  "url": "https://www.investegate.co.uk/company/GRID?page=34",
+  "path": "data/raw/modo/022/2026-10-01/rns-listings/listing-investegate-grid-page34.html",
+  "sha256": "ee1a0b3d16c86612ced759ed10b21576873476ef501f8531900176ea6e994947",
+  "fetched_at": "2026-10-01T16:14:16.844811+00:00",
+  "bytes": 54011
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/listing-investegate-grid-page35",
+  "url": "https://www.investegate.co.uk/company/GRID?page=35",
+  "path": "data/raw/modo/022/2026-10-01/rns-listings/listing-investegate-grid-page35.html",
+  "sha256": "684e11c0b3dfefa74ced0301e659b39ed1d599e3c396c75ebb01a830a8985aa3",
+  "fetched_at": "2026-10-01T16:14:17.579093+00:00",
+  "bytes": 54011
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/listing-investegate-grid-page36",
+  "url": "https://www.investegate.co.uk/company/GRID?page=36",
+  "path": "data/raw/modo/022/2026-10-01/rns-listings/listing-investegate-grid-page36.html",
+  "sha256": "4e70fe6a7072160ce7c6c5c192db6ea7dbc468e637c97443c95db970094a2ce2",
+  "fetched_at": "2026-10-01T16:14:18.336458+00:00",
+  "bytes": 54011
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/listing-investegate-grid-page37",
+  "url": "https://www.investegate.co.uk/company/GRID?page=37",
+  "path": "data/raw/modo/022/2026-10-01/rns-listings/listing-investegate-grid-page37.html",
+  "sha256": "f4cde4a34a8801aadbcb87a98b8352d6d48aa17214aa23057e621442cb8c6195",
+  "fetched_at": "2026-10-01T16:14:19.052948+00:00",
+  "bytes": 54011
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/listing-investegate-grid-page38",
+  "url": "https://www.investegate.co.uk/company/GRID?page=38",
+  "path": "data/raw/modo/022/2026-10-01/rns-listings/listing-investegate-grid-page38.html",
+  "sha256": "829d887eb0fb7a9709c05a27da084dc50af1f0103849136c995d6ddffee00dfc",
+  "fetched_at": "2026-10-01T16:14:19.783207+00:00",
+  "bytes": 54011
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/listing-investegate-grid-page39",
+  "url": "https://www.investegate.co.uk/company/GRID?page=39",
+  "path": "data/raw/modo/022/2026-10-01/rns-listings/listing-investegate-grid-page39.html",
+  "sha256": "01a463ca8002cd9abe0b810760e48d6d17fcd62af9a21a9fa0fbf80afe696886",
+  "fetched_at": "2026-10-01T16:14:20.504522+00:00",
+  "bytes": 54011
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/listing-investegate-grid-page4",
+  "url": "https://www.investegate.co.uk/company/GRID?page=4",
+  "path": "data/raw/modo/022/2026-10-01/rns-listings/listing-investegate-grid-page4.html",
+  "sha256": "a7b7ad51bdedd6cc1267b9c1ac47550fb92de5cdfbba85678219c9189f9cadf1",
+  "fetched_at": "2026-10-01T16:13:54.713056+00:00",
+  "bytes": 84007
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/listing-investegate-grid-page40",
+  "url": "https://www.investegate.co.uk/company/GRID?page=40",
+  "path": "data/raw/modo/022/2026-10-01/rns-listings/listing-investegate-grid-page40.html",
+  "sha256": "429b3dd646e030d0b4d7ddd811842ff86b27c3be1eec56e74f21125f823e3144",
+  "fetched_at": "2026-10-01T16:14:21.228770+00:00",
+  "bytes": 54011
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/listing-investegate-grid-page5",
+  "url": "https://www.investegate.co.uk/company/GRID?page=5",
+  "path": "data/raw/modo/022/2026-10-01/rns-listings/listing-investegate-grid-page5.html",
+  "sha256": "82b2d4793b89818360d2335f67897dffd20c4f84b4bb70c1bc13990cba1f3edd",
+  "fetched_at": "2026-10-01T16:13:55.465961+00:00",
+  "bytes": 84138
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/listing-investegate-grid-page6",
+  "url": "https://www.investegate.co.uk/company/GRID?page=6",
+  "path": "data/raw/modo/022/2026-10-01/rns-listings/listing-investegate-grid-page6.html",
+  "sha256": "cd3b16b87911163450fdd89feb687f83dc1fec73551a583ce5d7c3e48266edeb",
+  "fetched_at": "2026-10-01T16:13:56.218509+00:00",
+  "bytes": 84286
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/listing-investegate-grid-page7",
+  "url": "https://www.investegate.co.uk/company/GRID?page=7",
+  "path": "data/raw/modo/022/2026-10-01/rns-listings/listing-investegate-grid-page7.html",
+  "sha256": "be12bcbafbd6e9dcc781c31477fecba3192cc27c5bab4b983619a035edfbbaeb",
+  "fetched_at": "2026-10-01T16:13:56.944365+00:00",
+  "bytes": 84378
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/listing-investegate-grid-page8",
+  "url": "https://www.investegate.co.uk/company/GRID?page=8",
+  "path": "data/raw/modo/022/2026-10-01/rns-listings/listing-investegate-grid-page8.html",
+  "sha256": "b822607aa84a42232749439844547ae51026118fcb3e8496e96840affc699d52",
+  "fetched_at": "2026-10-01T16:13:57.674421+00:00",
+  "bytes": 73209
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/listing-investegate-grid-page9",
+  "url": "https://www.investegate.co.uk/company/GRID?page=9",
+  "path": "data/raw/modo/022/2026-10-01/rns-listings/listing-investegate-grid-page9.html",
+  "sha256": "f17ed394cc9fdd8014f06ce2108d46792d9e8dd3a54928ab1d3ee302d2a5de98",
+  "fetched_at": "2026-10-01T16:13:58.428952+00:00",
+  "bytes": 54008
+ },
+ {
+  "source": "rns",
   "dataset": "rns/listing-investegate-gsf-page1",
   "url": "https://www.investegate.co.uk/company/GSF",
   "path": "data/raw/modo/022/2026-10-01/rns-listings/listing-investegate-gsf-page1.html",
   "sha256": "fbe5c4f46de91e521ea35ccd80993d8e25ac9ccf850224b24e9a195a07d43eeb",
   "fetched_at": "2026-10-01T13:40:22.280978+00:00",
   "bytes": 83035
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/listing-investegate-gsf-page10",
+  "url": "https://www.investegate.co.uk/company/GSF?page=10",
+  "path": "data/raw/modo/022/2026-10-01/rns-listings/listing-investegate-gsf-page10.html",
+  "sha256": "effa260c8bc0bf2097e463ea08f388e6e5284e4d6b90cfe373e412e74fb6443c",
+  "fetched_at": "2026-10-01T16:14:26.369881+00:00",
+  "bytes": 53294
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/listing-investegate-gsf-page11",
+  "url": "https://www.investegate.co.uk/company/GSF?page=11",
+  "path": "data/raw/modo/022/2026-10-01/rns-listings/listing-investegate-gsf-page11.html",
+  "sha256": "07291ff501588560db2bf79f01b3260a4ca9812a90c96f3854614c2855b50a41",
+  "fetched_at": "2026-10-01T16:14:27.093517+00:00",
+  "bytes": 53296
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/listing-investegate-gsf-page12",
+  "url": "https://www.investegate.co.uk/company/GSF?page=12",
+  "path": "data/raw/modo/022/2026-10-01/rns-listings/listing-investegate-gsf-page12.html",
+  "sha256": "9d50025e5b7d799926cd483fa6042cb17009dc1e706d4f0dce92cb33941560a4",
+  "fetched_at": "2026-10-01T16:14:27.813341+00:00",
+  "bytes": 53296
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/listing-investegate-gsf-page13",
+  "url": "https://www.investegate.co.uk/company/GSF?page=13",
+  "path": "data/raw/modo/022/2026-10-01/rns-listings/listing-investegate-gsf-page13.html",
+  "sha256": "e8485af335e71beb72199915899481327d4f7ed6f443dfb14132a12dd77a1230",
+  "fetched_at": "2026-10-01T16:14:28.535504+00:00",
+  "bytes": 53296
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/listing-investegate-gsf-page14",
+  "url": "https://www.investegate.co.uk/company/GSF?page=14",
+  "path": "data/raw/modo/022/2026-10-01/rns-listings/listing-investegate-gsf-page14.html",
+  "sha256": "9cd168712f408abe3b0af999ee34ca7aed75f86d2afb175d45fa14f6295456ff",
+  "fetched_at": "2026-10-01T16:14:29.257239+00:00",
+  "bytes": 53296
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/listing-investegate-gsf-page15",
+  "url": "https://www.investegate.co.uk/company/GSF?page=15",
+  "path": "data/raw/modo/022/2026-10-01/rns-listings/listing-investegate-gsf-page15.html",
+  "sha256": "2f8ad139265282c5b9c670b73778efc40b5c5f16ceb7431aecb60190862700be",
+  "fetched_at": "2026-10-01T16:14:30.140313+00:00",
+  "bytes": 53296
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/listing-investegate-gsf-page16",
+  "url": "https://www.investegate.co.uk/company/GSF?page=16",
+  "path": "data/raw/modo/022/2026-10-01/rns-listings/listing-investegate-gsf-page16.html",
+  "sha256": "4222dce4fd632d28e3bfe8101c9641bf1bd4af28f934f121cef8fc0864748d09",
+  "fetched_at": "2026-10-01T16:14:31.335183+00:00",
+  "bytes": 53296
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/listing-investegate-gsf-page17",
+  "url": "https://www.investegate.co.uk/company/GSF?page=17",
+  "path": "data/raw/modo/022/2026-10-01/rns-listings/listing-investegate-gsf-page17.html",
+  "sha256": "dfe45b3556cfce896ea970c547ed882358702c34cd040fae8216225f3eae58f8",
+  "fetched_at": "2026-10-01T16:14:32.252079+00:00",
+  "bytes": 53296
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/listing-investegate-gsf-page18",
+  "url": "https://www.investegate.co.uk/company/GSF?page=18",
+  "path": "data/raw/modo/022/2026-10-01/rns-listings/listing-investegate-gsf-page18.html",
+  "sha256": "887edac9684c2391f1dc7ddbddaccb58341a5a41768f9ec926bc545bd04a6753",
+  "fetched_at": "2026-10-01T16:14:32.978414+00:00",
+  "bytes": 53296
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/listing-investegate-gsf-page19",
+  "url": "https://www.investegate.co.uk/company/GSF?page=19",
+  "path": "data/raw/modo/022/2026-10-01/rns-listings/listing-investegate-gsf-page19.html",
+  "sha256": "68cbdcfd42768ff916525a209dcad8d295dce2214519a70243ced2ea8532534d",
+  "fetched_at": "2026-10-01T16:14:33.710937+00:00",
+  "bytes": 53296
  },
  {
   "source": "rns",
@@ -64,12 +487,255 @@
  },
  {
   "source": "rns",
+  "dataset": "rns/listing-investegate-gsf-page20",
+  "url": "https://www.investegate.co.uk/company/GSF?page=20",
+  "path": "data/raw/modo/022/2026-10-01/rns-listings/listing-investegate-gsf-page20.html",
+  "sha256": "20739f4cfad8337e55672c92f228cecdee6122971988e3a94c8cafde75b3508a",
+  "fetched_at": "2026-10-01T16:14:34.443112+00:00",
+  "bytes": 53296
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/listing-investegate-gsf-page21",
+  "url": "https://www.investegate.co.uk/company/GSF?page=21",
+  "path": "data/raw/modo/022/2026-10-01/rns-listings/listing-investegate-gsf-page21.html",
+  "sha256": "a6809721f65dd6ca960f1df645df64bcb491fdbd3cc18c683e16c4085b4e5f7c",
+  "fetched_at": "2026-10-01T16:14:35.170358+00:00",
+  "bytes": 53296
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/listing-investegate-gsf-page22",
+  "url": "https://www.investegate.co.uk/company/GSF?page=22",
+  "path": "data/raw/modo/022/2026-10-01/rns-listings/listing-investegate-gsf-page22.html",
+  "sha256": "2e79f72c8e3f03cd650af117d86c5c882b6e7aa852ab7f5b1674a1023c639ffe",
+  "fetched_at": "2026-10-01T16:14:35.901845+00:00",
+  "bytes": 53296
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/listing-investegate-gsf-page23",
+  "url": "https://www.investegate.co.uk/company/GSF?page=23",
+  "path": "data/raw/modo/022/2026-10-01/rns-listings/listing-investegate-gsf-page23.html",
+  "sha256": "d89041e5dce2daf6da9a79f6b07a47e11763abd6e1343c76811e8d99659a5e2e",
+  "fetched_at": "2026-10-01T16:14:36.668329+00:00",
+  "bytes": 53296
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/listing-investegate-gsf-page24",
+  "url": "https://www.investegate.co.uk/company/GSF?page=24",
+  "path": "data/raw/modo/022/2026-10-01/rns-listings/listing-investegate-gsf-page24.html",
+  "sha256": "1092de1653de7d07175b61dc760d901a3d9120512da148027cc2cc9161667687",
+  "fetched_at": "2026-10-01T16:14:37.399590+00:00",
+  "bytes": 53296
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/listing-investegate-gsf-page25",
+  "url": "https://www.investegate.co.uk/company/GSF?page=25",
+  "path": "data/raw/modo/022/2026-10-01/rns-listings/listing-investegate-gsf-page25.html",
+  "sha256": "e7f575f98e9054d893372e22316b863a051ad69f2606d1bce9cc293bdee939a3",
+  "fetched_at": "2026-10-01T16:14:38.131649+00:00",
+  "bytes": 53296
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/listing-investegate-gsf-page26",
+  "url": "https://www.investegate.co.uk/company/GSF?page=26",
+  "path": "data/raw/modo/022/2026-10-01/rns-listings/listing-investegate-gsf-page26.html",
+  "sha256": "0e65b744b4b1a102f6f57a673b1f02929834c2cca5e7056ec28fad1f35c16e30",
+  "fetched_at": "2026-10-01T16:14:38.863525+00:00",
+  "bytes": 53296
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/listing-investegate-gsf-page27",
+  "url": "https://www.investegate.co.uk/company/GSF?page=27",
+  "path": "data/raw/modo/022/2026-10-01/rns-listings/listing-investegate-gsf-page27.html",
+  "sha256": "5c05dcbee0346e6f400808ee6b19b75b27cc93f88015332e0ad94e6e0a6aa221",
+  "fetched_at": "2026-10-01T16:14:39.592504+00:00",
+  "bytes": 53296
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/listing-investegate-gsf-page28",
+  "url": "https://www.investegate.co.uk/company/GSF?page=28",
+  "path": "data/raw/modo/022/2026-10-01/rns-listings/listing-investegate-gsf-page28.html",
+  "sha256": "a2649e8e08be7f14009bb71902dcbc220d1e0e5800ba95c0262e53fd9594407b",
+  "fetched_at": "2026-10-01T16:14:40.333513+00:00",
+  "bytes": 53296
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/listing-investegate-gsf-page29",
+  "url": "https://www.investegate.co.uk/company/GSF?page=29",
+  "path": "data/raw/modo/022/2026-10-01/rns-listings/listing-investegate-gsf-page29.html",
+  "sha256": "dfe64b630ea046cbbf6bb64bd3c9d78200e6f02db1305d0853b59c4d4f974d78",
+  "fetched_at": "2026-10-01T16:14:41.091736+00:00",
+  "bytes": 53296
+ },
+ {
+  "source": "rns",
   "dataset": "rns/listing-investegate-gsf-page3",
   "url": "https://www.investegate.co.uk/company/GSF?page=3",
   "path": "data/raw/modo/022/2026-10-01/rns-listings/listing-investegate-gsf-page3.html",
   "sha256": "13bc1260b337a50cf7138361e21ef3708d165d204debf32339679f74ba8fdd5c",
   "fetched_at": "2026-10-01T13:40:23.804997+00:00",
   "bytes": 83767
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/listing-investegate-gsf-page30",
+  "url": "https://www.investegate.co.uk/company/GSF?page=30",
+  "path": "data/raw/modo/022/2026-10-01/rns-listings/listing-investegate-gsf-page30.html",
+  "sha256": "85fe989edb45b235b3e517b9725431f8aca99a706648efb74c681bf78597aaac",
+  "fetched_at": "2026-10-01T16:14:41.815231+00:00",
+  "bytes": 53296
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/listing-investegate-gsf-page31",
+  "url": "https://www.investegate.co.uk/company/GSF?page=31",
+  "path": "data/raw/modo/022/2026-10-01/rns-listings/listing-investegate-gsf-page31.html",
+  "sha256": "9ca37d9a4a4076c333e91f541dd8067e262f6bf3dd0ea00f948ed6f794572e13",
+  "fetched_at": "2026-10-01T16:14:42.547677+00:00",
+  "bytes": 53296
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/listing-investegate-gsf-page32",
+  "url": "https://www.investegate.co.uk/company/GSF?page=32",
+  "path": "data/raw/modo/022/2026-10-01/rns-listings/listing-investegate-gsf-page32.html",
+  "sha256": "f0f4b7a425a547ded7ba12462a9230d1500d1c433fd0d2fc2f152fab21b25ce2",
+  "fetched_at": "2026-10-01T16:14:43.267646+00:00",
+  "bytes": 53296
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/listing-investegate-gsf-page33",
+  "url": "https://www.investegate.co.uk/company/GSF?page=33",
+  "path": "data/raw/modo/022/2026-10-01/rns-listings/listing-investegate-gsf-page33.html",
+  "sha256": "85c39b40a05db5de46859f1f9c901db5b29d9e4b223eee3f933875aab5f49026",
+  "fetched_at": "2026-10-01T16:14:44.007193+00:00",
+  "bytes": 53296
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/listing-investegate-gsf-page34",
+  "url": "https://www.investegate.co.uk/company/GSF?page=34",
+  "path": "data/raw/modo/022/2026-10-01/rns-listings/listing-investegate-gsf-page34.html",
+  "sha256": "2ff5a9da543207b0a281fa11f0cb0b72a26665584ed9f5b043b99b59e007c753",
+  "fetched_at": "2026-10-01T16:14:44.730354+00:00",
+  "bytes": 53296
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/listing-investegate-gsf-page35",
+  "url": "https://www.investegate.co.uk/company/GSF?page=35",
+  "path": "data/raw/modo/022/2026-10-01/rns-listings/listing-investegate-gsf-page35.html",
+  "sha256": "cb4d1eda919b617b5542b71e03d99511600b0c15f8d997ea1f83a2be60371406",
+  "fetched_at": "2026-10-01T16:14:45.453382+00:00",
+  "bytes": 53296
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/listing-investegate-gsf-page36",
+  "url": "https://www.investegate.co.uk/company/GSF?page=36",
+  "path": "data/raw/modo/022/2026-10-01/rns-listings/listing-investegate-gsf-page36.html",
+  "sha256": "2cc21a7409021981d50f82222fe0f1c7ee12ad25184e7e2693127a0bf9b2a0d2",
+  "fetched_at": "2026-10-01T16:14:46.174284+00:00",
+  "bytes": 53296
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/listing-investegate-gsf-page37",
+  "url": "https://www.investegate.co.uk/company/GSF?page=37",
+  "path": "data/raw/modo/022/2026-10-01/rns-listings/listing-investegate-gsf-page37.html",
+  "sha256": "46b3c473ff4e96370421a0c5bd515316a01524986ffc74702a2db288686579a0",
+  "fetched_at": "2026-10-01T16:14:46.919984+00:00",
+  "bytes": 53296
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/listing-investegate-gsf-page38",
+  "url": "https://www.investegate.co.uk/company/GSF?page=38",
+  "path": "data/raw/modo/022/2026-10-01/rns-listings/listing-investegate-gsf-page38.html",
+  "sha256": "eaffadcae5e0118db99fc539e02a5fd7f35aa188085658f67df36908ae0ee9ff",
+  "fetched_at": "2026-10-01T16:14:47.644892+00:00",
+  "bytes": 53296
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/listing-investegate-gsf-page39",
+  "url": "https://www.investegate.co.uk/company/GSF?page=39",
+  "path": "data/raw/modo/022/2026-10-01/rns-listings/listing-investegate-gsf-page39.html",
+  "sha256": "5e5bab62ddd9b144fec0df235e52e2cddcc881e643f94655d5ffc8aa49284da4",
+  "fetched_at": "2026-10-01T16:14:48.367180+00:00",
+  "bytes": 53296
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/listing-investegate-gsf-page4",
+  "url": "https://www.investegate.co.uk/company/GSF?page=4",
+  "path": "data/raw/modo/022/2026-10-01/rns-listings/listing-investegate-gsf-page4.html",
+  "sha256": "6a8a0cc5b73d68c7f13f513e11d1ccd887bbbd3eff2af0c4eb12b1de276e7d76",
+  "fetched_at": "2026-10-01T16:14:21.968529+00:00",
+  "bytes": 83474
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/listing-investegate-gsf-page40",
+  "url": "https://www.investegate.co.uk/company/GSF?page=40",
+  "path": "data/raw/modo/022/2026-10-01/rns-listings/listing-investegate-gsf-page40.html",
+  "sha256": "f6bf29a1daf0c4dc12f0ccb9a990c3194adcbac45e4cfb4377fe6c472a3283a4",
+  "fetched_at": "2026-10-01T16:14:49.093236+00:00",
+  "bytes": 53296
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/listing-investegate-gsf-page5",
+  "url": "https://www.investegate.co.uk/company/GSF?page=5",
+  "path": "data/raw/modo/022/2026-10-01/rns-listings/listing-investegate-gsf-page5.html",
+  "sha256": "12e2b007d0eeb6d316eb37a56838c6e180d1891619abc8ebbb05d6b427687fae",
+  "fetched_at": "2026-10-01T16:14:22.706403+00:00",
+  "bytes": 83448
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/listing-investegate-gsf-page6",
+  "url": "https://www.investegate.co.uk/company/GSF?page=6",
+  "path": "data/raw/modo/022/2026-10-01/rns-listings/listing-investegate-gsf-page6.html",
+  "sha256": "cfee3865993fb430a7d4e9931b5804164c9bdca2d2a8f835a1ecc5bc9b784833",
+  "fetched_at": "2026-10-01T16:14:23.456623+00:00",
+  "bytes": 82353
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/listing-investegate-gsf-page7",
+  "url": "https://www.investegate.co.uk/company/GSF?page=7",
+  "path": "data/raw/modo/022/2026-10-01/rns-listings/listing-investegate-gsf-page7.html",
+  "sha256": "0afd418bf90ea0dfb2d39cf18b0eb757eb58a90acdc0e8fa9c3c01e02d22b736",
+  "fetched_at": "2026-10-01T16:14:24.174077+00:00",
+  "bytes": 53293
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/listing-investegate-gsf-page8",
+  "url": "https://www.investegate.co.uk/company/GSF?page=8",
+  "path": "data/raw/modo/022/2026-10-01/rns-listings/listing-investegate-gsf-page8.html",
+  "sha256": "b3f03e62df30c339410d408ad0dd2ed85f37bcf72f1fd1b77277f03a43dcfdb2",
+  "fetched_at": "2026-10-01T16:14:24.915526+00:00",
+  "bytes": 53293
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/listing-investegate-gsf-page9",
+  "url": "https://www.investegate.co.uk/company/GSF?page=9",
+  "path": "data/raw/modo/022/2026-10-01/rns-listings/listing-investegate-gsf-page9.html",
+  "sha256": "401f78995e3080f18a18b9549a423acc5306c5a73692cfbd7876b5fc779aef91",
+  "fetched_at": "2026-10-01T16:14:25.635399+00:00",
+  "bytes": 53293
  },
  {
   "source": "rns",
@@ -82,6 +748,96 @@
  },
  {
   "source": "rns",
+  "dataset": "rns/listing-investegate-heit-page10",
+  "url": "https://www.investegate.co.uk/company/HEIT?page=10",
+  "path": "data/raw/modo/022/2026-10-01/rns-listings/listing-investegate-heit-page10.html",
+  "sha256": "57e0edb80563934a711bda9afc35d609c4aa338676d8657af0a7a8105dfd616c",
+  "fetched_at": "2026-10-01T16:14:54.333335+00:00",
+  "bytes": 53772
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/listing-investegate-heit-page11",
+  "url": "https://www.investegate.co.uk/company/HEIT?page=11",
+  "path": "data/raw/modo/022/2026-10-01/rns-listings/listing-investegate-heit-page11.html",
+  "sha256": "47a7d2611b2101aaa92872e886ee19e9f4e238e3e61268cb01d8217ee7493d1b",
+  "fetched_at": "2026-10-01T16:14:55.066118+00:00",
+  "bytes": 53774
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/listing-investegate-heit-page12",
+  "url": "https://www.investegate.co.uk/company/HEIT?page=12",
+  "path": "data/raw/modo/022/2026-10-01/rns-listings/listing-investegate-heit-page12.html",
+  "sha256": "4bb90946e2cb8e8383237eda5eb6c83b020a264e73db616a7707dcf46d328f00",
+  "fetched_at": "2026-10-01T16:14:55.798804+00:00",
+  "bytes": 53774
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/listing-investegate-heit-page13",
+  "url": "https://www.investegate.co.uk/company/HEIT?page=13",
+  "path": "data/raw/modo/022/2026-10-01/rns-listings/listing-investegate-heit-page13.html",
+  "sha256": "b1457be075fe3e010964aa6bfabab5577054ab8fed31b33b49aa2e41b5707d4d",
+  "fetched_at": "2026-10-01T16:14:56.524705+00:00",
+  "bytes": 53774
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/listing-investegate-heit-page14",
+  "url": "https://www.investegate.co.uk/company/HEIT?page=14",
+  "path": "data/raw/modo/022/2026-10-01/rns-listings/listing-investegate-heit-page14.html",
+  "sha256": "bf7b0ebef62a00209100794d46d22310a3cb5a4e6f81a77a9f95a23bcdf3a3f9",
+  "fetched_at": "2026-10-01T16:14:57.251920+00:00",
+  "bytes": 53774
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/listing-investegate-heit-page15",
+  "url": "https://www.investegate.co.uk/company/HEIT?page=15",
+  "path": "data/raw/modo/022/2026-10-01/rns-listings/listing-investegate-heit-page15.html",
+  "sha256": "de003296fe5be4caa09d027e912d4c17cffb2b8028886411ada31a1397e299c0",
+  "fetched_at": "2026-10-01T16:14:57.982893+00:00",
+  "bytes": 53774
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/listing-investegate-heit-page16",
+  "url": "https://www.investegate.co.uk/company/HEIT?page=16",
+  "path": "data/raw/modo/022/2026-10-01/rns-listings/listing-investegate-heit-page16.html",
+  "sha256": "d67cbe89110aa6b87ba52084ca6fedd4f36dde45a8c05134a7d8485e367f52a8",
+  "fetched_at": "2026-10-01T16:14:58.708013+00:00",
+  "bytes": 53774
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/listing-investegate-heit-page17",
+  "url": "https://www.investegate.co.uk/company/HEIT?page=17",
+  "path": "data/raw/modo/022/2026-10-01/rns-listings/listing-investegate-heit-page17.html",
+  "sha256": "547d42108c0949d70ef5305f22c1770c4721bc1d037f6db9351d483463e8d75e",
+  "fetched_at": "2026-10-01T16:14:59.448170+00:00",
+  "bytes": 53774
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/listing-investegate-heit-page18",
+  "url": "https://www.investegate.co.uk/company/HEIT?page=18",
+  "path": "data/raw/modo/022/2026-10-01/rns-listings/listing-investegate-heit-page18.html",
+  "sha256": "8deab8837aade8e189818d396a14a92f6402767abe4b2f5af9380fcd24046149",
+  "fetched_at": "2026-10-01T16:15:00.202594+00:00",
+  "bytes": 53774
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/listing-investegate-heit-page19",
+  "url": "https://www.investegate.co.uk/company/HEIT?page=19",
+  "path": "data/raw/modo/022/2026-10-01/rns-listings/listing-investegate-heit-page19.html",
+  "sha256": "d4b0427e961a5f8255934a181c2ccfa58b83c80db5a9796cb87b06ab263dec9c",
+  "fetched_at": "2026-10-01T16:15:00.933034+00:00",
+  "bytes": 53774
+ },
+ {
+  "source": "rns",
   "dataset": "rns/listing-investegate-heit-page2",
   "url": "https://www.investegate.co.uk/company/HEIT?page=2",
   "path": "data/raw/modo/022/2026-10-01/rns-listings/listing-investegate-heit-page2.html",
@@ -91,12 +847,255 @@
  },
  {
   "source": "rns",
+  "dataset": "rns/listing-investegate-heit-page20",
+  "url": "https://www.investegate.co.uk/company/HEIT?page=20",
+  "path": "data/raw/modo/022/2026-10-01/rns-listings/listing-investegate-heit-page20.html",
+  "sha256": "03102586d58aa217e8fbc1a82365c4a9550c066d781a6859fefcdf1279b41e17",
+  "fetched_at": "2026-10-01T16:15:01.674746+00:00",
+  "bytes": 53774
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/listing-investegate-heit-page21",
+  "url": "https://www.investegate.co.uk/company/HEIT?page=21",
+  "path": "data/raw/modo/022/2026-10-01/rns-listings/listing-investegate-heit-page21.html",
+  "sha256": "24d809ab81502c476c0353863fc757960dcb750b5ad69c103a052704b6c7f26e",
+  "fetched_at": "2026-10-01T16:15:02.429744+00:00",
+  "bytes": 53774
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/listing-investegate-heit-page22",
+  "url": "https://www.investegate.co.uk/company/HEIT?page=22",
+  "path": "data/raw/modo/022/2026-10-01/rns-listings/listing-investegate-heit-page22.html",
+  "sha256": "2f328bb6264ef1162019bcd7defcdb36072457aba1707b2023d41d6ae31ca618",
+  "fetched_at": "2026-10-01T16:15:03.167235+00:00",
+  "bytes": 53774
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/listing-investegate-heit-page23",
+  "url": "https://www.investegate.co.uk/company/HEIT?page=23",
+  "path": "data/raw/modo/022/2026-10-01/rns-listings/listing-investegate-heit-page23.html",
+  "sha256": "2958c2df75d6ba8424558bf984bef7f4c6b92f904d1f2caa2a1131372da5a2bd",
+  "fetched_at": "2026-10-01T16:15:03.908634+00:00",
+  "bytes": 53774
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/listing-investegate-heit-page24",
+  "url": "https://www.investegate.co.uk/company/HEIT?page=24",
+  "path": "data/raw/modo/022/2026-10-01/rns-listings/listing-investegate-heit-page24.html",
+  "sha256": "66224d865673c79d18ce2a2bdfb79a97719fced568d6cc71a5cd75e26fd11f4a",
+  "fetched_at": "2026-10-01T16:15:04.637546+00:00",
+  "bytes": 53774
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/listing-investegate-heit-page25",
+  "url": "https://www.investegate.co.uk/company/HEIT?page=25",
+  "path": "data/raw/modo/022/2026-10-01/rns-listings/listing-investegate-heit-page25.html",
+  "sha256": "d61ffc0a595faa1ddbcbc989507bfc639cdd69aeb12a9e9c959bdb9557d05da1",
+  "fetched_at": "2026-10-01T16:15:05.394991+00:00",
+  "bytes": 53774
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/listing-investegate-heit-page26",
+  "url": "https://www.investegate.co.uk/company/HEIT?page=26",
+  "path": "data/raw/modo/022/2026-10-01/rns-listings/listing-investegate-heit-page26.html",
+  "sha256": "68454bfdda36e2b65121160a434c353ebf1fc2de9fefb761666bacb4b6208896",
+  "fetched_at": "2026-10-01T16:15:06.157748+00:00",
+  "bytes": 53774
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/listing-investegate-heit-page27",
+  "url": "https://www.investegate.co.uk/company/HEIT?page=27",
+  "path": "data/raw/modo/022/2026-10-01/rns-listings/listing-investegate-heit-page27.html",
+  "sha256": "2eb7b2a54a8fe644abcce96dfa13ff8c217815bcb668b88bc3989d132dad68c6",
+  "fetched_at": "2026-10-01T16:15:06.889322+00:00",
+  "bytes": 53774
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/listing-investegate-heit-page28",
+  "url": "https://www.investegate.co.uk/company/HEIT?page=28",
+  "path": "data/raw/modo/022/2026-10-01/rns-listings/listing-investegate-heit-page28.html",
+  "sha256": "d2fa695f87af23252fbd3393a6e05c773d86e38e8047511b5bc24ee86604a747",
+  "fetched_at": "2026-10-01T16:15:07.625501+00:00",
+  "bytes": 53774
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/listing-investegate-heit-page29",
+  "url": "https://www.investegate.co.uk/company/HEIT?page=29",
+  "path": "data/raw/modo/022/2026-10-01/rns-listings/listing-investegate-heit-page29.html",
+  "sha256": "0e4206befc7e0d3c94502982b71f8295d68902307deb96d7cf9ce0f096b22876",
+  "fetched_at": "2026-10-01T16:15:08.354393+00:00",
+  "bytes": 53774
+ },
+ {
+  "source": "rns",
   "dataset": "rns/listing-investegate-heit-page3",
   "url": "https://www.investegate.co.uk/company/HEIT?page=3",
   "path": "data/raw/modo/022/2026-10-01/rns-listings/listing-investegate-heit-page3.html",
   "sha256": "2d2526468ee73180dbbce885be5aad033640f74d783726a093dc730e41452a4e",
   "fetched_at": "2026-10-01T13:40:26.110601+00:00",
   "bytes": 84730
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/listing-investegate-heit-page30",
+  "url": "https://www.investegate.co.uk/company/HEIT?page=30",
+  "path": "data/raw/modo/022/2026-10-01/rns-listings/listing-investegate-heit-page30.html",
+  "sha256": "a2ca1afbda2900a7c38e62f7ea3d4a81b561a18e318a21a39dd578140c5ec73f",
+  "fetched_at": "2026-10-01T16:15:09.089565+00:00",
+  "bytes": 53774
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/listing-investegate-heit-page31",
+  "url": "https://www.investegate.co.uk/company/HEIT?page=31",
+  "path": "data/raw/modo/022/2026-10-01/rns-listings/listing-investegate-heit-page31.html",
+  "sha256": "87dc4c4392ad694774991f6ab03c52e7d8cf379acf1316ed65ed180f8f2d6076",
+  "fetched_at": "2026-10-01T16:15:09.827418+00:00",
+  "bytes": 53774
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/listing-investegate-heit-page32",
+  "url": "https://www.investegate.co.uk/company/HEIT?page=32",
+  "path": "data/raw/modo/022/2026-10-01/rns-listings/listing-investegate-heit-page32.html",
+  "sha256": "fc34c7723fa50a0542d7e37281db0924a551a626e878cd881dbdbfb608f366ff",
+  "fetched_at": "2026-10-01T16:15:10.569975+00:00",
+  "bytes": 53774
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/listing-investegate-heit-page33",
+  "url": "https://www.investegate.co.uk/company/HEIT?page=33",
+  "path": "data/raw/modo/022/2026-10-01/rns-listings/listing-investegate-heit-page33.html",
+  "sha256": "f4f5be2cd7be04b77385b29a78bf78e7237f076ccc9cb0273439b38152b6b490",
+  "fetched_at": "2026-10-01T16:15:11.325057+00:00",
+  "bytes": 53774
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/listing-investegate-heit-page34",
+  "url": "https://www.investegate.co.uk/company/HEIT?page=34",
+  "path": "data/raw/modo/022/2026-10-01/rns-listings/listing-investegate-heit-page34.html",
+  "sha256": "d604b764efec3294bb63d5382d12cc14e98bd4d29118bc742e052efaf692f865",
+  "fetched_at": "2026-10-01T16:15:12.051296+00:00",
+  "bytes": 53774
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/listing-investegate-heit-page35",
+  "url": "https://www.investegate.co.uk/company/HEIT?page=35",
+  "path": "data/raw/modo/022/2026-10-01/rns-listings/listing-investegate-heit-page35.html",
+  "sha256": "338e179faadae0838f0e144345ef1faffa840db5d666a45042c6c8cb1fbaf1e5",
+  "fetched_at": "2026-10-01T16:15:12.783500+00:00",
+  "bytes": 53774
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/listing-investegate-heit-page36",
+  "url": "https://www.investegate.co.uk/company/HEIT?page=36",
+  "path": "data/raw/modo/022/2026-10-01/rns-listings/listing-investegate-heit-page36.html",
+  "sha256": "d5d061d0c80fb7dc565790067421a88e41f8e269e7a7bf86f3880cb642269432",
+  "fetched_at": "2026-10-01T16:15:13.519547+00:00",
+  "bytes": 53774
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/listing-investegate-heit-page37",
+  "url": "https://www.investegate.co.uk/company/HEIT?page=37",
+  "path": "data/raw/modo/022/2026-10-01/rns-listings/listing-investegate-heit-page37.html",
+  "sha256": "00fa8c1a49b85e966db9465c7564896492f3a55fd15070ab5594a21dd2a96bd1",
+  "fetched_at": "2026-10-01T16:15:14.244608+00:00",
+  "bytes": 53774
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/listing-investegate-heit-page38",
+  "url": "https://www.investegate.co.uk/company/HEIT?page=38",
+  "path": "data/raw/modo/022/2026-10-01/rns-listings/listing-investegate-heit-page38.html",
+  "sha256": "6bf3917ba713315918151d2c5cc54bdd58217163e743fbc94950e408adecf0eb",
+  "fetched_at": "2026-10-01T16:15:14.978849+00:00",
+  "bytes": 53774
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/listing-investegate-heit-page39",
+  "url": "https://www.investegate.co.uk/company/HEIT?page=39",
+  "path": "data/raw/modo/022/2026-10-01/rns-listings/listing-investegate-heit-page39.html",
+  "sha256": "3cbc664e3a3608ee936ded445432b28c92da15e4caf47c533467aed0467672d3",
+  "fetched_at": "2026-10-01T16:15:15.731283+00:00",
+  "bytes": 53774
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/listing-investegate-heit-page4",
+  "url": "https://www.investegate.co.uk/company/HEIT?page=4",
+  "path": "data/raw/modo/022/2026-10-01/rns-listings/listing-investegate-heit-page4.html",
+  "sha256": "3dbd1762922aa2424094219d548dbfd42e5cd38835f1ac885deffe06bdc03c51",
+  "fetched_at": "2026-10-01T16:14:49.820024+00:00",
+  "bytes": 84709
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/listing-investegate-heit-page40",
+  "url": "https://www.investegate.co.uk/company/HEIT?page=40",
+  "path": "data/raw/modo/022/2026-10-01/rns-listings/listing-investegate-heit-page40.html",
+  "sha256": "54d1caba1fa6dd0719121711caed047caf65a3bf95ff29238f772f75032e9c33",
+  "fetched_at": "2026-10-01T16:15:16.459195+00:00",
+  "bytes": 53774
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/listing-investegate-heit-page5",
+  "url": "https://www.investegate.co.uk/company/HEIT?page=5",
+  "path": "data/raw/modo/022/2026-10-01/rns-listings/listing-investegate-heit-page5.html",
+  "sha256": "3278a919943374b9127bd397b7161647ec57a25992dfb21930e4ced38e2a56a0",
+  "fetched_at": "2026-10-01T16:14:50.569825+00:00",
+  "bytes": 84312
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/listing-investegate-heit-page6",
+  "url": "https://www.investegate.co.uk/company/HEIT?page=6",
+  "path": "data/raw/modo/022/2026-10-01/rns-listings/listing-investegate-heit-page6.html",
+  "sha256": "73c8c940b66bf44d08f7a177b9fcf4cd6d98cbcc146aa5be82a42b9ef9ba3cb7",
+  "fetched_at": "2026-10-01T16:14:51.307006+00:00",
+  "bytes": 84287
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/listing-investegate-heit-page7",
+  "url": "https://www.investegate.co.uk/company/HEIT?page=7",
+  "path": "data/raw/modo/022/2026-10-01/rns-listings/listing-investegate-heit-page7.html",
+  "sha256": "78c9455a55e69d80b422175b26e48a921897139db74600503f50aa3850278231",
+  "fetched_at": "2026-10-01T16:14:52.062843+00:00",
+  "bytes": 83580
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/listing-investegate-heit-page8",
+  "url": "https://www.investegate.co.uk/company/HEIT?page=8",
+  "path": "data/raw/modo/022/2026-10-01/rns-listings/listing-investegate-heit-page8.html",
+  "sha256": "88928b7a663b23610e9ea1e77f054342b375aaa0f3d55f955fe0aa423e9569b8",
+  "fetched_at": "2026-10-01T16:14:52.862793+00:00",
+  "bytes": 73850
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/listing-investegate-heit-page9",
+  "url": "https://www.investegate.co.uk/company/HEIT?page=9",
+  "path": "data/raw/modo/022/2026-10-01/rns-listings/listing-investegate-heit-page9.html",
+  "sha256": "9aa8ef93c507d9810eab0df13104f1db27dede74f4d40ea0fc2906e6c23a1f89",
+  "fetched_at": "2026-10-01T16:14:53.609298+00:00",
+  "bytes": 53771
  },
  {
   "source": "modo-energy",

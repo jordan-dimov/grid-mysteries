@@ -707,6 +707,39 @@ def check_inputs(text: str) -> dict[str, str]:
     return out
 
 
+def fund_documents(rns_pages: list[dict], readings: list) -> dict[str, Any]:
+    """Counts the page states: by kind from the link texts of both indexes,
+    and the earliest publication date the rules read."""
+    kinds: Counter[str] = Counter()
+    texts: dict[str, str] = {}
+    for idx_path in (RUN_INDEX, RUN_INDEX_2):
+        if idx_path.exists():
+            idx = json.loads(idx_path.read_text())
+            for link in idx.get("rns_links", []) + idx.get("links", []):
+                texts.setdefault(link["href"], link["text"])
+    for url in {p["url"] for p in rns_pages}:
+        text = texts.get(url, "").lower()
+        if re.search(r"net asset value|\bnav\b", text):
+            kinds["nav"] += 1
+        elif re.search(r"results|report", text):
+            kinds["results"] += 1
+        elif re.search(r"prospectus|placing|issue|fundrais", text):
+            kinds["prospectus"] += 1
+        else:
+            kinds["other"] += 1
+    # the earliest fund page read under R-R6's window, not the earliest pinned
+    dates = sorted(
+        r.published_on.isoformat()
+        for r in readings
+        if r.published_on and "modoenergy.com" not in r.page_url and not r.rule.startswith("R-R6")
+    )
+    return {
+        **kinds,
+        "total": len({p["url"] for p in rns_pages}),
+        "earliest": dates[0] if dates else None,
+    }
+
+
 def committed(path: Path) -> dict[str, str]:
     out: dict[str, str] = {}
     if path.exists():
@@ -781,7 +814,10 @@ def compute(seal: str | None, run_date: str, *, write: bool) -> None:
         f"rows ({sum(1 for c in rows if c.status == 'scored')} scored); {len(revs)} revision pairs"
     )
     for k, v in props.items():
-        print(f"{k}: {v['verdict']}")
+        if "verdict" in v:
+            print(f"{k}: {v['verdict']}")
+    for pub, pp in props.get("per_publisher", {}).items():
+        print(f"  {pub}: " + ", ".join(f"{k} {v['verdict']}" for k, v in pp.items()))
     f1 = "fires" if result["falsifiers"]["F1"] else "silent"
     print(f"F1: {f1}; F2: {result['falsifiers']['F2']}")
     if not write:
@@ -812,8 +848,10 @@ def compute(seal: str | None, run_date: str, *, write: bool) -> None:
             "modo_english": sum(1 for p in modo_pages if "/research/en/" in p["url"]),
             "rns": len(rns_pages),
         },
+        "fund_documents": fund_documents(rns_pages, readings),
         "strings": dict(tally.most_common()),
         "figures": [asdict(f) for f in result["figures"]],
+        "same_day_duplicates": result["same_day_duplicates"],
         "comparison_status": dict(Counter(c.status for c in rows)),
         "propositions": props,
         "not_yet_scorable": result["not_yet_scorable"],

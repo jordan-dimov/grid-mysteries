@@ -1,0 +1,425 @@
+{
+ "investigation": "022",
+ "declaration": "DECLARATION.md",
+ "declaration_sha256": "b8e6d53bf8e2529ac6caeaf419eb419b76c5f9f12927d647778f382cdd19d2e5",
+ "plan_sha256": "962cb9b5db8d33a7ae14fe3b516dd5f999936911040316a4fcc03e8aeeb0e188",
+ "rule_version": "b8e6d53b",
+ "seal": "b8e6d53bf8e2529a",
+ "run_date": "2026-10-01",
+ "computed_at": "2026-10-01T16:58:03+00:00",
+ "pages_manifest_sha256": "fb4ac6aa112ffdae3ebbbfcfdc54786a588ddf8c23c01881cccb630c07f38925",
+ "rns_manifest_sha256": "4c9b2476d99e97bfaee450293db4f650febbaacaf3f3256daddd0fe4546ad599",
+ "schema_modo_sha256": "4bbe6d793e97e73777de7e2e3c72dbf53dd33ed1440bf4f68aff1f79ac281ab6",
+ "schema_rns_sha256": "16820033b7b175ea1cf26b0cbd0901442bb88449f93017033a4429221aeba696",
+ "pages_read": {
+  "modo_english": 442,
+  "rns": 280
+ },
+ "fund_documents": {
+  "results": 109,
+  "other": 64,
+  "nav": 59,
+  "prospectus": 48,
+  "total": 280,
+  "earliest": "2021-03-08"
+ },
+ "strings": {
+  "R-R2 a price per MWh, not a revenue per MW": 197,
+  "R-R2 an hourly rate": 187,
+  "R-R2 no period unit": 170,
+  "R-R3 a revenue component, not the total": 120,
+  "R-R0 JSON payload": 93,
+  "R-R5 monthly figure": 58,
+  "R-R5 a partial period (half, quarter, season or to date)": 50,
+  "R-R5 period not stated": 48,
+  "R-R0 title or navigation duplicate": 42,
+  "R-R0 PDF sentence glued to page furniture": 39,
+  "R-R4 potential, required, contracted or assumed, not a forecast or an outturn": 35,
+  "R-R3 a named asset or subset, not the population": 22,
+  "R-R2 a change, not a level": 21,
+  "R-R6 published before 2021": 20,
+  "R-R5 another month than the page's own": 17,
+  "R-R2 the starting point of a stated change, not its level": 17,
+  "R-R2 range, not a point figure": 15,
+  "R-R3 no population named in the clause": 12,
+  "R-R5 a day, not a month or a year": 11,
+  "R-R5 a fund figure dated by a month, not a calendar year": 11,
+  "R-R5 annual figure, basis realised": 7,
+  "R-R6 published before 2023": 6,
+  "R-R7 the page prints figures for its own month that differ by more than rounding; none read": 2,
+  "R-R5 the year of publication, not complete": 2,
+  "R-R5 annual figure, basis forecast, cited by the fund (third-party)": 2,
+  "R-R5 annual figure, basis forecast, cited by the fund (source unnamed)": 2,
+  "R-R7 the same month's figure, printed less precisely than another string on the page": 1,
+  "R-R5 horizon figure, basis forecast": 1,
+  "R-R5 endyear figure, basis forecast": 1,
+  "R-R2 a multiplier other than k": 1
+ },
+ "figures": [
+  {
+   "figure_id": "8ba0c1fad2c1:2658",
+   "publisher": "HEIT (fund RNS)",
+   "published_on": "2023-05-23",
+   "source_url": "https://www.investegate.co.uk/announcement/rns/harmony-energy-income-trust--heit/trading-update-and-net-asset-value-/7538293",
+   "source_sha256": "8ba0c1fad2c19d47f166d8947f8eb3e94f4143c1f46cefd297edec71027c2dea",
+   "basis": "forecast",
+   "scope": "HEIT portfolio-excl-cm",
+   "value": "121000",
+   "period_start": 2023,
+   "period_end": 2023,
+   "as_printed": "\u00a3121,000 per MW/Yr",
+   "cited_source": null
+  },
+  {
+   "figure_id": "8ba0c1fad2c1:2717",
+   "publisher": "HEIT (fund RNS)",
+   "published_on": "2023-05-23",
+   "source_url": "https://www.investegate.co.uk/announcement/rns/harmony-energy-income-trust--heit/trading-update-and-net-asset-value-/7538293",
+   "source_sha256": "8ba0c1fad2c19d47f166d8947f8eb3e94f4143c1f46cefd297edec71027c2dea",
+   "basis": "forecast",
+   "scope": "HEIT portfolio-excl-cm",
+   "value": "123000",
+   "period_start": 2024,
+   "period_end": 2024,
+   "as_printed": "\u00a3123,000 per MW/Yr",
+   "cited_source": null
+  },
+  {
+   "figure_id": "e726fdb3c713:100127",
+   "publisher": "GSF (fund RNS)",
+   "published_on": "2023-07-17",
+   "source_url": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/final-results/7635539",
+   "source_sha256": "e726fdb3c71379ff49038ec7ceeb32e438656337557fa8f8ac7967492d92e826",
+   "basis": "realised",
+   "scope": "GSF portfolio",
+   "value": "157000",
+   "period_start": 2022,
+   "period_end": 2022,
+   "as_printed": "\u00a3157,000/MW/yr",
+   "cited_source": null
+  },
+  {
+   "figure_id": "e37f6afbd061:5621",
+   "publisher": "Modo Energy",
+   "published_on": "2024-01-29",
+   "source_url": "https://modoenergy.com/research/en/capacity-market-revenues-battery-energy-storage-auction-derating-factors-december-2023",
+   "source_sha256": "e37f6afbd061bb3d0a68575988d4136f12acb042bb8e7c92d69ce96f59e65ebf",
+   "basis": "realised",
+   "scope": "fleet",
+   "value": "51000",
+   "period_start": 2023,
+   "period_end": 2023,
+   "as_printed": "\u00a351k/MW/year",
+   "cited_source": null
+  },
+  {
+   "figure_id": "179bc815001f:8386",
+   "publisher": "Modo Energy",
+   "published_on": "2024-07-24",
+   "source_url": "https://modoenergy.com/research/en/v31-gb-forecast-update-battery-energy-storage-modelling-changes-revenue-impact",
+   "source_sha256": "179bc815001fb6ac0cf06c1e03b5830d7f52f7fff0dfaacb2f26a4a1dc24647a",
+   "basis": "forecast",
+   "scope": "2h",
+   "value": "81000",
+   "period_start": 2024,
+   "period_end": 2024,
+   "as_printed": "\u00a381k/MW/year",
+   "cited_source": null
+  },
+  {
+   "figure_id": "50bc6b26c454:7627",
+   "publisher": "Modo Energy",
+   "published_on": "2025-01-13",
+   "source_url": "https://modoenergy.com/research/en/jan-24-forecast-update-bess-revenues-intraday-prices-dispatch-battery-energy-storage-model",
+   "source_sha256": "50bc6b26c4546e1f3ac7d01e7eceb09263419d1059889eb93b8dff0de1e782ee",
+   "basis": "forecast",
+   "scope": "2h",
+   "value": "87000",
+   "period_start": 2026,
+   "period_end": 2028,
+   "as_printed": "\u00a387k/MW/year",
+   "cited_source": null
+  },
+  {
+   "figure_id": "c5b2965bc869:4076",
+   "publisher": "Modo Energy",
+   "published_on": "2025-02-18",
+   "source_url": "https://modoenergy.com/research/en/battery-revenues-operational-strategy-2024-gb-benchmark-year-review",
+   "source_sha256": "c5b2965bc86934e4772a2f074fc9d5a953dc9128697beebde7869a71ab726457",
+   "basis": "realised",
+   "scope": "fleet",
+   "value": "50000",
+   "period_start": 2024,
+   "period_end": 2024,
+   "as_printed": "\u00a350k/MW/year",
+   "cited_source": null
+  },
+  {
+   "figure_id": "d2be6a448dd2:15467",
+   "publisher": "GRID (fund RNS)",
+   "published_on": "2025-04-22",
+   "source_url": "https://greshamhouse.com/wp-content/uploads/2025/04/GRID-Annual-Report-31-December-2024.pdf",
+   "source_sha256": "d2be6a448dd2be036f857fcb290451020053a053085304d4d7e489322d8256ec",
+   "basis": "realised",
+   "scope": "GRID portfolio",
+   "value": "91000",
+   "period_start": 2024,
+   "period_end": 2024,
+   "as_printed": "\u00a391k/MW/yr",
+   "cited_source": null
+  },
+  {
+   "figure_id": "d2be6a448dd2:69373",
+   "publisher": "GRID (fund RNS)",
+   "published_on": "2025-04-22",
+   "source_url": "https://greshamhouse.com/wp-content/uploads/2025/04/GRID-Annual-Report-31-December-2024.pdf",
+   "source_sha256": "d2be6a448dd2be036f857fcb290451020053a053085304d4d7e489322d8256ec",
+   "basis": "realised",
+   "scope": "GRID portfolio",
+   "value": "59800",
+   "period_start": 2024,
+   "period_end": 2024,
+   "as_printed": "\u00a359.8k/ MW",
+   "cited_source": null
+  },
+  {
+   "figure_id": "988e91d21d50:5127",
+   "publisher": "Modo Energy",
+   "published_on": "2025-05-08",
+   "source_url": "https://modoenergy.com/research/en/battery-energy-storage-revenues-great-britain-gb-april-2025-benchmark-me-bess-",
+   "source_sha256": "988e91d21d50382ccdf2b313826fbadb6942df1284efdc0ce83c7e4477091236",
+   "basis": "realised",
+   "scope": "fleet",
+   "value": "50000",
+   "period_start": 2024,
+   "period_end": 2024,
+   "as_printed": "\u00a350k/MW/year",
+   "cited_source": null
+  },
+  {
+   "figure_id": "624e2c5a1fa2:14951",
+   "publisher": "GRID (fund RNS)",
+   "published_on": "2025-09-24",
+   "source_url": "https://greshamhouse.com/wp-content/uploads/2025/09/Gresham-House-Energy-Storage-Fund-Interim-Report-to-30-June-2025.pdf",
+   "source_sha256": "624e2c5a1fa2f09ce962e0f022d2d05ca78fa9ff92911772c14e48238819e3f3",
+   "basis": "forecast",
+   "scope": "2h",
+   "value": "90000",
+   "period_start": 2028,
+   "period_end": 2028,
+   "as_printed": "\u00a390k/MW/Yr",
+   "cited_source": "third-party"
+  },
+  {
+   "figure_id": "f72ecc586fc5:8588",
+   "publisher": "GRID (fund RNS)",
+   "published_on": "2026-04-21",
+   "source_url": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/full-year-results-to-31-december-2025/9529253",
+   "source_sha256": "f72ecc586fc5a699280d172fb36b480101b909fd782f7f39573bf60f8d52a272",
+   "basis": "realised",
+   "scope": "GRID portfolio",
+   "value": "68600",
+   "period_start": 2025,
+   "period_end": 2025,
+   "as_printed": "\u00a368.6k/MW/year",
+   "cited_source": null
+  },
+  {
+   "figure_id": "mean-12m:fleet:2025",
+   "publisher": "Modo Energy",
+   "published_on": "2026-01-08",
+   "source_url": "twelve pages, listed in evidence/months.json",
+   "source_sha256": "",
+   "basis": "realised",
+   "scope": "fleet",
+   "value": "67717",
+   "period_start": 2025,
+   "period_end": 2025,
+   "as_printed": "mean of twelve monthly figures as published",
+   "cited_source": null
+  }
+ ],
+ "same_day_duplicates": [
+  {
+   "figure_id": "5fe7faaa7374:8133",
+   "same_as": "624e2c5a1fa2:14951",
+   "url": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/half-year-results-and-capital-allocation-policy/9127370"
+  }
+ ],
+ "comparison_status": {
+  "in-year, never scored": 2,
+  "scope mismatch": 1,
+  "not yet scorable": 2
+ },
+ "propositions": {
+  "P-A": {
+   "proposition": "P-A",
+   "verdict": "undecided",
+   "scorable_vintages": 0,
+   "per_vintage": {},
+   "falsified_by": []
+  },
+  "P-B": {
+   "proposition": "P-B",
+   "threshold_pct": "20.0",
+   "verdict": "undecided",
+   "scorable_vintages": 0,
+   "exceeding": 0,
+   "per_vintage": {}
+  },
+  "P-C": {
+   "proposition": "P-C",
+   "verdict": "undecided",
+   "pairs": 0,
+   "down": 0,
+   "up": 0,
+   "unchanged": 0,
+   "revisions": []
+  },
+  "per_publisher": {
+   "GRID (fund RNS)": {
+    "P-A": {
+     "proposition": "P-A",
+     "verdict": "undecided",
+     "scorable_vintages": 0,
+     "per_vintage": {},
+     "falsified_by": []
+    },
+    "P-B": {
+     "proposition": "P-B",
+     "threshold_pct": "20.0",
+     "verdict": "undecided",
+     "scorable_vintages": 0,
+     "exceeding": 0,
+     "per_vintage": {}
+    },
+    "P-C": {
+     "proposition": "P-C",
+     "verdict": "undecided",
+     "pairs": 0,
+     "down": 0,
+     "up": 0,
+     "unchanged": 0,
+     "revisions": []
+    }
+   },
+   "HEIT (fund RNS)": {
+    "P-A": {
+     "proposition": "P-A",
+     "verdict": "undecided",
+     "scorable_vintages": 0,
+     "per_vintage": {},
+     "falsified_by": []
+    },
+    "P-B": {
+     "proposition": "P-B",
+     "threshold_pct": "20.0",
+     "verdict": "undecided",
+     "scorable_vintages": 0,
+     "exceeding": 0,
+     "per_vintage": {}
+    },
+    "P-C": {
+     "proposition": "P-C",
+     "verdict": "undecided",
+     "pairs": 0,
+     "down": 0,
+     "up": 0,
+     "unchanged": 0,
+     "revisions": []
+    }
+   },
+   "Modo Energy": {
+    "P-A": {
+     "proposition": "P-A",
+     "verdict": "undecided",
+     "scorable_vintages": 0,
+     "per_vintage": {},
+     "falsified_by": []
+    },
+    "P-B": {
+     "proposition": "P-B",
+     "threshold_pct": "20.0",
+     "verdict": "undecided",
+     "scorable_vintages": 0,
+     "exceeding": 0,
+     "per_vintage": {}
+    },
+    "P-C": {
+     "proposition": "P-C",
+     "verdict": "undecided",
+     "pairs": 0,
+     "down": 0,
+     "up": 0,
+     "unchanged": 0,
+     "revisions": []
+    }
+   }
+  }
+ },
+ "not_yet_scorable": [
+  {
+   "forecast_id": "8ba0c1fad2c1:2658",
+   "publisher": "HEIT (fund RNS)",
+   "published_on": "2023-05-23",
+   "url": "https://www.investegate.co.uk/announcement/rns/harmony-energy-income-trust--heit/trading-update-and-net-asset-value-/7538293",
+   "scope": "HEIT portfolio-excl-cm",
+   "period": "2023",
+   "status": "in-year, never scored",
+   "scorable_after": null,
+   "note": "published 2023-05-23, inside the period it covers"
+  },
+  {
+   "forecast_id": "179bc815001f:8386",
+   "publisher": "Modo Energy",
+   "published_on": "2024-07-24",
+   "url": "https://modoenergy.com/research/en/v31-gb-forecast-update-battery-energy-storage-modelling-changes-revenue-impact",
+   "scope": "2h",
+   "period": "2024",
+   "status": "in-year, never scored",
+   "scorable_after": null,
+   "note": "published 2024-07-24, inside the period it covers"
+  },
+  {
+   "forecast_id": "50bc6b26c454:7627",
+   "publisher": "Modo Energy",
+   "published_on": "2025-01-13",
+   "url": "https://modoenergy.com/research/en/jan-24-forecast-update-bess-revenues-intraday-prices-dispatch-battery-energy-storage-model",
+   "scope": "2h",
+   "period": "2026-2028",
+   "status": "not yet scorable",
+   "scorable_after": "2029-01-01",
+   "note": "no realised figure of scope '2h' for 2026, 2027, 2028"
+  },
+  {
+   "forecast_id": "624e2c5a1fa2:14951",
+   "publisher": "GRID (fund RNS)",
+   "published_on": "2025-09-24",
+   "url": "https://greshamhouse.com/wp-content/uploads/2025/09/Gresham-House-Energy-Storage-Fund-Interim-Report-to-30-June-2025.pdf",
+   "scope": "2h",
+   "period": "2028",
+   "status": "not yet scorable",
+   "scorable_after": "2029-01-01",
+   "note": "no realised figure of scope '2h' for 2028"
+  }
+ ],
+ "falsifiers": {
+  "F1": true,
+  "F2": {
+   "per_year_strings": 407,
+   "unexplained": 28,
+   "share_pct": "6.9",
+   "threshold_pct": "33.3",
+   "fires": false
+  },
+  "F4_restated_months": 4
+ },
+ "rows": {
+  "figures_appended": 0,
+  "comparisons_appended": 0,
+  "revisions_appended": 0,
+  "figures_total": 1210,
+  "comparisons_total": 5,
+  "revisions_total": 0
+ }
+}

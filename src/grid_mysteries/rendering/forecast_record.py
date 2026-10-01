@@ -66,21 +66,32 @@ def render_findings(
         "## The finding",
         "",
     ]
+    fund_cited = [
+        r
+        for r in reads
+        if r["outcome"] == "figure"
+        and r["figure"]["basis"] == "forecast"
+        and "fund" in r["figure"]["publisher"].lower()
+    ]
+    docs = summary.get("fund_documents", {})
     if not scored:
         after = sorted(c["scorable_after"] for c in pending if c["scorable_after"])
         first = after[0] if after else "no date"
         publishers = sorted({c["vintage"][0] for c in rows})
         L.append(
-            f"**The forecasts the market prices on cannot be checked in public before {first}.** "
+            "**The listed funds were valued on revenue curves. Their own documents "
+            f"({docs.get('nav', 0)} NAV announcements and {docs.get('prospectus', 0)} prospectus "
+            f"and placing documents among {docs.get('total', 0)} pinned, back to "
+            f"{docs.get('earliest', 'their earliest pages')}) cite those curves without a "
+            "per-year level anyone can score, and the forecaster's public pages carry only "
+            "in-year and horizon figures. Nobody who relied on these numbers can check them in "
+            f"public before {first}.** "
             f"Of the {len(vintages)} forecast vintage(s) the reading rules found on the public "
             f"pages of {', '.join(publishers)}, none is scorable today (F1): each covers a period "
             "that has not ended, or the year of its own publication (in-year, never scored), or "
-            "has no published outturn of its own scope. Per-year, per-duration forecast levels "
-            "and per-asset outturns are not on the public pages read here; what is public is "
-            "the fleet index by month, horizon averages, and the funds' own portfolio figures by "
-            "financial year. The per-asset cut is the paid product behind the public record. "
-            "The not-yet-scorable table below is the result of issue 1, with the date each "
-            "vintage becomes scorable."
+            "has no published outturn of its own scope. The per-asset cut is the paid product "
+            "behind the public record. The not-yet-scorable table below is the result of issue "
+            "1, with the date each vintage becomes scorable."
         )
     else:
         over = sum(
@@ -129,7 +140,51 @@ def render_findings(
             )
     else:
         L.append("None.")
+    L += ["", "## The fund-cited forecast figures (the only fund-side forecasts in existence)", ""]
+    duplicates = {d["figure_id"]: d for d in summary.get("same_day_duplicates", [])}
+    if fund_cited:
+        L += [
+            "| publisher | published | period | figure | scope | Capacity Market | cited source "
+            "| as printed | page |",
+            "|---|---|---|---|---|---|---|---|---|",
+        ]
+        for r in sorted(fund_cited, key=lambda r: (r["published_on"], r["figure"]["period_start"])):
+            f = r["figure"]
+            if f["figure_id"] in duplicates:
+                continue
+            also = [d["url"] for d in duplicates.values() if d["same_as"] == f["figure_id"]]
+            page_cell = f"`{r['page_url']}`" + (
+                " (the same figure in " + ", ".join(f"`{u}`" for u in also) + ", one publication)"
+                if also
+                else ""
+            )
+            cm = (
+                "excluded"
+                if f["scope"].endswith("-excl-cm")
+                else ("included" if f["scope"].endswith("-incl-cm") else "not stated")
+            )
+            L.append(
+                f"| {f['publisher']} | {r['published_on']} | {f['period_start']}"
+                + ("" if f["period_start"] == f["period_end"] else f" to {f['period_end']}")
+                + f" | {pounds(f['value'])} | {f['scope']} | {cm} | "
+                f"{f.get('cited_source') or 'source unnamed'} | {f['as_printed']} | "
+                f"{page_cell} |"
+            )
+    else:
+        L.append("None.")
     L += ["", "## Scope mismatches (both figures listed, nothing adjusted)", ""]
+    if mismatch:
+        L += [
+            "",
+            "A fund's assumption is for its own portfolio, under its own revenue definition "
+            "(here, excluding the Capacity Market), over its own assets and durations. The fleet "
+            "outturn is an index over every battery in Great Britain under the index's "
+            "methodology. The two differ in population, in what counts as revenue and in "
+            "duration mix, so forecast minus outturn would subtract one quantity from another "
+            "and the difference would be a number without a meaning. Both figures are printed; "
+            "the subtraction is not done.",
+            "",
+        ]
     if mismatch:
         L += [
             "| vintage | forecast scope | period | forecast | realised figure (its scope) | note |",
@@ -156,6 +211,32 @@ def render_findings(
                 f"| {f['publisher']} | {r['published_on']} | {f['scope']} | {f['period_start']} | "
                 f"{pounds(f['value'])} | {f['as_printed']} | `{r['page_url']}` |"
             )
+        by_key: dict[tuple[str, int], list[dict[str, Any]]] = {}
+        for r in annual:
+            f = r["figure"]
+            by_key.setdefault((f["scope"], f["period_start"]), []).append(r)
+        multi = {k: v for k, v in by_key.items() if len(v) > 1}
+        if multi:
+            L += [
+                "",
+                "More than one figure read for one scope and year (R-S3 reads one and names "
+                "the others):",
+                "",
+            ]
+            for (scope, year), rs in sorted(multi.items()):
+                read = max(rs, key=lambda r: (r["published_on"], r["figure"]["figure_id"]))
+                others = "; ".join(
+                    f"{pounds(x['figure']['value'])} ({x['figure']['as_printed']}, "
+                    f"{x['published_on']})"
+                    for x in rs
+                    if x["figure"]["figure_id"] != read["figure"]["figure_id"]
+                )
+                L.append(
+                    f"- {scope} {year}: read {pounds(read['figure']['value'])} "
+                    f"({read['figure']['as_printed']}); also read {others}. Where the figures "
+                    "differ by more than rounding, the sentences are in `evidence/figures.ndjson` "
+                    "and the difference is not resolved here."
+                )
     else:
         L.append("None.")
     L += ["", "### Monthly index figures read (R-R5), by scope and year (R-S4)", ""]
@@ -200,6 +281,43 @@ def render_findings(
             "No two consecutive vintages print a forecast for the same scope and period, so no "
             "revision pair exists; P-C is undecided."
         )
+    asset_words = (
+        "highest-earning",
+        "top-performing",
+        "top quartile",
+        "jamesfield",
+        "wishaw",
+        "coventry",
+        "capenhurst",
+        "one system",
+        "some batteries",
+    )
+    per_asset = [
+        r
+        for r in reads
+        if r["outcome"] == "declined"
+        and r["rule"] == "R-R3 a named asset or subset, not the population"
+        and "modoenergy.com" in r["page_url"]
+        and any(w in r["sentence"].lower() for w in asset_words)
+    ]
+    L += ["", "## Per-asset and subset figures on the public pages (listed, not read)", ""]
+    if per_asset:
+        L += [
+            "These strings name an asset or the best-performing part of the fleet. The rules read "
+            "none into any comparison; they are listed because they are public and an adviser may "
+            "want them. The other strings declined by the same rule (swap basis risk, uplift "
+            "ranges for individual batteries) stay in `evidence/figures.ndjson` under that rule.",
+            "",
+            "| published | as printed | sentence | page |",
+            "|---|---|---|---|",
+        ]
+        for r in sorted(per_asset, key=lambda r: r["published_on"] or ""):
+            L.append(
+                f"| {r['published_on']} | {r['as_printed']} | "
+                f"{r['sentence'][:200].replace('|', '/')} | `{r['page_url']}` |"
+            )
+    else:
+        L.append("None.")
     L += ["", "## What the reading rules did with every figure-looking string", ""]
     tally = Counter(r["rule"] for r in reads)
     L += ["| rule | strings |", "|---|---|"]

@@ -1,0 +1,269 @@
+{
+ "rule_version": "b8e6d53b",
+ "detail": [
+  {
+   "scope": "1h",
+   "year": 2024,
+   "months_read": [
+    2
+   ],
+   "complete": false,
+   "values": [
+    "7000"
+   ],
+   "pages": [
+    "https://modoenergy.com/research/en/q1-2024-roundup-gb-battery-energy-storage-revenues-balancing-mechanism-ancillary-services"
+   ],
+   "mean": null
+  },
+  {
+   "scope": "fleet",
+   "year": 2023,
+   "months_read": [
+    4
+   ],
+   "complete": false,
+   "values": [
+    "58146"
+   ],
+   "pages": [
+    "https://modoenergy.com/research/en/battery-energy-storage-revenue-benchmark-april-2023"
+   ],
+   "mean": null
+  },
+  {
+   "scope": "fleet",
+   "year": 2024,
+   "months_read": [
+    2,
+    3,
+    4,
+    5,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12
+   ],
+   "complete": false,
+   "values": [
+    "22600",
+    "31600",
+    "43000",
+    "39000",
+    "39000",
+    "46000",
+    "37500",
+    "58000",
+    "52000",
+    "84000"
+   ],
+   "pages": [
+    "https://modoenergy.com/research/en/battery-energy-storage-revenues-february-2024-balancing-mechanism-dispatch-rates",
+    "https://modoenergy.com/research/en/gb-benchmark-index-battery-energy-storage-march-2024-revenue",
+    "https://modoenergy.com/research/en/gb-benchmark-index-battery-energy-storage-april-2024-revenue",
+    "https://modoenergy.com/research/en/battery-energy-storage-revenues-may-2024-balancing-mechanism-gb-benchmark",
+    "https://modoenergy.com/research/en/gb-battery-energy-storage-operations-july-24-benchmark-revenues-balancing-reserve",
+    "https://modoenergy.com/research/en/gb-battery-energy-storage-revenue-august-2024-benchmark-balancing-mechanism",
+    "https://modoenergy.com/research/en/gb-battery-energy-storage-operations-september-2024-benchmark-balancing-mechanism",
+    "https://modoenergy.com/research/en/battery-energy-storage-research-roundup-great-britain-october-2024-revenues-buildout-forecast-capex-winter",
+    "https://modoenergy.com/research/en/battery-energy-storage-revenue-operations-gb-november-2024-great-britain-balancing-mechanism-strategy-wholesale-dynamic-regulation",
+    "https://modoenergy.com/research/en/battery-energy-storage-revenues-december-benchmark-gb-2024-quick-reserve"
+   ],
+   "mean": null
+  },
+  {
+   "scope": "fleet",
+   "year": 2025,
+   "months_read": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12
+   ],
+   "complete": true,
+   "values": [
+    "79000",
+    "77000",
+    "78000",
+    "71000",
+    "63500",
+    "76000",
+    "55000",
+    "60100",
+    "70000",
+    "77000",
+    "59000",
+    "47000"
+   ],
+   "pages": [
+    "https://modoenergy.com/research/en/battery-energy-storage-revenues-operations-january-2025-scotland-balancing-mechanism",
+    "https://modoenergy.com/research/en/battery-energy-storage-revenues-february-2025-gb-benchmark-balancing-mechanism-record",
+    "https://modoenergy.com/research/en/battery-energy-storage-revenues-gb-march-2025-benchmark-balancing-mechanism-solar-generation",
+    "https://modoenergy.com/research/en/battery-energy-storage-revenues-great-britain-gb-april-2025-benchmark-me-bess-",
+    "https://modoenergy.com/research/en/me-bess-gb-battery-energy-storage-revenues-may-2025-balancing-mechanism",
+    "https://modoenergy.com/research/en/battery-energy-storage-revenues-gb-benchmark-june-2025-negative-prices",
+    "https://modoenergy.com/research/en/battery-energy-storage-revenues-july-2025-eight-month-low-wholesale-balancing-mechanism",
+    "https://modoenergy.com/research/en/battery-energy-storage-revenues-benchmark-gb-august-balancing-mechanism-transmsission-constraints-2025",
+    "https://modoenergy.com/research/en/gb-battery-energy-storage-derisking-returns-revenues-great-britain-offtake-ldes-p462-q3-2025",
+    "https://modoenergy.com/research/en/battery-energy-storage-revenues-gb-october-2025-record-balancing-mechanism-dispatch-rates",
+    "https://modoenergy.com/research/en/me-bess-gb-battery-energy-storage-revenues-november-2025-balancing-mechanism-gas-wind",
+    "https://modoenergy.com/research/en/me-bess-gb-battery-energy-storage-revenues-december-2025-low-demand-christmas"
+   ],
+   "mean": "67717"
+  },
+  {
+   "scope": "fleet",
+   "year": 2026,
+   "months_read": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8
+   ],
+   "complete": false,
+   "values": [
+    "52000",
+    "41000",
+    "70000",
+    "69000",
+    "44000",
+    "70000",
+    "63000",
+    "56000"
+   ],
+   "pages": [
+    "https://modoenergy.com/research/en/me-bess-gb-revenues-january-2026-balancing-mechanism-wholesale-prices-gas-carbon",
+    "https://modoenergy.com/research/en/me-bess-gb-revenues-february-2026-wholesale-battery-energy-storage-balancing-mechanism",
+    "https://modoenergy.com/research/en/me-bess-gb-revenues-rise-march-2026-balancing-mechanism-record-gas-prices-",
+    "https://modoenergy.com/research/en/gb-bess-revenues-april-2026-balancing-mechanism-wholesale-negative-prices-solar-record",
+    "https://modoenergy.com/research/en/gb-bess-revenues-may-2026-balancing-mechanism-negative-wholesale-spreads-wind",
+    "https://modoenergy.com/research/en/gb-bess-revenues-june-2026-wholesale-volatility-heatwave-negative-prices",
+    "https://modoenergy.com/research/en/gb-bess-revenues-july-2026-wholesale-record-balancing-mechanism-bid-volumes",
+    "https://modoenergy.com/research/en/gb-bess-revenues-august-2026-balancing-mechanism-offer-dispatch-rate-skips"
+   ],
+   "mean": null
+  },
+  {
+   "scope": "fleet-incl-cm",
+   "year": 2024,
+   "months_read": [
+    4
+   ],
+   "complete": false,
+   "values": [
+    "54000"
+   ],
+   "pages": [
+    "https://modoenergy.com/research/en/gb-benchmark-index-battery-energy-storage-april-2024-revenue"
+   ],
+   "mean": null
+  }
+ ],
+ "restated": [
+  {
+   "scope": "fleet",
+   "year": 2024,
+   "month": 10,
+   "read": "58000",
+   "read_from": "https://modoenergy.com/research/en/battery-energy-storage-research-roundup-great-britain-october-2024-revenues-buildout-forecast-capex-winter",
+   "others": [
+    {
+     "value": "50300",
+     "page": "https://modoenergy.com/research/en/battery-energy-storage-revenue-operations-gb-october-2024-balancing-mechanism-strategy",
+     "published_on": "2024-11-19"
+    },
+    {
+     "value": "58000",
+     "page": "https://modoenergy.com/research/en/battery-energy-storage-revenues-october-2024-gb-high-power-prices",
+     "published_on": "2024-11-06"
+    }
+   ]
+  },
+  {
+   "scope": "fleet",
+   "year": 2025,
+   "month": 1,
+   "read": "79000",
+   "read_from": "https://modoenergy.com/research/en/battery-energy-storage-revenues-operations-january-2025-scotland-balancing-mechanism",
+   "others": [
+    {
+     "value": "88000",
+     "page": "https://modoenergy.com/research/en/battery-energy-storage-revenues-january-2025-benchmark-gb-quick-reserve",
+     "published_on": "2025-02-07"
+    },
+    {
+     "value": "79000",
+     "page": "https://modoenergy.com/research/en/battery-energy-storage-revenues-operations-january-2025-scotland-balancing-mechanism",
+     "published_on": "2025-02-28"
+    },
+    {
+     "value": "88000",
+     "page": "https://modoenergy.com/research/en/gb-research-roundup-january-2025-battery-energy-storage-great-britain-revenues-markets-wholesale-capacity-market-balancing-mechanism",
+     "published_on": "2025-02-14"
+    },
+    {
+     "value": "88000",
+     "page": "https://modoenergy.com/research/en/gb-research-roundup-january-2025-battery-energy-storage-great-britain-revenues-markets-wholesale-capacity-market-balancing-mechanism",
+     "published_on": "2025-02-14"
+    }
+   ]
+  },
+  {
+   "scope": "fleet",
+   "year": 2024,
+   "month": 9,
+   "read": "37500",
+   "read_from": "https://modoenergy.com/research/en/gb-battery-energy-storage-operations-september-2024-benchmark-balancing-mechanism",
+   "others": [
+    {
+     "value": "48000",
+     "page": "https://modoenergy.com/research/en/gb-benchmarking-pro-battery-energy-storage-revenues-bess-index-september-2024",
+     "published_on": "2024-10-04"
+    },
+    {
+     "value": "48000",
+     "page": "https://modoenergy.com/research/en/gb-benchmarking-pro-battery-energy-storage-revenues-bess-index-september-2024",
+     "published_on": "2024-10-04"
+    }
+   ]
+  },
+  {
+   "scope": "fleet",
+   "year": 2024,
+   "month": 8,
+   "read": "46000",
+   "read_from": "https://modoenergy.com/research/en/gb-battery-energy-storage-revenue-august-2024-benchmark-balancing-mechanism",
+   "others": [
+    {
+     "value": "46000",
+     "page": "https://modoenergy.com/research/en/gb-battery-energy-storage-revenue-august-2024-benchmark-balancing-mechanism",
+     "published_on": "2024-09-11"
+    },
+    {
+     "value": "56000",
+     "page": "https://modoenergy.com/research/en/gb-battery-energy-storage-revenues-benchmark-bess-index-august-2024",
+     "published_on": "2024-09-04"
+    },
+    {
+     "value": "56000",
+     "page": "https://modoenergy.com/research/en/gb-battery-energy-storage-revenues-benchmark-bess-index-august-2024",
+     "published_on": "2024-09-04"
+    }
+   ]
+  }
+ ]
+}

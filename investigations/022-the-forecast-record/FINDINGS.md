@@ -1,6 +1,6 @@
 # 022 — The Forecast Record, issue 1: findings
 
-*Declaration `DECLARATION.md`, SHA-256 `b8e6d53bf8e2529ac6caeaf419eb419b76c5f9f12927d647778f382cdd19d2e5`, frozen and witnessed before any figure; acquisition plan `ACQUISITION.md`, SHA-256 `962cb9b5db8d33a7ae14fe3b516dd5f999936911040316a4fcc03e8aeeb0e188`; rule version `b8e6d53b.3d937633`; run 2026-10-01, computed 2026-10-01T17:08:58+00:00. Every figure below is as published by the publisher named, on the date named, and read from the pinned page whose digest the evidence carries. Nothing here attributes an error to a cause or names an optimiser.*
+*Declaration `DECLARATION.md`, SHA-256 `b8e6d53bf8e2529ac6caeaf419eb419b76c5f9f12927d647778f382cdd19d2e5`, frozen and witnessed before any figure; acquisition plan `ACQUISITION.md`, SHA-256 `962cb9b5db8d33a7ae14fe3b516dd5f999936911040316a4fcc03e8aeeb0e188`; rule version `b8e6d53b.3d937633.39e29f9f`; run 2026-10-01, computed 2026-10-01T17:45:03+00:00. Every figure below is as published by the publisher named, on the date named, and read from the pinned page whose digest the evidence carries. Nothing here attributes an error to a cause or names an optimiser.*
 
 ## The mystery
 
@@ -8,11 +8,11 @@
 
 ## The sentence the issue exists for
 
-**HEIT assumed £123,000 per MW per year for calendar 2024 (HEIT portfolio-excl-cm; published 2023-05-23). Its own outturn for the year to 2024-10-31 was £97,800 per MW per year (HEIT portfolio).** The fund's own outturn for the year to 2024-10-31 against its assumption for calendar 2024: 10 of 12 months overlap; both printed, nothing adjusted; the forecast's scope is 'HEIT portfolio-excl-cm' and the outturn's 'HEIT portfolio' (a Capacity Market qualifier the outturn does not state is not assumed); the fleet outturn for 2024 is 50000 (a scope mismatch).
+**HEIT assumed £123,000 per MW per year for calendar 2024, excluding the Capacity Market (published 2023-05-23), and earned £58,200 per MW per year in its own year to 2024-10-31, a period that overlaps the assumed one by 10 of twelve months and is reported under a revenue definition that does not state that qualifier, so the two figures are printed side by side and not subtracted.** Source: assumption as published by HEIT on 2023-05-23 (`https://www.investegate.co.uk/announcement/rns/harmony-energy-income-trust--heit/trading-update-and-net-asset-value-/7538293`); outturn as published by HEIT in its results for that year (figure `a19c8ce138ef:11186` in `evidence/figures.ndjson`). The fund's own outturn for the year to 2024-10-31 against its assumption for calendar 2024: 10 of 12 months overlap; both printed, nothing adjusted; the forecast's scope is 'HEIT portfolio-excl-cm' and the outturn's 'HEIT portfolio' (a Capacity Market qualifier the outturn does not state is not assumed); the fleet outturn for 2024 is 50000 (a scope mismatch).
 
 | publisher | assumption (published, period, scope) | figure | the fund's own outturn (period, scope) | figure | overlap | note |
 |---|---|---|---|---|---|---|
-| HEIT (fund RNS) | 2023-05-23, calendar 2024, HEIT portfolio-excl-cm | £123,000 | year to 2024-10-31, HEIT portfolio | £97,800 | 10 of 12 months overlap | both printed, nothing adjusted |
+| HEIT (fund RNS) | 2023-05-23, calendar 2024, HEIT portfolio-excl-cm | £123,000 | year to 2024-10-31, HEIT portfolio | £58,200 | 10 of 12 months overlap | both printed, nothing adjusted |
 
 ## The finding
 
@@ -26,7 +26,7 @@ None.
 
 | vintage | scope | period | forecast | status | scorable after | note |
 |---|---|---|---|---|---|---|
-| HEIT (fund RNS), 2023-05-23, `https://www.investegate.co.uk/announcement/rns/harmony-energy-income-trust--heit/trading-update-and-net-asset-value-/7538293` | HEIT portfolio-excl-cm | 2023 | £121,000 | in-year, never scored | - | published 2023-05-23, inside the period it covers; the fund's own outturn for the year to 2024-10-31 is 97800 (2 of 12 months overlap), listed, not compared |
+| HEIT (fund RNS), 2023-05-23, `https://www.investegate.co.uk/announcement/rns/harmony-energy-income-trust--heit/trading-update-and-net-asset-value-/7538293` | HEIT portfolio-excl-cm | 2023 | £121,000 | in-year, never scored | - | published 2023-05-23, inside the period it covers; the fund's own outturn for the year to 2023-10-31 is 67000 (10 of 12 months overlap), listed, not compared |
 | Modo Energy, 2024-07-24, `https://modoenergy.com/research/en/v31-gb-forecast-update-battery-energy-storage-modelling-changes-revenue-impact` | 2h | 2024 | £81,000 | in-year, never scored | - | published 2024-07-24, inside the period it covers |
 | Modo Energy, 2025-01-13, `https://modoenergy.com/research/en/jan-24-forecast-update-bess-revenues-intraday-prices-dispatch-battery-energy-storage-model` | 2h | 2026 to 2028 | £87,000 | not yet scorable | 2029-01-01 | no realised figure of scope '2h' for 2026, 2027, 2028 |
 | GRID (fund RNS), 2025-09-24, `https://greshamhouse.com/wp-content/uploads/2025/09/Gresham-House-Energy-Storage-Fund-Interim-Report-to-30-June-2025.pdf` | 2h | 2028 | £90,000 | not yet scorable | 2029-01-01 | no realised figure of scope '2h' for 2028 |
@@ -51,16 +51,12 @@ None.
 |---|---|---|---|---|---|---|
 | GSF (fund RNS) | 2023-07-17 | GSF portfolio | 2022 | £157,000 | £157,000/MW/yr | `https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/final-results/7635539` |
 | Modo Energy | 2024-01-29 | fleet | 2023 | £51,000 | £51k/MW/year | `https://modoenergy.com/research/en/capacity-market-revenues-battery-energy-storage-auction-derating-factors-december-2023` |
+| HEIT (fund RNS) | 2024-02-28 | HEIT portfolio | year to 2023-10-31 | £67,000 | £67k / MW/Yr | `https://www.investegate.co.uk/announcement/rns/harmony-energy-income-trust--heit/results-for-financial-year-ended-31-october-2023/8059687` |
 | Modo Energy | 2025-02-18 | fleet | 2024 | £50,000 | £50k/MW/year | `https://modoenergy.com/research/en/battery-revenues-operational-strategy-2024-gb-benchmark-year-review` |
-| HEIT (fund RNS) | 2025-02-26 | HEIT portfolio | year to 2024-10-31 | £97,800 | £97.8k/MW/Yr | `https://www.investegate.co.uk/announcement/rns/harmony-energy-income-trust--heit/replacement-net-asset-value-and-trading-update/8753297` |
-| HEIT (fund RNS) | 2025-02-26 | HEIT portfolio | year to 2024-10-31 | £97,800 | £97.8k/MW/Yr | `https://www.investegate.co.uk/announcement/rns/harmony-energy-income-trust--heit/replacement-net-asset-value-and-trading-update/8753297` |
-| HEIT (fund RNS) | 2025-02-26 | HEIT portfolio | year to 2024-10-31 | £62,400 | £62.4k/MW/Yr | `https://www.investegate.co.uk/announcement/rns/harmony-energy-income-trust--heit/replacement-net-asset-value-and-trading-update/8753297` |
-| HEIT (fund RNS) | 2025-02-26 | HEIT portfolio | year to 2024-10-31 | £97,800 | £97.8k/MW/Yr | `https://www.investegate.co.uk/announcement/rns/harmony-energy-income-trust--heit/net-asset-value-and-trading-update/8752688` |
-| HEIT (fund RNS) | 2025-02-26 | HEIT portfolio | year to 2024-10-31 | £97,800 | £97.8k/MW/Yr | `https://www.investegate.co.uk/announcement/rns/harmony-energy-income-trust--heit/net-asset-value-and-trading-update/8752688` |
-| HEIT (fund RNS) | 2025-02-26 | HEIT portfolio | year to 2024-10-31 | £62,400 | £62.4k/MW/Yr | `https://www.investegate.co.uk/announcement/rns/harmony-energy-income-trust--heit/net-asset-value-and-trading-update/8752688` |
 | HEIT (fund RNS) | 2025-02-26 | HEIT portfolio | year to 2024-10-31 | £58,200 | £58.2k/MW/Yr | `https://www.investegate.co.uk/announcement/rns/harmony-energy-income-trust--heit/results-for-financial-year-ended-31-october-2024/8752544` |
 | GRID (fund RNS) | 2025-04-22 | GRID portfolio | 2024 | £59,800 | £59.8k/ MW | `https://greshamhouse.com/wp-content/uploads/2025/04/GRID-Annual-Report-31-December-2024.pdf` |
 | Modo Energy | 2025-05-08 | fleet | 2024 | £50,000 | £50k/MW/year | `https://modoenergy.com/research/en/battery-energy-storage-revenues-great-britain-gb-april-2025-benchmark-me-bess-` |
+| GSF (fund RNS) | 2025-07-17 | GSF portfolio | year to 2025-03-31 | £86,000 | £86,000 per MW/yr | `https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/final-results/8983474` |
 | GRID (fund RNS) | 2026-04-21 | GRID portfolio | 2025 | £68,600 | £68.6k/MW/year | `https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/full-year-results-to-31-december-2025/9529253` |
 
 More than one figure read for one scope and year (R-S3 reads one and names the others):
@@ -114,11 +110,11 @@ These strings name an asset or the best-performing part of the fleet. The rules 
 | R-R3 a revenue component, not the total | 120 |
 | R-R0 JSON payload | 93 |
 | R-R5 monthly figure | 57 |
-| R-R5 period not stated | 51 |
+| R-R5 period not stated | 44 |
 | R-R0 title or navigation duplicate | 42 |
 | R-R4 potential, required, contracted or assumed, not a forecast or an outturn | 39 |
+| R-R5 a partial period (half, quarter, season or to date) | 39 |
 | R-R0 PDF sentence glued to page furniture | 39 |
-| R-R5 a partial period (half, quarter, season or to date) | 31 |
 | R-R3 a named asset or subset, not the population | 22 |
 | R-R2 a change, not a level | 21 |
 | R-R6 published before 2021 | 20 |
@@ -129,9 +125,10 @@ These strings name an asset or the best-performing part of the fleet. The rules 
 | R-R5 a day, not a month or a year | 11 |
 | R-R5 a fund figure dated by a month, not a calendar year | 10 |
 | R-R5 a high or a low, not a period figure | 9 |
-| R-R5 financial-year outturn, basis realised (amendment 2) | 7 |
 | R-R6 published before 2023 | 6 |
 | R-R5 annual figure, basis realised | 6 |
+| R-R5 a fund figure for a stated period that is not a year (listed) | 4 |
+| R-R5 financial-year outturn, basis realised (amendment 2) | 3 |
 | R-R7 the page prints figures for its own month that differ by more than rounding; none read | 2 |
 | R-R5 the year of publication, not complete | 2 |
 | R-R5 annual figure, basis forecast, cited by the fund (third-party) | 2 |
@@ -139,7 +136,6 @@ These strings name an asset or the best-performing part of the fleet. The rules 
 | R-R7 the same month's figure, printed less precisely than another string on the page | 1 |
 | R-R5 horizon figure, basis forecast | 1 |
 | R-R5 endyear figure, basis forecast | 1 |
-| R-R5 a fund figure for a stated period that is not a year (listed) | 1 |
 | R-R2 a multiplier other than k | 1 |
 
 F1 (no scorable vintage): fires. F2 (the rules cannot read the corpus): silent, 24 of 407 per-year strings on English pages declined for a period or population not stated (5.9 %, threshold 33.3 %). F3 (a committed row would change): refused before writing, so silent by construction. F4 (the realised side restates itself beyond rounding): 4 month(s).
@@ -163,4 +159,4 @@ That any forecast was wrong, careless or interested; that any error had a cause;
 
 ## The record
 
-`evidence/figures.ndjson`, `evidence/comparisons.ndjson`, `evidence/revisions.ndjson` and `evidence/months.json`, every row under rule version `b8e6d53b.3d937633` (amendment 2, SHA-256 `3d937633926a194d904e150f69e5ca877c83c4494949154fd63254d5a765d94d`; the rows under `b8e6d53b` remain in the evidence as computed); the pinned pages by digest in `evidence/pages-manifest.json` and `evidence/rns-manifest.json`; the schema reports under `archives/modo-pages-022/` (SHA-256 `4bbe6d793e97e73777de7e2e3c72dbf53dd33ed1440bf4f68aff1f79ac281ab6`) and `archives/rns-grid-022/` (SHA-256 `bddd7be988d66e2eadd791ce318972ffa52197c784866a8b53b32d03e9560e25`); `scripts/check`.
+`evidence/figures.ndjson`, `evidence/comparisons.ndjson`, `evidence/revisions.ndjson` and `evidence/months.json`, every row under rule version `b8e6d53b.3d937633.39e29f9f` (amendments 2 SHA-256 `3d937633926a194d904e150f69e5ca877c83c4494949154fd63254d5a765d94d`, 3 SHA-256 `39e29f9f547b9eee4bf9c22738f40416173fa08f6f8522fa2f512fdd8f911949`; the rows under `b8e6d53b.3d937633` and its predecessors remain in the evidence as computed); the pinned pages by digest in `evidence/pages-manifest.json` and `evidence/rns-manifest.json`; the schema reports under `archives/modo-pages-022/` (SHA-256 `4bbe6d793e97e73777de7e2e3c72dbf53dd33ed1440bf4f68aff1f79ac281ab6`) and `archives/rns-grid-022/` (SHA-256 `bddd7be988d66e2eadd791ce318972ffa52197c784866a8b53b32d03e9560e25`); `scripts/check`.

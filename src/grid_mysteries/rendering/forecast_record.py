@@ -6,6 +6,7 @@ The not-yet-scorable table is a result, not a gap. No optimiser is
 named and no cause is attributed.
 """
 
+import re
 from collections import Counter
 from decimal import Decimal
 from typing import Any
@@ -69,11 +70,31 @@ def render_findings(
         L += ["## The sentence the issue exists for", ""]
         for c in period_mismatch:
             publisher, published_on, url = c["vintage"]
+            fund = publisher.split(" (")[0]
+            m = re.search(r"(\d+) of 12 months overlap", c["note"])
+            overlap = m.group(1) if m else "an unstated number of"
+            if c["scope"].endswith("-excl-cm"):
+                qualifier = "excluding the Capacity Market"
+            elif c["scope"].endswith("-incl-cm"):
+                qualifier = "including the Capacity Market"
+            else:
+                qualifier = "with no Capacity Market qualifier stated"
+            outturn_q = (
+                "under a revenue definition that does not state that qualifier"
+                if c["realised_scope"] != c["scope"]
+                else "under the same definition"
+            )
             L.append(
-                f"**{publisher.split(' (')[0]} assumed {pounds(c['forecast'])} per MW per year "
-                f"for calendar {period_of(c)} ({c['scope']}; published {published_on}). Its own "
-                f"outturn for the {c['realised_period']} was {pounds(c['realised'])} per MW per "
-                f"year ({c['realised_scope']}).** {c['note'][0].upper() + c['note'][1:]}."
+                f"**{fund} assumed {pounds(c['forecast'])} per MW per year for calendar "
+                f"{period_of(c)}, {qualifier} (published {published_on}), and earned "
+                f"{pounds(c['realised'])} per MW per year in its own {c['realised_period']}, a "
+                f"period that overlaps the assumed one by {overlap} of twelve months and is "
+                f"reported {outturn_q}, so the two figures are printed side by side and not "
+                "subtracted.** "
+                f"Source: assumption as published by {fund} on {published_on} (`{url}`); outturn "
+                f"as published by {fund} in its results for that year (figure "
+                f"`{', '.join(c['realised_ids'])}` in `evidence/figures.ndjson`). "
+                f"{c['note'][0].upper() + c['note'][1:]}."
             )
             L.append("")
         L += [
@@ -401,9 +422,14 @@ def render_findings(
         "`evidence/figures.ndjson`, `evidence/comparisons.ndjson`, `evidence/revisions.ndjson` "
         f"and `evidence/months.json`, every row under rule version `{rv}`"
         + (
-            f" (amendment 2, SHA-256 `{summary['amendment_2_sha256']}`; the rows under "
-            f"`{summary['supersedes_rule_version']}` remain in the evidence as computed)"
-            if summary.get("amendment_2_sha256")
+            " (amendments "
+            + ", ".join(
+                f"{n} SHA-256 `{d}`"
+                for n, d in enumerate(summary.get("amendments_sha256") or [], start=2)
+            )
+            + f"; the rows under `{summary['supersedes_rule_version']}` and its predecessors "
+            "remain in the evidence as computed)"
+            if summary.get("amendments_sha256")
             else ""
         )
         + "; the pinned pages by "

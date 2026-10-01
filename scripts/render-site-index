@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# Render the research index at site/index.html (research.a115.co.uk's root)
+# from src/grid_mysteries/rendering/research_index.py, and commit the result.
+set -euo pipefail
+cd "$(dirname "$0")/.."
+export PATH="${HOME}/.local/bin:${PATH}"
+uv run python -c '
+from pathlib import Path
+from grid_mysteries.rendering.research_index import render_index
+Path("site/index.html").write_text(render_index())
+print("rendered site/index.html")
+'

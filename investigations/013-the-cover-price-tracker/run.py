@@ -44,7 +44,9 @@ DECLARATION = HERE / "DECLARATION.md"
 DECLARATION_T4 = HERE / "DECLARATION-T4.md"
 TRACKER_JSON = EVIDENCE / "tracker.json"
 TRACKER_MD = HERE / "TRACKER.md"
-SITE_INDEX = REPO_ROOT / "site" / "index.html"
+#: The public page, under its own path since the root became the research
+#: index (2026-10-01); the bytes of the page do not depend on its path.
+SITE_INDEX = REPO_ROOT / "site" / "balancing-bill" / "index.html"
 RAW_ELEXON = REPO_ROOT / "data" / "raw" / "elexon" / "013"
 RAW_NESO = REPO_ROOT / "data" / "raw" / "neso" / "013"
 SEED_EVIDENCE = REPO_ROOT / "investigations" / "012-the-record-day" / "evidence"
@@ -445,8 +447,8 @@ METHOD = """\
 *Public name: **The Balancing Bill**, who got paid to keep Britain's grid
 balanced, day by day. The investigation's id, folder, declaration, module and
 evidence paths keep their names; only the render, the page and the drafts use
-the public name. The page at `site/index.html` is a pure function of
-`evidence/tracker.json`.*
+the public name. The page at `site/balancing-bill/index.html` is a pure
+function of `evidence/tracker.json`.*
 
 **One number, on a schedule.** For every GB settlement date from
 2026-09-09, the gross money paid out to units in the Balancing Mechanism

@@ -470,7 +470,13 @@ def load_evidence() -> tuple[dict[str, Any], list[dict[str, Any]], list[dict[str
 
 
 def render() -> None:
-    FINDINGS.write_text(page.render_findings(*load_evidence()))
+    """FINDINGS.md from the committed evidence and the committed schema report
+    (the one the summary names, or the render refuses)."""
+    summary, comparisons, groups = load_evidence()
+    if sha(SCHEMA_REPORT) != summary["schema_report_sha256"]:
+        raise SystemExit("refusing: the schema report on disk is not the one the run cites")
+    stability = json.loads(SCHEMA_REPORT.read_text())["grouping_key_stability"]
+    FINDINGS.write_text(page.render_findings(summary, comparisons, groups, stability))
     print(f"rendered {FINDINGS.relative_to(REPO_ROOT)}")
 
 

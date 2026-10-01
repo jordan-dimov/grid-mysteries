@@ -555,10 +555,22 @@ def evidence_fixture():
     return summary, comparisons, groups
 
 
+STABILITY = {
+    "copies_with_a_change": [
+        {"t_public": "2025-07-01", "plant_type_changed": 60, "host_to_changed": 2},
+        {"t_public": "2025-03-21", "plant_type_changed": 21, "host_to_changed": 4},
+        {"t_public": "2023-05-05", "plant_type_changed": 9, "host_to_changed": 0},
+    ]
+}
+
+
 def test_the_page_is_a_pure_function_of_the_evidence_and_keeps_the_framing_rules():
     summary, comparisons, groups = evidence_fixture()
-    text = page.render_findings(summary, comparisons, groups)
-    assert text == page.render_findings(summary, comparisons, groups)
+    text = page.render_findings(summary, comparisons, groups, STABILITY)
+    assert text == page.render_findings(summary, comparisons, groups, STABILITY)
+    assert "## Conclusion" in text and "P-A **holds**" in text
+    # The key-changed section names the copies inside the window only.
+    assert "2025-07-01 (60)" in text and "2023-05-05" not in text
     assert "promise" not in text.replace("never a promise", "")
     # The cause split appears beside every figure section: the headline, both
     # year tables and the storage table.

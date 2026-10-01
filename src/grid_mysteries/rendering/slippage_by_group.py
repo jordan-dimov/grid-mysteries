@@ -88,17 +88,19 @@ def dimension_label(dimension: str) -> str:
 
 def group_table(groups: Rows, label: str) -> list[str]:
     lines = [
-        f"| {label} | Dated project-stages (later / earlier / unchanged) | "
+        f"| {label} | Units at baseline / matched | "
+        "Dated project-stages (later / earlier / unchanged) | "
         "Dated capacity, MW | Share of capacity | Net, MW-years (014 v2) | Determined | "
         "Undetermined (v2 / content) | Share of net | Share of determined | "
         "Concentration, points | Thin (R7) |",
-        "|---|---|---|---|---|---|---|---|---|---|---|",
+        "|---|---|---|---|---|---|---|---|---|---|---|---|",
     ]
     for g in groups:
         und = g["undetermined"]
         thin = BLANK if g["thin"] is None else ("yes" if g["thin"] else "no")
         lines.append(
-            f"| {g['group']} | {g['dated_both']:,} ({g['later']} / {g['earlier']} / "
+            f"| {g['group']} | {g['units_baseline']:,} / {g['matched']:,} | "
+            f"{g['dated_both']:,} ({g['later']} / {g['earlier']} / "
             f"{g['unchanged']}) | {mw(g['capacity_baseline_mw'])} | "
             f"{pct(g['share_of_capacity_percent'])} | {whole(g['total'][RULE_V2])} | "
             f"{whole(g['determined'])} | {whole(und[RULE_V2])} / {whole(und[RULE_CONTENT])} | "
@@ -280,6 +282,125 @@ def proposition_lines(props: dict[str, Any]) -> list[str]:
     ]
 
 
+# -------------------------------------------------------------- conclusion
+
+
+def conclusion(
+    summary: dict[str, Any], hh: dict[str, Any], hp: dict[str, Any], groups_by_key: dict[str, Rows]
+) -> list[str]:
+    """Composed from the propositions and the headline window's rows; no
+    figure is typed here."""
+    props = summary["propositions"]
+    pa, pb, pc = props["P-A"], props["P-B"], props["P-C"]
+    hosts = "; ".join(
+        f"{g['group']} {pct(g['share_of_capacity_percent'])} of dated capacity and "
+        f"{pct(g['share_of_net_percent'])} of net ({pts(g['concentration_points'])} points"
+        + (", thin" if g["thin"] else "")
+        + ")"
+        for g in groups_by_key[hh["key"]]
+        if not g["bucket"] and Decimal(g["share_of_capacity_percent"] or 0) > 0
+    )
+    plants = [g for g in groups_by_key[hp["key"]] if not g["bucket"]][:4]
+    largest = "; ".join(
+        f"{g['group']} {pct(g['share_of_capacity_percent'])} of capacity and "
+        f"{pct(g['share_of_net_percent'])} of net ({pts(g['concentration_points'])} points"
+        + (", thin" if g["thin"] else "")
+        + ")"
+        for g in plants
+    )
+    inc, alone = pc["including_compounds"], pc["storage_alone"]
+    det_points = (
+        Decimal(pc["share_of_determined_percent"]) - Decimal(inc["share_of_capacity_percent"])
+        if pc["share_of_determined_percent"] is not None
+        and inc["share_of_capacity_percent"] is not None
+        else None
+    )
+    changed = next((g for g in groups_by_key[hp["key"]] if g["group"] == "key changed"), None)
+    changed_share = changed["share_of_capacity_percent"] if changed else "0.0"
+    return [
+        "## Conclusion",
+        "",
+        f"Over the headline window, {window_label(hh)}, under this reading and with the 006 "
+        "cause split standing unrevised:",
+        "",
+        f"- **By area**, net movement is spread close to dated capacity: {hosts}. "
+        f"P-A **{pa['verdict']}**; P-B **{pb['verdict']}**.",
+        f"- **By technology**, the largest groups are {largest}. Energy storage including "
+        f"compounds ({len(inc['groups'])} register labels) holds "
+        f"{pct(inc['share_of_capacity_percent'])} of dated capacity and "
+        f"{pct(inc['share_of_net_percent'])} of net under version 2's rule "
+        f"({pts(pc['points'])} points), and {pct(pc['share_of_determined_percent'])} of the "
+        f"determined part ({pts(str(det_points) if det_points is not None else None)} points); "
+        f"storage alone {pct(alone['share_of_capacity_percent'])} of capacity and "
+        f"{pct(alone['share_of_net_percent'])} of net ({pts(alone['concentration_points'])} "
+        f"points). P-C **{pc['verdict']}** on the rule it is judged on"
+        + (
+            "; it would hold on the determined reading, so the margin is one the identity "
+            "rule decides, not the register."
+            if pc["verdict"] == "fails"
+            and det_points is not None
+            and abs(det_points) <= Decimal(15)
+            else "."
+        ),
+        f"- **What the by-technology reading rests on**: {pct(changed_share)} of the window's "
+        "dated capacity printed a different plant type at the two ends and is in the "
+        "key-changed bucket, never reassigned; the technology shares above are shares of the "
+        "whole, that bucket included.",
+        "",
+        "A share of net above a share of capacity says the register's dates for that group "
+        "carried less information over this window than the rest's; it does not say why, and "
+        "006's split (three fifths project-led, a quarter works-led, the rest unattributable) "
+        "is the only cause evidence this project holds.",
+    ]
+
+
+def key_changed_section(
+    comparisons: Rows, groups_by_key: dict[str, Rows], stability: dict[str, Any] | None
+) -> list[str]:
+    """What the key-changed bucket holds, from the committed schema report:
+    the copies inside each window at which the schema pass counted a change
+    of the printed key between consecutive copies. Those counts are over
+    every project-stage printed in both copies of each consecutive pair,
+    not only the dated population, so they bound the bucket, they do not
+    equal it."""
+    lines = [
+        "## What the key-changed bucket holds",
+        "",
+        "A project-stage whose plant type or host TO reads differently at the two ends of a "
+        "window is in the key-changed bucket (R2). The schema pass "
+        "(`archives/tec-register/schema-report.json`) counts, between every pair of "
+        "consecutive copies, the project-stages whose printed key changed; for each window "
+        "whose bucket holds at least 5 % of dated capacity, the copies inside it where that "
+        "count was largest are listed. The counts are over every project-stage printed in "
+        "both copies of a pair, not only the dated population, so they bound the bucket "
+        "rather than equal it.",
+        "",
+    ]
+    if stability is None:
+        return [*lines, "The schema report was not given to the renderer; nothing listed."]
+    rows = []
+    for c in comparisons:
+        kc = next((g for g in groups_by_key[c["key"]] if g["group"] == "key changed"), None)
+        if kc is None or Decimal(kc["share_of_capacity_percent"] or 0) < FOLD_BELOW:
+            continue
+        field = f"{c['dimension']}_changed"
+        inside = [
+            x
+            for x in stability["copies_with_a_change"]
+            if c["baseline"] < x["t_public"] <= c["current"] and x.get(field, 0) > 0
+        ]
+        total = sum(x[field] for x in inside)
+        top = sorted(inside, key=lambda x: -x[field])[:3]
+        named = ", ".join(f"{x['t_public']} ({x[field]:,})" for x in top) or "none"
+        rows.append(
+            f"- {window_label(c)}, by {dimension_label(c['dimension'])}: bucket "
+            f"{kc['dated_both']:,} dated project-stages, {pct(kc['share_of_capacity_percent'])} "
+            f"of dated capacity, {whole(kc['total'][RULE_V2])} MW-years; the schema pass counts "
+            f"{total:,} key changes between consecutive copies inside the window, most at {named}."
+        )
+    return [*lines, *(rows or ["No window's bucket reaches 5 % of dated capacity."])]
+
+
 # -------------------------------------------------------------------- page
 
 
@@ -315,7 +436,12 @@ def expert_corner(summary: dict[str, Any], comparisons: Rows) -> list[str]:
     ]
 
 
-def render_findings(summary: dict[str, Any], comparisons: Rows, groups: Rows) -> str:
+def render_findings(
+    summary: dict[str, Any],
+    comparisons: Rows,
+    groups: Rows,
+    stability: dict[str, Any] | None = None,
+) -> str:
     version = summary["rule_version"]
     comparisons = [c for c in comparisons if c["rule_version"] == version]
     groups_by_key: dict[str, Rows] = {}
@@ -393,6 +519,10 @@ def render_findings(summary: dict[str, Any], comparisons: Rows, groups: Rows) ->
         CAUSE_SPLIT,
         "",
         *proposition_lines(summary["propositions"]),
+        "",
+        *conclusion(summary, hh, hp, groups_by_key),
+        "",
+        *key_changed_section(comparisons, groups_by_key, stability),
         "",
         "## The calendar-year windows of the old regime",
         "",

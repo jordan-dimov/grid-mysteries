@@ -22,6 +22,31 @@ def pct(value: str | Decimal | None) -> str:
     return "-" if value is None else f"{Decimal(value):+.1f} %"
 
 
+OWN_OUTTURN_RE = re.compile(r"the fund's own outturn for the (year to [\d-]+) is (\d+(?:\.\d+)?)")
+FLEET_RE = re.compile(r"the fleet outturn for ([\d, ]+) is (\d+(?:\.\d+)?)")
+
+
+def prettify(note: str) -> str:
+    """A committed note as the page prints it: bare pounds formatted and the
+    outturn's period placed after its figure. The row itself is unchanged."""
+    note = OWN_OUTTURN_RE.sub(
+        lambda m: f"the fund's own outturn is {pounds(m.group(2))}, {m.group(1)}", note
+    )
+    note = FLEET_RE.sub(
+        lambda m: f"the fleet outturn for {m.group(1)} is {pounds(m.group(2))}", note
+    )
+    return note
+
+
+def own_outturn_in(note: str) -> tuple[str, str, str] | None:
+    """(period, value, overlap months) named in an in-year row's note."""
+    m = re.search(
+        r"the fund's own outturn for the (year to [\d-]+) is (\d+(?:\.\d+)?) \((\d+) of 12 months",
+        note,
+    )
+    return (m.group(1), m.group(2), m.group(3)) if m else None
+
+
 def period_of(row: dict[str, Any]) -> str:
     s, e = row["period_start"], row["period_end"]
     return str(s) if s == e else f"{s} to {e}"
@@ -94,7 +119,7 @@ def render_findings(
                 f"Source: assumption as published by {fund} on {published_on} (`{url}`); outturn "
                 f"as published by {fund} in its results for that year (figure "
                 f"`{', '.join(c['realised_ids'])}` in `evidence/figures.ndjson`). "
-                f"{c['note'][0].upper() + c['note'][1:]}."
+                f"{prettify(c['note'][0].upper() + c['note'][1:])}."
             )
             L.append("")
         L += [
@@ -109,6 +134,18 @@ def render_findings(
                 f"| {publisher} | {published_on}, calendar {period_of(c)}, {c['scope']} | "
                 f"{pounds(c['forecast'])} | {c['realised_period']}, {c['realised_scope']} | "
                 f"{pounds(c['realised'])} | {overlap} | both printed, nothing adjusted |"
+            )
+        for c in rows:
+            own = own_outturn_in(c["note"]) if c["status"] == "in-year, never scored" else None
+            if not own:
+                continue
+            publisher, published_on, url = c["vintage"]
+            period, value, overlap_m = own
+            L.append(
+                f"| {publisher} | {published_on}, calendar {period_of(c)}, {c['scope']} "
+                f"({c['status']}) | {pounds(c['forecast'])} | {period}, the fund's portfolio | "
+                f"{pounds(value)} | {overlap_m} of 12 months overlap | both printed, nothing "
+                "adjusted; the assumption is in-year under R-S1 and is never scored |"
             )
         L.append("")
     L += ["## The finding", ""]
@@ -135,9 +172,8 @@ def render_findings(
             f"Of the {len(vintages)} forecast vintage(s) the reading rules found on the public "
             f"pages of {', '.join(publishers)}, none is scorable today (F1): each covers a period "
             "that has not ended, or the year of its own publication (in-year, never scored), or "
-            "has no published outturn of its own scope. The per-asset cut is the paid product "
-            "behind the public record. The not-yet-scorable table below is the result of issue "
-            "1, with the date each vintage becomes scorable."
+            "has no published outturn of its own scope. The not-yet-scorable table below is the "
+            "result of issue 1, with the date each vintage becomes scorable."
         )
     else:
         over = sum(
@@ -169,7 +205,7 @@ def render_findings(
                 f"{pounds(c['realised'])} ({c['realised_scope']}; "
                 f"{', '.join(c['realised_ids'])}) | "
                 f"{word} {pounds(abs(Decimal(c['signed_error'])))} | "
-                f"{pct(c['signed_error_pct'])} | {c['note']} |"
+                f"{pct(c['signed_error_pct'])} | {prettify(c['note'])} |"
             )
     else:
         L.append("None.")
@@ -182,7 +218,7 @@ def render_findings(
         for c in pending:
             L.append(
                 f"| {vintage_of(c)} | {c['scope']} | {period_of(c)} | {pounds(c['forecast'])} | "
-                f"{c['status']} | {c['scorable_after'] or '-'} | {c['note']} |"
+                f"{c['status']} | {c['scorable_after'] or '-'} | {prettify(c['note'])} |"
             )
     else:
         L.append("None.")
@@ -239,7 +275,7 @@ def render_findings(
         for c in mismatch:
             L.append(
                 f"| {vintage_of(c)} | {c['scope']} | {period_of(c)} | {pounds(c['forecast'])} | "
-                f"{pounds(c['realised'])} ({c['realised_scope']}) | {c['note']} |"
+                f"{pounds(c['realised'])} ({c['realised_scope']}) | {prettify(c['note'])} |"
             )
     else:
         L.append("None.")

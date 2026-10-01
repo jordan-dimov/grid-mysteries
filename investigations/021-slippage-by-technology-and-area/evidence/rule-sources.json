@@ -1,0 +1,31 @@
+{
+ "declaration": [
+  "DECLARATION.md"
+ ],
+ "note": "C1 (the population is 014 version 4's manifest, digest by digest; the schema report's digest), C2 (every comparison recomputes to 014 version 4's committed figures exactly) and C5 (the content rule's digest) are enforced by run.py against committed artefacts and have no unit test; the inherited population, arithmetic, determinacy and F5 are tested where 014 declares them (tests/test_connection_slippage.py, tests/test_connection_slippage_v3.py). Every rule below has a test.",
+ "rules": {
+  "schema pass: every spelling of HOST TO and Plant Type and their blank count per copy": "tests/test_tec_register.py::test_the_grouping_columns_get_the_vocabulary_pass_and_a_blank_count",
+  "schema pass: plant type and host TO are mapped in every era": "tests/test_tec_register.py::test_every_era_header_row_maps_the_grouping_columns",
+  "schema pass: a unit's key change between consecutive copies is counted, not computed on": "tests/test_slippage_by_group.py::test_key_stability_counts_changes_of_a_unit_between_consecutive_copies",
+  "unit: a row's key is the key entries gives it": "tests/test_slippage_by_group.py::test_unit_keys_align_row_by_row_with_entries",
+  "R1 whitespace and the separator are one spelling; compounds are kept whole": "tests/test_slippage_by_group.py::test_r1_whitespace_and_separator_are_one_spelling_and_compounds_are_kept_whole",
+  "R1 the spelling table unifies expansions per component and nothing else": "tests/test_slippage_by_group.py::test_r1_the_spelling_table_unifies_expansions_per_component_and_nothing_else",
+  "R1 keys are read as printed with whitespace collapsed": "tests/test_slippage_by_group.py::test_tags_read_the_grouping_keys_as_printed_with_whitespace_collapsed",
+  "R2 a changed key is a bucket, never reassigned; unified keys are counted": "tests/test_slippage_by_group.py::test_r2_a_unit_whose_key_changes_is_a_bucket_never_reassigned_and_unified_ones_are_counted",
+  "R3 a blank key is the group (blank)": "tests/test_slippage_by_group.py::test_r3_a_blank_key_is_the_blank_group",
+  "R5 group figures, shares and concentration over every bucket": "tests/test_slippage_by_group.py::test_r5_group_figures_shares_and_concentration_sum_over_every_bucket",
+  "R5 an undetermined group's movement is in the undetermined part under each rule": "tests/test_slippage_by_group.py::test_an_undetermined_groups_movement_is_in_the_undetermined_part_under_each_rule",
+  "R6 gross sides quantised per group; the residual is reported": "tests/test_slippage_by_group.py::test_r6_each_groups_gross_sides_are_quantised_and_the_residual_is_reported",
+  "R7 thin: matched fewer than half of the group's baseline units": "tests/test_slippage_by_group.py::test_r7_a_group_whose_matched_units_are_under_half_its_baseline_units_is_thin",
+  "R8 storage alone excludes compounds; including counts them": "tests/test_slippage_by_group.py::test_r8_storage_alone_excludes_compounds_and_including_counts_them",
+  "R9 shares of a small net are marked not read": "tests/test_slippage_by_group.py::test_r9_shares_of_a_small_net_are_marked_not_read",
+  "C3 the determined part of a group is the same under both rules": "tests/test_slippage_by_group.py::test_c3_the_determined_part_of_a_group_is_the_same_under_both_rules",
+  "C4 counts, capacities and nets sum to the comparison": "tests/test_slippage_by_group.py::test_r5_group_figures_shares_and_concentration_sum_over_every_bucket",
+  "F-G2 a planted disagreement on a determined group refuses": "tests/test_slippage_by_group.py::test_fg2_a_planted_disagreement_on_a_determined_group_refuses",
+  "F-G3 a committed line that would change is named; new lines are appended": "tests/test_slippage_by_group.py::test_fg3_a_committed_line_that_would_change_is_named_and_new_lines_are_not",
+  "F-G4 a key-changed bucket above a fifth of dated capacity is unfit": "tests/test_slippage_by_group.py::test_fg4_a_key_changed_bucket_above_a_fifth_of_dated_capacity_is_unfit",
+  "P-A, P-B, P-C decided by their instances or undecided": "tests/test_slippage_by_group.py::test_propositions_are_decided_by_their_instances_or_stay_undecided",
+  "page: a pure function of the evidence with the framing rules": "tests/test_slippage_by_group.py::test_the_page_is_a_pure_function_of_the_evidence_and_keeps_the_framing_rules",
+  "page: renders only the summary's rule version": "tests/test_slippage_by_group.py::test_the_page_renders_only_the_summarys_rule_version"
+ }
+}

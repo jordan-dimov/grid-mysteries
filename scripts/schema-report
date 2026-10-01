@@ -514,12 +514,17 @@ exec uv run --group registers python - "$name" <<'PY'
 import json, sys
 from pathlib import Path
 from grid_mysteries.evidence import write_json
+from grid_mysteries.investigations import slippage_by_group as sbg
 from grid_mysteries.sources import tec_register as tr
 
 name = sys.argv[1]
 root = Path(".")
 vintages, skipped = tr.load_vintages(root / tr.JOURNAL_PATH, root)
 report = tr.schema_report(vintages, skipped)
+# Whether a project-stage's printed plant type or host TO changes between
+# consecutive copies (021's grouping keys), over every parsed copy, under
+# 014's unit key; a fact about the columns, not a movement figure.
+report["grouping_key_stability"] = sbg.key_stability([(t, rows) for t, rows, _e in vintages])
 out = root / "archives" / name
 write_json(out / "schema-report.json", report)
 lines = [
@@ -544,6 +549,28 @@ for column, key in tr.VOCABULARY_COLUMNS:
     for k, v in report[f"{key}_totals"].items():
         lines.append(f"| {k or '(blank)'} | {v:,} | {latest.get(key, {}).get(k, 0):,} |")
 lines += ["", f"The latest column above is the copy of {latest['t_public']}."]
+# Blank cells in the grouping columns, summed per era (an era is one column vocabulary).
+lines += ["", "## Blank cells in the grouping columns, per era (cells, every copy of the era)", "",
+          "| era first | era last | copies | rows | " + " | ".join(f"{c} blank" for c in tr.GROUPING_COLUMNS) + " |",
+          "|---" * (4 + len(tr.GROUPING_COLUMNS)) + "|"]
+by_date = {c["t_public"]: c for c in report["per_copy"]}
+for e in report["eras"]:
+    members = [c for c in report["per_copy"] if e["first"] <= c["t_public"] <= e["last"]]
+    rows_n = sum(c["rows"] for c in members)
+    cells = " | ".join(
+        (f"{sum(c['blank'].get(col, 0) for c in members):,}" if col in e["columns"] else "column absent")
+        for col in tr.GROUPING_COLUMNS
+    )
+    lines.append(f"| {e['first']} | {e['last']} | {e['copies']} | {rows_n:,} | {cells} |")
+stab = report["grouping_key_stability"]
+lines += ["", "## Grouping keys between consecutive copies (014's unit key; a fact about the columns, no figure)", "",
+          f"Over {stab['copies']} parsed copies, {stab['matched_units_over_consecutive_copies']:,} project-stages are printed in a copy and the copy before it (summed over every consecutive pair)."]
+for name_, column in sbg.GROUPING:
+    k = stab[name_]
+    lines += ["", f"- **{column}**: {k['units_changed']:,} of those change the printed value against the copy before "
+              f"({k['distinct_transitions']} distinct transitions). Most frequent:"]
+    lines += [f"    - `{t['from'] or '(blank)'}` → `{t['to'] or '(blank)'}`: {t['units']:,}" for t in k["transitions"][: sbg.TRANSITIONS_LISTED]] or ["    - none"]
+lines += ["", f"Copies in which at least one key changes: {len(stab['copies_with_a_change'])} (listed in `schema-report.json`)."]
 lines += ["", f"## Flagged copies ({len(report['flagged'])})", ""]
 for f in report["flagged"]:
     lines.append(f"- {f['t_public']}: " + "; ".join(f["flags"]))

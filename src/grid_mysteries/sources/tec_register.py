@@ -469,7 +469,16 @@ UNDATED_SHARE: Final = Decimal("0.5")
 #: beside the column because a declaration cites the key: 017 version 1's
 #: check C1 names `project_status`, so that name does not change.
 STATUS_COLUMN: Final = "Project Status"
-VOCABULARY_COLUMNS: Final = (("Project Status", "project_status"), ("Gate", "gate"))
+VOCABULARY_COLUMNS: Final = (
+    ("Project Status", "project_status"),
+    ("Gate", "gate"),
+    ("HOST TO", "host_to"),
+    ("Plant Type", "plant_type"),
+)
+#: Columns a series may group by (021 cuts 014's series by them): not
+#: required, but their blank rate is reported per copy beside the required
+#: columns' so that a grouping rule is declared against it.
+GROUPING_COLUMNS: Final = ("Plant Type", "HOST TO")
 
 
 def date_spelling(value: object) -> str:
@@ -500,7 +509,8 @@ def copy_report(
     columns = sorted({tr for tr in (canon(c) for c in (entry.get("columns") or [])) if tr})
     n = len(rows)
     blanks = {
-        col: sum(1 for r in rows if not str(r.get(col) or "").strip()) for col in REQUIRED_COLUMNS
+        col: sum(1 for r in rows if not str(r.get(col) or "").strip())
+        for col in (*REQUIRED_COLUMNS, *GROUPING_COLUMNS)
     }
     spellings = dict.fromkeys(DATE_SPELLINGS, 0)
     vocabularies: dict[str, dict[str, int]] = {key: {} for _col, key in VOCABULARY_COLUMNS}

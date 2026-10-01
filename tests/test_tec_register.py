@@ -382,3 +382,39 @@ def test_capture_copy_whose_bytes_changed_stops(tmp_path):
     copy.write_bytes(body + b"Z,W\n")
     with pytest.raises(RuntimeError):
         tr.load_capture_copies([manifest], tmp_path / "mirror")
+
+
+def test_the_grouping_columns_get_the_vocabulary_pass_and_a_blank_count():
+    """021 groups 014's series by plant type and host TO, so the schema report
+    carries every spelling of both, blanks included, and their blank count
+    per copy beside the required columns'."""
+    rows: list[dict[str, object]] = [
+        {"Project Name": "A", "Plant Type": "Energy Storage System", "HOST TO": "NGET"},
+        {"Project Name": "B", "Plant Type": "Energy Storage System;PV Array", "HOST TO": " SPT "},
+        {"Project Name": "C", "Plant Type": None, "HOST TO": "NGET"},
+    ]
+    entry: dict = {"columns": ["Project Name", "Plant Type", "HOST TO"], "sha256": "x"}
+    report = tr.copy_report(date(2026, 9, 15), rows, entry, None)
+    assert report["host_to"] == {"NGET": 2, "SPT": 1}
+    assert report["plant_type"] == {
+        "": 1,
+        "Energy Storage System": 1,
+        "Energy Storage System;PV Array": 1,
+    }
+    assert report["blank"]["Plant Type"] == 1 and report["blank"]["HOST TO"] == 0
+    whole = tr.schema_report([(date(2026, 9, 15), rows, entry)], [])
+    assert whole["host_to_totals"] == {"NGET": 2, "SPT": 1}
+
+
+def test_every_era_header_row_maps_the_grouping_columns():
+    """Plant type and host TO are mapped in every era the archive has printed
+    (the 2020-07-23 spelling 'Electricity Connection: Plant Type' included)."""
+    import json
+    from pathlib import Path
+
+    eras = json.loads((Path(__file__).parent / "fixtures/tec-register-eras.json").read_text())
+    for era in eras:
+        if not era["headers"]:
+            continue
+        mapped = {tr.canon(h) for h in era["headers"]}
+        assert set(tr.GROUPING_COLUMNS) <= mapped, (era["first"], era["headers"])

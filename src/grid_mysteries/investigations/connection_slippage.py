@@ -85,8 +85,8 @@ def stage_mw(row: dict[str, object]) -> Decimal | None:
     return parse_decimal(row.get("MW Increase / Decrease"))
 
 
-def entries(rows: list[dict[str, object]], *, swapped: bool = False) -> dict[str, Entry]:
-    """One entry per (identity, stage) key for a vintage's rows.
+def _keyed(rows: list[dict[str, object]]) -> list[tuple[int, str, str]]:
+    """(row index, identity, stage) for every row: the unit each row is.
 
     Where an identity has one row, or every row carries a distinct stage,
     the key is identity plus stage (blank stage reads as `1`). Otherwise
@@ -96,7 +96,7 @@ def entries(rows: list[dict[str, object]], *, swapped: bool = False) -> dict[str
     groups: dict[str, list[int]] = defaultdict(list)
     for index, row in enumerate(rows):
         groups[identity(row)].append(index)
-    out: dict[str, Entry] = {}
+    out: list[tuple[int, str, str]] = []
     for ident, indices in groups.items():
         stages = [normalise_stage(rows[i].get("Stage")) for i in indices]
         if len(indices) == 1 or (all(stages) and len(set(stages)) == len(stages)):
@@ -110,20 +110,36 @@ def entries(rows: list[dict[str, object]], *, swapped: bool = False) -> dict[str
                 ),
             )
             keyed = [(i, str(n)) for n, i in enumerate(ordered, start=1)]
-        for i, stage in keyed:
-            row = rows[i]
-            effective = parse_date(row.get("MW Effective From"))
-            if swapped:
-                effective = swap_day_month(effective) or effective
-            key = f"{ident}#{stage}"
-            out[key] = Entry(
-                key=key,
-                identity=ident,
-                stage=stage,
-                mw=stage_mw(row),
-                effective=effective,
-                raw_effective=str(row.get("MW Effective From") or "").strip(),
-            )
+        out.extend((i, ident, stage) for i, stage in keyed)
+    return out
+
+
+def unit_keys(rows: list[dict[str, object]]) -> list[str]:
+    """The unit key of every row, in row order: the same keys `entries`
+    gives, so that a row's other columns can be read beside its unit."""
+    keys = [""] * len(rows)
+    for i, ident, stage in _keyed(rows):
+        keys[i] = f"{ident}#{stage}"
+    return keys
+
+
+def entries(rows: list[dict[str, object]], *, swapped: bool = False) -> dict[str, Entry]:
+    """One entry per (identity, stage) key for a vintage's rows (see `_keyed`)."""
+    out: dict[str, Entry] = {}
+    for i, ident, stage in _keyed(rows):
+        row = rows[i]
+        effective = parse_date(row.get("MW Effective From"))
+        if swapped:
+            effective = swap_day_month(effective) or effective
+        key = f"{ident}#{stage}"
+        out[key] = Entry(
+            key=key,
+            identity=ident,
+            stage=stage,
+            mw=stage_mw(row),
+            effective=effective,
+            raw_effective=str(row.get("MW Effective From") or "").strip(),
+        )
     return out
 
 

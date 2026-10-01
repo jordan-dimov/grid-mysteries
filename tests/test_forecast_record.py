@@ -218,3 +218,388 @@ def test_a_figure_refuses_a_negative_value_or_a_backwards_period() -> None:
         fig("x", "forecast", "2h", "-1", 2025, published=date(2024, 1, 1))
     with pytest.raises(ValueError):
         fig("y", "forecast", "2h", "1", 2026, 2025, published=date(2024, 1, 1))
+
+
+# ------------------------------------------------- the reading rules R-R
+
+
+def page(
+    figures: list[tuple[str, str]],
+    *,
+    url: str = "https://modoenergy.com/research/en/test-page",
+    title: str = "A test page - Research | Modo Energy",
+    published: str = "2025-06-09T10:00:00+0000",
+    fmt: str = "html",
+) -> dict:
+    out = []
+    offset = 0
+    for printed, sentence in figures:
+        out.append({"as_printed": printed, "sentence": sentence, "offset": offset, "shape": ""})
+        offset += len(sentence) + 1
+    return {
+        "url": url,
+        "sha256": "ab" * 32,
+        "format": fmt,
+        "title": title,
+        "dates": {"meta:article:published_time": [published]} if published else {},
+        "figures": out,
+    }
+
+
+def rules(p: dict, **kw) -> list[str]:
+    return [r.rule for r in fr.read_page(p, publisher="Modo Energy", **kw)]
+
+
+def test_rr0_json_title_pdf_and_duplicates_are_declined() -> None:
+    p = page(
+        [
+            ("£60k/MW/year", '{"@type":"Article","description":"revenues £60k/MW/year"}'),
+            ("£60k/MW/year", "A test page - Research | Modo Energy"),
+            ("£60k/MW/year", "Batteries in Great Britain earned £60k/MW/year in May 2025."),
+            ("£60k/MW/year", "Batteries in Great Britain earned £60k/MW/year in May 2025."),
+        ],
+        title="A test page - Research | Modo Energy",
+    )
+    assert rules(p) == [
+        "R-R0 JSON payload",
+        "R-R0 title or navigation duplicate",
+        "R-R5 monthly figure",
+        "R-R0 duplicate string in the same sentence",
+    ]
+    pdf = page([("£60k/MW/year", "anything")], fmt="pdf", published="")
+    assert rules(pdf)[0].startswith("R-R0 PDF")
+
+
+def test_rr1_and_rr6_publication_date_precedence_and_the_2023_cutoff() -> None:
+    p = page([("£60k/MW/year", "In 2021, the index averaged £60k/MW/year.")], published="")
+    p["dates"] = {"json:dateCreated": ["2022-12-31 07:00:00"], "json:datePublished": ["2023-01-02"]}
+    assert fr.publication_date(p) == date(2023, 1, 2)
+    p["dates"] = {"json:dateCreated": ["2022-12-31 07:00:00"]}
+    assert rules(p) == ["R-R6 published before 2023"]
+    p["dates"] = {}
+    assert rules(p) == ["R-R1 no publication date declared"]
+
+
+def test_rr2_units_multipliers_ranges_hourly_and_no_period() -> None:
+    s = "Batteries in Great Britain earned {} in May 2025."
+    p = page(
+        [
+            ("£60k/MW/year", s.format("£60k/MW/year")),
+            ("£60/kW/year", s.format("£60/kW/year")),
+            ("£85/MWh", s.format("£85/MWh")),
+            ("£6.85/MW/hr", s.format("£6.85/MW/hr")),
+            ("£60-70k/MW/year", s.format("£60-70k/MW/year")),
+            ("£60k/MW", s.format("£60k/MW")),
+            ("£60k/MW", "In May 2025 batteries in Great Britain earned £60k/MW (annualised)."),
+            ("£5k/MW/month", s.format("£5k/MW/month")),
+        ]
+    )
+    got = fr.read_page(p, publisher="Modo Energy")
+    assert [r.rule for r in got] == [
+        "R-R5 monthly figure",
+        "R-R5 monthly figure",
+        "R-R2 a price per MWh, not a revenue per MW",
+        "R-R2 an hourly rate",
+        "R-R2 range, not a point figure",
+        "R-R2 no period unit",
+        "R-R5 monthly figure",
+        "R-R2 a monthly rate",
+    ]
+    assert got[0].monthly is not None and got[0].monthly[2] == Decimal("60000")
+    assert got[1].monthly is not None and got[1].monthly[2] == Decimal("60000")
+
+
+def test_rr2_a_change_and_the_starting_point_of_a_change_are_not_levels() -> None:
+    p = page(
+        [
+            ("£5k/MW/year", "Battery revenues reduced by £5k/MW/year in April 2025."),
+            (
+                "£59k/MW/year",
+                "Battery revenues rise from around £59k/MW/year to £85k/MW/year by 2030, "
+                "we forecast.",
+            ),
+            (
+                "£85k/MW/year",
+                "Battery revenues rise from around £59k/MW/year to £85k/MW/year by 2030, "
+                "we forecast.",
+            ),
+            ("£60k/MW/year", "In April 2025, revenues in Great Britain fell to £60k/MW/year."),
+        ]
+    )
+    assert rules(p) == [
+        "R-R2 a change, not a level",
+        "R-R2 the starting point of a stated change, not its level",
+        "R-R5 endyear figure, basis forecast",
+        "R-R5 monthly figure",
+    ]
+
+
+def test_rr3_components_subsets_fleet_fallback_durations_and_the_cm_qualifier() -> None:
+    p = page(
+        [
+            ("£20k/MW/year", "Wholesale revenues averaged £20k/MW/year in May 2025."),
+            (
+                "£120k/MW/year",
+                "Wishaw was the highest-earning battery, reaching £120k/MW/year in May 2025.",
+            ),
+            (
+                "£60k/MW/year",
+                "Revenues in Great Britain (GB) averaged £60k/MW/year in 2024, "
+                "but the top systems earned more.",
+            ),
+            ("£70k/MW/year", "Two-hour systems earned £70k/MW/year in May 2025."),
+            (
+                "£55k/MW/year",
+                "The index reported £55k/MW/year in May 2025 (excluding Capacity Market revenues).",
+            ),
+            ("£50k/MW/year", "Something earned £50k/MW/year in May 2025."),
+        ],
+        title="A page with no month in its title",
+    )
+    got = fr.read_page(p, publisher="Modo Energy")
+    assert [r.rule for r in got] == [
+        "R-R3 a revenue component, not the total",
+        "R-R3 a named asset or subset, not the population",
+        "R-R5 annual figure, basis realised",
+        "R-R5 monthly figure",
+        "R-R5 monthly figure",
+        "R-R3 no population named in the clause",
+    ]
+    assert got[2].figure is not None and got[2].figure.scope == "fleet"
+    assert got[3].monthly is not None and got[3].monthly[3] == "2h"
+    assert got[4].monthly is not None and got[4].monthly[3] == "fleet-excl-cm"
+
+
+def test_rr4_potential_contracted_and_forecast_words() -> None:
+    p = page(
+        [
+            (
+                "£60k/MW/year",
+                "We estimate a toll of £60k/MW/year would make the project viable in 2027.",
+            ),
+            ("£90k/MW/year", "Revenues reach £90k/MW/year for a two-hour battery in 2030."),
+            (
+                "£90k/MW/year",
+                "We forecast revenues of £90k/MW/year for a two-hour battery in 2030.",
+            ),
+        ]
+    )
+    assert rules(p) == [
+        "R-R4 potential, required, contracted or assumed, not a forecast or an outturn",
+        "R-R4 a future year with no forecast word",
+        "R-R5 annual figure, basis forecast",
+    ]
+
+
+def test_rr5_the_period_nearest_the_figure_and_the_page_month() -> None:
+    monthly = page(
+        [
+            (
+                "£60k/MW/year",
+                "Revenues in Great Britain fell to £60k/MW/year in May 2025, "
+                "down from £70k/MW/year in April.",
+            ),
+            (
+                "£70k/MW/year",
+                "Revenues in Great Britain fell to £60k/MW/year in May 2025, "
+                "down from £70k/MW/year in April.",
+            ),
+            (
+                "£60.4k/MW/year",
+                "Batteries earned £60.4k/MW/year in May, the lowest since July 2024.",
+            ),
+            ("£50k/MW/year", "The previous low was £50k/MW/year in July 2024."),
+        ],
+        title="ME BESS GB: revenues fall to £60k/MW/year in May 2025 - Research | Modo Energy",
+    )
+    got = fr.read_page(monthly, publisher="Modo Energy")
+    assert [r.rule for r in got] == [
+        "R-R7 the same month's figure, printed less precisely than another string on the page",
+        "R-R2 the starting point of a stated change, not its level",
+        "R-R5 monthly figure",
+        "R-R5 another month than the page's own",
+    ]
+    assert got[2].monthly == (2025, 5, Decimal("60400"), "fleet")
+    # a title month without a year is its most recent occurrence before publication
+    assert fr.title_month("Revenues reach a yearly high in October", date(2024, 11, 6)) == (
+        2024,
+        10,
+    )
+    assert fr.title_month("Revenues in January", date(2024, 2, 5)) == (2024, 1)
+    # without a page month, a month is read only within three months of publication
+    older = page(
+        [("£60k/MW/year", "Batteries in Great Britain earned £60k/MW/year in January.")],
+        title="A page with no month",
+        published="2025-06-09T10:00:00+0000",
+    )
+    assert rules(older) == ["R-R5 a month not current to the page"]
+
+
+def test_rr5_annual_horizon_end_year_in_year_partial_and_fund_title() -> None:
+    p = page(
+        [
+            ("£60k/MW/year", "In 2024, the index averaged £60k/MW/year."),
+            (
+                "£90k/MW/year",
+                "Revenues increase to £90k/MW/year for a two-hour battery out to 2030.",
+            ),
+            (
+                "£85k/MW/year",
+                "A 2-hour battery is projected to earn £85k/MW/year at the end of 2025.",
+            ),
+            (
+                "£70k/MW/year",
+                "So far in 2025, batteries in Great Britain have averaged £70k/MW/year.",
+            ),
+            ("£65k/MW/year", "In H1 2025, batteries in Great Britain earned £65k/MW/year."),
+            ("£75k/MW/year", "The index averaged £75k/MW/year in 2025."),
+        ]
+    )
+    got = fr.read_page(p, publisher="Modo Energy")
+    assert [r.rule for r in got] == [
+        "R-R5 annual figure, basis realised",
+        "R-R5 horizon figure, basis forecast",
+        "R-R5 endyear figure, basis forecast",
+        "R-R5 a partial period (half, quarter, season or to date)",
+        "R-R5 a partial period (half, quarter, season or to date)",
+        "R-R5 the year of publication, not complete",
+    ]
+    assert (got[1].figure.period_start, got[1].figure.period_end) == (2026, 2030)  # type: ignore[union-attr]
+    assert (got[2].figure.period_start, got[2].figure.period_end) == (2025, 2025)  # type: ignore[union-attr]
+    fund = page(
+        [
+            (
+                "£67.3k/MW/year",
+                "The portfolio generated £67.3k/MW/year, up 29 % from £52.1k/MW/year in FY2024.",
+            ),
+            (
+                "£52.1k/MW/year",
+                "The portfolio generated £67.3k/MW/year, up 29 % from £52.1k/MW/year in FY2024.",
+            ),
+            (
+                "£40,000 per MW/yr",
+                "Average revenue of £40,000 per MW/yr (31 March 2024: £45,000 per MW/yr).",
+            ),
+        ],
+        url="https://www.investegate.co.uk/announcement/rns/x--grid/full-year-results/1",
+        title="Full-Year Results to 31 December 2025 | Company Announcement | Investegate",
+        published="2026-04-21T07:00:00",
+    )
+    got = fr.read_page(fund, publisher="GRID (fund RNS)", portfolio_scope="GRID portfolio")
+    assert [r.rule for r in got] == [
+        "R-R5 annual figure, basis realised",
+        "R-R2 the starting point of a stated change, not its level",
+        "R-R5 period not stated",
+    ]
+    assert got[0].figure.period_start == 2025 and got[0].figure.scope == "GRID portfolio"  # type: ignore[union-attr]
+
+
+def test_rr7_a_page_whose_strings_disagree_beyond_rounding_reads_none() -> None:
+    p = page(
+        [
+            ("£60k/MW/year", "Batteries in Great Britain earned £60k/MW/year in May 2025."),
+            ("£60/MW/year", "Battery energy storage systems earned £60/MW/year in May 2025."),
+        ],
+        title="ME BESS GB: revenues in May 2025",
+    )
+    assert all(
+        r.rule.startswith("R-R7 the page prints figures")
+        for r in fr.read_page(p, publisher="Modo Energy")
+    )
+
+
+def test_rs4_twelve_months_mean_published_figure_precedence_and_restatements() -> None:
+    readings = []
+    for m in range(1, 13):
+        readings += fr.read_page(
+            page(
+                [
+                    (
+                        f"£{50 + m}k/MW/year",
+                        f"Batteries in Great Britain earned £{50 + m}k/MW/year in "
+                        f"{list(fr.MONTHS)[m - 1].title()} 2025.",
+                    )
+                ],
+                title=f"ME BESS GB: revenues in {list(fr.MONTHS)[m - 1].title()} 2025",
+                published=f"2025-{m:02d}-28T10:00:00+0000"
+                if m < 12
+                else "2026-01-08T10:00:00+0000",
+                url=f"https://modoenergy.com/research/en/m{m}",
+            ),
+            publisher="Modo Energy",
+        )
+    # a later page restates June beyond rounding, and another restates July within rounding
+    readings += fr.read_page(
+        page(
+            [("£70k/MW/year", "Batteries in Great Britain earned £70k/MW/year in June 2025.")],
+            title="June 2025 revisited",
+            published="2025-08-01T10:00:00+0000",
+            url="https://modoenergy.com/research/en/june-again",
+        ),
+        publisher="Modo Energy",
+    )
+    readings += fr.read_page(
+        page(
+            [("£57.4k/MW/year", "Batteries in Great Britain earned £57.4k/MW/year in July 2025.")],
+            title="July 2025 revisited",
+            published="2025-09-01T10:00:00+0000",
+            url="https://modoenergy.com/research/en/july-again",
+        ),
+        publisher="Modo Energy",
+    )
+    means, detail, restated = fr.annual_from_months(readings, publisher="Modo Energy")
+    assert len(means) == 1 and means[0].period_start == 2025 and means[0].basis == "realised"
+    assert means[0].figure_id == "mean-12m:fleet:2025"
+    # June: the later 70,000 (beyond rounding, latest published); July: the more precise 57,400
+    assert [x["month"] for x in restated] == [6]
+    values = detail[0]["values"]
+    assert values[5] == "70000" and values[6] == "57400"
+    expected = (
+        sum(Decimal(50 + m) * 1000 for m in range(1, 13))
+        - Decimal(56000)
+        + Decimal(70000)
+        - Decimal(57000)
+        + Decimal(57400)
+    ) / 12
+    assert means[0].value == expected.quantize(Decimal("1"))
+    # a figure published for the year outranks the mean, whatever its date
+    published = fig("annual-2025", "realised", "fleet", "61000", 2025, published=date(2025, 2, 1))
+    index = fr.realised_index(means + [published])
+    assert fr.realised_for("fleet", 2025, index) is published
+
+
+def test_pipeline_runs_end_to_end_on_synthetic_pages_and_f1_fires_without_a_scorable_vintage() -> (
+    None
+):
+    modo = [
+        page(
+            [
+                (
+                    "£90k/MW/year",
+                    "Revenues increase to £90k/MW/year for a two-hour battery out to 2030.",
+                )
+            ],
+            published="2025-01-13T10:00:00+0000",
+            url="https://modoenergy.com/research/en/f1",
+        ),
+        page(
+            [("£60k/MW/year", "In 2024, the index averaged £60k/MW/year.")],
+            published="2025-02-18T10:00:00+0000",
+            url="https://modoenergy.com/research/en/a1",
+        ),
+        page(
+            [("£99k/MW/Jahr", "irrelevant")],
+            published="2025-02-18T10:00:00+0000",
+            url="https://modoenergy.com/research/de/a1",
+        ),
+    ]
+    result = fr.pipeline(modo, [], today=date(2026, 10, 1))
+    assert [f.basis for f in result["figures"]] == ["forecast", "realised"]
+    assert result["comparisons"][0].status == "not yet scorable"
+    assert result["comparisons"][0].scorable_after == date(2031, 1, 1)
+    assert result["falsifiers"]["F1"] is True
+    assert result["propositions"]["P-A"]["verdict"] == "undecided"
+    assert (
+        result["falsifiers"]["F2"]["per_year_strings"] == 2
+        and result["falsifiers"]["F2"]["fires"] is False
+    )

@@ -1,15 +1,17 @@
 # 022 — The Forecast Record, issue 1: declaration (draft, not frozen)
 
-**Status: a draft written 2026-10-01 before the schema pass; not frozen,
-no figure computed, nothing fetched.** This file is frozen with
-`scripts/freeze` only after `ACQUISITION.md` has been sealed and run and
-the schema reports exist, because its reading rules (R-R) are written
-against those reports and cite them by digest; a declaration written
-against an archive with no schema report is guessed, not frozen. The
-sections marked **[after the schema pass]** are empty on purpose. The
-sponsor's seal for `compute` is the digest prefix of this file as frozen.
-Nothing goes outside the repository until the sponsor has read
-`FINDINGS.md` and a host conversation has started.
+**Status: drafted 2026-10-01 before the schema pass (committed at
+`18e5a70`), completed the same evening against the schema reports it
+cites below, for the sponsor's reading; not frozen, no comparison
+computed.** On the sponsor's word this file is frozen with
+`scripts/freeze` (OpenTimestamps and RFC 3161 witnesses, committed with
+its proofs) and the seal for `run.py --phase compute` is the digest prefix
+of this file as frozen; `compute` refuses without the seal, without the
+proof sidecar, or if the bytes have changed since the freeze. The
+acquisition plan `ACQUISITION.md` (SHA-256 `962cb9b5db8d33a7ae14fe3b516dd5f999936911040316a4fcc03e8aeeb0e188`, frozen and
+sealed `962cb9b5db8d33a7`) governs what was fetched; this file governs
+what is read and computed. Nothing goes outside the repository until the
+sponsor has read `FINDINGS.md` and a host conversation has started.
 
 ## The mystery
 
@@ -27,10 +29,39 @@ published on a stated date.
 ## Prior exposure
 
 `ACQUISITION.md`, "Prior exposure", items 1 to 5, stand here in full.
-**[after the schema pass]** the tallies of the schema reports (spellings,
-tokens, dates, flags) will have been read to write R-R; no figure will
-have been parsed from any string before this file is frozen, and that is
-stated here with the reports' digests.
+After the schema pass and before this file was completed:
+
+6. **The schema reports were read with every digit masked.** To write
+   R-R1 to R-R7 the author read the reports' tallies (spellings, date
+   fields, tokens, flags) and the sentences around the figure-looking
+   strings on the English pages and the RNS documents **with every digit
+   replaced by `9`** (`re.sub(r"\d", "9", …)` over every printed string),
+   so that the phrasing could be learned without the values. No figure
+   was seen unmasked by the author; the committed reports carry the
+   values, as they must.
+7. **The reader was dry-run on the masked reports, five times, before
+   this file was completed**, printing per rule how many strings it read
+   or declined and, for each figure read, its publisher, basis, scope,
+   period and publication date (not its value). Those runs showed that
+   under these rules the corpus yields **two forecast figures from Modo
+   Energy's public pages, neither scorable before 2029-01-01** (one for
+   the year of its own publication, one for a horizon that has not
+   ended), **five realised annual figures read** (Modo Energy's fleet
+   figure for 2023 and, from two pages, for 2024; GSF's 2022 calendar-year
+   figure; GRID's 2025 figure), **twelve monthly fleet figures for 2025**
+   (so R-S4 yields a 2025 fleet figure) and four months printed
+   differently on different pages beyond rounding (F4), so that **F1 will fire,
+   P-A and P-B will be undecided, and P-C will be undecided** for want
+   of a revision pair. That is known before the freeze and is stated
+   here. The propositions are the sponsor's of 2026-10-01 and are not
+   changed by it; no comparison, error or revision was computed; the
+   not-yet-scorable table is the result of issue 1, as the plan said it
+   might be.
+8. **What the dry runs changed.** Each dry run changed reading rules
+   (the clause, the page's month, rounding agreement, the starting point
+   of a change, the fund's year from its RNS title), never a scoring
+   rule, a proposition or a threshold. Those are listed in the commit
+   that completed this file.
 
 ## Vocabulary
 
@@ -53,48 +84,151 @@ stated here with the reports' digests.
   page states none.
 - **Publisher**: Modo Energy, or the listed fund as named in its RNS.
 
-## Inputs **[after the schema pass]**
+## Inputs
 
-- The pages: `evidence/pages-manifest.json` (SHA-256 to be cited) and
-  `evidence/rns-manifest.json` (SHA-256 to be cited), every artefact
-  hashed to its manifest before anything is read (C1).
-- The schema reports: `archives/modo-pages-022/schema-report.json`
-  (SHA-256 to be cited) and `archives/rns-grid-022/schema-report.json`
-  (SHA-256 to be cited), with the facts cited from each.
+- **The pages**, pinned under the sealed plan on 2026-10-01 and listed in
+  `investigations/022-the-forecast-record/evidence/pages-manifest.json`
+  (SHA-256 `fb4ac6aa112ffdae3ebbbfcfdc54786a588ddf8c23c01881cccb630c07f38925`; 2,744 Modo Energy pages) and
+  `investigations/022-the-forecast-record/evidence/rns-manifest.json`
+  (SHA-256 `dc827b16b5d7c31d022e5bed3d2e7bab652cea27ea7f0da2ca6dc69f12cfb1ec`; 40 RNS documents and listings), every artefact
+  hashed to its manifest before anything is read (C1). The two pages the
+  index selected and the site answered 404 are in
+  `evidence/acquisition-log.json`, not read.
+- **The schema reports this file is written against**, regenerated by
+  `scripts/schema-report modo-022` and committed at `2cc8c3e`:
+  `archives/modo-pages-022/schema-report.json` (SHA-256 `7d972ab985188da3e62239f4ec32d42996d720489444736bc152e539b609da91`;
+  `SCHEMA.md` beside it `415c9724…`) and
+  `archives/rns-grid-022/schema-report.json` (SHA-256 `a4f7eaac1f55980df453d9964139958f1b06cb6df3d2734cd3ee02cc7f4777e8`;
+  `SCHEMA.md` `2c5a2de6…`). The runner refuses if either hashes
+  differently (C1). Cited from them:
+  - every one of the 442 English Modo pages (`/research/en/`) declares
+    `meta:article:published_time` and `json:datePublished`, and no page
+    declares a `<time datetime>`; the research sitemap carries each
+    article under seven language paths (`de`, `en`, `es`, `fr`, `it`,
+    `ja`, `pt`) with the same figures in translated spellings
+    (`/MW/Jahr`, `/MW/año`, `/MW/anno`, `/MW/年`, `/MW/ano`), so R-R0 reads
+    the English path only;
+  - the spellings in use: `£9k/MW/year` (378 on the English pages) is the
+    per-year form, with `£9k/MW/yr`, `£9k/MW/y`, `£9k per MW per year`,
+    `£9/kW/year`, `£9k to £9k/MW/year`; `£9k/MW` and `£9/MW` carry no
+    period; `£9/MWh` is a price and `£9/MW/h`, `£9/MW/hr`, `£9/MW/hour` an
+    hourly rate; the RNS documents add `£9 per MW/yr`, `£9/MW per year`,
+    `£9 / MW / yr`, `£9 per MW per annum`, `£9k/MW per annum`;
+  - every English page carries the token `log in` (site chrome), so a
+    paywall-looking token says nothing about a page and is not used;
+  - 91 of the 442 English pages carry a figure-looking string; the
+    monthly index posts (`ME BESS GB: Revenues … in <Month> <Year>`, `GB
+    BESS revenues … in <Month> <Year>`, `GB Battery energy storage
+    revenues … in <Month>`) carry their month in the title and restate
+    the previous month and the year-earlier month in the same sentence;
+  - the RNS listings on Investegate declare `json:dateCreated`; the
+    Gresham House PDFs declare no date and their `pdftotext -layout` text
+    interleaves columns, so a figure's sentence there mixes two columns
+    (R-R0 declines them; the same results are read from Investegate).
 
-## Reading rules **[after the schema pass]**
+## Reading rules, written against the schema reports
 
-Written against the spellings and date fields the schema reports show,
-each with a test. They must fix, and only these:
+Implemented in `read_page`, `periods_in`, `choose_months` and
+`annual_from_months` of
+`src/grid_mysteries/investigations/forecast_record.py`, each with a test
+named in `evidence/rule-sources.json`. Every figure-looking string of the
+schema reports is listed in `evidence/figures.ndjson` with the rule that
+read or declined it (R-R7), so the share read is a published number.
 
-- **R-R1, the publication date**: which declared date field is the
-  publication date, in which order of precedence, and that a page
-  declaring none is listed and not read.
-- **R-R2, the figure**: how a printed string becomes a Decimal in pounds
-  per megawatt per year (the `k` multiplier; `/kW/year` times a thousand;
-  a `per month` figure times twelve only if the page states it as a
-  monthly rate, else not read; a **range** is listed as a range and is
-  never read as a point figure; a figure with no "per year" is read only
-  if its sentence states the year it covers, else not read).
-- **R-R3, scope** from the sentence and the page: a duration token in the
-  sentence gives the duration scope; `fleet`, `index` or `average` with
-  no duration gives `fleet`; a sentence with two durations is not read;
-  a fund's own figure is its named portfolio.
-- **R-R4, basis** from the sentence and the page: `forecast`,
-  `projection`, `outlook` or a future period give `forecast`; `index`,
-  `earned`, `realised`, `actual`, `outturn` or a past period give
-  `realised`; `potential` or `benchmark` give `potential`; a conflict is
-  not read.
-- **R-R5, the period** from the sentence: the calendar year or years it
-  names; a sentence naming none is "period not stated" and is not
-  scored; a horizon named only as "to 2030" from a page published in
-  year Y is the period Y+1 to 2030.
-- **R-R6, since 2023**: a page whose publication date is before
-  2023-01-01 is listed and not read. A page flagged paywall-looking is
-  read like any other, because the text served to an anonymous client is
-  public (A4); the flag is printed beside its figures.
-- **R-R7, every unread string is listed** with the rule that declined it,
-  so the share read is a published number (F2).
+- **R-R0, which pages and which strings.** Modo Energy's pages under
+  `/research/en/` are read; the six other language paths of each article
+  are pinned and listed, not read. RNS listings and documents on
+  Investegate are read as HTML; a PDF is declined (its layout text
+  interleaves columns) and the same results are read from the Investegate
+  text. A string whose sentence is a JSON payload (begins `{` or carries
+  `":"`), or is the page's title or its navigation echo (`Back …`), or
+  repeats a string already read in the same sentence, is declined.
+- **R-R1, the publication date**: `meta:article:published_time`, else
+  `json:datePublished`, else `json:dateCreated` (the Investegate
+  listing's), the first ten characters as an ISO date; a page declaring
+  none is listed and not read.
+- **R-R2, the figure**: the string is parsed as a pound amount, an
+  optional `k`, `m` or `bn`, an optional range, a unit (`MW`, `kW`,
+  `MWh`, `kWh`) and an optional period (`year`, `yr`, `y`, `annum`;
+  `month`; `hour`, `hr`, `h`). `k` multiplies by a thousand; `m` or `bn`
+  is declined; `/kW` multiplies by a thousand; `/MWh` and `/kWh` are
+  declined (a price); an hourly or monthly rate is declined; a range is
+  declined; a string with no period is declined unless its sentence says
+  "annualised" or "annualized". A figure is read in whole pounds. A
+  **change** is not a level and is declined: `by £`, `rose/fell/up/down/
+  increased/decreased/reduced/dropped/rising/subtracting/contributing/
+  added/jumped/surged/grew £`, `£X higher/lower/more/less/up/down`, a
+  `reduction/uplift/boost/swing/increase/drop/fall/rise/decline of £`,
+  `up to £`, `over £`, `more than £`, `exceeded this by`; and the **starting
+  point** of a stated change (`from (around) £X to £Y`) is declined, `£Y`
+  being the level.
+- **R-R3, the population**, read from the figure's **clause** (the text
+  between commas, semicolons, colons or spaced dashes around it): a clause
+  naming a revenue component (`wholesale`, `balancing mechanism`,
+  `frequency response`, `reserve`, `capacity market`, `imbalance`,
+  `dynamic containment/regulation/moderation`, `ancillary`, `trading
+  revenue`, `merchant markets`, `arbitrage`, `in the service`, `reactive
+  power`, `offer dispatch`, `duos`, `tnuos`, `auction`, `clearing price`,
+  `cleared at`, `t-4`, `t-1`) is declined, the qualifier "excluding/
+  including Capacity Market" excepted; a clause, or the clause before it,
+  naming a subset or an asset (`highest-earning`, `top-performing`, `top
+  quartile`, `best`, `beat`, `one battery`, `one system`, `some
+  batteries`, `four batteries`, `individual batteries`, `upwards of`, the
+  asset names `Jamesfield`, `Wishaw`, `Coventry`, `Capenhurst`, `Wormald
+  Green`, and the swap vocabulary `basis risk`, `fixed leg`, `floating
+  leg`, `swap`, `perfect forecasting`, `would've`, `would have`) is
+  declined. A duration in the clause (`1`, `2`, `4`, `8`, `one`, `two`,
+  `four`, `eight` with `h`, `hr`, `hour`, `hours`) gives the scope `1h`,
+  `2h`, `4h` or `8h`; else the scope is `fleet` when the clause names it
+  (`Great Britain`, `GB`, `GB BESS`, `ME BESS`, `index`, `batteries`,
+  `battery energy storage`, `battery revenues`, `battery storage
+  revenues`, `BESS`, `fleet`, `the benchmark`), or the page is a monthly
+  index post, or the sentence names it and carries no component or subset
+  word; else the string is declined. "Excluding Capacity Market" in the
+  sentence makes the scope `…-excl-cm`, "with/including Capacity Market"
+  `…-incl-cm`. A fund's figure has the scope "`<ticker>` portfolio".
+- **R-R4, the basis**: a sentence with `potential`, `must increase`,
+  `required`, `worth`, `toll`, `agreement`, `contract`, `viable`,
+  `scenario`, `sensitivity`, `assumed`, `assuming`, `estimate`, `could
+  be`, `could generate`, `capex`, `cost`, `valu…`, `minimum` or `floor` is
+  declined (potential, required, contracted or assumed). A period in the
+  future, or a horizon or end-year form, is a **forecast** and needs a
+  forecast word in the sentence (`forecast`, `project`, `outlook`,
+  `expect`, `will`, `would`, `out to`, `by 20xx`, `end of 20xx`, `long
+  term`, `horizon`), else it is declined; a past calendar year is
+  **realised**; the year of publication is a forecast if a forecast word
+  is present (in-year, listed by R-S1, never scored), else declined as
+  not complete.
+- **R-R5, the period.** Candidates in the sentence: a month with a year
+  (not preceded by a day number, so `31 March 2024` is a date, not a
+  month); a month alone, read as its most recent occurrence at or before
+  the page's month (the title's month on a monthly post, else the
+  publication month); an annual form (`in/for all of/across/throughout/
+  during/over 2024`, `2024 average`, `2024 revenues`, `the 2024 calendar
+  year`, `FY2024`, `average 2024 revenues`); a horizon (`out to/through/
+  until/towards/to 2030`: the publication year plus one to 2030); an
+  end-year (`by/at the end of/in/for 2030`); and partial markers (`H1`,
+  `Q1`, halves, `winter`, `summer`, `so far`, `to date`, `last N months`,
+  a month-to-month span, `the period`, `this year`, `last year`). A
+  partial marker in the clause, or the clause before it, declines the
+  string. Otherwise the candidate **within the clause nearest the
+  figure** is read; if the clause names none, a Modo page takes the
+  nearest in the sentence, and a fund page takes the financial year from
+  the RNS title (`to 31 December YYYY`) when the sentence says `for the
+  year`, `during the year`, `the portfolio generated` or `over the year`,
+  else declines. A month is a **monthly figure** (R-S4): on a monthly
+  index post only the page's own month is read and any other month is
+  declined; on another page a month is read only within three months
+  before publication; a fund figure dated by a month is declined.
+- **R-R6, since 2023**: a page published before 2023-01-01 is listed and
+  not read. The paywall-looking tokens are not used (every English page
+  carries `log in`); a figure in the served text is public (A4).
+- **R-R7, agreement and the record of every string.** On a monthly index
+  post, the strings read for the page's month must agree to the nearest
+  £1,000; the most precisely printed is read (then the latest) and the
+  others are declined as less precise; strings differing beyond rounding
+  mean none is read from that page. Every string is listed with the rule
+  that read or declined it.
 
 ## Scorability (R-S), the comparison (R-C), the mismatch (R-M), the revisions (R-V)
 
@@ -111,8 +245,18 @@ each with a test named in `evidence/rule-sources.json`.
   mean of its years' realised figures, quantised to the pound, and the
   row says so.
 - **R-S3** Where several realised figures exist for one scope and year,
-  the latest published is read (it supersedes); the earlier ones are
-  named beside it.
+  a figure published for the year outranks a twelve-month mean (R-S4),
+  then the latest published is read (it supersedes); the others are named
+  beside it.
+- **R-S4, the realised year from twelve months.** For each scope and
+  calendar year in which all twelve monthly figures are read, their
+  arithmetic mean in whole pounds is a realised figure
+  (`mean-12m:<scope>:<year>`, "mean of twelve monthly figures as
+  published", dated by the latest of the twelve posts). Per month, where
+  several pages print a figure that agrees to the nearest £1,000, the most
+  precisely printed is read, then the latest; where they differ beyond
+  rounding, the latest published is read and the difference is listed
+  (F4). The months and the choice are in `evidence/months.json`.
 - **R-C** For a scorable figure: signed error = forecast − realised, in
   pounds per megawatt per year quantised to the pound, and as a
   percentage of the realised figure quantised to 0.1; absolute error is
@@ -155,22 +299,22 @@ vintage is scorable (P-A, P-B) or no revision pair exists (P-C).
 - **F1** No vintage is scorable: the page is the not-yet-scorable table,
   published as the result of issue 1, with the dates each vintage becomes
   scorable; P-A and P-B are undecided and say so.
-- **F2** The reading rules read fewer than half of the figure-looking
-  strings on pages whose basis tokens are forecast-dominant: the corpus is
-  **not determinable** under these rules; the unread strings are
-  published with the rule that declined each, and no proposition is
-  judged.
+- **F2** Of the per-year strings (a `per year` unit in any spelling) on
+  the English Modo pages, more than a third are declined for a period or
+  a population the rules could not find (`R-R5 period not stated`, `R-R3
+  no population named in the clause`): the corpus is **not determinable**
+  under these rules; every string is published with the rule that declined
+  it, and no proposition is judged.
 - **F3** A committed row of `evidence/figures.ndjson`,
   `evidence/comparisons.ndjson` or `evidence/revisions.ndjson` would change
   on recompute under the same rule version: the run refuses. There is no
   `--amend`; a changed figure is a new declaration beside this one, and a
   row is recorded once per rule version (the kill test of 2026-09-25,
   `bill/KILL-TEST.md`).
-- **F4** The realised side restates itself (a later page prints a
-  different realised figure for the same scope and year): R-S3 reads the
-  latest and the restatement is a published row of its own; a
-  restatement larger than 10 % of the earlier figure is named in
-  `FINDINGS.md` beside every comparison that depends on it.
+- **F4** The realised side restates itself (pages print figures for the
+  same scope and month, or year, that differ beyond rounding): R-S3 and
+  R-S4 read the latest and every difference is listed in
+  `evidence/months.json` and in `FINDINGS.md`.
 
 ## Checks the runner makes before and after computing
 
@@ -179,24 +323,26 @@ vintage is scorable (P-A, P-B) or no revision pair exists (P-C).
 - **C2** Every figure row names its page's digest, the string as printed,
   and the rule that read it; every unread string names the rule that
   declined it (R-R7).
-- **C3** The count of scored, mismatched, not-yet-scorable and in-year
-  rows equals the count of forecast figures.
-- **C4** No row carries a figure of basis `potential` as an outturn.
+- **C3** The comparison rows are exactly one per forecast figure.
+- **C4** No figure of basis `potential` enters the figures.
 
 A failed check refuses the run and is recorded in `AMENDMENTS.md` before
 any rerun; nothing is written.
 
 ## Outputs
 
-- `evidence/figures.ndjson`: one line per figure read (and per string
-  declined, with its rule), append-only, carrying `rule_version` (this
-  file's SHA-256 prefix), the page digest and the string as printed.
+- `evidence/figures.ndjson`: one line per figure-looking string of the
+  schema reports (read as a figure, read as a monthly figure, or declined,
+  with its rule), append-only, carrying `rule_version` (this file's
+  SHA-256 prefix), the page digest, the offset and the string as printed.
+- `evidence/months.json` (rewritten each run): R-S4's months per scope
+  and year, the choice per month and the differences beyond rounding.
 - `evidence/comparisons.ndjson`: one line per forecast figure, with its
   status and, where scored, the errors; append-only, `rule_version`.
 - `evidence/revisions.ndjson`: one line per revision pair; append-only.
 - `evidence/summary.json` (rewritten each run): digests, the seal, the
-  run date, the propositions with their instances, the not-yet-scorable
-  table, F1 to F4.
+  run date, every figure, the propositions with their instances, the
+  not-yet-scorable table, F1, F2 and F4.
 - `evidence/run-log.json`; `evidence/rule-sources.json`.
 - `FINDINGS.md`, a pure function of the evidence (`run.py --phase
   render`): every sentence "as published by Modo Energy on <date>" or

@@ -17,14 +17,21 @@ run. ``schema`` reads pinned bytes only and writes
 ``archives/modo-pages-022/`` and ``archives/rns-grid-022/``; it computes
 no figure.
 
-``compute`` and ``render`` refuse until a declaration exists that cites
-the schema report by digest and is frozen; the reading rule is written
-against that report, not before it.
+``check`` and ``compute`` need the declaration's seal (a prefix of
+``DECLARATION.md``'s SHA-256 as frozen): C1 (manifests and schema reports
+hash to what the declaration cites, every pinned artefact to its manifest),
+the reading rules over the schema reports, R-S4, the comparisons, R-V and
+the propositions; ``compute`` appends to ``evidence/figures.ndjson``,
+``comparisons.ndjson`` and ``revisions.ndjson`` (a committed line must be
+byte-identical to its recomputation or the run refuses, F3; there is no
+--amend) and rewrites ``months.json`` and ``summary.json``. ``render``
+writes ``FINDINGS.md`` from the committed evidence.
 """
 
 import argparse
 import hashlib
 import json
+import re
 import sys
 from collections import Counter
 from dataclasses import asdict
@@ -35,7 +42,9 @@ from typing import Any
 import httpx
 
 from grid_mysteries.corpus import REPO_ROOT
-from grid_mysteries.evidence import write_json
+from grid_mysteries.evidence import dumps, write_json
+from grid_mysteries.investigations import forecast_record as fr
+from grid_mysteries.rendering import forecast_record as page
 from grid_mysteries.sources import modo
 from grid_mysteries.sources.pinning import load_journal, pin, progress
 
@@ -45,6 +54,13 @@ PLAN = HERE / "ACQUISITION.md"
 DECLARATION = HERE / "DECLARATION.md"
 RUN_INDEX = EVIDENCE / "run-index.json"
 ACQUISITION_LOG = EVIDENCE / "acquisition-log.json"
+FIGURES = EVIDENCE / "figures.ndjson"
+COMPARISONS = EVIDENCE / "comparisons.ndjson"
+REVISIONS = EVIDENCE / "revisions.ndjson"
+MONTHS = EVIDENCE / "months.json"
+SUMMARY = EVIDENCE / "summary.json"
+RUN_LOG = EVIDENCE / "run-log.json"
+FINDINGS = HERE / "FINDINGS.md"
 RAW = REPO_ROOT / "data" / "raw" / "modo" / "022"
 RAW_RNS = REPO_ROOT / "data" / "raw" / "rns" / "022"
 ARCHIVE_MODO = REPO_ROOT / "archives" / "modo-pages-022"
@@ -465,25 +481,215 @@ def schema() -> None:
     )
 
 
-def refuse_until_declared(phase: str) -> None:
+def require_declaration_seal(seal: str | None) -> str:
+    digest = sha(DECLARATION)
+    if not seal or len(seal) < MIN_SEAL_LENGTH or not digest.startswith(seal.lower()):
+        raise SystemExit(
+            f"refusing: --seal must be a prefix (>= {MIN_SEAL_LENGTH} hex) of "
+            f"DECLARATION.md's SHA-256 {digest[:16]}…"
+        )
     sidecar = DECLARATION.with_name(DECLARATION.name + ".timestamps.json")
     if not sidecar.exists():
-        raise SystemExit(
-            f"refusing ({phase}): the reading rule and the compute phase are written against the "
-            "schema report and under a frozen DECLARATION.md; neither exists yet"
+        raise SystemExit("refusing: DECLARATION.md is not frozen (no proof sidecar)")
+    if json.loads(sidecar.read_text()).get("sha256") != digest:
+        raise SystemExit("refusing: DECLARATION.md has changed since it was frozen")
+    return digest
+
+
+def cited(text: str, path: str) -> str:
+    """The SHA-256 the declaration cites for a file, by its path."""
+    found = re.search(rf"`{re.escape(path)}`[^`]*?SHA-256\s+`([0-9a-f]{{64}})`", text, re.DOTALL)
+    if not found:
+        raise SystemExit(f"refusing: the declaration cites no digest for {path}")
+    return found.group(1)
+
+
+def check_inputs(text: str) -> dict[str, str]:
+    """C1: the manifests and the schema reports hash to what the frozen
+    declaration cites; every pinned artefact hashes to its manifest."""
+    out = {}
+    for label, path in (
+        ("pages_manifest_sha256", EVIDENCE / "pages-manifest.json"),
+        ("rns_manifest_sha256", EVIDENCE / "rns-manifest.json"),
+        ("schema_modo_sha256", ARCHIVE_MODO / "schema-report.json"),
+        ("schema_rns_sha256", ARCHIVE_RNS / "schema-report.json"),
+    ):
+        want = cited(text, str(path.relative_to(REPO_ROOT)))
+        have = sha(path)
+        if have != want:
+            raise SystemExit(f"refusing (C1): {path.name} hashes to {have[:16]}…, not {want[:16]}…")
+        out[label] = have
+    for manifest in (EVIDENCE / "pages-manifest.json", EVIDENCE / "rns-manifest.json"):
+        for entry in json.loads(manifest.read_text()):
+            if sha(REPO_ROOT / entry["path"]) != entry["sha256"]:
+                raise SystemExit(f"refusing (C1): {entry['path']} no longer matches its manifest")
+    return out
+
+
+def committed(path: Path) -> dict[str, str]:
+    out: dict[str, str] = {}
+    if path.exists():
+        for line in path.read_text().splitlines():
+            if line.strip():
+                out[json.loads(line)["key"]] = line
+    return out
+
+
+def line_of(row: dict[str, Any]) -> str:
+    return json.dumps(json.loads(dumps(row)), separators=(",", ":"))
+
+
+def compute(seal: str | None, run_date: str, *, write: bool) -> None:
+    digest = require_declaration_seal(seal)
+    rule_version = digest[:8]
+    text = DECLARATION.read_text()
+    digests = check_inputs(text)
+    modo_pages = json.loads((ARCHIVE_MODO / "schema-report.json").read_text())["per_page"]
+    rns_pages = json.loads((ARCHIVE_RNS / "schema-report.json").read_text())["per_page"]
+    result = fr.pipeline(modo_pages, rns_pages, today=date.fromisoformat(run_date))
+    readings = result["readings"]
+    rows = result["comparisons"]
+    revs = result["revisions"]
+    figure_lines = {
+        f"{rule_version}|{r.key}": line_of(
+            {"key": f"{rule_version}|{r.key}", "rule_version": rule_version, **asdict(r)}
         )
-    raise SystemExit(
-        f"refusing ({phase}): not implemented until the declaration's reading rule is written"
+        for r in readings
+    }
+    comparison_lines = {
+        f"{rule_version}|{c.forecast_id}": line_of(
+            {"key": f"{rule_version}|{c.forecast_id}", "rule_version": rule_version, **asdict(c)}
+        )
+        for c in rows
+    }
+    revision_lines = {
+        f"{rule_version}|{v['earlier']['figure_id']}|{v['later']['figure_id']}": line_of(
+            {
+                "key": f"{rule_version}|{v['earlier']['figure_id']}|{v['later']['figure_id']}",
+                "rule_version": rule_version,
+                **v,
+            }
+        )
+        for v in revs
+    }
+    changed = (
+        fr.require_unchanged(committed(FIGURES), figure_lines)
+        + fr.require_unchanged(committed(COMPARISONS), comparison_lines)
+        + fr.require_unchanged(committed(REVISIONS), revision_lines)
     )
+    if changed:
+        raise SystemExit(
+            f"refusing (F3): {len(changed)} committed row(s) would change under rule version "
+            f"{rule_version} ({changed[:3]}…); a changed figure is a new declaration"
+        )
+    # C3: every forecast figure has exactly one comparison row.
+    forecast_ids = sorted(f.figure_id for f in result["figures"] if f.basis == "forecast")
+    if sorted(c.forecast_id for c in rows) != forecast_ids:
+        raise SystemExit("refusing (C3): the comparison rows do not match the forecast figures")
+    # C4: no potential figure is read as an outturn.
+    if any(f.basis == "potential" for f in result["figures"]):
+        raise SystemExit("refusing (C4): a potential figure entered the figures")
+    tally = Counter(r.rule for r in readings)
+    props = result["propositions"]
+    print(
+        f"C1: manifests and schema reports as cited; {len(readings)} strings read: "
+        f"{sum(1 for r in readings if r.outcome == 'figure')} figures, "
+        f"{sum(1 for r in readings if r.outcome == 'monthly')} monthly, "
+        f"{sum(1 for r in readings if r.outcome == 'declined')} declined; "
+        f"{len(result['figures'])} figures with the twelve-month means; {len(rows)} comparison "
+        f"rows ({sum(1 for c in rows if c.status == 'scored')} scored); {len(revs)} revision pairs"
+    )
+    for k, v in props.items():
+        print(f"{k}: {v['verdict']}")
+    f1 = "fires" if result["falsifiers"]["F1"] else "silent"
+    print(f"F1: {f1}; F2: {result['falsifiers']['F2']}")
+    if not write:
+        print("check: nothing written")
+        return
+    new_f = [k for k in figure_lines if k not in committed(FIGURES)]
+    new_c = [k for k in comparison_lines if k not in committed(COMPARISONS)]
+    new_r = [k for k in revision_lines if k not in committed(REVISIONS)]
+    with FIGURES.open("a") as out:
+        out.writelines(figure_lines[k] + "\n" for k in new_f)
+    with COMPARISONS.open("a") as out:
+        out.writelines(comparison_lines[k] + "\n" for k in new_c)
+    with REVISIONS.open("a") as out:
+        out.writelines(revision_lines[k] + "\n" for k in new_r)
+    computed_at = datetime.now(UTC).isoformat(timespec="seconds")
+    write_json(MONTHS, {"rule_version": rule_version, **result["months"]})
+    summary = {
+        "investigation": "022",
+        "declaration": DECLARATION.name,
+        "declaration_sha256": digest,
+        "plan_sha256": sha(PLAN),
+        "rule_version": rule_version,
+        "seal": seal,
+        "run_date": run_date,
+        "computed_at": computed_at,
+        **digests,
+        "pages_read": {
+            "modo_english": sum(1 for p in modo_pages if "/research/en/" in p["url"]),
+            "rns": len(rns_pages),
+        },
+        "strings": dict(tally.most_common()),
+        "figures": [asdict(f) for f in result["figures"]],
+        "comparison_status": dict(Counter(c.status for c in rows)),
+        "propositions": props,
+        "not_yet_scorable": result["not_yet_scorable"],
+        "falsifiers": result["falsifiers"],
+        "rows": {
+            "figures_appended": len(new_f),
+            "comparisons_appended": len(new_c),
+            "revisions_appended": len(new_r),
+            "figures_total": len(figure_lines),
+            "comparisons_total": len(comparison_lines),
+            "revisions_total": len(revision_lines),
+        },
+    }
+    write_json(SUMMARY, summary)
+    log = json.loads(RUN_LOG.read_text()) if RUN_LOG.exists() else []
+    log.append(
+        {
+            "run_date": run_date,
+            "computed_at": computed_at,
+            "seal": seal,
+            "declaration_sha256": digest,
+            "rule_version": rule_version,
+            "figures_appended": len(new_f),
+            "comparisons_appended": len(new_c),
+            "revisions_appended": len(new_r),
+        }
+    )
+    write_json(RUN_LOG, log)
+    names = ", ".join(x.name for x in (FIGURES, COMPARISONS, REVISIONS, MONTHS, SUMMARY))
+    print(f"written: {names}")
+
+
+def render() -> None:
+    """FINDINGS.md as a pure function of the committed evidence."""
+    summary = json.loads(SUMMARY.read_text())
+    for label, path in (("schema_modo_sha256", ARCHIVE_MODO), ("schema_rns_sha256", ARCHIVE_RNS)):
+        if sha(path / "schema-report.json") != summary[label]:
+            raise SystemExit(f"refusing: {path.name}'s schema report is not the one the run cites")
+    readings = [json.loads(line) for line in FIGURES.read_text().splitlines() if line.strip()]
+    rows = [json.loads(line) for line in COMPARISONS.read_text().splitlines() if line.strip()]
+    revs = [json.loads(line) for line in REVISIONS.read_text().splitlines() if line.strip()]
+    months = json.loads(MONTHS.read_text())
+    FINDINGS.write_text(page.render_findings(summary, readings, rows, revs, months))
+    print(f"rendered {FINDINGS.relative_to(REPO_ROOT)}")
 
 
 def main(argv: list[str] | None = None) -> None:
     parser = argparse.ArgumentParser(description=__doc__.split("\n")[0])
     parser.add_argument(
-        "--seal", help="prefix (>= 8 hex) of ACQUISITION.md's SHA-256 (index, acquire)"
+        "--seal",
+        help="prefix (>= 8 hex) of ACQUISITION.md's SHA-256 (index, acquire) or of "
+        "DECLARATION.md's (check, compute)",
     )
     parser.add_argument(
-        "--phase", choices=("index", "acquire", "schema", "compute", "render"), required=True
+        "--phase",
+        choices=("index", "acquire", "schema", "check", "compute", "render"),
+        required=True,
     )
     parser.add_argument("--run-date", default=date.today().isoformat())
     args = parser.parse_args(argv)
@@ -493,8 +699,12 @@ def main(argv: list[str] | None = None) -> None:
         acquire(args.seal)
     elif args.phase == "schema":
         schema()
+    elif args.phase == "check":
+        compute(args.seal, args.run_date, write=False)
+    elif args.phase == "compute":
+        compute(args.seal, args.run_date, write=True)
     else:
-        refuse_until_declared(args.phase)
+        render()
 
 
 if __name__ == "__main__":

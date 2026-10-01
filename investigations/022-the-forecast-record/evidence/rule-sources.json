@@ -3,7 +3,7 @@
   "ACQUISITION.md",
   "DECLARATION.md"
  ],
- "note": "ACQUISITION.md's discovery and schema-pass rules (A1 to A6, S2, S3) and DECLARATION.md's scoring rules (R-S, R-C, R-M, R-V, P-A to P-C, F3) are mapped here; the reading rules R-R are written after the schema pass and are mapped when they exist. The seal gates, the journal digest checks and the schema pass's refusal on an empty journal are enforced by run.py against artefacts outside the pure logic and have no unit test.",
+ "note": "ACQUISITION.md's discovery and schema-pass rules (A1 to A6, S1 to S4) and DECLARATION.md's reading rules (R-R0 to R-R7), scorability (R-S1 to R-S4), comparison (R-C), mismatch (R-M), revisions (R-V), propositions (P-A to P-C) and F1 to F3 are mapped here. The seal gates, C1 (digests against the frozen declaration and the manifests), C3, C4 and the schema pass's refusal on an empty journal are enforced by run.py against artefacts outside the pure logic and have no unit test.",
  "rules": {
   "A1 every Sitemap line of robots.txt once in order": "tests/test_modo.py::test_a1_every_sitemap_line_of_robots_once_in_order",
   "A1 a sitemap index and a urlset parse with lastmod as printed": "tests/test_modo.py::test_sitemap_index_and_urlset_parse_with_lastmod_as_printed",
@@ -12,10 +12,22 @@
   "A5 RNS links match on visible text and resolve against the base": "tests/test_modo.py::test_a5_links_match_on_visible_text_and_resolve_against_the_base",
   "A6 robots.txt Disallow for the wildcard agent is honoured": "tests/test_modo.py::test_a6_disallowed_paths_of_robots_are_honoured_for_the_wildcard_agent",
   "S2 the page text keeps JSON payloads and drops other scripts": "tests/test_modo.py::test_visible_text_keeps_json_payloads_and_drops_other_scripts",
-  "S2 figure strings are kept as printed with shape and sentence": "tests/test_modo.py::test_figure_strings_are_kept_as_printed_with_shape_and_sentence",
+  "S2 figure strings are kept as printed with shape and sentence, energy units and hourly suffixes intact": "tests/test_modo.py::test_figure_strings_are_kept_as_printed_with_shape_and_sentence",
   "S2 each figure string carries the tokens of its own sentence": "tests/test_modo.py::test_s2_each_figure_string_carries_the_tokens_of_its_own_sentence",
   "S1 S3 S4 the page report tallies vocabularies and dates and computes no value": "tests/test_modo.py::test_page_report_tallies_vocabularies_and_dates_and_computes_no_value",
   "S4 a page with no date and no figure is flagged": "tests/test_modo.py::test_page_report_flags_a_page_with_no_date_and_no_figure",
+  "S1 a PDF is reported as a PDF and scanned as text": "tests/test_modo.py::test_a_pdf_is_reported_as_a_pdf_and_scanned_as_text",
+  "R-R0 JSON payloads, title duplicates, PDFs and repeated strings are declined": "tests/test_forecast_record.py::test_rr0_json_title_pdf_and_duplicates_are_declined",
+  "R-R1 the publication date's precedence; R-R6 the 2023 cut-off": "tests/test_forecast_record.py::test_rr1_and_rr6_publication_date_precedence_and_the_2023_cutoff",
+  "R-R2 units, the k multiplier, kW, MWh, hourly, ranges, no period and annualised": "tests/test_forecast_record.py::test_rr2_units_multipliers_ranges_hourly_and_no_period",
+  "R-R2 a change and the starting point of a change are not levels": "tests/test_forecast_record.py::test_rr2_a_change_and_the_starting_point_of_a_change_are_not_levels",
+  "R-R3 components, subsets, the fleet fallback, durations and the Capacity Market qualifier": "tests/test_forecast_record.py::test_rr3_components_subsets_fleet_fallback_durations_and_the_cm_qualifier",
+  "R-R4 potential or contracted figures, and a future year needs a forecast word": "tests/test_forecast_record.py::test_rr4_potential_contracted_and_forecast_words",
+  "R-R5 the period nearest the figure, the page's month, and a month's currency": "tests/test_forecast_record.py::test_rr5_the_period_nearest_the_figure_and_the_page_month",
+  "R-R5 annual, horizon, end-year, in-year, partial periods and a fund's year from its RNS title": "tests/test_forecast_record.py::test_rr5_annual_horizon_end_year_in_year_partial_and_fund_title",
+  "R-R7 a page whose strings for its month disagree beyond rounding reads none": "tests/test_forecast_record.py::test_rr7_a_page_whose_strings_disagree_beyond_rounding_reads_none",
+  "R-S4 the twelve-month mean, a published annual figure's precedence, restatements (F4)": "tests/test_forecast_record.py::test_rs4_twelve_months_mean_published_figure_precedence_and_restatements",
+  "The pipeline end to end; F1 fires without a scorable vintage; F2 counts per-year strings": "tests/test_forecast_record.py::test_pipeline_runs_end_to_end_on_synthetic_pages_and_f1_fires_without_a_scorable_vintage",
   "R-S1 a year counts only if the forecast was published before it began": "tests/test_forecast_record.py::test_rs1_a_year_counts_only_if_the_forecast_was_published_before_it_began",
   "R-S1 an in-year figure is never scored": "tests/test_forecast_record.py::test_an_in_year_figure_is_never_scored_and_says_so",
   "R-C signed error is forecast minus realised in pounds and percent": "tests/test_forecast_record.py::test_rc_signed_error_is_forecast_minus_realised_in_pounds_and_percent",
@@ -30,6 +42,7 @@
   "R-V P-C direction between consecutive vintages of one scope and period": "tests/test_forecast_record.py::test_pc_counts_direction_between_consecutive_vintages_of_the_same_scope_and_period",
   "R-V one figure per vintage, duplicates listed": "tests/test_forecast_record.py::test_pc_reads_one_figure_per_vintage_and_lists_the_duplicates",
   "F3 a committed row that would change is named and the run refuses": "tests/test_forecast_record.py::test_f3_require_unchanged_names_committed_rows_that_would_differ",
-  "A figure refuses a negative value or a backwards period": "tests/test_forecast_record.py::test_a_figure_refuses_a_negative_value_or_a_backwards_period"
+  "A figure refuses a negative value or a backwards period": "tests/test_forecast_record.py::test_a_figure_refuses_a_negative_value_or_a_backwards_period",
+  "FINDINGS lists the not-yet-scorable table as a result and never says wrong": "tests/test_forecast_record_page.py::test_findings_lists_the_not_yet_scorable_table_as_a_result_and_never_says_wrong"
  }
 }

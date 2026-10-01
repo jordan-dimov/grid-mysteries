@@ -53,12 +53,23 @@ MIN_SEAL_LENGTH = 8
 #: A4: the client names itself; nothing else is sent (no cookie, no key).
 USER_AGENT = "grid-mysteries/022 (+https://research.a115.co.uk; public pages only)"
 #: A5: the RNS listings and the anchor-text rule for the documents wanted.
-RNS_LISTINGS = (
-    ("rns/listing-investegate", "https://www.investegate.co.uk/company/GRID"),
+INVESTEGATE = "https://www.investegate.co.uk/company"
+RNS_LISTINGS: tuple[tuple[str, str], ...] = tuple(
+    (
+        f"rns/listing-investegate-{ticker.lower()}-page{n}",
+        f"{INVESTEGATE}/{ticker}" + (f"?page={n}" if n > 1 else ""),
+    )
+    for ticker in ("GRID", "GSF", "HEIT")
+    for n in (1, 2, 3)
+) + (
     (
         "rns/listing-gresham-house",
         "https://greshamhouse.com/real-assets/energy-transition-investment/"
         "gresham-house-energy-storage-fund-plc/",
+    ),
+    (
+        "rns/listing-gore-street",
+        "https://www.gsenergystoragefund.com/investors/results-reports-and-presentations/",
     ),
 )
 RNS_LINK_PATTERN = r"(annual|final|full[- ]year|interim|half[- ]year(ly)?)\b.*\b(results|report)"
@@ -228,7 +239,7 @@ def index(seal: str | None, run_date: str) -> None:
     listings = []
     rns_links: list[dict[str, str]] = []
     for dataset, url in RNS_LISTINGS:
-        dest = day / "rns-listings" / modo.page_filename(url)
+        dest = day / "rns-listings" / (dataset.split("/", 1)[1] + ".html")
         failures += pin_each([(dataset, url, dest)], "discovery", dataset)
         if not dest.exists():
             listings.append({"dataset": dataset, "url": url, "pinned": False})
@@ -269,19 +280,27 @@ def index(seal: str | None, run_date: str) -> None:
             "failures": failures,
         },
     )
+    selected = sum(1 for s in selection if s.selected)
+    blocked = sum(1 for s in selection if s.reason.startswith("not fetched: disallowed"))
     log_acquisition(
         "index",
         digest,
         seal or "",
         urls_listed=len(selection),
-        urls_selected=sum(1 for s in selection if s.selected),
+        urls_selected=selected,
+        urls_disallowed=blocked,
         rns_links=len(rns_links),
         failures=len(failures),
     )
     print(
-        f"index: {len(selection)} URLs listed, {sum(1 for s in selection if s.selected)} selected "
+        f"index: {len(selection)} URLs listed, {selected} selected, {blocked} disallowed "
         f"({dict(reasons)}); {len(rns_links)} RNS links; written {RUN_INDEX.relative_to(REPO_ROOT)}"
     )
+    if blocked and not selected:
+        print(
+            "A6: every selected page is disallowed by robots.txt; issue 1 has no forecast side. "
+            "Stopping after the index, as the plan says; the sponsor decides the next step."
+        )
 
 
 # ---------------------------------------------------------------- acquire
@@ -299,6 +318,11 @@ def acquire(seal: str | None) -> None:
         for u in idx["urls"]
         if u["selected"]
     ]
+    if not pages and any(u["reason"].startswith("not fetched: disallowed") for u in idx["urls"]):
+        raise SystemExit(
+            "refusing (A6): every selected page is disallowed by robots.txt; nothing is fetched "
+            "under another agent or path, and the sponsor decides what comes next"
+        )
     failures = pin_each(pages, "pages", "modo pages")
     docs = []
     names: set[str] = set()

@@ -5382,5 +5382,26 @@
         "value": "2027-07-02"
       }
     ]
+  },
+  {
+    "predicate": "WatchReading",
+    "args": [
+      {
+        "type": "subject",
+        "value": "w-c14-ssen-lre-fd"
+      },
+      {
+        "type": "date",
+        "value": "2026-10-01"
+      },
+      {
+        "type": "subject",
+        "value": "1d9b820e7cf9462b9927ee1bada0eb8d4188ebefab83c5b11d3df7e1e386754e"
+      },
+      {
+        "type": "subject",
+        "value": "unchanged"
+      }
+    ]
   }
 ]

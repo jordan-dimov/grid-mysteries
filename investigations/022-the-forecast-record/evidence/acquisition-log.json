@@ -1,0 +1,15 @@
+{
+ "acquisitions": [
+  {
+   "phase": "index",
+   "at": "2026-10-01T13:40:27+00:00",
+   "plan_sha256": "962cb9b5db8d33a7ae14fe3b516dd5f999936911040316a4fcc03e8aeeb0e188",
+   "seal": "962cb9b5db8d33a7",
+   "urls_listed": 7579,
+   "urls_selected": 2746,
+   "urls_disallowed": 0,
+   "rns_links": 40,
+   "failures": 0
+  }
+ ]
+}

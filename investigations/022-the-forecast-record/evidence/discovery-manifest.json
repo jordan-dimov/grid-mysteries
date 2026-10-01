@@ -1,0 +1,146 @@
+[
+ {
+  "source": "rns",
+  "dataset": "rns/listing-gore-street",
+  "url": "https://www.gsenergystoragefund.com/investors/results-reports-and-presentations/",
+  "path": "data/raw/modo/022/2026-10-01/rns-listings/listing-gore-street.html",
+  "sha256": "ac5535328a09916db5bd972948a3e8af4d529b86ce151803f23880acd435426c",
+  "fetched_at": "2026-10-01T13:40:27.435605+00:00",
+  "bytes": 34146
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/listing-gresham-house",
+  "url": "https://greshamhouse.com/real-assets/energy-transition-investment/gresham-house-energy-storage-fund-plc/",
+  "path": "data/raw/modo/022/2026-10-01/rns-listings/listing-gresham-house.html",
+  "sha256": "0aaccf9e585fddcd81c258c8228ec343cd1e34153ba8cee6e291d6544dc9f094",
+  "fetched_at": "2026-10-01T13:40:26.787425+00:00",
+  "bytes": 275957
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/listing-investegate-grid-page1",
+  "url": "https://www.investegate.co.uk/company/GRID",
+  "path": "data/raw/modo/022/2026-10-01/rns-listings/listing-investegate-grid-page1.html",
+  "sha256": "1c3219583e786ab12c35d4b45695a68998d8c07fe07c2a628e40d3b221c4a1af",
+  "fetched_at": "2026-10-01T13:40:19.977842+00:00",
+  "bytes": 84700
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/listing-investegate-grid-page2",
+  "url": "https://www.investegate.co.uk/company/GRID?page=2",
+  "path": "data/raw/modo/022/2026-10-01/rns-listings/listing-investegate-grid-page2.html",
+  "sha256": "1ed431ca2851527b614644214f6ea7a925b16faba22dcd9db415a970be401138",
+  "fetched_at": "2026-10-01T13:40:20.755430+00:00",
+  "bytes": 85009
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/listing-investegate-grid-page3",
+  "url": "https://www.investegate.co.uk/company/GRID?page=3",
+  "path": "data/raw/modo/022/2026-10-01/rns-listings/listing-investegate-grid-page3.html",
+  "sha256": "57e41076e6691ae85b99e899a03f3f1e5f55671338b04da682ec4459d0097ce4",
+  "fetched_at": "2026-10-01T13:40:21.519137+00:00",
+  "bytes": 84168
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/listing-investegate-gsf-page1",
+  "url": "https://www.investegate.co.uk/company/GSF",
+  "path": "data/raw/modo/022/2026-10-01/rns-listings/listing-investegate-gsf-page1.html",
+  "sha256": "fbe5c4f46de91e521ea35ccd80993d8e25ac9ccf850224b24e9a195a07d43eeb",
+  "fetched_at": "2026-10-01T13:40:22.280978+00:00",
+  "bytes": 83035
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/listing-investegate-gsf-page2",
+  "url": "https://www.investegate.co.uk/company/GSF?page=2",
+  "path": "data/raw/modo/022/2026-10-01/rns-listings/listing-investegate-gsf-page2.html",
+  "sha256": "7fba0da3cfd949e6e75ac3ccb143c3bb4484ea0780f5dff9028730f323b5ba0a",
+  "fetched_at": "2026-10-01T13:40:23.045763+00:00",
+  "bytes": 83373
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/listing-investegate-gsf-page3",
+  "url": "https://www.investegate.co.uk/company/GSF?page=3",
+  "path": "data/raw/modo/022/2026-10-01/rns-listings/listing-investegate-gsf-page3.html",
+  "sha256": "13bc1260b337a50cf7138361e21ef3708d165d204debf32339679f74ba8fdd5c",
+  "fetched_at": "2026-10-01T13:40:23.804997+00:00",
+  "bytes": 83767
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/listing-investegate-heit-page1",
+  "url": "https://www.investegate.co.uk/company/HEIT",
+  "path": "data/raw/modo/022/2026-10-01/rns-listings/listing-investegate-heit-page1.html",
+  "sha256": "ecb4d69c3e000c351cd9643f3ce2f8ded7a2214d792ae8aa435cade548e3f09e",
+  "fetched_at": "2026-10-01T13:40:24.582200+00:00",
+  "bytes": 85127
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/listing-investegate-heit-page2",
+  "url": "https://www.investegate.co.uk/company/HEIT?page=2",
+  "path": "data/raw/modo/022/2026-10-01/rns-listings/listing-investegate-heit-page2.html",
+  "sha256": "ff126011afceb91e295bc354f0295580314e7bf118c7aa7dc7f4546165fbf163",
+  "fetched_at": "2026-10-01T13:40:25.339665+00:00",
+  "bytes": 84361
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/listing-investegate-heit-page3",
+  "url": "https://www.investegate.co.uk/company/HEIT?page=3",
+  "path": "data/raw/modo/022/2026-10-01/rns-listings/listing-investegate-heit-page3.html",
+  "sha256": "2d2526468ee73180dbbce885be5aad033640f74d783726a093dc730e41452a4e",
+  "fetched_at": "2026-10-01T13:40:26.110601+00:00",
+  "bytes": 84730
+ },
+ {
+  "source": "modo-energy",
+  "dataset": "modo/robots",
+  "url": "https://modoenergy.com/robots.txt",
+  "path": "data/raw/modo/022/2026-10-01/robots.txt",
+  "sha256": "3e8ba2698a812e96e67bae430ee20248fb64290943fb652adcbcfc2b7561ae3a",
+  "fetched_at": "2026-10-01T13:40:15.982369+00:00",
+  "bytes": 444
+ },
+ {
+  "source": "modo-energy",
+  "dataset": "modo/sitemap",
+  "url": "https://modoenergy.com/releases/sitemap.xml",
+  "path": "data/raw/modo/022/2026-10-01/sitemaps/releases__sitemap.xml.xml",
+  "sha256": "9fc0c53d6cbd5854bc12999430a31b11d0af088e4ddb4764df903e229ab2b066",
+  "fetched_at": "2026-10-01T13:40:18.505623+00:00",
+  "bytes": 223
+ },
+ {
+  "source": "modo-energy",
+  "dataset": "modo/sitemap",
+  "url": "https://modoenergy.com/research/sitemap.xml",
+  "path": "data/raw/modo/022/2026-10-01/sitemaps/research__sitemap.xml.xml",
+  "sha256": "73f117b4ffc180ecf840c7438e74d3536b42c6c86deba79c64122b652b7c65b9",
+  "fetched_at": "2026-10-01T13:40:17.889414+00:00",
+  "bytes": 1251062
+ },
+ {
+  "source": "modo-energy",
+  "dataset": "modo/sitemap",
+  "url": "https://modoenergy.com/sitemap.xml",
+  "path": "data/raw/modo/022/2026-10-01/sitemaps/sitemap.xml.xml",
+  "sha256": "8c73c266e51b4cca370cfb98fd1d3c1ccbc6b6d2406837eed89e1977759dc08e",
+  "fetched_at": "2026-10-01T13:40:16.581850+00:00",
+  "bytes": 4154
+ },
+ {
+  "source": "modo-energy",
+  "dataset": "modo/sitemap",
+  "url": "https://modoenergy.com/transmission-podcast/sitemap.xml",
+  "path": "data/raw/modo/022/2026-10-01/sitemaps/transmission-podcast__sitemap.xml.xml",
+  "sha256": "59cb09a296efad58abf1f7631738aaa0eb082d446a567219bf636882d1b1f112",
+  "fetched_at": "2026-10-01T13:40:19.163202+00:00",
+  "bytes": 42426
+ }
+]

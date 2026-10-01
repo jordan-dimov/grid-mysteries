@@ -10,6 +10,27 @@
    "urls_disallowed": 0,
    "rns_links": 40,
    "failures": 0
+  },
+  {
+   "phase": "acquire",
+   "at": "2026-10-01T14:23:01+00:00",
+   "plan_sha256": "962cb9b5db8d33a7ae14fe3b516dd5f999936911040316a4fcc03e8aeeb0e188",
+   "seal": "962cb9b5db8d33a7",
+   "pages": 2746,
+   "rns_documents": 40,
+   "failures": 2,
+   "failed": [
+    {
+     "dataset": "modo/page",
+     "url": "https://modoenergy.com/research/es/october-2026-gb-bess-forecast-update-near-term-revenue-up-long-term-down",
+     "error": "HTTPStatusError: Client error '404 Not Found' for url 'https://modoenergy.com/404'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404"
+    },
+    {
+     "dataset": "modo/page",
+     "url": "https://modoenergy.com/research/pt/october-2026-gb-bess-forecast-update-near-term-revenue-up-long-term-down",
+     "error": "HTTPStatusError: Client error '404 Not Found' for url 'https://modoenergy.com/404'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404"
+    }
+   ]
   }
  ]
 }

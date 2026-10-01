@@ -50,14 +50,16 @@ ASSET_SUFFIXES: tuple[str, ...] = (
 )
 
 #: The figure-looking string: a pound amount, an optional k/m multiplier,
-#: an optional range, then "per MW" or "per kW" in slash or word form and
-#: an optional "per year" in any spelling. Matched case-insensitively on the
-#: page's text; the match is kept as printed and never parsed to a value.
+#: an optional range, then "per MW", "per kW", "per MWh" or "per kWh" in
+#: slash or word form (the energy units first, so that "£99/MWh" is never
+#: cut to "£99/MW"), and an optional "per year", "per month" or "per hour"
+#: in any spelling. Matched case-insensitively on the page's text; the
+#: match is kept as printed and never parsed to a value.
 FIGURE_PATTERN = re.compile(
     r"£\s?\d[\d,]*(?:\.\d+)?\s?(?:k|m|bn)?"
     r"(?:\s?(?:-|–|—|to)\s?£?\s?\d[\d,]*(?:\.\d+)?\s?(?:k|m|bn)?)?"
-    r"\s?(?:/|per)\s?(?:MW|kW|MWh|kWh)"
-    r"(?:\s?(?:/|per)\s?(?:year|yr|annum|a\b|month|mo\b))?",
+    r"\s?(?:/|per)\s?(?:MWh|kWh|MW|kW)"
+    r"(?:\s?(?:/|per)\s?(?:year|yr|y\b|annum|a\b|month|mo\b|hour|hr|h\b))?",
     re.IGNORECASE,
 )
 
@@ -370,12 +372,28 @@ def year_tally(text: str) -> dict[str, int]:
     return dict(sorted(Counter(YEAR_PATTERN.findall(text)).items()))
 
 
+def pdf_text(data: bytes) -> str:
+    """A PDF's text as `pdftotext -layout` prints it (poppler, on PATH), so
+    that an RNS report's figures are scanned as text; empty when the tool
+    is absent, and the report says so with a flag."""
+    import shutil
+    import subprocess
+
+    if not shutil.which("pdftotext"):
+        return ""
+    done = subprocess.run(
+        ["pdftotext", "-layout", "-", "-"], input=data, capture_output=True, check=False
+    )
+    return done.stdout.decode("utf-8", errors="replace")
+
+
 @dataclass(slots=True)
 class PageReport:
     url: str
     path: str
     sha256: str
     bytes: int
+    format: str
     title: str | None
     dates: dict[str, list[str]]
     text_chars: int
@@ -392,16 +410,22 @@ class PageReport:
 def page_report(*, url: str, path: str, sha256: str, data: bytes) -> PageReport:
     """S1 to S4 for one pinned page. Computes no figure: every number
     stays the string it was printed as."""
-    html = data.decode("utf-8", errors="replace")
-    text = visible_text(html)
+    is_pdf = data.startswith(b"%PDF")
+    if is_pdf:
+        html = ""
+        text = " ".join(pdf_text(data).split())
+    else:
+        html = data.decode("utf-8", errors="replace")
+        text = visible_text(html)
     figures = figure_strings(text)
     report = PageReport(
         url=url,
         path=path,
         sha256=sha256,
         bytes=len(data),
-        title=title_of(html),
-        dates=date_strings(html),
+        format="pdf" if is_pdf else "html",
+        title=title_of(html) if html else None,
+        dates=date_strings(html) if html else {},
         text_chars=len(text),
         figures=figures,
         figure_shapes=dict(Counter(f.shape for f in figures).most_common()),
@@ -411,6 +435,8 @@ def page_report(*, url: str, path: str, sha256: str, data: bytes) -> PageReport:
         paywall=tally(text, PAYWALL_TOKENS),
         years=year_tally(text),
     )
+    if is_pdf and not text:
+        report.flags.append("pdf with no extractable text")
     if not report.dates:
         report.flags.append("no date declared")
     if not figures:

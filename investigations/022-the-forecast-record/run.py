@@ -424,18 +424,22 @@ def schema_pass(name: str, archive: Path, title: str, command: str) -> dict[str,
     ):
         lines += ["", f"## {heading}", "", f"| token | {unit} |", "|---|---|"]
         lines += [f"| {k} | {v:,} |" for k, v in counter.most_common()] or ["| none | 0 |"]
+    with_figures = [r for r in reports if r.figures]
     lines += [
         "",
-        "## Pages",
+        f"## Pages with at least one figure-looking string ({len(with_figures)} of {len(reports)})",
         "",
-        "| page | title | dates declared | figure strings | paywall tokens | flags |",
-        "|---|---|---|---|---|---|",
+        f"Every page, including the {len(reports) - len(with_figures)} with none, is in "
+        "`schema-report.json` with the same fields.",
+        "",
+        "| page | format | title | dates declared | figure strings | paywall tokens | flags |",
+        "|---|---|---|---|---|---|---|",
     ]
-    for r in reports:
+    for r in with_figures:
         dates = "; ".join(f"{k}={v[0]}" for k, v in sorted(r.dates.items())[:3])
         title_cell = (r.title or "").replace("|", "/")[:80]
         lines.append(
-            f"| `{r.url}` | {title_cell} | {dates} | {len(r.figures)} | "
+            f"| `{r.url}` | {r.format} | {title_cell} | {dates} | {len(r.figures)} | "
             f"{', '.join(r.paywall) or '-'} | {'; '.join(r.flags) or '-'} |"
         )
     (archive / "SCHEMA.md").write_text("\n".join(lines) + "\n")

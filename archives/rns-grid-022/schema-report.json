@@ -1,0 +1,5011 @@
+{
+ "archive": "rns",
+ "title": "Gresham House Energy Storage Fund RNS documents pinned by 022",
+ "generated_at": "2026-10-01T14:28:16+00:00",
+ "pages": 40,
+ "figure_strings": 229,
+ "pages_with_a_figure_string": 26,
+ "figure_shapes": {
+  "\u00a39/mwh": 32,
+  "\u00a39/mw/hr": 20,
+  "\u00a39k/mw/yr": 19,
+  "\u00a39 per mw": 19,
+  "\u00a39/mw per year": 18,
+  "\u00a39k/mw": 16,
+  "\u00a39 per mw/hr": 14,
+  "\u00a39/mw/h": 9,
+  "\u00a39/mw": 8,
+  "\u00a39 / mw": 7,
+  "\u00a39 per mw/yr": 5,
+  "\u00a39/kw/year": 5,
+  "\u00a39/mwh/hr": 5,
+  "\u00a39/mw/yr": 4,
+  "\u00a39 / mw / hr": 4,
+  "\u00a39 / mwh / hr": 4,
+  "\u00a39 per mwh": 4,
+  "\u00a39 per mw per hour": 3,
+  "\u00a39 per mw/ hr": 3,
+  "\u00a39k per mw": 3,
+  "\u00a39k/mw/year": 2,
+  "\u00a39/mwh/h": 2,
+  "\u00a39/kw": 2,
+  "\u00a39 / mw / yr": 2,
+  "\u00a39k / mw": 2,
+  "\u00a39/ mwh": 2,
+  "\u00a39k per mw/year": 1,
+  "\u00a39k per mw/yr": 1,
+  "\u00a39k per mw per hour": 1,
+  "\u00a39/kw/ year": 1,
+  "\u00a39 /mw/hr": 1,
+  "\u00a39 per mw/year": 1,
+  "\u00a3 9 per mw/h": 1,
+  "\u00a39 per mw/h": 1,
+  "\u00a39 per mw/ yr": 1,
+  "\u00a39/ mw": 1,
+  "\u00a39k/mwh": 1,
+  "\u00a39-9 per mw per hour": 1,
+  "\u00a39-9 per mwh": 1,
+  "\u00a39 per mw per annum": 1,
+  "\u00a39k/mw per annum": 1
+ },
+ "date_fields_present_on_pages": {
+  "json:dateCreated": 22,
+  "json:dateModified": 22,
+  "meta:og:updated_time": 1
+ },
+ "duration_tokens": {
+  "2-hour": 48,
+  "two-hour": 33,
+  "1-hour": 13,
+  "1hr": 13,
+  "one-hour": 11,
+  "2hr": 9,
+  "8-hour": 8,
+  "eight-hour": 6,
+  "four-hour": 4,
+  "1h": 3,
+  "2h": 3,
+  "4-hour": 2
+ },
+ "basis_tokens": {
+  "average": 619,
+  "forecasts": 333,
+  "potential": 329,
+  "forecast": 125,
+  "outlook": 117,
+  "fleet": 100,
+  "index": 86,
+  "actual": 81,
+  "benchmark": 57,
+  "typical": 33,
+  "forecasting": 20,
+  "realised": 18,
+  "outturn": 2,
+  "projection": 2
+ },
+ "horizon_tokens": {
+  "annual": 1387,
+  "long-term": 250,
+  "long term": 101,
+  "monthly": 58,
+  "decade": 8
+ },
+ "pages_with_paywall_token": {
+  "log in": 24,
+  "login": 24,
+  "premium": 24,
+  "unlock": 13,
+  "subscribe": 4
+ },
+ "flags": {
+  "no date declared": 17,
+  "no figure-looking string": 14,
+  "under 500 characters of text": 1
+ },
+ "per_page": [
+  {
+   "url": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/interim-results-for-period-ended-30-june-2026/9785600",
+   "path": "data/raw/rns/022/001-announcement__rns__gresham-house-energy-storage-fund--grid__interim-results-for-period-ended-30-june-2026__9785600.html",
+   "sha256": "52346189d09d6678eb3d07cae032085f0e82a7fc64f9c85f106400ef169ce7d4",
+   "bytes": 79047,
+   "format": "html",
+   "title": "Interim Results for period ended 30 June 2026 | Company Announcement | Investegate",
+   "dates": {
+    "json:dateCreated": [
+     "2026-09-23 07:01:16"
+    ],
+    "json:dateModified": [
+     "2026-09-23 07:02:16"
+    ]
+   },
+   "text_chars": 25688,
+   "figures": [
+    {
+     "as_printed": "\u00a363,200 / MW",
+     "shape": "\u00a39 / mw",
+     "offset": 10117,
+     "sentence": "Revenue growth was primarily driven by the increase in operational MW capacity, with revenue generated per operational MW decreasing to \u00a363,200 / MW versus \u00a375,100 / MW in H1 2025, due to a weaker merchant revenue environment and the unavailability of certain assets while augmentation and maintenance works were completed.",
+     "duration": {},
+     "basis": {},
+     "horizon": {},
+     "years": {
+      "2025": 1
+     }
+    },
+    {
+     "as_printed": "\u00a375,100 / MW",
+     "shape": "\u00a39 / mw",
+     "offset": 10137,
+     "sentence": "Revenue growth was primarily driven by the increase in operational MW capacity, with revenue generated per operational MW decreasing to \u00a363,200 / MW versus \u00a375,100 / MW in H1 2025, due to a weaker merchant revenue environment and the unavailability of certain assets while augmentation and maintenance works were completed.",
+     "duration": {},
+     "basis": {},
+     "horizon": {},
+     "years": {
+      "2025": 1
+     }
+    }
+   ],
+   "figure_shapes": {
+    "\u00a39 / mw": 2
+   },
+   "duration": {
+    "two-hour": 1
+   },
+   "basis": {
+    "actual": 1,
+    "potential": 1,
+    "average": 1
+   },
+   "horizon": {
+    "long-term": 1
+   },
+   "paywall": {
+    "subscribe": 1,
+    "log in": 1,
+    "login": 1,
+    "premium": 3
+   },
+   "years": {
+    "2024": 2,
+    "2025": 13,
+    "2026": 32,
+    "2027": 2,
+    "2028": 1,
+    "2029": 1
+   },
+   "flags": []
+  },
+  {
+   "url": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/notice-of-interim-2026-results/9778560",
+   "path": "data/raw/rns/022/002-announcement__rns__gresham-house-energy-storage-fund--grid__notice-of-interim-2026-results__9778560.html",
+   "sha256": "00ed53c72b1467aa6c0f2bc9f23c8bddfe8c238fb75732f9a9c767bfca15c238",
+   "bytes": 62440,
+   "format": "html",
+   "title": "Notice of Interim 2026 Results | Company Announcement | Investegate",
+   "dates": {
+    "json:dateCreated": [
+     "2026-09-18 07:01:12"
+    ],
+    "json:dateModified": [
+     "2026-09-18 07:02:13"
+    ]
+   },
+   "text_chars": 13397,
+   "figures": [],
+   "figure_shapes": {},
+   "duration": {},
+   "basis": {
+    "actual": 1
+   },
+   "horizon": {},
+   "paywall": {
+    "subscribe": 1,
+    "log in": 1,
+    "login": 1
+   },
+   "years": {
+    "2026": 13
+   },
+   "flags": [
+    "no figure-looking string"
+   ]
+  },
+  {
+   "url": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/full-year-results-to-31-december-2025/9529253",
+   "path": "data/raw/rns/022/003-announcement__rns__gresham-house-energy-storage-fund--grid__full-year-results-to-31-december-2025__9529253.html",
+   "sha256": "f72ecc586fc5a699280d172fb36b480101b909fd782f7f39573bf60f8d52a272",
+   "bytes": 76534,
+   "format": "html",
+   "title": "Full-Year Results to 31 December 2025 | Company Announcement | Investegate",
+   "dates": {
+    "json:dateCreated": [
+     "2026-04-21 07:01:15"
+    ],
+    "json:dateModified": [
+     "2026-04-21 07:02:14"
+    ]
+   },
+   "text_chars": 22520,
+   "figures": [
+    {
+     "as_printed": "\u00a368.6k/MW/year",
+     "shape": "\u00a39k/mw/year",
+     "offset": 8588,
+     "sentence": "Revenue growth was primarily driven by stronger revenue generation from existing operational capacity: the portfolio generated \u00a368.6k/MW/year, up 14.7% from \u00a359.8k/MW/year in FY2024.",
+     "duration": {},
+     "basis": {},
+     "horizon": {},
+     "years": {}
+    },
+    {
+     "as_printed": "\u00a359.8k/MW/year",
+     "shape": "\u00a39k/mw/year",
+     "offset": 8618,
+     "sentence": "Revenue growth was primarily driven by stronger revenue generation from existing operational capacity: the portfolio generated \u00a368.6k/MW/year, up 14.7% from \u00a359.8k/MW/year in FY2024.",
+     "duration": {},
+     "basis": {},
+     "horizon": {},
+     "years": {}
+    }
+   ],
+   "figure_shapes": {
+    "\u00a39k/mw/year": 2
+   },
+   "duration": {
+    "two-hour": 1,
+    "4-hour": 1
+   },
+   "basis": {
+    "actual": 1,
+    "potential": 2,
+    "average": 4
+   },
+   "horizon": {
+    "long-term": 1,
+    "long term": 1,
+    "annual": 4
+   },
+   "paywall": {
+    "subscribe": 1,
+    "log in": 1,
+    "login": 1,
+    "unlock": 1
+   },
+   "years": {
+    "2024": 3,
+    "2025": 24,
+    "2026": 13,
+    "2027": 6,
+    "2029": 1
+   },
+   "flags": []
+  },
+  {
+   "url": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/notice-of-full-year-2025-results/9521771",
+   "path": "data/raw/rns/022/004-announcement__rns__gresham-house-energy-storage-fund--grid__notice-of-full-year-2025-results__9521771.html",
+   "sha256": "bcd051d3410f45296b6fc78b8d34a3816f3ab405fff5dff9cd42a3b52522b86c",
+   "bytes": 56873,
+   "format": "html",
+   "title": "Notice of Full-Year 2025 Results | Company Announcement | Investegate",
+   "dates": {
+    "json:dateCreated": [
+     "2026-04-15 11:23:06"
+    ],
+    "json:dateModified": [
+     "2026-04-15 11:24:07"
+    ]
+   },
+   "text_chars": 8166,
+   "figures": [],
+   "figure_shapes": {},
+   "duration": {},
+   "basis": {},
+   "horizon": {},
+   "paywall": {
+    "log in": 1,
+    "login": 1
+   },
+   "years": {
+    "2025": 8,
+    "2026": 5
+   },
+   "flags": [
+    "no figure-looking string"
+   ]
+  },
+  {
+   "url": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/half-year-results-and-capital-allocation-policy/9127370",
+   "path": "data/raw/rns/022/005-announcement__rns__gresham-house-energy-storage-fund--grid__half-year-results-and-capital-allocation-policy__9127370.html",
+   "sha256": "5fe7faaa7374045cf299c39184bb14f141299e4f128e9a310269d8b6aa4c1cf2",
+   "bytes": 82659,
+   "format": "html",
+   "title": "Half-year results and capital allocation policy | Company Announcement | Investegate",
+   "dates": {
+    "json:dateCreated": [
+     "2025-09-24 07:01:28"
+    ],
+    "json:dateModified": [
+     "2025-09-24 07:02:03"
+    ]
+   },
+   "text_chars": 25037,
+   "figures": [
+    {
+     "as_printed": "\u00a375k/MW/Yr",
+     "shape": "\u00a39k/mw/yr",
+     "offset": 7927,
+     "sentence": "Once construction spend has concluded and the portfolio has reached 1.8GW, at the current merchant revenue level of \u00a375k/MW/Yr [1] on 2-hour assets, the portfolio could generate excess cash flows of c.10p per share.",
+     "duration": {
+      "2-hour": 1
+     },
+     "basis": {},
+     "horizon": {},
+     "years": {}
+    },
+    {
+     "as_printed": "\u00a390k/MW/Yr",
+     "shape": "\u00a39k/mw/yr",
+     "offset": 8133,
+     "sentence": "For context, third-party forecasters are anticipating 2028 merchant revenue levels for 2-hour assets of c.\u00a390k/MW/Yr.",
+     "duration": {
+      "2-hour": 1
+     },
+     "basis": {},
+     "horizon": {},
+     "years": {
+      "2028": 1
+     }
+    }
+   ],
+   "figure_shapes": {
+    "\u00a39k/mw/yr": 2
+   },
+   "duration": {
+    "2-hour": 4
+   },
+   "basis": {
+    "forecast": 1,
+    "forecasts": 7,
+    "outlook": 1,
+    "actual": 2,
+    "potential": 2,
+    "average": 2
+   },
+   "horizon": {
+    "long-term": 4
+   },
+   "paywall": {
+    "subscribe": 1,
+    "log in": 1,
+    "login": 1
+   },
+   "years": {
+    "2024": 8,
+    "2025": 16,
+    "2026": 5,
+    "2027": 4,
+    "2028": 3
+   },
+   "flags": []
+  },
+  {
+   "url": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/q2-2025-nav-and-notice-of-interim-results/9109745",
+   "path": "data/raw/rns/022/006-announcement__rns__gresham-house-energy-storage-fund--grid__q2-2025-nav-and-notice-of-interim-results__9109745.html",
+   "sha256": "bd91315158b635fe8a0d54a455b1b1a07df42b532a0875076077d5cbddc47ce7",
+   "bytes": 56370,
+   "format": "html",
+   "title": "Q2 2025 NAV and Notice of Interim Results | Company Announcement | Investegate",
+   "dates": {
+    "json:dateCreated": [
+     "2025-09-16 07:01:44"
+    ],
+    "json:dateModified": [
+     "2025-09-16 07:04:04"
+    ]
+   },
+   "text_chars": 8460,
+   "figures": [],
+   "figure_shapes": {},
+   "duration": {},
+   "basis": {},
+   "horizon": {},
+   "paywall": {
+    "log in": 1,
+    "login": 1
+   },
+   "years": {
+    "2024": 2,
+    "2025": 14,
+    "2026": 1
+   },
+   "flags": [
+    "no figure-looking string"
+   ]
+  },
+  {
+   "url": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/full-year-results-to-31-december-2024/8840648",
+   "path": "data/raw/rns/022/007-announcement__rns__gresham-house-energy-storage-fund--grid__full-year-results-to-31-december-2024__8840648.html",
+   "sha256": "6d322301c4edbbb1b088da0a37150b5ea6b4324cf76487f5f0846e8d6881fbcf",
+   "bytes": 79592,
+   "format": "html",
+   "title": "Full-Year Results to 31 December 2024 | Company Announcement | Investegate",
+   "dates": {
+    "json:dateCreated": [
+     "2025-04-23 07:01:29"
+    ],
+    "json:dateModified": [
+     "2025-04-23 07:04:03"
+    ]
+   },
+   "text_chars": 17407,
+   "figures": [
+    {
+     "as_printed": "\u00a3684k/MW",
+     "shape": "\u00a39k/mw",
+     "offset": 5120,
+     "sentence": "This values the Operational portfolio at \u00a3684k/MW.",
+     "duration": {},
+     "basis": {},
+     "horizon": {},
+     "years": {}
+    },
+    {
+     "as_printed": "\u00a3670k/MW",
+     "shape": "\u00a39k/mw",
+     "offset": 5163,
+     "sentence": "Discounted cashflows represented \u00a3670k/MW while working capital represented the remainder.",
+     "duration": {},
+     "basis": {},
+     "horizon": {},
+     "years": {}
+    }
+   ],
+   "figure_shapes": {
+    "\u00a39k/mw": 2
+   },
+   "duration": {
+    "one-hour": 1,
+    "2-hour": 2
+   },
+   "basis": {
+    "forecast": 1,
+    "forecasts": 1,
+    "outlook": 1,
+    "average": 3
+   },
+   "horizon": {
+    "long term": 2,
+    "annual": 8
+   },
+   "paywall": {
+    "log in": 1,
+    "login": 1
+   },
+   "years": {
+    "2023": 10,
+    "2024": 28,
+    "2025": 16,
+    "2026": 1,
+    "2030": 1
+   },
+   "flags": []
+  },
+  {
+   "url": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/half-year-results-to-30-june-2024/8448207",
+   "path": "data/raw/rns/022/008-announcement__rns__gresham-house-energy-storage-fund--grid__half-year-results-to-30-june-2024__8448207.html",
+   "sha256": "6f2fa1a2410b39e0da6100b66b3360a539991dc9a6717509e1dab2230117088d",
+   "bytes": 66034,
+   "format": "html",
+   "title": "Half-year results to 30 June 2024 | Company Announcement | Investegate",
+   "dates": {
+    "json:dateCreated": [
+     "2024-09-30 07:02:10"
+    ],
+    "json:dateModified": [
+     "2024-09-30 07:04:13"
+    ]
+   },
+   "text_chars": 14346,
+   "figures": [],
+   "figure_shapes": {},
+   "duration": {},
+   "basis": {
+    "forecast": 1,
+    "forecasts": 1,
+    "outlook": 2,
+    "potential": 2,
+    "average": 2
+   },
+   "horizon": {
+    "long term": 1
+   },
+   "paywall": {
+    "log in": 1,
+    "login": 1
+   },
+   "years": {
+    "2023": 5,
+    "2024": 23,
+    "2025": 4,
+    "2026": 1,
+    "2027": 1
+   },
+   "flags": [
+    "no figure-looking string"
+   ]
+  },
+  {
+   "url": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/notice-of-interim-results/8423402",
+   "path": "data/raw/rns/022/009-announcement__rns__gresham-house-energy-storage-fund--grid__notice-of-interim-results__8423402.html",
+   "sha256": "2733725ed610598a57331c900dcfccff131ed1967b24ecb1eef74ddab3c658a0",
+   "bytes": 54846,
+   "format": "html",
+   "title": "Notice of Interim Results | Company Announcement | Investegate",
+   "dates": {
+    "json:dateCreated": [
+     "2024-09-18 10:00:10"
+    ],
+    "json:dateModified": [
+     "2024-09-18 10:02:08"
+    ]
+   },
+   "text_chars": 7993,
+   "figures": [],
+   "figure_shapes": {},
+   "duration": {},
+   "basis": {},
+   "horizon": {
+    "long term": 1
+   },
+   "paywall": {
+    "log in": 1,
+    "login": 1
+   },
+   "years": {
+    "2024": 6,
+    "2026": 1
+   },
+   "flags": [
+    "no figure-looking string"
+   ]
+  },
+  {
+   "url": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/full-year-results-to-31-december-2023/8160652",
+   "path": "data/raw/rns/022/010-announcement__rns__gresham-house-energy-storage-fund--grid__full-year-results-to-31-december-2023__8160652.html",
+   "sha256": "626249014262aa07c72f4ac4412acf71d5229a7855e1e18e27a1072cd1e8f3aa",
+   "bytes": 76337,
+   "format": "html",
+   "title": "Full-Year Results to 31 December 2023 | Company Announcement | Investegate",
+   "dates": {
+    "json:dateCreated": [
+     "2024-04-29 07:01:17"
+    ],
+    "json:dateModified": [
+     "2024-04-29 07:02:12"
+    ]
+   },
+   "text_chars": 16224,
+   "figures": [],
+   "figure_shapes": {},
+   "duration": {},
+   "basis": {
+    "forecasts": 3,
+    "outlook": 2,
+    "potential": 1,
+    "average": 2
+   },
+   "horizon": {
+    "long-term": 2,
+    "long term": 1,
+    "annual": 6
+   },
+   "paywall": {
+    "log in": 1,
+    "login": 1
+   },
+   "years": {
+    "2022": 4,
+    "2023": 17,
+    "2024": 25,
+    "2025": 5,
+    "2026": 2
+   },
+   "flags": [
+    "no figure-looking string"
+   ]
+  },
+  {
+   "url": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/notice-of-full-year-2023-results/8153272",
+   "path": "data/raw/rns/022/011-announcement__rns__gresham-house-energy-storage-fund--grid__notice-of-full-year-2023-results__8153272.html",
+   "sha256": "7fe0ba89fcbab459e00eb785ee9f2a83e984ff1ac92434a9a40e8633c3c41021",
+   "bytes": 56422,
+   "format": "html",
+   "title": "Notice of Full-Year 2023 Results | Company Announcement | Investegate",
+   "dates": {
+    "json:dateCreated": [
+     "2024-04-24 07:01:49"
+    ],
+    "json:dateModified": [
+     "2024-04-24 07:02:11"
+    ]
+   },
+   "text_chars": 8032,
+   "figures": [],
+   "figure_shapes": {},
+   "duration": {},
+   "basis": {},
+   "horizon": {
+    "long term": 1
+   },
+   "paywall": {
+    "log in": 1,
+    "login": 1
+   },
+   "years": {
+    "2023": 7,
+    "2024": 5,
+    "2026": 1
+   },
+   "flags": [
+    "no figure-looking string"
+   ]
+  },
+  {
+   "url": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/final-results/9668965",
+   "path": "data/raw/rns/022/012-announcement__rns__gore-street-energy-storage-fund--gsf__final-results__9668965.html",
+   "sha256": "244976b91f25312fe86efef5170a3dd91d1e8ec48f7bdc8c9a4fc758e6d960a3",
+   "bytes": 85289,
+   "format": "html",
+   "title": "Final Results | Company Announcement | Investegate",
+   "dates": {
+    "json:dateCreated": [
+     "2026-07-15 07:01:21"
+    ],
+    "json:dateModified": [
+     "2026-07-15 07:02:14"
+    ]
+   },
+   "text_chars": 20501,
+   "figures": [
+    {
+     "as_printed": "\u00a37.32 per MW/hr",
+     "shape": "\u00a39 per mw/hr",
+     "offset": 4031,
+     "sentence": "o Average revenue for the year was \u00a37.32 per MW/hr (31 March 2025: \u00a39.56 per MW/hr).",
+     "duration": {},
+     "basis": {
+      "average": 1
+     },
+     "horizon": {},
+     "years": {
+      "2025": 1
+     }
+    },
+    {
+     "as_printed": "\u00a39.56 per MW/hr",
+     "shape": "\u00a39 per mw/hr",
+     "offset": 4063,
+     "sentence": "o Average revenue for the year was \u00a37.32 per MW/hr (31 March 2025: \u00a39.56 per MW/hr).",
+     "duration": {},
+     "basis": {
+      "average": 1
+     },
+     "horizon": {},
+     "years": {
+      "2025": 1
+     }
+    },
+    {
+     "as_printed": "\u00a35.60/MW/hr",
+     "shape": "\u00a39/mw/hr",
+     "offset": 4253,
+     "sentence": "Though reducing year-on-year due to challenging market conditions in GB and Texas, this figure shows the benefit of diversification over a GB only portfolio which averaged \u00a35.60/MW/hr.",
+     "duration": {},
+     "basis": {},
+     "horizon": {},
+     "years": {}
+    }
+   ],
+   "figure_shapes": {
+    "\u00a39 per mw/hr": 2,
+    "\u00a39/mw/hr": 1
+   },
+   "duration": {
+    "1-hour": 1,
+    "2-hour": 1
+   },
+   "basis": {
+    "forecast": 2,
+    "forecasts": 9,
+    "realised": 1,
+    "actual": 2,
+    "potential": 1,
+    "fleet": 2,
+    "average": 8
+   },
+   "horizon": {
+    "long-term": 1,
+    "annual": 7
+   },
+   "paywall": {
+    "log in": 1,
+    "login": 1,
+    "premium": 1
+   },
+   "years": {
+    "2025": 17,
+    "2026": 28,
+    "2027": 2,
+    "2028": 1
+   },
+   "flags": []
+  },
+  {
+   "url": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/notice-of-annual-results/9653026",
+   "path": "data/raw/rns/022/013-announcement__rns__gore-street-energy-storage-fund--gsf__notice-of-annual-results__9653026.html",
+   "sha256": "8ebaebba63099d5fe7fef5f12d2d39eae84f39695fe276496c146042d8f81db2",
+   "bytes": 54658,
+   "format": "html",
+   "title": "Notice of Annual Results | Company Announcement | Investegate",
+   "dates": {
+    "json:dateCreated": [
+     "2026-07-06 07:01:40"
+    ],
+    "json:dateModified": [
+     "2026-07-06 07:04:07"
+    ]
+   },
+   "text_chars": 7969,
+   "figures": [],
+   "figure_shapes": {},
+   "duration": {},
+   "basis": {
+    "potential": 1
+   },
+   "horizon": {
+    "annual": 8
+   },
+   "paywall": {
+    "log in": 1,
+    "login": 1
+   },
+   "years": {
+    "2026": 11
+   },
+   "flags": [
+    "no figure-looking string"
+   ]
+  },
+  {
+   "url": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/half-year-financial-report/9295710",
+   "path": "data/raw/rns/022/014-announcement__rns__gore-street-energy-storage-fund--gsf__half-year-financial-report__9295710.html",
+   "sha256": "d043c37b0215af1200ed202d4197871174651cfd2fe7e074935d7077b76b3334",
+   "bytes": 491399,
+   "format": "html",
+   "title": "Half-year Financial Report | Company Announcement | Investegate",
+   "dates": {
+    "json:dateCreated": [
+     "2025-12-15 07:01:27"
+    ],
+    "json:dateModified": [
+     "2025-12-15 07:02:15"
+    ]
+   },
+   "text_chars": 125657,
+   "figures": [
+    {
+     "as_printed": "\u00a367.9k per MW/year",
+     "shape": "\u00a39k per mw/year",
+     "offset": 4756,
+     "sentence": "\u00b7 Average revenue over the period was \u00a367.9k per MW/year (H1 24: \u00a382.7k per MW/yr).",
+     "duration": {},
+     "basis": {
+      "average": 1
+     },
+     "horizon": {},
+     "years": {}
+    },
+    {
+     "as_printed": "\u00a382.7k per MW/yr",
+     "shape": "\u00a39k per mw/yr",
+     "offset": 4783,
+     "sentence": "\u00b7 Average revenue over the period was \u00a367.9k per MW/year (H1 24: \u00a382.7k per MW/yr).",
+     "duration": {},
+     "basis": {
+      "average": 1
+     },
+     "horizon": {},
+     "years": {}
+    },
+    {
+     "as_printed": "\u00a37.75 per MW per hour",
+     "shape": "\u00a39 per mw per hour",
+     "offset": 21644,
+     "sentence": "Average revenue over the half-year period was \u00a37.75 per MW per hour-above that of a GB-only portfolio, underscoring the benefit of geographical diversification.",
+     "duration": {},
+     "basis": {
+      "average": 1
+     },
+     "horizon": {},
+     "years": {}
+    },
+    {
+     "as_printed": "\u00a367.9k per MW per hour",
+     "shape": "\u00a39k per mw per hour",
+     "offset": 65147,
+     "sentence": "Fleet wide performance generated an average revenue of \u00a367.9k per MW per hour which is based on the average operational capacity over the period delivered total revenue of \u00a316.7 million.",
+     "duration": {},
+     "basis": {
+      "fleet": 1,
+      "average": 2
+     },
+     "horizon": {},
+     "years": {}
+    },
+    {
+     "as_printed": "\u00a36.61/MW/h",
+     "shape": "\u00a39/mw/h",
+     "offset": 83160,
+     "sentence": "From April through September 2025, revenue generated by GSET was 23% above the Modo 1-hr benchmark, (\u00a36.61/MW/h against \u00a35.39/MW/h).",
+     "duration": {},
+     "basis": {
+      "benchmark": 1
+     },
+     "horizon": {},
+     "years": {
+      "2025": 1
+     }
+    },
+    {
+     "as_printed": "\u00a35.39/MW/h",
+     "shape": "\u00a39/mw/h",
+     "offset": 83179,
+     "sentence": "From April through September 2025, revenue generated by GSET was 23% above the Modo 1-hr benchmark, (\u00a36.61/MW/h against \u00a35.39/MW/h).",
+     "duration": {},
+     "basis": {
+      "benchmark": 1
+     },
+     "horizon": {},
+     "years": {
+      "2025": 1
+     }
+    }
+   ],
+   "figure_shapes": {
+    "\u00a39/mw/h": 2,
+    "\u00a39k per mw/year": 1,
+    "\u00a39k per mw/yr": 1,
+    "\u00a39 per mw per hour": 1,
+    "\u00a39k per mw per hour": 1
+   },
+   "duration": {
+    "1-hour": 3,
+    "one-hour": 2,
+    "1hr": 3,
+    "2-hour": 2,
+    "two-hour": 2,
+    "2hr": 1,
+    "8-hour": 2
+   },
+   "basis": {
+    "forecast": 4,
+    "forecasts": 11,
+    "outlook": 2,
+    "realised": 2,
+    "actual": 5,
+    "potential": 8,
+    "benchmark": 5,
+    "fleet": 10,
+    "average": 41,
+    "typical": 1
+   },
+   "horizon": {
+    "long-term": 10,
+    "long term": 1,
+    "annual": 14
+   },
+   "paywall": {
+    "log in": 1,
+    "login": 1,
+    "premium": 10,
+    "unlock": 4
+   },
+   "years": {
+    "2021": 2,
+    "2022": 2,
+    "2023": 1,
+    "2024": 51,
+    "2025": 161,
+    "2026": 23,
+    "2027": 2,
+    "2028": 1,
+    "2029": 4,
+    "2030": 1
+   },
+   "flags": []
+  },
+  {
+   "url": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/notice-of-interim-results/9269179",
+   "path": "data/raw/rns/022/015-announcement__rns__gore-street-energy-storage-fund--gsf__notice-of-interim-results__9269179.html",
+   "sha256": "3d7f4afa1a216a83b1e3a9c0ee720192272c412d4d361e79ea909c79900d006a",
+   "bytes": 53125,
+   "format": "html",
+   "title": "Notice of Interim Results | Company Announcement | Investegate",
+   "dates": {
+    "json:dateCreated": [
+     "2025-12-02 07:01:58"
+    ],
+    "json:dateModified": [
+     "2025-12-02 07:04:08"
+    ]
+   },
+   "text_chars": 7833,
+   "figures": [],
+   "figure_shapes": {},
+   "duration": {},
+   "basis": {
+    "potential": 1
+   },
+   "horizon": {},
+   "paywall": {
+    "log in": 1,
+    "login": 1
+   },
+   "years": {
+    "2025": 10,
+    "2026": 1
+   },
+   "flags": [
+    "no figure-looking string"
+   ]
+  },
+  {
+   "url": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/final-results/8983474",
+   "path": "data/raw/rns/022/016-announcement__rns__gore-street-energy-storage-fund--gsf__final-results__8983474.html",
+   "sha256": "70c7f18ba982ca3660f450d511e44c6148fbe0053001745b7fa67c2094703b0e",
+   "bytes": 612405,
+   "format": "html",
+   "title": "Final Results | Company Announcement | Investegate",
+   "dates": {
+    "json:dateCreated": [
+     "2025-07-17 07:01:21"
+    ],
+    "json:dateModified": [
+     "2025-07-17 07:04:03"
+    ]
+   },
+   "text_chars": 171415,
+   "figures": [
+    {
+     "as_printed": "\u00a39.85 per MW/hr",
+     "shape": "\u00a39 per mw/hr",
+     "offset": 2342,
+     "sentence": "\u00b7 Average revenue for the year was \u00a39.85 per MW/hr, equal to \u00a386,000 per MW/yr.",
+     "duration": {},
+     "basis": {
+      "average": 1
+     },
+     "horizon": {},
+     "years": {}
+    },
+    {
+     "as_printed": "\u00a386,000 per MW/yr",
+     "shape": "\u00a39 per mw/yr",
+     "offset": 2368,
+     "sentence": "\u00b7 Average revenue for the year was \u00a39.85 per MW/hr, equal to \u00a386,000 per MW/yr.",
+     "duration": {},
+     "basis": {
+      "average": 1
+     },
+     "horizon": {},
+     "years": {}
+    },
+    {
+     "as_printed": "\u00a39.85/MW/hr",
+     "shape": "\u00a39/mw/hr",
+     "offset": 17446,
+     "sentence": "This resulted in an average revenue of \u00a39.85/MW/hr.",
+     "duration": {},
+     "basis": {
+      "average": 1
+     },
+     "horizon": {},
+     "years": {}
+    },
+    {
+     "as_printed": "\u00a360/kW/year",
+     "shape": "\u00a39/kw/year",
+     "offset": 34169,
+     "sentence": "The Capacity Market T-4 auction cleared at \u00a360/kW/year, with the portfolio securing 51.809 MW of non-derated capacity.",
+     "duration": {},
+     "basis": {},
+     "horizon": {},
+     "years": {}
+    },
+    {
+     "as_printed": "\u00a3135.31/kW/ year",
+     "shape": "\u00a39/kw/ year",
+     "offset": 37688,
+     "sentence": "In the T-4 28/29 Capacity Market auction, Mullavilly, Drumkee, and Porterstown Phase I secured a contract value of \u00a3135.31/kW/ year (or \u20ac149.96/kW/year) with a derated capacity of 1.376 MW each for Mullavilly and Drumkee and 2.063 MW for Porterstown Phase I.",
+     "duration": {},
+     "basis": {},
+     "horizon": {},
+     "years": {}
+    },
+    {
+     "as_printed": "\u00a39.85 /MW/hr",
+     "shape": "\u00a39 /mw/hr",
+     "offset": 48315,
+     "sentence": "The portfolio generated \u00a335.3m in revenue with weighted annualised revenue of c.\u00a39.85 /MW/hr.",
+     "duration": {},
+     "basis": {},
+     "horizon": {},
+     "years": {}
+    },
+    {
+     "as_printed": "\u00a372,400/MW/yr",
+     "shape": "\u00a39/mw/yr",
+     "offset": 78526,
+     "sentence": "The GB market averaged c.\u00a372,400/MW/yr, this is materially lower than the Company's GSET managed portfolio, which achieved c.\u00a381,900/MW/yr on an annualised basis (inclusive of capacity market contracts for the period from December 2024- March 2025 to account for GSET's onboarding schedule), re-emphasising the value of internally managing assets.",
+     "duration": {},
+     "basis": {},
+     "horizon": {},
+     "years": {
+      "2024": 1,
+      "2025": 1
+     }
+    },
+    {
+     "as_printed": "\u00a381,900/MW/yr",
+     "shape": "\u00a39/mw/yr",
+     "offset": 78626,
+     "sentence": "The GB market averaged c.\u00a372,400/MW/yr, this is materially lower than the Company's GSET managed portfolio, which achieved c.\u00a381,900/MW/yr on an annualised basis (inclusive of capacity market contracts for the period from December 2024- March 2025 to account for GSET's onboarding schedule), re-emphasising the value of internally managing assets.",
+     "duration": {},
+     "basis": {},
+     "horizon": {},
+     "years": {
+      "2024": 1,
+      "2025": 1
+     }
+    }
+   ],
+   "figure_shapes": {
+    "\u00a39/mw/yr": 2,
+    "\u00a39 per mw/hr": 1,
+    "\u00a39 per mw/yr": 1,
+    "\u00a39/mw/hr": 1,
+    "\u00a39/kw/year": 1,
+    "\u00a39/kw/ year": 1,
+    "\u00a39 /mw/hr": 1
+   },
+   "duration": {
+    "1-hour": 2,
+    "2-hour": 5
+   },
+   "basis": {
+    "forecast": 10,
+    "forecasts": 7,
+    "forecasting": 3,
+    "outlook": 5,
+    "index": 3,
+    "realised": 1,
+    "actual": 1,
+    "potential": 13,
+    "benchmark": 7,
+    "fleet": 7,
+    "average": 32,
+    "typical": 1
+   },
+   "horizon": {
+    "long-term": 22,
+    "long term": 3,
+    "annual": 43
+   },
+   "paywall": {
+    "log in": 1,
+    "login": 1,
+    "premium": 10
+   },
+   "years": {
+    "2020": 1,
+    "2021": 1,
+    "2022": 3,
+    "2023": 14,
+    "2024": 115,
+    "2025": 134,
+    "2026": 13,
+    "2027": 3,
+    "2028": 5,
+    "2029": 2,
+    "2030": 1,
+    "2031": 1,
+    "2038": 1
+   },
+   "flags": []
+  },
+  {
+   "url": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/interim-results-nav-and-dividend-declaration/8605762",
+   "path": "data/raw/rns/022/017-announcement__rns__gore-street-energy-storage-fund--gsf__interim-results-nav-and-dividend-declaration__8605762.html",
+   "sha256": "5d0896f239a6c6989aae65140724dbd17bcfac8967d685a60eca8782f565a255",
+   "bytes": 441241,
+   "format": "html",
+   "title": "Interim Results, NAV and Dividend Declaration | Company Announcement | Investegate",
+   "dates": {
+    "json:dateCreated": [
+     "2024-12-12 07:01:12"
+    ],
+    "json:dateModified": [
+     "2024-12-12 07:02:03"
+    ]
+   },
+   "text_chars": 122918,
+   "figures": [
+    {
+     "as_printed": "\u00a37.66 / MW / hr",
+     "shape": "\u00a39 / mw / hr",
+     "offset": 27613,
+     "sentence": "\u00a37.66 / MW / hr",
+     "duration": {},
+     "basis": {},
+     "horizon": {},
+     "years": {}
+    },
+    {
+     "as_printed": "\u00a37.98 / MWh / hr",
+     "shape": "\u00a39 / mwh / hr",
+     "offset": 27645,
+     "sentence": "\u00a37.98 / MWh / hr",
+     "duration": {},
+     "basis": {},
+     "horizon": {},
+     "years": {}
+    },
+    {
+     "as_printed": "\u00a33.87/MW/hr",
+     "shape": "\u00a39/mw/hr",
+     "offset": 28092,
+     "sentence": "Dynamic Containment (DC) prices averaged \u00a33.87/MW/hr, reflecting a c.4% increase on the previous six-month period (October 2023 to March 2024).",
+     "duration": {},
+     "basis": {},
+     "horizon": {},
+     "years": {
+      "2023": 1,
+      "2024": 1
+     }
+    },
+    {
+     "as_printed": "\u00a313.55 / MW / hr",
+     "shape": "\u00a39 / mw / hr",
+     "offset": 31863,
+     "sentence": "\u00a313.55 / MW / hr",
+     "duration": {},
+     "basis": {},
+     "horizon": {},
+     "years": {}
+    },
+    {
+     "as_printed": "\u00a324.26 / MWh / hr",
+     "shape": "\u00a39 / mwh / hr",
+     "offset": 31896,
+     "sentence": "\u00a324.26 / MWh / hr",
+     "duration": {},
+     "basis": {},
+     "horizon": {},
+     "years": {}
+    },
+    {
+     "as_printed": "\u00a316.50 / MW / hr",
+     "shape": "\u00a39 / mw / hr",
+     "offset": 35128,
+     "sentence": "\u00a316.50 / MW / hr",
+     "duration": {},
+     "basis": {},
+     "horizon": {},
+     "years": {}
+    },
+    {
+     "as_printed": "\u00a312.52 / MWh / hr",
+     "shape": "\u00a39 / mwh / hr",
+     "offset": 35161,
+     "sentence": "\u00a312.52 / MWh / hr",
+     "duration": {},
+     "basis": {},
+     "horizon": {},
+     "years": {}
+    },
+    {
+     "as_printed": "\u00a39.4 per MW/hr",
+     "shape": "\u00a39 per mw/hr",
+     "offset": 37201,
+     "sentence": "As illustrated in Figure 10 on page 12 in the 2024 Interim Report, revenue for both the June-end and September-end periods saw a substantial increase when compared to the same periods last year, increasing by \u00a39.4 per MW/hr and \u00a36.1 per MW/hr, respectively.",
+     "duration": {},
+     "basis": {},
+     "horizon": {},
+     "years": {
+      "2024": 1
+     }
+    },
+    {
+     "as_printed": "\u00a36.1 per MW/hr",
+     "shape": "\u00a39 per mw/hr",
+     "offset": 37220,
+     "sentence": "As illustrated in Figure 10 on page 12 in the 2024 Interim Report, revenue for both the June-end and September-end periods saw a substantial increase when compared to the same periods last year, increasing by \u00a39.4 per MW/hr and \u00a36.1 per MW/hr, respectively.",
+     "duration": {},
+     "basis": {},
+     "horizon": {},
+     "years": {
+      "2024": 1
+     }
+    },
+    {
+     "as_printed": "\u00a36.97 / MW / hr",
+     "shape": "\u00a39 / mw / hr",
+     "offset": 37694,
+     "sentence": "\u00a36.97 / MW / hr",
+     "duration": {},
+     "basis": {},
+     "horizon": {},
+     "years": {}
+    },
+    {
+     "as_printed": "\u00a33.48 / MWh / hr",
+     "shape": "\u00a39 / mwh / hr",
+     "offset": 37726,
+     "sentence": "\u00a33.48 / MWh / hr",
+     "duration": {},
+     "basis": {},
+     "horizon": {},
+     "years": {}
+    },
+    {
+     "as_printed": "\u00a312.10 per MW/hr",
+     "shape": "\u00a39 per mw/hr",
+     "offset": 52895,
+     "sentence": "The average quarterly revenue of \u00a312.10 per MW/hr achieved in GB, compares to \u00a314.40 per MW/ hr from the total portfolio calculated from June 2021 excluding LDs.",
+     "duration": {},
+     "basis": {
+      "average": 1
+     },
+     "horizon": {},
+     "years": {
+      "2021": 1
+     }
+    },
+    {
+     "as_printed": "\u00a314.40 per MW/ hr",
+     "shape": "\u00a39 per mw/ hr",
+     "offset": 52940,
+     "sentence": "The average quarterly revenue of \u00a312.10 per MW/hr achieved in GB, compares to \u00a314.40 per MW/ hr from the total portfolio calculated from June 2021 excluding LDs.",
+     "duration": {},
+     "basis": {
+      "average": 1
+     },
+     "horizon": {},
+     "years": {
+      "2021": 1
+     }
+    }
+   ],
+   "figure_shapes": {
+    "\u00a39 / mw / hr": 4,
+    "\u00a39 / mwh / hr": 4,
+    "\u00a39 per mw/hr": 3,
+    "\u00a39/mw/hr": 1,
+    "\u00a39 per mw/ hr": 1
+   },
+   "duration": {
+    "2-hour": 1
+   },
+   "basis": {
+    "forecast": 4,
+    "forecasts": 9,
+    "outlook": 3,
+    "outturn": 1,
+    "potential": 9,
+    "benchmark": 4,
+    "fleet": 5,
+    "average": 18,
+    "typical": 1
+   },
+   "horizon": {
+    "long-term": 13,
+    "annual": 11
+   },
+   "paywall": {
+    "log in": 1,
+    "login": 1,
+    "premium": 9,
+    "unlock": 1
+   },
+   "years": {
+    "2021": 3,
+    "2022": 2,
+    "2023": 46,
+    "2024": 159,
+    "2025": 24,
+    "2026": 1,
+    "2028": 3,
+    "2030": 4
+   },
+   "flags": []
+  },
+  {
+   "url": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/notice-of-interim-results/8574682",
+   "path": "data/raw/rns/022/018-announcement__rns__gore-street-energy-storage-fund--gsf__notice-of-interim-results__8574682.html",
+   "sha256": "95a3b6c57143db305c1ed8a8ce473b3a5c8350d91a6ab0dc3ddf9730b93386d0",
+   "bytes": 54177,
+   "format": "html",
+   "title": "Notice of Interim Results | Company Announcement | Investegate",
+   "dates": {
+    "json:dateCreated": [
+     "2024-11-27 07:01:33"
+    ],
+    "json:dateModified": [
+     "2024-11-27 07:02:04"
+    ]
+   },
+   "text_chars": 7817,
+   "figures": [],
+   "figure_shapes": {},
+   "duration": {},
+   "basis": {
+    "potential": 1
+   },
+   "horizon": {},
+   "paywall": {
+    "log in": 1,
+    "login": 1
+   },
+   "years": {
+    "2024": 8,
+    "2026": 1
+   },
+   "flags": [
+    "no figure-looking string"
+   ]
+  },
+  {
+   "url": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/final-results/8310012",
+   "path": "data/raw/rns/022/019-announcement__rns__gore-street-energy-storage-fund--gsf__final-results__8310012.html",
+   "sha256": "63ffbb599b670d6f44073f25272916f005f4b13b784ddac7a61b2cc95702327d",
+   "bytes": 667652,
+   "format": "html",
+   "title": "Final Results | Company Announcement | Investegate",
+   "dates": {
+    "json:dateCreated": [
+     "2024-07-15 07:00:21"
+    ],
+    "json:dateModified": [
+     "2024-07-15 07:02:10"
+    ]
+   },
+   "text_chars": 208317,
+   "figures": [
+    {
+     "as_printed": "\u00a3133,000 per MW/yr",
+     "shape": "\u00a39 per mw/yr",
+     "offset": 3117,
+     "sentence": "\u00b7 Average revenue of \u00a3133,000 per MW/yr (31 March 2023: \u00a3135,000 per MW/yr), highlighting the benefits of the diversification strategy.",
+     "duration": {},
+     "basis": {
+      "average": 1
+     },
+     "horizon": {},
+     "years": {
+      "2023": 1
+     }
+    },
+    {
+     "as_printed": "\u00a3135,000 per MW/yr",
+     "shape": "\u00a39 per mw/yr",
+     "offset": 3152,
+     "sentence": "\u00b7 Average revenue of \u00a3133,000 per MW/yr (31 March 2023: \u00a3135,000 per MW/yr), highlighting the benefits of the diversification strategy.",
+     "duration": {},
+     "basis": {
+      "average": 1
+     },
+     "horizon": {},
+     "years": {
+      "2023": 1
+     }
+    },
+    {
+     "as_printed": "\u00a315.1 per MW/hr",
+     "shape": "\u00a39 per mw/hr",
+     "offset": 24972,
+     "sentence": "The international portfolio continued to deliver consistent average revenue of \u00a315.1 per MW/hr through best-in-class operational performance and capital management.",
+     "duration": {},
+     "basis": {
+      "average": 1
+     },
+     "horizon": {},
+     "years": {}
+    },
+    {
+     "as_printed": "\u00a319.6 per MW/hr",
+     "shape": "\u00a39 per mw/hr",
+     "offset": 25842,
+     "sentence": "- With its international portfolio, the Company averaged \u00a319.6 per MW/hr over the period, 2.2x the GB portfolio, inclusive of liquidated damages.",
+     "duration": {},
+     "basis": {},
+     "horizon": {},
+     "years": {}
+    },
+    {
+     "as_printed": "\u00a377,300/MW",
+     "shape": "\u00a39/mw",
+     "offset": 35034,
+     "sentence": "\u00a377,300/MW",
+     "duration": {},
+     "basis": {},
+     "horizon": {},
+     "years": {}
+    },
+    {
+     "as_printed": "\u00a382,900/MWh",
+     "shape": "\u00a39/mwh",
+     "offset": 35064,
+     "sentence": "\u00a382,900/MWh",
+     "duration": {},
+     "basis": {},
+     "horizon": {},
+     "years": {}
+    },
+    {
+     "as_printed": "\u00a365/kW/year",
+     "shape": "\u00a39/kw/year",
+     "offset": 38280,
+     "sentence": "The Company secured a combined 251.5 MW of non-derated Capacity Market contracts across both the T-4 CM auction, which cleared at a price of \u00a365/kW/year, and the T-1 CM auction, which cleared at \u00a335.79/kW/year.",
+     "duration": {},
+     "basis": {},
+     "horizon": {},
+     "years": {}
+    },
+    {
+     "as_printed": "\u00a335.79/kW/year",
+     "shape": "\u00a39/kw/year",
+     "offset": 38334,
+     "sentence": "The Company secured a combined 251.5 MW of non-derated Capacity Market contracts across both the T-4 CM auction, which cleared at a price of \u00a365/kW/year, and the T-1 CM auction, which cleared at \u00a335.79/kW/year.",
+     "duration": {},
+     "basis": {},
+     "horizon": {},
+     "years": {}
+    },
+    {
+     "as_printed": "\u00a3100/kW/year",
+     "shape": "\u00a39/kw/year",
+     "offset": 41291,
+     "sentence": "The Company successfully secured lucrative CM contracts at \u00a3100/kW/year for Mullavilly and Drumkee in the T-4 27/28 auction and \u00a3128/kW/year for Porterstown in the T-1 24/25 auction, adding to the existing CM contracts in place during the fiscal year.",
+     "duration": {},
+     "basis": {},
+     "horizon": {},
+     "years": {}
+    },
+    {
+     "as_printed": "\u00a3128/kW/year",
+     "shape": "\u00a39/kw/year",
+     "offset": 41360,
+     "sentence": "The Company successfully secured lucrative CM contracts at \u00a3100/kW/year for Mullavilly and Drumkee in the T-4 27/28 auction and \u00a3128/kW/year for Porterstown in the T-1 24/25 auction, adding to the existing CM contracts in place during the fiscal year.",
+     "duration": {},
+     "basis": {},
+     "horizon": {},
+     "years": {}
+    },
+    {
+     "as_printed": "\u00a3130,000/MW",
+     "shape": "\u00a39/mw",
+     "offset": 50586,
+     "sentence": "\u00a3130,000/MW (\u00a315.12/MW/hr).",
+     "duration": {},
+     "basis": {},
+     "horizon": {},
+     "years": {}
+    },
+    {
+     "as_printed": "\u00a315.12/MW/hr",
+     "shape": "\u00a39/mw/hr",
+     "offset": 50599,
+     "sentence": "\u00a3130,000/MW (\u00a315.12/MW/hr).",
+     "duration": {},
+     "basis": {},
+     "horizon": {},
+     "years": {}
+    },
+    {
+     "as_printed": "\u00a315.1 per MW/hr",
+     "shape": "\u00a39 per mw/hr",
+     "offset": 64394,
+     "sentence": "The consolidated portfolio over the reporting period has demonstrated why this choice was the right one by consistently delivering average revenue of \u00a315.1 per MW/hr, or c.\u00a3133,000 per MW/year.",
+     "duration": {},
+     "basis": {
+      "average": 1
+     },
+     "horizon": {},
+     "years": {}
+    },
+    {
+     "as_printed": "\u00a3133,000 per MW/year",
+     "shape": "\u00a39 per mw/year",
+     "offset": 64416,
+     "sentence": "The consolidated portfolio over the reporting period has demonstrated why this choice was the right one by consistently delivering average revenue of \u00a315.1 per MW/hr, or c.\u00a3133,000 per MW/year.",
+     "duration": {},
+     "basis": {
+      "average": 1
+     },
+     "horizon": {},
+     "years": {}
+    },
+    {
+     "as_printed": "\u00a3150/MW/hr",
+     "shape": "\u00a39/mw/hr",
+     "offset": 64884,
+     "sentence": "Reaching approximately \u00a3150/MW/hr for the month of August was a particular highlight as the Company's highest monthly revenue per MW ever achieved from a single market.",
+     "duration": {},
+     "basis": {},
+     "horizon": {
+      "monthly": 1
+     },
+     "years": {}
+    },
+    {
+     "as_printed": "\u00a38.80 per MW/hr",
+     "shape": "\u00a39 per mw/hr",
+     "offset": 70800,
+     "sentence": "The average revenue of \u00a38.80 per MW/hr we've seen in GB, including liquidated damages, compares to \u00a319.6 per MW/ hr from the non-GB portfolio.",
+     "duration": {},
+     "basis": {
+      "average": 1
+     },
+     "horizon": {},
+     "years": {}
+    },
+    {
+     "as_printed": "\u00a319.6 per MW/ hr",
+     "shape": "\u00a39 per mw/ hr",
+     "offset": 70876,
+     "sentence": "The average revenue of \u00a38.80 per MW/hr we've seen in GB, including liquidated damages, compares to \u00a319.6 per MW/ hr from the non-GB portfolio.",
+     "duration": {},
+     "basis": {
+      "average": 1
+     },
+     "horizon": {},
+     "years": {}
+    },
+    {
+     "as_printed": "\u00a315.1 per MW/hr",
+     "shape": "\u00a39 per mw/hr",
+     "offset": 101498,
+     "sentence": "The international portfolio continued to deliver consistent average revenue of \u00a315.1 per MW/hr through best-in-class operational performance and capital management.",
+     "duration": {},
+     "basis": {
+      "average": 1
+     },
+     "horizon": {},
+     "years": {}
+    },
+    {
+     "as_printed": "\u00a315.1 per MW/ hr",
+     "shape": "\u00a39 per mw/ hr",
+     "offset": 102687,
+     "sentence": "The consolidated portfolio generated average revenue of \u00a315.1 per MW/ hr consistently across the period, demonstrating the stable revenue profile of an operational portfolio spread across four uncorrelated markets.",
+     "duration": {},
+     "basis": {
+      "average": 1
+     },
+     "horizon": {},
+     "years": {}
+    },
+    {
+     "as_printed": "\u00a3150/MW/hr",
+     "shape": "\u00a39/mw/hr",
+     "offset": 103754,
+     "sentence": "Early pre-qualification of the Company's assets to deliver ERCOT's ECRS service over the summer resulted in approximately \u00a3150/MW/hr in August, marking the highest monthly revenue per MW ever achieved by the Company in a single grid.",
+     "duration": {},
+     "basis": {},
+     "horizon": {
+      "monthly": 1
+     },
+     "years": {}
+    },
+    {
+     "as_printed": "\u00a315.1 per MW/hr",
+     "shape": "\u00a39 per mw/hr",
+     "offset": 111470,
+     "sentence": "The Company generated an industry-leading average revenue of \u00a315.1 per MW/hr during the year (\u00a3133,000 MW/yr), far in excess of listed peers on both an average and consolidated basis.",
+     "duration": {},
+     "basis": {
+      "average": 2
+     },
+     "horizon": {},
+     "years": {}
+    }
+   ],
+   "figure_shapes": {
+    "\u00a39 per mw/hr": 6,
+    "\u00a39/kw/year": 4,
+    "\u00a39/mw/hr": 3,
+    "\u00a39 per mw/yr": 2,
+    "\u00a39/mw": 2,
+    "\u00a39 per mw/ hr": 2,
+    "\u00a39/mwh": 1,
+    "\u00a39 per mw/year": 1
+   },
+   "duration": {
+    "2-hour": 1,
+    "two-hour": 2
+   },
+   "basis": {
+    "forecast": 5,
+    "forecasts": 12,
+    "outlook": 9,
+    "index": 2,
+    "realised": 1,
+    "potential": 13,
+    "benchmark": 3,
+    "fleet": 11,
+    "average": 36,
+    "typical": 1
+   },
+   "horizon": {
+    "long-term": 25,
+    "long term": 6,
+    "annual": 31,
+    "monthly": 2
+   },
+   "paywall": {
+    "log in": 1,
+    "login": 1,
+    "premium": 15,
+    "unlock": 1
+   },
+   "years": {
+    "2020": 1,
+    "2021": 5,
+    "2022": 22,
+    "2023": 132,
+    "2024": 154,
+    "2025": 19,
+    "2026": 5,
+    "2027": 5,
+    "2028": 7,
+    "2029": 1,
+    "2030": 2,
+    "2035": 1,
+    "2050": 1
+   },
+   "flags": []
+  },
+  {
+   "url": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/half-year-report/7941091",
+   "path": "data/raw/rns/022/020-announcement__rns__gore-street-energy-storage-fund--gsf__half-year-report__7941091.html",
+   "sha256": "6ddc3f2824f5aca2d5b167b20ee0fed9d2a3ef5a735f2963f96e3e1c2dd3cbe9",
+   "bytes": 434045,
+   "format": "html",
+   "title": "Half-year Report | Company Announcement | Investegate",
+   "dates": {
+    "json:dateCreated": [
+     "2023-12-14 07:01:32"
+    ],
+    "json:dateModified": [
+     "2023-12-14 07:02:11"
+    ]
+   },
+   "text_chars": 122363,
+   "figures": [
+    {
+     "as_printed": "\u00a37.54/MW/hr",
+     "shape": "\u00a39/mw/hr",
+     "offset": 1740,
+     "sentence": "\u00a7 GB revenue: \u00a37.54/MW/hr",
+     "duration": {},
+     "basis": {},
+     "horizon": {},
+     "years": {}
+    },
+    {
+     "as_printed": "\u00a319.66/MW/hr",
+     "shape": "\u00a39/mw/hr",
+     "offset": 1770,
+     "sentence": "\u00a7 Non-GB revenue: \u00a319.66/MW/hr",
+     "duration": {},
+     "basis": {},
+     "horizon": {},
+     "years": {}
+    },
+    {
+     "as_printed": "\u00a315.10/MW/hr",
+     "shape": "\u00a39/mw/hr",
+     "offset": 10077,
+     "sentence": "Revenue for the reporting period was \u00a319.3m, representing an average of \u00a315.10/MW/hr, with the Company's international assets delivering 2.6x more revenue on a MW basis than those in Great Britain.",
+     "duration": {},
+     "basis": {
+      "average": 1
+     },
+     "horizon": {},
+     "years": {}
+    },
+    {
+     "as_printed": "\u00a37.54/MW/hr",
+     "shape": "\u00a39/mw/hr",
+     "offset": 15663,
+     "sentence": "- GB revenue: \u00a37.54/MW/hr",
+     "duration": {},
+     "basis": {},
+     "horizon": {},
+     "years": {}
+    },
+    {
+     "as_printed": "\u00a319.66/MW/hr",
+     "shape": "\u00a39/mw/hr",
+     "offset": 15693,
+     "sentence": "- Non-GB revenue: \u00a319.66/MW/hr",
+     "duration": {},
+     "basis": {},
+     "horizon": {},
+     "years": {}
+    },
+    {
+     "as_printed": "\u00a37.54/MW/hr",
+     "shape": "\u00a39/mw/hr",
+     "offset": 22179,
+     "sentence": "33,100 (\u00a37.54/MW/hr)",
+     "duration": {},
+     "basis": {},
+     "horizon": {},
+     "years": {}
+    },
+    {
+     "as_printed": "\u00a38.19/MWh/hr",
+     "shape": "\u00a39/mwh/hr",
+     "offset": 22220,
+     "sentence": "36,000 (\u00a38.19/MWh/hr)",
+     "duration": {},
+     "basis": {},
+     "horizon": {},
+     "years": {}
+    },
+    {
+     "as_printed": "\u00a317.04/MW/hr",
+     "shape": "\u00a39/mw/hr",
+     "offset": 25552,
+     "sentence": "74,800 (\u00a317.04/MW/hr)",
+     "duration": {},
+     "basis": {},
+     "horizon": {},
+     "years": {}
+    },
+    {
+     "as_printed": "\u00a330.51/MWh/hr",
+     "shape": "\u00a39/mwh/hr",
+     "offset": 25595,
+     "sentence": "134,000 (\u00a330.51/MWh/hr)",
+     "duration": {},
+     "basis": {},
+     "horizon": {},
+     "years": {}
+    },
+    {
+     "as_printed": "\u00a31,100/MW",
+     "shape": "\u00a39/mw",
+     "offset": 27474,
+     "sentence": "The initial findings represent a potential 46% increase in revenue on a MW basis when compared to the availability- adjusted DS3 only strategy utilising 5 MW in isolation, equivalent to \u00a31,100/MW upside in revenue from exploiting low DS3 events and aligning them with wholesale value.",
+     "duration": {},
+     "basis": {
+      "potential": 1
+     },
+     "horizon": {},
+     "years": {}
+    },
+    {
+     "as_printed": "\u00a38.79/MW/hr",
+     "shape": "\u00a39/mw/hr",
+     "offset": 28510,
+     "sentence": "38,600 (\u00a38.79/MW/hr)",
+     "duration": {},
+     "basis": {},
+     "horizon": {},
+     "years": {}
+    },
+    {
+     "as_printed": "\u00a36.67/MWh/hr",
+     "shape": "\u00a39/mwh/hr",
+     "offset": 28551,
+     "sentence": "29,300 (\u00a36.67/MWh/hr)",
+     "duration": {},
+     "basis": {},
+     "horizon": {},
+     "years": {}
+    },
+    {
+     "as_printed": "\u00a339.08/MW/hr",
+     "shape": "\u00a39/mw/hr",
+     "offset": 30114,
+     "sentence": "171,600 (\u00a339.08/MW/hr)",
+     "duration": {},
+     "basis": {},
+     "horizon": {},
+     "years": {}
+    },
+    {
+     "as_printed": "\u00a319.54/MWh/hr",
+     "shape": "\u00a39/mwh/hr",
+     "offset": 30156,
+     "sentence": "85,800 (\u00a319.54/MWh/hr)",
+     "duration": {},
+     "basis": {},
+     "horizon": {},
+     "years": {}
+    },
+    {
+     "as_printed": "\u00a3156/MW/hr",
+     "shape": "\u00a39/mw/hr",
+     "offset": 40155,
+     "sentence": "The first of the Company's assets began providing ECRS on 29 July, and in the months since, the Texas sites have been delivering portfolio- leading revenue, including an average of \u00a3156/MW/hr in August alone - totaling \u00a33.5m for the month.",
+     "duration": {},
+     "basis": {
+      "average": 1
+     },
+     "horizon": {},
+     "years": {}
+    },
+    {
+     "as_printed": "\u00a37.54 per MW/hr",
+     "shape": "\u00a39 per mw/hr",
+     "offset": 47421,
+     "sentence": "This can be seen in the Company's revenue over this reporting period, when revenue from its GB fleet was \u00a37.54 per MW/hr, compared with \u00a315.10 per MW/hr on a consolidated portfolio basis, representing c.2x vs a GB-only portfolio.",
+     "duration": {},
+     "basis": {
+      "fleet": 1
+     },
+     "horizon": {},
+     "years": {}
+    },
+    {
+     "as_printed": "\u00a315.10 per MW/hr",
+     "shape": "\u00a39 per mw/hr",
+     "offset": 47452,
+     "sentence": "This can be seen in the Company's revenue over this reporting period, when revenue from its GB fleet was \u00a37.54 per MW/hr, compared with \u00a315.10 per MW/hr on a consolidated portfolio basis, representing c.2x vs a GB-only portfolio.",
+     "duration": {},
+     "basis": {
+      "fleet": 1
+     },
+     "horizon": {},
+     "years": {}
+    },
+    {
+     "as_printed": "\u00a3 4.95 per MW/h",
+     "shape": "\u00a3 9 per mw/h",
+     "offset": 47692,
+     "sentence": "Figure 3 in the 2023 Interim Report shows the standard deviation in revenue generated per quarter since IPO by GSF's GB fleet, which amounts to c.\u00a3 4.95 per MW/h.",
+     "duration": {},
+     "basis": {
+      "fleet": 1
+     },
+     "horizon": {},
+     "years": {
+      "2023": 1
+     }
+    },
+    {
+     "as_printed": "\u00a32.68 per MW/h",
+     "shape": "\u00a39 per mw/h",
+     "offset": 47846,
+     "sentence": "When analysing the consolidated fleet, however, which also includes assets in Ireland, Germany and Texas, this quarterly figure drops to \u00a32.68 per MW/h.",
+     "duration": {},
+     "basis": {
+      "fleet": 1
+     },
+     "horizon": {},
+     "years": {}
+    },
+    {
+     "as_printed": "\u00a3156/MW/h",
+     "shape": "\u00a39/mw/h",
+     "offset": 61787,
+     "sentence": "Early prequalification for the new ECRS service allowed the Company to reach average monthly revenues of \u00a3156/MW/h in Texas in August, with its three operational assets generating \u00a33.46m in August alone.",
+     "duration": {},
+     "basis": {
+      "average": 1
+     },
+     "horizon": {
+      "monthly": 1
+     },
+     "years": {}
+    }
+   ],
+   "figure_shapes": {
+    "\u00a39/mw/hr": 10,
+    "\u00a39/mwh/hr": 4,
+    "\u00a39 per mw/hr": 2,
+    "\u00a39/mw": 1,
+    "\u00a3 9 per mw/h": 1,
+    "\u00a39 per mw/h": 1,
+    "\u00a39/mw/h": 1
+   },
+   "duration": {
+    "one-hour": 1,
+    "two-hour": 3
+   },
+   "basis": {
+    "forecast": 2,
+    "forecasts": 12,
+    "forecasting": 1,
+    "outlook": 3,
+    "potential": 8,
+    "benchmark": 3,
+    "fleet": 10,
+    "average": 15,
+    "typical": 1
+   },
+   "horizon": {
+    "long-term": 4,
+    "annual": 12,
+    "monthly": 1
+   },
+   "paywall": {
+    "log in": 1,
+    "login": 1,
+    "premium": 10
+   },
+   "years": {
+    "2021": 2,
+    "2022": 43,
+    "2023": 139,
+    "2024": 27,
+    "2025": 11,
+    "2026": 4,
+    "2030": 1,
+    "2035": 1
+   },
+   "flags": []
+  },
+  {
+   "url": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/notice-of-interim-results/7884448",
+   "path": "data/raw/rns/022/021-announcement__rns__gore-street-energy-storage-fund--gsf__notice-of-interim-results__7884448.html",
+   "sha256": "d68e0bfa69af6c6ccd859557e8cef39d62496b7d5892da18bfd68b8d3002064d",
+   "bytes": 54001,
+   "format": "html",
+   "title": "Notice of Interim Results | Company Announcement | Investegate",
+   "dates": {
+    "json:dateCreated": [
+     "2023-11-16 07:01:48"
+    ],
+    "json:dateModified": [
+     "2023-11-16 07:02:10"
+    ]
+   },
+   "text_chars": 7759,
+   "figures": [],
+   "figure_shapes": {},
+   "duration": {},
+   "basis": {
+    "potential": 1
+   },
+   "horizon": {},
+   "paywall": {
+    "log in": 1,
+    "login": 1
+   },
+   "years": {
+    "2023": 7,
+    "2026": 1
+   },
+   "flags": [
+    "no figure-looking string"
+   ]
+  },
+  {
+   "url": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/final-results/7635539",
+   "path": "data/raw/rns/022/022-announcement__rns__gore-street-energy-storage-fund--gsf__final-results__7635539.html",
+   "sha256": "e726fdb3c71379ff49038ec7ceeb32e438656337557fa8f8ac7967492d92e826",
+   "bytes": 677303,
+   "format": "html",
+   "title": "Final Results | Company Announcement | Investegate",
+   "dates": {
+    "json:dateCreated": [
+     "2023-07-17 07:00:23"
+    ],
+    "json:dateModified": [
+     "2023-07-17 07:00:23"
+    ]
+   },
+   "text_chars": 203883,
+   "figures": [
+    {
+     "as_printed": "\u00a3135,000 per MW/yr",
+     "shape": "\u00a39 per mw/yr",
+     "offset": 1789,
+     "sentence": "\u00b7 \u00a339.3m in revenue was generated during the reporting period (FY 2022 \u00a329.3m), averaging \u00a3135,000 per MW/yr.",
+     "duration": {},
+     "basis": {},
+     "horizon": {},
+     "years": {
+      "2022": 1
+     }
+    },
+    {
+     "as_printed": "\u00a3157,000 per MW/yr",
+     "shape": "\u00a39 per mw/yr",
+     "offset": 1898,
+     "sentence": "Over the 2022 calendar year, the Company achieved a consistently high average revenue of \u00a3157,000 per MW/yr.",
+     "duration": {},
+     "basis": {
+      "average": 1
+     },
+     "horizon": {},
+     "years": {
+      "2022": 1
+     }
+    },
+    {
+     "as_printed": "\u00a3135,000 per MW/ yr",
+     "shape": "\u00a39 per mw/ yr",
+     "offset": 11440,
+     "sentence": "During the reporting period, the Company generated an average revenue of \u00a3135,000 per MW/ yr, resulting in total revenue of \u00a339.3 million.",
+     "duration": {},
+     "basis": {
+      "average": 1
+     },
+     "horizon": {},
+     "years": {}
+    },
+    {
+     "as_printed": "\u00a3138,400/MW",
+     "shape": "\u00a39/mw",
+     "offset": 32304,
+     "sentence": "\u00a3138,400/MW (\u00a315.80/MW/hr)",
+     "duration": {},
+     "basis": {},
+     "horizon": {},
+     "years": {}
+    },
+    {
+     "as_printed": "\u00a315.80/MW/hr",
+     "shape": "\u00a39/mw/hr",
+     "offset": 32317,
+     "sentence": "\u00a3138,400/MW (\u00a315.80/MW/hr)",
+     "duration": {},
+     "basis": {},
+     "horizon": {},
+     "years": {}
+    },
+    {
+     "as_printed": "\u00a3150,400/MWh",
+     "shape": "\u00a39/mwh",
+     "offset": 32347,
+     "sentence": "\u00a3150,400/MWh (\u00a317.17/MW/hr)",
+     "duration": {},
+     "basis": {},
+     "horizon": {},
+     "years": {}
+    },
+    {
+     "as_printed": "\u00a317.17/MW/hr",
+     "shape": "\u00a39/mw/hr",
+     "offset": 32361,
+     "sentence": "\u00a3150,400/MWh (\u00a317.17/MW/hr)",
+     "duration": {},
+     "basis": {},
+     "horizon": {},
+     "years": {}
+    },
+    {
+     "as_printed": "\u00a317/MW/h",
+     "shape": "\u00a39/mw/h",
+     "offset": 33615,
+     "sentence": "Removal of the initial \u00a317/MW/h price cap, combined with DR and procurement volumes required by National Grid ESO exceeding the supply-side capacity of energy storage in GB, allowed participants to push DC clearing prices upwards to the benefit of the entire market.",
+     "duration": {},
+     "basis": {},
+     "horizon": {},
+     "years": {}
+    },
+    {
+     "as_printed": "\u00a3130,800/MW",
+     "shape": "\u00a39/mw",
+     "offset": 36242,
+     "sentence": "\u00a3130,800/MW (\u00a314.93/MW/hr)",
+     "duration": {},
+     "basis": {},
+     "horizon": {},
+     "years": {}
+    },
+    {
+     "as_printed": "\u00a314.93/MW/hr",
+     "shape": "\u00a39/mw/hr",
+     "offset": 36255,
+     "sentence": "\u00a3130,800/MW (\u00a314.93/MW/hr)",
+     "duration": {},
+     "basis": {},
+     "horizon": {},
+     "years": {}
+    },
+    {
+     "as_printed": "\u00a3234,200/MWh",
+     "shape": "\u00a39/mwh",
+     "offset": 36285,
+     "sentence": "\u00a3234,200/MWh (\u00a326.73/MWh/hr)",
+     "duration": {},
+     "basis": {},
+     "horizon": {},
+     "years": {}
+    },
+    {
+     "as_printed": "\u00a326.73/MWh/hr",
+     "shape": "\u00a39/mwh/hr",
+     "offset": 36299,
+     "sentence": "\u00a3234,200/MWh (\u00a326.73/MWh/hr)",
+     "duration": {},
+     "basis": {},
+     "horizon": {},
+     "years": {}
+    },
+    {
+     "as_printed": "\u00a3149,800/MW",
+     "shape": "\u00a39/mw",
+     "offset": 38808,
+     "sentence": "\u00a3149,800/MW (\u00a317.10/MW/h)",
+     "duration": {},
+     "basis": {},
+     "horizon": {},
+     "years": {}
+    },
+    {
+     "as_printed": "\u00a317.10/MW/h",
+     "shape": "\u00a39/mw/h",
+     "offset": 38821,
+     "sentence": "\u00a3149,800/MW (\u00a317.10/MW/h)",
+     "duration": {},
+     "basis": {},
+     "horizon": {},
+     "years": {}
+    },
+    {
+     "as_printed": "\u00a3113,600/MWh",
+     "shape": "\u00a39/mwh",
+     "offset": 38850,
+     "sentence": "\u00a3113,600/MWh (\u00a312.97/MWh/h)",
+     "duration": {},
+     "basis": {},
+     "horizon": {},
+     "years": {}
+    },
+    {
+     "as_printed": "\u00a312.97/MWh/h",
+     "shape": "\u00a39/mwh/h",
+     "offset": 38864,
+     "sentence": "\u00a3113,600/MWh (\u00a312.97/MWh/h)",
+     "duration": {},
+     "basis": {},
+     "horizon": {},
+     "years": {}
+    },
+    {
+     "as_printed": "\u00a3127,800/MW",
+     "shape": "\u00a39/mw",
+     "offset": 43197,
+     "sentence": "\u00a3127,800/MW (\u00a314.59/MW/h)",
+     "duration": {},
+     "basis": {},
+     "horizon": {},
+     "years": {}
+    },
+    {
+     "as_printed": "\u00a314.59/MW/h",
+     "shape": "\u00a39/mw/h",
+     "offset": 43210,
+     "sentence": "\u00a3127,800/MW (\u00a314.59/MW/h)",
+     "duration": {},
+     "basis": {},
+     "horizon": {},
+     "years": {}
+    },
+    {
+     "as_printed": "\u00a363,900/MWh",
+     "shape": "\u00a39/mwh",
+     "offset": 43239,
+     "sentence": "\u00a363,900/MWh (\u00a37.30/MWh/h)",
+     "duration": {},
+     "basis": {},
+     "horizon": {},
+     "years": {}
+    },
+    {
+     "as_printed": "\u00a37.30/MWh/h",
+     "shape": "\u00a39/mwh/h",
+     "offset": 43252,
+     "sentence": "\u00a363,900/MWh (\u00a37.30/MWh/h)",
+     "duration": {},
+     "basis": {},
+     "horizon": {},
+     "years": {}
+    },
+    {
+     "as_printed": "\u00a375/kW",
+     "shape": "\u00a39/kw",
+     "offset": 50308,
+     "sentence": "Capacity Market revenue in H2 was 31% above H1, driven in large part by the \u00a375/kW clearing price of the 2022/23 T-1 Auction; the Port of Tilbury (POTL) asset secured a contract at 7.061 MW de-rated capacity.",
+     "duration": {},
+     "basis": {},
+     "horizon": {},
+     "years": {
+      "2022": 1
+     }
+    },
+    {
+     "as_printed": "\u00a329.24/MW/h",
+     "shape": "\u00a39/mw/h",
+     "offset": 51270,
+     "sentence": "Monthly DS3 uncapped revenues peaked in FY 2022/23 at \u00a329.24/MW/h, just short of the all-time high of c.",
+     "duration": {},
+     "basis": {},
+     "horizon": {
+      "monthly": 1
+     },
+     "years": {
+      "2022": 1
+     }
+    },
+    {
+     "as_printed": "\u00a333.87/MW/h",
+     "shape": "\u00a39/mw/h",
+     "offset": 51321,
+     "sentence": "\u00a333.87/MW/h in February 2022.",
+     "duration": {},
+     "basis": {},
+     "horizon": {},
+     "years": {
+      "2022": 1
+     }
+    },
+    {
+     "as_printed": "\u00a314.90/MW/h",
+     "shape": "\u00a39/mw/h",
+     "offset": 52529,
+     "sentence": "The NI & ROI portfolio generated an overall average weighted price of \u00a314.90/MW/h, with the bulk of the revenue generated from DS3 uncapped revenue.",
+     "duration": {},
+     "basis": {
+      "average": 1
+     },
+     "horizon": {},
+     "years": {}
+    },
+    {
+     "as_printed": "\u00a3135,000/ MW",
+     "shape": "\u00a39/ mw",
+     "offset": 55630,
+     "sentence": "\u00a3135,000/ MW (\u00a315.40/MW/hr).",
+     "duration": {},
+     "basis": {},
+     "horizon": {},
+     "years": {}
+    },
+    {
+     "as_printed": "\u00a315.40/MW/hr",
+     "shape": "\u00a39/mw/hr",
+     "offset": 55644,
+     "sentence": "\u00a3135,000/ MW (\u00a315.40/MW/hr).",
+     "duration": {},
+     "basis": {},
+     "horizon": {},
+     "years": {}
+    },
+    {
+     "as_printed": "\u00a3376k/MW",
+     "shape": "\u00a39k/mw",
+     "offset": 92519,
+     "sentence": "The NAV of the Company's construction and pre-construction portfolio, which has been reflected at fair market value, is \u00a3376k/MW, driven by progress in construction work and acquisitions during the period.",
+     "duration": {},
+     "basis": {},
+     "horizon": {},
+     "years": {}
+    },
+    {
+     "as_printed": "\u00a3617k/MW",
+     "shape": "\u00a39k/mw",
+     "offset": 92943,
+     "sentence": "The Company is expecting to build out the portfolio of 1.17 GW at a competitive cost of \u00a3617k/MW and \u00a3510k/MWh.",
+     "duration": {},
+     "basis": {},
+     "horizon": {},
+     "years": {}
+    },
+    {
+     "as_printed": "\u00a3510k/MWh",
+     "shape": "\u00a39k/mwh",
+     "offset": 92956,
+     "sentence": "The Company is expecting to build out the portfolio of 1.17 GW at a competitive cost of \u00a3617k/MW and \u00a3510k/MWh.",
+     "duration": {},
+     "basis": {},
+     "horizon": {},
+     "years": {}
+    },
+    {
+     "as_printed": "\u00a3157,000/MW/yr",
+     "shape": "\u00a39/mw/yr",
+     "offset": 100127,
+     "sentence": "I am pleased to report the Company once again produced industry-leading returns, generating an average of \u00a3157,000/MW/yr during the 2022 calendar year.",
+     "duration": {},
+     "basis": {
+      "average": 1
+     },
+     "horizon": {},
+     "years": {
+      "2022": 1
+     }
+    },
+    {
+     "as_printed": "\u00a363/kW",
+     "shape": "\u00a39/kw",
+     "offset": 106940,
+     "sentence": "In addition to the one-year T-4 contracts secured for \u00a363/kW for five of its operational GB assets, the Company also secured a 15-year T-4 contract for the Middleton asset and now has 15-year contracts for the entire GB construction portfolio.",
+     "duration": {},
+     "basis": {},
+     "horizon": {},
+     "years": {}
+    }
+   ],
+   "figure_shapes": {
+    "\u00a39/mw/h": 6,
+    "\u00a39/mw": 4,
+    "\u00a39/mw/hr": 4,
+    "\u00a39/mwh": 4,
+    "\u00a39 per mw/yr": 2,
+    "\u00a39/mwh/h": 2,
+    "\u00a39/kw": 2,
+    "\u00a39k/mw": 2,
+    "\u00a39 per mw/ yr": 1,
+    "\u00a39/mwh/hr": 1,
+    "\u00a39/ mw": 1,
+    "\u00a39k/mwh": 1,
+    "\u00a39/mw/yr": 1
+   },
+   "duration": {
+    "one-hour": 2,
+    "two-hour": 2,
+    "four-hour": 1
+   },
+   "basis": {
+    "forecast": 4,
+    "forecasts": 25,
+    "outlook": 5,
+    "index": 2,
+    "realised": 1,
+    "potential": 6,
+    "benchmark": 3,
+    "fleet": 9,
+    "average": 24,
+    "typical": 1
+   },
+   "horizon": {
+    "long-term": 10,
+    "long term": 3,
+    "annual": 44,
+    "monthly": 7
+   },
+   "paywall": {
+    "log in": 1,
+    "login": 1,
+    "premium": 11
+   },
+   "years": {
+    "2020": 3,
+    "2021": 24,
+    "2022": 142,
+    "2023": 142,
+    "2024": 32,
+    "2025": 14,
+    "2026": 8,
+    "2027": 7,
+    "2028": 1,
+    "2030": 1,
+    "2032": 1,
+    "2035": 1
+   },
+   "flags": []
+  },
+  {
+   "url": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/half-year-report-and-amendments-to-aifm-agreement/7445044",
+   "path": "data/raw/rns/022/023-announcement__rns__gore-street-energy-storage-fund--gsf__half-year-report-and-amendments-to-aifm-agreement__7445044.html",
+   "sha256": "d76e1ca30e90f70b1020e236e3ff0528ba820d2846f8af1e23325e49e64d0528",
+   "bytes": 602665,
+   "format": "html",
+   "title": "Investegate | Company Announcement",
+   "dates": {},
+   "text_chars": 106819,
+   "figures": [],
+   "figure_shapes": {},
+   "duration": {},
+   "basis": {
+    "forecast": 9,
+    "forecasts": 9,
+    "outlook": 3,
+    "actual": 1,
+    "potential": 3,
+    "benchmark": 5,
+    "fleet": 5,
+    "average": 19,
+    "typical": 1
+   },
+   "horizon": {
+    "long-term": 5,
+    "long term": 2,
+    "annual": 14
+   },
+   "paywall": {
+    "log in": 1,
+    "login": 1,
+    "premium": 12
+   },
+   "years": {
+    "2020": 1,
+    "2021": 46,
+    "2022": 180,
+    "2023": 17,
+    "2024": 8,
+    "2025": 4,
+    "2026": 3,
+    "2028": 2,
+    "2030": 1,
+    "2045": 1
+   },
+   "flags": [
+    "no date declared",
+    "no figure-looking string"
+   ]
+  },
+  {
+   "url": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/notice-of-half-year-results/7220941",
+   "path": "data/raw/rns/022/024-announcement__rns__gore-street-energy-storage-fund--gsf__notice-of-half-year-results__7220941.html",
+   "sha256": "74310659668c3bfe80acbf820dcc8196168453aad7647832b44beb876d630a8c",
+   "bytes": 53420,
+   "format": "html",
+   "title": "Investegate | Company Announcement",
+   "dates": {},
+   "text_chars": 5582,
+   "figures": [],
+   "figure_shapes": {},
+   "duration": {},
+   "basis": {},
+   "horizon": {},
+   "paywall": {
+    "log in": 1,
+    "login": 1
+   },
+   "years": {
+    "2022": 3,
+    "2026": 1
+   },
+   "flags": [
+    "no date declared",
+    "no figure-looking string"
+   ]
+  },
+  {
+   "url": "https://greshamhouse.com/wp-content/uploads/2026/04/GRID-Annual-Review_25_20.04-FINAL.pdf",
+   "path": "data/raw/rns/022/025-wp-content__uploads__2026__04__GRID-Annual-Review_25_20.04-FINAL.pdf.html",
+   "sha256": "22079c4be5d6e70141e8041ed2451d647394166ba4023bfa0400b507c668ffea",
+   "bytes": 8953732,
+   "format": "pdf",
+   "title": null,
+   "dates": {},
+   "text_chars": 372973,
+   "figures": [
+    {
+     "as_printed": "\u00a368,600 per MW",
+     "shape": "\u00a39 per mw",
+     "offset": 5339,
+     "sentence": "4 GRID Annual Report 2025 Strategic report Market and financial review Sustainability Governance Accounts Other information Highlights Contracted revenues / per MW / as a Revenue / revenue per MW1 percentage of total revenues2 EBITDA / EBITDA margin3 Dec 25 \u00a360.4mn / \u00a368,600 per MW Dec 25 \u00a323.8mn / \u00a327,000 per MW / 39.4% Dec 25 \u00a338.8mn / 64% Dec 24 \u00a346.5mn / \u00a359,800 per MW Dec 24 \u00a311.5mn / \u00a314,700 per MW / 24.7% Dec 24 \u00a329.1mn / 63% Dec 23 \u00a338.7mn / \u00a363,800 per MW Dec 23 \u00a38.7mn / \u00a314,400 per MW / 22.5% Dec 23 \u00a325.8mn / 67% Why is this important?",
+     "duration": {},
+     "basis": {},
+     "horizon": {
+      "annual": 1
+     },
+     "years": {
+      "2025": 1
+     }
+    },
+    {
+     "as_printed": "\u00a327,000 per MW",
+     "shape": "\u00a39 per mw",
+     "offset": 5371,
+     "sentence": "4 GRID Annual Report 2025 Strategic report Market and financial review Sustainability Governance Accounts Other information Highlights Contracted revenues / per MW / as a Revenue / revenue per MW1 percentage of total revenues2 EBITDA / EBITDA margin3 Dec 25 \u00a360.4mn / \u00a368,600 per MW Dec 25 \u00a323.8mn / \u00a327,000 per MW / 39.4% Dec 25 \u00a338.8mn / 64% Dec 24 \u00a346.5mn / \u00a359,800 per MW Dec 24 \u00a311.5mn / \u00a314,700 per MW / 24.7% Dec 24 \u00a329.1mn / 63% Dec 23 \u00a338.7mn / \u00a363,800 per MW Dec 23 \u00a38.7mn / \u00a314,400 per MW / 22.5% Dec 23 \u00a325.8mn / 67% Why is this important?",
+     "duration": {},
+     "basis": {},
+     "horizon": {
+      "annual": 1
+     },
+     "years": {
+      "2025": 1
+     }
+    },
+    {
+     "as_printed": "\u00a359,800 per MW",
+     "shape": "\u00a39 per mw",
+     "offset": 5432,
+     "sentence": "4 GRID Annual Report 2025 Strategic report Market and financial review Sustainability Governance Accounts Other information Highlights Contracted revenues / per MW / as a Revenue / revenue per MW1 percentage of total revenues2 EBITDA / EBITDA margin3 Dec 25 \u00a360.4mn / \u00a368,600 per MW Dec 25 \u00a323.8mn / \u00a327,000 per MW / 39.4% Dec 25 \u00a338.8mn / 64% Dec 24 \u00a346.5mn / \u00a359,800 per MW Dec 24 \u00a311.5mn / \u00a314,700 per MW / 24.7% Dec 24 \u00a329.1mn / 63% Dec 23 \u00a338.7mn / \u00a363,800 per MW Dec 23 \u00a38.7mn / \u00a314,400 per MW / 22.5% Dec 23 \u00a325.8mn / 67% Why is this important?",
+     "duration": {},
+     "basis": {},
+     "horizon": {
+      "annual": 1
+     },
+     "years": {
+      "2025": 1
+     }
+    },
+    {
+     "as_printed": "\u00a314,700 per MW",
+     "shape": "\u00a39 per mw",
+     "offset": 5464,
+     "sentence": "4 GRID Annual Report 2025 Strategic report Market and financial review Sustainability Governance Accounts Other information Highlights Contracted revenues / per MW / as a Revenue / revenue per MW1 percentage of total revenues2 EBITDA / EBITDA margin3 Dec 25 \u00a360.4mn / \u00a368,600 per MW Dec 25 \u00a323.8mn / \u00a327,000 per MW / 39.4% Dec 25 \u00a338.8mn / 64% Dec 24 \u00a346.5mn / \u00a359,800 per MW Dec 24 \u00a311.5mn / \u00a314,700 per MW / 24.7% Dec 24 \u00a329.1mn / 63% Dec 23 \u00a338.7mn / \u00a363,800 per MW Dec 23 \u00a38.7mn / \u00a314,400 per MW / 22.5% Dec 23 \u00a325.8mn / 67% Why is this important?",
+     "duration": {},
+     "basis": {},
+     "horizon": {
+      "annual": 1
+     },
+     "years": {
+      "2025": 1
+     }
+    },
+    {
+     "as_printed": "\u00a363,800 per MW",
+     "shape": "\u00a39 per mw",
+     "offset": 5525,
+     "sentence": "4 GRID Annual Report 2025 Strategic report Market and financial review Sustainability Governance Accounts Other information Highlights Contracted revenues / per MW / as a Revenue / revenue per MW1 percentage of total revenues2 EBITDA / EBITDA margin3 Dec 25 \u00a360.4mn / \u00a368,600 per MW Dec 25 \u00a323.8mn / \u00a327,000 per MW / 39.4% Dec 25 \u00a338.8mn / 64% Dec 24 \u00a346.5mn / \u00a359,800 per MW Dec 24 \u00a311.5mn / \u00a314,700 per MW / 24.7% Dec 24 \u00a329.1mn / 63% Dec 23 \u00a338.7mn / \u00a363,800 per MW Dec 23 \u00a38.7mn / \u00a314,400 per MW / 22.5% Dec 23 \u00a325.8mn / 67% Why is this important?",
+     "duration": {},
+     "basis": {},
+     "horizon": {
+      "annual": 1
+     },
+     "years": {
+      "2025": 1
+     }
+    },
+    {
+     "as_printed": "\u00a314,400 per MW",
+     "shape": "\u00a39 per mw",
+     "offset": 5556,
+     "sentence": "4 GRID Annual Report 2025 Strategic report Market and financial review Sustainability Governance Accounts Other information Highlights Contracted revenues / per MW / as a Revenue / revenue per MW1 percentage of total revenues2 EBITDA / EBITDA margin3 Dec 25 \u00a360.4mn / \u00a368,600 per MW Dec 25 \u00a323.8mn / \u00a327,000 per MW / 39.4% Dec 25 \u00a338.8mn / 64% Dec 24 \u00a346.5mn / \u00a359,800 per MW Dec 24 \u00a311.5mn / \u00a314,700 per MW / 24.7% Dec 24 \u00a329.1mn / 63% Dec 23 \u00a338.7mn / \u00a363,800 per MW Dec 23 \u00a38.7mn / \u00a314,400 per MW / 22.5% Dec 23 \u00a325.8mn / 67% Why is this important?",
+     "duration": {},
+     "basis": {},
+     "horizon": {
+      "annual": 1
+     },
+     "years": {
+      "2025": 1
+     }
+    },
+    {
+     "as_printed": "\u00a322.70 per MW per hour",
+     "shape": "\u00a39 per mw per hour",
+     "offset": 13143,
+     "sentence": "The trial has proved all the points above and achieved the following results in terms of additional revenues and revenues per MW: \u0083 trial dates: 8 December 2025 to 31 March 2026; \u0083 contracted capacity: c.4MW; \u0083 total net revenues: \u00a3307,000; and \u0083 average revenue rate: \u00a322.70 per MW per hour.",
+     "duration": {},
+     "basis": {
+      "average": 1
+     },
+     "horizon": {},
+     "years": {
+      "2025": 1,
+      "2026": 1
+     }
+    },
+    {
+     "as_printed": "\u00a37.80 per MW per hour",
+     "shape": "\u00a39 per mw per hour",
+     "offset": 13263,
+     "sentence": "These trial results are clearly encouraging, being significantly higher than the hourly rate of \u00a37.80 per MW per hour achieved by the operational portfolio in 2025; however, it is likely that there will be a lower target over time.",
+     "duration": {},
+     "basis": {},
+     "horizon": {},
+     "years": {
+      "2025": 1
+     }
+    },
+    {
+     "as_printed": "\u00a35-10 per MW per hour",
+     "shape": "\u00a39-9 per mw per hour",
+     "offset": 13480,
+     "sentence": "The Manager would be pleased to see operational portfolio revenues increase by c.\u00a35-10 per MW per hour from this strategy when fully operational.",
+     "duration": {},
+     "basis": {},
+     "horizon": {},
+     "years": {}
+    },
+    {
+     "as_printed": "\u00a345,000 / MW / yr",
+     "shape": "\u00a39 / mw / yr",
+     "offset": 41739,
+     "sentence": "Merchant revenues of \u00a345,000 / MW / yr were assumed in the Company\u2019s Three-year Plan In terms of de-risking revenues, we have put in place a significant level of contracted announced in November 2024.",
+     "duration": {},
+     "basis": {},
+     "horizon": {},
+     "years": {
+      "2024": 1
+     }
+    },
+    {
+     "as_printed": "\u00a360,100 / MW / yr",
+     "shape": "\u00a39 / mw / yr",
+     "offset": 42218,
+     "sentence": "In contrast, in 2025: In 2025, we extended the contracted period for most of the projects currently contracted under tolling agreements by adding floor agreements while also adding additional floor \u0083 Trading revenues of \u00a360,100 / MW / yr were achieved in 2025, demonstrating an contracts on other projects, including most of our new pipeline.",
+     "duration": {},
+     "basis": {},
+     "horizon": {},
+     "years": {
+      "2025": 3
+     }
+    },
+    {
+     "as_printed": "\u00a368,600 / MW",
+     "shape": "\u00a39 / mw",
+     "offset": 52898,
+     "sentence": "Total Capacity Market revenues were similar capacity, with the portfolio generating \u00a368,600 / MW, up from \u00a359,800 / MW last year.",
+     "duration": {},
+     "basis": {},
+     "horizon": {},
+     "years": {}
+    },
+    {
+     "as_printed": "\u00a359,800 / MW",
+     "shape": "\u00a39 / mw",
+     "offset": 52920,
+     "sentence": "Total Capacity Market revenues were similar capacity, with the portfolio generating \u00a368,600 / MW, up from \u00a359,800 / MW last year.",
+     "duration": {},
+     "basis": {},
+     "horizon": {},
+     "years": {}
+    },
+    {
+     "as_printed": "\u00a3742k / MW",
+     "shape": "\u00a39k / mw",
+     "offset": 59379,
+     "sentence": "Operational assets were valued on average at \u00a3742k / MW as of 31 December 2025.",
+     "duration": {},
+     "basis": {
+      "average": 1
+     },
+     "horizon": {},
+     "years": {
+      "2025": 1
+     }
+    },
+    {
+     "as_printed": "\u00a3734k / MW",
+     "shape": "\u00a39k / mw",
+     "offset": 59528,
+     "sentence": "Adjusting for working capital, the valuation, including only the net present value of future cash flows, stood at \u00a3734k / MW.",
+     "duration": {},
+     "basis": {},
+     "horizon": {},
+     "years": {}
+    }
+   ],
+   "figure_shapes": {
+    "\u00a39 per mw": 6,
+    "\u00a39 per mw per hour": 2,
+    "\u00a39 / mw / yr": 2,
+    "\u00a39 / mw": 2,
+    "\u00a39k / mw": 2,
+    "\u00a39-9 per mw per hour": 1
+   },
+   "duration": {
+    "one-hour": 1,
+    "1hr": 2,
+    "two-hour": 3,
+    "2hr": 2,
+    "four-hour": 1,
+    "eight-hour": 6
+   },
+   "basis": {
+    "forecast": 16,
+    "forecasts": 19,
+    "outlook": 7,
+    "index": 6,
+    "realised": 1,
+    "actual": 7,
+    "potential": 32,
+    "benchmark": 4,
+    "fleet": 6,
+    "average": 48,
+    "typical": 4
+   },
+   "horizon": {
+    "decade": 1,
+    "long-term": 24,
+    "long term": 8,
+    "annual": 202,
+    "monthly": 1
+   },
+   "paywall": {
+    "premium": 20,
+    "unlock": 1
+   },
+   "years": {
+    "2020": 5,
+    "2021": 10,
+    "2022": 15,
+    "2023": 14,
+    "2024": 135,
+    "2025": 404,
+    "2026": 73,
+    "2027": 17,
+    "2028": 7,
+    "2029": 6,
+    "2030": 6,
+    "2031": 2,
+    "2032": 3,
+    "2033": 2,
+    "2034": 2,
+    "2035": 2,
+    "2036": 1,
+    "2037": 1,
+    "2038": 1,
+    "2039": 1,
+    "2040": 1,
+    "2041": 1,
+    "2042": 1,
+    "2043": 1,
+    "2044": 1,
+    "2045": 1,
+    "2046": 1,
+    "2047": 1,
+    "2048": 1,
+    "2049": 1,
+    "2050": 1
+   },
+   "flags": [
+    "no date declared"
+   ]
+  },
+  {
+   "url": "https://vimeo.com/1185147471?share=copy&fl=sv&fe=ci",
+   "path": "data/raw/rns/022/026-1185147471.html",
+   "sha256": "5a9b139caf7e42e682a5395fcaf373df4c28ba7e19ce001e8eda582484ea4c2e",
+   "bytes": 11704,
+   "format": "html",
+   "title": "GRID Shareholder Annual Results Recording",
+   "dates": {
+    "meta:og:updated_time": [
+     "2026-09-29T05:19:41-04:00"
+    ]
+   },
+   "text_chars": 248,
+   "figures": [],
+   "figure_shapes": {},
+   "duration": {},
+   "basis": {},
+   "horizon": {
+    "annual": 1
+   },
+   "paywall": {},
+   "years": {},
+   "flags": [
+    "no figure-looking string",
+    "under 500 characters of text"
+   ]
+  },
+  {
+   "url": "https://greshamhouse.com/wp-content/uploads/2026/09/GRID-Interim-Report-2026-Final.pdf",
+   "path": "data/raw/rns/022/027-wp-content__uploads__2026__09__GRID-Interim-Report-2026-Final.pdf.html",
+   "sha256": "97e8ee056c07e6f235bbe04920c14e373d743387ca70404a99f83f6f74bbcde0",
+   "bytes": 11254053,
+   "format": "pdf",
+   "title": null,
+   "dates": {},
+   "text_chars": 143137,
+   "figures": [
+    {
+     "as_printed": "\u00a363,200 per MW",
+     "shape": "\u00a39 per mw",
+     "offset": 3340,
+     "sentence": "The portfolio has grown from \u0083 Net debt to NAV indicates how large the debt when considering an investment in the Company\u2019s 70MW since the Company\u2019s IPO in 2018 arrangements are relative to the Fund\u2019s asset value shares \u0083 A larger operational base provides the scale and \u0083 The Fund\u2019s investment policy limits its leverage to a geographic coverage required for stronger market maximum of 50% of NAV positioning What we achieved in the period What we achieved in the period What we achieved in the period \u0083 Growth in the NAV and NAV per share of 15.8% \u0083 Growth of 8.9% in MWh \u0083 Secured senior project-level financing and an \u0083 Augmentations of two operational projects, adding export credit agency facility of \u00a3141mn and \u0083 Driven by the revaluation of Cockenzie, Monets 152MWh of capacity \u00a330mn respectively to finance the construction of Garden and Elland 2 now that these projects are in the three new projects construction 3 GRID Interim Report 2026 Strategic report Financial review and risk Governance Accounts Other information Highlights Contracted revenues / per MW2 / as a Revenue / revenue per MW1 percentage of total revenues EBITDA / EBITDA margin3 Jun 26 \u00a334.7mn / \u00a363,200 per MW Jun 26 \u00a320.6mn / \u00a338,800 per MW / 61% Jun 26 \u00a323.5mn / 68% Dec 25 \u00a328.6mn / \u00a362,600 per MW Dec 25 \u00a312.7mn / \u00a327,900 per MW / 45% Dec 25 \u00a318.3mn / 64% Jun 25 \u00a331.7mn / \u00a375,100 per MW Jun 25 \u00a311.1mn / \u00a326,200 per MW / 35% Jun 25 \u00a320.5mn / 65% Why is this important?",
+     "duration": {},
+     "basis": {},
+     "horizon": {},
+     "years": {
+      "2026": 1
+     }
+    },
+    {
+     "as_printed": "\u00a338,800 per MW",
+     "shape": "\u00a39 per mw",
+     "offset": 3372,
+     "sentence": "The portfolio has grown from \u0083 Net debt to NAV indicates how large the debt when considering an investment in the Company\u2019s 70MW since the Company\u2019s IPO in 2018 arrangements are relative to the Fund\u2019s asset value shares \u0083 A larger operational base provides the scale and \u0083 The Fund\u2019s investment policy limits its leverage to a geographic coverage required for stronger market maximum of 50% of NAV positioning What we achieved in the period What we achieved in the period What we achieved in the period \u0083 Growth in the NAV and NAV per share of 15.8% \u0083 Growth of 8.9% in MWh \u0083 Secured senior project-level financing and an \u0083 Augmentations of two operational projects, adding export credit agency facility of \u00a3141mn and \u0083 Driven by the revaluation of Cockenzie, Monets 152MWh of capacity \u00a330mn respectively to finance the construction of Garden and Elland 2 now that these projects are in the three new projects construction 3 GRID Interim Report 2026 Strategic report Financial review and risk Governance Accounts Other information Highlights Contracted revenues / per MW2 / as a Revenue / revenue per MW1 percentage of total revenues EBITDA / EBITDA margin3 Jun 26 \u00a334.7mn / \u00a363,200 per MW Jun 26 \u00a320.6mn / \u00a338,800 per MW / 61% Jun 26 \u00a323.5mn / 68% Dec 25 \u00a328.6mn / \u00a362,600 per MW Dec 25 \u00a312.7mn / \u00a327,900 per MW / 45% Dec 25 \u00a318.3mn / 64% Jun 25 \u00a331.7mn / \u00a375,100 per MW Jun 25 \u00a311.1mn / \u00a326,200 per MW / 35% Jun 25 \u00a320.5mn / 65% Why is this important?",
+     "duration": {},
+     "basis": {},
+     "horizon": {},
+     "years": {
+      "2026": 1
+     }
+    },
+    {
+     "as_printed": "\u00a362,600 per MW",
+     "shape": "\u00a39 per mw",
+     "offset": 3431,
+     "sentence": "The portfolio has grown from \u0083 Net debt to NAV indicates how large the debt when considering an investment in the Company\u2019s 70MW since the Company\u2019s IPO in 2018 arrangements are relative to the Fund\u2019s asset value shares \u0083 A larger operational base provides the scale and \u0083 The Fund\u2019s investment policy limits its leverage to a geographic coverage required for stronger market maximum of 50% of NAV positioning What we achieved in the period What we achieved in the period What we achieved in the period \u0083 Growth in the NAV and NAV per share of 15.8% \u0083 Growth of 8.9% in MWh \u0083 Secured senior project-level financing and an \u0083 Augmentations of two operational projects, adding export credit agency facility of \u00a3141mn and \u0083 Driven by the revaluation of Cockenzie, Monets 152MWh of capacity \u00a330mn respectively to finance the construction of Garden and Elland 2 now that these projects are in the three new projects construction 3 GRID Interim Report 2026 Strategic report Financial review and risk Governance Accounts Other information Highlights Contracted revenues / per MW2 / as a Revenue / revenue per MW1 percentage of total revenues EBITDA / EBITDA margin3 Jun 26 \u00a334.7mn / \u00a363,200 per MW Jun 26 \u00a320.6mn / \u00a338,800 per MW / 61% Jun 26 \u00a323.5mn / 68% Dec 25 \u00a328.6mn / \u00a362,600 per MW Dec 25 \u00a312.7mn / \u00a327,900 per MW / 45% Dec 25 \u00a318.3mn / 64% Jun 25 \u00a331.7mn / \u00a375,100 per MW Jun 25 \u00a311.1mn / \u00a326,200 per MW / 35% Jun 25 \u00a320.5mn / 65% Why is this important?",
+     "duration": {},
+     "basis": {},
+     "horizon": {},
+     "years": {
+      "2026": 1
+     }
+    },
+    {
+     "as_printed": "\u00a327,900 per MW",
+     "shape": "\u00a39 per mw",
+     "offset": 3463,
+     "sentence": "The portfolio has grown from \u0083 Net debt to NAV indicates how large the debt when considering an investment in the Company\u2019s 70MW since the Company\u2019s IPO in 2018 arrangements are relative to the Fund\u2019s asset value shares \u0083 A larger operational base provides the scale and \u0083 The Fund\u2019s investment policy limits its leverage to a geographic coverage required for stronger market maximum of 50% of NAV positioning What we achieved in the period What we achieved in the period What we achieved in the period \u0083 Growth in the NAV and NAV per share of 15.8% \u0083 Growth of 8.9% in MWh \u0083 Secured senior project-level financing and an \u0083 Augmentations of two operational projects, adding export credit agency facility of \u00a3141mn and \u0083 Driven by the revaluation of Cockenzie, Monets 152MWh of capacity \u00a330mn respectively to finance the construction of Garden and Elland 2 now that these projects are in the three new projects construction 3 GRID Interim Report 2026 Strategic report Financial review and risk Governance Accounts Other information Highlights Contracted revenues / per MW2 / as a Revenue / revenue per MW1 percentage of total revenues EBITDA / EBITDA margin3 Jun 26 \u00a334.7mn / \u00a363,200 per MW Jun 26 \u00a320.6mn / \u00a338,800 per MW / 61% Jun 26 \u00a323.5mn / 68% Dec 25 \u00a328.6mn / \u00a362,600 per MW Dec 25 \u00a312.7mn / \u00a327,900 per MW / 45% Dec 25 \u00a318.3mn / 64% Jun 25 \u00a331.7mn / \u00a375,100 per MW Jun 25 \u00a311.1mn / \u00a326,200 per MW / 35% Jun 25 \u00a320.5mn / 65% Why is this important?",
+     "duration": {},
+     "basis": {},
+     "horizon": {},
+     "years": {
+      "2026": 1
+     }
+    },
+    {
+     "as_printed": "\u00a375,100 per MW",
+     "shape": "\u00a39 per mw",
+     "offset": 3522,
+     "sentence": "The portfolio has grown from \u0083 Net debt to NAV indicates how large the debt when considering an investment in the Company\u2019s 70MW since the Company\u2019s IPO in 2018 arrangements are relative to the Fund\u2019s asset value shares \u0083 A larger operational base provides the scale and \u0083 The Fund\u2019s investment policy limits its leverage to a geographic coverage required for stronger market maximum of 50% of NAV positioning What we achieved in the period What we achieved in the period What we achieved in the period \u0083 Growth in the NAV and NAV per share of 15.8% \u0083 Growth of 8.9% in MWh \u0083 Secured senior project-level financing and an \u0083 Augmentations of two operational projects, adding export credit agency facility of \u00a3141mn and \u0083 Driven by the revaluation of Cockenzie, Monets 152MWh of capacity \u00a330mn respectively to finance the construction of Garden and Elland 2 now that these projects are in the three new projects construction 3 GRID Interim Report 2026 Strategic report Financial review and risk Governance Accounts Other information Highlights Contracted revenues / per MW2 / as a Revenue / revenue per MW1 percentage of total revenues EBITDA / EBITDA margin3 Jun 26 \u00a334.7mn / \u00a363,200 per MW Jun 26 \u00a320.6mn / \u00a338,800 per MW / 61% Jun 26 \u00a323.5mn / 68% Dec 25 \u00a328.6mn / \u00a362,600 per MW Dec 25 \u00a312.7mn / \u00a327,900 per MW / 45% Dec 25 \u00a318.3mn / 64% Jun 25 \u00a331.7mn / \u00a375,100 per MW Jun 25 \u00a311.1mn / \u00a326,200 per MW / 35% Jun 25 \u00a320.5mn / 65% Why is this important?",
+     "duration": {},
+     "basis": {},
+     "horizon": {},
+     "years": {
+      "2026": 1
+     }
+    },
+    {
+     "as_printed": "\u00a326,200 per MW",
+     "shape": "\u00a39 per mw",
+     "offset": 3554,
+     "sentence": "The portfolio has grown from \u0083 Net debt to NAV indicates how large the debt when considering an investment in the Company\u2019s 70MW since the Company\u2019s IPO in 2018 arrangements are relative to the Fund\u2019s asset value shares \u0083 A larger operational base provides the scale and \u0083 The Fund\u2019s investment policy limits its leverage to a geographic coverage required for stronger market maximum of 50% of NAV positioning What we achieved in the period What we achieved in the period What we achieved in the period \u0083 Growth in the NAV and NAV per share of 15.8% \u0083 Growth of 8.9% in MWh \u0083 Secured senior project-level financing and an \u0083 Augmentations of two operational projects, adding export credit agency facility of \u00a3141mn and \u0083 Driven by the revaluation of Cockenzie, Monets 152MWh of capacity \u00a330mn respectively to finance the construction of Garden and Elland 2 now that these projects are in the three new projects construction 3 GRID Interim Report 2026 Strategic report Financial review and risk Governance Accounts Other information Highlights Contracted revenues / per MW2 / as a Revenue / revenue per MW1 percentage of total revenues EBITDA / EBITDA margin3 Jun 26 \u00a334.7mn / \u00a363,200 per MW Jun 26 \u00a320.6mn / \u00a338,800 per MW / 61% Jun 26 \u00a323.5mn / 68% Dec 25 \u00a328.6mn / \u00a362,600 per MW Dec 25 \u00a312.7mn / \u00a327,900 per MW / 45% Dec 25 \u00a318.3mn / 64% Jun 25 \u00a331.7mn / \u00a375,100 per MW Jun 25 \u00a311.1mn / \u00a326,200 per MW / 35% Jun 25 \u00a320.5mn / 65% Why is this important?",
+     "duration": {},
+     "basis": {},
+     "horizon": {},
+     "years": {
+      "2026": 1
+     }
+    },
+    {
+     "as_printed": "\u00a323 per MWh",
+     "shape": "\u00a39 per mwh",
+     "offset": 7775,
+     "sentence": "Launched in December 2025, the trial delivered \u00a323 per MWh, well ahead of the \u00a35-10 expected at scale.",
+     "duration": {},
+     "basis": {},
+     "horizon": {},
+     "years": {
+      "2025": 1
+     }
+    },
+    {
+     "as_printed": "\u00a363,200 per MW",
+     "shape": "\u00a39 per mw",
+     "offset": 9699,
+     "sentence": "In Great Britain, network constraint achieving an average revenue rate of \u00a363,200 per MW in H1 2026, ahead of the Modo costs of \u00a31.9bn in 2024/2025 (71% of total balancing costs)5 evidence the scale of the Energy GB BESS Index performance of \u00a359,000 per MW6, but below the H1 2025 GRID requirement.",
+     "duration": {},
+     "basis": {
+      "index": 1,
+      "average": 1
+     },
+     "horizon": {},
+     "years": {
+      "2024": 1,
+      "2025": 2,
+      "2026": 1
+     }
+    },
+    {
+     "as_printed": "\u00a359,000 per MW",
+     "shape": "\u00a39 per mw",
+     "offset": 9867,
+     "sentence": "In Great Britain, network constraint achieving an average revenue rate of \u00a363,200 per MW in H1 2026, ahead of the Modo costs of \u00a31.9bn in 2024/2025 (71% of total balancing costs)5 evidence the scale of the Energy GB BESS Index performance of \u00a359,000 per MW6, but below the H1 2025 GRID requirement.",
+     "duration": {},
+     "basis": {
+      "index": 1,
+      "average": 1
+     },
+     "horizon": {},
+     "years": {
+      "2024": 1,
+      "2025": 2,
+      "2026": 1
+     }
+    },
+    {
+     "as_printed": "\u00a375,100/MW",
+     "shape": "\u00a39/mw",
+     "offset": 10020,
+     "sentence": "The GB operational BESS fleet reached c.7.6GW (GRID: 1.1GW) at the end portfolio performance of \u00a375,100/MW.",
+     "duration": {},
+     "basis": {
+      "fleet": 1
+     },
+     "horizon": {},
+     "years": {}
+    },
+    {
+     "as_printed": "\u00a363,200 / MW",
+     "shape": "\u00a39 / mw",
+     "offset": 17025,
+     "sentence": "operational MW7 decreasing to \u00a363,200 / MW versus \u00a375,100 / MW in H1 2025.",
+     "duration": {},
+     "basis": {},
+     "horizon": {},
+     "years": {
+      "2025": 1
+     }
+    },
+    {
+     "as_printed": "\u00a375,100 / MW",
+     "shape": "\u00a39 / mw",
+     "offset": 17045,
+     "sentence": "operational MW7 decreasing to \u00a363,200 / MW versus \u00a375,100 / MW in H1 2025.",
+     "duration": {},
+     "basis": {},
+     "horizon": {},
+     "years": {
+      "2025": 1
+     }
+    },
+    {
+     "as_printed": "\u00a3850k/MW",
+     "shape": "\u00a39k/mw",
+     "offset": 43670,
+     "sentence": "As per the Capital Markets Webinar, estimated NAV uplift from an operational net present value of \u00a3850k/MW against a cost of \u00a3487k/MW on 1,174MW of new pipeline adjusted for 75% ownership 16 GRID Interim Report 2026 Strategic report Financial review and risk Governance Accounts Other information Investment Manager\u2019s review Alternative Revenues: proven, capital-light growth Delivering by the end of 2026 The Alternative Revenues strategy has moved from concept to delivery and its target under The priorities for the second half of the year are clearly defined, and each translates directly the Growth Plan is unchanged, at \u00a325mn of incremental annualised EBITDA.",
+     "duration": {},
+     "basis": {},
+     "horizon": {},
+     "years": {
+      "2026": 2
+     }
+    },
+    {
+     "as_printed": "\u00a3487k/MW",
+     "shape": "\u00a39k/mw",
+     "offset": 43697,
+     "sentence": "As per the Capital Markets Webinar, estimated NAV uplift from an operational net present value of \u00a3850k/MW against a cost of \u00a3487k/MW on 1,174MW of new pipeline adjusted for 75% ownership 16 GRID Interim Report 2026 Strategic report Financial review and risk Governance Accounts Other information Investment Manager\u2019s review Alternative Revenues: proven, capital-light growth Delivering by the end of 2026 The Alternative Revenues strategy has moved from concept to delivery and its target under The priorities for the second half of the year are clearly defined, and each translates directly the Growth Plan is unchanged, at \u00a325mn of incremental annualised EBITDA.",
+     "duration": {},
+     "basis": {},
+     "horizon": {},
+     "years": {
+      "2026": 2
+     }
+    },
+    {
+     "as_printed": "\u00a323 per MWh",
+     "shape": "\u00a39 per mwh",
+     "offset": 44953,
+     "sentence": "Completion will take live revenue trials, which delivered \u00a323 per MWh after fees, ahead of the \u00a35-10 per MWh we the portfolio's average duration to c.2.0 hours, with the full revenue benefit flowing from expect at scale.",
+     "duration": {},
+     "basis": {
+      "average": 1
+     },
+     "horizon": {},
+     "years": {}
+    },
+    {
+     "as_printed": "\u00a35-10 per MWh",
+     "shape": "\u00a39-9 per mwh",
+     "offset": 44990,
+     "sentence": "Completion will take live revenue trials, which delivered \u00a323 per MWh after fees, ahead of the \u00a35-10 per MWh we the portfolio's average duration to c.2.0 hours, with the full revenue benefit flowing from expect at scale.",
+     "duration": {},
+     "basis": {
+      "average": 1
+     },
+     "horizon": {},
+     "years": {}
+    },
+    {
+     "as_printed": "\u00a363,200 / MW",
+     "shape": "\u00a39 / mw",
+     "offset": 52692,
+     "sentence": "The revenue growth was primarily driven by the increase in operational MWs, with the revenue generated per operational MW decreasing to \u00a363,200 / MW versus \u00a375,100 While revenue growth has slowed, the proportion of underlying portfolio revenues coming / MW in H1 2025 due to a weaker merchant revenue environment than the previous from contracted revenues increased to 61% (H1 2025: 35%), de-risking the portfolio\u2019s year.",
+     "duration": {},
+     "basis": {},
+     "horizon": {},
+     "years": {
+      "2025": 2
+     }
+    }
+   ],
+   "figure_shapes": {
+    "\u00a39 per mw": 8,
+    "\u00a39 / mw": 3,
+    "\u00a39 per mwh": 2,
+    "\u00a39k/mw": 2,
+    "\u00a39/mw": 1,
+    "\u00a39-9 per mwh": 1
+   },
+   "duration": {
+    "one-hour": 1,
+    "1h": 3,
+    "2-hour": 1,
+    "two-hour": 4,
+    "2h": 3,
+    "8-hour": 6
+   },
+   "basis": {
+    "forecast": 1,
+    "forecasts": 12,
+    "projection": 1,
+    "outlook": 1,
+    "index": 8,
+    "realised": 1,
+    "actual": 2,
+    "potential": 10,
+    "benchmark": 2,
+    "fleet": 7,
+    "average": 27,
+    "typical": 5
+   },
+   "horizon": {
+    "long-term": 17,
+    "annual": 18,
+    "monthly": 2
+   },
+   "paywall": {
+    "premium": 17
+   },
+   "years": {
+    "2021": 1,
+    "2022": 2,
+    "2023": 1,
+    "2024": 11,
+    "2025": 125,
+    "2026": 274,
+    "2027": 13,
+    "2028": 4,
+    "2029": 10,
+    "2030": 10,
+    "2031": 1,
+    "2032": 1,
+    "2033": 1,
+    "2034": 1,
+    "2035": 2,
+    "2036": 1,
+    "2037": 1,
+    "2038": 1,
+    "2039": 1,
+    "2040": 1,
+    "2041": 1,
+    "2042": 1,
+    "2043": 1,
+    "2044": 1,
+    "2045": 1,
+    "2046": 1,
+    "2047": 1,
+    "2048": 1,
+    "2049": 1
+   },
+   "flags": [
+    "no date declared"
+   ]
+  },
+  {
+   "url": "https://greshamhouse.com/wp-content/uploads/2025/04/GRID-Annual-Report-31-December-2024.pdf",
+   "path": "data/raw/rns/022/028-wp-content__uploads__2025__04__GRID-Annual-Report-31-December-2024.pdf.html",
+   "sha256": "d2be6a448dd2be036f857fcb290451020053a053085304d4d7e489322d8256ec",
+   "bytes": 8867318,
+   "format": "pdf",
+   "title": null,
+   "dates": {},
+   "text_chars": 385062,
+   "figures": [
+    {
+     "as_printed": "\u00a391k/MW/yr",
+     "shape": "\u00a39k/mw/yr",
+     "offset": 16748,
+     "sentence": "benefitted from an improving trend from MWh) have seen significant variability, the second quarter and closed the year with highs and lows in 2024 of \u00a391k/MW/yr It is therefore encouraging to revisit things at a high, posting over 50% growth in (December) and \u00a334k/MW/yr (February) now, at the start of 2025, in the context operational battery capacity (MWh) in respectively in terms of revenues per of an improving revenue backdrop and 2024 and enjoying revenues in December MW expressed on an annualised basis.",
+     "duration": {},
+     "basis": {},
+     "horizon": {},
+     "years": {
+      "2024": 2,
+      "2025": 1
+     }
+    },
+    {
+     "as_printed": "\u00a334k/MW/yr",
+     "shape": "\u00a39k/mw/yr",
+     "offset": 16858,
+     "sentence": "benefitted from an improving trend from MWh) have seen significant variability, the second quarter and closed the year with highs and lows in 2024 of \u00a391k/MW/yr It is therefore encouraging to revisit things at a high, posting over 50% growth in (December) and \u00a334k/MW/yr (February) now, at the start of 2025, in the context operational battery capacity (MWh) in respectively in terms of revenues per of an improving revenue backdrop and 2024 and enjoying revenues in December MW expressed on an annualised basis.",
+     "duration": {},
+     "basis": {},
+     "horizon": {},
+     "years": {
+      "2024": 2,
+      "2025": 1
+     }
+    },
+    {
+     "as_printed": "\u00a345,000 per MW per annum",
+     "shape": "\u00a39 per mw per annum",
+     "offset": 26132,
+     "sentence": "on efficient capacity growth by carrying with more visibility, while diversifying of \u00a345,000 per MW per annum from out more duration extensions instead the Company\u2019s revenues away from uncontracted assets (i.e.",
+     "duration": {},
+     "basis": {},
+     "horizon": {},
+     "years": {}
+    },
+    {
+     "as_printed": "\u00a366,000 per MW",
+     "shape": "\u00a39 per mw",
+     "offset": 26800,
+     "sentence": "conditions in fact resulted in annualised respectively during the year, through a mitigated delays, at a time that new project operational portfolio revenues per combination of new project connections connections were proving challenging due The tolling agreement with Octopus MW exceeding \u00a366,000 per MW in the and battery duration extensions and to construction programme extensions contracted 568MW / 920MWh of our second half of 2024.",
+     "duration": {},
+     "basis": {},
+     "horizon": {},
+     "years": {
+      "2024": 1
+     }
+    },
+    {
+     "as_printed": "\u00a345k/MW/yr",
+     "shape": "\u00a39k/mw/yr",
+     "offset": 29481,
+     "sentence": "National Grid ESO prior to being Operational Dividend Cover, are defined and a merchant revenue rate on 504MW of nationalised during 2024) calculated on page 121 to 124 uncontracted assets of \u00a345k/MW/yr Gresham House GRID Annual Report 2024 12 Investment Manager\u2019s review Overview Portfolio Market and financial review Sustainability Governance Accounts Other information Three-year Plan to drive The team continues to make progress on Outlook: the investment Electricity prices can turn negative during the next phase of the pipeline.",
+     "duration": {},
+     "basis": {
+      "outlook": 1
+     },
+     "horizon": {
+      "annual": 1
+     },
+     "years": {
+      "2024": 2
+     }
+    },
+    {
+     "as_printed": "\u00a375,000 per MW",
+     "shape": "\u00a39 per mw",
+     "offset": 38725,
+     "sentence": "in annualised EBITDA during the tolling arrangement, assuming non-contracted assets perform at the recent merchant net revenue levels of \u00a375,000 per MW (based on the Modo BESS index from December 2024 to February 2025) 28 .",
+     "duration": {},
+     "basis": {
+      "index": 1
+     },
+     "horizon": {},
+     "years": {
+      "2024": 1,
+      "2025": 1
+     }
+    },
+    {
+     "as_printed": "\u00a330,000/MW per year",
+     "shape": "\u00a39/mw per year",
+     "offset": 70395,
+     "sentence": "Unaudited \u00a330,000/MW per year revenue level \u00a3120,000/MW per year revenue level \u00a3210,000/MW per year revenue level 32.",
+     "duration": {},
+     "basis": {},
+     "horizon": {},
+     "years": {}
+    },
+    {
+     "as_printed": "\u00a3120,000/MW per year",
+     "shape": "\u00a39/mw per year",
+     "offset": 70429,
+     "sentence": "Unaudited \u00a330,000/MW per year revenue level \u00a3120,000/MW per year revenue level \u00a3210,000/MW per year revenue level 32.",
+     "duration": {},
+     "basis": {},
+     "horizon": {},
+     "years": {}
+    },
+    {
+     "as_printed": "\u00a3210,000/MW per year",
+     "shape": "\u00a39/mw per year",
+     "offset": 70464,
+     "sentence": "Unaudited \u00a330,000/MW per year revenue level \u00a3120,000/MW per year revenue level \u00a3210,000/MW per year revenue level 32.",
+     "duration": {},
+     "basis": {},
+     "horizon": {},
+     "years": {}
+    },
+    {
+     "as_printed": "\u00a391k per MW",
+     "shape": "\u00a39k per mw",
+     "offset": 70959,
+     "sentence": "Indeed, in December earnings 8.0% 2024 the portfolio achieved an average 22.7% annualised revenue rate of \u00a391k per MW The revenue mix evolved over the course 17.6% which, with a portfolio average duration of of 2024.",
+     "duration": {},
+     "basis": {
+      "average": 2
+     },
+     "horizon": {},
+     "years": {
+      "2024": 2
+     }
+    },
+    {
+     "as_printed": "\u00a3670k/MW",
+     "shape": "\u00a39k/mw",
+     "offset": 82321,
+     "sentence": "only includes the NPV of future cash section, we believe the alternative valuation Underlying portfolio revenue in each year38 62.7 38.7 46.5 flows, the valuation stood at \u00a3670k/MW.",
+     "duration": {},
+     "basis": {},
+     "horizon": {},
+     "years": {}
+    },
+    {
+     "as_printed": "\u00a375k/MW/Yr",
+     "shape": "\u00a39k/mw/yr",
+     "offset": 87749,
+     "sentence": "\u00a375k/MW/Yr52 of net merchant revenues reflects the Modo BESS index level for the three months up to writing of this report (December 2024 \u2013 February 2025).",
+     "duration": {},
+     "basis": {
+      "index": 1
+     },
+     "horizon": {},
+     "years": {
+      "2024": 1,
+      "2025": 1
+     }
+    },
+    {
+     "as_printed": "\u00a315k/MW/Yr",
+     "shape": "\u00a39k/mw/yr",
+     "offset": 87951,
+     "sentence": "Alongside this we have shown a sensitivity of \u00a315k/MW/Yr up and down on merchant revenues, to illustrate the volatility in earnings driven by merchant revenues.",
+     "duration": {},
+     "basis": {},
+     "horizon": {},
+     "years": {}
+    }
+   ],
+   "figure_shapes": {
+    "\u00a39k/mw/yr": 5,
+    "\u00a39/mw per year": 3,
+    "\u00a39 per mw": 2,
+    "\u00a39 per mw per annum": 1,
+    "\u00a39k per mw": 1,
+    "\u00a39k/mw": 1
+   },
+   "duration": {
+    "1hr": 2,
+    "two-hour": 8,
+    "2hr": 2,
+    "four-hour": 1
+   },
+   "basis": {
+    "forecast": 16,
+    "forecasts": 25,
+    "forecasting": 2,
+    "outlook": 8,
+    "index": 23,
+    "realised": 2,
+    "actual": 7,
+    "outturn": 1,
+    "potential": 31,
+    "benchmark": 2,
+    "fleet": 5,
+    "average": 50,
+    "typical": 3
+   },
+   "horizon": {
+    "long-term": 26,
+    "long term": 8,
+    "annual": 180,
+    "monthly": 4
+   },
+   "paywall": {
+    "premium": 31,
+    "unlock": 4
+   },
+   "years": {
+    "2020": 14,
+    "2021": 18,
+    "2022": 41,
+    "2023": 165,
+    "2024": 462,
+    "2025": 89,
+    "2026": 7,
+    "2027": 6,
+    "2028": 5,
+    "2029": 1,
+    "2030": 14,
+    "2031": 1,
+    "2032": 1,
+    "2033": 1,
+    "2034": 1,
+    "2035": 1,
+    "2036": 1,
+    "2037": 1,
+    "2038": 1,
+    "2039": 1,
+    "2040": 1,
+    "2050": 4
+   },
+   "flags": [
+    "no date declared"
+   ]
+  },
+  {
+   "url": "https://greshamhouse.com/wp-content/uploads/2024/04/GRID-Annual-Report-2023-Signed.pdf",
+   "path": "data/raw/rns/022/029-wp-content__uploads__2024__04__GRID-Annual-Report-2023-Signed.pdf.html",
+   "sha256": "15463b8af3a24a80f590829e3a24c8257a922fac0ed6613bcbd8667c0cb65e55",
+   "bytes": 12727869,
+   "format": "pdf",
+   "title": null,
+   "dates": {},
+   "text_chars": 374821,
+   "figures": [
+    {
+     "as_printed": "\u00a330,000/MW per year",
+     "shape": "\u00a39/mw per year",
+     "offset": 31099,
+     "sentence": "Assumption made that a 2-hour battery makes 30% revenue more than a 1-hour battery Projected MW / MWh growth over 2024 200,000,000 1,800 180,000,000 1,600 160,000,000 1,400 140,000,000 1,200 Annualised Monthly Revenues (\u00a3) 120,000,000 Capacity (MW and MWh) 1,000 100,000,000 800 80,000,000 600 60,000,000 400 40,000,000 20,000,000 200 - - Dec-23 Jan-24 Feb-24 Mar-24 Apr-24 May-24 Jun-24 Jul-24 Aug-24 Sep-24 Oct-24 Nov-24 Dec-24 \u00a330,000/MW per year revenue level \u00a3120,000/MW per year revenue level \u00a3210,000/MW per year revenue level Projected Capacity (MWh) RHS Historical Capacity (MWh) RHS Projected Capacity (MW) RHS Historical Capacity (MW) RHS Projected revenue @ target deployment using full year 2023 revenue levels 12 Gresham House Energy Storage Fund plc (GRID) Additional Information Financial Statements Annual Report Table 1.",
+     "duration": {
+      "1-hour": 1,
+      "2-hour": 1
+     },
+     "basis": {},
+     "horizon": {
+      "annual": 1,
+      "monthly": 1
+     },
+     "years": {
+      "2023": 1,
+      "2024": 1
+     }
+    },
+    {
+     "as_printed": "\u00a3120,000/MW per year",
+     "shape": "\u00a39/mw per year",
+     "offset": 31133,
+     "sentence": "Assumption made that a 2-hour battery makes 30% revenue more than a 1-hour battery Projected MW / MWh growth over 2024 200,000,000 1,800 180,000,000 1,600 160,000,000 1,400 140,000,000 1,200 Annualised Monthly Revenues (\u00a3) 120,000,000 Capacity (MW and MWh) 1,000 100,000,000 800 80,000,000 600 60,000,000 400 40,000,000 20,000,000 200 - - Dec-23 Jan-24 Feb-24 Mar-24 Apr-24 May-24 Jun-24 Jul-24 Aug-24 Sep-24 Oct-24 Nov-24 Dec-24 \u00a330,000/MW per year revenue level \u00a3120,000/MW per year revenue level \u00a3210,000/MW per year revenue level Projected Capacity (MWh) RHS Historical Capacity (MWh) RHS Projected Capacity (MW) RHS Historical Capacity (MW) RHS Projected revenue @ target deployment using full year 2023 revenue levels 12 Gresham House Energy Storage Fund plc (GRID) Additional Information Financial Statements Annual Report Table 1.",
+     "duration": {
+      "1-hour": 1,
+      "2-hour": 1
+     },
+     "basis": {},
+     "horizon": {
+      "annual": 1,
+      "monthly": 1
+     },
+     "years": {
+      "2023": 1,
+      "2024": 1
+     }
+    },
+    {
+     "as_printed": "\u00a3210,000/MW per year",
+     "shape": "\u00a39/mw per year",
+     "offset": 31168,
+     "sentence": "Assumption made that a 2-hour battery makes 30% revenue more than a 1-hour battery Projected MW / MWh growth over 2024 200,000,000 1,800 180,000,000 1,600 160,000,000 1,400 140,000,000 1,200 Annualised Monthly Revenues (\u00a3) 120,000,000 Capacity (MW and MWh) 1,000 100,000,000 800 80,000,000 600 60,000,000 400 40,000,000 20,000,000 200 - - Dec-23 Jan-24 Feb-24 Mar-24 Apr-24 May-24 Jun-24 Jul-24 Aug-24 Sep-24 Oct-24 Nov-24 Dec-24 \u00a330,000/MW per year revenue level \u00a3120,000/MW per year revenue level \u00a3210,000/MW per year revenue level Projected Capacity (MWh) RHS Historical Capacity (MWh) RHS Projected Capacity (MW) RHS Historical Capacity (MW) RHS Projected revenue @ target deployment using full year 2023 revenue levels 12 Gresham House Energy Storage Fund plc (GRID) Additional Information Financial Statements Annual Report Table 1.",
+     "duration": {
+      "1-hour": 1,
+      "2-hour": 1
+     },
+     "basis": {},
+     "horizon": {
+      "annual": 1,
+      "monthly": 1
+     },
+     "years": {
+      "2023": 1,
+      "2024": 1
+     }
+    },
+    {
+     "as_printed": "\u00a330,000/MW per year",
+     "shape": "\u00a39/mw per year",
+     "offset": 47081,
+     "sentence": "Revenues (actual) with revenue ranges vs Capacity (MW) 250,000,000 1,400 1,200 200,000,000 1,000 150,000,000 800 Annualised Monthly Revenues (\u00a3) Capacity (MW) 600 100,000,000 400 50,000,000 200 - - Mar-19 Jan-19 May-19 Sep-19 Jul-19 Nov-19 Mar-20 Jan-20 May-20 Sep-20 Jul-20 Mar-21 Jan-21 Nov-20 May-21 Sep-21 Jul-21 Jan-22 Nov-21 Mar-22 May-22 Sep-22 Jul-22 Nov-22 Mar-23 Jan-23 May-23 Sep-23 Jul-23 Nov-23 Mar-24 Jan-24 May-24 Sep-24 Jul-24 Nov-24 Historical Capacity (MW) RHS Projected Capacity (MW) RHS Annualised Actual Monthly Revenue (\u00a3) \u00a330,000/MW per year revenue level \u00a3120,000/MW per year revenue level \u00a3210,000/MW per year revenue level Gresham House Energy Storage Fund plc (GRID) 19 Annual Report Financial Statements Additional Information Market update Quick Reserve will replace the existing STOR, Fast Reserve, and Operational Downward Flexibility Management Services sourced from gas and diesel peakers today.",
+     "duration": {},
+     "basis": {
+      "actual": 2
+     },
+     "horizon": {
+      "annual": 1,
+      "monthly": 2
+     },
+     "years": {}
+    },
+    {
+     "as_printed": "\u00a3120,000/MW per year",
+     "shape": "\u00a39/mw per year",
+     "offset": 47115,
+     "sentence": "Revenues (actual) with revenue ranges vs Capacity (MW) 250,000,000 1,400 1,200 200,000,000 1,000 150,000,000 800 Annualised Monthly Revenues (\u00a3) Capacity (MW) 600 100,000,000 400 50,000,000 200 - - Mar-19 Jan-19 May-19 Sep-19 Jul-19 Nov-19 Mar-20 Jan-20 May-20 Sep-20 Jul-20 Mar-21 Jan-21 Nov-20 May-21 Sep-21 Jul-21 Jan-22 Nov-21 Mar-22 May-22 Sep-22 Jul-22 Nov-22 Mar-23 Jan-23 May-23 Sep-23 Jul-23 Nov-23 Mar-24 Jan-24 May-24 Sep-24 Jul-24 Nov-24 Historical Capacity (MW) RHS Projected Capacity (MW) RHS Annualised Actual Monthly Revenue (\u00a3) \u00a330,000/MW per year revenue level \u00a3120,000/MW per year revenue level \u00a3210,000/MW per year revenue level Gresham House Energy Storage Fund plc (GRID) 19 Annual Report Financial Statements Additional Information Market update Quick Reserve will replace the existing STOR, Fast Reserve, and Operational Downward Flexibility Management Services sourced from gas and diesel peakers today.",
+     "duration": {},
+     "basis": {
+      "actual": 2
+     },
+     "horizon": {
+      "annual": 1,
+      "monthly": 2
+     },
+     "years": {}
+    },
+    {
+     "as_printed": "\u00a3210,000/MW per year",
+     "shape": "\u00a39/mw per year",
+     "offset": 47150,
+     "sentence": "Revenues (actual) with revenue ranges vs Capacity (MW) 250,000,000 1,400 1,200 200,000,000 1,000 150,000,000 800 Annualised Monthly Revenues (\u00a3) Capacity (MW) 600 100,000,000 400 50,000,000 200 - - Mar-19 Jan-19 May-19 Sep-19 Jul-19 Nov-19 Mar-20 Jan-20 May-20 Sep-20 Jul-20 Mar-21 Jan-21 Nov-20 May-21 Sep-21 Jul-21 Jan-22 Nov-21 Mar-22 May-22 Sep-22 Jul-22 Nov-22 Mar-23 Jan-23 May-23 Sep-23 Jul-23 Nov-23 Mar-24 Jan-24 May-24 Sep-24 Jul-24 Nov-24 Historical Capacity (MW) RHS Projected Capacity (MW) RHS Annualised Actual Monthly Revenue (\u00a3) \u00a330,000/MW per year revenue level \u00a3120,000/MW per year revenue level \u00a3210,000/MW per year revenue level Gresham House Energy Storage Fund plc (GRID) 19 Annual Report Financial Statements Additional Information Market update Quick Reserve will replace the existing STOR, Fast Reserve, and Operational Downward Flexibility Management Services sourced from gas and diesel peakers today.",
+     "duration": {},
+     "basis": {
+      "actual": 2
+     },
+     "horizon": {
+      "annual": 1,
+      "monthly": 2
+     },
+     "years": {}
+    },
+    {
+     "as_printed": "\u00a3771k/MW",
+     "shape": "\u00a39k/mw",
+     "offset": 59760,
+     "sentence": "Interest rate Dividends New CM contracts New Investments to FV Change inflation rates 31 December 2022 NAV 31 December 2023 NAV hedge hedge 24 Gresham House Energy Storage Fund plc (GRID) Additional Information Financial Statements Annual Report Operational assets were valued at \u00a3771k/MW as at 31 A decrease in revenue forecasts contributed the largest December 2023.",
+     "duration": {},
+     "basis": {
+      "forecasts": 1
+     },
+     "horizon": {
+      "annual": 1
+     },
+     "years": {
+      "2022": 1,
+      "2023": 2
+     }
+    },
+    {
+     "as_printed": "\u00a3697k/MW",
+     "shape": "\u00a39k/mw",
+     "offset": 60056,
+     "sentence": "Third party just the NPV of future cash flows, the valuation stood at forecasts over the course of 12 months have reduced \u00a3697k/MW.",
+     "duration": {},
+     "basis": {
+      "forecasts": 1
+     },
+     "horizon": {},
+     "years": {}
+    }
+   ],
+   "figure_shapes": {
+    "\u00a39/mw per year": 6,
+    "\u00a39k/mw": 2
+   },
+   "duration": {
+    "1-hour": 2,
+    "one-hour": 2,
+    "2-hour": 9,
+    "two-hour": 3
+   },
+   "basis": {
+    "forecast": 8,
+    "forecasts": 24,
+    "forecasting": 1,
+    "outlook": 9,
+    "index": 6,
+    "realised": 1,
+    "actual": 10,
+    "potential": 30,
+    "benchmark": 3,
+    "fleet": 2,
+    "average": 34,
+    "typical": 1
+   },
+   "horizon": {
+    "long-term": 15,
+    "long term": 10,
+    "annual": 160,
+    "monthly": 6
+   },
+   "paywall": {
+    "premium": 27,
+    "unlock": 1
+   },
+   "years": {
+    "2020": 10,
+    "2021": 28,
+    "2022": 195,
+    "2023": 321,
+    "2024": 141,
+    "2025": 15,
+    "2026": 13,
+    "2027": 10,
+    "2028": 6,
+    "2029": 2,
+    "2030": 4,
+    "2031": 2,
+    "2032": 2,
+    "2033": 2,
+    "2034": 2,
+    "2035": 4,
+    "2036": 2,
+    "2037": 2,
+    "2038": 2,
+    "2039": 2,
+    "2040": 2,
+    "2041": 1,
+    "2042": 1,
+    "2043": 1,
+    "2044": 1,
+    "2045": 1,
+    "2046": 1,
+    "2047": 1,
+    "2048": 1,
+    "2049": 1,
+    "2050": 5
+   },
+   "flags": [
+    "no date declared"
+   ]
+  },
+  {
+   "url": "https://greshamhouse.com/wp-content/uploads/2023/04/GRID_Annual_Report_31_December_2022_FINAL-PUBLISHED.pdf",
+   "path": "data/raw/rns/022/030-wp-content__uploads__2023__04__GRID_Annual_Report_31_December_2022_FINAL-PUBLISHED.pdf.html",
+   "sha256": "5d2a3b507e73288bbad3e93b8477a6bda287d4c7cd096bc6f7c37f365163530c",
+   "bytes": 20455660,
+   "format": "pdf",
+   "title": null,
+   "dates": {},
+   "text_chars": 370503,
+   "figures": [
+    {
+     "as_printed": "\u00a3143k per MW",
+     "shape": "\u00a39k per mw",
+     "offset": 25593,
+     "sentence": "of Ireland 120 120 Battery, symmetrical Target COD: 2025 38 Project SK Yorkshire 100 100 Battery, symmetrical Target COD: 2024 Total pipeline not owned by the Company 700 900 Total portfolio and pipeline 1,967 2,577 12 Gresham House Energy Storage Fund plc (GRID) Portfolio 30 18 21 29 17 16 13 8 20 36 37 35 33 38 9 27 32 28 26 24 34 22 11 2 1 25 6 19 10 31 12 15 3 4 23 Key 5 7 14 Acquired Pipeline Operational Pipeline Gresham House Energy Storage Fund plc (GRID) 13 Annual Report Financial Statements Additional Information 148 550 537 148 196 890 Portfolio by Operational Development Portfolio by Portfolio by Status (MW) duration (MW) duration (MW) 246 1036 527 206 Operational In Construction Pipeline <1 hour c1 hour c1.5 hour 2 hours + <1 hour c1 hour c1.5 hour 2 hours + Fund and portfolio performance Portfolio performance The Fund continues to perform well, with the underlying investment portfolio yielding its highest revenues to date DM, 0.4% at \u00a3143k per MW, up 13% on 2021.",
+     "duration": {},
+     "basis": {},
+     "horizon": {
+      "annual": 1
+     },
+     "years": {
+      "2021": 1,
+      "2024": 1,
+      "2025": 1
+     }
+    },
+    {
+     "as_printed": "\u00a3105/MWh",
+     "shape": "\u00a39/mwh",
+     "offset": 28066,
+     "sentence": "This led to peak prices during July of \u00a3105/MWh in DC, although this was short lived with the market eventually becoming saturated from Q3 2022 as expected - see the market \u0173\u019b\u0003\u0004\u00a8\u00c8\u008c\u00c0\u00aev\u00c8\u009c\u00db\u008c\u0003I\u008c\u00c0\u0096\u00b3\u00c0\u00adv\u00ae\u0083\u008c\u00039\u008cv\u00c3\u00cb\u00c0\u008c\u00c3\u0003v\u00c0\u008c\u0003\u0088\u008c\u00ef\u00ae\u008c\u0088\u0003v\u00ae\u0088\u0003 update section for further details.",
+     "duration": {},
+     "basis": {},
+     "horizon": {},
+     "years": {
+      "2022": 1
+     }
+    },
+    {
+     "as_printed": "\u00a3200/MWh",
+     "shape": "\u00a39/mwh",
+     "offset": 37937,
+     "sentence": "challenging backdrop, resulting in consistently higher electricity prices over this period as gas tended to set As requirements for these services are linked to the the price, which meant that the minimum daily price in volume of renewable power on the system, it is likely that the Nordpool day ahead auction over a 25-day period did overall volume requirements will grow slightly, although not fall below \u00a3200/MWh.",
+     "duration": {},
+     "basis": {},
+     "horizon": {},
+     "years": {}
+    },
+    {
+     "as_printed": "\u00a32,586/MWh",
+     "shape": "\u00a39/mwh",
+     "offset": 39731,
+     "sentence": "However, we have found that BESS break from the year\u2019s trend of warmer temperatures, a assets are often not being taken despite being lower cost \u0083\u00b3\u00a8\u0088\u0003\u00c3\u00aev\u00bd\u0003\u0083\u00b3\u00cb\u00bd\u00a8\u008c\u0088\u0003\u00dc\u009c\u00c8\u009a\u0003\u00a8\u00b3\u00dc\u008c\u00c0\u0003\u00dc\u009c\u00ae\u0088\u0003\u00b3\u00cb\u00c8\u00bd\u00cb\u00c8\u0003\u009c\u00ae\u0003\u00c8\u009a\u008c\u0003\u00ef\u00c0\u00c3\u00c8\u0003\u00c8\u00dc\u00b3\u0003 (the metric for tracking this is often referred to as the weeks of December did bring a brief period of exceptional skip rate) which has to date restricted some of the trading trading returns, along with a record \u00a32,586/MWh day revenues, this is something we are focussed heavily on ahead wholesale electricity price on 12 December \u00c8\u00b3\u0003\u008c\u00ae\u00c3\u00cb\u00c0\u008c\u0003\u00c8\u009a\u008c\u0003\u00109\u0003\u009c\u00c3\u0003\u00c0\u00cb\u00ae\u0003\u008c\u00ed\u0083\u009c\u008c\u00ae\u00c8\u00a8\u00e2\u0003v\u00ae\u0088\u0003\u0010\u001aOO\u0003v\u00c0\u008c\u0003\u00c0\u009c\u0097\u009a\u00c8\u00a8\u00e2\u0003 2022.",
+     "duration": {},
+     "basis": {},
+     "horizon": {},
+     "years": {
+      "2022": 1
+     }
+    }
+   ],
+   "figure_shapes": {
+    "\u00a39/mwh": 3,
+    "\u00a39k per mw": 1
+   },
+   "duration": {
+    "1-hour": 1,
+    "2-hour": 2
+   },
+   "basis": {
+    "forecast": 2,
+    "forecasts": 10,
+    "forecasting": 2,
+    "outlook": 7,
+    "index": 4,
+    "realised": 1,
+    "actual": 7,
+    "potential": 22,
+    "benchmark": 3,
+    "average": 45
+   },
+   "horizon": {
+    "decade": 1,
+    "long-term": 16,
+    "long term": 5,
+    "annual": 154,
+    "monthly": 4
+   },
+   "paywall": {
+    "premium": 41,
+    "unlock": 1
+   },
+   "years": {
+    "2020": 13,
+    "2021": 149,
+    "2022": 298,
+    "2023": 98,
+    "2024": 11,
+    "2025": 8,
+    "2026": 5,
+    "2030": 2,
+    "2031": 1,
+    "2035": 2
+   },
+   "flags": [
+    "no date declared"
+   ]
+  },
+  {
+   "url": "https://greshamhouse.com/wp-content/uploads/2022/04/Gresham-House-GRID-Annual-Report-31-December-2021-060422-1.pdf",
+   "path": "data/raw/rns/022/031-wp-content__uploads__2022__04__Gresham-House-GRID-Annual-Report-31-December-2021-060422-1.pdf.html",
+   "sha256": "fda28d63942bef9a955f98040fa94cc4ac53c91afe9d73a0b6126132f87f2513",
+   "bytes": 17875542,
+   "format": "pdf",
+   "title": null,
+   "dates": {},
+   "text_chars": 331862,
+   "figures": [
+    {
+     "as_printed": "\u00a3126.7k per MW",
+     "shape": "\u00a39k per mw",
+     "offset": 34380,
+     "sentence": "This was driven by like for like growth as well to the changes in DC, with the overall battery as acquisitions, with average revenue per capacity in Great Britain growing significantly, As such, the Company\u2019s underlying investment weighted average MW increasing by 64% to it is clear that FR pricing (across all FFR, DC etc) portfolio generated EBITDA of \u00a342.5mn for the \u00a3126.7k per MW.",
+     "duration": {},
+     "basis": {
+      "average": 2
+     },
+     "horizon": {},
+     "years": {}
+    },
+    {
+     "as_printed": "\u00a317 per MWh",
+     "shape": "\u00a39 per mwh",
+     "offset": 35801,
+     "sentence": "1.23% based on the weighted average Net Asset Grid\u2019s price cap of \u00a317 per MWh.",
+     "duration": {},
+     "basis": {
+      "average": 1
+     },
+     "horizon": {},
+     "years": {}
+    },
+    {
+     "as_printed": "\u00a317 per MWh",
+     "shape": "\u00a39 per mwh",
+     "offset": 37978,
+     "sentence": "In October 2021 on the T-1 contracts and over price cap of \u00a317 per MWh.",
+     "duration": {},
+     "basis": {},
+     "horizon": {},
+     "years": {
+      "2021": 1
+     }
+    },
+    {
+     "as_printed": "\u00a375,000 per MW",
+     "shape": "\u00a39 per mw",
+     "offset": 38806,
+     "sentence": "We \u00a375,000 per MW for T-1 and \u00a330,590 per MW for revenue mix for the portfolio assets (0.5% for are confident that this track record bodes well the T-4 auction.",
+     "duration": {},
+     "basis": {},
+     "horizon": {},
+     "years": {}
+    },
+    {
+     "as_printed": "\u00a330,590 per MW",
+     "shape": "\u00a39 per mw",
+     "offset": 38833,
+     "sentence": "We \u00a375,000 per MW for T-1 and \u00a330,590 per MW for revenue mix for the portfolio assets (0.5% for are confident that this track record bodes well the T-4 auction.",
+     "duration": {},
+     "basis": {},
+     "horizon": {},
+     "years": {}
+    },
+    {
+     "as_printed": "\u00a381/MWh",
+     "shape": "\u00a39/mwh",
+     "offset": 46938,
+     "sentence": "unfortunately a few more have developed since 13 Gresham House Energy Storage Fund plc (GRID) Annual Financial Additional Report Statements Information Furthermore, while the FR markets are As shown in the chart below, the daily average To illustrate the potential for building larger becoming saturated, the volume requirement system price trebled in 2021 from \u00a381/MWh in batteries to capture this, on 9 September 2021, from National Grid ESO on a seasonal basis is 2020 to \u00a3242/MWh in 2021.",
+     "duration": {},
+     "basis": {
+      "potential": 1,
+      "average": 1
+     },
+     "horizon": {
+      "annual": 1
+     },
+     "years": {
+      "2020": 1,
+      "2021": 3
+     }
+    },
+    {
+     "as_printed": "\u00a3242/MWh",
+     "shape": "\u00a39/mwh",
+     "offset": 47051,
+     "sentence": "unfortunately a few more have developed since 13 Gresham House Energy Storage Fund plc (GRID) Annual Financial Additional Report Statements Information Furthermore, while the FR markets are As shown in the chart below, the daily average To illustrate the potential for building larger becoming saturated, the volume requirement system price trebled in 2021 from \u00a381/MWh in batteries to capture this, on 9 September 2021, from National Grid ESO on a seasonal basis is 2020 to \u00a3242/MWh in 2021.",
+     "duration": {},
+     "basis": {
+      "potential": 1,
+      "average": 1
+     },
+     "horizon": {
+      "annual": 1
+     },
+     "years": {
+      "2020": 1,
+      "2021": 3
+     }
+    },
+    {
+     "as_printed": "\u00a3200/MWh",
+     "shape": "\u00a39/mwh",
+     "offset": 47319,
+     "sentence": "There were also a 1-hour asset could have earned the equivalent expected to rise as we head into summer, as 136 days with an average system price of at of 8.8 days\u2019 worth of DC revenue at the \u00a317/ additional capacity is required when renewable least \u00a3200/MWh versus just 11 days in 2020 MWh cap whereas a 3.5-hour asset could have (solar) generation is higher.",
+     "duration": {
+      "1-hour": 1
+     },
+     "basis": {
+      "average": 1
+     },
+     "horizon": {},
+     "years": {
+      "2020": 1
+     }
+    },
+    {
+     "as_printed": "\u00a31,000/MWh",
+     "shape": "\u00a39/mwh",
+     "offset": 47719,
+     "sentence": "The hours at prices of \u00a31,000/MWh and above in higher summer and lower winter requirement 2021 (2020: 2).",
+     "duration": {},
+     "basis": {},
+     "horizon": {},
+     "years": {
+      "2020": 1,
+      "2021": 1
+     }
+    },
+    {
+     "as_printed": "\u00a32,242/MWh",
+     "shape": "\u00a39/mwh",
+     "offset": 48047,
+     "sentence": "2020 at \u00a32,242/MWh.",
+     "duration": {},
+     "basis": {},
+     "horizon": {},
+     "years": {
+      "2020": 1
+     }
+    },
+    {
+     "as_printed": "\u00a34,000/MWh",
+     "shape": "\u00a39/mwh",
+     "offset": 48420,
+     "sentence": "From the start of 2021 current EFR assets, which come to the end of through to January 2022, there have been 28 their contracts in 2022, will be the first to be ii) Reserve from Storage instances of prices higher than this, with seven expanded to 2-hour durations with some of the Aside from FR services and increasing volume instances of prices being at least \u00a34,000/MWh.",
+     "duration": {
+      "2-hour": 1
+     },
+     "basis": {},
+     "horizon": {},
+     "years": {
+      "2021": 1,
+      "2022": 2
+     }
+    },
+    {
+     "as_printed": "\u00a31,000/MWh",
+     "shape": "\u00a39/mwh",
+     "offset": 49597,
+     "sentence": "Some of this opportunity start of January 2021, we have seen seven days remained uncaptured by batteries as DC pricing with prices above \u00a31,000/MWh for at least three remained significantly above average daily consecutive settlement periods (1.5 hours).",
+     "duration": {},
+     "basis": {
+      "average": 1
+     },
+     "horizon": {},
+     "years": {
+      "2021": 1
+     }
+    }
+   ],
+   "figure_shapes": {
+    "\u00a39/mwh": 7,
+    "\u00a39 per mwh": 2,
+    "\u00a39 per mw": 2,
+    "\u00a39k per mw": 1
+   },
+   "duration": {
+    "1-hour": 3,
+    "2-hour": 7,
+    "4-hour": 1
+   },
+   "basis": {
+    "forecast": 3,
+    "forecasts": 16,
+    "forecasting": 2,
+    "outlook": 5,
+    "index": 2,
+    "realised": 3,
+    "actual": 6,
+    "potential": 24,
+    "benchmark": 3,
+    "fleet": 3,
+    "average": 36
+   },
+   "horizon": {
+    "long-term": 11,
+    "long term": 8,
+    "annual": 107,
+    "monthly": 2
+   },
+   "paywall": {
+    "premium": 21,
+    "unlock": 1
+   },
+   "years": {
+    "2020": 166,
+    "2021": 297,
+    "2022": 78,
+    "2023": 18,
+    "2024": 3,
+    "2025": 6,
+    "2026": 1,
+    "2030": 3,
+    "2040": 1,
+    "2050": 7
+   },
+   "flags": [
+    "no date declared"
+   ]
+  },
+  {
+   "url": "https://greshamhouse.com/wp-content/uploads/2021/04/Gresham-House-Energy-Storage-Fund-plc-Annual-Report-2020-1820-27.4.21.pdf",
+   "path": "data/raw/rns/022/032-wp-content__uploads__2021__04__Gresham-House-Energy-Storage-Fund-plc-Annual-Report-2020-1820-27.4.21.pdf.html",
+   "sha256": "ccea57acfa62f6f6c850d30a1e430538397a89a91dfc2cdc84ed87fb0576bdef",
+   "bytes": 10868129,
+   "format": "pdf",
+   "title": null,
+   "dates": {},
+   "text_chars": 383141,
+   "figures": [
+    {
+     "as_printed": "\u00a315/MWh",
+     "shape": "\u00a39/mwh",
+     "offset": 36585,
+     "sentence": "The Company\u2019s therefore the portfolio has remained focused The Investment Manager has experienced projects generated c.\u00a315/MWh during the trials.",
+     "duration": {},
+     "basis": {},
+     "horizon": {},
+     "years": {}
+    },
+    {
+     "as_printed": "\u00a375k/MW",
+     "shape": "\u00a39k/mw",
+     "offset": 40747,
+     "sentence": "Underlying operating revenue per MW ramping back up in Q1 2020, followed by a October, from Dynamic Containment into which was over \u00a375k/MW for the year which is above second low period as the effects of the 2020 the Company\u2019s assets were the first entrants.",
+     "duration": {},
+     "basis": {},
+     "horizon": {},
+     "years": {
+      "2020": 2
+     }
+    },
+    {
+     "as_printed": "\u00a3100k/MW",
+     "shape": "\u00a39k/mw",
+     "offset": 41159,
+     "sentence": "Nevertheless, the portfolio has have continued to grow as more of the portfolio per MW was over \u00a3100k/MW on an annualised remained profitable throughout.",
+     "duration": {},
+     "basis": {},
+     "horizon": {},
+     "years": {}
+    },
+    {
+     "as_printed": "\u00a32,242/MWh",
+     "shape": "\u00a39/mwh",
+     "offset": 48663,
+     "sentence": "\u00a32,242/MWh, the highest price in 19 years, 2019/20 TRIAD season and half of the 2020/21 catalysed by a wind forecasting error.",
+     "duration": {},
+     "basis": {
+      "forecasting": 1
+     },
+     "horizon": {},
+     "years": {
+      "2020": 1
+     }
+    },
+    {
+     "as_printed": "\u00a34,000/MWh",
+     "shape": "\u00a39/mwh",
+     "offset": 49344,
+     "sentence": "Unusually all three TRIADs system price of \u00a34,000/MWh on 8 January 2021.",
+     "duration": {},
+     "basis": {},
+     "horizon": {},
+     "years": {
+      "2021": 1
+     }
+    },
+    {
+     "as_printed": "\u00a31,000/MWh",
+     "shape": "\u00a39/mwh",
+     "offset": 56010,
+     "sentence": "Jun-20 Jul-20 Aug-20 Sep-20 Oct-20 Nov-20 Dec-20 Year 100.0% 74.7% 87.7% 99.9% 99.7% 100.0% 99.8% 98.5% 97.6% 99.5% 99.5% 100.0% 100.0% 100.0% 100.0% 87.8% 97.8% 99.7% 98.7% 100.0% 99.9% 100.0% 100.0% 98.4% 97.3% 99.5% 99.5% 93.4% 99.8% 97.2% 97.6% 99.7% 99.2% 98.2% 99.8% 96.7% 99.3% 97.1% 96.8% 99.6% 97.3% 98.5% 100.0% 100.0% 100.0% 100.0% 100.0% 100.0% 100.0% 100.0% 100.0% 100.0% 63.5% 100.0% 100.0% 100.0% 91.0% 96.1% 100.0% 100.0% 100.0% 99.5% 100.0% 99.6% 99.9% 100.0% 100.0% 100.0% 100.0% 100.0% 99.9% 100.0% 100.0% 99.2% 99.2% 99.3% 99.9% 92.4% 99.9% 98.8% 99.7% 98.8% 98.8% Gresham House Energy Storage Fund plc (GRID) 14 Investment Manager's Report continued Battery State of Health (SoH) Thus, any elevated demand combined with low renewable generation has led to an increase in Staunch Littlebrook Lockleaze Rufford Roundponds Wolverhampton occurrences of very high power prices, creating SoH % 96.7% 96.1% 97.3% 97.6% 98.3% 99.5% much anticipated \u2018upside\u2019 volatility (see chart below \u2013 note that prices above \u00a31,000/MWh are truncated while actual prices reached up to Red Scar Glassenbury Cleator Bloxwich Thurcroft Wickham \u00a34,000/MWh this winter).",
+     "duration": {},
+     "basis": {
+      "actual": 1
+     },
+     "horizon": {},
+     "years": {}
+    },
+    {
+     "as_printed": "\u00a34,000/MWh",
+     "shape": "\u00a39/mwh",
+     "offset": 56125,
+     "sentence": "Jun-20 Jul-20 Aug-20 Sep-20 Oct-20 Nov-20 Dec-20 Year 100.0% 74.7% 87.7% 99.9% 99.7% 100.0% 99.8% 98.5% 97.6% 99.5% 99.5% 100.0% 100.0% 100.0% 100.0% 87.8% 97.8% 99.7% 98.7% 100.0% 99.9% 100.0% 100.0% 98.4% 97.3% 99.5% 99.5% 93.4% 99.8% 97.2% 97.6% 99.7% 99.2% 98.2% 99.8% 96.7% 99.3% 97.1% 96.8% 99.6% 97.3% 98.5% 100.0% 100.0% 100.0% 100.0% 100.0% 100.0% 100.0% 100.0% 100.0% 100.0% 63.5% 100.0% 100.0% 100.0% 91.0% 96.1% 100.0% 100.0% 100.0% 99.5% 100.0% 99.6% 99.9% 100.0% 100.0% 100.0% 100.0% 100.0% 99.9% 100.0% 100.0% 99.2% 99.2% 99.3% 99.9% 92.4% 99.9% 98.8% 99.7% 98.8% 98.8% Gresham House Energy Storage Fund plc (GRID) 14 Investment Manager's Report continued Battery State of Health (SoH) Thus, any elevated demand combined with low renewable generation has led to an increase in Staunch Littlebrook Lockleaze Rufford Roundponds Wolverhampton occurrences of very high power prices, creating SoH % 96.7% 96.1% 97.3% 97.6% 98.3% 99.5% much anticipated \u2018upside\u2019 volatility (see chart below \u2013 note that prices above \u00a31,000/MWh are truncated while actual prices reached up to Red Scar Glassenbury Cleator Bloxwich Thurcroft Wickham \u00a34,000/MWh this winter).",
+     "duration": {},
+     "basis": {
+      "actual": 1
+     },
+     "horizon": {},
+     "years": {}
+    },
+    {
+     "as_printed": "\u00a3200/MWh",
+     "shape": "\u00a39/mwh",
+     "offset": 59383,
+     "sentence": "Source: Elexon 15 Gresham House Energy Storage Fund plc (GRID) Annual Financial Additional Report Statements Information To put recent events in context, there were very few instances of system prices moving above Rolling 12 month cost of curtailment of UK Wind power even \u00a3200/MWh in 2018 and 2019.",
+     "duration": {},
+     "basis": {},
+     "horizon": {
+      "annual": 1
+     },
+     "years": {}
+    }
+   ],
+   "figure_shapes": {
+    "\u00a39/mwh": 6,
+    "\u00a39k/mw": 2
+   },
+   "duration": {},
+   "basis": {
+    "forecast": 4,
+    "forecasts": 17,
+    "forecasting": 3,
+    "outlook": 8,
+    "index": 3,
+    "realised": 2,
+    "actual": 7,
+    "potential": 20,
+    "benchmark": 4,
+    "fleet": 5,
+    "average": 19,
+    "typical": 2
+   },
+   "horizon": {
+    "decade": 2,
+    "long term": 25,
+    "annual": 114,
+    "monthly": 8
+   },
+   "paywall": {
+    "premium": 20,
+    "unlock": 1
+   },
+   "years": {
+    "2020": 353,
+    "2021": 106,
+    "2022": 21,
+    "2023": 7,
+    "2025": 1,
+    "2030": 4,
+    "2050": 2
+   },
+   "flags": [
+    "no date declared"
+   ]
+  },
+  {
+   "url": "https://greshamhouse.com/wp-content/uploads/2020/04/GRID-Annual-Report-31-Dec-2019-Final.pdf",
+   "path": "data/raw/rns/022/033-wp-content__uploads__2020__04__GRID-Annual-Report-31-Dec-2019-Final.pdf.html",
+   "sha256": "a0d439f6cc01dc76dde38b1510de91ff4ff7b3c17f232160eb1536a2f52ef64f",
+   "bytes": 3501627,
+   "format": "pdf",
+   "title": null,
+   "dates": {},
+   "text_chars": 281346,
+   "figures": [
+    {
+     "as_printed": "\u00a34k/MW per annum",
+     "shape": "\u00a39k/mw per annum",
+     "offset": 54403,
+     "sentence": "to this, the Investment Manager is forecasting help to reduce the impact relative to revenue from project operating activities in 2020, by degradation assumptions indicated in the Roundponds and Staunch responded to the O&M costs to fall below \u00a34k/MW per annum over potential going forward.",
+     "duration": {},
+     "basis": {
+      "forecasting": 1,
+      "potential": 1
+     },
+     "horizon": {},
+     "years": {
+      "2020": 1
+     }
+    },
+    {
+     "as_printed": "\u00a38k/MW",
+     "shape": "\u00a39k/mw",
+     "offset": 54675,
+     "sentence": "Target insurance costs starting the year with 174MW of operational warranty agreements in our forecasting, \u00c6 From battery cell operation, safety drop in frequency under their FFR contracts the next three to four years versus \u00a38k/MW per for 2020 are expected to be lower than 2019 as projects and by then adding the additional although this will be confirmed in future and monitoring (the BMS or Battery and were ramping to full power before being annum average observed in 2019 and \u00a37.2k/MW the Fund starts to see cost benefits from scale 190MW of funded pipeline to the portfolio during following a longer operating period.",
+     "duration": {},
+     "basis": {
+      "forecasting": 1,
+      "average": 1
+     },
+     "horizon": {},
+     "years": {
+      "2020": 1
+     }
+    },
+    {
+     "as_printed": "\u00a37.2k/MW",
+     "shape": "\u00a39k/mw",
+     "offset": 54932,
+     "sentence": "Target insurance costs starting the year with 174MW of operational warranty agreements in our forecasting, \u00c6 From battery cell operation, safety drop in frequency under their FFR contracts the next three to four years versus \u00a38k/MW per for 2020 are expected to be lower than 2019 as projects and by then adding the additional although this will be confirmed in future and monitoring (the BMS or Battery and were ramping to full power before being annum average observed in 2019 and \u00a37.2k/MW the Fund starts to see cost benefits from scale 190MW of funded pipeline to the portfolio during following a longer operating period.",
+     "duration": {},
+     "basis": {
+      "forecasting": 1,
+      "average": 1
+     },
+     "horizon": {},
+     "years": {
+      "2020": 1
+     }
+    }
+   ],
+   "figure_shapes": {
+    "\u00a39k/mw": 2,
+    "\u00a39k/mw per annum": 1
+   },
+   "duration": {},
+   "basis": {
+    "forecast": 4,
+    "forecasts": 12,
+    "forecasting": 2,
+    "outlook": 7,
+    "index": 3,
+    "realised": 1,
+    "actual": 6,
+    "potential": 27,
+    "benchmark": 3,
+    "fleet": 3,
+    "average": 15,
+    "typical": 1
+   },
+   "horizon": {
+    "long-term": 19,
+    "long term": 2,
+    "annual": 95,
+    "monthly": 4
+   },
+   "paywall": {
+    "premium": 17
+   },
+   "years": {
+    "2020": 89,
+    "2021": 5,
+    "2022": 8,
+    "2023": 2,
+    "2024": 1,
+    "2030": 3,
+    "2050": 2
+   },
+   "flags": [
+    "no date declared"
+   ]
+  },
+  {
+   "url": "https://greshamhouse.com/wp-content/uploads/2025/09/Gresham-House-Energy-Storage-Fund-Interim-Report-to-30-June-2025.pdf",
+   "path": "data/raw/rns/022/034-wp-content__uploads__2025__09__Gresham-House-Energy-Storage-Fund-Interim-Report-to-30-June-2025.pdf.html",
+   "sha256": "624e2c5a1fa2f09ce962e0f022d2d05ca78fa9ff92911772c14e48238819e3f3",
+   "bytes": 5015498,
+   "format": "pdf",
+   "title": null,
+   "dates": {},
+   "text_chars": 150238,
+   "figures": [
+    {
+     "as_printed": "\u00a375.1k/MW/Yr",
+     "shape": "\u00a39k/mw/yr",
+     "offset": 5339,
+     "sentence": "Revenue interest rate on the new agreement is the Company\u2019s valuation assumptions rate improved to \u00a375.1k/MW/Yr in H1 SONIA + 225bps, compared with SONIA and methodology.",
+     "duration": {},
+     "basis": {},
+     "horizon": {},
+     "years": {}
+    },
+    {
+     "as_printed": "\u00a348.0k/MW/Yr",
+     "shape": "\u00a39k/mw/yr",
+     "offset": 5447,
+     "sentence": "The capital raised is 2025, up from \u00a348.0k/MW/Yr in H1 2024, + 300bps on the previous debt.",
+     "duration": {},
+     "basis": {},
+     "horizon": {},
+     "years": {
+      "2024": 1,
+      "2025": 1
+     }
+    },
+    {
+     "as_printed": "\u00a375k/MW/Yr",
+     "shape": "\u00a39k/mw/yr",
+     "offset": 15590,
+     "sentence": "of \u00a375k/MW/Yr11 on 2-hour assets the of the augmentations and the first of Seeking to capture the potential value portfolio could generate excess cash the new projects.",
+     "duration": {
+      "2-hour": 1
+     },
+     "basis": {
+      "potential": 1
+     },
+     "horizon": {},
+     "years": {}
+    },
+    {
+     "as_printed": "\u00a390k/MW/Yr",
+     "shape": "\u00a39k/mw/yr",
+     "offset": 16346,
+     "sentence": "into operational project augmentations assets of c.\u00a390k/MW/Yr.",
+     "duration": {},
+     "basis": {},
+     "horizon": {},
+     "years": {}
+    },
+    {
+     "as_printed": "\u00a375.1k/MW/Yr",
+     "shape": "\u00a39k/mw/yr",
+     "offset": 17580,
+     "sentence": "Gresham House Energy Storage Fund (GRID) GRID Interim Report 2025 9 Overview Portfolio Market and financial review Governance Accounts Other information Investment Manager\u2019s review Since the end of 2024, we have The average underlying portfolio hourly One area of inflation relates to network To fund the new pipeline\u2019s construction, revenue rate rose to \u00a375.1k/MW/Yr (H1 charges, which are regulated.",
+     "duration": {},
+     "basis": {
+      "average": 1
+     },
+     "horizon": {},
+     "years": {
+      "2024": 1,
+      "2025": 1
+     }
+    },
+    {
+     "as_printed": "\u00a348.0k/MW/Yr",
+     "shape": "\u00a39k/mw/yr",
+     "offset": 17703,
+     "sentence": "The we are in the process of arranging completed the build\u2011out of the 2024: \u00a348.0k/MW/Yr), above H2 2024 levels Manager is seeking ways to mitigate additional project finance style senior existing pipeline and positioned of \u00a370.7k/MW/Yr.",
+     "duration": {},
+     "basis": {},
+     "horizon": {},
+     "years": {
+      "2024": 2
+     }
+    },
+    {
+     "as_printed": "\u00a370.7k/MW/Yr",
+     "shape": "\u00a39k/mw/yr",
+     "offset": 17851,
+     "sentence": "The we are in the process of arranging completed the build\u2011out of the 2024: \u00a348.0k/MW/Yr), above H2 2024 levels Manager is seeking ways to mitigate additional project finance style senior existing pipeline and positioned of \u00a370.7k/MW/Yr.",
+     "duration": {},
+     "basis": {},
+     "horizon": {},
+     "years": {
+      "2024": 2
+     }
+    },
+    {
+     "as_printed": "\u00a330,000/MW per year",
+     "shape": "\u00a39/mw per year",
+     "offset": 40732,
+     "sentence": "At maturity after seven years, half distribution of merchant revenues has Projected Capacity (MW) RHS Historical Capacity (MW) RHS Annualised Actual Monthly Revenue (\u00a3) \u00a330,000/MW per year revenue level \u00a3120,000/MW per year revenue level \u00a3210,000/MW per year revenue level the debt will have been repaid.",
+     "duration": {},
+     "basis": {
+      "actual": 1
+     },
+     "horizon": {
+      "monthly": 1
+     },
+     "years": {}
+    },
+    {
+     "as_printed": "\u00a3120,000/MW per year",
+     "shape": "\u00a39/mw per year",
+     "offset": 40766,
+     "sentence": "At maturity after seven years, half distribution of merchant revenues has Projected Capacity (MW) RHS Historical Capacity (MW) RHS Annualised Actual Monthly Revenue (\u00a3) \u00a330,000/MW per year revenue level \u00a3120,000/MW per year revenue level \u00a3210,000/MW per year revenue level the debt will have been repaid.",
+     "duration": {},
+     "basis": {
+      "actual": 1
+     },
+     "horizon": {
+      "monthly": 1
+     },
+     "years": {}
+    },
+    {
+     "as_printed": "\u00a3210,000/MW per year",
+     "shape": "\u00a39/mw per year",
+     "offset": 40801,
+     "sentence": "At maturity after seven years, half distribution of merchant revenues has Projected Capacity (MW) RHS Historical Capacity (MW) RHS Annualised Actual Monthly Revenue (\u00a3) \u00a330,000/MW per year revenue level \u00a3120,000/MW per year revenue level \u00a3210,000/MW per year revenue level the debt will have been repaid.",
+     "duration": {},
+     "basis": {
+      "actual": 1
+     },
+     "horizon": {
+      "monthly": 1
+     },
+     "years": {}
+    },
+    {
+     "as_printed": "\u00a375k/MW/Yr",
+     "shape": "\u00a39k/mw/yr",
+     "offset": 51316,
+     "sentence": "EV to EBITDA19 based on: Enterprise value (EV)17 \u00a375k/MW/Yr14,15 of net merchant revenues based on: Market capitalisation at 72.0p share price 11.9 10.4 9.2 reflects the Modo BESS index level used Market capitalisation at 72.0p 614.7 NAV at 30 June 2025 15.8 13.8 12.2 in the 2024 Annual Report and Accounts.",
+     "duration": {},
+     "basis": {
+      "index": 1
+     },
+     "horizon": {
+      "annual": 1
+     },
+     "years": {
+      "2024": 1,
+      "2025": 1
+     }
+    },
+    {
+     "as_printed": "\u00a315k/MW/Yr",
+     "shape": "\u00a39k/mw/yr",
+     "offset": 51691,
+     "sentence": "share price (\u00a3mn) The table also shows a sensitivity of NAV as of 30 June 2025 (\u00a3mn) 817.9 EV to sales20 based on: \u00a315k/MW/Yr up and down on merchant revenues, to illustrate the volatility in Market capitalisation at 72.0p share price 8.4 7.6 7.0 earnings driven by merchant revenues.",
+     "duration": {},
+     "basis": {},
+     "horizon": {},
+     "years": {
+      "2025": 1
+     }
+    }
+   ],
+   "figure_shapes": {
+    "\u00a39k/mw/yr": 9,
+    "\u00a39/mw per year": 3
+   },
+   "duration": {
+    "1hr": 2,
+    "2-hour": 4,
+    "two-hour": 1,
+    "2hr": 2
+   },
+   "basis": {
+    "forecast": 5,
+    "forecasts": 13,
+    "projection": 1,
+    "outlook": 2,
+    "index": 2,
+    "actual": 2,
+    "potential": 6,
+    "benchmark": 1,
+    "fleet": 2,
+    "average": 32,
+    "typical": 1
+   },
+   "horizon": {
+    "long-term": 6,
+    "annual": 16,
+    "monthly": 3
+   },
+   "paywall": {
+    "premium": 24,
+    "unlock": 2
+   },
+   "years": {
+    "2021": 1,
+    "2022": 2,
+    "2023": 2,
+    "2024": 108,
+    "2025": 211,
+    "2026": 25,
+    "2027": 9,
+    "2028": 4,
+    "2029": 1,
+    "2030": 5,
+    "2031": 1,
+    "2032": 1,
+    "2033": 1,
+    "2034": 1,
+    "2035": 1,
+    "2036": 1,
+    "2037": 1,
+    "2038": 1,
+    "2039": 1,
+    "2040": 1,
+    "2041": 1,
+    "2042": 1,
+    "2045": 1,
+    "2046": 1,
+    "2047": 1,
+    "2048": 1,
+    "2049": 1
+   },
+   "flags": [
+    "no date declared"
+   ]
+  },
+  {
+   "url": "https://greshamhouse.com/wp-content/uploads/2024/09/GRID-Interim-Report-2024.pdf",
+   "path": "data/raw/rns/022/035-wp-content__uploads__2024__09__GRID-Interim-Report-2024.pdf.html",
+   "sha256": "54f63e7e2ba9bf5573ca00744dd7bd52d0e1448a6b0afde0c2104a7b542222a3",
+   "bytes": 7046488,
+   "format": "pdf",
+   "title": null,
+   "dates": {},
+   "text_chars": 176748,
+   "figures": [
+    {
+     "as_printed": "\u00a345k/MW",
+     "shape": "\u00a39k/mw",
+     "offset": 7849,
+     "sentence": "Per Trading Update: if merchant revenue levels were \u00a345k/MW then earnings could be \u00a345mn p.a.",
+     "duration": {},
+     "basis": {},
+     "horizon": {},
+     "years": {}
+    },
+    {
+     "as_printed": "\u00a345,000/MW/yr",
+     "shape": "\u00a39/mw/yr",
+     "offset": 17203,
+     "sentence": "This of \u00a345,000/MW/yr (in line with Modo\u2019s August BESS index) on will be detailed at the Company\u2019s next Capital Markets the uncontracted portion of the portfolio (504MW).",
+     "duration": {},
+     "basis": {
+      "index": 1
+     },
+     "horizon": {},
+     "years": {}
+    },
+    {
+     "as_printed": "\u00a3639k/MW",
+     "shape": "\u00a39k/mw",
+     "offset": 51183,
+     "sentence": "The impact of this Operational assets were valued at \u00a3639k/MW as of 30 June change is a -2.14p impact to NAV.",
+     "duration": {},
+     "basis": {},
+     "horizon": {},
+     "years": {}
+    },
+    {
+     "as_printed": "\u00a3628k/MW",
+     "shape": "\u00a39k/mw",
+     "offset": 51426,
+     "sentence": "The long-term of future cash flows, the valuation stood at \u00a3628k/MW.",
+     "duration": {},
+     "basis": {},
+     "horizon": {
+      "long-term": 1
+     },
+     "years": {}
+    },
+    {
+     "as_printed": "\u00a345k/MW/Yr",
+     "shape": "\u00a39k/mw/yr",
+     "offset": 55356,
+     "sentence": "Modo Energy, GB BESS Outlook Q3 2024: Battery business case and investment outlook Gresham House Energy Storage Fund plc (GRID) 25 Annual Report Financial Statements Additional Information Given the increasing capacity of the portfolio and the \u00a345k/MW/Yr13 merchant revenues reflects the current changing revenue mix, the numbers detailed on the Modo index level for August 2024, alongside this we previous page, reflect a much smaller earnings base than to have shown a sensitivity of \u00a310k/MW/Yr up and down on be expected looking forward.",
+     "duration": {},
+     "basis": {
+      "outlook": 2,
+      "index": 1
+     },
+     "horizon": {
+      "annual": 1
+     },
+     "years": {
+      "2024": 2
+     }
+    },
+    {
+     "as_printed": "\u00a310k/MW/Yr",
+     "shape": "\u00a39k/mw/yr",
+     "offset": 55598,
+     "sentence": "Modo Energy, GB BESS Outlook Q3 2024: Battery business case and investment outlook Gresham House Energy Storage Fund plc (GRID) 25 Annual Report Financial Statements Additional Information Given the increasing capacity of the portfolio and the \u00a345k/MW/Yr13 merchant revenues reflects the current changing revenue mix, the numbers detailed on the Modo index level for August 2024, alongside this we previous page, reflect a much smaller earnings base than to have shown a sensitivity of \u00a310k/MW/Yr up and down on be expected looking forward.",
+     "duration": {},
+     "basis": {
+      "outlook": 2,
+      "index": 1
+     },
+     "horizon": {
+      "annual": 1
+     },
+     "years": {
+      "2024": 2
+     }
+    },
+    {
+     "as_printed": "\u00a345k/MW/Yr",
+     "shape": "\u00a39k/mw/yr",
+     "offset": 55750,
+     "sentence": "Assuming \u00a345k/MW/Yr of Therefore, in addition we have provided an example for how merchant revenues EV/EBITDA could be 10.0x and Price P/E and EV/EBITDA may look on near-term future earnings, to Earnings is 6.4x based on the current share price (as of under different merchant scenarios during the tolling writing on 13 September 2024).",
+     "duration": {},
+     "basis": {},
+     "horizon": {},
+     "years": {
+      "2024": 1
+     }
+    },
+    {
+     "as_printed": "\u00a330,000/MW per year",
+     "shape": "\u00a39/mw per year",
+     "offset": 61284,
+     "sentence": "in total in H2 2024 which is less than any quarter since Q4 2022 250,000,000 1,400 1,200 200,000,000 Annualised Monthly Revenues (\u00a3) 1,000 Capacity (MW) 150,000,000 800 600 100,000,000 400 50,000,000 200 - - Jan-19 Apr-19 Jan-20 Oct-19 Jul-19 Apr-20 Jan-21 Oct-20 Jul-20 Apr-21 Jan-22 Oct-21 Jul-21 Apr-22 Oct-22 Jul-22 Jan-23 Apr-23 Jul-23 Jan-24 Oct-23 Apr-24 Oct-24 Jul-24 Historical Capacity (MW) RHS Projected Capacity (MW) RHS Annualised Actual Monthly Revenue (\u00a3) \u00a330,000/MW per year revenue level \u00a3120,000/MW per year revenue level \u00a3210,000/MW per year revenue level Gresham House Energy Storage Fund plc (GRID) 27 Sustainability Report This Sustainability Report describes the integration and enhancement of sustainability in the Company\u2019s investment processes and asset operations.",
+     "duration": {},
+     "basis": {
+      "actual": 1
+     },
+     "horizon": {
+      "monthly": 2
+     },
+     "years": {
+      "2022": 1,
+      "2024": 1
+     }
+    },
+    {
+     "as_printed": "\u00a3120,000/MW per year",
+     "shape": "\u00a39/mw per year",
+     "offset": 61318,
+     "sentence": "in total in H2 2024 which is less than any quarter since Q4 2022 250,000,000 1,400 1,200 200,000,000 Annualised Monthly Revenues (\u00a3) 1,000 Capacity (MW) 150,000,000 800 600 100,000,000 400 50,000,000 200 - - Jan-19 Apr-19 Jan-20 Oct-19 Jul-19 Apr-20 Jan-21 Oct-20 Jul-20 Apr-21 Jan-22 Oct-21 Jul-21 Apr-22 Oct-22 Jul-22 Jan-23 Apr-23 Jul-23 Jan-24 Oct-23 Apr-24 Oct-24 Jul-24 Historical Capacity (MW) RHS Projected Capacity (MW) RHS Annualised Actual Monthly Revenue (\u00a3) \u00a330,000/MW per year revenue level \u00a3120,000/MW per year revenue level \u00a3210,000/MW per year revenue level Gresham House Energy Storage Fund plc (GRID) 27 Sustainability Report This Sustainability Report describes the integration and enhancement of sustainability in the Company\u2019s investment processes and asset operations.",
+     "duration": {},
+     "basis": {
+      "actual": 1
+     },
+     "horizon": {
+      "monthly": 2
+     },
+     "years": {
+      "2022": 1,
+      "2024": 1
+     }
+    },
+    {
+     "as_printed": "\u00a3210,000/MW per year",
+     "shape": "\u00a39/mw per year",
+     "offset": 61353,
+     "sentence": "in total in H2 2024 which is less than any quarter since Q4 2022 250,000,000 1,400 1,200 200,000,000 Annualised Monthly Revenues (\u00a3) 1,000 Capacity (MW) 150,000,000 800 600 100,000,000 400 50,000,000 200 - - Jan-19 Apr-19 Jan-20 Oct-19 Jul-19 Apr-20 Jan-21 Oct-20 Jul-20 Apr-21 Jan-22 Oct-21 Jul-21 Apr-22 Oct-22 Jul-22 Jan-23 Apr-23 Jul-23 Jan-24 Oct-23 Apr-24 Oct-24 Jul-24 Historical Capacity (MW) RHS Projected Capacity (MW) RHS Annualised Actual Monthly Revenue (\u00a3) \u00a330,000/MW per year revenue level \u00a3120,000/MW per year revenue level \u00a3210,000/MW per year revenue level Gresham House Energy Storage Fund plc (GRID) 27 Sustainability Report This Sustainability Report describes the integration and enhancement of sustainability in the Company\u2019s investment processes and asset operations.",
+     "duration": {},
+     "basis": {
+      "actual": 1
+     },
+     "horizon": {
+      "monthly": 2
+     },
+     "years": {
+      "2022": 1,
+      "2024": 1
+     }
+    }
+   ],
+   "figure_shapes": {
+    "\u00a39k/mw": 3,
+    "\u00a39k/mw/yr": 3,
+    "\u00a39/mw per year": 3,
+    "\u00a39/mw/yr": 1
+   },
+   "duration": {
+    "one-hour": 1,
+    "1hr": 2,
+    "two-hour": 3,
+    "2hr": 2
+   },
+   "basis": {
+    "forecast": 9,
+    "forecasts": 16,
+    "forecasting": 1,
+    "outlook": 7,
+    "index": 14,
+    "actual": 5,
+    "potential": 8,
+    "benchmark": 2,
+    "average": 25,
+    "typical": 3
+   },
+   "horizon": {
+    "decade": 1,
+    "long-term": 8,
+    "annual": 68,
+    "monthly": 2
+   },
+   "paywall": {
+    "premium": 18
+   },
+   "years": {
+    "2020": 3,
+    "2021": 8,
+    "2022": 38,
+    "2023": 164,
+    "2024": 198,
+    "2025": 15,
+    "2026": 4,
+    "2027": 4,
+    "2028": 1,
+    "2029": 1,
+    "2030": 4,
+    "2031": 1,
+    "2032": 1,
+    "2033": 1,
+    "2034": 1,
+    "2035": 1
+   },
+   "flags": [
+    "no date declared"
+   ]
+  },
+  {
+   "url": "https://greshamhouse.com/wp-content/uploads/2023/09/GRID-Interim-Report-30-June-2023-FINAL-PUBLISHED.pdf",
+   "path": "data/raw/rns/022/036-wp-content__uploads__2023__09__GRID-Interim-Report-30-June-2023-FINAL-PUBLISHED.pdf.html",
+   "sha256": "0070ee512a01746dd9c97f4eb2bd454553f21af502c34eb417bc37b82f275702",
+   "bytes": 3473803,
+   "format": "pdf",
+   "title": null,
+   "dates": {},
+   "text_chars": 183122,
+   "figures": [
+    {
+     "as_printed": "\u00a330,000/MW per year",
+     "shape": "\u00a39/mw per year",
+     "offset": 50666,
+     "sentence": "Where revenues may be heading Revenues (actual), revenue ranges vs Capacity 250,000,000 1,400 1,200 200,000,000 1,000 Annualised Monthly Revenues (\u00a3) 150,000,000 800 600 Capacity (MW) 100,000,000 400 50,000,000 200 - - Jan-19 Mar-19 May-19 Jul-19 Sep-19 Nov-19 Jan-20 Mar-20 May-20 Jul-20 Sep-20 Nov-20 Jan-21 Mar-21 May-21 Jul-21 Sep-21 Nov-21 Jan-22 Mar-22 May-22 Jul-22 Sep-22 Nov-22 Jan-23 Mar-23 May-23 Jul-23 Sep-23 Nov-23 Jan-24 Mar-24 May-24 Jul-24 Sep-24 Nov-24 Historical Capacity (MW) RHS Projected Capacity (MW) RHS Annualised Actual Monthly Revenue (\u00a3) \u00a330,000/MW per year revenue level \u00a3120,000/MW per year revenue level \u00a3210,000/MW per year revenue level Gresham House Energy Storage Fund plc (GRID) 23 Interim Report Financial Statements Additional Information As the portfolio\u2019s MWh are growing more quickly than MW Finally, as we have grown, the business has become (i.e.",
+     "duration": {},
+     "basis": {
+      "actual": 2
+     },
+     "horizon": {
+      "monthly": 2
+     },
+     "years": {}
+    },
+    {
+     "as_printed": "\u00a3120,000/MW per year",
+     "shape": "\u00a39/mw per year",
+     "offset": 50700,
+     "sentence": "Where revenues may be heading Revenues (actual), revenue ranges vs Capacity 250,000,000 1,400 1,200 200,000,000 1,000 Annualised Monthly Revenues (\u00a3) 150,000,000 800 600 Capacity (MW) 100,000,000 400 50,000,000 200 - - Jan-19 Mar-19 May-19 Jul-19 Sep-19 Nov-19 Jan-20 Mar-20 May-20 Jul-20 Sep-20 Nov-20 Jan-21 Mar-21 May-21 Jul-21 Sep-21 Nov-21 Jan-22 Mar-22 May-22 Jul-22 Sep-22 Nov-22 Jan-23 Mar-23 May-23 Jul-23 Sep-23 Nov-23 Jan-24 Mar-24 May-24 Jul-24 Sep-24 Nov-24 Historical Capacity (MW) RHS Projected Capacity (MW) RHS Annualised Actual Monthly Revenue (\u00a3) \u00a330,000/MW per year revenue level \u00a3120,000/MW per year revenue level \u00a3210,000/MW per year revenue level Gresham House Energy Storage Fund plc (GRID) 23 Interim Report Financial Statements Additional Information As the portfolio\u2019s MWh are growing more quickly than MW Finally, as we have grown, the business has become (i.e.",
+     "duration": {},
+     "basis": {
+      "actual": 2
+     },
+     "horizon": {
+      "monthly": 2
+     },
+     "years": {}
+    },
+    {
+     "as_printed": "\u00a3210,000/MW per year",
+     "shape": "\u00a39/mw per year",
+     "offset": 50735,
+     "sentence": "Where revenues may be heading Revenues (actual), revenue ranges vs Capacity 250,000,000 1,400 1,200 200,000,000 1,000 Annualised Monthly Revenues (\u00a3) 150,000,000 800 600 Capacity (MW) 100,000,000 400 50,000,000 200 - - Jan-19 Mar-19 May-19 Jul-19 Sep-19 Nov-19 Jan-20 Mar-20 May-20 Jul-20 Sep-20 Nov-20 Jan-21 Mar-21 May-21 Jul-21 Sep-21 Nov-21 Jan-22 Mar-22 May-22 Jul-22 Sep-22 Nov-22 Jan-23 Mar-23 May-23 Jul-23 Sep-23 Nov-23 Jan-24 Mar-24 May-24 Jul-24 Sep-24 Nov-24 Historical Capacity (MW) RHS Projected Capacity (MW) RHS Annualised Actual Monthly Revenue (\u00a3) \u00a330,000/MW per year revenue level \u00a3120,000/MW per year revenue level \u00a3210,000/MW per year revenue level Gresham House Energy Storage Fund plc (GRID) 23 Interim Report Financial Statements Additional Information As the portfolio\u2019s MWh are growing more quickly than MW Finally, as we have grown, the business has become (i.e.",
+     "duration": {},
+     "basis": {
+      "actual": 2
+     },
+     "horizon": {
+      "monthly": 2
+     },
+     "years": {}
+    }
+   ],
+   "figure_shapes": {
+    "\u00a39/mw per year": 3
+   },
+   "duration": {
+    "1hr": 1,
+    "2-hour": 8
+   },
+   "basis": {
+    "forecast": 7,
+    "forecasts": 24,
+    "outlook": 4,
+    "index": 1,
+    "actual": 4,
+    "potential": 18,
+    "fleet": 1,
+    "average": 25,
+    "typical": 1
+   },
+   "horizon": {
+    "long-term": 3,
+    "long term": 1,
+    "annual": 16,
+    "monthly": 3
+   },
+   "paywall": {
+    "premium": 27,
+    "unlock": 1
+   },
+   "years": {
+    "2020": 7,
+    "2021": 12,
+    "2022": 136,
+    "2023": 196,
+    "2024": 26,
+    "2025": 13,
+    "2026": 5,
+    "2027": 1,
+    "2030": 3,
+    "2031": 1,
+    "2035": 2
+   },
+   "flags": [
+    "no date declared"
+   ]
+  },
+  {
+   "url": "https://greshamhouse.com/wp-content/uploads/2022/09/GRID-Interim-Report-30-June-2022.pdf",
+   "path": "data/raw/rns/022/037-wp-content__uploads__2022__09__GRID-Interim-Report-30-June-2022.pdf.html",
+   "sha256": "1382c408fa3135d8e2844a1c84e704f2c326a0598a19d3000bfe0ec8b4a4876a",
+   "bytes": 10638036,
+   "format": "pdf",
+   "title": null,
+   "dates": {},
+   "text_chars": 151016,
+   "figures": [
+    {
+     "as_printed": "\u00a337/MWh",
+     "shape": "\u00a39/mwh",
+     "offset": 6886,
+     "sentence": "NAV per share increased continuing to drive value as the current pipeline \u00a337/MWh (in 2012 real prices).",
+     "duration": {},
+     "basis": {},
+     "horizon": {},
+     "years": {}
+    },
+    {
+     "as_printed": "\u00a375,000 per MW",
+     "shape": "\u00a39 per mw",
+     "offset": 29804,
+     "sentence": "The first of These services consist of Dynamic and limited overall Frequency Response these contracts to start will be 112MW of 1-year Containment (DC), Dynamic Moderation (DM) requirement from National Grid, we had contracts starting October 2022 which cleared and Dynamic Regulation (DR), each of which expected that the market would reach at \u00a375,000 per MW, driving a further source of provides a different power response for a given oversupply during the first half of 2022.",
+     "duration": {},
+     "basis": {},
+     "horizon": {},
+     "years": {
+      "2022": 2
+     }
+    },
+    {
+     "as_printed": "\u00a317/MWh",
+     "shape": "\u00a39/mwh",
+     "offset": 33410,
+     "sentence": "fact that the primary need from National Grid \u00a317/MWh) which then led to increased pricing ESO is on the export side i.e.",
+     "duration": {},
+     "basis": {},
+     "horizon": {},
+     "years": {}
+    },
+    {
+     "as_printed": "\u00a317/MWh",
+     "shape": "\u00a39/mwh",
+     "offset": 35991,
+     "sentence": "For example, a half hour with a price cap of c.\u00a317/MWh and flat volume 2022, headroom was 122MW in DCL with EFA 5 battery looking to trade may need to position requirement of 1,100MW each day.",
+     "duration": {},
+     "basis": {},
+     "horizon": {},
+     "years": {
+      "2022": 1
+     }
+    },
+    {
+     "as_printed": "\u00a317/MWh",
+     "shape": "\u00a39/mwh",
+     "offset": 36397,
+     "sentence": "This has fallen in July 2022 itself at half its MW-capacity to emulate a 1-hour this time, the market participants all enjoyed to 72MW on average, with EFA 5 highest at battery, to overcome potential overheating consistent revenues at \u00a317/MWh due to the 138MW of headroom.",
+     "duration": {
+      "1-hour": 1
+     },
+     "basis": {
+      "potential": 1,
+      "average": 1
+     },
+     "horizon": {},
+     "years": {
+      "2022": 1
+     }
+    },
+    {
+     "as_printed": "\u00a30/MWh",
+     "shape": "\u00a39/mwh",
+     "offset": 37503,
+     "sentence": "This is why falling in many EFA blocks leaving some periods understanding, and being ready for trading, is saturated, even clearing at \u00a30/MWh in some Once the DC market is saturated, contract key to any investment.",
+     "duration": {},
+     "basis": {},
+     "horizon": {},
+     "years": {}
+    },
+    {
+     "as_printed": "\u00a348/MWh",
+     "shape": "\u00a39/mwh",
+     "offset": 37794,
+     "sentence": "This prices will be influenced by the next best also brought greater upside with price caps in revenue opportunity which is likely to be trading some periods moving up to \u00a348/MWh.",
+     "duration": {},
+     "basis": {},
+     "horizon": {},
+     "years": {}
+    },
+    {
+     "as_printed": "\u00a3100/MWh",
+     "shape": "\u00a39/mwh",
+     "offset": 39985,
+     "sentence": "Prices have been able to reach >\u00a3100/MWh during 1000 this phase, and on occasion have also fallen as low as \u00a30.5/MWh.",
+     "duration": {},
+     "basis": {},
+     "horizon": {},
+     "years": {}
+    },
+    {
+     "as_printed": "\u00a30.5/MWh",
+     "shape": "\u00a39/mwh",
+     "offset": 40061,
+     "sentence": "Prices have been able to reach >\u00a3100/MWh during 1000 this phase, and on occasion have also fallen as low as \u00a30.5/MWh.",
+     "duration": {},
+     "basis": {},
+     "horizon": {},
+     "years": {}
+    }
+   ],
+   "figure_shapes": {
+    "\u00a39/mwh": 8,
+    "\u00a39 per mw": 1
+   },
+   "duration": {
+    "1-hour": 1,
+    "2-hour": 1
+   },
+   "basis": {
+    "forecast": 4,
+    "forecasts": 7,
+    "outlook": 4,
+    "index": 4,
+    "potential": 12,
+    "fleet": 1,
+    "average": 25,
+    "typical": 1
+   },
+   "horizon": {
+    "long-term": 3,
+    "long term": 2,
+    "annual": 17,
+    "monthly": 3
+   },
+   "paywall": {
+    "premium": 9
+   },
+   "years": {
+    "2020": 12,
+    "2021": 123,
+    "2022": 223,
+    "2023": 16,
+    "2024": 2,
+    "2025": 3,
+    "2030": 2,
+    "2050": 2
+   },
+   "flags": [
+    "no date declared"
+   ]
+  },
+  {
+   "url": "https://greshamhouse.com/wp-content/uploads/2021/09/GRID-Interim-Report-30-June-2021-final.pdf",
+   "path": "data/raw/rns/022/038-wp-content__uploads__2021__09__GRID-Interim-Report-30-June-2021-final.pdf.html",
+   "sha256": "f61fc5a10fde3b62b8fb0b9d387b4fdf58aa1c40866deb63daa3ef216c13c7ad",
+   "bytes": 8982602,
+   "format": "pdf",
+   "title": null,
+   "dates": {},
+   "text_chars": 127070,
+   "figures": [
+    {
+     "as_printed": "\u00a34,000/ MWh",
+     "shape": "\u00a39/ mwh",
+     "offset": 3647,
+     "sentence": "Average project size has increased to c.60MW significantly accelerating operational scale-up Jun 21 Jun 20 \u00c6 2021 started with occasional periods of extreme volatility with short run power prices reaching \u00a34,000/ MWh on 8 January 2021 Ordinary Share price total return since IPO \u00c6 Daily peak electricity prices are at historically high levels due to higher demand, higher natural gas prices and 36.25% (for the period to 30 June 2021) elevated carbon prices demonstrated by record monthly 36.25% average price per MWh in August 20214 \u00c6 Supportive industry developments with (i) National Grid 15.60% demerging the Electricity System Operator, (ii) significant changes in frequency response and reserve services procured by National Grid and (iii) a significant Jun 21 Jun 20 pick up in deployment of storage projects NAV per Ordinary Share total return \u00c6 National Grid has significantly increased the prominence (unlevered) of Energy Storage, forecasting up (for the period to 30 June 2021) to 43GW of capacity being required in 2050 and 10.03% confirming 15GW by 2025 under its recently published 10.03% Future Energy Scenarios compared with c.1.3GW operational today (0.02%) 1.",
+     "duration": {},
+     "basis": {
+      "forecasting": 1,
+      "average": 2
+     },
+     "horizon": {
+      "monthly": 1
+     },
+     "years": {
+      "2021": 4,
+      "2025": 1,
+      "2050": 1
+     }
+    }
+   ],
+   "figure_shapes": {
+    "\u00a39/ mwh": 1
+   },
+   "duration": {
+    "four-hour": 1
+   },
+   "basis": {
+    "forecast": 1,
+    "forecasts": 8,
+    "forecasting": 1,
+    "outlook": 4,
+    "index": 1,
+    "actual": 2,
+    "potential": 5,
+    "fleet": 2,
+    "average": 16,
+    "typical": 1
+   },
+   "horizon": {
+    "decade": 2,
+    "long-term": 2,
+    "annual": 13,
+    "monthly": 3
+   },
+   "paywall": {
+    "premium": 7,
+    "unlock": 2
+   },
+   "years": {
+    "2020": 102,
+    "2021": 192,
+    "2022": 31,
+    "2023": 6,
+    "2025": 1,
+    "2030": 3,
+    "2050": 1
+   },
+   "flags": [
+    "no date declared"
+   ]
+  },
+  {
+   "url": "https://greshamhouse.com/wp-content/uploads/2020/09/GRID-Interim-Report-30-June-2020-FINAL.pdf",
+   "path": "data/raw/rns/022/039-wp-content__uploads__2020__09__GRID-Interim-Report-30-June-2020-FINAL.pdf.html",
+   "sha256": "96179124a88243d2736867dbb4052a345619743d511c34f6931075272b7c1f45",
+   "bytes": 2355820,
+   "format": "pdf",
+   "title": null,
+   "dates": {},
+   "text_chars": 154967,
+   "figures": [
+    {
+     "as_printed": "\u00a32,242/ MWh",
+     "shape": "\u00a39/ mwh",
+     "offset": 4006,
+     "sentence": "Including the 10MW Glassenbury extension, the portfolio will total 350MW by the end of 2020 \u00c6 On 4 March 2020 the system price spiked to \u00a32,242/ MWh, the highest price in 19 years, catalysed by a wind forecasting error, and each of our available sites were able to capture significant value Gresham House Energy Storage Fund plc (GRID) 2 Chair's Statement It is a positive confirmation of our investment thesis to see that grid-scale batteries are now becoming an essential feature of the UK\u2019s critical John Leggate national infrastructure.",
+     "duration": {},
+     "basis": {
+      "forecasting": 1
+     },
+     "horizon": {},
+     "years": {
+      "2020": 2
+     }
+    },
+    {
+     "as_printed": "\u00a32,242/MWh",
+     "shape": "\u00a39/mwh",
+     "offset": 32727,
+     "sentence": "On 4 March 2020 the delayed to the end of Q3 2020/early Q4 2020 June 2020, the Fund will pay dividends of 3.5p system price spiked to \u00a32,242/MWh, the highest respectively.",
+     "duration": {},
+     "basis": {},
+     "horizon": {},
+     "years": {
+      "2020": 4
+     }
+    }
+   ],
+   "figure_shapes": {
+    "\u00a39/ mwh": 1,
+    "\u00a39/mwh": 1
+   },
+   "duration": {},
+   "basis": {
+    "forecast": 2,
+    "forecasts": 13,
+    "forecasting": 2,
+    "outlook": 6,
+    "index": 1,
+    "actual": 1,
+    "potential": 3,
+    "fleet": 4,
+    "average": 9,
+    "typical": 2
+   },
+   "horizon": {
+    "decade": 1,
+    "long term": 9,
+    "annual": 16,
+    "monthly": 3
+   },
+   "paywall": {
+    "premium": 10
+   },
+   "years": {
+    "2020": 203,
+    "2021": 14,
+    "2022": 4,
+    "2025": 1,
+    "2030": 3,
+    "2050": 1
+   },
+   "flags": [
+    "no date declared"
+   ]
+  },
+  {
+   "url": "https://greshamhouse.com/wp-content/uploads/2020/01/GHESF-INTERIM-REPORT-JUNE-2019-final-2.pdf",
+   "path": "data/raw/rns/022/040-wp-content__uploads__2020__01__GHESF-INTERIM-REPORT-JUNE-2019-final-2.pdf.html",
+   "sha256": "1f8a1056b9364b6111f6e10cc10063dac50f167c00efc560a0d7fb2213dbe544",
+   "bytes": 1126928,
+   "format": "pdf",
+   "title": null,
+   "dates": {},
+   "text_chars": 113529,
+   "figures": [
+    {
+     "as_printed": "\u00a30/MWh",
+     "shape": "\u00a39/mwh",
+     "offset": 15696,
+     "sentence": "However, they failed in aggregate Gas-fired generation, which has a middling marginal to completely avoid a short-duration blackout as the cost compared with renewables (c.\u00a30/MWh) or supply of back-up power from batteries and other flexible generation (>\u00a370/MWh), happens to set the fast-acting generators could not compensate for the price of electricity much of the time.",
+     "duration": {},
+     "basis": {},
+     "horizon": {},
+     "years": {}
+    },
+    {
+     "as_printed": "\u00a370/MWh",
+     "shape": "\u00a39/mwh",
+     "offset": 15778,
+     "sentence": "However, they failed in aggregate Gas-fired generation, which has a middling marginal to completely avoid a short-duration blackout as the cost compared with renewables (c.\u00a30/MWh) or supply of back-up power from batteries and other flexible generation (>\u00a370/MWh), happens to set the fast-acting generators could not compensate for the price of electricity much of the time.",
+     "duration": {},
+     "basis": {},
+     "horizon": {},
+     "years": {}
+    }
+   ],
+   "figure_shapes": {
+    "\u00a39/mwh": 2
+   },
+   "duration": {
+    "1hr": 1
+   },
+   "basis": {
+    "forecasts": 11,
+    "outlook": 2,
+    "index": 1,
+    "actual": 1,
+    "potential": 8,
+    "average": 6,
+    "typical": 1
+   },
+   "horizon": {
+    "long-term": 2,
+    "long term": 1,
+    "annual": 8
+   },
+   "paywall": {
+    "premium": 18
+   },
+   "years": {
+    "2020": 10,
+    "2030": 3,
+    "2031": 1,
+    "2050": 1
+   },
+   "flags": [
+    "no date declared"
+   ]
+  }
+ ]
+}

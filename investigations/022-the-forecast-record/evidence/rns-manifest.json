@@ -1,0 +1,362 @@
+[
+ {
+  "source": "rns",
+  "dataset": "rns/grid-document",
+  "url": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/interim-results-for-period-ended-30-june-2026/9785600",
+  "path": "data/raw/rns/022/001-announcement__rns__gresham-house-energy-storage-fund--grid__interim-results-for-period-ended-30-june-2026__9785600.html",
+  "sha256": "52346189d09d6678eb3d07cae032085f0e82a7fc64f9c85f106400ef169ce7d4",
+  "fetched_at": "2026-10-01T14:22:25.929085+00:00",
+  "bytes": 79047
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/grid-document",
+  "url": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/notice-of-interim-2026-results/9778560",
+  "path": "data/raw/rns/022/002-announcement__rns__gresham-house-energy-storage-fund--grid__notice-of-interim-2026-results__9778560.html",
+  "sha256": "00ed53c72b1467aa6c0f2bc9f23c8bddfe8c238fb75732f9a9c767bfca15c238",
+  "fetched_at": "2026-10-01T14:22:26.673840+00:00",
+  "bytes": 62440
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/grid-document",
+  "url": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/full-year-results-to-31-december-2025/9529253",
+  "path": "data/raw/rns/022/003-announcement__rns__gresham-house-energy-storage-fund--grid__full-year-results-to-31-december-2025__9529253.html",
+  "sha256": "f72ecc586fc5a699280d172fb36b480101b909fd782f7f39573bf60f8d52a272",
+  "fetched_at": "2026-10-01T14:22:27.422245+00:00",
+  "bytes": 76534
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/grid-document",
+  "url": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/notice-of-full-year-2025-results/9521771",
+  "path": "data/raw/rns/022/004-announcement__rns__gresham-house-energy-storage-fund--grid__notice-of-full-year-2025-results__9521771.html",
+  "sha256": "bcd051d3410f45296b6fc78b8d34a3816f3ab405fff5dff9cd42a3b52522b86c",
+  "fetched_at": "2026-10-01T14:22:28.159145+00:00",
+  "bytes": 56873
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/grid-document",
+  "url": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/half-year-results-and-capital-allocation-policy/9127370",
+  "path": "data/raw/rns/022/005-announcement__rns__gresham-house-energy-storage-fund--grid__half-year-results-and-capital-allocation-policy__9127370.html",
+  "sha256": "5fe7faaa7374045cf299c39184bb14f141299e4f128e9a310269d8b6aa4c1cf2",
+  "fetched_at": "2026-10-01T14:22:28.933234+00:00",
+  "bytes": 82659
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/grid-document",
+  "url": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/q2-2025-nav-and-notice-of-interim-results/9109745",
+  "path": "data/raw/rns/022/006-announcement__rns__gresham-house-energy-storage-fund--grid__q2-2025-nav-and-notice-of-interim-results__9109745.html",
+  "sha256": "bd91315158b635fe8a0d54a455b1b1a07df42b532a0875076077d5cbddc47ce7",
+  "fetched_at": "2026-10-01T14:22:29.672688+00:00",
+  "bytes": 56370
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/grid-document",
+  "url": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/full-year-results-to-31-december-2024/8840648",
+  "path": "data/raw/rns/022/007-announcement__rns__gresham-house-energy-storage-fund--grid__full-year-results-to-31-december-2024__8840648.html",
+  "sha256": "6d322301c4edbbb1b088da0a37150b5ea6b4324cf76487f5f0846e8d6881fbcf",
+  "fetched_at": "2026-10-01T14:22:30.416880+00:00",
+  "bytes": 79592
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/grid-document",
+  "url": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/half-year-results-to-30-june-2024/8448207",
+  "path": "data/raw/rns/022/008-announcement__rns__gresham-house-energy-storage-fund--grid__half-year-results-to-30-june-2024__8448207.html",
+  "sha256": "6f2fa1a2410b39e0da6100b66b3360a539991dc9a6717509e1dab2230117088d",
+  "fetched_at": "2026-10-01T14:22:31.164440+00:00",
+  "bytes": 66034
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/grid-document",
+  "url": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/notice-of-interim-results/8423402",
+  "path": "data/raw/rns/022/009-announcement__rns__gresham-house-energy-storage-fund--grid__notice-of-interim-results__8423402.html",
+  "sha256": "2733725ed610598a57331c900dcfccff131ed1967b24ecb1eef74ddab3c658a0",
+  "fetched_at": "2026-10-01T14:22:31.915815+00:00",
+  "bytes": 54846
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/grid-document",
+  "url": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/full-year-results-to-31-december-2023/8160652",
+  "path": "data/raw/rns/022/010-announcement__rns__gresham-house-energy-storage-fund--grid__full-year-results-to-31-december-2023__8160652.html",
+  "sha256": "626249014262aa07c72f4ac4412acf71d5229a7855e1e18e27a1072cd1e8f3aa",
+  "fetched_at": "2026-10-01T14:22:32.661103+00:00",
+  "bytes": 76337
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/grid-document",
+  "url": "https://www.investegate.co.uk/announcement/rns/gresham-house-energy-storage-fund--grid/notice-of-full-year-2023-results/8153272",
+  "path": "data/raw/rns/022/011-announcement__rns__gresham-house-energy-storage-fund--grid__notice-of-full-year-2023-results__8153272.html",
+  "sha256": "7fe0ba89fcbab459e00eb785ee9f2a83e984ff1ac92434a9a40e8633c3c41021",
+  "fetched_at": "2026-10-01T14:22:33.406940+00:00",
+  "bytes": 56422
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/grid-document",
+  "url": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/final-results/9668965",
+  "path": "data/raw/rns/022/012-announcement__rns__gore-street-energy-storage-fund--gsf__final-results__9668965.html",
+  "sha256": "244976b91f25312fe86efef5170a3dd91d1e8ec48f7bdc8c9a4fc758e6d960a3",
+  "fetched_at": "2026-10-01T14:22:34.152824+00:00",
+  "bytes": 85289
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/grid-document",
+  "url": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/notice-of-annual-results/9653026",
+  "path": "data/raw/rns/022/013-announcement__rns__gore-street-energy-storage-fund--gsf__notice-of-annual-results__9653026.html",
+  "sha256": "8ebaebba63099d5fe7fef5f12d2d39eae84f39695fe276496c146042d8f81db2",
+  "fetched_at": "2026-10-01T14:22:34.897735+00:00",
+  "bytes": 54658
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/grid-document",
+  "url": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/half-year-financial-report/9295710",
+  "path": "data/raw/rns/022/014-announcement__rns__gore-street-energy-storage-fund--gsf__half-year-financial-report__9295710.html",
+  "sha256": "d043c37b0215af1200ed202d4197871174651cfd2fe7e074935d7077b76b3334",
+  "fetched_at": "2026-10-01T14:22:35.759046+00:00",
+  "bytes": 491399
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/grid-document",
+  "url": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/notice-of-interim-results/9269179",
+  "path": "data/raw/rns/022/015-announcement__rns__gore-street-energy-storage-fund--gsf__notice-of-interim-results__9269179.html",
+  "sha256": "3d7f4afa1a216a83b1e3a9c0ee720192272c412d4d361e79ea909c79900d006a",
+  "fetched_at": "2026-10-01T14:22:36.494205+00:00",
+  "bytes": 53125
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/grid-document",
+  "url": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/final-results/8983474",
+  "path": "data/raw/rns/022/016-announcement__rns__gore-street-energy-storage-fund--gsf__final-results__8983474.html",
+  "sha256": "70c7f18ba982ca3660f450d511e44c6148fbe0053001745b7fa67c2094703b0e",
+  "fetched_at": "2026-10-01T14:22:37.418664+00:00",
+  "bytes": 612405
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/grid-document",
+  "url": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/interim-results-nav-and-dividend-declaration/8605762",
+  "path": "data/raw/rns/022/017-announcement__rns__gore-street-energy-storage-fund--gsf__interim-results-nav-and-dividend-declaration__8605762.html",
+  "sha256": "5d0896f239a6c6989aae65140724dbd17bcfac8967d685a60eca8782f565a255",
+  "fetched_at": "2026-10-01T14:22:38.375083+00:00",
+  "bytes": 441241
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/grid-document",
+  "url": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/notice-of-interim-results/8574682",
+  "path": "data/raw/rns/022/018-announcement__rns__gore-street-energy-storage-fund--gsf__notice-of-interim-results__8574682.html",
+  "sha256": "95a3b6c57143db305c1ed8a8ce473b3a5c8350d91a6ab0dc3ddf9730b93386d0",
+  "fetched_at": "2026-10-01T14:22:39.115208+00:00",
+  "bytes": 54177
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/grid-document",
+  "url": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/final-results/8310012",
+  "path": "data/raw/rns/022/019-announcement__rns__gore-street-energy-storage-fund--gsf__final-results__8310012.html",
+  "sha256": "63ffbb599b670d6f44073f25272916f005f4b13b784ddac7a61b2cc95702327d",
+  "fetched_at": "2026-10-01T14:22:40.003147+00:00",
+  "bytes": 667652
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/grid-document",
+  "url": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/half-year-report/7941091",
+  "path": "data/raw/rns/022/020-announcement__rns__gore-street-energy-storage-fund--gsf__half-year-report__7941091.html",
+  "sha256": "6ddc3f2824f5aca2d5b167b20ee0fed9d2a3ef5a735f2963f96e3e1c2dd3cbe9",
+  "fetched_at": "2026-10-01T14:22:40.891980+00:00",
+  "bytes": 434045
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/grid-document",
+  "url": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/notice-of-interim-results/7884448",
+  "path": "data/raw/rns/022/021-announcement__rns__gore-street-energy-storage-fund--gsf__notice-of-interim-results__7884448.html",
+  "sha256": "d68e0bfa69af6c6ccd859557e8cef39d62496b7d5892da18bfd68b8d3002064d",
+  "fetched_at": "2026-10-01T14:22:41.638263+00:00",
+  "bytes": 54001
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/grid-document",
+  "url": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/final-results/7635539",
+  "path": "data/raw/rns/022/022-announcement__rns__gore-street-energy-storage-fund--gsf__final-results__7635539.html",
+  "sha256": "e726fdb3c71379ff49038ec7ceeb32e438656337557fa8f8ac7967492d92e826",
+  "fetched_at": "2026-10-01T14:22:42.588307+00:00",
+  "bytes": 677303
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/grid-document",
+  "url": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/half-year-report-and-amendments-to-aifm-agreement/7445044",
+  "path": "data/raw/rns/022/023-announcement__rns__gore-street-energy-storage-fund--gsf__half-year-report-and-amendments-to-aifm-agreement__7445044.html",
+  "sha256": "d76e1ca30e90f70b1020e236e3ff0528ba820d2846f8af1e23325e49e64d0528",
+  "fetched_at": "2026-10-01T14:22:43.472861+00:00",
+  "bytes": 602665
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/grid-document",
+  "url": "https://www.investegate.co.uk/announcement/rns/gore-street-energy-storage-fund--gsf/notice-of-half-year-results/7220941",
+  "path": "data/raw/rns/022/024-announcement__rns__gore-street-energy-storage-fund--gsf__notice-of-half-year-results__7220941.html",
+  "sha256": "74310659668c3bfe80acbf820dcc8196168453aad7647832b44beb876d630a8c",
+  "fetched_at": "2026-10-01T14:22:44.210175+00:00",
+  "bytes": 53420
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/grid-document",
+  "url": "https://greshamhouse.com/wp-content/uploads/2026/04/GRID-Annual-Review_25_20.04-FINAL.pdf",
+  "path": "data/raw/rns/022/025-wp-content__uploads__2026__04__GRID-Annual-Review_25_20.04-FINAL.pdf.html",
+  "sha256": "22079c4be5d6e70141e8041ed2451d647394166ba4023bfa0400b507c668ffea",
+  "fetched_at": "2026-10-01T14:22:45.178685+00:00",
+  "bytes": 8953732
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/grid-document",
+  "url": "https://vimeo.com/1185147471?share=copy&fl=sv&fe=ci",
+  "path": "data/raw/rns/022/026-1185147471.html",
+  "sha256": "5a9b139caf7e42e682a5395fcaf373df4c28ba7e19ce001e8eda582484ea4c2e",
+  "fetched_at": "2026-10-01T14:22:46.345814+00:00",
+  "bytes": 11704
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/grid-document",
+  "url": "https://greshamhouse.com/wp-content/uploads/2026/09/GRID-Interim-Report-2026-Final.pdf",
+  "path": "data/raw/rns/022/027-wp-content__uploads__2026__09__GRID-Interim-Report-2026-Final.pdf.html",
+  "sha256": "97e8ee056c07e6f235bbe04920c14e373d743387ca70404a99f83f6f74bbcde0",
+  "fetched_at": "2026-10-01T14:22:48.526409+00:00",
+  "bytes": 11254053
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/grid-document",
+  "url": "https://greshamhouse.com/wp-content/uploads/2025/04/GRID-Annual-Report-31-December-2024.pdf",
+  "path": "data/raw/rns/022/028-wp-content__uploads__2025__04__GRID-Annual-Report-31-December-2024.pdf.html",
+  "sha256": "d2be6a448dd2be036f857fcb290451020053a053085304d4d7e489322d8256ec",
+  "fetched_at": "2026-10-01T14:22:49.660439+00:00",
+  "bytes": 8867318
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/grid-document",
+  "url": "https://greshamhouse.com/wp-content/uploads/2024/04/GRID-Annual-Report-2023-Signed.pdf",
+  "path": "data/raw/rns/022/029-wp-content__uploads__2024__04__GRID-Annual-Report-2023-Signed.pdf.html",
+  "sha256": "15463b8af3a24a80f590829e3a24c8257a922fac0ed6613bcbd8667c0cb65e55",
+  "fetched_at": "2026-10-01T14:22:50.880535+00:00",
+  "bytes": 12727869
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/grid-document",
+  "url": "https://greshamhouse.com/wp-content/uploads/2023/04/GRID_Annual_Report_31_December_2022_FINAL-PUBLISHED.pdf",
+  "path": "data/raw/rns/022/030-wp-content__uploads__2023__04__GRID_Annual_Report_31_December_2022_FINAL-PUBLISHED.pdf.html",
+  "sha256": "5d2a3b507e73288bbad3e93b8477a6bda287d4c7cd096bc6f7c37f365163530c",
+  "fetched_at": "2026-10-01T14:22:52.270289+00:00",
+  "bytes": 20455660
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/grid-document",
+  "url": "https://greshamhouse.com/wp-content/uploads/2022/04/Gresham-House-GRID-Annual-Report-31-December-2021-060422-1.pdf",
+  "path": "data/raw/rns/022/031-wp-content__uploads__2022__04__Gresham-House-GRID-Annual-Report-31-December-2021-060422-1.pdf.html",
+  "sha256": "fda28d63942bef9a955f98040fa94cc4ac53c91afe9d73a0b6126132f87f2513",
+  "fetched_at": "2026-10-01T14:22:53.430877+00:00",
+  "bytes": 17875542
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/grid-document",
+  "url": "https://greshamhouse.com/wp-content/uploads/2021/04/Gresham-House-Energy-Storage-Fund-plc-Annual-Report-2020-1820-27.4.21.pdf",
+  "path": "data/raw/rns/022/032-wp-content__uploads__2021__04__Gresham-House-Energy-Storage-Fund-plc-Annual-Report-2020-1820-27.4.21.pdf.html",
+  "sha256": "ccea57acfa62f6f6c850d30a1e430538397a89a91dfc2cdc84ed87fb0576bdef",
+  "fetched_at": "2026-10-01T14:22:54.357176+00:00",
+  "bytes": 10868129
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/grid-document",
+  "url": "https://greshamhouse.com/wp-content/uploads/2020/04/GRID-Annual-Report-31-Dec-2019-Final.pdf",
+  "path": "data/raw/rns/022/033-wp-content__uploads__2020__04__GRID-Annual-Report-31-Dec-2019-Final.pdf.html",
+  "sha256": "a0d439f6cc01dc76dde38b1510de91ff4ff7b3c17f232160eb1536a2f52ef64f",
+  "fetched_at": "2026-10-01T14:22:55.174121+00:00",
+  "bytes": 3501627
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/grid-document",
+  "url": "https://greshamhouse.com/wp-content/uploads/2025/09/Gresham-House-Energy-Storage-Fund-Interim-Report-to-30-June-2025.pdf",
+  "path": "data/raw/rns/022/034-wp-content__uploads__2025__09__Gresham-House-Energy-Storage-Fund-Interim-Report-to-30-June-2025.pdf.html",
+  "sha256": "624e2c5a1fa2f09ce962e0f022d2d05ca78fa9ff92911772c14e48238819e3f3",
+  "fetched_at": "2026-10-01T14:22:56.036613+00:00",
+  "bytes": 5015498
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/grid-document",
+  "url": "https://greshamhouse.com/wp-content/uploads/2024/09/GRID-Interim-Report-2024.pdf",
+  "path": "data/raw/rns/022/035-wp-content__uploads__2024__09__GRID-Interim-Report-2024.pdf.html",
+  "sha256": "54f63e7e2ba9bf5573ca00744dd7bd52d0e1448a6b0afde0c2104a7b542222a3",
+  "fetched_at": "2026-10-01T14:22:56.951273+00:00",
+  "bytes": 7046488
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/grid-document",
+  "url": "https://greshamhouse.com/wp-content/uploads/2023/09/GRID-Interim-Report-30-June-2023-FINAL-PUBLISHED.pdf",
+  "path": "data/raw/rns/022/036-wp-content__uploads__2023__09__GRID-Interim-Report-30-June-2023-FINAL-PUBLISHED.pdf.html",
+  "sha256": "0070ee512a01746dd9c97f4eb2bd454553f21af502c34eb417bc37b82f275702",
+  "fetched_at": "2026-10-01T14:22:57.775092+00:00",
+  "bytes": 3473803
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/grid-document",
+  "url": "https://greshamhouse.com/wp-content/uploads/2022/09/GRID-Interim-Report-30-June-2022.pdf",
+  "path": "data/raw/rns/022/037-wp-content__uploads__2022__09__GRID-Interim-Report-30-June-2022.pdf.html",
+  "sha256": "1382c408fa3135d8e2844a1c84e704f2c326a0598a19d3000bfe0ec8b4a4876a",
+  "fetched_at": "2026-10-01T14:22:58.710495+00:00",
+  "bytes": 10638036
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/grid-document",
+  "url": "https://greshamhouse.com/wp-content/uploads/2021/09/GRID-Interim-Report-30-June-2021-final.pdf",
+  "path": "data/raw/rns/022/038-wp-content__uploads__2021__09__GRID-Interim-Report-30-June-2021-final.pdf.html",
+  "sha256": "f61fc5a10fde3b62b8fb0b9d387b4fdf58aa1c40866deb63daa3ef216c13c7ad",
+  "fetched_at": "2026-10-01T14:22:59.618122+00:00",
+  "bytes": 8982602
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/grid-document",
+  "url": "https://greshamhouse.com/wp-content/uploads/2020/09/GRID-Interim-Report-30-June-2020-FINAL.pdf",
+  "path": "data/raw/rns/022/039-wp-content__uploads__2020__09__GRID-Interim-Report-30-June-2020-FINAL.pdf.html",
+  "sha256": "96179124a88243d2736867dbb4052a345619743d511c34f6931075272b7c1f45",
+  "fetched_at": "2026-10-01T14:23:00.433542+00:00",
+  "bytes": 2355820
+ },
+ {
+  "source": "rns",
+  "dataset": "rns/grid-document",
+  "url": "https://greshamhouse.com/wp-content/uploads/2020/01/GHESF-INTERIM-REPORT-JUNE-2019-final-2.pdf",
+  "path": "data/raw/rns/022/040-wp-content__uploads__2020__01__GHESF-INTERIM-REPORT-JUNE-2019-final-2.pdf.html",
+  "sha256": "1f8a1056b9364b6111f6e10cc10063dac50f167c00efc560a0d7fb2213dbe544",
+  "fetched_at": "2026-10-01T14:23:01.213156+00:00",
+  "bytes": 1126928
+ }
+]

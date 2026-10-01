@@ -41,7 +41,7 @@ PAGE = """<html><head>
 <time datetime="2025-02-01">1 February 2025</time>
 <p>Two-hour systems earned &pound;61,500/MW/year in 2024. We forecast
 &pound;60k/MW/yr for 2025 and &pound;70 - 80k per MW per year across the full forecast horizon.</p>
-<p>Subscribe to read the 4-hour view.</p>
+<p>Subscribe to read the 4-hour view. Spreads of &pound;85/MWh; revenue of &pound;7.50/MW/hr.</p>
 <script id="__NEXT_DATA__" type="application/json">
 {"props":{"text":"1h systems: \\u00a355k/MW/year in 2026."}}</script>
 <a href="/research/annual-results-2025">Annual Results 2025</a>
@@ -108,6 +108,8 @@ def test_figure_strings_are_kept_as_printed_with_shape_and_sentence() -> None:
         "£61,500/MW/year",
         "£60k/MW/yr",
         "£70 - 80k per MW per year",
+        "£85/MWh",
+        "£7.50/MW/hr",
         "£55k/MW/year",
     ]
     assert [f.shape for f in figures] == [
@@ -115,6 +117,8 @@ def test_figure_strings_are_kept_as_printed_with_shape_and_sentence() -> None:
         "£9/mw/year",
         "£9k/mw/yr",
         "£9 - 9k per mw per year",
+        "£9/mwh",
+        "£9/mw/hr",
         "£9k/mw/year",
     ]
     assert figures[1].sentence.startswith("Two-hour systems earned")
@@ -125,6 +129,7 @@ def test_page_report_tallies_vocabularies_and_dates_and_computes_no_value() -> N
     report = modo.page_report(
         url="https://modoenergy.com/research/x", path="p", sha256="0" * 64, data=PAGE
     )
+    assert report.format == "html"
     assert report.title == "GB BESS revenue forecast to 2030"
     assert report.dates["meta:article:published_time"] == ["2025-02-01T09:30:00.000Z"]
     assert report.dates["json:datePublished"] == ["2025-02-01T09:30:00Z"]
@@ -136,6 +141,7 @@ def test_page_report_tallies_vocabularies_and_dates_and_computes_no_value() -> N
     assert report.paywall == {"subscribe": 1}
     assert report.years == {"2024": 1, "2025": 5, "2026": 1, "2030": 1}
     assert report.figure_shapes["£9k/mw/year"] == 2
+    assert report.figure_shapes["£9/mwh"] == 1
     assert report.flags == ["under 500 characters of text"]
     assert all(isinstance(f.as_printed, str) for f in report.figures)
 
@@ -178,3 +184,14 @@ def test_s2_each_figure_string_carries_the_tokens_of_its_own_sentence() -> None:
     assert forecast.basis == {"forecast": 2}
     assert forecast.horizon == {"full forecast horizon": 1}
     assert forecast.years == {"2025": 1}
+
+
+def test_a_pdf_is_reported_as_a_pdf_and_scanned_as_text(monkeypatch) -> None:
+    monkeypatch.setattr(modo, "pdf_text", lambda data: "Revenue of £61,500/MW/year in 2024.")
+    report = modo.page_report(url="u", path="p", sha256="0" * 64, data=b"%PDF-1.7 ...")
+    assert report.format == "pdf"
+    assert [f.as_printed for f in report.figures] == ["£61,500/MW/year"]
+    assert "no date declared" in report.flags
+    monkeypatch.setattr(modo, "pdf_text", lambda data: "")
+    empty = modo.page_report(url="u", path="p", sha256="0" * 64, data=b"%PDF-1.7 ...")
+    assert "pdf with no extractable text" in empty.flags

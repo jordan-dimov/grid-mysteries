@@ -150,3 +150,20 @@ defines the undetermined part as that difference, the headline states it
 in words, and the evidence carries it to 0.001 for every comparison;
 adding two more columns to fifteen was judged to cost more reading than it
 returns. Tests: `tests/test_connection_slippage_page.py`, five added.
+
+## Finding, not amendment — 2026-10-01: the series cut by plant type and host TO lives in 021
+
+A public question of 2026-10-01 asked whether the slippage is concentrated
+in particular technologies or regions. Cutting the series by `Plant Type`
+and `HOST TO` computes figures over windows that closed years ago, which
+this file's rule forbids as an amendment (an amended rule applies from the
+next copy forward), so it is a separate declaration beside this one:
+`investigations/021-slippage-by-technology-and-area/DECLARATION.md`
+(SHA-256 `76ad7dc3…`, frozen 2026-10-01), with the same population checked
+digest by digest against `evidence/v4/vintage-manifest.json` and every
+comparison checked against this series' committed figures before any group
+figure was written. Nothing under this directory changed. The schema pass
+behind it (`archives/tec-register/`, report `9ed878f4…`) added the two
+columns' vocabularies, blank rates and key stability to the archive report;
+version 4's `series.json` cites the earlier report (`be060a7c…`) it was
+computed against, which is unchanged in git.

@@ -508,6 +508,16 @@ L += [f"| {c['t_public']} | " + " | ".join(f"{c['blank'][k]:,}" for k in tr.REQU
 print(f"{report['copies']} captured copies, {len(report['flagged'])} flagged -> archives/tec-register-capture/")
 PY5
 fi
+if [[ "$name" == "modo-022" ]]; then
+  # scripts/schema-report modo-022: the Modo Energy pages and the RNS
+  # documents 022 pinned under the sponsor's seal, read from the journalled
+  # bytes after each digest is checked: every figure-looking string as
+  # printed with the sentence around it, the spellings tallied, the date
+  # fields each page declares, duration, basis, horizon and paywall tokens.
+  # Written to archives/modo-pages-022/ and archives/rns-grid-022/; no
+  # value is parsed and no figure is computed.
+  exec uv run python investigations/022-the-forecast-record/run.py --phase schema
+fi
 [[ "$name" == "tec-register" ]] || { echo "unknown archive $name" >&2; exit 1; }
 mkdir -p "archives/$name"
 exec uv run --group registers python - "$name" <<'PY'

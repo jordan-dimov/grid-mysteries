@@ -1,0 +1,35 @@
+{
+ "declaration": [
+  "ACQUISITION.md",
+  "DECLARATION.md"
+ ],
+ "note": "ACQUISITION.md's discovery and schema-pass rules (A1 to A6, S2, S3) and DECLARATION.md's scoring rules (R-S, R-C, R-M, R-V, P-A to P-C, F3) are mapped here; the reading rules R-R are written after the schema pass and are mapped when they exist. The seal gates, the journal digest checks and the schema pass's refusal on an empty journal are enforced by run.py against artefacts outside the pure logic and have no unit test.",
+ "rules": {
+  "A1 every Sitemap line of robots.txt once in order": "tests/test_modo.py::test_a1_every_sitemap_line_of_robots_once_in_order",
+  "A1 a sitemap index and a urlset parse with lastmod as printed": "tests/test_modo.py::test_sitemap_index_and_urlset_parse_with_lastmod_as_printed",
+  "A2 selection records a reason for every URL and drops duplicates": "tests/test_modo.py::test_a2_selection_records_a_reason_for_every_url_and_drops_duplicates",
+  "A3 the pinned page's file name is stable and readable": "tests/test_modo.py::test_page_filename_is_stable_and_readable",
+  "A5 RNS links match on visible text and resolve against the base": "tests/test_modo.py::test_a5_links_match_on_visible_text_and_resolve_against_the_base",
+  "A6 robots.txt Disallow for the wildcard agent is honoured": "tests/test_modo.py::test_a6_disallowed_paths_of_robots_are_honoured_for_the_wildcard_agent",
+  "S2 the page text keeps JSON payloads and drops other scripts": "tests/test_modo.py::test_visible_text_keeps_json_payloads_and_drops_other_scripts",
+  "S2 figure strings are kept as printed with shape and sentence": "tests/test_modo.py::test_figure_strings_are_kept_as_printed_with_shape_and_sentence",
+  "S2 each figure string carries the tokens of its own sentence": "tests/test_modo.py::test_s2_each_figure_string_carries_the_tokens_of_its_own_sentence",
+  "S1 S3 S4 the page report tallies vocabularies and dates and computes no value": "tests/test_modo.py::test_page_report_tallies_vocabularies_and_dates_and_computes_no_value",
+  "S4 a page with no date and no figure is flagged": "tests/test_modo.py::test_page_report_flags_a_page_with_no_date_and_no_figure",
+  "R-S1 a year counts only if the forecast was published before it began": "tests/test_forecast_record.py::test_rs1_a_year_counts_only_if_the_forecast_was_published_before_it_began",
+  "R-S1 an in-year figure is never scored": "tests/test_forecast_record.py::test_an_in_year_figure_is_never_scored_and_says_so",
+  "R-C signed error is forecast minus realised in pounds and percent": "tests/test_forecast_record.py::test_rc_signed_error_is_forecast_minus_realised_in_pounds_and_percent",
+  "R-S2 a multi-year figure scores against the mean once every year is realised": "tests/test_forecast_record.py::test_rs2_a_multi_year_figure_scores_against_the_mean_once_every_year_is_realised",
+  "R-S3 the latest published realised figure is read": "tests/test_forecast_record.py::test_rs3_the_latest_published_realised_figure_is_read",
+  "R-M a fleet outturn against a duration forecast is a mismatch, never adjusted": "tests/test_forecast_record.py::test_rm_a_fleet_realised_figure_against_a_duration_forecast_is_a_mismatch_never_adjusted",
+  "Not yet scorable dates the day the period ends": "tests/test_forecast_record.py::test_not_yet_scorable_dates_the_day_the_period_ends",
+  "One row per forecast figure in publication order": "tests/test_forecast_record.py::test_comparisons_make_one_row_per_forecast_in_publication_order",
+  "P-A holds only when every scorable vintage overstated its first year": "tests/test_forecast_record.py::test_pa_holds_only_when_every_scorable_vintage_overstated_its_first_year",
+  "P-A a vintage mixed across scopes falsifies": "tests/test_forecast_record.py::test_pa_a_vintage_mixed_across_scopes_in_its_first_year_falsifies",
+  "P-B counts vintages whose every first-year error exceeds twenty percent": "tests/test_forecast_record.py::test_pb_counts_vintages_whose_every_first_year_error_exceeds_twenty_percent",
+  "R-V P-C direction between consecutive vintages of one scope and period": "tests/test_forecast_record.py::test_pc_counts_direction_between_consecutive_vintages_of_the_same_scope_and_period",
+  "R-V one figure per vintage, duplicates listed": "tests/test_forecast_record.py::test_pc_reads_one_figure_per_vintage_and_lists_the_duplicates",
+  "F3 a committed row that would change is named and the run refuses": "tests/test_forecast_record.py::test_f3_require_unchanged_names_committed_rows_that_would_differ",
+  "A figure refuses a negative value or a backwards period": "tests/test_forecast_record.py::test_a_figure_refuses_a_negative_value_or_a_backwards_period"
+ }
+}

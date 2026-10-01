@@ -25,6 +25,7 @@ import argparse
 import hashlib
 import json
 import re
+import subprocess
 import sys
 from datetime import UTC, date, datetime
 from decimal import Decimal
@@ -49,6 +50,7 @@ GROUPS = EVIDENCE / "groups.ndjson"
 SUMMARY = EVIDENCE / "summary.json"
 RUN_LOG = EVIDENCE / "run-log.json"
 FINDINGS = HERE / "FINDINGS.md"
+SITE_PAGE = REPO_ROOT / "site" / "slippage-by-technology-and-area" / "index.html"
 V4 = REPO_ROOT / "investigations" / "014-gb-connection-slippage"
 V4_ROWS = V4 / "evidence" / "v4" / "rows.ndjson"
 V4_SERIES = V4 / "evidence" / "v4" / "series.json"
@@ -469,15 +471,55 @@ def load_evidence() -> tuple[dict[str, Any], list[dict[str, Any]], list[dict[str
     return summary, comparisons, groups
 
 
+def evidence_commit() -> str:
+    """The commit that holds the evidence rows; the page cites it, so the
+    rows must be committed and clean."""
+    files = [str(p.relative_to(REPO_ROOT)) for p in (COMPARISONS, GROUPS, SUMMARY)]
+    dirty = subprocess.run(
+        ["git", "status", "--porcelain", "--", *files],
+        capture_output=True,
+        text=True,
+        check=True,
+        cwd=REPO_ROOT,
+    ).stdout.strip()
+    if dirty:
+        raise SystemExit("refusing: the evidence is not committed, so the page cannot cite it")
+    return subprocess.run(
+        ["git", "log", "-1", "--format=%H", "--", *files],
+        capture_output=True,
+        text=True,
+        check=True,
+        cwd=REPO_ROOT,
+    ).stdout.strip()
+
+
 def render() -> None:
-    """FINDINGS.md from the committed evidence and the committed schema report
-    (the one the summary names, or the render refuses)."""
+    """FINDINGS.md and the site page from the committed evidence and the
+    committed schema report (the one the summary names, or the render
+    refuses). The site page is served at the unlisted hostname only; the
+    sponsor deploys."""
+    from grid_mysteries.rendering import connection_slippage as site
+
     summary, comparisons, groups = load_evidence()
     if sha(SCHEMA_REPORT) != summary["schema_report_sha256"]:
         raise SystemExit("refusing: the schema report on disk is not the one the run cites")
     stability = json.loads(SCHEMA_REPORT.read_text())["grouping_key_stability"]
-    FINDINGS.write_text(page.render_findings(summary, comparisons, groups, stability))
-    print(f"rendered {FINDINGS.relative_to(REPO_ROOT)}")
+    findings = page.render_findings(summary, comparisons, groups, stability)
+    FINDINGS.write_text(findings)
+    SITE_PAGE.parent.mkdir(parents=True, exist_ok=True)
+    SITE_PAGE.write_text(
+        page.render_page(
+            findings,
+            summary,
+            comparisons,
+            groups,
+            evidence_commit=evidence_commit(),
+            repo_url=site.REPO_URL,
+            credibility=site.CREDIBILITY,
+            contact_email=site.CALL_TO_ACTION_EMAIL,
+        )
+    )
+    print(f"rendered {FINDINGS.relative_to(REPO_ROOT)} and {SITE_PAGE.relative_to(REPO_ROOT)}")
 
 
 def main(argv: list[str] | None = None) -> None:

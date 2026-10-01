@@ -561,3 +561,179 @@ def render_findings(
         "",
     ]
     return "\n".join(lines)
+
+
+# -------------------------------------------------------------- the site page
+
+PAGE_TITLE = "Where the dates move"
+PAGE_SUBTITLE = (
+    "Britain's grid-connection slippage, in megawatt-years, cut by plant type and by "
+    "transmission area under a method sealed before the cut"
+)
+PAGE_INVESTIGATION = "investigations/021-slippage-by-technology-and-area"
+PAGE_CSS = """\
+table{min-width:40rem}
+th,td,thead th{text-align:left;white-space:normal}
+h3{font-size:1.05rem;margin:1.5rem 0 .4rem}
+"""
+
+
+def page_lead(summary: dict[str, Any], comparisons: Rows, groups: Rows) -> list[str]:
+    """The lead, as HTML paragraphs, from the headline window's rows: by area,
+    by technology, the storage margin and what decides it, offshore wind, and
+    what none of it says."""
+    from html import escape
+
+    version = summary["rule_version"]
+    headline = {
+        c["dimension"]: c
+        for c in comparisons
+        if c["rule_version"] == version and c["window"] == "headline"
+    }
+    hh, hp = headline["host_to"], headline["plant_type"]
+    by_key: dict[str, Rows] = {}
+    for g in groups:
+        if g["rule_version"] == version:
+            by_key.setdefault(g["key"].rsplit("|", 1)[0], []).append(g)
+    hosts = [g for g in by_key[hh["key"]] if not g["bucket"] and g["dated_both"]]
+    plants = by_key[hp["key"]]
+    pc = summary["propositions"]["P-C"]
+    inc = pc["including_compounds"]
+    det_points = Decimal(pc["share_of_determined_percent"]) - Decimal(
+        inc["share_of_capacity_percent"]
+    )
+    offshore = next((g for g in plants if g["group"] == "Wind Offshore"), None)
+    changed = next((g for g in plants if g["group"] == "key changed"), None)
+    f = hh["figures_014_v4"]
+    area = "; ".join(
+        f"{escape(g['group'])} {pct(g['share_of_capacity_percent'])} of the dated capacity and "
+        f"{pct(g['share_of_net_percent'])} of the movement"
+        + (" (thin population)" if g["thin"] else "")
+        for g in hosts
+    )
+    offshore_sentence = (
+        f" Offshore wind, {pct(offshore['share_of_capacity_percent'])} of the dated capacity, "
+        f"moved <strong>earlier</strong> on net ({whole(offshore['total'][RULE_V2])} MW-years)."
+        if offshore
+        else ""
+    )
+    changed_sentence = (
+        f" {pct(changed['share_of_capacity_percent'])} of the dated capacity printed a different "
+        "plant type at the two ends of the window; those project-stages sit in a "
+        "<em>key changed</em> bucket, never reassigned to either label, and every technology "
+        "share above is a share of the whole with that bucket in it."
+        if changed
+        else ""
+    )
+    return [
+        '<p class="headline">'
+        f"Between {escape(day(hh['baseline']))} and {escape(day(hh['current']))} the contract "
+        f"dates in NESO's connection register moved <strong>{whole(f['mw_years_net'])} "
+        f"megawatt-years</strong> later on net, over {f['dated_both']:,} project-stages dated at "
+        f"both ends ({whole(f['determined'])} of it determined by the register's own stage "
+        "labels, the rest depending on the identity rule). By transmission area that movement "
+        f"is spread close to the capacity each holds: {area}.</p>",
+        "<p>By technology it is not. Energy storage, read as every register label that "
+        f"includes it ({len(inc['groups'])} labels), holds {pct(inc['share_of_capacity_percent'])} "
+        f"of the dated capacity and {pct(inc['share_of_net_percent'])} of the movement under the "
+        f"series' published rule, {pts(pc['points'])} points apart; on the determined part alone "
+        f"the gap is {pts(str(det_points))} points. The declaration asked whether the gap stays "
+        f"within fifteen points: it does not on the published rule and it does on the "
+        f"determined reading, so the margin is one the identity rule decides, not the "
+        f"register.{offshore_sentence}</p>",
+        f"<p>{changed_sentence.strip()}</p>" if changed_sentence else "",
+        "<p>None of this says why any date moved, or that any technology or area is worse at "
+        "anything. The date is the one in each project's connection agreement, moved by agreed "
+        "variation; the only cause evidence this project holds is 006's split of the large "
+        "slips, three fifths project-led, a quarter works-led and the rest unattributable, and "
+        "nothing here revises it.</p>",
+    ]
+
+
+def render_page(
+    findings: str,
+    summary: dict[str, Any],
+    comparisons: Rows,
+    groups: Rows,
+    *,
+    evidence_commit: str,
+    repo_url: str,
+    credibility: str = "",
+    contact_email: str = "",
+) -> str:
+    """The web page: the lead, FINDINGS.md as rendered (its title replaced by
+    the page's), and where the record lives: the declaration's digest and
+    proofs, the commit that holds the rows, and the link R9 marks not read."""
+    from html import escape
+
+    from grid_mysteries.rendering.connection_slippage import CSS
+    from grid_mysteries.rendering.overdue_queue import markdown_html
+
+    body = findings.split("\n", 1)[1] if findings.startswith("# ") else findings
+    base = f"{repo_url}/blob/main/{PAGE_INVESTIGATION}"
+    proofs = (summary.get("declaration_timestamps") or {}).get("proofs", [])
+    proof_items = "; ".join(
+        f"{escape(p['kind'])}"
+        + (f" from {escape(p['tsa'])}" if p.get("tsa") else "")
+        + (f" at {escape(p['tsa_time'])}" if p.get("tsa_time") else "")
+        + (f" (status when issued: {escape(p['status'])})" if p.get("status") else "")
+        for p in proofs
+    )
+    not_read = [
+        c for c in comparisons if c["rule_version"] == summary["rule_version"] and c["not_read"]
+    ]
+    not_read_note = (
+        " The comparison "
+        + ", ".join(sorted({f"{day(c['baseline'])} to {day(c['current'])}" for c in not_read}))
+        + " is published with its shares marked <em>not read</em> (R9: a net within "
+        "±1,000 MW-years)."
+        if not_read
+        else ""
+    )
+    contact = (
+        f'<p>Questions or challenges: <a href="mailto:{escape(contact_email)}">'
+        f"{escape(contact_email)}</a></p>"
+        if contact_email
+        else ""
+    )
+    lead = "\n".join(p for p in page_lead(summary, comparisons, groups) if p)
+    evidence_url = f"{repo_url}/tree/{evidence_commit}/{PAGE_INVESTIGATION}/evidence"
+    return f"""<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{escape(PAGE_TITLE)}</title>
+<meta name="description" content="{escape(PAGE_SUBTITLE)}">
+<style>
+{CSS}{PAGE_CSS}</style>
+</head>
+<body>
+<header>
+<h1>{escape(PAGE_TITLE)}</h1>
+<p class="subtitle">{escape(PAGE_SUBTITLE)}</p>
+</header>
+<main>
+{lead}
+{markdown_html(body)}
+<h2>Where the record is</h2>
+<p class="notes">Declaration <a href="{escape(base)}/DECLARATION.md">DECLARATION.md</a>,
+SHA-256 <code>{escape(summary["declaration_sha256"])}</code>, frozen before any figure above
+was computed and witnessed by {proof_items or "the proofs beside it"}; the OpenTimestamps
+proof is upgraded to its Bitcoin attestation by the project's proof sweep and verified with
+<code>ots verify</code>. Every row above stands in
+<a href="{escape(evidence_url)}">evidence/</a>
+at commit <code>{escape(evidence_commit[:12])}</code> under rule version
+<code>{escape(summary["rule_version"])}</code>, appended once and never rewritten; a figure
+that would change is a new declaration, never an edit.{not_read_note} This page is
+<a href="{escape(base)}/FINDINGS.md">FINDINGS.md</a> with a lead added, both pure functions of
+that evidence and of the committed archive schema report
+(<code>{escape(summary["schema_report_sha256"][:16])}…</code>).</p>
+</main>
+<footer>
+<p>{escape(credibility)}</p>
+{contact}
+</footer>
+</body>
+</html>
+"""

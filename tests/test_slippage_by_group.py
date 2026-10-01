@@ -587,3 +587,44 @@ def test_the_page_renders_only_the_summarys_rule_version():
     stale = dict(comparisons[0], rule_version="deadbeef", key="deadbeef|x")
     text = page.render_findings(summary, [*comparisons, stale], groups)
     assert "deadbeef" not in text
+
+
+def test_the_site_page_is_self_contained_deterministic_and_cites_the_record():
+    summary, comparisons, groups = evidence_fixture()
+    findings = page.render_findings(summary, comparisons, groups, STABILITY)
+    html = page.render_page(
+        findings,
+        summary,
+        comparisons,
+        groups,
+        evidence_commit="eae1844" + "0" * 33,
+        repo_url="https://example.test/repo",
+        credibility="Built by a person.",
+        contact_email="someone@example.test",
+    )
+    assert html == page.render_page(
+        findings,
+        summary,
+        comparisons,
+        groups,
+        evidence_commit="eae1844" + "0" * 33,
+        repo_url="https://example.test/repo",
+        credibility="Built by a person.",
+        contact_email="someone@example.test",
+    )
+    assert "<script" not in html and "http" not in html.split("<main>")[0].split("<style>")[1]
+    assert summary["declaration_sha256"] in html and "eae18440000" in html
+    assert "rfc3161 from digicert" in html and "FINDINGS.md" in html
+    assert "contract dates" in html and "promise" not in html.replace("never a promise", "")
+    assert "earlier</strong> on net" not in html  # the fixture has no Wind Offshore group
+    assert "<h1>Where the dates move</h1>" in html and "<h1>021" not in html
+
+
+def test_the_site_page_names_the_link_r9_marks_not_read():
+    summary, comparisons, groups = evidence_fixture()
+    comparisons[-1]["not_read"] = True  # the copy-to-copy plant-type line
+    findings = page.render_findings(summary, comparisons, groups, STABILITY)
+    html = page.render_page(
+        findings, summary, comparisons, groups, evidence_commit="a" * 40, repo_url="https://x"
+    )
+    assert "19 May 2026 to 22 August 2026 is published with its shares marked" in html

@@ -51,8 +51,10 @@ from grid_mysteries.sources.pinning import load_journal, pin, progress
 HERE = Path(__file__).parent
 EVIDENCE = HERE / "evidence"
 PLAN = HERE / "ACQUISITION.md"
+AMENDMENT_1 = HERE / "AMENDMENT-1.md"
 DECLARATION = HERE / "DECLARATION.md"
 RUN_INDEX = EVIDENCE / "run-index.json"
+RUN_INDEX_2 = EVIDENCE / "run-index-2.json"
 ACQUISITION_LOG = EVIDENCE / "acquisition-log.json"
 FIGURES = EVIDENCE / "figures.ndjson"
 COMPARISONS = EVIDENCE / "comparisons.ndjson"
@@ -89,6 +91,14 @@ RNS_LISTINGS: tuple[tuple[str, str], ...] = tuple(
     ),
 )
 RNS_LINK_PATTERN = r"(annual|final|full[- ]year|interim|half[- ]year(ly)?)\b.*\b(results|report)"
+#: A7(ii): the widened rule over every listing page of each fund.
+RNS_LINK_PATTERN_2 = (
+    r"results|report|net asset value|\bnav\b|prospectus|placing|issue|fundrais|valuation|"
+    r"trading update|portfolio update|investor presentation|capital markets|business update|"
+    r"acquisition|strategy"
+)
+ANNOUNCEMENT_HREF = re.compile(r"/announcement/", re.IGNORECASE)
+MAX_LISTING_PAGES = 40
 SLEEP_SECONDS = 0.5
 
 
@@ -364,6 +374,176 @@ def acquire(seal: str | None) -> None:
     )
 
 
+def require_amendment_seal(seal: str | None) -> str:
+    digest = sha(AMENDMENT_1)
+    if not seal or len(seal) < MIN_SEAL_LENGTH or not digest.startswith(seal.lower()):
+        raise SystemExit(
+            f"refusing: --amendment-seal must be a prefix (>= {MIN_SEAL_LENGTH} hex) of "
+            f"AMENDMENT-1.md's SHA-256 {digest[:16]}…"
+        )
+    sidecar = AMENDMENT_1.with_name(AMENDMENT_1.name + ".timestamps.json")
+    if not sidecar.exists():
+        raise SystemExit("refusing: AMENDMENT-1.md is not frozen (no proof sidecar)")
+    if json.loads(sidecar.read_text()).get("sha256") != digest:
+        raise SystemExit("refusing: AMENDMENT-1.md has changed since it was frozen")
+    return digest
+
+
+def listing_dest(run_date: str, ticker: str, n: int) -> Path:
+    return RAW / run_date / "rns-listings" / f"listing-investegate-{ticker.lower()}-page{n}.html"
+
+
+def index_2(seal: str | None, amendment_seal: str | None, run_date: str) -> None:
+    """A7(i) and A7(ii): every Investegate listing page of each fund until
+    one carries no announcement link, the widened link rule over every
+    listing page pinned (pages 1 to 3 from the plan's bytes), and the
+    documents not yet in the manifest."""
+    digest = require_plan_seal(seal)
+    amendment = require_amendment_seal(amendment_seal)
+    idx = json.loads(RUN_INDEX.read_text())
+    first_day = idx["run_date"]
+    pinned = {e["url"] for e in load_journal(EVIDENCE / "rns-journal.ndjson").values()}
+    failures: list[dict[str, str]] = []
+    listings: list[dict[str, Any]] = []
+    links: list[dict[str, str]] = []
+    seen_hrefs: set[str] = set()
+
+    def harvest(dataset: str, url: str, path: Path) -> int:
+        found = modo.links(path.read_text(errors="replace"), url, RNS_LINK_PATTERN_2)
+        n = 0
+        for href, text in found:
+            if href in seen_hrefs:
+                continue
+            seen_hrefs.add(href)
+            links.append(
+                {
+                    "listing": dataset,
+                    "href": href,
+                    "text": text,
+                    "already_pinned": href in pinned,
+                }
+            )
+            n += 1
+        return n
+
+    for ticker in ("GRID", "GSF", "HEIT"):
+        for n in range(1, 4):
+            path = listing_dest(first_day, ticker, n)
+            url = f"{INVESTEGATE}/{ticker}" + (f"?page={n}" if n > 1 else "")
+            dataset = f"rns/listing-investegate-{ticker.lower()}-page{n}"
+            if path.exists():
+                listings.append(
+                    {
+                        "dataset": dataset,
+                        "url": url,
+                        "from_plan": True,
+                        "links": harvest(dataset, url, path),
+                    }
+                )
+        for n in range(4, MAX_LISTING_PAGES + 1):
+            url = f"{INVESTEGATE}/{ticker}?page={n}"
+            dataset = f"rns/listing-investegate-{ticker.lower()}-page{n}"
+            dest = listing_dest(run_date, ticker, n)
+            failures += pin_each([(dataset, url, dest)], "discovery", dataset)
+            if not dest.exists():
+                listings.append({"dataset": dataset, "url": url, "pinned": False})
+                break
+            html = dest.read_text(errors="replace")
+            announcements = len(ANNOUNCEMENT_HREF.findall(html))
+            entry = {
+                "dataset": dataset,
+                "url": url,
+                "pinned": True,
+                "sha256": sha(dest),
+                "announcement_links": announcements,
+                "links": harvest(dataset, url, dest) if announcements else 0,
+            }
+            listings.append(entry)
+            if not announcements:
+                entry["listing_ended_here"] = True
+                break
+    for dataset, url in RNS_LISTINGS:
+        if "investegate" in dataset:
+            continue
+        path = RAW / first_day / "rns-listings" / (dataset.split("/", 1)[1] + ".html")
+        if path.exists():
+            listings.append(
+                {
+                    "dataset": dataset,
+                    "url": url,
+                    "from_plan": True,
+                    "links": harvest(dataset, url, path),
+                }
+            )
+    write_json(
+        RUN_INDEX_2,
+        {
+            "investigation": "022",
+            "plan_sha256": digest,
+            "amendment_1_sha256": amendment,
+            "seal": seal,
+            "amendment_seal": amendment_seal,
+            "run_date": run_date,
+            "indexed_at": datetime.now(UTC).isoformat(timespec="seconds"),
+            "link_pattern": RNS_LINK_PATTERN_2,
+            "listings": listings,
+            "links": links,
+            "links_total": len(links),
+            "links_new": sum(1 for x in links if not x["already_pinned"]),
+            "failures": failures,
+        },
+    )
+    log_acquisition(
+        "index-2",
+        digest,
+        seal or "",
+        amendment_1_sha256=amendment,
+        listings=len(listings),
+        links=len(links),
+        links_new=sum(1 for x in links if not x["already_pinned"]),
+        failures=len(failures),
+    )
+    ended = [x["dataset"] for x in listings if x.get("listing_ended_here")]
+    print(
+        f"index-2: {len(listings)} listing pages, {len(links)} links "
+        f"({sum(1 for x in links if not x['already_pinned'])} new); listings ended at {ended}; "
+        f"written {RUN_INDEX_2.relative_to(REPO_ROOT)}"
+    )
+
+
+def acquire_2(seal: str | None, amendment_seal: str | None) -> None:
+    digest = require_plan_seal(seal)
+    amendment = require_amendment_seal(amendment_seal)
+    if not RUN_INDEX_2.exists():
+        raise SystemExit("run --phase index-2 first")
+    idx = json.loads(RUN_INDEX_2.read_text())
+    if idx["amendment_1_sha256"] != amendment:
+        raise SystemExit("refusing: run-index-2.json was written under another amendment")
+    existing = len(load_journal(EVIDENCE / "rns-journal.ndjson"))
+    docs = []
+    for n, link in enumerate(
+        (x for x in idx["links"] if not x["already_pinned"]), start=existing + 1
+    ):
+        docs.append(
+            (
+                "rns/fund-document-2",
+                link["href"],
+                RAW_RNS / (f"{n:03d}-" + modo.page_filename(link["href"])),
+            )
+        )
+    failures = pin_each(docs, "rns", "fund documents (amendment 1)")
+    log_acquisition(
+        "acquire-2",
+        digest,
+        seal or "",
+        amendment_1_sha256=amendment,
+        documents=len(docs),
+        failures=len(failures),
+        failed=failures,
+    )
+    print(f"acquire-2: {len(docs)} documents in the jobs; {len(failures)} failed")
+
+
 # ----------------------------------------------------------------- schema
 
 
@@ -402,6 +582,7 @@ def schema_pass(name: str, archive: Path, title: str, command: str) -> dict[str,
         "archive": name,
         "title": title,
         "generated_at": datetime.now(UTC).isoformat(timespec="seconds"),
+        "pdf_text_mode": modo.PDF_MODE,
         "pages": len(reports),
         "figure_strings": sum(len(r.figures) for r in reports),
         "pages_with_a_figure_string": sum(1 for r in reports if r.figures),
@@ -686,9 +867,19 @@ def main(argv: list[str] | None = None) -> None:
         help="prefix (>= 8 hex) of ACQUISITION.md's SHA-256 (index, acquire) or of "
         "DECLARATION.md's (check, compute)",
     )
+    parser.add_argument("--amendment-seal", help="prefix of AMENDMENT-1.md's SHA-256")
     parser.add_argument(
         "--phase",
-        choices=("index", "acquire", "schema", "check", "compute", "render"),
+        choices=(
+            "index",
+            "acquire",
+            "index-2",
+            "acquire-2",
+            "schema",
+            "check",
+            "compute",
+            "render",
+        ),
         required=True,
     )
     parser.add_argument("--run-date", default=date.today().isoformat())
@@ -697,6 +888,10 @@ def main(argv: list[str] | None = None) -> None:
         index(args.seal, args.run_date)
     elif args.phase == "acquire":
         acquire(args.seal)
+    elif args.phase == "index-2":
+        index_2(args.seal, args.amendment_seal, args.run_date)
+    elif args.phase == "acquire-2":
+        acquire_2(args.seal, args.amendment_seal)
     elif args.phase == "schema":
         schema()
     elif args.phase == "check":

@@ -854,7 +854,7 @@ def read_page(page: dict, *, publisher: str, portfolio_scope: str | None = None)
     for f in page.get("figures") or []:
         sentence = " ".join(f["sentence"].split())
         printed = f["as_printed"]
-        if page.get("format") == "pdf":
+        if str(page.get("format", "")).startswith("pdf"):
             out.append(
                 declined(
                     f, "R-R0 PDF: layout text interleaves columns; the RNS text is read instead"

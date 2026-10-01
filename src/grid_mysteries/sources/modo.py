@@ -372,18 +372,21 @@ def year_tally(text: str) -> dict[str, int]:
     return dict(sorted(Counter(YEAR_PATTERN.findall(text)).items()))
 
 
+#: A7(iii) of 022's amendment 1: reading order, not ``-layout``, so a
+#: two-column page's sentences stay whole. The report names the mode.
+PDF_MODE = "pdftotext reading order (no -layout)"
+
+
 def pdf_text(data: bytes) -> str:
-    """A PDF's text as `pdftotext -layout` prints it (poppler, on PATH), so
-    that an RNS report's figures are scanned as text; empty when the tool
-    is absent, and the report says so with a flag."""
+    """A PDF's text as `pdftotext` prints it in reading order (poppler, on
+    PATH), so that an RNS report's figures are scanned as text; empty when
+    the tool is absent, and the report says so with a flag."""
     import shutil
     import subprocess
 
     if not shutil.which("pdftotext"):
         return ""
-    done = subprocess.run(
-        ["pdftotext", "-layout", "-", "-"], input=data, capture_output=True, check=False
-    )
+    done = subprocess.run(["pdftotext", "-", "-"], input=data, capture_output=True, check=False)
     return done.stdout.decode("utf-8", errors="replace")
 
 
@@ -423,7 +426,7 @@ def page_report(*, url: str, path: str, sha256: str, data: bytes) -> PageReport:
         path=path,
         sha256=sha256,
         bytes=len(data),
-        format="pdf" if is_pdf else "html",
+        format=f"pdf ({PDF_MODE})" if is_pdf else "html",
         title=title_of(html) if html else None,
         dates=date_strings(html) if html else {},
         text_chars=len(text),

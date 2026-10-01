@@ -189,7 +189,7 @@ def test_s2_each_figure_string_carries_the_tokens_of_its_own_sentence() -> None:
 def test_a_pdf_is_reported_as_a_pdf_and_scanned_as_text(monkeypatch) -> None:
     monkeypatch.setattr(modo, "pdf_text", lambda data: "Revenue of £61,500/MW/year in 2024.")
     report = modo.page_report(url="u", path="p", sha256="0" * 64, data=b"%PDF-1.7 ...")
-    assert report.format == "pdf"
+    assert report.format.startswith("pdf (")
     assert [f.as_printed for f in report.figures] == ["£61,500/MW/year"]
     assert "no date declared" in report.flags
     monkeypatch.setattr(modo, "pdf_text", lambda data: "")

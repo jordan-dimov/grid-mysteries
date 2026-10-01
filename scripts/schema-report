@@ -516,7 +516,7 @@ if [[ "$name" == "modo-022" ]]; then
   # fields each page declares, duration, basis, horizon and paywall tokens.
   # Written to archives/modo-pages-022/ and archives/rns-grid-022/; no
   # value is parsed and no figure is computed.
-  exec uv run python investigations/022-the-forecast-record/run.py --phase schema
+  exec uv run python investigations/022-the-forecast-record/run.py --phase schema ${2:+--only "$2"}
 fi
 [[ "$name" == "tec-register" ]] || { echo "unknown archive $name" >&2; exit 1; }
 mkdir -p "archives/$name"

@@ -210,3 +210,14 @@ def test_s1_the_rns_header_date_is_recorded_as_printed() -> None:
     )
     report = modo.page_report(url="u", path="p", sha256="0" * 64, data=page)
     assert report.dates["text:rns-header"] == ["16 November 2023"]
+
+
+def test_s1_the_period_end_a_document_states_is_recorded_as_printed() -> None:
+    assert (
+        modo.year_end("Results for the year ended 31 October 2024 are set out")
+        == "year ended 31 October 2024"
+    )
+    assert (
+        modo.year_end("Interim results for the period to 30 June 2025") == "period to 30 June 2025"
+    )
+    assert modo.year_end("no period here") is None

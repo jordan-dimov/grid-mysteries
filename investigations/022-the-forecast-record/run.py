@@ -52,6 +52,7 @@ HERE = Path(__file__).parent
 EVIDENCE = HERE / "evidence"
 PLAN = HERE / "ACQUISITION.md"
 AMENDMENT_1 = HERE / "AMENDMENT-1.md"
+AMENDMENT_2 = HERE / "AMENDMENT-2.md"
 DECLARATION = HERE / "DECLARATION.md"
 RUN_INDEX = EVIDENCE / "run-index.json"
 RUN_INDEX_2 = EVIDENCE / "run-index-2.json"
@@ -647,19 +648,24 @@ def schema_pass(name: str, archive: Path, title: str, command: str) -> dict[str,
     return report
 
 
-def schema() -> None:
-    schema_pass(
-        "pages",
-        ARCHIVE_MODO,
-        "Modo Energy public pages pinned by 022",
-        "scripts/schema-report modo-022",
-    )
-    schema_pass(
-        "rns",
-        ARCHIVE_RNS,
-        "Gresham House Energy Storage Fund RNS documents pinned by 022",
-        "scripts/schema-report modo-022",
-    )
+def schema(only: str | None = None) -> None:
+    """Both archives, or one of them (``pages`` or ``rns``): under an
+    amendment that adds a format fact to one side, the other side's report
+    keeps the digest the frozen declaration cites."""
+    if only in (None, "pages"):
+        schema_pass(
+            "pages",
+            ARCHIVE_MODO,
+            "Modo Energy public pages pinned by 022",
+            "scripts/schema-report modo-022",
+        )
+    if only in (None, "rns"):
+        schema_pass(
+            "rns",
+            ARCHIVE_RNS,
+            "Fund RNS documents pinned by 022 (GRID, GSF, HEIT)",
+            "scripts/schema-report modo-022 rns",
+        )
 
 
 def require_declaration_seal(seal: str | None) -> str:
@@ -677,6 +683,21 @@ def require_declaration_seal(seal: str | None) -> str:
     return digest
 
 
+def require_amendment_2_seal(seal: str | None) -> str:
+    digest = sha(AMENDMENT_2)
+    if not seal or len(seal) < MIN_SEAL_LENGTH or not digest.startswith(seal.lower()):
+        raise SystemExit(
+            f"refusing: --amendment-seal must be a prefix (>= {MIN_SEAL_LENGTH} hex) of "
+            f"AMENDMENT-2.md's SHA-256 {digest[:16]}…"
+        )
+    sidecar = AMENDMENT_2.with_name(AMENDMENT_2.name + ".timestamps.json")
+    if not sidecar.exists():
+        raise SystemExit("refusing: AMENDMENT-2.md is not frozen (no proof sidecar)")
+    if json.loads(sidecar.read_text()).get("sha256") != digest:
+        raise SystemExit("refusing: AMENDMENT-2.md has changed since it was frozen")
+    return digest
+
+
 def cited(text: str, path: str) -> str:
     """The SHA-256 the declaration cites for a file, by its path."""
     found = re.search(rf"`{re.escape(path)}`[^`]*?SHA-256\s+`([0-9a-f]{{64}})`", text, re.DOTALL)
@@ -685,9 +706,10 @@ def cited(text: str, path: str) -> str:
     return found.group(1)
 
 
-def check_inputs(text: str) -> dict[str, str]:
+def check_inputs(text: str, amendment_text: str | None = None) -> dict[str, str]:
     """C1: the manifests and the schema reports hash to what the frozen
-    declaration cites; every pinned artefact hashes to its manifest."""
+    declaration cites (the fund report to what amendment 2 cites, when it
+    runs under it); every pinned artefact hashes to its manifest."""
     out = {}
     for label, path in (
         ("pages_manifest_sha256", EVIDENCE / "pages-manifest.json"),
@@ -695,7 +717,10 @@ def check_inputs(text: str) -> dict[str, str]:
         ("schema_modo_sha256", ARCHIVE_MODO / "schema-report.json"),
         ("schema_rns_sha256", ARCHIVE_RNS / "schema-report.json"),
     ):
-        want = cited(text, str(path.relative_to(REPO_ROOT)))
+        source = text
+        if amendment_text and label == "schema_rns_sha256":
+            source = amendment_text
+        want = cited(source, str(path.relative_to(REPO_ROOT)))
         have = sha(path)
         if have != want:
             raise SystemExit(f"refusing (C1): {path.name} hashes to {have[:16]}…, not {want[:16]}…")
@@ -753,11 +778,21 @@ def line_of(row: dict[str, Any]) -> str:
     return json.dumps(json.loads(dumps(row)), separators=(",", ":"))
 
 
-def compute(seal: str | None, run_date: str, *, write: bool) -> None:
+def compute(
+    seal: str | None, run_date: str, *, write: bool, amendment_seal: str | None = None
+) -> None:
     digest = require_declaration_seal(seal)
     rule_version = digest[:8]
     text = DECLARATION.read_text()
-    digests = check_inputs(text)
+    amendment = None
+    amendment_text = None
+    if amendment_seal:
+        amendment = require_amendment_2_seal(amendment_seal)
+        amendment_text = AMENDMENT_2.read_text()
+        rule_version = f"{digest[:8]}.{amendment[:8]}"
+    elif AMENDMENT_2.exists() and AMENDMENT_2.with_name("AMENDMENT-2.md.timestamps.json").exists():
+        raise SystemExit("refusing: amendment 2 is frozen; compute under it with --amendment-seal")
+    digests = check_inputs(text, amendment_text)
     modo_pages = json.loads((ARCHIVE_MODO / "schema-report.json").read_text())["per_page"]
     rns_pages = json.loads((ARCHIVE_RNS / "schema-report.json").read_text())["per_page"]
     result = fr.pipeline(modo_pages, rns_pages, today=date.fromisoformat(run_date))
@@ -839,6 +874,8 @@ def compute(seal: str | None, run_date: str, *, write: bool) -> None:
         "declaration": DECLARATION.name,
         "declaration_sha256": digest,
         "plan_sha256": sha(PLAN),
+        "amendment_2_sha256": amendment,
+        "supersedes_rule_version": digest[:8] if amendment else None,
         "rule_version": rule_version,
         "seal": seal,
         "run_date": run_date,
@@ -872,6 +909,7 @@ def compute(seal: str | None, run_date: str, *, write: bool) -> None:
             "run_date": run_date,
             "computed_at": computed_at,
             "seal": seal,
+            "amendment_seal": amendment_seal,
             "declaration_sha256": digest,
             "rule_version": rule_version,
             "figures_appended": len(new_f),
@@ -905,7 +943,11 @@ def main(argv: list[str] | None = None) -> None:
         help="prefix (>= 8 hex) of ACQUISITION.md's SHA-256 (index, acquire) or of "
         "DECLARATION.md's (check, compute)",
     )
-    parser.add_argument("--amendment-seal", help="prefix of AMENDMENT-1.md's SHA-256")
+    parser.add_argument(
+        "--amendment-seal",
+        help="prefix of AMENDMENT-1.md's SHA-256 (index-2, acquire-2) or of AMENDMENT-2.md's "
+        "(check, compute)",
+    )
     parser.add_argument(
         "--phase",
         choices=(
@@ -921,6 +963,7 @@ def main(argv: list[str] | None = None) -> None:
         required=True,
     )
     parser.add_argument("--run-date", default=date.today().isoformat())
+    parser.add_argument("--only", choices=("pages", "rns"), help="schema: one archive only")
     args = parser.parse_args(argv)
     if args.phase == "index":
         index(args.seal, args.run_date)
@@ -931,11 +974,11 @@ def main(argv: list[str] | None = None) -> None:
     elif args.phase == "acquire-2":
         acquire_2(args.seal, args.amendment_seal)
     elif args.phase == "schema":
-        schema()
+        schema(args.only)
     elif args.phase == "check":
-        compute(args.seal, args.run_date, write=False)
+        compute(args.seal, args.run_date, write=False, amendment_seal=args.amendment_seal)
     elif args.phase == "compute":
-        compute(args.seal, args.run_date, write=True)
+        compute(args.seal, args.run_date, write=True, amendment_seal=args.amendment_seal)
     else:
         render()
 

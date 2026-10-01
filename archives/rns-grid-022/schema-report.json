@@ -1,7 +1,7 @@
 {
  "archive": "rns",
- "title": "Gresham House Energy Storage Fund RNS documents pinned by 022",
- "generated_at": "2026-10-01T16:22:04+00:00",
+ "title": "Fund RNS documents pinned by 022 (GRID, GSF, HEIT)",
+ "generated_at": "2026-10-01T17:05:40+00:00",
  "pdf_text_mode": "pdftotext reading order (no -layout)",
  "pages": 280,
  "figure_strings": 529,
@@ -68,6 +68,7 @@
  },
  "date_fields_present_on_pages": {
   "text:rns-header": 144,
+  "text:period-end": 136,
   "json:dateModified": 112,
   "json:dateCreated": 108,
   "pdf:CreationDate": 18,
@@ -128,7 +129,7 @@
  },
  "flags": {
   "no figure-looking string": 189,
-  "no date declared": 5,
+  "no date declared": 4,
   "under 500 characters of text": 1
  },
  "per_page": [
@@ -145,6 +146,9 @@
     ],
     "json:dateModified": [
      "2026-09-23 07:02:16"
+    ],
+    "text:period-end": [
+     "period ended 30 June 2026"
     ]
    },
    "text_chars": 25688,
@@ -217,6 +221,9 @@
     ],
     "json:dateModified": [
      "2026-09-18 07:02:13"
+    ],
+    "text:period-end": [
+     "six months ended 30 June 2026"
     ]
    },
    "text_chars": 13397,
@@ -252,6 +259,9 @@
     ],
     "json:dateModified": [
      "2026-04-21 07:02:14"
+    ],
+    "text:period-end": [
+     "year ended 31 December 2025"
     ]
    },
    "text_chars": 22520,
@@ -322,6 +332,9 @@
     ],
     "json:dateModified": [
      "2026-04-15 11:24:07"
+    ],
+    "text:period-end": [
+     "12 months ended 31 December 2025"
     ]
    },
    "text_chars": 8166,
@@ -355,6 +368,9 @@
     ],
     "json:dateModified": [
      "2025-09-24 07:02:03"
+    ],
+    "text:period-end": [
+     "period ending 30 June 2025"
     ]
    },
    "text_chars": 25037,
@@ -464,6 +480,9 @@
     ],
     "json:dateModified": [
      "2025-04-23 07:04:03"
+    ],
+    "text:period-end": [
+     "year ended 31 December 2024"
     ]
    },
    "text_chars": 17407,
@@ -532,6 +551,9 @@
     ],
     "json:dateModified": [
      "2024-09-30 07:04:13"
+    ],
+    "text:period-end": [
+     "period ending 30 June 2024"
     ]
    },
    "text_chars": 14346,
@@ -576,6 +598,9 @@
     ],
     "json:dateModified": [
      "2024-09-18 10:02:08"
+    ],
+    "text:period-end": [
+     "half-year ended 30 June 2024"
     ]
    },
    "text_chars": 7993,
@@ -611,6 +636,9 @@
     ],
     "json:dateModified": [
      "2024-04-29 07:02:12"
+    ],
+    "text:period-end": [
+     "year ended 31 December 2023"
     ]
    },
    "text_chars": 16224,
@@ -656,6 +684,9 @@
     ],
     "json:dateModified": [
      "2024-04-24 07:02:11"
+    ],
+    "text:period-end": [
+     "12 months ended 31 December 2023"
     ]
    },
    "text_chars": 8032,
@@ -692,6 +723,9 @@
     ],
     "json:dateModified": [
      "2026-07-15 07:02:14"
+    ],
+    "text:period-end": [
+     "year ended 31 March 2026"
     ]
    },
    "text_chars": 20501,
@@ -782,6 +816,9 @@
     ],
     "json:dateModified": [
      "2026-07-06 07:04:07"
+    ],
+    "text:period-end": [
+     "twelve months ending 31 March 2026"
     ]
    },
    "text_chars": 7969,
@@ -818,6 +855,9 @@
     ],
     "json:dateModified": [
      "2025-12-15 07:02:15"
+    ],
+    "text:period-end": [
+     "period ended 30 September 2025"
     ]
    },
    "text_chars": 125657,
@@ -966,6 +1006,9 @@
     ],
     "json:dateModified": [
      "2025-12-02 07:04:08"
+    ],
+    "text:period-end": [
+     "period ending 30 September 2025"
     ]
    },
    "text_chars": 7833,
@@ -1001,6 +1044,9 @@
     ],
     "json:dateModified": [
      "2025-07-17 07:04:03"
+    ],
+    "text:period-end": [
+     "year ended 31 March 2025"
     ]
    },
    "text_chars": 171415,
@@ -1165,6 +1211,9 @@
     ],
     "json:dateModified": [
      "2024-12-12 07:02:03"
+    ],
+    "text:period-end": [
+     "period ended 30 September 2024"
     ]
    },
    "text_chars": 122918,
@@ -1371,6 +1420,9 @@
     ],
     "json:dateModified": [
      "2024-11-27 07:02:04"
+    ],
+    "text:period-end": [
+     "six months ended 30 September 2024"
     ]
    },
    "text_chars": 7817,
@@ -1406,6 +1458,9 @@
     ],
     "json:dateModified": [
      "2024-07-15 07:02:10"
+    ],
+    "text:period-end": [
+     "year ended 31 March 2024"
     ]
    },
    "text_chars": 208317,
@@ -1717,6 +1772,9 @@
     ],
     "json:dateModified": [
      "2023-12-14 07:02:11"
+    ],
+    "text:period-end": [
+     "six months ended 30 September 2023"
     ]
    },
    "text_chars": 122363,
@@ -2001,6 +2059,9 @@
     ],
     "json:dateModified": [
      "2023-11-16 07:02:10"
+    ],
+    "text:period-end": [
+     "six months ended 30 September 2023"
     ]
    },
    "text_chars": 7759,
@@ -2036,6 +2097,9 @@
     ],
     "json:dateModified": [
      "2023-07-17 07:00:23"
+    ],
+    "text:period-end": [
+     "year ended 31 March 2023"
     ]
    },
    "text_chars": 203883,
@@ -2442,6 +2506,9 @@
    "dates": {
     "text:rns-header": [
      "16 December 2022"
+    ],
+    "text:period-end": [
+     "period to 30 September 2022"
     ]
    },
    "text_chars": 106819,
@@ -2495,6 +2562,9 @@
    "dates": {
     "text:rns-header": [
      "30 November 2022"
+    ],
+    "text:period-end": [
+     "six months ended 30 September 2022"
     ]
    },
    "text_chars": 5582,
@@ -2528,6 +2598,9 @@
     ],
     "pdf:ModDate": [
      "Tue Apr 21 11:41:17 2026 BST"
+    ],
+    "text:period-end": [
+     "year ended 31 December 2025"
     ]
    },
    "text_chars": 372921,
@@ -2828,6 +2901,9 @@
     ],
     "pdf:ModDate": [
      "Tue Sep 22 17:32:08 2026 BST"
+    ],
+    "text:period-end": [
+     "six months ended 30 June 2026"
     ]
    },
    "text_chars": 143129,
@@ -3150,6 +3226,9 @@
     ],
     "pdf:ModDate": [
      "Tue Apr 22 21:57:42 2025 BST"
+    ],
+    "text:period-end": [
+     "year ended 31 December 2024"
     ]
    },
    "text_chars": 384971,
@@ -3434,6 +3513,9 @@
     ],
     "pdf:ModDate": [
      "Fri Apr 26 18:50:19 2024 BST"
+    ],
+    "text:period-end": [
+     "year ended 31 December 2023"
     ]
    },
    "text_chars": 374739,
@@ -3651,6 +3733,9 @@
     ],
     "pdf:ModDate": [
      "Wed Apr  5 23:12:29 2023 BST"
+    ],
+    "text:period-end": [
+     "year ended 31 December 2022"
     ]
    },
    "text_chars": 370433,
@@ -3762,6 +3847,9 @@
     ],
     "pdf:ModDate": [
      "Wed Apr  6 09:26:13 2022 BST"
+    ],
+    "text:period-end": [
+     "year ended 31 December 2021"
     ]
    },
    "text_chars": 331758,
@@ -3995,6 +4083,9 @@
     ],
     "pdf:ModDate": [
      "Tue Apr 27 18:18:34 2021 BST"
+    ],
+    "text:period-end": [
+     "year ended 31 December 2020"
     ]
    },
    "text_chars": 383060,
@@ -4147,6 +4238,9 @@
     ],
     "pdf:ModDate": [
      "Mon Apr 27 06:22:46 2020 BST"
+    ],
+    "text:period-end": [
+     "period to 31 December 2019"
     ]
    },
    "text_chars": 281302,
@@ -4242,6 +4336,9 @@
     ],
     "pdf:ModDate": [
      "Wed Sep 24 09:37:51 2025 BST"
+    ],
+    "text:period-end": [
+     "period ended 30 June 2025"
     ]
    },
    "text_chars": 150200,
@@ -4518,6 +4615,9 @@
     ],
     "pdf:ModDate": [
      "Fri Sep 27 15:45:41 2024 BST"
+    ],
+    "text:period-end": [
+     "period ended 30 June 2024"
     ]
    },
    "text_chars": 176723,
@@ -4724,6 +4824,9 @@
     ],
     "pdf:ModDate": [
      "Wed Sep 27 09:12:21 2023 BST"
+    ],
+    "text:period-end": [
+     "six months to 30 June 2023"
     ]
    },
    "text_chars": 183094,
@@ -4827,6 +4930,9 @@
     ],
     "pdf:ModDate": [
      "Mon Sep 26 12:57:13 2022 BST"
+    ],
+    "text:period-end": [
+     "six months ended 30 June 2022"
     ]
    },
    "text_chars": 150962,
@@ -4979,6 +5085,9 @@
     ],
     "pdf:ModDate": [
      "Fri Sep 17 12:21:08 2021 BST"
+    ],
+    "text:period-end": [
+     "six months ended 30 June 2021"
     ]
    },
    "text_chars": 127038,
@@ -5055,6 +5164,9 @@
     ],
     "pdf:ModDate": [
      "Sat Aug 29 12:09:52 2020 BST"
+    ],
+    "text:period-end": [
+     "period to 30 June 2020"
     ]
    },
    "text_chars": 154929,
@@ -5137,6 +5249,9 @@
     ],
     "pdf:ModDate": [
      "Wed Jan 29 09:47:53 2020 GMT"
+    ],
+    "text:period-end": [
+     "period ended 30 June 2019"
     ]
    },
    "text_chars": 113493,
@@ -5237,6 +5352,9 @@
     ],
     "json:dateModified": [
      "2026-09-02 07:02:10"
+    ],
+    "text:period-end": [
+     "period ended 30 June 2026"
     ]
    },
    "text_chars": 26140,
@@ -5567,6 +5685,9 @@
     ],
     "json:dateModified": [
      "2026-03-04 07:01:38"
+    ],
+    "text:period-end": [
+     "year ended 31 December 2025"
     ]
    },
    "text_chars": 22492,
@@ -5982,6 +6103,9 @@
     ],
     "json:dateModified": [
      "2025-05-09 11:38:02"
+    ],
+    "text:period-end": [
+     "year ended 31 December 2024"
     ]
    },
    "text_chars": 7056,
@@ -6021,6 +6145,9 @@
     ],
     "json:dateModified": [
      "2025-04-11 07:04:03"
+    ],
+    "text:period-end": [
+     "12 months ended 31 December 2024"
     ]
    },
    "text_chars": 8169,
@@ -6057,6 +6184,9 @@
     ],
     "json:dateModified": [
      "2025-03-05 10:02:02"
+    ],
+    "text:period-end": [
+     "year ended 31 December 2024"
     ]
    },
    "text_chars": 6951,
@@ -6093,6 +6223,9 @@
     ],
     "json:dateModified": [
      "2025-03-03 07:01:34"
+    ],
+    "text:period-end": [
+     "year ended 31 December 2024"
     ]
    },
    "text_chars": 22075,
@@ -6513,6 +6646,9 @@
     ],
     "json:dateModified": [
      "2024-05-22 07:02:13"
+    ],
+    "text:period-end": [
+     "period ended 31 March 2024"
     ]
    },
    "text_chars": 13998,
@@ -6615,6 +6751,9 @@
     ],
     "json:dateModified": [
      "2024-04-18 13:58:08"
+    ],
+    "text:period-end": [
+     "year ended 31 December 2023"
     ]
    },
    "text_chars": 23099,
@@ -6805,6 +6944,9 @@
     ],
     "json:dateModified": [
      "2023-11-22 07:01:30"
+    ],
+    "text:period-end": [
+     "period ended 30 September 2023"
     ]
    },
    "text_chars": 12830,
@@ -6868,6 +7010,9 @@
     ],
     "json:dateModified": [
      "2023-09-27 07:01:10"
+    ],
+    "text:period-end": [
+     "period ending 30 June 2023"
     ]
    },
    "text_chars": 15329,
@@ -6916,6 +7061,9 @@
     ],
     "json:dateModified": [
      "2023-09-07 07:01:51"
+    ],
+    "text:period-end": [
+     "period ended 30 June 2023"
     ]
    },
    "text_chars": 21334,
@@ -7056,6 +7204,9 @@
     ],
     "json:dateModified": [
      "2023-05-12 07:00:31"
+    ],
+    "text:period-end": [
+     "period ended 31 March 2023"
     ]
    },
    "text_chars": 12594,
@@ -7098,6 +7249,9 @@
    "dates": {
     "text:rns-header": [
      "14 April 2023"
+    ],
+    "text:period-end": [
+     "year ended 31 December 2022"
     ]
    },
    "text_chars": 13233,
@@ -7135,6 +7289,9 @@
    "dates": {
     "text:rns-header": [
      "06 April 2023"
+    ],
+    "text:period-end": [
+     "year ended 31 December 2022"
     ]
    },
    "text_chars": 349813,
@@ -7276,6 +7433,9 @@
    "dates": {
     "text:rns-header": [
      "14 March 2023"
+    ],
+    "text:period-end": [
+     "financial year ended 31 December 2022"
     ]
    },
    "text_chars": 10888,
@@ -7345,6 +7505,9 @@
    "dates": {
     "text:rns-header": [
      "13 March 2023"
+    ],
+    "text:period-end": [
+     "financial year ended 31 December 2022"
     ]
    },
    "text_chars": 10591,
@@ -7414,6 +7577,9 @@
    "dates": {
     "text:rns-header": [
      "09 November 2022"
+    ],
+    "text:period-end": [
+     "period ended 30 September 2022"
     ]
    },
    "text_chars": 10329,
@@ -7456,6 +7622,9 @@
    "dates": {
     "text:rns-header": [
      "27 September 2022"
+    ],
+    "text:period-end": [
+     "period ending 30 June 2022"
     ]
    },
    "text_chars": 154739,
@@ -7608,6 +7777,9 @@
    "dates": {
     "text:rns-header": [
      "21 September 2022"
+    ],
+    "text:period-end": [
+     "half-year ended 30 June 2022"
     ]
    },
    "text_chars": 6615,
@@ -7750,6 +7922,9 @@
    "dates": {
     "text:rns-header": [
      "25 May 2022"
+    ],
+    "text:period-end": [
+     "financial year to 31 December 2022"
     ]
    },
    "text_chars": 30306,
@@ -7791,6 +7966,9 @@
    "dates": {
     "text:rns-header": [
      "04 May 2022"
+    ],
+    "text:period-end": [
+     "period ended 31 March 2022"
     ]
    },
    "text_chars": 10546,
@@ -7829,6 +8007,9 @@
    "dates": {
     "text:rns-header": [
      "06 April 2022"
+    ],
+    "text:period-end": [
+     "12 months ended 31 December 2021"
     ]
    },
    "text_chars": 331432,
@@ -8117,6 +8298,9 @@
    "dates": {
     "text:rns-header": [
      "10 January 2022"
+    ],
+    "text:period-end": [
+     "year to 31 December 2021"
     ]
    },
    "text_chars": 12105,
@@ -8189,6 +8373,9 @@
    "dates": {
     "text:rns-header": [
      "09 November 2021"
+    ],
+    "text:period-end": [
+     "period ended 30 September 2021"
     ]
    },
    "text_chars": 12997,
@@ -8230,6 +8417,9 @@
    "dates": {
     "text:rns-header": [
      "20 September 2021"
+    ],
+    "text:period-end": [
+     "period ending 30 June 2021"
     ]
    },
    "text_chars": 131457,
@@ -8310,6 +8500,9 @@
    "dates": {
     "text:rns-header": [
      "12 July 2021"
+    ],
+    "text:period-end": [
+     "financial year ending 31 December 2021"
     ]
    },
    "text_chars": 19934,
@@ -8348,6 +8541,9 @@
    "dates": {
     "text:rns-header": [
      "01 July 2021"
+    ],
+    "text:period-end": [
+     "financial year to 31 December 2021"
     ]
    },
    "text_chars": 34610,
@@ -8391,6 +8587,9 @@
    "dates": {
     "text:rns-header": [
      "20 May 2021"
+    ],
+    "text:period-end": [
+     "year ended 31 December 2020"
     ]
    },
    "text_chars": 21220,
@@ -8428,6 +8627,9 @@
    "dates": {
     "text:rns-header": [
      "28 April 2021"
+    ],
+    "text:period-end": [
+     "period ended 31 March 2021"
     ]
    },
    "text_chars": 11959,
@@ -8464,6 +8666,9 @@
    "dates": {
     "text:rns-header": [
      "28 April 2021"
+    ],
+    "text:period-end": [
+     "12 months ended 31 December 2020"
     ]
    },
    "text_chars": 380399,
@@ -8614,6 +8819,9 @@
    "dates": {
     "text:rns-header": [
      "26 April 2021"
+    ],
+    "text:period-end": [
+     "period ending 31 December 2020"
     ]
    },
    "text_chars": 6757,
@@ -8842,6 +9050,9 @@
    "dates": {
     "text:rns-header": [
      "10 November 2020"
+    ],
+    "text:period-end": [
+     "financial year to 31 December 2020"
     ]
    },
    "text_chars": 35738,
@@ -8884,6 +9095,9 @@
    "dates": {
     "text:rns-header": [
      "27 October 2020"
+    ],
+    "text:period-end": [
+     "period ended 30 September 2020"
     ]
    },
    "text_chars": 7339,
@@ -8918,6 +9132,9 @@
    "dates": {
     "text:rns-header": [
      "01 September 2020"
+    ],
+    "text:period-end": [
+     "period ending 30 June 2020"
     ]
    },
    "text_chars": 160598,
@@ -9046,6 +9263,9 @@
    "dates": {
     "text:rns-header": [
      "11 May 2020"
+    ],
+    "text:period-end": [
+     "period ended 31 March 2020"
     ]
    },
    "text_chars": 8945,
@@ -9081,6 +9301,9 @@
    "dates": {
     "text:rns-header": [
      "27 April 2020"
+    ],
+    "text:period-end": [
+     "period ending 31 December 2019"
     ]
    },
    "text_chars": 270674,
@@ -9333,6 +9556,9 @@
    "dates": {
     "text:rns-header": [
      "17 February 2020"
+    ],
+    "text:period-end": [
+     "period ending 30 September 2019"
     ]
    },
    "text_chars": 73639,
@@ -9490,6 +9716,9 @@
    "dates": {
     "text:rns-header": [
      "07 November 2019"
+    ],
+    "text:period-end": [
+     "period ended 30 September 2019"
     ]
    },
    "text_chars": 10082,
@@ -9691,6 +9920,9 @@
    "dates": {
     "text:rns-header": [
      "28 August 2019"
+    ],
+    "text:period-end": [
+     "period ending 30 June 2019"
     ]
    },
    "text_chars": 114334,
@@ -9894,6 +10126,9 @@
    "dates": {
     "text:rns-header": [
      "26 April 2019"
+    ],
+    "text:period-end": [
+     "period to 31 December 2019"
     ]
    },
    "text_chars": 29157,
@@ -9931,6 +10166,9 @@
    "dates": {
     "text:rns-header": [
      "30 January 2019"
+    ],
+    "text:period-end": [
+     "period ended 31 December 2018"
     ]
    },
    "text_chars": 10551,
@@ -9966,6 +10204,9 @@
    "dates": {
     "text:rns-header": [
      "16 November 2018"
+    ],
+    "text:period-end": [
+     "financial year ending 31 December 2019"
     ]
    },
    "text_chars": 11222,
@@ -10004,6 +10245,9 @@
     ],
     "json:dateModified": [
      "2026-09-22 07:02:15"
+    ],
+    "text:period-end": [
+     "year ended 31 March 2026"
     ]
    },
    "text_chars": 9212,
@@ -10461,6 +10705,9 @@
     ],
     "json:dateModified": [
      "2025-06-18 07:04:03"
+    ],
+    "text:period-end": [
+     "twelve months ended 31 March 2025"
     ]
    },
    "text_chars": 15406,
@@ -10645,6 +10892,9 @@
     ],
     "json:dateModified": [
      "2024-06-20 07:01:14"
+    ],
+    "text:period-end": [
+     "year ended 31 March 2024"
     ]
    },
    "text_chars": 16934,
@@ -10732,6 +10982,9 @@
     ],
     "json:dateModified": [
      "2024-05-21 07:02:11"
+    ],
+    "text:period-end": [
+     "12 months ended 31 March 2024"
     ]
    },
    "text_chars": 21520,
@@ -11108,6 +11361,9 @@
     ],
     "json:dateModified": [
      "2024-01-10 07:02:08"
+    ],
+    "text:period-end": [
+     "six months to 30 September 2023"
     ]
    },
    "text_chars": 15067,
@@ -11841,6 +12097,9 @@
     ],
     "json:dateModified": [
      "2023-06-15 07:00:43"
+    ],
+    "text:period-end": [
+     "year ended 31 March 2023"
     ]
    },
    "text_chars": 17730,
@@ -12163,6 +12422,9 @@
    "dates": {
     "text:rns-header": [
      "26 July 2022"
+    ],
+    "text:period-end": [
+     "year ended 31 March 2022"
     ]
    },
    "text_chars": 343660,
@@ -12307,6 +12569,9 @@
    "dates": {
     "text:rns-header": [
      "07 July 2022"
+    ],
+    "text:period-end": [
+     "year ended 31 March 2022"
     ]
    },
    "text_chars": 5708,
@@ -12402,6 +12667,9 @@
    "dates": {
     "text:rns-header": [
      "12 April 2022"
+    ],
+    "text:period-end": [
+     "period to 31 March 2022"
     ]
    },
    "text_chars": 12912,
@@ -12598,6 +12866,9 @@
    "dates": {
     "text:rns-header": [
      "20 December 2021"
+    ],
+    "text:period-end": [
+     "period to 30 September 2021"
     ]
    },
    "text_chars": 82274,
@@ -12669,6 +12940,9 @@
    "dates": {
     "text:rns-header": [
      "08 December 2021"
+    ],
+    "text:period-end": [
+     "six months ended 30 September 2021"
     ]
    },
    "text_chars": 6085,
@@ -12934,6 +13208,9 @@
    "dates": {
     "text:rns-header": [
      "07 September 2021"
+    ],
+    "text:period-end": [
+     "year ending 31 March 2021"
     ]
    },
    "text_chars": 6707,
@@ -12967,6 +13244,9 @@
    "dates": {
     "text:rns-header": [
      "24 August 2021"
+    ],
+    "text:period-end": [
+     "year ended 31 March 2021"
     ]
    },
    "text_chars": 7066,
@@ -13001,6 +13281,9 @@
    "dates": {
     "text:rns-header": [
      "15 July 2021"
+    ],
+    "text:period-end": [
+     "year ended 31 March 2021"
     ]
    },
    "text_chars": 164164,
@@ -13082,6 +13365,9 @@
    "dates": {
     "text:rns-header": [
      "30 June 2021"
+    ],
+    "text:period-end": [
+     "year ended 31 March 2021"
     ]
    },
    "text_chars": 5998,
@@ -13287,6 +13573,9 @@
    "dates": {
     "text:rns-header": [
      "18 December 2020"
+    ],
+    "text:period-end": [
+     "period to 30 September 2020"
     ]
    },
    "text_chars": 69411,
@@ -13352,6 +13641,9 @@
    "dates": {
     "text:rns-header": [
      "14 December 2020"
+    ],
+    "text:period-end": [
+     "period to 30 September 2020"
     ]
    },
    "text_chars": 13511,
@@ -13452,6 +13744,9 @@
    "dates": {
     "text:rns-header": [
      "30 November 2020"
+    ],
+    "text:period-end": [
+     "period to 30 September 2020"
     ]
    },
    "text_chars": 35088,
@@ -13528,6 +13823,9 @@
    "dates": {
     "text:rns-header": [
      "24 September 2020"
+    ],
+    "text:period-end": [
+     "year ending 30 March 2020"
     ]
    },
    "text_chars": 7661,
@@ -13561,6 +13859,9 @@
    "dates": {
     "text:rns-header": [
      "16 July 2020"
+    ],
+    "text:period-end": [
+     "period ending 31 March 2020"
     ]
    },
    "text_chars": 214301,
@@ -13828,6 +14129,9 @@
    "dates": {
     "text:rns-header": [
      "04 February 2020"
+    ],
+    "text:period-end": [
+     "financial year ending 31 March 2020"
     ]
    },
    "text_chars": 20372,
@@ -13894,6 +14198,9 @@
    "dates": {
     "text:rns-header": [
      "12 December 2019"
+    ],
+    "text:period-end": [
+     "six months ended 30 September 2019"
     ]
    },
    "text_chars": 112030,
@@ -13975,6 +14282,9 @@
    "dates": {
     "text:rns-header": [
      "10 October 2019"
+    ],
+    "text:period-end": [
+     "financial year ending 31 March 2020"
     ]
    },
    "text_chars": 20989,
@@ -14042,6 +14352,9 @@
    "dates": {
     "text:rns-header": [
      "14 August 2019"
+    ],
+    "text:period-end": [
+     "period ended 31 March 2019"
     ]
    },
    "text_chars": 16300,
@@ -14177,6 +14490,9 @@
    "dates": {
     "text:rns-header": [
      "16 July 2019"
+    ],
+    "text:period-end": [
+     "period ended 31 March 2019"
     ]
    },
    "text_chars": 5655,
@@ -14249,6 +14565,9 @@
    "dates": {
     "text:rns-header": [
      "05 June 2019"
+    ],
+    "text:period-end": [
+     "financial year ended 31 March 2020"
     ]
    },
    "text_chars": 131640,
@@ -14361,6 +14680,9 @@
    "dates": {
     "text:rns-header": [
      "09 November 2018"
+    ],
+    "text:period-end": [
+     "period to 30 September 2018"
     ]
    },
    "text_chars": 95689,
@@ -14411,6 +14733,9 @@
    "dates": {
     "text:rns-header": [
      "05 November 2018"
+    ],
+    "text:period-end": [
+     "period ended 30 September 2018"
     ]
    },
    "text_chars": 4707,
@@ -14653,6 +14978,9 @@
     ],
     "json:dateModified": [
      "2025-02-26 08:08:02"
+    ],
+    "text:period-end": [
+     "12 months to 31 October 2024"
     ]
    },
    "text_chars": 15953,
@@ -14799,6 +15127,9 @@
     ],
     "json:dateModified": [
      "2025-02-26 07:01:41"
+    ],
+    "text:period-end": [
+     "12 months to 31 October 2024"
     ]
    },
    "text_chars": 15546,
@@ -14945,6 +15276,9 @@
     ],
     "json:dateModified": [
      "2025-02-26 07:02:03"
+    ],
+    "text:period-end": [
+     "Financial Year Ended 31 October 2024"
     ]
    },
    "text_chars": 161760,
@@ -15148,6 +15482,9 @@
     ],
     "json:dateModified": [
      "2025-02-20 07:02:03"
+    ],
+    "text:period-end": [
+     "year ended 31 October 2024"
     ]
    },
    "text_chars": 8314,
@@ -15509,6 +15846,9 @@
     ],
     "json:dateModified": [
      "2024-06-27 07:04:09"
+    ],
+    "text:period-end": [
+     "period ended 30 April 2024"
     ]
    },
    "text_chars": 9408,
@@ -15545,6 +15885,9 @@
     ],
     "json:dateModified": [
      "2024-06-20 07:02:09"
+    ],
+    "text:period-end": [
+     "period ended 30 April 2024"
     ]
    },
    "text_chars": 6861,
@@ -15672,6 +16015,9 @@
     ],
     "json:dateModified": [
      "2024-04-18 07:02:12"
+    ],
+    "text:period-end": [
+     "period ended 15 April 2024"
     ]
    },
    "text_chars": 11747,
@@ -15897,6 +16243,9 @@
     ],
     "json:dateModified": [
      "2024-02-28 07:02:11"
+    ],
+    "text:period-end": [
+     "Financial Year Ended 31 October 2023"
     ]
    },
    "text_chars": 184663,
@@ -16116,6 +16465,9 @@
     ],
     "json:dateModified": [
      "2024-02-22 07:02:11"
+    ],
+    "text:period-end": [
+     "year ended 31 October 2023"
     ]
    },
    "text_chars": 13590,
@@ -16222,6 +16574,9 @@
     ],
     "json:dateModified": [
      "2024-02-02 07:02:08"
+    ],
+    "text:period-end": [
+     "year ended 31 October 2023"
     ]
    },
    "text_chars": 15910,
@@ -16362,6 +16717,9 @@
     ],
     "json:dateModified": [
      "2023-06-28 07:00:37"
+    ],
+    "text:period-end": [
+     "period ended 30 April 2023"
     ]
    },
    "text_chars": 116390,
@@ -16456,6 +16814,9 @@
     ],
     "json:dateModified": [
      "2023-06-06 07:01:25"
+    ],
+    "text:period-end": [
+     "period ended 30 April 2023"
     ]
    },
    "text_chars": 6881,
@@ -16663,6 +17024,9 @@
    "dates": {
     "text:rns-header": [
      "23 February 2023"
+    ],
+    "text:period-end": [
+     "Financial Year Ended 31 October 2022"
     ]
    },
    "text_chars": 141957,
@@ -16877,6 +17241,9 @@
    "dates": {
     "text:rns-header": [
      "20 February 2023"
+    ],
+    "text:period-end": [
+     "period to 31 January 2023"
     ]
    },
    "text_chars": 13669,
@@ -16928,6 +17295,9 @@
    "dates": {
     "text:rns-header": [
      "14 February 2023"
+    ],
+    "text:period-end": [
+     "period ended 31 October 2022"
     ]
    },
    "text_chars": 5328,
@@ -16959,6 +17329,9 @@
    "dates": {
     "text:rns-header": [
      "26 January 2023"
+    ],
+    "text:period-end": [
+     "period to 31 January 2023"
     ]
    },
    "text_chars": 16677,
@@ -17183,6 +17556,9 @@
    "dates": {
     "text:rns-header": [
      "22 August 2022"
+    ],
+    "text:period-end": [
+     "period ended 31 July 2022"
     ]
    },
    "text_chars": 10871,
@@ -17241,6 +17617,9 @@
    "dates": {
     "text:rns-header": [
      "01 August 2022"
+    ],
+    "text:period-end": [
+     "period ended 31 July 2022"
     ]
    },
    "text_chars": 9496,
@@ -17276,6 +17655,9 @@
    "dates": {
     "text:rns-header": [
      "07 July 2022"
+    ],
+    "text:period-end": [
+     "year ending 31 October 2022"
     ]
    },
    "text_chars": 98407,
@@ -17427,6 +17809,9 @@
    "dates": {
     "text:rns-header": [
      "04 July 2022"
+    ],
+    "text:period-end": [
+     "year ending 31 October 2022"
     ]
    },
    "text_chars": 98167,
@@ -17578,6 +17963,9 @@
    "dates": {
     "text:rns-header": [
      "28 June 2022"
+    ],
+    "text:period-end": [
+     "period ended 30 April 2022"
     ]
    },
    "text_chars": 5179,
@@ -17608,6 +17996,9 @@
    "dates": {
     "text:rns-header": [
      "23 May 2022"
+    ],
+    "text:period-end": [
+     "period ended 31 January 2022"
     ]
    },
    "text_chars": 10899,
@@ -17646,6 +18037,9 @@
    "dates": {
     "text:rns-header": [
      "22 February 2022"
+    ],
+    "text:period-end": [
+     "period ended 31 January 2022"
     ]
    },
    "text_chars": 9102,
@@ -17684,6 +18078,9 @@
    "dates": {
     "text:rns-header": [
      "19 January 2022"
+    ],
+    "text:period-end": [
+     "period to 31 January 2022"
     ]
    },
    "text_chars": 8225,
@@ -17756,6 +18153,9 @@
     ],
     "json:dateModified": [
      "2025-10-09T11:36:34+00:00"
+    ],
+    "text:period-end": [
+     "year to 31 December 2024"
     ]
    },
    "text_chars": 12988,
@@ -17939,6 +18339,9 @@
     ],
     "pdf:ModDate": [
      "Tue May 24 23:09:06 2022 BST"
+    ],
+    "text:period-end": [
+     "year ended 31 December 2021"
     ]
    },
    "text_chars": 640110,
@@ -18003,6 +18406,9 @@
     ],
     "pdf:ModDate": [
      "Fri Apr 14 10:09:33 2023 BST"
+    ],
+    "text:period-end": [
+     "financial year ended 31 December 2022"
     ]
    },
    "text_chars": 14297,
@@ -18121,7 +18527,11 @@
    "bytes": 39410,
    "format": "html",
    "title": "Gore Street Energy Storage Fund plc | Publication of the FY25/26 ESG and Sustainability Report",
-   "dates": {},
+   "dates": {
+    "text:period-end": [
+     "year ended 31 March 2026"
+    ]
+   },
    "text_chars": 10396,
    "figures": [],
    "figure_shapes": {},
@@ -18139,7 +18549,6 @@
     "2026": 5
    },
    "flags": [
-    "no date declared",
     "no figure-looking string"
    ]
   }

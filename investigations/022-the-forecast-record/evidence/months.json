@@ -1,5 +1,5 @@
 {
- "rule_version": "b8e6d53b",
+ "rule_version": "b8e6d53b.3d937633",
  "detail": [
   {
    "scope": "1h",
@@ -55,7 +55,7 @@
     "39000",
     "46000",
     "37500",
-    "58000",
+    "50300",
     "52000",
     "84000"
    ],
@@ -67,7 +67,7 @@
     "https://modoenergy.com/research/en/gb-battery-energy-storage-operations-july-24-benchmark-revenues-balancing-reserve",
     "https://modoenergy.com/research/en/gb-battery-energy-storage-revenue-august-2024-benchmark-balancing-mechanism",
     "https://modoenergy.com/research/en/gb-battery-energy-storage-operations-september-2024-benchmark-balancing-mechanism",
-    "https://modoenergy.com/research/en/battery-energy-storage-research-roundup-great-britain-october-2024-revenues-buildout-forecast-capex-winter",
+    "https://modoenergy.com/research/en/battery-energy-storage-revenue-operations-gb-october-2024-balancing-mechanism-strategy",
     "https://modoenergy.com/research/en/battery-energy-storage-revenue-operations-gb-november-2024-great-britain-balancing-mechanism-strategy-wholesale-dynamic-regulation",
     "https://modoenergy.com/research/en/battery-energy-storage-revenues-december-benchmark-gb-2024-quick-reserve"
    ],
@@ -178,14 +178,9 @@
    "scope": "fleet",
    "year": 2024,
    "month": 10,
-   "read": "58000",
-   "read_from": "https://modoenergy.com/research/en/battery-energy-storage-research-roundup-great-britain-october-2024-revenues-buildout-forecast-capex-winter",
+   "read": "50300",
+   "read_from": "https://modoenergy.com/research/en/battery-energy-storage-revenue-operations-gb-october-2024-balancing-mechanism-strategy",
    "others": [
-    {
-     "value": "50300",
-     "page": "https://modoenergy.com/research/en/battery-energy-storage-revenue-operations-gb-october-2024-balancing-mechanism-strategy",
-     "published_on": "2024-11-19"
-    },
     {
      "value": "58000",
      "page": "https://modoenergy.com/research/en/battery-energy-storage-revenues-october-2024-gb-high-power-prices",

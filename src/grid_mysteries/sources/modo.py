@@ -299,6 +299,21 @@ RNS_HEADER_RE = re.compile(
 )
 
 
+YEAR_END_RE = re.compile(
+    r"\b((?:financial year|year|period|twelve months|12 months|half[- ]year|six months)\s+"
+    r"(?:ended|ending|to)\s+\d{1,2}\s+[A-Z][a-z]+\s+20\d\d)\b",
+    re.IGNORECASE,
+)
+
+
+def year_end(text: str) -> str | None:
+    """S1 (amendment 2): the first period a document states with its end
+    (`year ended 31 October 2024`, `period to 30 June 2025`), as printed,
+    so that a fund's own financial year is a fact of the page."""
+    m = YEAR_END_RE.search(text)
+    return m.group(1) if m else None
+
+
 def rns_header_date(text: str) -> str | None:
     """S1: the date an RNS announcement page prints in its header, the
     first `D Month YYYY` line within three lines after `RNS Number :`, as
@@ -454,6 +469,9 @@ def page_report(*, url: str, path: str, sha256: str, data: bytes) -> PageReport:
         header = rns_header_date(text)
         if header:
             dates["text:rns-header"] = [header]
+    ends = year_end(text)
+    if ends:
+        dates["text:period-end"] = [ends]
     figures = figure_strings(text)
     report = PageReport(
         url=url,

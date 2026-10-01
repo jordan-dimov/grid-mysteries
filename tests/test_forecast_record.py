@@ -724,3 +724,109 @@ def test_rr0_the_same_figure_in_an_rns_and_its_report_of_one_day_is_one_publicat
     kept, duplicates = fr.dedupe_same_day([b, a, c])
     assert sorted(f.figure_id for f in kept) == ["b", "c"]  # the first by URL is kept
     assert duplicates == [{"figure_id": "a", "same_as": "b", "url": "https://x/rns"}]
+
+
+def test_rr5x_a_bracketed_month_or_a_high_or_low_is_not_an_annual_figure() -> None:
+    pdf = page(
+        [
+            (
+                "£91k/MW/yr",
+                "The portfolio closed the year with highs and lows in 2024 of £91k/MW/yr "
+                "(December) and £33k/MW/yr (February).",
+            ),
+            ("£60k/MW/year", "Batteries in Great Britain earned £60k/MW/year (May) again."),
+        ],
+        fmt="pdf (pdftotext reading order (no -layout))",
+        published="",
+        url="https://greshamhouse.com/x.pdf",
+    )
+    pdf["dates"] = {"pdf:CreationDate": ["Tue Apr 22 16:08:17 2025 BST"]}
+    got = fr.read_page(pdf, publisher="GRID (fund RNS)", portfolio_scope="GRID portfolio")
+    assert got[0].rule == "R-R5 a high or a low, not a period figure"
+    assert got[1].rule == "R-R5 a fund figure dated by a month, not a calendar year"
+    modo = page(
+        [("£60k/MW/year", "Batteries in Great Britain earned £60k/MW/year (May).")],
+        title="A page",
+        published="2025-06-09T10:00:00+0000",
+    )
+    read = fr.read_page(modo, publisher="Modo Energy")[0]
+    assert read.monthly == (2025, 5, Decimal("60000"), "fleet")
+
+
+def test_rr5f2_a_funds_financial_year_outturn_is_its_own_period() -> None:
+    results = page(
+        [
+            (
+                "£58.2k/MW/Yr",
+                "Total net revenue generation for the Period was £10.9 million (£58.2k/MW/Yr).",
+            ),
+            ("£71k/MW/Yr", "The first quarter of FY 2024/25 (£71k/MW/Yr) was stronger."),
+        ],
+        url="https://www.investegate.co.uk/announcement/rns/x--heit/results/1",
+        title="Results for Financial Year Ended 31 October 2024 | Company Announcement",
+        published="2025-03-03T07:00:00",
+    )
+    results["dates"]["text:period-end"] = ["year ended 31 October 2024"]
+    got = fr.read_page(results, publisher="HEIT (fund RNS)", portfolio_scope="HEIT portfolio")
+    assert got[0].rule == "R-R5 financial-year outturn, basis realised (amendment 2)"
+    f = got[0].figure
+    assert f is not None and f.period_label == "year to 2024-10-31"
+    assert f.period_end_date == date(2024, 10, 31)
+    assert (f.period_start, f.period_end) == (2023, 2024) and not f.is_calendar
+    assert got[1].rule == "R-R5 a partial period (half, quarter, season or to date)"
+    interim = dict(results, title="Interim Results | Investegate")
+    interim["dates"] = {
+        "json:dateCreated": ["2024-07-01"],
+        "text:period-end": ["period to 30 April 2024"],
+    }
+    first = fr.read_page(interim, publisher="HEIT (fund RNS)", portfolio_scope="HEIT portfolio")[0]
+    assert first.rule == "R-R5 a fund figure for a stated period that is not a year (listed)"
+    assert fr.realised_index([f]) == {}  # never enters the calendar index
+
+
+def test_rm2_a_funds_assumption_meets_its_own_financial_year_outturn_as_a_period_mismatch() -> None:
+    assumption = fig(
+        "a",
+        "forecast",
+        "HEIT portfolio-excl-cm",
+        "123000",
+        2024,
+        published=date(2023, 5, 23),
+        publisher="HEIT",
+    )
+    outturn = fr.Figure(
+        figure_id="o",
+        publisher="HEIT",
+        published_on=date(2025, 3, 3),
+        source_url="https://x/results",
+        source_sha256="0" * 64,
+        basis="realised",
+        scope="HEIT portfolio",
+        value=Decimal("58200"),
+        period_start=2023,
+        period_end=2024,
+        as_printed="£58.2k/MW/Yr",
+        period_label="year to 2024-10-31",
+        period_end_date=date(2024, 10, 31),
+    )
+    rows = fr.comparisons(REALISED + [assumption, outturn], today=TODAY)
+    row = rows[0]
+    assert row.status == "period mismatch"
+    assert row.realised == Decimal("58200") and row.realised_period == "year to 2024-10-31"
+    assert row.signed_error is None
+    assert "10 of 12 months overlap" in row.note and "nothing adjusted" in row.note
+    assert "Capacity Market qualifier" in row.note and "fleet outturn for 2024 is 55000" in row.note
+    assert fr.overlap_months(2024, date(2024, 10, 31)) == 10
+    assert fr.overlap_months(2025, date(2025, 3, 31)) == 3
+    assert fr.scorable_vintages(rows) == {}
+    in_year = fig(
+        "b",
+        "forecast",
+        "HEIT portfolio-excl-cm",
+        "121000",
+        2023,
+        published=date(2023, 5, 23),
+        publisher="HEIT",
+    )
+    rows2 = fr.comparisons([in_year, outturn], today=TODAY)
+    assert rows2[0].status == "in-year, never scored" and "listed, not compared" in rows2[0].note

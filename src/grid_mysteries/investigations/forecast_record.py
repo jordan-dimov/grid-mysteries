@@ -22,12 +22,14 @@ import re
 from collections import Counter, defaultdict
 from collections.abc import Callable
 from dataclasses import dataclass
-from datetime import date
+from datetime import date, timedelta
 from decimal import ROUND_HALF_EVEN, Decimal
 from typing import Literal
 
 Basis = Literal["forecast", "realised", "potential"]
-Status = Literal["scored", "scope mismatch", "not yet scorable", "in-year, never scored"]
+Status = Literal[
+    "scored", "scope mismatch", "period mismatch", "not yet scorable", "in-year, never scored"
+]
 
 PCT_QUANTUM = Decimal("0.1")
 GBP_QUANTUM = Decimal("1")
@@ -51,6 +53,12 @@ class Figure:
     period_end: int
     as_printed: str
     cited_source: str | None = None
+    period_label: str = ""  # amendment 2: "year to 2024-10-31" for a financial year
+    period_end_date: date | None = None  # set only for a financial-year figure
+
+    @property
+    def is_calendar(self) -> bool:
+        return self.period_end_date is None
 
     def __post_init__(self) -> None:
         if self.period_end < self.period_start:
@@ -91,6 +99,7 @@ class Comparison:
     absolute_error_pct: Decimal | None
     scorable_after: date | None
     note: str
+    realised_period: str = ""  # amendment 2: the outturn's own period when not a calendar year
 
 
 # -------------------------------------------------------------- the rules
@@ -109,9 +118,24 @@ def realised_index(figures: list[Figure]) -> dict[tuple[str, int], list[Figure]]
     say) are all kept; R-S3 decides which is read."""
     out: dict[tuple[str, int], list[Figure]] = defaultdict(list)
     for f in figures:
-        if f.basis == "realised" and f.single_year:
+        if f.basis == "realised" and f.single_year and f.is_calendar:
             out[(f.scope, f.period_start)].append(f)
     return out
+
+
+def financial_years(figures: list[Figure]) -> dict[str, list[Figure]]:
+    """R-M2 (amendment 2): a fund's own financial-year outturns, by publisher."""
+    out: dict[str, list[Figure]] = defaultdict(list)
+    for f in figures:
+        if f.basis == "realised" and f.period_end_date is not None:
+            out[f.publisher].append(f)
+    return out
+
+
+def overlap_months(year: int, end: date) -> int:
+    """Months of the twelve ending at ``end`` that fall in calendar ``year``."""
+    months = [((end.year * 12 + end.month - 1 - k) // 12) for k in range(12)]
+    return sum(1 for y in months if y == year)
 
 
 def realised_for(
@@ -141,7 +165,11 @@ def mean(values: list[Decimal]) -> Decimal:
 
 
 def compare(
-    forecast: Figure, index: dict[tuple[str, int], list[Figure]], *, today: date
+    forecast: Figure,
+    index: dict[tuple[str, int], list[Figure]],
+    *,
+    today: date,
+    fy: dict[str, list[Figure]] | None = None,
 ) -> Comparison:
     """R-C: forecast minus realised, signed and absolute, in GBP per MW per
     year and as a percentage of the realised figure; one row per forecast
@@ -160,6 +188,7 @@ def compare(
         signed_pct: Decimal | None = None,
         scorable_after: date | None = None,
         note: str = "",
+        realised_period: str = "",
     ) -> Comparison:
         return Comparison(
             forecast_id=forecast.figure_id,
@@ -178,14 +207,45 @@ def compare(
             absolute_error_pct=abs(signed_pct) if signed_pct is not None else None,
             scorable_after=scorable_after,
             note=note,
+            realised_period=realised_period,
         )
+
+    def own_outturn() -> tuple[Figure, int] | None:
+        """R-M2: the same publisher's financial-year outturn overlapping the
+        forecast's calendar period most, with the overlap in months."""
+        best: tuple[Figure, int] | None = None
+        for f in (fy or {}).get(forecast.publisher, []):
+            if f.period_end_date is None:
+                continue
+            months = sum(overlap_months(y, f.period_end_date) for y in forecast.years)
+            if months and (best is None or months > best[1]):
+                best = (f, months)
+        return best
+
+    def fleet_beside(years_: list[int]) -> str:
+        reads = [realised_for("fleet", y, index) for y in years_]
+        if all(reads):
+            values = [r.value for r in reads if r is not None]
+            return (
+                f"; the fleet outturn for {', '.join(map(str, years_))} is "
+                f"{values[0] if len(values) == 1 else mean(values)} (a scope mismatch)"
+            )
+        return ""
 
     years = eligible_years(forecast)
     if len(years) < len(forecast.years):
         # Some year of the period had begun when the figure was published.
+        own = own_outturn()
+        beside = (
+            f"; the fund's own outturn for the {own[0].period_label} is {own[0].value} "
+            f"({own[1]} of 12 months overlap), listed, not compared"
+            if own
+            else ""
+        )
         return row(
             "in-year, never scored",
-            note=f"published {forecast.published_on.isoformat()}, inside the period it covers",
+            note=f"published {forecast.published_on.isoformat()}, inside the period it covers"
+            + beside,
         )
     same_scope = [realised_for(forecast.scope, y, index) for y in years]
     if all(same_scope):
@@ -200,6 +260,28 @@ def compare(
             signed=(forecast.value - realised).quantize(GBP_QUANTUM, rounding=ROUND_HALF_EVEN),
             signed_pct=pct(forecast.value - realised, realised),
             note="mean of the realised years" if len(values) > 1 else "",
+        )
+    own = own_outturn()
+    if own:
+        outturn, months = own
+        qualifier = ""
+        if outturn.scope != forecast.scope:
+            qualifier = (
+                f"; the forecast's scope is {forecast.scope!r} and the outturn's {outturn.scope!r}"
+                " (a Capacity Market qualifier the outturn does not state is not assumed)"
+            )
+        period = ", ".join(str(y) for y in forecast.years)
+        return row(
+            "period mismatch",
+            realised=outturn.value,
+            realised_ids=(outturn.figure_id,),
+            realised_scope=outturn.scope,
+            realised_period=outturn.period_label,
+            note=(
+                f"the fund's own outturn for the {outturn.period_label} against its assumption "
+                f"for calendar {period}: {months} of 12 months overlap; both printed, nothing "
+                f"adjusted{qualifier}{fleet_beside(years)}"
+            ),
         )
     # R-M: the fleet outturn first, then the other scopes by name
     other_scopes = sorted(
@@ -238,6 +320,7 @@ def compare(
 def comparisons(figures: list[Figure], *, today: date) -> list[Comparison]:
     """Every forecast figure, one row each, in publication order."""
     index = realised_index(figures)
+    fy = financial_years(figures)
     forecasts = sorted(
         (f for f in figures if f.basis == "forecast"),
         key=lambda f: (
@@ -249,7 +332,7 @@ def comparisons(figures: list[Figure], *, today: date) -> list[Comparison]:
             f.figure_id,
         ),
     )
-    return [compare(f, index, today=today) for f in forecasts]
+    return [compare(f, index, today=today, fy=fy) for f in forecasts]
 
 
 # -------------------------------------------------------- propositions
@@ -624,6 +707,25 @@ CITED_SOURCES = (
 )
 #: A7(iii): reading-order PDF text glues a page's furniture into a
 #: sentence; such a sentence is declined.
+#: Amendment 2, R-R5(x): a clause stating a high or a low is an extreme,
+#: not a period figure; a month in brackets right after a figure dates it.
+EXTREME_RE = re.compile(
+    r"highs and lows|high of|low of|\bpeak|record high|record low|highest|lowest", re.IGNORECASE
+)
+BRACKET_MONTH_RE = re.compile(rf"^\s*\((?:{MONTH_RE})\)", re.IGNORECASE)
+#: Amendment 2, R-R5(f2): a fund's own financial year.
+PERIOD_WORD_RE = re.compile(
+    r"\b(?:for|over|during|in|throughout)\s+the\s+(?:period|year|financial year)\b", re.IGNORECASE
+)
+PERIOD_END_RE = re.compile(
+    r"^(?P<kind>financial year|year|period|twelve months|12 months|half[- ]year|six months)\s+"
+    r"(?:ended|ending|to)\s+(?P<day>\d{1,2})\s+(?P<month>[A-Z][a-z]+)\s+(?P<year>20\d\d)$",
+    re.IGNORECASE,
+)
+FULL_YEAR_TITLE_RE = re.compile(
+    r"financial year|final results|full[- ]year|annual results|annual report|year ended",
+    re.IGNORECASE,
+)
 FURNITURE_WORDS = (
     "annual report",
     "interim report",
@@ -675,7 +777,7 @@ ANNUAL_RE = re.compile(
     r"(?:the (?:whole|full|calendar) year\s+)?(?P<year>20[2-5]\d)\b"
     r"|\b(?:the\s+)?(?P<year2>20[2-5]\d)\s+"
     r"(?:average|revenues?|merchant|calendar year|as a whole)\b"
-    r"|\bFY\s?(?P<year3>20[2-5]\d)\b"
+    r"|\bFY\s?(?P<year3>20[2-5]\d)\b(?!/)"
     r"|\baverage\s+(?P<year4>20[2-5]\d)\s+revenues\b",
     re.IGNORECASE,
 )
@@ -686,10 +788,11 @@ END_YEAR_RE = re.compile(
     r"\b(?:by|at the end of|by the end of|in|for)\s+(?P<year>20[2-5]\d)\b", re.IGNORECASE
 )
 PARTIAL_RE = re.compile(
-    r"\b(?:h[12]\s+20\d\d|q[1-4](?:\s+20\d\d)?|first half|second half|half[- ]year|winter|summer|"
+    r"\b(?:h[12]\s+20\d\d|q[1-4](?:\s+20\d\d)?|(?:first|second|third|fourth|last) quarter|"
+    r"quarter ended|first half|second half|half[- ]year|winter|summer|"
     r"so far|to date|year to date|last (?:four|six|twelve|12|two|three) (?:months|years)|"
     r"past (?:two|three) years|the three months|four months prior|(?:this|last) winter|"
-    rf"(?:{MONTH_RE})\s+(?:to|through|-)\s+(?:{MONTH_RE})|the period|the reporting period|"
+    rf"(?:{MONTH_RE})\s+(?:to|through|-)\s+(?:{MONTH_RE})|the reporting period|"
     r"the year's average|this year|last year|the year to)\b",
     re.IGNORECASE,
 )
@@ -1010,6 +1113,9 @@ def read_page(page: dict, *, publisher: str, portfolio_scope: str | None = None)
         if CHANGE_RE.search(clause):
             out.append(declined(f, "R-R2 a change, not a level"))
             continue
+        if EXTREME_RE.search(clause):
+            out.append(declined(f, "R-R5 a high or a low, not a period figure"))
+            continue
         if STARTING_POINT_RE.search(sentence[max(0, at - 16) : at + 1]):
             out.append(declined(f, "R-R2 the starting point of a stated change, not its level"))
             continue
@@ -1037,7 +1143,65 @@ def read_page(page: dict, *, publisher: str, portfolio_scope: str | None = None)
             out.append(declined(f, "R-R3 no population named in the clause"))
             continue
         candidates = periods_in(sentence, published=published, page_month=page_month)
+        bracket = BRACKET_MONTH_RE.match(sentence[at + printed_len :])
+        if bracket:
+            mo = MONTHS[bracket.group(0).strip("() ").lower()]
+            anchor = page_month or (published.year, published.month)
+            y = anchor[0] if mo <= anchor[1] else anchor[0] - 1
+            candidates = [Period("month", y, y, mo, at + printed_len)]
         in_clause = [c for c in candidates if clause_at <= c.at < clause_at + len(clause)]
+        stated = (page.get("dates") or {}).get("text:period-end")
+        if (
+            portfolio_scope
+            and not in_clause
+            and not fund_cited
+            and not bracket
+            and stated
+            and PERIOD_WORD_RE.search(clause)
+        ):
+            m_end = PERIOD_END_RE.match(stated[0].strip())
+            kind = m_end.group("kind").lower() if m_end else ""
+            is_year = kind in ("financial year", "year", "twelve months", "12 months") or (
+                kind == "period" and bool(FULL_YEAR_TITLE_RE.search(title))
+            )
+            if m_end and is_year:
+                end = date(
+                    int(m_end.group("year")),
+                    MONTHS[m_end.group("month").lower()],
+                    int(m_end.group("day")),
+                )
+                out.append(
+                    Reading(
+                        url,
+                        sha,
+                        published,
+                        printed,
+                        sentence,
+                        "R-R5 financial-year outturn, basis realised (amendment 2)",
+                        "figure",
+                        figure=Figure(
+                            figure_id=f"{sha[:12]}:{f['offset']}",
+                            publisher=publisher,
+                            published_on=published,
+                            source_url=url,
+                            source_sha256=sha,
+                            basis="realised",
+                            scope=scope,
+                            value=value,
+                            period_start=(end - timedelta(days=364)).year,
+                            period_end=end.year,
+                            as_printed=printed,
+                            period_label=f"year to {end.isoformat()}",
+                            period_end_date=end,
+                        ),
+                        offset=f["offset"],
+                    )
+                )
+                continue
+            out.append(
+                declined(f, "R-R5 a fund figure for a stated period that is not a year (listed)")
+            )
+            continue
         if in_clause:
             period = nearest(in_clause, at, printed_len)
         elif portfolio_scope:

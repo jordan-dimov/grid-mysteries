@@ -3,23 +3,25 @@
  "declaration": "DECLARATION.md",
  "declaration_sha256": "b8e6d53bf8e2529ac6caeaf419eb419b76c5f9f12927d647778f382cdd19d2e5",
  "plan_sha256": "962cb9b5db8d33a7ae14fe3b516dd5f999936911040316a4fcc03e8aeeb0e188",
- "rule_version": "b8e6d53b",
+ "amendment_2_sha256": "3d937633926a194d904e150f69e5ca877c83c4494949154fd63254d5a765d94d",
+ "supersedes_rule_version": "b8e6d53b",
+ "rule_version": "b8e6d53b.3d937633",
  "seal": "b8e6d53bf8e2529a",
  "run_date": "2026-10-01",
- "computed_at": "2026-10-01T16:58:03+00:00",
+ "computed_at": "2026-10-01T17:08:58+00:00",
  "pages_manifest_sha256": "fb4ac6aa112ffdae3ebbbfcfdc54786a588ddf8c23c01881cccb630c07f38925",
  "rns_manifest_sha256": "4c9b2476d99e97bfaee450293db4f650febbaacaf3f3256daddd0fe4546ad599",
  "schema_modo_sha256": "4bbe6d793e97e73777de7e2e3c72dbf53dd33ed1440bf4f68aff1f79ac281ab6",
- "schema_rns_sha256": "16820033b7b175ea1cf26b0cbd0901442bb88449f93017033a4429221aeba696",
+ "schema_rns_sha256": "bddd7be988d66e2eadd791ce318972ffa52197c784866a8b53b32d03e9560e25",
  "pages_read": {
   "modo_english": 442,
   "rns": 280
  },
  "fund_documents": {
+  "prospectus": 48,
   "results": 109,
   "other": 64,
   "nav": 59,
-  "prospectus": 48,
   "total": 280,
   "earliest": "2021-03-08"
  },
@@ -29,23 +31,25 @@
   "R-R2 no period unit": 170,
   "R-R3 a revenue component, not the total": 120,
   "R-R0 JSON payload": 93,
-  "R-R5 monthly figure": 58,
-  "R-R5 a partial period (half, quarter, season or to date)": 50,
-  "R-R5 period not stated": 48,
+  "R-R5 monthly figure": 57,
+  "R-R5 period not stated": 51,
   "R-R0 title or navigation duplicate": 42,
+  "R-R4 potential, required, contracted or assumed, not a forecast or an outturn": 39,
   "R-R0 PDF sentence glued to page furniture": 39,
-  "R-R4 potential, required, contracted or assumed, not a forecast or an outturn": 35,
+  "R-R5 a partial period (half, quarter, season or to date)": 31,
   "R-R3 a named asset or subset, not the population": 22,
   "R-R2 a change, not a level": 21,
   "R-R6 published before 2021": 20,
-  "R-R5 another month than the page's own": 17,
   "R-R2 the starting point of a stated change, not its level": 17,
   "R-R2 range, not a point figure": 15,
+  "R-R5 another month than the page's own": 15,
   "R-R3 no population named in the clause": 12,
   "R-R5 a day, not a month or a year": 11,
-  "R-R5 a fund figure dated by a month, not a calendar year": 11,
-  "R-R5 annual figure, basis realised": 7,
+  "R-R5 a fund figure dated by a month, not a calendar year": 10,
+  "R-R5 a high or a low, not a period figure": 9,
+  "R-R5 financial-year outturn, basis realised (amendment 2)": 7,
   "R-R6 published before 2023": 6,
+  "R-R5 annual figure, basis realised": 6,
   "R-R7 the page prints figures for its own month that differ by more than rounding; none read": 2,
   "R-R5 the year of publication, not complete": 2,
   "R-R5 annual figure, basis forecast, cited by the fund (third-party)": 2,
@@ -53,6 +57,7 @@
   "R-R7 the same month's figure, printed less precisely than another string on the page": 1,
   "R-R5 horizon figure, basis forecast": 1,
   "R-R5 endyear figure, basis forecast": 1,
+  "R-R5 a fund figure for a stated period that is not a year (listed)": 1,
   "R-R2 a multiplier other than k": 1
  },
  "figures": [
@@ -68,7 +73,9 @@
    "period_start": 2023,
    "period_end": 2023,
    "as_printed": "\u00a3121,000 per MW/Yr",
-   "cited_source": null
+   "cited_source": null,
+   "period_label": "",
+   "period_end_date": null
   },
   {
    "figure_id": "8ba0c1fad2c1:2717",
@@ -82,7 +89,9 @@
    "period_start": 2024,
    "period_end": 2024,
    "as_printed": "\u00a3123,000 per MW/Yr",
-   "cited_source": null
+   "cited_source": null,
+   "period_label": "",
+   "period_end_date": null
   },
   {
    "figure_id": "e726fdb3c713:100127",
@@ -96,7 +105,9 @@
    "period_start": 2022,
    "period_end": 2022,
    "as_printed": "\u00a3157,000/MW/yr",
-   "cited_source": null
+   "cited_source": null,
+   "period_label": "",
+   "period_end_date": null
   },
   {
    "figure_id": "e37f6afbd061:5621",
@@ -110,7 +121,9 @@
    "period_start": 2023,
    "period_end": 2023,
    "as_printed": "\u00a351k/MW/year",
-   "cited_source": null
+   "cited_source": null,
+   "period_label": "",
+   "period_end_date": null
   },
   {
    "figure_id": "179bc815001f:8386",
@@ -124,7 +137,9 @@
    "period_start": 2024,
    "period_end": 2024,
    "as_printed": "\u00a381k/MW/year",
-   "cited_source": null
+   "cited_source": null,
+   "period_label": "",
+   "period_end_date": null
   },
   {
    "figure_id": "50bc6b26c454:7627",
@@ -138,7 +153,9 @@
    "period_start": 2026,
    "period_end": 2028,
    "as_printed": "\u00a387k/MW/year",
-   "cited_source": null
+   "cited_source": null,
+   "period_label": "",
+   "period_end_date": null
   },
   {
    "figure_id": "c5b2965bc869:4076",
@@ -152,21 +169,57 @@
    "period_start": 2024,
    "period_end": 2024,
    "as_printed": "\u00a350k/MW/year",
-   "cited_source": null
+   "cited_source": null,
+   "period_label": "",
+   "period_end_date": null
   },
   {
-   "figure_id": "d2be6a448dd2:15467",
-   "publisher": "GRID (fund RNS)",
-   "published_on": "2025-04-22",
-   "source_url": "https://greshamhouse.com/wp-content/uploads/2025/04/GRID-Annual-Report-31-December-2024.pdf",
-   "source_sha256": "d2be6a448dd2be036f857fcb290451020053a053085304d4d7e489322d8256ec",
+   "figure_id": "8ff651c22a7b:2181",
+   "publisher": "HEIT (fund RNS)",
+   "published_on": "2025-02-26",
+   "source_url": "https://www.investegate.co.uk/announcement/rns/harmony-energy-income-trust--heit/net-asset-value-and-trading-update/8752688",
+   "source_sha256": "8ff651c22a7b2301198a8bf4470a0b894c99a2e07c8951af914f2974fce0fd9f",
    "basis": "realised",
-   "scope": "GRID portfolio",
-   "value": "91000",
-   "period_start": 2024,
+   "scope": "HEIT portfolio",
+   "value": "97800",
+   "period_start": 2023,
    "period_end": 2024,
-   "as_printed": "\u00a391k/MW/yr",
-   "cited_source": null
+   "as_printed": "\u00a397.8k/MW/Yr",
+   "cited_source": null,
+   "period_label": "year to 2024-10-31",
+   "period_end_date": "2024-10-31"
+  },
+  {
+   "figure_id": "8ff651c22a7b:6460",
+   "publisher": "HEIT (fund RNS)",
+   "published_on": "2025-02-26",
+   "source_url": "https://www.investegate.co.uk/announcement/rns/harmony-energy-income-trust--heit/net-asset-value-and-trading-update/8752688",
+   "source_sha256": "8ff651c22a7b2301198a8bf4470a0b894c99a2e07c8951af914f2974fce0fd9f",
+   "basis": "realised",
+   "scope": "HEIT portfolio",
+   "value": "62400",
+   "period_start": 2023,
+   "period_end": 2024,
+   "as_printed": "\u00a362.4k/MW/Yr",
+   "cited_source": null,
+   "period_label": "year to 2024-10-31",
+   "period_end_date": "2024-10-31"
+  },
+  {
+   "figure_id": "a19c8ce138ef:11186",
+   "publisher": "HEIT (fund RNS)",
+   "published_on": "2025-02-26",
+   "source_url": "https://www.investegate.co.uk/announcement/rns/harmony-energy-income-trust--heit/results-for-financial-year-ended-31-october-2024/8752544",
+   "source_sha256": "a19c8ce138efc3a773a654d91680bbe65df30b5f7404ce3d6421d0dc43f66b3b",
+   "basis": "realised",
+   "scope": "HEIT portfolio",
+   "value": "58200",
+   "period_start": 2023,
+   "period_end": 2024,
+   "as_printed": "\u00a358.2k/MW/Yr",
+   "cited_source": null,
+   "period_label": "year to 2024-10-31",
+   "period_end_date": "2024-10-31"
   },
   {
    "figure_id": "d2be6a448dd2:69373",
@@ -180,7 +233,9 @@
    "period_start": 2024,
    "period_end": 2024,
    "as_printed": "\u00a359.8k/ MW",
-   "cited_source": null
+   "cited_source": null,
+   "period_label": "",
+   "period_end_date": null
   },
   {
    "figure_id": "988e91d21d50:5127",
@@ -194,7 +249,9 @@
    "period_start": 2024,
    "period_end": 2024,
    "as_printed": "\u00a350k/MW/year",
-   "cited_source": null
+   "cited_source": null,
+   "period_label": "",
+   "period_end_date": null
   },
   {
    "figure_id": "624e2c5a1fa2:14951",
@@ -208,7 +265,9 @@
    "period_start": 2028,
    "period_end": 2028,
    "as_printed": "\u00a390k/MW/Yr",
-   "cited_source": "third-party"
+   "cited_source": "third-party",
+   "period_label": "",
+   "period_end_date": null
   },
   {
    "figure_id": "f72ecc586fc5:8588",
@@ -222,7 +281,9 @@
    "period_start": 2025,
    "period_end": 2025,
    "as_printed": "\u00a368.6k/MW/year",
-   "cited_source": null
+   "cited_source": null,
+   "period_label": "",
+   "period_end_date": null
   },
   {
    "figure_id": "mean-12m:fleet:2025",
@@ -236,10 +297,32 @@
    "period_start": 2025,
    "period_end": 2025,
    "as_printed": "mean of twelve monthly figures as published",
-   "cited_source": null
+   "cited_source": null,
+   "period_label": "",
+   "period_end_date": null
   }
  ],
  "same_day_duplicates": [
+  {
+   "figure_id": "8ff651c22a7b:6373",
+   "same_as": "8ff651c22a7b:2181",
+   "url": "https://www.investegate.co.uk/announcement/rns/harmony-energy-income-trust--heit/net-asset-value-and-trading-update/8752688"
+  },
+  {
+   "figure_id": "0080aee43ebd:2556",
+   "same_as": "8ff651c22a7b:2181",
+   "url": "https://www.investegate.co.uk/announcement/rns/harmony-energy-income-trust--heit/replacement-net-asset-value-and-trading-update/8753297"
+  },
+  {
+   "figure_id": "0080aee43ebd:6748",
+   "same_as": "8ff651c22a7b:2181",
+   "url": "https://www.investegate.co.uk/announcement/rns/harmony-energy-income-trust--heit/replacement-net-asset-value-and-trading-update/8753297"
+  },
+  {
+   "figure_id": "0080aee43ebd:6835",
+   "same_as": "8ff651c22a7b:6460",
+   "url": "https://www.investegate.co.uk/announcement/rns/harmony-energy-income-trust--heit/replacement-net-asset-value-and-trading-update/8753297"
+  },
   {
    "figure_id": "5fe7faaa7374:8133",
    "same_as": "624e2c5a1fa2:14951",
@@ -248,7 +331,7 @@
  ],
  "comparison_status": {
   "in-year, never scored": 2,
-  "scope mismatch": 1,
+  "period mismatch": 1,
   "not yet scorable": 2
  },
  "propositions": {
@@ -367,7 +450,7 @@
    "period": "2023",
    "status": "in-year, never scored",
    "scorable_after": null,
-   "note": "published 2023-05-23, inside the period it covers"
+   "note": "published 2023-05-23, inside the period it covers; the fund's own outturn for the year to 2024-10-31 is 97800 (2 of 12 months overlap), listed, not compared"
   },
   {
    "forecast_id": "179bc815001f:8386",
@@ -407,16 +490,16 @@
   "F1": true,
   "F2": {
    "per_year_strings": 407,
-   "unexplained": 28,
-   "share_pct": "6.9",
+   "unexplained": 24,
+   "share_pct": "5.9",
    "threshold_pct": "33.3",
    "fires": false
   },
   "F4_restated_months": 4
  },
  "rows": {
-  "figures_appended": 0,
-  "comparisons_appended": 0,
+  "figures_appended": 1210,
+  "comparisons_appended": 5,
   "revisions_appended": 0,
   "figures_total": 1210,
   "comparisons_total": 5,

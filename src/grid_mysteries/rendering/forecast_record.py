@@ -44,6 +44,7 @@ def render_findings(
     reads = [r for r in readings if r["rule_version"] == rv]
     scored = [c for c in rows if c["status"] == "scored"]
     mismatch = [c for c in rows if c["status"] == "scope mismatch"]
+    period_mismatch = [c for c in rows if c["status"] == "period mismatch"]
     pending = [c for c in rows if c["status"] in ("not yet scorable", "in-year, never scored")]
     vintages = {tuple(c["vintage"]) for c in rows}
     scorable = {tuple(c["vintage"]) for c in scored}
@@ -63,9 +64,33 @@ def render_findings(
         "> Battery revenue forecasts move hundreds of millions of pounds of fund value, and nobody "
         "has ever published how accurate they were.",
         "",
-        "## The finding",
-        "",
     ]
+    if period_mismatch:
+        L += ["## The sentence the issue exists for", ""]
+        for c in period_mismatch:
+            publisher, published_on, url = c["vintage"]
+            L.append(
+                f"**{publisher.split(' (')[0]} assumed {pounds(c['forecast'])} per MW per year "
+                f"for calendar {period_of(c)} ({c['scope']}; published {published_on}). Its own "
+                f"outturn for the {c['realised_period']} was {pounds(c['realised'])} per MW per "
+                f"year ({c['realised_scope']}).** {c['note'][0].upper() + c['note'][1:]}."
+            )
+            L.append("")
+        L += [
+            "| publisher | assumption (published, period, scope) | figure | the fund's own "
+            "outturn (period, scope) | figure | overlap | note |",
+            "|---|---|---|---|---|---|---|",
+        ]
+        for c in period_mismatch:
+            publisher, published_on, url = c["vintage"]
+            overlap = c["note"].split(":")[1].split(";")[0].strip() if ":" in c["note"] else ""
+            L.append(
+                f"| {publisher} | {published_on}, calendar {period_of(c)}, {c['scope']} | "
+                f"{pounds(c['forecast'])} | {c['realised_period']}, {c['realised_scope']} | "
+                f"{pounds(c['realised'])} | {overlap} | both printed, nothing adjusted |"
+            )
+        L.append("")
+    L += ["## The finding", ""]
     fund_cited = [
         r
         for r in reads
@@ -202,18 +227,21 @@ def render_findings(
     L += ["### Annual figures read (R-R5)", ""]
     if annual:
         L += [
-            "| publisher | published | scope | year | figure | as printed | page |",
+            "| publisher | published | scope | period | figure | as printed | page |",
             "|---|---|---|---|---|---|---|",
         ]
-        for r in sorted(annual, key=lambda r: (r["figure"]["period_start"], r["published_on"])):
+        for r in sorted(annual, key=lambda r: (r["figure"]["period_end"], r["published_on"])):
             f = r["figure"]
+            label = f.get("period_label") or str(f["period_start"])
             L.append(
-                f"| {f['publisher']} | {r['published_on']} | {f['scope']} | {f['period_start']} | "
+                f"| {f['publisher']} | {r['published_on']} | {f['scope']} | {label} | "
                 f"{pounds(f['value'])} | {f['as_printed']} | `{r['page_url']}` |"
             )
         by_key: dict[tuple[str, int], list[dict[str, Any]]] = {}
         for r in annual:
             f = r["figure"]
+            if f.get("period_end_date"):
+                continue
             by_key.setdefault((f["scope"], f["period_start"]), []).append(r)
         multi = {k: v for k, v in by_key.items() if len(v) > 1}
         if multi:
@@ -371,7 +399,14 @@ def render_findings(
         "## The record",
         "",
         "`evidence/figures.ndjson`, `evidence/comparisons.ndjson`, `evidence/revisions.ndjson` "
-        f"and `evidence/months.json`, every row under rule version `{rv}`; the pinned pages by "
+        f"and `evidence/months.json`, every row under rule version `{rv}`"
+        + (
+            f" (amendment 2, SHA-256 `{summary['amendment_2_sha256']}`; the rows under "
+            f"`{summary['supersedes_rule_version']}` remain in the evidence as computed)"
+            if summary.get("amendment_2_sha256")
+            else ""
+        )
+        + "; the pinned pages by "
         "digest in "
         "`evidence/pages-manifest.json` and `evidence/rns-manifest.json`; the schema reports under "
         f"`archives/modo-pages-022/` (SHA-256 `{summary['schema_modo_sha256']}`) and "

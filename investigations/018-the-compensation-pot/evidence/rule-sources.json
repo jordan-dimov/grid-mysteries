@@ -1,6 +1,7 @@
 {
  "declaration": [
-  "DECLARATION.md"
+  "DECLARATION.md",
+  "AMENDMENT-1.md"
  ],
  "note": "C2 is tested with R3; C4's band against Elexon's figures and the seal and freeze refusals are enforced by run.py against artefacts outside the pure logic (Elexon's February figures, the proof sidecar) and have no unit test. R5 is the choice of fields summed, covered by the R1-R3 tests. R6 (names from the pinned register) lands with the RESULTS renderer, after the run.",
  "rules": {
@@ -23,6 +24,7 @@
   "Acquisition gate: the Portal key never enters a journalled URL or an error": "tests/test_p415_compensation.py::test_the_portal_key_never_enters_an_identity_url_or_an_error",
   "C4 each February day on its SF run, the latest run beside it": "tests/test_p415_compensation.py::test_c4_reads_each_february_day_on_its_sf_run_and_the_latest_beside_it",
   "H1 February decided on volume, 10-23 August on cash": "tests/test_p415_compensation.py::test_h1_against_february_is_decided_on_volume_and_against_august_on_cash",
-  "H1 ratio of mean daily paid, killed below 0.50": "tests/test_p415_compensation.py::test_h1_is_a_ratio_of_mean_daily_cash_killed_below_the_threshold"
+  "H1 ratio of mean daily paid, killed below 0.50": "tests/test_p415_compensation.py::test_h1_is_a_ratio_of_mean_daily_cash_killed_below_the_threshold",
+  "A1 one leading byte-order mark is dropped; any other non-ASCII byte stops the read": "tests/test_p415_compensation.py::test_a_leading_byte_order_mark_is_dropped_and_any_other_non_ascii_byte_stops_the_read"
  }
 }

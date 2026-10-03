@@ -9,7 +9,10 @@
 2025-09-03 to the day before the run and writes ``evidence/run-index.json``.
 ``acquire`` refuses under C5 until every POST day has an SF run listed, then
 pins one BM unit register vintage and every S0142 file the declaration's
-windows select. ``compute`` reads pinned bytes only. The Portal key comes
+windows select, and keeps the run index it selected from as
+``evidence/run-index-acquired.json``. From then on ``index`` and ``acquire``
+refuse, and ``compute`` selects from that index alone and reads pinned bytes
+only, each checked against the acquisition manifest. The Portal key comes
 from ``ELEXON_PORTAL_KEY`` (in etrmbiz's ``.envrc``) and is never
 journalled, printed or committed.
 """
@@ -33,8 +36,12 @@ from grid_mysteries.sources.pinning import load_journal, pin, progress
 HERE = Path(__file__).parent
 EVIDENCE = HERE / "evidence"
 DECLARATION = HERE / "DECLARATION.md"
+AMENDMENT_1 = HERE / "AMENDMENT-1.md"
 RAW = REPO_ROOT / "data" / "raw" / "elexon" / "018"
 SCHEMA_PASS = RAW / "schema-pass"
+# The run index the acquisition selected from. Its existence ends index and
+# acquire: a later listing never changes which file a window day is read on.
+ACQUIRED_INDEX = EVIDENCE / "run-index-acquired.json"
 
 KILL_H1 = Decimal("0.50")
 H2_BASELINE_ABOVE = Decimal("0.50")
@@ -64,6 +71,13 @@ def require_seal(seal: str | None) -> str:
     return digest
 
 
+def require_amendment_1() -> str:
+    """compute reads under Amendment 1 (the byte-order mark) or not at all."""
+    if not AMENDMENT_1.with_name(AMENDMENT_1.name + ".timestamps.json").exists():
+        raise SystemExit("refusing: AMENDMENT-1.md is not frozen (no proof sidecar)")
+    return hashlib.sha256(AMENDMENT_1.read_bytes()).hexdigest()
+
+
 def journal(name: str) -> dict[str, Path]:
     return {
         "journal_path": EVIDENCE / f"{name}-journal.ndjson",
@@ -71,8 +85,16 @@ def journal(name: str) -> dict[str, Path]:
     }
 
 
+def require_not_acquired() -> None:
+    if ACQUIRED_INDEX.exists():
+        raise SystemExit(
+            f"refusing: already acquired; the selection is fixed by {ACQUIRED_INDEX.name}"
+        )
+
+
 def index(seal: str | None) -> None:
     require_seal(seal)
+    require_not_acquired()
     last = datetime.now(UTC).date() - timedelta(days=1)
     jobs = []
     d = p4.INDEX_FROM
@@ -103,7 +125,8 @@ def run_index() -> dict:
 
 
 def selection() -> dict:
-    idx = json.loads((EVIDENCE / "run-index.json").read_text())
+    path = ACQUIRED_INDEX if ACQUIRED_INDEX.exists() else EVIDENCE / "run-index.json"
+    idx = json.loads(path.read_text())
     return p4.select(p4.build_index(idx["files"]))
 
 
@@ -115,6 +138,8 @@ def wanted(sel: dict) -> list[p4.S0142File]:
 
 def acquire(seal: str | None) -> None:
     digest = require_seal(seal)
+    require_not_acquired()
+    index_bytes = (EVIDENCE / "run-index.json").read_bytes()
     sel = selection()
     if sel["missing"]["POST"]:
         days = ", ".join(str(d) for d in sel["missing"]["POST"])
@@ -141,53 +166,72 @@ def acquire(seal: str | None) -> None:
             "declaration_sha256": digest,
             "seal": seal,
             "files": len(jobs),
+            "run_index_sha256": hashlib.sha256(index_bytes).hexdigest(),
         }
     )
     write_json(log_path, log)
+    ACQUIRED_INDEX.write_bytes(index_bytes)
 
 
-def read_day(f: p4.S0142File) -> tuple[p4.DaySummary, dict, str]:
+def read_day(f: p4.S0142File, pinned: dict[str, str]) -> tuple[p4.DaySummary, dict, str, bool]:
     path = RAW / "s0142" / f.filename
     if not path.exists() and (SCHEMA_PASS / f.filename).exists():
         path = SCHEMA_PASS / f.filename  # 2026-02-17 R3, for C4 only
-    with gzip.open(path, "rt", encoding="ascii") as fh:
-        s = p4.summarise(fh)
-    return s, p4.checks(s, expect=f), sha256_file(path)
+    sha = sha256_file(path)
+    if pinned.get(f.filename) != sha:
+        raise SystemExit(f"refusing: {f.filename} does not match its acquisition digest")
+    lines, bom = p4.decode(gzip.decompress(path.read_bytes()))
+    s = p4.summarise(lines)
+    return s, p4.checks(s, expect=f), sha, bom
+
+
+def day_row(f: p4.S0142File, s: p4.DaySummary, chk: dict, sha: str) -> dict:
+    return {
+        "file": f.filename,
+        "sha256": sha,
+        "settlement_date": str(s.settlement_date),
+        "run": s.run,
+        "checks": chk,
+        "paid": {k: str(v) for k, v in sorted(s.supplier_cash.items())},
+        "vtp_volume": {k: str(v) for k, v in sorted(s.vtp_volume.items())},
+        "charged": {k: str(v) for k, v in sorted(s.charged.items())},
+        "supplier_volume": {k: str(v) for k, v in sorted(s.supplier_volume.items())},
+    }
 
 
 def compute() -> None:
+    amendment_1 = require_amendment_1()
+    if not ACQUIRED_INDEX.exists():
+        raise SystemExit(f"refusing: nothing acquired ({ACQUIRED_INDEX.name} absent)")
     sel = selection()
+    pinned = {
+        Path(e["path"]).name: e["sha256"]
+        for e in [
+            *json.loads((EVIDENCE / "s0142-manifest.json").read_text()),
+            *json.loads((EVIDENCE / "sources-manifest.json").read_text())["schema_pass"],
+        ]
+    }
     days_path = EVIDENCE / "days.ndjson"
     done = (
-        {json.loads(line)["file"] for line in days_path.read_text().splitlines()}
+        {(r := json.loads(line))["file"]: r for line in days_path.read_text().splitlines()}
         if days_path.exists()
-        else set()
+        else {}
     )
     summaries: dict[str, tuple[p4.DaySummary, dict]] = {}
+    leading_bom: list[str] = []
     with days_path.open("a") as out:
         for f in wanted(sel):
-            s, chk, sha = read_day(f)
+            s, chk, sha, bom = read_day(f, pinned)
             summaries[f.filename] = (s, chk)
+            if bom:
+                leading_bom.append(f.filename)
+            row = day_row(f, s, chk, sha)
             if f.filename in done:
+                # days.ndjson is append-only: a row once written never changes.
+                if done[f.filename] != row:
+                    raise SystemExit(f"refusing: {f.filename} would change its days.ndjson row")
                 continue
-            out.write(
-                json.dumps(
-                    {
-                        "file": f.filename,
-                        "sha256": sha,
-                        "settlement_date": str(s.settlement_date),
-                        "run": s.run,
-                        "checks": chk,
-                        "paid": {k: str(v) for k, v in sorted(s.supplier_cash.items())},
-                        "vtp_volume": {k: str(v) for k, v in sorted(s.vtp_volume.items())},
-                        "charged": {k: str(v) for k, v in sorted(s.charged.items())},
-                        "supplier_volume": {
-                            k: str(v) for k, v in sorted(s.supplier_volume.items())
-                        },
-                    }
-                )
-                + "\n"
-            )
+            out.write(json.dumps(row) + "\n")
 
     def ok(f: p4.S0142File) -> bool:
         return all(v for k, v in summaries[f.filename][1].items() if k.split()[0] in DECISIVE)
@@ -223,6 +267,8 @@ def compute() -> None:
 
     results: dict = {
         "declaration_sha256": declaration_digest(),
+        "amendment_1_sha256": amendment_1,
+        "leading_byte_order_mark": leading_bom,
         "computed_at": datetime.now(UTC).isoformat(),
         "runs_read": {k: sorted({d.run for d in v}) for k, v in windows.items()},
         "missing_or_excluded": {

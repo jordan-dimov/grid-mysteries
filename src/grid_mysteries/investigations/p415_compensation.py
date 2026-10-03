@@ -48,6 +48,10 @@ SUPPLIER_PREFIX = "2__"
 # selected (C5).
 RUN_ORDER = ("II", "SF", "R1", "R2", "R3", "RF", "DF")
 
+# Amendment 1: one UTF-8 byte-order mark before the AAA record is not part of
+# the file's text. Every other byte must be ASCII, or the read stops.
+BOM = b"\xef\xbb\xbf"
+
 NAME = re.compile(r"S0142_(\d{8})_([A-Z0-9]{2})_(\d{14})\.gz")
 
 
@@ -125,6 +129,13 @@ class DaySummary:
     @property
     def apc_paid_total(self) -> Decimal:
         return sum(self.apc_paid.values(), Decimal(0))
+
+
+def decode(raw: bytes) -> tuple[list[str], bool]:
+    """A file's bytes to its lines, and whether a byte-order mark led them
+    (Amendment 1). A non-ASCII byte anywhere else raises."""
+    bom = raw.startswith(BOM)
+    return raw[len(BOM) if bom else 0 :].decode("ascii").splitlines(keepends=True), bom
 
 
 def _fields(line: str) -> list[str]:

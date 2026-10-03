@@ -297,3 +297,16 @@ def test_h1_against_february_is_decided_on_volume_and_against_august_on_cash():
     by_cash = p4.h1_ratio(post, feb, kill_below=D("0.5"), measure="supplier_cash_total")
     assert by_volume["verdict"] == "killed" and by_volume["measure"] == "supplier_volume_total"
     assert by_cash["verdict"] == "holds"
+
+
+def test_a_leading_byte_order_mark_is_dropped_and_any_other_non_ascii_byte_stops_the_read():
+    text = "".join(day(bph("A"), "SP7|1|\n", bp7("2__AAAAA001", cash="7"))).encode("ascii")
+    plain, plain_bom = p4.decode(text)
+    marked, marked_bom = p4.decode(p4.BOM + text)
+    assert (plain_bom, marked_bom) == (False, True)
+    assert marked == plain and marked[0].startswith("AAA|S0142013|")
+    assert p4.summarise(marked).flow_version == p4.FLOW_VERSION
+    with pytest.raises(UnicodeDecodeError):
+        p4.decode(p4.BOM + p4.BOM + text)  # a mark is dropped once, at the start only
+    with pytest.raises(UnicodeDecodeError):
+        p4.decode(text.replace(b"SP7", b"SP\xc2\xa07"))

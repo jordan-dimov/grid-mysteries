@@ -792,3 +792,27 @@ separates them. A challenge that begins on a Saturday is caught by Tuesday's
 run. A bank holiday will read as below band on the working-day median; that
 is a known false positive, not yet handled. Test:
 `test_a_working_day_publisher_s_weekend_window_is_thin_not_collapsed`.
+
+**Validity before size (2026-10-03); the weekend rule above is retired.** The
+fifth false alarm in three weeks (healthchecks.io DOWN 11:35 BST, 3 October)
+was Contracts Finder's Friday 2 October: one page of 58 releases, no next
+link, against a working-day median of two pages / 916 KB. The band asks a
+proxy question, and each fix had added a calendar rule. The watchdog now reads
+the new artefacts of every resource in the plan (`capture/validate.py`, the
+laptop mirror first, the bucket otherwise) and tests them for what they claim
+to be: JSON parses; delimited text has a header line (`,` `;` or tab; NESO
+serves CSV as `octet-stream` or `event-stream`, Opendatasoft exports use `;`);
+a workbook is a zip or OLE container; a PDF starts `%PDF`; a challenge page,
+or HTML from a data endpoint, is never valid; an OCDS day is whole only if
+its pages chain by `links.next` to a last page with none and every release is
+dated in the window. Any invalid artefact fails, inside the band or below it.
+A run whose every new artefact passes is never a collapse: below band it is
+`thin day` (news). The band still decides for the five resources captured as
+HTML pages (DESNZ's REPD page, NESO's reform results page, Octopus's two
+pages, Ofgem's page), which have no structural test. Calibrated on all 10,935
+artefacts of 15 September to 3 October: none invalid, every OCDS day whole.
+`WEEKEND_QUIET` and the bank-holiday false positive go with it. Tests:
+`tests/test_capture_validate.py`,
+`test_a_thin_day_whose_pages_are_whole_and_genuine_is_news_not_a_fault`,
+`test_validity_fails_what_size_cannot_see`,
+`test_html_where_data_was_expected_fails_and_a_page_without_a_test_keeps_the_band`.

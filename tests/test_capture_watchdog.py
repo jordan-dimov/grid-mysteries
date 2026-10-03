@@ -1,5 +1,4 @@
 import hashlib
-import itertools
 import json
 import random
 from datetime import UTC, date, datetime, timedelta
@@ -373,50 +372,152 @@ def test_quiet_does_not_excuse_new_bytes_or_a_source_that_went_away(tmp_path: Pa
 
 
 def ocds(artefacts, size, error=None):
-    return resource("CF-OCDS", artefacts, size, 0, error=error, strategy="ocds_daily")
+    return resource("CONTRACTS-FINDER-OCDS", artefacts, size, 0, error=error, strategy="ocds_daily")
 
 
-def daily_windows(store: LocalStore, today: date, latest):
-    """Thirty days of runs: a daily OCDS window holding a weekday's notices
-    (2 pages / 900 KB) or a weekend day's (1 page / 7 to 58 KB, as seen on
-    2026-09-20/21 and 09-27), beside a CKAN resource with no weekly pattern."""
-    sizes = itertools.cycle([22_661, 58_396, 7_210, 16_094, 66_717, 46_161])
+def package(window: str, releases: int, next_url: str | None = None) -> bytes:
+    body: dict[str, object] = {
+        "releases": [{"ocid": f"o-{i}", "date": f"{window}T10:00:00Z"} for i in range(releases)]
+    }
+    if next_url:
+        body["links"] = {"next": next_url}
+    return json.dumps(body).encode()
+
+
+def captured(store: LocalStore, day: date, source: str, res: str, artefacts, **http) -> None:
+    """The day's manifest lines and raw bytes, as run_capture writes them."""
+    lines = []
+    for dataset, body, url in artefacts:
+        key = f"raw/{source}/{res}/{day}/{hashlib.sha256(body).hexdigest()}"
+        store.put(key, body)
+        lines.append(
+            {
+                "day": str(day),
+                "source": source,
+                "resource": res,
+                "dataset": dataset,
+                "url": url,
+                "key": key,
+                "http": http,
+                "unchanged_from": None,
+            }
+        )
+    store.put(f"manifests/{day}.ndjson", "".join(json.dumps(x) + "\n" for x in lines).encode())
+
+
+def working_days(store: LocalStore, today: date, latest):
+    """Thirty runs of two pages / 900 KB a day, then the latest run."""
     for back in range(1, 31):
         day = today - timedelta(days=back)
-        covered = day - timedelta(days=1)
-        window = ocds(1, next(sizes)) if covered.weekday() >= 5 else ocds(2, 900_000)
-        store.put(
-            f"status/vintage-capture/{day}.json",
-            status(day, resources=[window, resource("TEC", 1, 2_528, 0)]),
-        )
+        store.put(f"status/vintage-capture/{day}.json", status(day, resources=[ocds(2, 900_000)]))
     store.put("status/vintage-capture/latest.json", status(today, resources=latest))
     return {c.name.rsplit(":", 1)[1]: c for c in wd.check_bands(store, "vintage-capture")}
 
 
-def test_a_working_day_publisher_s_weekend_window_is_thin_not_collapsed(tmp_path: Path):
-    """Contracts Finder and Find a Tender, the Sunday and Monday runs of
-    2026-09-20/21 and 2026-09-27: each holds Saturday's or Sunday's notices,
-    1 artefact / 7-66 KB against weekday medians of 2-5 / 0.9-4.7 MB. Nothing
-    was wrong, and the watchdog failed three times. Weekend sizes span
-    eightfold, so a weekend window has no size band; a working-day window is
-    banded against working-day windows only, and the same bytes on a Tuesday
-    are still a collapse."""
-    sunday, monday, tuesday = date(2026, 10, 11), date(2026, 10, 12), date(2026, 10, 13)
-    checks = daily_windows(
-        LocalStore(tmp_path / "sun"), sunday, [ocds(1, 7_210), resource("TEC", 1, 2_528, 0)]
+SATURDAY = date(2026, 10, 3)  # the run that holds Friday 2026-10-02's notices
+CF = "https://www.contractsfinder.service.gov.uk/Published/Notices/OCDS/Search"
+
+
+def test_a_thin_day_whose_pages_are_whole_and_genuine_is_news_not_a_fault(tmp_path: Path):
+    """Contracts Finder, Friday 2026-10-02: one page of 58 releases, no next
+    link, against a working-day median of two pages / 916 KB. The size band
+    failed the watchdog; the bytes say the day was simply quiet. The same
+    holds for every weekend window, which no longer needs a rule of its own."""
+    store = LocalStore(tmp_path)
+    captured(
+        store,
+        SATURDAY,
+        "contracts-finder",
+        "ocds-daily",
+        [("CONTRACTS-FINDER-OCDS-2026-10-02-P001", package("2026-10-02", 58), CF)],
     )
-    assert checks["CF-OCDS"].ok and not checks["CF-OCDS"].news
-    assert checks["CF-OCDS"].detail.startswith("weekend window (2026-10-10), no size band")
-    assert "over 30 prior runs" in checks["TEC"].detail  # other resources see every run
-    checks = daily_windows(LocalStore(tmp_path / "mon"), monday, [ocds(1, 66_717)])
-    assert checks["CF-OCDS"].ok and "(2026-10-11)" in checks["CF-OCDS"].detail
-    checks = daily_windows(LocalStore(tmp_path / "tue"), tuesday, [ocds(1, 7_210)])
-    assert not checks["CF-OCDS"].ok and checks["CF-OCDS"].detail.endswith("below band")
-    assert "over 20 prior working-day runs" in checks["CF-OCDS"].detail
-    checks = daily_windows(LocalStore(tmp_path / "tue-ok"), tuesday, [ocds(2, 850_000)])
-    assert checks["CF-OCDS"].ok and not checks["CF-OCDS"].news
-    # What a weekend window still fails on: nothing captured, or an error.
-    checks = daily_windows(LocalStore(tmp_path / "empty"), sunday, [ocds(0, 0)])
-    assert not checks["CF-OCDS"].ok and checks["CF-OCDS"].detail.endswith("no page captured")
-    checks = daily_windows(LocalStore(tmp_path / "err"), sunday, [ocds(1, 7_210, "HTTPError: 503")])
-    assert not checks["CF-OCDS"].ok and "ERROR HTTPError: 503" in checks["CF-OCDS"].detail
+    c = working_days(store, SATURDAY, [ocds(1, 332_542)])["CONTRACTS-FINDER-OCDS"]
+    assert c.ok and c.news and c.detail.startswith("thin day, below band; valid: 1 page(s), 58")
+    sunday = LocalStore(tmp_path / "sun")  # a weekend window with no release at all
+    captured(
+        sunday,
+        date(2026, 9, 28),
+        "contracts-finder",
+        "ocds-daily",
+        [("CONTRACTS-FINDER-OCDS-2026-09-27-P001", package("2026-09-27", 0), CF)],
+    )
+    assert working_days(sunday, date(2026, 9, 28), [ocds(1, 300)])["CONTRACTS-FINDER-OCDS"].ok
+
+
+def test_validity_fails_what_size_cannot_see(tmp_path: Path):
+    """A challenge page, a paging that stops early, or notices from another
+    day are faults, inside the band or below it."""
+    cases = {
+        "challenge": [("P001", b"<html><title>Just a moment...</title>cf-chl</html>", CF)],
+        "cut short": [
+            ("P001", package("2026-10-02", 100, CF + "&page=2"), CF),
+            ("P002", package("2026-10-02", 100, CF + "&page=3"), CF),
+        ],
+        "wrong day": [("P001", package("2026-10-01", 100), CF)],
+        "not json": [("P001", b'{"releases": [', CF)],
+    }
+    for label, pages in cases.items():
+        store = LocalStore(tmp_path / label.replace(" ", "-"))
+        captured(
+            store,
+            SATURDAY,
+            "contracts-finder",
+            "ocds-daily",
+            [(f"CONTRACTS-FINDER-OCDS-2026-10-02-{d}", b, u) for d, b, u in pages],
+        )
+        c = working_days(store, SATURDAY, [ocds(2, 900_000)])["CONTRACTS-FINDER-OCDS"]
+        assert not c.ok and c.detail.startswith("INVALID"), label
+    empty = LocalStore(tmp_path / "none")
+    empty.put(f"manifests/{SATURDAY}.ndjson", b"")
+    c = working_days(empty, SATURDAY, [ocds(0, 0)])["CONTRACTS-FINDER-OCDS"]
+    assert not c.ok and c.detail == "INVALID no page captured"
+    err = LocalStore(tmp_path / "err")
+    c = working_days(err, SATURDAY, [ocds(1, 7_210, "HTTPError: 503")])["CONTRACTS-FINDER-OCDS"]
+    assert not c.ok and c.detail == "ERROR HTTPError: 503"
+
+
+def test_html_where_data_was_expected_fails_and_a_page_without_a_test_keeps_the_band(
+    tmp_path: Path,
+):
+    ukpn = (
+        "https://ukpowernetworks.opendatasoft.com/api/explore/v2.1/catalog/datasets/x/exports/csv"
+    )
+    store = LocalStore(tmp_path / "csv")
+    captured(
+        store,
+        SATURDAY,
+        "ukpn",
+        "large-demand-list",
+        [("UKPN-LARGE-DEMAND-LIST", b"<!DOCTYPE html><html>sign in</html>", ukpn)],
+        **{"content-type": "text/html"},
+    )
+    store.put(
+        "status/vintage-capture/latest.json",
+        status(
+            SATURDAY, resources=[resource("UKPN-LARGE-DEMAND-LIST", 1, 33_595, 0, strategy="url")]
+        ),
+    )
+    (c,) = wd.check_bands(store, "vintage-capture")
+    assert (
+        not c.ok
+        and c.detail == "INVALID UKPN-LARGE-DEMAND-LIST: HTML where data was expected (text/html)"
+    )
+    page = LocalStore(tmp_path / "page")  # an HTML page captured as a page: the band decides
+    captured(
+        page,
+        SATURDAY,
+        "ofgem",
+        "data-centre-connection-reforms",
+        [("OFGEM-CURATE-PAGE", b"<html>short</html>", "https://www.ofgem.gov.uk/x")],
+        **{"content-type": "text/html"},
+    )
+    usual = [resource("OFGEM-CURATE-PAGE", 1, 207_787, 0, strategy="url")]
+    for back in range(1, 5):
+        day = SATURDAY - timedelta(days=back)
+        page.put(f"status/vintage-capture/{day}.json", status(day, resources=usual))
+    page.put(
+        "status/vintage-capture/latest.json",
+        status(SATURDAY, resources=[resource("OFGEM-CURATE-PAGE", 1, 1_000, 0, strategy="url")]),
+    )
+    (c,) = wd.check_bands(page, "vintage-capture")
+    assert not c.ok and c.detail.endswith("below band")

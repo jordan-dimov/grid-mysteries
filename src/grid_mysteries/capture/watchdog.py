@@ -21,6 +21,8 @@ from datetime import UTC, date, datetime, timedelta
 from pathlib import Path
 from typing import Any
 
+from grid_mysteries.capture import validate
+from grid_mysteries.capture.plan import PLAN
 from grid_mysteries.capture.run import manifest_key, status_key
 from grid_mysteries.capture.store import ObjectStore
 from grid_mysteries.proofs import is_upgrade_of
@@ -33,14 +35,6 @@ DEFAULT_JOBS: dict[str, float] = {"vintage-capture": 26.0}
 BAND_RUNS = 30
 BAND_LOW = 0.5
 BAND_HIGH = 3.0
-#: Strategies whose run holds one calendar day (the previous UTC day) of a
-#: publisher that works office hours. A run covering a working day is banded
-#: against prior working-day runs; a run covering a Saturday or Sunday has no
-#: size band, because the portals publish a handful of notices and the sizes
-#: seen (7 to 58 KB) vary eightfold, so no size separates a thin package from
-#: a challenge page. Errors and an empty response are still faults.
-WEEKEND_QUIET: frozenset[str] = frozenset({"ocds_daily"})
-WINDOW_LAG_DAYS = 1
 SAMPLE_SIZE = 5
 PROOF_DAYS = 7
 
@@ -92,7 +86,9 @@ def check_freshness(store: ObjectStore, jobs: dict[str, float], now: datetime) -
     return out
 
 
-def check_bands(store: ObjectStore, job: str) -> list[Check]:
+def check_bands(
+    store: ObjectStore, job: str, read: Callable[[str], bytes | None] | None = None
+) -> list[Check]:
     """The latest run's artefact count and bytes per resource against the
     median of the BAND_RUNS days before it that have a status. Falling below
     BAND_LOW is a fault: a source that shrinks to a login page. Rising above
@@ -117,17 +113,19 @@ def check_bands(store: ObjectStore, job: str) -> list[Check]:
     status" does not exist yet and is not a fault (2026-09-18, the first
     pre-capture run after the timer was re-enabled, failed on exactly that).
     Staleness is check_freshness's question, not this one's.
-    A resource whose strategy is in WEEKEND_QUIET (the daily OCDS windows of
-    Contracts Finder and Find a Tender) holds the previous UTC day's notices,
-    and the portals publish on working days. The Sunday and Monday runs of
-    2026-09-20/21 and 2026-09-27 read 1 artefact / 7-66 KB against medians of
-    2-5 / 0.9-4.7 MB and failed the watchdog three times with nothing wrong.
-    Its working-day runs are banded against prior working-day runs; its
-    weekend runs have no size band (the weekend sizes seen span 7 to 58 KB, so
-    a challenge interstitial is not distinguishable by size from a quiet
-    Saturday) and fail only on an error or an empty response. A challenge that
-    begins on a Saturday is therefore caught by Tuesday's run, not Sunday's;
-    the working-day median also reads a bank holiday as below band."""
+    Validity decides before size (`validate`, 2026-10-03). The new
+    artefacts of a resource in the plan are read and tested: a challenge or
+    error page, unparseable JSON, a spreadsheet that is not one, or an OCDS
+    day whose pages do not chain to the end or hold releases from another
+    day, is a fault whatever its size. A run whose every new artefact passes
+    a structural test cannot be a collapse, so below band it is reported as
+    a thin day (news), not a fault: Contracts Finder's and Find a Tender's
+    weekend windows, and Contracts Finder's 58 notices of Friday 2026-10-02
+    against a working-day median of two pages, failed the watchdog five
+    times between 2026-09-20 and 2026-10-03 with nothing wrong, under a
+    weekend rule (WEEKEND_QUIET) this replaces. Where no structural test
+    applies (an HTML page captured as a page), the band still decides.
+    `read` returns an artefact's bytes by key (the laptop mirror first)."""
     latest = _load(store, status_key(job, None))
     if latest is None:
         return [Check(f"band:{job}", False, "no status object yet")]
@@ -144,29 +142,22 @@ def check_bands(store: ObjectStore, job: str) -> list[Check]:
                 history.setdefault(r["name"], []).append(
                     (r["artefacts"], r["bytes"], new, past_day)
                 )
+    lines = _manifest_lines(store, day)
     out = []
     for r in latest.get("resources", []):
         name = f"band:{job}:{r['name']}"
+        if r.get("error"):
+            out.append(Check(name, False, f"ERROR {r['error']}"))
+            continue
+        validity = _validity(r["name"], lines, read or store.get, day)
+        if validity.valid is False:
+            out.append(Check(name, False, f"INVALID {validity.reason}"))
+            continue
         runs = history.get(r["name"], [])
         kind = "prior runs"
-        if r.get("strategy") in WEEKEND_QUIET:
-            covered = day - timedelta(days=WINDOW_LAG_DAYS)
-            if r.get("error"):
-                out.append(Check(name, False, f"ERROR {r['error']}"))
-                continue
-            if _weekend(covered):
-                thin = f"{r['artefacts']} artefacts / {r['bytes']:,} bytes"
-                if r["artefacts"] == 0:
-                    out.append(Check(name, False, f"weekend window ({covered}); no page captured"))
-                else:
-                    out.append(
-                        Check(name, True, f"weekend window ({covered}), no size band; {thin}")
-                    )
-                continue
-            runs = [t for t in runs if not _weekend(t[3] - timedelta(days=WINDOW_LAG_DAYS))]
-            kind = "prior working-day runs"
+        valid = f"; valid: {validity.reason}" if validity.valid else ""
         if len(runs) < 3:
-            out.append(Check(name, True, f"{len(runs)} {kind}; no band yet"))
+            out.append(Check(name, True, f"{len(runs)} {kind}; no band yet{valid}"))
             continue
         med_count = statistics.median(c for c, _, _, _ in runs)
         med_bytes = statistics.median(b for _, b, _, _ in runs)
@@ -176,14 +167,14 @@ def check_bands(store: ObjectStore, job: str) -> list[Check]:
             f"{r['artefacts']} artefacts ({new} new) / {r['bytes']:,} bytes against medians "
             f"{med_count:.0f} ({med_new:.0f} new) / {med_bytes:,.0f} over {len(runs)} {kind}"
         )
-        if r.get("error"):
-            out.append(Check(name, False, f"{detail}; ERROR {r['error']}"))
-            continue
         if r.get("unchanged", 0) == r["artefacts"] > 0:
             out.append(Check(name, True, f"quiet, published nothing; {detail}"))
             continue
         if r["artefacts"] < BAND_LOW * med_count or r["bytes"] < BAND_LOW * med_bytes:
-            out.append(Check(name, False, f"{detail}; below band"))
+            if validity.valid:
+                out.append(Check(name, True, f"thin day, below band{valid}; {detail}", news=True))
+            else:
+                out.append(Check(name, False, f"{detail}; below band"))
             continue
         above = r["artefacts"] > BAND_HIGH * max(med_count, 1) or r["bytes"] > BAND_HIGH * max(
             med_bytes, 1
@@ -191,14 +182,57 @@ def check_bands(store: ObjectStore, job: str) -> list[Check]:
         if new > 0 and med_new == 0:
             out.append(Check(name, True, f"NEW VERSION published; {detail}", news=True))
         elif above:
-            out.append(Check(name, True, f"above band; {detail}", news=True))
+            out.append(Check(name, True, f"above band; {detail}{valid}", news=True))
         else:
-            out.append(Check(name, True, detail))
+            out.append(Check(name, True, f"{detail}{valid}"))
     return out
 
 
-def _weekend(day: date) -> bool:
-    return day.weekday() >= 5
+_PLAN = {r.name: r for r in PLAN}
+
+
+def _manifest_lines(store: ObjectStore, day: date) -> list[dict[str, Any]]:
+    body = store.get(manifest_key(day))
+    return [json.loads(x) for x in (body or b"").decode().splitlines() if x.strip()]
+
+
+def _validity(
+    name: str, lines: list[dict[str, Any]], read: Callable[[str], bytes | None], day: date
+) -> validate.Verdict:
+    """The resource's new artefacts of `day`, read and tested (a later line
+    for the same dataset, from a re-run that day, replaces an earlier one)."""
+    resource = _PLAN.get(name)
+    if resource is None:
+        return validate.Verdict(None, "not in the plan")
+    mine = {
+        x["dataset"]: x
+        for x in lines
+        if (x.get("source"), x.get("resource")) == (resource.source, resource.resource)
+    }
+    if resource.strategy == "ocds_daily":
+        pages = [(d, read(mine[d]["key"]) or b"") for d in sorted(mine)]
+        return validate.ocds_run(pages, day - timedelta(days=1))
+    new = [x for x in mine.values() if x.get("unchanged_from") is None]
+    if not new:
+        return validate.Verdict(None, "nothing new to test")
+    reasons = set()
+    for x in new:
+        body = read(x["key"])
+        if body is None:
+            return validate.Verdict(False, f"{x['dataset']}: bytes not found")
+        v = validate.artefact(
+            body,
+            content_type=(x.get("http") or {}).get("content-type", ""),
+            url=x.get("url", ""),
+            strategy=resource.strategy,
+        )
+        if v.valid is False:
+            return validate.Verdict(False, f"{x['dataset']}: {v.reason}")
+        if v.valid is None:
+            reasons.add(v.reason)
+    if reasons:
+        return validate.Verdict(None, "; ".join(sorted(reasons)))
+    return validate.Verdict(True, f"{len(new)} new artefact(s) pass their structural test")
 
 
 def check_sample(
@@ -397,10 +431,16 @@ def run_watchdog(
     moment = now()
     today = moment.date()
     report = Report()
+    mirror = repo_root / "data/raw/archive"
+
+    def read(key: str) -> bytes | None:  # the laptop mirror is hash-checked on download
+        local = mirror / key
+        return local.read_bytes() if local.exists() else store.get(key)
+
     report.checks += check_freshness(store, jobs or DEFAULT_JOBS, moment)
     for job in jobs or DEFAULT_JOBS:
         if store.get(status_key(job, None)) is not None:
-            report.checks += check_bands(store, job)
+            report.checks += check_bands(store, job, read)
     report.checks.append(check_sample(store, today - timedelta(days=1), rng=rng))
     report.checks += check_proofs(store, today)
     report.checks.append(check_bucket_settings(settings, EXPECTED_SETTINGS))

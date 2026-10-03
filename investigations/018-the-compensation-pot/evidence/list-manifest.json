@@ -3499,5 +3499,59 @@
   "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
   "fetched_at": "2026-09-27T06:23:03.331492+00:00",
   "bytes": 2
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-09-27&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-09-27.json",
+  "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "fetched_at": "2026-10-03T06:23:02.046174+00:00",
+  "bytes": 2
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-09-28&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-09-28.json",
+  "sha256": "86c122ca3bb81400db111455659a3da9fc0ef8fbab299ce5b9e8c4fda4fe4f6d",
+  "fetched_at": "2026-10-03T06:23:03.860307+00:00",
+  "bytes": 601
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-09-29&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-09-29.json",
+  "sha256": "4e83eaaa4175cb39c18f25536ade7467d7c9635f3b6bbbfd76b74acc6bd30571",
+  "fetched_at": "2026-10-03T06:23:05.235914+00:00",
+  "bytes": 541
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-09-30&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-09-30.json",
+  "sha256": "bca948c266c2773c677b4a3c22e48ab98023163b7ce10500f366261f5fdf95e2",
+  "fetched_at": "2026-10-03T06:23:06.451165+00:00",
+  "bytes": 1021
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-10-01&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-10-01.json",
+  "sha256": "1a2109d987632d501f63c39ac7293fb467459a8a0dcc3444a932fab30c3ee873",
+  "fetched_at": "2026-10-03T06:23:07.218554+00:00",
+  "bytes": 541
+ },
+ {
+  "source": "elexon-portal",
+  "dataset": "P114-S0142-LIST",
+  "url": "https://downloads.elexonportal.co.uk/p114/list?date=2026-10-02&filter=s0142",
+  "path": "data/raw/elexon/018/list/2026-10-02.json",
+  "sha256": "daf6c632f607ccec3b0336bbe74e1923e911ef012f663821b377c44d70789440",
+  "fetched_at": "2026-10-03T06:23:08.479576+00:00",
+  "bytes": 841
  }
 ]

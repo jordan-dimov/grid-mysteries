@@ -1,0 +1,10 @@
+{
+ "acquisitions": [
+  {
+   "at": "2026-10-03T06:25:49.431116+00:00",
+   "declaration_sha256": "3ebd9015b44c3ff6fce7a1fd3c4dd68d1c3ce7657ee501e355282c4113b18f1e",
+   "seal": "3ebd9015",
+   "files": 144
+  }
+ ]
+}

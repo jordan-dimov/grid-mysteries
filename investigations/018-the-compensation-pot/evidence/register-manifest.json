@@ -1,0 +1,11 @@
+[
+ {
+  "source": "elexon-insights",
+  "dataset": "BMUNITS",
+  "url": "https://data.elexon.co.uk/bmrs/api/v1/reference/bmunits/all",
+  "path": "data/raw/elexon/018/bmunits-2026-10-03.json",
+  "sha256": "3c40f1f1c30d0fe2db7b5667d4410fe9b7adae88d4eb509cadb2b2eb63909f81",
+  "fetched_at": "2026-10-03T06:23:09.136292+00:00",
+  "bytes": 2157138
+ }
+]

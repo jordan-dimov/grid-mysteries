@@ -82,6 +82,11 @@ were set out before either was computed.
 
 ## The record
 
+`evidence/format-check.json`, written by the runner's `format` phase on
+2026-10-03 (field counts of the record types the reader uses, encoding and
+flow version; no value), lists exactly these eight files as departing from
+the schema pass, each by the leading mark alone; `compute` refuses any
+departure that no frozen amendment admits, and A1 admits this one.
 `evidence/results.json` gains this file's SHA-256 (`amendment_1_sha256`) and
 the list of files read with a leading mark (`leading_byte_order_mark`). The
 rows of `days.ndjson` keep their declared shape. The rule is tested in

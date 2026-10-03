@@ -3,6 +3,7 @@
     uv run python investigations/018-the-compensation-pot/run.py \\
         --seal <prefix of DECLARATION.md's SHA-256> --phase index
     uv run python investigations/018-the-compensation-pot/run.py --seal <prefix> --phase acquire
+    uv run python investigations/018-the-compensation-pot/run.py --phase format
     uv run python investigations/018-the-compensation-pot/run.py --phase compute
 
 ``index`` pins the P114 S0142 listing for every publication date from
@@ -12,7 +13,10 @@ pins one BM unit register vintage and every S0142 file the declaration's
 windows select, and keeps the run index it selected from as
 ``evidence/run-index-acquired.json``. From then on ``index`` and ``acquire``
 refuse, and ``compute`` selects from that index alone and reads pinned bytes
-only, each checked against the acquisition manifest. The Portal key comes
+only, each checked against the acquisition manifest. ``format`` (run by
+``acquire`` too) profiles every selected file's format against the schema
+pass's, reading no value, into ``evidence/format-check.json``; ``compute``
+refuses while a file departs from it in a way no frozen amendment admits. The Portal key comes
 from ``ELEXON_PORTAL_KEY`` (in etrmbiz's ``.envrc``) and is never
 journalled, printed or committed.
 """
@@ -31,6 +35,7 @@ from grid_mysteries.evidence import write_json
 from grid_mysteries.hashing import sha256_file
 from grid_mysteries.investigations import p415_compensation as p4
 from grid_mysteries.sources import elexon, elexon_portal
+from grid_mysteries.sources import s0142_format as fmt
 from grid_mysteries.sources.pinning import load_journal, pin, progress
 
 HERE = Path(__file__).parent
@@ -42,6 +47,9 @@ SCHEMA_PASS = RAW / "schema-pass"
 # The run index the acquisition selected from. Its existence ends index and
 # acquire: a later listing never changes which file a window day is read on.
 ACQUIRED_INDEX = EVIDENCE / "run-index-acquired.json"
+FORMAT_CHECK = EVIDENCE / "format-check.json"
+# Departures from the schema pass's format that a frozen amendment reads.
+ADMITTED = {"leading byte-order mark": AMENDMENT_1}
 
 KILL_H1 = Decimal("0.50")
 H2_BASELINE_ABOVE = Decimal("0.50")
@@ -171,12 +179,62 @@ def acquire(seal: str | None) -> None:
     )
     write_json(log_path, log)
     ACQUIRED_INDEX.write_bytes(index_bytes)
+    format_check()
 
 
-def read_day(f: p4.S0142File, pinned: dict[str, str]) -> tuple[p4.DaySummary, dict, str, bool]:
+def source_path(f: p4.S0142File) -> Path:
     path = RAW / "s0142" / f.filename
     if not path.exists() and (SCHEMA_PASS / f.filename).exists():
         path = SCHEMA_PASS / f.filename  # 2026-02-17 R3, for C4 only
+    return path
+
+
+def format_check() -> None:
+    """Every selected file's format against the schema pass's; no value read."""
+    expected = fmt.expected_from(fmt.profile_file(p) for p in sorted(SCHEMA_PASS.glob("*.gz")))
+    files = {}
+    for f in wanted(selection()):
+        path = source_path(f)
+        seen = fmt.profile_file(path)
+        files[f.filename] = {
+            "sha256": sha256_file(path),
+            "profile": seen,
+            "differences": fmt.differences(expected, seen),
+        }
+    departing = {k: v["differences"] for k, v in files.items() if v["differences"]}
+    write_json(
+        FORMAT_CHECK,
+        {
+            "checked_at": datetime.now(UTC).isoformat(),
+            "expected": expected,
+            "files": files,
+            "departing": departing,
+        },
+    )
+    print(f"format: {len(files)} file(s), {len(departing)} departing from the schema pass")
+    for name, diffs in departing.items():
+        print(f"  {name}: {'; '.join(diffs)}")
+
+
+def require_format() -> None:
+    if not FORMAT_CHECK.exists():
+        raise SystemExit("refusing: no format check (run --phase format)")
+    check = json.loads(FORMAT_CHECK.read_text())
+    for f in wanted(selection()):
+        entry = check["files"].get(f.filename)
+        if entry is None or entry["sha256"] != sha256_file(source_path(f)):
+            raise SystemExit(f"refusing: {f.filename} not format-checked as pinned")
+        for d in entry["differences"]:
+            admitted = ADMITTED.get(d)
+            if (
+                admitted is None
+                or not admitted.with_name(admitted.name + ".timestamps.json").exists()
+            ):
+                raise SystemExit(f"refusing: {f.filename}: {d}, admitted by no frozen amendment")
+
+
+def read_day(f: p4.S0142File, pinned: dict[str, str]) -> tuple[p4.DaySummary, dict, str, bool]:
+    path = source_path(f)
     sha = sha256_file(path)
     if pinned.get(f.filename) != sha:
         raise SystemExit(f"refusing: {f.filename} does not match its acquisition digest")
@@ -203,6 +261,7 @@ def compute() -> None:
     amendment_1 = require_amendment_1()
     if not ACQUIRED_INDEX.exists():
         raise SystemExit(f"refusing: nothing acquired ({ACQUIRED_INDEX.name} absent)")
+    require_format()
     sel = selection()
     pinned = {
         Path(e["path"]).name: e["sha256"]
@@ -390,12 +449,14 @@ def compute() -> None:
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__.split("\n")[0])
     parser.add_argument("--seal", help="prefix (>= 8 hex) of DECLARATION.md's SHA-256")
-    parser.add_argument("--phase", choices=("index", "acquire", "compute"), required=True)
+    parser.add_argument("--phase", choices=("index", "acquire", "format", "compute"), required=True)
     args = parser.parse_args()
     if args.phase == "index":
         index(args.seal)
     elif args.phase == "acquire":
         acquire(args.seal)
+    elif args.phase == "format":
+        format_check()
     else:
         compute()
 

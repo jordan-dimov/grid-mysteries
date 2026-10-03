@@ -3,7 +3,7 @@
   "DECLARATION.md",
   "AMENDMENT-1.md"
  ],
- "note": "C2 is tested with R3; C4's band against Elexon's figures and the seal and freeze refusals are enforced by run.py against artefacts outside the pure logic (Elexon's February figures, the proof sidecar) and have no unit test. R5 is the choice of fields summed, covered by the R1-R3 tests. R6 (names from the pinned register) lands with the RESULTS renderer, after the run.",
+ "note": "C2 is tested with R3; C4's band against Elexon's figures and the seal and freeze refusals are enforced by run.py against artefacts outside the pure logic (Elexon's February figures, the proof sidecar) and have no unit test. R5 is the choice of fields summed, covered by the R1-R3 tests. R6 is enforced by the RESULTS renderer (rendering/compensation_pot.py), written after the run.",
  "rules": {
   "R1 the party is the BPH above the BP7, never the unit code": "tests/test_p415_compensation.py::test_the_party_is_the_bph_above_the_bp7_never_the_unit_code",
   "R1 a BP7 without a BPH and SP7 above it is an orphan": "tests/test_p415_compensation.py::test_a_bp7_without_a_bph_and_sp7_above_it_is_an_orphan",
@@ -26,6 +26,9 @@
   "H1 February decided on volume, 10-23 August on cash": "tests/test_p415_compensation.py::test_h1_against_february_is_decided_on_volume_and_against_august_on_cash",
   "H1 ratio of mean daily paid, killed below 0.50": "tests/test_p415_compensation.py::test_h1_is_a_ratio_of_mean_daily_cash_killed_below_the_threshold",
   "A1 one leading byte-order mark is dropped; any other non-ASCII byte stops the read": "tests/test_p415_compensation.py::test_a_leading_byte_order_mark_is_dropped_and_any_other_non_ascii_byte_stops_the_read",
-  "Format check: every selected file against the schema pass, departures named, no value read": "tests/test_s0142_format.py::test_each_departure_from_the_schema_pass_is_named"
+  "Format check: every selected file against the schema pass, departures named, no value read": "tests/test_s0142_format.py::test_each_departure_from_the_schema_pass_is_named",
+  "R6 names only from the pinned register; an id it does not carry stands alone": "tests/test_compensation_pot_page.py::test_names_come_only_from_the_register_and_a_tiny_share_keeps_its_sign",
+  "H3 holding marks every H1 and H2 verdict provisional; F1 and F2 in one sentence": "tests/test_compensation_pot_page.py::test_c4_leads_both_h1_baselines_share_a_sentence_and_h3_marks_every_verdict",
+  "F5 published before anything else, and no H verdict published while C4 fails": "tests/test_compensation_pot_page.py::test_a_failed_c4_is_said_first_and_withholds_the_verdicts"
  }
 }

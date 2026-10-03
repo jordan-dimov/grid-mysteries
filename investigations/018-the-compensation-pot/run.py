@@ -5,6 +5,7 @@
     uv run python investigations/018-the-compensation-pot/run.py --seal <prefix> --phase acquire
     uv run python investigations/018-the-compensation-pot/run.py --phase format
     uv run python investigations/018-the-compensation-pot/run.py --phase compute
+    uv run python investigations/018-the-compensation-pot/run.py --phase render
 
 ``index`` pins the P114 S0142 listing for every publication date from
 2025-09-03 to the day before the run and writes ``evidence/run-index.json``.
@@ -34,6 +35,7 @@ from grid_mysteries.corpus import REPO_ROOT
 from grid_mysteries.evidence import write_json
 from grid_mysteries.hashing import sha256_file
 from grid_mysteries.investigations import p415_compensation as p4
+from grid_mysteries.rendering import compensation_pot as page
 from grid_mysteries.sources import elexon, elexon_portal
 from grid_mysteries.sources import s0142_format as fmt
 from grid_mysteries.sources.pinning import load_journal, pin, progress
@@ -333,6 +335,17 @@ def compute() -> None:
         "missing_or_excluded": {
             "missing": {k: [str(d) for d in v] for k, v in sel["missing"].items()},
             "excluded": excluded,
+            # every file read that failed a decisive check, in any window or
+            # among RESTATE's runs, with what failed (R3's cells by position:prefix)
+            "files": {
+                name: {
+                    "failed": [k for k, v in chk.items() if not v],
+                    "off_prefix": dict(sorted(s.off_prefix.items())),
+                    "orphan_bp7": s.orphan_bp7,
+                }
+                for name, (s, chk) in sorted(summaries.items())
+                if not all(v for k, v in chk.items() if k.split()[0] in DECISIVE)
+            },
         },
         "C4": c4,
     }
@@ -408,7 +421,31 @@ def compute() -> None:
         elif provisional:
             h[k]["published"] = "provisional until POST reaches R1 (H3 holds)"
     results["hypotheses"] = h
+
+    def fired(k: str, killed: str) -> bool | None:
+        return None if h[k]["verdict"] == "not decided" else h[k]["verdict"] == killed
+
+    results["falsifiers"] = {
+        "F1 H1-FEB killed": fired("H1-FEB", "killed"),
+        "F2 H1-PRE killed": fired("H1-PRE", "killed"),
+        "F3 H2-VTP fails": fired("H2-VTP", "fails"),
+        "F4 H2-SUP fails": fired("H2-SUP", "fails"),
+        "F5 C4 fails": not c4["passes"],
+    }
+    totals = {
+        name: {
+            "days": len(v),
+            **{
+                m: sum((getattr(d, f"{m}_total") for d in v), Decimal(0))
+                for m in ("supplier_cash", "charged", "vtp_volume", "supplier_volume")
+            },
+        }
+        for name, v in windows.items()
+        if v
+    }
     results["context"] = {
+        # each window's totals over the days read (charged against paid)
+        "window_totals": totals,
         # PRE follows Ofgem's 10/08 decision and may already be affected.
         "h2_against_pre": h2_pre,
         "pre_almaperj_vtp_volume": {
@@ -446,10 +483,44 @@ def compute() -> None:
     print(f"C4: {'passes' if c4['passes'] else 'FAILS (F5)'}")
 
 
+def render() -> None:
+    """RESULTS.md from evidence/results.json and the register pinned at acquisition (R6)."""
+    results = json.loads((EVIDENCE / "results.json").read_text())
+    if results.get("amendment_1_sha256") != require_amendment_1():
+        raise SystemExit("refusing: results.json was not computed under the frozen Amendment 1")
+    (entry,) = json.loads((EVIDENCE / "register-manifest.json").read_text())
+    register = REPO_ROOT / entry["path"]
+    if sha256_file(register) != entry["sha256"]:
+        raise SystemExit("refusing: the BM unit register does not match its acquisition digest")
+    names: dict[str, str] = {}
+    for unit in json.loads(register.read_text()):
+        if unit.get("leadPartyId") and unit.get("leadPartyName"):
+            names.setdefault(unit["leadPartyId"], unit["leadPartyName"])
+    record = {
+        "register": f"{entry['path']} (SHA-256 {entry['sha256'][:16]}…)",
+        **{
+            f"{name} SHA-256": sha256_file(EVIDENCE / name)
+            for name in (
+                "results.json",
+                "days.ndjson",
+                "run-index-acquired.json",
+                "format-check.json",
+                "s0142-manifest.json",
+            )
+        },
+        "rule tests": "evidence/rule-sources.json",
+    }
+    out = HERE / "RESULTS.md"
+    out.write_text(page.render_results(results, names, record))
+    print(f"rendered {out.relative_to(REPO_ROOT)}")
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__.split("\n")[0])
     parser.add_argument("--seal", help="prefix (>= 8 hex) of DECLARATION.md's SHA-256")
-    parser.add_argument("--phase", choices=("index", "acquire", "format", "compute"), required=True)
+    parser.add_argument(
+        "--phase", choices=("index", "acquire", "format", "compute", "render"), required=True
+    )
     args = parser.parse_args()
     if args.phase == "index":
         index(args.seal)
@@ -457,6 +528,8 @@ def main() -> None:
         acquire(args.seal)
     elif args.phase == "format":
         format_check()
+    elif args.phase == "render":
+        render()
     else:
         compute()
 

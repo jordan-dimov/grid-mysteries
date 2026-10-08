@@ -62,12 +62,25 @@ accepted proposal, in the same commit:
 2. refresh `claims-export.json` (`morpholog inspect claims`);
 3. record a new signed checkpoint over the extended log, witnessed by
    two RFC 3161 authorities (freetsa.org, DigiCert), into
-   `audit-anchor.json`, and re-export `evidence-pack.ndjson`.
+   `audit-anchor.json`, and re-export `evidence-pack.ndjson`;
+4. re-issue `receipts/metric-retention.json`, the record's one derived
+   read (`MetricRetention`, v2) as a receipt naming the programme hash,
+   the semantics version, the checkpoint and the answer, which
+   `scripts/verify-research-pack` recomputes from the pack alone
+   (`morpholog audit verify-receipt`, v0.0.14).
 
-Checkpoints before tree_size 140 carry no witness. freetsa.org's tokens
-are stored but reported `unsupported` by Morpholog v0.0.11 to v0.0.13,
-which cannot yet check their signature algorithm (ECDSA with SHA-512; morpholog#386);
-DigiCert's verify against `trust/tsa/`.
+`scripts/record` does all four. A pack that discloses a row written on
+Morpholog v0.0.14 or later is pack format 13 and needs a verifier of that
+version (an older one refuses it by name); the rows written before
+08/10/2026 carry no programme hash, semantics version or draw list, and
+the pack says so rather than guessing them.
+
+Checkpoints before tree_size 140 carry no witness. Both authorities'
+tokens verify against the roots in `trust/tsa/` from Morpholog v0.0.14
+(morpholog#470); freetsa.org's were stored but reported `unsupported` by
+v0.0.11 to v0.0.13, which could not check their signature algorithm (ECDSA
+P-384 with SHA-512; morpholog#386), so a report of that era says
+`unsupported` for them and nothing weaker.
 
 `scripts/replay-research` fails if any of these drift, so CI enforces the
 discipline. The research doctrine for *what* belongs in the record (narrow

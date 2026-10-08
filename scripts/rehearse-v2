@@ -36,10 +36,17 @@ H_URL="postgres://${HUMAN_ROLE}:rehearse-human@${HOST}/${DB}"
 M_URL="postgres://${MACHINE_ROLE}:rehearse-machine@${HOST}/${DB}"
 PROG=morpholog/research-v2-draft.morph
 
+# The deployment's own writer/reader pair (v0.0.14: `init --least-privilege`
+# creates them and refuses a pair that exists but this database does not
+# record, so a rehearsal on a cluster that has run one before needs its
+# roles dropped with its database, and a prefix no live deployment uses).
+ROLE_PREFIX=gm_rehearsal_
 psql "$ADMIN_URL" -q <<SQL
 DROP DATABASE IF EXISTS ${DB};
 DROP ROLE IF EXISTS ${HUMAN_ROLE};
 DROP ROLE IF EXISTS ${MACHINE_ROLE};
+DROP ROLE IF EXISTS ${ROLE_PREFIX}writer;
+DROP ROLE IF EXISTS ${ROLE_PREFIX}reader;
 CREATE ROLE ${HUMAN_ROLE} LOGIN PASSWORD 'rehearse-human';
 CREATE ROLE ${MACHINE_ROLE} LOGIN PASSWORD 'rehearse-machine';
 CREATE DATABASE ${DB};
@@ -55,9 +62,9 @@ ADMIN_DB_URL="${ADMIN_URL%/*}/${DB}"
 # not close the substrate bypass (see section H).
 reset_db() {
   morpholog init --database-url "$ADMIN_DB_URL" --reset --i-know-this-deletes-data \
-    --least-privilege >/dev/null 2>&1
+    --least-privilege --role-prefix "$ROLE_PREFIX" >/dev/null 2>&1
   psql "$ADMIN_DB_URL" -q <<SQL
-GRANT morpholog_writer TO ${HUMAN_ROLE}, ${MACHINE_ROLE};
+GRANT ${ROLE_PREFIX}writer TO ${HUMAN_ROLE}, ${MACHINE_ROLE};
 SQL
 }
 
@@ -334,17 +341,22 @@ print('   OK  audit verify exits non-zero and reports replay DIVERGENT (forged c
 print('       (but the seal already emitted acquisition authority — detection cannot un-see data)')
 EOF
 echo "   -- and attestation.authenticated_by is ALSO forgeable (raw DML on morpholog.audit):"
-# An audit row must name its parameters, one per argument. The forger
-# supplies them as easily as the attestation.
+# An audit row must name its parameters, one per argument, and from
+# v0.0.14 the programme hash that admitted it, the semantics version that
+# decided it and the subjects it drew. The forger supplies every one of
+# them as easily as the attestation: the hash is what `morpholog hash`
+# prints, the version is in every genuine row beside it. (Columns named,
+# never positional: a migrated database orders them differently.)
+forged_hash=$(morpholog hash "$PROG" | python3 -c "import json,sys; print(json.load(sys.stdin)['hash'])")
 psql "$M_URL" -q -tAc \
   "INSERT INTO morpholog.audit (transition_id, transformation_name, arguments, actor,
      invariant_epoch, invariants_checked, asserted_claims, retracted_claims, emitted_intents, attestation,
-     parameters)
+     parameters, model_hash, semantics_version, drawn_subjects)
    VALUES (gen_random_uuid(), 'seal_protocol', '[]'::jsonb,
      '{\"type\":\"subject\",\"value\":\"jordan_dimov\"}'::jsonb, 1,
      '[]'::jsonb, '[]'::jsonb, '[]'::jsonb, '[]'::jsonb,
      '{\"mode\":\"gateway\",\"authenticated_by\":\"${HUMAN_ROLE}\"}'::jsonb,
-     '[]'::jsonb)" >/dev/null
+     '[]'::jsonb, '${forged_hash}', 1, '[]'::jsonb)" >/dev/null
 forged_att=$(psql "$ADMIN_DB_URL" -tAc \
   "select attestation->>'authenticated_by' from morpholog.audit
    where transformation_name='seal_protocol' and asserted_claims='[]'::jsonb limit 1")

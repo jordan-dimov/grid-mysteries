@@ -16,10 +16,22 @@
 #    to a stated quantum). A governed number nobody can trace back to a
 #    file is exactly the hole EvidenceMetric exists to close.
 #
+# 4. PROVISIONED: the database holds every index and statistics object
+#    the three programmes need (`provision indexes --check`, v0.0.14). A
+#    programme deployed after a provisioning run is unprovisioned until the
+#    step is run again; the Bill record went four days that way.
+#
 # Needs DATABASE_URL. Read-only: proposes nothing, writes nothing.
 set -euo pipefail
 cd "$(dirname "$0")/.."
 export PATH="${HOME}/.local/bin:${PATH}"
+echo "== provisioning (every programme the record serves, one call)"
+morpholog provision indexes morpholog/research.morph morpholog/research-v2-draft.morph \
+  morpholog/research-v3-draft.morph --check --database-url "${DATABASE_URL:?check-record: DATABASE_URL is unset}" >/dev/null \
+  || { echo "check-record: the database is not provisioned for its programmes; run" >&2
+       echo "  morpholog provision indexes morpholog/research.morph morpholog/research-v2-draft.morph morpholog/research-v3-draft.morph --prune" >&2
+       exit 1; }
+echo "   provisioned and current"
 exec uv run python - "$@" <<'PY'
 import json, os, subprocess, sys
 from decimal import Decimal

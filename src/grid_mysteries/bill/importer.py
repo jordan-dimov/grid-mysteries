@@ -359,6 +359,7 @@ def run(
     tracker = json.loads(raw)
     tracker_sha256 = hashlib.sha256(raw).hexdigest()
     api = RECORD.client(repo_root, database_url)
+    record.provisioned(api, "import")
     try:
         p = plan(read_state(api), tracker, tracker_sha256)
     except PlanError as exc:

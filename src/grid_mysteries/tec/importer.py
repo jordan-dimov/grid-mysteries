@@ -158,6 +158,7 @@ def run(
     marker = record.marker_path(repo_root, RECORD, database_url)
     record.refuse_if_marked(marker, "CurrentVintage, Importing")
     api = RECORD.client(repo_root, database_url)
+    record.provisioned(api, "import")
     prior, held, open_import = read_state(api)
     if open_import:
         raise record.ImportError_("the record has an import open (Importing): refusing to continue")

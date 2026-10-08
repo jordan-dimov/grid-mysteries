@@ -43,7 +43,7 @@ a positive non-commit.
 ## Running it (the laptop, by hand, after the runner has computed)
 
 ```bash
-uv run python -m grid_mysteries.bill import                 # one transact
+uv run python -m grid_mysteries.bill import                 # one transact; refuses an unprovisioned database first
 uv run python -m grid_mysteries.bill checkpoint --witness   # signs; DigiCert countersigns
 uv run python -m grid_mysteries.bill verify
 ```

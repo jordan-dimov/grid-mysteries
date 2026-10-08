@@ -1002,16 +1002,24 @@ _AUDIT_ROW_KEYS = {
     "committed_at",
 }
 
-_AUDIT_ROW_OPTIONAL_KEYS = {"attestation", "parameters"}
+_AUDIT_ROW_OPTIONAL_KEYS = {
+    "attestation",
+    "parameters",
+    "model_hash",
+    "semantics_version",
+    "drawn_subjects",
+}
 
 
 def _parameters_of(data: dict[str, object]) -> list[str] | None:
     """The stamped parameter names, held to the shapes a row can have:
     names are strings (leaf-covered evidence, never coerced), only an
     attested row carries them, and there is one per argument."""
-    raw = data.get("parameters")
-    if raw is None:
+    if "parameters" not in data:
         return None
+    raw = data["parameters"]
+    if raw is None:
+        raise EnvelopeError("an audit row carries parameters: null; absent is the only spelling")
     names = _str_list("parameters", raw)
     if data.get("attestation") is None:
         raise EnvelopeError("an audit row carries parameter names but no attestation")
@@ -1022,6 +1030,68 @@ def _parameters_of(data: dict[str, object]) -> list[str] | None:
             f"{len(arguments) if isinstance(arguments, list) else '?'} arguments"
         )
     return names
+
+
+def _model_hash_of(data: dict[str, object]) -> str | None:
+    """The programme hash a row names, held to its one shape: `sha256:`
+    and 64 lowercase hex digits, only on a row that also carries an
+    attestation and parameter names."""
+    raw = data.get("model_hash", _ABSENT)
+    if raw is _ABSENT:
+        return None
+    if (
+        not isinstance(raw, str)
+        or not raw.startswith("sha256:")
+        or len(raw) != 71
+        or any(c not in "0123456789abcdef" for c in raw[7:])
+    ):
+        raise EnvelopeError(f"an audit row carries a malformed model hash {raw!r}")
+    if data.get("attestation") is None or data.get("parameters") is None:
+        raise EnvelopeError(
+            "an audit row carries a model hash without an attestation and parameter names"
+        )
+    return raw
+
+
+def _semantics_version_of(data: dict[str, object]) -> int | None:
+    """The semantics version a row names, held to its shape: an integer in
+    the u32 range from 1, only on a row that also names its programme."""
+    raw = data.get("semantics_version", _ABSENT)
+    if raw is _ABSENT:
+        return None
+    if isinstance(raw, bool) or not isinstance(raw, int) or not 1 <= raw <= 0xFFFFFFFF:
+        raise EnvelopeError(f"an audit row carries a malformed semantics version {raw!r}")
+    if data.get("model_hash") is None:
+        raise EnvelopeError("an audit row carries a semantics version without a model hash")
+    return raw
+
+
+def _drawn_subjects_of(data: dict[str, object]) -> list[str] | None:
+    """The subjects a row records its act drawing, in order: strings,
+    possibly none, only on a row that also names its semantics."""
+    if "drawn_subjects" not in data:
+        return None
+    raw = data["drawn_subjects"]
+    if raw is None:
+        raise EnvelopeError(
+            "an audit row carries drawn_subjects: null; absent is the only spelling"
+        )
+    drawn = _str_list("drawn_subjects", raw)
+    if data.get("semantics_version") is None:
+        raise EnvelopeError("an audit row records drawn subjects without a semantics version")
+    return drawn
+
+
+_ABSENT = object()
+
+
+def _passes(label: str, data: dict[str, object]) -> bool:
+    """A report's own verdict on whether its verification passed: a JSON
+    boolean, never coerced."""
+    raw = data["passes"]
+    if not isinstance(raw, bool):
+        raise EnvelopeError(f"{label}: passes must be a boolean, got {raw!r}")
+    return raw
 
 
 @dataclass(frozen=True)
@@ -1058,8 +1128,12 @@ class Attestation:
 
 
 def _attestation_of(data: dict[str, object]) -> Attestation | None:
-    raw = data.get("attestation")
-    return None if raw is None else Attestation.from_json(raw)
+    if "attestation" not in data:
+        return None
+    raw = data["attestation"]
+    if raw is None:
+        raise EnvelopeError("an audit row carries attestation: null; absent is the only spelling")
+    return Attestation.from_json(raw)
 
 
 @dataclass(frozen=True)
@@ -1086,6 +1160,15 @@ class AuditRow:
     # readable after the act is retired. None on rows from before names
     # were stamped.
     parameters: list[str] | None = None
+    # The canonical hash of the whole programme that admitted the row, as
+    # `morpholog hash` prints it. None on rows from before it was stamped.
+    model_hash: str | None = None
+    # The version of the kernel's semantics that decided the row. None on
+    # rows from before it was stamped.
+    semantics_version: int | None = None
+    # The subjects the act drew from `new Subject()`, in draw order; empty
+    # when it drew none. None on rows from before draws were recorded.
+    drawn_subjects: list[str] | None = None
 
     @classmethod
     def from_json(cls, payload: object) -> AuditRow:
@@ -1105,6 +1188,9 @@ class AuditRow:
             committed_at=values.parse_timestamp(data["committed_at"]),
             attestation=_attestation_of(data),
             parameters=_parameters_of(data),
+            model_hash=_model_hash_of(data),
+            semantics_version=_semantics_version_of(data),
+            drawn_subjects=_drawn_subjects_of(data),
         )
 
 
@@ -1131,6 +1217,15 @@ class AuditRowNamed:
     # readable after the act is retired. None on rows from before names
     # were stamped.
     parameters: list[str] | None = None
+    # The canonical hash of the whole programme that admitted the row, as
+    # `morpholog hash` prints it. None on rows from before it was stamped.
+    model_hash: str | None = None
+    # The version of the kernel's semantics that decided the row. None on
+    # rows from before it was stamped.
+    semantics_version: int | None = None
+    # The subjects the act drew from `new Subject()`, in draw order; empty
+    # when it drew none. None on rows from before draws were recorded.
+    drawn_subjects: list[str] | None = None
 
     @classmethod
     def from_json(cls, payload: object) -> AuditRowNamed:
@@ -1150,6 +1245,9 @@ class AuditRowNamed:
             committed_at=values.parse_timestamp(data["committed_at"]),
             attestation=_attestation_of(data),
             parameters=_parameters_of(data),
+            model_hash=_model_hash_of(data),
+            semantics_version=_semantics_version_of(data),
+            drawn_subjects=_drawn_subjects_of(data),
         )
 
 
@@ -1295,17 +1393,110 @@ class Diagnostic:
         )
 
 
+_CHECK_ROUTES = frozenset({"compiled", "interpreted"})
+_REFUSAL_KINDS = frozenset(
+    {
+        "construct",
+        "comparison_domain",
+        "argument_kind",
+        "literal",
+        "sum_shape",
+        "comparison_shape",
+    }
+)
+
+
+def _member(label: str, value: object, known: AbstractSet[str]) -> str:
+    if not isinstance(value, str) or value not in known:
+        raise EnvelopeError(
+            f"{label}: unknown value {value!r} - the binary's contract has "
+            f"drifted past this generated client; regenerate it"
+        )
+    return value
+
+
+@dataclass(frozen=True)
+class CheckRefusal:
+    """Why an invariant is interpreted: ``kind`` from a closed list, and
+    the ``message`` that ``check -v`` prints."""
+
+    kind: str
+    message: str
+
+    @classmethod
+    def from_json(cls, payload: object) -> CheckRefusal:
+        data = _strict("check refusal", payload, {"kind", "message"})
+        return cls(
+            kind=_member("check refusal kind", data["kind"], _REFUSAL_KINDS),
+            message=data["message"],
+        )
+
+
+@dataclass(frozen=True)
+class CheckedInvariant:
+    """One invariant and the route the binary plans for it: ``compiled``
+    (checked in SQL) or ``interpreted`` (checked by the kernel, with the
+    refusal that kept it out of SQL)."""
+
+    name: str
+    route: str
+    refusal: CheckRefusal | None = None
+
+    @classmethod
+    def from_json(cls, payload: object) -> CheckedInvariant:
+        data = _strict("checked invariant", payload, {"name", "route"}, {"refusal"})
+        route = _member("checked invariant route", data["route"], _CHECK_ROUTES)
+        if (route == "interpreted") != ("refusal" in data):
+            raise EnvelopeError(
+                f"checked invariant: a refusal belongs to an interpreted invariant "
+                f"and only to one, got {payload!r}"
+            )
+        return cls(
+            name=data["name"],
+            route=route,
+            refusal=CheckRefusal.from_json(data["refusal"]) if "refusal" in data else None,
+        )
+
+
 @dataclass(frozen=True)
 class CheckReport:
+    """The findings for one file, and the route this binary plans for each
+    invariant. ``invariants`` is ``None`` only when parsing or validation
+    left no programme to plan; an empty list is a programme with no
+    invariants. The route belongs to the programme and the binary
+    together: another version may plan differently."""
+
     file: str
     diagnostics: list[Diagnostic]
+    invariants: list[CheckedInvariant] | None = None
+
+    @property
+    def route(self) -> str | None:
+        """``compiled``, ``interpreted`` or ``mixed`` over every invariant,
+        as ``check -v`` says it; ``None`` when there is no plan. A
+        programme with no invariants is ``compiled``, as the runtime
+        treats it."""
+        if self.invariants is None:
+            return None
+        routes = {i.route for i in self.invariants}
+        if routes <= {"compiled"}:
+            return "compiled"
+        if routes == {"interpreted"}:
+            return "interpreted"
+        return "mixed"
 
     @classmethod
     def from_json(cls, payload: object) -> CheckReport:
-        data = _strict("check report", payload, {"file", "diagnostics"})
+        data = _strict("check report", payload, {"file", "diagnostics"}, {"invariants"})
+        invariants = None
+        if "invariants" in data:
+            if not isinstance(data["invariants"], list):
+                raise EnvelopeError(f"check report: invariants is not a list in {payload!r}")
+            invariants = [CheckedInvariant.from_json(i) for i in data["invariants"]]
         return cls(
             file=data["file"],
             diagnostics=[Diagnostic.from_json(d) for d in data["diagnostics"]],
+            invariants=invariants,
         )
 
 
@@ -1548,6 +1739,15 @@ class ProvisionReport:
         """Something under Morpholog's own name has another definition. The
         run applied nothing and an operator has to look."""
         return any(e.action == "conflict" for e in (*self.indexes, *self.statistics))
+
+    @property
+    def is_current(self) -> bool:
+        """Nothing is outstanding: every index is kept or satisfied by
+        another, every statistics object kept. What `provision indexes
+        --check` passes."""
+        return all(i.action in ("keep", "satisfied_externally") for i in self.indexes) and all(
+            s.action == "keep" for s in self.statistics
+        )
 
     @property
     def pruned(self) -> list[str]:
@@ -2107,8 +2307,14 @@ class VerifyReport:
     tamper-evidence verdict, the login roles seen under a new OID in the
     rows the tree covered, plus the generated-view-surface verdict when
     the verifier asked for it (`--views-schema`), plus what the
-    checkpoints' external witnesses prove when any carries one."""
+    checkpoints' external witnesses prove when any carries one.
 
+    `passes` is whether the verification passed under the checks it was
+    asked for, decided as the binary's exit code is: replay consistent, tree
+    intact, a checked view surface not tampered (`not_sealed` passes), and
+    no witness judged invalid. Read it rather than re-deriving the rule."""
+
+    passes: bool
     replay: ReplayConsistent | ReplayDivergent
     tree: TreeVerification
     role_rebindings: RoleRebindings
@@ -2120,12 +2326,13 @@ class VerifyReport:
         data = _strict(
             "verify report",
             payload,
-            {"replay", "tree", "role_rebindings"},
+            {"passes", "replay", "tree", "role_rebindings"},
             optional={"views", "witnesses"},
         )
         views = data.get("views")
         witnesses = data.get("witnesses")
         return cls(
+            passes=_passes("verify report", data),
             replay=parse_verify_outcome(data["replay"]),
             tree=parse_tree_verification(data["tree"]),
             role_rebindings=parse_role_rebindings(data["role_rebindings"]),
@@ -2747,8 +2954,15 @@ class PackVerificationReport(Generic[_PackVerdict]):
     """The `verify-pack` envelope: the pack's own verdict, the login roles
     seen under a new OID among its rows, and, when asked for, what its
     checkpoints' witnesses prove. ``witnesses`` is absent unless requested,
-    or when no checkpoint in the pack carries one."""
+    or when no checkpoint in the pack carries one.
 
+    ``passes`` is whether the verification passed under the checks it was
+    asked for, decided as the binary's exit code is: an intact verdict and
+    no witness judged ``invalid``. ``verified``, ``untrusted``,
+    ``unverified`` and ``unsupported`` do not fail it, and witnesses not
+    asked for were not judged. Read it rather than re-deriving the rule."""
+
+    passes: bool
     verdict: _PackVerdict
     role_rebindings: RoleRebindings
     witnesses: WitnessesReport | None = None
@@ -2760,12 +2974,305 @@ class PackVerificationReport(Generic[_PackVerdict]):
         data = _strict(
             "pack verification report",
             payload,
-            {"verdict", "role_rebindings"},
+            {"passes", "verdict", "role_rebindings"},
             optional={"witnesses"},
         )
         witnesses = data.get("witnesses")
         return cls(
+            passes=_passes("pack verification report", data),
             verdict=parse_verdict(data["verdict"]),
             role_rebindings=parse_role_rebindings(data["role_rebindings"]),
             witnesses=None if witnesses is None else WitnessesReport.from_json(witnesses),
+        )
+
+
+@dataclass(frozen=True)
+class ReceiptCheckpoint:
+    """The history a receipt names: what a checkpoint commits to.
+    Signatures and witnesses are outside it."""
+
+    tree_size: int
+    root_hash: str
+    checkpoint_hash: str
+
+    @classmethod
+    def from_json(cls, payload: object) -> ReceiptCheckpoint:
+        data = _strict(
+            "receipt checkpoint", payload, {"tree_size", "root_hash", "checkpoint_hash"}
+        )
+        return cls(
+            tree_size=int(str(data["tree_size"])),
+            root_hash=str(data["root_hash"]),
+            checkpoint_hash=str(data["checkpoint_hash"]),
+        )
+
+
+@dataclass(frozen=True)
+class ReceiptQuery:
+    """The question a receipt answers: every row of a derived claim."""
+
+    kind: str
+    predicate: str
+
+    @classmethod
+    def from_json(cls, payload: object) -> ReceiptQuery:
+        data = _strict("receipt query", payload, {"kind", "predicate"})
+        if data["kind"] != "derived":
+            raise EnvelopeError(f"not a receipt query: {payload!r}")
+        return cls(kind="derived", predicate=str(data["predicate"]))
+
+
+@dataclass(frozen=True)
+class EvaluationReceipt:
+    """The `audit receipt` envelope: under the programme `program_hash`
+    names and semantics `semantics_version`, over the history `checkpoint`
+    commits to, `query` gives `answer`. `audit_verify_receipt` recomputes
+    it; the answer is never trusted for being stated."""
+
+    receipt_format_version: int
+    program_hash: str
+    semantics_version: int
+    checkpoint: ReceiptCheckpoint
+    query: ReceiptQuery
+    answer: list[ClaimInstance]
+
+    @classmethod
+    def from_json(cls, payload: object) -> EvaluationReceipt:
+        data = _strict(
+            "evaluation receipt",
+            payload,
+            {
+                "receipt_format_version",
+                "program_hash",
+                "semantics_version",
+                "checkpoint",
+                "query",
+                "answer",
+            },
+        )
+        answer = data["answer"]
+        if not isinstance(answer, list):
+            raise EnvelopeError(f"evaluation receipt: answer is not a list: {answer!r}")
+        return cls(
+            receipt_format_version=int(str(data["receipt_format_version"])),
+            program_hash=str(data["program_hash"]),
+            semantics_version=int(str(data["semantics_version"])),
+            checkpoint=ReceiptCheckpoint.from_json(data["checkpoint"]),
+            query=ReceiptQuery.from_json(data["query"]),
+            answer=[ClaimInstance.from_json(c) for c in answer],
+        )
+
+
+def _status_only(label: str) -> Callable[[object], str]:
+    """A variant that carries nothing but its status, read as that
+    status."""
+
+    def parse(payload: object) -> str:
+        return str(_strict(label, payload, {"status"})["status"])
+
+    return parse
+
+
+@dataclass(frozen=True)
+class ReceiptMalformed:
+    """The receipt does not parse, or is not in its one canonical form."""
+
+    detail: str
+
+    @classmethod
+    def from_json(cls, payload: object) -> ReceiptMalformed:
+        data = _strict("malformed receipt", payload, {"status", "detail"})
+        return cls(detail=str(data["detail"]))
+
+
+@dataclass(frozen=True)
+class CheckpointDiffers:
+    """The pack covers another history than the receipt names."""
+
+    receipt: ReceiptCheckpoint
+    pack: ReceiptCheckpoint
+
+    @classmethod
+    def from_json(cls, payload: object) -> CheckpointDiffers:
+        data = _strict("differing checkpoint", payload, {"status", "receipt", "pack"})
+        return cls(
+            receipt=ReceiptCheckpoint.from_json(data["receipt"]),
+            pack=ReceiptCheckpoint.from_json(data["pack"]),
+        )
+
+
+@dataclass(frozen=True)
+class ProgramDiffers:
+    """The supplied programme means something other than the receipt
+    names; comments, formatting and surface spelling never cause this."""
+
+    receipt: str
+    supplied: str
+
+    @classmethod
+    def from_json(cls, payload: object) -> ProgramDiffers:
+        data = _strict("differing programme", payload, {"status", "receipt", "supplied"})
+        return cls(receipt=str(data["receipt"]), supplied=str(data["supplied"]))
+
+
+@dataclass(frozen=True)
+class AnswerDiffers:
+    """Rows the recomputation gives that the receipt lacks (`missing`),
+    and rows the receipt states that it does not give (`unexpected`)."""
+
+    missing: int
+    unexpected: int
+
+    @classmethod
+    def from_json(cls, payload: object) -> AnswerDiffers:
+        data = _strict("differing answer", payload, {"status", "missing", "unexpected"})
+        return cls(missing=int(str(data["missing"])), unexpected=int(str(data["unexpected"])))
+
+
+@dataclass(frozen=True)
+class QueryUnknown:
+    """The programme derives no such predicate: not an empty answer."""
+
+    predicate: str
+
+    @classmethod
+    def from_json(cls, payload: object) -> QueryUnknown:
+        data = _strict("unknown query", payload, {"status", "predicate"})
+        return cls(predicate=str(data["predicate"]))
+
+
+@dataclass(frozen=True)
+class EvaluationErrored:
+    """Recomputing the answer raised an evaluation error."""
+
+    detail: str
+
+    @classmethod
+    def from_json(cls, payload: object) -> EvaluationErrored:
+        data = _strict("errored evaluation", payload, {"status", "detail"})
+        return cls(detail=str(data["detail"]))
+
+
+@dataclass(frozen=True)
+class NotReEvaluated:
+    """Every other layer holds, but the receipt was computed under
+    semantics this binary does not implement."""
+
+    receipt_semantics: int
+    binary_semantics: int
+
+    @classmethod
+    def from_json(cls, payload: object) -> NotReEvaluated:
+        data = _strict(
+            "evaluation not re-run",
+            payload,
+            {"status", "receipt_semantics", "binary_semantics"},
+        )
+        return cls(
+            receipt_semantics=int(str(data["receipt_semantics"])),
+            binary_semantics=int(str(data["binary_semantics"])),
+        )
+
+
+_PACK_VERDICT_PARSERS: dict[str, Callable[[object], object]] = {
+    "prefix": lambda v: parse_tree_verification(v),
+    "window": lambda v: parse_window_verification(v),
+    "selective": lambda v: parse_selective_verification(v),
+}
+
+
+@dataclass(frozen=True)
+class ReceiptVerificationReport:
+    """The `audit verify-receipt` envelope, one layer per field. A layer
+    that carries nothing but its status reads as that status (`complete`,
+    `matches`, `reproduced`, `not_checked`, `not_evaluated`...).
+    `evidence` is the pack's own report, with a verdict of the kind
+    `verdict_kind` names. Evaluation runs only when the evidence is an
+    intact complete prefix and the checkpoint and programme match; a
+    witness judged invalid in `evidence` fails the receipt without
+    stopping it, so `evaluation == "reproduced"` alone is not a pass.
+    `passes` is the binary's verdict over every layer, decided as its exit
+    code is: read it rather than re-deriving the rule."""
+
+    passes: bool
+    receipt: str | ReceiptMalformed
+    verdict_kind: str
+    evidence: PackVerificationReport[TreeVerification | WindowVerification | SelectiveVerification]
+    completeness: str
+    checkpoint: str | CheckpointDiffers
+    program: str | ProgramDiffers
+    evaluation: str | AnswerDiffers | QueryUnknown | EvaluationErrored | NotReEvaluated
+
+    @classmethod
+    def from_json(cls, payload: object) -> ReceiptVerificationReport:
+        data = _strict(
+            "receipt verification report",
+            payload,
+            {
+                "passes",
+                "receipt",
+                "verdict_kind",
+                "evidence",
+                "completeness",
+                "checkpoint",
+                "program",
+                "evaluation",
+            },
+        )
+        verdict_kind = data["verdict_kind"]
+        parse_verdict = (
+            _PACK_VERDICT_PARSERS.get(verdict_kind) if isinstance(verdict_kind, str) else None
+        )
+        if parse_verdict is None:
+            raise EnvelopeError(f"not a verdict kind: {verdict_kind!r}")
+        return cls(
+            passes=_passes("receipt verification report", data),
+            receipt=_by_status(
+                data["receipt"],
+                "a receipt form",
+                {
+                    "well_formed": _status_only("well-formed receipt"),
+                    "malformed": ReceiptMalformed.from_json,
+                },
+            ),
+            verdict_kind=verdict_kind,
+            evidence=PackVerificationReport.from_json(data["evidence"], parse_verdict),
+            completeness=_by_status(
+                data["completeness"],
+                "a completeness finding",
+                {
+                    status: _status_only("completeness")
+                    for status in ("complete", "not_complete", "not_checked")
+                },
+            ),
+            checkpoint=_by_status(
+                data["checkpoint"],
+                "a checkpoint finding",
+                {
+                    "matches": _status_only("matching checkpoint"),
+                    "differs": CheckpointDiffers.from_json,
+                    "not_checked": _status_only("unchecked checkpoint"),
+                },
+            ),
+            program=_by_status(
+                data["program"],
+                "a programme finding",
+                {
+                    "matches": _status_only("matching programme"),
+                    "differs": ProgramDiffers.from_json,
+                    "not_checked": _status_only("unchecked programme"),
+                },
+            ),
+            evaluation=_by_status(
+                data["evaluation"],
+                "an evaluation finding",
+                {
+                    "reproduced": _status_only("reproduced answer"),
+                    "differs": AnswerDiffers.from_json,
+                    "query_unknown": QueryUnknown.from_json,
+                    "errored": EvaluationErrored.from_json,
+                    "not_re_evaluated": NotReEvaluated.from_json,
+                    "not_evaluated": _status_only("unevaluated answer"),
+                },
+            ),
         )

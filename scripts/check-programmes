@@ -18,9 +18,14 @@ pinned() { # <programme> <pin file> -> refuses on a hash other than the pinned o
   fi
 }
 
-route() { # <programme> -> the `invariant checks:` line of `morpholog check -v`
-  # Prose, until `check --json` carries the route per invariant (morpholog#410).
-  morpholog check -v "$1" | sed -n 's/^  invariant checks: //p'
+route() { # <programme> -> `compiled`, or `mixed, N compiled, M interpreted`
+  # From `check --json`, which reports each invariant's route (v0.0.14, #445).
+  morpholog check --json "$1" | python3 -c '
+import json, sys
+routes = [i["route"] for i in json.load(sys.stdin)["invariants"]]
+compiled = routes.count("compiled")
+print("compiled" if compiled == len(routes) else
+      f"mixed, {compiled} compiled, {len(routes) - compiled} interpreted")'
 }
 
 for programme in morpholog/research.morph morpholog/research-v2-draft.morph \

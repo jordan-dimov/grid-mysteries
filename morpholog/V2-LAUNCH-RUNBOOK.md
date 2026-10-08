@@ -375,6 +375,14 @@ psql -d grid_mysteries_morpholog
 > carry no OID, so the first rows after the re-creation cannot be compared
 > with them, and the finding stays empty. That is stated here so nobody
 > reads the empty finding as proof the roles were never re-created.
+>
+> **08/10/2026:** Morpholog v0.0.14 records each deployment's own
+> writer/reader pair, and this record moved that day from the cluster pair
+> to `gm_research_writer` / `gm_research_reader`: `gm_human` is now a
+> member of `gm_research_writer` and `gm_machine` of `gm_research_reader`
+> (the `GRANT morpholog_writer` / `morpholog_reader` lines above and in
+> the 23/09 amendment are history). The move, and what it leaves alone, is
+> in `MIGRATION-RUNBOOK.md` ("Each deployment's own roles").
 
 `REVOKE CONNECT ... FROM PUBLIC` first: PostgreSQL grants CONNECT on every
 database to PUBLIC by default, and roles are cluster-wide, so without it any

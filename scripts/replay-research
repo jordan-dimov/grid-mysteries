@@ -108,4 +108,14 @@ print(f'   {len(replayed)} claims identical')
 echo "== replayed audit log self-verification"
 morpholog audit verify --database-url "$REPLAY_URL"
 
+# The deploy gate (v0.0.14, #467): every index and statistics object the
+# three programmes need, provisioned in ONE call and then checked, so the
+# replayed database stands as a deployment would and check-record's
+# provisioning check has something to pass against.
+echo "== indexes and statistics the programmes need (provision, then check)"
+RESEARCH_PROGRAMMES=(morpholog/research.morph morpholog/research-v2-draft.morph morpholog/research-v3-draft.morph)
+morpholog provision indexes "${RESEARCH_PROGRAMMES[@]}" --prune --database-url "$REPLAY_URL" >/dev/null
+morpholog provision indexes "${RESEARCH_PROGRAMMES[@]}" --check --database-url "$REPLAY_URL" >/dev/null
+echo "   provisioned and current"
+
 echo "replay-research: OK"

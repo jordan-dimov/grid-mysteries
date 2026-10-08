@@ -183,6 +183,27 @@ def guarded_transact(
     return outcome
 
 
+def provisioned(api: Any, label: str) -> None:
+    """The deploy gate (Morpholog v0.0.14, #467): refuse to write until the
+    database holds every index and statistics object the engine's programme
+    needs. Changes nothing. The Bill record ran unprovisioned from its launch
+    on 26/09/2026 to the 30/09 migration because nothing asked; this asks on
+    every import."""
+    report = api.provision_indexes(check=True)
+    if not report.is_current:
+        wanting = [f"{i.name} {i.action}" for i in report.indexes if i.action != "KEEP"] + [
+            f"{st.name} {st.action}" for st in report.statistics if st.action != "KEEP"
+        ]
+        raise ImportError_(
+            f"{label}: the database is not provisioned for the programme "
+            f"({len(wanting)} index/statistics object(s) to act on: "
+            + "; ".join(wanting[:6])
+            + ("; …" if len(wanting) > 6 else "")
+            + "). Run `morpholog provision indexes <programme> --prune` (every programme "
+            "the database serves, one call) and retry."
+        )
+
+
 # ------------------------------------------------------ checkpoint and pack
 
 
@@ -230,8 +251,6 @@ def exported_pack(
     """The complete pack at the anchor's tree size, exported once and kept,
     verified offline against the anchor with the pinned key and the DigiCert
     root every time it is asked for."""
-    from morpholog_client import envelopes
-
     tree = int(anchor["tree_size"])
     pack = record.packs / f"tree-{tree}.ndjson"
     api = record.client(REPO_ROOT, database_url)
@@ -248,16 +267,16 @@ def exported_pack(
         require_signing_key=str(record.public_key),
         trusted_tsa_file=str(DIGICERT_ROOT),
     )
-    # The command's own pass rule, restated here until the report carries a
-    # `passes` boolean (morpholog#435): the verdict must be intact and no
-    # witness `invalid`; `unsupported` and `unverified` do not fail it.
-    invalid = [
-        w.submitted_to
-        for c in (report.witnesses.checkpoints if report.witnesses else [])
-        for w in c.witnesses
-        if w.status == "invalid"
-    ]
-    if not isinstance(report.verdict, envelopes.TreeIntact) or invalid:
+    # `passes` is the binary's own verdict (Morpholog v0.0.14, #468): the
+    # verdict intact and no witness `invalid`; `unsupported` and `unverified`
+    # say what could not be established and do not fail it.
+    if not report.passes:
+        invalid = [
+            w.submitted_to
+            for c in (report.witnesses.checkpoints if report.witnesses else [])
+            for w in c.witnesses
+            if w.status == "invalid"
+        ]
         raise SystemExit(
             f"the pack does not verify against {anchor_path.name}: {report.verdict!r}"
             + (f"; invalid witness from {', '.join(invalid)}" if invalid else "")

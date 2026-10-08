@@ -93,6 +93,12 @@ if ! morpholog audit checkpoint --signing-key "$SIGNING_KEY" --key-id audit-2026
   exit 1
 fi
 morpholog audit export > morpholog/evidence-pack.ndjson
+# The derived read the record makes (MetricRetention, v2) as a receipt a
+# stranger recomputes from the pack alone (v0.0.14, #462). A receipt names
+# one checkpoint, so it is re-issued with every extension, like the claims
+# export; verify-research-pack checks it against the pack and the anchor.
+morpholog audit receipt morpholog/research-v2-draft.morph --pack morpholog/evidence-pack.ndjson \
+  --derived MetricRetention > morpholog/receipts/metric-retention.json
 scripts/verify-research-pack --quiet
 rm -f "$MARKER"
 echo "record: committed and recorded in $BATCH_FILE (remember to commit the morpholog/ changes)"

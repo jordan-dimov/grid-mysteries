@@ -25,7 +25,10 @@ here).
 `scripts/replay-research` provisions the `gm_human` and `gm_machine`
 login roles the record names, cluster-wide, and never drops them; it
 refuses to run where they already exist. Run it in CI or on a throwaway
-cluster, never beside the live record.
+cluster, never beside the live record. `scripts/rehearse-v2` creates and
+drops its own pair, `gm_rehearsal_writer` / `gm_rehearsal_reader`, with
+its database (from v0.0.14 `init --least-privilege` refuses a pair that
+exists on the cluster and is not this database's).
 
 ## Procedure for the live record
 
@@ -69,11 +72,14 @@ morpholog audit export    --database-url $LIVE | cmp - morpholog/evidence-pack.n
 PROGS="morpholog/research.morph morpholog/research-v2-draft.morph morpholog/research-v3-draft.morph"
 morpholog provision indexes $PROGS --dry-run --database-url $LIVE
 morpholog provision indexes $PROGS --prune   --database-url $LIVE
-morpholog provision indexes $PROGS --dry-run --database-url $LIVE   # every line KEEP
-#    (a `--check` that exits non-zero on anything but KEEP is morpholog#434;
-#    until it ships, read the dry run. A programme deployed after this step,
-#    as v3 and the Bill record were, is unprovisioned until the step is run
-#    again: provisioning belongs in every deploy, not only in migrations.)
+morpholog provision indexes $PROGS --check   --database-url $LIVE   # exit 0: current
+#    (`--check` changes nothing and exits non-zero on anything to create,
+#    repair or prune, from v0.0.14; it is the deploy gate. A programme
+#    deployed after this step, as v3 and the Bill record were, is
+#    unprovisioned until the step is run again: provisioning belongs in
+#    every deploy, not only in migrations. From 08/10/2026 the gate also
+#    runs by itself: `scripts/check-record` asks it of the research record
+#    and every engine `import` asks it of its own before writing.)
 
 dropdb gm_migrate_rehearsal
 ```
@@ -284,3 +290,216 @@ dumps. Controls and replay databases re-initialised at the new schema;
 `~/.local/bin/morpholog` switched to 0.0.13 (0.0.12 kept as
 `morpholog-0.0.12`); `check-record` against the live record clean (20
 watches open, none overdue); full `scripts/check` green on `PATH`.
+
+## v0.0.13 to v0.0.14 (schema 19 to 23), rehearsed 2026-10-08
+
+Migrations 020 (`audit.model_hash`: the hash of the programme that
+admitted the row), 021 (`audit.semantics_version`: the version of the
+rules' meaning that decided it), 022 (`audit.drawn_subjects`: the fresh
+subjects the act drew, in order) and 023 (`morpholog.deployment_roles`:
+the least-privilege pair this database records). Release v0.0.14 was
+published 2026-10-08 07:25 UTC; the three published `.sha256` files match
+the release assets' digests and the x86_64 binary extracted from the
+tarball (`46b306fe…`) is byte-identical to `~/.local/bin/morpholog-0.0.14`.
+None of the audit columns is backfilled: the rows written before the
+migration stay `NULL` there, keep their earlier Merkle leaf encodings, and
+the record says so. Rehearsed the same morning on template copies of all
+three live records (`createdb -T`, nothing connected to the sources);
+baselines with the 0.0.13 binary and `pg_dump -Fc` of each in
+`~/backups/morpholog-20261008T075426Z/`, with every rehearsal report
+beside them:
+
+- `grid_mysteries_morpholog` (235 transitions, 242 claims, 209
+  checkpoints; the 235th is the 018 watch reading recorded that morning,
+  before the baseline): `migrate` 0.03 s; `audit verify` `passes`, replay
+  consistent, tree intact, **every freetsa.org witness now `verified`**
+  (96 of 96, beside DigiCert's 96; they were `unsupported` since v0.0.11);
+  claims and pack byte-identical to the baseline and to the committed
+  `claims-export.json` and `evidence-pack.ndjson`. `provision indexes`
+  naming v1, v2 and v3 in one call: every index and statistics object
+  KEEP, nothing to create, `--check` exits 0. `deployment_roles` records
+  `morpholog_writer` / `morpholog_reader`, the cluster pair.
+- `grid_mysteries_tec` (137,384 transitions, 127,456 claims, 1 witnessed
+  checkpoint): `migrate` 0.14 s; `audit verify` 12.5 s in 299 MB,
+  `passes`, DigiCert verified; claims and pack (334 MB) byte-identical;
+  provisioning all KEEP, `--check` current.
+- `grid_mysteries_bill` (84 transitions, 85 claims, 1 witnessed
+  checkpoint): `migrate` 0.02 s; `audit verify` `passes`; claims and pack
+  byte-identical; provisioning all KEEP, `--check` current.
+- `migrate` warns, on every one of the three, that `morpholog_writer` and
+  `morpholog_reader` also hold privileges in the other two, in the four
+  scratch databases and (until it was moved on 08/10) in `bizgov`. The
+  warning is informational; the move to own roles is its own step, below.
+- Decisions unchanged on 0.0.14, on a throwaway cluster (initdb, port
+  55435): both control suites (v2 35 commits + 13 refusals, v3 16 + 14,
+  every rule as expected), `replay-research` (programme hashes, pack and
+  receipt offline, replay, 242 claims identical, audit self-check, then
+  provisioned and `--check` current) and `check-record` on the replayed
+  record (provisioned, no drift, 20 watches open, none overdue),
+  `rehearse-v2` twice on the same cluster (60 assertions each). The full
+  `scripts/check` passes with 0.0.14 on `PATH` (666 tests; every pinned
+  programme hash unchanged; the regenerated client current).
+- On a restored copy of the research record on the throwaway cluster,
+  after the migration: a `declare` through `gm_machine` and a
+  `seal_declaration` through `gm_human` commit, `gm_machine` asserting
+  `jordan_dimov` is refused (`actor_assertion_unauthorised`), and the two
+  new rows carry the v3 programme hash, semantics version 1 and an empty
+  draw list, while the row before them carries `NULL`s. A checkpoint over
+  them and an export give a pack of **format 13**, which the 0.0.13
+  verifier refuses by name (`malformed_pack`: "pack_format_version 13 is
+  newer than this binary understands") and 0.0.14 verifies. **So the
+  committed `evidence-pack.ndjson` becomes unreadable to every verifier
+  older than 0.0.14 at the first `scripts/record` after the migration**;
+  the pack of 235 rows, format 4, stays readable to 0.0.12 and 0.0.13.
+- `check --strict` on 0.0.14 newly fails v3 on one hint: invariant
+  `three_clocks_ordered` leaves the declared-key field `claim` of
+  `EvidenceClaim` unconstrained (#446, "a rule whose case is wider than
+  the claim it guards"). `scripts/check-programmes` runs `check`, not
+  `--strict`, so nothing fails; respelling the rule moves the pinned v3
+  hash of a deployed programme and is the sponsor's call. The other five
+  programmes are strict-clean.
+
+Things that changed shape, not meaning:
+
+- Every verification report leads with `passes` (#468), the same answer
+  as the exit code. `exported_pack` in `src/grid_mysteries/record.py`
+  reads it and no longer restates the rule (morpholog#435 is closed).
+- `check --json` lists every invariant with its route (#445);
+  `scripts/check-programmes` reads it there and no longer greps the prose
+  of `check -v` (morpholog#410 is closed).
+- `provision indexes --check` (#467) is the deploy gate: in the procedure
+  above, in `scripts/check-record` (the research record), in
+  `scripts/replay-research` (the replayed one) and, through
+  `record.provisioned`, at the start of every engine `import`.
+- Receipts (#462): `morpholog/receipts/metric-retention.json` is the
+  record's one derived read (`MetricRetention`, v2) as a receipt naming the
+  programme hash, the semantics version, the checkpoint and the answer;
+  `scripts/record` re-issues it after every export and
+  `scripts/verify-research-pack` recomputes it from the committed pack
+  under the pinned key and the TSA roots. First issued at tree size 235
+  (`inq-002`: 0.2363…).
+- A raw-SQL forgery of an audit row must now supply `model_hash`,
+  `semantics_version` and `drawn_subjects`, named (`scripts/rehearse-v2`
+  §H2 does; a migrated database orders the columns differently from a
+  fresh one, so positional SQL is wrong on one of them).
+- The generated client is stamped 0.0.14: `Request` protocol and
+  `submit_all`, `audit_receipt` / `audit_verify_receipt`,
+  `provision_indexes(check=True)` with `ProvisionReport.is_current`,
+  `CheckReport.route`, the audit-row envelopes with the three new fields
+  (`AuditRow` refuses unknown fields from now on). The engines still
+  construct `Morpholog(...)` directly, for the reason given under
+  v0.0.13.
+
+Live migration, run 08/10/2026 (12:06 to 12:30 UTC) on Jordan's word,
+with the sequence below, from the repo root with nothing connected to
+any of the three (the 10:30/22:30 watchdog and the TEC watch read files,
+not the record); the `.pre-migration.dump`, `migrate`, `verify` and
+`provision` reports of each database kept as `*.live.*` beside the
+morning's baselines in `~/backups/morpholog-20261008T075426Z/`:
+
+- all three 19 to 23 in one `migrate` each (020 to 023 applied, nothing
+  pending); `migrate --check` current afterwards;
+- `audit verify` `passes` on all three with the freetsa.org and DigiCert
+  roots: the research record's 96 freetsa.org and 96 DigiCert witnesses
+  all `verified`, the engines' DigiCert witnesses verified;
+- claims and packs of all three byte-identical to the 0.0.13 baselines
+  taken that morning (and so to the committed `claims-export.json` and
+  `evidence-pack.ndjson`, format 4, tree size 235);
+- `provision indexes --prune` in one call per database (research naming
+  v1, v2 and v3): every line KEEP, nothing created or dropped, statistics
+  re-analysed; `--check` exits 0 on all three;
+- the move to each record's own roles, below, in the same session;
+- `grid_mysteries_replay` and `grid_mysteries_controls` re-initialised at
+  schema 23; `~/.local/bin/morpholog` switched to 0.0.14 (0.0.13 kept as
+  `morpholog-0.0.13`; 0.0.10 to 0.0.12, which refuse every record from
+  here on, removed); `check-record` against the live record clean
+  (provisioned, no drift, 20 watches open, none overdue); `check-controls`
+  OK; full `scripts/check` green on `PATH` (666 tests).
+
+The sequence as run:
+
+```bash
+OUT=~/backups/morpholog-20261008T075426Z          # the baselines are already there
+for db in grid_mysteries_morpholog grid_mysteries_tec grid_mysteries_bill; do
+  pg_dump -Fc -f "$OUT/$db.pre-migration.dump" $db
+  morpholog-0.0.14 migrate --check --database-url postgres:///$db || true
+  morpholog-0.0.14 migrate         --database-url postgres:///$db
+  morpholog-0.0.14 audit verify    --database-url postgres:///$db \
+    --trusted-tsa-file <(cat trust/tsa/freetsa-cacert.pem trust/tsa/digicert-trusted-root-g4.pem)
+  morpholog-0.0.14 inspect claims  --database-url postgres:///$db | cmp - "$OUT/$db.claims.before.json"
+  morpholog-0.0.14 audit export    --database-url postgres:///$db | cmp - "$OUT/$db.pack.before.ndjson"
+done
+morpholog-0.0.14 provision indexes morpholog/research.morph morpholog/research-v2-draft.morph \
+  morpholog/research-v3-draft.morph --prune --database-url postgres:///grid_mysteries_morpholog
+morpholog-0.0.14 provision indexes tec/tec-register.morph   --prune --database-url postgres:///grid_mysteries_tec
+morpholog-0.0.14 provision indexes bill/bill-register.morph --prune --database-url postgres:///grid_mysteries_bill
+# then --check on each (exit 0), the role move below, re-init the controls and
+# replay databases, switch ~/.local/bin/morpholog to 0.0.14 (keep 0.0.13 as
+# morpholog-0.0.13), DATABASE_URL=postgres:///grid_mysteries_morpholog scripts/check-record,
+# scripts/check.
+```
+
+## Each deployment's own roles (v0.0.14), rehearsed 2026-10-08
+
+Before v0.0.14 every deployment on the cluster was provisioned on the one
+pair `morpholog_writer` / `morpholog_reader`, so a login granted either
+held it in every Morpholog database on the machine. Migration 023 records
+that pair on each of the three records, and `migrate` warns as long as
+the pair also holds privileges elsewhere. `bizgov` moved to `bedrock_`
+roles on 08/10. The three records here moved the same way the same day,
+each to its own prefix, as a separate step after the migration (`init
+--least-privilege` refuses a database behind the binary):
+
+| Database | Prefix | Logins to move |
+|---|---|---|
+| `grid_mysteries_morpholog` | `gm_research_` | `gm_human` (was a member of `morpholog_writer`), `gm_machine` (was a member of `morpholog_reader`, plus its direct per-table write grants of the 25/09 amendment, which the move leaves alone) |
+| `grid_mysteries_tec` | `gm_tec_` | none: the engine runs as the owner |
+| `grid_mysteries_bill` | `gm_bill_` | none |
+
+Rehearsed on a restored copy of the research record on the throwaway
+cluster, after the migration, with the install guide's sequence (`docs/
+install.md`, "Moving a deployment to its own roles"):
+
+```sql
+-- as the owner, in the database
+REVOKE ALL ON ALL TABLES IN SCHEMA morpholog, morpholog_read FROM morpholog_writer, morpholog_reader;
+REVOKE ALL ON SCHEMA morpholog, morpholog_read FROM morpholog_writer, morpholog_reader;
+DELETE FROM morpholog.deployment_roles;
+```
+
+```bash
+morpholog-0.0.14 init --skip-if-exists --least-privilege --role-prefix gm_research_ \
+  --database-url postgres:///grid_mysteries_morpholog
+```
+
+```sql
+-- cluster-wide, for the research record only
+GRANT gm_research_writer TO gm_human;    REVOKE morpholog_writer FROM gm_human;
+GRANT gm_research_reader TO gm_machine;  REVOKE morpholog_reader FROM gm_machine;
+```
+
+Result on the copy: `deployment_roles` records `gm_research_writer` /
+`gm_research_reader`; the cluster pair holds nothing on any relation of
+the database; `gm_machine` keeps its direct INSERT/UPDATE/DELETE on the
+five tables and three views of the 25/09 amendment; `migrate --check` no
+longer warns; `audit verify` passes and the claims are identical; both
+logins propose through the adapter and the actor binding still refuses
+the machine asserting the human. The same `REVOKE` / `DELETE` / `init`
+with `gm_tec_` and `gm_bill_` moves the engines' records; they have no
+login to move. Re-creating nothing: the logins keep their OIDs, so
+`role_rebindings` stays empty for the reason the 25/09 amendment gives,
+not a new one.
+
+**Done live on 08/10/2026**, right after the migration, exactly as
+rehearsed: the three databases record `gm_research_writer` /
+`gm_research_reader`, `gm_tec_writer` / `gm_tec_reader` and
+`gm_bill_writer` / `gm_bill_reader`; `morpholog_writer` and
+`morpholog_reader` hold nothing on any relation of the three and
+`migrate --check` no longer warns on any of them; `gm_human` is a member
+of `gm_research_writer` only and `gm_machine` of `gm_research_reader`
+only, with `gm_machine`'s 17 direct grants of the 25/09 amendment intact;
+both logins connect and read the 242 claims; `audit verify` passes after
+the move. The cluster pair stays on the cluster for the Morpholog
+development databases that still use it; nothing of this repository
+grants it any more (`scripts/replay-research` creates its logins on a
+fresh cluster and grants them nothing of the pair).

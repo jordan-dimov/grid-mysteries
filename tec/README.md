@@ -46,7 +46,7 @@ group by group.
 
 ```bash
 # after the watchdog has synced data/manifests/ and data/raw/archive/
-uv run --group registers python -m grid_mysteries.tec import
+uv run --group registers python -m grid_mysteries.tec import   # refuses an unprovisioned database first
 uv run python -m grid_mysteries.tec checkpoint --witness     # signs; DigiCert countersigns
 uv run --group registers python -m grid_mysteries.tec analyse
 uv run --group registers python -m grid_mysteries.tec certify --project "East Anglia One" \

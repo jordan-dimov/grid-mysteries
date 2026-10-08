@@ -8,12 +8,23 @@
 # never satisfy this pin. Checkpoints were signed from tree_size 34 on; the
 # earlier ones are honestly unsigned and are not asked. RFC 3161 witnesses
 # are judged against the committed TSA roots (trust/tsa/); an invalid one
-# fails the verification. Prints the report unless --quiet.
+# fails the verification. Then the committed receipt of the record's one
+# derived read (morpholog/receipts/) is recomputed from the same pack under
+# the same trust: its checkpoint must be the pack's, its programme the v2
+# programme by hash, and its answer what the kernel derives again. Prints
+# the reports unless --quiet.
 set -euo pipefail
 cd "$(dirname "$0")/.."
 export PATH="${HOME}/.local/bin:${PATH}"
 out=/dev/stdout
 [[ "${1:-}" == "--quiet" ]] && out=/dev/null
-morpholog audit verify-pack morpholog/evidence-pack.ndjson --anchor-file morpholog/audit-anchor.json \
-  --require-signing-key morpholog/trust/audit-2026.pub --require-signatures-from 34 \
-  --trusted-tsa-file <(cat trust/tsa/freetsa-cacert.pem trust/tsa/digicert-trusted-root-g4.pem) > "$out"
+roots=$(mktemp); trap 'rm -f "$roots"' EXIT
+cat trust/tsa/freetsa-cacert.pem trust/tsa/digicert-trusted-root-g4.pem > "$roots"
+TRUST=(--anchor-file morpholog/audit-anchor.json
+       --require-signing-key morpholog/trust/audit-2026.pub --require-signatures-from 34
+       --trusted-tsa-file "$roots")
+morpholog audit verify-pack morpholog/evidence-pack.ndjson "${TRUST[@]}" > "$out"
+for receipt in morpholog/receipts/*.json; do
+  morpholog audit verify-receipt morpholog/research-v2-draft.morph --receipt "$receipt" \
+    --pack morpholog/evidence-pack.ndjson "${TRUST[@]}" > "$out"
+done

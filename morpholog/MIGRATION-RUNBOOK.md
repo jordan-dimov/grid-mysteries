@@ -507,3 +507,9 @@ the move. The cluster pair stays on the cluster for the Morpholog
 development databases that still use it; nothing of this repository
 grants it any more (`scripts/replay-research` creates its logins on a
 fresh cluster and grants them nothing of the pair).
+
+The move is the one step of the upgrade no verb owns: three SQL statements,
+an `init`, and a GRANT/REVOKE pair per login, from the install guide.
+Morpholog #512 (filed 08/10/2026 on this feedback) proposes `roles move
+--role-prefix` to own it and to be named by the `migrate` warning; until
+it ships, the sequence above is the procedure.

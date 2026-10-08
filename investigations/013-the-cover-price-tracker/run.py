@@ -547,6 +547,8 @@ def latest_record_anchor() -> dict[str, Any] | None:
         "tree_size": anchor["tree_size"],
         "root_hash": anchor["root_hash"],
         "anchor_path": str(anchors[-1].relative_to(REPO_ROOT)),
+        # the hosts that countersigned, in the order asked (the page names them)
+        "witnesses": [w["submitted_to"].split("/")[2] for w in anchor.get("witnesses") or []],
     }
 
 

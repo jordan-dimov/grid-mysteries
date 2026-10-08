@@ -18,11 +18,9 @@ cd "$(dirname "$0")/.."
 export PATH="${HOME}/.local/bin:${PATH}"
 out=/dev/stdout
 [[ "${1:-}" == "--quiet" ]] && out=/dev/null
-roots=$(mktemp); trap 'rm -f "$roots"' EXIT
-cat trust/tsa/freetsa-cacert.pem trust/tsa/digicert-trusted-root-g4.pem > "$roots"
 TRUST=(--anchor-file morpholog/audit-anchor.json
        --require-signing-key morpholog/trust/audit-2026.pub --require-signatures-from 34
-       --trusted-tsa-file "$roots")
+       --trusted-tsa-file trust/tsa/roots.pem)
 morpholog audit verify-pack morpholog/evidence-pack.ndjson "${TRUST[@]}" > "$out"
 for receipt in morpholog/receipts/*.json; do
   morpholog audit verify-receipt morpholog/research-v2-draft.morph --receipt "$receipt" \

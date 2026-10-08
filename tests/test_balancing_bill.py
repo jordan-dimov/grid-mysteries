@@ -196,11 +196,25 @@ def test_page_cites_the_record_anchor_only_when_given_one():
         "tree_size": 84,
         "root_hash": "sha256:7a8db97df0d566c45a635670ea3997bcd1ef4cef9bea8e6e03ca777c363e147d",
         "anchor_path": "bill/anchors/tree-84.json",
+        "witnesses": ["timestamp.digicert.com"],
     }
     cited = bb.render_page(tracker([ROW]), record=record)
     assert "checkpoint at tree size 84, root <code>sha256:7a8db97df0d566c4…</code>" in cited
+    assert "signed with key <code>bill-2026</code> and countersigned by DigiCert; anchor" in cited
     assert (
         'href="https://github.com/jordan-dimov/grid-mysteries/blob/main/bill/anchors/tree-84.json"'
         in cited
     )
     assert cited == bb.render_page(tracker([ROW]), record=record)
+
+
+def test_record_line_names_the_anchors_own_witnesses():
+    """September's anchors carry one witness; from 08/10/2026 the engine asks
+    freetsa.org and DigiCert, and the page says which it was given."""
+    base = {"tree_size": 90, "root_hash": "sha256:" + "ab" * 32, "anchor_path": "bill/anchors/x"}
+    hosts = ["freetsa.org", "timestamp.digicert.com"]
+    both = bb.render_record_line({**base, "witnesses": hosts}, "u")
+    assert "countersigned by freetsa.org and DigiCert; anchor" in both
+    unwitnessed = bb.render_record_line({**base, "witnesses": []}, "u")
+    assert "countersigned" not in unwitnessed and "<code>bill-2026</code>; anchor" in unwitnessed
+    assert bb.witness_names(["other.example"]) == "other.example"

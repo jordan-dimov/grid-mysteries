@@ -354,10 +354,14 @@ beside them:
 - `check --strict` on 0.0.14 newly fails v3 on one hint: invariant
   `three_clocks_ordered` leaves the declared-key field `claim` of
   `EvidenceClaim` unconstrained (#446, "a rule whose case is wider than
-  the claim it guards"). `scripts/check-programmes` runs `check`, not
-  `--strict`, so nothing fails; respelling the rule moves the pinned v3
-  hash of a deployed programme and is the sponsor's call. The other five
-  programmes are strict-clean.
+  the claim it guards"). `scripts/check-programmes` ran `check`, not
+  `--strict`, so nothing failed; respelling the rule moves the pinned v3
+  hash of a deployed programme, so it waited for the sponsor's word. The
+  other five programmes were strict-clean. **Respelled the same afternoon
+  on that word** (`RESEARCH-V3-DESIGN.md`): the pin moved to
+  `sha256:ef203533…`, the record replays under it (fresh cluster, 242
+  claims identical), the live provisioning is unchanged, every programme
+  is strict-clean and `check-programmes` checks strictly from here on.
 
 Things that changed shape, not meaning:
 

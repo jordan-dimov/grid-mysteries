@@ -12,8 +12,8 @@ run after the watchdog has synced the capture archive; nothing here runs
 on Render, and nothing here writes to any other Morpholog database.
 
 `checkpoint` signs the record's tree head with the `tec-2026` key; with
-`--witness` DigiCert's RFC 3161 authority countersigns it (only the hash
-leaves the machine). `analyse` reads the record back through its audit log
+`--witness` the freetsa.org and DigiCert RFC 3161 authorities countersign it
+(only the hash leaves the machine). `analyse` reads the record back through its audit log
 up to the latest anchor and writes every analysis claim under
 `tec/analysis/`, each naming its rule and the anchor it read. `certify`
 builds a bundle under `data/derived/tec/certificates/`.
@@ -247,14 +247,15 @@ def render(cert: dict[str, Any], pack_name: str) -> str:
         "```bash",
         f"gunzip -k {pack_name}.gz",
         f"morpholog audit verify-pack {pack_name} --anchor-file anchor.json \\",
-        "  --require-signing-key tec-2026.pub --trusted-tsa-file digicert-trusted-root-g4.pem",
+        "  --require-signing-key tec-2026.pub --trusted-tsa-file roots.pem",
         f"python3 lines_from_pack.py {pack_name} certificate.json",
         "```",
         "",
         "The first command checks, with no database, that the pack is the complete record up",
         "to the anchor and that the anchor is signed by the pinned `tec-2026` key (and",
-        "witnessed by DigiCert where the anchor carries a witness). The second re-derives the",
-        "lines above from the pack alone. `MANIFEST.json` lists every file's SHA-256.",
+        "witnessed by freetsa.org and DigiCert where the anchor carries witnesses). The second",
+        "re-derives the lines above from the pack alone. `MANIFEST.json` lists every file's",
+        "SHA-256.",
         "",
     ]
     return "\n".join(out)
@@ -325,7 +326,7 @@ def cmd_certify(args: argparse.Namespace) -> None:
     (out / "CERTIFICATE.md").write_text(render(cert, f"pack{pack.suffix}"))
     shutil.copyfile(anchor_path, out / "anchor.json")
     shutil.copyfile(RECORD.public_key, out / f"{RECORD.key_id}.pub")
-    shutil.copyfile(record.DIGICERT_ROOT, out / record.DIGICERT_ROOT.name)
+    shutil.copyfile(record.TSA_ROOTS, out / record.TSA_ROOTS.name)
     (out / "lines_from_pack.py").write_text(certificate.LINES_FROM_PACK)
     shutil.copyfile(compressed(pack), out / f"pack{pack.suffix}.gz")
     files = sorted(p for p in out.iterdir() if p.name != "MANIFEST.json")
@@ -365,7 +366,9 @@ def main(argv: list[str] | None = None) -> None:
         help="import newer copies although older readable ones are missing from the record",
     )
     cp = commands.add_parser("checkpoint")
-    cp.add_argument("--witness", action="store_true", help="DigiCert countersigns the head")
+    cp.add_argument(
+        "--witness", action="store_true", help="freetsa.org and DigiCert countersign the head"
+    )
     commands.add_parser("analyse")
     cert = commands.add_parser("certify")
     cert.add_argument("--project", required=True)

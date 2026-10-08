@@ -44,14 +44,14 @@ a positive non-commit.
 
 ```bash
 uv run python -m grid_mysteries.bill import                 # one transact; refuses an unprovisioned database first
-uv run python -m grid_mysteries.bill checkpoint --witness   # signs; DigiCert countersigns
+uv run python -m grid_mysteries.bill checkpoint --witness   # signs; freetsa.org and DigiCert countersign
 uv run python -m grid_mysteries.bill verify
 ```
 
 `checkpoint` keeps the anchor under `bill/anchors/tree-<n>.json`, exports
 the complete pack (NDJSON, Morpholog pack format 4) under
 `data/derived/bill/packs/` and verifies it offline against the anchor with
-the pinned key `trust/bill-2026.pub` and DigiCert's root. The private key
+the pinned key `trust/bill-2026.pub` and the TSA roots (`trust/tsa/roots.pem`). The private key
 lives outside the repository (`~/.config/grid-mysteries/bill-signing-2026.pem`,
 or `BILL_SIGNING_KEY`).
 
@@ -59,7 +59,7 @@ or `BILL_SIGNING_KEY`).
 
 ```bash
 morpholog audit verify-pack tree-<n>.ndjson --anchor-file bill/anchors/tree-<n>.json \
-  --require-signing-key bill/trust/bill-2026.pub --trusted-tsa-file trust/tsa/digicert-trusted-root-g4.pem
+  --require-signing-key bill/trust/bill-2026.pub --trusted-tsa-file trust/tsa/roots.pem
 ```
 
 ## What it does not do

@@ -4,11 +4,24 @@ Status: **deployed 25/09/2026** on the live record, same database and audit
 chain as v1 and v2 (batch `110-forward-launch.v3.ndjson`, 94 rows: the
 bootstrap and nine seals by Jordan as `gm_human`, the declarations, verdicts,
 watches, triggers and evidence claims by the machine as `gm_machine`).
-`research-v3-draft.morph` is unchanged from the draft (fingerprint in
-`V3_DRAFT_HASH.json`, the file name kept so the pinned hash and the batch
+`research-v3-draft.morph` carries one respelling since the draft (fingerprint
+in `V3_DRAFT_HASH.json`, the file name kept so the pinned hash and the batch
 dispatch stay as they were); `scripts/check-controls v3` proves 16 lifecycle
 rows commit and 14 violations are refused by their exact named rules. The
 launch rows and how they were run are in `launch-forward/`.
+
+**Respelled 08/10/2026, on the sponsor's word:** `three_clocks_ordered` now
+binds the `claim` it guards (`EvidenceClaim(claim, _, _, _, t_event,
+t_public)` instead of `EvidenceClaim(_, _, _, _, …)`). Same rule, same
+decisions: every evidence claim's event clock still has to be on or before
+its public clock. Morpholog v0.0.14's `check --strict` names the old
+spelling as a case wider than the claim it guards (#446), and from that day
+`scripts/check-programmes` checks every programme strictly. The pin moved
+from `sha256:0cd623d3…` to `sha256:ef203533…`; the record replays under the
+respelled programme (`scripts/replay-research` on a fresh cluster, 242
+claims identical) and the live database's provisioning is unchanged by it.
+Audit rows written before 08/10 carry no programme hash (migration 020 is
+not backfilled); rows from the respelling on carry the new one.
 
 ## Why a third programme
 

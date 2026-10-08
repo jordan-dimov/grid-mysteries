@@ -2,9 +2,9 @@
 
     register-key   admit the pinned signing key's AuditSigningKey claim, once
     import         record the tracker's current compute run (one transact)
-    checkpoint     sign a checkpoint (DigiCert countersigns with --witness),
+    checkpoint     sign a checkpoint (freetsa.org and DigiCert countersign with --witness),
                    keep the anchor under bill/anchors/, export and verify the pack
-    verify         `audit verify` with the DigiCert root
+    verify         `audit verify` with the committed TSA roots
 
 The record lives in its own database (`BILL_DATABASE_URL`, default
 `postgres:///grid_mysteries_bill`), never the research record's. Nothing
@@ -63,7 +63,7 @@ def cmd_checkpoint(args: argparse.Namespace) -> None:
 
 def cmd_verify(args: argparse.Namespace) -> None:
     proc = record.run(
-        "audit", "verify", "--database-url", url(), "--trusted-tsa-file", str(record.DIGICERT_ROOT)
+        "audit", "verify", "--database-url", url(), "--trusted-tsa-file", str(record.TSA_ROOTS)
     )
     sys.stdout.write(proc.stdout)
     if proc.returncode != 0:
@@ -77,7 +77,9 @@ def main(argv: list[str] | None = None) -> None:
     imp = commands.add_parser("import")
     imp.add_argument("--tracker", default=None, help="a tracker.json other than 013's")
     cp = commands.add_parser("checkpoint")
-    cp.add_argument("--witness", action="store_true", help="DigiCert countersigns the head")
+    cp.add_argument(
+        "--witness", action="store_true", help="freetsa.org and DigiCert countersign the head"
+    )
     commands.add_parser("verify")
     args = parser.parse_args(argv)
     {

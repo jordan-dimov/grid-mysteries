@@ -175,7 +175,7 @@ invariant evidence_class_in_vocabulary:
     EvidenceClaim(_, _, c, _, _, _) implies in_evidence_class_vocabulary(c)
 
 invariant three_clocks_ordered:
-    EvidenceClaim(_, _, _, _, t_event, t_public) implies t_event on_or_before t_public
+    EvidenceClaim(claim, _, _, _, t_event, t_public) implies t_event on_or_before t_public
 
 -- Bootstrap, once: the human holds the seal.
 transformation establish_forward_governance(human_actor):

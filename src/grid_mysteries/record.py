@@ -35,10 +35,16 @@ from grid_mysteries.corpus import REPO_ROOT
 if TYPE_CHECKING:
     from morpholog_client.adapter import Morpholog
 
-#: The one timestamp authority that countersigns an engine's checkpoints,
-#: and the root its tokens are judged against.
-DIGICERT: Final = "rfc3161:" + dict(TSAS)["digicert"]
-DIGICERT_ROOT: Final = REPO_ROOT / "trust" / "tsa" / "digicert-trusted-root-g4.pem"
+#: The timestamp authorities that countersign an engine's checkpoints, in
+#: the order they are asked (the same two, in the same order, as the
+#: research record and every freeze), and the one PEM file holding every
+#: root their tokens are judged against (`trust/tsa/roots.pem`, the two
+#: roots beside it concatenated; a test holds it to that). Until 08/10/2026
+#: the engines asked DigiCert alone: freetsa.org's tokens could not be
+#: verified before Morpholog v0.0.14, so an anchor of that time carries one
+#: witness and still verifies against this file.
+WITNESSES: Final = tuple("rfc3161:" + url for _, url in TSAS)
+TSA_ROOTS: Final = REPO_ROOT / "trust" / "tsa" / "roots.pem"
 
 
 @dataclass(frozen=True)
@@ -210,10 +216,10 @@ def provisioned(api: Any, label: str) -> None:
 def checkpoint_and_export(
     record: Record, database_url: str, *, witness: bool
 ) -> tuple[Path, dict[str, Any], Path]:
-    """Sign a checkpoint over the record's head (DigiCert countersigns it
-    with `witness`), keep the anchor under the engine's anchors directory,
-    then export the complete pack at that tree size and verify it against
-    the anchor. Returns (anchor path, anchor, pack).
+    """Sign a checkpoint over the record's head (both timestamp authorities
+    countersign it with `witness`), keep the anchor under the engine's
+    anchors directory, then export the complete pack at that tree size and
+    verify it against the anchor. Returns (anchor path, anchor, pack).
 
     The checkpoint call is raw on purpose: the anchor file is the binary's
     exact bytes, and a failed witness is a nonzero exit with the recorded
@@ -222,7 +228,8 @@ def checkpoint_and_export(
     argv = ["audit", "checkpoint", "--database-url", database_url]
     argv += ["--signing-key", str(record.signing_key), "--key-id", record.key_id]
     if witness:
-        argv += ["--witness", DIGICERT]
+        for authority in WITNESSES:
+            argv += ["--witness", authority]
     proc = run(*argv)
     if not proc.stdout.strip():
         raise SystemExit(f"checkpoint failed:\n{proc.stderr}")
@@ -236,10 +243,11 @@ def checkpoint_and_export(
     anchor = json.loads(path.read_text())
     pack = exported_pack(record, database_url, path, anchor)
     if proc.returncode != 0:
+        witnesses = " ".join(f"--witness {authority}" for authority in WITNESSES)
         raise SystemExit(
             "a timestamp authority failed; the checkpoint is recorded. Retry with\n"
             f"  morpholog audit witness --database-url {database_url} "
-            f"--tree-size {anchor['tree_size']} --witness {DIGICERT} "
+            f"--tree-size {anchor['tree_size']} {witnesses} "
             f"> {path.relative_to(REPO_ROOT)}"
         )
     return path, anchor, pack
@@ -249,8 +257,8 @@ def exported_pack(
     record: Record, database_url: str, anchor_path: Path, anchor: dict[str, Any]
 ) -> Path:
     """The complete pack at the anchor's tree size, exported once and kept,
-    verified offline against the anchor with the pinned key and the DigiCert
-    root every time it is asked for."""
+    verified offline against the anchor with the pinned key and the TSA
+    roots every time it is asked for."""
     tree = int(anchor["tree_size"])
     pack = record.packs / f"tree-{tree}.ndjson"
     api = record.client(REPO_ROOT, database_url)
@@ -265,7 +273,7 @@ def exported_pack(
         str(pack),
         anchor_file=str(anchor_path),
         require_signing_key=str(record.public_key),
-        trusted_tsa_file=str(DIGICERT_ROOT),
+        trusted_tsa_file=str(TSA_ROOTS),
     )
     # `passes` is the binary's own verdict (Morpholog v0.0.14, #468): the
     # verdict intact and no witness `invalid`; `unsupported` and `unverified`

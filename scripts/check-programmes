@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
-# Every Morpholog programme the repository deploys: it checks, its hash is
-# the pinned one (a `*_HASH.json` beside it, so a rule changes only with a
+# Every Morpholog programme the repository deploys: it checks strictly (every
+# hint is an error: a rule whose case is wider than the claim it guards, an
+# unused definition; all six have been strict-clean since 08/10/2026, when v3's
+# `three_clocks_ordered` was respelled to bind the claim it guards), its hash
+# is the pinned one (a `*_HASH.json` beside it, so a rule changes only with a
 # deliberate update of the pin), and the two record engines stay on the
 # compiled route (their flat per-change cost depends on it: no `or`, no
 # defined calls in an invariant).
@@ -31,7 +34,7 @@ print("compiled" if compiled == len(routes) else
 for programme in morpholog/research.morph morpholog/research-v2-draft.morph \
     morpholog/research-v3-draft.morph tec/tec-register.morph bill/bill-register.morph \
     identity/identity-register.morph; do
-  morpholog check "$programme" >/dev/null
+  morpholog check --strict "$programme" >/dev/null
 done
 pinned morpholog/research.morph          morpholog/PROGRAMME_HASH.json
 pinned morpholog/research-v2-draft.morph morpholog/V2_DRAFT_HASH.json

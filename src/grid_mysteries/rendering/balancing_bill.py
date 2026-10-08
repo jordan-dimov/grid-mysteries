@@ -309,18 +309,38 @@ table{font-size:.8rem}th,td{padding:.35rem .4rem}}
 """
 
 
+#: How the page names a timestamp authority, by the host the anchor says the
+#: checkpoint was submitted to.
+WITNESS_NAMES: dict[str, str] = {
+    "timestamp.digicert.com": "DigiCert",
+    "freetsa.org": "freetsa.org",
+}
+
+
+def witness_names(witnesses: list[str]) -> str:
+    """`DigiCert`, or `freetsa.org and DigiCert`, from the anchor's witness
+    hosts in the order they were asked; an unknown host is named as it is."""
+    names = [WITNESS_NAMES.get(host, host) for host in witnesses]
+    return " and ".join(names) if len(names) <= 2 else ", ".join(names[:-1]) + f" and {names[-1]}"
+
+
 def render_record_line(record: dict[str, Any] | None, repo_url: str) -> str:
     """The governed record's checkpoint the page's rows stand under, when the
-    runner was given one (`bill/anchors/tree-<n>.json`); nothing otherwise."""
+    runner was given one (`bill/anchors/tree-<n>.json`); nothing otherwise.
+    The countersigners are the anchor's own, so an anchor of September (one
+    witness, DigiCert) and one from 08/10/2026 on (freetsa.org and DigiCert)
+    are each described as they are."""
     if not record:
         return ""
     anchor = f"{repo_url}/blob/main/{record['anchor_path']}"
+    witnesses = list(record.get("witnesses") or [])
+    countersigned = f" and countersigned by {escape(witness_names(witnesses))}" if witnesses else ""
     return (
         f'\n<p class="notes">Record: every day above stands in a governed record that admits a '
         f'computed row once and refuses to change it (<a href="{escape(repo_url)}/tree/main/bill">'
         f"bill/</a>); checkpoint at tree size {int(record['tree_size'])}, root "
         f"<code>{escape(str(record['root_hash'])[:23])}…</code>, signed with key "
-        f"<code>bill-2026</code> and countersigned by DigiCert; anchor "
+        f"<code>bill-2026</code>{countersigned}; anchor "
         f'<a href="{escape(anchor)}">{escape(record["anchor_path"])}</a>.</p>'
     )
 

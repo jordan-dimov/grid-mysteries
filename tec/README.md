@@ -47,7 +47,7 @@ group by group.
 ```bash
 # after the watchdog has synced data/manifests/ and data/raw/archive/
 uv run --group registers python -m grid_mysteries.tec import   # refuses an unprovisioned database first
-uv run python -m grid_mysteries.tec checkpoint --witness     # signs; DigiCert countersigns
+uv run python -m grid_mysteries.tec checkpoint --witness     # signs; freetsa.org and DigiCert countersign
 uv run --group registers python -m grid_mysteries.tec analyse
 uv run --group registers python -m grid_mysteries.tec certify --project "East Anglia One" \
     --on 2016-06-20 --on 2019-06-27 --on 2022-06-30
@@ -81,7 +81,7 @@ record (`CurrentVintage`, `Importing`) and removed it.
 - the **complete** audit pack (`pack.ndjson.gz`; `pack.json.gz` in bundles
   issued before Morpholog v0.0.12, one JSON document rather than a line per
   row, which still verifies) and its signed, witnessed
-  `anchor.json`, the pinned key, DigiCert's root, `lines_from_pack.py` and
+  `anchor.json`, the pinned key, the TSA roots (`roots.pem`), `lines_from_pack.py` and
   `MANIFEST.json`.
 
 Before writing, the generator checks that the runtime's own as-of read and a
@@ -91,7 +91,7 @@ the pack.
 ```bash
 gunzip -k pack.ndjson.gz
 morpholog audit verify-pack pack.ndjson --anchor-file anchor.json \
-  --require-signing-key tec-2026.pub --trusted-tsa-file digicert-trusted-root-g4.pem
+  --require-signing-key tec-2026.pub --trusted-tsa-file roots.pem
 python3 lines_from_pack.py pack.ndjson certificate.json
 ```
 

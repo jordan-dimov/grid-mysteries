@@ -1,0 +1,23 @@
+{
+ "file": "2026-10-06.ndjson",
+ "sha256": "9044852e51e7cba1f6c4b6897eade1959fa7537b09fa5f14ad8247b2b4da810a",
+ "stamped_at_utc_local_clock": "2026-10-06T06:35:20+00:00",
+ "proofs": [
+  {
+   "kind": "rfc3161",
+   "tsa": "https://freetsa.org/tsr",
+   "path": "2026-10-06.ndjson.freetsa.tsr"
+  },
+  {
+   "kind": "rfc3161",
+   "tsa": "http://timestamp.digicert.com",
+   "path": "2026-10-06.ndjson.digicert.tsr"
+  },
+  {
+   "kind": "opentimestamps",
+   "path": "2026-10-06.ndjson.ots",
+   "status": "pending until upgraded"
+  }
+ ],
+ "failures": []
+}

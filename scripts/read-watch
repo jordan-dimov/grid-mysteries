@@ -1,0 +1,43 @@
+#!/usr/bin/env bash
+# Record a reading of a dated watch in the governed record, in one command.
+#
+#   scripts/read-watch <watch> <outcome> <artefact> <note>
+#
+#   <watch>     the watch id as opened (`w-018-sf-post-days`)
+#   <outcome>   resolved | unchanged | not_available (the v3 vocabulary)
+#   <artefact>  the file that was read: its SHA-256 is the reading digest
+#   <note>      the reading note, a markdown file that names the watch and
+#               the digest and says what was read and what was not
+#
+# Proposes `record_reading(watch, today, digest, outcome)` through
+# scripts/record (batch 120-watch-readings.v3.ndjson), which refreshes the
+# claims export, checkpoints, exports and verifies. The note is committed
+# beside the investigation (`investigations/<id>/watch-readings/`), and is
+# checked here to name both the watch and the digest, so a reading cannot
+# be recorded without saying what it rests on. `scripts/check-record`
+# refuses to let a watch lapse; this is the cheap way to keep the promise.
+set -euo pipefail
+cd "$(dirname "$0")/.."
+if [[ $# -ne 4 ]]; then
+  sed -n 2,19p "$0" >&2
+  exit 2
+fi
+watch="$1"; outcome="$2"; artefact="$3"; note="$4"
+case "$outcome" in resolved|unchanged|not_available) ;; *)
+  echo "read-watch: outcome must be resolved, unchanged or not_available, not '$outcome'" >&2; exit 2;; esac
+[[ -f "$artefact" ]] || { echo "read-watch: artefact $artefact is not a file" >&2; exit 2; }
+[[ -f "$note" ]] || { echo "read-watch: note $note is not a file" >&2; exit 2; }
+digest=$(sha256sum "$artefact" | cut -d' ' -f1)
+grep -q -- "$watch" "$note" || { echo "read-watch: the note does not name the watch $watch" >&2; exit 2; }
+grep -q -- "$digest" "$note" || { echo "read-watch: the note does not cite the reading digest $digest" >&2; exit 2; }
+today=$(date -u +%F)
+actor="${RECORD_ACTOR:-claude_fable_5}"
+row=$(python3 -c '
+import json, sys
+w, d, o, t, a = sys.argv[1:]
+print(json.dumps({"transformation": "record_reading", "actor": a,
+                  "args_named": {"watch": w, "read_on": t, "reading_digest": d, "outcome": o}}))' \
+  "$watch" "$digest" "$outcome" "$today" "$actor")
+echo "read-watch: $watch read $today as $outcome, digest $digest (${artefact})"
+scripts/record 120-watch-readings.v3.ndjson "$row"
+echo "read-watch: recorded; commit the note ($note) with the record files"

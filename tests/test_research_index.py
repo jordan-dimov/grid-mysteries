@@ -21,5 +21,10 @@ def test_every_instrument_path_is_a_directory_the_site_holds():
     from pathlib import Path
 
     site = Path(__file__).parents[1] / "site"
-    for path, _name, _sentence in ri.INSTRUMENTS:
+    for path, _name, _sentence in (*ri.INSTRUMENTS, ri.ARCHIVE):
         assert (site / path.strip("/") / "index.html").exists(), path
+
+
+def test_the_index_points_at_the_archive():
+    html = ri.render_index()
+    assert 'href="/vintages/"' in html and "What we hold" in html

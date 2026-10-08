@@ -137,7 +137,10 @@ Every standing instrument is published from the same static site at
 on 2026-10-01; the domain is listed in `render.yaml`). The root is a research
 index, `site/index.html`, one sentence and a link per instrument, rendered by
 `scripts/render-site-index` from `src/grid_mysteries/rendering/research_index.py`
-and committed; each instrument's page sits under its own path. The earlier
+and committed; each instrument's page sits under its own path. `/vintages/`
+("What we hold") is the public index of the vintage archive, rendered by
+`scripts/render-vintages` from the committed daily manifests after each
+archive-sync commit. The earlier
 domain `balancingbill.a115.co.uk` never existed in DNS and was removed from
 the service; the service's own `balancing-bill.onrender.com` hostname still
 answers but is not the public address. Rendered pages print no hostname, so

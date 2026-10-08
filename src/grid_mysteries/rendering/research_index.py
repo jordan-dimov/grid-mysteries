@@ -41,6 +41,13 @@ INSTRUMENTS: Final[tuple[tuple[str, str, str], ...]] = (
         "margin each identity rule decides shown beside the figure.",
     ),
 )
+#: The archive the instruments read from: not an instrument, an inventory.
+ARCHIVE: Final[tuple[str, str, str]] = (
+    "/vintages/",
+    "What we hold",
+    "Every public file the capture fetches daily, each copy held by its digest and each "
+    "day's manifest witnessed: the record of what the publishers said, and when.",
+)
 METHOD: Final = (
     "Each page is a pure function of evidence committed to a public repository under a "
     "declaration frozen before any figure was computed and witnessed by OpenTimestamps and "
@@ -78,6 +85,8 @@ def render_index() -> str:
 <ul class="index">
 {items}
 </ul>
+<p class="notes"><a href="{escape(ARCHIVE[0])}"><strong>{escape(ARCHIVE[1])}</strong></a>.
+{escape(ARCHIVE[2])}</p>
 <p class="notes">{escape(METHOD)} Declarations, evidence, code and tests:
 <a href="{escape(REPO_URL)}">{escape(REPO_URL.removeprefix("https://"))}</a>.</p>
 </main>

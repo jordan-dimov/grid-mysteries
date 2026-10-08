@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+# Render "What we hold" (research.a115.co.uk/vintages/) from the committed
+# daily manifests under data/manifests/, into site/vintages/index.html. A
+# pure function of the manifests: run it after an archive-sync commit and
+# commit the result. Deploying the site is the sponsor's step.
+set -euo pipefail
+cd "$(dirname "$0")/.."
+uv run python -c '
+from pathlib import Path
+from grid_mysteries.rendering.vintages import render_from
+out = Path("site/vintages/index.html")
+out.parent.mkdir(parents=True, exist_ok=True)
+out.write_text(render_from(Path("data/manifests")))
+print(f"rendered {out}")
+'

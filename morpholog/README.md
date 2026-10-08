@@ -69,7 +69,11 @@ accepted proposal, in the same commit:
    `scripts/verify-research-pack` recomputes from the pack alone
    (`morpholog audit verify-receipt`, v0.0.14).
 
-`scripts/record` does all four. A pack that discloses a row written on
+`scripts/record` does all four. `scripts/read-watch <watch> <outcome>
+<artefact> <note>` records a dated watch's reading through it in one
+command (the artefact's SHA-256 is the reading digest; the note, kept under
+the investigation's `watch-readings/`, must name the watch and the digest).
+A pack that discloses a row written on
 Morpholog v0.0.14 or later is pack format 13 and needs a verifier of that
 version (an older one refuses it by name); the rows written before
 08/10/2026 carry no programme hash, semantics version or draw list, and

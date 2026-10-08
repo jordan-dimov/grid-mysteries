@@ -17,7 +17,7 @@ here).
 | `grid_mysteries_morpholog` | **the governed record** (live) | by hand, below, after a rehearsal; Jordan decides when |
 | `grid_mysteries_tec` | the TEC record engine (live; `tec/tec-register.morph`, its own signing key) | the same steps, below |
 | `grid_mysteries_bill` | the Balancing Bill record engine (live; `bill/bill-register.morph`, key `bill-2026`) | the same steps, below |
-| `grid_mysteries_replay` | disposable, rebuilt by `scripts/replay-research` | `init --reset` each run |
+| `grid_mysteries_replay` | disposable, rebuilt by `scripts/replay-research` on CI's container or a throwaway cluster; dropped from the laptop cluster 08/10/2026, where the script cannot run | `init --reset` each run |
 | `grid_mysteries_controls` | disposable, rebuilt by `scripts/check-controls` | `init --reset` each run |
 | `gm_rehearsal` | disposable, dropped and recreated by `scripts/rehearse-v2` | recreated each run; **never name a migration rehearsal copy this** |
 | CI service containers | fresh `postgres:16` per job | always at the pinned binary's schema |
@@ -413,8 +413,8 @@ morning's baselines in `~/backups/morpholog-20261008T075426Z/`:
   v1, v2 and v3): every line KEEP, nothing created or dropped, statistics
   re-analysed; `--check` exits 0 on all three;
 - the move to each record's own roles, below, in the same session;
-- `grid_mysteries_replay` and `grid_mysteries_controls` re-initialised at
-  schema 23; `~/.local/bin/morpholog` switched to 0.0.14 (0.0.13 kept as
+- `grid_mysteries_controls` re-initialised at schema 23 (`grid_mysteries_replay`
+  too, then dropped from the laptop later that day: nothing can use it there); `~/.local/bin/morpholog` switched to 0.0.14 (0.0.13 kept as
   `morpholog-0.0.13`; 0.0.10 to 0.0.12, which refuse every record from
   here on, removed); `check-record` against the live record clean
   (provisioned, no drift, 20 watches open, none overdue); `check-controls`

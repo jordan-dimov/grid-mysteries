@@ -20,7 +20,7 @@ here).
 | `grid_mysteries_replay` | disposable, rebuilt by `scripts/replay-research` on CI's container or a throwaway cluster; dropped from the laptop cluster 08/10/2026, where the script cannot run | `init --reset` each run |
 | `grid_mysteries_controls` | disposable, rebuilt by `scripts/check-controls` | `init --reset` each run |
 | `gm_rehearsal` | disposable, dropped and recreated by `scripts/rehearse-v2` | recreated each run; **never name a migration rehearsal copy this** |
-| CI service containers | fresh `postgres:16` per job | always at the pinned binary's schema |
+| CI service containers | fresh `postgres:18` per job (16 until 08/10/2026; the laptop cluster is 18) | always at the pinned binary's schema |
 
 `scripts/replay-research` provisions the `gm_human` and `gm_machine`
 login roles the record names, cluster-wide, and never drops them; it

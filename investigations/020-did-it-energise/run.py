@@ -5,6 +5,7 @@
     uv run --group registers python investigations/020-did-it-energise/run.py --phase schema --seal fb8a3428
     uv run --group registers python investigations/020-did-it-energise/run.py --phase projects --seal fb8a3428 --amendment-seal cc01e3cf
     uv run --group registers python investigations/020-did-it-energise/run.py --phase projects-v02 --seal fb8a3428 --amendment-seal cc01e3cf --amendment-2-seal 3ef7240c
+    uv run --group registers python investigations/020-did-it-energise/run.py --phase proposals --seal fb8a3428 --amendment-seal cc01e3cf --amendment-2-seal 3ef7240c --amendment-3-seal f84367c3
 
 - ``population`` (archive only): every copy of the register the repository
   holds (journal and daily capture, one per publication date, each verified
@@ -22,6 +23,10 @@
   historical by-event listing) pinned under ``data/raw/elexon/020/`` and
   reported under ``archives/elexon-*-020/``; S4 (ENTSO-E) is recorded as
   not available (no token held). No figure is computed.
+- ``proposals`` (no network; amendment 3, B2 and B3): J1 at project level
+  for the 164 projects of version 0.2 against the S1 vintage pinned at the
+  schema pass, with J3 from the copy before → ``evidence/links-proposed.json``
+  (held; reproducible line for line, C5).
 """
 
 import argparse
@@ -38,8 +43,10 @@ from grid_mysteries.corpus import REPO_ROOT
 from grid_mysteries.evidence import dumps, write_json
 from grid_mysteries.investigations import connection_slippage as cs
 from grid_mysteries.investigations import energisation as en
+from grid_mysteries.investigations import energisation_v1 as v1
 from grid_mysteries.sources import elexon
 from grid_mysteries.sources.pinning import fetch_journalled, progress
+from grid_mysteries.sources.tec_register import parse_decimal
 from grid_mysteries.tec import analysis
 from grid_mysteries.tec import sources as tec_sources
 
@@ -51,6 +58,10 @@ PROJECTS = EVIDENCE / "projects.ndjson"
 PROJECTS_SUMMARY = EVIDENCE / "projects-summary.json"
 AMENDMENT_1 = HERE / "DECLARATION-amendment-1.md"
 AMENDMENT_2 = HERE / "DECLARATION-amendment-2.md"
+AMENDMENT_3 = HERE / "DECLARATION-amendment-3.md"
+LINKS_PROPOSED = EVIDENCE / "links-proposed.json"
+S1_VINTAGE = REPO_ROOT / "data/raw/elexon/020/2026-09-30/bmunits.json"
+S1_SHA256 = "0f0902e13de38491a97579245476df6df228b999ff73d918cb5a277f928e8329"
 PROJECTS_V02 = EVIDENCE / "projects-v02.ndjson"
 PROJECTS_V02_SUMMARY = EVIDENCE / "projects-v02-summary.json"
 SUMMARY = EVIDENCE / "population-summary.json"
@@ -870,14 +881,119 @@ def schema_md(name: str, key: str, r: dict[str, Any], run_date: str) -> str:
     return "\n".join(L)
 
 
+def phase_proposals(
+    seal: str | None,
+    amendment_seal: str | None,
+    amendment_2_seal: str | None,
+    amendment_3_seal: str | None,
+) -> None:
+    """Amendment 3, B2 and B3: J1 at project level for version 0.2's
+    projects, from the pinned S1 vintage; J3 from the copy before. No
+    network."""
+    require_seal(seal)
+    require_amendment(amendment_seal)
+    require_amendment(amendment_2_seal, AMENDMENT_2, en.AMENDMENT_2_PREFIX)
+    digest_3 = require_amendment(amendment_3_seal, AMENDMENT_3, v1.AMENDMENT_3_PREFIX)
+    if sha(S1_VINTAGE) != S1_SHA256:
+        sys.exit(f"C3: {S1_VINTAGE.name} does not hash to the pinned {S1_SHA256[:8]}")
+    units = json.loads(S1_VINTAGE.read_text())
+    usable, _, _ = load_copies()
+    result = cs.series(usable, partial_export_rule=True)
+    kept = analysis.kept(usable, result)
+    seen = en.sightings(
+        [
+            (k.regime, k.vintage.t_public, k.vintage.sha256, list(k.vintage.rows), k.swapped)
+            for k in kept
+        ]
+    )
+    order: dict[str, list[date]] = {}
+    for k in kept:
+        order.setdefault(k.regime, []).append(k.vintage.t_public)
+    before = en.copy_before_rows(seen, order)
+    projects = [json.loads(line) for line in PROJECTS_V02.read_text().splitlines() if line.strip()]
+    common = v1.common_tokens(units)
+    out = []
+    for record in projects:
+        rows = before[record["key"]]
+        cumulative = [
+            d
+            for d in (parse_decimal(r.get("Cumulative Total Capacity (MW)")) for r in rows)
+            if d is not None
+        ]
+        bearing = [r for r in rows if (parse_decimal(r.get("MW Increase / Decrease")) or 0) > 0]
+        project = v1.project_from_key(
+            record["key"],
+            record["plant_type"],
+            Decimal(record["capacity_mw"]),
+            max(cumulative) if cumulative else None,
+        )
+        found = v1.candidates(project, units, common)
+        j3 = v1.embedded([str(r.get("Agreement Type") or "") for r in bearing])
+        out.append(
+            {
+                "key": record["key"],
+                "project_name": record["project_name"],
+                "customer": project.customer,
+                "site": project.site,
+                "plant_type": record["plant_type"],
+                "family": v1.family(record["plant_type"]),
+                "capacity_mw": record["capacity_mw"],
+                "cumulative_mw": str(project.cumulative_mw)
+                if project.cumulative_mw is not None
+                else None,
+                "first_built": record["first_built"],
+                "agreement_types": sorted({str(r.get("Agreement Type") or "") for r in bearing}),
+                "j3": {
+                    True: "embedded-or-distribution",
+                    False: "directly-connected",
+                    None: "not-determinable",
+                }[j3],
+                "counted_tokens": sorted(project.tokens - common),
+                "candidates": found,
+            }
+        )
+    document = {
+        "rule": "020-j1-project-v1",
+        "declaration_sha256": en.DECLARATION_SHA256,
+        "amendment_3_sha256": digest_3,
+        "s1_sha256": S1_SHA256,
+        "s1_units": len(units),
+        "common_tokens": sorted(common),
+        "projects": out,
+    }
+    text = dumps(document)
+    if LINKS_PROPOSED.exists() and LINKS_PROPOSED.read_text() != text:
+        sys.exit("C5: links-proposed.json would change on recompute; nothing written")
+    LINKS_PROPOSED.write_text(text)
+    with_candidates = sum(1 for p in out if p["candidates"])
+    exact = sum(1 for p in out if any(c["exact"] for c in p["candidates"]))
+    log_run(
+        "proposals",
+        amendment_3=digest_3[:8],
+        projects=len(out),
+        with_candidates=with_candidates,
+        candidates=sum(len(p["candidates"]) for p in out),
+        exact=exact,
+        common_tokens=len(common),
+    )
+    print(
+        f"J1: {len(out)} projects, {with_candidates} with a candidate, "
+        f"{sum(len(p['candidates']) for p in out)} candidates, {exact} with an exact candidate; "
+        f"{len(common)} common tokens excluded; J3 " + str(Counter(p["j3"] for p in out))
+    )
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__.split("\n\n")[0])
     parser.add_argument(
-        "--phase", required=True, choices=["population", "schema", "projects", "projects-v02"]
+        "--phase",
+        required=True,
+        choices=["population", "schema", "projects", "projects-v02", "proposals"],
     )
     parser.add_argument("--seal", default=None)
     parser.add_argument("--amendment-seal", default=None)
     parser.add_argument("--amendment-2-seal", default=None)
+    parser.add_argument("--amendment-3-seal", default=None)
     parser.add_argument("--run-date", default=datetime.now(UTC).date().isoformat())
     args = parser.parse_args()
     EVIDENCE.mkdir(exist_ok=True)
@@ -887,6 +1003,10 @@ def main() -> None:
         phase_projects(args.seal, args.amendment_seal)
     elif args.phase == "projects-v02":
         phase_projects_v02(args.seal, args.amendment_seal, args.amendment_2_seal)
+    elif args.phase == "proposals":
+        phase_proposals(
+            args.seal, args.amendment_seal, args.amendment_2_seal, args.amendment_3_seal
+        )
     else:
         phase_schema(args.seal, args.run_date)
 

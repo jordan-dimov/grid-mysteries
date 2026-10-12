@@ -7,6 +7,18 @@
   "P2 the Gate 2 rows of the latest copy, as printed": "tests/test_energisation.py::test_gate_two_rows_are_the_printed_twos_only",
   "Register-only measure: months from the last printed date to the first Built copy, its distribution": "tests/test_energisation.py::test_quantiles_and_summary",
   "Amendment 1 A1: the project reference date is the latest capacity-bearing dated stage of the copy before; zero-MW stages never supply it; the earliest is the sensitivity": "tests/test_energisation.py::test_a1_project_reference_date_is_the_latest_capacity_bearing_stage_date",
-  "Amendment 1 A1: labels built-at-first-sight, undated-before-built and not-sighted-in-copy-before": "tests/test_energisation.py::test_a1_labels_first_sight_undated_and_not_sighted_in_the_copy_before"
+  "Amendment 1 A1: labels built-at-first-sight, undated-before-built and not-sighted-in-copy-before": "tests/test_energisation.py::test_a1_labels_first_sight_undated_and_not_sighted_in_the_copy_before",
+  "Amendment 3 B2: a token counts only if fewer than 1 % of S1's units carry it; tokens are four characters or more with a letter": "tests/test_energisation_v1.py::test_a_token_carried_by_one_percent_of_units_never_counts",
+  "Amendment 3 B2: tokens of the normalised text, four characters or more, at least one a letter": "tests/test_energisation_v1.py::test_tokens_are_four_characters_or_more_with_a_letter",
+  "Amendment 3 B2: a unit candidate shares a counted token and has capacity within 25 % of the project's capacity": "tests/test_energisation_v1.py::test_a_unit_candidate_needs_a_counted_token_and_capacity_within_25_percent",
+  "Amendment 3 B2: the project's cumulative MW also qualifies a capacity": "tests/test_energisation_v1.py::test_cumulative_mw_also_qualifies_a_unit",
+  "Amendment 3 B2: a set candidate is the matched units of one nationalGridBmUnit stem, summed within 25 %": "tests/test_energisation_v1.py::test_a_project_split_across_units_is_a_set_candidate_by_stem",
+  "Amendment 3 B2: for storage the absolute demandCapacity also qualifies": "tests/test_energisation_v1.py::test_storage_capacity_may_be_the_demand_capacity",
+  "Amendment 3 B2: exact is name equal, capacity within 5 % and fuel match": "tests/test_energisation_v1.py::test_exact_needs_the_name_capacity_within_5_percent_and_fuel",
+  "Amendment 3 B2: candidates ordered by counted tokens shared, then the capacity ratio's distance from 1": "tests/test_energisation_v1.py::test_candidates_order_by_tokens_shared_then_capacity_ratio",
+  "Amendment 3 B2: the project's text is its key's normalised name, customer and site": "tests/test_energisation_v1.py::test_project_text_is_the_keys_triple",
+  "Amendment 3 B3: J3 embedded when every capacity-bearing stage prints Embedded or BEGA; not determinable when none prints a value": "tests/test_energisation_v1.py::test_j3_embedded_from_agreement_type",
+  "Amendment 3 B5: plant families from Plant Type as printed": "tests/test_energisation_v1.py::test_plant_families",
+  "Amendment 3 B5: shares carry 95 % Wilson intervals": "tests/test_energisation_v1.py::test_wilson_interval"
  }
 }

@@ -570,6 +570,21 @@ def project_stages(
     return sorted(out, key=lambda t: (t.first_built, t.regime, t.project))
 
 
+def copy_before_rows(
+    seen: dict[str, dict[str, list[Sighting]]], kept_order: dict[str, list[date]]
+) -> dict[str, list[dict[str, object]]]:
+    """Every row, as printed, of each project `project_stages` measures, in
+    the kept copy before its first `Built` copy, keyed `<regime>|<project>`
+    as `projects-v02.ndjson` keys it (amendment 3 reads its cumulative MW
+    and `Agreement Type` there)."""
+    measured = {(p.regime, p.project) for p in project_stages(seen, kept_order)}
+    out: dict[str, list[dict[str, object]]] = {}
+    for regime, project, _, copies, _, before_date in _projects(seen, kept_order):
+        if (regime, project) in measured and before_date is not None:
+            out[f"{regime}|{project}"] = [s.row for _, s in copies[before_date]]
+    return out
+
+
 def _measure(
     found: list[ProjectStages], months_of: Callable[[ProjectStages], Decimal | None]
 ) -> dict[str, Any]:

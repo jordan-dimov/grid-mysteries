@@ -1,0 +1,13 @@
+{
+ "declaration": "DECLARATION.md",
+ "rules": {
+  "E1: 019's R4 on the customer names printed at the window's two ends (transfer, rename, same name, not determinable, several names)": "tests/test_holder_change.py::test_ends_class_follows_019_r4_on_the_end_names",
+  "E1: a name admitted with several holders resolves at the end that prints it (019's copy-date rule)": "tests/test_holder_change.py::test_a_name_with_several_holders_resolves_at_the_end_that_prints_it",
+  "E1: changes inside the window from 019's history runs, brackets rebuilt from the runs": "tests/test_holder_change.py::test_boundaries_are_the_runs_changing_between_the_ends",
+  "Population: stages keyed (Project ID, Stage) unique at each end and present at both, MW > 0 and not Built at baseline, dated at both ends, id in scope; removals counted": "tests/test_holder_change.py::test_stages_keep_only_the_declared_rows_and_count_the_rest",
+  "Measure: days, months (÷ 30.4375), MW-years (baseline MW × days ÷ 365.25), direction": "tests/test_holder_change.py::test_the_measure_months_mw_years_and_direction",
+  "Standardised difference: strata weighted by the exposed group's mix, over strata holding both groups": "tests/test_holder_change.py::test_standardised_weights_strata_by_the_exposed_groups_mix",
+  "Intervals: id-level bootstrap, deterministic under the declared seed": "tests/test_holder_change.py::test_contrast_is_deterministic_under_its_seed_and_resamples_ids",
+  "Group summaries: ids, stages, shares later, unchanged and earlier": "tests/test_holder_change.py::test_group_summary_counts_ids_and_shares"
+ }
+}

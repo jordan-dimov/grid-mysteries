@@ -2,6 +2,7 @@
 """023 — Did projects that changed hands slip more? Gated runner.
 
     uv run --group registers python investigations/023-did-changing-hands-slip-more/run.py --phase schema
+    uv run --group registers python investigations/023-did-changing-hands-slip-more/run.py --phase compute --seal 3f22f02f
 
 - ``schema`` (archive only, no network, before any declaration): for each
   candidate window the copies at its two ends as 014 v4 keeps them
@@ -12,30 +13,43 @@
   by class. **No date movement is read**: the effective dates are counted
   as parsed or not, never differenced. Writes
   ``archives/023-holder-change-inputs/`` (SCHEMA.md, schema-report.json).
+- ``compute`` (under the frozen DECLARATION.md, ``3f22f02f…``; archive and
+  019's held evidence only): exposure E1 per id, the stages, the groups,
+  the contrasts with their id-level bootstrap, F1 to F4 →
+  ``evidence/exposure.ndjson``, ``evidence/stages.ndjson`` (append-only,
+  C4), ``evidence/results.json``, ``RESULTS.md`` (all held).
 """
 
 import argparse
 import hashlib
 import json
+import random
 import sys
 from collections import Counter
 from datetime import UTC, date, datetime
+from decimal import Decimal
 from pathlib import Path
 from typing import Any
 
 from grid_mysteries.corpus import REPO_ROOT
-from grid_mysteries.evidence import write_json
+from grid_mysteries.evidence import dumps, write_json
 from grid_mysteries.investigations import connection_slippage as cs
 from grid_mysteries.investigations import holder_change as hc
 from grid_mysteries.investigations import queue_ownership as qo
 from grid_mysteries.investigations.overdue_queue import project_id
-from grid_mysteries.sources.tec_register import normalise_stage, parse_date
+from grid_mysteries.sources.tec_register import normalise_stage, parse_date, swap_day_month
 from grid_mysteries.tec import analysis
 from grid_mysteries.tec import sources as tec_sources
 
 HERE = Path(__file__).parent
 EVIDENCE = HERE / "evidence"
 RUN_LOG = EVIDENCE / "run-log.json"
+DECLARATION = HERE / "DECLARATION.md"
+EXPOSURE = EVIDENCE / "exposure.ndjson"
+STAGES = EVIDENCE / "stages.ndjson"
+RESULTS_JSON = EVIDENCE / "results.json"
+RESULTS_MD = HERE / "RESULTS.md"
+COMPUTE_WINDOWS = ("headline", "2023", "2024")
 ARCHIVE = REPO_ROOT / "archives" / "023-holder-change-inputs"
 Q019 = REPO_ROOT / "investigations" / "019-who-holds-the-queue" / "evidence"
 RUN_019 = "2026-09-30"
@@ -311,12 +325,299 @@ def phase_schema() -> None:
     print("\n".join(L[-30:]))
 
 
+def require_seal(seal: str | None) -> str:
+    digest = sha(DECLARATION)
+    if not digest.startswith(hc.DECLARATION_PREFIX):
+        sys.exit(f"DECLARATION.md hashes to {digest[:8]}, not the frozen {hc.DECLARATION_PREFIX}")
+    if not seal or not digest.startswith(seal):
+        sys.exit("refusing: --seal must be a prefix of the frozen declaration's SHA-256")
+    if not DECLARATION.with_suffix(".md.timestamps.json").exists():
+        sys.exit("refusing: DECLARATION.md has no proof sidecar")
+    return digest
+
+
+def reader(swapped: bool) -> hc.Reader:
+    def read(row: dict[str, object]) -> date | None:
+        d = parse_date(row.get("MW Effective From"))
+        return (swap_day_month(d) or d) if swapped and d else d
+
+    return read
+
+
+def append_only(path: Path, lines: dict[str, str]) -> int:
+    """C4: lines keyed by their first field; a committed line that would
+    change stops the run; new lines are appended."""
+    existing: dict[str, str] = {}
+    if path.exists():
+        for line in path.read_text().splitlines():
+            if line.strip():
+                existing[json.loads(line)["key"]] = line
+    new = []
+    for key, line in lines.items():
+        if key in existing:
+            if existing[key] != line:
+                sys.exit(f"C4: {path.name} line {key} would change on recompute")
+            continue
+        new.append(line)
+    with path.open("a") as f:
+        for line in new:
+            f.write(line + "\n")
+    return len(new)
+
+
+def phase_compute(seal: str | None) -> None:
+    digest = require_seal(seal)
+    report = json.loads((ARCHIVE / "schema-report.json").read_text())
+    for name, key in (
+        ("name-history.json", "019_name_history_sha256"),
+        ("names.json", "019_names_sha256"),
+        ("results.json", "019_results_sha256"),
+    ):
+        if sha(Q019 / name) != report["inputs"][key]:
+            sys.exit(f"C2: 019's {name} no longer hashes to the schema report's digest")
+    kept = kept_copies()  # C1: every copy verified against its digest as it is read
+    links, admitted, profiles = load_019()
+    names = json.loads((Q019 / "names.json").read_text())
+    current = {pid for v in names["names"].values() for pid in v["project_ids"]}
+    history = json.loads((Q019 / "name-history.json").read_text())["history"]
+    windows = {label: (b, c) for label, b, c in WINDOWS}
+    expected = {w["window"]: w for w in report["windows"]}
+    rng = random.Random(hc.SEED)
+    exposure_lines: dict[str, str] = {}
+    stage_lines: dict[str, str] = {}
+    out_windows = {}
+    for label in COMPUTE_WINDOWS:
+        b, c = windows[label]
+        kb, kc = kept[b], kept[c]
+        for end, k in (("baseline", kb), ("current", kc)):
+            if k.vintage.sha256 != expected[label][end]["sha256"]:
+                sys.exit(f"C1: {label} {end} copy is not the schema report's")
+        nb, nc = names_by_id(kb), names_by_id(kc)
+        both = sorted(set(nb) & set(nc))
+        exposure = {}
+        for pid in both:
+            e = hc.ends_class(pid, nb[pid], nc[pid], b, c, links, admitted, profiles)
+            e["changes_inside"] = len(hc.boundaries(history.get(pid, []), b, c))
+            e["in_scope"] = pid in current
+            exposure[pid] = e
+            exposure_lines[f"{label}|{pid}"] = dumps(
+                {"key": f"{label}|{pid}", "window": label, "project_id": pid, **e}
+            ).replace("\n", "")
+        scope = [pid for pid in both if pid in current]
+        classes = Counter(exposure[pid]["class"] for pid in scope)
+        if sum(classes.values()) != len(scope):
+            sys.exit("C3: the exposure classes do not sum to the scope")
+        moves, dropped = hc.stages(
+            list(kb.vintage.rows),
+            list(kc.vintage.rows),
+            reader(kb.swapped),
+            reader(kc.swapped),
+            lambda _: True,
+        )
+        keyed_rows = sum(1 for r in kb.vintage.rows if project_id(r)) + sum(
+            1 for r in kc.vintage.rows if project_id(r)
+        )
+        dup_rows = dropped.get("duplicate key at baseline", 0) + dropped.get(
+            "duplicate key at current", 0
+        )
+        several = classes.get(hc.SEVERAL_NAMES, 0)
+        if several > Decimal("0.10") * len(scope) or dup_rows > Decimal("0.05") * keyed_rows:
+            sys.exit(
+                f"F4: identity unfit in {label} (several names {several}/{len(scope)}, duplicate-key rows {dup_rows}/{keyed_rows})"
+            )
+        in_scope = [m for m in moves if m.project_id in current]
+        left = [m for m in moves if m.project_id not in current]
+        dropped["id not printed on 2026-09-29"] = len(left)
+        for m in moves:
+            key = f"{label}|{m.project_id}|{m.stage}"
+            stage_lines[key] = dumps(
+                {
+                    "key": key,
+                    "window": label,
+                    "project_id": m.project_id,
+                    "stage": m.stage,
+                    "class": exposure[m.project_id]["class"] if m.project_id in exposure else None,
+                    "in_scope": m.project_id in current,
+                    "mw": m.mw,
+                    "status_baseline": m.status_b,
+                    "plant_type_baseline": m.plant_type_b,
+                    "stratum": m.stratum,
+                    "date_baseline": m.date_b,
+                    "date_current": m.date_c,
+                    "days": m.days,
+                    "months": m.months,
+                    "mw_years": m.mw_years,
+                }
+            ).replace("\n", "")
+        groups = {
+            k: [m for m in in_scope if exposure[m.project_id]["class"] == k]
+            for k in (hc.TRANSFER, hc.RENAME, hc.SAME_NAME, hc.NOT_DETERMINABLE, hc.SEVERAL_NAMES)
+        }
+        contrasts = {}
+        for name, exposed_classes, reference_classes in hc.CONTRASTS:
+            exposed = [m for k in exposed_classes for m in groups[k]]
+            reference = [m for k in reference_classes for m in groups[k]]
+            contrasts[name] = hc.contrast(exposed, reference, rng)
+        out_windows[label] = {
+            "baseline": b.isoformat(),
+            "current": c.isoformat(),
+            "ids_at_both_ends": len(both),
+            "ids_in_scope": len(scope),
+            "exposure": dict(classes),
+            "same_name_after_a_change_inside": sum(
+                1
+                for pid in scope
+                if exposure[pid]["class"] == hc.SAME_NAME and exposure[pid]["changes_inside"]
+            ),
+            "rows_removed": dropped,
+            "groups": {k: hc.group_summary(v) for k, v in groups.items()},
+            "left_the_register": hc.group_summary(left),
+            "contrasts": contrasts,
+            "transfer_ids_measured": len({m.project_id for m in groups[hc.TRANSFER]}),
+        }
+    head = out_windows["headline"]["contrasts"]["transfer vs same name"]
+    falsifiers = evaluate(out_windows)
+    results = {
+        "declaration_sha256": digest,
+        "schema_report_sha256": sha(ARCHIVE / "schema-report.json"),
+        "019_links_sha256": sha(Q019 / "links.ndjson"),
+        "019_admissions_sha256": sha(Q019 / "links-admitted.json"),
+        "seed": hc.SEED,
+        "resamples": hc.RESAMPLES,
+        "windows": out_windows,
+        "falsifiers": falsifiers,
+        "computed_at": datetime.now(UTC).isoformat(timespec="seconds"),
+    }
+    n_exp = append_only(EXPOSURE, exposure_lines)
+    n_st = append_only(STAGES, stage_lines)
+    write_json(RESULTS_JSON, results)
+    RESULTS_MD.write_text(render(results))
+    log_run(
+        "compute",
+        declaration=digest[:8],
+        exposure_lines_new=n_exp,
+        stage_lines_new=n_st,
+        falsifiers={k: v["fires"] for k, v in falsifiers.items()},
+    )
+    print(
+        f"headline transfer vs same name: crude share-later {head['crude_share_later_difference']} {head['crude_share_later_ci95']}, standardised {head['standardised_share_later_difference']} {head['standardised_share_later_ci95']}; falsifiers {[k for k, v in falsifiers.items() if v['fires']]}"
+    )
+
+
+def _sign(x: str | None) -> int | None:
+    if x is None:
+        return None
+    d = Decimal(x)
+    return (d > 0) - (d < 0)
+
+
+def _spans_zero(ci: list[str] | None) -> bool | None:
+    if ci is None:
+        return None
+    return Decimal(ci[0]) <= 0 <= Decimal(ci[1])
+
+
+def evaluate(windows: dict[str, Any]) -> dict[str, Any]:
+    head = windows["headline"]
+    t = head["contrasts"]["transfer vs same name"]
+    f1 = head["transfer_ids_measured"] < 30
+    crude, std = (
+        _sign(t["crude_share_later_difference"]),
+        _sign(t["standardised_share_later_difference"]),
+    )
+    f2 = (crude is not None and std is not None and crude * std < 0) or (
+        _spans_zero(t["standardised_share_later_ci95"]) is True
+        and _spans_zero(t["crude_share_later_ci95"]) is False
+    )
+    reps = [
+        _sign(
+            windows[w]["contrasts"]["transfer vs same name"]["standardised_share_later_difference"]
+        )
+        for w in ("2023", "2024")
+    ]
+    f3 = std is not None and std != 0 and all(r != std for r in reps)
+    return {
+        "F1": {
+            "fires": f1,
+            "transfer_ids_measured": head["transfer_ids_measured"],
+            "threshold": 30,
+        },
+        "F2": {"fires": bool(f2), "crude_sign": crude, "standardised_sign": std},
+        "F3": {"fires": bool(f3), "primary_sign": std, "replication_signs": reps},
+        "F4": {
+            "fires": False,
+            "note": "the run stops when F4 fires; reaching here means it did not",
+        },
+    }
+
+
+def render(r: dict[str, Any]) -> str:
+    L = [
+        "# 023 — Did projects that changed hands slip more? Results (held for the sponsor)",
+        "",
+        f"Computed {r['computed_at']} under `DECLARATION.md` `{r['declaration_sha256'][:8]}…`; "
+        f"bootstrap {r['resamples']:,} resamples of ids, seed {r['seed']}. An association in the register's own data, never a cause.",
+        "",
+        "## Falsifiers",
+        "",
+        *[
+            f"- **{k}** {'FIRES' if v['fires'] else 'silent'}: {', '.join(f'{a}={b}' for a, b in v.items() if a != 'fires')}"
+            for k, v in r["falsifiers"].items()
+        ],
+    ]
+    for label, w in r["windows"].items():
+        L += [
+            "",
+            f"## Window {label}: {w['baseline']} → {w['current']}",
+            "",
+            f"Ids at both ends {w['ids_at_both_ends']}, in scope {w['ids_in_scope']}: {w['exposure']}; "
+            f"same name at both ends after a change inside {w['same_name_after_a_change_inside']}. Rows removed: {w['rows_removed']}.",
+            "",
+            "| group | ids | stages | MW | months p25 | median | p75 | later | unchanged | earlier | net MW-years total |",
+            "|---|---|---|---|---|---|---|---|---|---|---|",
+        ]
+        for g, s in [
+            *w["groups"].items(),
+            ("left the register (not in scope)", w["left_the_register"]),
+        ]:
+            m, sh = s["months"], s["shares"]
+            L.append(
+                f"| {g} | {s['ids']} | {s['stages']} | {s['mw']} | {m['p25']} | {m['median']} | {m['p75']} | "
+                f"{sh['later']['share']} {sh['later']['wilson95']} | {sh['unchanged']['share']} | {sh['earlier']['share']} | {s['net_mw_years_total']} |"
+            )
+        L += [
+            "",
+            "| contrast | share later, crude (95 %) | median months, crude (95 %) | share later, standardised (95 %) | exposed stages outside shared strata |",
+            "|---|---|---|---|---|",
+        ]
+        for name, c in w["contrasts"].items():
+            L.append(
+                f"| {name} | {c['crude_share_later_difference']} {c['crude_share_later_ci95']} | {c['crude_median_months_difference']} {c['crude_median_months_ci95']} | "
+                f"{c['standardised_share_later_difference']} {c['standardised_share_later_ci95']} | {c['exposed_stages_outside_shared_strata']} |"
+            )
+        L += [
+            "",
+            "Strata, transfer against same name:",
+            "",
+            "| stratum | transfer stages | same-name stages | transfer share later | same-name share later | transfer median months | same-name median months |",
+            "|---|---|---|---|---|---|---|",
+        ]
+        for st in w["contrasts"]["transfer vs same name"]["strata"]:
+            L.append(
+                f"| {st['stratum']} | {st['exposed_stages']} | {st['reference_stages']} | {st['exposed_share_later']} | {st['reference_share_later']} | {st['exposed_median_months']} | {st['reference_median_months']} |"
+            )
+    return "\n".join(L) + "\n"
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__.split("\n\n")[0])
-    parser.add_argument("--phase", required=True, choices=["schema"])
+    parser.add_argument("--phase", required=True, choices=["schema", "compute"])
+    parser.add_argument("--seal", default=None)
     args = parser.parse_args()
     if args.phase == "schema":
         phase_schema()
+    elif args.phase == "compute":
+        phase_compute(args.seal)
     else:
         sys.exit(f"unknown phase {args.phase}")
 

@@ -1286,6 +1286,42 @@ def phase_compute_v1(seal, a1, a2, a3, run_date: str) -> None:
         "register_lag": groups("register_lag"),
         "computed_at": datetime.now(UTC).isoformat(timespec="seconds"),
     }
+    # Asked with the admissions (not declared; drawn after every declared
+    # interval so those are unchanged): the plants measured twice, as pairs,
+    # and the overall realised delay without their second sighting.
+    adm = json.loads(LINKS_ADMITTED.read_text())
+    by_number = {a["prescreen_number"]: a["key"] for a in adm["admissions"]}
+    by_key = {r["key"]: r for r in out}
+    pairs = [
+        [by_key[by_number[a]], by_key[by_number[b]]] for a, b in adm.get("pairs_to_report", [])
+    ]
+    second = {pair[1]["key"] for pair in pairs}
+    results["admissions_provenance"] = adm.get("provenance")
+    results["crossed_unit_names"] = adm.get("crossed_unit_names", {})
+    results["pairs"] = [
+        [
+            {
+                k: x[k]
+                for k in (
+                    "project_name",
+                    "first_built",
+                    "label",
+                    "proxy",
+                    "delay_with",
+                    "delay_without",
+                )
+            }
+            for x in pair
+        ]
+        for pair in pairs
+    ]
+    if not f2:
+        results["without_second_sightings"] = {
+            field: v1.distribution(
+                [r[field] for r in measured if r[field] is not None and r["key"] not in second], rng
+            )
+            for field in ("delay_with", "delay_without")
+        }
     LABELS.write_text("\n".join(lines) + "\n")
     write_json(RESULTS_JSON, results)
     RESULTS.write_text(render_v1(results, out))
@@ -1335,6 +1371,12 @@ def render_v1(r: dict[str, Any], rows: list[dict[str, Any]]) -> str:
         f"**F2** {'FIRES (figures 2 and 3 not determinable)' if r['F2']['fires'] else 'silent'} "
         f"({r['F2']['admitted']} admitted of a base of {r['F2']['base']}). C6 failures: {len(r['C6_failures'])}. "
         f"Units admitted for more than one project: {r['duplicate_units'] or 'none'}.",
+        "",
+        "## Admissions",
+        "",
+        f"{r.get('admissions_provenance')}",
+        "",
+        *[f"- #{k}: {v}" for k, v in r.get("crossed_unit_names", {}).items()],
     ]
     L += table(
         "Realised delay, reference with later stages (amendment 1's A1)",
@@ -1345,6 +1387,27 @@ def render_v1(r: dict[str, Any], rows: list[dict[str, Any]]) -> str:
         r["realised_delay_without_later_stages"],
     )
     L += table("The register's lag (first metered day to first Built copy)", r["register_lag"])
+    if r.get("pairs"):
+        L += [
+            "",
+            "## The same plant measured twice (old-format and later-format sightings)",
+            "",
+            "| first sighting | second sighting |",
+            "|---|---|",
+        ]
+        for a, b in r["pairs"]:
+            L.append(
+                f"| {a['project_name']}, Built copy {a['first_built']}: proxy {a['proxy']}, delay {a['delay_with']} / {a['delay_without']} | "
+                f"{b['project_name']}, Built copy {b['first_built']}: proxy {b['proxy']}, delay {b['delay_with']} / {b['delay_without']} |"
+            )
+    if r.get("without_second_sightings"):
+        L += table(
+            "Overall realised delay without the second sightings (asked with the admissions, not declared)",
+            {
+                f"{'with' if k == 'delay_with' else 'without'} later stages": v
+                for k, v in r["without_second_sightings"].items()
+            },
+        )
     L += [
         "",
         "## Per project",

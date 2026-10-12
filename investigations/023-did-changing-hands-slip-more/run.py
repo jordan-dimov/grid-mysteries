@@ -565,6 +565,36 @@ def render(r: dict[str, Any]) -> str:
             for k, v in r["falsifiers"].items()
         ],
     ]
+    f = r["falsifiers"]
+
+    def std(label: str) -> str:
+        c = r["windows"][label]["contrasts"]["transfer vs same name"]
+        lo, hi = c["standardised_share_later_ci95"] or ["?", "?"]
+        return f"{c['standardised_share_later_difference']} (95 % {lo} to {hi})"
+
+    if f["F1"]["fires"]:
+        reading = "F1 fires: the contrast is not determinable; the counts are the outcome."
+    elif f["F2"]["fires"]:
+        reading = "F2 fires: the raw difference is explained by the mix of status and technology; no direction is stated."
+    elif f["F3"]["fires"]:
+        reading = (
+            "F3 fires: the association is **not stable across windows**, so no direction is stated. "
+            f"Standardised difference in the share of stages moved later, transfer minus same name: headline {std('headline')}, "
+            f"2023 {std('2023')}, 2024 {std('2024')}."
+        )
+    else:
+        reading = (
+            f"In the headline window, the standardised difference in the share of stages moved later, transfer minus same name, is {std('headline')}; "
+            f"2023 {std('2023')}, 2024 {std('2024')}. An association, never a cause."
+        )
+    L += [
+        "",
+        "## Reading (the declaration's rules)",
+        "",
+        reading,
+        "",
+        "Within a year most stages' dates do not move, so every group's median months is 0.0 and the median contrast carries no information; the share moved later carries it.",
+    ]
     for label, w in r["windows"].items():
         L += [
             "",
@@ -604,7 +634,7 @@ def render(r: dict[str, Any]) -> str:
         ]
         for st in w["contrasts"]["transfer vs same name"]["strata"]:
             L.append(
-                f"| {st['stratum']} | {st['exposed_stages']} | {st['reference_stages']} | {st['exposed_share_later']} | {st['reference_share_later']} | {st['exposed_median_months']} | {st['reference_median_months']} |"
+                f"| {st['stratum'].replace(' | ', ' / ')} | {st['exposed_stages']} | {st['reference_stages']} | {st['exposed_share_later']} | {st['reference_share_later']} | {st['exposed_median_months']} | {st['reference_median_months']} |"
             )
     return "\n".join(L) + "\n"
 

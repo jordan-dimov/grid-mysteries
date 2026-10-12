@@ -14,6 +14,45 @@
    "phase": "schema",
    "at": "2026-10-12T15:06:14+00:00",
    "windows": 4
+  },
+  {
+   "phase": "compute",
+   "at": "2026-10-12T15:11:17+00:00",
+   "declaration": "3f22f02f",
+   "exposure_lines_new": 3977,
+   "stage_lines_new": 2973,
+   "falsifiers": {
+    "F1": false,
+    "F2": false,
+    "F3": true,
+    "F4": false
+   }
+  },
+  {
+   "phase": "compute",
+   "at": "2026-10-12T15:12:50+00:00",
+   "declaration": "3f22f02f",
+   "exposure_lines_new": 0,
+   "stage_lines_new": 0,
+   "falsifiers": {
+    "F1": false,
+    "F2": false,
+    "F3": true,
+    "F4": false
+   }
+  },
+  {
+   "phase": "compute",
+   "at": "2026-10-12T15:14:16+00:00",
+   "declaration": "3f22f02f",
+   "exposure_lines_new": 0,
+   "stage_lines_new": 0,
+   "falsifiers": {
+    "F1": false,
+    "F2": false,
+    "F3": true,
+    "F4": false
+   }
   }
  ]
 }

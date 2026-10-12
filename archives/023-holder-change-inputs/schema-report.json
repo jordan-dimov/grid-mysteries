@@ -1,0 +1,347 @@
+{
+ "archive": "023-holder-change-inputs",
+ "generated_at": "2026-10-12T15:06:14+00:00",
+ "inputs": {
+  "019_name_history_sha256": "169baeee4cdff3bc8fa36486e9253179b0b04b0a8f9dc8ef2da492bf55d1e048",
+  "019_names_sha256": "1887a133440572bda49fb731f5df02f9872750d56587a8ac7e26b29aec4dd4e7",
+  "019_results_sha256": "51f9784f9dc3615dc10207352887a7541b3c3436359d3eab5e30f9195e477f77",
+  "019_rule_version": "019-r2-v2",
+  "019_declaration_sha256": "877682f7bffe52e8b98ff63bf5d14eb1e3d21713e68651d749b94e934b775a6a",
+  "019_amendment_2_sha256": "50b3bf7ec6031d963aadbd8871230d1fa4fa286c94880c447375a2595127a761",
+  "019_history_project_ids": 3102,
+  "019_history_first_copy": 319,
+  "019_links_rule_version": "019-r2-v2",
+  "019_links_loaded": 1855,
+  "019_admissions": 119,
+  "019_profiles_pinned": 1483,
+  "019_current_project_ids": 2056,
+  "019_events_classified": 1732,
+  "019_events_scope": "current project ids (printed in the 29/09/2026 copy) only",
+  "019_field_note": "019's `last_copy_with_earlier` is the first copy of the earlier name's run (name_changes reads the run's t_public); brackets here are rebuilt from the history's runs",
+  "project_id_scheme_change": "ids beginning a03 printed 2021-11-26 to 2022-08-24, a0l from 2022-08-24: no id spans the change"
+ },
+ "kept_copies": 705,
+ "first_kept_with_project_id": "2021-11-26",
+ "windows": [
+  {
+   "window": "headline",
+   "baseline": {
+    "t_public": "2024-07-19",
+    "sha256": "2ba43d883c40eb3e79c86d10411ebe3ea01d1abb908f4885bdaa13d98df4a2f0",
+    "regime": "old",
+    "swap_flagged": false,
+    "rows": 1880,
+    "columns_missing": [],
+    "blank": {
+     "Project ID": 0,
+     "Stage": 1614,
+     "Customer Name": 0,
+     "Project Status": 0,
+     "Plant Type": 0,
+     "MW Increase / Decrease": 323,
+     "MW Effective From": 301
+    },
+    "effective_unparsed_nonblank": 0,
+    "project_ids": 1729,
+    "duplicate_id_stage_keys": 0,
+    "rows_in_duplicate_keys": 0,
+    "statuses": {
+     "Scoping": 1243,
+     "Built": 310,
+     "Consents Approved": 139,
+     "Awaiting Consents": 163,
+     "Under Construction/Commissioning": 25
+    }
+   },
+   "current": {
+    "t_public": "2025-07-22",
+    "sha256": "d875470279cc562b07fbe128ecc66f6215711614eee8bf5134012dbbec97bde3",
+    "regime": "old",
+    "swap_flagged": false,
+    "rows": 2280,
+    "columns_missing": [],
+    "blank": {
+     "Project ID": 0,
+     "Stage": 1931,
+     "Customer Name": 12,
+     "Project Status": 0,
+     "Plant Type": 0,
+     "MW Increase / Decrease": 2,
+     "MW Effective From": 324
+    },
+    "effective_unparsed_nonblank": 0,
+    "project_ids": 2081,
+    "duplicate_id_stage_keys": 1,
+    "rows_in_duplicate_keys": 2,
+    "statuses": {
+     "Scoping": 1566,
+     "Built": 349,
+     "Consents Approved": 179,
+     "Awaiting Consents": 165,
+     "Under Construction/Commissioning": 21
+    }
+   },
+   "ids_at_both_ends": 1668,
+   "ids_in_019_history": 1668,
+   "ids_current_on_2026_09_29": 1630,
+   "name_changes_inside_window": 560,
+   "name_changes_inside_by_019_class": {
+    "transfer": 232,
+    "rename": 279,
+    "not-determinable": 49
+   },
+   "ids_with_a_change_inside": 364,
+   "ends_class": {
+    "same-name": 1332,
+    "rename": 181,
+    "transfer": 142,
+    "not-determinable": 13
+   },
+   "ends_class_current_ids": {
+    "same-name": 1294,
+    "rename": 181,
+    "transfer": 142,
+    "not-determinable": 13
+   },
+   "same_name_at_ends_but_changed_inside": 28,
+   "ids_with_a_transfer_inside": 161
+  },
+  {
+   "window": "2022",
+   "baseline": {
+    "t_public": "2022-01-05",
+    "sha256": "9cff93d0cc644201f62e0e874860f78312730fbe0f2cbef55cd19aafe40bac1a",
+    "regime": "old",
+    "swap_flagged": false,
+    "rows": 733,
+    "columns_missing": [],
+    "blank": {
+     "Project ID": 0,
+     "Stage": 669,
+     "Customer Name": 0,
+     "Project Status": 0,
+     "Plant Type": 5,
+     "MW Increase / Decrease": 286,
+     "MW Effective From": 271
+    },
+    "effective_unparsed_nonblank": 0,
+    "project_ids": 733,
+    "duplicate_id_stage_keys": 0,
+    "rows_in_duplicate_keys": 0,
+    "statuses": {
+     "Built": 278,
+     "Consents Approved": 74,
+     "Scoping": 288,
+     "Awaiting Consents": 86,
+     "Under Construction/Commissioning": 7
+    }
+   },
+   "current": {
+    "t_public": "2023-01-06",
+    "sha256": "4756e8d6a18e00e72540c2f3a95d5d7d36376b2850e0ef7374049c4870ad4fad",
+    "regime": "old",
+    "swap_flagged": false,
+    "rows": 922,
+    "columns_missing": [],
+    "blank": {
+     "Project ID": 0,
+     "Stage": 846,
+     "Customer Name": 0,
+     "Project Status": 0,
+     "Plant Type": 1,
+     "MW Increase / Decrease": 292,
+     "MW Effective From": 277
+    },
+    "effective_unparsed_nonblank": 0,
+    "project_ids": 922,
+    "duplicate_id_stage_keys": 0,
+    "rows_in_duplicate_keys": 0,
+    "statuses": {
+     "Built": 285,
+     "Consents Approved": 91,
+     "Scoping": 445,
+     "Awaiting Consents": 90,
+     "Under Construction/Commissioning": 11
+    }
+   },
+   "ids_at_both_ends": 0,
+   "ids_in_019_history": 0,
+   "ids_current_on_2026_09_29": 0,
+   "name_changes_inside_window": 0,
+   "name_changes_inside_by_019_class": {},
+   "ids_with_a_change_inside": 0,
+   "ends_class": {},
+   "ends_class_current_ids": {},
+   "same_name_at_ends_but_changed_inside": 0,
+   "ids_with_a_transfer_inside": 0
+  },
+  {
+   "window": "2023",
+   "baseline": {
+    "t_public": "2023-01-06",
+    "sha256": "4756e8d6a18e00e72540c2f3a95d5d7d36376b2850e0ef7374049c4870ad4fad",
+    "regime": "old",
+    "swap_flagged": false,
+    "rows": 922,
+    "columns_missing": [],
+    "blank": {
+     "Project ID": 0,
+     "Stage": 846,
+     "Customer Name": 0,
+     "Project Status": 0,
+     "Plant Type": 1,
+     "MW Increase / Decrease": 292,
+     "MW Effective From": 277
+    },
+    "effective_unparsed_nonblank": 0,
+    "project_ids": 922,
+    "duplicate_id_stage_keys": 0,
+    "rows_in_duplicate_keys": 0,
+    "statuses": {
+     "Built": 285,
+     "Consents Approved": 91,
+     "Scoping": 445,
+     "Awaiting Consents": 90,
+     "Under Construction/Commissioning": 11
+    }
+   },
+   "current": {
+    "t_public": "2024-01-05",
+    "sha256": "04e301644373bd28dab7d68d44fa8a6a89cbe4bab0cffcc363bb04a7d19d8535",
+    "regime": "old",
+    "swap_flagged": false,
+    "rows": 1463,
+    "columns_missing": [],
+    "blank": {
+     "Project ID": 0,
+     "Stage": 1357,
+     "Customer Name": 0,
+     "Project Status": 0,
+     "Plant Type": 0,
+     "MW Increase / Decrease": 306,
+     "MW Effective From": 285
+    },
+    "effective_unparsed_nonblank": 0,
+    "project_ids": 1463,
+    "duplicate_id_stage_keys": 0,
+    "rows_in_duplicate_keys": 0,
+    "statuses": {
+     "Scoping": 901,
+     "Built": 294,
+     "Consents Approved": 109,
+     "Awaiting Consents": 137,
+     "Under Construction/Commissioning": 22
+    }
+   },
+   "ids_at_both_ends": 888,
+   "ids_in_019_history": 888,
+   "ids_current_on_2026_09_29": 842,
+   "name_changes_inside_window": 154,
+   "name_changes_inside_by_019_class": {
+    "rename": 93,
+    "transfer": 55,
+    "not-determinable": 1,
+    "not-in-019-scope": 5
+   },
+   "ids_with_a_change_inside": 85,
+   "ends_class": {
+    "same-name": 807,
+    "rename": 40,
+    "transfer": 37,
+    "not-determinable": 4
+   },
+   "ends_class_current_ids": {
+    "same-name": 766,
+    "rename": 38,
+    "transfer": 37,
+    "not-determinable": 1
+   },
+   "same_name_at_ends_but_changed_inside": 4,
+   "ids_with_a_transfer_inside": 38
+  },
+  {
+   "window": "2024",
+   "baseline": {
+    "t_public": "2024-01-05",
+    "sha256": "04e301644373bd28dab7d68d44fa8a6a89cbe4bab0cffcc363bb04a7d19d8535",
+    "regime": "old",
+    "swap_flagged": false,
+    "rows": 1463,
+    "columns_missing": [],
+    "blank": {
+     "Project ID": 0,
+     "Stage": 1357,
+     "Customer Name": 0,
+     "Project Status": 0,
+     "Plant Type": 0,
+     "MW Increase / Decrease": 306,
+     "MW Effective From": 285
+    },
+    "effective_unparsed_nonblank": 0,
+    "project_ids": 1463,
+    "duplicate_id_stage_keys": 0,
+    "rows_in_duplicate_keys": 0,
+    "statuses": {
+     "Scoping": 901,
+     "Built": 294,
+     "Consents Approved": 109,
+     "Awaiting Consents": 137,
+     "Under Construction/Commissioning": 22
+    }
+   },
+   "current": {
+    "t_public": "2025-01-03",
+    "sha256": "6828a6f451e66402b6db969ec06d4be943a3d315f975751ecae666f44eaba753",
+    "regime": "old",
+    "swap_flagged": false,
+    "rows": 1973,
+    "columns_missing": [],
+    "blank": {
+     "Project ID": 0,
+     "Stage": 1723,
+     "Customer Name": 0,
+     "Project Status": 0,
+     "Plant Type": 0,
+     "MW Increase / Decrease": 324,
+     "MW Effective From": 305
+    },
+    "effective_unparsed_nonblank": 0,
+    "project_ids": 1834,
+    "duplicate_id_stage_keys": 1,
+    "rows_in_duplicate_keys": 2,
+    "statuses": {
+     "Scoping": 1316,
+     "Built": 317,
+     "Consents Approved": 157,
+     "Awaiting Consents": 159,
+     "Under Construction/Commissioning": 24
+    }
+   },
+   "ids_at_both_ends": 1421,
+   "ids_in_019_history": 1421,
+   "ids_current_on_2026_09_29": 1368,
+   "name_changes_inside_window": 337,
+   "name_changes_inside_by_019_class": {
+    "rename": 184,
+    "transfer": 116,
+    "not-determinable": 28,
+    "not-in-019-scope": 9
+   },
+   "ids_with_a_change_inside": 201,
+   "ends_class": {
+    "same-name": 1242,
+    "rename": 87,
+    "transfer": 83,
+    "not-determinable": 9
+   },
+   "ends_class_current_ids": {
+    "same-name": 1195,
+    "rename": 86,
+    "transfer": 83,
+    "not-determinable": 4
+   },
+   "same_name_at_ends_but_changed_inside": 22,
+   "ids_with_a_transfer_inside": 89
+  }
+ ]
+}

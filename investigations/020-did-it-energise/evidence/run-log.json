@@ -132,6 +132,24 @@
    "projects": 125,
    "requests": 36414,
    "format_departures": 0
+  },
+  {
+   "phase": "compute-v1",
+   "at": "2026-10-12T16:33:22+00:00",
+   "amendment_3": "f84367c3",
+   "run_date": "2026-10-12",
+   "labels": {
+    "metered-before-the-walk": 59,
+    "no-candidate": 17,
+    "unmatched": 14,
+    "metered": 59,
+    "second-sighting": 3,
+    "embedded-or-distribution": 8,
+    "metered-before-register": 4
+   },
+   "f1": false,
+   "f2": false,
+   "c6": 0
   }
  ]
 }

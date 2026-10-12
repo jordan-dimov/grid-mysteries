@@ -585,6 +585,22 @@ def copy_before_rows(
     return out
 
 
+def first_sightings(
+    seen: dict[str, dict[str, list[Sighting]]], kept_order: dict[str, list[date]]
+) -> dict[str, tuple[date, int]]:
+    """For each project with a first `Built` copy, keyed `<regime>|<project>`:
+    the first kept copy printing it and the archive's own gap before that
+    copy in days (0 at a regime's first copy), C6's bound."""
+    out: dict[str, tuple[date, int]] = {}
+    for regime, project, dates, _, _, _ in _projects(seen, kept_order):
+        order = kept_order[regime]
+        first = dates[0]
+        i = order.index(first)
+        gap = (first - order[i - 1]).days if i > 0 else 0
+        out[f"{regime}|{project}"] = (first, gap)
+    return out
+
+
 def _measure(
     found: list[ProjectStages], months_of: Callable[[ProjectStages], Decimal | None]
 ) -> dict[str, Any]:

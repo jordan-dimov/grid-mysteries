@@ -7,11 +7,14 @@ measured, by counted shared tokens and capacity, a unit or a set of units
 under one `nationalGridBmUnit` stem; a person admits. No I/O.
 """
 
+import json
 import math
+import random
 import re
 from collections import Counter, defaultdict
-from collections.abc import Iterable
+from collections.abc import Iterable, Iterator
 from dataclasses import dataclass
+from datetime import date, timedelta
 from decimal import Decimal
 from typing import Any, Final
 
@@ -258,3 +261,147 @@ def wilson(k: int, n: int, z: float = 1.959963984540054) -> tuple[Decimal, Decim
         Decimal(max(0.0, centre - half)).quantize(Decimal("0.001")),
         Decimal(min(1.0, centre + half)).quantize(Decimal("0.001")),
     )
+
+
+# ------------------------------------------------------------- B4: the walk
+
+B1610_FIELDS: Final = (
+    "dataset",
+    "psrType",
+    "bmUnit",
+    "settlementDate",
+    "settlementPeriod",
+    "halfHourEndTime",
+    "settlementRunType",
+    "quantity",
+)
+WALK_FLOOR: Final = date(2015, 1, 1)
+WINDOW_DAYS: Final = 7
+SEED: Final = 20261012
+RESAMPLES: Final = 10_000
+
+
+def windows_back(run_date: date, floor: date = WALK_FLOOR) -> Iterator[tuple[date, date]]:
+    """Seven-settlement-day windows (from, to), walking back from the run
+    date; the last one stops at the floor."""
+    to = run_date
+    while to >= floor:
+        start = max(to - timedelta(days=WINDOW_DAYS - 1), floor)
+        yield start, to
+        to = start - timedelta(days=1)
+
+
+def format_check(raw: bytes, units: set[str]) -> list[str]:
+    """B4's format check, before any value is read: UTF-8 without a BOM,
+    JSON, an array (or an object's `data` array), every record carrying the
+    S2 report's always-present fields, `bmUnit` among the requested units."""
+    problems = []
+    if raw.startswith(b"\xef\xbb\xbf"):
+        problems.append("byte-order mark")
+    try:
+        document = json.loads(raw.decode("utf-8"))
+    except (UnicodeDecodeError, json.JSONDecodeError) as error:
+        return [*problems, f"not UTF-8 JSON: {error}"[:120]]
+    data = document.get("data") if isinstance(document, dict) else document
+    if not isinstance(data, list):
+        return [*problems, f"top level is {type(document).__name__}, not an array"]
+    for i, record in enumerate(data):
+        if not isinstance(record, dict):
+            problems.append(f"record {i} is not an object")
+            break
+        missing = [f for f in B1610_FIELDS if f not in record]
+        if missing:
+            problems.append(f"record {i} lacks {missing}")
+            break
+        if record["bmUnit"] not in units:
+            problems.append(f"record {i} names unit {record['bmUnit']!r}, not requested")
+            break
+    return problems
+
+
+def records(raw: bytes) -> list[dict[str, Any]]:
+    document = json.loads(raw.decode("utf-8"))
+    data = document.get("data") if isinstance(document, dict) else document
+    return list(data or [])
+
+
+def proxy(windows: list[list[dict[str, Any]]]) -> tuple[date, str] | None:
+    """The earliest settlement day with `quantity` > 0 for any admitted
+    unit, over every run type, with the run type of that record."""
+    best: tuple[date, str] | None = None
+    for recs in windows:
+        for r in recs:
+            q = parse_decimal(r.get("quantity"))
+            if q is None or q <= 0:
+                continue
+            day = date.fromisoformat(str(r["settlementDate"])[:10])
+            if best is None or day < best[0]:
+                best = (day, str(r.get("settlementRunType")))
+    return best
+
+
+@dataclass(frozen=True)
+class Walk:
+    """The outcome of one project's walk: whether any window held records,
+    whether the floor window did (left-censored), and the proxy."""
+
+    windows: int
+    any_records: bool
+    floor_has_records: bool
+    proxy: tuple[date, str] | None
+
+
+def label(admitted: bool, j3: str, had_candidates: bool, walk: Walk | None) -> str:
+    """B4's labels; every project of B1 lands in exactly one (C4)."""
+    if not admitted:
+        if j3 == "embedded-or-distribution":
+            return "embedded-or-distribution"
+        return "unmatched" if had_candidates else "no-candidate"
+    assert walk is not None
+    if walk.floor_has_records:
+        return "metered-before-the-walk"
+    if walk.proxy is not None:
+        return "metered"
+    return "registered-not-metered" if walk.any_records else "no-metered-record"
+
+
+def months(to: date, from_date: date) -> Decimal:
+    return (Decimal((to - from_date).days) / Decimal("30.4375")).quantize(Decimal("0.1"))
+
+
+def bootstrap_median(values: list[Decimal], rng: random.Random) -> list[str] | None:
+    """B5: 95 % percentile interval of the `quantiles` median over 10,000
+    resamples with replacement; none below n = 5."""
+    from grid_mysteries.investigations.energisation import quantiles
+
+    n = len(values)
+    if n < 5:
+        return None
+    medians = []
+    for _ in range(RESAMPLES):
+        sample = [values[rng.randrange(n)] for _ in range(n)]
+        m = quantiles(sample)["median"]
+        assert isinstance(m, Decimal)
+        medians.append(m)
+    medians.sort()
+    return [str(medians[int(0.025 * (RESAMPLES - 1))]), str(medians[int(0.975 * (RESAMPLES - 1))])]
+
+
+def distribution(values: list[Decimal], rng: random.Random) -> dict[str, Any]:
+    """n, quantiles, the median's interval, and the shares before (< 0),
+    within six months after (0 to 6.0) and later, with Wilson intervals."""
+    from grid_mysteries.investigations.energisation import quantiles
+
+    n = len(values)
+    q: dict[str, Any] = dict(quantiles(values))
+    q["median_ci95"] = bootstrap_median(values, rng)
+    q["median_ci95_note"] = None if n >= 5 else "n < 5, no interval"
+    for name, test in (
+        ("before", lambda v: v < 0),
+        ("within_six_months", lambda v: 0 <= v <= Decimal("6.0")),
+        ("later", lambda v: v > Decimal("6.0")),
+    ):
+        k = sum(1 for v in values if test(v))
+        interval = wilson(k, n)
+        q[name] = {"k": k, "wilson95": [str(x) for x in interval] if interval else None}
+    return q

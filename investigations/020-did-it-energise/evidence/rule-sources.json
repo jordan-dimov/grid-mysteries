@@ -19,6 +19,11 @@
   "Amendment 3 B2: the project's text is its key's normalised name, customer and site": "tests/test_energisation_v1.py::test_project_text_is_the_keys_triple",
   "Amendment 3 B3: J3 embedded when every capacity-bearing stage prints Embedded or BEGA; not determinable when none prints a value": "tests/test_energisation_v1.py::test_j3_embedded_from_agreement_type",
   "Amendment 3 B5: plant families from Plant Type as printed": "tests/test_energisation_v1.py::test_plant_families",
-  "Amendment 3 B5: shares carry 95 % Wilson intervals": "tests/test_energisation_v1.py::test_wilson_interval"
+  "Amendment 3 B5: shares carry 95 % Wilson intervals": "tests/test_energisation_v1.py::test_wilson_interval",
+  "Amendment 3 B4: seven-settlement-day windows walking back from the run date to the floor": "tests/test_energisation_v1.py::test_windows_walk_back_seven_days_and_stop_at_the_floor",
+  "Amendment 3 B4: format check against the S2 report before any value is read (BOM, JSON, array, fields, units)": "tests/test_energisation_v1.py::test_format_check_before_any_value_is_read",
+  "Amendment 3 B4: the proxy is the earliest settlement day with quantity above zero, over every run type": "tests/test_energisation_v1.py::test_proxy_is_the_earliest_positive_day_over_every_run_type",
+  "Amendment 3 B4: labels metered, registered-not-metered, no-metered-record, metered-before-the-walk, embedded-or-distribution, unmatched, no-candidate partition the projects": "tests/test_energisation_v1.py::test_labels_partition_the_projects",
+  "Amendment 3 B5: shares before, within six months and later with Wilson intervals; median bootstrap interval, none below n = 5": "tests/test_energisation_v1.py::test_distribution_shares_and_the_median_interval"
  }
 }

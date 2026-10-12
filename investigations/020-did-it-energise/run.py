@@ -6,6 +6,8 @@
     uv run --group registers python investigations/020-did-it-energise/run.py --phase projects --seal fb8a3428 --amendment-seal cc01e3cf
     uv run --group registers python investigations/020-did-it-energise/run.py --phase projects-v02 --seal fb8a3428 --amendment-seal cc01e3cf --amendment-2-seal 3ef7240c
     uv run --group registers python investigations/020-did-it-energise/run.py --phase proposals --seal fb8a3428 --amendment-seal cc01e3cf --amendment-2-seal 3ef7240c --amendment-3-seal f84367c3
+    uv run --group registers python investigations/020-did-it-energise/run.py --phase walk --seal fb8a3428 --amendment-seal cc01e3cf --amendment-2-seal 3ef7240c --amendment-3-seal f84367c3 --run-date <day>
+    uv run --group registers python investigations/020-did-it-energise/run.py --phase compute-v1 --seal fb8a3428 --amendment-seal cc01e3cf --amendment-2-seal 3ef7240c --amendment-3-seal f84367c3 --run-date <day>
 
 - ``population`` (archive only): every copy of the register the repository
   holds (journal and daily capture, one per publication date, each verified
@@ -27,6 +29,19 @@
   for the 164 projects of version 0.2 against the S1 vintage pinned at the
   schema pass, with J3 from the copy before → ``evidence/links-proposed.json``
   (held; reproducible line for line, C5).
+- ``walk`` (network; amendment 3, B4; only after ``evidence/links-admitted.json``
+  holds the person's decision for every project with a candidate): B1610
+  for each admitted unit or set in seven-day windows backward from the run
+  date, one window pinned at a time (a journal per project under
+  ``data/raw/elexon/<run-date>-020/b1610/``), each format-checked before its
+  records are counted; stops at the first empty window after records, or at
+  the floor → ``evidence/walks.json``.
+- ``compute-v1`` (no network; B4 to B6): every pinned window re-hashed (C3)
+  and format-checked, the proxy, the labels (C4), C6, F1, F2, F4, the
+  realised delay under both readings and the register's lag, by year of the
+  first ``Built`` copy and by plant family, with the declared intervals →
+  ``evidence/labels.ndjson``, ``evidence/results.json``, ``RESULTS.md``
+  (held).
 """
 
 import argparse
@@ -34,7 +49,7 @@ import hashlib
 import json
 import sys
 from collections import Counter
-from datetime import UTC, date, datetime
+from datetime import UTC, date, datetime, timedelta
 from decimal import Decimal
 from pathlib import Path
 from typing import Any
@@ -60,6 +75,11 @@ AMENDMENT_1 = HERE / "DECLARATION-amendment-1.md"
 AMENDMENT_2 = HERE / "DECLARATION-amendment-2.md"
 AMENDMENT_3 = HERE / "DECLARATION-amendment-3.md"
 LINKS_PROPOSED = EVIDENCE / "links-proposed.json"
+LINKS_ADMITTED = EVIDENCE / "links-admitted.json"
+WALKS = EVIDENCE / "walks.json"
+LABELS = EVIDENCE / "labels.ndjson"
+RESULTS_JSON = EVIDENCE / "results.json"
+RESULTS = HERE / "RESULTS.md"
 S1_VINTAGE = REPO_ROOT / "data/raw/elexon/020/2026-09-30/bmunits.json"
 S1_SHA256 = "0f0902e13de38491a97579245476df6df228b999ff73d918cb5a277f928e8329"
 PROJECTS_V02 = EVIDENCE / "projects-v02.ndjson"
@@ -983,12 +1003,376 @@ def phase_proposals(
     )
 
 
+def require_v1_seals(seal: str | None, a1: str | None, a2: str | None, a3: str | None) -> str:
+    require_seal(seal)
+    require_amendment(a1)
+    require_amendment(a2, AMENDMENT_2, en.AMENDMENT_2_PREFIX)
+    return require_amendment(a3, AMENDMENT_3, v1.AMENDMENT_3_PREFIX)
+
+
+def admissions() -> tuple[dict[str, Any], dict[str, dict[str, Any]]]:
+    """The proposals, and the person's decisions keyed by project; refuses
+    unless every project with a candidate has one, and every admitted
+    candidate is one J1 proposed (B3)."""
+    if not LINKS_ADMITTED.exists():
+        sys.exit(
+            "refusing: evidence/links-admitted.json is not written; the person admits first (B3)"
+        )
+    proposed = json.loads(LINKS_PROPOSED.read_text())
+    decisions = {a["key"]: a for a in json.loads(LINKS_ADMITTED.read_text())["admissions"]}
+    for p in proposed["projects"]:
+        if not p["candidates"]:
+            continue
+        d = decisions.get(p["key"])
+        if d is None:
+            sys.exit(f"B3: no decision for {p['project_name']} ({p['key']})")
+        if d["decision"] == "admitted" and d["units"] not in [c["units"] for c in p["candidates"]]:
+            sys.exit(f"B3: {p['key']} admits {d['units']}, which J1 did not propose")
+    return proposed, decisions
+
+
+def slug(units: list[str]) -> str:
+    return "+".join(units).replace("/", "_")
+
+
+def walk_project(units: list[str], raw: Path, run_date: date) -> dict[str, Any]:
+    """B4 for one admitted unit or set: one window pinned at a time,
+    format-checked before its records are counted."""
+    folder = raw / slug(units)
+    journal, manifest = folder / "journal.ndjson", folder / "manifest.json"
+    seen_records = False
+    out: dict[str, Any] = {"units": units, "windows": [], "format": []}
+    for start, end in v1.windows_back(run_date):
+        url = elexon.b1610_stream_url(start.isoformat(), units, period_to=50).replace(
+            f"from={start.isoformat()}&to={start.isoformat()}",
+            f"from={start.isoformat()}&to={end.isoformat()}",
+        )
+        destination = folder / f"{start.isoformat()}.json"
+        fetch_journalled(
+            [("elexon-b1610-020-walk", url, destination)],
+            journal_path=journal,
+            manifest_path=manifest,
+            repo_root=REPO_ROOT,
+            fetch=elexon.fetch_pinned,
+            sleep_seconds=0.05,
+        )
+        raw_bytes = destination.read_bytes()
+        problems = v1.format_check(raw_bytes, set(units))
+        if problems:
+            out["format"].append({"window": start.isoformat(), "problems": problems})
+            break
+        n = len(v1.records(raw_bytes))
+        out["windows"].append({"from": start.isoformat(), "to": end.isoformat(), "records": n})
+        if n:
+            seen_records = True
+        elif seen_records:
+            break
+    return out
+
+
+def phase_walk(seal, a1, a2, a3, run_date: str) -> None:
+    from concurrent.futures import ThreadPoolExecutor
+
+    digest_3 = require_v1_seals(seal, a1, a2, a3)
+    _, decisions = admissions()
+    admitted = [d for d in decisions.values() if d["decision"] == "admitted"]
+    raw = REPO_ROOT / "data/raw/elexon" / f"{run_date}-020" / "b1610"
+    day = date.fromisoformat(run_date)
+    done = 0
+
+    def one(d: dict[str, Any]) -> tuple[str, dict[str, Any]]:
+        return d["key"], walk_project(d["units"], raw, day)
+
+    walks = {}
+    with ThreadPoolExecutor(max_workers=4) as pool:
+        for key, result in pool.map(one, admitted):
+            walks[key] = result
+            done += 1
+            if done % 10 == 0:
+                print(f"walked {done}/{len(admitted)}", flush=True)
+    write_json(
+        EVIDENCE / "manifest.json",
+        {
+            key: {
+                "journal": str((raw / slug(w["units"]) / "journal.ndjson").relative_to(REPO_ROOT)),
+                "journal_sha256": sha(raw / slug(w["units"]) / "journal.ndjson"),
+                "windows": len(w["windows"]) + len(w["format"]),
+            }
+            for key, w in sorted(walks.items())
+        },
+    )
+    write_json(
+        WALKS,
+        {
+            "amendment_3_sha256": digest_3,
+            "run_date": run_date,
+            "raw": str(raw.relative_to(REPO_ROOT)),
+            "walks": walks,
+        },
+    )
+    requests = sum(len(w["windows"]) + len(w["format"]) for w in walks.values())
+    departed = [k for k, w in walks.items() if w["format"]]
+    log_run(
+        "walk",
+        amendment_3=digest_3[:8],
+        run_date=run_date,
+        projects=len(walks),
+        requests=requests,
+        format_departures=len(departed),
+    )
+    print(
+        f"walked {len(walks)} projects, {requests} windows pinned; format departures: {len(departed)}"
+    )
+
+
+def phase_compute_v1(seal, a1, a2, a3, run_date: str) -> None:
+    import random
+
+    digest_3 = require_v1_seals(seal, a1, a2, a3)
+    proposed, decisions = admissions()
+    walks_doc = json.loads(WALKS.read_text())
+    if walks_doc["run_date"] != run_date:
+        sys.exit(f"walks.json is for {walks_doc['run_date']}, not {run_date}")
+    raw = REPO_ROOT / walks_doc["raw"]
+    departures = {k: w["format"] for k, w in walks_doc["walks"].items() if w["format"]}
+    if departures:
+        sys.exit(
+            f"format check: {len(departures)} walks departed from the S2 report; only an amendment reads them: {next(iter(departures.items()))}"
+        )
+    projects = {
+        r["key"]: r
+        for r in (json.loads(x) for x in PROJECTS_V02.read_text().splitlines() if x.strip())
+    }
+    usable, _, _ = load_copies()
+    result = cs.series(usable, partial_export_rule=True)
+    kept = analysis.kept(usable, result)
+    seen = en.sightings(
+        [
+            (k.regime, k.vintage.t_public, k.vintage.sha256, list(k.vintage.rows), k.swapped)
+            for k in kept
+        ]
+    )
+    order: dict[str, list[date]] = {}
+    for k in kept:
+        order.setdefault(k.regime, []).append(k.vintage.t_public)
+    sighted = en.first_sightings(seen, order)
+    lines, out = [], []
+    c6_fail = []
+    for p in proposed["projects"]:
+        key, record = p["key"], projects[p["key"]]
+        d = decisions.get(key, {"decision": "no-candidate"})
+        walk = None
+        if d["decision"] == "admitted":
+            w = walks_doc["walks"][key]
+            folder = raw / slug(d["units"])
+            journal = {
+                json.loads(x)["path"]: json.loads(x)["sha256"]
+                for x in (folder / "journal.ndjson").read_text().splitlines()
+                if x.strip()
+            }
+            recs = []
+            for win in w["windows"]:
+                path = folder / f"{win['from']}.json"
+                rel = str(path.relative_to(REPO_ROOT))
+                if sha(path) != journal.get(rel):
+                    sys.exit(f"C3: {rel} does not hash to its journalled digest")
+                b = path.read_bytes()
+                if v1.format_check(b, set(d["units"])):
+                    sys.exit(f"format check: {rel} departs from the S2 report")
+                recs.append(v1.records(b))
+            floor_window = w["windows"][-1] if w["windows"] else None
+            walk = v1.Walk(
+                windows=len(w["windows"]),
+                any_records=any(win["records"] for win in w["windows"]),
+                floor_has_records=bool(
+                    floor_window
+                    and floor_window["from"] == v1.WALK_FLOOR.isoformat()
+                    and floor_window["records"]
+                ),
+                proxy=v1.proxy(recs),
+            )
+        lab = v1.label(d["decision"] == "admitted", p["j3"], bool(p["candidates"]), walk)
+        proxy_day = walk.proxy[0] if walk and walk.proxy and lab == "metered" else None
+        first_seen, gap = sighted[key]
+        c6 = proxy_day is not None and proxy_day < first_seen - timedelta(days=gap)
+        if c6:
+            c6_fail.append(key)
+        first_built = date.fromisoformat(record["first_built"])
+        ref_with = date.fromisoformat(record["reference_with"])
+        ref_without = (
+            date.fromisoformat(record["reference_without"]) if record["reference_without"] else None
+        )
+        row = {
+            "key": key,
+            "project_name": record["project_name"],
+            "plant_type": record["plant_type"],
+            "family": p["family"],
+            "capacity_mw": record["capacity_mw"],
+            "first_built": record["first_built"],
+            "year": first_built.year,
+            "label": lab,
+            "units": d.get("units"),
+            "decision": d["decision"],
+            "j3": p["j3"],
+            "first_sighting": first_seen.isoformat(),
+            "archive_gap_days": gap,
+            "c6_fails": c6,
+            "proxy": proxy_day.isoformat() if proxy_day else None,
+            "proxy_run_type": walk.proxy[1] if walk and walk.proxy and proxy_day else None,
+            "windows": walk.windows if walk else 0,
+            "delay_with": v1.months(proxy_day, ref_with) if proxy_day else None,
+            "delay_without": v1.months(proxy_day, ref_without)
+            if proxy_day and ref_without
+            else None,
+            "register_lag": v1.months(first_built, proxy_day) if proxy_day else None,
+            "copy_gap_days": (first_built - date.fromisoformat(record["copy_before"])).days,
+        }
+        out.append(row)
+        lines.append(dumps(row).replace("\n", ""))
+    labels = Counter(r["label"] for r in out)
+    if sum(labels.values()) != len(proposed["projects"]):
+        sys.exit("C4: the labels do not partition the projects")
+    admitted_n = sum(1 for r in out if r["decision"] == "admitted")
+    if admitted_n and Decimal(len(c6_fail)) > Decimal("0.05") * admitted_n:
+        sys.exit(
+            f"F4: {len(c6_fail)} of {admitted_n} admitted links fail C6; J1 is re-proposed under an amendment"
+        )
+    with_records = sum(
+        1
+        for r in out
+        if r["decision"] == "admitted" and r["windows"] and r["label"] != "no-metered-record"
+    )
+    base = len(out) - sum(1 for r in out if r["label"] == "embedded-or-distribution")
+    f1 = admitted_n > 0 and Decimal(with_records) < Decimal("0.5") * admitted_n
+    f2 = Decimal(admitted_n) < Decimal("0.6") * base
+    measured = [r for r in out if r["label"] == "metered" and not r["c6_fails"]]
+    rng = random.Random(v1.SEED)
+
+    def groups(field: str) -> dict[str, Any]:
+        rows = [r for r in measured if r[field] is not None]
+        g: dict[str, Any] = {"overall": v1.distribution([r[field] for r in rows], rng)}
+        for year in sorted({r["year"] for r in rows}):
+            g[f"year {year}"] = v1.distribution([r[field] for r in rows if r["year"] == year], rng)
+        for fam in sorted({r["family"] for r in rows}):
+            g[f"family {fam}"] = v1.distribution(
+                [r[field] for r in rows if r["family"] == fam], rng
+            )
+        return g
+
+    results = {
+        "declaration_sha256": en.DECLARATION_SHA256,
+        "amendment_3_sha256": digest_3,
+        "run_date": run_date,
+        "projects": len(out),
+        "labels": dict(labels),
+        "mw_by_label": {
+            k: str(sum((Decimal(r["capacity_mw"]) for r in out if r["label"] == k), Decimal(0)))
+            for k in labels
+        },
+        "admitted": admitted_n,
+        "with_b1610_records": with_records,
+        "F1": {"fires": f1, "covered": with_records, "admitted": admitted_n},
+        "F2": {"fires": f2, "admitted": admitted_n, "base": base},
+        "C6_failures": c6_fail,
+        "duplicate_units": sorted(
+            {
+                "+".join(r["units"])
+                for r in out
+                if r["units"] and sum(1 for q in out if q["units"] == r["units"]) > 1
+            }
+        ),
+        "realised_delay_with_later_stages": None if f2 else groups("delay_with"),
+        "realised_delay_without_later_stages": None if f2 else groups("delay_without"),
+        "register_lag": groups("register_lag"),
+        "computed_at": datetime.now(UTC).isoformat(timespec="seconds"),
+    }
+    LABELS.write_text("\n".join(lines) + "\n")
+    write_json(RESULTS_JSON, results)
+    RESULTS.write_text(render_v1(results, out))
+    log_run(
+        "compute-v1",
+        amendment_3=digest_3[:8],
+        run_date=run_date,
+        labels=dict(labels),
+        f1=f1,
+        f2=f2,
+        c6=len(c6_fail),
+    )
+    print(f"v1: labels {dict(labels)}; F1 {f1}, F2 {f2}; C6 failures {len(c6_fail)}")
+
+
+def render_v1(r: dict[str, Any], rows: list[dict[str, Any]]) -> str:
+    def table(title: str, g: dict[str, Any] | None) -> list[str]:
+        if g is None:
+            return ["", f"### {title}", "", "Not determinable (F2)."]
+        L = [
+            "",
+            f"### {title}",
+            "",
+            "| group | n | min | p25 | median (95 %) | p75 | max | before | within six months | later |",
+            "|---|---|---|---|---|---|---|---|---|---|",
+        ]
+        for name, d in g.items():
+            ci = d["median_ci95"] or ["n < 5"]
+            L.append(
+                f"| {name} | {d['n']} | {d['min']} | {d['p25']} | {d['median']} {ci} | {d['p75']} | {d['max']} | "
+                f"{d['before']['k']} {d['before']['wilson95']} | {d['within_six_months']['k']} | {d['later']['k']} |"
+            )
+        return L
+
+    L = [
+        "# 020 version 1 — the realised delay (held for the sponsor)",
+        "",
+        f"Computed {r['computed_at']} under amendment 3 `{r['amendment_3_sha256'][:8]}…`, B1610 walked on {r['run_date']}. "
+        "Months from the register's reference date to the first metered output (testing output counts); "
+        "the register's lag is months from that day to the first copy printing `Built`.",
+        "",
+        "## Coverage",
+        "",
+        f"Projects {r['projects']}; labels {r['labels']}; MW by label {r['mw_by_label']}.",
+        f"Admitted {r['admitted']}; with any B1610 record {r['with_b1610_records']}. "
+        f"**F1** {'FIRES (partly determinable)' if r['F1']['fires'] else 'silent'}; "
+        f"**F2** {'FIRES (figures 2 and 3 not determinable)' if r['F2']['fires'] else 'silent'} "
+        f"({r['F2']['admitted']} admitted of a base of {r['F2']['base']}). C6 failures: {len(r['C6_failures'])}. "
+        f"Units admitted for more than one project: {r['duplicate_units'] or 'none'}.",
+    ]
+    L += table(
+        "Realised delay, reference with later stages (amendment 1's A1)",
+        r["realised_delay_with_later_stages"],
+    )
+    L += table(
+        "Realised delay, reference without later stages (amendment 2)",
+        r["realised_delay_without_later_stages"],
+    )
+    L += table("The register's lag (first metered day to first Built copy)", r["register_lag"])
+    L += [
+        "",
+        "## Per project",
+        "",
+        "| project | Built copy | label | proxy | delay with | delay without | register lag |",
+        "|---|---|---|---|---|---|---|",
+    ]
+    for x in rows:
+        L.append(
+            f"| {x['project_name']} | {x['first_built']} | {x['label']} | {x['proxy']} | {x['delay_with']} | {x['delay_without']} | {x['register_lag']} |"
+        )
+    return "\n".join(L) + "\n"
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__.split("\n\n")[0])
     parser.add_argument(
         "--phase",
         required=True,
-        choices=["population", "schema", "projects", "projects-v02", "proposals"],
+        choices=[
+            "population",
+            "schema",
+            "projects",
+            "projects-v02",
+            "proposals",
+            "walk",
+            "compute-v1",
+        ],
     )
     parser.add_argument("--seal", default=None)
     parser.add_argument("--amendment-seal", default=None)
@@ -1006,6 +1390,22 @@ def main() -> None:
     elif args.phase == "proposals":
         phase_proposals(
             args.seal, args.amendment_seal, args.amendment_2_seal, args.amendment_3_seal
+        )
+    elif args.phase == "walk":
+        phase_walk(
+            args.seal,
+            args.amendment_seal,
+            args.amendment_2_seal,
+            args.amendment_3_seal,
+            args.run_date,
+        )
+    elif args.phase == "compute-v1":
+        phase_compute_v1(
+            args.seal,
+            args.amendment_seal,
+            args.amendment_2_seal,
+            args.amendment_3_seal,
+            args.run_date,
         )
     else:
         phase_schema(args.seal, args.run_date)

@@ -164,3 +164,81 @@ def test_wilson_interval():
     assert interval is not None
     low, high = interval
     assert low == Decimal("0.237") and high == Decimal("0.763")
+
+
+# ------------------------------------------------------------- B4 and B5
+
+import json  # noqa: E402
+import random  # noqa: E402
+from datetime import date  # noqa: E402
+
+
+def test_windows_walk_back_seven_days_and_stop_at_the_floor():
+    found = list(v1.windows_back(date(2015, 1, 20), floor=date(2015, 1, 1)))
+    assert found == [
+        (date(2015, 1, 14), date(2015, 1, 20)),
+        (date(2015, 1, 7), date(2015, 1, 13)),
+        (date(2015, 1, 1), date(2015, 1, 6)),
+    ]
+
+
+def rec(unit="T_A-1", day="2020-01-01", q="1.5", run="SF"):
+    return {
+        "dataset": "B1610",
+        "psrType": "Wind Onshore",
+        "bmUnit": unit,
+        "settlementDate": day,
+        "settlementPeriod": 1,
+        "halfHourEndTime": f"{day}T00:30:00Z",
+        "settlementRunType": run,
+        "quantity": q,
+    }
+
+
+def test_format_check_before_any_value_is_read():
+    good = json.dumps([rec()]).encode()
+    assert v1.format_check(good, {"T_A-1"}) == []
+    assert v1.format_check(json.dumps({"data": [rec()]}).encode(), {"T_A-1"}) == []
+    assert v1.format_check(b"\xef\xbb\xbf" + good, {"T_A-1"})[0] == "byte-order mark"
+    missing = rec()
+    del missing["quantity"]
+    assert "lacks" in v1.format_check(json.dumps([missing]).encode(), {"T_A-1"})[0]
+    assert "not requested" in v1.format_check(good, {"T_B-1"})[0]
+    assert "not UTF-8 JSON" in v1.format_check(b"<html>", {"T_A-1"})[0]
+
+
+def test_proxy_is_the_earliest_positive_day_over_every_run_type():
+    windows = [
+        [rec(day="2020-01-03", q="0"), rec(day="2020-01-04", q="2", run="II")],
+        [
+            rec(day="2020-01-01", q="0"),
+            rec(day="2020-01-02", q="-1"),
+            rec(day="2020-01-03", q="0.1", run="RF"),
+        ],
+    ]
+    assert v1.proxy(windows) == (date(2020, 1, 3), "RF")
+    assert v1.proxy([[rec(q="0")]]) is None
+
+
+def test_labels_partition_the_projects():
+    walk = v1.Walk(10, True, False, (date(2020, 1, 1), "SF"))
+    assert v1.label(True, "directly-connected", True, walk) == "metered"
+    assert (
+        v1.label(True, "", True, v1.Walk(600, True, True, (date(2015, 1, 1), "SF")))
+        == "metered-before-the-walk"
+    )
+    assert v1.label(True, "", True, v1.Walk(9, True, False, None)) == "registered-not-metered"
+    assert v1.label(True, "", True, v1.Walk(600, False, False, None)) == "no-metered-record"
+    assert v1.label(False, "embedded-or-distribution", True, None) == "embedded-or-distribution"
+    assert v1.label(False, "directly-connected", True, None) == "unmatched"
+    assert v1.label(False, "not-determinable", False, None) == "no-candidate"
+
+
+def test_distribution_shares_and_the_median_interval():
+    values = [Decimal(x) for x in ("-1", "0", "3", "6.0", "7", "12")]
+    d = v1.distribution(values, random.Random(v1.SEED))
+    assert (d["before"]["k"], d["within_six_months"]["k"], d["later"]["k"]) == (1, 3, 2)
+    lo, hi = (Decimal(x) for x in d["median_ci95"])
+    assert lo <= d["median"] <= hi
+    small = v1.distribution(values[:4], random.Random(v1.SEED))
+    assert small["median_ci95"] is None and small["median_ci95_note"] == "n < 5, no interval"

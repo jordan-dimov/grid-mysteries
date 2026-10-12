@@ -3,9 +3,9 @@
   "program_hash": "sha256:c9e4b9371e3db420726d501424b8ca1f0766535fe9f549da5fe843e302dbbda2",
   "semantics_version": 3,
   "checkpoint": {
-    "tree_size": 235,
-    "root_hash": "sha256:e0d8dce5b93f012a67a27a5a545d0c80c5aa8150e4a611b4f3ed12f6f536e0f2",
-    "checkpoint_hash": "sha256:55c08807a46a23ce96fdee58e752f9574cc53b699575076ac8b24cebf176e042"
+    "tree_size": 266,
+    "root_hash": "sha256:da2ea256dbe122cf78e8512a07dc13ddc9a2902f863d90ce300d01645b699237",
+    "checkpoint_hash": "sha256:953b99b7a585389481d653e0723a36ac632054d2b0d5403b94d0a9a3ad4e6e6a"
   },
   "query": {
     "kind": "derived",

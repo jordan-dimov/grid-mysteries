@@ -5666,5 +5666,811 @@
       }
     ],
     "asserted_in": "01a11a81-6bf2-756e-825f-5610e8ab2edd"
+  },
+  {
+    "predicate": "Declaration",
+    "args": [
+      {
+        "type": "subject",
+        "value": "decl-012"
+      },
+      {
+        "type": "subject",
+        "value": "forensic_study"
+      },
+      {
+        "type": "subject",
+        "value": "012 - the record day: declaration"
+      },
+      {
+        "type": "subject",
+        "value": "a349ea80378d05c1ae498291f22b599c245b486c8bfbf9de5c160523cf098b2c"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-09-11T14:22:04Z"
+      }
+    ],
+    "asserted_in": "01a13114-7ed6-7440-8e03-4f95daa585c8"
+  },
+  {
+    "predicate": "Declaration",
+    "args": [
+      {
+        "type": "subject",
+        "value": "decl-013"
+      },
+      {
+        "type": "subject",
+        "value": "forensic_study"
+      },
+      {
+        "type": "subject",
+        "value": "013 - the cover price tracker: declaration"
+      },
+      {
+        "type": "subject",
+        "value": "d20d59203e7b7fda174c2c6deb2807159687bd9ddea39fe760961af884416473"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-09-11T19:30:17Z"
+      }
+    ],
+    "asserted_in": "01a13114-8653-75ed-8ba4-0296ab5a28fe"
+  },
+  {
+    "predicate": "Declaration",
+    "args": [
+      {
+        "type": "subject",
+        "value": "decl-014-v1"
+      },
+      {
+        "type": "subject",
+        "value": "forensic_study"
+      },
+      {
+        "type": "subject",
+        "value": "014 - GB Connection Slippage: declaration"
+      },
+      {
+        "type": "subject",
+        "value": "e4aba4c923b58e9c36e10d16d9a715d6cae1ce90081c9ed1f1b8bf5196f8c01a"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-09-15T20:16:49Z"
+      }
+    ],
+    "asserted_in": "01a13114-8d83-7390-88f2-b9dd0181fb76"
+  },
+  {
+    "predicate": "Declaration",
+    "args": [
+      {
+        "type": "subject",
+        "value": "decl-014-v2"
+      },
+      {
+        "type": "subject",
+        "value": "forensic_study"
+      },
+      {
+        "type": "subject",
+        "value": "014 - GB Connection Slippage: declaration, version 2"
+      },
+      {
+        "type": "subject",
+        "value": "f2209b3cfd4dd0b276f1776293d60f83c65f3354db42b13e28348848c79a7a45"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-09-16T07:36:30Z"
+      }
+    ],
+    "asserted_in": "01a13114-94fb-72fd-ac9a-ba3bac62ddc6"
+  },
+  {
+    "predicate": "Declaration",
+    "args": [
+      {
+        "type": "subject",
+        "value": "decl-015-v1"
+      },
+      {
+        "type": "subject",
+        "value": "forensic_study"
+      },
+      {
+        "type": "subject",
+        "value": "015 - support and storage on the record day: declaration"
+      },
+      {
+        "type": "subject",
+        "value": "77a192f103fde8964bc1f295b7ee1f8f56ed3f884881e78a8865993660fb48d7"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-09-16T09:36:33Z"
+      }
+    ],
+    "asserted_in": "01a13114-9c2e-70d4-92b2-d71593e9c1b0"
+  },
+  {
+    "predicate": "Declaration",
+    "args": [
+      {
+        "type": "subject",
+        "value": "decl-015-v2"
+      },
+      {
+        "type": "subject",
+        "value": "forensic_study"
+      },
+      {
+        "type": "subject",
+        "value": "015 - declaration, version 2: a CfD link by name for the unmatched remainder"
+      },
+      {
+        "type": "subject",
+        "value": "f940f9c1ad13ae4f7e0e315037aecb208307c20b10feebf4acc924ed538a1d4c"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-09-16T09:54:23Z"
+      }
+    ],
+    "asserted_in": "01a13114-a3f4-733e-b891-f3bc6a8a9915"
+  },
+  {
+    "predicate": "Declaration",
+    "args": [
+      {
+        "type": "subject",
+        "value": "decl-017-v1"
+      },
+      {
+        "type": "subject",
+        "value": "forensic_study"
+      },
+      {
+        "type": "subject",
+        "value": "017 - The queue that is past its own date: declaration"
+      },
+      {
+        "type": "subject",
+        "value": "400b42f72b8c77759f88702d113594cdb2bb1b397f903486aaf39e92c7bc4b6d"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-09-17T11:01:50Z"
+      }
+    ],
+    "asserted_in": "01a13114-ab7f-7177-9689-b5b011425a0b"
+  },
+  {
+    "predicate": "Declaration",
+    "args": [
+      {
+        "type": "subject",
+        "value": "decl-017-v2"
+      },
+      {
+        "type": "subject",
+        "value": "forensic_study"
+      },
+      {
+        "type": "subject",
+        "value": "017 - The queue that is past its own date: declaration, version 2"
+      },
+      {
+        "type": "subject",
+        "value": "82856d65ae7300fca7e8ddb5ff43cff3bceb38fdc7b25fb42a761906930ef0b3"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-09-17T11:39:00Z"
+      }
+    ],
+    "asserted_in": "01a13114-b33f-70dd-979d-71ae3d19b096"
+  },
+  {
+    "predicate": "Declaration",
+    "args": [
+      {
+        "type": "subject",
+        "value": "decl-013-t4"
+      },
+      {
+        "type": "subject",
+        "value": "forensic_study"
+      },
+      {
+        "type": "subject",
+        "value": "013 - The cover price tracker: declaration T4"
+      },
+      {
+        "type": "subject",
+        "value": "0f3b5a965a2cb241e2f49d83add997678c12cb32dc2093ee519e70856ae204ef"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-09-19T20:00:23Z"
+      }
+    ],
+    "asserted_in": "01a13114-bb43-744c-bd5a-8c407d78255c"
+  },
+  {
+    "predicate": "Declaration",
+    "args": [
+      {
+        "type": "subject",
+        "value": "decl-018"
+      },
+      {
+        "type": "subject",
+        "value": "forensic_study"
+      },
+      {
+        "type": "subject",
+        "value": "018 - The compensation pot after P511: declaration"
+      },
+      {
+        "type": "subject",
+        "value": "3ebd9015b44c3ff6fce7a1fd3c4dd68d1c3ce7657ee501e355282c4113b18f1e"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-09-23T11:01:22Z"
+      }
+    ],
+    "asserted_in": "01a13114-c30f-7505-8e42-39353f3fb74e"
+  },
+  {
+    "predicate": "Declaration",
+    "args": [
+      {
+        "type": "subject",
+        "value": "decl-014-v3"
+      },
+      {
+        "type": "subject",
+        "value": "forensic_study"
+      },
+      {
+        "type": "subject",
+        "value": "014 - GB Connection Slippage: declaration, version 3"
+      },
+      {
+        "type": "subject",
+        "value": "435988c748abd13f0b2900256483d0ec535d594d184672bc441d35b36fe5f9cf"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-09-23T19:31:16Z"
+      }
+    ],
+    "asserted_in": "01a13114-ca52-7794-9074-33a4339d9eb9"
+  },
+  {
+    "predicate": "Declaration",
+    "args": [
+      {
+        "type": "subject",
+        "value": "decl-014-v4"
+      },
+      {
+        "type": "subject",
+        "value": "forensic_study"
+      },
+      {
+        "type": "subject",
+        "value": "014 - GB Connection Slippage: declaration, version 4"
+      },
+      {
+        "type": "subject",
+        "value": "7d07cbd159ac14d281f23b2399f41b44e8053922465f1b8277778fd4771b7954"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-09-23T20:08:15Z"
+      }
+    ],
+    "asserted_in": "01a13114-d1bb-707e-bbbf-2f64efcfbe0d"
+  },
+  {
+    "predicate": "Declaration",
+    "args": [
+      {
+        "type": "subject",
+        "value": "decl-013-a1"
+      },
+      {
+        "type": "subject",
+        "value": "forensic_study"
+      },
+      {
+        "type": "subject",
+        "value": "013 - the cover price tracker: Amendment 1"
+      },
+      {
+        "type": "subject",
+        "value": "326cc5fee3cbeead72335519fafffca71f561404eafd8eebcc2837d32322e11c"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-09-25T22:34:04Z"
+      }
+    ],
+    "asserted_in": "01a13114-d998-722a-94d4-5f70cb045cab"
+  },
+  {
+    "predicate": "Declaration",
+    "args": [
+      {
+        "type": "subject",
+        "value": "decl-017-v3"
+      },
+      {
+        "type": "subject",
+        "value": "forensic_study"
+      },
+      {
+        "type": "subject",
+        "value": "017 - The queue that is past its own date: declaration, version 3"
+      },
+      {
+        "type": "subject",
+        "value": "dd396986922a16041766de865bcf9d145583dcecdd9b6fb438114b8eb34f262f"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-09-28T21:12:58Z"
+      }
+    ],
+    "asserted_in": "01a13114-e20f-7643-b090-ff5c9ad47ab0"
+  },
+  {
+    "predicate": "Declaration",
+    "args": [
+      {
+        "type": "subject",
+        "value": "decl-017-v3-a1"
+      },
+      {
+        "type": "subject",
+        "value": "forensic_study"
+      },
+      {
+        "type": "subject",
+        "value": "017 version 3, amendment 1: the next copy's date spelling"
+      },
+      {
+        "type": "subject",
+        "value": "35b74e13301a0a1c60d61ad9d8ade65387252bfd4aed1a94153c6fc573e4f419"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-09-30T12:43:16Z"
+      }
+    ],
+    "asserted_in": "01a13114-ea40-7422-9528-d1fe3deaca4a"
+  },
+  {
+    "predicate": "Declaration",
+    "args": [
+      {
+        "type": "subject",
+        "value": "decl-019"
+      },
+      {
+        "type": "subject",
+        "value": "forensic_study"
+      },
+      {
+        "type": "subject",
+        "value": "019 - Who holds the queue: the Companies House join, declaration"
+      },
+      {
+        "type": "subject",
+        "value": "877682f7bffe52e8b98ff63bf5d14eb1e3d21713e68651d749b94e934b775a6a"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-09-30T13:33:06Z"
+      }
+    ],
+    "asserted_in": "01a13114-f1ae-775a-b120-1f48d0e2d2fe"
+  },
+  {
+    "predicate": "Declaration",
+    "args": [
+      {
+        "type": "subject",
+        "value": "decl-020"
+      },
+      {
+        "type": "subject",
+        "value": "forensic_study"
+      },
+      {
+        "type": "subject",
+        "value": "020 - Did it energise: outcome labels for the TEC Register, declaration"
+      },
+      {
+        "type": "subject",
+        "value": "fb8a3428749a73997745e4e852ba64b7a7326afd406528d9fe6315116b13bb2a"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-09-30T13:41:11Z"
+      }
+    ],
+    "asserted_in": "01a13114-f959-7196-80d1-fcd5747ca9af"
+  },
+  {
+    "predicate": "Declaration",
+    "args": [
+      {
+        "type": "subject",
+        "value": "decl-019-a1"
+      },
+      {
+        "type": "subject",
+        "value": "forensic_study"
+      },
+      {
+        "type": "subject",
+        "value": "019 - Who holds the queue: amendment 1 (the names the rule could not see)"
+      },
+      {
+        "type": "subject",
+        "value": "9ba963ee3fc007b4c9ce2acf57f5db1ee2ef704dfec5affab7744129a5fd21b2"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-09-30T18:35:00Z"
+      }
+    ],
+    "asserted_in": "01a13115-0159-7697-b70d-726c533ef9d2"
+  },
+  {
+    "predicate": "Declaration",
+    "args": [
+      {
+        "type": "subject",
+        "value": "decl-020-a1"
+      },
+      {
+        "type": "subject",
+        "value": "forensic_study"
+      },
+      {
+        "type": "subject",
+        "value": "020 - Did it energise: amendment 1 (the project, the date, and the proxy)"
+      },
+      {
+        "type": "subject",
+        "value": "cc01e3cfd0b441c23cc33cba09f58f89d36e5dc925c3bfc26fc91d134e47b3e8"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-09-30T18:35:03Z"
+      }
+    ],
+    "asserted_in": "01a13115-0923-776b-813c-e60f0530c286"
+  },
+  {
+    "predicate": "Declaration",
+    "args": [
+      {
+        "type": "subject",
+        "value": "decl-020-a2"
+      },
+      {
+        "type": "subject",
+        "value": "forensic_study"
+      },
+      {
+        "type": "subject",
+        "value": "020 - Did it energise: amendment 2 (stages dated after the first `Built` copy)"
+      },
+      {
+        "type": "subject",
+        "value": "3ef7240c1c75a62e0508176d0516b6373927d57972a175fff88e9686ac9589e5"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-09-30T21:04:01Z"
+      }
+    ],
+    "asserted_in": "01a13115-113c-746e-9a43-8646b12dcf2c"
+  },
+  {
+    "predicate": "Declaration",
+    "args": [
+      {
+        "type": "subject",
+        "value": "decl-019-a2"
+      },
+      {
+        "type": "subject",
+        "value": "forensic_study"
+      },
+      {
+        "type": "subject",
+        "value": "019 - Who holds the queue: amendment 2 (a name borne by two companies in succession)"
+      },
+      {
+        "type": "subject",
+        "value": "50b3bf7ec6031d963aadbd8871230d1fa4fa286c94880c447375a2595127a761"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-09-30T21:22:38Z"
+      }
+    ],
+    "asserted_in": "01a13115-194a-778f-87a5-3656725476ff"
+  },
+  {
+    "predicate": "Declaration",
+    "args": [
+      {
+        "type": "subject",
+        "value": "decl-021"
+      },
+      {
+        "type": "subject",
+        "value": "forensic_study"
+      },
+      {
+        "type": "subject",
+        "value": "021 - Where the dates move: 014's slippage series by plant type and by host transmission owner"
+      },
+      {
+        "type": "subject",
+        "value": "76ad7dc36ffda6373f798bb3dad08aa4ea8083262037c48a69ecadeb5f6a91d1"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-10-01T08:26:37Z"
+      }
+    ],
+    "asserted_in": "01a13115-20cf-750a-a0e3-d1b0839d1f4f"
+  },
+  {
+    "predicate": "Declaration",
+    "args": [
+      {
+        "type": "subject",
+        "value": "decl-022-acq"
+      },
+      {
+        "type": "subject",
+        "value": "forensic_study"
+      },
+      {
+        "type": "subject",
+        "value": "022 - The Forecast Record, issue 1: the acquisition and schema pass (the sealable plan)"
+      },
+      {
+        "type": "subject",
+        "value": "962cb9b5db8d33a7ae14fe3b516dd5f999936911040316a4fcc03e8aeeb0e188"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-10-01T13:37:55Z"
+      }
+    ],
+    "asserted_in": "01a13115-290d-73d3-897a-803f5d9e0827"
+  },
+  {
+    "predicate": "Declaration",
+    "args": [
+      {
+        "type": "subject",
+        "value": "decl-022-a1"
+      },
+      {
+        "type": "subject",
+        "value": "forensic_study"
+      },
+      {
+        "type": "subject",
+        "value": "022 - Amendment 1 to the acquisition plan: fund-cited forecast figures"
+      },
+      {
+        "type": "subject",
+        "value": "c39c5f90da09e80ef9e5f6fc6ad4245e817197fb84da498fd9b8910f9f3957b6"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-10-01T16:13:36Z"
+      }
+    ],
+    "asserted_in": "01a13115-30b8-705a-b7d2-5d3eba5eb6ec"
+  },
+  {
+    "predicate": "Declaration",
+    "args": [
+      {
+        "type": "subject",
+        "value": "decl-022"
+      },
+      {
+        "type": "subject",
+        "value": "forensic_study"
+      },
+      {
+        "type": "subject",
+        "value": "022 - The Forecast Record, issue 1: declaration (draft, not frozen)"
+      },
+      {
+        "type": "subject",
+        "value": "b8e6d53bf8e2529ac6caeaf419eb419b76c5f9f12927d647778f382cdd19d2e5"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-10-01T16:55:07Z"
+      }
+    ],
+    "asserted_in": "01a13115-38cd-76ee-9849-1491f54b8a7d"
+  },
+  {
+    "predicate": "Declaration",
+    "args": [
+      {
+        "type": "subject",
+        "value": "decl-022-a2"
+      },
+      {
+        "type": "subject",
+        "value": "forensic_study"
+      },
+      {
+        "type": "subject",
+        "value": "022 - Amendment 2 to the declaration: a misread high, and the funds' own financial years"
+      },
+      {
+        "type": "subject",
+        "value": "3d937633926a194d904e150f69e5ca877c83c4494949154fd63254d5a765d94d"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-10-01T17:08:15Z"
+      }
+    ],
+    "asserted_in": "01a13115-405a-7772-a1d9-a2ea08cbcf93"
+  },
+  {
+    "predicate": "Declaration",
+    "args": [
+      {
+        "type": "subject",
+        "value": "decl-022-a3"
+      },
+      {
+        "type": "subject",
+        "value": "forensic_study"
+      },
+      {
+        "type": "subject",
+        "value": "022 - Amendment 3 to the declaration: the page that reports a financial year"
+      },
+      {
+        "type": "subject",
+        "value": "39e29f9f547b9eee4bf9c22738f40416173fa08f6f8522fa2f512fdd8f911949"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-10-01T17:44:39Z"
+      }
+    ],
+    "asserted_in": "01a13115-47e9-73a0-a1d5-cdd4ca6e8370"
+  },
+  {
+    "predicate": "Declaration",
+    "args": [
+      {
+        "type": "subject",
+        "value": "decl-018-a1"
+      },
+      {
+        "type": "subject",
+        "value": "forensic_study"
+      },
+      {
+        "type": "subject",
+        "value": "018 - Amendment 1 to the declaration: the byte-order mark"
+      },
+      {
+        "type": "subject",
+        "value": "d308b8c17ea1b4df5ad8e0a4fc41c8172bf59801dbbf1a0f3b8bf0e4a2a5e8f3"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-10-03T13:04:42Z"
+      }
+    ],
+    "asserted_in": "01a13115-4f8e-77da-9b8e-1b0e2cb8035f"
+  },
+  {
+    "predicate": "Declaration",
+    "args": [
+      {
+        "type": "subject",
+        "value": "decl-020-a3"
+      },
+      {
+        "type": "subject",
+        "value": "forensic_study"
+      },
+      {
+        "type": "subject",
+        "value": "020 - Did it energise: amendment 3 (version 1: the join at project level, the walk, the intervals)"
+      },
+      {
+        "type": "subject",
+        "value": "f84367c3527687505a34f777db71fe0a38f86e304c4d2699172afb5d1c29336d"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-10-12T14:51:56Z"
+      }
+    ],
+    "asserted_in": "01a13115-5750-70f1-83a1-3186d8e73c4c"
+  },
+  {
+    "predicate": "Declaration",
+    "args": [
+      {
+        "type": "subject",
+        "value": "decl-023"
+      },
+      {
+        "type": "subject",
+        "value": "forensic_study"
+      },
+      {
+        "type": "subject",
+        "value": "023 - Did projects that changed hands slip more? Declaration"
+      },
+      {
+        "type": "subject",
+        "value": "3f22f02f8766ed7c30652a5371ee29ca3d23aaca1994b6f021ca537229951ba8"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-10-12T15:07:39Z"
+      }
+    ],
+    "asserted_in": "01a13115-5ef0-7758-86ba-f72d88c43df9"
+  },
+  {
+    "predicate": "Declaration",
+    "args": [
+      {
+        "type": "subject",
+        "value": "decl-020-a4"
+      },
+      {
+        "type": "subject",
+        "value": "forensic_study"
+      },
+      {
+        "type": "subject",
+        "value": "020 - Did it energise: amendment 4 (the walk's served floor, C6 as declared, re-sightings, embedded plant)"
+      },
+      {
+        "type": "subject",
+        "value": "fab5665e8272c4ed428a1731f819808ce3e00c534a5a1aaa72c3c5d2438ef082"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-10-12T16:30:07Z"
+      }
+    ],
+    "asserted_in": "01a13115-66b5-70c1-80c1-59317d21474e"
   }
 ]

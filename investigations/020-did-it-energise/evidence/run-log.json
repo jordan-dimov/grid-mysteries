@@ -123,6 +123,15 @@
    "candidates": 415,
    "exact": 14,
    "common_tokens": 52
+  },
+  {
+   "phase": "walk",
+   "at": "2026-10-12T16:06:46+00:00",
+   "amendment_3": "f84367c3",
+   "run_date": "2026-10-12",
+   "projects": 125,
+   "requests": 36414,
+   "format_departures": 0
   }
  ]
 }

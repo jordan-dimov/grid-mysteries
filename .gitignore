@@ -42,6 +42,9 @@ investigations/020-did-it-energise/evidence/links-proposed.json
 investigations/020-did-it-energise/evidence/links-admitted.json
 investigations/020-did-it-energise/evidence/labels.ndjson
 investigations/020-did-it-energise/evidence/results.json
+investigations/020-did-it-energise/evidence/c6-failures.json
+investigations/020-did-it-energise/evidence/walks.json
+investigations/020-did-it-energise/evidence/manifest.json
 investigations/023-did-changing-hands-slip-more/RESULTS.md
 investigations/023-did-changing-hands-slip-more/evidence/stages.ndjson
 investigations/023-did-changing-hands-slip-more/evidence/exposure.ndjson

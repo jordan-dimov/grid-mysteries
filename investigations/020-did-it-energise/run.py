@@ -1233,6 +1233,25 @@ def phase_compute_v1(seal, a1, a2, a3, run_date: str) -> None:
     if sum(labels.values()) != len(proposed["projects"]):
         sys.exit("C4: the labels do not partition the projects")
     admitted_n = sum(1 for r in out if r["decision"] == "admitted")
+    write_json(
+        EVIDENCE / "c6-failures.json",
+        [
+            {
+                k: r[k]
+                for k in (
+                    "key",
+                    "project_name",
+                    "units",
+                    "first_sighting",
+                    "archive_gap_days",
+                    "proxy",
+                    "first_built",
+                )
+            }
+            for r in out
+            if r["c6_fails"]
+        ],
+    )
     if admitted_n and Decimal(len(c6_fail)) > Decimal("0.05") * admitted_n:
         sys.exit(
             f"F4: {len(c6_fail)} of {admitted_n} admitted links fail C6; J1 is re-proposed under an amendment"

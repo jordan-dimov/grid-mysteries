@@ -137,6 +137,10 @@ declarations = list(Path("investigations").rglob("*DECLARATION*.md"))
 declarations += list(Path("investigations").rglob("BATCH-*.md"))
 declarations += list(Path("investigations").rglob("CANDIDATE-PROTOCOL*.md"))
 declarations += list(Path("investigations").rglob("STAGE-TEST*.md"))
+# Forensic amendments frozen under their own names (013, 018, 022) and 022's
+# acquisition protocol, sealed in v3 from 12/10/2026 (launch-forensic/).
+declarations += list(Path("investigations").rglob("AMENDMENT-*.md"))
+declarations += list(Path("investigations").rglob("ACQUISITION*.md"))
 for candidate in declarations:
     on_disk[hashlib.sha256(candidate.read_bytes()).hexdigest()] = candidate
 missing = {i: d for i, d in sealed.items() if d not in on_disk}

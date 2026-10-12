@@ -6472,5 +6472,743 @@
       }
     ],
     "asserted_in": "01a13115-66b5-70c1-80c1-59317d21474e"
+  },
+  {
+    "predicate": "DeclarationSealed",
+    "args": [
+      {
+        "type": "subject",
+        "value": "decl-012"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-10-12T17:14:55Z"
+      }
+    ],
+    "asserted_in": "01a1311c-3737-7289-aa3a-428596956f2c"
+  },
+  {
+    "predicate": "DeclarationSealed",
+    "args": [
+      {
+        "type": "subject",
+        "value": "decl-013"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-10-12T17:14:56Z"
+      }
+    ],
+    "asserted_in": "01a1311c-3eda-762a-b9f3-9454b68519f1"
+  },
+  {
+    "predicate": "DeclarationSealed",
+    "args": [
+      {
+        "type": "subject",
+        "value": "decl-014-v1"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-10-12T17:14:58Z"
+      }
+    ],
+    "asserted_in": "01a1311c-4665-74a9-a962-aa4633398068"
+  },
+  {
+    "predicate": "DeclarationSealed",
+    "args": [
+      {
+        "type": "subject",
+        "value": "decl-014-v2"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-10-12T17:15:00Z"
+      }
+    ],
+    "asserted_in": "01a1311c-4e10-7644-91be-59436ccc9b22"
+  },
+  {
+    "predicate": "DeclarationSealed",
+    "args": [
+      {
+        "type": "subject",
+        "value": "decl-015-v1"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-10-12T17:15:02Z"
+      }
+    ],
+    "asserted_in": "01a1311c-55b8-73a1-bf8d-dd2ec149aa58"
+  },
+  {
+    "predicate": "DeclarationSealed",
+    "args": [
+      {
+        "type": "subject",
+        "value": "decl-015-v2"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-10-12T17:15:04Z"
+      }
+    ],
+    "asserted_in": "01a1311c-5d50-7731-a400-eb4a75588160"
+  },
+  {
+    "predicate": "DeclarationSealed",
+    "args": [
+      {
+        "type": "subject",
+        "value": "decl-017-v1"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-10-12T17:15:06Z"
+      }
+    ],
+    "asserted_in": "01a1311c-64b4-760b-94d2-a1ac9b672980"
+  },
+  {
+    "predicate": "DeclarationSealed",
+    "args": [
+      {
+        "type": "subject",
+        "value": "decl-017-v2"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-10-12T17:15:08Z"
+      }
+    ],
+    "asserted_in": "01a1311c-6c60-769a-b3ab-ca201e7f1b4c"
+  },
+  {
+    "predicate": "DeclarationSealed",
+    "args": [
+      {
+        "type": "subject",
+        "value": "decl-013-t4"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-10-12T17:15:10Z"
+      }
+    ],
+    "asserted_in": "01a1311c-743e-75b5-b4c4-d786ba1e8e96"
+  },
+  {
+    "predicate": "DeclarationSealed",
+    "args": [
+      {
+        "type": "subject",
+        "value": "decl-018"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-10-12T17:15:12Z"
+      }
+    ],
+    "asserted_in": "01a1311c-7c3e-71b4-8de2-28d12d93ac40"
+  },
+  {
+    "predicate": "DeclarationSealed",
+    "args": [
+      {
+        "type": "subject",
+        "value": "decl-014-v3"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-10-12T17:15:14Z"
+      }
+    ],
+    "asserted_in": "01a1311c-83dd-7334-b4a1-bb0815074e03"
+  },
+  {
+    "predicate": "DeclarationSealed",
+    "args": [
+      {
+        "type": "subject",
+        "value": "decl-014-v4"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-10-12T17:15:16Z"
+      }
+    ],
+    "asserted_in": "01a1311c-8bd0-76e9-80de-f66e8581aec1"
+  },
+  {
+    "predicate": "DeclarationSealed",
+    "args": [
+      {
+        "type": "subject",
+        "value": "decl-013-a1"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-10-12T17:15:18Z"
+      }
+    ],
+    "asserted_in": "01a1311c-93bd-7079-892c-ec7a00f3afbe"
+  },
+  {
+    "predicate": "DeclarationSealed",
+    "args": [
+      {
+        "type": "subject",
+        "value": "decl-017-v3"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-10-12T17:15:20Z"
+      }
+    ],
+    "asserted_in": "01a1311c-9b5b-7041-b3cb-d2efe89758fe"
+  },
+  {
+    "predicate": "DeclarationSealed",
+    "args": [
+      {
+        "type": "subject",
+        "value": "decl-017-v3-a1"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-10-12T17:15:22Z"
+      }
+    ],
+    "asserted_in": "01a1311c-a397-730a-8d2a-32bc0d189f4b"
+  },
+  {
+    "predicate": "DeclarationSealed",
+    "args": [
+      {
+        "type": "subject",
+        "value": "decl-019"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-10-12T17:15:24Z"
+      }
+    ],
+    "asserted_in": "01a1311c-ab6d-71db-a5e5-0337c0db4003"
+  },
+  {
+    "predicate": "DeclarationSealed",
+    "args": [
+      {
+        "type": "subject",
+        "value": "decl-020"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-10-12T17:15:26Z"
+      }
+    ],
+    "asserted_in": "01a1311c-b3e1-7561-9abb-51e0d92d1f41"
+  },
+  {
+    "predicate": "DeclarationSealed",
+    "args": [
+      {
+        "type": "subject",
+        "value": "decl-019-a1"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-10-12T17:15:28Z"
+      }
+    ],
+    "asserted_in": "01a1311c-bbb9-758a-ac74-9549e5df1cda"
+  },
+  {
+    "predicate": "DeclarationSealed",
+    "args": [
+      {
+        "type": "subject",
+        "value": "decl-020-a1"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-10-12T17:15:30Z"
+      }
+    ],
+    "asserted_in": "01a1311c-c3b2-776b-85a9-e9f6f2a2f89e"
+  },
+  {
+    "predicate": "DeclarationSealed",
+    "args": [
+      {
+        "type": "subject",
+        "value": "decl-020-a2"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-10-12T17:15:32Z"
+      }
+    ],
+    "asserted_in": "01a1311c-cb79-741f-9640-74f55f067f5b"
+  },
+  {
+    "predicate": "DeclarationSealed",
+    "args": [
+      {
+        "type": "subject",
+        "value": "decl-019-a2"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-10-12T17:15:34Z"
+      }
+    ],
+    "asserted_in": "01a1311c-d30d-76f5-9667-859f535886e0"
+  },
+  {
+    "predicate": "DeclarationSealed",
+    "args": [
+      {
+        "type": "subject",
+        "value": "decl-021"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-10-12T17:15:36Z"
+      }
+    ],
+    "asserted_in": "01a1311c-db52-737f-8b67-809db85ab077"
+  },
+  {
+    "predicate": "DeclarationSealed",
+    "args": [
+      {
+        "type": "subject",
+        "value": "decl-022-acq"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-10-12T17:15:39Z"
+      }
+    ],
+    "asserted_in": "01a1311c-e34c-7407-9def-28dff02f03f6"
+  },
+  {
+    "predicate": "DeclarationSealed",
+    "args": [
+      {
+        "type": "subject",
+        "value": "decl-022-a1"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-10-12T17:15:41Z"
+      }
+    ],
+    "asserted_in": "01a1311c-ebc0-74fe-a3f8-611ab269160b"
+  },
+  {
+    "predicate": "DeclarationSealed",
+    "args": [
+      {
+        "type": "subject",
+        "value": "decl-022"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-10-12T17:15:43Z"
+      }
+    ],
+    "asserted_in": "01a1311c-f37e-7792-a697-1ccc1c76a698"
+  },
+  {
+    "predicate": "DeclarationSealed",
+    "args": [
+      {
+        "type": "subject",
+        "value": "decl-022-a2"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-10-12T17:15:45Z"
+      }
+    ],
+    "asserted_in": "01a1311c-fb48-700e-945f-4fc313165e00"
+  },
+  {
+    "predicate": "DeclarationSealed",
+    "args": [
+      {
+        "type": "subject",
+        "value": "decl-022-a3"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-10-12T17:15:47Z"
+      }
+    ],
+    "asserted_in": "01a1311d-0396-7491-9d08-5e953a6455cf"
+  },
+  {
+    "predicate": "DeclarationSealed",
+    "args": [
+      {
+        "type": "subject",
+        "value": "decl-018-a1"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-10-12T17:15:49Z"
+      }
+    ],
+    "asserted_in": "01a1311d-0bae-74b7-90a8-bd9644a43218"
+  },
+  {
+    "predicate": "DeclarationSealed",
+    "args": [
+      {
+        "type": "subject",
+        "value": "decl-020-a3"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-10-12T17:15:51Z"
+      }
+    ],
+    "asserted_in": "01a1311d-13e7-7525-909c-1e71f22adb6e"
+  },
+  {
+    "predicate": "DeclarationSealed",
+    "args": [
+      {
+        "type": "subject",
+        "value": "decl-023"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-10-12T17:15:53Z"
+      }
+    ],
+    "asserted_in": "01a1311d-1c65-7069-af88-4cbbe1cb8e5e"
+  },
+  {
+    "predicate": "DeclarationSealed",
+    "args": [
+      {
+        "type": "subject",
+        "value": "decl-020-a4"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-10-12T17:15:55Z"
+      }
+    ],
+    "asserted_in": "01a1311d-2468-764c-9f6c-09820e92982b"
+  },
+  {
+    "predicate": "Verdict",
+    "args": [
+      {
+        "type": "subject",
+        "value": "v-023-f1"
+      },
+      {
+        "type": "subject",
+        "value": "decl-023"
+      },
+      {
+        "type": "subject",
+        "value": "023/F1"
+      },
+      {
+        "type": "subject",
+        "value": "gate"
+      },
+      {
+        "type": "subject",
+        "value": "pass"
+      },
+      {
+        "type": "subject",
+        "value": "F1 silent: 123 transfer ids measured in the headline window (threshold 30)"
+      },
+      {
+        "type": "subject",
+        "value": "e1cca49870f1e3afdbc6304ccd3787e2cfa85e48426ac433aa918b2e352e4d0e"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-10-12T15:14:16Z"
+      }
+    ],
+    "asserted_in": "01a13120-86e8-738d-a892-394d54855be5"
+  },
+  {
+    "predicate": "Verdict",
+    "args": [
+      {
+        "type": "subject",
+        "value": "v-023-f2"
+      },
+      {
+        "type": "subject",
+        "value": "decl-023"
+      },
+      {
+        "type": "subject",
+        "value": "023/F2"
+      },
+      {
+        "type": "subject",
+        "value": "gate"
+      },
+      {
+        "type": "subject",
+        "value": "pass"
+      },
+      {
+        "type": "subject",
+        "value": "F2 silent: crude and standardised differences share a sign"
+      },
+      {
+        "type": "subject",
+        "value": "e1cca49870f1e3afdbc6304ccd3787e2cfa85e48426ac433aa918b2e352e4d0e"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-10-12T15:14:16Z"
+      }
+    ],
+    "asserted_in": "01a13120-8f50-7066-bb84-74745355d776"
+  },
+  {
+    "predicate": "Verdict",
+    "args": [
+      {
+        "type": "subject",
+        "value": "v-023-f3"
+      },
+      {
+        "type": "subject",
+        "value": "decl-023"
+      },
+      {
+        "type": "subject",
+        "value": "023/F3"
+      },
+      {
+        "type": "subject",
+        "value": "gate"
+      },
+      {
+        "type": "subject",
+        "value": "fail"
+      },
+      {
+        "type": "subject",
+        "value": "F3 fired: neither replication window has the headline's sign (headline -0.037, 2023 +0.057, 2024 +0.113, standardised share moved later); no direction is stated"
+      },
+      {
+        "type": "subject",
+        "value": "e1cca49870f1e3afdbc6304ccd3787e2cfa85e48426ac433aa918b2e352e4d0e"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-10-12T15:14:16Z"
+      }
+    ],
+    "asserted_in": "01a13120-9712-71ee-a687-d3ffd07bfe8e"
+  },
+  {
+    "predicate": "Verdict",
+    "args": [
+      {
+        "type": "subject",
+        "value": "v-023-f4"
+      },
+      {
+        "type": "subject",
+        "value": "decl-023"
+      },
+      {
+        "type": "subject",
+        "value": "023/F4"
+      },
+      {
+        "type": "subject",
+        "value": "gate"
+      },
+      {
+        "type": "subject",
+        "value": "pass"
+      },
+      {
+        "type": "subject",
+        "value": "F4 silent: the identity held (the run did not stop)"
+      },
+      {
+        "type": "subject",
+        "value": "e1cca49870f1e3afdbc6304ccd3787e2cfa85e48426ac433aa918b2e352e4d0e"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-10-12T15:14:16Z"
+      }
+    ],
+    "asserted_in": "01a13120-9f2b-7006-9206-1c8733755c75"
+  },
+  {
+    "predicate": "Verdict",
+    "args": [
+      {
+        "type": "subject",
+        "value": "v-020-a3-f4"
+      },
+      {
+        "type": "subject",
+        "value": "decl-020-a3"
+      },
+      {
+        "type": "subject",
+        "value": "020-v1/F4"
+      },
+      {
+        "type": "subject",
+        "value": "gate"
+      },
+      {
+        "type": "subject",
+        "value": "fail"
+      },
+      {
+        "type": "subject",
+        "value": "F4 fired on 2026-10-12: 18 of 125 admitted links failed C6; compute stopped before any figure (B1610 served only from 2019-01-29; runner took a regime's first copy as first appearance; re-sightings; embedded plant)"
+      },
+      {
+        "type": "subject",
+        "value": "git:bfaaa592f153eb5ed776089b51b92d874749d0da"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-10-12T16:11:19Z"
+      }
+    ],
+    "asserted_in": "01a13120-a776-7211-ba01-d02eb0cedf05"
+  },
+  {
+    "predicate": "Verdict",
+    "args": [
+      {
+        "type": "subject",
+        "value": "v-020-a4-f4"
+      },
+      {
+        "type": "subject",
+        "value": "decl-020-a4"
+      },
+      {
+        "type": "subject",
+        "value": "020-v1/F4"
+      },
+      {
+        "type": "subject",
+        "value": "gate"
+      },
+      {
+        "type": "subject",
+        "value": "pass"
+      },
+      {
+        "type": "subject",
+        "value": "F4 silent under amendment 4: 0 of 63 C6-checked links fail"
+      },
+      {
+        "type": "subject",
+        "value": "ae26cda21c0ea18aefdff3841d77d18a0c7e0fed7731cefb6b5827d0427a6b15"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-10-12T16:33:22Z"
+      }
+    ],
+    "asserted_in": "01a13120-af73-76c4-bcea-2be7929bf23d"
+  },
+  {
+    "predicate": "Verdict",
+    "args": [
+      {
+        "type": "subject",
+        "value": "v-020-a4-f1"
+      },
+      {
+        "type": "subject",
+        "value": "decl-020-a4"
+      },
+      {
+        "type": "subject",
+        "value": "020-v1/F1"
+      },
+      {
+        "type": "subject",
+        "value": "gate"
+      },
+      {
+        "type": "subject",
+        "value": "pass"
+      },
+      {
+        "type": "subject",
+        "value": "F1 silent: 125 of 125 admitted projects have B1610 records"
+      },
+      {
+        "type": "subject",
+        "value": "ae26cda21c0ea18aefdff3841d77d18a0c7e0fed7731cefb6b5827d0427a6b15"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-10-12T16:33:22Z"
+      }
+    ],
+    "asserted_in": "01a13120-b7b6-732c-8226-98b10db43d6e"
+  },
+  {
+    "predicate": "Verdict",
+    "args": [
+      {
+        "type": "subject",
+        "value": "v-020-a4-f2"
+      },
+      {
+        "type": "subject",
+        "value": "decl-020-a4"
+      },
+      {
+        "type": "subject",
+        "value": "020-v1/F2"
+      },
+      {
+        "type": "subject",
+        "value": "gate"
+      },
+      {
+        "type": "subject",
+        "value": "pass"
+      },
+      {
+        "type": "subject",
+        "value": "F2 silent: 125 admitted of a base of 156 (threshold 60 %)"
+      },
+      {
+        "type": "subject",
+        "value": "ae26cda21c0ea18aefdff3841d77d18a0c7e0fed7731cefb6b5827d0427a6b15"
+      },
+      {
+        "type": "timestamp",
+        "value": "2026-10-12T16:33:22Z"
+      }
+    ],
+    "asserted_in": "01a13120-bfcf-74a0-9e9c-38072582d737"
   }
 ]

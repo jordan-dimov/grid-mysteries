@@ -1,5 +1,5 @@
 {
-  "hash": "sha256:312e6e56f3c9bb3a466679828199e2213f85529ed4af6c97c17af7ff1d87257c",
-  "morpholog_version": "0.0.14",
+  "hash": "sha256:bd4da45a58176b7f57a063b152a14b64d17162b4c02e7e80e6a77097461456a9",
+  "morpholog_version": "0.0.15",
   "program": "identity_register"
 }

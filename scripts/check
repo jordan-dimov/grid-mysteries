@@ -2,6 +2,9 @@
 set -euo pipefail
 cd "$(dirname "$0")/.."
 export PATH="${HOME}/.local/bin:${PATH}"
+# MORPHOLOG_BIN, when set, names the binary (as it does for the generated
+# client), so a version installed beside the PATH one can be run alone.
+morpholog() { command "${MORPHOLOG_BIN:-morpholog}" "$@"; }
 
 uv run ruff check .
 uv run ruff format --check .

@@ -34,6 +34,7 @@ from grid_mysteries.corpus import REPO_ROOT
 
 if TYPE_CHECKING:
     from morpholog_client.adapter import Morpholog
+    from morpholog_client.envelopes import AtomicRejected
 
 #: The timestamp authorities that countersign an engine's checkpoints, in
 #: the order they are asked (the same two, in the same order, as the
@@ -106,9 +107,11 @@ class Record:
 
 
 def run(*args: str) -> subprocess.CompletedProcess[str]:
-    """The `morpholog` on PATH, for the two commands whose exact stdout is
+    """The `morpholog` binary (`MORPHOLOG_BIN`, else the one on PATH, as the
+    generated client chooses), for the two commands whose exact stdout is
     the artefact (a checkpoint, a verify report)."""
-    return subprocess.run(["morpholog", *args], capture_output=True, text=True)
+    binary = os.environ.get("MORPHOLOG_BIN", "morpholog")
+    return subprocess.run([binary, *args], capture_output=True, text=True)
 
 
 # ------------------------------------------------------------ the transact
@@ -139,11 +142,25 @@ def classify(result: object, error: BaseException | None) -> Outcome:
         if isinstance(result, envelopes.AtomicCommitted):
             return Outcome("committed", "", [a.outcome.transition_id for a in result.acts])
         if isinstance(result, envelopes.AtomicRejected):
-            return Outcome("not-committed", f"act {result.act} refused [{result.rule}]")
+            return Outcome("not-committed", refusal_detail(result))
         return Outcome("unknown", f"unrecognised result {result!r}"[:300])
     if isinstance(error, MorphologRequestError) and error.code in envelopes.NOTHING_RECORDED_CODES:
         return Outcome("not-committed", f"{error.code}: {error.error}"[:300])
     return Outcome("unknown", f"{type(error).__name__}: {error}"[:300])
+
+
+def refusal_detail(rejected: AtomicRejected) -> str:
+    """A refused act in one line, from what the refusal itself carries: the
+    rule, the comparison it failed with both values (`compared`) and the
+    bindings where it failed (`witness`), both from v0.0.15 (#531, #537),
+    so nothing here re-derives a rule's arithmetic to explain it."""
+    detail = f"act {rejected.act} refused [{rejected.rule}]"
+    if rejected.compared is not None:
+        c = rejected.compared
+        detail += f": {c.left} {c.op} {c.right} does not hold"
+    if rejected.witness:
+        detail += " where " + ", ".join(f"{w.var}={w.value}" for w in rejected.witness)
+    return detail
 
 
 def marker_path(repo_root: Path, record: Record, database_url: str) -> Path:
@@ -258,23 +275,41 @@ def exported_pack(
 ) -> Path:
     """The complete pack at the anchor's tree size, exported once and kept,
     verified offline against the anchor with the pinned key and the TSA
-    roots every time it is asked for."""
+    roots every time it is asked for.
+
+    A verifier reads one pack format, its own (v0.0.15, #517). A kept pack
+    of an older format is reported `unsupported_pack`; it is moved aside as
+    `tree-<n>.format-<f>.ndjson`, never overwritten (only the release that
+    wrote it verifies it, and the record may not always be there to export
+    it again), and the pack is exported afresh in the binary's format."""
+    from morpholog_client import envelopes
+
     tree = int(anchor["tree_size"])
     pack = record.packs / f"tree-{tree}.ndjson"
     api = record.client(REPO_ROOT, database_url)
-    if not pack.exists():
+
+    def verify() -> envelopes.PackVerificationReport[envelopes.TreeVerification]:
+        return api.audit_verify_pack(
+            str(pack),
+            anchor_file=str(anchor_path),
+            require_signing_key=str(record.public_key),
+            trusted_tsa_file=str(TSA_ROOTS),
+        )
+
+    report = verify() if pack.exists() else None
+    if report is not None and isinstance(report.verdict, envelopes.TreeUnsupportedPack):
+        pack.rename(
+            pack.with_name(f"tree-{tree}.format-{report.verdict.pack_format_version}.ndjson")
+        )
+        report = None
+    if report is None:
         pack.parent.mkdir(parents=True, exist_ok=True)
         manifest = api.audit_export(str(pack), tree_size=tree)
         if manifest.tree_size != tree:
             raise SystemExit(
                 f"exported a pack of {manifest.tree_size} rows, the anchor says {tree}"
             )
-    report = api.audit_verify_pack(
-        str(pack),
-        anchor_file=str(anchor_path),
-        require_signing_key=str(record.public_key),
-        trusted_tsa_file=str(TSA_ROOTS),
-    )
+        report = verify()
     # `passes` is the binary's own verdict (Morpholog v0.0.14, #468): the
     # verdict intact and no witness `invalid`; `unsupported` and `unverified`
     # say what could not be established and do not fail it.
@@ -297,20 +332,28 @@ class PackError(RuntimeError):
 
 
 def pack_rows(pack_path: Path) -> Iterator[dict[str, Any]]:
-    """The audit rows of a complete-prefix pack (Morpholog pack format 4: a
-    manifest line, `checkpoint_count` checkpoint lines, then one row per
-    line), streamed in log order. The row count is checked against the
-    manifest once the stream is exhausted."""
-    from morpholog_client import envelopes
+    """The audit rows of a complete-prefix pack (a manifest line,
+    `checkpoint_count` checkpoint lines, then one row per line), streamed in
+    log order. The row count is checked against the manifest once the
+    stream is exhausted.
 
+    Formats 4 and 13 (v0.0.12 to v0.0.14) and 17 (v0.0.15) lay the body out
+    alike and differ in the manifest: 17 adds `morpholog_version`, which the
+    generated client's `PrefixPackManifest` requires. Packs of every format
+    stay on disk (TEC's under `data/derived/tec/packs/`), so only the two
+    counts the stream needs are read here; whether a pack verifies is the
+    binary's question, asked before its rows are trusted."""
     with pack_path.open() as handle:
-        manifest = envelopes.PrefixPackManifest.from_json(json.loads(handle.readline()))
+        manifest = json.loads(handle.readline())
+        if manifest.get("pack_kind") != "prefix":
+            raise PackError(f"not a complete-prefix pack: {manifest.get('pack_kind')!r}")
+        checkpoint_count, tree_size = manifest["checkpoint_count"], manifest["tree_size"]
         lines = (line for line in handle if line.strip())
-        for _ in range(manifest.checkpoint_count):
+        for _ in range(checkpoint_count):
             next(lines)
         count = 0
         for line in lines:
             count += 1
             yield json.loads(line)
-    if count != manifest.tree_size:
-        raise PackError(f"pack holds {count} rows, its manifest says {manifest.tree_size}")
+    if count != tree_size:
+        raise PackError(f"pack holds {count} rows, its manifest says {tree_size}")

@@ -10,6 +10,7 @@ This is how the analysis reads the record: never the source files.
 """
 
 import json
+import os
 import subprocess
 from collections.abc import Iterable, Iterator
 from dataclasses import dataclass
@@ -90,7 +91,13 @@ def fold(audit_rows: Iterable[dict[str, Any]]) -> Iterator[Publication]:
 def stream_audit(database_url: str, limit: int | None = None) -> Iterator[dict[str, Any]]:
     """The record's audit rows in commit order, `limit` rows at most."""
     proc = subprocess.Popen(
-        ["morpholog", "inspect", "audit", "--database-url", database_url],
+        [
+            os.environ.get("MORPHOLOG_BIN", "morpholog"),
+            "inspect",
+            "audit",
+            "--database-url",
+            database_url,
+        ],
         stdout=subprocess.PIPE,
         text=True,
     )

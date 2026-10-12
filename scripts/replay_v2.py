@@ -13,6 +13,7 @@ from the record, never hardcoded, so a future rename replays correctly.
 """
 
 import json
+import os
 import subprocess
 import sys
 from pathlib import Path
@@ -129,7 +130,7 @@ def main() -> None:
             url = urls.get(actor, base_url)
             result = run(
                 [
-                    "morpholog",
+                    os.environ.get("MORPHOLOG_BIN", "morpholog"),
                     "propose",
                     programme,
                     row["transformation"],

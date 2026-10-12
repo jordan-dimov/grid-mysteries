@@ -377,11 +377,17 @@ def test_the_bundled_script_checks_each_date_even_when_two_share_a_publication(t
     assert run.stdout.count("2 line(s) in the pack, as the certificate states") == 2
 
 
-def test_pack_rows_and_the_bundled_script_read_the_ndjson_pack_form(tmp_path):
-    """A prefix pack is NDJSON (Morpholog pack format 4): a manifest line,
-    `checkpoint_count` checkpoint lines, then one audit row per line. The
-    engine's streaming reader and the bundled stdlib script must agree,
-    and the manifest's row count is checked."""
+@pytest.mark.parametrize(
+    "release",
+    [{"pack_format_version": 4}, {"pack_format_version": 17, "morpholog_version": "0.0.15"}],
+)
+def test_pack_rows_and_the_bundled_script_read_the_ndjson_pack_form(tmp_path, release):
+    """A prefix pack is NDJSON (Morpholog pack formats 4, 13 and 17): a
+    manifest line, `checkpoint_count` checkpoint lines, then one audit row
+    per line. Format 17 (v0.0.15) adds `morpholog_version` to the manifest
+    and nothing else; packs of the older formats stay on disk and must
+    still stream. The engine's streaming reader and the bundled stdlib
+    script must agree, and the manifest's row count is checked."""
     import json
     import subprocess
     import sys
@@ -389,7 +395,7 @@ def test_pack_rows_and_the_bundled_script_read_the_ndjson_pack_form(tmp_path):
     p1 = importer.plan(None, {}, copy("2025-07-22"), [row(), row(mw=5, eff="2027-01-01")])
     rows = audit_rows_for([p1])
     manifest = {
-        "pack_format_version": 4,
+        **release,
         "pack_kind": "prefix",
         "tree_size": len(rows),
         "root_hash": "sha256:" + "0" * 64,

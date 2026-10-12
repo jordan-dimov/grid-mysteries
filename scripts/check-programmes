@@ -1,15 +1,22 @@
 #!/usr/bin/env bash
 # Every Morpholog programme the repository deploys: it checks strictly (every
 # hint is an error: a rule whose case is wider than the claim it guards, an
-# unused definition; all six have been strict-clean since 08/10/2026, when v3's
-# `three_clocks_ordered` was respelled to bind the claim it guards), its hash
+# unused definition, a field name the generated client would refuse; all six
+# have been strict-clean since 08/10/2026, when v3's `three_clocks_ordered`
+# was respelled to bind the claim it guards, and again since 12/10/2026, when
+# v0.0.15's client-name hint (#532) refused the identity register's field
+# `class`, renamed `link_class`), its hash
 # is the pinned one (a `*_HASH.json` beside it, so a rule changes only with a
 # deliberate update of the pin), and the two record engines stay on the
-# compiled route (their flat per-change cost depends on it: no `or`, no
-# defined calls in an invariant).
+# compiled route with every rule's cases bound to the change (their flat
+# per-change cost depends on both; `check --json` names a rule a change may
+# check whole, and the construct responsible, from v0.0.15, #540).
 set -euo pipefail
 cd "$(dirname "$0")/.."
 export PATH="${HOME}/.local/bin:${PATH}"
+# MORPHOLOG_BIN, when set, names the binary (as it does for the generated
+# client), so a version installed beside the PATH one can be run alone.
+morpholog() { command "${MORPHOLOG_BIN:-morpholog}" "$@"; }
 
 pinned() { # <programme> <pin file> -> refuses on a hash other than the pinned one
   local expected actual
@@ -19,6 +26,14 @@ pinned() { # <programme> <pin file> -> refuses on a hash other than the pinned o
     echo "$1 hashes to $actual, the pin $2 says $expected" >&2
     exit 1
   fi
+}
+
+whole() { # <programme> -> the invariants a change may check whole, one per line
+  morpholog check --json "$1" | python3 -c '
+import json, sys
+for i in json.load(sys.stdin)["invariants"]:
+    if i["cases"]["kind"] != "bound":
+        print(i["name"], json.dumps(i["cases"]))'
 }
 
 route() { # <programme> -> `compiled`, or `mixed, N compiled, M interpreted`
@@ -47,6 +62,10 @@ for engine in tec bill identity; do
   pinned "$programme" "$engine/PROGRAMME_HASH.json"
   if [[ "$(route "$programme")" != compiled ]]; then
     echo "$programme is no longer compiled: see 'morpholog check -v'" >&2
+    exit 1
+  fi
+  if [[ -n "$(whole "$programme")" ]]; then
+    echo "$programme has rules a change may check whole: $(whole "$programme")" >&2
     exit 1
   fi
 done

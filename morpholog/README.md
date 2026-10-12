@@ -59,7 +59,8 @@ accepted proposal, in the same commit:
 
 1. append the proposal row to the investigation's batch file under
    `batches/`;
-2. refresh `claims-export.json` (`morpholog inspect claims`);
+2. refresh `claims-export.json` (`morpholog inspect claims`; from v0.0.15
+   each claim names the transition that made it present, `asserted_in`);
 3. record a new signed checkpoint over the extended log, witnessed by
    two RFC 3161 authorities (freetsa.org, DigiCert), into
    `audit-anchor.json`, and re-export `evidence-pack.ndjson`;
@@ -73,9 +74,16 @@ accepted proposal, in the same commit:
 <artefact> <note>` records a dated watch's reading through it in one
 command (the artefact's SHA-256 is the reading digest; the note, kept under
 the investigation's `watch-readings/`, must name the watch and the digest).
-A pack that discloses a row written on
-Morpholog v0.0.14 or later is pack format 13 and needs a verifier of that
-version (an older one refuses it by name); the rows written before
+A verifier reads one pack format, its own. From 12/10/2026 the committed
+pack is format 17, written by Morpholog v0.0.15, and only v0.0.15 verifies
+it (v0.0.14 refuses it by name, `malformed_pack`; v0.0.15 reports a pack
+of an older format `unsupported_pack` and checks nothing in it). The
+format-4 pack it replaced, at the same tree size 235 and with the same
+checkpoints and rows (only the manifest line differs), stays in git at
+`b1ed9dd` with the receipt issued under semantics version 1, and
+v0.0.12 to v0.0.14 verify it. The receipt is re-issued under semantics
+version 3 with the same answer; a v0.0.14 receipt reports
+`not_re_evaluated` on v0.0.15 and does not pass. The rows written before
 08/10/2026 carry no programme hash, semantics version or draw list, and
 the pack says so rather than guessing them.
 

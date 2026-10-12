@@ -26,6 +26,9 @@
 set -euo pipefail
 cd "$(dirname "$0")/.."
 export PATH="${HOME}/.local/bin:${PATH}"
+# MORPHOLOG_BIN, when set, names the binary (as it does for the generated
+# client), so a version installed beside the PATH one can be run alone.
+morpholog() { command "${MORPHOLOG_BIN:-morpholog}" "$@"; }
 
 ADMIN_URL="${REHEARSE_ADMIN_URL:-postgres:///postgres}"
 HOST="${REHEARSE_HOST:-localhost}"
@@ -121,7 +124,8 @@ r=$(propose "$M_URL" open_inquiry claude_fable_5 '{"inquiry": "inq-p1", "kind": 
 expect_committed "$r" "open prospective inquiry"
 echo "   -- overlap boundary sweep (morpholog explain, nothing committed)"
 python3 - "$M_URL" <<'EOF'
-import json, subprocess, sys
+import json, os, subprocess, sys
+MORPHOLOG = os.environ.get("MORPHOLOG_BIN", "morpholog")
 url = sys.argv[1]
 # (first, last, expect_admissible) around consumed window 3000-01-10..16
 cases = [
@@ -135,14 +139,14 @@ cases = [
 for index, (first, last, admissible) in enumerate(cases):
     corpus = f"syn-sweep-{index}"
     register = subprocess.run(
-        ["morpholog", "propose", "morpholog/research-v2-draft.morph", "register_corpus",
+        [MORPHOLOG, "propose", "morpholog/research-v2-draft.morph", "register_corpus",
          "--actor", "claude_fable_5",
          "--args-named", json.dumps({"corpus": corpus, "first_day": first, "last_day": last}),
          "--database-url", url],
         capture_output=True, text=True)
     assert '"committed"' in register.stdout, register.stdout + register.stderr
     explain = subprocess.run(
-        ["morpholog", "explain", "morpholog/research-v2-draft.morph", "assign_corpus",
+        [MORPHOLOG, "explain", "morpholog/research-v2-draft.morph", "assign_corpus",
          "--actor", "claude_fable_5",
          "--args-named", json.dumps({"inquiry": "inq-p1", "corpus": corpus}),
          "--database-url", url, "--json"],
@@ -238,9 +242,10 @@ echo "== E. consumption after acquisition; no retro-invalidation"
 r=$(propose "$M_URL" consume_corpus claude_fable_5 '{"corpus": "syn-sweep-4", "inquiry": "inq-p1"}')
 expect_committed "$r" "inquiry consumes its own corpus"
 python3 - "$M_URL" <<'EOF'
-import json, subprocess, sys
+import json, os, subprocess, sys
+MORPHOLOG = os.environ.get("MORPHOLOG_BIN", "morpholog")
 claims = json.loads(subprocess.run(
-    ["morpholog", "inspect", "claims", "--database-url", sys.argv[1]],
+    [MORPHOLOG, "inspect", "claims", "--database-url", sys.argv[1]],
     capture_output=True, text=True).stdout)
 assignments = [c for c in claims if c["predicate"] == "InquiryCorpus"]
 assert any("inq-p1" in json.dumps(c["args"]) for c in assignments), assignments
@@ -277,9 +282,10 @@ expect_committed "$r" "human approves the exact drafted digest"
 r=$(propose "$M_URL" draft_publication claude_fable_5 '{"publication": "pub-p1-changed", "conclusion": "concl-p1", "medium": "post", "content_digest": "digest-of-CHANGED-bytes", "drafted_at": "3000-01-02T07:00:00Z"}')
 expect_committed "$r" "changed bytes become a NEW unapproved draft"
 python3 - "$M_URL" <<'EOF'
-import json, subprocess, sys
+import json, os, subprocess, sys
+MORPHOLOG = os.environ.get("MORPHOLOG_BIN", "morpholog")
 claims = json.loads(subprocess.run(
-    ["morpholog", "inspect", "claims", "--database-url", sys.argv[1]],
+    [MORPHOLOG, "inspect", "claims", "--database-url", sys.argv[1]],
     capture_output=True, text=True).stdout)
 approved = [json.dumps(c["args"]) for c in claims if c["predicate"] == "PublicationApproved"]
 assert len(approved) == 1 and "pub-p1" in approved[0] and "changed" not in approved[0], approved

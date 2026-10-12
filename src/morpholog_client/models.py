@@ -10,7 +10,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from datetime import date, datetime
 from decimal import Decimal
-from typing import ClassVar
+from typing import ClassVar, Protocol
 
 from . import values
 
@@ -473,9 +473,10 @@ class ActorAssertionRestrictedClaim:
 
     @classmethod
     def from_named(cls, args: dict[str, object]) -> ActorAssertionRestrictedClaim:
-        raw = args["actor"]
-        actor = raw
-        return cls(actor=actor)
+        values.named_fields("ActorAssertionRestricted", args, ("actor",))
+        return cls(
+            actor=values.named_text("ActorAssertionRestricted.actor", args["actor"]),
+        )
 
 
 @dataclass(frozen=True)
@@ -489,11 +490,11 @@ class ActorAssertionAuthorityClaim:
 
     @classmethod
     def from_named(cls, args: dict[str, object]) -> ActorAssertionAuthorityClaim:
-        raw = args["actor"]
-        actor = raw
-        raw = args["login_role"]
-        login_role = raw
-        return cls(actor=actor, login_role=login_role)
+        values.named_fields("ActorAssertionAuthority", args, ("actor", "login_role"))
+        return cls(
+            actor=values.named_text("ActorAssertionAuthority.actor", args["actor"]),
+            login_role=values.named_text("ActorAssertionAuthority.login_role", args["login_role"]),
+        )
 
 
 @dataclass(frozen=True)
@@ -506,9 +507,10 @@ class SealAuthorityClaim:
 
     @classmethod
     def from_named(cls, args: dict[str, object]) -> SealAuthorityClaim:
-        raw = args["actor"]
-        actor = raw
-        return cls(actor=actor)
+        values.named_fields("SealAuthority", args, ("actor",))
+        return cls(
+            actor=values.named_text("SealAuthority.actor", args["actor"]),
+        )
 
 
 @dataclass(frozen=True)
@@ -521,9 +523,10 @@ class PublicationAuthorityClaim:
 
     @classmethod
     def from_named(cls, args: dict[str, object]) -> PublicationAuthorityClaim:
-        raw = args["actor"]
-        actor = raw
-        return cls(actor=actor)
+        values.named_fields("PublicationAuthority", args, ("actor",))
+        return cls(
+            actor=values.named_text("PublicationAuthority.actor", args["actor"]),
+        )
 
 
 @dataclass(frozen=True)
@@ -538,13 +541,12 @@ class AuditSigningKeyClaim:
 
     @classmethod
     def from_named(cls, args: dict[str, object]) -> AuditSigningKeyClaim:
-        raw = args["key_id"]
-        key_id = raw
-        raw = args["purpose"]
-        purpose = raw
-        raw = args["public_key"]
-        public_key = raw
-        return cls(key_id=key_id, purpose=purpose, public_key=public_key)
+        values.named_fields("AuditSigningKey", args, ("key_id", "purpose", "public_key"))
+        return cls(
+            key_id=values.named_text("AuditSigningKey.key_id", args["key_id"]),
+            purpose=values.named_text("AuditSigningKey.purpose", args["purpose"]),
+            public_key=values.named_text("AuditSigningKey.public_key", args["public_key"]),
+        )
 
 
 @dataclass(frozen=True)
@@ -560,15 +562,13 @@ class InquiryClaim:
 
     @classmethod
     def from_named(cls, args: dict[str, object]) -> InquiryClaim:
-        raw = args["inquiry"]
-        inquiry = raw
-        raw = args["kind"]
-        kind = raw
-        raw = args["title"]
-        title = raw
-        raw = args["opened_at"]
-        opened_at = values.parse_timestamp(raw)
-        return cls(inquiry=inquiry, kind=kind, title=title, opened_at=opened_at)
+        values.named_fields("Inquiry", args, ("inquiry", "kind", "title", "opened_at"))
+        return cls(
+            inquiry=values.named_text("Inquiry.inquiry", args["inquiry"]),
+            kind=values.named_text("Inquiry.kind", args["kind"]),
+            title=values.named_text("Inquiry.title", args["title"]),
+            opened_at=values.named_timestamp("Inquiry.opened_at", args["opened_at"]),
+        )
 
 
 @dataclass(frozen=True)
@@ -583,13 +583,12 @@ class ResearchCorpusClaim:
 
     @classmethod
     def from_named(cls, args: dict[str, object]) -> ResearchCorpusClaim:
-        raw = args["corpus"]
-        corpus = raw
-        raw = args["first_day"]
-        first_day = values.parse_date(raw)
-        raw = args["last_day"]
-        last_day = values.parse_date(raw)
-        return cls(corpus=corpus, first_day=first_day, last_day=last_day)
+        values.named_fields("ResearchCorpus", args, ("corpus", "first_day", "last_day"))
+        return cls(
+            corpus=values.named_text("ResearchCorpus.corpus", args["corpus"]),
+            first_day=values.named_date("ResearchCorpus.first_day", args["first_day"]),
+            last_day=values.named_date("ResearchCorpus.last_day", args["last_day"]),
+        )
 
 
 @dataclass(frozen=True)
@@ -603,11 +602,11 @@ class InquiryCorpusClaim:
 
     @classmethod
     def from_named(cls, args: dict[str, object]) -> InquiryCorpusClaim:
-        raw = args["inquiry"]
-        inquiry = raw
-        raw = args["corpus"]
-        corpus = raw
-        return cls(inquiry=inquiry, corpus=corpus)
+        values.named_fields("InquiryCorpus", args, ("inquiry", "corpus"))
+        return cls(
+            inquiry=values.named_text("InquiryCorpus.inquiry", args["inquiry"]),
+            corpus=values.named_text("InquiryCorpus.corpus", args["corpus"]),
+        )
 
 
 @dataclass(frozen=True)
@@ -621,11 +620,11 @@ class CorpusConsumedClaim:
 
     @classmethod
     def from_named(cls, args: dict[str, object]) -> CorpusConsumedClaim:
-        raw = args["corpus"]
-        corpus = raw
-        raw = args["consumer"]
-        consumer = raw
-        return cls(corpus=corpus, consumer=consumer)
+        values.named_fields("CorpusConsumed", args, ("corpus", "consumer"))
+        return cls(
+            corpus=values.named_text("CorpusConsumed.corpus", args["corpus"]),
+            consumer=values.named_text("CorpusConsumed.consumer", args["consumer"]),
+        )
 
 
 @dataclass(frozen=True)
@@ -640,13 +639,12 @@ class ProtocolDeclaredClaim:
 
     @classmethod
     def from_named(cls, args: dict[str, object]) -> ProtocolDeclaredClaim:
-        raw = args["inquiry"]
-        inquiry = raw
-        raw = args["protocol_digest"]
-        protocol_digest = raw
-        raw = args["declared_at"]
-        declared_at = values.parse_timestamp(raw)
-        return cls(inquiry=inquiry, protocol_digest=protocol_digest, declared_at=declared_at)
+        values.named_fields("ProtocolDeclared", args, ("inquiry", "protocol_digest", "declared_at"))
+        return cls(
+            inquiry=values.named_text("ProtocolDeclared.inquiry", args["inquiry"]),
+            protocol_digest=values.named_text("ProtocolDeclared.protocol_digest", args["protocol_digest"]),
+            declared_at=values.named_timestamp("ProtocolDeclared.declared_at", args["declared_at"]),
+        )
 
 
 @dataclass(frozen=True)
@@ -660,11 +658,11 @@ class ProtocolSealedClaim:
 
     @classmethod
     def from_named(cls, args: dict[str, object]) -> ProtocolSealedClaim:
-        raw = args["inquiry"]
-        inquiry = raw
-        raw = args["sealed_at"]
-        sealed_at = values.parse_timestamp(raw)
-        return cls(inquiry=inquiry, sealed_at=sealed_at)
+        values.named_fields("ProtocolSealed", args, ("inquiry", "sealed_at"))
+        return cls(
+            inquiry=values.named_text("ProtocolSealed.inquiry", args["inquiry"]),
+            sealed_at=values.named_timestamp("ProtocolSealed.sealed_at", args["sealed_at"]),
+        )
 
 
 @dataclass(frozen=True)
@@ -679,13 +677,12 @@ class DeclaredParameterClaim:
 
     @classmethod
     def from_named(cls, args: dict[str, object]) -> DeclaredParameterClaim:
-        raw = args["inquiry"]
-        inquiry = raw
-        raw = args["name"]
-        name = raw
-        raw = args["parameter_value"]
-        parameter_value = values.parse_decimal(raw)
-        return cls(inquiry=inquiry, name=name, parameter_value=parameter_value)
+        values.named_fields("DeclaredParameter", args, ("inquiry", "name", "parameter_value"))
+        return cls(
+            inquiry=values.named_text("DeclaredParameter.inquiry", args["inquiry"]),
+            name=values.named_text("DeclaredParameter.name", args["name"]),
+            parameter_value=values.named_decimal("DeclaredParameter.parameter_value", args["parameter_value"]),
+        )
 
 
 @dataclass(frozen=True)
@@ -701,15 +698,13 @@ class EvidenceArtifactClaim:
 
     @classmethod
     def from_named(cls, args: dict[str, object]) -> EvidenceArtifactClaim:
-        raw = args["artifact"]
-        artifact = raw
-        raw = args["source"]
-        source = raw
-        raw = args["sha256"]
-        sha256 = raw
-        raw = args["fetched_at"]
-        fetched_at = values.parse_timestamp(raw)
-        return cls(artifact=artifact, source=source, sha256=sha256, fetched_at=fetched_at)
+        values.named_fields("EvidenceArtifact", args, ("artifact", "source", "sha256", "fetched_at"))
+        return cls(
+            artifact=values.named_text("EvidenceArtifact.artifact", args["artifact"]),
+            source=values.named_text("EvidenceArtifact.source", args["source"]),
+            sha256=values.named_text("EvidenceArtifact.sha256", args["sha256"]),
+            fetched_at=values.named_timestamp("EvidenceArtifact.fetched_at", args["fetched_at"]),
+        )
 
 
 @dataclass(frozen=True)
@@ -723,11 +718,11 @@ class InquiryUsesClaim:
 
     @classmethod
     def from_named(cls, args: dict[str, object]) -> InquiryUsesClaim:
-        raw = args["inquiry"]
-        inquiry = raw
-        raw = args["artifact"]
-        artifact = raw
-        return cls(inquiry=inquiry, artifact=artifact)
+        values.named_fields("InquiryUses", args, ("inquiry", "artifact"))
+        return cls(
+            inquiry=values.named_text("InquiryUses.inquiry", args["inquiry"]),
+            artifact=values.named_text("InquiryUses.artifact", args["artifact"]),
+        )
 
 
 @dataclass(frozen=True)
@@ -741,11 +736,11 @@ class EvidenceSealedClaim:
 
     @classmethod
     def from_named(cls, args: dict[str, object]) -> EvidenceSealedClaim:
-        raw = args["inquiry"]
-        inquiry = raw
-        raw = args["sealed_at"]
-        sealed_at = values.parse_timestamp(raw)
-        return cls(inquiry=inquiry, sealed_at=sealed_at)
+        values.named_fields("EvidenceSealed", args, ("inquiry", "sealed_at"))
+        return cls(
+            inquiry=values.named_text("EvidenceSealed.inquiry", args["inquiry"]),
+            sealed_at=values.named_timestamp("EvidenceSealed.sealed_at", args["sealed_at"]),
+        )
 
 
 @dataclass(frozen=True)
@@ -760,13 +755,12 @@ class SelectionRecordedClaim:
 
     @classmethod
     def from_named(cls, args: dict[str, object]) -> SelectionRecordedClaim:
-        raw = args["inquiry"]
-        inquiry = raw
-        raw = args["selection_digest"]
-        selection_digest = raw
-        raw = args["recorded_at"]
-        recorded_at = values.parse_timestamp(raw)
-        return cls(inquiry=inquiry, selection_digest=selection_digest, recorded_at=recorded_at)
+        values.named_fields("SelectionRecorded", args, ("inquiry", "selection_digest", "recorded_at"))
+        return cls(
+            inquiry=values.named_text("SelectionRecorded.inquiry", args["inquiry"]),
+            selection_digest=values.named_text("SelectionRecorded.selection_digest", args["selection_digest"]),
+            recorded_at=values.named_timestamp("SelectionRecorded.recorded_at", args["recorded_at"]),
+        )
 
 
 @dataclass(frozen=True)
@@ -782,15 +776,13 @@ class ConjectureClaim:
 
     @classmethod
     def from_named(cls, args: dict[str, object]) -> ConjectureClaim:
-        raw = args["conjecture"]
-        conjecture = raw
-        raw = args["inquiry"]
-        inquiry = raw
-        raw = args["statement"]
-        statement = raw
-        raw = args["proposed_at"]
-        proposed_at = values.parse_timestamp(raw)
-        return cls(conjecture=conjecture, inquiry=inquiry, statement=statement, proposed_at=proposed_at)
+        values.named_fields("Conjecture", args, ("conjecture", "inquiry", "statement", "proposed_at"))
+        return cls(
+            conjecture=values.named_text("Conjecture.conjecture", args["conjecture"]),
+            inquiry=values.named_text("Conjecture.inquiry", args["inquiry"]),
+            statement=values.named_text("Conjecture.statement", args["statement"]),
+            proposed_at=values.named_timestamp("Conjecture.proposed_at", args["proposed_at"]),
+        )
 
 
 @dataclass(frozen=True)
@@ -806,15 +798,13 @@ class MechanismAssessmentClaim:
 
     @classmethod
     def from_named(cls, args: dict[str, object]) -> MechanismAssessmentClaim:
-        raw = args["inquiry"]
-        inquiry = raw
-        raw = args["mechanism"]
-        mechanism = raw
-        raw = args["status"]
-        status = raw
-        raw = args["evidence_digest"]
-        evidence_digest = raw
-        return cls(inquiry=inquiry, mechanism=mechanism, status=status, evidence_digest=evidence_digest)
+        values.named_fields("MechanismAssessment", args, ("inquiry", "mechanism", "status", "evidence_digest"))
+        return cls(
+            inquiry=values.named_text("MechanismAssessment.inquiry", args["inquiry"]),
+            mechanism=values.named_text("MechanismAssessment.mechanism", args["mechanism"]),
+            status=values.named_text("MechanismAssessment.status", args["status"]),
+            evidence_digest=values.named_text("MechanismAssessment.evidence_digest", args["evidence_digest"]),
+        )
 
 
 @dataclass(frozen=True)
@@ -831,17 +821,14 @@ class EvidenceMetricClaim:
 
     @classmethod
     def from_named(cls, args: dict[str, object]) -> EvidenceMetricClaim:
-        raw = args["metric"]
-        metric = raw
-        raw = args["inquiry"]
-        inquiry = raw
-        raw = args["artifact"]
-        artifact = raw
-        raw = args["metric_name"]
-        metric_name = raw
-        raw = args["metric_value"]
-        metric_value = values.parse_decimal(raw)
-        return cls(metric=metric, inquiry=inquiry, artifact=artifact, metric_name=metric_name, metric_value=metric_value)
+        values.named_fields("EvidenceMetric", args, ("metric", "inquiry", "artifact", "metric_name", "metric_value"))
+        return cls(
+            metric=values.named_text("EvidenceMetric.metric", args["metric"]),
+            inquiry=values.named_text("EvidenceMetric.inquiry", args["inquiry"]),
+            artifact=values.named_text("EvidenceMetric.artifact", args["artifact"]),
+            metric_name=values.named_text("EvidenceMetric.metric_name", args["metric_name"]),
+            metric_value=values.named_decimal("EvidenceMetric.metric_value", args["metric_value"]),
+        )
 
 
 @dataclass(frozen=True)
@@ -855,11 +842,11 @@ class ConclusionUsesMetricClaim:
 
     @classmethod
     def from_named(cls, args: dict[str, object]) -> ConclusionUsesMetricClaim:
-        raw = args["conclusion"]
-        conclusion = raw
-        raw = args["metric"]
-        metric = raw
-        return cls(conclusion=conclusion, metric=metric)
+        values.named_fields("ConclusionUsesMetric", args, ("conclusion", "metric"))
+        return cls(
+            conclusion=values.named_text("ConclusionUsesMetric.conclusion", args["conclusion"]),
+            metric=values.named_text("ConclusionUsesMetric.metric", args["metric"]),
+        )
 
 
 @dataclass(frozen=True)
@@ -874,13 +861,12 @@ class RetentionSpecClaim:
 
     @classmethod
     def from_named(cls, args: dict[str, object]) -> RetentionSpecClaim:
-        raw = args["inquiry"]
-        inquiry = raw
-        raw = args["surviving_name"]
-        surviving_name = raw
-        raw = args["baseline_name"]
-        baseline_name = raw
-        return cls(inquiry=inquiry, surviving_name=surviving_name, baseline_name=baseline_name)
+        values.named_fields("RetentionSpec", args, ("inquiry", "surviving_name", "baseline_name"))
+        return cls(
+            inquiry=values.named_text("RetentionSpec.inquiry", args["inquiry"]),
+            surviving_name=values.named_text("RetentionSpec.surviving_name", args["surviving_name"]),
+            baseline_name=values.named_text("RetentionSpec.baseline_name", args["baseline_name"]),
+        )
 
 
 @dataclass(frozen=True)
@@ -896,15 +882,13 @@ class MetricRetentionClaim:
 
     @classmethod
     def from_named(cls, args: dict[str, object]) -> MetricRetentionClaim:
-        raw = args["inquiry"]
-        inquiry = raw
-        raw = args["surviving_name"]
-        surviving_name = raw
-        raw = args["baseline_name"]
-        baseline_name = raw
-        raw = args["ratio"]
-        ratio = values.parse_decimal(raw)
-        return cls(inquiry=inquiry, surviving_name=surviving_name, baseline_name=baseline_name, ratio=ratio)
+        values.named_fields("MetricRetention", args, ("inquiry", "surviving_name", "baseline_name", "ratio"))
+        return cls(
+            inquiry=values.named_text("MetricRetention.inquiry", args["inquiry"]),
+            surviving_name=values.named_text("MetricRetention.surviving_name", args["surviving_name"]),
+            baseline_name=values.named_text("MetricRetention.baseline_name", args["baseline_name"]),
+            ratio=values.named_decimal("MetricRetention.ratio", args["ratio"]),
+        )
 
 
 @dataclass(frozen=True)
@@ -923,21 +907,16 @@ class ConclusionClaim:
 
     @classmethod
     def from_named(cls, args: dict[str, object]) -> ConclusionClaim:
-        raw = args["conclusion"]
-        conclusion = raw
-        raw = args["inquiry"]
-        inquiry = raw
-        raw = args["conjecture"]
-        conjecture = raw
-        raw = args["conclusion_class"]
-        conclusion_class = raw
-        raw = args["statement"]
-        statement = raw
-        raw = args["evidence_digest"]
-        evidence_digest = raw
-        raw = args["published_at"]
-        published_at = values.parse_timestamp(raw)
-        return cls(conclusion=conclusion, inquiry=inquiry, conjecture=conjecture, conclusion_class=conclusion_class, statement=statement, evidence_digest=evidence_digest, published_at=published_at)
+        values.named_fields("Conclusion", args, ("conclusion", "inquiry", "conjecture", "conclusion_class", "statement", "evidence_digest", "published_at"))
+        return cls(
+            conclusion=values.named_text("Conclusion.conclusion", args["conclusion"]),
+            inquiry=values.named_text("Conclusion.inquiry", args["inquiry"]),
+            conjecture=values.named_text("Conclusion.conjecture", args["conjecture"]),
+            conclusion_class=values.named_text("Conclusion.conclusion_class", args["conclusion_class"]),
+            statement=values.named_text("Conclusion.statement", args["statement"]),
+            evidence_digest=values.named_text("Conclusion.evidence_digest", args["evidence_digest"]),
+            published_at=values.named_timestamp("Conclusion.published_at", args["published_at"]),
+        )
 
 
 @dataclass(frozen=True)
@@ -951,11 +930,11 @@ class CurrentConclusionClaim:
 
     @classmethod
     def from_named(cls, args: dict[str, object]) -> CurrentConclusionClaim:
-        raw = args["inquiry"]
-        inquiry = raw
-        raw = args["conclusion"]
-        conclusion = raw
-        return cls(inquiry=inquiry, conclusion=conclusion)
+        values.named_fields("CurrentConclusion", args, ("inquiry", "conclusion"))
+        return cls(
+            inquiry=values.named_text("CurrentConclusion.inquiry", args["inquiry"]),
+            conclusion=values.named_text("CurrentConclusion.conclusion", args["conclusion"]),
+        )
 
 
 @dataclass(frozen=True)
@@ -969,11 +948,11 @@ class SupersedesConclusionClaim:
 
     @classmethod
     def from_named(cls, args: dict[str, object]) -> SupersedesConclusionClaim:
-        raw = args["successor_conclusion"]
-        successor_conclusion = raw
-        raw = args["prior_conclusion"]
-        prior_conclusion = raw
-        return cls(successor_conclusion=successor_conclusion, prior_conclusion=prior_conclusion)
+        values.named_fields("SupersedesConclusion", args, ("successor_conclusion", "prior_conclusion"))
+        return cls(
+            successor_conclusion=values.named_text("SupersedesConclusion.successor_conclusion", args["successor_conclusion"]),
+            prior_conclusion=values.named_text("SupersedesConclusion.prior_conclusion", args["prior_conclusion"]),
+        )
 
 
 @dataclass(frozen=True)
@@ -990,17 +969,14 @@ class PublicationClaim:
 
     @classmethod
     def from_named(cls, args: dict[str, object]) -> PublicationClaim:
-        raw = args["publication"]
-        publication = raw
-        raw = args["conclusion"]
-        conclusion = raw
-        raw = args["medium"]
-        medium = raw
-        raw = args["content_digest"]
-        content_digest = raw
-        raw = args["drafted_at"]
-        drafted_at = values.parse_timestamp(raw)
-        return cls(publication=publication, conclusion=conclusion, medium=medium, content_digest=content_digest, drafted_at=drafted_at)
+        values.named_fields("Publication", args, ("publication", "conclusion", "medium", "content_digest", "drafted_at"))
+        return cls(
+            publication=values.named_text("Publication.publication", args["publication"]),
+            conclusion=values.named_text("Publication.conclusion", args["conclusion"]),
+            medium=values.named_text("Publication.medium", args["medium"]),
+            content_digest=values.named_text("Publication.content_digest", args["content_digest"]),
+            drafted_at=values.named_timestamp("Publication.drafted_at", args["drafted_at"]),
+        )
 
 
 @dataclass(frozen=True)
@@ -1014,11 +990,11 @@ class PublicationApprovedClaim:
 
     @classmethod
     def from_named(cls, args: dict[str, object]) -> PublicationApprovedClaim:
-        raw = args["publication"]
-        publication = raw
-        raw = args["approved_at"]
-        approved_at = values.parse_timestamp(raw)
-        return cls(publication=publication, approved_at=approved_at)
+        values.named_fields("PublicationApproved", args, ("publication", "approved_at"))
+        return cls(
+            publication=values.named_text("PublicationApproved.publication", args["publication"]),
+            approved_at=values.named_timestamp("PublicationApproved.approved_at", args["approved_at"]),
+        )
 
 
 @dataclass(frozen=True)
@@ -1032,11 +1008,11 @@ class LineageFromV1Claim:
 
     @classmethod
     def from_named(cls, args: dict[str, object]) -> LineageFromV1Claim:
-        raw = args["inquiry"]
-        inquiry = raw
-        raw = args["v1_investigation"]
-        v1_investigation = raw
-        return cls(inquiry=inquiry, v1_investigation=v1_investigation)
+        values.named_fields("LineageFromV1", args, ("inquiry", "v1_investigation"))
+        return cls(
+            inquiry=values.named_text("LineageFromV1.inquiry", args["inquiry"]),
+            v1_investigation=values.named_text("LineageFromV1.v1_investigation", args["v1_investigation"]),
+        )
 
 
 @dataclass(frozen=True)
@@ -1044,7 +1020,7 @@ class InquiryOpenedPayload:
     """Payload of an emitted `InquiryOpened` intent."""
 
     INTENT: ClassVar[str] = "InquiryOpened"
-    _ARG_ORDER: ClassVar[tuple] = ("inquiry",)
+    _ARG_ORDER: ClassVar[tuple[str, ...]] = ("inquiry",)
 
     inquiry: str
 
@@ -1053,11 +1029,13 @@ class InquiryOpenedPayload:
         """Build from the decoded positional values of an outbox
         row's `arguments` (the adapter decodes; this names)."""
         if len(args) != 1:
-            raise ValueError(
+            raise values.CodecError(
                 f"InquiryOpened: payload arity {len(args)} != contract arity 1 "
                 f"(schema/payload skew)"
             )
-        return cls(*args)
+        return cls(
+            inquiry=values.decoded("InquiryOpened.inquiry", args[0], str),
+        )
 
 
 @dataclass(frozen=True)
@@ -1065,7 +1043,7 @@ class DataAcquisitionAuthorisedPayload:
     """Payload of an emitted `DataAcquisitionAuthorised` intent."""
 
     INTENT: ClassVar[str] = "DataAcquisitionAuthorised"
-    _ARG_ORDER: ClassVar[tuple] = ("inquiry",)
+    _ARG_ORDER: ClassVar[tuple[str, ...]] = ("inquiry",)
 
     inquiry: str
 
@@ -1074,11 +1052,13 @@ class DataAcquisitionAuthorisedPayload:
         """Build from the decoded positional values of an outbox
         row's `arguments` (the adapter decodes; this names)."""
         if len(args) != 1:
-            raise ValueError(
+            raise values.CodecError(
                 f"DataAcquisitionAuthorised: payload arity {len(args)} != contract arity 1 "
                 f"(schema/payload skew)"
             )
-        return cls(*args)
+        return cls(
+            inquiry=values.decoded("DataAcquisitionAuthorised.inquiry", args[0], str),
+        )
 
 
 @dataclass(frozen=True)
@@ -1086,7 +1066,7 @@ class AnalysisAuthorisedPayload:
     """Payload of an emitted `AnalysisAuthorised` intent."""
 
     INTENT: ClassVar[str] = "AnalysisAuthorised"
-    _ARG_ORDER: ClassVar[tuple] = ("inquiry",)
+    _ARG_ORDER: ClassVar[tuple[str, ...]] = ("inquiry",)
 
     inquiry: str
 
@@ -1095,11 +1075,13 @@ class AnalysisAuthorisedPayload:
         """Build from the decoded positional values of an outbox
         row's `arguments` (the adapter decodes; this names)."""
         if len(args) != 1:
-            raise ValueError(
+            raise values.CodecError(
                 f"AnalysisAuthorised: payload arity {len(args)} != contract arity 1 "
                 f"(schema/payload skew)"
             )
-        return cls(*args)
+        return cls(
+            inquiry=values.decoded("AnalysisAuthorised.inquiry", args[0], str),
+        )
 
 
 @dataclass(frozen=True)
@@ -1107,7 +1089,7 @@ class ConjectureRegisteredPayload:
     """Payload of an emitted `ConjectureRegistered` intent."""
 
     INTENT: ClassVar[str] = "ConjectureRegistered"
-    _ARG_ORDER: ClassVar[tuple] = ("conjecture",)
+    _ARG_ORDER: ClassVar[tuple[str, ...]] = ("conjecture",)
 
     conjecture: str
 
@@ -1116,11 +1098,13 @@ class ConjectureRegisteredPayload:
         """Build from the decoded positional values of an outbox
         row's `arguments` (the adapter decodes; this names)."""
         if len(args) != 1:
-            raise ValueError(
+            raise values.CodecError(
                 f"ConjectureRegistered: payload arity {len(args)} != contract arity 1 "
                 f"(schema/payload skew)"
             )
-        return cls(*args)
+        return cls(
+            conjecture=values.decoded("ConjectureRegistered.conjecture", args[0], str),
+        )
 
 
 @dataclass(frozen=True)
@@ -1128,7 +1112,7 @@ class ConclusionPublishedPayload:
     """Payload of an emitted `ConclusionPublished` intent."""
 
     INTENT: ClassVar[str] = "ConclusionPublished"
-    _ARG_ORDER: ClassVar[tuple] = ("conclusion",)
+    _ARG_ORDER: ClassVar[tuple[str, ...]] = ("conclusion",)
 
     conclusion: str
 
@@ -1137,11 +1121,13 @@ class ConclusionPublishedPayload:
         """Build from the decoded positional values of an outbox
         row's `arguments` (the adapter decodes; this names)."""
         if len(args) != 1:
-            raise ValueError(
+            raise values.CodecError(
                 f"ConclusionPublished: payload arity {len(args)} != contract arity 1 "
                 f"(schema/payload skew)"
             )
-        return cls(*args)
+        return cls(
+            conclusion=values.decoded("ConclusionPublished.conclusion", args[0], str),
+        )
 
 
 @dataclass(frozen=True)
@@ -1149,7 +1135,7 @@ class ConclusionSupersededPayload:
     """Payload of an emitted `ConclusionSuperseded` intent."""
 
     INTENT: ClassVar[str] = "ConclusionSuperseded"
-    _ARG_ORDER: ClassVar[tuple] = ("prior_conclusion", "successor_conclusion",)
+    _ARG_ORDER: ClassVar[tuple[str, ...]] = ("prior_conclusion", "successor_conclusion",)
 
     prior_conclusion: str
     successor_conclusion: str
@@ -1159,11 +1145,14 @@ class ConclusionSupersededPayload:
         """Build from the decoded positional values of an outbox
         row's `arguments` (the adapter decodes; this names)."""
         if len(args) != 2:
-            raise ValueError(
+            raise values.CodecError(
                 f"ConclusionSuperseded: payload arity {len(args)} != contract arity 2 "
                 f"(schema/payload skew)"
             )
-        return cls(*args)
+        return cls(
+            prior_conclusion=values.decoded("ConclusionSuperseded.prior_conclusion", args[0], str),
+            successor_conclusion=values.decoded("ConclusionSuperseded.successor_conclusion", args[1], str),
+        )
 
 
 @dataclass(frozen=True)
@@ -1171,7 +1160,7 @@ class PublicationAuthorisedPayload:
     """Payload of an emitted `PublicationAuthorised` intent."""
 
     INTENT: ClassVar[str] = "PublicationAuthorised"
-    _ARG_ORDER: ClassVar[tuple] = ("publication",)
+    _ARG_ORDER: ClassVar[tuple[str, ...]] = ("publication",)
 
     publication: str
 
@@ -1180,14 +1169,26 @@ class PublicationAuthorisedPayload:
         """Build from the decoded positional values of an outbox
         row's `arguments` (the adapter decodes; this names)."""
         if len(args) != 1:
-            raise ValueError(
+            raise values.CodecError(
                 f"PublicationAuthorised: payload arity {len(args)} != contract arity 1 "
                 f"(schema/payload skew)"
             )
-        return cls(*args)
+        return cls(
+            publication=values.decoded("PublicationAuthorised.publication", args[0], str),
+        )
 
 
-INTENT_PAYLOADS = {
+class IntentPayloadModel(Protocol):
+    """What every payload model offers: its intent's name, and a build from
+    an outbox row's decoded arguments."""
+
+    INTENT: ClassVar[str]
+
+    @classmethod
+    def from_args(cls, args: list[object]) -> IntentPayloadModel: ...
+
+
+INTENT_PAYLOADS: dict[str, type[IntentPayloadModel]] = {
     "InquiryOpened": InquiryOpenedPayload,
     "DataAcquisitionAuthorised": DataAcquisitionAuthorisedPayload,
     "AnalysisAuthorised": AnalysisAuthorisedPayload,

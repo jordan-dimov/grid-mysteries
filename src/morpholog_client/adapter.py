@@ -23,7 +23,7 @@ import os
 import subprocess
 import threading
 import tempfile
-from typing import IO, Callable, ClassVar, Protocol, Sequence, TypeVar, cast
+from typing import IO, Callable, ClassVar, Protocol, Sequence, TypeVar
 
 from . import envelopes
 
@@ -357,6 +357,7 @@ class Morpholog:
         least_privilege: bool = False,
         reset: bool = False,
         i_know_this_deletes_data: bool = False,
+        role_prefix: str | None = None,
     ) -> envelopes.InitReport:
         """Provision the Morpholog tables.
 
@@ -365,6 +366,12 @@ class Morpholog:
         it. Both flags are passed straight through, so the pairing is
         enforced in one place - the binary - rather than re-implemented
         here where it could drift.
+
+        `role_prefix` names the deployment's roles `<prefix>writer` and
+        `<prefix>reader`, which the report's `least_privilege` carries.
+        Roles belong to the whole cluster, so a second deployment on one
+        needs its own. It goes with `least_privilege`; the binary refuses
+        it alone, and refuses an unlawful prefix.
         """
         args = ["init", "--database-url", self.database_url]
         if skip_if_exists:
@@ -375,6 +382,8 @@ class Morpholog:
             args.append("--reset")
         if i_know_this_deletes_data:
             args.append("--i-know-this-deletes-data")
+        if role_prefix is not None:
+            args.extend(["--role-prefix", role_prefix])
         return envelopes.InitReport.from_json(self._json(*args))
 
     def migrate(self, *, check: bool = False) -> envelopes.MigrationReport:
@@ -699,26 +708,27 @@ class Morpholog:
     # Reading governed state back.
     # ------------------------------------------------------------
 
-    def claims(self, *predicates: str, as_of: str | None = None) -> list[envelopes.ClaimInstance]:
+    def claims(self, *predicates: str, as_of: str | None = None) -> list[envelopes.ClaimRead]:
         """The bare read: the claims table is the authority, an unknown
         predicate matches nothing. Tagged args decoded to bare values.
+        Each claim names the transition that made it present.
 
         `as_of` reads the claims as they were at a past moment - a
         transition id, or an RFC 3339 timestamp resolved to the last
         transition committed at or before it.
         """
-        return self._claims(predicates, envelopes.ClaimInstance.from_json, named=False, as_of=as_of)
+        return self._claims(predicates, envelopes.ClaimRead.from_json, named=False, as_of=as_of)
 
     def claims_named(
         self,
         *predicates: str,
         as_of: str | None = None,
         where: dict[str, str] | None = None,
-    ) -> list[envelopes.NamedClaim]:
+    ) -> list[envelopes.NamedClaimRead]:
         """The named read: the programme is the authority, skew is a
         hard error on the binary side. Values stay wire-true; the
-        generated read models parse them by declared kind. `as_of` as
-        on ``claims``.
+        generated read models parse them by declared kind. `as_of` and
+        `asserted_in` as on ``claims``.
 
         `where` narrows by argument value - ``where={"invoice_id": "inv_1"}``
         - so rows that cannot match are never transferred or decoded.
@@ -730,7 +740,7 @@ class Morpholog:
         `as_of`, where the state is replayed first.
         """
         return self._claims(
-            predicates, envelopes.NamedClaim.from_json, named=True, as_of=as_of, where=where
+            predicates, envelopes.NamedClaimRead.from_json, named=True, as_of=as_of, where=where
         )
 
     def _claims(
@@ -748,9 +758,11 @@ class Morpholog:
         if named:
             argv += ["--named", self.file]
         payload = self._json(*argv, "--database-url", self.database_url)
-        return [parse(c) for c in cast("list[object]", payload)]
+        return envelopes.parse_list(payload, parse)
 
-    def rejections(self, *, limit: int = 100) -> list[envelopes.RejectionRow]:
+    def rejections(
+        self, *, limit: int = 100, mentions: str | None = None
+    ) -> list[envelopes.RejectionRow]:
         """The most recent refusals, newest first, with the values the refused
         rule was reading where the kernel could pin them.
 
@@ -763,16 +775,20 @@ class Morpholog:
         refusal unrecorded; audit remains the only legitimacy-grade record.
         Read a row as a lead to follow, and never as proof of what did or
         did not happen.
+
+        ``mentions`` keeps only the refusals naming that subject in their
+        arguments, witness or compared values; ``limit`` then counts those.
         """
         payload = self._json(
             "inspect",
             "rejections",
+            *self._mentions(mentions),
             "--limit",
             str(limit),
             "--database-url",
             self.database_url,
         )
-        return [envelopes.RejectionRow.from_json(r) for r in cast("list[object]", payload)]
+        return envelopes.parse_list(payload, envelopes.RejectionRow.from_json)
 
     def derived(self, name: str, *, as_of: str | None = None) -> list[envelopes.ClaimInstance]:
         """Compute a read-side view (a derived claim) directly from the
@@ -817,10 +833,14 @@ class Morpholog:
         argv += self._opt("--as-of", as_of)
         argv += self._repeat("--where", [f"{k}={v}" for k, v in (where or {}).items()])
         payload = self._json(*argv, "--database-url", self.database_url)
-        return [parse(c) for c in cast("list[object]", payload)]
+        return envelopes.parse_list(payload, parse)
 
     def audit(
-        self, after: str | None = None, *, writer_roles: list[str] | None = None
+        self,
+        after: str | None = None,
+        *,
+        writer_roles: list[str] | None = None,
+        mentions: str | None = None,
     ) -> list[envelopes.AuditRow]:
         """The audit tail: committed transitions in commit order, one
         ``AuditRow`` per NDJSON line. ``after`` resumes strictly after
@@ -834,27 +854,53 @@ class Morpholog:
         against the catalog; superuser writes are the residue the
         assertion explicitly accepts, and role grants, memberships,
         and login attributes must stay unchanged until the command
-        establishes its read snapshot."""
+        establishes its read snapshot.
+
+        ``mentions`` keeps only the transitions naming that subject in
+        their arguments, claims or intents. ``after`` and the watermark
+        apply as without it, so a filtered tail withholds and resumes
+        exactly as the whole one; a sparse subject means the binary
+        walks the tail to find it, and an empty result moves no cursor."""
         return [
             envelopes.AuditRow.from_json(row)
-            for row in self._audit_lines(after, named=False, writer_roles=writer_roles)
+            for row in self._audit_lines(
+                after, named=False, writer_roles=writer_roles, mentions=mentions
+            )
         ]
 
     def audit_named(
-        self, after: str | None = None, *, writer_roles: list[str] | None = None
+        self,
+        after: str | None = None,
+        *,
+        writer_roles: list[str] | None = None,
+        mentions: str | None = None,
     ) -> list[envelopes.AuditRowNamed]:
         """The audit tail with asserted/retracted claims decoded by
         declared field name under this programme's authority (skew is
         a hard error on the binary side). ``arguments`` and intent
         payloads stay positional - a different vocabulary.
-        ``writer_roles`` as on ``audit``."""
+        ``writer_roles`` and ``mentions`` as on ``audit``."""
         return [
             envelopes.AuditRowNamed.from_json(row)
-            for row in self._audit_lines(after, named=True, writer_roles=writer_roles)
+            for row in self._audit_lines(
+                after, named=True, writer_roles=writer_roles, mentions=mentions
+            )
         ]
 
+    @staticmethod
+    def _mentions(subject: str | None) -> list[str]:
+        if subject is None:
+            return []
+        if subject == "":
+            raise ValueError("mentions needs a subject; an empty one names nothing")
+        return ["--mentions", subject]
+
     def _audit_lines(
-        self, after: str | None, named: bool, writer_roles: list[str] | None = None
+        self,
+        after: str | None,
+        named: bool,
+        writer_roles: list[str] | None = None,
+        mentions: str | None = None,
     ) -> list[dict[str, object]]:
         # Not _invoke: an empty tail is a lawful empty stdout, not a
         # protocol violation - so the discrimination here is on the
@@ -864,6 +910,7 @@ class Morpholog:
             argv.extend(["--after", after])
         if named:
             argv.extend(["--named", self.file])
+        argv += self._mentions(mentions)
         argv += self._repeat("--writer-role", writer_roles)
         argv.extend(["--database-url", self.database_url])
         proc = self._run(argv, timeout=self.timeout)

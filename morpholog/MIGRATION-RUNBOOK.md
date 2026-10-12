@@ -50,7 +50,9 @@ createdb -T grid_mysteries_morpholog gm_migrate_rehearsal
 morpholog migrate --check --database-url postgres:///gm_migrate_rehearsal
 morpholog migrate         --database-url postgres:///gm_migrate_rehearsal
 morpholog audit verify    --database-url postgres:///gm_migrate_rehearsal
-#    claims and pack must be byte-identical to the baseline:
+#    claims and pack must be byte-identical to the baseline (across a release
+#    that changes their shape, as v0.0.15 did, compare what it did not change:
+#    claims without `asserted_in`, packs below the manifest line):
 morpholog inspect claims --database-url postgres:///gm_migrate_rehearsal | cmp - "$OUT/claims.before.json"
 morpholog audit export   --database-url postgres:///gm_migrate_rehearsal | cmp - "$OUT/pack.before.ndjson"
 
@@ -99,16 +101,25 @@ trust/tsa/digicert-trusted-root-g4.pem` and their packs are not committed
 **Binaries and databases move together.** From v0.0.13 every command
 that opens a database, `init` and `migrate` apart, refuses one behind or
 ahead of the binary by name before its first query, and the generated
-client's `open_session()` refuses a binary of another version than it was
-generated for. So the pin in `scripts/install-morpholog`, the vendored
-client, the `morpholog` on `PATH` and the three live schemas change in one
-move, in this order: prepare the repo (pin, client, docs) and rehearse on
-copies; then, when Jordan says, migrate and provision each live record;
-then switch `~/.local/bin/morpholog` to the new binary (keep the old one
-beside it as `morpholog-<old>`). Between the first and the last step
-`scripts/check` fails on the old binary (client drift) and passes on the
-new one, and the engines' `Morpholog(...)` (constructed directly, so
-unchecked) still run on whichever binary `PATH` gives them.
+client refuses a binary of another version than it was generated for (the
+engines pass `expected_version` to `Morpholog(...)`, so they are held to it
+too). So the pin in `scripts/install-morpholog`, the vendored client, the
+binary the repository runs and the three live schemas change in one move:
+prepare the repo (pin, client, docs) and rehearse on copies; then, when
+Jordan says, migrate and provision each live record.
+
+**Which binary runs.** From 12/10/2026 every caller in the repository
+honours `MORPHOLOG_BIN` as the generated client does: the shell scripts
+through a `morpholog` function, the Python call sites through
+`os.environ.get("MORPHOLOG_BIN", "morpholog")`. Unset, the `morpholog` on
+`PATH` runs (the scripts put `~/.local/bin` first). So a new release is
+installed beside the old one as `~/.local/bin/morpholog-<new>`, and
+`export MORPHOLOG_BIN=~/.local/bin/morpholog-<new>` runs the whole
+repository on it (`scripts/check`, `replay-research`, `rehearse-v2`, the
+engines) without touching `PATH`. Switching `~/.local/bin/morpholog` is the
+last step, once the branch carrying the new pin and client is on main.
+Keep the old binary as `morpholog-<old>`: it is the only verifier of the
+packs it wrote.
 
 ## v0.0.10 to v0.0.11 (schema 11 to 15), rehearsed 2026-09-23
 
@@ -513,3 +524,97 @@ an `init`, and a GRANT/REVOKE pair per login, from the install guide.
 Morpholog #512 (filed 08/10/2026 on this feedback) proposes `roles move
 --role-prefix` to own it and to be named by the `migrate` warning; until
 it ships, the sequence above is the procedure.
+
+## v0.0.14 to v0.0.15 (schema 23 to 25), rehearsed and run 2026-10-12
+
+Migrations 024 (`gate_witness`: a gate refusal carries a witness too) and
+025 (`rejection_compared`: the rejection log keeps the comparison a
+refusal failed, with both values). Release v0.0.15 was published
+2026-10-12 14:04 UTC; the three published `.sha256` files, the release
+API's asset digests and the downloaded tarballs agree, and
+`scripts/install-morpholog` pins them. The x86_64 binary (`bcfb7d44…`) is
+installed beside the old one as `~/.local/bin/morpholog-0.0.15`;
+`~/.local/bin/morpholog` is still 0.0.14 and every command below names
+the binary through `MORPHOLOG_BIN` (above). Baselines with 0.0.14 and
+`pg_dump -Fc` of each record are in `~/backups/morpholog-20261012T141945Z/`,
+with every rehearsal and live report beside them.
+
+**Programmes.** `check --strict` on 0.0.15 newly failed one programme:
+the identity register named a field of `LinkProposed`, and the parameter
+of `propose_link`, `class`, which the new client-name hint (#532) refuses.
+Renamed `link_class`; its pin moved `312e6e56…` → `bd4da45a…`
+(`identity/RENAME-2026-10-12.md`; nothing is deployed). The other six are
+strict-clean and hash as pinned. `check --json` now gives every invariant
+`cases`; all of them, in all seven programmes, are `bound`, and
+`scripts/check-programmes` holds the engines to that as well as to the
+compiled route. Routes moved the other way: v2's three and v3's five
+`*_in_vocabulary` rules (a definition whose body is an `or` chain) were
+interpreted on 0.0.14 and compile on 0.0.15 (#544), so every invariant of
+the research programmes is compiled.
+
+**Rehearsal** on template copies of the three records (`createdb -T`,
+nothing connected): `migrate` 0.01 to 0.02 s each, 024 and 025 applied;
+`audit verify` passes (TEC in 13 s, 301 MB, with progress on stderr);
+claims identical to the baselines once `asserted_in` is set aside (new on
+every claim read, #551: the transition that made the claim present; every
+claim has one); the exported packs' checkpoints and rows byte-identical to
+the 0.0.14 exports, only the manifest line changing (format 17 and a
+`morpholog_version` key). `provision indexes --check` on the research
+copy wanted one index, `WatchReading[3]` (v3's `reading_outcome_known`,
+now compiled); TEC and Bill all KEEP. `migrate` on each copy warned that
+its roles also hold privileges in the source database: an artefact of
+`createdb -T` copying the grants, gone once the copies were dropped.
+
+**Decisions**, on a throwaway cluster (initdb, port 55438), before the live
+run: `check-controls` v2 (35 commits, 13 refusals) and v3 (16, 14), every
+refusing rule as expected; `replay-research` (235 rows commit, 242 claims
+identical, the replayed log self-verifies, provisioned and current);
+`check-record` on the replayed record (20 watches open, none overdue);
+`rehearse-v2` twice (60 assertions each; it needs `REHEARSE_ADMIN_URL` as
+well as `REHEARSE_HOST` on such a cluster, or it sets up on the laptop
+cluster and proposes to the other). **No decision changed under semantics
+version 3.** Every v3 control refusal now carries a `witness`; the one that
+fails a comparison (`clocks_ordered`) carries `compared`
+(`on_or_before`, 2026-09-01 against 2026-08-01).
+
+**Live**, 14:27 to 14:28 UTC, nothing connected to any of the three: a
+fresh `pg_dump -Fc` of each (`*.live.pre-migration.dump`), `migrate` 23 to
+25, `migrate --check` current, `audit verify` passes (235, 137,384 and 84
+transitions; 242, 127,456 and 85 claims), claims identical apart from
+`asserted_in`, each live pack byte-identical to its rehearsal export,
+`provision indexes --prune` in one call per record (research: the one
+CREATE above; TEC and Bill all KEEP) and `--check` exits 0 on all three.
+Afterwards `migrate` warns on none of them; both research logins read the
+242 claims through 0.0.15; `check-controls` re-initialised
+`grid_mysteries_controls` at 25; `check-record` against the live record is
+clean; `scripts/check` passes with `MORPHOLOG_BIN` set.
+
+**Evidence.** A verifier reads one format, its own (#517).
+- The committed `evidence-pack.ndjson` (format 4, tree size 235) is
+  `unsupported_pack` to 0.0.15. It was re-exported from the live record
+  (format 17; same tree size, checkpoints and rows), and
+  `receipts/metric-retention.json` re-issued from it: same checkpoint,
+  same answer (`inq-002`: 0.2363…), `semantics_version` 3 where it was 1.
+  The 0.0.14 receipt verifies its evidence on 0.0.15 but reports
+  `not_re_evaluated` and does not pass, as the release notes say. The
+  format-4 pack and the semantics-1 receipt stay in git at `b1ed9dd`;
+  0.0.12 to 0.0.14 verify that pack, and 0.0.14 refuses the new one
+  (`malformed_pack`, by name).
+- `claims-export.json` is refreshed from the live record and now carries
+  `asserted_in`; `replay-research` compares claims by predicate and
+  arguments, so a replay's own transition ids do not enter the comparison.
+- The engines keep one pack per tree size. `record.exported_pack` now
+  moves a kept pack that the binary reports `unsupported_pack` aside as
+  `tree-<n>.format-<f>.ndjson`, never overwriting it, and exports again.
+  TEC's `tree-137384.ndjson` (format 4) is now `tree-137384.format-4.ndjson`
+  beside a format-17 export that verifies against the same anchor;
+  `record.pack_rows` streams every format (it reads the two counts it needs,
+  not the client's `PrefixPackManifest`, which requires the format-17 key).
+  The Bill engine verifies its record and keeps its format-4
+  `tree-84.ndjson` until its next `checkpoint` asks for a pack.
+
+**Changed shape, not meaning.** The client is stamped 0.0.15 (Python 3.12
+floor; the project is on 3.14) and is strict: `EnvelopeError` and
+`CodecError` where malformed output passed through before. The engines'
+refusal message (`record.refusal_detail`) now names the comparison and the
+witness the refusal carries, with no re-derivation of a rule's numbers.

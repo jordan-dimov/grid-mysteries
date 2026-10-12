@@ -1,7 +1,7 @@
 {
   "receipt_format_version": 1,
   "program_hash": "sha256:c9e4b9371e3db420726d501424b8ca1f0766535fe9f549da5fe843e302dbbda2",
-  "semantics_version": 1,
+  "semantics_version": 3,
   "checkpoint": {
     "tree_size": 235,
     "root_hash": "sha256:e0d8dce5b93f012a67a27a5a545d0c80c5aa8150e4a611b4f3ed12f6f536e0f2",

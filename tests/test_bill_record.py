@@ -222,6 +222,34 @@ def test_marker_classification_trusts_only_positive_non_commits(monkeypatch):
     assert record.classify(object(), None).status == "unknown"
 
 
+def test_a_refusal_is_explained_by_what_it_carries():
+    from morpholog_client import envelopes
+
+    bare = envelopes.AtomicRejected.from_json(
+        {"status": "rejected", "act": 2, "reason": "x", "rule": "run_is_new"}
+    )
+    assert record.classify(bare, None).detail == "act 2 refused [run_is_new]"
+    full = envelopes.AtomicRejected.from_json(
+        {
+            "status": "rejected",
+            "act": 3,
+            "reason": "x",
+            "rule": "figure_unchanged",
+            "witness": [{"var": "day", "value": {"type": "date", "value": "2026-09-20"}}],
+            "compared": {
+                "op": "==",
+                "left": {"type": "decimal", "value": "12.5"},
+                "right": {"type": "decimal", "value": "13"},
+            },
+        }
+    )
+    outcome = record.classify(full, None)
+    assert outcome.status == "not-committed"
+    assert outcome.detail == (
+        "act 3 refused [figure_unchanged]: 12.5 == 13 does not hold where day=2026-09-20"
+    )
+
+
 def test_markers_are_per_database(tmp_path):
     a = record.marker_path(tmp_path, importer.RECORD, "postgres:///grid_mysteries_bill")
     b = record.marker_path(tmp_path, importer.RECORD, "postgres:///grid_mysteries_bill_test")

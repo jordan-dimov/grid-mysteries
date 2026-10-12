@@ -14,7 +14,8 @@
         "type": "timestamp",
         "value": "2026-08-16T20:10:00Z"
       }
-    ]
+    ],
+    "asserted_in": "01a00c28-945b-7fc0-b5f7-9dbad92c9198"
   },
   {
     "predicate": "Hypothesis",
@@ -35,7 +36,8 @@
         "type": "timestamp",
         "value": "2026-08-16T20:12:00Z"
       }
-    ]
+    ],
+    "asserted_in": "01a00c28-d22f-7c70-bc85-97ff5cc5f047"
   },
   {
     "predicate": "SourceArtifact",
@@ -56,7 +58,8 @@
         "type": "timestamp",
         "value": "2026-08-16T20:22:00Z"
       }
-    ]
+    ],
+    "asserted_in": "01a00c31-d3b5-72a3-9455-2c1da8e48f1c"
   },
   {
     "predicate": "InvestigationUses",
@@ -69,7 +72,8 @@
         "type": "subject",
         "value": "art-001-window-manifest"
       }
-    ]
+    ],
+    "asserted_in": "01a00c31-d3d3-7881-afbb-aa327505467b"
   },
   {
     "predicate": "SourceArtifact",
@@ -90,7 +94,8 @@
         "type": "timestamp",
         "value": "2026-08-16T20:34:00Z"
       }
-    ]
+    ],
+    "asserted_in": "01a00c36-343c-7d00-9276-b85768935b0c"
   },
   {
     "predicate": "InvestigationUses",
@@ -103,7 +108,8 @@
         "type": "subject",
         "value": "art-001-case-manifest"
       }
-    ]
+    ],
+    "asserted_in": "01a00c36-345b-77f0-b188-023243cd50ae"
   },
   {
     "predicate": "Finding",
@@ -132,7 +138,8 @@
         "type": "timestamp",
         "value": "2026-08-16T20:40:00Z"
       }
-    ]
+    ],
+    "asserted_in": "01a00c36-3478-7523-a4d8-11ec35e6e08f"
   },
   {
     "predicate": "Investigation",
@@ -149,7 +156,8 @@
         "type": "timestamp",
         "value": "2026-08-16T21:05:00Z"
       }
-    ]
+    ],
+    "asserted_in": "01a00c45-7c45-72d0-a931-4f125f1fce2e"
   },
   {
     "predicate": "Hypothesis",
@@ -170,7 +178,8 @@
         "type": "timestamp",
         "value": "2026-08-16T21:05:00Z"
       }
-    ]
+    ],
+    "asserted_in": "01a00c45-7c61-7cc0-9008-62eb4592b21e"
   },
   {
     "predicate": "SourceArtifact",
@@ -191,7 +200,8 @@
         "type": "timestamp",
         "value": "2026-08-16T21:31:00Z"
       }
-    ]
+    ],
+    "asserted_in": "01a00c4d-dbef-7800-b916-6954836ba3bb"
   },
   {
     "predicate": "InvestigationUses",
@@ -204,7 +214,8 @@
         "type": "subject",
         "value": "art-ms-001-physical-manifest"
       }
-    ]
+    ],
+    "asserted_in": "01a00c4d-dc0c-7ec0-a9a7-5606eecc2413"
   },
   {
     "predicate": "Finding",
@@ -233,7 +244,8 @@
         "type": "timestamp",
         "value": "2026-08-16T21:55:00Z"
       }
-    ]
+    ],
+    "asserted_in": "01a00c4d-dc29-7083-a427-88b1d18fc2ee"
   },
   {
     "predicate": "Investigation",
@@ -250,7 +262,8 @@
         "type": "timestamp",
         "value": "2026-08-16T22:30:00Z"
       }
-    ]
+    ],
+    "asserted_in": "01a00c5f-2973-77f2-9266-6fa8af9749b5"
   },
   {
     "predicate": "Hypothesis",
@@ -271,7 +284,8 @@
         "type": "timestamp",
         "value": "2026-08-16T22:30:00Z"
       }
-    ]
+    ],
+    "asserted_in": "01a00c5f-2986-7620-b188-9d700b62025e"
   },
   {
     "predicate": "SourceArtifact",
@@ -292,7 +306,8 @@
         "type": "timestamp",
         "value": "2026-08-16T22:05:00Z"
       }
-    ]
+    ],
+    "asserted_in": "01a00c68-45a3-7991-86c9-2b434d4a31e5"
   },
   {
     "predicate": "InvestigationUses",
@@ -305,7 +320,8 @@
         "type": "subject",
         "value": "art-ms-001b-neso-manifest"
       }
-    ]
+    ],
+    "asserted_in": "01a00c68-45b3-7970-be55-e53fe3f7dad0"
   },
   {
     "predicate": "SourceArtifact",
@@ -326,7 +342,8 @@
         "type": "timestamp",
         "value": "2026-08-16T22:50:00Z"
       }
-    ]
+    ],
+    "asserted_in": "01a00c68-45c4-7251-be21-c89211054591"
   },
   {
     "predicate": "InvestigationUses",
@@ -339,7 +356,8 @@
         "type": "subject",
         "value": "art-ms-001b-boalf-manifest"
       }
-    ]
+    ],
+    "asserted_in": "01a00c68-45d5-7530-b16a-b1c476a6e609"
   },
   {
     "predicate": "Finding",
@@ -368,7 +386,8 @@
         "type": "timestamp",
         "value": "2026-08-16T23:10:00Z"
       }
-    ]
+    ],
+    "asserted_in": "01a00c68-45e9-74b2-91e0-fca2f2b6e05d"
   },
   {
     "predicate": "Investigation",
@@ -385,7 +404,8 @@
         "type": "timestamp",
         "value": "2026-08-16T23:45:00Z"
       }
-    ]
+    ],
+    "asserted_in": "01a00c70-cd90-7152-a1b3-c83e8f36c486"
   },
   {
     "predicate": "Hypothesis",
@@ -406,7 +426,8 @@
         "type": "timestamp",
         "value": "2026-08-16T23:45:00Z"
       }
-    ]
+    ],
+    "asserted_in": "01a00c70-cda7-7622-97bc-8156af22e359"
   },
   {
     "predicate": "InvestigationUses",
@@ -419,7 +440,8 @@
         "type": "subject",
         "value": "art-001-window-manifest"
       }
-    ]
+    ],
+    "asserted_in": "01a00c73-d69c-7373-a043-c43f49f12488"
   },
   {
     "predicate": "InvestigationUses",
@@ -432,7 +454,8 @@
         "type": "subject",
         "value": "art-ms-001-physical-manifest"
       }
-    ]
+    ],
+    "asserted_in": "01a00c73-d6ae-7852-974f-2a03683d8c2f"
   },
   {
     "predicate": "InvestigationUses",
@@ -445,7 +468,8 @@
         "type": "subject",
         "value": "art-ms-001b-neso-manifest"
       }
-    ]
+    ],
+    "asserted_in": "01a00c73-d6bf-7182-a8db-7533ea0f0bf4"
   },
   {
     "predicate": "Finding",
@@ -474,7 +498,8 @@
         "type": "timestamp",
         "value": "2026-08-17T00:20:00Z"
       }
-    ]
+    ],
+    "asserted_in": "01a00c73-d70a-7911-b498-817735dcf679"
   },
   {
     "predicate": "Investigation",
@@ -491,7 +516,8 @@
         "type": "timestamp",
         "value": "2026-08-17T00:50:00Z"
       }
-    ]
+    ],
+    "asserted_in": "01a00c7c-6e38-7b13-b4d2-3bfe6369959d"
   },
   {
     "predicate": "Hypothesis",
@@ -512,7 +538,8 @@
         "type": "timestamp",
         "value": "2026-08-17T00:50:00Z"
       }
-    ]
+    ],
+    "asserted_in": "01a00c7c-6e46-7912-9316-c9615dfb0b16"
   },
   {
     "predicate": "SourceArtifact",
@@ -533,7 +560,8 @@
         "type": "timestamp",
         "value": "2026-08-17T00:58:00Z"
       }
-    ]
+    ],
+    "asserted_in": "01a00c7f-2a96-7070-b751-02d92ad5d71f"
   },
   {
     "predicate": "InvestigationUses",
@@ -546,7 +574,8 @@
         "type": "subject",
         "value": "art-ms-001d-boalf-manifest"
       }
-    ]
+    ],
+    "asserted_in": "01a00c7f-2aaf-7211-8f95-bd4c9dd99d20"
   },
   {
     "predicate": "InvestigationUses",
@@ -559,7 +588,8 @@
         "type": "subject",
         "value": "art-001-window-manifest"
       }
-    ]
+    ],
+    "asserted_in": "01a00c7f-2ac4-7c60-8189-8bf0bad09126"
   },
   {
     "predicate": "InvestigationUses",
@@ -572,7 +602,8 @@
         "type": "subject",
         "value": "art-ms-001-physical-manifest"
       }
-    ]
+    ],
+    "asserted_in": "01a00c7f-2ad0-7ca2-a2aa-8a9c5bb37b8f"
   },
   {
     "predicate": "InvestigationUses",
@@ -585,7 +616,8 @@
         "type": "subject",
         "value": "art-ms-001b-neso-manifest"
       }
-    ]
+    ],
+    "asserted_in": "01a00c7f-2ae4-7420-ab36-0b10c0bfcdec"
   },
   {
     "predicate": "Finding",
@@ -614,7 +646,8 @@
         "type": "timestamp",
         "value": "2026-08-17T01:15:00Z"
       }
-    ]
+    ],
+    "asserted_in": "01a00c7f-2af3-74e0-b832-c3ec127fbdde"
   },
   {
     "predicate": "AuditSigningKey",
@@ -631,7 +664,8 @@
         "type": "subject",
         "value": "ed25519-pub:cb6c6ce9152039914ac232b8302d0bc2f6b3f80d73623c5a358288993cc4ccf9"
       }
-    ]
+    ],
+    "asserted_in": "01a00c86-8da0-7001-88b8-0e00a8b660e5"
   },
   {
     "predicate": "Investigation",
@@ -648,7 +682,8 @@
         "type": "timestamp",
         "value": "2026-08-16T23:00:00Z"
       }
-    ]
+    ],
+    "asserted_in": "01a00edd-f6e2-7d71-8076-e3cd674a95ba"
   },
   {
     "predicate": "Hypothesis",
@@ -669,7 +704,8 @@
         "type": "timestamp",
         "value": "2026-08-16T23:00:00Z"
       }
-    ]
+    ],
+    "asserted_in": "01a00edd-f74e-7de3-b695-8e12dca830d4"
   },
   {
     "predicate": "SourceArtifact",
@@ -690,7 +726,8 @@
         "type": "timestamp",
         "value": "2026-08-17T09:05:00Z"
       }
-    ]
+    ],
+    "asserted_in": "01a00f09-accc-7e23-a254-3902738b0ac7"
   },
   {
     "predicate": "InvestigationUses",
@@ -703,7 +740,8 @@
         "type": "subject",
         "value": "art-bess-001-july-manifest"
       }
-    ]
+    ],
+    "asserted_in": "01a00f09-ad30-72b3-a433-77cd474b2c0d"
   },
   {
     "predicate": "SourceArtifact",
@@ -724,7 +762,8 @@
         "type": "timestamp",
         "value": "2026-08-17T08:50:00Z"
       }
-    ]
+    ],
+    "asserted_in": "01a00f09-ad87-7dc3-abea-247a55d0bbb2"
   },
   {
     "predicate": "InvestigationUses",
@@ -737,7 +776,8 @@
         "type": "subject",
         "value": "art-bess-001-neso-manifest"
       }
-    ]
+    ],
+    "asserted_in": "01a00f09-ade8-7693-96f5-2c5ef3e13223"
   },
   {
     "predicate": "SourceArtifact",
@@ -758,7 +798,8 @@
         "type": "timestamp",
         "value": "2026-08-17T09:20:00Z"
       }
-    ]
+    ],
+    "asserted_in": "01a00f09-ae47-75d1-b72a-04379d1807b8"
   },
   {
     "predicate": "InvestigationUses",
@@ -771,7 +812,8 @@
         "type": "subject",
         "value": "art-bess-001-physical-manifest"
       }
-    ]
+    ],
+    "asserted_in": "01a00f09-aeac-7f92-a509-84e5d8560900"
   },
   {
     "predicate": "Finding",
@@ -800,7 +842,8 @@
         "type": "timestamp",
         "value": "2026-08-17T09:30:00Z"
       }
-    ]
+    ],
+    "asserted_in": "01a00f0a-1491-7da0-be91-3d582c8df237"
   },
   {
     "predicate": "Finding",
@@ -829,7 +872,8 @@
         "type": "timestamp",
         "value": "2026-08-17T10:05:00Z"
       }
-    ]
+    ],
+    "asserted_in": "01a00f38-f3c4-75d2-a583-cceea7746cb4"
   },
   {
     "predicate": "Investigation",
@@ -846,7 +890,8 @@
         "type": "timestamp",
         "value": "2026-08-17T11:00:00Z"
       }
-    ]
+    ],
+    "asserted_in": "01a00f70-4f77-7093-b5bf-5aef99c6949e"
   },
   {
     "predicate": "Hypothesis",
@@ -867,7 +912,8 @@
         "type": "timestamp",
         "value": "2026-08-17T11:00:00Z"
       }
-    ]
+    ],
+    "asserted_in": "01a00f70-5031-7f10-a43b-b4edd48c3d61"
   },
   {
     "predicate": "SourceArtifact",
@@ -888,7 +934,8 @@
         "type": "timestamp",
         "value": "2026-08-17T12:20:00Z"
       }
-    ]
+    ],
+    "asserted_in": "01a00fc9-c991-7052-9bcd-823d54930adb"
   },
   {
     "predicate": "InvestigationUses",
@@ -901,7 +948,8 @@
         "type": "subject",
         "value": "art-003-may-manifest"
       }
-    ]
+    ],
+    "asserted_in": "01a00fc9-c9f6-7400-af6a-0d60eb837c2d"
   },
   {
     "predicate": "Finding",
@@ -930,7 +978,8 @@
         "type": "timestamp",
         "value": "2026-08-17T12:30:00Z"
       }
-    ]
+    ],
+    "asserted_in": "01a00fc9-ca70-7163-93da-e68cd0a6763d"
   },
   {
     "predicate": "SourceArtifact",
@@ -951,7 +1000,8 @@
         "type": "timestamp",
         "value": "2026-08-17T13:52:05Z"
       }
-    ]
+    ],
+    "asserted_in": "01a00fff-97da-7891-a019-2cd6d29a8167"
   },
   {
     "predicate": "InvestigationUses",
@@ -964,7 +1014,8 @@
         "type": "subject",
         "value": "art-003-ofgem-rrt-paper"
       }
-    ]
+    ],
+    "asserted_in": "01a00fff-9835-70a3-ae22-70d7f0df8d27"
   },
   {
     "predicate": "Finding",
@@ -993,7 +1044,8 @@
         "type": "timestamp",
         "value": "2026-08-17T13:56:00Z"
       }
-    ]
+    ],
+    "asserted_in": "01a00fff-988e-7ce3-86f2-8dc66679a04c"
   },
   {
     "predicate": "SourceArtifact",
@@ -1014,7 +1066,8 @@
         "type": "timestamp",
         "value": "2026-08-17T14:35:00Z"
       }
-    ]
+    ],
+    "asserted_in": "01a0101e-5eed-7803-a245-f078f82a04f1"
   },
   {
     "predicate": "InvestigationUses",
@@ -1027,7 +1080,8 @@
         "type": "subject",
         "value": "art-003-pn-vintage-probe"
       }
-    ]
+    ],
+    "asserted_in": "01a0101e-5f5d-7a42-91a3-2a46cc16580a"
   },
   {
     "predicate": "ActorAssertionAuthority",
@@ -1040,7 +1094,8 @@
         "type": "subject",
         "value": "gm_machine"
       }
-    ]
+    ],
+    "asserted_in": "01a02afd-1ea5-76a1-b5c5-61e2dee2cd6b"
   },
   {
     "predicate": "ActorAssertionAuthority",
@@ -1053,7 +1108,8 @@
         "type": "subject",
         "value": "gm_human"
       }
-    ]
+    ],
+    "asserted_in": "01a02afd-1ea5-76a1-b5c5-61e2dee2cd6b"
   },
   {
     "predicate": "ActorAssertionRestricted",
@@ -1062,7 +1118,8 @@
         "type": "subject",
         "value": "claude_fable_5"
       }
-    ]
+    ],
+    "asserted_in": "01a02afd-1ea5-76a1-b5c5-61e2dee2cd6b"
   },
   {
     "predicate": "ActorAssertionRestricted",
@@ -1071,7 +1128,8 @@
         "type": "subject",
         "value": "jordan_dimov"
       }
-    ]
+    ],
+    "asserted_in": "01a02afd-1ea5-76a1-b5c5-61e2dee2cd6b"
   },
   {
     "predicate": "PublicationAuthority",
@@ -1080,7 +1138,8 @@
         "type": "subject",
         "value": "jordan_dimov"
       }
-    ]
+    ],
+    "asserted_in": "01a02afd-1ea5-76a1-b5c5-61e2dee2cd6b"
   },
   {
     "predicate": "SealAuthority",
@@ -1089,7 +1148,8 @@
         "type": "subject",
         "value": "jordan_dimov"
       }
-    ]
+    ],
+    "asserted_in": "01a02afd-1ea5-76a1-b5c5-61e2dee2cd6b"
   },
   {
     "predicate": "ResearchCorpus",
@@ -1106,7 +1166,8 @@
         "type": "date",
         "value": "2026-05-31"
       }
-    ]
+    ],
+    "asserted_in": "01a02afd-2438-7c43-a7e8-b61c8d6ce65e"
   },
   {
     "predicate": "ResearchCorpus",
@@ -1123,7 +1184,8 @@
         "type": "date",
         "value": "2026-07-31"
       }
-    ]
+    ],
+    "asserted_in": "01a02afd-28a1-75f2-9244-e82ece3db32a"
   },
   {
     "predicate": "ResearchCorpus",
@@ -1140,7 +1202,8 @@
         "type": "date",
         "value": "2026-08-10"
       }
-    ]
+    ],
+    "asserted_in": "01a02afd-2d67-77f3-bb59-3db4dd20998a"
   },
   {
     "predicate": "ResearchCorpus",
@@ -1157,7 +1220,8 @@
         "type": "date",
         "value": "2026-08-17"
       }
-    ]
+    ],
+    "asserted_in": "01a02afd-31ae-7103-82a8-6fc153291357"
   },
   {
     "predicate": "CorpusConsumed",
@@ -1170,7 +1234,8 @@
         "type": "subject",
         "value": "inv-003-follow-the-constraint"
       }
-    ]
+    ],
+    "asserted_in": "01a02afd-3722-7093-835f-58048ab94db8"
   },
   {
     "predicate": "CorpusConsumed",
@@ -1183,7 +1248,8 @@
         "type": "subject",
         "value": "bess-001-benchmark-fragility"
       }
-    ]
+    ],
+    "asserted_in": "01a02afd-3c66-7241-892e-9aaa9a3d463f"
   },
   {
     "predicate": "CorpusConsumed",
@@ -1196,7 +1262,8 @@
         "type": "subject",
         "value": "inv-001-largest-apparent-inversion"
       }
-    ]
+    ],
+    "asserted_in": "01a02afd-4152-79a1-afce-eb12bdf900bf"
   },
   {
     "predicate": "CorpusConsumed",
@@ -1209,7 +1276,8 @@
         "type": "subject",
         "value": "ms-001-phantom-liquidity"
       }
-    ]
+    ],
+    "asserted_in": "01a02afd-45a4-7943-b405-4804c2846582"
   },
   {
     "predicate": "CorpusConsumed",
@@ -1222,7 +1290,8 @@
         "type": "subject",
         "value": "ms-001b-naive-screen"
       }
-    ]
+    ],
+    "asserted_in": "01a02afd-4971-7140-bdea-208f4db07aea"
   },
   {
     "predicate": "CorpusConsumed",
@@ -1235,7 +1304,8 @@
         "type": "subject",
         "value": "ms-001c-disagreement-anatomy"
       }
-    ]
+    ],
+    "asserted_in": "01a02afd-4d78-7e82-9bf1-24e56d547995"
   },
   {
     "predicate": "CorpusConsumed",
@@ -1248,7 +1318,8 @@
         "type": "subject",
         "value": "ms-001d-the-six"
       }
-    ]
+    ],
+    "asserted_in": "01a02afd-5248-77d2-84c9-3772636be743"
   },
   {
     "predicate": "Inquiry",
@@ -1269,7 +1340,8 @@
         "type": "timestamp",
         "value": "2026-08-22T19:42:19Z"
       }
-    ]
+    ],
+    "asserted_in": "01a02afe-dac9-7021-864e-7960e2658be4"
   },
   {
     "predicate": "LineageFromV1",
@@ -1282,7 +1354,8 @@
         "type": "subject",
         "value": "inv-001-largest-apparent-inversion"
       }
-    ]
+    ],
+    "asserted_in": "01a02afe-e0f5-7a22-8b27-217fd591e2c8"
   },
   {
     "predicate": "InquiryCorpus",
@@ -1295,7 +1368,8 @@
         "type": "subject",
         "value": "corpus-2026-08-w2"
       }
-    ]
+    ],
+    "asserted_in": "01a02afe-e6d8-73f0-8b93-f1083ef8e40b"
   },
   {
     "predicate": "ProtocolDeclared",
@@ -1312,7 +1386,8 @@
         "type": "timestamp",
         "value": "2026-08-22T19:42:19Z"
       }
-    ]
+    ],
+    "asserted_in": "01a02afe-ed15-7a50-bf81-bdbc341d90e3"
   },
   {
     "predicate": "DeclaredParameter",
@@ -1329,7 +1404,8 @@
         "type": "decimal",
         "value": "0.01"
       }
-    ]
+    ],
+    "asserted_in": "01a02afe-f226-7313-8ee6-ac8a1f22e9ac"
   },
   {
     "predicate": "DeclaredParameter",
@@ -1346,7 +1422,8 @@
         "type": "decimal",
         "value": "1"
       }
-    ]
+    ],
+    "asserted_in": "01a02afe-f740-7232-acaa-f2e6f0c3af2a"
   },
   {
     "predicate": "ProtocolSealed",
@@ -1359,7 +1436,8 @@
         "type": "timestamp",
         "value": "2026-08-22T19:45:10Z"
       }
-    ]
+    ],
+    "asserted_in": "01a02b01-748c-7bf3-ab17-8729edbaac95"
   },
   {
     "predicate": "EvidenceArtifact",
@@ -1380,7 +1458,8 @@
         "type": "timestamp",
         "value": "2026-08-22T20:58:32Z"
       }
-    ]
+    ],
+    "asserted_in": "01a02b44-9e79-7511-b568-b90d5ce25ad8"
   },
   {
     "predicate": "InquiryUses",
@@ -1393,7 +1472,8 @@
         "type": "subject",
         "value": "art-002-window-manifest"
       }
-    ]
+    ],
+    "asserted_in": "01a02b44-a00d-7480-8994-cc85e4b91669"
   },
   {
     "predicate": "CorpusConsumed",
@@ -1406,7 +1486,8 @@
         "type": "subject",
         "value": "inq-002"
       }
-    ]
+    ],
+    "asserted_in": "01a02b44-a171-73f0-8d41-c0d0efe975be"
   },
   {
     "predicate": "EvidenceSealed",
@@ -1419,7 +1500,8 @@
         "type": "timestamp",
         "value": "2026-08-22T20:58:32Z"
       }
-    ]
+    ],
+    "asserted_in": "01a02b44-a2d8-78f3-9658-2eb965f23cce"
   },
   {
     "predicate": "SelectionRecorded",
@@ -1436,7 +1518,8 @@
         "type": "timestamp",
         "value": "2026-08-22T21:18:04Z"
       }
-    ]
+    ],
+    "asserted_in": "01a02b56-b472-7402-998c-afd6cc1b95bf"
   },
   {
     "predicate": "Conjecture",
@@ -1457,7 +1540,8 @@
         "type": "timestamp",
         "value": "2026-08-22T21:18:04Z"
       }
-    ]
+    ],
+    "asserted_in": "01a02b56-b5e7-7e92-9c9e-ae6552a8cc6c"
   },
   {
     "predicate": "MechanismAssessment",
@@ -1478,7 +1562,8 @@
         "type": "subject",
         "value": "a6c7f346114bb6d5648bf242fa0ed6a89e978a1d70c1fa9dd2ca69bd5b092479"
       }
-    ]
+    ],
+    "asserted_in": "01a02b56-b759-74b3-af77-5ead744e731f"
   },
   {
     "predicate": "MechanismAssessment",
@@ -1499,7 +1584,8 @@
         "type": "subject",
         "value": "a6c7f346114bb6d5648bf242fa0ed6a89e978a1d70c1fa9dd2ca69bd5b092479"
       }
-    ]
+    ],
+    "asserted_in": "01a02b56-b8d2-7a51-b447-11d08058172b"
   },
   {
     "predicate": "MechanismAssessment",
@@ -1520,7 +1606,8 @@
         "type": "subject",
         "value": "a6c7f346114bb6d5648bf242fa0ed6a89e978a1d70c1fa9dd2ca69bd5b092479"
       }
-    ]
+    ],
+    "asserted_in": "01a02b56-ba4e-7443-abec-5360e09f8b39"
   },
   {
     "predicate": "MechanismAssessment",
@@ -1541,7 +1628,8 @@
         "type": "subject",
         "value": "a6c7f346114bb6d5648bf242fa0ed6a89e978a1d70c1fa9dd2ca69bd5b092479"
       }
-    ]
+    ],
+    "asserted_in": "01a02b56-bbc1-7741-846c-e2703152e79d"
   },
   {
     "predicate": "MechanismAssessment",
@@ -1562,7 +1650,8 @@
         "type": "subject",
         "value": "a6c7f346114bb6d5648bf242fa0ed6a89e978a1d70c1fa9dd2ca69bd5b092479"
       }
-    ]
+    ],
+    "asserted_in": "01a02b56-bd3a-7dd3-9c39-f8f73e61423b"
   },
   {
     "predicate": "MechanismAssessment",
@@ -1583,7 +1672,8 @@
         "type": "subject",
         "value": "a6c7f346114bb6d5648bf242fa0ed6a89e978a1d70c1fa9dd2ca69bd5b092479"
       }
-    ]
+    ],
+    "asserted_in": "01a02b56-beb4-7113-aa4f-7fcd4e0a810a"
   },
   {
     "predicate": "MechanismAssessment",
@@ -1604,7 +1694,8 @@
         "type": "subject",
         "value": "a6c7f346114bb6d5648bf242fa0ed6a89e978a1d70c1fa9dd2ca69bd5b092479"
       }
-    ]
+    ],
+    "asserted_in": "01a02b56-c02d-7c80-b211-8dc36c0444f2"
   },
   {
     "predicate": "EvidenceMetric",
@@ -1629,7 +1720,8 @@
         "type": "decimal",
         "value": "2104752"
       }
-    ]
+    ],
+    "asserted_in": "01a02b56-c1ad-7e83-b7b4-b00174a3b872"
   },
   {
     "predicate": "EvidenceMetric",
@@ -1654,7 +1746,8 @@
         "type": "decimal",
         "value": "497370"
       }
-    ]
+    ],
+    "asserted_in": "01a02b56-c31f-7a42-8022-9fece0d6418b"
   },
   {
     "predicate": "EvidenceMetric",
@@ -1679,7 +1772,8 @@
         "type": "decimal",
         "value": "94330188"
       }
-    ]
+    ],
+    "asserted_in": "01a02b56-c498-7752-90c6-5d0c523daadf"
   },
   {
     "predicate": "EvidenceMetric",
@@ -1704,7 +1798,8 @@
         "type": "decimal",
         "value": "23836304"
       }
-    ]
+    ],
+    "asserted_in": "01a02b56-c602-72f2-b5f7-7f53e44a82f0"
   },
   {
     "predicate": "EvidenceMetric",
@@ -1729,7 +1824,8 @@
         "type": "decimal",
         "value": "476957"
       }
-    ]
+    ],
+    "asserted_in": "01a02b56-c778-7e51-ac85-765fe7de3cb4"
   },
   {
     "predicate": "EvidenceMetric",
@@ -1754,7 +1850,8 @@
         "type": "decimal",
         "value": "20413"
       }
-    ]
+    ],
+    "asserted_in": "01a02b56-c8e3-7021-aa03-4a1ba56fdb95"
   },
   {
     "predicate": "RetentionSpec",
@@ -1771,7 +1868,8 @@
         "type": "subject",
         "value": "raw_candidates"
       }
-    ]
+    ],
+    "asserted_in": "01a02b56-ca4f-7bb3-83f6-6a4a7ce7d247"
   },
   {
     "predicate": "Conclusion",
@@ -1804,7 +1902,8 @@
         "type": "timestamp",
         "value": "2026-08-22T21:18:04Z"
       }
-    ]
+    ],
+    "asserted_in": "01a02b56-cbc6-7670-9a4a-e0ae7e6049f6"
   },
   {
     "predicate": "CurrentConclusion",
@@ -1817,7 +1916,8 @@
         "type": "subject",
         "value": "concl-002-explained"
       }
-    ]
+    ],
+    "asserted_in": "01a02b56-cbc6-7670-9a4a-e0ae7e6049f6"
   },
   {
     "predicate": "ConclusionUsesMetric",
@@ -1830,7 +1930,8 @@
         "type": "subject",
         "value": "met-002-raw-candidates"
       }
-    ]
+    ],
+    "asserted_in": "01a02b56-cd43-74a0-b10f-a869801ce1a8"
   },
   {
     "predicate": "ConclusionUsesMetric",
@@ -1843,7 +1944,8 @@
         "type": "subject",
         "value": "met-002-surviving-candidates"
       }
-    ]
+    ],
+    "asserted_in": "01a02b56-cec2-71a1-828c-16dd951ff8ba"
   },
   {
     "predicate": "ConclusionUsesMetric",
@@ -1856,7 +1958,8 @@
         "type": "subject",
         "value": "met-002-naive-notional-raw-gbp"
       }
-    ]
+    ],
+    "asserted_in": "01a02b56-d049-7a32-8f6a-ddb118bd05ae"
   },
   {
     "predicate": "ConclusionUsesMetric",
@@ -1869,7 +1972,8 @@
         "type": "subject",
         "value": "met-002-naive-notional-surviving-gbp"
       }
-    ]
+    ],
+    "asserted_in": "01a02b56-d1bd-7b51-92aa-52024f9f1f7c"
   },
   {
     "predicate": "ConclusionUsesMetric",
@@ -1882,7 +1986,8 @@
         "type": "subject",
         "value": "met-002-attributed-candidates"
       }
-    ]
+    ],
+    "asserted_in": "01a02b56-d348-72f2-9e90-c7d018b51280"
   },
   {
     "predicate": "ConclusionUsesMetric",
@@ -1895,7 +2000,8 @@
         "type": "subject",
         "value": "met-002-unattributed-candidates"
       }
-    ]
+    ],
+    "asserted_in": "01a02b56-d4bc-7e72-ae02-37d939efec93"
   },
   {
     "predicate": "ResearchCorpus",
@@ -1912,7 +2018,8 @@
         "type": "date",
         "value": "2026-06-30"
       }
-    ]
+    ],
+    "asserted_in": "01a02b78-757c-7793-b19e-844e5292456f"
   },
   {
     "predicate": "Inquiry",
@@ -1933,7 +2040,8 @@
         "type": "timestamp",
         "value": "2026-08-22T23:00:00Z"
       }
-    ]
+    ],
+    "asserted_in": "01a02b78-76de-7a23-b91f-4e31e59abcdb"
   },
   {
     "predicate": "Inquiry",
@@ -1954,7 +2062,8 @@
         "type": "timestamp",
         "value": "2026-08-22T21:56:21Z"
       }
-    ]
+    ],
+    "asserted_in": "01a02b79-c13e-7ed0-b197-3b35c68442df"
   },
   {
     "predicate": "InquiryCorpus",
@@ -1967,7 +2076,8 @@
         "type": "subject",
         "value": "corpus-2026-06"
       }
-    ]
+    ],
+    "asserted_in": "01a02b79-c2b7-7741-a477-489db8212117"
   },
   {
     "predicate": "ProtocolDeclared",
@@ -1984,7 +2094,8 @@
         "type": "timestamp",
         "value": "2026-08-22T21:56:21Z"
       }
-    ]
+    ],
+    "asserted_in": "01a02b79-c434-7292-bf86-b8d82bd70881"
   },
   {
     "predicate": "ProtocolSealed",
@@ -1997,7 +2108,8 @@
         "type": "timestamp",
         "value": "2026-08-22T21:57:30Z"
       }
-    ]
+    ],
+    "asserted_in": "01a02b7a-9c89-7713-9e43-04dda968b479"
   },
   {
     "predicate": "EvidenceArtifact",
@@ -2018,7 +2130,8 @@
         "type": "timestamp",
         "value": "2026-08-22T22:31:15Z"
       }
-    ]
+    ],
+    "asserted_in": "01a02b99-8181-75f1-96a1-755ffc38fbb4"
   },
   {
     "predicate": "InquiryUses",
@@ -2031,7 +2144,8 @@
         "type": "subject",
         "value": "art-004-day-manifest"
       }
-    ]
+    ],
+    "asserted_in": "01a02b99-8306-7031-8750-86951b7d6fa3"
   },
   {
     "predicate": "EvidenceSealed",
@@ -2044,7 +2158,8 @@
         "type": "timestamp",
         "value": "2026-08-22T22:31:15Z"
       }
-    ]
+    ],
+    "asserted_in": "01a02b99-8480-7111-82da-0ddd80acb968"
   },
   {
     "predicate": "SelectionRecorded",
@@ -2061,7 +2176,8 @@
         "type": "timestamp",
         "value": "2026-08-22T22:31:15Z"
       }
-    ]
+    ],
+    "asserted_in": "01a02b99-85ff-7a21-8aa6-43f267a817b8"
   },
   {
     "predicate": "Conjecture",
@@ -2082,7 +2198,8 @@
         "type": "timestamp",
         "value": "2026-08-22T22:31:15Z"
       }
-    ]
+    ],
+    "asserted_in": "01a02b99-8770-7491-9bdc-49417cd3ddc0"
   },
   {
     "predicate": "MechanismAssessment",
@@ -2103,7 +2220,8 @@
         "type": "subject",
         "value": "79fd027f771cd2071ab9572fe1ccfc78ffd4be112acf531912fc02197800fc19"
       }
-    ]
+    ],
+    "asserted_in": "01a02b99-88f3-7800-98a4-d54b6ebc92f2"
   },
   {
     "predicate": "MechanismAssessment",
@@ -2124,7 +2242,8 @@
         "type": "subject",
         "value": "79fd027f771cd2071ab9572fe1ccfc78ffd4be112acf531912fc02197800fc19"
       }
-    ]
+    ],
+    "asserted_in": "01a02b99-8a76-7251-8611-30d17164e460"
   },
   {
     "predicate": "MechanismAssessment",
@@ -2145,7 +2264,8 @@
         "type": "subject",
         "value": "79fd027f771cd2071ab9572fe1ccfc78ffd4be112acf531912fc02197800fc19"
       }
-    ]
+    ],
+    "asserted_in": "01a02b99-8bee-7a43-8105-6dcc13b7d666"
   },
   {
     "predicate": "MechanismAssessment",
@@ -2166,7 +2286,8 @@
         "type": "subject",
         "value": "79fd027f771cd2071ab9572fe1ccfc78ffd4be112acf531912fc02197800fc19"
       }
-    ]
+    ],
+    "asserted_in": "01a02b99-8d64-7a90-96d9-bd6b754d0ed2"
   },
   {
     "predicate": "MechanismAssessment",
@@ -2187,7 +2308,8 @@
         "type": "subject",
         "value": "79fd027f771cd2071ab9572fe1ccfc78ffd4be112acf531912fc02197800fc19"
       }
-    ]
+    ],
+    "asserted_in": "01a02b99-8ee9-7980-b680-38253a5a0a38"
   },
   {
     "predicate": "MechanismAssessment",
@@ -2208,7 +2330,8 @@
         "type": "subject",
         "value": "79fd027f771cd2071ab9572fe1ccfc78ffd4be112acf531912fc02197800fc19"
       }
-    ]
+    ],
+    "asserted_in": "01a02b99-905f-7662-9ead-e4159f516c44"
   },
   {
     "predicate": "MechanismAssessment",
@@ -2229,7 +2352,8 @@
         "type": "subject",
         "value": "79fd027f771cd2071ab9572fe1ccfc78ffd4be112acf531912fc02197800fc19"
       }
-    ]
+    ],
+    "asserted_in": "01a02b99-91dc-7de0-bde7-c134b094cc06"
   },
   {
     "predicate": "MechanismAssessment",
@@ -2250,7 +2374,8 @@
         "type": "subject",
         "value": "79fd027f771cd2071ab9572fe1ccfc78ffd4be112acf531912fc02197800fc19"
       }
-    ]
+    ],
+    "asserted_in": "01a02b99-9363-7b00-b59a-f71875301ced"
   },
   {
     "predicate": "MechanismAssessment",
@@ -2271,7 +2396,8 @@
         "type": "subject",
         "value": "79fd027f771cd2071ab9572fe1ccfc78ffd4be112acf531912fc02197800fc19"
       }
-    ]
+    ],
+    "asserted_in": "01a02b99-94eb-7c91-8e49-16e162a73903"
   },
   {
     "predicate": "EvidenceMetric",
@@ -2296,7 +2422,8 @@
         "type": "decimal",
         "value": "1176150"
       }
-    ]
+    ],
+    "asserted_in": "01a02b99-9661-7102-adb6-03d5b1edccef"
   },
   {
     "predicate": "EvidenceMetric",
@@ -2321,7 +2448,8 @@
         "type": "decimal",
         "value": "1277241"
       }
-    ]
+    ],
+    "asserted_in": "01a02b99-97dc-7df2-81bc-f3945fb1a855"
   },
   {
     "predicate": "EvidenceMetric",
@@ -2346,7 +2474,8 @@
         "type": "decimal",
         "value": "1173"
       }
-    ]
+    ],
+    "asserted_in": "01a02b99-9955-7bf0-b09b-4f965c2dc284"
   },
   {
     "predicate": "EvidenceMetric",
@@ -2371,7 +2500,8 @@
         "type": "decimal",
         "value": "1085"
       }
-    ]
+    ],
+    "asserted_in": "01a02b99-9acc-7c20-9327-ebbe27db3fb6"
   },
   {
     "predicate": "EvidenceMetric",
@@ -2396,7 +2526,8 @@
         "type": "decimal",
         "value": "0"
       }
-    ]
+    ],
+    "asserted_in": "01a02b99-9c41-78f3-9b9e-173d096a153a"
   },
   {
     "predicate": "EvidenceMetric",
@@ -2421,7 +2552,8 @@
         "type": "decimal",
         "value": "113"
       }
-    ]
+    ],
+    "asserted_in": "01a02b99-9dc6-7323-8e99-26babe9a9778"
   },
   {
     "predicate": "EvidenceMetric",
@@ -2446,7 +2578,8 @@
         "type": "decimal",
         "value": "88"
       }
-    ]
+    ],
+    "asserted_in": "01a02b99-9f3d-7332-8490-71fd0df8769e"
   },
   {
     "predicate": "EvidenceMetric",
@@ -2471,7 +2604,8 @@
         "type": "decimal",
         "value": "1250"
       }
-    ]
+    ],
+    "asserted_in": "01a02b99-a0ba-7501-a647-b3bf043b9078"
   },
   {
     "predicate": "Conclusion",
@@ -2504,7 +2638,8 @@
         "type": "timestamp",
         "value": "2026-08-22T22:31:15Z"
       }
-    ]
+    ],
+    "asserted_in": "01a02b99-a23b-7542-99e0-40a110eb4cd4"
   },
   {
     "predicate": "CurrentConclusion",
@@ -2517,7 +2652,8 @@
         "type": "subject",
         "value": "concl-004-reconstructed"
       }
-    ]
+    ],
+    "asserted_in": "01a02b99-a23b-7542-99e0-40a110eb4cd4"
   },
   {
     "predicate": "ConclusionUsesMetric",
@@ -2530,7 +2666,8 @@
         "type": "subject",
         "value": "met-004-constraints-gbp"
       }
-    ]
+    ],
+    "asserted_in": "01a02b99-a3bb-7270-be49-056a985df50a"
   },
   {
     "predicate": "ConclusionUsesMetric",
@@ -2543,7 +2680,8 @@
         "type": "subject",
         "value": "met-004-bsad-gbp"
       }
-    ]
+    ],
+    "asserted_in": "01a02b99-a548-71f2-b83a-0766d4deacea"
   },
   {
     "predicate": "ConclusionUsesMetric",
@@ -2556,7 +2694,8 @@
         "type": "subject",
         "value": "met-004-bsad-mwh"
       }
-    ]
+    ],
+    "asserted_in": "01a02b99-a6d3-7203-b70f-9bfe41133a3e"
   },
   {
     "predicate": "ConclusionUsesMetric",
@@ -2569,7 +2708,8 @@
         "type": "subject",
         "value": "met-004-bid-mwh"
       }
-    ]
+    ],
+    "asserted_in": "01a02b99-a857-7631-a62d-ccd7332a17e1"
   },
   {
     "predicate": "ConclusionUsesMetric",
@@ -2582,7 +2722,8 @@
         "type": "subject",
         "value": "met-004-offer-mwh"
       }
-    ]
+    ],
+    "asserted_in": "01a02b99-a9e3-7a61-8ce6-655b64c9c9f6"
   },
   {
     "predicate": "ConclusionUsesMetric",
@@ -2595,7 +2736,8 @@
         "type": "subject",
         "value": "met-004-units"
       }
-    ]
+    ],
+    "asserted_in": "01a02b99-ab6a-7303-a53d-a5e376082b83"
   },
   {
     "predicate": "ConclusionUsesMetric",
@@ -2608,7 +2750,8 @@
         "type": "subject",
         "value": "met-004-ccgt-headroom-mw"
       }
-    ]
+    ],
+    "asserted_in": "01a02b99-aced-7350-8111-cbb50c13b594"
   },
   {
     "predicate": "ConclusionUsesMetric",
@@ -2621,7 +2764,8 @@
         "type": "subject",
         "value": "met-004-margin-excluded-mw"
       }
-    ]
+    ],
+    "asserted_in": "01a02b99-ae6c-7401-b3bd-8cc0f47539eb"
   },
   {
     "predicate": "CorpusConsumed",
@@ -2634,7 +2778,8 @@
         "type": "subject",
         "value": "inq-004"
       }
-    ]
+    ],
+    "asserted_in": "01a02d63-171f-7c32-8d16-3e8c35b9f014"
   },
   {
     "predicate": "ResearchCorpus",
@@ -2651,7 +2796,8 @@
         "type": "date",
         "value": "2026-06-25"
       }
-    ]
+    ],
+    "asserted_in": "01a02d63-1890-7943-a721-33c0885c35c2"
   },
   {
     "predicate": "DeclarationSealAuthority",
@@ -2660,7 +2806,8 @@
         "type": "subject",
         "value": "jordan_dimov"
       }
-    ]
+    ],
+    "asserted_in": "01a0da98-5ab4-772f-ae1b-e79c2a6e63fe"
   },
   {
     "predicate": "Declaration",
@@ -2685,7 +2832,8 @@
         "type": "timestamp",
         "value": "2026-08-23T07:09:49Z"
       }
-    ]
+    ],
+    "asserted_in": "01a0da98-abeb-72b9-9782-9f29754c7a94"
   },
   {
     "predicate": "Declaration",
@@ -2710,7 +2858,8 @@
         "type": "timestamp",
         "value": "2026-08-23T07:51:55Z"
       }
-    ]
+    ],
+    "asserted_in": "01a0da98-b27b-76eb-af9a-f2d051712a28"
   },
   {
     "predicate": "Declaration",
@@ -2735,7 +2884,8 @@
         "type": "timestamp",
         "value": "2026-08-26T09:40:57Z"
       }
-    ]
+    ],
+    "asserted_in": "01a0da98-b856-72e7-85f0-c1a51db103e7"
   },
   {
     "predicate": "Declaration",
@@ -2760,7 +2910,8 @@
         "type": "timestamp",
         "value": "2026-08-26T09:40:57Z"
       }
-    ]
+    ],
+    "asserted_in": "01a0da98-be10-74ba-8775-8935ddeb0233"
   },
   {
     "predicate": "Declaration",
@@ -2785,7 +2936,8 @@
         "type": "timestamp",
         "value": "2026-08-23T08:34:09Z"
       }
-    ]
+    ],
+    "asserted_in": "01a0da98-c40a-72cc-97f5-1ce0b000ff91"
   },
   {
     "predicate": "Declaration",
@@ -2810,7 +2962,8 @@
         "type": "timestamp",
         "value": "2026-08-26T10:00:06Z"
       }
-    ]
+    ],
+    "asserted_in": "01a0da98-ca88-7131-aec0-99a4d552782b"
   },
   {
     "predicate": "Declaration",
@@ -2835,7 +2988,8 @@
         "type": "timestamp",
         "value": "2026-08-26T07:08:15Z"
       }
-    ]
+    ],
+    "asserted_in": "01a0da98-d0b3-776b-af7a-ca3c9df5252f"
   },
   {
     "predicate": "Declaration",
@@ -2860,7 +3014,8 @@
         "type": "timestamp",
         "value": "2026-08-26T11:08:45Z"
       }
-    ]
+    ],
+    "asserted_in": "01a0da98-d687-767f-8831-b775b14a60bf"
   },
   {
     "predicate": "Declaration",
@@ -2885,7 +3040,8 @@
         "type": "timestamp",
         "value": "2026-08-26T11:44:46Z"
       }
-    ]
+    ],
+    "asserted_in": "01a0da98-dc81-759e-a0a9-a6e43360ed77"
   },
   {
     "predicate": "DeclarationSealed",
@@ -2898,7 +3054,8 @@
         "type": "timestamp",
         "value": "2026-09-25T22:06:58Z"
       }
-    ]
+    ],
+    "asserted_in": "01a0da9b-7ce6-7307-b635-fb63961e9b0e"
   },
   {
     "predicate": "DeclarationSealed",
@@ -2911,7 +3068,8 @@
         "type": "timestamp",
         "value": "2026-09-25T22:06:59Z"
       }
-    ]
+    ],
+    "asserted_in": "01a0da9b-82fc-716f-a3c0-915781d89d7a"
   },
   {
     "predicate": "DeclarationSealed",
@@ -2924,7 +3082,8 @@
         "type": "timestamp",
         "value": "2026-09-25T22:07:01Z"
       }
-    ]
+    ],
+    "asserted_in": "01a0da9b-88be-7660-8d86-526980fdad32"
   },
   {
     "predicate": "DeclarationSealed",
@@ -2937,7 +3096,8 @@
         "type": "timestamp",
         "value": "2026-09-25T22:07:02Z"
       }
-    ]
+    ],
+    "asserted_in": "01a0da9b-8eaa-7279-8f2b-e38c730ba635"
   },
   {
     "predicate": "DeclarationSealed",
@@ -2950,7 +3110,8 @@
         "type": "timestamp",
         "value": "2026-09-25T22:07:04Z"
       }
-    ]
+    ],
+    "asserted_in": "01a0da9b-947a-77ce-8ef3-8ef605675977"
   },
   {
     "predicate": "DeclarationSealed",
@@ -2963,7 +3124,8 @@
         "type": "timestamp",
         "value": "2026-09-25T22:07:05Z"
       }
-    ]
+    ],
+    "asserted_in": "01a0da9b-9a04-75ef-a049-7188f8f4a940"
   },
   {
     "predicate": "DeclarationSealed",
@@ -2976,7 +3138,8 @@
         "type": "timestamp",
         "value": "2026-09-25T22:07:06Z"
       }
-    ]
+    ],
+    "asserted_in": "01a0da9b-9f9b-74cb-9516-2cc0e23bcbf0"
   },
   {
     "predicate": "DeclarationSealed",
@@ -2989,7 +3152,8 @@
         "type": "timestamp",
         "value": "2026-09-25T22:07:08Z"
       }
-    ]
+    ],
+    "asserted_in": "01a0da9b-a57d-70ab-84d7-d80d1b6c6852"
   },
   {
     "predicate": "DeclarationSealed",
@@ -3002,7 +3166,8 @@
         "type": "timestamp",
         "value": "2026-09-25T22:07:09Z"
       }
-    ]
+    ],
+    "asserted_in": "01a0da9b-ab40-7365-8678-2f083f78ba1c"
   },
   {
     "predicate": "DeclarationSupersedes",
@@ -3015,7 +3180,8 @@
         "type": "subject",
         "value": "decl-generator-v3"
       }
-    ]
+    ],
+    "asserted_in": "01a0da9c-0266-76cf-a52a-84bc336fd557"
   },
   {
     "predicate": "Verdict",
@@ -3052,7 +3218,8 @@
         "type": "timestamp",
         "value": "2026-08-23T13:11:04Z"
       }
-    ]
+    ],
+    "asserted_in": "01a0da9c-082d-7266-aac5-b63aa367aba0"
   },
   {
     "predicate": "Verdict",
@@ -3089,7 +3256,8 @@
         "type": "timestamp",
         "value": "2026-08-23T13:17:17Z"
       }
-    ]
+    ],
+    "asserted_in": "01a0da9c-0e2c-7570-8ba4-620d5445e0f7"
   },
   {
     "predicate": "Verdict",
@@ -3126,7 +3294,8 @@
         "type": "timestamp",
         "value": "2026-08-23T13:27:52Z"
       }
-    ]
+    ],
+    "asserted_in": "01a0da9c-142e-70a3-a44e-f601ae35d55e"
   },
   {
     "predicate": "Verdict",
@@ -3163,7 +3332,8 @@
         "type": "timestamp",
         "value": "2026-08-23T14:40:21Z"
       }
-    ]
+    ],
+    "asserted_in": "01a0da9c-19ef-709e-86e1-d0bd20aa55bc"
   },
   {
     "predicate": "Verdict",
@@ -3200,7 +3370,8 @@
         "type": "timestamp",
         "value": "2026-08-26T08:26:58Z"
       }
-    ]
+    ],
+    "asserted_in": "01a0da9c-1fa2-7415-b16e-100bbc6f4780"
   },
   {
     "predicate": "Verdict",
@@ -3237,7 +3408,8 @@
         "type": "timestamp",
         "value": "2026-08-23T14:49:18Z"
       }
-    ]
+    ],
+    "asserted_in": "01a0da9c-253a-728d-b501-1803a46ef38b"
   },
   {
     "predicate": "Verdict",
@@ -3274,7 +3446,8 @@
         "type": "timestamp",
         "value": "2026-08-26T08:26:58Z"
       }
-    ]
+    ],
+    "asserted_in": "01a0da9c-2ad6-7435-ad36-3dc288e91c7a"
   },
   {
     "predicate": "Verdict",
@@ -3311,7 +3484,8 @@
         "type": "timestamp",
         "value": "2026-08-26T08:26:58Z"
       }
-    ]
+    ],
+    "asserted_in": "01a0da9c-3099-774e-b0ec-8d601cb4ffbc"
   },
   {
     "predicate": "Verdict",
@@ -3348,7 +3522,8 @@
         "type": "timestamp",
         "value": "2026-08-26T08:26:58Z"
       }
-    ]
+    ],
+    "asserted_in": "01a0da9c-3653-74b6-95dd-d34c4d290f7f"
   },
   {
     "predicate": "Verdict",
@@ -3385,7 +3560,8 @@
         "type": "timestamp",
         "value": "2026-08-26T08:26:58Z"
       }
-    ]
+    ],
+    "asserted_in": "01a0da9c-3c09-75fb-9fae-eb96be80743e"
   },
   {
     "predicate": "Verdict",
@@ -3422,7 +3598,8 @@
         "type": "timestamp",
         "value": "2026-08-26T10:00:06Z"
       }
-    ]
+    ],
+    "asserted_in": "01a0da9c-41b6-74fc-b2ee-6d90faf07a50"
   },
   {
     "predicate": "Verdict",
@@ -3459,7 +3636,8 @@
         "type": "timestamp",
         "value": "2026-08-26T10:00:06Z"
       }
-    ]
+    ],
+    "asserted_in": "01a0da9c-4743-7244-9f0f-0e00dbaf6060"
   },
   {
     "predicate": "Verdict",
@@ -3496,7 +3674,8 @@
         "type": "timestamp",
         "value": "2026-08-26T10:00:06Z"
       }
-    ]
+    ],
+    "asserted_in": "01a0da9c-4ccc-76a5-b57b-5238fc5f8db6"
   },
   {
     "predicate": "Verdict",
@@ -3533,7 +3712,8 @@
         "type": "timestamp",
         "value": "2026-08-26T10:00:06Z"
       }
-    ]
+    ],
+    "asserted_in": "01a0da9c-5291-75ce-a5ef-b3a23788e9eb"
   },
   {
     "predicate": "Verdict",
@@ -3570,7 +3750,8 @@
         "type": "timestamp",
         "value": "2026-08-26T10:00:06Z"
       }
-    ]
+    ],
+    "asserted_in": "01a0da9c-5834-70f4-8ee2-8d73ad0b35d4"
   },
   {
     "predicate": "Verdict",
@@ -3607,7 +3788,8 @@
         "type": "timestamp",
         "value": "2026-08-26T10:00:06Z"
       }
-    ]
+    ],
+    "asserted_in": "01a0da9c-5dcf-73c7-a01c-795c03349400"
   },
   {
     "predicate": "Verdict",
@@ -3644,7 +3826,8 @@
         "type": "timestamp",
         "value": "2026-08-26T10:00:06Z"
       }
-    ]
+    ],
+    "asserted_in": "01a0da9c-637f-730e-a760-c33a816dda1f"
   },
   {
     "predicate": "Verdict",
@@ -3681,7 +3864,8 @@
         "type": "timestamp",
         "value": "2026-08-26T10:00:06Z"
       }
-    ]
+    ],
+    "asserted_in": "01a0da9c-692a-7471-af49-7bffb964ca1d"
   },
   {
     "predicate": "Verdict",
@@ -3718,7 +3902,8 @@
         "type": "timestamp",
         "value": "2026-08-26T10:23:57Z"
       }
-    ]
+    ],
+    "asserted_in": "01a0da9c-6f08-737f-945b-0ec5a62e7929"
   },
   {
     "predicate": "Verdict",
@@ -3755,7 +3940,8 @@
         "type": "timestamp",
         "value": "2026-08-26T10:23:57Z"
       }
-    ]
+    ],
+    "asserted_in": "01a0da9c-7474-76e9-8a72-f52c9e8ed3bd"
   },
   {
     "predicate": "Verdict",
@@ -3792,7 +3978,8 @@
         "type": "timestamp",
         "value": "2026-08-26T10:23:57Z"
       }
-    ]
+    ],
+    "asserted_in": "01a0da9c-7a20-720a-9244-25811696a18e"
   },
   {
     "predicate": "Verdict",
@@ -3829,7 +4016,8 @@
         "type": "timestamp",
         "value": "2026-08-26T10:23:57Z"
       }
-    ]
+    ],
+    "asserted_in": "01a0da9c-7fee-747a-81ba-66e53da7f5a2"
   },
   {
     "predicate": "Verdict",
@@ -3866,7 +4054,8 @@
         "type": "timestamp",
         "value": "2026-08-26T10:23:57Z"
       }
-    ]
+    ],
+    "asserted_in": "01a0da9c-85aa-73ae-88a4-c252a1f31238"
   },
   {
     "predicate": "Verdict",
@@ -3903,7 +4092,8 @@
         "type": "timestamp",
         "value": "2026-08-26T10:23:57Z"
       }
-    ]
+    ],
+    "asserted_in": "01a0da9c-8b72-7370-9a5d-31e3149230e4"
   },
   {
     "predicate": "Verdict",
@@ -3940,7 +4130,8 @@
         "type": "timestamp",
         "value": "2026-08-26T10:23:57Z"
       }
-    ]
+    ],
+    "asserted_in": "01a0da9c-90fc-7319-a58b-2496cee5ece6"
   },
   {
     "predicate": "Verdict",
@@ -3977,7 +4168,8 @@
         "type": "timestamp",
         "value": "2026-08-26T10:23:57Z"
       }
-    ]
+    ],
+    "asserted_in": "01a0da9c-9650-7785-b8d9-186f31791f84"
   },
   {
     "predicate": "Verdict",
@@ -4014,7 +4206,8 @@
         "type": "timestamp",
         "value": "2026-08-26T10:23:57Z"
       }
-    ]
+    ],
+    "asserted_in": "01a0da9c-9b49-7575-9d25-9fbdf8813a2d"
   },
   {
     "predicate": "Verdict",
@@ -4051,7 +4244,8 @@
         "type": "timestamp",
         "value": "2026-08-26T10:23:57Z"
       }
-    ]
+    ],
+    "asserted_in": "01a0da9c-a073-73d4-9b8f-4dc11269f2e7"
   },
   {
     "predicate": "Verdict",
@@ -4088,7 +4282,8 @@
         "type": "timestamp",
         "value": "2026-08-26T10:51:14Z"
       }
-    ]
+    ],
+    "asserted_in": "01a0da9c-a5b7-70d5-a925-22f40ea7006e"
   },
   {
     "predicate": "Verdict",
@@ -4125,7 +4320,8 @@
         "type": "timestamp",
         "value": "2026-08-26T10:51:14Z"
       }
-    ]
+    ],
+    "asserted_in": "01a0da9c-aad8-7008-911a-6474e3248524"
   },
   {
     "predicate": "Verdict",
@@ -4162,7 +4358,8 @@
         "type": "timestamp",
         "value": "2026-08-26T10:51:14Z"
       }
-    ]
+    ],
+    "asserted_in": "01a0da9c-b00b-7410-a761-0d34b8b54d9a"
   },
   {
     "predicate": "Verdict",
@@ -4199,7 +4396,8 @@
         "type": "timestamp",
         "value": "2026-08-26T10:51:14Z"
       }
-    ]
+    ],
+    "asserted_in": "01a0da9c-b51f-72e6-8852-c97c93d5c64b"
   },
   {
     "predicate": "Verdict",
@@ -4236,7 +4434,8 @@
         "type": "timestamp",
         "value": "2026-08-26T10:51:14Z"
       }
-    ]
+    ],
+    "asserted_in": "01a0da9c-ba52-7577-8bef-f00d5a533601"
   },
   {
     "predicate": "Verdict",
@@ -4273,7 +4472,8 @@
         "type": "timestamp",
         "value": "2026-08-26T10:51:14Z"
       }
-    ]
+    ],
+    "asserted_in": "01a0da9c-bfb3-70ac-ade0-b0f5528df5b7"
   },
   {
     "predicate": "Verdict",
@@ -4310,7 +4510,8 @@
         "type": "timestamp",
         "value": "2026-08-26T10:51:14Z"
       }
-    ]
+    ],
+    "asserted_in": "01a0da9c-c4e4-7073-bb96-8557628e7252"
   },
   {
     "predicate": "Verdict",
@@ -4347,7 +4548,8 @@
         "type": "timestamp",
         "value": "2026-08-26T10:51:14Z"
       }
-    ]
+    ],
+    "asserted_in": "01a0da9c-ca1b-737c-a04a-a35946045cd6"
   },
   {
     "predicate": "Verdict",
@@ -4384,7 +4586,8 @@
         "type": "timestamp",
         "value": "2026-08-26T10:51:14Z"
       }
-    ]
+    ],
+    "asserted_in": "01a0da9c-cf86-7510-ba4b-2ac32075d906"
   },
   {
     "predicate": "Verdict",
@@ -4421,7 +4624,8 @@
         "type": "timestamp",
         "value": "2026-08-26T10:51:14Z"
       }
-    ]
+    ],
+    "asserted_in": "01a0da9c-d569-76ca-b2ce-c6f417501fe6"
   },
   {
     "predicate": "Verdict",
@@ -4458,7 +4662,8 @@
         "type": "timestamp",
         "value": "2026-08-26T10:51:14Z"
       }
-    ]
+    ],
+    "asserted_in": "01a0da9c-db23-76d7-ab7d-12f26cbb890a"
   },
   {
     "predicate": "Verdict",
@@ -4495,7 +4700,8 @@
         "type": "timestamp",
         "value": "2026-08-26T10:51:14Z"
       }
-    ]
+    ],
+    "asserted_in": "01a0da9c-e05d-731f-a421-dab99a0652e9"
   },
   {
     "predicate": "Verdict",
@@ -4532,7 +4738,8 @@
         "type": "timestamp",
         "value": "2026-08-26T11:17:38Z"
       }
-    ]
+    ],
+    "asserted_in": "01a0da9c-e5a5-70c5-a8fd-6f2519f384c4"
   },
   {
     "predicate": "Verdict",
@@ -4569,7 +4776,8 @@
         "type": "timestamp",
         "value": "2026-08-26T07:30:45Z"
       }
-    ]
+    ],
+    "asserted_in": "01a0da9c-eb1c-77c9-b428-ab8e34fbb453"
   },
   {
     "predicate": "Verdict",
@@ -4606,7 +4814,8 @@
         "type": "timestamp",
         "value": "2026-08-26T07:30:45Z"
       }
-    ]
+    ],
+    "asserted_in": "01a0da9c-f07e-7454-ae0e-385e78184242"
   },
   {
     "predicate": "Verdict",
@@ -4643,7 +4852,8 @@
         "type": "timestamp",
         "value": "2026-08-26T12:31:19Z"
       }
-    ]
+    ],
+    "asserted_in": "01a0da9c-f630-772c-ae44-5e717df18058"
   },
   {
     "predicate": "Verdict",
@@ -4680,7 +4890,8 @@
         "type": "timestamp",
         "value": "2026-08-26T12:31:19Z"
       }
-    ]
+    ],
+    "asserted_in": "01a0da9c-fbc1-771e-9dc1-9b66acccc9a0"
   },
   {
     "predicate": "Verdict",
@@ -4717,7 +4928,8 @@
         "type": "timestamp",
         "value": "2026-08-26T12:31:19Z"
       }
-    ]
+    ],
+    "asserted_in": "01a0da9d-0101-71d5-a2b9-b9775e334db4"
   },
   {
     "predicate": "Watch",
@@ -4742,7 +4954,8 @@
         "type": "date",
         "value": "2027-02-01"
       }
-    ]
+    ],
+    "asserted_in": "01a0da9d-064c-73a6-8161-da5101cba6b2"
   },
   {
     "predicate": "Watch",
@@ -4767,7 +4980,8 @@
         "type": "date",
         "value": "2026-10-31"
       }
-    ]
+    ],
+    "asserted_in": "01a0da9d-0b57-72c7-9fb6-207654ce7529"
   },
   {
     "predicate": "Watch",
@@ -4792,7 +5006,8 @@
         "type": "date",
         "value": "2026-09-30"
       }
-    ]
+    ],
+    "asserted_in": "01a0da9d-10c2-74a3-90ff-4f30f204c282"
   },
   {
     "predicate": "Watch",
@@ -4817,7 +5032,8 @@
         "type": "date",
         "value": "2027-04-30"
       }
-    ]
+    ],
+    "asserted_in": "01a0da9d-1623-72d9-accf-ba5fde6ca28d"
   },
   {
     "predicate": "Watch",
@@ -4842,7 +5058,8 @@
         "type": "date",
         "value": "2027-06-30"
       }
-    ]
+    ],
+    "asserted_in": "01a0da9d-1b62-7776-8ede-93f777a7465b"
   },
   {
     "predicate": "Watch",
@@ -4867,7 +5084,8 @@
         "type": "date",
         "value": "2026-12-31"
       }
-    ]
+    ],
+    "asserted_in": "01a0da9d-211f-755c-9401-7ecaf3ce8342"
   },
   {
     "predicate": "Watch",
@@ -4892,7 +5110,8 @@
         "type": "date",
         "value": "2026-11-24"
       }
-    ]
+    ],
+    "asserted_in": "01a0da9d-270b-7698-8c45-1a4d646c446e"
   },
   {
     "predicate": "Watch",
@@ -4917,7 +5136,8 @@
         "type": "date",
         "value": "2027-08-26"
       }
-    ]
+    ],
+    "asserted_in": "01a0da9d-2cbf-70ef-bce1-6018756fac33"
   },
   {
     "predicate": "Watch",
@@ -4942,7 +5162,8 @@
         "type": "date",
         "value": "2027-08-26"
       }
-    ]
+    ],
+    "asserted_in": "01a0da9d-323c-73e2-a174-f7f48622a65b"
   },
   {
     "predicate": "Watch",
@@ -4967,7 +5188,8 @@
         "type": "date",
         "value": "2027-02-26"
       }
-    ]
+    ],
+    "asserted_in": "01a0da9d-378e-74ba-8f08-a9f7f3680463"
   },
   {
     "predicate": "WatchReading",
@@ -4988,7 +5210,8 @@
         "type": "subject",
         "value": "unchanged"
       }
-    ]
+    ],
+    "asserted_in": "01a0da9d-3cad-76cb-8aee-0a6e6532dade"
   },
   {
     "predicate": "ReopenTrigger",
@@ -5005,7 +5228,8 @@
         "type": "subject",
         "value": "acquisition or JV of a Bulgarian development site >= 50 MW with a named buyer"
       }
-    ]
+    ],
+    "asserted_in": "01a0da9d-420c-77f1-ac14-52f16a5aede7"
   },
   {
     "predicate": "ReopenTrigger",
@@ -5022,7 +5246,8 @@
         "type": "subject",
         "value": "binding hyperscaler/operator capacity agreement for a Bulgarian site"
       }
-    ]
+    ],
+    "asserted_in": "01a0da9d-4799-777c-8c13-3fe363caccb5"
   },
   {
     "predicate": "ReopenTrigger",
@@ -5039,7 +5264,8 @@
         "type": "subject",
         "value": "disclosed project financing or FID for an announced Bulgarian mega-project"
       }
-    ]
+    ],
+    "asserted_in": "01a0da9d-4d5a-7401-a3ea-cf59bdbbf61f"
   },
   {
     "predicate": "ReopenTrigger",
@@ -5056,7 +5282,8 @@
         "type": "subject",
         "value": "several opinion-stage projects progressing through PUP/OVOS/building permit into construction"
       }
-    ]
+    ],
+    "asserted_in": "01a0da9d-52c8-74e7-af48-0441f7068a36"
   },
   {
     "predicate": "ReopenTrigger",
@@ -5073,7 +5300,8 @@
         "type": "subject",
         "value": "evidence of strategic buyers actively bidding for partially developed positions"
       }
-    ]
+    ],
+    "asserted_in": "01a0da9d-57e0-712e-aed0-9e76a34a817a"
   },
   {
     "predicate": "EvidenceClaim",
@@ -5102,7 +5330,8 @@
         "type": "date",
         "value": "2023-11-13"
       }
-    ]
+    ],
+    "asserted_in": "01a0da9d-5cf4-7516-8a92-3bb3b7c3ba25"
   },
   {
     "predicate": "EvidenceClaim",
@@ -5131,7 +5360,8 @@
         "type": "date",
         "value": "2026-07-13"
       }
-    ]
+    ],
+    "asserted_in": "01a0da9d-6262-7076-80d4-c8a987be4829"
   },
   {
     "predicate": "Watch",
@@ -5156,7 +5386,8 @@
         "type": "date",
         "value": "2026-10-13"
       }
-    ]
+    ],
+    "asserted_in": "01a0da9d-68cc-760f-935f-0c4fcdbba175"
   },
   {
     "predicate": "Watch",
@@ -5181,7 +5412,8 @@
         "type": "date",
         "value": "2026-10-15"
       }
-    ]
+    ],
+    "asserted_in": "01a0da9d-6e96-7287-beeb-a5269a3940ab"
   },
   {
     "predicate": "Watch",
@@ -5206,7 +5438,8 @@
         "type": "date",
         "value": "2026-10-03"
       }
-    ]
+    ],
+    "asserted_in": "01a0da9d-73f5-70cf-ab25-b388274a73a5"
   },
   {
     "predicate": "Watch",
@@ -5231,7 +5464,8 @@
         "type": "date",
         "value": "2026-12-31"
       }
-    ]
+    ],
+    "asserted_in": "01a0da9d-7958-7636-bc0a-223b50a53cca"
   },
   {
     "predicate": "Watch",
@@ -5256,7 +5490,8 @@
         "type": "date",
         "value": "2027-03-01"
       }
-    ]
+    ],
+    "asserted_in": "01a0da9d-7ed6-7078-9af5-be22c239aed2"
   },
   {
     "predicate": "Watch",
@@ -5281,7 +5516,8 @@
         "type": "date",
         "value": "2027-06-01"
       }
-    ]
+    ],
+    "asserted_in": "01a0da9d-842e-71c7-9790-dc817c9cff30"
   },
   {
     "predicate": "Watch",
@@ -5306,7 +5542,8 @@
         "type": "date",
         "value": "2026-10-28"
       }
-    ]
+    ],
+    "asserted_in": "01a0da9d-8962-737f-9f87-0b8f491c4796"
   },
   {
     "predicate": "Watch",
@@ -5331,7 +5568,8 @@
         "type": "date",
         "value": "2026-11-30"
       }
-    ]
+    ],
+    "asserted_in": "01a0da9d-8ecf-7187-b899-610b75322519"
   },
   {
     "predicate": "Watch",
@@ -5356,7 +5594,8 @@
         "type": "date",
         "value": "2027-05-07"
       }
-    ]
+    ],
+    "asserted_in": "01a0da9d-94f4-7068-a523-8ec3879c2688"
   },
   {
     "predicate": "Watch",
@@ -5381,7 +5620,8 @@
         "type": "date",
         "value": "2027-07-02"
       }
-    ]
+    ],
+    "asserted_in": "01a0da9d-9b14-74ce-ba22-f806500aba33"
   },
   {
     "predicate": "WatchReading",
@@ -5402,7 +5642,8 @@
         "type": "subject",
         "value": "unchanged"
       }
-    ]
+    ],
+    "asserted_in": "01a0f6c7-c648-717c-a8f1-f5a4b9546f63"
   },
   {
     "predicate": "WatchReading",
@@ -5423,6 +5664,7 @@
         "type": "subject",
         "value": "resolved"
       }
-    ]
+    ],
+    "asserted_in": "01a11a81-6bf2-756e-825f-5610e8ab2edd"
   }
 ]

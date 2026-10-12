@@ -15,6 +15,9 @@
 set -euo pipefail
 cd "$(dirname "$0")/.."
 export PATH="${HOME}/.local/bin:${PATH}"
+# MORPHOLOG_BIN, when set, names the binary (as it does for the generated
+# client), so a version installed beside the PATH one can be run alone.
+morpholog() { command "${MORPHOLOG_BIN:-morpholog}" "$@"; }
 
 REPLAY_URL="${REPLAY_DATABASE_URL:-postgres:///grid_mysteries_replay}"
 if [[ -z "${REPLAY_DATABASE_URL:-}" ]]; then

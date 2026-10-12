@@ -5,6 +5,7 @@ identically are skipped (an honest re-run); everything else is proposed.
 """
 
 import json
+import os
 import subprocess
 import sys
 
@@ -15,7 +16,15 @@ proposals = subprocess.run(
 rows = [json.loads(line) for line in proposals if line.strip()]
 claims = json.loads(
     subprocess.run(
-        ["morpholog", "inspect", "claims", "--database-url", database_url, "--predicate", "DayRow"],
+        [
+            os.environ.get("MORPHOLOG_BIN", "morpholog"),
+            "inspect",
+            "claims",
+            "--database-url",
+            database_url,
+            "--predicate",
+            "DayRow",
+        ],
         capture_output=True,
         text=True,
         check=True,

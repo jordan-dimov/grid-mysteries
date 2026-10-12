@@ -56,13 +56,13 @@ predicate RegisterSubject(subject: Subject, kind: Subject, first_printed: Date)
 
 -- A rule's proposal: this subject may be this company, under this rule
 -- version, from this evidence (the digest of the pinned search response
--- or profile that made the case), with the rule's own verdict as class:
+-- or profile that made the case), with the rule's own verdict as link_class:
 -- #exact and #previous_name are the rule's resolutions, #candidate a
 -- company the rule surfaced and did not resolve (an ambiguous or
 -- unresolved name's candidates, 019's column B). A person admits any
 -- proposal; the rule never admits. One link per (subject, company, rule
 -- version).
-predicate LinkProposed(link: Subject, subject: Subject, company: Subject, class: Subject, rule_version: Subject, evidence_digest: Subject, proposed_on: Date)
+predicate LinkProposed(link: Subject, subject: Subject, company: Subject, link_class: Subject, rule_version: Subject, evidence_digest: Subject, proposed_on: Date)
     unique by (link)
     append only
 -- The rule looked and found nothing: recorded, so absence is a fact of
@@ -141,12 +141,12 @@ transformation register_subject(subject, kind, first_printed):
     require subject_is_new: not RegisterSubject(subject, _, _)
     admit RegisterSubject(subject, kind, first_printed)
 
-transformation propose_link(link, subject, company, class, rule_version, evidence_digest, proposed_on):
+transformation propose_link(link, subject, company, link_class, rule_version, evidence_digest, proposed_on):
     require proposal_requires_propose_authority: ProposeAuthority(actor)
     require proposal_names_a_subject: RegisterSubject(subject, _, _)
     require proposal_names_a_rule_version: RuleVersion(rule_version, _)
     require link_is_new: not LinkProposed(link, _, _, _, _, _, _)
-    admit LinkProposed(link, subject, company, class, rule_version, evidence_digest, proposed_on)
+    admit LinkProposed(link, subject, company, link_class, rule_version, evidence_digest, proposed_on)
 
 transformation record_unresolved(subject, rule_version, evidence_digest, proposed_on):
     require unresolved_requires_propose_authority: ProposeAuthority(actor)

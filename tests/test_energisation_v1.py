@@ -242,3 +242,39 @@ def test_distribution_shares_and_the_median_interval():
     assert lo <= d["median"] <= hi
     small = v1.distribution(values[:4], random.Random(v1.SEED))
     assert small["median_ci95"] is None and small["median_ci95_note"] == "n < 5, no interval"
+
+
+# ------------------------------------------------------------- amendment 4
+
+
+def test_a2_effective_floor_and_censoring():
+    walks = {
+        "a": [{"from": "2019-02-05", "records": 3}, {"from": "2019-01-29", "records": 5}],
+        "b": [{"from": "2021-03-01", "records": 2}, {"from": "2021-02-22", "records": 0}],
+    }
+    floor = v1.effective_floor(walks)
+    assert floor == date(2019, 1, 29)
+    assert v1.censored(walks["a"], floor) is True
+    assert v1.censored(walks["b"], floor) is False
+    assert v1.censored([{"from": "2020-01-01", "records": 0}], floor) is False
+
+
+def test_a3_second_sightings_keep_the_earlier_project():
+    admitted = [
+        ("old|gh", date(2018, 12, 6), ("E_GOSHS-1",)),
+        ("old|gh2", date(2020, 10, 22), ("E_GOSHS-1",)),
+        ("old|x", date(2020, 10, 22), ("E_X-1",)),
+    ]
+    assert v1.second_sightings(admitted) == {"old|gh2": "old|gh"}
+
+
+def test_a1_first_appearance_spans_regimes_with_the_combined_gap():
+    seen_first = {
+        "old|p": ("old", "p", date(2020, 1, 10)),
+        "new|p": ("new", "p", date(2026, 5, 19)),
+        "new|q": ("new", "q", date(2026, 5, 19)),
+    }
+    kept = [date(2020, 1, 3), date(2020, 1, 10), date(2025, 7, 22), date(2026, 5, 19)]
+    out = v1.first_appearances(seen_first, kept)
+    assert out["new|p"] == (date(2020, 1, 10), 7)
+    assert out["new|q"] == (date(2026, 5, 19), 301)

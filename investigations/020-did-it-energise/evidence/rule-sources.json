@@ -24,6 +24,9 @@
   "Amendment 3 B4: format check against the S2 report before any value is read (BOM, JSON, array, fields, units)": "tests/test_energisation_v1.py::test_format_check_before_any_value_is_read",
   "Amendment 3 B4: the proxy is the earliest settlement day with quantity above zero, over every run type": "tests/test_energisation_v1.py::test_proxy_is_the_earliest_positive_day_over_every_run_type",
   "Amendment 3 B4: labels metered, registered-not-metered, no-metered-record, metered-before-the-walk, embedded-or-distribution, unmatched, no-candidate partition the projects": "tests/test_energisation_v1.py::test_labels_partition_the_projects",
-  "Amendment 3 B5: shares before, within six months and later with Wilson intervals; median bootstrap interval, none below n = 5": "tests/test_energisation_v1.py::test_distribution_shares_and_the_median_interval"
+  "Amendment 3 B5: shares before, within six months and later with Wilson intervals; median bootstrap interval, none below n = 5": "tests/test_energisation_v1.py::test_distribution_shares_and_the_median_interval",
+  "Amendment 4 A1: a project's first appearance is its earliest kept copy in either regime, with the combined sequence's gap": "tests/test_energisation_v1.py::test_a1_first_appearance_spans_regimes_with_the_combined_gap",
+  "Amendment 4 A2: the effective floor is the first window with records for any project; a project whose earliest record is in it is metered-before-the-walk": "tests/test_energisation_v1.py::test_a2_effective_floor_and_censoring",
+  "Amendment 4 A3: a unit admitted again for a later project is a second sighting; the earlier is kept": "tests/test_energisation_v1.py::test_a3_second_sightings_keep_the_earlier_project"
  }
 }

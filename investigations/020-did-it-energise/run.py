@@ -74,6 +74,7 @@ PROJECTS_SUMMARY = EVIDENCE / "projects-summary.json"
 AMENDMENT_1 = HERE / "DECLARATION-amendment-1.md"
 AMENDMENT_2 = HERE / "DECLARATION-amendment-2.md"
 AMENDMENT_3 = HERE / "DECLARATION-amendment-3.md"
+AMENDMENT_4 = HERE / "DECLARATION-amendment-4.md"
 LINKS_PROPOSED = EVIDENCE / "links-proposed.json"
 LINKS_ADMITTED = EVIDENCE / "links-admitted.json"
 WALKS = EVIDENCE / "walks.json"
@@ -1125,10 +1126,11 @@ def phase_walk(seal, a1, a2, a3, run_date: str) -> None:
     )
 
 
-def phase_compute_v1(seal, a1, a2, a3, run_date: str) -> None:
+def phase_compute_v1(seal, a1, a2, a3, a4, run_date: str) -> None:
     import random
 
     digest_3 = require_v1_seals(seal, a1, a2, a3)
+    digest_4 = require_amendment(a4, AMENDMENT_4, v1.AMENDMENT_4_PREFIX)
     proposed, decisions = admissions()
     walks_doc = json.loads(WALKS.read_text())
     if walks_doc["run_date"] != run_date:
@@ -1155,9 +1157,25 @@ def phase_compute_v1(seal, a1, a2, a3, run_date: str) -> None:
     order: dict[str, list[date]] = {}
     for k in kept:
         order.setdefault(k.regime, []).append(k.vintage.t_public)
-    sighted = en.first_sightings(seen, order)
+    # Amendment 4, A1: a project's first appearance in any register copy.
+    firsts = en.group_first_copies(seen)
+    sighted = v1.first_appearances(
+        {k: (k.split("|", 1)[0], k.split("|", 1)[1], d) for k, d in firsts.items()},
+        [k.vintage.t_public for k in kept],
+    )
+    # A2: the walk's effective floor is the source's served start.
+    floor = v1.effective_floor({k: w["windows"] for k, w in walks_doc["walks"].items()})
+    # A3: plants admitted again for a later project.
+    second = v1.second_sightings(
+        [
+            (k, date.fromisoformat(projects[k]["first_built"]), tuple(d["units"]))
+            for k, d in decisions.items()
+            if d["decision"] == "admitted"
+        ]
+    )
     lines, out = [], []
     c6_fail = []
+    c6_checked = 0
     for p in proposed["projects"]:
         key, record = p["key"], projects[p["key"]]
         d = decisions.get(key, {"decision": "no-candidate"})
@@ -1192,9 +1210,21 @@ def phase_compute_v1(seal, a1, a2, a3, run_date: str) -> None:
                 proxy=v1.proxy(recs),
             )
         lab = v1.label(d["decision"] == "admitted", p["j3"], bool(p["candidates"]), walk)
+        if key in second:
+            lab = "second-sighting"
+        elif lab == "metered" and v1.censored(walks_doc["walks"][key]["windows"], floor):
+            lab = "metered-before-the-walk"
         proxy_day = walk.proxy[0] if walk and walk.proxy and lab == "metered" else None
         first_seen, gap = sighted[key]
+        if d["decision"] == "admitted" and lab not in (
+            "second-sighting",
+            "metered-before-the-walk",
+        ):
+            c6_checked += 1
         c6 = proxy_day is not None and proxy_day < first_seen - timedelta(days=gap)
+        if c6 and p["j3"] == "embedded-or-distribution":
+            # A4: embedded plant can take TEC after it is already generating.
+            lab, c6 = "metered-before-register", False
         if c6:
             c6_fail.append(key)
         first_built = date.fromisoformat(record["first_built"])
@@ -1217,6 +1247,7 @@ def phase_compute_v1(seal, a1, a2, a3, run_date: str) -> None:
             "first_sighting": first_seen.isoformat(),
             "archive_gap_days": gap,
             "c6_fails": c6,
+            "second_sighting_of": second.get(key),
             "proxy": proxy_day.isoformat() if proxy_day else None,
             "proxy_run_type": walk.proxy[1] if walk and walk.proxy and proxy_day else None,
             "windows": walk.windows if walk else 0,
@@ -1252,9 +1283,17 @@ def phase_compute_v1(seal, a1, a2, a3, run_date: str) -> None:
             if r["c6_fails"]
         ],
     )
-    if admitted_n and Decimal(len(c6_fail)) > Decimal("0.05") * admitted_n:
+    if c6_checked and Decimal(len(c6_fail)) > Decimal("0.05") * c6_checked:
+        log_run(
+            "compute-v1",
+            amendment_4=digest_4[:8],
+            run_date=run_date,
+            stopped="F4",
+            c6=len(c6_fail),
+            c6_checked=c6_checked,
+        )
         sys.exit(
-            f"F4: {len(c6_fail)} of {admitted_n} admitted links fail C6; J1 is re-proposed under an amendment"
+            f"F4: {len(c6_fail)} of {c6_checked} C6-checked admitted links fail C6 (amendment 4); stopped, no further rule change in this version"
         )
     with_records = sum(
         1
@@ -1281,6 +1320,10 @@ def phase_compute_v1(seal, a1, a2, a3, run_date: str) -> None:
     results = {
         "declaration_sha256": en.DECLARATION_SHA256,
         "amendment_3_sha256": digest_3,
+        "amendment_4_sha256": digest_4,
+        "effective_floor": floor.isoformat() if floor else None,
+        "second_sightings": second,
+        "c6_checked": c6_checked,
         "run_date": run_date,
         "projects": len(out),
         "labels": dict(labels),
@@ -1391,6 +1434,12 @@ def render_v1(r: dict[str, Any], rows: list[dict[str, Any]]) -> str:
         f"({r['F2']['admitted']} admitted of a base of {r['F2']['base']}). C6 failures: {len(r['C6_failures'])}. "
         f"Units admitted for more than one project: {r['duplicate_units'] or 'none'}.",
         "",
+        f"**Amendment 4** `{r['amendment_4_sha256'][:8]}…`: effective floor {r['effective_floor']} (Insights serves no B1610 before it); "
+        f"{r['labels'].get('metered-before-the-walk', 0)} projects metered before the walk could see (not measured); "
+        f"{r['labels'].get('second-sighting', 0)} second sightings (not measured; {r['second_sightings']}); "
+        f"{r['labels'].get('metered-before-register', 0)} embedded plants metered before the register printed them (not measured, not C6 failures); "
+        f"C6 failures {len(r['C6_failures'])} of {r['c6_checked']} checked. Every delay figure below covers only plants whose output began after the floor.",
+        "",
         "## Admissions",
         "",
         f"{r.get('admissions_provenance')}",
@@ -1460,6 +1509,7 @@ def main() -> None:
     parser.add_argument("--amendment-seal", default=None)
     parser.add_argument("--amendment-2-seal", default=None)
     parser.add_argument("--amendment-3-seal", default=None)
+    parser.add_argument("--amendment-4-seal", default=None)
     parser.add_argument("--run-date", default=datetime.now(UTC).date().isoformat())
     args = parser.parse_args()
     EVIDENCE.mkdir(exist_ok=True)
@@ -1487,6 +1537,7 @@ def main() -> None:
             args.amendment_seal,
             args.amendment_2_seal,
             args.amendment_3_seal,
+            args.amendment_4_seal,
             args.run_date,
         )
     else:

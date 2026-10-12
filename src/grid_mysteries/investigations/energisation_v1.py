@@ -12,7 +12,7 @@ import math
 import random
 import re
 from collections import Counter, defaultdict
-from collections.abc import Iterable, Iterator
+from collections.abc import Iterable, Iterator, Sequence
 from dataclasses import dataclass
 from datetime import date, timedelta
 from decimal import Decimal
@@ -405,3 +405,56 @@ def distribution(values: list[Decimal], rng: random.Random) -> dict[str, Any]:
         interval = wilson(k, n)
         q[name] = {"k": k, "wilson95": [str(x) for x in interval] if interval else None}
     return q
+
+
+# ------------------------------------------------------------- amendment 4
+
+AMENDMENT_4_PREFIX: Final = "fab5665e"
+
+
+def effective_floor(walks: dict[str, list[dict[str, Any]]]) -> date | None:
+    """A2: the first window in which the walk found records for any project."""
+    starts = [
+        date.fromisoformat(w["from"]) for windows in walks.values() for w in windows if w["records"]
+    ]
+    return min(starts) if starts else None
+
+
+def censored(windows: list[dict[str, Any]], floor: date | None) -> bool:
+    """A2: a project whose earliest record falls in the effective floor's
+    window has output the walk cannot date."""
+    with_records = [date.fromisoformat(w["from"]) for w in windows if w["records"]]
+    return floor is not None and bool(with_records) and min(with_records) == floor
+
+
+def second_sightings(admitted: Sequence[tuple[str, date, tuple[str, ...]]]) -> dict[str, str]:
+    """A3: {later key: earlier key} for projects whose admitted unit or set is
+    also admitted for a project with an earlier first `Built` copy.
+    `admitted` holds (key, first Built copy, units)."""
+    first: dict[tuple[str, ...], tuple[date, str]] = {}
+    for key, built, units in sorted(admitted, key=lambda a: (a[1], a[0])):
+        first.setdefault(units, (built, key))
+    return {
+        key: first[units][1]
+        for key, built, units in admitted
+        if first[units][1] != key and first[units][0] < built
+    }
+
+
+def first_appearances(
+    seen_first: dict[str, tuple[str, str, date]], kept_dates: list[date]
+) -> dict[str, tuple[date, int]]:
+    """A1: for each `<regime>|<group>` key, the group's earliest kept copy in
+    either regime and the days since the kept copy before it in the combined
+    sequence. `seen_first` maps each key to (regime, group, first copy in
+    that regime)."""
+    earliest: dict[str, date] = {}
+    for _, group, first in seen_first.values():
+        earliest[group] = min(first, earliest.get(group, first))
+    order = sorted(set(kept_dates))
+    out = {}
+    for key, (_, group, _) in seen_first.items():
+        d = earliest[group]
+        i = order.index(d)
+        out[key] = (d, (d - order[i - 1]).days if i > 0 else 0)
+    return out

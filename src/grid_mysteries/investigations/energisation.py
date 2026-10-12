@@ -601,6 +601,19 @@ def first_sightings(
     return out
 
 
+def group_first_copies(seen: dict[str, dict[str, list[Sighting]]]) -> dict[str, date]:
+    """Every project group's first kept copy in each regime, whatever its
+    status, keyed `<regime>|<group>` (amendment 4, A1)."""
+    out: dict[str, date] = {}
+    for regime, units in seen.items():
+        for seq in units.values():
+            for s in seq:
+                key = f"{regime}|{project_group(s.row)}"
+                if key not in out or s.t_public < out[key]:
+                    out[key] = s.t_public
+    return out
+
+
 def _measure(
     found: list[ProjectStages], months_of: Callable[[ProjectStages], Decimal | None]
 ) -> dict[str, Any]:

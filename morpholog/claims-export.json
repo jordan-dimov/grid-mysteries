@@ -7288,5 +7288,27 @@
       }
     ],
     "asserted_in": "01a14128-ee7e-7500-b60d-c0c1adabd2a9"
+  },
+  {
+    "predicate": "WatchReading",
+    "args": [
+      {
+        "type": "subject",
+        "value": "w-005-eir-response"
+      },
+      {
+        "type": "date",
+        "value": "2026-10-15"
+      },
+      {
+        "type": "subject",
+        "value": "c11095dc904d367bcb7434f4722689fca05502feaa69e11a53fa9406d475d495"
+      },
+      {
+        "type": "subject",
+        "value": "resolved"
+      }
+    ],
+    "asserted_in": "01a1412d-bee1-70f5-a079-a2c7b23d4565"
   }
 ]

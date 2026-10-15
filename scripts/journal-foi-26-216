@@ -1,0 +1,91 @@
+#!/usr/bin/env bash
+# Pin and journal NESO's EIR disclosure FOI/26/216 (emailed 13 Oct 2026, no
+# document URL): 83 TEC Register copies (23 Jul 2025 to 18 May 2026, the
+# 301-day hole) into data/raw/neso/tec-history/ and its journal, and 24
+# Transmission Works Register reports (after 3 Oct 2025) into
+# data/raw/neso/twr/vintages/ and its journal. Stored bytes are the zip's
+# originals; the zip and the response letter are kept beside them. Refuses
+# a destination that exists or a publication date already journalled.
+#
+#   scripts/journal-foi-26-216 ~/data/neso-foi-26-216
+set -euo pipefail
+cd "$(dirname "$0")/.."
+src="${1:?folder holding 'FOI-26-216 - Response.pdf' and 'FOI-26-216 - TEC&TWR.zip'}"
+uv run --group registers python - "$src" <<'PY'
+import hashlib, json, re, shutil, sys, zipfile
+from datetime import UTC, datetime
+from pathlib import Path
+from grid_mysteries.sources import tec_register as tr
+
+src = Path(sys.argv[1])
+zip_path, pdf_path = src / "FOI-26-216 - TEC&TWR.zip", src / "FOI-26-216 - Response.pdf"
+sha = lambda p: hashlib.sha256(p.read_bytes()).hexdigest()
+zip_sha, pdf_sha = sha(zip_path), sha(pdf_path)
+assert zip_sha.startswith("69a2943014b58a5d") and pdf_sha.startswith("c11095dc904d367b"), "not the files the handover names"
+now = datetime.now(UTC).isoformat(timespec="seconds")
+keep = Path("data/raw/neso/foi-26-216"); keep.mkdir(parents=True, exist_ok=True)
+for p in (zip_path, pdf_path):
+    dest = keep / p.name
+    if dest.exists():
+        assert sha(dest) == sha(p), f"{dest} differs"
+    else:
+        shutil.copyfile(p, dest)
+provenance = (f"member of NESO EIR response FOI/26/216 (letter dated 13 Oct 2026, received by email from "
+              f"informationrights@neso.energy 2026-10-13 15:32 UTC; no NESO document URL) zip "
+              f"'FOI-26-216 - TEC&TWR.zip' sha256 {zip_sha}")
+tec_journal = tr.JOURNAL_PATH
+twr_journal = Path("data/raw/neso/twr/journal.ndjson")
+tec_dates = {e["t_public"][:10] for e in tr.read_journal(tec_journal)}
+twr_dates = {e["t_public"][:10] for e in tr.read_journal(twr_journal) if e.get("t_public")}
+def parse(name: str, prefix: str) -> str:
+    stem = re.sub(rf"^{prefix}\s*", "", Path(name).stem).strip()
+    for fmt in ("%d %B %Y", "%d %b %Y"):
+        try:
+            return datetime.strptime(stem, fmt).date().isoformat()
+        except ValueError:
+            pass
+    raise ValueError(f"no date in {name!r}")
+tec_new, twr_new = [], []
+with zipfile.ZipFile(zip_path) as z:
+    members = sorted((i for i in z.infolist() if not i.is_dir()), key=lambda i: i.filename)
+    for info in members:
+        name = info.filename
+        if name.startswith("Q1 TEC/") and name.endswith(".csv"):
+            d = parse(Path(name).name, "TEC Register")
+            dest = Path("data/raw/neso/tec-history") / f"{d}_neso-foi-email.csv"
+            assert d not in tec_dates, f"{d} already journalled"
+            assert not dest.exists(), f"{dest} exists"
+            data = z.read(name)
+            dest.write_bytes(data)
+            rows = tr.read_vintage(dest, "csv")
+            tec_new.append({
+                "url": None, "source": "neso-foi-email", "t_public": d,
+                "t_public_basis": f"filename date '{Path(name).name}'; {provenance}: '{name}'",
+                "path": str(dest), "sha256": hashlib.sha256(data).hexdigest(), "bytes": len(data),
+                "format": "csv", "columns": list(rows[0].keys()) if rows else [], "row_count": len(rows),
+                "fetched_at": now, "archive_member": name,
+                "leading_byte_order_mark": data.startswith(b"\xef\xbb\xbf"),
+            })
+            tec_dates.add(d)
+        elif name.startswith("Q2 TWR/") and name.endswith(".xlsx"):
+            d = parse(Path(name).name, "TWR_report")
+            dest = Path("data/raw/neso/twr/vintages") / f"{d}_TWR.xlsx"
+            assert d not in twr_dates, f"TWR {d} already journalled"
+            assert not dest.exists(), f"{dest} exists"
+            data = z.read(name)
+            dest.write_bytes(data)
+            twr_new.append({"member": name, "path": str(dest), "t_public": d,
+                            "t_public_basis": f"filename date '{Path(name).name}'; {provenance}",
+                            "sha256": hashlib.sha256(data).hexdigest(), "bytes": len(data),
+                            "source": "neso-foi-email FOI/26/216", "fetched_at": now})
+            twr_dates.add(d)
+        else:
+            raise SystemExit(f"unexpected member {name!r}")
+with tec_journal.open("a") as f:
+    for e in sorted(tec_new, key=lambda e: e["t_public"]): f.write(json.dumps(e) + "\n")
+with twr_journal.open("a") as f:
+    for e in sorted(twr_new, key=lambda e: e["t_public"]): f.write(json.dumps(e) + "\n")
+print(f"TEC: {len(tec_new)} copies journalled, {min(e['t_public'] for e in tec_new)} to {max(e['t_public'] for e in tec_new)}; "
+      f"BOM on {sum(e['leading_byte_order_mark'] for e in tec_new)}; rows {min(e['row_count'] for e in tec_new)} to {max(e['row_count'] for e in tec_new)}")
+print(f"TWR: {len(twr_new)} reports journalled, {min(e['t_public'] for e in twr_new)} to {max(e['t_public'] for e in twr_new)}")
+PY

@@ -84,6 +84,26 @@ def test_the_three_legs_sum_exactly_to_the_spread(day, cost, expected):
     assert min(lg.negative, lg.merit_order, lg.scarcity) >= 0
 
 
+def test_the_three_legs_sum_exactly_to_the_spread_on_every_constructed_case():
+    """The parametrised cases above, under one collected id for the rule map."""
+    cases = [
+        (prices("-30", "-20", "-5", "-1"), D(80)),
+        (prices("0", "20", "50", "79"), D(80)),
+        (prices("-10", "5", "80", "130"), D(80)),
+        (prices("40", "40", "40"), D(80)),
+        (prices("-7.5", "12.25"), D(80)),
+        (prices("90", "150"), D(80)),
+    ]
+    for day, cost in cases:
+        lg = g.legs(day, cost)
+        assert lg.total == max(day) - min(day)
+        assert min(lg.negative, lg.merit_order, lg.scarcity) >= 0
+    wholly_negative = g.legs(cases[0][0], D(80))
+    assert (wholly_negative.merit_order, wholly_negative.scarcity) == (0, 0)
+    no_scarcity = g.legs(cases[1][0], D(80))
+    assert no_scarcity.scarcity == 0 and no_scarcity.negative == 0
+
+
 def test_ratio_of_means_and_mean_of_ratios_differ_and_are_both_defined():
     spreads, gases = prices("100", "50"), prices("50", "10")
     assert g.ratio_of_means(spreads, gases) == D(75) / D(30)

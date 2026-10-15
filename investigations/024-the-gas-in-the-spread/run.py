@@ -34,11 +34,14 @@ import re
 import sys
 from collections import Counter
 from datetime import UTC, date, datetime
+from decimal import ROUND_HALF_EVEN, Decimal
 from pathlib import Path
 from typing import Any
 
 from grid_mysteries.corpus import REPO_ROOT
-from grid_mysteries.evidence import write_json
+from grid_mysteries.evidence import jsonable, write_json
+from grid_mysteries.investigations import gas_in_the_spread as gs
+from grid_mysteries.sources import n2ex_day_ahead, ons_sap, ukets_monthly
 from grid_mysteries.sources.http import fetch_artifact
 from grid_mysteries.sources.pinning import pin, progress
 
@@ -427,6 +430,726 @@ def phase_schema() -> None:
     print("schema supplements written")
 
 
+DAYS = EVIDENCE / "days.ndjson"
+RESULTS_JSON = EVIDENCE / "results.json"
+RESULTS_MD = HERE / "RESULTS.md"
+FIGURES = HERE / "figures"
+FETCH = date.fromisoformat(FETCH_DATE)
+UNITS = ("printed", "local")
+MODO_SEPTEMBER = {"spread": Decimal(122), "gas": Decimal(64)}
+#: The scratch figures of 15/10/2026 (prior exposure, never results), for
+#: the comparison table etrmbiz checks against.
+SCRATCH = [
+    ("September 2026 spread", "121.7", "2026-09"),
+    ("September 2026 gas", "64.5", "2026-09"),
+    ("2026 to 14/10 spread", "77.5", "2026 to date"),
+    ("2025 same dates spread", "71.4", "2025 same dates"),
+    ("2026 to 14/10 ratio A", "1.79", "2026 to date"),
+    ("2025 same dates ratio A", "2.25", "2025 same dates"),
+    ("September 2026 ratio A", "1.89", "2026-09"),
+    ("September 2025 ratio A", "2.81", "2025-09"),
+]
+#: The formats the schema pass recorded (archives/024-*); the format check
+#: refuses a departure no frozen amendment reads.
+EXPECTED_FORMAT: dict[str, Any] = {
+    "neso-n2ex-day-ahead": {
+        "leading_byte_order_mark": False,
+        "carriage_returns": False,
+        "header": ["Date", "Delivery Period", "Price"],
+        "rows": 44448,
+        "field_counts": {"3": 44448},
+        "forms": {
+            "date": {"iso": 44448, "other": 0},
+            "label": {"hour-range": 44448, "other": 0},
+            "price": {"decimal-6": 44448, "other": 0},
+        },
+    },
+    "ons-sap-gas-daily": {
+        "sheets": ["Cover", "Contents", "Notes", "1.Daily SAP Gas", "2.Monthly SAP Gas"],
+        "header_row": 5,
+        "header": ["Date", "SAP actual day", "SAP seven-day rolling average"],
+        "rows": 3206,
+        "forms": {
+            "date": {"date-cell": 3206, "other": 0},
+            "sap": {"number": 3206, "blank": 0, "other": 0},
+        },
+    },
+    "govuk-ukets-ccm-monthly-average-prices": {
+        "tables": [
+            {
+                "header": [
+                    "Month",
+                    "2-year reference period",
+                    "Trigger price",
+                    "3-month monitoring period",
+                    "Month 1 average price",
+                    "Month 2 average price",
+                    "Month 3 average price",
+                    "CCM triggered? Yes or No",
+                ],
+                "rows": 18,
+                "row_labels_mon_yy": 18,
+                "average_price_forms": {"pounds": 54, "other": 0},
+            },
+            {
+                "header": [
+                    "Month",
+                    "2-year reference period",
+                    "Trigger price",
+                    "6-month monitoring period",
+                    "Month 1 average price",
+                    "Month 2 average price",
+                    "Month 3 average price",
+                    "Month 4 average price",
+                    "Month 5 average price",
+                    "Month 6 average price",
+                    "CCM triggered? Yes or No",
+                ],
+                "rows": 51,
+                "row_labels_mon_yy": 51,
+                "average_price_forms": {"pounds": 285, "other": 21},
+            },
+        ]
+    },
+}
+PROFILERS = {
+    "neso-n2ex-day-ahead": n2ex_day_ahead.format_profile,
+    "ons-sap-gas-daily": ons_sap.format_profile,
+    "govuk-ukets-ccm-monthly-average-prices": ukets_monthly.format_profile,
+}
+
+
+def differences(expected: Any, actual: Any, at: str = "") -> list[str]:
+    if isinstance(expected, dict) and isinstance(actual, dict):
+        out = []
+        for k in sorted(set(expected) | set(actual)):
+            if k not in actual:
+                out.append(f"{at}/{k}: missing")
+            elif k not in expected:
+                out.append(f"{at}/{k}: unexpected")
+            else:
+                out += differences(expected[k], actual[k], f"{at}/{k}")
+        return out
+    if isinstance(expected, list) and isinstance(actual, list) and len(expected) == len(actual):
+        return [
+            d
+            for i, (e, a) in enumerate(zip(expected, actual, strict=True))
+            for d in differences(e, a, f"{at}[{i}]")
+        ]
+    return [] if expected == actual else [f"{at}: expected {expected!r}, found {actual!r}"]
+
+
+def check_manifest() -> dict[str, dict[str, Any]]:
+    """C1: every pinned file hashes to its manifest digest."""
+    manifest = {e["dataset"]: e for e in json.loads(SOURCES_MANIFEST.read_text())}
+    for dataset, (_, _, path) in SOURCES.items():
+        if dataset not in manifest:
+            sys.exit(f"C1: {dataset} is not in the manifest")
+        if sha(path) != manifest[dataset]["sha256"]:
+            sys.exit(f"C1: {path} no longer matches its manifest digest")
+    return manifest
+
+
+def format_check() -> dict[str, Any]:
+    check_manifest()
+    files = {}
+    for dataset, profiler in PROFILERS.items():
+        path = SOURCES[dataset][2]
+        profile = profiler(path)
+        files[dataset] = {
+            "path": str(path.relative_to(REPO_ROOT)),
+            "sha256": sha(path),
+            "profile": profile,
+            "differences": differences(EXPECTED_FORMAT[dataset], profile),
+        }
+    report = {
+        "checked_at": datetime.now(UTC).isoformat(),
+        "expected": EXPECTED_FORMAT,
+        "files": files,
+    }
+    write_json(FORMAT_CHECK, report)
+    return report
+
+
+def phase_format() -> None:
+    report = format_check()
+    bad = {k: v["differences"] for k, v in report["files"].items() if v["differences"]}
+    for k, v in bad.items():
+        print(f"format: {k} departs from the schema pass: {v}")
+    print(
+        f"format check: {len(report['files'])} files, {len(bad)} with differences -> {FORMAT_CHECK.relative_to(REPO_ROOT)}"
+    )
+    if bad:
+        sys.exit(1)
+
+
+def sealed_declaration(seal: str | None) -> str:
+    digest = sha(DECLARATION)
+    if not seal or not digest.startswith(seal):
+        sys.exit(f"compute needs --seal, the prefix of DECLARATION.md's SHA-256 ({digest[:8]}…)")
+    if not (HERE / "DECLARATION.md.timestamps.json").exists():
+        sys.exit("DECLARATION.md is not frozen (no proof sidecar)")
+    return digest
+
+
+def day_line(unit: str, r: gs.DayRow) -> dict[str, Any]:
+    return {
+        "unit": unit,
+        "day": r.day,
+        "prices": r.prices,
+        "spread": r.spread,
+        "gas": r.gas,
+        "carbon": r.carbon,
+        "ccgt": r.ccgt,
+        "negative": r.negative,
+        "merit_order": r.merit_order,
+        "scarcity": r.scarcity,
+    }
+
+
+def append_only(lines: list[dict[str, Any]]) -> tuple[int, int]:
+    """C5: an existing line is never changed; new keys are appended."""
+    existing: dict[tuple[str, str], str] = {}
+    if DAYS.exists():
+        for raw in DAYS.read_text().splitlines():
+            if raw.strip():
+                d = json.loads(raw)
+                existing[d["unit"], d["day"]] = raw
+    kept = added = 0
+    with DAYS.open("a") as out:
+        for line in lines:
+            text = json.dumps(line, default=jsonable)
+            key = (line["unit"], line["day"].isoformat())
+            if key in existing:
+                if existing[key] != text:
+                    sys.exit(
+                        f"C5: committed line for {key} would change:\n {existing[key]}\n {text}"
+                    )
+                kept += 1
+            else:
+                out.write(text + "\n")
+                added += 1
+    return kept, added
+
+
+def phase_compute(seal: str | None) -> None:
+    digest = sealed_declaration(seal)
+    manifest = check_manifest()
+    report = format_check()
+    if any(v["differences"] for v in report["files"].values()):
+        sys.exit(
+            "C2: a pinned file departs from the schema pass's format; see evidence/format-check.json"
+        )
+    hours = list(n2ex_day_ahead.read(POWER_FILE))
+    gas = ons_sap.read(GAS_FILE)
+    carbon = ukets_monthly.read(CARBON_FILE)  # C3 inside
+    days: dict[str, dict[date, list[Decimal]]] = {u: {} for u in UNITS}
+    for h in hours:
+        days["printed"].setdefault(h.day, []).append(h.price)
+        days["local"].setdefault(gs.local_day(h.day, h.start_hour), []).append(h.price)
+    rows = {u: gs.build_rows(days[u], gas, carbon) for u in UNITS}
+    for u in UNITS:
+        for r in rows[u]:
+            if r.negative is not None and r.negative + r.merit_order + r.scarcity != r.spread:  # type: ignore[operator]
+                sys.exit(f"C4: legs do not sum to the spread on {u} {r.day}")
+    kept, added = append_only([day_line(u, r) for u in UNITS for r in rows[u]])
+    last_measured = max(r.day for r in rows["printed"] if r.spread is not None)
+    period_list = gs.periods(FETCH, (last_measured.year, last_measured.month))
+    results: dict[str, Any] = {
+        "declaration_sha256": digest,
+        "computed_at": datetime.now(UTC).isoformat(timespec="seconds"),
+        "fetch_date": FETCH,
+        "sources": {
+            k: {"path": v["path"], "sha256": v["sha256"], "fetched_at": v["fetched_at"]}
+            for k, v in manifest.items()
+        },
+        "format_check": {k: v["differences"] for k, v in report["files"].items()},
+        "hours": len(hours),
+        "power_dates": {"first": min(days["printed"]), "last": max(days["printed"])},
+        "gas_dates": {"first": min(gas), "last": max(gas), "days": len(gas)},
+        "carbon_months": {
+            "first": f"{min(carbon)[0]}-{min(carbon)[1]:02d}",
+            "last": f"{max(carbon)[0]}-{max(carbon)[1]:02d}",
+            "months": len(carbon),
+            "values": {f"{y}-{m:02d}": v for (y, m), v in sorted(carbon.items())},
+        },
+        "last_measured_printed_day": last_measured,
+        "days_ndjson": {"kept": kept, "added": added},
+        "units": {},
+    }
+    for u in UNITS:
+        excluded = [{"day": r.day, "prices": r.prices} for r in rows[u] if r.spread is None]
+        results["units"][u] = {
+            "days": len(rows[u]),
+            "excluded": excluded,
+            "periods": {label: gs.summarise(rows[u], a, b) for label, a, b in period_list},
+        }
+    p = results["units"]["printed"]["periods"]
+    r26, r25 = p["2026 to date"]["ratio_of_means"], p["2025 same dates"]["ratio_of_means"]
+    sept = p["2026-09"]["spread_mean"]
+    results["falsifiers"] = {
+        "F1": {
+            "ratio_2026_to_date": r26,
+            "ratio_2025_same_dates": r25,
+            "change": gs.quantise((r26 / r25 - 1) if r26 and r25 else None),
+            "fires": gs.f1_fires(r26, r25),
+        },
+        "F2": {
+            "september_2026_spread": sept,
+            "published": MODO_SEPTEMBER["spread"],
+            "tolerance": Decimal(2),
+            "fires": gs.f2_fires(sept),
+        },
+    }
+    s26, s25 = p["2026-09"]["spread_mean"], p["2025-09"]["spread_mean"]
+    results["september_year_on_year"] = {
+        "2026-09": s26,
+        "2025-09": s25,
+        "change": gs.quantise(s26 / s25 - 1) if s26 and s25 else None,
+        "bloomberg_says": "0.80",
+        "modo_45_wider_implies": gs.quantise(Decimal(45) / (s26 - Decimal(45))) if s26 else None,
+    }
+    results["negative_leg_share_by_year"] = {
+        y: p[y]["legs_share"]["negative"] for y in ("2022", "2023", "2024", "2025", "2026 to date")
+    }
+    results["scratch_comparison"] = [
+        {
+            "figure": name,
+            "scratch": Decimal(value),
+            "declared": p[label]["gas_mean"]
+            if "gas" in name
+            else p[label]["ratio_of_means"]
+            if "ratio" in name
+            else p[label]["spread_mean"],
+            "period": label,
+        }
+        for name, value, label in SCRATCH
+    ]
+    write_json(RESULTS_JSON, results)
+    log_run(
+        "compute",
+        seal=seal,
+        declaration_sha256=digest,
+        results_sha256=sha(RESULTS_JSON),
+        days_kept=kept,
+        days_added=added,
+    )
+    f = results["falsifiers"]
+    print(
+        f"computed under {digest[:8]}…: F1 fires {f['F1']['fires']} (ratio A {r26} vs {r25}), F2 fires {f['F2']['fires']} (September 2026 {sept})"
+    )
+
+
+def fmt(x: Any, places: str = "0.01") -> str:
+    if x is None:
+        return "—"
+    return str(Decimal(str(x)).quantize(Decimal(places), rounding=ROUND_HALF_EVEN))
+
+
+def pct(x: Any) -> str:
+    return (
+        "—"
+        if x is None
+        else f"{(Decimal(str(x)) * 100).quantize(Decimal('0.1'), rounding=ROUND_HALF_EVEN)} %"
+    )
+
+
+def period_row(label: str, s: dict[str, Any], legs: bool = True) -> list[str]:
+    row = [
+        label,
+        str(s["days_measured"]),
+        fmt(s["spread_mean"]),
+        str(s["days_with_gas"]),
+        fmt(s["gas_mean"]),
+        str(s["days_with_both"]),
+        fmt(s["ratio_of_means"], "0.001"),
+        fmt(s["mean_of_ratios"], "0.001"),
+    ]
+    if legs:
+        row += [
+            str(s["days_with_legs"]),
+            fmt(s["legs_mean"]["negative"]),
+            fmt(s["legs_mean"]["merit_order"]),
+            fmt(s["legs_mean"]["scarcity"]),
+            pct(s["legs_share"]["negative"]),
+            pct(s["legs_share"]["merit_order"]),
+            pct(s["legs_share"]["scarcity"]),
+        ]
+    return row
+
+
+PERIOD_HEADER = [
+    "period",
+    "days measured",
+    "spread mean GBP/MWh",
+    "days with gas",
+    "gas mean GBP/MWh",
+    "days with both",
+    "ratio A",
+    "ratio B",
+    "days with legs",
+    "negative leg",
+    "merit-order leg",
+    "scarcity leg",
+    "negative share",
+    "merit-order share",
+    "scarcity share",
+]
+
+
+def excluded_text(excluded: list[dict[str, Any]]) -> str:
+    return ", ".join(f"{e['day']} ({e['prices']} prices)" for e in excluded) or "none"
+
+
+def phase_render() -> None:
+    R = json.loads(RESULTS_JSON.read_text())
+    P = R["units"]["printed"]["periods"]
+    L = R["units"]["local"]["periods"]
+    f1, f2 = R["falsifiers"]["F1"], R["falsifiers"]["F2"]
+    yoy = R["september_year_on_year"]
+    years = ["2022", "2023", "2024", "2025", "2026 to date", "2025 same dates"]
+    months = [k for k in P if len(k) == 7]
+    lines = (
+        [
+            "# 024 — The gas in the spread: Results",
+            "",
+            f"Computed {R['computed_at'][:10]} under the frozen declaration `{R['declaration_sha256'][:8]}…` (`DECLARATION.md`, proofs beside it) from the files pinned 15/10/2026 (`evidence/sources-manifest.json`). "
+            f'Method: Julien Jomaux\'s for Germany (GEM Energy Analytics, "The evolution of the spread: 2026 update", 24/09/2026), carried to Great Britain with attribution. '
+            f"Power: NESO N2EX GB day-ahead hourly price, {R['hours']:,} hours from {R['power_dates']['first']} to {R['power_dates']['last']}. Gas: ONS daily SAP times ten, {R['gas_dates']['days']:,} days to {R['gas_dates']['last']}. "
+            f"Carbon: gov.uk UK ETS monthly average UKA price, {R['carbon_months']['months']} months {R['carbon_months']['first']} to {R['carbon_months']['last']}, plus Carbon Price Support GBP 18/t. Every figure is a simple mean over the days counted beside it; ratios are 3 d.p., money 2 d.p.",
+            "",
+            "## Falsifiers",
+            "",
+            f"- **F1** ({'FIRES' if f1['fires'] else 'does not fire'}): ratio A for 2026 to date {fmt(f1['ratio_2026_to_date'], '0.001')} against {fmt(f1['ratio_2025_same_dates'], '0.001')} for the same dates of 2025, a change of {pct(f1['change'])}; the rule fires if the 2026 ratio is not below 2025's by more than 5 %.",
+            f"- **F2** ({'FIRES' if f2['fires'] else 'does not fire'}): September 2026 mean spread on the printed day {fmt(f2['september_2026_spread'])} against Modo's published {fmt(f2['published'])}, tolerance {fmt(f2['tolerance'])}.",
+            "",
+            "## The headline measure (printed day)",
+            "",
+            f'September 2026 against September 2025: spread {fmt(yoy["2026-09"])} against {fmt(yoy["2025-09"])}, up {pct(yoy["change"])}. Bloomberg says 80 %; Modo\'s "GBP 45/MWh wider" implies {pct(yoy["modo_45_wider_implies"])} on this September. **The difference is not resolved here** (caveat 5).',
+            "",
+        ]
+        + md_table(PERIOD_HEADER, [period_row(y, P[y]) for y in years])
+        + [
+            "",
+            "Days: `days measured` are the period's printed dates with 23 to 25 prices; `days with gas` its dates with an ONS SAP; `days with both` the dates entering the ratios (gas ends 11/10/2026); `days with legs` those with a carbon month too (October 2026 has none yet). Legs are means over the days with legs, in GBP/MWh; shares are each leg's mean over the spread's mean on those days and sum to 100 %.",
+            "",
+            "## The same on the local day (each printed hour read as UTC, assigned to its Europe/London date)",
+            "",
+        ]
+        + md_table(PERIOD_HEADER, [period_row(y, L[y]) for y in years])
+        + [
+            "",
+            f"Excluded on the local unit: {excluded_text(R['units']['local']['excluded'])}; on the printed unit: {excluded_text(R['units']['printed']['excluded'])}. The local figures rest on the UTC reading of the file's hours, which NESO does not document (declaration, 'what a day is').",
+            "",
+            "## Every month, printed day",
+            "",
+        ]
+        + md_table(PERIOD_HEADER, [period_row(m, P[m]) for m in months])
+        + [
+            "",
+            "October 2026 is partial (to 15/10 for the spread, 11/10 for gas) and has no carbon month.",
+            "",
+            "## Explanations tested",
+            "",
+            "- **Gas-shock artefact.** Monthly ratio A against monthly gas, 2025 and 2026:",
+            "",
+        ]
+        + md_table(
+            ["month", "gas mean", "spread mean", "ratio A"],
+            [
+                [
+                    m,
+                    fmt(P[m]["gas_mean"]),
+                    fmt(P[m]["spread_mean"]),
+                    fmt(P[m]["ratio_of_means"], "0.001"),
+                ]
+                for m in months
+                if m >= "2025-01"
+            ],
+        )
+        + [
+            "",
+            "  Read: where gas jumps month on month and the ratio falls in the same month and recovers after, the fall is the artefact Jomaux describes; the table is the record, the reading is etrmbiz's.",
+            "",
+            "- **Solar depth.** The negative leg's share of the spread by year: "
+            + "; ".join(f"{y} {pct(v)}" for y, v in R["negative_leg_share_by_year"].items())
+            + ". Whether that shows GB's lower ratio to be a solar-depth effect is a reading, not a finding, unless the share is material and rising.",
+            "",
+            "## Scratch comparison (prior exposure, not results)",
+            "",
+        ]
+        + md_table(
+            [
+                "figure",
+                "scratch 15/10 (unsealed, outside this repository)",
+                "declared measure",
+                "period here",
+            ],
+            [
+                [
+                    c["figure"],
+                    c["scratch"],
+                    fmt(c["declared"], "0.001" if "ratio" in c["figure"] else "0.01"),
+                    c["period"],
+                ]
+                for c in R["scratch_comparison"]
+            ],
+        )
+        + [
+            "",
+            "The scratch 2026 window ended 14/10; the declared one ends 15/10 (spread) and 11/10 (ratio, where gas ends). The scratch read took the printed day.",
+            "",
+            "## Caveats, in the order the piece must carry them",
+            "",
+            "1. SAP is a within-day system price (National Gas Transmission's On-the-Day Commodity Market), not the NBP day-ahead assessment; no free daily NBP day-ahead series was found.",
+            "2. The N2EX hourly auction is one of two GB day-ahead auctions.",
+            "3. 2022 is the first full year of the file and includes the crisis.",
+            "4. The merit-order proxy (2 × gas + 0.4 × carbon) is Jomaux's, uncalibrated for GB, on a monthly carbon price (gov.uk's CCM monthly average of the December UKA future's daily settlements) plus CPS 18; the boundary is coarse.",
+            f'5. September 2026 on this measure is up {pct(yoy["change"])} on September 2025; Bloomberg says 80 %, Modo\'s "GBP 45 wider" implies {pct(yoy["modo_45_wider_implies"])}. Unresolved; not resolved by picking the measure that matches Bloomberg.',
+            "",
+            "## Expert corner",
+            "",
+            f"- Declaration `{R['declaration_sha256']}`; sources: "
+            + "; ".join(
+                f"`{k}` `{v['sha256'][:12]}…` fetched {v['fetched_at'][:19]}Z"
+                for k, v in R["sources"].items()
+            )
+            + ".",
+            "- The file prints 24 hours on every date including clock-change dates; the printed date is the primary unit, the local day the secondary. Hour labels `HH:00 - HH:00`; prices to six decimals, read as Decimals.",
+            f"- Carbon months read: {R['carbon_months']['first']} to {R['carbon_months']['last']} ({R['carbon_months']['months']}); every month printed in several rows of the gov.uk tables printed one value (C3).",
+            f"- `evidence/days.ndjson`: one line per unit and day ({R['days_ndjson']['kept']} kept, {R['days_ndjson']['added']} added this run; C5 append-only). `evidence/format-check.json`: no departure from the schema pass.",
+            "- Reproduce: `uv run --group registers python investigations/024-the-gas-in-the-spread/run.py --phase compute --seal "
+            + R["declaration_sha256"][:8]
+            + "`; tests `uv run pytest tests/test_gas_in_the_spread.py`; rule map `evidence/rule-sources.json`.",
+            "",
+        ]
+    )
+    RESULTS_MD.write_text("\n".join(lines) + "\n")
+    log_run("render", results_sha256=sha(RESULTS_JSON), results_md_sha256=sha(RESULTS_MD))
+    print(f"rendered {RESULTS_MD.relative_to(REPO_ROOT)}")
+
+
+def phase_figures() -> None:
+    import matplotlib
+
+    matplotlib.use("Agg")
+    import matplotlib.pyplot as plt
+
+    R = json.loads(RESULTS_JSON.read_text())
+    P = R["units"]["printed"]["periods"]
+    months = [k for k in P if len(k) == 7]
+    FIGURES.mkdir(exist_ok=True)
+    SURFACE, INK, INK_2, GRID = "#fcfcfb", "#0b0b0b", "#52514e", "#e5e4e0"
+    BLUE, BLUE_LIGHT, ORANGE, AQUA, RED = "#2a78d6", "#86b6ef", "#eb6834", "#1baf7a", "#e34948"
+    footer = (
+        f"Copyright (c) 2026, A115. Grid Mysteries investigation 024. Sources: NESO Data Portal, N2EX GB day-ahead price (resource 4f27eea5…); ONS, System Average Price of gas (15/10/2026 edition); "
+        f"gov.uk, UK ETS monthly average prices. Computed {R['computed_at'][:10]} under declaration {R['declaration_sha256'][:8]}."
+    )
+    plt.rcParams.update(
+        {
+            "font.family": "sans-serif",
+            "font.size": 12,
+            "text.color": INK,
+            "axes.edgecolor": GRID,
+            "axes.labelcolor": INK_2,
+            "xtick.color": INK_2,
+            "ytick.color": INK_2,
+            "axes.facecolor": SURFACE,
+            "figure.facecolor": SURFACE,
+            "savefig.facecolor": SURFACE,
+            "svg.fonttype": "none",
+        }
+    )
+    printed: dict[str, Any] = {}
+    x = list(range(len(months)))
+    ticks = [i for i, m in enumerate(months) if m.endswith("-01")]
+    tick_labels = [m[:4] for m in months if m.endswith("-01")]
+
+    def finish(fig, ax, stem, title, subtitle):
+        fig.text(0.03, 0.955, title, fontsize=20, fontweight=600, color=INK)
+        fig.text(0.03, 0.915, subtitle, fontsize=12.5, color=INK_2)
+        fig.text(0.03, 0.018, footer, fontsize=8.5, color=INK_2, ha="left", va="bottom")
+        ax.set_xticks(ticks)
+        ax.set_xticklabels(tick_labels)
+        ax.set_xlim(-0.5, len(months) - 0.5)
+        ax.yaxis.grid(True, color=GRID, linewidth=0.8)
+        ax.set_axisbelow(True)
+        for s_ in ("top", "right"):
+            ax.spines[s_].set_visible(False)
+        fig.savefig(FIGURES / f"{stem}.png", dpi=100)
+        fig.savefig(FIGURES / f"{stem}.svg")
+        plt.close(fig)
+
+    # chart 1: monthly spread and monthly gas, two axes, both GBP/MWh
+    spread = [float(P[m]["spread_mean"]) for m in months]
+    gas = [
+        float(P[m]["gas_mean"]) if P[m]["gas_mean"] is not None else float("nan") for m in months
+    ]
+    fig, ax = plt.subplots(figsize=(16, 9))
+    fig.subplots_adjust(left=0.08, right=0.92, top=0.86, bottom=0.14)
+    ax.plot(x, spread, color=BLUE, linewidth=2.4, label="monthly mean daily spread (left axis)")
+    ax2 = ax.twinx()
+    ax2.plot(x, gas, color=ORANGE, linewidth=2.4, label="monthly mean gas price, SAP (right axis)")
+    ax.set_ylabel("Mean daily spread, pounds per megawatt-hour", labelpad=10)
+    ax2.set_ylabel("Mean gas price, pounds per megawatt-hour", labelpad=10)
+    ax.set_ylim(0, max(spread) * 1.08)
+    ax2.set_ylim(0, max(v for v in gas if v == v) * 1.08)
+    ax2.spines["top"].set_visible(False)
+    ax.set_xlabel("Calendar month, January 2022 to " + months[-1], labelpad=10)
+    h1, l1 = ax.get_legend_handles_labels()
+    h2, l2 = ax2.get_legend_handles_labels()
+    ax.legend(h1 + h2, l1 + l2, loc="upper right", frameon=False, fontsize=11)
+    for m in ("2022-01", "2025-09", "2026-09", months[-1]):
+        printed[f"chart 1 spread {m}"] = P[m]["spread_mean"]
+        printed[f"chart 1 gas {m}"] = P[m]["gas_mean"]
+    finish(
+        fig,
+        ax,
+        "chart-1-monthly-spread-and-gas",
+        "Monthly mean daily day-ahead spread and monthly mean gas price, Great Britain",
+        "Spread: N2EX hourly day-ahead, highest minus lowest hour of each printed day. Gas: ONS daily SAP. Both in pounds per megawatt-hour, each on its own axis.",
+    )
+
+    # chart 2: monthly ratio A as a line, yearly means as steps
+    ratio = [
+        float(P[m]["ratio_of_means"]) if P[m]["ratio_of_means"] is not None else float("nan")
+        for m in months
+    ]
+    fig, ax = plt.subplots(figsize=(16, 9))
+    fig.subplots_adjust(left=0.08, right=0.97, top=0.86, bottom=0.14)
+    ax.plot(
+        x,
+        ratio,
+        color=BLUE_LIGHT,
+        linewidth=2,
+        marker="o",
+        markersize=4,
+        label="monthly ratio A (mean spread over mean gas)",
+    )
+    for y in ("2022", "2023", "2024", "2025", "2026 to date"):
+        idx = [i for i, m in enumerate(months) if m.startswith(y[:4])]
+        v = float(P[y]["ratio_of_means"])
+        ax.plot(
+            [idx[0] - 0.5, idx[-1] + 0.5],
+            [v, v],
+            color=ORANGE,
+            linewidth=3,
+            solid_capstyle="butt",
+            label="yearly ratio A (2026: to date)" if y == "2022" else None,
+        )
+        ax.text(
+            idx[0] - 0.3,
+            v + 0.06,
+            fmt(v, "0.01"),
+            fontsize=11,
+            color=ORANGE,
+            ha="left",
+            va="bottom",
+        )
+        printed[f"chart 2 yearly ratio {y}"] = P[y]["ratio_of_means"]
+    ax.set_ylabel(
+        "Spread divided by gas price, both in pounds per megawatt-hour (dimensionless)", labelpad=10
+    )
+    ax.set_xlabel("Calendar month, January 2022 to " + months[-1], labelpad=10)
+    ax.set_ylim(0, max(v for v in ratio if v == v) * 1.12)
+    ax.legend(loc="upper right", frameon=False, fontsize=11)
+    for m in ("2025-09", "2026-09"):
+        printed[f"chart 2 monthly ratio {m}"] = P[m]["ratio_of_means"]
+    finish(
+        fig,
+        ax,
+        "chart-2-monthly-ratio-with-yearly-steps",
+        "Monthly spread-to-gas ratio with the yearly means as steps, Great Britain",
+        "Ratio A: the month's mean daily spread divided by its mean SAP gas price, over the days with both. Steps: the same ratio over each calendar year.",
+    )
+
+    # chart 3: the three legs, stacked monthly bars
+    leg_months = [m for m in months if P[m]["days_with_legs"]]
+    xl = [months.index(m) for m in leg_months]
+    neg = [float(P[m]["legs_mean"]["negative"]) for m in leg_months]
+    mer = [float(P[m]["legs_mean"]["merit_order"]) for m in leg_months]
+    sca = [float(P[m]["legs_mean"]["scarcity"]) for m in leg_months]
+    fig, ax = plt.subplots(figsize=(16, 9))
+    fig.subplots_adjust(left=0.08, right=0.97, top=0.86, bottom=0.14)
+    ax.bar(xl, neg, color=AQUA, width=0.8, label="negative leg (below zero)")
+    ax.bar(
+        xl, mer, bottom=neg, color=BLUE, width=0.8, label="merit-order leg (zero to the CCGT proxy)"
+    )
+    ax.bar(
+        xl,
+        sca,
+        bottom=[a + b for a, b in zip(neg, mer, strict=True)],
+        color=RED,
+        width=0.8,
+        label="scarcity leg (above the proxy)",
+    )
+    ax.set_ylabel(
+        "Mean daily spread, pounds per megawatt-hour, split into Jomaux's three legs", labelpad=10
+    )
+    ax.set_xlabel(
+        "Calendar month, January 2022 to "
+        + leg_months[-1]
+        + " (months with a published carbon price)",
+        labelpad=10,
+    )
+    ax.legend(loc="upper right", frameon=False, fontsize=11)
+    for y in ("2022", "2023", "2024", "2025", "2026 to date"):
+        for leg in ("negative", "merit_order", "scarcity"):
+            printed[f"chart 3 caption {y} {leg} share"] = P[y]["legs_share"][leg]
+            printed[f"chart 3 caption {y} {leg} mean"] = P[y]["legs_mean"][leg]
+    finish(
+        fig,
+        ax,
+        "chart-3-three-legs-stacked-monthly",
+        "The monthly mean daily spread split into negative, merit-order and scarcity legs, Great Britain",
+        "Each hour's price split at zero and at 2 × gas + 0.4 × carbon (Jomaux's CCGT proxy, uncalibrated); the three legs of each day sum to its spread. Means over the month's days.",
+    )
+
+    captions = (
+        [
+            "# 024 figures",
+            "",
+            f"Drawn by `run.py --phase figures` from `evidence/results.json` as computed {R['computed_at'][:10]} under declaration `{R['declaration_sha256'][:8]}…`. Read only: nothing recomputed. PNG 1600 pixels wide, SVG beside. Every number printed on a chart is in RESULTS.md's tables.",
+            "",
+            "## Chart 1 — `chart-1-monthly-spread-and-gas`",
+            "",
+            f"**Caption.** Monthly mean of the daily day-ahead spread (N2EX hourly auction, highest minus lowest hour of each printed day; left axis) and monthly mean gas price (ONS daily SAP times ten; right axis), both in GBP/MWh, January 2022 to {months[-1]} (partial). September 2026: spread {fmt(P['2026-09']['spread_mean'])}, gas {fmt(P['2026-09']['gas_mean'])}; September 2025: {fmt(P['2025-09']['spread_mean'])} and {fmt(P['2025-09']['gas_mean'])}. It shows the two series moving together, and how far the 2026 rise in the spread tracks the rise in gas.",
+            "",
+            "## Chart 2 — `chart-2-monthly-ratio-with-yearly-steps`",
+            "",
+            f"**Caption.** The monthly ratio A (mean daily spread over mean gas price, over the days with both) as a line, with each calendar year's ratio as a step: 2022 {fmt(P['2022']['ratio_of_means'], '0.01')}, 2023 {fmt(P['2023']['ratio_of_means'], '0.01')}, 2024 {fmt(P['2024']['ratio_of_means'], '0.01')}, 2025 {fmt(P['2025']['ratio_of_means'], '0.01')}, 2026 to 15/10 {fmt(P['2026 to date']['ratio_of_means'], '0.01')} (the same dates of 2025: {fmt(P['2025 same dates']['ratio_of_means'], '0.01')}). September 2026 {fmt(P['2026-09']['ratio_of_means'], '0.01')} against September 2025 {fmt(P['2025-09']['ratio_of_means'], '0.01')}. It shows how many pounds of spread each pound of gas bought, month by month, and that 2026's ratio sits below every earlier year's step.",
+            "",
+            "## Chart 3 — `chart-3-three-legs-stacked-monthly`",
+            "",
+            "**Caption.** The monthly mean daily spread split into Jomaux's three legs: the part of the spread below zero (negative), between zero and the CCGT proxy of 2 × gas + 0.4 × carbon (merit-order), and above it (scarcity); the legs sum to the spread on every day. Carbon is gov.uk's monthly average UKA price plus CPS 18, so the boundary is coarse; months without a published carbon price are not drawn. Shares by year:",
+            "",
+        ]
+        + md_table(
+            ["period", "negative", "merit-order", "scarcity", "days with legs"],
+            [
+                [
+                    y,
+                    pct(P[y]["legs_share"]["negative"]),
+                    pct(P[y]["legs_share"]["merit_order"]),
+                    pct(P[y]["legs_share"]["scarcity"]),
+                    P[y]["days_with_legs"],
+                ]
+                for y in ("2022", "2023", "2024", "2025", "2026 to date", "2025 same dates")
+            ],
+        )
+        + [
+            "",
+            "## Every number printed on a chart",
+            "",
+        ]
+        + md_table(["chart and number", "value"], [[k, v] for k, v in printed.items()])
+        + [""]
+    )
+    (FIGURES / "captions.md").write_text("\n".join(captions) + "\n")
+    write_json(FIGURES / "printed-numbers.json", printed)
+    print(f"figures -> {FIGURES.relative_to(REPO_ROOT)}")
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument(
@@ -440,8 +1163,14 @@ def main() -> None:
         phase_acquire()
     elif args.phase == "schema":
         phase_schema()
-    else:
-        sys.exit(f"phase {args.phase} is not written yet")
+    elif args.phase == "format":
+        phase_format()
+    elif args.phase == "compute":
+        phase_compute(args.seal)
+    elif args.phase == "render":
+        phase_render()
+    elif args.phase == "figures":
+        phase_figures()
 
 
 if __name__ == "__main__":

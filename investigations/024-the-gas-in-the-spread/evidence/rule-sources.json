@@ -6,7 +6,7 @@
   "The local day: each printed hour read as UTC and assigned to its Europe/London calendar day": "tests/test_gas_in_the_spread.py::test_local_day_reads_a_printed_utc_hour_into_the_london_calendar_day",
   "Clock-change days have 23 and 25 hours on the local unit": "tests/test_gas_in_the_spread.py::test_clock_change_days_have_23_and_25_hours_when_reconstructed_from_utc",
   "The CCGT proxy is 2 x gas + 0.4 x carbon (Jomaux's)": "tests/test_gas_in_the_spread.py::test_ccgt_cost_is_twice_gas_plus_point_four_carbon",
-  "The three legs are non-negative and sum exactly to the spread (wholly negative day, no scarcity, all three, flat day)": "tests/test_gas_in_the_spread.py::test_the_three_legs_sum_exactly_to_the_spread",
+  "The three legs are non-negative and sum exactly to the spread (wholly negative day, no scarcity, all three, flat day)": "tests/test_gas_in_the_spread.py::test_the_three_legs_sum_exactly_to_the_spread_on_every_constructed_case",
   "Ratio A (mean spread over mean gas) and ratio B (mean of daily ratios) are both defined and differ": "tests/test_gas_in_the_spread.py::test_ratio_of_means_and_mean_of_ratios_differ_and_are_both_defined",
   "A day joins its date's gas and its month's carbon plus CPS 18; unmeasured days and months without carbon are counted, not averaged": "tests/test_gas_in_the_spread.py::test_build_rows_joins_gas_and_the_months_carbon_and_counts_unmeasured_days",
   "Periods: calendar years 2022 to 2025, 2026 to the fetch date, the same dates in 2025, every month from January 2022": "tests/test_gas_in_the_spread.py::test_periods_are_the_years_the_two_to_date_windows_and_the_months",

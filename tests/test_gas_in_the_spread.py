@@ -323,3 +323,91 @@ def test_ofgem_wmi_stops_on_a_repeated_month_or_a_misdated_row(tmp_path: Path):
     path.write_text("var o={};")
     with pytest.raises(ValueError, match="no data.csv"):
         ofgem_wmi.read(path)
+
+
+CATALYST = """<html><body><h1>UK Energy Market Report - 15 October 2026</h1>
+<p>Settlement Wednesday 14 October 2026, against Tuesday 13 October 2026</p>
+<table><tr><th>Contract</th><th>Settlement (p/therm)</th><th>Change on the day</th></tr>
+<tr><td>Day-ahead</td><td>209.00</td><td>+1.00</td></tr>
+<tr><td>Nov-26</td><td>216.01</td><td>-0.50</td></tr>
+<tr><td>Q1-27</td><td>216.17</td><td>0.00</td></tr></table>
+<table><tr><th>Commodity</th><th>Settlement 14 Oct</th><th>Change on the day</th></tr>
+<tr><td>EUA Carbon Dec-26</td><td>€80.10/tonne</td><td>-0.20</td></tr>
+<tr><td>UK ETS Dec-26</td><td>£65.10/tonne</td><td>-1.2%</td></tr></table></body></html>"""
+
+
+def test_catalyst_reader_reads_the_nbp_table_and_the_uk_ets_line(tmp_path: Path):
+    from grid_mysteries.sources import catalyst_report as cr
+
+    path = tmp_path / "report.html"
+    path.write_text(CATALYST)
+    assert cr.read_nbp(path) == {
+        "Day-ahead": D("209.00"),
+        "Nov-26": D("216.01"),
+        "Q1-27": D("216.17"),
+    }
+    assert cr.read_uk_ets(path) == D("65.10")
+    profile = cr.format_profile(path)
+    assert (
+        profile["settlement_line"]
+        == "Settlement Wednesday 14 October 2026, against Tuesday 13 October 2026"
+    )
+    assert profile["tables"][0]["row_labels"] == ["Day-ahead", "Nov-26", "Q1-27"]
+    assert profile["tables"][0]["settlement_forms"] == {"decimal": 3, "pounds": 0, "other": 0}
+    assert profile["tables"][1]["settlement_forms"] == {"decimal": 0, "pounds": 1, "other": 1}
+
+
+def test_catalyst_reader_stops_on_a_repeated_contract_or_a_non_decimal_settlement(tmp_path: Path):
+    from grid_mysteries.sources import catalyst_report as cr
+
+    path = tmp_path / "report.html"
+    path.write_text(CATALYST.replace("<td>Q1-27</td>", "<td>Nov-26</td>"))
+    with pytest.raises(ValueError, match="twice"):
+        cr.read_nbp(path)
+    path.write_text(CATALYST.replace("<td>216.17</td>", "<td>n/a</td>"))
+    with pytest.raises(ValueError, match="declared forms"):
+        cr.read_nbp(path)
+    path.write_text(CATALYST.replace("UK ETS Dec-26", "UK ETS Dec-27"))
+    with pytest.raises(ValueError, match="no 'UK ETS Dec-26'"):
+        cr.read_uk_ets(path)
+
+
+def test_ratio_band_is_read_from_results_not_typed():
+    results = {
+        "units": {
+            "printed": {
+                "periods": {
+                    "2022": {"ratio_of_means": "2.215151"},
+                    "2023": {"ratio_of_means": "2.061164"},
+                    "2024": {"ratio_of_means": "2.135022"},
+                    "2025": {"ratio_of_means": "2.253937"},
+                    "2026 to date": {"ratio_of_means": "1.788633"},
+                }
+            }
+        }
+    }
+    band = g.ratio_band(results)
+    assert (band.low, band.high, band.central) == (
+        D("1.788633"),
+        D("2.253937"),
+        D("1.788633"),
+    )
+    assert (band.low_period, band.high_period) == ("2026 to date", "2025")
+    # 2022 is outside the band's periods even when it would widen it
+    results["units"]["printed"]["periods"]["2022"]["ratio_of_means"] = "9"
+    assert g.ratio_band(results).high == D("2.253937")
+
+
+def test_implied_spread_multiplies_the_forward_gas_by_each_band_edge():
+    from grid_mysteries.sources import ofgem_wmi
+
+    gas = ofgem_wmi.to_gbp_per_mwh(D("216.01"))
+    assert gas.quantize(D("0.01")) == D("73.71")
+    band = g.Band(D("1.75"), D("2.25"), D("1.8"), "a", "b")
+    out = g.implied_spread(gas, band)
+    assert (
+        out["low"] == gas * D("1.75")
+        and out["high"] == gas * D("2.25")
+        and out["central"] == gas * D("1.8")
+    )
+    assert g.season_mean([D("1"), D("2"), D("6")]) == D("3")

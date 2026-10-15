@@ -217,3 +217,45 @@ def f2_fires(
     if september_2026_spread is None:
         return None
     return abs(september_2026_spread - published) > tolerance
+
+
+# ---- Amendment 2: the forward record -------------------------------------
+
+#: The yearly ratio A values that bound the band, as the amendment names them.
+BAND_PERIODS = ("2023", "2024", "2025", "2026 to date")
+CENTRAL_PERIOD = "2026 to date"
+
+
+@dataclass(frozen=True)
+class Band:
+    low: Decimal
+    high: Decimal
+    central: Decimal
+    low_period: str
+    high_period: str
+
+
+def ratio_band(results: Mapping) -> Band:
+    """Low, high and central ratio A from 024's results.json (printed unit),
+    never typed: the min and max of the four yearly means, and 2026 to date."""
+    periods = results["units"]["printed"]["periods"]
+    values = {p: Decimal(str(periods[p]["ratio_of_means"])) for p in BAND_PERIODS}
+    low_period = min(values, key=lambda p: values[p])
+    high_period = max(values, key=lambda p: values[p])
+    return Band(
+        values[low_period], values[high_period], values[CENTRAL_PERIOD], low_period, high_period
+    )
+
+
+def implied_spread(gas_gbp_per_mwh: Decimal, band: Band) -> dict[str, Decimal]:
+    """The forward gas price times each band edge and the central case."""
+    return {
+        "low": gas_gbp_per_mwh * band.low,
+        "central": gas_gbp_per_mwh * band.central,
+        "high": gas_gbp_per_mwh * band.high,
+    }
+
+
+def season_mean(values: Sequence[Decimal]) -> Decimal:
+    """A season's forward gas as the simple mean of its printed contracts."""
+    return sum(values, ZERO) / len(values)

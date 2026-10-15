@@ -41,7 +41,13 @@ from typing import Any
 from grid_mysteries.corpus import REPO_ROOT
 from grid_mysteries.evidence import jsonable, write_json
 from grid_mysteries.investigations import gas_in_the_spread as gs
-from grid_mysteries.sources import n2ex_day_ahead, ofgem_wmi, ons_sap, ukets_monthly
+from grid_mysteries.sources import (
+    catalyst_report,
+    n2ex_day_ahead,
+    ofgem_wmi,
+    ons_sap,
+    ukets_monthly,
+)
 from grid_mysteries.sources.http import fetch_artifact
 from grid_mysteries.sources.pinning import pin, progress
 
@@ -144,6 +150,17 @@ SOURCES = {
     "ofgem-wmi-page": ("ofgem", OFGEM_PAGE_URL, OFGEM_PAGE_FILE),
 }
 ARCHIVE_OFGEM = REPO_ROOT / "archives" / "024-ofgem-gas-day-ahead-monthly"
+# Amendment 2 (forward record): Catalyst Commercial's daily report, the only free dated print of the NBP curve found.
+CATALYST_URL = (
+    "https://www.catalyst-commercial.co.uk/works/uk-energy-market-report-15-october-2026/"
+)
+CATALYST_FILE = (
+    REPO_ROOT / "data" / "raw" / "catalyst" / "024" / "uk-energy-market-report-15-october-2026.html"
+)
+SOURCES["catalyst-uk-energy-market-report-2026-10-15"] = ("catalyst", CATALYST_URL, CATALYST_FILE)
+ARCHIVE_CATALYST = REPO_ROOT / "archives" / "024-catalyst-report-2026-10-15"
+AMENDMENT_2 = HERE / "AMENDMENT-2.md"
+FORWARD = EVIDENCE / "forward.json"
 AMENDMENT_1 = HERE / "AMENDMENT-1.md"
 CROSS_CHECK = EVIDENCE / "cross-check.json"
 
@@ -927,6 +944,7 @@ def phase_render() -> None:
             "The scratch 2026 window ended 14/10; the declared one ends 15/10 (spread) and 11/10 (ratio, where gas ends). The scratch read took the printed day.",
             "",
             *cross_check_section(),
+            *forward_section(),
             "## Caveats, in the order the piece must carry them",
             "",
             "1. SAP is a within-day system price (National Gas Transmission's On-the-Day Commodity Market), not the NBP day-ahead assessment; no free daily NBP day-ahead series was found.",
@@ -1448,6 +1466,378 @@ def cross_check_section() -> list[str]:
     return lines
 
 
+def phase_schema_forward() -> None:
+    """Schema supplement for amendment 2's source: the tables' layout; no value."""
+    ARCHIVE_CATALYST.mkdir(parents=True, exist_ok=True)
+    profile = catalyst_report.format_profile(CATALYST_FILE)
+    text = CATALYST_FILE.read_text(encoding="utf-8")
+    title = re.search(r"<h1[^>]*>(.*?)</h1>", text, re.S)
+    attribution = re.search(r"[^<>]*may be quoted with attribution[^<>]*", text)
+    report = {
+        "file": str(CATALYST_FILE.relative_to(REPO_ROOT)),
+        "sha256": sha(CATALYST_FILE),
+        "url": CATALYST_URL,
+        "title": html_lib.unescape(re.sub(r"<[^>]+>", "", title.group(1))).strip()
+        if title
+        else None,
+        "attribution_sentence": html_lib.unescape(attribution.group(0)).strip()
+        if attribution
+        else None,
+        **profile,
+    }
+    write_json(ARCHIVE_CATALYST / "schema-report.json", report)
+    lines = [
+        "# Schema report: 024-catalyst-report-2026-10-15",
+        "",
+        f"`{report['file']}` (SHA-256 `{report['sha256']}`), `{report['url']}`, title {report['title']!r}; settlement line as printed: {report['settlement_line']!r}; "
+        f"attribution sentence: {report['attribution_sentence']!r}. {len(report['tables'])} tables. Written by `run.py --phase schema-forward`; no value is read.",
+        "",
+    ]
+    for i, t in enumerate(report["tables"]):
+        lines += [
+            f"## Table {i}: {t['rows']} rows, cells per row {t['cells_per_row']}",
+            "",
+            "Header: " + ", ".join(f"`{h}`" for h in t["header"]) + ".",
+            "",
+            "Row labels, in order: " + ", ".join(f"`{x}`" for x in t["row_labels"]) + ".",
+            "",
+            f"Settlement cell forms: {t['settlement_forms']}.",
+            "",
+        ]
+    (ARCHIVE_CATALYST / "SCHEMA.md").write_text("\n".join(lines) + "\n")
+    log_run("schema-forward", catalyst=sha(ARCHIVE_CATALYST / "schema-report.json"))
+    print("forward schema supplement written")
+
+
+#: Amendment 2: the contracts read from the pinned page, and the seasons built from them.
+FORWARD_CONTRACTS = ("Nov-26", "Dec-26", "Q1-27", "Summer-27", "Winter-27")
+FORWARD_SEASONS = {
+    "winter 2026-27 (Nov-Mar)": ("Nov-26", "Dec-26", "Q1-27"),
+    "Summer-27": ("Summer-27",),
+    "Winter-27": ("Winter-27",),
+}
+#: The dated watches, one per season end, as 013's are opened in the v3 record.
+FORWARD_WATCHES = (
+    ("w-024-winter-2026-27", "winter 2026-27 (Nov-Mar)", "2027-03-31"),
+    ("w-024-summer-27", "Summer-27", "2027-09-30"),
+    ("w-024-winter-27", "Winter-27", "2028-03-31"),
+)
+F3_TOLERANCE = Decimal("0.15")
+F4_GAS_TOLERANCE = Decimal("0.10")
+
+
+def sealed_amendment_2(seal: str | None) -> str:
+    digest = sha(AMENDMENT_2)
+    if not seal or not digest.startswith(seal):
+        sys.exit(f"forward needs --seal, the prefix of AMENDMENT-2.md's SHA-256 ({digest[:8]}…)")
+    if not (HERE / "AMENDMENT-2.md.timestamps.json").exists():
+        sys.exit("AMENDMENT-2.md is not frozen (no proof sidecar)")
+    return digest
+
+
+def phase_forward(seal: str | None) -> None:
+    """Amendment 2: the spread implied by 024's ratio band and the pinned forward gas curve."""
+    digest = sealed_amendment_2(seal)
+    manifest = check_manifest()
+    profile = catalyst_report.format_profile(CATALYST_FILE)
+    expected = json.loads((ARCHIVE_CATALYST / "schema-report.json").read_text())
+    diffs = differences(expected["tables"], profile["tables"]) + differences(
+        expected["settlement_line"], profile["settlement_line"]
+    )
+    if diffs:
+        sys.exit(f"C2 (amendment 2): the Catalyst page departs from the schema pass: {diffs}")
+    R = json.loads(RESULTS_JSON.read_text())
+    band = gs.ratio_band(R)
+    nbp = catalyst_report.read_nbp(CATALYST_FILE)
+    uk_ets = catalyst_report.read_uk_ets(CATALYST_FILE)
+    gas = {
+        c: gs.quantise(ofgem_wmi.to_gbp_per_mwh(nbp[c])) for c in ("Day-ahead", *FORWARD_CONTRACTS)
+    }
+    contracts = {
+        c: {
+            "pence_per_therm": nbp[c],
+            "gas_gbp_per_mwh": gas[c],
+            **{k: gs.quantise(v) for k, v in gs.implied_spread(gas[c], band).items()},
+        }
+        for c in FORWARD_CONTRACTS
+    }
+    seasons = {}
+    for label, parts in FORWARD_SEASONS.items():
+        g_ = gs.quantise(gs.season_mean([gas[c] for c in parts]))
+        seasons[label] = {
+            "contracts": list(parts),
+            "gas_gbp_per_mwh": g_,
+            **{k: gs.quantise(v) for k, v in gs.implied_spread(g_, band).items()},
+        }
+    monthly_ratios = {
+        m: P["ratio_of_means"]
+        for m, P in R["units"]["printed"]["periods"].items()
+        if len(m) == 7 and m >= "2025-01" and P["ratio_of_means"] is not None
+    }
+    out = {
+        "amendment_2_sha256": digest,
+        "declaration_sha256": R["declaration_sha256"],
+        "results_sha256": sha(RESULTS_JSON),
+        "computed_at": datetime.now(UTC).isoformat(timespec="seconds"),
+        "source": manifest["catalyst-uk-energy-market-report-2026-10-15"],
+        "settlement_line": profile["settlement_line"],
+        "kwh_per_therm": ofgem_wmi.KWH_PER_THERM,
+        "band": {
+            "low": band.low,
+            "high": band.high,
+            "central": band.central,
+            "low_period": band.low_period,
+            "high_period": band.high_period,
+            "periods": {
+                p: R["units"]["printed"]["periods"][p]["ratio_of_means"] for p in gs.BAND_PERIODS
+            },
+            "monthly_ratio_range_2025_on": {
+                "min": min(monthly_ratios.values(), key=Decimal),
+                "max": max(monthly_ratios.values(), key=Decimal),
+            },
+        },
+        "day_ahead": {"pence_per_therm": nbp["Day-ahead"], "gas_gbp_per_mwh": gas["Day-ahead"]},
+        "uk_ets_dec_26_gbp_per_t": uk_ets,
+        "contracts": contracts,
+        "seasons": seasons,
+        "falsifiers": {
+            "F3": {
+                "tolerance": F3_TOLERANCE,
+                "rule": "realised season ratio A outside the band by more than the tolerance",
+            },
+            "F4": {
+                "gas_tolerance": F4_GAS_TOLERANCE,
+                "rule": "realised season spread outside the implied band while realised gas is within the tolerance of the pinned forward",
+            },
+        },
+        "watches": [
+            {"watch": w, "season": s_, "due": d, "holder": "A115", "about": "024"}
+            for w, s_, d in FORWARD_WATCHES
+        ],
+        "outcomes": [],
+    }
+    write_json(FORWARD, out)
+    log_run("forward", seal=seal, amendment_2_sha256=digest, forward_sha256=sha(FORWARD))
+    print(
+        f"forward under {digest[:8]}…: band {band.low} to {band.high} (central {band.central}); winter 2026-27 gas {seasons['winter 2026-27 (Nov-Mar)']['gas_gbp_per_mwh']} -> {seasons['winter 2026-27 (Nov-Mar)']['low']} to {seasons['winter 2026-27 (Nov-Mar)']['high']}"
+    )
+
+
+def forward_section() -> list[str]:
+    if not FORWARD.exists():
+        return []
+    X = json.loads(FORWARD.read_text())
+    b = X["band"]
+    rows = [
+        [
+            c,
+            fmt(v["pence_per_therm"]),
+            fmt(v["gas_gbp_per_mwh"]),
+            fmt(v["low"]),
+            fmt(v["central"]),
+            fmt(v["high"]),
+        ]
+        for c, v in X["contracts"].items()
+    ]
+    rows += [
+        [
+            f"**{s_}** ({' + '.join(v['contracts'])})",
+            "—",
+            fmt(v["gas_gbp_per_mwh"]),
+            fmt(v["low"]),
+            fmt(v["central"]),
+            fmt(v["high"]),
+        ]
+        for s_, v in X["seasons"].items()
+    ]
+    lines = (
+        [
+            "## Forward record (amendment 2)",
+            "",
+            f'Computed {X["computed_at"][:10]} under amendment 2 `{X["amendment_2_sha256"][:8]}…`, from the ratio band of `results.json` (`{X["results_sha256"][:8]}…`, sealed under `{X["declaration_sha256"][:8]}…`) and the NBP curve as printed by Catalyst Commercial\'s "UK Energy Market Report - 15 October 2026" '
+            f'(`{X["source"]["sha256"][:12]}…`, fetched {X["source"]["fetched_at"][:19]}Z; "{X["settlement_line"]}"). **This is a dated forecast appended to a forensic record, scored as a vector, never a verdict; it is not a Forward Mystery and claims no buyer, no absorption and no opportunity.**',
+            "",
+            "- **The band**: yearly ratio A (mean daily spread over mean SAP gas) for "
+            + ", ".join(f"{p} {fmt(v, '0.001')}" for p, v in b["periods"].items())
+            + f"; low edge {fmt(b['low'], '0.001')} ({b['low_period']}), high edge {fmt(b['high'], '0.001')} ({b['high_period']}), central case {fmt(b['central'], '0.001')} (2026 to date). "
+            f"The band is four annual means of a monthly series whose monthly range since January 2025 is {fmt(b['monthly_ratio_range_2025_on']['min'], '0.01')} to {fmt(b['monthly_ratio_range_2025_on']['max'], '0.01')}: a month outside the band is not a falsification, a season is.",
+            f"- **The curve**: Catalyst's table of NBP settlements for Wednesday 14 October 2026 in pence per therm, converted at {X['kwh_per_therm']} kWh per therm (p/therm × 10 ÷ {X['kwh_per_therm']} = GBP/MWh); day-ahead {fmt(X['day_ahead']['pence_per_therm'])} p/therm = {fmt(X['day_ahead']['gas_gbp_per_mwh'])} GBP/MWh for reference. The page is a broker-report aggregator's print, not the exchange's settlement file (ICE Endex NBP settlements are paid), and it is the only free dated print of the curve found; **its own footer calls its forward-season levels \"indicative editorial estimates\" that \"are not licensed market data\"**, so the curve here is Catalyst's indicative print, quoted with attribution and a link as its terms allow. A later edition is a new pin. The page's UK ETS Dec-26 line, {fmt(X['uk_ets_dec_26_gbp_per_t'])} GBP/t, is recorded and enters no figure below.",
+            "- **Winter 2026-27** is November to March here: NBP seasons run October to March and April to September, and the page prints no Oct-26 (balance of month), so the winter is the mean of Nov-26, Dec-26 and Q1-27.",
+            "",
+        ]
+        + md_table(
+            [
+                "contract or season",
+                "NBP p/therm",
+                "gas GBP/MWh",
+                "implied spread, low",
+                "central",
+                "high",
+            ],
+            rows,
+        )
+        + [
+            "",
+            "The implied spread is the forward gas price times the band; it is **not a forecast of gas**.",
+            "",
+            '**Scoring, as a vector, appended as each season ends:** (a) the realised mean gas price (ONS SAP as 024 reads it, and Ofgem\'s monthly day-ahead price when it reaches the months) against the pinned forward; (b) the realised ratio A for the season, 024\'s measure re-run under its declaration for the new months, against the band; (c) the realised mean daily spread against the implied band. A miss is attributed in that order: gas moved (the curve was wrong, the ratio held); the ratio moved (the curve was right, the structure changed); both. The record never says "right" or "wrong" alone.',
+            "",
+            f"**Falsifiers, published with the claim.** **F3**: the realised ratio A for a full NBP season (winter 2026-27 as November to March, or Summer-27) lies outside the band by more than {fmt(X['falsifiers']['F3']['tolerance'])}: then the structure moved and the ratio is not a stable multiple. **F4**: the realised season spread lies outside the implied band although the season's realised gas lies within {pct(X['falsifiers']['F4']['gas_tolerance'])} of the pinned forward: then the miss is not gas, and the ratio method failed on its own terms.",
+            "",
+            "**Outcome schedule**, dated watches in the governed record (`check-record` refuses to let one lapse); each outcome is appended here, never edited in:",
+            "",
+        ]
+        + md_table(
+            ["watch", "season", "due", "holder"],
+            [[w["watch"], w["season"], w["due"], w["holder"]] for w in X["watches"]],
+        )
+        + [""]
+    )
+    if X["outcomes"]:
+        lines += ["Outcomes recorded:", ""] + [f"- {o}" for o in X["outcomes"]] + [""]
+    return lines
+
+
+def chart_4(
+    R: dict[str, Any], plt: Any, tokens: dict[str, str], finish_footer: str
+) -> dict[str, Any]:
+    """The realised monthly spread, then the implied corridor with the forward gas beside it."""
+    import matplotlib.dates as mdates
+
+    X = json.loads(FORWARD.read_text())
+    P = R["units"]["printed"]["periods"]
+    months = [m for m in P if len(m) == 7 and m >= "2024-01"]
+    xm = [mdates.date2num(date(int(m[:4]), int(m[5:]), 15)) for m in months]
+    spread = [float(P[m]["spread_mean"]) for m in months]
+    gas = [
+        float(P[m]["gas_mean"]) if P[m]["gas_mean"] is not None else float("nan") for m in months
+    ]
+    # the corridor: each forward contract spans its delivery months
+    spans = {
+        "Nov-26": (date(2026, 11, 1), date(2026, 12, 1)),
+        "Dec-26": (date(2026, 12, 1), date(2027, 1, 1)),
+        "Q1-27": (date(2027, 1, 1), date(2027, 4, 1)),
+        "Summer-27": (date(2027, 4, 1), date(2027, 10, 1)),
+        "Winter-27": (date(2027, 10, 1), date(2028, 4, 1)),
+    }
+    fig, ax = plt.subplots(figsize=(16, 9))
+    fig.subplots_adjust(left=0.08, right=0.97, top=0.86, bottom=0.14)
+    ax.plot(
+        xm,
+        spread,
+        color=tokens["BLUE"],
+        linewidth=2.4,
+        label="realised monthly mean daily spread (024, printed day)",
+    )
+    ax.plot(
+        xm,
+        gas,
+        color=tokens["ORANGE"],
+        linewidth=1.8,
+        label="realised monthly mean gas price (ONS SAP)",
+    )
+    first = True
+    for c, (a, b_) in spans.items():
+        v = X["contracts"][c]
+        x0, x1 = mdates.date2num(a), mdates.date2num(b_)
+        ax.fill_between(
+            [x0, x1],
+            [float(v["low"])] * 2,
+            [float(v["high"])] * 2,
+            color=tokens["BLUE_LIGHT"],
+            alpha=0.35,
+            linewidth=0,
+            label="implied spread corridor: forward gas × ratio band" if first else None,
+        )
+        ax.plot(
+            [x0, x1],
+            [float(v["central"])] * 2,
+            color=tokens["BLUE"],
+            linewidth=2,
+            linestyle="--",
+            label="central case: forward gas × 2026-to-date ratio" if first else None,
+        )
+        ax.plot(
+            [x0, x1],
+            [float(v["gas_gbp_per_mwh"])] * 2,
+            color=tokens["ORANGE"],
+            linewidth=1.8,
+            linestyle="--",
+            label="forward gas as printed (Catalyst, settlement 14/10/2026)" if first else None,
+        )
+        ax.text(
+            (x0 + x1) / 2,
+            float(v["high"]) + 3,
+            c,
+            fontsize=10,
+            color=tokens["INK_2"],
+            ha="center",
+            va="bottom",
+        )
+        first = False
+    ax.axvline(mdates.date2num(date(2026, 10, 15)), color=tokens["INK_2"], linewidth=1)
+    ax.text(
+        mdates.date2num(date(2026, 10, 15)) - 10,
+        5,
+        "pinned 15/10/2026",
+        fontsize=10,
+        color=tokens["INK_2"],
+        ha="right",
+        va="bottom",
+    )
+    ax.set_xlim(mdates.date2num(date(2024, 1, 1)), mdates.date2num(date(2028, 4, 1)))
+    ax.xaxis.set_major_locator(mdates.YearLocator())
+    ax.xaxis.set_major_formatter(mdates.DateFormatter("%Y"))
+    ax.set_ylim(0, max(max(spread), max(float(v["high"]) for v in X["contracts"].values())) * 1.12)
+    ax.set_ylabel("Pounds per megawatt-hour", labelpad=10)
+    ax.set_xlabel(
+        "Calendar month, January 2024 to March 2028 (realised to the left of the pin date, implied to the right)",
+        labelpad=10,
+    )
+    ax.yaxis.grid(True, color=tokens["GRID"], linewidth=0.8)
+    ax.set_axisbelow(True)
+    for s_ in ("top", "right"):
+        ax.spines[s_].set_visible(False)
+    ax.legend(loc="upper left", frameon=False, fontsize=10.5)
+    fig.text(
+        0.03,
+        0.955,
+        "Realised monthly spread, and the spread implied by the forward gas curve and a historical ratio band, Great Britain",
+        fontsize=19,
+        fontweight=600,
+        color=tokens["INK"],
+    )
+    fig.text(
+        0.03,
+        0.915,
+        "Realised: 024's monthly mean daily spread and mean SAP gas. Implied: Catalyst's NBP print of 14/10/2026 times 024's yearly ratio band (low, central, high).",
+        fontsize=12.5,
+        color=tokens["INK_2"],
+    )
+    fig.text(
+        0.03,
+        0.018,
+        finish_footer
+        + "\nforward curve: Catalyst Commercial report of 15/10/2026, settlement 14/10/2026.",
+        fontsize=8.5,
+        color=tokens["INK_2"],
+        ha="left",
+        va="bottom",
+    )
+    fig.savefig(FIGURES / "chart-4-implied-forward-spread.png", dpi=100)
+    fig.savefig(FIGURES / "chart-4-implied-forward-spread.svg")
+    plt.close(fig)
+    printed = {
+        f"chart 4 {c} {k}": v[k]
+        for c, v in X["contracts"].items()
+        for k in ("gas_gbp_per_mwh", "low", "central", "high")
+    }
+    printed["chart 4 band"] = (
+        f"{b['low']} to {b['high']}, central {b['central']}" if (b := X["band"]) else ""
+    )
+    return printed
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument(
@@ -1457,9 +1847,11 @@ def main() -> None:
             "acquire",
             "schema",
             "schema-cross-check",
+            "schema-forward",
             "format",
             "compute",
             "cross-check",
+            "forward",
             "render",
             "figures",
         ],
@@ -1472,12 +1864,16 @@ def main() -> None:
         phase_schema()
     elif args.phase == "schema-cross-check":
         phase_schema_cross_check()
+    elif args.phase == "schema-forward":
+        phase_schema_forward()
     elif args.phase == "format":
         phase_format()
     elif args.phase == "compute":
         phase_compute(args.seal)
     elif args.phase == "cross-check":
         phase_cross_check(args.seal)
+    elif args.phase == "forward":
+        phase_forward(args.seal)
     elif args.phase == "render":
         phase_render()
     elif args.phase == "figures":

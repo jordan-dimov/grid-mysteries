@@ -1,5 +1,14 @@
 [
  {
+  "source": "catalyst",
+  "dataset": "catalyst-uk-energy-market-report-2026-10-15",
+  "url": "https://www.catalyst-commercial.co.uk/works/uk-energy-market-report-15-october-2026/",
+  "path": "data/raw/catalyst/024/uk-energy-market-report-15-october-2026.html",
+  "sha256": "8ba4b5b3a48f70bfa730a6c003a5cebe7295038f2c3876e9f6e6326bd62ea9da",
+  "fetched_at": "2026-10-15T19:55:14.046064+00:00",
+  "bytes": 389469
+ },
+ {
   "source": "govuk",
   "dataset": "govuk-ukets-ccm-monthly-average-prices",
   "url": "https://www.gov.uk/government/publications/taking-part-in-the-uk-emissions-trading-scheme-markets/cost-containment-mechanism-ccm-trigger-prices-and-average-monthly-prices-full-table",

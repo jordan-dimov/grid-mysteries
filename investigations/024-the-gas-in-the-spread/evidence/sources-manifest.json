@@ -1,0 +1,56 @@
+[
+ {
+  "source": "govuk",
+  "dataset": "govuk-ukets-ccm-monthly-average-prices",
+  "url": "https://www.gov.uk/government/publications/taking-part-in-the-uk-emissions-trading-scheme-markets/cost-containment-mechanism-ccm-trigger-prices-and-average-monthly-prices-full-table",
+  "path": "data/raw/govuk/024/ccm-trigger-prices-and-average-monthly-prices-full-table-2026-10-15.html",
+  "sha256": "932725ca74e4a23608aae363960f8b5d9193c6fae5839bd1f4e050c11e74fd01",
+  "fetched_at": "2026-10-15T18:44:29.679080+00:00",
+  "bytes": 124262
+ },
+ {
+  "source": "govuk",
+  "dataset": "govuk-ukets-markets-guidance",
+  "url": "https://www.gov.uk/government/publications/uk-emissions-trading-scheme-markets/uk-emissions-trading-scheme-markets",
+  "path": "data/raw/govuk/024/uk-emissions-trading-scheme-markets-2026-10-15.html",
+  "sha256": "07cd65e8ab5c3798540aa160ac5f5b62531e105706fa4452f82c1631738bb9e7",
+  "fetched_at": "2026-10-15T18:52:19.358211+00:00",
+  "bytes": 137887
+ },
+ {
+  "source": "neso",
+  "dataset": "neso-n2ex-day-ahead",
+  "url": "https://api.neso.energy/datastore/dump/4f27eea5-7038-4f73-9740-e3e4ad47c26a",
+  "path": "data/raw/neso/024/n2ex-day-ahead-dump-2026-10-15.csv",
+  "sha256": "ab8202a72eae9716964dcf334915776c38c46a8f0ebf0e602ce1f5be49295adc",
+  "fetched_at": "2026-10-15T18:42:54.609614+00:00",
+  "bytes": 1575075
+ },
+ {
+  "source": "neso",
+  "dataset": "neso-n2ex-day-ahead-resource-metadata",
+  "url": "https://api.neso.energy/api/3/action/resource_show?id=4f27eea5-7038-4f73-9740-e3e4ad47c26a",
+  "path": "data/raw/neso/024/resource-show-4f27eea5-7038-4f73-9740-e3e4ad47c26a-2026-10-15.json",
+  "sha256": "4097147bf8cbffa9364ce394bee0f7d5a0c36750fedd501349987f6cb1e6c7d4",
+  "fetched_at": "2026-10-15T18:44:29.957611+00:00",
+  "bytes": 874
+ },
+ {
+  "source": "ons",
+  "dataset": "ons-sap-gas-daily",
+  "url": "https://www.ons.gov.uk/file?uri=/economy/economicoutputandproductivity/output/datasets/systemaveragepricesapofgas/2026/systemaveragepriceofgasdataset151026.xlsx",
+  "path": "data/raw/ons/024/systemaveragepriceofgasdataset151026.xlsx",
+  "sha256": "c84b724a95245987e111d3c14f3f1c5a95b0ca997053d769af04c959c234b72e",
+  "fetched_at": "2026-10-15T18:42:54.882971+00:00",
+  "bytes": 127625
+ },
+ {
+  "source": "ons",
+  "dataset": "ons-sap-gas-dataset-page",
+  "url": "https://www.ons.gov.uk/economy/economicoutputandproductivity/output/datasets/systemaveragepricesapofgas",
+  "path": "data/raw/ons/024/systemaveragepricesapofgas-dataset-page-2026-10-15.html",
+  "sha256": "58b37e4cd54b509b509ea26aac6d50087fc0d798a940aacb2fa20781aef2a862",
+  "fetched_at": "2026-10-15T18:44:30.236089+00:00",
+  "bytes": 51517
+ }
+]

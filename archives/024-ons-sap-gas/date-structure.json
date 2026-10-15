@@ -1,0 +1,23 @@
+{
+ "file": "data/raw/ons/024/systemaveragepriceofgasdataset151026.xlsx",
+ "sha256": "c84b724a95245987e111d3c14f3f1c5a95b0ca997053d769af04c959c234b72e",
+ "sheet": "1.Daily SAP Gas",
+ "header_row": 5,
+ "header": [
+  "Date",
+  "SAP actual day",
+  "SAP seven-day rolling average"
+ ],
+ "rows": 3206,
+ "rows_with_date_in_column_a": 3206,
+ "first_date": "2018-01-01",
+ "last_date": "2026-10-11",
+ "duplicate_dates": 0,
+ "dates_missing_inside_range": [],
+ "sap_actual_day_cell_forms": {
+  "number": 3206
+ },
+ "times_on_date_cells": [
+  "00:00:00"
+ ]
+}

@@ -1,0 +1,21 @@
+{
+ "declaration": "DECLARATION.md",
+ "rules": {
+  "Validity: a day with 23, 24 or 25 prices is measured; fewer or more is excluded": "tests/test_gas_in_the_spread.py::test_day_rule_measures_23_to_25_prices_and_excludes_the_rest",
+  "The spread is the day's highest hourly price minus its lowest, negative prices included": "tests/test_gas_in_the_spread.py::test_spread_is_highest_minus_lowest_including_negative_prices",
+  "The local day: each printed hour read as UTC and assigned to its Europe/London calendar day": "tests/test_gas_in_the_spread.py::test_local_day_reads_a_printed_utc_hour_into_the_london_calendar_day",
+  "Clock-change days have 23 and 25 hours on the local unit": "tests/test_gas_in_the_spread.py::test_clock_change_days_have_23_and_25_hours_when_reconstructed_from_utc",
+  "The CCGT proxy is 2 x gas + 0.4 x carbon (Jomaux's)": "tests/test_gas_in_the_spread.py::test_ccgt_cost_is_twice_gas_plus_point_four_carbon",
+  "The three legs are non-negative and sum exactly to the spread (wholly negative day, no scarcity, all three, flat day)": "tests/test_gas_in_the_spread.py::test_the_three_legs_sum_exactly_to_the_spread",
+  "Ratio A (mean spread over mean gas) and ratio B (mean of daily ratios) are both defined and differ": "tests/test_gas_in_the_spread.py::test_ratio_of_means_and_mean_of_ratios_differ_and_are_both_defined",
+  "A day joins its date's gas and its month's carbon plus CPS 18; unmeasured days and months without carbon are counted, not averaged": "tests/test_gas_in_the_spread.py::test_build_rows_joins_gas_and_the_months_carbon_and_counts_unmeasured_days",
+  "Periods: calendar years 2022 to 2025, 2026 to the fetch date, the same dates in 2025, every month from January 2022": "tests/test_gas_in_the_spread.py::test_periods_are_the_years_the_two_to_date_windows_and_the_months",
+  "Period averages are simple means over days, with counts; legs' shares are mean leg over mean spread on the days with legs": "tests/test_gas_in_the_spread.py::test_summarise_counts_days_and_computes_both_ratios_and_the_shares",
+  "F1 (ratio 2026 to date not below 2025 same dates by more than 5 %) and F2 (September 2026 not within GBP 2 of Modo's 122)": "tests/test_gas_in_the_spread.py::test_falsifiers",
+  "Power is read from the printed forms (ISO date, HH:00 - HH:00 label, six-decimal price) as Decimals; the format profile sees a byte-order mark": "tests/test_gas_in_the_spread.py::test_n2ex_reader_reads_the_declared_forms_and_profiles_a_byte_order_mark",
+  "Gas is the printed p/kWh times ten, exact": "tests/test_gas_in_the_spread.py::test_ons_sap_cells_convert_to_pounds_per_megawatt_hour_exactly",
+  "The daily SAP sheet is read from its header on row 5": "tests/test_gas_in_the_spread.py::test_ons_sap_reader_reads_the_daily_sheet",
+  "Carbon reading rule: Month j average price in the row for month M is month M - (k + 1 - j); non-price cells are skipped": "tests/test_gas_in_the_spread.py::test_ukets_monthly_reading_rule_maps_each_rows_months_back_from_the_row",
+  "C3: a month printed with two values, or a misprinted monitoring period, stops the read": "tests/test_gas_in_the_spread.py::test_ukets_monthly_stops_on_a_disagreement_or_a_misprinted_period"
+ }
+}

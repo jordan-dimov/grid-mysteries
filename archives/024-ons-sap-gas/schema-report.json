@@ -1,0 +1,159 @@
+{
+ "file": "data/raw/ons/024/systemaveragepriceofgasdataset151026.xlsx",
+ "sha256": "c84b724a95245987e111d3c14f3f1c5a95b0ca997053d769af04c959c234b72e",
+ "header_row": 5,
+ "sheets_all": [
+  "Cover",
+  "Contents",
+  "Notes",
+  "1.Daily SAP Gas",
+  "2.Monthly SAP Gas"
+ ],
+ "sheets": [
+  {
+   "name": "1.Daily SAP Gas",
+   "rows": 3206,
+   "blank_rows_dropped": 0,
+   "preamble_rows": [
+    [
+     "Table 1: Daily System Average Price (SAP) of Gas and seven-day rolling average, Great Britain, pence per kilowatt hour ("
+    ],
+    [
+     "This worksheet contains one table. Some cells may refer to notes, which can be found on the notes worksheet."
+    ],
+    [
+     "Back to Notes"
+    ],
+    [
+     "Back to Contents"
+    ]
+   ],
+   "columns": [
+    {
+     "name": "Date",
+     "blank": 0,
+     "distinct": 3206,
+     "forms": {
+      "date-cell": 3206
+     },
+     "sample": [
+      "2018-01-01T00:00:00",
+      "2018-01-02T00:00:00",
+      "2018-01-03T00:00:00"
+     ]
+    },
+    {
+     "name": "SAP actual day",
+     "blank": 0,
+     "distinct": 3107,
+     "forms": {
+      "decimal": 3204,
+      "integer": 2
+     },
+     "sample": [
+      "1.7083",
+      "1.7331",
+      "1.7663"
+     ]
+    },
+    {
+     "name": "SAP seven-day rolling average",
+     "blank": 0,
+     "distinct": 3194,
+     "forms": {
+      "text": 6,
+      "decimal": 3200
+     },
+     "sample": [
+      "[x]",
+      "[x]",
+      "[x]"
+     ]
+    },
+    {
+     "name": "",
+     "blank": 3206,
+     "distinct": 1,
+     "forms": {
+      "blank": 3206
+     },
+     "sample": []
+    },
+    {
+     "name": "",
+     "blank": 3206,
+     "distinct": 1,
+     "forms": {
+      "blank": 3206
+     },
+     "sample": []
+    },
+    {
+     "name": "",
+     "blank": 3206,
+     "distinct": 1,
+     "forms": {
+      "blank": 3206
+     },
+     "sample": []
+    },
+    {
+     "name": "",
+     "blank": 3206,
+     "distinct": 1,
+     "forms": {
+      "blank": 3206
+     },
+     "sample": []
+    }
+   ]
+  },
+  {
+   "name": "2.Monthly SAP Gas",
+   "rows": 105,
+   "blank_rows_dropped": 0,
+   "preamble_rows": [
+    [
+     "Table 2: Monthly System Average Price (SAP) of Gas, Great Britain, pence per kilowatt hour (p/kWh), non-seasonally adjus"
+    ],
+    [
+     "This worksheet contains one table. Some cells may refer to notes, which can be found on the notes worksheet."
+    ],
+    [
+     "Back to Notes"
+    ],
+    [
+     "Back to Contents"
+    ]
+   ],
+   "columns": [
+    {
+     "name": "Month",
+     "blank": 0,
+     "distinct": 105,
+     "forms": {
+      "date-cell": 105
+     },
+     "sample": [
+      "2018-01-01T00:00:00",
+      "2018-02-01T00:00:00",
+      "2018-03-01T00:00:00"
+     ]
+    },
+    {
+     "name": "SAP monthly average",
+     "blank": 0,
+     "distinct": 104,
+     "forms": {
+      "decimal": 105
+     },
+     "sample": [
+      "1.712",
+      "2.014",
+      "2.463"
+     ]
+    }
+   ]
+  }
+ ]
+}

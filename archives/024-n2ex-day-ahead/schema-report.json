@@ -1,0 +1,50 @@
+{
+ "file": "data/raw/neso/024/n2ex-day-ahead-dump-2026-10-15.csv",
+ "sha256": "ab8202a72eae9716964dcf334915776c38c46a8f0ebf0e602ce1f5be49295adc",
+ "header_line": 1,
+ "delimiter": "comma",
+ "preamble_lines": [],
+ "rows": 44448,
+ "blank_rows_dropped": 0,
+ "columns": [
+  {
+   "name": "Date",
+   "blank": 0,
+   "distinct": 1853,
+   "forms": {
+    "iso-date": 44448
+   },
+   "sample": [
+    "2021-09-20",
+    "2021-09-20",
+    "2021-09-21"
+   ]
+  },
+  {
+   "name": "Delivery Period",
+   "blank": 0,
+   "distinct": 24,
+   "forms": {
+    "text": 44448
+   },
+   "sample": [
+    "22:00 - 23:00",
+    "23:00 - 00:00",
+    "00:00 - 01:00"
+   ]
+  },
+  {
+   "name": "Price",
+   "blank": 0,
+   "distinct": 17887,
+   "forms": {
+    "decimal": 44448
+   },
+   "sample": [
+    "129.950000",
+    "126.200000",
+    "122.250000"
+   ]
+  }
+ ]
+}

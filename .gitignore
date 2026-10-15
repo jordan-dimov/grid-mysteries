@@ -50,3 +50,6 @@ investigations/023-did-changing-hands-slip-more/RESULTS.md
 investigations/023-did-changing-hands-slip-more/evidence/stages.ndjson
 investigations/023-did-changing-hands-slip-more/evidence/exposure.ndjson
 investigations/023-did-changing-hands-slip-more/evidence/results.json
+
+# 024: charts are drawn from results.json by run.py --phase figures; out of git as 020's are.
+investigations/024-the-gas-in-the-spread/figures/

@@ -167,3 +167,48 @@ behind it (`archives/tec-register/`, report `9ed878f4…`) added the two
 columns' vocabularies, blank rates and key stability to the archive report;
 version 4's `series.json` cites the earlier report (`be060a7c…`) it was
 computed against, which is unchanged in git.
+
+## Finding, not amendment — 2026-10-15: the 301-day hole is closed in the archive, and version 4 cannot be recomputed over it under its own rules
+
+NESO answered 005's EIR request (FOI/26/216, letter of 13 October 2026) with
+83 TEC Register copies dated 2025-07-25 to 2026-05-15, journalled on
+2026-10-15 under the source label `neso-foi-email`
+(`investigations/005-connection-date-credibility/ACQUISITION-FOI-26-216.md`).
+No gap longer than 7 days remains between 2025-07-22 and 2026-05-19. The
+archive schema report was regenerated over 783 usable copies: the `Gate`
+column's era begins 2025-11-21 (53 copies to 2026-09-15), the previous era
+runs 2024-06-18 to 2025-11-18 (97 copies).
+
+**What the declaration expected.** Version 1 says the answered request's
+copies "enter the archive as new journal rows and the series is recomputed
+under this declaration; they fall inside the regime break below, so they
+cannot change any row of the old-regime series." The regime break is a
+date (copies dated 2025-12-01 or later), not the hole: 36 of the copies
+(2025-07-25 to 2025-11-28) belong to the old regime and 47 (2025-12-05 to
+2026-05-15) to the reformed one.
+
+**What `run.py --seal 7d07cbd1 --phase check` found on 2026-10-15**, over
+835 journal rows, 815 distinct dates, 783 usable copies:
+
+    refusing: the version 2 side of 4 row(s) differs from evidence/v2
+    (2026-05-19, 2026-08-22, 2026-08-25, 2026-09-15)
+
+The four reformed-regime rows restate, because the segment's first copy is
+now 2025-12-05 and 2026-05-19 gains an increment and a chain position.
+Version 4's rows carry version 2's row byte for byte
+(`require_v2_side_unchanged`), and version 2 is closed, so **`--amend` does
+not reach this refusal**: the series with the hole filled is a restated
+history, and under this file's own rule "a restated history is a new
+declaration published beside this one". No evidence was written. By the
+declaration's own reasoning the old-regime rows to 2025-07-22 do not change
+(each copy's comparisons look backward); the 36 old-regime copies would
+append rows and extend the partial 2025 window to 2025-11-28; P2's "first
+copy of the reformed regime" would move from 2026-05-19 to 2025-12-05 and
+its 365-day falsifier date with it. None of that is computed here.
+
+**Effect on the published series: none.** `evidence/v4/`, `SERIES.md` and
+the site page stand as run on 2026-09-23. The "Gaps" section's statement
+that no copy is held between 2025-07-22 and 2026-05-19 describes the
+archive the series was computed from, not the archive now; a version 5
+beside this one, with the sponsor's seal, is what recomputes. Whether to
+open it is the sponsor's decision, recorded here when made.

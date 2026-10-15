@@ -465,5 +465,48 @@
    "Transmission Zone",
    "Distribution Zone"
   ]
+ },
+ {
+  "first": "2025-07-25",
+  "last": "2025-11-18",
+  "copies": 34,
+  "headers": [
+   "Project Name",
+   "Customer Name",
+   "Connection Site",
+   "Stage",
+   "MW Connected",
+   "MW Increase / Decrease",
+   "Cumulative Total Capacity (MW)",
+   "MW Effective From",
+   "Project Status",
+   "Agreement Type",
+   "HOST TO",
+   "Plant Type",
+   "Project ID",
+   "Project Number"
+  ]
+ },
+ {
+  "first": "2025-11-21",
+  "last": "2026-05-15",
+  "copies": 49,
+  "headers": [
+   "Project Name",
+   "Customer Name",
+   "Connection Site",
+   "Stage",
+   "MW Connected",
+   "MW Increase / Decrease",
+   "Cumulative Total Capacity (MW)",
+   "MW Effective From",
+   "Project Status",
+   "Agreement Type",
+   "HOST TO",
+   "Plant Type",
+   "Project ID",
+   "Project Number",
+   "Gate"
+  ]
  }
 ]

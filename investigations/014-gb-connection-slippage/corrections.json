@@ -23,5 +23,18 @@
       }
     ],
     "note": "A caveat, not a recount: no number changes, so old and new are null. Printed in the preamble of SERIES.md and the page, and in the list of corrections."
+  },
+  {
+    "date": "2026-10-15",
+    "text": "The archive now holds 83 copies of the register dated 25 Jul 2025 to 15 May 2026 (NESO's EIR response FOI/26/216, journalled 15 Oct 2026; investigations/005-connection-date-credibility/ACQUISITION-FOI-26-216.md), so the 301-day hole named under Gaps is closed in the archive, with no gap over 7 days inside it. This series was computed on 23 Sep 2026, before they arrived, and is not recomputed under version 4: its rows carry version 2's closed rows byte for byte, and the four reformed-regime rows would restate (AMENDMENTS.md, 2026-10-15). A version 5 beside this one is what would recompute. No figure on this page changes.",
+    "old": null,
+    "new": null,
+    "sources": [
+      {
+        "path": "investigations/005-connection-date-credibility/ACQUISITION-FOI-26-216.md",
+        "sha256": "4ec9c14c0924dcf4ee714226878287f32df1db1de099facc7b0780cc87804fb9"
+      }
+    ],
+    "note": "A caveat about the archive, not a recount: old and new are null. Listed under Corrections only."
   }
 ]

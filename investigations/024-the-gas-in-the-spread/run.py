@@ -1154,6 +1154,17 @@ def phase_figures() -> None:
         "Each hour's price split at zero and at 2 × gas + 0.4 × carbon (Jomaux's CCGT proxy, uncalibrated); the three legs of each day sum to its spread. Means over the month's days.",
     )
 
+    if FORWARD.exists():
+        tokens = {
+            "SURFACE": SURFACE,
+            "INK": INK,
+            "INK_2": INK_2,
+            "GRID": GRID,
+            "BLUE": BLUE,
+            "BLUE_LIGHT": BLUE_LIGHT,
+            "ORANGE": ORANGE,
+        }
+        printed.update(chart_4(R, plt, tokens, footer))
     captions = (
         [
             "# 024 figures",
@@ -1185,6 +1196,16 @@ def phase_figures() -> None:
                 ]
                 for y in ("2022", "2023", "2024", "2025", "2026 to date", "2025 same dates")
             ],
+        )
+        + (
+            [
+                "## Chart 4 — `chart-4-implied-forward-spread`",
+                "",
+                "**Caption.** The realised monthly mean daily spread (024, printed day) and mean SAP gas from January 2024 to the latest month as lines; from November 2026 to March 2028 a shaded corridor, the forward NBP gas price as printed by Catalyst Commercial on 15/10/2026 (settlement 14/10/2026) times 024's yearly ratio band, with the central case (the 2026-to-date ratio) dashed and the forward gas itself dashed in the same units. **The corridor is the forward gas curve times a historical ratio band, not a forecast of gas**; the falsifiers F3 and F4 and the three watch dates are in RESULTS.md's forward record.",
+                "",
+            ]
+            if FORWARD.exists()
+            else []
         )
         + [
             "",
@@ -1615,6 +1636,11 @@ def phase_forward(seal: str | None) -> None:
             for w, s_, d in FORWARD_WATCHES
         ],
         "outcomes": [],
+        "departures": [
+            "The schema report amendment 2 cites by digest (35eafe66f552…) classed the commodities table's six settlement cells as 'other', because the reader's pound-per-tonne form at the time of the schema pass required '/t' where the page prints '/tonne'; the reader was corrected before the freeze and the supplement regenerated with it (digest "
+            + sha(ARCHIVE_CATALYST / "schema-report.json")[:12]
+            + "…) before this compute. The page's bytes are unchanged (C1); the first compute under the seal refused on C2 and was re-run after the regeneration. The UK ETS cell enters no figure."
+        ],
     }
     write_json(FORWARD, out)
     log_run("forward", seal=seal, amendment_2_sha256=digest, forward_sha256=sha(FORWARD))
@@ -1693,6 +1719,12 @@ def forward_section() -> list[str]:
         )
         + [""]
     )
+    if X.get("departures"):
+        lines += (
+            ["**Departures from the amendment's expectation, recorded:**", ""]
+            + [f"- {d}" for d in X["departures"]]
+            + [""]
+        )
     if X["outcomes"]:
         lines += ["Outcomes recorded:", ""] + [f"- {o}" for o in X["outcomes"]] + [""]
     return lines
@@ -1767,7 +1799,7 @@ def chart_4(
         )
         ax.text(
             (x0 + x1) / 2,
-            float(v["high"]) + 3,
+            float(v["high"]) + (9 if c == "Dec-26" else 3),
             c,
             fontsize=10,
             color=tokens["INK_2"],
@@ -1802,7 +1834,7 @@ def chart_4(
     fig.text(
         0.03,
         0.955,
-        "Realised monthly spread, and the spread implied by the forward gas curve and a historical ratio band, Great Britain",
+        "Realised monthly spread and the spread implied by the forward gas curve, Great Britain",
         fontsize=19,
         fontweight=600,
         color=tokens["INK"],

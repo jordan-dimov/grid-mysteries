@@ -7210,5 +7210,83 @@
       }
     ],
     "asserted_in": "01a13120-bfcf-74a0-9e9c-38072582d737"
+  },
+  {
+    "predicate": "Watch",
+    "args": [
+      {
+        "type": "subject",
+        "value": "w-024-winter-2026-27"
+      },
+      {
+        "type": "subject",
+        "value": "024"
+      },
+      {
+        "type": "subject",
+        "value": "winter 2026-27 (November to March): 024's ratio A, mean SAP gas and mean daily spread for the season re-run under its declaration, scored against amendment 2's forward record (F3, F4)"
+      },
+      {
+        "type": "subject",
+        "value": "A115"
+      },
+      {
+        "type": "date",
+        "value": "2027-03-31"
+      }
+    ],
+    "asserted_in": "01a14128-ddf7-7193-9b4a-975adfe50468"
+  },
+  {
+    "predicate": "Watch",
+    "args": [
+      {
+        "type": "subject",
+        "value": "w-024-summer-27"
+      },
+      {
+        "type": "subject",
+        "value": "024"
+      },
+      {
+        "type": "subject",
+        "value": "Summer-27 (April to September 2027): 024's ratio A, mean SAP gas and mean daily spread for the season re-run under its declaration, scored against amendment 2's forward record (F3, F4)"
+      },
+      {
+        "type": "subject",
+        "value": "A115"
+      },
+      {
+        "type": "date",
+        "value": "2027-09-30"
+      }
+    ],
+    "asserted_in": "01a14128-e5ee-72d0-b018-21b31c94fcba"
+  },
+  {
+    "predicate": "Watch",
+    "args": [
+      {
+        "type": "subject",
+        "value": "w-024-winter-27"
+      },
+      {
+        "type": "subject",
+        "value": "024"
+      },
+      {
+        "type": "subject",
+        "value": "Winter-27 (October 2027 to March 2028): 024's ratio A, mean SAP gas and mean daily spread for the season re-run under its declaration, scored against amendment 2's forward record (F3, F4)"
+      },
+      {
+        "type": "subject",
+        "value": "A115"
+      },
+      {
+        "type": "date",
+        "value": "2028-03-31"
+      }
+    ],
+    "asserted_in": "01a14128-ee7e-7500-b60d-c0c1adabd2a9"
   }
 ]

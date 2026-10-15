@@ -222,6 +222,43 @@ Yearly ratios here are the sum of monthly mean spreads over the sum of monthly m
 | 2026-05 | 117.89 | 40.23 | 40.37 | -0.14 | -0.3 % | 1.197 | 1.201 |
 | 2026-06 | 110.14 | 37.58 | 37.55 | 0.03 | 0.1 % | 2.406 | 2.404 |
 
+## Forward record (amendment 2)
+
+Computed 2026-10-15 under amendment 2 `0eb55a54…`, from the ratio band of `results.json` (`47e76815…`, sealed under `739471d0…`) and the NBP curve as printed by Catalyst Commercial's "UK Energy Market Report - 15 October 2026" (`8ba4b5b3a48f…`, fetched 2026-10-15T19:55:14Z; "Settlement Wednesday 14 October 2026, against Tuesday 13 October 2026"). **This is a dated forecast appended to a forensic record, scored as a vector, never a verdict; it is not a Forward Mystery and claims no buyer, no absorption and no opportunity.**
+
+- **The band**: yearly ratio A (mean daily spread over mean SAP gas) for 2023 2.061, 2024 2.135, 2025 2.254, 2026 to date 1.789; low edge 1.789 (2026 to date), high edge 2.254 (2025), central case 1.789 (2026 to date). The band is four annual means of a monthly series whose monthly range since January 2025 is 1.20 to 3.22: a month outside the band is not a falsification, a season is.
+- **The curve**: Catalyst's table of NBP settlements for Wednesday 14 October 2026 in pence per therm, converted at 29.3071 kWh per therm (p/therm × 10 ÷ 29.3071 = GBP/MWh); day-ahead 209.00 p/therm = 71.31 GBP/MWh for reference. The page is a broker-report aggregator's print, not the exchange's settlement file (ICE Endex NBP settlements are paid), and it is the only free dated print of the curve found; **its own footer calls its forward-season levels "indicative editorial estimates" that "are not licensed market data"**, so the curve here is Catalyst's indicative print, quoted with attribution and a link as its terms allow. A later edition is a new pin. The page's UK ETS Dec-26 line, 65.10 GBP/t, is recorded and enters no figure below.
+- **Winter 2026-27** is November to March here: NBP seasons run October to March and April to September, and the page prints no Oct-26 (balance of month), so the winter is the mean of Nov-26, Dec-26 and Q1-27.
+
+| contract or season | NBP p/therm | gas GBP/MWh | implied spread, low | central | high |
+|---|---|---|---|---|---|
+| Nov-26 | 216.01 | 73.71 | 131.83 | 131.83 | 166.13 |
+| Dec-26 | 218.98 | 74.72 | 133.65 | 133.65 | 168.41 |
+| Q1-27 | 216.17 | 73.76 | 131.93 | 131.93 | 166.25 |
+| Summer-27 | 159.70 | 54.49 | 97.47 | 97.47 | 122.82 |
+| Winter-27 | 152.20 | 51.93 | 92.89 | 92.89 | 117.05 |
+| **winter 2026-27 (Nov-Mar)** (Nov-26 + Dec-26 + Q1-27) | — | 74.06 | 132.47 | 132.47 | 166.93 |
+| **Summer-27** (Summer-27) | — | 54.49 | 97.47 | 97.47 | 122.82 |
+| **Winter-27** (Winter-27) | — | 51.93 | 92.89 | 92.89 | 117.05 |
+
+The implied spread is the forward gas price times the band; it is **not a forecast of gas**.
+
+**Scoring, as a vector, appended as each season ends:** (a) the realised mean gas price (ONS SAP as 024 reads it, and Ofgem's monthly day-ahead price when it reaches the months) against the pinned forward; (b) the realised ratio A for the season, 024's measure re-run under its declaration for the new months, against the band; (c) the realised mean daily spread against the implied band. A miss is attributed in that order: gas moved (the curve was wrong, the ratio held); the ratio moved (the curve was right, the structure changed); both. The record never says "right" or "wrong" alone.
+
+**Falsifiers, published with the claim.** **F3**: the realised ratio A for a full NBP season (winter 2026-27 as November to March, or Summer-27) lies outside the band by more than 0.15: then the structure moved and the ratio is not a stable multiple. **F4**: the realised season spread lies outside the implied band although the season's realised gas lies within 10.0 % of the pinned forward: then the miss is not gas, and the ratio method failed on its own terms.
+
+**Outcome schedule**, dated watches in the governed record (`check-record` refuses to let one lapse); each outcome is appended here, never edited in:
+
+| watch | season | due | holder |
+|---|---|---|---|
+| w-024-winter-2026-27 | winter 2026-27 (Nov-Mar) | 2027-03-31 | A115 |
+| w-024-summer-27 | Summer-27 | 2027-09-30 | A115 |
+| w-024-winter-27 | Winter-27 | 2028-03-31 | A115 |
+
+**Departures from the amendment's expectation, recorded:**
+
+- The schema report amendment 2 cites by digest (35eafe66f552…) classed the commodities table's six settlement cells as 'other', because the reader's pound-per-tonne form at the time of the schema pass required '/t' where the page prints '/tonne'; the reader was corrected before the freeze and the supplement regenerated with it (digest 9e78eca8136f…) before this compute. The page's bytes are unchanged (C1); the first compute under the seal refused on C2 and was re-run after the regeneration. The UK ETS cell enters no figure.
+
 ## Caveats, in the order the piece must carry them
 
 1. SAP is a within-day system price (National Gas Transmission's On-the-Day Commodity Market), not the NBP day-ahead assessment; no free daily NBP day-ahead series was found.

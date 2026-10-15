@@ -24,5 +24,5 @@ Header: `Commodity`, `Settlement 14 Oct`, `Change on the day`.
 
 Row labels, in order: `Brent Crude Dec-26`, `Coal API2 2027`, `EUA Carbon Dec-26`, `UK ETS Dec-26`, `JKM LNG (Asia) front month`, `TTF Gas day-ahead`.
 
-Settlement cell forms: {'decimal': 0, 'pounds': 0, 'other': 6}.
+Settlement cell forms: {'decimal': 0, 'pounds': 1, 'other': 5}.
 

@@ -75,8 +75,8 @@
    ],
    "settlement_forms": {
     "decimal": 0,
-    "pounds": 0,
-    "other": 6
+    "pounds": 1,
+    "other": 5
    }
   }
  ],

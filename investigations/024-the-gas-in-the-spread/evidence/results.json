@@ -1,0 +1,3819 @@
+{
+ "declaration_sha256": "739471d07edd727f64805ba538d76ee7ec0cdc3960d6162851197a685b67a3e7",
+ "computed_at": "2026-10-15T18:58:53+00:00",
+ "fetch_date": "2026-10-15",
+ "sources": {
+  "govuk-ukets-ccm-monthly-average-prices": {
+   "path": "data/raw/govuk/024/ccm-trigger-prices-and-average-monthly-prices-full-table-2026-10-15.html",
+   "sha256": "932725ca74e4a23608aae363960f8b5d9193c6fae5839bd1f4e050c11e74fd01",
+   "fetched_at": "2026-10-15T18:44:29.679080+00:00"
+  },
+  "govuk-ukets-markets-guidance": {
+   "path": "data/raw/govuk/024/uk-emissions-trading-scheme-markets-2026-10-15.html",
+   "sha256": "07cd65e8ab5c3798540aa160ac5f5b62531e105706fa4452f82c1631738bb9e7",
+   "fetched_at": "2026-10-15T18:52:19.358211+00:00"
+  },
+  "neso-n2ex-day-ahead": {
+   "path": "data/raw/neso/024/n2ex-day-ahead-dump-2026-10-15.csv",
+   "sha256": "ab8202a72eae9716964dcf334915776c38c46a8f0ebf0e602ce1f5be49295adc",
+   "fetched_at": "2026-10-15T18:42:54.609614+00:00"
+  },
+  "neso-n2ex-day-ahead-resource-metadata": {
+   "path": "data/raw/neso/024/resource-show-4f27eea5-7038-4f73-9740-e3e4ad47c26a-2026-10-15.json",
+   "sha256": "4097147bf8cbffa9364ce394bee0f7d5a0c36750fedd501349987f6cb1e6c7d4",
+   "fetched_at": "2026-10-15T18:44:29.957611+00:00"
+  },
+  "ons-sap-gas-daily": {
+   "path": "data/raw/ons/024/systemaveragepriceofgasdataset151026.xlsx",
+   "sha256": "c84b724a95245987e111d3c14f3f1c5a95b0ca997053d769af04c959c234b72e",
+   "fetched_at": "2026-10-15T18:42:54.882971+00:00"
+  },
+  "ons-sap-gas-dataset-page": {
+   "path": "data/raw/ons/024/systemaveragepricesapofgas-dataset-page-2026-10-15.html",
+   "sha256": "58b37e4cd54b509b509ea26aac6d50087fc0d798a940aacb2fa20781aef2a862",
+   "fetched_at": "2026-10-15T18:44:30.236089+00:00"
+  }
+ },
+ "format_check": {
+  "neso-n2ex-day-ahead": [],
+  "ons-sap-gas-daily": [],
+  "govuk-ukets-ccm-monthly-average-prices": []
+ },
+ "hours": 44448,
+ "power_dates": {
+  "first": "2021-09-20",
+  "last": "2026-10-16"
+ },
+ "gas_dates": {
+  "first": "2018-01-01",
+  "last": "2026-10-11",
+  "days": 3206
+ },
+ "carbon_months": {
+  "first": "2021-05",
+  "last": "2026-09",
+  "months": 65,
+  "values": {
+   "2021-05": "49.09",
+   "2021-06": "46.08",
+   "2021-07": "44.15",
+   "2021-08": "48.55",
+   "2021-09": "58.36",
+   "2021-10": "60.98",
+   "2021-11": "60.50",
+   "2021-12": "74.87",
+   "2022-01": "76.70",
+   "2022-02": "84.85",
+   "2022-03": "75.90",
+   "2022-04": "77.90",
+   "2022-05": "83.71",
+   "2022-06": "82.04",
+   "2022-07": "80.93",
+   "2022-08": "89.05",
+   "2022-09": "79.41",
+   "2022-10": "72.96",
+   "2022-11": "70.50",
+   "2022-12": "77.58",
+   "2023-01": "69.09",
+   "2023-02": "82.82",
+   "2023-03": "77.23",
+   "2023-04": "68.92",
+   "2023-05": "57.68",
+   "2023-06": "54.77",
+   "2023-07": "49.79",
+   "2023-08": "43.62",
+   "2023-09": "39.16",
+   "2023-10": "43.48",
+   "2023-11": "41.89",
+   "2023-12": "39.31",
+   "2024-01": "36.98",
+   "2024-02": "35.35",
+   "2024-03": "36.60",
+   "2024-04": "35.95",
+   "2024-05": "41.05",
+   "2024-06": "47.44",
+   "2024-07": "41.78",
+   "2024-08": "39.92",
+   "2024-09": "40.47",
+   "2024-10": "38.01",
+   "2024-11": "37.67",
+   "2024-12": "35.84",
+   "2025-01": "35.84",
+   "2025-02": "44.31",
+   "2025-03": "43.27",
+   "2025-04": "45.78",
+   "2025-05": "51.34",
+   "2025-06": "51.12",
+   "2025-07": "49.17",
+   "2025-08": "51.43",
+   "2025-09": "56.19",
+   "2025-10": "55.54",
+   "2025-11": "57.41",
+   "2025-12": "62.13",
+   "2026-01": "68.26",
+   "2026-02": "50.83",
+   "2026-03": "39.46",
+   "2026-04": "46.82",
+   "2026-05": "52.41",
+   "2026-06": "57.02",
+   "2026-07": "58.68",
+   "2026-08": "59.34",
+   "2026-09": "60.17"
+  }
+ },
+ "last_measured_printed_day": "2026-10-15",
+ "days_ndjson": {
+  "kept": 0,
+  "added": 3706
+ },
+ "units": {
+  "printed": {
+   "days": 1853,
+   "excluded": [
+    {
+     "day": "2021-09-20",
+     "prices": 2
+    },
+    {
+     "day": "2026-10-16",
+     "prices": 22
+    }
+   ],
+   "periods": {
+    "2022": {
+     "first": "2022-01-01",
+     "last": "2022-12-31",
+     "calendar_days": 365,
+     "days_printed": 365,
+     "days_measured": 365,
+     "days_excluded_by_price_count": 0,
+     "spread_mean": "157.625205",
+     "days_with_gas": 365,
+     "gas_mean": "71.157775",
+     "days_with_both": 365,
+     "spread_mean_both": "157.625205",
+     "gas_mean_both": "71.157775",
+     "ratio_of_means": "2.215151",
+     "mean_of_ratios": "2.598408",
+     "days_with_legs": 365,
+     "spread_mean_legs": "157.625205",
+     "legs_mean": {
+      "negative": "0.440575",
+      "merit_order": "42.109896",
+      "scarcity": "115.074734"
+     },
+     "legs_share": {
+      "negative": "0.002795",
+      "merit_order": "0.267152",
+      "scarcity": "0.730053"
+     }
+    },
+    "2023": {
+     "first": "2023-01-01",
+     "last": "2023-12-31",
+     "calendar_days": 365,
+     "days_printed": 365,
+     "days_measured": 365,
+     "days_excluded_by_price_count": 0,
+     "spread_mean": "70.919671",
+     "days_with_gas": 365,
+     "gas_mean": "34.407586",
+     "days_with_both": 365,
+     "spread_mean_both": "70.919671",
+     "gas_mean_both": "34.407586",
+     "ratio_of_means": "2.061164",
+     "mean_of_ratios": "2.087834",
+     "days_with_legs": 365,
+     "spread_mean_legs": "70.919671",
+     "legs_mean": {
+      "negative": "0.429616",
+      "merit_order": "36.195759",
+      "scarcity": "34.294296"
+     },
+     "legs_share": {
+      "negative": "0.006058",
+      "merit_order": "0.510377",
+      "scarcity": "0.483565"
+     }
+    },
+    "2024": {
+     "first": "2024-01-01",
+     "last": "2024-12-31",
+     "calendar_days": 366,
+     "days_printed": 366,
+     "days_measured": 366,
+     "days_excluded_by_price_count": 0,
+     "spread_mean": "61.208060",
+     "days_with_gas": 366,
+     "gas_mean": "28.668590",
+     "days_with_both": 366,
+     "spread_mean_both": "61.208060",
+     "gas_mean_both": "28.668590",
+     "ratio_of_means": "2.135022",
+     "mean_of_ratios": "2.113676",
+     "days_with_legs": 366,
+     "spread_mean_legs": "61.208060",
+     "legs_mean": {
+      "negative": "0.525546",
+      "merit_order": "34.063208",
+      "scarcity": "26.619306"
+     },
+     "legs_share": {
+      "negative": "0.008586",
+      "merit_order": "0.556515",
+      "scarcity": "0.434899"
+     }
+    },
+    "2025": {
+     "first": "2025-01-01",
+     "last": "2025-12-31",
+     "calendar_days": 365,
+     "days_printed": 365,
+     "days_measured": 365,
+     "days_excluded_by_price_count": 0,
+     "spread_mean": "68.558630",
+     "days_with_gas": 365,
+     "gas_mean": "30.417282",
+     "days_with_both": 365,
+     "spread_mean_both": "68.558630",
+     "gas_mean_both": "30.417282",
+     "ratio_of_means": "2.253937",
+     "mean_of_ratios": "2.257595",
+     "days_with_legs": 365,
+     "spread_mean_legs": "68.558630",
+     "legs_mean": {
+      "negative": "0.444247",
+      "merit_order": "35.783973",
+      "scarcity": "32.330411"
+     },
+     "legs_share": {
+      "negative": "0.006480",
+      "merit_order": "0.521947",
+      "scarcity": "0.471573"
+     }
+    },
+    "2026 to date": {
+     "first": "2026-01-01",
+     "last": "2026-10-15",
+     "calendar_days": 288,
+     "days_printed": 288,
+     "days_measured": 288,
+     "days_excluded_by_price_count": 0,
+     "spread_mean": "77.651146",
+     "days_with_gas": 284,
+     "gas_mean": "43.141658",
+     "days_with_both": 284,
+     "spread_mean_both": "77.164613",
+     "gas_mean_both": "43.141658",
+     "ratio_of_means": "1.788633",
+     "mean_of_ratios": "1.801910",
+     "days_with_legs": 273,
+     "spread_mean_legs": "75.715934",
+     "legs_mean": {
+      "negative": "0.403700",
+      "merit_order": "43.420256",
+      "scarcity": "31.891978"
+     },
+     "legs_share": {
+      "negative": "0.005332",
+      "merit_order": "0.573463",
+      "scarcity": "0.421206"
+     }
+    },
+    "2025 same dates": {
+     "first": "2025-01-01",
+     "last": "2025-10-15",
+     "calendar_days": 288,
+     "days_printed": 288,
+     "days_measured": 288,
+     "days_excluded_by_price_count": 0,
+     "spread_mean": "71.664792",
+     "days_with_gas": 288,
+     "gas_mean": "31.781743",
+     "days_with_both": 288,
+     "spread_mean_both": "71.664792",
+     "gas_mean_both": "31.781743",
+     "ratio_of_means": "2.254904",
+     "mean_of_ratios": "2.260635",
+     "days_with_legs": 288,
+     "spread_mean_legs": "71.664792",
+     "legs_mean": {
+      "negative": "0.549271",
+      "merit_order": "36.250549",
+      "scarcity": "34.864972"
+     },
+     "legs_share": {
+      "negative": "0.007664",
+      "merit_order": "0.505835",
+      "scarcity": "0.486501"
+     }
+    },
+    "2022-01": {
+     "first": "2022-01-01",
+     "last": "2022-01-31",
+     "calendar_days": 31,
+     "days_printed": 31,
+     "days_measured": 31,
+     "days_excluded_by_price_count": 0,
+     "spread_mean": "214.212903",
+     "days_with_gas": 31,
+     "gas_mean": "65.768387",
+     "days_with_both": 31,
+     "spread_mean_both": "214.212903",
+     "gas_mean_both": "65.768387",
+     "ratio_of_means": "3.257080",
+     "mean_of_ratios": "3.672494",
+     "days_with_legs": 31,
+     "spread_mean_legs": "214.212903",
+     "legs_mean": {
+      "negative": "2.827742",
+      "merit_order": "52.075484",
+      "scarcity": "159.309677"
+     },
+     "legs_share": {
+      "negative": "0.013201",
+      "merit_order": "0.243102",
+      "scarcity": "0.743698"
+     }
+    },
+    "2022-02": {
+     "first": "2022-02-01",
+     "last": "2022-02-28",
+     "calendar_days": 28,
+     "days_printed": 28,
+     "days_measured": 28,
+     "days_excluded_by_price_count": 0,
+     "spread_mean": "117.182857",
+     "days_with_gas": 28,
+     "gas_mean": "65.118357",
+     "days_with_both": 28,
+     "spread_mean_both": "117.182857",
+     "gas_mean_both": "65.118357",
+     "ratio_of_means": "1.799536",
+     "mean_of_ratios": "1.805329",
+     "days_with_legs": 28,
+     "spread_mean_legs": "117.182857",
+     "legs_mean": {
+      "negative": "0.000000",
+      "merit_order": "63.621357",
+      "scarcity": "53.561500"
+     },
+     "legs_share": {
+      "negative": "0.000000",
+      "merit_order": "0.542924",
+      "scarcity": "0.457076"
+     }
+    },
+    "2022-03": {
+     "first": "2022-03-01",
+     "last": "2022-03-31",
+     "calendar_days": 31,
+     "days_printed": 31,
+     "days_measured": 31,
+     "days_excluded_by_price_count": 0,
+     "spread_mean": "159.531935",
+     "days_with_gas": 31,
+     "gas_mean": "101.285903",
+     "days_with_both": 31,
+     "spread_mean_both": "159.531935",
+     "gas_mean_both": "101.285903",
+     "ratio_of_means": "1.575066",
+     "mean_of_ratios": "1.565337",
+     "days_with_legs": 31,
+     "spread_mean_legs": "159.531935",
+     "legs_mean": {
+      "negative": "0.000000",
+      "merit_order": "43.260516",
+      "scarcity": "116.271419"
+     },
+     "legs_share": {
+      "negative": "0.000000",
+      "merit_order": "0.271172",
+      "scarcity": "0.728828"
+     }
+    },
+    "2022-04": {
+     "first": "2022-04-01",
+     "last": "2022-04-30",
+     "calendar_days": 30,
+     "days_printed": 30,
+     "days_measured": 30,
+     "days_excluded_by_price_count": 0,
+     "spread_mean": "98.446000",
+     "days_with_gas": 30,
+     "gas_mean": "62.033467",
+     "days_with_both": 30,
+     "spread_mean_both": "98.446000",
+     "gas_mean_both": "62.033467",
+     "ratio_of_means": "1.586982",
+     "mean_of_ratios": "1.760025",
+     "days_with_legs": 30,
+     "spread_mean_legs": "98.446000",
+     "legs_mean": {
+      "negative": "0.000000",
+      "merit_order": "36.868933",
+      "scarcity": "61.577067"
+     },
+     "legs_share": {
+      "negative": "0.000000",
+      "merit_order": "0.374509",
+      "scarcity": "0.625491"
+     }
+    },
+    "2022-05": {
+     "first": "2022-05-01",
+     "last": "2022-05-31",
+     "calendar_days": 31,
+     "days_printed": 31,
+     "days_measured": 31,
+     "days_excluded_by_price_count": 0,
+     "spread_mean": "87.433226",
+     "days_with_gas": 31,
+     "gas_mean": "35.024839",
+     "days_with_both": 31,
+     "spread_mean_both": "87.433226",
+     "gas_mean_both": "35.024839",
+     "ratio_of_means": "2.496321",
+     "mean_of_ratios": "3.058480",
+     "days_with_legs": 31,
+     "spread_mean_legs": "87.433226",
+     "legs_mean": {
+      "negative": "0.000000",
+      "merit_order": "28.043355",
+      "scarcity": "59.389871"
+     },
+     "legs_share": {
+      "negative": "0.000000",
+      "merit_order": "0.320740",
+      "scarcity": "0.679260"
+     }
+    },
+    "2022-06": {
+     "first": "2022-06-01",
+     "last": "2022-06-30",
+     "calendar_days": 30,
+     "days_printed": 30,
+     "days_measured": 30,
+     "days_excluded_by_price_count": 0,
+     "spread_mean": "99.798000",
+     "days_with_gas": 30,
+     "gas_mean": "48.272600",
+     "days_with_both": 30,
+     "spread_mean_both": "99.798000",
+     "gas_mean_both": "48.272600",
+     "ratio_of_means": "2.067384",
+     "mean_of_ratios": "2.584127",
+     "days_with_legs": 30,
+     "spread_mean_legs": "99.798000",
+     "legs_mean": {
+      "negative": "0.083000",
+      "merit_order": "24.511933",
+      "scarcity": "75.203067"
+     },
+     "legs_share": {
+      "negative": "0.000832",
+      "merit_order": "0.245615",
+      "scarcity": "0.753553"
+     }
+    },
+    "2022-07": {
+     "first": "2022-07-01",
+     "last": "2022-07-31",
+     "calendar_days": 31,
+     "days_printed": 31,
+     "days_measured": 31,
+     "days_excluded_by_price_count": 0,
+     "spread_mean": "164.046129",
+     "days_with_gas": 31,
+     "gas_mean": "78.317258",
+     "days_with_both": 31,
+     "spread_mean_both": "164.046129",
+     "gas_mean_both": "78.317258",
+     "ratio_of_means": "2.094636",
+     "mean_of_ratios": "2.187655",
+     "days_with_legs": 31,
+     "spread_mean_legs": "164.046129",
+     "legs_mean": {
+      "negative": "0.000000",
+      "merit_order": "27.920000",
+      "scarcity": "136.126129"
+     },
+     "legs_share": {
+      "negative": "0.000000",
+      "merit_order": "0.170196",
+      "scarcity": "0.829804"
+     }
+    },
+    "2022-08": {
+     "first": "2022-08-01",
+     "last": "2022-08-31",
+     "calendar_days": 31,
+     "days_printed": 31,
+     "days_measured": 31,
+     "days_excluded_by_price_count": 0,
+     "spread_mean": "216.464516",
+     "days_with_gas": 31,
+     "gas_mean": "128.827226",
+     "days_with_both": 31,
+     "spread_mean_both": "216.464516",
+     "gas_mean_both": "128.827226",
+     "ratio_of_means": "1.680270",
+     "mean_of_ratios": "1.693398",
+     "days_with_legs": 31,
+     "spread_mean_legs": "216.464516",
+     "legs_mean": {
+      "negative": "0.000000",
+      "merit_order": "24.948323",
+      "scarcity": "191.516194"
+     },
+     "legs_share": {
+      "negative": "0.000000",
+      "merit_order": "0.115254",
+      "scarcity": "0.884746"
+     }
+    },
+    "2022-09": {
+     "first": "2022-09-01",
+     "last": "2022-09-30",
+     "calendar_days": 30,
+     "days_printed": 30,
+     "days_measured": 30,
+     "days_excluded_by_price_count": 0,
+     "spread_mean": "213.715667",
+     "days_with_gas": 30,
+     "gas_mean": "91.577567",
+     "days_with_both": 30,
+     "spread_mean_both": "213.715667",
+     "gas_mean_both": "91.577567",
+     "ratio_of_means": "2.333712",
+     "mean_of_ratios": "2.416817",
+     "days_with_legs": 30,
+     "spread_mean_legs": "213.715667",
+     "legs_mean": {
+      "negative": "0.000000",
+      "merit_order": "41.935000",
+      "scarcity": "171.780667"
+     },
+     "legs_share": {
+      "negative": "0.000000",
+      "merit_order": "0.196219",
+      "scarcity": "0.803781"
+     }
+    },
+    "2022-10": {
+     "first": "2022-10-01",
+     "last": "2022-10-31",
+     "calendar_days": 31,
+     "days_printed": 31,
+     "days_measured": 31,
+     "days_excluded_by_price_count": 0,
+     "spread_mean": "128.764516",
+     "days_with_gas": 31,
+     "gas_mean": "37.564516",
+     "days_with_both": 31,
+     "spread_mean_both": "128.764516",
+     "gas_mean_both": "37.564516",
+     "ratio_of_means": "3.427823",
+     "mean_of_ratios": "4.519641",
+     "days_with_legs": 31,
+     "spread_mean_legs": "128.764516",
+     "legs_mean": {
+      "negative": "0.000000",
+      "merit_order": "47.885290",
+      "scarcity": "80.879226"
+     },
+     "legs_share": {
+      "negative": "0.000000",
+      "merit_order": "0.371883",
+      "scarcity": "0.628117"
+     }
+    },
+    "2022-11": {
+     "first": "2022-11-01",
+     "last": "2022-11-30",
+     "calendar_days": 30,
+     "days_printed": 30,
+     "days_measured": 30,
+     "days_excluded_by_price_count": 0,
+     "spread_mean": "161.122333",
+     "days_with_gas": 30,
+     "gas_mean": "43.617567",
+     "days_with_both": 30,
+     "spread_mean_both": "161.122333",
+     "gas_mean_both": "43.617567",
+     "ratio_of_means": "3.693978",
+     "mean_of_ratios": "3.410602",
+     "days_with_legs": 30,
+     "spread_mean_legs": "161.122333",
+     "legs_mean": {
+      "negative": "0.569000",
+      "merit_order": "40.071400",
+      "scarcity": "120.481933"
+     },
+     "legs_share": {
+      "negative": "0.003531",
+      "merit_order": "0.248702",
+      "scarcity": "0.747767"
+     }
+    },
+    "2022-12": {
+     "first": "2022-12-01",
+     "last": "2022-12-31",
+     "calendar_days": 31,
+     "days_printed": 31,
+     "days_measured": 31,
+     "days_excluded_by_price_count": 0,
+     "spread_mean": "225.018387",
+     "days_with_gas": 31,
+     "gas_mean": "94.638903",
+     "days_with_both": 31,
+     "spread_mean_both": "225.018387",
+     "gas_mean_both": "94.638903",
+     "ratio_of_means": "2.377652",
+     "mean_of_ratios": "2.423076",
+     "days_with_legs": 31,
+     "spread_mean_legs": "225.018387",
+     "legs_mean": {
+      "negative": "1.728710",
+      "merit_order": "75.450774",
+      "scarcity": "147.838903"
+     },
+     "legs_share": {
+      "negative": "0.007683",
+      "merit_order": "0.335309",
+      "scarcity": "0.657008"
+     }
+    },
+    "2023-01": {
+     "first": "2023-01-01",
+     "last": "2023-01-31",
+     "calendar_days": 31,
+     "days_printed": 31,
+     "days_measured": 31,
+     "days_excluded_by_price_count": 0,
+     "spread_mean": "116.636129",
+     "days_with_gas": 31,
+     "gas_mean": "54.095645",
+     "days_with_both": 31,
+     "spread_mean_both": "116.636129",
+     "gas_mean_both": "54.095645",
+     "ratio_of_means": "2.156109",
+     "mean_of_ratios": "2.141110",
+     "days_with_legs": 31,
+     "spread_mean_legs": "116.636129",
+     "legs_mean": {
+      "negative": "0.000645",
+      "merit_order": "69.864065",
+      "scarcity": "46.771419"
+     },
+     "legs_share": {
+      "negative": "0.000006",
+      "merit_order": "0.598992",
+      "scarcity": "0.401003"
+     }
+    },
+    "2023-02": {
+     "first": "2023-02-01",
+     "last": "2023-02-28",
+     "calendar_days": 28,
+     "days_printed": 28,
+     "days_measured": 28,
+     "days_excluded_by_price_count": 0,
+     "spread_mean": "69.847857",
+     "days_with_gas": 28,
+     "gas_mean": "46.178750",
+     "days_with_both": 28,
+     "spread_mean_both": "69.847857",
+     "gas_mean_both": "46.178750",
+     "ratio_of_means": "1.512554",
+     "mean_of_ratios": "1.522737",
+     "days_with_legs": 28,
+     "spread_mean_legs": "69.847857",
+     "legs_mean": {
+      "negative": "0.000000",
+      "merit_order": "27.965857",
+      "scarcity": "41.882000"
+     },
+     "legs_share": {
+      "negative": "0.000000",
+      "merit_order": "0.400382",
+      "scarcity": "0.599618"
+     }
+    },
+    "2023-03": {
+     "first": "2023-03-01",
+     "last": "2023-03-31",
+     "calendar_days": 31,
+     "days_printed": 31,
+     "days_measured": 31,
+     "days_excluded_by_price_count": 0,
+     "spread_mean": "73.720645",
+     "days_with_gas": 31,
+     "gas_mean": "38.564484",
+     "days_with_both": 31,
+     "spread_mean_both": "73.720645",
+     "gas_mean_both": "38.564484",
+     "ratio_of_means": "1.911620",
+     "mean_of_ratios": "1.931103",
+     "days_with_legs": 31,
+     "spread_mean_legs": "73.720645",
+     "legs_mean": {
+      "negative": "0.000000",
+      "merit_order": "32.137419",
+      "scarcity": "41.583226"
+     },
+     "legs_share": {
+      "negative": "0.000000",
+      "merit_order": "0.435935",
+      "scarcity": "0.564065"
+     }
+    },
+    "2023-04": {
+     "first": "2023-04-01",
+     "last": "2023-04-30",
+     "calendar_days": 30,
+     "days_printed": 30,
+     "days_measured": 30,
+     "days_excluded_by_price_count": 0,
+     "spread_mean": "57.671000",
+     "days_with_gas": 30,
+     "gas_mean": "34.182567",
+     "days_with_both": 30,
+     "spread_mean_both": "57.671000",
+     "gas_mean_both": "34.182567",
+     "ratio_of_means": "1.687147",
+     "mean_of_ratios": "1.683728",
+     "days_with_legs": 30,
+     "spread_mean_legs": "57.671000",
+     "legs_mean": {
+      "negative": "0.000000",
+      "merit_order": "26.467800",
+      "scarcity": "31.203200"
+     },
+     "legs_share": {
+      "negative": "0.000000",
+      "merit_order": "0.458945",
+      "scarcity": "0.541055"
+     }
+    },
+    "2023-05": {
+     "first": "2023-05-01",
+     "last": "2023-05-31",
+     "calendar_days": 31,
+     "days_printed": 31,
+     "days_measured": 31,
+     "days_excluded_by_price_count": 0,
+     "spread_mean": "43.843226",
+     "days_with_gas": 31,
+     "gas_mean": "25.204581",
+     "days_with_both": 31,
+     "spread_mean_both": "43.843226",
+     "gas_mean_both": "25.204581",
+     "ratio_of_means": "1.739494",
+     "mean_of_ratios": "1.794430",
+     "days_with_legs": 31,
+     "spread_mean_legs": "43.843226",
+     "legs_mean": {
+      "negative": "0.000000",
+      "merit_order": "20.511161",
+      "scarcity": "23.332065"
+     },
+     "legs_share": {
+      "negative": "0.000000",
+      "merit_order": "0.467830",
+      "scarcity": "0.532170"
+     }
+    },
+    "2023-06": {
+     "first": "2023-06-01",
+     "last": "2023-06-30",
+     "calendar_days": 30,
+     "days_printed": 30,
+     "days_measured": 30,
+     "days_excluded_by_price_count": 0,
+     "spread_mean": "51.576667",
+     "days_with_gas": 30,
+     "gas_mean": "27.416133",
+     "days_with_both": 30,
+     "spread_mean_both": "51.576667",
+     "gas_mean_both": "27.416133",
+     "ratio_of_means": "1.881252",
+     "mean_of_ratios": "1.900852",
+     "days_with_legs": 30,
+     "spread_mean_legs": "51.576667",
+     "legs_mean": {
+      "negative": "0.000000",
+      "merit_order": "22.787267",
+      "scarcity": "28.789400"
+     },
+     "legs_share": {
+      "negative": "0.000000",
+      "merit_order": "0.441813",
+      "scarcity": "0.558187"
+     }
+    },
+    "2023-07": {
+     "first": "2023-07-01",
+     "last": "2023-07-31",
+     "calendar_days": 31,
+     "days_printed": 31,
+     "days_measured": 31,
+     "days_excluded_by_price_count": 0,
+     "spread_mean": "60.478387",
+     "days_with_gas": 31,
+     "gas_mean": "24.726065",
+     "days_with_both": 31,
+     "spread_mean_both": "60.478387",
+     "gas_mean_both": "24.726065",
+     "ratio_of_means": "2.445937",
+     "mean_of_ratios": "2.493711",
+     "days_with_legs": 31,
+     "spread_mean_legs": "60.478387",
+     "legs_mean": {
+      "negative": "3.250645",
+      "merit_order": "29.512000",
+      "scarcity": "27.715742"
+     },
+     "legs_share": {
+      "negative": "0.053749",
+      "merit_order": "0.487976",
+      "scarcity": "0.458275"
+     }
+    },
+    "2023-08": {
+     "first": "2023-08-01",
+     "last": "2023-08-31",
+     "calendar_days": 31,
+     "days_printed": 31,
+     "days_measured": 31,
+     "days_excluded_by_price_count": 0,
+     "spread_mean": "57.460000",
+     "days_with_gas": 31,
+     "gas_mean": "28.709710",
+     "days_with_both": 31,
+     "spread_mean_both": "57.460000",
+     "gas_mean_both": "28.709710",
+     "ratio_of_means": "2.001413",
+     "mean_of_ratios": "2.008663",
+     "days_with_legs": 31,
+     "spread_mean_legs": "57.460000",
+     "legs_mean": {
+      "negative": "0.000000",
+      "merit_order": "24.990645",
+      "scarcity": "32.469355"
+     },
+     "legs_share": {
+      "negative": "0.000000",
+      "merit_order": "0.434922",
+      "scarcity": "0.565078"
+     }
+    },
+    "2023-09": {
+     "first": "2023-09-01",
+     "last": "2023-09-30",
+     "calendar_days": 30,
+     "days_printed": 30,
+     "days_measured": 30,
+     "days_excluded_by_price_count": 0,
+     "spread_mean": "75.631667",
+     "days_with_gas": 30,
+     "gas_mean": "31.724200",
+     "days_with_both": 30,
+     "spread_mean_both": "75.631667",
+     "gas_mean_both": "31.724200",
+     "ratio_of_means": "2.384037",
+     "mean_of_ratios": "2.370224",
+     "days_with_legs": 30,
+     "spread_mean_legs": "75.631667",
+     "legs_mean": {
+      "negative": "0.850333",
+      "merit_order": "37.236067",
+      "scarcity": "37.545267"
+     },
+     "legs_share": {
+      "negative": "0.011243",
+      "merit_order": "0.492334",
+      "scarcity": "0.496423"
+     }
+    },
+    "2023-10": {
+     "first": "2023-10-01",
+     "last": "2023-10-31",
+     "calendar_days": 31,
+     "days_printed": 31,
+     "days_measured": 31,
+     "days_excluded_by_price_count": 0,
+     "spread_mean": "100.187419",
+     "days_with_gas": 31,
+     "gas_mean": "37.205355",
+     "days_with_both": 31,
+     "spread_mean_both": "100.187419",
+     "gas_mean_both": "37.205355",
+     "ratio_of_means": "2.692823",
+     "mean_of_ratios": "2.727944",
+     "days_with_legs": 31,
+     "spread_mean_legs": "100.187419",
+     "legs_mean": {
+      "negative": "0.392581",
+      "merit_order": "61.646581",
+      "scarcity": "38.148258"
+     },
+     "legs_share": {
+      "negative": "0.003918",
+      "merit_order": "0.615313",
+      "scarcity": "0.380769"
+     }
+    },
+    "2023-11": {
+     "first": "2023-11-01",
+     "last": "2023-11-30",
+     "calendar_days": 30,
+     "days_printed": 30,
+     "days_measured": 30,
+     "days_excluded_by_price_count": 0,
+     "spread_mean": "76.554333",
+     "days_with_gas": 30,
+     "gas_mean": "36.621900",
+     "days_with_both": 30,
+     "spread_mean_both": "76.554333",
+     "gas_mean_both": "36.621900",
+     "ratio_of_means": "2.090398",
+     "mean_of_ratios": "2.101687",
+     "days_with_legs": 30,
+     "spread_mean_legs": "76.554333",
+     "legs_mean": {
+      "negative": "0.000000",
+      "merit_order": "38.449800",
+      "scarcity": "38.104533"
+     },
+     "legs_share": {
+      "negative": "0.000000",
+      "merit_order": "0.502255",
+      "scarcity": "0.497745"
+     }
+    },
+    "2023-12": {
+     "first": "2023-12-01",
+     "last": "2023-12-31",
+     "calendar_days": 31,
+     "days_printed": 31,
+     "days_measured": 31,
+     "days_excluded_by_price_count": 0,
+     "spread_mean": "66.607419",
+     "days_with_gas": 31,
+     "gas_mean": "29.152871",
+     "days_with_both": 31,
+     "spread_mean_both": "66.607419",
+     "gas_mean_both": "29.152871",
+     "ratio_of_means": "2.284764",
+     "mean_of_ratios": "2.313615",
+     "days_with_legs": 31,
+     "spread_mean_legs": "66.607419",
+     "legs_mean": {
+      "negative": "0.591613",
+      "merit_order": "41.343935",
+      "scarcity": "24.671871"
+     },
+     "legs_share": {
+      "negative": "0.008882",
+      "merit_order": "0.620711",
+      "scarcity": "0.370407"
+     }
+    },
+    "2024-01": {
+     "first": "2024-01-01",
+     "last": "2024-01-31",
+     "calendar_days": 31,
+     "days_printed": 31,
+     "days_measured": 31,
+     "days_excluded_by_price_count": 0,
+     "spread_mean": "48.468387",
+     "days_with_gas": 31,
+     "gas_mean": "25.699677",
+     "days_with_both": 31,
+     "spread_mean_both": "48.468387",
+     "gas_mean_both": "25.699677",
+     "ratio_of_means": "1.885953",
+     "mean_of_ratios": "1.915840",
+     "days_with_legs": 31,
+     "spread_mean_legs": "48.468387",
+     "legs_mean": {
+      "negative": "0.009355",
+      "merit_order": "23.773935",
+      "scarcity": "24.685097"
+     },
+     "legs_share": {
+      "negative": "0.000193",
+      "merit_order": "0.490504",
+      "scarcity": "0.509303"
+     }
+    },
+    "2024-02": {
+     "first": "2024-02-01",
+     "last": "2024-02-29",
+     "calendar_days": 29,
+     "days_printed": 29,
+     "days_measured": 29,
+     "days_excluded_by_price_count": 0,
+     "spread_mean": "40.131034",
+     "days_with_gas": 29,
+     "gas_mean": "21.491241",
+     "days_with_both": 29,
+     "spread_mean_both": "40.131034",
+     "gas_mean_both": "21.491241",
+     "ratio_of_means": "1.867320",
+     "mean_of_ratios": "1.835035",
+     "days_with_legs": 29,
+     "spread_mean_legs": "40.131034",
+     "legs_mean": {
+      "negative": "0.000345",
+      "merit_order": "23.905241",
+      "scarcity": "16.225448"
+     },
+     "legs_share": {
+      "negative": "0.000009",
+      "merit_order": "0.595680",
+      "scarcity": "0.404312"
+     }
+    },
+    "2024-03": {
+     "first": "2024-03-01",
+     "last": "2024-03-31",
+     "calendar_days": 31,
+     "days_printed": 31,
+     "days_measured": 31,
+     "days_excluded_by_price_count": 0,
+     "spread_mean": "45.414516",
+     "days_with_gas": 31,
+     "gas_mean": "23.331871",
+     "days_with_both": 31,
+     "spread_mean_both": "45.414516",
+     "gas_mean_both": "23.331871",
+     "ratio_of_means": "1.946458",
+     "mean_of_ratios": "1.940001",
+     "days_with_legs": 31,
+     "spread_mean_legs": "45.414516",
+     "legs_mean": {
+      "negative": "0.257742",
+      "merit_order": "24.628387",
+      "scarcity": "20.528387"
+     },
+     "legs_share": {
+      "negative": "0.005675",
+      "merit_order": "0.542302",
+      "scarcity": "0.452023"
+     }
+    },
+    "2024-04": {
+     "first": "2024-04-01",
+     "last": "2024-04-30",
+     "calendar_days": 30,
+     "days_printed": 30,
+     "days_measured": 30,
+     "days_excluded_by_price_count": 0,
+     "spread_mean": "56.374000",
+     "days_with_gas": 30,
+     "gas_mean": "24.661500",
+     "days_with_both": 30,
+     "spread_mean_both": "56.374000",
+     "gas_mean_both": "24.661500",
+     "ratio_of_means": "2.285911",
+     "mean_of_ratios": "2.300756",
+     "days_with_legs": 30,
+     "spread_mean_legs": "56.374000",
+     "legs_mean": {
+      "negative": "1.842333",
+      "merit_order": "38.157533",
+      "scarcity": "16.374133"
+     },
+     "legs_share": {
+      "negative": "0.032681",
+      "merit_order": "0.676864",
+      "scarcity": "0.290455"
+     }
+    },
+    "2024-05": {
+     "first": "2024-05-01",
+     "last": "2024-05-31",
+     "calendar_days": 31,
+     "days_printed": 31,
+     "days_measured": 31,
+     "days_excluded_by_price_count": 0,
+     "spread_mean": "44.208387",
+     "days_with_gas": 31,
+     "gas_mean": "26.374290",
+     "days_with_both": 31,
+     "spread_mean_both": "44.208387",
+     "gas_mean_both": "26.374290",
+     "ratio_of_means": "1.676192",
+     "mean_of_ratios": "1.680310",
+     "days_with_legs": 31,
+     "spread_mean_legs": "44.208387",
+     "legs_mean": {
+      "negative": "0.000000",
+      "merit_order": "24.807290",
+      "scarcity": "19.401097"
+     },
+     "legs_share": {
+      "negative": "0.000000",
+      "merit_order": "0.561144",
+      "scarcity": "0.438856"
+     }
+    },
+    "2024-06": {
+     "first": "2024-06-01",
+     "last": "2024-06-30",
+     "calendar_days": 30,
+     "days_printed": 30,
+     "days_measured": 30,
+     "days_excluded_by_price_count": 0,
+     "spread_mean": "59.324667",
+     "days_with_gas": 30,
+     "gas_mean": "28.183200",
+     "days_with_both": 30,
+     "spread_mean_both": "59.324667",
+     "gas_mean_both": "28.183200",
+     "ratio_of_means": "2.104966",
+     "mean_of_ratios": "2.110396",
+     "days_with_legs": 30,
+     "spread_mean_legs": "59.324667",
+     "legs_mean": {
+      "negative": "0.815667",
+      "merit_order": "39.171400",
+      "scarcity": "19.337600"
+     },
+     "legs_share": {
+      "negative": "0.013749",
+      "merit_order": "0.660289",
+      "scarcity": "0.325962"
+     }
+    },
+    "2024-07": {
+     "first": "2024-07-01",
+     "last": "2024-07-31",
+     "calendar_days": 31,
+     "days_printed": 31,
+     "days_measured": 31,
+     "days_excluded_by_price_count": 0,
+     "spread_mean": "47.189677",
+     "days_with_gas": 31,
+     "gas_mean": "25.528935",
+     "days_with_both": 31,
+     "spread_mean_both": "47.189677",
+     "gas_mean_both": "25.528935",
+     "ratio_of_means": "1.848478",
+     "mean_of_ratios": "1.842304",
+     "days_with_legs": 31,
+     "spread_mean_legs": "47.189677",
+     "legs_mean": {
+      "negative": "0.870000",
+      "merit_order": "26.697032",
+      "scarcity": "19.622645"
+     },
+     "legs_share": {
+      "negative": "0.018436",
+      "merit_order": "0.565739",
+      "scarcity": "0.415825"
+     }
+    },
+    "2024-08": {
+     "first": "2024-08-01",
+     "last": "2024-08-31",
+     "calendar_days": 31,
+     "days_printed": 31,
+     "days_measured": 31,
+     "days_excluded_by_price_count": 0,
+     "spread_mean": "73.132258",
+     "days_with_gas": 31,
+     "gas_mean": "28.703742",
+     "days_with_both": 31,
+     "spread_mean_both": "73.132258",
+     "gas_mean_both": "28.703742",
+     "ratio_of_means": "2.547830",
+     "mean_of_ratios": "2.550203",
+     "days_with_legs": 31,
+     "spread_mean_legs": "73.132258",
+     "legs_mean": {
+      "negative": "1.655161",
+      "merit_order": "53.478258",
+      "scarcity": "17.998839"
+     },
+     "legs_share": {
+      "negative": "0.022632",
+      "merit_order": "0.731254",
+      "scarcity": "0.246114"
+     }
+    },
+    "2024-09": {
+     "first": "2024-09-01",
+     "last": "2024-09-30",
+     "calendar_days": 30,
+     "days_printed": 30,
+     "days_measured": 30,
+     "days_excluded_by_price_count": 0,
+     "spread_mean": "63.381333",
+     "days_with_gas": 30,
+     "gas_mean": "29.843000",
+     "days_with_both": 30,
+     "spread_mean_both": "63.381333",
+     "gas_mean_both": "29.843000",
+     "ratio_of_means": "2.123826",
+     "mean_of_ratios": "2.108688",
+     "days_with_legs": 30,
+     "spread_mean_legs": "63.381333",
+     "legs_mean": {
+      "negative": "0.153333",
+      "merit_order": "34.570667",
+      "scarcity": "28.657333"
+     },
+     "legs_share": {
+      "negative": "0.002419",
+      "merit_order": "0.545439",
+      "scarcity": "0.452142"
+     }
+    },
+    "2024-10": {
+     "first": "2024-10-01",
+     "last": "2024-10-31",
+     "calendar_days": 31,
+     "days_printed": 31,
+     "days_measured": 31,
+     "days_excluded_by_price_count": 0,
+     "spread_mean": "83.235161",
+     "days_with_gas": 31,
+     "gas_mean": "33.852839",
+     "days_with_both": 31,
+     "spread_mean_both": "83.235161",
+     "gas_mean_both": "33.852839",
+     "ratio_of_means": "2.458735",
+     "mean_of_ratios": "2.461069",
+     "days_with_legs": 31,
+     "spread_mean_legs": "83.235161",
+     "legs_mean": {
+      "negative": "0.503548",
+      "merit_order": "39.798710",
+      "scarcity": "42.932903"
+     },
+     "legs_share": {
+      "negative": "0.006050",
+      "merit_order": "0.478148",
+      "scarcity": "0.515802"
+     }
+    },
+    "2024-11": {
+     "first": "2024-11-01",
+     "last": "2024-11-30",
+     "calendar_days": 30,
+     "days_printed": 30,
+     "days_measured": 30,
+     "days_excluded_by_price_count": 0,
+     "spread_mean": "75.723000",
+     "days_with_gas": 30,
+     "gas_mean": "37.793700",
+     "days_with_both": 30,
+     "spread_mean_both": "75.723000",
+     "gas_mean_both": "37.793700",
+     "ratio_of_means": "2.003588",
+     "mean_of_ratios": "2.035519",
+     "days_with_legs": 30,
+     "spread_mean_legs": "75.723000",
+     "legs_mean": {
+      "negative": "0.150667",
+      "merit_order": "27.546733",
+      "scarcity": "48.025600"
+     },
+     "legs_share": {
+      "negative": "0.001990",
+      "merit_order": "0.363783",
+      "scarcity": "0.634227"
+     }
+    },
+    "2024-12": {
+     "first": "2024-12-01",
+     "last": "2024-12-31",
+     "calendar_days": 31,
+     "days_printed": 31,
+     "days_measured": 31,
+     "days_excluded_by_price_count": 0,
+     "spread_mean": "96.876129",
+     "days_with_gas": 31,
+     "gas_mean": "38.283355",
+     "days_with_both": 31,
+     "spread_mean_both": "96.876129",
+     "gas_mean_both": "38.283355",
+     "ratio_of_means": "2.530503",
+     "mean_of_ratios": "2.569259",
+     "days_with_legs": 31,
+     "spread_mean_legs": "96.876129",
+     "legs_mean": {
+      "negative": "0.042258",
+      "merit_order": "51.670968",
+      "scarcity": "45.162903"
+     },
+     "legs_share": {
+      "negative": "0.000436",
+      "merit_order": "0.533372",
+      "scarcity": "0.466192"
+     }
+    },
+    "2025-01": {
+     "first": "2025-01-01",
+     "last": "2025-01-31",
+     "calendar_days": 31,
+     "days_printed": 31,
+     "days_measured": 31,
+     "days_excluded_by_price_count": 0,
+     "spread_mean": "136.158065",
+     "days_with_gas": 31,
+     "gas_mean": "42.224710",
+     "days_with_both": 31,
+     "spread_mean_both": "136.158065",
+     "gas_mean_both": "42.224710",
+     "ratio_of_means": "3.224606",
+     "mean_of_ratios": "3.216901",
+     "days_with_legs": 31,
+     "spread_mean_legs": "136.158065",
+     "legs_mean": {
+      "negative": "0.137419",
+      "merit_order": "34.124129",
+      "scarcity": "101.896516"
+     },
+     "legs_share": {
+      "negative": "0.001009",
+      "merit_order": "0.250621",
+      "scarcity": "0.748369"
+     }
+    },
+    "2025-02": {
+     "first": "2025-02-01",
+     "last": "2025-02-28",
+     "calendar_days": 28,
+     "days_printed": 28,
+     "days_measured": 28,
+     "days_excluded_by_price_count": 0,
+     "spread_mean": "59.807143",
+     "days_with_gas": 28,
+     "gas_mean": "42.650679",
+     "days_with_both": 28,
+     "spread_mean_both": "59.807143",
+     "gas_mean_both": "42.650679",
+     "ratio_of_means": "1.402255",
+     "mean_of_ratios": "1.435494",
+     "days_with_legs": 28,
+     "spread_mean_legs": "59.807143",
+     "legs_mean": {
+      "negative": "0.000000",
+      "merit_order": "27.304786",
+      "scarcity": "32.502357"
+     },
+     "legs_share": {
+      "negative": "0.000000",
+      "merit_order": "0.456547",
+      "scarcity": "0.543453"
+     }
+    },
+    "2025-03": {
+     "first": "2025-03-01",
+     "last": "2025-03-31",
+     "calendar_days": 31,
+     "days_printed": 31,
+     "days_measured": 31,
+     "days_excluded_by_price_count": 0,
+     "spread_mean": "66.847097",
+     "days_with_gas": 31,
+     "gas_mean": "34.762161",
+     "days_with_both": 31,
+     "spread_mean_both": "66.847097",
+     "gas_mean_both": "34.762161",
+     "ratio_of_means": "1.922984",
+     "mean_of_ratios": "1.934860",
+     "days_with_legs": 31,
+     "spread_mean_legs": "66.847097",
+     "legs_mean": {
+      "negative": "0.205806",
+      "merit_order": "32.494903",
+      "scarcity": "34.146387"
+     },
+     "legs_share": {
+      "negative": "0.003079",
+      "merit_order": "0.486108",
+      "scarcity": "0.510813"
+     }
+    },
+    "2025-04": {
+     "first": "2025-04-01",
+     "last": "2025-04-30",
+     "calendar_days": 30,
+     "days_printed": 30,
+     "days_measured": 30,
+     "days_excluded_by_price_count": 0,
+     "spread_mean": "61.661000",
+     "days_with_gas": 30,
+     "gas_mean": "29.174400",
+     "days_with_both": 30,
+     "spread_mean_both": "61.661000",
+     "gas_mean_both": "29.174400",
+     "ratio_of_means": "2.113531",
+     "mean_of_ratios": "2.094798",
+     "days_with_legs": 30,
+     "spread_mean_legs": "61.661000",
+     "legs_mean": {
+      "negative": "0.217667",
+      "merit_order": "34.212467",
+      "scarcity": "27.230867"
+     },
+     "legs_share": {
+      "negative": "0.003530",
+      "merit_order": "0.554848",
+      "scarcity": "0.441622"
+     }
+    },
+    "2025-05": {
+     "first": "2025-05-01",
+     "last": "2025-05-31",
+     "calendar_days": 31,
+     "days_printed": 31,
+     "days_measured": 31,
+     "days_excluded_by_price_count": 0,
+     "spread_mean": "62.462258",
+     "days_with_gas": 31,
+     "gas_mean": "28.431742",
+     "days_with_both": 31,
+     "spread_mean_both": "62.462258",
+     "gas_mean_both": "28.431742",
+     "ratio_of_means": "2.196920",
+     "mean_of_ratios": "2.207900",
+     "days_with_legs": 31,
+     "spread_mean_legs": "62.462258",
+     "legs_mean": {
+      "negative": "1.480645",
+      "merit_order": "42.664000",
+      "scarcity": "18.317613"
+     },
+     "legs_share": {
+      "negative": "0.023705",
+      "merit_order": "0.683036",
+      "scarcity": "0.293259"
+     }
+    },
+    "2025-06": {
+     "first": "2025-06-01",
+     "last": "2025-06-30",
+     "calendar_days": 30,
+     "days_printed": 30,
+     "days_measured": 30,
+     "days_excluded_by_price_count": 0,
+     "spread_mean": "74.580000",
+     "days_with_gas": 30,
+     "gas_mean": "29.719100",
+     "days_with_both": 30,
+     "spread_mean_both": "74.580000",
+     "gas_mean_both": "29.719100",
+     "ratio_of_means": "2.509497",
+     "mean_of_ratios": "2.526296",
+     "days_with_legs": 30,
+     "spread_mean_legs": "74.580000",
+     "legs_mean": {
+      "negative": "1.621000",
+      "merit_order": "53.975867",
+      "scarcity": "18.983133"
+     },
+     "legs_share": {
+      "negative": "0.021735",
+      "merit_order": "0.723731",
+      "scarcity": "0.254534"
+     }
+    },
+    "2025-07": {
+     "first": "2025-07-01",
+     "last": "2025-07-31",
+     "calendar_days": 31,
+     "days_printed": 31,
+     "days_measured": 31,
+     "days_excluded_by_price_count": 0,
+     "spread_mean": "47.827097",
+     "days_with_gas": 31,
+     "gas_mean": "27.690613",
+     "days_with_both": 31,
+     "spread_mean_both": "47.827097",
+     "gas_mean_both": "27.690613",
+     "ratio_of_means": "1.727195",
+     "mean_of_ratios": "1.732888",
+     "days_with_legs": 31,
+     "spread_mean_legs": "47.827097",
+     "legs_mean": {
+      "negative": "0.016129",
+      "merit_order": "23.729548",
+      "scarcity": "24.081419"
+     },
+     "legs_share": {
+      "negative": "0.000337",
+      "merit_order": "0.496153",
+      "scarcity": "0.503510"
+     }
+    },
+    "2025-08": {
+     "first": "2025-08-01",
+     "last": "2025-08-31",
+     "calendar_days": 31,
+     "days_printed": 31,
+     "days_measured": 31,
+     "days_excluded_by_price_count": 0,
+     "spread_mean": "56.067419",
+     "days_with_gas": 31,
+     "gas_mean": "27.116065",
+     "days_with_both": 31,
+     "spread_mean_both": "56.067419",
+     "gas_mean_both": "27.116065",
+     "ratio_of_means": "2.067683",
+     "mean_of_ratios": "2.071637",
+     "days_with_legs": 31,
+     "spread_mean_legs": "56.067419",
+     "legs_mean": {
+      "negative": "0.732581",
+      "merit_order": "33.518774",
+      "scarcity": "21.816065"
+     },
+     "legs_share": {
+      "negative": "0.013066",
+      "merit_order": "0.597830",
+      "scarcity": "0.389104"
+     }
+    },
+    "2025-09": {
+     "first": "2025-09-01",
+     "last": "2025-09-30",
+     "calendar_days": 30,
+     "days_printed": 30,
+     "days_measured": 30,
+     "days_excluded_by_price_count": 0,
+     "spread_mean": "76.296667",
+     "days_with_gas": 30,
+     "gas_mean": "27.162100",
+     "days_with_both": 30,
+     "spread_mean_both": "76.296667",
+     "gas_mean_both": "27.162100",
+     "ratio_of_means": "2.808938",
+     "mean_of_ratios": "2.807961",
+     "days_with_legs": 30,
+     "spread_mean_legs": "76.296667",
+     "legs_mean": {
+      "negative": "0.548000",
+      "merit_order": "47.582533",
+      "scarcity": "28.166133"
+     },
+     "legs_share": {
+      "negative": "0.007182",
+      "merit_order": "0.623652",
+      "scarcity": "0.369166"
+     }
+    },
+    "2025-10": {
+     "first": "2025-10-01",
+     "last": "2025-10-31",
+     "calendar_days": 31,
+     "days_printed": 31,
+     "days_measured": 31,
+     "days_excluded_by_price_count": 0,
+     "spread_mean": "76.913226",
+     "days_with_gas": 31,
+     "gas_mean": "26.842161",
+     "days_with_both": 31,
+     "spread_mean_both": "76.913226",
+     "gas_mean_both": "26.842161",
+     "ratio_of_means": "2.865389",
+     "mean_of_ratios": "2.877700",
+     "days_with_legs": 31,
+     "spread_mean_legs": "76.913226",
+     "legs_mean": {
+      "negative": "0.348387",
+      "merit_order": "39.984065",
+      "scarcity": "36.580774"
+     },
+     "legs_share": {
+      "negative": "0.004530",
+      "merit_order": "0.519859",
+      "scarcity": "0.475611"
+     }
+    },
+    "2025-11": {
+     "first": "2025-11-01",
+     "last": "2025-11-30",
+     "calendar_days": 30,
+     "days_printed": 30,
+     "days_measured": 30,
+     "days_excluded_by_price_count": 0,
+     "spread_mean": "56.920000",
+     "days_with_gas": 30,
+     "gas_mean": "25.607333",
+     "days_with_both": 30,
+     "spread_mean_both": "56.920000",
+     "gas_mean_both": "25.607333",
+     "ratio_of_means": "2.222801",
+     "mean_of_ratios": "2.226191",
+     "days_with_legs": 30,
+     "spread_mean_legs": "56.920000",
+     "legs_mean": {
+      "negative": "0.000000",
+      "merit_order": "28.824333",
+      "scarcity": "28.095667"
+     },
+     "legs_share": {
+      "negative": "0.000000",
+      "merit_order": "0.506401",
+      "scarcity": "0.493599"
+     }
+    },
+    "2025-12": {
+     "first": "2025-12-01",
+     "last": "2025-12-31",
+     "calendar_days": 31,
+     "days_printed": 31,
+     "days_measured": 31,
+     "days_excluded_by_price_count": 0,
+     "spread_mean": "46.162581",
+     "days_with_gas": 31,
+     "gas_mean": "24.487419",
+     "days_with_both": 31,
+     "spread_mean_both": "46.162581",
+     "gas_mean_both": "24.487419",
+     "ratio_of_means": "1.885155",
+     "mean_of_ratios": "1.899112",
+     "days_with_legs": 31,
+     "spread_mean_legs": "46.162581",
+     "legs_mean": {
+      "negative": "0.000000",
+      "merit_order": "30.863935",
+      "scarcity": "15.298645"
+     },
+     "legs_share": {
+      "negative": "0.000000",
+      "merit_order": "0.668592",
+      "scarcity": "0.331408"
+     }
+    },
+    "2026-01": {
+     "first": "2026-01-01",
+     "last": "2026-01-31",
+     "calendar_days": 31,
+     "days_printed": 31,
+     "days_measured": 31,
+     "days_excluded_by_price_count": 0,
+     "spread_mean": "52.505806",
+     "days_with_gas": 31,
+     "gas_mean": "30.636613",
+     "days_with_both": 31,
+     "spread_mean_both": "52.505806",
+     "gas_mean_both": "30.636613",
+     "ratio_of_means": "1.713825",
+     "mean_of_ratios": "1.767749",
+     "days_with_legs": 31,
+     "spread_mean_legs": "52.505806",
+     "legs_mean": {
+      "negative": "0.000000",
+      "merit_order": "24.889484",
+      "scarcity": "27.616323"
+     },
+     "legs_share": {
+      "negative": "0.000000",
+      "merit_order": "0.474033",
+      "scarcity": "0.525967"
+     }
+    },
+    "2026-02": {
+     "first": "2026-02-01",
+     "last": "2026-02-28",
+     "calendar_days": 28,
+     "days_printed": 28,
+     "days_measured": 28,
+     "days_excluded_by_price_count": 0,
+     "spread_mean": "39.652500",
+     "days_with_gas": 28,
+     "gas_mean": "27.334607",
+     "days_with_both": 28,
+     "spread_mean_both": "39.652500",
+     "gas_mean_both": "27.334607",
+     "ratio_of_means": "1.450634",
+     "mean_of_ratios": "1.463658",
+     "days_with_legs": 28,
+     "spread_mean_legs": "39.652500",
+     "legs_mean": {
+      "negative": "0.000000",
+      "merit_order": "19.073000",
+      "scarcity": "20.579500"
+     },
+     "legs_share": {
+      "negative": "0.000000",
+      "merit_order": "0.481004",
+      "scarcity": "0.518996"
+     }
+    },
+    "2026-03": {
+     "first": "2026-03-01",
+     "last": "2026-03-31",
+     "calendar_days": 31,
+     "days_printed": 31,
+     "days_measured": 31,
+     "days_excluded_by_price_count": 0,
+     "spread_mean": "88.522581",
+     "days_with_gas": 31,
+     "gas_mean": "45.074581",
+     "days_with_both": 31,
+     "spread_mean_both": "88.522581",
+     "gas_mean_both": "45.074581",
+     "ratio_of_means": "1.963914",
+     "mean_of_ratios": "1.996812",
+     "days_with_legs": 31,
+     "spread_mean_legs": "88.522581",
+     "legs_mean": {
+      "negative": "0.000000",
+      "merit_order": "54.493355",
+      "scarcity": "34.029226"
+     },
+     "legs_share": {
+      "negative": "0.000000",
+      "merit_order": "0.615587",
+      "scarcity": "0.384413"
+     }
+    },
+    "2026-04": {
+     "first": "2026-04-01",
+     "last": "2026-04-30",
+     "calendar_days": 30,
+     "days_printed": 30,
+     "days_measured": 30,
+     "days_excluded_by_price_count": 0,
+     "spread_mean": "79.196333",
+     "days_with_gas": 30,
+     "gas_mean": "38.831667",
+     "days_with_both": 30,
+     "spread_mean_both": "79.196333",
+     "gas_mean_both": "38.831667",
+     "ratio_of_means": "2.039478",
+     "mean_of_ratios": "2.029725",
+     "days_with_legs": 30,
+     "spread_mean_legs": "79.196333",
+     "legs_mean": {
+      "negative": "2.392000",
+      "merit_order": "54.962400",
+      "scarcity": "21.841933"
+     },
+     "legs_share": {
+      "negative": "0.030203",
+      "merit_order": "0.694002",
+      "scarcity": "0.275795"
+     }
+    },
+    "2026-05": {
+     "first": "2026-05-01",
+     "last": "2026-05-31",
+     "calendar_days": 31,
+     "days_printed": 31,
+     "days_measured": 31,
+     "days_excluded_by_price_count": 0,
+     "spread_mean": "48.309032",
+     "days_with_gas": 31,
+     "gas_mean": "40.366129",
+     "days_with_both": 31,
+     "spread_mean_both": "48.309032",
+     "gas_mean_both": "40.366129",
+     "ratio_of_means": "1.196771",
+     "mean_of_ratios": "1.197464",
+     "days_with_legs": 31,
+     "spread_mean_legs": "48.309032",
+     "legs_mean": {
+      "negative": "0.000000",
+      "merit_order": "24.694968",
+      "scarcity": "23.614065"
+     },
+     "legs_share": {
+      "negative": "0.000000",
+      "merit_order": "0.511187",
+      "scarcity": "0.488813"
+     }
+    },
+    "2026-06": {
+     "first": "2026-06-01",
+     "last": "2026-06-30",
+     "calendar_days": 30,
+     "days_printed": 30,
+     "days_measured": 30,
+     "days_excluded_by_price_count": 0,
+     "spread_mean": "90.364000",
+     "days_with_gas": 30,
+     "gas_mean": "37.552667",
+     "days_with_both": 30,
+     "spread_mean_both": "90.364000",
+     "gas_mean_both": "37.552667",
+     "ratio_of_means": "2.406327",
+     "mean_of_ratios": "2.464820",
+     "days_with_legs": 30,
+     "spread_mean_legs": "90.364000",
+     "legs_mean": {
+      "negative": "0.760667",
+      "merit_order": "41.209867",
+      "scarcity": "48.393467"
+     },
+     "legs_share": {
+      "negative": "0.008418",
+      "merit_order": "0.456043",
+      "scarcity": "0.535539"
+     }
+    },
+    "2026-07": {
+     "first": "2026-07-01",
+     "last": "2026-07-31",
+     "calendar_days": 31,
+     "days_printed": 31,
+     "days_measured": 31,
+     "days_excluded_by_price_count": 0,
+     "spread_mean": "78.351290",
+     "days_with_gas": 31,
+     "gas_mean": "44.164581",
+     "days_with_both": 31,
+     "spread_mean_both": "78.351290",
+     "gas_mean_both": "44.164581",
+     "ratio_of_means": "1.774075",
+     "mean_of_ratios": "1.797623",
+     "days_with_legs": 31,
+     "spread_mean_legs": "78.351290",
+     "legs_mean": {
+      "negative": "0.402903",
+      "merit_order": "47.343097",
+      "scarcity": "30.605290"
+     },
+     "legs_share": {
+      "negative": "0.005142",
+      "merit_order": "0.604241",
+      "scarcity": "0.390616"
+     }
+    },
+    "2026-08": {
+     "first": "2026-08-01",
+     "last": "2026-08-31",
+     "calendar_days": 31,
+     "days_printed": 31,
+     "days_measured": 31,
+     "days_excluded_by_price_count": 0,
+     "spread_mean": "81.420645",
+     "days_with_gas": 31,
+     "gas_mean": "51.587903",
+     "days_with_both": 31,
+     "spread_mean_both": "81.420645",
+     "gas_mean_both": "51.587903",
+     "ratio_of_means": "1.578289",
+     "mean_of_ratios": "1.604569",
+     "days_with_legs": 31,
+     "spread_mean_legs": "81.420645",
+     "legs_mean": {
+      "negative": "0.000000",
+      "merit_order": "43.354516",
+      "scarcity": "38.066129"
+     },
+     "legs_share": {
+      "negative": "0.000000",
+      "merit_order": "0.532476",
+      "scarcity": "0.467524"
+     }
+    },
+    "2026-09": {
+     "first": "2026-09-01",
+     "last": "2026-09-30",
+     "calendar_days": 30,
+     "days_printed": 30,
+     "days_measured": 30,
+     "days_excluded_by_price_count": 0,
+     "spread_mean": "121.699333",
+     "days_with_gas": 30,
+     "gas_mean": "64.330400",
+     "days_with_both": 30,
+     "spread_mean_both": "121.699333",
+     "gas_mean_both": "64.330400",
+     "ratio_of_means": "1.891786",
+     "mean_of_ratios": "1.902482",
+     "days_with_legs": 30,
+     "spread_mean_legs": "121.699333",
+     "legs_mean": {
+      "negative": "0.104667",
+      "merit_order": "79.882667",
+      "scarcity": "41.712000"
+     },
+     "legs_share": {
+      "negative": "0.000860",
+      "merit_order": "0.656394",
+      "scarcity": "0.342746"
+     }
+    },
+    "2026-10": {
+     "first": "2026-10-01",
+     "last": "2026-10-31",
+     "calendar_days": 31,
+     "days_printed": 16,
+     "days_measured": 15,
+     "days_excluded_by_price_count": 1,
+     "spread_mean": "112.872000",
+     "days_with_gas": 11,
+     "gas_mean": "63.517818",
+     "days_with_both": 11,
+     "spread_mean_both": "113.118182",
+     "gas_mean_both": "63.517818",
+     "ratio_of_means": "1.780889",
+     "mean_of_ratios": "1.778040",
+     "days_with_legs": 0,
+     "spread_mean_legs": null,
+     "legs_mean": {
+      "negative": null,
+      "merit_order": null,
+      "scarcity": null
+     },
+     "legs_share": {
+      "negative": null,
+      "merit_order": null,
+      "scarcity": null
+     }
+    }
+   }
+  },
+  "local": {
+   "days": 1853,
+   "excluded": [
+    {
+     "day": "2021-09-20",
+     "prices": 1
+    }
+   ],
+   "periods": {
+    "2022": {
+     "first": "2022-01-01",
+     "last": "2022-12-31",
+     "calendar_days": 365,
+     "days_printed": 365,
+     "days_measured": 365,
+     "days_excluded_by_price_count": 0,
+     "spread_mean": "156.920411",
+     "days_with_gas": 365,
+     "gas_mean": "71.157775",
+     "days_with_both": 365,
+     "spread_mean_both": "156.920411",
+     "gas_mean_both": "71.157775",
+     "ratio_of_means": "2.205246",
+     "mean_of_ratios": "2.581017",
+     "days_with_legs": 365,
+     "spread_mean_legs": "156.920411",
+     "legs_mean": {
+      "negative": "0.440575",
+      "merit_order": "41.715518",
+      "scarcity": "114.764318"
+     },
+     "legs_share": {
+      "negative": "0.002808",
+      "merit_order": "0.265839",
+      "scarcity": "0.731354"
+     }
+    },
+    "2023": {
+     "first": "2023-01-01",
+     "last": "2023-12-31",
+     "calendar_days": 365,
+     "days_printed": 365,
+     "days_measured": 365,
+     "days_excluded_by_price_count": 0,
+     "spread_mean": "70.401014",
+     "days_with_gas": 365,
+     "gas_mean": "34.407586",
+     "days_with_both": 365,
+     "spread_mean_both": "70.401014",
+     "gas_mean_both": "34.407586",
+     "ratio_of_means": "2.046090",
+     "mean_of_ratios": "2.071870",
+     "days_with_legs": 365,
+     "spread_mean_legs": "70.401014",
+     "legs_mean": {
+      "negative": "0.415096",
+      "merit_order": "35.691786",
+      "scarcity": "34.294132"
+     },
+     "legs_share": {
+      "negative": "0.005896",
+      "merit_order": "0.506978",
+      "scarcity": "0.487126"
+     }
+    },
+    "2024": {
+     "first": "2024-01-01",
+     "last": "2024-12-31",
+     "calendar_days": 366,
+     "days_printed": 366,
+     "days_measured": 366,
+     "days_excluded_by_price_count": 0,
+     "spread_mean": "60.588115",
+     "days_with_gas": 366,
+     "gas_mean": "28.668590",
+     "days_with_both": 366,
+     "spread_mean_both": "60.588115",
+     "gas_mean_both": "28.668590",
+     "ratio_of_means": "2.113397",
+     "mean_of_ratios": "2.091981",
+     "days_with_legs": 366,
+     "spread_mean_legs": "60.588115",
+     "legs_mean": {
+      "negative": "0.510765",
+      "merit_order": "33.458044",
+      "scarcity": "26.619306"
+     },
+     "legs_share": {
+      "negative": "0.008430",
+      "merit_order": "0.552221",
+      "scarcity": "0.439349"
+     }
+    },
+    "2025": {
+     "first": "2025-01-01",
+     "last": "2025-12-31",
+     "calendar_days": 365,
+     "days_printed": 365,
+     "days_measured": 365,
+     "days_excluded_by_price_count": 0,
+     "spread_mean": "68.286219",
+     "days_with_gas": 365,
+     "gas_mean": "30.417282",
+     "days_with_both": 365,
+     "spread_mean_both": "68.286219",
+     "gas_mean_both": "30.417282",
+     "ratio_of_means": "2.244981",
+     "mean_of_ratios": "2.247834",
+     "days_with_legs": 365,
+     "spread_mean_legs": "68.286219",
+     "legs_mean": {
+      "negative": "0.434301",
+      "merit_order": "35.521507",
+      "scarcity": "32.330411"
+     },
+     "legs_share": {
+      "negative": "0.006360",
+      "merit_order": "0.520186",
+      "scarcity": "0.473454"
+     }
+    },
+    "2026 to date": {
+     "first": "2026-01-01",
+     "last": "2026-10-15",
+     "calendar_days": 288,
+     "days_printed": 288,
+     "days_measured": 288,
+     "days_excluded_by_price_count": 0,
+     "spread_mean": "77.329097",
+     "days_with_gas": 284,
+     "gas_mean": "43.141658",
+     "days_with_both": 284,
+     "spread_mean_both": "76.838028",
+     "gas_mean_both": "43.141658",
+     "ratio_of_means": "1.781063",
+     "mean_of_ratios": "1.795228",
+     "days_with_legs": 273,
+     "spread_mean_legs": "75.499707",
+     "legs_mean": {
+      "negative": "0.403700",
+      "merit_order": "43.204029",
+      "scarcity": "31.891978"
+     },
+     "legs_share": {
+      "negative": "0.005347",
+      "merit_order": "0.572241",
+      "scarcity": "0.422412"
+     }
+    },
+    "2025 same dates": {
+     "first": "2025-01-01",
+     "last": "2025-10-15",
+     "calendar_days": 288,
+     "days_printed": 288,
+     "days_measured": 288,
+     "days_excluded_by_price_count": 0,
+     "spread_mean": "71.387326",
+     "days_with_gas": 288,
+     "gas_mean": "31.781743",
+     "days_with_both": 288,
+     "spread_mean_both": "71.387326",
+     "gas_mean_both": "31.781743",
+     "ratio_of_means": "2.246174",
+     "mean_of_ratios": "2.250820",
+     "days_with_legs": 288,
+     "spread_mean_legs": "71.387326",
+     "legs_mean": {
+      "negative": "0.536667",
+      "merit_order": "35.985688",
+      "scarcity": "34.864972"
+     },
+     "legs_share": {
+      "negative": "0.007518",
+      "merit_order": "0.504091",
+      "scarcity": "0.488392"
+     }
+    },
+    "2022-01": {
+     "first": "2022-01-01",
+     "last": "2022-01-31",
+     "calendar_days": 31,
+     "days_printed": 31,
+     "days_measured": 31,
+     "days_excluded_by_price_count": 0,
+     "spread_mean": "214.212903",
+     "days_with_gas": 31,
+     "gas_mean": "65.768387",
+     "days_with_both": 31,
+     "spread_mean_both": "214.212903",
+     "gas_mean_both": "65.768387",
+     "ratio_of_means": "3.257080",
+     "mean_of_ratios": "3.672494",
+     "days_with_legs": 31,
+     "spread_mean_legs": "214.212903",
+     "legs_mean": {
+      "negative": "2.827742",
+      "merit_order": "52.075484",
+      "scarcity": "159.309677"
+     },
+     "legs_share": {
+      "negative": "0.013201",
+      "merit_order": "0.243102",
+      "scarcity": "0.743698"
+     }
+    },
+    "2022-02": {
+     "first": "2022-02-01",
+     "last": "2022-02-28",
+     "calendar_days": 28,
+     "days_printed": 28,
+     "days_measured": 28,
+     "days_excluded_by_price_count": 0,
+     "spread_mean": "117.182857",
+     "days_with_gas": 28,
+     "gas_mean": "65.118357",
+     "days_with_both": 28,
+     "spread_mean_both": "117.182857",
+     "gas_mean_both": "65.118357",
+     "ratio_of_means": "1.799536",
+     "mean_of_ratios": "1.805329",
+     "days_with_legs": 28,
+     "spread_mean_legs": "117.182857",
+     "legs_mean": {
+      "negative": "0.000000",
+      "merit_order": "63.621357",
+      "scarcity": "53.561500"
+     },
+     "legs_share": {
+      "negative": "0.000000",
+      "merit_order": "0.542924",
+      "scarcity": "0.457076"
+     }
+    },
+    "2022-03": {
+     "first": "2022-03-01",
+     "last": "2022-03-31",
+     "calendar_days": 31,
+     "days_printed": 31,
+     "days_measured": 31,
+     "days_excluded_by_price_count": 0,
+     "spread_mean": "159.383871",
+     "days_with_gas": 31,
+     "gas_mean": "101.285903",
+     "days_with_both": 31,
+     "spread_mean_both": "159.383871",
+     "gas_mean_both": "101.285903",
+     "ratio_of_means": "1.573604",
+     "mean_of_ratios": "1.563283",
+     "days_with_legs": 31,
+     "spread_mean_legs": "159.383871",
+     "legs_mean": {
+      "negative": "0.000000",
+      "merit_order": "43.112452",
+      "scarcity": "116.271419"
+     },
+     "legs_share": {
+      "negative": "0.000000",
+      "merit_order": "0.270494",
+      "scarcity": "0.729506"
+     }
+    },
+    "2022-04": {
+     "first": "2022-04-01",
+     "last": "2022-04-30",
+     "calendar_days": 30,
+     "days_printed": 30,
+     "days_measured": 30,
+     "days_excluded_by_price_count": 0,
+     "spread_mean": "96.952333",
+     "days_with_gas": 30,
+     "gas_mean": "62.033467",
+     "days_with_both": 30,
+     "spread_mean_both": "96.952333",
+     "gas_mean_both": "62.033467",
+     "ratio_of_means": "1.562904",
+     "mean_of_ratios": "1.727982",
+     "days_with_legs": 30,
+     "spread_mean_legs": "96.952333",
+     "legs_mean": {
+      "negative": "0.000000",
+      "merit_order": "36.126600",
+      "scarcity": "60.825733"
+     },
+     "legs_share": {
+      "negative": "0.000000",
+      "merit_order": "0.372622",
+      "scarcity": "0.627378"
+     }
+    },
+    "2022-05": {
+     "first": "2022-05-01",
+     "last": "2022-05-31",
+     "calendar_days": 31,
+     "days_printed": 31,
+     "days_measured": 31,
+     "days_excluded_by_price_count": 0,
+     "spread_mean": "87.982258",
+     "days_with_gas": 31,
+     "gas_mean": "35.024839",
+     "days_with_both": 31,
+     "spread_mean_both": "87.982258",
+     "gas_mean_both": "35.024839",
+     "ratio_of_means": "2.511996",
+     "mean_of_ratios": "3.075845",
+     "days_with_legs": 31,
+     "spread_mean_legs": "87.982258",
+     "legs_mean": {
+      "negative": "0.000000",
+      "merit_order": "28.205355",
+      "scarcity": "59.776903"
+     },
+     "legs_share": {
+      "negative": "0.000000",
+      "merit_order": "0.320580",
+      "scarcity": "0.679420"
+     }
+    },
+    "2022-06": {
+     "first": "2022-06-01",
+     "last": "2022-06-30",
+     "calendar_days": 30,
+     "days_printed": 30,
+     "days_measured": 30,
+     "days_excluded_by_price_count": 0,
+     "spread_mean": "100.598667",
+     "days_with_gas": 30,
+     "gas_mean": "48.272600",
+     "days_with_both": 30,
+     "spread_mean_both": "100.598667",
+     "gas_mean_both": "48.272600",
+     "ratio_of_means": "2.083970",
+     "mean_of_ratios": "2.602414",
+     "days_with_legs": 30,
+     "spread_mean_legs": "100.598667",
+     "legs_mean": {
+      "negative": "0.083000",
+      "merit_order": "24.956600",
+      "scarcity": "75.559067"
+     },
+     "legs_share": {
+      "negative": "0.000825",
+      "merit_order": "0.248081",
+      "scarcity": "0.751094"
+     }
+    },
+    "2022-07": {
+     "first": "2022-07-01",
+     "last": "2022-07-31",
+     "calendar_days": 31,
+     "days_printed": 31,
+     "days_measured": 31,
+     "days_excluded_by_price_count": 0,
+     "spread_mean": "162.082581",
+     "days_with_gas": 31,
+     "gas_mean": "78.317258",
+     "days_with_both": 31,
+     "spread_mean_both": "162.082581",
+     "gas_mean_both": "78.317258",
+     "ratio_of_means": "2.069564",
+     "mean_of_ratios": "2.154596",
+     "days_with_legs": 31,
+     "spread_mean_legs": "162.082581",
+     "legs_mean": {
+      "negative": "0.000000",
+      "merit_order": "26.959032",
+      "scarcity": "135.123548"
+     },
+     "legs_share": {
+      "negative": "0.000000",
+      "merit_order": "0.166329",
+      "scarcity": "0.833671"
+     }
+    },
+    "2022-08": {
+     "first": "2022-08-01",
+     "last": "2022-08-31",
+     "calendar_days": 31,
+     "days_printed": 31,
+     "days_measured": 31,
+     "days_excluded_by_price_count": 0,
+     "spread_mean": "215.211935",
+     "days_with_gas": 31,
+     "gas_mean": "128.827226",
+     "days_with_both": 31,
+     "spread_mean_both": "215.211935",
+     "gas_mean_both": "128.827226",
+     "ratio_of_means": "1.670547",
+     "mean_of_ratios": "1.684421",
+     "days_with_legs": 31,
+     "spread_mean_legs": "215.211935",
+     "legs_mean": {
+      "negative": "0.000000",
+      "merit_order": "24.948323",
+      "scarcity": "190.263613"
+     },
+     "legs_share": {
+      "negative": "0.000000",
+      "merit_order": "0.115924",
+      "scarcity": "0.884076"
+     }
+    },
+    "2022-09": {
+     "first": "2022-09-01",
+     "last": "2022-09-30",
+     "calendar_days": 30,
+     "days_printed": 30,
+     "days_measured": 30,
+     "days_excluded_by_price_count": 0,
+     "spread_mean": "210.976000",
+     "days_with_gas": 30,
+     "gas_mean": "91.577567",
+     "days_with_both": 30,
+     "spread_mean_both": "210.976000",
+     "gas_mean_both": "91.577567",
+     "ratio_of_means": "2.303796",
+     "mean_of_ratios": "2.381398",
+     "days_with_legs": 30,
+     "spread_mean_legs": "210.976000",
+     "legs_mean": {
+      "negative": "0.000000",
+      "merit_order": "39.974267",
+      "scarcity": "171.001733"
+     },
+     "legs_share": {
+      "negative": "0.000000",
+      "merit_order": "0.189473",
+      "scarcity": "0.810527"
+     }
+    },
+    "2022-10": {
+     "first": "2022-10-01",
+     "last": "2022-10-31",
+     "calendar_days": 31,
+     "days_printed": 31,
+     "days_measured": 31,
+     "days_excluded_by_price_count": 0,
+     "spread_mean": "126.603226",
+     "days_with_gas": 31,
+     "gas_mean": "37.564516",
+     "days_with_both": 31,
+     "spread_mean_both": "126.603226",
+     "gas_mean_both": "37.564516",
+     "ratio_of_means": "3.370288",
+     "mean_of_ratios": "4.389190",
+     "days_with_legs": 31,
+     "spread_mean_legs": "126.603226",
+     "legs_mean": {
+      "negative": "0.000000",
+      "merit_order": "46.374387",
+      "scarcity": "80.228839"
+     },
+     "legs_share": {
+      "negative": "0.000000",
+      "merit_order": "0.366297",
+      "scarcity": "0.633703"
+     }
+    },
+    "2022-11": {
+     "first": "2022-11-01",
+     "last": "2022-11-30",
+     "calendar_days": 30,
+     "days_printed": 30,
+     "days_measured": 30,
+     "days_excluded_by_price_count": 0,
+     "spread_mean": "161.122333",
+     "days_with_gas": 30,
+     "gas_mean": "43.617567",
+     "days_with_both": 30,
+     "spread_mean_both": "161.122333",
+     "gas_mean_both": "43.617567",
+     "ratio_of_means": "3.693978",
+     "mean_of_ratios": "3.410602",
+     "days_with_legs": 30,
+     "spread_mean_legs": "161.122333",
+     "legs_mean": {
+      "negative": "0.569000",
+      "merit_order": "40.071400",
+      "scarcity": "120.481933"
+     },
+     "legs_share": {
+      "negative": "0.003531",
+      "merit_order": "0.248702",
+      "scarcity": "0.747767"
+     }
+    },
+    "2022-12": {
+     "first": "2022-12-01",
+     "last": "2022-12-31",
+     "calendar_days": 31,
+     "days_printed": 31,
+     "days_measured": 31,
+     "days_excluded_by_price_count": 0,
+     "spread_mean": "225.018387",
+     "days_with_gas": 31,
+     "gas_mean": "94.638903",
+     "days_with_both": 31,
+     "spread_mean_both": "225.018387",
+     "gas_mean_both": "94.638903",
+     "ratio_of_means": "2.377652",
+     "mean_of_ratios": "2.423076",
+     "days_with_legs": 31,
+     "spread_mean_legs": "225.018387",
+     "legs_mean": {
+      "negative": "1.728710",
+      "merit_order": "75.450774",
+      "scarcity": "147.838903"
+     },
+     "legs_share": {
+      "negative": "0.007683",
+      "merit_order": "0.335309",
+      "scarcity": "0.657008"
+     }
+    },
+    "2023-01": {
+     "first": "2023-01-01",
+     "last": "2023-01-31",
+     "calendar_days": 31,
+     "days_printed": 31,
+     "days_measured": 31,
+     "days_excluded_by_price_count": 0,
+     "spread_mean": "116.636129",
+     "days_with_gas": 31,
+     "gas_mean": "54.095645",
+     "days_with_both": 31,
+     "spread_mean_both": "116.636129",
+     "gas_mean_both": "54.095645",
+     "ratio_of_means": "2.156109",
+     "mean_of_ratios": "2.141110",
+     "days_with_legs": 31,
+     "spread_mean_legs": "116.636129",
+     "legs_mean": {
+      "negative": "0.000645",
+      "merit_order": "69.864065",
+      "scarcity": "46.771419"
+     },
+     "legs_share": {
+      "negative": "0.000006",
+      "merit_order": "0.598992",
+      "scarcity": "0.401003"
+     }
+    },
+    "2023-02": {
+     "first": "2023-02-01",
+     "last": "2023-02-28",
+     "calendar_days": 28,
+     "days_printed": 28,
+     "days_measured": 28,
+     "days_excluded_by_price_count": 0,
+     "spread_mean": "69.847857",
+     "days_with_gas": 28,
+     "gas_mean": "46.178750",
+     "days_with_both": 28,
+     "spread_mean_both": "69.847857",
+     "gas_mean_both": "46.178750",
+     "ratio_of_means": "1.512554",
+     "mean_of_ratios": "1.522737",
+     "days_with_legs": 28,
+     "spread_mean_legs": "69.847857",
+     "legs_mean": {
+      "negative": "0.000000",
+      "merit_order": "27.965857",
+      "scarcity": "41.882000"
+     },
+     "legs_share": {
+      "negative": "0.000000",
+      "merit_order": "0.400382",
+      "scarcity": "0.599618"
+     }
+    },
+    "2023-03": {
+     "first": "2023-03-01",
+     "last": "2023-03-31",
+     "calendar_days": 31,
+     "days_printed": 31,
+     "days_measured": 31,
+     "days_excluded_by_price_count": 0,
+     "spread_mean": "73.446452",
+     "days_with_gas": 31,
+     "gas_mean": "38.564484",
+     "days_with_both": 31,
+     "spread_mean_both": "73.446452",
+     "gas_mean_both": "38.564484",
+     "ratio_of_means": "1.904510",
+     "mean_of_ratios": "1.923564",
+     "days_with_legs": 31,
+     "spread_mean_legs": "73.446452",
+     "legs_mean": {
+      "negative": "0.000000",
+      "merit_order": "31.863226",
+      "scarcity": "41.583226"
+     },
+     "legs_share": {
+      "negative": "0.000000",
+      "merit_order": "0.433829",
+      "scarcity": "0.566171"
+     }
+    },
+    "2023-04": {
+     "first": "2023-04-01",
+     "last": "2023-04-30",
+     "calendar_days": 30,
+     "days_printed": 30,
+     "days_measured": 30,
+     "days_excluded_by_price_count": 0,
+     "spread_mean": "56.753333",
+     "days_with_gas": 30,
+     "gas_mean": "34.182567",
+     "days_with_both": 30,
+     "spread_mean_both": "56.753333",
+     "gas_mean_both": "34.182567",
+     "ratio_of_means": "1.660301",
+     "mean_of_ratios": "1.656065",
+     "days_with_legs": 30,
+     "spread_mean_legs": "56.753333",
+     "legs_mean": {
+      "negative": "0.000000",
+      "merit_order": "25.550133",
+      "scarcity": "31.203200"
+     },
+     "legs_share": {
+      "negative": "0.000000",
+      "merit_order": "0.450196",
+      "scarcity": "0.549804"
+     }
+    },
+    "2023-05": {
+     "first": "2023-05-01",
+     "last": "2023-05-31",
+     "calendar_days": 31,
+     "days_printed": 31,
+     "days_measured": 31,
+     "days_excluded_by_price_count": 0,
+     "spread_mean": "43.843226",
+     "days_with_gas": 31,
+     "gas_mean": "25.204581",
+     "days_with_both": 31,
+     "spread_mean_both": "43.843226",
+     "gas_mean_both": "25.204581",
+     "ratio_of_means": "1.739494",
+     "mean_of_ratios": "1.794430",
+     "days_with_legs": 31,
+     "spread_mean_legs": "43.843226",
+     "legs_mean": {
+      "negative": "0.000000",
+      "merit_order": "20.511161",
+      "scarcity": "23.332065"
+     },
+     "legs_share": {
+      "negative": "0.000000",
+      "merit_order": "0.467830",
+      "scarcity": "0.532170"
+     }
+    },
+    "2023-06": {
+     "first": "2023-06-01",
+     "last": "2023-06-30",
+     "calendar_days": 30,
+     "days_printed": 30,
+     "days_measured": 30,
+     "days_excluded_by_price_count": 0,
+     "spread_mean": "51.576667",
+     "days_with_gas": 30,
+     "gas_mean": "27.416133",
+     "days_with_both": 30,
+     "spread_mean_both": "51.576667",
+     "gas_mean_both": "27.416133",
+     "ratio_of_means": "1.881252",
+     "mean_of_ratios": "1.900852",
+     "days_with_legs": 30,
+     "spread_mean_legs": "51.576667",
+     "legs_mean": {
+      "negative": "0.000000",
+      "merit_order": "22.787267",
+      "scarcity": "28.789400"
+     },
+     "legs_share": {
+      "negative": "0.000000",
+      "merit_order": "0.441813",
+      "scarcity": "0.558187"
+     }
+    },
+    "2023-07": {
+     "first": "2023-07-01",
+     "last": "2023-07-31",
+     "calendar_days": 31,
+     "days_printed": 31,
+     "days_measured": 31,
+     "days_excluded_by_price_count": 0,
+     "spread_mean": "60.414516",
+     "days_with_gas": 31,
+     "gas_mean": "24.726065",
+     "days_with_both": 31,
+     "spread_mean_both": "60.414516",
+     "gas_mean_both": "24.726065",
+     "ratio_of_means": "2.443353",
+     "mean_of_ratios": "2.490871",
+     "days_with_legs": 31,
+     "spread_mean_legs": "60.414516",
+     "legs_mean": {
+      "negative": "3.250645",
+      "merit_order": "29.448129",
+      "scarcity": "27.715742"
+     },
+     "legs_share": {
+      "negative": "0.053806",
+      "merit_order": "0.487435",
+      "scarcity": "0.458760"
+     }
+    },
+    "2023-08": {
+     "first": "2023-08-01",
+     "last": "2023-08-31",
+     "calendar_days": 31,
+     "days_printed": 31,
+     "days_measured": 31,
+     "days_excluded_by_price_count": 0,
+     "spread_mean": "56.018065",
+     "days_with_gas": 31,
+     "gas_mean": "28.709710",
+     "days_with_both": 31,
+     "spread_mean_both": "56.018065",
+     "gas_mean_both": "28.709710",
+     "ratio_of_means": "1.951189",
+     "mean_of_ratios": "1.951859",
+     "days_with_legs": 31,
+     "spread_mean_legs": "56.018065",
+     "legs_mean": {
+      "negative": "0.000000",
+      "merit_order": "23.550645",
+      "scarcity": "32.467419"
+     },
+     "legs_share": {
+      "negative": "0.000000",
+      "merit_order": "0.420412",
+      "scarcity": "0.579588"
+     }
+    },
+    "2023-09": {
+     "first": "2023-09-01",
+     "last": "2023-09-30",
+     "calendar_days": 30,
+     "days_printed": 30,
+     "days_measured": 30,
+     "days_excluded_by_price_count": 0,
+     "spread_mean": "74.818000",
+     "days_with_gas": 30,
+     "gas_mean": "31.724200",
+     "days_with_both": 30,
+     "spread_mean_both": "74.818000",
+     "gas_mean_both": "31.724200",
+     "ratio_of_means": "2.358389",
+     "mean_of_ratios": "2.344810",
+     "days_with_legs": 30,
+     "spread_mean_legs": "74.818000",
+     "legs_mean": {
+      "negative": "0.794000",
+      "merit_order": "36.478733",
+      "scarcity": "37.545267"
+     },
+     "legs_share": {
+      "negative": "0.010612",
+      "merit_order": "0.487566",
+      "scarcity": "0.501821"
+     }
+    },
+    "2023-10": {
+     "first": "2023-10-01",
+     "last": "2023-10-31",
+     "calendar_days": 31,
+     "days_printed": 31,
+     "days_measured": 31,
+     "days_excluded_by_price_count": 0,
+     "spread_mean": "97.536129",
+     "days_with_gas": 31,
+     "gas_mean": "37.205355",
+     "days_with_both": 31,
+     "spread_mean_both": "97.536129",
+     "gas_mean_both": "37.205355",
+     "ratio_of_means": "2.621562",
+     "mean_of_ratios": "2.658531",
+     "days_with_legs": 31,
+     "spread_mean_legs": "97.536129",
+     "legs_mean": {
+      "negative": "0.276129",
+      "merit_order": "59.111742",
+      "scarcity": "38.148258"
+     },
+     "legs_share": {
+      "negative": "0.002831",
+      "merit_order": "0.606050",
+      "scarcity": "0.391119"
+     }
+    },
+    "2023-11": {
+     "first": "2023-11-01",
+     "last": "2023-11-30",
+     "calendar_days": 30,
+     "days_printed": 30,
+     "days_measured": 30,
+     "days_excluded_by_price_count": 0,
+     "spread_mean": "76.554333",
+     "days_with_gas": 30,
+     "gas_mean": "36.621900",
+     "days_with_both": 30,
+     "spread_mean_both": "76.554333",
+     "gas_mean_both": "36.621900",
+     "ratio_of_means": "2.090398",
+     "mean_of_ratios": "2.101687",
+     "days_with_legs": 30,
+     "spread_mean_legs": "76.554333",
+     "legs_mean": {
+      "negative": "0.000000",
+      "merit_order": "38.449800",
+      "scarcity": "38.104533"
+     },
+     "legs_share": {
+      "negative": "0.000000",
+      "merit_order": "0.502255",
+      "scarcity": "0.497745"
+     }
+    },
+    "2023-12": {
+     "first": "2023-12-01",
+     "last": "2023-12-31",
+     "calendar_days": 31,
+     "days_printed": 31,
+     "days_measured": 31,
+     "days_excluded_by_price_count": 0,
+     "spread_mean": "66.607419",
+     "days_with_gas": 31,
+     "gas_mean": "29.152871",
+     "days_with_both": 31,
+     "spread_mean_both": "66.607419",
+     "gas_mean_both": "29.152871",
+     "ratio_of_means": "2.284764",
+     "mean_of_ratios": "2.313615",
+     "days_with_legs": 31,
+     "spread_mean_legs": "66.607419",
+     "legs_mean": {
+      "negative": "0.591613",
+      "merit_order": "41.343935",
+      "scarcity": "24.671871"
+     },
+     "legs_share": {
+      "negative": "0.008882",
+      "merit_order": "0.620711",
+      "scarcity": "0.370407"
+     }
+    },
+    "2024-01": {
+     "first": "2024-01-01",
+     "last": "2024-01-31",
+     "calendar_days": 31,
+     "days_printed": 31,
+     "days_measured": 31,
+     "days_excluded_by_price_count": 0,
+     "spread_mean": "48.468387",
+     "days_with_gas": 31,
+     "gas_mean": "25.699677",
+     "days_with_both": 31,
+     "spread_mean_both": "48.468387",
+     "gas_mean_both": "25.699677",
+     "ratio_of_means": "1.885953",
+     "mean_of_ratios": "1.915840",
+     "days_with_legs": 31,
+     "spread_mean_legs": "48.468387",
+     "legs_mean": {
+      "negative": "0.009355",
+      "merit_order": "23.773935",
+      "scarcity": "24.685097"
+     },
+     "legs_share": {
+      "negative": "0.000193",
+      "merit_order": "0.490504",
+      "scarcity": "0.509303"
+     }
+    },
+    "2024-02": {
+     "first": "2024-02-01",
+     "last": "2024-02-29",
+     "calendar_days": 29,
+     "days_printed": 29,
+     "days_measured": 29,
+     "days_excluded_by_price_count": 0,
+     "spread_mean": "40.131034",
+     "days_with_gas": 29,
+     "gas_mean": "21.491241",
+     "days_with_both": 29,
+     "spread_mean_both": "40.131034",
+     "gas_mean_both": "21.491241",
+     "ratio_of_means": "1.867320",
+     "mean_of_ratios": "1.835035",
+     "days_with_legs": 29,
+     "spread_mean_legs": "40.131034",
+     "legs_mean": {
+      "negative": "0.000345",
+      "merit_order": "23.905241",
+      "scarcity": "16.225448"
+     },
+     "legs_share": {
+      "negative": "0.000009",
+      "merit_order": "0.595680",
+      "scarcity": "0.404312"
+     }
+    },
+    "2024-03": {
+     "first": "2024-03-01",
+     "last": "2024-03-31",
+     "calendar_days": 31,
+     "days_printed": 31,
+     "days_measured": 31,
+     "days_excluded_by_price_count": 0,
+     "spread_mean": "45.185484",
+     "days_with_gas": 31,
+     "gas_mean": "23.331871",
+     "days_with_both": 31,
+     "spread_mean_both": "45.185484",
+     "gas_mean_both": "23.331871",
+     "ratio_of_means": "1.936642",
+     "mean_of_ratios": "1.929885",
+     "days_with_legs": 31,
+     "spread_mean_legs": "45.185484",
+     "legs_mean": {
+      "negative": "0.257742",
+      "merit_order": "24.399355",
+      "scarcity": "20.528387"
+     },
+     "legs_share": {
+      "negative": "0.005704",
+      "merit_order": "0.539982",
+      "scarcity": "0.454314"
+     }
+    },
+    "2024-04": {
+     "first": "2024-04-01",
+     "last": "2024-04-30",
+     "calendar_days": 30,
+     "days_printed": 30,
+     "days_measured": 30,
+     "days_excluded_by_price_count": 0,
+     "spread_mean": "55.512000",
+     "days_with_gas": 30,
+     "gas_mean": "24.661500",
+     "days_with_both": 30,
+     "spread_mean_both": "55.512000",
+     "gas_mean_both": "24.661500",
+     "ratio_of_means": "2.250958",
+     "mean_of_ratios": "2.264797",
+     "days_with_legs": 30,
+     "spread_mean_legs": "55.512000",
+     "legs_mean": {
+      "negative": "1.809333",
+      "merit_order": "37.328533",
+      "scarcity": "16.374133"
+     },
+     "legs_share": {
+      "negative": "0.032594",
+      "merit_order": "0.672441",
+      "scarcity": "0.294966"
+     }
+    },
+    "2024-05": {
+     "first": "2024-05-01",
+     "last": "2024-05-31",
+     "calendar_days": 31,
+     "days_printed": 31,
+     "days_measured": 31,
+     "days_excluded_by_price_count": 0,
+     "spread_mean": "43.357097",
+     "days_with_gas": 31,
+     "gas_mean": "26.374290",
+     "days_with_both": 31,
+     "spread_mean_both": "43.357097",
+     "gas_mean_both": "26.374290",
+     "ratio_of_means": "1.643915",
+     "mean_of_ratios": "1.650175",
+     "days_with_legs": 31,
+     "spread_mean_legs": "43.357097",
+     "legs_mean": {
+      "negative": "0.000000",
+      "merit_order": "23.956000",
+      "scarcity": "19.401097"
+     },
+     "legs_share": {
+      "negative": "0.000000",
+      "merit_order": "0.552528",
+      "scarcity": "0.447472"
+     }
+    },
+    "2024-06": {
+     "first": "2024-06-01",
+     "last": "2024-06-30",
+     "calendar_days": 30,
+     "days_printed": 30,
+     "days_measured": 30,
+     "days_excluded_by_price_count": 0,
+     "spread_mean": "59.146667",
+     "days_with_gas": 30,
+     "gas_mean": "28.183200",
+     "days_with_both": 30,
+     "spread_mean_both": "59.146667",
+     "gas_mean_both": "28.183200",
+     "ratio_of_means": "2.098650",
+     "mean_of_ratios": "2.104327",
+     "days_with_legs": 30,
+     "spread_mean_legs": "59.146667",
+     "legs_mean": {
+      "negative": "0.815667",
+      "merit_order": "38.993400",
+      "scarcity": "19.337600"
+     },
+     "legs_share": {
+      "negative": "0.013791",
+      "merit_order": "0.659266",
+      "scarcity": "0.326943"
+     }
+    },
+    "2024-07": {
+     "first": "2024-07-01",
+     "last": "2024-07-31",
+     "calendar_days": 31,
+     "days_printed": 31,
+     "days_measured": 31,
+     "days_excluded_by_price_count": 0,
+     "spread_mean": "46.736129",
+     "days_with_gas": 31,
+     "gas_mean": "25.528935",
+     "days_with_both": 31,
+     "spread_mean_both": "46.736129",
+     "gas_mean_both": "25.528935",
+     "ratio_of_means": "1.830712",
+     "mean_of_ratios": "1.825380",
+     "days_with_legs": 31,
+     "spread_mean_legs": "46.736129",
+     "legs_mean": {
+      "negative": "0.870000",
+      "merit_order": "26.243484",
+      "scarcity": "19.622645"
+     },
+     "legs_share": {
+      "negative": "0.018615",
+      "merit_order": "0.561525",
+      "scarcity": "0.419860"
+     }
+    },
+    "2024-08": {
+     "first": "2024-08-01",
+     "last": "2024-08-31",
+     "calendar_days": 31,
+     "days_printed": 31,
+     "days_measured": 31,
+     "days_excluded_by_price_count": 0,
+     "spread_mean": "71.219355",
+     "days_with_gas": 31,
+     "gas_mean": "28.703742",
+     "days_with_both": 31,
+     "spread_mean_both": "71.219355",
+     "gas_mean_both": "28.703742",
+     "ratio_of_means": "2.481187",
+     "mean_of_ratios": "2.483033",
+     "days_with_legs": 31,
+     "spread_mean_legs": "71.219355",
+     "legs_mean": {
+      "negative": "1.655161",
+      "merit_order": "51.565355",
+      "scarcity": "17.998839"
+     },
+     "legs_share": {
+      "negative": "0.023240",
+      "merit_order": "0.724036",
+      "scarcity": "0.252724"
+     }
+    },
+    "2024-09": {
+     "first": "2024-09-01",
+     "last": "2024-09-30",
+     "calendar_days": 30,
+     "days_printed": 30,
+     "days_measured": 30,
+     "days_excluded_by_price_count": 0,
+     "spread_mean": "61.763667",
+     "days_with_gas": 30,
+     "gas_mean": "29.843000",
+     "days_with_both": 30,
+     "spread_mean_both": "61.763667",
+     "gas_mean_both": "29.843000",
+     "ratio_of_means": "2.069620",
+     "mean_of_ratios": "2.055768",
+     "days_with_legs": 30,
+     "spread_mean_legs": "61.763667",
+     "legs_mean": {
+      "negative": "0.153333",
+      "merit_order": "32.953000",
+      "scarcity": "28.657333"
+     },
+     "legs_share": {
+      "negative": "0.002483",
+      "merit_order": "0.533534",
+      "scarcity": "0.463984"
+     }
+    },
+    "2024-10": {
+     "first": "2024-10-01",
+     "last": "2024-10-31",
+     "calendar_days": 31,
+     "days_printed": 31,
+     "days_measured": 31,
+     "days_excluded_by_price_count": 0,
+     "spread_mean": "81.934516",
+     "days_with_gas": 31,
+     "gas_mean": "33.852839",
+     "days_with_both": 31,
+     "spread_mean_both": "81.934516",
+     "gas_mean_both": "33.852839",
+     "ratio_of_means": "2.420314",
+     "mean_of_ratios": "2.421162",
+     "days_with_legs": 31,
+     "spread_mean_legs": "81.934516",
+     "legs_mean": {
+      "negative": "0.360968",
+      "merit_order": "38.640645",
+      "scarcity": "42.932903"
+     },
+     "legs_share": {
+      "negative": "0.004406",
+      "merit_order": "0.471604",
+      "scarcity": "0.523990"
+     }
+    },
+    "2024-11": {
+     "first": "2024-11-01",
+     "last": "2024-11-30",
+     "calendar_days": 30,
+     "days_printed": 30,
+     "days_measured": 30,
+     "days_excluded_by_price_count": 0,
+     "spread_mean": "75.723000",
+     "days_with_gas": 30,
+     "gas_mean": "37.793700",
+     "days_with_both": 30,
+     "spread_mean_both": "75.723000",
+     "gas_mean_both": "37.793700",
+     "ratio_of_means": "2.003588",
+     "mean_of_ratios": "2.035519",
+     "days_with_legs": 30,
+     "spread_mean_legs": "75.723000",
+     "legs_mean": {
+      "negative": "0.150667",
+      "merit_order": "27.546733",
+      "scarcity": "48.025600"
+     },
+     "legs_share": {
+      "negative": "0.001990",
+      "merit_order": "0.363783",
+      "scarcity": "0.634227"
+     }
+    },
+    "2024-12": {
+     "first": "2024-12-01",
+     "last": "2024-12-31",
+     "calendar_days": 31,
+     "days_printed": 31,
+     "days_measured": 31,
+     "days_excluded_by_price_count": 0,
+     "spread_mean": "96.876129",
+     "days_with_gas": 31,
+     "gas_mean": "38.283355",
+     "days_with_both": 31,
+     "spread_mean_both": "96.876129",
+     "gas_mean_both": "38.283355",
+     "ratio_of_means": "2.530503",
+     "mean_of_ratios": "2.569259",
+     "days_with_legs": 31,
+     "spread_mean_legs": "96.876129",
+     "legs_mean": {
+      "negative": "0.042258",
+      "merit_order": "51.670968",
+      "scarcity": "45.162903"
+     },
+     "legs_share": {
+      "negative": "0.000436",
+      "merit_order": "0.533372",
+      "scarcity": "0.466192"
+     }
+    },
+    "2025-01": {
+     "first": "2025-01-01",
+     "last": "2025-01-31",
+     "calendar_days": 31,
+     "days_printed": 31,
+     "days_measured": 31,
+     "days_excluded_by_price_count": 0,
+     "spread_mean": "136.158065",
+     "days_with_gas": 31,
+     "gas_mean": "42.224710",
+     "days_with_both": 31,
+     "spread_mean_both": "136.158065",
+     "gas_mean_both": "42.224710",
+     "ratio_of_means": "3.224606",
+     "mean_of_ratios": "3.216901",
+     "days_with_legs": 31,
+     "spread_mean_legs": "136.158065",
+     "legs_mean": {
+      "negative": "0.137419",
+      "merit_order": "34.124129",
+      "scarcity": "101.896516"
+     },
+     "legs_share": {
+      "negative": "0.001009",
+      "merit_order": "0.250621",
+      "scarcity": "0.748369"
+     }
+    },
+    "2025-02": {
+     "first": "2025-02-01",
+     "last": "2025-02-28",
+     "calendar_days": 28,
+     "days_printed": 28,
+     "days_measured": 28,
+     "days_excluded_by_price_count": 0,
+     "spread_mean": "59.807143",
+     "days_with_gas": 28,
+     "gas_mean": "42.650679",
+     "days_with_both": 28,
+     "spread_mean_both": "59.807143",
+     "gas_mean_both": "42.650679",
+     "ratio_of_means": "1.402255",
+     "mean_of_ratios": "1.435494",
+     "days_with_legs": 28,
+     "spread_mean_legs": "59.807143",
+     "legs_mean": {
+      "negative": "0.000000",
+      "merit_order": "27.304786",
+      "scarcity": "32.502357"
+     },
+     "legs_share": {
+      "negative": "0.000000",
+      "merit_order": "0.456547",
+      "scarcity": "0.543453"
+     }
+    },
+    "2025-03": {
+     "first": "2025-03-01",
+     "last": "2025-03-31",
+     "calendar_days": 31,
+     "days_printed": 31,
+     "days_measured": 31,
+     "days_excluded_by_price_count": 0,
+     "spread_mean": "66.847097",
+     "days_with_gas": 31,
+     "gas_mean": "34.762161",
+     "days_with_both": 31,
+     "spread_mean_both": "66.847097",
+     "gas_mean_both": "34.762161",
+     "ratio_of_means": "1.922984",
+     "mean_of_ratios": "1.934860",
+     "days_with_legs": 31,
+     "spread_mean_legs": "66.847097",
+     "legs_mean": {
+      "negative": "0.205806",
+      "merit_order": "32.494903",
+      "scarcity": "34.146387"
+     },
+     "legs_share": {
+      "negative": "0.003079",
+      "merit_order": "0.486108",
+      "scarcity": "0.510813"
+     }
+    },
+    "2025-04": {
+     "first": "2025-04-01",
+     "last": "2025-04-30",
+     "calendar_days": 30,
+     "days_printed": 30,
+     "days_measured": 30,
+     "days_excluded_by_price_count": 0,
+     "spread_mean": "61.479667",
+     "days_with_gas": 30,
+     "gas_mean": "29.174400",
+     "days_with_both": 30,
+     "spread_mean_both": "61.479667",
+     "gas_mean_both": "29.174400",
+     "ratio_of_means": "2.107316",
+     "mean_of_ratios": "2.089797",
+     "days_with_legs": 30,
+     "spread_mean_legs": "61.479667",
+     "legs_mean": {
+      "negative": "0.217667",
+      "merit_order": "34.031133",
+      "scarcity": "27.230867"
+     },
+     "legs_share": {
+      "negative": "0.003540",
+      "merit_order": "0.553535",
+      "scarcity": "0.442925"
+     }
+    },
+    "2025-05": {
+     "first": "2025-05-01",
+     "last": "2025-05-31",
+     "calendar_days": 31,
+     "days_printed": 31,
+     "days_measured": 31,
+     "days_excluded_by_price_count": 0,
+     "spread_mean": "61.972581",
+     "days_with_gas": 31,
+     "gas_mean": "28.431742",
+     "days_with_both": 31,
+     "spread_mean_both": "61.972581",
+     "gas_mean_both": "28.431742",
+     "ratio_of_means": "2.179697",
+     "mean_of_ratios": "2.191667",
+     "days_with_legs": 31,
+     "spread_mean_legs": "61.972581",
+     "legs_mean": {
+      "negative": "1.410645",
+      "merit_order": "42.244323",
+      "scarcity": "18.317613"
+     },
+     "legs_share": {
+      "negative": "0.022762",
+      "merit_order": "0.681662",
+      "scarcity": "0.295576"
+     }
+    },
+    "2025-06": {
+     "first": "2025-06-01",
+     "last": "2025-06-30",
+     "calendar_days": 30,
+     "days_printed": 30,
+     "days_measured": 30,
+     "days_excluded_by_price_count": 0,
+     "spread_mean": "74.052000",
+     "days_with_gas": 30,
+     "gas_mean": "29.719100",
+     "days_with_both": 30,
+     "spread_mean_both": "74.052000",
+     "gas_mean_both": "29.719100",
+     "ratio_of_means": "2.491731",
+     "mean_of_ratios": "2.507272",
+     "days_with_legs": 30,
+     "spread_mean_legs": "74.052000",
+     "legs_mean": {
+      "negative": "1.621000",
+      "merit_order": "53.447867",
+      "scarcity": "18.983133"
+     },
+     "legs_share": {
+      "negative": "0.021890",
+      "merit_order": "0.721761",
+      "scarcity": "0.256349"
+     }
+    },
+    "2025-07": {
+     "first": "2025-07-01",
+     "last": "2025-07-31",
+     "calendar_days": 31,
+     "days_printed": 31,
+     "days_measured": 31,
+     "days_excluded_by_price_count": 0,
+     "spread_mean": "47.827097",
+     "days_with_gas": 31,
+     "gas_mean": "27.690613",
+     "days_with_both": 31,
+     "spread_mean_both": "47.827097",
+     "gas_mean_both": "27.690613",
+     "ratio_of_means": "1.727195",
+     "mean_of_ratios": "1.732888",
+     "days_with_legs": 31,
+     "spread_mean_legs": "47.827097",
+     "legs_mean": {
+      "negative": "0.016129",
+      "merit_order": "23.729548",
+      "scarcity": "24.081419"
+     },
+     "legs_share": {
+      "negative": "0.000337",
+      "merit_order": "0.496153",
+      "scarcity": "0.503510"
+     }
+    },
+    "2025-08": {
+     "first": "2025-08-01",
+     "last": "2025-08-31",
+     "calendar_days": 31,
+     "days_printed": 31,
+     "days_measured": 31,
+     "days_excluded_by_price_count": 0,
+     "spread_mean": "55.921613",
+     "days_with_gas": 31,
+     "gas_mean": "27.116065",
+     "days_with_both": 31,
+     "spread_mean_both": "55.921613",
+     "gas_mean_both": "27.116065",
+     "ratio_of_means": "2.062306",
+     "mean_of_ratios": "2.066208",
+     "days_with_legs": 31,
+     "spread_mean_legs": "55.921613",
+     "legs_mean": {
+      "negative": "0.732581",
+      "merit_order": "33.372968",
+      "scarcity": "21.816065"
+     },
+     "legs_share": {
+      "negative": "0.013100",
+      "merit_order": "0.596781",
+      "scarcity": "0.390119"
+     }
+    },
+    "2025-09": {
+     "first": "2025-09-01",
+     "last": "2025-09-30",
+     "calendar_days": 30,
+     "days_printed": 30,
+     "days_measured": 30,
+     "days_excluded_by_price_count": 0,
+     "spread_mean": "75.082333",
+     "days_with_gas": 30,
+     "gas_mean": "27.162100",
+     "days_with_both": 30,
+     "spread_mean_both": "75.082333",
+     "gas_mean_both": "27.162100",
+     "ratio_of_means": "2.764232",
+     "mean_of_ratios": "2.763491",
+     "days_with_legs": 30,
+     "spread_mean_legs": "75.082333",
+     "legs_mean": {
+      "negative": "0.501000",
+      "merit_order": "46.415200",
+      "scarcity": "28.166133"
+     },
+     "legs_share": {
+      "negative": "0.006673",
+      "merit_order": "0.618191",
+      "scarcity": "0.375137"
+     }
+    },
+    "2025-10": {
+     "first": "2025-10-01",
+     "last": "2025-10-31",
+     "calendar_days": 31,
+     "days_printed": 31,
+     "days_measured": 31,
+     "days_excluded_by_price_count": 0,
+     "spread_mean": "76.202903",
+     "days_with_gas": 31,
+     "gas_mean": "26.842161",
+     "days_with_both": 31,
+     "spread_mean_both": "76.202903",
+     "gas_mean_both": "26.842161",
+     "ratio_of_means": "2.838926",
+     "mean_of_ratios": "2.850717",
+     "days_with_legs": 31,
+     "spread_mean_legs": "76.202903",
+     "legs_mean": {
+      "negative": "0.346774",
+      "merit_order": "39.275355",
+      "scarcity": "36.580774"
+     },
+     "legs_share": {
+      "negative": "0.004551",
+      "merit_order": "0.515405",
+      "scarcity": "0.480044"
+     }
+    },
+    "2025-11": {
+     "first": "2025-11-01",
+     "last": "2025-11-30",
+     "calendar_days": 30,
+     "days_printed": 30,
+     "days_measured": 30,
+     "days_excluded_by_price_count": 0,
+     "spread_mean": "56.920000",
+     "days_with_gas": 30,
+     "gas_mean": "25.607333",
+     "days_with_both": 30,
+     "spread_mean_both": "56.920000",
+     "gas_mean_both": "25.607333",
+     "ratio_of_means": "2.222801",
+     "mean_of_ratios": "2.226191",
+     "days_with_legs": 30,
+     "spread_mean_legs": "56.920000",
+     "legs_mean": {
+      "negative": "0.000000",
+      "merit_order": "28.824333",
+      "scarcity": "28.095667"
+     },
+     "legs_share": {
+      "negative": "0.000000",
+      "merit_order": "0.506401",
+      "scarcity": "0.493599"
+     }
+    },
+    "2025-12": {
+     "first": "2025-12-01",
+     "last": "2025-12-31",
+     "calendar_days": 31,
+     "days_printed": 31,
+     "days_measured": 31,
+     "days_excluded_by_price_count": 0,
+     "spread_mean": "46.162581",
+     "days_with_gas": 31,
+     "gas_mean": "24.487419",
+     "days_with_both": 31,
+     "spread_mean_both": "46.162581",
+     "gas_mean_both": "24.487419",
+     "ratio_of_means": "1.885155",
+     "mean_of_ratios": "1.899112",
+     "days_with_legs": 31,
+     "spread_mean_legs": "46.162581",
+     "legs_mean": {
+      "negative": "0.000000",
+      "merit_order": "30.863935",
+      "scarcity": "15.298645"
+     },
+     "legs_share": {
+      "negative": "0.000000",
+      "merit_order": "0.668592",
+      "scarcity": "0.331408"
+     }
+    },
+    "2026-01": {
+     "first": "2026-01-01",
+     "last": "2026-01-31",
+     "calendar_days": 31,
+     "days_printed": 31,
+     "days_measured": 31,
+     "days_excluded_by_price_count": 0,
+     "spread_mean": "52.505806",
+     "days_with_gas": 31,
+     "gas_mean": "30.636613",
+     "days_with_both": 31,
+     "spread_mean_both": "52.505806",
+     "gas_mean_both": "30.636613",
+     "ratio_of_means": "1.713825",
+     "mean_of_ratios": "1.767749",
+     "days_with_legs": 31,
+     "spread_mean_legs": "52.505806",
+     "legs_mean": {
+      "negative": "0.000000",
+      "merit_order": "24.889484",
+      "scarcity": "27.616323"
+     },
+     "legs_share": {
+      "negative": "0.000000",
+      "merit_order": "0.474033",
+      "scarcity": "0.525967"
+     }
+    },
+    "2026-02": {
+     "first": "2026-02-01",
+     "last": "2026-02-28",
+     "calendar_days": 28,
+     "days_printed": 28,
+     "days_measured": 28,
+     "days_excluded_by_price_count": 0,
+     "spread_mean": "39.652500",
+     "days_with_gas": 28,
+     "gas_mean": "27.334607",
+     "days_with_both": 28,
+     "spread_mean_both": "39.652500",
+     "gas_mean_both": "27.334607",
+     "ratio_of_means": "1.450634",
+     "mean_of_ratios": "1.463658",
+     "days_with_legs": 28,
+     "spread_mean_legs": "39.652500",
+     "legs_mean": {
+      "negative": "0.000000",
+      "merit_order": "19.073000",
+      "scarcity": "20.579500"
+     },
+     "legs_share": {
+      "negative": "0.000000",
+      "merit_order": "0.481004",
+      "scarcity": "0.518996"
+     }
+    },
+    "2026-03": {
+     "first": "2026-03-01",
+     "last": "2026-03-31",
+     "calendar_days": 31,
+     "days_printed": 31,
+     "days_measured": 31,
+     "days_excluded_by_price_count": 0,
+     "spread_mean": "88.533548",
+     "days_with_gas": 31,
+     "gas_mean": "45.074581",
+     "days_with_both": 31,
+     "spread_mean_both": "88.533548",
+     "gas_mean_both": "45.074581",
+     "ratio_of_means": "1.964157",
+     "mean_of_ratios": "1.997046",
+     "days_with_legs": 31,
+     "spread_mean_legs": "88.533548",
+     "legs_mean": {
+      "negative": "0.000000",
+      "merit_order": "54.504323",
+      "scarcity": "34.029226"
+     },
+     "legs_share": {
+      "negative": "0.000000",
+      "merit_order": "0.615635",
+      "scarcity": "0.384365"
+     }
+    },
+    "2026-04": {
+     "first": "2026-04-01",
+     "last": "2026-04-30",
+     "calendar_days": 30,
+     "days_printed": 30,
+     "days_measured": 30,
+     "days_excluded_by_price_count": 0,
+     "spread_mean": "77.858333",
+     "days_with_gas": 30,
+     "gas_mean": "38.831667",
+     "days_with_both": 30,
+     "spread_mean_both": "77.858333",
+     "gas_mean_both": "38.831667",
+     "ratio_of_means": "2.005022",
+     "mean_of_ratios": "1.994477",
+     "days_with_legs": 30,
+     "spread_mean_legs": "77.858333",
+     "legs_mean": {
+      "negative": "2.392000",
+      "merit_order": "53.624400",
+      "scarcity": "21.841933"
+     },
+     "legs_share": {
+      "negative": "0.030722",
+      "merit_order": "0.688743",
+      "scarcity": "0.280534"
+     }
+    },
+    "2026-05": {
+     "first": "2026-05-01",
+     "last": "2026-05-31",
+     "calendar_days": 31,
+     "days_printed": 31,
+     "days_measured": 31,
+     "days_excluded_by_price_count": 0,
+     "spread_mean": "48.364516",
+     "days_with_gas": 31,
+     "gas_mean": "40.366129",
+     "days_with_both": 31,
+     "spread_mean_both": "48.364516",
+     "gas_mean_both": "40.366129",
+     "ratio_of_means": "1.198146",
+     "mean_of_ratios": "1.198905",
+     "days_with_legs": 31,
+     "spread_mean_legs": "48.364516",
+     "legs_mean": {
+      "negative": "0.000000",
+      "merit_order": "24.750452",
+      "scarcity": "23.614065"
+     },
+     "legs_share": {
+      "negative": "0.000000",
+      "merit_order": "0.511748",
+      "scarcity": "0.488252"
+     }
+    },
+    "2026-06": {
+     "first": "2026-06-01",
+     "last": "2026-06-30",
+     "calendar_days": 30,
+     "days_printed": 30,
+     "days_measured": 30,
+     "days_excluded_by_price_count": 0,
+     "spread_mean": "90.241000",
+     "days_with_gas": 30,
+     "gas_mean": "37.552667",
+     "days_with_both": 30,
+     "spread_mean_both": "90.241000",
+     "gas_mean_both": "37.552667",
+     "ratio_of_means": "2.403052",
+     "mean_of_ratios": "2.461843",
+     "days_with_legs": 30,
+     "spread_mean_legs": "90.241000",
+     "legs_mean": {
+      "negative": "0.760667",
+      "merit_order": "41.086867",
+      "scarcity": "48.393467"
+     },
+     "legs_share": {
+      "negative": "0.008429",
+      "merit_order": "0.455302",
+      "scarcity": "0.536269"
+     }
+    },
+    "2026-07": {
+     "first": "2026-07-01",
+     "last": "2026-07-31",
+     "calendar_days": 31,
+     "days_printed": 31,
+     "days_measured": 31,
+     "days_excluded_by_price_count": 0,
+     "spread_mean": "78.351290",
+     "days_with_gas": 31,
+     "gas_mean": "44.164581",
+     "days_with_both": 31,
+     "spread_mean_both": "78.351290",
+     "gas_mean_both": "44.164581",
+     "ratio_of_means": "1.774075",
+     "mean_of_ratios": "1.797623",
+     "days_with_legs": 31,
+     "spread_mean_legs": "78.351290",
+     "legs_mean": {
+      "negative": "0.402903",
+      "merit_order": "47.343097",
+      "scarcity": "30.605290"
+     },
+     "legs_share": {
+      "negative": "0.005142",
+      "merit_order": "0.604241",
+      "scarcity": "0.390616"
+     }
+    },
+    "2026-08": {
+     "first": "2026-08-01",
+     "last": "2026-08-31",
+     "calendar_days": 31,
+     "days_printed": 31,
+     "days_measured": 31,
+     "days_excluded_by_price_count": 0,
+     "spread_mean": "81.240323",
+     "days_with_gas": 31,
+     "gas_mean": "51.587903",
+     "days_with_both": 31,
+     "spread_mean_both": "81.240323",
+     "gas_mean_both": "51.587903",
+     "ratio_of_means": "1.574794",
+     "mean_of_ratios": "1.601302",
+     "days_with_legs": 31,
+     "spread_mean_legs": "81.240323",
+     "legs_mean": {
+      "negative": "0.000000",
+      "merit_order": "43.174194",
+      "scarcity": "38.066129"
+     },
+     "legs_share": {
+      "negative": "0.000000",
+      "merit_order": "0.531438",
+      "scarcity": "0.468562"
+     }
+    },
+    "2026-09": {
+     "first": "2026-09-01",
+     "last": "2026-09-30",
+     "calendar_days": 30,
+     "days_printed": 30,
+     "days_measured": 30,
+     "days_excluded_by_price_count": 0,
+     "spread_mean": "121.310333",
+     "days_with_gas": 30,
+     "gas_mean": "64.330400",
+     "days_with_both": 30,
+     "spread_mean_both": "121.310333",
+     "gas_mean_both": "64.330400",
+     "ratio_of_means": "1.885739",
+     "mean_of_ratios": "1.896615",
+     "days_with_legs": 30,
+     "spread_mean_legs": "121.310333",
+     "legs_mean": {
+      "negative": "0.104667",
+      "merit_order": "79.493667",
+      "scarcity": "41.712000"
+     },
+     "legs_share": {
+      "negative": "0.000863",
+      "merit_order": "0.655292",
+      "scarcity": "0.343845"
+     }
+    },
+    "2026-10": {
+     "first": "2026-10-01",
+     "last": "2026-10-31",
+     "calendar_days": 31,
+     "days_printed": 16,
+     "days_measured": 16,
+     "days_excluded_by_price_count": 0,
+     "spread_mean": "108.941875",
+     "days_with_gas": 11,
+     "gas_mean": "63.517818",
+     "days_with_both": 11,
+     "spread_mean_both": "110.052727",
+     "gas_mean_both": "63.517818",
+     "ratio_of_means": "1.732628",
+     "mean_of_ratios": "1.730271",
+     "days_with_legs": 0,
+     "spread_mean_legs": null,
+     "legs_mean": {
+      "negative": null,
+      "merit_order": null,
+      "scarcity": null
+     },
+     "legs_share": {
+      "negative": null,
+      "merit_order": null,
+      "scarcity": null
+     }
+    }
+   }
+  }
+ },
+ "falsifiers": {
+  "F1": {
+   "ratio_2026_to_date": "1.788633",
+   "ratio_2025_same_dates": "2.254904",
+   "change": "-0.206781",
+   "fires": false
+  },
+  "F2": {
+   "september_2026_spread": "121.699333",
+   "published": "122",
+   "tolerance": "2",
+   "fires": false
+  }
+ },
+ "september_year_on_year": {
+  "2026-09": "121.699333",
+  "2025-09": "76.296667",
+  "change": "0.595081",
+  "bloomberg_says": "0.80",
+  "modo_45_wider_implies": "0.586707"
+ },
+ "negative_leg_share_by_year": {
+  "2022": "0.002795",
+  "2023": "0.006058",
+  "2024": "0.008586",
+  "2025": "0.006480",
+  "2026 to date": "0.005332"
+ },
+ "scratch_comparison": [
+  {
+   "figure": "September 2026 spread",
+   "scratch": "121.7",
+   "declared": "121.699333",
+   "period": "2026-09"
+  },
+  {
+   "figure": "September 2026 gas",
+   "scratch": "64.5",
+   "declared": "64.330400",
+   "period": "2026-09"
+  },
+  {
+   "figure": "2026 to 14/10 spread",
+   "scratch": "77.5",
+   "declared": "77.651146",
+   "period": "2026 to date"
+  },
+  {
+   "figure": "2025 same dates spread",
+   "scratch": "71.4",
+   "declared": "71.664792",
+   "period": "2025 same dates"
+  },
+  {
+   "figure": "2026 to 14/10 ratio A",
+   "scratch": "1.79",
+   "declared": "1.788633",
+   "period": "2026 to date"
+  },
+  {
+   "figure": "2025 same dates ratio A",
+   "scratch": "2.25",
+   "declared": "2.254904",
+   "period": "2025 same dates"
+  },
+  {
+   "figure": "September 2026 ratio A",
+   "scratch": "1.89",
+   "declared": "1.891786",
+   "period": "2026-09"
+  },
+  {
+   "figure": "September 2025 ratio A",
+   "scratch": "2.81",
+   "declared": "2.808938",
+   "period": "2025-09"
+  }
+ ]
+}

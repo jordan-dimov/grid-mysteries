@@ -33,7 +33,7 @@ Days: `days measured` are the period's printed dates with 23 to 25 prices; `days
 | 2026 to date | 288 | 77.33 | 284 | 43.14 | 284 | 1.781 | 1.795 | 273 | 0.40 | 43.20 | 31.89 | 0.5 % | 57.2 % | 42.2 % |
 | 2025 same dates | 288 | 71.39 | 288 | 31.78 | 288 | 2.246 | 2.251 | 288 | 0.54 | 35.99 | 34.86 | 0.8 % | 50.4 % | 48.8 % |
 
-Excluded on the local unit: 2021-09-20 (1 prices); on the printed unit: 2021-09-20 (2 prices), 2026-10-16 (22 prices). The local figures rest on the UTC reading of the file's hours, which NESO does not document (declaration, 'what a day is').
+Excluded on the local unit: 2021-09-20 (1 prices); on the printed unit: 2021-09-20 (2 prices), 2026-10-16 (22 prices). The local figures rest on the UTC reading of the file's hours, which NESO does not document (declaration, 'what a day is'). **Departure from the declaration's expectation, recorded:** the declaration said the last local day would be partial and excluded; the reconstructed local 2026-10-16 holds 23 hours (23:00 UTC of 15/10 and 00:00 to 21:00 UTC of 16/10, the file's last hour), so the 23-to-25 rule measured it. It lies outside '2026 to date' (which ends 15/10) and inside the partial local October 2026 only; no figure above is affected, and the rule, not the sentence, governs.
 
 ## Every month, printed day
 

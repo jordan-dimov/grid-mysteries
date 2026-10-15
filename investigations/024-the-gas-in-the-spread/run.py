@@ -839,7 +839,7 @@ def phase_render() -> None:
         + md_table(PERIOD_HEADER, [period_row(y, L[y]) for y in years])
         + [
             "",
-            f"Excluded on the local unit: {excluded_text(R['units']['local']['excluded'])}; on the printed unit: {excluded_text(R['units']['printed']['excluded'])}. The local figures rest on the UTC reading of the file's hours, which NESO does not document (declaration, 'what a day is').",
+            f"Excluded on the local unit: {excluded_text(R['units']['local']['excluded'])}; on the printed unit: {excluded_text(R['units']['printed']['excluded'])}. The local figures rest on the UTC reading of the file's hours, which NESO does not document (declaration, 'what a day is'). **Departure from the declaration's expectation, recorded:** the declaration said the last local day would be partial and excluded; the reconstructed local 2026-10-16 holds 23 hours (23:00 UTC of 15/10 and 00:00 to 21:00 UTC of 16/10, the file's last hour), so the 23-to-25 rule measured it. It lies outside '2026 to date' (which ends 15/10) and inside the partial local October 2026 only; no figure above is affected, and the rule, not the sentence, governs.",
             "",
             "## Every month, printed day",
             "",
@@ -942,8 +942,10 @@ def phase_figures() -> None:
     SURFACE, INK, INK_2, GRID = "#fcfcfb", "#0b0b0b", "#52514e", "#e5e4e0"
     BLUE, BLUE_LIGHT, ORANGE, AQUA, RED = "#2a78d6", "#86b6ef", "#eb6834", "#1baf7a", "#e34948"
     footer = (
-        f"Copyright (c) 2026, A115. Grid Mysteries investigation 024. Sources: NESO Data Portal, N2EX GB day-ahead price (resource 4f27eea5…); ONS, System Average Price of gas (15/10/2026 edition); "
-        f"gov.uk, UK ETS monthly average prices. Computed {R['computed_at'][:10]} under declaration {R['declaration_sha256'][:8]}."
+        "Copyright (c) 2026, A115. Grid Mysteries investigation 024. Sources: NESO Data Portal, "
+        "N2EX GB day-ahead price (resource 4f27eea5…); ONS, System Average Price of gas "
+        "(15/10/2026 edition); gov.uk, UK ETS monthly average prices.\n"
+        f"Computed {R['computed_at'][:10]} under declaration {R['declaration_sha256'][:8]}."
     )
     plt.rcParams.update(
         {
@@ -1038,13 +1040,14 @@ def phase_figures() -> None:
             label="yearly ratio A (2026: to date)" if y == "2022" else None,
         )
         ax.text(
-            idx[0] - 0.3,
-            v + 0.06,
+            idx[-1] + 0.4,
+            v + 0.07,
             fmt(v, "0.01"),
-            fontsize=11,
+            fontsize=11.5,
             color=ORANGE,
-            ha="left",
+            ha="right",
             va="bottom",
+            fontweight=600,
         )
         printed[f"chart 2 yearly ratio {y}"] = P[y]["ratio_of_means"]
     ax.set_ylabel(

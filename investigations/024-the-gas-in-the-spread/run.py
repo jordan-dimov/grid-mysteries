@@ -926,6 +926,7 @@ def phase_render() -> None:
             "",
             "The scratch 2026 window ended 14/10; the declared one ends 15/10 (spread) and 11/10 (ratio, where gas ends). The scratch read took the printed day.",
             "",
+            *cross_check_section(),
             "## Caveats, in the order the piece must carry them",
             "",
             "1. SAP is a within-day system price (National Gas Transmission's On-the-Day Commodity Market), not the NBP day-ahead assessment; no free daily NBP day-ahead series was found.",

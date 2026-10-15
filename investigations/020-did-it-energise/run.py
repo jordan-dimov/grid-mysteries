@@ -159,12 +159,20 @@ def a5_population_diff(found: list[en.Transition]) -> dict[str, Any]:
         if k in now:
             continue
         regime, unit = k.split("|", 1)
+        same_project = sorted(
+            {
+                f"{t.regime}|{t.unit}"
+                for t in found
+                if t.project_name == earlier[k].get("project_name")
+            }
+        )
         lost.append(
             {
                 "key": k,
                 "project_name": earlier[k].get("project_name"),
                 "first_built_under_amendment_4": earlier[k].get("first_built"),
-                "reason": "no first Built sighting under this key over the filled sequence: the content identity carries the unit's rows differently through the added copies (a different key holds them, or the first sighting of the key already prints Built)",
+                "keys_now_for_the_same_project": same_project,
+                "reason": "no first Built sighting under this key over the filled sequence: the content identity numbers the project's unit instances differently through the added copies, and the project's rows are held under the keys listed (every one a sighting that already prints Built, so no measured figure is lost)",
             }
         )
     return {

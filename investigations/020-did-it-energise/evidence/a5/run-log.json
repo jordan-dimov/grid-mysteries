@@ -1,0 +1,49 @@
+{
+ "runs": [
+  {
+   "phase": "population",
+   "at": "2026-10-15T20:48:50+00:00",
+   "usable": 791,
+   "kept": 789,
+   "transitions": 1719,
+   "new_lines": 1719,
+   "gate2": 103
+  },
+  {
+   "phase": "projects",
+   "at": "2026-10-15T20:49:44+00:00",
+   "amendment": "cc01e3cf",
+   "projects": 1651,
+   "new_lines": 1651,
+   "measured": 178
+  },
+  {
+   "phase": "projects-v02",
+   "at": "2026-10-15T20:50:38+00:00",
+   "amendment_2": "3ef7240c",
+   "projects": 178,
+   "new_lines": 178,
+   "with_later": 178,
+   "without_later": 166
+  },
+  {
+   "phase": "proposals",
+   "at": "2026-10-15T20:51:36+00:00",
+   "amendment_3": "f84367c3",
+   "projects": 178,
+   "with_candidates": 159,
+   "candidates": 455,
+   "exact": 14,
+   "common_tokens": 52
+  },
+  {
+   "phase": "population",
+   "at": "2026-10-15T20:54:20+00:00",
+   "usable": 791,
+   "kept": 789,
+   "transitions": 1719,
+   "new_lines": 0,
+   "gate2": 103
+  }
+ ]
+}

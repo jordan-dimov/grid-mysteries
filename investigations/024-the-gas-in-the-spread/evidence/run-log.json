@@ -43,6 +43,19 @@
    "phase": "schema-cross-check",
    "at": "2026-10-15T19:29:20+00:00",
    "ofgem": "fea333c0e384809b2c26c5bf2f9baff80a6fa8a8ab2ba36518b27b239d0ff7dc"
+  },
+  {
+   "phase": "cross-check",
+   "at": "2026-10-15T19:31:03+00:00",
+   "seal": "30c3f2a7",
+   "amendment_1_sha256": "30c3f2a790ed69ea8aca70f5fe4f6916fcc97045c654d767b75b62f8cd6d4f9e",
+   "cross_check_sha256": "ae5897c76647a3c5e928130c1a745aeddbbc662bf2043aa6aa967f57457d4c39"
+  },
+  {
+   "phase": "render",
+   "at": "2026-10-15T19:31:03+00:00",
+   "results_sha256": "47e76815375538fe29eb00024fe0613d16f73a52e1bd3455dbb1db70a4a550a5",
+   "results_md_sha256": "69be0640666284bbd4586581b545ec1bc4cc426fac41da090599ea65a9809fca"
   }
  ]
 }

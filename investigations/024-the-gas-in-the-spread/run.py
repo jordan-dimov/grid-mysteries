@@ -1458,6 +1458,7 @@ def main() -> None:
             "schema-cross-check",
             "format",
             "compute",
+            "cross-check",
             "render",
             "figures",
         ],

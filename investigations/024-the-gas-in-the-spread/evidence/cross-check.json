@@ -1,0 +1,700 @@
+{
+ "amendment_1_sha256": "30c3f2a790ed69ea8aca70f5fe4f6916fcc97045c654d767b75b62f8cd6d4f9e",
+ "declaration_sha256": "739471d07edd727f64805ba538d76ee7ec0cdc3960d6162851197a685b67a3e7",
+ "computed_at": "2026-10-15T19:31:03+00:00",
+ "results_sha256": "47e76815375538fe29eb00024fe0613d16f73a52e1bd3455dbb1db70a4a550a5",
+ "source": {
+  "ofgem-wmi-gas-day-ahead-monthly-chart": {
+   "source": "ofgem",
+   "dataset": "ofgem-wmi-gas-day-ahead-monthly-chart",
+   "url": "https://app.everviz.com/inject/YFsS4g98P",
+   "path": "data/raw/ofgem/024/wmi-gas-day-ahead-monthly-everviz-inject-YFsS4g98P-2026-10-15.js",
+   "sha256": "a304e0726a41a838d71b31d913c3505fa611a4e79b4392ec97871463e527ff57",
+   "fetched_at": "2026-10-15T19:27:52.577845+00:00",
+   "bytes": 20264
+  },
+  "ofgem-wmi-page": {
+   "source": "ofgem",
+   "dataset": "ofgem-wmi-page",
+   "url": "https://www.ofgem.gov.uk/energy-data-and-research/data-portal/wholesale-market-indicators",
+   "path": "data/raw/ofgem/024/wholesale-market-indicators-page-2026-10-15.html",
+   "sha256": "f8a6aef72fec57d4a19c01c8f780d8c521a9928af266030fadfe181d9828f112",
+   "fetched_at": "2026-10-15T19:27:52.830959+00:00",
+   "bytes": 271728
+  }
+ },
+ "ofgem_months": {
+  "first": "2009-10",
+  "last": "2026-06",
+  "count": 201
+ },
+ "kwh_per_therm": "29.3071",
+ "months_compared": 54,
+ "months_missing": [
+  "2026-07",
+  "2026-08",
+  "2026-09",
+  "2026-10"
+ ],
+ "months": [
+  {
+   "month": "2022-01",
+   "ofgem_pence_per_therm": "203.75",
+   "ofgem_gbp_per_mwh": "69.522402",
+   "sap_gbp_per_mwh": "65.768387",
+   "difference": "3.754015",
+   "difference_share_of_sap": "0.057079",
+   "spread_mean": "214.212903",
+   "ratio_on_sap": "3.257080",
+   "ratio_on_ofgem": "3.081207"
+  },
+  {
+   "month": "2022-02",
+   "ofgem_pence_per_therm": "187.72",
+   "ofgem_gbp_per_mwh": "64.052738",
+   "sap_gbp_per_mwh": "65.118357",
+   "difference": "-1.065619",
+   "difference_share_of_sap": "-0.016364",
+   "spread_mean": "117.182857",
+   "ratio_on_sap": "1.799536",
+   "ratio_on_ofgem": "1.829475"
+  },
+  {
+   "month": "2022-03",
+   "ofgem_pence_per_therm": "313.57",
+   "ofgem_gbp_per_mwh": "106.994551",
+   "sap_gbp_per_mwh": "101.285903",
+   "difference": "5.708648",
+   "difference_share_of_sap": "0.056362",
+   "spread_mean": "159.531935",
+   "ratio_on_sap": "1.575066",
+   "ratio_on_ofgem": "1.491029"
+  },
+  {
+   "month": "2022-04",
+   "ofgem_pence_per_therm": "186.13",
+   "ofgem_gbp_per_mwh": "63.510207",
+   "sap_gbp_per_mwh": "62.033467",
+   "difference": "1.476740",
+   "difference_share_of_sap": "0.023806",
+   "spread_mean": "98.446000",
+   "ratio_on_sap": "1.586982",
+   "ratio_on_ofgem": "1.550082"
+  },
+  {
+   "month": "2022-05",
+   "ofgem_pence_per_therm": "105.31",
+   "ofgem_gbp_per_mwh": "35.933272",
+   "sap_gbp_per_mwh": "35.024839",
+   "difference": "0.908433",
+   "difference_share_of_sap": "0.025937",
+   "spread_mean": "87.433226",
+   "ratio_on_sap": "2.496321",
+   "ratio_on_ofgem": "2.433211"
+  },
+  {
+   "month": "2022-06",
+   "ofgem_pence_per_therm": "149.49",
+   "ofgem_gbp_per_mwh": "51.008117",
+   "sap_gbp_per_mwh": "48.272600",
+   "difference": "2.735517",
+   "difference_share_of_sap": "0.056668",
+   "spread_mean": "99.798000",
+   "ratio_on_sap": "2.067384",
+   "ratio_on_ofgem": "1.956512"
+  },
+  {
+   "month": "2022-07",
+   "ofgem_pence_per_therm": "247.71",
+   "ofgem_gbp_per_mwh": "84.522181",
+   "sap_gbp_per_mwh": "78.317258",
+   "difference": "6.204923",
+   "difference_share_of_sap": "0.079228",
+   "spread_mean": "164.046129",
+   "ratio_on_sap": "2.094636",
+   "ratio_on_ofgem": "1.940865"
+  },
+  {
+   "month": "2022-08",
+   "ofgem_pence_per_therm": "356",
+   "ofgem_gbp_per_mwh": "121.472271",
+   "sap_gbp_per_mwh": "128.827226",
+   "difference": "-7.354955",
+   "difference_share_of_sap": "-0.057092",
+   "spread_mean": "216.464516",
+   "ratio_on_sap": "1.680270",
+   "ratio_on_ofgem": "1.782008"
+  },
+  {
+   "month": "2022-09",
+   "ofgem_pence_per_therm": "263.44",
+   "ofgem_gbp_per_mwh": "89.889481",
+   "sap_gbp_per_mwh": "91.577567",
+   "difference": "-1.688086",
+   "difference_share_of_sap": "-0.018433",
+   "spread_mean": "213.715667",
+   "ratio_on_sap": "2.333712",
+   "ratio_on_ofgem": "2.377538"
+  },
+  {
+   "month": "2022-10",
+   "ofgem_pence_per_therm": "109.26",
+   "ofgem_gbp_per_mwh": "37.281068",
+   "sap_gbp_per_mwh": "37.564516",
+   "difference": "-0.283448",
+   "difference_share_of_sap": "-0.007546",
+   "spread_mean": "128.764516",
+   "ratio_on_sap": "3.427823",
+   "ratio_on_ofgem": "3.453885"
+  },
+  {
+   "month": "2022-11",
+   "ofgem_pence_per_therm": "138.42",
+   "ofgem_gbp_per_mwh": "47.230876",
+   "sap_gbp_per_mwh": "43.617567",
+   "difference": "3.613309",
+   "difference_share_of_sap": "0.082841",
+   "spread_mean": "161.122333",
+   "ratio_on_sap": "3.693978",
+   "ratio_on_ofgem": "3.411377"
+  },
+  {
+   "month": "2022-12",
+   "ofgem_pence_per_therm": "277.14",
+   "ofgem_gbp_per_mwh": "94.564116",
+   "sap_gbp_per_mwh": "94.638903",
+   "difference": "-0.074787",
+   "difference_share_of_sap": "-0.000790",
+   "spread_mean": "225.018387",
+   "ratio_on_sap": "2.377652",
+   "ratio_on_ofgem": "2.379532"
+  },
+  {
+   "month": "2023-01",
+   "ofgem_pence_per_therm": "152.45",
+   "ofgem_gbp_per_mwh": "52.018112",
+   "sap_gbp_per_mwh": "54.095645",
+   "difference": "-2.077533",
+   "difference_share_of_sap": "-0.038405",
+   "spread_mean": "116.636129",
+   "ratio_on_sap": "2.156109",
+   "ratio_on_ofgem": "2.242221"
+  },
+  {
+   "month": "2023-02",
+   "ofgem_pence_per_therm": "134.54",
+   "ofgem_gbp_per_mwh": "45.906965",
+   "sap_gbp_per_mwh": "46.178750",
+   "difference": "-0.271785",
+   "difference_share_of_sap": "-0.005885",
+   "spread_mean": "69.847857",
+   "ratio_on_sap": "1.512554",
+   "ratio_on_ofgem": "1.521509"
+  },
+  {
+   "month": "2023-03",
+   "ofgem_pence_per_therm": "107.97",
+   "ofgem_gbp_per_mwh": "36.840902",
+   "sap_gbp_per_mwh": "38.564484",
+   "difference": "-1.723582",
+   "difference_share_of_sap": "-0.044694",
+   "spread_mean": "73.720645",
+   "ratio_on_sap": "1.911620",
+   "ratio_on_ofgem": "2.001054"
+  },
+  {
+   "month": "2023-04",
+   "ofgem_pence_per_therm": "101.47",
+   "ofgem_gbp_per_mwh": "34.623009",
+   "sap_gbp_per_mwh": "34.182567",
+   "difference": "0.440442",
+   "difference_share_of_sap": "0.012885",
+   "spread_mean": "57.671000",
+   "ratio_on_sap": "1.687147",
+   "ratio_on_ofgem": "1.665684"
+  },
+  {
+   "month": "2023-05",
+   "ofgem_pence_per_therm": "73.53",
+   "ofgem_gbp_per_mwh": "25.089483",
+   "sap_gbp_per_mwh": "25.204581",
+   "difference": "-0.115098",
+   "difference_share_of_sap": "-0.004567",
+   "spread_mean": "43.843226",
+   "ratio_on_sap": "1.739494",
+   "ratio_on_ofgem": "1.747474"
+  },
+  {
+   "month": "2023-06",
+   "ofgem_pence_per_therm": "80.52",
+   "ofgem_gbp_per_mwh": "27.474571",
+   "sap_gbp_per_mwh": "27.416133",
+   "difference": "0.058438",
+   "difference_share_of_sap": "0.002132",
+   "spread_mean": "51.576667",
+   "ratio_on_sap": "1.881252",
+   "ratio_on_ofgem": "1.877251"
+  },
+  {
+   "month": "2023-07",
+   "ofgem_pence_per_therm": "71.58",
+   "ofgem_gbp_per_mwh": "24.424116",
+   "sap_gbp_per_mwh": "24.726065",
+   "difference": "-0.301949",
+   "difference_share_of_sap": "-0.012212",
+   "spread_mean": "60.478387",
+   "ratio_on_sap": "2.445937",
+   "ratio_on_ofgem": "2.476175"
+  },
+  {
+   "month": "2023-08",
+   "ofgem_pence_per_therm": "83.97",
+   "ofgem_gbp_per_mwh": "28.651760",
+   "sap_gbp_per_mwh": "28.709710",
+   "difference": "-0.057950",
+   "difference_share_of_sap": "-0.002018",
+   "spread_mean": "57.460000",
+   "ratio_on_sap": "2.001413",
+   "ratio_on_ofgem": "2.005461"
+  },
+  {
+   "month": "2023-09",
+   "ofgem_pence_per_therm": "92.21",
+   "ofgem_gbp_per_mwh": "31.463366",
+   "sap_gbp_per_mwh": "31.724200",
+   "difference": "-0.260834",
+   "difference_share_of_sap": "-0.008222",
+   "spread_mean": "75.631667",
+   "ratio_on_sap": "2.384037",
+   "ratio_on_ofgem": "2.403801"
+  },
+  {
+   "month": "2023-10",
+   "ofgem_pence_per_therm": "102.17",
+   "ofgem_gbp_per_mwh": "34.861859",
+   "sap_gbp_per_mwh": "37.205355",
+   "difference": "-2.343496",
+   "difference_share_of_sap": "-0.062988",
+   "spread_mean": "100.187419",
+   "ratio_on_sap": "2.692823",
+   "ratio_on_ofgem": "2.873840"
+  },
+  {
+   "month": "2023-11",
+   "ofgem_pence_per_therm": "105.53",
+   "ofgem_gbp_per_mwh": "36.008339",
+   "sap_gbp_per_mwh": "36.621900",
+   "difference": "-0.613561",
+   "difference_share_of_sap": "-0.016754",
+   "spread_mean": "76.554333",
+   "ratio_on_sap": "2.090398",
+   "ratio_on_ofgem": "2.126017"
+  },
+  {
+   "month": "2023-12",
+   "ofgem_pence_per_therm": "84.73",
+   "ofgem_gbp_per_mwh": "28.911083",
+   "sap_gbp_per_mwh": "29.152871",
+   "difference": "-0.241788",
+   "difference_share_of_sap": "-0.008294",
+   "spread_mean": "66.607419",
+   "ratio_on_sap": "2.284764",
+   "ratio_on_ofgem": "2.303871"
+  },
+  {
+   "month": "2024-01",
+   "ofgem_pence_per_therm": "73.83",
+   "ofgem_gbp_per_mwh": "25.191848",
+   "sap_gbp_per_mwh": "25.699677",
+   "difference": "-0.507829",
+   "difference_share_of_sap": "-0.019760",
+   "spread_mean": "48.468387",
+   "ratio_on_sap": "1.885953",
+   "ratio_on_ofgem": "1.923971"
+  },
+  {
+   "month": "2024-02",
+   "ofgem_pence_per_therm": "63.28",
+   "ofgem_gbp_per_mwh": "21.592037",
+   "sap_gbp_per_mwh": "21.491241",
+   "difference": "0.100796",
+   "difference_share_of_sap": "0.004690",
+   "spread_mean": "40.131034",
+   "ratio_on_sap": "1.867320",
+   "ratio_on_ofgem": "1.858603"
+  },
+  {
+   "month": "2024-03",
+   "ofgem_pence_per_therm": "68.5",
+   "ofgem_gbp_per_mwh": "23.373176",
+   "sap_gbp_per_mwh": "23.331871",
+   "difference": "0.041305",
+   "difference_share_of_sap": "0.001770",
+   "spread_mean": "45.414516",
+   "ratio_on_sap": "1.946458",
+   "ratio_on_ofgem": "1.943019"
+  },
+  {
+   "month": "2024-04",
+   "ofgem_pence_per_therm": "71.23",
+   "ofgem_gbp_per_mwh": "24.304691",
+   "sap_gbp_per_mwh": "24.661500",
+   "difference": "-0.356809",
+   "difference_share_of_sap": "-0.014468",
+   "spread_mean": "56.374000",
+   "ratio_on_sap": "2.285911",
+   "ratio_on_ofgem": "2.319470"
+  },
+  {
+   "month": "2024-05",
+   "ofgem_pence_per_therm": "75.96",
+   "ofgem_gbp_per_mwh": "25.918634",
+   "sap_gbp_per_mwh": "26.374290",
+   "difference": "-0.455656",
+   "difference_share_of_sap": "-0.017277",
+   "spread_mean": "44.208387",
+   "ratio_on_sap": "1.676192",
+   "ratio_on_ofgem": "1.705660"
+  },
+  {
+   "month": "2024-06",
+   "ofgem_pence_per_therm": "82.53",
+   "ofgem_gbp_per_mwh": "28.160412",
+   "sap_gbp_per_mwh": "28.183200",
+   "difference": "-0.022788",
+   "difference_share_of_sap": "-0.000809",
+   "spread_mean": "59.324667",
+   "ratio_on_sap": "2.104966",
+   "ratio_on_ofgem": "2.106669"
+  },
+  {
+   "month": "2024-07",
+   "ofgem_pence_per_therm": "94.18",
+   "ofgem_gbp_per_mwh": "32.135558",
+   "sap_gbp_per_mwh": "25.528935",
+   "difference": "6.606623",
+   "difference_share_of_sap": "0.258790",
+   "spread_mean": "47.189677",
+   "ratio_on_sap": "1.848478",
+   "ratio_on_ofgem": "1.468457"
+  },
+  {
+   "month": "2024-08",
+   "ofgem_pence_per_therm": "84.5",
+   "ofgem_gbp_per_mwh": "28.832604",
+   "sap_gbp_per_mwh": "28.703742",
+   "difference": "0.128862",
+   "difference_share_of_sap": "0.004489",
+   "spread_mean": "73.132258",
+   "ratio_on_sap": "2.547830",
+   "ratio_on_ofgem": "2.536443"
+  },
+  {
+   "month": "2024-09",
+   "ofgem_pence_per_therm": "86.58",
+   "ofgem_gbp_per_mwh": "29.542329",
+   "sap_gbp_per_mwh": "29.843000",
+   "difference": "-0.300671",
+   "difference_share_of_sap": "-0.010075",
+   "spread_mean": "63.381333",
+   "ratio_on_sap": "2.123826",
+   "ratio_on_ofgem": "2.145441"
+  },
+  {
+   "month": "2024-10",
+   "ofgem_pence_per_therm": "96.79",
+   "ofgem_gbp_per_mwh": "33.026127",
+   "sap_gbp_per_mwh": "33.852839",
+   "difference": "-0.826712",
+   "difference_share_of_sap": "-0.024421",
+   "spread_mean": "83.235161",
+   "ratio_on_sap": "2.458735",
+   "ratio_on_ofgem": "2.520282"
+  },
+  {
+   "month": "2024-11",
+   "ofgem_pence_per_therm": "111.56",
+   "ofgem_gbp_per_mwh": "38.065861",
+   "sap_gbp_per_mwh": "37.793700",
+   "difference": "0.272161",
+   "difference_share_of_sap": "0.007201",
+   "spread_mean": "75.723000",
+   "ratio_on_sap": "2.003588",
+   "ratio_on_ofgem": "1.989263"
+  },
+  {
+   "month": "2024-12",
+   "ofgem_pence_per_therm": "111.47",
+   "ofgem_gbp_per_mwh": "38.035152",
+   "sap_gbp_per_mwh": "38.283355",
+   "difference": "-0.248203",
+   "difference_share_of_sap": "-0.006483",
+   "spread_mean": "96.876129",
+   "ratio_on_sap": "2.530503",
+   "ratio_on_ofgem": "2.547016"
+  },
+  {
+   "month": "2025-01",
+   "ofgem_pence_per_therm": "123.02",
+   "ofgem_gbp_per_mwh": "41.976176",
+   "sap_gbp_per_mwh": "42.224710",
+   "difference": "-0.248534",
+   "difference_share_of_sap": "-0.005886",
+   "spread_mean": "136.158065",
+   "ratio_on_sap": "3.224606",
+   "ratio_on_ofgem": "3.243699"
+  },
+  {
+   "month": "2025-02",
+   "ofgem_pence_per_therm": "125.43",
+   "ofgem_gbp_per_mwh": "42.798503",
+   "sap_gbp_per_mwh": "42.650679",
+   "difference": "0.147824",
+   "difference_share_of_sap": "0.003466",
+   "spread_mean": "59.807143",
+   "ratio_on_sap": "1.402255",
+   "ratio_on_ofgem": "1.397412"
+  },
+  {
+   "month": "2025-03",
+   "ofgem_pence_per_therm": "102.31",
+   "ofgem_gbp_per_mwh": "34.909629",
+   "sap_gbp_per_mwh": "34.762161",
+   "difference": "0.147468",
+   "difference_share_of_sap": "0.004242",
+   "spread_mean": "66.847097",
+   "ratio_on_sap": "1.922985",
+   "ratio_on_ofgem": "1.914861"
+  },
+  {
+   "month": "2025-04",
+   "ofgem_pence_per_therm": "86.29",
+   "ofgem_gbp_per_mwh": "29.443377",
+   "sap_gbp_per_mwh": "29.174400",
+   "difference": "0.268977",
+   "difference_share_of_sap": "0.009220",
+   "spread_mean": "61.661000",
+   "ratio_on_sap": "2.113531",
+   "ratio_on_ofgem": "2.094223"
+  },
+  {
+   "month": "2025-05",
+   "ofgem_pence_per_therm": "82.54",
+   "ofgem_gbp_per_mwh": "28.163824",
+   "sap_gbp_per_mwh": "28.431742",
+   "difference": "-0.267918",
+   "difference_share_of_sap": "-0.009423",
+   "spread_mean": "62.462258",
+   "ratio_on_sap": "2.196920",
+   "ratio_on_ofgem": "2.217819"
+  },
+  {
+   "month": "2025-06",
+   "ofgem_pence_per_therm": "86.28",
+   "ofgem_gbp_per_mwh": "29.439965",
+   "sap_gbp_per_mwh": "29.719100",
+   "difference": "-0.279135",
+   "difference_share_of_sap": "-0.009392",
+   "spread_mean": "74.580000",
+   "ratio_on_sap": "2.509497",
+   "ratio_on_ofgem": "2.533291"
+  },
+  {
+   "month": "2025-07",
+   "ofgem_pence_per_therm": "81.16",
+   "ofgem_gbp_per_mwh": "27.692948",
+   "sap_gbp_per_mwh": "27.690613",
+   "difference": "0.002335",
+   "difference_share_of_sap": "0.000084",
+   "spread_mean": "47.827097",
+   "ratio_on_sap": "1.727195",
+   "ratio_on_ofgem": "1.727050"
+  },
+  {
+   "month": "2025-08",
+   "ofgem_pence_per_therm": "79.28",
+   "ofgem_gbp_per_mwh": "27.051465",
+   "sap_gbp_per_mwh": "27.116065",
+   "difference": "-0.064600",
+   "difference_share_of_sap": "-0.002382",
+   "spread_mean": "56.067419",
+   "ratio_on_sap": "2.067683",
+   "ratio_on_ofgem": "2.072620"
+  },
+  {
+   "month": "2025-09",
+   "ofgem_pence_per_therm": "79.35",
+   "ofgem_gbp_per_mwh": "27.075350",
+   "sap_gbp_per_mwh": "27.162100",
+   "difference": "-0.086750",
+   "difference_share_of_sap": "-0.003194",
+   "spread_mean": "76.296667",
+   "ratio_on_sap": "2.808938",
+   "ratio_on_ofgem": "2.817938"
+  },
+  {
+   "month": "2025-10",
+   "ofgem_pence_per_therm": "78.03",
+   "ofgem_gbp_per_mwh": "26.624948",
+   "sap_gbp_per_mwh": "26.842161",
+   "difference": "-0.217213",
+   "difference_share_of_sap": "-0.008092",
+   "spread_mean": "76.913226",
+   "ratio_on_sap": "2.865389",
+   "ratio_on_ofgem": "2.888765"
+  },
+  {
+   "month": "2025-11",
+   "ofgem_pence_per_therm": "76.15",
+   "ofgem_gbp_per_mwh": "25.983465",
+   "sap_gbp_per_mwh": "25.607333",
+   "difference": "0.376132",
+   "difference_share_of_sap": "0.014688",
+   "spread_mean": "56.920000",
+   "ratio_on_sap": "2.222801",
+   "ratio_on_ofgem": "2.190624"
+  },
+  {
+   "month": "2025-12",
+   "ofgem_pence_per_therm": "70.94",
+   "ofgem_gbp_per_mwh": "24.205739",
+   "sap_gbp_per_mwh": "24.487419",
+   "difference": "-0.281680",
+   "difference_share_of_sap": "-0.011503",
+   "spread_mean": "46.162581",
+   "ratio_on_sap": "1.885155",
+   "ratio_on_ofgem": "1.907092"
+  },
+  {
+   "month": "2026-01",
+   "ofgem_pence_per_therm": "90.4",
+   "ofgem_gbp_per_mwh": "30.845768",
+   "sap_gbp_per_mwh": "30.636613",
+   "difference": "0.209155",
+   "difference_share_of_sap": "0.006827",
+   "spread_mean": "52.505806",
+   "ratio_on_sap": "1.713825",
+   "ratio_on_ofgem": "1.702205"
+  },
+  {
+   "month": "2026-02",
+   "ofgem_pence_per_therm": "79.39",
+   "ofgem_gbp_per_mwh": "27.088999",
+   "sap_gbp_per_mwh": "27.334607",
+   "difference": "-0.245608",
+   "difference_share_of_sap": "-0.008985",
+   "spread_mean": "39.652500",
+   "ratio_on_sap": "1.450634",
+   "ratio_on_ofgem": "1.463786"
+  },
+  {
+   "month": "2026-03",
+   "ofgem_pence_per_therm": "132.42",
+   "ofgem_gbp_per_mwh": "45.183590",
+   "sap_gbp_per_mwh": "45.074581",
+   "difference": "0.109009",
+   "difference_share_of_sap": "0.002418",
+   "spread_mean": "88.522581",
+   "ratio_on_sap": "1.963914",
+   "ratio_on_ofgem": "1.959175"
+  },
+  {
+   "month": "2026-04",
+   "ofgem_pence_per_therm": "111.78",
+   "ofgem_gbp_per_mwh": "38.140928",
+   "sap_gbp_per_mwh": "38.831667",
+   "difference": "-0.690739",
+   "difference_share_of_sap": "-0.017788",
+   "spread_mean": "79.196333",
+   "ratio_on_sap": "2.039478",
+   "ratio_on_ofgem": "2.076413"
+  },
+  {
+   "month": "2026-05",
+   "ofgem_pence_per_therm": "117.89",
+   "ofgem_gbp_per_mwh": "40.225747",
+   "sap_gbp_per_mwh": "40.366129",
+   "difference": "-0.140382",
+   "difference_share_of_sap": "-0.003478",
+   "spread_mean": "48.309032",
+   "ratio_on_sap": "1.196771",
+   "ratio_on_ofgem": "1.200948"
+  },
+  {
+   "month": "2026-06",
+   "ofgem_pence_per_therm": "110.14",
+   "ofgem_gbp_per_mwh": "37.581337",
+   "sap_gbp_per_mwh": "37.552667",
+   "difference": "0.028670",
+   "difference_share_of_sap": "0.000763",
+   "spread_mean": "90.364000",
+   "ratio_on_sap": "2.406327",
+   "ratio_on_ofgem": "2.404491"
+  }
+ ],
+ "years": {
+  "2022": {
+   "months": 12,
+   "sap_mean_of_months": "71.003882",
+   "ofgem_mean_of_months": "72.165107",
+   "ratio_on_sap": "2.213185",
+   "ratio_on_ofgem": "2.177572"
+  },
+  "2023": {
+   "months": 12,
+   "sap_mean_of_months": "34.481855",
+   "ofgem_mean_of_months": "33.856130",
+   "ratio_on_sap": "2.054739",
+   "ratio_on_ofgem": "2.092715"
+  },
+  "2024": {
+   "months": 12,
+   "sap_mean_of_months": "28.645612",
+   "ofgem_mean_of_months": "29.014869",
+   "ratio_on_sap": "2.133714",
+   "ratio_on_ofgem": "2.106559"
+  },
+  "2025": {
+   "months": 12,
+   "sap_mean_of_months": "30.489040",
+   "ofgem_mean_of_months": "30.447116",
+   "ratio_on_sap": "2.245896",
+   "ratio_on_ofgem": "2.248988"
+  },
+  "2026": {
+   "months": 6,
+   "sap_mean_of_months": "36.632711",
+   "ofgem_mean_of_months": "36.511062",
+   "ratio_on_sap": "1.813271",
+   "ratio_on_ofgem": "1.819313"
+  }
+ },
+ "material_threshold": "0.05",
+ "material_months_2025_on": [],
+ "largest_difference_2025_on": "2026-04",
+ "f1_cross_check": {
+  "half_2025": {
+   "months": 6,
+   "first": "2025-01",
+   "last": "2025-06",
+   "spread_mean_of_months": "76.919260",
+   "sap_mean_of_months": "34.493799",
+   "ofgem_mean_of_months": "34.455246",
+   "ratio_on_sap": "2.229945",
+   "ratio_on_ofgem": "2.232440"
+  },
+  "half_2026": {
+   "months": 6,
+   "first": "2026-01",
+   "last": "2026-06",
+   "spread_mean_of_months": "66.425042",
+   "sap_mean_of_months": "36.632711",
+   "ofgem_mean_of_months": "36.511062",
+   "ratio_on_sap": "1.813271",
+   "ratio_on_ofgem": "1.819313"
+  },
+  "change_on_sap": "-0.186854",
+  "change_on_ofgem": "-0.185056",
+  "verdict_stands": true
+ }
+}

@@ -45,6 +45,7 @@
 """
 
 import argparse
+import contextlib
 import hashlib
 import json
 import sys
@@ -93,6 +94,114 @@ RESULTS_V0 = HERE / "RESULTS-v0.md"
 COPY_SHA256 = "d1ccd9e210b4f6bc8f3b0e83d54032dc61f247dbbc1d9e469a342b7766ee5746"
 SETTLEMENT_DAY = "2026-09-01"
 REMIT_MIRROR_DAY = "2026-09-30"
+
+# ---- amendment 5: the population over the filled hole, under evidence/a5/ ----
+AMENDMENT_5 = HERE / "DECLARATION-amendment-5.md"
+EVIDENCE_A4 = HERE / "evidence"
+RESULTS_A4 = HERE / "RESULTS-a4.md"
+A5 = False
+
+
+def use_amendment_5() -> None:
+    """Switch every evidence path to evidence/a5/ (amendment 5, A5.1); the
+    amendment-4 files under evidence/ are read for comparison only."""
+    global A5, EVIDENCE, POPULATION, PROJECTS, PROJECTS_SUMMARY, LINKS_PROPOSED, LINKS_ADMITTED
+    global WALKS, LABELS, RESULTS_JSON, PROJECTS_V02, PROJECTS_V02_SUMMARY, SUMMARY, GATE2, COPIES
+    global RUN_LOG, RESULTS_V0
+    A5 = True
+    EVIDENCE = HERE / "evidence" / "a5"
+    EVIDENCE.mkdir(parents=True, exist_ok=True)
+    POPULATION = EVIDENCE / "population.ndjson"
+    PROJECTS = EVIDENCE / "projects.ndjson"
+    PROJECTS_SUMMARY = EVIDENCE / "projects-summary.json"
+    LINKS_PROPOSED = EVIDENCE / "links-proposed.json"
+    LINKS_ADMITTED = EVIDENCE / "links-admitted.json"
+    WALKS = EVIDENCE / "walks.json"
+    LABELS = EVIDENCE / "labels.ndjson"
+    RESULTS_JSON = EVIDENCE / "results.json"
+    PROJECTS_V02 = EVIDENCE / "projects-v02.ndjson"
+    PROJECTS_V02_SUMMARY = EVIDENCE / "projects-v02-summary.json"
+    SUMMARY = EVIDENCE / "population-summary.json"
+    GATE2 = EVIDENCE / "gate2.json"
+    COPIES = EVIDENCE / "copies.json"
+    RUN_LOG = EVIDENCE / "run-log.json"
+    RESULTS_V0 = HERE / "RESULTS-v0-a5.md"
+
+
+def require_amendment_5(seal: str | None) -> str:
+    return require_amendment(seal, AMENDMENT_5, v1.AMENDMENT_5_PREFIX)
+
+
+def a5_population_diff(found: list[en.Transition]) -> dict[str, Any]:
+    """A5.1: the amendment-4 population lines against this amendment's, and
+    the units that no longer have a first Built sighting, with the reason."""
+    earlier = {}
+    for line in (EVIDENCE_A4 / "population.ndjson").read_text().splitlines():
+        if line.strip():
+            r = json.loads(line)
+            earlier[r["key"]] = r
+    now = {f"{t.regime}|{t.unit}": t for t in found}
+    changed = [
+        k
+        for k in earlier
+        if k in now
+        and dumps(
+            {
+                "key": k,
+                **now[k].__dict__,
+                "months_last_date_to_built_copy": now[k].months_from_last_date_to_built_copy,
+            }
+        ).replace("\n", "")
+        != dumps(earlier[k]).replace("\n", "")
+    ]
+    lost = []
+    for k in earlier:
+        if k in now:
+            continue
+        regime, unit = k.split("|", 1)
+        lost.append(
+            {
+                "key": k,
+                "project_name": earlier[k].get("project_name"),
+                "first_built_under_amendment_4": earlier[k].get("first_built"),
+                "reason": "no first Built sighting under this key over the filled sequence: the content identity carries the unit's rows differently through the added copies (a different key holds them, or the first sighting of the key already prints Built)",
+            }
+        )
+    return {
+        "amendment_4_lines": len(earlier),
+        "lines_now": len(now),
+        "unchanged": len([k for k in earlier if k in now]) - len(changed),
+        "changed": len(changed),
+        "new": len([k for k in now if k not in earlier]),
+        "lost": lost,
+    }
+
+
+def a5_carry_over(document: dict[str, Any]) -> None:
+    """A5.2: carry the amendment-4 decisions that stand; write the pre-screen list."""
+    earlier_doc = json.loads((EVIDENCE_A4 / "links-admitted.json").read_text())
+    earlier_prop = json.loads((EVIDENCE_A4 / "links-proposed.json").read_text())
+    earlier = {a["key"]: a for a in earlier_doc["admissions"]}
+    earlier_candidates = {
+        p["key"]: [c["units"] for c in p["candidates"]] for p in earlier_prop["projects"]
+    }
+    proposals = {p["key"]: [c["units"] for c in p["candidates"]] for p in document["projects"]}
+    carried, prescreen = v1.carry_over(earlier, earlier_candidates, proposals)
+    by_key = {p["key"]: p for p in document["projects"]}
+    out = {
+        "rule": "020-a5-carry-over",
+        "amendment_5_sha256": sha(AMENDMENT_5),
+        "earlier_admissions_sha256": sha(EVIDENCE_A4 / "links-admitted.json"),
+        "pairs_to_report": [pair for pair in earlier_doc.get("pairs_to_report", [])],
+        "crossed_unit_names": earlier_doc.get("crossed_unit_names", {}),
+        "carried": sorted(carried.values(), key=lambda a: a["prescreen_number"]),
+        "prescreen": [by_key[k] for k in prescreen],
+    }
+    write_json(EVIDENCE / "links-carried.json", out)
+    n_adm = sum(1 for c in carried.values() if c["decision"] == "admitted")
+    print(
+        f"A5.2: {len(carried)} decisions carried ({n_adm} admitted, {len(carried) - n_adm} refused); {len(prescreen)} projects to the pre-screen; {sum(1 for p in document['projects'] if not p['candidates'])} with no candidate"
+    )
 
 
 def sha(path: Path) -> str:
@@ -251,6 +360,8 @@ def phase_population(seal: str | None) -> None:
             "units_seen": sum(len(u) for u in seen.values()),
         }
     )
+    if A5:
+        summary["against_amendment_4"] = a5_population_diff(found)
     write_json(SUMMARY, summary)
     RESULTS_V0.write_text(render_v0(summary, found))
     log_run(
@@ -986,6 +1097,8 @@ def phase_proposals(
     if LINKS_PROPOSED.exists() and LINKS_PROPOSED.read_text() != text:
         sys.exit("C5: links-proposed.json would change on recompute; nothing written")
     LINKS_PROPOSED.write_text(text)
+    if A5:
+        a5_carry_over(document)
     with_candidates = sum(1 for p in out if p["candidates"])
     exact = sum(1 for p in out if any(c["exact"] for c in p["candidates"]))
     log_run(
@@ -1085,9 +1198,30 @@ def phase_walk(seal, a1, a2, a3, run_date: str) -> None:
         return d["key"], walk_project(d["units"], raw, day)
 
     walks = {}
+    if A5:
+        # A5.3: a carried admitted project's walk of 2026-10-12 is re-used, never refetched.
+        earlier_walks = json.loads((EVIDENCE_A4 / "walks.json").read_text())
+        reused = 0
+        for d in list(admitted):
+            if d.get("carried_from_amendment_4") and d["key"] in earlier_walks["walks"]:
+                walks[d["key"]] = {
+                    **earlier_walks["walks"][d["key"]],
+                    "raw": earlier_walks["raw"],
+                    "run_date": earlier_walks["run_date"],
+                }
+                admitted.remove(d)
+                reused += 1
+            elif d.get("carried_from_amendment_4"):
+                sys.exit(
+                    f"A5.3: carried project {d['key']} has no pinned walk of 2026-10-12; stopped"
+                )
+        print(
+            f"A5.3: {reused} walks re-used from 2026-10-12; {len(admitted)} newly admitted projects to walk",
+            flush=True,
+        )
     with ThreadPoolExecutor(max_workers=4) as pool:
         for key, result in pool.map(one, admitted):
-            walks[key] = result
+            walks[key] = {**result, "raw": str(raw.relative_to(REPO_ROOT)), "run_date": run_date}
             done += 1
             if done % 10 == 0:
                 print(f"walked {done}/{len(admitted)}", flush=True)
@@ -1095,8 +1229,20 @@ def phase_walk(seal, a1, a2, a3, run_date: str) -> None:
         EVIDENCE / "manifest.json",
         {
             key: {
-                "journal": str((raw / slug(w["units"]) / "journal.ndjson").relative_to(REPO_ROOT)),
-                "journal_sha256": sha(raw / slug(w["units"]) / "journal.ndjson"),
+                "journal": str(
+                    (
+                        REPO_ROOT
+                        / w.get("raw", str(raw.relative_to(REPO_ROOT)))
+                        / slug(w["units"])
+                        / "journal.ndjson"
+                    ).relative_to(REPO_ROOT)
+                ),
+                "journal_sha256": sha(
+                    REPO_ROOT
+                    / w.get("raw", str(raw.relative_to(REPO_ROOT)))
+                    / slug(w["units"])
+                    / "journal.ndjson"
+                ),
                 "windows": len(w["windows"]) + len(w["format"]),
             }
             for key, w in sorted(walks.items())
@@ -1126,7 +1272,108 @@ def phase_walk(seal, a1, a2, a3, run_date: str) -> None:
     )
 
 
-def phase_compute_v1(seal, a1, a2, a3, a4, run_date: str) -> None:
+def a5_comparison(results: dict[str, Any]) -> dict[str, Any]:
+    """A5.4: the figures Mark holds (amendment 4) beside this amendment's, F5 and F6."""
+    earlier = json.loads((EVIDENCE_A4 / "results.json").read_text())
+    e_delay = earlier.get("realised_delay_with_later_stages") or {}
+    n_delay = results.get("realised_delay_with_later_stages") or {}
+    rows = []
+
+    def row(label: str, a: dict[str, Any] | None, b: dict[str, Any] | None) -> None:
+        a, b = a or {}, b or {}
+        rows.append(
+            {
+                "figure": label,
+                "before": a.get("median"),
+                "before_ci95": a.get("median_ci95"),
+                "before_n": a.get("n"),
+                "after": b.get("median"),
+                "after_ci95": b.get("median_ci95"),
+                "after_n": b.get("n"),
+            }
+        )
+
+    row(
+        "realised delay, with later stages, overall (median months)",
+        e_delay.get("overall"),
+        n_delay.get("overall"),
+    )
+    for fam in ("storage", "onshore wind", "offshore wind"):
+        row(f"realised delay, {fam}", e_delay.get(f"family {fam}"), n_delay.get(f"family {fam}"))
+    row(
+        "register's lag, overall",
+        earlier["register_lag"].get("overall"),
+        results["register_lag"].get("overall"),
+    )
+    for y in ("2021", "2022", "2023", "2024", "2025", "2026"):
+        row(
+            f"register's lag, year {y}",
+            earlier["register_lag"].get(f"year {y}"),
+            results["register_lag"].get(f"year {y}"),
+        )
+    eo, no = e_delay.get("overall") or {}, n_delay.get("overall") or {}
+    bands = {
+        "before": {k: (eo.get(k) or {}).get("k") for k in ("before", "within_six_months", "later")},
+        "after": {k: (no.get(k) or {}).get("k") for k in ("before", "within_six_months", "later")},
+    }
+    return {
+        "amendment_4_results_sha256": sha(EVIDENCE_A4 / "results.json"),
+        "rows": rows,
+        "bands": bands,
+        "F5": v1.f5_fires(earlier["register_lag"], results["register_lag"]),
+        "F6": v1.f6_fires(eo, no),
+        "labels_before": earlier.get("labels"),
+        "labels_after": results.get("labels"),
+    }
+
+
+def render_a5(r: dict[str, Any]) -> str:
+    c = r["against_amendment_4"]
+    pop = {}
+    with contextlib.suppress(OSError, json.JSONDecodeError):
+        pop = json.loads(SUMMARY.read_text()).get("against_amendment_4", {})
+    L = [
+        "",
+        "## Amendment 5 against amendment 4",
+        "",
+        f"Computed under amendment 5 `{r['amendment_5_sha256'][:8]}…` over the archive with the 83 FOI/26/216 copies (25/07/2025 to 15/05/2026) journalled; the 'before' column is amendment 4's `results.json` (`{c['amendment_4_results_sha256'][:8]}…`, computed 2026-10-12), the figures Mark Moore holds. "
+        f"Population lines against amendment 4: {pop.get('unchanged', '?')} unchanged, {pop.get('changed', '?')} changed, {pop.get('new', '?')} new, {len(pop.get('lost', []))} lost (listed below). Labels before {c['labels_before']}; after {c['labels_after']}. "
+        "The 301-day bound on every copy gap in the hole is gone; the 95-day gap of 19/05/2026 to 22/08/2026 remains the bound for first sightings in that span.",
+        "",
+        "| figure | before (amendment 4) | 95 % interval | n | after (amendment 5) | 95 % interval | n |",
+        "|---|---|---|---|---|---|---|",
+    ]
+    for x in c["rows"]:
+        L.append(
+            f"| {x['figure']} | {x['before']} | {x['before_ci95']} | {x['before_n']} | {x['after']} | {x['after_ci95']} | {x['after_n']} |"
+        )
+    b = c["bands"]
+    L += [
+        "",
+        f"Realised delay bands (before the date / within six months / later): amendment 4 {b['before']['before']} / {b['before']['within_six_months']} / {b['before']['later']}; amendment 5 {b['after']['before']} / {b['after']['within_six_months']} / {b['after']['later']}.",
+        "",
+        f"- **F5** ({'FIRES' if c['F5']['fires'] else 'does not fire'}): "
+        + "; ".join(
+            f"{y}: {v['before']} ({v['before_ci95']}, n {v['before_n']}) → {v['after']} ({v['after_ci95']}, n {v['after_n']}), outside {v['outside']}"
+            for y, v in c["F5"]["years"].items()
+        )
+        + ". Fires if a 2025 or 2026 register-lag median leaves its amendment-4 interval: then the hole was carrying the finding, which is the paper's point about archive cadence.",
+        f"- **F6** ({'FIRES' if c['F6']['fires'] else 'does not fire'}): realised-delay median {c['F6']['before']} → {c['F6']['after']}, moved {c['F6']['moved']} against a tolerance of {c['F6']['tolerance']} months. Fires if it moves by more than 1.0 month: then the sample given to Mark was not representative and the outline's number is withdrawn.",
+        "",
+    ]
+    if pop.get("lost"):
+        L += (
+            ["Units that lost their first `Built` sighting under the same key (A5.1):", ""]
+            + [
+                f"- `{x['key']}` ({x['project_name']}, Built copy {x['first_built_under_amendment_4']} under amendment 4): {x['reason']}"
+                for x in pop["lost"]
+            ]
+            + [""]
+        )
+    return "\n".join(L) + "\n"
+
+
+def phase_compute_v1(seal, a1, a2, a3, a4, run_date: str, a5_seal: str | None = None) -> None:
     import random
 
     digest_3 = require_v1_seals(seal, a1, a2, a3)
@@ -1136,6 +1383,7 @@ def phase_compute_v1(seal, a1, a2, a3, a4, run_date: str) -> None:
     if walks_doc["run_date"] != run_date:
         sys.exit(f"walks.json is for {walks_doc['run_date']}, not {run_date}")
     raw = REPO_ROOT / walks_doc["raw"]
+    digest_5 = require_amendment_5(a5_seal) if A5 else None
     departures = {k: w["format"] for k, w in walks_doc["walks"].items() if w["format"]}
     if departures:
         sys.exit(
@@ -1182,7 +1430,7 @@ def phase_compute_v1(seal, a1, a2, a3, a4, run_date: str) -> None:
         walk = None
         if d["decision"] == "admitted":
             w = walks_doc["walks"][key]
-            folder = raw / slug(d["units"])
+            folder = (REPO_ROOT / w["raw"] if w.get("raw") else raw) / slug(d["units"])
             journal = {
                 json.loads(x)["path"]: json.loads(x)["sha256"]
                 for x in (folder / "journal.ndjson").read_text().splitlines()
@@ -1384,9 +1632,14 @@ def phase_compute_v1(seal, a1, a2, a3, a4, run_date: str) -> None:
             )
             for field in ("delay_with", "delay_without")
         }
+    if A5:
+        results["amendment_5_sha256"] = digest_5
+        results["against_amendment_4"] = a5_comparison(results)
     LABELS.write_text("\n".join(lines) + "\n")
     write_json(RESULTS_JSON, results)
-    RESULTS.write_text(render_v1(results, out))
+    if A5 and not RESULTS_A4.exists():
+        RESULTS_A4.write_text(RESULTS.read_text())
+    RESULTS.write_text(render_v1(results, out) + (render_a5(results) if A5 else ""))
     log_run(
         "compute-v1",
         amendment_3=digest_3[:8],
@@ -1510,9 +1763,15 @@ def main() -> None:
     parser.add_argument("--amendment-2-seal", default=None)
     parser.add_argument("--amendment-3-seal", default=None)
     parser.add_argument("--amendment-4-seal", default=None)
+    parser.add_argument(
+        "--amendment-5-seal", default=None, help="amendment 5: evidence under evidence/a5/"
+    )
     parser.add_argument("--run-date", default=datetime.now(UTC).date().isoformat())
     args = parser.parse_args()
     EVIDENCE.mkdir(exist_ok=True)
+    if args.amendment_5_seal:
+        use_amendment_5()
+        require_amendment_5(args.amendment_5_seal)
     if args.phase == "population":
         phase_population(args.seal)
     elif args.phase == "projects":
@@ -1539,6 +1798,7 @@ def main() -> None:
             args.amendment_3_seal,
             args.amendment_4_seal,
             args.run_date,
+            args.amendment_5_seal,
         )
     else:
         phase_schema(args.seal, args.run_date)

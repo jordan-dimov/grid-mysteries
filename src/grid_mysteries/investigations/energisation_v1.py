@@ -458,3 +458,93 @@ def first_appearances(
         i = order.index(d)
         out[key] = (d, (d - order[i - 1]).days if i > 0 else 0)
     return out
+
+
+# ---- amendment 5: the population over the filled hole ------------------------
+
+#: Filled in after DECLARATION-amendment-5.md is frozen.
+AMENDMENT_5_PREFIX: Final = "63b7e7e9"
+#: F5: the amendment-4 bootstrap intervals of the register-lag medians for
+#: the two years the hole bounded (year of the first Built copy).
+F5_YEARS: Final = ("2025", "2026")
+#: F6: the realised-delay median (with later stages, overall) may move by
+#: at most this many months from the amendment-4 figure.
+F6_TOLERANCE: Final = Decimal("1.0")
+
+
+def carry_over(
+    earlier_decisions: dict[str, dict[str, Any]],
+    earlier_candidates: dict[str, list[list[str]]],
+    proposals: dict[str, list[list[str]]],
+) -> tuple[dict[str, dict[str, Any]], list[str]]:
+    """A5.2: which earlier decisions stand under the new proposals.
+
+    `earlier_decisions` maps a project key to its amendment-4 decision
+    (with `decision` and `units`); `earlier_candidates` and `proposals`
+    map keys to the candidate unit sets J1 proposed then and now. Returns
+    the carried decisions (marked `carried_from_amendment_4`) and the keys
+    that need a pre-screen: every key with a candidate now that has no
+    decision, an admitted unit set no longer proposed, or a refusal whose
+    candidate set changed."""
+    carried: dict[str, dict[str, Any]] = {}
+    prescreen: list[str] = []
+    for key, now in proposals.items():
+        if not now:
+            continue
+        d = earlier_decisions.get(key)
+        same_candidates = sorted(map(tuple, earlier_candidates.get(key, []))) == sorted(
+            map(tuple, now)
+        )
+        stands = d is not None and (
+            (d["decision"] == "admitted" and d["units"] in now)
+            or (d["decision"] != "admitted" and same_candidates)
+        )
+        if stands and d is not None:
+            carried[key] = {**d, "carried_from_amendment_4": True}
+        else:
+            prescreen.append(key)
+    return carried, prescreen
+
+
+def f5_fires(
+    earlier_register_lag: dict[str, Any], later_register_lag: dict[str, Any]
+) -> dict[str, Any]:
+    """F5: a 2025 or 2026 register-lag median outside its amendment-4 interval."""
+    out: dict[str, Any] = {"fires": False, "years": {}}
+    for y in F5_YEARS:
+        before = earlier_register_lag.get(f"year {y}") or {}
+        after = later_register_lag.get(f"year {y}") or {}
+        ci = before.get("median_ci95")
+        median = after.get("median")
+        outside = None
+        if ci and median is not None:
+            lo, hi = Decimal(str(ci[0])), Decimal(str(ci[1]))
+            outside = not (lo <= Decimal(str(median)) <= hi)
+        out["years"][y] = {
+            "before": before.get("median"),
+            "before_ci95": ci,
+            "before_n": before.get("n"),
+            "after": median,
+            "after_ci95": after.get("median_ci95"),
+            "after_n": after.get("n"),
+            "outside": outside,
+        }
+        out["fires"] = out["fires"] or bool(outside)
+    return out
+
+
+def f6_fires(earlier_overall: dict[str, Any], later_overall: dict[str, Any]) -> dict[str, Any]:
+    """F6: the overall realised-delay median (with later stages) moved by more than 1.0 month."""
+    before, after = earlier_overall.get("median"), later_overall.get("median")
+    moved = (
+        abs(Decimal(str(after)) - Decimal(str(before)))
+        if before is not None and after is not None
+        else None
+    )
+    return {
+        "before": before,
+        "after": after,
+        "moved": str(moved) if moved is not None else None,
+        "tolerance": str(F6_TOLERANCE),
+        "fires": bool(moved is not None and moved > F6_TOLERANCE),
+    }

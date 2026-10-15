@@ -27,6 +27,9 @@
   "Amendment 3 B5: shares before, within six months and later with Wilson intervals; median bootstrap interval, none below n = 5": "tests/test_energisation_v1.py::test_distribution_shares_and_the_median_interval",
   "Amendment 4 A1: a project's first appearance is its earliest kept copy in either regime, with the combined sequence's gap": "tests/test_energisation_v1.py::test_a1_first_appearance_spans_regimes_with_the_combined_gap",
   "Amendment 4 A2: the effective floor is the first window with records for any project; a project whose earliest record is in it is metered-before-the-walk": "tests/test_energisation_v1.py::test_a2_effective_floor_and_censoring",
-  "Amendment 4 A3: a unit admitted again for a later project is a second sighting; the earlier is kept": "tests/test_energisation_v1.py::test_a3_second_sightings_keep_the_earlier_project"
+  "Amendment 4 A3: a unit admitted again for a later project is a second sighting; the earlier is kept": "tests/test_energisation_v1.py::test_a3_second_sightings_keep_the_earlier_project",
+  "Amendment 5, A5.2: an admitted link stands where its units are still proposed; a refusal where the candidate set is unchanged; every other project with a candidate goes to the pre-screen": "tests/test_energisation_v1.py::test_carry_over_keeps_admissions_still_proposed_and_refusals_with_the_same_candidates",
+  "Amendment 5, F5: a 2025 or 2026 register-lag median outside its amendment-4 bootstrap interval": "tests/test_energisation_v1.py::test_f5_fires_when_a_year_median_leaves_its_earlier_interval",
+  "Amendment 5, F6: the overall realised-delay median moved by more than 1.0 month": "tests/test_energisation_v1.py::test_f6_fires_when_the_overall_delay_median_moves_more_than_a_month"
  }
 }

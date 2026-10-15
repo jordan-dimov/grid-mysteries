@@ -1,6 +1,7 @@
 """020 version 1 (amendment 3, f84367c3…): the join at project level."""
 
 from decimal import Decimal
+from typing import Any
 
 from grid_mysteries.investigations import energisation_v1 as v1
 
@@ -278,3 +279,77 @@ def test_a1_first_appearance_spans_regimes_with_the_combined_gap():
     out = v1.first_appearances(seen_first, kept)
     assert out["new|p"] == (date(2020, 1, 10), 7)
     assert out["new|q"] == (date(2026, 5, 19), 301)
+
+
+# ---- amendment 5 -------------------------------------------------------------
+
+
+def test_carry_over_keeps_admissions_still_proposed_and_refusals_with_the_same_candidates():
+    from grid_mysteries.investigations import energisation_v1 as v1
+
+    earlier: dict[str, dict[str, Any]] = {
+        "k1": {"decision": "admitted", "units": ["T_A-1"]},
+        "k2": {"decision": "refused", "units": None},
+        "k3": {"decision": "admitted", "units": ["T_C-1"]},
+        "k4": {"decision": "refused", "units": None},
+    }
+    earlier_candidates = {
+        "k1": [["T_A-1"]],
+        "k2": [["T_B-1"]],
+        "k3": [["T_C-1"]],
+        "k4": [["T_D-1"]],
+    }
+    now = {
+        "k1": [["T_A-1"], ["T_A-2"]],  # still proposed: carried
+        "k2": [["T_B-1"]],  # same candidates: refusal carried
+        "k3": [["T_X-1"]],  # admitted units no longer proposed: pre-screen
+        "k4": [["T_D-1"], ["T_D-2"]],  # refusal with a changed candidate set: pre-screen
+        "k5": [["T_E-1"]],  # new key: pre-screen
+        "k6": [],  # no candidate: nothing to decide
+    }
+    carried, prescreen = v1.carry_over(earlier, earlier_candidates, now)
+    assert set(carried) == {"k1", "k2"} and all(
+        c["carried_from_amendment_4"] for c in carried.values()
+    )
+    assert carried["k1"]["units"] == ["T_A-1"]
+    assert prescreen == ["k3", "k4", "k5"]
+
+
+def test_f5_fires_when_a_year_median_leaves_its_earlier_interval():
+    from decimal import Decimal
+
+    from grid_mysteries.investigations import energisation_v1 as v1
+
+    before = {
+        "year 2025": {"median": "7.1", "median_ci95": ["2.0", "13.1"], "n": 15},
+        "year 2026": {"median": "8.1", "median_ci95": ["4.2", "9.8"], "n": 9},
+    }
+    inside = {
+        "year 2025": {"median": "3.0", "median_ci95": ["1.0", "5.0"], "n": 40},
+        "year 2026": {"median": "4.2", "median_ci95": ["2.0", "6.0"], "n": 30},
+    }
+    assert v1.f5_fires(before, inside)["fires"] is False
+    outside = {
+        "year 2025": {"median": "1.9", "median_ci95": ["1.0", "3.0"], "n": 40},
+        "year 2026": {"median": "5.0", "median_ci95": None, "n": 3},
+    }
+    r = v1.f5_fires(before, outside)
+    assert (
+        r["fires"] is True
+        and r["years"]["2025"]["outside"] is True
+        and r["years"]["2026"]["outside"] is False
+    )
+    assert (
+        v1.f5_fires(before, {})["fires"] is False
+        and v1.f5_fires(before, {})["years"]["2025"]["outside"] is None
+    )
+    assert Decimal(v1.F6_TOLERANCE) == Decimal("1.0")
+
+
+def test_f6_fires_when_the_overall_delay_median_moves_more_than_a_month():
+    from grid_mysteries.investigations import energisation_v1 as v1
+
+    assert v1.f6_fires({"median": "4.1"}, {"median": "5.1"})["fires"] is False
+    assert v1.f6_fires({"median": "4.1"}, {"median": "5.2"})["fires"] is True
+    assert v1.f6_fires({"median": "4.1"}, {"median": "2.9"})["fires"] is True
+    assert v1.f6_fires({"median": "4.1"}, {})["fires"] is False

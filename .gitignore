@@ -53,3 +53,18 @@ investigations/023-did-changing-hands-slip-more/evidence/results.json
 
 # 024: charts are drawn from results.json by run.py --phase figures; out of git as 020's are.
 investigations/024-the-gas-in-the-spread/figures/
+# 020 amendment 5: the same sponsor-only files under evidence/a5/, and the kept amendment-4 rendering.
+investigations/020-did-it-energise/evidence/a5/population-summary.json
+investigations/020-did-it-energise/evidence/a5/projects-summary.json
+investigations/020-did-it-energise/evidence/a5/projects-v02-summary.json
+investigations/020-did-it-energise/evidence/a5/links-proposed.json
+investigations/020-did-it-energise/evidence/a5/links-carried.json
+investigations/020-did-it-energise/evidence/a5/links-admitted.json
+investigations/020-did-it-energise/evidence/a5/prescreen.md
+investigations/020-did-it-energise/evidence/a5/labels.ndjson
+investigations/020-did-it-energise/evidence/a5/results.json
+investigations/020-did-it-energise/evidence/a5/c6-failures.json
+investigations/020-did-it-energise/evidence/a5/walks.json
+investigations/020-did-it-energise/evidence/a5/manifest.json
+investigations/020-did-it-energise/RESULTS-a4.md
+investigations/020-did-it-energise/RESULTS-v0-a5.md

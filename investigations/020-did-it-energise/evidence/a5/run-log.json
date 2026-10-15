@@ -44,6 +44,33 @@
    "transitions": 1719,
    "new_lines": 0,
    "gate2": 103
+  },
+  {
+   "phase": "walk",
+   "at": "2026-10-15T21:28:09+00:00",
+   "amendment_3": "f84367c3",
+   "run_date": "2026-10-15",
+   "projects": 137,
+   "requests": 37565,
+   "format_departures": 0
+  },
+  {
+   "phase": "compute-v1",
+   "at": "2026-10-15T21:31:02+00:00",
+   "amendment_3": "f84367c3",
+   "run_date": "2026-10-15",
+   "labels": {
+    "metered-before-the-walk": 59,
+    "no-candidate": 18,
+    "unmatched": 15,
+    "metered": 69,
+    "second-sighting": 3,
+    "embedded-or-distribution": 8,
+    "metered-before-register": 6
+   },
+   "f1": false,
+   "f2": false,
+   "c6": 1
   }
  ]
 }

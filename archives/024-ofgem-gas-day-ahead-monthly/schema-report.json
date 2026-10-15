@@ -1,0 +1,32 @@
+{
+ "file": "data/raw/ofgem/024/wmi-gas-day-ahead-monthly-everviz-inject-YFsS4g98P-2026-10-15.js",
+ "sha256": "a304e0726a41a838d71b31d913c3505fa611a4e79b4392ec97871463e527ff57",
+ "page": "data/raw/ofgem/024/wholesale-market-indicators-page-2026-10-15.html",
+ "page_sha256": "f8a6aef72fec57d4a19c01c8f780d8c521a9928af266030fadfe181d9828f112",
+ "page_chart_node": {
+  "id": "175055",
+  "name": "Gas prices: day-ahead contracts \u2013 monthly average (Great Britain)",
+  "chart": "YFsS4g98P"
+ },
+ "page_chart_description": " This chart shows the average price of gas for next day delivery on the wholesale market in Great Britain (England, Scotland and Wales). This does not include Northern Ireland.  The data until 28 February 2021 comes from a third-party Price Reporting Agency\u2019s price assessment of over-the-counter trading through brokers. See full explanation of that methodology  here .   From 1 March 2021, the data is Ofgem analysis of broker data and is an average monthly price weighted by volume. The data is averaged by month and covers around a 16-year time period.  ",
+ "header": [
+  "Category",
+  "Price"
+ ],
+ "rows": 201,
+ "forms": {
+  "date": {
+   "us-date-first-of-month": 201,
+   "other": 0
+  },
+  "price": {
+   "decimal": 201,
+   "other": 0
+  }
+ },
+ "title": "Gas Prices: Day Ahead Contracts - Monthly Average (Great Britain)",
+ "credits": "Ofgem analysis of broker data",
+ "y_axis_title": "p/therm (GBp)\n",
+ "first_category": "10/01/2009",
+ "last_category": "06/01/2026"
+}

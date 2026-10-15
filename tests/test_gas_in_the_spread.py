@@ -274,3 +274,52 @@ def test_ukets_monthly_stops_on_a_disagreement_or_a_misprinted_period(tmp_path: 
         (2022, 12),
         (2023, 1),
     ]
+
+
+INJECT = (
+    '(function(){var o={"title":{"align":"left","style":{"color":"#333"},"text":"Gas Prices: Day Ahead"},'
+    '"credits":{"position":{"x":-12},"text":"Ofgem analysis of broker data"},'
+    '"yAxis":{"labels":{"y":-2},"title":{"text":"p/therm (GBp)\\n"}},'
+    '"data":{"csv":"\\"Category\\",\\"Price\\"\\n\\"01/01/2026\\",80.5\\n\\"02/01/2026\\",73.25\\n"}};})();'
+)
+
+
+def test_ofgem_wmi_reads_the_embedded_csv_as_months_in_pence_per_therm(tmp_path: Path):
+    from grid_mysteries.sources import ofgem_wmi
+
+    path = tmp_path / "inject.js"
+    path.write_text(INJECT)
+    assert ofgem_wmi.read(path) == {(2026, 1): D("80.5"), (2026, 2): D("73.25")}
+    profile = ofgem_wmi.format_profile(path)
+    assert profile["header"] == ["Category", "Price"] and profile["rows"] == 2
+    assert profile["forms"] == {
+        "date": {"us-date-first-of-month": 2, "other": 0},
+        "price": {"decimal": 2, "other": 0},
+    }
+    assert (
+        profile["title"] == "Gas Prices: Day Ahead"
+        and profile["credits"] == "Ofgem analysis of broker data"
+    )
+    assert profile["y_axis_title"] == "p/therm (GBp)\n"
+
+
+def test_ofgem_wmi_converts_pence_per_therm_to_pounds_per_megawatt_hour():
+    from grid_mysteries.sources import ofgem_wmi
+
+    assert ofgem_wmi.to_gbp_per_mwh(D("29.3071")) == D(10)
+    assert ofgem_wmi.to_gbp_per_mwh(D("100")).quantize(D("0.0001")) == D("34.1214")
+
+
+def test_ofgem_wmi_stops_on_a_repeated_month_or_a_misdated_row(tmp_path: Path):
+    from grid_mysteries.sources import ofgem_wmi
+
+    path = tmp_path / "inject.js"
+    path.write_text(INJECT.replace("02/01/2026", "01/01/2026"))
+    with pytest.raises(ValueError, match="twice"):
+        ofgem_wmi.read(path)
+    path.write_text(INJECT.replace("02/01/2026", "02/15/2026"))
+    with pytest.raises(ValueError, match="declared forms"):
+        ofgem_wmi.read(path)
+    path.write_text("var o={};")
+    with pytest.raises(ValueError, match="no data.csv"):
+        ofgem_wmi.read(path)

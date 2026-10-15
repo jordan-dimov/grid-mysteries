@@ -36,6 +36,24 @@
   "bytes": 874
  },
  {
+  "source": "ofgem",
+  "dataset": "ofgem-wmi-page",
+  "url": "https://www.ofgem.gov.uk/energy-data-and-research/data-portal/wholesale-market-indicators",
+  "path": "data/raw/ofgem/024/wholesale-market-indicators-page-2026-10-15.html",
+  "sha256": "f8a6aef72fec57d4a19c01c8f780d8c521a9928af266030fadfe181d9828f112",
+  "fetched_at": "2026-10-15T19:27:52.830959+00:00",
+  "bytes": 271728
+ },
+ {
+  "source": "ofgem",
+  "dataset": "ofgem-wmi-gas-day-ahead-monthly-chart",
+  "url": "https://app.everviz.com/inject/YFsS4g98P",
+  "path": "data/raw/ofgem/024/wmi-gas-day-ahead-monthly-everviz-inject-YFsS4g98P-2026-10-15.js",
+  "sha256": "a304e0726a41a838d71b31d913c3505fa611a4e79b4392ec97871463e527ff57",
+  "fetched_at": "2026-10-15T19:27:52.577845+00:00",
+  "bytes": 20264
+ },
+ {
   "source": "ons",
   "dataset": "ons-sap-gas-daily",
   "url": "https://www.ons.gov.uk/file?uri=/economy/economicoutputandproductivity/output/datasets/systemaveragepricesapofgas/2026/systemaveragepriceofgasdataset151026.xlsx",

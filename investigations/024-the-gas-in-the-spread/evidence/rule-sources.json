@@ -16,6 +16,9 @@
   "Gas is the printed p/kWh times ten, exact": "tests/test_gas_in_the_spread.py::test_ons_sap_cells_convert_to_pounds_per_megawatt_hour_exactly",
   "The daily SAP sheet is read from its header on row 5": "tests/test_gas_in_the_spread.py::test_ons_sap_reader_reads_the_daily_sheet",
   "Carbon reading rule: Month j average price in the row for month M is month M - (k + 1 - j); non-price cells are skipped": "tests/test_gas_in_the_spread.py::test_ukets_monthly_reading_rule_maps_each_rows_months_back_from_the_row",
-  "C3: a month printed with two values, or a misprinted monitoring period, stops the read": "tests/test_gas_in_the_spread.py::test_ukets_monthly_stops_on_a_disagreement_or_a_misprinted_period"
+  "C3: a month printed with two values, or a misprinted monitoring period, stops the read": "tests/test_gas_in_the_spread.py::test_ukets_monthly_stops_on_a_disagreement_or_a_misprinted_period",
+  "Amendment 1: the Ofgem chart's embedded CSV is read as one month per row (month/day/year, first of the month) in pence per therm": "tests/test_gas_in_the_spread.py::test_ofgem_wmi_reads_the_embedded_csv_as_months_in_pence_per_therm",
+  "Amendment 1: pence per therm to GBP/MWh is x 10 / 29.3071": "tests/test_gas_in_the_spread.py::test_ofgem_wmi_converts_pence_per_therm_to_pounds_per_megawatt_hour",
+  "Amendment 1: a repeated month or a misdated row stops the read": "tests/test_gas_in_the_spread.py::test_ofgem_wmi_stops_on_a_repeated_month_or_a_misdated_row"
  }
 }

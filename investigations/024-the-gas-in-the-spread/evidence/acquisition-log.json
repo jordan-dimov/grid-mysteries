@@ -75,6 +75,46 @@
      "sha256": "07cd65e8ab5c3798540aa160ac5f5b62531e105706fa4452f82c1631738bb9e7"
     }
    }
+  },
+  {
+   "at": "2026-10-15T19:27:52.931718+00:00",
+   "authorised_by": "sponsor handover 15/10/2026 (etrmbiz notes/2026-10-15-grid-mysteries-prompt-024-gas-in-the-spread.md)",
+   "fetched": 2,
+   "verified_and_skipped": 6,
+   "files": {
+    "neso-n2ex-day-ahead": {
+     "path": "data/raw/neso/024/n2ex-day-ahead-dump-2026-10-15.csv",
+     "sha256": "ab8202a72eae9716964dcf334915776c38c46a8f0ebf0e602ce1f5be49295adc"
+    },
+    "ons-sap-gas-daily": {
+     "path": "data/raw/ons/024/systemaveragepriceofgasdataset151026.xlsx",
+     "sha256": "c84b724a95245987e111d3c14f3f1c5a95b0ca997053d769af04c959c234b72e"
+    },
+    "govuk-ukets-ccm-monthly-average-prices": {
+     "path": "data/raw/govuk/024/ccm-trigger-prices-and-average-monthly-prices-full-table-2026-10-15.html",
+     "sha256": "932725ca74e4a23608aae363960f8b5d9193c6fae5839bd1f4e050c11e74fd01"
+    },
+    "neso-n2ex-day-ahead-resource-metadata": {
+     "path": "data/raw/neso/024/resource-show-4f27eea5-7038-4f73-9740-e3e4ad47c26a-2026-10-15.json",
+     "sha256": "4097147bf8cbffa9364ce394bee0f7d5a0c36750fedd501349987f6cb1e6c7d4"
+    },
+    "ons-sap-gas-dataset-page": {
+     "path": "data/raw/ons/024/systemaveragepricesapofgas-dataset-page-2026-10-15.html",
+     "sha256": "58b37e4cd54b509b509ea26aac6d50087fc0d798a940aacb2fa20781aef2a862"
+    },
+    "govuk-ukets-markets-guidance": {
+     "path": "data/raw/govuk/024/uk-emissions-trading-scheme-markets-2026-10-15.html",
+     "sha256": "07cd65e8ab5c3798540aa160ac5f5b62531e105706fa4452f82c1631738bb9e7"
+    },
+    "ofgem-wmi-gas-day-ahead-monthly-chart": {
+     "path": "data/raw/ofgem/024/wmi-gas-day-ahead-monthly-everviz-inject-YFsS4g98P-2026-10-15.js",
+     "sha256": "a304e0726a41a838d71b31d913c3505fa611a4e79b4392ec97871463e527ff57"
+    },
+    "ofgem-wmi-page": {
+     "path": "data/raw/ofgem/024/wholesale-market-indicators-page-2026-10-15.html",
+     "sha256": "f8a6aef72fec57d4a19c01c8f780d8c521a9928af266030fadfe181d9828f112"
+    }
+   }
   }
  ]
 }

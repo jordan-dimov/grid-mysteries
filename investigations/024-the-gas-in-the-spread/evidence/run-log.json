@@ -33,6 +33,16 @@
    "at": "2026-10-15T19:00:37+00:00",
    "results_sha256": "47e76815375538fe29eb00024fe0613d16f73a52e1bd3455dbb1db70a4a550a5",
    "results_md_sha256": "69be0640666284bbd4586581b545ec1bc4cc426fac41da090599ea65a9809fca"
+  },
+  {
+   "phase": "schema-cross-check",
+   "at": "2026-10-15T19:27:53+00:00",
+   "ofgem": "a9a90a5062a79ebe2aac41bef6dfefb2842dbed9587faab34999e6d1de3163a5"
+  },
+  {
+   "phase": "schema-cross-check",
+   "at": "2026-10-15T19:29:20+00:00",
+   "ofgem": "fea333c0e384809b2c26c5bf2f9baff80a6fa8a8ab2ba36518b27b239d0ff7dc"
   }
  ]
 }

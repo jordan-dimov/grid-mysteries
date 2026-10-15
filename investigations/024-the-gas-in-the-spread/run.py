@@ -41,7 +41,7 @@ from typing import Any
 from grid_mysteries.corpus import REPO_ROOT
 from grid_mysteries.evidence import jsonable, write_json
 from grid_mysteries.investigations import gas_in_the_spread as gs
-from grid_mysteries.sources import n2ex_day_ahead, ons_sap, ukets_monthly
+from grid_mysteries.sources import n2ex_day_ahead, ofgem_wmi, ons_sap, ukets_monthly
 from grid_mysteries.sources.http import fetch_artifact
 from grid_mysteries.sources.pinning import pin, progress
 
@@ -109,6 +109,27 @@ CARBON_GUIDE_FILE = (
     / "024"
     / f"uk-emissions-trading-scheme-markets-{FETCH_DATE}.html"
 )
+OFGEM_CHART_KEY = "YFsS4g98P"
+OFGEM_CHART_URL = f"https://app.everviz.com/inject/{OFGEM_CHART_KEY}"
+OFGEM_CHART_FILE = (
+    REPO_ROOT
+    / "data"
+    / "raw"
+    / "ofgem"
+    / "024"
+    / f"wmi-gas-day-ahead-monthly-everviz-inject-{OFGEM_CHART_KEY}-{FETCH_DATE}.js"
+)
+OFGEM_PAGE_URL = (
+    "https://www.ofgem.gov.uk/energy-data-and-research/data-portal/wholesale-market-indicators"
+)
+OFGEM_PAGE_FILE = (
+    REPO_ROOT
+    / "data"
+    / "raw"
+    / "ofgem"
+    / "024"
+    / f"wholesale-market-indicators-page-{FETCH_DATE}.html"
+)
 #: dataset -> (publisher, url, destination). The three data files and, for
 #: vintage and licence, the publishers' own metadata pages.
 SOURCES = {
@@ -118,7 +139,13 @@ SOURCES = {
     "neso-n2ex-day-ahead-resource-metadata": ("neso", POWER_META_URL, POWER_META_FILE),
     "ons-sap-gas-dataset-page": ("ons", GAS_PAGE_URL, GAS_PAGE_FILE),
     "govuk-ukets-markets-guidance": ("govuk", CARBON_GUIDE_URL, CARBON_GUIDE_FILE),
+    # Amendment 1 (cross-check): Ofgem's monthly day-ahead gas chart, served by everviz.
+    "ofgem-wmi-gas-day-ahead-monthly-chart": ("ofgem", OFGEM_CHART_URL, OFGEM_CHART_FILE),
+    "ofgem-wmi-page": ("ofgem", OFGEM_PAGE_URL, OFGEM_PAGE_FILE),
 }
+ARCHIVE_OFGEM = REPO_ROOT / "archives" / "024-ofgem-gas-day-ahead-monthly"
+AMENDMENT_1 = HERE / "AMENDMENT-1.md"
+CROSS_CHECK = EVIDENCE / "cross-check.json"
 
 
 def sha(path: Path) -> str:
@@ -1153,12 +1180,287 @@ def phase_figures() -> None:
     print(f"figures -> {FIGURES.relative_to(REPO_ROOT)}")
 
 
+def phase_schema_cross_check() -> None:
+    """Schema supplement for amendment 1's source: header, rows, forms, chart facts; no value."""
+    ARCHIVE_OFGEM.mkdir(parents=True, exist_ok=True)
+    profile = ofgem_wmi.format_profile(OFGEM_CHART_FILE)
+    text = OFGEM_CHART_FILE.read_text(encoding="utf-8")
+    body = ofgem_wmi.rows(text)[1:]
+    page = OFGEM_PAGE_FILE.read_text(encoding="utf-8")
+    m = re.search(r"data-js-chart-modal-data='(\{[^']*Gas prices: day-ahead[^']*\})'", page)
+    modal = json.loads(html_lib.unescape(m.group(1))) if m else None
+    report = {
+        "file": str(OFGEM_CHART_FILE.relative_to(REPO_ROOT)),
+        "sha256": sha(OFGEM_CHART_FILE),
+        "page": str(OFGEM_PAGE_FILE.relative_to(REPO_ROOT)),
+        "page_sha256": sha(OFGEM_PAGE_FILE),
+        "page_chart_node": {k: modal[k] for k in ("id", "name", "chart")} if modal else None,
+        "page_chart_description": re.sub(r"<[^>]+>", " ", modal["content"]).replace("&nbsp;", " ")
+        if modal
+        else None,
+        **profile,
+        "first_category": body[0][0],
+        "last_category": body[-1][0],
+    }
+    write_json(ARCHIVE_OFGEM / "schema-report.json", report)
+    lines = [
+        "# Schema report: 024-ofgem-gas-day-ahead-monthly",
+        "",
+        f"`{report['file']}` (SHA-256 `{report['sha256']}`), the everviz inject script Ofgem's data portal renders for chart node {report['page_chart_node']['id'] if modal else '?'} "
+        f"(`{report['page']}`, SHA-256 `{report['page_sha256']}`, chart key `{report['page_chart_node']['chart'] if modal else '?'}`). "
+        f"Chart title as printed: {report['title']!r}; credits: {report['credits']!r}; y-axis title: {report['y_axis_title']!r}. "
+        f"Written by `run.py --phase schema-cross-check`; no value is read.",
+        "",
+        f"Embedded CSV: header {', '.join(f'`{h}`' for h in report['header'])}; {report['rows']} rows from `{report['first_category']}` to `{report['last_category']}` "
+        f"(month/day/year, the month's first day); date forms {report['forms']['date']}; price forms {report['forms']['price']}.",
+        "",
+        "Ofgem's description of the chart, from the page:",
+        "",
+        f"    {' '.join((report['page_chart_description'] or '').split())}",
+        "",
+    ]
+    (ARCHIVE_OFGEM / "SCHEMA.md").write_text("\n".join(lines) + "\n")
+    log_run("schema-cross-check", ofgem=sha(ARCHIVE_OFGEM / "schema-report.json"))
+    print("cross-check schema supplement written")
+
+
+MATERIAL = Decimal("0.05")
+CROSS_CHECK_MONTHS = (
+    "2025-01",
+    "2025-06",
+    "2026-01",
+    "2026-06",
+)  # the two half-years the F1 cross-check compares
+
+
+def sealed_amendment(seal: str | None) -> str:
+    digest = sha(AMENDMENT_1)
+    if not seal or not digest.startswith(seal):
+        sys.exit(
+            f"cross-check needs --seal, the prefix of AMENDMENT-1.md's SHA-256 ({digest[:8]}…)"
+        )
+    if not (HERE / "AMENDMENT-1.md.timestamps.json").exists():
+        sys.exit("AMENDMENT-1.md is not frozen (no proof sidecar)")
+    return digest
+
+
+def phase_cross_check(seal: str | None) -> None:
+    """Amendment 1: Ofgem's monthly day-ahead gas price against the SAP monthly means of results.json."""
+    digest = sealed_amendment(seal)
+    manifest = check_manifest()
+    profile = ofgem_wmi.format_profile(OFGEM_CHART_FILE)
+    expected = json.loads((ARCHIVE_OFGEM / "schema-report.json").read_text())
+    diffs = differences(
+        {k: expected[k] for k in ("header", "rows", "forms")},
+        {k: profile[k] for k in ("header", "rows", "forms")},
+    )
+    if diffs:
+        sys.exit(f"C2 (amendment 1): the Ofgem chart departs from the schema pass: {diffs}")
+    R = json.loads(RESULTS_JSON.read_text())
+    P = R["units"]["printed"]["periods"]
+    ofgem = ofgem_wmi.read(OFGEM_CHART_FILE)
+    months = [k for k in P if len(k) == 7]
+    rows_out, missing = [], []
+    for m in months:
+        key = (int(m[:4]), int(m[5:]))
+        if key not in ofgem or P[m]["gas_mean"] is None:
+            missing.append(m)
+            continue
+        o = gs.quantise(ofgem_wmi.to_gbp_per_mwh(ofgem[key]))
+        sap = Decimal(P[m]["gas_mean"])
+        spread = Decimal(P[m]["spread_mean"])
+        rows_out.append(
+            {
+                "month": m,
+                "ofgem_pence_per_therm": ofgem[key],
+                "ofgem_gbp_per_mwh": o,
+                "sap_gbp_per_mwh": sap,
+                "difference": gs.quantise(o - sap),
+                "difference_share_of_sap": gs.quantise((o - sap) / sap),
+                "spread_mean": spread,
+                "ratio_on_sap": gs.quantise(spread / sap),
+                "ratio_on_ofgem": gs.quantise(spread / o),
+            }
+        )
+
+    def half(first: str, last: str) -> dict[str, Any]:
+        sel = [r for r in rows_out if first <= r["month"] <= last]
+        n = len(sel)
+        mean = lambda k: gs.quantise(sum(r[k] for r in sel) / n) if n else None  # noqa: E731
+        s_, o_, sp = mean("sap_gbp_per_mwh"), mean("ofgem_gbp_per_mwh"), mean("spread_mean")
+        return {
+            "months": n,
+            "first": first,
+            "last": last,
+            "spread_mean_of_months": sp,
+            "sap_mean_of_months": s_,
+            "ofgem_mean_of_months": o_,
+            "ratio_on_sap": gs.quantise(sp / s_) if sp and s_ else None,
+            "ratio_on_ofgem": gs.quantise(sp / o_) if sp and o_ else None,
+        }
+
+    h25, h26 = (
+        half(CROSS_CHECK_MONTHS[0], CROSS_CHECK_MONTHS[1]),
+        half(CROSS_CHECK_MONTHS[2], CROSS_CHECK_MONTHS[3]),
+    )
+    change_sap = (
+        gs.quantise(h26["ratio_on_sap"] / h25["ratio_on_sap"] - 1)
+        if h26["ratio_on_sap"] and h25["ratio_on_sap"]
+        else None
+    )
+    change_ofgem = (
+        gs.quantise(h26["ratio_on_ofgem"] / h25["ratio_on_ofgem"] - 1)
+        if h26["ratio_on_ofgem"] and h25["ratio_on_ofgem"]
+        else None
+    )
+    recent = [r for r in rows_out if r["month"] >= "2025-01"]
+    material = [r["month"] for r in recent if abs(r["difference_share_of_sap"]) > MATERIAL]
+    years: dict[str, Any] = {}
+    for y in ("2022", "2023", "2024", "2025", "2026"):
+        sel = [r for r in rows_out if r["month"].startswith(y)]
+        if sel:
+            n = len(sel)
+            years[y] = {
+                "months": n,
+                "sap_mean_of_months": gs.quantise(sum(r["sap_gbp_per_mwh"] for r in sel) / n),
+                "ofgem_mean_of_months": gs.quantise(sum(r["ofgem_gbp_per_mwh"] for r in sel) / n),
+                "ratio_on_sap": gs.quantise(
+                    sum(r["spread_mean"] for r in sel) / sum(r["sap_gbp_per_mwh"] for r in sel)
+                ),
+                "ratio_on_ofgem": gs.quantise(
+                    sum(r["spread_mean"] for r in sel) / sum(r["ofgem_gbp_per_mwh"] for r in sel)
+                ),
+            }
+    out = {
+        "amendment_1_sha256": digest,
+        "declaration_sha256": R["declaration_sha256"],
+        "computed_at": datetime.now(UTC).isoformat(timespec="seconds"),
+        "results_sha256": sha(RESULTS_JSON),
+        "source": {
+            k: manifest[k] for k in ("ofgem-wmi-gas-day-ahead-monthly-chart", "ofgem-wmi-page")
+        },
+        "ofgem_months": {
+            "first": f"{min(ofgem)[0]}-{min(ofgem)[1]:02d}",
+            "last": f"{max(ofgem)[0]}-{max(ofgem)[1]:02d}",
+            "count": len(ofgem),
+        },
+        "kwh_per_therm": ofgem_wmi.KWH_PER_THERM,
+        "months_compared": len(rows_out),
+        "months_missing": missing,
+        "months": rows_out,
+        "years": years,
+        "material_threshold": MATERIAL,
+        "material_months_2025_on": material,
+        "largest_difference_2025_on": max(recent, key=lambda r: abs(r["difference_share_of_sap"]))[
+            "month"
+        ]
+        if recent
+        else None,
+        "f1_cross_check": {
+            "half_2025": h25,
+            "half_2026": h26,
+            "change_on_sap": change_sap,
+            "change_on_ofgem": change_ofgem,
+            "verdict_stands": (change_ofgem is not None and change_ofgem < -MATERIAL),
+        },
+    }
+    write_json(CROSS_CHECK, out)
+    log_run(
+        "cross-check", seal=seal, amendment_1_sha256=digest, cross_check_sha256=sha(CROSS_CHECK)
+    )
+    print(
+        f"cross-check under {digest[:8]}…: {len(rows_out)} months, material months 2025 on: {material or 'none'}; F1 change on SAP {change_sap}, on Ofgem {change_ofgem}, verdict stands {out['f1_cross_check']['verdict_stands']}"
+    )
+
+
+def cross_check_section() -> list[str]:
+    if not CROSS_CHECK.exists():
+        return []
+    X = json.loads(CROSS_CHECK.read_text())
+    f = X["f1_cross_check"]
+    h25, h26 = f["half_2025"], f["half_2026"]
+    lines = (
+        [
+            "## Cross-check: Ofgem's monthly day-ahead gas price against SAP (amendment 1)",
+            "",
+            f'Computed {X["computed_at"][:10]} under amendment 1 `{X["amendment_1_sha256"][:8]}…` from Ofgem\'s wholesale market indicators chart "Gas prices: day-ahead contracts – monthly average (Great Britain)" '
+            f"(data portal node 175055, served by everviz, pinned 15/10/2026, `{X['source']['ofgem-wmi-gas-day-ahead-monthly-chart']['sha256'][:12]}…`): a volume-weighted monthly average of broker-traded day-ahead gas from March 2021, in pence per therm, converted at {X['kwh_per_therm']} kWh per therm. "
+            f"Ofgem's series runs {X['ofgem_months']['first']} to {X['ofgem_months']['last']}, so the comparison covers {X['months_compared']} months to {X['ofgem_months']['last']} and **cannot test September 2026**; months without both: {', '.join(X['months_missing']) or 'none'}. Nothing computed under the declaration changes.",
+            "",
+            f"- **Materiality** (threshold {pct(X['material_threshold'])} of SAP in any month from January 2025): {'material in ' + ', '.join(X['material_months_2025_on']) if X['material_months_2025_on'] else 'no month from January 2025 differs by more than the threshold'}; the largest difference since January 2025 is in {X['largest_difference_2025_on']}.",
+            f"- **F1 on Ofgem's gas**, January to June of each year (the months both series share in 2026): ratio A on SAP {fmt(h26['ratio_on_sap'], '0.001')} against {fmt(h25['ratio_on_sap'], '0.001')} ({pct(f['change_on_sap'])}); on Ofgem's day-ahead price {fmt(h26['ratio_on_ofgem'], '0.001')} against {fmt(h25['ratio_on_ofgem'], '0.001')} ({pct(f['change_on_ofgem'])}). The F1 verdict {'stands' if f['verdict_stands'] else 'does not stand'} on the cross-check series over those months.",
+            "",
+        ]
+        + md_table(
+            [
+                "year",
+                "months",
+                "SAP mean of months",
+                "Ofgem mean of months",
+                "ratio A on SAP",
+                "ratio A on Ofgem",
+            ],
+            [
+                [
+                    y,
+                    v["months"],
+                    fmt(v["sap_mean_of_months"]),
+                    fmt(v["ofgem_mean_of_months"]),
+                    fmt(v["ratio_on_sap"], "0.001"),
+                    fmt(v["ratio_on_ofgem"], "0.001"),
+                ]
+                for y, v in X["years"].items()
+            ],
+        )
+        + [
+            "",
+            "Yearly ratios here are the sum of monthly mean spreads over the sum of monthly mean gas prices (months weighted equally), so the SAP column differs in the third decimal from the day-weighted ratio A above.",
+            "",
+        ]
+        + md_table(
+            [
+                "month",
+                "Ofgem p/therm",
+                "Ofgem GBP/MWh",
+                "SAP GBP/MWh",
+                "difference",
+                "share of SAP",
+                "ratio A on SAP",
+                "ratio A on Ofgem",
+            ],
+            [
+                [
+                    r["month"],
+                    fmt(r["ofgem_pence_per_therm"]),
+                    fmt(r["ofgem_gbp_per_mwh"]),
+                    fmt(r["sap_gbp_per_mwh"]),
+                    fmt(r["difference"]),
+                    pct(r["difference_share_of_sap"]),
+                    fmt(r["ratio_on_sap"], "0.001"),
+                    fmt(r["ratio_on_ofgem"], "0.001"),
+                ]
+                for r in X["months"]
+            ],
+        )
+        + [""]
+    )
+    return lines
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument(
         "--phase",
         required=True,
-        choices=["acquire", "schema", "format", "compute", "render", "figures"],
+        choices=[
+            "acquire",
+            "schema",
+            "schema-cross-check",
+            "format",
+            "compute",
+            "render",
+            "figures",
+        ],
     )
     parser.add_argument("--seal", default=None)
     args = parser.parse_args()
@@ -1166,10 +1468,14 @@ def main() -> None:
         phase_acquire()
     elif args.phase == "schema":
         phase_schema()
+    elif args.phase == "schema-cross-check":
+        phase_schema_cross_check()
     elif args.phase == "format":
         phase_format()
     elif args.phase == "compute":
         phase_compute(args.seal)
+    elif args.phase == "cross-check":
+        phase_cross_check(args.seal)
     elif args.phase == "render":
         phase_render()
     elif args.phase == "figures":

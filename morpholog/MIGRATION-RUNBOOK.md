@@ -792,3 +792,28 @@ and fails on an admissible sweep nobody has recorded (run
 refused). Deployed by `provision indexes` over the three programmes (see
 the day's plan below) and `check --database-url`; no stored claim changed.
 
+**The Bill record types its figures** (`bill/PROGRAMME_HASH.json`
+`sha256:a527463c…` moves). Morpholog's answer to the 22-field `DayRow` of
+Subject text with `-` for a blank was a shape, not an optional field: a
+blank is the absence of a claim. Morpholog migrates no claim to a new
+shape and adds no field to a predicate with claims, so the first shape is
+closed, not changed: `DayRow` stays declared for the twenty-two days that
+hold it (`check --database-url` would refuse a programme that dropped it),
+`add_day` and `rows_name_a_rule` go (an invariant over a predicate nothing
+admits is a strict hint), and the second shape is `Day` (the seven money
+figures every computed day carries, `Decimal[GBP]`, with sign, flag and
+the artefacts digest) plus one claim per block the declaration can leave
+blank, present only when computed: `DayGasOffer` (`Decimal[MWh]`,
+`Decimal[GBP_per_MWh]`, a unit label of our own since the kernel makes no
+compound unit), `DayBsad`, `DayBsadPlaceholder`. The blanks come in those
+two blocks in the runner (`volume_columns` and `bsad_columns` blank a block
+whole), so a claim per block, not per figure, is the runner's own shape.
+The invariants that named `DayRow` now read either shape (`or` in a
+consequent compiles, bound); `one_shape_per_day` and the gate
+`day_not_held_in_the_first_shape` keep a day in one shape per rule. The
+importer compares a first-shape day cell for cell and a second-shape day
+claim for claim (a quantity by its exact amount, scale kept), and refuses
+by name a row whose money figures or sign are blank. Rehearsed on a copy
+of the live Bill database with a synthetic run (below); the live database
+provisioned for the new predicates and checked against its claims.
+

@@ -20,6 +20,7 @@ import time
 from collections.abc import Callable
 from dataclasses import dataclass, field
 from datetime import date
+from decimal import Decimal
 from pathlib import Path
 from typing import Any, Final
 
@@ -45,6 +46,8 @@ RULES: Final = {
         "1-8 September 2026 as investigation 012 published them, copied, never recomputed",
     ),
 }
+#: The first shape's cells (DayRow, 26/09 to 21/10/2026), in field order: the
+#: twenty-two days held in it are compared cell for cell, as text.
 DAY_FIELDS: Final = (
     "source",
     "batch",
@@ -68,11 +71,37 @@ DAY_FIELDS: Final = (
     "artefacts_sha256",
 )
 PROPOSITIONS: Final = ("T1", "T2", "T3", "T4")
+#: The second shape (from 21/10/2026): one `Day` claim with the figures every
+#: computed day carries, typed in GBP, and one claim per block the declaration
+#: can leave blank, present only when computed. A blank is no claim.
+MONEY_FIELDS: Final = (
+    "paid_out_gbp",
+    "net_gbp",
+    "paid_in_gbp",
+    "wind_bid_gbp",
+    "gas_offer_gbp",
+    "other_gbp",
+    "two_cut_gbp",
+)
+GAS_OFFER_FIELDS: Final = {
+    "disptav_type": "disptav_type",
+    "offer_mwh": "gas_offer_mwh",
+    "offer_vwap_gbp_per_mwh": "gas_offer_vwap_gbp_per_mwh",
+    "mid_vwap_gbp_per_mwh": "mid_vwap_same_periods_gbp_per_mwh",
+    "premium_gbp_per_mwh": "premium_gbp_per_mwh",
+}
+BLOCKS: Final = ("DayGasOffer", "DayBsad", "DayBsadPlaceholder")
 
 
 def text(value: object) -> str:
-    """A cell as the record stores it: the runner's text, "-" where blank."""
+    """A cell as the first shape stored it: the runner's text, "-" where blank."""
     return "-" if value is None else str(value)
+
+
+def figure(value: object) -> str:
+    """A figure as the record compares it: the runner's text, exact, scale kept
+    (`Decimal("1459840.60")` prints as it was written, as the kernel keeps it)."""
+    return str(Decimal(str(value)))
 
 
 def artefacts_digest(row: dict[str, Any]) -> str:
@@ -113,6 +142,53 @@ def day_values(row: dict[str, Any]) -> tuple[str, ...]:
     return tuple(values[f] for f in DAY_FIELDS)
 
 
+class RowError(RuntimeError):
+    """A tracker row the second shape cannot hold: a figure every computed day
+    must carry is blank. Refused by name, never stored as a placeholder."""
+
+
+def day_claims(row: dict[str, Any]) -> dict[str, dict[str, str] | None]:
+    """The second shape of a tracker row: the `Day` claim's fields and, per
+    block, the claim's fields or None where the declaration left it blank."""
+    sign = row.get("sign_convention_holds")
+    blank = [f for f in MONEY_FIELDS if row.get(f) is None]
+    if sign is None or blank:
+        raise RowError(
+            f"{row.get('settlement_date')}: "
+            + ", ".join(blank + (["sign_convention_holds"] if sign is None else []))
+            + " blank, which a computed day never leaves blank"
+        )
+    day: dict[str, str] = {
+        "source": text(row.get("source")),
+        "batch": text(row.get("batch", 0)),
+        "flag": "seed" if row.get("seed") else ("record" if row.get("record") else "none"),
+        "sign": "holds" if sign else "fails",
+        **{f: figure(row[f]) for f in MONEY_FIELDS},
+        "artefacts_sha256": artefacts_digest(row),
+    }
+    gas: dict[str, str] | None = None
+    if row.get("gas_offer_mwh") is not None:
+        missing = [k for k, f in GAS_OFFER_FIELDS.items() if row.get(f) is None]
+        if missing:
+            raise RowError(f"{row['settlement_date']}: gas offer computed but {missing} blank")
+        gas = {
+            "disptav_type": str(row["disptav_type"]),
+            **{k: figure(row[f]) for k, f in GAS_OFFER_FIELDS.items() if k != "disptav_type"},
+        }
+    bsad = placeholder = None
+    if row.get("bsad_net_gbp") is not None:
+        if row.get("bsad_share") is None or row.get("bsad_vintage") is None:
+            raise RowError(f"{row['settlement_date']}: BSAD net without share or vintage")
+        bsad = {
+            "vintage": str(row["bsad_vintage"]),
+            "net_gbp": figure(row["bsad_net_gbp"]),
+            "share": figure(row["bsad_share"]),
+        }
+    elif row.get("bsad_vintage") is not None:
+        placeholder = {"vintage": str(row["bsad_vintage"])}
+    return {"Day": day, "DayGasOffer": gas, "DayBsad": bsad, "DayBsadPlaceholder": placeholder}
+
+
 def holds_word(holds: object) -> str:
     return "undecided" if holds is None else ("true" if holds else "false")
 
@@ -140,11 +216,19 @@ class State:
     current: tuple[str, date] | None = None
     importing: bool = False
     rows: dict[tuple[str, str], tuple[str, ...]] = field(default_factory=dict)
+    days: dict[tuple[str, str], dict[str, dict[str, str] | None]] = field(default_factory=dict)
     outcomes: set[str] = field(default_factory=set)
     outcome_revisions: set[tuple[str, str]] = field(default_factory=set)
     bsad_revisions: set[tuple[str, str]] = field(default_factory=set)
     bsad_confirmed: set[str] = field(default_factory=set)
     runs: set[str] = field(default_factory=set)
+
+
+def stored(value: object) -> str:
+    """A stored field as the plan compares it: a quantity by its exact amount
+    (the unit is the declaration's), anything else as text."""
+    amount = getattr(value, "amount", None)
+    return str(amount) if isinstance(amount, Decimal) else str(value)
 
 
 def read_state(api: Any) -> State:
@@ -158,6 +242,20 @@ def read_state(api: Any) -> State:
     for c in api.claims_named("DayRow"):
         a = c.args
         s.rows[(str(a["day"])[:10], str(a["rule"]))] = tuple(str(a[f]) for f in DAY_FIELDS)
+    for c in api.claims_named("Day"):
+        a = c.args
+        key = (str(a["day"])[:10], str(a["rule"]))
+        s.days[key] = {
+            "Day": {k: stored(v) for k, v in a.items() if k not in ("day", "rule")},
+            **dict.fromkeys(BLOCKS),
+        }
+    for block in BLOCKS:
+        for c in api.claims_named(block):
+            a = c.args
+            key = (str(a["day"])[:10], str(a["rule"]))
+            if key not in s.days:
+                raise record.ImportError_(f"{block} for {key} with no Day claim: torn record")
+            s.days[key][block] = {k: stored(v) for k, v in a.items() if k not in ("day", "rule")}
     s.outcomes = {str(c.args["day"])[:10] for c in api.claims_named("Outcome")}
     s.outcome_revisions = {
         (str(c.args["day"])[:10], str(c.args["vintage"]))
@@ -241,24 +339,35 @@ def plan(state: State, tracker: dict[str, Any], tracker_sha256: str) -> Plan:
         if not row.get("available"):
             continue
         day, rule = row["settlement_date"], rule_of(row)
-        values = day_values(row)
-        held = state.rows.get((day, rule))
-        if held is None:
-            acts.append(
-                act(
-                    "add_day",
-                    run=run,
-                    day=day,
-                    rule=rule,
-                    **dict(zip(DAY_FIELDS, values, strict=True)),
-                )
-            )
-            added.append(day)
-        elif held == values:
-            unchanged.append(day)
+        if (day, rule) in state.rows:
+            # held in the first shape: compared cell for cell, never re-recorded
+            if state.rows[(day, rule)] == day_values(row):
+                unchanged.append(day)
+            else:
+                changed.append((day, rule))
+                continue
         else:
-            changed.append((day, rule))
-            continue
+            try:
+                claims = day_claims(row)
+            except RowError as exc:
+                raise PlanError(str(exc)) from None
+            held = state.days.get((day, rule))
+            if held is None:
+                for shape, name in (
+                    ("Day", "record_day"),
+                    ("DayGasOffer", "record_gas_offer"),
+                    ("DayBsad", "record_bsad"),
+                    ("DayBsadPlaceholder", "record_bsad_placeholder"),
+                ):
+                    fields = claims[shape]
+                    if fields is not None:
+                        acts.append(act(name, run=run, day=day, rule=rule, **fields))
+                added.append(day)
+            elif held == claims:
+                unchanged.append(day)
+            else:
+                changed.append((day, rule))
+                continue
         outcome = row.get("outcome") or {}
         if outcome.get("l1_constraints_gbp") is not None and day not in state.outcomes:
             acts.append(

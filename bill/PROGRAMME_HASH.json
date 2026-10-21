@@ -1,5 +1,5 @@
 {
-  "hash": "sha256:a527463c75ec7cd35ca98b07fcab4e387ddce8baadfea390e222cb9985f5713a",
-  "morpholog_version": "0.0.14",
+  "hash": "sha256:6fb700d72e2d278b9f7e3adf041289aff15812dd38231144403a9055f6160d51",
+  "morpholog_version": "0.0.16",
   "program": "balancing_bill"
 }

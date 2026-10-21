@@ -16,12 +16,22 @@ never proposes to any database, and on Render it only acquires.
 **The record holds what was computed** (`bill-register.morph`, database
 `grid_mysteries_bill`, never the research record's):
 
-- `DayRow(day, rule, …)`: one settlement day under one rule version, its
-  declared figures as the runner printed them (Decimal text, `-` where the
-  declaration leaves a cell blank), the first-kept BSAD reading, and the
-  SHA-256 over the digests of every artefact it was computed from. Admitted
-  once; no transformation alters or retracts it. A day recomputed under a
-  new rule version is a second row beside the first.
+- `Day(day, rule, …)`: one settlement day under one rule version: the seven
+  money figures every computed day carries, typed `Decimal[GBP]` and exact
+  as the runner printed them, the sign verdict, the flag and the SHA-256
+  over the digests of every artefact it was computed from. Beside it, one
+  claim per block the declaration can leave blank, present only when
+  computed: `DayGasOffer` (the DISPTAV type that reconciled, MWh and the
+  three £/MWh figures), `DayBsad` (the first-kept populated L3 reading, its
+  vintage, net £ and share) or `DayBsadPlaceholder` (a vintage read with no
+  populated row: blank, never zero). A blank cell is the absence of a claim.
+  Admitted once; no transformation alters or retracts any of them. A day
+  recomputed under a new rule version is a second set beside the first.
+- `DayRow(day, rule, …)`: the first shape, 26/09 to 21/10/2026, every figure
+  as text with `-` for a blank; the twenty-two days computed before the
+  amendment of 21/10/2026 hold it and are compared cell for cell. Closed:
+  no act admits it (a claim keeps the shape it was admitted with; Morpholog
+  migrates no claim to a new shape, and nothing here is backfilled).
 - `RuleVersion`: `013-d20d5920-A1` (the declaration with Amendment 1 in
   force) for tracked days, `seed-012` for the eight days copied from 012.
 - `Outcome` / `OutcomeRevision`: NESO's L1 and L4, first vintage kept, later
@@ -34,9 +44,12 @@ never proposes to any database, and on Render it only acquires.
   `Run` names the tracker file by digest.
 
 The importer (`src/grid_mysteries/bill/importer.py`) is pure in its plan:
-a day the record holds identically costs nothing; a day held under the same
-rule version with different figures is refused by name before anything is
-proposed, and the kernel's `day_is_new` gate is the backstop. Each transact
+a day the record holds identically, in either shape, costs nothing; a day
+held under the same rule version with different figures is refused by name
+before anything is proposed, and the kernel's `day_is_new` and
+`day_not_held_in_the_first_shape` gates are the backstop. A row whose money
+figures or sign verdict are blank is refused by name too: the second shape
+has no placeholder for a figure every computed day carries. Each transact
 is guarded by a recovery marker under `data/derived/bill/`, cleared only on
 a positive non-commit.
 

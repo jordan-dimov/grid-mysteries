@@ -67,9 +67,13 @@ def test_first_run_declares_rules_opens_adds_days_verdicts_and_closes():
     assert names(p.acts) == [
         "declare_rule",
         "open_first_run",
-        "add_day",
+        "record_day",
+        "record_gas_offer",
+        "record_bsad",
         "confirm_bsad",
-        "add_day",
+        "record_day",
+        "record_gas_offer",
+        "record_bsad",
         "confirm_bsad",
         "record_verdict",
         "record_verdict",
@@ -80,7 +84,27 @@ def test_first_run_declares_rules_opens_adds_days_verdicts_and_closes():
     assert p.added == ["2026-09-09", "2026-09-10"] and p.confirmed == 2 and p.verdicts == 4
     day = p.acts[2]["args_named"]
     assert day["rule"] == importer.RULE and day["flag"] == "none" and day["sign"] == "holds"
+    assert day["paid_out_gbp"] == "1000" and day["paid_in_gbp"] == "-100"
+    assert "disptav_type" not in day and "bsad_vintage" not in day
     assert day["artefacts_sha256"] == importer.artefacts_digest(row("2026-09-09"))
+    assert p.acts[3]["args_named"] == {
+        "run": p.run,
+        "day": "2026-09-09",
+        "rule": importer.RULE,
+        "disptav_type": "Tagged",
+        "offer_mwh": "10",
+        "offer_vwap_gbp_per_mwh": "70",
+        "mid_vwap_gbp_per_mwh": "50",
+        "premium_gbp_per_mwh": "20",
+    }
+    assert p.acts[4]["args_named"] == {
+        "run": p.run,
+        "day": "2026-09-09",
+        "rule": importer.RULE,
+        "vintage": "2026-09-15",
+        "net_gbp": "50",
+        "share": "0.0500",
+    }
     verdicts = {
         a["args_named"]["proposition"]: a["args_named"]
         for a in p.acts
@@ -97,17 +121,59 @@ def test_seed_rows_carry_their_own_rule_and_flag():
     p = importer.plan(importer.State(), tracker([seed]), "f" * 64)
     declared = [a["args_named"]["rule"] for a in p.acts if a["transformation"] == "declare_rule"]
     assert declared == ["seed-012"]
-    day = next(a["args_named"] for a in p.acts if a["transformation"] == "add_day")
+    day = next(a["args_named"] for a in p.acts if a["transformation"] == "record_day")
     assert day["rule"] == "seed-012" and day["flag"] == "seed" and day["batch"] == "0"
+
+
+def test_a_blank_block_is_no_claim_and_a_blank_figure_is_refused():
+    seed = row(
+        "2026-09-08",
+        seed=True,
+        disptav_type=None,
+        gas_offer_mwh=None,
+        gas_offer_vwap_gbp_per_mwh=None,
+        mid_vwap_same_periods_gbp_per_mwh=None,
+        premium_gbp_per_mwh=None,
+        bsad_vintage="2026-09-24",
+        bsad_net_gbp=None,
+        bsad_share=None,
+        bsad_confirmed_vintage=None,
+    )
+    p = importer.plan(importer.State(), tracker([seed]), "f" * 64)
+    assert names(p.acts)[2:4] == ["record_day", "record_bsad_placeholder"]
+    assert p.acts[3]["args_named"]["vintage"] == "2026-09-24"
+    nothing_read = row("2026-09-08", bsad_vintage=None, bsad_net_gbp=None, bsad_share=None)
+    p = importer.plan(importer.State(), tracker([nothing_read]), "f" * 64)
+    assert names(p.acts)[2:4] == ["record_day", "record_gas_offer"]
+    with pytest.raises(importer.PlanError, match="2026-09-09: net_gbp blank"):
+        importer.plan(importer.State(), tracker([row("2026-09-09", net_gbp=None)]), "f" * 64)
+    with pytest.raises(importer.PlanError, match="gas offer computed but"):
+        importer.plan(importer.State(), tracker([row("2026-09-09", disptav_type=None)]), "f" * 64)
+
+
+def test_a_figure_is_compared_exactly_with_its_scale():
+    assert importer.figure("1459840.60") == "1459840.60"
+    assert importer.figure("-2163085.830314924845235186") == "-2163085.830314924845235186"
+    assert importer.figure("0.0486") == "0.0486"
+    assert importer.figure("1459840.60") != importer.figure("1459840.6")
 
 
 def held_after(p: importer.Plan) -> importer.State:
     """The state the record would hold after this plan committed."""
     s = importer.State(rules=set(importer.RULES), current=(p.run, p.run_date), runs={p.run})
+    blocks = {
+        "record_gas_offer": "DayGasOffer",
+        "record_bsad": "DayBsad",
+        "record_bsad_placeholder": "DayBsadPlaceholder",
+    }
     for a in p.acts:
         args = a["args_named"]
-        if a["transformation"] == "add_day":
-            s.rows[(args["day"], args["rule"])] = tuple(args[f] for f in importer.DAY_FIELDS)
+        key = (args.get("day"), args.get("rule"))
+        fields = {k: v for k, v in args.items() if k not in ("run", "day", "rule")}
+        if a["transformation"] == "record_day":
+            s.days[key] = {"Day": fields, **dict.fromkeys(importer.BLOCKS)}
+        elif a["transformation"] in blocks:
+            s.days[key][blocks[a["transformation"]]] = fields
         elif a["transformation"] == "append_outcome":
             s.outcomes.add(args["day"])
         elif a["transformation"] == "revise_outcome":
@@ -125,7 +191,7 @@ def test_a_later_run_adds_only_what_is_new_and_skips_identical_days():
     later = importer.plan(
         state, tracker([row("2026-09-09"), row("2026-09-10")], "2026-09-26"), "2" * 64
     )
-    assert names(later.acts)[:2] == ["open_run", "add_day"]
+    assert names(later.acts)[:2] == ["open_run", "record_day"]
     assert later.acts[0]["args_named"]["prior"] == first.run
     assert later.added == ["2026-09-10"] and later.unchanged == ["2026-09-09"]
 
@@ -134,6 +200,22 @@ def test_a_day_held_with_different_figures_is_refused_by_name_before_anything_is
     state = held_after(importer.plan(importer.State(), tracker([row("2026-09-09")]), "1" * 64))
     with pytest.raises(importer.PlanError, match="2026-09-09 under 013-d20d5920-A1"):
         importer.plan(state, tracker([row("2026-09-09", paid_out="1001")], "2026-09-26"), "2" * 64)
+
+
+def first_shape(day: str, **cells) -> tuple[str, ...]:
+    """A day as the first shape held it: the cells of `row(day)` as text."""
+    return importer.day_values(row(day, **cells))
+
+
+def test_a_day_held_in_the_first_shape_is_compared_cell_for_cell_and_never_re_recorded():
+    state = importer.State(rules=set(importer.RULES), current=("run-0", date(2026, 9, 26)))
+    state.rows[("2026-09-09", importer.RULE)] = first_shape("2026-09-09")
+    both = tracker([row("2026-09-09"), row("2026-09-10")], "2026-10-21")
+    p = importer.plan(state, both, "2" * 64)
+    assert p.unchanged == ["2026-09-09"] and p.added == ["2026-09-10"]
+    assert "add_day" not in names(p.acts)
+    with pytest.raises(importer.PlanError, match="2026-09-09 under 013-d20d5920-A1"):
+        importer.plan(state, tracker([row("2026-09-09", paid_out="1001")], "2026-10-21"), "3" * 64)
 
 
 def test_a_recompute_under_a_new_rule_version_is_a_second_row_not_a_replacement(monkeypatch):
@@ -168,15 +250,17 @@ def test_outcomes_and_bsad_are_append_only_first_kept_then_revisions_then_confir
         bsad_deciding_share="0.0600",
     )
     p = importer.plan(importer.State(), tracker([r]), "1" * 64)
-    assert names(p.acts)[2:7] == [
-        "add_day",
+    assert names(p.acts)[2:9] == [
+        "record_day",
+        "record_gas_offer",
+        "record_bsad",
         "append_outcome",
         "revise_outcome",
         "revise_bsad",
         "confirm_bsad",
     ]
-    assert p.acts[4]["args_named"]["l4_offers_mwh"] == "-"
-    assert p.acts[6]["args_named"] == {
+    assert p.acts[6]["args_named"]["l4_offers_mwh"] == "-"
+    assert p.acts[8]["args_named"] == {
         "run": p.run,
         "day": "2026-09-09",
         "vintage": "2026-09-17",
@@ -204,7 +288,7 @@ def test_unavailable_days_are_not_recorded():
         tracker([row("2026-09-09", available=False, status="not pinned")]),
         "1" * 64,
     )
-    assert "add_day" not in names(p.acts) and p.added == []
+    assert "record_day" not in names(p.acts) and p.added == []
 
 
 class FakeRequestError(Exception):

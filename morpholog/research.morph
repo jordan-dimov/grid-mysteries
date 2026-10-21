@@ -24,19 +24,19 @@ intent HypothesisRegistered(hypothesis: Subject)
 intent FindingPublished(finding: Subject)
 
 invariant attached_source_exists:
-    InvestigationUses(i, a) implies SourceArtifact(a, _, _, _)
+    InvestigationUses(i, a) implies SourceArtifact(artifact: a, ..)
 
 invariant attached_source_has_investigation:
     InvestigationUses(i, _) implies Investigation(i, _, _)
 
 invariant hypothesis_has_investigation:
-    Hypothesis(_, i, _, _) implies Investigation(i, _, _)
+    Hypothesis(investigation: i, ..) implies Investigation(i, _, _)
 
 invariant finding_has_registered_hypothesis:
-    Finding(_, i, h, _, _, _) implies Hypothesis(h, i, _, _)
+    Finding(investigation: i, hypothesis: h, ..) implies Hypothesis(h, i, _, _)
 
 invariant finding_has_at_least_one_source:
-    Finding(_, i, _, _, _, _) implies InvestigationUses(i, _)
+    Finding(investigation: i, ..) implies InvestigationUses(i, _)
 
 transformation open_investigation(investigation, title, opened_at):
     require not Investigation(investigation, _, _)
@@ -44,20 +44,20 @@ transformation open_investigation(investigation, title, opened_at):
     emit InvestigationOpened(investigation)
 
 transformation register_source(artifact, source, sha256, fetched_at):
-    require not SourceArtifact(artifact, _, _, _)
+    require not SourceArtifact(artifact: artifact, ..)
     admit SourceArtifact(artifact, source, sha256, fetched_at)
     emit SourceRegistered(artifact)
 
 transformation attach_source(investigation, artifact):
     require Investigation(investigation, _, _)
-    require SourceArtifact(artifact, _, _, _)
+    require SourceArtifact(artifact: artifact, ..)
     require not InvestigationUses(investigation, artifact)
     admit InvestigationUses(investigation, artifact)
     emit SourceAttached(investigation, artifact)
 
 transformation register_hypothesis(hypothesis, investigation, statement, proposed_at):
     require Investigation(investigation, _, _)
-    require not Hypothesis(hypothesis, _, _, _)
+    require not Hypothesis(hypothesis: hypothesis, ..)
     admit Hypothesis(hypothesis, investigation, statement, proposed_at)
     emit HypothesisRegistered(hypothesis)
 
@@ -67,7 +67,7 @@ transformation publish_finding(
     require Investigation(investigation, _, _)
     require Hypothesis(hypothesis, investigation, _, _)
     require InvestigationUses(investigation, _)
-    require not Finding(finding, _, _, _, _, _)
+    require not Finding(finding: finding, ..)
     admit Finding(finding, investigation, hypothesis, conclusion, evidence_digest, published_at)
     emit FindingPublished(finding)
 

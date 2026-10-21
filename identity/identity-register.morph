@@ -91,28 +91,28 @@ predicate AuditSigningKey(key_id: Subject, purpose: Subject, public_key: Subject
     append only
 
 invariant proposals_name_a_subject:
-    LinkProposed(_, s, _, _, _, _, _) implies RegisterSubject(s, _, _)
+    LinkProposed(subject: s, ..) implies RegisterSubject(s, _, _)
 
 invariant proposals_name_a_rule_version:
-    LinkProposed(_, _, _, _, r, _, _) implies RuleVersion(r, _)
+    LinkProposed(rule_version: r, ..) implies RuleVersion(r, _)
 
 invariant unresolved_names_a_subject:
-    SubjectUnresolved(s, _, _, _) implies RegisterSubject(s, _, _)
+    SubjectUnresolved(subject: s, ..) implies RegisterSubject(s, _, _)
 
 invariant unresolved_names_a_rule_version:
-    SubjectUnresolved(_, r, _, _) implies RuleVersion(r, _)
+    SubjectUnresolved(rule_version: r, ..) implies RuleVersion(r, _)
 
 invariant admissions_name_a_proposal:
-    LinkAdmitted(l, _, _, _, _, _) implies LinkProposed(l, _, _, _, _, _, _)
+    LinkAdmitted(link: l, ..) implies LinkProposed(link: l, ..)
 
 invariant refusals_name_a_proposal:
-    LinkRefused(l, _, _) implies LinkProposed(l, _, _, _, _, _, _)
+    LinkRefused(l, _, _) implies LinkProposed(link: l, ..)
 
 invariant withdrawals_name_an_admission:
-    AdmissionWithdrawn(l, _, _) implies LinkAdmitted(l, _, _, _, _, _)
+    AdmissionWithdrawn(l, _, _) implies LinkAdmitted(link: l, ..)
 
 invariant an_admitted_link_was_not_refused:
-    LinkAdmitted(l, _, _, _, _, _) implies not LinkRefused(l, _, _)
+    LinkAdmitted(link: l, ..) implies not LinkRefused(l, _, _)
 
 -- Bootstrap, once.
 transformation establish_identity_governance(human_actor, human_login_role, machine_actor, machine_login_role):
@@ -145,7 +145,7 @@ transformation propose_link(link, subject, company, link_class, rule_version, ev
     require proposal_requires_propose_authority: ProposeAuthority(actor)
     require proposal_names_a_subject: RegisterSubject(subject, _, _)
     require proposal_names_a_rule_version: RuleVersion(rule_version, _)
-    require link_is_new: not LinkProposed(link, _, _, _, _, _, _)
+    require link_is_new: not LinkProposed(link: link, ..)
     admit LinkProposed(link, subject, company, link_class, rule_version, evidence_digest, proposed_on)
 
 transformation record_unresolved(subject, rule_version, evidence_digest, proposed_on):
@@ -158,20 +158,20 @@ transformation record_unresolved(subject, rule_version, evidence_digest, propose
 -- a person who changes their mind proposes nothing, they withdraw.
 transformation admit_link(link, admitted_on, tenure_from, tenure_until, rule_of_admission, note_digest):
     require admission_requires_admit_authority: AdmitAuthority(actor)
-    require admission_names_a_proposal: LinkProposed(link, _, _, _, _, _, _)
-    require link_not_already_admitted: not LinkAdmitted(link, _, _, _, _, _)
+    require admission_names_a_proposal: LinkProposed(link: link, ..)
+    require link_not_already_admitted: not LinkAdmitted(link: link, ..)
     require link_not_refused: not LinkRefused(link, _, _)
     admit LinkAdmitted(link, admitted_on, tenure_from, tenure_until, rule_of_admission, note_digest)
 
 transformation refuse_link(link, refused_on, reason_digest):
     require refusal_requires_admit_authority: AdmitAuthority(actor)
-    require refusal_names_a_proposal: LinkProposed(link, _, _, _, _, _, _)
+    require refusal_names_a_proposal: LinkProposed(link: link, ..)
     require link_not_already_refused: not LinkRefused(link, _, _)
-    require link_not_admitted: not LinkAdmitted(link, _, _, _, _, _)
+    require link_not_admitted: not LinkAdmitted(link: link, ..)
     admit LinkRefused(link, refused_on, reason_digest)
 
 transformation withdraw_admission(link, withdrawn_on, reason_digest):
     require withdrawal_requires_admit_authority: AdmitAuthority(actor)
-    require withdrawal_names_an_admission: LinkAdmitted(link, _, _, _, _, _)
+    require withdrawal_names_an_admission: LinkAdmitted(link: link, ..)
     require admission_not_already_withdrawn: not AdmissionWithdrawn(link, _, _)
     admit AdmissionWithdrawn(link, withdrawn_on, reason_digest)

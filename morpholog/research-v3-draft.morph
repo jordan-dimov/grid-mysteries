@@ -142,40 +142,40 @@ intent WatchOpened(watch: Subject)
 intent TriggerFiredIntent(trigger: Subject)
 
 invariant declaration_kind_in_vocabulary:
-    Declaration(_, k, _, _, _) implies in_declaration_kind_vocabulary(k)
+    Declaration(kind: k, ..) implies in_declaration_kind_vocabulary(k)
 
 invariant sealed_declaration_was_declared:
-    DeclarationSealed(d, _) implies Declaration(d, _, _, _, _)
+    DeclarationSealed(d, _) implies Declaration(declaration: d, ..)
 
 invariant successor_declaration_exists:
-    DeclarationSupersedes(s, _) implies Declaration(s, _, _, _, _)
+    DeclarationSupersedes(s, _) implies Declaration(declaration: s, ..)
 
 invariant superseded_declaration_was_sealed:
     DeclarationSupersedes(_, p) implies DeclarationSealed(p, _)
 
 invariant verdict_requires_sealed_declaration:
-    Verdict(_, d, _, _, _, _, _, _) implies DeclarationSealed(d, _)
+    Verdict(declaration: d, ..) implies DeclarationSealed(d, _)
 
 invariant verdict_stage_in_vocabulary:
-    Verdict(_, _, _, s, _, _, _, _) implies in_stage_vocabulary(s)
+    Verdict(stage: s, ..) implies in_stage_vocabulary(s)
 
 invariant verdict_code_in_vocabulary:
-    Verdict(_, _, _, _, c, _, _, _) implies in_verdict_code_vocabulary(c)
+    Verdict(code: c, ..) implies in_verdict_code_vocabulary(c)
 
 invariant reading_has_watch:
-    WatchReading(w, _, _, _) implies Watch(w, _, _, _, _)
+    WatchReading(watch: w, ..) implies Watch(watch: w, ..)
 
 invariant reading_outcome_in_vocabulary:
-    WatchReading(_, _, _, o) implies in_reading_outcome_vocabulary(o)
+    WatchReading(outcome: o, ..) implies in_reading_outcome_vocabulary(o)
 
 invariant fired_trigger_exists:
     TriggerFired(t, _, _) implies ReopenTrigger(t, _, _)
 
 invariant evidence_class_in_vocabulary:
-    EvidenceClaim(_, _, c, _, _, _) implies in_evidence_class_vocabulary(c)
+    EvidenceClaim(evidence_class: c, ..) implies in_evidence_class_vocabulary(c)
 
 invariant three_clocks_ordered:
-    EvidenceClaim(claim, _, _, _, t_event, t_public) implies t_event on_or_before t_public
+    EvidenceClaim(claim: claim, t_event: t_event, t_public: t_public, ..) implies t_event on_or_before t_public
 
 -- Bootstrap, once: the human holds the seal.
 transformation establish_forward_governance(human_actor):
@@ -183,20 +183,20 @@ transformation establish_forward_governance(human_actor):
     admit DeclarationSealAuthority(human_actor)
 
 transformation declare(declaration, kind, title, content_digest, declared_at):
-    require declaration_is_new: not Declaration(declaration, _, _, _, _)
+    require declaration_is_new: not Declaration(declaration: declaration, ..)
     require declaration_kind_known: in_declaration_kind_vocabulary(kind)
     admit Declaration(declaration, kind, title, content_digest, declared_at)
     emit DeclarationRegistered(declaration)
 
 transformation seal_declaration(declaration, sealed_at):
     require seal_requires_declaration_authority: DeclarationSealAuthority(actor)
-    require seal_declaration_exists: Declaration(declaration, _, _, _, _)
+    require seal_declaration_exists: Declaration(declaration: declaration, ..)
     require seal_declaration_is_new: not DeclarationSealed(declaration, _)
     admit DeclarationSealed(declaration, sealed_at)
     emit DeclarationFrozen(declaration)
 
 transformation supersede_declaration(successor, prior):
-    require supersede_successor_exists: Declaration(successor, _, _, _, _)
+    require supersede_successor_exists: Declaration(declaration: successor, ..)
     require supersede_prior_sealed: DeclarationSealed(prior, _)
     require supersede_prior_not_yet_superseded: not DeclarationSupersedes(_, prior)
     require supersede_successor_is_new: not DeclarationSupersedes(successor, _)
@@ -206,18 +206,18 @@ transformation record_verdict(verdict, declaration, about, stage, code, reason, 
     require verdict_declaration_sealed: DeclarationSealed(declaration, _)
     require verdict_stage_known: in_stage_vocabulary(stage)
     require verdict_code_known: in_verdict_code_vocabulary(code)
-    require verdict_is_new: not Verdict(verdict, _, _, _, _, _, _, _)
-    require verdict_stage_not_yet_recorded: not Verdict(_, declaration, about, stage, _, _, _, _)
+    require verdict_is_new: not Verdict(verdict: verdict, ..)
+    require verdict_stage_not_yet_recorded: not Verdict(declaration: declaration, about: about, stage: stage, ..)
     admit Verdict(verdict, declaration, about, stage, code, reason, evidence_digest, recorded_at)
     emit VerdictRecorded(verdict)
 
 transformation open_watch(watch, about, resolving_observation, holder, due):
-    require watch_is_new: not Watch(watch, _, _, _, _)
+    require watch_is_new: not Watch(watch: watch, ..)
     admit Watch(watch, about, resolving_observation, holder, due)
     emit WatchOpened(watch)
 
 transformation record_reading(watch, read_on, reading_digest, outcome):
-    require reading_watch_exists: Watch(watch, _, _, _, _)
+    require reading_watch_exists: Watch(watch: watch, ..)
     require reading_outcome_known: in_reading_outcome_vocabulary(outcome)
     admit WatchReading(watch, read_on, reading_digest, outcome)
 
@@ -232,7 +232,7 @@ transformation fire_trigger(trigger, evidence_digest, fired_on):
     emit TriggerFiredIntent(trigger)
 
 transformation assert_evidence_class(claim, about, evidence_class, evidence_digest, t_event, t_public):
-    require claim_is_new: not EvidenceClaim(claim, _, _, _, _, _)
+    require claim_is_new: not EvidenceClaim(claim: claim, ..)
     require evidence_class_known: in_evidence_class_vocabulary(evidence_class)
     require clocks_ordered: t_event on_or_before t_public
     admit EvidenceClaim(claim, about, evidence_class, evidence_digest, t_event, t_public)

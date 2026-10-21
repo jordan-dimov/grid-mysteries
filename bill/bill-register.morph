@@ -79,28 +79,28 @@ predicate AuditSigningKey(key_id: Subject, purpose: Subject, public_key: Subject
     append only
 
 invariant runs_name_a_rule:
-    Run(_, _, _, r) implies RuleVersion(r, _, _)
+    Run(rule: r, ..) implies RuleVersion(r, _, _)
 
 invariant rows_name_a_rule:
-    DayRow(_, r, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _) implies RuleVersion(r, _, _)
+    DayRow(rule: r, ..) implies RuleVersion(r, _, _)
 
 invariant outcomes_name_a_day:
-    Outcome(d, _, _, _, _, _) implies DayRow(d, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _)
+    Outcome(day: d, ..) implies DayRow(day: d, ..)
 
 invariant revisions_follow_an_outcome:
-    OutcomeRevision(d, _, _, _, _) implies Outcome(d, _, _, _, _, _)
+    OutcomeRevision(day: d, ..) implies Outcome(day: d, ..)
 
 invariant bsad_revisions_name_a_day:
-    BsadRevision(d, _, _, _) implies DayRow(d, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _)
+    BsadRevision(day: d, ..) implies DayRow(day: d, ..)
 
 invariant bsad_confirmations_name_a_day:
-    BsadConfirmed(d, _, _, _) implies DayRow(d, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _)
+    BsadConfirmed(day: d, ..) implies DayRow(day: d, ..)
 
 invariant verdicts_name_a_run:
-    Verdict(r, _, _, _) implies Run(r, _, _, _)
+    Verdict(run: r, ..) implies Run(run: r, ..)
 
 invariant imports_name_a_run:
-    Imported(r) implies Run(r, _, _, _)
+    Imported(r) implies Run(run: r, ..)
 
 transformation declare_rule(rule, declaration_sha256, amendments):
     require rule_is_new: not RuleVersion(rule, _, _)
@@ -118,7 +118,7 @@ transformation open_run(run, run_date, tracker_sha256, rule, prior, prior_on):
     require prior_import_closed: Imported(prior)
     require no_import_open: not Importing(#bill, _)
     require runs_in_order: prior_on on_or_before run_date
-    require run_is_new: not Run(run, _, _, _)
+    require run_is_new: not Run(run: run, ..)
     require run_rule_declared: RuleVersion(rule, _, _)
     admit Run(run, run_date, tracker_sha256, rule)
     retract CurrentRun(#bill, prior, prior_on)
@@ -129,31 +129,31 @@ transformation open_run(run, run_date, tracker_sha256, rule, prior, prior_on):
 transformation add_day(run, day, rule, source, batch, flag, paid_out_gbp, net_gbp, paid_in_gbp, wind_bid_gbp, gas_offer_gbp, other_gbp, two_cut_gbp, sign, disptav_type, gas_offer_mwh, gas_offer_vwap_gbp_per_mwh, mid_vwap_gbp_per_mwh, premium_gbp_per_mwh, bsad_vintage, bsad_net_gbp, bsad_share, artefacts_sha256):
     require only_the_run_being_imported: Importing(#bill, run)
     require row_rule_declared: RuleVersion(rule, _, _)
-    require day_is_new: not DayRow(day, rule, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _)
+    require day_is_new: not DayRow(day: day, rule: rule, ..)
     admit DayRow(day, rule, source, batch, flag, paid_out_gbp, net_gbp, paid_in_gbp, wind_bid_gbp, gas_offer_gbp, other_gbp, two_cut_gbp, sign, disptav_type, gas_offer_mwh, gas_offer_vwap_gbp_per_mwh, mid_vwap_gbp_per_mwh, premium_gbp_per_mwh, bsad_vintage, bsad_net_gbp, bsad_share, artefacts_sha256)
 
 transformation append_outcome(run, day, vintage, l1_constraints_gbp, l4_offers_mwh, l4_bids_mwh, ratio_l1_to_two_cut):
     require only_the_run_being_imported: Importing(#bill, run)
-    require outcome_day_recorded: DayRow(day, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _)
-    require outcome_is_new: not Outcome(day, _, _, _, _, _)
+    require outcome_day_recorded: DayRow(day: day, ..)
+    require outcome_is_new: not Outcome(day: day, ..)
     admit Outcome(day, vintage, l1_constraints_gbp, l4_offers_mwh, l4_bids_mwh, ratio_l1_to_two_cut)
 
 transformation revise_outcome(run, day, vintage, l1_constraints_gbp, l4_offers_mwh, l4_bids_mwh):
     require only_the_run_being_imported: Importing(#bill, run)
-    require revised_outcome_exists: Outcome(day, _, _, _, _, _)
-    require revision_is_new: not OutcomeRevision(day, vintage, _, _, _)
+    require revised_outcome_exists: Outcome(day: day, ..)
+    require revision_is_new: not OutcomeRevision(day: day, vintage: vintage, ..)
     admit OutcomeRevision(day, vintage, l1_constraints_gbp, l4_offers_mwh, l4_bids_mwh)
 
 transformation revise_bsad(run, day, vintage, bsad_net_gbp, bsad_share):
     require only_the_run_being_imported: Importing(#bill, run)
-    require bsad_day_recorded: DayRow(day, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _)
+    require bsad_day_recorded: DayRow(day: day, ..)
     require bsad_revision_is_new: not BsadRevision(day, vintage, _, _)
     admit BsadRevision(day, vintage, bsad_net_gbp, bsad_share)
 
 transformation confirm_bsad(run, day, vintage, bsad_net_gbp, bsad_share):
     require only_the_run_being_imported: Importing(#bill, run)
-    require confirmed_day_recorded: DayRow(day, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _)
-    require confirmation_is_new: not BsadConfirmed(day, _, _, _)
+    require confirmed_day_recorded: DayRow(day: day, ..)
+    require confirmation_is_new: not BsadConfirmed(day: day, ..)
     admit BsadConfirmed(day, vintage, bsad_net_gbp, bsad_share)
 
 transformation record_verdict(run, proposition, holds, detail):

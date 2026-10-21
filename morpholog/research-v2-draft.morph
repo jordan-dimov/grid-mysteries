@@ -165,19 +165,19 @@ intent ConclusionSuperseded(prior_conclusion: Subject, successor_conclusion: Sub
 intent PublicationAuthorised(publication: Subject)
 
 invariant inquiry_kind_in_vocabulary:
-    Inquiry(_, k, _, _) implies in_inquiry_kind_vocabulary(k)
+    Inquiry(kind: k, ..) implies in_inquiry_kind_vocabulary(k)
 
 invariant mechanism_status_in_vocabulary:
-    MechanismAssessment(_, _, s, _) implies in_mechanism_status_vocabulary(s)
+    MechanismAssessment(status: s, ..) implies in_mechanism_status_vocabulary(s)
 
 invariant conclusion_class_in_vocabulary:
-    Conclusion(_, _, _, cc, _, _, _) implies in_conclusion_class_vocabulary(cc)
+    Conclusion(conclusion_class: cc, ..) implies in_conclusion_class_vocabulary(cc)
 
 invariant sealed_protocol_was_declared:
     ProtocolSealed(i, _) implies ProtocolDeclared(i, _, _)
 
 invariant attached_evidence_exists:
-    InquiryUses(i, a) implies EvidenceArtifact(a, _, _, _)
+    InquiryUses(i, a) implies EvidenceArtifact(artifact: a, ..)
 
 invariant attached_evidence_has_sealed_protocol:
     InquiryUses(i, _) implies ProtocolSealed(i, _)
@@ -189,64 +189,64 @@ invariant selection_has_sealed_evidence:
     SelectionRecorded(i, _, _) implies EvidenceSealed(i, _)
 
 invariant conjecture_has_inquiry:
-    Conjecture(_, i, _, _) implies Inquiry(i, _, _, _)
+    Conjecture(inquiry: i, ..) implies Inquiry(inquiry: i, ..)
 
 invariant assessment_has_sealed_evidence:
-    MechanismAssessment(i, _, _, _) implies EvidenceSealed(i, _)
+    MechanismAssessment(inquiry: i, ..) implies EvidenceSealed(i, _)
 
 invariant conclusion_has_registered_conjecture:
-    Conclusion(_, i, c, _, _, _, _) implies Conjecture(c, i, _, _)
+    Conclusion(inquiry: i, conjecture: c, ..) implies Conjecture(c, i, _, _)
 
 invariant conclusion_has_sealed_evidence:
-    Conclusion(_, i, _, _, _, _, _) implies EvidenceSealed(i, _)
+    Conclusion(inquiry: i, ..) implies EvidenceSealed(i, _)
 
 invariant explained_conclusion_has_explained_mechanism:
-    Conclusion(_, i, _, #explained, _, _, _) implies MechanismAssessment(i, _, #explained, _)
+    Conclusion(inquiry: i, conclusion_class: #explained, ..) implies MechanismAssessment(i, _, #explained, _)
 
 invariant unexplained_conclusion_has_no_explained_mechanism:
-    Conclusion(_, i, _, #publicly_unexplained, _, _, _) implies not MechanismAssessment(i, _, #explained, _)
+    Conclusion(inquiry: i, conclusion_class: #publicly_unexplained, ..) implies not MechanismAssessment(i, _, #explained, _)
 
 invariant prospective_conclusion_has_assigned_corpus:
-    Conclusion(_, i, _, _, _, _, _) and Inquiry(i, #prospective, _, _) implies InquiryCorpus(i, _)
+    Conclusion(inquiry: i, ..) and Inquiry(i, #prospective, _, _) implies InquiryCorpus(i, _)
 
 invariant current_conclusion_exists:
-    CurrentConclusion(_, c) implies Conclusion(c, _, _, _, _, _, _)
+    CurrentConclusion(_, c) implies Conclusion(conclusion: c, ..)
 
 invariant current_conclusion_matches_inquiry:
-    CurrentConclusion(i, c) implies Conclusion(c, i, _, _, _, _, _)
+    CurrentConclusion(i, c) implies Conclusion(conclusion: c, inquiry: i, ..)
 
 invariant successor_conclusion_exists:
-    SupersedesConclusion(s, _) implies Conclusion(s, _, _, _, _, _, _)
+    SupersedesConclusion(s, _) implies Conclusion(conclusion: s, ..)
 
 invariant superseded_conclusion_exists:
-    SupersedesConclusion(_, p) implies Conclusion(p, _, _, _, _, _, _)
+    SupersedesConclusion(_, p) implies Conclusion(conclusion: p, ..)
 
 invariant metric_link_has_conclusion:
-    ConclusionUsesMetric(c, _) implies Conclusion(c, _, _, _, _, _, _)
+    ConclusionUsesMetric(c, _) implies Conclusion(conclusion: c, ..)
 
 invariant metric_link_has_metric:
-    ConclusionUsesMetric(_, m) implies EvidenceMetric(m, _, _, _, _)
+    ConclusionUsesMetric(_, m) implies EvidenceMetric(metric: m, ..)
 
 invariant metric_artifact_belongs_to_inquiry:
-    EvidenceMetric(_, i, a, _, _) implies InquiryUses(i, a)
+    EvidenceMetric(inquiry: i, artifact: a, ..) implies InquiryUses(i, a)
 
 invariant linked_metric_matches_conclusion_inquiry:
-    ConclusionUsesMetric(c, m) and Conclusion(c, i, _, _, _, _, _) implies EvidenceMetric(m, i, _, _, _)
+    ConclusionUsesMetric(c, m) and Conclusion(conclusion: c, inquiry: i, ..) implies EvidenceMetric(metric: m, inquiry: i, ..)
 
 invariant retention_spec_has_inquiry:
-    RetentionSpec(i, _, _) implies Inquiry(i, _, _, _)
+    RetentionSpec(i, _, _) implies Inquiry(inquiry: i, ..)
 
 invariant publication_has_conclusion:
-    Publication(_, c, _, _, _) implies Conclusion(c, _, _, _, _, _, _)
+    Publication(conclusion: c, ..) implies Conclusion(conclusion: c, ..)
 
 invariant publication_has_bound_metrics:
-    Publication(_, c, _, _, _) implies ConclusionUsesMetric(c, _)
+    Publication(conclusion: c, ..) implies ConclusionUsesMetric(c, _)
 
 invariant approval_has_publication:
-    PublicationApproved(p, _) implies Publication(p, _, _, _, _)
+    PublicationApproved(p, _) implies Publication(publication: p, ..)
 
 invariant lineage_has_inquiry:
-    LineageFromV1(i, _) implies Inquiry(i, _, _, _)
+    LineageFromV1(i, _) implies Inquiry(inquiry: i, ..)
 
 -- Bootstrap: arm actor policy and grant every authority in ONE transition
 -- (arming first and granting later would strand the trust root). Run once.
@@ -265,7 +265,7 @@ transformation register_audit_signing_key(key_id, public_key):
     admit AuditSigningKey(key_id, #audit_checkpoint_v1, public_key)
 
 transformation open_inquiry(inquiry, kind, title, opened_at):
-    require inquiry_is_new: not Inquiry(inquiry, _, _, _)
+    require inquiry_is_new: not Inquiry(inquiry: inquiry, ..)
     require kind_in_vocabulary: in_inquiry_kind_vocabulary(kind)
     admit Inquiry(inquiry, kind, title, opened_at)
     emit InquiryOpened(inquiry)
@@ -276,7 +276,7 @@ transformation register_corpus(corpus, first_day, last_day):
     admit ResearchCorpus(corpus, first_day, last_day)
 
 transformation assign_corpus(inquiry, corpus):
-    require assign_inquiry_exists: Inquiry(inquiry, _, _, _)
+    require assign_inquiry_exists: Inquiry(inquiry: inquiry, ..)
     require assign_corpus_exists: ResearchCorpus(corpus, _, _)
     require inquiry_has_no_corpus: not InquiryCorpus(inquiry, _)
     require prospective_corpus_unexposed: not (Inquiry(inquiry, #prospective, _, _) and corpus_overlaps_consumed(corpus))
@@ -293,7 +293,7 @@ transformation consume_corpus(corpus, inquiry):
 transformation record_historical_consumption(corpus, v1_consumer):
     require historical_requires_seal_authority: SealAuthority(actor)
     require historical_corpus_exists: ResearchCorpus(corpus, _, _)
-    require historical_consumer_not_v2: not Inquiry(v1_consumer, _, _, _)
+    require historical_consumer_not_v2: not Inquiry(inquiry: v1_consumer, ..)
     require historical_is_new: not CorpusConsumed(corpus, v1_consumer)
     admit CorpusConsumed(corpus, v1_consumer)
 
@@ -303,7 +303,7 @@ transformation declare_parameter(inquiry, name, parameter_value):
     admit DeclaredParameter(inquiry, name, parameter_value)
 
 transformation declare_protocol(inquiry, protocol_digest, declared_at):
-    require protocol_inquiry_exists: Inquiry(inquiry, _, _, _)
+    require protocol_inquiry_exists: Inquiry(inquiry: inquiry, ..)
     require protocol_not_sealed_yet: not ProtocolSealed(inquiry, _)
     admit ProtocolDeclared(inquiry, protocol_digest, declared_at)
 
@@ -315,12 +315,12 @@ transformation seal_protocol(inquiry, sealed_at):
     emit DataAcquisitionAuthorised(inquiry)
 
 transformation register_evidence(artifact, source, sha256, fetched_at):
-    require artifact_is_new: not EvidenceArtifact(artifact, _, _, _)
+    require artifact_is_new: not EvidenceArtifact(artifact: artifact, ..)
     admit EvidenceArtifact(artifact, source, sha256, fetched_at)
 
 transformation attach_evidence(inquiry, artifact):
     require attach_requires_sealed_protocol: ProtocolSealed(inquiry, _)
-    require attach_artifact_exists: EvidenceArtifact(artifact, _, _, _)
+    require attach_artifact_exists: EvidenceArtifact(artifact: artifact, ..)
     require attach_is_new: not InquiryUses(inquiry, artifact)
     admit InquiryUses(inquiry, artifact)
 
@@ -337,8 +337,8 @@ transformation record_selection(inquiry, selection_digest, recorded_at):
     admit SelectionRecorded(inquiry, selection_digest, recorded_at)
 
 transformation register_conjecture(conjecture, inquiry, statement, proposed_at):
-    require conjecture_inquiry_exists: Inquiry(inquiry, _, _, _)
-    require conjecture_is_new: not Conjecture(conjecture, _, _, _)
+    require conjecture_inquiry_exists: Inquiry(inquiry: inquiry, ..)
+    require conjecture_is_new: not Conjecture(conjecture: conjecture, ..)
     admit Conjecture(conjecture, inquiry, statement, proposed_at)
     emit ConjectureRegistered(conjecture)
 
@@ -349,25 +349,25 @@ transformation assess_mechanism(inquiry, mechanism, status, evidence_digest):
     admit MechanismAssessment(inquiry, mechanism, status, evidence_digest)
 
 transformation bind_metric(metric, inquiry, artifact, metric_name, metric_value):
-    require metric_is_new: not EvidenceMetric(metric, _, _, _, _)
+    require metric_is_new: not EvidenceMetric(metric: metric, ..)
     require metric_artifact_attached: InquiryUses(inquiry, artifact)
     require metric_evidence_sealed: EvidenceSealed(inquiry, _)
     admit EvidenceMetric(metric, inquiry, artifact, metric_name, metric_value)
 
 transformation declare_retention(inquiry, surviving_name, baseline_name):
-    require retention_inquiry_exists: Inquiry(inquiry, _, _, _)
+    require retention_inquiry_exists: Inquiry(inquiry: inquiry, ..)
     require retention_is_new: not RetentionSpec(inquiry, surviving_name, baseline_name)
     admit RetentionSpec(inquiry, surviving_name, baseline_name)
 
 transformation link_metric(conclusion, metric):
-    require link_same_inquiry: Conclusion(conclusion, i, _, _, _, _, _) and EvidenceMetric(metric, i, _, _, _)
+    require link_same_inquiry: Conclusion(conclusion: conclusion, inquiry: i, ..) and EvidenceMetric(metric: metric, inquiry: i, ..)
     require link_is_new: not ConclusionUsesMetric(conclusion, metric)
     admit ConclusionUsesMetric(conclusion, metric)
 
 transformation publish_conclusion(conclusion, inquiry, conjecture, conclusion_class, statement, evidence_digest, published_at):
     require publish_conjecture_registered: Conjecture(conjecture, inquiry, _, _)
     require publish_requires_sealed_evidence: EvidenceSealed(inquiry, _)
-    require publish_conclusion_is_new: not Conclusion(conclusion, _, _, _, _, _, _)
+    require publish_conclusion_is_new: not Conclusion(conclusion: conclusion, ..)
     require publish_inquiry_has_no_current_conclusion: not CurrentConclusion(inquiry, _)
     require publish_class_in_vocabulary: in_conclusion_class_vocabulary(conclusion_class)
     admit Conclusion(conclusion, inquiry, conjecture, conclusion_class, statement, evidence_digest, published_at)
@@ -377,7 +377,7 @@ transformation publish_conclusion(conclusion, inquiry, conjecture, conclusion_cl
 transformation supersede_conclusion(successor, prior, inquiry, conjecture, conclusion_class, statement, evidence_digest, published_at):
     require supersede_prior_is_current: CurrentConclusion(inquiry, prior)
     require supersede_conjecture_registered: Conjecture(conjecture, inquiry, _, _)
-    require supersede_successor_is_new: not Conclusion(successor, _, _, _, _, _, _)
+    require supersede_successor_is_new: not Conclusion(conclusion: successor, ..)
     require supersede_class_in_vocabulary: in_conclusion_class_vocabulary(conclusion_class)
     admit Conclusion(successor, inquiry, conjecture, conclusion_class, statement, evidence_digest, published_at)
     admit SupersedesConclusion(successor, prior)
@@ -388,18 +388,18 @@ transformation supersede_conclusion(successor, prior, inquiry, conjecture, concl
 transformation draft_publication(publication, conclusion, medium, content_digest, drafted_at):
     require draft_conclusion_is_current: CurrentConclusion(_, conclusion)
     require draft_conclusion_has_metrics: ConclusionUsesMetric(conclusion, _)
-    require draft_is_new: not Publication(publication, _, _, _, _)
+    require draft_is_new: not Publication(publication: publication, ..)
     admit Publication(publication, conclusion, medium, content_digest, drafted_at)
 
 transformation approve_publication(publication, approved_at):
     require approval_requires_authority: PublicationAuthority(actor)
-    require approval_publication_exists: Publication(publication, _, _, _, _)
+    require approval_publication_exists: Publication(publication: publication, ..)
     require approval_is_new: not PublicationApproved(publication, _)
     admit PublicationApproved(publication, approved_at)
     emit PublicationAuthorised(publication)
 
 transformation record_v1_lineage(inquiry, v1_investigation):
-    require lineage_inquiry_exists: Inquiry(inquiry, _, _, _)
+    require lineage_inquiry_exists: Inquiry(inquiry: inquiry, ..)
     require lineage_is_new: not LineageFromV1(inquiry, v1_investigation)
     admit LineageFromV1(inquiry, v1_investigation)
 

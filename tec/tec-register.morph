@@ -62,22 +62,22 @@ predicate AuditSigningKey(key_id: Subject, purpose: Subject, public_key: Subject
     append only
 
 invariant appearances_name_a_publication:
-    RowAppeared(_, v) implies Vintage(v, _, _, _, _)
+    RowAppeared(_, v) implies Vintage(vintage: v, ..)
 
 invariant drops_name_a_publication:
-    RowDropped(_, v) implies Vintage(v, _, _, _, _)
+    RowDropped(_, v) implies Vintage(vintage: v, ..)
 
 invariant rows_appeared_in_a_publication:
-    Row(r, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _) implies RowAppeared(r, _)
+    Row(row: r, ..) implies RowAppeared(r, _)
 
 invariant kinds_describe_a_row:
-    RowKinds(r, _) implies Row(r, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _)
+    RowKinds(r, _) implies Row(row: r, ..)
 
 invariant imports_name_a_publication:
-    Imported(v) implies Vintage(v, _, _, _, _)
+    Imported(v) implies Vintage(vintage: v, ..)
 
 invariant orders_name_a_publication:
-    RowOrder(v, _) implies Vintage(v, _, _, _, _)
+    RowOrder(v, _) implies Vintage(vintage: v, ..)
 
 transformation open_register(vintage, published_on, sha256, file_format, columns):
     require first_publication: not CurrentVintage(#tec, _, _)
@@ -90,7 +90,7 @@ transformation publish(vintage, published_on, sha256, file_format, columns, prio
     require prior_import_closed: Imported(prior)
     require no_import_open: not Importing(#tec, _)
     require publications_in_order: prior_on before published_on
-    require vintage_is_new: not Vintage(vintage, _, _, _, _)
+    require vintage_is_new: not Vintage(vintage: vintage, ..)
     admit Vintage(vintage, published_on, sha256, file_format, columns)
     retract CurrentVintage(#tec, prior, prior_on)
     admit CurrentVintage(#tec, vintage, published_on)
@@ -99,7 +99,7 @@ transformation publish(vintage, published_on, sha256, file_format, columns, prio
 -- Only the publication being imported changes the record.
 transformation add_row(row, vintage, kinds, project_id, project_number, project_name, customer_name, connection_site, stage, mw_connected, mw_change, cumulative_mw, mw_effective_from, project_status, agreement_type, host_to, plant_type, gate):
     require only_the_publication_being_imported: Importing(#tec, vintage)
-    require row_is_new: not Row(row, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _)
+    require row_is_new: not Row(row: row, ..)
     admit Row(row, project_id, project_number, project_name, customer_name, connection_site, stage, mw_connected, mw_change, cumulative_mw, mw_effective_from, project_status, agreement_type, host_to, plant_type, gate)
     admit RowKinds(row, kinds)
     admit RowAppeared(row, vintage)

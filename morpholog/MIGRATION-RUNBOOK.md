@@ -685,3 +685,32 @@ upgrade and is unrelated to it.
 **Derived views.** Not used by this project, so the view regeneration
 and `refresh derived` steps did not apply; they would only have, had a
 hash moved.
+
+**Adopted the same day**, on the sponsor's decisions over the survey of
+the release (the rest were declined or held: `periods` cannot yet express
+a completeness rule over date-keyed rows, Morpholog #606; a named
+definition call and unary minus have no site here; the rehearsal's
+`explain` stays a shell-out):
+- every claim pattern with three or more wildcards is spelled by the
+  fields it reads, `Pred(field: x, ..)`, across the six programmes; the IR
+  is positional, so no hash moved;
+- `check --database-url` is a deploy gate: `scripts/check-record` runs it
+  for each research programme with the two siblings `--against`, and
+  `record.provisioned()` asks the client's `check(with_database=True)`
+  before every engine import, refusing an error and reading a hint;
+- a checkpoint after an import covers the import: the engines read the
+  close transition from the record (`record.last_close`, the `Imported`
+  claim's `asserted_in`) and ask `audit checkpoint --covering` for it;
+  `scripts/record` covers the row it just committed. The one refusal that
+  records nothing (`transition_not_covered`) is retried after 1, 2, 4, 8
+  and 16 seconds, then handed back.
+
+**Rehearsing a later programme.** `evaluate()` on the generated client
+(or `morpholog evaluate <draft> --pack morpholog/evidence-pack.ndjson
+--anchor-file morpholog/audit-anchor.json`) scores a candidate programme
+against the committed history offline, naming per invariant the admitted
+transitions it would have refused. That is how a v4 draft is rehearsed
+against the record before it is deployed, as v2 was scored against v1 in
+August 2026 (`research-v2-evaluate.json`): nothing is deployed, nothing is
+written, and a programme the binary cannot score is "not evaluated",
+which is not "refused".

@@ -21,6 +21,15 @@
 #    programme deployed after a provisioning run is unprovisioned until the
 #    step is run again; the Bill record went four days that way.
 #
+# 5. FIT: each programme still fits the claims the database holds
+#    (`check --database-url`, v0.0.16, #575): a stored claim with another
+#    arity, kind or unit than its declaration is an error no rule could
+#    match. The two siblings are named with `--against`, so a predicate
+#    one of them declares is not reported as undeclared, and a predicate
+#    two of them write is. One hint is expected and read, not refused:
+#    `AuditSigningKey`, written by v1 and v2 behind their own gates (the
+#    one-database coexistence the v2 design chose).
+#
 # Needs DATABASE_URL. Read-only: proposes nothing, writes nothing.
 set -euo pipefail
 cd "$(dirname "$0")/.."
@@ -35,6 +44,18 @@ morpholog provision indexes morpholog/research.morph morpholog/research-v2-draft
        echo "  morpholog provision indexes morpholog/research.morph morpholog/research-v2-draft.morph morpholog/research-v3-draft.morph --prune" >&2
        exit 1; }
 echo "   provisioned and current"
+echo "== fit (each programme against the claims the record holds, its siblings named)"
+PROGRAMMES=(morpholog/research.morph morpholog/research-v2-draft.morph morpholog/research-v3-draft.morph)
+for programme in "${PROGRAMMES[@]}"; do
+  against=()
+  for sibling in "${PROGRAMMES[@]}"; do
+    [[ "$sibling" == "$programme" ]] || against+=(--against "$sibling")
+  done
+  morpholog check "$programme" "${against[@]}" --database-url "$DATABASE_URL" \
+    || { echo "check-record: $programme no longer fits the claims the record holds (see above)" >&2
+         exit 1; }
+done
+echo "   every programme fits the stored claims"
 exec uv run python - "$@" <<'PY'
 import json, os, subprocess, sys
 from decimal import Decimal

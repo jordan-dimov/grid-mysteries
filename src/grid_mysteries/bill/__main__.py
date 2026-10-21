@@ -57,7 +57,12 @@ def cmd_import(args: argparse.Namespace) -> None:
 
 
 def cmd_checkpoint(args: argparse.Namespace) -> None:
-    _, _, pack = record.checkpoint_and_export(RECORD, url(), witness=args.witness)
+    # The anchor must contain the latest import's close (v0.0.16, --covering):
+    # the record names that transition itself, so nothing is passed by hand.
+    covering = record.last_close(RECORD.client(REPO_ROOT, url()), current="CurrentRun", key="run")
+    _, _, pack = record.checkpoint_and_export(
+        RECORD, url(), witness=args.witness, covering=covering
+    )
     print(f"pack {pack.relative_to(REPO_ROOT)} verified against the anchor with {RECORD.key_id}")
 
 

@@ -24,7 +24,8 @@ import hashlib
 import json
 import os
 import subprocess
-from collections.abc import Iterator
+import time
+from collections.abc import Callable, Iterator
 from dataclasses import dataclass, field
 from pathlib import Path
 from typing import TYPE_CHECKING, Any, Final
@@ -207,10 +208,15 @@ def guarded_transact(
 
 
 def provisioned(api: Any, label: str) -> None:
-    """The deploy gate (Morpholog v0.0.14, #467): refuse to write until the
-    database holds every index and statistics object the engine's programme
-    needs. Changes nothing. The Bill record ran unprovisioned from its launch
-    on 26/09/2026 to the 30/09 migration because nothing asked; this asks on
+    """The deploy gate: refuse to write until the database holds every
+    index and statistics object the engine's programme needs (Morpholog
+    v0.0.14, #467) and the programme still fits the claims the database
+    holds (v0.0.16, #575: a stored claim with another arity, kind or unit
+    than its declaration is an error no rule could ever match; a stored
+    predicate the programme does not declare is a hint, and an engine's
+    database serves one programme, so a hint here is read, not refused).
+    Both read only. The Bill record ran unprovisioned from its launch on
+    26/09/2026 to the 30/09 migration because nothing asked; this asks on
     every import."""
     report = api.provision_indexes(check=True)
     if not report.is_current:
@@ -225,18 +231,63 @@ def provisioned(api: Any, label: str) -> None:
             + "). Run `morpholog provision indexes <programme> --prune` (every programme "
             "the database serves, one call) and retry."
         )
+    fit = api.check(with_database=True)
+    errors = [d.message for d in fit.diagnostics if d.severity == "error"]
+    if errors:
+        raise ImportError_(
+            f"{label}: the programme does not fit the claims the database holds "
+            f"({len(errors)} error(s)): "
+            + "; ".join(errors[:6])
+            + ("; …" if len(errors) > 6 else "")
+            + ". Nothing was written; see `morpholog check --database-url`."
+        )
+
+
+def last_close(api: Any, *, current: str, key: str) -> str | None:
+    """The transition that closed the latest import, read from the record
+    itself: the `Imported` claim of the subject the engine's current
+    pointer names (`CurrentRun(#bill, run, ..)`, `CurrentVintage(#tec,
+    vintage, ..)`), and the transition that asserted it (`asserted_in`,
+    v0.0.15). None on a record nothing has been imported into. The
+    checkpoint after an import covers this transition by name, so "the
+    anchor contains the close" is refused rather than assumed."""
+    pointers = api.claims_named(current)
+    if not pointers:
+        return None
+    subject = str(pointers[-1].args[key])
+    closes = [c for c in api.claims_named("Imported") if str(c.args[key]) == subject]
+    return closes[-1].asserted_in if closes else None
 
 
 # ------------------------------------------------------ checkpoint and pack
 
 
+#: How a checkpoint asked to cover a transition is retried when that
+#: transition is committed but not yet in the stable prefix (`audit
+#: checkpoint --covering`, v0.0.16, #589): nothing is recorded by the
+#: refusal, so the same call is repeated after each pause, in seconds.
+COVERING_RETRY_PAUSES: Final = (1, 2, 4, 8, 16)
+
+
 def checkpoint_and_export(
-    record: Record, database_url: str, *, witness: bool
+    record: Record,
+    database_url: str,
+    *,
+    witness: bool,
+    covering: str | None = None,
+    pause: Callable[[float], None] = time.sleep,
 ) -> tuple[Path, dict[str, Any], Path]:
     """Sign a checkpoint over the record's head (both timestamp authorities
     countersign it with `witness`), keep the anchor under the engine's
     anchors directory, then export the complete pack at that tree size and
     verify it against the anchor. Returns (anchor path, anchor, pack).
+
+    With `covering`, the checkpoint succeeds only with a head that contains
+    that transition (the import's close, from `last_close`), so the anchor
+    provably covers the import rather than whatever prefix was stable. A
+    transition committed moments ago can sit outside that prefix on the
+    first try: the refusal records nothing and is retried after each of
+    `COVERING_RETRY_PAUSES`; a refusal that outlasts them is an exit.
 
     The checkpoint call is raw on purpose: the anchor file is the binary's
     exact bytes, and a failed witness is a nonzero exit with the recorded
@@ -247,10 +298,23 @@ def checkpoint_and_export(
     if witness:
         for authority in WITNESSES:
             argv += ["--witness", authority]
-    proc = run(*argv)
-    if not proc.stdout.strip():
-        raise SystemExit(f"checkpoint failed:\n{proc.stderr}")
-    anchor = json.loads(proc.stdout)
+    if covering is not None:
+        argv += ["--covering", covering]
+    for attempt, wait in enumerate((*COVERING_RETRY_PAUSES, None)):
+        proc = run(*argv)
+        if not proc.stdout.strip():
+            raise SystemExit(f"checkpoint failed:\n{proc.stderr}")
+        anchor = json.loads(proc.stdout)
+        if anchor.get("code") != "transition_not_covered":
+            break
+        if wait is None:
+            raise SystemExit(
+                f"checkpoint refused {attempt} times: transition {covering} is committed but "
+                f"still outside the stable prefix at tree size {anchor.get('tree_size')}; "
+                "nothing recorded. Retry `checkpoint` once the prefix advances."
+            )
+        print(f"checkpoint: {covering} not yet in the stable prefix; retrying in {wait} s")
+        pause(wait)
     path = record.anchors / f"tree-{anchor['tree_size']}.json"
     path.parent.mkdir(parents=True, exist_ok=True)
     # An unwitnessed head never overwrites a witnessed anchor of the same size.

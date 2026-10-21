@@ -58,7 +58,7 @@ try:
 except ValueError:
     r = {}
 if r.get('status') == 'committed':
-    print('committed')
+    print('committed', r['transition_id'])
 elif r.get('status') == 'rejected' or (r.get('status') == 'error' and r.get('code') in NOTHING_RECORDED_CODES):
     print('not-committed')
 else:
@@ -70,7 +70,7 @@ if [[ "$outcome" == "not-committed" ]]; then
   printf '%s\n' "$receipt" >&2
   exit 1
 fi
-if [[ "$outcome" != "committed" ]]; then
+if [[ "$outcome" != committed\ * ]]; then
   echo "record: the commit outcome is UNKNOWN; marker left at $MARKER." >&2
   echo "record: read the record (morpholog inspect claims) before anything else:" >&2
   printf '%s\n' "$receipt" >&2
@@ -84,9 +84,36 @@ morpholog inspect claims > morpholog/claims-export.json
 # Two RFC 3161 authorities countersign the signed head, the same two that
 # witness frozen declarations (scripts/timestamp). Only the head's hash
 # leaves the machine. The checkpoint is recorded even if one fails.
+# The head is asked to contain the transition just committed (`--covering`,
+# v0.0.16, #589), so the anchor provably covers this row. A transition
+# committed moments ago can sit outside the stable prefix on the first
+# try; that refusal records nothing and is retried after a pause, and the
+# refusal never reaches audit-anchor.json.
+TRANSITION="${outcome#committed }"
 WITNESSES=(--witness rfc3161:https://freetsa.org/tsr --witness rfc3161:http://timestamp.digicert.com)
-if ! morpholog audit checkpoint --signing-key "$SIGNING_KEY" --key-id audit-2026 "${WITNESSES[@]}" \
-    > morpholog/audit-anchor.json; then
+HEAD="$(mktemp)"
+checkpoint_ok=0
+for pause in 1 2 4 8 16 0; do
+  if morpholog audit checkpoint --signing-key "$SIGNING_KEY" --key-id audit-2026 "${WITNESSES[@]}" \
+      --covering "$TRANSITION" > "$HEAD"; then
+    checkpoint_ok=1; break
+  fi
+  if ! grep -q '"transition_not_covered"' "$HEAD"; then
+    break   # recorded, a witness failed: handled below
+  fi
+  if [[ "$pause" == 0 ]]; then
+    rm -f "$HEAD"
+    echo "record: checkpoint refused: $TRANSITION is committed but still outside the stable prefix;" >&2
+    echo "record: nothing recorded by the refusal; marker left at $MARKER. Retry the checkpoint by hand:" >&2
+    echo "  morpholog audit checkpoint --signing-key \$SIGNING_KEY --key-id audit-2026 ${WITNESSES[*]} --covering $TRANSITION > morpholog/audit-anchor.json" >&2
+    echo "  (then export, receipt and verify as below, then rm $MARKER)" >&2
+    exit 1
+  fi
+  echo "record: $TRANSITION not yet in the stable prefix; retrying the checkpoint in ${pause}s" >&2
+  sleep "$pause"
+done
+mv "$HEAD" morpholog/audit-anchor.json
+if [[ "$checkpoint_ok" != 1 ]]; then
   tree_size=$(python3 -c "import json; print(json.load(open('morpholog/audit-anchor.json'))['tree_size'])" 2>/dev/null || echo '<tree_size>')
   echo "record: checkpoint recorded but a timestamp authority failed; marker left at $MARKER." >&2
   echo "record: retry, then finish by hand:" >&2

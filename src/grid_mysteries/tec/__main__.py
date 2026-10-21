@@ -76,7 +76,14 @@ def cmd_checkpoint(args: argparse.Namespace) -> None:
     # The complete pack belongs to the checkpoint: export, verify, compress
     # and fold it once here, so every certificate starts from it.
     started = time.monotonic()
-    _, _, pack = record.checkpoint_and_export(RECORD, url(), witness=args.witness)
+    # The anchor must contain the latest import's close (v0.0.16, --covering):
+    # the record names that transition itself, so nothing is passed by hand.
+    covering = record.last_close(
+        RECORD.client(REPO_ROOT, url()), current="CurrentVintage", key="vintage"
+    )
+    _, _, pack = record.checkpoint_and_export(
+        RECORD, url(), witness=args.witness, covering=covering
+    )
     compressed(pack)
     publications_from(pack)
     print(f"pack {pack.relative_to(REPO_ROOT)} ready in {time.monotonic() - started:.0f} s")

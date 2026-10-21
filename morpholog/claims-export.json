@@ -7310,5 +7310,27 @@
       }
     ],
     "asserted_in": "01a1412d-bee1-70f5-a079-a2c7b23d4565"
+  },
+  {
+    "predicate": "WatchReading",
+    "args": [
+      {
+        "type": "subject",
+        "value": "w-007-t3-september"
+      },
+      {
+        "type": "date",
+        "value": "2026-10-21"
+      },
+      {
+        "type": "subject",
+        "value": "497c4cdfccf0257f88ad0320c075b19e788a85fc25505e3a940e89a45e6c66a1"
+      },
+      {
+        "type": "subject",
+        "value": "resolved"
+      }
+    ],
+    "asserted_in": "01a15f4e-cf5f-7510-b0dc-623025aaea29"
   }
 ]

@@ -1,3 +1,4 @@
 {"transformation": "record_reading", "actor": "claude_fable_5", "args_named": {"watch": "w-c14-ssen-lre-fd", "read_on": "2026-10-01", "reading_digest": "1d9b820e7cf9462b9927ee1bada0eb8d4188ebefab83c5b11d3df7e1e386754e", "outcome": "unchanged"}}
 {"transformation": "record_reading", "actor": "claude_fable_5", "args_named": {"watch": "w-018-sf-post-days", "read_on": "2026-10-08", "reading_digest": "cc0fdf6fa56842292530d6c40a1021adedbb66f323292077bafce07133f72f83", "outcome": "resolved"}}
 {"transformation": "record_reading", "actor": "claude_fable_5", "args_named": {"watch": "w-005-eir-response", "read_on": "2026-10-15", "reading_digest": "c11095dc904d367bcb7434f4722689fca05502feaa69e11a53fa9406d475d495", "outcome": "resolved"}}
+{"transformation": "record_reading", "actor": "claude_fable_5", "args_named": {"watch": "w-007-t3-september", "read_on": "2026-10-21", "reading_digest": "497c4cdfccf0257f88ad0320c075b19e788a85fc25505e3a940e89a45e6c66a1", "outcome": "resolved"}}

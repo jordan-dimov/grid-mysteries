@@ -73,6 +73,9 @@ claims = json.loads(
 batch_rows = 0
 for batch in sorted(Path("morpholog/batches").glob("*.ndjson")):
     batch_rows += sum(1 for line in batch.read_text().splitlines() if line.strip())
+# BRIDGE: this counts rows of Morpholog's own audit table with psql, a read the
+# kernel does not pin. It stays until a read-only `audit head` ships (Morpholog
+# issue 584); replace it with that read the day it arrives.
 transitions = int(subprocess.run(
     ["psql", url, "-tAc", "select count(*) from morpholog.audit"],
     capture_output=True, text=True, check=True).stdout.strip())

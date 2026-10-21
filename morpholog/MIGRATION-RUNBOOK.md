@@ -727,3 +727,24 @@ against the record before it is deployed, as v2 was scored against v1 in
 August 2026 (`research-v2-evaluate.json`): nothing is deployed, nothing is
 written, and a programme the binary cannot score is "not evaluated",
 which is not "refused".
+Until Morpholog #521 ships, `evaluate` scores invariants only, so a v3
+or v4 draft whose discipline lives in `require` gates scores on almost
+nothing; the sentence above is a rehearsal of the invariants, not of the
+rules.
+
+**Morpholog's answers to the feedback of 21/10/2026** (tracked there as
+#521 gates in `evaluate`, #378 a runtime-stamped date, #607 a receipt
+naming a base claim, #608 a deployment file, #609 `checkpoint --wait`,
+#584 a read-only `audit head`). Two are shapes the record can take
+today, each a model edit with a hash move, so each is an amendment for
+the sponsor to call, not an upgrade step:
+- blanks in the Bill `DayRow` are the absence of a claim, not a value:
+  one claim per figure, `DayFigure(day, item, gbp)` with the item a tag,
+  types every column `Decimal[GBP]` and makes a blank nothing at all (an
+  optional field is declined: it would put null into every comparison);
+- the overdue-watch rule in `scripts/check-record` becomes a sweep act
+  handed the date, admitting `Lapsed(watch, as_of)` under the programme's
+  own rule, which the page then reads (the gallery's examples 09 and 17).
+Until #584 ships the `psql` transition count in `check-record` is a
+bridge and is marked as one. Until #607 ships a row's own proof is
+`audit export --transition <id>`, a selective pack verifiable offline.

@@ -493,7 +493,10 @@ class ActorAssertionAuthorityClaim:
         values.named_fields("ActorAssertionAuthority", args, ("actor", "login_role"))
         return cls(
             actor=values.named_text("ActorAssertionAuthority.actor", args["actor"]),
-            login_role=values.named_text("ActorAssertionAuthority.login_role", args["login_role"]),
+            login_role=values.named_text(
+                "ActorAssertionAuthority.login_role",
+                args["login_role"],
+            ),
         )
 
 
@@ -541,11 +544,18 @@ class AuditSigningKeyClaim:
 
     @classmethod
     def from_named(cls, args: dict[str, object]) -> AuditSigningKeyClaim:
-        values.named_fields("AuditSigningKey", args, ("key_id", "purpose", "public_key"))
+        values.named_fields(
+            "AuditSigningKey",
+            args,
+            ("key_id", "purpose", "public_key"),
+        )
         return cls(
             key_id=values.named_text("AuditSigningKey.key_id", args["key_id"]),
             purpose=values.named_text("AuditSigningKey.purpose", args["purpose"]),
-            public_key=values.named_text("AuditSigningKey.public_key", args["public_key"]),
+            public_key=values.named_text(
+                "AuditSigningKey.public_key",
+                args["public_key"],
+            ),
         )
 
 
@@ -639,11 +649,21 @@ class ProtocolDeclaredClaim:
 
     @classmethod
     def from_named(cls, args: dict[str, object]) -> ProtocolDeclaredClaim:
-        values.named_fields("ProtocolDeclared", args, ("inquiry", "protocol_digest", "declared_at"))
+        values.named_fields(
+            "ProtocolDeclared",
+            args,
+            ("inquiry", "protocol_digest", "declared_at"),
+        )
         return cls(
             inquiry=values.named_text("ProtocolDeclared.inquiry", args["inquiry"]),
-            protocol_digest=values.named_text("ProtocolDeclared.protocol_digest", args["protocol_digest"]),
-            declared_at=values.named_timestamp("ProtocolDeclared.declared_at", args["declared_at"]),
+            protocol_digest=values.named_text(
+                "ProtocolDeclared.protocol_digest",
+                args["protocol_digest"],
+            ),
+            declared_at=values.named_timestamp(
+                "ProtocolDeclared.declared_at",
+                args["declared_at"],
+            ),
         )
 
 
@@ -661,7 +681,10 @@ class ProtocolSealedClaim:
         values.named_fields("ProtocolSealed", args, ("inquiry", "sealed_at"))
         return cls(
             inquiry=values.named_text("ProtocolSealed.inquiry", args["inquiry"]),
-            sealed_at=values.named_timestamp("ProtocolSealed.sealed_at", args["sealed_at"]),
+            sealed_at=values.named_timestamp(
+                "ProtocolSealed.sealed_at",
+                args["sealed_at"],
+            ),
         )
 
 
@@ -677,11 +700,18 @@ class DeclaredParameterClaim:
 
     @classmethod
     def from_named(cls, args: dict[str, object]) -> DeclaredParameterClaim:
-        values.named_fields("DeclaredParameter", args, ("inquiry", "name", "parameter_value"))
+        values.named_fields(
+            "DeclaredParameter",
+            args,
+            ("inquiry", "name", "parameter_value"),
+        )
         return cls(
             inquiry=values.named_text("DeclaredParameter.inquiry", args["inquiry"]),
             name=values.named_text("DeclaredParameter.name", args["name"]),
-            parameter_value=values.named_decimal("DeclaredParameter.parameter_value", args["parameter_value"]),
+            parameter_value=values.named_decimal(
+                "DeclaredParameter.parameter_value",
+                args["parameter_value"],
+            ),
         )
 
 
@@ -698,12 +728,19 @@ class EvidenceArtifactClaim:
 
     @classmethod
     def from_named(cls, args: dict[str, object]) -> EvidenceArtifactClaim:
-        values.named_fields("EvidenceArtifact", args, ("artifact", "source", "sha256", "fetched_at"))
+        values.named_fields(
+            "EvidenceArtifact",
+            args,
+            ("artifact", "source", "sha256", "fetched_at"),
+        )
         return cls(
             artifact=values.named_text("EvidenceArtifact.artifact", args["artifact"]),
             source=values.named_text("EvidenceArtifact.source", args["source"]),
             sha256=values.named_text("EvidenceArtifact.sha256", args["sha256"]),
-            fetched_at=values.named_timestamp("EvidenceArtifact.fetched_at", args["fetched_at"]),
+            fetched_at=values.named_timestamp(
+                "EvidenceArtifact.fetched_at",
+                args["fetched_at"],
+            ),
         )
 
 
@@ -739,7 +776,10 @@ class EvidenceSealedClaim:
         values.named_fields("EvidenceSealed", args, ("inquiry", "sealed_at"))
         return cls(
             inquiry=values.named_text("EvidenceSealed.inquiry", args["inquiry"]),
-            sealed_at=values.named_timestamp("EvidenceSealed.sealed_at", args["sealed_at"]),
+            sealed_at=values.named_timestamp(
+                "EvidenceSealed.sealed_at",
+                args["sealed_at"],
+            ),
         )
 
 
@@ -755,11 +795,21 @@ class SelectionRecordedClaim:
 
     @classmethod
     def from_named(cls, args: dict[str, object]) -> SelectionRecordedClaim:
-        values.named_fields("SelectionRecorded", args, ("inquiry", "selection_digest", "recorded_at"))
+        values.named_fields(
+            "SelectionRecorded",
+            args,
+            ("inquiry", "selection_digest", "recorded_at"),
+        )
         return cls(
             inquiry=values.named_text("SelectionRecorded.inquiry", args["inquiry"]),
-            selection_digest=values.named_text("SelectionRecorded.selection_digest", args["selection_digest"]),
-            recorded_at=values.named_timestamp("SelectionRecorded.recorded_at", args["recorded_at"]),
+            selection_digest=values.named_text(
+                "SelectionRecorded.selection_digest",
+                args["selection_digest"],
+            ),
+            recorded_at=values.named_timestamp(
+                "SelectionRecorded.recorded_at",
+                args["recorded_at"],
+            ),
         )
 
 
@@ -776,12 +826,19 @@ class ConjectureClaim:
 
     @classmethod
     def from_named(cls, args: dict[str, object]) -> ConjectureClaim:
-        values.named_fields("Conjecture", args, ("conjecture", "inquiry", "statement", "proposed_at"))
+        values.named_fields(
+            "Conjecture",
+            args,
+            ("conjecture", "inquiry", "statement", "proposed_at"),
+        )
         return cls(
             conjecture=values.named_text("Conjecture.conjecture", args["conjecture"]),
             inquiry=values.named_text("Conjecture.inquiry", args["inquiry"]),
             statement=values.named_text("Conjecture.statement", args["statement"]),
-            proposed_at=values.named_timestamp("Conjecture.proposed_at", args["proposed_at"]),
+            proposed_at=values.named_timestamp(
+                "Conjecture.proposed_at",
+                args["proposed_at"],
+            ),
         )
 
 
@@ -798,12 +855,22 @@ class MechanismAssessmentClaim:
 
     @classmethod
     def from_named(cls, args: dict[str, object]) -> MechanismAssessmentClaim:
-        values.named_fields("MechanismAssessment", args, ("inquiry", "mechanism", "status", "evidence_digest"))
+        values.named_fields(
+            "MechanismAssessment",
+            args,
+            ("inquiry", "mechanism", "status", "evidence_digest"),
+        )
         return cls(
             inquiry=values.named_text("MechanismAssessment.inquiry", args["inquiry"]),
-            mechanism=values.named_text("MechanismAssessment.mechanism", args["mechanism"]),
+            mechanism=values.named_text(
+                "MechanismAssessment.mechanism",
+                args["mechanism"],
+            ),
             status=values.named_text("MechanismAssessment.status", args["status"]),
-            evidence_digest=values.named_text("MechanismAssessment.evidence_digest", args["evidence_digest"]),
+            evidence_digest=values.named_text(
+                "MechanismAssessment.evidence_digest",
+                args["evidence_digest"],
+            ),
         )
 
 
@@ -821,13 +888,23 @@ class EvidenceMetricClaim:
 
     @classmethod
     def from_named(cls, args: dict[str, object]) -> EvidenceMetricClaim:
-        values.named_fields("EvidenceMetric", args, ("metric", "inquiry", "artifact", "metric_name", "metric_value"))
+        values.named_fields(
+            "EvidenceMetric",
+            args,
+            ("metric", "inquiry", "artifact", "metric_name", "metric_value"),
+        )
         return cls(
             metric=values.named_text("EvidenceMetric.metric", args["metric"]),
             inquiry=values.named_text("EvidenceMetric.inquiry", args["inquiry"]),
             artifact=values.named_text("EvidenceMetric.artifact", args["artifact"]),
-            metric_name=values.named_text("EvidenceMetric.metric_name", args["metric_name"]),
-            metric_value=values.named_decimal("EvidenceMetric.metric_value", args["metric_value"]),
+            metric_name=values.named_text(
+                "EvidenceMetric.metric_name",
+                args["metric_name"],
+            ),
+            metric_value=values.named_decimal(
+                "EvidenceMetric.metric_value",
+                args["metric_value"],
+            ),
         )
 
 
@@ -844,7 +921,10 @@ class ConclusionUsesMetricClaim:
     def from_named(cls, args: dict[str, object]) -> ConclusionUsesMetricClaim:
         values.named_fields("ConclusionUsesMetric", args, ("conclusion", "metric"))
         return cls(
-            conclusion=values.named_text("ConclusionUsesMetric.conclusion", args["conclusion"]),
+            conclusion=values.named_text(
+                "ConclusionUsesMetric.conclusion",
+                args["conclusion"],
+            ),
             metric=values.named_text("ConclusionUsesMetric.metric", args["metric"]),
         )
 
@@ -861,11 +941,21 @@ class RetentionSpecClaim:
 
     @classmethod
     def from_named(cls, args: dict[str, object]) -> RetentionSpecClaim:
-        values.named_fields("RetentionSpec", args, ("inquiry", "surviving_name", "baseline_name"))
+        values.named_fields(
+            "RetentionSpec",
+            args,
+            ("inquiry", "surviving_name", "baseline_name"),
+        )
         return cls(
             inquiry=values.named_text("RetentionSpec.inquiry", args["inquiry"]),
-            surviving_name=values.named_text("RetentionSpec.surviving_name", args["surviving_name"]),
-            baseline_name=values.named_text("RetentionSpec.baseline_name", args["baseline_name"]),
+            surviving_name=values.named_text(
+                "RetentionSpec.surviving_name",
+                args["surviving_name"],
+            ),
+            baseline_name=values.named_text(
+                "RetentionSpec.baseline_name",
+                args["baseline_name"],
+            ),
         )
 
 
@@ -882,11 +972,21 @@ class MetricRetentionClaim:
 
     @classmethod
     def from_named(cls, args: dict[str, object]) -> MetricRetentionClaim:
-        values.named_fields("MetricRetention", args, ("inquiry", "surviving_name", "baseline_name", "ratio"))
+        values.named_fields(
+            "MetricRetention",
+            args,
+            ("inquiry", "surviving_name", "baseline_name", "ratio"),
+        )
         return cls(
             inquiry=values.named_text("MetricRetention.inquiry", args["inquiry"]),
-            surviving_name=values.named_text("MetricRetention.surviving_name", args["surviving_name"]),
-            baseline_name=values.named_text("MetricRetention.baseline_name", args["baseline_name"]),
+            surviving_name=values.named_text(
+                "MetricRetention.surviving_name",
+                args["surviving_name"],
+            ),
+            baseline_name=values.named_text(
+                "MetricRetention.baseline_name",
+                args["baseline_name"],
+            ),
             ratio=values.named_decimal("MetricRetention.ratio", args["ratio"]),
         )
 
@@ -907,15 +1007,36 @@ class ConclusionClaim:
 
     @classmethod
     def from_named(cls, args: dict[str, object]) -> ConclusionClaim:
-        values.named_fields("Conclusion", args, ("conclusion", "inquiry", "conjecture", "conclusion_class", "statement", "evidence_digest", "published_at"))
+        values.named_fields(
+            "Conclusion",
+            args,
+            (
+                "conclusion",
+                "inquiry",
+                "conjecture",
+                "conclusion_class",
+                "statement",
+                "evidence_digest",
+                "published_at",
+            ),
+        )
         return cls(
             conclusion=values.named_text("Conclusion.conclusion", args["conclusion"]),
             inquiry=values.named_text("Conclusion.inquiry", args["inquiry"]),
             conjecture=values.named_text("Conclusion.conjecture", args["conjecture"]),
-            conclusion_class=values.named_text("Conclusion.conclusion_class", args["conclusion_class"]),
+            conclusion_class=values.named_text(
+                "Conclusion.conclusion_class",
+                args["conclusion_class"],
+            ),
             statement=values.named_text("Conclusion.statement", args["statement"]),
-            evidence_digest=values.named_text("Conclusion.evidence_digest", args["evidence_digest"]),
-            published_at=values.named_timestamp("Conclusion.published_at", args["published_at"]),
+            evidence_digest=values.named_text(
+                "Conclusion.evidence_digest",
+                args["evidence_digest"],
+            ),
+            published_at=values.named_timestamp(
+                "Conclusion.published_at",
+                args["published_at"],
+            ),
         )
 
 
@@ -933,7 +1054,10 @@ class CurrentConclusionClaim:
         values.named_fields("CurrentConclusion", args, ("inquiry", "conclusion"))
         return cls(
             inquiry=values.named_text("CurrentConclusion.inquiry", args["inquiry"]),
-            conclusion=values.named_text("CurrentConclusion.conclusion", args["conclusion"]),
+            conclusion=values.named_text(
+                "CurrentConclusion.conclusion",
+                args["conclusion"],
+            ),
         )
 
 
@@ -948,10 +1072,20 @@ class SupersedesConclusionClaim:
 
     @classmethod
     def from_named(cls, args: dict[str, object]) -> SupersedesConclusionClaim:
-        values.named_fields("SupersedesConclusion", args, ("successor_conclusion", "prior_conclusion"))
+        values.named_fields(
+            "SupersedesConclusion",
+            args,
+            ("successor_conclusion", "prior_conclusion"),
+        )
         return cls(
-            successor_conclusion=values.named_text("SupersedesConclusion.successor_conclusion", args["successor_conclusion"]),
-            prior_conclusion=values.named_text("SupersedesConclusion.prior_conclusion", args["prior_conclusion"]),
+            successor_conclusion=values.named_text(
+                "SupersedesConclusion.successor_conclusion",
+                args["successor_conclusion"],
+            ),
+            prior_conclusion=values.named_text(
+                "SupersedesConclusion.prior_conclusion",
+                args["prior_conclusion"],
+            ),
         )
 
 
@@ -969,13 +1103,26 @@ class PublicationClaim:
 
     @classmethod
     def from_named(cls, args: dict[str, object]) -> PublicationClaim:
-        values.named_fields("Publication", args, ("publication", "conclusion", "medium", "content_digest", "drafted_at"))
+        values.named_fields(
+            "Publication",
+            args,
+            ("publication", "conclusion", "medium", "content_digest", "drafted_at"),
+        )
         return cls(
-            publication=values.named_text("Publication.publication", args["publication"]),
+            publication=values.named_text(
+                "Publication.publication",
+                args["publication"],
+            ),
             conclusion=values.named_text("Publication.conclusion", args["conclusion"]),
             medium=values.named_text("Publication.medium", args["medium"]),
-            content_digest=values.named_text("Publication.content_digest", args["content_digest"]),
-            drafted_at=values.named_timestamp("Publication.drafted_at", args["drafted_at"]),
+            content_digest=values.named_text(
+                "Publication.content_digest",
+                args["content_digest"],
+            ),
+            drafted_at=values.named_timestamp(
+                "Publication.drafted_at",
+                args["drafted_at"],
+            ),
         )
 
 
@@ -992,8 +1139,14 @@ class PublicationApprovedClaim:
     def from_named(cls, args: dict[str, object]) -> PublicationApprovedClaim:
         values.named_fields("PublicationApproved", args, ("publication", "approved_at"))
         return cls(
-            publication=values.named_text("PublicationApproved.publication", args["publication"]),
-            approved_at=values.named_timestamp("PublicationApproved.approved_at", args["approved_at"]),
+            publication=values.named_text(
+                "PublicationApproved.publication",
+                args["publication"],
+            ),
+            approved_at=values.named_timestamp(
+                "PublicationApproved.approved_at",
+                args["approved_at"],
+            ),
         )
 
 
@@ -1011,7 +1164,10 @@ class LineageFromV1Claim:
         values.named_fields("LineageFromV1", args, ("inquiry", "v1_investigation"))
         return cls(
             inquiry=values.named_text("LineageFromV1.inquiry", args["inquiry"]),
-            v1_investigation=values.named_text("LineageFromV1.v1_investigation", args["v1_investigation"]),
+            v1_investigation=values.named_text(
+                "LineageFromV1.v1_investigation",
+                args["v1_investigation"],
+            ),
         )
 
 
@@ -1030,7 +1186,8 @@ class InquiryOpenedPayload:
         row's `arguments` (the adapter decodes; this names)."""
         if len(args) != 1:
             raise values.CodecError(
-                f"InquiryOpened: payload arity {len(args)} != contract arity 1 "
+                f"InquiryOpened: "
+                f"payload arity {len(args)} != contract arity 1 "
                 f"(schema/payload skew)"
             )
         return cls(
@@ -1053,7 +1210,8 @@ class DataAcquisitionAuthorisedPayload:
         row's `arguments` (the adapter decodes; this names)."""
         if len(args) != 1:
             raise values.CodecError(
-                f"DataAcquisitionAuthorised: payload arity {len(args)} != contract arity 1 "
+                f"DataAcquisitionAuthorised: "
+                f"payload arity {len(args)} != contract arity 1 "
                 f"(schema/payload skew)"
             )
         return cls(
@@ -1076,7 +1234,8 @@ class AnalysisAuthorisedPayload:
         row's `arguments` (the adapter decodes; this names)."""
         if len(args) != 1:
             raise values.CodecError(
-                f"AnalysisAuthorised: payload arity {len(args)} != contract arity 1 "
+                f"AnalysisAuthorised: "
+                f"payload arity {len(args)} != contract arity 1 "
                 f"(schema/payload skew)"
             )
         return cls(
@@ -1099,7 +1258,8 @@ class ConjectureRegisteredPayload:
         row's `arguments` (the adapter decodes; this names)."""
         if len(args) != 1:
             raise values.CodecError(
-                f"ConjectureRegistered: payload arity {len(args)} != contract arity 1 "
+                f"ConjectureRegistered: "
+                f"payload arity {len(args)} != contract arity 1 "
                 f"(schema/payload skew)"
             )
         return cls(
@@ -1122,7 +1282,8 @@ class ConclusionPublishedPayload:
         row's `arguments` (the adapter decodes; this names)."""
         if len(args) != 1:
             raise values.CodecError(
-                f"ConclusionPublished: payload arity {len(args)} != contract arity 1 "
+                f"ConclusionPublished: "
+                f"payload arity {len(args)} != contract arity 1 "
                 f"(schema/payload skew)"
             )
         return cls(
@@ -1135,7 +1296,7 @@ class ConclusionSupersededPayload:
     """Payload of an emitted `ConclusionSuperseded` intent."""
 
     INTENT: ClassVar[str] = "ConclusionSuperseded"
-    _ARG_ORDER: ClassVar[tuple[str, ...]] = ("prior_conclusion", "successor_conclusion",)
+    _ARG_ORDER: ClassVar[tuple[str, ...]] = ("prior_conclusion", "successor_conclusion")
 
     prior_conclusion: str
     successor_conclusion: str
@@ -1146,12 +1307,21 @@ class ConclusionSupersededPayload:
         row's `arguments` (the adapter decodes; this names)."""
         if len(args) != 2:
             raise values.CodecError(
-                f"ConclusionSuperseded: payload arity {len(args)} != contract arity 2 "
+                f"ConclusionSuperseded: "
+                f"payload arity {len(args)} != contract arity 2 "
                 f"(schema/payload skew)"
             )
         return cls(
-            prior_conclusion=values.decoded("ConclusionSuperseded.prior_conclusion", args[0], str),
-            successor_conclusion=values.decoded("ConclusionSuperseded.successor_conclusion", args[1], str),
+            prior_conclusion=values.decoded(
+                "ConclusionSuperseded.prior_conclusion",
+                args[0],
+                str,
+            ),
+            successor_conclusion=values.decoded(
+                "ConclusionSuperseded.successor_conclusion",
+                args[1],
+                str,
+            ),
         )
 
 
@@ -1170,11 +1340,16 @@ class PublicationAuthorisedPayload:
         row's `arguments` (the adapter decodes; this names)."""
         if len(args) != 1:
             raise values.CodecError(
-                f"PublicationAuthorised: payload arity {len(args)} != contract arity 1 "
+                f"PublicationAuthorised: "
+                f"payload arity {len(args)} != contract arity 1 "
                 f"(schema/payload skew)"
             )
         return cls(
-            publication=values.decoded("PublicationAuthorised.publication", args[0], str),
+            publication=values.decoded(
+                "PublicationAuthorised.publication",
+                args[0],
+                str,
+            ),
         )
 
 

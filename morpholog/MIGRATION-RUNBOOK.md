@@ -618,3 +618,70 @@ floor; the project is on 3.14) and is strict: `EnvelopeError` and
 `CodecError` where malformed output passed through before. The engines'
 refusal message (`record.refusal_detail`) now names the comparison and the
 witness the refusal carries, with no re-derivation of a rule's numbers.
+
+## v0.0.15 to v0.0.16 (schema 25, unchanged), run 2026-10-21
+
+No migration: the schema is still 25 and `migrate --check` reports each
+of the three records current with nothing pending. Release v0.0.16 was
+published 2026-10-21 14:15 UTC; the three published `.sha256` files and
+the release API's asset digests agree, the x86_64 tarball (`3de51232…`)
+extracts to the binary installed as `~/.local/bin/morpholog` and
+`morpholog-0.0.16` (`1ab8ec4f…`), and `scripts/install-morpholog` pins
+all three. `morpholog-0.0.15` stays beside it. Nothing was backed up or
+restored: no command below writes to a record.
+
+**Programmes.** A literal is now a parsed value and the canonical
+encoding is 2 (#600), so a programme whose literals were not in their one
+spelling gets a new hash. None of ours was: all six pinned programmes and
+the kill-test programme are strict-clean on 0.0.16 and hash exactly as
+pinned (`7ac617b4…`, `c9e4b937…`, `ef203533…`, `82603622…`, `a527463c…`,
+`bd4da45a…`). No programme spells `P1Y`, `PT90M`, an offset instant or
+`0 - x`, so the formatter rewrites nothing. `check --json` still reports
+every invariant compiled and bound; `scripts/check-programmes` passes
+unchanged. The `*_HASH.json` pins keep the `morpholog_version` they were
+last recomputed under, as before: the field records the binary that
+produced the hash, and a hash that did not move was not recomputed.
+
+**The database checks the release adds** (#575), run against the live
+records, read-only:
+- `check --database-url` on each record: no stored claim misfits its
+  declaration. On the research record alone, each programme sees the
+  others' predicates as undeclared (hints); naming the two siblings with
+  `--against` clears every hint for v3, and leaves one for v1 and v2:
+  `AuditSigningKey` is written by `register_audit_signing_key` in both,
+  each behind its own gate. That is the coexistence the v2 design chose
+  (one database, disjoint vocabularies, one reserved signing predicate),
+  not a finding. TEC and Bill are strict-clean against their databases.
+- `provision indexes --check`, one call per record: research 106 KEEP
+  (v1+v2+v3), TEC 52 KEEP, Bill 81 KEEP; every line now ends in the rule
+  that needs it (`needed_by`, #578). Nothing to create or prune.
+
+**Client.** Regenerated with 0.0.16 (`--check` reported all six files
+stale under 0.0.15, as the release notes say it would, whether or not the
+hash moved). `models.py` is unchanged in substance (the syntax tree is
+identical; only line-wrapping moved), so no parameter contract changed
+(#595, #597). What is new: `values.Quantity(amount, unit)` where a tagged
+quantity was a bare `Decimal` (#564), and `MorphologWitnessFailed` /
+`MorphologNotCovered` (#592, #589). Neither reaches our code: no
+programme declares a tagged quantity, and every checkpoint is taken
+through the binary (`record.checkpoint_and_export`, `scripts/record`),
+whose exit status already carried a failed witness. No resident session
+was running; the engines open a client per command.
+
+**Evidence.** The pack format is still 17 and a 0.0.16 export of the
+research record differs from the committed pack only in the manifest's
+`morpholog_version`; `scripts/verify-research-pack` verifies the committed
+pack and reproduces the receipt on 0.0.16, so nothing is re-exported. The
+TEC and Bill records `audit verify` on 0.0.16 (137,384 and 84
+transitions; the TEC anchor's DigiCert witness verified).
+
+**Checks.** `scripts/check` is green on 0.0.16 (739 tests, ruff, mypy,
+rule maps, 80 proofs, programmes, client current). `check-record` against
+the live record is clean on drift (309 rows, 309 transitions), provenance
+(14 metrics) and sealed digests (42), and fails only on the watch
+`w-007-t3-september`, due 2026-10-15 with no reading, which predates the
+upgrade and is unrelated to it.
+
+**Derived views.** Not used by this project, so the view regeneration
+and `refresh derived` steps did not apply; they would only have, had a
+hash moved.

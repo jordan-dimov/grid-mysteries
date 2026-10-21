@@ -5,7 +5,8 @@
 # have been strict-clean since 08/10/2026, when v3's `three_clocks_ordered`
 # was respelled to bind the claim it guards, and again since 12/10/2026, when
 # v0.0.15's client-name hint (#532) refused the identity register's field
-# `class`, renamed `link_class`), its hash
+# `class`, renamed `link_class`; and since 21/10/2026 on v0.0.16, whose
+# literal-as-value encoding (#600) moved none of the six hashes), its hash
 # is the pinned one (a `*_HASH.json` beside it, so a rule changes only with a
 # deliberate update of the pin), and the two record engines stay on the
 # compiled route with every rule's cases bound to the change (their flat

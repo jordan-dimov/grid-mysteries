@@ -75,9 +75,10 @@ accepted proposal, in the same commit:
 command (the artefact's SHA-256 is the reading digest; the note, kept under
 the investigation's `watch-readings/`, must name the watch and the digest).
 A verifier reads one pack format, its own. From 12/10/2026 the committed
-pack is format 17, written by Morpholog v0.0.15, and only v0.0.15 verifies
-it (v0.0.14 refuses it by name, `malformed_pack`; v0.0.15 reports a pack
-of an older format `unsupported_pack` and checks nothing in it). The
+pack is format 17, written by Morpholog v0.0.15 and still written and
+verified by v0.0.16, which changed no format (v0.0.14 refuses it by name,
+`malformed_pack`; v0.0.15 onward reports a pack of an older format
+`unsupported_pack` and checks nothing in it). The
 format-4 pack it replaced, at the same tree size 235 and with the same
 checkpoints and rows (only the manifest line differs), stays in git at
 `b1ed9dd` with the receipt issued under semantics version 1, and

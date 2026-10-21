@@ -1,0 +1,272 @@
+-- The Balancing Bill (investigation 013) as a governed record.
+--
+-- Python measures: the tracker's runner computes each settlement day's row
+-- from pinned bytes under a frozen declaration and its amendments. The
+-- record holds what was computed, and refuses to let it change: a row is
+-- admitted once per (day, rule version) and there is no transformation
+-- that alters or retracts it. A day recomputed under a new rule version is
+-- a second row beside the first, never a replacement. NESO's outcome
+-- columns (L1, L4) and the BSAD reading (L3) are append-only: the first
+-- vintage kept as admitted, later differing vintages as revisions, and the
+-- BSAD reading that the next vintage reproduced as the confirmed one
+-- (013 Amendment 1). Verdicts are recorded per run, as of the run date.
+--
+-- Each compute run imports as one transact: `open_run`, then `record_day`
+-- (with `record_gas_offer`, `record_bsad` / `record_bsad_placeholder`) /
+-- `append_outcome` / `revise_outcome` / `revise_bsad` / `confirm_bsad` /
+-- `record_verdict` for what is new, then `close_run`. Only the run being
+-- imported can change the record, runs import in date order, and nothing
+-- changes it between runs.
+--
+-- Every invariant here must stay inside the compiled fragment (no `or`,
+-- no defined calls); scripts/check fails otherwise.
+
+program balancing_bill_kill_test_2
+
+-- A rule version rows are computed under: the declaration's digest and the
+-- amendments in force, e.g. "013-d20d5920-A1", or "seed-012" for the eight
+-- September days copied from investigation 012 and never recomputed.
+predicate RuleVersion(rule: Subject, declaration_sha256: Subject, amendments: Subject)
+    unique by (rule)
+    append only
+
+-- A compute run: the tracker file it produced, by digest, and its run date.
+predicate Run(run: Subject, run_date: Date, tracker_sha256: Subject, rule: Subject)
+    unique by (run)
+    append only
+predicate CurrentRun(register: Subject, run: Subject, run_date: Date)
+    current pointer by (register)
+predicate Importing(register: Subject, run: Subject)
+    unique by (register)
+predicate Imported(run: Subject)
+    append only
+
+-- The first shape, 26/09 to 21/10/2026: one settlement day as computed under
+-- one rule version, every figure as Subject text, "-" where the declaration
+-- leaves a cell blank. Twenty-two days hold it. CLOSED: no act admits it
+-- since the amendment of 21/10/2026 (a claim keeps the shape it was admitted
+-- with, so the declaration stays for the claims that hold it).
+predicate DayRow(day: Date, rule: Subject, source: Subject, batch: Subject, flag: Subject, paid_out_gbp: Subject, net_gbp: Subject, paid_in_gbp: Subject, wind_bid_gbp: Subject, gas_offer_gbp: Subject, other_gbp: Subject, two_cut_gbp: Subject, sign: Subject, disptav_type: Subject, gas_offer_mwh: Subject, gas_offer_vwap_gbp_per_mwh: Subject, mid_vwap_gbp_per_mwh: Subject, premium_gbp_per_mwh: Subject, bsad_vintage: Subject, bsad_net_gbp: Subject, bsad_share: Subject, artefacts_sha256: Subject)
+    unique by (day, rule)
+    append only
+
+-- The second shape, from 21/10/2026: a blank cell is the absence of a claim,
+-- and every figure carries its unit. `Day` holds what every computed day
+-- has: the seven money columns in GBP, the sign verdict (#holds | #fails),
+-- flag (#seed | #record | #none) and the SHA-256 over the sorted digests of
+-- every pinned artefact the row was computed from. The DISPTAV pairing and
+-- the L3 reading are the two blocks the declaration can leave blank, each
+-- its own claim, present only when computed: `DayGasOffer` when a DISPTAV
+-- type reconciled (the price is then computed, not zero), `DayBsad` when
+-- the BSAD reading was populated, `DayBsadPlaceholder` when a vintage was
+-- read and carried no populated row for the day (blank, never zero).
+predicate Day(day: Date, rule: Subject, source: Subject, batch: Subject, flag: Subject, sign: Subject, paid_out_gbp: Decimal[GBP], net_gbp: Decimal[GBP], paid_in_gbp: Decimal[GBP], wind_bid_gbp: Decimal[GBP], gas_offer_gbp: Decimal[GBP], other_gbp: Decimal[GBP], two_cut_gbp: Decimal[GBP], artefacts_sha256: Subject)
+    unique by (day, rule)
+    append only
+predicate DayGasOffer(day: Date, rule: Subject, disptav_type: Subject, offer_mwh: Decimal[MWh], offer_vwap_gbp_per_mwh: Decimal[GBP_per_MWh], mid_vwap_gbp_per_mwh: Decimal[GBP_per_MWh], premium_gbp_per_mwh: Decimal[GBP_per_MWh])
+    unique by (day, rule)
+    append only
+predicate DayBsad(day: Date, rule: Subject, vintage: Subject, net_gbp: Decimal[GBP], share: Decimal)
+    unique by (day, rule)
+    append only
+predicate DayBsadPlaceholder(day: Date, rule: Subject, vintage: Subject)
+    unique by (day, rule)
+    append only
+
+-- NESO's outcome columns: the first vintage that carried the day, kept;
+-- every later vintage that differs, as a revision.
+predicate Outcome(day: Date, vintage: Subject, l1_constraints_gbp: Subject, l4_offers_mwh: Subject, l4_bids_mwh: Subject, ratio_l1_to_two_cut: Subject)
+    unique by (day)
+    append only
+predicate OutcomeRevision(day: Date, vintage: Subject, l1_constraints_gbp: Subject, l4_offers_mwh: Subject, l4_bids_mwh: Subject)
+    unique by (day, vintage)
+    append only
+
+-- L3 (013 Amendment 1): later differing readings, and the reading the next
+-- pinned vintage reproduced, which decides T1.
+predicate BsadRevision(day: Date, vintage: Subject, bsad_net_gbp: Subject, bsad_share: Subject)
+    unique by (day, vintage)
+    append only
+predicate BsadConfirmed(day: Date, vintage: Subject, bsad_net_gbp: Subject, bsad_share: Subject)
+    unique by (day)
+    append only
+
+-- A proposition's verdict as of a run: holds is #true, #false or
+-- #undecided; detail is the runner's own summary (instances, qualifying days).
+predicate Verdict(run: Subject, proposition: Subject, holds: Subject, detail: Subject)
+    unique by (run, proposition)
+    append only
+
+-- Audit-checkpoint signing (reserved predicate name). The verifier pins
+-- the key it trusts (`verify-pack --require-signing-key`), so a key
+-- registered here is necessary for signing, never sufficient for trust.
+predicate AuditSigningKey(key_id: Subject, purpose: Subject, public_key: Subject)
+    append only
+
+invariant runs_name_a_rule:
+    Run(rule: r, ..) implies RuleVersion(r, _, _)
+
+-- (`rows_name_a_rule`, the same rule over the first shape, went with the
+-- act that admitted it: a rule over a predicate nothing admits is vacuous
+-- going forward, and the twenty-two rows were admitted under it.)
+invariant days_name_a_rule:
+    Day(rule: r, ..) implies RuleVersion(r, _, _)
+
+-- A day is held in one shape or the other, never both under one rule.
+invariant one_shape_per_day:
+    not (DayRow(day: d, rule: r, ..) and Day(day: d, rule: r, ..))
+
+invariant gas_offers_name_a_day:
+    DayGasOffer(day: d, rule: r, ..) implies Day(day: d, rule: r, ..)
+
+invariant bsad_readings_name_a_day:
+    DayBsad(day: d, rule: r, ..) implies Day(day: d, rule: r, ..)
+
+invariant bsad_placeholders_name_a_day:
+    DayBsadPlaceholder(day: d, rule: r, ..) implies Day(day: d, rule: r, ..)
+
+invariant bsad_reading_or_placeholder:
+    not (DayBsad(day: d, rule: r, ..) and DayBsadPlaceholder(day: d, rule: r, ..))
+
+invariant outcomes_name_a_day:
+    Outcome(day: d, ..) implies (DayRow(day: d, ..) or Day(day: d, ..))
+
+invariant revisions_follow_an_outcome:
+    OutcomeRevision(day: d, ..) implies Outcome(day: d, ..)
+
+invariant bsad_revisions_name_a_day:
+    BsadRevision(day: d, ..) implies (DayRow(day: d, ..) or Day(day: d, ..))
+
+invariant bsad_confirmations_name_a_day:
+    BsadConfirmed(day: d, ..) implies (DayRow(day: d, ..) or Day(day: d, ..))
+
+invariant verdicts_name_a_run:
+    Verdict(run: r, ..) implies Run(run: r, ..)
+
+invariant imports_name_a_run:
+    Imported(r) implies Run(run: r, ..)
+
+transformation declare_rule(rule, declaration_sha256, amendments):
+    require rule_is_new: not RuleVersion(rule, _, _)
+    admit RuleVersion(rule, declaration_sha256, amendments)
+
+transformation open_first_run(run, run_date, tracker_sha256, rule):
+    require first_run: not CurrentRun(#bill, _, _)
+    require run_rule_declared: RuleVersion(rule, _, _)
+    admit Run(run, run_date, tracker_sha256, rule)
+    admit CurrentRun(#bill, run, run_date)
+    admit Importing(#bill, run)
+
+transformation open_run(run, run_date, tracker_sha256, rule, prior, prior_on):
+    require prior_is_current: CurrentRun(#bill, prior, prior_on)
+    require prior_import_closed: Imported(prior)
+    require no_import_open: not Importing(#bill, _)
+    require runs_in_order: prior_on on_or_before run_date
+    require run_is_new: not Run(run: run, ..)
+    require run_rule_declared: RuleVersion(rule, _, _)
+    admit Run(run, run_date, tracker_sha256, rule)
+    retract CurrentRun(#bill, prior, prior_on)
+    admit CurrentRun(#bill, run, run_date)
+    admit Importing(#bill, run)
+
+-- A day is admitted once per rule version; nothing alters or retracts it.
+-- (The first shape's `add_day` is gone with the amendment of 21/10/2026.)
+transformation record_day(run, day, rule, source, batch, flag, sign, paid_out_gbp, net_gbp, paid_in_gbp, wind_bid_gbp, gas_offer_gbp, other_gbp, two_cut_gbp, artefacts_sha256):
+    require only_the_run_being_imported: Importing(#bill, run)
+    require row_rule_declared: RuleVersion(rule, _, _)
+    require day_is_new: not Day(day: day, rule: rule, ..)
+    require day_not_held_in_the_first_shape: not DayRow(day: day, rule: rule, ..)
+    admit Day(day, rule, source, batch, flag, sign, paid_out_gbp, net_gbp, paid_in_gbp, wind_bid_gbp, gas_offer_gbp, other_gbp, two_cut_gbp, artefacts_sha256)
+
+transformation record_gas_offer(run, day, rule, disptav_type, offer_mwh, offer_vwap_gbp_per_mwh, mid_vwap_gbp_per_mwh, premium_gbp_per_mwh):
+    require only_the_run_being_imported: Importing(#bill, run)
+    require gas_offer_day_recorded: Day(day: day, rule: rule, ..)
+    require gas_offer_is_new: not DayGasOffer(day: day, rule: rule, ..)
+    admit DayGasOffer(day, rule, disptav_type, offer_mwh, offer_vwap_gbp_per_mwh, mid_vwap_gbp_per_mwh, premium_gbp_per_mwh)
+
+transformation record_bsad(run, day, rule, vintage, net_gbp, share):
+    require only_the_run_being_imported: Importing(#bill, run)
+    require bsad_day_recorded: Day(day: day, rule: rule, ..)
+    require bsad_reading_is_new: not DayBsad(day: day, rule: rule, ..)
+    require bsad_day_has_no_placeholder: not DayBsadPlaceholder(day: day, rule: rule, ..)
+    admit DayBsad(day, rule, vintage, net_gbp, share)
+
+transformation record_bsad_placeholder(run, day, rule, vintage):
+    require only_the_run_being_imported: Importing(#bill, run)
+    require placeholder_day_recorded: Day(day: day, rule: rule, ..)
+    require placeholder_is_new: not DayBsadPlaceholder(day: day, rule: rule, ..)
+    require placeholder_day_has_no_reading: not DayBsad(day: day, rule: rule, ..)
+    admit DayBsadPlaceholder(day, rule, vintage)
+
+transformation append_outcome(run, day, vintage, l1_constraints_gbp, l4_offers_mwh, l4_bids_mwh, ratio_l1_to_two_cut):
+    require only_the_run_being_imported: Importing(#bill, run)
+    require outcome_day_recorded: DayRow(day: day, ..) or Day(day: day, ..)
+    require outcome_is_new: not Outcome(day: day, ..)
+    admit Outcome(day, vintage, l1_constraints_gbp, l4_offers_mwh, l4_bids_mwh, ratio_l1_to_two_cut)
+
+transformation revise_outcome(run, day, vintage, l1_constraints_gbp, l4_offers_mwh, l4_bids_mwh):
+    require only_the_run_being_imported: Importing(#bill, run)
+    require revised_outcome_exists: Outcome(day: day, ..)
+    require revision_is_new: not OutcomeRevision(day: day, vintage: vintage, ..)
+    admit OutcomeRevision(day, vintage, l1_constraints_gbp, l4_offers_mwh, l4_bids_mwh)
+
+transformation revise_bsad(run, day, vintage, bsad_net_gbp, bsad_share):
+    require only_the_run_being_imported: Importing(#bill, run)
+    require bsad_day_recorded: DayRow(day: day, ..) or Day(day: day, ..)
+    require bsad_revision_is_new: not BsadRevision(day, vintage, _, _)
+    admit BsadRevision(day, vintage, bsad_net_gbp, bsad_share)
+
+transformation confirm_bsad(run, day, vintage, bsad_net_gbp, bsad_share):
+    require only_the_run_being_imported: Importing(#bill, run)
+    require confirmed_day_recorded: DayRow(day: day, ..) or Day(day: day, ..)
+    require confirmation_is_new: not BsadConfirmed(day: day, ..)
+    admit BsadConfirmed(day, vintage, bsad_net_gbp, bsad_share)
+
+transformation record_verdict(run, proposition, holds, detail):
+    require only_the_run_being_imported: Importing(#bill, run)
+    require verdict_is_new: not Verdict(run, proposition, _, _)
+    admit Verdict(run, proposition, holds, detail)
+
+transformation close_run(run):
+    require only_the_run_being_imported: Importing(#bill, run)
+    retract Importing(#bill, run)
+    admit Imported(run)
+
+transformation register_audit_signing_key(key_id, public_key):
+    require key_not_already_registered: not AuditSigningKey(key_id, _, _)
+    admit AuditSigningKey(key_id, #audit_checkpoint_v1, public_key)
+
+-- KILL TEST 2 (21/10/2026), scratch only, never deployed: offer a recomputed
+-- day back to the record and let the kernel say which figure moved. Each
+-- gate compares one offered figure with the one the record holds, so a
+-- refusal names the figure, both values and the unit.
+transformation reaffirm_day(day, rule, paid_out_gbp, net_gbp, paid_in_gbp, wind_bid_gbp, gas_offer_gbp, other_gbp, two_cut_gbp, artefacts_sha256):
+    bind Day(day: day, rule: rule, paid_out_gbp: h0, net_gbp: h1, paid_in_gbp: h2, wind_bid_gbp: h3, gas_offer_gbp: h4, other_gbp: h5, two_cut_gbp: h6, artefacts_sha256: h7, ..)
+    require paid_out_unchanged: h0 = paid_out_gbp
+    require net_unchanged: h1 = net_gbp
+    require paid_in_unchanged: h2 = paid_in_gbp
+    require wind_bid_unchanged: h3 = wind_bid_gbp
+    require gas_offer_unchanged: h4 = gas_offer_gbp
+    require other_unchanged: h5 = other_gbp
+    require two_cut_unchanged: h6 = two_cut_gbp
+    require artefacts_unchanged: h7 = artefacts_sha256
+    admit Reaffirmed(day, rule, #day)
+
+transformation reaffirm_gas_offer(day, rule, disptav_type, offer_mwh, offer_vwap_gbp_per_mwh, mid_vwap_gbp_per_mwh, premium_gbp_per_mwh):
+    bind DayGasOffer(day: day, rule: rule, disptav_type: t, offer_mwh: h0, offer_vwap_gbp_per_mwh: h1, mid_vwap_gbp_per_mwh: h2, premium_gbp_per_mwh: h3)
+    require disptav_type_unchanged: t = disptav_type
+    require offer_mwh_unchanged: h0 = offer_mwh
+    require offer_vwap_unchanged: h1 = offer_vwap_gbp_per_mwh
+    require mid_vwap_unchanged: h2 = mid_vwap_gbp_per_mwh
+    require premium_unchanged: h3 = premium_gbp_per_mwh
+    admit Reaffirmed(day, rule, #gas_offer)
+
+transformation reaffirm_bsad(day, rule, vintage, net_gbp, share):
+    bind DayBsad(day: day, rule: rule, vintage: v, net_gbp: h0, share: h1)
+    require bsad_vintage_unchanged: v = vintage
+    require bsad_net_unchanged: h0 = net_gbp
+    require bsad_share_unchanged: h1 = share
+    admit Reaffirmed(day, rule, #bsad)
+
+predicate Reaffirmed(day: Date, rule: Subject, block: Subject)
+    append only

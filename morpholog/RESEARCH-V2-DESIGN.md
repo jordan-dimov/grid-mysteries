@@ -5,7 +5,7 @@ Status: **drafted, control-tested, not yet deployed.**
 (fingerprint in `V2_DRAFT_HASH.json`) and its gates are exercised by
 negative tests (`controls/`, run by `scripts/check-controls` in CI
 against a disposable database: 35 lifecycle transitions must commit,
-13 violations must be refused by their exact named rules, and the derived
+12 violations must be refused by their exact named rules, and the derived
 retention ratio is read back from the kernel). The deployed
 programme remains `research.morph` (v1) until Investigation 002 opens.
 

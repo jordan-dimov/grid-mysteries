@@ -12,3 +12,7 @@
 {"transformation": "assert_evidence_class", "actor": "claude_fable_5", "args_named": {"claim": "ec-bad-clock", "about": "F001", "evidence_class": "provision_purchased", "evidence_digest": "x", "t_event": "2026-09-01", "t_public": "2026-08-01"}}
 {"transformation": "assert_evidence_class", "actor": "claude_fable_5", "args_named": {"claim": "ec-bad-class", "about": "F001", "evidence_class": "founder_attention", "evidence_digest": "x", "t_event": "2026-08-01", "t_public": "2026-08-01"}}
 {"transformation": "establish_forward_governance", "actor": "claude_fable_5", "args_named": {"human_actor": "claude_fable_5"}}
+{"transformation": "sweep_watch", "actor": "claude_fable_5", "args_named": {"watch": "w-c3-lapsed", "as_of": "2026-08-24"}}
+{"transformation": "sweep_watch", "actor": "claude_fable_5", "args_named": {"watch": "w-c2-pcf", "as_of": "2026-08-23"}}
+{"transformation": "sweep_watch", "actor": "claude_fable_5", "args_named": {"watch": "w-c4-read", "as_of": "2026-08-23"}}
+{"transformation": "record_reading", "actor": "claude_fable_5", "args_named": {"watch": "w-c3-lapsed", "read_on": "2026-08-20", "reading_digest": "r3", "outcome": "resolved"}}

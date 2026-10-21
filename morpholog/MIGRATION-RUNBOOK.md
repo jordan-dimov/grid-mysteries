@@ -779,3 +779,16 @@ does not change. After the amendment all three programmes check clean
 against the live record with their siblings named, and provisioning is
 unchanged (no predicate moved).
 
+**v3 admits a lapse** (`V3_DRAFT_HASH.json` `sha256:ef203533…` to
+`sha256:b5227df4…`). `Lapsed(watch, as_of)`, unique by watch, admitted by
+`sweep_watch(watch, as_of)` behind `sweep_watch_not_yet_lapsed`,
+`sweep_due_has_passed` and `sweep_no_reading_by_then`, held by
+`lapsed_watch_exists`, `lapse_follows_due` and `lapse_precedes_any_reading`
+(all compiled, all bound). The overdue rule leaves `scripts/check-record`:
+it now asks `morpholog explain sweep_watch(watch, today)` per unread watch
+and fails on an admissible sweep nobody has recorded (run
+`scripts/sweep-watches`) and on a `Lapsed` claim with no reading (run
+`scripts/read-watch`). Four control rows each side (20 commit, 18
+refused). Deployed by `provision indexes` over the three programmes (see
+the day's plan below) and `check --database-url`; no stored claim changed.
+

@@ -1,0 +1,61 @@
+#!/usr/bin/env bash
+# Sweep the dated watches: record, in the governed record, every watch the
+# kernel finds past due with no reading, as of today.
+#
+#   scripts/sweep-watches            # proposes sweep_watch(watch, today) for each lapse
+#   scripts/sweep-watches --dry-run  # only says which sweeps would commit
+#
+# For each watch with no reading and no Lapsed claim, asks the kernel
+# (`morpholog explain`, nothing recorded) whether sweep_watch(watch, today)
+# would commit, and proposes exactly those through scripts/record (batch
+# 121-watch-sweeps.v3.ndjson), which refreshes the claims export, checkpoints,
+# exports and verifies. The decision is the programme's
+# (research-v3-draft.morph, `sweep_watch`): this script hands it the date and
+# proposes what it admits. scripts/check-record fails while a sweep is due
+# and while a lapse is unread; this is the cheap way to keep the first half
+# of that promise, scripts/read-watch the second.
+set -euo pipefail
+cd "$(dirname "$0")/.."
+export PATH="${HOME}/.local/bin:${PATH}"
+morpholog() { command "${MORPHOLOG_BIN:-morpholog}" "$@"; }
+export DATABASE_URL="${DATABASE_URL:-postgres:///grid_mysteries_morpholog}"
+dry_run=0
+[[ "${1:-}" == "--dry-run" ]] && dry_run=1
+today=$(date -u +%F)
+actor="${RECORD_ACTOR:-claude_fable_5}"
+# The kernel's answer per unread watch, into a file: a failure anywhere in
+# the asking must stop the script (set -e), not read as "nothing to sweep".
+due_file=$(mktemp); trap 'rm -f "$due_file"' EXIT
+python3 - "$today" "$actor" "${MORPHOLOG_BIN:-morpholog}" "$DATABASE_URL" > "$due_file" <<'PY'
+import json, subprocess, sys
+today, actor, binary, url = sys.argv[1:]
+claims = json.loads(subprocess.run([binary, "inspect", "claims", "--database-url", url],
+                                   capture_output=True, text=True, check=True).stdout)
+watches = sorted(a["args"][0]["value"] for a in claims if a["predicate"] == "Watch")
+read = {a["args"][0]["value"] for a in claims if a["predicate"] == "WatchReading"}
+lapsed = {a["args"][0]["value"] for a in claims if a["predicate"] == "Lapsed"}
+for watch in watches:
+    if watch in read or watch in lapsed:
+        continue
+    out = subprocess.run(
+        [binary, "explain", "morpholog/research-v3-draft.morph", "sweep_watch", "--actor", actor,
+         "--args-named", json.dumps({"watch": watch, "as_of": today}), "--database-url", url, "--json"],
+        capture_output=True, text=True, check=True).stdout
+    if json.loads(out)["verdict"] == "admissible":
+        print(watch)
+PY
+mapfile -t due < "$due_file"
+if (( ${#due[@]} == 0 )); then
+  echo "sweep-watches: no watch is past due without a reading as of $today; nothing to record"
+  exit 0
+fi
+for watch in "${due[@]}"; do
+  row=$(python3 -c 'import json, sys; w, t, a = sys.argv[1:]; print(json.dumps({"transformation": "sweep_watch", "actor": a, "args_named": {"watch": w, "as_of": t}}))' "$watch" "$today" "$actor")
+  if (( dry_run )); then
+    echo "sweep-watches: would record $watch lapsed as of $today"
+    continue
+  fi
+  echo "sweep-watches: $watch is past due with no reading; recording Lapsed as of $today"
+  scripts/record 121-watch-sweeps.v3.ndjson "$row"
+done
+(( dry_run )) || echo "sweep-watches: recorded; commit the record files, then read each lapsed watch (scripts/read-watch)"

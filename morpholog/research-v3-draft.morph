@@ -16,9 +16,13 @@
 --      cannot exist.
 --   3. Dated resolving observations. A watch names the observation that
 --      would resolve a downgraded candidate, who holds it, and when it is
---      due; readings are recorded against it. scripts/check-record refuses
---      an overdue watch with no reading - the prose promise becomes an
---      obligation.
+--      due; readings are recorded against it. A watch past due with no
+--      reading is a lapse the record itself admits (from 21/10/2026): an
+--      outside sweep hands the kernel the date, and `sweep_watch` admits
+--      `Lapsed(watch, as_of)` under the programme's own rule, never a
+--      clock inside it. scripts/check-record asks the kernel whether a
+--      sweep would commit (`morpholog explain`) and fails on an unswept
+--      or an unread lapse - the prose promise becomes an obligation.
 --   4. Reopening triggers for parked theses (F004), fired only against a
 --      digest of the evidence that fired them.
 --   5. Evidence classes with the three clocks (t_event on_or_before
@@ -66,6 +70,11 @@ predicate Watch(watch: Subject, about: Subject, resolving_observation: Subject, 
 -- outcome: #resolved | #unchanged | #not_available
 predicate WatchReading(watch: Subject, read_on: Date, reading_digest: Subject, outcome: Subject)
     append only
+-- A watch found past due with no reading, as of the date the sweep was
+-- handed. Once per watch; a reading may follow it, never precede it.
+predicate Lapsed(watch: Subject, as_of: Date)
+    append only
+    unique by (watch)
 
 predicate ReopenTrigger(trigger: Subject, about: Subject, condition: Subject)
     append only
@@ -139,6 +148,7 @@ intent DeclarationRegistered(declaration: Subject)
 intent DeclarationFrozen(declaration: Subject)
 intent VerdictRecorded(verdict: Subject)
 intent WatchOpened(watch: Subject)
+intent WatchLapsed(watch: Subject)
 intent TriggerFiredIntent(trigger: Subject)
 
 invariant declaration_kind_in_vocabulary:
@@ -167,6 +177,18 @@ invariant reading_has_watch:
 
 invariant reading_outcome_in_vocabulary:
     WatchReading(outcome: o, ..) implies in_reading_outcome_vocabulary(o)
+
+invariant lapsed_watch_exists:
+    Lapsed(watch: w, ..) implies Watch(watch: w, ..)
+
+-- A lapse stands only once the due date has genuinely passed...
+invariant lapse_follows_due:
+    Lapsed(w, as_of) and Watch(watch: w, due: due, ..) implies due before as_of
+
+-- ...and no reading may be dated before it: a watch read on time was never
+-- lapsed, and a reading backdated under a standing lapse is refused.
+invariant lapse_precedes_any_reading:
+    Lapsed(w, as_of) and WatchReading(watch: w, read_on: r, ..) implies as_of on_or_before r
 
 invariant fired_trigger_exists:
     TriggerFired(t, _, _) implies ReopenTrigger(t, _, _)
@@ -220,6 +242,15 @@ transformation record_reading(watch, read_on, reading_digest, outcome):
     require reading_watch_exists: Watch(watch: watch, ..)
     require reading_outcome_known: in_reading_outcome_vocabulary(outcome)
     admit WatchReading(watch, read_on, reading_digest, outcome)
+
+-- The outside sweep. "Now" is the as_of it is handed; the kernel decides.
+transformation sweep_watch(watch, as_of):
+    bind Watch(watch: watch, due: due, ..)
+    require sweep_watch_not_yet_lapsed: not Lapsed(watch, _)
+    require sweep_due_has_passed: due before as_of
+    require sweep_no_reading_by_then: not (exists r: WatchReading(watch: watch, read_on: r, ..) and r on_or_before as_of)
+    admit Lapsed(watch, as_of)
+    emit WatchLapsed(watch)
 
 transformation declare_trigger(trigger, about, condition):
     require trigger_is_new: not ReopenTrigger(trigger, _, _)

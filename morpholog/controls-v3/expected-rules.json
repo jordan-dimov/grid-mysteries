@@ -12,5 +12,9 @@
  "11": "fire_trigger_not_yet_fired",
  "12": "clocks_ordered",
  "13": "evidence_class_known",
- "14": "forward_governance_not_yet_established"
+ "14": "forward_governance_not_yet_established",
+ "15": "sweep_watch_not_yet_lapsed",
+ "16": "sweep_due_has_passed",
+ "17": "sweep_no_reading_by_then",
+ "18": "lapse_precedes_any_reading"
 }

@@ -4,11 +4,26 @@ Status: **deployed 25/09/2026** on the live record, same database and audit
 chain as v1 and v2 (batch `110-forward-launch.v3.ndjson`, 94 rows: the
 bootstrap and nine seals by Jordan as `gm_human`, the declarations, verdicts,
 watches, triggers and evidence claims by the machine as `gm_machine`).
-`research-v3-draft.morph` carries one respelling since the draft (fingerprint
-in `V3_DRAFT_HASH.json`, the file name kept so the pinned hash and the batch
-dispatch stay as they were); `scripts/check-controls v3` proves 16 lifecycle
-rows commit and 14 violations are refused by their exact named rules. The
-launch rows and how they were run are in `launch-forward/`.
+`research-v3-draft.morph` carries one respelling and one amendment since the
+draft (fingerprint in `V3_DRAFT_HASH.json`, the file name kept so the pinned
+hash and the batch dispatch stay as they were); `scripts/check-controls v3`
+proves 20 lifecycle rows commit and 18 violations are refused by their exact
+named rules. The launch rows and how they were run are in `launch-forward/`.
+
+**Amended 21/10/2026, on the sponsor's word:** a watch past due with no
+reading is a lapse the record itself admits. `sweep_watch(watch, as_of)`
+admits `Lapsed(watch, as_of)` under three gates (not yet lapsed; the due
+date before `as_of`; no reading on or before `as_of`) and three invariants
+(a lapse names a watch, follows its due date, and precedes any reading), the
+shape of Morpholog's gallery examples 09 and 17: an outside sweep hands the
+kernel the date, never a clock inside a rule. `scripts/sweep-watches`
+proposes exactly the sweeps the kernel says it would admit (`morpholog
+explain`, nothing recorded), through `scripts/record` (batch
+`121-watch-sweeps.v3.ndjson`). `scripts/check-record` no longer compares
+dates itself: it asks the kernel whether a sweep would commit, and fails
+on an unswept lapse (run the sweep) and on a lapsed watch with no reading
+(record it). The pin moved from `sha256:ef203533…` to `sha256:b5227df4…`;
+the stored claims are untouched (one predicate added, none changed).
 
 **Respelled 08/10/2026, on the sponsor's word:** `three_clocks_ordered` now
 binds the `claim` it guards (`EvidenceClaim(claim, _, _, _, t_event,
@@ -53,8 +68,10 @@ now because the forcing evidence exists.
    not in the vocabulary: the kernel refuses the retired code.
 3. **A dated watch is an obligation.** `Watch(about, resolving_observation,
    holder, due)` and `WatchReading(outcome ∈ resolved | unchanged |
-   not_available)`. `check-record` fails when a watch is past due with no
-   reading, so "we'll look again in November" cannot silently lapse.
+   not_available)`; from 21/10/2026 `Lapsed(watch, as_of)`, admitted by a
+   dated sweep under the programme's own rule. `check-record` fails when a
+   watch is past due with no reading, swept or not, so "we'll look again in
+   November" cannot silently lapse.
 4. **Reopening triggers fire once, against evidence.** `ReopenTrigger` and
    `TriggerFired(evidence_digest, fired_on)`.
 5. **Evidence classes with the three clocks.** `EvidenceClaim(evidence_class

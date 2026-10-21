@@ -748,3 +748,34 @@ the sponsor to call, not an upgrade step:
 Until #584 ships the `psql` transition count in `check-record` is a
 bridge and is marked as one. Until #607 ships a row's own proof is
 `audit export --transition <id>`, a selective pack verifiable offline.
+
+## Amendments of 21/10/2026 (v0.0.16, three hash moves, no migration)
+
+Three programmes amended on the sponsor's word after Morpholog's answers to
+the feedback of the same day. None is an upgrade: the binary, the schema
+and the stored claims are untouched; each is a model edit, so each pin
+moves, and the deploy sequence for each is `check --strict`, `check
+--against` the siblings with `--database-url`, `provision indexes --check`
+(and `--prune` where the plan is not empty), the pin rewritten by
+`morpholog hash`, the control suites and `scripts/check`.
+
+**v2 no longer registers a signing key** (`V2_DRAFT_HASH.json`
+`sha256:c9e4b937…` to `sha256:59a58890…`). The one hint `check --against`
+left after the upgrade was its shared-writer lint on `AuditSigningKey`:
+v1 and v2 each carried `register_audit_signing_key` behind its own gate
+(v1 ungated, v2 behind `SealAuthority`), so the laxer gate decided which
+keys a checkpoint could be signed with. Morpholog withdrew a kernel-side
+exemption (that is the one case the lint exists for) and asked that one
+programme own the act. v1 keeps it: the key `audit-2026` was registered
+under v1 (batch 060, 16/08/2026) and the batch replays under the v1 file,
+so dropping v1's act would break `scripts/replay-research`. v2 keeps the
+predicate declaration (its reads are checked) and loses the act; the
+generated client lost one act model (`RegisterAuditSigningKey`, 16 lines,
+the client now emitted at 88 columns); the v2 control row that proved the
+machine could not register a key under v2 is retired (12 violations, not
+13), as is the same probe in `scripts/rehearse-v2`. Verification trust was
+never the claim set but the repo-pinned `trust/audit-2026.pub`, and that
+does not change. After the amendment all three programmes check clean
+against the live record with their siblings named, and provisioning is
+unchanged (no predicate moved).
+

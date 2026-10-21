@@ -26,9 +26,10 @@
 #    arity, kind or unit than its declaration is an error no rule could
 #    match. The two siblings are named with `--against`, so a predicate
 #    one of them declares is not reported as undeclared, and a predicate
-#    two of them write is. One hint is expected and read, not refused:
-#    `AuditSigningKey`, written by v1 and v2 behind their own gates (the
-#    one-database coexistence the v2 design chose).
+#    two of them write is. No hint is expected: since 21/10/2026 only v1
+#    registers a signing key (v2's act was dropped by amendment, Morpholog's
+#    shared-writer lint having named the laxer gate as the one that decides
+#    which keys checkpoints trust).
 #
 # Needs DATABASE_URL. Read-only: proposes nothing, writes nothing.
 set -euo pipefail

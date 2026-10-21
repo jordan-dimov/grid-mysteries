@@ -36,22 +36,6 @@ class EstablishGovernanceRequest:
 
 
 @dataclass(frozen=True)
-class RegisterAuditSigningKeyRequest:
-    """Arguments for `register_audit_signing_key`."""
-
-    TRANSFORMATION: ClassVar[str] = "register_audit_signing_key"
-
-    key_id: str
-    public_key: str
-
-    def to_args_named(self) -> dict[str, object]:
-        return {
-            "key_id": values.encode_named(self.key_id),
-            "public_key": values.encode_named(self.public_key),
-        }
-
-
-@dataclass(frozen=True)
 class OpenInquiryRequest:
     """Arguments for `open_inquiry`."""
 

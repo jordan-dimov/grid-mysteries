@@ -15,7 +15,7 @@ if sys.version_info < (3, 12):
     )
 
 PROGRAM = "grid_mysteries_research_v2"
-MODEL_HASH = "sha256:c9e4b9371e3db420726d501424b8ca1f0766535fe9f549da5fe843e302dbbda2"
+MODEL_HASH = "sha256:59a58890d9bc61a09c1de9e6419b5ba37cb7abbe7d28a085150761acd8ad78e1"
 MORPHOLOG_VERSION = "0.0.16"
 PYTHON_FLOOR = (3, 12)
 

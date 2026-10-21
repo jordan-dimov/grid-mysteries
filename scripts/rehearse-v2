@@ -110,8 +110,9 @@ r=$(propose "$M_URL" open_inquiry jordan_dimov '{"inquiry": "inq-rogue", "kind":
 expect_actor_refusal "$r" "machine session cannot assert jordan_dimov even when the payload names him"
 r=$(propose "$H_URL" open_inquiry claude_fable_5 '{"inquiry": "inq-rogue2", "kind": "descriptive", "title": "reverse impersonation", "opened_at": "3000-01-01T00:00:00Z"}')
 expect_actor_refusal "$r" "human session cannot assert claude_fable_5 either (binding is bidirectional)"
-r=$(propose "$M_URL" register_audit_signing_key claude_fable_5 '{"key_id": "rogue-key", "public_key": "ed25519-pub:00"}')
-expect_rule "$r" key_registration_requires_seal_authority "machine cannot register a signing key"
+# (Until 21/10/2026 the machine was also shown unable to register a signing
+# key under v2; v2 no longer carries that act, so there is nothing to probe:
+# the only registration act is v1's, and trust is the repo-pinned key.)
 
 echo "== B. corpus registry, overlap boundaries, historical backfill"
 r=$(propose "$M_URL" register_corpus claude_fable_5 '{"corpus": "syn-consumed", "first_day": "3000-01-10", "last_day": "3000-01-16"}')

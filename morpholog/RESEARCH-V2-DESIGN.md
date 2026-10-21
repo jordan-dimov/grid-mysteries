@@ -169,7 +169,10 @@ session_user enforcement. Three facts it established are now doctrine:
    (`trust/audit-2026.pub`, asserted by `scripts/replay-research`),
    never the `AuditSigningKey` claim set: v1's key registration is
    ungated and the v1 file remains on disk for replay, so the claim set
-   is mintable by the machine credential; the pinned key is not.
+   is mintable by the machine credential; the pinned key is not. (v2
+   registered no key either: its own gated registration act was dropped
+   on 21/10/2026 so that one programme owns the act; v2 still declares
+   the predicate it reads.)
 3. **Mixed v1+v2 history replays** by filename convention: batches named
    `*.v2.ndjson` are proposed against the v2 programme by both
    `scripts/record` and `scripts/replay-research`.

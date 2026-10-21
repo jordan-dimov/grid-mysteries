@@ -32,7 +32,12 @@ predicate SealAuthority(actor: Subject)
 predicate PublicationAuthority(actor: Subject)
     append only
 -- Audit-checkpoint signing keys (reserved name; purpose is always
--- audit_checkpoint_v1).
+-- audit_checkpoint_v1). Declared so this programme's reads of the key the
+-- checkpoints are signed with are checked; never written here. From
+-- 21/10/2026 only v1 (research.morph) registers a key: two programmes each
+-- able to register one under its own gate let the laxer gate decide which
+-- keys checkpoints trust (`check --against` named it), so one programme
+-- owns the act, and the record says v2 no longer carries that authority.
 predicate AuditSigningKey(key_id: Subject, purpose: Subject, public_key: Subject)
     append only
 
@@ -258,11 +263,6 @@ transformation establish_governance(human_actor, human_login_role, machine_actor
     admit ActorAssertionAuthority(machine_actor, machine_login_role)
     admit SealAuthority(human_actor)
     admit PublicationAuthority(human_actor)
-
-transformation register_audit_signing_key(key_id, public_key):
-    require key_registration_requires_seal_authority: SealAuthority(actor)
-    require key_not_already_registered: not AuditSigningKey(key_id, _, _)
-    admit AuditSigningKey(key_id, #audit_checkpoint_v1, public_key)
 
 transformation open_inquiry(inquiry, kind, title, opened_at):
     require inquiry_is_new: not Inquiry(inquiry: inquiry, ..)

@@ -230,9 +230,13 @@ human/machine split.* After H3, a proposal carrying the machine
 credential cannot assert `jordan_dimov` (adapter refusal at the session
 layer), re-run `establish_governance` (`governance_not_yet_established`),
 seal (`seal_requires_authority`), approve (`approval_requires_authority`),
-backfill consumption (`historical_requires_seal_authority`), or register
-a signing key (`key_registration_requires_seal_authority`). The
-rogue-*key* path is closed at the verifier: v1's
+or backfill consumption (`historical_requires_seal_authority`). Until
+21/10/2026 v2 also carried a gated `register_audit_signing_key`
+(`key_registration_requires_seal_authority`); it was dropped by amendment
+that day, since two programmes each able to register a key under their
+own gate let the laxer gate decide which keys checkpoints trust
+(Morpholog's shared-writer lint, `check --against`), and one programme
+should own the act. The rogue-*key* path is closed at the verifier: v1's
 `register_audit_signing_key` is ungated and the v1 file stays on disk
 for replay, so the `AuditSigningKey` claim set is mintable — therefore
 verification trust is the **repo-pinned** `trust/audit-2026.pub`

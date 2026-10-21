@@ -7,7 +7,7 @@ If an investigation overlooks a physical constraint, public dataset, publication
 For code changes:
 
 ```bash
-uv sync --dev
+uv sync --all-groups   # dev and capture: scripts/check and the pre-commit gate need both
 ./scripts/install-morpholog
 ./scripts/check
 ```

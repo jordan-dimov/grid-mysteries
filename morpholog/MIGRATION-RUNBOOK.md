@@ -30,6 +30,19 @@ drops its own pair, `gm_rehearsal_writer` / `gm_rehearsal_reader`, with
 its database (from v0.0.14 `init --least-privilege` refuses a pair that
 exists on the cluster and is not this database's).
 
+## The environment
+
+Every command below runs with the pinned binary on `PATH` (or named by
+`MORPHOLOG_BIN`) and the project environment synced with every group:
+
+```bash
+uv sync --all-groups
+```
+
+`uv sync` alone drops the `capture` group, and the pre-commit gate then
+fails on a proofs test (`ModuleNotFoundError: opentimestamps`) that does
+not name the cause; CI syncs `--dev --group capture` for the same reason.
+
 ## Procedure for the live record
 
 ```bash

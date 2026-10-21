@@ -38,7 +38,7 @@ Morpholog is intentionally not the analytics engine. Python computes; Morpholog 
 ## Quick start
 
 ```bash
-uv sync --dev
+uv sync --all-groups   # dev and capture: scripts/check and the pre-commit gate need both
 ./scripts/install-morpholog
 ./scripts/check
 uv run grid-mysteries doctor

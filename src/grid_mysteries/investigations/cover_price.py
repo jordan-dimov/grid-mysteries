@@ -383,6 +383,40 @@ def bsad_by_vintage(
     return out
 
 
+#: Amendment 2 (2026-10-22): NESO dropped the parentheses from the header of
+#: its daily balancing volume file in the vintage of 2026-10-16. The old
+#: spelling alone is admitted before that vintage; either from it.
+VOLUME_HEADER_RENAMED_FROM = date(2026, 10, 16)
+VOLUME_HEADER_SPELLINGS: tuple[str, ...] = ("{name} (MWh)", "{name} MWh")
+
+
+class FormatDeparture(ValueError):
+    """A pinned file's format departs from what the frozen rules read: named,
+    before any value is read (the doctrine's format check)."""
+
+
+def volume_field(fieldnames: Sequence[str], name: str, vintage: str) -> str:
+    """A2.1 to A2.3: the one column of the daily balancing volume file that
+    carries `name` (``Constraint Offers`` or ``Constraint Bids``) in the
+    vintage dated `vintage`. Before 2026-10-16 only ``<name> (MWh)`` is
+    admitted; from it, ``<name> (MWh)`` or ``<name> MWh``. A header carrying
+    the column under neither admitted spelling, or under both, is refused by
+    name."""
+    admitted = (
+        VOLUME_HEADER_SPELLINGS
+        if date.fromisoformat(vintage) >= VOLUME_HEADER_RENAMED_FROM
+        else VOLUME_HEADER_SPELLINGS[:1]
+    )
+    present = [s.format(name=name) for s in admitted if s.format(name=name) in fieldnames]
+    if len(present) != 1:
+        raise FormatDeparture(
+            f"vintage {vintage}: column {name!r} found under "
+            f"{len(present)} admitted spelling(s) {present} in header {list(fieldnames)}; "
+            "no frozen amendment reads this header"
+        )
+    return present[0]
+
+
 def outcome_columns(
     constraints_gbp: Decimal | None,
     constraint_offers_mwh: Decimal | None,

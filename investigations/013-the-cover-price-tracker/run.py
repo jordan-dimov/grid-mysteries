@@ -201,16 +201,15 @@ def l1_l4_for(day: str, vintage: str) -> tuple[Decimal | None, Decimal | None, D
     costs = neso_rows(vintage, "daily_balancing_costs_2026-27.csv", day, "SETT_DATE")
     constraints = [Decimal(r["Constraints"]) for r in costs if (r.get("Constraints") or "").strip()]
     volumes = neso_rows(vintage, "daily_balancing_volume_2026-27.csv", day, "SETT_DATE")
-    offers = (
-        sum((Decimal(r["Constraint Offers (MWh)"] or "0") for r in volumes), rd.ZERO)
-        if volumes
-        else None
-    )
-    bids = (
-        sum((Decimal(r["Constraint Bids (MWh)"] or "0") for r in volumes), rd.ZERO)
-        if volumes
-        else None
-    )
+    offers = bids = None
+    if volumes:
+        # Amendment 2: the header is read by the rule, under the spelling the
+        # vintage admits, before any value; a third spelling stops the compute.
+        header = list(volumes[0].keys())
+        offers_col = cp.volume_field(header, "Constraint Offers", vintage)
+        bids_col = cp.volume_field(header, "Constraint Bids", vintage)
+        offers = sum((Decimal(r[offers_col] or "0") for r in volumes), rd.ZERO)
+        bids = sum((Decimal(r[bids_col] or "0") for r in volumes), rd.ZERO)
     return (sum(constraints, rd.ZERO) if constraints else None), offers, bids
 
 

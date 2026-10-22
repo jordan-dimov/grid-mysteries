@@ -1,6 +1,8 @@
 from datetime import date
 from decimal import Decimal as D
 
+import pytest
+
 from grid_mysteries.investigations import cover_price as cp
 from grid_mysteries.investigations import record_day as rd
 
@@ -429,3 +431,31 @@ def test_display_cautions_mark_values_without_changing_them():
     unpopulated = dict(base, bsad_net_gbp=None, bsad_share=None, bsad_placeholder_only=True)
     assert "§" not in cp.render_row(unpopulated)  # nothing to caution on a blank
     assert "‡" not in cp.render_row(dict(base, sign_convention_holds=None))
+
+
+# Amendment 2 (2026-10-22): the volume-file header under either spelling
+
+
+OLD_HEADER = ["SETT_DATE", "SETT_PERIOD", "Constraint Offers (MWh)", "Constraint Bids (MWh)"]
+NEW_HEADER = ["SETT_DATE", "SETT_PERIOD", "Constraint Offers MWh", "Constraint Bids MWh"]
+
+
+def test_either_admitted_spelling_resolves_to_one_column_from_the_renaming_vintage():
+    assert (
+        cp.volume_field(OLD_HEADER, "Constraint Offers", "2026-10-16") == "Constraint Offers (MWh)"
+    )
+    assert cp.volume_field(NEW_HEADER, "Constraint Offers", "2026-10-16") == "Constraint Offers MWh"
+    assert cp.volume_field(NEW_HEADER, "Constraint Bids", "2026-10-22") == "Constraint Bids MWh"
+
+
+def test_before_the_renaming_vintage_only_the_old_spelling_is_admitted():
+    assert cp.volume_field(OLD_HEADER, "Constraint Bids", "2026-10-15") == "Constraint Bids (MWh)"
+    with pytest.raises(cp.FormatDeparture, match="vintage 2026-10-15"):
+        cp.volume_field(NEW_HEADER, "Constraint Bids", "2026-10-15")
+
+
+def test_a_header_under_neither_or_both_spellings_is_refused_by_name():
+    with pytest.raises(cp.FormatDeparture, match="'Constraint Offers'.*0 admitted"):
+        cp.volume_field(["SETT_DATE", "Constraint Offers [MWh]"], "Constraint Offers", "2026-10-16")
+    with pytest.raises(cp.FormatDeparture, match="2 admitted"):
+        cp.volume_field(OLD_HEADER + NEW_HEADER[2:], "Constraint Offers", "2026-10-16")

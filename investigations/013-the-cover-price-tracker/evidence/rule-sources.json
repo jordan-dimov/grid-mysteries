@@ -1,9 +1,10 @@
 {
  "declaration": [
   "DECLARATION-T4.md",
-  "AMENDMENT-1.md"
+  "AMENDMENT-1.md",
+  "AMENDMENT-2.md"
  ],
- "note": "Maps T4's rules only. DECLARATION.md (T1 to T3) was frozen on 2026-09-11, before the rule-to-test map existed; its rules are tested in tests/test_cover_price.py but are not mapped here after the fact. AMENDMENT-1.md (L3 append-only, 2026-09-25) is mapped below as A1.*.",
+ "note": "Maps T4's rules only. DECLARATION.md (T1 to T3) was frozen on 2026-09-11, before the rule-to-test map existed; its rules are tested in tests/test_cover_price.py but are not mapped here after the fact. AMENDMENT-1.md (L3 append-only, 2026-09-25) is mapped below as A1.*. AMENDMENT-2.md (L4 header under either spelling by vintage date, 2026-10-22) is mapped as A2.*.",
  "rules": {
   "W1 no seed day and no day before 2026-09-16 or after 2027-03-31 qualifies": "tests/test_cover_price_t4.py::test_no_day_before_2026_09_16_and_no_seed_day_ever_qualifies",
   "X1 x is wind-unit accepted bid MWh over settlement accepted bid MWh, absolute, only when a DISPTAV type reconciles": "tests/test_cover_price_t4.py::test_x_is_wind_bid_volume_over_settlement_bid_volume_and_needs_the_gate",
@@ -20,6 +21,10 @@
   "A1.2 a reading is confirmed when the next pinned vintage reproduces it unchanged; until then the day is provisional": "tests/test_cover_price.py::test_bsad_is_provisional_until_the_next_vintage_reproduces_it",
   "A1.3 a day populated in no vintage stays blank, never zero": "tests/test_cover_price.py::test_bsad_unpopulated_in_every_vintage_stays_blank_never_zero",
   "A1.4 T1 is decided on the confirmed reading; a provisional record day is undecided": "tests/test_cover_price.py::test_evaluate_none_without_instances_and_counterexample_fails",
-  "A1.5 the provisional mark comes from the row's own flag and the note says what it means": "tests/test_cover_price.py::test_display_cautions_mark_values_without_changing_them"
+  "A1.5 the provisional mark comes from the row's own flag and the note says what it means": "tests/test_cover_price.py::test_display_cautions_mark_values_without_changing_them",
+  "A2.1 either admitted spelling of the volume-file header resolves to one column from the vintage of 2026-10-16": "tests/test_cover_price.py::test_either_admitted_spelling_resolves_to_one_column_from_the_renaming_vintage",
+  "A2.2 before 2026-10-16 only the old spelling is admitted": "tests/test_cover_price.py::test_before_the_renaming_vintage_only_the_old_spelling_is_admitted",
+  "A2.3 a header carrying the column under neither or both spellings is refused by name before any value is read": "tests/test_cover_price.py::test_a_header_under_neither_or_both_spellings_is_refused_by_name",
+  "A2.4 a recompute under a new rule version is a second row beside the first, never a replacement": "tests/test_bill_record.py::test_a_recompute_under_a_new_rule_version_is_a_second_row_not_a_replacement"
  }
 }

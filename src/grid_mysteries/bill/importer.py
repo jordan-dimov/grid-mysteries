@@ -34,12 +34,20 @@ RECORD: Final = record.Record(
 )
 act = RECORD.act
 #: The rule version tracked days are computed under today: 013's declaration
-#: (SHA-256 d20d5920…) with Amendment 1 (SHA-256 326cc5fe…) in force.
-RULE: Final = "013-d20d5920-A1"
+#: (SHA-256 d20d5920…) with Amendment 1 (SHA-256 326cc5fe…) and Amendment 2
+#: (SHA-256 659138c3…, 22/10/2026: the volume-file header read under either
+#: spelling by vintage date) in force. A1 stays declared for the days held
+#: under it (26/09 to 21/10/2026); a day recomputed under A2 is a second set.
+RULE: Final = "013-d20d5920-A2"
 RULES: Final = {
-    RULE: (
+    "013-d20d5920-A1": (
         "d20d59203e7b7fda174c2c6deb2807159687bd9ddea39fe760961af884416473",
         "A1 326cc5fee3cbeead72335519fafffca71f561404eafd8eebcc2837d32322e11c",
+    ),
+    RULE: (
+        "d20d59203e7b7fda174c2c6deb2807159687bd9ddea39fe760961af884416473",
+        "A1 326cc5fee3cbeead72335519fafffca71f561404eafd8eebcc2837d32322e11c; "
+        "A2 659138c3fd8732c431fb5e9955fd11c99c6d5fd33bd76f0376dcb407b2ce0d77",
     ),
     "seed-012": (
         "a349ea80",

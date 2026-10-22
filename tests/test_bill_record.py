@@ -198,7 +198,7 @@ def test_a_later_run_adds_only_what_is_new_and_skips_identical_days():
 
 def test_a_day_held_with_different_figures_is_refused_by_name_before_anything_is_proposed():
     state = held_after(importer.plan(importer.State(), tracker([row("2026-09-09")]), "1" * 64))
-    with pytest.raises(importer.PlanError, match="2026-09-09 under 013-d20d5920-A1"):
+    with pytest.raises(importer.PlanError, match=f"2026-09-09 under {importer.RULE}"):
         importer.plan(state, tracker([row("2026-09-09", paid_out="1001")], "2026-09-26"), "2" * 64)
 
 
@@ -214,18 +214,18 @@ def test_a_day_held_in_the_first_shape_is_compared_cell_for_cell_and_never_re_re
     p = importer.plan(state, both, "2" * 64)
     assert p.unchanged == ["2026-09-09"] and p.added == ["2026-09-10"]
     assert "add_day" not in names(p.acts)
-    with pytest.raises(importer.PlanError, match="2026-09-09 under 013-d20d5920-A1"):
+    with pytest.raises(importer.PlanError, match=f"2026-09-09 under {importer.RULE}"):
         importer.plan(state, tracker([row("2026-09-09", paid_out="1001")], "2026-10-21"), "3" * 64)
 
 
 def test_a_recompute_under_a_new_rule_version_is_a_second_row_not_a_replacement(monkeypatch):
     state = held_after(importer.plan(importer.State(), tracker([row("2026-09-09")]), "1" * 64))
-    monkeypatch.setattr(importer, "RULE", "013-d20d5920-A2")
-    monkeypatch.setitem(importer.RULES, "013-d20d5920-A2", ("d20d5920", "A2"))
+    monkeypatch.setattr(importer, "RULE", "013-d20d5920-A3")
+    monkeypatch.setitem(importer.RULES, "013-d20d5920-A3", ("d20d5920", "A3"))
     p = importer.plan(state, tracker([row("2026-09-09", paid_out="1001")], "2026-10-03"), "3" * 64)
     assert p.added == ["2026-09-09"]
     assert [a["args_named"]["rule"] for a in p.acts if a["transformation"] == "declare_rule"] == [
-        "013-d20d5920-A2"
+        "013-d20d5920-A3"
     ]
 
 

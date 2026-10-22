@@ -33,7 +33,9 @@ never proposes to any database, and on Render it only acquires.
   no act admits it (a claim keeps the shape it was admitted with; Morpholog
   migrates no claim to a new shape, and nothing here is backfilled).
 - `RuleVersion`: `013-d20d5920-A1` (the declaration with Amendment 1 in
-  force) for tracked days, `seed-012` for the eight days copied from 012.
+  force) for the tracked days of 26/09 to 21/10/2026, `013-d20d5920-A2`
+  (Amendments 1 and 2, from 22/10/2026) for tracked days from then, `seed-012`
+  for the eight days copied from 012.
 - `Outcome` / `OutcomeRevision`: NESO's L1 and L4, first vintage kept, later
   differing vintages listed. `BsadRevision` / `BsadConfirmed`: Amendment 1's
   append-only L3 and the reading the next vintage reproduced, which decides

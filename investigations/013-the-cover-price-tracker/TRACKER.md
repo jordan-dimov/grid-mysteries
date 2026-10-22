@@ -3,8 +3,8 @@
 *Public name: **The Balancing Bill**, who got paid to keep Britain's grid
 balanced, day by day. The investigation's id, folder, declaration, module and
 evidence paths keep their names; only the render, the page and the drafts use
-the public name. The page at `site/index.html` is a pure function of
-`evidence/tracker.json`.*
+the public name. The page at `site/balancing-bill/index.html` is a pure
+function of `evidence/tracker.json`.*
 
 **One number, on a schedule.** For every GB settlement date from
 2026-09-09, the gross money paid out to units in the Balancing Mechanism
@@ -41,16 +41,16 @@ and pre-settlement; nothing here is a saving, a loss, a boundary attribution
 or a characterisation of any party. Every artefact digest is in
 `evidence/tracker.json`.
 
-Last computed 2026-09-26T13:12:13Z (run date 2026-09-26). NESO vintages on disk:
-2026-09-15, 2026-09-16, 2026-09-17, 2026-09-18, 2026-09-19, 2026-09-20, 2026-09-21, 2026-09-22, 2026-09-23, 2026-09-24, 2026-09-25, 2026-09-26.
+Last computed 2026-10-22T14:41:08Z (run date 2026-10-22). NESO vintages on disk:
+2026-09-15, 2026-09-16, 2026-09-17, 2026-09-18, 2026-09-19, 2026-09-20, 2026-09-21, 2026-09-22, 2026-09-23, 2026-09-24, 2026-09-25, 2026-09-26, 2026-09-27, 2026-09-28, 2026-09-29, 2026-09-30, 2026-10-01, 2026-10-02, 2026-10-03, 2026-10-04, 2026-10-05, 2026-10-06, 2026-10-07, 2026-10-08, 2026-10-09, 2026-10-10, 2026-10-11, 2026-10-12, 2026-10-13, 2026-10-14, 2026-10-15, 2026-10-16, 2026-10-17, 2026-10-18, 2026-10-19, 2026-10-20, 2026-10-21, 2026-10-22.
 
 ## Propositions
 
-- **T1** — on record days the Disaggregated BSAD net share of paid-out exceeds 5 %: undecided (0 instances). Falsifier date 2027-03-31.
-- **T2** — NESO's Constraints figure, when published, exceeds the two cuts (wind-unit bids + gas-unit offers paid) for the same day: **fails** (22 instances, 14 deciding). Falsifier date 2027-03-31.
-- **T3** — on record days the gas-offer premium over APXMIDP exceeds £50/MWh: undecided (0 instances). Falsifier date 2027-03-31.
-- **T4** — NESO's Constraints figure as a share of the two cuts rises with the wind share of accepted bid volume (Spearman rho >= 0.50 over at least 20 qualifying days from 2026-09-16): undecided (6 qualifying days; decided once on 2027-03-31). Declaration SHA-256 `0f3b5a96…`.
-- Record days so far: none. As of 2026-09-26.
+- **T1** — on record days the Disaggregated BSAD net share of paid-out exceeds 5 %: holds (1 instance). Falsifier date 2027-03-31.
+- **T2** — NESO's Constraints figure, when published, exceeds the two cuts (wind-unit bids + gas-unit offers paid) for the same day: **fails** (41 instances, 33 deciding). Falsifier date 2027-03-31.
+- **T3** — on record days the gas-offer premium over APXMIDP exceeds £50/MWh: holds (1 instance). Falsifier date 2027-03-31.
+- **T4** — NESO's Constraints figure as a share of the two cuts rises with the wind share of accepted bid volume (Spearman rho >= 0.50 over at least 20 qualifying days from 2026-09-16): undecided (25 qualifying days; decided once on 2027-03-31). Declaration SHA-256 `0f3b5a96…`.
+- Record days so far: 2026-10-13. As of 2026-10-22.
 
 **T2 failed on 9 September 2026.**
 
@@ -93,5 +93,26 @@ pinned, never zero.
 | 2026-09-20 |  | 22.11 | 21.53 | 5.37 (24.3 %) | 14.31 (64.7 %) | 2.43 (11.0 %) | 206.10 | 156.46 | Tagged | 0.52 (2.4 %) | holds | 23.04 (2026-09-26) | 117.1 % |
 | 2026-09-21 |  | 6.56 | 4.36 | 0.14 (2.2 %) ‡ | 5.28 (80.5 %) | 1.14 (17.3 %) | 246.38 | 73.87 | Tagged | 0.40 (6.1 %) | **fails** | 4.31 (2026-09-26) | 79.4 % |
 | 2026-09-22 |  | 3.95 | 2.17 | 0.11 (2.9 %) ‡ | 3.17 (80.3 %) | 0.67 (16.9 %) |  |  | none reconciles | 0.86 (21.8 %) | **fails** | 2.91 (2026-09-26) | 88.7 % |
+| 2026-09-23 |  | 6.35 | 2.17 | 0.04 (0.6 %) ‡ | 5.44 (85.7 %) | 0.87 (13.7 %) | 220.37 | 67.16 | Tagged | 1.35 (21.2 %) | **fails** | 3.11 (2026-10-04) | 56.7 % |
+| 2026-09-24 |  | 15.75 | 13.11 | 1.12 (7.1 %) | 12.67 (80.5 %) | 1.96 (12.4 %) | 223.99 | 51.34 | Tagged | 2.13 (13.5 %) | holds | 14.05 (2026-10-04) | 101.9 % |
+| 2026-09-25 |  | 10.78 | 9.23 | 0.78 (7.3 %) | 9.11 (84.5 %) | 0.89 (8.2 %) | 214.84 | 63.42 | Tagged | 2.99 (27.7 %) | holds | 12.44 (2026-10-04) | 125.8 % |
+| 2026-09-26 |  | 22.40 | 20.63 | 2.74 (12.2 %) | 18.57 (82.9 %) | 1.09 (4.8 %) | 215.36 | 71.16 | Tagged | 2.59 (11.6 %) | holds | 22.31 (2026-10-04) | 104.7 % |
+| 2026-09-27 |  | 21.80 | 20.84 | 3.41 (15.6 %) | 15.41 (70.7 %) | 2.98 (13.7 %) | 204.64 | 97.15 | Tagged | 1.89 (8.7 %) | holds | 23.63 (2026-10-04) | 125.6 % |
+| 2026-09-28 |  | 7.15 | 3.93 | 0.30 (4.2 %) ‡ | 6.72 (94.0 %) | 0.14 (1.9 %) | 253.92 | 93.01 | Tagged | 4.60 (64.4 %) | **fails** | 0.03 (2026-10-04) | 0.4 % |
+| 2026-09-29 |  | 32.62 | 30.54 | 3.81 (11.7 %) | 25.59 (78.4 %) | 3.22 (9.9 %) | 230.54 | 80.14 | Tagged | 3.24 (9.9 %) | holds | 31.58 (2026-10-04) | 107.4 % |
+| 2026-09-30 |  | 33.24 | 31.32 | 4.46 (13.4 %) | 25.97 (78.1 %) | 2.82 (8.5 %) | 222.11 | 100.13 | Tagged | 4.10 (12.3 %) | holds | 35.68 (2026-10-04) | 117.3 % |
+| 2026-10-01 |  | 12.76 | 7.02 | 0.31 (2.4 %) ‡ | 11.88 (93.1 %) | 0.56 (4.4 %) | 216.24 | 65.43 | Tagged | 3.77 (29.5 %) | **fails** | 10.85 (2026-10-04) | 88.9 % |
+| 2026-10-02 |  | 25.22 | 22.61 | 1.90 (7.5 %) | 21.64 (85.8 %) | 1.67 (6.6 %) | 218.67 | 63.29 | Tagged | 2.92 (11.6 %) | holds | 24.46 (2026-10-10) | 103.9 % |
+| 2026-10-03 |  | 11.31 | 9.55 | 0.53 (4.7 %) | 9.51 (84.1 %) | 1.28 (11.3 %) | 213.62 | 48.44 | Tagged | 0.73 (6.5 %) | holds | 10.44 (2026-10-16) | 104.0 % |
+| 2026-10-04 |  | 27.06 | 25.65 | 3.54 (13.1 %) | 20.24 (74.8 %) | 3.28 (12.1 %) | 213.72 | 78.42 | Tagged | 1.68 (6.2 %) | holds | 28.09 (2026-10-10) | 118.1 % |
+| 2026-10-05 |  | 26.43 | 24.76 | 3.71 (14.0 %) | 19.83 (75.0 %) | 2.90 (11.0 %) | 213.22 | 90.31 | Tagged | 4.15 (15.7 %) | holds | 28.62 (2026-10-10) | 121.6 % |
+| 2026-10-06 |  | 11.33 | 6.64 | 0.08 (0.7 %) ‡ | 10.66 (94.1 %) | 0.59 (5.2 %) | 371.28 | 188.54 | Tagged | 7.45 (65.8 %) | **fails** | 11.88 (2026-10-10) | 110.7 % |
+| 2026-10-07 |  | 6.97 | 3.24 | 0.01 (0.2 %) | 6.69 (96.0 %) | 0.27 (3.8 %) | 226.21 | 62.55 | Tagged | 1.42 (20.3 %) | holds | 2.63 (2026-10-16) | 39.2 % |
+| 2026-10-08 |  | 10.32 | 7.89 | 0.25 (2.4 %) | 8.78 (85.1 %) | 1.29 (12.5 %) | 224.32 | 84.13 | Tagged | 0.80 (7.8 %) | holds | 6.58 (2026-10-16) | 72.8 % |
+| 2026-10-09 |  | 19.72 | 19.54 | 3.26 (16.5 %) | 12.50 (63.4 %) | 3.97 (20.1 %) | 221.84 | 162.27 | Tagged | 0.73 (3.7 %) | holds | 20.27 (2026-10-16) | 128.6 % |
+| 2026-10-10 |  | 24.43 | 23.90 | 4.91 (20.1 %) | 17.30 (70.8 %) | 2.23 (9.1 %) | 227.24 | 143.42 | Tagged | 1.29 (5.3 %) | holds | 24.18 (2026-10-16) | 108.9 % |
+| 2026-10-11 |  | 8.87 | 6.29 | 0.22 (2.4 %) | 8.40 (94.6 %) | 0.26 (2.9 %) | 228.03 | 79.75 | Tagged | -0.70 (-7.9 %) | holds | 2.59 (2026-10-16) | 30.1 % |
+| 2026-10-12 |  | 23.86 | 20.71 | 1.80 (7.6 %) | 20.16 (84.5 %) | 1.90 (8.0 %) | 248.45 | 95.80 | Tagged | 3.49 (14.6 %) | holds |  |  |
+| 2026-10-13 | **record** | 39.14 | 38.09 | 5.55 (14.2 %) | 28.76 (73.5 %) | 4.83 (12.4 %) | 237.91 | 110.55 | Tagged | 2.78 (7.1 %) | holds |  |  |
 
 ‡ The sign check on wind-unit bids failed on the marked days, so the wind-bids figure on those days is ambiguous; each row in `evidence/tracker.json` carries both readings.

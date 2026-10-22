@@ -75,3 +75,5 @@ investigations/025-the-exit-clock/evidence/joins.ndjson
 investigations/025-the-exit-clock/FINDINGS-APPENDIX.md
 investigations/025-the-exit-clock/figures/*.png
 investigations/025-the-exit-clock/figures/*.svg
+investigations/025-the-exit-clock/evidence/reused-keys.json
+investigations/025-the-exit-clock/evidence/ch-journal.ndjson

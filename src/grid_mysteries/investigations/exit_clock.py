@@ -323,10 +323,12 @@ def agreement_family(agreement: object) -> str:
     printed = normalise(agreement)
     if not printed:
         return "blank"
-    if "embedded" in printed or "bega" in printed or "bella" in printed:
+    if "embedded" in printed or printed in ("bega", "bella"):
         return "embedded"
-    if "direct" in printed:
+    if "direct" in printed or printed == "bca":
         return "directly connected"
+    if printed == "null":
+        return "blank"
     return "other"
 
 
@@ -441,3 +443,156 @@ def sighting(
         site=first("Connection Site"),
         project_number=first("Project Number"),
     )
+
+
+# --------------------------------------------------------- classification
+
+EXIT: Final = "exit"
+OPEN: Final = "open"
+COMPLETED: Final = "completed"
+PRESENT: Final = "present at series end"
+NOT_DETERMINABLE: Final = "not determinable"
+CLASSES: Final = (EXIT, OPEN, COMPLETED, PRESENT, NOT_DETERMINABLE)
+#: E1: the archive's largest gap between consecutive copies (schema report).
+N_DAYS: Final = 95
+
+
+def classify(
+    last_sighting: date,
+    last_status: object,
+    *,
+    series_end: date,
+    not_determinable: bool,
+    n_days: int = N_DAYS,
+) -> str:
+    """E1 to E3 and I5: which class a chain falls in at the series end."""
+    if not_determinable:
+        return NOT_DETERMINABLE
+    if last_sighting >= series_end:
+        return PRESENT
+    if is_built(last_status):
+        return COMPLETED
+    if (series_end - last_sighting).days >= n_days:
+        return EXIT
+    return OPEN
+
+
+def exit_copy(last_sighting: date, copy_dates: list[date]) -> date:
+    """E4: the first kept copy after the last sighting."""
+    for d in copy_dates:
+        if d > last_sighting:
+            return d
+    raise ValueError("no copy after the last sighting")
+
+
+def month_start(d: date) -> date:
+    return date(d.year, d.month, 1)
+
+
+def months_in(first: date, last: date) -> list[date]:
+    """K4: the first days of the calendar months from `first`'s to `last`'s
+    inclusive."""
+    out = []
+    m = month_start(first)
+    stop = month_start(last)
+    while m <= stop:
+        out.append(m)
+        m = date(m.year + (m.month // 12), m.month % 12 + 1, 1)
+    return out
+
+
+def regime_of(d: date) -> str:
+    return "new" if d >= REGIME_CUTOFF else "old"
+
+
+# ----------------------------------------------------------------- hazard
+
+
+def byar_interval(k: int, exposure: Decimal) -> tuple[Decimal, Decimal, Decimal] | None:
+    """K5: hazard k ÷ exposure with Byar's 95 % interval on the count.
+    Returns (hazard, lower, upper) per unit of exposure, or None when there
+    is no exposure."""
+    if exposure <= 0:
+        return None
+    z = Decimal("1.96")
+    kd = Decimal(k)
+    low = Decimal(0) if k == 0 else kd * (1 - 1 / (9 * kd) - z / (3 * kd.sqrt())) ** 3
+    k1 = kd + 1
+    high = k1 * (1 - 1 / (9 * k1) + z / (3 * k1.sqrt())) ** 3
+    q = Decimal("0.000001")
+    return (
+        (kd / exposure).quantize(q),
+        (max(low, Decimal(0)) / exposure).quantize(q),
+        (high / exposure).quantize(q),
+    )
+
+
+def flat(intervals: list[tuple[Decimal, Decimal, Decimal] | None]) -> bool | None:
+    """K6: the bands are flat within their uncertainty when every interval
+    shares a common value. None when fewer than two bands have exposure."""
+    present = [iv for iv in intervals if iv is not None]
+    if len(present) < 2:
+        return None
+    return max(iv[1] for iv in present) <= min(iv[2] for iv in present)
+
+
+# --------------------------------------------------------------- the joins
+
+STOP_WORDS: Final = frozenset(
+    [
+        "bess",
+        "battery",
+        "batteries",
+        "energy",
+        "storage",
+        "system",
+        "systems",
+        "facility",
+        "farm",
+        "solar",
+        "wind",
+        "power",
+        "station",
+        "substation",
+        "grid",
+        "national",
+        "road",
+        "lane",
+        "land",
+        "site",
+        "project",
+        "limited",
+        "ltd",
+        "park",
+        "extension",
+        "phase",
+        "tertiary",
+        "north",
+        "south",
+        "east",
+        "west",
+        "new",
+        "connection",
+        "generation",
+        "renewables",
+        "renewable",
+        "plant",
+        "works",
+        "development",
+        "developments",
+        "holdings",
+    ]
+)
+
+
+def place_tokens(value: object) -> frozenset[str]:
+    """The normalised words of four letters or more that are not stop words."""
+    return frozenset(
+        w
+        for w in normalise(value).split()
+        if len(w) >= 4 and w not in STOP_WORDS and not w.isdigit()
+    )
+
+
+def within_one_mw(a: Decimal | None, b: Decimal | None) -> bool:
+    return a is not None and b is not None and abs(a - b) <= 1

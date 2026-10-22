@@ -1,0 +1,142 @@
+{
+ "computed_at": "2026-10-22T10:50:43+00:00",
+ "declaration_sha256": "bc05298419069041ae21b75d0fc556f5ecb48224eb947806325f704f4eb4cd78",
+ "run_on": {
+  "exits": 494,
+  "storage_exits": 101,
+  "storage_exits_id_era": 73
+ },
+ "repd": {
+  "matched_share_storage": "0.208",
+  "matched_share_storage_id_era": "0.178",
+  "threshold_70_met_id_era": false,
+  "states": {
+   "matched": 21,
+   "unmatched": 73,
+   "ambiguous": 7
+  },
+  "tiers": {
+   "b: place token and capacity": 15,
+   "a: operator and place token": 2,
+   "c: operator's only battery row": 4
+  },
+  "classes": {
+   "no planning event before exit": 8,
+   "no planning record": 80,
+   "application pending at exit": 6,
+   "refused, withdrawn or expired before exit": 5,
+   "abandoned (undated)": 2
+  },
+  "classes_id_era": {
+   "no planning event before exit": 4,
+   "no planning record": 60,
+   "refused, withdrawn or expired before exit": 3,
+   "application pending at exit": 4,
+   "abandoned (undated)": 2
+  },
+  "class_by_band_old_regime": {
+   "no planning event before exit": {
+    "more than 12 months after": 4,
+    "more than 24 months before": 3,
+    "12 to 24 months before": 1
+   },
+   "no planning record": {
+    "0 to 12 months after": 8,
+    "0 to 12 months before": 5,
+    "more than 12 months after": 24,
+    "no connection date": 1,
+    "more than 24 months before": 33,
+    "12 to 24 months before": 4
+   },
+   "application pending at exit": {
+    "0 to 12 months before": 1,
+    "more than 12 months after": 2,
+    "12 to 24 months before": 2,
+    "0 to 12 months after": 1
+   },
+   "refused, withdrawn or expired before exit": {
+    "more than 12 months after": 2,
+    "0 to 12 months after": 1,
+    "12 to 24 months before": 1,
+    "more than 24 months before": 1
+   },
+   "abandoned (undated)": {
+    "0 to 12 months after": 1,
+    "more than 12 months after": 1
+   }
+  }
+ },
+ "cmr": {
+  "matched_share_storage": "0.158",
+  "matched_share_storage_id_era": "0.164",
+  "threshold_70_met_id_era": false,
+  "states": {
+   "ambiguous": 33,
+   "matched": 16,
+   "unmatched": 52
+  },
+  "tiers": {
+   "a: company and place token": 6,
+   "c: place token and capacity": 6,
+   "b: company and capacity": 4
+  },
+  "classes": {
+   "no record": 85,
+   "never held": 14,
+   "agreement awarded after exit": 1,
+   "agreement held at exit": 1
+  },
+  "classes_id_era": {
+   "no record": 61,
+   "never held": 10,
+   "agreement awarded after exit": 1,
+   "agreement held at exit": 1
+  },
+  "class_by_band_old_regime": {
+   "no record": {
+    "more than 12 months after": 30,
+    "0 to 12 months after": 4,
+    "0 to 12 months before": 5,
+    "no connection date": 1,
+    "more than 24 months before": 33,
+    "12 to 24 months before": 7
+   },
+   "never held": {
+    "0 to 12 months after": 6,
+    "more than 12 months after": 3,
+    "more than 24 months before": 3,
+    "12 to 24 months before": 1,
+    "0 to 12 months before": 1
+   },
+   "agreement awarded after exit": {
+    "0 to 12 months after": 1
+   },
+   "agreement held at exit": {
+    "more than 24 months before": 1
+   }
+  },
+  "termination_minus_exit_months": {}
+ },
+ "companies_house": {
+  "linked_share_all_exits": "0.243",
+  "linked_share_storage": "0.495",
+  "linked_share_storage_id_era": "0.548",
+  "companies_fetched": 71,
+  "classes": {
+   "not linked": 374,
+   "live charge at exit": 45,
+   "neither": 74,
+   "dissolved, more than twelve months from exit": 1
+  },
+  "classes_storage": {
+   "not linked": 51,
+   "neither": 30,
+   "live charge at exit": 20
+  },
+  "live_charge_share_of_linked": "0.375",
+  "status_now": {
+   "active": 119,
+   "dissolved": 1
+  }
+ }
+}

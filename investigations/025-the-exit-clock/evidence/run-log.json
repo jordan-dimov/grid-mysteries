@@ -27,6 +27,113 @@
    "kept": 791,
    "rekeyings": 3,
    "report_sha256": "fa3cbb802f61d3b692c6a4b8c92d9a9eb49deed44e24eb474b9ca86471aff4b8"
+  },
+  {
+   "phase": "format",
+   "at": "2026-10-22T10:35:28+00:00",
+   "differences": 0,
+   "copies": 793
+  },
+  {
+   "phase": "compute",
+   "at": "2026-10-22T10:36:38+00:00",
+   "declaration": "bc05298419069041",
+   "chains": 2631,
+   "exits": 493,
+   "storage_old": 95,
+   "nd_share_id": "0.0000",
+   "new_chain_lines": 2631
+  },
+  {
+   "phase": "compute-discarded",
+   "at": "2026-10-22T10:38:34+00:00",
+   "note": "run 1 of 22/10/2026 produced 13 chains holding two keys in one copy (a chain that returned under its own key while continuing under a stitched key), a runner defect against I2; its chains.ndjson (sha256 below) and exits.ndjson were discarded before any line was committed and the compute repeated with the continuing-key-first fix",
+   "discarded_chains_sha256": "a41057c3798a33e2bd2f1c319cf86bc3928bf2310bcd06285c785c72873a4c2b"
+  },
+  {
+   "phase": "compute",
+   "at": "2026-10-22T10:39:21+00:00",
+   "declaration": "bc05298419069041",
+   "chains": 2631,
+   "exits": 493,
+   "storage_old": 95,
+   "nd_share_id": "0.0000",
+   "new_chain_lines": 2631
+  },
+  {
+   "phase": "compute",
+   "at": "2026-10-22T10:40:46+00:00",
+   "declaration": "bc05298419069041",
+   "chains": 2631,
+   "exits": 493,
+   "storage_old": 95,
+   "nd_share_id": "0.0000",
+   "new_chain_lines": 2631
+  },
+  {
+   "phase": "compute",
+   "at": "2026-10-22T10:42:07+00:00",
+   "declaration": "bc05298419069041",
+   "chains": 2644,
+   "exits": 494,
+   "storage_old": 96,
+   "nd_share_id": "0.0000",
+   "new_chain_lines": 2644
+  },
+  {
+   "phase": "compute",
+   "at": "2026-10-22T10:43:34+00:00",
+   "declaration": "bc05298419069041",
+   "chains": 2644,
+   "exits": 494,
+   "storage_old": 96,
+   "nd_share_id": "0.0000",
+   "new_chain_lines": 0
+  },
+  {
+   "phase": "compute",
+   "at": "2026-10-22T10:45:00+00:00",
+   "declaration": "bc05298419069041",
+   "chains": 2644,
+   "exits": 494,
+   "storage_old": 96,
+   "nd_share_id": "0.0000",
+   "new_chain_lines": 0
+  },
+  {
+   "phase": "joins",
+   "at": "2026-10-22T10:50:43+00:00",
+   "storage_exits": 101,
+   "repd_share_id_era": "0.178",
+   "cmr_share_id_era": "0.164",
+   "ch_linked": "0.243"
+  },
+  {
+   "phase": "render",
+   "at": "2026-10-22T10:56:01+00:00",
+   "findings_sha256": "78130b7c5f7d5ed01ad0503ef5da203f992e2b62d1aa09c773d18b9db6371cd6",
+   "appendix_sha256": "2686ed4dffc1c6fe96f48abb63f229802b789dfec82797b04574b3cd895ab32e"
+  },
+  {
+   "phase": "figures",
+   "at": "2026-10-22T10:56:02+00:00",
+   "files": [
+    "monthly-exits.png",
+    "exit-clock.png",
+    "hazard-by-band.png"
+   ]
+  },
+  {
+   "phase": "render",
+   "at": "2026-10-22T10:56:22+00:00",
+   "findings_sha256": "afa4a7cabfe421039cf8e374e4a759091c4a7e38fe9fe0321c92df81ff69ad77",
+   "appendix_sha256": "b0c6f221ce091ca7caa54ee05860ab7c1e77213beec784204012a08b11e661fd"
+  },
+  {
+   "phase": "render",
+   "at": "2026-10-22T10:56:56+00:00",
+   "findings_sha256": "d7e83a53ad52ed704513aff7a1ca0e9c27109a3a38c00630e1ac8f4a2cb43f14",
+   "appendix_sha256": "b0c6f221ce091ca7caa54ee05860ab7c1e77213beec784204012a08b11e661fd"
   }
  ]
 }

@@ -1,0 +1,24 @@
+{
+ "declaration": "DECLARATION.md",
+ "rules": {
+  "I2: the key is the Project ID (15 characters) in the ID era and 005's triple before it": "tests/test_exit_clock.py::test_key_is_the_project_id_in_the_id_era_and_the_triple_before_it",
+  "I1: a chain's stage rows are grouped under one key": "tests/test_exit_clock.py::test_keyed_groups_a_chains_stage_rows_under_one_key",
+  "I5: a pair losing more than half its keys is a re-keying": "tests/test_exit_clock.py::test_a_pair_losing_more_than_half_its_keys_is_a_rekeying",
+  "I4: the stitch matches strictest tier first and records the tier": "tests/test_exit_clock.py::test_stitch_matches_strictest_tier_first_and_records_the_tier",
+  "I4: a signature shared by several chains is left to later tiers; the rest are reported": "tests/test_exit_clock.py::test_stitch_leaves_shared_signatures_to_later_tiers_and_reports_the_rest",
+  "I4 tier 0: the Project Number matches before anything else": "tests/test_exit_clock.py::test_stitch_uses_the_project_number_before_anything_else",
+  "I4: the signature is over a chain's rows, so a two-stage chain never matches a one-stage chain": "tests/test_exit_clock.py::test_a_two_stage_chain_never_matches_a_one_stage_chain",
+  "K1: the trigger is 1 April three financial years before the charging financial year": "tests/test_exit_clock.py::test_trigger_is_1_april_three_financial_years_before_the_charging_financial_year",
+  "K3: whole months between dates": "tests/test_exit_clock.py::test_whole_months_between",
+  "K3: band boundaries around the trigger": "tests/test_exit_clock.py::test_band_boundaries_around_a_1_april_2024_trigger",
+  "K3: no connection date is its own band": "tests/test_exit_clock.py::test_no_connection_date_is_its_own_band",
+  "S1: plant family storage-only, storage-mixed, other, blank": "tests/test_exit_clock.py::test_plant_family_reads_storage_only_mixed_other_and_blank",
+  "S2, S3: agreement and status families follow the printed vocabularies": "tests/test_exit_clock.py::test_agreement_and_status_families_follow_the_printed_vocabularies",
+  "I1: a sighting takes the earliest date, the summed MW and the largest cumulative over a chain's rows": "tests/test_exit_clock.py::test_sighting_takes_the_earliest_date_the_summed_mw_and_the_largest_cumulative",
+  "E1 to E3, I5: exit, open, completed, present, not determinable": "tests/test_exit_clock.py::test_classify_exit_open_completed_present_and_not_determinable",
+  "E4, K4, R1: the exit copy, the months at risk and the regime": "tests/test_exit_clock.py::test_exit_copy_is_the_first_kept_copy_after_the_last_sighting_and_months_span_inclusive",
+  "K5: Byar's interval brackets the hazard and is floored at zero": "tests/test_exit_clock.py::test_byar_interval_brackets_the_hazard_and_is_zero_floored",
+  "K6: flatness is a value shared by every band's interval": "tests/test_exit_clock.py::test_flatness_is_a_shared_value_across_every_bands_interval",
+  "J1, J2: place tokens drop stop words, short words and numbers; capacity within 1 MW": "tests/test_exit_clock.py::test_place_tokens_drop_stop_words_short_words_and_numbers"
+ }
+}

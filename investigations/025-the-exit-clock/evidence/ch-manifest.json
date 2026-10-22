@@ -1,0 +1,1280 @@
+[
+ {
+  "source": "companies-house",
+  "dataset": "companies-house-charges",
+  "url": "https://api.company-information.service.gov.uk/company/01589961/charges?items_per_page=100",
+  "path": "data/raw/companies-house/2026-10-22-025/company/01589961/charges.json",
+  "sha256": "b53b20ed1b4b9d8916c39806587c407d0fc1d9bad9bdf86b33a5407a25452897",
+  "fetched_at": "2026-10-22T10:49:10.480296+00:00",
+  "bytes": 22360
+ },
+ {
+  "source": "companies-house",
+  "dataset": "companies-house-profile",
+  "url": "https://api.company-information.service.gov.uk/company/01589961",
+  "path": "data/raw/companies-house/2026-10-22-025/company/01589961/profile.json",
+  "sha256": "c4586b7dcb1865d9d37df109566d03f3d55e47f2b40111407c151fd2f8629eb3",
+  "fetched_at": "2026-10-22T10:49:09.797040+00:00",
+  "bytes": 1564
+ },
+ {
+  "source": "companies-house",
+  "dataset": "companies-house-charges",
+  "url": "https://api.company-information.service.gov.uk/company/02352390/charges?items_per_page=100",
+  "path": "data/raw/companies-house/2026-10-22-025/company/02352390/charges.json",
+  "sha256": "5bd9a9d4e1f288687ce46ba1bf010174c8e817e9d89f180006ec59c3a6c7ba7c",
+  "fetched_at": "2026-10-22T10:49:11.790687+00:00",
+  "bytes": 6907
+ },
+ {
+  "source": "companies-house",
+  "dataset": "companies-house-profile",
+  "url": "https://api.company-information.service.gov.uk/company/02352390",
+  "path": "data/raw/companies-house/2026-10-22-025/company/02352390/profile.json",
+  "sha256": "79466799ec6df0a0389a5f04cfa93cbb9cc1afe883f6b7dcfb10e23e44c104a6",
+  "fetched_at": "2026-10-22T10:49:11.132152+00:00",
+  "bytes": 1733
+ },
+ {
+  "source": "companies-house",
+  "dataset": "companies-house-charges",
+  "url": "https://api.company-information.service.gov.uk/company/02672436/charges?items_per_page=100",
+  "path": "data/raw/companies-house/2026-10-22-025/company/02672436/charges.json",
+  "sha256": "fc837ea41f1b23a85bcdc53c2fa5d5011833449751a62b593992c4c5e81157ee",
+  "fetched_at": "2026-10-22T10:49:13.119520+00:00",
+  "bytes": 11324
+ },
+ {
+  "source": "companies-house",
+  "dataset": "companies-house-profile",
+  "url": "https://api.company-information.service.gov.uk/company/02672436",
+  "path": "data/raw/companies-house/2026-10-22-025/company/02672436/profile.json",
+  "sha256": "174f1b88c8bf150d96aa30f6eab7fcc42d09f48e80ebf997da8059698f528b3f",
+  "fetched_at": "2026-10-22T10:49:12.452108+00:00",
+  "bytes": 1779
+ },
+ {
+  "source": "companies-house",
+  "dataset": "companies-house-charges",
+  "url": "https://api.company-information.service.gov.uk/company/02729513/charges?items_per_page=100",
+  "path": "data/raw/companies-house/2026-10-22-025/company/02729513/charges.json",
+  "sha256": "2168958256c90df54ce775634e8c802a8301f0f1c5496e7858dcd928519ad296",
+  "fetched_at": "2026-10-22T10:49:14.433064+00:00",
+  "bytes": 1388
+ },
+ {
+  "source": "companies-house",
+  "dataset": "companies-house-profile",
+  "url": "https://api.company-information.service.gov.uk/company/02729513",
+  "path": "data/raw/companies-house/2026-10-22-025/company/02729513/profile.json",
+  "sha256": "8645b680092ce3dd36c17325abfd32f1b72f6a45b997d2990e36c95d23ba1414",
+  "fetched_at": "2026-10-22T10:49:13.773779+00:00",
+  "bytes": 1551
+ },
+ {
+  "source": "companies-house",
+  "dataset": "companies-house-charges",
+  "url": "https://api.company-information.service.gov.uk/company/03160233/charges?items_per_page=100",
+  "path": "data/raw/companies-house/2026-10-22-025/company/03160233/charges.json",
+  "sha256": "6ba4eb4c4ba3282091827fc1e016d99ce9dce2ba592cabdabdf60e6eea33dfad",
+  "fetched_at": "2026-10-22T10:49:15.760832+00:00",
+  "bytes": 8361
+ },
+ {
+  "source": "companies-house",
+  "dataset": "companies-house-profile",
+  "url": "https://api.company-information.service.gov.uk/company/03160233",
+  "path": "data/raw/companies-house/2026-10-22-025/company/03160233/profile.json",
+  "sha256": "4168464d8ef0c72bcbf07b87ed8261ca77de182616f4e7317ad91e219cd65138",
+  "fetched_at": "2026-10-22T10:49:15.098866+00:00",
+  "bytes": 1407
+ },
+ {
+  "source": "companies-house",
+  "dataset": "companies-house-charges",
+  "url": "https://api.company-information.service.gov.uk/company/03203285/charges?items_per_page=100",
+  "path": "data/raw/companies-house/2026-10-22-025/company/03203285/charges.json",
+  "sha256": "d159b88fb379fe01174c77d030d1d94dd4cb77bd1e6779cd4402cc31654bea09",
+  "fetched_at": "2026-10-22T10:49:17.083292+00:00",
+  "bytes": 3154
+ },
+ {
+  "source": "companies-house",
+  "dataset": "companies-house-profile",
+  "url": "https://api.company-information.service.gov.uk/company/03203285",
+  "path": "data/raw/companies-house/2026-10-22-025/company/03203285/profile.json",
+  "sha256": "be21c08be49edf756fb1e9c871caf61e50f36fd6e3c6c244712dfc4ddafb9fb2",
+  "fetched_at": "2026-10-22T10:49:16.413210+00:00",
+  "bytes": 1770
+ },
+ {
+  "source": "companies-house",
+  "dataset": "companies-house-charges",
+  "url": "https://api.company-information.service.gov.uk/company/03892782/charges?items_per_page=100",
+  "path": "data/raw/companies-house/2026-10-22-025/company/03892782/charges.json",
+  "sha256": "e09591fe7e22901e124090932d6e1473ec4e7f76c21a7b5122409fa68ed72ddf",
+  "fetched_at": "2026-10-22T10:49:18.421836+00:00",
+  "bytes": 2365
+ },
+ {
+  "source": "companies-house",
+  "dataset": "companies-house-profile",
+  "url": "https://api.company-information.service.gov.uk/company/03892782",
+  "path": "data/raw/companies-house/2026-10-22-025/company/03892782/profile.json",
+  "sha256": "2a364955d0bd7339db9b51d3e1341e8aa8d05a33830d4d91e7e4ae1fe545ad86",
+  "fetched_at": "2026-10-22T10:49:17.745087+00:00",
+  "bytes": 1855
+ },
+ {
+  "source": "companies-house",
+  "dataset": "companies-house-charges",
+  "url": "https://api.company-information.service.gov.uk/company/03949279/charges?items_per_page=100",
+  "path": "data/raw/companies-house/2026-10-22-025/company/03949279/charges.json",
+  "sha256": "4083e190863ce7b68254e5c5c482d6f5024477889b5ff2387673a3f692b4bbd7",
+  "fetched_at": "2026-10-22T10:49:19.752440+00:00",
+  "bytes": 144
+ },
+ {
+  "source": "companies-house",
+  "dataset": "companies-house-profile",
+  "url": "https://api.company-information.service.gov.uk/company/03949279",
+  "path": "data/raw/companies-house/2026-10-22-025/company/03949279/profile.json",
+  "sha256": "f2f56adfd91028fd98038763f7d3fefccd1084e87318f98210229de0d5763e4a",
+  "fetched_at": "2026-10-22T10:49:19.082588+00:00",
+  "bytes": 1564
+ },
+ {
+  "source": "companies-house",
+  "dataset": "companies-house-charges",
+  "url": "https://api.company-information.service.gov.uk/company/04094290/charges?items_per_page=100",
+  "path": "data/raw/companies-house/2026-10-22-025/company/04094290/charges.json",
+  "sha256": "fe25d8c7b0b1381412327b3f5009bdad41cd465ca2c4d2ccfd0a430a4da52f25",
+  "fetched_at": "2026-10-22T10:49:21.087212+00:00",
+  "bytes": 144
+ },
+ {
+  "source": "companies-house",
+  "dataset": "companies-house-profile",
+  "url": "https://api.company-information.service.gov.uk/company/04094290",
+  "path": "data/raw/companies-house/2026-10-22-025/company/04094290/profile.json",
+  "sha256": "487d1e9ae5a4aa6abed5617fd37d5715c4038546ec25b0666a046052a407586d",
+  "fetched_at": "2026-10-22T10:49:20.409100+00:00",
+  "bytes": 1625
+ },
+ {
+  "source": "companies-house",
+  "dataset": "companies-house-charges",
+  "url": "https://api.company-information.service.gov.uk/company/04501104/charges?items_per_page=100",
+  "path": "data/raw/companies-house/2026-10-22-025/company/04501104/charges.json",
+  "sha256": "630bca04958b09c4c8977a48e94d1438f11813561da1d48838f8318869eb3a8c",
+  "fetched_at": "2026-10-22T10:49:22.431492+00:00",
+  "bytes": 39043
+ },
+ {
+  "source": "companies-house",
+  "dataset": "companies-house-profile",
+  "url": "https://api.company-information.service.gov.uk/company/04501104",
+  "path": "data/raw/companies-house/2026-10-22-025/company/04501104/profile.json",
+  "sha256": "864bdf1b904ad6cdafafd22aa8ae22073eabc5421c795187db8d2e482c78c470",
+  "fetched_at": "2026-10-22T10:49:21.748915+00:00",
+  "bytes": 1806
+ },
+ {
+  "source": "companies-house",
+  "dataset": "companies-house-charges",
+  "url": "https://api.company-information.service.gov.uk/company/04883589/charges?items_per_page=100",
+  "path": "data/raw/companies-house/2026-10-22-025/company/04883589/charges.json",
+  "sha256": "0a32759e1f49db50504c5e5a4fd24c11d9d6dcbab502f3e471035a2c068c0dc6",
+  "fetched_at": "2026-10-22T10:49:23.792377+00:00",
+  "bytes": 51697
+ },
+ {
+  "source": "companies-house",
+  "dataset": "companies-house-profile",
+  "url": "https://api.company-information.service.gov.uk/company/04883589",
+  "path": "data/raw/companies-house/2026-10-22-025/company/04883589/profile.json",
+  "sha256": "440f7e21eb3bc05d1405eba0a396ea32d8c74d3ffc75df0b450c25d06a6698ea",
+  "fetched_at": "2026-10-22T10:49:23.080896+00:00",
+  "bytes": 1500
+ },
+ {
+  "source": "companies-house",
+  "dataset": "companies-house-charges",
+  "url": "https://api.company-information.service.gov.uk/company/05742795/charges?items_per_page=100",
+  "path": "data/raw/companies-house/2026-10-22-025/company/05742795/charges.json",
+  "sha256": "912f589858c761fa68380fca09c957519d87e90f228988d1e69560bb8a852ab0",
+  "fetched_at": "2026-10-22T10:49:25.133116+00:00",
+  "bytes": 18428
+ },
+ {
+  "source": "companies-house",
+  "dataset": "companies-house-profile",
+  "url": "https://api.company-information.service.gov.uk/company/05742795",
+  "path": "data/raw/companies-house/2026-10-22-025/company/05742795/profile.json",
+  "sha256": "0fb944b621a747d0c980c2770270c23747d30928ac1e1d588f78284ed31d5a4a",
+  "fetched_at": "2026-10-22T10:49:24.446767+00:00",
+  "bytes": 1396
+ },
+ {
+  "source": "companies-house",
+  "dataset": "companies-house-charges",
+  "url": "https://api.company-information.service.gov.uk/company/05998019/charges?items_per_page=100",
+  "path": "data/raw/companies-house/2026-10-22-025/company/05998019/charges.json",
+  "sha256": "317de921aea20976e2b8b89dfd0fefe974a8bb89bf96d5b5399b436526514ecb",
+  "fetched_at": "2026-10-22T10:49:26.449478+00:00",
+  "bytes": 144
+ },
+ {
+  "source": "companies-house",
+  "dataset": "companies-house-profile",
+  "url": "https://api.company-information.service.gov.uk/company/05998019",
+  "path": "data/raw/companies-house/2026-10-22-025/company/05998019/profile.json",
+  "sha256": "7f0f0ad52bb7cb25daa4b9db9023789ec2da154ac2e5eb7f75533cc11f5b580f",
+  "fetched_at": "2026-10-22T10:49:25.787564+00:00",
+  "bytes": 1600
+ },
+ {
+  "source": "companies-house",
+  "dataset": "companies-house-charges",
+  "url": "https://api.company-information.service.gov.uk/company/06205750/charges?items_per_page=100",
+  "path": "data/raw/companies-house/2026-10-22-025/company/06205750/charges.json",
+  "sha256": "c24a84260c48ff33f0dedb27dcb6b5654c3264186c83df4c033a7ee46787d66f",
+  "fetched_at": "2026-10-22T10:49:27.769824+00:00",
+  "bytes": 7674
+ },
+ {
+  "source": "companies-house",
+  "dataset": "companies-house-profile",
+  "url": "https://api.company-information.service.gov.uk/company/06205750",
+  "path": "data/raw/companies-house/2026-10-22-025/company/06205750/profile.json",
+  "sha256": "a1da6262c7eb1cd3c245a65083a2a22eb4127ae16c8bf417a29d8f91483c4077",
+  "fetched_at": "2026-10-22T10:49:27.099071+00:00",
+  "bytes": 1640
+ },
+ {
+  "source": "companies-house",
+  "dataset": "companies-house-charges",
+  "url": "https://api.company-information.service.gov.uk/company/06451452/charges?items_per_page=100",
+  "path": "data/raw/companies-house/2026-10-22-025/company/06451452/charges.json",
+  "sha256": "600708f065398e2a58fd19ab3d63cc3c15d82e65971e518df3c66e4063722a88",
+  "fetched_at": "2026-10-22T10:49:29.086519+00:00",
+  "bytes": 8706
+ },
+ {
+  "source": "companies-house",
+  "dataset": "companies-house-profile",
+  "url": "https://api.company-information.service.gov.uk/company/06451452",
+  "path": "data/raw/companies-house/2026-10-22-025/company/06451452/profile.json",
+  "sha256": "8cd6890e5af745b7390e75220822ccb41479ee4d386335b375d5954b0e937a86",
+  "fetched_at": "2026-10-22T10:49:28.421558+00:00",
+  "bytes": 1682
+ },
+ {
+  "source": "companies-house",
+  "dataset": "companies-house-charges",
+  "url": "https://api.company-information.service.gov.uk/company/06538309/charges?items_per_page=100",
+  "path": "data/raw/companies-house/2026-10-22-025/company/06538309/charges.json",
+  "sha256": "89927d51b034b9ae877783351e6678be21aab60f9fa1b7592bd070a0b0c5dff5",
+  "fetched_at": "2026-10-22T10:49:30.409175+00:00",
+  "bytes": 3036
+ },
+ {
+  "source": "companies-house",
+  "dataset": "companies-house-profile",
+  "url": "https://api.company-information.service.gov.uk/company/06538309",
+  "path": "data/raw/companies-house/2026-10-22-025/company/06538309/profile.json",
+  "sha256": "21c2d9bae6c822b7f4d455e5fcaca1c81f2e568108bc5a1fce920ff19e1039a9",
+  "fetched_at": "2026-10-22T10:49:29.742099+00:00",
+  "bytes": 1526
+ },
+ {
+  "source": "companies-house",
+  "dataset": "companies-house-charges",
+  "url": "https://api.company-information.service.gov.uk/company/06824625/charges?items_per_page=100",
+  "path": "data/raw/companies-house/2026-10-22-025/company/06824625/charges.json",
+  "sha256": "e78b5f480c94209b9bf8cabd2597e50037d5f35a501130185540b938d380e01b",
+  "fetched_at": "2026-10-22T10:49:31.773367+00:00",
+  "bytes": 15858
+ },
+ {
+  "source": "companies-house",
+  "dataset": "companies-house-profile",
+  "url": "https://api.company-information.service.gov.uk/company/06824625",
+  "path": "data/raw/companies-house/2026-10-22-025/company/06824625/profile.json",
+  "sha256": "3a49b4016c16787bda18dcec3fb62de14804f061f9c06eb510ad23da0fe97304",
+  "fetched_at": "2026-10-22T10:49:31.085427+00:00",
+  "bytes": 1574
+ },
+ {
+  "source": "companies-house",
+  "dataset": "companies-house-charges",
+  "url": "https://api.company-information.service.gov.uk/company/06925667/charges?items_per_page=100",
+  "path": "data/raw/companies-house/2026-10-22-025/company/06925667/charges.json",
+  "sha256": "319304f79f46c8a78318f3e50850dc8f23ac774392f330928aa9e0cff1e50f4c",
+  "fetched_at": "2026-10-22T10:49:33.091422+00:00",
+  "bytes": 144
+ },
+ {
+  "source": "companies-house",
+  "dataset": "companies-house-profile",
+  "url": "https://api.company-information.service.gov.uk/company/06925667",
+  "path": "data/raw/companies-house/2026-10-22-025/company/06925667/profile.json",
+  "sha256": "16b02416afdf20002577022aae4854eadc2f44e08a024d8113f643eb03e44b1c",
+  "fetched_at": "2026-10-22T10:49:32.424838+00:00",
+  "bytes": 1506
+ },
+ {
+  "source": "companies-house",
+  "dataset": "companies-house-charges",
+  "url": "https://api.company-information.service.gov.uk/company/07056616/charges?items_per_page=100",
+  "path": "data/raw/companies-house/2026-10-22-025/company/07056616/charges.json",
+  "sha256": "379ac47ac0fff7a382e6ca0376bc648a74170893f5073296dc017aa01750df34",
+  "fetched_at": "2026-10-22T10:49:34.426833+00:00",
+  "bytes": 8202
+ },
+ {
+  "source": "companies-house",
+  "dataset": "companies-house-profile",
+  "url": "https://api.company-information.service.gov.uk/company/07056616",
+  "path": "data/raw/companies-house/2026-10-22-025/company/07056616/profile.json",
+  "sha256": "22d65c8bb2331b24e14559d9c8171a037808025cfa3b73de46c2920b140ca9cf",
+  "fetched_at": "2026-10-22T10:49:33.751495+00:00",
+  "bytes": 1670
+ },
+ {
+  "source": "companies-house",
+  "dataset": "companies-house-charges",
+  "url": "https://api.company-information.service.gov.uk/company/07538870/charges?items_per_page=100",
+  "path": "data/raw/companies-house/2026-10-22-025/company/07538870/charges.json",
+  "sha256": "d47012cfa10c18f58f6ca3f3eaa359e81e4ad344dbb01869830d0724ba04f4ed",
+  "fetched_at": "2026-10-22T10:49:35.769330+00:00",
+  "bytes": 7363
+ },
+ {
+  "source": "companies-house",
+  "dataset": "companies-house-profile",
+  "url": "https://api.company-information.service.gov.uk/company/07538870",
+  "path": "data/raw/companies-house/2026-10-22-025/company/07538870/profile.json",
+  "sha256": "8ba4e648424dddd9e483aaa9bd3c81283e023734cd29cde1e393a716208cedbe",
+  "fetched_at": "2026-10-22T10:49:35.102519+00:00",
+  "bytes": 1484
+ },
+ {
+  "source": "companies-house",
+  "dataset": "companies-house-charges",
+  "url": "https://api.company-information.service.gov.uk/company/07990781/charges?items_per_page=100",
+  "path": "data/raw/companies-house/2026-10-22-025/company/07990781/charges.json",
+  "sha256": "ad87d13464b5d59ce58cab68358a7873a52dc2dd9deb3b6d1d972e1ada4a5dcf",
+  "fetched_at": "2026-10-22T10:49:37.090067+00:00",
+  "bytes": 144
+ },
+ {
+  "source": "companies-house",
+  "dataset": "companies-house-profile",
+  "url": "https://api.company-information.service.gov.uk/company/07990781",
+  "path": "data/raw/companies-house/2026-10-22-025/company/07990781/profile.json",
+  "sha256": "111829b7eb54cdb57fc9ad7b3210858f87af2ef115ab328fd094b95802d9841c",
+  "fetched_at": "2026-10-22T10:49:36.426451+00:00",
+  "bytes": 1362
+ },
+ {
+  "source": "companies-house",
+  "dataset": "companies-house-charges",
+  "url": "https://api.company-information.service.gov.uk/company/08183909/charges?items_per_page=100",
+  "path": "data/raw/companies-house/2026-10-22-025/company/08183909/charges.json",
+  "sha256": "8ba84876101b2870c97e36075f8336dfd7d58108a58a8507c64370783fa37834",
+  "fetched_at": "2026-10-22T10:49:38.427798+00:00",
+  "bytes": 144
+ },
+ {
+  "source": "companies-house",
+  "dataset": "companies-house-profile",
+  "url": "https://api.company-information.service.gov.uk/company/08183909",
+  "path": "data/raw/companies-house/2026-10-22-025/company/08183909/profile.json",
+  "sha256": "5bd85867f7613f3b309ed0735b02aec89cf5893e22d4a4ab1cffcf2cf73b7143",
+  "fetched_at": "2026-10-22T10:49:37.754276+00:00",
+  "bytes": 1571
+ },
+ {
+  "source": "companies-house",
+  "dataset": "companies-house-charges",
+  "url": "https://api.company-information.service.gov.uk/company/08217768/charges?items_per_page=100",
+  "path": "data/raw/companies-house/2026-10-22-025/company/08217768/charges.json",
+  "sha256": "2398b5b65c55d3c0a34e5460dee084c5f9115fe804255d5058e81ed2557bc0e8",
+  "fetched_at": "2026-10-22T10:49:39.761243+00:00",
+  "bytes": 144
+ },
+ {
+  "source": "companies-house",
+  "dataset": "companies-house-profile",
+  "url": "https://api.company-information.service.gov.uk/company/08217768",
+  "path": "data/raw/companies-house/2026-10-22-025/company/08217768/profile.json",
+  "sha256": "1a975bd6a165934e70c88382e24199982408910d6446aa9d109211bccb1cdba1",
+  "fetched_at": "2026-10-22T10:49:39.081994+00:00",
+  "bytes": 1590
+ },
+ {
+  "source": "companies-house",
+  "dataset": "companies-house-charges",
+  "url": "https://api.company-information.service.gov.uk/company/08584210/charges?items_per_page=100",
+  "path": "data/raw/companies-house/2026-10-22-025/company/08584210/charges.json",
+  "sha256": "60ee2bf8c50e213ff2d5f1820178a6d0702c64f4e8dad422dfe07e432cda482b",
+  "fetched_at": "2026-10-22T10:49:41.090121+00:00",
+  "bytes": 1576
+ },
+ {
+  "source": "companies-house",
+  "dataset": "companies-house-profile",
+  "url": "https://api.company-information.service.gov.uk/company/08584210",
+  "path": "data/raw/companies-house/2026-10-22-025/company/08584210/profile.json",
+  "sha256": "e796e876cc5fed5641f73fa3b9b7db6a576671761f13da900340d293c318b09a",
+  "fetched_at": "2026-10-22T10:49:40.423950+00:00",
+  "bytes": 1734
+ },
+ {
+  "source": "companies-house",
+  "dataset": "companies-house-charges",
+  "url": "https://api.company-information.service.gov.uk/company/08848489/charges?items_per_page=100",
+  "path": "data/raw/companies-house/2026-10-22-025/company/08848489/charges.json",
+  "sha256": "9a3b4ba9bd89f26a4e1acc0d8ae05595694c028a36d9b23544e85b9171954c11",
+  "fetched_at": "2026-10-22T10:49:42.399748+00:00",
+  "bytes": 144
+ },
+ {
+  "source": "companies-house",
+  "dataset": "companies-house-profile",
+  "url": "https://api.company-information.service.gov.uk/company/08848489",
+  "path": "data/raw/companies-house/2026-10-22-025/company/08848489/profile.json",
+  "sha256": "5d74838bfb433447cdb7b54a80a6442d26b2c21e815c9e4d2637e4eda04b65bc",
+  "fetched_at": "2026-10-22T10:49:41.741653+00:00",
+  "bytes": 1571
+ },
+ {
+  "source": "companies-house",
+  "dataset": "companies-house-charges",
+  "url": "https://api.company-information.service.gov.uk/company/08945965/charges?items_per_page=100",
+  "path": "data/raw/companies-house/2026-10-22-025/company/08945965/charges.json",
+  "sha256": "2965564653a84f52b62f5ce9e051cb023769cdb3d770570fd57794164050e489",
+  "fetched_at": "2026-10-22T10:49:43.722325+00:00",
+  "bytes": 2025
+ },
+ {
+  "source": "companies-house",
+  "dataset": "companies-house-profile",
+  "url": "https://api.company-information.service.gov.uk/company/08945965",
+  "path": "data/raw/companies-house/2026-10-22-025/company/08945965/profile.json",
+  "sha256": "939610c9073a898c5dd1d8042a1ff070c3271fb277fc24377367f58bf2c61165",
+  "fetched_at": "2026-10-22T10:49:43.051962+00:00",
+  "bytes": 1670
+ },
+ {
+  "source": "companies-house",
+  "dataset": "companies-house-charges",
+  "url": "https://api.company-information.service.gov.uk/company/09447087/charges?items_per_page=100",
+  "path": "data/raw/companies-house/2026-10-22-025/company/09447087/charges.json",
+  "sha256": "c8707e60e1dee15a37cfade325409bc5f9a8bc16d239ef2b567406e5b9a932dc",
+  "fetched_at": "2026-10-22T10:49:45.075920+00:00",
+  "bytes": 3622
+ },
+ {
+  "source": "companies-house",
+  "dataset": "companies-house-profile",
+  "url": "https://api.company-information.service.gov.uk/company/09447087",
+  "path": "data/raw/companies-house/2026-10-22-025/company/09447087/profile.json",
+  "sha256": "2012ea688e3355133a4595f47edf09ca4d4b875b18ff1fc3c81981659bca48a5",
+  "fetched_at": "2026-10-22T10:49:44.386499+00:00",
+  "bytes": 1384
+ },
+ {
+  "source": "companies-house",
+  "dataset": "companies-house-charges",
+  "url": "https://api.company-information.service.gov.uk/company/09840486/charges?items_per_page=100",
+  "path": "data/raw/companies-house/2026-10-22-025/company/09840486/charges.json",
+  "sha256": "f5afdd8bb37eab5cc5a34a8e9dbe2bcdf40c882f3efc14612bf47590d07bb50f",
+  "fetched_at": "2026-10-22T10:49:46.418131+00:00",
+  "bytes": 7964
+ },
+ {
+  "source": "companies-house",
+  "dataset": "companies-house-profile",
+  "url": "https://api.company-information.service.gov.uk/company/09840486",
+  "path": "data/raw/companies-house/2026-10-22-025/company/09840486/profile.json",
+  "sha256": "9da6e09abcfacd36c08afe00e39e925168e0456d91eaa19571c42107b91b9adf",
+  "fetched_at": "2026-10-22T10:49:45.751388+00:00",
+  "bytes": 1349
+ },
+ {
+  "source": "companies-house",
+  "dataset": "companies-house-charges",
+  "url": "https://api.company-information.service.gov.uk/company/09891173/charges?items_per_page=100",
+  "path": "data/raw/companies-house/2026-10-22-025/company/09891173/charges.json",
+  "sha256": "ef05bf0d8fbfa983e05d54f64303276428c3a6b6772c06ed0b994d6e8b46e9f6",
+  "fetched_at": "2026-10-22T10:49:47.752054+00:00",
+  "bytes": 94
+ },
+ {
+  "source": "companies-house",
+  "dataset": "companies-house-profile",
+  "url": "https://api.company-information.service.gov.uk/company/09891173",
+  "path": "data/raw/companies-house/2026-10-22-025/company/09891173/profile.json",
+  "sha256": "45e40b039a7da711c367104c7ad710ea7517ef34eca264931b89c7e16718a658",
+  "fetched_at": "2026-10-22T10:49:47.083597+00:00",
+  "bytes": 844
+ },
+ {
+  "source": "companies-house",
+  "dataset": "companies-house-charges",
+  "url": "https://api.company-information.service.gov.uk/company/10436249/charges?items_per_page=100",
+  "path": "data/raw/companies-house/2026-10-22-025/company/10436249/charges.json",
+  "sha256": "f71bf1307a09586bb2974dbb61bab88a08953d286583bb777a7b3541db4524ab",
+  "fetched_at": "2026-10-22T10:49:49.075966+00:00",
+  "bytes": 9599
+ },
+ {
+  "source": "companies-house",
+  "dataset": "companies-house-profile",
+  "url": "https://api.company-information.service.gov.uk/company/10436249",
+  "path": "data/raw/companies-house/2026-10-22-025/company/10436249/profile.json",
+  "sha256": "a94ef775f971b9f45f1669470018f20d25cd330d469859aa949b031d213c2fb0",
+  "fetched_at": "2026-10-22T10:49:48.413700+00:00",
+  "bytes": 1489
+ },
+ {
+  "source": "companies-house",
+  "dataset": "companies-house-charges",
+  "url": "https://api.company-information.service.gov.uk/company/10487668/charges?items_per_page=100",
+  "path": "data/raw/companies-house/2026-10-22-025/company/10487668/charges.json",
+  "sha256": "f98ea8706cdbf1b2fc5241c356003a2fffb6c0fc00a6ea2181d433b5a5bf4994",
+  "fetched_at": "2026-10-22T10:49:50.402113+00:00",
+  "bytes": 144
+ },
+ {
+  "source": "companies-house",
+  "dataset": "companies-house-profile",
+  "url": "https://api.company-information.service.gov.uk/company/10487668",
+  "path": "data/raw/companies-house/2026-10-22-025/company/10487668/profile.json",
+  "sha256": "9c770c4d4d295da30b08271b9b5b8bf04e6e98f4b0515dca33dab4861a003eed",
+  "fetched_at": "2026-10-22T10:49:49.733597+00:00",
+  "bytes": 1569
+ },
+ {
+  "source": "companies-house",
+  "dataset": "companies-house-charges",
+  "url": "https://api.company-information.service.gov.uk/company/10487840/charges?items_per_page=100",
+  "path": "data/raw/companies-house/2026-10-22-025/company/10487840/charges.json",
+  "sha256": "41baccdb07c51058b8a58192093af6b7fb6408866e430b783b7a65b4b4c3d217",
+  "fetched_at": "2026-10-22T10:49:51.814140+00:00",
+  "bytes": 1022
+ },
+ {
+  "source": "companies-house",
+  "dataset": "companies-house-profile",
+  "url": "https://api.company-information.service.gov.uk/company/10487840",
+  "path": "data/raw/companies-house/2026-10-22-025/company/10487840/profile.json",
+  "sha256": "eb4f21414c05282c44f09c171f7bb000e817e46b5b868331255e325e8bd18dde",
+  "fetched_at": "2026-10-22T10:49:51.156048+00:00",
+  "bytes": 1339
+ },
+ {
+  "source": "companies-house",
+  "dataset": "companies-house-charges",
+  "url": "https://api.company-information.service.gov.uk/company/10564553/charges?items_per_page=100",
+  "path": "data/raw/companies-house/2026-10-22-025/company/10564553/charges.json",
+  "sha256": "2dd5a9a6c83dca64ea60652da814f43414ffc9f56c751756a7646d5d24683b91",
+  "fetched_at": "2026-10-22T10:49:53.147741+00:00",
+  "bytes": 9484
+ },
+ {
+  "source": "companies-house",
+  "dataset": "companies-house-profile",
+  "url": "https://api.company-information.service.gov.uk/company/10564553",
+  "path": "data/raw/companies-house/2026-10-22-025/company/10564553/profile.json",
+  "sha256": "cf0d44e31c83e8858c39235cd12de683ab1e1a55fede5e8c5130f6efb262a914",
+  "fetched_at": "2026-10-22T10:49:52.478667+00:00",
+  "bytes": 1510
+ },
+ {
+  "source": "companies-house",
+  "dataset": "companies-house-charges",
+  "url": "https://api.company-information.service.gov.uk/company/10813231/charges?items_per_page=100",
+  "path": "data/raw/companies-house/2026-10-22-025/company/10813231/charges.json",
+  "sha256": "c6f6b6112cbe35faf58cf3492e1a8d65fce7b5bac4082f0ac5d09531f5b72821",
+  "fetched_at": "2026-10-22T10:49:54.505651+00:00",
+  "bytes": 144
+ },
+ {
+  "source": "companies-house",
+  "dataset": "companies-house-profile",
+  "url": "https://api.company-information.service.gov.uk/company/10813231",
+  "path": "data/raw/companies-house/2026-10-22-025/company/10813231/profile.json",
+  "sha256": "f1e1db0da44013829b01044d41228512224b9a48b315214149ab4282f7b35910",
+  "fetched_at": "2026-10-22T10:49:53.829254+00:00",
+  "bytes": 1431
+ },
+ {
+  "source": "companies-house",
+  "dataset": "companies-house-charges",
+  "url": "https://api.company-information.service.gov.uk/company/10909660/charges?items_per_page=100",
+  "path": "data/raw/companies-house/2026-10-22-025/company/10909660/charges.json",
+  "sha256": "ade5c34a9229f53443e24e01f46f2870732cace8310f3838002170a65a5b600f",
+  "fetched_at": "2026-10-22T10:49:55.836871+00:00",
+  "bytes": 2037
+ },
+ {
+  "source": "companies-house",
+  "dataset": "companies-house-profile",
+  "url": "https://api.company-information.service.gov.uk/company/10909660",
+  "path": "data/raw/companies-house/2026-10-22-025/company/10909660/profile.json",
+  "sha256": "69fef239295750d9ee6e14c229743e539854721f78053eec060b69d5c46cfa7e",
+  "fetched_at": "2026-10-22T10:49:55.173703+00:00",
+  "bytes": 1329
+ },
+ {
+  "source": "companies-house",
+  "dataset": "companies-house-charges",
+  "url": "https://api.company-information.service.gov.uk/company/11248767/charges?items_per_page=100",
+  "path": "data/raw/companies-house/2026-10-22-025/company/11248767/charges.json",
+  "sha256": "3482e5817027029c6766c3d774a7c73d1c9f79723402a6561b33f25203062611",
+  "fetched_at": "2026-10-22T10:49:57.149311+00:00",
+  "bytes": 1123
+ },
+ {
+  "source": "companies-house",
+  "dataset": "companies-house-profile",
+  "url": "https://api.company-information.service.gov.uk/company/11248767",
+  "path": "data/raw/companies-house/2026-10-22-025/company/11248767/profile.json",
+  "sha256": "6e7c0f5a0a15c2201eee5a26218ab07f9add255cf181b30c0fba247cb45770c5",
+  "fetched_at": "2026-10-22T10:49:56.485088+00:00",
+  "bytes": 1450
+ },
+ {
+  "source": "companies-house",
+  "dataset": "companies-house-charges",
+  "url": "https://api.company-information.service.gov.uk/company/11354627/charges?items_per_page=100",
+  "path": "data/raw/companies-house/2026-10-22-025/company/11354627/charges.json",
+  "sha256": "7b07c8cc8606ccca8f522ff38d4bf7802285d2b11c0be4b78e3788496f2a7792",
+  "fetched_at": "2026-10-22T10:49:58.477118+00:00",
+  "bytes": 1022
+ },
+ {
+  "source": "companies-house",
+  "dataset": "companies-house-profile",
+  "url": "https://api.company-information.service.gov.uk/company/11354627",
+  "path": "data/raw/companies-house/2026-10-22-025/company/11354627/profile.json",
+  "sha256": "cc13f6cdc5da468f43a7ca75a7933812e4098cde89f042017952cdd66eace872",
+  "fetched_at": "2026-10-22T10:49:57.804965+00:00",
+  "bytes": 1361
+ },
+ {
+  "source": "companies-house",
+  "dataset": "companies-house-charges",
+  "url": "https://api.company-information.service.gov.uk/company/11393385/charges?items_per_page=100",
+  "path": "data/raw/companies-house/2026-10-22-025/company/11393385/charges.json",
+  "sha256": "7897216c237304fe3e5c00ae2db06c31f49635eb02b9a86d88590c316338ca61",
+  "fetched_at": "2026-10-22T10:49:59.800988+00:00",
+  "bytes": 144
+ },
+ {
+  "source": "companies-house",
+  "dataset": "companies-house-profile",
+  "url": "https://api.company-information.service.gov.uk/company/11393385",
+  "path": "data/raw/companies-house/2026-10-22-025/company/11393385/profile.json",
+  "sha256": "c8f49ab60f840fcd442d5f127e99b952fe8769d92da3352fb960fa9e86ea5f57",
+  "fetched_at": "2026-10-22T10:49:59.135952+00:00",
+  "bytes": 1334
+ },
+ {
+  "source": "companies-house",
+  "dataset": "companies-house-charges",
+  "url": "https://api.company-information.service.gov.uk/company/11673645/charges?items_per_page=100",
+  "path": "data/raw/companies-house/2026-10-22-025/company/11673645/charges.json",
+  "sha256": "300dec0c99fd790469a28f237dabedde254181c7973c10c8ccf60d7d6eba0d61",
+  "fetched_at": "2026-10-22T10:50:01.126021+00:00",
+  "bytes": 6811
+ },
+ {
+  "source": "companies-house",
+  "dataset": "companies-house-profile",
+  "url": "https://api.company-information.service.gov.uk/company/11673645",
+  "path": "data/raw/companies-house/2026-10-22-025/company/11673645/profile.json",
+  "sha256": "70307afdef383990e2b5c74eace47823a801c870c49010c039f28d21aa4801f3",
+  "fetched_at": "2026-10-22T10:50:00.457426+00:00",
+  "bytes": 1393
+ },
+ {
+  "source": "companies-house",
+  "dataset": "companies-house-charges",
+  "url": "https://api.company-information.service.gov.uk/company/11678461/charges?items_per_page=100",
+  "path": "data/raw/companies-house/2026-10-22-025/company/11678461/charges.json",
+  "sha256": "e2405e5ecaab845a807a7b4f4175d191c58cfdb5dce7c683a301a2f3b83d7044",
+  "fetched_at": "2026-10-22T10:50:02.589187+00:00",
+  "bytes": 2810
+ },
+ {
+  "source": "companies-house",
+  "dataset": "companies-house-profile",
+  "url": "https://api.company-information.service.gov.uk/company/11678461",
+  "path": "data/raw/companies-house/2026-10-22-025/company/11678461/profile.json",
+  "sha256": "97feadb3deb8cf69aa1de0abd1eb96d3d660596db6738541dedf916496628c6a",
+  "fetched_at": "2026-10-22T10:50:01.899873+00:00",
+  "bytes": 1480
+ },
+ {
+  "source": "companies-house",
+  "dataset": "companies-house-charges",
+  "url": "https://api.company-information.service.gov.uk/company/11756439/charges?items_per_page=100",
+  "path": "data/raw/companies-house/2026-10-22-025/company/11756439/charges.json",
+  "sha256": "b0c679f91b42562c630cdff7b6b8239c4a52d82b6750f4e9d6858669f9315589",
+  "fetched_at": "2026-10-22T10:50:03.931355+00:00",
+  "bytes": 144
+ },
+ {
+  "source": "companies-house",
+  "dataset": "companies-house-profile",
+  "url": "https://api.company-information.service.gov.uk/company/11756439",
+  "path": "data/raw/companies-house/2026-10-22-025/company/11756439/profile.json",
+  "sha256": "3eddf55e85c9d53d7172ebfbd27cb2d24b3f0260ee5bf40137aae52ab6e44bc4",
+  "fetched_at": "2026-10-22T10:50:03.250974+00:00",
+  "bytes": 1300
+ },
+ {
+  "source": "companies-house",
+  "dataset": "companies-house-charges",
+  "url": "https://api.company-information.service.gov.uk/company/11884312/charges?items_per_page=100",
+  "path": "data/raw/companies-house/2026-10-22-025/company/11884312/charges.json",
+  "sha256": "7d3c923cd824af47287efc243a772803a66eeab34f3a0175d814284ed99915c4",
+  "fetched_at": "2026-10-22T10:50:05.245096+00:00",
+  "bytes": 144
+ },
+ {
+  "source": "companies-house",
+  "dataset": "companies-house-profile",
+  "url": "https://api.company-information.service.gov.uk/company/11884312",
+  "path": "data/raw/companies-house/2026-10-22-025/company/11884312/profile.json",
+  "sha256": "633755ef069471acfa04e3158386cb491fa3f462772b75c489e3c112cc3f26bb",
+  "fetched_at": "2026-10-22T10:50:04.594309+00:00",
+  "bytes": 1448
+ },
+ {
+  "source": "companies-house",
+  "dataset": "companies-house-charges",
+  "url": "https://api.company-information.service.gov.uk/company/12125532/charges?items_per_page=100",
+  "path": "data/raw/companies-house/2026-10-22-025/company/12125532/charges.json",
+  "sha256": "0644306ac4e666386834f88b8ce4bef4d9ddf573f86c99bdf3feeeb4896cd1e1",
+  "fetched_at": "2026-10-22T10:50:06.570973+00:00",
+  "bytes": 144
+ },
+ {
+  "source": "companies-house",
+  "dataset": "companies-house-profile",
+  "url": "https://api.company-information.service.gov.uk/company/12125532",
+  "path": "data/raw/companies-house/2026-10-22-025/company/12125532/profile.json",
+  "sha256": "ac9dd5c408de8243753ec5f30d4fe027dca9a244acfee7be3e9daa4933deee44",
+  "fetched_at": "2026-10-22T10:50:05.894769+00:00",
+  "bytes": 1422
+ },
+ {
+  "source": "companies-house",
+  "dataset": "companies-house-charges",
+  "url": "https://api.company-information.service.gov.uk/company/12153574/charges?items_per_page=100",
+  "path": "data/raw/companies-house/2026-10-22-025/company/12153574/charges.json",
+  "sha256": "c9976a65a4d7bfeb80a92531c31cd1dee4681e6537e22d04368b6ef253bc6ce9",
+  "fetched_at": "2026-10-22T10:50:07.890186+00:00",
+  "bytes": 144
+ },
+ {
+  "source": "companies-house",
+  "dataset": "companies-house-profile",
+  "url": "https://api.company-information.service.gov.uk/company/12153574",
+  "path": "data/raw/companies-house/2026-10-22-025/company/12153574/profile.json",
+  "sha256": "0cbad54309365555d81dc841b02f3f57be55cf42964433259b9bc4a20a84f9b3",
+  "fetched_at": "2026-10-22T10:50:07.224409+00:00",
+  "bytes": 1308
+ },
+ {
+  "source": "companies-house",
+  "dataset": "companies-house-charges",
+  "url": "https://api.company-information.service.gov.uk/company/12481022/charges?items_per_page=100",
+  "path": "data/raw/companies-house/2026-10-22-025/company/12481022/charges.json",
+  "sha256": "9945007b14c92eeab226bb34ccd420ee2be76ed791656cf7c779c52bc5d5dd1f",
+  "fetched_at": "2026-10-22T10:50:09.204431+00:00",
+  "bytes": 4451
+ },
+ {
+  "source": "companies-house",
+  "dataset": "companies-house-profile",
+  "url": "https://api.company-information.service.gov.uk/company/12481022",
+  "path": "data/raw/companies-house/2026-10-22-025/company/12481022/profile.json",
+  "sha256": "9524b38d708d838e8a1f85af010a818a985960d80b0cff6a008c234977153b5e",
+  "fetched_at": "2026-10-22T10:50:08.546822+00:00",
+  "bytes": 1521
+ },
+ {
+  "source": "companies-house",
+  "dataset": "companies-house-charges",
+  "url": "https://api.company-information.service.gov.uk/company/12633642/charges?items_per_page=100",
+  "path": "data/raw/companies-house/2026-10-22-025/company/12633642/charges.json",
+  "sha256": "7e408e4a472b9b4fb034c9f3a07168e50d462d5316fe841cc9a2eb10cbf982fe",
+  "fetched_at": "2026-10-22T10:50:10.536694+00:00",
+  "bytes": 144
+ },
+ {
+  "source": "companies-house",
+  "dataset": "companies-house-profile",
+  "url": "https://api.company-information.service.gov.uk/company/12633642",
+  "path": "data/raw/companies-house/2026-10-22-025/company/12633642/profile.json",
+  "sha256": "5ebcc8d7274add1e382e4becb477194370b0aedaec3653f59eab7ece69a9e5dd",
+  "fetched_at": "2026-10-22T10:50:09.858813+00:00",
+  "bytes": 1321
+ },
+ {
+  "source": "companies-house",
+  "dataset": "companies-house-charges",
+  "url": "https://api.company-information.service.gov.uk/company/12642196/charges?items_per_page=100",
+  "path": "data/raw/companies-house/2026-10-22-025/company/12642196/charges.json",
+  "sha256": "90ca7a7748d6e08584350a30ea853c4b39a16f91148c28fa1d975cdd658b7546",
+  "fetched_at": "2026-10-22T10:50:11.851508+00:00",
+  "bytes": 144
+ },
+ {
+  "source": "companies-house",
+  "dataset": "companies-house-profile",
+  "url": "https://api.company-information.service.gov.uk/company/12642196",
+  "path": "data/raw/companies-house/2026-10-22-025/company/12642196/profile.json",
+  "sha256": "88baec5759a06cc92078bd5a8840f35dbc4ee48bf67a0b59af1f388c25044de9",
+  "fetched_at": "2026-10-22T10:50:11.184722+00:00",
+  "bytes": 1335
+ },
+ {
+  "source": "companies-house",
+  "dataset": "companies-house-charges",
+  "url": "https://api.company-information.service.gov.uk/company/13308909/charges?items_per_page=100",
+  "path": "data/raw/companies-house/2026-10-22-025/company/13308909/charges.json",
+  "sha256": "ce380507d24f4499f9edac6da1713052c9242b71c77f4fc35fbe99827b3299e1",
+  "fetched_at": "2026-10-22T10:50:13.185777+00:00",
+  "bytes": 144
+ },
+ {
+  "source": "companies-house",
+  "dataset": "companies-house-profile",
+  "url": "https://api.company-information.service.gov.uk/company/13308909",
+  "path": "data/raw/companies-house/2026-10-22-025/company/13308909/profile.json",
+  "sha256": "c39a23d0215fb358f635f6d13bca8d5b23e9d772b707184ac8fd0cf8e4b1d038",
+  "fetched_at": "2026-10-22T10:50:12.517165+00:00",
+  "bytes": 1414
+ },
+ {
+  "source": "companies-house",
+  "dataset": "companies-house-charges",
+  "url": "https://api.company-information.service.gov.uk/company/13354040/charges?items_per_page=100",
+  "path": "data/raw/companies-house/2026-10-22-025/company/13354040/charges.json",
+  "sha256": "1f6d81fe5ac6fd62728e06abd73d96ec588e73fb052f292a45287cbb701f4096",
+  "fetched_at": "2026-10-22T10:50:14.513759+00:00",
+  "bytes": 144
+ },
+ {
+  "source": "companies-house",
+  "dataset": "companies-house-profile",
+  "url": "https://api.company-information.service.gov.uk/company/13354040",
+  "path": "data/raw/companies-house/2026-10-22-025/company/13354040/profile.json",
+  "sha256": "022a29c92ab76dae915031142c31673b40c5dd4efc925e985a1307b5cee9f3d7",
+  "fetched_at": "2026-10-22T10:50:13.848482+00:00",
+  "bytes": 1574
+ },
+ {
+  "source": "companies-house",
+  "dataset": "companies-house-charges",
+  "url": "https://api.company-information.service.gov.uk/company/13757518/charges?items_per_page=100",
+  "path": "data/raw/companies-house/2026-10-22-025/company/13757518/charges.json",
+  "sha256": "34b8f541ccaee4cf01fe833ba27010c3ed19230a0c2eb51046e90e62ced4703b",
+  "fetched_at": "2026-10-22T10:50:15.828084+00:00",
+  "bytes": 144
+ },
+ {
+  "source": "companies-house",
+  "dataset": "companies-house-profile",
+  "url": "https://api.company-information.service.gov.uk/company/13757518",
+  "path": "data/raw/companies-house/2026-10-22-025/company/13757518/profile.json",
+  "sha256": "6b4a00460ff0d3867fda0b80921ad9ec7397338cc7111920ad5153b13e6480ce",
+  "fetched_at": "2026-10-22T10:50:15.169944+00:00",
+  "bytes": 1344
+ },
+ {
+  "source": "companies-house",
+  "dataset": "companies-house-charges",
+  "url": "https://api.company-information.service.gov.uk/company/13884182/charges?items_per_page=100",
+  "path": "data/raw/companies-house/2026-10-22-025/company/13884182/charges.json",
+  "sha256": "aaa72ae8b7f2cae183f2edd32e8baa9f509ae74ca9a8654d6ff7a80c49db4649",
+  "fetched_at": "2026-10-22T10:50:17.143137+00:00",
+  "bytes": 144
+ },
+ {
+  "source": "companies-house",
+  "dataset": "companies-house-profile",
+  "url": "https://api.company-information.service.gov.uk/company/13884182",
+  "path": "data/raw/companies-house/2026-10-22-025/company/13884182/profile.json",
+  "sha256": "da69bf7b34f68b49ab8fb6cd0378d2cc87348678a43b343ebd14f3b9838ec61c",
+  "fetched_at": "2026-10-22T10:50:16.483049+00:00",
+  "bytes": 1322
+ },
+ {
+  "source": "companies-house",
+  "dataset": "companies-house-charges",
+  "url": "https://api.company-information.service.gov.uk/company/14247712/charges?items_per_page=100",
+  "path": "data/raw/companies-house/2026-10-22-025/company/14247712/charges.json",
+  "sha256": "eb8f9f2e149913dedda7a6d84a877809457b46e3cb2a60a7656b9e302fd52c88",
+  "fetched_at": "2026-10-22T10:50:18.458591+00:00",
+  "bytes": 1522
+ },
+ {
+  "source": "companies-house",
+  "dataset": "companies-house-profile",
+  "url": "https://api.company-information.service.gov.uk/company/14247712",
+  "path": "data/raw/companies-house/2026-10-22-025/company/14247712/profile.json",
+  "sha256": "7217be79f5e73fcd01edb12b7cddbb4838bd60d36cd626f8245e22f1f8b0eae1",
+  "fetched_at": "2026-10-22T10:50:17.794051+00:00",
+  "bytes": 1367
+ },
+ {
+  "source": "companies-house",
+  "dataset": "companies-house-charges",
+  "url": "https://api.company-information.service.gov.uk/company/14347177/charges?items_per_page=100",
+  "path": "data/raw/companies-house/2026-10-22-025/company/14347177/charges.json",
+  "sha256": "85ad80c724f67adbe54a19f926bed6a0159a162735abd869287fe475007050fa",
+  "fetched_at": "2026-10-22T10:50:19.811261+00:00",
+  "bytes": 144
+ },
+ {
+  "source": "companies-house",
+  "dataset": "companies-house-profile",
+  "url": "https://api.company-information.service.gov.uk/company/14347177",
+  "path": "data/raw/companies-house/2026-10-22-025/company/14347177/profile.json",
+  "sha256": "f6ccc6ab7913255893629fdcee5d0968244366ae33eea9f0e1c9db2d2b990b93",
+  "fetched_at": "2026-10-22T10:50:19.140100+00:00",
+  "bytes": 1318
+ },
+ {
+  "source": "companies-house",
+  "dataset": "companies-house-charges",
+  "url": "https://api.company-information.service.gov.uk/company/14400118/charges?items_per_page=100",
+  "path": "data/raw/companies-house/2026-10-22-025/company/14400118/charges.json",
+  "sha256": "0e3c8306c14f721ed46a0ec08312e36986ff014044bf291647fdcdbe8bd94ef6",
+  "fetched_at": "2026-10-22T10:50:21.148159+00:00",
+  "bytes": 144
+ },
+ {
+  "source": "companies-house",
+  "dataset": "companies-house-profile",
+  "url": "https://api.company-information.service.gov.uk/company/14400118",
+  "path": "data/raw/companies-house/2026-10-22-025/company/14400118/profile.json",
+  "sha256": "869128383b52a1d1d10107a3b60d50f64c0b483b5db3761ef0b4f6725a5f62d0",
+  "fetched_at": "2026-10-22T10:50:20.475640+00:00",
+  "bytes": 1388
+ },
+ {
+  "source": "companies-house",
+  "dataset": "companies-house-charges",
+  "url": "https://api.company-information.service.gov.uk/company/14509580/charges?items_per_page=100",
+  "path": "data/raw/companies-house/2026-10-22-025/company/14509580/charges.json",
+  "sha256": "dbca75834fdfd3dfec48f004c8d79562f3111efac819280a0656324dc0c57f92",
+  "fetched_at": "2026-10-22T10:50:22.484003+00:00",
+  "bytes": 144
+ },
+ {
+  "source": "companies-house",
+  "dataset": "companies-house-profile",
+  "url": "https://api.company-information.service.gov.uk/company/14509580",
+  "path": "data/raw/companies-house/2026-10-22-025/company/14509580/profile.json",
+  "sha256": "38b1e0bed2748c394796d5660edd104ea07b57d87ea3fb76e4bb5fd6bf727435",
+  "fetched_at": "2026-10-22T10:50:21.811983+00:00",
+  "bytes": 1454
+ },
+ {
+  "source": "companies-house",
+  "dataset": "companies-house-charges",
+  "url": "https://api.company-information.service.gov.uk/company/NI028425/charges?items_per_page=100",
+  "path": "data/raw/companies-house/2026-10-22-025/company/NI028425/charges.json",
+  "sha256": "654c30c022d422277a5ac83e5321f4fcf0940c68faf9dd117c6aead415ac3a9e",
+  "fetched_at": "2026-10-22T10:50:23.819603+00:00",
+  "bytes": 3500
+ },
+ {
+  "source": "companies-house",
+  "dataset": "companies-house-profile",
+  "url": "https://api.company-information.service.gov.uk/company/NI028425",
+  "path": "data/raw/companies-house/2026-10-22-025/company/NI028425/profile.json",
+  "sha256": "f78896b70144c6cffe5c6e22b33376b0789e6dfca027a408374542be33e42847",
+  "fetched_at": "2026-10-22T10:50:23.139102+00:00",
+  "bytes": 1637
+ },
+ {
+  "source": "companies-house",
+  "dataset": "companies-house-charges",
+  "url": "https://api.company-information.service.gov.uk/company/NI043294/charges?items_per_page=100",
+  "path": "data/raw/companies-house/2026-10-22-025/company/NI043294/charges.json",
+  "sha256": "13c1d22739d438f4654cac52e90c42b5d9278e85a19214303f18767f68d30644",
+  "fetched_at": "2026-10-22T10:50:25.161671+00:00",
+  "bytes": 27687
+ },
+ {
+  "source": "companies-house",
+  "dataset": "companies-house-profile",
+  "url": "https://api.company-information.service.gov.uk/company/NI043294",
+  "path": "data/raw/companies-house/2026-10-22-025/company/NI043294/profile.json",
+  "sha256": "40c443938fa84d4d01bb7a3b2494cf6b6c446af6e369ce845dad152b49c51523",
+  "fetched_at": "2026-10-22T10:50:24.475644+00:00",
+  "bytes": 1790
+ },
+ {
+  "source": "companies-house",
+  "dataset": "companies-house-charges",
+  "url": "https://api.company-information.service.gov.uk/company/OC365083/charges?items_per_page=100",
+  "path": "data/raw/companies-house/2026-10-22-025/company/OC365083/charges.json",
+  "sha256": "dcac0aa6a5934187b83c58c918b9ef2c1e564c5e634776a1cf4320d0af9b9c0f",
+  "fetched_at": "2026-10-22T10:50:26.494776+00:00",
+  "bytes": 3480
+ },
+ {
+  "source": "companies-house",
+  "dataset": "companies-house-profile",
+  "url": "https://api.company-information.service.gov.uk/company/OC365083",
+  "path": "data/raw/companies-house/2026-10-22-025/company/OC365083/profile.json",
+  "sha256": "20de7cf532fbe60dc3b387fe48d292f9fbf7e9b19c03db29e4e767f72830db21",
+  "fetched_at": "2026-10-22T10:50:25.829226+00:00",
+  "bytes": 1458
+ },
+ {
+  "source": "companies-house",
+  "dataset": "companies-house-charges",
+  "url": "https://api.company-information.service.gov.uk/company/OC420973/charges?items_per_page=100",
+  "path": "data/raw/companies-house/2026-10-22-025/company/OC420973/charges.json",
+  "sha256": "4c325cb6aa31494e8e858467d53fef7f628eb23374daa36ffe418a0db3abfafc",
+  "fetched_at": "2026-10-22T10:50:27.832263+00:00",
+  "bytes": 2175
+ },
+ {
+  "source": "companies-house",
+  "dataset": "companies-house-profile",
+  "url": "https://api.company-information.service.gov.uk/company/OC420973",
+  "path": "data/raw/companies-house/2026-10-22-025/company/OC420973/profile.json",
+  "sha256": "c45c148194ec5a318a5215df0577646245ac3f86e1b1cd5fe8bd01bf0f82c6cc",
+  "fetched_at": "2026-10-22T10:50:27.167030+00:00",
+  "bytes": 1603
+ },
+ {
+  "source": "companies-house",
+  "dataset": "companies-house-charges",
+  "url": "https://api.company-information.service.gov.uk/company/SC233043/charges?items_per_page=100",
+  "path": "data/raw/companies-house/2026-10-22-025/company/SC233043/charges.json",
+  "sha256": "a50597cfe1ad30b90b22b3f2e745c45c9576cb8979a8cbc6e67ca0a98938e565",
+  "fetched_at": "2026-10-22T10:50:29.157418+00:00",
+  "bytes": 144
+ },
+ {
+  "source": "companies-house",
+  "dataset": "companies-house-profile",
+  "url": "https://api.company-information.service.gov.uk/company/SC233043",
+  "path": "data/raw/companies-house/2026-10-22-025/company/SC233043/profile.json",
+  "sha256": "c2ba24408c32a063eb90a7e76ca048ecfdbcc5c8357428e9f011a5ad06ea691a",
+  "fetched_at": "2026-10-22T10:50:28.490924+00:00",
+  "bytes": 1463
+ },
+ {
+  "source": "companies-house",
+  "dataset": "companies-house-charges",
+  "url": "https://api.company-information.service.gov.uk/company/SC279014/charges?items_per_page=100",
+  "path": "data/raw/companies-house/2026-10-22-025/company/SC279014/charges.json",
+  "sha256": "4aaa8ca9861771af5ee7448b6b1370ff7aad7c06b3a72fc3b7de3960cb23ffc2",
+  "fetched_at": "2026-10-22T10:50:30.500953+00:00",
+  "bytes": 14095
+ },
+ {
+  "source": "companies-house",
+  "dataset": "companies-house-profile",
+  "url": "https://api.company-information.service.gov.uk/company/SC279014",
+  "path": "data/raw/companies-house/2026-10-22-025/company/SC279014/profile.json",
+  "sha256": "7a42a3ed82c58e20040436e3bacf2a225fdf9a0f2e4009227ed98c5742398d00",
+  "fetched_at": "2026-10-22T10:50:29.810212+00:00",
+  "bytes": 1439
+ },
+ {
+  "source": "companies-house",
+  "dataset": "companies-house-charges",
+  "url": "https://api.company-information.service.gov.uk/company/SC297087/charges?items_per_page=100",
+  "path": "data/raw/companies-house/2026-10-22-025/company/SC297087/charges.json",
+  "sha256": "43097e840625f121d526750e594b273094bad01eaa2fc1b38b47df95b5f89225",
+  "fetched_at": "2026-10-22T10:50:31.870175+00:00",
+  "bytes": 1825
+ },
+ {
+  "source": "companies-house",
+  "dataset": "companies-house-profile",
+  "url": "https://api.company-information.service.gov.uk/company/SC297087",
+  "path": "data/raw/companies-house/2026-10-22-025/company/SC297087/profile.json",
+  "sha256": "786e0b2540a0cfd35bf38c2ea7c11c63443728901442523f7b517547efa0bd71",
+  "fetched_at": "2026-10-22T10:50:31.186699+00:00",
+  "bytes": 1511
+ },
+ {
+  "source": "companies-house",
+  "dataset": "companies-house-charges",
+  "url": "https://api.company-information.service.gov.uk/company/SC355143/charges?items_per_page=100",
+  "path": "data/raw/companies-house/2026-10-22-025/company/SC355143/charges.json",
+  "sha256": "7bb5185f3480cd2bf36956c63c3955cb7f0ef6deac7c7eb910a8c035dac086f4",
+  "fetched_at": "2026-10-22T10:50:33.207399+00:00",
+  "bytes": 7446
+ },
+ {
+  "source": "companies-house",
+  "dataset": "companies-house-profile",
+  "url": "https://api.company-information.service.gov.uk/company/SC355143",
+  "path": "data/raw/companies-house/2026-10-22-025/company/SC355143/profile.json",
+  "sha256": "84ec0d83368cd9a80419fec4c82a5c7ebcb3d8e13173c857d2da8059511c562e",
+  "fetched_at": "2026-10-22T10:50:32.531366+00:00",
+  "bytes": 1432
+ },
+ {
+  "source": "companies-house",
+  "dataset": "companies-house-charges",
+  "url": "https://api.company-information.service.gov.uk/company/SC384979/charges?items_per_page=100",
+  "path": "data/raw/companies-house/2026-10-22-025/company/SC384979/charges.json",
+  "sha256": "8688cc8108c2bb5639b6029e171bf97234fde3411f439a42d4b55c8e21714be8",
+  "fetched_at": "2026-10-22T10:50:34.545050+00:00",
+  "bytes": 144
+ },
+ {
+  "source": "companies-house",
+  "dataset": "companies-house-profile",
+  "url": "https://api.company-information.service.gov.uk/company/SC384979",
+  "path": "data/raw/companies-house/2026-10-22-025/company/SC384979/profile.json",
+  "sha256": "73d33a835249b5ac7a0d4a0bf7b4405c9db4f1cb79d2afedb5940c5e731c23f4",
+  "fetched_at": "2026-10-22T10:50:33.873812+00:00",
+  "bytes": 1514
+ },
+ {
+  "source": "companies-house",
+  "dataset": "companies-house-charges",
+  "url": "https://api.company-information.service.gov.uk/company/SC385352/charges?items_per_page=100",
+  "path": "data/raw/companies-house/2026-10-22-025/company/SC385352/charges.json",
+  "sha256": "f0b568e8c321a0eece0dbee5d04164e08de584bed3f197336c615bcc8e6e96d9",
+  "fetched_at": "2026-10-22T10:50:35.879903+00:00",
+  "bytes": 144
+ },
+ {
+  "source": "companies-house",
+  "dataset": "companies-house-profile",
+  "url": "https://api.company-information.service.gov.uk/company/SC385352",
+  "path": "data/raw/companies-house/2026-10-22-025/company/SC385352/profile.json",
+  "sha256": "62499e3bbccf4ce387052464cc0abb1bea63bb57f4665fd0727055eb07ae2b93",
+  "fetched_at": "2026-10-22T10:50:35.200946+00:00",
+  "bytes": 1564
+ },
+ {
+  "source": "companies-house",
+  "dataset": "companies-house-charges",
+  "url": "https://api.company-information.service.gov.uk/company/SC385374/charges?items_per_page=100",
+  "path": "data/raw/companies-house/2026-10-22-025/company/SC385374/charges.json",
+  "sha256": "831a464f56d379cb6695ad0dc1ff04f4d924a0e2ef6f3f2b857e82251f655af7",
+  "fetched_at": "2026-10-22T10:50:37.207178+00:00",
+  "bytes": 144
+ },
+ {
+  "source": "companies-house",
+  "dataset": "companies-house-profile",
+  "url": "https://api.company-information.service.gov.uk/company/SC385374",
+  "path": "data/raw/companies-house/2026-10-22-025/company/SC385374/profile.json",
+  "sha256": "b0d5fe9a9fb93a612aad3019d480454bb6e67b0fbc6306d59851be8c1e7dc2e4",
+  "fetched_at": "2026-10-22T10:50:36.540634+00:00",
+  "bytes": 1573
+ },
+ {
+  "source": "companies-house",
+  "dataset": "companies-house-charges",
+  "url": "https://api.company-information.service.gov.uk/company/SC449688/charges?items_per_page=100",
+  "path": "data/raw/companies-house/2026-10-22-025/company/SC449688/charges.json",
+  "sha256": "cbebcc01a51df5ed6d3e501cf6459ab4dcbf4fb1248cf28d3a7d4352a1a102c9",
+  "fetched_at": "2026-10-22T10:50:38.559017+00:00",
+  "bytes": 9220
+ },
+ {
+  "source": "companies-house",
+  "dataset": "companies-house-profile",
+  "url": "https://api.company-information.service.gov.uk/company/SC449688",
+  "path": "data/raw/companies-house/2026-10-22-025/company/SC449688/profile.json",
+  "sha256": "af32ca1e0887f9eba9ec7f0592549f4a1448eb596a046ebad03c7d3af0108961",
+  "fetched_at": "2026-10-22T10:50:37.882806+00:00",
+  "bytes": 1537
+ },
+ {
+  "source": "companies-house",
+  "dataset": "companies-house-charges",
+  "url": "https://api.company-information.service.gov.uk/company/SC679842/charges?items_per_page=100",
+  "path": "data/raw/companies-house/2026-10-22-025/company/SC679842/charges.json",
+  "sha256": "00a499a26a7f07abd9b1be7fbbad48b0c80e7d2d5c0b28cd5d04df2e50944a68",
+  "fetched_at": "2026-10-22T10:50:39.878020+00:00",
+  "bytes": 144
+ },
+ {
+  "source": "companies-house",
+  "dataset": "companies-house-profile",
+  "url": "https://api.company-information.service.gov.uk/company/SC679842",
+  "path": "data/raw/companies-house/2026-10-22-025/company/SC679842/profile.json",
+  "sha256": "4ad9117fc7d8c04b9dd80735f796631bc8bc3b44a07eaaacba97fb5b20273c04",
+  "fetched_at": "2026-10-22T10:50:39.212552+00:00",
+  "bytes": 1332
+ },
+ {
+  "source": "companies-house",
+  "dataset": "companies-house-charges",
+  "url": "https://api.company-information.service.gov.uk/company/SC691670/charges?items_per_page=100",
+  "path": "data/raw/companies-house/2026-10-22-025/company/SC691670/charges.json",
+  "sha256": "29fce6c3810bfa25edf2290d19946cb6db46069ae9f016f507e9bdfcd287540a",
+  "fetched_at": "2026-10-22T10:50:41.236314+00:00",
+  "bytes": 3727
+ },
+ {
+  "source": "companies-house",
+  "dataset": "companies-house-profile",
+  "url": "https://api.company-information.service.gov.uk/company/SC691670",
+  "path": "data/raw/companies-house/2026-10-22-025/company/SC691670/profile.json",
+  "sha256": "a44cd0fa58bdad24eada3708b300fa002d49027d6b1a590f8757c5a7f83f6497",
+  "fetched_at": "2026-10-22T10:50:40.549442+00:00",
+  "bytes": 1400
+ },
+ {
+  "source": "companies-house",
+  "dataset": "companies-house-charges",
+  "url": "https://api.company-information.service.gov.uk/company/SC692128/charges?items_per_page=100",
+  "path": "data/raw/companies-house/2026-10-22-025/company/SC692128/charges.json",
+  "sha256": "01b7216f3a6af07569bc3a2177d9fbb2c1a3a2c4e0c0c03452406d7e6027d62e",
+  "fetched_at": "2026-10-22T10:50:42.569766+00:00",
+  "bytes": 144
+ },
+ {
+  "source": "companies-house",
+  "dataset": "companies-house-profile",
+  "url": "https://api.company-information.service.gov.uk/company/SC692128",
+  "path": "data/raw/companies-house/2026-10-22-025/company/SC692128/profile.json",
+  "sha256": "ef1f712f4cf84fc702ac9bababfd72c776e49e56988feba8c7b483cb5a31ce45",
+  "fetched_at": "2026-10-22T10:50:41.887243+00:00",
+  "bytes": 1324
+ },
+ {
+  "source": "companies-house",
+  "dataset": "companies-house-charges",
+  "url": "https://api.company-information.service.gov.uk/company/SC698712/charges?items_per_page=100",
+  "path": "data/raw/companies-house/2026-10-22-025/company/SC698712/charges.json",
+  "sha256": "80d592adbdbbd61d9e6fbce0c730d4f239b79c19e60353078446a37d58aec67d",
+  "fetched_at": "2026-10-22T10:50:43.905146+00:00",
+  "bytes": 8797
+ },
+ {
+  "source": "companies-house",
+  "dataset": "companies-house-profile",
+  "url": "https://api.company-information.service.gov.uk/company/SC698712",
+  "path": "data/raw/companies-house/2026-10-22-025/company/SC698712/profile.json",
+  "sha256": "89e16f15db4bac6ff64bdbb26f2979cce4fa4067d34dad77e111347ed29c7aa9",
+  "fetched_at": "2026-10-22T10:50:43.237504+00:00",
+  "bytes": 1366
+ }
+]

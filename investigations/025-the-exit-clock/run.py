@@ -33,14 +33,14 @@ import argparse
 import hashlib
 import json
 import sys
-from collections import Counter
-from datetime import UTC, date, datetime
+from collections import Counter, defaultdict
+from datetime import UTC, date, datetime, timedelta
 from decimal import Decimal
 from pathlib import Path
 from typing import Any
 
 from grid_mysteries.corpus import REPO_ROOT
-from grid_mysteries.evidence import write_json
+from grid_mysteries.evidence import jsonable, write_json
 from grid_mysteries.investigations import connection_slippage as cs
 from grid_mysteries.investigations import exit_clock as ec
 from grid_mysteries.sources.http import fetch_artifact
@@ -523,10 +523,1731 @@ def render_schema(r: dict[str, Any]) -> str:
     return "\n".join(L) + "\n"
 
 
+# ---------------------------------------------------------------- format
+
+FORMAT_CHECK = EVIDENCE / "format-check.json"
+DECLARATION_SHA256 = "bc05298419069041ae21b75d0fc556f5ecb48224eb947806325f704f4eb4cd78"
+SCHEMA_SHA256_PREFIX = "fa3cbb802f61d3b6"
+SERIES_END = date(2026, 10, 20)
+JOIN_ARCHIVES = {
+    "desnz-repd-quarterly-extract-2026-q2": REPO_ROOT / "archives" / "025-repd-2026-q2",
+    "neso-capacity-market-register-cmu": REPO_ROOT / "archives" / "025-cmr-cmu",
+    "neso-capacity-market-register-components": REPO_ROOT / "archives" / "025-cmr-components",
+    "neso-capacity-market-register-cmu-history": REPO_ROOT / "archives" / "025-cmr-cmu-history",
+}
+
+
+def check_manifest() -> dict[str, str]:
+    """C2: every pinned file hashes to the manifest; returns dataset -> sha."""
+    manifest = json.loads(SOURCES_MANIFEST.read_text())
+    out = {}
+    for entry in manifest:
+        path = REPO_ROOT / entry["path"]
+        digest = sha(path)
+        if digest != entry["sha256"]:
+            sys.exit(f"C2: {entry['path']} no longer hashes to the manifest")
+        out[entry["dataset"]] = digest
+    return out
+
+
+def check_schema_report() -> str:
+    digest = sha(SCHEMA_REPORT)
+    if not digest.startswith(SCHEMA_SHA256_PREFIX):
+        sys.exit(
+            f"C2: schema report hashes to {digest[:16]}, declaration cites {SCHEMA_SHA256_PREFIX}"
+        )
+    return digest
+
+
+def csv_header(path: Path) -> list[str]:
+    import csv
+
+    with path.open(newline="", encoding="utf-8-sig", errors="replace") as f:
+        return next(csv.reader(f), [])
+
+
+def phase_format() -> None:
+    """Every copy's format as the reader depends on it (columns, row count)
+    against the schema report; every join file's header against its schema
+    report; every pinned file's digest against the manifest."""
+    check_manifest()
+    report_sha = check_schema_report()
+    report = json.loads(SCHEMA_REPORT.read_text())
+    expected = {e["t_public"]: e for e in report["per_copy"]}
+    usable, skipped = load_copies()
+    differences: list[dict[str, Any]] = []
+    for _copy, v in usable:
+        if v.t_public > SERIES_END:
+            continue
+        e = expected.get(v.t_public.isoformat())
+        if e is None:
+            differences.append(
+                {"t_public": v.t_public.isoformat(), "departure": "copy not in the schema report"}
+            )
+            continue
+        columns = sorted({c for c in v.rows[0] if c})
+        if columns != e["columns"] or len(v.rows) != e["rows"] or v.sha256 != e["sha256"]:
+            differences.append(
+                {
+                    "t_public": v.t_public.isoformat(),
+                    "departure": "columns, rows or digest differ from the schema report",
+                }
+            )
+    if len([v for _, v in usable if v.t_public <= SERIES_END]) != report["copies_usable"]:
+        differences.append(
+            {
+                "departure": f"usable copies {len(usable)} against {report['copies_usable']} in the report"
+            }
+        )
+    later = [v.t_public.isoformat() for _, v in usable if v.t_public > SERIES_END]
+    files = {}
+    for dataset, archive in JOIN_ARCHIVES.items():
+        path = SOURCES[dataset][2]
+        arch = json.loads((archive / "schema-report.json").read_text())
+        header = csv_header(path)
+        expected_cols = [c["name"] for c in arch["columns"]]
+        files[dataset] = {
+            "sha256": sha(path),
+            "header_matches_schema_report": header == expected_cols,
+            "columns": len(header),
+        }
+        if header != expected_cols or sha(path) != arch["sha256"]:
+            differences.append(
+                {"dataset": dataset, "departure": "header or digest differs from its schema report"}
+            )
+    out = {
+        "checked_at": datetime.now(UTC).isoformat(timespec="seconds"),
+        "declaration_sha256": DECLARATION_SHA256,
+        "schema_report_sha256": report_sha,
+        "series_end": SERIES_END.isoformat(),
+        "copies_checked": len([v for _, v in usable if v.t_public <= SERIES_END]),
+        "copies_after_series_end_not_read": later,
+        "unreadable": skipped,
+        "join_files": files,
+        "differences": differences,
+    }
+    write_json(FORMAT_CHECK, out)
+    log_run("format", differences=len(differences), copies=out["copies_checked"])
+    print(
+        f"format check: {out['copies_checked']} copies, {len(files)} join files, {len(differences)} differences -> {FORMAT_CHECK.relative_to(REPO_ROOT)}"
+    )
+    if differences:
+        for d in differences:
+            print("  ", d)
+        sys.exit(1)
+
+
+# --------------------------------------------------------------- compute
+
+CHAINS = EVIDENCE / "chains.ndjson"
+EXITS = EVIDENCE / "exits.ndjson"
+RESULTS_JSON = EVIDENCE / "results.json"
+CLOCKS = ("A", "B", "C")
+STATE_FIELDS = (
+    "key",
+    "rows",
+    "status",
+    "plant_type",
+    "agreement",
+    "host_to",
+    "stage_mw",
+    "cumulative_mw",
+    "connection",
+    "gate",
+    "name",
+    "customer",
+    "site",
+    "project_number",
+)
+
+
+def sealed_declaration(seal: str | None) -> str:
+    digest = sha(DECLARATION)
+    if digest != DECLARATION_SHA256:
+        sys.exit(
+            f"DECLARATION.md hashes to {digest[:8]}…, the runner expects {DECLARATION_SHA256[:8]}…"
+        )
+    if not seal or not digest.startswith(seal):
+        sys.exit(f"compute needs --seal, the prefix of DECLARATION.md's SHA-256 ({digest[:8]}…)")
+    if not (HERE / "DECLARATION.md.timestamps.json").exists():
+        sys.exit("DECLARATION.md is not frozen (no proof sidecar)")
+    return digest
+
+
+class Chain:
+    """One chain: its runs of unchanged state over consecutive kept copies,
+    its key changes, interruptions and flags. Built by `build_chains`."""
+
+    def __init__(self, chain_id: str, first_index: int) -> None:
+        self.id = chain_id
+        self.first_index = first_index
+        self.runs: list[dict[str, Any]] = []
+        self.key_changes: list[dict[str, str]] = []
+        self.interruptions = 0
+        self.stage_reductions = 0
+        self.not_determinable = False
+        self.nd_at: date | None = None
+        self.last_index = -1
+        self.sightings = 0
+
+    def add(self, s: ec.Sighting, index: int) -> None:
+        state = {f: getattr(s, f) for f in STATE_FIELDS}
+        if self.runs and self.last_index == index - 1 and self.runs[-1]["state"] == state:
+            self.runs[-1]["last_t"] = s.t_public
+            self.runs[-1]["last_sha"] = s.sha256
+            self.runs[-1]["copies"] += 1
+        else:
+            if self.runs and self.last_index != index - 1:
+                self.interruptions += 1
+            if self.runs and state["rows"] < self.runs[-1]["state"]["rows"]:
+                self.stage_reductions += 1
+            self.runs.append(
+                {
+                    "first_t": s.t_public,
+                    "last_t": s.t_public,
+                    "first_sha": s.sha256,
+                    "last_sha": s.sha256,
+                    "copies": 1,
+                    "state": state,
+                }
+            )
+        self.last_index = index
+        self.sightings += 1
+        self.not_determinable = False
+        self.nd_at = None
+
+    @property
+    def first(self) -> dict[str, Any]:
+        return self.runs[0]
+
+    @property
+    def last(self) -> dict[str, Any]:
+        return self.runs[-1]
+
+    def present_at(self, t: date) -> dict[str, Any] | None:
+        for r in self.runs:
+            if r["first_t"] <= t <= r["last_t"]:
+                return r
+        return None
+
+    def state_in_month(self, month: date) -> dict[str, Any]:
+        """The run active in a calendar month: the latest run that began on or
+        before the month's last day (K2, clock C)."""
+        end = date(month.year + (month.month // 12), month.month % 12 + 1, 1)
+        chosen = self.runs[0]
+        for r in self.runs:
+            if r["first_t"] < end:
+                chosen = r
+            else:
+                break
+        return chosen["state"]
+
+    def families(self) -> list[str]:
+        return [ec.plant_family(r["state"]["plant_type"]) for r in self.runs]
+
+    def reclassified(self) -> bool:
+        fams = [f for f in self.families() if f != "blank"]
+        return len(set(fams)) > 1
+
+    def as_line(self) -> dict[str, Any]:
+        return {
+            "chain": self.id,
+            "first_t": self.first["first_t"],
+            "last_t": self.last["last_t"],
+            "sightings": self.sightings,
+            "runs": self.runs,
+            "key_changes": self.key_changes,
+            "interruptions": self.interruptions,
+            "stage_reductions": self.stage_reductions,
+            "not_determinable": self.not_determinable,
+            "nd_at": self.nd_at,
+        }
+
+
+def build_chains(sequence: list[analysis.Kept]) -> tuple[dict[str, Chain], list[dict[str, Any]]]:
+    """I1 to I9 over the kept copies in publication order."""
+    chains: dict[str, Chain] = {}
+    chain_by_key: dict[str, str] = {}
+    seen_key_chain: dict[str, str] = {}
+    prev_keys: dict[str, list[dict[str, object]]] = {}
+    prev_t: date | None = None
+    pair_log: list[dict[str, Any]] = []
+    reused_keys: list[dict[str, Any]] = []
+    for index, k in enumerate(sequence):
+        t = k.vintage.t_public
+        rows = list(k.vintage.rows)
+        keys = ec.keyed(rows, t)
+        mapping: dict[str, str] = {}
+        claimed: set[str] = set()
+        vanished = {kk: rs for kk, rs in prev_keys.items() if kk not in keys}
+        appeared = {kk: rs for kk, rs in keys.items() if kk not in prev_keys}
+        # I3: continuing keys claim their chains first.
+        for kk in keys:
+            if kk in prev_keys:
+                mapping[kk] = chain_by_key[kk]
+                claimed.add(chain_by_key[kk])
+        # I9: a key seen before returns to its chain, unless that chain is
+        # already printed in this copy under another key (then the row is a
+        # different project reusing a key, and is new).
+        returned = 0
+        for kk in list(appeared):
+            cid = seen_key_chain.get(kk)
+            if cid is not None and cid not in claimed:
+                mapping[kk] = cid
+                claimed.add(cid)
+                returned += 1
+                del appeared[kk]
+            elif cid is not None:
+                under = next(k2 for k2, c2 in mapping.items() if c2 == cid)
+                reused_keys.append(
+                    {
+                        "t_public": t.isoformat(),
+                        "key": kk,
+                        "chain": cid,
+                        "chain_printed_under": under,
+                        "era": "id" if ec.is_id_era(t) else "pre-id",
+                    }
+                )
+        st = ec.stitch(vanished, appeared)
+        c = ec.continuity(prev_t or t, t, set(prev_keys), set(keys)) if prev_t else None
+        rekeying = bool(c and c.rekeying)
+        tier_counts = Counter(st.tier_of.values())
+        fresh = list(st.unmatched_new) + list(st.ambiguous_new)
+        for new_key, old_key in st.matched.items():
+            cid = chain_by_key[old_key]
+            if cid in claimed:
+                fresh.append(new_key)
+                reused_keys.append(
+                    {
+                        "t_public": t.isoformat(),
+                        "key": new_key,
+                        "chain": cid,
+                        "chain_printed_under": next(k2 for k2, c2 in mapping.items() if c2 == cid),
+                        "era": "id" if ec.is_id_era(t) else "pre-id",
+                        "via": f"stitch tier {st.tier_of[new_key]} to {old_key}",
+                    }
+                )
+                continue
+            mapping[new_key] = cid
+            claimed.add(cid)
+            chains[cid].key_changes.append(
+                {
+                    "t_public": t.isoformat(),
+                    "from": old_key,
+                    "to": new_key,
+                    "tier": st.tier_of[new_key],
+                }
+            )
+        for new_key in fresh:
+            cid = f"{new_key}@{t.isoformat()}"
+            chains[cid] = Chain(cid, index)
+            mapping[new_key] = cid
+        nd = 0
+        if rekeying:
+            for old_key in list(st.unmatched_old) + list(st.ambiguous_old):
+                ch = chains[chain_by_key[old_key]]
+                ch.not_determinable = True
+                ch.nd_at = t
+                nd += 1
+        added: set[str] = set()
+        for kk in keys:
+            cid = mapping.get(kk)
+            if cid is None:
+                raise RuntimeError(f"{t}: key {kk} has no chain")
+            if cid in added:
+                raise RuntimeError(f"{t}: chain {cid} would be added twice in one copy (I2)")
+            added.add(cid)
+            chains[cid].add(
+                ec.sighting(t, k.vintage.sha256, kk, keys[kk], swapped=k.swapped), index
+            )
+            seen_key_chain[kk] = cid
+        if c is not None:
+            pair_log.append(
+                {
+                    "earlier": c.earlier.isoformat(),
+                    "later": t.isoformat(),
+                    "rekeying": rekeying,
+                    "vanished": len(vanished),
+                    "appeared": len(appeared) + returned,
+                    "returned_own_key": returned,
+                    "stitched": len(st.matched),
+                    "tiers": dict(tier_counts),
+                    "new_chains": len(fresh),
+                    "ambiguous_new": len(st.ambiguous_new),
+                    "ambiguous_old": len(st.ambiguous_old),
+                    "unmatched_old": len(st.unmatched_old),
+                    "not_determinable": nd,
+                }
+            )
+        chain_by_key = mapping
+        prev_keys = keys
+        prev_t = t
+    return chains, pair_log, reused_keys
+
+
+def strata_of(state: dict[str, Any], first_t: date) -> dict[str, str]:
+    fam = ec.plant_family(state["plant_type"])
+    return {
+        "family": fam,
+        "storage": "storage" if fam in ("storage-only", "storage-mixed") else "other",
+        "status": ec.status_family(state["status"]),
+        "agreement": ec.agreement_family(state["agreement"]),
+        "host_to": ec.text(state["host_to"]) or "(blank)",
+        "cohort": "2014 opening" if first_t == date(2014, 1, 31) else str(first_t.year),
+    }
+
+
+def nested() -> Any:
+    return defaultdict(nested)
+
+
+def phase_compute(seal: str | None) -> None:
+    declaration = sealed_declaration(seal)
+    manifest_shas = check_manifest()
+    report_sha = check_schema_report()
+    usable, skipped = load_copies()
+    vintages = [v for _, v in usable if v.t_public <= SERIES_END]
+    kept, suspects = kept_map(vintages)
+    sequence = sorted(kept.values(), key=lambda k: k.vintage.t_public)
+    copy_dates = [k.vintage.t_public for k in sequence]
+    if copy_dates[-1] != SERIES_END:
+        sys.exit(
+            f"C1: the last kept copy is {copy_dates[-1]}, the declaration ends the series at {SERIES_END}"
+        )
+    chains, pair_log, reused_keys = build_chains(sequence)
+    exit_cutoff = SERIES_END - timedelta(days=ec.N_DAYS)
+
+    # ---- classes (E1 to E3, I5), C3
+    classes: Counter[str] = Counter()
+    per_chain: dict[str, dict[str, Any]] = {}
+    for cid, ch in chains.items():
+        last = ch.last
+        cls = ec.classify(
+            last["last_t"],
+            last["state"]["status"],
+            series_end=SERIES_END,
+            not_determinable=ch.not_determinable,
+        )
+        classes[cls] += 1
+        per_chain[cid] = {"class": cls}
+    if sum(classes.values()) != len(chains):
+        sys.exit("C3: classes do not sum to the chains")
+
+    # ---- not determinable by era (I8)
+    era_counts: dict[str, Counter[str]] = {"pre-id": Counter(), "id": Counter()}
+    for cid, ch in chains.items():
+        era = "id" if ch.last["last_t"] >= ec.ID_ERA_FROM else "pre-id"
+        era_counts[era]["chains"] += 1
+        if per_chain[cid]["class"] == ec.NOT_DETERMINABLE:
+            era_counts[era]["not_determinable"] += 1
+    nd_share_id = Decimal(era_counts["id"]["not_determinable"]) / Decimal(
+        era_counts["id"]["chains"] or 1
+    )
+
+    # ---- exits, bands, exposure, strata (E4, K2 to K5, S1 to S5, R1)
+    exits: list[dict[str, Any]] = []
+    expo: Any = nested()  # expo[dim][value][regime][clock][band] = months
+    exits_by: Any = nested()  # exits_by[dim][value][regime][clock][band] = count
+    monthly: Any = nested()
+    total_exposure_months = 0
+    reclassified = Counter()
+    for cid, ch in chains.items():
+        cls = per_chain[cid]["class"]
+        last_state = ch.last["state"]
+        first_state = ch.first["state"]
+        strata = strata_of(last_state, ch.first["first_t"])
+        strata_pairs = [("all", "all"), *strata.items()]
+        if strata["family"] == "storage-only":
+            strata_pairs.append(("storage_only", "storage-only"))
+        trig_a = ec.trigger_date(last_state["connection"]) if last_state["connection"] else None
+        trig_b = ec.trigger_date(first_state["connection"]) if first_state["connection"] else None
+        if ch.reclassified():
+            reclassified["chains"] += 1
+            if (
+                strata["storage"] == "storage"
+                or "storage" in {ec.plant_family(r["state"]["plant_type"]) for r in ch.runs}
+                or any(f.startswith("storage") for f in ch.families())
+            ):
+                reclassified["touching storage"] += 1
+        if cls == ec.NOT_DETERMINABLE:
+            continue
+        months = ec.months_in(ch.first["first_t"], ch.last["last_t"])
+        total_exposure_months += len(months)
+        for m in months:
+            regime = ec.regime_of(m)
+            conn_c = ch.state_in_month(m)["connection"]
+            trig_c = ec.trigger_date(conn_c) if conn_c else None
+            bands = {"A": ec.band(m, trig_a), "B": ec.band(m, trig_b), "C": ec.band(m, trig_c)}
+            for dim, value in strata_pairs:
+                for clock, b in bands.items():
+                    cell = expo[dim][value][regime][clock]
+                    cell[b] = cell.get(b, 0) + 1
+        if cls != ec.EXIT:
+            continue
+        xc = ec.exit_copy(ch.last["last_t"], copy_dates)
+        regime = ec.regime_of(xc)
+        bands = {"A": ec.band(xc, trig_a), "B": ec.band(xc, trig_b), "C": ec.band(xc, trig_a)}
+        months_to_trigger_a = ec.months_between(xc, trig_a) if trig_a else None
+        for dim, value in strata_pairs:
+            for clock, b in bands.items():
+                cell = exits_by[dim][value][regime][clock]
+                cell[b] = cell.get(b, 0) + 1
+        month_key = xc.strftime("%Y-%m")
+        mw = last_state["stage_mw"] or Decimal(0)
+        mrow = monthly[month_key]
+        for key, cond in (
+            ("all", True),
+            ("storage", strata["storage"] == "storage"),
+            ("storage_only", strata["family"] == "storage-only"),
+        ):
+            if cond:
+                mrow[key] = mrow.get(key, 0) + 1
+                mrow[f"mw_{key}"] = mrow.get(f"mw_{key}", Decimal(0)) + mw
+        exits.append(
+            {
+                "chain": cid,
+                "regime": regime,
+                "first_t": ch.first["first_t"].isoformat(),
+                "last_t": ch.last["last_t"].isoformat(),
+                "last_sha256": ch.last["last_sha"],
+                "exit_copy": xc.isoformat(),
+                "exit_month": month_key,
+                "gap_days": (xc - ch.last["last_t"]).days,
+                "connection_at_last": last_state["connection"].isoformat()
+                if last_state["connection"]
+                else None,
+                "connection_at_first": first_state["connection"].isoformat()
+                if first_state["connection"]
+                else None,
+                "trigger_a": trig_a.isoformat() if trig_a else None,
+                "trigger_b": trig_b.isoformat() if trig_b else None,
+                "months_to_trigger_a": months_to_trigger_a,
+                "band_a": bands["A"],
+                "band_b": bands["B"],
+                **strata,
+                "status_printed": last_state["status"],
+                "plant_type_printed": last_state["plant_type"],
+                "gate": last_state["gate"],
+                "stage_mw": str(mw),
+                "rows": last_state["rows"],
+                "sightings": ch.sightings,
+                "key_changes": len(ch.key_changes),
+                "interruptions": ch.interruptions,
+                "reclassified": ch.reclassified(),
+                "join_key": {
+                    "first": {
+                        f: first_state[f]
+                        for f in ("name", "customer", "site", "key", "project_number", "stage_mw")
+                    },
+                    "last": {
+                        f: last_state[f]
+                        for f in ("name", "customer", "site", "key", "project_number", "stage_mw")
+                    },
+                },
+            }
+        )
+    # C4
+    for dim in exits_by:
+        for value in exits_by[dim]:
+            for regime in exits_by[dim][value]:
+                sums = {
+                    clock: sum(exits_by[dim][value][regime][clock].values()) for clock in CLOCKS
+                }
+                if len(set(sums.values())) != 1:
+                    sys.exit(f"C4: bands do not sum alike across clocks for {dim}={value} {regime}")
+    exit_count = sum(1 for e in exits)
+    if (
+        sum(v for v in exits_by["all"]["all"]["old"]["A"].values())
+        + sum(v for v in exits_by["all"]["all"]["new"]["A"].values())
+        != exit_count
+    ):
+        sys.exit("C4: bands do not sum to exits")
+
+    # ---- hazards (K5, K6)
+    def hazard_table(dim: str, value: str, regime: str, clock: str) -> list[dict[str, Any]]:
+        out = []
+        for b in (*ec.BANDS, ec.UNDATED):
+            k = exits_by[dim][value][regime][clock].get(b, 0) if value in exits_by[dim] else 0
+            e = expo[dim][value][regime][clock].get(b, 0) if value in expo[dim] else 0
+            iv = ec.byar_interval(k, Decimal(e))
+            out.append(
+                {
+                    "band": b,
+                    "exits": k,
+                    "chain_months": e,
+                    "hazard_per_chain_month": str(iv[0]) if iv else None,
+                    "lower": str(iv[1]) if iv else None,
+                    "upper": str(iv[2]) if iv else None,
+                    "per_100_chain_years": str((iv[0] * 1200).quantize(Decimal("0.01")))
+                    if iv
+                    else None,
+                    "per_100_chain_years_lower": str((iv[1] * 1200).quantize(Decimal("0.01")))
+                    if iv
+                    else None,
+                    "per_100_chain_years_upper": str((iv[2] * 1200).quantize(Decimal("0.01")))
+                    if iv
+                    else None,
+                }
+            )
+        return out
+
+    def flatness(dim: str, value: str, regime: str, clock: str) -> bool | None:
+        ivs = []
+        for b in ec.BANDS:
+            k = exits_by[dim][value][regime][clock].get(b, 0)
+            e = expo[dim][value][regime][clock].get(b, 0)
+            ivs.append(ec.byar_interval(k, Decimal(e)))
+        return ec.flat(ivs)
+
+    hazards: dict[str, Any] = {}
+    for regime in ("old", "new"):
+        hazards[regime] = {}
+        for clock in CLOCKS:
+            hazards[regime][clock] = {
+                "all": hazard_table("all", "all", regime, clock),
+                "storage": hazard_table("storage", "storage", regime, clock),
+                "storage-only": hazard_table("storage_only", "storage-only", regime, clock),
+                "other": hazard_table("storage", "other", regime, clock),
+            }
+    storage_strata: dict[str, Any] = {}
+    # Strata tables over storage chains: a second accumulation restricted to storage.
+    s_expo: Any = nested()
+    s_exits: Any = nested()
+    for cid, ch in chains.items():
+        cls = per_chain[cid]["class"]
+        if cls == ec.NOT_DETERMINABLE:
+            continue
+        last_state = ch.last["state"]
+        strata = strata_of(last_state, ch.first["first_t"])
+        if strata["storage"] != "storage":
+            continue
+        trig_a = ec.trigger_date(last_state["connection"]) if last_state["connection"] else None
+        for m in ec.months_in(ch.first["first_t"], ch.last["last_t"]):
+            if ec.regime_of(m) != "old":
+                continue
+            b = ec.band(m, trig_a)
+            for dim in ("status", "agreement", "host_to", "cohort"):
+                cell = s_expo[dim][strata[dim]]
+                cell[b] = cell.get(b, 0) + 1
+        if cls == ec.EXIT:
+            xc = ec.exit_copy(ch.last["last_t"], copy_dates)
+            if ec.regime_of(xc) == "old":
+                b = ec.band(xc, trig_a)
+                for dim in ("status", "agreement", "host_to", "cohort"):
+                    cell = s_exits[dim][strata[dim]]
+                    cell[b] = cell.get(b, 0) + 1
+    for dim in ("status", "agreement", "host_to", "cohort"):
+        storage_strata[dim] = {}
+        for value in sorted(set(s_expo[dim]) | set(s_exits[dim])):
+            rows_out = []
+            for b in (*ec.BANDS, ec.UNDATED):
+                k = s_exits[dim][value].get(b, 0)
+                e = s_expo[dim][value].get(b, 0)
+                iv = ec.byar_interval(k, Decimal(e))
+                rows_out.append(
+                    {
+                        "band": b,
+                        "exits": k,
+                        "chain_months": e,
+                        "per_100_chain_years": str((iv[0] * 1200).quantize(Decimal("0.01")))
+                        if iv
+                        else None,
+                        "lower": str((iv[1] * 1200).quantize(Decimal("0.01"))) if iv else None,
+                        "upper": str((iv[2] * 1200).quantize(Decimal("0.01"))) if iv else None,
+                    }
+                )
+            storage_strata[dim][value] = {
+                "exits": sum(r["exits"] for r in rows_out),
+                "chain_months": sum(r["chain_months"] for r in rows_out),
+                "bands": rows_out,
+            }
+
+    storage_old_exits = sum(exits_by["storage"]["storage"]["old"]["A"].values())
+    storage_only_old_exits = sum(exits_by["storage_only"]["storage-only"]["old"]["A"].values())
+
+    # ---- reconciliation (O1, O2)
+    def snapshot_on_or_after(d: date) -> date:
+        return next(c for c in copy_dates if c >= d)
+
+    snapshots = [
+        snapshot_on_or_after(date(2023, 1, 1)),
+        snapshot_on_or_after(date(2024, 1, 1)),
+        snapshot_on_or_after(date(2025, 1, 1)),
+        max(c for c in copy_dates if c < ec.REGIME_CUTOFF),
+    ]
+    o1 = []
+    for s, s_next in zip(snapshots, snapshots[1:], strict=False):
+        by_status: dict[str, Counter[str]] = defaultdict(Counter)
+        for cid, ch in chains.items():
+            r = ch.present_at(s)
+            if r is None:
+                continue
+            fam = ec.plant_family(r["state"]["plant_type"])
+            if fam not in ("storage-only", "storage-mixed"):
+                continue
+            st = ec.status_family(r["state"]["status"])
+            by_status[st]["present"] += 1
+            by_status["all"]["present"] += 1
+            left = per_chain[cid]["class"] == ec.EXIT and ch.last["last_t"] < s_next
+            if left:
+                by_status[st]["left"] += 1
+                by_status["all"]["left"] += 1
+            r2 = ch.present_at(s_next)
+            if r2 is not None and ec.plant_family(r2["state"]["plant_type"]) not in (
+                "storage-only",
+                "storage-mixed",
+            ):
+                by_status[st]["reclassified_away"] += 1
+                by_status["all"]["reclassified_away"] += 1
+            elif r2 is not None and ec.plant_family(r2["state"]["plant_type"]) != fam:
+                by_status[st]["family_changed_within_storage"] += 1
+                by_status["all"]["family_changed_within_storage"] += 1
+        o1.append(
+            {
+                "snapshot": s.isoformat(),
+                "next": s_next.isoformat(),
+                "days": (s_next - s).days,
+                "by_status": {
+                    st: {
+                        **dict(c),
+                        "left_share": str(
+                            (Decimal(c["left"]) / Decimal(c["present"])).quantize(Decimal("0.0001"))
+                        )
+                        if c["present"]
+                        else None,
+                    }
+                    for st, c in sorted(by_status.items())
+                },
+            }
+        )
+    window_exits = [
+        e for e in exits if "2023-01" <= e["exit_month"] <= "2025-11" and e["storage"] == "storage"
+    ]
+    o2 = {
+        "window": "exit copies 2023-01-01 to 2025-11-30 (old regime)",
+        "storage_exits": len(window_exits),
+        "storage_only_exits": sum(1 for e in window_exits if e["family"] == "storage-only"),
+        "by_status": dict(Counter(e["status"] for e in window_exits)),
+        "by_exit_year": dict(Counter(e["exit_month"][:4] for e in window_exits)),
+        "ofgem": {
+            "exited_or_reclassified_2023_2025": 72,
+            "per_year": "6.7%",
+            "scoping_or_awaiting": "7.4%",
+            "consents_approved": "3%",
+            "under_construction": "0%",
+        },
+    }
+
+    # ---- row counts through the break (R3)
+    rows_through_break = [
+        {"t_public": k.vintage.t_public.isoformat(), "rows": len(k.vintage.rows)}
+        for k in sequence
+        if date(2025, 10, 1) <= k.vintage.t_public <= date(2026, 3, 1)
+    ]
+
+    # ---- C5: chains.ndjson append-only; exits.ndjson rewritten from chains
+    existing: dict[str, str] = {}
+    if CHAINS.exists():
+        for raw in CHAINS.read_text().splitlines():
+            if raw.strip():
+                existing[json.loads(raw)["chain"]] = raw
+    new_lines = []
+    for cid in sorted(chains):
+        line = json.dumps(chains[cid].as_line(), default=jsonable, sort_keys=True)
+        if cid in existing:
+            if existing[cid] != line:
+                sys.exit(f"C5: chains.ndjson line {cid} would change on recompute")
+        else:
+            new_lines.append(line)
+    with CHAINS.open("a") as f:
+        for line in new_lines:
+            f.write(line + "\n")
+    (EVIDENCE / "reused-keys.json").write_text(json.dumps(reused_keys, indent=1) + "\n")
+    EXITS.write_text(
+        "".join(
+            json.dumps(e, default=jsonable, sort_keys=True) + "\n"
+            for e in sorted(exits, key=lambda e: (e["exit_copy"], e["chain"]))
+        )
+    )
+
+    results = {
+        "investigation": "025-the-exit-clock",
+        "declaration_sha256": declaration,
+        "schema_report_sha256": report_sha,
+        "sources_manifest_sha256": sha(SOURCES_MANIFEST),
+        "computed_at": datetime.now(UTC).isoformat(timespec="seconds"),
+        "series": {
+            "first_copy": copy_dates[0].isoformat(),
+            "last_copy": SERIES_END.isoformat(),
+            "kept_copies": len(sequence),
+            "usable_copies": len(vintages),
+            "unreadable": len(skipped),
+            "suspect_copies": [{**s, "t_public": s["t_public"].isoformat()} for s in suspects],
+            "n_days": ec.N_DAYS,
+            "exit_cutoff": exit_cutoff.isoformat(),
+        },
+        "chains": {
+            "total": len(chains),
+            "classes": dict(classes),
+            "by_era": {k: dict(v) for k, v in era_counts.items()},
+            "not_determinable_share_id_era": str(nd_share_id.quantize(Decimal("0.0001"))),
+            "kill_a_fired": nd_share_id > Decimal("0.10"),
+            "reclassified": dict(reclassified),
+            "stage_reductions": sum(ch.stage_reductions for ch in chains.values()),
+            "interrupted_chains": sum(1 for ch in chains.values() if ch.interruptions),
+            "key_changes": sum(len(ch.key_changes) for ch in chains.values()),
+            "key_change_tiers": dict(
+                Counter(kc["tier"] for ch in chains.values() for kc in ch.key_changes)
+            ),
+        },
+        "reused_keys": {
+            "count": len(reused_keys),
+            "by_copy": dict(Counter(r["t_public"] for r in reused_keys)),
+            "by_era": dict(Counter(r["era"] for r in reused_keys)),
+            "via_stitch": sum(1 for r in reused_keys if "via" in r),
+        },
+        "pairs": {
+            "count": len(pair_log),
+            "rekeying": [p for p in pair_log if p["rekeying"]],
+            "returned_own_key_total": sum(p["returned_own_key"] for p in pair_log),
+            "stitched_total": sum(p["stitched"] for p in pair_log),
+            "not_determinable_total": sum(p["not_determinable"] for p in pair_log),
+        },
+        "exits": {
+            "total": exit_count,
+            "old_regime": sum(1 for e in exits if e["regime"] == "old"),
+            "new_regime": sum(1 for e in exits if e["regime"] == "new"),
+            "storage_old_regime": storage_old_exits,
+            "storage_only_old_regime": storage_only_old_exits,
+            "kill_b_fired": storage_old_exits < 200,
+            "by_class": {
+                "family": dict(Counter(e["family"] for e in exits)),
+                "status": dict(Counter(e["status"] for e in exits)),
+                "agreement": dict(Counter(e["agreement"] for e in exits)),
+                "host_to": dict(Counter(e["host_to"] for e in exits)),
+                "cohort": dict(Counter(e["cohort"] for e in exits)),
+                "regime": dict(Counter(e["regime"] for e in exits)),
+            },
+            "gap_days": {
+                "median": sorted(e["gap_days"] for e in exits)[len(exits) // 2] if exits else None,
+                "max": max((e["gap_days"] for e in exits), default=None),
+            },
+            "new_regime_by_gate": dict(
+                Counter((e["gate"] or "(blank)") for e in exits if e["regime"] == "new")
+            ),
+            "new_regime_by_status": dict(
+                Counter(e["status"] for e in exits if e["regime"] == "new")
+            ),
+        },
+        "exposure": {"total_chain_months": total_exposure_months},
+        "monthly": {
+            m: {k: (str(v) if isinstance(v, Decimal) else v) for k, v in monthly[m].items()}
+            for m in sorted(monthly)
+        },
+        "hazards": hazards,
+        "flat": {
+            "storage_old_A": flatness("storage", "storage", "old", "A"),
+            "storage_old_B": flatness("storage", "storage", "old", "B"),
+            "storage_old_C": flatness("storage", "storage", "old", "C"),
+            "storage_only_old_A": flatness("storage_only", "storage-only", "old", "A"),
+            "all_old_A": flatness("all", "all", "old", "A"),
+            "other_old_A": flatness("storage", "other", "old", "A"),
+        },
+        "storage_strata_old_A": storage_strata,
+        "months_to_trigger_histogram_storage_old": dict(
+            sorted(
+                Counter(
+                    e["months_to_trigger_a"]
+                    for e in exits
+                    if e["regime"] == "old"
+                    and e["storage"] == "storage"
+                    and e["months_to_trigger_a"] is not None
+                ).items()
+            )
+        ),
+        "months_to_trigger_histogram_all_old": dict(
+            sorted(
+                Counter(
+                    e["months_to_trigger_a"]
+                    for e in exits
+                    if e["regime"] == "old" and e["months_to_trigger_a"] is not None
+                ).items()
+            )
+        ),
+        "reconciliation": {"o1_snapshots": o1, "o2_window": o2},
+        "rows_through_break": rows_through_break,
+        "pinned": manifest_shas,
+    }
+    write_json(RESULTS_JSON, results)
+    log_run(
+        "compute",
+        declaration=declaration[:16],
+        chains=len(chains),
+        exits=exit_count,
+        storage_old=storage_old_exits,
+        nd_share_id=str(nd_share_id.quantize(Decimal("0.0001"))),
+        new_chain_lines=len(new_lines),
+    )
+    print(
+        f"{len(chains)} chains; classes {dict(classes)}; exits {exit_count} (old {results['exits']['old_regime']}, storage old {storage_old_exits}); ND share id era {nd_share_id:.4f}; kill a {results['chains']['kill_a_fired']}, kill b {results['exits']['kill_b_fired']}, flat storage old A {results['flat']['storage_old_A']}"
+    )
+
+
+# ----------------------------------------------------------------- joins
+
+JOINS = EVIDENCE / "joins.ndjson"
+JOINS_RESULTS = EVIDENCE / "joins-results.json"
+Q019 = REPO_ROOT / "investigations" / "019-who-holds-the-queue" / "evidence"
+RUN_019 = "2026-09-30"
+CH_RUN_DATE = "2026-10-22"
+CH_RAW = REPO_ROOT / "data" / "raw" / "companies-house" / f"{CH_RUN_DATE}-025"
+CH_JOURNAL = EVIDENCE / "ch-journal.ndjson"
+CH_MANIFEST = EVIDENCE / "ch-manifest.json"
+REPD_DATE_COLUMNS = {
+    "refused": ("Planning Permission Refused", "Appeal Refused", "Secretary of State - Refusal"),
+    "withdrawn": ("Planning Application Withdrawn", "Appeal Withdrawn"),
+    "expired": ("Planning Permission Expired",),
+    "granted": ("Planning Permission Granted", "Appeal Granted", "Secretary of State - Granted"),
+    "submitted": ("Planning Application Submitted",),
+}
+
+
+def read_csv(path: Path) -> list[dict[str, str]]:
+    import csv
+
+    with path.open(newline="", encoding="utf-8-sig", errors="replace") as f:
+        return [
+            {(k or "").strip(): (v or "").strip() for k, v in r.items()} for r in csv.DictReader(f)
+        ]
+
+
+def uk_date(value: str) -> date | None:
+    from grid_mysteries.sources.tec_register import parse_date
+
+    return parse_date(value)
+
+
+def company_forms(*names: str) -> set[str]:
+    from grid_mysteries.sources.companies_house import normalise_company_name
+
+    out = set()
+    for n in names:
+        for part in str(n or "").split("/"):
+            c = normalise_company_name(part.strip())
+            if c:
+                out.add(c)
+    return out
+
+
+def unique(candidates: list[str]) -> tuple[str | None, str]:
+    if len(candidates) == 1:
+        return candidates[0], "matched"
+    if candidates:
+        return None, "ambiguous"
+    return None, "unmatched"
+
+
+def repd_class(row: dict[str, str], m: date) -> str:
+    def dates(kind: str) -> list[date]:
+        return [d for c in REPD_DATE_COLUMNS[kind] for d in [uk_date(row.get(c, ""))] if d]
+
+    adverse = [d for k in ("refused", "withdrawn", "expired") for d in dates(k) if d < m]
+    grants = [d for d in dates("granted") if d < m]
+    if adverse:
+        last_adverse = max(adverse)
+        if not any(g > last_adverse for g in grants):
+            return "refused, withdrawn or expired before exit"
+    if grants:
+        return "consented at exit"
+    if row.get("Development Status (short)") == "Abandoned":
+        return "abandoned (undated)"
+    if any(d < m for d in dates("submitted")):
+        return "application pending at exit"
+    return "no planning event before exit"
+
+
+def join_repd(exits: list[dict[str, Any]]) -> dict[str, dict[str, Any]]:
+    rows = [
+        r
+        for r in read_csv(SOURCES["desnz-repd-quarterly-extract-2026-q2"][2])
+        if r.get("Technology Type") == "Battery"
+    ]
+    from grid_mysteries.sources.tec_register import parse_decimal
+
+    prepared = []
+    for r in rows:
+        prepared.append(
+            {
+                "row": r,
+                "ref": r["Ref ID"],
+                "tokens": ec.place_tokens(r.get("Site Name", "")),
+                "operators": company_forms(r.get("Operator (or Applicant)", "")),
+                "capacity": parse_decimal(r.get("Installed Capacity (MWelec)", "")),
+            }
+        )
+    by_operator: dict[str, list[dict[str, Any]]] = defaultdict(list)
+    for pr in prepared:
+        for o in pr["operators"]:
+            by_operator[o].append(pr)
+    out = {}
+    for e in exits:
+        jk = e["join_key"]
+        tokens = ec.place_tokens(jk["last"]["name"]) | ec.place_tokens(jk["first"]["name"])
+        customers = company_forms(jk["last"]["customer"], jk["first"]["customer"])
+        mw = parse_decimal(jk["last"]["stage_mw"])
+        m = date.fromisoformat(e["exit_copy"]).replace(day=1)
+        tier = None
+        cands_a = [
+            pr["ref"] for o in customers for pr in by_operator.get(o, []) if pr["tokens"] & tokens
+        ]
+        ref, state = unique(sorted(set(cands_a)))
+        if ref:
+            tier = "a: operator and place token"
+        if ref is None and state != "ambiguous":
+            cands_b = [
+                pr["ref"]
+                for pr in prepared
+                if pr["tokens"] & tokens and ec.within_one_mw(pr["capacity"], mw)
+            ]
+            ref, state = unique(sorted(set(cands_b)))
+            if ref:
+                tier = "b: place token and capacity"
+        if ref is None and state != "ambiguous":
+            cands_c = sorted(
+                {
+                    pr["ref"]
+                    for o in customers
+                    for pr in by_operator.get(o, [])
+                    if len(by_operator[o]) == 1
+                }
+            )
+            ref, state = unique(cands_c)
+            if ref:
+                tier = "c: operator's only battery row"
+        row = next((pr["row"] for pr in prepared if pr["ref"] == ref), None) if ref else None
+        out[e["chain"]] = {
+            "state": state,
+            "tier": tier,
+            "repd_ref": ref,
+            "class": repd_class(row, m) if row else "no planning record",
+            "development_status": row.get("Development Status (short)") if row else None,
+        }
+    return out
+
+
+def join_cmr(exits: list[dict[str, Any]]) -> dict[str, dict[str, Any]]:
+    from grid_mysteries.sources.tec_register import parse_decimal
+
+    cmu_rows = [
+        r
+        for r in read_csv(SOURCES["neso-capacity-market-register-cmu"][2])
+        if r.get("Primary Fuel Type") == "Storage - Battery"
+    ]
+    comp_rows = read_csv(SOURCES["neso-capacity-market-register-components"][2])
+    locations: dict[str, set[str]] = defaultdict(set)
+    for r in comp_rows:
+        locations[r.get("CMU ID", "")] |= ec.place_tokens(r.get("Location and Post Code", ""))
+    cmus: dict[str, dict[str, Any]] = {}
+    for r in cmu_rows:
+        cid = r.get("CMU ID", "")
+        c = cmus.setdefault(
+            cid, {"companies": set(), "tokens": set(), "capacities": [], "rows": []}
+        )
+        c["companies"] |= company_forms(r.get("Name of Applicant", ""), r.get("Parent Company", ""))
+        c["tokens"] |= ec.place_tokens(r.get("CM Unit Name", "")) | locations.get(cid, set())
+        cap = parse_decimal(r.get("Connection or DSR Capacity", ""))
+        if cap is not None:
+            c["capacities"].append(cap)
+        c["rows"].append(r)
+    by_company: dict[str, list[str]] = defaultdict(list)
+    for cid, c in cmus.items():
+        for co in c["companies"]:
+            by_company[co].append(cid)
+    out = {}
+    for e in exits:
+        jk = e["join_key"]
+        tokens = (
+            ec.place_tokens(jk["last"]["name"])
+            | ec.place_tokens(jk["first"]["name"])
+            | ec.place_tokens(jk["last"]["site"])
+        )
+        customers = company_forms(jk["last"]["customer"], jk["first"]["customer"])
+        mw = parse_decimal(jk["last"]["stage_mw"])
+        m = date.fromisoformat(e["exit_copy"]).replace(day=1)
+        tier = None
+        cands = sorted(
+            {
+                cid
+                for co in customers
+                for cid in by_company.get(co, [])
+                if cmus[cid]["tokens"] & tokens
+            }
+        )
+        cid, state = unique(cands)
+        if cid:
+            tier = "a: company and place token"
+        if cid is None and state != "ambiguous":
+            cands = sorted(
+                {
+                    c
+                    for co in customers
+                    for c in by_company.get(co, [])
+                    if any(ec.within_one_mw(x, mw) for x in cmus[c]["capacities"])
+                }
+            )
+            cid, state = unique(cands)
+            if cid:
+                tier = "b: company and capacity"
+        if cid is None and state != "ambiguous":
+            cands = sorted(
+                {
+                    c
+                    for c, v in cmus.items()
+                    if v["tokens"] & tokens
+                    and any(ec.within_one_mw(x, mw) for x in v["capacities"])
+                }
+            )
+            cid, state = unique(cands)
+            if cid:
+                tier = "c: place token and capacity"
+        cls = "no record"
+        term_months = None
+        if cid:
+            rows = cmus[cid]["rows"]
+            awarded = [r for r in rows if r.get("Capacity Agreement Awarded") == "Yes"]
+            issued_before = [
+                r
+                for r in awarded
+                if (uk_date(r.get("Date of Issue of Capacity Agreement", "")) or date.max) < m
+            ]
+            terminated = [
+                (uk_date(r.get("Date of Termination of Capacity Agreement", "")), r)
+                for r in rows
+                if r.get("Capacity Agreement has been Terminated") == "Yes"
+            ]
+            term_dates = [d for d, _ in terminated if d]
+            held_live = [r for r in issued_before if not any(d < m for d in term_dates)]
+            if term_dates and min(term_dates) < m:
+                cls = "terminated before exit"
+                term_months = ec.months_between(min(term_dates), m)
+            elif held_live:
+                cls = "agreement held at exit"
+                if term_dates:
+                    cls = "agreement held at exit, terminated after"
+                    term_months = -ec.months_between(m, min(term_dates))
+            elif term_dates:
+                cls = "terminated after exit"
+                term_months = -ec.months_between(m, min(term_dates))
+            elif awarded:
+                cls = "agreement awarded after exit"
+            else:
+                cls = "never held"
+        out[e["chain"]] = {
+            "state": state,
+            "tier": tier,
+            "cmu_id": cid,
+            "class": cls,
+            "termination_minus_exit_months": term_months,
+        }
+    return out
+
+
+def load_019_links() -> dict[str, Any]:
+    from grid_mysteries.investigations import queue_ownership as qo
+
+    links: dict[str, qo.Link] = {}
+    for line in (Q019 / "links.ndjson").read_text().splitlines():
+        if not line.strip():
+            continue
+        r = json.loads(line)
+        if r["run_date"] == RUN_019 and r["rule_version"] == qo.RULE_VERSION_V2:
+            links[r["name"]] = qo.Link(
+                r["name"],
+                r["class"],
+                r["company_number"],
+                tuple(r["candidates"]),
+                r["note"],
+                r["rule_version"],
+            )
+    admitted = {
+        a["name"]: a
+        for a in json.loads((Q019 / "links-admitted.json").read_text()).get("admissions", [])
+    }
+    return {n: qo.apply_admissions(lk, admitted) for n, lk in links.items()}
+
+
+def join_companies_house(exits: list[dict[str, Any]]) -> dict[str, dict[str, Any]]:
+    from grid_mysteries.sources import companies_house as chs
+
+    links = load_019_links()
+    numbers: dict[str, str] = {}
+    for e in exits:
+        name = ec.text(e["join_key"]["last"]["customer"])
+        lk = links.get(name)
+        if lk is not None and lk.resolved and lk.company_number:
+            numbers[e["chain"]] = lk.company_number
+    wanted = sorted(set(numbers.values()))
+    jobs = []
+    for n in wanted:
+        jobs.append(
+            ("companies-house-profile", chs.profile_url(n), CH_RAW / "company" / n / "profile.json")
+        )
+        jobs.append(
+            ("companies-house-charges", chs.charges_url(n), CH_RAW / "company" / n / "charges.json")
+        )
+    if jobs:
+        fetcher = chs.AuthenticatedFetcher(chs.api_key())
+        pin(
+            jobs,
+            journal_path=CH_JOURNAL,
+            manifest_path=CH_MANIFEST,
+            fetch=fetcher,
+            label="025 Companies House refresh",
+            progress=progress,
+            sleep_seconds=0,
+        )
+    out = {}
+    for e in exits:
+        n = numbers.get(e["chain"])
+        m = date.fromisoformat(e["exit_copy"]).replace(day=1)
+        if n is None:
+            out[e["chain"]] = {"state": "not linked", "company_number": None, "class": "not linked"}
+            continue
+        profile = json.loads((CH_RAW / "company" / n / "profile.json").read_text())
+        charges = json.loads((CH_RAW / "company" / n / "charges.json").read_text())
+        status = profile.get("company_status")
+        cess = profile.get("date_of_cessation")
+        cess_d = date.fromisoformat(cess) if cess else None
+        live = []
+        for it in charges.get("items") or []:
+            created = it.get("created_on")
+            satisfied = it.get("satisfied_on")
+            if (
+                created
+                and date.fromisoformat(created) < m
+                and not (satisfied and date.fromisoformat(satisfied) < m)
+            ):
+                live.append(it)
+        classes = []
+        if cess_d and 0 <= ec.months_between(m, cess_d) < 12:
+            classes.append("dissolved within twelve months after exit")
+        elif cess_d and cess_d < m and ec.months_between(cess_d, m) < 12:
+            classes.append("dissolved within twelve months before exit")
+        elif cess_d:
+            classes.append("dissolved, more than twelve months from exit")
+        if live:
+            classes.append("live charge at exit")
+        out[e["chain"]] = {
+            "state": "linked",
+            "company_number": n,
+            "company_status": status,
+            "date_of_cessation": cess,
+            "live_charges_at_exit": len(live),
+            "class": "; ".join(classes) if classes else "neither",
+        }
+    return out
+
+
+def phase_joins() -> None:
+    results = json.loads(RESULTS_JSON.read_text())
+    exits = [json.loads(line) for line in EXITS.read_text().splitlines() if line.strip()]
+    storage = [e for e in exits if e["storage"] == "storage"]
+    id_era = [e for e in storage if date.fromisoformat(e["last_t"]) >= ec.ID_ERA_FROM]
+    j1 = join_repd(storage)
+    j2 = join_cmr(storage)
+    j3 = join_companies_house(exits)
+
+    def share(j: dict[str, dict[str, Any]], subset: list[dict[str, Any]]) -> str | None:
+        if not subset:
+            return None
+        return str(
+            (
+                Decimal(sum(1 for e in subset if j[e["chain"]]["state"] in ("matched", "linked")))
+                / Decimal(len(subset))
+            ).quantize(Decimal("0.001"))
+        )
+
+    lines = []
+    for e in exits:
+        lines.append(
+            {
+                "chain": e["chain"],
+                "exit_copy": e["exit_copy"],
+                "storage": e["storage"],
+                "regime": e["regime"],
+                "band_a": e["band_a"],
+                "repd": j1.get(e["chain"]),
+                "cmr": j2.get(e["chain"]),
+                "companies_house": j3.get(e["chain"]),
+            }
+        )
+    JOINS.write_text(
+        "".join(json.dumps(line, default=jsonable, sort_keys=True) + "\n" for line in lines)
+    )
+
+    def by_class_and_band(j: dict[str, dict[str, Any]]) -> dict[str, Any]:
+        table: Any = nested()
+        for e in storage:
+            if e["regime"] != "old":
+                continue
+            cls = j[e["chain"]]["class"]
+            table[cls][e["band_a"]] = table[cls].get(e["band_a"], 0) + 1
+        return {cls: dict(v) for cls, v in table.items()}
+
+    j2_timing = Counter(
+        j2[e["chain"]]["termination_minus_exit_months"]
+        for e in storage
+        if j2[e["chain"]]["termination_minus_exit_months"] is not None
+    )
+    live_share_base = [e for e in exits if j3[e["chain"]]["state"] == "linked"]
+    summary = {
+        "computed_at": datetime.now(UTC).isoformat(timespec="seconds"),
+        "declaration_sha256": results["declaration_sha256"],
+        "run_on": {
+            "exits": len(exits),
+            "storage_exits": len(storage),
+            "storage_exits_id_era": len(id_era),
+        },
+        "repd": {
+            "matched_share_storage": share(j1, storage),
+            "matched_share_storage_id_era": share(j1, id_era),
+            "threshold_70_met_id_era": (share(j1, id_era) or "0") >= "0.700",
+            "states": dict(Counter(v["state"] for v in j1.values())),
+            "tiers": dict(Counter(v["tier"] for v in j1.values() if v["tier"])),
+            "classes": dict(Counter(v["class"] for v in j1.values())),
+            "classes_id_era": dict(Counter(j1[e["chain"]]["class"] for e in id_era)),
+            "class_by_band_old_regime": by_class_and_band(j1),
+        },
+        "cmr": {
+            "matched_share_storage": share(j2, storage),
+            "matched_share_storage_id_era": share(j2, id_era),
+            "threshold_70_met_id_era": (share(j2, id_era) or "0") >= "0.700",
+            "states": dict(Counter(v["state"] for v in j2.values())),
+            "tiers": dict(Counter(v["tier"] for v in j2.values() if v["tier"])),
+            "classes": dict(Counter(v["class"] for v in j2.values())),
+            "classes_id_era": dict(Counter(j2[e["chain"]]["class"] for e in id_era)),
+            "class_by_band_old_regime": by_class_and_band(j2),
+            "termination_minus_exit_months": dict(sorted(j2_timing.items())),
+        },
+        "companies_house": {
+            "linked_share_all_exits": share(j3, exits),
+            "linked_share_storage": share(j3, storage),
+            "linked_share_storage_id_era": share(j3, id_era),
+            "companies_fetched": len(
+                {v["company_number"] for v in j3.values() if v.get("company_number")}
+            ),
+            "classes": dict(Counter(v["class"] for v in j3.values())),
+            "classes_storage": dict(Counter(j3[e["chain"]]["class"] for e in storage)),
+            "live_charge_share_of_linked": str(
+                (
+                    Decimal(
+                        sum(
+                            1 for e in live_share_base if j3[e["chain"]].get("live_charges_at_exit")
+                        )
+                    )
+                    / Decimal(len(live_share_base))
+                ).quantize(Decimal("0.001"))
+            )
+            if live_share_base
+            else None,
+            "status_now": dict(
+                Counter(v.get("company_status") for v in j3.values() if v["state"] == "linked")
+            ),
+        },
+    }
+    write_json(JOINS_RESULTS, summary)
+    log_run(
+        "joins",
+        storage_exits=len(storage),
+        repd_share_id_era=summary["repd"]["matched_share_storage_id_era"],
+        cmr_share_id_era=summary["cmr"]["matched_share_storage_id_era"],
+        ch_linked=summary["companies_house"]["linked_share_all_exits"],
+    )
+    print(
+        json.dumps({k: v for k, v in summary.items() if k in ("run_on",)}),
+        "repd",
+        summary["repd"]["matched_share_storage_id_era"],
+        summary["repd"]["classes_id_era"],
+        "cmr",
+        summary["cmr"]["matched_share_storage_id_era"],
+        summary["cmr"]["classes_id_era"],
+        "ch",
+        summary["companies_house"]["linked_share_all_exits"],
+        summary["companies_house"]["classes"],
+    )
+
+
+# ---------------------------------------------------------------- render
+
+FINDINGS = HERE / "FINDINGS.md"
+APPENDIX = HERE / "FINDINGS-APPENDIX.md"
+FIGURES = HERE / "figures"
+BAND_ORDER = (*ec.BANDS, ec.UNDATED)
+
+
+def pct(x: str | None) -> str:
+    return f"{Decimal(x) * 100:.1f} %" if x is not None else "n/a"
+
+
+def hazard_md(rows: list[dict[str, Any]], title: str) -> list[str]:
+    out = [
+        f"**{title}**",
+        "",
+        "| band (clock A, trigger from the connection date at last sighting) | exits | chain-months at risk | exits per 100 chain-years | 95 % interval |",
+        "|---|---|---|---|---|",
+    ]
+    for r in rows:
+        iv = (
+            f"{r['per_100_chain_years_lower']} to {r['per_100_chain_years_upper']}"
+            if r["per_100_chain_years"] is not None
+            else "n/a"
+        )
+        out.append(
+            f"| {r['band']} | {r['exits']} | {r['chain_months']:,} | {r['per_100_chain_years'] or 'n/a'} | {iv} |"
+        )
+    return out + [""]
+
+
+def phase_render() -> None:
+    R = json.loads(RESULTS_JSON.read_text())
+    J = json.loads(JOINS_RESULTS.read_text()) if JOINS_RESULTS.exists() else None
+    runs = json.loads(RUN_LOG.read_text())["runs"]
+    discarded = [r for r in runs if r["phase"] == "compute-discarded"]
+    reused = json.loads((EVIDENCE / "reused-keys.json").read_text())
+    exits = [json.loads(line) for line in EXITS.read_text().splitlines() if line.strip()]
+    chains_lines = [json.loads(line) for line in CHAINS.read_text().splitlines() if line.strip()]
+    rk = {p["later"] for p in R["pairs"]["rekeying"]}
+    id_era_stitches = Counter(
+        kc["tier"]
+        for ch in chains_lines
+        for kc in ch["key_changes"]
+        if kc["t_public"] >= ec.ID_ERA_FROM.isoformat() and kc["t_public"] not in rk
+    )
+    hz = R["hazards"]["old"]
+    sA = {r["band"]: r for r in hz["A"]["storage"]}
+    sB = {r["band"]: r for r in hz["B"]["storage"]}
+    sC = {r["band"]: r for r in hz["C"]["storage"]}
+    allA = {r["band"]: r for r in hz["A"]["all"]}
+    E = R["exits"]
+    C = R["chains"]
+    o1 = R["reconciliation"]["o1_snapshots"]
+    o2 = R["reconciliation"]["o2_window"]
+    storage_exits = [e for e in exits if e["storage"] == "storage"]
+    storage_old = [e for e in storage_exits if e["regime"] == "old"]
+    by_year_storage = Counter(e["exit_month"][:4] for e in storage_old)
+    by_year_all = Counter(e["exit_month"][:4] for e in exits if e["regime"] == "old")
+    top3 = ", ".join(
+        f"{m} ({v.get('storage', 0)})"
+        for m, v in sorted(R["monthly"].items(), key=lambda kv: -kv[1].get("storage", 0))[:3]
+    )
+    rekey_text = ", ".join(f"{p['earlier']} to {p['later']}" for p in R["pairs"]["rekeying"])
+    L: list[str] = []
+    L += [
+        "# 025, the exit clock: when projects leave the TEC Register, measured against the User Commitment trigger date",
+        "",
+        f"*Computed {R['computed_at'][:10]} under the frozen declaration `{R['declaration_sha256'][:8]}…` (`DECLARATION.md`, proofs beside it) from every TEC Register copy the repository holds to {R['series']['last_copy']} ({R['series']['kept_copies']} kept copies) and the documents pinned 22/10/2026 (`evidence/sources-manifest.json`). **Held for the sponsor; nothing here is public, and nothing goes to Ofgem or the introducer until sealed.** Every figure is reproducible by `run.py --phase compute --seal {R['declaration_sha256'][:8]}`; the per-chain appendix is `FINDINGS-APPENDIX.md` (held, names projects).*",
+        "",
+        "## The mystery",
+        "",
+        "Ofgem's CMP470 consultation (17/09/2026) would charge battery projects to stay in the connection queue, on the reading that a project faces little incentive to reassess its viability until its User Commitment trigger date, the 1 April three financial years before its connection date, after which the Wider Cancellation Charge applies. The question put to the register's history: **when do projects actually leave, relative to that date, and does the rate of leaving change as the date approaches and passes?**",
+        "",
+        "## The answer, narrowly",
+        "",
+        f"1. **Exits are few.** Of {C['total']:,} project chains the register has printed since January 2014, {E['total']} left it (status not Built, absent for at least {R['series']['n_days']} days before {R['series']['last_copy']}); {E['storage_old_regime']} of those were storage projects leaving before the connections-reform break of December 2025 ({E['storage_only_old_regime']} storage-only). **Kill condition (b) fired**: fewer than 200 storage exits in the old regime, so the series is reported as thin and no storage hazard below is called a pattern.",
+        f"2. **No bunching before the trigger date, on any clock.** For storage, the exit rate in the twelve months before the trigger ({sA[ec.BANDS[2]]['per_100_chain_years']} exits per 100 chain-years, interval {sA[ec.BANDS[2]]['per_100_chain_years_lower']} to {sA[ec.BANDS[2]]['per_100_chain_years_upper']}) is indistinguishable from the rate more than two years before it ({sA[ec.BANDS[0]]['per_100_chain_years']}, {sA[ec.BANDS[0]]['per_100_chain_years_lower']} to {sA[ec.BANDS[0]]['per_100_chain_years_upper']}). The same holds under clock B (trigger from the connection date first printed: {sB[ec.BANDS[2]]['per_100_chain_years']} against {sB[ec.BANDS[0]]['per_100_chain_years']}) and clock C (the date as printed in each copy: {sC[ec.BANDS[2]]['per_100_chain_years']} against {sC[ec.BANDS[0]]['per_100_chain_years']}).",
+        f'3. **The rate rises after the trigger, under clock A only.** More than twelve months after the trigger implied by the last-printed connection date, storage left at {sA[ec.BANDS[4]]["per_100_chain_years"]} per 100 chain-years ({sA[ec.BANDS[4]]["per_100_chain_years_lower"]} to {sA[ec.BANDS[4]]["per_100_chain_years_upper"]}), seven times the far-before rate; the bands are not flat within their uncertainty (K6: {R["flat"]["storage_old_A"]}). Under clocks B and C the bands **are** flat ({R["flat"]["storage_old_B"]}, {R["flat"]["storage_old_C"]}). Interpretation, offered not asserted: clock A reads the trigger from the date a project last printed, so a project that leaves with a stale, passed or imminent connection date sits far "after" its trigger by construction; the rise says projects leave late in their own printed programme (017\'s overdue residue), not that they leave because the bill arrived.',
+        f"4. **All technologies together show the same shape, with more exits.** {E['old_regime']} old-regime exits: {allA[ec.BANDS[0]]['per_100_chain_years']} per 100 chain-years far before the trigger, {allA[ec.BANDS[2]]['per_100_chain_years']} in the year before, {allA[ec.BANDS[3]]['per_100_chain_years']} in the year after, {allA[ec.BANDS[4]]['per_100_chain_years']} beyond. Here the rate does step up from the far-before band to the two years before the trigger ({allA[ec.BANDS[1]]['per_100_chain_years']}), which storage alone does not show; the controls are mostly wind and gas chains from 2014 to 2021.",
+        f"5. **Against Ofgem's 72.** Ofgem counted 72 storage projects that \"exited the connection queue or changed their technology classification\" between 2023 and 2025 (6.7 % a year). This series counts {o2['storage_exits']} storage exits with exit copies from January 2023 to November 2025 ({o2['by_exit_year'].get('2023', 0)}, {o2['by_exit_year'].get('2024', 0)}, {o2['by_exit_year'].get('2025', 0)} by year), and on Ofgem's own annual-snapshot footing {sum(s['by_status']['all'].get('reclassified_away', 0) for s in o1)} storage chains reclassified away from storage between snapshots. The counts meet within a factor of two (F1 silent); the **rates** do not: {pct(o1[0]['by_status']['all']['left_share'])}, {pct(o1[1]['by_status']['all']['left_share'])} and {pct(o1[2]['by_status']['all']['left_share'])} of storage chains present at each January snapshot had left by the next, against 6.7 %; Scoping {pct(o1[1]['by_status'].get('Scoping', {}).get('left_share'))} and {pct(o1[2]['by_status'].get('Scoping', {}).get('left_share'))} against Ofgem's 7.4 % for Scoping or Awaiting Consents; Consents Approved {pct(o1[2]['by_status'].get('Consents Approved', {}).get('left_share'))} against 3 %; Under Construction {pct(o1[2]['by_status'].get('Under Construction/Commissioning', {}).get('left_share'))} against 0 %. The direction agrees (earlier stages leave more; nothing leaves from construction); the level does not, and the candidates are in the reconciliation section.",
+        "",
+        "What this does **not** say: why any project left; what any project had posted or accrued; that a trigger date caused anything. The register records absence.",
+        "",
+        "## Provisional to sealed",
+        "",
+    ]
+    if discarded:
+        d = discarded[-1]
+        L.append(
+            f"The first compute of 22/10/2026 was discarded before any line was committed: it produced 13 chains holding two keys in one copy, a runner defect against rule I2: a key returned to the register while its chain was already continuing under a stitched key, and the runner let the chain carry both (discarded `chains.ndjson` SHA-256 `{d['discarded_chains_sha256'][:16]}…`, the note in `evidence/run-log.json`). The rerun under the same sealed declaration moved the headline by: chains 2,631 to {C['total']:,}; exits 493 to {E['total']}; storage exits in the old regime 95 to {E['storage_old_regime']}. The 13 are reported below as a stitching finding."
+        )
+    L += [
+        "",
+        "## The evidence",
+        "",
+        f"- **Copies**: {R['series']['usable_copies']} usable, {R['series']['kept_copies']} kept (014's partial-export rule excluded {len(R['series']['suspect_copies'])}: {', '.join(s['t_public'] for s in R['series']['suspect_copies'])}), {R['series']['first_copy']} to {R['series']['last_copy']}; every copy verified against its journalled or manifested digest (C1); the series end fixed at {R['series']['last_copy']} and copies published after it unread.",
+        f"- **Chains**: {C['total']:,}. Classes (C3): {C['classes'].get('present at series end', 0):,} present at the series end, {C['classes'].get('exit', 0)} left, {C['classes'].get('completed', 0)} completed (last printed as Built), {C['classes'].get('open', 0)} open (last seen after {R['series']['exit_cutoff']}), {C['classes'].get('not determinable', 0)} not determinable (all before the Project ID era, at the June 2020 re-keying). **Kill (a) did not fire**: the ID-era not-determinable share is {pct(C['not_determinable_share_id_era'])}.",
+        f"- **Stitching**: {C['key_changes']:,} key changes carried a chain across a change of key, by tier: {', '.join(f'{k} {v:,}' for k, v in sorted(C['key_change_tiers'].items(), key=lambda kv: -kv[1]))}. {R['pairs']['returned_own_key_total']} keys returned to their chain after an interruption (I9); {C['interrupted_chains']} chains were interrupted at least once; {C['stage_reductions']:,} stage reductions (rows lost while the chain stayed); {C['reclassified']['chains']} chains changed plant family at some point (I7), none of them counted as an exit for that reason.",
+        f"- **Exposure**: {R['exposure']['total_chain_months']:,} chain-months at risk over the series.",
+        "",
+        "### Monthly exit series (old regime, exit copies January 2014 to November 2025)",
+        "",
+        "| year | all exits | storage exits |",
+        "|---|---|---|",
+    ]
+    for y in sorted(set(by_year_all) | set(by_year_storage)):
+        L.append(f"| {y} | {by_year_all.get(y, 0)} | {by_year_storage.get(y, 0)} |")
+    L += [
+        "",
+        f"The monthly series itself (counts and MW, all and storage) is the `monthly` block of `evidence/results.json`, drawn in `figures/monthly-exits.png` (held). 2014's {by_year_all.get('2014', 0)} exits fall in a year of sparse, differently formatted copies (gaps up to 95 days, single-copy column eras) and should be read as the register settling, not as a wave. Storage exits in the old regime cluster in {top3}.",
+        "",
+        "### Hazard by band (storage, old regime)",
+        "",
+    ]
+    L += hazard_md(
+        hz["A"]["storage"], "Clock A: trigger from the connection date printed at last sighting"
+    )
+    L += hazard_md(
+        hz["B"]["storage"], "Clock B: trigger from the connection date printed at first sighting"
+    )
+    L += hazard_md(
+        hz["C"]["storage"],
+        "Clock C: exposure placed by the date printed in each copy; exits by clock A",
+    )
+    L += hazard_md(
+        hz["A"]["storage-only"],
+        "Clock A, storage-only (plant type prints storage and nothing else)",
+    )
+    L += hazard_md(hz["A"]["all"], "Clock A, every chain")
+    L += hazard_md(
+        hz["A"]["other"], "Clock A, chains that print no storage technology (the control)"
+    )
+    L += [
+        f"Flatness (K6, the five bands' intervals share a value): storage A {R['flat']['storage_old_A']}, B {R['flat']['storage_old_B']}, C {R['flat']['storage_old_C']}; storage-only A {R['flat']['storage_only_old_A']}; all A {R['flat']['all_old_A']}; other A {R['flat']['other_old_A']}.",
+        "",
+        "### The clock, exit by exit",
+        "",
+        f"Months from exit copy to trigger (clock A; negative means the exit came before the trigger), storage, old regime: {sum(v for k, v in R['months_to_trigger_histogram_storage_old'].items() if int(k) < -24)} exits more than 24 months before, {sum(v for k, v in R['months_to_trigger_histogram_storage_old'].items() if -24 <= int(k) < -12)} at 12 to 24 before, {sum(v for k, v in R['months_to_trigger_histogram_storage_old'].items() if -12 <= int(k) < 0)} in the year before, {sum(v for k, v in R['months_to_trigger_histogram_storage_old'].items() if 0 <= int(k) < 12)} in the year after, {sum(v for k, v in R['months_to_trigger_histogram_storage_old'].items() if int(k) >= 12)} more than a year after; {sum(1 for e in storage_old if e['months_to_trigger_a'] is None)} with no connection date. Drawn with the bands shaded in `figures/exit-clock.png` (held).",
+        "",
+        "### Strata (storage, old regime, clock A)",
+        "",
+        "| stratum at last sighting | exits | chain-months | exits per 100 chain-years |",
+        "|---|---|---|---|",
+    ]
+    for dim, label in (
+        ("status", "Project Status"),
+        ("agreement", "Agreement Type"),
+        ("host_to", "Host TO"),
+        ("cohort", "First-observation cohort"),
+    ):
+        for value, t in R["storage_strata_old_A"][dim].items():
+            rate = (
+                (Decimal(t["exits"]) * 1200 / Decimal(t["chain_months"])).quantize(Decimal("0.01"))
+                if t["chain_months"]
+                else None
+            )
+            L.append(
+                f"| {label}: {value} | {t['exits']} | {t['chain_months']:,} | {rate if rate is not None else 'n/a'} |"
+            )
+    L += [
+        "",
+        f"The stage split Ofgem can set beside its 7.4 / 3 / 0: storage chains at Scoping or Awaiting Consents left at {((Decimal(R['storage_strata_old_A']['status'].get('Scoping', {}).get('exits', 0) + R['storage_strata_old_A']['status'].get('Awaiting Consents', {}).get('exits', 0)) * 1200) / Decimal(R['storage_strata_old_A']['status'].get('Scoping', {}).get('chain_months', 0) + R['storage_strata_old_A']['status'].get('Awaiting Consents', {}).get('chain_months', 1))).quantize(Decimal('0.01'))} per 100 chain-years over the whole old regime, Consents Approved at {((Decimal(R['storage_strata_old_A']['status'].get('Consents Approved', {}).get('exits', 0)) * 1200) / Decimal(R['storage_strata_old_A']['status'].get('Consents Approved', {}).get('chain_months', 1))).quantize(Decimal('0.01'))}, Under Construction at {((Decimal(R['storage_strata_old_A']['status'].get('Under Construction/Commissioning', {}).get('exits', 0)) * 1200) / Decimal(R['storage_strata_old_A']['status'].get('Under Construction/Commissioning', {}).get('chain_months', 1))).quantize(Decimal('0.01'))} (a rate per 100 chain-years is comparable to a percentage per year).",
+        "",
+        "### Regimes",
+        "",
+        f"- Reformed regime (exit copies from 2025-12-01): {E['new_regime']} exits, by Project Status {E['new_regime_by_status']}, by Gate at last sighting {E['new_regime_by_gate']}. Too few for any table; the candidate in CANDIDATES.md waits for the series to lengthen.",
+        f"- The register's row count through the Gate 2 reset: {R['rows_through_break'][0]['rows']:,} on {R['rows_through_break'][0]['t_public']}, {next(r['rows'] for r in R['rows_through_break'] if r['t_public'] >= '2025-11-25'):,} on {next(r['t_public'] for r in R['rows_through_break'] if r['t_public'] >= '2025-11-25')}, {R['rows_through_break'][-1]['rows']:,} on {R['rows_through_break'][-1]['t_public']}. **The queue reset is not visible as a mass departure from the TEC Register.**",
+        "",
+        "## Explanations tested",
+        "",
+        "### Reconciliation to Ofgem (O1, O2)",
+        "",
+        "Annual snapshots as Ofgem had them (the first kept copy on or after 1 January, and the last old-regime copy), storage chains present, the share that had left by the next snapshot, and the share reclassified away from storage:",
+        "",
+        "| snapshot | next | status | present | left | left share | reclassified away |",
+        "|---|---|---|---|---|---|---|",
+    ]
+    for s_ in o1:
+        for st, c in s_["by_status"].items():
+            L.append(
+                f"| {s_['snapshot']} | {s_['next']} | {st} | {c.get('present', 0)} | {c.get('left', 0)} | {pct(c.get('left_share'))} | {c.get('reclassified_away', 0)} |"
+            )
+    L += [
+        "",
+        f"Window count (O2): {o2['storage_exits']} storage exits with exit copies 2023-01 to 2025-11 ({o2['storage_only_exits']} storage-only), by status at last sighting {o2['by_status']}. Ofgem: 72 exited or reclassified, 6.7 % a year.",
+        "",
+        "Candidates for the gap in rates, none asserted: (i) **denominator**: Ofgem's queue is NESO's full connections queue, which includes distribution-connected projects below the TEC Register's threshold and projects not yet on the register; a smaller, earlier-stage population would both raise the rate and hold more of the exits; (ii) **classification**: Ofgem's figure lumps exits with reclassification, and the register's reclassifications under one key are counted here as reclassifications ({sum(s['by_status']['all'].get('reclassified_away', 0) for s in o1)} away from storage across the snapshots) and never as exits; (iii) **snapshot dates**: Ofgem's are not published; (iv) **re-keying**: a snapshot pair that spans a re-keying copy sees every project leave unless it is stitched, and the August 2022 re-issue lies just before Ofgem's first window.",
+        "",
+        "### The stitching caveat (the question Ofgem will ask)",
+        "",
+        f"Identity is the whole method. {C['key_change_tiers'].get('all five', 0):,} of the {C['key_changes']:,} key changes were at the three re-keying copies and matched on every feature; the next two tiers ({C['key_change_tiers'].get('name, customer, stage', 0)} on name, customer and stage; {C['key_change_tiers'].get('name, site, stage', 0)} on name, site and stage) are mostly re-spelt sites and customers at the June 2020 format change and at the re-issues. In the Project ID era, outside the re-keying copies, only **{sum(id_era_stitches.values())}** stitches were made ({', '.join(f'{k} {v}' for k, v in id_era_stitches.most_common())}); that is the most by which stitching can have hidden an ID-era exit. The stitch's one caught failure: **{len(reused)} keys returned to the register while their chain was already printed under another key** (at {', '.join(f'{k} ({v})' for k, v in sorted(R['reused_keys']['by_copy'].items()))}), all in the ID era and none at a re-keying boundary. Each was a project sharing its **name** with a different project (different customer, mostly a different site and MW): the name-based tiers had merged two projects, the returning id separated them, and the runner now keeps the id's chain and treats the row as new. These are the copies 017's certificates show as \"presence ambiguous (2 rows)\". Nothing says how many unreturned merges remain; the bound above ({sum(id_era_stitches.values())} ID-era stitches outside re-keyings) is the honest ceiling.",
+        "",
+        "### The joins (addendum J1 to J3), run on the storage exits",
+        "",
+    ]
+    if J:
+        L += [
+            f"- **J1 REPD** (battery rows, July 2026 extract): matched {J['repd']['states'].get('matched', 0)} of {J['run_on']['storage_exits']} storage exits ({pct(J['repd']['matched_share_storage'])}; ID era {pct(J['repd']['matched_share_storage_id_era'])}), {J['repd']['states'].get('ambiguous', 0)} ambiguous, by tier {J['repd']['tiers']}. **Below the 70 % threshold: the matched subset is reported and the join stops.** Classes among the matched: {', '.join(f'{k} {v}' for k, v in J['repd']['classes'].items() if k != 'no planning record')}. One sentence per class: no matched storage exit was consented at exit; {J['repd']['classes'].get('refused, withdrawn or expired before exit', 0)} left after a refusal, withdrawal or expiry; {J['repd']['classes'].get('abandoned (undated)', 0)} are abandoned in the planning record; {J['repd']['classes'].get('application pending at exit', 0)} left with an application pending; {J['repd']['classes'].get('no planning event before exit', 0)} left with a planning record that holds no event before the exit. Coordinates were not used (the register prints none).",
+            f"- **J2 Capacity Market Register** (storage CMUs, 21/10/2026): matched {J['cmr']['states'].get('matched', 0)} ({pct(J['cmr']['matched_share_storage'])}; ID era {pct(J['cmr']['matched_share_storage_id_era'])}), {J['cmr']['states'].get('ambiguous', 0)} ambiguous (one customer with several CMUs at one site), by tier {J['cmr']['tiers']}. **Below 70 %: matched subset only.** Classes: {', '.join(f'{k} {v}' for k, v in J['cmr']['classes'].items() if k != 'no record')}. No matched exit had a terminated capacity agreement, so the termination-against-exit timing table is empty: {J['cmr']['termination_minus_exit_months']}.",
+            f"- **J3 Companies House** (019's links, profiles and charges refreshed {CH_RUN_DATE}, {J['companies_house']['companies_fetched']} companies): {pct(J['companies_house']['linked_share_all_exits'])} of all exits linked ({pct(J['companies_house']['linked_share_storage'])} of storage exits, {pct(J['companies_house']['linked_share_storage_id_era'])} in the ID era; 019 resolved names on current ids, so pre-2021 customers are mostly unlinked). Of the linked, {pct(J['companies_house']['live_charge_share_of_linked'])} had a live charge at exit; company status now {J['companies_house']['status_now']}; classes {J['companies_house']['classes']}. One sentence: the companies behind linked exits are almost all still active, and more than a third carried a live charge when their project left the register, which is the case Ofgem should worry about and the one this register cannot explain.",
+            "",
+            "Why the joins are thin: the register prints a substation and a developer's project name; REPD prints a planning site and the applicant; the Capacity Market prints a unit name and the applicant. A place token shared by both is rare when the register's name is a substation and REPD's is a road. The declared next step, if the sponsor wants the joins to carry weight, is an amendment that sends the unmatched residue to a model as **proposer** (016's admission rule), with the proposals pinned and admitted by a declared rule; the declared tiers stay the record.",
+        ]
+    L += [
+        "",
+        "## Conclusion",
+        "",
+        f"From the register's own history, storage projects did not leave in a bunch before their User Commitment trigger date in 2014 to 2025; under every clock the year before the trigger looks like the years before that. What rises is the exit rate **after** the trigger implied by a project's last-printed connection date, and that rise disappears when the clock is set by the date first printed or by the date as it stood each month: it is the signature of projects leaving late in their own programme. With {E['storage_old_regime']} storage exits the intervals are wide and the series is thin by its own kill rule; this is a described measurement, not a verdict on CMP470. The premise that \"projects leave when the bill arrives\" is neither confirmed nor refuted by bunching; it is simply not what the register shows happening before the date.",
+        "",
+        "## Expert corner",
+        "",
+        f"- **Re-keying dates**: {rekey_text} (more than half of keys absent); Project ID printed from 2021-11-26 (`a03…` ids), re-issued 2022-08-24 (`a0l…`); Project Number from 2024-06-18. 2024-01-05 is **not** a re-keying (0 of 1,452 ids absent), contrary to the prompt's expectation; the id change the 017 Eggborough certificate shows there is one project's.",
+        "- **The trigger rule**: CUSC Section 15 v1.14 Part Two 2.2(a), read on `MW Effective From` as the Charging Date; branch (b) (the Construction Agreement date when closer) and any contractual variation are not applied. Ofgem's own footnote uses the same rule of thumb. A project whose connection date was re-set had a different trigger before the re-set; clocks B and C carry that.",
+        "- **CMP223 embedded percentages** (2024-25 statement, section 5): secured amount after the trigger 42 % of the cancellation charge before key consents and 10 % after for directly connected; 45 % and 26 % for embedded; 100 % before the trigger. Zonal tariffs 2024-25 by zone code A1 to T6 (GBP 0 to 15,677.41 per MW). No 2025-26 or 2026-27 statement exists; the 15/01/2026 letter froze securities to 30/09/2026.",
+        f"- **Regime break**: copies from 2025-12-01; row count {R['rows_through_break'][0]['rows']:,} to {R['rows_through_break'][-1]['rows']:,} across it.",
+        f"- **Gap between last sighting and exit copy**: median {E['gap_days']['median']} days, maximum {E['gap_days']['max']}; the register's resolution, not the project's timing.",
+        "- **Not computed**: the zone mapping (no public site-to-zone list; phase 2 stopped); the DNO register join (J4, candidate); the EIR validation (`EIR-REQUEST-NESO-TERMINATIONS.md`, drafted for the sponsor, not sent).",
+        "- **Watch**: `w-025-monthly-exit-series`, due 30/11/2026 and monthly, extends the series from the daily capture under this declaration.",
+        "",
+        "## Reproducibility",
+        "",
+        f"`DECLARATION.md` `{R['declaration_sha256']}`; schema report `{R['schema_report_sha256'][:16]}…`; sources manifest `{R['sources_manifest_sha256'][:16]}…`; `evidence/results.json`, `evidence/joins-results.json`, `evidence/format-check.json`, `evidence/run-log.json` (committed); `evidence/chains.ndjson` (append-only, C5), `evidence/exits.ndjson`, `evidence/joins.ndjson`, `evidence/reused-keys.json`, `FINDINGS-APPENDIX.md` (held). Rules: `src/grid_mysteries/investigations/exit_clock.py`, tests `tests/test_exit_clock.py`, map `evidence/rule-sources.json`.",
+    ]
+    FINDINGS.write_text("\n".join(L) + "\n")
+
+    # ---- appendix (held): every exit chain with its runs and join key
+    chains_by_id = {c["chain"]: c for c in chains_lines}
+    A = [
+        "# 025, appendix: every chain that left the register (held; names projects and companies)",
+        "",
+        f"*{len(exits)} exits under `DECLARATION.md` `{R['declaration_sha256'][:8]}…`. For each: the join key Ofgem can apply to its own securities table (project name, customer, connection site, Project ID and Number, MW, at first and last sighting), then every run of unchanged state (first and last copy, copies in the run, the copies' digests) so that any row can be checked against NESO's own archive. Copies' dates and digests are in `archives/025-exit-clock-inputs/schema-report.json`.*",
+        "",
+    ]
+    for e in sorted(exits, key=lambda e: (e["exit_copy"], e["chain"])):
+        ch = chains_by_id[e["chain"]]
+        jk = e["join_key"]
+        A += [
+            f"## {jk['last']['name']} — exit copy {e['exit_copy']} ({e['regime']} regime)",
+            "",
+            f"- Join key, last sighting {e['last_t']}: name `{jk['last']['name']}`, customer `{jk['last']['customer']}`, site `{jk['last']['site']}`, key `{jk['last']['key']}`, Project Number `{jk['last']['project_number'] or '-'}`, MW {jk['last']['stage_mw']}. First sighting {e['first_t']}: name `{jk['first']['name']}`, customer `{jk['first']['customer']}`, site `{jk['first']['site']}`, key `{jk['first']['key']}`, MW {jk['first']['stage_mw']}.",
+            f"- Status at last sighting {e['status_printed']}; plant type `{e['plant_type_printed']}`; agreement {e['agreement']}; host TO {e['host_to']}; gate `{e['gate'] or '-'}`. Connection date at last sighting {e['connection_at_last'] or '-'} (trigger A {e['trigger_a'] or '-'}, band {e['band_a']}); at first sighting {e['connection_at_first'] or '-'} (trigger B {e['trigger_b'] or '-'}, band {e['band_b']}). Sightings {e['sightings']}, key changes {e['key_changes']}, interruptions {e['interruptions']}, reclassified {e['reclassified']}.",
+            "",
+            "| first copy | last copy | copies | key | status | plant type | customer | site | MW | connection | first digest | last digest |",
+            "|---|---|---|---|---|---|---|---|---|---|---|---|",
+        ]
+        for r in ch["runs"]:
+            st = r["state"]
+            A.append(
+                f"| {r['first_t']} | {r['last_t']} | {r['copies']} | `{st['key']}` | {st['status']} | {st['plant_type']} | {st['customer']} | {st['site']} | {st['stage_mw'] or '-'} | {st['connection'] or '-'} | `{r['first_sha'][:12]}` | `{r['last_sha'][:12]}` |"
+            )
+        A.append("")
+    APPENDIX.write_text("\n".join(A) + "\n")
+    log_run("render", findings_sha256=sha(FINDINGS), appendix_sha256=sha(APPENDIX))
+    print(f"rendered {FINDINGS.relative_to(REPO_ROOT)} and the appendix ({len(exits)} exits)")
+
+
+def phase_figures() -> None:
+    import matplotlib
+
+    matplotlib.use("Agg")
+    import matplotlib.pyplot as plt
+
+    R = json.loads(RESULTS_JSON.read_text())
+    FIGURES.mkdir(exist_ok=True)
+    monthly = R["monthly"]
+    months = sorted(m for m in monthly if m < "2025-12")
+    all_counts = [monthly[m].get("all", 0) for m in months]
+    storage_counts = [monthly[m].get("storage", 0) for m in months]
+    xs = [date(int(m[:4]), int(m[5:]), 1) for m in months]
+    fig, ax = plt.subplots(figsize=(11, 4))
+    ax.bar(xs, all_counts, width=25, color="#bbbbbb", label="all exits")
+    ax.bar(xs, storage_counts, width=25, color="#1f4e79", label="storage exits")
+    ax.set_title(
+        "Projects leaving the TEC Register by month of exit copy, January 2014 to November 2025 (old regime)"
+    )
+    ax.set_ylabel("exits")
+    ax.legend(frameon=False)
+    for s in ("top", "right"):
+        ax.spines[s].set_visible(False)
+    fig.tight_layout()
+    fig.savefig(FIGURES / "monthly-exits.png", dpi=150)
+    plt.close(fig)
+
+    hist = {int(k): v for k, v in R["months_to_trigger_histogram_storage_old"].items()}
+    hist_all = {int(k): v for k, v in R["months_to_trigger_histogram_all_old"].items()}
+    lo, hi = -60, 132
+    ks = list(range(lo, hi + 1))
+    fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(11, 7), sharex=True)
+    shades = [
+        (-(10**6), -24, "#eef3f8"),
+        (-24, -12, "#dbe6f1"),
+        (-12, 0, "#c3d5e8"),
+        (0, 12, "#f6dcd4"),
+        (12, 10**6, "#f0bfb0"),
+    ]
+    for ax, h, title in ((ax1, hist_all, "all chains"), (ax2, hist, "storage chains")):
+        for a, b, colour in shades:
+            ax.axvspan(max(a, lo - 0.5), min(b, hi + 0.5), color=colour, lw=0)
+        ax.bar(ks, [h.get(k, 0) for k in ks], width=1, color="#1f4e79")
+        ax.axvline(0, color="black", lw=1)
+        ax.set_ylabel(f"exits ({title})")
+        for s in ("top", "right"):
+            ax.spines[s].set_visible(False)
+    ax1.set_title(
+        "Exits by months from exit copy to the User Commitment trigger date (clock A), old regime; bands shaded: >24 and 12 to 24 and 0 to 12 months before, 0 to 12 and >12 after; exits beyond the axis are counted in the outer bands"
+    )
+    ax2.set_xlabel(
+        "months from exit copy to trigger date (negative: the exit came before the trigger)"
+    )
+    fig.tight_layout()
+    fig.savefig(FIGURES / "exit-clock.png", dpi=150)
+    plt.close(fig)
+
+    hz = R["hazards"]["old"]["A"]
+    fig, ax = plt.subplots(figsize=(11, 4))
+    bands = list(ec.BANDS)
+    x = range(len(bands))
+    for offset, key, colour, label in (
+        (-0.2, "all", "#999999", "all chains"),
+        (0.2, "storage", "#1f4e79", "storage chains"),
+    ):
+        rows = {r["band"]: r for r in hz[key]}
+        vals = [float(rows[b]["per_100_chain_years"] or 0) for b in bands]
+        lows = [
+            float(rows[b]["per_100_chain_years"] or 0)
+            - float(rows[b]["per_100_chain_years_lower"] or 0)
+            for b in bands
+        ]
+        highs = [
+            float(rows[b]["per_100_chain_years_upper"] or 0)
+            - float(rows[b]["per_100_chain_years"] or 0)
+            for b in bands
+        ]
+        ax.bar(
+            [i + offset for i in x],
+            vals,
+            width=0.4,
+            color=colour,
+            label=label,
+            yerr=[lows, highs],
+            capsize=3,
+        )
+    ax.set_xticks(list(x))
+    ax.set_xticklabels(bands, rotation=0, fontsize=8)
+    ax.set_ylabel("exits per 100 chain-years")
+    ax.set_title(
+        "Exit hazard by band around the trigger date (clock A, old regime), with 95 % Byar intervals"
+    )
+    ax.legend(frameon=False)
+    for s in ("top", "right"):
+        ax.spines[s].set_visible(False)
+    fig.tight_layout()
+    fig.savefig(FIGURES / "hazard-by-band.png", dpi=150)
+    plt.close(fig)
+    (FIGURES / "captions.md").write_text(
+        "# 025 figures (drawn from evidence/results.json by run.py --phase figures; PNGs held out of git)\n\n"
+        "- `monthly-exits.png`: projects leaving the TEC Register by month of exit copy, January 2014 to November 2025, all chains (grey) and storage chains (blue).\n"
+        "- `exit-clock.png`: exits by months from exit copy to the trigger date implied by the last-printed connection date (clock A), all chains and storage chains, with the five bands shaded.\n"
+        "- `hazard-by-band.png`: exits per 100 chain-years in each band with Byar 95 % intervals, all chains and storage chains, old regime, clock A.\n"
+    )
+    log_run("figures", files=["monthly-exits.png", "exit-clock.png", "hazard-by-band.png"])
+    print(f"figures -> {FIGURES.relative_to(REPO_ROOT)}")
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument(
-        "--phase", required=True, choices=["acquire", "schema", "format", "compute", "render"]
+        "--phase",
+        required=True,
+        choices=["acquire", "schema", "format", "compute", "joins", "render", "figures"],
     )
     parser.add_argument("--seal")
     args = parser.parse_args()
@@ -534,6 +2255,16 @@ def main() -> None:
         phase_acquire()
     elif args.phase == "schema":
         phase_schema()
+    elif args.phase == "format":
+        phase_format()
+    elif args.phase == "compute":
+        phase_compute(args.seal)
+    elif args.phase == "joins":
+        phase_joins()
+    elif args.phase == "render":
+        phase_render()
+    elif args.phase == "figures":
+        phase_figures()
     else:
         sys.exit(f"phase {args.phase} not written yet")
 

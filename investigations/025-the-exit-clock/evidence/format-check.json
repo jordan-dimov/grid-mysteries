@@ -1,0 +1,161 @@
+{
+ "checked_at": "2026-10-22T10:35:28+00:00",
+ "declaration_sha256": "bc05298419069041ae21b75d0fc556f5ecb48224eb947806325f704f4eb4cd78",
+ "schema_report_sha256": "fa3cbb802f61d3b692c6a4b8c92d9a9eb49deed44e24eb474b9ca86471aff4b8",
+ "series_end": "2026-10-20",
+ "copies_checked": 793,
+ "copies_after_series_end_not_read": [],
+ "unreadable": [
+  {
+   "t_public": "2014-02-24",
+   "error": "AssertionError()"
+  },
+  {
+   "t_public": "2014-02-28",
+   "error": "AssertionError()"
+  },
+  {
+   "t_public": "2014-03-04",
+   "error": "AssertionError()"
+  },
+  {
+   "t_public": "2014-03-11",
+   "error": "AssertionError()"
+  },
+  {
+   "t_public": "2014-03-20",
+   "error": "AssertionError()"
+  },
+  {
+   "t_public": "2014-03-25",
+   "error": "AssertionError()"
+  },
+  {
+   "t_public": "2014-03-28",
+   "error": "AssertionError()"
+  },
+  {
+   "t_public": "2014-04-01",
+   "error": "AssertionError()"
+  },
+  {
+   "t_public": "2014-04-08",
+   "error": "AssertionError()"
+  },
+  {
+   "t_public": "2014-04-10",
+   "error": "AssertionError()"
+  },
+  {
+   "t_public": "2014-04-17",
+   "error": "AssertionError()"
+  },
+  {
+   "t_public": "2014-04-23",
+   "error": "AssertionError()"
+  },
+  {
+   "t_public": "2014-04-25",
+   "error": "AssertionError()"
+  },
+  {
+   "t_public": "2014-04-30",
+   "error": "AssertionError()"
+  },
+  {
+   "t_public": "2014-06-13",
+   "error": "AssertionError()"
+  },
+  {
+   "t_public": "2014-06-20",
+   "error": "AssertionError()"
+  },
+  {
+   "t_public": "2014-06-27",
+   "error": "AssertionError()"
+  },
+  {
+   "t_public": "2014-07-11",
+   "error": "AssertionError()"
+  },
+  {
+   "t_public": "2014-07-18",
+   "error": "AssertionError()"
+  },
+  {
+   "t_public": "2014-07-25",
+   "error": "AssertionError()"
+  },
+  {
+   "t_public": "2014-08-01",
+   "error": "AssertionError()"
+  },
+  {
+   "t_public": "2014-08-11",
+   "error": "AssertionError()"
+  },
+  {
+   "t_public": "2014-08-15",
+   "error": "AssertionError()"
+  },
+  {
+   "t_public": "2014-08-22",
+   "error": "AssertionError()"
+  },
+  {
+   "t_public": "2014-08-29",
+   "error": "AssertionError()"
+  },
+  {
+   "t_public": "2014-09-05",
+   "error": "AssertionError()"
+  },
+  {
+   "t_public": "2014-09-12",
+   "error": "AssertionError()"
+  },
+  {
+   "t_public": "2014-09-19",
+   "error": "AssertionError()"
+  },
+  {
+   "t_public": "2014-09-26",
+   "error": "AssertionError()"
+  },
+  {
+   "t_public": "2014-10-17",
+   "error": "AssertionError()"
+  },
+  {
+   "t_public": "2014-10-24",
+   "error": "AssertionError()"
+  },
+  {
+   "t_public": "2021-06-22",
+   "error": "no rows or required columns missing"
+  }
+ ],
+ "join_files": {
+  "desnz-repd-quarterly-extract-2026-q2": {
+   "sha256": "84c1b5f958a934d8b4b86ec88f50bdcf43830ded7ff2efc27bffca0c98695035",
+   "header_matches_schema_report": true,
+   "columns": 53
+  },
+  "neso-capacity-market-register-cmu": {
+   "sha256": "ff7879b0f1612ec62783398fad269be9427e69bf8699276d5d994182737ce6a7",
+   "header_matches_schema_report": true,
+   "columns": 78
+  },
+  "neso-capacity-market-register-components": {
+   "sha256": "c04cdef6ba32d1b775658fd77585be6855079467992c240ce7d5619b793b69b6",
+   "header_matches_schema_report": true,
+   "columns": 18
+  },
+  "neso-capacity-market-register-cmu-history": {
+   "sha256": "de3aea8a4e840ad3d36b4c1aabcd94a550a1801450097d2229f8843935e6d98d",
+   "header_matches_schema_report": true,
+   "columns": 10
+  }
+ },
+ "differences": []
+}

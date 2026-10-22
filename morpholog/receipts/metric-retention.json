@@ -1,11 +1,11 @@
 {
   "receipt_format_version": 1,
-  "program_hash": "sha256:c9e4b9371e3db420726d501424b8ca1f0766535fe9f549da5fe843e302dbbda2",
+  "program_hash": "sha256:59a58890d9bc61a09c1de9e6419b5ba37cb7abbe7d28a085150761acd8ad78e1",
   "semantics_version": 3,
   "checkpoint": {
-    "tree_size": 310,
-    "root_hash": "sha256:b2d399be37d1295a7392b5946ec454355e5d8241aabba06b6ec98bae4010a034",
-    "checkpoint_hash": "sha256:2e3b15b24393d0e75ee0b53d146b6a561cd671feed457ce2ca02773b88a9a350"
+    "tree_size": 311,
+    "root_hash": "sha256:5d7d5eba0370e275763c2c226ba32902ed2b83f3af62f45394b69cb4774b60e5",
+    "checkpoint_hash": "sha256:0a9ac93b2d7a193d4a0129638f1f6297ed8c3c3d98b146210a26c8e1ca1d8676"
   },
   "query": {
     "kind": "derived",

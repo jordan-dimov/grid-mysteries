@@ -1,6 +1,6 @@
 # 025, the exit clock: when projects leave the TEC Register, measured against the User Commitment trigger date
 
-*Computed 2026-10-22 under the frozen declaration `bc052984…` (`DECLARATION.md`, proofs beside it) from every TEC Register copy the repository holds to 2026-10-20 (791 kept copies) and the documents pinned 22/10/2026 (`evidence/sources-manifest.json`). **Held for the sponsor; nothing here is public, and nothing goes to Ofgem or the introducer until sealed.** Every figure is reproducible by `run.py --phase compute --seal bc052984`; the per-chain appendix is `FINDINGS-APPENDIX.md` (held, names projects).*
+*Computed 2026-10-22 under the frozen declaration `bc052984…` (`DECLARATION.md`, proofs beside it) and its Amendment 1 of the reading (`AMENDMENT-1.md` `4a76ec63…`, frozen 22/10/2026) from every TEC Register copy the repository holds to 2026-10-20 (791 kept copies) and the documents pinned 22/10/2026 (`evidence/sources-manifest.json`). **Held for the sponsor; nothing here is public, and nothing goes to Ofgem or the introducer until sealed.** Every figure is reproducible by `run.py --phase compute --seal bc052984`; the per-chain appendix is `FINDINGS-APPENDIX.md` (held, names projects).*
 
 ## The mystery
 
@@ -8,24 +8,92 @@ Ofgem's CMP470 consultation (17/09/2026) would charge battery projects to stay i
 
 ## The answer, narrowly
 
-1. **Exits are few.** Of 2,644 project chains the register has printed since January 2014, 494 left it (status not Built, absent for at least 95 days before 2026-10-20); 96 of those were storage projects leaving before the connections-reform break of December 2025 (71 storage-only). **Kill condition (b) fired**: fewer than 200 storage exits in the old regime, so the series is reported as thin and no storage hazard below is called a pattern.
+1. **Exits are few.** Of 2,642 project chains the register has printed since January 2014, 492 left it (status not Built, absent for at least 95 days before 2026-10-20); 96 of those were storage projects leaving before the connections-reform break of December 2025 (71 storage-only). **Kill condition (b) fired**: fewer than 200 storage exits in the old regime, so the series is reported as thin and no storage hazard below is called a pattern.
 2. **No bunching before the trigger date, on any clock.** For storage, the exit rate in the twelve months before the trigger (2.17 exits per 100 chain-years, interval 0.79 to 4.73) is indistinguishable from the rate more than two years before it (1.61, 1.13 to 2.21). The same holds under clock B (trigger from the connection date first printed: 2.87 against 2.22) and clock C (the date as printed in each copy: 2.01 against 2.12).
 3. **The rate rises after the trigger, under clock A only.** More than twelve months after the trigger implied by the last-printed connection date, storage left at 12.20 per 100 chain-years (8.40 to 17.13), seven times the far-before rate; the bands are not flat within their uncertainty (K6: False). Under clocks B and C the bands **are** flat (True, True). Interpretation, offered not asserted: clock A reads the trigger from the date a project last printed, so a project that leaves with a stale, passed or imminent connection date sits far "after" its trigger by construction; the rise says projects leave late in their own printed programme (017's overdue residue), not that they leave because the bill arrived.
-4. **All technologies together show the same shape, with more exits.** 485 old-regime exits: 4.43 per 100 chain-years far before the trigger, 11.77 in the year before, 13.22 in the year after, 26.28 beyond. Here the rate does step up from the far-before band to the two years before the trigger (11.39), which storage alone does not show; the controls are mostly wind and gas chains from 2014 to 2021.
+4. **All technologies together show the same shape, with more exits.** 483 old-regime exits: 4.43 per 100 chain-years far before the trigger, 11.77 in the year before, 13.22 in the year after, 26.28 beyond. Here the rate does step up from the far-before band to the two years before the trigger (11.39), which storage alone does not show; the controls are mostly wind and gas chains from 2014 to 2021.
 5. **Against Ofgem's 72.** Ofgem counted 72 storage projects that "exited the connection queue or changed their technology classification" between 2023 and 2025 (6.7 % a year). This series counts 65 storage exits with exit copies from January 2023 to November 2025 (8, 25, 32 by year), and on Ofgem's own annual-snapshot footing 16 storage chains reclassified away from storage between snapshots. The counts meet within a factor of two (F1 silent); the **rates** do not: 0.0 %, 1.4 % and 2.2 % of storage chains present at each January snapshot had left by the next, against 6.7 %; Scoping 1.6 % and 2.6 % against Ofgem's 7.4 % for Scoping or Awaiting Consents; Consents Approved 0.0 % against 3 %; Under Construction 0.0 % against 0 %. The direction agrees (earlier stages leave more; nothing leaves from construction); the level does not, and the candidates are in the reconciliation section.
 
 What this does **not** say: why any project left; what any project had posted or accrued; that a trigger date caused anything. The register records absence.
 
 ## Provisional to sealed
 
-The first compute of 22/10/2026 was discarded before any line was committed: it produced 13 chains holding two keys in one copy, a runner defect against rule I2: a key returned to the register while its chain was already continuing under a stitched key, and the runner let the chain carry both (discarded `chains.ndjson` SHA-256 `a41057c3798a33e2…`, the note in `evidence/run-log.json`). The rerun under the same sealed declaration moved the headline by: chains 2,631 to 2,644; exits 493 to 494; storage exits in the old regime 95 to 96. The 13 are reported below as a stitching finding.
+The first compute of 22/10/2026 was discarded before any line was committed: it produced 13 chains holding two keys in one copy, a runner defect against rule I2: a key returned to the register while its chain was already continuing under a stitched key, and the runner let the chain carry both (discarded `chains.ndjson` SHA-256 `a41057c3798a33e2…`, the note in `evidence/run-log.json`). The rerun under the same sealed declaration moved the headline by: chains 2,631 to 2,642; exits 493 to 492; storage exits in the old regime 95 to 96. The 13 are reported below as a stitching finding.
+
+## Amendment 1 of the reading
+
+**No storage figure moved.** Amendment 1 (`AMENDMENT-1.md` `4a76ec63…`) admits a row to chain-building only if it prints a Project Name and at least one other field of the register (I10). On this series it refused 2 rows, in 1 copy(ies): 2020-12-15 (2). 1 row(s) printing a name and exactly one other field were admitted as the rule reads: 2021-10-05, Project Name and Customer Name, chain class present at series end. 2 chain line(s) built by the declaration-alone compute from refused rows stay in the held `chains.ndjson` (C5, append-only) and are not in this compute. Every leaf of `results.json` that differs from `results-declaration-alone.json` (`f5db2ec0…`, the compute of 945cfda) is listed here with its old and new value: 61 leaves.
+
+| leaf | before | after |
+|---|---|---|
+| `chains/by_era/pre-id/chains` | 379 | 377 |
+| `chains/classes/exit` | 494 | 492 |
+| `chains/total` | 2644 | 2642 |
+| `exits/by_class/agreement/blank` | 244 | 242 |
+| `exits/by_class/cohort/2020` | 34 | 32 |
+| `exits/by_class/family/blank` | 2 | (absent) |
+| `exits/by_class/host_to/(blank)` | 2 | (absent) |
+| `exits/by_class/regime/old` | 485 | 483 |
+| `exits/by_class/status/blank` | 5 | 3 |
+| `exits/old_regime` | 485 | 483 |
+| `exits/total` | 494 | 492 |
+| `exposure/total_chain_months` | 132065 | 132063 |
+| `hazards/old/A/all[5]/chain_months` | 39581 | 39579 |
+| `hazards/old/A/all[5]/exits` | 7 | 5 |
+| `hazards/old/A/all[5]/hazard_per_chain_month` | 0.000177 | 0.000126 |
+| `hazards/old/A/all[5]/lower` | 0.000071 | 0.000041 |
+| `hazards/old/A/all[5]/per_100_chain_years` | 0.21 | 0.15 |
+| `hazards/old/A/all[5]/per_100_chain_years_lower` | 0.09 | 0.05 |
+| `hazards/old/A/all[5]/per_100_chain_years_upper` | 0.44 | 0.35 |
+| `hazards/old/A/all[5]/upper` | 0.000364 | 0.000295 |
+| `hazards/old/A/other[5]/chain_months` | 35538 | 35536 |
+| `hazards/old/A/other[5]/exits` | 6 | 4 |
+| `hazards/old/A/other[5]/hazard_per_chain_month` | 0.000169 | 0.000113 |
+| `hazards/old/A/other[5]/lower` | 0.000062 | 0.000030 |
+| `hazards/old/A/other[5]/per_100_chain_years` | 0.20 | 0.14 |
+| `hazards/old/A/other[5]/per_100_chain_years_lower` | 0.07 | 0.04 |
+| `hazards/old/A/other[5]/per_100_chain_years_upper` | 0.44 | 0.35 |
+| `hazards/old/A/other[5]/upper` | 0.000367 | 0.000288 |
+| `hazards/old/B/all[5]/chain_months` | 18670 | 18668 |
+| `hazards/old/B/all[5]/exits` | 7 | 5 |
+| `hazards/old/B/all[5]/hazard_per_chain_month` | 0.000375 | 0.000268 |
+| `hazards/old/B/all[5]/lower` | 0.000150 | 0.000086 |
+| `hazards/old/B/all[5]/per_100_chain_years` | 0.45 | 0.32 |
+| `hazards/old/B/all[5]/per_100_chain_years_lower` | 0.18 | 0.10 |
+| `hazards/old/B/all[5]/per_100_chain_years_upper` | 0.93 | 0.75 |
+| `hazards/old/B/all[5]/upper` | 0.000773 | 0.000625 |
+| `hazards/old/B/other[5]/chain_months` | 16680 | 16678 |
+| `hazards/old/B/other[5]/exits` | 6 | 4 |
+| `hazards/old/B/other[5]/hazard_per_chain_month` | 0.000360 | 0.000240 |
+| `hazards/old/B/other[5]/lower` | 0.000131 | 0.000065 |
+| `hazards/old/B/other[5]/per_100_chain_years` | 0.43 | 0.29 |
+| `hazards/old/B/other[5]/per_100_chain_years_lower` | 0.16 | 0.08 |
+| `hazards/old/B/other[5]/per_100_chain_years_upper` | 0.94 | 0.74 |
+| `hazards/old/B/other[5]/upper` | 0.000783 | 0.000614 |
+| `hazards/old/C/all[5]/chain_months` | 32256 | 32254 |
+| `hazards/old/C/all[5]/exits` | 7 | 5 |
+| `hazards/old/C/all[5]/hazard_per_chain_month` | 0.000217 | 0.000155 |
+| `hazards/old/C/all[5]/lower` | 0.000087 | 0.000050 |
+| `hazards/old/C/all[5]/per_100_chain_years` | 0.26 | 0.19 |
+| `hazards/old/C/all[5]/per_100_chain_years_lower` | 0.10 | 0.06 |
+| `hazards/old/C/all[5]/per_100_chain_years_upper` | 0.54 | 0.43 |
+| `hazards/old/C/all[5]/upper` | 0.000447 | 0.000362 |
+| `hazards/old/C/other[5]/chain_months` | 29216 | 29214 |
+| `hazards/old/C/other[5]/exits` | 6 | 4 |
+| `hazards/old/C/other[5]/hazard_per_chain_month` | 0.000205 | 0.000137 |
+| `hazards/old/C/other[5]/lower` | 0.000075 | 0.000037 |
+| `hazards/old/C/other[5]/per_100_chain_years` | 0.25 | 0.16 |
+| `hazards/old/C/other[5]/per_100_chain_years_lower` | 0.09 | 0.04 |
+| `hazards/old/C/other[5]/per_100_chain_years_upper` | 0.54 | 0.42 |
+| `hazards/old/C/other[5]/upper` | 0.000447 | 0.000351 |
+| `monthly/2020-12/all` | 4 | 2 |
 
 ## The evidence
 
 - **Copies**: 793 usable, 791 kept (014's partial-export rule excluded 2: 2015-05-08, 2023-11-28), 2014-01-31 to 2026-10-20; every copy verified against its journalled or manifested digest (C1); the series end fixed at 2026-10-20 and copies published after it unread.
-- **Chains**: 2,644. Classes (C3): 2,083 present at the series end, 494 left, 57 completed (last printed as Built), 4 open (last seen after 2026-07-17), 6 not determinable (all before the Project ID era, at the June 2020 re-keying). **Kill (a) did not fire**: the ID-era not-determinable share is 0.0 %.
+- **Chains**: 2,642. Classes (C3): 2,083 present at the series end, 492 left, 57 completed (last printed as Built), 4 open (last seen after 2026-07-17), 6 not determinable (all before the Project ID era, at the June 2020 re-keying). **Kill (a) did not fire**: the ID-era not-determinable share is 0.0 %.
 - **Stitching**: 2,933 key changes carried a chain across a change of key, by tier: all five 1,449, name, customer, stage 701, name, site, stage 608, customer, site, stage, cumulative 108, name alone 45, name, stage, cumulative 21, name, customer, site 1. 426 keys returned to their chain after an interruption (I9); 200 chains were interrupted at least once; 1,184 stage reductions (rows lost while the chain stayed); 367 chains changed plant family at some point (I7), none of them counted as an exit for that reason.
-- **Exposure**: 132,065 chain-months at risk over the series.
+- **Exposure**: 132,063 chain-months at risk over the series.
 
 ### Monthly exit series (old regime, exit copies January 2014 to November 2025)
 
@@ -37,7 +105,7 @@ The first compute of 22/10/2026 was discarded before any line was committed: it 
 | 2017 | 12 | 0 |
 | 2018 | 30 | 3 |
 | 2019 | 21 | 3 |
-| 2020 | 52 | 10 |
+| 2020 | 50 | 10 |
 | 2021 | 34 | 13 |
 | 2022 | 18 | 2 |
 | 2023 | 39 | 8 |
@@ -101,7 +169,7 @@ The monthly series itself (counts and MW, all and storage) is the `monthly` bloc
 | 0 to 12 months before | 56 | 5,708 | 11.77 | 8.89 to 15.29 |
 | 0 to 12 months after | 50 | 4,540 | 13.22 | 9.81 to 17.42 |
 | more than 12 months after | 134 | 6,118 | 26.28 | 22.02 to 31.13 |
-| no connection date | 7 | 39,581 | 0.21 | 0.09 to 0.44 |
+| no connection date | 5 | 39,579 | 0.15 | 0.05 to 0.35 |
 
 **Clock A, chains that print no storage technology (the control)**
 
@@ -112,7 +180,7 @@ The monthly series itself (counts and MW, all and storage) is the `monthly` bloc
 | 0 to 12 months before | 50 | 2,392 | 25.08 | 18.62 to 33.07 |
 | 0 to 12 months after | 39 | 1,821 | 25.70 | 18.27 to 35.13 |
 | more than 12 months after | 101 | 2,872 | 42.20 | 34.37 to 51.28 |
-| no connection date | 6 | 35,538 | 0.20 | 0.07 to 0.44 |
+| no connection date | 4 | 35,536 | 0.14 | 0.04 to 0.35 |
 
 Flatness (K6, the five bands' intervals share a value): storage A False, B True, C True; storage-only A False; all A False; other A False.
 
@@ -154,7 +222,14 @@ The stage split Ofgem can set beside its 7.4 / 3 / 0: storage chains at Scoping 
 
 ### Regimes
 
-- Reformed regime (exit copies from 2025-12-01): 9 exits, by Project Status {'Scoping': 9}, by Gate at last sighting {'1': 1, '(blank)': 8}. Too few for any table; the candidate in CANDIDATES.md waits for the series to lengthen.
+- Reformed regime (exit copies from 2025-12-01): 9 exits. Too few for a hazard table; the candidate in CANDIDATES.md waits for the series to lengthen.
+
+| reformed regime, exits by | value | exits |
+|---|---|---|
+| Project Status at last sighting | Scoping | 9 |
+| Gate at last sighting | (blank) | 8 |
+| Gate at last sighting | 1 | 1 |
+
 - The register's row count through the Gate 2 reset: 2,242 on 2025-10-03, 2,233 on 2025-11-25, 2,229 on 2026-02-27. **The queue reset is not visible as a mass departure from the TEC Register.**
 
 ## Explanations tested
@@ -184,7 +259,13 @@ Annual snapshots as Ofgem had them (the first kept copy on or after 1 January, a
 | 2025-01-03 | 2025-11-28 | Under Construction/Commissioning | 10 | 0 | 0.0 % | 0 |
 | 2025-01-03 | 2025-11-28 | all | 1177 | 26 | 2.2 % | 14 |
 
-Window count (O2): 65 storage exits with exit copies 2023-01 to 2025-11 (42 storage-only), by status at last sighting {'Consents Approved': 1, 'Scoping': 60, 'Awaiting Consents': 4}. Ofgem: 72 exited or reclassified, 6.7 % a year.
+Window count (O2): 65 storage exits with exit copies 2023-01 to 2025-11 (42 storage-only). Ofgem: 72 exited or reclassified, 6.7 % a year. By status at last sighting:
+
+| O2 window, status at last sighting | storage exits |
+|---|---|
+| Scoping | 60 |
+| Awaiting Consents | 4 |
+| Consents Approved | 1 |
 
 Candidates for the gap in rates, none asserted: (i) **denominator**: Ofgem's queue is NESO's full connections queue, which includes distribution-connected projects below the TEC Register's threshold and projects not yet on the register; a smaller, earlier-stage population would both raise the rate and hold more of the exits; (ii) **classification**: Ofgem's figure lumps exits with reclassification, and the register's reclassifications under one key are counted here as reclassifications (16 away from storage across the snapshots) and never as exits; (iii) **snapshot dates**: Ofgem's are not published; (iv) **re-keying**: a snapshot pair that spans a re-keying copy sees every project leave unless it is stitched, and the August 2022 re-issue lies just before Ofgem's first window.
 
@@ -194,9 +275,24 @@ Identity is the whole method. 1,449 of the 2,933 key changes were at the three r
 
 ### The joins (addendum J1 to J3), run on the storage exits
 
-- **J1 REPD** (battery rows, July 2026 extract): matched 21 of 101 storage exits (20.8 %; ID era 17.8 %), 7 ambiguous, by tier {'b: place token and capacity': 15, 'a: operator and place token': 2, "c: operator's only battery row": 4}. **Below the 70 % threshold: the matched subset is reported and the join stops.** Classes among the matched: no planning event before exit 8, application pending at exit 6, refused, withdrawn or expired before exit 5, abandoned (undated) 2. One sentence per class: no matched storage exit was consented at exit; 5 left after a refusal, withdrawal or expiry; 2 are abandoned in the planning record; 6 left with an application pending; 8 left with a planning record that holds no event before the exit. Coordinates were not used (the register prints none).
-- **J2 Capacity Market Register** (storage CMUs, 21/10/2026): matched 16 (15.8 %; ID era 16.4 %), 33 ambiguous (one customer with several CMUs at one site), by tier {'a: company and place token': 6, 'c: place token and capacity': 6, 'b: company and capacity': 4}. **Below 70 %: matched subset only.** Classes: never held 14, agreement awarded after exit 1, agreement held at exit 1. No matched exit had a terminated capacity agreement, so the termination-against-exit timing table is empty: {}.
-- **J3 Companies House** (019's links, profiles and charges refreshed 2026-10-22, 71 companies): 24.3 % of all exits linked (49.5 % of storage exits, 54.8 % in the ID era; 019 resolved names on current ids, so pre-2021 customers are mostly unlinked). Of the linked, 37.5 % had a live charge at exit; company status now {'active': 119, 'dissolved': 1}; classes {'not linked': 374, 'live charge at exit': 45, 'neither': 74, 'dissolved, more than twelve months from exit': 1}. One sentence: the companies behind linked exits are almost all still active, and more than a third carried a live charge when their project left the register, which is the case Ofgem should worry about and the one this register cannot explain.
+- **J1 REPD** (battery rows, July 2026 extract): matched 21 of 101 storage exits (20.8 %; ID era 17.8 %), 7 ambiguous (tiers tabled below). **Below the 70 % threshold: the matched subset is reported and the join stops.** Classes among the matched: no planning event before exit 8, application pending at exit 6, refused, withdrawn or expired before exit 5, abandoned (undated) 2. One sentence per class: no matched storage exit was consented at exit; 5 left after a refusal, withdrawal or expiry; 2 are abandoned in the planning record; 6 left with an application pending; 8 left with a planning record that holds no event before the exit. Coordinates were not used (the register prints none).
+- **J2 Capacity Market Register** (storage CMUs, 21/10/2026): matched 16 (15.8 %; ID era 16.4 %), 33 ambiguous (one customer with several CMUs at one site; tiers tabled below). **Below 70 %: matched subset only.** Classes: never held 14, agreement awarded after exit 1, agreement held at exit 1. No matched exit had a terminated capacity agreement, so the termination-against-exit timing table is empty.
+- **J3 Companies House** (019's links, profiles and charges refreshed 2026-10-22, 71 companies): 24.3 % of all exits linked (49.5 % of storage exits, 54.8 % in the ID era; 019 resolved names on current ids, so pre-2021 customers are mostly unlinked). Of the linked, 37.5 % had a live charge at exit (company status now and the classes tabled below). One sentence: the companies behind linked exits are almost all still active, and more than a third carried a live charge when their project left the register, which is the case Ofgem should worry about and the one this register cannot explain.
+
+| join | breakdown | value | count |
+|---|---|---|---|
+| J1 REPD | match tier | a: operator and place token | 2 |
+| J1 REPD | match tier | b: place token and capacity | 15 |
+| J1 REPD | match tier | c: operator's only battery row | 4 |
+| J2 Capacity Market | match tier | a: company and place token | 6 |
+| J2 Capacity Market | match tier | b: company and capacity | 4 |
+| J2 Capacity Market | match tier | c: place token and capacity | 6 |
+| J3 Companies House | company status now | active | 119 |
+| J3 Companies House | company status now | dissolved | 1 |
+| J3 Companies House | class at exit | not linked | 374 |
+| J3 Companies House | class at exit | neither | 74 |
+| J3 Companies House | class at exit | live charge at exit | 45 |
+| J3 Companies House | class at exit | dissolved, more than twelve months from exit | 1 |
 
 Why the joins are thin: the register prints a substation and a developer's project name; REPD prints a planning site and the applicant; the Capacity Market prints a unit name and the applicant. A place token shared by both is rare when the register's name is a substation and REPD's is a road. The declared next step, if the sponsor wants the joins to carry weight, is an amendment that sends the unmatched residue to a model as **proposer** (016's admission rule), with the proposals pinned and admitted by a declared rule; the declared tiers stay the record.
 
@@ -216,4 +312,4 @@ From the register's own history, storage projects did not leave in a bunch befor
 
 ## Reproducibility
 
-`DECLARATION.md` `bc05298419069041ae21b75d0fc556f5ecb48224eb947806325f704f4eb4cd78`; schema report `fa3cbb802f61d3b6…`; sources manifest `55f47fb98d19e50b…`; `evidence/results.json`, `evidence/joins-results.json`, `evidence/format-check.json`, `evidence/run-log.json` (committed); `evidence/chains.ndjson` (append-only, C5), `evidence/exits.ndjson`, `evidence/joins.ndjson`, `evidence/reused-keys.json`, `FINDINGS-APPENDIX.md` (held). Rules: `src/grid_mysteries/investigations/exit_clock.py`, tests `tests/test_exit_clock.py`, map `evidence/rule-sources.json`.
+`DECLARATION.md` `bc05298419069041ae21b75d0fc556f5ecb48224eb947806325f704f4eb4cd78`; `AMENDMENT-1.md` `4a76ec63daa74f697ba353ae636392ff4eb3e9e1af836aa9522a00ff3dbecce5` (blank-pattern addendum `archives/025-exit-clock-inputs/blank-patterns.json`); `evidence/results-declaration-alone.json` (the compute under the declaration alone); schema report `fa3cbb802f61d3b6…`; sources manifest `55f47fb98d19e50b…`; `evidence/results.json`, `evidence/joins-results.json`, `evidence/format-check.json`, `evidence/run-log.json` (committed); `evidence/chains.ndjson` (append-only, C5), `evidence/exits.ndjson`, `evidence/joins.ndjson`, `evidence/reused-keys.json`, `FINDINGS-APPENDIX.md` (held). Rules: `src/grid_mysteries/investigations/exit_clock.py`, tests `tests/test_exit_clock.py`, map `evidence/rule-sources.json`.

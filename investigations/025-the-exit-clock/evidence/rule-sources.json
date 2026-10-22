@@ -1,5 +1,8 @@
 {
- "declaration": "DECLARATION.md",
+ "declaration": [
+  "DECLARATION.md",
+  "AMENDMENT-1.md"
+ ],
  "rules": {
   "I2: the key is the Project ID (15 characters) in the ID era and 005's triple before it": "tests/test_exit_clock.py::test_key_is_the_project_id_in_the_id_era_and_the_triple_before_it",
   "I1: a chain's stage rows are grouped under one key": "tests/test_exit_clock.py::test_keyed_groups_a_chains_stage_rows_under_one_key",
@@ -19,6 +22,10 @@
   "E4, K4, R1: the exit copy, the months at risk and the regime": "tests/test_exit_clock.py::test_exit_copy_is_the_first_kept_copy_after_the_last_sighting_and_months_span_inclusive",
   "K5: Byar's interval brackets the hazard and is floored at zero": "tests/test_exit_clock.py::test_byar_interval_brackets_the_hazard_and_is_zero_floored",
   "K6: flatness is a value shared by every band's interval": "tests/test_exit_clock.py::test_flatness_is_a_shared_value_across_every_bands_interval",
-  "J1, J2: place tokens drop stop words, short words and numbers; capacity within 1 MW": "tests/test_exit_clock.py::test_place_tokens_drop_stop_words_short_words_and_numbers"
+  "J1, J2: place tokens drop stop words, short words and numbers; capacity within 1 MW": "tests/test_exit_clock.py::test_place_tokens_drop_stop_words_short_words_and_numbers",
+  "I10.1 (Amendment 1) a row printing a Project Name alone is refused before keying": "tests/test_exit_clock.py::test_a_row_printing_a_name_alone_is_refused",
+  "I10.2 (Amendment 1) a row printing a Project Name and at least one other field is admitted": "tests/test_exit_clock.py::test_a_row_printing_a_name_and_one_other_field_is_admitted",
+  "I10.3 (Amendment 1) a row printing no Project Name is refused": "tests/test_exit_clock.py::test_a_row_printing_no_name_is_refused",
+  "I10.4 (Amendment 1) the admitted rows keep their printed order and the refused are counted; the printed count is untouched": "tests/test_exit_clock.py::test_admit_keeps_printed_order_and_counts_the_refused"
  }
 }

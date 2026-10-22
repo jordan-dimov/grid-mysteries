@@ -527,6 +527,12 @@ def render_schema(r: dict[str, Any]) -> str:
 
 FORMAT_CHECK = EVIDENCE / "format-check.json"
 DECLARATION_SHA256 = "bc05298419069041ae21b75d0fc556f5ecb48224eb947806325f704f4eb4cd78"
+#: Amendment 1 of the reading (22/10/2026, night): I10, the admissible row.
+AMENDMENT_1 = HERE / "AMENDMENT-1.md"
+AMENDMENT_1_SHA256 = "4a76ec63daa74f697ba353ae636392ff4eb3e9e1af836aa9522a00ff3dbecce5"
+#: The results computed under the declaration alone (945cfda), kept so the
+#: amended compute can list every leaf that moved with its old and new value.
+RESULTS_ALONE = EVIDENCE / "results-declaration-alone.json"
 SCHEMA_SHA256_PREFIX = "fa3cbb802f61d3b6"
 SERIES_END = date(2026, 10, 20)
 JOIN_ARCHIVES = {
@@ -671,7 +677,41 @@ def sealed_declaration(seal: str | None) -> str:
         sys.exit(f"compute needs --seal, the prefix of DECLARATION.md's SHA-256 ({digest[:8]}…)")
     if not (HERE / "DECLARATION.md.timestamps.json").exists():
         sys.exit("DECLARATION.md is not frozen (no proof sidecar)")
+    a1 = sha(AMENDMENT_1)
+    if a1 != AMENDMENT_1_SHA256:
+        sys.exit(
+            f"AMENDMENT-1.md hashes to {a1[:8]}…, the runner expects {AMENDMENT_1_SHA256[:8]}…"
+        )
+    if not (HERE / "AMENDMENT-1.md.timestamps.json").exists():
+        sys.exit("AMENDMENT-1.md is not frozen (no proof sidecar)")
     return digest
+
+
+def flatten(value: Any, path: str = "") -> dict[str, Any]:
+    """Every leaf of a JSON value by its path, lists by index."""
+    out: dict[str, Any] = {}
+    if isinstance(value, dict):
+        for k, v in value.items():
+            out.update(flatten(v, f"{path}/{k}" if path else str(k)))
+    elif isinstance(value, list):
+        for i, v in enumerate(value):
+            out.update(flatten(v, f"{path}[{i}]"))
+    else:
+        out[path] = value
+    return out
+
+
+def moved_leaves(before: dict[str, Any], after: dict[str, Any]) -> list[dict[str, Any]]:
+    """Amendment 1: the leaves whose value differs between two results files,
+    with the old and new value, excluding the clock and the amendment block."""
+    skip = ("computed_at", "amendments", "amendment_1")
+    b = {k: v for k, v in flatten(before).items() if not k.startswith(skip)}
+    a = {k: v for k, v in flatten(after).items() if not k.startswith(skip)}
+    moved = []
+    for k in sorted(set(b) | set(a)):
+        if b.get(k, "(absent)") != a.get(k, "(absent)"):
+            moved.append({"leaf": k, "before": b.get(k, "(absent)"), "after": a.get(k, "(absent)")})
+    return moved
 
 
 class Chain:
@@ -764,9 +804,12 @@ class Chain:
         }
 
 
-def build_chains(sequence: list[analysis.Kept]) -> tuple[dict[str, Chain], list[dict[str, Any]]]:
-    """I1 to I9 over the kept copies in publication order."""
+def build_chains(
+    sequence: list[analysis.Kept],
+) -> tuple[dict[str, Chain], list[dict[str, Any]], list[dict[str, Any]], dict[str, Any]]:
+    """I1 to I9 over the kept copies in publication order, I10 before keying."""
     chains: dict[str, Chain] = {}
+    admission: dict[str, Any] = {"refused_rows": [], "sparse_rows": []}
     chain_by_key: dict[str, str] = {}
     seen_key_chain: dict[str, str] = {}
     prev_keys: dict[str, list[dict[str, object]]] = {}
@@ -775,7 +818,20 @@ def build_chains(sequence: list[analysis.Kept]) -> tuple[dict[str, Chain], list[
     reused_keys: list[dict[str, Any]] = []
     for index, k in enumerate(sequence):
         t = k.vintage.t_public
-        rows = list(k.vintage.rows)
+        rows, refused = ec.admit(list(k.vintage.rows))
+        if refused:
+            admission["refused_rows"].append(
+                {"t_public": t.isoformat(), "sha256": k.vintage.sha256, "refused": refused}
+            )
+        for r in rows:
+            if len(ec.fields_printed(r)) == 1:
+                admission["sparse_rows"].append(
+                    {
+                        "t_public": t.isoformat(),
+                        "fields": ["Project Name", *ec.fields_printed(r)],
+                        "key": ec.row_key(r, t),
+                    }
+                )
         keys = ec.keyed(rows, t)
         mapping: dict[str, str] = {}
         claimed: set[str] = set()
@@ -882,7 +938,9 @@ def build_chains(sequence: list[analysis.Kept]) -> tuple[dict[str, Chain], list[
         chain_by_key = mapping
         prev_keys = keys
         prev_t = t
-    return chains, pair_log, reused_keys
+    for r in admission["sparse_rows"]:
+        r["chain"] = seen_key_chain.get(r.pop("key"))
+    return chains, pair_log, reused_keys, admission
 
 
 def strata_of(state: dict[str, Any], first_t: date) -> dict[str, str]:
@@ -914,7 +972,7 @@ def phase_compute(seal: str | None) -> None:
         sys.exit(
             f"C1: the last kept copy is {copy_dates[-1]}, the declaration ends the series at {SERIES_END}"
         )
-    chains, pair_log, reused_keys = build_chains(sequence)
+    chains, pair_log, reused_keys, admission = build_chains(sequence)
     exit_cutoff = SERIES_END - timedelta(days=ec.N_DAYS)
 
     # ---- classes (E1 to E3, I5), C3
@@ -1251,6 +1309,7 @@ def phase_compute(seal: str | None) -> None:
         for raw in CHAINS.read_text().splitlines():
             if raw.strip():
                 existing[json.loads(raw)["chain"]] = raw
+    held_alone = sorted(cid for cid in existing if cid not in chains)
     new_lines = []
     for cid in sorted(chains):
         line = json.dumps(chains[cid].as_line(), default=jsonable, sort_keys=True)
@@ -1377,6 +1436,23 @@ def phase_compute(seal: str | None) -> None:
         "reconciliation": {"o1_snapshots": o1, "o2_window": o2},
         "rows_through_break": rows_through_break,
         "pinned": manifest_shas,
+        "amendments": [{"n": 1, "file": "AMENDMENT-1.md", "sha256": AMENDMENT_1_SHA256}],
+    }
+    results["amendment_1"] = {
+        "refused_rows": admission["refused_rows"],
+        "rows_refused": sum(r["refused"] for r in admission["refused_rows"]),
+        "sparse_rows_admitted": [
+            {
+                "t_public": r["t_public"],
+                "fields": r["fields"],
+                "chain_class": per_chain.get(r.get("chain") or "", {}).get("class", "(no chain)"),
+            }
+            for r in admission["sparse_rows"]
+        ],
+        "chains_held_under_declaration_alone": len(held_alone),
+        "moved": moved_leaves(json.loads(RESULTS_ALONE.read_text()), results)
+        if RESULTS_ALONE.exists()
+        else None,
     }
     write_json(RESULTS_JSON, results)
     log_run(
@@ -1945,7 +2021,7 @@ def phase_render() -> None:
     L += [
         "# 025, the exit clock: when projects leave the TEC Register, measured against the User Commitment trigger date",
         "",
-        f"*Computed {R['computed_at'][:10]} under the frozen declaration `{R['declaration_sha256'][:8]}…` (`DECLARATION.md`, proofs beside it) from every TEC Register copy the repository holds to {R['series']['last_copy']} ({R['series']['kept_copies']} kept copies) and the documents pinned 22/10/2026 (`evidence/sources-manifest.json`). **Held for the sponsor; nothing here is public, and nothing goes to Ofgem or the introducer until sealed.** Every figure is reproducible by `run.py --phase compute --seal {R['declaration_sha256'][:8]}`; the per-chain appendix is `FINDINGS-APPENDIX.md` (held, names projects).*",
+        f"*Computed {R['computed_at'][:10]} under the frozen declaration `{R['declaration_sha256'][:8]}…` (`DECLARATION.md`, proofs beside it) and its Amendment 1 of the reading (`AMENDMENT-1.md` `{R['amendments'][0]['sha256'][:8]}…`, frozen 22/10/2026) from every TEC Register copy the repository holds to {R['series']['last_copy']} ({R['series']['kept_copies']} kept copies) and the documents pinned 22/10/2026 (`evidence/sources-manifest.json`). **Held for the sponsor; nothing here is public, and nothing goes to Ofgem or the introducer until sealed.** Every figure is reproducible by `run.py --phase compute --seal {R['declaration_sha256'][:8]}`; the per-chain appendix is `FINDINGS-APPENDIX.md` (held, names projects).*",
         "",
         "## The mystery",
         "",
@@ -1969,6 +2045,31 @@ def phase_render() -> None:
         L.append(
             f"The first compute of 22/10/2026 was discarded before any line was committed: it produced 13 chains holding two keys in one copy, a runner defect against rule I2: a key returned to the register while its chain was already continuing under a stitched key, and the runner let the chain carry both (discarded `chains.ndjson` SHA-256 `{d['discarded_chains_sha256'][:16]}…`, the note in `evidence/run-log.json`). The rerun under the same sealed declaration moved the headline by: chains 2,631 to {C['total']:,}; exits 493 to {E['total']}; storage exits in the old regime 95 to {E['storage_old_regime']}. The 13 are reported below as a stitching finding."
         )
+    A1 = R.get("amendment_1") or {}
+    moved = A1.get("moved") or []
+    storage_moved = [m for m in moved if "storage" in m["leaf"].lower()]
+    L += ["", "## Amendment 1 of the reading", ""]
+    L.append(
+        (
+            "**No storage figure moved.** "
+            if not storage_moved
+            else f"**{len(storage_moved)} storage leaves moved, against the expectation stated in the amendment; they are listed first below.** "
+        )
+        + f"Amendment 1 (`AMENDMENT-1.md` `{R['amendments'][0]['sha256'][:8]}…`) admits a row to chain-building only if it prints a Project Name and at least one other field of the register (I10). On this series it refused {A1.get('rows_refused', 0)} rows, in {len(A1.get('refused_rows') or [])} copy(ies): "
+        + ", ".join(f"{r['t_public']} ({r['refused']})" for r in A1.get("refused_rows") or [])
+        + f". {len(A1.get('sparse_rows_admitted') or [])} row(s) printing a name and exactly one other field were admitted as the rule reads: "
+        + "; ".join(
+            f"{r['t_public']}, {' and '.join(r['fields'])}, chain class {r['chain_class']}"
+            for r in A1.get("sparse_rows_admitted") or []
+        )
+        + f". {A1.get('chains_held_under_declaration_alone', 0)} chain line(s) built by the declaration-alone compute from refused rows stay in the held `chains.ndjson` (C5, append-only) and are not in this compute. Every leaf of `results.json` that differs from `results-declaration-alone.json` (`f5db2ec0…`, the compute of 945cfda) is listed here with its old and new value: {len(moved)} leaves."
+    )
+    if moved:
+        L += ["", "| leaf | before | after |", "|---|---|---|"]
+        for m_ in sorted(
+            moved, key=lambda m: (0 if "storage" in m["leaf"].lower() else 1, m["leaf"])
+        ):
+            L.append(f"| `{m_['leaf']}` | {m_['before']} | {m_['after']} |")
     L += [
         "",
         "## The evidence",
@@ -2043,7 +2144,19 @@ def phase_render() -> None:
         "",
         "### Regimes",
         "",
-        f"- Reformed regime (exit copies from 2025-12-01): {E['new_regime']} exits, by Project Status {E['new_regime_by_status']}, by Gate at last sighting {E['new_regime_by_gate']}. Too few for any table; the candidate in CANDIDATES.md waits for the series to lengthen.",
+        f"- Reformed regime (exit copies from 2025-12-01): {E['new_regime']} exits. Too few for a hazard table; the candidate in CANDIDATES.md waits for the series to lengthen.",
+        "",
+        "| reformed regime, exits by | value | exits |",
+        "|---|---|---|",
+        *[
+            f"| Project Status at last sighting | {k} | {v} |"
+            for k, v in sorted(E["new_regime_by_status"].items())
+        ],
+        *[
+            f"| Gate at last sighting | {k} | {v} |"
+            for k, v in sorted(E["new_regime_by_gate"].items())
+        ],
+        "",
         f"- The register's row count through the Gate 2 reset: {R['rows_through_break'][0]['rows']:,} on {R['rows_through_break'][0]['t_public']}, {next(r['rows'] for r in R['rows_through_break'] if r['t_public'] >= '2025-11-25'):,} on {next(r['t_public'] for r in R['rows_through_break'] if r['t_public'] >= '2025-11-25')}, {R['rows_through_break'][-1]['rows']:,} on {R['rows_through_break'][-1]['t_public']}. **The queue reset is not visible as a mass departure from the TEC Register.**",
         "",
         "## Explanations tested",
@@ -2062,7 +2175,11 @@ def phase_render() -> None:
             )
     L += [
         "",
-        f"Window count (O2): {o2['storage_exits']} storage exits with exit copies 2023-01 to 2025-11 ({o2['storage_only_exits']} storage-only), by status at last sighting {o2['by_status']}. Ofgem: 72 exited or reclassified, 6.7 % a year.",
+        f"Window count (O2): {o2['storage_exits']} storage exits with exit copies 2023-01 to 2025-11 ({o2['storage_only_exits']} storage-only). Ofgem: 72 exited or reclassified, 6.7 % a year. By status at last sighting:",
+        "",
+        "| O2 window, status at last sighting | storage exits |",
+        "|---|---|",
+        *[f"| {k} | {v} |" for k, v in sorted(o2["by_status"].items(), key=lambda kv: -kv[1])],
         "",
         f"Candidates for the gap in rates, none asserted: (i) **denominator**: Ofgem's queue is NESO's full connections queue, which includes distribution-connected projects below the TEC Register's threshold and projects not yet on the register; a smaller, earlier-stage population would both raise the rate and hold more of the exits; (ii) **classification**: Ofgem's figure lumps exits with reclassification, and the register's reclassifications under one key are counted here as reclassifications ({sum(s['by_status']['all'].get('reclassified_away', 0) for s in o1)} away from storage across the snapshots) and never as exits; (iii) **snapshot dates**: Ofgem's are not published; (iv) **re-keying**: a snapshot pair that spans a re-keying copy sees every project leave unless it is stitched, and the August 2022 re-issue lies just before Ofgem's first window.",
         "",
@@ -2075,9 +2192,28 @@ def phase_render() -> None:
     ]
     if J:
         L += [
-            f"- **J1 REPD** (battery rows, July 2026 extract): matched {J['repd']['states'].get('matched', 0)} of {J['run_on']['storage_exits']} storage exits ({pct(J['repd']['matched_share_storage'])}; ID era {pct(J['repd']['matched_share_storage_id_era'])}), {J['repd']['states'].get('ambiguous', 0)} ambiguous, by tier {J['repd']['tiers']}. **Below the 70 % threshold: the matched subset is reported and the join stops.** Classes among the matched: {', '.join(f'{k} {v}' for k, v in J['repd']['classes'].items() if k != 'no planning record')}. One sentence per class: no matched storage exit was consented at exit; {J['repd']['classes'].get('refused, withdrawn or expired before exit', 0)} left after a refusal, withdrawal or expiry; {J['repd']['classes'].get('abandoned (undated)', 0)} are abandoned in the planning record; {J['repd']['classes'].get('application pending at exit', 0)} left with an application pending; {J['repd']['classes'].get('no planning event before exit', 0)} left with a planning record that holds no event before the exit. Coordinates were not used (the register prints none).",
-            f"- **J2 Capacity Market Register** (storage CMUs, 21/10/2026): matched {J['cmr']['states'].get('matched', 0)} ({pct(J['cmr']['matched_share_storage'])}; ID era {pct(J['cmr']['matched_share_storage_id_era'])}), {J['cmr']['states'].get('ambiguous', 0)} ambiguous (one customer with several CMUs at one site), by tier {J['cmr']['tiers']}. **Below 70 %: matched subset only.** Classes: {', '.join(f'{k} {v}' for k, v in J['cmr']['classes'].items() if k != 'no record')}. No matched exit had a terminated capacity agreement, so the termination-against-exit timing table is empty: {J['cmr']['termination_minus_exit_months']}.",
-            f"- **J3 Companies House** (019's links, profiles and charges refreshed {CH_RUN_DATE}, {J['companies_house']['companies_fetched']} companies): {pct(J['companies_house']['linked_share_all_exits'])} of all exits linked ({pct(J['companies_house']['linked_share_storage'])} of storage exits, {pct(J['companies_house']['linked_share_storage_id_era'])} in the ID era; 019 resolved names on current ids, so pre-2021 customers are mostly unlinked). Of the linked, {pct(J['companies_house']['live_charge_share_of_linked'])} had a live charge at exit; company status now {J['companies_house']['status_now']}; classes {J['companies_house']['classes']}. One sentence: the companies behind linked exits are almost all still active, and more than a third carried a live charge when their project left the register, which is the case Ofgem should worry about and the one this register cannot explain.",
+            f"- **J1 REPD** (battery rows, July 2026 extract): matched {J['repd']['states'].get('matched', 0)} of {J['run_on']['storage_exits']} storage exits ({pct(J['repd']['matched_share_storage'])}; ID era {pct(J['repd']['matched_share_storage_id_era'])}), {J['repd']['states'].get('ambiguous', 0)} ambiguous (tiers tabled below). **Below the 70 % threshold: the matched subset is reported and the join stops.** Classes among the matched: {', '.join(f'{k} {v}' for k, v in J['repd']['classes'].items() if k != 'no planning record')}. One sentence per class: no matched storage exit was consented at exit; {J['repd']['classes'].get('refused, withdrawn or expired before exit', 0)} left after a refusal, withdrawal or expiry; {J['repd']['classes'].get('abandoned (undated)', 0)} are abandoned in the planning record; {J['repd']['classes'].get('application pending at exit', 0)} left with an application pending; {J['repd']['classes'].get('no planning event before exit', 0)} left with a planning record that holds no event before the exit. Coordinates were not used (the register prints none).",
+            f"- **J2 Capacity Market Register** (storage CMUs, 21/10/2026): matched {J['cmr']['states'].get('matched', 0)} ({pct(J['cmr']['matched_share_storage'])}; ID era {pct(J['cmr']['matched_share_storage_id_era'])}), {J['cmr']['states'].get('ambiguous', 0)} ambiguous (one customer with several CMUs at one site; tiers tabled below). **Below 70 %: matched subset only.** Classes: {', '.join(f'{k} {v}' for k, v in J['cmr']['classes'].items() if k != 'no record')}. No matched exit had a terminated capacity agreement, so the termination-against-exit timing table is empty{'' if not J['cmr']['termination_minus_exit_months'] else ': ' + ', '.join(f'{k} {v}' for k, v in J['cmr']['termination_minus_exit_months'].items())}.",
+            f"- **J3 Companies House** (019's links, profiles and charges refreshed {CH_RUN_DATE}, {J['companies_house']['companies_fetched']} companies): {pct(J['companies_house']['linked_share_all_exits'])} of all exits linked ({pct(J['companies_house']['linked_share_storage'])} of storage exits, {pct(J['companies_house']['linked_share_storage_id_era'])} in the ID era; 019 resolved names on current ids, so pre-2021 customers are mostly unlinked). Of the linked, {pct(J['companies_house']['live_charge_share_of_linked'])} had a live charge at exit (company status now and the classes tabled below). One sentence: the companies behind linked exits are almost all still active, and more than a third carried a live charge when their project left the register, which is the case Ofgem should worry about and the one this register cannot explain.",
+            "",
+            "| join | breakdown | value | count |",
+            "|---|---|---|---|",
+            *[
+                f"| J1 REPD | match tier | {k} | {v} |"
+                for k, v in sorted(J["repd"]["tiers"].items())
+            ],
+            *[
+                f"| J2 Capacity Market | match tier | {k} | {v} |"
+                for k, v in sorted(J["cmr"]["tiers"].items())
+            ],
+            *[
+                f"| J3 Companies House | company status now | {k} | {v} |"
+                for k, v in sorted(J["companies_house"]["status_now"].items())
+            ],
+            *[
+                f"| J3 Companies House | class at exit | {k} | {v} |"
+                for k, v in sorted(J["companies_house"]["classes"].items(), key=lambda kv: -kv[1])
+            ],
             "",
             "Why the joins are thin: the register prints a substation and a developer's project name; REPD prints a planning site and the applicant; the Capacity Market prints a unit name and the applicant. A place token shared by both is rare when the register's name is a substation and REPD's is a road. The declared next step, if the sponsor wants the joins to carry weight, is an amendment that sends the unmatched residue to a model as **proposer** (016's admission rule), with the proposals pinned and admitted by a declared rule; the declared tiers stay the record.",
         ]
@@ -2099,7 +2235,7 @@ def phase_render() -> None:
         "",
         "## Reproducibility",
         "",
-        f"`DECLARATION.md` `{R['declaration_sha256']}`; schema report `{R['schema_report_sha256'][:16]}…`; sources manifest `{R['sources_manifest_sha256'][:16]}…`; `evidence/results.json`, `evidence/joins-results.json`, `evidence/format-check.json`, `evidence/run-log.json` (committed); `evidence/chains.ndjson` (append-only, C5), `evidence/exits.ndjson`, `evidence/joins.ndjson`, `evidence/reused-keys.json`, `FINDINGS-APPENDIX.md` (held). Rules: `src/grid_mysteries/investigations/exit_clock.py`, tests `tests/test_exit_clock.py`, map `evidence/rule-sources.json`.",
+        f"`DECLARATION.md` `{R['declaration_sha256']}`; `AMENDMENT-1.md` `{R['amendments'][0]['sha256']}` (blank-pattern addendum `archives/025-exit-clock-inputs/blank-patterns.json`); `evidence/results-declaration-alone.json` (the compute under the declaration alone); schema report `{R['schema_report_sha256'][:16]}…`; sources manifest `{R['sources_manifest_sha256'][:16]}…`; `evidence/results.json`, `evidence/joins-results.json`, `evidence/format-check.json`, `evidence/run-log.json` (committed); `evidence/chains.ndjson` (append-only, C5), `evidence/exits.ndjson`, `evidence/joins.ndjson`, `evidence/reused-keys.json`, `FINDINGS-APPENDIX.md` (held). Rules: `src/grid_mysteries/investigations/exit_clock.py`, tests `tests/test_exit_clock.py`, map `evidence/rule-sources.json`.",
     ]
     FINDINGS.write_text("\n".join(L) + "\n")
 
@@ -2108,14 +2244,14 @@ def phase_render() -> None:
     A = [
         "# 025, appendix: every chain that left the register (held; names projects and companies)",
         "",
-        f"*{len(exits)} exits under `DECLARATION.md` `{R['declaration_sha256'][:8]}…`. For each: the join key Ofgem can apply to its own securities table (project name, customer, connection site, Project ID and Number, MW, at first and last sighting), then every run of unchanged state (first and last copy, copies in the run, the copies' digests) so that any row can be checked against NESO's own archive. Copies' dates and digests are in `archives/025-exit-clock-inputs/schema-report.json`.*",
+        f"*{len(exits)} exits under `DECLARATION.md` `{R['declaration_sha256'][:8]}…` with Amendment 1 (`{R['amendments'][0]['sha256'][:8]}…`). For each: the join key Ofgem can apply to its own securities table (project name, customer, connection site, Project ID and Number, MW, at first and last sighting), then every run of unchanged state (first and last copy, copies in the run, the copies' digests) so that any row can be checked against NESO's own archive. Copies' dates and digests are in `archives/025-exit-clock-inputs/schema-report.json`.*",
         "",
     ]
     for e in sorted(exits, key=lambda e: (e["exit_copy"], e["chain"])):
         ch = chains_by_id[e["chain"]]
         jk = e["join_key"]
         A += [
-            f"## {jk['last']['name']} — exit copy {e['exit_copy']} ({e['regime']} regime)",
+            f"## {jk['last']['name']}, exit copy {e['exit_copy']} ({e['regime']} regime)",
             "",
             f"- Join key, last sighting {e['last_t']}: name `{jk['last']['name']}`, customer `{jk['last']['customer']}`, site `{jk['last']['site']}`, key `{jk['last']['key']}`, Project Number `{jk['last']['project_number'] or '-'}`, MW {jk['last']['stage_mw']}. First sighting {e['first_t']}: name `{jk['first']['name']}`, customer `{jk['first']['customer']}`, site `{jk['first']['site']}`, key `{jk['first']['key']}`, MW {jk['first']['stage_mw']}.",
             f"- Status at last sighting {e['status_printed']}; plant type `{e['plant_type_printed']}`; agreement {e['agreement']}; host TO {e['host_to']}; gate `{e['gate'] or '-'}`. Connection date at last sighting {e['connection_at_last'] or '-'} (trigger A {e['trigger_a'] or '-'}, band {e['band_a']}); at first sighting {e['connection_at_first'] or '-'} (trigger B {e['trigger_b'] or '-'}, band {e['band_b']}). Sightings {e['sightings']}, key changes {e['key_changes']}, interruptions {e['interruptions']}, reclassified {e['reclassified']}.",

@@ -275,3 +275,36 @@ def test_place_tokens_drop_stop_words_short_words_and_numbers():
     }
     assert ec.within_one_mw(D("49.9"), D("50")) and not ec.within_one_mw(D("48"), D("50"))
     assert not ec.within_one_mw(None, D("50"))
+
+
+# ------------------------------------------------- admissible rows (I10)
+
+
+def test_a_row_printing_a_name_alone_is_refused():
+    assert not ec.admissible({"Project Name": "Confidential Information - Do Not Distribute"})
+    assert not ec.admissible({"Project Name": "x", "Customer Name": "  ", "Plant Type": None})
+
+
+def test_a_row_printing_a_name_and_one_other_field_is_admitted():
+    assert ec.admissible({"Project Name": "A", "Customer Name": "B"})
+    assert ec.admissible({"Project Name": "A", "MW Effective From": "2027-10-01"})
+    assert ec.fields_printed({"Project Name": "A", "HOST TO": "NGET", "Stage": "1"}) == (
+        "HOST TO",
+        "Stage",
+    )
+
+
+def test_a_row_printing_no_name_is_refused():
+    assert not ec.admissible({"Customer Name": "B", "Project Status": "Scoping", "HOST TO": "NGET"})
+    assert not ec.admissible({})
+
+
+def test_admit_keeps_printed_order_and_counts_the_refused():
+    rows: list[dict[str, object]] = [
+        {"Project Name": "A", "Customer Name": "B"},
+        {"Project Name": "footer"},
+        {"Project Name": "C", "Project Status": "Built", "HOST TO": "SPT"},
+    ]
+    admitted, refused = ec.admit(rows)
+    assert [r["Project Name"] for r in admitted] == ["A", "C"] and refused == 1
+    assert len(rows) == 3

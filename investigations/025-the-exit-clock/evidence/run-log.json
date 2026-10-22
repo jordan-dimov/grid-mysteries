@@ -140,6 +140,31 @@
    "at": "2026-10-22T14:29:23+00:00",
    "findings_sha256": "9a3557f40e911d22b57a4098dbcaf71da9b2a3dc2897d482183a64802f50d628",
    "appendix_sha256": "b0c6f221ce091ca7caa54ee05860ab7c1e77213beec784204012a08b11e661fd"
+  },
+  {
+   "phase": "compute",
+   "at": "2026-10-22T14:56:25+00:00",
+   "declaration": "bc05298419069041",
+   "chains": 2642,
+   "exits": 492,
+   "storage_old": 96,
+   "nd_share_id": "0.0000",
+   "new_chain_lines": 0
+  },
+  {
+   "phase": "render",
+   "at": "2026-10-22T14:56:44+00:00",
+   "findings_sha256": "edfdec59b21f3cc351120214410c6167ce99c56c6b06c0aa8e2f86deede80340",
+   "appendix_sha256": "13c8619a948559dbc339d8cea2c3cb6b4b0ea511705e440e79abf2b40e64a841"
+  },
+  {
+   "phase": "figures",
+   "at": "2026-10-22T14:56:45+00:00",
+   "files": [
+    "monthly-exits.png",
+    "exit-clock.png",
+    "hazard-by-band.png"
+   ]
   }
  ]
 }

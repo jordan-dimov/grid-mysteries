@@ -3,7 +3,7 @@
  "declaration_sha256": "bc05298419069041ae21b75d0fc556f5ecb48224eb947806325f704f4eb4cd78",
  "schema_report_sha256": "fa3cbb802f61d3b692c6a4b8c92d9a9eb49deed44e24eb474b9ca86471aff4b8",
  "sources_manifest_sha256": "55f47fb98d19e50b3678ec047124108bc8d326116ebd0ffbc4f9c74e8d879730",
- "computed_at": "2026-10-22T10:45:00+00:00",
+ "computed_at": "2026-10-22T14:56:25+00:00",
  "series": {
   "first_copy": "2014-01-31",
   "last_copy": "2026-10-20",
@@ -34,17 +34,17 @@
   "exit_cutoff": "2026-07-17"
  },
  "chains": {
-  "total": 2644,
+  "total": 2642,
   "classes": {
    "present at series end": 2083,
-   "exit": 494,
+   "exit": 492,
    "completed": 57,
    "not determinable": 6,
    "open": 4
   },
   "by_era": {
    "pre-id": {
-    "chains": 379,
+    "chains": 377,
     "not_determinable": 6
    },
    "id": {
@@ -151,8 +151,8 @@
   "not_determinable_total": 11
  },
  "exits": {
-  "total": 494,
-  "old_regime": 485,
+  "total": 492,
+  "old_regime": 483,
   "new_regime": 9,
   "storage_old_regime": 96,
   "storage_only_old_regime": 71,
@@ -161,8 +161,7 @@
    "family": {
     "other": 391,
     "storage-only": 74,
-    "storage-mixed": 27,
-    "blank": 2
+    "storage-mixed": 27
    },
    "status": {
     "Consents Approved": 69,
@@ -170,10 +169,10 @@
     "Awaiting Consents": 96,
     "Terminated": 17,
     "Under Construction/Commissioning": 8,
-    "blank": 5
+    "blank": 3
    },
    "agreement": {
-    "blank": 244,
+    "blank": 242,
     "directly connected": 224,
     "embedded": 26
    },
@@ -183,8 +182,7 @@
     "SHET": 114,
     "SPTL": 6,
     "SPT": 82,
-    "OFTO": 1,
-    "(blank)": 2
+    "OFTO": 1
    },
    "cohort": {
     "2014 opening": 139,
@@ -194,7 +192,7 @@
     "2017": 6,
     "2018": 30,
     "2019": 21,
-    "2020": 34,
+    "2020": 32,
     "2021": 43,
     "2022": 20,
     "2023": 49,
@@ -202,7 +200,7 @@
     "2025": 10
    },
    "regime": {
-    "old": 485,
+    "old": 483,
     "new": 9
    }
   },
@@ -219,7 +217,7 @@
   }
  },
  "exposure": {
-  "total_chain_months": 132065
+  "total_chain_months": 132063
  },
  "monthly": {
   "2014-02": {
@@ -511,7 +509,7 @@
    "mw_all": "320"
   },
   "2020-12": {
-   "all": 4,
+   "all": 2,
    "mw_all": "959.9",
    "storage": 1,
    "mw_storage": "49.9",
@@ -892,14 +890,14 @@
      },
      {
       "band": "no connection date",
-      "exits": 7,
-      "chain_months": 39581,
-      "hazard_per_chain_month": "0.000177",
-      "lower": "0.000071",
-      "upper": "0.000364",
-      "per_100_chain_years": "0.21",
-      "per_100_chain_years_lower": "0.09",
-      "per_100_chain_years_upper": "0.44"
+      "exits": 5,
+      "chain_months": 39579,
+      "hazard_per_chain_month": "0.000126",
+      "lower": "0.000041",
+      "upper": "0.000295",
+      "per_100_chain_years": "0.15",
+      "per_100_chain_years_lower": "0.05",
+      "per_100_chain_years_upper": "0.35"
      }
     ],
     "storage": [
@@ -1096,14 +1094,14 @@
      },
      {
       "band": "no connection date",
-      "exits": 6,
-      "chain_months": 35538,
-      "hazard_per_chain_month": "0.000169",
-      "lower": "0.000062",
-      "upper": "0.000367",
-      "per_100_chain_years": "0.20",
-      "per_100_chain_years_lower": "0.07",
-      "per_100_chain_years_upper": "0.44"
+      "exits": 4,
+      "chain_months": 35536,
+      "hazard_per_chain_month": "0.000113",
+      "lower": "0.000030",
+      "upper": "0.000288",
+      "per_100_chain_years": "0.14",
+      "per_100_chain_years_lower": "0.04",
+      "per_100_chain_years_upper": "0.35"
      }
     ]
    },
@@ -1166,14 +1164,14 @@
      },
      {
       "band": "no connection date",
-      "exits": 7,
-      "chain_months": 18670,
-      "hazard_per_chain_month": "0.000375",
-      "lower": "0.000150",
-      "upper": "0.000773",
-      "per_100_chain_years": "0.45",
-      "per_100_chain_years_lower": "0.18",
-      "per_100_chain_years_upper": "0.93"
+      "exits": 5,
+      "chain_months": 18668,
+      "hazard_per_chain_month": "0.000268",
+      "lower": "0.000086",
+      "upper": "0.000625",
+      "per_100_chain_years": "0.32",
+      "per_100_chain_years_lower": "0.10",
+      "per_100_chain_years_upper": "0.75"
      }
     ],
     "storage": [
@@ -1370,14 +1368,14 @@
      },
      {
       "band": "no connection date",
-      "exits": 6,
-      "chain_months": 16680,
-      "hazard_per_chain_month": "0.000360",
-      "lower": "0.000131",
-      "upper": "0.000783",
-      "per_100_chain_years": "0.43",
-      "per_100_chain_years_lower": "0.16",
-      "per_100_chain_years_upper": "0.94"
+      "exits": 4,
+      "chain_months": 16678,
+      "hazard_per_chain_month": "0.000240",
+      "lower": "0.000065",
+      "upper": "0.000614",
+      "per_100_chain_years": "0.29",
+      "per_100_chain_years_lower": "0.08",
+      "per_100_chain_years_upper": "0.74"
      }
     ]
    },
@@ -1440,14 +1438,14 @@
      },
      {
       "band": "no connection date",
-      "exits": 7,
-      "chain_months": 32256,
-      "hazard_per_chain_month": "0.000217",
-      "lower": "0.000087",
-      "upper": "0.000447",
-      "per_100_chain_years": "0.26",
-      "per_100_chain_years_lower": "0.10",
-      "per_100_chain_years_upper": "0.54"
+      "exits": 5,
+      "chain_months": 32254,
+      "hazard_per_chain_month": "0.000155",
+      "lower": "0.000050",
+      "upper": "0.000362",
+      "per_100_chain_years": "0.19",
+      "per_100_chain_years_lower": "0.06",
+      "per_100_chain_years_upper": "0.43"
      }
     ],
     "storage": [
@@ -1644,14 +1642,14 @@
      },
      {
       "band": "no connection date",
-      "exits": 6,
-      "chain_months": 29216,
-      "hazard_per_chain_month": "0.000205",
-      "lower": "0.000075",
-      "upper": "0.000447",
-      "per_100_chain_years": "0.25",
-      "per_100_chain_years_lower": "0.09",
-      "per_100_chain_years_upper": "0.54"
+      "exits": 4,
+      "chain_months": 29214,
+      "hazard_per_chain_month": "0.000137",
+      "lower": "0.000037",
+      "upper": "0.000351",
+      "per_100_chain_years": "0.16",
+      "per_100_chain_years_lower": "0.04",
+      "per_100_chain_years_upper": "0.42"
      }
     ]
    }
@@ -4390,5 +4388,340 @@
   "ofgem-cmp470-initial-impact-assessment": "7b80637c5c582159716ef7abd8ed77b855bf50f3b829db52a4cfc6e48e5e147d",
   "ofgem-cmp470-minded-to-consultation": "77a9e72470b76bdc8adb229c2077fec6b7f289ce4ca86b1f14b3ebdd48efee98",
   "ofgem-cmp470-consultation-page": "0b1a985c3fea58b362b24c822cf74fb2bd48fa92b2ffab1529ea00cc06837eb5"
+ },
+ "amendments": [
+  {
+   "n": 1,
+   "file": "AMENDMENT-1.md",
+   "sha256": "4a76ec63daa74f697ba353ae636392ff4eb3e9e1af836aa9522a00ff3dbecce5"
+  }
+ ],
+ "amendment_1": {
+  "refused_rows": [
+   {
+    "t_public": "2020-12-15",
+    "sha256": "1c4306104f04b47343deed46bdc44147e8595bb4fe0d81f26a3f796a60836fe1",
+    "refused": 2
+   }
+  ],
+  "rows_refused": 2,
+  "sparse_rows_admitted": [
+   {
+    "t_public": "2021-10-05",
+    "fields": [
+     "Project Name",
+     "Customer Name"
+    ],
+    "chain_class": "present at series end"
+   }
+  ],
+  "chains_held_under_declaration_alone": 2,
+  "moved": [
+   {
+    "leaf": "chains/by_era/pre-id/chains",
+    "before": 379,
+    "after": 377
+   },
+   {
+    "leaf": "chains/classes/exit",
+    "before": 494,
+    "after": 492
+   },
+   {
+    "leaf": "chains/total",
+    "before": 2644,
+    "after": 2642
+   },
+   {
+    "leaf": "exits/by_class/agreement/blank",
+    "before": 244,
+    "after": 242
+   },
+   {
+    "leaf": "exits/by_class/cohort/2020",
+    "before": 34,
+    "after": 32
+   },
+   {
+    "leaf": "exits/by_class/family/blank",
+    "before": 2,
+    "after": "(absent)"
+   },
+   {
+    "leaf": "exits/by_class/host_to/(blank)",
+    "before": 2,
+    "after": "(absent)"
+   },
+   {
+    "leaf": "exits/by_class/regime/old",
+    "before": 485,
+    "after": 483
+   },
+   {
+    "leaf": "exits/by_class/status/blank",
+    "before": 5,
+    "after": 3
+   },
+   {
+    "leaf": "exits/old_regime",
+    "before": 485,
+    "after": 483
+   },
+   {
+    "leaf": "exits/total",
+    "before": 494,
+    "after": 492
+   },
+   {
+    "leaf": "exposure/total_chain_months",
+    "before": 132065,
+    "after": 132063
+   },
+   {
+    "leaf": "hazards/old/A/all[5]/chain_months",
+    "before": 39581,
+    "after": 39579
+   },
+   {
+    "leaf": "hazards/old/A/all[5]/exits",
+    "before": 7,
+    "after": 5
+   },
+   {
+    "leaf": "hazards/old/A/all[5]/hazard_per_chain_month",
+    "before": "0.000177",
+    "after": "0.000126"
+   },
+   {
+    "leaf": "hazards/old/A/all[5]/lower",
+    "before": "0.000071",
+    "after": "0.000041"
+   },
+   {
+    "leaf": "hazards/old/A/all[5]/per_100_chain_years",
+    "before": "0.21",
+    "after": "0.15"
+   },
+   {
+    "leaf": "hazards/old/A/all[5]/per_100_chain_years_lower",
+    "before": "0.09",
+    "after": "0.05"
+   },
+   {
+    "leaf": "hazards/old/A/all[5]/per_100_chain_years_upper",
+    "before": "0.44",
+    "after": "0.35"
+   },
+   {
+    "leaf": "hazards/old/A/all[5]/upper",
+    "before": "0.000364",
+    "after": "0.000295"
+   },
+   {
+    "leaf": "hazards/old/A/other[5]/chain_months",
+    "before": 35538,
+    "after": 35536
+   },
+   {
+    "leaf": "hazards/old/A/other[5]/exits",
+    "before": 6,
+    "after": 4
+   },
+   {
+    "leaf": "hazards/old/A/other[5]/hazard_per_chain_month",
+    "before": "0.000169",
+    "after": "0.000113"
+   },
+   {
+    "leaf": "hazards/old/A/other[5]/lower",
+    "before": "0.000062",
+    "after": "0.000030"
+   },
+   {
+    "leaf": "hazards/old/A/other[5]/per_100_chain_years",
+    "before": "0.20",
+    "after": "0.14"
+   },
+   {
+    "leaf": "hazards/old/A/other[5]/per_100_chain_years_lower",
+    "before": "0.07",
+    "after": "0.04"
+   },
+   {
+    "leaf": "hazards/old/A/other[5]/per_100_chain_years_upper",
+    "before": "0.44",
+    "after": "0.35"
+   },
+   {
+    "leaf": "hazards/old/A/other[5]/upper",
+    "before": "0.000367",
+    "after": "0.000288"
+   },
+   {
+    "leaf": "hazards/old/B/all[5]/chain_months",
+    "before": 18670,
+    "after": 18668
+   },
+   {
+    "leaf": "hazards/old/B/all[5]/exits",
+    "before": 7,
+    "after": 5
+   },
+   {
+    "leaf": "hazards/old/B/all[5]/hazard_per_chain_month",
+    "before": "0.000375",
+    "after": "0.000268"
+   },
+   {
+    "leaf": "hazards/old/B/all[5]/lower",
+    "before": "0.000150",
+    "after": "0.000086"
+   },
+   {
+    "leaf": "hazards/old/B/all[5]/per_100_chain_years",
+    "before": "0.45",
+    "after": "0.32"
+   },
+   {
+    "leaf": "hazards/old/B/all[5]/per_100_chain_years_lower",
+    "before": "0.18",
+    "after": "0.10"
+   },
+   {
+    "leaf": "hazards/old/B/all[5]/per_100_chain_years_upper",
+    "before": "0.93",
+    "after": "0.75"
+   },
+   {
+    "leaf": "hazards/old/B/all[5]/upper",
+    "before": "0.000773",
+    "after": "0.000625"
+   },
+   {
+    "leaf": "hazards/old/B/other[5]/chain_months",
+    "before": 16680,
+    "after": 16678
+   },
+   {
+    "leaf": "hazards/old/B/other[5]/exits",
+    "before": 6,
+    "after": 4
+   },
+   {
+    "leaf": "hazards/old/B/other[5]/hazard_per_chain_month",
+    "before": "0.000360",
+    "after": "0.000240"
+   },
+   {
+    "leaf": "hazards/old/B/other[5]/lower",
+    "before": "0.000131",
+    "after": "0.000065"
+   },
+   {
+    "leaf": "hazards/old/B/other[5]/per_100_chain_years",
+    "before": "0.43",
+    "after": "0.29"
+   },
+   {
+    "leaf": "hazards/old/B/other[5]/per_100_chain_years_lower",
+    "before": "0.16",
+    "after": "0.08"
+   },
+   {
+    "leaf": "hazards/old/B/other[5]/per_100_chain_years_upper",
+    "before": "0.94",
+    "after": "0.74"
+   },
+   {
+    "leaf": "hazards/old/B/other[5]/upper",
+    "before": "0.000783",
+    "after": "0.000614"
+   },
+   {
+    "leaf": "hazards/old/C/all[5]/chain_months",
+    "before": 32256,
+    "after": 32254
+   },
+   {
+    "leaf": "hazards/old/C/all[5]/exits",
+    "before": 7,
+    "after": 5
+   },
+   {
+    "leaf": "hazards/old/C/all[5]/hazard_per_chain_month",
+    "before": "0.000217",
+    "after": "0.000155"
+   },
+   {
+    "leaf": "hazards/old/C/all[5]/lower",
+    "before": "0.000087",
+    "after": "0.000050"
+   },
+   {
+    "leaf": "hazards/old/C/all[5]/per_100_chain_years",
+    "before": "0.26",
+    "after": "0.19"
+   },
+   {
+    "leaf": "hazards/old/C/all[5]/per_100_chain_years_lower",
+    "before": "0.10",
+    "after": "0.06"
+   },
+   {
+    "leaf": "hazards/old/C/all[5]/per_100_chain_years_upper",
+    "before": "0.54",
+    "after": "0.43"
+   },
+   {
+    "leaf": "hazards/old/C/all[5]/upper",
+    "before": "0.000447",
+    "after": "0.000362"
+   },
+   {
+    "leaf": "hazards/old/C/other[5]/chain_months",
+    "before": 29216,
+    "after": 29214
+   },
+   {
+    "leaf": "hazards/old/C/other[5]/exits",
+    "before": 6,
+    "after": 4
+   },
+   {
+    "leaf": "hazards/old/C/other[5]/hazard_per_chain_month",
+    "before": "0.000205",
+    "after": "0.000137"
+   },
+   {
+    "leaf": "hazards/old/C/other[5]/lower",
+    "before": "0.000075",
+    "after": "0.000037"
+   },
+   {
+    "leaf": "hazards/old/C/other[5]/per_100_chain_years",
+    "before": "0.25",
+    "after": "0.16"
+   },
+   {
+    "leaf": "hazards/old/C/other[5]/per_100_chain_years_lower",
+    "before": "0.09",
+    "after": "0.04"
+   },
+   {
+    "leaf": "hazards/old/C/other[5]/per_100_chain_years_upper",
+    "before": "0.54",
+    "after": "0.42"
+   },
+   {
+    "leaf": "hazards/old/C/other[5]/upper",
+    "before": "0.000447",
+    "after": "0.000351"
+   },
+   {
+    "leaf": "monthly/2020-12/all",
+    "before": 4,
+    "after": 2
+   }
+  ]
  }
 }

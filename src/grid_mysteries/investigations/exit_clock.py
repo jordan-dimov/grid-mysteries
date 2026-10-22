@@ -99,6 +99,48 @@ def row_key(row: dict[str, object], t_public: date) -> str:
     return f"name:{triple(row)}"
 
 
+# ------------------------------------------------- admissible rows (I10)
+
+#: Amendment 1 (22/10/2026): the register's fields besides the Project Name.
+#: A row is a project row only if it prints the name and at least one of these.
+ADMISSIBLE_FIELDS: Final = (
+    "Customer Name",
+    "Connection Site",
+    "Project Status",
+    "Plant Type",
+    "HOST TO",
+    "Agreement Type",
+    "MW Connected",
+    "MW Increase / Decrease",
+    "Cumulative Total Capacity (MW)",
+    "MW Effective From",
+    "Stage",
+    "Project ID",
+    "Project Number",
+    "Gate",
+)
+
+
+def fields_printed(row: dict[str, object]) -> tuple[str, ...]:
+    """The admissible fields a row prints (non-blank), in the declared order."""
+    return tuple(f for f in ADMISSIBLE_FIELDS if text(row.get(f)))
+
+
+def admissible(row: dict[str, object]) -> bool:
+    """I10: a row is admitted to chain-building only if it prints a Project
+    Name and at least one other field of the register. A row printing a name
+    alone, or no name, is a print artefact (a footer, a note, a heading).
+    Nothing else about the row is read to decide."""
+    return bool(text(row.get("Project Name"))) and bool(fields_printed(row))
+
+
+def admit(rows: list[dict[str, object]]) -> tuple[list[dict[str, object]], int]:
+    """The admitted rows of a copy, in printed order, and the count refused.
+    The printed count (len(rows)) is what the partial-export rule and R3 see."""
+    admitted = [r for r in rows if admissible(r)]
+    return admitted, len(rows) - len(admitted)
+
+
 def keyed(rows: list[dict[str, object]], t_public: date) -> dict[str, list[dict[str, object]]]:
     out: dict[str, list[dict[str, object]]] = defaultdict(list)
     for r in rows:

@@ -1,0 +1,150 @@
+{
+ "file": "data/raw/neso/025/capacity-market-register-cmu_changes_20261021.csv",
+ "sha256": "de3aea8a4e840ad3d36b4c1aabcd94a550a1801450097d2229f8843935e6d98d",
+ "header_line": 1,
+ "delimiter": "comma",
+ "preamble_lines": [],
+ "rows": 72433,
+ "blank_rows_dropped": 0,
+ "columns": [
+  {
+   "name": "Auction Name",
+   "blank": 0,
+   "distinct": 20,
+   "forms": {
+    "text": 72433
+   },
+   "sample": [
+    "2029-30 (T-4) Four Year Ahead Capacity Auction",
+    "2029-30 (T-4) Four Year Ahead Capacity Auction",
+    "2029-30 (T-4) Four Year Ahead Capacity Auction"
+   ]
+  },
+  {
+   "name": "Application ID",
+   "blank": 0,
+   "distinct": 4403,
+   "forms": {
+    "text": 72433
+   },
+   "sample": [
+    "A-T-4-2029-10TEAL-00001",
+    "A-T-4-2029-10TEAL-00001",
+    "A-T-4-2029-10TEAL-00001"
+   ]
+  },
+  {
+   "name": "CMU ID",
+   "blank": 0,
+   "distinct": 3829,
+   "forms": {
+    "text": 72412,
+    "integer": 21
+   },
+   "sample": [
+    "10TEAL",
+    "10TEAL",
+    "10TEAL"
+   ]
+  },
+  {
+   "name": "Type",
+   "blank": 0,
+   "distinct": 4,
+   "forms": {
+    "text": 72433
+   },
+   "sample": [
+    "T-4",
+    "T-4",
+    "T-4"
+   ]
+  },
+  {
+   "name": "Delivery Year",
+   "blank": 0,
+   "distinct": 12,
+   "forms": {
+    "integer": 72433
+   },
+   "sample": [
+    "2029",
+    "2029",
+    "2029"
+   ]
+  },
+  {
+   "name": "Attribute",
+   "blank": 0,
+   "distinct": 76,
+   "forms": {
+    "text": 72433
+   },
+   "sample": [
+    "Auction",
+    "Name of Applicant",
+    "CM Unit Name"
+   ]
+  },
+  {
+   "name": "Previous",
+   "blank": 61789,
+   "distinct": 1640,
+   "forms": {
+    "blank": 61789,
+    "text": 8452,
+    "integer": 843,
+    "decimal": 461,
+    "uk-date": 888
+   },
+   "sample": [
+    "Conditionally Prequalified",
+    "Conditionally Prequalified",
+    "Conditionally Prequalified"
+   ]
+  },
+  {
+   "name": "Latest",
+   "blank": 3586,
+   "distinct": 6940,
+   "forms": {
+    "text": 48055,
+    "integer": 10970,
+    "decimal": 6626,
+    "uk-date": 3196,
+    "blank": 3586
+   },
+   "sample": [
+    "Capacity Auction",
+    "GPC 1039 LTD",
+    "Tealing"
+   ]
+  },
+  {
+   "name": "Change Type",
+   "blank": 0,
+   "distinct": 7,
+   "forms": {
+    "text": 72433
+   },
+   "sample": [
+    "First Release",
+    "First Release",
+    "First Release"
+   ]
+  },
+  {
+   "name": "Change Date",
+   "blank": 0,
+   "distinct": 50,
+   "forms": {
+    "iso-date": 72433
+   },
+   "sample": [
+    "2025-12-10",
+    "2025-12-10",
+    "2025-12-10"
+   ]
+  }
+ ]
+}

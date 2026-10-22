@@ -1,0 +1,261 @@
+{
+ "file": "data/raw/neso/025/capacity-market-register-component_20261021.csv",
+ "sha256": "c04cdef6ba32d1b775658fd77585be6855079467992c240ce7d5619b793b69b6",
+ "header_line": 1,
+ "delimiter": "comma",
+ "preamble_lines": [],
+ "rows": 29840,
+ "blank_rows_dropped": 0,
+ "columns": [
+  {
+   "name": "Auction Name",
+   "blank": 0,
+   "distinct": 25,
+   "forms": {
+    "text": 29840
+   },
+   "sample": [
+    "2016-17 (TR) Transitional Capacity Auction",
+    "2016-17 (TR) Transitional Capacity Auction",
+    "2016-17 (TR) Transitional Capacity Auction"
+   ]
+  },
+  {
+   "name": "Application ID",
+   "blank": 0,
+   "distinct": 17743,
+   "forms": {
+    "text": 29840
+   },
+   "sample": [
+    "A-TR-2016-2015_1-00001",
+    "A-TR-2016-2015_2-00001",
+    "A-TR-2016-2015_3-00001"
+   ]
+  },
+  {
+   "name": "CMU ID",
+   "blank": 0,
+   "distinct": 13454,
+   "forms": {
+    "text": 29770,
+    "integer": 70
+   },
+   "sample": [
+    "2015_1",
+    "2015_2",
+    "2015_3"
+   ]
+  },
+  {
+   "name": "Delivery Year",
+   "blank": 0,
+   "distinct": 14,
+   "forms": {
+    "integer": 29840
+   },
+   "sample": [
+    "2016",
+    "2016",
+    "2016"
+   ]
+  },
+  {
+   "name": "Component ID",
+   "blank": 0,
+   "distinct": 11939,
+   "forms": {
+    "integer": 4257,
+    "text": 25583
+   },
+   "sample": [
+    "000001",
+    "000002",
+    "000003"
+   ]
+  },
+  {
+   "name": "Type",
+   "blank": 0,
+   "distinct": 5,
+   "forms": {
+    "text": 29840
+   },
+   "sample": [
+    "TR",
+    "TR",
+    "TR"
+   ]
+  },
+  {
+   "name": "Generating Technology Class",
+   "blank": 5716,
+   "distinct": 51,
+   "forms": {
+    "blank": 5716,
+    "text": 24124
+   },
+   "sample": [
+    "OCGT and Reciprocating Engines (Fuel Type - Gas)",
+    "OCGT and Reciprocating Engines (Fuel Type - Gas)",
+    "Storage"
+   ]
+  },
+  {
+   "name": "Permitted On Site Generating Unit",
+   "blank": 26901,
+   "distinct": 3,
+   "forms": {
+    "blank": 26901,
+    "text": 2939
+   },
+   "sample": [
+    "Yes",
+    "Yes",
+    "Yes"
+   ]
+  },
+  {
+   "name": "Primary Fuel of Component",
+   "blank": 25387,
+   "distinct": 17,
+   "forms": {
+    "blank": 25387,
+    "text": 4453
+   },
+   "sample": [
+    "Storage - Battery",
+    "Storage - Battery",
+    "Storage - Battery"
+   ]
+  },
+  {
+   "name": "Connection or DSR Capacity",
+   "blank": 24235,
+   "distinct": 1578,
+   "forms": {
+    "blank": 24235,
+    "decimal": 3668,
+    "integer": 1937
+   },
+   "sample": [
+    "24.959",
+    "40.56",
+    "16.986"
+   ]
+  },
+  {
+   "name": "De Rated Capacity",
+   "blank": 24367,
+   "distinct": 2746,
+   "forms": {
+    "blank": 24367,
+    "decimal": 5453,
+    "integer": 20
+   },
+   "sample": [
+    "23.202",
+    "2.296",
+    "4.624"
+   ]
+  },
+  {
+   "name": "Pre Refurbishing De Rated Capacity",
+   "blank": 29768,
+   "distinct": 55,
+   "forms": {
+    "blank": 29768,
+    "decimal": 72
+   },
+   "sample": [
+    "11.422",
+    "18.349",
+    "18.959"
+   ]
+  },
+  {
+   "name": "Post Refurbishing De Rated Capacity",
+   "blank": 29780,
+   "distinct": 42,
+   "forms": {
+    "blank": 29780,
+    "decimal": 60
+   },
+   "sample": [
+    "11.422",
+    "18.349",
+    "18.959"
+   ]
+  },
+  {
+   "name": "Generating Capacity of On Site Generating Unit",
+   "blank": 29726,
+   "distinct": 45,
+   "forms": {
+    "blank": 29726,
+    "decimal": 104,
+    "integer": 10
+   },
+   "sample": [
+    "24.98",
+    "12.49",
+    "6.245"
+   ]
+  },
+  {
+   "name": "Description of CMU Components",
+   "blank": 31,
+   "distinct": 4638,
+   "forms": {
+    "text": 29809,
+    "blank": 31
+   },
+   "sample": [
+    "Industrial Steelmaking / Manufacturing Site",
+    "Industrial Site comprising multiple electro intensive proceses_ Reduction in Imported Electricity\nDirectly connected but not CMRS CMU ( see business plan)",
+    "Industrial Manufacturing Site with multiple processes.  Energy Demand Management Operational plans already in place."
+   ]
+  },
+  {
+   "name": "Location and Post Code",
+   "blank": 143,
+   "distinct": 7645,
+   "forms": {
+    "text": 29697,
+    "blank": 143
+   },
+   "sample": [
+    "TBC but targeted at:\n \nLlanwern Works NP9 0XN\nOS:  ST 394861\nPort Talbot Works,  South Wales, SA13 2NG\nOS: SS782870",
+    "ROTHERHAM WORKS\nPOBOX 50\nALDWARKE LANE\nS60 1DW\nOS:  SK45009500",
+    "Trostre Works\nLlanelli\nCarmarthenshire\nSA14 9SD\nOS 52850E 99360N"
+   ]
+  },
+  {
+   "name": "OS Grid Reference",
+   "blank": 2761,
+   "distinct": 5810,
+   "forms": {
+    "blank": 2761,
+    "text": 27079
+   },
+   "sample": [
+    "Aggregated",
+    "TM 164 359",
+    "TF 113 499"
+   ]
+  },
+  {
+   "name": "Number of Components",
+   "blank": 0,
+   "distinct": 96,
+   "forms": {
+    "integer": 29840
+   },
+   "sample": [
+    "1",
+    "1",
+    "1"
+   ]
+  }
+ ]
+}

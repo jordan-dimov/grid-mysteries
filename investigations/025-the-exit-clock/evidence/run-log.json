@@ -1,0 +1,32 @@
+{
+ "runs": [
+  {
+   "phase": "acquire",
+   "at": "2026-10-22T10:11:24+00:00",
+   "fetched": 13,
+   "skipped": 9
+  },
+  {
+   "phase": "acquire",
+   "at": "2026-10-22T10:16:04+00:00",
+   "fetched": 6,
+   "skipped": 22
+  },
+  {
+   "phase": "schema",
+   "at": "2026-10-22T10:16:56+00:00",
+   "copies": 793,
+   "kept": 791,
+   "rekeyings": 3,
+   "report_sha256": "480855b622b298f8e5c376e94726a79aefdf28bc6861e15794aeb736a6a46a91"
+  },
+  {
+   "phase": "schema",
+   "at": "2026-10-22T10:21:42+00:00",
+   "copies": 793,
+   "kept": 791,
+   "rekeyings": 3,
+   "report_sha256": "fa3cbb802f61d3b692c6a4b8c92d9a9eb49deed44e24eb474b9ca86471aff4b8"
+  }
+ ]
+}

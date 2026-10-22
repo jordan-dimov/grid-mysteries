@@ -1,0 +1,270 @@
+{
+ "acquisitions": [
+  {
+   "at": "2026-10-22T10:11:24.608015+00:00",
+   "authorised_by": "sponsor prompt 22/10/2026 (etrmbiz notes/2026-10-22-grid-mysteries-prompt-025-the-exit-clock.md: \"Pin the two Ofgem documents as evidence with digests ... and NESO's CUSC Section 15 ... plus the Wider Cancellation Charge statement series\")",
+   "fetched": 13,
+   "verified_and_skipped": 9,
+   "files": {
+    "ofgem-cmp470-minded-to-consultation": {
+     "path": "data/raw/ofgem/025/CMP470-Minded-to-Consultation.pdf",
+     "sha256": "77a9e72470b76bdc8adb229c2077fec6b7f289ce4ca86b1f14b3ebdd48efee98",
+     "bytes": 4404300
+    },
+    "ofgem-cmp470-initial-impact-assessment": {
+     "path": "data/raw/ofgem/025/CMP470-Interim-Impact-Assessment.pdf",
+     "sha256": "7b80637c5c582159716ef7abd8ed77b855bf50f3b829db52a4cfc6e48e5e147d",
+     "bytes": 594420
+    },
+    "ofgem-cmp470-consultation-page": {
+     "path": "data/raw/ofgem/025/cmp470-consultation-page-2026-10-22.html",
+     "sha256": "0b1a985c3fea58b362b24c822cf74fb2bd48fa92b2ffab1529ea00cc06837eb5",
+     "bytes": 202942
+    },
+    "neso-cusc-section-15": {
+     "path": "data/raw/neso/025/cusc-section-15-user-commitment-methodology-2026-10-22.pdf",
+     "sha256": "6bf040ba18e16d84471e0cfa284c947e24e1b6b75b90752fc99ba6f2927ea893",
+     "bytes": 575434
+    },
+    "neso-cusc-exhibit-mm1-cancellation-charge-statement": {
+     "path": "data/raw/neso/025/cusc-exhibit-mm1-cancellation-charge-statement-2026-10-22.pdf",
+     "sha256": "663761272f8725b940dfb12e36147d448d48eb54a82982cf4e141ea11a149552",
+     "bytes": 193497
+    },
+    "neso-cusc-exhibit-mm2-cancellation-charge-secured-amount": {
+     "path": "data/raw/neso/025/cusc-exhibit-mm2-cancellation-charge-secured-amount-2026-10-22.pdf",
+     "sha256": "a86bb3e2c25f8053b176c7ac85fbfd7b73dde9f2db0785998edfc3423402ca8c",
+     "bytes": 183053
+    },
+    "neso-securities-freeze-letter-2026-01-15": {
+     "path": "data/raw/neso/025/securities-freeze-letter-2026-01-15.pdf",
+     "sha256": "b4980e764b906ba3de321e108db163208d29005b91a25689e1cf5f6fc16d8227",
+     "bytes": 177222
+    },
+    "neso-cusc-code-documents-page": {
+     "path": "data/raw/neso/025/cusc-code-documents-page-2026-10-22.html",
+     "sha256": "78a59dacc4e7a4bcb8eeada3549e4c0b37e61edbb4858fcd280e16c03e53249d",
+     "bytes": 1262859
+    },
+    "neso-reports-and-registers-page-1": {
+     "path": "data/raw/neso/025/reports-and-registers-page-1-2026-10-22.html",
+     "sha256": "8ff1452824b0531b02db29fba208dd91c4a3b12387294a25ebc5d612199d73b2",
+     "bytes": 1311351
+    },
+    "neso-wider-cancellation-charge-statement-2012-13": {
+     "path": "data/raw/neso/025/wider-cancellation-charge-statement-2012-13.pdf",
+     "sha256": "7ae9c104cf072b227674e1ea5d11bb1ce4e92709bdd9372095519804c51bb97d",
+     "bytes": 85225
+    },
+    "neso-wider-cancellation-charge-statement-2013-14": {
+     "path": "data/raw/neso/025/wider-cancellation-charge-statement-2013-14.pdf",
+     "sha256": "4bddf3eac333ec1954c7515a95f6f263e5cf2bbca56f59689b899fd34ea767ec",
+     "bytes": 107509
+    },
+    "neso-wider-cancellation-charge-statement-2014-15": {
+     "path": "data/raw/neso/025/wider-cancellation-charge-statement-2014-15.pdf",
+     "sha256": "4ad5fd2f4abf80334b92cca233763488ed56494769cea568898d49853d9ff700",
+     "bytes": 272896
+    },
+    "neso-wider-cancellation-charge-statement-2015-16": {
+     "path": "data/raw/neso/025/wider-cancellation-charge-statement-2015-16.pdf",
+     "sha256": "c7889ed84b5573fe5efe8233dd0b3876e6ec25fcc7104e89c167b9420d7df5ad",
+     "bytes": 304911
+    },
+    "neso-wider-cancellation-charge-statement-2016-17": {
+     "path": "data/raw/neso/025/wider-cancellation-charge-statement-2016-17.pdf",
+     "sha256": "352b3d12d09ae2e66a3bccc46e2d17d479486bfb4778d5a9454394cc84f0a6e7",
+     "bytes": 311740
+    },
+    "neso-wider-cancellation-charge-statement-2017-18": {
+     "path": "data/raw/neso/025/wider-cancellation-charge-statement-2017-18.pdf",
+     "sha256": "f0dd39105169a03dcb6709b0ccff1cea15b5166bc2c634c3a1d1fe72543e0fca",
+     "bytes": 267832
+    },
+    "neso-wider-cancellation-charge-statement-2018-19": {
+     "path": "data/raw/neso/025/wider-cancellation-charge-statement-2018-19.pdf",
+     "sha256": "619c2ff260476fabe509e9b156c079473b5c5ede3bb3295a94e84344fecf8377",
+     "bytes": 410742
+    },
+    "neso-wider-cancellation-charge-statement-2019-20": {
+     "path": "data/raw/neso/025/wider-cancellation-charge-statement-2019-20.pdf",
+     "sha256": "317872d6da36666b703b7e9af7f8fb54349754ebb17f3a72749a0263fc9df396",
+     "bytes": 399711
+    },
+    "neso-wider-cancellation-charge-statement-2020-21": {
+     "path": "data/raw/neso/025/wider-cancellation-charge-statement-2020-21.pdf",
+     "sha256": "6b62e09c100946331d21e01a28b85baa5906ecbee1a4042434b793c2f40eca63",
+     "bytes": 72074
+    },
+    "neso-wider-cancellation-charge-statement-2021-22": {
+     "path": "data/raw/neso/025/wider-cancellation-charge-statement-2021-22.pdf",
+     "sha256": "6126de5f69747f13c7d55a041b7ef6560c12491fd798100c67ce91176639d2e0",
+     "bytes": 68788
+    },
+    "neso-wider-cancellation-charge-statement-2022-23": {
+     "path": "data/raw/neso/025/wider-cancellation-charge-statement-2022-23.pdf",
+     "sha256": "69353eb6377a20b3c8a0cf2dcb0e5e68fe2e418d8e3c33003297a0aa2a14095b",
+     "bytes": 315007
+    },
+    "neso-wider-cancellation-charge-statement-2023-24": {
+     "path": "data/raw/neso/025/wider-cancellation-charge-statement-2023-24.pdf",
+     "sha256": "3c0fbdbecbbd841b22d3047694a82391400caddf41ab93a4b7de002170d7161d",
+     "bytes": 318984
+    },
+    "neso-wider-cancellation-charge-statement-2024-25": {
+     "path": "data/raw/neso/025/wider-cancellation-charge-statement-2024-25.pdf",
+     "sha256": "97a29a4e09c0ce25871f5c24be218dc198fe5b9b8764f535bd4d4c8d0f007877",
+     "bytes": 367059
+    }
+   }
+  },
+  {
+   "at": "2026-10-22T10:16:04.016271+00:00",
+   "authorised_by": "sponsor prompt 22/10/2026 (etrmbiz notes/2026-10-22-grid-mysteries-prompt-025-the-exit-clock.md: \"Pin the two Ofgem documents as evidence with digests ... and NESO's CUSC Section 15 ... plus the Wider Cancellation Charge statement series\")",
+   "fetched": 6,
+   "verified_and_skipped": 22,
+   "files": {
+    "ofgem-cmp470-minded-to-consultation": {
+     "path": "data/raw/ofgem/025/CMP470-Minded-to-Consultation.pdf",
+     "sha256": "77a9e72470b76bdc8adb229c2077fec6b7f289ce4ca86b1f14b3ebdd48efee98",
+     "bytes": 4404300
+    },
+    "ofgem-cmp470-initial-impact-assessment": {
+     "path": "data/raw/ofgem/025/CMP470-Interim-Impact-Assessment.pdf",
+     "sha256": "7b80637c5c582159716ef7abd8ed77b855bf50f3b829db52a4cfc6e48e5e147d",
+     "bytes": 594420
+    },
+    "ofgem-cmp470-consultation-page": {
+     "path": "data/raw/ofgem/025/cmp470-consultation-page-2026-10-22.html",
+     "sha256": "0b1a985c3fea58b362b24c822cf74fb2bd48fa92b2ffab1529ea00cc06837eb5",
+     "bytes": 202942
+    },
+    "neso-cusc-section-15": {
+     "path": "data/raw/neso/025/cusc-section-15-user-commitment-methodology-2026-10-22.pdf",
+     "sha256": "6bf040ba18e16d84471e0cfa284c947e24e1b6b75b90752fc99ba6f2927ea893",
+     "bytes": 575434
+    },
+    "neso-cusc-exhibit-mm1-cancellation-charge-statement": {
+     "path": "data/raw/neso/025/cusc-exhibit-mm1-cancellation-charge-statement-2026-10-22.pdf",
+     "sha256": "663761272f8725b940dfb12e36147d448d48eb54a82982cf4e141ea11a149552",
+     "bytes": 193497
+    },
+    "neso-cusc-exhibit-mm2-cancellation-charge-secured-amount": {
+     "path": "data/raw/neso/025/cusc-exhibit-mm2-cancellation-charge-secured-amount-2026-10-22.pdf",
+     "sha256": "a86bb3e2c25f8053b176c7ac85fbfd7b73dde9f2db0785998edfc3423402ca8c",
+     "bytes": 183053
+    },
+    "neso-securities-freeze-letter-2026-01-15": {
+     "path": "data/raw/neso/025/securities-freeze-letter-2026-01-15.pdf",
+     "sha256": "b4980e764b906ba3de321e108db163208d29005b91a25689e1cf5f6fc16d8227",
+     "bytes": 177222
+    },
+    "neso-cusc-code-documents-page": {
+     "path": "data/raw/neso/025/cusc-code-documents-page-2026-10-22.html",
+     "sha256": "78a59dacc4e7a4bcb8eeada3549e4c0b37e61edbb4858fcd280e16c03e53249d",
+     "bytes": 1262859
+    },
+    "neso-reports-and-registers-page-1": {
+     "path": "data/raw/neso/025/reports-and-registers-page-1-2026-10-22.html",
+     "sha256": "8ff1452824b0531b02db29fba208dd91c4a3b12387294a25ebc5d612199d73b2",
+     "bytes": 1311351
+    },
+    "desnz-repd-quarterly-extract-2026-q2": {
+     "path": "data/raw/desnz/025/REPD_Publication_Q2_2026.csv",
+     "sha256": "84c1b5f958a934d8b4b86ec88f50bdcf43830ded7ff2efc27bffca0c98695035",
+     "bytes": 5087389
+    },
+    "desnz-repd-publication-page": {
+     "path": "data/raw/desnz/025/repd-quarterly-extract-page-2026-10-22.html",
+     "sha256": "bad8461436f84ab02864278be4f800085cf5166c41adda67d5373f4694d8d8a2",
+     "bytes": 106028
+    },
+    "neso-capacity-market-register-package": {
+     "path": "data/raw/neso/025/capacity-market-register-package-show-2026-10-22.json",
+     "sha256": "6db67d4039dfe28abcb92caffd24f7d8fd88eebce1fcaa6ebb60b0a2cf459270",
+     "bytes": 14743
+    },
+    "neso-capacity-market-register-cmu": {
+     "path": "data/raw/neso/025/capacity-market-register-cmu_20261021.csv",
+     "sha256": "ff7879b0f1612ec62783398fad269be9427e69bf8699276d5d994182737ce6a7",
+     "bytes": 8765493
+    },
+    "neso-capacity-market-register-components": {
+     "path": "data/raw/neso/025/capacity-market-register-component_20261021.csv",
+     "sha256": "c04cdef6ba32d1b775658fd77585be6855079467992c240ce7d5619b793b69b6",
+     "bytes": 8326681
+    },
+    "neso-capacity-market-register-cmu-history": {
+     "path": "data/raw/neso/025/capacity-market-register-cmu_changes_20261021.csv",
+     "sha256": "de3aea8a4e840ad3d36b4c1aabcd94a550a1801450097d2229f8843935e6d98d",
+     "bytes": 10979985
+    },
+    "neso-wider-cancellation-charge-statement-2012-13": {
+     "path": "data/raw/neso/025/wider-cancellation-charge-statement-2012-13.pdf",
+     "sha256": "7ae9c104cf072b227674e1ea5d11bb1ce4e92709bdd9372095519804c51bb97d",
+     "bytes": 85225
+    },
+    "neso-wider-cancellation-charge-statement-2013-14": {
+     "path": "data/raw/neso/025/wider-cancellation-charge-statement-2013-14.pdf",
+     "sha256": "4bddf3eac333ec1954c7515a95f6f263e5cf2bbca56f59689b899fd34ea767ec",
+     "bytes": 107509
+    },
+    "neso-wider-cancellation-charge-statement-2014-15": {
+     "path": "data/raw/neso/025/wider-cancellation-charge-statement-2014-15.pdf",
+     "sha256": "4ad5fd2f4abf80334b92cca233763488ed56494769cea568898d49853d9ff700",
+     "bytes": 272896
+    },
+    "neso-wider-cancellation-charge-statement-2015-16": {
+     "path": "data/raw/neso/025/wider-cancellation-charge-statement-2015-16.pdf",
+     "sha256": "c7889ed84b5573fe5efe8233dd0b3876e6ec25fcc7104e89c167b9420d7df5ad",
+     "bytes": 304911
+    },
+    "neso-wider-cancellation-charge-statement-2016-17": {
+     "path": "data/raw/neso/025/wider-cancellation-charge-statement-2016-17.pdf",
+     "sha256": "352b3d12d09ae2e66a3bccc46e2d17d479486bfb4778d5a9454394cc84f0a6e7",
+     "bytes": 311740
+    },
+    "neso-wider-cancellation-charge-statement-2017-18": {
+     "path": "data/raw/neso/025/wider-cancellation-charge-statement-2017-18.pdf",
+     "sha256": "f0dd39105169a03dcb6709b0ccff1cea15b5166bc2c634c3a1d1fe72543e0fca",
+     "bytes": 267832
+    },
+    "neso-wider-cancellation-charge-statement-2018-19": {
+     "path": "data/raw/neso/025/wider-cancellation-charge-statement-2018-19.pdf",
+     "sha256": "619c2ff260476fabe509e9b156c079473b5c5ede3bb3295a94e84344fecf8377",
+     "bytes": 410742
+    },
+    "neso-wider-cancellation-charge-statement-2019-20": {
+     "path": "data/raw/neso/025/wider-cancellation-charge-statement-2019-20.pdf",
+     "sha256": "317872d6da36666b703b7e9af7f8fb54349754ebb17f3a72749a0263fc9df396",
+     "bytes": 399711
+    },
+    "neso-wider-cancellation-charge-statement-2020-21": {
+     "path": "data/raw/neso/025/wider-cancellation-charge-statement-2020-21.pdf",
+     "sha256": "6b62e09c100946331d21e01a28b85baa5906ecbee1a4042434b793c2f40eca63",
+     "bytes": 72074
+    },
+    "neso-wider-cancellation-charge-statement-2021-22": {
+     "path": "data/raw/neso/025/wider-cancellation-charge-statement-2021-22.pdf",
+     "sha256": "6126de5f69747f13c7d55a041b7ef6560c12491fd798100c67ce91176639d2e0",
+     "bytes": 68788
+    },
+    "neso-wider-cancellation-charge-statement-2022-23": {
+     "path": "data/raw/neso/025/wider-cancellation-charge-statement-2022-23.pdf",
+     "sha256": "69353eb6377a20b3c8a0cf2dcb0e5e68fe2e418d8e3c33003297a0aa2a14095b",
+     "bytes": 315007
+    },
+    "neso-wider-cancellation-charge-statement-2023-24": {
+     "path": "data/raw/neso/025/wider-cancellation-charge-statement-2023-24.pdf",
+     "sha256": "3c0fbdbecbbd841b22d3047694a82391400caddf41ab93a4b7de002170d7161d",
+     "bytes": 318984
+    },
+    "neso-wider-cancellation-charge-statement-2024-25": {
+     "path": "data/raw/neso/025/wider-cancellation-charge-statement-2024-25.pdf",
+     "sha256": "97a29a4e09c0ce25871f5c24be218dc198fe5b9b8764f535bd4d4c8d0f007877",
+     "bytes": 367059
+    }
+   }
+  }
+ ]
+}

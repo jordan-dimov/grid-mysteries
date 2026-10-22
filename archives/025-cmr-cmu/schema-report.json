@@ -1,0 +1,1098 @@
+{
+ "file": "data/raw/neso/025/capacity-market-register-cmu_20261021.csv",
+ "sha256": "ff7879b0f1612ec62783398fad269be9427e69bf8699276d5d994182737ce6a7",
+ "header_line": 1,
+ "delimiter": "comma",
+ "preamble_lines": [],
+ "rows": 18203,
+ "blank_rows_dropped": 0,
+ "columns": [
+  {
+   "name": "Auction Name",
+   "blank": 0,
+   "distinct": 25,
+   "forms": {
+    "text": 18203
+   },
+   "sample": [
+    "2016-17 (TR) Transitional Capacity Auction",
+    "2016-17 (TR) Transitional Capacity Auction",
+    "2016-17 (TR) Transitional Capacity Auction"
+   ]
+  },
+  {
+   "name": "Application ID",
+   "blank": 0,
+   "distinct": 17749,
+   "forms": {
+    "text": 18203
+   },
+   "sample": [
+    "A-TR-2016-2015_1-00001",
+    "A-TR-2016-2015_2-00001",
+    "A-TR-2016-2015_3-00001"
+   ]
+  },
+  {
+   "name": "CMU ID",
+   "blank": 0,
+   "distinct": 13459,
+   "forms": {
+    "text": 18133,
+    "integer": 70
+   },
+   "sample": [
+    "2015_1",
+    "2015_2",
+    "2015_3"
+   ]
+  },
+  {
+   "name": "Type",
+   "blank": 0,
+   "distinct": 5,
+   "forms": {
+    "text": 18203
+   },
+   "sample": [
+    "TR",
+    "TR",
+    "TR"
+   ]
+  },
+  {
+   "name": "Auction",
+   "blank": 0,
+   "distinct": 1,
+   "forms": {
+    "text": 18203
+   },
+   "sample": [
+    "Capacity Auction",
+    "Capacity Auction",
+    "Capacity Auction"
+   ]
+  },
+  {
+   "name": "Delivery Year",
+   "blank": 0,
+   "distinct": 14,
+   "forms": {
+    "integer": 18203
+   },
+   "sample": [
+    "2016",
+    "2016",
+    "2016"
+   ]
+  },
+  {
+   "name": "Name of Applicant",
+   "blank": 0,
+   "distinct": 1852,
+   "forms": {
+    "text": 18203
+   },
+   "sample": [
+    "TATA STEEL UK LIMITED",
+    "TATA STEEL UK LIMITED",
+    "TATA STEEL UK LIMITED"
+   ]
+  },
+  {
+   "name": "Agent Name",
+   "blank": 17969,
+   "distinct": 28,
+   "forms": {
+    "blank": 17969,
+    "text": 234
+   },
+   "sample": [
+    "Tom Bent",
+    "Simon Stockton",
+    "Fabienne van der Velde"
+   ]
+  },
+  {
+   "name": "CM Unit Name",
+   "blank": 20,
+   "distinct": 7573,
+   "forms": {
+    "text": 18182,
+    "blank": 20,
+    "integer": 1
+   },
+   "sample": [
+    "Strip_15",
+    "Spec_15",
+    "Pack_15"
+   ]
+  },
+  {
+   "name": "Parent Company",
+   "blank": 5989,
+   "distinct": 594,
+   "forms": {
+    "blank": 5989,
+    "text": 12212,
+    "integer": 2
+   },
+   "sample": [
+    "Reactive Technologies Limited",
+    "Stardust Master ProjectCo Limited",
+    "Conrad (Windrush) Limited"
+   ]
+  },
+  {
+   "name": "Secondary Trading Contact_Telephone",
+   "blank": 3280,
+   "distinct": 623,
+   "forms": {
+    "blank": 3280,
+    "text": 14852,
+    "integer": 71
+   },
+   "sample": [
+    "'+442031424798",
+    "'+441865987704",
+    "'+4401235427290"
+   ]
+  },
+  {
+   "name": "Secondary Trading Contact_Email",
+   "blank": 3282,
+   "distinct": 544,
+   "forms": {
+    "blank": 3282,
+    "text": 14921
+   },
+   "sample": [
+    "gbcm.trading@reactive-technologies.com",
+    "info@conradenergy.co.uk",
+    "secondarytrading@conradenergy.co.uk"
+   ]
+  },
+  {
+   "name": "Transmission or Distribution",
+   "blank": 0,
+   "distinct": 2,
+   "forms": {
+    "text": 18203
+   },
+   "sample": [
+    "Distribution",
+    "Distribution",
+    "Distribution"
+   ]
+  },
+  {
+   "name": "CM Unit Type",
+   "blank": 0,
+   "distinct": 2,
+   "forms": {
+    "text": 18203
+   },
+   "sample": [
+    "Non CMRS",
+    "Non CMRS",
+    "Non CMRS"
+   ]
+  },
+  {
+   "name": "CM Unit Category",
+   "blank": 0,
+   "distinct": 7,
+   "forms": {
+    "text": 18203
+   },
+   "sample": [
+    "Unproven DSR CMU",
+    "Unproven DSR CMU",
+    "Unproven DSR CMU"
+   ]
+  },
+  {
+   "name": "Primary Fuel Type",
+   "blank": 3580,
+   "distinct": 20,
+   "forms": {
+    "blank": 3580,
+    "text": 14623
+   },
+   "sample": [
+    "Hydro",
+    "Gas",
+    "Gas"
+   ]
+  },
+  {
+   "name": "CMU Technology",
+   "blank": 6,
+   "distinct": 84,
+   "forms": {
+    "text": 18197,
+    "blank": 6
+   },
+   "sample": [
+    "DSR",
+    "DSR",
+    "DSR"
+   ]
+  },
+  {
+   "name": "Storage Facility",
+   "blank": 0,
+   "distinct": 2,
+   "forms": {
+    "text": 18203
+   },
+   "sample": [
+    "No",
+    "No",
+    "No"
+   ]
+  },
+  {
+   "name": "Pre Qualification Decision",
+   "blank": 380,
+   "distinct": 5,
+   "forms": {
+    "text": 17823,
+    "blank": 380
+   },
+   "sample": [
+    "Not Prequalified",
+    "Prequalified",
+    "Prequalified"
+   ]
+  },
+  {
+   "name": "Opt Out Status",
+   "blank": 0,
+   "distinct": 2,
+   "forms": {
+    "text": 18203
+   },
+   "sample": [
+    "Opt-In",
+    "Opt-In",
+    "Opt-In"
+   ]
+  },
+  {
+   "name": "Opt Out Reason",
+   "blank": 17823,
+   "distinct": 7,
+   "forms": {
+    "blank": 17823,
+    "text": 380
+   },
+   "sample": [
+    "Temporarily non-operational for the Winter of the relevant  Delivery Year but operational thereafter",
+    "Temporarily non-operational for the Winter of the relevant  Delivery Year but operational thereafter",
+    "Closed down, decommissioned or otherwise non-operational by the start of the relevant Delivery Year"
+   ]
+  },
+  {
+   "name": "Maximum Obligation Period",
+   "blank": 502,
+   "distinct": 4,
+   "forms": {
+    "integer": 17701,
+    "blank": 502
+   },
+   "sample": [
+    "1",
+    "1",
+    "1"
+   ]
+  },
+  {
+   "name": "Unproven DSR",
+   "blank": 15954,
+   "distinct": 2,
+   "forms": {
+    "blank": 15954,
+    "text": 2249
+   },
+   "sample": [
+    "Yes",
+    "Yes",
+    "Yes"
+   ]
+  },
+  {
+   "name": "New Build Yet to Satisfy FCM",
+   "blank": 16115,
+   "distinct": 2,
+   "forms": {
+    "blank": 16115,
+    "text": 2088
+   },
+   "sample": [
+    "Yes",
+    "Yes",
+    "Yes"
+   ]
+  },
+  {
+   "name": "Connection Agreement Deferral Declaration",
+   "blank": 16958,
+   "distinct": 2,
+   "forms": {
+    "blank": 16958,
+    "text": 1245
+   },
+   "sample": [
+    "Yes",
+    "Yes",
+    "Yes"
+   ]
+  },
+  {
+   "name": "TEC Deferral",
+   "blank": 18194,
+   "distinct": 2,
+   "forms": {
+    "blank": 18194,
+    "text": 9
+   },
+   "sample": [
+    "Yes",
+    "Yes",
+    "Yes"
+   ]
+  },
+  {
+   "name": "Amount of Credit Cover",
+   "blank": 1965,
+   "distinct": 621,
+   "forms": {
+    "integer": 16238,
+    "blank": 1965
+   },
+   "sample": [
+    "21700",
+    "0",
+    "4000"
+   ]
+  },
+  {
+   "name": "Planning Consents Conditions",
+   "blank": 17851,
+   "distinct": 2,
+   "forms": {
+    "blank": 17851,
+    "text": 352
+   },
+   "sample": [
+    "Yes",
+    "Yes",
+    "Yes"
+   ]
+  },
+  {
+   "name": "Connection or DSR Capacity",
+   "blank": 308,
+   "distinct": 3440,
+   "forms": {
+    "integer": 8281,
+    "decimal": 9614,
+    "blank": 308
+   },
+   "sample": [
+    "50",
+    "50",
+    "9.216"
+   ]
+  },
+  {
+   "name": "Proven DSR Capacity",
+   "blank": 17084,
+   "distinct": 422,
+   "forms": {
+    "blank": 17084,
+    "decimal": 1086,
+    "integer": 33
+   },
+   "sample": [
+    "38.854",
+    "2.621",
+    "4.852"
+   ]
+  },
+  {
+   "name": "DSR Bidding Capacity",
+   "blank": 15782,
+   "distinct": 711,
+   "forms": {
+    "blank": 15782,
+    "integer": 644,
+    "decimal": 1777
+   },
+   "sample": [
+    "15",
+    "3.45",
+    "3.45"
+   ]
+  },
+  {
+   "name": "De Rated Capacity",
+   "blank": 267,
+   "distinct": 6450,
+   "forms": {
+    "decimal": 16446,
+    "integer": 1490,
+    "blank": 267
+   },
+   "sample": [
+    "43.4",
+    "43.4",
+    "7.999"
+   ]
+  },
+  {
+   "name": "Pre Refurbishing De Rated Capacity",
+   "blank": 17988,
+   "distinct": 123,
+   "forms": {
+    "blank": 17988,
+    "decimal": 177,
+    "integer": 38
+   },
+   "sample": [
+    "4.741",
+    "396",
+    "396"
+   ]
+  },
+  {
+   "name": "Post Refurbishing De Rated Capacity",
+   "blank": 17996,
+   "distinct": 106,
+   "forms": {
+    "blank": 17996,
+    "decimal": 192,
+    "integer": 15
+   },
+   "sample": [
+    "4.741",
+    "418",
+    "418"
+   ]
+  },
+  {
+   "name": "Pre Refurbishing CMU Status",
+   "blank": 17988,
+   "distinct": 3,
+   "forms": {
+    "blank": 17988,
+    "text": 215
+   },
+   "sample": [
+    "Opt-In",
+    "Opt-In",
+    "Opt-In"
+   ]
+  },
+  {
+   "name": "Anticipated De Rated Capacity",
+   "blank": 1330,
+   "distinct": 6252,
+   "forms": {
+    "blank": 1330,
+    "decimal": 15753,
+    "integer": 1120
+   },
+   "sample": [
+    "4.041",
+    "4.041",
+    "4.041"
+   ]
+  },
+  {
+   "name": "Anticipated Pre Refurbishing De Rated Capacity",
+   "blank": 17993,
+   "distinct": 123,
+   "forms": {
+    "blank": 17993,
+    "decimal": 179,
+    "integer": 31
+   },
+   "sample": [
+    "4.844",
+    "396",
+    "396"
+   ]
+  },
+  {
+   "name": "Anticipated Post Refurbishing De Rated Capacity",
+   "blank": 17988,
+   "distinct": 107,
+   "forms": {
+    "blank": 17988,
+    "decimal": 193,
+    "integer": 22
+   },
+   "sample": [
+    "4.741",
+    "418",
+    "418"
+   ]
+  },
+  {
+   "name": "Date of Issue of DSR Test Certificate",
+   "blank": 17590,
+   "distinct": 162,
+   "forms": {
+    "blank": 17590,
+    "uk-date": 613
+   },
+   "sample": [
+    "29/09/2016",
+    "01/12/2016",
+    "31/08/2016"
+   ]
+  },
+  {
+   "name": "DSR Test Method",
+   "blank": 17502,
+   "distinct": 14,
+   "forms": {
+    "blank": 17502,
+    "text": 701
+   },
+   "sample": [
+    "Post auction DSR test",
+    "Post auction DSR test",
+    "Post Auction DSR Test"
+   ]
+  },
+  {
+   "name": "CMU confirmed entry into Auction",
+   "blank": 5366,
+   "distinct": 3,
+   "forms": {
+    "blank": 5366,
+    "text": 12837
+   },
+   "sample": [
+    "Yes",
+    "No",
+    "No"
+   ]
+  },
+  {
+   "name": "Duration of Capacity Agreement in First Bidding Round",
+   "blank": 8718,
+   "distinct": 14,
+   "forms": {
+    "blank": 8718,
+    "integer": 9485
+   },
+   "sample": [
+    "1",
+    "1",
+    "1"
+   ]
+  },
+  {
+   "name": "Pre Refurbishment Bidding Status",
+   "blank": 18031,
+   "distinct": 4,
+   "forms": {
+    "blank": 18031,
+    "text": 172
+   },
+   "sample": [
+    "Pre & Post Refurbishing",
+    "Pre & Post Refurbishing",
+    "Pre & Post Refurbishing"
+   ]
+  },
+  {
+   "name": "Capacity Agreement Awarded",
+   "blank": 6391,
+   "distinct": 3,
+   "forms": {
+    "blank": 6391,
+    "text": 11812
+   },
+   "sample": [
+    "Yes",
+    "Yes",
+    "Yes"
+   ]
+  },
+  {
+   "name": "Duration of Capacity Agreement Awarded",
+   "blank": 8882,
+   "distinct": 14,
+   "forms": {
+    "blank": 8882,
+    "integer": 9321
+   },
+   "sample": [
+    "1",
+    "1",
+    "1"
+   ]
+  },
+  {
+   "name": "Unique Agreement Identifier",
+   "blank": 8881,
+   "distinct": 9228,
+   "forms": {
+    "blank": 8881,
+    "text": 9322
+   },
+   "sample": [
+    "CAN-2016-2015_2-001",
+    "CAN-2016-AMER01-001",
+    "CAN-2016-AMER02-001"
+   ]
+  },
+  {
+   "name": "Registered Holder",
+   "blank": 8881,
+   "distinct": 1007,
+   "forms": {
+    "blank": 8881,
+    "text": 9322
+   },
+   "sample": [
+    "TATA STEEL UK LIMITED",
+    "Ameresco Limited",
+    "Ameresco Limited"
+   ]
+  },
+  {
+   "name": "Date of Issue of Capacity Agreement",
+   "blank": 8881,
+   "distinct": 361,
+   "forms": {
+    "blank": 8881,
+    "uk-date": 9322
+   },
+   "sample": [
+    "06/03/2017",
+    "26/06/2017",
+    "26/06/2017"
+   ]
+  },
+  {
+   "name": "Term of the Capacity Agreement",
+   "blank": 8881,
+   "distinct": 14,
+   "forms": {
+    "blank": 8881,
+    "integer": 9322
+   },
+   "sample": [
+    "1",
+    "1",
+    "1"
+   ]
+  },
+  {
+   "name": "Delivery Years for which Agreement Valid",
+   "blank": 8881,
+   "distinct": 59,
+   "forms": {
+    "blank": 8881,
+    "text": 9322
+   },
+   "sample": [
+    "2016/2017",
+    "2016/2017",
+    "2016/2017"
+   ]
+  },
+  {
+   "name": "Auction Acquired Capacity Obligation",
+   "blank": 8881,
+   "distinct": 4417,
+   "forms": {
+    "blank": 8881,
+    "integer": 1741,
+    "decimal": 7581
+   },
+   "sample": [
+    "15",
+    "3.45",
+    "3.45"
+   ]
+  },
+  {
+   "name": "Is FCM required",
+   "blank": 17957,
+   "distinct": 2,
+   "forms": {
+    "blank": 17957,
+    "text": 246
+   },
+   "sample": [
+    "Yes",
+    "Yes",
+    "Yes"
+   ]
+  },
+  {
+   "name": "Date for Financial Commitment Milestone",
+   "blank": 17960,
+   "distinct": 21,
+   "forms": {
+    "blank": 17960,
+    "uk-date": 243
+   },
+   "sample": [
+    "08/02/2016",
+    "08/02/2016",
+    "13/05/2018"
+   ]
+  },
+  {
+   "name": "Is Connection Agreement required",
+   "blank": 18077,
+   "distinct": 2,
+   "forms": {
+    "blank": 18077,
+    "text": 126
+   },
+   "sample": [
+    "Yes",
+    "Yes",
+    "Yes"
+   ]
+  },
+  {
+   "name": "Date for provision of deferred Connection Agreement",
+   "blank": 18077,
+   "distinct": 13,
+   "forms": {
+    "blank": 18077,
+    "uk-date": 126
+   },
+   "sample": [
+    "29/03/2018",
+    "31/03/2017",
+    "31/03/2017"
+   ]
+  },
+  {
+   "name": "Subject to a Minimum Completion Requirement",
+   "blank": 17536,
+   "distinct": 2,
+   "forms": {
+    "blank": 17536,
+    "text": 667
+   },
+   "sample": [
+    "Yes",
+    "Yes",
+    "Yes"
+   ]
+  },
+  {
+   "name": "Subject to Substantial Completion Milestone",
+   "blank": 17730,
+   "distinct": 2,
+   "forms": {
+    "blank": 17730,
+    "text": 473
+   },
+   "sample": [
+    "Yes",
+    "Yes",
+    "Yes"
+   ]
+  },
+  {
+   "name": "Long Stop Date for the Minimum Completion Requirement",
+   "blank": 17578,
+   "distinct": 52,
+   "forms": {
+    "blank": 17578,
+    "uk-date": 625
+   },
+   "sample": [
+    "01/10/2017",
+    "01/10/2017",
+    "01/10/2017"
+   ]
+  },
+  {
+   "name": "Earliest Date SCM is expected to be achieved",
+   "blank": 17366,
+   "distinct": 334,
+   "forms": {
+    "blank": 17366,
+    "uk-date": 837
+   },
+   "sample": [
+    "20/09/2022",
+    "15/05/2023",
+    "14/08/2023"
+   ]
+  },
+  {
+   "name": "Latest Date SCM is expected to be achieved",
+   "blank": 17365,
+   "distinct": 286,
+   "forms": {
+    "blank": 17365,
+    "uk-date": 838
+   },
+   "sample": [
+    "23/12/2022",
+    "30/09/2023",
+    "04/09/2023"
+   ]
+  },
+  {
+   "name": "Is copy of Grid Connection Agreement required",
+   "blank": 18201,
+   "distinct": 2,
+   "forms": {
+    "blank": 18201,
+    "text": 2
+   },
+   "sample": [
+    "Yes",
+    "Yes"
+   ]
+  },
+  {
+   "name": "Date for provision of deferred TEC",
+   "blank": 18201,
+   "distinct": 2,
+   "forms": {
+    "blank": 18201,
+    "uk-date": 2
+   },
+   "sample": [
+    "01/04/2017",
+    "01/04/2017"
+   ]
+  },
+  {
+   "name": "Termination Fee 1 Rate",
+   "blank": 8881,
+   "distinct": 2,
+   "forms": {
+    "blank": 8881,
+    "text": 9322
+   },
+   "sample": [
+    "\u00a35000.00 /MW",
+    "\u00a35000.00 /MW",
+    "\u00a35000.00 /MW"
+   ]
+  },
+  {
+   "name": "Termination Fee 2 Rate",
+   "blank": 8881,
+   "distinct": 2,
+   "forms": {
+    "blank": 8881,
+    "text": 9322
+   },
+   "sample": [
+    "\u00a325000.00 /MW",
+    "\u00a325000.00 /MW",
+    "\u00a325000.00 /MW"
+   ]
+  },
+  {
+   "name": "Termination Fee 3 Rate",
+   "blank": 9706,
+   "distinct": 2,
+   "forms": {
+    "blank": 9706,
+    "text": 8497
+   },
+   "sample": [
+    "\u00a310000.00 /MW",
+    "\u00a310000.00 /MW",
+    "\u00a310000.00 /MW"
+   ]
+  },
+  {
+   "name": "Termination Fee 4 Rate",
+   "blank": 9706,
+   "distinct": 2,
+   "forms": {
+    "blank": 9706,
+    "text": 8497
+   },
+   "sample": [
+    "\u00a315000.00 /MW",
+    "\u00a315000.00 /MW",
+    "\u00a315000.00 /MW"
+   ]
+  },
+  {
+   "name": "Termination Fee 5 Rate",
+   "blank": 9706,
+   "distinct": 2,
+   "forms": {
+    "blank": 9706,
+    "text": 8497
+   },
+   "sample": [
+    "\u00a335000.00 /MW",
+    "\u00a335000.00 /MW",
+    "\u00a335000.00 /MW"
+   ]
+  },
+  {
+   "name": "Annual Penalty Cap",
+   "blank": 8881,
+   "distinct": 2,
+   "forms": {
+    "blank": 8881,
+    "text": 9322
+   },
+   "sample": [
+    "100.00%",
+    "100.00%",
+    "100.00%"
+   ]
+  },
+  {
+   "name": "Monthly Penalty Cap",
+   "blank": 8881,
+   "distinct": 2,
+   "forms": {
+    "blank": 8881,
+    "text": 9322
+   },
+   "sample": [
+    "200.00%",
+    "200.00%",
+    "200.00%"
+   ]
+  },
+  {
+   "name": "Legal Name of any Person with a Security Interest",
+   "blank": 17770,
+   "distinct": 78,
+   "forms": {
+    "blank": 17770,
+    "text": 433
+   },
+   "sample": [
+    "1.HSBC Corporate Trustee Company Limited",
+    "1.HSBC Corporate Trustee Company (UK) Limited",
+    "1.HSBC Corporate Trustee Company (UK) Limited"
+   ]
+  },
+  {
+   "name": "Nature of the Security Interest",
+   "blank": 17770,
+   "distinct": 99,
+   "forms": {
+    "blank": 17770,
+    "text": 433
+   },
+   "sample": [
+    "1.A charge and assignment of the rights under the Capacity Agreement pursuant to a debenture dated 16 November 2015 between the Registered Holder and the Security Interest Beneficiary",
+    "1.A charge and assignment of the rights under the Capacity Agreement pursuant to a debenture dated 16 November 2015 between the Registered Holder and the Security Interest Beneficiary",
+    "1.A charge and assignment of the rights under the Capacity Agreement pursuant to a debenture dated 16 November 2015 between the Registered Holder and the Security Interest Beneficiary"
+   ]
+  },
+  {
+   "name": "Capacity Agreement has been Terminated",
+   "blank": 17642,
+   "distinct": 2,
+   "forms": {
+    "blank": 17642,
+    "text": 561
+   },
+   "sample": [
+    "Yes",
+    "Yes",
+    "Yes"
+   ]
+  },
+  {
+   "name": "Date of Termination of Capacity Agreement",
+   "blank": 17642,
+   "distinct": 132,
+   "forms": {
+    "blank": 17642,
+    "uk-date": 561
+   },
+   "sample": [
+    "29/03/2017",
+    "21/06/2018",
+    "24/11/2017"
+   ]
+  },
+  {
+   "name": "List of Traded Capacity Obligations",
+   "blank": 16224,
+   "distinct": 1615,
+   "forms": {
+    "blank": 16224,
+    "text": 1979
+   },
+   "sample": [
+    "T1: -2.730 MW",
+    "T1: -4.000 MW",
+    "T1: -385.440 MW"
+   ]
+  },
+  {
+   "name": "Period for which the transfer applies",
+   "blank": 16224,
+   "distinct": 362,
+   "forms": {
+    "blank": 16224,
+    "text": 1979
+   },
+   "sample": [
+    "T1: 14/03/2018 - 30/09/2018",
+    "T1: 14/03/2018 - 30/09/2018",
+    "T1: 23/10/2017 - 04/12/2017"
+   ]
+  },
+  {
+   "name": "Capacity obligation Summary",
+   "blank": 16224,
+   "distinct": 1261,
+   "forms": {
+    "blank": 16224,
+    "uk-date": 1979
+   },
+   "sample": [
+    "01/10/2017 - 13/03/2018:2.730 MW; 14/03/2018 - 30/09/2018:0.000 MW",
+    "01/10/2017 - 13/03/2018:11.432 MW; 14/03/2018 - 30/09/2018:7.432 MW",
+    "01/10/2017 - 22/10/2017:385.440 MW; 23/10/2017 - 04/12/2017:0.000 MW; 05/12/2017 - 30/09/2018:385.440 MW"
+   ]
+  },
+  {
+   "name": "Beta Value",
+   "blank": 18203,
+   "distinct": 1,
+   "forms": {
+    "blank": 18203
+   },
+   "sample": []
+  },
+  {
+   "name": "Has Capacity Agreement been Suspended",
+   "blank": 18050,
+   "distinct": 3,
+   "forms": {
+    "blank": 18050,
+    "text": 153
+   },
+   "sample": [
+    "Yes - Suspended",
+    "Yes - Suspended",
+    "Yes - Suspended and repay Capacity Payments"
+   ]
+  }
+ ]
+}

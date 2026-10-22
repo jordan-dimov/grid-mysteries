@@ -1,0 +1,254 @@
+[
+ {
+  "source": "desnz",
+  "dataset": "desnz-repd-quarterly-extract-2026-q2",
+  "url": "https://assets.publishing.service.gov.uk/media/6a6cbdc00c36759b5ccaa305/REPD_Publication_Q2_2026.csv",
+  "path": "data/raw/desnz/025/REPD_Publication_Q2_2026.csv",
+  "sha256": "84c1b5f958a934d8b4b86ec88f50bdcf43830ded7ff2efc27bffca0c98695035",
+  "fetched_at": "2026-10-22T10:15:50.279686+00:00",
+  "bytes": 5087389
+ },
+ {
+  "source": "desnz",
+  "dataset": "desnz-repd-publication-page",
+  "url": "https://www.gov.uk/government/publications/renewable-energy-planning-database-quarterly-extract",
+  "path": "data/raw/desnz/025/repd-quarterly-extract-page-2026-10-22.html",
+  "sha256": "bad8461436f84ab02864278be4f800085cf5166c41adda67d5373f4694d8d8a2",
+  "fetched_at": "2026-10-22T10:15:51.394582+00:00",
+  "bytes": 106028
+ },
+ {
+  "source": "neso",
+  "dataset": "neso-capacity-market-register-cmu",
+  "url": "https://api.neso.energy/dataset/0b3ab475-5622-4465-8825-9d35d03bb28b/resource/25a5fa2e-873d-41c5-8aaf-fbc2b06d79e6/download/cmu_20261021.csv",
+  "path": "data/raw/neso/025/capacity-market-register-cmu_20261021.csv",
+  "sha256": "ff7879b0f1612ec62783398fad269be9427e69bf8699276d5d994182737ce6a7",
+  "fetched_at": "2026-10-22T10:15:55.889315+00:00",
+  "bytes": 8765493
+ },
+ {
+  "source": "neso",
+  "dataset": "neso-capacity-market-register-cmu-history",
+  "url": "https://api.neso.energy/dataset/0b3ab475-5622-4465-8825-9d35d03bb28b/resource/cd034839-73e7-4c37-b4e5-6ebea25627d8/download/cmu_changes_20261021.csv",
+  "path": "data/raw/neso/025/capacity-market-register-cmu_changes_20261021.csv",
+  "sha256": "de3aea8a4e840ad3d36b4c1aabcd94a550a1801450097d2229f8843935e6d98d",
+  "fetched_at": "2026-10-22T10:16:03.013682+00:00",
+  "bytes": 10979985
+ },
+ {
+  "source": "neso",
+  "dataset": "neso-capacity-market-register-components",
+  "url": "https://api.neso.energy/dataset/0b3ab475-5622-4465-8825-9d35d03bb28b/resource/790f5fa0-f8eb-4d82-b98d-0d34d3e404e8/download/component_20261021.csv",
+  "path": "data/raw/neso/025/capacity-market-register-component_20261021.csv",
+  "sha256": "c04cdef6ba32d1b775658fd77585be6855079467992c240ce7d5619b793b69b6",
+  "fetched_at": "2026-10-22T10:15:59.382451+00:00",
+  "bytes": 8326681
+ },
+ {
+  "source": "neso",
+  "dataset": "neso-capacity-market-register-package",
+  "url": "https://api.neso.energy/api/3/action/package_show?id=capacity-market-register",
+  "path": "data/raw/neso/025/capacity-market-register-package-show-2026-10-22.json",
+  "sha256": "6db67d4039dfe28abcb92caffd24f7d8fd88eebce1fcaa6ebb60b0a2cf459270",
+  "fetched_at": "2026-10-22T10:15:52.572776+00:00",
+  "bytes": 14743
+ },
+ {
+  "source": "neso",
+  "dataset": "neso-cusc-code-documents-page",
+  "url": "https://www.neso.energy/industry-information/codes/connection-and-use-system-code-cusc/cusc-code-documents",
+  "path": "data/raw/neso/025/cusc-code-documents-page-2026-10-22.html",
+  "sha256": "78a59dacc4e7a4bcb8eeada3549e4c0b37e61edbb4858fcd280e16c03e53249d",
+  "fetched_at": "2026-10-22T10:10:30.612634+00:00",
+  "bytes": 1262859
+ },
+ {
+  "source": "neso",
+  "dataset": "neso-cusc-exhibit-mm1-cancellation-charge-statement",
+  "url": "https://www.neso.energy/document/91486/download",
+  "path": "data/raw/neso/025/cusc-exhibit-mm1-cancellation-charge-statement-2026-10-22.pdf",
+  "sha256": "663761272f8725b940dfb12e36147d448d48eb54a82982cf4e141ea11a149552",
+  "fetched_at": "2026-10-22T10:10:26.726908+00:00",
+  "bytes": 193497
+ },
+ {
+  "source": "neso",
+  "dataset": "neso-cusc-exhibit-mm2-cancellation-charge-secured-amount",
+  "url": "https://www.neso.energy/document/91491/download",
+  "path": "data/raw/neso/025/cusc-exhibit-mm2-cancellation-charge-secured-amount-2026-10-22.pdf",
+  "sha256": "a86bb3e2c25f8053b176c7ac85fbfd7b73dde9f2db0785998edfc3423402ca8c",
+  "fetched_at": "2026-10-22T10:10:28.073311+00:00",
+  "bytes": 183053
+ },
+ {
+  "source": "neso",
+  "dataset": "neso-cusc-section-15",
+  "url": "https://www.neso.energy/document/91416/download",
+  "path": "data/raw/neso/025/cusc-section-15-user-commitment-methodology-2026-10-22.pdf",
+  "sha256": "6bf040ba18e16d84471e0cfa284c947e24e1b6b75b90752fc99ba6f2927ea893",
+  "fetched_at": "2026-10-22T10:10:25.200346+00:00",
+  "bytes": 575434
+ },
+ {
+  "source": "neso",
+  "dataset": "neso-reports-and-registers-page-1",
+  "url": "https://www.neso.energy/industry-information/connections/reports-and-registers",
+  "path": "data/raw/neso/025/reports-and-registers-page-1-2026-10-22.html",
+  "sha256": "8ff1452824b0531b02db29fba208dd91c4a3b12387294a25ebc5d612199d73b2",
+  "fetched_at": "2026-10-22T10:10:31.911470+00:00",
+  "bytes": 1311351
+ },
+ {
+  "source": "neso",
+  "dataset": "neso-securities-freeze-letter-2026-01-15",
+  "url": "https://www.neso.energy/document/375916/download",
+  "path": "data/raw/neso/025/securities-freeze-letter-2026-01-15.pdf",
+  "sha256": "b4980e764b906ba3de321e108db163208d29005b91a25689e1cf5f6fc16d8227",
+  "fetched_at": "2026-10-22T10:10:29.276878+00:00",
+  "bytes": 177222
+ },
+ {
+  "source": "neso",
+  "dataset": "neso-wider-cancellation-charge-statement-2012-13",
+  "url": "https://www.neso.energy/document/46301/download",
+  "path": "data/raw/neso/025/wider-cancellation-charge-statement-2012-13.pdf",
+  "sha256": "7ae9c104cf072b227674e1ea5d11bb1ce4e92709bdd9372095519804c51bb97d",
+  "fetched_at": "2026-10-22T10:11:07.317682+00:00",
+  "bytes": 85225
+ },
+ {
+  "source": "neso",
+  "dataset": "neso-wider-cancellation-charge-statement-2013-14",
+  "url": "https://www.neso.energy/document/46276/download",
+  "path": "data/raw/neso/025/wider-cancellation-charge-statement-2013-14.pdf",
+  "sha256": "4bddf3eac333ec1954c7515a95f6f263e5cf2bbca56f59689b899fd34ea767ec",
+  "fetched_at": "2026-10-22T10:11:08.678989+00:00",
+  "bytes": 107509
+ },
+ {
+  "source": "neso",
+  "dataset": "neso-wider-cancellation-charge-statement-2014-15",
+  "url": "https://www.neso.energy/document/46086/download",
+  "path": "data/raw/neso/025/wider-cancellation-charge-statement-2014-15.pdf",
+  "sha256": "4ad5fd2f4abf80334b92cca233763488ed56494769cea568898d49853d9ff700",
+  "fetched_at": "2026-10-22T10:11:10.115458+00:00",
+  "bytes": 272896
+ },
+ {
+  "source": "neso",
+  "dataset": "neso-wider-cancellation-charge-statement-2015-16",
+  "url": "https://www.neso.energy/document/83106/download",
+  "path": "data/raw/neso/025/wider-cancellation-charge-statement-2015-16.pdf",
+  "sha256": "c7889ed84b5573fe5efe8233dd0b3876e6ec25fcc7104e89c167b9420d7df5ad",
+  "fetched_at": "2026-10-22T10:11:11.549817+00:00",
+  "bytes": 304911
+ },
+ {
+  "source": "neso",
+  "dataset": "neso-wider-cancellation-charge-statement-2016-17",
+  "url": "https://www.neso.energy/document/45771/download",
+  "path": "data/raw/neso/025/wider-cancellation-charge-statement-2016-17.pdf",
+  "sha256": "352b3d12d09ae2e66a3bccc46e2d17d479486bfb4778d5a9454394cc84f0a6e7",
+  "fetched_at": "2026-10-22T10:11:12.977529+00:00",
+  "bytes": 311740
+ },
+ {
+  "source": "neso",
+  "dataset": "neso-wider-cancellation-charge-statement-2017-18",
+  "url": "https://www.neso.energy/document/45761/download",
+  "path": "data/raw/neso/025/wider-cancellation-charge-statement-2017-18.pdf",
+  "sha256": "f0dd39105169a03dcb6709b0ccff1cea15b5166bc2c634c3a1d1fe72543e0fca",
+  "fetched_at": "2026-10-22T10:11:14.396970+00:00",
+  "bytes": 267832
+ },
+ {
+  "source": "neso",
+  "dataset": "neso-wider-cancellation-charge-statement-2018-19",
+  "url": "https://www.neso.energy/document/106896/download",
+  "path": "data/raw/neso/025/wider-cancellation-charge-statement-2018-19.pdf",
+  "sha256": "619c2ff260476fabe509e9b156c079473b5c5ede3bb3295a94e84344fecf8377",
+  "fetched_at": "2026-10-22T10:11:15.835900+00:00",
+  "bytes": 410742
+ },
+ {
+  "source": "neso",
+  "dataset": "neso-wider-cancellation-charge-statement-2019-20",
+  "url": "https://www.neso.energy/document/136891/download",
+  "path": "data/raw/neso/025/wider-cancellation-charge-statement-2019-20.pdf",
+  "sha256": "317872d6da36666b703b7e9af7f8fb54349754ebb17f3a72749a0263fc9df396",
+  "fetched_at": "2026-10-22T10:11:17.231668+00:00",
+  "bytes": 399711
+ },
+ {
+  "source": "neso",
+  "dataset": "neso-wider-cancellation-charge-statement-2020-21",
+  "url": "https://www.neso.energy/document/162256/download",
+  "path": "data/raw/neso/025/wider-cancellation-charge-statement-2020-21.pdf",
+  "sha256": "6b62e09c100946331d21e01a28b85baa5906ecbee1a4042434b793c2f40eca63",
+  "fetched_at": "2026-10-22T10:11:18.604184+00:00",
+  "bytes": 72074
+ },
+ {
+  "source": "neso",
+  "dataset": "neso-wider-cancellation-charge-statement-2021-22",
+  "url": "https://www.neso.energy/document/186131/download",
+  "path": "data/raw/neso/025/wider-cancellation-charge-statement-2021-22.pdf",
+  "sha256": "6126de5f69747f13c7d55a041b7ef6560c12491fd798100c67ce91176639d2e0",
+  "fetched_at": "2026-10-22T10:11:19.845000+00:00",
+  "bytes": 68788
+ },
+ {
+  "source": "neso",
+  "dataset": "neso-wider-cancellation-charge-statement-2022-23",
+  "url": "https://www.neso.energy/document/232551/download",
+  "path": "data/raw/neso/025/wider-cancellation-charge-statement-2022-23.pdf",
+  "sha256": "69353eb6377a20b3c8a0cf2dcb0e5e68fe2e418d8e3c33003297a0aa2a14095b",
+  "fetched_at": "2026-10-22T10:11:21.159716+00:00",
+  "bytes": 315007
+ },
+ {
+  "source": "neso",
+  "dataset": "neso-wider-cancellation-charge-statement-2023-24",
+  "url": "https://www.neso.energy/document/275641/download",
+  "path": "data/raw/neso/025/wider-cancellation-charge-statement-2023-24.pdf",
+  "sha256": "3c0fbdbecbbd841b22d3047694a82391400caddf41ab93a4b7de002170d7161d",
+  "fetched_at": "2026-10-22T10:11:22.384242+00:00",
+  "bytes": 318984
+ },
+ {
+  "source": "neso",
+  "dataset": "neso-wider-cancellation-charge-statement-2024-25",
+  "url": "https://www.neso.energy/document/301936/download",
+  "path": "data/raw/neso/025/wider-cancellation-charge-statement-2024-25.pdf",
+  "sha256": "97a29a4e09c0ce25871f5c24be218dc198fe5b9b8764f535bd4d4c8d0f007877",
+  "fetched_at": "2026-10-22T10:11:23.607353+00:00",
+  "bytes": 367059
+ },
+ {
+  "source": "ofgem",
+  "dataset": "ofgem-cmp470-initial-impact-assessment",
+  "url": "https://www.ofgem.gov.uk/sites/default/files/2026-09/CMP470-Interim-Impact-Assessment.pdf",
+  "path": "data/raw/ofgem/025/CMP470-Interim-Impact-Assessment.pdf",
+  "sha256": "7b80637c5c582159716ef7abd8ed77b855bf50f3b829db52a4cfc6e48e5e147d",
+  "fetched_at": "2026-10-22T10:10:22.874187+00:00",
+  "bytes": 594420
+ },
+ {
+  "source": "ofgem",
+  "dataset": "ofgem-cmp470-minded-to-consultation",
+  "url": "https://www.ofgem.gov.uk/sites/default/files/2026-09/CMP470-Minded-to-Consultation.pdf",
+  "path": "data/raw/ofgem/025/CMP470-Minded-to-Consultation.pdf",
+  "sha256": "77a9e72470b76bdc8adb229c2077fec6b7f289ce4ca86b1f14b3ebdd48efee98",
+  "fetched_at": "2026-10-22T10:10:21.664814+00:00",
+  "bytes": 4404300
+ },
+ {
+  "source": "ofgem",
+  "dataset": "ofgem-cmp470-consultation-page",
+  "url": "https://www.ofgem.gov.uk/consultation/connection-and-use-system-code-cusc-cmp470-introducing-oversubscribed-technologies-commitment-fee-otcf",
+  "path": "data/raw/ofgem/025/cmp470-consultation-page-2026-10-22.html",
+  "sha256": "0b1a985c3fea58b362b24c822cf74fb2bd48fa92b2ffab1529ea00cc06837eb5",
+  "fetched_at": "2026-10-22T10:10:23.988612+00:00",
+  "bytes": 202942
+ }
+]

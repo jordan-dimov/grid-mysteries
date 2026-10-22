@@ -68,3 +68,10 @@ investigations/020-did-it-energise/evidence/a5/walks.json
 investigations/020-did-it-energise/evidence/a5/manifest.json
 investigations/020-did-it-energise/RESULTS-a4.md
 investigations/020-did-it-energise/RESULTS-v0-a5.md
+# 025: the per-chain, per-exit and join lines and the appendix name projects and companies; held until the sponsor says.
+investigations/025-the-exit-clock/evidence/chains.ndjson
+investigations/025-the-exit-clock/evidence/exits.ndjson
+investigations/025-the-exit-clock/evidence/joins.ndjson
+investigations/025-the-exit-clock/FINDINGS-APPENDIX.md
+investigations/025-the-exit-clock/figures/*.png
+investigations/025-the-exit-clock/figures/*.svg

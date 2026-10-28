@@ -308,3 +308,43 @@ def test_admit_keeps_printed_order_and_counts_the_refused():
     admitted, refused = ec.admit(rows)
     assert [r["Project Name"] for r in admitted] == ["A", "C"] and refused == 1
     assert len(rows) == 3
+
+
+def _band(band, rate, lower, upper):
+    return {
+        "band": band,
+        "per_100_chain_years": rate,
+        "per_100_chain_years_lower": lower,
+        "per_100_chain_years_upper": upper,
+    }
+
+
+def _results(far_before=("1.6", "1.1", "2.2"), year_before=("2.2", "0.8", "4.7"), flat_a=False):
+    bands = [
+        _band(ec.BANDS[0], *far_before),
+        _band(ec.BANDS[1], "2", "1", "3"),
+        _band(ec.BANDS[2], *year_before),
+    ]
+    return {
+        "hazards": {"old": {c: {"storage": bands} for c in "ABC"}},
+        "flat": {"storage_old_A": flat_a, "storage_old_B": True, "storage_old_C": True},
+        "reused_keys": {"by_era": {"id": 13}, "by_copy": {"2023-02-14": 4}},
+        "pairs": {"rekeying": [{"later": "2021-11-26"}]},
+    }
+
+
+def test_findings_claims_hold_on_the_results_that_wrote_them():
+    assert all(ec.findings_claims(_results()).values())
+
+
+def test_findings_claims_fail_when_a_recompute_contradicts_them():
+    bunched = ec.findings_claims(_results(year_before=("9.0", "6.0", "12.0")))
+    assert not bunched["no bunching before the trigger, on any clock"]
+    assert not ec.findings_claims(_results(flat_a=True))[
+        "the rise after the trigger is under clock A only"
+    ]
+    at_rekey = _results()
+    at_rekey["reused_keys"]["by_copy"] = {"2021-11-26": 1}
+    assert not ec.findings_claims(at_rekey)[
+        "every reused key is in the ID era and none at a re-keying copy"
+    ]

@@ -638,3 +638,40 @@ def place_tokens(value: object) -> frozenset[str]:
 
 def within_one_mw(a: Decimal | None, b: Decimal | None) -> bool:
     return a is not None and b is not None and abs(a - b) <= 1
+
+
+# ------------------------------------------------------- findings claims
+
+
+def intervals_overlap(a: dict[str, Any], b: dict[str, Any]) -> bool:
+    """Two hazard bands' 95 % intervals (per 100 chain-years) overlap."""
+    return Decimal(a["per_100_chain_years_lower"]) <= Decimal(
+        b["per_100_chain_years_upper"]
+    ) and Decimal(b["per_100_chain_years_lower"]) <= Decimal(a["per_100_chain_years_upper"])
+
+
+def findings_claims(results: dict[str, Any]) -> dict[str, bool]:
+    """Each fixed sentence of FINDINGS whose truth rests on the compute, with
+    whether this compute's results support it. The renderer prints a claim
+    only when it holds and otherwise refuses, so a recompute can never leave a
+    sentence standing that its own results contradict (025 Amendment 2, where
+    "kill (a) did not fire" and "every not-determinable chain is before the ID
+    era" would have rendered false)."""
+    storage = {
+        clock: {r["band"]: r for r in results["hazards"]["old"][clock]["storage"]}
+        for clock in ("A", "B", "C")
+    }
+    flat = results["flat"]
+    reused = results["reused_keys"]
+    rekeying_copies = {p["later"] for p in results["pairs"]["rekeying"]}
+    return {
+        "no bunching before the trigger, on any clock": all(
+            intervals_overlap(storage[c][BANDS[2]], storage[c][BANDS[0]]) for c in storage
+        ),
+        "the rise after the trigger is under clock A only": (
+            not flat["storage_old_A"] and flat["storage_old_B"] and flat["storage_old_C"]
+        ),
+        "every reused key is in the ID era and none at a re-keying copy": (
+            set(reused["by_era"]) <= {"id"} and not set(reused["by_copy"]) & rekeying_copies
+        ),
+    }

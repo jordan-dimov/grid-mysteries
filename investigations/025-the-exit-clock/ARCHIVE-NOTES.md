@@ -103,3 +103,23 @@ run, says how the four-week `a1f` window is read: for example, by the Project
 Number, which is stable across it, or by not reading that window's ID column as
 the Project ID. Either way, the Amendment 2 compute stays on record beside
 whatever follows.
+
+## 2026-10-28, night: two runner defects found by the Amendment 2 compute, fixed
+
+- **Amendment 1's exits were lost.** `exits.ndjson` was one shared, held
+  file, so the Amendment 2 compute rewrote it. Amendment 1's chain lines
+  survive in `evidence/chains.ndjson`, from which its exits can be reclassed,
+  but the file as rendered is gone. Exits now sit beside their compute's
+  chains (`evidence/amendment-2/exits.ndjson`, held).
+- **FINDINGS stated outcomes as fixed text.** "Kill (a) did not fire", "all
+  not determinable before the Project ID era", "three re-keying copies" and
+  the reused-key paragraph would have rendered false from the Amendment 2
+  results. They are now computed. The three narrative verdicts (no bunching
+  on any clock; the rise is under clock A only; reused keys all in the ID
+  era, none at a re-keying) are checked by `exit_clock.findings_claims`, and
+  the render refuses, naming the claim, when the results stop supporting
+  one. All three hold on both the Amendment 1 and Amendment 2 results.
+
+Neither change moves a figure: a recompute under the three sealed texts after
+both reproduced the Amendment 2 chain file (C5), the exits byte for byte, and
+every leaf of `results.json` but `computed_at`.

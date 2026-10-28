@@ -251,7 +251,7 @@ HIGH_CHURN = Decimal("0.05")
 
 def load_copies(
     continuation: bool = False,
-) -> list[tuple[tec_sources.Copy, cs.VintageInput]]:
+) -> tuple[list[tuple[tec_sources.Copy, cs.VintageInput]], list[dict[str, str]]]:
     """Every copy the repository holds (journal and daily capture), verified
     against its digest, with 014's required columns; unreadable copies are
     listed, not read. With `continuation` (Amendment 2, I11), rows printing no
@@ -286,7 +286,9 @@ def load_copies(
     return usable, skipped
 
 
-def kept_map(usable: list[cs.VintageInput]) -> dict[date, analysis.Kept]:
+def kept_map(
+    usable: list[cs.VintageInput],
+) -> tuple[dict[date, analysis.Kept], list[dict[str, Any]]]:
     result = cs.series(usable, partial_export_rule=True)
     kept = {k.vintage.t_public: k for k in analysis.kept(usable, result)}
     suspects = result["suspect_copies"]
@@ -690,7 +692,9 @@ def phase_format() -> None:
 #: kept untouched; Amendment 2's compute writes its own append-only file.
 CHAINS_A1 = EVIDENCE / "chains.ndjson"
 CHAINS = EVIDENCE / "amendment-2" / "chains.ndjson"
-EXITS = EVIDENCE / "exits.ndjson"
+#: Exits rendered from this compute's chains, beside them: the compute under
+#: Amendment 1 rewrote one shared file and its exits were lost on 28/10/2026.
+EXITS = EVIDENCE / "amendment-2" / "exits.ndjson"
 RESULTS_JSON = EVIDENCE / "results.json"
 CLOCKS = ("A", "B", "C")
 STATE_FIELDS = (
@@ -1059,7 +1063,7 @@ def phase_compute(seal: str | None) -> None:
     exits_by: Any = nested()  # exits_by[dim][value][regime][clock][band] = count
     monthly: Any = nested()
     total_exposure_months = 0
-    reclassified = Counter()
+    reclassified: Counter[str] = Counter()
     for cid, ch in chains.items():
         cls = per_chain[cid]["class"]
         last_state = ch.last["state"]
@@ -1381,7 +1385,7 @@ def phase_compute(seal: str | None) -> None:
         )
     )
 
-    results = {
+    results: dict[str, Any] = {
         "investigation": "025-the-exit-clock",
         "declaration_sha256": declaration,
         "schema_report_sha256": report_sha,
@@ -1732,10 +1736,10 @@ def join_cmr(exits: list[dict[str, Any]]) -> dict[str, dict[str, Any]]:
                 if cmus[cid]["tokens"] & tokens
             }
         )
-        cid, state = unique(cands)
-        if cid:
+        match, state = unique(cands)
+        if match:
             tier = "a: company and place token"
-        if cid is None and state != "ambiguous":
+        if match is None and state != "ambiguous":
             cands = sorted(
                 {
                     c
@@ -1744,10 +1748,10 @@ def join_cmr(exits: list[dict[str, Any]]) -> dict[str, dict[str, Any]]:
                     if any(ec.within_one_mw(x, mw) for x in cmus[c]["capacities"])
                 }
             )
-            cid, state = unique(cands)
-            if cid:
+            match, state = unique(cands)
+            if match:
                 tier = "b: company and capacity"
-        if cid is None and state != "ambiguous":
+        if match is None and state != "ambiguous":
             cands = sorted(
                 {
                     c
@@ -1756,13 +1760,13 @@ def join_cmr(exits: list[dict[str, Any]]) -> dict[str, dict[str, Any]]:
                     and any(ec.within_one_mw(x, mw) for x in v["capacities"])
                 }
             )
-            cid, state = unique(cands)
-            if cid:
+            match, state = unique(cands)
+            if match:
                 tier = "c: place token and capacity"
         cls = "no record"
         term_months = None
-        if cid:
-            rows = cmus[cid]["rows"]
+        if match:
+            rows = cmus[match]["rows"]
             awarded = [r for r in rows if r.get("Capacity Agreement Awarded") == "Yes"]
             issued_before = [
                 r
@@ -1794,7 +1798,7 @@ def join_cmr(exits: list[dict[str, Any]]) -> dict[str, dict[str, Any]]:
         out[e["chain"]] = {
             "state": state,
             "tier": tier,
-            "cmu_id": cid,
+            "cmu_id": match,
             "class": cls,
             "termination_minus_exit_months": term_months,
         }
@@ -1855,15 +1859,15 @@ def join_companies_house(exits: list[dict[str, Any]]) -> dict[str, dict[str, Any
             progress=progress,
             sleep_seconds=0,
         )
-    out = {}
+    out: dict[str, dict[str, Any]] = {}
     for e in exits:
-        n = numbers.get(e["chain"])
+        number = numbers.get(e["chain"])
         m = date.fromisoformat(e["exit_copy"]).replace(day=1)
-        if n is None:
+        if number is None:
             out[e["chain"]] = {"state": "not linked", "company_number": None, "class": "not linked"}
             continue
-        profile = json.loads((CH_RAW / "company" / n / "profile.json").read_text())
-        charges = json.loads((CH_RAW / "company" / n / "charges.json").read_text())
+        profile = json.loads((CH_RAW / "company" / number / "profile.json").read_text())
+        charges = json.loads((CH_RAW / "company" / number / "charges.json").read_text())
         status = profile.get("company_status")
         cess = profile.get("date_of_cessation")
         cess_d = date.fromisoformat(cess) if cess else None
@@ -1888,7 +1892,7 @@ def join_companies_house(exits: list[dict[str, Any]]) -> dict[str, dict[str, Any
             classes.append("live charge at exit")
         out[e["chain"]] = {
             "state": "linked",
-            "company_number": n,
+            "company_number": number,
             "company_status": status,
             "date_of_cessation": cess,
             "live_charges_at_exit": len(live),
@@ -2079,6 +2083,16 @@ def phase_render() -> None:
     allA = {r["band"]: r for r in hz["A"]["all"]}
     E = R["exits"]
     C = R["chains"]
+    claims = ec.findings_claims(R)
+    if failed := [c for c, holds in claims.items() if not holds]:
+        sys.exit(
+            "render: FINDINGS states as fixed text what these results no longer support; "
+            "rewrite those sentences before rendering: " + "; ".join(failed)
+        )
+    nd_id = C["by_era"]["id"].get("not_determinable", 0)
+    far_ratio = Decimal(sA[ec.BANDS[4]]["per_100_chain_years"]) / Decimal(
+        sA[ec.BANDS[0]]["per_100_chain_years"]
+    )
     o1 = R["reconciliation"]["o1_snapshots"]
     o2 = R["reconciliation"]["o2_window"]
     storage_exits = [e for e in exits if e["storage"] == "storage"]
@@ -2102,9 +2116,14 @@ def phase_render() -> None:
         "",
         "## The answer, narrowly",
         "",
-        f"1. **Exits are few.** Of {C['total']:,} project chains the register has printed since January 2014, {E['total']} left it (status not Built, absent for at least {R['series']['n_days']} days before {R['series']['last_copy']}); {E['storage_old_regime']} of those were storage projects leaving before the connections-reform break of December 2025 ({E['storage_only_old_regime']} storage-only). **Kill condition (b) fired**: fewer than 200 storage exits in the old regime, so the series is reported as thin and no storage hazard below is called a pattern.",
+        f"1. **Exits are few.** Of {C['total']:,} project chains the register has printed since January 2014, {E['total']} left it (status not Built, absent for at least {R['series']['n_days']} days before {R['series']['last_copy']}); {E['storage_old_regime']} of those were storage projects leaving before the connections-reform break of December 2025 ({E['storage_only_old_regime']} storage-only). "
+        + (
+            "**Kill condition (b) fired**: fewer than 200 storage exits in the old regime, so the series is reported as thin and no storage hazard below is called a pattern."
+            if E["kill_b_fired"]
+            else "Kill condition (b) did not fire: the old regime holds at least 200 storage exits."
+        ),
         f"2. **No bunching before the trigger date, on any clock.** For storage, the exit rate in the twelve months before the trigger ({sA[ec.BANDS[2]]['per_100_chain_years']} exits per 100 chain-years, interval {sA[ec.BANDS[2]]['per_100_chain_years_lower']} to {sA[ec.BANDS[2]]['per_100_chain_years_upper']}) is indistinguishable from the rate more than two years before it ({sA[ec.BANDS[0]]['per_100_chain_years']}, {sA[ec.BANDS[0]]['per_100_chain_years_lower']} to {sA[ec.BANDS[0]]['per_100_chain_years_upper']}). The same holds under clock B (trigger from the connection date first printed: {sB[ec.BANDS[2]]['per_100_chain_years']} against {sB[ec.BANDS[0]]['per_100_chain_years']}) and clock C (the date as printed in each copy: {sC[ec.BANDS[2]]['per_100_chain_years']} against {sC[ec.BANDS[0]]['per_100_chain_years']}).",
-        f'3. **The rate rises after the trigger, under clock A only.** More than twelve months after the trigger implied by the last-printed connection date, storage left at {sA[ec.BANDS[4]]["per_100_chain_years"]} per 100 chain-years ({sA[ec.BANDS[4]]["per_100_chain_years_lower"]} to {sA[ec.BANDS[4]]["per_100_chain_years_upper"]}), seven times the far-before rate; the bands are not flat within their uncertainty (K6: {R["flat"]["storage_old_A"]}). Under clocks B and C the bands **are** flat ({R["flat"]["storage_old_B"]}, {R["flat"]["storage_old_C"]}). Interpretation, offered not asserted: clock A reads the trigger from the date a project last printed, so a project that leaves with a stale, passed or imminent connection date sits far "after" its trigger by construction; the rise says projects leave late in their own printed programme (017\'s overdue residue), not that they leave because the bill arrived.',
+        f'3. **The rate rises after the trigger, under clock A only.** More than twelve months after the trigger implied by the last-printed connection date, storage left at {sA[ec.BANDS[4]]["per_100_chain_years"]} per 100 chain-years ({sA[ec.BANDS[4]]["per_100_chain_years_lower"]} to {sA[ec.BANDS[4]]["per_100_chain_years_upper"]}), {far_ratio:.0f} times the far-before rate; the bands are not flat within their uncertainty (K6: {R["flat"]["storage_old_A"]}). Under clocks B and C the bands **are** flat ({R["flat"]["storage_old_B"]}, {R["flat"]["storage_old_C"]}). Interpretation, offered not asserted: clock A reads the trigger from the date a project last printed, so a project that leaves with a stale, passed or imminent connection date sits far "after" its trigger by construction; the rise says projects leave late in their own printed programme (017\'s overdue residue), not that they leave because the bill arrived.',
         f"4. **All technologies together show the same shape, with more exits.** {E['old_regime']} old-regime exits: {allA[ec.BANDS[0]]['per_100_chain_years']} per 100 chain-years far before the trigger, {allA[ec.BANDS[2]]['per_100_chain_years']} in the year before, {allA[ec.BANDS[3]]['per_100_chain_years']} in the year after, {allA[ec.BANDS[4]]['per_100_chain_years']} beyond. Here the rate does step up from the far-before band to the two years before the trigger ({allA[ec.BANDS[1]]['per_100_chain_years']}), which storage alone does not show; the controls are mostly wind and gas chains from 2014 to 2021.",
         f"5. **Against Ofgem's 72.** Ofgem counted 72 storage projects that \"exited the connection queue or changed their technology classification\" between 2023 and 2025 (6.7 % a year). This series counts {o2['storage_exits']} storage exits with exit copies from January 2023 to November 2025 ({o2['by_exit_year'].get('2023', 0)}, {o2['by_exit_year'].get('2024', 0)}, {o2['by_exit_year'].get('2025', 0)} by year), and on Ofgem's own annual-snapshot footing {sum(s['by_status']['all'].get('reclassified_away', 0) for s in o1)} storage chains reclassified away from storage between snapshots. The counts meet within a factor of two (F1 silent); the **rates** do not: {pct(o1[0]['by_status']['all']['left_share'])}, {pct(o1[1]['by_status']['all']['left_share'])} and {pct(o1[2]['by_status']['all']['left_share'])} of storage chains present at each January snapshot had left by the next, against 6.7 %; Scoping {pct(o1[1]['by_status'].get('Scoping', {}).get('left_share'))} and {pct(o1[2]['by_status'].get('Scoping', {}).get('left_share'))} against Ofgem's 7.4 % for Scoping or Awaiting Consents; Consents Approved {pct(o1[2]['by_status'].get('Consents Approved', {}).get('left_share'))} against 3 %; Under Construction {pct(o1[2]['by_status'].get('Under Construction/Commissioning', {}).get('left_share'))} against 0 %. The direction agrees (earlier stages leave more; nothing leaves from construction); the level does not, and the candidates are in the reconciliation section.",
         "",
@@ -2126,9 +2145,7 @@ def phase_render() -> None:
     bands8 = [
         m
         for m in moved
-        if any(
-            m["leaf"].startswith(f"hazards/old/A/all[{i}]/per_100_chain_years") for i in range(5)
-        )
+        if any(m["leaf"] == f"hazards/old/A/all[{i}]/per_100_chain_years" for i in range(5))
     ]
     L += ["", "## Amendment 1 of the reading", ""]
     L.append(
@@ -2172,7 +2189,18 @@ def phase_render() -> None:
         "## The evidence",
         "",
         f"- **Copies**: {R['series']['usable_copies']} usable, {R['series']['kept_copies']} kept (014's partial-export rule excluded {len(R['series']['suspect_copies'])}: {', '.join(s['t_public'] for s in R['series']['suspect_copies'])}), {R['series']['first_copy']} to {R['series']['last_copy']}; every copy verified against its journalled or manifested digest (C1); the series end fixed at {R['series']['last_copy']} and copies published after it unread.",
-        f"- **Chains**: {C['total']:,}. Classes (C3): {C['classes'].get('present at series end', 0):,} present at the series end, {C['classes'].get('exit', 0)} left, {C['classes'].get('completed', 0)} completed (last printed as Built), {C['classes'].get('open', 0)} open (last seen after {R['series']['exit_cutoff']}), {C['classes'].get('not determinable', 0)} not determinable (all before the Project ID era, at the June 2020 re-keying). **Kill (a) did not fire**: the ID-era not-determinable share is {pct(C['not_determinable_share_id_era'])}.",
+        f"- **Chains**: {C['total']:,}. Classes (C3): {C['classes'].get('present at series end', 0):,} present at the series end, {C['classes'].get('exit', 0)} left, {C['classes'].get('completed', 0)} completed (last printed as Built), {C['classes'].get('open', 0)} open (last seen after {R['series']['exit_cutoff']}), {C['classes'].get('not determinable', 0)} not determinable ("
+        + (
+            "all before the Project ID era"
+            if nd_id == 0
+            else f"{C['by_era']['pre-id'].get('not_determinable', 0)} before the Project ID era, {nd_id} in it"
+        )
+        + "). "
+        + (
+            f"**Kill (a) fired: the ID-era not-determinable share is {pct(C['not_determinable_share_id_era'])}, over the declared 10 %, and by the declaration the investigation stops and says so.**"
+            if C["kill_a_fired"]
+            else f"**Kill (a) did not fire**: the ID-era not-determinable share is {pct(C['not_determinable_share_id_era'])}."
+        ),
         f"- **Stitching**: {C['key_changes']:,} key changes carried a chain across a change of key, by tier: {', '.join(f'{k} {v:,}' for k, v in sorted(C['key_change_tiers'].items(), key=lambda kv: -kv[1]))}. {R['pairs']['returned_own_key_total']} keys returned to their chain after an interruption (I9); {C['interrupted_chains']} chains were interrupted at least once; {C['stage_reductions']:,} stage reductions (rows lost while the chain stayed); {C['reclassified']['chains']} chains changed plant family at some point (I7), none of them counted as an exit for that reason.",
         f"- **Exposure**: {R['exposure']['total_chain_months']:,} chain-months at risk over the series.",
         "",
@@ -2282,7 +2310,13 @@ def phase_render() -> None:
         "",
         "### The stitching caveat (the question Ofgem will ask)",
         "",
-        f"Identity is the whole method. {C['key_change_tiers'].get('all five', 0):,} of the {C['key_changes']:,} key changes were at the three re-keying copies and matched on every feature; the next two tiers ({C['key_change_tiers'].get('name, customer, stage', 0)} on name, customer and stage; {C['key_change_tiers'].get('name, site, stage', 0)} on name, site and stage) are mostly re-spelt sites and customers at the June 2020 format change and at the re-issues. In the Project ID era, outside the re-keying copies, only **{sum(id_era_stitches.values())}** stitches were made ({', '.join(f'{k} {v}' for k, v in id_era_stitches.most_common())}); that is the most by which stitching can have hidden an ID-era exit. The stitch's one caught failure: **{len(reused)} keys returned to the register while their chain was already printed under another key** (at {', '.join(f'{k} ({v})' for k, v in sorted(R['reused_keys']['by_copy'].items()))}), all in the ID era and none at a re-keying boundary. Each was a project sharing its **name** with a different project (different customer, mostly a different site and MW): the name-based tiers had merged two projects, the returning id separated them, and the runner now keeps the id's chain and treats the row as new. These are the copies 017's certificates show as \"presence ambiguous (2 rows)\". Nothing says how many unreturned merges remain; the bound above ({sum(id_era_stitches.values())} ID-era stitches outside re-keyings) is the honest ceiling.",
+        f"Identity is the whole method. {C['key_change_tiers'].get('all five', 0):,} of the {C['key_changes']:,} key changes were at the {len(R['pairs']['rekeying'])} re-keying copies and matched on every feature; the next two tiers ({C['key_change_tiers'].get('name, customer, stage', 0)} on name, customer and stage; {C['key_change_tiers'].get('name, site, stage', 0)} on name, site and stage) are mostly re-spelt sites and customers at the June 2020 format change and at the re-issues. In the Project ID era, outside the re-keying copies, only **{sum(id_era_stitches.values())}** stitches were made ({', '.join(f'{k} {v}' for k, v in id_era_stitches.most_common())}); that is the most by which stitching can have hidden an ID-era exit. "
+        + (
+            f"The stitch's one caught failure: **{len(reused)} keys returned to the register while their chain was already printed under another key** (at {', '.join(f'{k} ({v})' for k, v in sorted(R['reused_keys']['by_copy'].items()))}), all in the ID era and none at a re-keying boundary. Each was a project sharing its **name** with a different project (different customer, mostly a different site and MW): the name-based tiers had merged two projects, the returning id separated them, and the runner now keeps the id's chain and treats the row as new. These are the copies 017's certificates show as \"presence ambiguous (2 rows)\". "
+            if reused
+            else "No key returned to the register while its chain was printed under another key. "
+        )
+        + f"Nothing says how many unreturned merges remain; the bound above ({sum(id_era_stitches.values())} ID-era stitches outside re-keyings) is the honest ceiling.",
         "",
         "### The joins (addendum J1 to J3), run on the storage exits",
         "",

@@ -445,3 +445,46 @@ def test_unnamed_rows_counts_stage_rows_the_reader_drops(tmp_path):
     f.write_text("Project Name,Stage,MW Connected\nA,1,10\n,2,20\n,,\nB,1,5\n")
     assert len(tr.read_vintage(f, "csv")) == 2
     assert tr.unnamed_rows(f, "csv") == 1
+
+
+def test_continuation_rule_fills_name_and_identity_only_for_the_same_project():
+    header: list[object] = [
+        "Project Name",
+        "Customer Name",
+        "Connection Site",
+        "Stage",
+        "Project ID",
+        "MW Connected",
+    ]
+    matrix: list[list[object]] = [
+        header,
+        ["A", "ACME", "Site 1", "1", "id1", 10],
+        [None, None, None, "2", "id1", 20],  # same project: name, customer, site
+        [None, None, None, "3", "id2", 30],  # its own id: the name only
+        [None, "OTHER", None, "1", "id3", 5],  # prints its customer: kept
+        [None, None, None, None, None, None],  # blank: dropped
+    ]
+    assert len(tr.rows_from_matrix(matrix)) == 1
+    rows = tr.rows_from_matrix(matrix, continuation=True)
+    assert [(r["Project Name"], r["Customer Name"], r["Connection Site"]) for r in rows] == [
+        ("A", "ACME", "Site 1"),
+        ("A", "ACME", "Site 1"),
+        ("A", None, None),
+        ("A", "OTHER", None),
+    ]
+
+
+def test_continuation_rule_without_an_id_column_always_takes_the_identity():
+    matrix: list[list[object]] = [
+        ["Project Name", "Customer Name", "Connection Site", "Stage"],
+        [None, None, None, "9"],  # no named row above: dropped
+        ["B", "BEE", "Site 2", "1"],
+        [None, None, None, "2"],
+    ]
+    rows = tr.rows_from_matrix(matrix, continuation=True)
+    assert [
+        (r["Project Name"], r["Customer Name"], r["Connection Site"], r["Stage"]) for r in rows
+    ] == [
+        ("B", "BEE", "Site 2", "1"),
+        ("B", "BEE", "Site 2", "2"),
+    ]

@@ -1,0 +1,1120 @@
+{
+ "test": "continuation rule: rebuild NESO's complete exports (FOI-26-226) from the published copies",
+ "journal_sha256": "4ff00cb2c394bb488fe0377b7d587857539ec8bcb0489027d7bb9ce924590321",
+ "dates": 38,
+ "first": "2021-01-29",
+ "last": "2024-04-26",
+ "scored_at": "025's chain key (exit_clock.row_key), admitted rows, read columns; names by 005's normaliser",
+ "summary_excluding_partial_export": {
+  "A drop | id": {
+   "exact": 25492,
+   "missing": 458,
+   "rows differ": 2287,
+   "exact but for NESO artefact rows": 8,
+   "keys only in ours": 0
+  },
+  "A drop | pre-id": {
+   "exact": 5153,
+   "rows differ": 982,
+   "missing": 95,
+   "keys only in ours": 0,
+   "exact but for NESO artefact rows": 4
+  },
+  "B identity | id": {
+   "exact": 28237,
+   "exact but for NESO artefact rows": 8,
+   "keys only in ours": 0,
+   "rows whose customer NESO does not print for the id": 61
+  },
+  "B identity | pre-id": {
+   "exact": 5829,
+   "rows differ": 400,
+   "keys only in ours": 1,
+   "exact but for NESO artefact rows": 4,
+   "missing": 1
+  },
+  "C continuation | id": {
+   "exact": 28237,
+   "exact but for NESO artefact rows": 8,
+   "keys only in ours": 0,
+   "rows with a blank customer NESO prints": 63
+  },
+  "C continuation | pre-id": {
+   "exact": 5829,
+   "rows differ": 400,
+   "keys only in ours": 1,
+   "exact but for NESO artefact rows": 4,
+   "missing": 1
+  }
+ },
+ "per_date": [
+  {
+   "t_public": "2021-01-29",
+   "era": "pre-id",
+   "published": "data/raw/neso/tec-history/2021-01-29_neso-doc.xlsx",
+   "neso_export": "data/raw/neso/tec-history/2021-01-29_neso-foi-26-226.csv",
+   "unnamed_rows": 90,
+   "keys_neso_prints": 590,
+   "excluded_partial_export": false,
+   "rules": {
+    "A drop": {
+     "exact": 515,
+     "rows differ": 65,
+     "missing": 10,
+     "keys only in ours": 0
+    },
+    "B identity": {
+     "exact": 588,
+     "rows differ": 2,
+     "keys only in ours": 0
+    },
+    "C continuation": {
+     "exact": 588,
+     "rows differ": 2,
+     "keys only in ours": 0
+    }
+   }
+  },
+  {
+   "t_public": "2021-02-26",
+   "era": "pre-id",
+   "published": "data/raw/neso/tec-history/2021-02-26_neso-doc.xlsx",
+   "neso_export": "data/raw/neso/tec-history/2021-02-26_neso-foi-26-226.csv",
+   "unnamed_rows": 87,
+   "keys_neso_prints": 589,
+   "excluded_partial_export": false,
+   "rules": {
+    "A drop": {
+     "exact": 516,
+     "rows differ": 64,
+     "missing": 9,
+     "keys only in ours": 0
+    },
+    "B identity": {
+     "exact": 587,
+     "rows differ": 2,
+     "keys only in ours": 0
+    },
+    "C continuation": {
+     "exact": 587,
+     "rows differ": 2,
+     "keys only in ours": 0
+    }
+   }
+  },
+  {
+   "t_public": "2021-03-30",
+   "era": "pre-id",
+   "published": "data/raw/neso/tec-history/2021-03-30_neso-doc.xlsx",
+   "neso_export": "data/raw/neso/tec-history/2021-03-30_neso-foi-26-226.csv",
+   "unnamed_rows": 89,
+   "keys_neso_prints": 592,
+   "excluded_partial_export": false,
+   "rules": {
+    "A drop": {
+     "exact": 516,
+     "rows differ": 65,
+     "missing": 10,
+     "exact but for NESO artefact rows": 1,
+     "keys only in ours": 0
+    },
+    "B identity": {
+     "exact": 589,
+     "rows differ": 2,
+     "exact but for NESO artefact rows": 1,
+     "keys only in ours": 0
+    },
+    "C continuation": {
+     "exact": 589,
+     "rows differ": 2,
+     "exact but for NESO artefact rows": 1,
+     "keys only in ours": 0
+    }
+   }
+  },
+  {
+   "t_public": "2021-04-30",
+   "era": "pre-id",
+   "published": "data/raw/neso/tec-history/2021-04-30_neso-doc.xlsx",
+   "neso_export": "data/raw/neso/tec-history/2021-04-30_neso-foi-26-226.csv",
+   "unnamed_rows": 91,
+   "keys_neso_prints": 601,
+   "excluded_partial_export": false,
+   "rules": {
+    "A drop": {
+     "exact": 524,
+     "rows differ": 67,
+     "missing": 9,
+     "exact but for NESO artefact rows": 1,
+     "keys only in ours": 0
+    },
+    "B identity": {
+     "exact": 598,
+     "rows differ": 2,
+     "exact but for NESO artefact rows": 1,
+     "keys only in ours": 0
+    },
+    "C continuation": {
+     "exact": 598,
+     "rows differ": 2,
+     "exact but for NESO artefact rows": 1,
+     "keys only in ours": 0
+    }
+   }
+  },
+  {
+   "t_public": "2021-05-28",
+   "era": "pre-id",
+   "published": "data/raw/neso/tec-history/2021-05-28_neso-doc.xlsx",
+   "neso_export": "data/raw/neso/tec-history/2021-05-28_neso-foi-26-226.csv",
+   "unnamed_rows": 91,
+   "keys_neso_prints": 607,
+   "excluded_partial_export": false,
+   "rules": {
+    "A drop": {
+     "exact": 531,
+     "rows differ": 67,
+     "missing": 9,
+     "keys only in ours": 0
+    },
+    "B identity": {
+     "exact": 605,
+     "rows differ": 2,
+     "keys only in ours": 0
+    },
+    "C continuation": {
+     "exact": 605,
+     "rows differ": 2,
+     "keys only in ours": 0
+    }
+   }
+  },
+  {
+   "t_public": "2021-06-29",
+   "era": "pre-id",
+   "published": "data/raw/neso/tec-history/2021-06-29_neso-doc.xlsx",
+   "neso_export": "data/raw/neso/tec-history/2021-06-29_neso-foi-26-226.csv",
+   "unnamed_rows": 92,
+   "keys_neso_prints": 619,
+   "excluded_partial_export": false,
+   "rules": {
+    "A drop": {
+     "exact": 543,
+     "rows differ": 65,
+     "missing": 10,
+     "exact but for NESO artefact rows": 1,
+     "keys only in ours": 0
+    },
+    "B identity": {
+     "exact": 614,
+     "rows differ": 4,
+     "exact but for NESO artefact rows": 1,
+     "keys only in ours": 0
+    },
+    "C continuation": {
+     "exact": 614,
+     "rows differ": 4,
+     "exact but for NESO artefact rows": 1,
+     "keys only in ours": 0
+    }
+   }
+  },
+  {
+   "t_public": "2021-07-30",
+   "era": "pre-id",
+   "published": "data/raw/neso/tec-history/2021-07-30_neso-doc.xlsx",
+   "neso_export": "data/raw/neso/tec-history/2021-07-30_neso-foi-26-226.csv",
+   "unnamed_rows": 92,
+   "keys_neso_prints": 639,
+   "excluded_partial_export": false,
+   "rules": {
+    "A drop": {
+     "exact": 233,
+     "rows differ": 395,
+     "missing": 11,
+     "keys only in ours": 0
+    },
+    "B identity": {
+     "exact": 262,
+     "rows differ": 376,
+     "missing": 1,
+     "keys only in ours": 1
+    },
+    "C continuation": {
+     "exact": 262,
+     "rows differ": 376,
+     "missing": 1,
+     "keys only in ours": 1
+    }
+   }
+  },
+  {
+   "t_public": "2021-08-31",
+   "era": "pre-id",
+   "published": "data/raw/neso/tec-history/2021-08-31_neso-doc.xlsx",
+   "neso_export": "data/raw/neso/tec-history/2021-08-31_neso-foi-26-226.csv",
+   "unnamed_rows": 94,
+   "keys_neso_prints": 651,
+   "excluded_partial_export": false,
+   "rules": {
+    "A drop": {
+     "exact": 576,
+     "rows differ": 65,
+     "missing": 10,
+     "keys only in ours": 0
+    },
+    "B identity": {
+     "exact": 647,
+     "rows differ": 4,
+     "keys only in ours": 0
+    },
+    "C continuation": {
+     "exact": 647,
+     "rows differ": 4,
+     "keys only in ours": 0
+    }
+   }
+  },
+  {
+   "t_public": "2021-09-28",
+   "era": "pre-id",
+   "published": "data/raw/neso/tec-history/2021-09-28_neso-doc.xlsx",
+   "neso_export": "data/raw/neso/tec-history/2021-09-28_neso-foi-26-226.csv",
+   "unnamed_rows": 91,
+   "keys_neso_prints": 665,
+   "excluded_partial_export": false,
+   "rules": {
+    "A drop": {
+     "exact": 591,
+     "missing": 9,
+     "rows differ": 64,
+     "exact but for NESO artefact rows": 1,
+     "keys only in ours": 0
+    },
+    "B identity": {
+     "exact": 660,
+     "rows differ": 4,
+     "exact but for NESO artefact rows": 1,
+     "keys only in ours": 0
+    },
+    "C continuation": {
+     "exact": 660,
+     "rows differ": 4,
+     "exact but for NESO artefact rows": 1,
+     "keys only in ours": 0
+    }
+   }
+  },
+  {
+   "t_public": "2021-10-29",
+   "era": "pre-id",
+   "published": "data/raw/neso/tec-history/2021-10-29_neso-doc.xlsx",
+   "neso_export": "data/raw/neso/tec-history/2021-10-29_neso-foi-26-226.csv",
+   "unnamed_rows": 90,
+   "keys_neso_prints": 681,
+   "excluded_partial_export": false,
+   "rules": {
+    "A drop": {
+     "exact": 608,
+     "missing": 8,
+     "rows differ": 65,
+     "keys only in ours": 0
+    },
+    "B identity": {
+     "exact": 679,
+     "rows differ": 2,
+     "keys only in ours": 0
+    },
+    "C continuation": {
+     "exact": 679,
+     "rows differ": 2,
+     "keys only in ours": 0
+    }
+   }
+  },
+  {
+   "t_public": "2021-11-30",
+   "era": "id",
+   "published": "data/raw/neso/tec-history/2021-11-30_neso-doc.xlsx",
+   "neso_export": "data/raw/neso/tec-history/2021-11-30_neso-foi-26-226.csv",
+   "unnamed_rows": 90,
+   "keys_neso_prints": 710,
+   "excluded_partial_export": false,
+   "rules": {
+    "A drop": {
+     "exact": 636,
+     "missing": 8,
+     "rows differ": 65,
+     "exact but for NESO artefact rows": 1,
+     "keys only in ours": 0
+    },
+    "B identity": {
+     "exact": 709,
+     "exact but for NESO artefact rows": 1,
+     "keys only in ours": 0,
+     "rows whose customer NESO does not print for the id": 1
+    },
+    "C continuation": {
+     "exact": 709,
+     "exact but for NESO artefact rows": 1,
+     "keys only in ours": 0,
+     "rows with a blank customer NESO prints": 1
+    }
+   }
+  },
+  {
+   "t_public": "2021-12-31",
+   "era": "id",
+   "published": "data/raw/neso/tec-history/2021-12-31_neso-doc.xlsx",
+   "neso_export": "data/raw/neso/tec-history/2021-12-31_neso-foi-26-226.csv",
+   "unnamed_rows": 93,
+   "keys_neso_prints": 742,
+   "excluded_partial_export": false,
+   "rules": {
+    "A drop": {
+     "exact": 666,
+     "missing": 9,
+     "rows differ": 67,
+     "keys only in ours": 0
+    },
+    "B identity": {
+     "exact": 742,
+     "keys only in ours": 0,
+     "rows whose customer NESO does not print for the id": 1
+    },
+    "C continuation": {
+     "exact": 742,
+     "keys only in ours": 0,
+     "rows with a blank customer NESO prints": 1
+    }
+   }
+  },
+  {
+   "t_public": "2022-01-28",
+   "era": "id",
+   "published": "data/raw/neso/tec-history/2022-01-28_neso-doc.xlsx",
+   "neso_export": "data/raw/neso/tec-history/2022-01-28_neso-foi-26-226.csv",
+   "unnamed_rows": 94,
+   "keys_neso_prints": 756,
+   "excluded_partial_export": false,
+   "rules": {
+    "A drop": {
+     "exact": 679,
+     "missing": 10,
+     "rows differ": 67,
+     "keys only in ours": 0
+    },
+    "B identity": {
+     "exact": 756,
+     "keys only in ours": 0,
+     "rows whose customer NESO does not print for the id": 1
+    },
+    "C continuation": {
+     "exact": 756,
+     "keys only in ours": 0,
+     "rows with a blank customer NESO prints": 1
+    }
+   }
+  },
+  {
+   "t_public": "2022-02-25",
+   "era": "id",
+   "published": "data/raw/neso/tec-history/2022-02-25_neso-doc.xlsx",
+   "neso_export": "data/raw/neso/tec-history/2022-02-25_neso-foi-26-226.csv",
+   "unnamed_rows": 96,
+   "keys_neso_prints": 773,
+   "excluded_partial_export": false,
+   "rules": {
+    "A drop": {
+     "exact": 694,
+     "missing": 10,
+     "rows differ": 68,
+     "exact but for NESO artefact rows": 1,
+     "keys only in ours": 0
+    },
+    "B identity": {
+     "exact": 772,
+     "exact but for NESO artefact rows": 1,
+     "keys only in ours": 0,
+     "rows whose customer NESO does not print for the id": 1
+    },
+    "C continuation": {
+     "exact": 772,
+     "exact but for NESO artefact rows": 1,
+     "keys only in ours": 0,
+     "rows with a blank customer NESO prints": 1
+    }
+   }
+  },
+  {
+   "t_public": "2022-03-30",
+   "era": "id",
+   "published": "data/raw/neso/tec-history/2022-03-30_neso-doc.xlsx",
+   "neso_export": "data/raw/neso/tec-history/2022-03-30_neso-foi-26-226.csv",
+   "unnamed_rows": 99,
+   "keys_neso_prints": 783,
+   "excluded_partial_export": false,
+   "rules": {
+    "A drop": {
+     "exact": 702,
+     "missing": 10,
+     "rows differ": 70,
+     "exact but for NESO artefact rows": 1,
+     "keys only in ours": 0
+    },
+    "B identity": {
+     "exact": 782,
+     "exact but for NESO artefact rows": 1,
+     "keys only in ours": 0,
+     "rows whose customer NESO does not print for the id": 1
+    },
+    "C continuation": {
+     "exact": 782,
+     "exact but for NESO artefact rows": 1,
+     "keys only in ours": 0,
+     "rows with a blank customer NESO prints": 1
+    }
+   }
+  },
+  {
+   "t_public": "2022-04-29",
+   "era": "id",
+   "published": "data/raw/neso/tec-history/2022-04-29_neso-doc.xlsx",
+   "neso_export": "data/raw/neso/tec-history/2022-04-29_neso-foi-26-226.csv",
+   "unnamed_rows": 99,
+   "keys_neso_prints": 796,
+   "excluded_partial_export": false,
+   "rules": {
+    "A drop": {
+     "exact": 716,
+     "missing": 11,
+     "rows differ": 69,
+     "keys only in ours": 0
+    },
+    "B identity": {
+     "exact": 796,
+     "keys only in ours": 0,
+     "rows whose customer NESO does not print for the id": 1
+    },
+    "C continuation": {
+     "exact": 796,
+     "keys only in ours": 0,
+     "rows with a blank customer NESO prints": 1
+    }
+   }
+  },
+  {
+   "t_public": "2022-05-31",
+   "era": "id",
+   "published": "data/raw/neso/tec-history/2022-05-31_neso-doc.xlsx",
+   "neso_export": "data/raw/neso/tec-history/2022-05-31_neso-foi-26-226.csv",
+   "unnamed_rows": 100,
+   "keys_neso_prints": 806,
+   "excluded_partial_export": false,
+   "rules": {
+    "A drop": {
+     "exact": 725,
+     "missing": 11,
+     "rows differ": 69,
+     "exact but for NESO artefact rows": 1,
+     "keys only in ours": 0
+    },
+    "B identity": {
+     "exact": 805,
+     "exact but for NESO artefact rows": 1,
+     "keys only in ours": 0,
+     "rows whose customer NESO does not print for the id": 1
+    },
+    "C continuation": {
+     "exact": 805,
+     "exact but for NESO artefact rows": 1,
+     "keys only in ours": 0,
+     "rows with a blank customer NESO prints": 1
+    }
+   }
+  },
+  {
+   "t_public": "2022-06-30",
+   "era": "id",
+   "published": "data/raw/neso/tec-history/2022-06-30_neso-doc.xlsx",
+   "neso_export": "data/raw/neso/tec-history/2022-06-30_neso-foi-26-226.csv",
+   "unnamed_rows": 99,
+   "keys_neso_prints": 829,
+   "excluded_partial_export": false,
+   "rules": {
+    "A drop": {
+     "exact": 748,
+     "missing": 12,
+     "rows differ": 68,
+     "exact but for NESO artefact rows": 1,
+     "keys only in ours": 0
+    },
+    "B identity": {
+     "exact": 828,
+     "exact but for NESO artefact rows": 1,
+     "keys only in ours": 0,
+     "rows whose customer NESO does not print for the id": 1
+    },
+    "C continuation": {
+     "exact": 828,
+     "exact but for NESO artefact rows": 1,
+     "keys only in ours": 0,
+     "rows with a blank customer NESO prints": 1
+    }
+   }
+  },
+  {
+   "t_public": "2022-07-29",
+   "era": "id",
+   "published": "data/raw/neso/tec-history/2022-07-29_neso-doc.xlsx",
+   "neso_export": "data/raw/neso/tec-history/2022-07-29_neso-foi-26-226.csv",
+   "unnamed_rows": 99,
+   "keys_neso_prints": 836,
+   "excluded_partial_export": false,
+   "rules": {
+    "A drop": {
+     "exact": 756,
+     "missing": 12,
+     "rows differ": 68,
+     "keys only in ours": 0
+    },
+    "B identity": {
+     "exact": 836,
+     "keys only in ours": 0,
+     "rows whose customer NESO does not print for the id": 1
+    },
+    "C continuation": {
+     "exact": 836,
+     "keys only in ours": 0,
+     "rows with a blank customer NESO prints": 1
+    }
+   }
+  },
+  {
+   "t_public": "2022-08-30",
+   "era": "id",
+   "published": "data/raw/neso/tec-history/2022-08-30_neso-doc.xlsx",
+   "neso_export": "data/raw/neso/tec-history/2022-08-30_neso-foi-26-226.csv",
+   "unnamed_rows": 100,
+   "keys_neso_prints": 851,
+   "excluded_partial_export": false,
+   "rules": {
+    "A drop": {
+     "exact": 769,
+     "missing": 12,
+     "rows differ": 69,
+     "exact but for NESO artefact rows": 1,
+     "keys only in ours": 0
+    },
+    "B identity": {
+     "exact": 850,
+     "exact but for NESO artefact rows": 1,
+     "keys only in ours": 0,
+     "rows whose customer NESO does not print for the id": 1
+    },
+    "C continuation": {
+     "exact": 850,
+     "exact but for NESO artefact rows": 1,
+     "keys only in ours": 0,
+     "rows with a blank customer NESO prints": 1
+    }
+   }
+  },
+  {
+   "t_public": "2022-09-30",
+   "era": "id",
+   "published": "data/raw/neso/tec-history/2022-09-30_neso-doc.xlsx",
+   "neso_export": "data/raw/neso/tec-history/2022-09-30_neso-foi-26-226.csv",
+   "unnamed_rows": 105,
+   "keys_neso_prints": 876,
+   "excluded_partial_export": false,
+   "rules": {
+    "A drop": {
+     "exact": 791,
+     "missing": 12,
+     "rows differ": 73,
+     "keys only in ours": 0
+    },
+    "B identity": {
+     "exact": 876,
+     "keys only in ours": 0,
+     "rows whose customer NESO does not print for the id": 1
+    },
+    "C continuation": {
+     "exact": 876,
+     "keys only in ours": 0,
+     "rows with a blank customer NESO prints": 1
+    }
+   }
+  },
+  {
+   "t_public": "2022-10-28",
+   "era": "id",
+   "published": "data/raw/neso/tec-history/2022-10-28_neso-doc.xlsx",
+   "neso_export": "data/raw/neso/tec-history/2022-10-28_neso-foi-26-226.csv",
+   "unnamed_rows": 108,
+   "keys_neso_prints": 882,
+   "excluded_partial_export": false,
+   "rules": {
+    "A drop": {
+     "exact": 796,
+     "missing": 12,
+     "rows differ": 74,
+     "keys only in ours": 0
+    },
+    "B identity": {
+     "exact": 882,
+     "keys only in ours": 0,
+     "rows whose customer NESO does not print for the id": 1
+    },
+    "C continuation": {
+     "exact": 882,
+     "keys only in ours": 0,
+     "rows with a blank customer NESO prints": 1
+    }
+   }
+  },
+  {
+   "t_public": "2022-11-29",
+   "era": "id",
+   "published": "data/raw/neso/tec-history/2022-11-29_neso-doc.xlsx",
+   "neso_export": "data/raw/neso/tec-history/2022-11-29_neso-foi-26-226.csv",
+   "unnamed_rows": 112,
+   "keys_neso_prints": 919,
+   "excluded_partial_export": false,
+   "rules": {
+    "A drop": {
+     "exact": 829,
+     "missing": 13,
+     "rows differ": 76,
+     "exact but for NESO artefact rows": 1,
+     "keys only in ours": 0
+    },
+    "B identity": {
+     "exact": 918,
+     "exact but for NESO artefact rows": 1,
+     "keys only in ours": 0,
+     "rows whose customer NESO does not print for the id": 2
+    },
+    "C continuation": {
+     "exact": 918,
+     "exact but for NESO artefact rows": 1,
+     "keys only in ours": 0,
+     "rows with a blank customer NESO prints": 2
+    }
+   }
+  },
+  {
+   "t_public": "2022-12-23",
+   "era": "id",
+   "published": "data/raw/neso/tec-history/2022-12-23_neso-doc.xlsx",
+   "neso_export": "data/raw/neso/tec-history/2022-12-23_neso-foi-26-226.csv",
+   "unnamed_rows": 124,
+   "keys_neso_prints": 944,
+   "excluded_partial_export": false,
+   "rules": {
+    "A drop": {
+     "exact": 848,
+     "missing": 14,
+     "rows differ": 82,
+     "keys only in ours": 0
+    },
+    "B identity": {
+     "exact": 944,
+     "keys only in ours": 0,
+     "rows whose customer NESO does not print for the id": 3
+    },
+    "C continuation": {
+     "exact": 944,
+     "keys only in ours": 0,
+     "rows with a blank customer NESO prints": 3
+    }
+   }
+  },
+  {
+   "t_public": "2023-01-31",
+   "era": "id",
+   "published": "data/raw/neso/tec-history/2023-01-31_neso-doc.xlsx",
+   "neso_export": "data/raw/neso/tec-history/2023-01-31_neso-foi-26-226.csv",
+   "unnamed_rows": 124,
+   "keys_neso_prints": 947,
+   "excluded_partial_export": false,
+   "rules": {
+    "A drop": {
+     "exact": 850,
+     "missing": 14,
+     "rows differ": 82,
+     "exact but for NESO artefact rows": 1,
+     "keys only in ours": 0
+    },
+    "B identity": {
+     "exact": 946,
+     "exact but for NESO artefact rows": 1,
+     "keys only in ours": 0,
+     "rows whose customer NESO does not print for the id": 3
+    },
+    "C continuation": {
+     "exact": 946,
+     "exact but for NESO artefact rows": 1,
+     "keys only in ours": 0,
+     "rows with a blank customer NESO prints": 3
+    }
+   }
+  },
+  {
+   "t_public": "2023-02-28",
+   "era": "id",
+   "published": "data/raw/neso/tec-history/2023-02-28_neso-doc.xlsx",
+   "neso_export": "data/raw/neso/tec-history/2023-02-28_neso-foi-26-226.csv",
+   "unnamed_rows": 128,
+   "keys_neso_prints": 961,
+   "excluded_partial_export": false,
+   "rules": {
+    "A drop": {
+     "exact": 862,
+     "missing": 15,
+     "rows differ": 84,
+     "keys only in ours": 0
+    },
+    "B identity": {
+     "exact": 961,
+     "keys only in ours": 0,
+     "rows whose customer NESO does not print for the id": 4
+    },
+    "C continuation": {
+     "exact": 961,
+     "keys only in ours": 0,
+     "rows with a blank customer NESO prints": 4
+    }
+   }
+  },
+  {
+   "t_public": "2023-03-31",
+   "era": "id",
+   "published": "data/raw/neso/tec-history/2023-03-31_neso-doc-2.xlsx",
+   "neso_export": "data/raw/neso/tec-history/2023-03-31_neso-foi-26-226.csv",
+   "unnamed_rows": 134,
+   "keys_neso_prints": 1001,
+   "excluded_partial_export": false,
+   "rules": {
+    "A drop": {
+     "exact": 897,
+     "missing": 16,
+     "rows differ": 88,
+     "keys only in ours": 0
+    },
+    "B identity": {
+     "exact": 1001,
+     "keys only in ours": 0,
+     "rows whose customer NESO does not print for the id": 5
+    },
+    "C continuation": {
+     "exact": 1001,
+     "keys only in ours": 0,
+     "rows with a blank customer NESO prints": 5
+    }
+   }
+  },
+  {
+   "t_public": "2023-04-28",
+   "era": "id",
+   "published": "data/raw/neso/tec-history/2023-04-28_neso-doc.xlsx",
+   "neso_export": "data/raw/neso/tec-history/2023-04-28_neso-foi-26-226.csv",
+   "unnamed_rows": 141,
+   "keys_neso_prints": 1040,
+   "excluded_partial_export": false,
+   "rules": {
+    "A drop": {
+     "exact": 934,
+     "missing": 16,
+     "rows differ": 90,
+     "keys only in ours": 0
+    },
+    "B identity": {
+     "exact": 1040,
+     "keys only in ours": 0,
+     "rows whose customer NESO does not print for the id": 5
+    },
+    "C continuation": {
+     "exact": 1040,
+     "keys only in ours": 0,
+     "rows with a blank customer NESO prints": 5
+    }
+   }
+  },
+  {
+   "t_public": "2023-05-30",
+   "era": "id",
+   "published": "data/raw/neso/tec-history/2023-05-30_neso-doc.xlsx",
+   "neso_export": "data/raw/neso/tec-history/2023-05-30_neso-foi-26-226.csv",
+   "unnamed_rows": 145,
+   "keys_neso_prints": 1094,
+   "excluded_partial_export": false,
+   "rules": {
+    "A drop": {
+     "exact": 983,
+     "missing": 18,
+     "rows differ": 93,
+     "keys only in ours": 0
+    },
+    "B identity": {
+     "exact": 1094,
+     "keys only in ours": 0,
+     "rows whose customer NESO does not print for the id": 4
+    },
+    "C continuation": {
+     "exact": 1094,
+     "keys only in ours": 0,
+     "rows with a blank customer NESO prints": 4
+    }
+   }
+  },
+  {
+   "t_public": "2023-07-28",
+   "era": "id",
+   "published": "data/raw/neso/tec-history/2023-07-28_neso-doc.xlsx",
+   "neso_export": "data/raw/neso/tec-history/2023-07-28_neso-foi-26-226.csv",
+   "unnamed_rows": 163,
+   "keys_neso_prints": 1274,
+   "excluded_partial_export": false,
+   "rules": {
+    "A drop": {
+     "exact": 1147,
+     "rows differ": 104,
+     "missing": 23,
+     "keys only in ours": 0
+    },
+    "B identity": {
+     "exact": 1274,
+     "keys only in ours": 0,
+     "rows whose customer NESO does not print for the id": 4
+    },
+    "C continuation": {
+     "exact": 1274,
+     "keys only in ours": 0,
+     "rows with a blank customer NESO prints": 4
+    }
+   }
+  },
+  {
+   "t_public": "2023-08-29",
+   "era": "id",
+   "published": "data/raw/neso/tec-history/2023-08-29_neso-doc.xlsx",
+   "neso_export": "data/raw/neso/tec-history/2023-08-29_neso-foi-26-226.csv",
+   "unnamed_rows": 162,
+   "keys_neso_prints": 1320,
+   "excluded_partial_export": false,
+   "rules": {
+    "A drop": {
+     "exact": 1193,
+     "rows differ": 102,
+     "missing": 25,
+     "keys only in ours": 0
+    },
+    "B identity": {
+     "exact": 1320,
+     "keys only in ours": 0,
+     "rows whose customer NESO does not print for the id": 4
+    },
+    "C continuation": {
+     "exact": 1320,
+     "keys only in ours": 0,
+     "rows with a blank customer NESO prints": 4
+    }
+   }
+  },
+  {
+   "t_public": "2023-09-29",
+   "era": "id",
+   "published": "data/raw/neso/tec-history/2023-09-29_neso-doc.xlsx",
+   "neso_export": "data/raw/neso/tec-history/2023-09-29_neso-foi-26-226.csv",
+   "unnamed_rows": 165,
+   "keys_neso_prints": 1356,
+   "excluded_partial_export": false,
+   "rules": {
+    "A drop": {
+     "exact": 1226,
+     "rows differ": 105,
+     "missing": 25,
+     "keys only in ours": 0
+    },
+    "B identity": {
+     "exact": 1356,
+     "keys only in ours": 0,
+     "rows whose customer NESO does not print for the id": 4
+    },
+    "C continuation": {
+     "exact": 1356,
+     "keys only in ours": 0,
+     "rows with a blank customer NESO prints": 4
+    }
+   }
+  },
+  {
+   "t_public": "2023-10-31",
+   "era": "id",
+   "published": "data/raw/neso/tec-history/2023-10-31_neso-doc.xlsx",
+   "neso_export": "data/raw/neso/tec-history/2023-10-31_neso-foi-26-226.csv",
+   "unnamed_rows": 166,
+   "keys_neso_prints": 1385,
+   "excluded_partial_export": false,
+   "rules": {
+    "A drop": {
+     "exact": 1253,
+     "rows differ": 105,
+     "missing": 27,
+     "keys only in ours": 0
+    },
+    "B identity": {
+     "exact": 1385,
+     "keys only in ours": 0,
+     "rows whose customer NESO does not print for the id": 3
+    },
+    "C continuation": {
+     "exact": 1385,
+     "keys only in ours": 0,
+     "rows with a blank customer NESO prints": 3
+    }
+   }
+  },
+  {
+   "t_public": "2023-11-28",
+   "era": "id",
+   "published": "data/raw/neso/tec-history/2023-11-28_neso-doc.xlsx",
+   "neso_export": "data/raw/neso/tec-history/2023-11-28_neso-foi-26-226.csv",
+   "unnamed_rows": 129,
+   "keys_neso_prints": 1420,
+   "excluded_partial_export": true,
+   "rules": {
+    "A drop": {
+     "missing": 747,
+     "exact": 601,
+     "rows differ": 72,
+     "keys only in ours": 0
+    },
+    "B identity": {
+     "missing": 718,
+     "exact": 696,
+     "rows differ": 6,
+     "keys only in ours": 0,
+     "rows whose customer NESO does not print for the id": 9
+    },
+    "C continuation": {
+     "missing": 718,
+     "exact": 696,
+     "rows differ": 6,
+     "keys only in ours": 0,
+     "rows with a blank customer NESO prints": 9
+    }
+   }
+  },
+  {
+   "t_public": "2023-12-29",
+   "era": "id",
+   "published": "data/raw/neso/tec-history/2023-12-29_neso-doc.xlsx",
+   "neso_export": "data/raw/neso/tec-history/2023-12-29_neso-foi-26-226.csv",
+   "unnamed_rows": 171,
+   "keys_neso_prints": 1481,
+   "excluded_partial_export": false,
+   "rules": {
+    "A drop": {
+     "exact": 1343,
+     "rows differ": 109,
+     "missing": 29,
+     "keys only in ours": 0
+    },
+    "B identity": {
+     "exact": 1481,
+     "keys only in ours": 0,
+     "rows whose customer NESO does not print for the id": 2
+    },
+    "C continuation": {
+     "exact": 1481,
+     "keys only in ours": 0,
+     "rows with a blank customer NESO prints": 2
+    }
+   }
+  },
+  {
+   "t_public": "2024-01-30",
+   "era": "id",
+   "published": "data/raw/neso/tec-history/2024-01-30_neso-doc.xlsx",
+   "neso_export": "data/raw/neso/tec-history/2024-01-30_neso-foi-26-226.csv",
+   "unnamed_rows": 177,
+   "keys_neso_prints": 1563,
+   "excluded_partial_export": false,
+   "rules": {
+    "A drop": {
+     "exact": 1421,
+     "rows differ": 112,
+     "missing": 30,
+     "keys only in ours": 0
+    },
+    "B identity": {
+     "exact": 1563,
+     "keys only in ours": 0,
+     "rows whose customer NESO does not print for the id": 2
+    },
+    "C continuation": {
+     "exact": 1563,
+     "keys only in ours": 0,
+     "rows with a blank customer NESO prints": 4
+    }
+   }
+  },
+  {
+   "t_public": "2024-02-27",
+   "era": "id",
+   "published": "data/raw/neso/tec-history/2024-02-27_neso-doc.xlsx",
+   "neso_export": "data/raw/neso/tec-history/2024-02-27_neso-foi-26-226.csv",
+   "unnamed_rows": 180,
+   "keys_neso_prints": 1648,
+   "excluded_partial_export": false,
+   "rules": {
+    "A drop": {
+     "exact": 1503,
+     "rows differ": 114,
+     "missing": 31,
+     "keys only in ours": 0
+    },
+    "B identity": {
+     "exact": 1648,
+     "keys only in ours": 0,
+     "rows whose customer NESO does not print for the id": 2
+    },
+    "C continuation": {
+     "exact": 1648,
+     "keys only in ours": 0,
+     "rows with a blank customer NESO prints": 2
+    }
+   }
+  },
+  {
+   "t_public": "2024-04-26",
+   "era": "id",
+   "published": "data/raw/neso/tec-history/2024-04-26_neso-doc.xlsx",
+   "neso_export": "data/raw/neso/tec-history/2024-04-26_neso-foi-26-226.csv",
+   "unnamed_rows": 183,
+   "keys_neso_prints": 1672,
+   "excluded_partial_export": false,
+   "rules": {
+    "A drop": {
+     "exact": 1525,
+     "rows differ": 114,
+     "missing": 33,
+     "keys only in ours": 0
+    },
+    "B identity": {
+     "exact": 1672,
+     "keys only in ours": 0,
+     "rows whose customer NESO does not print for the id": 2
+    },
+    "C continuation": {
+     "exact": 1672,
+     "keys only in ours": 0,
+     "rows with a blank customer NESO prints": 2
+    }
+   }
+  }
+ ]
+}

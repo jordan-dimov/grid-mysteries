@@ -43,6 +43,7 @@ from grid_mysteries.corpus import REPO_ROOT
 from grid_mysteries.evidence import jsonable, write_json
 from grid_mysteries.investigations import connection_slippage as cs
 from grid_mysteries.investigations import exit_clock as ec
+from grid_mysteries.sources import tec_register as tr
 from grid_mysteries.sources.http import fetch_artifact
 from grid_mysteries.sources.pinning import pin, progress
 from grid_mysteries.tec import analysis
@@ -237,21 +238,29 @@ def phase_acquire() -> None:
 
 SCHEMA_REPORT = ARCHIVE / "schema-report.json"
 SCHEMA_MD = ARCHIVE / "SCHEMA.md"
+#: Amendment 2's schema pass (continuation rule, series ended at SERIES_END),
+#: written beside the declaration's report, which stays as it was.
+ARCHIVE_A2 = ARCHIVE / "amendment-2"
+SCHEMA_REPORT_A2 = ARCHIVE_A2 / "schema-report.json"
+SCHEMA_MD_A2 = ARCHIVE_A2 / "SCHEMA.md"
 GAP_DAYS = 30
 #: A pair with more than this share of keys absent (but not a re-keying) is
 #: listed in the schema report with its stitch outcome, counts only.
 HIGH_CHURN = Decimal("0.05")
 
 
-def load_copies() -> list[tuple[tec_sources.Copy, cs.VintageInput]]:
+def load_copies(
+    continuation: bool = False,
+) -> list[tuple[tec_sources.Copy, cs.VintageInput]]:
     """Every copy the repository holds (journal and daily capture), verified
     against its digest, with 014's required columns; unreadable copies are
-    listed, not read."""
+    listed, not read. With `continuation` (Amendment 2, I11), rows printing no
+    Project Name are read by `tec_register.continue_row`."""
     usable, skipped = [], []
     for copy in tec_sources.copies(REPO_ROOT):
         try:
             tec_sources.verify(copy)
-            rows = tec_sources.read(copy)
+            rows = tec_sources.read(copy, continuation=continuation)
         except Exception as exc:  # noqa: BLE001 - recorded, not hidden
             skipped.append({"t_public": copy.published_on.isoformat(), "error": repr(exc)[:160]})
             continue
@@ -295,8 +304,10 @@ def quantiles(values: list[Decimal]) -> dict[str, str]:
     return {"n": str(len(s)), "p50": q(0.5), "p90": q(0.9), "p99": q(0.99), "max": str(s[-1])}
 
 
-def phase_schema() -> None:
-    usable, skipped = load_copies()
+def phase_schema(amended: bool = False) -> None:
+    usable, skipped = load_copies(continuation=amended)
+    if amended:
+        usable = [(c, v) for c, v in usable if v.t_public <= SERIES_END]
     vintages = [v for _, v in usable]
     kept, suspects = kept_map(vintages)
     per_copy: list[dict[str, Any]] = []
@@ -347,6 +358,11 @@ def phase_schema() -> None:
             "kept": k is not None,
             "swapped": bool(k.swapped) if k else None,
             "rows": len(rows),
+            **(
+                {"continuation_rows": tr.unnamed_rows(copy.path, copy.file_format)}
+                if amended
+                else {}
+            ),
             "chains": len(keys),
             "id_chains": len(ids),
             "noid_chains": len(noid),
@@ -401,6 +417,15 @@ def phase_schema() -> None:
         "investigation": "025-the-exit-clock",
         "written_at": datetime.now(UTC).isoformat(timespec="seconds"),
         "purpose": "schema pass: formats, keys, continuity and vocabularies of every TEC copy held; no chain's last sighting is read and no exit is counted",
+        **(
+            {
+                "reading": "Amendment 2: rows printing no Project Name read by tec_register.continue_row (I11); copies to the series end only",
+                "series_end": SERIES_END.isoformat(),
+                "continuation_rows": sum(e.get("continuation_rows", 0) for e in per_copy),
+            }
+            if amended
+            else {}
+        ),
         "copies_usable": len(usable),
         "copies_unreadable": skipped,
         "copies_kept": sum(1 for e in per_copy if e["kept"]),
@@ -424,18 +449,23 @@ def phase_schema() -> None:
         "storage_plant_type_spellings": dict(storage_spellings.most_common()),
         "per_copy": per_copy,
     }
-    ARCHIVE.mkdir(parents=True, exist_ok=True)
-    write_json(SCHEMA_REPORT, report)
-    SCHEMA_MD.write_text(render_schema(report))
+    out_dir, out_json, out_md = (
+        (ARCHIVE_A2, SCHEMA_REPORT_A2, SCHEMA_MD_A2)
+        if amended
+        else (ARCHIVE, SCHEMA_REPORT, SCHEMA_MD)
+    )
+    out_dir.mkdir(parents=True, exist_ok=True)
+    write_json(out_json, report)
+    out_md.write_text(render_schema(report))
     log_run(
-        "schema",
+        "schema-a2" if amended else "schema",
         copies=len(usable),
         kept=report["copies_kept"],
         rekeyings=len(rekeyings),
-        report_sha256=sha(SCHEMA_REPORT),
+        report_sha256=sha(out_json),
     )
     print(
-        f"{len(usable)} copies, {report['copies_kept']} kept, {len(rekeyings)} re-keying pairs, largest gap {report['largest_gap_days']} days -> {ARCHIVE.relative_to(REPO_ROOT)}"
+        f"{len(usable)} copies, {report['copies_kept']} kept, {len(rekeyings)} re-keying pairs, largest gap {report['largest_gap_days']} days -> {out_dir.relative_to(REPO_ROOT)}"
     )
 
 
@@ -2383,7 +2413,16 @@ def main() -> None:
     parser.add_argument(
         "--phase",
         required=True,
-        choices=["acquire", "schema", "format", "compute", "joins", "render", "figures"],
+        choices=[
+            "acquire",
+            "schema",
+            "schema-a2",
+            "format",
+            "compute",
+            "joins",
+            "render",
+            "figures",
+        ],
     )
     parser.add_argument("--seal")
     args = parser.parse_args()
@@ -2391,6 +2430,8 @@ def main() -> None:
         phase_acquire()
     elif args.phase == "schema":
         phase_schema()
+    elif args.phase == "schema-a2":
+        phase_schema(amended=True)
     elif args.phase == "format":
         phase_format()
     elif args.phase == "compute":

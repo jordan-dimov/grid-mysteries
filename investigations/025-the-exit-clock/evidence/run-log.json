@@ -165,6 +165,14 @@
     "exit-clock.png",
     "hazard-by-band.png"
    ]
+  },
+  {
+   "phase": "schema-a2",
+   "at": "2026-10-28T21:06:03+00:00",
+   "copies": 869,
+   "kept": 867,
+   "rekeyings": 5,
+   "report_sha256": "15711a92f8c5a67a60ab77de7adb9daf59938be273f0dab8610d93ade8f3af04"
   }
  ]
 }

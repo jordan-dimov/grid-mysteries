@@ -191,12 +191,37 @@ def _cell(value: object) -> object:
     return value
 
 
-def rows_from_matrix(matrix: list[list[object]]) -> list[dict[str, object]]:
+def _project_id(row: dict[str, object]) -> str:
+    return "".join(str(row.get("Project ID") or "").split())
+
+
+def continue_row(row: dict[str, object], named: dict[str, object], ids: bool) -> dict[str, object]:
+    """A row printing no Project Name, read as a continuation of the named row
+    above it (the continuation rule, 025 Amendment 2, chosen by rebuilding
+    NESO's complete exports of 38 month-ends from the published copies).
+    It takes that row's Project Name. It takes its Customer Name and
+    Connection Site, where it prints none, only when it continues the same
+    project: in a copy that prints a Project ID column, when its Project ID
+    equals the named row's; in a copy without one, always, because nothing
+    on the row says otherwise."""
+    out = dict(row)
+    out["Project Name"] = named.get("Project Name")
+    if not ids or _project_id(row) == _project_id(named):
+        for column in ("Customer Name", "Connection Site"):
+            if not str(out.get(column) or "").strip():
+                out[column] = named.get(column)
+    return out
+
+
+def rows_from_matrix(
+    matrix: list[list[object]], *, continuation: bool = False
+) -> list[dict[str, object]]:
     """Rows keyed by canonical column name from a sheet given as a matrix.
 
     The header row is the first row that carries a `Project Name` column;
     rows above it (titles, notes) are skipped and rows without a project
-    name are dropped.
+    name are dropped, unless `continuation` is set: then a row printing no
+    name but some other cell, below a named row, is read by `continue_row`.
     """
     header_index = next(
         (i for i, r in enumerate(matrix) if any(canon(c) == "Project Name" for c in r)), None
@@ -204,11 +229,16 @@ def rows_from_matrix(matrix: list[list[object]]) -> list[dict[str, object]]:
     if header_index is None:
         return []
     headers = [canon(c) for c in matrix[header_index]]
-    out = []
+    ids = "Project ID" in headers
+    out: list[dict[str, object]] = []
+    named: dict[str, object] | None = None
     for r in matrix[header_index + 1 :]:
         row = {h: _cell(v) for h, v in zip(headers, r, strict=False) if h}
         if str(row.get("Project Name") or "").strip():
+            named = row
             out.append(row)
+        elif continuation and named is not None and any(str(v or "").strip() for v in row.values()):
+            out.append(continue_row(row, named, ids))
     return out
 
 
@@ -254,9 +284,12 @@ def _best(path: Path, fmt: str) -> list[list[object]]:
     return best[1]
 
 
-def read_vintage(path: Path, fmt: str = "") -> list[dict[str, object]]:
-    """Rows of one vintage file: csv, xlsx or xls; the sheet with most rows."""
-    return rows_from_matrix(_best(path, fmt))
+def read_vintage(
+    path: Path, fmt: str = "", *, continuation: bool = False
+) -> list[dict[str, object]]:
+    """Rows of one vintage file: csv, xlsx or xls; the sheet with most named
+    rows. With `continuation`, rows printing no name are read by `continue_row`."""
+    return rows_from_matrix(_best(path, fmt), continuation=continuation)
 
 
 def unnamed_rows(path: Path, fmt: str = "") -> int:

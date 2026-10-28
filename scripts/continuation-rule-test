@@ -1,0 +1,145 @@
+#!/usr/bin/env bash
+# Which reading of the rows that print no Project Name rebuilds NESO's
+# complete exports? From 2020-06-18 to 2024-05-30 the published register
+# prints a project's name on its first stage row only; NESO's FOI-26-226
+# CSVs print it on every row. For every month-end the journal holds both as
+# (the published copy read, the FOI-26-226 copy a further copy), each rule is
+# applied to the published copy and scored against NESO's export at 025's
+# unit: per chain key (`exit_clock.row_key`, admitted rows only), the sorted
+# rows of 025's read columns, names compared by 005's normaliser (so NESO's
+# comma variants between exports are not a rule's error) and NESO's rows
+# that print nothing beyond name, customer and site set apart as artefacts.
+#   A drop       the declared reader: unnamed rows are not read
+#   B identity   name, customer and site from the named row above, always
+#   C continuation  `tec_register.continue_row`: the name always; customer
+#                and site only when the row continues the same project
+# Writes archives/tec-register/continuation-rule-test.json and
+# CONTINUATION-RULE-TEST.md; reads no investigation's results.
+#
+#   scripts/continuation-rule-test
+set -euo pipefail
+cd "$(dirname "$0")/.."
+uv run --group registers python - <<'PY'
+import hashlib, json, re
+from collections import Counter, defaultdict
+from datetime import date, datetime
+from decimal import Decimal, InvalidOperation
+from pathlib import Path
+from grid_mysteries.evidence import write_json
+from grid_mysteries.investigations import exit_clock as ec
+from grid_mysteries.sources import tec_register as tr
+
+OUT = Path("archives/tec-register")
+NAMES = ("Project Name", "Customer Name", "Connection Site")
+FIELDS = [c for c in ec.READ_COLUMNS if c not in NAMES and c != "Gate"]
+PARTIAL = {"2023-11-28"}  # flagged partial export, excluded by 014's rule
+
+
+def normal(v: object) -> str:
+    if v is None:
+        return ""
+    if isinstance(v, datetime):
+        v = v.date()
+    if isinstance(v, date):
+        return v.isoformat()
+    t = " ".join(str(v).split())
+    if re.search(r"\d[-/]\d", t) and (d := tr.parse_date(t)):
+        return d.isoformat()
+    try:
+        return str(Decimal(t).normalize())
+    except InvalidOperation:
+        return t
+
+
+def apply(matrix, rule):
+    if rule == "A drop":
+        return tr.rows_from_matrix(matrix)
+    if rule == "C continuation":
+        return tr.rows_from_matrix(matrix, continuation=True)
+    # B: the continuation rule without its same-project test
+    header = next(i for i, r in enumerate(matrix) if any(tr.canon(c) == "Project Name" for c in r))
+    heads = [tr.canon(c) for c in matrix[header]]
+    out, named = [], None
+    for r in matrix[header + 1:]:
+        row = {h: tr._cell(v) for h, v in zip(heads, r, strict=False) if h}
+        if str(row.get("Project Name") or "").strip():
+            named = row
+            out.append(row)
+        elif named is not None and any(str(v or "").strip() for v in row.values()):
+            out.append(tr.continue_row(row, named, ids=False))
+    return out
+
+
+def grouped(rows, t):
+    g = defaultdict(list)
+    for r in rows:
+        if ec.admissible(r):
+            g[ec.row_key(r, t)].append(tuple(normal(r.get(c)) for c in FIELDS))
+    return {k: sorted(v) for k, v in g.items()}
+
+
+journal = tr.read_journal(tr.JOURNAL_PATH)
+read = {e["t_public"][:10]: e for e in tr.one_per_date(journal)}
+neso = {e["t_public"][:10]: e for e in journal if e.get("further_copy") and "FOI-26-226" in e["t_public_basis"]}
+dates = sorted(d for d in neso if d in read and tr.unnamed_rows(Path(read[d]["path"]), read[d].get("format", "")))
+per_date, totals = [], defaultdict(Counter)
+for d in dates:
+    t = date.fromisoformat(d)
+    era = "id" if ec.is_id_era(t) else "pre-id"
+    m = tr._best(Path(read[d]["path"]), read[d].get("format", ""))
+    neso_rows = tr.read_vintage(Path(neso[d]["path"]), "csv")
+    gb = grouped(neso_rows, t)
+    entry = {"t_public": d, "era": era, "published": read[d]["path"], "neso_export": neso[d]["path"],
+             "unnamed_rows": tr.unnamed_rows(Path(read[d]["path"]), read[d].get("format", "")),
+             "keys_neso_prints": len(gb), "excluded_partial_export": d in PARTIAL, "rules": {}}
+    for rule in ("A drop", "B identity", "C continuation"):
+        rows = apply(m, rule)
+        ga = grouped(rows, t)
+        c = Counter()
+        for k, v in gb.items():
+            real = sorted(x for x in v if any(x))
+            if ga.get(k) == v:
+                c["exact"] += 1
+            elif ga.get(k, []) == real:
+                c["exact but for NESO artefact rows"] += 1
+            elif k not in ga:
+                c["missing"] += 1
+            else:
+                c["rows differ"] += 1
+        c["keys only in ours"] = len(ga.keys() - gb.keys())
+        if era == "id":  # the customer each rule gives a Project ID, against NESO's for it
+            nc = defaultdict(set)
+            for r in neso_rows:
+                nc[ec.project_id(r)].add(tr.normalise(r.get("Customer Name")))
+            for r in rows:
+                pid, cust = ec.project_id(r), tr.normalise(r.get("Customer Name"))
+                if pid in nc and cust not in nc[pid]:
+                    c["rows whose customer NESO does not print for the id" if cust else "rows with a blank customer NESO prints"] += 1
+        entry["rules"][rule] = dict(c)
+        if d not in PARTIAL:
+            totals[rule, era].update(c)
+    per_date.append(entry)
+summary = {f"{rule} | {era}": dict(c) for (rule, era), c in sorted(totals.items())}
+report = {
+    "test": "continuation rule: rebuild NESO's complete exports (FOI-26-226) from the published copies",
+    "journal_sha256": hashlib.sha256(tr.JOURNAL_PATH.read_bytes()).hexdigest(),
+    "dates": len(dates), "first": dates[0], "last": dates[-1],
+    "scored_at": "025's chain key (exit_clock.row_key), admitted rows, read columns; names by 005's normaliser",
+    "summary_excluding_partial_export": summary,
+    "per_date": per_date,
+}
+write_json(OUT / "continuation-rule-test.json", report)
+lines = ["# Continuation rule test", "",
+         f"Regenerated by `scripts/continuation-rule-test`. {len(dates)} month-ends ({dates[0]} to {dates[-1]}) where the journal holds the published copy (read) and NESO's complete export from FOI-26-226 (a further copy). Each rule is applied to the published copy and scored per 025 chain key against the export. 2023-11-28 (the flagged partial export) is listed but left out of the totals.", "",
+         "| rule | era | exact | exact but for NESO artefact rows | rows differ | missing | keys only in ours | customer NESO does not print for the id | customer left blank |", "|---|---|---|---|---|---|---|---|---|"]
+for (rule, era), c in sorted(totals.items()):
+    lines.append(f"| {rule} | {era} | {c['exact']:,} | {c['exact but for NESO artefact rows']:,} | {c['rows differ']:,} | {c['missing']:,} | {c['keys only in ours']:,} | "
+                 + (f"{c['rows whose customer NESO does not print for the id']:,} | {c['rows with a blank customer NESO prints']:,} |" if era == "id" else "n/a | n/a |"))
+lines += ["", "## Per date", "", "| t_public | era | unnamed rows | keys | A exact | B exact | C exact | C rows differ | C missing |", "|---|---|---|---|---|---|---|---|---|"]
+for e in per_date:
+    r = e["rules"]
+    lines.append(f"| {e['t_public']}{' (partial export)' if e['excluded_partial_export'] else ''} | {e['era']} | {e['unnamed_rows']} | {e['keys_neso_prints']} | {r['A drop'].get('exact', 0)} | {r['B identity'].get('exact', 0)} | {r['C continuation'].get('exact', 0)} | {r['C continuation'].get('rows differ', 0)} | {r['C continuation'].get('missing', 0)} |")
+(OUT / "CONTINUATION-RULE-TEST.md").write_text("\n".join(lines) + "\n")
+for k, v in summary.items():
+    print(k, v)
+PY

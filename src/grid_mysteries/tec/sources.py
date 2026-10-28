@@ -110,6 +110,7 @@ def verify(copy: Copy) -> None:
         raise SourceError(f"{copy.path} does not hash to its recorded digest")
 
 
-def read(copy: Copy) -> list[dict[str, object]]:
-    """The copy's rows by the declared reader. Call `verify` first."""
-    return tr.read_vintage(copy.path, copy.file_format)
+def read(copy: Copy, *, continuation: bool = False) -> list[dict[str, object]]:
+    """The copy's rows by the declared reader (with `continuation`, rows that
+    print no name read as continuations, `tr.continue_row`). Call `verify` first."""
+    return tr.read_vintage(copy.path, copy.file_format, continuation=continuation)

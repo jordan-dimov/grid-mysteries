@@ -212,27 +212,22 @@ def rows_from_matrix(matrix: list[list[object]]) -> list[dict[str, object]]:
     return out
 
 
-def read_vintage(path: Path, fmt: str = "") -> list[dict[str, object]]:
-    """Rows of one vintage file: csv, xlsx or xls; the sheet with most rows."""
+def _matrices(path: Path, fmt: str = "") -> list[list[list[object]]]:
+    """Every sheet of a vintage file as a matrix of cells: csv, xlsx or xls."""
     suffix = path.suffix.lower()
     if fmt == "csv" or suffix == ".csv":
         with path.open(newline="", encoding="utf-8-sig", errors="replace") as f:
-            return rows_from_matrix([list(r) for r in csv.reader(f)])
+            return [[list(r) for r in csv.reader(f)]]
     if suffix == ".xlsx":
         import openpyxl
 
         wb = openpyxl.load_workbook(path, read_only=True, data_only=True)
-        best: list[dict[str, object]] = []
-        for ws in wb.worksheets:
-            rows = rows_from_matrix([list(r) for r in ws.iter_rows(values_only=True)])
-            if len(rows) > len(best):
-                best = rows
-        return best
+        return [[list(r) for r in ws.iter_rows(values_only=True)] for ws in wb.worksheets]
     if suffix == ".xls":
         import xlrd
 
         book = xlrd.open_workbook(path)
-        best = []
+        out = []
         for sh in book.sheets():
             matrix = []
             for i in range(sh.nrows):
@@ -244,11 +239,45 @@ def read_vintage(path: Path, fmt: str = "") -> list[dict[str, object]]:
                     else:
                         vals.append(c.value)
                 matrix.append(vals)
-            rows = rows_from_matrix(matrix)
-            if len(rows) > len(best):
-                best = rows
-        return best
+            out.append(matrix)
+        return out
     return []
+
+
+def _best(path: Path, fmt: str) -> list[list[object]]:
+    """The sheet `read_vintage` reads: the one with most rows (the first on a tie)."""
+    best: tuple[int, list[list[object]]] = (0, [])
+    for matrix in _matrices(path, fmt):
+        n = len(rows_from_matrix(matrix))
+        if n > best[0]:
+            best = (n, matrix)
+    return best[1]
+
+
+def read_vintage(path: Path, fmt: str = "") -> list[dict[str, object]]:
+    """Rows of one vintage file: csv, xlsx or xls; the sheet with most rows."""
+    return rows_from_matrix(_best(path, fmt))
+
+
+def unnamed_rows(path: Path, fmt: str = "") -> int:
+    """Rows below the header of the sheet `read_vintage` reads that print no
+    Project Name but at least one other cell: rows the reader drops. Some
+    copies print a project's name on its first stage row only."""
+    matrix = _best(path, fmt)
+    header_index = next(
+        (i for i, r in enumerate(matrix) if any(canon(c) == "Project Name" for c in r)), None
+    )
+    if header_index is None:
+        return 0
+    headers = [canon(c) for c in matrix[header_index]]
+    n = 0
+    for r in matrix[header_index + 1 :]:
+        row = {h: v for h, v in zip(headers, r, strict=False) if h}
+        if not str(row.get("Project Name") or "").strip() and any(
+            str(v or "").strip() for h, v in row.items() if h != "Project Name"
+        ):
+            n += 1
+    return n
 
 
 # ------------------------------------------------------------------ journal
@@ -260,15 +289,36 @@ def read_journal(journal_path: Path) -> list[dict]:
 
 def one_per_date(journal: list[dict]) -> list[dict]:
     """One journal entry per publication date: duplicates are dropped and,
-    where two files claim one date, the one with more rows is kept."""
+    where two files claim one date, the one with more rows is kept (on a
+    tie, the one journalled first). Never chosen here: a rendering
+    (`renders`: a publisher's re-export of a journalled file, see
+    `rendering_for`), and a further copy of a date already journalled
+    (`further_copy`), so that journalling a copy never changes which copy
+    of a held date a reader reads; admitting one is a reader's amendment."""
     by_date: dict[str, dict] = {}
     for entry in journal:
-        if entry.get("duplicate_of"):
+        if entry.get("duplicate_of") or entry.get("renders") or entry.get("further_copy"):
             continue
         d = entry["t_public"][:10]
         if d not in by_date or (entry.get("row_count") or 0) > (by_date[d].get("row_count") or 0):
             by_date[d] = entry
     return [by_date[d] for d in sorted(by_date)]
+
+
+def rendering_for(entry: dict, journal: list[dict]) -> dict | None:
+    """The journalled rendering of this entry's file (same path and digest),
+    if the publisher re-exported it; for a schema pass reading a file the
+    declared reader rejects. No investigation reads one unless it declares it."""
+    found = [
+        e
+        for e in journal
+        if (r := e.get("renders"))
+        and r.get("path") == entry["path"]
+        and r.get("sha256") == entry["sha256"]
+    ]
+    if len(found) > 1:
+        raise RuntimeError(f"{entry['path']}: {len(found)} renderings journalled")
+    return found[0] if found else None
 
 
 def verify_entry(entry: dict, repo_root: Path) -> Path:

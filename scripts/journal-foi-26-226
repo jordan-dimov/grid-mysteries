@@ -1,0 +1,174 @@
+#!/usr/bin/env bash
+# Pin and journal NESO's published EIR response FOI-26-226 (another
+# requester's; letter dated 19 Oct 2026, on NESO's disclosure log as
+# https://www.neso.energy/document/389106/download): 129 TEC Register CSVs,
+# the last copy of each month from Jan 2021 to Jul 2026, the copy of
+# 21 Nov 2025, and every Tuesday and Friday copy from 9 Dec 2025 to
+# 11 Aug 2026. Stored bytes are the inner zip's originals; the downloaded
+# zip, the inner zip, the letter and the download headers are kept under
+# data/raw/neso/foi-26-226/. Source label neso-doc (a NESO document URL),
+# file suffix _neso-foi-26-226. Each copy by the three cases of
+# scripts/journal-foi-26-245: a date already journalled (a further copy,
+# with how its rows compare, marked further_copy so reading rule 1
+# never chooses it), the same publication
+# held under another date or as a capture copy (duplicate_of), or a new
+# publication date. Refuses a destination that exists.
+#
+#   scripts/journal-foi-26-226 <folder holding foi-26-226.zip as downloaded, headers.txt, fetched_at>
+set -euo pipefail
+cd "$(dirname "$0")/.."
+src="${1:?folder holding foi-26-226.zip, headers.txt and fetched_at}"
+uv run --group registers python - "$src" <<'PY'
+import hashlib, json, re, sys, zipfile
+from collections import Counter
+from datetime import date, datetime
+from decimal import Decimal, InvalidOperation
+from pathlib import Path
+from grid_mysteries.sources import tec_register as tr
+from grid_mysteries.tec import sources as tec_sources
+
+URL = "https://www.neso.energy/document/389106/download"
+src = Path(sys.argv[1])
+outer_path = src / "foi-26-226.zip"
+sha = lambda b: hashlib.sha256(b).hexdigest()
+outer_bytes = outer_path.read_bytes()
+outer_sha = sha(outer_bytes)
+assert outer_sha.startswith("71d7ab6a9cc2efe4"), "not the file downloaded on 2026-10-28"
+fetched_at = (src / "fetched_at").read_text().strip()
+keep = Path("data/raw/neso/foi-26-226"); keep.mkdir(parents=True, exist_ok=True)
+with zipfile.ZipFile(outer_path) as o:
+    inner_bytes = o.read("FOI-26-226/FOI-26-226 - Copies of TEC.zip")
+    pdf_bytes = o.read("FOI-26-226/FOI-26-226 - Response.pdf")
+for name, data in (("foi-26-226.zip", outer_bytes), ("FOI-26-226 - Copies of TEC.zip", inner_bytes),
+                   ("FOI-26-226 - Response.pdf", pdf_bytes), ("download-headers.txt", (src / "headers.txt").read_bytes())):
+    dest = keep / name
+    if dest.exists():
+        assert dest.read_bytes() == data, f"{dest} differs"
+    else:
+        dest.write_bytes(data)
+zip_sha = sha(inner_bytes)
+provenance = (f"member of NESO's published EIR response FOI-26-226 (another requester's; letter dated 19 Oct 2026; "
+              f"disclosure log document {URL}, Last-Modified 2026-10-21 15:57:07 GMT, fetched {fetched_at}, "
+              f"sha256 {outer_sha}), inner zip 'FOI-26-226 - Copies of TEC.zip' sha256 {zip_sha}")
+journal = tr.read_journal(tr.JOURNAL_PATH)
+by_date: dict[str, list[dict]] = {}
+for e in journal:
+    by_date.setdefault(e["t_public"][:10], []).append(e)
+captures = tec_sources._archive_copies(Path("."))
+
+
+def normal(v: object) -> str:
+    """A cell as compared across spellings: dates ISO, numbers without
+    trailing zeros, whitespace collapsed. For comparing copies only."""
+    if v is None:
+        return ""
+    if isinstance(v, datetime):
+        v = v.date()
+    if isinstance(v, date):
+        return v.isoformat()
+    t = " ".join(str(v).split())
+    if re.search(r"\d[-/]\d", t) and (d := tr.parse_date(t)):
+        return d.isoformat()
+    try:
+        return str(Decimal(t).normalize())
+    except InvalidOperation:
+        return t
+
+
+def rows_of(rows: list[dict]) -> Counter:
+    cols = sorted({c for r in rows for c in r if c and c != "Gate"})
+    return Counter(tuple(normal(r.get(c)) for c in cols) for r in rows)
+
+
+def compare(here: Counter, path: Path, fmt: str) -> dict:
+    there = rows_of(tr.read_vintage(path, fmt))
+    return {"path": str(path), "rows_only_here": sum((here - there).values()),
+            "rows_only_there": sum((there - here).values())}
+
+
+basis = ("row multisets compared after normalising dates to ISO, numbers to their value and whitespace; "
+         "the Gate column left out")
+
+
+def parse(name: str) -> str:
+    stem = re.sub(r"^TEC Register\s*-?\s*", "", Path(name).stem).strip()
+    for fmt in ("%d %B %Y", "%d %b %Y", "%d %m %Y", "%d.%m.%Y"):
+        try:
+            return datetime.strptime(stem, fmt).date().isoformat()
+        except ValueError:
+            pass
+    raise ValueError(f"no date in {name!r}")
+
+
+new, cases = [], Counter()
+with zipfile.ZipFile(zip_path := keep / "FOI-26-226 - Copies of TEC.zip") as z:
+    members = sorted((i for i in z.infolist() if not i.is_dir()), key=lambda i: i.filename)
+    planned = {}
+    for info in members:
+        name = info.filename
+        if not (name.startswith("FOI-26-226 - Copies of TEC/") and name.endswith(".csv")):
+            raise SystemExit(f"unexpected member {name!r}")
+        d = parse(name)
+        assert d not in planned, f"two members for {d}"
+        dest = Path("data/raw/neso/tec-history") / f"{d}_neso-foi-26-226.csv"
+        assert not dest.exists(), f"{dest} exists"
+        planned[d] = (name, dest)
+    for d, (name, dest) in sorted(planned.items()):
+        data = z.read(name)
+        dest.write_bytes(data)
+        rows = tr.read_vintage(dest, "csv")
+        entry = {
+            "url": URL, "source": "neso-doc", "t_public": d,
+            "t_public_basis": f"filename date '{Path(name).name}'; {provenance}: '{name}'",
+            "path": str(dest), "sha256": sha(data), "bytes": len(data),
+            "format": "csv", "columns": list(rows[0].keys()) if rows else [], "row_count": len(rows),
+            "fetched_at": fetched_at, "archive_member": name,
+            "leading_byte_order_mark": data.startswith(b"\xef\xbb\xbf"),
+        }
+        here = rows_of(rows)
+        if d in by_date:
+            entry["same_date_as"] = [compare(here, Path(e["path"]), e.get("format", "")) for e in by_date[d]
+                                     if not e.get("duplicate_of") and not e.get("renders")]
+            entry["same_date_basis"] = basis + "; a further copy, never chosen by reading rule 1 (one_per_date)"
+            entry["further_copy"] = True
+            cases["same date"] += 1
+        else:
+            held = []
+            for e in journal:
+                t = date.fromisoformat(e["t_public"][:10])
+                if not e.get("duplicate_of") and not e.get("renders") and abs((t - date.fromisoformat(d)).days) <= 1:
+                    held.append((e["t_public"][:10], Path(e["path"]), e.get("format", ""), f"journal ({e['source']})"))
+            for c in captures:
+                if abs((c.published_on - date.fromisoformat(d)).days) <= 1:
+                    meta = json.loads((Path(tec_sources.ARCHIVE_MIRROR) / c.provenance["capture_meta"]["key"]).read_bytes())
+                    held.append((c.published_on.isoformat(), c.path, "csv",
+                                 f"capture (CKAN last_modified {(meta.get('result') or meta).get('last_modified', '?')})"))
+            same = []
+            for t, p, fmt, label in held:
+                c = compare(here, p, fmt)
+                if c["rows_only_here"] == 0 and c["rows_only_there"] == 0:
+                    same.append((t, p, label))
+            if same:
+                assert len(same) == 1, f"{d}: {len(same)} held copies match"
+                t, p, label = same[0]
+                entry["duplicate_of"] = str(p)
+                entry["t_public_witnesses"] = {"filename": d, "held": t, "held_basis": label}
+                entry["duplicate_basis"] = (basis + "; the same publication as the held copy, journalled so its provenance "
+                                            "and NESO's date are kept, and never read as a publication of its own")
+                cases["duplicate of held"] += 1
+            else:
+                cases["new date"] += 1
+        new.append(entry)
+with tr.JOURNAL_PATH.open("a") as f:
+    for e in new:
+        f.write(json.dumps(e) + "\n")
+print(dict(cases))
+for e in new:
+    if e.get("same_date_as") and any(s["rows_only_here"] or s["rows_only_there"] for s in e["same_date_as"]):
+        print("same date, rows differ", e["t_public"], [(Path(s["path"]).name, s["rows_only_here"], s["rows_only_there"]) for s in e["same_date_as"]])
+    if e.get("duplicate_of"):
+        print("duplicate", e["t_public"], "of", e["t_public_witnesses"]["held"], e["t_public_witnesses"]["held_basis"])
+nd = [e["t_public"] for e in new if not e.get("same_date_as") and not e.get("duplicate_of")]
+print("new dates:", len(nd), nd)
+print(f"BOM on {sum(e['leading_byte_order_mark'] for e in new)} of {len(new)}; rows {min(e['row_count'] for e in new)} to {max(e['row_count'] for e in new)}")
+PY

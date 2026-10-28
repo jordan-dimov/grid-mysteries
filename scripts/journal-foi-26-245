@@ -1,0 +1,195 @@
+#!/usr/bin/env bash
+# Pin and journal NESO's EIR disclosure FOI/26/245 (letter and email of
+# 28 Oct 2026, no document URL) into data/raw/neso/tec-history/ and its
+# journal. Stored bytes are the zip's originals; the zip and the letter are
+# kept beside them under data/raw/neso/foi-26-245/.
+#
+# Item 1, 69 TEC Register copies (3 Jan to 18 Jul 2025, 14 Aug to 28 Sep
+# 2026), under the source label neso-foi-email, each by one of three cases:
+#   - a date the journal already holds: journalled as a further copy of that
+#     date, with how its rows compare to each held copy, marked further_copy
+#     so reading rule 1 (one_per_date) never chooses it over the held one;
+#   - a publication the archive already holds under another date, or as a
+#     capture copy (row multiset equal after normalising, held copy within a
+#     day): journalled as duplicate_of the held copy, with both dates as
+#     witnesses, so no reader counts one publication twice;
+#   - otherwise a new publication date.
+# Item 2, 31 CSV re-exports of 2014 copies the journal holds as .xls files
+# the declared reader rejects: journalled with `renders` (the .xls line's
+# path and digest, same t_public); never a publication of their own.
+#
+# Refuses a destination that exists or a member it does not recognise.
+#
+#   scripts/journal-foi-26-245 ~/data/neso-foi-26-245
+set -euo pipefail
+cd "$(dirname "$0")/.."
+src="${1:?folder holding 'FOI-26-245 - Response.pdf' and 'FOI-26-245 - information.zip'}"
+uv run --group registers python - "$src" <<'PY'
+import hashlib, json, re, shutil, sys, zipfile
+from collections import Counter
+from datetime import UTC, date, datetime, timedelta
+from decimal import Decimal, InvalidOperation
+from pathlib import Path
+from grid_mysteries.sources import tec_register as tr
+from grid_mysteries.tec import sources as tec_sources
+
+src = Path(sys.argv[1])
+zip_path, pdf_path = src / "FOI-26-245 - information.zip", src / "FOI-26-245 - Response.pdf"
+sha = lambda p: hashlib.sha256(p.read_bytes()).hexdigest()
+zip_sha, pdf_sha = sha(zip_path), sha(pdf_path)
+assert zip_sha.startswith("37eebbd44468a1c9") and pdf_sha.startswith("ded6872e321a1884"), "not the files the handover names"
+now = datetime.now(UTC).isoformat(timespec="seconds")
+keep = Path("data/raw/neso/foi-26-245"); keep.mkdir(parents=True, exist_ok=True)
+for p in (zip_path, pdf_path):
+    dest = keep / p.name
+    if dest.exists():
+        assert sha(dest) == sha(p), f"{dest} differs"
+    else:
+        shutil.copyfile(p, dest)
+provenance = (f"member of NESO EIR response FOI/26/245 (letter dated 28 Oct 2026, received by email from "
+              f"informationrights@neso.energy 2026-10-28 15:40 UTC; no NESO document URL) zip "
+              f"'FOI-26-245 - information.zip' sha256 {zip_sha}")
+journal = tr.read_journal(tr.JOURNAL_PATH)
+by_date: dict[str, list[dict]] = {}
+for e in journal:
+    by_date.setdefault(e["t_public"][:10], []).append(e)
+captures = tec_sources._archive_copies(Path("."))
+
+
+def normal(v: object) -> str:
+    """A cell as compared across spellings: dates ISO, numbers without
+    trailing zeros, whitespace collapsed. For comparing copies only."""
+    if v is None:
+        return ""
+    if isinstance(v, datetime):
+        v = v.date()
+    if isinstance(v, date):
+        return v.isoformat()
+    t = " ".join(str(v).split())
+    if re.search(r"\d[-/]\d", t) and (d := tr.parse_date(t)):
+        return d.isoformat()
+    try:
+        return str(Decimal(t).normalize())
+    except InvalidOperation:
+        return t
+
+
+def rows_of(rows: list[dict]) -> Counter:
+    cols = sorted({c for r in rows for c in r if c and c != "Gate"})
+    return Counter(tuple(normal(r.get(c)) for c in cols) for r in rows)
+
+
+def compare(here: Counter, path: Path, fmt: str) -> dict:
+    there = rows_of(tr.read_vintage(path, fmt))
+    return {"path": str(path), "rows_only_here": sum((here - there).values()),
+            "rows_only_there": sum((there - here).values())}
+
+
+basis = ("row multisets compared after normalising dates to ISO, numbers to their value and whitespace; "
+         "the Gate column left out")
+
+
+def parse_q1(name: str) -> str:
+    stem = re.sub(r"^TEC Register\s*", "", Path(name).stem).strip()
+    for fmt in ("%d %B %Y", "%d %b %Y"):
+        try:
+            return datetime.strptime(stem, fmt).date().isoformat()
+        except ValueError:
+            pass
+    raise ValueError(f"no date in {name!r}")
+
+
+def parse_q2(name: str) -> str:
+    # Four spellings in the zip: 'TEC Register - dd mm yy(rptTEC)', without
+    # the hyphen, 'TEC dd mm yy(rptTEC)', and one '(TEC)' (5 Sep 2014).
+    m = re.fullmatch(r"TEC(?: Register)?(?: -)? (\d\d) (\d\d) (\d\d)\((?:rpt)?TEC\)\.csv", Path(name).name)
+    if not m:
+        raise ValueError(f"no date in {name!r}")
+    return date(2000 + int(m[3]), int(m[2]), int(m[1])).isoformat()
+
+
+new, cases = [], Counter()
+with zipfile.ZipFile(zip_path) as z:
+    members = sorted((i for i in z.infolist() if not i.is_dir()), key=lambda i: i.filename)
+    for info in members:
+        name = info.filename
+        data = z.read(name)
+        if name.startswith("Q1 TEC Register/") and name.endswith(".csv"):
+            d = parse_q1(name)
+            dest = Path("data/raw/neso/tec-history") / f"{d}_neso-foi-email.csv"
+        elif name.startswith("Q2 TEC Register/") and name.endswith(".csv"):
+            d = parse_q2(name)
+            dest = Path("data/raw/neso/tec-history") / f"{d}_neso-foi-email-rendering.csv"
+        else:
+            raise SystemExit(f"unexpected member {name!r}")
+        assert not dest.exists(), f"{dest} exists"
+        dest.write_bytes(data)
+        rows = tr.read_vintage(dest, "csv")
+        entry = {
+            "url": None, "source": "neso-foi-email", "t_public": d,
+            "t_public_basis": f"filename date '{Path(name).name}'; {provenance}: '{name}'",
+            "path": str(dest), "sha256": hashlib.sha256(data).hexdigest(), "bytes": len(data),
+            "format": "csv", "columns": list(rows[0].keys()) if rows else [], "row_count": len(rows),
+            "fetched_at": now, "archive_member": name,
+            "leading_byte_order_mark": data.startswith(b"\xef\xbb\xbf"),
+        }
+        here = rows_of(rows)
+        if name.startswith("Q2 "):
+            originals = [e for e in by_date.get(d, []) if e.get("format") == "xls"]
+            assert len(originals) == 1, f"{d}: {len(originals)} xls lines to render"
+            original = originals[0]
+            try:
+                readable = bool(tr.read_vintage(Path(original["path"]), "xls"))
+            except AssertionError:
+                readable = False
+            assert not readable, f"{d}: the xls is readable; no rendering was asked for"
+            assert original["row_count"] == len(rows), f"{d}: rendering has {len(rows)} rows, xls line {original['row_count']}"
+            entry["t_public_basis"] = (f"the t_public of the .xls line it renders; filename '{Path(name).name}'; "
+                                       f"NESO's CSV re-export of a copy disclosed under FOI-24-0040 (a) "
+                                       f"(the request cited FOI-24-0031 in error); {provenance}: '{name}'")
+            entry["renders"] = {"path": original["path"], "sha256": original["sha256"],
+                                "archive_member": original.get("archive_member"),
+                                "row_count": original["row_count"], "readable_by_declared_reader": False}
+            cases["rendering"] += 1
+        elif d in by_date:
+            entry["same_date_as"] = [compare(here, Path(e["path"]), e.get("format", "")) for e in by_date[d]
+                                     if not e.get("duplicate_of")]
+            entry["same_date_basis"] = basis + "; a further copy, never chosen by reading rule 1 (one_per_date)"
+            entry["further_copy"] = True
+            cases["same date"] += 1
+        else:
+            held = []
+            for e in journal:
+                t = date.fromisoformat(e["t_public"][:10])
+                if not e.get("duplicate_of") and abs((t - date.fromisoformat(d)).days) <= 1:
+                    held.append((e["t_public"][:10], Path(e["path"]), e.get("format", ""), f"journal ({e['source']})", e))
+            for c in captures:
+                if abs((c.published_on - date.fromisoformat(d)).days) <= 1:
+                    held.append((c.published_on.isoformat(), c.path, "csv", "capture (CKAN last_modified "
+                                 + json.loads((Path(tec_sources.ARCHIVE_MIRROR) / c.provenance["capture_meta"]["key"]).read_bytes()).get("result", {}).get("last_modified", "?")
+                                 + ")", None))
+            same = [(t, p, label) for t, p, fmt, label, _ in held
+                    if compare(here, p, fmt)["rows_only_here"] == 0 and compare(here, p, fmt)["rows_only_there"] == 0]
+            if same:
+                assert len(same) == 1, f"{d}: {len(same)} held copies match"
+                t, p, label = same[0]
+                entry["duplicate_of"] = str(p)
+                entry["t_public_witnesses"] = {"filename": d, "held": t, "held_basis": label}
+                entry["duplicate_basis"] = (basis + "; the same publication as the held copy, journalled so its provenance "
+                                            "and NESO's date are kept, and never read as a publication of its own")
+                cases["duplicate of held"] += 1
+            else:
+                cases["new date"] += 1
+        new.append(entry)
+with tr.JOURNAL_PATH.open("a") as f:
+    for e in sorted(new, key=lambda e: (e["t_public"], e["path"])):
+        f.write(json.dumps(e) + "\n")
+print(dict(cases))
+for e in new:
+    if e.get("same_date_as"):
+        print("same date", e["t_public"], [(Path(s["path"]).name, s["rows_only_here"], s["rows_only_there"]) for s in e["same_date_as"]])
+    if e.get("duplicate_of"):
+        print("duplicate", e["t_public"], "of", e["t_public_witnesses"]["held"], e["t_public_witnesses"]["held_basis"])
+q1 = [e for e in new if not e.get("renders")]
+print(f"TEC: {len(q1)} copies, BOM on {sum(e['leading_byte_order_mark'] for e in q1)}, rows {min(e['row_count'] for e in q1)} to {max(e['row_count'] for e in q1)}")
+PY

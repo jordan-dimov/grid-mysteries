@@ -535,6 +535,39 @@ report = tr.schema_report(vintages, skipped)
 # consecutive copies (021's grouping keys), over every parsed copy, under
 # 014's unit key; a fact about the columns, not a movement figure.
 report["grouping_key_stability"] = sbg.key_stability([(t, rows) for t, rows, _e in vintages])
+# The publisher's renderings of copies the declared reader rejects (journalled
+# with `renders`), read for their schema only; no reader reads them unless a
+# declaration says so. And every journalled file reading rule 1 does not
+# choose, with what it is, so a second copy of a date is never silent.
+from datetime import date as _date
+journal = tr.read_journal(root / tr.JOURNAL_PATH)
+renderings = []
+for s_ in report["unparseable"]:
+    entry = next(e for e in journal if e["path"] == s_["path"])
+    r = tr.rendering_for(entry, journal)
+    if r is None:
+        continue
+    rows = tr.read_vintage(tr.verify_entry(r, root), r.get("format", ""))
+    renderings.append({**tr.copy_report(_date.fromisoformat(r["t_public"][:10]), rows, r, None),
+                       "path": r["path"], "renders": r["renders"]})
+report["renderings"] = renderings
+# Rows the declared reader drops because they print no Project Name but do
+# print other cells (some copies print a project's name on its first stage
+# row only); counted per parsed copy, no value read.
+report["unnamed_rows"] = [
+    {"t_public": t.isoformat(), "path": e["path"], "rows_read": len(rows), "unnamed_rows": n}
+    for t, rows, e in vintages
+    if (n := tr.unnamed_rows(root / e["path"], e.get("format", "")))
+]
+chosen = {e["path"] for _t, _rows, e in vintages} | {s_["path"] for s_ in report["unparseable"]}
+report["not_chosen"] = [
+    {"t_public": e["t_public"][:10], "path": e["path"], "source": e["source"], "rows": e.get("row_count"),
+     "why": ("rendering of " + e["renders"]["path"]) if e.get("renders")
+            else ("duplicate of " + e["duplicate_of"]) if e.get("duplicate_of")
+            else "reading rule 1 chose another copy of the date",
+     **({"t_public_witnesses": e["t_public_witnesses"]} if e.get("t_public_witnesses") else {})}
+    for e in journal if e["path"] not in chosen
+]
 out = root / "archives" / name
 write_json(out / "schema-report.json", report)
 lines = [
@@ -586,6 +619,23 @@ for f in report["flagged"]:
     lines.append(f"- {f['t_public']}: " + "; ".join(f["flags"]))
 lines += ["", "## Unparseable copies", ""]
 lines += [f"- {s['t_public']}: {s['error']}" for s in report["unparseable"]] or ["- none"]
+lines += ["", f"## Renderings of unparseable copies ({len(report['renderings'])}; schema only, read by no investigation unless declared)", "",
+          "| t_public | rendering | rows | renders (rows) | columns | flags |", "|---|---|---|---|---|---|"]
+for r in report["renderings"]:
+    lines.append(f"| {r['t_public']} | `{Path(r['path']).name}` | {r['rows']} | `{Path(r['renders']['path']).name}` ({r['renders']['row_count']}) | "
+                 f"{', '.join(r['columns'])} | {'; '.join(r['flags']) or '-'} |")
+u = report["unnamed_rows"]
+lines += ["", f"## Rows the reader drops: no Project Name, other cells printed ({len(u)} copies, {sum(x['unnamed_rows'] for x in u):,} rows)", "",
+          "`read_vintage` keeps only rows that print a Project Name. Copies listed here print other cells on rows without one "
+          "(a project's name on its first stage row only); those rows have never been read by any investigation.", "",
+          "| t_public | rows read | rows dropped |", "|---|---|---|"]
+lines += [f"| {x['t_public']} | {x['rows_read']:,} | {x['unnamed_rows']:,} |" for x in u] or ["| none | | |"]
+lines += ["", f"## Journalled files reading rule 1 does not choose ({len(report['not_chosen'])})", "",
+          "| t_public | file | source | rows | why |", "|---|---|---|---|---|"]
+for e in report["not_chosen"]:
+    w = e.get("t_public_witnesses")
+    lines.append(f"| {e['t_public']} | `{Path(e['path']).name}` | {e['source']} | {e['rows']} | {e['why']}"
+                 + (f" (witnesses: {', '.join(f'{k} {v}' for k, v in w.items())})" if w else "") + " |")
 (out / "SCHEMA.md").write_text("\n".join(lines) + "\n")
 print(f"{report['copies']} copies, {len(report['eras'])} eras, {len(report['flagged'])} flagged -> archives/{name}/")
 PY

@@ -38,3 +38,27 @@ for the admitted units, and the labels and the register's lag re-run with
 copy gaps no longer bounded by 301 days. That is the sponsor's decision,
 recorded here when made. Until then every figure stands as computed on
 2026-10-12 under amendment 4, with the 301-day bound stated.
+
+## Finding, not amendment — 2026-10-28: the 2025 and 2026 gaps are closed, and the reader drops later stage rows from 2020-06 to 2024-05
+
+The archive gained 76 publication dates (FOI/26/245 and FOI-26-226,
+`investigations/005-connection-date-credibility/ACQUISITION-FOI-26-245.md`).
+Since 2021 no gap between held publications is longer than 14 days.
+Amendment 5 (`63b7e7e9…`, computed 2026-10-15) pins the journal at SHA-256
+`81d37bc3f4b430e0…` (835 rows), which is the journal before these copies; it is now
+1,064 rows. Its figures, the charts' "95-day gap, values are lower bounds"
+span (2026-05-19 to 2026-08-22) and the caption's cadence line ("no gap
+longer than 95 days since 2021, and none over 7 days across the reform
+period") describe the archive they were computed from, and stand as computed.
+**The archive now supports "no gap longer than 14 days since 2021"**, and
+the 95-day span is closed in the archive, not in the figures. Nothing was
+re-run here; a recompute over the new copies is an amendment 6.
+
+The regenerated schema pass also found that `read_vintage` drops rows that
+print no Project Name. From 2020-06-18 to 2024-05-30 the register prints a
+project's name on its first stage row only, which makes 40,107 rows in 346
+copies (`archives/tec-register/SCHEMA.md`, "Rows the reader drops"). A
+project-stage whose later stage energised in that window is unseen until
+the copy of 2024-05-31, so a first `Built` printed then may be an artefact
+of the reader and not of the register. This is not checked here; it is the
+sponsor's decision, with an amendment 6.

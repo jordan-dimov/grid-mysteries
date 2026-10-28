@@ -100,6 +100,26 @@ def test_one_per_date_drops_duplicates_and_prefers_the_richer_file():
     assert [e["path"] for e in kept] == ["d", "b"]
 
 
+def test_one_per_date_never_chooses_a_rendering_or_a_further_copy_and_keeps_the_first_on_a_tie():
+    original = {"t_public": "2014-06-13", "path": "x.xls", "sha256": "s", "row_count": 400}
+    journal = [
+        original,
+        {
+            "t_public": "2014-06-13",
+            "path": "x.csv",
+            "row_count": 999,
+            "renders": {"path": "x.xls", "sha256": "s"},
+        },
+        {"t_public": "2025-01-03", "path": "doc", "row_count": 1973},
+        {"t_public": "2025-01-03", "path": "foi", "row_count": 1973},
+        {"t_public": "2025-01-03", "path": "foi-more", "row_count": 2500, "further_copy": True},
+    ]
+    assert [e["path"] for e in tr.one_per_date(journal)] == ["x.xls", "doc"]
+    found = tr.rendering_for(original, journal)
+    assert found is not None and found["path"] == "x.csv"
+    assert tr.rendering_for({**original, "sha256": "other"}, journal) is None
+
+
 # ------------------------------------------------------------- schema report
 
 
@@ -418,3 +438,10 @@ def test_every_era_header_row_maps_the_grouping_columns():
             continue
         mapped = {tr.canon(h) for h in era["headers"]}
         assert set(tr.GROUPING_COLUMNS) <= mapped, (era["first"], era["headers"])
+
+
+def test_unnamed_rows_counts_stage_rows_the_reader_drops(tmp_path):
+    f = tmp_path / "v.csv"
+    f.write_text("Project Name,Stage,MW Connected\nA,1,10\n,2,20\n,,\nB,1,5\n")
+    assert len(tr.read_vintage(f, "csv")) == 2
+    assert tr.unnamed_rows(f, "csv") == 1

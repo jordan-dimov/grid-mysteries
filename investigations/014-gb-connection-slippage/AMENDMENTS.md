@@ -212,3 +212,54 @@ that no copy is held between 2025-07-22 and 2026-05-19 describes the
 archive the series was computed from, not the archive now; a version 5
 beside this one, with the sponsor's seal, is what recomputes. Whether to
 open it is the sponsor's decision, recorded here when made.
+
+## Finding, not amendment — 2026-10-28: the 2025 and 2026 gaps are closed, and the reader drops later stage rows from 2020-06 to 2024-05
+
+The archive gained 51 publication dates from NESO's EIR response FOI/26/245
+(2025-01-03 to 2025-07-18, 2026-08-14 to 2026-09-15) and 25 from NESO's
+published response FOI-26-226 (2023-06-30, 2026-05-22 to 2026-08-11), plus
+further copies of held dates that no reader chooses
+(`investigations/005-connection-date-credibility/ACQUISITION-FOI-26-245.md`).
+The gaps this page names of 2025-04-01 to 2025-07-01 (91 days) and
+2026-05-19 to 2026-08-22 (95 days) are closed in the archive.
+
+**What `run.py --seal 7d07cbd1 --phase check` found on 2026-10-28**, over
+1,064 journal rows, 891 distinct dates, 859 usable copies:
+
+    refusing: the version 2 side of 10 row(s) differs from evidence/v2
+    (2023-07-04, 2024-07-02, 2025-03-21, 2025-04-01, 2025-07-01)
+
+Old-regime rows now restate as well as reformed ones, because new copies
+fall inside old-regime comparison windows. This was not traced row by row.
+As on 2026-10-15, `--amend` does not reach the refusal, and a version 5
+beside this one is what recomputes. No evidence was written. A dated correction stating the
+archive fact was added to `corrections.json` and `SERIES.md` and
+`site/connection-slippage/index.html` were re-rendered. Neither is
+deployed; no figure on the page changes.
+
+**A reader defect, found by the regenerated schema pass.** From 2020-06-18
+to 2024-05-30 the published register prints a project's name on its first
+stage row only. `read_vintage` keeps only rows that print a name, so in 346
+copies 40,107 rows were never read, 27 to 183 a copy. Most are later stages of
+the named project above them; some carry their own Project ID. From
+2024-05-31 every row prints its name. Version 4's series, released on 2026-09-24, reads
+first-stage rows only across those four years. Its figures are what the
+declared reader computes, and **whether they are what the register
+printed is now an open question**, not checked here. A proposed correction for the
+page, for the sponsor to word and release: *"From June 2020 to May 2024 the
+register printed a project's name on its first stage row only, and this
+series read only rows that print a name; later stages of multi-stage
+projects in those copies are not in it. A version 5 would read them."*
+It is not added to `corrections.json`; publishing a correction to a released
+page is the sponsor's seal.
+
+**Released the same day on the sponsor's instruction** (28/10/2026, before any
+recompute), in the sponsor's wording, as a preamble correction in
+`corrections.json`. The headline was checked before it was claimed. Version 2's rule keys
+each copy on its own (`cs.entries`), the determined figure compares the two end
+copies only (`analysis.undetermined`), and the kept-copy flags read the copy
+immediately before. The window's copies run from 2024-07-16 to 2025-07-22 (54 in the
+window), all after 2024-05-30, the last copy that drops rows. **+57,823 (version
+2's rule) and +53,221 (determined) are unaffected.** Content matching carries row
+identity from the regime's first copy, so its +61,543, the cumulative series
+and the year-by-year rows for 2020 to 2024 may change; the correction says so.

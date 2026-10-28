@@ -27,5 +27,10 @@
   "I10.2 (Amendment 1) a row printing a Project Name and at least one other field is admitted": "tests/test_exit_clock.py::test_a_row_printing_a_name_and_one_other_field_is_admitted",
   "I10.3 (Amendment 1) a row printing no Project Name is refused": "tests/test_exit_clock.py::test_a_row_printing_no_name_is_refused",
   "I10.4 (Amendment 1) the admitted rows keep their printed order and the refused are counted; the printed count is untouched": "tests/test_exit_clock.py::test_admit_keeps_printed_order_and_counts_the_refused"
- }
+ },
+ "I11.1 (Amendment 2) a row printing no name below a named row of the same Project ID takes its name, customer and site": "tests/test_tec_register.py::test_continuation_rule_fills_name_and_identity_only_for_the_same_project",
+ "I11.2 (Amendment 2) such a row with its own Project ID takes the name only": "tests/test_tec_register.py::test_continuation_rule_fills_name_and_identity_only_for_the_same_project",
+ "I11.3 (Amendment 2) in a copy without a Project ID column such a row takes all three": "tests/test_tec_register.py::test_continuation_rule_without_an_id_column_always_takes_the_identity",
+ "I11.4 (Amendment 2) a row with no named row above it, or printing nothing, is not read": "tests/test_tec_register.py::test_continuation_rule_without_an_id_column_always_takes_the_identity",
+ "I12.1 (Amendment 2) further copies, duplicates and renderings are never chosen as a date's copy": "tests/test_tec_register.py::test_one_per_date_never_chooses_a_rendering_or_a_further_copy_and_keeps_the_first_on_a_tie"
 }

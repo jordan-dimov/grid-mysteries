@@ -1,0 +1,4727 @@
+{
+ "investigation": "025-the-exit-clock",
+ "declaration_sha256": "bc05298419069041ae21b75d0fc556f5ecb48224eb947806325f704f4eb4cd78",
+ "schema_report_sha256": "fa3cbb802f61d3b692c6a4b8c92d9a9eb49deed44e24eb474b9ca86471aff4b8",
+ "sources_manifest_sha256": "55f47fb98d19e50b3678ec047124108bc8d326116ebd0ffbc4f9c74e8d879730",
+ "computed_at": "2026-10-22T14:56:25+00:00",
+ "series": {
+  "first_copy": "2014-01-31",
+  "last_copy": "2026-10-20",
+  "kept_copies": 791,
+  "usable_copies": 793,
+  "unreadable": 32,
+  "suspect_copies": [
+   {
+    "regime": "old",
+    "t_public": "2015-05-08",
+    "rows": 225,
+    "previous_rows": 413,
+    "next_rows": 411,
+    "excluded": true,
+    "note": "225 rows against 413 in the previous copy (46% fewer)"
+   },
+   {
+    "regime": "old",
+    "t_public": "2023-11-28",
+    "rows": 673,
+    "previous_rows": 1392,
+    "next_rows": 1392,
+    "excluded": true,
+    "note": "673 rows against 1392 in the previous copy (52% fewer)"
+   }
+  ],
+  "n_days": 95,
+  "exit_cutoff": "2026-07-17"
+ },
+ "chains": {
+  "total": 2642,
+  "classes": {
+   "present at series end": 2083,
+   "exit": 492,
+   "completed": 57,
+   "not determinable": 6,
+   "open": 4
+  },
+  "by_era": {
+   "pre-id": {
+    "chains": 377,
+    "not_determinable": 6
+   },
+   "id": {
+    "chains": 2265
+   }
+  },
+  "not_determinable_share_id_era": "0.0000",
+  "kill_a_fired": false,
+  "reclassified": {
+   "chains": 367,
+   "touching storage": 367
+  },
+  "stage_reductions": 1184,
+  "interrupted_chains": 200,
+  "key_changes": 2933,
+  "key_change_tiers": {
+   "name, customer, stage": 701,
+   "name, site, stage": 608,
+   "all five": 1449,
+   "customer, site, stage, cumulative": 108,
+   "name, stage, cumulative": 21,
+   "name alone": 45,
+   "name, customer, site": 1
+  }
+ },
+ "reused_keys": {
+  "count": 13,
+  "by_copy": {
+   "2023-02-14": 3,
+   "2023-06-16": 1,
+   "2023-12-05": 6,
+   "2024-03-26": 3
+  },
+  "by_era": {
+   "id": 13
+  },
+  "via_stitch": 0
+ },
+ "pairs": {
+  "count": 790,
+  "rekeying": [
+   {
+    "earlier": "2020-05-28",
+    "later": "2020-06-05",
+    "rekeying": true,
+    "vanished": 299,
+    "appeared": 306,
+    "returned_own_key": 5,
+    "stitched": 288,
+    "tiers": {
+     "name, site, stage": 43,
+     "name, customer, stage": 210,
+     "name alone": 35
+    },
+    "new_chains": 13,
+    "ambiguous_new": 0,
+    "ambiguous_old": 0,
+    "unmatched_old": 11,
+    "not_determinable": 11
+   },
+   {
+    "earlier": "2021-11-23",
+    "later": "2021-11-26",
+    "rekeying": true,
+    "vanished": 682,
+    "appeared": 683,
+    "returned_own_key": 0,
+    "stitched": 682,
+    "tiers": {
+     "all five": 680,
+     "name, customer, stage": 1,
+     "name, customer, site": 1
+    },
+    "new_chains": 1,
+    "ambiguous_new": 0,
+    "ambiguous_old": 0,
+    "unmatched_old": 0,
+    "not_determinable": 0
+   },
+   {
+    "earlier": "2022-08-19",
+    "later": "2022-08-24",
+    "rekeying": true,
+    "vanished": 827,
+    "appeared": 828,
+    "returned_own_key": 0,
+    "stitched": 827,
+    "tiers": {
+     "all five": 767,
+     "name, site, stage": 4,
+     "name, customer, stage": 54,
+     "name, stage, cumulative": 1,
+     "customer, site, stage, cumulative": 1
+    },
+    "new_chains": 1,
+    "ambiguous_new": 0,
+    "ambiguous_old": 0,
+    "unmatched_old": 0,
+    "not_determinable": 0
+   }
+  ],
+  "returned_own_key_total": 426,
+  "stitched_total": 2933,
+  "not_determinable_total": 11
+ },
+ "exits": {
+  "total": 492,
+  "old_regime": 483,
+  "new_regime": 9,
+  "storage_old_regime": 96,
+  "storage_only_old_regime": 71,
+  "kill_b_fired": true,
+  "by_class": {
+   "family": {
+    "other": 391,
+    "storage-only": 74,
+    "storage-mixed": 27
+   },
+   "status": {
+    "Consents Approved": 69,
+    "Scoping": 299,
+    "Awaiting Consents": 96,
+    "Terminated": 17,
+    "Under Construction/Commissioning": 8,
+    "blank": 3
+   },
+   "agreement": {
+    "blank": 242,
+    "directly connected": 224,
+    "embedded": 26
+   },
+   "host_to": {
+    "SHE": 25,
+    "NGET": 264,
+    "SHET": 114,
+    "SPTL": 6,
+    "SPT": 82,
+    "OFTO": 1
+   },
+   "cohort": {
+    "2014 opening": 139,
+    "2014": 66,
+    "2015": 30,
+    "2016": 21,
+    "2017": 6,
+    "2018": 30,
+    "2019": 21,
+    "2020": 32,
+    "2021": 43,
+    "2022": 20,
+    "2023": 49,
+    "2024": 25,
+    "2025": 10
+   },
+   "regime": {
+    "old": 483,
+    "new": 9
+   }
+  },
+  "gap_days": {
+   "median": 7,
+   "max": 95
+  },
+  "new_regime_by_gate": {
+   "1": 1,
+   "(blank)": 8
+  },
+  "new_regime_by_status": {
+   "Scoping": 9
+  }
+ },
+ "exposure": {
+  "total_chain_months": 132063
+ },
+ "monthly": {
+  "2014-02": {
+   "all": 5,
+   "mw_all": "7117"
+  },
+  "2014-04": {
+   "all": 3,
+   "mw_all": "704"
+  },
+  "2014-05": {
+   "all": 10,
+   "mw_all": "5570.0"
+  },
+  "2014-07": {
+   "all": 46,
+   "mw_all": "18863.8"
+  },
+  "2014-10": {
+   "all": 14,
+   "mw_all": "10504.6"
+  },
+  "2014-11": {
+   "all": 8,
+   "mw_all": "9550.0"
+  },
+  "2014-12": {
+   "all": 8,
+   "mw_all": "590.3"
+  },
+  "2015-01": {
+   "all": 2,
+   "mw_all": "387.00"
+  },
+  "2015-02": {
+   "all": 14,
+   "mw_all": "6649.00"
+  },
+  "2015-03": {
+   "all": 9,
+   "mw_all": "1602.30"
+  },
+  "2015-04": {
+   "all": 5,
+   "mw_all": "1688.0"
+  },
+  "2015-06": {
+   "all": 3,
+   "mw_all": "1200.00"
+  },
+  "2015-07": {
+   "all": 1,
+   "mw_all": "228.0"
+  },
+  "2015-09": {
+   "all": 7,
+   "mw_all": "218.80"
+  },
+  "2015-10": {
+   "all": 3,
+   "mw_all": "2490"
+  },
+  "2016-01": {
+   "all": 3,
+   "mw_all": "1104"
+  },
+  "2016-02": {
+   "all": 8,
+   "mw_all": "3353.80"
+  },
+  "2016-03": {
+   "all": 8,
+   "mw_all": "2401.30"
+  },
+  "2016-04": {
+   "all": 1,
+   "mw_all": "16.1"
+  },
+  "2016-05": {
+   "all": 2,
+   "mw_all": "90.7"
+  },
+  "2016-06": {
+   "all": 2,
+   "mw_all": "83.7"
+  },
+  "2016-07": {
+   "all": 1,
+   "mw_all": "60"
+  },
+  "2016-08": {
+   "all": 3,
+   "mw_all": "1400"
+  },
+  "2016-09": {
+   "all": 6,
+   "mw_all": "117.2"
+  },
+  "2016-10": {
+   "all": 2,
+   "mw_all": "1000"
+  },
+  "2016-11": {
+   "all": 1,
+   "mw_all": "62"
+  },
+  "2016-12": {
+   "all": 2,
+   "mw_all": "2032.5"
+  },
+  "2017-01": {
+   "all": 1,
+   "mw_all": "59.7"
+  },
+  "2017-02": {
+   "all": 2,
+   "mw_all": "27.5"
+  },
+  "2017-03": {
+   "all": 1,
+   "mw_all": "0"
+  },
+  "2017-04": {
+   "all": 1,
+   "mw_all": "39.1"
+  },
+  "2017-05": {
+   "all": 2,
+   "mw_all": "69.9"
+  },
+  "2017-06": {
+   "all": 2,
+   "mw_all": "2224"
+  },
+  "2017-07": {
+   "all": 1,
+   "mw_all": "4.6"
+  },
+  "2017-10": {
+   "all": 1,
+   "mw_all": "57.6"
+  },
+  "2017-11": {
+   "all": 1,
+   "mw_all": "39"
+  },
+  "2018-01": {
+   "all": 1,
+   "mw_all": "99"
+  },
+  "2018-02": {
+   "all": 1,
+   "mw_all": "19.2"
+  },
+  "2018-03": {
+   "all": 7,
+   "mw_all": "262.4"
+  },
+  "2018-04": {
+   "all": 2,
+   "mw_all": "49"
+  },
+  "2018-06": {
+   "all": 4,
+   "mw_all": "4400"
+  },
+  "2018-07": {
+   "all": 3,
+   "mw_all": "1742.7",
+   "storage": 1,
+   "mw_storage": "49.9",
+   "storage_only": 1,
+   "mw_storage_only": "49.9"
+  },
+  "2018-09": {
+   "all": 2,
+   "mw_all": "98.6"
+  },
+  "2018-10": {
+   "all": 1,
+   "mw_all": "1500"
+  },
+  "2018-11": {
+   "all": 3,
+   "mw_all": "142.8",
+   "storage": 2,
+   "mw_storage": "99.8",
+   "storage_only": 2,
+   "mw_storage_only": "99.8"
+  },
+  "2018-12": {
+   "all": 6,
+   "mw_all": "2053.5"
+  },
+  "2019-01": {
+   "all": 1,
+   "mw_all": "99"
+  },
+  "2019-02": {
+   "all": 4,
+   "mw_all": "5157"
+  },
+  "2019-03": {
+   "all": 2,
+   "mw_all": "62",
+   "storage": 2,
+   "mw_storage": "62",
+   "storage_only": 2,
+   "mw_storage_only": "62"
+  },
+  "2019-06": {
+   "all": 8,
+   "mw_all": "3593.23"
+  },
+  "2019-07": {
+   "all": 1,
+   "mw_all": "150"
+  },
+  "2019-08": {
+   "all": 1,
+   "mw_all": "49",
+   "storage": 1,
+   "mw_storage": "49",
+   "storage_only": 1,
+   "mw_storage_only": "49"
+  },
+  "2019-09": {
+   "all": 1,
+   "mw_all": "1500"
+  },
+  "2019-11": {
+   "all": 1,
+   "mw_all": "0"
+  },
+  "2019-12": {
+   "all": 2,
+   "mw_all": "0"
+  },
+  "2020-01": {
+   "all": 5,
+   "mw_all": "4845"
+  },
+  "2020-02": {
+   "all": 21,
+   "mw_all": "5067.0",
+   "storage": 5,
+   "mw_storage": "249.5",
+   "storage_only": 5,
+   "mw_storage_only": "249.5"
+  },
+  "2020-03": {
+   "all": 6,
+   "mw_all": "2860.2",
+   "storage": 2,
+   "mw_storage": "99.8",
+   "storage_only": 2,
+   "mw_storage_only": "99.8"
+  },
+  "2020-04": {
+   "all": 3,
+   "mw_all": "194.4",
+   "storage": 1,
+   "mw_storage": "49.9",
+   "storage_only": 1,
+   "mw_storage_only": "49.9"
+  },
+  "2020-06": {
+   "all": 2,
+   "mw_all": "2299.9",
+   "storage": 1,
+   "mw_storage": "49.9",
+   "storage_only": 1,
+   "mw_storage_only": "49.9"
+  },
+  "2020-07": {
+   "all": 4,
+   "mw_all": "37.8"
+  },
+  "2020-08": {
+   "all": 1,
+   "mw_all": "49.5"
+  },
+  "2020-09": {
+   "all": 5,
+   "mw_all": "2040"
+  },
+  "2020-11": {
+   "all": 1,
+   "mw_all": "320"
+  },
+  "2020-12": {
+   "all": 2,
+   "mw_all": "959.9",
+   "storage": 1,
+   "mw_storage": "49.9",
+   "storage_only": 1,
+   "mw_storage_only": "49.9"
+  },
+  "2021-01": {
+   "all": 1,
+   "mw_all": "40"
+  },
+  "2021-02": {
+   "all": 4,
+   "mw_all": "1855",
+   "storage": 1,
+   "mw_storage": "0",
+   "storage_only": 1,
+   "mw_storage_only": "0"
+  },
+  "2021-03": {
+   "all": 4,
+   "mw_all": "3053"
+  },
+  "2021-04": {
+   "all": 1,
+   "mw_all": "49.9"
+  },
+  "2021-05": {
+   "all": 2,
+   "mw_all": "0",
+   "storage": 2,
+   "mw_storage": "0",
+   "storage_only": 2,
+   "mw_storage_only": "0"
+  },
+  "2021-06": {
+   "all": 3,
+   "mw_all": "1879.1"
+  },
+  "2021-07": {
+   "all": 5,
+   "mw_all": "281.4",
+   "storage": 2,
+   "mw_storage": "99.0",
+   "storage_only": 2,
+   "mw_storage_only": "99.0"
+  },
+  "2021-09": {
+   "all": 4,
+   "mw_all": "220.5",
+   "storage": 2,
+   "mw_storage": "114",
+   "storage_only": 2,
+   "mw_storage_only": "114"
+  },
+  "2021-10": {
+   "all": 9,
+   "mw_all": "2581.2",
+   "storage": 5,
+   "mw_storage": "208.7",
+   "storage_only": 4,
+   "mw_storage_only": "151.7"
+  },
+  "2021-12": {
+   "all": 1,
+   "mw_all": "49.9",
+   "storage": 1,
+   "mw_storage": "49.9"
+  },
+  "2022-01": {
+   "all": 1,
+   "mw_all": "49.995"
+  },
+  "2022-02": {
+   "all": 2,
+   "mw_all": "0"
+  },
+  "2022-03": {
+   "all": 4,
+   "mw_all": "394.5"
+  },
+  "2022-04": {
+   "all": 1,
+   "mw_all": "1096"
+  },
+  "2022-05": {
+   "all": 7,
+   "mw_all": "141",
+   "storage": 1,
+   "mw_storage": "55",
+   "storage_only": 1,
+   "mw_storage_only": "55"
+  },
+  "2022-07": {
+   "all": 1,
+   "mw_all": "300"
+  },
+  "2022-08": {
+   "all": 1,
+   "mw_all": "2000"
+  },
+  "2022-09": {
+   "all": 1,
+   "mw_all": "150",
+   "storage": 1,
+   "mw_storage": "150",
+   "storage_only": 1,
+   "mw_storage_only": "150"
+  },
+  "2023-01": {
+   "all": 12,
+   "mw_all": "18600"
+  },
+  "2023-02": {
+   "all": 1,
+   "mw_all": "1000"
+  },
+  "2023-03": {
+   "all": 4,
+   "mw_all": "0"
+  },
+  "2023-04": {
+   "all": 5,
+   "mw_all": "1524.0",
+   "storage": 2,
+   "mw_storage": "99.0",
+   "storage_only": 2,
+   "mw_storage_only": "99.0"
+  },
+  "2023-06": {
+   "all": 2,
+   "mw_all": "97.9",
+   "storage": 2,
+   "mw_storage": "97.9",
+   "storage_only": 2,
+   "mw_storage_only": "97.9"
+  },
+  "2023-07": {
+   "all": 5,
+   "mw_all": "3340.315",
+   "storage": 1,
+   "mw_storage": "300"
+  },
+  "2023-08": {
+   "all": 1,
+   "mw_all": "50",
+   "storage": 1,
+   "mw_storage": "50",
+   "storage_only": 1,
+   "mw_storage_only": "50"
+  },
+  "2023-09": {
+   "all": 1,
+   "mw_all": "27.8"
+  },
+  "2023-10": {
+   "all": 6,
+   "mw_all": "794.8",
+   "storage": 2,
+   "mw_storage": "109.9",
+   "storage_only": 1,
+   "mw_storage_only": "100"
+  },
+  "2023-11": {
+   "all": 2,
+   "mw_all": "449"
+  },
+  "2024-01": {
+   "all": 3,
+   "mw_all": "2500",
+   "storage": 1,
+   "mw_storage": "700"
+  },
+  "2024-02": {
+   "all": 1,
+   "mw_all": "100",
+   "storage": 1,
+   "mw_storage": "100"
+  },
+  "2024-03": {
+   "all": 4,
+   "mw_all": "730"
+  },
+  "2024-04": {
+   "all": 3,
+   "mw_all": "1818",
+   "storage": 1,
+   "mw_storage": "53"
+  },
+  "2024-05": {
+   "all": 2,
+   "mw_all": "1049.9",
+   "storage": 1,
+   "mw_storage": "49.9",
+   "storage_only": 1,
+   "mw_storage_only": "49.9"
+  },
+  "2024-06": {
+   "all": 4,
+   "mw_all": "771.2",
+   "storage": 3,
+   "mw_storage": "699.8",
+   "storage_only": 2,
+   "mw_storage_only": "99.8"
+  },
+  "2024-07": {
+   "all": 3,
+   "mw_all": "682",
+   "storage": 1,
+   "mw_storage": "60",
+   "storage_only": 1,
+   "mw_storage_only": "60"
+  },
+  "2024-08": {
+   "all": 4,
+   "mw_all": "3049.5",
+   "storage": 2,
+   "mw_storage": "1049.5",
+   "storage_only": 1,
+   "mw_storage_only": "1000"
+  },
+  "2024-09": {
+   "all": 12,
+   "mw_all": "5185.8",
+   "storage": 7,
+   "mw_storage": "2920",
+   "storage_only": 6,
+   "mw_storage_only": "2320"
+  },
+  "2024-10": {
+   "all": 3,
+   "mw_all": "3200"
+  },
+  "2024-11": {
+   "all": 5,
+   "mw_all": "2952",
+   "storage": 3,
+   "mw_storage": "952",
+   "storage_only": 2,
+   "mw_storage_only": "352"
+  },
+  "2024-12": {
+   "all": 10,
+   "mw_all": "3788.8",
+   "storage": 5,
+   "mw_storage": "2338.9",
+   "storage_only": 1,
+   "mw_storage_only": "249"
+  },
+  "2025-01": {
+   "all": 5,
+   "mw_all": "689.2",
+   "storage": 2,
+   "mw_storage": "520.0",
+   "storage_only": 1,
+   "mw_storage_only": "400"
+  },
+  "2025-03": {
+   "all": 7,
+   "mw_all": "1628.4",
+   "storage": 5,
+   "mw_storage": "1510",
+   "storage_only": 3,
+   "mw_storage_only": "1030"
+  },
+  "2025-04": {
+   "all": 1,
+   "mw_all": "400",
+   "storage": 1,
+   "mw_storage": "400",
+   "storage_only": 1,
+   "mw_storage_only": "400"
+  },
+  "2025-07": {
+   "all": 25,
+   "mw_all": "3795.58",
+   "storage": 16,
+   "mw_storage": "3179.6",
+   "storage_only": 11,
+   "mw_storage_only": "2595.7"
+  },
+  "2025-08": {
+   "all": 1,
+   "mw_all": "500",
+   "storage": 1,
+   "mw_storage": "500"
+  },
+  "2025-09": {
+   "all": 6,
+   "mw_all": "443",
+   "storage": 4,
+   "mw_storage": "304",
+   "storage_only": 3,
+   "mw_storage_only": "205"
+  },
+  "2025-11": {
+   "all": 3,
+   "mw_all": "849.9",
+   "storage": 3,
+   "mw_storage": "849.9",
+   "storage_only": 3,
+   "mw_storage_only": "849.9"
+  },
+  "2025-12": {
+   "all": 4,
+   "mw_all": "3331.6",
+   "storage": 2,
+   "mw_storage": "250",
+   "storage_only": 2,
+   "mw_storage_only": "250"
+  },
+  "2026-08": {
+   "all": 5,
+   "mw_all": "2439.9",
+   "storage": 3,
+   "mw_storage": "1390",
+   "storage_only": 1,
+   "mw_storage_only": "500"
+  }
+ },
+ "hazards": {
+  "old": {
+   "A": {
+    "all": [
+     {
+      "band": "more than 24 months before",
+      "exits": 170,
+      "chain_months": 46071,
+      "hazard_per_chain_month": "0.003690",
+      "lower": "0.003156",
+      "upper": "0.004288",
+      "per_100_chain_years": "4.43",
+      "per_100_chain_years_lower": "3.79",
+      "per_100_chain_years_upper": "5.15"
+     },
+     {
+      "band": "12 to 24 months before",
+      "exits": 68,
+      "chain_months": 7163,
+      "hazard_per_chain_month": "0.009493",
+      "lower": "0.007371",
+      "upper": "0.012035",
+      "per_100_chain_years": "11.39",
+      "per_100_chain_years_lower": "8.85",
+      "per_100_chain_years_upper": "14.44"
+     },
+     {
+      "band": "0 to 12 months before",
+      "exits": 56,
+      "chain_months": 5708,
+      "hazard_per_chain_month": "0.009811",
+      "lower": "0.007410",
+      "upper": "0.012740",
+      "per_100_chain_years": "11.77",
+      "per_100_chain_years_lower": "8.89",
+      "per_100_chain_years_upper": "15.29"
+     },
+     {
+      "band": "0 to 12 months after",
+      "exits": 50,
+      "chain_months": 4540,
+      "hazard_per_chain_month": "0.011013",
+      "lower": "0.008174",
+      "upper": "0.014520",
+      "per_100_chain_years": "13.22",
+      "per_100_chain_years_lower": "9.81",
+      "per_100_chain_years_upper": "17.42"
+     },
+     {
+      "band": "more than 12 months after",
+      "exits": 134,
+      "chain_months": 6118,
+      "hazard_per_chain_month": "0.021903",
+      "lower": "0.018351",
+      "upper": "0.025941",
+      "per_100_chain_years": "26.28",
+      "per_100_chain_years_lower": "22.02",
+      "per_100_chain_years_upper": "31.13"
+     },
+     {
+      "band": "no connection date",
+      "exits": 5,
+      "chain_months": 39579,
+      "hazard_per_chain_month": "0.000126",
+      "lower": "0.000041",
+      "upper": "0.000295",
+      "per_100_chain_years": "0.15",
+      "per_100_chain_years_lower": "0.05",
+      "per_100_chain_years_upper": "0.35"
+     }
+    ],
+    "storage": [
+     {
+      "band": "more than 24 months before",
+      "exits": 37,
+      "chain_months": 27644,
+      "hazard_per_chain_month": "0.001338",
+      "lower": "0.000942",
+      "upper": "0.001845",
+      "per_100_chain_years": "1.61",
+      "per_100_chain_years_lower": "1.13",
+      "per_100_chain_years_upper": "2.21"
+     },
+     {
+      "band": "12 to 24 months before",
+      "exits": 8,
+      "chain_months": 4009,
+      "hazard_per_chain_month": "0.001996",
+      "lower": "0.000859",
+      "upper": "0.003932",
+      "per_100_chain_years": "2.40",
+      "per_100_chain_years_lower": "1.03",
+      "per_100_chain_years_upper": "4.72"
+     },
+     {
+      "band": "0 to 12 months before",
+      "exits": 6,
+      "chain_months": 3316,
+      "hazard_per_chain_month": "0.001809",
+      "lower": "0.000661",
+      "upper": "0.003938",
+      "per_100_chain_years": "2.17",
+      "per_100_chain_years_lower": "0.79",
+      "per_100_chain_years_upper": "4.73"
+     },
+     {
+      "band": "0 to 12 months after",
+      "exits": 11,
+      "chain_months": 2719,
+      "hazard_per_chain_month": "0.004046",
+      "lower": "0.002017",
+      "upper": "0.007239",
+      "per_100_chain_years": "4.86",
+      "per_100_chain_years_lower": "2.42",
+      "per_100_chain_years_upper": "8.69"
+     },
+     {
+      "band": "more than 12 months after",
+      "exits": 33,
+      "chain_months": 3246,
+      "hazard_per_chain_month": "0.010166",
+      "lower": "0.006997",
+      "upper": "0.014278",
+      "per_100_chain_years": "12.20",
+      "per_100_chain_years_lower": "8.40",
+      "per_100_chain_years_upper": "17.13"
+     },
+     {
+      "band": "no connection date",
+      "exits": 1,
+      "chain_months": 4043,
+      "hazard_per_chain_month": "0.000247",
+      "lower": "0.000003",
+      "upper": "0.001376",
+      "per_100_chain_years": "0.30",
+      "per_100_chain_years_lower": "0.00",
+      "per_100_chain_years_upper": "1.65"
+     }
+    ],
+    "storage-only": [
+     {
+      "band": "more than 24 months before",
+      "exits": 24,
+      "chain_months": 11300,
+      "hazard_per_chain_month": "0.002124",
+      "lower": "0.001360",
+      "upper": "0.003160",
+      "per_100_chain_years": "2.55",
+      "per_100_chain_years_lower": "1.63",
+      "per_100_chain_years_upper": "3.79"
+     },
+     {
+      "band": "12 to 24 months before",
+      "exits": 5,
+      "chain_months": 2071,
+      "hazard_per_chain_month": "0.002414",
+      "lower": "0.000778",
+      "upper": "0.005634",
+      "per_100_chain_years": "2.90",
+      "per_100_chain_years_lower": "0.93",
+      "per_100_chain_years_upper": "6.76"
+     },
+     {
+      "band": "0 to 12 months before",
+      "exits": 5,
+      "chain_months": 1839,
+      "hazard_per_chain_month": "0.002719",
+      "lower": "0.000876",
+      "upper": "0.006345",
+      "per_100_chain_years": "3.26",
+      "per_100_chain_years_lower": "1.05",
+      "per_100_chain_years_upper": "7.61"
+     },
+     {
+      "band": "0 to 12 months after",
+      "exits": 10,
+      "chain_months": 1606,
+      "hazard_per_chain_month": "0.006227",
+      "lower": "0.002981",
+      "upper": "0.011452",
+      "per_100_chain_years": "7.47",
+      "per_100_chain_years_lower": "3.58",
+      "per_100_chain_years_upper": "13.74"
+     },
+     {
+      "band": "more than 12 months after",
+      "exits": 26,
+      "chain_months": 2092,
+      "hazard_per_chain_month": "0.012428",
+      "lower": "0.008116",
+      "upper": "0.018211",
+      "per_100_chain_years": "14.91",
+      "per_100_chain_years_lower": "9.74",
+      "per_100_chain_years_upper": "21.85"
+     },
+     {
+      "band": "no connection date",
+      "exits": 1,
+      "chain_months": 3063,
+      "hazard_per_chain_month": "0.000326",
+      "lower": "0.000004",
+      "upper": "0.001816",
+      "per_100_chain_years": "0.39",
+      "per_100_chain_years_lower": "0.00",
+      "per_100_chain_years_upper": "2.18"
+     }
+    ],
+    "other": [
+     {
+      "band": "more than 24 months before",
+      "exits": 133,
+      "chain_months": 18427,
+      "hazard_per_chain_month": "0.007218",
+      "lower": "0.006043",
+      "upper": "0.008554",
+      "per_100_chain_years": "8.66",
+      "per_100_chain_years_lower": "7.25",
+      "per_100_chain_years_upper": "10.26"
+     },
+     {
+      "band": "12 to 24 months before",
+      "exits": 60,
+      "chain_months": 3154,
+      "hazard_per_chain_month": "0.019023",
+      "lower": "0.014516",
+      "upper": "0.024487",
+      "per_100_chain_years": "22.83",
+      "per_100_chain_years_lower": "17.42",
+      "per_100_chain_years_upper": "29.38"
+     },
+     {
+      "band": "0 to 12 months before",
+      "exits": 50,
+      "chain_months": 2392,
+      "hazard_per_chain_month": "0.020903",
+      "lower": "0.015513",
+      "upper": "0.027559",
+      "per_100_chain_years": "25.08",
+      "per_100_chain_years_lower": "18.62",
+      "per_100_chain_years_upper": "33.07"
+     },
+     {
+      "band": "0 to 12 months after",
+      "exits": 39,
+      "chain_months": 1821,
+      "hazard_per_chain_month": "0.021417",
+      "lower": "0.015228",
+      "upper": "0.029278",
+      "per_100_chain_years": "25.70",
+      "per_100_chain_years_lower": "18.27",
+      "per_100_chain_years_upper": "35.13"
+     },
+     {
+      "band": "more than 12 months after",
+      "exits": 101,
+      "chain_months": 2872,
+      "hazard_per_chain_month": "0.035167",
+      "lower": "0.028643",
+      "upper": "0.042732",
+      "per_100_chain_years": "42.20",
+      "per_100_chain_years_lower": "34.37",
+      "per_100_chain_years_upper": "51.28"
+     },
+     {
+      "band": "no connection date",
+      "exits": 4,
+      "chain_months": 35536,
+      "hazard_per_chain_month": "0.000113",
+      "lower": "0.000030",
+      "upper": "0.000288",
+      "per_100_chain_years": "0.14",
+      "per_100_chain_years_lower": "0.04",
+      "per_100_chain_years_upper": "0.35"
+     }
+    ]
+   },
+   "B": {
+    "all": [
+     {
+      "band": "more than 24 months before",
+      "exits": 155,
+      "chain_months": 28978,
+      "hazard_per_chain_month": "0.005349",
+      "lower": "0.004540",
+      "upper": "0.006260",
+      "per_100_chain_years": "6.42",
+      "per_100_chain_years_lower": "5.45",
+      "per_100_chain_years_upper": "7.51"
+     },
+     {
+      "band": "12 to 24 months before",
+      "exits": 57,
+      "chain_months": 5565,
+      "hazard_per_chain_month": "0.010243",
+      "lower": "0.007757",
+      "upper": "0.013271",
+      "per_100_chain_years": "12.29",
+      "per_100_chain_years_lower": "9.31",
+      "per_100_chain_years_upper": "15.93"
+     },
+     {
+      "band": "0 to 12 months before",
+      "exits": 45,
+      "chain_months": 5937,
+      "hazard_per_chain_month": "0.007580",
+      "lower": "0.005528",
+      "upper": "0.010142",
+      "per_100_chain_years": "9.10",
+      "per_100_chain_years_lower": "6.63",
+      "per_100_chain_years_upper": "12.17"
+     },
+     {
+      "band": "0 to 12 months after",
+      "exits": 48,
+      "chain_months": 6389,
+      "hazard_per_chain_month": "0.007513",
+      "lower": "0.005539",
+      "upper": "0.009961",
+      "per_100_chain_years": "9.02",
+      "per_100_chain_years_lower": "6.65",
+      "per_100_chain_years_upper": "11.95"
+     },
+     {
+      "band": "more than 12 months after",
+      "exits": 173,
+      "chain_months": 43642,
+      "hazard_per_chain_month": "0.003964",
+      "lower": "0.003395",
+      "upper": "0.004601",
+      "per_100_chain_years": "4.76",
+      "per_100_chain_years_lower": "4.07",
+      "per_100_chain_years_upper": "5.52"
+     },
+     {
+      "band": "no connection date",
+      "exits": 5,
+      "chain_months": 18668,
+      "hazard_per_chain_month": "0.000268",
+      "lower": "0.000086",
+      "upper": "0.000625",
+      "per_100_chain_years": "0.32",
+      "per_100_chain_years_lower": "0.10",
+      "per_100_chain_years_upper": "0.75"
+     }
+    ],
+    "storage": [
+     {
+      "band": "more than 24 months before",
+      "exits": 37,
+      "chain_months": 20042,
+      "hazard_per_chain_month": "0.001846",
+      "lower": "0.001300",
+      "upper": "0.002545",
+      "per_100_chain_years": "2.22",
+      "per_100_chain_years_lower": "1.56",
+      "per_100_chain_years_upper": "3.05"
+     },
+     {
+      "band": "12 to 24 months before",
+      "exits": 7,
+      "chain_months": 2839,
+      "hazard_per_chain_month": "0.002466",
+      "lower": "0.000988",
+      "upper": "0.005080",
+      "per_100_chain_years": "2.96",
+      "per_100_chain_years_lower": "1.19",
+      "per_100_chain_years_upper": "6.10"
+     },
+     {
+      "band": "0 to 12 months before",
+      "exits": 7,
+      "chain_months": 2927,
+      "hazard_per_chain_month": "0.002392",
+      "lower": "0.000958",
+      "upper": "0.004928",
+      "per_100_chain_years": "2.87",
+      "per_100_chain_years_lower": "1.15",
+      "per_100_chain_years_upper": "5.91"
+     },
+     {
+      "band": "0 to 12 months after",
+      "exits": 10,
+      "chain_months": 3052,
+      "hazard_per_chain_month": "0.003277",
+      "lower": "0.001569",
+      "upper": "0.006026",
+      "per_100_chain_years": "3.93",
+      "per_100_chain_years_lower": "1.88",
+      "per_100_chain_years_upper": "7.23"
+     },
+     {
+      "band": "more than 12 months after",
+      "exits": 34,
+      "chain_months": 14127,
+      "hazard_per_chain_month": "0.002407",
+      "lower": "0.001666",
+      "upper": "0.003363",
+      "per_100_chain_years": "2.89",
+      "per_100_chain_years_lower": "2.00",
+      "per_100_chain_years_upper": "4.04"
+     },
+     {
+      "band": "no connection date",
+      "exits": 1,
+      "chain_months": 1990,
+      "hazard_per_chain_month": "0.000503",
+      "lower": "0.000007",
+      "upper": "0.002796",
+      "per_100_chain_years": "0.60",
+      "per_100_chain_years_lower": "0.01",
+      "per_100_chain_years_upper": "3.36"
+     }
+    ],
+    "storage-only": [
+     {
+      "band": "more than 24 months before",
+      "exits": 24,
+      "chain_months": 9602,
+      "hazard_per_chain_month": "0.002499",
+      "lower": "0.001601",
+      "upper": "0.003719",
+      "per_100_chain_years": "3.00",
+      "per_100_chain_years_lower": "1.92",
+      "per_100_chain_years_upper": "4.46"
+     },
+     {
+      "band": "12 to 24 months before",
+      "exits": 5,
+      "chain_months": 1392,
+      "hazard_per_chain_month": "0.003592",
+      "lower": "0.001158",
+      "upper": "0.008382",
+      "per_100_chain_years": "4.31",
+      "per_100_chain_years_lower": "1.39",
+      "per_100_chain_years_upper": "10.06"
+     },
+     {
+      "band": "0 to 12 months before",
+      "exits": 5,
+      "chain_months": 1415,
+      "hazard_per_chain_month": "0.003534",
+      "lower": "0.001139",
+      "upper": "0.008246",
+      "per_100_chain_years": "4.24",
+      "per_100_chain_years_lower": "1.37",
+      "per_100_chain_years_upper": "9.90"
+     },
+     {
+      "band": "0 to 12 months after",
+      "exits": 10,
+      "chain_months": 1529,
+      "hazard_per_chain_month": "0.006540",
+      "lower": "0.003131",
+      "upper": "0.012029",
+      "per_100_chain_years": "7.85",
+      "per_100_chain_years_lower": "3.76",
+      "per_100_chain_years_upper": "14.43"
+     },
+     {
+      "band": "more than 12 months after",
+      "exits": 26,
+      "chain_months": 7600,
+      "hazard_per_chain_month": "0.003421",
+      "lower": "0.002234",
+      "upper": "0.005013",
+      "per_100_chain_years": "4.11",
+      "per_100_chain_years_lower": "2.68",
+      "per_100_chain_years_upper": "6.02"
+     },
+     {
+      "band": "no connection date",
+      "exits": 1,
+      "chain_months": 433,
+      "hazard_per_chain_month": "0.002309",
+      "lower": "0.000030",
+      "upper": "0.012850",
+      "per_100_chain_years": "2.77",
+      "per_100_chain_years_lower": "0.04",
+      "per_100_chain_years_upper": "15.42"
+     }
+    ],
+    "other": [
+     {
+      "band": "more than 24 months before",
+      "exits": 118,
+      "chain_months": 8936,
+      "hazard_per_chain_month": "0.013205",
+      "lower": "0.010930",
+      "upper": "0.015814",
+      "per_100_chain_years": "15.85",
+      "per_100_chain_years_lower": "13.12",
+      "per_100_chain_years_upper": "18.98"
+     },
+     {
+      "band": "12 to 24 months before",
+      "exits": 50,
+      "chain_months": 2726,
+      "hazard_per_chain_month": "0.018342",
+      "lower": "0.013613",
+      "upper": "0.024182",
+      "per_100_chain_years": "22.01",
+      "per_100_chain_years_lower": "16.34",
+      "per_100_chain_years_upper": "29.02"
+     },
+     {
+      "band": "0 to 12 months before",
+      "exits": 38,
+      "chain_months": 3010,
+      "hazard_per_chain_month": "0.012625",
+      "lower": "0.008933",
+      "upper": "0.017329",
+      "per_100_chain_years": "15.15",
+      "per_100_chain_years_lower": "10.72",
+      "per_100_chain_years_upper": "20.79"
+     },
+     {
+      "band": "0 to 12 months after",
+      "exits": 38,
+      "chain_months": 3337,
+      "hazard_per_chain_month": "0.011387",
+      "lower": "0.008057",
+      "upper": "0.015631",
+      "per_100_chain_years": "13.66",
+      "per_100_chain_years_lower": "9.67",
+      "per_100_chain_years_upper": "18.76"
+     },
+     {
+      "band": "more than 12 months after",
+      "exits": 139,
+      "chain_months": 29515,
+      "hazard_per_chain_month": "0.004709",
+      "lower": "0.003959",
+      "upper": "0.005561",
+      "per_100_chain_years": "5.65",
+      "per_100_chain_years_lower": "4.75",
+      "per_100_chain_years_upper": "6.67"
+     },
+     {
+      "band": "no connection date",
+      "exits": 4,
+      "chain_months": 16678,
+      "hazard_per_chain_month": "0.000240",
+      "lower": "0.000065",
+      "upper": "0.000614",
+      "per_100_chain_years": "0.29",
+      "per_100_chain_years_lower": "0.08",
+      "per_100_chain_years_upper": "0.74"
+     }
+    ]
+   },
+   "C": {
+    "all": [
+     {
+      "band": "more than 24 months before",
+      "exits": 170,
+      "chain_months": 31126,
+      "hazard_per_chain_month": "0.005462",
+      "lower": "0.004671",
+      "upper": "0.006347",
+      "per_100_chain_years": "6.55",
+      "per_100_chain_years_lower": "5.61",
+      "per_100_chain_years_upper": "7.62"
+     },
+     {
+      "band": "12 to 24 months before",
+      "exits": 68,
+      "chain_months": 7306,
+      "hazard_per_chain_month": "0.009307",
+      "lower": "0.007227",
+      "upper": "0.011800",
+      "per_100_chain_years": "11.17",
+      "per_100_chain_years_lower": "8.67",
+      "per_100_chain_years_upper": "14.16"
+     },
+     {
+      "band": "0 to 12 months before",
+      "exits": 56,
+      "chain_months": 8920,
+      "hazard_per_chain_month": "0.006278",
+      "lower": "0.004742",
+      "upper": "0.008153",
+      "per_100_chain_years": "7.53",
+      "per_100_chain_years_lower": "5.69",
+      "per_100_chain_years_upper": "9.78"
+     },
+     {
+      "band": "0 to 12 months after",
+      "exits": 50,
+      "chain_months": 7872,
+      "hazard_per_chain_month": "0.006352",
+      "lower": "0.004714",
+      "upper": "0.008374",
+      "per_100_chain_years": "7.62",
+      "per_100_chain_years_lower": "5.66",
+      "per_100_chain_years_upper": "10.05"
+     },
+     {
+      "band": "more than 12 months after",
+      "exits": 134,
+      "chain_months": 21701,
+      "hazard_per_chain_month": "0.006175",
+      "lower": "0.005174",
+      "upper": "0.007313",
+      "per_100_chain_years": "7.41",
+      "per_100_chain_years_lower": "6.21",
+      "per_100_chain_years_upper": "8.78"
+     },
+     {
+      "band": "no connection date",
+      "exits": 5,
+      "chain_months": 32254,
+      "hazard_per_chain_month": "0.000155",
+      "lower": "0.000050",
+      "upper": "0.000362",
+      "per_100_chain_years": "0.19",
+      "per_100_chain_years_lower": "0.06",
+      "per_100_chain_years_upper": "0.43"
+     }
+    ],
+    "storage": [
+     {
+      "band": "more than 24 months before",
+      "exits": 37,
+      "chain_months": 20942,
+      "hazard_per_chain_month": "0.001767",
+      "lower": "0.001244",
+      "upper": "0.002435",
+      "per_100_chain_years": "2.12",
+      "per_100_chain_years_lower": "1.49",
+      "per_100_chain_years_upper": "2.92"
+     },
+     {
+      "band": "12 to 24 months before",
+      "exits": 8,
+      "chain_months": 3225,
+      "hazard_per_chain_month": "0.002481",
+      "lower": "0.001068",
+      "upper": "0.004888",
+      "per_100_chain_years": "2.98",
+      "per_100_chain_years_lower": "1.28",
+      "per_100_chain_years_upper": "5.87"
+     },
+     {
+      "band": "0 to 12 months before",
+      "exits": 6,
+      "chain_months": 3578,
+      "hazard_per_chain_month": "0.001677",
+      "lower": "0.000612",
+      "upper": "0.003650",
+      "per_100_chain_years": "2.01",
+      "per_100_chain_years_lower": "0.73",
+      "per_100_chain_years_upper": "4.38"
+     },
+     {
+      "band": "0 to 12 months after",
+      "exits": 11,
+      "chain_months": 3730,
+      "hazard_per_chain_month": "0.002949",
+      "lower": "0.001470",
+      "upper": "0.005277",
+      "per_100_chain_years": "3.54",
+      "per_100_chain_years_lower": "1.76",
+      "per_100_chain_years_upper": "6.33"
+     },
+     {
+      "band": "more than 12 months after",
+      "exits": 33,
+      "chain_months": 10462,
+      "hazard_per_chain_month": "0.003154",
+      "lower": "0.002171",
+      "upper": "0.004430",
+      "per_100_chain_years": "3.78",
+      "per_100_chain_years_lower": "2.61",
+      "per_100_chain_years_upper": "5.32"
+     },
+     {
+      "band": "no connection date",
+      "exits": 1,
+      "chain_months": 3040,
+      "hazard_per_chain_month": "0.000329",
+      "lower": "0.000004",
+      "upper": "0.001830",
+      "per_100_chain_years": "0.39",
+      "per_100_chain_years_lower": "0.00",
+      "per_100_chain_years_upper": "2.20"
+     }
+    ],
+    "storage-only": [
+     {
+      "band": "more than 24 months before",
+      "exits": 24,
+      "chain_months": 9689,
+      "hazard_per_chain_month": "0.002477",
+      "lower": "0.001587",
+      "upper": "0.003686",
+      "per_100_chain_years": "2.97",
+      "per_100_chain_years_lower": "1.90",
+      "per_100_chain_years_upper": "4.42"
+     },
+     {
+      "band": "12 to 24 months before",
+      "exits": 5,
+      "chain_months": 1457,
+      "hazard_per_chain_month": "0.003432",
+      "lower": "0.001106",
+      "upper": "0.008008",
+      "per_100_chain_years": "4.12",
+      "per_100_chain_years_lower": "1.33",
+      "per_100_chain_years_upper": "9.61"
+     },
+     {
+      "band": "0 to 12 months before",
+      "exits": 5,
+      "chain_months": 1688,
+      "hazard_per_chain_month": "0.002962",
+      "lower": "0.000955",
+      "upper": "0.006913",
+      "per_100_chain_years": "3.55",
+      "per_100_chain_years_lower": "1.15",
+      "per_100_chain_years_upper": "8.30"
+     },
+     {
+      "band": "0 to 12 months after",
+      "exits": 10,
+      "chain_months": 1923,
+      "hazard_per_chain_month": "0.005200",
+      "lower": "0.002490",
+      "upper": "0.009564",
+      "per_100_chain_years": "6.24",
+      "per_100_chain_years_lower": "2.99",
+      "per_100_chain_years_upper": "11.48"
+     },
+     {
+      "band": "more than 12 months after",
+      "exits": 26,
+      "chain_months": 5874,
+      "hazard_per_chain_month": "0.004426",
+      "lower": "0.002891",
+      "upper": "0.006486",
+      "per_100_chain_years": "5.31",
+      "per_100_chain_years_lower": "3.47",
+      "per_100_chain_years_upper": "7.78"
+     },
+     {
+      "band": "no connection date",
+      "exits": 1,
+      "chain_months": 1340,
+      "hazard_per_chain_month": "0.000746",
+      "lower": "0.000010",
+      "upper": "0.004152",
+      "per_100_chain_years": "0.90",
+      "per_100_chain_years_lower": "0.01",
+      "per_100_chain_years_upper": "4.98"
+     }
+    ],
+    "other": [
+     {
+      "band": "more than 24 months before",
+      "exits": 133,
+      "chain_months": 10184,
+      "hazard_per_chain_month": "0.013060",
+      "lower": "0.010934",
+      "upper": "0.015477",
+      "per_100_chain_years": "15.67",
+      "per_100_chain_years_lower": "13.12",
+      "per_100_chain_years_upper": "18.57"
+     },
+     {
+      "band": "12 to 24 months before",
+      "exits": 60,
+      "chain_months": 4081,
+      "hazard_per_chain_month": "0.014702",
+      "lower": "0.011219",
+      "upper": "0.018925",
+      "per_100_chain_years": "17.64",
+      "per_100_chain_years_lower": "13.46",
+      "per_100_chain_years_upper": "22.71"
+     },
+     {
+      "band": "0 to 12 months before",
+      "exits": 50,
+      "chain_months": 5342,
+      "hazard_per_chain_month": "0.009360",
+      "lower": "0.006946",
+      "upper": "0.012340",
+      "per_100_chain_years": "11.23",
+      "per_100_chain_years_lower": "8.34",
+      "per_100_chain_years_upper": "14.81"
+     },
+     {
+      "band": "0 to 12 months after",
+      "exits": 39,
+      "chain_months": 4142,
+      "hazard_per_chain_month": "0.009416",
+      "lower": "0.006695",
+      "upper": "0.012872",
+      "per_100_chain_years": "11.30",
+      "per_100_chain_years_lower": "8.03",
+      "per_100_chain_years_upper": "15.45"
+     },
+     {
+      "band": "more than 12 months after",
+      "exits": 101,
+      "chain_months": 11239,
+      "hazard_per_chain_month": "0.008987",
+      "lower": "0.007320",
+      "upper": "0.010920",
+      "per_100_chain_years": "10.78",
+      "per_100_chain_years_lower": "8.78",
+      "per_100_chain_years_upper": "13.10"
+     },
+     {
+      "band": "no connection date",
+      "exits": 4,
+      "chain_months": 29214,
+      "hazard_per_chain_month": "0.000137",
+      "lower": "0.000037",
+      "upper": "0.000351",
+      "per_100_chain_years": "0.16",
+      "per_100_chain_years_lower": "0.04",
+      "per_100_chain_years_upper": "0.42"
+     }
+    ]
+   }
+  },
+  "new": {
+   "A": {
+    "all": [
+     {
+      "band": "more than 24 months before",
+      "exits": 4,
+      "chain_months": 10920,
+      "hazard_per_chain_month": "0.000366",
+      "lower": "0.000099",
+      "upper": "0.000938",
+      "per_100_chain_years": "0.44",
+      "per_100_chain_years_lower": "0.12",
+      "per_100_chain_years_upper": "1.13"
+     },
+     {
+      "band": "12 to 24 months before",
+      "exits": 2,
+      "chain_months": 1529,
+      "hazard_per_chain_month": "0.001308",
+      "lower": "0.000147",
+      "upper": "0.004723",
+      "per_100_chain_years": "1.57",
+      "per_100_chain_years_lower": "0.18",
+      "per_100_chain_years_upper": "5.67"
+     },
+     {
+      "band": "0 to 12 months before",
+      "exits": 1,
+      "chain_months": 1351,
+      "hazard_per_chain_month": "0.000740",
+      "lower": "0.000010",
+      "upper": "0.004118",
+      "per_100_chain_years": "0.89",
+      "per_100_chain_years_lower": "0.01",
+      "per_100_chain_years_upper": "4.94"
+     },
+     {
+      "band": "0 to 12 months after",
+      "exits": 1,
+      "chain_months": 1725,
+      "hazard_per_chain_month": "0.000580",
+      "lower": "0.000008",
+      "upper": "0.003225",
+      "per_100_chain_years": "0.70",
+      "per_100_chain_years_lower": "0.01",
+      "per_100_chain_years_upper": "3.87"
+     },
+     {
+      "band": "more than 12 months after",
+      "exits": 1,
+      "chain_months": 3631,
+      "hazard_per_chain_month": "0.000275",
+      "lower": "0.000004",
+      "upper": "0.001532",
+      "per_100_chain_years": "0.33",
+      "per_100_chain_years_lower": "0.00",
+      "per_100_chain_years_upper": "1.84"
+     },
+     {
+      "band": "no connection date",
+      "exits": 0,
+      "chain_months": 3728,
+      "hazard_per_chain_month": "0.000000",
+      "lower": "0.000000",
+      "upper": "0.000984",
+      "per_100_chain_years": "0.00",
+      "per_100_chain_years_lower": "0.00",
+      "per_100_chain_years_upper": "1.18"
+     }
+    ],
+    "storage": [
+     {
+      "band": "more than 24 months before",
+      "exits": 2,
+      "chain_months": 9074,
+      "hazard_per_chain_month": "0.000220",
+      "lower": "0.000025",
+      "upper": "0.000796",
+      "per_100_chain_years": "0.26",
+      "per_100_chain_years_lower": "0.03",
+      "per_100_chain_years_upper": "0.96"
+     },
+     {
+      "band": "12 to 24 months before",
+      "exits": 1,
+      "chain_months": 1046,
+      "hazard_per_chain_month": "0.000956",
+      "lower": "0.000012",
+      "upper": "0.005319",
+      "per_100_chain_years": "1.15",
+      "per_100_chain_years_lower": "0.01",
+      "per_100_chain_years_upper": "6.38"
+     },
+     {
+      "band": "0 to 12 months before",
+      "exits": 1,
+      "chain_months": 881,
+      "hazard_per_chain_month": "0.001135",
+      "lower": "0.000015",
+      "upper": "0.006315",
+      "per_100_chain_years": "1.36",
+      "per_100_chain_years_lower": "0.02",
+      "per_100_chain_years_upper": "7.58"
+     },
+     {
+      "band": "0 to 12 months after",
+      "exits": 1,
+      "chain_months": 1155,
+      "hazard_per_chain_month": "0.000866",
+      "lower": "0.000011",
+      "upper": "0.004817",
+      "per_100_chain_years": "1.04",
+      "per_100_chain_years_lower": "0.01",
+      "per_100_chain_years_upper": "5.78"
+     },
+     {
+      "band": "more than 12 months after",
+      "exits": 0,
+      "chain_months": 2579,
+      "hazard_per_chain_month": "0.000000",
+      "lower": "0.000000",
+      "upper": "0.001422",
+      "per_100_chain_years": "0.00",
+      "per_100_chain_years_lower": "0.00",
+      "per_100_chain_years_upper": "1.71"
+     },
+     {
+      "band": "no connection date",
+      "exits": 0,
+      "chain_months": 737,
+      "hazard_per_chain_month": "0.000000",
+      "lower": "0.000000",
+      "upper": "0.004977",
+      "per_100_chain_years": "0.00",
+      "per_100_chain_years_lower": "0.00",
+      "per_100_chain_years_upper": "5.97"
+     }
+    ],
+    "storage-only": [
+     {
+      "band": "more than 24 months before",
+      "exits": 1,
+      "chain_months": 4167,
+      "hazard_per_chain_month": "0.000240",
+      "lower": "0.000003",
+      "upper": "0.001335",
+      "per_100_chain_years": "0.29",
+      "per_100_chain_years_lower": "0.00",
+      "per_100_chain_years_upper": "1.60"
+     },
+     {
+      "band": "12 to 24 months before",
+      "exits": 1,
+      "chain_months": 539,
+      "hazard_per_chain_month": "0.001855",
+      "lower": "0.000024",
+      "upper": "0.010323",
+      "per_100_chain_years": "2.23",
+      "per_100_chain_years_lower": "0.03",
+      "per_100_chain_years_upper": "12.39"
+     },
+     {
+      "band": "0 to 12 months before",
+      "exits": 1,
+      "chain_months": 451,
+      "hazard_per_chain_month": "0.002217",
+      "lower": "0.000029",
+      "upper": "0.012337",
+      "per_100_chain_years": "2.66",
+      "per_100_chain_years_lower": "0.03",
+      "per_100_chain_years_upper": "14.80"
+     },
+     {
+      "band": "0 to 12 months after",
+      "exits": 0,
+      "chain_months": 613,
+      "hazard_per_chain_month": "0.000000",
+      "lower": "0.000000",
+      "upper": "0.005984",
+      "per_100_chain_years": "0.00",
+      "per_100_chain_years_lower": "0.00",
+      "per_100_chain_years_upper": "7.18"
+     },
+     {
+      "band": "more than 12 months after",
+      "exits": 0,
+      "chain_months": 1529,
+      "hazard_per_chain_month": "0.000000",
+      "lower": "0.000000",
+      "upper": "0.002399",
+      "per_100_chain_years": "0.00",
+      "per_100_chain_years_lower": "0.00",
+      "per_100_chain_years_upper": "2.88"
+     },
+     {
+      "band": "no connection date",
+      "exits": 0,
+      "chain_months": 605,
+      "hazard_per_chain_month": "0.000000",
+      "lower": "0.000000",
+      "upper": "0.006063",
+      "per_100_chain_years": "0.00",
+      "per_100_chain_years_lower": "0.00",
+      "per_100_chain_years_upper": "7.28"
+     }
+    ],
+    "other": [
+     {
+      "band": "more than 24 months before",
+      "exits": 2,
+      "chain_months": 1846,
+      "hazard_per_chain_month": "0.001083",
+      "lower": "0.000122",
+      "upper": "0.003912",
+      "per_100_chain_years": "1.30",
+      "per_100_chain_years_lower": "0.15",
+      "per_100_chain_years_upper": "4.69"
+     },
+     {
+      "band": "12 to 24 months before",
+      "exits": 1,
+      "chain_months": 483,
+      "hazard_per_chain_month": "0.002070",
+      "lower": "0.000027",
+      "upper": "0.011519",
+      "per_100_chain_years": "2.48",
+      "per_100_chain_years_lower": "0.03",
+      "per_100_chain_years_upper": "13.82"
+     },
+     {
+      "band": "0 to 12 months before",
+      "exits": 0,
+      "chain_months": 470,
+      "hazard_per_chain_month": "0.000000",
+      "lower": "0.000000",
+      "upper": "0.007804",
+      "per_100_chain_years": "0.00",
+      "per_100_chain_years_lower": "0.00",
+      "per_100_chain_years_upper": "9.36"
+     },
+     {
+      "band": "0 to 12 months after",
+      "exits": 0,
+      "chain_months": 570,
+      "hazard_per_chain_month": "0.000000",
+      "lower": "0.000000",
+      "upper": "0.006435",
+      "per_100_chain_years": "0.00",
+      "per_100_chain_years_lower": "0.00",
+      "per_100_chain_years_upper": "7.72"
+     },
+     {
+      "band": "more than 12 months after",
+      "exits": 1,
+      "chain_months": 1052,
+      "hazard_per_chain_month": "0.000951",
+      "lower": "0.000012",
+      "upper": "0.005289",
+      "per_100_chain_years": "1.14",
+      "per_100_chain_years_lower": "0.01",
+      "per_100_chain_years_upper": "6.35"
+     },
+     {
+      "band": "no connection date",
+      "exits": 0,
+      "chain_months": 2991,
+      "hazard_per_chain_month": "0.000000",
+      "lower": "0.000000",
+      "upper": "0.001226",
+      "per_100_chain_years": "0.00",
+      "per_100_chain_years_lower": "0.00",
+      "per_100_chain_years_upper": "1.47"
+     }
+    ]
+   },
+   "B": {
+    "all": [
+     {
+      "band": "more than 24 months before",
+      "exits": 4,
+      "chain_months": 10245,
+      "hazard_per_chain_month": "0.000390",
+      "lower": "0.000105",
+      "upper": "0.001000",
+      "per_100_chain_years": "0.47",
+      "per_100_chain_years_lower": "0.13",
+      "per_100_chain_years_upper": "1.20"
+     },
+     {
+      "band": "12 to 24 months before",
+      "exits": 2,
+      "chain_months": 1238,
+      "hazard_per_chain_month": "0.001616",
+      "lower": "0.000181",
+      "upper": "0.005833",
+      "per_100_chain_years": "1.94",
+      "per_100_chain_years_lower": "0.22",
+      "per_100_chain_years_upper": "7.00"
+     },
+     {
+      "band": "0 to 12 months before",
+      "exits": 1,
+      "chain_months": 883,
+      "hazard_per_chain_month": "0.001133",
+      "lower": "0.000015",
+      "upper": "0.006301",
+      "per_100_chain_years": "1.36",
+      "per_100_chain_years_lower": "0.02",
+      "per_100_chain_years_upper": "7.56"
+     },
+     {
+      "band": "0 to 12 months after",
+      "exits": 0,
+      "chain_months": 998,
+      "hazard_per_chain_month": "0.000000",
+      "lower": "0.000000",
+      "upper": "0.003675",
+      "per_100_chain_years": "0.00",
+      "per_100_chain_years_lower": "0.00",
+      "per_100_chain_years_upper": "4.41"
+     },
+     {
+      "band": "more than 12 months after",
+      "exits": 2,
+      "chain_months": 7937,
+      "hazard_per_chain_month": "0.000252",
+      "lower": "0.000028",
+      "upper": "0.000910",
+      "per_100_chain_years": "0.30",
+      "per_100_chain_years_lower": "0.03",
+      "per_100_chain_years_upper": "1.09"
+     },
+     {
+      "band": "no connection date",
+      "exits": 0,
+      "chain_months": 1583,
+      "hazard_per_chain_month": "0.000000",
+      "lower": "0.000000",
+      "upper": "0.002317",
+      "per_100_chain_years": "0.00",
+      "per_100_chain_years_lower": "0.00",
+      "per_100_chain_years_upper": "2.78"
+     }
+    ],
+    "storage": [
+     {
+      "band": "more than 24 months before",
+      "exits": 2,
+      "chain_months": 8508,
+      "hazard_per_chain_month": "0.000235",
+      "lower": "0.000026",
+      "upper": "0.000849",
+      "per_100_chain_years": "0.28",
+      "per_100_chain_years_lower": "0.03",
+      "per_100_chain_years_upper": "1.02"
+     },
+     {
+      "band": "12 to 24 months before",
+      "exits": 1,
+      "chain_months": 944,
+      "hazard_per_chain_month": "0.001059",
+      "lower": "0.000014",
+      "upper": "0.005894",
+      "per_100_chain_years": "1.27",
+      "per_100_chain_years_lower": "0.02",
+      "per_100_chain_years_upper": "7.07"
+     },
+     {
+      "band": "0 to 12 months before",
+      "exits": 1,
+      "chain_months": 717,
+      "hazard_per_chain_month": "0.001395",
+      "lower": "0.000018",
+      "upper": "0.007760",
+      "per_100_chain_years": "1.67",
+      "per_100_chain_years_lower": "0.02",
+      "per_100_chain_years_upper": "9.31"
+     },
+     {
+      "band": "0 to 12 months after",
+      "exits": 0,
+      "chain_months": 772,
+      "hazard_per_chain_month": "0.000000",
+      "lower": "0.000000",
+      "upper": "0.004751",
+      "per_100_chain_years": "0.00",
+      "per_100_chain_years_lower": "0.00",
+      "per_100_chain_years_upper": "5.70"
+     },
+     {
+      "band": "more than 12 months after",
+      "exits": 1,
+      "chain_months": 4234,
+      "hazard_per_chain_month": "0.000236",
+      "lower": "0.000003",
+      "upper": "0.001314",
+      "per_100_chain_years": "0.28",
+      "per_100_chain_years_lower": "0.00",
+      "per_100_chain_years_upper": "1.58"
+     },
+     {
+      "band": "no connection date",
+      "exits": 0,
+      "chain_months": 297,
+      "hazard_per_chain_month": "0.000000",
+      "lower": "0.000000",
+      "upper": "0.012350",
+      "per_100_chain_years": "0.00",
+      "per_100_chain_years_lower": "0.00",
+      "per_100_chain_years_upper": "14.82"
+     }
+    ],
+    "storage-only": [
+     {
+      "band": "more than 24 months before",
+      "exits": 1,
+      "chain_months": 4079,
+      "hazard_per_chain_month": "0.000245",
+      "lower": "0.000003",
+      "upper": "0.001364",
+      "per_100_chain_years": "0.29",
+      "per_100_chain_years_lower": "0.00",
+      "per_100_chain_years_upper": "1.64"
+     },
+     {
+      "band": "12 to 24 months before",
+      "exits": 1,
+      "chain_months": 549,
+      "hazard_per_chain_month": "0.001821",
+      "lower": "0.000024",
+      "upper": "0.010135",
+      "per_100_chain_years": "2.19",
+      "per_100_chain_years_lower": "0.03",
+      "per_100_chain_years_upper": "12.16"
+     },
+     {
+      "band": "0 to 12 months before",
+      "exits": 1,
+      "chain_months": 395,
+      "hazard_per_chain_month": "0.002532",
+      "lower": "0.000033",
+      "upper": "0.014086",
+      "per_100_chain_years": "3.04",
+      "per_100_chain_years_lower": "0.04",
+      "per_100_chain_years_upper": "16.90"
+     },
+     {
+      "band": "0 to 12 months after",
+      "exits": 0,
+      "chain_months": 398,
+      "hazard_per_chain_month": "0.000000",
+      "lower": "0.000000",
+      "upper": "0.009216",
+      "per_100_chain_years": "0.00",
+      "per_100_chain_years_lower": "0.00",
+      "per_100_chain_years_upper": "11.06"
+     },
+     {
+      "band": "more than 12 months after",
+      "exits": 0,
+      "chain_months": 2362,
+      "hazard_per_chain_month": "0.000000",
+      "lower": "0.000000",
+      "upper": "0.001553",
+      "per_100_chain_years": "0.00",
+      "per_100_chain_years_lower": "0.00",
+      "per_100_chain_years_upper": "1.86"
+     },
+     {
+      "band": "no connection date",
+      "exits": 0,
+      "chain_months": 121,
+      "hazard_per_chain_month": "0.000000",
+      "lower": "0.000000",
+      "upper": "0.030315",
+      "per_100_chain_years": "0.00",
+      "per_100_chain_years_lower": "0.00",
+      "per_100_chain_years_upper": "36.38"
+     }
+    ],
+    "other": [
+     {
+      "band": "more than 24 months before",
+      "exits": 2,
+      "chain_months": 1737,
+      "hazard_per_chain_month": "0.001151",
+      "lower": "0.000129",
+      "upper": "0.004157",
+      "per_100_chain_years": "1.38",
+      "per_100_chain_years_lower": "0.15",
+      "per_100_chain_years_upper": "4.99"
+     },
+     {
+      "band": "12 to 24 months before",
+      "exits": 1,
+      "chain_months": 294,
+      "hazard_per_chain_month": "0.003401",
+      "lower": "0.000044",
+      "upper": "0.018925",
+      "per_100_chain_years": "4.08",
+      "per_100_chain_years_lower": "0.05",
+      "per_100_chain_years_upper": "22.71"
+     },
+     {
+      "band": "0 to 12 months before",
+      "exits": 0,
+      "chain_months": 166,
+      "hazard_per_chain_month": "0.000000",
+      "lower": "0.000000",
+      "upper": "0.022097",
+      "per_100_chain_years": "0.00",
+      "per_100_chain_years_lower": "0.00",
+      "per_100_chain_years_upper": "26.52"
+     },
+     {
+      "band": "0 to 12 months after",
+      "exits": 0,
+      "chain_months": 226,
+      "hazard_per_chain_month": "0.000000",
+      "lower": "0.000000",
+      "upper": "0.016231",
+      "per_100_chain_years": "0.00",
+      "per_100_chain_years_lower": "0.00",
+      "per_100_chain_years_upper": "19.48"
+     },
+     {
+      "band": "more than 12 months after",
+      "exits": 1,
+      "chain_months": 3703,
+      "hazard_per_chain_month": "0.000270",
+      "lower": "0.000004",
+      "upper": "0.001503",
+      "per_100_chain_years": "0.32",
+      "per_100_chain_years_lower": "0.00",
+      "per_100_chain_years_upper": "1.80"
+     },
+     {
+      "band": "no connection date",
+      "exits": 0,
+      "chain_months": 1286,
+      "hazard_per_chain_month": "0.000000",
+      "lower": "0.000000",
+      "upper": "0.002852",
+      "per_100_chain_years": "0.00",
+      "per_100_chain_years_lower": "0.00",
+      "per_100_chain_years_upper": "3.42"
+     }
+    ]
+   },
+   "C": {
+    "all": [
+     {
+      "band": "more than 24 months before",
+      "exits": 4,
+      "chain_months": 10859,
+      "hazard_per_chain_month": "0.000368",
+      "lower": "0.000099",
+      "upper": "0.000943",
+      "per_100_chain_years": "0.44",
+      "per_100_chain_years_lower": "0.12",
+      "per_100_chain_years_upper": "1.13"
+     },
+     {
+      "band": "12 to 24 months before",
+      "exits": 2,
+      "chain_months": 1484,
+      "hazard_per_chain_month": "0.001348",
+      "lower": "0.000151",
+      "upper": "0.004866",
+      "per_100_chain_years": "1.62",
+      "per_100_chain_years_lower": "0.18",
+      "per_100_chain_years_upper": "5.84"
+     },
+     {
+      "band": "0 to 12 months before",
+      "exits": 1,
+      "chain_months": 1263,
+      "hazard_per_chain_month": "0.000792",
+      "lower": "0.000010",
+      "upper": "0.004405",
+      "per_100_chain_years": "0.95",
+      "per_100_chain_years_lower": "0.01",
+      "per_100_chain_years_upper": "5.29"
+     },
+     {
+      "band": "0 to 12 months after",
+      "exits": 1,
+      "chain_months": 1560,
+      "hazard_per_chain_month": "0.000641",
+      "lower": "0.000008",
+      "upper": "0.003567",
+      "per_100_chain_years": "0.77",
+      "per_100_chain_years_lower": "0.01",
+      "per_100_chain_years_upper": "4.28"
+     },
+     {
+      "band": "more than 12 months after",
+      "exits": 1,
+      "chain_months": 4115,
+      "hazard_per_chain_month": "0.000243",
+      "lower": "0.000003",
+      "upper": "0.001352",
+      "per_100_chain_years": "0.29",
+      "per_100_chain_years_lower": "0.00",
+      "per_100_chain_years_upper": "1.62"
+     },
+     {
+      "band": "no connection date",
+      "exits": 0,
+      "chain_months": 3603,
+      "hazard_per_chain_month": "0.000000",
+      "lower": "0.000000",
+      "upper": "0.001018",
+      "per_100_chain_years": "0.00",
+      "per_100_chain_years_lower": "0.00",
+      "per_100_chain_years_upper": "1.22"
+     }
+    ],
+    "storage": [
+     {
+      "band": "more than 24 months before",
+      "exits": 2,
+      "chain_months": 9028,
+      "hazard_per_chain_month": "0.000222",
+      "lower": "0.000025",
+      "upper": "0.000800",
+      "per_100_chain_years": "0.27",
+      "per_100_chain_years_lower": "0.03",
+      "per_100_chain_years_upper": "0.96"
+     },
+     {
+      "band": "12 to 24 months before",
+      "exits": 1,
+      "chain_months": 1021,
+      "hazard_per_chain_month": "0.000979",
+      "lower": "0.000013",
+      "upper": "0.005449",
+      "per_100_chain_years": "1.17",
+      "per_100_chain_years_lower": "0.02",
+      "per_100_chain_years_upper": "6.54"
+     },
+     {
+      "band": "0 to 12 months before",
+      "exits": 1,
+      "chain_months": 849,
+      "hazard_per_chain_month": "0.001178",
+      "lower": "0.000015",
+      "upper": "0.006553",
+      "per_100_chain_years": "1.41",
+      "per_100_chain_years_lower": "0.02",
+      "per_100_chain_years_upper": "7.86"
+     },
+     {
+      "band": "0 to 12 months after",
+      "exits": 1,
+      "chain_months": 1073,
+      "hazard_per_chain_month": "0.000932",
+      "lower": "0.000012",
+      "upper": "0.005185",
+      "per_100_chain_years": "1.12",
+      "per_100_chain_years_lower": "0.01",
+      "per_100_chain_years_upper": "6.22"
+     },
+     {
+      "band": "more than 12 months after",
+      "exits": 0,
+      "chain_months": 2836,
+      "hazard_per_chain_month": "0.000000",
+      "lower": "0.000000",
+      "upper": "0.001293",
+      "per_100_chain_years": "0.00",
+      "per_100_chain_years_lower": "0.00",
+      "per_100_chain_years_upper": "1.55"
+     },
+     {
+      "band": "no connection date",
+      "exits": 0,
+      "chain_months": 665,
+      "hazard_per_chain_month": "0.000000",
+      "lower": "0.000000",
+      "upper": "0.005516",
+      "per_100_chain_years": "0.00",
+      "per_100_chain_years_lower": "0.00",
+      "per_100_chain_years_upper": "6.62"
+     }
+    ],
+    "storage-only": [
+     {
+      "band": "more than 24 months before",
+      "exits": 1,
+      "chain_months": 4167,
+      "hazard_per_chain_month": "0.000240",
+      "lower": "0.000003",
+      "upper": "0.001335",
+      "per_100_chain_years": "0.29",
+      "per_100_chain_years_lower": "0.00",
+      "per_100_chain_years_upper": "1.60"
+     },
+     {
+      "band": "12 to 24 months before",
+      "exits": 1,
+      "chain_months": 514,
+      "hazard_per_chain_month": "0.001946",
+      "lower": "0.000025",
+      "upper": "0.010825",
+      "per_100_chain_years": "2.34",
+      "per_100_chain_years_lower": "0.03",
+      "per_100_chain_years_upper": "12.99"
+     },
+     {
+      "band": "0 to 12 months before",
+      "exits": 1,
+      "chain_months": 413,
+      "hazard_per_chain_month": "0.002421",
+      "lower": "0.000032",
+      "upper": "0.013472",
+      "per_100_chain_years": "2.91",
+      "per_100_chain_years_lower": "0.04",
+      "per_100_chain_years_upper": "16.17"
+     },
+     {
+      "band": "0 to 12 months after",
+      "exits": 0,
+      "chain_months": 537,
+      "hazard_per_chain_month": "0.000000",
+      "lower": "0.000000",
+      "upper": "0.006831",
+      "per_100_chain_years": "0.00",
+      "per_100_chain_years_lower": "0.00",
+      "per_100_chain_years_upper": "8.20"
+     },
+     {
+      "band": "more than 12 months after",
+      "exits": 0,
+      "chain_months": 1724,
+      "hazard_per_chain_month": "0.000000",
+      "lower": "0.000000",
+      "upper": "0.002128",
+      "per_100_chain_years": "0.00",
+      "per_100_chain_years_lower": "0.00",
+      "per_100_chain_years_upper": "2.55"
+     },
+     {
+      "band": "no connection date",
+      "exits": 0,
+      "chain_months": 549,
+      "hazard_per_chain_month": "0.000000",
+      "lower": "0.000000",
+      "upper": "0.006681",
+      "per_100_chain_years": "0.00",
+      "per_100_chain_years_lower": "0.00",
+      "per_100_chain_years_upper": "8.02"
+     }
+    ],
+    "other": [
+     {
+      "band": "more than 24 months before",
+      "exits": 2,
+      "chain_months": 1831,
+      "hazard_per_chain_month": "0.001092",
+      "lower": "0.000123",
+      "upper": "0.003944",
+      "per_100_chain_years": "1.31",
+      "per_100_chain_years_lower": "0.15",
+      "per_100_chain_years_upper": "4.73"
+     },
+     {
+      "band": "12 to 24 months before",
+      "exits": 1,
+      "chain_months": 463,
+      "hazard_per_chain_month": "0.002160",
+      "lower": "0.000028",
+      "upper": "0.012017",
+      "per_100_chain_years": "2.59",
+      "per_100_chain_years_lower": "0.03",
+      "per_100_chain_years_upper": "14.42"
+     },
+     {
+      "band": "0 to 12 months before",
+      "exits": 0,
+      "chain_months": 414,
+      "hazard_per_chain_month": "0.000000",
+      "lower": "0.000000",
+      "upper": "0.008860",
+      "per_100_chain_years": "0.00",
+      "per_100_chain_years_lower": "0.00",
+      "per_100_chain_years_upper": "10.63"
+     },
+     {
+      "band": "0 to 12 months after",
+      "exits": 0,
+      "chain_months": 487,
+      "hazard_per_chain_month": "0.000000",
+      "lower": "0.000000",
+      "upper": "0.007532",
+      "per_100_chain_years": "0.00",
+      "per_100_chain_years_lower": "0.00",
+      "per_100_chain_years_upper": "9.04"
+     },
+     {
+      "band": "more than 12 months after",
+      "exits": 1,
+      "chain_months": 1279,
+      "hazard_per_chain_month": "0.000782",
+      "lower": "0.000010",
+      "upper": "0.004350",
+      "per_100_chain_years": "0.94",
+      "per_100_chain_years_lower": "0.01",
+      "per_100_chain_years_upper": "5.22"
+     },
+     {
+      "band": "no connection date",
+      "exits": 0,
+      "chain_months": 2938,
+      "hazard_per_chain_month": "0.000000",
+      "lower": "0.000000",
+      "upper": "0.001249",
+      "per_100_chain_years": "0.00",
+      "per_100_chain_years_lower": "0.00",
+      "per_100_chain_years_upper": "1.50"
+     }
+    ]
+   }
+  }
+ },
+ "flat": {
+  "storage_old_A": false,
+  "storage_old_B": true,
+  "storage_old_C": true,
+  "storage_only_old_A": false,
+  "all_old_A": false,
+  "other_old_A": false
+ },
+ "storage_strata_old_A": {
+  "status": {
+   "Awaiting Consents": {
+    "exits": 14,
+    "chain_months": 4666,
+    "bands": [
+     {
+      "band": "more than 24 months before",
+      "exits": 2,
+      "chain_months": 3078,
+      "per_100_chain_years": "0.78",
+      "lower": "0.09",
+      "upper": "2.82"
+     },
+     {
+      "band": "12 to 24 months before",
+      "exits": 0,
+      "chain_months": 501,
+      "per_100_chain_years": "0.00",
+      "lower": "0.00",
+      "upper": "8.79"
+     },
+     {
+      "band": "0 to 12 months before",
+      "exits": 1,
+      "chain_months": 404,
+      "per_100_chain_years": "2.97",
+      "lower": "0.04",
+      "upper": "16.53"
+     },
+     {
+      "band": "0 to 12 months after",
+      "exits": 2,
+      "chain_months": 342,
+      "per_100_chain_years": "7.02",
+      "lower": "0.79",
+      "upper": "25.34"
+     },
+     {
+      "band": "more than 12 months after",
+      "exits": 9,
+      "chain_months": 341,
+      "per_100_chain_years": "31.67",
+      "lower": "14.45",
+      "upper": "60.13"
+     },
+     {
+      "band": "no connection date",
+      "exits": 0,
+      "chain_months": 0,
+      "per_100_chain_years": null,
+      "lower": null,
+      "upper": null
+     }
+    ]
+   },
+   "Built": {
+    "exits": 0,
+    "chain_months": 6051,
+    "bands": [
+     {
+      "band": "more than 24 months before",
+      "exits": 0,
+      "chain_months": 1431,
+      "per_100_chain_years": "0.00",
+      "lower": "0.00",
+      "upper": "3.08"
+     },
+     {
+      "band": "12 to 24 months before",
+      "exits": 0,
+      "chain_months": 160,
+      "per_100_chain_years": "0.00",
+      "lower": "0.00",
+      "upper": "27.51"
+     },
+     {
+      "band": "0 to 12 months before",
+      "exits": 0,
+      "chain_months": 139,
+      "per_100_chain_years": "0.00",
+      "lower": "0.00",
+      "upper": "31.67"
+     },
+     {
+      "band": "0 to 12 months after",
+      "exits": 0,
+      "chain_months": 136,
+      "per_100_chain_years": "0.00",
+      "lower": "0.00",
+      "upper": "32.37"
+     },
+     {
+      "band": "more than 12 months after",
+      "exits": 0,
+      "chain_months": 195,
+      "per_100_chain_years": "0.00",
+      "lower": "0.00",
+      "upper": "22.57"
+     },
+     {
+      "band": "no connection date",
+      "exits": 0,
+      "chain_months": 3990,
+      "per_100_chain_years": "0.00",
+      "lower": "0.00",
+      "upper": "1.10"
+     }
+    ]
+   },
+   "Consents Approved": {
+    "exits": 2,
+    "chain_months": 6087,
+    "bands": [
+     {
+      "band": "more than 24 months before",
+      "exits": 0,
+      "chain_months": 1997,
+      "per_100_chain_years": "0.00",
+      "lower": "0.00",
+      "upper": "2.20"
+     },
+     {
+      "band": "12 to 24 months before",
+      "exits": 0,
+      "chain_months": 892,
+      "per_100_chain_years": "0.00",
+      "lower": "0.00",
+      "upper": "4.93"
+     },
+     {
+      "band": "0 to 12 months before",
+      "exits": 0,
+      "chain_months": 886,
+      "per_100_chain_years": "0.00",
+      "lower": "0.00",
+      "upper": "4.97"
+     },
+     {
+      "band": "0 to 12 months after",
+      "exits": 0,
+      "chain_months": 886,
+      "per_100_chain_years": "0.00",
+      "lower": "0.00",
+      "upper": "4.97"
+     },
+     {
+      "band": "more than 12 months after",
+      "exits": 2,
+      "chain_months": 1426,
+      "per_100_chain_years": "1.68",
+      "lower": "0.19",
+      "upper": "6.08"
+     },
+     {
+      "band": "no connection date",
+      "exits": 0,
+      "chain_months": 0,
+      "per_100_chain_years": null,
+      "lower": null,
+      "upper": null
+     }
+    ]
+   },
+   "Scoping": {
+    "exits": 76,
+    "chain_months": 26923,
+    "bands": [
+     {
+      "band": "more than 24 months before",
+      "exits": 35,
+      "chain_months": 21028,
+      "per_100_chain_years": "2.00",
+      "lower": "1.39",
+      "upper": "2.78"
+     },
+     {
+      "band": "12 to 24 months before",
+      "exits": 8,
+      "chain_months": 2301,
+      "per_100_chain_years": "4.17",
+      "lower": "1.80",
+      "upper": "8.22"
+     },
+     {
+      "band": "0 to 12 months before",
+      "exits": 5,
+      "chain_months": 1685,
+      "per_100_chain_years": "3.56",
+      "lower": "1.15",
+      "upper": "8.31"
+     },
+     {
+      "band": "0 to 12 months after",
+      "exits": 9,
+      "chain_months": 1115,
+      "per_100_chain_years": "9.69",
+      "lower": "4.42",
+      "upper": "18.39"
+     },
+     {
+      "band": "more than 12 months after",
+      "exits": 19,
+      "chain_months": 794,
+      "per_100_chain_years": "28.71",
+      "lower": "17.28",
+      "upper": "44.85"
+     },
+     {
+      "band": "no connection date",
+      "exits": 0,
+      "chain_months": 0,
+      "per_100_chain_years": null,
+      "lower": null,
+      "upper": null
+     }
+    ]
+   },
+   "Terminated": {
+    "exits": 2,
+    "chain_months": 60,
+    "bands": [
+     {
+      "band": "more than 24 months before",
+      "exits": 0,
+      "chain_months": 0,
+      "per_100_chain_years": null,
+      "lower": null,
+      "upper": null
+     },
+     {
+      "band": "12 to 24 months before",
+      "exits": 0,
+      "chain_months": 12,
+      "per_100_chain_years": "0.00",
+      "lower": "0.00",
+      "upper": "366.81"
+     },
+     {
+      "band": "0 to 12 months before",
+      "exits": 0,
+      "chain_months": 22,
+      "per_100_chain_years": "0.00",
+      "lower": "0.00",
+      "upper": "200.08"
+     },
+     {
+      "band": "0 to 12 months after",
+      "exits": 0,
+      "chain_months": 24,
+      "per_100_chain_years": "0.00",
+      "lower": "0.00",
+      "upper": "183.40"
+     },
+     {
+      "band": "more than 12 months after",
+      "exits": 2,
+      "chain_months": 2,
+      "per_100_chain_years": "1200.00",
+      "lower": "134.77",
+      "upper": "4332.59"
+     },
+     {
+      "band": "no connection date",
+      "exits": 0,
+      "chain_months": 0,
+      "per_100_chain_years": null,
+      "lower": null,
+      "upper": null
+     }
+    ]
+   },
+   "Under Construction/Commissioning": {
+    "exits": 2,
+    "chain_months": 1190,
+    "bands": [
+     {
+      "band": "more than 24 months before",
+      "exits": 0,
+      "chain_months": 110,
+      "per_100_chain_years": "0.00",
+      "lower": "0.00",
+      "upper": "40.02"
+     },
+     {
+      "band": "12 to 24 months before",
+      "exits": 0,
+      "chain_months": 143,
+      "per_100_chain_years": "0.00",
+      "lower": "0.00",
+      "upper": "30.78"
+     },
+     {
+      "band": "0 to 12 months before",
+      "exits": 0,
+      "chain_months": 180,
+      "per_100_chain_years": "0.00",
+      "lower": "0.00",
+      "upper": "24.45"
+     },
+     {
+      "band": "0 to 12 months after",
+      "exits": 0,
+      "chain_months": 216,
+      "per_100_chain_years": "0.00",
+      "lower": "0.00",
+      "upper": "20.38"
+     },
+     {
+      "band": "more than 12 months after",
+      "exits": 1,
+      "chain_months": 488,
+      "per_100_chain_years": "2.46",
+      "lower": "0.03",
+      "upper": "13.68"
+     },
+     {
+      "band": "no connection date",
+      "exits": 1,
+      "chain_months": 53,
+      "per_100_chain_years": "22.64",
+      "lower": "0.30",
+      "upper": "125.97"
+     }
+    ]
+   }
+  },
+  "agreement": {
+   "blank": {
+    "exits": 13,
+    "chain_months": 143,
+    "bands": [
+     {
+      "band": "more than 24 months before",
+      "exits": 0,
+      "chain_months": 0,
+      "per_100_chain_years": null,
+      "lower": null,
+      "upper": null
+     },
+     {
+      "band": "12 to 24 months before",
+      "exits": 0,
+      "chain_months": 5,
+      "per_100_chain_years": "0.00",
+      "lower": "0.00",
+      "upper": "880.34"
+     },
+     {
+      "band": "0 to 12 months before",
+      "exits": 2,
+      "chain_months": 39,
+      "per_100_chain_years": "61.54",
+      "lower": "6.91",
+      "upper": "222.18"
+     },
+     {
+      "band": "0 to 12 months after",
+      "exits": 4,
+      "chain_months": 42,
+      "per_100_chain_years": "114.29",
+      "lower": "30.75",
+      "upper": "292.60"
+     },
+     {
+      "band": "more than 12 months after",
+      "exits": 7,
+      "chain_months": 57,
+      "per_100_chain_years": "147.37",
+      "lower": "59.04",
+      "upper": "303.65"
+     },
+     {
+      "band": "no connection date",
+      "exits": 0,
+      "chain_months": 0,
+      "per_100_chain_years": null,
+      "lower": null,
+      "upper": null
+     }
+    ]
+   },
+   "directly connected": {
+    "exits": 76,
+    "chain_months": 38570,
+    "bands": [
+     {
+      "band": "more than 24 months before",
+      "exits": 35,
+      "chain_months": 25108,
+      "per_100_chain_years": "1.67",
+      "lower": "1.17",
+      "upper": "2.33"
+     },
+     {
+      "band": "12 to 24 months before",
+      "exits": 7,
+      "chain_months": 3677,
+      "per_100_chain_years": "2.28",
+      "lower": "0.92",
+      "upper": "4.71"
+     },
+     {
+      "band": "0 to 12 months before",
+      "exits": 4,
+      "chain_months": 2954,
+      "per_100_chain_years": "1.62",
+      "lower": "0.44",
+      "upper": "4.16"
+     },
+     {
+      "band": "0 to 12 months after",
+      "exits": 5,
+      "chain_months": 2289,
+      "per_100_chain_years": "2.62",
+      "lower": "0.84",
+      "upper": "6.12"
+     },
+     {
+      "band": "more than 12 months after",
+      "exits": 24,
+      "chain_months": 2228,
+      "per_100_chain_years": "12.93",
+      "lower": "8.28",
+      "upper": "19.23"
+     },
+     {
+      "band": "no connection date",
+      "exits": 1,
+      "chain_months": 2314,
+      "per_100_chain_years": "0.52",
+      "lower": "0.01",
+      "upper": "2.88"
+     }
+    ]
+   },
+   "embedded": {
+    "exits": 7,
+    "chain_months": 6264,
+    "bands": [
+     {
+      "band": "more than 24 months before",
+      "exits": 2,
+      "chain_months": 2536,
+      "per_100_chain_years": "0.95",
+      "lower": "0.11",
+      "upper": "3.42"
+     },
+     {
+      "band": "12 to 24 months before",
+      "exits": 1,
+      "chain_months": 327,
+      "per_100_chain_years": "3.67",
+      "lower": "0.05",
+      "upper": "20.42"
+     },
+     {
+      "band": "0 to 12 months before",
+      "exits": 0,
+      "chain_months": 323,
+      "per_100_chain_years": "0.00",
+      "lower": "0.00",
+      "upper": "13.63"
+     },
+     {
+      "band": "0 to 12 months after",
+      "exits": 2,
+      "chain_months": 388,
+      "per_100_chain_years": "6.19",
+      "lower": "0.69",
+      "upper": "22.33"
+     },
+     {
+      "band": "more than 12 months after",
+      "exits": 2,
+      "chain_months": 961,
+      "per_100_chain_years": "2.50",
+      "lower": "0.28",
+      "upper": "9.02"
+     },
+     {
+      "band": "no connection date",
+      "exits": 0,
+      "chain_months": 1729,
+      "per_100_chain_years": "0.00",
+      "lower": "0.00",
+      "upper": "2.55"
+     }
+    ]
+   }
+  },
+  "host_to": {
+   "NGET": {
+    "exits": 70,
+    "chain_months": 32002,
+    "bands": [
+     {
+      "band": "more than 24 months before",
+      "exits": 28,
+      "chain_months": 20679,
+      "per_100_chain_years": "1.62",
+      "lower": "1.08",
+      "upper": "2.35"
+     },
+     {
+      "band": "12 to 24 months before",
+      "exits": 4,
+      "chain_months": 2330,
+      "per_100_chain_years": "2.06",
+      "lower": "0.55",
+      "upper": "5.27"
+     },
+     {
+      "band": "0 to 12 months before",
+      "exits": 3,
+      "chain_months": 2080,
+      "per_100_chain_years": "1.73",
+      "lower": "0.35",
+      "upper": "5.06"
+     },
+     {
+      "band": "0 to 12 months after",
+      "exits": 7,
+      "chain_months": 1746,
+      "per_100_chain_years": "4.81",
+      "lower": "1.93",
+      "upper": "9.91"
+     },
+     {
+      "band": "more than 12 months after",
+      "exits": 27,
+      "chain_months": 2036,
+      "per_100_chain_years": "15.91",
+      "lower": "10.48",
+      "upper": "23.15"
+     },
+     {
+      "band": "no connection date",
+      "exits": 1,
+      "chain_months": 3131,
+      "per_100_chain_years": "0.38",
+      "lower": "0.00",
+      "upper": "2.13"
+     }
+    ]
+   },
+   "SHET": {
+    "exits": 15,
+    "chain_months": 5177,
+    "bands": [
+     {
+      "band": "more than 24 months before",
+      "exits": 6,
+      "chain_months": 3163,
+      "per_100_chain_years": "2.28",
+      "lower": "0.83",
+      "upper": "4.95"
+     },
+     {
+      "band": "12 to 24 months before",
+      "exits": 4,
+      "chain_months": 594,
+      "per_100_chain_years": "8.08",
+      "lower": "2.17",
+      "upper": "20.69"
+     },
+     {
+      "band": "0 to 12 months before",
+      "exits": 1,
+      "chain_months": 353,
+      "per_100_chain_years": "3.40",
+      "lower": "0.04",
+      "upper": "18.91"
+     },
+     {
+      "band": "0 to 12 months after",
+      "exits": 2,
+      "chain_months": 274,
+      "per_100_chain_years": "8.76",
+      "lower": "0.98",
+      "upper": "31.62"
+     },
+     {
+      "band": "more than 12 months after",
+      "exits": 2,
+      "chain_months": 492,
+      "per_100_chain_years": "4.88",
+      "lower": "0.55",
+      "upper": "17.61"
+     },
+     {
+      "band": "no connection date",
+      "exits": 0,
+      "chain_months": 301,
+      "per_100_chain_years": "0.00",
+      "lower": "0.00",
+      "upper": "14.62"
+     }
+    ]
+   },
+   "SPT": {
+    "exits": 11,
+    "chain_months": 7798,
+    "bands": [
+     {
+      "band": "more than 24 months before",
+      "exits": 3,
+      "chain_months": 3802,
+      "per_100_chain_years": "0.95",
+      "lower": "0.19",
+      "upper": "2.77"
+     },
+     {
+      "band": "12 to 24 months before",
+      "exits": 0,
+      "chain_months": 1085,
+      "per_100_chain_years": "0.00",
+      "lower": "0.00",
+      "upper": "4.06"
+     },
+     {
+      "band": "0 to 12 months before",
+      "exits": 2,
+      "chain_months": 883,
+      "per_100_chain_years": "2.72",
+      "lower": "0.30",
+      "upper": "9.81"
+     },
+     {
+      "band": "0 to 12 months after",
+      "exits": 2,
+      "chain_months": 699,
+      "per_100_chain_years": "3.43",
+      "lower": "0.39",
+      "upper": "12.40"
+     },
+     {
+      "band": "more than 12 months after",
+      "exits": 4,
+      "chain_months": 718,
+      "per_100_chain_years": "6.69",
+      "lower": "1.80",
+      "upper": "17.12"
+     },
+     {
+      "band": "no connection date",
+      "exits": 0,
+      "chain_months": 611,
+      "per_100_chain_years": "0.00",
+      "lower": "0.00",
+      "upper": "7.20"
+     }
+    ]
+   }
+  },
+  "cohort": {
+   "2014": {
+    "exits": 0,
+    "chain_months": 134,
+    "bands": [
+     {
+      "band": "more than 24 months before",
+      "exits": 0,
+      "chain_months": 134,
+      "per_100_chain_years": "0.00",
+      "lower": "0.00",
+      "upper": "32.85"
+     },
+     {
+      "band": "12 to 24 months before",
+      "exits": 0,
+      "chain_months": 0,
+      "per_100_chain_years": null,
+      "lower": null,
+      "upper": null
+     },
+     {
+      "band": "0 to 12 months before",
+      "exits": 0,
+      "chain_months": 0,
+      "per_100_chain_years": null,
+      "lower": null,
+      "upper": null
+     },
+     {
+      "band": "0 to 12 months after",
+      "exits": 0,
+      "chain_months": 0,
+      "per_100_chain_years": null,
+      "lower": null,
+      "upper": null
+     },
+     {
+      "band": "more than 12 months after",
+      "exits": 0,
+      "chain_months": 0,
+      "per_100_chain_years": null,
+      "lower": null,
+      "upper": null
+     },
+     {
+      "band": "no connection date",
+      "exits": 0,
+      "chain_months": 0,
+      "per_100_chain_years": null,
+      "lower": null,
+      "upper": null
+     }
+    ]
+   },
+   "2014 opening": {
+    "exits": 0,
+    "chain_months": 2431,
+    "bands": [
+     {
+      "band": "more than 24 months before",
+      "exits": 0,
+      "chain_months": 1699,
+      "per_100_chain_years": "0.00",
+      "lower": "0.00",
+      "upper": "2.59"
+     },
+     {
+      "band": "12 to 24 months before",
+      "exits": 0,
+      "chain_months": 98,
+      "per_100_chain_years": "0.00",
+      "lower": "0.00",
+      "upper": "44.92"
+     },
+     {
+      "band": "0 to 12 months before",
+      "exits": 0,
+      "chain_months": 73,
+      "per_100_chain_years": "0.00",
+      "lower": "0.00",
+      "upper": "60.30"
+     },
+     {
+      "band": "0 to 12 months after",
+      "exits": 0,
+      "chain_months": 68,
+      "per_100_chain_years": "0.00",
+      "lower": "0.00",
+      "upper": "64.73"
+     },
+     {
+      "band": "more than 12 months after",
+      "exits": 0,
+      "chain_months": 64,
+      "per_100_chain_years": "0.00",
+      "lower": "0.00",
+      "upper": "68.78"
+     },
+     {
+      "band": "no connection date",
+      "exits": 0,
+      "chain_months": 429,
+      "per_100_chain_years": "0.00",
+      "lower": "0.00",
+      "upper": "10.26"
+     }
+    ]
+   },
+   "2015": {
+    "exits": 0,
+    "chain_months": 254,
+    "bands": [
+     {
+      "band": "more than 24 months before",
+      "exits": 0,
+      "chain_months": 123,
+      "per_100_chain_years": "0.00",
+      "lower": "0.00",
+      "upper": "35.79"
+     },
+     {
+      "band": "12 to 24 months before",
+      "exits": 0,
+      "chain_months": 0,
+      "per_100_chain_years": null,
+      "lower": null,
+      "upper": null
+     },
+     {
+      "band": "0 to 12 months before",
+      "exits": 0,
+      "chain_months": 0,
+      "per_100_chain_years": null,
+      "lower": null,
+      "upper": null
+     },
+     {
+      "band": "0 to 12 months after",
+      "exits": 0,
+      "chain_months": 0,
+      "per_100_chain_years": null,
+      "lower": null,
+      "upper": null
+     },
+     {
+      "band": "more than 12 months after",
+      "exits": 0,
+      "chain_months": 0,
+      "per_100_chain_years": null,
+      "lower": null,
+      "upper": null
+     },
+     {
+      "band": "no connection date",
+      "exits": 0,
+      "chain_months": 131,
+      "per_100_chain_years": "0.00",
+      "lower": "0.00",
+      "upper": "33.60"
+     }
+    ]
+   },
+   "2016": {
+    "exits": 2,
+    "chain_months": 197,
+    "bands": [
+     {
+      "band": "more than 24 months before",
+      "exits": 0,
+      "chain_months": 0,
+      "per_100_chain_years": null,
+      "lower": null,
+      "upper": null
+     },
+     {
+      "band": "12 to 24 months before",
+      "exits": 0,
+      "chain_months": 5,
+      "per_100_chain_years": "0.00",
+      "lower": "0.00",
+      "upper": "880.34"
+     },
+     {
+      "band": "0 to 12 months before",
+      "exits": 0,
+      "chain_months": 11,
+      "per_100_chain_years": "0.00",
+      "lower": "0.00",
+      "upper": "400.16"
+     },
+     {
+      "band": "0 to 12 months after",
+      "exits": 1,
+      "chain_months": 11,
+      "per_100_chain_years": "109.09",
+      "lower": "1.43",
+      "upper": "606.97"
+     },
+     {
+      "band": "more than 12 months after",
+      "exits": 0,
+      "chain_months": 0,
+      "per_100_chain_years": null,
+      "lower": null,
+      "upper": null
+     },
+     {
+      "band": "no connection date",
+      "exits": 1,
+      "chain_months": 170,
+      "per_100_chain_years": "7.06",
+      "lower": "0.09",
+      "upper": "39.27"
+     }
+    ]
+   },
+   "2017": {
+    "exits": 0,
+    "chain_months": 204,
+    "bands": [
+     {
+      "band": "more than 24 months before",
+      "exits": 0,
+      "chain_months": 130,
+      "per_100_chain_years": "0.00",
+      "lower": "0.00",
+      "upper": "33.86"
+     },
+     {
+      "band": "12 to 24 months before",
+      "exits": 0,
+      "chain_months": 24,
+      "per_100_chain_years": "0.00",
+      "lower": "0.00",
+      "upper": "183.40"
+     },
+     {
+      "band": "0 to 12 months before",
+      "exits": 0,
+      "chain_months": 22,
+      "per_100_chain_years": "0.00",
+      "lower": "0.00",
+      "upper": "200.08"
+     },
+     {
+      "band": "0 to 12 months after",
+      "exits": 0,
+      "chain_months": 20,
+      "per_100_chain_years": "0.00",
+      "lower": "0.00",
+      "upper": "220.09"
+     },
+     {
+      "band": "more than 12 months after",
+      "exits": 0,
+      "chain_months": 8,
+      "per_100_chain_years": "0.00",
+      "lower": "0.00",
+      "upper": "550.21"
+     },
+     {
+      "band": "no connection date",
+      "exits": 0,
+      "chain_months": 0,
+      "per_100_chain_years": null,
+      "lower": null,
+      "upper": null
+     }
+    ]
+   },
+   "2018": {
+    "exits": 14,
+    "chain_months": 3497,
+    "bands": [
+     {
+      "band": "more than 24 months before",
+      "exits": 0,
+      "chain_months": 1597,
+      "per_100_chain_years": "0.00",
+      "lower": "0.00",
+      "upper": "2.76"
+     },
+     {
+      "band": "12 to 24 months before",
+      "exits": 0,
+      "chain_months": 275,
+      "per_100_chain_years": "0.00",
+      "lower": "0.00",
+      "upper": "16.01"
+     },
+     {
+      "band": "0 to 12 months before",
+      "exits": 1,
+      "chain_months": 254,
+      "per_100_chain_years": "4.72",
+      "lower": "0.06",
+      "upper": "26.29"
+     },
+     {
+      "band": "0 to 12 months after",
+      "exits": 1,
+      "chain_months": 251,
+      "per_100_chain_years": "4.78",
+      "lower": "0.06",
+      "upper": "26.60"
+     },
+     {
+      "band": "more than 12 months after",
+      "exits": 12,
+      "chain_months": 215,
+      "per_100_chain_years": "66.98",
+      "lower": "34.57",
+      "upper": "117.00"
+     },
+     {
+      "band": "no connection date",
+      "exits": 0,
+      "chain_months": 905,
+      "per_100_chain_years": "0.00",
+      "lower": "0.00",
+      "upper": "4.86"
+     }
+    ]
+   },
+   "2019": {
+    "exits": 3,
+    "chain_months": 1250,
+    "bands": [
+     {
+      "band": "more than 24 months before",
+      "exits": 0,
+      "chain_months": 455,
+      "per_100_chain_years": "0.00",
+      "lower": "0.00",
+      "upper": "9.67"
+     },
+     {
+      "band": "12 to 24 months before",
+      "exits": 0,
+      "chain_months": 115,
+      "per_100_chain_years": "0.00",
+      "lower": "0.00",
+      "upper": "38.28"
+     },
+     {
+      "band": "0 to 12 months before",
+      "exits": 1,
+      "chain_months": 126,
+      "per_100_chain_years": "9.52",
+      "lower": "0.12",
+      "upper": "52.99"
+     },
+     {
+      "band": "0 to 12 months after",
+      "exits": 2,
+      "chain_months": 92,
+      "per_100_chain_years": "26.09",
+      "lower": "2.93",
+      "upper": "94.19"
+     },
+     {
+      "band": "more than 12 months after",
+      "exits": 0,
+      "chain_months": 161,
+      "per_100_chain_years": "0.00",
+      "lower": "0.00",
+      "upper": "27.34"
+     },
+     {
+      "band": "no connection date",
+      "exits": 0,
+      "chain_months": 301,
+      "per_100_chain_years": "0.00",
+      "lower": "0.00",
+      "upper": "14.62"
+     }
+    ]
+   },
+   "2020": {
+    "exits": 12,
+    "chain_months": 4974,
+    "bands": [
+     {
+      "band": "more than 24 months before",
+      "exits": 0,
+      "chain_months": 1775,
+      "per_100_chain_years": "0.00",
+      "lower": "0.00",
+      "upper": "2.48"
+     },
+     {
+      "band": "12 to 24 months before",
+      "exits": 1,
+      "chain_months": 620,
+      "per_100_chain_years": "1.94",
+      "lower": "0.03",
+      "upper": "10.77"
+     },
+     {
+      "band": "0 to 12 months before",
+      "exits": 0,
+      "chain_months": 553,
+      "per_100_chain_years": "0.00",
+      "lower": "0.00",
+      "upper": "7.96"
+     },
+     {
+      "band": "0 to 12 months after",
+      "exits": 0,
+      "chain_months": 538,
+      "per_100_chain_years": "0.00",
+      "lower": "0.00",
+      "upper": "8.18"
+     },
+     {
+      "band": "more than 12 months after",
+      "exits": 11,
+      "chain_months": 709,
+      "per_100_chain_years": "18.62",
+      "lower": "9.28",
+      "upper": "33.31"
+     },
+     {
+      "band": "no connection date",
+      "exits": 0,
+      "chain_months": 779,
+      "per_100_chain_years": "0.00",
+      "lower": "0.00",
+      "upper": "5.65"
+     }
+    ]
+   },
+   "2021": {
+    "exits": 8,
+    "chain_months": 4581,
+    "bands": [
+     {
+      "band": "more than 24 months before",
+      "exits": 2,
+      "chain_months": 1537,
+      "per_100_chain_years": "1.56",
+      "lower": "0.18",
+      "upper": "5.64"
+     },
+     {
+      "band": "12 to 24 months before",
+      "exits": 0,
+      "chain_months": 648,
+      "per_100_chain_years": "0.00",
+      "lower": "0.00",
+      "upper": "6.79"
+     },
+     {
+      "band": "0 to 12 months before",
+      "exits": 1,
+      "chain_months": 600,
+      "per_100_chain_years": "2.00",
+      "lower": "0.03",
+      "upper": "11.13"
+     },
+     {
+      "band": "0 to 12 months after",
+      "exits": 2,
+      "chain_months": 536,
+      "per_100_chain_years": "4.48",
+      "lower": "0.50",
+      "upper": "16.17"
+     },
+     {
+      "band": "more than 12 months after",
+      "exits": 3,
+      "chain_months": 734,
+      "per_100_chain_years": "4.90",
+      "lower": "0.99",
+      "upper": "14.33"
+     },
+     {
+      "band": "no connection date",
+      "exits": 0,
+      "chain_months": 526,
+      "per_100_chain_years": "0.00",
+      "lower": "0.00",
+      "upper": "8.37"
+     }
+    ]
+   },
+   "2022": {
+    "exits": 6,
+    "chain_months": 5954,
+    "bands": [
+     {
+      "band": "more than 24 months before",
+      "exits": 2,
+      "chain_months": 3000,
+      "per_100_chain_years": "0.80",
+      "lower": "0.09",
+      "upper": "2.89"
+     },
+     {
+      "band": "12 to 24 months before",
+      "exits": 2,
+      "chain_months": 940,
+      "per_100_chain_years": "2.55",
+      "lower": "0.29",
+      "upper": "9.22"
+     },
+     {
+      "band": "0 to 12 months before",
+      "exits": 1,
+      "chain_months": 694,
+      "per_100_chain_years": "1.73",
+      "lower": "0.02",
+      "upper": "9.62"
+     },
+     {
+      "band": "0 to 12 months after",
+      "exits": 1,
+      "chain_months": 439,
+      "per_100_chain_years": "2.73",
+      "lower": "0.04",
+      "upper": "15.21"
+     },
+     {
+      "band": "more than 12 months after",
+      "exits": 0,
+      "chain_months": 428,
+      "per_100_chain_years": "0.00",
+      "lower": "0.00",
+      "upper": "10.28"
+     },
+     {
+      "band": "no connection date",
+      "exits": 0,
+      "chain_months": 453,
+      "per_100_chain_years": "0.00",
+      "lower": "0.00",
+      "upper": "9.72"
+     }
+    ]
+   },
+   "2023": {
+    "exits": 24,
+    "chain_months": 13595,
+    "bands": [
+     {
+      "band": "more than 24 months before",
+      "exits": 15,
+      "chain_months": 9992,
+      "per_100_chain_years": "1.80",
+      "lower": "1.01",
+      "upper": "2.97"
+     },
+     {
+      "band": "12 to 24 months before",
+      "exits": 1,
+      "chain_months": 1033,
+      "per_100_chain_years": "1.16",
+      "lower": "0.02",
+      "upper": "6.46"
+     },
+     {
+      "band": "0 to 12 months before",
+      "exits": 1,
+      "chain_months": 866,
+      "per_100_chain_years": "1.39",
+      "lower": "0.02",
+      "upper": "7.71"
+     },
+     {
+      "band": "0 to 12 months after",
+      "exits": 4,
+      "chain_months": 672,
+      "per_100_chain_years": "7.14",
+      "lower": "1.92",
+      "upper": "18.29"
+     },
+     {
+      "band": "more than 12 months after",
+      "exits": 3,
+      "chain_months": 780,
+      "per_100_chain_years": "4.62",
+      "lower": "0.93",
+      "upper": "13.49"
+     },
+     {
+      "band": "no connection date",
+      "exits": 0,
+      "chain_months": 252,
+      "per_100_chain_years": "0.00",
+      "lower": "0.00",
+      "upper": "17.47"
+     }
+    ]
+   },
+   "2024": {
+    "exits": 21,
+    "chain_months": 6499,
+    "bands": [
+     {
+      "band": "more than 24 months before",
+      "exits": 14,
+      "chain_months": 5897,
+      "per_100_chain_years": "2.85",
+      "lower": "1.56",
+      "upper": "4.78"
+     },
+     {
+      "band": "12 to 24 months before",
+      "exits": 4,
+      "chain_months": 221,
+      "per_100_chain_years": "21.72",
+      "lower": "5.84",
+      "upper": "55.61"
+     },
+     {
+      "band": "0 to 12 months before",
+      "exits": 0,
+      "chain_months": 99,
+      "per_100_chain_years": "0.00",
+      "lower": "0.00",
+      "upper": "44.46"
+     },
+     {
+      "band": "0 to 12 months after",
+      "exits": 0,
+      "chain_months": 61,
+      "per_100_chain_years": "0.00",
+      "lower": "0.00",
+      "upper": "72.16"
+     },
+     {
+      "band": "more than 12 months after",
+      "exits": 3,
+      "chain_months": 129,
+      "per_100_chain_years": "27.91",
+      "lower": "5.61",
+      "upper": "81.54"
+     },
+     {
+      "band": "no connection date",
+      "exits": 0,
+      "chain_months": 92,
+      "per_100_chain_years": "0.00",
+      "lower": "0.00",
+      "upper": "47.85"
+     }
+    ]
+   },
+   "2025": {
+    "exits": 6,
+    "chain_months": 1407,
+    "bands": [
+     {
+      "band": "more than 24 months before",
+      "exits": 4,
+      "chain_months": 1305,
+      "per_100_chain_years": "3.68",
+      "lower": "0.99",
+      "upper": "9.42"
+     },
+     {
+      "band": "12 to 24 months before",
+      "exits": 0,
+      "chain_months": 30,
+      "per_100_chain_years": "0.00",
+      "lower": "0.00",
+      "upper": "146.72"
+     },
+     {
+      "band": "0 to 12 months before",
+      "exits": 1,
+      "chain_months": 18,
+      "per_100_chain_years": "66.67",
+      "lower": "0.87",
+      "upper": "370.92"
+     },
+     {
+      "band": "0 to 12 months after",
+      "exits": 0,
+      "chain_months": 31,
+      "per_100_chain_years": "0.00",
+      "lower": "0.00",
+      "upper": "141.99"
+     },
+     {
+      "band": "more than 12 months after",
+      "exits": 1,
+      "chain_months": 18,
+      "per_100_chain_years": "66.67",
+      "lower": "0.87",
+      "upper": "370.92"
+     },
+     {
+      "band": "no connection date",
+      "exits": 0,
+      "chain_months": 5,
+      "per_100_chain_years": "0.00",
+      "lower": "0.00",
+      "upper": "880.34"
+     }
+    ]
+   }
+  }
+ },
+ "months_to_trigger_histogram_storage_old": {
+  "-41": 1,
+  "-39": 2,
+  "-37": 1,
+  "-34": 1,
+  "-31": 1,
+  "-30": 1,
+  "-28": 1,
+  "-27": 1,
+  "-25": 1,
+  "-24": 2,
+  "-23": 5,
+  "-21": 1,
+  "-20": 1,
+  "-19": 2,
+  "-18": 3,
+  "-16": 4,
+  "-15": 2,
+  "-14": 2,
+  "-13": 1,
+  "-12": 1,
+  "-8": 1,
+  "-7": 1,
+  "-6": 2,
+  "-3": 4,
+  "-2": 1,
+  "-1": 1,
+  "0": 1,
+  "5": 1,
+  "7": 1,
+  "8": 1,
+  "9": 2,
+  "12": 2,
+  "16": 1,
+  "18": 1,
+  "21": 3,
+  "22": 1,
+  "25": 1,
+  "27": 1,
+  "28": 1,
+  "29": 1,
+  "33": 3,
+  "39": 1,
+  "41": 2,
+  "50": 1,
+  "51": 1,
+  "52": 2,
+  "55": 1,
+  "57": 1,
+  "60": 1,
+  "62": 1,
+  "63": 1,
+  "66": 2,
+  "67": 1,
+  "79": 1,
+  "81": 2,
+  "84": 1,
+  "87": 1,
+  "100": 1,
+  "102": 1,
+  "108": 2,
+  "111": 1,
+  "114": 4,
+  "129": 1
+ },
+ "months_to_trigger_histogram_all_old": {
+  "-67": 1,
+  "-63": 3,
+  "-60": 3,
+  "-52": 1,
+  "-47": 1,
+  "-44": 2,
+  "-43": 1,
+  "-42": 1,
+  "-41": 1,
+  "-40": 4,
+  "-39": 4,
+  "-37": 3,
+  "-36": 3,
+  "-35": 3,
+  "-34": 3,
+  "-33": 4,
+  "-32": 1,
+  "-31": 4,
+  "-30": 7,
+  "-28": 4,
+  "-27": 5,
+  "-25": 6,
+  "-24": 12,
+  "-23": 9,
+  "-22": 2,
+  "-21": 7,
+  "-20": 3,
+  "-19": 5,
+  "-18": 7,
+  "-17": 1,
+  "-16": 8,
+  "-15": 4,
+  "-14": 3,
+  "-13": 8,
+  "-12": 7,
+  "-11": 5,
+  "-10": 1,
+  "-8": 2,
+  "-7": 3,
+  "-6": 5,
+  "-4": 1,
+  "-3": 11,
+  "-2": 8,
+  "-1": 7,
+  "0": 9,
+  "1": 8,
+  "2": 4,
+  "3": 2,
+  "4": 1,
+  "5": 2,
+  "6": 8,
+  "7": 1,
+  "8": 9,
+  "9": 7,
+  "10": 5,
+  "12": 9,
+  "13": 19,
+  "14": 6,
+  "15": 2,
+  "16": 4,
+  "17": 6,
+  "18": 3,
+  "19": 1,
+  "20": 10,
+  "21": 5,
+  "22": 3,
+  "24": 6,
+  "25": 6,
+  "26": 4,
+  "27": 6,
+  "28": 1,
+  "29": 6,
+  "30": 4,
+  "31": 1,
+  "32": 10,
+  "33": 4,
+  "34": 6,
+  "37": 3,
+  "39": 3,
+  "40": 4,
+  "41": 6,
+  "43": 2,
+  "44": 5,
+  "48": 2,
+  "49": 3,
+  "50": 3,
+  "51": 2,
+  "52": 2,
+  "53": 2,
+  "55": 1,
+  "56": 4,
+  "57": 2,
+  "59": 1,
+  "60": 1,
+  "61": 1,
+  "62": 1,
+  "63": 1,
+  "65": 1,
+  "66": 2,
+  "67": 1,
+  "68": 5,
+  "69": 2,
+  "72": 1,
+  "75": 1,
+  "76": 1,
+  "78": 1,
+  "79": 1,
+  "80": 5,
+  "81": 2,
+  "84": 1,
+  "85": 1,
+  "86": 12,
+  "87": 1,
+  "88": 1,
+  "89": 1,
+  "92": 3,
+  "97": 1,
+  "98": 1,
+  "100": 1,
+  "101": 2,
+  "102": 2,
+  "103": 1,
+  "104": 1,
+  "105": 3,
+  "108": 3,
+  "111": 1,
+  "114": 5,
+  "115": 1,
+  "129": 2
+ },
+ "reconciliation": {
+  "o1_snapshots": [
+   {
+    "snapshot": "2023-01-06",
+    "next": "2024-01-05",
+    "days": 364,
+    "by_status": {
+     "Awaiting Consents": {
+      "present": 54,
+      "family_changed_within_storage": 1,
+      "left_share": "0.0000"
+     },
+     "Built": {
+      "present": 18,
+      "left_share": "0.0000"
+     },
+     "Consents Approved": {
+      "present": 25,
+      "family_changed_within_storage": 1,
+      "left_share": "0.0000"
+     },
+     "Scoping": {
+      "present": 222,
+      "family_changed_within_storage": 2,
+      "left_share": "0.0000"
+     },
+     "Under Construction/Commissioning": {
+      "present": 4,
+      "left_share": "0.0000"
+     },
+     "all": {
+      "present": 323,
+      "family_changed_within_storage": 4,
+      "left_share": "0.0000"
+     }
+    }
+   },
+   {
+    "snapshot": "2024-01-05",
+    "next": "2025-01-03",
+    "days": 364,
+    "by_status": {
+     "Awaiting Consents": {
+      "present": 102,
+      "family_changed_within_storage": 1,
+      "left": 1,
+      "reclassified_away": 1,
+      "left_share": "0.0098"
+     },
+     "Built": {
+      "present": 31,
+      "left_share": "0.0000"
+     },
+     "Consents Approved": {
+      "present": 46,
+      "family_changed_within_storage": 1,
+      "left_share": "0.0000"
+     },
+     "Scoping": {
+      "present": 613,
+      "left": 10,
+      "family_changed_within_storage": 14,
+      "reclassified_away": 1,
+      "left_share": "0.0163"
+     },
+     "Under Construction/Commissioning": {
+      "present": 12,
+      "left_share": "0.0000"
+     },
+     "all": {
+      "present": 804,
+      "family_changed_within_storage": 16,
+      "left": 11,
+      "reclassified_away": 2,
+      "left_share": "0.0137"
+     }
+    }
+   },
+   {
+    "snapshot": "2025-01-03",
+    "next": "2025-11-28",
+    "days": 329,
+    "by_status": {
+     "Awaiting Consents": {
+      "present": 104,
+      "family_changed_within_storage": 10,
+      "reclassified_away": 1,
+      "left": 1,
+      "left_share": "0.0096"
+     },
+     "Built": {
+      "present": 45,
+      "reclassified_away": 2,
+      "family_changed_within_storage": 2,
+      "left_share": "0.0000"
+     },
+     "Consents Approved": {
+      "present": 70,
+      "family_changed_within_storage": 3,
+      "left_share": "0.0000"
+     },
+     "Scoping": {
+      "present": 948,
+      "family_changed_within_storage": 37,
+      "left": 25,
+      "reclassified_away": 11,
+      "left_share": "0.0264"
+     },
+     "Under Construction/Commissioning": {
+      "present": 10,
+      "family_changed_within_storage": 1,
+      "left_share": "0.0000"
+     },
+     "all": {
+      "present": 1177,
+      "reclassified_away": 14,
+      "family_changed_within_storage": 53,
+      "left": 26,
+      "left_share": "0.0221"
+     }
+    }
+   }
+  ],
+  "o2_window": {
+   "window": "exit copies 2023-01-01 to 2025-11-30 (old regime)",
+   "storage_exits": 65,
+   "storage_only_exits": 42,
+   "by_status": {
+    "Consents Approved": 1,
+    "Scoping": 60,
+    "Awaiting Consents": 4
+   },
+   "by_exit_year": {
+    "2023": 8,
+    "2024": 25,
+    "2025": 32
+   },
+   "ofgem": {
+    "exited_or_reclassified_2023_2025": 72,
+    "per_year": "6.7%",
+    "scoping_or_awaiting": "7.4%",
+    "consents_approved": "3%",
+    "under_construction": "0%"
+   }
+  }
+ },
+ "rows_through_break": [
+  {
+   "t_public": "2025-10-03",
+   "rows": 2242
+  },
+  {
+   "t_public": "2025-10-07",
+   "rows": 2242
+  },
+  {
+   "t_public": "2025-10-10",
+   "rows": 2242
+  },
+  {
+   "t_public": "2025-10-14",
+   "rows": 2242
+  },
+  {
+   "t_public": "2025-10-17",
+   "rows": 2242
+  },
+  {
+   "t_public": "2025-10-21",
+   "rows": 2242
+  },
+  {
+   "t_public": "2025-10-24",
+   "rows": 2242
+  },
+  {
+   "t_public": "2025-10-28",
+   "rows": 2240
+  },
+  {
+   "t_public": "2025-10-31",
+   "rows": 2240
+  },
+  {
+   "t_public": "2025-11-04",
+   "rows": 2236
+  },
+  {
+   "t_public": "2025-11-07",
+   "rows": 2235
+  },
+  {
+   "t_public": "2025-11-11",
+   "rows": 2235
+  },
+  {
+   "t_public": "2025-11-14",
+   "rows": 2235
+  },
+  {
+   "t_public": "2025-11-18",
+   "rows": 2235
+  },
+  {
+   "t_public": "2025-11-21",
+   "rows": 2235
+  },
+  {
+   "t_public": "2025-11-25",
+   "rows": 2233
+  },
+  {
+   "t_public": "2025-11-28",
+   "rows": 2233
+  },
+  {
+   "t_public": "2025-12-02",
+   "rows": 2233
+  },
+  {
+   "t_public": "2025-12-05",
+   "rows": 2229
+  },
+  {
+   "t_public": "2025-12-09",
+   "rows": 2229
+  },
+  {
+   "t_public": "2025-12-12",
+   "rows": 2229
+  },
+  {
+   "t_public": "2025-12-16",
+   "rows": 2229
+  },
+  {
+   "t_public": "2025-12-19",
+   "rows": 2229
+  },
+  {
+   "t_public": "2025-12-23",
+   "rows": 2229
+  },
+  {
+   "t_public": "2025-12-30",
+   "rows": 2229
+  },
+  {
+   "t_public": "2026-01-02",
+   "rows": 2229
+  },
+  {
+   "t_public": "2026-01-06",
+   "rows": 2229
+  },
+  {
+   "t_public": "2026-01-09",
+   "rows": 2229
+  },
+  {
+   "t_public": "2026-01-13",
+   "rows": 2229
+  },
+  {
+   "t_public": "2026-01-16",
+   "rows": 2229
+  },
+  {
+   "t_public": "2026-01-20",
+   "rows": 2229
+  },
+  {
+   "t_public": "2026-01-23",
+   "rows": 2229
+  },
+  {
+   "t_public": "2026-01-27",
+   "rows": 2229
+  },
+  {
+   "t_public": "2026-01-30",
+   "rows": 2229
+  },
+  {
+   "t_public": "2026-02-03",
+   "rows": 2229
+  },
+  {
+   "t_public": "2026-02-06",
+   "rows": 2229
+  },
+  {
+   "t_public": "2026-02-10",
+   "rows": 2229
+  },
+  {
+   "t_public": "2026-02-13",
+   "rows": 2229
+  },
+  {
+   "t_public": "2026-02-17",
+   "rows": 2229
+  },
+  {
+   "t_public": "2026-02-20",
+   "rows": 2229
+  },
+  {
+   "t_public": "2026-02-24",
+   "rows": 2229
+  },
+  {
+   "t_public": "2026-02-27",
+   "rows": 2229
+  }
+ ],
+ "pinned": {
+  "desnz-repd-quarterly-extract-2026-q2": "84c1b5f958a934d8b4b86ec88f50bdcf43830ded7ff2efc27bffca0c98695035",
+  "desnz-repd-publication-page": "bad8461436f84ab02864278be4f800085cf5166c41adda67d5373f4694d8d8a2",
+  "neso-capacity-market-register-cmu": "ff7879b0f1612ec62783398fad269be9427e69bf8699276d5d994182737ce6a7",
+  "neso-capacity-market-register-cmu-history": "de3aea8a4e840ad3d36b4c1aabcd94a550a1801450097d2229f8843935e6d98d",
+  "neso-capacity-market-register-components": "c04cdef6ba32d1b775658fd77585be6855079467992c240ce7d5619b793b69b6",
+  "neso-capacity-market-register-package": "6db67d4039dfe28abcb92caffd24f7d8fd88eebce1fcaa6ebb60b0a2cf459270",
+  "neso-cusc-code-documents-page": "78a59dacc4e7a4bcb8eeada3549e4c0b37e61edbb4858fcd280e16c03e53249d",
+  "neso-cusc-exhibit-mm1-cancellation-charge-statement": "663761272f8725b940dfb12e36147d448d48eb54a82982cf4e141ea11a149552",
+  "neso-cusc-exhibit-mm2-cancellation-charge-secured-amount": "a86bb3e2c25f8053b176c7ac85fbfd7b73dde9f2db0785998edfc3423402ca8c",
+  "neso-cusc-section-15": "6bf040ba18e16d84471e0cfa284c947e24e1b6b75b90752fc99ba6f2927ea893",
+  "neso-reports-and-registers-page-1": "8ff1452824b0531b02db29fba208dd91c4a3b12387294a25ebc5d612199d73b2",
+  "neso-securities-freeze-letter-2026-01-15": "b4980e764b906ba3de321e108db163208d29005b91a25689e1cf5f6fc16d8227",
+  "neso-wider-cancellation-charge-statement-2012-13": "7ae9c104cf072b227674e1ea5d11bb1ce4e92709bdd9372095519804c51bb97d",
+  "neso-wider-cancellation-charge-statement-2013-14": "4bddf3eac333ec1954c7515a95f6f263e5cf2bbca56f59689b899fd34ea767ec",
+  "neso-wider-cancellation-charge-statement-2014-15": "4ad5fd2f4abf80334b92cca233763488ed56494769cea568898d49853d9ff700",
+  "neso-wider-cancellation-charge-statement-2015-16": "c7889ed84b5573fe5efe8233dd0b3876e6ec25fcc7104e89c167b9420d7df5ad",
+  "neso-wider-cancellation-charge-statement-2016-17": "352b3d12d09ae2e66a3bccc46e2d17d479486bfb4778d5a9454394cc84f0a6e7",
+  "neso-wider-cancellation-charge-statement-2017-18": "f0dd39105169a03dcb6709b0ccff1cea15b5166bc2c634c3a1d1fe72543e0fca",
+  "neso-wider-cancellation-charge-statement-2018-19": "619c2ff260476fabe509e9b156c079473b5c5ede3bb3295a94e84344fecf8377",
+  "neso-wider-cancellation-charge-statement-2019-20": "317872d6da36666b703b7e9af7f8fb54349754ebb17f3a72749a0263fc9df396",
+  "neso-wider-cancellation-charge-statement-2020-21": "6b62e09c100946331d21e01a28b85baa5906ecbee1a4042434b793c2f40eca63",
+  "neso-wider-cancellation-charge-statement-2021-22": "6126de5f69747f13c7d55a041b7ef6560c12491fd798100c67ce91176639d2e0",
+  "neso-wider-cancellation-charge-statement-2022-23": "69353eb6377a20b3c8a0cf2dcb0e5e68fe2e418d8e3c33003297a0aa2a14095b",
+  "neso-wider-cancellation-charge-statement-2023-24": "3c0fbdbecbbd841b22d3047694a82391400caddf41ab93a4b7de002170d7161d",
+  "neso-wider-cancellation-charge-statement-2024-25": "97a29a4e09c0ce25871f5c24be218dc198fe5b9b8764f535bd4d4c8d0f007877",
+  "ofgem-cmp470-initial-impact-assessment": "7b80637c5c582159716ef7abd8ed77b855bf50f3b829db52a4cfc6e48e5e147d",
+  "ofgem-cmp470-minded-to-consultation": "77a9e72470b76bdc8adb229c2077fec6b7f289ce4ca86b1f14b3ebdd48efee98",
+  "ofgem-cmp470-consultation-page": "0b1a985c3fea58b362b24c822cf74fb2bd48fa92b2ffab1529ea00cc06837eb5"
+ },
+ "amendments": [
+  {
+   "n": 1,
+   "file": "AMENDMENT-1.md",
+   "sha256": "4a76ec63daa74f697ba353ae636392ff4eb3e9e1af836aa9522a00ff3dbecce5"
+  }
+ ],
+ "amendment_1": {
+  "refused_rows": [
+   {
+    "t_public": "2020-12-15",
+    "sha256": "1c4306104f04b47343deed46bdc44147e8595bb4fe0d81f26a3f796a60836fe1",
+    "refused": 2
+   }
+  ],
+  "rows_refused": 2,
+  "sparse_rows_admitted": [
+   {
+    "t_public": "2021-10-05",
+    "fields": [
+     "Project Name",
+     "Customer Name"
+    ],
+    "chain_class": "present at series end"
+   }
+  ],
+  "chains_held_under_declaration_alone": 2,
+  "moved": [
+   {
+    "leaf": "chains/by_era/pre-id/chains",
+    "before": 379,
+    "after": 377
+   },
+   {
+    "leaf": "chains/classes/exit",
+    "before": 494,
+    "after": 492
+   },
+   {
+    "leaf": "chains/total",
+    "before": 2644,
+    "after": 2642
+   },
+   {
+    "leaf": "exits/by_class/agreement/blank",
+    "before": 244,
+    "after": 242
+   },
+   {
+    "leaf": "exits/by_class/cohort/2020",
+    "before": 34,
+    "after": 32
+   },
+   {
+    "leaf": "exits/by_class/family/blank",
+    "before": 2,
+    "after": "(absent)"
+   },
+   {
+    "leaf": "exits/by_class/host_to/(blank)",
+    "before": 2,
+    "after": "(absent)"
+   },
+   {
+    "leaf": "exits/by_class/regime/old",
+    "before": 485,
+    "after": 483
+   },
+   {
+    "leaf": "exits/by_class/status/blank",
+    "before": 5,
+    "after": 3
+   },
+   {
+    "leaf": "exits/old_regime",
+    "before": 485,
+    "after": 483
+   },
+   {
+    "leaf": "exits/total",
+    "before": 494,
+    "after": 492
+   },
+   {
+    "leaf": "exposure/total_chain_months",
+    "before": 132065,
+    "after": 132063
+   },
+   {
+    "leaf": "hazards/old/A/all[5]/chain_months",
+    "before": 39581,
+    "after": 39579
+   },
+   {
+    "leaf": "hazards/old/A/all[5]/exits",
+    "before": 7,
+    "after": 5
+   },
+   {
+    "leaf": "hazards/old/A/all[5]/hazard_per_chain_month",
+    "before": "0.000177",
+    "after": "0.000126"
+   },
+   {
+    "leaf": "hazards/old/A/all[5]/lower",
+    "before": "0.000071",
+    "after": "0.000041"
+   },
+   {
+    "leaf": "hazards/old/A/all[5]/per_100_chain_years",
+    "before": "0.21",
+    "after": "0.15"
+   },
+   {
+    "leaf": "hazards/old/A/all[5]/per_100_chain_years_lower",
+    "before": "0.09",
+    "after": "0.05"
+   },
+   {
+    "leaf": "hazards/old/A/all[5]/per_100_chain_years_upper",
+    "before": "0.44",
+    "after": "0.35"
+   },
+   {
+    "leaf": "hazards/old/A/all[5]/upper",
+    "before": "0.000364",
+    "after": "0.000295"
+   },
+   {
+    "leaf": "hazards/old/A/other[5]/chain_months",
+    "before": 35538,
+    "after": 35536
+   },
+   {
+    "leaf": "hazards/old/A/other[5]/exits",
+    "before": 6,
+    "after": 4
+   },
+   {
+    "leaf": "hazards/old/A/other[5]/hazard_per_chain_month",
+    "before": "0.000169",
+    "after": "0.000113"
+   },
+   {
+    "leaf": "hazards/old/A/other[5]/lower",
+    "before": "0.000062",
+    "after": "0.000030"
+   },
+   {
+    "leaf": "hazards/old/A/other[5]/per_100_chain_years",
+    "before": "0.20",
+    "after": "0.14"
+   },
+   {
+    "leaf": "hazards/old/A/other[5]/per_100_chain_years_lower",
+    "before": "0.07",
+    "after": "0.04"
+   },
+   {
+    "leaf": "hazards/old/A/other[5]/per_100_chain_years_upper",
+    "before": "0.44",
+    "after": "0.35"
+   },
+   {
+    "leaf": "hazards/old/A/other[5]/upper",
+    "before": "0.000367",
+    "after": "0.000288"
+   },
+   {
+    "leaf": "hazards/old/B/all[5]/chain_months",
+    "before": 18670,
+    "after": 18668
+   },
+   {
+    "leaf": "hazards/old/B/all[5]/exits",
+    "before": 7,
+    "after": 5
+   },
+   {
+    "leaf": "hazards/old/B/all[5]/hazard_per_chain_month",
+    "before": "0.000375",
+    "after": "0.000268"
+   },
+   {
+    "leaf": "hazards/old/B/all[5]/lower",
+    "before": "0.000150",
+    "after": "0.000086"
+   },
+   {
+    "leaf": "hazards/old/B/all[5]/per_100_chain_years",
+    "before": "0.45",
+    "after": "0.32"
+   },
+   {
+    "leaf": "hazards/old/B/all[5]/per_100_chain_years_lower",
+    "before": "0.18",
+    "after": "0.10"
+   },
+   {
+    "leaf": "hazards/old/B/all[5]/per_100_chain_years_upper",
+    "before": "0.93",
+    "after": "0.75"
+   },
+   {
+    "leaf": "hazards/old/B/all[5]/upper",
+    "before": "0.000773",
+    "after": "0.000625"
+   },
+   {
+    "leaf": "hazards/old/B/other[5]/chain_months",
+    "before": 16680,
+    "after": 16678
+   },
+   {
+    "leaf": "hazards/old/B/other[5]/exits",
+    "before": 6,
+    "after": 4
+   },
+   {
+    "leaf": "hazards/old/B/other[5]/hazard_per_chain_month",
+    "before": "0.000360",
+    "after": "0.000240"
+   },
+   {
+    "leaf": "hazards/old/B/other[5]/lower",
+    "before": "0.000131",
+    "after": "0.000065"
+   },
+   {
+    "leaf": "hazards/old/B/other[5]/per_100_chain_years",
+    "before": "0.43",
+    "after": "0.29"
+   },
+   {
+    "leaf": "hazards/old/B/other[5]/per_100_chain_years_lower",
+    "before": "0.16",
+    "after": "0.08"
+   },
+   {
+    "leaf": "hazards/old/B/other[5]/per_100_chain_years_upper",
+    "before": "0.94",
+    "after": "0.74"
+   },
+   {
+    "leaf": "hazards/old/B/other[5]/upper",
+    "before": "0.000783",
+    "after": "0.000614"
+   },
+   {
+    "leaf": "hazards/old/C/all[5]/chain_months",
+    "before": 32256,
+    "after": 32254
+   },
+   {
+    "leaf": "hazards/old/C/all[5]/exits",
+    "before": 7,
+    "after": 5
+   },
+   {
+    "leaf": "hazards/old/C/all[5]/hazard_per_chain_month",
+    "before": "0.000217",
+    "after": "0.000155"
+   },
+   {
+    "leaf": "hazards/old/C/all[5]/lower",
+    "before": "0.000087",
+    "after": "0.000050"
+   },
+   {
+    "leaf": "hazards/old/C/all[5]/per_100_chain_years",
+    "before": "0.26",
+    "after": "0.19"
+   },
+   {
+    "leaf": "hazards/old/C/all[5]/per_100_chain_years_lower",
+    "before": "0.10",
+    "after": "0.06"
+   },
+   {
+    "leaf": "hazards/old/C/all[5]/per_100_chain_years_upper",
+    "before": "0.54",
+    "after": "0.43"
+   },
+   {
+    "leaf": "hazards/old/C/all[5]/upper",
+    "before": "0.000447",
+    "after": "0.000362"
+   },
+   {
+    "leaf": "hazards/old/C/other[5]/chain_months",
+    "before": 29216,
+    "after": 29214
+   },
+   {
+    "leaf": "hazards/old/C/other[5]/exits",
+    "before": 6,
+    "after": 4
+   },
+   {
+    "leaf": "hazards/old/C/other[5]/hazard_per_chain_month",
+    "before": "0.000205",
+    "after": "0.000137"
+   },
+   {
+    "leaf": "hazards/old/C/other[5]/lower",
+    "before": "0.000075",
+    "after": "0.000037"
+   },
+   {
+    "leaf": "hazards/old/C/other[5]/per_100_chain_years",
+    "before": "0.25",
+    "after": "0.16"
+   },
+   {
+    "leaf": "hazards/old/C/other[5]/per_100_chain_years_lower",
+    "before": "0.09",
+    "after": "0.04"
+   },
+   {
+    "leaf": "hazards/old/C/other[5]/per_100_chain_years_upper",
+    "before": "0.54",
+    "after": "0.42"
+   },
+   {
+    "leaf": "hazards/old/C/other[5]/upper",
+    "before": "0.000447",
+    "after": "0.000351"
+   },
+   {
+    "leaf": "monthly/2020-12/all",
+    "before": 4,
+    "after": 2
+   }
+  ]
+ }
+}

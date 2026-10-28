@@ -563,6 +563,13 @@ AMENDMENT_1_SHA256 = "4a76ec63daa74f697ba353ae636392ff4eb3e9e1af836aa9522a00ff3d
 #: The results computed under the declaration alone (945cfda), kept so the
 #: amended compute can list every leaf that moved with its old and new value.
 RESULTS_ALONE = EVIDENCE / "results-declaration-alone.json"
+#: Amendment 2 of the reading (28/10/2026): I11, the continuation rule, and
+#: I12, the 76 copies journalled on 28/10/2026. The results computed under the
+#: declaration and Amendment 1 (305dbe8) are kept so every moved leaf is listed.
+AMENDMENT_2 = HERE / "AMENDMENT-2.md"
+AMENDMENT_2_SHA256 = "c0973a617cdbed240dd121ccf8e248128f014face16ffec3016f5bead3d0ce2e"
+RESULTS_A1 = EVIDENCE / "results-amendment-1.json"
+SCHEMA_A2_SHA256_PREFIX = "15711a92f8c5a67a"
 SCHEMA_SHA256_PREFIX = "fa3cbb802f61d3b6"
 SERIES_END = date(2026, 10, 20)
 JOIN_ARCHIVES = {
@@ -587,10 +594,14 @@ def check_manifest() -> dict[str, str]:
 
 
 def check_schema_report() -> str:
-    digest = sha(SCHEMA_REPORT)
-    if not digest.startswith(SCHEMA_SHA256_PREFIX):
+    """C2 against Amendment 2's schema report; the declaration's report
+    (SCHEMA_SHA256_PREFIX) is checked to still be the one it cites."""
+    if not sha(SCHEMA_REPORT).startswith(SCHEMA_SHA256_PREFIX):
+        sys.exit(f"C2: the declaration's schema report no longer hashes to {SCHEMA_SHA256_PREFIX}")
+    digest = sha(SCHEMA_REPORT_A2)
+    if not digest.startswith(SCHEMA_A2_SHA256_PREFIX):
         sys.exit(
-            f"C2: schema report hashes to {digest[:16]}, declaration cites {SCHEMA_SHA256_PREFIX}"
+            f"C2: Amendment 2's schema report hashes to {digest[:16]}, the amendment cites {SCHEMA_A2_SHA256_PREFIX}"
         )
     return digest
 
@@ -608,9 +619,9 @@ def phase_format() -> None:
     report; every pinned file's digest against the manifest."""
     check_manifest()
     report_sha = check_schema_report()
-    report = json.loads(SCHEMA_REPORT.read_text())
+    report = json.loads(SCHEMA_REPORT_A2.read_text())
     expected = {e["t_public"]: e for e in report["per_copy"]}
-    usable, skipped = load_copies()
+    usable, skipped = load_copies(continuation=True)
     differences: list[dict[str, Any]] = []
     for _copy, v in usable:
         if v.t_public > SERIES_END:
@@ -675,7 +686,10 @@ def phase_format() -> None:
 
 # --------------------------------------------------------------- compute
 
-CHAINS = EVIDENCE / "chains.ndjson"
+#: The chain lines of the computes under the declaration and Amendment 1,
+#: kept untouched; Amendment 2's compute writes its own append-only file.
+CHAINS_A1 = EVIDENCE / "chains.ndjson"
+CHAINS = EVIDENCE / "amendment-2" / "chains.ndjson"
 EXITS = EVIDENCE / "exits.ndjson"
 RESULTS_JSON = EVIDENCE / "results.json"
 CLOCKS = ("A", "B", "C")
@@ -714,6 +728,13 @@ def sealed_declaration(seal: str | None) -> str:
         )
     if not (HERE / "AMENDMENT-1.md.timestamps.json").exists():
         sys.exit("AMENDMENT-1.md is not frozen (no proof sidecar)")
+    a2 = sha(AMENDMENT_2)
+    if a2 != AMENDMENT_2_SHA256:
+        sys.exit(
+            f"AMENDMENT-2.md hashes to {a2[:8]}…, the runner expects {AMENDMENT_2_SHA256[:8]}…"
+        )
+    if not (HERE / "AMENDMENT-2.md.timestamps.json").exists():
+        sys.exit("AMENDMENT-2.md is not frozen (no proof sidecar)")
     return digest
 
 
@@ -732,9 +753,9 @@ def flatten(value: Any, path: str = "") -> dict[str, Any]:
 
 
 def moved_leaves(before: dict[str, Any], after: dict[str, Any]) -> list[dict[str, Any]]:
-    """Amendment 1: the leaves whose value differs between two results files,
-    with the old and new value, excluding the clock and the amendment block."""
-    skip = ("computed_at", "amendments", "amendment_1")
+    """Amendments 1 and 2: the leaves whose value differs between two results
+    files, with the old and new value, excluding the clock and the amendment blocks."""
+    skip = ("computed_at", "amendments", "amendment_1", "amendment_2")
     b = {k: v for k, v in flatten(before).items() if not k.startswith(skip)}
     a = {k: v for k, v in flatten(after).items() if not k.startswith(skip)}
     moved = []
@@ -993,7 +1014,7 @@ def phase_compute(seal: str | None) -> None:
     declaration = sealed_declaration(seal)
     manifest_shas = check_manifest()
     report_sha = check_schema_report()
-    usable, skipped = load_copies()
+    usable, skipped = load_copies(continuation=True)
     vintages = [v for _, v in usable if v.t_public <= SERIES_END]
     kept, suspects = kept_map(vintages)
     sequence = sorted(kept.values(), key=lambda k: k.vintage.t_public)
@@ -1348,6 +1369,7 @@ def phase_compute(seal: str | None) -> None:
                 sys.exit(f"C5: chains.ndjson line {cid} would change on recompute")
         else:
             new_lines.append(line)
+    CHAINS.parent.mkdir(parents=True, exist_ok=True)
     with CHAINS.open("a") as f:
         for line in new_lines:
             f.write(line + "\n")
@@ -1466,7 +1488,10 @@ def phase_compute(seal: str | None) -> None:
         "reconciliation": {"o1_snapshots": o1, "o2_window": o2},
         "rows_through_break": rows_through_break,
         "pinned": manifest_shas,
-        "amendments": [{"n": 1, "file": "AMENDMENT-1.md", "sha256": AMENDMENT_1_SHA256}],
+        "amendments": [
+            {"n": 1, "file": "AMENDMENT-1.md", "sha256": AMENDMENT_1_SHA256},
+            {"n": 2, "file": "AMENDMENT-2.md", "sha256": AMENDMENT_2_SHA256},
+        ],
     }
     results["amendment_1"] = {
         "refused_rows": admission["refused_rows"],
@@ -1479,10 +1504,28 @@ def phase_compute(seal: str | None) -> None:
             }
             for r in admission["sparse_rows"]
         ],
-        "chains_held_under_declaration_alone": len(held_alone),
-        "moved": moved_leaves(json.loads(RESULTS_ALONE.read_text()), results)
-        if RESULTS_ALONE.exists()
-        else None,
+    }
+    a1_copy_dates = {
+        e["t_public"]
+        for e in json.loads(SCHEMA_REPORT.read_text())["per_copy"]
+        if e["t_public"] <= SERIES_END.isoformat()
+    }
+    results["amendment_2"] = {
+        "continuation_rows_read": sum(
+            tr.unnamed_rows(c.path, c.file_format)
+            for c, v in usable
+            if v.t_public <= SERIES_END and v.t_public in kept
+        ),
+        "copies_added": sorted(
+            v.t_public.isoformat()
+            for _, v in usable
+            if v.t_public <= SERIES_END and v.t_public.isoformat() not in a1_copy_dates
+        ),
+        "chain_lines_held_from_amendment_1": sum(
+            1 for line in CHAINS_A1.read_text().splitlines() if line.strip()
+        ),
+        "chains_not_rebuilt_from_held_file": len(held_alone),
+        "moved": moved_leaves(json.loads(RESULTS_A1.read_text()), results),
     }
     write_json(RESULTS_JSON, results)
     log_run(
@@ -2051,7 +2094,7 @@ def phase_render() -> None:
     L += [
         "# 025, the exit clock: when projects leave the TEC Register, measured against the User Commitment trigger date",
         "",
-        f"*Computed {R['computed_at'][:10]} under the frozen declaration `{R['declaration_sha256'][:8]}…` (`DECLARATION.md`, proofs beside it) and its Amendment 1 of the reading (`AMENDMENT-1.md` `{R['amendments'][0]['sha256'][:8]}…`, frozen 22/10/2026) from every TEC Register copy the repository holds to {R['series']['last_copy']} ({R['series']['kept_copies']} kept copies) and the documents pinned 22/10/2026 (`evidence/sources-manifest.json`). **Held for the sponsor; nothing here is public, and nothing goes to Ofgem or the introducer until sealed.** Every figure is reproducible by `run.py --phase compute --seal {R['declaration_sha256'][:8]}`; the per-chain appendix is `FINDINGS-APPENDIX.md` (held, names projects).*",
+        f"*Computed {R['computed_at'][:10]} under the frozen declaration `{R['declaration_sha256'][:8]}…` (`DECLARATION.md`, proofs beside it) and its Amendments 1 and 2 of the reading (`AMENDMENT-1.md` `{R['amendments'][0]['sha256'][:8]}…`, frozen 22/10/2026; `AMENDMENT-2.md` `{R['amendments'][1]['sha256'][:8]}…`, frozen 28/10/2026) from every TEC Register copy the repository holds to {R['series']['last_copy']} ({R['series']['kept_copies']} kept copies) and the documents pinned 22/10/2026 (`evidence/sources-manifest.json`). **Held for the sponsor; nothing here is public, and nothing goes to Ofgem or the introducer until sealed.** Every figure is reproducible by `run.py --phase compute --seal {R['declaration_sha256'][:8]}`; the per-chain appendix is `FINDINGS-APPENDIX.md` (held, names projects).*",
         "",
         "## The mystery",
         "",
@@ -2076,23 +2119,47 @@ def phase_render() -> None:
             f"The first compute of 22/10/2026 was discarded before any line was committed: it produced 13 chains holding two keys in one copy, a runner defect against rule I2: a key returned to the register while its chain was already continuing under a stitched key, and the runner let the chain carry both (discarded `chains.ndjson` SHA-256 `{d['discarded_chains_sha256'][:16]}…`, the note in `evidence/run-log.json`). The rerun under the same sealed declaration moved the headline by: chains 2,631 to {C['total']:,}; exits 493 to {E['total']}; storage exits in the old regime 95 to {E['storage_old_regime']}. The 13 are reported below as a stitching finding."
         )
     A1 = R.get("amendment_1") or {}
-    moved = A1.get("moved") or []
-    storage_moved = [m for m in moved if "storage" in m["leaf"].lower()]
+    A2 = R.get("amendment_2") or {}
+    moved = A2.get("moved") or []
+    by_leaf = {m["leaf"]: m for m in moved}
+    fig1 = by_leaf.get("exits/storage_old_regime")
+    bands8 = [
+        m
+        for m in moved
+        if any(
+            m["leaf"].startswith(f"hazards/old/A/all[{i}]/per_100_chain_years") for i in range(5)
+        )
+    ]
     L += ["", "## Amendment 1 of the reading", ""]
     L.append(
-        (
-            "**No storage figure moved.** "
-            if not storage_moved
-            else f"**{len(storage_moved)} storage leaves moved, against the expectation stated in the amendment; they are listed first below.** "
-        )
-        + f"Amendment 1 (`AMENDMENT-1.md` `{R['amendments'][0]['sha256'][:8]}…`) admits a row to chain-building only if it prints a Project Name and at least one other field of the register (I10). On this series it refused {A1.get('rows_refused', 0)} rows, in {len(A1.get('refused_rows') or [])} copy(ies): "
+        f"Amendment 1 (`AMENDMENT-1.md` `{R['amendments'][0]['sha256'][:8]}…`) admits a row to chain-building only if it prints a Project Name and at least one other field of the register (I10). On this series it refused {A1.get('rows_refused', 0)} rows, in {len(A1.get('refused_rows') or [])} copy(ies): "
         + ", ".join(f"{r['t_public']} ({r['refused']})" for r in A1.get("refused_rows") or [])
         + f". {len(A1.get('sparse_rows_admitted') or [])} row(s) printing a name and exactly one other field were admitted as the rule reads: "
         + "; ".join(
             f"{r['t_public']}, {' and '.join(r['fields'])}, chain class {r['chain_class']}"
             for r in A1.get("sparse_rows_admitted") or []
         )
-        + f". {A1.get('chains_held_under_declaration_alone', 0)} chain line(s) built by the declaration-alone compute from refused rows stay in the held `chains.ndjson` (C5, append-only) and are not in this compute. Every leaf of `results.json` that differs from `results-declaration-alone.json` (`f5db2ec0…`, the compute of 945cfda) is listed here with its old and new value: {len(moved)} leaves."
+        + ". What moved under Amendment 1 alone is listed in `results-amendment-1.json` (`amendment_1.moved`)."
+    )
+    L += ["", "## Amendment 2 of the reading", ""]
+    L.append(
+        (
+            f"**Figure 1's storage exit count moved: {fig1['before']} to {fig1['after']}.** "
+            if fig1
+            else "**Figure 1's storage exit count did not move.** "
+        )
+        + (
+            f"**{len(bands8)} of figure 8's rates moved** (all technologies, clock A, old regime, five trigger bands; listed below). "
+            if bands8
+            else "**None of figure 8's five trigger-band rates moved.** "
+        )
+        + f"Amendment 2 (`AMENDMENT-2.md` `{R['amendments'][1]['sha256'][:8]}…`) reads the rows that print no Project Name as continuations of the named row above (I11, chosen by rebuilding NESO's complete exports of 38 month-ends) and admits the {len(A2.get('copies_added') or [])} copies journalled on 28/10/2026 (I12). It read {A2.get('continuation_rows_read', 0):,} continuation rows in the kept copies. The {A2.get('chain_lines_held_from_amendment_1', 0):,} chain lines of the earlier computes stay in `evidence/chains.ndjson`; this compute's are in `evidence/amendment-2/chains.ndjson` (C5, append-only from its first write). "
+        + f"Re-keyings: {len(R['pairs']['rekeying'])}, "
+        + "; ".join(
+            f"{p['earlier']} to {p['later']} ({p['stitched']} stitched, {p['not_determinable']} not determinable)"
+            for p in R["pairs"]["rekeying"]
+        )
+        + f". Every leaf of `results.json` that differs from `results-amendment-1.json` (`6fc3d59e…`, the compute of 305dbe8) is listed below with its old and new value: {len(moved)} leaves, storage leaves first."
     )
     if moved:
         L += ["", "| leaf | before | after |", "|---|---|---|"]

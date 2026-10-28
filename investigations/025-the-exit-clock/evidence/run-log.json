@@ -173,6 +173,22 @@
    "kept": 867,
    "rekeyings": 5,
    "report_sha256": "15711a92f8c5a67a60ab77de7adb9daf59938be273f0dab8610d93ade8f3af04"
+  },
+  {
+   "phase": "format",
+   "at": "2026-10-28T21:11:49+00:00",
+   "differences": 0,
+   "copies": 869
+  },
+  {
+   "phase": "compute",
+   "at": "2026-10-28T21:13:30+00:00",
+   "declaration": "bc05298419069041",
+   "chains": 2923,
+   "exits": 495,
+   "storage_old": 97,
+   "nd_share_id": "0.1085",
+   "new_chain_lines": 2923
   }
  ]
 }

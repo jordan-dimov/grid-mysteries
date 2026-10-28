@@ -20,10 +20,9 @@
 set -euo pipefail
 cd "$(dirname "$0")/.."
 uv run --group registers python - <<'PY'
-import hashlib, json, re
+import hashlib, json
 from collections import Counter, defaultdict
-from datetime import date, datetime
-from decimal import Decimal, InvalidOperation
+from datetime import date
 from pathlib import Path
 from grid_mysteries.evidence import write_json
 from grid_mysteries.investigations import exit_clock as ec
@@ -33,22 +32,6 @@ OUT = Path("archives/tec-register")
 NAMES = ("Project Name", "Customer Name", "Connection Site")
 FIELDS = [c for c in ec.READ_COLUMNS if c not in NAMES and c != "Gate"]
 PARTIAL = {"2023-11-28"}  # flagged partial export, excluded by 014's rule
-
-
-def normal(v: object) -> str:
-    if v is None:
-        return ""
-    if isinstance(v, datetime):
-        v = v.date()
-    if isinstance(v, date):
-        return v.isoformat()
-    t = " ".join(str(v).split())
-    if re.search(r"\d[-/]\d", t) and (d := tr.parse_date(t)):
-        return d.isoformat()
-    try:
-        return str(Decimal(t).normalize())
-    except InvalidOperation:
-        return t
 
 
 def apply(matrix, rule):
@@ -61,7 +44,7 @@ def apply(matrix, rule):
     heads = [tr.canon(c) for c in matrix[header]]
     out, named = [], None
     for r in matrix[header + 1:]:
-        row = {h: tr._cell(v) for h, v in zip(heads, r, strict=False) if h}
+        row = {h: tr.cell(v) for h, v in zip(heads, r, strict=False) if h}
         if str(row.get("Project Name") or "").strip():
             named = row
             out.append(row)
@@ -74,7 +57,7 @@ def grouped(rows, t):
     g = defaultdict(list)
     for r in rows:
         if ec.admissible(r):
-            g[ec.row_key(r, t)].append(tuple(normal(r.get(c)) for c in FIELDS))
+            g[ec.row_key(r, t)].append(tuple(tr.compare_cell(r.get(c)) for c in FIELDS))
     return {k: sorted(v) for k, v in g.items()}
 
 
@@ -86,7 +69,7 @@ per_date, totals = [], defaultdict(Counter)
 for d in dates:
     t = date.fromisoformat(d)
     era = "id" if ec.is_id_era(t) else "pre-id"
-    m = tr._best(Path(read[d]["path"]), read[d].get("format", ""))
+    m = tr.best_sheet(Path(read[d]["path"]), read[d].get("format", ""))
     neso_rows = tr.read_vintage(Path(neso[d]["path"]), "csv")
     gb = grouped(neso_rows, t)
     entry = {"t_public": d, "era": era, "published": read[d]["path"], "neso_export": neso[d]["path"],

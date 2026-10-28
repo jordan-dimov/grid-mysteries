@@ -58,7 +58,7 @@ def key_stability(copies: list[tuple[date, list[dict[str, object]]]]) -> dict[st
             both = previous.keys() & current.keys()
             matched_total += len(both)
             counts = {name: 0 for name, _ in GROUPING}
-            for key in both:
+            for key in sorted(both):
                 for name, _ in GROUPING:
                     before, now = previous[key][name], current[key][name]
                     if before != now:
@@ -82,7 +82,10 @@ def key_stability(copies: list[tuple[date, list[dict[str, object]]]]) -> dict[st
                 "units_changed": sum(changed[name].values()),
                 "distinct_transitions": len(changed[name]),
                 "transitions": [
-                    {"from": a, "to": b, "units": n} for (a, b), n in changed[name].most_common()
+                    {"from": a, "to": b, "units": n}
+                    # most first, ties by name: the report's bytes must not depend on
+                    # the hash seed (a set's order fed most_common's tie order).
+                    for (a, b), n in sorted(changed[name].items(), key=lambda kv: (-kv[1], kv[0]))
                 ],
             }
             for name, _ in GROUPING

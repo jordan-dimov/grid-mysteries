@@ -63,6 +63,41 @@ def test_key_stability_counts_changes_of_a_unit_between_consecutive_copies():
     assert [c["t_public"] for c in out["copies_with_a_change"]] == ["2024-02-01"]
 
 
+def test_key_stability_orders_tied_transitions_by_name_whatever_the_hash_seed():
+    """The schema report's bytes are pinned by digest; ties once followed a
+    set's iteration order, so three hash seeds gave three digests (28/10/2026)."""
+    import json
+    import subprocess
+    import sys
+
+    first = [row(n, "1", 10, "2025-01-01", plant=p) for n, p in (("A", "Wind"), ("B", "Gas"))]
+    second = [row(n, "1", 10, "2025-01-01", plant=p) for n, p in (("A", "Solar"), ("B", "Storage"))]
+    out = sbg.key_stability([(date(2024, 1, 1), first), (date(2024, 2, 1), second)])
+    assert [(t["from"], t["to"]) for t in out["plant_type"]["transitions"]] == [
+        ("Gas", "Storage"),
+        ("Wind", "Solar"),
+    ]
+    probe = (
+        "import json; from datetime import date; from grid_mysteries.investigations import "
+        "slippage_by_group as sbg; from tests.test_slippage_by_group import row; "
+        "rows = lambda ps: [row(chr(65 + i), '1', 10, '2025-01-01', plant=p) "
+        "for i, p in enumerate(ps)]; "
+        "print(json.dumps(sbg.key_stability([(date(2024, 1, 1), rows('abcdefgh')), "
+        "(date(2024, 2, 1), rows('ABCDEFGH'))])['plant_type']['transitions']))"
+    )
+    seen = {
+        subprocess.run(
+            [sys.executable, "-c", probe],
+            env={"PYTHONHASHSEED": seed, "PATH": ""},
+            capture_output=True,
+            text=True,
+            check=True,
+        ).stdout
+        for seed in ("1", "2", "3")
+    }
+    assert len(seen) == 1 and json.loads(seen.pop())[0] == {"from": "a", "to": "A", "units": 1}
+
+
 # ---------------------------------------------------------------- the cut
 
 from decimal import Decimal  # noqa: E402

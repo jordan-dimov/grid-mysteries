@@ -488,3 +488,17 @@ def test_continuation_rule_without_an_id_column_always_takes_the_identity():
         ("B", "BEE", "Site 2", "1"),
         ("B", "BEE", "Site 2", "2"),
     ]
+
+
+def test_compare_cell_reads_every_spelling_of_one_value_alike():
+    same = [
+        ("49.9", "49.90"),
+        ("31/10/2034", "2034-10-31"),
+        ("2034/10/31", date(2034, 10, 31)),
+        (datetime(2034, 10, 31, 0, 0), "2034-10-31"),
+        ("  Blanket  Farm ", "Blanket Farm"),
+        (None, ""),
+    ]
+    for a, b in same:
+        assert tr.compare_cell(a) == tr.compare_cell(b), (a, b)
+    assert tr.compare_cell("ESTATES, LTD.") != tr.compare_cell("ESTATES LTD")

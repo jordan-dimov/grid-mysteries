@@ -185,7 +185,8 @@ def normalise_stage(value: object) -> str:
     )
 
 
-def _cell(value: object) -> object:
+def cell(value: object) -> object:
+    """A sheet cell as rows hold it: a datetime read as its date."""
     if isinstance(value, datetime):
         return value.date()
     return value
@@ -233,7 +234,7 @@ def rows_from_matrix(
     out: list[dict[str, object]] = []
     named: dict[str, object] | None = None
     for r in matrix[header_index + 1 :]:
-        row = {h: _cell(v) for h, v in zip(headers, r, strict=False) if h}
+        row = {h: cell(v) for h, v in zip(headers, r, strict=False) if h}
         if str(row.get("Project Name") or "").strip():
             named = row
             out.append(row)
@@ -274,7 +275,7 @@ def _matrices(path: Path, fmt: str = "") -> list[list[list[object]]]:
     return []
 
 
-def _best(path: Path, fmt: str) -> list[list[object]]:
+def best_sheet(path: Path, fmt: str = "") -> list[list[object]]:
     """The sheet `read_vintage` reads: the one with most rows (the first on a tie)."""
     best: tuple[int, list[list[object]]] = (0, [])
     for matrix in _matrices(path, fmt):
@@ -289,14 +290,34 @@ def read_vintage(
 ) -> list[dict[str, object]]:
     """Rows of one vintage file: csv, xlsx or xls; the sheet with most named
     rows. With `continuation`, rows printing no name are read by `continue_row`."""
-    return rows_from_matrix(_best(path, fmt), continuation=continuation)
+    return rows_from_matrix(best_sheet(path, fmt), continuation=continuation)
+
+
+def compare_cell(value: object) -> str:
+    """A cell as two copies of one register are compared: dates in ISO form
+    (every spelling `parse_date` reads), numbers by value (`49.9` and `49.90`
+    alike), whitespace collapsed, blank as empty. For comparing copies only;
+    never a reading rule."""
+    if value is None:
+        return ""
+    if isinstance(value, datetime):
+        value = value.date()
+    if isinstance(value, date):
+        return value.isoformat()
+    text = " ".join(str(value).split())
+    if re.search(r"\d[-/]\d", text) and (parsed := parse_date(text)):
+        return parsed.isoformat()
+    try:
+        return str(Decimal(text).normalize())
+    except InvalidOperation:
+        return text
 
 
 def unnamed_rows(path: Path, fmt: str = "") -> int:
     """Rows below the header of the sheet `read_vintage` reads that print no
     Project Name but at least one other cell: rows the reader drops. Some
     copies print a project's name on its first stage row only."""
-    matrix = _best(path, fmt)
+    matrix = best_sheet(path, fmt)
     header_index = next(
         (i for i, r in enumerate(matrix) if any(canon(c) == "Project Name" for c in r)), None
     )

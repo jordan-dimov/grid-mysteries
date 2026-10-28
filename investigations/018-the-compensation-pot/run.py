@@ -26,7 +26,6 @@ import argparse
 import gzip
 import hashlib
 import json
-import sys
 from datetime import UTC, datetime, timedelta
 from decimal import Decimal
 from pathlib import Path
@@ -535,4 +534,4 @@ def main() -> None:
 
 
 if __name__ == "__main__":
-    sys.exit(main())
+    main()

@@ -253,7 +253,7 @@ class PatientFetcher:
 
 def append_links(links: list[qo.Link], run_date: str, search_digests: dict[str, str]) -> None:
     """C4: append only; a line that would change stops the run."""
-    existing: dict[str, str] = {}
+    existing: dict[tuple[str, str, str], str] = {}
     if LINKS_NDJSON.exists():
         for line in LINKS_NDJSON.read_text().splitlines():
             if line.strip():
@@ -904,7 +904,8 @@ def phase_compute(run_date: str) -> None:
         )
 
     # Figure 2: age
-    age_rows = age_mw = 0
+    age_rows = 0
+    age_mw: int | Decimal = 0
     young_rows = young_mw = Decimal(0)
     age_hist: dict[str, dict[str, Any]] = defaultdict(lambda: {"rows": 0, "mw": Decimal(0)})
     for row in rows:
@@ -957,7 +958,7 @@ def phase_compute(run_date: str) -> None:
     counts = Counter(c["class"] for c in classed)
     both_resolved = sum(1 for c in classed if c["class"] in ("rename", "transfer"))
     lags = sorted(c["register_lag_days"] for c in classed if c["register_lag_days"] is not None)
-    mw_by_id = defaultdict(lambda: Decimal(0))
+    mw_by_id: defaultdict[str, Decimal] = defaultdict(lambda: Decimal(0))
     for row in rows:
         if pid := project_id(row):
             mw_by_id[pid] += tr.parse_decimal(row.get("MW Increase / Decrease")) or Decimal(0)

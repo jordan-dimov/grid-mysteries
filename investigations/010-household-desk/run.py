@@ -419,7 +419,9 @@ def elexon_by_month(raw: Path) -> dict[str, dict[str, Any]]:
     out: dict[str, dict[str, Any]] = {}
     for month, series in acc.items():
         out[month] = {
-            f"mean_{name}_gbp_per_mwh": str((sum(values) / len(values)).quantize(hd.PENNY))
+            f"mean_{name}_gbp_per_mwh": str(
+                (sum(values, Decimal(0)) / len(values)).quantize(hd.PENNY)
+            )
             for name, values in series.items()
             if values
         }
@@ -517,7 +519,7 @@ def main() -> int:
                 )
         log.setdefault("press_attempts", []).append(record)
     if args.phase in ("evaluate", "all"):
-        codes = {tuple(k.split("/")): v for k, v in json.loads(codes_path.read_text()).items()}  # type: ignore[misc]
+        codes = {tuple(k.split("/")): v for k, v in json.loads(codes_path.read_text()).items()}
         results = evaluate(raw_octopus, raw_elexon, codes)
         results.update(log)
         results["amendments"] = "AMENDMENTS.md"

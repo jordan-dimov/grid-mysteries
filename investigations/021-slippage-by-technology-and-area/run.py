@@ -26,7 +26,6 @@ import hashlib
 import json
 import re
 import subprocess
-import sys
 from datetime import UTC, date, datetime
 from decimal import Decimal
 from pathlib import Path
@@ -537,4 +536,4 @@ def main(argv: list[str] | None = None) -> None:
 
 
 if __name__ == "__main__":
-    sys.exit(main())
+    main()

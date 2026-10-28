@@ -27,7 +27,7 @@ from collections import Counter, defaultdict
 from datetime import UTC, date, datetime, timedelta
 from decimal import Decimal
 from pathlib import Path
-from typing import Any
+from typing import Any, cast
 
 from grid_mysteries.corpus import BMUNITS_PATH, REPO_ROOT, day_range, load_records
 from grid_mysteries.investigations import eligibility_screen as es
@@ -86,7 +86,7 @@ def load_json(path: Path) -> Any:
 def records_of(path: Path) -> list[dict]:
     payload = load_json(path)
     if isinstance(payload, dict):
-        return payload.get("data", payload.get("result", []))
+        return cast(list[dict], payload.get("data", payload.get("result", [])))
     return payload
 
 
@@ -429,7 +429,8 @@ def build_population(rows: list[dict], register: dict[str, Any], basis: str) -> 
         and Decimal(str(r.get("executedQuantity") or 0)) > 0
     }
     ng_to_elexon = register["ng_to_elexon"]
-    members, unmapped = [], []
+    members: list[dict[str, Any]] = []
+    unmapped: list[dict[str, Any]] = []
     for ng in sorted(holders):
         labels = {"eac_batteries": ng in eac_batteries, "in_merit_battery": ng in in_merit_set}
         if not any(labels.values()):

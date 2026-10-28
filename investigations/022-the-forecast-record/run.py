@@ -32,7 +32,6 @@ import argparse
 import hashlib
 import json
 import re
-import sys
 from collections import Counter
 from dataclasses import asdict
 from datetime import UTC, date, datetime
@@ -407,7 +406,7 @@ def index_2(seal: str | None, amendment_seal: str | None, run_date: str) -> None
     pinned = {e["url"] for e in load_journal(EVIDENCE / "rns-journal.ndjson").values()}
     failures: list[dict[str, str]] = []
     listings: list[dict[str, Any]] = []
-    links: list[dict[str, str]] = []
+    links: list[dict[str, str | bool]] = []
     seen_hrefs: set[str] = set()
 
     def harvest(dataset: str, url: str, path: Path) -> int:
@@ -1002,4 +1001,4 @@ def main(argv: list[str] | None = None) -> None:
 
 
 if __name__ == "__main__":
-    sys.exit(main())
+    main()

@@ -694,7 +694,7 @@ def phase_compute(seal: str | None) -> None:
     rows = {u: gs.build_rows(days[u], gas, carbon) for u in UNITS}
     for u in UNITS:
         for r in rows[u]:
-            if r.negative is not None and r.negative + r.merit_order + r.scarcity != r.spread:  # type: ignore[operator]
+            if r.negative is not None and r.negative + r.merit_order + r.scarcity != r.spread:
                 sys.exit(f"C4: legs do not sum to the spread on {u} {r.day}")
     kept, added = append_only([day_line(u, r) for u in UNITS for r in rows[u]])
     last_measured = max(r.day for r in rows["printed"] if r.spread is not None)

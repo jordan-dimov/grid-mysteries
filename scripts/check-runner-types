@@ -1,20 +1,16 @@
 #!/usr/bin/env bash
-# Investigation runners held to the project's mypy settings. Each is checked
-# on its own: they are all modules named `run`, which one mypy run refuses.
-# A runner joins this list once it is clean and never leaves it (a ratchet);
-# the runners not listed had 1 to 6 errors each on 2026-10-28.
+# Every investigation runner held to the project's mypy settings. Each is
+# checked on its own: they are all modules named `run`, which one mypy run
+# refuses. All nineteen were brought clean on 2026-10-28 (annotations, and
+# `main()` for `sys.exit(main())` where main returns None); a new runner is
+# clean from its first commit.
 #
-#   scripts/check-runner-types            every listed runner (scripts/check)
-#   scripts/check-runner-types FILE...    the listed ones among FILE (pre-commit)
+#   scripts/check-runner-types            every runner (scripts/check)
+#   scripts/check-runner-types FILE...    the runners among FILE (pre-commit)
 set -euo pipefail
 cd "$(dirname "$0")/.."
 export PATH="${HOME}/.local/bin:${PATH}"
-typed=(
-  investigations/013-the-cover-price-tracker/run.py
-  investigations/016-day-ahead-wind-forecast/run.py
-  investigations/020-did-it-energise/run.py
-  investigations/025-the-exit-clock/run.py
-)
+typed=(investigations/*/run.py)
 targets=()
 if [[ $# -eq 0 ]]; then
   targets=("${typed[@]}")

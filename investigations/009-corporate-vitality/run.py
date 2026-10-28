@@ -10,7 +10,6 @@ import argparse
 import csv
 import json
 import re
-import sys
 from dataclasses import asdict
 from datetime import UTC, date, datetime
 from pathlib import Path
@@ -262,4 +261,4 @@ def main() -> None:
 
 
 if __name__ == "__main__":
-    sys.exit(main())
+    main()

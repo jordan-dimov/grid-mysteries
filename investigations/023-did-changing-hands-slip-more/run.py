@@ -193,7 +193,7 @@ def phase_schema() -> None:
     results_path = Q019 / "results.json"
     results = json.loads(results_path.read_text())
     events = results["figure3_name_changes"]["all"]
-    windows = []
+    windows: list[dict[str, Any]] = []
     for label, b, c in WINDOWS:
         if b not in kept or c not in kept:
             windows.append(
@@ -247,7 +247,7 @@ def phase_schema() -> None:
                 ),
             }
         )
-    report = {
+    report: dict[str, Any] = {
         "archive": "023-holder-change-inputs",
         "generated_at": datetime.now(UTC).isoformat(timespec="seconds"),
         "inputs": {

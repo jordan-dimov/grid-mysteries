@@ -46,7 +46,6 @@ Phases:
 import argparse
 import hashlib
 import json
-import sys
 from datetime import UTC, date, datetime
 from pathlib import Path
 from typing import Any
@@ -485,4 +484,4 @@ def main(argv: list[str] | None = None) -> None:
 
 
 if __name__ == "__main__":
-    sys.exit(main())
+    main()

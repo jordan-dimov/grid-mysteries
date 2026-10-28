@@ -289,7 +289,9 @@ def fuel_context(day: str) -> dict[str, Any]:
     return {
         "available": True,
         "mean_mw_by_fuel": {
-            f: str((sum(v) / len(v)).quantize(Decimal("1"))) for f, v in sorted(acc.items()) if v
+            f: str((sum(v, Decimal(0)) / len(v)).quantize(Decimal("1")))
+            for f, v in sorted(acc.items())
+            if v
         },
     }
 

@@ -35,7 +35,6 @@ Nothing is fetched. The copy is the one already journalled on 2026-09-15.
 import argparse
 import hashlib
 import json
-import sys
 from datetime import UTC, date, datetime
 from decimal import Decimal
 from pathlib import Path
@@ -1224,4 +1223,4 @@ def main(argv: list[str] | None = None) -> None:
 
 
 if __name__ == "__main__":
-    sys.exit(main())
+    main()

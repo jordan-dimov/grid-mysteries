@@ -43,6 +43,7 @@ EVIDENCE = evidence_dir(__file__)
 spec = importlib.util.spec_from_file_location(
     "run005", ROOT / "investigations/005-connection-date-credibility/run.py"
 )
+assert spec is not None
 run005 = importlib.util.module_from_spec(spec)
 assert spec.loader is not None
 spec.loader.exec_module(run005)
@@ -158,7 +159,7 @@ def main() -> None:
             "rate_unflagged": r.rate_unflagged,
             "gap": r.gap,
         }
-    match_by = Counter()
+    match_by: Counter[str] = Counter()
     for m in pop:
         if flags[m.key] is None:
             match_by["unmatched"] += 1

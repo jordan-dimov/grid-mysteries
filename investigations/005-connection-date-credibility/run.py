@@ -12,6 +12,7 @@ grid_mysteries.investigations.tec_slippage; this file only does I/O and column m
 import csv
 import json
 from collections import Counter
+from collections.abc import Sequence
 from dataclasses import asdict
 from datetime import date, datetime
 from pathlib import Path
@@ -70,7 +71,7 @@ def cell(value: object) -> object:
     return value
 
 
-def rows_from_matrix(matrix: list[list[object]]) -> list[dict[str, object]]:
+def rows_from_matrix(matrix: Sequence[Sequence[object]]) -> list[dict[str, object]]:
     header_index = next(
         (i for i, r in enumerate(matrix) if any(canon(c) == "Project Name" for c in r)), None
     )
@@ -88,7 +89,7 @@ def rows_from_matrix(matrix: list[list[object]]) -> list[dict[str, object]]:
 def read_vintage(path: Path, fmt: str) -> list[dict[str, object]]:
     if fmt == "csv" or path.suffix.lower() == ".csv":
         with path.open(newline="", encoding="utf-8-sig", errors="replace") as f:
-            matrix = [list(r) for r in csv.reader(f)]
+            matrix: list[list[object]] = [list(r) for r in csv.reader(f)]
         return rows_from_matrix(matrix)
     if path.suffix.lower() == ".xlsx":
         import openpyxl
@@ -108,7 +109,7 @@ def read_vintage(path: Path, fmt: str) -> list[dict[str, object]]:
         for sh in book.sheets():
             matrix = []
             for i in range(sh.nrows):
-                vals = []
+                vals: list[object] = []
                 for j in range(sh.ncols):
                     c = sh.cell(i, j)
                     if c.ctype == xlrd.XL_CELL_DATE:

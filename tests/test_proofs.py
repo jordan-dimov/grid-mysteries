@@ -129,3 +129,19 @@ def test_watchdog_keeps_a_local_upgrade_and_still_flags_divergence(tmp_path: Pat
         f"MISMATCH proofs/2026-09-16.ndjson.ots -> {local / '2026-09-16.ndjson.ots'}"
     ]
     assert (local / "2026-09-15.ndjson.ots").read_bytes() == UPGRADED
+
+
+def test_an_uncommitted_proof_is_fine_until_48_hours_then_a_fault_that_names_the_fix(
+    tmp_path: Path,
+):
+    path = stamped(tmp_path)
+    young = proofs.uncommitted([path], now=lambda: STAMPED + timedelta(hours=30))
+    old = proofs.uncommitted([path], now=lambda: STAMPED + timedelta(hours=70))
+    assert young[0].ok and "upgrades it once committed" in young[0].detail
+    assert not old[0].ok and "scripts/archive-sync" in old[0].detail
+
+
+def test_an_uncommitted_proof_without_a_sidecar_is_a_fault(tmp_path: Path):
+    path = tmp_path / "orphan.ndjson.ots"
+    path.write_bytes(PENDING)
+    assert not proofs.uncommitted([path])[0].ok

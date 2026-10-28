@@ -202,7 +202,8 @@ if __name__ == "__main__":
 def proofs_command(args: argparse.Namespace) -> None:
     """Every committed `*.ots` (git ls-files) outside tests/ (whose fixtures
     are proofs of the real 2026-09-15 manifest, frozen pending on purpose), so
-    a proof nobody committed is never swept and a committed one never missed."""
+    a proof nobody committed is never swept and a committed one never missed;
+    an uncommitted one past 48 h fails the sweep (`proofs.uncommitted`)."""
     import subprocess
 
     from grid_mysteries import proofs
@@ -221,6 +222,13 @@ def proofs_command(args: argparse.Namespace) -> None:
     lines = proofs.sweep(
         paths, upgrade=proofs.ots_upgrade, explorers=explorers, verify_all=args.verify_all
     )
+    untracked = subprocess.run(
+        ["git", "ls-files", "--others", "--exclude-standard", "*.ots", ":!tests/"],
+        check=True,
+        capture_output=True,
+        text=True,
+    ).stdout.split()
+    lines += proofs.uncommitted([Path(p) for p in untracked])
     for line in lines:
         print(f"{'ok ' if line.ok else '!! '} proof:{line.path}: {line.detail}")
     failed = any(not line.ok for line in lines)

@@ -816,3 +816,21 @@ artefacts of 15 September to 3 October: none invalid, every OCDS day whole.
 `test_a_thin_day_whose_pages_are_whole_and_genuine_is_news_not_a_fault`,
 `test_validity_fails_what_size_cannot_see`,
 `test_html_where_data_was_expected_fails_and_a_page_without_a_test_keeps_the_band`.
+
+**The archive sync as one command, and uncommitted proofs as a fault
+(2026-10-28).** Six days of manifests (23/10 to 28/10) sat uncommitted
+because the sync is a manual commit, and nothing said so: the 48 h rule saw
+committed proofs only, and the sweep cannot upgrade a proof nobody committed.
+(1) `proofs sweep` now also reads untracked `*.ots` outside `tests/`
+(`proofs.uncommitted`); one past 48 h from its sidecar's stamp time fails the
+watchdog, and its line names the fix. (2) `scripts/archive-sync` commits
+what the watchdog wrote, after checking it: each new day's manifest with all
+five proof files (`verify-timestamp` must pass), modified `*.ots` only as
+upgrades of the committed proof (`proofs.is_upgrade_of`), the 013 tracker's
+state only if records were appended and none edited
+(`archive_sync.only_grew`), and new 013 batch manifests only if every file
+listed hashes as listed. Anything else in the tree stops it by name before
+anything is staged. It then sweeps and commits the upgrades, and never pushes.
+`--dry-run` shows the plan. Checked against the hand-made sync of 28/10
+(7f9f825): the same 43 files. Tests: `tests/test_archive_sync.py`;
+`tests/test_proofs.py::test_an_uncommitted_proof_is_fine_until_48_hours_then_a_fault_that_names_the_fix`.

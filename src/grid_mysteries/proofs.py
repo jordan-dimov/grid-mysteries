@@ -178,6 +178,45 @@ def sweep(
     return lines
 
 
+def uncommitted(
+    proofs: Iterable[Path],
+    *,
+    now: Callable[[], datetime] = lambda: datetime.now(UTC),
+    max_pending: timedelta = MAX_PENDING,
+) -> list[Line]:
+    """Proofs nobody committed. The sweep reads committed proofs only, so an
+    uncommitted one can never be upgraded: past `max_pending` from its
+    sidecar's stamp time it is the same fault as a stale pending proof, and
+    the line says how to clear it."""
+    lines = []
+    for path in proofs:
+        sidecar_path = path.with_name(path.name[: -len(".ots")] + ".timestamps.json")
+        if not sidecar_path.exists():
+            lines.append(Line(path, False, f"uncommitted, and no sidecar {sidecar_path.name}"))
+            continue
+        stamped = datetime.fromisoformat(
+            json.loads(sidecar_path.read_text())["stamped_at_utc_local_clock"].replace(
+                "Z", "+00:00"
+            )
+        )
+        age = now() - stamped
+        stale = age > max_pending
+        lines.append(
+            Line(
+                path,
+                not stale,
+                f"uncommitted {age.total_seconds() / 3600:.0f} h"
+                + (
+                    f" (over {max_pending.total_seconds() / 3600:.0f} h): the sweep cannot"
+                    " upgrade it; commit it with scripts/archive-sync"
+                    if stale
+                    else "; the sweep upgrades it once committed"
+                ),
+            )
+        )
+    return lines
+
+
 def ots_upgrade(body: bytes) -> bytes:
     """Run `ots upgrade` on a scratch copy; the repository file is only
     written by `sweep`, after the upgrade confirms."""

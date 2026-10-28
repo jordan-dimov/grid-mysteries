@@ -1,0 +1,147 @@
+#!/usr/bin/env bash
+# The archive sync, in one step: commit what the watchdog wrote into the
+# repository, after checking it, then sweep the OpenTimestamps proofs that
+# were waiting for that commit and commit their upgrades too.
+#
+#   scripts/archive-sync [--dry-run] [--co-author "Name <email>"]
+#
+# What it commits (grid_mysteries.archive_sync.classify) and how each is
+# checked before anything is staged:
+#   - each new day's capture manifest with its five proof files, all or none:
+#     scripts/verify-timestamp must pass (both RFC 3161 tokens);
+#   - modified *.ots files: each must be an upgrade of the committed proof
+#     for the same digest (proofs.is_upgrade_of), never a different proof;
+#   - the 013 tracker's grown state (archive_sync.GROWN): records appended
+#     only, none edited or dropped (archive_sync.only_grew);
+#   - new 013 batch manifests: every file listed present and hashing as listed.
+# Anything else in the working tree stops it, by name, before anything is
+# staged; so does a failed check. It never pushes. The commits carry a
+# Co-Authored-By trailer only when one is named, by --co-author or
+# ARCHIVE_SYNC_CO_AUTHOR (as scripts/freeze does).
+set -euo pipefail
+cd "$(dirname "$0")/.."
+export PATH="${HOME}/.local/bin:${PATH}"
+dry_run=0
+co_author="${ARCHIVE_SYNC_CO_AUTHOR:-}"
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    --dry-run) dry_run=1; shift ;;
+    --co-author) co_author="${2:?--co-author needs \"Name <email>\"}"; shift 2 ;;
+    --co-author=*) co_author="${1#--co-author=}"; shift ;;
+    *) echo "archive-sync: unknown argument $1" >&2; exit 2 ;;
+  esac
+done
+if [[ -n "$co_author" && ! "$co_author" =~ ^[^\<\>]*[^\<\>\ ]\ \<[^\<\>@\ ]+@[^\<\>@\ ]+\>$ ]]; then
+  echo "archive-sync: co-author must read \"Name <email>\", got: $co_author" >&2
+  exit 2
+fi
+if ! git diff --cached --quiet; then
+  echo "archive-sync: the index already holds staged changes; commit or unstage them first" >&2
+  exit 1
+fi
+trailer() { [[ -n "$co_author" ]] && printf '\n\nCo-Authored-By: %s' "$co_author"; true; }
+paths_file=$(git rev-parse --git-path archive-sync-paths)
+
+message=$(uv run --group capture python - "$dry_run" "$paths_file" <<'PY'
+import hashlib, json, subprocess, sys
+from datetime import date
+from pathlib import Path
+from grid_mysteries import archive_sync as sync
+from grid_mysteries import proofs
+
+def git(*args: str) -> str:
+    return subprocess.run(["git", *args], check=True, capture_output=True, text=True).stdout
+
+def committed(path: str) -> bytes:
+    return subprocess.run(["git", "show", f"HEAD:{path}"], check=True, capture_output=True).stdout
+
+changes = []
+for line in git("status", "--porcelain=v1", "--untracked-files=all").splitlines():
+    status, path = line[:2], line[3:]
+    changes.append(("??" if status == "??" else "M" if status.strip() == "M" else status.strip(), path))
+plan = sync.classify(changes)
+faults = [f"{p}: {why}" for p, why in plan.refused]
+faults += [f"{day}: missing {', '.join(m)}" for day, m in plan.incomplete_days().items()]
+facts = []
+for day in sorted(plan.days):
+    manifest = f"data/manifests/{day}.ndjson"
+    if f"{day}: missing" in " ".join(faults):
+        continue
+    check = subprocess.run(["scripts/verify-timestamp", manifest], capture_output=True, text=True)
+    if check.returncode != 0:
+        faults.append(f"{manifest}: verify-timestamp failed\n{check.stdout}{check.stderr}")
+        continue
+    lines = sum(1 for x in Path(manifest).read_text().splitlines() if x.strip())
+    facts.append(("day", day, lines))
+for path in plan.upgraded_proofs:
+    if not proofs.is_upgrade_of(Path(path).read_bytes(), committed(path)):
+        faults.append(f"{path}: not an upgrade of the committed proof")
+    else:
+        anchors = [h for h, _ in proofs.read(Path(path).read_bytes()).anchors]
+        facts.append(("proof", path, (min(anchors), max(anchors))))
+for path in plan.grown:
+    if not sync.only_grew(committed(path), Path(path).read_bytes()):
+        faults.append(f"{path}: an existing record changed or went missing (not append-only)")
+    else:
+        facts.append(("grown", path, None))
+for path in plan.batches:
+    listed = json.loads(Path(path).read_text())
+    bad = [e["path"] for e in listed
+           if not Path(e["path"]).exists() or hashlib.sha256(Path(e["path"]).read_bytes()).hexdigest() != e["sha256"]]
+    if bad:
+        faults.append(f"{path}: {len(bad)} listed file(s) missing or changed, e.g. {bad[0]}")
+    else:
+        facts.append(("batch", path, (len(listed), min(e["fetched_at"] for e in listed)[:10])))
+if faults:
+    print("archive-sync: refusing, nothing staged:", *faults, sep="\n  ", file=sys.stderr)
+    sys.exit(1)
+if not plan.paths():
+    print("archive-sync: nothing to sync", file=sys.stderr)
+    sys.exit(3)
+days = [f for f in facts if f[0] == "day"]
+proof_facts = [f for f in facts if f[0] == "proof"]
+parts = []
+if days:
+    parts.append(
+        f"daily manifests of {', '.join(d[1][8:10] + '/' + d[1][5:7] for d in days)} "
+        f"({', '.join(str(d[2]) for d in days)} lines) with their proofs (both RFC 3161 tokens verified on each; "
+        "OpenTimestamps pending until the sweep upgrades them once committed)")
+if proof_facts:
+    lo = min(f[2][0] for f in proof_facts); hi = max(f[2][1] for f in proof_facts)
+    parts.append(f"{len(proof_facts)} OpenTimestamps proof(s) upgraded to Bitcoin attestations by the sweep "
+                 f"(blocks {lo} to {hi}): " + ", ".join(f[1] for f in proof_facts))
+grown = [f[1].rsplit("/", 1)[1] for f in facts if f[0] == "grown"]
+if grown:
+    parts.append(f"013 state grown by the tracker ({', '.join(grown)}, records appended only)")
+for _, path, (n, fetched) in [f for f in facts if f[0] == "batch"]:
+    parts.append(f"013 {Path(path).name} ({n} files fetched {fetched}, every file present and hashing as listed), not computed")
+today = date.today()
+if sys.argv[1] == "1":
+    print("archive-sync --dry-run: would commit", *plan.paths(), sep="\n  ", file=sys.stderr)
+Path(sys.argv[2]).write_text("\n".join(plan.paths()) + "\n")
+print(f"archive sync {today:%d/%m/%Y}: " + "; ".join(parts))
+PY
+) || { status=$?; [[ $status -eq 3 ]] && exit 0; exit $status; }
+
+if [[ $dry_run -eq 1 ]]; then
+  echo "$message"
+  rm -f "$paths_file"
+  exit 0
+fi
+xargs -a "$paths_file" -d '\n' git add --
+rm -f "$paths_file"
+git commit -q -m "$message$(trailer)"
+echo "committed: $(git log --oneline -1)"
+
+# The sweep upgrades committed proofs only; run it now so the new manifests'
+# proofs need not wait for the next watchdog run, and commit what it upgraded.
+sweep_status=0
+uv run --group capture grid-mysteries proofs sweep || sweep_status=$?
+mapfile -t upgraded < <(git status --porcelain=v1 | awk '$1 == "M" && $2 ~ /\.ots$/ {print $2}')
+if [[ ${#upgraded[@]} -gt 0 ]]; then
+  git add -- "${upgraded[@]}"
+  git commit -q -m "OpenTimestamps proofs upgraded $(date +%d/%m/%Y): ${upgraded[*]}, each confirmed by blockstream and mempool, swept the moment they were committed$(trailer)"
+  echo "committed: $(git log --oneline -1)"
+fi
+echo "archive-sync: done; not pushed"
+exit $sweep_status
